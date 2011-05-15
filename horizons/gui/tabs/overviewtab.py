@@ -216,7 +216,8 @@ class ProductionOverviewTab(OverviewTab):
 				                                     in_res, \
 				                                     self.instance.inventory[in_res], \
 				                                     filled, \
-				                                     use_inactive_icon=False) \
+				                                     use_inactive_icon=False, \
+				                                     uncached=True) \
 				)
 			out_res_container = container.findChild(name="output_res")
 			for out_res in production.get_produced_res():
@@ -227,7 +228,8 @@ class ProductionOverviewTab(OverviewTab):
 				                                     out_res, \
 				                                     self.instance.inventory[out_res], \
 				                                     filled, \
-				                                     use_inactive_icon=False) \
+				                                     use_inactive_icon=False, \
+				                                     uncached=True) \
 				)
 
 

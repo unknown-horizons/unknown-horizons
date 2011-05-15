@@ -23,7 +23,7 @@
 	<Icon image="content/gui/images/background/inv_bg.png" position="110,35" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="165,35" name="slot" />
 
-	<Inventory name="inventory_ship" size="300,150" position="-5,30" />
+	<Inventory name="inventory_ship" size="300,150" position="-5,30" uncached="1"/>
 
 </Container>
 
@@ -87,7 +87,7 @@
 	<Icon image="content/gui/images/background/inv_bg.png" position="110,90" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="165,90" name="slot" />
 
-	<Inventory name="inventory_partner" size="300,300" position="-5,30" />
+	<Inventory name="inventory_partner" size="300,300" position="-5,30" uncached="1"/>
 		<!--<DropDown min_size="170, 0" position="90, 165" name="partners"/>-->
 
 </Container>

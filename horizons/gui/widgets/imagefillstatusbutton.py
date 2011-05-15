@@ -27,7 +27,8 @@ from horizons.util import Callback
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
-	def __init__(self, up_image, down_image, hover_image, text, res_id, tooltip="", filled=0, **kwargs):
+	def __init__(self, up_image, down_image, hover_image, text, res_id, tooltip="", \
+	             filled=0, uncached=False, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
 		in order to display the image. The container is only used, because ImageButtons can't have children.
@@ -38,16 +39,18 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		# res_id is used by the TradeWidget for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (17, 36)
-		self.filled = filled
+		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time
+		self.filled = filled # <- black magic at work! this calls _draw()
 
 	@classmethod
-	def init_for_res(cls, db, res, amount=0, filled=0, use_inactive_icon=True):
+	def init_for_res(cls, db, res, amount=0, filled=0, use_inactive_icon=True, uncached=False):
 		"""Inites the button to display the icons for res
 		@param db: dbreader to get info about res icon.
 		@param res: resource id
 		@param amount: int amount of res
 		@param filled: percent of fill status (values are ints in [0, 100])
 		@param use_inactive_icon: wheter to use inactive icon if amount == 0
+		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
 		icon, icon_disabled = db.get_res_icon(res)
 		if not use_inactive_icon:
@@ -61,6 +64,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		           size=(55, 50),
 		           res_id = res,
 		           filled = filled,
+		           uncached = uncached,
 		           opaque=False)
 
 	def _set_filled(self, percent):
@@ -83,7 +87,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		                      down_image=self.down_image, hover_image=self.hover_image,
 		                      tooltip=self.tooltip)
 		self.button = self.__widget_cache.get(create_btn, None)
-		if self.button is None: # create button
+		if self.button is None or self.uncached: # create button
 			self.__widget_cache[create_btn] = self.button = create_btn()
 		else: # disconnect button from earlier layout
 			if self.button.parent:

@@ -21,6 +21,8 @@
 
 from fife.extensions import pychan
 
+from fife.extensions.pychan.widgets.common import BoolAttr
+
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets import ProgressBar
 from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage
@@ -32,12 +34,16 @@ class Inventory(pychan.widgets.Container):
 	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
 
 	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
+	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached')]
+	# uncached; required when resource icons should appear multiple times at any given moment
+	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
 	ITEMS_PER_LINE = 4 # TODO: make this a xml attribute with a default value
-	def __init__(self, **kwargs):
+	def __init__(self, uncached=False, **kwargs):
 		# this inits the gui part of the inventory. @see init().
 		super(Inventory, self).__init__(**kwargs)
 		self._inventory = None
 		self.__inited = False
+		self.uncached = uncached
 
 	def init(self, db, inventory):
 		# this inits the logic of the inventory. @see __init__().
@@ -68,7 +74,8 @@ class Inventory(pychan.widgets.Container):
 				filled = 0
 			else:
 				filled = int(float(amount) / float(self._inventory.get_limit(resid)) * 100.0)
-			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, filled=filled)
+			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, \
+			                                            filled=filled, uncached=self.uncached)
 			current_hbox.addChild(button)
 
 			# old code to do this, which was bad but kept for reference

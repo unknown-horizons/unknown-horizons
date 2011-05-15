@@ -86,10 +86,14 @@ class TradeWidget(object):
 			inv_partner = self.widget.findChild(name='inventory_partner')
 			inv_partner.init(self.instance.session.db, self.partner.inventory)
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
+				#button.uncached = True
+				#button.filled = button.filled
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner, self.instance))
 			inv = self.widget.findChild(name='inventory_ship')
 			inv.init(self.instance.session.db, self.instance.inventory)
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
+				#button.uncached = True
+				#button.filled = button.filled
 				button.button.capture(Callback(self.transfer, button.res_id, self.instance, self.partner))
 			self.widget.adaptLayout()
 		else:
