@@ -139,6 +139,8 @@ def start(command_line_arguments):
 		startup_worked = _start_map(command_line_arguments.start_map)
 	elif command_line_arguments.start_scenario is not None:
 		startup_worked = _start_map(command_line_arguments.start_scenario, True)
+	elif command_line_arguments.start_campaign is not None:
+		startup_worked = _start_campaign(command_line_arguments.start_campaign)
 	elif command_line_arguments.load_map is not None:
 		startup_worked = _load_map(command_line_arguments.load_map)
 	elif command_line_arguments.load_quicksave is not None:
@@ -166,7 +168,7 @@ def quit():
 	ExtScheduler.destroy_instance()
 	fife.quit()
 
-def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False):
+def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False, campaign={}):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
 	"""
@@ -192,7 +194,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	_modules.session = SPSession(_modules.gui, db)
 	players = [ { 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True } ]
 	try:
-		_modules.session.load(map_file, players, is_scenario=is_scenario)
+		_modules.session.load(map_file, players, is_scenario=is_scenario, campaign = campaign)
 	except:
 		import traceback
 		print "Failed to load", map_file
@@ -237,7 +239,7 @@ def prepare_multiplayer(game):
 def start_multiplayer(game):
 	_modules.session.start()
 
-def load_game(savegame = None, is_scenario = False):
+def load_game(savegame = None, is_scenario = False, campaign = {}):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
@@ -245,7 +247,7 @@ def load_game(savegame = None, is_scenario = False):
 			return # user aborted dialog
 	_modules.gui.show_loading_screen()
 #TODO
-	start_singleplayer(savegame, is_scenario = is_scenario)
+	start_singleplayer(savegame, is_scenario = is_scenario, campaign = campaign)
 
 
 def _init_gettext(fife):
@@ -263,10 +265,10 @@ def _start_dev_map():
 	load_game(first_map)
 	return True
 
-def _start_map(map_name, is_scenario = False):
+def _start_map(map_name, is_scenario = False, campaign = {}):
 	"""Start a map specified by user
 	@return: bool, whether loading succeded"""
-	maps = SavegameManager.get_scenarios() if is_scenario else SavegameManager.get_maps()
+	maps = SavegameManager.get_available_scenarios() if is_scenario else SavegameManager.get_maps()
 	map_file = None
 	for i in xrange(0, len(maps[1])):
 		# exact match
@@ -288,13 +290,22 @@ def _start_map(map_name, is_scenario = False):
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
-	load_game(map_file, is_scenario)
+	load_game(map_file, is_scenario, campaign = campaign)
 	return True
 
 def _start_random_map(seed = None):
 	from horizons.util import random_map
 	start_singleplayer( random_map.generate_map(seed) )
 	return True
+
+def _start_campaign(campaign_name):
+	"""Finds the first scenario in this campaign and
+	loads it.
+	@return: bool, whether loading succeded"""
+	scenarios = SavegameManager.get_campaigns_scenarios(campaign_name)
+	if not scenarios:
+		return False
+	return _start_map(scenarios[0], is_scenario = True, campaign = {'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]})
 
 def _load_map(savegamename):
 	"""Load a map specified by user

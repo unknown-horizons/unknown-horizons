@@ -1,0 +1,19 @@
+author: The UH team
+description: "Campaign 1 :\nBe a player ...\n"
+difficulty: !!python/unicode 'Didacticiel'
+events:
+- actions:
+  - arguments: ["First scneario of the campagin."]
+    type: message
+  conditions:
+  - arguments: [1]
+    type: time_passed
+- actions:
+  - {type: win}
+  - arguments: [!!python/unicode 'Congratulations!']
+    type: message
+  conditions:
+  - arguments: [3]
+    type: time_passed
+mapfile: development.sqlite
+
