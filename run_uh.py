@@ -96,6 +96,8 @@ def get_option_parser():
 							 type="int", metavar="<seed>", help=_("Starts a random map with seed <seed>."))
 	start_uh_group.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>", \
 														help=_("Starts <scenario>. <scenario> is the scenarioname."))
+	start_uh_group.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>", \
+														help=_("Starts <campaign>. <campaign> is the campaign name."))
 	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
 			default=False, help=_("Starts the development map without displaying the main menu."))
 	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \

@@ -1,0 +1,26 @@
+scenarios:
+- # Level 1
+  level: sc1
+  conditions: 
+
+- # Level 2
+  level: sc2
+  goals:
+   - goal[1]
+     set_var [xy], [1]
+   - goal[2]
+     set_var [za], [5]
+     do_something_other ["for further ideas..."]
+  conditions: 
+   - goal_reached [1] [0]
+
+- # Level 3
+  level: sc3
+  conditions: 
+   - goal_reached [1] [1]
+   - goal_reached [2] [1]
+
+difficulty: easy
+author: court-jus
+description: |
+ The test campaign.

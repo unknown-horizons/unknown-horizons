@@ -1,0 +1,19 @@
+author: The UH team
+description: "Campaign 3 :\nBe a king !\n"
+difficulty: !!python/unicode 'Didacticiel'
+events:
+- actions:
+  - arguments: ["Third scneario of the campagin."]
+    type: message
+  conditions:
+  - arguments: [1]
+    type: time_passed
+- actions:
+  - {type: win}
+  - arguments: [!!python/unicode 'Congratulations! Campaign finished !']
+    type: message
+  conditions:
+  - arguments: [3]
+    type: time_passed
+mapfile: development.sqlite
+

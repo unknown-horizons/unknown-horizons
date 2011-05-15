@@ -63,7 +63,7 @@ class SingleplayerMenu(object):
 			else: # scenario
 				del eventMap['showScenario']
 				self.current.findChild(name="showScenario").marked = True
-				self.current.files, maps_display = SavegameManager.get_scenarios()
+				self.current.files, maps_display = SavegameManager.get_available_scenarios()
 
 			# get the map files and their display names
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
