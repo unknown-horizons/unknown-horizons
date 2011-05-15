@@ -30,10 +30,11 @@ class RouteConfig(object):
 	"""
 	Widget that allows configurating a ship's trading route 
 	"""
-	
 	dummy_icon_path = "content/gui/icons/buildmenu/outdated/dummy_btn.png"
 	buy_button_path = "content/gui/images/tabwidget/buysell_buy.png"
 	sell_button_path = "content/gui/images/tabwidget/buysell_sell.png"
+	MAX_ENTRIES = 6
+	MIN_ENTRIES = 2
 	def __init__(self, instance):
 		self.instance = instance
 
@@ -51,6 +52,8 @@ class RouteConfig(object):
 		self._gui.hide()
 
 	def start_route(self):
+		if len(self.widgets) < self.MIN_ENTRIES:
+			return
 		self.instance.route.enable()
 		self._gui.findChild(name='start_route').set_inactive()
 
@@ -75,7 +78,7 @@ class RouteConfig(object):
 
 	def remove_entry(self, entry):
 		if self.resource_menu_shown:
-			return
+			self.hide_resource_menu()
 		enabled = self.instance.route.enabled
 		self.instance.route.disable()
 		vbox = self._gui.findChild(name="left_vbox")
@@ -86,47 +89,80 @@ class RouteConfig(object):
 		vbox.removeChild(entry)
 		if enabled:
 			self.instance.route.enable()
+		if len(self.widgets) < self.MIN_ENTRIES:
+			self.stop_route()
 		self.hide()
 		self.show()
 
-	def toggle_load_unload(self, slot):
+	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
-		if slot.action is "buy":
-			button.up_image = self.sell_button_path
-			button.hover_image = self.sell_button_path
-			slot.action = "sell"
+		button.up_image = self.buy_button_path
+		button.hover_image = self.buy_button_path
+		slot.action = "load"
+
+	def show_unload_icon(self, slot):
+		button = slot.findChild(name="buysell")
+		button.up_image = self.sell_button_path
+		button.hover_image = self.sell_button_path
+		slot.action = "unload"
+
+	def toggle_load_unload(self, slot, position):
+		#same hack to get the resource
+		button = slot.findChild(name="buysell")
+		res_button = slot.findChild(name="button")
+		for res in self.instance.route.waypoints[position]['resource_list']:
+			if horizons.main.db.get_res_icon(res)[0] == res_button.up_image.source:
+				self.instance.route.waypoints[position]['resource_list'][res] *= -1
+
+		if slot.action is "unload":
+			self.show_load_icon(slot)
 		else:
-			button.up_image = self.buy_button_path
-			button.hover_image = self.buy_button_path
-			slot.action = "buy"
-	
-	def slider_adjust(self, slot):
+			self.show_unload_icon(slot)
+
+	def slider_adjust(self, slot, res_id, position):
 		slider = slot.findChild(name="slider")
 		amount = slot.findChild(name="amount")
-		amount.text = unicode(int(slider.getValue())) + "t"
+		value = int(slider.getValue())
+		amount.text = unicode(value) + "t"
+		if slot.action is "unload":
+			value = -value
+		self.instance.route.add_to_resource_list(position, res_id, value)
 		slot.adaptLayout()
 
-	def add_resource(self, slot, res_id, icon, value=0):
+	def add_resource(self, slot, res_id, icon, position, value=0):
 		button = slot.findChild(name="button")
+
+		#remove old resource from waypoints
+		#hack to see if the old image is one of the resources in the list
+		for res in self.instance.route.waypoints[position]['resource_list']:
+			if horizons.main.db.get_res_icon(res)[0] == button.up_image.source:
+				self.instance.route.remove_from_resource_list(position, res)
+				break
+
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
 
 		#hide the resource menu
-		self.resource_menu_shown = False
-		self._gui.findChild(name="resources").removeAllChildren()
-		self._gui.findChild(name="select_res_label").text = unicode("")
+		self.hide_resource_menu()
 		
 		slider = slot.findChild(name="slider")
 		if value < 0:
-			value = -value
-			self.toggle_load_unload(slot)
+			self.show_unload_icon(slot)
+			slider.setValue(float(-value))
+			amount = -value
+		else:
+			self.show_load_icon(slot)
+			slider.setValue(float(value))
+			amount = value
 
-		slider.setValue(float(value))
 		if res_id != 0:
-			slot.findChild(name="amount").text = unicode(value) + "t"
+			slot.findChild(name="amount").text = unicode(amount) + "t"
 			slot.adaptLayout()
-			slider.capture(Callback(self.slider_adjust, slot))
-		
-	def show_resource_menu(self, slot):
+			self.instance.route.add_to_resource_list(position, res_id, value)
+			slider.capture(Callback(self.slider_adjust, slot, res_id, position))
+		else:
+			slot.findChild(name="amount").text = unicode("")
+
+	def show_resource_menu(self, slot, position):
 		if self.resource_menu_shown:
 			return
 		self.resource_menu_shown = True
@@ -142,9 +178,11 @@ class RouteConfig(object):
 		index = 1
 
 		for (res_id, icon) in [(0, self.dummy_icon_path)] + list(resources):
+			if res_id in self.instance.route.waypoints[position]['resource_list']:
+				continue
 			button = TooltipButton(size=(50,50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
-			button.capture(Callback(self.add_resource, slot, res_id, icon))
+			button.capture(Callback(self.add_resource, slot, res_id, icon, position))
 			if res_id != 0:
 				button.tooltip = horizons.main.db.get_res_name(res_id)
 			current_hbox.addChild(button)
@@ -158,6 +196,11 @@ class RouteConfig(object):
 		self.hide()
 		self.show()
 
+	def hide_resource_menu(self):
+		self.resource_menu_shown = False
+		self._gui.findChild(name="resources").removeAllChildren()
+		self._gui.findChild(name="select_res_label").text = unicode("")
+
 	def add_trade_slots(self, entry, num):
 		x_position = 90
 		#initialize slots with empty dict
@@ -166,16 +209,18 @@ class RouteConfig(object):
 			slot = load_xml_translated('trade_single_slot.xml')
 			slot.position = x_position, 0
 
-			slot.action = "buy"
+			slot.action = "load"
 
 			slider = slot.findChild(name="slider")
 			slider.setScaleStart(0.0)
 			slider.setScaleEnd(float(self.instance.inventory.limit))
 
-			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot))
+			position = self.widgets.index(entry)
+
+			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, position))
 
 			button = slot.findChild(name="button")
-			button.capture(Callback(self.show_resource_menu, slot))
+			button.capture(Callback(self.show_resource_menu, slot, position))
 			button.up_image = self.dummy_icon_path
 			button.down_image = self.dummy_icon_path
 			button.hover_image = self.dummy_icon_path
@@ -184,19 +229,20 @@ class RouteConfig(object):
 			fillbar = slot.findChild(name="fillbar")
 			fillbar.position = (icon.width - fillbar.width -1, icon.height)
 			x_position += 60
-		
+
 			entry.addChild(slot)
 			self.slots[entry][num] = slot
 
 	def add_gui_entry(self, branch_office, resource_list = {}):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_xml_translated("route_entry.xml")
+		self.widgets.append(entry)
 
 		label = entry.findChild(name="bo_name")
 		label.text = unicode(branch_office.settlement.name)
-		
+
 		self.add_trade_slots(entry, self.slots_per_entry)
-		
+
 		index = 1
 		for res_id in resource_list:
 			if index > self.slots_per_entry:
@@ -204,6 +250,7 @@ class RouteConfig(object):
 			icon = horizons.main.db.get_res_icon(res_id)[0]
 			self.add_resource(self.slots[entry][index - 1],\
 			                  res_id, icon, \
+			                  self.widgets.index(entry), \
 			                  resource_list[res_id])
 			index += 1
 
@@ -211,10 +258,9 @@ class RouteConfig(object):
 		  'delete_bo/mouseClicked' : Callback(self.remove_entry, entry)
 		  })
 		vbox.addChild(entry)
-		self.widgets.append(entry)
 
 	def append_bo(self):
-		if self.resource_menu_shown:
+		if len(self.widgets) >= self.MAX_ENTRIES:
 			return
 
 		selected = self.listbox._getSelectedItem()
@@ -223,11 +269,14 @@ class RouteConfig(object):
 			return
 
 		try:
-			self.instance.route.append(self.branch_offices[selected], {4:-1})
+			#if a new branch office is added to the list hide the resource menu
+			self.instance.route.append(self.branch_offices[selected])
 			self.add_gui_entry(self.branch_offices[selected])
+			if self.resource_menu_shown:
+				self.hide_resource_menu()
 		except IndexError:
 			pass
-		
+
 		self.hide()
 		self.show()
 

@@ -51,24 +51,21 @@ class ShipRoute(object):
 		self.current_waypoint = -1
 		self.enabled = False
 
-	def append(self, branch_office, resource_list):
+	def append(self, branch_office):
 		#don't add to consecutive offices to route
 		if len(self.waypoints) > 0 and\
 		   self.waypoints[-1]['branch_office'] == branch_office:
 			raise IndexError
 		self.waypoints.append({
 		  'branch_office' : branch_office,
-		  'resource_list' : resource_list
+		  'resource_list' : {}
 		})
 
-	def modify_route(self, branch_office, resource_list):
-		# what happens if the same branch office has two different actions to
-		# perform and we want to update the second one?
-		for entry in self.waypoints:
-			if entry['branch_office'] == branch_office:
-				entry['resource_list'] = resource_list
-				return
-		self.append(branch_office, resource_list)
+	def add_to_resource_list(self, position, res_id, amount):
+		self.waypoints[position]['resource_list'][res_id] = amount
+
+	def remove_from_resource_list(self, position, res_id):
+		self.waypoints[position]['resource_list'].pop(res_id)
 
 	def on_route_bo_reached(self):
 		branch_office = self.get_location()['branch_office']
