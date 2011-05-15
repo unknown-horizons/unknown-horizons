@@ -183,8 +183,7 @@ class BuildingTool(NavigationTool):
 			      not hasattr(self._class, "default_level_on_build") else \
 			      self._class.default_level_on_build
 
-			if self._class.id in (BUILDINGS.TREE_CLASS, BUILDINGS.IRON_MINE_CLASS) \
-			   and not building.buildable:
+			if self._class.id == BUILDINGS.TREE_CLASS and not building.buildable:
 				continue # Tree/ironmine that is not buildable, don't preview
 			else:
 				self.buildings_fife_instances[building] = \
@@ -195,7 +194,7 @@ class BuildingTool(NavigationTool):
 			if self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS:
 				settlement = self.session.world.get_settlement(building.position.center())
 			else:
-				# Player shouldn't be allowed to build in this case, else it can trigger
+				# Player shouldn't be allowed to build in this case, else it can trigger 
 				# a new_settlement notificaition
 				settlement = self.session.world.get_settlement(building.position.origin)
 				if settlement is None:
