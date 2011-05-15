@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-16 01:39+0200\n"
+"PO-Revision-Date: 2011-05-16 01:47+0200\n"
 "Last-Translator: Nelson <nmarques@opensuse.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Tem a certeza que deseja sair do Unknown Horizons?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
@@ -73,11 +73,11 @@ msgstr ""
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr "Tem a certeza que quer sair da sessão em andamento?"
+msgstr "Tem a certeza que deseja abandonar a sessão actual?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
-msgstr ""
+msgstr "Sair da Sessão"
 
 #: horizons/gui/gui.py:196
 msgid "No saved games"
@@ -94,7 +94,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:136
 msgid "Save game"
-msgstr ""
+msgstr "Guardar jogo"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:251
@@ -103,19 +103,21 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Um jogo guardado com o nome \"%s\" já existe. \n"
+"Deseja gravar por cima?"
 
 #: horizons/gui/gui.py:252
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Confirme para gravar por cima"
 
 #: horizons/gui/gui.py:369
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Data de gravação desconhecida\n"
 
 #: horizons/gui/gui.py:371
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Gravado em %s\n"
 
 #: horizons/gui/gui.py:372
 msgid "%H:%M, %A, %B %d"
