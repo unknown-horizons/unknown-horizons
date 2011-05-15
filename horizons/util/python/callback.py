@@ -59,5 +59,9 @@ class Callback(object):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
+	def __hash__(self):
+		return hash((self.callback, self.args, \
+		             tuple(self.kwargs.iteritems()))) # to tuple, dict is unhashable
+
 	def __str__(self):
 		return 'Callback(%s, %s, %s)' % (self.callback, self.args, self.kwargs)

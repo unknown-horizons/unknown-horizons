@@ -23,6 +23,8 @@ from fife.extensions import pychan
 
 from horizons.gui.widgets.tooltip import TooltipButton
 
+from horizons.util import Callback
+
 class ImageFillStatusButton(pychan.widgets.Container):
 
 	def __init__(self, up_image, down_image, hover_image, text, res_id, tooltip="", filled=0, **kwargs):
@@ -71,15 +73,27 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 	filled = property(_get_filled, _set_filled)
 
+	__widget_cache = {}
 	def _draw(self):
 		"""Draws the icon + bar."""
-		self.button = TooltipButton(up_image=self.up_image,
-		                            down_image=self.down_image,
-		                            hover_image=self.hover_image,
-		                            tooltip=self.tooltip)
-		label = pychan.widgets.Label(text=self.text)
-		label.position = self.text_position
-		fill_bar = pychan.widgets.Icon("content/gui/images/tabwidget/green_line.png")
-		fill_bar.position = (self.button.width-fill_bar.width-1, \
-		                     self.button.height-int(self.button.height/100.0*self.filled))
-		self.addChildren(self.button, fill_bar, label)
+		# hash buttons by creation function call
+		# NOTE: there may be problems with multiple buttons with the same
+		# images and tooltip at the same time
+		create_btn = Callback(TooltipButton, up_image=self.up_image,
+		                      down_image=self.down_image, hover_image=self.hover_image,
+		                      tooltip=self.tooltip)
+		self.button = self.__widget_cache.get(create_btn, None)
+		if self.button is None: # create button
+			self.__widget_cache[create_btn] = self.button = create_btn()
+		else: # disconnect button from earlier layout
+			if self.button.parent:
+				self.button.parent.removeChild(self.button)
+
+		# can't cache the other instances, because we need multiple instances
+		# with the same data active at the same time
+		self.label = pychan.widgets.Label(text=self.text)
+		self.label.position = self.text_position
+		self.fill_bar = pychan.widgets.Icon("content/gui/images/tabwidget/green_line.png")
+		self.fill_bar.position = (self.button.width-self.fill_bar.width-1, \
+		                          self.button.height-int(self.button.height/100.0*self.filled))
+		self.addChildren(self.button, self.fill_bar, self.label)
