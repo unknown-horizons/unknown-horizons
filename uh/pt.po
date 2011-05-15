@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-15 23:10+0200\n"
+"PO-Revision-Date: 2011-05-16 01:39+0200\n"
 "Last-Translator: Nelson <nmarques@opensuse.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -19,9 +19,9 @@ msgstr ""
 
 #: horizons/constants.py:55
 #, python-format
-#, fuzzy, python-format
+#, python-format
 msgid "Unknown Horizons Version %s"
-msgstr "Utilização do Unknown Horizons:"
+msgstr "Unknown Horizons Versão %s"
 
 #: horizons/engine.py:54
 msgid "Restart required"
@@ -29,15 +29,15 @@ msgstr ""
 
 #: horizons/engine.py:55
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Algumas das suas alteracções requerem o reinicio do Unknown Horizons."
+msgstr "Algumas alterações requerem que o Unknown Horizons seja reiniciado."
 
 #: horizons/engine.py:108
 msgid "System default"
-msgstr ""
+msgstr "Pré-definição do sistema"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: horizons/engine.py:129
 msgid ""
@@ -45,6 +45,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"A renderização por SDL está disponível apenas como opção e pode apresentar "
+"problemas gráficos.\n"
+"\n"
+"Use por sua conta e risco!"
 
 #: horizons/engine.py:193
 #, python-format
