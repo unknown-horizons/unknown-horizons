@@ -86,6 +86,9 @@ def do_win(session):
 	else:
 		session.speed_unpause()
 
+def goal_reached(session, goal_number):
+	"""Called when player reached a goal in a scenario"""
+	SavegameManager.mark_goal_reached(session.campaign, goal_number)
 
 def do_lose(session):
 	"""Called when player lost"""

@@ -309,14 +309,16 @@ class SavegameManager(object):
 
 	@classmethod
 	def mark_scenario_as_won(cls, campaign_data):
+		# Winning a scenario is like winning the "special" goal #0
 		campaign_status = cls.get_campaign_status()
-		# TODO : we shouldn't make the NEXT scenario available but
-		#        the scenarios that depend on the current scenario
-		#        victory
-		# TODO : if the scenario is loaded outside of the campaign
-		#        should it be marked as won for every campaign that
-		#        contains it ?
-		campaign_status.setdefault(campaign_data['campaign_name'], []).append(campaign_data['scenario_index'] + 1)
+		campaign_status.setdefault(campaign_data['scenario_name'], []).append(0)
+		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
+		return campaign_status
+
+	@classmethod
+	def mark_goal_reached(cls, campaign_data, goal_number):
+		campaign_status = cls.get_campaign_status()
+		campaign_status.setdefault(campaign_data['scenario_name'], []).append(goal_number)
 		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
 		return campaign_status
 
