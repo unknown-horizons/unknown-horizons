@@ -5,15 +5,34 @@ events:
 - actions:
   - arguments: ["First scneario of the campagin."]
     type: message
+  - {type: logbook_w, arguments: ["NEW TASK: Build a main square",
+"TASK: Build a main square."]}
+  - {type: logbook, arguments: ["SECONDARY OBJECTIVES: What you should do",
+"Build a hunter's tent to hunt animals.\nBuild a lumberjack Camp to grab some wood.",2]}
   conditions:
   - arguments: [1]
     type: time_passed
 - actions:
+  - {type: goal_reached, arguments: [1]}
+  - arguments: [!!python/unicode 'Second objective reached !']
+    type: message
+  conditions:
+  - arguments: [9, 0]
+    type: building_num_of_type_greater
+- actions:
+  - {type: goal_reached, arguments: [2]}
+  - arguments: [!!python/unicode 'Second objective reached !']
+    type: message
+  conditions:
+  - arguments: [8, 0]
+    type: building_num_of_type_greater
+- actions:
   - {type: win}
+  - {type: goal_reached, arguments: [0]}
   - arguments: [!!python/unicode 'Congratulations!']
     type: message
   conditions:
-  - arguments: [3]
-    type: time_passed
+  - arguments: [4, 0]
+    type: building_num_of_type_greater
 mapfile: development.sqlite
 
