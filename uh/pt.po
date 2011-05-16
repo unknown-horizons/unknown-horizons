@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-16 01:47+0200\n"
+"PO-Revision-Date: 2011-05-16 04:49+0200\n"
 "Last-Translator: Nelson <nmarques@opensuse.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -21,7 +21,7 @@ msgstr ""
 #, python-format
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr "Unknown Horizons Versão %s"
+msgstr "Unknown Horizons - Versão %s"
 
 #: horizons/engine.py:54
 msgid "Restart required"
@@ -29,7 +29,7 @@ msgstr ""
 
 #: horizons/engine.py:55
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Algumas alterações requerem que o Unknown Horizons seja reiniciado."
+msgstr "Algumas das suas alterações requerem que reinicie Unknown Horizons."
 
 #: horizons/engine.py:108
 msgid "System default"
@@ -303,9 +303,8 @@ msgid "Inventory"
 msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:64
-#, fuzzy
 msgid "Ship inventory"
-msgstr "Inventório:"
+msgstr "Inventário do navio"
 
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:273
@@ -314,9 +313,8 @@ msgstr ""
 
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:246 horizons/i18n/guitranslations.py:289
-#, fuzzy
 msgid "Settler overview"
-msgstr "Vista Geral:"
+msgstr "Resumo do povoadorl:"
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:300
 #: horizons/i18n/guitranslations.py:285 horizons/i18n/guitranslations.py:292
@@ -329,9 +327,8 @@ msgid "Branch office overview"
 msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
-#, fuzzy
 msgid "Ship overview"
-msgstr "Vista Geral:"
+msgstr "Resumo do navio"
 
 #: horizons/gui/tabs/overviewtab.py:156
 #, fuzzy
