@@ -75,29 +75,13 @@ class Build(Command):
 			check_settlement=issuer is not None, \
 			ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
 			issuer=issuer)
-		if buildable.buildable and issuer: # TODO: duplicated code from buildingtool.py:216
-				neededResources= {}
-				# building seems to buildable, check res too now
-				for resource in buildable_class.costs:
-					neededResources[resource] = neededResources.get(resource, 0) + \
-					               buildable_class.costs[resource]
-				for resource in neededResources:
-					# check player, ship and settlement inventory
-					available_res = 0
-					# player
-					available_res += issuer.inventory[resource] if \
-					              resource == RES.GOLD_ID else 0
-					# ship or settlement
-					if self.ship is not None:
-						available_res += WorldObject.get_object_by_id(self.ship).inventory[resource]
-					elif self.settlement is not None:
-						available_res += WorldObject.get_object_by_id(self.settlement).inventory[resource]
+		if buildable.buildable and issuer:
+			# building seems to buildable, check res too now
+			res_sources = [ None if self.ship is None else WorldObject.get_object_by_id(self.ship),
+			                None if self.settlement is None else WorldObject.get_object_by_id(self.settlement) ]
 
-					if available_res < neededResources[resource]:
-						# can't build, not enough res
-						buildable.buildable = False
-						break
-
+			(buildable.buildable, missing_res) = \
+			 self.check_resources({}, buildable_class.costs, issuer, res_sources)
 		if not buildable.buildable:
 			self.log.debug("Build aborted. Seems like circumstances changed during EXECUTIONDELAY.")
 			# TODO: maybe show message to user
@@ -152,6 +136,30 @@ class Build(Command):
 		session.scenario_eventhandler.schedule_check(CONDITIONS.building_num_of_type_greater)
 
 		return building
+
+	@staticmethod
+	def check_resources(neededResources, costs, issuer, res_sources):
+		"""Check if there are enough resources available to cover the costs
+		@param neededResources: awkward dict from BuildingTool.preview_build, use {} everywhere else
+		@param costs: building costs (as in buildingclass.costs)
+		@param issuer: player that builds the building
+		@param res_sources: list of objects with inventory attribute. None values are discarded.
+		@return tuple(bool, missing_resource), True means buildable"""
+		for resource in costs:
+			neededResources[resource] = neededResources.get(resource, 0) + costs[resource]
+		for resource in neededResources:
+			# check player, ship and settlement inventory
+			available_res = 0
+			# player
+			available_res += issuer.inventory[resource] if resource == RES.GOLD_ID else 0
+			# ship or settlement
+			for res_source in res_sources:
+				if res_source is not None:
+					available_res += res_source.inventory[resource]
+
+			if available_res < neededResources[resource]:
+				return (False, resource)
+		return (True, None)
 
 class Tear(Command):
 	"""Command class that tears an object."""

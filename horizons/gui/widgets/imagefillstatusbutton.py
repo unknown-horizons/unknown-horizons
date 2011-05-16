@@ -86,12 +86,16 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		create_btn = Callback(TooltipButton, up_image=self.up_image,
 		                      down_image=self.down_image, hover_image=self.hover_image,
 		                      tooltip=self.tooltip)
-		self.button = self.__widget_cache.get(create_btn, None)
-		if self.button is None or self.uncached: # create button
-			self.__widget_cache[create_btn] = self.button = create_btn()
-		else: # disconnect button from earlier layout
-			if self.button.parent:
-				self.button.parent.removeChild(self.button)
+		self.button = None
+		if self.uncached:
+			self.button = create_btn()
+		else:
+			self.button = self.__widget_cache.get(create_btn, None)
+			if self.button is None: # create button
+				self.__widget_cache[create_btn] = self.button = create_btn()
+			else: # disconnect button from earlier layout
+				if self.button.parent:
+					self.button.parent.removeChild(self.button)
 
 		# can't cache the other instances, because we need multiple instances
 		# with the same data active at the same time

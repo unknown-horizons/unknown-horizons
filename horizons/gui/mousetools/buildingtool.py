@@ -194,7 +194,7 @@ class BuildingTool(NavigationTool):
 			if self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS:
 				settlement = self.session.world.get_settlement(building.position.center())
 			else:
-				# Player shouldn't be allowed to build in this case, else it can trigger 
+				# Player shouldn't be allowed to build in this case, else it can trigger
 				# a new_settlement notificaition
 				settlement = self.session.world.get_settlement(building.position.origin)
 				if settlement is None:
@@ -202,29 +202,16 @@ class BuildingTool(NavigationTool):
 
 			if building.buildable:
 				# building seems to buildable, check res too now
-				for resource in self._class.costs:
-					neededResources[resource] = neededResources.get(resource, 0) + \
-					               self._class.costs[resource]
-				for resource in neededResources:
-					# check player, ship and settlement inventory
-					available_res = 0
-					# player
-					available_res += self.session.world.player.inventory[resource] if \
-					              resource == RES.GOLD_ID else 0
-					# ship or settlement
-					if self.ship is not None:
-						available_res += self.ship.inventory[resource]
-					elif settlement is not None:
-						available_res += settlement.inventory[resource]
-
-					if available_res < neededResources[resource]:
-						# can't build, not enough res
-						self.renderer.addColored(self.buildings_fife_instances[building], \
-						                         *self.not_buildable_color)
-						building.buildable = False
-						self.buildings_missing_resources[building] = resource
-						break
-				else:
+				(enough_res, missing_res) = Build.check_resources(neededResources, self._class.costs,
+				                                                  self.session.world.player, [settlement, self.ship])
+				if not enough_res:
+					# make building red
+					self.renderer.addColored(self.buildings_fife_instances[building],
+					                         *self.not_buildable_color)
+					building.buildable = False
+					# set missing info for gui
+					self.buildings_missing_resources[building] = missing_res
+					# building isn't buildable after all, assemble strange dict values for gui
 					for resource in self._class.costs:
 						usableResources[resource] = usableResources.get(resource, 0) + \
 						               self._class.costs[resource]
