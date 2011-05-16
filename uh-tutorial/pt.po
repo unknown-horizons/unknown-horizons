@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-16 05:04+0200\n"
+"PO-Revision-Date: 2011-05-16 05:46+0200\n"
 "Last-Translator: Nelson <nmarques@opensuse.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr ""
+msgstr "NOVA TAREFA: DESEMBARQUE AS MERCADORIAS"
 
 #: po/tutorial.py:10
 msgid ""
@@ -134,7 +134,7 @@ msgstr ""
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr ""
+msgstr "NOVA TAREFA: CRIE UM LENHADOR"
 
 #: po/tutorial.py:14
 msgid ""
