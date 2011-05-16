@@ -282,7 +282,7 @@ class SavegameManager(object):
 		return {}
 
 	@classmethod
-	def get_campaigns(cls, include_displaynames = True, include_scenario_list = False):
+	def get_campaigns(cls, include_displaynames = True, include_scenario_list = False, campaign_data = False):
 		"""Returns all campaigns"""
 		cls.log.debug("Savegamemanager: campaigns from: %s", cls.campaigns_dir)
 		files, names = cls.__get_saves_from_dirs([cls.campaigns_dir], \
@@ -293,10 +293,14 @@ class SavegameManager(object):
 		if not include_scenario_list:
 			return (files, names)
 		scenarios_lists = []
+		campaign_datas = []
 		for i, f in enumerate(files):
 			campaign = yaml.load(open(f,'r'))
+			campaign_datas.append(campaign)
 			scenarios_lists.append([sc.get('level') for sc in campaign.get('scenarios',[])])
-		return (files, names, scenarios_lists)
+		if not campaign_data:
+			return (files, names, scenarios_lists)
+		return (files, names, scenarios_lists, campaign_datas)
 
 	@classmethod
 	def get_campaigns_scenarios(cls, campaign_name):
