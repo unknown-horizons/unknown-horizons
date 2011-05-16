@@ -82,8 +82,6 @@ class SavegameManager(object):
 			os.makedirs(cls.autosave_dir)
 		if not os.path.isdir(cls.quicksave_dir):
 			os.makedirs(cls.quicksave_dir)
-		if not os.path.exists(cls.campaign_status_file):
-			yaml.dump(cls.generate_campaign_status(), open(cls.campaign_status_file, "w"))
 
 	@classmethod
 	def __get_displaynames(cls, files):
@@ -279,7 +277,9 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_campaign_status(cls):
-		return yaml.load(open(cls.campaign_status_file, 'r'))
+		if os.path.exists(cls.campaign_status_file):
+			return yaml.load(open(cls.campaign_status_file, 'r'))
+		return {}
 
 	@classmethod
 	def get_campaigns(cls, include_displaynames = True, include_scenario_list = False):
