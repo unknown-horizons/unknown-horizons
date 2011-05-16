@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-16 05:46+0200\n"
+"PO-Revision-Date: 2011-05-16 06:00+0200\n"
 "Last-Translator: Nelson <nmarques@opensuse.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -175,7 +175,7 @@ msgstr ""
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "NOVA TAREFA: FORNECIMENTO DE COMIDA"
 
 #: po/tutorial.py:18
 msgid ""
@@ -213,7 +213,7 @@ msgstr ""
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "NOVA TAREFA: PRAÇA PRINCIPAL"
 
 #: po/tutorial.py:22
 msgid ""
@@ -251,7 +251,7 @@ msgstr ""
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NOVA TAREFA: EDIFÍCIOS RESIDENCIAIS"
 
 #: po/tutorial.py:26
 msgid ""
@@ -293,7 +293,7 @@ msgstr ""
 
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "NOVA TAREFA: CONSTUIR O SINAL DE FOGO"
 
 #: po/tutorial.py:31
 msgid ""
@@ -331,7 +331,7 @@ msgstr ""
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "NOVA TAREFA: APRENDA A TROCAR"
 
 #: po/tutorial.py:35
 msgid ""
@@ -369,7 +369,7 @@ msgstr ""
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "NOVA TAREFA: CONSTRUA UM PAVILHÃO"
 
 #: po/tutorial.py:39
 msgid ""
@@ -406,7 +406,7 @@ msgstr ""
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr ""
+msgstr "NOVA TAREFA: O PRÓXIMO INCREMENTO"
 
 #: po/tutorial.py:43
 msgid ""
@@ -440,7 +440,7 @@ msgstr ""
 
 #: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "NOVA TAREFA: CONSTRUA UMA QUINTA"
 
 #: po/tutorial.py:47
 msgid ""
@@ -474,11 +474,11 @@ msgstr ""
 
 #: po/tutorial.py:49
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "Crie uma quinta e deixe algum espaço livre em volta da mesma."
 
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "NOVA TAREFA: CONSTRUA CAMPOS"
 
 #: po/tutorial.py:51
 msgid ""
@@ -511,11 +511,11 @@ msgstr ""
 
 #: po/tutorial.py:53
 msgid "Build at least one pasture and add potato fields if you like."
-msgstr ""
+msgstr "Crie no mínimo um campo e adicione-lhe batatas se preferir."
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "NOVA TAREFA: CONSTRUA UM ARMAZÉM"
 
 #: po/tutorial.py:55
 msgid ""
@@ -552,7 +552,7 @@ msgstr ""
 
 #: po/tutorial.py:58
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "NOVA TAREFA: CRIE UM TECELÃO"
 
 #: po/tutorial.py:59
 msgid ""
@@ -577,7 +577,7 @@ msgstr ""
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "NOVA TAREFA: TERMINE O TUTORIAL"
 
 #: po/tutorial.py:63
 msgid ""
@@ -626,7 +626,19 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Obrigado por ter jogado o tutorial!\n"
+"\n"
+"A Equipa do UH"
 
 #: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
+"Parabéns! Chegou ao final deste tutorial e está preparado para novos "
+"desafios!"
