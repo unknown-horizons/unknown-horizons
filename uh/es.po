@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-15 18:53+0200\n"
+"PO-Revision-Date: 2011-05-15 18:55+0200\n"
 "Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -364,7 +364,6 @@ msgid "Companies"
 msgstr "Empresas"
 
 #: horizons/i18n/guitranslations.py:43
-#, fuzzy
 msgid "Sailor buildings"
 msgstr "Edificios de los marineros"
 
@@ -432,14 +431,12 @@ msgid "Military"
 msgstr "Militar"
 
 #: horizons/i18n/guitranslations.py:62
-#, fuzzy
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
 "Constructor de barcos: Construye barcos y buques pequeños. Construido en la "
 "costa."
 
 #: horizons/i18n/guitranslations.py:63
-#, fuzzy
 msgid "Brickyard: Turns clay into bricks."
 msgstr "Fábrica de ladrillos: Activa la arcilla en los ladrillos."
 
