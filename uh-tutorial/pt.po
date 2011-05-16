@@ -8,36 +8,39 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-16 05:04+0200\n"
+"Last-Translator: Nelson <nmarques@opensuse.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: po/tutorial.py:1
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutorial"
 
 #: po/tutorial.py:2
 msgid "The UH team"
-msgstr ""
+msgstr "A equipa do UH"
 
 #: po/tutorial.py:3
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
+"O tutorial.\n"
+"Constrói a tua primeira povoação e aprende a jogar!\n"
 
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
-msgstr ""
+msgstr "Edifica uma filial na costa."
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Bemvindo a Unknown Horizons!"
 
 #: po/tutorial.py:6
 msgid ""
@@ -53,10 +56,26 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
+"Aqui é o Diário de Bordo on toda a informação importante é guardada. Uma "
+"pequena descrição de qualquer tarefa será apresentada no ecrã à esquerda.\n"
+"\n"
+"Se estiver interessado em descrições mais completas, o diário irá oferecer "
+"toda a ajuda que necessita.\n"
+"\n"
+"Após fechar este diário, poderá aceder ao mesmo através do icon 'Diário do "
+"Capitão' no canto superior direito (por baixo da miniatura do mapa, exibindo "
+"um documento e uma pena).\n"
+"\n"
+"Sugestões sobre vocabulário, tópicos ou mesmo falhas que gostaria de ver "
+"explicados: diga-nos e tentaremos melhorar o tutorial!\n"
+"\n"
+"Para ajuda sobre contactar a equipa, visite,  www.unknown-origins.org!\n"
+"\n"
+"E agora, vamos iniciar o jgoo."
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr ""
+msgstr "NOVA TAREFA: ESTABELEÇA A SUA POVOAÇÂO NA ILHA"
 
 #: po/tutorial.py:8
 msgid ""

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-16 04:49+0200\n"
+"PO-Revision-Date: 2011-05-16 05:00+0200\n"
 "Last-Translator: Nelson <nmarques@opensuse.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -33,7 +33,7 @@ msgstr "Algumas das suas alterações requerem que reinicie Unknown Horizons."
 
 #: horizons/engine.py:108
 msgid "System default"
-msgstr "Pré-definição do sistema"
+msgstr "Pré-definição de sistema"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
@@ -45,15 +45,15 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"A renderização por SDL está disponível apenas como opção e pode apresentar "
-"problemas gráficos.\n"
+"A renderização por SDL está disponível como alternativa e pode apresentar "
+"alguns problemas.\n"
 "\n"
 "Use por sua conta e risco!"
 
 #: horizons/engine.py:193
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "A línguagem configurada %(lang)s em %(places)s não pode ser carregada"
 
 #: horizons/gui/gui.py:121 horizons/spsession.py:97
 msgid "Error"
@@ -61,11 +61,11 @@ msgstr ""
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr ""
+msgstr "Falha na gravação."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Tem a certeza que deseja sair do Unknown Horizons?"
+msgstr "Tem a certeza que deseja sair de Unknown Horizons?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
@@ -103,12 +103,12 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
-"Um jogo guardado com o nome \"%s\" já existe. \n"
-"Deseja gravar por cima?"
+"Já existe um jogo salvado com o nome \"%s\". \n"
+"Deseja substituí-lo?"
 
 #: horizons/gui/gui.py:252
 msgid "Confirmation for overwriting"
-msgstr "Confirme para gravar por cima"
+msgstr "Confirmação para substituir"
 
 #: horizons/gui/gui.py:369
 msgid "Unknown savedate\n"
@@ -147,16 +147,16 @@ msgstr ""
 
 #: horizons/gui/gui.py:411
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Tem que selecionar uma gravação de jogo para apagar"
 
 #: horizons/gui/gui.py:414
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Tem a certeza que deseja apagar o gravação \"%s\"?"
 
 #: horizons/gui/gui.py:416
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Confirme para apagar"
 
 #: horizons/gui/gui.py:421 horizons/main.py:198
 msgid "Error!"
@@ -168,7 +168,7 @@ msgstr ""
 
 #: horizons/gui/ingamegui.py:441
 msgid "Hit P to continue the game or click below!"
-msgstr ""
+msgstr "Pressione P para continuar o jogo ou clique em baixo!"
 
 #: horizons/gui/ingamegui.py:442
 msgid "Game paused"
@@ -188,7 +188,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Something went wrong with the network: "
-msgstr ""
+msgstr "Ocorreu uma falha na rede:"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
@@ -333,12 +333,11 @@ msgstr "Resumo do navio"
 #: horizons/gui/tabs/overviewtab.py:156
 #, fuzzy
 msgid "Production overview"
-msgstr "produção"
+msgstr "Resumo da produção"
 
 #: horizons/gui/tabs/overviewtab.py:159
-#, fuzzy
 msgid "Destroy building"
-msgstr " Configuração"
+msgstr "Destruir edificio"
 
 #: horizons/gui/tabs/overviewtab.py:284
 msgid "Market place overview"
@@ -356,14 +355,12 @@ msgstr "Companhias"
 
 # 76%
 #: horizons/i18n/guitranslations.py:43
-#, fuzzy
 msgid "Sailor buildings"
-msgstr " Configuração"
+msgstr "Edificios de marinheiros"
 
 #: horizons/i18n/guitranslations.py:44
-#, fuzzy
 msgid "Residents and infrastructure"
-msgstr "Infra-estrutura"
+msgstr "Residentes e infra-estruturas"
 
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:61
 #: horizons/i18n/guitranslations.py:75
@@ -463,9 +460,8 @@ msgid "Weaver: Turns lamb wool into cloth."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:74
-#, fuzzy
 msgid "Settler buildings"
-msgstr " Configuração"
+msgstr "Edífcios do colonizador"
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Charcoal burning: Burns a lot of boards."
@@ -488,9 +484,8 @@ msgid "Toolmaker: Produces tools out of iron."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:283
-#, fuzzy
 msgid "Running costs:"
-msgstr "Custos de Manutenção:"
+msgstr "Custos de manutenção:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Inhabitants"
@@ -638,20 +633,19 @@ msgid "Attention please!"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
-#, fuzzy
 msgid "Credits"
-msgstr " Créditos"
+msgstr "Créditos"
 
 #: horizons/i18n/guitranslations.py:135
 #, fuzzy
 msgid "Cancel game"
-msgstr " Cancelar Jogo"
+msgstr "Cancelar o jogo"
 
 #: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:176
 #: horizons/i18n/guitranslations.py:214
 #, fuzzy
 msgid "Settings"
-msgstr " Configuração"
+msgstr "Definições"
 
 #: horizons/i18n/guitranslations.py:138
 #, fuzzy
@@ -987,9 +981,8 @@ msgstr ""
 # 90%
 # 100%
 #: horizons/i18n/guitranslations.py:241
-#, fuzzy
 msgid "Start game"
-msgstr "Começar o jogo:"
+msgstr "Começar o jogo"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Color:"
@@ -1023,7 +1016,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:296
 #, fuzzy
 msgid "Building overview"
-msgstr "Vista Geral:"
+msgstr "Relatório da construção"
 
 #: horizons/i18n/guitranslations.py:253
 msgid "Cancel all building progress"
@@ -1039,9 +1032,8 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:275
 #: horizons/i18n/guitranslations.py:297 horizons/i18n/guitranslations.py:299
-#, fuzzy
 msgid "Running costs"
-msgstr "Custos de Manutenção:"
+msgstr "Custos de manutenção:"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Fishing boat"
@@ -1134,9 +1126,8 @@ msgid "It contains these resources:"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:306
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Comprar/Vender Recursos:"
+msgstr "Recursos necessários:"
 
 #: horizons/i18n/guitranslations.py:308 horizons/i18n/guitranslations.py:311
 msgid "Happiness"
@@ -1152,18 +1143,16 @@ msgstr "Residentes"
 
 # 94%
 #: horizons/i18n/guitranslations.py:313
-#, fuzzy
 msgid "Build settlement:"
-msgstr "Menu principal:"
+msgstr "Construir povoação:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:315
-#, fuzzy
 msgid "Build settlement"
-msgstr "Menu principal:"
+msgstr "Construir povoação"
 
 #: horizons/i18n/guitranslations.py:317
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
@@ -1337,7 +1326,7 @@ msgstr ""
 
 #: run_uh.py:112
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr ""
+msgstr "Escreve o log para <ficheiro> em vez de escrever para a uh-userdir"
 
 #: run_uh.py:114
 msgid "For internal use only."
@@ -1485,7 +1474,7 @@ msgstr "Tenda"
 
 #: sqlite/Building
 msgid "Tent_ruin"
-msgstr ""
+msgstr "Ruínas"
 
 #: sqlite/Building
 msgid "Toolmaker"
