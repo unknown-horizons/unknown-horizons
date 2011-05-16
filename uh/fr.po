@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-14 21:12+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-05-16 11:45+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -531,7 +531,7 @@ msgstr "Menu construction"
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Game menu"
-msgstr "Menu de la partie"
+msgstr "Menu du jeu"
 
 #: horizons/i18n/guitranslations.py:91 horizons/i18n/guitranslations.py:133
 #: horizons/i18n/guitranslations.py:173
@@ -544,19 +544,19 @@ msgstr "Journal de bord"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Rotate map counterclockwise"
-msgstr "Tourner la carte contre le sense aiguilles d'une montre"
+msgstr "Tourner la carte dans le sens anti-horaire."
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Rotate map clockwise"
-msgstr "Tourner la carte dans le sense aiguilles d'une montre"
+msgstr "Tourner la carte dans le sens horaire"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Decrease game speed"
-msgstr "Baisser la vitesse du jeux"
+msgstr "Baisser la vitesse du jeu"
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Increase game speed"
-msgstr "Augmenter la vitesse du jeux"
+msgstr "Augmenter la vitesse du jeu"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Zoom in"
@@ -636,11 +636,11 @@ msgstr "Quitter le journal de bord"
 
 #: horizons/i18n/guitranslations.py:124
 msgid "Read prev. entries"
-msgstr "Lire les entrées préc."
+msgstr "Lire les pages préc."
 
 #: horizons/i18n/guitranslations.py:125
 msgid "Read next entries"
-msgstr "Lire les entrées suiv."
+msgstr "Lire les pages suiv."
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Exit"
