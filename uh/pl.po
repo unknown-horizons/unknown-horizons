@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-15 12:33+0200\n"
+"PO-Revision-Date: 2011-05-15 12:34+0200\n"
 "Last-Translator: Natrius <sebastian171191@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -41,11 +41,16 @@ msgid "Warning"
 msgstr "Uwaga"
 
 #: horizons/engine.py:129
+#, fuzzy
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
+"Renderowanie SDL jest przewidziane wyłącznie jako awaryjne i powoduje spore "
+"problemy z wyświetlaniem grafiki.\n"
+"\n"
+" Używasz na własne ryzyko!"
 
 #: horizons/engine.py:193
 #, python-format
