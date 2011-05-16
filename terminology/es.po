@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-15 18:56+0200\n"
+"PO-Revision-Date: 2011-05-15 18:57+0200\n"
 "Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.8.1\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -156,6 +156,7 @@ msgid "inhabitants"
 msgstr "habitantes"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (10)
@@ -466,7 +467,6 @@ msgstr "bitácora"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "reach"
 msgstr "llegar"
 
@@ -577,7 +577,6 @@ msgstr "señal de fuego"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "slider"
 msgstr "deslizador"
 
@@ -688,7 +687,6 @@ msgstr "alcance"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
-#, fuzzy
 msgid "running"
 msgstr "correr"
 
@@ -757,6 +755,7 @@ msgid "build menu"
 msgstr "menú de construcción"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (3)
@@ -833,6 +832,7 @@ msgid "lamb"
 msgstr "cordero"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (3)
@@ -844,6 +844,7 @@ msgid "liquor"
 msgstr "licor"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (3)
@@ -917,6 +918,7 @@ msgid "back"
 msgstr "vuelta"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -964,6 +966,7 @@ msgid "fish"
 msgstr "peces"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -987,6 +990,7 @@ msgid "leave"
 msgstr "dejar"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -998,6 +1002,7 @@ msgid "market"
 msgstr "mercado"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1018,6 +1023,7 @@ msgid "mode"
 msgstr "modo"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1029,6 +1035,7 @@ msgid "multiple"
 msgstr "múltiples"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1044,6 +1051,7 @@ msgid "partner"
 msgstr "compañero / socio"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1054,6 +1062,7 @@ msgid "play"
 msgstr "jugar"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1065,6 +1074,7 @@ msgid "potato field"
 msgstr "campo de papas"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1084,6 +1094,7 @@ msgid "sale"
 msgstr "venta"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1095,6 +1106,7 @@ msgid "save"
 msgstr "guardar"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1106,6 +1118,7 @@ msgid "school"
 msgstr "escuela"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1125,6 +1138,7 @@ msgid "solution"
 msgstr "solución"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1180,6 +1194,7 @@ msgid "weaver"
 msgstr "tejedor"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1190,6 +1205,7 @@ msgid "continue"
 msgstr "continuar"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1209,6 +1225,7 @@ msgid "faith"
 msgstr "creencia"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1228,6 +1245,7 @@ msgid "forest"
 msgstr "bosque"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1238,6 +1256,7 @@ msgid "forum"
 msgstr "foro"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1248,6 +1267,7 @@ msgid "fulfill"
 msgstr "cumpler / realizar"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1258,6 +1278,7 @@ msgid "graphics"
 msgstr "gráficos"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1282,6 +1303,7 @@ msgid "hold"
 msgstr "interrumpir"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1301,6 +1323,7 @@ msgid "income"
 msgstr "ingresos"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1312,6 +1335,7 @@ msgstr "información"
 
 # (keyboard)
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1322,6 +1346,7 @@ msgid "key"
 msgstr "tecla"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1331,8 +1356,9 @@ msgstr "tecla"
 msgid "load/unload"
 msgstr "cargar/descargar"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
 # 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
 # (poterminology) uh/unknownhorizons.pot (1)
 # 75%
 #: po/tutorial.py
@@ -1349,7 +1375,6 @@ msgstr "rojo"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "return"
 msgstr "regreso"
 
@@ -1390,6 +1415,7 @@ msgid "starting"
 msgstr "iniciando"
 
 # 
+# a bit long, this one.
 #: po/tutorial.py
 #: sqlite/Building
 msgid "sugar field"
