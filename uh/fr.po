@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-16 11:45+0200\n"
+"PO-Revision-Date: 2011-05-14 21:14+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -830,7 +830,7 @@ msgstr "Quitter:"
 
 #: horizons/i18n/guitranslations.py:190
 msgid "The game will start as soon as enough players have joined."
-msgstr "La partie démarrera dès que suffisament de joueurs se seront joint."
+msgstr "La partie démarrera dès que suffisamment de joueurs se seront rejoint."
 
 #: horizons/i18n/guitranslations.py:191
 msgid "Chat:"
