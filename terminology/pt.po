@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-16 06:21+0200\n"
+"PO-Revision-Date: 2011-05-16 06:23+0200\n"
 "Last-Translator: Nelson <nmarques@opensuse.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -14,9 +14,7 @@ msgstr ""
 "X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
-#
 # (poterminology) uh/unknownhorizons.pot (10)
-#
 #. set translated building name in gui
 #: po/tutorial.py
 #: horizons/gui/mousetools/buildingtool.py
@@ -26,9 +24,7 @@ msgid "build"
 msgstr "construir"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (37)
-#
 #: horizons/gui/ingamegui.py
 #: horizons/gui/modules/multiplayermenu.py
 #: sqlite/Messages
@@ -83,7 +79,6 @@ msgstr "filial"
 #: horizons/gui/tabs/overviewtab.py
 #: horizons/i18n/guitranslations.py
 #: %28poterminology%29+1+more+locations
-#, fuzzy
 msgid "overview"
 msgstr "resumo"
 
@@ -969,16 +964,11 @@ msgstr "deixar"
 msgid "market"
 msgstr "mercado"
 
-# 
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 #: po/tutorial.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
-#, fuzzy
 msgid "market place"
 msgstr "mercado"
 
