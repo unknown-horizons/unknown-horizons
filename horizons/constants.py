@@ -272,8 +272,9 @@ class _LanguageNameDict(dict):
 
 LANGUAGENAMES = _LanguageNameDict(
 	bg    = u'Български',
-	ca    = u'Català', # see below
+	ca    = u'Català', # see below for ca@valencia
 	cs    = u'Čeština',
+	da    = u'Danske',
 	de    = u'Deutsch',
 	en    = u'English',
 	es    = u'Español',
@@ -291,5 +292,6 @@ LANGUAGENAMES = _LanguageNameDict(
 	ru    = u'Русский',
 	sl    = u'Slovenski',
 	)
-LANGUAGENAMES['ca@valencia'] = u'Català' # need to do this if @ sign in po file name
+LANGUAGENAMES['ca@valencia'] = u'Català de València' # need to do this if @ sign in po file name
+
 AUTO_CONTINUE_CAMPAIGN=True
