@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-13 19:11+0200\n"
+"PO-Revision-Date: 2011-05-17 17:29+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -27,14 +27,13 @@ msgid "Restart required"
 msgstr "Riavvio necessario"
 
 #: horizons/engine.py:55
-#, fuzzy
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Algumas das suas alteracções requerem o reinicio do Unknown Horizons."
+msgstr "Alcuni dei tuoi cambiamenti richiedono un riavvio di Unknown Horizons."
 
 #: horizons/engine.py:108
 #, fuzzy
 msgid "System default"
-msgstr "Valor per defecte del sistema"
+msgstr "Default Sistema"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
@@ -68,7 +67,7 @@ msgstr "Salvataggio fallito."
 #: horizons/gui/gui.py:146
 #, fuzzy
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Esteu segur que voleu sortir de l'Horizons Desconeguts?"
+msgstr "Sei sicuro che vuoi uscire da'Unknown Horizons?"
 
 #: horizons/gui/gui.py:147
 #, fuzzy
@@ -78,7 +77,7 @@ msgstr "Esci dal Gioco"
 #: horizons/gui/gui.py:153
 #, fuzzy
 msgid "Are you sure you want to abort the running session?"
-msgstr "Tem a certeza que quer sair da sessão em andamento?"
+msgstr "Sei sicuro che vuoi interrompere la sessione corrente?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
@@ -597,9 +596,8 @@ msgid "Change name"
 msgstr "Canvia el nom"
 
 #: horizons/i18n/guitranslations.py:110
-#, fuzzy
 msgid "Enter new name:"
-msgstr "Introduïu el nou nom: "
+msgstr "Introduïu el nou nom:"
 
 #: horizons/i18n/guitranslations.py:112
 msgid "Enter your message:"
@@ -664,11 +662,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
 msgid "Credits"
-msgstr " Riconoscimenti"
+msgstr "Riconoscimenti"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Cancel game"
-msgstr " Abbandona la partita "
+msgstr "Abbandona la partita"
 
 #: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:176
 #: horizons/i18n/guitranslations.py:214
@@ -1000,7 +998,7 @@ msgstr "Nuova partita - Giocatore singolo"
 #: horizons/i18n/guitranslations.py:237
 #, fuzzy
 msgid "Start game:"
-msgstr "Começar o jogo:"
+msgstr "Inizia partita:"
 
 #: horizons/i18n/guitranslations.py:238
 msgid "Free play"
@@ -1128,9 +1126,8 @@ msgid "Sale"
 msgstr "Vendite"
 
 #: horizons/i18n/guitranslations.py:277
-#, fuzzy
 msgid "Taxes"
-msgstr "impostos"
+msgstr "Impostos"
 
 #: horizons/i18n/guitranslations.py:282 horizons/i18n/guitranslations.py:286
 #: horizons/i18n/guitranslations.py:293 horizons/i18n/guitranslations.py:322
@@ -1713,9 +1710,8 @@ msgid "get-together"
 msgstr "incontri"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "grass"
-msgstr "Herba"
+msgstr "herba"
 
 # Resources
 #: sqlite/Resources
@@ -1732,9 +1728,8 @@ msgid "iron ore"
 msgstr "minerale di ferro"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "lamb wool"
-msgstr "Llana d'ovella"
+msgstr "llana d'ovella"
 
 #: sqlite/Resources
 msgid "liquor"
