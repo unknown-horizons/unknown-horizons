@@ -270,28 +270,28 @@ class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, key)
 
-LANGUAGENAMES = _LanguageNameDict(
-	bg    = u'Български',
-	ca    = u'Català', # see below for ca@valencia
-	cs    = u'Čeština',
-	da    = u'Danske',
-	de    = u'Deutsch',
-	en    = u'English',
-	es    = u'Español',
-	et    = u'Eesti',
-	fi    = u'Suomi',
-	fr    = u'Français',
-	hu    = u'Magyar',
-	it    = u'Italiano',
-	lt    = u'Lietuvių',
-	nb    = u'Norw. Bokmål',
-	nl    = u'Nederlands',
-	pl    = u'Polski',
-	pt_BR = u'Português Br.',
-	pt    = u'Português',
-	ru    = u'Русский',
-	sl    = u'Slovenski',
-	)
-LANGUAGENAMES['ca@valencia'] = u'Català de València' # need to do this if @ sign in po file name
+LANGUAGENAMES = _LanguageNameDict({
+	"bg"    : u'Български',
+	"ca"    : u'Català',
+  'ca@valencia' : u'Català de València',
+	"cs"    : u'Čeština',
+	"da"    : u'Danske',
+	"de"    : u'Deutsch',
+	"en"    : u'English',
+	"es"    : u'Español',
+	"et"    : u'Eesti',
+	"fi"    : u'Suomi',
+	"fr"    : u'Français',
+	"hu"    : u'Magyar',
+	"it"    : u'Italiano',
+	"lt"    : u'Lietuvių',
+	"nb"    : u'Norw. Bokmål',
+	"nl"    : u'Nederlands',
+	"pl"    : u'Polski',
+	"pt_BR" : u'Português Br.',
+	"pt"    : u'Português',
+	"ru"    : u'Русский',
+	"sl"    : u'Slovenski',
+	})
 
 AUTO_CONTINUE_CAMPAIGN=True
