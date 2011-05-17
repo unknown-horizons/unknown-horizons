@@ -134,6 +134,7 @@ msgstr "osada"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
+#, fuzzy
 msgid "start"
 msgstr "start"
 
@@ -178,6 +179,7 @@ msgstr "menu"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "produce"
 msgstr "produkuj"
 
@@ -228,6 +230,7 @@ msgstr "czas"
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/buyselltab.py
 #: horizons/gui/tabs/boatbuildertab.py
+#, fuzzy
 msgid "trade"
 msgstr "handel"
 
@@ -284,14 +287,9 @@ msgid "wool"
 msgstr "wełna"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "coast"
 msgstr "wybrzeże"
 
@@ -301,22 +299,18 @@ msgid "companies"
 msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
 # 80%
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "cost"
 msgstr "koszt"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
 # 75%
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "free"
 msgstr "darmowy"
 
@@ -325,6 +319,7 @@ msgstr "darmowy"
 msgid "left"
 msgstr "lewo"
 
+# also check wooden log (part of tree)
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
@@ -372,19 +367,15 @@ msgid "fire"
 msgstr "ogień"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/boatbuildertab.py
+#, fuzzy
 msgid "fisher"
 msgstr "rybak"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
 # 80%
 #: horizons/spsession.py
@@ -473,15 +464,10 @@ msgid "pioneer"
 msgstr "pionier"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
-#, fuzzy
 msgid "potato"
 msgstr "ziemniak"
 
@@ -533,14 +519,9 @@ msgid "tree"
 msgstr "drzewo"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "add"
 msgstr "dodaj"
 
@@ -557,14 +538,9 @@ msgid "animal"
 msgstr "zwierzę"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "build menu"
 msgstr "menu budowy"
 
@@ -605,27 +581,17 @@ msgid "free trader"
 msgstr "niezależny kupiec"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
-#, fuzzy
 msgid "happiness"
 msgstr "szczęście"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "hunter"
 msgstr "łowca"
 
@@ -726,14 +692,9 @@ msgid "build settlement"
 msgstr "zbuduj osadę"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "built"
 msgstr "zbudowano"
 
@@ -778,18 +739,11 @@ msgstr "wełna owcza"
 msgid "leave"
 msgstr ""
 
-# 
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 #: po/tutorial.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
-#, fuzzy
 msgid "market"
 msgstr "rynek"
 
@@ -982,17 +936,10 @@ msgstr ""
 msgid "graphics"
 msgstr "grafika"
 
-# 
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 #: po/tutorial.py
 #: sqlite/Colors
-#, fuzzy
 msgid "green"
 msgstr "zielony"
 
