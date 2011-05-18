@@ -11,7 +11,6 @@ scenarios:
 - # Level 3
   level: sc3
   conditions:
-   - {type: goal_reached, scenario: 0, goal: 1}
    - {type: goal_reached, scenario: 1, goal: 0}
 
 difficulty: easy
