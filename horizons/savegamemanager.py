@@ -250,22 +250,42 @@ class SavegameManager(object):
 		scenario_files = {}
 		afiles = []
 		anames = []
-		campaign_scenarios = []
-		cfiles, cnames, cscenarios = cls.get_campaigns(include_displaynames = True, include_scenario_list = True)
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
-		cstatus = cls.get_campaign_status()
-		for i, cname in enumerate(cnames):
-			available_scenarios = [s for j, s in enumerate(cscenarios[i]) if j in cstatus.get(cname,[0])]
-			anames.extend(available_scenarios)
-			campaign_scenarios.extend(cscenarios[i])
 		for i, sname in enumerate(snames):
-			scenario_files[sname] = sfiles[i]
-			if sname not in campaign_scenarios:
+			if cls.check_scenario_availability(sname):
 				anames.append(sname)
-		afiles = [scenario_files[aname] for aname in anames]
+				afiles.append(sfiles[i])
 		if not include_displaynames:
 			return (afiles,)
 		return (afiles, anames)
+
+	@classmethod
+	def check_scenario_availability(cls, scenario_name):
+		cfiles, cnames, cscenarios, cdata = cls.get_campaigns(include_scenario_list=True, campaign_data=True)
+		campaign_status = cls.get_campaign_status()
+		seen_in_campaigns = False
+		for i, scenario_list in enumerate(cscenarios):
+			if not scenario_name in scenario_list:
+				continue
+			seen_in_campaigns = True
+			# The first scenario of every campaign is always available
+			if scenario_list[0] == scenario_name:
+				return True
+			# The scenario is in the campaign. Check goals
+			# TODO : the [0] have to be removed if we think a scenario can appear multiple times in a campaign
+			conditions = [data.get('conditions') for data in cdata[i]['scenarios'] if data.get('level') == scenario_name][0]
+			for condition in conditions:
+				# all conditions have to be reached
+				if condition['type'] != 'goal_reached':
+					print _("Error: don't know how to handle %(type)s condition type") % condition
+				if not condition['goal'] in campaign_status.get(scenario_list[condition['scenario']], []):
+					break
+			else:
+				# All conditions are met
+				return True
+		if not seen_in_campaigns:
+			# This scenario is not in any campaign, it is available for free play
+			return True
 
 	@classmethod
 	def generate_campaign_status(cls):
