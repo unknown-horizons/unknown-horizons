@@ -295,14 +295,6 @@ class SavegameManager(object):
 			return True
 
 	@classmethod
-	def generate_campaign_status(cls):
-		status = {}
-		camp_files, camp_names = cls.get_campaigns()
-		for name in camp_names:
-			status[name] = [0,]
-		return status
-
-	@classmethod
 	def get_campaign_status(cls):
 		"""Read the campaign status from the saved YAML file"""
 		if os.path.exists(cls.campaign_status_file):
