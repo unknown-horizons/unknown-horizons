@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-14 21:14+0200\n"
+"PO-Revision-Date: 2011-05-18 13:26+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -894,7 +894,7 @@ msgstr "Rafraîchir la liste des parties actives"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Autosave interval in minutes:"
-msgstr "Interval de la sauvegarde automatique en minutes:"
+msgstr "Intervalle des sauvegardes automatiques en minutes:"
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Color depth:"
@@ -902,7 +902,7 @@ msgstr "Profondeur des couleurs:"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Enable edge scrolling:"
-msgstr "Activer la défilement au bord le l'écran:"
+msgstr "Activer la défilement sur le bord d'écran:"
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Effects volume:"
@@ -930,7 +930,7 @@ msgstr "Sélectionner la langue:"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Enable minimap rotation:"
-msgstr "Activer la rotation de la minimap"
+msgstr "Activer la rotation de la mini-carte"
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Music volume:"
@@ -962,7 +962,7 @@ msgstr "Moteur de rendu utilisé:"
 
 #: horizons/i18n/guitranslations.py:228
 msgid "Please make sure that you know what you do."
-msgstr "Veuillez vous assurer que vous savez ce que vous faîtes."
+msgstr "Veuillez vous assurer que vous savez ce que vous faites."
 
 #: horizons/i18n/guitranslations.py:230
 msgid "Details:"
@@ -982,7 +982,7 @@ msgstr "Choisir une carte:"
 
 #: horizons/i18n/guitranslations.py:235
 msgid "New game - Singleplayer"
-msgstr "Nouvelles partie - Solo"
+msgstr "Nouvelle partie - Solo"
 
 #: horizons/i18n/guitranslations.py:237
 msgid "Start game:"
@@ -1098,7 +1098,7 @@ msgstr "Bilan:"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Buying"
-msgstr "Achât"
+msgstr "Achat"
 
 #: horizons/i18n/guitranslations.py:272
 msgid "Expenses:"
