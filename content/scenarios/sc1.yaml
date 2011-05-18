@@ -3,7 +3,7 @@ description: "Campaign 1 :\nBe a player ...\n"
 difficulty: !!python/unicode 'Didacticiel'
 events:
 - actions:
-  - arguments: ["First scneario of the campagin."]
+  - arguments: ["First scenario of the campagin."]
     type: message
   - {type: logbook_w, arguments: ["NEW TASK: Build a main square",
 "TASK: Build a main square."]}
@@ -14,14 +14,14 @@ events:
     type: time_passed
 - actions:
   - {type: goal_reached, arguments: [1]}
-  - arguments: [!!python/unicode 'Second objective reached !']
+  - arguments: [!!python/unicode 'Secondary objective reached!']
     type: message
   conditions:
   - arguments: [9, 0]
     type: building_num_of_type_greater
 - actions:
   - {type: goal_reached, arguments: [2]}
-  - arguments: [!!python/unicode 'Second objective reached !']
+  - arguments: [!!python/unicode 'Secondary objective reached!']
     type: message
   conditions:
   - arguments: [8, 0]
