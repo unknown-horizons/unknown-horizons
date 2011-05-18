@@ -86,6 +86,13 @@ def do_win(session):
 	else:
 		session.speed_unpause()
 
+def goal_reached(session, goal_number):
+	"""Called when player reached a goal in a scenario"""
+	# TODO : if we want, we could make this work in "scenario" mode
+	#        to allow the player to reach goals in scenarios even if
+	#        he didn't load the campaign.
+	if session.campaign:
+		SavegameManager.mark_goal_reached(session.campaign, goal_number)
 
 def do_lose(session):
 	"""Called when player lost"""
