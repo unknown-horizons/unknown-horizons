@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 01:40+0200\n"
+"PO-Revision-Date: 2011-05-19 01:49+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -30,7 +30,7 @@ msgstr "Необходим перезапуск"
 #: horizons/engine.py:55
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
-"Некоторые из ваших изменений требуют перезапуска Неизведанных Горизонтов"
+"Некоторые из ваших изменений требуют перезапуска Неизведанных Горизонтов."
 
 #: horizons/engine.py:108
 msgid "System default"
@@ -332,9 +332,7 @@ msgstr "Просмотр"
 #: horizons/gui/tabs/overviewtab.py:96
 #, fuzzy
 msgid "Branch office overview"
-msgstr ""
-"Колония \n"
-" Просмотр"
+msgstr "Колония Просмотр"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 #, fuzzy
@@ -385,77 +383,43 @@ msgstr "Услуги"
 #: horizons/i18n/guitranslations.py:46
 #, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
-"Церковь: \n"
-"Предоставляет морякам \n"
-"доступ к религии."
+msgstr "ы: Предоставляет морякам доступ к религии."
 
 #: horizons/i18n/guitranslations.py:47
 #, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
-"Рыбак: \n"
-"Ловит рыбу, \n"
-"производит еду."
+msgstr "Рыбак: Ловит рыбу, производит еду."
 
 #: horizons/i18n/guitranslations.py:48
-#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
-"Охотник:Охотится на диких \n"
-"животных в лесу, \n"
-"производит еду."
+msgstr "Охотник: Охотится на диких животных в лесу, производит еду."
 
 #: horizons/i18n/guitranslations.py:49
-#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
-"Сигнальный костер: \n"
-"Позволяет игроку торговать \n"
-"со свободным торговцем."
+msgstr "Сигнальный костер: Позволяет игроку торговать со свободным торговцем."
 
 #: horizons/i18n/guitranslations.py:50
-#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
-"Лесоруб: \n"
-"Рубит деревья и \n"
-"делает из них \n"
-"доски."
+msgstr "Лесоруб: Рубит деревья и делает из них доски."
 
 #: horizons/i18n/guitranslations.py:51
 #, fuzzy
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
-"Центральная площадь: \n"
-"Снабжает граждан \n"
-"товарами."
+msgstr "Центральная площадь: Снабжает граждан товарами."
 
 #: horizons/i18n/guitranslations.py:52
-#, fuzzy
 msgid "Tent: Houses your inhabitants."
-msgstr ""
-"Палатка: \n"
-"Дома ваших \n"
-"жителей."
+msgstr "Палатка: Дома ваших жителей."
 
 # Very bad translate
 #: horizons/i18n/guitranslations.py:53
 #, fuzzy
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
-"Склад: \n"
-"Добавляет место \n"
-"и предоставляет \n"
-"потребителям"
+msgstr "Склад: Добавляет место и предоставляет потребителям."
 
 #: horizons/i18n/guitranslations.py:54
-#, fuzzy
 msgid "Trail: Needed for collecting goods."
-msgstr ""
-"Дорога: \n"
-"Необходима для \n"
-"доставки товаров."
+msgstr "Дорога: Необходима для доставки товаров."
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
@@ -474,13 +438,8 @@ msgid "Military"
 msgstr "Военные"
 
 #: horizons/i18n/guitranslations.py:62
-#, fuzzy
 msgid "Boat builder: Builds boats and small ships. Built on coast."
-msgstr ""
-"Верфь: \n"
-"Строит корабли и \n"
-"не большие судна. \n"
-"Строится на побережье."
+msgstr "Верфь: Строит корабли и не большие судна. Строится на побережье."
 
 #: horizons/i18n/guitranslations.py:63
 #, fuzzy
@@ -572,9 +531,8 @@ msgid "Toolmaker: Produces tools out of iron."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:283
-#, fuzzy
 msgid "Running costs:"
-msgstr "Текущие расходы"
+msgstr "Зксплуатационные расходы:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Inhabitants"
@@ -659,11 +617,11 @@ msgstr "Сменить имя"
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Enter new name:"
-msgstr "Введите новое имя: "
+msgstr "Введите новое имя:"
 
 #: horizons/i18n/guitranslations.py:112
 msgid "Enter your message:"
-msgstr "Введите ваше сообщение: "
+msgstr "Введите ваше сообщение:"
 
 #: horizons/i18n/guitranslations.py:113
 msgid "Chat"
@@ -679,7 +637,7 @@ msgstr "Купить или продать ресурсы"
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Legend:"
-msgstr "Легенда: "
+msgstr "Легенда:"
 
 #: horizons/i18n/guitranslations.py:118
 msgid "Sell resources"
@@ -850,7 +808,7 @@ msgstr "Выйти в главное меню"
 
 #: horizons/i18n/guitranslations.py:168
 msgid "Loading ..."
-msgstr "Загрузка..."
+msgstr "Загрузка ..."
 
 #: horizons/i18n/guitranslations.py:175
 msgid "Quit"
@@ -866,11 +824,11 @@ msgstr "Сетевая игра"
 
 #: horizons/i18n/guitranslations.py:181 horizons/i18n/guitranslations.py:197
 msgid "Create game:"
-msgstr "Создать игру"
+msgstr "Создать игру:"
 
 #: horizons/i18n/guitranslations.py:182
 msgid "Back:"
-msgstr "Назад"
+msgstr "Назад:"
 
 #: horizons/i18n/guitranslations.py:183
 msgid "Choose a map:"
@@ -895,7 +853,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:189
 msgid "Leave:"
-msgstr "Выход"
+msgstr "Выход:"
 
 #: horizons/i18n/guitranslations.py:190
 msgid "The game will start as soon as enough players have joined."
@@ -923,7 +881,7 @@ msgstr "Активные игры:"
 
 #: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:236
 msgid "Main menu:"
-msgstr "Главное меню"
+msgstr "Главное меню:"
 
 #: horizons/i18n/guitranslations.py:199
 msgid "Show only games with the same version:"
@@ -943,7 +901,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Refresh list:"
-msgstr "Обновить список"
+msgstr "Обновить список:"
 
 #: horizons/i18n/guitranslations.py:204
 msgid "Apply the new name"
@@ -1016,7 +974,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:224
 #, fuzzy
 msgid "Full screen:"
-msgstr "Во весь экран"
+msgstr "Во весь экран:"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Screen resolution:"
@@ -1025,7 +983,7 @@ msgstr "Размер экрана:"
 #: horizons/i18n/guitranslations.py:226
 #, fuzzy
 msgid "Enable sound:"
-msgstr "Звук включен"
+msgstr "Звук включен:"
 
 #: horizons/i18n/guitranslations.py:227
 msgid "Used renderer:"
@@ -1044,9 +1002,8 @@ msgid "Enter filename:"
 msgstr "Введите имя файла:"
 
 #: horizons/i18n/guitranslations.py:232
-#, fuzzy
 msgid "Your saved games:"
-msgstr "Нет сохраненных игр"
+msgstr "Сохраненных игр:"
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Choose a map to play:"
@@ -1058,7 +1015,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:237
 msgid "Start game:"
-msgstr "Начать игру"
+msgstr "Начать игру:"
 
 #: horizons/i18n/guitranslations.py:238
 msgid "Free play"
@@ -1165,7 +1122,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:268
 msgid "Select resources:"
-msgstr "Выбрать ресурсы: "
+msgstr "Выбрать ресурсы:"
 
 #: horizons/i18n/guitranslations.py:270
 msgid "Balance:"
@@ -1207,7 +1164,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:307
 #, fuzzy
 msgid "Taxes:"
-msgstr "Налог"
+msgstr "Налог:"
 
 #: horizons/i18n/guitranslations.py:298
 msgid "capacity utilization"
@@ -1237,7 +1194,7 @@ msgstr "Счастье"
 
 #: horizons/i18n/guitranslations.py:309
 msgid "Paid taxes"
-msgstr "Уплаченных налогов:"
+msgstr "Уплаченных налогов"
 
 #: horizons/i18n/guitranslations.py:310
 msgid "Residents"
@@ -1248,12 +1205,8 @@ msgid "Build settlement:"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:314
-#, fuzzy
 msgid "Click to change the name of this ship."
-msgstr ""
-"Кликните для \n"
-"изменение названия \n"
-"этого корабля"
+msgstr "Кликните для изменение названия этого корабля."
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Build settlement"
@@ -1276,9 +1229,8 @@ msgid "Exchange:"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:326
-#, fuzzy
 msgid "Ship:"
-msgstr "Судно"
+msgstr "Суднa:"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Trade partner:"
@@ -1289,8 +1241,9 @@ msgid "Configure trading route:"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:331
+#, fuzzy
 msgid "Load/Unload:"
-msgstr "Погрузить/Разгрузить"
+msgstr "Погрузить/Разгрузить:"
 
 #: horizons/main.py:84
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 0 and 65535."
@@ -1315,7 +1268,7 @@ msgstr "Ошибка: Не найдена карта \"%s\"."
 
 #: horizons/main.py:279 horizons/main.py:312
 msgid "Error: Found multiple matches: "
-msgstr "Ошибка: Найдено несколько совпадений:"
+msgstr "Ошибка: Найдено несколько совпадений: "
 
 #: horizons/main.py:309
 #, python-format
@@ -1348,7 +1301,7 @@ msgstr "Вы выиграли!"
 
 #: horizons/scenario/actions.py:72
 msgid "You have completed this scenario. "
-msgstr "Вы завершили этот сценарий!"
+msgstr "Вы завершили этот сценарий! "
 
 #: horizons/scenario/scenarioeventhandler.py:154
 #: horizons/scenario/scenarioeventhandler.py:164
