@@ -285,7 +285,7 @@ class SavegameManager(object):
 				# all conditions have to be reached
 				if condition['type'] != 'goal_reached':
 					print _("Error: don't know how to handle %(type)s condition type") % condition
-				if not condition['goal'] in campaign_status.get(scenario_list[condition['scenario']], []):
+				if not condition['goal'] in campaign_status.get(condition['scenario'], []):
 					break
 			else:
 				# All conditions are met
@@ -339,16 +339,18 @@ class SavegameManager(object):
 
 	@classmethod
 	def mark_scenario_as_won(cls, campaign_data):
-		# Winning a scenario is like winning the "special" goal #0
-		campaign_status = cls.get_campaign_status()
-		campaign_status.setdefault(campaign_data['scenario_name'], []).append(0)
-		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
-		return campaign_status
+		"""Remember that the scenario was won"""
+		# Winning a scenario is like winning the "special" goal 'victory'
+		return cls.mark_goal_reached(campaign_data, 'victory')
 
 	@classmethod
-	def mark_goal_reached(cls, campaign_data, goal_number):
+	def mark_goal_reached(cls, campaign_data, goal_codename):
+		"""Remember that this specific goal in the scenario was won"""
+		# grab the campaign status
 		campaign_status = cls.get_campaign_status()
-		campaign_status.setdefault(campaign_data['scenario_name'], []).append(goal_number)
+		# append the goal's codename to the list of reached goal for this scenario
+		campaign_status.setdefault(campaign_data['scenario_name'], []).append(goal_codename)
+		# save the data back to the file
 		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
 		return campaign_status
 
