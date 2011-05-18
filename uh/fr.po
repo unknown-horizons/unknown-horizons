@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-18 13:26+0200\n"
+"PO-Revision-Date: 2011-05-16 12:33+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1145,7 +1145,7 @@ msgstr "Gisement de minerai"
 #: horizons/i18n/guitranslations.py:302
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Ceci est un gisement de minerai, où vous pouvez construire une mine pour "
+"Ceci est un gisement de minerai où vous pouvez construire une mine pour "
 "extraire les ressources."
 
 #: horizons/i18n/guitranslations.py:303
