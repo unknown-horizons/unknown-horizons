@@ -281,7 +281,8 @@ class _Action(object):
 	  'set_var' : set_var,
 	  'logbook': show_logbook_entry_delayed, # set delay=0 for instant appearing
 	  'logbook_w': write_logbook_entry, # not showing the logbook
-	  'wait': wait
+	  'wait': wait,
+	  'goal_reached' : goal_reached,
 	}
 
 	def __init__(self, action_dict):
