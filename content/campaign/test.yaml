@@ -6,12 +6,12 @@ scenarios:
 - # Level 2
   level: sc2
   conditions:
-   - {type: goal_reached, scenario: 0, goal: 0}
+   - {type: goal_reached, scenario: 'sc1', goal: 'victory'}
 
 - # Level 3
   level: sc3
   conditions:
-   - {type: goal_reached, scenario: 1, goal: 0}
+   - {type: goal_reached, scenario: 'sc2', goal: 'victory'}
 
 difficulty: easy
 author: court-jus
