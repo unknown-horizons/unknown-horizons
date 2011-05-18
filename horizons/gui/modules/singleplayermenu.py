@@ -31,7 +31,7 @@ class SingleplayerMenu(object):
 		"""
 		@param show: string, which type of games to show
 		"""
-		assert show in ('random', 'scenario', 'free_maps')
+		assert show in ('random', 'scenario', 'campaign', 'free_maps')
 		self.hide()
 		# reload since the gui is changed at runtime
 		self.widgets.reload('singleplayermenu')
@@ -40,6 +40,7 @@ class SingleplayerMenu(object):
 			'cancel'   : self.show_main,
 			'okay'     : self.start_single,
 			'showScenario' : Callback(self.show_single, show='scenario'),
+			'showCampaign' : Callback(self.show_single, show='campaign'),
 			'showRandom' : Callback(self.show_single, show='random'),
 			'showMaps' : Callback(self.show_single, show='free_maps')
 		}
@@ -60,6 +61,10 @@ class SingleplayerMenu(object):
 				del eventMap['showMaps']
 				self.current.findChild(name="showMaps").marked = True
 				self.current.files, maps_display = SavegameManager.get_maps()
+			elif show == 'campaign':
+				del eventMap['showCampaign']
+				self.current.findChild(name="showCampaign").marked = True
+				self.current.files, maps_display = SavegameManager.get_campaigns()
 			else: # scenario
 				del eventMap['showScenario']
 				self.current.findChild(name="showScenario").marked = True
@@ -86,7 +91,19 @@ class SingleplayerMenu(object):
 						self.current.findChild(name="map_author").text = _("Author: ") + unicode( author )
 						self.current.findChild(name="map_desc").text =  _("Description: ") + unicode( desc )
 						#self.current.findChild(name="map_desc").parent.adaptLayout()
+				elif show == 'campaign': # update infos for campaign
+					def _update_infos():
+						"""Fill in infos of selected campaign to label"""
+						campaign_info = SavegameManager.get_campaign_info(file = self.__get_selected_map())
+						if not campaign_info:
+							# TODO : an "invalid campaign popup"
+							self.__show_invalid_scenario_file_popup(e)
+							return
+						self.current.findChild(name="map_difficulty").text = _("Difficulty: ") + unicode(campaign_info.get('difficulty', ''))
+						self.current.findChild(name="map_author").text = _("Author: ") + unicode(campaign_info.get('author', ''))
+						self.current.findChild(name="map_desc").text = _("Description: ") + unicode(campaign_info.get('description', ''))
 
+				if show in ('scenario', 'campaign'):
 					self.current.findChild(name="maplist").capture(_update_infos)
 					_update_infos()
 
@@ -115,13 +132,32 @@ class SingleplayerMenu(object):
 			map_file = self.__get_selected_map()
 
 		is_scenario = bool(self.current.collectData('showScenario'))
+		is_campaign = bool(self.current.collectData('showCampaign'))
 		self.show_loading_screen()
-		from horizons.scenario import InvalidScenarioFileFormat
-		try:
-			horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=is_scenario)
-		except InvalidScenarioFileFormat, e:
-			self.__show_invalid_scenario_file_popup(e)
-			self.show_single(show = 'scenario')
+		if is_scenario:
+			from horizons.scenario import InvalidScenarioFileFormat
+			try:
+				horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=is_scenario)
+			except InvalidScenarioFileFormat, e:
+				self.__show_invalid_scenario_file_popup(e)
+				self.show_single(show = 'scenario')
+		elif is_campaign:
+			campaign_info = SavegameManager.get_campaign_info(file = map_file)
+			if not campaign_info:
+				# TODO : an "invalid campaign popup"
+				self.__show_invalid_scenario_file_popup(e)
+				self.show_single(show = 'campaign')
+			scenario = campaign_info.get('scenarios')[0].get('level')
+			map_file = campaign_info.get('scenario_files').get(scenario)
+			# TODO : why this does not work ?
+			#
+			#	horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario = True, campaign = {
+			#		'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
+			#		})
+			#
+			horizons.main._start_map(scenario, is_scenario = True, campaign = {
+				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
+				})
 
 	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
