@@ -5,20 +5,13 @@ scenarios:
 
 - # Level 2
   level: sc2
-  goals:
-   - goal[1]
-     set_var [xy], [1]
-   - goal[2]
-     set_var [za], [5]
-     do_something_other ["for further ideas..."]
-  conditions: 
-   - goal_reached [1] [0]
+  conditions:
+   - {type: goal_reached, scenario: 0, goal: 0}
 
 - # Level 3
   level: sc3
-  conditions: 
-   - goal_reached [1] [1]
-   - goal_reached [2] [1]
+  conditions:
+   - {type: goal_reached, scenario: 1, goal: 0}
 
 difficulty: easy
 author: court-jus
