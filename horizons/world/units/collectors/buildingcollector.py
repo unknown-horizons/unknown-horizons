@@ -59,7 +59,7 @@ class BuildingCollector(Collector):
 		# which is overwritten here, that uses a member, which has to be initialised via __init.
 
 		# load home_building
-		home_building_id = db("SELECT home_building FROM building_collector WHERE rowid = ?", worldid)[0][0]
+		home_building_id = db.get_building_collectors_home(worldid)
 		self.__init(None if home_building_id is None else WorldObject.get_object_by_id(home_building_id))
 
 		super(BuildingCollector, self).load(db, worldid)

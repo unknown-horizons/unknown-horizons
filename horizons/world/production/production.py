@@ -103,8 +103,7 @@ class Production(WorldObject):
 	def _load(self, db, worldid):
 		super(Production, self).load(db, worldid)
 
-		db_data = db('SELECT state, owner, prod_line_id, remaining_ticks, _pause_old_state \
-								  FROM production WHERE rowid = ?', worldid)[0]
+		db_data = db.get_production_row(worldid)
 		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], \
 								PRODUCTION.STATES[db_data[0]], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
 		if self._state == PRODUCTION.STATES.paused:

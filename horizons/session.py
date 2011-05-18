@@ -35,7 +35,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.view import View
 from horizons.world import World
 from horizons.entities import Entities
-from horizons.util import WorldObject, NamedObject, LivingObject, livingProperty, DbReader
+from horizons.util import WorldObject, NamedObject, LivingObject, livingProperty, SavegameAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.constants import GAME_SPEED
@@ -173,7 +173,7 @@ class Session(LivingObject):
 		self.campaign = campaign
 
 		self.log.debug("Session: Loading from %s", savegame)
-		savegame_db = DbReader(savegame) # Initialize new dbreader
+		savegame_db = SavegameAccessor(savegame) # Initialize new dbreader
 		try:
 			# load how often the game has been saved (used to know the difference between
 			# a loaded and a new game)

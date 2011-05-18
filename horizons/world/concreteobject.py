@@ -63,7 +63,7 @@ class ConcretObject(WorldObject):
 	def load(self, db, worldid):
 		super(ConcretObject, self).load(db, worldid)
 		self.__init()
-		runtime = db("SELECT action_runtime FROM concrete_object WHERE id = ?", worldid)[0][0]
+		runtime = db.get_concrete_object_action_runtime(worldid)
 		# delay setting of runtime until load of sub/super-class has set the action
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet
