@@ -261,9 +261,16 @@ class SavegameManager(object):
 
 	@classmethod
 	def check_scenario_availability(cls, scenario_name):
+		"""Read the campaign(s) status and check if this scenario is available for play
+		@param scenario_name: codename of the scenario to check
+		@return: boolean (is the scenario available or not)
+		"""
+		# get campaign data
 		cfiles, cnames, cscenarios, cdata = cls.get_campaigns(include_scenario_list=True, campaign_data=True)
+		# get campaign status
 		campaign_status = cls.get_campaign_status()
 		seen_in_campaigns = False
+		# check every campaign
 		for i, scenario_list in enumerate(cscenarios):
 			if not scenario_name in scenario_list:
 				continue
@@ -278,7 +285,7 @@ class SavegameManager(object):
 				# all conditions have to be reached
 				if condition['type'] != 'goal_reached':
 					print _("Error: don't know how to handle %(type)s condition type") % condition
-				if not condition['goal'] in campaign_status.get(scenario_list[condition['scenario']], []):
+				if not condition['goal'] in campaign_status.get(condition['scenario'], []):
 					break
 			else:
 				# All conditions are met
@@ -288,22 +295,20 @@ class SavegameManager(object):
 			return True
 
 	@classmethod
-	def generate_campaign_status(cls):
-		status = {}
-		camp_files, camp_names = cls.get_campaigns()
-		for name in camp_names:
-			status[name] = [0,]
-		return status
-
-	@classmethod
 	def get_campaign_status(cls):
+		"""Read the campaign status from the saved YAML file"""
 		if os.path.exists(cls.campaign_status_file):
 			return yaml.load(open(cls.campaign_status_file, 'r'))
 		return {}
 
 	@classmethod
 	def get_campaigns(cls, include_displaynames = True, include_scenario_list = False, campaign_data = False):
-		"""Returns all campaigns"""
+		"""Returns all campaigns
+		@param include_displaynames: should we return the name of the campaign
+		@param include_scenario_list: should we return the list of scenarios in the campaign
+		@param campaign_data: should we return the full campaign data
+		@return: (campaign_files, campaign_names, campaign_scenarios, campaign_data) (depending of the parameters)
+		"""
 		cls.log.debug("Savegamemanager: campaigns from: %s", cls.campaigns_dir)
 		files, names = cls.__get_saves_from_dirs([cls.campaigns_dir], \
 			include_displaynames = include_displaynames,
@@ -324,6 +329,7 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_campaigns_scenarios(cls, campaign_name):
+		"""Return this campaign's scenario list"""
 		cfiles, cnames, cscenarios = cls.get_campaigns(include_displaynames = True, include_scenario_list = True)
 		if not campaign_name in cnames:
 			print _("Error: Cannot find campaign \"%s\".") % (campaign_name,)
@@ -333,21 +339,24 @@ class SavegameManager(object):
 
 	@classmethod
 	def mark_scenario_as_won(cls, campaign_data):
-		# Winning a scenario is like winning the "special" goal #0
-		campaign_status = cls.get_campaign_status()
-		campaign_status.setdefault(campaign_data['scenario_name'], []).append(0)
-		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
-		return campaign_status
+		"""Remember that the scenario was won"""
+		# Winning a scenario is like winning the "special" goal 'victory'
+		return cls.mark_goal_reached(campaign_data, 'victory')
 
 	@classmethod
-	def mark_goal_reached(cls, campaign_data, goal_number):
+	def mark_goal_reached(cls, campaign_data, goal_codename):
+		"""Remember that this specific goal in the scenario was won"""
+		# grab the campaign status
 		campaign_status = cls.get_campaign_status()
-		campaign_status.setdefault(campaign_data['scenario_name'], []).append(goal_number)
+		# append the goal's codename to the list of reached goal for this scenario
+		campaign_status.setdefault(campaign_data['scenario_name'], []).append(goal_codename)
+		# save the data back to the file
 		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
 		return campaign_status
 
 	@classmethod
 	def load_next_scenario(cls, campaign_data):
+		"""This loads the next scenario by starting a new game"""
 		scenarios = cls.get_campaigns_scenarios(campaign_data['campaign_name'])
 		next_index = campaign_data['scenario_index'] + 1
 		if next_index == len(scenarios):

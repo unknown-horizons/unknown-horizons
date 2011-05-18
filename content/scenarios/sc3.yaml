@@ -3,7 +3,7 @@ description: "Campaign 3 :\nBe a king !\n"
 difficulty: !!python/unicode 'Didacticiel'
 events:
 - actions:
-  - arguments: ["Third scneario of the campagin: do what you want."]
+  - arguments: ["Third scenario of the campagin: do what you want."]
     type: message
   conditions:
   - arguments: [1]
