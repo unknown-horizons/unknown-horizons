@@ -261,9 +261,16 @@ class SavegameManager(object):
 
 	@classmethod
 	def check_scenario_availability(cls, scenario_name):
+		"""Read the campaign(s) status and check if this scenario is available for play
+		@param scenario_name: codename of the scenario to check
+		@return: boolean (is the scenario available or not)
+		"""
+		# get campaign data
 		cfiles, cnames, cscenarios, cdata = cls.get_campaigns(include_scenario_list=True, campaign_data=True)
+		# get campaign status
 		campaign_status = cls.get_campaign_status()
 		seen_in_campaigns = False
+		# check every campaign
 		for i, scenario_list in enumerate(cscenarios):
 			if not scenario_name in scenario_list:
 				continue
@@ -297,13 +304,19 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_campaign_status(cls):
+		"""Read the campaign status from the saved YAML file"""
 		if os.path.exists(cls.campaign_status_file):
 			return yaml.load(open(cls.campaign_status_file, 'r'))
 		return {}
 
 	@classmethod
 	def get_campaigns(cls, include_displaynames = True, include_scenario_list = False, campaign_data = False):
-		"""Returns all campaigns"""
+		"""Returns all campaigns
+		@param include_displaynames: should we return the name of the campaign
+		@param include_scenario_list: should we return the list of scenarios in the campaign
+		@param campaign_data: should we return the full campaign data
+		@return: (campaign_files, campaign_names, campaign_scenarios, campaign_data) (depending of the parameters)
+		"""
 		cls.log.debug("Savegamemanager: campaigns from: %s", cls.campaigns_dir)
 		files, names = cls.__get_saves_from_dirs([cls.campaigns_dir], \
 			include_displaynames = include_displaynames,
@@ -324,6 +337,7 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_campaigns_scenarios(cls, campaign_name):
+		"""Return this campaign's scenario list"""
 		cfiles, cnames, cscenarios = cls.get_campaigns(include_displaynames = True, include_scenario_list = True)
 		if not campaign_name in cnames:
 			print _("Error: Cannot find campaign \"%s\".") % (campaign_name,)
@@ -348,6 +362,7 @@ class SavegameManager(object):
 
 	@classmethod
 	def load_next_scenario(cls, campaign_data):
+		"""This loads the next scenario by starting a new game"""
 		scenarios = cls.get_campaigns_scenarios(campaign_data['campaign_name'])
 		next_index = campaign_data['scenario_index'] + 1
 		if next_index == len(scenarios):
