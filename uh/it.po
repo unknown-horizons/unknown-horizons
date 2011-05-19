@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-17 17:29+0200\n"
+"PO-Revision-Date: 2011-05-17 17:30+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -177,7 +177,6 @@ msgid "Hit P to continue the game or click below!"
 msgstr "Premere P per continuare il gioco o cliccare sotto!"
 
 #: horizons/gui/ingamegui.py:442
-#, fuzzy
 msgid "Game paused"
 msgstr "Partida pausada"
 
@@ -241,7 +240,6 @@ msgid "Description: "
 msgstr "Descrizione: "
 
 #: horizons/gui/modules/singleplayermenu.py:107
-#, fuzzy
 msgid "Invalid player name"
 msgstr "Nom de jugar invàlid"
 
@@ -798,7 +796,6 @@ msgid "Singleplayer"
 msgstr "Um Jogador"
 
 #: horizons/i18n/guitranslations.py:178
-#, fuzzy
 msgid "Multiplayer"
 msgstr "Vários Jogadores"
 
@@ -1117,7 +1114,6 @@ msgid "Expenses:"
 msgstr "Spese:"
 
 #: horizons/i18n/guitranslations.py:274
-#, fuzzy
 msgid "Income:"
 msgstr "Ingressos:"
 
