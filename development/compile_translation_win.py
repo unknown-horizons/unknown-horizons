@@ -40,7 +40,7 @@ for x in files:
 	if not os.path.isdir(dir):
 		os.makedirs(dir)
 	print 'Generating translations for', file
-	command = 'msgfmt ' + x + ' -o ' + dir + 'unknownhorizons.mo'
+	command = 'msgfmt ' + x + ' -o ' + dir + 'unknown-horizons.mo'
 	os.system(command)
 
 print '\n== Completed generating translations ==\n'

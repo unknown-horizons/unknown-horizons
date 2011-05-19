@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Create po/unknownhorizons.pot and if -u is given the .po files are merged
+# Create po/unknown-horizons.pot and if -u is given the .po files are merged
 # with the new .pot file.
 
 
@@ -12,7 +12,7 @@ python development/extract_strings_from_sqlite.py > po/sqlite_strings.pot
     find editor   -name \*.py
     find horizons -name \*.py
     echo po/sqlite_strings.pot
-) | xgettext --files-from=- --output-dir=po --output=unknownhorizons.pot \
+) | xgettext --files-from=- --output-dir=po --output=unknown-horizons.pot \
              --from-code=UTF-8 --add-comments --no-wrap --sort-by-file \
              --copyright-holder='The Unknown Horizons Team' \
              --msgid-bugs-address=team@unknown-horizons.org
@@ -26,7 +26,7 @@ fi
 cd po && for file in *.po; do
     echo $file
     msgfmt --statistics -o /dev/null $file # stats before
-    msgmerge -U $file unknownhorizons.pot
+    msgmerge -U $file unknown-horizons.pot
     msgfmt --statistics -o /dev/null $file # ... and after update
     echo -e "\n"
 done

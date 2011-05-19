@@ -188,15 +188,15 @@ class Fife(ApplicationBase):
 				# English is not shipped as .mo file, thus if English is
 				# selected we use NullTranslations to get English output.
 				fallback = name == 'en'
-				trans = gettext.translation('unknownhorizons', position, languages=[name], fallback=fallback)
-				trans.install(unicode=True, names='ngettext')
+				trans = gettext.translation('unknown-horizons', position, languages=[name], fallback=fallback)
+				trans.install(unicode=True, names=['ngettext',])
 			else:
-				gettext.install('unknownhorizons', 'build/mo', unicode=True, names='ngettext')
+				gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 				name = ''
 
 		except IOError:
 			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': name, 'place': position}
-			gettext.install('unknownhorizons', 'build/mo', unicode=True, names='ngettext')
+			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 			self._setting.set(UH_MODULE, "Language", 'System default')
 		update_all_translations()
 
@@ -424,7 +424,7 @@ class Fife(ApplicationBase):
 			parse_port(port, allow_zero=True)
 		except ValueError:
 			headline = _("Invalid network port")
-			descr = _("The port you specified is not valid. It must be  a number between 1 and 65535.")
+			descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
 			advice = _("Please check the port you entered and make sure it's in the specified range.")
 			horizons.main._modules.gui.show_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
@@ -442,7 +442,7 @@ class Fife(ApplicationBase):
 				advice = _(u"Check the data you entered in the Network section.")
 				if 0 < parse_port(port, allow_zero=True) < 1024:
 					advice += u" " + \
-					       _("Low port numbers sometimes require special priviledges, try one greater than 1024 or 0.")
+					       _("Low port numbers sometimes require special privileges, try one greater than 1024 or 0.")
 				details = unicode(e)
 				horizons.main._modules.gui.show_error_popup(headline, descr, advice, details)
 				ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)
