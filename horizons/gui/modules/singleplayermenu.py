@@ -158,6 +158,8 @@ class SingleplayerMenu(object):
 			horizons.main._start_map(scenario, is_scenario = True, campaign = {
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 				})
+		else: # free play/random map
+			horizons.main.start_singleplayer(map_file, playername, playercolor)
 
 	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
