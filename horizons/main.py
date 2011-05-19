@@ -302,7 +302,8 @@ def _start_campaign(campaign_name):
 	"""Finds the first scenario in this campaign and
 	loads it.
 	@return: bool, whether loading succeded"""
-	scenarios = SavegameManager.get_campaigns_scenarios(campaign_name)
+	campaign = SavegameManager.get_campaign_info(name = campaign_name)
+	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
 		return False
 	return _start_map(scenarios[0], is_scenario = True, campaign = {'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]})

@@ -238,6 +238,7 @@ def set_translations():
 			"showMaps"                    : _("Free play"),
 			"showRandom"                  : _("Random map"),
 			"showScenario"                : _("Scenario"),
+			"showCampaign"                : _("Campaign"),
 			"okay"                        : _("Start game"),
 			"cancel"                      : _("Exit to main menu")},
 		"playerdataselection.xml" : {
