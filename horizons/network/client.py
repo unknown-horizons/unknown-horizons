@@ -260,8 +260,7 @@ class Client(object):
 
 	def disconnect(self, later = False):
 		if self.extport is not None:
-			#self.upnp_disconnect(self.extport) or self.natpmp_disconnect(self.extport, self.localport)
-			self.natpmp_disconnect(self.extport, self.localport) or self.upnp_disconnect(self.extport)
+			self.upnp_disconnect(self.extport) or self.natpmp_disconnect(self.extport, self.localport)
 			self.extport = None
 		if self.mode is ClientMode.Server:
 			return self.server_disconnect(later)
