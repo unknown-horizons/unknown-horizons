@@ -121,7 +121,7 @@
 		<CheckBox min_size="21,32"  name="edgescrolling" />
 	</HBox>
 
-	<Spacer min_size="15" />
+	<Spacer min_size="10" />
 
 	<VBox name="language_settings">
 		<Label text="Language" 
@@ -134,7 +134,7 @@
 		</HBox>
 	</VBox>
 
-	<Spacer min_size="15" />
+	<Spacer min_size="10" />
 
 	<VBox name="network_settings">
 		<Label text="Network"
