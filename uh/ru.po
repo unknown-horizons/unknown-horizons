@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 01:49+0200\n"
+"PO-Revision-Date: 2011-05-19 01:54+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -247,7 +247,7 @@ msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
-"Выбранный файл не является файлом сценария игры. \n"
+"Выбранный файл не является файлом сценария игры.\n"
 "Сообщение об ошибке: "
 
 #: horizons/gui/modules/singleplayermenu.py:139
@@ -330,9 +330,8 @@ msgid "Overview"
 msgstr "Просмотр"
 
 #: horizons/gui/tabs/overviewtab.py:96
-#, fuzzy
 msgid "Branch office overview"
-msgstr "Колония Просмотр"
+msgstr "Просмотр колони"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 #, fuzzy
@@ -444,18 +443,12 @@ msgstr "Верфь: Строит корабли и не большие судн�
 #: horizons/i18n/guitranslations.py:63
 #, fuzzy
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
-"Кирпичный завод: \n"
-"Делает из глины \n"
-"кирпич."
+msgstr "Кирпичный завод: Делает из глины кирпич."
 
 #: horizons/i18n/guitranslations.py:64
 #, fuzzy
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
-"Глиняный карьер: \n"
-"Добывает глину \n"
-"из залежей."
+msgstr "Глиняный карьер: Добывает глину из залежей."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
@@ -464,46 +457,28 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:66
 #, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
-"Ферма: \n"
-"Ухаживает за полями \n"
-"и скотом."
+msgstr "Ферма: Ухаживает за полями и скотом."
 
 #: horizons/i18n/guitranslations.py:67
 #, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
-"Пастбище: \n"
-"Выращивает овец. \n"
-"Производит шерсть. \n"
-"Необходима ферма."
+msgstr "Пастбище: Выращивает овец. Производит шерсть. Необходима ферма."
 
 #: horizons/i18n/guitranslations.py:68
-#, fuzzy
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
-"Картофельное поле: \n"
-"Производит еду. \n"
-"Необходима ферма."
+msgstr "Картофельное поле: Производит еду. Необходима ферма."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:70
-#, fuzzy
 msgid "Village school: Provides education."
-msgstr ""
-"Деревенская школа: \n"
-"Предоставляет образование."
+msgstr "Деревенская школа: Предоставляет образование."
 
 #: horizons/i18n/guitranslations.py:71
-#, fuzzy
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
-"Ткач: \n"
-"Ткет из бараньей \n"
-"шерсти ткань."
+msgstr "Ткач: Ткет из бараньей шерсти ткань."
 
 #: horizons/i18n/guitranslations.py:74
 #, fuzzy
@@ -1073,9 +1048,7 @@ msgstr "Обзор строения"
 #: horizons/i18n/guitranslations.py:253
 #, fuzzy
 msgid "Cancel all building progress"
-msgstr ""
-"Отменить \n"
-"всё строительство"
+msgstr "Отменить всё строительство"
 
 #: horizons/i18n/guitranslations.py:254
 msgid "Pause"
@@ -1681,10 +1654,10 @@ msgstr ""
 msgid "grass"
 msgstr "трава"
 
+# Счастье?
 #: sqlite/Resources
-#, fuzzy
 msgid "happiness"
-msgstr "Счастье"
+msgstr "удовлетворение"
 
 #: sqlite/Resources
 msgid "iron ingots"
