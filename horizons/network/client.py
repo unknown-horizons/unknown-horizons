@@ -32,7 +32,9 @@ from horizons.network import find_enet_module
 import socket # needed for socket.fromfd
 
 enet = find_enet_module()
-
+# during pyenets move to cpython they renamed a few constants...
+if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(enet, 'PEER_STATE_DISCONNECT'):
+	enet.PEER_STATE_DISCONNECTED = enet.PEER_STATE_DISCONNECT
 
 # maximal peers enet should handle
 # this must be at least maxplayers (supported by the game) + 1
@@ -271,7 +273,7 @@ class Client(object):
 	def server_disconnect(self, later = False):
 		if self.serverpeer is None:
 			return
-		if self.serverpeer.state == enet.PEER_STATE_DISCONNECT:
+		if self.serverpeer.state == enet.PEER_STATE_DISCONNECTED:
 			self.serverpeer = None
 			return
 		try:
@@ -295,7 +297,7 @@ class Client(object):
 		for player in self.game.players:
 			if player.peer is None:
 				continue
-			if player.peer.state == enet.PEER_STATE_DISCONNECT:
+			if player.peer.state == enet.PEER_STATE_DISCONNECTED:
 				player.peer = None
 				continue
 			try:
