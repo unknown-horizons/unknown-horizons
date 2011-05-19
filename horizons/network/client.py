@@ -29,6 +29,7 @@ from horizons import network
 from horizons.network.common import *
 from horizons.constants import MULTIPLAYER
 from horizons.network import find_enet_module
+import socket # needed for socket.fromfd
 
 enet = find_enet_module()
 
@@ -38,6 +39,9 @@ enet = find_enet_module()
 MAX_PEERS = MULTIPLAYER.MAX_PLAYER_COUNT + 1
 SERVER_TIMEOUT = 5000
 CLIENT_TIMEOUT = SERVER_TIMEOUT * 3
+UPNP_TIMEOUT = 200
+NATPMP_TIMEOUT = 200
+NATPMP_LIFETIME = 8 * 60 * 60 # max 24 hours
 
 class ClientMode:
 	Server = 0
@@ -68,8 +72,14 @@ class Client(object):
 			'p2p_ready':        [],
 			'p2p_data':         [],
 		}
-		pass
 
+		self.localport = client_address[1] if client_address is not None else None
+		self.extport   = None
+		self.upnp      = None
+		self.natpmp    = None
+		self.upnp_init()
+		self.natpmp_init()
+		pass
 
 	def register_callback(self, type, callback, prepend = False, unique = True):
 		if type in self.callbacks:
@@ -87,6 +97,31 @@ class Client(object):
 			return
 		for callback in self.callbacks[type]:
 			callback(*args)
+
+	def upnp_init(self):
+		try:
+			import miniupnpc
+			self.upnp = miniupnpc.UPnP()
+			self.upnp.discoverdelay = UPNP_TIMEOUT
+			self.log.debug("[UPNP] Module available")
+			devices = self.upnp.discover()
+			if devices > 0:
+				self.log.debug("[UPNP] %s device(s) detected" % (devices))
+			else:
+				self.log.debug("[UPNP] No devices detected. Disabling")
+				self.upnp = None
+		except ImportError:
+			self.log.debug("[UPNP] Module not available")
+			pass
+
+	def natpmp_init(self):
+		try:
+			import libnatpmp
+			self.natpmp = True
+			self.log.debug("[NATPMP] Module available")
+		except ImportError:
+			self.log.debug("[NATPMP] Module not available")
+			pass
 
 	#-----------------------------------------------------------------------------
 
@@ -108,6 +143,18 @@ class Client(object):
 			self.reset()
 			raise network.UnableToConnect("Unable to connect to server")
 		self.log.debug("[CONNECT] done")
+
+		if self.localport is None and hasattr(socket, 'fromfd'):
+			s = socket.fromfd(self.host.socket.fileno(), socket.AF_INET, socket.SOCK_DGRAM)
+			self.localport = s.getsockname()[1]
+		if self.localport is not None:
+			self.log.debug("[CONNECT] localport=%s" % (self.localport))
+			if self.extport is None:
+				self.extport = self.upnp_connect(self.localport)
+			if self.extport is None:
+				self.extport = self.natpmp_connect(self.localport)
+		else:
+			self.log.debug("[CONNECT] Unable to determine local port");
 
 	def p2p_connect(self):
 		if self.mode is not ClientMode.Peer2Peer:
@@ -156,9 +203,66 @@ class Client(object):
 				raise network.UnableToConnect("Unable to connect to %s (%s)" % (player.name, player.address))
 		self.log.debug("[P2P CONNECT] done")
 
+	def upnp_connect(self, localport):
+		if self.upnp is None:
+			return None
+		if localport == 0:
+			self.log.debug("[UPNP] Unable to fetch local port (port can't be 0)")
+			return None
+		try:
+			self.upnp.selectigd()
+
+			# search for free port
+			extport = localport
+			mapping = self.upnp.getspecificportmapping(extport, 'UDP')
+			while mapping != None and extport < 65536:
+				extport = extport + 1
+				mapping = self.upnp.getspecificportmapping(extport, 'UDP')
+
+			b = self.upnp.addportmapping(extport, 'UDP', self.upnp.lanaddr, localport, 'Unknown-Horizons', '')
+			if b:
+				self.log.debug("[UPNP] Redirect udp://%s:%s => udp://%s:%s successfully" % (self.upnp.externalipaddress(), extport, self.upnp.lanaddr, localport))
+				return extport
+			else:
+				self.log.debug("[UPNP] Redirect failed")
+		except Exception, e:
+			self.log.debug("[UPNP] Exception: %s" % (e))
+			self.upnp = None
+			pass
+		return None
+
+	def natpmp_connect(self, localport):
+		if self.natpmp is None:
+			return None
+		if localport == 0:
+			self.log.debug("[NATPMP] Unable to fetch local port (port can't be 0)")
+			return None
+		try:
+			# always create a new instance for NATPMP
+			import libnatpmp
+			natpmp = libnatpmp.NATPMP()
+			natpmp.discoverdelay = NATPMP_TIMEOUT
+			# search for free port
+			extport = natpmp.addportmapping(localport, 'UDP', localport, NATPMP_LIFETIME)
+			if extport is not None:
+				self.log.debug("[NATPMP] Redirect udp://%s:%s => udp://<local>:%s successfully" % (natpmp.externalipaddress(), extport, localport))
+				return extport
+			else:
+				self.log.debug("[NATPMP] Redirect failed")
+		except Exception, e:
+			self.log.debug("[NATPMP] Exception: %s" % (e))
+			self.natpmp = None
+			pass
+		return None
+
+
 	#-----------------------------------------------------------------------------
 
 	def disconnect(self, later = False):
+		if self.extport is not None:
+			#self.upnp_disconnect(self.extport) or self.natpmp_disconnect(self.extport, self.localport)
+			self.natpmp_disconnect(self.extport, self.localport) or self.upnp_disconnect(self.extport)
+			self.extport = None
 		if self.mode is ClientMode.Server:
 			return self.server_disconnect(later)
 		elif self.mode is ClientMode.Peer2Peer:
@@ -212,6 +316,41 @@ class Client(object):
 			player.peer = None
 		self.reset()
 		self.log.debug("[P2P DISCONNECT] done")
+
+	def upnp_disconnect(self, extport):
+		if self.upnp is None:
+			return False
+		try:
+			b = self.upnp.deleteportmapping(extport, 'UDP')
+			if b:
+				self.log.debug("[UPNP] Successfully deleted port mapping")
+				return True
+			else:
+				self.log.debug("[UPNP] Failed to remove port mapping")
+		except Exception, e:
+			self.log.debug("[UPNP] Exception: %s" % (e))
+			self.upnp = None
+			pass
+		return False
+
+
+	def natpmp_disconnect(self, extport, localport):
+		if self.natpmp is None:
+			return False
+		try:
+			# always create a new instance for NATPMP
+			import libnatpmp
+			natpmp = libnatpmp.NATPMP()
+			natpmp.discoverdelay = NATPMP_TIMEOUT
+			natpmp.deleteportmapping(extport, 'UDP', localport)
+			self.log.debug("[NATPMP] Successfully deleted port mapping")
+			return True
+		except Exception, e:
+			self.log.debug("[NATPMP] Exception: %s" % (e))
+			self.natpmp = None
+			pass
+		return False
+
 
 	#-----------------------------------------------------------------------------
 
