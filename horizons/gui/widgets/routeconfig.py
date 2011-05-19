@@ -106,20 +106,22 @@ class RouteConfig(object):
 		button.hover_image = self.sell_button_path
 		slot.action = "unload"
 
-	def toggle_load_unload(self, slot, position):
-		#same hack to get the resource
+	def toggle_load_unload(self, slot, entry):
+		position = self.widgets.index(entry)
 		button = slot.findChild(name="buysell")
 		res_button = slot.findChild(name="button")
-		for res in self.instance.route.waypoints[position]['resource_list']:
-			if horizons.main.db.get_res_icon(res)[0] == res_button.up_image.source:
-				self.instance.route.waypoints[position]['resource_list'][res] *= -1
+		res = self.resource_for_icon[res_button.up_image.source]
+
+		if res is not 0:
+			self.instance.route.waypoints[position]['resource_list'][res] *= -1
 
 		if slot.action is "unload":
 			self.show_load_icon(slot)
 		else:
 			self.show_unload_icon(slot)
 
-	def slider_adjust(self, slot, res_id, position):
+	def slider_adjust(self, slot, res_id, entry):
+		position = self.widgets.index(entry)
 		slider = slot.findChild(name="slider")
 		amount = slot.findChild(name="amount")
 		value = int(slider.getValue())
@@ -129,22 +131,27 @@ class RouteConfig(object):
 		self.instance.route.add_to_resource_list(position, res_id, value)
 		slot.adaptLayout()
 
-	def add_resource(self, slot, res_id, icon, position, value=0):
+	def add_resource(self, slot, res_id, entry, has_value = False, value=0):
 		button = slot.findChild(name="button")
-
+		position = self.widgets.index(entry)
 		#remove old resource from waypoints
-		#hack to see if the old image is one of the resources in the list
-		for res in self.instance.route.waypoints[position]['resource_list']:
-			if horizons.main.db.get_res_icon(res)[0] == button.up_image.source:
-				self.instance.route.remove_from_resource_list(position, res)
-				break
+		res = self.resource_for_icon[button.up_image.source]
+		if res is not 0:
+			self.instance.route.remove_from_resource_list(position, res)
 
+		icon = self.icon_for_resource[res_id]
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
 
 		#hide the resource menu
 		self.hide_resource_menu()
 		
 		slider = slot.findChild(name="slider")
+
+		if not has_value:
+			value = int(slider.getValue())
+			if slot.action is "unload":
+				value = -value
+
 		if value < 0:
 			self.show_unload_icon(slot)
 			slider.setValue(float(-value))
@@ -158,11 +165,13 @@ class RouteConfig(object):
 			slot.findChild(name="amount").text = unicode(amount) + "t"
 			slot.adaptLayout()
 			self.instance.route.add_to_resource_list(position, res_id, value)
-			slider.capture(Callback(self.slider_adjust, slot, res_id, position))
+			slider.capture(Callback(self.slider_adjust, slot, res_id, entry))
 		else:
 			slot.findChild(name="amount").text = unicode("")
 
-	def show_resource_menu(self, slot, position):
+	def show_resource_menu(self, slot, entry):
+
+		position = self.widgets.index(entry)
 		if self.resource_menu_shown:
 			return
 		self.resource_menu_shown = True
@@ -170,19 +179,19 @@ class RouteConfig(object):
 		label = self._gui.findChild(name="select_res_label")
 		label.text = unicode("Select Resources")
 
-		resources = horizons.main.db.get_res_id_and_icon(True)
 		#hardcoded for 5 works better than vbox.width / button_width
 		amount_per_line = 5
 
 		current_hbox = widgets.HBox()
 		index = 1
 
-		for (res_id, icon) in [(0, self.dummy_icon_path)] + list(resources):
+		for res_id in self.icon_for_resource:
 			if res_id in self.instance.route.waypoints[position]['resource_list']:
 				continue
 			button = TooltipButton(size=(50,50))
+			icon = self.icon_for_resource[res_id]
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
-			button.capture(Callback(self.add_resource, slot, res_id, icon, position))
+			button.capture(Callback(self.add_resource, slot, res_id, entry))
 			if res_id != 0:
 				button.tooltip = horizons.main.db.get_res_name(res_id)
 			current_hbox.addChild(button)
@@ -215,12 +224,10 @@ class RouteConfig(object):
 			slider.setScaleStart(0.0)
 			slider.setScaleEnd(float(self.instance.inventory.limit))
 
-			position = self.widgets.index(entry)
-
-			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, position))
+			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
 			button = slot.findChild(name="button")
-			button.capture(Callback(self.show_resource_menu, slot, position))
+			button.capture(Callback(self.show_resource_menu, slot, entry))
 			button.up_image = self.dummy_icon_path
 			button.down_image = self.dummy_icon_path
 			button.hover_image = self.dummy_icon_path
@@ -247,11 +254,11 @@ class RouteConfig(object):
 		for res_id in resource_list:
 			if index > self.slots_per_entry:
 				break
-			icon = horizons.main.db.get_res_icon(res_id)[0]
 			self.add_resource(self.slots[entry][index - 1],\
-			                  res_id, icon, \
-			                  self.widgets.index(entry), \
-			                  resource_list[res_id])
+			                  res_id, \
+			                  entry, \
+			                  has_value = True, \
+			                  value = resource_list[res_id])
 			index += 1
 
 		entry.mapEvents({
@@ -275,6 +282,7 @@ class RouteConfig(object):
 			if self.resource_menu_shown:
 				self.hide_resource_menu()
 		except IndexError:
+			#index error is thrown if a branch office can't be appended
 			pass
 
 		self.hide()
@@ -293,6 +301,15 @@ class RouteConfig(object):
 		self.widgets=[]
 		self.slots={}
 		self.slots_per_entry = 3
+
+		resources = horizons.main.db.get_res_id_and_icon(True)
+		#map an icon for a resource
+		#map a resource for an icon
+		self.resource_for_icon = {}
+		self.icon_for_resource = {}
+		for res_id, icon in list(resources) + [(0, self.dummy_icon_path)]:
+			self.resource_for_icon[icon] = res_id
+			self.icon_for_resource[res_id] = icon
 
 		#don't do any actions if the resource menu is shown
 		self.resource_menu_shown = False
