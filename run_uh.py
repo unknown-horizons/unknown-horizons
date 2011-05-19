@@ -76,50 +76,50 @@ def get_option_parser():
 	from horizons.constants import VERSION
 	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
 	p.add_option("-d", "--debug", dest="debug", action="store_true", default=False, \
-							 help=_("Enable debug output to stderr and a logfile."))
+	             help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
-							 help=_("Specify the path to FIFE root directory."))
+	             help=_("Specify the path to FIFE root directory."))
 	p.add_option("--restore-settings", dest="restore_settings", action="store_true", default=False, \
-							 help=_("Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."))
+	             help=_("Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."))
 	p.add_option("--mp-master", dest="mp_master", metavar="<ip:port>", \
-							 help=_("Specify alternative multiplayer master server."))
+	             help=_("Specify alternative multiplayer master server."))
 	p.add_option("--mp-bind", dest="mp_bind", metavar="<ip:port>", \
-							 help=_("Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."))
+	             help=_("Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."))
 
 
 	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
 	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
-														help=_("Starts <map>. <map> is the mapname."))
+	             help=_("Starts <map>. <map> is the mapname."))
 	start_uh_group.add_option("--start-random-map", dest="start_random_map", action="store_true", \
-	                          help=_("Starts a random map."))
+	             help=_("Starts a random map."))
 	start_uh_group.add_option("--start-specific-random-map", dest="start_specific_random_map", \
-							 type="int", metavar="<seed>", help=_("Starts a random map with seed <seed>."))
+	             type="int", metavar="<seed>", help=_("Starts a random map with seed <seed>."))
 	start_uh_group.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>", \
-														help=_("Starts <scenario>. <scenario> is the scenarioname."))
+	             help=_("Starts <scenario>. <scenario> is the scenarioname."))
 	start_uh_group.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>", \
-														help=_("Starts <campaign>. <campaign> is the campaign name."))
+	             help=_("Starts <campaign>. <campaign> is the campaign name."))
 	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
-			default=False, help=_("Starts the development map without displaying the main menu."))
+	             default=False, help=_("Starts the development map without displaying the main menu."))
 	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \
-														help=_("Loads a saved game. <save> is the savegamename."))
+	             help=_("Loads a saved game. <save> is the savegamename."))
 	start_uh_group.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true", \
-														help=_("Loads the last quicksave."))
+	             help=_("Loads the last quicksave."))
 	p.add_option_group(start_uh_group)
 
 	dev_group = optparse.OptionGroup(p, _("Development options"))
 	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true", \
-	                     default=False, help=_("Write debug output only to logfile, not to console. Implies -d."))
+	             default=False, help=_("Write debug output only to logfile, not to console. Implies -d."))
 	dev_group.add_option("--debug-module", action="append", dest="debug_module", \
-											 metavar="<module>", default=[], \
-											 help=_("Enable logging for a certain logging module (for developing only)."))
+	             metavar="<module>", default=[], \
+	             help=_("Enable logging for a certain logging module (for developing only)."))
 	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
-	                     help=_("Writes log to <filename> instead of to the uh-userdir"))
-	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", \
-											 action="store_true", default=False, help=_("For internal use only."))
-	dev_group.add_option("--profile", dest="profile", action="store_true", default=False, \
-											 help=_("Enable profiling (for developing only)."))
-	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true", default=False, \
-											 help=_("Enable the string previewer tool for scenario writers"))
+	             help=_("Writes log to <filename> instead of to the uh-userdir"))
+	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", action="store_true", \
+	             default=False, help=_("For internal use only."))
+	dev_group.add_option("--profile", dest="profile", action="store_true", \
+	             default=False, help=_("Enable profiling (for developing only)."))
+	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true", \
+	             default=False, help=_("Enable the string previewer tool for scenario writers"))
 	p.add_option_group(dev_group)
 
 	return p
@@ -197,7 +197,7 @@ def main():
 		outfilename = tempfile.mkstemp(text = True)[1]
 		print 'Starting in profile mode. Writing output to:', outfilename
 		profile.runctx('horizons.main.start(options)', globals(), locals(), \
-									 outfilename)
+			             outfilename)
 		print 'Program ended. Profiling output:', outfilename
 
 	if ret:
