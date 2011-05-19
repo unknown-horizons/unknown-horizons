@@ -60,7 +60,7 @@ class GenericStorage(ChangeListener):
 				ownerid, slot[0], slot[1])
 
 	def load(self, db, ownerid):
-		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
+		for (res, amount) in db.get_storage_rowids_by_ownerid(ownerid):
 			assert self[res] == 0
 			self.alter(res, amount)
 
@@ -191,8 +191,7 @@ class SizedSpecializedStorage(SpecializedStorage):
 	def load(self, db, ownerid):
 		super(SizedSpecializedStorage, self).load(db, ownerid)
 		for res in self._storage:
-			self.__slot_limits[res] = int(db("SELECT value FROM storage_slot_limit WHERE object = ? AND slot = ?", \
-								 ownerid, res)[0][0])
+			self.__slot_limits[res] = db.get_storage_slot_limit(ownerid, res)
 
 class GlobalLimitStorage(GenericStorage):
 	"""Storage with some kind of global limit. This limit has to be interpreted in the subclass,

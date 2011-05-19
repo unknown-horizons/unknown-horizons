@@ -150,11 +150,9 @@ class WildAnimal(CollectorAnimal, Collector):
 	def load(self, db, worldid):
 		super(WildAnimal, self).load(db, worldid)
 		# get own properties
-		health, can_reproduce = \
-				db("SELECT health, can_reproduce FROM wildanimal WHERE rowid = ?", worldid)[0]
+		health, can_reproduce = db.get_wildanimal_row(worldid)
 		# get home island
-		home_island_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
-		island = WorldObject.get_object_by_id(home_island_id)
+		island = WorldObject.get_object_by_id(db.get_unit_owner(worldid))
 		self.__init(island, bool(can_reproduce), health)
 
 	def apply_state(self, state, remaining_ticks=None):

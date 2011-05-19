@@ -132,11 +132,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	def load(self, db, worldid):
 		super(BasicBuilding, self).load(db, worldid)
-		x, y, self.health, location, rotation, level= \
-		 db("SELECT x, y, health, location, rotation, level FROM building WHERE rowid = ?", worldid)[0]
+		x, y, self.health, location, rotation, level = db.get_building_row(worldid)
 
-		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
-		owner = None if len(owner_db) == 0 else WorldObject.get_object_by_id(owner_db[0][0])
+		owner_id = db.get_settlement_owner(location)
+		owner = None if owner_id is None else WorldObject.get_object_by_id(owner_id)
 
 		remaining_ticks_of_month = None
 		if self.has_running_costs:
@@ -155,12 +154,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		Does not alter self, just gets island and settlement from a savegame.
 		@return: tuple: (island, settlement)
 		"""
-		location = db("SELECT location FROM building WHERE rowid = ?", worldid)[0][0]
-		location_obj = WorldObject.get_object_by_id(location)
+		location_obj = WorldObject.get_object_by_id(db.get_building_location(worldid))
 		if isinstance(location_obj, Settlement):
 			# workaround: island can't be fetched from world, because it isn't fully constructed
-			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.worldid)[0][0]
-			island = WorldObject.get_object_by_id(island_id)
+			island = WorldObject.get_object_by_id(db.get_settlement_island(location_obj.worldid))
 			# settlement might not have been registered in island, so do it if getter fails
 			settlement = island.get_settlement(self.position.center()) or \
 								 island.add_existing_settlement(self.position, self.radius, location_obj)

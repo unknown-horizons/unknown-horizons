@@ -82,8 +82,6 @@ class Pirate(AIPlayer):
 			if ship:
 				self.log.debug("Pirate: Scout found ship: %s" % ship.name)
 				self.send_ship(pirate_ship)
-			else:
-				self.predict_player_position(pirate_ship)
 
 	def save(self, db):
 		super(Pirate, self).save(db)

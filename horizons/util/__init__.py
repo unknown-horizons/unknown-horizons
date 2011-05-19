@@ -30,6 +30,7 @@ from loaders.tilesetloader import TileSetLoader
 from pychanchildfinder import PychanChildFinder
 from named_object import NamedObject
 from dbreader import DbReader
+from savegameaccessor import SavegameAccessor
 from sqliteanimationloader import SQLiteAnimationLoader
 
 from shapes.point import Point, ConstPoint

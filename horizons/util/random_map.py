@@ -24,7 +24,7 @@ import sys
 import shutil
 import re
 import string
-import time
+import copy
 
 from horizons.util import Circle, Rect, Point, DbReader
 from horizons.constants import GROUND, PATHS
@@ -56,7 +56,7 @@ def create_random_island(id_string):
 
 	rand = random.Random(seed)
 
-	map_dict = {}
+	map_set = set()
 
 	# creation_method 0 - standard small island for the 3x3 grid
 	# creation_method 1 - large island
@@ -109,9 +109,9 @@ def create_random_island(id_string):
 		if shape:
 			for shape_coord in shape.tuple_iter():
 				if add:
-					map_dict[shape_coord] = True
-				elif shape_coord in map_dict:
-					del map_dict[shape_coord]
+					map_set.add(shape_coord)
+				elif shape_coord in map_set:
+					map_set.discard(shape_coord)
 
 	# write values to db
 	map_db = DbReader(":memory:")
@@ -120,7 +120,7 @@ def create_random_island(id_string):
 	map_db("BEGIN TRANSACTION")
 
 	# add grass tiles
-	for x, y in map_dict.iterkeys():
+	for x, y in map_set:
 		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, GROUND.DEFAULT_LAND)
 
 	def fill_tiny_spaces(tile):
@@ -128,18 +128,34 @@ def create_random_island(id_string):
 		@param tile: ground tile to fill with
 		"""
 
+		all_neighbours = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		neighbours = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		corners = [(-1, -1), (-1, 1)]
 		knight_moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
 		bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3, (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
 
+		edge_set = copy.copy(map_set)
+		reduce_edge_set = True
+
 		while True:
-			to_fill = {}
-			for x, y in map_dict.iterkeys():
+			to_fill = set()
+			to_ignore = set()
+			for x, y in edge_set:
+				# ignore the tiles with no empty neighbours
+				if reduce_edge_set:
+					is_edge = False
+					for x_offset, y_offset in all_neighbours:
+						if (x + x_offset, y + y_offset) not in map_set:
+							is_edge = True
+							break
+					if not is_edge:
+						to_ignore.add((x, y))
+						continue
+
 				for x_offset, y_offset in neighbours:
 					x2 = x + x_offset
 					y2 = y + y_offset
-					if (x2, y2) in map_dict:
+					if (x2, y2) in map_set:
 						continue
 					# (x2, y2) is now a point just off the island
 
@@ -147,37 +163,37 @@ def create_random_island(id_string):
 					for i in xrange(len(neighbours)):
 						x3 = x2 + neighbours[i][0]
 						y3 = y2 + neighbours[i][1]
-						if (x3, y3) not in map_dict:
+						if (x3, y3) not in map_set:
 							neighbours_dirs |= (1 << i)
 					if neighbours_dirs in bad_configs:
 						# part of a straight 1 tile gulf
-						to_fill[(x2, y2)] = True
+						to_fill.add((x2, y2))
 					else:
 						for x_offset, y_offset in corners:
 							x3 = x2 + x_offset
 							y3 = y2 + y_offset
 							x4 = x2 - x_offset
 							y4 = y2 - y_offset
-							if (x3, y3) in map_dict and (x4, y4) in map_dict:
+							if (x3, y3) in map_set and (x4, y4) in map_set:
 								# part of a diagonal 1 tile gulf
-								to_fill[(x2, y2)] = True
+								to_fill.add((x2, y2))
 								break
 
 				# block 1 tile straits
 				for x_offset, y_offset in knight_moves:
 					x2 = x + x_offset
 					y2 = y + y_offset
-					if (x2, y2) not in map_dict:
+					if (x2, y2) not in map_set:
 						continue
 					if abs(x_offset) == 1:
 						y2 = y + y_offset / 2
-						if (x2, y2) in map_dict or (x, y2) in map_dict:
+						if (x2, y2) in map_set or (x, y2) in map_set:
 							continue
 					else:
 						x2 = x + x_offset / 2
-						if (x2, y2) in map_dict or (x2, y) in map_dict:
+						if (x2, y2) in map_set or (x2, y) in map_set:
 							continue
-					to_fill[(x2, y2)] = True
+					to_fill.add((x2, y2))
 
 				# block diagonal 1 tile straits
 				for x_offset, y_offset in corners:
@@ -185,15 +201,19 @@ def create_random_island(id_string):
 					y2 = y + y_offset
 					x3 = x + 2 * x_offset
 					y3 = y + 2 * y_offset
-					if (x2, y2) not in map_dict and (x3, y3) in map_dict:
-						to_fill[(x2, y2)] = True
-					elif (x2, y2) in map_dict and (x2, y) not in map_dict and (x, y2) not in map_dict:
-						to_fill[(x2, y)] = True
+					if (x2, y2) not in map_set and (x3, y3) in map_set:
+						to_fill.add((x2, y2))
+					elif (x2, y2) in map_set and (x2, y) not in map_set and (x, y2) not in map_set:
+						to_fill.add((x2, y))
 
 			if to_fill:
-				for x, y in to_fill.iterkeys():
-					map_dict[(x, y)] = tile
+				for x, y in to_fill:
+					map_set.add((x, y))
 					map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
+
+				old_size = len(edge_set)
+				edge_set = edge_set.difference(to_ignore).union(to_fill)
+				reduce_edge_set = old_size - len(edge_set) > 50
 			else:
 				break
 
@@ -213,22 +233,22 @@ def create_random_island(id_string):
 		"""
 		@return: the points just off the island as a dict
 		"""
-		result = {}
-		for x, y in map_dict.iterkeys():
+		result = set()
+		for x, y in map_set:
 			for offset_x, offset_y in all_moves.itervalues():
 				coords = (x + offset_x, y + offset_y)
-				if coords not in map_dict:
-					result[coords] = True
+				if coords not in map_set:
+					result.add(coords)
 		return result
 
 	# add grass to sand tiles
 	fill_tiny_spaces(GROUND.DEFAULT_LAND)
 	outline = get_island_outline()
-	for x, y in outline.iterkeys():
+	for x, y in outline:
 		filled = []
 		for dir in sorted(all_moves):
 			coords = (x + all_moves[dir][1], y + all_moves[dir][0])
-			if coords in map_dict:
+			if coords in map_set:
 				filled.append(dir)
 
 		tile = None
@@ -273,18 +293,16 @@ def create_random_island(id_string):
 
 		assert tile
 		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
-
-	for coords, type in outline.iteritems():
-		map_dict[coords] = type
+	map_set = map_set.union(outline)
 
 	# add sand to shallow water tiles
 	fill_tiny_spaces(GROUND.SAND)
 	outline = get_island_outline()
-	for x, y in outline.iterkeys():
+	for x, y in outline:
 		filled = []
 		for dir in sorted(all_moves):
 			coords = (x + all_moves[dir][1], y + all_moves[dir][0])
-			if coords in map_dict:
+			if coords in map_set:
 				filled.append(dir)
 
 		tile = None
@@ -329,18 +347,16 @@ def create_random_island(id_string):
 
 		assert tile
 		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
-
-	for coords, type in outline.iteritems():
-		map_dict[coords] = type
+	map_set = map_set.union(outline)
 
 	# add shallow water to deep water tiles
 	fill_tiny_spaces(GROUND.SHALLOW_WATER)
 	outline = get_island_outline()
-	for x, y in outline.iterkeys():
+	for x, y in outline:
 		filled = []
 		for dir in sorted(all_moves):
 			coords = (x + all_moves[dir][1], y + all_moves[dir][0])
-			if coords in map_dict:
+			if coords in map_set:
 				filled.append(dir)
 
 		tile = None

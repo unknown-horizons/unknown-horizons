@@ -70,8 +70,8 @@ class ResourceHandler(StorageHolder):
 		super(ResourceHandler, self).load(db, worldid)
 		self.__init()
 		# load all productions
-		for production in db('SELECT rowid FROM production WHERE owner = ?', worldid):
-			self.add_production( self.load_production(db, production[0]) )
+		for production in db.get_production_ids_by_owner(worldid):
+			self.add_production( self.load_production(db, production) )
 
 	def remove(self):
 		super(ResourceHandler, self).remove()

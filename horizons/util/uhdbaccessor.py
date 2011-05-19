@@ -111,7 +111,7 @@ class UhDbAccessor(DbReader):
 		      WHERE object_id = ? and level = ?"
 
 		if exact_level:
-			db_data = self(sql, object_id, level)
+			db_data = self.cached_query(sql, object_id, level)
 			if db_data:
 				return db_data[ randint(0, len(db_data)-1) ]
 			else:
@@ -119,7 +119,7 @@ class UhDbAccessor(DbReader):
 
 		else: # search all levels for an action set, starting with highest one
 			for possible_level in reversed(xrange(level+1)):
-				db_data = self(sql, object_id, possible_level)
+				db_data = self.cached_query(sql, object_id, possible_level)
 				if db_data: # break if we found sth in this lvl
 					return db_data[ randint(0, len(db_data)-1) ]
 			assert False, "Couldn't find action set for obj %s in lvl %s" % (object_id, level)
