@@ -11,9 +11,10 @@
 			<Icon image="content/gui/images/background/hr.png"  position="52,30" />
 
 			<RadioButton position="22,50"  size="32,32"  name="showScenario"  group="gametype" text="Scenario" />
-			<RadioButton position="22,80"  size="32,32"  name="showRandom"    group="gametype" text="Random map" />
-			<RadioButton position="22,110" size="32,32"  name="showMaps"      group="gametype" text="Free play" />
-			<Icon image="content/gui/images/background/hr.png"  position="52,140" />
+			<RadioButton position="22,80"  size="32,32"  name="showCampaign"  group="gametype" text="Campaign" />
+			<RadioButton position="22,110" size="32,32"  name="showRandom"    group="gametype" text="Random map" />
+			<RadioButton position="22,140" size="32,32"  name="showMaps"      group="gametype" text="Free play" />
+			<Icon image="content/gui/images/background/hr.png"  position="52,170" />
 
 			<HBox position="42,470"  min_size="0,40" >
 				<Label name="main_menu_label" text="Main menu:" />
@@ -26,7 +27,7 @@
 		the content doesn't show up. Pychan wasn't designed for Containers within Containers,
 		which might be the source of this bug
 		-->
-		<VBox name="playerdataselectioncontainer"  position="200,290" />
+		<VBox name="playerdataselectioncontainer"  position="200,320" />
 
 		<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side">
 			<Label text="Choose a map to play:"  name="choose_map_lbl" />

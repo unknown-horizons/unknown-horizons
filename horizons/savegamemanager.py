@@ -328,14 +328,29 @@ class SavegameManager(object):
 		return (files, names, scenarios_lists, campaign_datas)
 
 	@classmethod
-	def get_campaigns_scenarios(cls, campaign_name):
+	def get_campaign_info(cls, name = "", file = ""):
 		"""Return this campaign's scenario list"""
-		cfiles, cnames, cscenarios = cls.get_campaigns(include_displaynames = True, include_scenario_list = True)
-		if not campaign_name in cnames:
-			print _("Error: Cannot find campaign \"%s\".") % (campaign_name,)
-			return False
-		index = cnames.index(campaign_name)
-		return cscenarios[index]
+		assert (name or file)
+		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames = True, include_scenario_list = True, campaign_data = True)
+		sfiles, snames = cls.get_scenarios(include_displaynames = True)
+		if name:
+			if not name in cnames:
+				print _("Error: Cannot find campaign \"%s\".") % (name,)
+				return False
+			index = cnames.index(name)
+		elif file:
+			if not file in cfiles:
+				print _("Error: Cannot find campaign with file \"%s\".") % (file,)
+				return False
+			index = cfiles.index(file)
+		infos = cdatas[index]
+		infos.update({'codename': cnames[index], 'filename': cfiles[index]})
+		for scenario in cscenarios[index]:
+			# find the scenario file
+			if not scenario in snames:
+				continue
+			infos.setdefault('scenario_files', {}).update({scenario: sfiles[snames.index(scenario)]})
+		return infos
 
 	@classmethod
 	def mark_scenario_as_won(cls, campaign_data):
@@ -357,7 +372,8 @@ class SavegameManager(object):
 	@classmethod
 	def load_next_scenario(cls, campaign_data):
 		"""This loads the next scenario by starting a new game"""
-		scenarios = cls.get_campaigns_scenarios(campaign_data['campaign_name'])
+		campaign = cls.get_campaign_info(campaign_data['campaign_name'])
+		scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 		next_index = campaign_data['scenario_index'] + 1
 		if next_index == len(scenarios):
 			# If no more scenario, do the same thing as in the "old" do_win action
