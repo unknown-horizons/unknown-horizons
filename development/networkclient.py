@@ -1,10 +1,18 @@
 #!/usr/bin/python
 
+
 import getopt
 import os
 import sys
 import platform
 import signal
+import logging
+import logging.config
+import logging.handlers
+import gettext
+gettext.install('', unicode=True)
+
+sys.path.append(os.getcwd())
 from horizons.network.client import Client, ClientMode
 import horizons.network
 
@@ -211,6 +219,10 @@ except ValueError, IndexError:
 if host == None or port == None or port <= 0:
   usage()
   sys.exit(1)
+
+logging.config.fileConfig( os.path.join('content', 'logging.conf'))
+logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
+logging.getLogger("network").setLevel(logging.DEBUG)
 
 version = "0.512a"
 name = "client-%u" % (os.getpid())
