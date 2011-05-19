@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 22:40+0200\n"
+"PO-Revision-Date: 2011-05-19 22:49+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1414,26 +1414,31 @@ msgstr "Для этого нам нужна информация из лог-ф�
 #: run_uh.py:143
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
+"Пожалуйста предоставьте её нам через IRC или наш форум, оба указаны на сайте "
+"unknown-horizons.org ."
 
 #: run_uh.py:198
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Спасибо за использование Неизведанных Горизонтов!"
 
+# "fife" means engine, right ?
 #: run_uh.py:274
+#, fuzzy
 msgid "Failed to load fife:"
-msgstr ""
+msgstr "Невозможно загрузить FIFE:"
 
 #: run_uh.py:344
 msgid "FIFE was not found."
-msgstr ""
+msgstr "FIFE не найден."
 
 #: sqlite/Building
 msgid "Boat Builder"
 msgstr "Верфь"
 
 #: sqlite/Building
+#, fuzzy
 msgid "Branch Office"
-msgstr ""
+msgstr "Филиал"
 
 #: sqlite/Building
 msgid "Brickyard"
@@ -1441,7 +1446,7 @@ msgstr "Кирпичный завод"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Костёр для углежжения"
 
 #: sqlite/Building
 msgid "Clay Deposit"
@@ -1453,7 +1458,7 @@ msgstr "Глиняный карьер"
 
 #: sqlite/Building
 msgid "Distillery"
-msgstr ""
+msgstr "Винокуренный завод"
 
 #: sqlite/Building
 msgid "Farm"
@@ -1461,7 +1466,7 @@ msgstr "Ферма"
 
 #: sqlite/Building
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Район рыбной ловли"
 
 #: sqlite/Building
 msgid "Fisherman's Tent"
@@ -1481,7 +1486,7 @@ msgstr "Журнал"
 
 #: sqlite/Building
 msgid "Lookout"
-msgstr ""
+msgstr "Наблюдательный пост"
 
 #: sqlite/Building
 msgid "Lumberjack Camp"
@@ -1509,7 +1514,7 @@ msgstr "Картофельное поле"
 
 #: sqlite/Building
 msgid "Rampart"
-msgstr ""
+msgstr "Защитный вал"
 
 #: sqlite/Building
 msgid "Signal Fire"
