@@ -424,7 +424,7 @@ class Fife(ApplicationBase):
 			parse_port(port, allow_zero=True)
 		except ValueError:
 			headline = _("Invalid network port")
-			descr = _("The port you specified is not valid. It must be  a number between 1 and 65535.")
+			descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
 			advice = _("Please check the port you entered and make sure it's in the specified range.")
 			horizons.main._modules.gui.show_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
@@ -442,7 +442,7 @@ class Fife(ApplicationBase):
 				advice = _(u"Check the data you entered in the Network section.")
 				if 0 < parse_port(port, allow_zero=True) < 1024:
 					advice += u" " + \
-					       _("Low port numbers sometimes require special priviledges, try one greater than 1024 or 0.")
+					       _("Low port numbers sometimes require special privileges, try one greater than 1024 or 0.")
 				details = unicode(e)
 				horizons.main._modules.gui.show_error_popup(headline, descr, advice, details)
 				ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)
