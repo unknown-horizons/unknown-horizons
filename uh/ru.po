@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 21:19+0200\n"
+"PO-Revision-Date: 2011-05-19 21:46+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -510,19 +510,19 @@ msgstr "Плавильня: Перерабатывает все виды руд�
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "Таверна: Предоставляет место для встреч."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Изготовитель инструментов: Изготавливает инструменты из железа."
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:283
 msgid "Running costs:"
-msgstr "Зксплуатационные расходы:"
+msgstr "Эксплуатационные расходы:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Inhabitants"
-msgstr ""
+msgstr "Жители"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Click to change the name of your settlement."
@@ -534,11 +534,11 @@ msgstr "Разрушить"
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Build menu"
-msgstr ""
+msgstr "Меню строительства"
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Game menu"
-msgstr ""
+msgstr "Меню игры"
 
 #: horizons/i18n/guitranslations.py:91 horizons/i18n/guitranslations.py:133
 #: horizons/i18n/guitranslations.py:173
@@ -551,27 +551,27 @@ msgstr "Капитанский журнал"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Rotate map counterclockwise"
-msgstr ""
+msgstr "Вращать карту против часовой стрелки"
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Rotate map clockwise"
-msgstr ""
+msgstr "Вращать карту по часовой стрелке"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Decrease game speed"
-msgstr ""
+msgstr "Уменьшить скорость игры"
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Increase game speed"
-msgstr ""
+msgstr "Увеличить скорость игры"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Zoom in"
-msgstr ""
+msgstr "Приблизить"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Zoom out"
-msgstr ""
+msgstr "Отдалить"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Boards"
@@ -652,11 +652,11 @@ msgstr "Читать следующую запись"
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Exit"
-msgstr ""
+msgstr "Выход"
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Add to list"
-msgstr ""
+msgstr "Добавить в список"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Start / Stop route"
@@ -664,7 +664,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:131 horizons/i18n/guitranslations.py:171
 msgid "Attention please!"
-msgstr ""
+msgstr "Обратите внимание!"
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
 #, fuzzy
@@ -688,11 +688,11 @@ msgstr "Вернуться в игру"
 
 #: horizons/i18n/guitranslations.py:141
 msgid "The FIFE and Unknown Horizons"
-msgstr ""
+msgstr "FIFE и Неизведанные Горизонты"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "development teams"
-msgstr "команда разработчиков"
+msgstr "команды разработчиков"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Have fun."
