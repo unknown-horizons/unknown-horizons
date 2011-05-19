@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 01:55+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-05-19 21:19+0200\n"
+"Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -74,11 +74,11 @@ msgstr "Выйти из игры"
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Вы уверены, что хотите прервать текущую сессию?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
-msgstr ""
+msgstr "Покинуть сессию"
 
 #: horizons/gui/gui.py:196
 msgid "No saved games"
@@ -171,7 +171,7 @@ msgstr "Не удалось уничтожить файл сохранения!"
 
 #: horizons/gui/ingamegui.py:441
 msgid "Hit P to continue the game or click below!"
-msgstr ""
+msgstr "Нажмите P, чтобы продолжить игру или кликните ниже!"
 
 #: horizons/gui/ingamegui.py:442
 msgid "Game paused"
@@ -181,7 +181,7 @@ msgstr "Игра приостановлена"
 #: horizons/gui/modules/multiplayermenu.py:95
 #, python-format
 msgid "Could not connect to master server. Details: %s"
-msgstr ""
+msgstr "Невозможно подключиться к мастер-серверу. Подробности: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
@@ -195,7 +195,7 @@ msgstr "Проблемы с сетью: "
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
-msgstr ""
+msgstr "Версия не совпадает!"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
@@ -213,14 +213,21 @@ msgstr "Создатель: "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Версия игры отличается от Вашей версии. Все игроки в многопользовательской "
+"игре должны использовать одинаковые версии. Чтобы исправить это, каждый "
+"игрок может обновиться до последней версии. Версия игры: %(gameversion)s "
+"Ваша версия: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Wrong version"
-msgstr ""
+msgstr "Неправильная версия"
 
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
 msgstr ""
+"Случайные карты всё ещё в активной разработке. Текущая версия "
+"рассматривается, как версия для предварительного тестирования. Возможны "
+"проблемы."
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
@@ -278,9 +285,8 @@ msgstr "Необходимые ресурсы:"
 
 # 76%
 #: horizons/gui/tabs/boatbuildertab.py:170
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Рыбацкая лодка"
+msgstr "Рыбацкие суда"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 msgid "Trade boats"
@@ -288,11 +294,11 @@ msgstr "Торговые суда"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 msgid "War boats"
-msgstr ""
+msgstr "Военные суда"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 msgid "War ships"
-msgstr ""
+msgstr "Военные корабли"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
@@ -384,9 +390,8 @@ msgid "Services"
 msgstr "Услуги"
 
 #: horizons/i18n/guitranslations.py:46
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr "ы: Предоставляет морякам доступ к религии."
+msgstr "Павильон: Предоставляет морякам доступ к религии."
 
 #: horizons/i18n/guitranslations.py:47
 #, fuzzy
@@ -434,7 +439,7 @@ msgstr "Поля"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "Здания поселенцев"
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
@@ -456,7 +461,7 @@ msgstr "Глиняный карьер: Добывает глину из зале
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
-msgstr ""
+msgstr "Винокуренный завод: Делает алкоголь из сахара."
 
 #: horizons/i18n/guitranslations.py:66
 #, fuzzy
@@ -475,6 +480,8 @@ msgstr "Картофельное поле: Производит еду. Необ
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
+"Плантация сахарного тростника: Используется в производстве алкоголя. "
+"Нуждается в ферме."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
@@ -491,15 +498,15 @@ msgstr "Здание поселенца"
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr ""
+msgstr "Костёр для углежжения: Сжигает большое количество досок."
 
 #: horizons/i18n/guitranslations.py:77
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr ""
+msgstr "Железный рудник: Добывает железную руду из месторождения."
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Smeltery: Refines all kind of ores."
-msgstr ""
+msgstr "Плавильня: Перерабатывает все виды руды."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Tavern: Provides get-together."
