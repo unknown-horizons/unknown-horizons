@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 22:49+0200\n"
+"PO-Revision-Date: 2011-05-19 22:55+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1524,13 +1524,15 @@ msgstr "Сигнальный огонь"
 msgid "Smeltery"
 msgstr "Плавильня"
 
+# Can we drop the 'Tent' part ? Or we need something like 'Палатка-хранилище', 'Склад-палатка' etc.
 #: sqlite/Building
+#, fuzzy
 msgid "Storage Tent"
-msgstr ""
+msgstr "Хранилище"
 
 #: sqlite/Building
 msgid "Sugar Field"
-msgstr ""
+msgstr "Сахарная плантация"
 
 #: sqlite/Building
 msgid "Tavern"
@@ -1541,8 +1543,9 @@ msgid "Tent"
 msgstr "Палатка"
 
 #: sqlite/Building
+#, fuzzy
 msgid "Tent_ruin"
-msgstr ""
+msgstr "Разрушенный шатёр"
 
 #: sqlite/Building
 msgid "Toolmaker"
