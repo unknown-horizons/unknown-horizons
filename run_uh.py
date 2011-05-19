@@ -69,25 +69,25 @@ def find_uh_position():
 			pos = os.path.join(i, 'unknown-horizons')
 			if os.path.exists( pos ):
 				return pos
-	raise RuntimeError('Cannot find location of unknown horizons.')
+	raise RuntimeError('Cannot find location of Unknown Horizons.')
 
 def get_option_parser():
 	"""Returns inited OptionParser object"""
 	from horizons.constants import VERSION
 	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
-	p.add_option("-d", "--debug", dest="debug", action="store_true", default=False, \
-	             help=_("Enable debug output to stderr and a logfile."))
+	p.add_option("-d", "--debug", dest="debug", action="store_true", \
+	             default=False, help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
 	             help=_("Specify the path to FIFE root directory."))
-	p.add_option("--restore-settings", dest="restore_settings", action="store_true", default=False, \
-	             help=_("Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."))
+	p.add_option("--restore-settings", dest="restore_settings", action="store_true", \
+	             default=False, help=_("Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."))
 	p.add_option("--mp-master", dest="mp_master", metavar="<ip:port>", \
 	             help=_("Specify alternative multiplayer master server."))
 	p.add_option("--mp-bind", dest="mp_bind", metavar="<ip:port>", \
 	             help=_("Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."))
 
 
-	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
+	start_uh_group = optparse.OptionGroup(p, _("Starting Unknown Horizons"))
 	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
 	             help=_("Starts <map>. <map> is the mapname."))
 	start_uh_group.add_option("--start-random-map", dest="start_random_map", action="store_true", \
@@ -172,7 +172,7 @@ def main():
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig( os.path.join('content', 'logging.conf'))
 
-	gettext.install("unknownhorizons", "build/mo", unicode=True)
+	gettext.install("unknown-horizons", "content/lang", unicode=True)
 
 	create_user_dirs()
 
@@ -181,7 +181,7 @@ def main():
 	# NOTE: this might cause a program restart
 	init_environment()
 
-	#start unknownhorizons
+	#start UH
 	import horizons.main
 	ret = True
 	if not options.profile:
@@ -197,7 +197,7 @@ def main():
 		outfilename = tempfile.mkstemp(text = True)[1]
 		print 'Starting in profile mode. Writing output to:', outfilename
 		profile.runctx('horizons.main.start(options)', globals(), locals(), \
-			             outfilename)
+		               outfilename)
 		print 'Program ended. Profiling output:', outfilename
 
 	if ret:
@@ -265,7 +265,7 @@ def init_environment():
 	"""Sets up everything. Use in any program that requires access to FIFE and uh modules.
 	It will parse sys.args, so this var has to contain only valid uh options."""
 
-	gettext.install("unknownhorizons", "po", unicode=True)
+	gettext.install("unknown-horizons", "po", unicode=True)
 
 	options = get_option_parser().parse_args()[0]
 
@@ -284,7 +284,7 @@ def init_environment():
 		find_FIFE(options.fife_path) # this restarts or terminates the program
 		assert False
 
-	#for some external libraries distributed with unknownhorizons
+	#for some external libraries distributed with UH
 	sys.path.append( os.path.join('horizons', 'ext') )
 
 	args_to_discard_now = ['--fife-in-library-path', '--fife-path']
@@ -315,9 +315,9 @@ def get_fife_path(fife_custom_path=None):
 		except (ImportError, AttributeError):
 		# no config, try frequently used paths
 			_paths += [ os.path.join(a, b, c) for \
-									a in ('.', '..', '../..') for \
-									b in ('.', 'fife', 'FIFE', 'Fife') for \
-									c in ('.', 'trunk') ]
+			                         a in ('.', '..', '../..') for \
+			                            b in ('.', 'fife', 'FIFE', 'Fife') for \
+			                               c in ('.', 'trunk') ]
 
 	fife_path = None
 	for p in _paths:

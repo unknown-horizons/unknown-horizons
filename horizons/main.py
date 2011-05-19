@@ -251,8 +251,9 @@ def load_game(savegame = None, is_scenario = False, campaign = {}):
 
 
 def _init_gettext(fife):
-	from gettext import translation, install
-	install('unknownhorizons', 'build/mo', unicode=True)
+	from gettext import translation
+	namespace_translation = translation('unknown-horizons', 'content/lang', fallback=True)
+	_ = namespace_translation.ugettext
 	fife.update_languages()
 
 

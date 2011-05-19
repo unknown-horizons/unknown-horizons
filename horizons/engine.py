@@ -188,15 +188,15 @@ class Fife(ApplicationBase):
 				# English is not shipped as .mo file, thus if English is
 				# selected we use NullTranslations to get English output.
 				fallback = name == 'en'
-				trans = gettext.translation('unknownhorizons', position, languages=[name], fallback=fallback)
-				trans.install(unicode=True, names='ngettext')
+				trans = gettext.translation('unknown-horizons', position, languages=[name], fallback=fallback)
+				trans.install(unicode=True, names=['ngettext',])
 			else:
-				gettext.install('unknownhorizons', 'build/mo', unicode=True, names='ngettext')
+				gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 				name = ''
 
 		except IOError:
 			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': name, 'place': position}
-			gettext.install('unknownhorizons', 'build/mo', unicode=True, names='ngettext')
+			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 			self._setting.set(UH_MODULE, "Language", 'System default')
 		update_all_translations()
 

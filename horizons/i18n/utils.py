@@ -25,19 +25,19 @@ from gettext import translation
 N_ takes care of plural forms for different languages. It masks ungettext
 calls (unicode, plural-aware _() ) to operate on module level after import.
 We will need to make it recognise namespaces some time, but hardcoded
-'unknownhorizons' works for now since we currently only use one namespace.
+'unknown-horizons' works for now since we currently only use one namespace.
 """
-namespace_translation = translation('unknownhorizons', fallback=True)
+namespace_translation = translation('unknown-horizons', fallback=True)
 N_ = namespace_translation.ungettext
 
 
 def find_available_languages():
 	alternatives = ('content/lang',
 	                'build/mo',
-		            '/usr/share/locale',
-		            '/usr/share/games/locale',
-		            '/usr/local/share/locale',
-		            '/usr/local/share/games/locale')
+	                '/usr/share/locale',
+	                '/usr/share/games/locale',
+	                '/usr/local/share/locale',
+	                '/usr/local/share/games/locale')
 
 	import os
 	from glob import glob
@@ -45,7 +45,7 @@ def find_available_languages():
 	languages = []
 
 	for i in alternatives:
-		for j in glob('%s/*/*/unknownhorizons.mo' % i):
+		for j in glob('%s/*/*/unknown-horizons.mo' % i):
 			splited = j.split(os.sep)
 			languages.append((splited[-3], os.sep.join(splited[:-3])))
 			#TODO we need to strip strings here if an "@" occurs and only
