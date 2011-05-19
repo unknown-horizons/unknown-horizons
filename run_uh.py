@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""TUTORIAL: This is the Unknown Horizons launcher, it looks for fife and tries
+"""TUTORIAL: This is the Unknown Horizons launcher, it looks for FIFE and tries
 to start the game.
 Read all docstrings and get familiar with the functions and attributes.
 I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
@@ -237,8 +237,8 @@ def parse_args():
 		logging.getLogger().addHandler(file_handler)
 		# log exceptions
 		sys.excepthook = excepthook_creator(logfilename)
-		# log any other stdout output there (this happens, when fife c++ code launches some
-		# fife python code and an exception happens there). The exceptionhook only gets
+		# log any other stdout output there (this happens, when FIFE c++ code launches some
+		# FIFE python code and an exception happens there). The exceptionhook only gets
 		# a director exception, but no real error message then.
 		class StdOutDuplicator(object):
 			def write(self, line):
@@ -262,14 +262,14 @@ NOTE: these are supposed to be in an extra file, but are placed here for simplif
 			distribution
 """
 def init_environment():
-	"""Sets up everything. Use in any program that requires access to fife and uh modules.
+	"""Sets up everything. Use in any program that requires access to FIFE and uh modules.
 	It will parse sys.args, so this var has to contain only valid uh options."""
 
 	gettext.install("unknownhorizons", "po", unicode=True)
 
 	options = get_option_parser().parse_args()[0]
 
-	#find fife and setup search paths, if it can't be imported yet
+	#find FIFE and setup search paths, if it can't be imported yet
 	try:
 		if options.fife_path is None or options.fife_in_library_path is not None:
 			from fife import fife
@@ -277,9 +277,9 @@ def init_environment():
 		if options.fife_in_library_path:
 			# fife should already be in LD_LIBRARY_PATH
 			log_paths()
-			print _('Failed to load fife:'), e
+			print _('Failed to load FIFE:'), e
 			exit(1)
-		log().debug('Failed to load fife from default paths: %s', e)
+		log().debug('Failed to load FIFE from default paths: %s', e)
 		log().debug('Searching for FIFE')
 		find_FIFE(options.fife_path) # this restarts or terminates the program
 		assert False
@@ -293,8 +293,8 @@ def init_environment():
 			sys.argv.remove(arg)
 
 def get_fife_path(fife_custom_path=None):
-	"""Returns absolute path to fife engine. Calls sys.exit() if it can't be found."""
-	# assemble a list of paths where fife could be located at
+	"""Returns absolute path to FIFE engine. Calls sys.exit() if it can't be found."""
+	# assemble a list of paths where FIFE could be located at
 	_paths = []
 	# check if there is a config file (has to be called config.py)
 
@@ -302,7 +302,7 @@ def get_fife_path(fife_custom_path=None):
 	if fife_custom_path is not None:
 		_paths.append(fife_custom_path)
 		if not check_path_for_fife(fife_custom_path):
-			print 'Specified invalid fife path: %s' %  fife_custom_path
+			print 'Specified invalid FIFE path: %s' %  fife_custom_path
 			exit(1)
 	else:
 		# no command line parameter, now check for config
@@ -321,7 +321,7 @@ def get_fife_path(fife_custom_path=None):
 
 	fife_path = None
 	for p in _paths:
-		if p not in sys.path: # skip dirs where import would have found fife
+		if p not in sys.path: # skip dirs where import would have found FIFE
 			p = os.path.abspath(p)
 			log().debug("Searching for FIFE in %s", p)
 			if check_path_for_fife(p):
@@ -352,8 +352,8 @@ def get_fife_path(fife_custom_path=None):
 	return fife_path
 
 def check_path_for_fife(path):
-	"""Checks if typical fife directories exist in path. This does not guarantee, that it's
-	really a fife dir, but it generally works."""
+	"""Checks if typical FIFE directories exist in path. This does not guarantee, that it's
+	really a FIFE dir, but it generally works."""
 	absolute_path = os.path.abspath(path)
 	for pe in [ os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/python/fife',  \
 	                                                     'engine/python/fife/extensions') ]:
@@ -362,11 +362,11 @@ def check_path_for_fife(path):
 	return True
 
 def find_FIFE(fife_custom_path=None):
-	"""Inserts path to fife engine to $LD_LIBRARY_PATH (environment variable).
+	"""Inserts path to FIFE engine to $LD_LIBRARY_PATH (environment variable).
 	If it's already there, the function will return, else
 	it will restart uh with correct $LD_LIBRARY_PATH. """
 	global logfilename
-	fife_path = get_fife_path(fife_custom_path) # terminates program if fife can't be found
+	fife_path = get_fife_path(fife_custom_path) # terminates program if FIFE can't be found
 
 	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
 		[ os.path.abspath(fife_path + '/' + a) for  \
