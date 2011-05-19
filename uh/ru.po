@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 21:46+0200\n"
+"PO-Revision-Date: 2011-05-19 22:40+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -696,7 +696,7 @@ msgstr "команды разработчиков"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Have fun."
-msgstr ""
+msgstr "Приятной игры."
 
 #: horizons/i18n/guitranslations.py:144
 #, fuzzy
@@ -822,11 +822,11 @@ msgstr "Выберите карту:"
 
 #: horizons/i18n/guitranslations.py:184
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Создать многопользовательскую игру"
 
 #: horizons/i18n/guitranslations.py:185
 msgid "Player limit:"
-msgstr ""
+msgstr "Лимит игроков:"
 
 #: horizons/i18n/guitranslations.py:186
 #, fuzzy
@@ -835,7 +835,7 @@ msgstr "Создать новую игру"
 
 #: horizons/i18n/guitranslations.py:187
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "Выйти в меню многопользовательской игры"
 
 #: horizons/i18n/guitranslations.py:189
 msgid "Leave:"
@@ -851,7 +851,7 @@ msgstr "Чат:"
 
 #: horizons/i18n/guitranslations.py:192
 msgid "Gamelobby"
-msgstr ""
+msgstr "Лобби"
 
 #: horizons/i18n/guitranslations.py:193
 msgid "Game details:"
@@ -859,7 +859,7 @@ msgstr "Описание игры:"
 
 #: horizons/i18n/guitranslations.py:194
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "Покинуть лобби"
 
 #: horizons/i18n/guitranslations.py:196
 msgid "Active games:"
@@ -871,11 +871,11 @@ msgstr "Главное меню:"
 
 #: horizons/i18n/guitranslations.py:199
 msgid "Show only games with the same version:"
-msgstr ""
+msgstr "Отображать только игры с такой же версией:"
 
 #: horizons/i18n/guitranslations.py:200
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "Новая многопользовательская игра"
 
 #: horizons/i18n/guitranslations.py:201
 msgid "Join game"
@@ -883,7 +883,7 @@ msgstr "Войти в игру"
 
 #: horizons/i18n/guitranslations.py:202
 msgid "Apply:"
-msgstr ""
+msgstr "Применить:"
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Refresh list:"
@@ -891,7 +891,7 @@ msgstr "Обновить список:"
 
 #: horizons/i18n/guitranslations.py:204
 msgid "Apply the new name"
-msgstr ""
+msgstr "Применить новое имя"
 
 #: horizons/i18n/guitranslations.py:205
 msgid "Create a new game"
@@ -907,7 +907,7 @@ msgstr "Обновить список активных игр"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Интервал автосохранения в минутах:"
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Color depth:"
@@ -915,7 +915,7 @@ msgstr "Глубина цвета:"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Enable edge scrolling:"
-msgstr ""
+msgstr "Включить перемещение мышью:"
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Effects volume:"
@@ -943,7 +943,7 @@ msgstr "Выберите язык:"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Enable minimap rotation:"
-msgstr ""
+msgstr "Вращение миникарты:"
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Music volume:"
@@ -951,11 +951,11 @@ msgstr "Громкость музыки:"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "Количество автосохранений:"
 
 #: horizons/i18n/guitranslations.py:223
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "Количество быстрых сохранений:"
 
 #: horizons/i18n/guitranslations.py:224
 #, fuzzy
@@ -973,7 +973,7 @@ msgstr "Звук включен:"
 
 #: horizons/i18n/guitranslations.py:227
 msgid "Used renderer:"
-msgstr ""
+msgstr "Рендерер:"
 
 #: horizons/i18n/guitranslations.py:228
 msgid "Please make sure that you know what you do."
@@ -981,7 +981,7 @@ msgstr "Пожалуйста, убедитесь, что вы знаете, чт
 
 #: horizons/i18n/guitranslations.py:230
 msgid "Details:"
-msgstr ""
+msgstr "Подробности:"
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Enter filename:"
@@ -997,7 +997,7 @@ msgstr "Выберите карту для игры:"
 
 #: horizons/i18n/guitranslations.py:235
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Новая однопользовательская игра"
 
 #: horizons/i18n/guitranslations.py:237
 msgid "Start game:"
@@ -1013,7 +1013,7 @@ msgstr "Случайная карта"
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Scenario"
-msgstr ""
+msgstr "Сценарий"
 
 # 90%
 #: horizons/i18n/guitranslations.py:241
@@ -1049,7 +1049,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:251
 msgid "Construction progress:"
-msgstr ""
+msgstr "Прогресс строительства:"
 
 #: horizons/i18n/guitranslations.py:252 horizons/i18n/guitranslations.py:281
 #: horizons/i18n/guitranslations.py:296
@@ -1080,20 +1080,19 @@ msgstr "Рыбацкая лодка"
 
 #: horizons/i18n/guitranslations.py:259
 msgid "Cutter"
-msgstr ""
+msgstr "Катер"
 
 #: horizons/i18n/guitranslations.py:260
 msgid "Herring fisher"
-msgstr ""
+msgstr "Ловец сельди"
 
 #: horizons/i18n/guitranslations.py:261
 msgid "Whaler"
-msgstr ""
+msgstr "Китобой"
 
 #: horizons/i18n/guitranslations.py:262
-#, fuzzy
 msgid "Fishing boats"
-msgstr "Рыбацкая лодка"
+msgstr "Рыбацкие лодки"
 
 #: horizons/i18n/guitranslations.py:263
 msgid "Build this ship!"
@@ -1102,7 +1101,7 @@ msgstr "Построить корабль!"
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:265
 #: horizons/i18n/guitranslations.py:266
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Пока не реализовано!"
 
 #: horizons/i18n/guitranslations.py:268
 msgid "Select resources:"
@@ -1139,11 +1138,11 @@ msgstr "Название:"
 
 #: horizons/i18n/guitranslations.py:288
 msgid "Average happiness:"
-msgstr ""
+msgstr "Средняя удовлетворённость:"
 
 #: horizons/i18n/guitranslations.py:290
 msgid "Most needed resource:"
-msgstr ""
+msgstr "Наиболее необходимые ресурсы:"
 
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:307
 #, fuzzy
@@ -1152,11 +1151,11 @@ msgstr "Налог:"
 
 #: horizons/i18n/guitranslations.py:298
 msgid "capacity utilization"
-msgstr ""
+msgstr "нагрузка"
 
 #: horizons/i18n/guitranslations.py:301
 msgid "Resource deposit"
-msgstr ""
+msgstr "Месторождение ресурсов"
 
 #: horizons/i18n/guitranslations.py:302
 #, fuzzy
@@ -1182,11 +1181,11 @@ msgstr "Уплаченных налогов"
 
 #: horizons/i18n/guitranslations.py:310
 msgid "Residents"
-msgstr ""
+msgstr "Жители"
 
 #: horizons/i18n/guitranslations.py:313
 msgid "Build settlement:"
-msgstr ""
+msgstr "Построить поселение:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
@@ -1194,7 +1193,7 @@ msgstr "Кликните для изменение названия этого �
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Build settlement"
-msgstr ""
+msgstr "Построить поселение"
 
 #: horizons/i18n/guitranslations.py:317
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
@@ -1210,19 +1209,19 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Exchange:"
-msgstr ""
+msgstr "Обмен:"
 
 #: horizons/i18n/guitranslations.py:326
 msgid "Ship:"
-msgstr "Суднa:"
+msgstr "Судно:"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Trade partner:"
-msgstr ""
+msgstr "Торговый партнёр:"
 
 #: horizons/i18n/guitranslations.py:329
 msgid "Configure trading route:"
-msgstr ""
+msgstr "Настроить торговый маршрут:"
 
 #: horizons/i18n/guitranslations.py:331
 #, fuzzy
@@ -1266,7 +1265,7 @@ msgstr "Ошибка: Нет быстрого сохранения."
 #: horizons/mpsession.py:44 horizons/mpsession.py:51 horizons/mpsession.py:53
 #: horizons/mpsession.py:55 horizons/mpsession.py:57
 msgid "Not possible"
-msgstr "Не возможно"
+msgstr "Невозможно"
 
 #: horizons/mpsession.py:44
 msgid "You cannot change the speed of a multiplayer game"
@@ -1294,7 +1293,7 @@ msgstr "неизвестно"
 
 #: horizons/spsession.py:97
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Быстрое сохранение не удалось."
 
 #: horizons/spsession.py:103
 msgid "No quicksaves found"
@@ -1302,16 +1301,16 @@ msgstr "Не найдено быстрое сохранение"
 
 #: horizons/spsession.py:103
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "Вам нужно выполнить быстрое сохранение, прежде чем загружать его."
 
 #. usually invalid filename
 #: horizons/spsession.py:130
 msgid "Invalid filename"
-msgstr "Не верное имя файла"
+msgstr "Неверное имя файла"
 
 #: horizons/spsession.py:130
 msgid "You entered an invalid filename."
-msgstr "Вы ввели не верное имя файла."
+msgstr "Вы ввели неверное имя файла."
 
 #: horizons/world/units/ship.py:270
 msgid "Trader"
@@ -1319,47 +1318,51 @@ msgstr "Торговец"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
-msgstr ""
+msgstr "Включить вывод отладочной информации в stderr и лог-файл."
 
 #: run_uh.py:81
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Задать путь к корневой директории FIFE."
 
 #: run_uh.py:83
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
 msgstr ""
+"Восстанавливает настройки по умолчанию. Полезно в случае, если Неизведанные "
+"Горизонты не может загрузиться из-за неправильной конфигурации."
 
 #: run_uh.py:85
 msgid "Specify alternative multiplayer master server."
-msgstr ""
+msgstr "Задать альтернативный мастер-сервер для многопользовательской игры."
 
 #: run_uh.py:87
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
+"Задать сетевой адрес для привязки локального сетевого клиента. Полезно, если "
+"NAT holepunching не работает, но вы можете перенаправить статический порт."
 
 #: run_uh.py:90
 msgid "Starting unknown horizons"
-msgstr ""
+msgstr "Запуск Неизведанных Горизонтов"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
-msgstr ""
+msgstr "Запускает <map>. <map> - имя карты."
 
 #: run_uh.py:94
 msgid "Starts a random map."
-msgstr ""
+msgstr "Запускает случайную карту."
 
 #: run_uh.py:96
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr ""
+msgstr "Запускает <scenario>. <scenario> - название сценария."
 
 #: run_uh.py:98
 msgid "Starts the development map without displaying the main menu."
-msgstr ""
+msgstr "Запускает карту для разработки без отображения меню."
 
 #: run_uh.py:100
 msgid "Loads a saved game. <save> is the savegamename."
-msgstr ""
+msgstr "Загружает сохранённую игру. <save> - название сохранённой игры."
 
 #: run_uh.py:102
 msgid "Loads the last quicksave."
@@ -1367,19 +1370,26 @@ msgstr "Загрузка последнего быстрого сохранен�
 
 #: run_uh.py:105
 msgid "Development options"
-msgstr ""
+msgstr "Опции для разработки"
 
+# I don't sure what means "Implies -d."
 #: run_uh.py:107
+#, fuzzy
 msgid "Write debug output only to logfile, not to console. Implies -d."
 msgstr ""
+"Писать отладочную информацию только в лог-файл, а не в консоль. "
+"Подразумевает -d."
 
 #: run_uh.py:110
 msgid "Enable logging for a certain logging module (for developing only)."
 msgstr ""
+"Включить логирование для определённого модуля логирования (только для "
+"разработки)."
 
 #: run_uh.py:112
+#, fuzzy
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr ""
+msgstr "Писать лог в <filename>, вместо пользовательской директории игры"
 
 #: run_uh.py:114
 msgid "For internal use only."
@@ -1387,19 +1397,19 @@ msgstr "Только для внутреннего использования."
 
 #: run_uh.py:116
 msgid "Enable profiling (for developing only)."
-msgstr ""
+msgstr "Включить профилирование (только для разработки)."
 
 #: run_uh.py:138
 msgid "Unknown Horizons crashed."
-msgstr ""
+msgstr "Сбой Неизведанных Горизонтов."
 
 #: run_uh.py:140
 msgid "We are very sorry for this, and want to fix this error."
-msgstr ""
+msgstr "Мы очень сожалеем и хотим исправить эту ошибку."
 
 #: run_uh.py:141
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "Для этого нам нужна информация из лог-файла:"
 
 #: run_uh.py:143
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
