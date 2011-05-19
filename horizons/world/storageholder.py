@@ -58,7 +58,7 @@ class StorageHolder(object):
 	def create_inventory(self):
 		"""Some buildings don't have an own inventory (e.g. storage building). Those can just
 		overwrite this function to do nothing. see also: save_inventory() and load_inventory()"""
-		db_data = horizons.main.db("SELECT resource, size FROM balance.storage WHERE object_id = ?", \
+		db_data = horizons.main.db.cached_query("SELECT resource, size FROM balance.storage WHERE object_id = ?", \
 		                           self.id)
 
 		if len(db_data) == 0:
