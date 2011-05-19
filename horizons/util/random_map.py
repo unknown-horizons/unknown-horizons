@@ -24,7 +24,7 @@ import sys
 import shutil
 import re
 import string
-import time
+import copy
 
 from horizons.util import Circle, Rect, Point, DbReader
 from horizons.constants import GROUND, PATHS
@@ -128,14 +128,30 @@ def create_random_island(id_string):
 		@param tile: ground tile to fill with
 		"""
 
+		all_neighbours = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		neighbours = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		corners = [(-1, -1), (-1, 1)]
 		knight_moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
 		bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3, (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
 
+		edge_set = copy.copy(map_set)
+		reduce_edge_set = True
+
 		while True:
-			to_fill = {}
-			for x, y in map_set:
+			to_fill = set()
+			to_ignore = set()
+			for x, y in edge_set:
+				# ignore the tiles with no empty neighbours
+				if reduce_edge_set:
+					is_edge = False
+					for x_offset, y_offset in all_neighbours:
+						if (x + x_offset, y + y_offset) not in map_set:
+							is_edge = True
+							break
+					if not is_edge:
+						to_ignore.add((x, y))
+						continue
+
 				for x_offset, y_offset in neighbours:
 					x2 = x + x_offset
 					y2 = y + y_offset
@@ -151,7 +167,7 @@ def create_random_island(id_string):
 							neighbours_dirs |= (1 << i)
 					if neighbours_dirs in bad_configs:
 						# part of a straight 1 tile gulf
-						to_fill[(x2, y2)] = True
+						to_fill.add((x2, y2))
 					else:
 						for x_offset, y_offset in corners:
 							x3 = x2 + x_offset
@@ -160,7 +176,7 @@ def create_random_island(id_string):
 							y4 = y2 - y_offset
 							if (x3, y3) in map_set and (x4, y4) in map_set:
 								# part of a diagonal 1 tile gulf
-								to_fill[(x2, y2)] = True
+								to_fill.add((x2, y2))
 								break
 
 				# block 1 tile straits
@@ -177,7 +193,7 @@ def create_random_island(id_string):
 						x2 = x + x_offset / 2
 						if (x2, y2) in map_set or (x2, y) in map_set:
 							continue
-					to_fill[(x2, y2)] = True
+					to_fill.add((x2, y2))
 
 				# block diagonal 1 tile straits
 				for x_offset, y_offset in corners:
@@ -186,14 +202,18 @@ def create_random_island(id_string):
 					x3 = x + 2 * x_offset
 					y3 = y + 2 * y_offset
 					if (x2, y2) not in map_set and (x3, y3) in map_set:
-						to_fill[(x2, y2)] = True
+						to_fill.add((x2, y2))
 					elif (x2, y2) in map_set and (x2, y) not in map_set and (x, y2) not in map_set:
-						to_fill[(x2, y)] = True
+						to_fill.add((x2, y))
 
 			if to_fill:
-				for x, y in to_fill.iterkeys():
+				for x, y in to_fill:
 					map_set.add((x, y))
 					map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
+
+				old_size = len(edge_set)
+				edge_set = edge_set.difference(to_ignore).union(to_fill)
+				reduce_edge_set = old_size - len(edge_set) > 50
 			else:
 				break
 
