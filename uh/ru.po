@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-20 05:27+0200\n"
+"PO-Revision-Date: 2011-05-20 07:45+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1686,8 +1686,9 @@ msgid "food"
 msgstr "еда"
 
 #: sqlite/Resources
+#, fuzzy
 msgid "get-together"
-msgstr ""
+msgstr "общение"
 
 #: sqlite/Resources
 msgid "grass"
@@ -1700,7 +1701,7 @@ msgstr "удовлетворение"
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr ""
+msgstr "железные слитки"
 
 #: sqlite/Resources
 msgid "iron ore"
@@ -1708,11 +1709,11 @@ msgstr "железная руда"
 
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "овечья шерсть"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "алкоголь"
 
 #: sqlite/Resources
 msgid "potatoes"
@@ -1720,11 +1721,11 @@ msgstr "картофель"
 
 #: sqlite/Resources
 msgid "raw clay"
-msgstr ""
+msgstr "необработанная глина"
 
 #: sqlite/Resources
 msgid "raw iron"
-msgstr ""
+msgstr "необработанное железо"
 
 #: sqlite/Resources
 msgid "raw sugar"
@@ -1764,7 +1765,7 @@ msgstr "пионер"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "моряк"
 
 #: sqlite/SettlerLevel
 msgid "settler"
