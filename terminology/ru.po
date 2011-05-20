@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-20 16:47+0200\n"
+"PO-Revision-Date: 2011-05-20 17:17+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -376,532 +376,540 @@ msgstr "сигнальный огонь"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "slider"
-msgstr ""
+msgstr "ползунок"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "tools"
-msgstr ""
+msgstr "инструменты"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "active"
-msgstr ""
+msgstr "активный"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "choose"
-msgstr ""
+msgstr "выбирать"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "collector"
-msgstr ""
+msgstr "сборщик"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "help"
-msgstr ""
+msgstr "помощь"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "house"
-msgstr ""
+msgstr "дом"
 
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "level"
-msgstr ""
+msgstr "уровень"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pasture"
-msgstr ""
+msgstr "пастбище"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
+#, fuzzy
 msgid "pioneer"
-msgstr ""
+msgstr "пионер / первопроходец"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato"
-msgstr ""
+msgstr "картофель"
 
 #: po/tutorial.py
 #: sqlite/Messages
+#, fuzzy
 msgid "range"
-msgstr ""
+msgstr "радиус / дистанция"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
+#, fuzzy
 msgid "running"
-msgstr ""
+msgstr "активно / работает"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "setting"
-msgstr ""
+msgstr "настройка"
 
 #: po/tutorial.py
 #: sqlite/Building
+#, fuzzy
 msgid "storage tent"
-msgstr ""
+msgstr "хранилище"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 #: sqlite/Resources
 msgid "sugar"
-msgstr ""
+msgstr "сахар"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "tree"
-msgstr ""
+msgstr "дерево"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "add"
-msgstr ""
+msgstr "добавить"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "animal"
-msgstr ""
+msgstr "животное"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "build menu"
-msgstr ""
+msgstr "меню строительства"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "Captain's log"
-msgstr ""
+msgstr "бортовой журнал"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "construction"
-msgstr ""
+msgstr "здание / сооружение"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "decrease"
-msgstr ""
+msgstr "уменьшать"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "free trader"
-msgstr ""
+msgstr "свободный торговец"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "happiness"
-msgstr ""
+msgstr "удовлетворённость / счастье"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunter"
-msgstr ""
+msgstr "охотник"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "inventory"
-msgstr ""
+msgstr "инвентарь / запасы / товары"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb"
-msgstr ""
+msgstr "овца"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "алкоголь"
 
 # 
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "raw"
-msgstr ""
+msgstr "необработанный / сырой"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "residents"
-msgstr ""
+msgstr "жители"
 
 #: po/tutorial.py
 #: horizons/gui/widgets/inventory.py
 msgid "slot"
-msgstr ""
+msgstr "слот"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "stop"
-msgstr ""
+msgstr "остановить / прервать"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "village"
-msgstr ""
+msgstr "деревня"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "your"
-msgstr ""
+msgstr "Ваш / Ваше"
 
 #: po/tutorial.py
 #: horizons/gui/tabs/marketplacetabs.py
 #: horizons/i18n/guitranslations.py
 msgid "account"
-msgstr ""
+msgstr "счёт"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "back"
-msgstr ""
+msgstr "назад"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "build settlement"
-msgstr ""
+msgstr "основывать поселение"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "built"
-msgstr ""
+msgstr "построенный"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "cloth"
-msgstr ""
+msgstr "одежда"
 
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "feature"
-msgstr ""
+msgstr "возможность / функция"
 
 #: po/tutorial.py
 #: sqlite/Resources
 #: sqlite/Building
 msgid "fish"
-msgstr ""
+msgstr "рыба"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "increase"
-msgstr ""
+msgstr "увеличивать"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "овечья шерсть"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "leave"
-msgstr ""
+msgstr "покидать"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "market"
-msgstr ""
+msgstr "рынок"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "market place"
-msgstr ""
+msgstr "рынок / рыночная площадь"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "mode"
-msgstr ""
+msgstr "режим"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/main.py
 msgid "multiple"
-msgstr ""
+msgstr "несколько"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "output"
-msgstr ""
+msgstr "вывод"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "partner"
-msgstr ""
+msgstr "партнёр / компаньон"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "play"
-msgstr ""
+msgstr "играть"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato field"
-msgstr ""
+msgstr "картофельное поле"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "refresh"
-msgstr ""
+msgstr "обновлять"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sale"
-msgstr ""
+msgstr "продажа"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "save"
-msgstr ""
+msgstr "сохнанять / сохранение"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "school"
-msgstr ""
+msgstr "школа"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "screen"
-msgstr ""
+msgstr "экран"
 
 #: po/tutorial.py
 #: horizons/engine.py
 msgid "solution"
-msgstr ""
+msgstr "решение"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sound"
-msgstr ""
+msgstr "звук"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "team"
-msgstr ""
+msgstr "команда"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "from time to time"
-msgstr ""
+msgstr "время от времени / иногда"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trading"
-msgstr ""
+msgstr "торговля"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "visit"
-msgstr ""
+msgstr "посещать"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "weaver"
-msgstr ""
+msgstr "ткач"
 
 # 
 #: horizons/gui/ingamegui.py
 #: po/tutorial.py
 msgid "continue"
-msgstr ""
+msgstr "продолжать"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "description"
-msgstr ""
+msgstr "описание"
 
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "вера"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fisherman"
-msgstr ""
+msgstr "рыбак"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "forest"
-msgstr ""
+msgstr "лес"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "forum"
-msgstr ""
+msgstr "форум"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fulfill"
-msgstr ""
+msgstr "выполнять"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "graphics"
-msgstr ""
+msgstr "графика"
 
 # 
 #: po/tutorial.py
 #: sqlite/Colors
 msgid "green"
-msgstr ""
+msgstr "зелёный"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "grow"
-msgstr ""
+msgstr "расти"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hold"
-msgstr ""
+msgstr "удерживать / держать"
 
-# 
+# 3-е лицо
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunts"
-msgstr ""
+msgstr "охотится"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "income"
-msgstr ""
+msgstr "доход / прибыль"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "information"
-msgstr ""
+msgstr "информация"
 
 # (keyboard)
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "key"
-msgstr ""
+msgstr "клавиша / ключ"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "load/unload"
-msgstr ""
+msgstr "загружать/разгружать"
 
 # 
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "move"
-msgstr ""
+msgstr "двигать"
 
 # 
 #: po/tutorial.py
 #: sqlite/Colors
 msgid "red"
-msgstr ""
+msgstr "красный"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "return"
-msgstr ""
+msgstr "возвращать / возврат"
 
 # 
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "run"
-msgstr ""
+msgstr "запускать"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "service"
-msgstr ""
+msgstr "услуги"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sheep"
-msgstr ""
+msgstr "овца"
 
-# 
+# Is this about the key ?
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "SHIFT"
-msgstr ""
+msgstr "SHIFT"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "ship inventory"
-msgstr ""
+msgstr "запасы на корабле"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "starting"
-msgstr ""
+msgstr "исходный / начальный"
 
 # 
 #: po/tutorial.py
 #: sqlite/Building
 msgid "sugar field"
-msgstr ""
+msgstr "сахарная плантация"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trade partner"
-msgstr ""
+msgstr "компаньон / партнёр по торговле"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "yields"
-msgstr ""
+msgstr "прибыль / доходы"

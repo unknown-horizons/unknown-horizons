@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 17:30+0200\n"
+"PO-Revision-Date: 2011-05-20 17:11+0200\n"
 "Last-Translator: sioux83 <vitpal83@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -31,9 +31,8 @@ msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr "Alcuni dei tuoi cambiamenti richiedono un riavvio di Unknown Horizons."
 
 #: horizons/engine.py:108
-#, fuzzy
 msgid "System default"
-msgstr "Default Sistema"
+msgstr "Impostazioni originali"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
@@ -645,7 +644,7 @@ msgstr "Aggiungi alla lista"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Start / Stop route"
-msgstr ""
+msgstr "Inizio / Fine strada"
 
 #: horizons/i18n/guitranslations.py:131 horizons/i18n/guitranslations.py:171
 msgid "Attention please!"
@@ -774,9 +773,8 @@ msgid "Exit to main menu"
 msgstr "Esci al menu principale"
 
 #: horizons/i18n/guitranslations.py:168
-#, fuzzy
 msgid "Loading ..."
-msgstr "A carregar ..."
+msgstr "Caricamento ..."
 
 #: horizons/i18n/guitranslations.py:175
 msgid "Quit"
@@ -852,7 +850,7 @@ msgstr "Menu principale:"
 
 #: horizons/i18n/guitranslations.py:199
 msgid "Show only games with the same version:"
-msgstr ""
+msgstr "Mostra solo i giochi con la stessa versione:"
 
 #: horizons/i18n/guitranslations.py:200
 msgid "New game - Multiplayer"
@@ -1128,7 +1126,7 @@ msgstr "Tasse:"
 
 #: horizons/i18n/guitranslations.py:298
 msgid "capacity utilization"
-msgstr ""
+msgstr "Utilizzo della produzione"
 
 #: horizons/i18n/guitranslations.py:301
 msgid "Resource deposit"
@@ -1158,9 +1156,8 @@ msgid "Paid taxes"
 msgstr "Tasse pagate"
 
 #: horizons/i18n/guitranslations.py:310
-#, fuzzy
 msgid "Residents"
-msgstr "Residentes"
+msgstr "Residenti"
 
 # 94%
 #: horizons/i18n/guitranslations.py:313
@@ -1200,7 +1197,7 @@ msgstr "Commerciante:"
 
 #: horizons/i18n/guitranslations.py:329
 msgid "Configure trading route:"
-msgstr ""
+msgstr "Configurare percorso commerciale"
 
 #: horizons/i18n/guitranslations.py:331
 msgid "Load/Unload:"
@@ -1394,9 +1391,8 @@ msgstr ""
 "accedere a unknown-horizons.org ."
 
 #: run_uh.py:198
-#, fuzzy
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Gràcies per utilitzar Horizons Desconeguts!"
+msgstr "Grazie per aver scelto Unknown Horizons!"
 
 #: run_uh.py:274
 msgid "Failed to load fife:"
@@ -1436,42 +1432,36 @@ msgstr "Distilleria"
 
 # Building
 #: sqlite/Building
-#, fuzzy
 msgid "Farm"
-msgstr "Granja"
+msgstr "Fattoria"
 
 #: sqlite/Building
 msgid "Fish Deposit"
 msgstr "Deposito di pesce"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Fisherman's Tent"
-msgstr "Tenda de pescadors"
+msgstr "Tenda dei pescatori"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Hunter's Tent"
-msgstr "Tenda de caçadors"
+msgstr "Tenda dei cacciatori"
 
 #: sqlite/Building
 msgid "Iron Mine"
 msgstr "Miniera di ferro"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Log"
-msgstr "Tronc"
+msgstr "Tronco"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Lookout"
-msgstr "Vigia"
+msgstr "Belvedere"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Lumberjack Camp"
-msgstr "Campament de llenyataires"
+msgstr "Accampamento Tagliaboschi"
 
 #: sqlite/Building
 msgid "Main Square"
@@ -1491,34 +1481,29 @@ msgstr "Padiglione"
 
 # Building
 #: sqlite/Building
-#, fuzzy
 msgid "Potato Field"
-msgstr "Camp de patates"
+msgstr "Campo di patate"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Rampart"
-msgstr "Plataforma"
+msgstr "Bastione"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Signal Fire"
-msgstr "Sinal de Fogo"
+msgstr "Segnale di fuoco"
 
 #: sqlite/Building
 msgid "Smeltery"
 msgstr "Fonderia"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Storage Tent"
-msgstr "Tenda d'emmagatzematge"
+msgstr "Tenda d'immagazzinazione"
 
 # Building
 #: sqlite/Building
-#, fuzzy
 msgid "Sugar Field"
-msgstr "Camp de sucre"
+msgstr "Campo di zucchero"
 
 #: sqlite/Building
 msgid "Tavern"
@@ -1542,61 +1527,52 @@ msgstr "Sentiero"
 
 # Building
 #: sqlite/Building
-#, fuzzy
 msgid "Village school"
-msgstr "Escola del poble"
+msgstr "Villagio scolastico"
 
 #: sqlite/Building
 msgid "Weaver's Tent"
 msgstr "Tenda del Tessitore"
 
 #: sqlite/Colors
-#, fuzzy
 msgid "black"
-msgstr "negre"
+msgstr "nero"
 
 #: sqlite/Colors
-#, fuzzy
 msgid "blue"
-msgstr "blau"
+msgstr "blu"
 
 #: sqlite/Colors
-#, fuzzy
 msgid "cyan"
-msgstr "cian"
+msgstr "giallo"
 
 #: sqlite/Colors
-#, fuzzy
 msgid "green"
-msgstr "verd"
+msgstr "verde"
 
 #: sqlite/Colors
 msgid "pink"
 msgstr "rosa"
 
 #: sqlite/Colors
-#, fuzzy
 msgid "red"
-msgstr "vermell"
+msgstr "rosso"
 
 #: sqlite/Colors
-#, fuzzy
 msgid "white"
-msgstr "blanc"
+msgstr "bianco"
 
 #: sqlite/Colors
-#, fuzzy
 msgid "yellow"
-msgstr "groc"
+msgstr "giallo"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
 msgstr "Un nuovo insediamento è stato creato da ${player}."
 
 #: sqlite/Messages
-#, fuzzy
 msgid "A new world has been created."
-msgstr "Un nou món ha estat creat."
+msgstr "Un nuovo mondo è stato creato."
 
 #: sqlite/Messages
 msgid "One of your settler has no market place in it's range."
@@ -1606,7 +1582,7 @@ msgstr "Un colone non ha una piazza del mercato nelle vicinanze."
 #: sqlite/Messages
 #, fuzzy
 msgid "Screenshot has been saved to ${file}."
-msgstr "La captura de pantalla s'ha desat a ${file}."
+msgstr "Screenshot è stato salvato in ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
@@ -1614,9 +1590,8 @@ msgstr "Alcuni coloni se ne sono andati."
 
 # Messages
 #: sqlite/Messages
-#, fuzzy
 msgid "YOU HAVE WON!!!"
-msgstr "HEU GUANYAT!"
+msgstr "HAI VINTO!!!"
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
@@ -1624,9 +1599,8 @@ msgstr "Necessiti più ${resource} per costruire questo edificio."
 
 # Messages
 #: sqlite/Messages
-#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr "S'ha desat el joc."
+msgstr "Il vostro gioco è stato salvato"
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
@@ -1637,14 +1611,12 @@ msgid "Your settlers reached level ${level}."
 msgstr "I tuoi coloni hanno raggiunto il livello ${level}."
 
 #: sqlite/Resources
-#, fuzzy
 msgid "boards"
-msgstr "taulers"
+msgstr "tavole"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "bricks"
-msgstr "maons"
+msgstr "mattoni"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1655,9 +1627,8 @@ msgid "clay"
 msgstr "argilla"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "coins"
-msgstr "monedes"
+msgstr "monete"
 
 #: sqlite/Resources
 msgid "community"
@@ -1665,24 +1636,21 @@ msgstr "comunità"
 
 # Resources
 #: sqlite/Resources
-#, fuzzy
 msgid "education"
-msgstr "educació"
+msgstr "educazione"
 
 # Resources
 #: sqlite/Resources
-#, fuzzy
 msgid "faith"
-msgstr "fe"
+msgstr "fede"
 
 #: sqlite/Resources
 msgid "fish"
-msgstr ""
+msgstr "pesce"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "food"
-msgstr "aliment"
+msgstr "cibo"
 
 #: sqlite/Resources
 msgid "get-together"
@@ -1694,9 +1662,8 @@ msgstr "herba"
 
 # Resources
 #: sqlite/Resources
-#, fuzzy
 msgid "happiness"
-msgstr "felicitat"
+msgstr "felicità"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -1716,9 +1683,8 @@ msgstr "liquore"
 
 # Resources
 #: sqlite/Resources
-#, fuzzy
 msgid "potatoes"
-msgstr "patates"
+msgstr "patate"
 
 #: sqlite/Resources
 msgid "raw clay"
@@ -1730,25 +1696,21 @@ msgstr "ferro grezzo"
 
 # Resources
 #: sqlite/Resources
-#, fuzzy
 msgid "raw sugar"
-msgstr "sucre en brut"
+msgstr "zucchero grezzo"
 
 # Resources
 #: sqlite/Resources
-#, fuzzy
 msgid "sugar"
-msgstr "sucre"
+msgstr "zucchero"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "textile"
-msgstr "tèxtil"
+msgstr "tessile"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "tools"
-msgstr "eines"
+msgstr "strumenti"
 
 #: sqlite/Resources
 msgid "wild animal food 1"
@@ -1759,14 +1721,12 @@ msgid "wild animal meat"
 msgstr "carne di animale selvatico"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "wood"
-msgstr "fusa"
+msgstr "legno"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "wool"
-msgstr "llana"
+msgstr "lana"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"

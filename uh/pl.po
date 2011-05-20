@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-17 17:32+0200\n"
+"PO-Revision-Date: 2011-05-17 17:33+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -24,7 +24,6 @@ msgid "Unknown Horizons Version %s"
 msgstr "Unknown Horizons wersja %s"
 
 #: horizons/engine.py:54
-#, fuzzy
 msgid "Restart required"
 msgstr "Wymagane ponowne uruchomienie"
 
@@ -62,7 +61,6 @@ msgstr "Błąd"
 
 # 75%
 #: horizons/gui/gui.py:121
-#, fuzzy
 msgid "Failed to save."
 msgstr "Nie udało się zapisać gry."
 
@@ -274,7 +272,6 @@ msgid "Build"
 msgstr "Zbuduj"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
-#, fuzzy
 msgid "Boat builder overview"
 msgstr "Podgląd budowy łodzi"
 
@@ -377,7 +374,6 @@ msgid "Sailor buildings"
 msgstr "Doki"
 
 #: horizons/i18n/guitranslations.py:44
-#, fuzzy
 msgid "Residents and infrastructure"
 msgstr "Mieszkańcy i infrastruktura"
 
@@ -415,6 +411,7 @@ msgid "Tent: Houses your inhabitants."
 msgstr "Namiot: Daje schronienie mieszkańcom."
 
 #: horizons/i18n/guitranslations.py:53
+#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
 msgstr "Przechowywanie: Wydłuża czas i zapewnia Collector."
 
@@ -449,7 +446,6 @@ msgid "Brickyard: Turns clay into bricks."
 msgstr "Cegielnia: Zmienia glinę w cegły."
 
 #: horizons/i18n/guitranslations.py:64
-#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
 msgstr "Kopalnia gliny: Dostarcza gliny ze złóż."
 
@@ -516,7 +512,6 @@ msgid "Running costs:"
 msgstr "Koszty eksploatacji:"
 
 #: horizons/i18n/guitranslations.py:85
-#, fuzzy
 msgid "Inhabitants"
 msgstr "Mieszkańcy"
 
@@ -564,12 +559,10 @@ msgid "Increase game speed"
 msgstr "Zwiększ prędkość gry"
 
 #: horizons/i18n/guitranslations.py:98
-#, fuzzy
 msgid "Zoom in"
 msgstr "Przybliż"
 
 #: horizons/i18n/guitranslations.py:99
-#, fuzzy
 msgid "Zoom out"
 msgstr "Oddal"
 
@@ -672,7 +665,6 @@ msgid "Credits"
 msgstr "Autorzy"
 
 #: horizons/i18n/guitranslations.py:135
-#, fuzzy
 msgid "Cancel game"
 msgstr "Przerwij rozgrywkę"
 
@@ -703,32 +695,26 @@ msgid "Key bindings"
 msgstr "Skróty klawiszowe"
 
 #: horizons/i18n/guitranslations.py:145
-#, fuzzy
 msgid "{LEFT} = Scroll left"
 msgstr "{LEFT} = Przesuń w lewo"
 
 #: horizons/i18n/guitranslations.py:146
-#, fuzzy
 msgid "{RIGHT} = Scroll right"
 msgstr "{RIGHT} = Przesuń w prawo"
 
 #: horizons/i18n/guitranslations.py:147
-#, fuzzy
 msgid "{UP} = Scroll up"
 msgstr "{UP} = Przesuń w górę"
 
 #: horizons/i18n/guitranslations.py:148
-#, fuzzy
 msgid "{DOWN} = Scroll down"
 msgstr "{DOWN} = Przesuń w dół"
 
 #: horizons/i18n/guitranslations.py:149
-#, fuzzy
 msgid "{ , } = Rotate building left"
 msgstr "{ , } = Obróć budynek w lewo"
 
 #: horizons/i18n/guitranslations.py:150
-#, fuzzy
 msgid "{ . } = Rotate building right"
 msgstr "{ . } = Obróć budynek w prawo"
 
@@ -1046,7 +1032,6 @@ msgid "Currently building:"
 msgstr "Obecnie w budowie:"
 
 #: horizons/i18n/guitranslations.py:250
-#, fuzzy
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
 "By zbudować łódź, kliknij na zakładkę z odpowiednią klasą, wybierz okręt i "
@@ -1172,7 +1157,6 @@ msgid "It contains these resources:"
 msgstr "Zawiera następujące zasoby:"
 
 #: horizons/i18n/guitranslations.py:306
-#, fuzzy
 msgid "Needed resources:"
 msgstr "Potrzebne zasoby:"
 
@@ -1426,8 +1410,9 @@ msgstr "FIFE nie zostało znalezione."
 msgid "Boat Builder"
 msgstr "Stoczniowiec"
 
-# Building
+# Faktoria Handlowa?
 #: sqlite/Building
+#, fuzzy
 msgid "Branch Office"
 msgstr "Ratusz"
 
