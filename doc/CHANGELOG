@@ -4,36 +4,57 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-??-??: Milestone 2011.2
-changelog date: MAY 01; rev: 0b297a6a1d6ffcf6122792e34803702fab31fba4
+changelog date: MAY 20; rev: cad8c85bdae148a9e14290bfdb7bcf747c43c28e
   * New: Moved to new tileset structure // not merged yet
   * New: Made new fife editor work with new tileset structure // not merged yet
 
 * General
   * New: pirates with home position sail around and chase player ship
   * New: five city names, mostly South-American flavoured
+  * New: settings for multiplayer connection (network)
+  * New: starting random maps with specific seeds from the command line
+  * New: using a cache for ImageFillStatusButton in inventories
+  * New: support for UPnP + NAT-PMP (using miniupnpc, libnatpmp and their python
+         modules). For now this will only work on unix because there is no
+         socket.fromfd on windows for python2.
+  * New: compatibility layer for pyenet build with pyrex vs cpython
   * New: 
+  * Change: Randomize playlist of background music
+  * Change: Try using installed pyenet version before searching for compiled one
+  * Change: Made Callback class hashable for usage in dictionaries
   * Change: 
   * Fix: save/load of scenario variables
   * Fix: properly destruct the messagewidget
   * Fix: pirate had acquired teleportation abilities
   * Fix: bug in pirate code: wrong rect calculation
+  * Fix: trader name was not properly reset
   * Fix: 
 
 * Gameplay and Balancing
   * New: basic ship routes
   * New: Cache yaml files unless altered. Faster scenario selection in SP menu.
   * New: option to disable edge scrolling with mouse
+  * New: customizable trade routes
+  * New: improvements to random map generation time
+  * New: improvements to savegame loading time
   * New: 
   * Change: tavern building costs: 250 coins, 4 boards, 2 bricks (was 0,0,0)
   * Change: storage tent building costs: 350 coins (was 750), 4 boards (was 10)
   * Change: storage tent additional capacity per slot: 10t (was 30)
   * Change: storage tent radius: 17 (was 24). Reduces the covered area by 50%.
   * Change: Use pirate ship names for pirates instead of player ship names
+  * Change: show empty logbook (was: silently not show)
+  * Change: more useful error messages (description, advice, technical details)
+  * Change: update inventory once a second (was: on every settlement change)
+  * Change: inhabitant taxes can now be set in 0.1 steps (was: 0.5)
   * Change: 
   * Fix: show player's gold immediately after load
   * Fix: handling of multiple dialogs that pause the game (new pause stack)
   * Fix: reset of tile walkability after buildings have been removed
   * Fix: Made trader a bit faster when it can't find a path to a branch office
+  * Fix: crash when saving when there were no saved games
+  * Fix: crash when deleting trade routes
+  * Fix: route entry slot was reset when adding new resource
   * Fix: 
 
 * Graphics and GUI
@@ -43,22 +64,36 @@ changelog date: MAY 01; rev: 0b297a6a1d6ffcf6122792e34803702fab31fba4
   * New: tavern
   * New: half-timbered house
   * New: ship name label and dynamic spacing in trade / exchange widget
+  * New: display settlement name as heading in several buildings
   * New: tooltips for minimap HUD buttons
+  * New: up and down arrows
+  * New: dynamic positioning on most headlines. Causes intentional glitch
+  * New: svg application icon without text for use in small icons
+  * New: StepSlider that snaps to values
   * New: 
-  * Change: Custom tooltip widgets now support names set in python code
+  * Change: custom tooltip widgets now support names set in python code
   * Change: made random maps prettier, coastline is now properly drawn
   * Change: Removed our center_widget in favor of pychan's position_technique=
             "center:center". Also modified other positioning code to use this.
-  * Change: Default style border size now 0 (was 2)
+  * Change: default style border size now 0 (was 2)
   * Change: 
-  * Fix: Spacing issues in build preview tab headline when rotating
+  * Fix: spacing issues in build preview tab headline when rotating
   * Fix: 'Widget containment fumble' warning in buyselltab selection widget
+  * Fix: tooltips in build menu should now be properly translated
   * Fix: 
 
 * Translations
+  * New: glossary translations with all important terms (terminology)
+  * New: terminology translations: Czech, Dutch, French, German, Polish, Portu-
+                                   guese, Portuguese (Br.), Spanish
+  * New: translations: Bulgarian, Czech, Estonian
+  * New: string preview tool for translators. Start UH with --string-previewer
+         to enable it.
   * New: testing gettext plural form support
   * New: 
   * Change: large updates to main template
+  * Change: Rename unknownhorizons.mo to unknown-horizons.mo (usage of %name)
+  * Change: unknown-horizons.mo now found in content/lang/ (was: build/mo/)
   * Change: 
   * Fix: duplicate string name in help.xml that caused wrong translation
   * Fix: 
