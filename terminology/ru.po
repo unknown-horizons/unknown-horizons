@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-20 11:37+0200\n"
+"PO-Revision-Date: 2011-05-20 16:47+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -304,71 +304,75 @@ msgstr "лог / журнал"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "reach"
-msgstr ""
+msgstr "достигать"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "select"
-msgstr ""
+msgstr "выделять"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "stock"
-msgstr ""
+msgstr "запасы"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
+#, fuzzy
 msgid "storage"
-msgstr ""
+msgstr "склад / хранилище"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/world/units/ship.py
 msgid "trader"
-msgstr ""
+msgstr "торговец"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "balance"
-msgstr ""
+msgstr "баланс"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "fire"
-msgstr ""
+msgstr "огонь"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "fisher"
-msgstr ""
+msgstr "рыбак"
 
 #: horizons/spsession.py
 #: po/tutorial.py
 #: run_uh.py
 #: horizons/main.py
 msgid "found"
-msgstr ""
+msgstr "основывать"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
+#, fuzzy
 msgid "pavilion"
-msgstr ""
+msgstr "павильон"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "signal"
-msgstr ""
+msgstr "подавать сигнал / сигнал"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "signal fire"
-msgstr ""
+msgstr "сигнальный огонь"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
