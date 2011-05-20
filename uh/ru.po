@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-20 07:45+0200\n"
+"PO-Revision-Date: 2011-05-20 08:13+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -125,8 +125,9 @@ msgid "Saved at %s\n"
 msgstr "Сохранено в %s\n"
 
 #: horizons/gui/gui.py:372
+#, fuzzy
 msgid "%H:%M, %A, %B %d"
-msgstr ""
+msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:383
 #, python-format
@@ -143,9 +144,8 @@ msgstr ""
 "Необходима версия %(need)d!"
 
 #: horizons/gui/gui.py:388
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
-msgstr "НЕСОВМЕСТИМОСТЬ ВЕРСИЙ\n"
+msgstr "НЕСОВМЕСТИМАЯ ВЕРСИЯ\n"
 
 #: horizons/gui/gui.py:411
 msgid "No file selected"
@@ -379,9 +379,8 @@ msgstr "Компании"
 
 # 76%
 #: horizons/i18n/guitranslations.py:43
-#, fuzzy
 msgid "Sailor buildings"
-msgstr "Здание поселенца"
+msgstr "Здания моряков"
 
 #: horizons/i18n/guitranslations.py:44
 #, fuzzy
@@ -415,9 +414,8 @@ msgid "Lumberjack: Chops down trees and turns them into boards."
 msgstr "Лесоруб: Рубит деревья и делает из них доски."
 
 #: horizons/i18n/guitranslations.py:51
-#, fuzzy
 msgid "Main square: Supplies citizens with goods."
-msgstr "Центральная площадь: Снабжает граждан товарами."
+msgstr "Центральная площадь: Снабжает жителей товарами."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
@@ -425,9 +423,8 @@ msgstr "Палатка: Дома ваших жителей."
 
 # Very bad translate
 #: horizons/i18n/guitranslations.py:53
-#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
-msgstr "Склад: Добавляет место и предоставляет потребителям."
+msgstr "Склад: Добавляет место для хранения ресурсов и предоставляет сборщиков."
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Trail: Needed for collecting goods."
@@ -1633,12 +1630,14 @@ msgid "You need more ${resource} to build this building."
 msgstr "Вам необходимо больше ${resource} для постройки этого строения."
 
 #: sqlite/Messages
+#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Быстрое сохранение успешно выполнено."
 
 #: sqlite/Messages
+#, fuzzy
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Ваш рудник иссяк."
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
@@ -1729,7 +1728,7 @@ msgstr "необработанное железо"
 
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr ""
+msgstr "сахарный тростник"
 
 #: sqlite/Resources
 msgid "sugar"
