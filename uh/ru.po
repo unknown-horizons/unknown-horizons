@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-20 05:26+0200\n"
+"PO-Revision-Date: 2011-05-20 05:27+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -24,6 +24,7 @@ msgid "Unknown Horizons Version %s"
 msgstr "Неизведанные Горизонты версия: %s"
 
 #: horizons/engine.py:54
+#, fuzzy
 msgid "Restart required"
 msgstr "Необходим перезапуск"
 
@@ -61,10 +62,12 @@ msgid "Error"
 msgstr "Ошибка"
 
 #: horizons/gui/gui.py:121
+#, fuzzy
 msgid "Failed to save."
 msgstr "Невозможно сохранить."
 
 #: horizons/gui/gui.py:146
+#, fuzzy
 msgid "Are you sure you want to quit Unknown Horizons?"
 msgstr "Вы уверены, что хотите покинуть Неизведанные Горизонты?"
 
@@ -289,6 +292,7 @@ msgid "Fisher boats"
 msgstr "Рыбацкие суда"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
+#, fuzzy
 msgid "Trade boats"
 msgstr "Торговые суда"
 
@@ -528,7 +532,9 @@ msgstr "Жители"
 msgid "Click to change the name of your settlement."
 msgstr "Нажмите, чтобы изменить название вашего поселения."
 
+# сносить?
 #: horizons/i18n/guitranslations.py:88
+#, fuzzy
 msgid "Destroy"
 msgstr "Разрушить"
 
@@ -910,6 +916,7 @@ msgid "Autosave interval in minutes:"
 msgstr "Интервал автосохранения в минутах:"
 
 #: horizons/i18n/guitranslations.py:211
+#, fuzzy
 msgid "Color depth:"
 msgstr "Глубина цвета:"
 
@@ -1038,6 +1045,7 @@ msgid "(lose all resources)"
 msgstr "(потеря всех ресурсов)"
 
 #: horizons/i18n/guitranslations.py:249
+#, fuzzy
 msgid "Currently building:"
 msgstr "Текущие постройки:"
 
@@ -1400,6 +1408,7 @@ msgid "Enable profiling (for developing only)."
 msgstr "Включить профилирование (только для разработки)."
 
 #: run_uh.py:138
+#, fuzzy
 msgid "Unknown Horizons crashed."
 msgstr "Сбой Неизведанных Горизонтов."
 
