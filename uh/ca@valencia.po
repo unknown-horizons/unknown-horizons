@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-13 19:27+0200\n"
+"PO-Revision-Date: 2011-05-13 19:28+0200\n"
 "Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ca@valencia\n"
@@ -1163,9 +1163,12 @@ msgstr ""
 msgid "Residents"
 msgstr "Residentes"
 
+# 94%
+# 100%
 #: horizons/i18n/guitranslations.py:313
+#, fuzzy
 msgid "Build settlement:"
-msgstr ""
+msgstr "MENÚ D'OPCIONS"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."

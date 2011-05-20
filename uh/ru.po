@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-20 11:20+0200\n"
+"PO-Revision-Date: 2011-05-20 17:46+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1186,7 +1186,7 @@ msgstr "Жители"
 
 #: horizons/i18n/guitranslations.py:313
 msgid "Build settlement:"
-msgstr "Построить поселение:"
+msgstr "Основать поселение:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
@@ -1194,7 +1194,7 @@ msgstr "Кликните для изменение названия этого �
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Build settlement"
-msgstr "Построить поселение"
+msgstr "Основать поселение"
 
 #: horizons/i18n/guitranslations.py:317
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
