@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-20 17:39+0200\n"
+"PO-Revision-Date: 2011-05-20 17:40+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -37,11 +37,11 @@ msgstr ""
 
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
-msgstr ""
+msgstr "Постройте контору на побережье."
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Добро пожаловать в Неизведанные Горизонты!"
 
 #: po/tutorial.py:6
 msgid ""

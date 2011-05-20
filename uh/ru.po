@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-20 11:18+0200\n"
+"PO-Revision-Date: 2011-05-20 11:20+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -345,7 +345,7 @@ msgstr "Просмотр"
 
 #: horizons/gui/tabs/overviewtab.py:96
 msgid "Branch office overview"
-msgstr "Просмотр колони"
+msgstr "Обзор конторы"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 #, fuzzy
@@ -548,7 +548,7 @@ msgstr "Помощь"
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Captain's log"
-msgstr "Капитанский журнал"
+msgstr "Судовой журнал"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Rotate map counterclockwise"
