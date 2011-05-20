@@ -4,3 +4,4 @@
 *.nsi
 Thumbs.db
 build
+content/lang/*
