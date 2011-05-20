@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-16 12:33+0200\n"
+"PO-Revision-Date: 2011-05-18 13:55+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -395,6 +395,7 @@ msgstr "Pêcheur: Pêche en mer et fournit de la nourriture."
 msgid "Hunter: Hunts wild forest animals, produces food."
 msgstr "Chasseur: Chasse des animaux sauvages et fournit de la nourriture."
 
+# free-trader is hard to translate, i think "bateau-marchand" is more understandable in the context. In addition, i used it in the tutorial
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
@@ -492,6 +493,7 @@ msgstr "Bâtiments des colons"
 msgid "Charcoal burning: Burns a lot of boards."
 msgstr "Charbonnier: Produit du charbon de bois."
 
+# I think it's good like that
 #: horizons/i18n/guitranslations.py:77
 msgid "Iron mine: Gets iron ore from deposit."
 msgstr "Mine de fer: Extrait le minerai de fer d'un gisement."
@@ -1134,7 +1136,9 @@ msgstr "Ressource la plus demandée:"
 msgid "Taxes:"
 msgstr "Impôts:"
 
+# le contexte est à vérifier
 #: horizons/i18n/guitranslations.py:298
+#, fuzzy
 msgid "capacity utilization"
 msgstr "Utilisation de la capacité"
 
