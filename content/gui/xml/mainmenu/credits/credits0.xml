@@ -37,6 +37,7 @@
 			<Label text="tuempl (Harald Demel)" />
 			<Label text="manuel (Manuel Mausz)" />
 			<Label text="gscai (Ott Tinn)" />
+			<Label text="mihaibivol (Mihai Bivol)" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>
