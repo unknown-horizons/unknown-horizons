@@ -178,7 +178,7 @@ class RouteConfig(object):
 
 		#hide the resource menu
 		self.hide_resource_menu()
-		
+
 		slider = slot.findChild(name="slider")
 
 		if not has_value:
@@ -245,7 +245,7 @@ class RouteConfig(object):
 		self._gui.findChild(name="select_res_label").text = unicode("")
 
 	def add_trade_slots(self, entry, num):
-		x_position = 90
+		x_position = 105
 		#initialize slots with empty dict
 		self.slots[entry] = {}
 		for num in range(0,num):
@@ -311,15 +311,10 @@ class RouteConfig(object):
 		if selected == None:
 			return
 
-		try:
-			#if a new branch office is added to the list hide the resource menu
-			self.instance.route.append(self.branch_offices[selected])
-			self.add_gui_entry(self.branch_offices[selected])
-			if self.resource_menu_shown:
-				self.hide_resource_menu()
-		except IndexError:
-			#index error is thrown if a branch office can't be appended
-			pass
+		self.instance.route.append(self.branch_offices[selected])
+		self.add_gui_entry(self.branch_offices[selected])
+		if self.resource_menu_shown:
+			self.hide_resource_menu()
 
 		self.hide()
 		self.show()

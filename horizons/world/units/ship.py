@@ -52,10 +52,6 @@ class ShipRoute(object):
 		self.enabled = False
 
 	def append(self, branch_office):
-		#don't add to consecutive offices to route
-		if len(self.waypoints) > 0 and\
-		   self.waypoints[-1]['branch_office'] == branch_office:
-			raise IndexError
 		self.waypoints.append({
 		  'branch_office' : branch_office,
 		  'resource_list' : {}
@@ -87,18 +83,26 @@ class ShipRoute(object):
 			for res in resource_list:
 				amount = resource_list[res]
 				if amount > 0:
+					try:
+						amount = max(0, amount - self.ship.inventory._storage[res])
+					except KeyError:
+						pass
 					TransferResource (amount, res, branch_office, self.ship).execute(self.ship.session)
 
 				else:
 					TransferResource (-amount, res, self.ship, branch_office).execute(self.ship.session)
 		self.move_to_next_route_bo()
 
-
 	def move_to_next_route_bo(self):
 		next_destination = self.get_next_destination()
 		if next_destination == None:
 			return
+
 		branch_office = next_destination['branch_office']
+		if branch_office.position.center() in Circle(self.ship.position, self.ship.radius):
+			self.on_route_bo_reached()
+			return
+
 		found_path_to_bo = False
 
 		for point in Circle(branch_office.position.center(), self.ship.radius):

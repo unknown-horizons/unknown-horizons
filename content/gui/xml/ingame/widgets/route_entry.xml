@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <Container size="350,50">
 	<Label name="bo_name" position="0,15" text=""/>
-	<TooltipButton name="delete_bo" position="271,7" border_size="0"
-		up_image="content/gui/images/buttons/delete.png"
-		down_image="content/gui/images/buttons/delete.png"
-		hover_image="content/gui/images/buttons/delete_h.png"
+	<TooltipButton name="delete_bo" position="290,15" border_size="0"
+		up_image="content/gui/images/buttons/delete_small.png"
+		down_image="content/gui/images/buttons/delete_small.png"
+		hover_image="content/gui/images/buttons/delete_small.png"
 		tooltip="Delete entry" />
 
-	<TooltipButton name="move_up" position="304,12" border_size="0"
-		up_image="content/gui/images/buttons/up_10.png"
-		down_image="content/gui/images/buttons/up_10.png"
-		hover_image="content/gui/images/buttons/up_10.png"
+	<TooltipButton name="move_up" position="290,0" border_size="0"
+		up_image="content/gui/images/buttons/up_15.png"
+		down_image="content/gui/images/buttons/up_15.png"
+		hover_image="content/gui/images/buttons/up_15.png"
 		tooltip="Move Up" />
-	<TooltipButton name="move_down" position="304,26" border_size="0"
-		up_image="content/gui/images/buttons/down_10.png"
-		down_image="content/gui/images/buttons/down_10.png"
-		hover_image="content/gui/images/buttons/down_10.png"
+	<TooltipButton name="move_down" position="290,34" border_size="0"
+		up_image="content/gui/images/buttons/down_15.png"
+		down_image="content/gui/images/buttons/down_15.png"
+		hover_image="content/gui/images/buttons/down_15.png"
 		tooltip="Move Down" />
 </Container>
