@@ -190,7 +190,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		# try to get away with a random job
 		for i in xrange(5):
 			provider = self._building_index.get_random_building_in_range(self.position.to_tuple())
-			if self.check_possible_job_target(provider):
+			if provider is not None and self.check_possible_job_target(provider):
 				job = self.check_possible_job_target_for(provider, self._required_resource_id)
 				if job is not None and self.check_move(job.object.loading_area):
 					return job
