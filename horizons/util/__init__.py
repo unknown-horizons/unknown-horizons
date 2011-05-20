@@ -22,6 +22,7 @@
 __all__ = []
 
 from living import livingProperty, LivingObject
+from buildingindexer import BuildingIndexer
 from changelistener import ChangeListener
 from color import Color
 from worldobject import WorldObject

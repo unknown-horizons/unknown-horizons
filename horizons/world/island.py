@@ -26,10 +26,10 @@ import re
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
-from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader, decorators, random_map
+from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader, decorators, random_map, BuildingIndexer
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
-from horizons.constants import BUILDINGS, UNITS
+from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
 
@@ -73,6 +73,10 @@ class Island(BuildingOwner, WorldObject):
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
 		self.__init(Point(x, y), filename)
+
+		# create building indexers
+		self.building_indexers = {}
+		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(6, self.get_coordinates(), self.session.random)
 
 		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
@@ -268,6 +272,8 @@ class Island(BuildingOwner, WorldObject):
 		if building.settlement is not None:
 			building.settlement.add_building(building)
 		building.init()
+		if building.id in self.building_indexers:
+			self.building_indexers[building.id].add(building)
 
 		# Reset the tiles this building was covering
 		for point in building.position:
@@ -282,10 +288,17 @@ class Island(BuildingOwner, WorldObject):
 			assert(building not in building.settlement.buildings)
 
 		super(Island, self).remove_building(building)
+		if building.id in self.building_indexers:
+			self.building_indexers[building.id].remove(building)
 
 		# Reset the tiles this building was covering (after building has been completely removed)
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
+
+	def get_building_index(self, resource_id):
+		if resource_id == RES.WILDANIMALFOOD_ID:
+			return self.building_indexers[BUILDINGS.TREE_CLASS]
+		return None
 
 	def get_surrounding_tiles(self, point, radius = 1):
 		"""Returns tiles around point with specified radius.
