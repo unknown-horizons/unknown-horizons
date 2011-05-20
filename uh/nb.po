@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-10 15:34+0200\n"
-"Last-Translator: pers <pers87@gmail.com>\n"
+"PO-Revision-Date: 2011-05-10 15:35+0200\n"
+"Last-Translator: Audun <pers87@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,6 @@ msgstr ""
 "Trenger ver. %(need)d!"
 
 #: horizons/gui/gui.py:388
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
 msgstr "Inkompatibel versjon\n"
 
