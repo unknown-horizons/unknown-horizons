@@ -272,6 +272,7 @@ msgid "Build"
 msgstr "Construir"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
+#, fuzzy
 msgid "Boat builder overview"
 msgstr "Resumo do construtor de barcos"
 

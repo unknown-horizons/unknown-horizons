@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-20 08:13+0200\n"
+"PO-Revision-Date: 2011-05-20 11:18+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -470,9 +470,8 @@ msgid "Farm: Grows field crops and raises livestock."
 msgstr "Ферма: Ухаживает за полями и скотом."
 
 #: horizons/i18n/guitranslations.py:67
-#, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr "Пастбище: Выращивает овец. Производит шерсть. Необходима ферма."
+msgstr "Пастбище: Выращивает овец. Производит шерсть. Нуждается в ферме."
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
@@ -493,9 +492,8 @@ msgid "Weaver: Turns lamb wool into cloth."
 msgstr "Ткач: Ткет из бараньей шерсти ткань."
 
 #: horizons/i18n/guitranslations.py:74
-#, fuzzy
 msgid "Settler buildings"
-msgstr "Здание поселенца"
+msgstr "Здания поселенцев"
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Charcoal burning: Burns a lot of boards."
@@ -641,9 +639,8 @@ msgid "Start production"
 msgstr "Возобновить производство"
 
 #: horizons/i18n/guitranslations.py:123
-#, fuzzy
 msgid "Leave Captain's log"
-msgstr "Закрыть капитанский журнал"
+msgstr "Закрыть судовой журнал"
 
 #: horizons/i18n/guitranslations.py:124
 msgid "Read prev. entries"
@@ -1042,9 +1039,8 @@ msgid "(lose all resources)"
 msgstr "(потеря всех ресурсов)"
 
 #: horizons/i18n/guitranslations.py:249
-#, fuzzy
 msgid "Currently building:"
-msgstr "Текущие постройки:"
+msgstr "Текущее строительство:"
 
 #: horizons/i18n/guitranslations.py:250
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
@@ -1236,13 +1232,13 @@ msgstr "Погрузить/Разгрузить:"
 #: horizons/main.py:84
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 0 and 65535."
 msgstr ""
-"Ошибка: Не верный синтаксис в опции командной строки --mp-master. Порт может "
+"Ошибка: Неверный синтаксис в опции командной строки --mp-master. Порт может "
 "быть числом от 0 до 65535."
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 0 and 65535."
 msgstr ""
-"Ошибка: Не верный синтаксис в опции командной строки --mp-bind. Порт может "
+"Ошибка: Неверный синтаксис в опции командной строки --mp-bind. Порт может "
 "быть числом от 0 до 65535."
 
 #: horizons/main.py:198
