@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-19 22:55+0200\n"
+"PO-Revision-Date: 2011-05-20 05:26+0200\n"
 "Last-Translator: fcxSanya <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -785,7 +785,7 @@ msgstr "{C} = Чат"
 
 #: horizons/i18n/guitranslations.py:165
 msgid "{L} = Toggle Captain's log"
-msgstr ""
+msgstr "{L} = Судовой журнал"
 
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:207
 #: horizons/i18n/guitranslations.py:242
@@ -1549,7 +1549,7 @@ msgstr "Разрушенный шатёр"
 
 #: sqlite/Building
 msgid "Toolmaker"
-msgstr ""
+msgstr "Изготовитель инструментов"
 
 #: sqlite/Building
 msgid "Trail"
@@ -1561,7 +1561,7 @@ msgstr "Деревенская школа"
 
 #: sqlite/Building
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Палатка ткача"
 
 #: sqlite/Colors
 msgid "black"
@@ -1645,7 +1645,7 @@ msgstr "кирпич"
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr ""
+msgstr "древесный уголь"
 
 #: sqlite/Resources
 msgid "clay"
@@ -1656,8 +1656,9 @@ msgid "coins"
 msgstr "монеты"
 
 #: sqlite/Resources
+#, fuzzy
 msgid "community"
-msgstr ""
+msgstr "общество"
 
 #: sqlite/Resources
 msgid "education"
@@ -1665,11 +1666,11 @@ msgstr "образование"
 
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "вера"
 
 #: sqlite/Resources
 msgid "fish"
-msgstr ""
+msgstr "рыба"
 
 #: sqlite/Resources
 msgid "food"
