@@ -61,6 +61,16 @@ class ShipRoute(object):
 		  'resource_list' : {}
 		})
 
+	def move_waypoint_down(self, position):
+		if position == len(self.waypoints):
+			return
+		self.waypoints.insert(position+1,self.waypoints.pop(position))
+
+	def move_waypoint_up(self, position):
+		if position == 0:
+			return
+		self.waypoints.insert(position-1,self.waypoints.pop(position))
+
 	def add_to_resource_list(self, position, res_id, amount):
 		self.waypoints[position]['resource_list'][res_id] = amount
 

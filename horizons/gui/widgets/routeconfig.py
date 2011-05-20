@@ -94,6 +94,40 @@ class RouteConfig(object):
 		self.hide()
 		self.show()
 
+	def move_entry_up(self, entry):
+		position = self.widgets.index(entry)
+		if position == 0:
+			return
+
+		vbox = self._gui.findChild(name="left_vbox")
+		enabled = self.instance.route.enabled
+		self.instance.route.disable()
+		vbox.removeChildren(self.widgets)
+		self.widgets.insert(position-1,self.widgets.pop(position))
+		self.instance.route.move_waypoint_up(position)
+		vbox.addChildren(self.widgets)
+		if enabled:
+			self.instance.route.enable()
+		self.hide()
+		self.show()
+
+	def move_entry_down(self, entry):
+		position = self.widgets.index(entry)
+		if position == len(self.widgets):
+			return
+
+		vbox = self._gui.findChild(name="left_vbox")
+		enabled = self.instance.route.enabled
+		self.instance.route.disable()
+		vbox.removeChildren(self.widgets)
+		self.widgets.insert(position+1,self.widgets.pop(position))
+		self.instance.route.move_waypoint_down(position)
+		vbox.addChildren(self.widgets)
+		if enabled:
+			self.instance.route.enable()
+		self.hide()
+		self.show()
+
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
@@ -262,7 +296,9 @@ class RouteConfig(object):
 			index += 1
 
 		entry.mapEvents({
-		  'delete_bo/mouseClicked' : Callback(self.remove_entry, entry)
+		  'delete_bo/mouseClicked' : Callback(self.remove_entry, entry),
+		  'move_up/mouseClicked' : Callback(self.move_entry_up, entry),
+		  'move_down/mouseClicked' : Callback(self.move_entry_down, entry)
 		  })
 		vbox.addChild(entry)
 
