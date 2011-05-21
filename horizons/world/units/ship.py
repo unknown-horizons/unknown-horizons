@@ -29,7 +29,7 @@ from horizons.world.storage import PositiveTotalStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, NamedObject, Circle
+from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
@@ -138,6 +138,38 @@ class ShipRoute(object):
 	def clear(self):
 		self.waypoints=[]
 		self.current_waypoint=-1
+
+	def load(self, db):
+		enabled, self.current_waypoint = db("SELECT enabled, current_waypoint FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
+
+		query = "SELECT branch_office_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
+		offices_id = db(query, self.ship.worldid)
+
+		for office_id, in offices_id:
+			branch_office = WorldObject.get_object_by_id(office_id)
+			query = "SELECT res, amount FROM ship_route_resources WHERE ship_id = ? and waypoint_index = ?"
+			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
+
+			self.waypoints.append({
+			  'branch_office' : branch_office,
+			  'resource_list' : resource_list
+			})
+
+		if enabled:
+			self.current_waypoint -= 1
+			self.enable()
+
+	def save(self, db):
+		worldid = self.ship.worldid
+		db("INSERT INTO ship_route(ship_id, enabled, current_waypoint) VALUES(?, ?, ?)",
+		   worldid, self.enabled, self.current_waypoint)
+		for entry in self.waypoints:
+			index = self.waypoints.index(entry)
+			db("INSERT INTO ship_route_waypoint(ship_id, branch_office_id, waypoint_index) VALUES(?, ?, ?)",
+			   worldid, entry['branch_office'].worldid, index)
+			for res in entry['resource_list']:
+				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
+				   worldid, index, res, entry['resource_list'][res])
 
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
@@ -256,6 +288,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def save(self, db):
 		super(Ship, self).save(db)
+		if hasattr(self, 'route'):
+			self.route.save(db)
 
 	def load(self, db, worldid):
 		super(Ship, self).load(db, worldid)
@@ -263,6 +297,12 @@ class Ship(NamedObject, StorageHolder, Unit):
 		# register ship in world
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+
+		# if ship did not have route configured, do not add attribute
+		if len(db("SELECT * FROM ship_route WHERE ship_id = ?", self.worldid)) is 0:
+			return
+		self.create_route()
+		self.route.load(db)
 
 	def find_nearby_ships(self, radius=15):
 		# TODO: Replace 15 with a distance dependant on the ship type and any
