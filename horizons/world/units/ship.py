@@ -45,9 +45,9 @@ class ShipRoute(object):
 
 	#NOTE new methods need to be added to handle route editing.
 	"""
-	def __init__(self, ship, waypoints=[]):
+	def __init__(self, ship):
 		self.ship = ship
-		self.waypoints = waypoints                             
+		self.waypoints = []
 		self.current_waypoint = -1
 		self.enabled = False
 
@@ -88,7 +88,6 @@ class ShipRoute(object):
 					except KeyError:
 						pass
 					TransferResource (amount, res, branch_office, self.ship).execute(self.ship.session)
-
 				else:
 					TransferResource (-amount, res, self.ship, branch_office).execute(self.ship.session)
 		self.move_to_next_route_bo()
@@ -165,8 +164,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def create_inventory(self):
 		self.inventory = PositiveTotalStorage(STORAGE.SHIP_TOTAL_STORAGE)
 
-	def create_route(self, waypoints=[]):
-		self.route=ShipRoute(self, waypoints)
+	def create_route(self):
+		self.route=ShipRoute(self)
 
 	def _move_tick(self):
 		"""Keeps track of the ship's position in the global ship_map"""
