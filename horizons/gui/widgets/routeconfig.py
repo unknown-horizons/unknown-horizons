@@ -207,7 +207,7 @@ class RouteConfig(object):
 
 		position = self.widgets.index(entry)
 		if self.resource_menu_shown:
-			return
+			self.hide_resource_menu()
 		self.resource_menu_shown = True
 		vbox = self._gui.findChild(name="resources")
 		label = self._gui.findChild(name="select_res_label")
@@ -219,8 +219,10 @@ class RouteConfig(object):
 		current_hbox = widgets.HBox()
 		index = 1
 
+		active_icon = slot.findChild(name="button").up_image.source
 		for res_id in self.icon_for_resource:
-			if res_id in self.instance.route.waypoints[position]['resource_list']:
+			if res_id in self.instance.route.waypoints[position]['resource_list'] \
+			   and self.icon_for_resource[res_id] is not active_icon:
 				continue
 			button = TooltipButton(size=(50,50))
 			icon = self.icon_for_resource[res_id]

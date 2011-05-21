@@ -22,7 +22,7 @@
 <VBox name="right_vbox" max_size="350,508" min_size="350,508" position="520,40" padding="2">
 	<Icon image="content/gui/images/background/hr.png" />
 
-	<ScrollArea max_size="300,200" horizontal_scrollbar="0">
+	<ScrollArea max_size="300,150" horizontal_scrollbar="0">
 		<ListBox name="branch_office_list" />
 	</ScrollArea>
 	<TooltipButton name="add_bo" border_size="0"
