@@ -26,3 +26,4 @@ from buildtabs import BuildTab
 from tabwidget import TabWidget
 from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab
+from farmtab import BuildingRelatedFieldsTab
