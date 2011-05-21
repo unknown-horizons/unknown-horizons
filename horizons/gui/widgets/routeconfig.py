@@ -51,15 +51,23 @@ class RouteConfig(object):
 	def hide(self):
 		self._gui.hide()
 
+	def start_button_set_active(self):
+		self._gui.findChild(name='start_route').set_active()
+		self._gui.findChild(name='start_route').tooltip = "Start Route"
+
+	def start_button_set_inactive(self):
+		self._gui.findChild(name='start_route').set_inactive()
+		self._gui.findChild(name='start_route').tooltip = "Stop Route"
+
 	def start_route(self):
 		if len(self.widgets) < self.MIN_ENTRIES:
 			return
 		self.instance.route.enable()
-		self._gui.findChild(name='start_route').set_inactive()
+		self.start_button_set_inactive()
 
 	def stop_route(self):
 		self.instance.route.disable()
-		self._gui.findChild(name='start_route').set_active()
+		self.start_button_set_active()
 
 	def toggle_route(self):
 		if not self.instance.route.enabled:
@@ -350,8 +358,9 @@ class RouteConfig(object):
 			self.add_gui_entry(entry['branch_office'], entry['resource_list'])
 		# we want escape key to close the widget, what needs to be fixed here?
 		#self._gui.on_escape = self.hide
+		self.start_button_set_active()
 		if self.instance.route.enabled:
-			self._gui.findChild(name='start_route').set_inactive()
+			self.start_button_set_inactive()
 
 		self._gui.mapEvents({
 		  'cancelButton' : self.hide,

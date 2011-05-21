@@ -14,7 +14,7 @@
 		up_image="content/gui/icons/templates/production/toggle_active_n.png"
 		down_image="content/gui/icons/templates/production/toggle_active_d.png"
 		hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-		tooltip="Start / Stop route" />
+		tooltip="Start Route" />
 
 
 	<!-- right side -->
