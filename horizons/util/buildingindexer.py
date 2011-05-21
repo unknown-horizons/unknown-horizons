@@ -21,7 +21,7 @@
 
 from horizons.util.shapes.point import Point
 from horizons.util.shapes.circle import Circle
-from horizons.util.python.decorators import make_constants
+from horizons.util.python import decorators
 
 
 class BuildingIndexer(object):
@@ -48,19 +48,16 @@ class BuildingIndexer(object):
 		self._remove_set = set()
 		self._changed = False
 
-	@make_constants()
 	def add(self, building):
 		self._remove_set.discard(building)
 		self._add_set.add(building)
 		self._changed = True
 
-	@make_constants()
 	def remove(self, building):
 		self._add_set.discard(building)
 		self._remove_set.add(building)
 		self._changed = True
 
-	@make_constants()
 	def _get_tuples_in_range(self, building):
 		# TODO: this should be improved to work better on buildings with more than one tile
 		for building_coords in building.position.tuple_iter():
@@ -118,13 +115,11 @@ class BuildingIndex(object):
 		self._list = []
 		self._changed = False
 
-	@make_constants()
 	def add(self, building):
 		self._remove_set.discard(building)
 		self._add_set.add(building)
 		self._changed = True
 
-	@make_constants()
 	def remove(self, building):
 		self._add_set.discard(building)
 		self._remove_set.add(building)
@@ -166,7 +161,6 @@ class BuildingIndexElement(object):
 		self.distance = distance
 		self.building = building
 
-	@make_constants()
 	def __cmp__(self, other):
 		if abs(self.distance - other.distance) > -1e-7:
 			return -1 if self.distance < other.distance else 1
@@ -179,3 +173,9 @@ class BuildingIndexElement(object):
 		elif self_pos.left != other_pos.left:
 			return self_pos.left - other_pos.left
 		return self_pos.right - other_pos.right
+
+
+# apply make_constant to classes
+decorators.bind_all(BuildingIndexer)
+decorators.bind_all(BuildingIndex)
+decorators.bind_all(BuildingIndexElement)
