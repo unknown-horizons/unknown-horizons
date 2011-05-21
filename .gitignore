@@ -20,10 +20,16 @@
 *.rar
 *.tar
 *.zip
+*.nsi
 
-# Logs and databases #
+# Logs and Translations #
 ######################
 *.log
+*.po~
+
+# Build Files #
+###############
+build
 
 # OS generated files #
 ######################
@@ -32,3 +38,7 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# Misc. #
+#########	
+content/lang/*
