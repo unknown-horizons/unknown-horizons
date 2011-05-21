@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-12 19:04+0200\n"
+"PO-Revision-Date: 2011-05-13 08:14+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -582,7 +582,7 @@ msgstr ""
 "Quand vous vendez, la «valeur cible» est la quantité de produit que vous "
 "voulez garder en réserve et ne pas vendre."
 
-# I use the suggestion from erdnaxeli and made some more changes.
+# I used the suggestion from erdnaxeli and made some more changes.
 #: po/tutorial.py:36
 msgid ""
 "For example: \n"
