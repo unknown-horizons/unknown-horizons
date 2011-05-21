@@ -21,11 +21,17 @@
 
 from horizons.util.shapes.point import Point
 from horizons.util.shapes.circle import Circle
+from horizons.util.python.decorators import make_constants
 
 
 class BuildingIndexer(object):
-	"""Indexes a subset of the buildings on an island to improve nearby building 
-	lookup performance."""
+	"""
+	Indexes a subset of the buildings on an island to improve nearby building 
+	lookup performance.
+
+	Used to answer queries of the form 'I am at (x, y), where is the closest / random
+	building that provides resource X in my range'.
+	"""
 
 	def __init__(self, radius, coords_list, random):
 		"""
@@ -42,16 +48,19 @@ class BuildingIndexer(object):
 		self._remove_set = set()
 		self._changed = False
 
+	@make_constants()
 	def add(self, building):
 		self._remove_set.discard(building)
 		self._add_set.add(building)
 		self._changed = True
 
+	@make_constants()
 	def remove(self, building):
 		self._add_set.discard(building)
 		self._remove_set.add(building)
 		self._changed = True
 
+	@make_constants()
 	def _get_tuples_in_range(self, building):
 		# TODO: this should be improved to work better on buildings with more than one tile
 		for building_coords in building.position.tuple_iter():
@@ -86,6 +95,7 @@ class BuildingIndexer(object):
 	def get_random_building_in_range(self, coords):
 		"""
 		Returns a random building in range or None if one doesn't exist
+		Don't use this for user interactions unless you want to break multiplayer
 		@param coords: tuple, the point around which to get the building
 		"""
 		if coords in self._map:
@@ -108,11 +118,13 @@ class BuildingIndex(object):
 		self._list = []
 		self._changed = False
 
+	@make_constants()
 	def add(self, building):
 		self._remove_set.discard(building)
 		self._add_set.add(building)
 		self._changed = True
 
+	@make_constants()
 	def remove(self, building):
 		self._add_set.discard(building)
 		self._remove_set.add(building)
@@ -153,14 +165,17 @@ class BuildingIndexElement(object):
 	def __init__(self, distance, building):
 		self.distance = distance
 		self.building = building
-	
+
+	@make_constants()
 	def __cmp__(self, other):
 		if abs(self.distance - other.distance) > -1e-7:
 			return -1 if self.distance < other.distance else 1
-		if self.building.position.top != other.position.top:
-			return self.building.position.top - other.position.top
-		elif self.building.position.bottom != other.position.bottom:
-			return self.building.position.bottom - other.position.bottom
-		elif self.building.position.left != other.position.left:
-			return self.building.position.left - other.position.left
-		return self.building.position.right - other.position.right
+		self_pos = self.building.position
+		other_pos = other.position
+		if self_pos.top != other_pos.top:
+			return self_pos.top - other_pos.top
+		elif self_pos.bottom != other_pos.bottom:
+			return self_pos.bottom - other_pos.bottom
+		elif self_pos.left != other_pos.left:
+			return self_pos.left - other_pos.left
+		return self_pos.right - other_pos.right
