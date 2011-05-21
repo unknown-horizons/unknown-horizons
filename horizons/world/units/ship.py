@@ -99,7 +99,7 @@ class ShipRoute(object):
 			return
 
 		branch_office = next_destination['branch_office']
-		if branch_office.position.center() in Circle(self.ship.position, self.ship.radius):
+		if self.ship.position.distance_to_point(branch_office.position.center()) <= self.ship.radius:
 			self.on_route_bo_reached()
 			return
 
