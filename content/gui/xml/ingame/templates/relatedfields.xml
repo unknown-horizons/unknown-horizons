@@ -1,24 +1,12 @@
 <?xml version="1.0"?>
 
-<!-- Template for a production line to be inserted to the production overview -->
-
-
-<!--
-	The container will be extended in height when multiple resources for either input_res or output_res
-	are added. This happens in UH code. The height attribute specified here is used as base value.
-	If there are n res in one column, the container will have the size n * height.
--->
+<!-- Template for the build related fields submenu to be inserted to the farm overview -->
 <Container size="180,50" position="0,0" name="fields_container">
 	<HBox position="0,0" padding="2">
 		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 	</HBox>
 
-	<HBox position="0,2" padding="8">
-		<TooltipButton name="building"
-			up_image="content/gui/icons/buildmenu/tent.png"
-			hover_image="content/gui/icons/buildmenu/tent_h.png"
-			down_image="content/gui/icons/buildmenu/tent_h.png"
-			tooltip="Build"/>
+	<HBox position="0,2" padding="8" name="build_button_container">
 	</HBox>
 	
 	<Label name="name"  text="..." position="50, 5" />

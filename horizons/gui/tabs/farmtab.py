@@ -57,8 +57,6 @@ class BuildingRelatedFieldsTab(OverviewTab):
 		# Load all related Fields of this Farm
 		building_ids = main.db.cached_query("SELECT id FROM building where class_type = ?", "Field")
 
-		print building_ids
-
 		for _id in sorted(building_ids):
 			gui = load_xml_translated(self.relatedfields_gui_xml)
 			container = gui.findChild(name="fields_container")
@@ -71,26 +69,38 @@ class BuildingRelatedFieldsTab(OverviewTab):
 				instance=None)
 			
 			# Display Buildings
+			build_button = TooltipButton(name="build"+str(_id[0]), tooltip=_("Build"))
+			
 			buildmenu_image_path = "content/gui/icons/buildmenu/";
 			if building.name.lower().find("potato") > -1:
-				container.findChild(name="building").up_image=buildmenu_image_path+"potatoes.png"
-				container.findChild(name="building").down_image=buildmenu_image_path+"potatoes_h.png"
-				container.findChild(name="building").hover_image=buildmenu_image_path+"potatoes_h.png"
+				build_button.up_image=buildmenu_image_path+"potatoes.png"
+				build_button.down_image=buildmenu_image_path+"potatoes_h.png"
+				build_button.hover_image=buildmenu_image_path+"potatoes_h.png"
 			else:
-				container.findChild(name="building").up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
-				container.findChild(name="building").down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
-				container.findChild(name="building").hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+				build_button.up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
+				build_button.down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+				build_button.hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+				
+			container.findChild(name="build_button_container").addChild(build_button)
 			
 			container.findChild(name="name").text = unicode(building.name)
 			
-			container.mapEvents({ 'building': self.buildField(building) })
-			
 			container.stylize('menu_black')
 			parent_container.addChild(container)
+			
+			self.widget.mapEvents({ 'build'+str(_id[0]): Callback(self.buildField, building) })
 
 		super(BuildingRelatedFieldsTab, self).refresh()
 	
 	def buildField(self, building):
-		# Implement function to build the Building here
-		pass
+		self.hide()
+		
+		# deselect all
+		for instance in self.instance.session.selected_instances:
+			instance.deselect()
+		self.instance.session.selected_instances.clear()
+		
+		if hasattr(building, 'show_build_menu'):
+			building.show_build_menu()
+		self.instance.session.cursor = BuildingTool(self.instance.session, building, None)
 
