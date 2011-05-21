@@ -1,10 +1,18 @@
 <?xml version="1.0"?>
-<Container size="1024,768">
+<Container name="loadingScreen" size="1024,768">
 	<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
 	<Icon image="content/gui/images/background/mainmenu/loading.png" position="387,316" />
-	<Label name="loading_label" position="400,360"
-		text="Loading ..." font="libertine_large_load"
-		max_size="250,50" min_size="150,50" />
+	<Label name="loading" position="410,340"
+		text="loading..." font="libertine_large_load"
+		max_size="150,100" min_size="300,100" />
+
+	<VBox position="410,390" >
+	<ProgressBar name="progressBar" />
+	</VBox>
+
+	<Label name="percentage" position="500,384"
+		font="libertine_mainmenu"
+		max_size="150,50" min_size="80,70" />
 	<Label name="version_label" position="745,735"
 		text="Unknown Horizons Alpha" font="libertine_mainmenu" />
 </Container>

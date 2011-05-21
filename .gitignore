@@ -1,7 +1,44 @@
-*.log
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
 *.pyc
-*.po~
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 *.nsi
-Thumbs.db
+
+# Logs and Translations #
+######################
+*.log
+*.po~
+
+# Build Files #
+###############
 build
+
+# OS generated files #
+######################
+.DS_Store?
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Misc. #
+#########	
 content/lang/*
