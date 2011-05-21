@@ -76,7 +76,7 @@ class Island(BuildingOwner, WorldObject):
 
 		# create building indexers
 		self.building_indexers = {}
-		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(6, self.get_coordinates(), self.session.random)
+		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(6, self, self.session.random)
 
 		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
@@ -321,8 +321,7 @@ class Island(BuildingOwner, WorldObject):
 				pass
 
 	def __iter__(self):
-		for i in self.get_coordinates():
-			yield i
+		return self.ground_map.iterkeys()
 
 	def check_wild_animal_population(self):
 		"""Creates a wild animal if they died out."""

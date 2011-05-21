@@ -257,7 +257,7 @@ class UnitProducerBuilding(QueueProducer, ProducerBuilding):
 					found_tile = False
 					# search for free water tile, and increase search radius if none is found
 					while not found_tile:
-						for coord in Circle(self.position.center(), radius).get_coordinates():
+						for coord in Circle(self.position.center(), radius).tuple_iter():
 							point = Point(coord[0], coord[1])
 							if self.island.get_tile(point) is None:
 								tile = self.session.world.get_tile(point)
