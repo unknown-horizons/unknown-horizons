@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-22 21:13+0200\n"
+"PO-Revision-Date: 2011-05-22 21:42+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -815,11 +815,11 @@ msgstr ""
 
 #: po/tutorial.py:49
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "Постройте ферму, оставив некоторое пространство вокруг неё."
 
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "НОВАЯ ЗАДАЧА: СОЗДАНИЕ ПОЛЕЙ"
 
 #: po/tutorial.py:51
 msgid ""
