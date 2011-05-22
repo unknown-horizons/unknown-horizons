@@ -204,8 +204,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# Prepare widget
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
-		for label in ('headline','saved_games_label','details_label'):
-			self.current.findChild(name=label).stylize('headline')
 
 		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
 		if mode == 'save': # only show enter_filename on save
@@ -345,7 +343,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# just to be safe, the gettext-function is used twice,
 		# once on the original, once on the unicode string.
 		headline.text = _(_(windowtitle))
-		headline.stylize('headline')
 		popup.findChild(name='popup_message').text = _(_(message))
 		popup.adaptLayout() # recalculate widths
 		return popup

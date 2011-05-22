@@ -123,7 +123,6 @@ class ShipOverviewTab(OverviewTab):
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)
-		self.widget.findChild(name='name').stylize("headline")
 		self.tooltip = _("Ship overview")
 
 	def refresh(self):
@@ -162,7 +161,6 @@ class TraderShipOverviewTab(OverviewTab):
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)
-		self.widget.findChild(name='name').stylize("headline")
 		self.tooltip = _("Ship overview")
 
 class ProductionOverviewTab(OverviewTab):
@@ -308,7 +306,6 @@ class SignalFireOverviewTab(OverviewTab):
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
-		self.widget.findChild(name='name').stylize("headline")
 		self.tooltip = _("Overview")
 
 class EnemyBuildingOverviewTab(OverviewTab):

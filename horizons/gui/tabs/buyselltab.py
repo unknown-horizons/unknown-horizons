@@ -261,7 +261,6 @@ class BuySellTab(TabInterface):
 #		current_hbox.addSpacer(pychan.widgets.layout.Spacer) #TODO: proper alignment
 		vbox.addChild(current_hbox)
 		vbox.adaptLayout()
-		self.resources.stylize('headline')
 		self.hide() # hides tab that invoked the selection widget
 		self.resources.show() # show selection widget, still display old tab icons
 		self.settlement.session.ingame_gui.minimap_to_front()

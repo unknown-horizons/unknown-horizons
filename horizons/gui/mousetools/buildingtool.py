@@ -105,7 +105,6 @@ class BuildingTool(NavigationTool):
 	def load_gui(self):
 		if self.gui is None:
 			self.gui = load_xml_translated("place_building.xml")
-			self.gui.findChild(name='headline').stylize('headline')
 			top_bar = self.gui.findChild(name='top_bar')
 			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 			self.gui.position_technique = "right-14:top+157"

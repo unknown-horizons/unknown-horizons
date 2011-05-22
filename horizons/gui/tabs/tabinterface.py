@@ -58,9 +58,12 @@ class TabInterface(object):
 		self.x_pos = self.widget.position[0]
 		self.y_pos = self.widget.position[1]
 		self.widget.stylize('menu_black')
-		children = self.widget.findChildren(name='headline')
-		for child in children:
-			child.stylize('headline') # style definition for headline
+		#TODO use gui.utility.LazyWidgetsDict._load_widget() here which styles
+		# headlines if their name starts with headline* or name*.
+		for w in self.widget.findChildren():
+			if w.name.startswith("headline") or \
+			   w.name is "name":
+				w.stylize('headline')
 
 	def show(self):
 		"""Shows the current widget"""
