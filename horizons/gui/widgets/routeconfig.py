@@ -53,11 +53,11 @@ class RouteConfig(object):
 
 	def start_button_set_active(self):
 		self._gui.findChild(name='start_route').set_active()
-		self._gui.findChild(name='start_route').tooltip = "Start Route"
+		self._gui.findChild(name='start_route').tooltip = _('Start Route')
 
 	def start_button_set_inactive(self):
 		self._gui.findChild(name='start_route').set_inactive()
-		self._gui.findChild(name='start_route').tooltip = "Stop Route"
+		self._gui.findChild(name='start_route').tooltip = _('Stop Route')
 
 	def start_route(self):
 		if len(self.widgets) < self.MIN_ENTRIES:
@@ -102,35 +102,31 @@ class RouteConfig(object):
 		self.hide()
 		self.show()
 
-	def move_entry_up(self, entry):
+	def move_entry(self, entry, direction):
+		"""
+		moves an entry up or down
+		"""
 		position = self.widgets.index(entry)
-		if position == 0:
+		if position == len(self.widgets) and direction is 'down' or \
+		   position == 0 and direction is 'up':
+			return
+
+		if direction is 'up':
+			new_pos = position - 1
+		elif direction is 'down':
+			new_pos = position + 1
+		else:
 			return
 
 		vbox = self._gui.findChild(name="left_vbox")
 		enabled = self.instance.route.enabled
 		self.instance.route.disable()
-		vbox.removeChildren(self.widgets)
-		self.widgets.insert(position-1,self.widgets.pop(position))
-		self.instance.route.move_waypoint_up(position)
-		vbox.addChildren(self.widgets)
-		if enabled:
-			self.instance.route.enable()
-		self.hide()
-		self.show()
 
-	def move_entry_down(self, entry):
-		position = self.widgets.index(entry)
-		if position == len(self.widgets):
-			return
-
-		vbox = self._gui.findChild(name="left_vbox")
-		enabled = self.instance.route.enabled
-		self.instance.route.disable()
 		vbox.removeChildren(self.widgets)
-		self.widgets.insert(position+1,self.widgets.pop(position))
-		self.instance.route.move_waypoint_down(position)
+		self.widgets.insert(new_pos,self.widgets.pop(position))
+		self.instance.route.move_waypoint(position, direction)
 		vbox.addChildren(self.widgets)
+
 		if enabled:
 			self.instance.route.enable()
 		self.hide()
@@ -306,8 +302,8 @@ class RouteConfig(object):
 
 		entry.mapEvents({
 		  'delete_bo/mouseClicked' : Callback(self.remove_entry, entry),
-		  'move_up/mouseClicked' : Callback(self.move_entry_up, entry),
-		  'move_down/mouseClicked' : Callback(self.move_entry_down, entry)
+		  'move_up/mouseClicked' : Callback(self.move_entry, entry, 'up'),
+		  'move_down/mouseClicked' : Callback(self.move_entry, entry, 'down')
 		  })
 		vbox.addChild(entry)
 
