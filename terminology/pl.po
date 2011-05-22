@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-14 17:43+0200\n"
+"PO-Revision-Date: 2011-05-22 22:45+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -381,9 +381,8 @@ msgstr "rybak"
 #: po/tutorial.py
 #: run_uh.py
 #: horizons/main.py
-#, fuzzy
 msgid "found"
-msgstr "znalezniono"
+msgstr "stwierdzono"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -575,9 +574,8 @@ msgstr ""
 #
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "free trader"
-msgstr "niezależny kupiec"
+msgstr "darmowy handlarz"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (3)
@@ -597,9 +595,8 @@ msgstr "łowca"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/inventorytab.py
-#, fuzzy
 msgid "inventory"
-msgstr "zapasy"
+msgstr "zapasów"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
