@@ -157,9 +157,8 @@ msgstr "jedzenie"
 
 #: po/tutorial.py
 #: horizons/gui/tabs/buildtabs.py
-#, fuzzy
 msgid "increment"
-msgstr "wzrost"
+msgstr "stadium rozwoju"
 
 #: po/tutorial.py
 #: horizons/gui/
@@ -212,7 +211,7 @@ msgstr "kliknij"
 #: sqlite/Building
 #, fuzzy
 msgid "main square"
-msgstr "plac główny"
+msgstr "rynek"
 
 #: horizons/gui/tabs/marketplacetabs.py
 #: sqlite/SettlerLevel
