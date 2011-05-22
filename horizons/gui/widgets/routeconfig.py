@@ -194,9 +194,13 @@ class RouteConfig(object):
 			self.show_unload_icon(slot)
 			slider.setValue(float(-value))
 			amount = -value
-		else:
+		elif value > 0:
 			self.show_load_icon(slot)
 			slider.setValue(float(value))
+			amount = value
+		else:
+			#if the slider value is 0 keep the load/unload persistent
+			slider.setValue(0.)
 			amount = value
 
 		if res_id != 0:
