@@ -329,7 +329,7 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_campaign_info(cls, name = "", file = ""):
-		"""Return this campaign's scenario list"""
+		"""Return this campaign's data"""
 		assert (name or file)
 		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames = True, include_scenario_list = True, campaign_data = True)
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
@@ -351,6 +351,23 @@ class SavegameManager(object):
 				continue
 			infos.setdefault('scenario_files', {}).update({scenario: sfiles[snames.index(scenario)]})
 		return infos
+
+	@classmethod
+	def get_scenario_info(cls, name = "", file = ""):
+		"""Return this scenario data"""
+		sfiles, snames = cls.get_scenarios(include_displaynames = True)
+		if name:
+			if not name in snames:
+				print _("Error: Cannot find scenario \"%s\".") % (name,)
+				return False
+			index = snames.index(name)
+		elif file:
+			if not file in sfiles:
+				print _("Error: Cannot find scenario with file \"%s\".") % (file,)
+				return False
+			index = sfiles.index(file)
+		data = yaml.load(open(sfiles[index], 'r'))
+		return data
 
 	@classmethod
 	def mark_scenario_as_won(cls, campaign_data):
