@@ -27,18 +27,18 @@ from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
 from horizons.constants import RES, UNITS, BUILDINGS
 from horizons.ext.enum import Enum
-from horizons.ai.generic import AIPlayer
+from horizons.ai.generic import GenericAI
 from horizons.world.storageholder import StorageHolder
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import PirateShip, TradeShip, FisherShip
 from horizons.world.units.movingobject import MoveNotPossible
 
 
-class Pirate(AIPlayer):
+class Pirate(GenericAI):
 	"""A pirate ship moving randomly around. If another ship comes into the reach
 	of it, it will be followed for a short time."""
 
-	shipStates = Enum.get_extended(AIPlayer.shipStates, 'chasing_ship', 'going_home')
+	shipStates = Enum.get_extended(GenericAI.shipStates, 'chasing_ship', 'going_home')
 
 	log = logging.getLogger("ai.pirate")
 

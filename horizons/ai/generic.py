@@ -26,20 +26,20 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Callback
 from horizons.constants import GAME_SPEED
 
-class AIPlayer(Player):
+class GenericAI(Player):
 	"""Class for AI players implementing generic stuff."""
 
 	shipStates = Enum('idle', 'moving_random')
 
 	def __init__(self, *args, **kwargs):
-		super(AIPlayer, self).__init__(*args, **kwargs)
+		super(GenericAI, self).__init__(*args, **kwargs)
 		self.__init()
 
 	def __init(self):
 		self.ships = {} # {ship : state}. used as list of ships and structure to know their state
 
 	def _load(self, db, worldid):
-		super(AIPlayer, self)._load(db, worldid)
+		super(GenericAI, self)._load(db, worldid)
 		self.__init()
 
 	def send_ship(self, ship):
