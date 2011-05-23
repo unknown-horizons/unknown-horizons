@@ -61,9 +61,9 @@
 				down_image="content/gui/icons/buildmenu/mainsquare_h.png"
 				tooltip="Main square: Supplies citizens with goods." />
 			<TooltipButton name="church-1"
-				up_image="content/gui/icons/buildmenu/church_i.png"
-				hover_image="content/gui/icons/buildmenu/church_i_h.png"
-				down_image="content/gui/icons/buildmenu/church_i.png"
+				up_image="content/gui/icons/buildmenu/pavilion.png"
+				hover_image="content/gui/icons/buildmenu/pavilion_h.png"
+				down_image="content/gui/icons/buildmenu/pavilion_h.png"
 				tooltip="Pavilion: Fulfills religious needs of sailors." />
 			<TooltipButton name="lighthouse-1"
 				up_image="content/gui/icons/buildmenu/signalfire.png"

@@ -78,9 +78,8 @@ def do_win(session):
 		                                          show_cancel_button=True)
 	if not continue_playing:
 		if session.campaign:
-			# TODO : present a scenario choosing Gui to the user
 			SavegameManager.mark_scenario_as_won(session.campaign)
-			ExtScheduler().add_new_object(Callback(SavegameManager.load_next_scenario, session.campaign), SavegameManager, run_in=1)
+			session.ingame_gui.scenario_chooser.show()
 		else:
 			Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, run_in=0)
 	else:

@@ -329,7 +329,7 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_campaign_info(cls, name = "", file = ""):
-		"""Return this campaign's scenario list"""
+		"""Return this campaign's data"""
 		assert (name or file)
 		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames = True, include_scenario_list = True, campaign_data = True)
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
@@ -344,13 +344,30 @@ class SavegameManager(object):
 				return False
 			index = cfiles.index(file)
 		infos = cdatas[index]
-		infos.update({'codename': cnames[index], 'filename': cfiles[index]})
+		infos.update({'codename': cnames[index], 'filename': cfiles[index], 'scenario_names' : cscenarios[index]})
 		for scenario in cscenarios[index]:
 			# find the scenario file
 			if not scenario in snames:
 				continue
 			infos.setdefault('scenario_files', {}).update({scenario: sfiles[snames.index(scenario)]})
 		return infos
+
+	@classmethod
+	def get_scenario_info(cls, name = "", file = ""):
+		"""Return this scenario data"""
+		sfiles, snames = cls.get_scenarios(include_displaynames = True)
+		if name:
+			if not name in snames:
+				print _("Error: Cannot find scenario \"%s\".") % (name,)
+				return False
+			index = snames.index(name)
+		elif file:
+			if not file in sfiles:
+				print _("Error: Cannot find scenario with file \"%s\".") % (file,)
+				return False
+			index = sfiles.index(file)
+		data = yaml.load(open(sfiles[index], 'r'))
+		return data
 
 	@classmethod
 	def mark_scenario_as_won(cls, campaign_data):
@@ -368,6 +385,18 @@ class SavegameManager(object):
 		# save the data back to the file
 		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
 		return campaign_status
+
+	@classmethod
+	def load_scenario(cls, campaign_data, scenario_name):
+		"""This loads the next scenario by starting a new game"""
+		campaign = cls.get_campaign_info(campaign_data['campaign_name'])
+		scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
+		if not scenario_name in scenarios:
+			return False
+		next_index = scenarios.index(scenario_name)
+		campaign_data['scenario_index'] = next_index
+		campaign_data['scenario_name'] = scenarios[next_index]
+		horizons.main._start_map(scenarios[next_index], is_scenario = True, campaign = campaign_data)
 
 	@classmethod
 	def load_next_scenario(cls, campaign_data):

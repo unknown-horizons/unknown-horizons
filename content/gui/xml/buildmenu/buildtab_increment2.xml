@@ -21,9 +21,9 @@
 		<Label position="0,11" text="Companies" name="companies_label" />
 
 		<TooltipButton name="iron-mine-1" position="2,32"
-			up_image="content/gui/icons/buildmenu/ironmine_i.png"
-			hover_image="content/gui/icons/buildmenu/ironmine_i_h.png"
-			down_image="content/gui/icons/buildmenu/ironmine_i_h.png"
+			up_image="content/gui/icons/buildmenu/ironmine.png"
+			hover_image="content/gui/icons/buildmenu/ironmine_h.png"
+			down_image="content/gui/icons/buildmenu/ironmine_h.png"
 			tooltip="Iron mine: Gets iron ore from deposit." />
 		<TooltipButton name="smeltery-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/smeltery.png"
@@ -36,9 +36,9 @@
 			down_image="content/gui/icons/buildmenu/toolmaker_h.png"
 			tooltip="Toolmaker: Produces tools out of iron." />
 		<TooltipButton name="charcoal-burning-1" position="164,32"
-			up_image="content/gui/icons/buildmenu/charcoal_burning.png"
-			hover_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
-			down_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
+			up_image="content/gui/icons/buildmenu/charcoalburning.png"
+			hover_image="content/gui/icons/buildmenu/charcoalburning_h.png"
+			down_image="content/gui/icons/buildmenu/charcoalburning_h.png"
 			tooltip="Charcoal burning: Burns a lot of boards." />
 	</Container>
 
@@ -50,9 +50,9 @@
 		</HBox>
 
 		<TooltipButton name="tavern-1" position="0,32"
-			up_image="content/gui/icons/buildmenu/tavern_i.png"
-			hover_image="content/gui/icons/buildmenu/tavern_i_h.png"
-			down_image="content/gui/icons/buildmenu/tavern_i_h.png"
+			up_image="content/gui/icons/buildmenu/tavern.png"
+			hover_image="content/gui/icons/buildmenu/tavern_h.png"
+			down_image="content/gui/icons/buildmenu/tavern_h.png"
 			tooltip="Tavern: Provides get-together." />
 
 	</Container>
@@ -68,9 +68,9 @@
 		</HBox>
 
 		<TooltipButton name="cattlefield-1" position="2,32"
-			up_image="content/gui/icons/buildmenu/potatoes.png"
-			hover_image="content/gui/icons/buildmenu/potatoes_h.png"
-			down_image="content/gui/icons/buildmenu/potatoes_h.png"
+			up_image="content/gui/icons/buildmenu/potatofield.png"
+			hover_image="content/gui/icons/buildmenu/potatofield_h.png"
+			down_image="content/gui/icons/buildmenu/potatofield_h.png"
 			tooltip="Potato Field: Yields food. Needs a farm." />
 		<TooltipButton name="pasture-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/pasture.png"
@@ -92,9 +92,9 @@
 		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
 
 		<TooltipButton name="weaponsmith-1" position="0,32"
-			up_image="content/gui/icons/buildmenu/boat_builder.png"
-			hover_image="content/gui/icons/buildmenu/boat_builder_h.png"
-			down_image="content/gui/icons/buildmenu/boat_builder_h.png"
+			up_image="content/gui/icons/buildmenu/boatbuilder.png"
+			hover_image="content/gui/icons/buildmenu/boatbuilder_h.png"
+			down_image="content/gui/icons/buildmenu/boatbuilder_h.png"
 			tooltip="Boat builder: Builds boats and small ships. Built on coast." />
 	</Container>-->
 <!--

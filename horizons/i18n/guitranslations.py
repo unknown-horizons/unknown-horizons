@@ -131,6 +131,9 @@ def set_translations():
 			"cancelButton"                : _("Exit"),
 			"add_bo"                      : _("Add to list"),
 			"start_route"                 : _("Start route")},
+		"choose_next_scenario.xml" : {
+			"cancelButton"                : _("Exit"),
+			"choose_scenario"             : _("Choose this scenario")},
 		"route_entry.xml" : {
 			"delete_bo"                   : _("Delete entry"),
 			"move_down"                   : _("Move down"),
