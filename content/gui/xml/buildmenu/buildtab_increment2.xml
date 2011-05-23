@@ -92,9 +92,9 @@
 		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
 
 		<TooltipButton name="weaponsmith-1" position="0,32"
-			up_image="content/gui/icons/buildmenu/boat_builder.png"
-			hover_image="content/gui/icons/buildmenu/boat_builder_h.png"
-			down_image="content/gui/icons/buildmenu/boat_builder_h.png"
+			up_image="content/gui/icons/buildmenu/boatbuilder.png"
+			hover_image="content/gui/icons/buildmenu/boatbuilder_h.png"
+			down_image="content/gui/icons/buildmenu/boatbuilder_h.png"
 			tooltip="Boat builder: Builds boats and small ships. Built on coast." />
 	</Container>-->
 <!--
