@@ -43,15 +43,14 @@ class AIPlayer(GenericAI):
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
 		# TODO: add any one-time loading
-		print 'AI __init__()'
-		
+		self.log.info('AI __init__()')
 
 	def save(self, db):
 		super(AIPlayer, self).save(db)
 		# TODO: save to the db
-		print 'AI save()'
+		self.log.info('AI save()')
 
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		# TODO: load from the db
-		print 'AI _load()'
+		self.log.info('AI _load()')
