@@ -108,12 +108,13 @@ class MovingObject(ConcretObject):
 		self._move_action = 'idle'
 
 	def move(self, destination, callback = None, destination_in_building = False, action='move', \
-	         _path_calculated = False):
+	         _path_calculated = False, blocked_callback = None):
 		"""Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
 		@param action: action as string to use for movement
 		@param _path_calculated: only for internal use
+		@param blocked_callback: a parameter supported by WeakMethodList. Gets called when unit gets blocked.
 		"""
 		if not _path_calculated:
 			# calculate the path
@@ -126,6 +127,7 @@ class MovingObject(ConcretObject):
 				raise MoveNotPossible
 
 		self.move_callbacks = WeakMethodList(callback)
+		self.blocked_callbacks = WeakMethodList(blocked_callback)
 		self._conditional_callbacks = {}
 		self._setup_move(action)
 
@@ -137,14 +139,15 @@ class MovingObject(ConcretObject):
 			# assumed e.g. in the collector code
 			Scheduler().add_new_object(self._move_tick, self)
 
-	def move_back(self, callback = None, destination_in_building = False, action='move'):
+	def move_back(self, callback = None, destination_in_building = False, action='move', blocked_callback = None):
 		"""Return to the place where last movement started. Same path is used, but in reverse order.
 		@param callback: same as callback in move()
 		@param destination_in_building: bool, whether target is in a building
+		@param blocked_callback: same as blocked_callback in move()
 		"""
 		self.log.debug("%s: Moving back to %s", self, self.get_move_target())
 		self.path.revert_path(destination_in_building)
-		self.move(None, callback, destination_in_building, action, _path_calculated = True)
+		self.move(None, callback, destination_in_building, action, _path_calculated = True, blocked_callback = blocked_callback)
 
 	def _movement_finished(self):
 		self.log.debug("%s: movement finished. calling callbacks %s", self, self.move_callbacks)
@@ -175,9 +178,12 @@ class MovingObject(ConcretObject):
 				self.log.debug("owner: %s", self.owner)
 				self.__is_moving = False
 				self._next_target = self.position
-				if self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
+				if self.blocked_callbacks:
+					self.log.warning('PATH FOR UNIT %s is blocked. Calling blocked_callback', self)
+					self.blocked_callbacks.execute()
+				elif self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
+					self.log.warning('PATH FOR UNIT %s is blocked. Delegating to owner %s', self, self.owner)
 					self.owner.notify_unit_path_blocked(self)
-					self.log.warning('PATH FOR UNIT %s is blocked. delegating to owner %s', self, self.owner)
 				else:
 					# generic solution: retry in 2 secs
 					self.log.warning('PATH FOR UNIT %s is blocked. Retry in 2 secs', self)
