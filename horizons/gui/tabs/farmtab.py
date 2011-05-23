@@ -32,16 +32,16 @@ from horizons.world.providerhandler import ProviderHandler
 from horizons import main
 from horizons.entities import Entities
 
-class BuildingRelatedFieldsTab(OverviewTab):
+class BuildRelatedTab(OverviewTab):
 	relatedfields_gui_xml = "relatedfields.xml"
 
 	def  __init__(self, instance, icon_path='content/gui/icons/tabwidget/production/related_%s.png'):
-		super(BuildingRelatedFieldsTab, self).__init__(
-			widget = 'overview_buildingrelatedfields.xml',
+		super(BuildRelatedTab, self).__init__(
+			widget = 'overview_buildrelated.xml',
 			instance = instance, 
 			icon_path='content/gui/icons/tabwidget/production/related_%s.png'
 		)
-		self.tooltip = _("Building related Fields")
+		self.tooltip = _("Build related Fields")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -53,7 +53,7 @@ class BuildingRelatedFieldsTab(OverviewTab):
 			parent_container.removeChild(parent_container.children[0])
 
 		# Load all related Fields of this Farm
-		building_ids = main.db.cached_query("SELECT related_building FROM related_buildings where building = ?", self.instance.id)
+		building_ids = self.instance.session.db.cached_query("SELECT related_building FROM related_buildings where building = ?", self.instance.id)
 		build_buttons = list()
 
 		if len(building_ids) >= 3:
@@ -80,7 +80,7 @@ class BuildingRelatedFieldsTab(OverviewTab):
 		for name, cls in build_buttons:
 			self.widget.mapEvents({ name: Callback(self.buildField, cls) })
 		
-		super(BuildingRelatedFieldsTab, self).refresh()
+		super(BuildRelatedTab, self).refresh()
 	
 	def _create_build_buttons(self, id, container):
 		building = Entities.buildings[id]( \

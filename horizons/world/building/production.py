@@ -31,7 +31,7 @@ from horizons.util.shapes.radiusshape import RadiusShape, RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
-from horizons.gui.tabs import ProductionOverviewTab, BuildingRelatedFieldsTab
+from horizons.gui.tabs import ProductionOverviewTab
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):

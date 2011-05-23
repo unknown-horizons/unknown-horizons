@@ -23,7 +23,7 @@ from horizons.scheduler import Scheduler
 
 import horizons.main
 from horizons.util import WorldObject, Callback, ActionSetLoader
-from horizons.gui.tabs import BuildingRelatedFieldsTab
+from horizons.gui.tabs import BuildRelatedTab
 
 class ConcretObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -53,10 +53,10 @@ class ConcretObject(WorldObject):
 		self._action = 'idle' # Default action is idle
 		self._action_set_id = self.session.db.get_random_action_set(self.id)[0]
 		
-		related_building = horizons.main.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
+		related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
 		
 		if len(related_building) > 0:
-			self.tabs += (BuildingRelatedFieldsTab,)
+			self.tabs += (BuildRelatedTab,)
 
 	@property
 	def fife_instance(self):
