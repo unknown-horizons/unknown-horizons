@@ -28,10 +28,11 @@ class Mission(object):
 
 	log = logging.getLogger("ai.aiplayer")
 
-	def __init__(self, success_callback, failure_callback):
+	def __init__(self, success_callback, failure_callback, session):
 		super(Mission, self).__init__()
 		self.success_callback = success_callback
 		self.failure_callback = failure_callback
+		self.session = session
 
 	def report_success(self, msg):
 		self.log.info('Mission success: ' + msg)

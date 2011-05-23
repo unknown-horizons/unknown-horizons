@@ -21,9 +21,11 @@
 
 from horizons.ai.aiplayer.mission import Mission
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.constants import GROUND
-from horizons.util import Callback
-from horizons.util import Point, Circle
+from horizons.constants import GROUND, BUILDINGS
+from horizons.util import Point, Circle, Callback
+from horizons.world.building.buildable import Buildable
+from horizons.entities import Entities
+from horizons.command.building import Build
 
 class FoundSettlement(Mission):
 	"""
@@ -31,8 +33,8 @@ class FoundSettlement(Mission):
 	the location and a branch office is built.
 	"""
 
-	def __init__(self, ship, bo_location, success_callback, failure_callback, **kwargs):
-		super(FoundSettlement, self).__init__(success_callback, failure_callback, **kwargs)
+	def __init__(self, success_callback, failure_callback, session, ship, bo_location, **kwargs):
+		super(FoundSettlement, self).__init__(success_callback, failure_callback, session, **kwargs)
 		self.ship = ship
 		self.bo_location = bo_location
 
@@ -43,27 +45,49 @@ class FoundSettlement(Mission):
 			self.report_failure('Move not possible')
 
 	def _move_to_bo_area(self):
-		area = Circle(self.bo_location, 5)
+		(x, y) = self.bo_location.position.get_coordinates()[4]
+		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
 		self.ship.move(area, Callback(self._reached_bo_area))
 
 	def _reached_bo_area(self):
-		self.report_success('Reached BO area')
+		self.log.info('Reached BO area')
+		t = self.bo_location
+		x = t.position.origin.x
+		y = t.position.origin.y
+		island = self.session.world.get_island(Point(x, y))
+		cmd = Build(BUILDINGS.BRANCH_OFFICE_CLASS, x, y, island, t.rotation, ship = self.ship, tearset = t.tearset)
+		cmd.execute(self.session)
+		self.report_success('Built the branch office')
 
 	@classmethod
-	def create(cls, ship, island, success_callback, failure_callback):
+	def find_bo_location(cls, island):
+		"""
+		Finds a location for the branch office on the given island
+		@param island: the island
+		@return _BuildPosition: a possible build location
+		"""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		rotations = [45, 135, 225, 315]
 
-		# select a location for the branch office
-		bo_location = None
 		for (x, y), tile in island.ground_map.iteritems():
 			if tile.id == GROUND.DEFAULT_LAND:
+				ok = False
 				for x_offset, y_offset in moves:
 					x4 = x + 4 * x_offset
 					y4 = y + 4 * y_offset
 					if (x4, y4) not in island.ground_map:
-						bo_location = Point(x, y)
+						ok = True
 						break
-				if bo_location is not None:
-					break
+				if ok:
+					point = Point(x, y)
+					for rotation in rotations:
+						build_location = Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].check_build(island.session, \
+							point, rotation=rotation, check_settlement=False, ship=None)
+						if build_location.buildable:
+							return build_location
+		return None
 
-		return FoundSettlement(ship, bo_location, success_callback, failure_callback)
+	@classmethod
+	def create(cls, ship, island, success_callback, failure_callback):
+		bo_location = cls.find_bo_location(island)
+		return FoundSettlement(success_callback, failure_callback, island.session, ship, bo_location)
