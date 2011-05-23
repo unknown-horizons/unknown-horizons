@@ -82,9 +82,9 @@
 		</HBox>
 
 		<TooltipButton name="villageschool-1" position="0,32"
-			up_image="content/gui/icons/buildmenu/school_i.png"
-			hover_image="content/gui/icons/buildmenu/school_i_h.png"
-			down_image="content/gui/icons/buildmenu/school_i_h.png"
+			up_image="content/gui/icons/buildmenu/villageschool.png"
+			hover_image="content/gui/icons/buildmenu/villageschool_h.png"
+			down_image="content/gui/icons/buildmenu/villageschool_h.png"
 			tooltip="Village school: Provides education." />
 	</Container>
 
