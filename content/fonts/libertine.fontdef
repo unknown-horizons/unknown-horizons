@@ -108,6 +108,18 @@ antialias: 1
 [Font/libertine_tooltip]
 
 type: truetype
+source: content/fonts/LinLibertine_BI-4.0.5.ttf
+size: 15
+color: 68,42,2
+#color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+
+[Font/libertine_tooltip_old]
+
+type: truetype
 source: content/fonts/LinLibertine_Bd-4.1.0.ttf
 size: 15
 color: 255,255,255
