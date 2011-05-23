@@ -69,10 +69,17 @@ class BuildingIndexer(object):
 	def _update(self):
 		for building in self._remove_set:
 			for coords in self._get_tuples_in_range(building):
-				self._map[coords].remove(building)
+				index = self._map[coords]
+				index._remove_set.add(building)
+				index._add_set.discard(building)
+				index._changed = True
+
 		for building in self._add_set:
 			for coords in self._get_tuples_in_range(building):
-				self._map[coords].add(building)
+				index = self._map[coords]
+				index._remove_set.discard(building)
+				index._add_set.add(building)
+				index._changed = True
 
 		self._changed = False
 		self._add_set.clear()
@@ -86,8 +93,7 @@ class BuildingIndexer(object):
 		if coords in self._map:
 			if self._changed:
 				self._update()
-			for building in self._map[coords].get_buildings_in_range():
-				yield building
+			return self._map[coords].get_buildings_in_range()
 
 	def get_random_building_in_range(self, coords):
 		"""
@@ -101,11 +107,23 @@ class BuildingIndexer(object):
 			return self._map[coords].get_random_building_in_range()
 		return None
 
+	def get_num_buildings_in_range(self, coords):
+		"""
+		Returns the number of buildings in range of the position
+		@param coords: tuple, the centre point
+		"""
+		if coords in self._map:
+			if self._changed:
+				self._update()
+			return self._map[coords].get_num_buildings_in_range()
+
 
 
 class BuildingIndex(object):
-	"""Indexes a subset of the buildings near a tile to improve nearby building 
-	lookup performance."""
+	"""
+	Indexes buildings around a tile to improve nearby building lookup speed.
+	The code isn't particularly pretty for performance reasons.
+	"""
 
 	def __init__(self, coords, random):
 		self._coords = coords
@@ -115,23 +133,35 @@ class BuildingIndex(object):
 		self._list = []
 		self._changed = False
 
-	def add(self, building):
-		self._remove_set.discard(building)
-		self._add_set.add(building)
-		self._changed = True
-
-	def remove(self, building):
-		self._add_set.discard(building)
-		self._remove_set.add(building)
-		self._changed = True
-
 	def _update(self):
 		new_list = []
 		for element in self._list:
-			if element.building not in self._remove_set:
+			if element[5] not in self._remove_set:
 				new_list.append(element)
+
+		x = self._coords[0]
+		y = self._coords[1]
 		for building in self._add_set:
-			new_list.append(BuildingIndexElement(building.position.distance_to_tuple(self._coords), building))
+			pos = building.position
+			left = pos.left
+			right = pos.right
+			top = pos.top
+			bottom = pos.bottom
+
+			x_diff = left - x
+			if x_diff < x - right:
+				x_diff = x - right
+			if x_diff < 0:
+				x_diff = 0
+
+			y_diff = top - y
+			if y_diff < y - bottom:
+				y_diff = y - bottom
+			if y_diff < 0:
+				y_diff = 0
+
+			new_list.append((x_diff * x_diff + y_diff * y_diff, top, bottom, left, right, building))
+
 		self._list = new_list
 		self._list.sort()
 
@@ -143,39 +173,21 @@ class BuildingIndex(object):
 		if self._changed:
 			self._update()
 		for element in self._list:
-			yield element.building
+			yield element[5]
 
 	def get_random_building_in_range(self):
 		if self._changed:
 			self._update()
 		if self._list:
-			return self._random.choice(self._list).building
+			return self._random.choice(self._list)[5]
 		return None
 
-
-
-class BuildingIndexElement(object):
-	"""This is a single element in a BuildingIndex object."""
-
-	def __init__(self, distance, building):
-		self.distance = distance
-		self.building = building
-
-	def __cmp__(self, other):
-		if abs(self.distance - other.distance) > -1e-7:
-			return -1 if self.distance < other.distance else 1
-		self_pos = self.building.position
-		other_pos = other.position
-		if self_pos.top != other_pos.top:
-			return self_pos.top - other_pos.top
-		elif self_pos.bottom != other_pos.bottom:
-			return self_pos.bottom - other_pos.bottom
-		elif self_pos.left != other_pos.left:
-			return self_pos.left - other_pos.left
-		return self_pos.right - other_pos.right
+	def get_num_buildings_in_range(self):
+		if self._changed:
+			self._update()
+		return len(self._list)
 
 
 # apply make_constant to classes
 decorators.bind_all(BuildingIndexer)
 decorators.bind_all(BuildingIndex)
-decorators.bind_all(BuildingIndexElement)

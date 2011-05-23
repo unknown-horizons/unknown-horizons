@@ -109,7 +109,7 @@ class BuySellTab(TabInterface):
 		"""Adds a resource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
-		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s",  \
+		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s", \
 		                                          res_id,    slot_id,    value)
 
 		if self.resources is not None: # Hide resource menu
@@ -118,7 +118,7 @@ class BuySellTab(TabInterface):
 		slot = self.slots[slot_id]
 		slider = slot.findChild(name="slider")
 		if value is None:
-			value = int(slider.getValue()) # If no value is provided, take current slider value
+			value = int(slider.getValue()) # use current slider value if no value provided
 		else:
 			slider.setValue(float(value)) # set slider correctly
 
@@ -261,7 +261,6 @@ class BuySellTab(TabInterface):
 #		current_hbox.addSpacer(pychan.widgets.layout.Spacer) #TODO: proper alignment
 		vbox.addChild(current_hbox)
 		vbox.adaptLayout()
-		self.resources.stylize('headline')
 		self.hide() # hides tab that invoked the selection widget
 		self.resources.show() # show selection widget, still display old tab icons
 		self.settlement.session.ingame_gui.minimap_to_front()

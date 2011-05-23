@@ -59,7 +59,7 @@ class BoatbuilderTab(OverviewTab):
 			if container_active is None:
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
-			container_active.findChild(name="BB_builtship_label").text = u"Fishing boat"
+			container_active.findChild(name="headline_BB_builtship_label").text = u"Fishing boat"
 			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher\nStorage: 1 slot of 1t\nSpeed: average\nHealth: 40"
 
 			button_active = container_active.findChild(name="toggle_active_active")
@@ -102,7 +102,6 @@ class BoatbuilderTab(OverviewTab):
 			upgrades_box.stylize('menu_black')
 
 				# TODO: make this button do sth
-			container_active.findChild(name='BB_builtship_label').stylize("headline")
 
 			# Update needed resources
 			production = self.instance._get_productions()[0]
@@ -156,8 +155,6 @@ class BoatbuilderSelectTab(OverviewTab):
 		self.button_active_image = bb_image_path % 'a'
 		self.button_down_image = bb_image_path % 'd'
 		self.button_hover_image = bb_image_path % 'h'
-		for i in xrange(1,5): # xml names start at 1.  v--- ship names in small caps
-			self.widget.findChild(name='BB_'+str(tabname)+'_ship'+str(i)).stylize('headline')
 	def start_production(self, prod_line_id):
 		AddProduction(self.instance, prod_line_id).execute(self.instance.session)
 		# show overview tab
@@ -206,8 +203,6 @@ class BoatbuilderConfirmTab(OverviewTab):
 		events = { 'create_unit': self.start_production }
 		self.widget.mapEvents(events)
 		self.tooltip = _("Confirm order")
-		self.widget.findChild(name='BB_builtship_label').stylize("headline")
-		self.widget.findChild(name='headline_upgrades').stylize("headline")
 
 	def start_production(self):
 		AddProduction(self.instance, 15).execute(self.instance.session)

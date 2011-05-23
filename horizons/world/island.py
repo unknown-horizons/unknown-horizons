@@ -32,6 +32,7 @@ from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
+from horizons.world.units.animal import WildAnimal
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -76,7 +77,7 @@ class Island(BuildingOwner, WorldObject):
 
 		# create building indexers
 		self.building_indexers = {}
-		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(6, self, self.session.random)
+		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
 		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):

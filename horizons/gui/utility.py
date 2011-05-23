@@ -64,14 +64,19 @@ class LazyWidgetsDict(dict):
 			return dict.__getitem__(self, widgetname)
 
 	def _load_widget(self, widgetname):
+		"""
+		We do styling before setting headlines to the default headline style.
+		If you want your headlines to not be styled, rename them.
+		"""
 		widget = load_xml_translated(widgetname+'.xml')
-		if self.center_widgets:
-			widget.position_technique = "automatic" # "center:center"
-		headlines = widget.findChildren(name='headline')
-		for headline in headlines:
-			headline.stylize('headline')
 		if widgetname in self.styles:
 			widget.stylize(self.styles[widgetname])
+		for w in widget.findChildren():
+			if w.name.startswith("headline") or \
+			   w.name is "name":
+				w.stylize('headline')
+		if self.center_widgets:
+			widget.position_technique = "automatic" # "center:center"
 		self[widgetname] = widget
 
 	def reload(self, widgetname):

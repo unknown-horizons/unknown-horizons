@@ -81,6 +81,10 @@ def set_translations():
 		"place_building.xml" : {
 			"headline"                    : _("Build"),
 			"running_costs_label"         : _("Running costs:")},
+		"stringpreviewwidget.xml" : {
+			"headline"                    : _("String Previewer Tool for Scenario files"),
+			"hintlbl"                     : _("select a scenario and click on load/reload to update the messages in the captain's log"),
+			"load"                        : _("load/reload")},
 		"city_info.xml" : {
 			"city_info_inhabitants"       : _("Inhabitants"),
 			"city_name"                   : _("Click to change the name of your settlement.")},
@@ -106,8 +110,8 @@ def set_translations():
 		"status_gold.xml" : {
 			"gold_icon"                   : _("Gold")},
 		"change_name.xml" : {
-			"change_name_headline"        : _("Change name"),
-			"enter_new_name_lbl"          : _("Enter new name:")},
+			"enter_new_name_lbl"          : _("Enter new name:"),
+			"headline_change_name"        : _("Change name")},
 		"chat.xml" : {
 			"chat_lbl"                    : _("Enter your message:"),
 			"headline"                    : _("Chat")},
@@ -126,7 +130,11 @@ def set_translations():
 		"configure_route.xml" : {
 			"cancelButton"                : _("Exit"),
 			"add_bo"                      : _("Add to list"),
-			"start_route"                 : _("Start / Stop route")},
+			"start_route"                 : _("Start route")},
+		"route_entry.xml" : {
+			"delete_bo"                   : _("Delete entry"),
+			"move_down"                   : _("Move down"),
+			"move_up"                     : _("Move up")},
 		"gamemenu.xml" : {
 			"chimebell"                   : _("Attention please!"),
 			"credits"                     : _("Credits"),
@@ -138,8 +146,7 @@ def set_translations():
 			"start"                       : _("Return to game"),
 			"version_label"               : VERSION.string()},
 		"help.xml" : {
-			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons"),
-			"fife_and_uh_team_lbl2"       : _("development teams"),
+			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons development teams"),
 			"have_fun_lbl"                : _("Have fun."),
 			"headline"                    : _("Key bindings"),
 			"set01"                       : _("{LEFT} = Scroll left"),
@@ -214,11 +221,14 @@ def set_translations():
 			"headline"                    : _("Settings"),
 			"headline_graphics"           : _("Graphics"),
 			"headline_language"           : _("Language"),
+			"headline_network"            : _("Network"),
 			"headline_saving"             : _("Saving"),
 			"headline_sound"              : _("Sound"),
 			"language_label"              : _("Select language:"),
 			"minimap_rotation_label"      : _("Enable minimap rotation:"),
 			"music_volume_label"          : _("Music volume:"),
+			"network_port_hint_lbl"       : _("(0 means default)"),
+			"network_port_lbl"            : _("Network port:"),
 			"number_of_autosaves_label"   : _("Number of autosaves:"),
 			"number_of_quicksaves_label"  : _("Number of quicksaves:"),
 			"screen_fullscreen_text"      : _("Full screen:"),
@@ -227,18 +237,18 @@ def set_translations():
 			"use_renderer_label"          : _("Used renderer:"),
 			"warning"                     : _("Please make sure that you know what you do.")},
 		"select_savegame.xml" : {
-			"details_label"               : _("Details:"),
 			"enter_filename_label"        : _("Enter filename:"),
-			"saved_games_label"           : _("Your saved games:")},
+			"headline_details_label"      : _("Details:"),
+			"headline_saved_games_label"  : _("Your saved games:")},
 		"singleplayermenu.xml" : {
 			"choose_map_lbl"              : _("Choose a map to play:"),
 			"headline"                    : _("New game - Singleplayer"),
 			"main_menu_label"             : _("Main menu:"),
 			"start_game_label"            : _("Start game:"),
+			"showCampaign"                : _("Campaign"),
 			"showMaps"                    : _("Free play"),
 			"showRandom"                  : _("Random map"),
 			"showScenario"                : _("Scenario"),
-			"showCampaign"                : _("Campaign"),
 			"okay"                        : _("Start game"),
 			"cancel"                      : _("Exit to main menu")},
 		"playerdataselection.xml" : {
@@ -256,11 +266,11 @@ def set_translations():
 			"toggle_active_inactive"      : _("Resume"),
 			"running_costs_label"         : _("Running costs")},
 		"boatbuilder_fisher.xml" : {
-			"BB_fisher_ship1"             : _("Fishing boat"),
-			"BB_fisher_ship2"             : _("Cutter"),
-			"BB_fisher_ship3"             : _("Herring fisher"),
-			"BB_fisher_ship4"             : _("Whaler"),
 			"headline"                    : _("Fishing boats"),
+			"headline_BB_fisher_ship1"    : _("Fishing boat"),
+			"headline_BB_fisher_ship2"    : _("Cutter"),
+			"headline_BB_fisher_ship3"    : _("Herring fisher"),
+			"headline_BB_fisher_ship4"    : _("Whaler"),
 			"BB_build_fisher_1"           : _("Build this ship!"),
 			"cancelButton"                : _("Not yet implemented!"),
 			"cancelButton"                : _("Not yet implemented!"),
@@ -268,31 +278,30 @@ def set_translations():
 		"select_trade_resource.xml" : {
 			"headline"                    : _("Select resources:")},
 		"tab_account.xml" : {
-			"balance_label"               : _("Balance:"),
 			"buy_expenses_label"          : _("Buying"),
-			"expenses_label"              : _("Expenses:"),
 			"headline"                    : _("Account"),
-			"income_label"                : _("Income:"),
+			"headline_balance_label"      : _("Balance:"),
+			"headline_expenses_label"     : _("Expenses:"),
+			"headline_income_label"       : _("Income:"),
 			"running_costs_label"         : _("Running costs"),
 			"sell_income_label"           : _("Sale"),
 			"taxes_label"                 : _("Taxes")},
 		"island_inventory.xml" : {
 			"headline"                    : _("Inventory")},
+		"mainsquare_inhabitants.xml" : {
+			"avg_happiness_lbl"           : _("Average happiness:"),
+			"headline"                    : _("Settler overview"),
+			"most_needed_res_lbl"         : _("Most needed resource:")},
 		"overview_branchoffice.xml" : {
-			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
 			"running_costs_label"         : _("Running costs:")},
 		"overview_enemybuilding.xml" : {
 			"headline"                    : _("Overview"),
 			"name_label"                  : _("Name:")},
 		"overview_mainsquare.xml" : {
-			"avg_happiness_lbl"           : _("Average happiness:"),
-			"headline"                    : _("Settler overview"),
-			"most_needed_res_lbl"         : _("Most needed resource:")},
-		"overview_marketplace.xml" : {
-			"headline"                    : _("Overview"),
 			"name_label"                  : _("Name:"),
-			"tax_label"                   : _("Taxes:")},
+			"tax_label"                   : _("Taxes:"),
+			"tax_rate_label"              : _("Tax Rate")},
 		"overview_productionbuilding.xml" : {
 			"headline"                    : _("Building overview"),
 			"running_costs_label"         : _("Running costs"),
@@ -303,11 +312,11 @@ def set_translations():
 			"res_dep_description_lbl"     : _("This is a resource deposit where you can build a mine to dig up resources."),
 			"res_dep_description_lbl2"    : _("It contains these resources:")},
 		"overview_settler.xml" : {
-			"headline"                    : _("Overview"),
 			"needed_res_label"            : _("Needed resources:"),
 			"tax_label"                   : _("Taxes:"),
 			"happiness_label"             : _("Happiness"),
 			"paid_taxes_label"            : _("Paid taxes"),
+			"paid_taxes_label"            : _("Tax Rate"),
 			"residents_label"             : _("Residents"),
 			"happiness"                   : _("Happiness")},
 		"overview_ship.xml" : {

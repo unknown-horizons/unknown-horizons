@@ -41,7 +41,7 @@
 
 	<Container position="110,110" size="260,87" >
 		<!-- Ship 1 information -->
-		<Label name="BB_fisher_ship1" position="0,3" text="Fishing boat" />
+		<Label name="headline_BB_fisher_ship1" position="0,3" text="Fishing boat" />
 
 		<TooltipIcon image="content/gui/icons/resources/16/4.png" position="13,25" tooltip="Boards" />
 		<Label position="35,25" text="05t" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
@@ -57,7 +57,7 @@
 
 	<Container position="110,197" size="260,87" >
 		<!-- Ship 2 information -->
-		<Label name="BB_fisher_ship2" position="0,3" text="Cutter" />
+		<Label name="headline_BB_fisher_ship2" position="0,3" text="Cutter" />
 
 		<TooltipIcon image="content/gui/icons/resources/16/4.png" position="13,25" tooltip="Boards" />
 		<Label position="35,25" text="12t" />
@@ -73,11 +73,11 @@
 
 	<Container position="110,284" size="260,450" >
 		<!-- Ship 3 information -->
-		<Label name="BB_fisher_ship3" position="0,3" text="Herring fisher" />
+		<Label name="headline_BB_fisher_ship3" position="0,3" text="Herring fisher" />
 	</Container>
 
 	<Container position="110,371" size="260,450" >
 		<!-- Ship 4 information -->
-		<Label name="BB_fisher_ship4" position="0,3" text="Whaler" />
+		<Label name="headline_BB_fisher_ship4" position="0,3" text="Whaler" />
 	</Container>
 </Container>

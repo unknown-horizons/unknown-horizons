@@ -25,13 +25,12 @@ import logging
 from horizons.scheduler import Scheduler
 
 from horizons.world.production.producer import Producer
-from horizons.util import Point, RadiusRect, WorldObject
+from horizons.util import Point, RadiusRect, Rect, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather
 from horizons.command.unit import CreateUnit
 from collectors import Collector, BuildingCollector, JobList
 from horizons.constants import RES, WILD_ANIMAL
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import RadiusRect, Rect
 
 class Animal(Producer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
@@ -132,7 +131,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.home_island.wild_animals.append(self)
 
 		resources = self.get_needed_resources()
-		assert len(resources) == 1
+		assert resources == [RES.WILDANIMALFOOD_ID]
 		self._required_resource_id = resources[0]
 		self._building_index = self.home_island.get_building_index(self._required_resource_id)
 
@@ -187,9 +186,11 @@ class WildAnimal(CollectorAnimal, Collector):
 			self.state = self.states.no_job_waiting
 
 	def get_job(self):
-		# try to get away with a random job
-		for i in xrange(5):
-			provider = self._building_index.get_random_building_in_range(self.position.to_tuple())
+		pos = self.position.to_tuple()
+
+		# try to get away with a random job (with normal forest density this works > 99% of the time)
+		for i in xrange(min(5, self._building_index.get_num_buildings_in_range(pos))):
+			provider = self._building_index.get_random_building_in_range(pos)
 			if provider is not None and self.check_possible_job_target(provider):
 				job = self.check_possible_job_target_for(provider, self._required_resource_id)
 				if job is not None and self.check_move(job.object.loading_area):
@@ -197,7 +198,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 		jobs = JobList(self, JobList.order_by.random)
 		# try all possible jobs
-		for provider in self.home_island.get_building_index(self._required_resource_id).get_buildings_in_range(self.position.to_tuple()):
+		for provider in self.home_island.get_building_index(self._required_resource_id).get_buildings_in_range(pos):
 			if self.check_possible_job_target(provider):
 				job = self.check_possible_job_target_for(provider, self._required_resource_id)
 				if job is not None:

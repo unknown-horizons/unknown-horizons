@@ -30,7 +30,7 @@
 	<Container position="0,133" size="260,160" name="container_active">
 		<!-- Current order, pause -->
 		<Label name="BB_current_order" position="25,0" text="Currently building:" />
-		<Label name="BB_builtship_label" position="45,20" text=""/> <!-- Fishing boat -->
+		<Label name="headline_BB_builtship_label" position="45,20" text=""/> <!-- Fishing boat -->
 		<TooltipIcon image="content/gfx/dummies/square_120.png" position="25,40"
 			name="BB_cur_ship_icon" tooltip=""/>
 		<Icon image="content/gfx/units/ships/fishers/as_fisher0/idle/135/0.png" position="45,64" />

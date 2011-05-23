@@ -96,7 +96,8 @@ class SPSession(Session):
 		else:
 			headline = _(u"Failed to quicksave.")
 			descr = _(u"An error happened during quicksave. Your game has not been saved.")
-			advice = _(u"If this error happens again, please contact the development team: unknown-horizons.org/support")
+			advice = _(u"If this error happens again, please contact the development team:") + \
+			           u"unknown-horizons.org/support/"
 			self.gui.show_error_popup(headline, descr, advice)
 
 	def quickload(self):

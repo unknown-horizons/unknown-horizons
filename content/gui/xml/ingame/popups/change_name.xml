@@ -3,7 +3,7 @@
 <Icon image="content/gui/images/background/notice.png" />
 
 <VBox position="50,30" padding="10">
-	<Label name="change_name_headline" text="Change name" />
+	<Label name="headline_change_name" text="Change name" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<Label name="enter_new_name_lbl" text="Enter new name:"
 		wrap_text="1" max_size="150,40" />

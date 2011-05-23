@@ -12,25 +12,78 @@
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	<Container size="260,550" position="25,43">
 
-		<Label name="income_label" position="0,0" text="Income:" />
-		<Label name="taxes_label" position="20,20" text="Taxes"/>
-		<Label position="150,20" name="taxes"/>
+		<Label name="headline_income_label" position="0,0" text="Income:" />
+		<Label name="taxes_label" position="10,20" text="Taxes"/>
+		<Label position="160,20" name="taxes"/>
 
-		<Label name="sell_income_label" position="20,40" text="Sale"/>
-		<Label position="150,40" name="sale"/>
+		<Label name="sell_income_label" position="10,40" text="Sale"/>
+		<Label position="160,40" name="sale"/>
 
 
-		<Label name="expenses_label" position="0,70" text="Expenses:" />
+		<Label name="headline_expenses_label" position="0,70" text="Expenses:" />
 
-		<Label name="running_costs_label" position="20,90" text="Running costs"/>
-		<Label position="150,90" name="running_costs"/>
+		<Label name="running_costs_label" position="10,90" text="Running costs"/>
+		<Label position="160,90" name="running_costs"/>
 
-		<Label name="buy_expenses_label" position="20,110" text="Buying"/>
-		<Label position="150,110" name="buying"/>
+		<Label name="buy_expenses_label" position="10,110" text="Buying"/>
+		<Label position="160,110" name="buying"/>
 
-		<Label name="balance_label" position="0,140" text="Balance:" />
-		<Label position="150,140" name="balance"/>
+		<Label name="headline_balance_label" position="0,140" text="Balance:" />
+		<Label position="160,140" name="balance"/>
 
 	</Container>
 </Container>
 </Container>
+
+
+
+
+
+<!--
+using hboxes and vboxes (padding problem with margins)
+
+<Container  size="250,400">
+<TabBG amount="5"/>
+
+<Container position="22,77" size="250,400" >
+
+	<HBox min_size="170,20"  size="230,20" >
+	<Spacer min_size="0"  max_size="50" />
+		<Label name="headline"  text="Account" />
+	</HBox>
+
+	<Icon image="content/gui/images/background/hr.png" position="-2,30" />
+	<HBox size="230,400" min_size="230,400" position="0,43">
+
+<VBox margins="20,0" size="210,400" min_size="140,400">
+		<Label name="headline_income_label" text="Income:" />
+		<Label name="taxes_label"           text="Taxes" />
+		<Label name="sell_income_label"     text="Sale" />
+
+		<Label name="headline_expenses_label" text="Expenses:" />
+		<Label name="running_costs_label"     text="Running costs" />
+		<Label name="buy_expenses_label"      text="Buying" />
+
+		<Label name="headline_balance_label"  text="Balance:" />
+</VBox>
+
+<Spacer min_size="0" max_size="30" />
+
+<VBox min_size="20,400">
+		<Label name="" />
+		<Label name="taxes" />
+		<Label name="sale" />
+
+		<Label name=""/>
+		<Label name="running_costs" />
+		<Label name="buying" />
+
+		<Label name="balance" />
+</VBox>
+
+
+	</HBox>
+</Container>
+</Container>
+
+-->

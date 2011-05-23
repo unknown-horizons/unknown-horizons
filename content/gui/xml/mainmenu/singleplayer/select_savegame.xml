@@ -7,7 +7,7 @@
 		<Label text="" name="headline" wrap_text="1"
 			max_size="335,20" min_size="335,20" />
 		<Icon image="content/gui/images/background/hr.png"/>
-		<Label text="Your saved games:" name="saved_games_label" wrap_text="1"
+		<Label text="Your saved games:" name="headline_saved_games_label" wrap_text="1"
 			max_size="335,20" min_size="335,20" />
 
 		<ScrollArea max_size="300,400" horizontal_scrollbar="0" >
@@ -31,7 +31,7 @@
 
 			<HBox>
 				<VBox name="savegame_details" padding="15">
-					<Label name="details_label" text="Details:" />
+					<Label name="headline_details_label" text="Details:" />
 					<VBox name="savegamedetails_box" min_size="300,80" />
 				</VBox>
 

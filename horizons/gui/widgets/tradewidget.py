@@ -55,7 +55,6 @@ class TradeWidget(object):
 		"""
 		self.widget = load_xml_translated('exchange_goods.xml')
 		self.widget.position_technique = "right:top+157"
-		self.widget.findChild(name='headline').stylize('headline')
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():
 			events[v] = Callback(self.set_exchange, k)
