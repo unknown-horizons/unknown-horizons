@@ -70,3 +70,8 @@ class AIPlayer(GenericAI):
 		self.missions.append(FoundSettlement.create(ship, island, self.report_result, self.report_result))
 		for mission in self.missions:
 			mission.start()
+
+	def notify_unit_path_blocked(self, unit):
+		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
+		# retry mission in 2 secs
+		Scheduler().add_new_object(Callback(slef.mission[0].start), self, GAME_SPEED.TICKS_PER_SECOND * 2)

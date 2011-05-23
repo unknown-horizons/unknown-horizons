@@ -60,34 +60,45 @@ class FoundSettlement(Mission):
 		self.report_success('Built the branch office')
 
 	@classmethod
-	def find_bo_location(cls, island):
+	def find_bo_location(cls, island, close_to):
 		"""
 		Finds a location for the branch office on the given island
 		@param island: the island
+		@param Point: the point for which it has to be optimized
 		@return _BuildPosition: a possible build location
 		"""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		rotations = [45, 135, 225, 315]
 
+		best = None
+		best_dist = 1000000000
+
 		for (x, y), tile in island.ground_map.iteritems():
-			if tile.id == GROUND.DEFAULT_LAND:
-				ok = False
-				for x_offset, y_offset in moves:
-					x4 = x + 4 * x_offset
-					y4 = y + 4 * y_offset
-					if (x4, y4) not in island.ground_map:
+			dist = close_to.distance_to_tuple((x, y))
+			if best_dist <= dist:
+				continue
+
+			ok = False
+			for x_offset, y_offset in moves:
+				for d in xrange(2, 5):
+					x2 = x + d * x_offset
+					y2 = y + d * y_offset
+					if (x2, y2) not in island.ground_map:
 						ok = True
 						break
-				if ok:
-					point = Point(x, y)
-					for rotation in rotations:
-						build_location = Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].check_build(island.session, \
-							point, rotation=rotation, check_settlement=False, ship=None)
-						if build_location.buildable:
-							return build_location
-		return None
+
+			if ok:
+				point = Point(x, y)
+				for rotation in rotations:
+					build_location = Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].check_build(island.session, \
+						point, rotation=rotation, check_settlement=False, ship=None)
+					if build_location.buildable:
+						best = build_location
+						best_dist = dist
+
+		return best
 
 	@classmethod
 	def create(cls, ship, island, success_callback, failure_callback):
-		bo_location = cls.find_bo_location(island)
+		bo_location = cls.find_bo_location(island, ship.position)
 		return FoundSettlement(success_callback, failure_callback, island.session, ship, bo_location)
