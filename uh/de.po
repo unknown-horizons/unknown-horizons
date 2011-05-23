@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-23 11:33+0200\n"
+"PO-Revision-Date: 2011-05-23 11:43+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -1031,9 +1031,8 @@ msgid "Music volume:"
 msgstr "Musiklautstärke:"
 
 #: horizons/i18n/guitranslations.py:230
-#, fuzzy
 msgid "(0 means default)"
-msgstr "(0 ist der Standard)"
+msgstr "(0 = Standardeinstellung)"
 
 #: horizons/i18n/guitranslations.py:231
 #, fuzzy
@@ -1337,9 +1336,9 @@ msgid "Failed to initialize networking."
 msgstr "Initialisieren der Netzwerkfunktionen fehlgeschlagen."
 
 #: horizons/main.py:122
-#, fuzzy
 msgid "Check the data you entered in the Network section in the settings dialogue."
-msgstr "Bitte überprüft die Netzwerkeinstellungen"
+msgstr ""
+"Bitte überprüft die Angaben im Abschnitt Netzwerk des Einstellungsmenüs."
 
 #: horizons/main.py:205
 #, fuzzy
