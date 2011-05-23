@@ -47,7 +47,7 @@ class FoundSettlement(Mission):
 	def _move_to_bo_area(self):
 		(x, y) = self.bo_location.position.get_coordinates()[4]
 		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
-		self.ship.move(area, Callback(self._reached_bo_area))
+		self.ship.move(area, Callback(self._reached_bo_area), blocked_callback = Callback(self._move_to_bo_area))
 
 	def _reached_bo_area(self):
 		self.log.info('Reached BO area')
@@ -80,7 +80,7 @@ class FoundSettlement(Mission):
 
 			ok = False
 			for x_offset, y_offset in moves:
-				for d in xrange(2, 5):
+				for d in xrange(2, 6):
 					x2 = x + d * x_offset
 					y2 = y + d * y_offset
 					if (x2, y2) not in island.ground_map:
