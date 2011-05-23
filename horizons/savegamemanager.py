@@ -344,7 +344,7 @@ class SavegameManager(object):
 				return False
 			index = cfiles.index(file)
 		infos = cdatas[index]
-		infos.update({'codename': cnames[index], 'filename': cfiles[index]})
+		infos.update({'codename': cnames[index], 'filename': cfiles[index], 'scenario_names' : cscenarios[index]})
 		for scenario in cscenarios[index]:
 			# find the scenario file
 			if not scenario in snames:
@@ -368,6 +368,18 @@ class SavegameManager(object):
 		# save the data back to the file
 		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
 		return campaign_status
+
+	@classmethod
+	def load_scenario(cls, campaign_data, scenario_name):
+		"""This loads the next scenario by starting a new game"""
+		campaign = cls.get_campaign_info(campaign_data['campaign_name'])
+		scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
+		if not scenario_name in scenarios:
+			return False
+		next_index = scenarios.index(scenario_name)
+		campaign_data['scenario_index'] = next_index
+		campaign_data['scenario_name'] = scenarios[next_index]
+		horizons.main._start_map(scenarios[next_index], is_scenario = True, campaign = campaign_data)
 
 	@classmethod
 	def load_next_scenario(cls, campaign_data):

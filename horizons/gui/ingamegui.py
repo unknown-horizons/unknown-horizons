@@ -31,6 +31,7 @@ from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
+from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.gui.utility import LazyWidgetsDict
 from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
@@ -74,6 +75,7 @@ class IngameGui(LivingObject):
 		self.logbook = LogBook()
 		self.logbook.add_pause_request_listener(Callback(self.session.speed_pause))
 		self.logbook.add_unpause_request_listener(Callback(self.session.speed_unpause))
+		self.scenario_chooser = ScenarioChooser(self.session)
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
