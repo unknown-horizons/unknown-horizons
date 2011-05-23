@@ -68,9 +68,9 @@
 		</HBox>
 
 		<TooltipButton name="cattlefield-1" position="2,32"
-			up_image="content/gui/icons/buildmenu/potatoes.png"
-			hover_image="content/gui/icons/buildmenu/potatoes_h.png"
-			down_image="content/gui/icons/buildmenu/potatoes_h.png"
+			up_image="content/gui/icons/buildmenu/potatofield.png"
+			hover_image="content/gui/icons/buildmenu/potatofield_h.png"
+			down_image="content/gui/icons/buildmenu/potatofield_h.png"
 			tooltip="Potato Field: Yields food. Needs a farm." />
 		<TooltipButton name="pasture-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/pasture.png"

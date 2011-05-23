@@ -58,9 +58,9 @@
 			down_image="content/gui/icons/buildmenu/farm_h.png"
 			tooltip="Farm: Grows field crops and raises livestock." />
 		<TooltipButton name="potatofield-1" position="56,32"
-			up_image="content/gui/icons/buildmenu/potatoes.png"
-			hover_image="content/gui/icons/buildmenu/potatoes_h.png"
-			down_image="content/gui/icons/buildmenu/potatoes_h.png"
+			up_image="content/gui/icons/buildmenu/potatofield.png"
+			hover_image="content/gui/icons/buildmenu/potatofield_h.png"
+			down_image="content/gui/icons/buildmenu/potatofield_h.png"
 			tooltip="Potato field: Yields food. Needs a farm." />
 		<TooltipButton name="pasture-1" position="110,32"
 			up_image="content/gui/icons/buildmenu/pasture.png"
