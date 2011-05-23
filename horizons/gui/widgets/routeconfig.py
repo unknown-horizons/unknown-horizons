@@ -53,11 +53,11 @@ class RouteConfig(object):
 
 	def start_button_set_active(self):
 		self._gui.findChild(name='start_route').set_active()
-		self._gui.findChild(name='start_route').tooltip = _('Start Route')
+		self._gui.findChild(name='start_route').tooltip = _('Start route')
 
 	def start_button_set_inactive(self):
 		self._gui.findChild(name='start_route').set_inactive()
-		self._gui.findChild(name='start_route').tooltip = _('Stop Route')
+		self._gui.findChild(name='start_route').tooltip = _('Stop route')
 
 	def start_route(self):
 		if len(self.widgets) < self.MIN_ENTRIES:

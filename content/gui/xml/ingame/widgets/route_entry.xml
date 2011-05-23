@@ -11,10 +11,10 @@
 		up_image="content/gui/images/buttons/up_15.png"
 		down_image="content/gui/images/buttons/up_15.png"
 		hover_image="content/gui/images/buttons/up_15_h.png"
-		tooltip="Move Up" />
+		tooltip="Move up" />
 	<TooltipButton name="move_down" position="290,34" border_size="0"
 		up_image="content/gui/images/buttons/down_15.png"
 		down_image="content/gui/images/buttons/down_15.png"
 		hover_image="content/gui/images/buttons/down_15_h.png"
-		tooltip="Move Down" />
+		tooltip="Move down" />
 </Container>
