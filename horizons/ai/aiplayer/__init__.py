@@ -32,6 +32,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import Ship
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -42,15 +43,30 @@ class AIPlayer(GenericAI):
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
-		# TODO: add any one-time loading
-		self.log.info('AI __init__()')
+		self.log.info('created AI')
+		Scheduler().add_new_object(Callback(self.start), self, run_in = 0)
+
+	def report_result(self, mission, msg):
+		print mission, msg
 
 	def save(self, db):
 		super(AIPlayer, self).save(db)
 		# TODO: save to the db
-		self.log.info('AI save()')
+		self.log.info('saved AI')
 
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		# TODO: load from the db
-		self.log.info('AI _load()')
+		self.log.info('loaded AI')
+
+	def start(self):
+		self.missions = []
+		ship = None
+		for t in self.session.world.ships:
+			if t.owner == self:
+				ship = t
+				break
+		island = self.session.world.islands[0]
+		self.missions.append(FoundSettlement.create(ship, island, self.report_result, self.report_result))
+		for mission in self.missions:
+			mission.start()
