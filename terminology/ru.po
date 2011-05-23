@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-23 20:38+0200\n"
+"PO-Revision-Date: 2011-05-23 20:44+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -294,9 +294,8 @@ msgstr "слева / налево"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 #: run_uh.py
-#, fuzzy
 msgid "log"
-msgstr "лог / журнал"
+msgstr "лог / журнал / бревно"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -373,9 +372,8 @@ msgstr "сигнальный огонь"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "slider"
-msgstr "ползунок"
+msgstr "слайдер / ползунок"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -423,9 +421,8 @@ msgstr "пастбище"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
-#, fuzzy
 msgid "pioneer"
-msgstr "пионер / первопроходец"
+msgstr "первопроходец / пионер"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py

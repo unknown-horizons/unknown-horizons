@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-20 18:27+0200\n"
+"PO-Revision-Date: 2011-05-23 20:47+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -58,19 +58,21 @@ msgstr ""
 
 #: horizons/engine.py:426
 msgid "Invalid network port"
-msgstr ""
+msgstr "Некорректный сетевой порт"
 
 #: horizons/engine.py:427
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr ""
+msgstr "Заданный порт некорректен. Должно быть число между 1 и 65535."
 
 #: horizons/engine.py:428
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
+"Пожалуйста, проверьте введённый порт и убедитесь, что он находится в "
+"заданном диапазоне."
 
 #: horizons/engine.py:440
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Не удалось применить новые сетевые настройки."
 
 #: horizons/engine.py:441 horizons/main.py:121
 msgid "Networking couldn't be initialised with the current configuration."

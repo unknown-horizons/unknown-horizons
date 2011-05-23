@@ -245,6 +245,10 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Konnte keine Verbindung zum Masterserver aufbauen. Bitte überprüft Eure "
+"Internetverbindung. Wenn sie funktioniert, liegt das Problem bei unserem "
+"Server.\n"
+"Details: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -1391,7 +1395,7 @@ msgstr "Speichern/Laden ist im Mehrspieler-Modus noch nicht möglich"
 #: horizons/savegamemanager.py:287
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr ""
+msgstr "Fehler: Verwendungsweise einer Bedingung vom Typ %(type)s unbekannt."
 
 #: horizons/savegamemanager.py:338
 #, python-format
@@ -1564,7 +1568,7 @@ msgstr "Aktiviere Profiling (nur für Entwickler)."
 
 #: run_uh.py:122
 msgid "Enable the string previewer tool for scenario writers"
-msgstr ""
+msgstr "Starte die Vorschau von Logbucheinträgen in Szenarios"
 
 #: run_uh.py:144
 msgid "Unknown Horizons crashed."
