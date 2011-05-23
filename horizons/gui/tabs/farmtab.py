@@ -41,7 +41,7 @@ class BuildRelatedTab(OverviewTab):
 			instance = instance, 
 			icon_path='content/gui/icons/tabwidget/production/related_%s.png'
 		)
-		self.tooltip = _("Build related Fields")
+		self.tooltip = _("Build related fields")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
