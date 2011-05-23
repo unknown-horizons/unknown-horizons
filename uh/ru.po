@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-23 20:47+0200\n"
+"PO-Revision-Date: 2011-05-23 21:34+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -54,7 +54,7 @@ msgstr ""
 #: horizons/engine.py:198
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "Выбранный язык %(lang)s не может быть загружен для %(place)s"
 
 #: horizons/engine.py:426
 msgid "Invalid network port"
@@ -76,15 +76,17 @@ msgstr "Не удалось применить новые сетевые нас�
 
 #: horizons/engine.py:441 horizons/main.py:121
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr ""
+msgstr "Подключение к сети не может быть установлено в текущей конфигурации."
 
 #: horizons/engine.py:442
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Проверьте данные, введённые в секции \"Сеть\"."
 
 #: horizons/engine.py:445
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Низкие номера портов иногда требуют специальных привилегий, попробуйте "
+"номер, больший 1024 или 0."
 
 #: horizons/gui/gui.py:121
 msgid "Error"
@@ -143,20 +145,21 @@ msgstr "Подтверждение перезаписи"
 
 #: horizons/gui/gui.py:261
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Пожалуйста, выберите сохранение или нажми \"Отмена\"."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:261
 msgid "Select a savegame"
-msgstr ""
+msgstr "Выберите сохранение"
 
 #: horizons/gui/gui.py:328 horizons/i18n/guitranslations.py:241
 msgid "Details:"
 msgstr "Подробности:"
 
+# 83%
 #: horizons/gui/gui.py:329
 msgid "Error:"
-msgstr ""
+msgstr "Ошибка:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -225,11 +228,13 @@ msgstr "Игра приостановлена"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
-msgstr ""
+msgstr "Сетевое соединение не установлено"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
 msgstr ""
+"Сетевое соединение не установлено, вероятно, из-за проблем с конфигурацией. "
+"Проверьте настройки!"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -238,6 +243,10 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Невозможно подключиться к мастер-серверу. Пожалуйста, проверьте ваше "
+"Интернет-подключение. Если с ним всё в порядке, это значит, что "
+"мастер-сервер временно недоступен.\n"
+"Подробности: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -329,7 +338,7 @@ msgstr "Строить"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Обзор судостроителя"
 
 #: horizons/gui/tabs/boatbuildertab.py:111
 msgid "Resources still needed:"
@@ -412,23 +421,23 @@ msgstr "Уничтожить строение"
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Лимит: %st на слот"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr ""
+msgstr "Пустота"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "В вашем логи ещё нет записей!"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:133
 msgid "Start route"
-msgstr ""
+msgstr "Открыть торговый маршрут"
 
 #: horizons/gui/widgets/routeconfig.py:60
 msgid "Stop route"
-msgstr ""
+msgstr "Остановить маршрут"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73
@@ -496,7 +505,7 @@ msgstr "Поля"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer buildings"
-msgstr "Здания поселенцев"
+msgstr "Здания первопроходцев"
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
@@ -574,15 +583,17 @@ msgstr "Эксплуатационные расходы:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "String Previewer Tool for Scenario files"
-msgstr ""
+msgstr "Предварительный просмотрщик для файлов сценария"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
+"выберите сценарий и нажмите \"загрузить/перезагрузить\", чтобы обновить "
+"сообщения в судовом журнале"
 
 #: horizons/i18n/guitranslations.py:87
 msgid "load/reload"
-msgstr ""
+msgstr "загрузить/перезагрузить"
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Inhabitants"
@@ -724,15 +735,15 @@ msgstr "Добавить в список"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Delete entry"
-msgstr ""
+msgstr "Удалить запись"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Move down"
-msgstr ""
+msgstr "Опустить"
 
 #: horizons/i18n/guitranslations.py:137
 msgid "Move up"
-msgstr ""
+msgstr "Поднять"
 
 #: horizons/i18n/guitranslations.py:139 horizons/i18n/guitranslations.py:178
 msgid "Attention please!"
@@ -757,7 +768,7 @@ msgstr "Вернуться в игру"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "Команды разработчиков FIFE и Неизведанных Горизонтов"
 
 #: horizons/i18n/guitranslations.py:150
 msgid "Have fun."
@@ -995,7 +1006,7 @@ msgstr "Язык"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Network"
-msgstr ""
+msgstr "Сеть"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Saving"
@@ -1019,11 +1030,11 @@ msgstr "Громкость музыки:"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "(0 means default)"
-msgstr ""
+msgstr "(0 значит значение по-умолчанию)"
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Network port:"
-msgstr ""
+msgstr "Сетевой порт:"
 
 #: horizons/i18n/guitranslations.py:232
 msgid "Number of autosaves:"
@@ -1221,7 +1232,7 @@ msgstr "Налог:"
 
 #: horizons/i18n/guitranslations.py:304 horizons/i18n/guitranslations.py:319
 msgid "Tax Rate"
-msgstr ""
+msgstr "Налог"
 
 #: horizons/i18n/guitranslations.py:308
 msgid "capacity utilization"
@@ -1302,30 +1313,34 @@ msgstr "Погрузить/Разгрузить:"
 #: horizons/main.py:82
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Ошибка: Некорректный синтаксис в опции командной строки --mp-master. Номер "
+"порта должен быть числом между 1 и 65535."
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Ошибка: Некорректный синтаксис в опции командной строки --mp-bind. Номер "
+"порта должен быть числом между 1 и 65535."
 
 #: horizons/main.py:120
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Не удалось установить сетевое соединение."
 
 #: horizons/main.py:122
 msgid "Check the data you entered in the Network section in the settings dialogue."
-msgstr ""
+msgstr "Проверьте данные, введённые в секции \"Сеть\" в диалоге настроек."
 
 #: horizons/main.py:205
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Не удалось запустить/загрузить игру"
 
 #: horizons/main.py:206
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "Выбранная игра не может быть запущена."
 
 #: horizons/main.py:207
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
+msgstr "Сохранение может быть повреждено или сохранено в предыдущей версии."
 
 #: horizons/main.py:287
 #, python-format
@@ -1364,17 +1379,18 @@ msgstr ""
 #: horizons/savegamemanager.py:287
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr ""
+msgstr "Ошибка: неизвестно, как обработать условие типа %(type)s ."
 
+# 81%
 #: horizons/savegamemanager.py:338
 #, python-format
 msgid "Error: Cannot find campaign \"%s\"."
-msgstr ""
+msgstr "Ошибка: Не найдена кампания \"%s\"."
 
 #: horizons/savegamemanager.py:343
 #, python-format
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr ""
+msgstr "Ошибка: Не найдена кампания с файлом \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1396,10 +1412,13 @@ msgstr "Быстрое сохранение не удалось."
 #: horizons/spsession.py:98
 msgid "An error happened during quicksave. Your game has not been saved."
 msgstr ""
+"В ходе быстрого сохранения произошла ошибка. Ваша игра не была сохранена."
 
 #: horizons/spsession.py:99
 msgid "If this error happens again, please contact the development team: unknown-horizons.org/support"
 msgstr ""
+"Если ошибка повторится, пожалуйста свяжитесь с командой разработчиков: "
+"unknown-horizons.org/support"
 
 #: horizons/spsession.py:106
 msgid "No quicksaves found"
@@ -1412,23 +1431,25 @@ msgstr "Вам нужно выполнить быстрое сохранение
 #. usually invalid filename
 #: horizons/spsession.py:133
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Не удалось создать файл сохранения"
 
 #: horizons/spsession.py:134
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "В ходе создания файла сохранения произошла ошибка."
 
 #: horizons/spsession.py:135
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Обычно это значит, что имя файла сохранения содержит недопустимые "
+"специальные символы."
 
 #: horizons/spsession.py:141
 msgid "File used by another process"
-msgstr ""
+msgstr "Файл используется другим процессом"
 
 #: horizons/spsession.py:142
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "Файл сохранения используется другой программой."
 
 #: horizons/world/units/ship.py:330
 msgid "Trader"
@@ -1472,7 +1493,7 @@ msgstr "Запускает случайную карту."
 
 #: run_uh.py:96
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "Запускает игру на случайной карте с seed <seed>."
 
 #: run_uh.py:98
 msgid "Starts <scenario>. <scenario> is the scenarioname."
@@ -1480,7 +1501,7 @@ msgstr "Запускает <scenario>. <scenario> - название сцена�
 
 #: run_uh.py:100
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr ""
+msgstr "Запускает <campaign>. <campaign> - имя кампании."
 
 #: run_uh.py:102
 msgid "Starts the development map without displaying the main menu."
@@ -1527,7 +1548,7 @@ msgstr "Включить профилирование (только для ра�
 
 #: run_uh.py:122
 msgid "Enable the string previewer tool for scenario writers"
-msgstr ""
+msgstr "Запустить предварительный просмотрщик для писателей сценариев"
 
 #: run_uh.py:144
 #, fuzzy
@@ -1565,9 +1586,8 @@ msgid "Boat Builder"
 msgstr "Верфь"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Branch Office"
-msgstr "Филиал"
+msgstr "Контора"
 
 #: sqlite/Building
 msgid "Brickyard"
@@ -1742,7 +1762,7 @@ msgstr "Снимок экрана сохранен в ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Часть поселенцев только что покинула вас."
 
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
