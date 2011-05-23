@@ -58,21 +58,22 @@ class BuildingRelatedFieldsTab(OverviewTab):
 
 		if len(building_ids) >= 3:
 			index = 0
-			while(index+3 <= len(building_ids)):
+			while(index <= len(building_ids)):
 				gui = load_xml_translated(self.relatedfields_gui_xml)
 				container = gui.findChild(name="fields_container")
+				
 				for _id in sorted(building_ids[index:index+3]):
 					build_buttons.append(self._create_build_buttons(_id[0], container))
-					
+				
 				container.stylize('menu_black')
 				parent_container.addChild(container)
-				index += 1
+				index += 3
 		else:
 			gui = load_xml_translated(self.relatedfields_gui_xml)
 			container = gui.findChild(name="fields_container")
 			for _id in sorted(building_ids):
 				build_buttons.append(self._create_build_buttons(_id[0], container))
-				
+			
 			container.stylize('menu_black')
 			parent_container.addChild(container)
 
@@ -88,24 +89,20 @@ class BuildingRelatedFieldsTab(OverviewTab):
 					rotation=45, owner=self.instance.owner, \
 					island=self.instance.island, \
 					instance=None)
-				
+		
 		# Display Buildings
 		build_button = TooltipButton(name="build"+str(id), tooltip=_("Build")+" "+_(unicode(building.name)))
 		build_button_bg = pychan.widgets.Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")				
 		
 		buildmenu_image_path = "content/gui/icons/buildmenu/";
-		if building.name.lower().find("potato") > -1:
-			build_button.up_image=buildmenu_image_path+"potatoes.png"
-			build_button.down_image=buildmenu_image_path+"potatoes_h.png"
-			build_button.hover_image=buildmenu_image_path+"potatoes_h.png"
-		else:
-			build_button.up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
-			build_button.down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
-			build_button.hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+		
+		build_button.up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
+		build_button.down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+		build_button.hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
 			
 		container.findChild(name="build_button_container").addChild(build_button)
 		container.findChild(name="build_button_bg_container").addChild(build_button_bg)
-		print (build_button.name, building)
+		
 		return (build_button.name, building)
 	
 	def buildField(self, building):

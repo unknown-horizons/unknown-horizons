@@ -52,6 +52,11 @@ class ConcretObject(WorldObject):
 		self._instance = None # overwrite in subclass __init[__]
 		self._action = 'idle' # Default action is idle
 		self._action_set_id = self.session.db.get_random_action_set(self.id)[0]
+		
+		related_building = horizons.main.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
+		
+		if len(related_building) > 0:
+			self.tabs += (BuildingRelatedFieldsTab,)
 
 	@property
 	def fife_instance(self):
@@ -94,19 +99,6 @@ class ConcretObject(WorldObject):
 	def show_menu(self):
 		"""Shows tabs from self.__class__.tabs, if there are any"""
 		# this local import prevents circular imports
-		tab_exists = False
-		
-		for tab in self.tabs:
-			if tab == BuildingRelatedFieldsTab:
-				tab_exists = True
-				break
-		
-		if tab_exists == False:
-			related_building = horizons.main.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
-			
-			if related_building != None:
-				self.tabs += (BuildingRelatedFieldsTab,)
-		
 		from horizons.gui.tabs import TabWidget
 		tablist = []
 		if self.owner == self.session.world.player:
