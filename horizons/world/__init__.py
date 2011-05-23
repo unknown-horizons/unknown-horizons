@@ -34,6 +34,7 @@ from horizons.util.color import Color
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
+from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.util import decorators
 from horizons.world.buildingowner import BuildingOwner
@@ -98,7 +99,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0 and is_pirate = 0"):
 			player = None
 			# check if player is an ai
-			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE id = ?", client_id)
+			# TODO: fix this hack
+			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE id = ?", player_worldid)
 			if len(ai_data) > 0:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
@@ -305,6 +307,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# add free trader
 		self.trader = Trader(self.session, 99999, u"Free Trader", Color())
+
 		ret_coords = None
 		for player in self.players:
 			# Adding ships for the players
@@ -408,7 +411,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		inv = self.session.db.get_player_start_res()
 		player = None
 		if local:
-			player = HumanPlayer(self.session, id, name, color, inventory=inv)
+			# hack to make early ai development easier
+			player = AIPlayer(self.session, id, name, color, inventory=inv)
+			#player = HumanPlayer(self.session, id, name, color, inventory=inv)
 			self.player = player
 			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
 			                                          call_listener_now=True)
