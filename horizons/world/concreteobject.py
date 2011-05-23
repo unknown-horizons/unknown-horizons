@@ -21,7 +21,9 @@
 
 from horizons.scheduler import Scheduler
 
+import horizons.main
 from horizons.util import WorldObject, Callback, ActionSetLoader
+from horizons.gui.tabs import BuildingRelatedFieldsTab
 
 class ConcretObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -92,6 +94,19 @@ class ConcretObject(WorldObject):
 	def show_menu(self):
 		"""Shows tabs from self.__class__.tabs, if there are any"""
 		# this local import prevents circular imports
+		tab_exists = False
+		
+		for tab in self.tabs:
+			if tab == BuildingRelatedFieldsTab:
+				tab_exists = True
+				break
+		
+		if tab_exists == False:
+			related_building = horizons.main.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
+			
+			if related_building != None:
+				self.tabs += (BuildingRelatedFieldsTab,)
+		
 		from horizons.gui.tabs import TabWidget
 		tablist = []
 		if self.owner == self.session.world.player:

@@ -36,7 +36,7 @@ from horizons.gui.tabs import ProductionOverviewTab, BuildingRelatedFieldsTab
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
-	tabs = (ProductionOverviewTab, BuildingRelatedFieldsTab)
+	tabs = (ProductionOverviewTab,)
 	def _update_capacity_utilisation(self):
 		"""Farm doesn't acctually produce something, so calculate productivity by the number of fields
 		nearby."""

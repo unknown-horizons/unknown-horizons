@@ -28,8 +28,6 @@ from horizons.i18n import load_xml_translated
 from horizons.util import Callback
 from horizons.util import Rect, Circle, Point
 from horizons.util.shapes.radiusshape import RadiusRect
-from horizons.world.building.nature import Field
-from horizons.world.building.building import BasicBuilding
 from horizons.world.providerhandler import ProviderHandler
 from horizons import main
 from horizons.entities import Entities
@@ -55,42 +53,60 @@ class BuildingRelatedFieldsTab(OverviewTab):
 			parent_container.removeChild(parent_container.children[0])
 
 		# Load all related Fields of this Farm
-		building_ids = main.db.cached_query("SELECT id FROM building where class_type = ?", "Field")
+		building_ids = main.db.cached_query("SELECT related_building FROM related_buildings where building = ?", self.instance.id)
+		build_buttons = list()
 
-		for _id in sorted(building_ids):
+		if len(building_ids) >= 3:
+			index = 0
+			while(index+3 <= len(building_ids)):
+				gui = load_xml_translated(self.relatedfields_gui_xml)
+				container = gui.findChild(name="fields_container")
+				for _id in sorted(building_ids[index:index+3]):
+					build_buttons.append(self._create_build_buttons(_id[0], container))
+					
+				container.stylize('menu_black')
+				parent_container.addChild(container)
+				index += 1
+		else:
 			gui = load_xml_translated(self.relatedfields_gui_xml)
 			container = gui.findChild(name="fields_container")
-			
-			building = Entities.buildings[_id[0]]( \
-				session=self.instance.session, \
-				x=0, y=0, \
-				rotation=45, owner=self.instance.owner, \
-				island=self.instance.island, \
-				instance=None)
-			
-			# Display Buildings
-			build_button = TooltipButton(name="build"+str(_id[0]), tooltip=_("Build"))
-			
-			buildmenu_image_path = "content/gui/icons/buildmenu/";
-			if building.name.lower().find("potato") > -1:
-				build_button.up_image=buildmenu_image_path+"potatoes.png"
-				build_button.down_image=buildmenu_image_path+"potatoes_h.png"
-				build_button.hover_image=buildmenu_image_path+"potatoes_h.png"
-			else:
-				build_button.up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
-				build_button.down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
-				build_button.hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+			for _id in sorted(building_ids):
+				build_buttons.append(self._create_build_buttons(_id[0], container))
 				
-			container.findChild(name="build_button_container").addChild(build_button)
-			
-			container.findChild(name="name").text = unicode(building.name)
-			
 			container.stylize('menu_black')
 			parent_container.addChild(container)
-			
-			self.widget.mapEvents({ 'build'+str(_id[0]): Callback(self.buildField, building) })
 
+		for name, cls in build_buttons:
+			self.widget.mapEvents({ name: Callback(self.buildField, cls) })
+		
 		super(BuildingRelatedFieldsTab, self).refresh()
+	
+	def _create_build_buttons(self, id, container):
+		building = Entities.buildings[id]( \
+					session=self.instance.session, \
+					x=0, y=0, \
+					rotation=45, owner=self.instance.owner, \
+					island=self.instance.island, \
+					instance=None)
+				
+		# Display Buildings
+		build_button = TooltipButton(name="build"+str(id), tooltip=_("Build")+" "+_(unicode(building.name)))
+		build_button_bg = pychan.widgets.Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")				
+		
+		buildmenu_image_path = "content/gui/icons/buildmenu/";
+		if building.name.lower().find("potato") > -1:
+			build_button.up_image=buildmenu_image_path+"potatoes.png"
+			build_button.down_image=buildmenu_image_path+"potatoes_h.png"
+			build_button.hover_image=buildmenu_image_path+"potatoes_h.png"
+		else:
+			build_button.up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
+			build_button.down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+			build_button.hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+			
+		container.findChild(name="build_button_container").addChild(build_button)
+		container.findChild(name="build_button_bg_container").addChild(build_button_bg)
+		print (build_button.name, building)
+		return (build_button.name, building)
 	
 	def buildField(self, building):
 		self.hide()

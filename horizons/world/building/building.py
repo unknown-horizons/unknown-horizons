@@ -46,6 +46,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	tearable = True
 	show_buildingtool_preview_tab = True # whether to show the tab of the building. not shown for
 																			# e.g. paths. the tab hides a part of the map.
+	tabs = ()
 	enemy_tabs = (EnemyBuildingOverviewTab, )
 	layer = LAYERS.OBJECTS
 
@@ -87,7 +88,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			run_in = remaining_ticks_of_month if remaining_ticks_of_month is not None else interval
 			Scheduler().add_new_object(self.get_payout, self, \
 			                           run_in=run_in, loops=-1, loop_interval=interval)
-
+		
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
 			if self.soundfiles:
