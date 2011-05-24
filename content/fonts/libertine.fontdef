@@ -117,7 +117,7 @@ antialias: 1
 #glyph_spacing: 100
 
 
-[Font/libertine_tooltip_old]
+[Font/libertine_message]
 
 type: truetype
 source: content/fonts/LinLibertine_Bd-4.1.0.ttf
