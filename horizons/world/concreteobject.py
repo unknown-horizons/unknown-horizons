@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.scheduler import Scheduler
+import inspect
 
 import horizons.main
 from horizons.util import WorldObject, Callback, ActionSetLoader
@@ -53,10 +54,20 @@ class ConcretObject(WorldObject):
 		self._action = 'idle' # Default action is idle
 		self._action_set_id = self.session.db.get_random_action_set(self.id)[0]
 		
-		related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
+		related_building = self.session.db.cached_query("SELECT * FROM related_buildings where building = ?", self.id)
 		
+		# if related_buildings found add the BuildRelatedTab
 		if len(related_building) > 0:
 			self.tabs += (BuildRelatedTab,)
+		else:
+			# if no related_buildings found, search for wrongly added BuildRelatedTabs
+			# and delete them
+			tabindex = 0
+			for tab in self.tabs:
+				if tab is BuildRelatedTab:
+					del self.tabs[tabindex]
+					
+				tabindex += 1
 
 	@property
 	def fife_instance(self):
