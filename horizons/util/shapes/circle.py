@@ -82,18 +82,19 @@ class Circle(object):
 
 	@make_constants()
 	def distance(self, other):
-		from circle import Circle
-		from rect import Rect, ConstRect
-		distance_functions_map = {
-			Point: self.distance_to_point,
-			ConstPoint: self.distance_to_point,
-			tuple: self.distance_to_tuple,
-			Circle: self.distance_to_circle,
-			Rect: self.distance_to_rect,
-			ConstRect: self.distance_to_rect
-			}
+		if not hasattr(self, "_distance_functions_map"):
+			from circle import Circle
+			from rect import Rect, ConstRect
+			self._distance_functions_map = {
+				Point: self.distance_to_point,
+				ConstPoint: self.distance_to_point,
+				tuple: self.distance_to_tuple,
+				Circle: self.distance_to_circle,
+				Rect: self.distance_to_rect,
+				ConstRect: self.distance_to_rect
+				}
 		try:
-			return distance_functions_map[other.__class__](other)
+			return self._distance_functions_map[other.__class__](other)
 		except KeyError:
 			return other.distance(self)
 

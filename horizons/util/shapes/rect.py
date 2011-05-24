@@ -99,16 +99,17 @@ class Rect(object):
 	@make_constants()
 	def distance(self, other):
 		"""Calculates distance to another object"""
-		distance_functions_map = {
-			Point: self.distance_to_point,
-			ConstPoint: self.distance_to_point,
-			Rect: self.distance_to_rect,
-			ConstRect: self.distance_to_rect,
-			Circle: self.distance_to_rect,
-			tuple: self.distance_to_tuple
+		if not hasattr(self, "_distance_functions_map"):
+			self._distance_functions_map = {
+			  Point: self.distance_to_point,
+			  ConstPoint: self.distance_to_point,
+			  Rect: self.distance_to_rect,
+			  ConstRect: self.distance_to_rect,
+			  Circle: self.distance_to_rect,
+			  tuple: self.distance_to_tuple
 			}
 		try:
-			return distance_functions_map[other.__class__](other)
+			return self._distance_functions_map[other.__class__](other)
 		except KeyError:
 			return other.distance(self)
 
