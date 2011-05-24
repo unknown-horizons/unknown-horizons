@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-24 23:39+0200\n"
+"PO-Revision-Date: 2011-05-24 23:45+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -356,7 +356,7 @@ msgstr ""
 
 #: po/tutorial.py:27
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "Rakenna teltta ja yhdistä se polulla keskustoriin."
 
 #: po/tutorial.py:28
 msgid ""
@@ -376,14 +376,33 @@ msgid ""
 "\n"
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same kind."
 msgstr ""
+"Katsotaanpa telttayleiskatsauksen välilehteä.\n"
+"Näet\n"
+"* näiden asukkaiden onnellisuuden,\n"
+"* heidän maksamansa verot ja\n"
+"* heidän vaatimansa tarvikkeet.\n"
+"\n"
+"Jos heidän vaatimuksensa täytetään, onnellisuus lisääntyy ja sitä kautta "
+"verotulosi.\n"
+"\n"
+"Jos ei täytetä, onnellisuus ja tulot laskevat. Asukkaat saattavat tulla "
+"hyvin happamiksi ja yksinkertaisesti kääntää selkänsä kylällesi jättäen "
+"taakseen murenevat rauniot.\n"
+"\n"
+"Huomaa, että voit muuttaa veroasetuksia myös täällä.\n"
+"\n"
+"TEHTÄVÄ: Rakenna vähintään kolme telttaa lisää.\n"
+"\n"
+"VIHJE: VAIHTO-näppäimen pitäminen pohjassa helpottaa usean saman lajin "
+"rakennuksen rakentamista."
 
 #: po/tutorial.py:29
 msgid "Build at least three additional tents and connect them to the main square."
-msgstr ""
+msgstr "Rakenna vähintään kolme telttaa lisää ja yhdistä ne keskustoriin."
 
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "RAKENNA MERKKITULI"
 
 #: po/tutorial.py:31
 msgid ""
@@ -417,11 +436,11 @@ msgstr ""
 
 #: po/tutorial.py:33
 msgid "Build a signal fire at the coast close to your branch office."
-msgstr ""
+msgstr "Rakenna merkkituli rannikolle sivutoimistosi lähettyville."
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "OPI KÄYMÄÄN KAUPPAA"
 
 #: po/tutorial.py:35
 msgid ""
@@ -527,10 +546,12 @@ msgstr ""
 #: po/tutorial.py:45
 msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
+"Laske verotasosi alas (vasempaan päähän) ja odota merenkävijöidesi "
+"päivittyvän."
 
 #: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "RAKENNA MAATILA"
 
 #: po/tutorial.py:47
 msgid ""
@@ -564,11 +585,11 @@ msgstr ""
 
 #: po/tutorial.py:49
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "Rakenna maatila ja jätä hieman vapaata tilaa sen ympärille."
 
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "UUSI TEHTÄVÄ: RAKENNA PELTOJA"
 
 #: po/tutorial.py:51
 msgid ""
@@ -598,14 +619,31 @@ msgid ""
 "\n"
 "TASK: Build at least one pasture in the farm's range and add potato fields if you like."
 msgstr ""
+"Varmista, että kaikki rakentamasi pellot ovat maatilan alueella.\n"
+"\n"
+"Voit harrastaa sekatuotantoa - yksi laidun ei johda sadan prosentin "
+"tehokkuuteen, mutta sinun täytyy tarkistaa, montako peltoa yksi maatila voi "
+"hoitaa.\n"
+"\n"
+"Eri tyyppiset pellot tarvitsevat maatilayksiköiltä enemmän tai vähemmän "
+"aikaa (kylvämiseen, korjuuseen, paimennukseen, jne.) ja sen vuoksi maatila "
+"ei välttämättä pysty huolehtimaan kaikista rakentamistasi pelloista ajoissa.\n"
+"\n"
+"Mutta nyt sinun ei tarvitse huolehtia paljoa, sillä et ole vielä rakentanut "
+"yhtäkään peltoa. Tehdään siis asialle jotakin!\n"
+"\n"
+"TEHTÄVÄ: Rakenna vähintään yksi laidun maatilan ulottuville ja lisää "
+"perunamaita, jos tykkäät."
 
 #: po/tutorial.py:53
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
+"Rakenna vähintään yksi laidun maatilan ulottuville ja lisää perunamaita, jos "
+"tykkäät."
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "RAKENNA VARASTO"
 
 #: po/tutorial.py:55
 msgid ""
@@ -664,10 +702,12 @@ msgstr ""
 #: po/tutorial.py:61
 msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
 msgstr ""
+"Asuta kaupungissasi vähintään 50 asukasta tai enemmän läpäistäksesi tämän "
+"tutoriaalin. Tarvitset kokonaisuutena voittoa tuottavan talouden."
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "LÄPÄISE TUTORIAALI"
 
 #: po/tutorial.py:63
 msgid ""
@@ -677,10 +717,18 @@ msgid ""
 "\n"
 "TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial."
 msgstr ""
+"Yritä asuttaa kaupungissasi kokonaiset 50 asukasta tai enemmän luomalla "
+"asuinrakennustarjontaa.\n"
+"\n"
+"Kun olet saanut pidetty taloutta, joka voi elättää tälläisen määrän "
+"kuluttajia, olet valmis lähtemään kohti Tuntemattomia Taivaanrantoja!\n"
+"\n"
+"TEHTÄVÄ: Kerää vähintään 50 asukasta ja rakenna kannattava talous, jotta "
+"läpäisisit tämän tutoriaalin."
 
 #: po/tutorial.py:64
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "EI TEHTÄVIÄ JÄLJELLÄ"
 
 #: po/tutorial.py:65
 msgid ""
@@ -698,10 +746,25 @@ msgid ""
 "\n"
 "The best results until now were achieved by joining our IRC channel, so you could try that out first (-;"
 msgstr ""
+"\n"
+"\n"
+"Jos sinulla on ehdotuksia, mitä me voisimme tai mitä pitäisi kehittää, "
+"lisätä tai jättää pois:\n"
+"\n"
+"www.unknown-horizons.org\n"
+"\n"
+"#unknown-horizons @ irc.freenode.net\n"
+"\n"
+"team@unknown-horizons.org\n"
+"\n"
+"Keskustelupalstamme ovat avoinna myös sinulle!\n"
+"\n"
+"Parhaita tuloksia tähän mennessä on saatu aikaan liittymällä IRC-"
+"kanavallemme, joten voit yrittää sitä ensimmäisenä (-;"
 
 #: po/tutorial.py:66
 msgid "Thanks!"
-msgstr ""
+msgstr "Kiitoksia!"
 
 #: po/tutorial.py:67
 msgid ""
@@ -716,7 +779,19 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Kiitos, että pelasitte tätä tutoriaalia!\n"
+"\n"
+"Allekirjoittajana UH-Team"
 
 #: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
+"Onneksi olkoon! Olet saavuttanut tämän tutoriaalin lopun ja olet valmis "
+"kohtaamaan uusia haasteita!"

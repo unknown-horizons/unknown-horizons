@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-04 14:39+0200\n"
+"PO-Revision-Date: 2011-05-24 23:48+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -114,16 +114,16 @@ msgstr "Ei tallennettuja pelejä"
 
 #: horizons/gui/gui.py:199
 msgid "There are no saved games to load"
-msgstr ""
+msgstr "Ei ole tallennettuja pelejä ladattavaksi."
 
 #: horizons/gui/gui.py:206 horizons/i18n/guitranslations.py:142
 #: horizons/i18n/guitranslations.py:181
 msgid "Load game"
-msgstr ""
+msgstr "Lataa peli"
 
 #: horizons/gui/gui.py:206 horizons/i18n/guitranslations.py:144
 msgid "Save game"
-msgstr ""
+msgstr "Tallenna peli"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:252
@@ -132,10 +132,12 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Tallennus nimellä \"%s\" on jo olemassa. \n"
+"Tallennetaanko sen päälle?"
 
 #: horizons/gui/gui.py:253
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Vahvistus ylikirjoittamiselle"
 
 #: horizons/gui/gui.py:261
 msgid "Please select a savegame or click on cancel."
@@ -148,7 +150,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:328 horizons/i18n/guitranslations.py:241
 msgid "Details:"
-msgstr ""
+msgstr "Yksityiskohdat:"
 
 #: horizons/gui/gui.py:329
 msgid "Error:"
@@ -156,12 +158,12 @@ msgstr ""
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Tuntematon tallennuspäivä\n"
 
 #: horizons/gui/gui.py:400
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Tallennettu %s\n"
 
 #: horizons/gui/gui.py:401
 msgid "%H:%M, %A, %B %d"
@@ -170,7 +172,7 @@ msgstr ""
 #: horizons/gui/gui.py:412
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "Tallennusversio %d"
 
 #: horizons/gui/gui.py:414
 #, python-format
@@ -178,43 +180,45 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"VAROITUS: Epäyhteensopiva versio %(ver)d!\n"
+"Tarvittu versio %(need)d!"
 
 #: horizons/gui/gui.py:417
 msgid "INCOMPATIBLE VERSION\n"
-msgstr ""
+msgstr "EPÄYHTEENSOPIVA VERSIO\n"
 
 #: horizons/gui/gui.py:440
 msgid "No file selected"
-msgstr ""
+msgstr "Ei tiedostoa valittuna"
 
 #: horizons/gui/gui.py:440
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Sinun tulee valita tallennus voidaksesi poistaa"
 
 #: horizons/gui/gui.py:443
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa tallennuksen \"%s\"?"
 
 #: horizons/gui/gui.py:445
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Vahvista poistaminen"
 
 #: horizons/gui/gui.py:450
 msgid "Error!"
-msgstr ""
+msgstr "Virhe!"
 
 #: horizons/gui/gui.py:450
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Tallennusta ei voitu poistaa!"
 
 #: horizons/gui/ingamegui.py:443
 msgid "Hit P to continue the game or click below!"
-msgstr ""
+msgstr "Paina P:tä jatkaaksesi peliä tai paina alta!"
 
 #: horizons/gui/ingamegui.py:444
 msgid "Game paused"
-msgstr ""
+msgstr "Peli pysäytetty"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
@@ -236,117 +240,124 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:102
 #: horizons/gui/modules/multiplayermenu.py:109
 msgid "Network Error"
-msgstr ""
+msgstr "Verkkovirhe"
 
 #: horizons/gui/modules/multiplayermenu.py:110
 msgid "Something went wrong with the network: "
-msgstr ""
+msgstr "Jotakin meni pieleen verkon kanssa:"
 
 #: horizons/gui/modules/multiplayermenu.py:125
 msgid "Version differs!"
-msgstr ""
+msgstr "Versio eroaa!"
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Map: "
-msgstr ""
+msgstr "Kenttä:"
 
 #: horizons/gui/modules/multiplayermenu.py:148
 msgid "Players: "
-msgstr ""
+msgstr "Pelaajat: "
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid "Creator: "
-msgstr ""
+msgstr "Tekijä: "
 
 #: horizons/gui/modules/multiplayermenu.py:168
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Pelin versio eroaa sinun versiostasi. Moninpelissä jokaisella pitää olla "
+"sama versio. Tämä korjautuu jos jokainen pelaaja päivittää viimeisimpään "
+"versioon. Pelin versio: %(gameversion)s Sinun versiosi: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:168
 msgid "Wrong version"
-msgstr ""
+msgstr "Väärä versio"
 
 #: horizons/gui/modules/singleplayermenu.py:90
 #: horizons/gui/modules/singleplayermenu.py:102
 msgid "Difficulty: "
-msgstr ""
+msgstr "Vaikeustaso: "
 
 #: horizons/gui/modules/singleplayermenu.py:91
 #: horizons/gui/modules/singleplayermenu.py:103
 msgid "Author: "
-msgstr ""
+msgstr "Tekijä: "
 
 #: horizons/gui/modules/singleplayermenu.py:92
 #: horizons/gui/modules/singleplayermenu.py:104
 msgid "Description: "
-msgstr ""
+msgstr "Kuvaus: "
 
 #: horizons/gui/modules/singleplayermenu.py:122
 msgid "Invalid player name"
-msgstr ""
+msgstr "Virheellinen pelaajanimi"
 
 #: horizons/gui/modules/singleplayermenu.py:122
 msgid "You entered an invalid playername"
-msgstr ""
+msgstr "Annoit virheellisen pelaajanimen"
 
 #: horizons/gui/modules/singleplayermenu.py:173
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "Virheellinen kenttätiedosto"
 
 #: horizons/gui/modules/singleplayermenu.py:174
 msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
+"Valittu tiedosto ei ole käypä kenttätiedosto.\n"
+"Virhesanoma:"
 
 #: horizons/gui/modules/singleplayermenu.py:175
 msgid ""
 "\n"
 "Please report this to the author."
 msgstr ""
+"\n"
+"Ole hyvä ja ilmoita tästä tekijälle."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:114
 #: horizons/i18n/guitranslations.py:82
 msgid "Build"
-msgstr ""
+msgstr "Rakenna"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Laivanrakennuksen yleiskatsaus"
 
 #: horizons/gui/tabs/boatbuildertab.py:111
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Puuttuvat luonnovarat:"
 
 #: horizons/gui/tabs/boatbuildertab.py:167
 msgid "Fisher boats"
-msgstr ""
+msgstr "Kalastusveneet"
 
 #: horizons/gui/tabs/boatbuildertab.py:176
 msgid "Trade boats"
-msgstr ""
+msgstr "Kauppalaivat"
 
 #: horizons/gui/tabs/boatbuildertab.py:182
 msgid "War boats"
-msgstr ""
+msgstr "Sotalaivat"
 
 #: horizons/gui/tabs/boatbuildertab.py:188
 msgid "War ships"
-msgstr ""
+msgstr "Sota-alukset"
 
 #: horizons/gui/tabs/boatbuildertab.py:205
 msgid "Confirm order"
-msgstr ""
+msgstr "Vahvista järjestys"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "Kasvata"
 
 #: horizons/gui/tabs/buyselltab.py:65 horizons/i18n/guitranslations.py:335
 msgid "Trade"
-msgstr ""
+msgstr "Kaupankäynti"
 
 #: horizons/gui/tabs/inventorytab.py:39 horizons/i18n/guitranslations.py:290
 #: horizons/i18n/guitranslations.py:340
@@ -360,7 +371,7 @@ msgstr ""
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:282
 msgid "Account"
-msgstr ""
+msgstr "Käyttäjätili"
 
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:266 horizons/i18n/guitranslations.py:293
@@ -370,11 +381,11 @@ msgstr ""
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:309
 #: horizons/i18n/guitranslations.py:299 horizons/i18n/guitranslations.py:331
 msgid "Overview"
-msgstr ""
+msgstr "Yleiskatsaus"
 
 #: horizons/gui/tabs/overviewtab.py:97
 msgid "Branch office overview"
-msgstr ""
+msgstr "Sivutoimiston yleiskatsaus"
 
 #: horizons/gui/tabs/overviewtab.py:112
 msgid "Market place overview"
