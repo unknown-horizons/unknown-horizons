@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-25 00:56+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. set translated building name in gui
 #: po/tutorial.py
@@ -39,7 +41,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "tent"
-msgstr ""
+msgstr "šotor"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -60,7 +62,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: %28poterminology%29+1+more+locations
 msgid "overview"
-msgstr ""
+msgstr "pregled"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -68,7 +70,7 @@ msgstr ""
 #: horizons/gui/tabs/boatbuildertab.py
 #: %28poterminology%29+1+more+locations
 msgid "ship"
-msgstr ""
+msgstr "ladja"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -89,13 +91,13 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "farm"
-msgstr ""
+msgstr "kmetija"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "mornar"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -115,7 +117,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Messages
 msgid "settlement"
-msgstr ""
+msgstr "naselbina"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -132,13 +134,13 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "field"
-msgstr ""
+msgstr "polje"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "food"
-msgstr ""
+msgstr "hrana"
 
 #: po/tutorial.py
 #: horizons/gui/tabs/buildtabs.py
@@ -153,7 +155,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/gui/
 msgid "running costs"
-msgstr ""
+msgstr "stroški poslovanja"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -170,13 +172,13 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/overviewtab.py
 msgid "production"
-msgstr ""
+msgstr "proizvodnja"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "boards"
-msgstr ""
+msgstr "lesene deske"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -194,19 +196,19 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "main square"
-msgstr ""
+msgstr "glavni trg"
 
 #: horizons/gui/tabs/marketplacetabs.py
 #: sqlite/SettlerLevel
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "settler"
-msgstr ""
+msgstr "naseljenec"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "time"
-msgstr ""
+msgstr "čas"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -243,38 +245,38 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "lumberjack"
-msgstr ""
+msgstr "gozdar"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sell"
-msgstr ""
+msgstr "prodaj"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "taxes"
-msgstr ""
+msgstr "davki"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "wool"
-msgstr ""
+msgstr "volna"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "coast"
-msgstr ""
+msgstr "obala"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "companies"
-msgstr ""
+msgstr "družbe"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "cost"
-msgstr ""
+msgstr "cena"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -291,12 +293,12 @@ msgstr ""
 #: sqlite/Building
 #: run_uh.py
 msgid "log"
-msgstr ""
+msgstr "zapisnik"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "reach"
-msgstr ""
+msgstr "doseg"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -307,7 +309,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "stock"
-msgstr ""
+msgstr "zaloga"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -319,24 +321,24 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/world/units/ship.py
 msgid "trader"
-msgstr ""
+msgstr "trgovec"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "balance"
-msgstr ""
+msgstr "ravnovesje"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "fire"
-msgstr ""
+msgstr "ogenj"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "fisher"
-msgstr ""
+msgstr "ribič"
 
 #: horizons/spsession.py
 #: po/tutorial.py
@@ -354,13 +356,13 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "signal"
-msgstr ""
+msgstr "signal"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "signal fire"
-msgstr ""
+msgstr "signalni ogenj"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -371,7 +373,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "tools"
-msgstr ""
+msgstr "orodje"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -392,40 +394,40 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "help"
-msgstr ""
+msgstr "pomoč"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "house"
-msgstr ""
+msgstr "hiša"
 
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "level"
-msgstr ""
+msgstr "stopnja"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pasture"
-msgstr ""
+msgstr "pašnik"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "pionir"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato"
-msgstr ""
+msgstr "krompir"
 
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "range"
-msgstr ""
+msgstr "doseg"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -449,24 +451,24 @@ msgstr ""
 #: sqlite/Building
 #: sqlite/Resources
 msgid "sugar"
-msgstr ""
+msgstr "sladkor"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "tree"
-msgstr ""
+msgstr "drevo"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "add"
-msgstr ""
+msgstr "dodaj"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "animal"
-msgstr ""
+msgstr "žival"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -477,7 +479,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "Captain's log"
-msgstr ""
+msgstr "Kapitanov dnevnik"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -487,7 +489,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "decrease"
-msgstr ""
+msgstr "zmanjšaj"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -498,12 +500,12 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "happiness"
-msgstr ""
+msgstr "zadovoljstvo"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunter"
-msgstr ""
+msgstr "lovec"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -515,7 +517,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb"
-msgstr ""
+msgstr "jagnje"
 
 # 
 #: po/tutorial.py
@@ -549,7 +551,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "village"
-msgstr ""
+msgstr "vas"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -581,7 +583,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "cloth"
-msgstr ""
+msgstr "tkanina"
 
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
@@ -592,13 +594,13 @@ msgstr ""
 #: sqlite/Resources
 #: sqlite/Building
 msgid "fish"
-msgstr ""
+msgstr "riba"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "increase"
-msgstr ""
+msgstr "povečaj"
 
 # 
 #: po/tutorial.py
@@ -625,7 +627,7 @@ msgstr ""
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "market place"
-msgstr ""
+msgstr "tržnica"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -661,13 +663,13 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato field"
-msgstr ""
+msgstr "polje krompirja"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "refresh"
-msgstr ""
+msgstr "osveži"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -679,14 +681,14 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "save"
-msgstr ""
+msgstr "shrani"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "school"
-msgstr ""
+msgstr "šola"
 
 # 
 #: po/tutorial.py
@@ -697,13 +699,13 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/engine.py
 msgid "solution"
-msgstr ""
+msgstr "rešitev"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sound"
-msgstr ""
+msgstr "zvok"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -718,7 +720,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trading"
-msgstr ""
+msgstr "trgovanje"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -734,29 +736,29 @@ msgstr ""
 #: horizons/gui/ingamegui.py
 #: po/tutorial.py
 msgid "continue"
-msgstr ""
+msgstr "nadaljuj"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "description"
-msgstr ""
+msgstr "opis"
 
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "vera"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fisherman"
-msgstr ""
+msgstr "ribič"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "forest"
-msgstr ""
+msgstr "gozd"
 
 # 
 #: po/tutorial.py
@@ -774,7 +776,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "graphics"
-msgstr ""
+msgstr "grafika"
 
 # 
 #: po/tutorial.py
@@ -796,12 +798,12 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunts"
-msgstr ""
+msgstr "lovi"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "income"
-msgstr ""
+msgstr "prihodek"
 
 # 
 #: po/tutorial.py
@@ -820,7 +822,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "load/unload"
-msgstr ""
+msgstr "naloži/razloži"
 
 # 
 #: po/tutorial.py
@@ -880,7 +882,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Building
 msgid "sugar field"
-msgstr ""
+msgstr "polje sladkornega trsa"
 
 # 
 #: po/tutorial.py

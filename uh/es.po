@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-15 18:55+0200\n"
-"Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
+"PO-Revision-Date: 2011-05-25 01:00+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr "Error"
 # 75%
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr "El guardado rápido ha fallado"
+msgstr "El guardado ha fallado."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -153,9 +153,8 @@ msgstr "Detalles:"
 
 # 83%
 #: horizons/gui/gui.py:329
-#, fuzzy
 msgid "Error:"
-msgstr "Error"
+msgstr "Error:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -555,7 +554,7 @@ msgstr "Carbón de leña ardiente: Quema una gran cantidad de tablas."
 
 #: horizons/i18n/guitranslations.py:77
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr "minas de hierro: Obtiene mineral de hierro del depósito."
+msgstr "Minas de hierro: Obtiene mineral de hierro del depósito."
 
 #: horizons/i18n/guitranslations.py:78
 #, fuzzy
@@ -633,11 +632,11 @@ msgstr "Aumentar la velocidad del juego"
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Zoom in"
-msgstr "Acercar Zoom"
+msgstr "Acercar zoom"
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Zoom out"
-msgstr "Alejar Zoom"
+msgstr "Alejar zoom"
 
 #: horizons/i18n/guitranslations.py:105
 msgid "Boards"
