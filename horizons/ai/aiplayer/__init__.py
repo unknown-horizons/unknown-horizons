@@ -33,6 +33,7 @@ from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import Ship
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
+from horizons.ai.aiplayer.land_manager import LandManager
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -47,13 +48,18 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.start), self, run_in = 2)
 
 	def __init(self):
-		self.missions = {}
 		self.ship = None
 		for t in self.session.world.ships:
 			if t.owner == self:
 				self.ship = t
 				break
+
+		self.missions = {}
 		self.island = self.session.world.islands[0]
+
+		self.land_manager = LandManager(self.island, self)
+		self.land_manager.divide()
+		self.land_manager.display()
 
 	def report_success(self, mission, msg):
 		print mission, msg
