@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-24 09:10+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2011-05-24 21:27+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -464,7 +464,7 @@ msgstr "Services"
 
 #: horizons/i18n/guitranslations.py:46
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr "Pavillon : Réponds aux besoins religieux des marins."
+msgstr "Pavillon: Réponds aux besoins religieux des marins."
 
 #: horizons/i18n/guitranslations.py:47
 msgid "Fisherman: Fishes the sea, produces food."
@@ -478,16 +478,16 @@ msgstr "Chasseur: Chasse des animaux sauvages et fournit de la nourriture."
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
-"Feu de signalisation : Permet au joueur de commercer avec le « bateau-"
-"marchand»."
+"Feu de signalisation: Permet au joueur de commercer avec le «marchand "
+"libre»."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr "Bucheron : Coupe des arbres et les transforme en planches."
+msgstr "Bucheron: Coupe des arbres et les transforme en planches."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
-msgstr "Place centrale: Fournit les biens aux citoyens."
+msgstr "Place principale: Fournit les biens aux citoyens."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
@@ -1402,7 +1402,8 @@ msgstr "Erreur: ne sait pas comment appréhender le type de condition %(type)s"
 
 # 81%
 #: horizons/savegamemanager.py:338
-#, python-format, 
+#, python-format
+#, python-format,
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Erreur: Impossible de trouver la campagne \"%s\"."
 

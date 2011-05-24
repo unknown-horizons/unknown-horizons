@@ -152,7 +152,6 @@ msgstr "Bitte wählt einen Speicherstand aus oder klickt auf Abbrechen."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:261
-#, fuzzy
 msgid "Select a savegame"
 msgstr "Wählt einen Speicherstand"
 
@@ -424,7 +423,6 @@ msgid "Limit: %st per slot"
 msgstr "maximal %st pro Slot"
 
 #: horizons/gui/widgets/logbook.py:149
-#, fuzzy
 msgid "Emptiness"
 msgstr "Leere"
 
@@ -433,12 +431,10 @@ msgid "There is nothing written in your logbook yet!"
 msgstr "Es gibt noch keine Einträge in Eurem Logbuch!"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:133
-#, fuzzy
 msgid "Start route"
 msgstr "Handelsroute starten"
 
 #: horizons/gui/widgets/routeconfig.py:60
-#, fuzzy
 msgid "Stop route"
 msgstr "Handelsroute stoppen"
 
@@ -738,7 +734,6 @@ msgid "Add to list"
 msgstr "Zur Liste hinzufügen"
 
 #: horizons/i18n/guitranslations.py:135
-#, fuzzy
 msgid "Delete entry"
 msgstr "Eintrag löschen"
 
@@ -1009,7 +1004,6 @@ msgid "Language"
 msgstr "Sprache"
 
 #: horizons/i18n/guitranslations.py:224
-#, fuzzy
 msgid "Network"
 msgstr "Netzwerk"
 
@@ -1039,7 +1033,6 @@ msgid "(0 means default)"
 msgstr "(0 = Standardeinstellung)"
 
 #: horizons/i18n/guitranslations.py:231
-#, fuzzy
 msgid "Network port:"
 msgstr "Port:"
 
@@ -1345,17 +1338,14 @@ msgstr ""
 "Bitte überprüft die Angaben im Abschnitt Netzwerk des Einstellungsmenüs."
 
 #: horizons/main.py:205
-#, fuzzy
 msgid "Failed to start/load the game"
 msgstr "Starten/Laden des Spiels fehlgeschlagen"
 
 #: horizons/main.py:206
-#, fuzzy
 msgid "The game you selected couldn't be started."
 msgstr "Das ausgewählte Spiel konnte nicht gestartet werden."
 
 #: horizons/main.py:207
-#, fuzzy
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 "Der Speicherstand ist defekt oder liegt in einer inkompatiblen Version vor."
@@ -1395,7 +1385,7 @@ msgstr "Speichern/Laden ist im Mehrspieler-Modus noch nicht möglich"
 #: horizons/savegamemanager.py:287
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr "Fehler: Verwendungsweise einer Bedingung vom Typ %(type)s unbekannt."
+msgstr "Fehler: Verwendungsweise einer Bedingung vom Typ %(type)s unbekannt"
 
 #: horizons/savegamemanager.py:338
 #, python-format
@@ -1403,7 +1393,8 @@ msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Fehler: Die Kampagne \"%s\" konnte nicht gefunden werden."
 
 #: horizons/savegamemanager.py:343
-#, python-format, 
+#, python-format
+#, python-format,
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Fehler: Konnte die Kampagne \"%s\" nicht finden."
 
@@ -1502,7 +1493,7 @@ msgstr ""
 
 #: run_uh.py:90
 msgid "Starting Unknown Horizons"
-msgstr ""
+msgstr "Starte Unknown Horizons"
 
 # please don't translate anything in <tags> - thanks!
 #: run_uh.py:92
@@ -1592,9 +1583,10 @@ msgstr ""
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Danke für das Verwenden von Unknown Horizons!"
 
+# 80%
 #: run_uh.py:280
 msgid "Failed to load FIFE:"
-msgstr ""
+msgstr "Laden von FIFE fehlgeschlagen:"
 
 #: run_uh.py:350
 msgid "FIFE was not found."

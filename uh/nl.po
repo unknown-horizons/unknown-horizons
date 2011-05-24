@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-24 12:05+0200\n"
+"PO-Revision-Date: 2011-05-24 12:06+0200\n"
 "Last-Translator: Jasper <info@opensource-news.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1382,7 +1382,8 @@ msgstr "Fout: weet niet hoe ik %(type)s moet afhandelen"
 
 # 81%
 #: horizons/savegamemanager.py:338
-#, python-format, 
+#, python-format
+#, python-format,
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Fout: Kan de campagne \"%s\" niet vinden."
 
@@ -1572,7 +1573,6 @@ msgstr "Bedankt dat U Unknown Horizons gebruikt!"
 
 # 80%
 #: run_uh.py:280
-#, fuzzy
 msgid "Failed to load FIFE:"
 msgstr "FIFE laden mislukt:"
 
