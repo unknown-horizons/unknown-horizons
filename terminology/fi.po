@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-24 23:36+0200\n"
+"PO-Revision-Date: 2011-05-24 23:59+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -483,7 +483,7 @@ msgstr "Kapteenin päiväkirja"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "construction"
-msgstr "Rakentaminen"
+msgstr "rakentaminen"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -566,67 +566,67 @@ msgstr "tili / käyttäjätili"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "back"
-msgstr ""
+msgstr "takaisin"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "build settlement"
-msgstr ""
+msgstr "rakenna asutuskeskus"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "built"
-msgstr ""
+msgstr "rakennettu"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "cloth"
-msgstr ""
+msgstr "vaate"
 
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "feature"
-msgstr ""
+msgstr "ominaisuus"
 
 #: po/tutorial.py
 #: sqlite/Resources
 #: sqlite/Building
 msgid "fish"
-msgstr ""
+msgstr "kalaa"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "increase"
-msgstr ""
+msgstr "kasvata"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "lampaan villa"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "leave"
-msgstr ""
+msgstr "jätä"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "market"
-msgstr ""
+msgstr "tori"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "market place"
-msgstr ""
+msgstr "kauppapaikka"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -638,93 +638,93 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/main.py
 msgid "multiple"
-msgstr ""
+msgstr "usea"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "output"
-msgstr ""
+msgstr "ulostulo"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "partner"
-msgstr ""
+msgstr "kumppani"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "play"
-msgstr ""
+msgstr "pelaa"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato field"
-msgstr ""
+msgstr "perunamaa"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "refresh"
-msgstr ""
+msgstr "päivitä"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sale"
-msgstr ""
+msgstr "myynti"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "save"
-msgstr ""
+msgstr "tallenna"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "school"
-msgstr ""
+msgstr "koulu"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "screen"
-msgstr ""
+msgstr "näyttö"
 
 #: po/tutorial.py
 #: horizons/engine.py
 msgid "solution"
-msgstr ""
+msgstr "ratkaisu"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sound"
-msgstr ""
+msgstr "ääni"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "team"
-msgstr ""
+msgstr "joukkue"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "from time to time"
-msgstr ""
+msgstr "ajasta aikaan"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trading"
-msgstr ""
+msgstr "kaupustelemalla"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "visit"
-msgstr ""
+msgstr "vieraile"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -735,162 +735,162 @@ msgstr ""
 #: horizons/gui/ingamegui.py
 #: po/tutorial.py
 msgid "continue"
-msgstr ""
+msgstr "jatka"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "description"
-msgstr ""
+msgstr "kuvaus"
 
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "usko"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fisherman"
-msgstr ""
+msgstr "kalastaja"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "forest"
-msgstr ""
+msgstr "metsä"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "forum"
-msgstr ""
+msgstr "keskustelupalsta"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fulfill"
-msgstr ""
+msgstr "pane täytäntöön"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "graphics"
-msgstr ""
+msgstr "ulkoasu"
 
 # 
 #: po/tutorial.py
 #: sqlite/Colors
 msgid "green"
-msgstr ""
+msgstr "vihreä"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "grow"
-msgstr ""
+msgstr "kasvata"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hold"
-msgstr ""
+msgstr "pidä"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunts"
-msgstr ""
+msgstr "metsästää"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "income"
-msgstr ""
+msgstr "palkka / tienesti"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "information"
-msgstr ""
+msgstr "tieto"
 
 # (keyboard)
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "key"
-msgstr ""
+msgstr "näppäin"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "load/unload"
-msgstr ""
+msgstr "ota kyytiin/pois"
 
 # 
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "move"
-msgstr ""
+msgstr "liikuta"
 
 # 
 #: po/tutorial.py
 #: sqlite/Colors
 msgid "red"
-msgstr ""
+msgstr "punainen"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "return"
-msgstr ""
+msgstr "palaa"
 
 # 
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "run"
-msgstr ""
+msgstr "suorita"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "service"
-msgstr ""
+msgstr "palvelu"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sheep"
-msgstr ""
+msgstr "lammas"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "SHIFT"
-msgstr ""
+msgstr "VAIHTO"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "ship inventory"
-msgstr ""
+msgstr "laivan tavaranäkymä"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "starting"
-msgstr ""
+msgstr "alkaen"
 
 # 
 #: po/tutorial.py
 #: sqlite/Building
 msgid "sugar field"
-msgstr ""
+msgstr "sokeripelto"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trade partner"
-msgstr ""
+msgstr "kauppakumppani"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "yields"
-msgstr ""
+msgstr "saa"
