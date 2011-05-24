@@ -94,8 +94,12 @@ class ShipRoute(object):
 					TransferResource (-amount, res, self.ship, branch_office).execute(self.ship.session)
 		self.move_to_next_route_bo()
 
-	def move_to_next_route_bo(self):
-		next_destination = self.get_next_destination()
+	def on_ship_blocked(self):
+		# the ship was blocked while it was already moving so try again
+		self.move_to_next_route_bo(advance_waypoint = False)
+
+	def move_to_next_route_bo(self, advance_waypoint = True):
+		next_destination = self.get_next_destination(advance_waypoint)
 		if next_destination == None:
 			return
 
@@ -108,7 +112,7 @@ class ShipRoute(object):
 
 		for point in Circle(branch_office.position.center(), self.ship.radius):
 			try:
-				self.ship.move(point, self.on_route_bo_reached)
+				self.ship.move(point, self.on_route_bo_reached, blocked_callback = self.on_ship_blocked)
 			except MoveNotPossible:
 				continue
 			found_path_to_bo = True
@@ -116,14 +120,15 @@ class ShipRoute(object):
 		if not found_path_to_bo:
 			self.disable()
 
-	def get_next_destination(self):
+	def get_next_destination(self, advance_waypoint):
 		if not self.enabled:
 			return None
 		if len(self.waypoints) < 2:
 			return None
 
-		self.current_waypoint += 1
-		self.current_waypoint %= len(self.waypoints)
+		if advance_waypoint:
+			self.current_waypoint += 1
+			self.current_waypoint %= len(self.waypoints)
 		return self.waypoints[self.current_waypoint]
 
 	def get_location(self):
