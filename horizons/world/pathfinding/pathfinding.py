@@ -148,6 +148,8 @@ class FindPath(object):
 		# if one of the dest_coords has been processed
 		# (i.e. is in checked), a good path is found
 		dest_coords = self.destination.get_coordinates()
+		if len(dest_coords) > 5:
+			dest_coords = set(dest_coords)
 
 		# loop until we have no more nodes to check
 		while to_check:
