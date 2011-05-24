@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-24 11:31+0200\n"
+"PO-Revision-Date: 2011-05-24 11:47+0200\n"
 "Last-Translator: Jasper <info@opensource-news.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1311,30 +1311,37 @@ msgstr "Laden/Uitladen:"
 #: horizons/main.py:82
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Fout: Verkeerde invoer in -mp-master commandline optie. Poort moet een "
+"nummer zijn tussen de 1 en 65535."
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Fout: Verkeerde invoer in -mp-bind commandline optie. Poort moet een nummer "
+"zijn tussen de 1 en 65535."
 
 #: horizons/main.py:120
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Netwerk initialisatie mislukt."
 
 #: horizons/main.py:122
 msgid "Check the data you entered in the Network section in the settings dialogue."
 msgstr ""
+"Controleer de informatie die u heeft ingevoerd in de netwerk sectie van de "
+"instellingen."
 
 #: horizons/main.py:205
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Starten/laden van het spel is mislukt"
 
 #: horizons/main.py:206
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "Het spel dat u geselecteerd heeft kan niet worden gestart."
 
 #: horizons/main.py:207
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
+"De savedgame is defect of is door een eerdere versie van het spel gemaakt."
 
 #: horizons/main.py:287
 #, python-format
