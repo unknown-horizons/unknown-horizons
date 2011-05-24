@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-23 21:34+0200\n"
+"PO-Revision-Date: 2011-05-23 21:36+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -171,7 +171,6 @@ msgid "Saved at %s\n"
 msgstr "Сохранено в %s\n"
 
 #: horizons/gui/gui.py:401
-#, fuzzy
 msgid "%H:%M, %A, %B %d"
 msgstr "%H:%M, %A, %B %d"
 
@@ -984,7 +983,6 @@ msgid "Autosave interval in minutes:"
 msgstr "Интервал автосохранения в минутах:"
 
 #: horizons/i18n/guitranslations.py:218
-#, fuzzy
 msgid "Color depth:"
 msgstr "Глубина цвета:"
 
@@ -1479,9 +1477,10 @@ msgstr ""
 "Задать сетевой адрес для привязки локального сетевого клиента. Полезно, если "
 "NAT holepunching не работает, но вы можете перенаправить статический порт."
 
+# 92%
 #: run_uh.py:90
 msgid "Starting Unknown Horizons"
-msgstr ""
+msgstr "Запуск Неизведанных Горизонтов"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
@@ -1551,7 +1550,6 @@ msgid "Enable the string previewer tool for scenario writers"
 msgstr "Запустить предварительный просмотрщик для писателей сценариев"
 
 #: run_uh.py:144
-#, fuzzy
 msgid "Unknown Horizons crashed."
 msgstr "Сбой Неизведанных Горизонтов."
 
@@ -1575,7 +1573,7 @@ msgstr "Спасибо за использование Неизведанных 
 
 #: run_uh.py:280
 msgid "Failed to load FIFE:"
-msgstr ""
+msgstr "Невозможно загрузить FIFE:"
 
 #: run_uh.py:350
 msgid "FIFE was not found."
@@ -1675,7 +1673,6 @@ msgstr "Плавильня"
 
 # Can we drop the 'Tent' part ? Or we need something like 'Палатка-хранилище', 'Склад-палатка' etc.
 #: sqlite/Building
-#, fuzzy
 msgid "Storage Tent"
 msgstr "Хранилище"
 
@@ -1692,7 +1689,6 @@ msgid "Tent"
 msgstr "Палатка"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Tent_ruin"
 msgstr "Разрушенный шатёр"
 
@@ -1825,7 +1821,6 @@ msgid "food"
 msgstr "еда"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "get-together"
 msgstr "общение"
 

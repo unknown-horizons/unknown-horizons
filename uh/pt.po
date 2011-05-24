@@ -150,9 +150,11 @@ msgstr ""
 msgid "Details:"
 msgstr "Detalhes:"
 
+# 83%
 #: horizons/gui/gui.py:329
+#, fuzzy
 msgid "Error:"
-msgstr ""
+msgstr "Erro"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -1362,10 +1364,12 @@ msgstr ""
 msgid "Error: don't know how to handle %(type)s condition type"
 msgstr ""
 
+# 81%
 #: horizons/savegamemanager.py:338
 #, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign \"%s\"."
-msgstr ""
+msgstr "Erro: Não foi possível encontrar o mapa \"%s%."
 
 #: horizons/savegamemanager.py:343
 #, python-format
@@ -1457,9 +1461,11 @@ msgstr ""
 "ser útil caso existam problemas na \"NAT holepunching\" e tiver necessidade de "
 "encaminhar para uma porta estática."
 
+# 92%
 #: run_uh.py:90
+#, fuzzy
 msgid "Starting Unknown Horizons"
-msgstr ""
+msgstr "Iniciando Unknown Horizons"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
@@ -1546,9 +1552,11 @@ msgstr ""
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Obrigado por utilizar o Unknown Horizons!"
 
+# 80%
 #: run_uh.py:280
+#, fuzzy
 msgid "Failed to load FIFE:"
-msgstr ""
+msgstr "Falha a carregar o fife:"
 
 #: run_uh.py:350
 msgid "FIFE was not found."

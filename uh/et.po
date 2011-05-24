@@ -149,9 +149,11 @@ msgstr ""
 msgid "Details:"
 msgstr "Detailid:"
 
+# 83%
 #: horizons/gui/gui.py:329
+#, fuzzy
 msgid "Error:"
-msgstr ""
+msgstr "Viga"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -1458,10 +1460,12 @@ msgstr "Mitmemängude salvestamine/laadimine ei ole veel võimalik"
 msgid "Error: don't know how to handle %(type)s condition type"
 msgstr ""
 
+# 81%
 #: horizons/savegamemanager.py:338
 #, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign \"%s\"."
-msgstr ""
+msgstr "Viga: Ei leita kaarti \"%s\"."
 
 #: horizons/savegamemanager.py:343
 #, python-format
@@ -1550,9 +1554,11 @@ msgstr ""
 "Määra võrguaadress millega kohalik võrguklient siduda. See on kasulik, kui "
 "NAT holepunching ei tööta kuid sa saad staatilise pordi edasi suunata."
 
+# 92%
 #: run_uh.py:90
+#, fuzzy
 msgid "Starting Unknown Horizons"
-msgstr ""
+msgstr "unknown horizons'i käivitamine"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
@@ -1636,9 +1642,11 @@ msgstr ""
 msgid "Thank you for using Unknown Horizons!"
 msgstr ""
 
+# 80%
 #: run_uh.py:280
+#, fuzzy
 msgid "Failed to load FIFE:"
-msgstr ""
+msgstr "fife laadimine ebaõnnestus:"
 
 #: run_uh.py:350
 msgid "FIFE was not found."

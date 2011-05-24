@@ -1366,6 +1366,7 @@ msgstr ""
 
 # 81%
 #: horizons/savegamemanager.py:338
+#, python-format
 #, python-format, fuzzy
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Errore: Impossibile trovare la mappa \"%s\"."
