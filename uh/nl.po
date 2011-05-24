@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-24 10:13+0200\n"
+"PO-Revision-Date: 2011-05-24 11:31+0200\n"
 "Last-Translator: Jasper <info@opensource-news.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -242,7 +242,8 @@ msgstr ""
 msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
-msgstr ""
+msgstr "Kan geen verbinding maken met de masterserver. Controleer uw internet "
+"verbinding. Als dat werkt, dan is onze masterserver niet te bereiken.\n"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -420,19 +421,19 @@ msgstr "Limiet: %st per slot"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr ""
+msgstr "Leegte"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Er staat nog niks in je logboek!"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:133
 msgid "Start route"
-msgstr ""
+msgstr "Handelsroute starten"
 
 #: horizons/gui/widgets/routeconfig.py:60
 msgid "Stop route"
-msgstr ""
+msgstr "Handelsroute stoppen"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73
@@ -583,10 +584,12 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:86
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
+"selecteer een scenario en klik op laden/herladen om de berichten in het "
+"logboek te aktualiseren."
 
 #: horizons/i18n/guitranslations.py:87
 msgid "load/reload"
-msgstr ""
+msgstr "laden/herladen"
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Inhabitants"
@@ -727,15 +730,15 @@ msgstr "Aan de lijst toevoegen"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Delete entry"
-msgstr ""
+msgstr "Item verwijderen"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Move down"
-msgstr ""
+msgstr "Naar beneden verplaatsen"
 
 #: horizons/i18n/guitranslations.py:137
 msgid "Move up"
-msgstr ""
+msgstr "Naar boven verplaatsen"
 
 #: horizons/i18n/guitranslations.py:139 horizons/i18n/guitranslations.py:178
 msgid "Attention please!"
@@ -760,7 +763,7 @@ msgstr "Keer terug naar spel"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "De FIFE en Unknown Horizons ontwikkelings teams."
 
 #: horizons/i18n/guitranslations.py:150
 msgid "Have fun."
@@ -997,7 +1000,7 @@ msgstr "Taal"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Network"
-msgstr ""
+msgstr "Netwerk"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Saving"
@@ -1021,11 +1024,11 @@ msgstr "Muziek volume:"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "(0 means default)"
-msgstr ""
+msgstr "(0 = Standaardinstelling)"
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Network port:"
-msgstr ""
+msgstr "Poort:"
 
 #: horizons/i18n/guitranslations.py:232
 msgid "Number of autosaves:"
@@ -1224,7 +1227,7 @@ msgstr "Belastingen:"
 
 #: horizons/i18n/guitranslations.py:304 horizons/i18n/guitranslations.py:319
 msgid "Tax Rate"
-msgstr ""
+msgstr "Belasting"
 
 #: horizons/i18n/guitranslations.py:308
 msgid "capacity utilization"
