@@ -70,6 +70,7 @@ class MovingObject(ConcretObject):
 		self._next_target = Point(x, y)
 
 		self.move_callbacks = WeakMethodList()
+		self.blocked_callbacks = WeakMethodList()
 		self._conditional_callbacks = {}
 
 		self.__is_moving = False
@@ -250,7 +251,7 @@ class MovingObject(ConcretObject):
 
 	def save(self, db):
 		super(MovingObject, self).save(db)
-		# NOTE: _move_action is currently not yet saved.
+		# NOTE: _move_action is currently not yet saved and neither is blocked_callback.
 		self.path.save(db, self.worldid)
 
 	def load(self, db, worldid):
