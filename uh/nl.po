@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-08 21:39+0200\n"
+"PO-Revision-Date: 2011-05-24 10:13+0200\n"
 "Last-Translator: Jasper <info@opensource-news.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -56,31 +56,37 @@ msgstr "Geconfigureerde taal %(lang)s op %(place)s kan niet worden geladen"
 
 #: horizons/engine.py:426
 msgid "Invalid network port"
-msgstr ""
+msgstr "Ongeldige poort"
 
 #: horizons/engine.py:427
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"De aangegeven poort is ongeldig. Het moet een getal tussen de 1 en 65535 "
+"zijn."
 
 #: horizons/engine.py:428
 msgid "Please check the port you entered and make sure it's in the specified range."
-msgstr ""
+msgstr "Controleer of de poort die u ingevooerd hebt in het goede bereik ligt."
 
 #: horizons/engine.py:440
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Netwerk instellingen opslaan mislukt."
 
 #: horizons/engine.py:441 horizons/main.py:121
 msgid "Networking couldn't be initialised with the current configuration."
 msgstr ""
+"De netwerkfunctionaliteiten kunnen met de huidige instellingen niet worden "
+"gestart."
 
 #: horizons/engine.py:442
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Controleer de instellingen bij het onderdeel Netwerk."
 
 #: horizons/engine.py:445
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Lage poortnummers hebben soms extra rechten nodig, probeer de 0 of een "
+"groter dan 1024."
 
 #: horizons/gui/gui.py:121
 msgid "Error"
@@ -140,12 +146,12 @@ msgstr "Bevestiging voor overschrijven"
 
 #: horizons/gui/gui.py:261
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Selecteer een savegame of klik op beeindigen."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:261
 msgid "Select a savegame"
-msgstr ""
+msgstr "Selecteer een savegame."
 
 #: horizons/gui/gui.py:328 horizons/i18n/guitranslations.py:241
 msgid "Details:"
@@ -153,9 +159,8 @@ msgstr "Eigenschappen:"
 
 # 83%
 #: horizons/gui/gui.py:329
-#, fuzzy
 msgid "Error:"
-msgstr "Fout"
+msgstr "Fout:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -223,11 +228,13 @@ msgstr "Spel gepauseerd"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
-msgstr ""
+msgstr "Het netwerk is nog niet geinistialiseerd"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
 msgstr ""
+"Het netwerk is nog niet geinistialiseerd, waarschijnlijk vanwege problemen "
+"met de configuratie. Controleer deze installingen!"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
