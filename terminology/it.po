@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-20 17:33+0200\n"
-"Last-Translator: sioux83 <vitpal83@yahoo.it>\n"
+"PO-Revision-Date: 2011-05-25 00:43+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "gioco"
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "building"
-msgstr "costruire"
+msgstr "costruzione / costruire"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -122,7 +122,7 @@ msgstr "insediamento"
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "start"
-msgstr "inizio"
+msgstr "avvio / inizio"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -183,7 +183,7 @@ msgstr "tavole"
 #: horizons/i18n/guitranslations.py
 #: horizons/mpsession.py
 msgid "change"
-msgstr "cambia"
+msgstr "cambia / -mento"
 
 #: horizons/gui/ingamegui.py
 #: horizons/i18n/guitranslations.py
@@ -233,18 +233,18 @@ msgstr "versione"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "buy"
-msgstr "compra"
+msgstr "comprare"
 
 #: po/tutorial.py
 #: horizons/gui/modules/multiplayermenu.py
 msgid "connect"
-msgstr "connetti"
+msgstr "connetti / collegare"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "lumberjack"
-msgstr "taglialegna"
+msgstr "taglialegna / tagliaboschi"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -270,7 +270,7 @@ msgstr "costa"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "companies"
-msgstr "compagnie"
+msgstr "compagnie / aziende"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -280,7 +280,7 @@ msgstr "costo"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "free"
-msgstr "gratis"
+msgstr "libero"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -292,7 +292,7 @@ msgstr "sinistra"
 #: sqlite/Building
 #: run_uh.py
 msgid "log"
-msgstr "diario"
+msgstr "diario / registro"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -303,7 +303,7 @@ msgstr "raggiungere"
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "select"
-msgstr "seleziona"
+msgstr "selezione"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -378,7 +378,7 @@ msgstr "strumenti"
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "active"
-msgstr "attiva"
+msgstr "attivo"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py

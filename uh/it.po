@@ -244,7 +244,7 @@ msgstr "Errore di Rete"
 
 #: horizons/gui/modules/multiplayermenu.py:110
 msgid "Something went wrong with the network: "
-msgstr "Qualcosa non è andata bene con la connessione di  rete: "
+msgstr "Qualcosa non è andata bene con la connessione di rete: "
 
 #: horizons/gui/modules/multiplayermenu.py:125
 msgid "Version differs!"
@@ -1381,7 +1381,7 @@ msgstr "Hai vinto!"
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario. "
-msgstr "Hai completato questo scenario."
+msgstr "Hai completato questo scenario. "
 
 #: horizons/scenario/scenarioeventhandler.py:154
 #: horizons/scenario/scenarioeventhandler.py:164
@@ -1553,9 +1553,8 @@ msgstr "Grazie per aver scelto Unknown Horizons!"
 
 # 80%
 #: run_uh.py:280
-#, fuzzy
 msgid "Failed to load FIFE:"
-msgstr "Impossibile caricare fife:"
+msgstr "Impossibile caricare FIFE:"
 
 #: run_uh.py:350
 msgid "FIFE was not found."
