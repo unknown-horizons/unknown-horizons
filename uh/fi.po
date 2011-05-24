@@ -7,35 +7,38 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-04 14:39+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons Versio %s"
 
 #: horizons/engine.py:55
 msgid "Restart required"
-msgstr ""
+msgstr "Uudelleenkäynnistys tarpeen"
 
 #: horizons/engine.py:56
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
+"Jotkin tekemistäsi muutoksista vaativat, että Unknown Horizons "
+"uudelleenkäynnistetään."
 
 #: horizons/engine.py:109
 msgid "System default"
-msgstr ""
+msgstr "Järjestelmän oletus"
 
 #: horizons/engine.py:133
 msgid "Warning"
-msgstr ""
+msgstr "Varoitus"
 
 #: horizons/engine.py:134
 msgid ""
@@ -43,11 +46,15 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDL renderöijä on tarkoitettu vain vararatkaisuksi ja sisältää vakavia "
+"piirtovirheitä. \n"
+"\n"
+"Käyttö omalla vastuulla!"
 
 #: horizons/engine.py:198
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "Asetettu kieli, %(lang)s, kohdassa %(place)s ei onnistunut latautumaan"
 
 #: horizons/engine.py:426
 msgid "Invalid network port"
@@ -79,19 +86,19 @@ msgstr ""
 
 #: horizons/gui/gui.py:121
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr ""
+msgstr "Tallennus epäonnistui"
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Oletko varma, että haluat poistua pelistä Unknown Horizons?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
-msgstr ""
+msgstr "Poistu pelistä"
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
@@ -103,7 +110,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:199
 msgid "No saved games"
-msgstr ""
+msgstr "Ei tallennettuja pelejä"
 
 #: horizons/gui/gui.py:199
 msgid "There are no saved games to load"
