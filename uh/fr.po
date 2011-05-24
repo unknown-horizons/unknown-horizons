@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-24 08:39+0200\n"
+"PO-Revision-Date: 2011-05-24 08:49+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -601,10 +601,12 @@ msgstr "Outil de pré-visualisation de textes pour les fichiers Scénario"
 #: horizons/i18n/guitranslations.py:86
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
+"Sélectionnez un scénario et cliquez sur charger/décharger pour mettre à jour "
+"le journal de bord"
 
 #: horizons/i18n/guitranslations.py:87
 msgid "load/reload"
-msgstr ""
+msgstr "charger/décharger"
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Inhabitants"
@@ -745,15 +747,15 @@ msgstr "Ajouter à la liste"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Delete entry"
-msgstr ""
+msgstr "Effacer l'entrée"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Move down"
-msgstr ""
+msgstr "Descendre"
 
 #: horizons/i18n/guitranslations.py:137
 msgid "Move up"
-msgstr ""
+msgstr "Monter"
 
 #: horizons/i18n/guitranslations.py:139 horizons/i18n/guitranslations.py:178
 msgid "Attention please!"
@@ -778,7 +780,7 @@ msgstr "Retourner à la partie"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "Les équipes de développement de FIFE et d'Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:150
 msgid "Have fun."
@@ -1015,7 +1017,7 @@ msgstr "Langue"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Network"
-msgstr ""
+msgstr "Réseau"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Saving"
@@ -1039,11 +1041,11 @@ msgstr "Volume de la musique:"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "(0 means default)"
-msgstr ""
+msgstr "(0 pour valeur par défaut)"
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Network port:"
-msgstr ""
+msgstr "Port réseau:"
 
 #: horizons/i18n/guitranslations.py:232
 msgid "Number of autosaves:"
@@ -1244,13 +1246,12 @@ msgstr "Impôts:"
 
 #: horizons/i18n/guitranslations.py:304 horizons/i18n/guitranslations.py:319
 msgid "Tax Rate"
-msgstr ""
+msgstr "Taux d'impôts:"
 
 # le contexte est à vérifier
 #: horizons/i18n/guitranslations.py:308
-#, fuzzy
 msgid "capacity utilization"
-msgstr "Utilisation de la capacité"
+msgstr "Capacité utilisée"
 
 #: horizons/i18n/guitranslations.py:311
 msgid "Resource deposit"
@@ -1331,14 +1332,18 @@ msgstr "Charger/Décharger:"
 #: horizons/main.py:82
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Erreur: Syntaxe invalide dans l'option de commande --mp-master. Le port doit "
+"être compris entre 1 et 65535. "
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Erreur: Syntaxe invalide dans l'option de commande --mp-bind. Le port doit "
+"être compris entre 1 et 65535."
 
 #: horizons/main.py:120
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Échec au moment d'initialiser le réseau."
 
 #: horizons/main.py:122
 msgid "Check the data you entered in the Network section in the settings dialogue."
