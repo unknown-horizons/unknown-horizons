@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-24 11:47+0200\n"
+"PO-Revision-Date: 2011-05-24 12:05+0200\n"
 "Last-Translator: Jasper <info@opensource-news.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -151,7 +151,7 @@ msgstr "Selecteer een savegame of klik op beeindigen."
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:261
 msgid "Select a savegame"
-msgstr "Selecteer een savegame."
+msgstr "Selecteer een savegame"
 
 #: horizons/gui/gui.py:328 horizons/i18n/guitranslations.py:241
 msgid "Details:"
@@ -579,13 +579,13 @@ msgstr "Operatie kosten:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "String Previewer Tool for Scenario files"
-msgstr ""
+msgstr "String Preview Tool voor Scenario bestanden"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
 "selecteer een scenario en klik op laden/herladen om de berichten in het "
-"logboek te aktualiseren."
+"logboek te aktualiseren"
 
 #: horizons/i18n/guitranslations.py:87
 msgid "load/reload"
@@ -763,7 +763,7 @@ msgstr "Keer terug naar spel"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr "De FIFE en Unknown Horizons ontwikkelings teams."
+msgstr "De FIFE en Unknown Horizons ontwikkelings teams"
 
 #: horizons/i18n/guitranslations.py:150
 msgid "Have fun."
@@ -1311,7 +1311,7 @@ msgstr "Laden/Uitladen:"
 #: horizons/main.py:82
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 msgstr ""
-"Fout: Verkeerde invoer in -mp-master commandline optie. Poort moet een "
+"Fout: Verkeerde invoer in --mp-master commandline optie. Poort moet een "
 "nummer zijn tussen de 1 en 65535."
 
 #: horizons/main.py:95
@@ -1378,18 +1378,18 @@ msgstr "Opslaan/laden van multiplayer spellen is nog niet mogelijk"
 #: horizons/savegamemanager.py:287
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr ""
+msgstr "Fout: weet niet hoe ik %(type)s moet afhandelen"
 
 # 81%
 #: horizons/savegamemanager.py:338
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign \"%s\"."
-msgstr "Fout: Kan de kaart \"%s\" niet vinden."
+msgstr "Fout: Kan de campagne \"%s\" niet vinden."
 
 #: horizons/savegamemanager.py:343
 #, python-format
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr ""
+msgstr "Fout: Kan de campagne met de bestandsnaam \"%s\" niet vinden."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1411,10 +1411,13 @@ msgstr "Snel opslaan mislukt."
 #: horizons/spsession.py:98
 msgid "An error happened during quicksave. Your game has not been saved."
 msgstr ""
+"Er is een fout opgetreden bij het snelopslaan. Uw spel is niet opgeslagen."
 
 #: horizons/spsession.py:99
 msgid "If this error happens again, please contact the development team: unknown-horizons.org/support"
 msgstr ""
+"Als deze fout zich blijft voordoen, neem dan contact op met het "
+"ontwikkelingsteam: unknown-horizons.org/support/"
 
 #: horizons/spsession.py:106
 msgid "No quicksaves found"
@@ -1427,23 +1430,25 @@ msgstr "U dient snel op te slaan voor u kunt snel laden."
 #. usually invalid filename
 #: horizons/spsession.py:133
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Opslaan van de savegame mislukt"
 
 #: horizons/spsession.py:134
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Er is een fout opgestreden bij het opslaan van uw savegame."
 
 #: horizons/spsession.py:135
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Dit betekent vaak dat in de savegame naam karakters staan die niet worden "
+"ondersteund."
 
 #: horizons/spsession.py:141
 msgid "File used by another process"
-msgstr ""
+msgstr "Bestand in gebruik door een ander proces."
 
 #: horizons/spsession.py:142
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "Het savegame bestand in momenteel in gebruik door een ander programma."
 
 #: horizons/world/units/ship.py:330
 msgid "Trader"
@@ -1476,9 +1481,8 @@ msgstr ""
 
 # 92%
 #: run_uh.py:90
-#, fuzzy
 msgid "Starting Unknown Horizons"
-msgstr "Unknown horizons wordt gestart"
+msgstr "Unknown Horizons wordt gestart"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
@@ -1490,7 +1494,7 @@ msgstr "Start een willekeurige kaart."
 
 #: run_uh.py:96
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "Start een random kaart met seed <seed>."
 
 #: run_uh.py:98
 msgid "Starts <scenario>. <scenario> is the scenarioname."
@@ -1498,7 +1502,7 @@ msgstr "Starten <scenario>. <scenario> is de naam van het scenario."
 
 #: run_uh.py:100
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr ""
+msgstr "Start <campaign>. <campaign> is de campagne naam."
 
 #: run_uh.py:102
 msgid "Starts the development map without displaying the main menu."
@@ -1542,7 +1546,7 @@ msgstr "Schakel profiling in (alleen voor ontwikkelaars)."
 
 #: run_uh.py:122
 msgid "Enable the string previewer tool for scenario writers"
-msgstr ""
+msgstr "Zet de string preview aan voor scenario schrijvers"
 
 #: run_uh.py:144
 msgid "Unknown Horizons crashed."
