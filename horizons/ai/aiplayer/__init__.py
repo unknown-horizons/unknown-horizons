@@ -43,33 +43,37 @@ class AIPlayer(GenericAI):
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
-		self.log.info('created AI')
-		Scheduler().add_new_object(Callback(self.start), self, run_in = 0)
+		Scheduler().add_new_object(Callback(self.__init), self)
+		Scheduler().add_new_object(Callback(self.start), self, run_in = 2)
 
-	def report_result(self, mission, msg):
+	def __init(self):
+		self.missions = {}
+		self.ship = None
+		for t in self.session.world.ships:
+			if t.owner == self:
+				self.ship = t
+				break
+		self.island = self.session.world.islands[0]
+
+	def report_success(self, mission, msg):
+		print mission, msg
+
+	def report_failure(self, mission, msg):
 		print mission, msg
 
 	def save(self, db):
 		super(AIPlayer, self).save(db)
 		# TODO: save to the db
-		self.log.info('saved AI')
 
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		# TODO: load from the db
-		self.log.info('loaded AI')
+		Scheduler().add_new_object(Callback(self.__init), self)
 
 	def start(self):
-		self.missions = []
-		ship = None
-		for t in self.session.world.ships:
-			if t.owner == self:
-				ship = t
-				break
-		island = self.session.world.islands[0]
-		self.missions.append(FoundSettlement.create(ship, island, self.report_result, self.report_result))
-		for mission in self.missions:
-			mission.start()
+		found_settlement = FoundSettlement.create(self.ship, self.island, self.report_success, self.report_failure)
+		self.missions[FoundSettlement.__class__] = found_settlement
+		found_settlement.start()
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
