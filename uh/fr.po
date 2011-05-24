@@ -1506,7 +1506,7 @@ msgstr ""
 
 #: run_uh.py:90
 msgid "Starting Unknown Horizons"
-msgstr ""
+msgstr "Démarrer Unknown Horizons"
 
 # please don't translate anything in <tags> - thanks!
 #: run_uh.py:92
@@ -1602,7 +1602,7 @@ msgstr "Merci d'utiliser Unknown Horizons!"
 
 #: run_uh.py:280
 msgid "Failed to load FIFE:"
-msgstr ""
+msgstr "Échec lors du chargement de FIFE:"
 
 #: run_uh.py:350
 msgid "FIFE was not found."
