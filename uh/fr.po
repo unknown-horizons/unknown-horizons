@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-18 13:55+0200\n"
+"PO-Revision-Date: 2011-05-24 08:39+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -57,31 +57,37 @@ msgstr "Le langage configuré %(lang)s de %(place)s ne peut être chargé"
 
 #: horizons/engine.py:426
 msgid "Invalid network port"
-msgstr ""
+msgstr "Port réseau non valide"
 
 #: horizons/engine.py:427
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"Le port que vous avez indiqué n'est pas valable. Ce doit être un nombre "
+"entre 1 et 65535."
 
 #: horizons/engine.py:428
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
+"Vérifiez le port que vous avez entré et assurez vous qu'il soit dans "
+"l'intervalle indiqué."
 
 #: horizons/engine.py:440
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "L'application des nouvelles données réseau à échoué."
 
 #: horizons/engine.py:441 horizons/main.py:121
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr ""
+msgstr "Le réseau ne peut être initialisé avec la configuration actuelle."
 
 #: horizons/engine.py:442
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Vérifiez les données que vous avez entrés dans la section réseau."
 
 #: horizons/engine.py:445
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Les ports portant un petit numéro demandent parfois des droits spéciaux, "
+"essayez un port supérieur à 1024 ou 0."
 
 #: horizons/gui/gui.py:121
 msgid "Error"
@@ -141,20 +147,21 @@ msgstr "Confirmation d'écrasement"
 
 #: horizons/gui/gui.py:261
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Sélectionnez une sauvegarde ou cliquez sur annuler."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:261
 msgid "Select a savegame"
-msgstr ""
+msgstr "Sélectionnez une sauvegarde"
 
 #: horizons/gui/gui.py:328 horizons/i18n/guitranslations.py:241
 msgid "Details:"
 msgstr "Détails:"
 
+# 83%
 #: horizons/gui/gui.py:329
 msgid "Error:"
-msgstr ""
+msgstr "Erreur:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -222,11 +229,13 @@ msgstr "Partie suspendue"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
-msgstr ""
+msgstr "Réseau non initialisé"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
 msgstr ""
+"Le réseau n'est pas initialisé, probablement à cause de problèmes de "
+"configuration. Vérifiez vos réglages!"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -235,6 +244,10 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Impossible de se connecter au serveur principal. Vérifiez votre connexion "
+"Internet. Si tout est en ordre, cela veut dire que notre serveur est "
+"indisponible temporairement.\n"
+"Descriptions: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -413,23 +426,23 @@ msgstr "Démolir le bâtiment"
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: %st per slot"
-msgstr "Limite : %st par slot"
+msgstr "Limite : %st par place"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr ""
+msgstr "vide"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Il n'y a encore rien dans votre journal de bord!"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:133
 msgid "Start route"
-msgstr ""
+msgstr "Début route"
 
 #: horizons/gui/widgets/routeconfig.py:60
 msgid "Stop route"
-msgstr ""
+msgstr "Arrêt route"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73
@@ -583,7 +596,7 @@ msgstr "Coûts de fonctionnement:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "String Previewer Tool for Scenario files"
-msgstr ""
+msgstr "Outil de pré-visualisation de textes pour les fichiers Scénario"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
@@ -934,7 +947,7 @@ msgstr "Quitter le hall de la partie"
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Active games:"
-msgstr "Activer les parties:"
+msgstr "Parties actives:"
 
 #: horizons/i18n/guitranslations.py:205 horizons/i18n/guitranslations.py:246
 msgid "Main menu:"
