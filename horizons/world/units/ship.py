@@ -33,7 +33,9 @@ from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
-from horizons.constants import LAYERS, STORAGE
+from horizons.constants import LAYERS, STORAGE, GAME_SPEED
+from horizons.scheduler import Scheduler
+
 
 class ShipRoute(object):
 	"""
@@ -108,17 +110,12 @@ class ShipRoute(object):
 			self.on_route_bo_reached()
 			return
 
-		found_path_to_bo = False
-
-		for point in Circle(branch_office.position.center(), self.ship.radius):
-			try:
-				self.ship.move(point, self.on_route_bo_reached, blocked_callback = self.on_ship_blocked)
-			except MoveNotPossible:
-				continue
-			found_path_to_bo = True
-			break
-		if not found_path_to_bo:
-			self.disable()
+		try:
+			self.ship.move(Circle(branch_office.position.center(), self.ship.radius), self.on_route_bo_reached,
+				blocked_callback = self.on_ship_blocked)
+		except MoveNotPossible:
+			# retry in 5 seconds
+			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)
 
 	def get_next_destination(self, advance_waypoint):
 		if not self.enabled:
