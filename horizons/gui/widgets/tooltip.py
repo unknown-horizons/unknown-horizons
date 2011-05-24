@@ -31,6 +31,9 @@ from horizons.i18n import load_xml_translated
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
+	LINE_HEIGHT = 18 # distance of segments in px. should approx. be line height
+	SIZE_BG_TOP = 17 # height of the image tooltip_bg_top.png
+	SIZE_BG_BOTTOM = 17 # height of the image tooltip_bg_bottom.png
 	def init_tooltip(self, tooltip):
 		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
@@ -52,8 +55,8 @@ class _Tooltip(object):
 		widget_position = self.getAbsolutePos()
 		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
 		self.gui.y = widget_position[1] + event.getY() + 5
-		if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= screen_width:
-			self.gui.x = widget_position[0] + event.getX() + 5
+		if (widget_position[0] + event.getX() +self.gui.size[0] + 10) <= screen_width:
+			self.gui.x = widget_position[0] + event.getX() + 10
 		else:
 			self.gui.x = widget_position[0] + event.getX() - self.gui.size[0] - 5
 		if not self.tooltip_shown:
@@ -72,21 +75,25 @@ class _Tooltip(object):
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
-			for i in range(0, line_count):
-				middle_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_middle.png',
-				                                   position=(top_image.position[0], top_image.position[1] + 17 * (1 + i)))
+			for i in xrange(0, line_count):
+				middle_image = pychan.widgets.Icon( \
+				        image='content/gui/images/background/widgets/tooltip_bg_middle.png',
+				        position=(top_image.position[0], \
+				                  top_image.position[1] + self.SIZE_BG_TOP + self.LINE_HEIGHT * i))
 				self.gui.addChild(middle_image)
 				self.tooltip_items.append(middle_image)
-			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_bottom.png',
-			                                   position=(top_image.position[0], top_image.position[1] + 17 + 17 * (line_count)))
+			bottom_image = pychan.widgets.Icon( \
+			        image='content/gui/images/background/widgets/tooltip_bg_bottom.png',
+			        position=(top_image.position[0], \
+			                  top_image.position[1] + self.SIZE_BG_TOP + self.LINE_HEIGHT * line_count))
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
-			label = pychan.widgets.Label(text=u"", position=(10, 3))
+			label = pychan.widgets.Label(text=u"", position=(10, 5))
 			label.text = tooltip
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
-			self.gui.size = (145, 17 * (2 + line_count))
+			self.gui.size = (145, self.SIZE_BG_TOP + self.LINE_HEIGHT * line_count + self.SIZE_BG_BOTTOM)
 			self.gui.show()
 
 	def hide_tooltip(self):
