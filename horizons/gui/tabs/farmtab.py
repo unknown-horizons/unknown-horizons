@@ -56,27 +56,19 @@ class BuildRelatedTab(OverviewTab):
 		building_ids = self.instance.session.db.cached_query("SELECT related_building FROM related_buildings where building = ?", self.instance.id)
 		build_buttons = list()
 
-		if len(building_ids) >= 3:
-			index = 0
-			while(index <= len(building_ids)):
-				gui = load_xml_translated(self.relatedfields_gui_xml)
-				container = gui.findChild(name="fields_container")
+		gui = load_xml_translated(self.relatedfields_gui_xml)
+		container = gui.findChild(name="fields_container")
+		for x,building_id in enumerate(sorted(building_ids)):
+			retVal = self._create_build_buttons(building_id[0], container)
+			if retVal != None:
+				build_buttons.append(retVal)
 				
-				for _id in sorted(building_ids[index:index+3]):
-					build_buttons.append(self._create_build_buttons(_id[0], container))
+				if x%3==0:
+					container.stylize('menu_black')
+					parent_container.addChild(container)
+				else:
+					container = gui.findChild(name="fields_container")
 				
-				container.stylize('menu_black')
-				parent_container.addChild(container)
-				index += 3
-		else:
-			gui = load_xml_translated(self.relatedfields_gui_xml)
-			container = gui.findChild(name="fields_container")
-			for _id in sorted(building_ids):
-				build_buttons.append(self._create_build_buttons(_id[0], container))
-			
-			container.stylize('menu_black')
-			parent_container.addChild(container)
-
 		for name, cls in build_buttons:
 			self.widget.mapEvents({ name: Callback(self.buildField, cls) })
 		
@@ -90,20 +82,24 @@ class BuildRelatedTab(OverviewTab):
 					island=self.instance.island, \
 					instance=None)
 		
-		# Display Buildings
-		build_button = TooltipButton(name="build"+str(id), tooltip=_("Build")+" "+_(unicode(building.name)))
-		build_button_bg = pychan.widgets.Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")				
-		
-		buildmenu_image_path = "content/gui/icons/buildmenu/";
-		
-		build_button.up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
-		build_button.down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
-		build_button.hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+		# Check if the level of the building is lower or same as the settler level
+		if building.level <= self.instance.owner.settler_level:
+			# Display Buildings
+			build_button = TooltipButton(name="build"+str(id), tooltip=_("Build")+" "+_(unicode(building.name)))
+			build_button_bg = pychan.widgets.Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")				
 			
-		container.findChild(name="build_button_container").addChild(build_button)
-		container.findChild(name="build_button_bg_container").addChild(build_button_bg)
-		
-		return (build_button.name, building)
+			buildmenu_image_path = "content/gui/icons/buildmenu/";
+			
+			build_button.up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
+			build_button.down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+			build_button.hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
+				
+			container.findChild(name="build_button_container").addChild(build_button)
+			container.findChild(name="build_button_bg_container").addChild(build_button_bg)
+			
+			return (build_button.name, building)
+		else:
+			return None
 	
 	def buildField(self, building):
 		self.hide()
