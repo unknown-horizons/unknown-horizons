@@ -182,6 +182,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
+		# use a dict because it's directly supported by the pathfinding algo
 		self.water = dict.fromkeys(list(self.ground_map), 1.0)
 
 		# assemble list of water and coastline for ship, that can drive through shallow water
