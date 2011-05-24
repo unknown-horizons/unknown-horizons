@@ -51,13 +51,17 @@ class FoundSettlement(Mission):
 
 	def _reached_bo_area(self):
 		self.log.info('Reached BO area')
+
 		t = self.bo_location
 		x = t.position.origin.x
 		y = t.position.origin.y
 		island = self.session.world.get_island(Point(x, y))
 		cmd = Build(BUILDINGS.BRANCH_OFFICE_CLASS, x, y, island, t.rotation, ship = self.ship, tearset = t.tearset)
 		cmd.execute(self.session)
-		self.report_success('Built the branch office')
+		self.log.info('Built the branch office')
+
+		self.ship.owner.complete_inventory.unload_all(self.ship, self.ship.owner.settlements[0])
+		self.report_success('Built the branch office, transferred resources')
 
 	@classmethod
 	def find_bo_location(cls, island, close_to):

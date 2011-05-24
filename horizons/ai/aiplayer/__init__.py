@@ -33,7 +33,8 @@ from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import Ship
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
-from horizons.ai.aiplayer.land_manager import LandManager
+from horizons.ai.aiplayer.landmanager import LandManager
+from horizons.ai.aiplayer.completeinventory import CompleteInventory
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -48,11 +49,9 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.start), self, run_in = 2)
 
 	def __init(self):
-		self.ship = None
 		for t in self.session.world.ships:
 			if t.owner == self:
-				self.ship = t
-				break
+				self.ships[t] = self.shipStates.on_a_mission
 
 		self.missions = {}
 		self.island = self.session.world.islands[0]
@@ -60,6 +59,8 @@ class AIPlayer(GenericAI):
 		self.land_manager = LandManager(self.island, self)
 		self.land_manager.divide()
 		self.land_manager.display()
+
+		self.complete_inventory = CompleteInventory(self)
 
 	def report_success(self, mission, msg):
 		print mission, msg
@@ -77,7 +78,7 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.__init), self)
 
 	def start(self):
-		found_settlement = FoundSettlement.create(self.ship, self.island, self.report_success, self.report_failure)
+		found_settlement = FoundSettlement.create(self.ships.keys()[0], self.island, self.report_success, self.report_failure)
 		self.missions[FoundSettlement.__class__] = found_settlement
 		found_settlement.start()
 
