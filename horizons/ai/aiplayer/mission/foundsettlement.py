@@ -64,24 +64,20 @@ class FoundSettlement(Mission):
 		self.report_success('Built the branch office, transferred resources')
 
 	@classmethod
-	def find_bo_location(cls, island, close_to):
+	def find_bo_location(cls, land_manager):
 		"""
 		Finds a location for the branch office on the given island
-		@param island: the island
-		@param Point: the point for which it has to be optimized
+		@param LandManager: the LandManager of the island
 		@return _BuildPosition: a possible build location
 		"""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		rotations = [45, 135, 225, 315]
+		island = land_manager.island
 
 		best = None
-		best_dist = 1000000000
+		best_cost = -1
 
 		for (x, y), tile in island.ground_map.iteritems():
-			dist = close_to.distance_to_tuple((x, y))
-			if best_dist <= dist:
-				continue
-
 			ok = False
 			for x_offset, y_offset in moves:
 				for d in xrange(2, 6):
@@ -90,19 +86,36 @@ class FoundSettlement(Mission):
 					if (x2, y2) not in island.ground_map:
 						ok = True
 						break
+			if not ok:
+				continue
+			
+			build_info = None
+			point = Point(x, y)
+			for rotation in rotations:
+				build_location = Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].check_build(island.session, \
+					point, rotation=rotation, check_settlement=False, ship=None)
+				if build_location.buildable:
+					build_info = build_location
+					break
+			if build_info is None:
+				continue
 
-			if ok:
-				point = Point(x, y)
-				for rotation in rotations:
-					build_location = Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].check_build(island.session, \
-						point, rotation=rotation, check_settlement=False, ship=None)
-					if build_location.buildable:
-						best = build_location
-						best_dist = dist
+			cost = 0
+			for coords in land_manager.village:
+				t = point.distance_to_tuple(coords)
+				if t < 3:
+					cost += 100
+				else:
+					cost += t
+				if best_cost != -1 and best_cost <= cost:
+					break
+			if best_cost == -1 or best_cost > cost:
+				best = build_info
+				best_cost = cost
 
 		return best
 
 	@classmethod
-	def create(cls, ship, island, success_callback, failure_callback):
-		bo_location = cls.find_bo_location(island, ship.position)
-		return FoundSettlement(success_callback, failure_callback, island.session, ship, bo_location)
+	def create(cls, ship, land_manager, success_callback, failure_callback):
+		bo_location = cls.find_bo_location(land_manager)
+		return FoundSettlement(success_callback, failure_callback, land_manager.island.session, ship, bo_location)

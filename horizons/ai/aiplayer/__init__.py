@@ -78,7 +78,7 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.__init), self)
 
 	def start(self):
-		found_settlement = FoundSettlement.create(self.ships.keys()[0], self.island, self.report_success, self.report_failure)
+		found_settlement = FoundSettlement.create(self.ships.keys()[0], self.land_manager, self.report_success, self.report_failure)
 		self.missions[FoundSettlement.__class__] = found_settlement
 		found_settlement.start()
 
