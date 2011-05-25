@@ -34,6 +34,7 @@ class _Tooltip(object):
 	LINE_HEIGHT = 18 # distance of segments in px. should approx. be line height
 	SIZE_BG_TOP = 17 # height of the image tooltip_bg_top.png
 	SIZE_BG_BOTTOM = 17 # height of the image tooltip_bg_bottom.png
+	CHARS_PER_LINE = 19 # character count after which we start new line. no wrap
 	def init_tooltip(self, tooltip):
 		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
@@ -70,7 +71,9 @@ class _Tooltip(object):
 			translated_tooltip = _(self.tooltip)
 			#HACK this looks better than splitting into several lines & joining
 			# them. works because replace_whitespace in fill defaults to True:
-			tooltip = textwrap.fill(translated_tooltip.replace(r'\n', 18*' '),18)
+			replaced = translated_tooltip.replace(r'\n', self.CHARS_PER_LINE*' ')
+			tooltip = textwrap.fill(replaced, self.CHARS_PER_LINE)
+			#----------------------------------------------------------------
 			line_count = len(tooltip.splitlines())-1
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
