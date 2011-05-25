@@ -25,6 +25,7 @@ __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 import weakref
 import random
 import logging
+import copy
 
 import horizons.main
 from horizons.world.island import Island
@@ -183,17 +184,18 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
-		self.water = list(self.ground_map)
+		# use a dict because it's directly supported by the pathfinding algo
+		self.water = dict.fromkeys(list(self.ground_map), 1.0)
 
 		# assemble list of water and coastline for ship, that can drive through shallow water
 		# NOTE: this is rather a temporary fix to make the fisher be able to move
 		# since there are tile between coastline and deep sea, all non-constructible tiles
 		# are added to this list as well, which will contain a few too many
-		self.water_and_coastline = self.water[:]
+		self.water_and_coastline = copy.copy(self.water)
 		for island in self.islands:
 			for coord, tile in island.ground_map.iteritems():
 				if 'coastline' in tile.classes or 'constructible' not in tile.classes:
-					self.water_and_coastline.append(coord)
+					self.water_and_coastline[coord] = 1.0
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}

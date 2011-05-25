@@ -29,6 +29,10 @@ class PathNodes(object):
 	We encapsulate this code here to keep it centralised.
 	"""
 	log = logging.getLogger("world.pathfinding")
+
+	# TODO: currently all paths have speed 1, since we don't have a real velocity-system yet.
+	NODE_DEFAULT_SPEED = 1.0
+
 	def __init__(self):
 		# store a collection of path_nodes here. the type of this var has to be supported
 		# by the pathfinding algo
@@ -41,11 +45,11 @@ class ConsumerBuildingPathNodes(PathNodes):
 	"""
 	def __init__(self, consumerbuilding):
 		super(ConsumerBuildingPathNodes, self).__init__()
-		self.nodes = []
+		self.nodes = {}
 		for coordinate in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False):
 			tile = consumerbuilding.island.get_tile(Point(coordinate[0], coordinate[1]))
 			if tile is not None and not 'coastline' in tile.classes:
-				self.nodes.append(coordinate)
+				self.nodes[coordinate] = self.NODE_DEFAULT_SPEED
 
 
 class IslandPathNodes(PathNodes):
@@ -67,18 +71,17 @@ class IslandPathNodes(PathNodes):
 		# generate list of walkable tiles
 		# we keep this up to date, so that path finding can use it and we don't have
 		# to calculate it every time (rather expensive!).
-		self.nodes = []
+		self.nodes = {}
 		for coord in self.island:
 			if self.is_walkable(coord):
-				self.nodes.append(coord)
+				self.nodes[coord] = self.NODE_DEFAULT_SPEED
 
 		# nodes where a real road is built on.
 		self.road_nodes = {}
 
 	def register_road(self, road):
-		# TODO: currently all paths have speed 1, since we don't have a real velocity-system yet.
 		for i in road.position:
-			self.road_nodes[ (i.x, i.y) ] = 1
+			self.road_nodes[ (i.x, i.y) ] = self.NODE_DEFAULT_SPEED
 
 	def unregister_road(self, road):
 		for i in road.position:
@@ -120,6 +123,6 @@ class IslandPathNodes(PathNodes):
 		# TODO: this lookup on a list is O(n), use different data structure here
 		in_list = (coord in self.nodes)
 		if not in_list and actually_walkable:
-			self.nodes.append(coord)
+			self.nodes[coord] = self.NODE_DEFAULT_SPEED
 		if in_list and not actually_walkable:
-			self.nodes.remove(coord)
+			del self.nodes[coord]

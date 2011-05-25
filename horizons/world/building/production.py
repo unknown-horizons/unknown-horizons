@@ -31,16 +31,19 @@ from horizons.util.shapes.radiusshape import RadiusShape, RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
+from horizons.gui.tabs import ProductionOverviewTab
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
+	tabs = (ProductionOverviewTab,)
 	def _update_capacity_utilisation(self):
 		"""Farm doesn't acctually produce something, so calculate productivity by the number of fields
 		nearby."""
 		reach = RadiusRect(self.position, self.radius)
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
 		providers = [ p for p in providers if isinstance(p, Field) ]
+
 		self.capacity_utilisation = float(len(providers))/self.max_fields_possible
 		# sanity checks for theoretically impossible cases:
 		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
