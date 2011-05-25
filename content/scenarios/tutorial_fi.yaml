@@ -1,0 +1,725 @@
+
+# DON'T EDIT THIS FILE.
+
+# It was automatically generated with development/create_scenario_pot.sh using
+# translation files from pootle.
+
+author: "UH-ryhm\xE4"
+description: "Tutoriaali:\nRakenna ensimm\xE4inen asutuskeskuksesi ja opi kuinka pelata!\n"
+difficulty: !!python/unicode 'Tutoriaali'
+events:
+- actions:
+  - arguments: [!!python/unicode 'Rakenna sivutoimisto rannikolle.']
+    type: message
+  - arguments: [!!python/unicode 'Tervetuloa peliin Unknown Horizons!', "T\xE4m\xE4\
+        \ on kapteenin lokikirja, johon kaikki t\xE4rke\xE4 tieto kirjataan. Lyhyt\
+        \ huomautus jokaisesta teht\xE4v\xE4st\xE4 tarjotaan kuvaruudun vasempaan\
+        \ reunaan.\n\nJos olet kiinnostunut tarkemmista kuvauksista, niin lokikirjastasi\
+        \ toivottavasti l\xF6ytyy kaikki tarvitsemasi.\n\nKun olet sulkenut t\xE4\
+        m\xE4n lokikirjan, voit avata sen uudelleen \"Kapteenin lokikirja\"-kuvakkeesta\
+        \ oikeasta yl\xE4kulmasta. (minimap:n alapuolella, sinet\xF6idyn dokumentin\
+        \ ja sulan kera).\n\nJos keksit ehdotuksia paremmille sanamuodoille, aiheita,\
+        \ joista haluaisit kuulla tai t\xF6rm\xE4\xE4t vikatilanteeseen: Pyyd\xE4\
+        mme kertomaan meille, niin me yrit\xE4mme parantaa tutoriaalia!\n\nVieraile\
+        \ sivustolla www.unknown-horizons.org l\xF6yt\xE4\xE4ksesi ohjeet, kuinka\
+        \ ottaa yhteytt\xE4 kehitysryhm\xE4\xE4n!\n\nJa nyt, aloitetaanpas varsinainen\
+        \ peli."]
+    type: logbook_w
+  - arguments: [!!python/unicode 'ASETU JONKINLAISELLE SAARELLE', "Liikuttaaksesi\
+        \ laivaasi, valitse se hiiren vasemmalla painonapilla ja oikealla sijainti,\
+        \ johon haluat sen menev\xE4n.\n\nKun olet rannikon l\xE4hell\xE4, ankkurimainen\
+        \ n\xE4pp\xE4in yleiskatsaus-v\xE4lilehdell\xE4 tulee aktiiviseksi.\n\nT\xE4\
+        m\xE4 kertoo, ett\xE4 voit rakentaa sivutoimiston siihen painamalla n\xE4\
+        pp\xE4int\xE4 (nimelt\xE4\xE4n 'Rakenna asutuskeskus').\n\nNyt kuva tulevasta\
+        \ rakennuksestasi seuraa hiiresi osoitinta.\n\nVoit rakentaa mihin tahansa,\
+        \ miss\xE4 kuvalla ei ole punertavaa v\xE4ris\xE4vy\xE4.\nPaina hiirell\xE4\
+        \ mihin haluat rakentaa ensimm\xE4isen rakennuksesi.\n\nTEHT\xC4V\xC4: Rakenna\
+        \ sivutoimisto rannikolle.", 2]
+    type: logbook
+  - arguments: [tutStepDone, 6]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: time_passed
+- actions:
+  - arguments: ["TYHJENN\xC4 LASTISI", !!python/unicode 'Now that you have built the
+        Branch Office, you need to move some of your resources to its stock.
+
+
+        To do so, select your ship and go into the tab with the wooden box icon called
+        ''Ship Inventory''.
+
+
+        Here you get an overview of what this ship''s cargo looks like and have the
+        button ''Load/Unload''.
+
+
+        This button becomes active if your ship is in range of a possible trade partner
+        like a branch office.
+
+
+        Click on the button. If it is not active, move your ship towards the branch
+        office and then try again.
+
+
+        TASK: Open the trade dialogue.']
+    type: logbook_w
+  - arguments: ['', "V\xE4lilehti, jonka n\xE4et, jakautuu kaupank\xE4yjiin 'Alus'\
+        \ ja 'Asutuskeskus'.\n\nSiirt\xE4\xE4ksesi tavaroita varastosta toiseen paina\
+        \ kyseist\xE4 tavaraa.\n\nKoita ensin painaa laivassasi olevia lautoja ja\
+        \ sitten yrit\xE4 siirt\xE4\xE4 ne takaisin.\n\nVoit vaihtaa liikutettavien\
+        \ m\xE4\xE4r\xE4n k\xE4ytt\xE4m\xE4ll\xE4 itsens\xE4selitt\xE4vi\xE4 valintanappeja\
+        \ keskell\xE4.\n\nTotuitko kaupank\xE4yntiv\xE4lilehteen?\nTarvitset nyt rakennustarvikkeita\
+        \ asutuskeskukseesi!\n\nTEHT\xC4V\xC4: Pura laivasi lastista v\xE4hint\xE4\
+        \xE4n 10 tonnia kutakin laivasi mukana purjehtinutta tarviketta."]
+    type: logbook
+  - arguments: ["Pura v\xE4hint\xE4\xE4n 10 tonnia kutakin tavaraa laivastasi."]
+    type: message
+  - arguments: [tutStepDone, 16]
+    type: set_var
+  conditions:
+  - arguments: [1, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 5]
+    type: var_gt
+  - arguments: [tutStepDone, 16]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'RAKENNA PUUNHAKKAAJA', "Uudet rakennustarvikkeesi\
+        \ sivustoimistossa, voit aloittaa rakentamaan muutamia perusrakennuksia.\n\
+        \nAloittakaamme puunhakkaajalla.\n\nT\xE4m\xE4 on olennaista, koska t\xE4\
+        ss\xE4 vaiheessa laudat ovat ainoat palkit, joille merenk\xE4vij\xF6ill\xE4\
+        si on varaa ripustaa telttansa.\n\nKalastaja tarvitsee lautoja my\xF6s rakentaakseen\
+        \ veneens\xE4.\n\nRakentaaksesi puunhakkaajan; avaa rakennusvalikko joko painamalla\
+        \ isoa kuvaketta minimapin alapuolella tai B-n\xE4pp\xE4int\xE4.\n\nRakennusvalikko\
+        \ on j\xE4rjestetty korotusten perusteella.\nSin\xE4 olet t\xE4ss\xE4 vaiheessa\
+        \ peli\xE4 ensimm\xE4isess\xE4 korotuksessa (Merenk\xE4vij\xE4-taso), joten\
+        \ sinulle tarjotaan vain perusrakennuksia."]
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
+        more and more complex buildings.
+
+
+        For now, select the lumberjack under ''Companies'' and build it in an area
+        with some trees around.
+
+
+        You can also plant trees later - but that costs money. Use what nature provided
+        you with!
+
+
+        A company always needs a trail connection to a storage or branch office, otherwise
+        goods will remain at the company and not be collected.
+
+
+        This means that you have to build a trail connecting your branch office (or
+        storage) and lumberjack.
+
+
+        TASK: Build a lumberjack in a wooded area and connect it to a road.
+
+
+        Watch how a collector will fetch your first self-produced boards.']
+    type: logbook
+  - arguments: ["Rakenna puunhakkaaja ja yhdist\xE4 se sivutoimistoon k\xE4ytt\xE4\
+        m\xE4ll\xE4 polkua."]
+    type: message
+  - arguments: [tutStepDone, 19]
+    type: set_var
+  conditions:
+  - arguments: [4, 9]
+    type: settlement_res_stored_greater
+  - arguments: [5, 9]
+    type: settlement_res_stored_greater
+  - arguments: [6, 9]
+    type: settlement_res_stored_greater
+  - arguments: [tutStepDone, 15]
+    type: var_gt
+  - arguments: [tutStepDone, 19]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'RUOKAVARANTO', !!python/unicode 'You will need to
+        have some food-producing companies, too, because people in general (and especially
+        sailors) are very hungry.
+
+
+        Available companies in the first increment are the Hunter and Fisher.
+
+
+        The Hunter, surprisingly, hunts animals in the forest, so he needs trees around.
+
+
+        Note that you can place your Hunter close to the lumberjack''s forest.
+
+
+        It can happen that the animals don''t reproduce fast enough or simply hide
+        well.
+
+
+        Conclusion: the hunter is not too reliable if you need continuous supply.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
+        the branch office and a fish school in range.
+
+
+        He will build a small rowing vessel and catch some fish.
+
+
+        This is a very constant supply at the cost of a slightly longer production
+        time per unit of food.
+
+
+        A small settlement like yours can use both companies, and you can better balance
+        pros and cons if you see the direct comparison.
+
+
+        TASK: Build a hunter and a fisher.
+
+
+        Don''t forget to connect them to your branch office with trails!']
+    type: logbook
+  - arguments: ["Rakenna mets\xE4st\xE4j\xE4 ja kalastaja. Yhdist\xE4 ne sivutoimistoon."]
+    type: message
+  - arguments: [tutStepDone, 22]
+    type: set_var
+  conditions:
+  - arguments: [8, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [tutStepDone, 18]
+    type: var_gt
+  - arguments: [tutStepDone, 22]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'KESKUSTORI', "Asukkaasi tarvitsevat keskustorin,\
+        \ jolta he voivat hankkia elintarvikkeensa.\n\nT\xE4m\xE4 tarkoittaa, ett\xE4\
+        \ he tarvitsevat kulkuyhteyden kodeistaan keskustorille.\n\nKaikki elintarvikkeet\
+        \ sivutoimistollasi ovat saatavilla t\xE4lt\xE4 'kauppapaikalta', joten asukkaidesi\
+        \ ei tarvitse k\xE4vell\xE4 kalastajalle tai jopa sivutoimistolle.\n\nSinun\
+        \ tulisi harkita perustavasi varsinaisen taloasutuskeskuksesi alueelle, jolta\
+        \ voit helposti laajentaa sit\xE4 ja my\xF6s rakentaa polkuja\n\nSinun tulee\
+        \ v\xE4ltt\xE4\xE4 sijoittamasta telttojasi esimerkiksi liian l\xE4helle puunhakkaajiasi,\
+        \ koska telttojen rakentaminen raivaa puut, joita puunhakkaajasi tarvitsee\
+        \ rakentaakseen lautoja.\n\nTEHT\xC4V\xC4: Rakenna keskustori."]
+    type: logbook_w
+  - arguments: ['', "Katsotaanpa tarkemmin keskustoria.\n\nYleiskatsaus-v\xE4lilehdell\xE4\
+        \ voit nopeasti s\xE4\xE4t\xE4\xE4 veroja.\n\nSeuraavalla eli 'Tili'-v\xE4\
+        lilehdell\xE4 saat saaren tasapainolaskelman, jossa n\xE4kyy kaikki maksamasi\
+        \ kustannukset ja tienaamasi verot.\n\nKohdat 'Myynti' ja 'Osto' viittaavat\
+        \ kaupank\xE4yntitasapainoosi ja ne tullaan selitt\xE4m\xE4\xE4n my\xF6hemmin.\n\
+        \nJos tasapainosi on positiivisella, bisneksesi kokonaisuutena tekee voittoa.\n\
+        \n'Uudisasukas'-v\xE4lilehdess\xE4 n\xE4et, kuinka onnellisia asukkaasi ovat\
+        \ ja mit\xE4 tarviketta suurin osa heist\xE4 haluaisi."]
+    type: logbook
+  - arguments: [!!python/unicode 'Rakenna keskustori. Valitse alue, jolla ei ole liian
+        montaa tuotantorakennusta.']
+    type: message
+  - arguments: [tutStepDone, 25]
+    type: set_var
+  conditions:
+  - arguments: [9, 0]
+    type: building_num_of_type_greater
+  - arguments: [11, 0]
+    type: building_num_of_type_greater
+  - arguments: [9, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [11, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [tutStepDone, 21]
+    type: var_gt
+  - arguments: [tutStepDone, 25]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'ASUINRAKENNUKSIA', "Uudisasukkaat haluavat katon\
+        \ p\xE4\xE4ns\xE4 p\xE4\xE4lle, muuten he eiv\xE4t tulisi ajatelleeksikaan\
+        \ asuvansa kaupungissasi! Sinun tarvitsee tarjota telttoja.\n\nTeltat ovat\
+        \ perusasuinrakennuksia. Asukkaasi haluavat kehitt\xE4\xE4 asumustaan, kun\
+        \ he saavuttavat korkeampia korotuksia.\n\nUudisasukkaat eiv\xE4t v\xE4ltt\xE4\
+        m\xE4tt\xE4 n\xE4yt\xE4 hy\xF6dyllisilt\xE4, sill\xE4 he yritt\xE4v\xE4t kuluttaa\
+        \ tuottamiasi elintarvikkeita, mutta he sent\xE4\xE4n maksavat veroja, ja\
+        \ se on t\xE4ll\xE4 hetkell\xE4 ainoa tapa, jolla saat rahaa!\n\nTEHT\xC4\
+        V\xC4: Rakenna teltta ja yhdist\xE4 se polulla keskustoriin."]
+    type: logbook
+  - arguments: ["Rakenna teltta ja yhdist\xE4 se polulla keskustoriin."]
+    type: message
+  - arguments: [tutStepDone, 28]
+    type: set_var
+  conditions:
+  - arguments: [4, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 24]
+    type: var_gt
+  - arguments: [tutStepDone, 28]
+    type: var_lt
+- actions:
+  - arguments: ['', "Katsotaanpa telttayleiskatsauksen v\xE4lilehte\xE4.\nN\xE4et\n\
+        * n\xE4iden asukkaiden onnellisuuden,\n* heid\xE4n maksamansa verot ja\n*\
+        \ heid\xE4n vaatimansa tarvikkeet.\n\nJos heid\xE4n vaatimuksensa t\xE4ytet\xE4\
+        \xE4n, onnellisuus lis\xE4\xE4ntyy ja sit\xE4 kautta verotulosi.\n\nJos ei\
+        \ t\xE4ytet\xE4, onnellisuus ja tulot laskevat. Asukkaat saattavat tulla hyvin\
+        \ happamiksi ja yksinkertaisesti k\xE4\xE4nt\xE4\xE4 selk\xE4ns\xE4 kyl\xE4\
+        llesi j\xE4tt\xE4en taakseen murenevat rauniot.\n\nHuomaa, ett\xE4 voit muuttaa\
+        \ veroasetuksia my\xF6s t\xE4\xE4ll\xE4.\n\nTEHT\xC4V\xC4: Rakenna v\xE4hint\xE4\
+        \xE4n kolme telttaa lis\xE4\xE4.\n\nVIHJE: VAIHTO-n\xE4pp\xE4imen pit\xE4\
+        minen pohjassa helpottaa usean saman lajin rakennuksen rakentamista."]
+    type: logbook
+  - arguments: ["Rakenna v\xE4hint\xE4\xE4n kolme telttaa lis\xE4\xE4 ja yhdist\xE4\
+        \ ne keskustoriin."]
+    type: message
+  - arguments: [tutStepDone, 31]
+    type: set_var
+  conditions:
+  - arguments: [3, 4, 0]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 27]
+    type: var_gt
+  - arguments: [tutStepDone, 31]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'RAKENNA MERKKITULI', !!python/unicode 'Can you see
+        the ship passing your island from time to time?
+
+
+        This is the ship of the Free Trader, one of the first settlers in this archipelago.
+
+
+        This trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling to the Free Trader yields more
+        profit.
+
+
+        Normally the ships just sail around and look for deals, but small settlements
+        like yours first need some promotion, otherwise you won''t be found.
+
+
+        For this purpose, you can build a signal fire at the coast near your branch
+        office to show ships the way to your settlement.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        stop by from time to time and look into your branch office.
+
+
+        You can propose deals via the tab ''Buy/Sell''. (This feature is currently
+        quite fiddly to use, but a re-design is in the pipeline. If you have found
+        a nice way of doing it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        If you click in the slot, you can choose the good you want to trade with.
+        We will further explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
+    type: logbook
+  - arguments: ["Rakenna merkkituli rannikolle sivutoimistosi l\xE4hettyville."]
+    type: message
+  - arguments: [tutStepDone, 34]
+    type: set_var
+  conditions:
+  - arguments: [3, 4, 3]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 30]
+    type: var_gt
+  - arguments: [tutStepDone, 34]
+    type: var_lt
+- actions:
+  - arguments: ["OPI K\xC4YM\xC4\xC4N KAUPPAA", !!python/unicode "Excellent! The Free\
+        \ Trader will now stop by at your branch office from time to time.\n\nLet's\
+        \ continue our tutorial on how to trade.\n\nAfter selecting a particular type\
+        \ of good, the green bar across the bottom of the slot (if visible) shows\
+        \ you how much you have in stock of this good.\n\nDragging the slider on the\
+        \ right of each slot determines your 'target value' which has a different\
+        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
+        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
+        \ which you hold in reserve to not sell"]
+    type: logbook_w
+  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
+        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
+        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
+        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
+        \ however only wants to buy or sell less than your settings would allow him,\
+        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
+        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
+        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
+        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
+        \ as you need to have 30 tools in stock!\nIf you still have some in your ship's\
+        \ inventory, this seems like a good point to unload them."]
+    type: logbook
+  - arguments: [!!python/unicode 'Reach an island stock of at least 30 tools.']
+    type: message
+  - arguments: [tutStepDone, 37]
+    type: set_var
+  conditions:
+  - arguments: [6, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 33]
+    type: var_gt
+  - arguments: [tutStepDone, 37]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A PAVILION', !!python/unicode 'Those
+        tools will be enough for the moment. Well done!
+
+
+        You now provide housing, a main square and food to your inhabitants.
+
+
+        Still there is one demand which we have not satisfied so far, you may check
+        that in the marketplace or tent tab - your sailors want a basic building where
+        they can pray.
+
+
+        The solution is a pavilion which the village parson quickly puts up as shelter
+        from the sun.
+
+
+        Service buildings like this also need to be connected to the tents with a
+        trail, else your inhabitants feel unable to reach them.
+
+
+        In later increments, upgraded versions of buildings may become available.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'In that case the ''small'' version is not needed
+        anymore since the ''big'' one will also provide what your inhabitants are
+        looking for in early increments.
+
+
+        Take care when planning your city because most of those advanced buildings
+        are bigger than the basic ones.
+
+
+        Note that faith is treated like a physical resource, so units need to refresh
+        there after some time.
+
+
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
+    type: logbook
+  - arguments: [!!python/unicode 'Build a pavilion with connection to the tents.']
+    type: message
+  - arguments: [tutStepDone, 40]
+    type: set_var
+  conditions:
+  - arguments: [6, 29]
+    type: settlement_res_stored_greater
+  - arguments: [tutStepDone, 36]
+    type: var_gt
+  - arguments: [tutStepDone, 40]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: NEXT INCREMENT', !!python/unicode 'All
+        demands are fulfilled now if your inhabitants can regularly visit the main
+        square & pavilion and your food supply is adequate.
+
+
+        If the sailors are happy enough, they want to advance to the next increment
+        called Pioneers.
+
+
+        To make them happy, there is nothing else for you to do but setting taxes
+        to a lower level since you have fulfilled all the demands of your inhabitants.
+
+
+        You should try to not always run on low taxes since this will probably lead
+        to bankruptcy sooner or later. For a period of time and if you know what you
+        are doing, it is fine though.
+
+
+        After some time, the first unit should walk to the main square and have a
+        look for new construction material there to build a log house. This house
+        will replace the old tent.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'Such residential upgrades are the only ones
+        which cost resources and can not be restricted by you.
+
+
+        There are manual upgrades to some buildings where you use resources to construct
+        a better version on the same spot, and there are upgrades without costs for
+        example as you will see with the lumberjack (In this case, only the graphics
+        change).
+
+
+        Upgraded housing accomodates more inhabitants, and pioneers pay more taxes
+        than sailors, too.
+
+
+        As you may have figured out already, the downside is that pioneers demand
+        additional goods which sailors do not need - so you will need to spend this
+        extra money to make them happy as well.
+
+
+        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+    type: logbook
+  - arguments: ["Laske verotasosi alas (vasempaan p\xE4\xE4h\xE4n) ja odota merenk\xE4\
+        vij\xF6idesi p\xE4ivittyv\xE4n."]
+    type: message
+  - arguments: [tutStepDone, 43]
+    type: set_var
+  conditions:
+  - arguments: [3, 5, 3]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 39]
+    type: var_gt
+  - arguments: [tutStepDone, 43]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'RAKENNA MAATILA', !!python/unicode 'Congratulations!
+        Some of your inhabitants have reached increment II!
+
+
+        Now you have access to new buildings, take a look at the Build menu again.
+
+
+        A shiny new tab appeared there.
+
+
+        Pioneers will demand cloth, so you need to set up a production line for cloth
+        starting with lambs wool (which is one of the goods produced at the farm).
+
+
+        The farm is a very special production building since it can produce not only
+        one, but very many (and different) goods if you choose.
+
+
+        The output of farms depends on what kind of fields you build around it.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
+
+
+        Farms, like all companies producing raw materials, do not necessarily need
+        to be connected to storage or a Branch Office.
+
+
+        As long as units of the final production company can reach the farm, and collectors
+        from the branch office or storage tent can reach the final company everything''s
+        fine.
+
+
+        If you, however, plan to do some processing on different parts of the island
+        (which can make sense) or even on different islands, you will need a connection
+        to collectors.
+
+
+        Try to build the farm not too close to the coast or your existing buildings
+        since it will need some space around it to work well.
+
+
+        TASK: Build a farm.']
+    type: logbook
+  - arguments: ["Rakenna maatila ja j\xE4t\xE4 hieman vapaata tilaa sen ymp\xE4rille."]
+    type: message
+  - arguments: [tutStepDone, 46]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: settler_level_greater
+  - arguments: [tutStepDone, 42]
+    type: var_gt
+  - arguments: [tutStepDone, 46]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'RAKENNA PELTOJA', !!python/unicode 'The farm itself
+        is not going to produce anything without some fields.
+
+
+        You currently have the choice between pastures, potato and sugar fields.
+
+
+        Let''s have a short overview:
+
+        * Pasture: Sheep live here, producing lamb wool.
+
+        * Potato field: Grows potatoes which are currently treated as food.
+
+        * Sugar field: Grows sugar which is used to distill liquor and (later) produce
+        confectionery.
+
+
+        We now only need pastures, but in case your food supply chain is too small
+        (maybe many residential buildings) you can also produce some potatoes.
+
+
+        Note that for potatoes you will need a road connection to the farm (not to
+        the field!) as it will be the only company to work on the goods.']
+    type: logbook_w
+  - arguments: ['', "Varmista, ett\xE4 kaikki rakentamasi pellot ovat maatilan alueella.\n\
+        \nVoit harrastaa sekatuotantoa - yksi laidun ei johda sadan prosentin tehokkuuteen,\
+        \ mutta sinun t\xE4ytyy tarkistaa, montako peltoa yksi maatila voi hoitaa.\n\
+        \nEri tyyppiset pellot tarvitsevat maatilayksik\xF6ilt\xE4 enemm\xE4n tai\
+        \ v\xE4hemm\xE4n aikaa (kylv\xE4miseen, korjuuseen, paimennukseen, jne.) ja\
+        \ sen vuoksi maatila ei v\xE4ltt\xE4m\xE4tt\xE4 pysty huolehtimaan kaikista\
+        \ rakentamistasi pelloista ajoissa.\n\nMutta nyt sinun ei tarvitse huolehtia\
+        \ paljoa, sill\xE4 et ole viel\xE4 rakentanut yht\xE4k\xE4\xE4n peltoa. Tehd\xE4\
+        \xE4n siis asialle jotakin!\n\nTEHT\xC4V\xC4: Rakenna v\xE4hint\xE4\xE4n yksi\
+        \ laidun maatilan ulottuville ja lis\xE4\xE4 perunamaita, jos tykk\xE4\xE4\
+        t."]
+    type: logbook
+  - arguments: ["Rakenna v\xE4hint\xE4\xE4n yksi laidun maatilan ulottuville ja lis\xE4\
+        \xE4 perunamaita, jos tykk\xE4\xE4t."]
+    type: message
+  - arguments: [tutStepDone, 49]
+    type: set_var
+  conditions:
+  - arguments: [20, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 45]
+    type: var_gt
+  - arguments: [tutStepDone, 49]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'RAKENNA VARASTO', !!python/unicode 'Did you watch
+        your lumberjack recently?
+
+
+        Since your branch office does not have unlimited space to store goods, collectors
+        will stop fetching goods from companies when stock is full.
+
+        So if no sailor recently wanted to upgrade his tent, you probably have a lot
+        of boards and in that case, the lumberjack may idle.
+
+        We can improve this situation with two different approaches, and below we
+        will have a look at both of them.
+
+
+        All companies offer the possibility of doing no work at all.
+
+        This may sound strange, but try to click on the gear wheel you see in, for
+        example, a lumberjack''s overview.
+
+
+        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
+        costs you pay for the building will decrease. They won''t be zero, but still
+        lower than if you keep the company producing.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode "This means that you can save money when you\
+        \ temporarily do not need a company and do not want to tear it down, either.\n\
+        \nAnother solution is to build the last increment-I building which has not\
+        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
+        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
+        \ to fetch goods, just like the branch office does.\n\nNote that companies\
+        \ can also be connected to a storage in order to get their products collected,\
+        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
+        \ where you need collectors."]
+    type: logbook
+  - arguments: [!!python/unicode 'Build a storage tent (increment I tab) where it
+        makes sense.']
+    type: message
+  - arguments: [tutStepDone, 52]
+    type: set_var
+  conditions:
+  - arguments: [18, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 48]
+    type: var_gt
+  - arguments: [tutStepDone, 52]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A WEAVER', !!python/unicode 'Now
+        the wool production is set up, you still need a weaver to produce cloth out
+        of this wool.
+
+
+        There are two spots where you can build it - either close to the farm or close
+        to a Storage Tent (or the Branch Office).
+
+
+        In both cases you should ensure the connection to a trail as well.
+
+
+        You can place the weaver close to the farm and tear down any trail to the
+        farm to see that it will still fetch the wool and produce.
+
+
+        TASK: Build a weaver positioned so it can get wool.']
+    type: logbook
+  - arguments: [!!python/unicode 'Build a weaver that can somehow reach the wool of
+        your farm.']
+    type: message
+  - arguments: [tutStepDone, 55]
+    type: set_var
+  conditions:
+  - arguments: [2, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 51]
+    type: var_gt
+  - arguments: [tutStepDone, 55]
+    type: var_lt
+- actions:
+  - arguments: ["Asuta kaupungissasi v\xE4hint\xE4\xE4n 50 asukasta tai enemm\xE4\
+        n l\xE4p\xE4ist\xE4ksesi t\xE4m\xE4n tutoriaalin. Tarvitset kokonaisuutena\
+        \ voittoa tuottavan talouden."]
+    type: message
+  - arguments: ["L\xC4P\xC4ISE TUTORIAALI", "Yrit\xE4 asuttaa kaupungissasi kokonaiset\
+        \ 50 asukasta tai enemm\xE4n luomalla asuinrakennustarjontaa.\n\nKun olet\
+        \ saanut pidetty taloutta, joka voi el\xE4tt\xE4\xE4 t\xE4ll\xE4isen m\xE4\
+        \xE4r\xE4n kuluttajia, olet valmis l\xE4htem\xE4\xE4n kohti Tuntemattomia\
+        \ Taivaanrantoja!\n\nTEHT\xC4V\xC4: Ker\xE4\xE4 v\xE4hint\xE4\xE4n 50 asukasta\
+        \ ja rakenna kannattava talous, jotta l\xE4p\xE4isisit t\xE4m\xE4n tutoriaalin."]
+    type: logbook
+  - arguments: [tutStepDone, 58]
+    type: set_var
+  conditions:
+  - arguments: [3, 0]
+    type: settlement_res_stored_greater
+  - arguments: [7, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 54]
+    type: var_gt
+  - arguments: [tutStepDone, 58]
+    type: var_lt
+- actions:
+  - arguments: ["EI TEHT\xC4VI\xC4 J\xC4LJELL\xC4", "There is nothing left to do now.\n\
+        \nJos sinulla on ehdotuksia, mit\xE4 me voisimme tai mit\xE4 pit\xE4isi kehitt\xE4\
+        \xE4, lis\xE4t\xE4 tai j\xE4tt\xE4\xE4 pois:\n\nwww.unknown-horizons.org\n\
+        \n#unknown-horizons @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nKeskustelupalstamme\
+        \ ovat avoinna my\xF6s sinulle!\n\nParhaita tuloksia t\xE4h\xE4n menness\xE4\
+        \ on saatu aikaan liittym\xE4ll\xE4 IRC-kanavallemme, joten voit yritt\xE4\
+        \xE4 sit\xE4 ensimm\xE4isen\xE4 (-;"]
+    type: logbook
+  - arguments: [!!python/unicode 'Kiitoksia!', "\n\n\n\n\n\n\nKiitos, ett\xE4 pelasitte\
+        \ t\xE4t\xE4 tutoriaalia!\n\nAllekirjoittajana UH-Team"]
+    type: logbook
+  - arguments: [tutStepDone, 61]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: settlements_num_greater
+  - arguments: [50]
+    type: settlement_inhabitants_greater
+  - arguments: [3, 3]
+    type: building_num_of_type_greater
+  - arguments: [0]
+    type: settler_level_greater
+  - arguments: [0]
+    type: player_balance_greater
+  - arguments: [tutStepDone, 57]
+    type: var_gt
+  - arguments: [tutStepDone, 61]
+    type: var_lt
+- actions:
+  - {type: win}
+  - arguments: ["Onneksi olkoon! Olet saavuttanut t\xE4m\xE4n tutoriaalin lopun ja\
+        \ olet valmis kohtaamaan uusia haasteita!"]
+    type: message
+  conditions:
+  - arguments: [tutStepDone, 60]
+    type: var_gt
+locale: fi
+mapfile: development.sqlite
+
