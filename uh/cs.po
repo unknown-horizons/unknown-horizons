@@ -7,27 +7,28 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-25 19:27+0200\n"
+"Last-Translator: Gamp <turon.honza@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons Version %s"
 
 #: horizons/engine.py:55
 msgid "Restart required"
-msgstr ""
+msgstr "Vyžadován restart"
 
 #: horizons/engine.py:56
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "Některé změny vyžadují restartování hry."
 
 #: horizons/engine.py:109
 msgid "System default"
@@ -35,7 +36,7 @@ msgstr ""
 
 #: horizons/engine.py:133
 msgid "Warning"
-msgstr ""
+msgstr "Varování"
 
 #: horizons/engine.py:134
 msgid ""
