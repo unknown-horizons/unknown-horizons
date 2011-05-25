@@ -23,6 +23,11 @@ import logging
 
 import horizons.main
 
+from mission.foundsettlement import FoundSettlement
+from landmanager import LandManager
+from completeinventory import CompleteInventory
+from villagebuilder import VillageBuilder
+
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
 from horizons.constants import RES, UNITS, BUILDINGS
@@ -32,9 +37,6 @@ from horizons.world.storageholder import StorageHolder
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import Ship
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
-from horizons.ai.aiplayer.landmanager import LandManager
-from horizons.ai.aiplayer.completeinventory import CompleteInventory
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -64,6 +66,9 @@ class AIPlayer(GenericAI):
 
 	def report_success(self, mission, msg):
 		print mission, msg
+		village_builder = VillageBuilder(self.land_manager)
+		village_builder.create_plan()
+		village_builder.display()
 
 	def report_failure(self, mission, msg):
 		print mission, msg
