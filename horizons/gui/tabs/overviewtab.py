@@ -137,7 +137,7 @@ class ShipOverviewTab(OverviewTab):
 		}
 
 		#NOTE dummy for attack
-		events['attack/mouseClicked'] = self.set_attack_cursor
+		events['attack'] = self.set_attack_cursor
 
 		# check if an island is in range and it doesn't contain a player's settlement
 		island_without_player_settlement_found = False

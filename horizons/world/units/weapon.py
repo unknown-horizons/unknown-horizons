@@ -22,12 +22,23 @@
 from horizons.util import Circle
 
 class Weapon(object):
+	"""
+	Generic Weapon class
+	"""
 	def __init__(self, session):
 		#TODO add arguments
 		#it will have modifiers as arguments
 		#they will be loaded from database
+
+		#tuple with min range, max range
+		self.weapon_range = 5,15
+		self.attack_radius = 4
+		self.damage = 10
 		self.session = session
-		
+
+	def get_damage_modifier(self):
+		return self.damage
+
 	def fire(self, position):
 		print 'firing weapon at position', position
 		units = self.session.world.get_ships(position, self.attack_radius)
@@ -35,10 +46,19 @@ class Weapon(object):
 		#TODO add buildings to units
 		for unit in units:
 			print 'dealing damage to ship:', unit
-			unit.health -= self.damage
+			unit.health -= self.get_damage_modifier()
 		#TODO implement all modifiers
 		#get actual location from accuracy
 		#get damage for position
+
+	def check_target_in_range(self, distance):
+		"""
+		Checks if the distance between the weapon and target is in weapon range
+		@param distance : distance between weapon and target
+		"""
+		if distance >= self.weapon_range[0] and distance <= self.weapon_range[1]:
+			return True
+		return False
 
 class Cannon(Weapon):
 	"""
@@ -52,20 +72,17 @@ class Cannon(Weapon):
 
 	def __init(self):
 		self.weapon_type = 'ranged'
-		#tuple with min range, max range
-		self.weapon_range = 5,15
-		self.attack_radius = 4
-		self.damage = 10
 		#this stays here!
-		self.number = 1
+		#number of cannons as resource binded to a Cannon object
+		self.number_of_weapons = 1
 
-	def set_number(self, number):
-		#set modifiers for number of resource cannons used
-		self.number = number;
+	def set_number_of_weapons(self, number):
+		"""
+		Sets number of cannons as resource binded to a Cannon object
+		@param number : number of cannons
+		"""
+		self.number = number
 
-	def fire(self, position):
-		#multiply the damage by number of resource cannons per instance
-		self.damage *= self.number
-		super(Cannon, self).fire(position)
-		#set it back
-		self.damage /= self.number
+	def get_damage_modifier(self):
+		return self.number_of_weapons * super(Cannon, self).get_damage_modifier()
+

@@ -191,9 +191,7 @@ class Ship(NamedObject, StorageHolder, Unit, WeaponHolder):
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		#NOTE dummy cannon
-		self.create_weapon_storage()
 		self.add_weapon_to_storage(Cannon(self.session))
-		self.attack(self.position)
 		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)

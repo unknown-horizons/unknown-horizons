@@ -28,23 +28,24 @@ class WeaponHolder(object):
 		self.create_weapon_storage()
 	
 	def create_weapon_storage(self):
-		self.weapon_storage = []
+		self._weapon_storage = []
 	
 	def add_weapon_to_storage(self, weapon):
-		self.weapon_storage.append(weapon)
+		self._weapon_storage.append(weapon)
 	
 	def attack_possible(self, dest):
 		distance = self.position.distance_to_point(dest)
-		for weapon in self.weapon_storage:
-			if distance >= weapon.weapon_range[0] and distance <= weapon.weapon_range[1]:
+		for weapon in self._weapon_storage:
+			if weapon.check_target_in_range(distance):
 				return True
 		return False
 
 	def attack(self, dest):
+		print 'attack issued'
 		attacked = False
 		distance = self.position.distance_to_point(dest)
-		for weapon in self.weapon_storage:
-			if distance >= weapon.weapon_range[0] and distance <= weapon.weapon_range[1]:
+		for weapon in self._weapon_storage:
+			if weapon.check_target_in_range(distance):
 				weapon.fire(dest)
 				print 'fired', weapon
 				attacked = True
