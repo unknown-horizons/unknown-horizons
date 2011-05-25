@@ -280,8 +280,8 @@ class Fife(ApplicationBase):
 		self.OptionsDlg = self._setting.loadSettingsDialog()
 		self.OptionsDlg.position_technique = "automatic" # "center:center"
 		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
-						'AutosaveMaxCount' : 'autosavemaxcount',
-						'QuicksaveMaxCount' : 'quicksavemaxcount'}
+		               'AutosaveMaxCount' : 'autosavemaxcount',
+		               'QuicksaveMaxCount' : 'quicksavemaxcount'}
 
 		for x in slider_dict.keys():
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
