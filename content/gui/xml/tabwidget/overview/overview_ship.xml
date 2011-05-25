@@ -38,6 +38,14 @@
 			down_image="content/gui/icons/ship/anchor_a.png" 
 			hover_image="content/gui/icons/ship/anchor_h.png" />
 	</HBox>
+	<!-- Attack dummy button -->
+	<HBox position="20,50">
+		<ToggleImageButton name="attack" tooltip="Attack!" 
+			inactive_image="content/gui/icons/ship/anchor_bw.png" 
+			up_image="content/gui/icons/ship/anchor.png" 
+			down_image="content/gui/icons/ship/anchor_a.png" 
+			hover_image="content/gui/icons/ship/anchor_h.png" />
+	</HBox>
 
 </Container>
 </Container>

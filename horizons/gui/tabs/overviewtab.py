@@ -32,6 +32,7 @@ from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.utility import create_resource_icon
 from horizons.i18n import load_xml_translated
+from horizons.gui.mousetools import AttackingTool
 
 
 class OverviewTab(TabInterface):
@@ -125,11 +126,18 @@ class ShipOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Ship overview")
 
+	def set_attack_cursor(self):
+	#NOTE dummy method for changing cursor
+		self.instance.session.cursor = AttackingTool(self.instance.session)
+
 	def refresh(self):
 		# show rename when you click on name
 		events = {
 			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance)
 		}
+
+		#NOTE dummy for attack
+		events['attack/mouseClicked'] = self.set_attack_cursor
 
 		# check if an island is in range and it doesn't contain a player's settlement
 		island_without_player_settlement_found = False

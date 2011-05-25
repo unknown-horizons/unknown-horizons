@@ -19,9 +19,36 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from buildingtool import BuildingTool
-from cursortool import CursorTool
-from navigationtool import NavigationTool
-from selectiontool import SelectionTool
-from tearingtool import TearingTool
-from attackingtool import AttackingTool
+class WeaponHolder(object):
+	def __init__(self, **kwargs):
+		super(WeaponHolder, self).__init__(**kwargs)
+		self.__init()
+	
+	def __init(self):
+		self.create_weapon_storage()
+	
+	def create_weapon_storage(self):
+		self.weapon_storage = []
+	
+	def add_weapon_to_storage(self, weapon):
+		self.weapon_storage.append(weapon)
+	
+	def attack_possible(self, dest):
+		distance = self.position.distance_to_point(dest)
+		for weapon in self.weapon_storage:
+			if distance >= weapon.weapon_range[0] and distance <= weapon.weapon_range[1]:
+				return True
+		return False
+
+	def attack(self, dest):
+		attacked = False
+		distance = self.position.distance_to_point(dest)
+		for weapon in self.weapon_storage:
+			if distance >= weapon.weapon_range[0] and distance <= weapon.weapon_range[1]:
+				weapon.fire(dest)
+				print 'fired', weapon
+				attacked = True
+
+		if not attacked:
+			#TODO move the holder if possible
+			pass

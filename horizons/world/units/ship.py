@@ -29,11 +29,13 @@ from horizons.world.storage import PositiveTotalStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.weaponholder import WeaponHolder
 from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
 from horizons.constants import LAYERS, STORAGE
+from weapon import Cannon
 
 class ShipRoute(object):
 	"""
@@ -173,7 +175,7 @@ class ShipRoute(object):
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
 
-class Ship(NamedObject, StorageHolder, Unit):
+class Ship(NamedObject, StorageHolder, Unit, WeaponHolder):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -186,6 +188,11 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
+		#NOTE dummy cannon
+		self.create_weapon_storage()
+		self.add_weapon_to_storage(Cannon(self.session))
+		self.attack(self.position)
+		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
