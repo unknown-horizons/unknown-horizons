@@ -311,7 +311,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		ret_coords = None
 		for player in self.players:
 			# Adding ships for the players
-			point = self.get_random_possible_ship_position()
+			# hack to place the ship on the development map
+			point = Point(-3, -15)
+			if point.to_tuple() not in self.water:
+				point = self.get_random_possible_ship_position()
 			# Execute command directly, not via manager, because else it would be transmitted over the
 			# network to other players. Those however will do the same thing anyways.
 			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
