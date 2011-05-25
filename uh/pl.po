@@ -154,7 +154,7 @@ msgstr "Szczegóły:"
 
 #: horizons/gui/gui.py:329
 msgid "Error:"
-msgstr ""
+msgstr "Błąd:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"

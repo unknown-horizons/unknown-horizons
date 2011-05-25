@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-25 00:58+0200\n"
+"PO-Revision-Date: 2011-05-25 13:32+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "NUEVA TAREA: ESTABLECERSE EN UNA ISLA"
+msgstr "ESTABLECERSE EN UNA ISLA"
 
 #: po/tutorial.py:8
 msgid ""
@@ -113,7 +113,7 @@ msgstr ""
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr "NUEVA TAREA: DESCARGAR SUS MERCANCÍAS"
+msgstr "DESCARGAR SUS MERCANCÍAS"
 
 #: po/tutorial.py:10
 msgid ""
@@ -184,7 +184,7 @@ msgstr "Descargue al menos 10 toneladas de cada recurso en su barco."
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "NUEVA TAREA: CONSTRUIR UN ASERRADERO"
+msgstr "CONSTRUIR UN ASERRADERO"
 
 #: po/tutorial.py:14
 msgid ""
@@ -225,7 +225,7 @@ msgstr "Construya un aserradero y conéctelo al asentamiento usando un sendero."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NUEVA TAREA: SUMINISTRO DE ALIMENTOS"
+msgstr "SUMINISTRO DE ALIMENTOS"
 
 #: po/tutorial.py:18
 msgid ""
@@ -263,7 +263,7 @@ msgstr "Construya un cazador y un pescador. Conéctelos al asentamiento."
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "NUEVA TAREA: PLAZA PRINCIPAL"
+msgstr "PLAZA PRINCIPAL"
 
 #: po/tutorial.py:22
 msgid ""
@@ -303,7 +303,7 @@ msgstr ""
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "NUEVA TAREA: EDIFICIOS RESIDENCIALES"
+msgstr "EDIFICIOS RESIDENCIALES"
 
 #: po/tutorial.py:26
 msgid ""
@@ -348,7 +348,7 @@ msgstr ""
 # sin contexto (construye/haz)
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "NUEVA TAREA: CONSTRUIR UNA SEÑAL DE HUMO"
+msgstr "CONSTRUIR UNA SEÑAL DE FUEGO"
 
 #: po/tutorial.py:31
 msgid ""
@@ -386,7 +386,7 @@ msgstr "Construya una seña de humo en la costa cerca de su asentamiento."
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "NUEVA TAREA: EL COMERCIO"
+msgstr "EL COMERCIO"
 
 #: po/tutorial.py:35
 msgid ""
@@ -424,7 +424,7 @@ msgstr "Alcance en la isla un stock de al menos 30 herramientas."
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "NUEVA TAREA: CONSTRUIR UN CONVENTO"
+msgstr "CONSTRUIR UN PABELLÓN"
 
 #: po/tutorial.py:39
 msgid ""
@@ -461,7 +461,7 @@ msgstr "Construya un convento conectado a las tiendas."
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr "NUEVA TAREA: SIGUIENTE NIVEL DE CRECIMIENTO"
+msgstr "SIGUIENTE NIVEL DE CRECIMIENTO"
 
 #: po/tutorial.py:43
 msgid ""
@@ -632,7 +632,7 @@ msgstr ""
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "NUEVA TAREA: COMPLETA EL TUTORIAL"
+msgstr "COMPLETA EL TUTORIAL"
 
 #: po/tutorial.py:63
 msgid ""

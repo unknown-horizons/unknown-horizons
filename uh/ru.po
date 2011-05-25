@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-23 21:36+0200\n"
+"PO-Revision-Date: 2011-05-25 13:08+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -145,7 +145,7 @@ msgstr "Подтверждение перезаписи"
 
 #: horizons/gui/gui.py:261
 msgid "Please select a savegame or click on cancel."
-msgstr "Пожалуйста, выберите сохранение или нажми \"Отмена\"."
+msgstr "Пожалуйста, выберите сохранение или нажмите \"Отмена\"."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:261
@@ -1377,7 +1377,7 @@ msgstr ""
 #: horizons/savegamemanager.py:287
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr "Ошибка: неизвестно, как обработать условие типа %(type)s ."
+msgstr "Ошибка: неизвестно, как обработать условие типа %(type)s"
 
 # 81%
 #: horizons/savegamemanager.py:338
@@ -1533,9 +1533,8 @@ msgstr ""
 "разработки)."
 
 #: run_uh.py:116
-#, fuzzy
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr "Писать лог в <filename>, вместо пользовательской директории игры"
+msgstr "Писать лог в <filename> вместо пользовательской директории игры"
 
 #: run_uh.py:118
 msgid "For internal use only."

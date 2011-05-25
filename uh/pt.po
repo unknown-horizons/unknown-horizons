@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-25 01:57+0200\n"
-"Last-Translator: Nelson <nmarques@opensuse.org>\n"
+"PO-Revision-Date: 2011-05-25 13:29+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -45,14 +45,14 @@ msgid ""
 "Use at own risk!"
 msgstr ""
 "A renderização por SDL está disponível como alternativa e pode apresentar "
-"alguns problemas.\n"
+"alguns problemas. \n"
 "\n"
 "Use por sua conta e risco!"
 
 #: horizons/engine.py:198
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "A línguagem configurada %(lang)s em %(places)s não pode ser carregada"
+msgstr "A línguagem configurada %(lang)s em %(place)s não pode ser carregada"
 
 #: horizons/engine.py:426
 msgid "Invalid network port"
@@ -158,9 +158,8 @@ msgstr "Detalhes:"
 
 # 83%
 #: horizons/gui/gui.py:329
-#, fuzzy
 msgid "Error:"
-msgstr "Erro"
+msgstr "Erro:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -191,7 +190,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:417
 msgid "INCOMPATIBLE VERSION\n"
-msgstr "VERSÃO INCOMPATÍVEL"
+msgstr "VERSÃO INCOMPATÍVEL\n"
 
 #: horizons/gui/gui.py:440
 msgid "No file selected"
@@ -216,7 +215,7 @@ msgstr "Erro!"
 
 #: horizons/gui/gui.py:450
 msgid "Failed to delete savefile!"
-msgstr "Falha na remoção da gravação"
+msgstr "Falha na remoção da gravação!"
 
 #: horizons/gui/ingamegui.py:443
 msgid "Hit P to continue the game or click below!"
@@ -250,7 +249,7 @@ msgstr "Erro de rede"
 
 #: horizons/gui/modules/multiplayermenu.py:110
 msgid "Something went wrong with the network: "
-msgstr "Ocorreu uma falha na rede:"
+msgstr "Ocorreu uma falha na rede: "
 
 #: horizons/gui/modules/multiplayermenu.py:125
 msgid "Version differs!"
@@ -258,15 +257,15 @@ msgstr "Versões diferentes!"
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Map: "
-msgstr "Mapa:"
+msgstr "Mapa: "
 
 #: horizons/gui/modules/multiplayermenu.py:148
 msgid "Players: "
-msgstr "Jogadores:"
+msgstr "Jogadores: "
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid "Creator: "
-msgstr "Creador:"
+msgstr "Criador: "
 
 #: horizons/gui/modules/multiplayermenu.py:168
 #, python-format
@@ -911,7 +910,7 @@ msgstr "O jogo irá iniciar quando tiver jogadores suficientes ligados."
 
 #: horizons/i18n/guitranslations.py:198
 msgid "Chat:"
-msgstr "Conversa"
+msgstr "Conversa:"
 
 #: horizons/i18n/guitranslations.py:199
 msgid "Gamelobby"
@@ -1031,7 +1030,7 @@ msgstr "Número de auto-gravações:"
 
 #: horizons/i18n/guitranslations.py:233
 msgid "Number of quicksaves:"
-msgstr "Número de gravações rápidas"
+msgstr "Número de gravações rápidas:"
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Full screen:"
@@ -1144,7 +1143,7 @@ msgstr "Retomar"
 #: horizons/i18n/guitranslations.py:267 horizons/i18n/guitranslations.py:286
 #: horizons/i18n/guitranslations.py:307 horizons/i18n/guitranslations.py:309
 msgid "Running costs"
-msgstr "Custos de manutenção:"
+msgstr "Despesas de funcionamento"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Fishing boats"
@@ -1301,7 +1300,7 @@ msgstr "Configurar a rota comercial:"
 
 #: horizons/i18n/guitranslations.py:341
 msgid "Load/Unload:"
-msgstr "Carregar/Descarregar"
+msgstr "Carregar/Descarregar:"
 
 #: horizons/main.py:82
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
@@ -1338,7 +1337,7 @@ msgstr "Erro: Não foi possível encontrar o mapa \"%s%."
 
 #: horizons/main.py:290 horizons/main.py:333
 msgid "Error: Found multiple matches: "
-msgstr "Erro: Foram encontrados vários jogos:"
+msgstr "Erro: Foram encontrados vários jogos: "
 
 #: horizons/main.py:330
 #, python-format
@@ -1362,8 +1361,7 @@ msgstr "Não é possivel alterar a velocidade de um jogo em rede"
 #: horizons/mpsession.py:57
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
-"Carregar/gravar jogos não se encontra disponível para jogos em rede (de "
-"momento)."
+"Gravar/carregar jogos não está disponível actualmente para jogos em rede"
 
 #: horizons/savegamemanager.py:287
 #, python-format
@@ -1377,10 +1375,13 @@ msgstr ""
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Erro: Não foi possível encontrar o mapa \"%s%."
 
+# 81%
+# 76%
 #: horizons/savegamemanager.py:343
 #, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr ""
+msgstr "Erro: Não foi possível encontrar o mapa \"%s%."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1388,7 +1389,7 @@ msgstr "Ganhou!"
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario. "
-msgstr "Completou este cenário."
+msgstr "Completou este cenário. "
 
 #: horizons/scenario/scenarioeventhandler.py:154
 #: horizons/scenario/scenarioeventhandler.py:164
@@ -1522,7 +1523,7 @@ msgstr ""
 
 #: run_uh.py:116
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr "Escreve o log para <ficheiro> em vez de escrever para a uh-userdir"
+msgstr "Escreve o log para <filename> em vez de escrever para a uh-userdir"
 
 #: run_uh.py:118
 msgid "For internal use only."
@@ -1552,7 +1553,7 @@ msgstr "Para o fazermos necessitamos da informação no ficheiro de log:"
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
 "Poderá fornece-lo através do IRC ou no nosso fórum, para ambos visite "
-"unknown-horizons.org"
+"unknown-horizons.org ."
 
 #: run_uh.py:204
 msgid "Thank you for using Unknown Horizons!"
@@ -1560,13 +1561,12 @@ msgstr "Obrigado por utilizar o Unknown Horizons!"
 
 # 80%
 #: run_uh.py:280
-#, fuzzy
 msgid "Failed to load FIFE:"
-msgstr "Falha a carregar o fife:"
+msgstr "Falha a carregar o FIFE:"
 
 #: run_uh.py:350
 msgid "FIFE was not found."
-msgstr "FIFE não foi encontrado"
+msgstr "O motor FIFE não foi encontrado."
 
 #: sqlite/Building
 msgid "Boat Builder"
@@ -1750,7 +1750,7 @@ msgstr "Alguns dos seus colonos abandonaram-no."
 
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
-msgstr "GANHOU!!!"
+msgstr "VENCEU!!!"
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
