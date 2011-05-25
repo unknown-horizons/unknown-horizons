@@ -245,7 +245,7 @@ class SavegameManager(object):
 		                  filename_extension = cls.scenario_extension)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames = True):
+	def get_available_scenarios(cls, include_displaynames = True, locales = None):
 		"""Returns available scenarios (depending on the campaign(s) status)"""
 		scenario_files = {}
 		afiles = []
@@ -253,8 +253,9 @@ class SavegameManager(object):
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		for i, sname in enumerate(snames):
 			if cls.check_scenario_availability(sname):
-				anames.append(sname)
-				afiles.append(sfiles[i])
+				if locales is None or cls.get_scenario_info(name = sname).get('locale', 'en') in locales:
+					anames.append(sname)
+					afiles.append(sfiles[i])
 		if not include_displaynames:
 			return (afiles,)
 		return (afiles, anames)
@@ -359,12 +360,12 @@ class SavegameManager(object):
 		if name:
 			if not name in snames:
 				print _("Error: Cannot find scenario \"%s\".") % (name,)
-				return False
+				return {}
 			index = snames.index(name)
 		elif file:
 			if not file in sfiles:
 				print _("Error: Cannot find scenario with file \"%s\".") % (file,)
-				return False
+				return {}
 			index = sfiles.index(file)
 		data = yaml.load(open(sfiles[index], 'r'))
 		return data

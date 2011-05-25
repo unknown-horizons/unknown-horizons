@@ -100,6 +100,7 @@ scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
 scenario['difficulty'] = _(scenario['difficulty'])
 scenario['author'] = _(scenario['author'])
 scenario['description'] = _(scenario['description'])
+scenario['locale'] = $lang
 
 for i, event in enumerate(scenario['events']):
 	for j, action in enumerate(event['actions']):
