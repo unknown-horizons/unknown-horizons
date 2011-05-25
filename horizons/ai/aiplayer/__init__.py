@@ -64,11 +64,21 @@ class AIPlayer(GenericAI):
 
 		self.complete_inventory = CompleteInventory(self)
 
+	def build_tents(self):
+		if self.village_builder.build_tent():
+			self.log.info('Built a tent')
+			Scheduler().add_new_object(Callback(self.build_tents), self, run_in = 16)
+		else:
+			self.log.info('All tents have been built')
+
 	def report_success(self, mission, msg):
 		print mission, msg
-		village_builder = VillageBuilder(self.land_manager)
-		village_builder.create_plan()
-		village_builder.display()
+		self.village_builder = VillageBuilder(self.land_manager)
+		self.village_builder.create_plan()
+		self.village_builder.build_roads()
+		self.village_builder.build_main_square()
+		self.village_builder.display()
+		Scheduler().add_new_object(Callback(self.build_tents), self)
 
 	def report_failure(self, mission, msg):
 		print mission, msg

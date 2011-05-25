@@ -31,7 +31,16 @@ class VillageBuilder(object):
 	
 	def __init__(self, land_manager):
 		self.land_manager = land_manager
-		
+		self.island = land_manager.island
+		self.session = self.island.session
+		self.owner = self.land_manager.owner
+		self.settlement = None
+		for coords in self.island.ground_map:
+			t = self.island.get_settlement(Point(coords[0], coords[1]))
+			if t != None and t.owner == self.owner:
+				self.settlement = t
+				break
+
 	def create_plan(self):
 		"""
 		The algorithm is as follows:
@@ -44,7 +53,6 @@ class VillageBuilder(object):
 		best_value = -1
 		xs = set([coords[0] for coords in self.land_manager.village])
 		ys = set([coords[1] for coords in self.land_manager.village])
-		session = self.land_manager.island.session
 		tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
 		road_connections = [(-1, -1), (-1, 0), (-1, 1), (-1, 2), (0, -1), (0, 2), (1, -1), (1, 2), (2, -1), (2, 0), (2, 1), (2, 2)]
 
@@ -54,7 +62,7 @@ class VillageBuilder(object):
 				continue
 
 			point = Point(x, y)
-			sq_location = Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].check_build(session, point)
+			sq_location = Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].check_build(self.session, point)
 			if not sq_location.buildable:
 				continue
 
@@ -81,7 +89,7 @@ class VillageBuilder(object):
 					if coords not in self.land_manager.village:
 						bad_roads += 1
 						continue
-					location = Entities.buildings[BUILDINGS.TRAIL_CLASS].check_build(session, Point(road_x, road_y))
+					location = Entities.buildings[BUILDINGS.TRAIL_CLASS].check_build(self.session, Point(road_x, road_y))
 					if location.buildable:
 						usage[coords] = (self.purpose.road, location)
 					else:
@@ -100,7 +108,7 @@ class VillageBuilder(object):
 					if coords not in self.land_manager.village:
 						bad_roads += 1
 						continue
-					location = Entities.buildings[BUILDINGS.TRAIL_CLASS].check_build(session, Point(road_x, road_y))
+					location = Entities.buildings[BUILDINGS.TRAIL_CLASS].check_build(self.session, Point(road_x, road_y))
 					if location.buildable:
 						usage[coords] = (self.purpose.road, location)
 					else:
@@ -116,7 +124,7 @@ class VillageBuilder(object):
 						break
 				if not ok:
 					continue
-				location = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].check_build(session, Point(coords[0], coords[1]))
+				location = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].check_build(self.session, Point(coords[0], coords[1]))
 				if not location.buildable:
 					continue
 
@@ -142,16 +150,41 @@ class VillageBuilder(object):
 
 		self.plan = best
 
+	def _build(self, buildable, building_id):
+		x = buildable.position.origin.x
+		y = buildable.position.origin.y
+		cmd = Build(building_id, x, y, self.island, buildable.rotation, settlement = self.settlement, tearset = buildable.tearset)
+		return cmd.execute(self.session)
+
+	def build_roads(self):
+		for usage in self.plan.itervalues():
+			if usage is not None and usage[0] == self.purpose.road:
+				self._build(usage[1], BUILDINGS.TRAIL_CLASS)
+
+	def build_main_square(self):
+		for usage in self.plan.itervalues():
+			if usage is not None and usage[0] == self.purpose.main_square:
+				self._build(usage[1], BUILDINGS.MARKET_PLACE_CLASS)
+
+	def build_tent(self):
+		for coords, usage in sorted(self.plan.iteritems()):
+			if usage is not None and usage[0] == self.purpose.tent:
+				if not self._build(usage[1], BUILDINGS.RESIDENTIAL_CLASS):
+					return False
+				self.plan[coords] = (self.purpose.reserved, None)
+				return True
+		return False
+
 	def display(self):
 		road_colour = (30, 30, 30)
 		tent_colour = (255, 255, 255)
 		sq_colour = (255, 0, 255)
 		reserved_colour = (0, 0, 255)
 		unknown_colour = (255, 0, 0)
-		renderer = self.land_manager.island.session.view.renderer['InstanceRenderer']
+		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, usage in self.plan.iteritems():
-			tile = self.land_manager.island.ground_map[coords]
+			tile = self.island.ground_map[coords]
 			if usage is None:
 				renderer.addColored(tile._instance, *unknown_colour)
 			else:
