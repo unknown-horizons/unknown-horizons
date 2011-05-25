@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-24 23:59+0200\n"
+"PO-Revision-Date: 2011-05-25 00:00+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: sqlite/Messages
 #: horizons/i18n/guitranslations.py
 msgid "build"
-msgstr ""
+msgstr "rakenna"
 
 #: horizons/gui/ingamegui.py
 #: horizons/gui/modules/multiplayermenu.py
