@@ -22,7 +22,7 @@
 
 from point import Point
 
-from horizons.util.python.decorators import make_constants
+from horizons.util.python.decorators import bind_all
 from horizons.util.shapes.point import ConstPoint
 
 class Circle(object):
@@ -37,7 +37,6 @@ class Circle(object):
 		self.center = center
 		self.radius = radius
 
-	@make_constants()
 	def get_coordinates(self):
 		"""Returns all coordinates, that are in the circle"""
 		coords = []
@@ -49,7 +48,6 @@ class Circle(object):
 		return midpoint_circle(self.center.x, self.center.y, self.radius)
 	  """
 
-	@make_constants()
 	def contains(self, point):
 		assert isinstance(point, Point)
 		if point.distance_to_point(self.center) <= self.radius:
@@ -57,7 +55,6 @@ class Circle(object):
 		else:
 			return False
 
-	@make_constants()
 	def intersects_rect(self, rect):
 		if rect.distance_to_point(self.center) >  self.radius:
 			return True
@@ -66,7 +63,6 @@ class Circle(object):
 	def __str__(self):
 		return "Circle(center=%s,radius=%s)" % (self.center, self.radius)
 
-	@make_constants()
 	def __eq__(self, other):
 		try:
 			if self.center == other.center and \
@@ -80,19 +76,21 @@ class Circle(object):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
-	@make_constants()
 	def distance(self, other):
-		if not hasattr(self, "_distance_functions_map"):
-			from circle import Circle
-			from rect import Rect, ConstRect
-			self._distance_functions_map = {
-				Point: self.distance_to_point,
-				ConstPoint: self.distance_to_point,
-				tuple: self.distance_to_tuple,
-				Circle: self.distance_to_circle,
-				Rect: self.distance_to_rect,
-				ConstRect: self.distance_to_rect
-				}
+		# trap method: init data, then replace this method with real method
+		from rect import Rect, ConstRect
+		self._distance_functions_map = {
+			Point: self.distance_to_point,
+			ConstPoint: self.distance_to_point,
+			tuple: self.distance_to_tuple,
+			Circle: self.distance_to_circle,
+			Rect: self.distance_to_rect,
+			ConstRect: self.distance_to_rect
+		}
+		self.distance = self.__real_distance
+		return self.distance(other)
+
+	def __real_distance(self, other):
 		try:
 			return self._distance_functions_map[other.__class__](other)
 		except KeyError:
@@ -112,7 +110,6 @@ class Circle(object):
 		dist = self.distance(other.center) - self.radius - other.radius
 		return dist if dist >= 0 else 0
 
-	@make_constants()
 	def __iter__(self):
 		"""Iterates through all coords in circle as Point"""
 		"""
@@ -125,8 +122,6 @@ class Circle(object):
 				if self.center.distance_to_tuple((x, y)) <= self.radius:
 					yield Point(x, y)
 
-
-	@make_constants()
 	def tuple_iter(self):
 		"""Iterates through all coords in circle as tuple"""
 		"""
@@ -188,3 +183,5 @@ def midpoint_circle(x0, y0, radius):
 
 	return coords
 
+
+bind_all(Circle)
