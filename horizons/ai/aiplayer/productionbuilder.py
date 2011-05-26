@@ -163,18 +163,17 @@ class ProductionBuilder(object):
 					continue
 				usage = self.plan[coords]
 				if usage is None:
-					value += 2
+					value += 1
 					for dx, dy in moves:
 						coords2 = (coords[0] + dx, coords[1] + dy)
 						if coords2 not in used_area:
 							alignment += 1
 				elif usage[0] == self.purpose.tree:
-					value += 1
-			value = min(value, 30)
+					value += 0.3
+			value = min(value, 32)
 			
 			if value >= 10:
-				value += alignment / 2.0
-				options.append((-value - math.log(alignment + 1), lumberjack))
+				options.append((-value - math.log(alignment + 1) - alignment / 5.0, lumberjack))
 
 		for _, lumberjack in sorted(options):
 			if not self._build_road_connection(lumberjack):
