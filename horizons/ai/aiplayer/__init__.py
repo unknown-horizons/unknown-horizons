@@ -86,6 +86,8 @@ class AIPlayer(GenericAI):
 			self.production_builder = ProductionBuilder(self.land_manager, mission.branch_office)
 			self.production_builder.build_fisher()
 			self.production_builder.build_fisher()
+			self.production_builder.build_lumberjack()
+			self.production_builder.build_lumberjack()
 			self.production_builder.display()
 
 	def report_failure(self, mission, msg):

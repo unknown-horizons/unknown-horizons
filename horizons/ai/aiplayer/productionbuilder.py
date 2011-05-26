@@ -29,7 +29,7 @@ from horizons.util import Point
 from horizons.world.pathfinding.pathfinding import FindPath
 
 class ProductionBuilder(object):
-	purpose = Enum('road', 'fisher', 'reserved')
+	purpose = Enum('branch_office', 'road', 'fisher', 'lumberjack', 'tree', 'reserved')
 
 	def __init__(self, land_manager, branch_office):
 		self.land_manager = land_manager
@@ -39,6 +39,9 @@ class ProductionBuilder(object):
 		self.settlement = land_manager.settlement
 		self.plan = dict.fromkeys(land_manager.production)
 		self.collector_buildings = [branch_office]
+		for coords in branch_office.position.tuple_iter():
+			if coords in self.plan:
+				self.plan[coords] = (self.purpose.branch_office, None)
 
 	def _get_neighbour_tiles(self, rect):
 		"""
@@ -136,9 +139,66 @@ class ProductionBuilder(object):
 			return fisher
 		return None
 
+	def build_lumberjack(self):
+		"""
+		Finds a reasonable place for a lumberjack and builds the lumberjack along with
+		a road connection and additional trees.
+		"""
+		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+		options = []
+
+		for (x, y), usage in self.plan.iteritems():
+			if usage is not None:
+				continue
+			point = Point(x, y)
+			lumberjack = Builder(BUILDINGS.LUMBERJACK_CLASS, self.land_manager, point)
+			if not lumberjack or not self.land_manager.legal_for_production(lumberjack.position):
+				continue
+
+			value = 0
+			alignment = 0
+			used_area = set(lumberjack.position.get_radius_coordinates(3, True))
+			for coords in lumberjack.position.get_radius_coordinates(3):
+				if coords not in self.plan:
+					continue
+				usage = self.plan[coords]
+				if usage is None:
+					value += 2
+					for dx, dy in moves:
+						coords2 = (coords[0] + dx, coords[1] + dy)
+						if coords2 not in used_area:
+							alignment += 1
+				elif usage[0] == self.purpose.tree:
+					value += 1
+			value = min(value, 30)
+			
+			if value >= 10:
+				value += alignment / 2.0
+				options.append((-value - math.log(alignment + 1), lumberjack))
+
+		for _, lumberjack in sorted(options):
+			if not self._build_road_connection(lumberjack):
+				continue
+			lumberjack.execute()
+			for coords in lumberjack.position.tuple_iter():
+				self.plan[coords] = (self.purpose.reserved, None)
+			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (self.purpose.lumberjack, lumberjack)
+			
+			for coords in lumberjack.position.get_radius_coordinates(3):
+				if coords not in self.plan:
+					continue
+				usage = self.plan[coords]
+				if usage is None:
+					self.plan[coords] = (self.purpose.tree, None)
+					tree = Builder(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
+			return lumberjack
+		return None
+
 	def display(self):
 		road_colour = (30, 30, 30)
 		fisher_colour = (128, 128, 128)
+		lumberjack_colour = (30, 255, 30)
+		tree_colour = (0, 255, 0)
 		reserved_colour = (0, 0, 128)
 		unknown_colour = (128, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -153,5 +213,9 @@ class ProductionBuilder(object):
 					renderer.addColored(tile._instance, *road_colour)
 				elif usage == self.purpose.fisher:
 					renderer.addColored(tile._instance, *fisher_colour)
+				elif usage == self.purpose.lumberjack:
+					renderer.addColored(tile._instance, *lumberjack_colour)
+				elif usage == self.purpose.tree:
+					renderer.addColored(tile._instance, *tree_colour)
 				elif usage == self.purpose.reserved:
 					renderer.addColored(tile._instance, *reserved_colour)
