@@ -116,6 +116,21 @@ class SelectionTool(NavigationTool):
 			for i in self.session.selected_instances:
 				i.show_menu()
 
+		#NOTE change session cursor to attacking tool if selected instances can attack
+		from attackingtool import AttackingTool
+		attacking_unit_found = False
+		for i in self.session.selected_instances:
+			if hasattr(i, 'attack'):
+				attacking_unit_found = True
+				break
+
+		if attacking_unit_found and not isinstance(self.session.cursor, AttackingTool):
+			self.session.cursor = AttackingTool(self.session)
+		if not attacking_unit_found and isinstance(self.session.cursor, AttackingTool):
+			self.session.cursor = SelectionTool(self.session)
+			print 'selection tool selected'
+		#############################
+
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
 			super(SelectionTool, self).mousePressed(evt)

@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from horizons.util import Annulus, Callback
+from horizons.world.units.movingobject import MoveNotPossible
 
 class WeaponHolder(object):
 	def __init__(self, **kwargs):
@@ -42,18 +43,21 @@ class WeaponHolder(object):
 		return False
 
 	def attack(self, dest):
+		if self.is_moving:
+			self.stop()
 		print 'attack issued'
 		in_range = False
+		min_range = min([w.get_minimum_range() for w in self._weapon_storage])
+		max_range = max([w.get_maximum_range() for w in self._weapon_storage])
+		#TODO change to distance_to_point in distance and test it
 		distance = self.position.distance_to_point(dest)
-		for weapon in self._weapon_storage:
-			weapon.fire(dest, distance)
-			if weapon.in_range:
-				in_range = True
+		if distance >= min_range and distance <= max_range:
+			for weapon in self._weapon_storage:
+				weapon.fire(dest, distance)
+			in_range = True
 
 		if not in_range:
 			if self.is_moving:
-				min_range = min([w.get_minimum_range() for w in self._weapon_storage])
-				max_range = max([w.get_maximum_range() for w in self._weapon_storage])
 				try:
 					self.move(Annulus(dest, min_range, max_range), Callback(self.attack, dest),
 						blocked_callback = Callback(self.attack, dest))

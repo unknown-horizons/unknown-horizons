@@ -35,23 +35,44 @@ class AttackingTool(SelectionTool):
 	"""
 	def __init__(self, session):
 		super(AttackingTool, self).__init__(session)
-		print 'entered attack mode'
+		print 'attacking tool selected'
 
 	def mousePressed(self, evt):
 		#NOTE for testing, catches only one right click event, then reverts to selection tool
 		if (evt.getButton() == fife.MouseEvent.RIGHT):
 			target_mapcoord = self.session.view.cam.toMapCoordinates(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			for i in self.session.selected_instances:
-				#TODO attack command
-				#dummy attack if possible
+
+			instances = self.session.view.cam.getMatchingInstances(\
+				fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+			attackable = False
+			for i in instances:
+				id = i.getId()
+				if id == '':
+					continue
+				instance = WorldObject.get_object_by_id(int(id))
+				#NOTE attacks only buildings or ships
 				try:
-					i.attack(self._get_world_location_from_event(evt))
-					print 'attacked from', i
+					if instance.is_building or instance.is_ship:
+						attackable = True
+						target = instance
 				except AttributeError:
 					pass
+
+			if attackable:
+				for i in self.session.selected_instances:
+					#TODO attack command
+					#dummy attack if possible
+					try:
+						i.attack(self._get_world_location_from_event(evt))
+						print 'attacked from', i
+					except AttributeError:
+						pass
+
+			else:
+				for i in self.session.selected_instances:
+					if i.movable:
+						Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
 			evt.consume()
 		else:
 			super(AttackingTool, self).mousePressed(evt)
-		self.session.cursor = SelectionTool(self.session)
-		print 'exit attack mode'

@@ -41,8 +41,6 @@ class Weapon(object):
 		#bullet speed in tiles per second
 		#used to deal damage when bullet has reached the target
 		self.attack_speed = 2
-		#if weapon is in range for an attack set to true
-		self.in_range = False
 		#time until attack is ready again
 		#will have one attack per 10 seconds
 		self.cooldown_time = 10
@@ -79,10 +77,7 @@ class Weapon(object):
 		"""
 
 		if not self.check_target_in_range(distance):
-			self.in_range = False
 			return
-
-		self.in_range = True
 
 		if not self.attack_ready:
 			print 'attack not ready!'
