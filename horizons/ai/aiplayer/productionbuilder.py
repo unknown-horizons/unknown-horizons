@@ -110,7 +110,7 @@ class ProductionBuilder(object):
 				continue
 			point = Point(x, y)
 			fisher = Builder(BUILDINGS.FISHERMAN_CLASS, self.land_manager, point)
-			if not fisher:
+			if not fisher or not self.land_manager.legal_for_production(fisher.position):
 				continue
 
 			fish_value = 0

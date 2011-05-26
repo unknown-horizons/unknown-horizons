@@ -43,6 +43,13 @@ class LandManager(object):
 			return True
 		return False
 
+	def legal_for_production(self, rect):
+		""" Is every tile in the rectangle in production area or on the coast? """
+		for coords in rect.tuple_iter():
+			if coords in self.village:
+				return False
+		return True
+
 	def divide(self):
 		"""
 		Divides the area of the island so that there is a large lump for the village
