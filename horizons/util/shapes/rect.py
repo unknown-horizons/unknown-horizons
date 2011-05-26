@@ -99,13 +99,15 @@ class Rect(object):
 	def distance(self, other):
 		"""Calculates distance to another object"""
 		# trap method: init data, then replace this method with real method
+		from annulus import Annulus
 		self._distance_functions_map = {
 		  Point: self.distance_to_point,
 		  ConstPoint: self.distance_to_point,
 		  Rect: self.distance_to_rect,
 		  ConstRect: self.distance_to_rect,
 		  Circle: self.distance_to_rect,
-		  tuple: self.distance_to_tuple
+		  tuple: self.distance_to_tuple,
+		  Annulus: self.distance_to_annulus
 		}
 		self.distance = self.__real_distance
 		return self.distance(other)
@@ -136,6 +138,10 @@ class Rect(object):
 
 	def distance_to_circle(self, other):
 		dist = self.distance_to_point(other.center) - other.radius
+		return dist if dist >= 0 else 0
+
+	def distance_to_annulus(self, other):
+		dist = self.distance_to_point(other.center) - other.max_radius
 		return dist if dist >= 0 else 0
 
 	def get_coordinates(self):
@@ -310,3 +316,4 @@ class ConstRect(Const, Rect):
 
 bind_all(Rect)
 bind_all(Const)
+

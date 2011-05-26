@@ -36,13 +36,15 @@ class Point(object):
 		# trap method: init data, then replace this method with real method
 		from circle import Circle
 		from rect import Rect, ConstRect
+		from annulus import Annulus
 		self._distance_functions_map = {
 			Point: self.distance_to_point,
 			ConstPoint: self.distance_to_point,
 			tuple: self.distance_to_tuple,
 			Circle: self.distance_to_circle,
 			Rect: self.distance_to_rect,
-			ConstRect: self.distance_to_rect
+			ConstRect: self.distance_to_rect,
+			Annulus: self.distance_to_annulus
 		}
 		self.distance = self.__real_distance
 		return self.distance(other)
@@ -65,6 +67,10 @@ class Point(object):
 
 	def distance_to_circle(self, other):
 		dist = self.distance(other.center) - other.radius
+		return dist if dist >= 0 else 0
+
+	def distance_to_annulus(self, other):
+		dist = self.distance(other.center) - other.max_radius
 		return dist if dist >= 0 else 0
 
 	def get_coordinates(self):
@@ -138,3 +144,4 @@ class ConstPoint(Const, Point):
 
 bind_all(Point)
 bind_all(ConstPoint)
+
