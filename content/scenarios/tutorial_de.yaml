@@ -5,35 +5,31 @@
 # translation files from pootle.
 
 author: !!python/unicode 'Das UH Team'
-description: !!python/unicode 'Das Tutorial:
-
-  Errichtet Eure erste Siedlung und lernt das Spiel kennen!
-
-  '
-difficulty: !!python/unicode 'Tutorial'
+description: "Das Einf\xFChrungsspiel:\nErrichtet Eure erste Siedlung und lernt das\
+  \ Spiel kennen!\n"
+difficulty: "Einf\xFChrung"
 events:
 - actions:
   - arguments: ["Errichtet ein Kontor an der K\xFCste."]
     type: message
   - arguments: [!!python/unicode 'Willkommen bei Unknown Horizons!', "Dies ist Euer\
         \ Logbuch, in dem alle wichtigen Informationen gespeichert werden. Zu jeder\
-        \ Aufgabe gibt es auch kurze Mitteilungen. Solltet Ihr jedoch l\xE4ngere Beschreibungen\
-        \ bevorzugen, liefert das Logbuch hoffentlich alle ben\xF6tigten Informationen.\n\
-        \nFalls Ihr das Logbuch geschlossen habt, k\xF6nnt Ihr es \xFCber das Logbuchsymbol\
-        \ in der Ecke oben rechts (unter der Weltkarte mit einem versiegelten Dokument\
-        \ und einer Feder) wieder \xF6ffnen.\n\nSolltet Ihr Verbesserungsvorschl\xE4\
-        ge f\xFCr Erkl\xE4rungen im Tutorial haben, bestimmte Bereiche n\xE4her erkl\xE4\
-        rt haben m\xF6chtet oder einen Fehler findet: Z\xF6gert nicht, das dem Team\
-        \ mitzuteilen! Wir werden dann versuchen, das Tutorial zu verbessern.\n\n\
-        Unter www.unknown-horizons.org k\xF6nnt Ihr das Team kontaktieren oder Hilfe\
-        \ erhalten.\n\nUnd nun lasst uns das eigentliche Spiel beginnen."]
+        \ Aufgabe gibt es auch kurze Mitteilungen.\n\nFalls Ihr das Logbuch geschlossen\
+        \ habt, k\xF6nnt Ihr es per Taste L oder \xFCber das Logbuchsymbol in der\
+        \ Ecke oben rechts (unter der Weltkarte mit einem versiegelten Dokument und\
+        \ einer Feder) wieder \xF6ffnen.\n\nSolltet Ihr Verbesserungsvorschl\xE4ge\
+        \ f\xFCr Erkl\xE4rungen in der Anleitung haben, m\xF6chtet bestimmte Bereiche\
+        \ n\xE4her erkl\xE4rt haben oder Ihr habt einen Fehler gefunden: Teilt das\
+        \ dem Team mit! Nur so k\xF6nnen wir diese Anleitung verbessern.\nUnter www.unknown-horizons.org\
+        \ k\xF6nnt Ihr das Team kontaktieren oder Hilfe erhalten.\n\nUnd nun lasst\
+        \ uns das eigentliche Spiel beginnen."]
     type: logbook_w
   - arguments: [!!python/unicode 'NEUE AUFGABE: INSEL BESIEDELN', "Um Euer Schiff\
         \ zu bewegen, w\xE4hlt es mit einem Linksklick an. Ein Rechtsklick bewegt\
         \ es nun zu der gew\xFCnschten Position.\n\nIn K\xFCstenn\xE4he wird der anker\xE4\
         hnliche Button im \xDCbersichtstab Eures Schiffes aktiv.\n\nDas hei\xDFt,\
-        \ dass Ihr an diesem K\xFCstenabschnitt vermittels des Buttons 'Baue Siedlung'\
-        \ ein Kontor errichten k\xF6nnt.\n\nEs erscheint dann eine Geb\xE4udevorschau,\
+        \ dass Ihr an diesem K\xFCstenabschnitt vermittels des Buttons 'Siedlung errichten'\
+        \ ein Kontor bauen k\xF6nnt.\n\nEs erscheint dann eine Geb\xE4udevorschau,\
         \ die mit dem Mauszeiger \xFCber die Karte bewegt wird.\n\nIhr k\xF6nnt das\
         \ Geb\xE4ude \xFCberall bauen, wo die Vorschau nicht rot eingef\xE4rbt ist.\n\
         Klickt einfach auf den gew\xFCnschten Bauplatz, um den Bau abzuschlie\xDF\
@@ -45,21 +41,21 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'NEUE AUFGABE: SCHIFF ENTLADEN', "Nachdem Ihr \xFC\
-        ber ein Kontor verf\xFCgt, solltet Ihr einige Ressourcen aus dem Schiffsinventar\
-        \ in dessen Lager verfrachten.\n\nUm das zu tun, w\xE4hlt das Schiff an und\
-        \ klickt auf den Tab mit Namen 'Schiffsinventar', erkennbar am Holzkisten-Icon.\n\
-        \nHier findet Ihr eine \xDCbersicht des Schiffsladeraums vor. Entladen wird\
+  - arguments: [!!python/unicode 'NEUE AUFGABE: SCHIFF ENTLADEN', "Nachdem Ihr nun\
+        \ \xFCber ein Kontor verf\xFCgt, solltet Ihr einige Waren vom Schiff in dessen\
+        \ Lager verfrachten.\n\nUm dies zu tun, w\xE4hlt das Schiff an und klickt\
+        \ auf den Tab mit Namen 'Schiffsladung', erkennbar am Holzkisten-Icon.\n\n\
+        Hier findet Ihr eine \xDCbersicht des Schiffsladeraums vor. Entladen wird\
         \ mit dem Button 'Be-/Entladen'.\n\nDieser Button wird aktiv, wenn Euer Schiff\
         \ in Reichweite eines m\xF6glichen Handelspartners wie einem Kontor ist.\n\
         \nKlickt auf den Button. Wenn er nicht aktiv ist, muss das Schiff n\xE4her\
-        \ an das Kontor gelangen.\n\nAUFGABE: \xD6ffne den Handelsdialog."]
+        \ an das Kontor gelangen.\n\nAUFGABE: \xD6ffnet den Handelsdialog."]
     type: logbook_w
   - arguments: ['', "Der angezeigte Tab ist aufgeteilt in 'Schiff' und 'Siedlung'\
-        \ als die jeweiligen Handelspartner.n\nUm Waren von einem Lagerraum in einen\
-        \ anderen zu verfrachten, klickt einfach auf deren Icon.\n\nVersucht zuerst,\
-        \ die Bretter vom Schiff in das Kontor und danach wieder zur\xFCck in das\
-        \ Schiff zu verfrachten.\n\nDie Menge der verfrachteten Ware \xFCber die Radio-Buttons\
+        \ als die jeweiligen Handelspartner.n\nUm Waren von einem Lager in das andere\
+        \ zu verfrachten, klickt einfach auf deren Icon.\n\nVersucht zuerst, die Bretter\
+        \ vom Schiff in das Kontor und danach wieder zur\xFCck in das Schiff zu verfrachten.\n\
+        \nDie Menge der verfrachteten Ware prio Klick wird \xFCber die Radio-Buttons\
         \ in der Mitte geregelt.\n\nHabt Ihr Euch an die Funktionsweise des Handelstabs\
         \ gew\xF6hnt?\nWohlan denn: Ihr ben\xF6tigt nun etwas Baumaterial in Eurer\
         \ Siedlung!\n\nAUFGABE: Entladet mindestens 10 Tonnen jeder Ressource auf\
@@ -83,24 +79,24 @@ events:
         \nLasst uns mit dem Bau eines Holzf\xE4llerlagers beginnen.\n\nDies ist wichtig,\
         \ da Holz in dieser Stufe das einzige ist, womit Eure Seefahrer ihre Zelte\
         \ aufschlagen k\xF6nnen.\n\nDer Fischer braucht ebenfalls Bretter, um sein\
-        \ Ruderboot zu bauen.\n\nUm ein Holzf\xE4llerlager zu errichten, m\xFCsst\
-        \ Ihr das Baumen\xFC \xF6ffnen. Klickt dazu auf das gro\xDFe Symbol unter\
-        \ der Weltkarte oder dr\xFCckt die Taste B.\n\nDas Baumen\xFC ist nach Siedlerstufen\
+        \ Ruderboot zu bauen.\n\nUm ein Holzf\xE4llerlager zu errichten, ben\xF6tigt\
+        \ Ihr das Baumen\xFC. Klickt dazu auf das gro\xDFe Werkzeug-Symbol unter der\
+        \ Weltkarte oder dr\xFCckt die Taste B.\n\nDas Baumen\xFC ist nach Siedlerstufen\
         \ sortiert.\nDas bedeutet, dass in der Stufe Seefahrer (mit der Ihr startet)\
         \ nur grundlegende Geb\xE4ude verf\xFCgbar sind."]
     type: logbook_w
   - arguments: ['', "W\xE4hrend Eure Zivilisation sich weiterentwickelt, wird sie\
         \ St\xFCck f\xFCr St\xFCck immer komplexere Geb\xE4ude erbauen k\xF6nnen.\n\
-        \nW\xE4hlt f\xFCrs Erste das Holzf\xE4llerlager unter \"Betriebe\" aus und\
-        \ platziert es in einem Bereich, in dem es von B\xE4umen umgeben ist.\n\n\
-        B\xE4ume k\xF6nnen auch nachtr\xE4glich gepflanzt werden - kostet aber Geld.\
-        \ Nutzt also alle Ressourcen, welche die Natur anbietet!\n\nEin Betrieb braucht\
-        \ immer eine Verbindung zu einem Lager oder dem Kontor, sonst k\xF6nnen die\
-        \ Waren nicht gesammelt werden und bleiben unbenutzt im Betrieb.\n\nDas bedeutet,\
-        \ dass Ihr einen Pfad vom Holzf\xE4llerlager zum Kontor bauen solltet.\n\n\
-        AUFGABE: Errichtet ein Holzf\xE4llerlager in einem bewaldeten Gebiet und verseht\
-        \ es mit einem Stra\xDFenanschluss.\n\nBetrachtet, wie Eure ersten selbstproduzierten\
-        \ Bretter abgeholt werden."]
+        \nW\xE4hlt f\xFCrs Erste das Holzf\xE4llerlager unter 'Betriebe' aus und platziert\
+        \ es in einem Bereich, in dem es von B\xE4umen umgeben ist.\n\nB\xE4ume k\xF6\
+        nnen auch nachtr\xE4glich gepflanzt werden - kostet aber Geld. Nutzt also\
+        \ alle Ressourcen, welche die Natur anbietet!\n\nEin Betrieb braucht immer\
+        \ eine Verbindung zu einem Lager oder dem Kontor, sonst k\xF6nnen die Waren\
+        \ nicht gesammelt werden und bleiben unbenutzt im Betrieb.\n\nDas bedeutet,\
+        \ dass Ihr einen Trampelpfad vom Holzf\xE4llerlager zum Kontor bauen solltet.\n\
+        \nAUFGABE: Errichtet ein Holzf\xE4llerlager in einem bewaldeten Gebiet und\
+        \ verseht es mit einem Stra\xDFenanschluss.\n\nBetrachtet, wie Eure ersten\
+        \ selbst produzierten Bretter abgeholt werden."]
     type: logbook
   - arguments: ["Errichtet ein Holzf\xE4llerlager und verseht es mit einem Stra\xDF\
         enanschluss zum Kontor."]
@@ -124,20 +120,21 @@ events:
         \ (und besonders Seeleute) sind f\xFCr gew\xF6hnlich sehr hungrig.\n\nVerf\xFC\
         gbare Betriebe in der ersten Stufe sind J\xE4ger und Fischer.\n\nDer J\xE4\
         ger jagt (\xFCberraschenderweise) Tiere im Wald. Daher ben\xF6tigt er B\xE4\
-        ume in seinem Einzugsgebiet.\n\nBeachtet, das er in der N\xE4he des Holzf\xE4\
+        ume in seinem Einzugsgebiet.\n\nBeachtet, dass er in der N\xE4he des Holzf\xE4\
         llers platziert werden kann.\n\nEs kann vorkommen, dass sich die Tiere nicht\
         \ schnell genug vermehren oder sich einfach gut verstecken. In dieser Zeit\
         \ wird auch der J\xE4ger nichts produzieren.\n\nFazit: Der J\xE4ger ist also\
-        \ nicht so verl\xE4sslich, wenn du eine kontinuierliche Versorgung ben\xF6\
-        tigst."]
+        \ nicht so verl\xE4sslich, wenn Ihr eine kontinuierliche Versorgung ben\xF6\
+        tigt."]
     type: logbook_w
   - arguments: ['', "Der Fischer ben\xF6tigt wie das Kontor einen Bauplatz am Ufer\
-        \ - und sonst nichts.\n\nEr wird ein kleines Ruderboot bauen und ein paar\
-        \ Fische fangen.\n\nDies ist eine sehr konstante Nahrungsversorgung zum Preis\
-        \ einer etwas l\xE4ngeren Produktionszeit pro Nahrungseinheit.\n\nEine kleine\
-        \ Siedlung wie Eure kann beide Betriebe gebrauchen. Im direkten Vergleich\
-        \ k\xF6nnt Ihr selbst Vor- und Nachteile abw\xE4gen.\n\nAUFGABE: Errichtet\
-        \ einen J\xE4ger und einen Fischer.\n\nUnd vergesst die Wege zum Kontor nicht!"]
+        \ und muss au\xDFerdem mindestens einen Fischschwarm in seinem Einzugsgebiet\
+        \ besitzen.\n\nEr wird dann ein kleines Ruderboot bauen und ein paar Fische\
+        \ fangen.\n\nDies ist eine sehr konstante Nahrungsversorgung zum Preis einer\
+        \ etwas l\xE4ngeren Produktionszeit pro Nahrungseinheit.\n\nEine kleine Siedlung\
+        \ wie die Eure kann beide Betriebe gebrauchen. Im direkten Vergleich k\xF6\
+        nnt Ihr selbst Vor- und Nachteile abw\xE4gen.\n\nAUFGABE: Errichtet einen\
+        \ J\xE4ger und einen Fischer.\n\nUnd vergesst die Wege zum Kontor nicht!"]
     type: logbook
   - arguments: ["Errichtet einen J\xE4ger und einen Fischer. Verbindet sie mit dem\
         \ Kontor."]
@@ -155,22 +152,22 @@ events:
   - arguments: [!!python/unicode 'NEUE AUFGABE: MARKTPLATZ', "Eure Einwohner verlangen\
         \ nach einen Marktplatz, von dem sie ihre G\xFCter abholen k\xF6nnen.\n\n\
         Aus diesem Grund ben\xF6tigen sie eine Stra\xDFenverbindung von ihrem Haus\
-        \ zum Marktplatz.\n\nAlle G\xFCter in Eurem Kontor sind dort verf\xFCgbar.\
-        \ Dadurch m\xFCssen die Einwohner weder zum Fischer noch zum Kontor laufen.\n\
-        \nBeachtet, dass Ihr Eure Siedlung am besten in einem Gebiet errichtet, wo\
-        \ man sie einfach vergr\xF6\xDFern kann und auch Platz f\xFCr Wege vorhanden\
+        \ zum Marktplatz.\n\nAlle G\xFCter in Eurem Kontor sind auch dort verf\xFC\
+        gbar. Dadurch m\xFCssen die Einwohner weder zum Fischer noch zum Kontor laufen.\n\
+        \nBeachtet, dass Ihr Eure Einwohner am besten in einem Gebiet ansiedelt, welches\
+        \ man einfach vergr\xF6\xDFern kann und wo auch Platz f\xFCr Wege vorhanden\
         \ ist.\n\nIm Allgemeinen sollten Zelte beispielsweise nicht zu nah an die\
-        \ Holzf\xE4llerlager gebaut werden, da sonst B\xE4ume abgerissen werden.\n\
-        \nAUFGABE: Errichtet einen Marktplatz."]
+        \ Holzf\xE4llerlager gebaut werden, da sonst wertvolle B\xE4ume gef\xE4llt\
+        \ werden.\n\nAUFGABE: Errichtet einen Marktplatz."]
     type: logbook_w
   - arguments: ['', "Lasst uns nun einen genaueren Blick auf den Marktplatz werfen.\n\
         \nIm Tab '\xDCbersicht' k\xF6nnen die Steuern schnell angepasst werden.\n\n\
         Im zweiten Tab 'Finanzen' erhaltet Ihr eine \xDCbersicht der Bilanz dieser\
-        \ Insel. Sie enth\xE4lt alle laufenden Kosten, die Ihr zahlt und alle eingenommenen\
+        \ Insel. Sie enth\xE4lt alle Betriebskosten, die Ihr zahlt, und alle eingenommenen\
         \ Steuern.\n\nDie Posten 'Verkaufen' und 'Einkaufen' beziehen sich auf Eure\
         \ Handelsbilanz und werden sp\xE4ter ausf\xFChrlich erkl\xE4rt.\n\nF\xE4llt\
         \ die Bilanz positiv aus, macht Ihr auf dieser Insel Gewinn.\n\nIm 'Siedler'-Tab\
-        \ seht Ihr die Zufriedenheit Eurer Einwohner und auch, nach welchen Rohstoffen\
+        \ seht Ihr die Zufriedenheit Eurer Einwohner und auch, nach welchen Waren\
         \ die meisten von ihnen gerade verlangen."]
     type: logbook
   - arguments: ["Errichtet einen Marktplatz. W\xE4hlt eine Gegend ohne viele Wirtschaftsgeb\xE4\
@@ -194,8 +191,8 @@ events:
 - actions:
   - arguments: ["NEUE AUFGABE: WOHNGEB\xC4UDE", "Siedler wollen ein Dach \xFCber dem\
         \ Kopf haben, sonst werden sie nicht einmal daran denken, sich in Eurer Stadt\
-        \ niederzulassen. Hierzu m\xFCsst Ihr Zelte bereitstellen!\n\nDie einfachsten\
-        \ Wohngeb\xE4ude sind Zelte.\n\nEure Einwohner werden sie ausbauen, wenn sie\
+        \ niederzulassen. Hierzu m\xFCsst Ihr Zelte bereitstellen!\n\nZelte sind die\
+        \ einfachsten Wohngeb\xE4ude. Eure Einwohner werden sie ausbauen, wenn sie\
         \ eine h\xF6here Stufe erreichen.\n\nEinwohner m\xF6gen vielleicht auf den\
         \ ersten Blick nicht sehr n\xFCtzlich erscheinen \u2013 sie verbrauchen den\
         \ Gro\xDFteil der G\xFCter, die Ihr produziert. Aber sie zahlen daf\xFCr immerhin\
@@ -215,15 +212,15 @@ events:
     type: var_lt
 - actions:
   - arguments: ['', "Wir sollten uns nun den \xDCbersichts-Tab eines Zelts ansehen.\n\
-        Es wird angezeigt:\n* die Stimmung dieser Bewohner\n* die H\xF6he der Steuern,\
-        \ die sie zahlen und\n* die Ressourcen, nach denen sie verlangen\n\nWenn ihr\
-        \ Bedarf gedeckt ist, werden ihre Stimmung und damit Eure Steuern steigen.\n\
-        \nSind sie es nicht, sinkt die Zufriedenheit und das Steueraufkommen. Ab einem\
-        \ gewissen Punkt werden die Einwohner wirklich sauer, sodass sie ihre Koffer\
-        \ packen, aus der Stadt verschwinden und nur noch eine Ruine zur\xFCcklassen.\n\
-        \nBeachtet, dass Ihr auch hier an der Steuerschraube drehen k\xF6nnt.\n\n\
-        AUFGABE: Erbaut noch drei weitere Zelte.\n\nTIPP: Mit gedr\xFCckter SHIFT-Taste\
-        \ wird das Bauen von mehreren Geb\xE4uden des selben Typs erleichtert."]
+        Es wird angezeigt:\n* die Zufriedenheit dieser Bewohner,\n* die H\xF6he der\
+        \ Steuern, die sie zahlen und\n* die Waren, nach denen sie verlangen\n\nWenn\
+        \ ihr Bedarf gedeckt ist, werden ihre Zufriedenheit und damit Eure Steuereinnahmen\
+        \ steigen.\n\nSind sie es nicht, sinkt beides. Ab einem gewissen Punkt werden\
+        \ die Einwohner wirklich sauer, sodass sie ihre Koffer packen, aus der Stadt\
+        \ verschwinden und nur noch eine unbewohnbare Ruine zur\xFCcklassen.\n\nBeachtet,\
+        \ dass Ihr auch in diesem Tab an der Steuerschraube drehen k\xF6nnt.\n\nAUFGABE:\
+        \ Erbaut noch drei weitere Zelte.\n\nTIPP: Mit gedr\xFCckter SHIFT-Taste wird\
+        \ das Bauen von mehreren Geb\xE4uden des selben Typs erleichtert."]
     type: logbook
   - arguments: ["Errichtet mindestens drei zus\xE4tzliche Zelte und verbindet sie\
         \ mit dem Marktplatz."]
@@ -240,13 +237,13 @@ events:
 - actions:
   - arguments: [!!python/unicode 'NEUE AUFGABE: LEUCHTFEUER BAUEN', "Habt Ihr das\
         \ Schiff bemerkt, welches von Zeit zu Zeit Eure Insel ansteuert?\n\nDieses\
-        \ Schiff ist ein Freier H\xE4ndler, einer der ersten Siedler in diesem Archipel.\n\
-        \nDieser H\xE4ndler beliefert Siedlungen mit G\xFCtern, die Ihr momentan noch\
-        \ nicht produzieren k\xF6nnt.\n\nAu\xDFerdem wird er Produktions\xFCbersch\xFC\
-        sse einkaufen, aber im Allgemeinen ist das Verbrauchen (mehr Zelte errichten)\
-        \ profitabler als der Verkauf.\n\nIn der Regel fahren die Schiffe umher und\
-        \ halten Ausschau nach m\xF6glichen Gesch\xE4ften. Neu gegr\xFCndete Siedlungen\
-        \ wie Eure ben\xF6tigen erst etwas Werbung, sonst werden sie nicht gefunden.\n\
+        \ Schiff ist ein Freier H\xE4ndler, einer der ersten Siedler in diesem Archipel.\
+        \ Er beliefert Siedlungen mit G\xFCtern, die Ihr momentan noch nicht produzieren\
+        \ k\xF6nnt.\n\nAu\xDFerdem wird er Produktions\xFCbersch\xFCsse einkaufen,\
+        \ aber im Allgemeinen ist das Verbrauchen (mehr Zelte errichten) eintr\xE4\
+        glicher als der Verkauf.\n\nIn der Regel fahren die Schiffe umher und halten\
+        \ Ausschau nach m\xF6glichen Gesch\xE4ften. Neu gegr\xFCndete Siedlungen wie\
+        \ Eure ben\xF6tigen jedoch erst etwas Werbung, sonst werden sie nicht gefunden.\n\
         \nZu diesem Zweck k\xF6nnt Ihr ein Leuchtfeuer an der K\xFCste in der N\xE4\
         he des Kontors errichten, um Schiffen den Weg zur Siedlung zu zeigen."]
     type: logbook_w
@@ -256,9 +253,9 @@ events:
         \ aber wir haben ein Ticket f\xFCr die Umgestaltung ge\xF6ffnet, um daran\
         \ zu arbeiten. Wenn Ihr eine gute Idee habt, teilt sie uns bitte mit! Wir\
         \ brauchen dabei jede erdenkliche Hilfe!\n\nIn der Stufe 'Seefahrer' stehen\
-        \ Euch drei Handelsslots zur Verf\xFCgung.\n\nKlickt auf das kleine Symbol,\
-        \ um vom Modus 'Verkaufen' auf 'Kaufen' und umgekehrt zu wechseln.\n\nUm das\
-        \ Handelsgut auszuw\xE4hlen, klickt in einen Slot. Wir werden das Vorgehen\
+        \ Euch drei Handelsslots zur Verf\xFCgung. Klickt auf das kleine Symbol im\
+        \ Slot, um vom Modus 'Verkaufen' auf 'Kaufen' und umgekehrt zu wechseln.\n\
+        \nUm das Handelsgut auszuw\xE4hlen, klickt in einen Slot. Wir werden das Vorgehen\
         \ weiter betrachten, wenn Ihr alle Voraussetzungen erf\xFCllt, um Handel zu\
         \ treiben.\n\nAUFGABE: Errichtet ein Leuchtfeuer an der K\xFCste in der N\xE4\
         he des Kontors."]
@@ -278,27 +275,27 @@ events:
   - arguments: [!!python/unicode 'NEUE AUFGABE: HANDEL TREIBEN', "Wunderbar! Der Freie\
         \ H\xE4ndler h\xE4lt nun von Zeit zu Zeit an Eurem Kontor. Weiter geht es\
         \ mit der Anleitung zum Handeln.\n\nNach dem Ausw\xE4hlen eines Guts zeigt\
-        \ der gr\xFCne Balken im Tab 'Handel', wie viel davon momentan eingelagert\
-        \ sind. Befindet sich keine Ware im Lager, wird auch kein Balken erscheinen.\n\
-        \nDas Bewegen des Schiebereglers auf der rechten Seite des Slots ver\xE4ndert\
-        \ die maximale Lagermenge. Dieser Wert hat unterschiedliche Bedeutungen beim\
-        \ Ver- und Einkauf.\n\nEin Beispiel zum besseren Verst\xE4ndnis:\n\nWenn 5\
-        \ Tonnen auf Lager sind und der Regler auf 9 Tonnen 'Einkauf' gestellt ist,\
-        \ bedeutet es, dass zus\xE4tzlich bis zu 4 Tonnen gekauft werden.\n\nWenn\
-        \ der freie H\xE4ndler nur 3 Tonnen verkaufen m\xF6chte, m\xFCsst Ihr damit\
-        \ leben und auf einen weiteren Besuch warten."]
+        \ der gr\xFCne Balken, wie viel davon momentan vorr\xE4tig sind. Befindet\
+        \ sich keine Ware im Lager, wird auch kein Balken erscheinen.\n\nDas Bewegen\
+        \ des Schiebereglers auf der rechten Seite des Slots ver\xE4ndert die maximale\
+        \ Lagermenge. Dieser Wert hat unterschiedliche Bedeutungen beim Ver- und Einkauf.\n\
+        \nBeim Einkauf legt er fest, wie viel dieser Ware Ihr insgesamt bevorraten\
+        \ m\xF6chtet, beim Verkauf wird jeder \xDCberschuss \xFCber diesem Wert verkauft."]
     type: logbook_w
-  - arguments: ['', "Der Verkauf funktioniert genauso. Ein Verkaufsposten, bei dem\
-        \ der Schieberegler auf 13 Tonnen gestellt ist, bewirkt bei einem Lagerstand\
-        \ von 18 Tonnen, dass noch bis zu 5 Tonnen verkauft werden.\n\nDer Wert einer\
-        \ Ware kann NICHT manuell beeinflusst werden! Er setzt sich zusammen aus verschiedenen\
-        \ Faktoren und wird an die Handelssituation der Inselwelt angepasst.\n\nIhr\
-        \ k\xF6nnt die Handelsbilanz im Tab 'Finanzen' einsehen, in dem die Posten\
-        \ Ein- und Verkauf gegen\xFCbergestellt sind.\n\nAUFGABE: Kauft so viel Werkzeuge\
-        \ ein, dass Ihr 30 Einheiten auf Lager habt.\n\nWenn Ihr immer noch Werkzeuge\
-        \ auf Eurem Schiff lagert, w\xE4re nun eine g\xFCnstige Gelegenheit zum Entladen."]
+  - arguments: ['', "Ein Beispiel zum besseren Verst\xE4ndnis:\n\nWenn 5 Tonnen auf\
+        \ Lager sind und der Regler auf 9 Tonnen 'Einkauf' gestellt ist, bedeutet\
+        \ es, dass zus\xE4tzlich bis zu 4 Tonnen gekauft werden. Ein Verkaufsposten,\
+        \ bei dem der Schieberegler auf 13 Tonnen gestellt ist, bewirkt bei einem\
+        \ Lagerstand von 18 Tonnen, dass noch bis zu 5 Tonnen verkauft werden.\n\n\
+        Der Wert einer Ware kann NICHT manuell beeinflusst werden! Er setzt sich zusammen\
+        \ aus verschiedenen Faktoren und wird an die Handelssituation der Inselwelt\
+        \ angepasst. Ihr k\xF6nnt die Handelsbilanz im Tab 'Finanzen' einsehen, in\
+        \ dem die Posten Ein- und Verkauf gegen\xFCbergestellt sind.\n\nAUFGABE: Kauft\
+        \ so viel Werkzeuge ein, dass Ihr 30 Einheiten auf Lager habt.\n\nWenn Ihr\
+        \ immer noch Werkzeuge auf Eurem Schiff lagert, w\xE4re nun eine g\xFCnstige\
+        \ Gelegenheit zum Entladen."]
     type: logbook
-  - arguments: [!!python/unicode 'Erreicht ein Lagerstand von 30 oder mehr Werkzeugen
+  - arguments: [!!python/unicode 'Erreicht einen Lagerbestand von 30 oder mehr Werkzeugen
         auf Eurer Insel.']
     type: message
   - arguments: [tutStepDone, 37]
@@ -314,8 +311,8 @@ events:
   - arguments: [!!python/unicode 'NEUE AUFGABE: PAVILLON BAUEN', "Diese Werkzeuge\
         \ sollten f\xFCr den Moment ausreichen. Gut gemacht!\n\nIhr stellt nun Euren\
         \ Einwohnern Unterk\xFCnfte, einen Marktplatz und Nahrung bereit. Ein Grundbedarf\
-        \ ist aber immer noch nicht gedeckt, nachzupr\xFCfen in den \xDCbersichten\
-        \ von Marktplatz oder Zelt: Eure Siedler verlangen nach einem Geb\xE4ude zum\
+        \ ist aber immer noch nicht gedeckt, wie Ihr in den \xDCbersichten von Marktplatz\
+        \ oder Zelt nachpr\xFCft: Eure Seefahrer verlangen nach einem Geb\xE4ude zum\
         \ Beten.\n\nDie L\xF6sung ist ein Pavillon, welches der Dorfpfarrer als Sonnenschutz\
         \ aufgespannt hat.\n\nDienstleistungsgeb\xE4ude wie dieses brauchen einen\
         \ Zugang zur Stra\xDFe, ansonsten k\xF6nnen es die Einwohner nicht erreichen.\n\
@@ -325,14 +322,13 @@ events:
         \ Stufen befriedigt."]
     type: logbook_w
   - arguments: ['', "Vorsicht bei der Stadtplanung! Die meisten dieser verbesserten\
-        \ Geb\xE4ude ben\xF6tigen mehr Platz als die Grundversion. Daf\xFCr ist ihr\
-        \ Einzugsgebiet auch meist umfangreicher.\n\nBeachtet, das die Religion wie\
-        \ ein Konsumgut behandelt wird. Eure Einwohner m\xFCssen also regelm\xE4\xDF\
-        ig ihren Vorrat auff\xFCllen.\n\nEs ist insbesondere NICHT ausreichend, dass\
-        \ das Geb\xE4ude nur in einer gewissen Reichweite ist. Auch alle Wege dorthin\
-        \ m\xFCssen vom Zelt erreichbar sein.\n\nAUFGABE: Baut einen Pavillon mit\
-        \ einer Verbindung zu den Zelten, um Euren Einwohnern den Zugang zum Glauben\
-        \ zu erm\xF6glichen."]
+        \ Geb\xE4ude ben\xF6tigen mehr Platz als die Grundversion.\n\nBeachtet, dass\
+        \ die Religion wie ein Konsumgut behandelt wird. Eure Einwohner m\xFCssen\
+        \ also regelm\xE4\xDFig ihren Vorrat davon auff\xFCllen.\n\nEs ist insbesondere\
+        \ NICHT ausreichend, dass das Geb\xE4ude nur in einem gewissen Einzugsgebiet\
+        \ liegt. Auch ein Wege dorthin muss vom Zelt aus erreichbar sein.\n\nAUFGABE:\
+        \ Baut einen Pavillon mit einer Verbindung zu den Zelten, um Euren Einwohnern\
+        \ den Zugang zum Glauben zu erm\xF6glichen."]
     type: logbook
   - arguments: [!!python/unicode 'Errichtet einen Pavillon mit einer Verbindung zu
         Euren Zelten.']
@@ -361,7 +357,7 @@ events:
         \ zu errichten. Dieses Haus wird das alte Zelt ersetzen."]
     type: logbook_w
   - arguments: ['', "Solche Wohnungsverbesserungen sind die einzigen Verbesserungen,\
-        \ die Euch Ressourcen kosten und die nicht eingeschr\xE4nkt werden k\xF6nnen.\n\
+        \ die Euch Waren kosten und die nicht eingeschr\xE4nkt werden k\xF6nnen.\n\
         Es gibt Verbesserungen f\xFCr Geb\xE4ude, die Ihr selbst in Auftrag gebt.\
         \ Hierbei werden Ressourcen verwendet, um eine bessere Stufe des Geb\xE4udes\
         \ am selben Ort zu errichten.\nEs gibt aber auch Verbesserungen ohne Kosten\
@@ -389,22 +385,22 @@ events:
   - arguments: [!!python/unicode 'NEUE AUFGABE: FARM BAUEN', "Gratulation! Einige\
         \ Einwohner haben soeben Stufe II erreicht.\n\nJetzt habt Ihr Zugriff auf\
         \ neue Geb\xE4ude. Werft dazu einen Blick auf das Baumen\xFC. Ein neuer Tab\
-        \ ist aufgetaucht!\n\nDie Pioniere ben\xF6tigen Kleidung, deshalb musst du\
+        \ ist aufgetaucht!\n\nPioniere ben\xF6tigen Kleidung, deshalb m\xFCsst Ihr\
         \ eine neue Produktionslinie planen. Sie beginnt mit Schafswolle (die, wie\
         \ einige andere Rohstoffe, in der Farm produziert wird).\n\nDie Farm ist eine\
         \ sehr spezielle Produktionsst\xE4tte, denn sie stellt nicht nur einen, sondern\
-        \ auch mehrere unterschiedliche Rohstoffe her, wenn Ihr es w\xFCnscht.\n\n\
-        Die Erzeugnisse der Farm sind davon abh\xE4ngig, welche Felder in ihrer Umgebung\
-        \ errichtet werden."]
+        \ auch mehrere unterschiedliche Rohstoffe her, wenn Ihr dies w\xFCnscht.\n\
+        \nDie Erzeugnisse der Farm sind davon abh\xE4ngig, welche Felder in ihrer\
+        \ Umgebung errichtet werden."]
     type: logbook_w
   - arguments: ['', "Wir werden sp\xE4ter darauf zur\xFCckkommen.\n\nFarmen m\xFC\
         ssen (wie alle Produktionsgeb\xE4ude von Rohstoffen) nicht zwangsl\xE4ufig\
-        \ mit einen Kontor oder Lager verbunden sein.\n\nSolange die G\xFCter das\
-        \ verarbeitende Gewerbe erreichen k\xF6nnen, ist alles in Ordnung.\n\nFalls\
-        \ aus irgendwelchen Gr\xFCnden die Verarbeitung an verschiedenen Stellen der\
-        \ Insel geplant ist (was durchaus Sinn ergeben kann) oder sogar auf verschiedenen\
-        \ Inseln, wird eine Abholung und damit Stra\xDFenverbindung aber notwendig.\n\
-        \nVersucht die Farm nicht zu nah an der K\xFCste oder anderen Geb\xE4uden\
+        \ mit einen Kontor oder Lager verbunden sein. Solange die G\xFCter das verarbeitende\
+        \ Gewerbe erreichen k\xF6nnen, ist alles in Ordnung.\n\nFalls aus irgendwelchen\
+        \ Gr\xFCnden Teile der Verarbeitung an verschiedenen Stellen der Insel geplant\
+        \ sind (was durchaus Sinn ergeben kann) oder sogar auf verschiedenen Inseln,\
+        \ wird eine Abholung durch Tr\xE4ger und damit Stra\xDFenverbindung aber notwendig.\n\
+        \nVersucht, die Farm nicht zu nah an der K\xFCste oder anderen Geb\xE4uden\
         \ zu bauen, denn sie ben\xF6tigt etwas Platz f\xFCr eine optimale Auslastung.\n\
         \nAUFGABE: Errichtet eine Farm."]
     type: logbook
@@ -434,17 +430,17 @@ events:
     type: logbook_w
   - arguments: ['', "Geht sicher, dass alle Felder im Einzugsbereich der Farm liegen.\n\
         \nIhr k\xF6nnt f\xFCr eine Farm auch mehrere Felder anlegen. Ein St\xFCck\
-        \ Weideland allein wird sie sicherlich nicht zu 100 Prozent auslasten - probiert\
-        \ aus, wie viele Felder eine Farm versorgen kann!\n\nAuf unterschiedlichen\
+        \ Weideland allein wird sie sicherlich nicht zu 100 Prozent auslasten \u2013\
+        \ probiert aus, wie viele Felder eine Farm versorgen kann!\n\nAuf unterschiedlichen\
         \ Feldern ben\xF6tigen die Arbeiter der Farm auch unterschiedlich viel Zeit:\
         \ S\xE4en, Ernten, Tiere h\xFCten, \u2026). Deshalb kann es sein, dass eine\
         \ Farm nicht alle Felder versorgen kann.\n\nIm Moment braucht Ihr Euch dar\xFC\
         ber aber noch keine Gedanken machen, da noch gar keine Felder angelegt sind.\
         \ Lasst uns das \xE4ndern!\n\nAUFGABE: Legt mindestens eine Weide im Einzugsbereich\
-        \ der Farm an und f\xFCgt Kartoffelfelder hinzu, wenn ihr wollt. "]
+        \ der Farm an und f\xFCgt Kartoffelfelder hinzu, wenn Ihr wollt. "]
     type: logbook
   - arguments: ["Legt mindestens eine Weide im Einzugsbereich der Farm an und f\xFC\
-        gt Kartoffelfelder hinzu, wenn Ihr wollt. "]
+        gt Kartoffelfelder hinzu, wenn Ihr wollt."]
     type: message
   - arguments: [tutStepDone, 49]
     type: set_var
@@ -459,16 +455,16 @@ events:
   - arguments: [!!python/unicode 'NEUE AUFGABE: LAGER', "Habt Ihr in letzter Zeit\
         \ Euer Holzf\xE4llerlager betrachtet?\n\nDa das Kontor nur begrenzt viel Platz\
         \ hat, um G\xFCter aufzubewahren, werden G\xFCter nicht mehr von Euren Betrieben\
-        \ in ein Lager transportiert, sobald der Bestand voll ist.\nWenn also kein\
+        \ in ein Lager transportiert, sobald der Bestand voll ist. Wenn also kein\
         \ Siedler vor kurzem sein Zelt ausbauen wollte, befindet sich wahrscheinlich\
         \ eine Menge Bretter im Lager und Euer Holzf\xE4llerlager liegt brach.\nDiese\
         \ Situation kann mit zwei Ma\xDFnahmen verbessern, die wir uns nun anschauen\
-        \ werden.\nAlle Betriebe bieten die M\xF6glichkeit, gar nicht zu arbeiten.\n\
+        \ wollen.\nAlle Betriebe bieten die M\xF6glichkeit, gar nicht zu arbeiten.\n\
         Das h\xF6rt sich vielleicht merkw\xFCrdig an, aber klickt einmal auf das Zahnrad,\
         \ welches sich zum Beispiel in der \xDCbersicht des Holzf\xE4llerlagers findet.\n\
         Wenn dieser 'Stillgelegt'-Modus aktiviert ist, werden die laufenden Kosten\
         \ f\xFCr dieses Geb\xE4ude sinken. Sie werden vielleicht nicht immer auf null\
-        \ sinken, aber sie sind dennoch geringer als wenn der Betrieb weiterarbeitete."]
+        \ sinken, aber sie sind dennoch geringer, als wenn der Betrieb weiterarbeitete."]
     type: logbook_w
   - arguments: ['', "Ihr k\xF6nnt somit Geld sparen, wenn Ihr einen Betrieb vor\xFC\
         bergehend nicht ben\xF6tigt, ihn aber auch nicht abrei\xDFen m\xF6chtet.\n\
@@ -478,9 +474,9 @@ events:
         \ wie das Kontor) eigene Tr\xE4ger, um G\xFCter zu transportieren.\n\nAnzumerken\
         \ ist, dass alle Betriebe auch mit dem Lager verbunden werden k\xF6nnen, um\
         \ ihre G\xFCter abholen zu lassen. Falls Euer Kontor mit den Transportaufgaben\
-        \ ausgelastet ist, kann ein zus\xE4tzlich errichtetes Lager Entlastung bieten.\n\
-        \nAUFGABE: Errichtet ein Lager, m\xF6glichst dort, wo die Abholsituation verbessert\
-        \ werden soll."]
+        \ \xFCberfordert ist, kann ein zus\xE4tzlich errichtetes Lager Entlastung\
+        \ bieten.\n\nAUFGABE: Errichtet ein Lager, m\xF6glichst dort, wo die Abholsituation\
+        \ verbessert werden soll."]
     type: logbook
   - arguments: [!!python/unicode 'Errichtet ein Lager (im Tab ''Stufe I'') an einem
         sinnvollen Bauplatz.']
@@ -500,10 +496,12 @@ events:
         \ gibt zwei M\xF6glichkeiten, ihn zu bauen: entweder nahe der Farm oder in\
         \ der N\xE4he eines Lagers bzw. des Kontors.\n\nIn beiden F\xE4llen solltet\
         \ Ihr eine Stra\xDFenverbindung sicherstellen.\n\nDer Weber wird auch ohne\
-        \ eine Stra\xDFe bei der Farm Wolle abholen und Stoff produzieren.\n\nAUFGABE:\
-        \ Errichtet einen Weber, der Wolle abholen kann."]
+        \ eine Stra\xDFe bei der Farm Wolle abholen und Stoff produzieren, wenn sie\
+        \ nah genug gelegen ist.\n\nAUFGABE: Errichtet einen Weber, der Wolle abholen\
+        \ kann."]
     type: logbook
-  - arguments: [!!python/unicode 'Errichtet einen Weber, der Wolle abholen kann.']
+  - arguments: [!!python/unicode 'Errichtet einen Weber, der Wolle von einer Farm
+        abholen kann.']
     type: message
   - arguments: [tutStepDone, 55]
     type: set_var
@@ -577,5 +575,6 @@ events:
   conditions:
   - arguments: [tutStepDone, 60]
     type: var_gt
+locale: de
 mapfile: development.sqlite
 

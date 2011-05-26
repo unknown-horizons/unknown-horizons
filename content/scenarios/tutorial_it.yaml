@@ -569,5 +569,6 @@ events:
   conditions:
   - arguments: [tutStepDone, 60]
     type: var_gt
+locale: it
 mapfile: development.sqlite
 

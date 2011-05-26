@@ -5,37 +5,36 @@
 # translation files from pootle.
 
 author: "L'\xE9quipe UH"
-description: "Didacticiel :\nEtablissez votre premier comptoir et apprenez \xE0 jouer\
-  \ !\n"
+description: "Didacticiel:\n\xC9tablissez votre premi\xE8re colonie et apprenez \xE0\
+  \ jouer!\n"
 difficulty: !!python/unicode 'Didacticiel'
 events:
 - actions:
-  - arguments: ["Etablissez une succursale sur la c\xF4te."]
+  - arguments: ["\xC9tablissez un comptoir sur la c\xF4te."]
     type: message
   - arguments: [!!python/unicode 'Bienvenue dans Unknown Horizons !', "Voici votre\
         \ journal de bord o\xF9 sont enregistr\xE9es toutes les informations importantes.\
-        \ Nous allons tenter de vous fournir une courte notification \xE0 chacune\
-        \ de vos t\xE2ches.\n\nSi vous voulez consulter les descriptions d\xE9taill\xE9\
-        es, votre journal de bord vous fournira toute l'aide dont vous aurez besoin.\n\
-        \nSi vous l'avez ferm\xE9: Un clique sur son ic\xF4ne se trouvant dans le\
-        \ coin Nord-Est (sous la mini-carte, avec un document cachet\xE9 et une plume)\
-        \ l'ouvrira \xE0 nouveau.\n\nPour toute suggestion sur une meilleure r\xE9\
-        daction, exprimez-vous en postant un sujet ou en d\xE9crivant une erreur.\
-        \ N'h\xE9sitez pas \xE0 nous contacter et nous essaierons d'am\xE9liorer ce\
-        \ didacticiel!\n\nVisitez www.unknown-horizons.org pour savoir comment contacter\
-        \ l'\xE9quipe!\n\nEt maintenant, commen\xE7ons \xE0 jouer."]
+        \ Nous vous fournirons une courte notification \xE0 chacune de vos t\xE2ches.\n\
+        \nSi vous aimez les descriptions d\xE9taill\xE9es, votre journal de bord vous\
+        \ fournira toute l'aide dont vous aurez besoin.\n\nSi vous l'avez ferm\xE9\
+        , un clic sur son ic\xF4ne se trouvant dans le coin Nord-Est (sous la mini-carte,\
+        \ avec un document cachet\xE9 et une plume) l'ouvrira \xE0 nouveau.\n\nPour\
+        \ toute suggestion sur une meilleure r\xE9daction, une incompr\xE9hension,\
+        \ ou pour nous rapporter un bug : N'h\xE9sitez pas \xE0 nous contacter et\
+        \ nous essaierons d'am\xE9liorer ce didacticiel!\n\nVisitez www.unknown-horizons.org\
+        \ pour savoir comment contacter l'\xE9quipe!\n\nEt maintenant, commen\xE7\
+        ons \xE0 jouer."]
     type: logbook_w
-  - arguments: ["MISSION : S'\xC9TABLIR SUR UNE ILE", "Pour d\xE9placer votre bateau,\
-        \ s\xE9lectionnez le par un clique gauche et faites un clique droit sur votre\
-        \ destination pour vous y rendre.\n\nD'une fois que vous \xEAtes pr\xE8s de\
-        \ la c\xF4te, vous verrez s'activer un bouton en forme d'ancre dans l'onglet\
-        \ de vue d'ensemble.\n\nCela signifie que vous \xEAtes maintenant capable\
-        \ de construire une succursale ici en cliquant sur ce bouton (nomm\xE9 'Construire\
-        \ un Village').\n\nMaintenant, une liste de vos constructions se trouvent\
-        \ pr\xE8s de l'emplacement de votre curseur.\n\nVous pouvez maintenant construire\
-        \ partout o\xF9 l'aper\xE7u de votre construction n\u2019apparait pas en rouge.\n\
+  - arguments: [!!python/unicode 'MISSION: COLONISER UNE ILE', "Pour d\xE9placer votre\
+        \ bateau, s\xE9lectionnez le par un clic gauche et faites un clic droit sur\
+        \ la destination de votre choix.\n\nUne fois que vous \xEAtes pr\xE8s de la\
+        \ c\xF4te, le bouton en forme d'ancre du panneau deviendra actif .\n\nCela\
+        \ signifie que vous \xEAtes alors capable de construire un comptoir ici en\
+        \ cliquant sur ce bouton (nomm\xE9 \xABConstruire un comptoir\xBB).\n\nMaintenant,\
+        \ un aper\xE7u de votre comptoir devrait suivre votre curseur.\n\nVous pouvez\
+        \ construire aux endroits o\xF9 cet aper\xE7u n\u2019apparait pas en rouge.\n\
         Cliquez \xE0 l'endroit o\xF9 vous voulez placer votre premi\xE8re construction.\n\
-        \nOBJECTIF: Construire une succursale sur la c\xF4te.", 2]
+        \nMISSION: Construire un comptoir sur la c\xF4te.", 2]
     type: logbook
   - arguments: [tutStepDone, 6]
     type: set_var
@@ -43,27 +42,27 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: ["MISSION : D\xC9CHARGEZ MARCHANDISES", "Maintenant que vous avez \xE9\
-        tabli une succursale, vous devez alimenter son stock.\n\nPour ce faire, s\xE9\
-        lectionnez votre vaisseau et rendez-vous dans le panneau signal\xE9 par une\
-        \ caisse en bois appel\xE9 'Inventaire du vaisseau'.\n\nVous pouvez avoir\
-        \ ici un aper\xE7u du chargement de votre vaisseau et vous trouverez le bouton\
-        \ 'Chargez/D\xE9chargez'.\n\nCe bouton devient actif lorsque votre vaisseau\
-        \ se trouve \xE0 port\xE9e d'un partenaire commercial potentiel, comme par\
-        \ exemple une succursale.\n\nCliquez sur le bouton. S'il n'est pas actif,\
-        \ d\xE9placez votre vaisseau \xE0 proximit\xE9 de la succursale, et r\xE9\
-        essayez.\n\nMISSION : Ouvrez le dialogue des \xE9changes commerciaux."]
+  - arguments: ["MISSION : D\xC9CHARGEZ VOS MARCHANDISES", "Maintenant que vous avez\
+        \ \xE9tabli un comptoir, vous devez alimenter son stock.\n\nPour ce faire,\
+        \ s\xE9lectionnez votre navire et rendez-vous dans le panneau signal\xE9 par\
+        \ une caisse en bois appel\xE9 \xABInventaire du navire\xBB.\n\nVous avez\
+        \ ici un aper\xE7u de la cargaison de votre navire et vous y trouverez le\
+        \ bouton \xABChargez/D\xE9chargez\xBB.\n\nCe bouton devient actif lorsque\
+        \ votre vaisseau se trouve \xE0 port\xE9e d'un partenaire commercial potentiel,\
+        \ comme par exemple un comptoir.\n\nCliquez sur le bouton. S'il n'est pas\
+        \ actif, d\xE9placez votre vaisseau \xE0 proximit\xE9 du comptoir, et r\xE9\
+        essayez.\n\nMISSION : D\xE9butez les \xE9changes commerciaux"]
     type: logbook_w
   - arguments: ['', "Le panneau que vous avez sous les yeux est scind\xE9 entre les\
-        \ partenaires commerciaux 'Vaisseau' et 'Succursale'.\n\nPour d\xE9placer\
-        \ les marchandises d'un stock \xE0 l'autre, cliquez simplement dessus.\n\n\
-        Essayez de cliquer sur les planches  de votre vaisseau pour les d\xE9charger,\
-        \ puis rechargez-les \xE0 bord.\n\nVous pouvez choisir la quantit\xE9 \xE0\
-        \ d\xE9placer en utilisant le radio-bouton pr\xE9sent au milieu.\n\nMaitrisez-vous\
-        \ le panneau des \xE9changes commerciaux ?\nVous avez maintenant besoin de\
-        \ mat\xE9riaux de construction pour votre comptoir !\n\nMISSION : D\xE9chargez\
-        \ au moins 10 tonnes de chaque ressource disponible \xE0 bord de votre vaisseau\
-        \ dans votre succursale."]
+        \ partenaires commerciaux 'Vaisseau' et 'Comptoir'.\n\nPour d\xE9placer les\
+        \ marchandises d'un stock \xE0 l'autre, cliquez simplement dessus.\n\nEssayez\
+        \ de cliquer sur les planches de votre navire pour les d\xE9charger, puis\
+        \ rechargez-les \xE0 bord.\n\nVous pouvez choisir la quantit\xE9 \xE0 d\xE9\
+        placer en utilisant les boutons pr\xE9vus \xE0 cet effet.\n\nMaitrisez-vous\
+        \ le panneau des \xE9changes commerciaux?\nVous avez maintenant besoin de\
+        \ mat\xE9riaux de construction pour votre comptoir!\n\nMISSION : D\xE9chargez\
+        \ au moins 10 tonnes de chaque ressource disponible \xE0 bord de votre navire\
+        \ dans votre comptoir."]
     type: logbook
   - arguments: ["D\xE9chargez au moins 10 tonnes de chaque ressource pr\xE9sente sur\
         \ votre vaisseau."]
@@ -78,30 +77,30 @@ events:
   - arguments: [tutStepDone, 16]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOUVELLE MISSION : BUCHERON', "Avec les nouveaux\
-        \ mat\xE9riaux de construction disponibles dans votre succursale, vous pouvez\
-        \ commencer \xE0 construire des b\xE2timents simples.\n\nEtablissons d'abord\
-        \ un b\xFBcheron.\n\nC'est essentiel parce que les planches, \xE0 cette \xE9\
-        tape, sont les seuls mat\xE9riaux que les marins ont les moyens d'acqu\xE9\
-        rir pour monter leurs tentes.\n\nLe p\xEAcheur a \xE9galement besoin de planches\
-        \ pour construire son b\xE2teau.\n\nPour construire une cabane de b\xFBcheron,\
-        \ ouvrez le menu des constructions en cliquant sur la grande ic\xF4ne sous\
-        \ la mini-carte, ou en pressant la touche B.\n\nLe menu des constructions\
-        \ est class\xE9 par niveaux.\nCela signifie que seuls les b\xE2timents simples\
-        \ sont accessibles quand on est au niveau des marins (ce qui est votre cas\
-        \ actuellement)."]
+  - arguments: [!!python/unicode 'NOUVELLE MISSION : CONSTRUIRE UN CAMP DE BUCHERON',
+      "Avec ces nouveaux mat\xE9riaux disponibles dans votre comptoir, vous pouvez\
+        \ commencer \xE0 construire quelques b\xE2timents de base.\n\nCommen\xE7ons\
+        \ par \xE9tablir un b\xFBcheron.\n\nC'est essentiel parce que, \xE0 ce niveau,\
+        \ le bois est la seule mati\xE8re que les marins peuvent s'offrir pour monter\
+        \ leurs tentes.\n\nLe p\xEAcheur a \xE9galement besoin de planches pour construire\
+        \ son bateau.\n\nPour construire une cabane de b\xFBcheron, ouvrez le menu\
+        \ construction en cliquant sur le grand ic\xF4ne sous la mini-carte, ou en\
+        \ pressant la touche B.\n\nLe menu construction est class\xE9 par niveaux.\n\
+        Cela signifie que seuls les b\xE2timents de base sont accessibles quand on\
+        \ est au premier niveau (celui des marins)."]
     type: logbook_w
   - arguments: ['', "Plus votre civilisation avancera et plus vous pourrez construire\
-        \ de b\xE2timents complexes.\n\nMaintenant construisez un campement de bucheron\
+        \ de b\xE2timents complexes.\n\nMaintenant construisez un camp de bucheron\
         \ dans une zone bois\xE9e.\n\nVous pourrez aussi planter des arbres plus tard\
         \ - mais cela vous coutera de l'argent. Utilisez ce que la nature vous offre!\n\
-        \nUne entreprise n\xE9cessite une route menant \xE0 un d\xE9p\xF4t de stock\
-        \ ou une succursale, autrement les biens produits resteront sur place.\n\n\
-        Vous devez donc construire une voie entre votre succursale et votre bucheron.\n\
-        MISSION: Construisez un campement de bucheron dans une zone bois\xE9e et connectez\
-        \ le \xE0 une route.\n\nRegardez, vous avez produit vos premi\xE8res planches."]
+        \nUne entreprise n\xE9cessite une route menant \xE0 un d\xE9p\xF4t ou un comptoir,\
+        \ autrement les biens produits y resteront et ne seront pas collect\xE9s.\n\
+        \nVous devez donc construire un sentier entre votre comptoir (ou votre d\xE9\
+        p\xF4t) et votre bucheron.\n\nMISSION: Construisez un bucheron dans une zone\
+        \ bois\xE9e et connectez le \xE0 une route.\n\nRegardez-le produire vos premi\xE8\
+        res planches."]
     type: logbook
-  - arguments: ["Construisez un campement de bucheron et connectez le \xE0 votre succursale\
+  - arguments: ["Construisez un campement de bucheron et connectez le \xE0 votre comptoir\
         \ par une route."]
     type: message
   - arguments: [tutStepDone, 19]
@@ -118,37 +117,28 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'APPROVISIONNEMENT EN NOURRITURE', "Vous allez aussi\
-        \ avoir besoin d'entreprise productrice de nourriture car, en g\xE9n\xE9rale\
-        \ les gens (sp\xE9cialement les marins) ont toujours faim.\n\nAu premier niveau\
-        \ vous disposez du Chasseur et du P\xEAcheur.\n\nLe chasseur a besoin de bois\
-        \ autour de lui pour trouver du gibier.\n\nNotez que vous pouvez le placer\
-        \ a cot\xE9 de la foret du bucheron.\n\nIl peut arriver que le gibier ne se\
-        \ reproduise pas assez ou qu'il se cache bien.\n\nConclusion: le chasseur\
-        \ n'est pas tr\xE8s fiable si vous avez besoin d'un approvisionnement constant."]
+  - arguments: [!!python/unicode 'NOUVELLE MISSION: APPROVISIONNEMENT EN NOURRITURE',
+      "Vous allez aussi avoir besoin d'entreprises productrices de nourriture car,\
+        \ en g\xE9n\xE9rale les gens (et surtout les marins) ont toujours faim.\n\n\
+        Au premier niveau vous disposez du Chasseur et du P\xEAcheur.\n\nLe chasseur\
+        \ chasse le gibier dans la for\xEAt et a donc besoin de bois autour de lui.\n\
+        \nNotez que vous pouvez le placer \xE0 cot\xE9 de la for\xEAt du bucheron.\n\
+        \nIl peut arriver que le gibier ne se reproduise pas assez rapidement ou qu'il\
+        \ soit bien cach\xE9...\n\nConclusion: le chasseur n'est pas tr\xE8s fiable\
+        \ si vous avez besoin d'un approvisionnement constant."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
-        the branch office and a fish school in range.
-
-
-        He will build a small rowing vessel and catch some fish.
-
-
-        This is a very constant supply at the cost of a slightly longer production
-        time per unit of food.
-
-
-        A small settlement like yours can use both companies, and you can better balance
-        pros and cons if you see the direct comparison.
-
-
-        TASK: Build a hunter and a fisher.
-
-
-        Don''t forget to connect them to your branch office with trails!']
+  - arguments: ['', "Le p\xEAcheur a besoin d'un b\xE2timent c\xF4tier et d'un banc\
+        \ de poisson \xE0 proximit\xE9.\n\nIl construira un petit bateau \xE0 rame\
+        \ et ira attraper du poisson.\n\nC'est une source de nourriture tr\xE8s constante\
+        \ mais d'un temps de production par unit\xE9 de nourriture l\xE9g\xE8rement\
+        \ plus long.\n\nUne petite colonie comme la votre peut utiliser ces deux types\
+        \ d'entreprises, et vous pourrez mieux en \xE9valuer les avantages et les\
+        \ inconv\xE9nients en les comparant directement.\n\nMISSION: Construire une\
+        \ hutte de chasseur et une de p\xEAcheur.\n\nEt n'oubliez pas les sentiers\
+        \ les reliant \xE0 votre comptoir!"]
     type: logbook
   - arguments: ["Construisez une cabane de chasseur et une de p\xEAcheur. Connectez\
-        \ les \xE0 votre succursale."]
+        \ les \xE0 votre comptoir."]
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -160,28 +150,28 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION: LA PLACE CENTRALE', "Vos colons ont besoin\
-        \ d'une place centrale o\xF9 ils trouveront des biens de consommation.\n\n\
-        Cela signifie qu'il leur faudra une route menant des habitations \xE0 la place\
-        \ centrale.\n\nTous les biens de votre succursale sont disponibles dans cette\
-        \ 'place du march\xE9', donc vos marins n'ont pas besoin d'aller chez le p\xEA\
-        cheur ou jusqu'\xE0 la succursale.\n\nVous devriez fonder votre campement\
-        \ de tentes dans un endroit o\xF9 vous pourrez facilement l'\xE9tendre et\
-        \ construire des routes.\n\nPar exemple, nous ne conseillons pas de placer\
-        \ vos tentes trop pr\xE8s de vos bucherons qui ont besoin d'espaces pour les\
-        \ arbres.\n\nMISSION: CONSTRUIRE UNE PLACE CENTRALE"]
+  - arguments: [!!python/unicode 'NOUVELLE MISSION: LA PLACE CENTRALE', "Vos habitants\
+        \ ont besoin d'une place marchande o\xF9 ils trouveront des biens de consommation.\n\
+        \nCela signifie qu'il leur faudra un sentier menant des habitations \xE0 la\
+        \ place centrale.\n\nToutes les marchandises de votre comptoir sont disponibles\
+        \ dans cette 'place du march\xE9', donc vos habitants n'ont pas besoin d'aller\
+        \ chez le p\xEAcheur ou m\xEAme jusqu'au comptoir.\n\nVous devriez fonder\
+        \ votre campement de tentes dans un endroit o\xF9 vous pourrez facilement\
+        \ l'\xE9tendre et y construire des routes.\n\nPar exemple, nous conseillons\
+        \ de ne pas placer vos tentes trop pr\xE8s de vos bucherons, cela d\xE9truirais\
+        \ leurs pr\xE9cieux arbres.\n\nMISSION: Construire une place centrale"]
     type: logbook_w
   - arguments: ['', "A pr\xE9sent, regardons la place centrale de plus pr\xE8s.\n\n\
-        Dans l'onglet de vue g\xE9n\xE9rale vous pouvez rapidement fixer les taxes.\n\
-        \nDans le second, l'onglet 'comptes', vous voyez votre balance financi\xE8\
-        re comprenant vos achats et les taxes que vous prelevez.\n\nLes parties 'Vente'\
-        \ et 'Achat' renvoit \xE0 votre balance commerciale et seront expliqu\xE9\
-        s plus tard.\n\nSi votre balance est positive, vous faites du profit.\n\n\
-        Dans l'onglet 'Colons' vous pouvez voir le niveau de contentement de la population\
-        \ et le bien materiel que la majorit\xE9 d'entre eux recherche."]
+        Dans sa fen\xEAtre, vous pouvez rapidement ajuster les taxes.\n\nDans le second\
+        \ onglet \xABCompte\xBB, vous voyez votre bilan financier comprenant vos achats\
+        \ et les taxes que vous pr\xE9levez.\n\nLes parties \xABVente\xBB et \xAB\
+        Achat\xBB renvoient \xE0 votre balance commerciale et seront expliqu\xE9es\
+        \ plus tard.\n\nSi votre bilan est positif, vous faites du profit.\n\nDans\
+        \ l'onglet \xABColons\xBB vous pouvez voir le niveau de satisfaction des habitants\
+        \ et quelles ressources manquent \xE0 la majorit\xE9 d'entre eux."]
     type: logbook
-  - arguments: ["Construisez une place centrale. Choisissez une endroit peu charg\xE9\
-        \ en batiments \xE9conomiques."]
+  - arguments: ["Construisez une place centrale. Choisissez un endroit peu charg\xE9\
+        \ en b\xE2timents \xE9conomiques."]
     type: message
   - arguments: [tutStepDone, 25]
     type: set_var
@@ -201,13 +191,13 @@ events:
 - actions:
   - arguments: [!!python/unicode 'NOUVELLE MISSION: L''HABITAT', "Les colons veulent\
         \ avoir un toit au dessus de la t\xEAte, autrement ils ne penseront m\xEA\
-        me pas \xE0 venir vivre dans votre ville. Vous devez leurs fournir des tentes!\n\
-        \nLes tentes constituent l'habitation de base.\n\nVos habitants voudront les\
-        \ am\xE9liorer quand ils atteindront un 'niveau sup\xE9rieur'.\n\nLes marins\
-        \ ne semblent pas tr\xE8s utiles dans la mesure o\xF9 ils essaieront de consommer\
-        \ tout les biens que vous produirez - mais au moins ils paient les taxes.\n\
-        \nEt c'est votre seule fa\xE7on de gagner de l'argent pour le moment.\n\n\
-        MISSION: Construisez une tente et connectez la \xE0 la place centrale."]
+        me pas \xE0 venir vivre dans votre ville! Vous devez leurs fournir des tentes.\n\
+        \nLes tentes constituent l'habitation de base. Vos habitants voudront les\
+        \ am\xE9liorer quand ils atteindront des niveaux sup\xE9rieurs.\n\nLes marins\
+        \ peuvent sembler peu ou pas tr\xE8s utiles dans la mesure o\xF9 ils essaieront\
+        \ de consommer tout les biens que vous produirez mais, au moins, ils paient\
+        \ les taxes et c'est votre seule fa\xE7on de gagner de l'argent pour le moment.\n\
+        \nMISSION: Construisez une tente et connectez la \xE0 la place centrale."]
     type: logbook
   - arguments: ["Construisez une tente et connectez la \xE0 la place centrale."]
     type: message
@@ -221,15 +211,16 @@ events:
   - arguments: [tutStepDone, 28]
     type: var_lt
 - actions:
-  - arguments: ['', "Regardons maintenant la fen\xEAtre des tentes.\nVous pouvez voir\n\
-        * le contentement de ses occupants,\n* les taxes qu'ils paient et\n* les ressources\
-        \ qu'ils demandent.\n\nSi vous r\xE9pondez \xE0 leurs demandes, le contentement\
-        \ et donc les taxes pr\xE9lev\xE9es augmentent.\n\nSinon, le contentement\
-        \ baisse et les rentr\xE9es d'argent  diminuent. Parfois, les habitants en\
-        \ ont vraiment marre, ils vous tournent le dos \xE0 votre village.\n\nNote\
-        \ that you can also change the global tax settings here, too.\n\nTASK: Build\
-        \ at least three additional tents.\n\nTIP: Holding down SHIFT eases constructing\
-        \ multiple buildings of the same kind."]
+  - arguments: ['', "Regardons maintenant la fen\xEAtre d'une tente.\nVous pouvez\
+        \ y voir\n* la satisfaction de ses occupants,\n* les taxes qu'ils paient et\n\
+        * les ressources qu'ils demandent.\n\nSi vous r\xE9pondez \xE0 leurs demandes,\
+        \ la satisfaction et donc les taxes pr\xE9lev\xE9es augmentent.\n\nSinon,\
+        \ la satisfaction et les rentr\xE9es d'argent diminuent. Parfois, les habitants\
+        \ peuvent en avoir vraiment marre, ils tournent alors le dos \xE0 votre village.\n\
+        \nNotez que vous pouvez r\xE9gler les taxes ici aussi.\n\nMISSION: Construisez\
+        \ au moins 3 tentes suppl\xE9mentaires.\n\nAstuce: Il est plus simple de construire\
+        \ plusieurs b\xE2timents du m\xEAme type en gardant la touche SHIFT enfonc\xE9\
+        e."]
     type: logbook
   - arguments: ["Construisez 3 tentes suppl\xE9mentaires et reliez les \xE0 la place\
         \ centrale."]
@@ -244,32 +235,30 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION : FEU DE SIGNALISATION', "Voyez-vous un\
-        \ vaisseau passer devant vos c\xF4tes de temps en temps ?\n\nC'est celui du\
-        \ Free Trader, l'un des premiers colons de l'archipel.\n\nCe marchand vous\
-        \ fournira en biens que vous ne pouvez produire pour l'instant.\n\nVous pouvez\
-        \ aussi vendre le surplus de votre production, mais en g\xE9n\xE9ral le consommer\
-        \ (en construisant des tentes) est plus profitable.\n\nHabituellement les\
-        \ bateaux naviguent de ports en ports en cherchant \xE0 faire affaire, mais\
-        \ un petit comptoir comme le votre \xE0  besoin d'attirer l'attention ou il\
-        \ ne sera pas trouv\xE9.\n\nPour cela, vous pouvez construire un feu de signalisation\
-        \ sur la cote, pr\xE8s de votre succursale, il montrera la voie aux bateaux."]
+  - arguments: [!!python/unicode 'NOUVELLE MISSION : FEU DE SIGNALISATION', "Voyez-vous\
+        \ le navire passer devant vos c\xF4tes de temps en temps ?\n\nC'est celui\
+        \ du \"Free Trader\" (le marchand libre), l'un des premiers colons de l'archipel.\n\
+        \nCe marchand vous fournira en biens n\xE9cessaires que vous ne pouvez produire\
+        \ pour l'instant.\n\nVous pouvez aussi lui vendre le surplus de votre production,\
+        \ mais en g\xE9n\xE9ral le consommer (en construisant des tentes) est plus\
+        \ profitable.\n\nHabituellement les bateaux naviguent de ports en ports en\
+        \ cherchant \xE0 faire affaire, mais un petit comptoir comme le votre \xE0\
+        \ besoin d'attirer l'attention o\xF9 l'on ne vous trouvera pas.\n\nPour cela,\
+        \ vous pouvez construire un feu de signalisation sur la cote, pr\xE8s de votre\
+        \ comptoir, il montrera la voie aux bateaux."]
     type: logbook_w
   - arguments: ['', "Avec cette petite aide, le bateau-marchand passera de temps en\
-        \ temps dans votre succursale.\n\nVous pouvez proposer des offres via l'onglet\
-        \ 'Achat / Vente \xBB, qui en ce moment est presque inutilisable, mais nous\
-        \ avons un billet de restructuration mis en place pour am\xE9liorer cette\
-        \ situation. Si vous avez trouv\xE9 une belle fa\xE7on de le faire, s'il vous\
-        \ pla\xEEt partagez vos id\xE9es! Nous avons besoin de votre aide!\n\nAu 'niveau\
-        \ marin', vous \xEAtes \xE9quip\xE9 de trois emplacements commerciaux.\n\n\
-        Cliquez sur la petite ic\xF4ne pour changer le mode de l'emplacement 'Achat'\
-        \ ou 'Vente' et vice versa.\n\nSi vous cliquez dans l'emplacement, vous pouvez\
-        \ choisir le bien dont vous voulez faire le commerce. Nous expliquerons cela\
-        \ d\xE8s que vous serez pret\n\nMISSION: Construire un feu de signalisation\
-        \ pr\xE8s de votre succursale."]
+        \ temps \xE0 votre comptoir.\n\nVous pouvez proposer des offres via l'onglet\
+        \ 'Achat / Vente'. (qui est encore un peu difficile \xE0 utiliser, si vous\
+        \ avez une id\xE9e d'am\xE9lioration, n'h\xE9sitez pas, nous avons besoin\
+        \ d'aide !)\n\nAu niveau 'marin', vous disposez de trois emplacements commerciaux.\n\
+        \nCliquez sur la petite ic\xF4ne pour changer le mode de l'emplacement en\
+        \ 'Achat' ou 'Vente' et vice versa.\n\nSi vous cliquez dans l'emplacement,\
+        \ vous pouvez choisir le bien dont vous voulez faire le commerce. Nous expliquerons\
+        \ cela d\xE8s que vous serez pr\xEAt.\n\nMISSION: Construisez un feu de signalisation\
+        \ pr\xE8s de votre comptoir."]
     type: logbook
-  - arguments: ["Construisez un feu de signalisation \xE0 la c\xF4te proche de la\
-        \ Succursale"]
+  - arguments: ["Construisez un feu de signalisation sur la c\xF4te proche du comptoir."]
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -281,26 +270,28 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'APPRENDRE LE COMMERCE', !!python/unicode "Excellent!\
-        \ The Free Trader will now stop by at your branch office from time to time.\n\
-        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
-        \ type of good, the green bar across the bottom of the slot (if visible) shows\
-        \ you how much you have in stock of this good.\n\nDragging the slider on the\
-        \ right of each slot determines your 'target value' which has a different\
-        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
-        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
-        \ which you hold in reserve to not sell"]
+  - arguments: ["NOUVELLE MISSION: APPRENDRE \xC0 COMMERCER", "Excellent! Le bateau-marchand\
+        \ va maintenant s'arr\xEAter \xE0 votre comptoir de temps en temps.\n\nContinuons\
+        \ ce tutoriel et voyons comment commercer.\n\nApr\xE8s avoir s\xE9lectionn\xE9\
+        \ un type de produit, la barre verte le long de l'emplacement (si visible)\
+        \ vous indique le niveau de stock de ce produit.\n\nBouger le curseur d'un\
+        \ emplacement (\xE0 droite) d\xE9termine sa \xABvaleur cible\xBB qui a un\
+        \ sens diff\xE9rent pour \xABacheter\xBB ou \xABvendre\xBB.\nQuand vous achetez,\
+        \ vous allez acheter suffisamment pour atteindre votre \xABvaleur cible\xBB\
+        \ de stock.\nQuand vous vendez, la \xABvaleur cible\xBB est la quantit\xE9\
+        \ de produit que vous voulez garder en r\xE9serve et ne pas vendre."]
     type: logbook_w
-  - arguments: ['', "Vendre fonctionne de la m\xEAme fa\xE7on. Un emplacement 'vente'\
-        \ avec 18 tonnes en stock et un curseur \xE0 13 vendra jusqu'a 5 tonnes.\n\
-        \nSi le bateau-marchand vous en achete que 2 tonnes, vous ne pourrez rien\
-        \ y faire. A part etre patient ;-)\n\nUnknown Horizons propose un systeme\
-        \ de prix intelligent, la valeur d'une unit\xE9 peut donc varier.\nIl n'est\
-        \ pas possible de changer les prix!\n\nVous pouvez voir votre balance commerciale\
-        \ dans l'onglet 'Compte' mettant en relief 'Vente' et 'Achat'.\n\nComme entrainement,\
-        \ nous voudrions maintenant que vous...\n\nMISSION: ... achetiez autant d'outils\
-        \ que necessaire pour en avoir 30 en stock!\n\nSi vous en avez encore dans\
-        \ votre vaisseau, il pourrait etre interessant de les d\xE9charger."]
+  - arguments: ['', "Voici un exemple :\nUn emplacement \xABachat\xBB avec 5 tonnes\
+        \ en stock et un curseur \xE0 9 ach\xE8tera jusqu'\xE0 4 tonnes.\nUn emplacement\
+        \ \xABvente\xBB avec 18 tonnes en stock et un curseur \xE0 13 vendra jusqu'\xE0\
+        \ 5 tonnes.\n\nCependant si le bateau-marchand n'en veut pas ou n'en a pas\
+        \ autant, vous devrez \xEAtre patient et attendre son retour.  ;-)\n\nUnknown\
+        \ Horizons propose un syst\xE8me de prix intelligent, la valeur d'une unit\xE9\
+        \ peut donc varier.\nIl n'est pas possible de changer les prix!\n\nVous pouvez\
+        \ voir votre balance commerciale dans l'onglet \xABCompte\xBB mettant en relief\
+        \ \xABVente\xBB et \xABAchat\xBB.\n\nMISSION: Achetez autant d'outils que\
+        \ n\xE9cessaire pour en avoir 30 en stock!\nSi vous en avez encore dans votre\
+        \ vaisseau, ce serait le bon moment pour les d\xE9charger."]
     type: logbook
   - arguments: [!!python/unicode 'Atteignez un stock d''au moins 30 outils.']
     type: message
@@ -314,37 +305,27 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'CONSTRUISEZ UN PAVILLON', !!python/unicode 'Those
-        tools will be enough for the moment. Well done!
-
-
-        You now provide housing, a main square and food to your inhabitants.
-
-
-        Still there is one demand which we have not satisfied so far, you may check
-        that in the marketplace or tent tab - your sailors want a basic building where
-        they can pray.
-
-
-        The solution is a pavilion which the village parson quickly puts up as shelter
-        from the sun.
-
-
-        Service buildings like this also need to be connected to the tents with a
-        trail, else your inhabitants feel unable to reach them.
-
-
-        In later increments, upgraded versions of buildings may become available.']
+  - arguments: [!!python/unicode 'NOUVELLE MISSION: CONSTRUISEZ UN PAVILLON', "Ces\
+        \ outils seront suffisants pour le moment. Bien jou\xE9!\n\nVous fournissez\
+        \ maintenant des logements, une place marchande et de la nourriture \xE0 vos\
+        \ habitants.\n\nPourtant il y a une demande que nous ne satisfaisons pas \xE0\
+        \ ce jour, v\xE9rifiiez le sur la fen\xEAtre d'une tente ou de la place -\
+        \ vos marins veulent un b\xE2timent o\xF9 il pourront prier.\n\nLa solution\
+        \ est un pavillon que le cur\xE9 du village mettra rapidement en place.\n\n\
+        Les b\xE2timents de services comme celui-ci ont \xE9galement besoin d'\xEA\
+        tre connect\xE9 aux tentes avec un sentier, autrement vos habitants seront\
+        \ incapables de les atteindre.\n\nDans les niveaux suivants, des versions\
+        \ am\xE9lior\xE9es des b\xE2timents seront disponibles."]
     type: logbook_w
-  - arguments: ['', "Dans ce cas la \xAB\_petite\_\xBB version n'est plus n\xE9cessaire\
-        \ puisque la \xAB\_grande\_\xBB fournira aussi ce que vos habitants cherchent\
-        \ dans les premiers niveaux.\n\nFaites attention en planifiant votre ville\
-        \ parce que la plupart des b\xE2timents avanc\xE9s sont plus grands que les\
-        \ b\xE2timents basiques.\n\nNotez que la foi est trait\xE9e comme une ressource\
-        \ physique, donc vos habitants ont besoin de revenir l\xE0 apr\xE8s quelque\
-        \ temps.\n\nIl n'est pas suffisant que le b\xE2timent soit dans un p\xE9rim\xE8\
-        tre proche.\n\nTACHE\_: Construire un pavillon connect\xE9 aux tentes pour\
-        \ assouvir la demande religieuse de vos marins. "]
+  - arguments: ['', "Dans ce cas la \xABpetite\xBB version n'est plus n\xE9cessaire\
+        \ puisque la \xABgrande\xBB fournira aussi ce que vos habitants recherchent\
+        \ dans les niveaux pr\xE9c\xE9dents.\n\nFaites attention en construisant votre\
+        \ ville parce que la plupart des b\xE2timents avanc\xE9s sont plus grands\
+        \ que les b\xE2timents de base.\n\nNotez que la foi est trait\xE9e comme une\
+        \ ressource physique, donc vos habitants auront besoin de revenir l\xE0 apr\xE8\
+        s quelque temps.\n\nImportant:\nIl n'est pas suffisant que le b\xE2timent\
+        \ soit dans un p\xE9rim\xE8tre proche.\n\nMISSION: Construire un pavillon\
+        \ connect\xE9 aux tentes pour assouvir la demande religieuse de vos marins."]
     type: logbook
   - arguments: ["Construisez un pavillon connect\xE9 aux tentes. "]
     type: message
@@ -358,43 +339,35 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION: NIVEAU SUIVANT', "Toutes les demandes sont\
-        \ maintenant remplies si vos habitants peuvent visiter r\xE9guli\xE8rement\
-        \ la place centrale et le pavillon et que vos ressources alimentaires sont\
-        \ suffisantes.\n\nSi vos marins sont assez heureux, ils voudront avancer au\
-        \ prochain niveau appel\xE9 Pionniers.\n\nPour les rendre heureux, il n'y\
-        \ a rien d'autre \xE0 faire que fixer des imp\xF4ts bas apr\xE8s avoir r\xE9\
-        pondu \xE0 toutes leurs demandes.\n\nVous devriez essayer de ne pas toujours\
-        \ jouer avec un niveau d'imp\xF4t bas puisque ceci vous m\xE8nerais \xE0 la\
-        \ faillite t\xF4t ou tard. Mais pour une p\xE9riode de temps d\xE9fini et\
-        \ si vous savez que vous faites, c'est bien.\n\nApr\xE8s quelque temps, un\
-        \ premier pionnier devrait aller \xE0 la place centrale y chercher le nouveau\
-        \ mat\xE9riel de construction n\xE9cessaire \xE0 la construction d'une maison\
-        \ en rondin. Cette maison remplacera la vieille tente."]
+  - arguments: [!!python/unicode 'NOUVELLE MISSION: NIVEAU SUIVANT', "Toutes les demandes\
+        \ sont maintenant remplies si vos habitants peuvent visiter r\xE9guli\xE8\
+        rement la place centrale et le pavillon et que vos ressources alimentaires\
+        \ sont suffisantes.\n\nSi vos marins sont assez heureux, ils voudront avancer\
+        \ au prochain niveau appel\xE9 Pionniers.\n\nPour les rendre heureux, il n'y\
+        \ a rien d'autre \xE0 faire que de fixer des imp\xF4ts plus bas puisque vous\
+        \ avez r\xE9pondu \xE0 toutes leurs demandes.\n\nVous devriez essayer de ne\
+        \ pas toujours jouer avec un niveau d'imp\xF4t trop bas puisque ceci vous\
+        \ m\xE8nerais \xE0 la faillite t\xF4t ou tard. Mais pour une p\xE9riode de\
+        \ temps d\xE9fini et si vous savez que vous faites, ce n'est pas un probl\xE8\
+        me\n\nApr\xE8s quelque temps, un premier pionnier devrait aller \xE0 la place\
+        \ centrale y chercher du mat\xE9riel n\xE9cessaire \xE0 la construction d'une\
+        \ maison en rondin. Cette maison remplacera la vieille tente."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Such residential upgrades are the only ones
-        which cost resources and can not be restricted by you.
-
-
-        There are manual upgrades to some buildings where you use resources to construct
-        a better version on the same spot, and there are upgrades without costs for
-        example as you will see with the lumberjack (In this case, only the graphics
-        change).
-
-
-        Upgraded housing accomodates more inhabitants, and pioneers pay more taxes
-        than sailors, too.
-
-
-        As you may have figured out already, the downside is that pioneers demand
-        additional goods which sailors do not need - so you will need to spend this
-        extra money to make them happy as well.
-
-
-        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - arguments: ['', "L'am\xE9lioration de l'habitat est la seule qui vous co\xFBte\
+        \ des ressources et que vous ne pouvez pas restreindre.\n\nPour certains b\xE2\
+        timents, les am\xE9liorations n\xE9cessitent des ressources mais donnent une\
+        \ version plus performante du m\xEAme b\xE2timent et il y a des am\xE9liorations\
+        \ qui ne coutent rien, comme par exemple pour les camps de bucheron (ici,\
+        \ c'est juste l'aspect qui changera).\n\nLes logements am\xE9lior\xE9es peuvent\
+        \ h\xE9berger plus d'habitants et, de plus, les pionniers paient plus de taxes\
+        \ que les marins.\n\nComme vous l'avez peut-\xEAtre constat\xE9, le d\xE9\
+        savantage est que les pionniers demandent des biens suppl\xE9mentaires dont\
+        \ les marins n'ont pas besoin - vous devrez donc d\xE9penser cet argent suppl\xE9\
+        mentaire pour les satisfaire aussi.\n\nMISSION: Baissez les taxes (c\xF4t\xE9\
+        \ gauche du r\xE9gleur) et attendez que les marins se d\xE9veloppent."]
     type: logbook
-  - arguments: [!!python/unicode 'Set the tax level to Low (left end) and wait for
-        your sailors to upgrade.']
+  - arguments: ["R\xE9glez les taxes sur Bas (c\xF4t\xE9 gauche du r\xE9gleur) et\
+        \ attendez que vos marins se d\xE9veloppent."]
     type: message
   - arguments: [tutStepDone, 43]
     type: set_var
@@ -406,50 +379,31 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOUVELLE MISSION : UNE FERME', !!python/unicode 'Congratulations!
-        Some of your inhabitants have reached increment II!
-
-
-        Now you have access to new buildings, take a look at the Build menu again.
-
-
-        A shiny new tab appeared there.
-
-
-        Pioneers will demand cloth, so you need to set up a production line for cloth
-        starting with lambs wool (which is one of the goods produced at the farm).
-
-
-        The farm is a very special production building since it can produce not only
-        one, but very many (and different) goods if you choose.
-
-
-        The output of farms depends on what kind of fields you build around it.']
+  - arguments: [!!python/unicode 'NOUVELLE MISSION: CONSTRUIRE UNE FERME', "F\xE9\
+        licitations! Certains de vos habitants ont atteint le deuxi\xE8me niveau de\
+        \ d\xE9veloppement!\n\nVous avez maintenant acc\xE8s \xE0 de nouveaux b\xE2\
+        timents, regardez de nouveau le menu de construction.\n\nUn joli nouvel onglet\
+        \ vient d'y appara\xEEtre.\n\nLes pionniers demandent du tissu, vous devrez\
+        \ cr\xE9er une ligne de production en commen\xE7ant par la laine de mouton\
+        \ (l'un des biens produit \xE0 la ferme).\n\nLa ferme est un b\xE2timent de\
+        \ production tr\xE8s sp\xE9ciale puisqu'elle peut produire plusieurs biens\
+        \ (diff\xE9rents) si vous le voulez.\n\nLa production d'une ferme d\xE9pend\
+        \ du type de champ que vous placez autour d'elle."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
-
-
-        Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a Branch Office.
-
-
-        As long as units of the final production company can reach the farm, and collectors
-        from the branch office or storage tent can reach the final company everything''s
-        fine.
-
-
-        If you, however, plan to do some processing on different parts of the island
-        (which can make sense) or even on different islands, you will need a connection
-        to collectors.
-
-
-        Try to build the farm not too close to the coast or your existing buildings
-        since it will need some space around it to work well.
-
-
-        TASK: Build a farm.']
+  - arguments: ['', "Nous regarderons cela de plus pr\xE8s plus tard.\n\nLes fermes,\
+        \ comme tout les b\xE2timents produisant des biens bruts, n'ont pas besoin\
+        \ d'\xEAtre connect\xE9es \xE0 un comptoir ou au stock.\n\nTant qu'une personne\
+        \ de l'entreprise de transformation peut atteindre la ferme et qu'un porteur\
+        \ du comptoir ou d'un d\xE9p\xF4t peut atteindre l'entreprise alors tout ira\
+        \ bien.\n\nCependant si vous pensez affiner ces biens brut sur une autre partie\
+        \ de l'\xEEle ou m\xEAme sur une autre \xEEle, vous devrez les connecter \xE0\
+        \ un d\xE9p\xF4t ou \xE0 un comptoir.\n\nEssayez de construire une ferme,\
+        \ mais pas trop pr\xE8s de la c\xF4te ou d'autres b\xE2timents puisqu'elle\
+        \ aura besoin d'espace autour d'elle pour bien fonctionner.\n\nMISSION: Construisez\
+        \ une ferme."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a farm and keep some empty space around it.']
+  - arguments: [!!python/unicode 'Construisez une ferme et laissez de l''espace libre
+        autour d''elle.']
     type: message
   - arguments: [tutStepDone, 46]
     type: set_var
@@ -461,42 +415,34 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'CONSTRUISEZ DES CHAMPS', !!python/unicode 'The farm
-        itself is not going to produce anything without some fields.
-
-
-        You currently have the choice between pastures, potato and sugar fields.
-
-
-        Let''s have a short overview:
-
-        * Pasture: Sheep live here, producing lamb wool.
-
-        * Potato field: Grows potatoes which are currently treated as food.
-
-        * Sugar field: Grows sugar which is used to distill liquor and (later) produce
-        confectionery.
-
-
-        We now only need pastures, but in case your food supply chain is too small
-        (maybe many residential buildings) you can also produce some potatoes.
-
-
-        Note that for potatoes you will need a road connection to the farm (not to
-        the field!) as it will be the only company to work on the goods.']
+  - arguments: [!!python/unicode 'NOUVELLE MISSION: CONSTRUISEZ DES CHAMPS', "La ferme\
+        \ elle-m\xEAme ne produira rien sans champs.\n\nPour l'instant vous avez le\
+        \ choix entre des pr\xE9s, des champs de pommes de terre et des champs de\
+        \ canne \xE0 sucre.\n\nVoyons ce qu'ils produisent:\n* Pr\xE9s: Des moutons\
+        \ vivent ici et produisent de la laine.\n* Champs de pomme de terre: Des pommes\
+        \ de terre y poussent et constituent votre nourriture.\n* Champs de canne\
+        \ \xE0 sucre: De la canne \xE0 sucre qui sert \xE0 produire de l'alcool et\
+        \ (plus tard) des confiseries.\n\nPour l'instant nous avons seulement besoin\
+        \ de pr\xE9s mais si vos ressources alimentaires ne sont pas suffisantes (beaucoup\
+        \ d'habitations) vous pouvez aussi produire des pommes de terre.\n\nNotez\
+        \ que dans le cas des pommes de terre vous devrez connecter la ferme (pas\
+        \ les champs!) au r\xE9seau routier puisque c'est la seule entreprise de cette\
+        \ chaine de production."]
     type: logbook_w
-  - arguments: ['', "Make sure that all fields you build are in the area covered by\
-        \ the farm.\n\nYou can have combined production - one pasture will not lead\
-        \ to 100 percent efficiency of the farm - but you need to check how many fields\
-        \ one farm can serve.\n\nDifferent classes of fields require the farm units\
-        \ to spend more or less time there (to seed, harvest, herd, etc\u2026) and\
-        \ because of that, the farm may be unable to serve all of the fields you built\
-        \ for it in time.\n\nFor now, you do not need to care about these issues a\
-        \ lot since you haven't built any fields. Let's change that!\n\nTASK: Build\
-        \ at least one pasture in the farm's range and add potato fields if you like."]
+  - arguments: ['', "Assurez-vous que tous les champs sont dans l'espace couvert par\
+        \ la ferme.\n\nVous pouvez combiner vos productions - un champ ne m\xE8nera\
+        \ pas \xE0 une efficacit\xE9 de 100 pour cent - mais vous devrez v\xE9rifier\
+        \ combien de champs la ferme peut cultiver.\n\nLes diff\xE9rents types de\
+        \ champs n\xE9cessitent plus ou moins de temps pour \xEAtre cultiv\xE9s (planter,\
+        \ r\xE9colter, etc ...) et \xE0 cause de cela une ferme peut ne pas \xEAtre\
+        \ en mesure de s'occuper de tous les champs \xE0 temps.\n\nMais pour l'instant\
+        \ vous n'avez pas besoin de penser \xE0 ce genre de probl\xE8me vu que vous\
+        \ n'avez pas encore construit de champs. Nous devons changer cela!\n\nMISSION:\
+        \ Construisez au moins un pr\xE9 dans le rayon d'action de la ferme et ajoutez\
+        \ des champs de pommes de terre si vous le souhaitez."]
     type: logbook
-  - arguments: [!!python/unicode 'Build at least one pasture and add potato fields
-        if you like.']
+  - arguments: ["Construisez au moins un pr\xE9 et ajoutez des champs de pommes de\
+        \ terre si vous voulez."]
     type: message
   - arguments: [tutStepDone, 49]
     type: set_var
@@ -508,43 +454,36 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: ["CONSTRUIRE UN ENTREP\xD4T", !!python/unicode 'Did you watch your
-        lumberjack recently?
-
-
-        Since your branch office does not have unlimited space to store goods, collectors
-        will stop fetching goods from companies when stock is full.
-
-        So if no sailor recently wanted to upgrade his tent, you probably have a lot
-        of boards and in that case, the lumberjack may idle.
-
-        We can improve this situation with two different approaches, and below we
-        will have a look at both of them.
-
-
-        All companies offer the possibility of doing no work at all.
-
-        This may sound strange, but try to click on the gear wheel you see in, for
-        example, a lumberjack''s overview.
-
-
-        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
-        costs you pay for the building will decrease. They won''t be zero, but still
-        lower than if you keep the company producing.']
+  - arguments: ["NOUVELLE\_MISSION : CONSTRUIRE UN ENTREP\xD4T", "Avez vous observ\xE9\
+        \ le bucheron r\xE9cemment?\n\nPuisque votre comptoir n'a qu'une capacit\xE9\
+        \ limit\xE9, les collecteurs arr\xEAterons d'aller chercher les biens dans\
+        \ les entreprises lorsqu'il sera plein.\nDonc si aucun marin n'a am\xE9lior\xE9\
+        \ sa tente, vous avez probablement beaucoup de planches et dans ce cas le\
+        \ bucheron fait peut-\xEAtre une pause.\nNous pouvons corriger cette situation\
+        \ par deux approches diff\xE9rentes que nous allons pr\xE9senter plus bas.\n\
+        \nToutes les entreprises offrent la possibilit\xE9 de stopper le travail.\n\
+        Cela peut paraitre \xE9trange mais essayez de cliquer sur les engrenages que\
+        \ vous voyez par exemple dans le sommaire du bucheron.\n\nSi ce mode \xAB\
+        pause\xBB est disponible (nous l'appelons \xABd\xE9saffection\xBB) les couts\
+        \ de fonctionnements que vous payez pour le b\xE2timent baisseront. Il ne\
+        \ baisseront pas \xE0 z\xE9ro, mais ils seront d\xE9j\xE0 plus bas que si\
+        \ le b\xE2timent fonctionnait."]
     type: logbook_w
-  - arguments: ['', !!python/unicode "This means that you can save money when you\
-        \ temporarily do not need a company and do not want to tear it down, either.\n\
-        \nAnother solution is to build the last increment-I building which has not\
-        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
-        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the branch office does.\n\nNote that companies\
-        \ can also be connected to a storage in order to get their products collected,\
-        \ and if the branch office is overwhelmed with collector tasks, you can place\
-        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
-        \ where you need collectors."]
+  - arguments: ['', "Cela veut dire que vous pouvez \xE9conomiser de l'argent en d\xE9\
+        sactivant des b\xE2timents que vous ne voulez pas d\xE9truire mais dont vous\
+        \ n'avez pas besoin pour l'instant.\n\nUne autre solution est de construire\
+        \ le dernier b\xE2timent de \xABNiveau I\xBB qui n'a pas encore \xE9t\xE9\
+        \ mentionn\xE9 : l'entrep\xF4t.\n\nCe b\xE2timent a deux fonctions. Il:\n\
+        * Offre plus d'espace de stockage pour vos biens et\n* Envoie ses propres\
+        \ collecteurs pour aller chercher des biens tout comme le comptoir le fait.\n\
+        \nNotez que les entreprises peuvent \xE9galement \xEAtre connect\xE9es \xE0\
+        \ un entrep\xF4t \xE0 la place d'un comptoir et si le comptoir est surcharg\xE9\
+        \ vous pouvez l'aider \xE0 tout collecter en construisant un entrep\xF4t.\n\
+        \nMISSION: Construisez un entrep\xF4t, de pr\xE9f\xE9rence quelque part o\xF9\
+        \ vous avez besoin de collecteurs."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a storage tent (increment I tab) where it
-        makes sense.']
+  - arguments: ["Construisez un entrep\xF4t (dans l'onglet \xABNiveau I\xBB) \xE0\
+        \ un emplacement utile."]
     type: message
   - arguments: [tutStepDone, 52]
     type: set_var
@@ -556,26 +495,19 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOUVELLE MISSION', !!python/unicode 'Now the wool
-        production is set up, you still need a weaver to produce cloth out of this
-        wool.
-
-
-        There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the Branch Office).
-
-
-        In both cases you should ensure the connection to a trail as well.
-
-
-        You can place the weaver close to the farm and tear down any trail to the
-        farm to see that it will still fetch the wool and produce.
-
-
-        TASK: Build a weaver positioned so it can get wool.']
+  - arguments: [!!python/unicode 'NOUVELLE MISSION: CONSTRUISEZ UN TISSERAND', "Maintenant\
+        \ la production de laine est lanc\xE9e, mais vous avez besoin d'un tisserand\
+        \ pour produire du tissu \xE0 partir de la laine.\n\nIl y a deux endroits\
+        \ o\xF9 vous pouvez l'installer - ou bien pr\xE8s de la ferme ou bien pr\xE8\
+        s d'un entrep\xF4t (ou du comptoir).\n\nDans les deux cas vous devrez vous\
+        \ assurer qu'il est \xE9galement connect\xE9 \xE0 un sentier.\n\nVous pouvez\
+        \ placer le tisserand pr\xE8s de la ferme et d\xE9truire tous les sentiers\
+        \ qui m\xE8nent \xE0 la ferme pour observer qu'il ira chercher la laine directement\
+        \ \xE0 la ferme.\n\nMISSION: Construisez un tisserand \xE0 un emplacement\
+        \ \xE0 partir duquel il pourra aller chercher de la laine."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a weaver that can somehow reach the wool of
-        your farm.']
+  - arguments: ["Installer un tisserand qui pourra acc\xE9der \xE0 la laine de votre\
+        \ ferme."]
     type: message
   - arguments: [tutStepDone, 55]
     type: set_var
@@ -587,20 +519,15 @@ events:
   - arguments: [tutStepDone, 55]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
-        city to complete the tutorial. You need a positive balance.']
+  - arguments: ["Logez un total de 50 habitants au moins dans votre ville pour compl\xE9\
+        ter ce didacticiel. Il vous faut un bilan financier positif."]
     type: message
-  - arguments: [!!python/unicode 'NEW TASK: COMPLETE TUTORIAL', !!python/unicode 'Try
-        to house a total of 50 or more inhabitants in your city by providing more
-        residential buildings.
-
-
-        Once you are able to keep an economy running which can satisfy this amount
-        of consumers, you are ready to discover new Unknown Horizons!
-
-
-        TASK: Reach a total number of 50 inhabitants and a positive balance to complete
-        this tutorial.']
+  - arguments: ["NOUVELLE\_MISSION : TERMINER\_LE\_DIDACTICIEL", "Essayez d'h\xE9\
+        berger un total d'au moins 50 habitants en construisant des r\xE9sidences\
+        \ suppl\xE9mentaires.\n\nD\xE8s que votre \xE9conomie pourra satisfaire ce\
+        \ nombre de consommateurs vous serez pr\xEAt \xE0 d\xE9couvrir d'autres -\
+        \ Horizons Inconnus !\n\nMISSION: Atteignez un total de 50 habitants et un\
+        \ bilan positif pour terminer ce didacticiel."]
     type: logbook
   - arguments: [tutStepDone, 58]
     type: set_var
@@ -614,41 +541,17 @@ events:
   - arguments: [tutStepDone, 58]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NO TASKS LEFT', !!python/unicode 'There is nothing
-        left to do now.
-
-
-        If you have any suggestions on what we could or should improve, add or leave
-        out:
-
-
-        www.unknown-horizons.org
-
-
-        #unknown-horizons @ irc.freenode.net
-
-
-        team@unknown-horizons.org
-
-
-        Our forums are open to you as well!
-
-
-        The best results until now were achieved by joining our IRC channel, so you
-        could try that out first (-;']
+  - arguments: ["AUCUNE\_MISSION\_RESTANTE", "Il ne reste plus rien a faire pour l'instant.\n\
+        \nSi vous avez des propositions sur ce que nous pourrions am\xE9liorer, ajouter\
+        \ ou enlever:\n\nwww.unknown-horizons.org\n\n#unknown-horizons @ irc.freenode.net\n\
+        \nteam@unknown-horizons.org\n\nNos forums vous sont \xE9galement accessibles!\n\
+        \nJusqu'\xE0 pr\xE9sent, le channel IRC a \xE9t\xE9 le meilleur moyen de nous\
+        \ joindre, essayer donc cela en premier ;-) \n\nDans l'int\xE9r\xEAt des autres\
+        \ participants aux conversations et qui ne parlent peut-\xEAtre pas le fran\xE7\
+        ais, nous vous prions de parler anglais dans le chat."]
     type: logbook
-  - arguments: [!!python/unicode 'Thanks!', !!python/unicode '
-
-
-
-
-
-
-
-        Thanks for playing the tutorial!
-
-
-        Your UH-Team']
+  - arguments: [!!python/unicode 'Merci!', "\n\n\n\n\n\n\nMerci d'avoir suivi ce didacticiel!\n\
+        \nL'\xE9quipe d'UH"]
     type: logbook
   - arguments: [tutStepDone, 61]
     type: set_var
@@ -669,11 +572,12 @@ events:
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: [!!python/unicode 'Congratulations! You have reached the end of this
-        tutorial and are ready to meet new challenges!']
+  - arguments: ["F\xE9licitations!\_Vous avez atteint la fin de ce didacticiel. Vous\
+        \ \xEAtes maintenant pr\xEAt \xE0 relever de nouveaux d\xE9fis!"]
     type: message
   conditions:
   - arguments: [tutStepDone, 60]
     type: var_gt
+locale: fr
 mapfile: development.sqlite
 
