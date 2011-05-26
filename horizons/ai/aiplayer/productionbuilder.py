@@ -98,6 +98,9 @@ class ProductionBuilder(object):
 		for _, fisher in sorted(options):
 			if not fisher.execute():
 				continue
+			for coords in fisher.position.tuple_iter():
+				self.plan[coords] = (self.purpose.reserved, None)
+			self.plan[sorted(fisher.position.tuple_iter())[0]] = (self.purpose.fisher, fisher)
 			best = None
 
 			for source in collector_coords:
@@ -111,6 +114,7 @@ class ProductionBuilder(object):
 			if best is not None:
 				for x, y in best:
 					point = Point(x, y)
+					self.plan[point.to_tuple()] = (self.purpose.road, None)
 					building = self.session.world.get_building(point)
 					if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 						continue
@@ -132,11 +136,9 @@ class ProductionBuilder(object):
 				renderer.addColored(tile._instance, *unknown_colour)
 			else:
 				usage = usage[0]
-				if usage == self.purpose.main_square:
-					renderer.addColored(tile._instance, *sq_colour)
-				elif usage == self.purpose.tent:
-					renderer.addColored(tile._instance, *tent_colour)
-				elif usage == self.purpose.road:
+				if usage == self.purpose.road:
 					renderer.addColored(tile._instance, *road_colour)
+				elif usage == self.purpose.fisher:
+					renderer.addColored(tile._instance, *fisher_colour)
 				elif usage == self.purpose.reserved:
 					renderer.addColored(tile._instance, *reserved_colour)
