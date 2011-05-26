@@ -58,10 +58,46 @@ class ProductionBuilder(object):
 			point = Point(tile.x, tile.y)
 			building = self.session.world.get_building(point)
 			if building is None:
-				yield point
+				road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
+				if road:
+					yield point
 			else:
 				if building.id == BUILDINGS.TREE_CLASS or building.id == BUILDINGS.TRAIL_CLASS:
 					yield point
+
+	def _build_road_connection(self, builder):
+		collector_coords = set()
+		for building in self.collector_buildings:
+			for point in self._get_possible_road_points(building.position):
+				collector_coords.add(point)
+
+		blocked_coords = set(self.land_manager.village.keys())
+		road_coords = set()
+		for coords in blocked_coords:
+			building = self.island.get_building(Point(coords[0], coords[1]))
+			if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
+				road_coords.add(coords)
+		blocked_coords = blocked_coords.difference(road_coords)
+		for coords in builder.position.tuple_iter():
+			blocked_coords.add(coords)
+
+		best = None
+		for source in collector_coords:
+			for destination in self._get_possible_road_points(builder.position):
+				path = FindPath()(source, destination, self.island.path_nodes.nodes, blocked_coords = blocked_coords)
+				if path is not None:
+					if best is None or len(path) < len(best):
+						best = path
+
+		if best is not None:
+			for x, y in best:
+				point = Point(x, y)
+				self.plan[point.to_tuple()] = (self.purpose.road, None)
+				building = self.island.get_building(point)
+				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
+					continue
+				road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
+		return best is not None
 
 	def build_fisher(self):
 		"""
@@ -90,38 +126,15 @@ class ProductionBuilder(object):
 			if fish_value > 0:
 				options.append((fishers_in_range / 1.0 / fish_value, fisher))
 
-		collector_coords = set()
-		for building in self.collector_buildings:
-			for point in self._get_possible_road_points(building.position):
-				collector_coords.add(point)
-
 		for _, fisher in sorted(options):
-			if not fisher.execute():
+			if not self._build_road_connection(fisher):
 				continue
+			fisher.execute()
 			for coords in fisher.position.tuple_iter():
 				self.plan[coords] = (self.purpose.reserved, None)
 			self.plan[sorted(fisher.position.tuple_iter())[0]] = (self.purpose.fisher, fisher)
-			best = None
-
-			for source in collector_coords:
-				for destination in self._get_possible_road_points(fisher.position):
-					path = FindPath()(source, destination, self.island.path_nodes.nodes, blocked_coords = self.land_manager.village)
-					if path is None:
-						continue
-					if best is None or len(path) < len(best):
-						best = path
-
-			if best is not None:
-				for x, y in best:
-					point = Point(x, y)
-					self.plan[point.to_tuple()] = (self.purpose.road, None)
-					building = self.session.world.get_building(point)
-					if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
-						continue
-					road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
-					if road:
-						road.execute()
-			return
+			return fisher
+		return None
 
 	def display(self):
 		road_colour = (30, 30, 30)
