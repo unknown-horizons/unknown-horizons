@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-09 20:55+0200\n"
+"PO-Revision-Date: 2011-05-23 02:15+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -52,11 +52,13 @@ msgstr "Избраният език %(lang)s от %(place)s не може да �
 
 #: horizons/engine.py:426
 msgid "Invalid network port"
-msgstr ""
+msgstr "Грешен мрежов порт"
 
 #: horizons/engine.py:427
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"Портът, който сте установили не е валиден. Трябва да бъде номер от 1 до "
+"65535."
 
 #: horizons/engine.py:428
 msgid "Please check the port you entered and make sure it's in the specified range."
@@ -529,9 +531,10 @@ msgstr ""
 msgid "Weaver: Turns lamb wool into cloth."
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:74
 msgid "Settler buildings"
-msgstr ""
+msgstr "Заселнически сгради"
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Charcoal burning: Burns a lot of boards."
@@ -567,11 +570,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:87
 msgid "load/reload"
-msgstr ""
+msgstr "Зареди/презареди"
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Inhabitants"
-msgstr ""
+msgstr "Жители"
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Click to change the name of your settlement."
@@ -579,24 +582,24 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Destroy"
-msgstr ""
+msgstr "Унищожи"
 
 #: horizons/i18n/guitranslations.py:93
 msgid "Build menu"
-msgstr ""
+msgstr "Строително меню"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Game menu"
-msgstr ""
+msgstr "Меню на играта"
 
 #: horizons/i18n/guitranslations.py:95 horizons/i18n/guitranslations.py:141
 #: horizons/i18n/guitranslations.py:180
 msgid "Help"
-msgstr ""
+msgstr "Помощ"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Captain's log"
-msgstr ""
+msgstr "Записки на капитана"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Rotate map counterclockwise"
@@ -1706,19 +1709,19 @@ msgstr ""
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
-msgstr ""
+msgstr "Вие се нуждаете от повече ${resource} за да построите тази сграда."
 
 #: sqlite/Messages
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Вашата игра беше запаметена."
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Вашата мина се изчерпа от ресурси."
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr ""
+msgstr "Вашите колонисти достигнаха ниво ${level}."
 
 #: sqlite/Resources
 msgid "boards"
@@ -1730,31 +1733,31 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr ""
+msgstr "Дървени въглища"
 
 #: sqlite/Resources
 msgid "clay"
-msgstr ""
+msgstr "Глина"
 
 #: sqlite/Resources
 msgid "coins"
-msgstr ""
+msgstr "Монети"
 
 #: sqlite/Resources
 msgid "community"
-msgstr ""
+msgstr "Общество"
 
 #: sqlite/Resources
 msgid "education"
-msgstr ""
+msgstr "Образование"
 
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "Вяра"
 
 #: sqlite/Resources
 msgid "fish"
-msgstr ""
+msgstr "Риба"
 
 #: sqlite/Resources
 msgid "food"
@@ -1766,47 +1769,47 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "grass"
-msgstr ""
+msgstr "Трева"
 
 #: sqlite/Resources
 msgid "happiness"
-msgstr ""
+msgstr "Щастие"
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr ""
+msgstr "Желязно кюлче"
 
 #: sqlite/Resources
 msgid "iron ore"
-msgstr ""
+msgstr "Желязна руда"
 
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "Агнешка вълна"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "Ликьор"
 
 #: sqlite/Resources
 msgid "potatoes"
-msgstr ""
+msgstr "Картофи"
 
 #: sqlite/Resources
 msgid "raw clay"
-msgstr ""
+msgstr "Суровина-глина"
 
 #: sqlite/Resources
 msgid "raw iron"
-msgstr ""
+msgstr "Суровина-желязо"
 
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr ""
+msgstr "Суровина-захар"
 
 #: sqlite/Resources
 msgid "sugar"
-msgstr ""
+msgstr "Захар"
 
 #: sqlite/Resources
 msgid "textile"
@@ -1818,31 +1821,33 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "wild animal food 1"
-msgstr ""
+msgstr "Храна от диво животно 1"
 
 #: sqlite/Resources
 msgid "wild animal meat"
-msgstr ""
+msgstr "Месо от диво животно"
 
+# 75%
 #: sqlite/Resources
+#, fuzzy
 msgid "wood"
-msgstr ""
+msgstr "Дървен материал"
 
 #: sqlite/Resources
 msgid "wool"
-msgstr ""
+msgstr "Вълна"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "Пионер"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "Моряк"
 
 #: sqlite/SettlerLevel
 msgid "settler"
-msgstr ""
+msgstr "Колонизатор"
 
 #, python-format
 #~ msgid "Could not connect to master server. Details: %s"
