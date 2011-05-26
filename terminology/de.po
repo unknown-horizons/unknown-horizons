@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-25 13:20+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-05-27 00:53+0200\n"
+"Last-Translator: nimini <petystueven@aol.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -14,33 +14,7 @@ msgstr ""
 "X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
-#
 # (poterminology) uh/unknownhorizons.pot (10)
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
 #. set translated building name in gui
 #: po/tutorial.py
 #: horizons/gui/mousetools/buildingtool.py

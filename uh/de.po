@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-27 00:44+0200\n"
+"PO-Revision-Date: 2011-05-27 01:01+0200\n"
 "Last-Translator: nimini <petystueven@aol.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -17,10 +17,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.1.5\n"
 
+# or: Unbekannte Horizonte Version %s
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr "Unbekannte Horizons Version %s"
+msgstr "Unknown Horizons Version %s"
 
 #: horizons/engine.py:55
 msgid "Restart required"
@@ -62,8 +63,8 @@ msgstr "Ungültiger Port"
 #: horizons/engine.py:427
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Der angegebene Port ist ungültig. Er muss eine Zahl zwischen 1 und 65535 "
-"sein."
+"Der angegebene Port ist ungültig. Er muss eine Nummer zwischen 1 und 65535 "
+"besitzen."
 
 #: horizons/engine.py:428
 msgid "Please check the port you entered and make sure it's in the specified range."
