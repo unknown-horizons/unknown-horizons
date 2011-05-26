@@ -49,7 +49,7 @@ class Annulus(object):
 	def contains(self, point):
 		assert isinstance(point, Point)
 		if point.distance_to_point(self.center) <= self.max_radius and\
-		   point.distance_to_point(self.center) >= self.max_radius:
+		   point.distance_to_point(self.center) >= self.min_radius:
 			return True
 		else:
 			return False
