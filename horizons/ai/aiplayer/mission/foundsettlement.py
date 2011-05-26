@@ -39,15 +39,19 @@ class FoundSettlement(Mission):
 		self.bo_location = bo_location
 
 	def start(self):
-		try:
-			self._move_to_bo_area()
-		except MoveNotPossible:
-			self.report_failure('Move not possible')
+		self._move_to_bo_area()
 
 	def _move_to_bo_area(self):
+		if self.bo_location is None:
+			self.report_failure('No possible branch office location')
+			return
+
 		(x, y) = self.bo_location.position.get_coordinates()[4]
 		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
-		self.ship.move(area, Callback(self._reached_bo_area), blocked_callback = Callback(self._move_to_bo_area))
+		try:
+			self.ship.move(area, Callback(self._reached_bo_area), blocked_callback = Callback(self._move_to_bo_area))
+		except MoveNotPossible:
+			self.report_failure('Move not possible')
 
 	def _reached_bo_area(self):
 		self.log.info('Reached BO area')
@@ -64,7 +68,7 @@ class FoundSettlement(Mission):
 		self.report_success('Built the branch office, transferred resources')
 
 	@classmethod
-	def find_bo_location(cls, land_manager):
+	def find_bo_location(cls, ship, land_manager):
 		"""
 		Finds a location for the branch office on the given island
 		@param LandManager: the LandManager of the island
@@ -73,9 +77,7 @@ class FoundSettlement(Mission):
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		rotations = [45, 135, 225, 315]
 		island = land_manager.island
-
-		best = None
-		best_cost = -1
+		options = []
 
 		for (x, y), tile in island.ground_map.iteritems():
 			ok = False
@@ -107,15 +109,16 @@ class FoundSettlement(Mission):
 					cost += 100
 				else:
 					cost += t
-				if best_cost != -1 and best_cost <= cost:
-					break
-			if best_cost == -1 or best_cost > cost:
-				best = build_info
-				best_cost = cost
+			options.append((cost, build_info))
 
-		return best
+		for _, build_info in sorted(options):
+			(x, y) = build_info.position.get_coordinates()[4]
+			if ship.check_move(Point(x, y)):
+				return build_info
+			return build_info
+		return None
 
 	@classmethod
 	def create(cls, ship, land_manager, success_callback, failure_callback):
-		bo_location = cls.find_bo_location(land_manager)
+		bo_location = cls.find_bo_location(ship, land_manager)
 		return FoundSettlement(success_callback, failure_callback, land_manager.island.session, ship, bo_location)
