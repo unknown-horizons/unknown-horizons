@@ -20,12 +20,10 @@
 # ###################################################
 
 from horizons.ai.aiplayer.mission import Mission
+from horizons.ai.aiplayer.builder import Builder
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GROUND, BUILDINGS
 from horizons.util import Point, Circle, Callback
-from horizons.world.building.buildable import Buildable
-from horizons.entities import Entities
-from horizons.command.building import Build
 
 class FoundSettlement(Mission):
 	"""
@@ -57,13 +55,9 @@ class FoundSettlement(Mission):
 	def _reached_bo_area(self):
 		self.log.info('Reached BO area')
 
-		t = self.bo_location
-		x = t.position.origin.x
-		y = t.position.origin.y
-		island = self.session.world.get_island(Point(x, y))
-		cmd = Build(BUILDINGS.BRANCH_OFFICE_CLASS, x, y, island, t.rotation, ship = self.ship, tearset = t.tearset)
-		cmd.execute(self.session)
-		self.settlement = island.get_settlement(Point(x, y))
+		self.bo_location.execute()
+		island = self.bo_location.land_manager.island
+		self.settlement = island.get_settlement(self.bo_location.point)
 		self.log.info('Built the branch office')
 
 		self.ship.owner.complete_inventory.unload_all(self.ship, self.ship.owner.settlements[0])
@@ -77,7 +71,6 @@ class FoundSettlement(Mission):
 		@return _BuildPosition: a possible build location
 		"""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		rotations = [45, 135, 225, 315]
 		island = land_manager.island
 		options = []
 
@@ -95,11 +88,11 @@ class FoundSettlement(Mission):
 
 			build_info = None
 			point = Point(x, y)
-			for rotation in rotations:
-				build_location = Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].check_build(island.session, \
-					point, rotation=rotation, check_settlement=False, ship=None)
-				if build_location.buildable:
-					build_info = build_location
+			for orientation in xrange(4):
+				branch_office = Builder(BUILDINGS.BRANCH_OFFICE_CLASS, land_manager, point, \
+					orientation = orientation, ship = ship)
+				if branch_office:
+					build_info = branch_office
 					break
 			if build_info is None:
 				continue

@@ -30,6 +30,7 @@ class LandManager(object):
 		self.island = island
 		self.settlement = None
 		self.owner = owner
+		self.session = self.island.session
 
 	def _coords_usable(self, coords):
 		if coords in self.island.ground_map:

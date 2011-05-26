@@ -19,12 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from builder import Builder
+
 from horizons.ext.enum import Enum
 from horizons.constants import BUILDINGS
 from horizons.util import Point
-from horizons.world.building.buildable import Buildable
-from horizons.entities import Entities
-from horizons.command.building import Build
 
 class VillageBuilder(object):
 	purpose = Enum('main_square', 'tent', 'road', 'reserved')
@@ -57,8 +56,8 @@ class VillageBuilder(object):
 				continue
 
 			point = Point(x, y)
-			sq_location = Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].check_build(self.session, point)
-			if not sq_location.buildable:
+			main_square = Builder(BUILDINGS.MARKET_PLACE_CLASS, self.land_manager, point)
+			if not main_square:
 				continue
 
 			usage = dict.fromkeys(self.land_manager.village)
@@ -69,7 +68,7 @@ class VillageBuilder(object):
 			for dy in xrange(6):
 				for dx in xrange(6):
 					usage[(x + dx, y + dy)] = (self.purpose.reserved, None)
-			usage[(x, y)] = (self.purpose.main_square, sq_location)
+			usage[(x, y)] = (self.purpose.main_square, main_square)
 
 			# place the roads running parallel to the y-axis
 			for road_y in ys:
@@ -84,9 +83,9 @@ class VillageBuilder(object):
 					if coords not in self.land_manager.village:
 						bad_roads += 1
 						continue
-					location = Entities.buildings[BUILDINGS.TRAIL_CLASS].check_build(self.session, Point(road_x, road_y))
-					if location.buildable:
-						usage[coords] = (self.purpose.road, location)
+					road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
+					if road:
+						usage[coords] = (self.purpose.road, road)
 					else:
 						bad_roads += 1
 
@@ -103,9 +102,9 @@ class VillageBuilder(object):
 					if coords not in self.land_manager.village:
 						bad_roads += 1
 						continue
-					location = Entities.buildings[BUILDINGS.TRAIL_CLASS].check_build(self.session, Point(road_x, road_y))
-					if location.buildable:
-						usage[coords] = (self.purpose.road, location)
+					road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
+					if road:
+						usage[coords] = (self.purpose.road, road)
 					else:
 						bad_roads += 1
 
@@ -119,8 +118,8 @@ class VillageBuilder(object):
 						break
 				if not ok:
 					continue
-				location = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].check_build(self.session, Point(coords[0], coords[1]))
-				if not location.buildable:
+				tent = Builder(BUILDINGS.RESIDENTIAL_CLASS, self.land_manager, Point(coords[0], coords[1]))
+				if not tent:
 					continue
 
 				# is there a road connection?
@@ -135,7 +134,7 @@ class VillageBuilder(object):
 				if ok:
 					for dx, dy in tent_squares:
 						usage[(coords[0] + dx, coords[1] + dy)] = (self.purpose.reserved, None)
-					usage[coords] = (self.purpose.tent, location)
+					usage[coords] = (self.purpose.tent, tent)
 					good_tents += 1
 
 			value = 10 * good_tents - bad_roads
@@ -145,26 +144,20 @@ class VillageBuilder(object):
 
 		self.plan = best
 
-	def _build(self, buildable, building_id):
-		x = buildable.position.origin.x
-		y = buildable.position.origin.y
-		cmd = Build(building_id, x, y, self.island, buildable.rotation, settlement = self.settlement, tearset = buildable.tearset)
-		return cmd.execute(self.session)
-
 	def build_roads(self):
 		for usage in self.plan.itervalues():
 			if usage is not None and usage[0] == self.purpose.road:
-				self._build(usage[1], BUILDINGS.TRAIL_CLASS)
+				usage[1].execute()
 
 	def build_main_square(self):
 		for usage in self.plan.itervalues():
 			if usage is not None and usage[0] == self.purpose.main_square:
-				self._build(usage[1], BUILDINGS.MARKET_PLACE_CLASS)
+				usage[1].execute()
 
 	def build_tent(self):
 		for coords, usage in sorted(self.plan.iteritems()):
 			if usage is not None and usage[0] == self.purpose.tent:
-				if not self._build(usage[1], BUILDINGS.RESIDENTIAL_CLASS):
+				if not usage[1].execute():
 					return False
 				self.plan[coords] = (self.purpose.reserved, None)
 				return True
