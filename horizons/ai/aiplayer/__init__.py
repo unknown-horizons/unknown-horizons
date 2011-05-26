@@ -73,12 +73,14 @@ class AIPlayer(GenericAI):
 
 	def report_success(self, mission, msg):
 		print mission, msg
-		self.village_builder = VillageBuilder(self.land_manager)
-		self.village_builder.create_plan()
-		self.village_builder.build_roads()
-		self.village_builder.build_main_square()
-		self.village_builder.display()
-		Scheduler().add_new_object(Callback(self.build_tents), self)
+		if isinstance(mission, FoundSettlement):
+			self.land_manager.settlement = mission.settlement
+			self.village_builder = VillageBuilder(self.land_manager)
+			self.village_builder.create_plan()
+			self.village_builder.build_roads()
+			self.village_builder.build_main_square()
+			self.village_builder.display()
+			Scheduler().add_new_object(Callback(self.build_tents), self)
 
 	def report_failure(self, mission, msg):
 		print mission, msg

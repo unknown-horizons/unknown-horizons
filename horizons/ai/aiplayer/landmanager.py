@@ -28,6 +28,7 @@ class LandManager(object):
 
 	def __init__(self, island, owner):
 		self.island = island
+		self.settlement = None
 		self.owner = owner
 
 	def _coords_usable(self, coords):

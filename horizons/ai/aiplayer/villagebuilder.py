@@ -34,12 +34,7 @@ class VillageBuilder(object):
 		self.island = land_manager.island
 		self.session = self.island.session
 		self.owner = self.land_manager.owner
-		self.settlement = None
-		for coords in self.island.ground_map:
-			t = self.island.get_settlement(Point(coords[0], coords[1]))
-			if t != None and t.owner == self.owner:
-				self.settlement = t
-				break
+		self.settlement = land_manager.settlement
 
 	def create_plan(self):
 		"""

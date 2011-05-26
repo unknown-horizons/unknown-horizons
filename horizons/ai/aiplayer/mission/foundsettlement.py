@@ -37,6 +37,7 @@ class FoundSettlement(Mission):
 		super(FoundSettlement, self).__init__(success_callback, failure_callback, session, **kwargs)
 		self.ship = ship
 		self.bo_location = bo_location
+		self.settlement = None
 
 	def start(self):
 		self._move_to_bo_area()
@@ -62,6 +63,7 @@ class FoundSettlement(Mission):
 		island = self.session.world.get_island(Point(x, y))
 		cmd = Build(BUILDINGS.BRANCH_OFFICE_CLASS, x, y, island, t.rotation, ship = self.ship, tearset = t.tearset)
 		cmd.execute(self.session)
+		self.settlement = island.get_settlement(Point(x, y))
 		self.log.info('Built the branch office')
 
 		self.ship.owner.complete_inventory.unload_all(self.ship, self.ship.owner.settlements[0])
@@ -90,7 +92,7 @@ class FoundSettlement(Mission):
 						break
 			if not ok:
 				continue
-			
+
 			build_info = None
 			point = Point(x, y)
 			for rotation in rotations:
@@ -104,11 +106,11 @@ class FoundSettlement(Mission):
 
 			cost = 0
 			for coords in land_manager.village:
-				t = point.distance_to_tuple(coords)
-				if t < 3:
+				distance = point.distance_to_tuple(coords)
+				if distance < 3:
 					cost += 100
 				else:
-					cost += t
+					cost += distance
 			options.append((cost, build_info))
 
 		for _, build_info in sorted(options):
