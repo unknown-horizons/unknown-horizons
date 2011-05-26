@@ -314,7 +314,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		for player in self.players:
 			# Adding ships for the players
 			# hack to place the ship on the development map
-			point = Point(-3, -15)
+			point = Point(-3, -16)
 			if point.to_tuple() not in self.water:
 				point = self.get_random_possible_ship_position()
 			# Execute command directly, not via manager, because else it would be transmitted over the
