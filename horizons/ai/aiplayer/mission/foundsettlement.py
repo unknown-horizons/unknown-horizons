@@ -113,9 +113,8 @@ class FoundSettlement(Mission):
 
 		for _, build_info in sorted(options):
 			(x, y) = build_info.position.get_coordinates()[4]
-			if ship.check_move(Point(x, y)):
+			if ship.check_move(Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
 				return build_info
-			return build_info
 		return None
 
 	@classmethod
