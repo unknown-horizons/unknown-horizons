@@ -70,8 +70,12 @@ class Point(object):
 		return dist if dist >= 0 else 0
 
 	def distance_to_annulus(self, other):
-		dist = self.distance(other.center) - other.max_radius
-		return dist if dist >= 0 else 0
+		dist = self.distance(other.center)
+		if dist < other.min_radius:
+			return other.min_radius - dist
+		if dist > other.max_radius:
+			return dist - other.max_radius
+		return 0
 
 	def get_coordinates(self):
 		""" Returns point as coordinate

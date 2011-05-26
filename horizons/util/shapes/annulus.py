@@ -96,9 +96,14 @@ class Annulus(object):
 		return other.distance_to_annulus(self)
 
 	def distance_to_tuple(self, other):
-		dist = ((self.center.x - other[0]) ** 2 + (self.center.y - other[1]) ** 2) ** 0.5 - self.max_radius
-		return dist if dist >= 0 else 0
+		dist = ((self.center.x - other[0]) ** 2 + (self.center.y - other[1]) ** 2) ** 0.5
+		if dist < self.min_radius:
+			return self.min_radius - dist
+		if dist > self.max_radius:
+			return dist - self.max_radius
+		return 0
 
+	#TODO check and fix these methods
 	def distance_to_rect(self, other):
 		return other.distance_to_annulus(self)
 
