@@ -41,8 +41,8 @@ class Weapon(object):
 		#bullet speed in tiles per second
 		#used to deal damage when bullet has reached the target
 		self.attack_speed = 2
-		#if weapon triggered a succesfuly fire is true
-		self.fired = False
+		#if weapon is in range for an attack set to true
+		self.in_range = False
 		#time until attack is ready again
 		#will have one attack per 10 seconds
 		self.cooldown_time = 10
@@ -51,6 +51,12 @@ class Weapon(object):
 
 	def get_damage_modifier(self):
 		return self.damage
+
+	def get_minimum_range(self):
+		return self.weapon_range[0]
+
+	def get_maximum_range(self):
+		return self.weapon_range[1]
 
 	def on_impact(self, position):
 		#deal damage to units in position callback
@@ -71,14 +77,15 @@ class Weapon(object):
 		@param position : position where weapon will be fired
 		@param distance : distance between weapon and target
 		"""
-		#fires the weapon
-		if not self.attack_ready:
-			self.fired = False
-			print 'attack not ready!'
-			return
 
 		if not self.check_target_in_range(distance):
-			self.fired = False
+			self.in_range = False
+			return
+
+		self.in_range = True
+
+		if not self.attack_ready:
+			print 'attack not ready!'
 			return
 
 		print 'firing weapon at position', position
@@ -90,7 +97,6 @@ class Weapon(object):
 		#calculate the ticks until attack is ready again
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
 		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
-		self.fired = True
 		self.attack_ready = False
 
 	def check_target_in_range(self, distance):
@@ -107,14 +113,12 @@ class Cannon(Weapon):
 	Cannon class
 	"""
 	def __init__(self, session):
-		#TODO move modifiers up to Weapon,
 		#modifiers will be loaded from database
 		super(Cannon, self).__init__(session)
 		self.__init()
 
 	def __init(self):
 		self.weapon_type = 'ranged'
-		#this stays here!
 		#number of cannons as resource binded to a Cannon object
 		self.number_of_weapons = 1
 

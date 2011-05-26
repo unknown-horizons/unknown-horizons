@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+from horizons.util import Annulus, Callback
 
 class WeaponHolder(object):
 	def __init__(self, **kwargs):
@@ -42,14 +43,19 @@ class WeaponHolder(object):
 
 	def attack(self, dest):
 		print 'attack issued'
-		attacked = False
+		in_range = False
 		distance = self.position.distance_to_point(dest)
 		for weapon in self._weapon_storage:
 			weapon.fire(dest, distance)
-			if weapon.fired:
-				print 'fired', weapon
-				attacked = True
+			if weapon.in_range:
+				in_range = True
 
-		if not attacked:
-			#TODO move the holder if possible
-			pass
+		if not in_range:
+			if self.is_moving:
+				min_range = min([w.get_minimum_range() for w in self._weapon_storage])
+				max_range = max([w.get_maximum_range() for w in self._weapon_storage])
+				try:
+					self.move(Annulus(dest, min_range, max_range), Callback(self.attack, dest),
+						blocked_callback = Callback(self.attack, dest))
+				except MoveNotPossible:
+					pass
