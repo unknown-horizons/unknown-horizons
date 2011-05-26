@@ -51,9 +51,9 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.start), self, run_in = 2)
 
 	def __init(self):
-		for t in self.session.world.ships:
-			if t.owner == self:
-				self.ships[t] = self.shipStates.on_a_mission
+		for ship in self.session.world.ships:
+			if ship.owner == self:
+				self.ships[ship] = self.shipStates.on_a_mission
 
 		self.missions = {}
 		self.island = self.session.world.islands[0]
