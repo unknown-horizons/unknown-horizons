@@ -19,7 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import Circle
+from horizons.util import Circle, Callback
+from horizons.scheduler import Scheduler
+from horizons.constants import GAME_SPEED
 
 class Weapon(object):
 	"""
@@ -32,24 +34,64 @@ class Weapon(object):
 
 		#tuple with min range, max range
 		self.weapon_range = 5,15
+		#area affected by attack
 		self.attack_radius = 4
+		#weapon damage
 		self.damage = 10
+		#bullet speed in tiles per second
+		#used to deal damage when bullet has reached the target
+		self.attack_speed = 2
+		#if weapon triggered a succesfuly fire is true
+		self.fired = False
+		#time until attack is ready again
+		#will have one attack per 10 seconds
+		self.cooldown_time = 10
+		self.attack_ready = True
 		self.session = session
 
 	def get_damage_modifier(self):
 		return self.damage
 
-	def fire(self, position):
-		print 'firing weapon at position', position
-		units = self.session.world.get_ships(position, self.attack_radius)
+	def on_impact(self, position):
+		#deal damage to units in position callback
 
+		units = self.session.world.get_ships(position, self.attack_radius)
 		#TODO add buildings to units
+
 		for unit in units:
 			print 'dealing damage to ship:', unit
 			unit.health -= self.get_damage_modifier()
-		#TODO implement all modifiers
-		#get actual location from accuracy
-		#get damage for position
+
+	def make_attack_ready(self):
+		self.attack_ready = True
+
+	def fire(self, position, distance):
+		"""
+		Fires the weapon at a certain position
+		@param position : position where weapon will be fired
+		@param distance : distance between weapon and target
+		"""
+		#fires the weapon
+		if not self.attack_ready:
+			self.fired = False
+			print 'attack not ready!'
+			return
+
+		if not self.check_target_in_range(distance):
+			self.fired = False
+			return
+
+		print 'firing weapon at position', position
+		#calculate the ticks until impact
+		ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
+		#deal damage when attack reaches target
+		Scheduler().add_new_object(Callback(self.on_impact, position), self, ticks)
+
+		#calculate the ticks until attack is ready again
+		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
+		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
+		self.fired = True
+		self.attack_ready = False
 
 	def check_target_in_range(self, distance):
 		"""

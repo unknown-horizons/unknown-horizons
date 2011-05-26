@@ -39,8 +39,6 @@ from weapon import Cannon
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED
-from horizons.scheduler import Scheduler
-
 
 class ShipRoute(object):
 	"""

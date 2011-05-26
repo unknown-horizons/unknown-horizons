@@ -45,8 +45,8 @@ class WeaponHolder(object):
 		attacked = False
 		distance = self.position.distance_to_point(dest)
 		for weapon in self._weapon_storage:
-			if weapon.check_target_in_range(distance):
-				weapon.fire(dest)
+			weapon.fire(dest, distance)
+			if weapon.fired:
 				print 'fired', weapon
 				attacked = True
 
