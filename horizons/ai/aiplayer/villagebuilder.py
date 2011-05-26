@@ -27,7 +27,7 @@ from horizons.util import Point
 
 class VillageBuilder(object):
 	purpose = Enum('main_square', 'tent', 'road', 'reserved')
-	
+
 	def __init__(self, land_manager):
 		self.land_manager = land_manager
 		self.island = land_manager.island

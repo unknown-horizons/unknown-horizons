@@ -36,6 +36,7 @@ class FoundSettlement(Mission):
 		self.ship = ship
 		self.bo_location = bo_location
 		self.settlement = None
+		self.branch_office = None
 
 	def start(self):
 		self._move_to_bo_area()
@@ -55,7 +56,7 @@ class FoundSettlement(Mission):
 	def _reached_bo_area(self):
 		self.log.info('Reached BO area')
 
-		self.bo_location.execute()
+		self.branch_office = self.bo_location.execute()
 		island = self.bo_location.land_manager.island
 		self.settlement = island.get_settlement(self.bo_location.point)
 		self.log.info('Built the branch office')

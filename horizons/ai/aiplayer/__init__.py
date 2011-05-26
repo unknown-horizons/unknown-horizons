@@ -27,6 +27,7 @@ from mission.foundsettlement import FoundSettlement
 from landmanager import LandManager
 from completeinventory import CompleteInventory
 from villagebuilder import VillageBuilder
+from productionbuilder import ProductionBuilder
 
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
@@ -81,6 +82,11 @@ class AIPlayer(GenericAI):
 			self.village_builder.build_main_square()
 			self.village_builder.display()
 			Scheduler().add_new_object(Callback(self.build_tents), self)
+
+			self.production_builder = ProductionBuilder(self.land_manager, mission.branch_office)
+			self.production_builder.build_fisher()
+			self.production_builder.build_fisher()
+			self.production_builder.display()
 
 	def report_failure(self, mission, msg):
 		print mission, msg
