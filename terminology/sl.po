@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-27 11:38+0200\n"
+"PO-Revision-Date: 2011-05-27 11:41+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -852,31 +852,31 @@ msgstr "poženi"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "service"
-msgstr ""
+msgstr "storitev"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sheep"
-msgstr ""
+msgstr "ovca"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "SHIFT"
-msgstr ""
+msgstr "SHIFT"
 
 # 
 #: po/tutorial.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "ship inventory"
-msgstr ""
+msgstr "inventar ladje"
 
 # 
 #: po/tutorial.py
 #: run_uh.py
 msgid "starting"
-msgstr ""
+msgstr "začenjanje"
 
 # 
 #: po/tutorial.py
@@ -888,10 +888,10 @@ msgstr "polje sladkornega trsa"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trade partner"
-msgstr ""
+msgstr "trgovnski partner"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "yields"
-msgstr ""
+msgstr "izkoristki"
