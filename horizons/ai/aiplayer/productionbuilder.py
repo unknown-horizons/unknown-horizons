@@ -29,7 +29,7 @@ from horizons.util import Point
 from horizons.world.pathfinding.pathfinding import FindPath
 
 class ProductionBuilder(object):
-	purpose = Enum('branch_office', 'road', 'fisher', 'lumberjack', 'tree', 'reserved')
+	purpose = Enum('branch_office', 'road', 'fisher', 'lumberjack', 'tree', 'reserved', 'none')
 
 	def __init__(self, land_manager, branch_office):
 		self.land_manager = land_manager
@@ -37,7 +37,7 @@ class ProductionBuilder(object):
 		self.session = self.island.session
 		self.owner = self.land_manager.owner
 		self.settlement = land_manager.settlement
-		self.plan = dict.fromkeys(land_manager.production)
+		self.plan = dict.fromkeys(land_manager.production, (self.purpose.none, None))
 		self.collector_buildings = [branch_office]
 		for coords in branch_office.position.tuple_iter():
 			if coords in self.plan:
@@ -108,8 +108,8 @@ class ProductionBuilder(object):
 		"""
 		options = []
 
-		for (x, y), usage in self.plan.iteritems():
-			if usage is not None:
+		for (x, y), (purpose, _) in self.plan.iteritems():
+			if purpose != self.purpose.none:
 				continue
 			point = Point(x, y)
 			fisher = Builder(BUILDINGS.FISHERMAN_CLASS, self.land_manager, point)
@@ -147,8 +147,8 @@ class ProductionBuilder(object):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		options = []
 
-		for (x, y), usage in self.plan.iteritems():
-			if usage is not None:
+		for (x, y), (purpose, _) in self.plan.iteritems():
+			if purpose != self.purpose.none:
 				continue
 			point = Point(x, y)
 			lumberjack = Builder(BUILDINGS.LUMBERJACK_CLASS, self.land_manager, point)
@@ -161,14 +161,14 @@ class ProductionBuilder(object):
 			for coords in lumberjack.position.get_radius_coordinates(3):
 				if coords not in self.plan:
 					continue
-				usage = self.plan[coords]
-				if usage is None:
+				purpose = self.plan[coords][0]
+				if purpose == self.purpose.none:
 					value += 1
 					for dx, dy in moves:
 						coords2 = (coords[0] + dx, coords[1] + dy)
 						if coords2 not in used_area:
 							alignment += 1
-				elif usage[0] == self.purpose.tree:
+				elif purpose == self.purpose.tree:
 					value += 0.3
 			value = min(value, 32)
 			
@@ -184,10 +184,7 @@ class ProductionBuilder(object):
 			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (self.purpose.lumberjack, lumberjack)
 			
 			for coords in lumberjack.position.get_radius_coordinates(3):
-				if coords not in self.plan:
-					continue
-				usage = self.plan[coords]
-				if usage is None:
+				if coords in self.plan and self.plan[coords][0] == self.purpose.none:
 					self.plan[coords] = (self.purpose.tree, None)
 					tree = Builder(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
 			return lumberjack
@@ -202,19 +199,17 @@ class ProductionBuilder(object):
 		unknown_colour = (128, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
-		for coords, usage in self.plan.iteritems():
+		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
-			if usage is None:
-				renderer.addColored(tile._instance, *unknown_colour)
+			if purpose == self.purpose.road:
+				renderer.addColored(tile._instance, *road_colour)
+			elif purpose == self.purpose.fisher:
+				renderer.addColored(tile._instance, *fisher_colour)
+			elif purpose == self.purpose.lumberjack:
+				renderer.addColored(tile._instance, *lumberjack_colour)
+			elif purpose == self.purpose.tree:
+				renderer.addColored(tile._instance, *tree_colour)
+			elif purpose == self.purpose.reserved:
+				renderer.addColored(tile._instance, *reserved_colour)
 			else:
-				usage = usage[0]
-				if usage == self.purpose.road:
-					renderer.addColored(tile._instance, *road_colour)
-				elif usage == self.purpose.fisher:
-					renderer.addColored(tile._instance, *fisher_colour)
-				elif usage == self.purpose.lumberjack:
-					renderer.addColored(tile._instance, *lumberjack_colour)
-				elif usage == self.purpose.tree:
-					renderer.addColored(tile._instance, *tree_colour)
-				elif usage == self.purpose.reserved:
-					renderer.addColored(tile._instance, *reserved_colour)
+				renderer.addColored(tile._instance, *unknown_colour)

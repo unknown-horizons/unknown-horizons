@@ -26,7 +26,7 @@ from horizons.constants import BUILDINGS
 from horizons.util import Point
 
 class VillageBuilder(object):
-	purpose = Enum('main_square', 'tent', 'road', 'reserved')
+	purpose = Enum('main_square', 'planned_tent', 'tent', 'road', 'reserved', 'none')
 
 	def __init__(self, land_manager):
 		self.land_manager = land_manager
@@ -43,7 +43,7 @@ class VillageBuilder(object):
 		impossible road locations.
 		"""
 
-		best = None
+		self.plan = None
 		best_value = -1
 		xs = set([coords[0] for coords in self.land_manager.village])
 		ys = set([coords[1] for coords in self.land_manager.village])
@@ -60,15 +60,15 @@ class VillageBuilder(object):
 			if not main_square:
 				continue
 
-			usage = dict.fromkeys(self.land_manager.village)
+			plan = dict.fromkeys(self.land_manager.village, (self.purpose.none, None))
 			bad_roads = 0
 			good_tents = 0
 
 			# place the main square
 			for dy in xrange(6):
 				for dx in xrange(6):
-					usage[(x + dx, y + dy)] = (self.purpose.reserved, None)
-			usage[(x, y)] = (self.purpose.main_square, main_square)
+					plan[(x + dx, y + dy)] = (self.purpose.reserved, None)
+			plan[(x, y)] = (self.purpose.main_square, main_square)
 
 			# place the roads running parallel to the y-axis
 			for road_y in ys:
@@ -85,7 +85,7 @@ class VillageBuilder(object):
 						continue
 					road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
 					if road:
-						usage[coords] = (self.purpose.road, road)
+						plan[coords] = (self.purpose.road, road)
 					else:
 						bad_roads += 1
 
@@ -104,16 +104,16 @@ class VillageBuilder(object):
 						continue
 					road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
 					if road:
-						usage[coords] = (self.purpose.road, road)
+						plan[coords] = (self.purpose.road, road)
 					else:
 						bad_roads += 1
 
 			# place the tents
-			for coords in sorted(usage):
+			for coords in sorted(plan):
 				ok = True
 				for dx, dy in tent_squares:
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 not in usage or usage[coords2] is not None:
+					if coords2 not in plan or plan[coords2][0] != self.purpose.none:
 						ok = False
 						break
 				if not ok:
@@ -126,62 +126,61 @@ class VillageBuilder(object):
 				ok = False
 				for dx, dy in road_connections:
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 in usage and usage[coords2] is not None and usage[coords2][0] == self.purpose.road:
+					if coords2 in plan and plan[coords2][0] == self.purpose.road:
 						ok = True
 						break
 
 				# connection to a road tile exists, build the tent
 				if ok:
 					for dx, dy in tent_squares:
-						usage[(coords[0] + dx, coords[1] + dy)] = (self.purpose.reserved, None)
-					usage[coords] = (self.purpose.tent, tent)
+						plan[(coords[0] + dx, coords[1] + dy)] = (self.purpose.reserved, None)
+					plan[coords] = (self.purpose.planned_tent, tent)
 					good_tents += 1
 
 			value = 10 * good_tents - bad_roads
 			if best_value < value:
-				best = usage
+				self.plan = plan
 				best_value = value
 
-		self.plan = best
-
 	def build_roads(self):
-		for usage in self.plan.itervalues():
-			if usage is not None and usage[0] == self.purpose.road:
-				usage[1].execute()
+		for (purpose, builder) in self.plan.itervalues():
+			if purpose == self.purpose.road:
+				builder.execute()
 
 	def build_main_square(self):
-		for usage in self.plan.itervalues():
-			if usage is not None and usage[0] == self.purpose.main_square:
-				usage[1].execute()
+		for (purpose, builder) in self.plan.itervalues():
+			if purpose == self.purpose.main_square:
+				builder.execute()
 
 	def build_tent(self):
-		for coords, usage in sorted(self.plan.iteritems()):
-			if usage is not None and usage[0] == self.purpose.tent:
-				if not usage[1].execute():
+		for coords, (purpose, builder) in sorted(self.plan.iteritems()):
+			if purpose == self.purpose.planned_tent:
+				if not builder.execute():
 					return False
-				self.plan[coords] = (self.purpose.reserved, None)
+				self.plan[coords] = (self.purpose.tent, builder)
 				return True
 		return False
 
 	def display(self):
 		road_colour = (30, 30, 30)
 		tent_colour = (255, 255, 255)
+		planned_tent_colour = (200, 200, 200)
 		sq_colour = (255, 0, 255)
 		reserved_colour = (0, 0, 255)
 		unknown_colour = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
-		for coords, usage in self.plan.iteritems():
+		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
-			if usage is None:
-				renderer.addColored(tile._instance, *unknown_colour)
+			if purpose == self.purpose.main_square:
+				renderer.addColored(tile._instance, *sq_colour)
+			elif purpose == self.purpose.tent:
+				renderer.addColored(tile._instance, *tent_colour)
+			elif purpose == self.purpose.planned_tent:
+				renderer.addColored(tile._instance, *planned_tent_colour)
+			elif purpose == self.purpose.road:
+				renderer.addColored(tile._instance, *road_colour)
+			elif purpose == self.purpose.reserved:
+				renderer.addColored(tile._instance, *reserved_colour)
 			else:
-				usage = usage[0]
-				if usage == self.purpose.main_square:
-					renderer.addColored(tile._instance, *sq_colour)
-				elif usage == self.purpose.tent:
-					renderer.addColored(tile._instance, *tent_colour)
-				elif usage == self.purpose.road:
-					renderer.addColored(tile._instance, *road_colour)
-				elif usage == self.purpose.reserved:
-					renderer.addColored(tile._instance, *reserved_colour)
+				renderer.addColored(tile._instance, *unknown_colour)
