@@ -59,6 +59,6 @@ class Builder(object):
 	def execute(self):
 		"""Actually builds the building."""
 		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island, \
-			[45, 135, 225, 315][self.orientation], settlement = self.land_manager.settlement, \
+			self.build_position.rotation, settlement = self.land_manager.settlement, \
 			ship = self.ship, tearset = self.build_position.tearset)
 		return cmd.execute(self.land_manager.session)
