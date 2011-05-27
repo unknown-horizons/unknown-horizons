@@ -89,13 +89,8 @@ class FoundSettlement(Mission):
 
 			build_info = None
 			point = Point(x, y)
-			for orientation in xrange(4):
-				branch_office = Builder(BUILDINGS.BRANCH_OFFICE_CLASS, land_manager, point, \
-					orientation = orientation, ship = ship)
-				if branch_office:
-					build_info = branch_office
-					break
-			if build_info is None:
+			branch_office = Builder(BUILDINGS.BRANCH_OFFICE_CLASS, land_manager, point, ship = ship)
+			if not branch_office:
 				continue
 
 			cost = 0
@@ -105,7 +100,7 @@ class FoundSettlement(Mission):
 					cost += 100
 				else:
 					cost += distance
-			options.append((cost, build_info))
+			options.append((cost, branch_office))
 
 		for _, build_info in sorted(options):
 			(x, y) = build_info.position.get_coordinates()[4]
