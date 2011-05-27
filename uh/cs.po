@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-25 19:27+0200\n"
+"PO-Revision-Date: 2011-05-25 19:37+0200\n"
 "Last-Translator: Gamp <turon.honza@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -52,11 +52,11 @@ msgstr ""
 
 #: horizons/engine.py:426
 msgid "Invalid network port"
-msgstr ""
+msgstr "Špatný síťový port"
 
 #: horizons/engine.py:427
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr ""
+msgstr "Vybraný port není platný. Musí být mezi číslem 1 a 65535"
 
 #: horizons/engine.py:428
 msgid "Please check the port you entered and make sure it's in the specified range."
