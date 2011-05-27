@@ -20,13 +20,14 @@
 # ###################################################
 
 import math
+from Queue import Queue
 
 from builder import Builder
+from roadplanner import RoadPlanner
 
 from horizons.ext.enum import Enum
 from horizons.constants import BUILDINGS
-from horizons.util import Point
-from horizons.world.pathfinding.pathfinding import FindPath
+from horizons.util import Point, Rect
 
 class ProductionBuilder(object):
 	purpose = Enum('branch_office', 'road', 'fisher', 'lumberjack', 'tree', 'reserved', 'none')
@@ -54,7 +55,7 @@ class ProductionBuilder(object):
 				if not rect.contains_tuple(coords):
 					yield self.island.get_tile_tuple(coords)
 
-	def _get_possible_road_points(self, rect):
+	def _get_possible_road_coords(self, rect):
 		for tile in self._get_neighbour_tiles(rect):
 			if tile is None:
 				continue
@@ -63,44 +64,94 @@ class ProductionBuilder(object):
 			if building is None:
 				road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
 				if road:
-					yield point
+					yield (tile.x, tile.y)
 			else:
 				if building.id == BUILDINGS.TREE_CLASS or building.id == BUILDINGS.TRAIL_CLASS:
-					yield point
+					yield (tile.x, tile.y)
+
+	def _fill_distance(self, distance, nodes):
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		queue = Queue()
+		for item in distance.iteritems():
+			queue.put(item)
+
+		while not queue.empty():
+			(coords, dist) = queue.get()
+			for dx, dy in moves:
+				coords2 = (coords[0] + dx, coords[1] + dy)
+				if coords2 in nodes and coords2 not in distance:
+					distance[coords2] = dist + 1
+					queue.put((coords2, dist + 1))
+
+	def _get_path_nodes(self):
+		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+
+		nodes = {}
+		distance_to_road = {}
+		distance_to_boundary = {}
+		for coords in self.plan:
+			if self.plan[coords][0] == self.purpose.none:
+				nodes[coords] = 1
+			elif self.plan[coords][0] == self.purpose.road:
+				nodes[coords] = 1
+				distance_to_road[coords] = 0
+
+			for (dx, dy) in moves:
+				coords2 = (coords[0] + dx, coords[1] + dy)
+				if coords2 not in self.land_manager.production:
+					distance_to_boundary[coords] = 1
+					break
+
+		for coords in self.land_manager.village:
+			building = self.island.get_building(Point(coords[0], coords[1]))
+			if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
+				nodes[coords] = 1
+				distance_to_road[coords] = 0
+
+		self._fill_distance(distance_to_road, self.island.path_nodes.nodes)
+		self._fill_distance(distance_to_boundary, self.island.path_nodes.nodes)
+
+		for coords in nodes:
+			if coords in distance_to_road:
+				distance = distance_to_road[coords]
+				if distance > 9:
+					nodes[coords] += 0.5
+				elif 0 < distance <= 9:
+					nodes[coords] += 0.7 + (10 - distance) * 0.07
+			else:
+				nodes[coords] += 0.1
+
+			if coords in distance_to_boundary:
+				distance = distance_to_boundary[coords]
+				if 1 < distance <= 10:
+					nodes[coords] += 0.3 + (11 - distance) * 0.03
+			else:
+				nodes[coords] += 0.1
+
+		return nodes
 
 	def _build_road_connection(self, builder):
 		collector_coords = set()
 		for building in self.collector_buildings:
-			for point in self._get_possible_road_points(building.position):
-				collector_coords.add(point)
+			for coords in self._get_possible_road_coords(building.position):
+				collector_coords.add(coords)
 
-		blocked_coords = set(self.land_manager.village.keys())
-		road_coords = set()
-		for coords in blocked_coords:
-			building = self.island.get_building(Point(coords[0], coords[1]))
-			if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
-				road_coords.add(coords)
-		blocked_coords = blocked_coords.difference(road_coords)
-		for coords in builder.position.tuple_iter():
-			blocked_coords.add(coords)
+		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
+		destination_coords = set(self._get_possible_road_coords(builder.position))
 
-		best = None
-		for source in collector_coords:
-			for destination in self._get_possible_road_points(builder.position):
-				path = FindPath()(source, destination, self.island.path_nodes.nodes, blocked_coords = blocked_coords)
-				if path is not None:
-					if best is None or len(path) < len(best):
-						best = path
+		pos = builder.position
+		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
 
-		if best is not None:
-			for x, y in best:
+		path = RoadPlanner()(collector_coords, destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
+		if path is not None:
+			for x, y in path:
 				point = Point(x, y)
 				self.plan[point.to_tuple()] = (self.purpose.road, None)
 				building = self.island.get_building(point)
 				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 					continue
 				road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
-		return best is not None
+		return path is not None
 
 	def build_fisher(self):
 		"""
