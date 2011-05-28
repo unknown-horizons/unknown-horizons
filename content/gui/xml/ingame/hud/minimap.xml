@@ -4,6 +4,11 @@
 	<Icon name="minimap_overlay_image" position="40,-2"
 		image="content/gui/images/background/widgets/map_bg.png" />
 
+	<!--
+	<Icon name="minimap_overlay_image_bg" position="40,-2"
+		image="content/gui/images/background/widgets/map_bg2.png" />
+		-->
+
 	<TooltipButton name="speedUp" size="28,28" position="62,16"
 		up_image="content/gui/icons/widgets/minimap/speed_up.png"
 		down_image="content/gui/icons/widgets/minimap/speed_up_h.png"

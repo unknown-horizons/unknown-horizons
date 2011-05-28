@@ -274,6 +274,7 @@ class Fife(ApplicationBase):
 		self._gotInited = True
 		self.setup_setting_extras()
 
+
 	def setup_setting_extras(self):
 		slider_initial_data = {}
 		slider_event_map = {}
