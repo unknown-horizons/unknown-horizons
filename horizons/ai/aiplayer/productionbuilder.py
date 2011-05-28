@@ -62,7 +62,7 @@ class ProductionBuilder(object):
 			point = Point(tile.x, tile.y)
 			building = self.session.world.get_building(point)
 			if building is None:
-				road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
+				road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
 				if road:
 					yield (tile.x, tile.y)
 			else:
@@ -150,7 +150,7 @@ class ProductionBuilder(object):
 				building = self.island.get_building(point)
 				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 					continue
-				road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
+				road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
 		return path is not None
 
 	def build_fisher(self):
@@ -163,7 +163,7 @@ class ProductionBuilder(object):
 			if purpose != self.purpose.none:
 				continue
 			point = Point(x, y)
-			fisher = Builder(BUILDINGS.FISHERMAN_CLASS, self.land_manager, point)
+			fisher = Builder.create(BUILDINGS.FISHERMAN_CLASS, self.land_manager, point)
 			if not fisher or not self.land_manager.legal_for_production(fisher.position):
 				continue
 
@@ -202,7 +202,7 @@ class ProductionBuilder(object):
 			if purpose != self.purpose.none:
 				continue
 			point = Point(x, y)
-			lumberjack = Builder(BUILDINGS.LUMBERJACK_CLASS, self.land_manager, point)
+			lumberjack = Builder.create(BUILDINGS.LUMBERJACK_CLASS, self.land_manager, point)
 			if not lumberjack or not self.land_manager.legal_for_production(lumberjack.position):
 				continue
 
@@ -237,7 +237,7 @@ class ProductionBuilder(object):
 			for coords in lumberjack.position.get_radius_coordinates(3):
 				if coords in self.plan and self.plan[coords][0] == self.purpose.none:
 					self.plan[coords] = (self.purpose.tree, None)
-					tree = Builder(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
+					tree = Builder.create(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
 			return lumberjack
 		return None
 

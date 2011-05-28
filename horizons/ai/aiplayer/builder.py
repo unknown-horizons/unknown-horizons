@@ -62,3 +62,16 @@ class Builder(object):
 			self.build_position.rotation, settlement = self.land_manager.settlement, \
 			ship = self.ship, tearset = self.build_position.tearset)
 		return cmd.execute(self.land_manager.session)
+
+	cache = {}
+	cache_tick_id = -1
+
+	@classmethod
+	def create(cls, building_id, land_manager, point, orientation=0, ship=None):
+		if land_manager.session.timer.tick_next_id != cls.cache_tick_id:
+			cls.cache_tick_id = land_manager.session.timer.tick_next_id
+			cls.cache = {}
+		key = (building_id, point.to_tuple(), orientation)
+		if key not in cls.cache:
+			cls.cache[key] = Builder(building_id, land_manager, point, orientation, ship)
+		return cls.cache[key]

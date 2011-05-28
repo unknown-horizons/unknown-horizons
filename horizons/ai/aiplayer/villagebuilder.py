@@ -56,7 +56,7 @@ class VillageBuilder(object):
 				continue
 
 			point = Point(x, y)
-			main_square = Builder(BUILDINGS.MARKET_PLACE_CLASS, self.land_manager, point)
+			main_square = Builder.create(BUILDINGS.MARKET_PLACE_CLASS, self.land_manager, point)
 			if not main_square:
 				continue
 
@@ -83,7 +83,7 @@ class VillageBuilder(object):
 					if coords not in self.land_manager.village:
 						bad_roads += 1
 						continue
-					road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
+					road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
 					if road:
 						plan[coords] = (self.purpose.road, road)
 					else:
@@ -102,7 +102,7 @@ class VillageBuilder(object):
 					if coords not in self.land_manager.village:
 						bad_roads += 1
 						continue
-					road = Builder(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
+					road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
 					if road:
 						plan[coords] = (self.purpose.road, road)
 					else:
@@ -118,7 +118,7 @@ class VillageBuilder(object):
 						break
 				if not ok:
 					continue
-				tent = Builder(BUILDINGS.RESIDENTIAL_CLASS, self.land_manager, Point(coords[0], coords[1]))
+				tent = Builder.create(BUILDINGS.RESIDENTIAL_CLASS, self.land_manager, Point(coords[0], coords[1]))
 				if not tent:
 					continue
 
