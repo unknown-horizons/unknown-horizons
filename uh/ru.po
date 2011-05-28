@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-25 13:08+0200\n"
+"PO-Revision-Date: 2011-05-25 13:09+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1520,11 +1520,10 @@ msgstr "Опции для разработки"
 
 # I don't sure what means "Implies -d."
 #: run_uh.py:111
-#, fuzzy
 msgid "Write debug output only to logfile, not to console. Implies -d."
 msgstr ""
-"Писать отладочную информацию только в лог-файл, а не в консоль. "
-"Подразумевает -d."
+"Писать отладочную информацию только в лог-файл, а не в консоль. Включает в "
+"себя -d."
 
 #: run_uh.py:114
 msgid "Enable logging for a certain logging module (for developing only)."
