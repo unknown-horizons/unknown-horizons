@@ -38,8 +38,6 @@ class Minimap(object):
 
 	SHIP_DOT_UPDATE_INTERVAL = 0.5 # seconds
 
-	MINIMAP_BASE_IMAGE = "content/gfx/misc/minmap_water.png"
-
 	def __init__(self, rect, session, renderer):
 		"""
 		@param rect: a Rect, where we will draw to
@@ -157,15 +155,6 @@ class Minimap(object):
 		if where is None:
 			where = self.location
 
-		# reload img
-		# get img and release it
-		img_id = horizons.main.fife.imagepool.addResourceFromFile( self.MINIMAP_BASE_IMAGE )
-		horizons.main.fife.imagepool.release( img_id, True )
-		# load
-		img_id = horizons.main.fife.imagepool.addResourceFromFile( self.MINIMAP_BASE_IMAGE )
-
-		img = horizons.main.fife.imagepool.getImage( img_id )
-
 		self.renderer.removeAll("minimap_point")
 
 		# calculate which area of the real map is mapped to which pixel on the minimap
@@ -176,16 +165,18 @@ class Minimap(object):
 		pixel_per_coord_y_half_as_int = int(pixel_per_coord_y/2)
 
 		real_map_point = Point(0, 0)
+		location_left = self.location.left
+		location_top = self.location.top
 		world_min_x = self.world.min_x
 		world_min_y = self.world.min_y
 		get_island = self.world.get_island
 		water_col, island_col = \
 		         [ self.colors[i] for i in [self.water_id, self.island_id] ]
 		color = None
+		renderer_addPoint = self.renderer.addPoint
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this faciliates calculating the real world coords
-		i = 0
 		for x in xrange(where.left-self.location.left, where.left+where.width-self.location.left):
 			# Optimisation: remember last island
 			last_island = None
@@ -207,6 +198,9 @@ class Minimap(object):
 				real_map_point.y = int(y*pixel_per_coord_y)+world_min_y + \
 				                            pixel_per_coord_y_half_as_int
 				real_map_point_tuple = (real_map_point.x, real_map_point.y)
+				# we changed the minimap coords, so change back here
+				minimap_point = ( location_left + x, location_top + y)
+
 
 				# check what's at the covered_area
 				if last_island is not None and real_map_point_tuple in last_island.ground_map:
@@ -224,17 +218,11 @@ class Minimap(object):
 						# pixel belongs to a player
 						color = settlement.owner.color.to_tuple()
 				else:
-					continue
 					color = water_col
 
 				# _get_rotated_coords has been inlined here
-				#renderer_addPoint("minimap_point", self.renderernodes[self._rotate(minimap_point, self._rotations)], *color)
-				img.putPixel(x, y, *color)
-		self.renderer.removeAll("minimap_img")
-		node = fife.GenericRendererNode( fife.Point(200, 200) )
-		self.renderer.addImage("minimap_img", node, img_id)
+				renderer_addPoint("minimap_point", self.renderernodes[self._rotate(minimap_point, self._rotations)], *color)
 
-		print i
 
 	def _timed_update(self):
 		"""Regular updates for domains we can't or don't want to keep track of."""

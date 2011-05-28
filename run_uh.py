@@ -269,14 +269,10 @@ def init_environment():
 
 	options = get_option_parser().parse_args()[0]
 
-	if options.fife_path and not options.fife_in_library_path:
-		# we got an explicit path, search there
-		# (but skip on second run, else we've got an endless loop)
-		find_FIFE(options.fife_path) 
-
 	#find FIFE and setup search paths, if it can't be imported yet
 	try:
-		from fife import fife
+		if options.fife_path is None or options.fife_in_library_path is not None:
+			from fife import fife
 	except ImportError, e:
 		if options.fife_in_library_path:
 			# fife should already be in LD_LIBRARY_PATH
@@ -285,10 +281,8 @@ def init_environment():
 			exit(1)
 		log().debug('Failed to load FIFE from default paths: %s', e)
 		log().debug('Searching for FIFE')
-		find_FIFE() # this restarts or terminates the program
+		find_FIFE(options.fife_path) # this restarts or terminates the program
 		assert False
-
-	log().debug('Using fife: %s', fife)
 
 	#for some external libraries distributed with UH
 	sys.path.append( os.path.join('horizons', 'ext') )
