@@ -48,7 +48,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	   * grounds - a list of all the map's groundtiles
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
-	                 This is important for pathfinding and quick tile fetching.
+	                 This is important for pathfinding and quick tile fetching.z
+	   * island_map - a dictionary that binds tuples of coordinates with a reference to the island
 	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
 	   * session - reference to horizons.session.Session instance of the current game
@@ -71,6 +72,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.players = None
 		self.player = None
 		self.ground_map = None
+		self.island_map = None
 		self.water = None
 		self.ship_map = None
 		self.ships = None
@@ -173,11 +175,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 								self.ground_map[(x+x_offset, y+y_offset)] = ground
 
 
-		# remove parts that are occupied by island
+		# remove parts that are occupied by island, create the island map
+		self.island_map = {}
 		for island in self.islands:
 			for coord in island.ground_map:
 				if coord in self.ground_map:
 					del self.ground_map[coord]
+					self.island_map[coord] = island
 
 		# load world buildings (e.g. fish)
 		for (building_worldid, building_typeid) in \
@@ -465,13 +469,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param point: instance of Point"""
 		tup = point.to_tuple()
-		if tup in self.ground_map:
-			# this optimisation pays of if water tiles are frequently queried
+		if tup not in self.island_map:
 			return None
-		for island in self.islands:
-			if tup in island.ground_map:
-				return island
-		return None
+		return self.island_map[tup]
 
 	def get_islands_in_radius(self, point, radius):
 		"""Returns all islands in a certain radius around a point.
