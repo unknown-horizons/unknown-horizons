@@ -100,6 +100,7 @@ class Session(LivingObject):
 		self.gui.session = self
 		self.ingame_gui = IngameGui(self, self.gui)
 		self.keylistener = IngameKeyListener(self)
+		self.coordinates_tooltip = None
 		self.display_speed()
 
 		self.selected_instances = set()

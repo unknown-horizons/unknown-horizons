@@ -25,6 +25,7 @@ import horizons.main
 
 from cursortool import CursorTool
 from horizons.util import Point
+from horizons.gui.widgets.tooltip import TooltipIcon
 
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
@@ -38,6 +39,27 @@ class NavigationTool(CursorTool):
 		self.cmdlist = CmdListener()
 		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
+
+		class CoordsTooltip(TooltipIcon):
+			def __init__(self, cursor_tool, **kwargs):
+				super(CoordsTooltip, self).__init__(**kwargs)
+				cursor_tool.session.coordinates_tooltip = self
+				self.cursor_tool = cursor_tool
+				self.enabled = False
+
+			def toggle(self):
+				self.enabled = not self.enabled
+				if not self.enabled and self.tooltip_shown:
+					self.hide_tooltip()
+
+			def show_evt(self, evt):
+				if self.enabled:
+					x, y = self.cursor_tool._get_world_location_from_event(evt).to_tuple()
+					self.tooltip = str(x) + ', ' + str(y)
+					self.position_tooltip(evt)
+					self.show_tooltip()
+
+		self.tooltip = CoordsTooltip(self)
 
 	def end(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
@@ -75,6 +97,7 @@ class NavigationTool(CursorTool):
 		if not self.session.world.inited:
 			return
 
+		self.tooltip.show_evt(evt)
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
 
 		# Status menu update
