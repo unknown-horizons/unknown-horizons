@@ -36,6 +36,26 @@ from horizons.util import DbReader
 
 import horizons.main
 
+class YamlCache(object):
+	"""Loads and caches YAML files
+	"""
+	cache = {}
+
+	@classmethod
+	def get_yaml_file(cls, filename):
+		# calc the hash
+		f = open(filename, 'r')
+		h = hash(f.read())
+		f.seek(0)
+		# check for updates or new files
+		if (filename in cls.cache and \
+		    cls.cache[filename][0] != h) or \
+		   (not filename in cls.cache):
+			cls.cache[filename] = (h, yaml.load( f ) )
+
+		return cls.cache[filename][1]
+
+
 class SavegameManager(object):
 	"""Controls savegamefiles.
 
@@ -303,7 +323,7 @@ class SavegameManager(object):
 	def get_campaign_status(cls):
 		"""Read the campaign status from the saved YAML file"""
 		if os.path.exists(cls.campaign_status_file):
-			return yaml.load(open(cls.campaign_status_file, 'r'), Loader=Loader)
+			return YamlCache.get_yaml_file(cls.campaign_status_file)
 		return {}
 
 	@classmethod
@@ -325,7 +345,7 @@ class SavegameManager(object):
 		scenarios_lists = []
 		campaign_datas = []
 		for i, f in enumerate(files):
-			campaign = yaml.load(open(f,'r'), Loader=Loader)
+			campaign = YamlCache.get_yaml_file(f)
 			campaign_datas.append(campaign)
 			scenarios_lists.append([sc.get('level') for sc in campaign.get('scenarios',[])])
 		if not campaign_data:
@@ -371,7 +391,7 @@ class SavegameManager(object):
 				print _("Error: Cannot find scenario with file \"%s\".") % (file,)
 				return {}
 			index = sfiles.index(file)
-		data = yaml.load(open(sfiles[index], 'r'), Loader=Loader)
+		data = YamlCache.get_yaml_file(sfiles[index])
 		return data
 
 	@classmethod
