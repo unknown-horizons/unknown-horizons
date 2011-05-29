@@ -171,7 +171,7 @@ class ScenarioEventHandler(LivingObject):
 	@staticmethod
 	def _parse_yaml(string_or_stream):
 		try:
-			return yaml.load( string_or_stream )
+			return yaml.load(string_or_stream, Loader=yaml.CLoader)
 		except Exception, e: # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
 
