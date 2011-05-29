@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-27 01:01+0200\n"
-"Last-Translator: nimini <petystueven@aol.com>\n"
+"PO-Revision-Date: 2011-05-27 01:28+0200\n"
+"Last-Translator: stubb <kili@mail.spaceleft.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -627,7 +627,7 @@ msgstr "Logbuch"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Rotate map counterclockwise"
-msgstr "Karte im Gegenuhrzeigersinn drehen"
+msgstr "Karte gegen den Uhrzeigersinn drehen"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Rotate map clockwise"
@@ -1217,7 +1217,7 @@ msgstr "Steuern"
 
 #: horizons/i18n/guitranslations.py:292
 msgid "Average happiness:"
-msgstr "Mittlere Zufriedenheit:"
+msgstr "Durchschnittliche Zufriedenheit:"
 
 #: horizons/i18n/guitranslations.py:294
 msgid "Most needed resource:"
@@ -1658,7 +1658,7 @@ msgstr "Holzfällerlager"
 
 #: sqlite/Building
 msgid "Main Square"
-msgstr "Hauptplatz"
+msgstr "Marktplatz"
 
 #: sqlite/Building
 msgid "Mountain"

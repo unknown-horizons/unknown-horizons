@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-27 00:53+0200\n"
+"PO-Revision-Date: 2011-05-27 00:54+0200\n"
 "Last-Translator: nimini <petystueven@aol.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -193,7 +193,7 @@ msgstr "Zelt"
 #: sqlite/Messages
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "resource"
-msgstr "Ware/Rohstoff"
+msgstr "Ware / Rohstoff"
 
 # (poterminology) uh-tutorial/tutorial.pot (21)
 #
