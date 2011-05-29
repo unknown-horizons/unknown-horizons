@@ -30,7 +30,7 @@ from horizons.constants import LAYERS, BUILDINGS
 class Path(BasicBuilding, BuildableLine):
 	walkable = True
 	show_buildingtool_preview_tab = False
-	layer = LAYERS.GROUND
+	layer = LAYERS.FIELDS
 
 	def init(self):
 		super(Path, self).init()
@@ -77,7 +77,7 @@ class Path(BasicBuilding, BuildableLine):
 		self.act(action, location, True)
 
 class Bridge(BasicBuilding, BuildableSingle):
-	layer = LAYERS.GROUND
+	layer = LAYERS.FIELDS
 
 	def init(self):
 		super(Bridge, self).init()
