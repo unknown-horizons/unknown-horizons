@@ -63,6 +63,13 @@ class Builder(object):
 			ship = self.ship, tearset = self.build_position.tearset)
 		return cmd.execute(self.land_manager.session)
 
+	def have_resources(self):
+		neededResources = {}
+		inventories = [self.land_manager.settlement, self.ship]
+		(enough_res, missing_res) = Build.check_resources(neededResources, \
+			Entities.buildings[self.building_id].costs, self.land_manager.owner, inventories)
+		return enough_res
+
 	cache = {}
 	cache_tick_id = -1
 

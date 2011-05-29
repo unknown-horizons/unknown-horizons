@@ -67,7 +67,6 @@ class AIPlayer(GenericAI):
 
 	def build_tents(self):
 		if self.village_builder.build_tent():
-			self.log.info('Built a tent')
 			Scheduler().add_new_object(Callback(self.build_tents), self, run_in = 16)
 		else:
 			self.log.info('All tents have been built')
@@ -86,7 +85,8 @@ class AIPlayer(GenericAI):
 			self.production_builder = ProductionBuilder(self.land_manager, mission.branch_office)
 			self.production_builder.build_fisher()
 			self.production_builder.build_fisher()
-			self.production_builder.build_lumberjack()
+			self.production_builder.build_fisher()
+			self.production_builder.build_fisher()
 			self.production_builder.build_lumberjack()
 			self.production_builder.display()
 

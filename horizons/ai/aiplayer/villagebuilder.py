@@ -155,9 +155,12 @@ class VillageBuilder(object):
 	def build_tent(self):
 		for coords, (purpose, builder) in sorted(self.plan.iteritems()):
 			if purpose == self.purpose.planned_tent:
+				if not builder.have_resources():
+					return True
 				if not builder.execute():
 					return False
 				self.plan[coords] = (self.purpose.tent, builder)
+				self.land_manager.owner.log.info('Built a tent')
 				return True
 		return False
 
