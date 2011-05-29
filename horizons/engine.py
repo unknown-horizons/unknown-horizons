@@ -23,6 +23,7 @@
 import glob, random
 import gettext
 import os
+import locale
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
@@ -279,8 +280,8 @@ class Fife(ApplicationBase):
 		self.OptionsDlg = self._setting.loadSettingsDialog()
 		self.OptionsDlg.position_technique = "automatic" # "center:center"
 		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
-						'AutosaveMaxCount' : 'autosavemaxcount',
-						'QuicksaveMaxCount' : 'quicksavemaxcount'}
+		               'AutosaveMaxCount' : 'autosavemaxcount',
+		               'QuicksaveMaxCount' : 'quicksavemaxcount'}
 
 		for x in slider_dict.keys():
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
@@ -415,6 +416,14 @@ class Fife(ApplicationBase):
 			for e in self.emitter['ambient']:
 				e.setGain(value*2)
 		self.update_slider_values('volume_effects', factor = 200, percent = True)
+
+	def get_locale(self):
+		for locale_code, langname in LANGUAGENAMES.items():
+			if langname == self.get_uh_setting('Language'):
+				return locale_code
+		# TODO : better way to find 'System default' ?
+		default_locale, default_encoding = locale.getdefaultlocale()
+		return default_locale.split('_')[0]
 
 	def set_network_port(self, port):
 		"""Sets a new value for client network port"""

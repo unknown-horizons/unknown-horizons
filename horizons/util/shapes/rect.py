@@ -22,7 +22,7 @@
 from point import Point, ConstPoint
 from circle import Circle
 
-from horizons.util.python.decorators import make_constants
+from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
 
 class Rect(object):
@@ -96,31 +96,34 @@ class Rect(object):
 	def copy(self):
 		return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
 
-	@make_constants()
 	def distance(self, other):
 		"""Calculates distance to another object"""
-		if not hasattr(self, "_distance_functions_map"):
-			self._distance_functions_map = {
-			  Point: self.distance_to_point,
-			  ConstPoint: self.distance_to_point,
-			  Rect: self.distance_to_rect,
-			  ConstRect: self.distance_to_rect,
-			  Circle: self.distance_to_rect,
-			  tuple: self.distance_to_tuple
-			}
+		# trap method: init data, then replace this method with real method
+		from annulus import Annulus
+		self._distance_functions_map = {
+		  Point: self.distance_to_point,
+		  ConstPoint: self.distance_to_point,
+		  Rect: self.distance_to_rect,
+		  ConstRect: self.distance_to_rect,
+		  Circle: self.distance_to_rect,
+		  tuple: self.distance_to_tuple,
+		  Annulus: self.distance_to_annulus
+		}
+		self.distance = self.__real_distance
+		return self.distance(other)
+
+	def __real_distance(self, other):
 		try:
 			return self._distance_functions_map[other.__class__](other)
 		except KeyError:
 			return other.distance(self)
 
-	@make_constants()
 	def distance_to_point(self, other):
 		"""Calculates distance to an instance of Point.
 		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + \
 						(max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
 
-	@make_constants()
 	def distance_to_tuple(self, other):
 		"""Calculates distance to a coordinate as tuple (x, y)
 		Don't use this, unless you are sure that distance() is too slow."""
@@ -128,22 +131,23 @@ class Rect(object):
 		other_y = other[1]
 		return ((max(self.left - other_x, 0, other_x - self.right) ** 2) + (max(self.top - other_y, 0, other_y - self.bottom) ** 2)) ** 0.5
 
-	@make_constants()
 	def distance_to_rect(self, other):
 		"""Calculates distance to an instance of Rect.
 		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 
-	@make_constants()
 	def distance_to_circle(self, other):
 		dist = self.distance_to_point(other.center) - other.radius
+		return dist if dist >= 0 else 0
+
+	def distance_to_annulus(self, other):
+		dist = self.distance_to_point(other.center) - other.max_radius
 		return dist if dist >= 0 else 0
 
 	def get_coordinates(self):
 		"""Returns list of all coordinates, that are in the Rect """
 		return [ (x, y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
 
-	@make_constants()
 	def get_radius_coordinates(self, radius, include_self = False):
 		"""Returns list of all coordinates (as tuples), that are in the radius
 		This is a generator.
@@ -249,7 +253,6 @@ class Rect(object):
 		"""Same as contains, but takes a tuple (x, y) as parameter (overloaded function)"""
 		return (self.left <= tup[0] <= self.right) and (self.top <= tup[1] <= self.bottom)
 
-	@make_constants()
 	def intersect(self, rect):
 		""" Returns a rect that is the intersection of this rect and the rect parameter.
 		@param rect: Rect that will be intersected with this rect.
@@ -284,21 +287,18 @@ class Rect(object):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
-	@make_constants()
 	def __iter__(self):
 		"""Generates an iterator, that returns Points"""
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):
 				yield Point(x, y)
 
-	@make_constants()
 	def tuple_iter(self):
 		"""Generates an iterator, that returns tuples"""
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):
 				yield x, y
 
-	@make_constants()
 	def iter_without_border(self):
 		"""There are 2 points of view about what width means. You can eiter include the last
 		point's area, or just consider points itself without any extensions. This iter iterates over
@@ -312,4 +312,8 @@ class ConstRect(Const, Rect):
 	"""An immutable Rect.
 	Can be used to to manual const-only optimisation"""
 	pass
+
+
+bind_all(Rect)
+bind_all(Const)
 

@@ -68,7 +68,8 @@ class SingleplayerMenu(object):
 			else: # scenario
 				del eventMap['showScenario']
 				self.current.findChild(name="showScenario").marked = True
-				self.current.files, maps_display = SavegameManager.get_available_scenarios()
+				choosable_locales = ['en',horizons.main.fife.get_locale()]
+				self.current.files, maps_display = SavegameManager.get_available_scenarios(locales = choosable_locales)
 
 			# get the map files and their display names
 			self.current.distributeInitialData({ 'maplist' : maps_display, })

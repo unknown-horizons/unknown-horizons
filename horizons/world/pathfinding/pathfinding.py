@@ -202,7 +202,7 @@ class FindPath(object):
 					to_check[neighbor_node] = [cur_node_coords, \
 																		 cur_node_data[1] + \
 																		 self.path_nodes.get(cur_node_coords, 0), \
-																		 self.destination.distance(neighbor_node) ]
+																		 self.destination.distance_to_tuple(neighbor_node) ]
 					# append sum of last to values  (i.e. complete path duration estimation) as cache
 					to_check[neighbor_node].append( \
 						to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])

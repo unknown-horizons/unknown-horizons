@@ -155,6 +155,8 @@ class Minimap(object):
 		if where is None:
 			where = self.location
 
+		self.renderer.removeAll("minimap_point")
+
 		# calculate which area of the real map is mapped to which pixel on the minimap
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
 
@@ -219,7 +221,7 @@ class Minimap(object):
 					color = water_col
 
 				# _get_rotated_coords has been inlined here
-				renderer_addPoint("minimap", self.renderernodes[self._rotate(minimap_point, self._rotations)], *color)
+				renderer_addPoint("minimap_point", self.renderernodes[self._rotate(minimap_point, self._rotations)], *color)
 
 
 	def _timed_update(self):

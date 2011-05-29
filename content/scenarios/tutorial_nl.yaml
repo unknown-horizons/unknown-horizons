@@ -15,31 +15,20 @@ events:
 - actions:
   - arguments: [!!python/unicode 'Plaats een kantoor aan de kust.']
     type: message
-  - arguments: [!!python/unicode 'Welcom by Unknown Horizons!', !!python/unicode 'This
-        is your Captain''s log where all important information is stored. A short
-        notification of each task will be provided on the left of the screen.
-
-
-        If you are interested in longer descriptions, your log will hopefully provide
-        all the help you need.
-
-
-        After you close this log, it can be re-opened with the ''Captain''s Log''
-        icon in the top-right corner (below the mini-map, with a sealed document and
-        a feather).
-
-
-        For any suggestions on better wording, topics you would like to have explained
-        or even buggy conditions: Please tell us and we will try to improve the tutorial!
-
-
-        Visit www.unknown-horizons.org for help on how to contact the team!
-
-
-        And now, let''s start the actual game.']
+  - arguments: [!!python/unicode 'Welkom bij Unknown Horizons!', "Dit is uw logboek\
+        \ waar alle belangrijke informatie staat opgeslagen. Een korte notificatie\
+        \ van elke taak zal zichtbaar worden aan de linkerkant van het scherm.\n\n\
+        Als u ge\xEFnteresseerd bent in langere omschrijvingen, dan kan je log je\
+        \ hopelijk meer hulp bieden.\n\nNa het sluiten van het log, kan je het weer\
+        \ openen met het 'Logboek' icoontje rechts bovenin (onder de minikaart, met\
+        \ een geseald document en een veer).\n \nVoor suggesties voor verbetering,\
+        \ onderwerpen waar je meer over zou willen weten en misschien bugs: Laat het\
+        \ ons weten en we zullen proberen de tutorial te verbeteren!\n\nBezoek www.unknow-horizons.org\
+        \ voor hulp en om het team te kunnen contacten!\n\nEn dan nu, laten we met\
+        \ het echte spel beginnen."]
     type: logbook_w
   - arguments: [!!python/unicode 'OPDRACHT: KOLONISEER EEN EILAND', !!python/unicode 'Om
-        Uw schip te bewegen, selecteer het met een linker muisklik en klik rechts
+        uw schip te verplaatsen, selecteer het met een linker muisklik en klik rechts
         op de locatie waar het schip naar toe moet varen.
 
 
@@ -47,17 +36,17 @@ events:
         scherm actief.
 
 
-        Dit betekend dat U een kantoor kunt plaatsen door op deze knop te klikken
-        (genaamd ''Plaats Kolonie'').
+        Dit betekend dat u een kantoor kunt plaatsen door op deze knop te klikken
+        (genaamd ''Plaats kolonie'').
 
 
-        Een voorbeeld van het gebouw wordt getoond wanneer U de cursor beweegt.
+        Een voorbeeld van het gebouw wordt getoond wanneer u de cursor beweegt.
 
 
         U kunt het gebouw plaatsen op iedere locatie waar het voorbeeld niet rood
         is.
 
-        Klik waar U Uw eerste gebouw wilt plaatsen.
+        Klik waar u uw eerste gebouw wilt plaatsen.
 
 
         OPDRACHT: Plaats een kantoor aan de kust.', 2]
@@ -69,51 +58,51 @@ events:
     type: time_passed
 - actions:
   - arguments: [!!python/unicode 'OPDRACHT: LAAD DE GOEDEREN UIT', !!python/unicode 'Nu
-        het kantoor geplaatst is, moeten grondstoffen worden verplaatst naar zijn
-        voorraad.
+        het hoofdkantoor geplaatst is, moeten grondstoffen worden verplaatst naar
+        de opslag.
 
 
-        Selecteer het schip en open het scherm ''Scheepsvoorraad'' door op de knop
-        met de houten krat te klikken.
+        Selecteer het schip en open het scherm ''Scheepsinventaris'' door op de knop
+        met het houten krat te klikken.
 
 
-        Hier is een overzicht van de voorraad van het schip en een knop ''Laden/uitladen''.
+        Hier is een overzicht van de inventaris van het schip en een knop ''Laden/Uitladen''.
 
 
-        Deze knop wordt actief zodra Uw schip in de buurt is van een mogelijke handelspartner,
-        zoals het kantoor
+        Deze knop wordt actief zodra uw schip in de buurt is van een mogelijke handelspartner,
+        zoals het hoofdkantoor
 
 
-        Klik op de knop. Verplaats U schip dichterbij het kantoor als de knop niet
-        actief is en probeer opnieuw.
+        Klik op de knop. Verplaats uw schip dichterbij het hoofdkantoor als de knop
+        niet actief is en probeer opnieuw.
 
 
-        OPDRACHT: Open het handels scherm.']
+        OPDRACHT: Open het handelsscherm.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Het scherm wat U ziet is verdeeld in ''Schip''
+  - arguments: ['', !!python/unicode 'Het scherm wat u ziet is verdeeld in ''Schip''
         en ''Kolonie'' als handelspartners.
 
 
         Om goederen van een voorraad naar de andere voorraad te verplaatsen, kunt
-        U simpelweg er op klikken
+        u er simpelweg op klikken.
 
 
         Probeer eerst op de planken op het schip te klikken en probeer vervolgens
         deze terug te plaatsen.
 
 
-        U kunt de verplaatste hoeveelheid aanpassen met de radio buttons in het midden
+        U kunt de verplaatste hoeveelheid aanpassen met de knoppen in het midden.
 
 
-        Heeft U zichzelf bekend gemaakt met het handelsscherm?
+        Heeft u zichzelf bekend gemaakt met het handelsscherm?
 
         U heeft nu constructie materiaal nodig in uw kolonie!
 
 
-        OPDRACHT: Laad tenminste 10 ton van iedere groundstof op het schip uit.']
+        OPDRACHT: Laad tenminste 10 ton van iedere grondstof op het schip uit.']
     type: logbook
   - arguments: [!!python/unicode 'Laad tenminste 10 ton van iedere grondstof op het
-        schip.']
+        schip uit.']
     type: message
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -125,7 +114,7 @@ events:
   - arguments: [tutStepDone, 16]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: EEN HOUTHAKKER', !!python/unicode 'Met
+  - arguments: [!!python/unicode 'OPDRACHT: BOUW EEN HOUTHAKKER', !!python/unicode 'Met
         het nieuwe constructie materiaal in het kantoor kunnen de eerste gebouwen
         geplaatst worden.
 
@@ -140,17 +129,17 @@ events:
         De visser heeft ook hout nodig om zijn schip te maken.
 
 
-        Om een houthakker te plaatsen, op het constructie menu door op de grote knop
-        onder de kleine kaart te klikken of druk de B toets.
+        Om een houthakker te plaatsen, ga naar het constructie menu door op de grote
+        knop onder de kleine kaart te klikken of druk de B toets.
 
 
         Het constructie menu is gesorteerd op niveau''s.
 
         Dat betekent dat alleen standaard gebouwen beschikbaar zijn op het zeelui
-        niveau (waarop U zich nu bevindt).']
+        niveau (waarop u zich nu bevindt).']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Met het uitbreiden van Uw kolonie kunnen ook
-        complexe gebouwen geplaatst worden.
+  - arguments: ['', !!python/unicode 'Met het uitbreiden van uw kolonie kunnen ook
+        complexere gebouwen geplaatst worden.
 
 
         Selecteer de houthakker onder ''Bedrijven'' en plaats het in een regio met
@@ -165,17 +154,17 @@ events:
         kantoor, anders worden goederen niet opgehaald.
 
 
-        Dat betekent dat U een weg moet plaatsen die het kantoor en de houthakker
-        verbindt.
+        Dat betekent dat u een pad moet plaatsen die het kantoor (of een opslag) en
+        de houthakker verbindt.
 
 
         OPDRACHT: Plaats een houthakker in bebost gebied en verbind het met een weg.
 
 
-        Let op hoe een verzamelaar Uw eerste zelf geproduceerde planken ophaalt.']
+        Let op hoe een verzamelaar uw eerste zelf geproduceerde planken ophaalt.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een houthakker en verbind deze met het kantoor
-        met een weg.']
+        met een pad.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -191,18 +180,18 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: VOEDSEL AANBOD', !!python/unicode 'Er
-        zijn voedsel producerende bedrijven nodig. Kolonisten, en in het bijzonder
-        zeelui, zijn erg hongerig.
+  - arguments: [!!python/unicode 'OPDRACHT: AANVOER VAN VOEDSEL', !!python/unicode 'Er
+        zijn voedsel producerende bedrijven nodig. Kolonisten (in het bijzonder zeelui)
+        zijn erg hongerig.
 
 
-        Beschikbare bedrijven in het eerste niveau zijn de Jager en de Visser.
+        Beschikbare bedrijven in het eerste niveau zijn de jager en de visser.
 
 
-        De Jager jaagt op dieren in het bos, hiervoor moeten er bomen nabij zijn.
+        De jager jaagt op dieren in het bos, hiervoor moeten er bomen nabij zijn.
 
 
-        Merk op dat U het dichtbij het bos van de houthakker kunt plaatsen.
+        Merk op dat u de jager dichtbij het bos van de houthakker kunt plaatsen.
 
 
         Het kan gebeuren dat dieren niet snel genoeg voortplanten of zich goed verstoppen.
@@ -211,25 +200,25 @@ events:
         Conclusie: de jager is niet betrouwbaar genoeg voor een gelijkmatig aanbod
         van voedsel.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
-        the branch office and a fish school in range.
+  - arguments: ['', !!python/unicode 'De visser heeft een bouwplaats aan het water
+        en een school vissen in de buurt nodig.
 
 
-        He will build a small rowing vessel and catch some fish.
+        Hij zal dan een klein roeibootje maken en gaan vissen.
 
 
-        This is a very constant supply at the cost of a slightly longer production
-        time per unit of food.
+        Dit is een constante aanvoer wat alleen maar een klein beetje meer productietijd
+        nodig heeft per voedsel eenheid.
 
 
-        A small settlement like yours can use both companies, and you can better balance
-        pros and cons if you see the direct comparison.
+        Een kleine kolonie als die van u kan beide bedrijven gebruiken en u kan de
+        voor- en nadelen beter uitbalanceren als u de vergelijking bekijkt.
 
 
-        TASK: Build a hunter and a fisher.
+        OPDRACHT: Bouw een jager en een visser.
 
 
-        Don''t forget to connect them to your branch office with trails!']
+        En vergeet de paden naar het hoofdkantoor niet!']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een jager en een visser. Verbind ze met het
         kantoor.']
@@ -244,18 +233,18 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: PLEIN', !!python/unicode 'Uw inwoners
-        hebben een plein nodig waar ze goederen kunnen ophalen.
+  - arguments: [!!python/unicode 'OPDRACHT: MARKTPLAATS', !!python/unicode 'Uw inwoners
+        hebben een marktplaats nodig waar ze de goederen kunnen ophalen.
 
 
-        Dit betekent dat het plein en hun huis met een weg verbonden moeten zijn.
+        Dit betekent dat de marktplaats en hun huis met een pad verbonden moeten zijn.
 
 
         Alle goederen in het kantoor zijn beschikbaar op deze ''marktplaats'', zeelui
         hoeven dus niet naar de visser of het kantoor te lopen.
 
 
-        Overweeg goed waar U de huizen in de nederzetting plaatst: Een gebied dat
+        Overweeg goed waar u de huizen in de nederzetting plaatst: Een gebied dat
         eenvoudig kan worden uitgebreid en eenvoudig wegen geplaatst kunnen worden.
 
 
@@ -268,21 +257,21 @@ events:
   - arguments: ['', !!python/unicode 'Laten we het plein nader bekijken.
 
 
-        In het overzicht scherm kunt U belastingen eenvoudig aanpassen.
+        In het overzicht scherm kunt u belastingen eenvoudig aanpassen.
 
 
         Het tweede scherm ''Rekening'' toont een balans, hierop staan alle kosten
-        die U betaald heeft en alle belastingen die U ontvangen heeft.
+        die u betaald heeft en alle belastingen die u ontvangen heeft.
 
 
         De opties ''Verkoop'' en ''Inkoop'' verwijzen naar de handels balans en zal
         later uitgelegd worden.
 
 
-        Als de balans positief is betekent dit dat U winst maakt.
+        Als de balans positief is betekent dit dat u winst maakt.
 
 
-        In het scherm ''Kolonisten'' kunt U zien hoe blij de inwoners zijn en welke
+        In het scherm ''Kolonisten'' kunt u zien hoe blij de inwoners zijn en welke
         goederen ze het meest nodig hebben.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een plein. Kies een gebied zonder economische
@@ -305,21 +294,17 @@ events:
     type: var_lt
 - actions:
   - arguments: [!!python/unicode 'OPDRACHT: RESIDENTIELE GEBOUWEN', !!python/unicode 'Kolonisten
-        willen graag een dak boven hun hoofd, anders zullen ze zich niet vestigen.
+        willen graag een dak boven hun hoofd, anders zullen ze zich niet vestigen!
         U dient tenten te plaatsen!
 
 
-        Tenten zijn de eenvoudigste gebouwen voor inwoners.
-
-
-        Uw inwoners zullen deze verbeteren zodra ze hogere niveau''s bereiken.
+        Tenten zijn de eenvoudigste gebouwen voor inwoners. Uw inwoners zullen deze
+        verbeteren zodra ze hogere niveau''s bereiken.
 
 
         Zeelui lijken niet nuttig aangezien ze proberen alles te gebruiken wat je
-        produceert - maar ze betalen wel belastingen.
-
-
-        Dat is voorlopig de enige manier om geld te verdienen.
+        produceert - maar ze betalen wel belastingen. Dat is voorlopig de enige manier
+        om geld te verdienen.
 
 
         OPDRACHT: Plaats een tent en verbind deze met het plein.']
@@ -337,10 +322,10 @@ events:
     type: var_lt
 - actions:
   - arguments: ['', "Laten we naar het tent overzicht scherm kijken.\nU kunt zien\n\
-        * de gelukkigheid van de bewoners\n* de belastingen die ze betalen en\n* de\
-        \ grondstoffen die ze vereisen.\n\nWanneer hun wensen worden voldaan, zullen\
-        \ hun gelukkigheid en Uw belastinginkomsten toenemen.\n\nZo niet, zullen gelukkigheid\
-        \ en inkomsten afnemen. Wanneer de bewoners niet gelukkig meer zijn zullen\
+        * hoe gelukkig de inwoners zijn,\n* de belastingen die ze betalen en\n* de\
+        \ grondstoffen die ze vereisen.\n\nWanneer hun wensen worden voldaan, zal\
+        \ hun geluk en uw belastinginkomsten toenemen.\n\nZo niet, zal het geluk en\
+        \ de inkomsten afnemen. Wanneer de bewoners niet gelukkig meer zijn zullen\
         \ ze de nederzetting verlaten en een ru\xEFne achterlaten.\n\nMerk op dat\
         \ u hier ook de belasting instellingen kunt wijzigen.\n\nOPDRACHT: Plaats\
         \ tenminste drie extra tenten.\n\nTIP: Om meerdere gebouwen van het zelfde\
@@ -359,52 +344,54 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: SIGNAAL VUUR', !!python/unicode 'Can you
-        see the ship passing your island from time to time?
+  - arguments: [!!python/unicode 'OPDRACHT: SIGNAALVUUR', !!python/unicode 'Heeft
+        u het schip gezien wat van tijd tot tijd bij uw eiland langsgaat?
 
 
-        This is the ship of the Free Trader, one of the first settlers in this archipelago.
+        Dit is het schip van de vrije handelaar, een van de eerste kolonisten in de
+        archipel.
 
 
-        This trader will supply your settlement with necessary goods which you can''t
-        produce yet.
+        Deze handelaar zal uw kolonie bevoorraden met goederen die u zelf nog niet
+        kan produceren.
 
 
-        You can also sell surpluses of your production, but in general consuming them
-        (by building more tents) instead of selling to the Free Trader yields more
-        profit.
+        U kan ook goederen verkopen waarvan u teveel heeft, maar over het algemeen
+        kunt u deze het beste laten consumeren door uw inwoners (door middel van het
+        bouwen van extra tenten), dat levert vaak meer op dan het verkopen aan de
+        vrije handelaar.
 
 
-        Normally the ships just sail around and look for deals, but small settlements
-        like yours first need some promotion, otherwise you won''t be found.
+        Normaal zeilt het schip rond zoekend naar goede handel, maar kleine kolonies
+        als die van u hebben wat meer aandacht nodig, anders worden ze nooit gevonden.
 
 
-        For this purpose, you can build a signal fire at the coast near your branch
-        office to show ships the way to your settlement.']
+        Hiervoor kan u een signaalvuur bouwen aan de kust bij uw hoofdkantoor om de
+        schepen de weg naar uw kolonie te wijzen.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        stop by from time to time and look into your branch office.
+  - arguments: ['', !!python/unicode 'Na dit beetje hulp, zal de vrije handelaar van
+        tijd tot tijd even bij uw kolonie langskomen.
 
 
-        You can propose deals via the tab ''Buy/Sell''. (This feature is currently
-        quite fiddly to use, but a re-design is in the pipeline. If you have found
-        a nice way of doing it, please share your thoughts! We need your help here!)
+        U kan handel voorstellen via de tab ''Koop/Verkoop''. (Deze optie is momenteel
+        nog wat lastig te bedienen, maar er wordt aan gewerkt. Mocht je nog ideen
+        hierover hebben, laat ons dat dan weten)
 
 
-        At the ''sailors'' increment, you are equipped with three trading slots.
+        Bij de ''zeelui'' optie staan drie handelslots tot je beschikking.
 
 
-        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
-        vice versa.
+        Klik op de het kleine icoontje om de modus van ''Koop'' naar ''Verkoop'' en
+        andersom te wijzigen.
 
 
-        If you click in the slot, you can choose the good you want to trade with.
-        We will further explain this once you are ready to trade.
+        Als je op het slot zelf klikt, dan kun je kiezen met welk goed je zou willen
+        handelen. We zullen dit verder uitleggen als je klaar bent om te handelen.
 
 
-        TASK: Build a signal fire at the coast close to your branch office.']
+        OPDRACHT: Bouw een signaalvuur bij de kust in de buurt van uw hoofdkantoor.']
     type: logbook
-  - arguments: [!!python/unicode 'Plaats een signaal vuur bij de kost nabij het kantoor.']
+  - arguments: [!!python/unicode 'Plaats een signaal vuur bij de kust nabij het kantoor.']
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -416,29 +403,31 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: LEER TE HANDELEN', !!python/unicode "Excellent!\
-        \ The Free Trader will now stop by at your branch office from time to time.\n\
-        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
-        \ type of good, the green bar across the bottom of the slot (if visible) shows\
-        \ you how much you have in stock of this good.\n\nDragging the slider on the\
-        \ right of each slot determines your 'target value' which has a different\
-        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
-        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
-        \ which you hold in reserve to not sell"]
+  - arguments: [!!python/unicode 'OPDRACHT: LEER HANDELEN', !!python/unicode "Perfect!\
+        \ De Vrije Handelaarzal nu van tijd tot tijd bij uw hoofdkantoor langskomen.\n\
+        \nLaten we verder gaan met de uitleg over handelen.\n\nNadat er een specifiek\
+        \ goed is geselecteerd, geeft de groene balk weer (als deze zichtbaar is)\
+        \ hoeveel je er van in voorraad hebt.\n\nDoor de schuifbalk aan de rechterkant\
+        \ van elk slot te bewegen, kies je de 'streefwaarde', welke een verschillende\
+        \ betekenis heeft voor 'kopen en verkopen'. \nBij kopen, zal je aankopen doen\
+        \ maar je 'streefwaarde' in voorraad houden. \nBij verkoop is de 'streefwaarde'\
+        \ het aantal dat je reserve houdt en niet verkoopt"]
     type: logbook_w
-  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
-        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
-        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
-        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
-        \ however only wants to buy or sell less than your settings would allow him,\
-        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
-        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
-        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
-        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
-        \ as you need to have 30 tools in stock!\nIf you still have some in your ship's\
-        \ inventory, this seems like a good point to unload them."]
+  - arguments: ['', !!python/unicode "Als voorbeeld: \nWanneer uw slot op 'kopen'\
+        \ staat en u 5 ton in voorraad hebt en u de schuifbalk op 9 ton heeft staan.\
+        \ Dat zorgt ervoor dat u maximaal 4 ton extra zal inkopen. Verkopen werkt\
+        \ ongeveer hetzelfde. Een 'verkoop' slot met 18 ton in voorraad en de schuifbalk\
+        \ op 13 zal maximaal 5 ton verkopen.\n\nAls de handelaar minder dan u hebt\
+        \ aangegeven wil kopen of verkopen, dan zult u gewoon moeten wachten tot tot\
+        \ hij terug is.\n\nUH werkt met slimme prijzen, dus de waarde van een eenheid\
+        \ kan verschillen. Dit kan NIET handmatig worden aangepast.\n\nU kunt uw handels\
+        \ balans nakijkenbij de tab 'Account', waar je de 'koop' en 'verkoop' waardes\
+        \ kan bekijken.\n\nOPDRACHT: Koop zoveel werktuigen als nodig om er 30 op\
+        \ voorraad te hebben!\nAls u er nog een aantal in de scheeps inventaris heeft,\
+        \ dan is dit een prima tijd om die ook nog uit te laden."]
     type: logbook
-  - arguments: [!!python/unicode 'Bereik een voorraad van tenminste 30 stuks gereedschap.']
+  - arguments: [!!python/unicode 'Bereik een voorraad van tenminste 30 stuks gereedschap
+        op het eiland.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -450,49 +439,48 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: PLAATS EEN PAVILIOEN', !!python/unicode 'Those
-        tools will be enough for the moment. Well done!
+  - arguments: [!!python/unicode 'OPDRACHT: PLAATS EEN PAVILJOEN', !!python/unicode 'Deze
+        gereedschappen zullen eerst wel genoeg zijn. Goed gedaan!
 
 
-        You now provide housing, a main square and food to your inhabitants.
+        U heeft nu huizen, een marktplaats en voedsel vor uw inwonders.
 
 
-        Still there is one demand which we have not satisfied so far, you may check
-        that in the marketplace or tent tab - your sailors want a basic building where
-        they can pray.
+        Er is alleen nog een vraag waar we nog niet aan hebben voldaan. U kunt dat
+        controleren in de marktplaats of tent tab. Uw zeemannen willen een een gebouw
+        om te bidden.
 
 
-        The solution is a pavilion which the village parson quickly puts up as shelter
-        from the sun.
+        De oplossing is een paviljoen, welke de dorps pastoor snel opgezet heeft als
+        bescherming tegen de zon.
 
 
-        Service buildings like this also need to be connected to the tents with a
-        trail, else your inhabitants feel unable to reach them.
+        Service gebouwen zoals deze moeten ook een pad naar de tent hebben, anders
+        kunnen de inwoners er niet komen.
 
 
-        In later increments, upgraded versions of buildings may become available.']
+        Veel later in het spel zullen er ook upgrades voor de gebouwen komen.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'In that case the ''small'' version is not needed
-        anymore since the ''big'' one will also provide what your inhabitants are
-        looking for in early increments.
+  - arguments: ['', !!python/unicode 'In het geval dat de ''kleine'' versie niet meer
+        nodig is omdat de ''grote'' ook biedt wat uw inwoners kleine versie zoeken.
 
 
-        Take care when planning your city because most of those advanced buildings
-        are bigger than the basic ones.
+        Houdt bij het ontwikkelen van uw stad er rekening mee dat geavanceerde gebouwen
+        groter zijn dan de basis gebouwen.
 
 
-        Note that faith is treated like a physical resource, so units need to refresh
-        there after some time.
+        Let erop dat geloof wordt behandeld als een fysieke grondstof, eenheden moeten
+        zich na bepaalde tijd verfrissen.
 
 
-        Important:
+        Belangrijk:
 
-        It is NOT enough that the building is merely within a certain range of the
-        tents.
+        Het is NIET voldoende dat het gebouw alleen maar binnen een bepaalde afstand
+        van de tent staat.
 
 
-        TASK: Build a pavilion with a trail to the tents in order to fulfill your
-        sailors'' demand for faith.']
+        OPDRACHT: Plaats een pavilioen met een pad naar de tenten om te voldoen aan
+        de vraag naar geloof van de zeelui.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een pavilioen met verbinding naar de tenten.']
     type: message
@@ -506,48 +494,49 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: VOLGENDE NIVEAU', !!python/unicode 'All
-        demands are fulfilled now if your inhabitants can regularly visit the main
-        square & pavilion and your food supply is adequate.
+  - arguments: [!!python/unicode 'OPDRACHT: VOLGENDE NIVEAU', !!python/unicode 'Aan
+        alle eisen is voldaan als uw inwoners regelmatig de marktplaats en het paviljoen
+        kunnen bezoeken en als uw voedsel aanvoer voldoende is.
 
 
-        If the sailors are happy enough, they want to advance to the next increment
-        called Pioneers.
+        Als de zeelui gelukkig genoeg zijn, dan zullen ze naar het volgende niveau
+        gaan en Pioniers worden.
 
 
-        To make them happy, there is nothing else for you to do but setting taxes
-        to a lower level since you have fulfilled all the demands of your inhabitants.
+        Om ze gelukkig te maken, hoeft u niets meer te doen dan de belasting te verlagen,
+        aangezien u aan alle andere voorwaarden heeft voldaan.
 
 
-        You should try to not always run on low taxes since this will probably lead
-        to bankruptcy sooner or later. For a period of time and if you know what you
-        are doing, it is fine though.
+        U moet proberen niet aldoor op een laag belastingniveau te blijven, want dit
+        zal op den duur waarschijnlijk uw faillisement betekenen. Voor een kortere
+        periode en als je weet wat je doet, zal het prima gaan.
 
 
-        After some time, the first unit should walk to the main square and have a
-        look for new construction material there to build a log house. This house
-        will replace the old tent.']
+        Na een tijdje zal de eerste inwoner naar de marktplaats gaan om te kijken
+        of er nog bouwmaterialen zijn om een blokhut te bouwen. Deze blokhut zal de
+        oude tent vervangen.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Such residential upgrades are the only ones
-        which cost resources and can not be restricted by you.
+  - arguments: ['', !!python/unicode 'Zulke woning verbeteringen zijn de enigen die
+        u bouwmaterialen kosten en die niet door u beperkt kunnen worden.
 
 
-        There are manual upgrades to some buildings where you use resources to construct
-        a better version on the same spot, and there are upgrades without costs for
-        example as you will see with the lumberjack (In this case, only the graphics
-        change).
+        Er zijn handmatige verbeteringen voor sommige gebouwen waar u bouwmaterialen
+        gebruikt om een verbeterde versie op dezelfde locatie neerzet. Verder zijn
+        er verbeteringen zonder kosten zoals bijvoorbeeld bij de houthakker (alleen
+        een grafische verandering).
 
 
-        Upgraded housing accomodates more inhabitants, and pioneers pay more taxes
-        than sailors, too.
+        Verbeterde woningen herbergen meer inwoners en pioniers betalen meer belasting
+        dan zeelui.
 
 
-        As you may have figured out already, the downside is that pioneers demand
-        additional goods which sailors do not need - so you will need to spend this
-        extra money to make them happy as well.
+        Zoals u misschien ondertussen al doorheeft is er een nadeel. De pioniers vragen
+        meer extra goederen welke zeelui niet nodig hebben. U zult dus wat extra geld
+        moeten uitgeven om ze tevreden te houden.
 
 
-        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+        OPDRACHT: Zet het belastingniveau op laag (links op het eind) en wacht tot
+        de zeelui de woningen verbeteren.']
     type: logbook
   - arguments: [!!python/unicode 'Zet het belasting niveau op laag (linkerkant) en
         wacht totdat de zeelui promoveren.']
@@ -562,48 +551,48 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: EEN BOERDERIJ', !!python/unicode 'Congratulations!
-        Some of your inhabitants have reached increment II!
+  - arguments: [!!python/unicode 'OPDRACHT: BOUW EEN BOERDERIJ', !!python/unicode 'Gefeliciteerd!
+        Sommige inwoners hebben niveau II bereikt!!
 
 
-        Now you have access to new buildings, take a look at the Build menu again.
+        Je hebt nu toegang tot nieuwe gebouwen, kijk maar eens in het Bouw menu.
 
 
-        A shiny new tab appeared there.
+        Er is een nieuw tabje bijgekomen.
 
 
-        Pioneers will demand cloth, so you need to set up a production line for cloth
-        starting with lambs wool (which is one of the goods produced at the farm).
+        Pioniers hebben kleren nodig, daarom zul je moeten beginnen aan een produktielijn
+        lamswol (een van de goederen die in de boerderij worden geproduceerd).
 
 
-        The farm is a very special production building since it can produce not only
-        one, but very many (and different) goods if you choose.
+        De boerderij is een speciaal productie gebouw, omdat deze meerdere (verschillende)
+        goederen kan produceren als je dat zou willen.
 
 
-        The output of farms depends on what kind of fields you build around it.']
+        De uitvoer van de boerderij hangt af van het type velden wat je rond de boerderij
+        aanlegt.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
+  - arguments: ['', !!python/unicode 'We zullen hier later wat dieper op ingaan.
 
 
-        Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a Branch Office.
+        Boerderijen, zoals alle bedrijven die ruwe materialen produceren, hebben geen
+        pad naar een opslag of kantoor nodig.
 
 
-        As long as units of the final production company can reach the farm, and collectors
-        from the branch office or storage tent can reach the final company everything''s
-        fine.
+        Zolang de inwoners van de eindproducenten de boerderij kunnen bereiken is
+        alles in orde.
 
 
-        If you, however, plan to do some processing on different parts of the island
-        (which can make sense) or even on different islands, you will need a connection
-        to collectors.
+        Mocht je van plan zijn het verwerken op een ander deel van het eiland te doen
+        (wat opzich wel logisch is) of misschien zelfs op een ander eiland, dan heb
+        je wel een connectie naar de verzamelaars nodig.
 
 
-        Try to build the farm not too close to the coast or your existing buildings
-        since it will need some space around it to work well.
+        Probeer de boerderij niet te dicht bij de kust of andere gebouwen te plaatsen,
+        omdat het ruimte in de buurt nodig heeft om te kunnen werken.
 
 
-        TASK: Build a farm.']
+        OPDRACHT: Bouw een boerderij.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een boerderij, zorg voor vrije ruimte eromheen.']
     type: message
@@ -617,39 +606,50 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: PLAATS VELDEN', !!python/unicode 'The
-        farm itself is not going to produce anything without some fields.
+  - arguments: [!!python/unicode 'OPDRACHT: PLAATS VELDEN', !!python/unicode 'De boerderij
+        zal niks produceren zonder velden.
 
 
-        You currently have the choice between pastures, potato and sugar fields.
+        Momenteel heb je de keus tussen weide, aardappel en suiker velden.
 
 
-        Let''s have a short overview:
+        Even een kort overzicht:
 
-        * Pasture: Sheep live here, producing lamb wool.
+        * Weide: Schapen leven hier en produceren wol.
 
-        * Potato field: Grows potatoes which are currently treated as food.
+        * Aardappel veld: Hier groeien aarappelen die als voedsel worden gebruikt.
 
-        * Sugar field: Grows sugar which is used to distill liquor and (later) produce
-        confectionery.
-
-
-        We now only need pastures, but in case your food supply chain is too small
-        (maybe many residential buildings) you can also produce some potatoes.
+        * Suikerveld: Hier groeit suikerriet, wat kan worden gebruikt om drank van
+        te distilleren en (later) in de banketbakkerij.
 
 
-        Note that for potatoes you will need a road connection to the farm (not to
-        the field!) as it will be the only company to work on the goods.']
+        We hebben nu alleen weide nodig, maar als je voedsel aanvoer nog niet goed
+        genoeg is (als je veel woningen hebt) kan je ook wat aardappels gaan produceren.
+
+
+        Let op dat je voor aardappels een pad moet hebben naar de boerderij (niet
+        het veld), omdat het het enige bedrijf is wat aan dat product werkt.']
     type: logbook_w
-  - arguments: ['', "Make sure that all fields you build are in the area covered by\
-        \ the farm.\n\nYou can have combined production - one pasture will not lead\
-        \ to 100 percent efficiency of the farm - but you need to check how many fields\
-        \ one farm can serve.\n\nDifferent classes of fields require the farm units\
-        \ to spend more or less time there (to seed, harvest, herd, etc\u2026) and\
-        \ because of that, the farm may be unable to serve all of the fields you built\
-        \ for it in time.\n\nFor now, you do not need to care about these issues a\
-        \ lot since you haven't built any fields. Let's change that!\n\nTASK: Build\
-        \ at least one pasture in the farm's range and add potato fields if you like."]
+  - arguments: ['', !!python/unicode 'Zorg ervoor dat alle velden die je plaatst in
+        het gebied liggen wat de boederij kan gebruiken.
+
+
+        Je kunt bij je boerderij meerdere soorten productie hebben - een weide zal
+        niet 100 procent efficient zijn - maar je moet wel kijken hoeveel velden een
+        boerderij zou kunnen verwerken kan.
+
+
+        Verschillende soorten velden vragen de boeren om meer of minder tijd per veld
+        te spenderen (om te zaaien, oogsten, hoeden etc....)  en daarom zou het kunnen
+        dat de boerderij niet alle velden kan bijhouden.
+
+
+        Voor nu hoef je je daar geen zorgen over te maken, aangezien je nog geen velden
+        hebt geplaatst. Laten we dat gaan veranderen!
+
+
+        OPDRACHT: Plaats in ieder geval een weide bij de boerderij en plaats aardappelvelden
+        als je dat zou willen.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats tenminste een weiland en voeg aardappelvelden
         toe naar eigen inzicht.']
@@ -664,40 +664,39 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: OPSLAGRUIMTE', !!python/unicode 'Did you
-        watch your lumberjack recently?
+  - arguments: [!!python/unicode 'OPDRACHT: OPSLAGRUIMTE', !!python/unicode 'Heeft
+        u onlangs de houthakker gezien?
 
 
-        Since your branch office does not have unlimited space to store goods, collectors
-        will stop fetching goods from companies when stock is full.
+        Aangezien het kantoor beperkte ruimte heeft om goederen op te slaan, zullen
+        verzamelaar stoppen goederen op te halen van bedrijven wanneer de opslagruimte
+        vol is.
 
-        So if no sailor recently wanted to upgrade his tent, you probably have a lot
-        of boards and in that case, the lumberjack may idle.
+        Als er recentelijk geen zeelui hun tenten hebben verbeterd, heeft u waarschijnlijk
+        veel planken. In dat geval zal de houthakker rusten.
 
-        We can improve this situation with two different approaches, and below we
-        will have a look at both of them.
-
-
-        All companies offer the possibility of doing no work at all.
-
-        This may sound strange, but try to click on the gear wheel you see in, for
-        example, a lumberjack''s overview.
+        We kunnen deze situatie oplossen met twee verschillende aanpakken.
 
 
-        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
-        costs you pay for the building will decrease. They won''t be zero, but still
-        lower than if you keep the company producing.']
+        Alle bedrijven hebben de optie om buiten bedrijf gezet te worden.
+
+        Dit klinkt misschien raar. Klik op het tandwiel in het houthakkers overzicht.
+
+
+        Als deze ''rust'' in ingeschakeld zullen de onderhoudskosten van het gebouw
+        afnemen. Onderhoudskosten zullen niet altijd helemaal nul zijn, maar allicht
+        wel lager dan in actieve status.']
     type: logbook_w
-  - arguments: ['', !!python/unicode "Dit betekent dat U geld kan besparen wanneer\
-        \ U tijdelijk geen bepaald bedrijf nodig heeft en het ook niet wilt slopen.\n\
+  - arguments: ['', !!python/unicode "Dit betekent dat u geld kan besparen wanneer\
+        \ u tijdelijk geen bepaald bedrijf nodig heeft en het ook niet wilt slopen.\n\
         \nEen andere oplossing is het plaatsen van het laatste niveau I gebouw, dat\
         \ nog niet besproken is: De opslag tent.\n\nDit gebouw heeft twee doeleinden:\n\
         * Het biedt meer ruimte voor goederen \n* Het stuurt eigen verzamelaars om\
-        \ goederen te halen, zoals het kantoor doet.\n\nMerk op dat bedrijven kunnen\
-        \ ook met een opslag tent verbonden worden om hun goederen op te laten halen,\
-        \ en als het alle verzamelaars van het kantoor bezet zijn, kan een opslag\
+        \ goederen te halen, zoals het kantoor doet.\n\nMerk op dat bedrijven ook\
+        \ met een opslag tent verbonden kunnen worden om hun goederen op te laten\
+        \ halen, en als alle verzamelaars van het kantoor bezet zijn, kan een opslag\
         \ tent de oplossing bieden.\n\nOPDRACHT: Plaats een opslag tent, bij voorkeur\
-        \ waar U verzamelaars nodig heeft."]
+        \ waar u verzamelaars nodig heeft."]
     type: logbook
   - arguments: [!!python/unicode 'Plaats een opslag tent (niveau I scherm).']
     type: message
@@ -712,11 +711,11 @@ events:
     type: var_lt
 - actions:
   - arguments: [!!python/unicode 'OPDRACHT: KLEERMAKER', !!python/unicode 'Nu de wol
-        productie gereed is heeft U nog een kleermaker nodig om kleren te fabriceren
+        productie gereed is heeft u nog een kleermaker nodig om kleren te fabriceren
         van de wol.
 
 
-        Er zijn twee plaatsen waar U de kleermaker kunt plaatsen - ofwel dichtbij
+        Er zijn twee plaatsen waar u de kleermaker kunt plaatsen - ofwel dichtbij
         de boerderij of dicht bij een opslag tent danwel het kantoor.
 
 
@@ -747,11 +746,11 @@ events:
         te voltooien. U heeft een positieve balans nodig.']
     type: message
   - arguments: [!!python/unicode 'OPDRACHT: VOLTOOI TUTORIAL', !!python/unicode 'Breidt
-        Uw stad uit naar 50 of meer inwoners door meer residentiele gebouwen te plaatsen.
+        uw stad uit naar 50 of meer inwoners door meer residentiele gebouwen te plaatsen.
 
 
-        Zodra U de economie draaiend kunt houden met deze hoeveelheid inwoners, bent
-        U klaar om Unknown Horizons te verkennen!
+        Zodra u de economie draaiend kunt houden met deze hoeveelheid inwoners, bent
+        u klaar om Unknown Horizons te verkennen!
 
         OPDRACHT: Bereik een totaal van 50 inwoners en een positieve balans om deze
         tutorial te voltooien.']
@@ -772,7 +771,7 @@ events:
         zijn geen resterende taken.
 
 
-        Mocht U suggesties hebben wat er verbeterd, toegevoegd of verwijderd kan worden:
+        Mocht u suggesties hebben wat er verbeterd, toegevoegd of verwijderd kan worden:
 
         www.unknown-horizons.org
 
@@ -789,7 +788,7 @@ events:
         De beste resultaten tot nu toe zijn behaald via het IRC kanaal, wij raden
         aan dit eerst te proberen (-;']
     type: logbook
-  - arguments: [!!python/unicode 'Dank U wel!', !!python/unicode '
+  - arguments: [!!python/unicode 'Dank u wel!', !!python/unicode '
 
 
 
@@ -827,5 +826,6 @@ events:
   conditions:
   - arguments: [tutStepDone, 60]
     type: var_gt
+locale: nl
 mapfile: development.sqlite
 
