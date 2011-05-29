@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-27 00:54+0200\n"
-"Last-Translator: nimini <petystueven@aol.com>\n"
+"PO-Revision-Date: 2011-05-29 09:41+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -2275,40 +2275,7 @@ msgstr "Hilfe"
 msgid "house"
 msgstr "Haus"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
 # Bitte auf Verwendung achten, bedeutet hoffentlich nirgends Einwohnerstufe!
-#
-#
-#
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "level"
