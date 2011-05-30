@@ -9,7 +9,7 @@ import os
 import platform
 from glob import glob
 from commands import getoutput
-from shutil import move, rmtree
+from shutil import move, rmtree, copytree
 
 # Ensure we are in the correct directory
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
@@ -48,8 +48,9 @@ class _build_i18n(build_i18n.build_i18n):
 		to a place more appropriate in our opinion, currently content/lang/.
 		"""
 		build_i18n.build_i18n.run(self)
-		rmtree(os.path.join("content", "lang"))
-		move(os.path.join("build", "mo"), \
+		if os.path.exists(os.path.join("content", "lang")):
+			rmtree(os.path.join("content", "lang"))
+		copytree(os.path.join("build", "mo"), \
 		     os.path.join("content", "lang"))
 
 class _build_man(build):
