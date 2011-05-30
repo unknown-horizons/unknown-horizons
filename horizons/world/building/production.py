@@ -50,7 +50,7 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
 
 class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
+	tabs = (ProductionOverviewTab,)
 
 class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
