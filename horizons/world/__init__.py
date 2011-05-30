@@ -37,7 +37,7 @@ from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
-from horizons.util import decorators
+from horizons.util import decorators, BuildingIndexer
 from horizons.world.buildingowner import BuildingOwner
 
 class World(BuildingOwner, LivingObject, WorldObject):
@@ -53,6 +53,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	   * island_map - a dictionary that binds tuples of coordinates with a reference to the island
 	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
+	   * fish_indexer - a BuildingIndexer for all fish on the map
 	   * session - reference to horizons.session.Session instance of the current game
 	   * water - Dictionary of coordinates that are water
 	   * trader - The world's ingame free trader player instance
@@ -77,8 +78,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.full_map = None
 		self.island_map = None
 		self.water = None
-		self.ship_map = None
 		self.ships = None
+		self.ship_map = None
+		self.fish_indexer = None
 		self.trader = None
 		self.pirate = None
 		self.islands = None
@@ -238,6 +240,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
+
+	def init_fish_indexer(self):
+		self.fish_indexer = BuildingIndexer(16, self.full_map)
+		for tile in self.ground_map.itervalues():
+			if tile.object is not None and tile.object.id == BUILDINGS.FISH_DEPOSIT_CLASS:
+				self.fish_indexer.add(tile.object)
+		self.fish_indexer._update()
 
 	@decorators.make_constants()
 	def init_new_world(self, minclay = 2, maxclay = 3, minmountains = 1, maxmountains = 3):

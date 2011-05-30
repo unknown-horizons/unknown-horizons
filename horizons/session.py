@@ -195,6 +195,7 @@ class Session(LivingObject):
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
+		self.world.init_fish_indexer() # now the fish should exist
 		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance

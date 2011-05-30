@@ -38,8 +38,8 @@ class ProductionBuilder(object):
 		self.session = self.island.session
 		self.owner = self.land_manager.owner
 		self.settlement = land_manager.settlement
-		self.plan = dict.fromkeys(land_manager.production, (self.purpose.none, None))
 		self.collector_buildings = [branch_office]
+		self.plan = dict.fromkeys(land_manager.production, (self.purpose.none, None))
 		for coords in branch_office.position.tuple_iter():
 			if coords in self.plan:
 				self.plan[coords] = (self.purpose.branch_office, None)
@@ -177,14 +177,12 @@ class ProductionBuilder(object):
 
 			fish_value = 0
 			fishers_in_range = 1
-			for tile in self.session.world.get_tiles_in_radius(point, 16):
-				building = tile.object
-				if building is None:
-					continue
-				if building.id == BUILDINGS.FISHERMAN_CLASS:
-					fishers_in_range += 1
-				elif building.id == BUILDINGS.FISH_DEPOSIT_CLASS:
-					fish_value += 1.0 / math.log(point.distance_to_tuple((tile.x, tile.y)) + 2)
+			for other_fisher in self.owner.fishers:
+				distance = fisher.position.distance(other_fisher.position)
+				if distance < 16:
+					fishers_in_range += 1 - distance / 16.0
+			for fish in self.session.world.fish_indexer.get_buildings_in_range((x, y)):
+				fish_value += 1.0 / math.log(point.distance(fish.position) + 2)
 			if fish_value > 0:
 				options.append((fishers_in_range / 1.0 / fish_value, fisher))
 
@@ -192,6 +190,7 @@ class ProductionBuilder(object):
 			if not self._build_road_connection(fisher):
 				continue
 			fisher.execute()
+			self.owner.fishers.append(fisher)
 			for coords in fisher.position.tuple_iter():
 				self.plan[coords] = (self.purpose.reserved, None)
 			self.plan[sorted(fisher.position.tuple_iter())[0]] = (self.purpose.fisher, fisher)

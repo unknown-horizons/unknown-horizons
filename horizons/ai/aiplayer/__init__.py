@@ -63,6 +63,8 @@ class AIPlayer(GenericAI):
 		self.land_manager.divide()
 		self.land_manager.display()
 
+		self.fishers = []
+
 		self.complete_inventory = CompleteInventory(self)
 
 	def build_tents(self):
