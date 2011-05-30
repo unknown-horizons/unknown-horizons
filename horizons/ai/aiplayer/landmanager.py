@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.constants import BUILDINGS
+from horizons.util.python import decorators
 
 class LandManager(object):
 	"""
@@ -95,3 +96,5 @@ class LandManager(object):
 
 		for tile in self.village.itervalues():
 			renderer.addColored(tile._instance, *village_colour)
+
+decorators.bind_all(LandManager)

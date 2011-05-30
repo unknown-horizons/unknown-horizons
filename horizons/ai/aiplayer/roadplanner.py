@@ -21,6 +21,8 @@
 
 import heapq
 
+from horizons.util.python import decorators
+
 class RoadPlanner(object):
 	"""
 	Finds and builds the most reasonable road between two areas.
@@ -96,3 +98,5 @@ class RoadPlanner(object):
 				final_key = distance[final_key][1]
 			return path
 		return None
+
+decorators.bind_all(RoadPlanner)

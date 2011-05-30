@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+from horizons.util.python import decorators
 
 class Mission(object):
 	"""
@@ -41,3 +42,5 @@ class Mission(object):
 	def report_failure(self, msg):
 		self.log.debug('Mission failure: ' + msg)
 		self.failure_callback(self, msg)
+
+decorators.bind_all(Mission)

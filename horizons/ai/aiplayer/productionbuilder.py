@@ -28,6 +28,7 @@ from roadplanner import RoadPlanner
 from horizons.ext.enum import Enum
 from horizons.constants import BUILDINGS
 from horizons.util import Point, Rect
+from horizons.util.python import decorators
 
 class ProductionBuilder(object):
 	purpose = Enum('branch_office', 'road', 'fisher', 'lumberjack', 'tree', 'reserved', 'none')
@@ -273,3 +274,5 @@ class ProductionBuilder(object):
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
+
+decorators.bind_all(ProductionBuilder)

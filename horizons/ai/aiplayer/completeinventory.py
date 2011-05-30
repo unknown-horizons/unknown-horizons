@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.constants import RES
+from horizons.util.python import decorators
 
 class CompleteInventory(object):
 	"""
@@ -46,3 +47,5 @@ class CompleteInventory(object):
 		items = [x for x in ship.inventory]
 		for res, amount in items:
 			self.move(ship, settlement, res, amount)
+
+decorators.bind_all(CompleteInventory)

@@ -24,6 +24,7 @@ from horizons.ai.aiplayer.builder import Builder
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GROUND, BUILDINGS
 from horizons.util import Point, Circle, Callback
+from horizons.util.python import decorators
 
 class FoundSettlement(Mission):
 	"""
@@ -112,3 +113,5 @@ class FoundSettlement(Mission):
 	def create(cls, ship, land_manager, success_callback, failure_callback):
 		bo_location = cls.find_bo_location(ship, land_manager)
 		return FoundSettlement(success_callback, failure_callback, land_manager.island.session, ship, bo_location)
+
+decorators.bind_all(FoundSettlement)

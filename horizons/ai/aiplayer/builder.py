@@ -22,6 +22,7 @@
 from horizons.entities import Entities
 from horizons.constants import BUILDINGS
 from horizons.command.building import Build
+from horizons.util.python import decorators
 
 class Builder(object):
 	"""
@@ -82,3 +83,5 @@ class Builder(object):
 		if key not in cls.cache:
 			cls.cache[key] = Builder(building_id, land_manager, point, orientation, ship)
 		return cls.cache[key]
+
+decorators.bind_all(Builder)

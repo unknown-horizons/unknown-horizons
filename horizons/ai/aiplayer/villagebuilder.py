@@ -24,6 +24,7 @@ from builder import Builder
 from horizons.ext.enum import Enum
 from horizons.constants import BUILDINGS
 from horizons.util import Point
+from horizons.util.python import decorators
 
 class VillageBuilder(object):
 	purpose = Enum('main_square', 'planned_tent', 'tent', 'road', 'reserved', 'none')
@@ -187,3 +188,5 @@ class VillageBuilder(object):
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
+
+decorators.bind_all(VillageBuilder)

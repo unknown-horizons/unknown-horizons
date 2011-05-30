@@ -38,6 +38,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import Ship
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.util.python import decorators
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -111,3 +112,5 @@ class AIPlayer(GenericAI):
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
+
+decorators.bind_all(AIPlayer)
