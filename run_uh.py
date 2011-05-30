@@ -79,6 +79,8 @@ def get_option_parser():
 	             default=False, help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--json", dest="json", action="store_true", \
 	             default=False, help=_("Use Scenario JSON files instead of YAML."))
+	p.add_option("--cloader", dest="cloader", action="store_true", \
+	             default=False, help=_("Use YAML CLoader."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
 	             help=_("Specify the path to FIFE root directory."))
 	p.add_option("--restore-settings", dest="restore_settings", action="store_true", \

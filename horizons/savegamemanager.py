@@ -42,10 +42,12 @@ class YamlCache(object):
 		# by default the filename contains ".yaml" :
 		if horizons.main.json:
 			return cls.get_json_file(filename.replace('.yaml', '.json'))
+		if horizons.main.cloader:
+			return cls.get_yaml_file(filename, cloader = True)
 		return cls.get_yaml_file(filename)
 
 	@classmethod
-	def get_yaml_file(cls, filename):
+	def get_yaml_file(cls, filename, cloader = False):
 		# calc the hash
 		f = open(filename, 'r')
 		h = hash(f.read())
@@ -54,7 +56,10 @@ class YamlCache(object):
 		if (filename in cls.cache and \
 		    cls.cache[filename][0] != h) or \
 		   (not filename in cls.cache):
-			cls.cache[filename] = (h, yaml.load( f ) )
+			if cloader:
+				cls.cache[filename] = (h, yaml.load( f, Loader = yaml.CLoader ) )
+			else:
+				cls.cache[filename] = (h, yaml.load( f ) )
 
 		return cls.cache[filename][1]
 
