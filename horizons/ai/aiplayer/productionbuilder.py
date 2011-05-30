@@ -192,15 +192,18 @@ class ProductionBuilder(object):
 				options.append((fishers_in_range / 1.0 / fish_value, fisher))
 
 		for _, fisher in sorted(options):
+			if not fisher.have_resources():
+				return (fisher, False)
 			if not self._build_road_connection(fisher):
 				continue
-			fisher.execute()
+			if not fisher.execute():
+				return (None, False)
 			self.owner.fishers.append(fisher)
 			for coords in fisher.position.tuple_iter():
 				self.plan[coords] = (self.purpose.reserved, None)
 			self.plan[sorted(fisher.position.tuple_iter())[0]] = (self.purpose.fisher, fisher)
-			return fisher
-		return None
+			return (fisher, True)
+		return (None, False)
 
 	def build_lumberjack(self):
 		"""

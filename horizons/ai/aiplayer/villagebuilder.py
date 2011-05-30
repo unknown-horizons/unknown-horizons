@@ -40,6 +40,7 @@ class VillageBuilder(object):
 		self.session = self.island.session
 		self.owner = self.land_manager.owner
 		self.settlement = land_manager.settlement
+		self.tents_to_build = 0
 
 	def create_plan(self):
 		"""
@@ -146,6 +147,7 @@ class VillageBuilder(object):
 			value = 10 * good_tents - bad_roads
 			if best_value < value:
 				self.plan = plan
+				self.tents_to_build = good_tents
 				best_value = value
 
 	def build_roads(self):
@@ -162,13 +164,13 @@ class VillageBuilder(object):
 		for coords, (purpose, builder) in sorted(self.plan.iteritems()):
 			if purpose == self.purpose.planned_tent:
 				if not builder.have_resources():
-					return True
+					return (builder, False)
 				if not builder.execute():
-					return False
+					return (None, False)
 				self.plan[coords] = (self.purpose.tent, builder)
 				self.land_manager.owner.log.info('Built a tent')
-				return True
-		return False
+				return (builder, True)
+		return (None, False)
 
 	def display(self):
 		road_colour = (30, 30, 30)

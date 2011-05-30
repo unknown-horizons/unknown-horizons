@@ -21,6 +21,8 @@
 
 import logging
 
+from collections import deque
+
 import horizons.main
 
 from mission.foundsettlement import FoundSettlement
@@ -67,12 +69,43 @@ class AIPlayer(GenericAI):
 		self.fishers = []
 
 		self.complete_inventory = CompleteInventory(self)
+		self.build_queue = deque()
+		self.tents = 0
 
-	def build_tents(self):
-		if self.village_builder.build_tent():
-			Scheduler().add_new_object(Callback(self.build_tents), self, run_in = 16)
+	def tick(self):
+		call_again = False
+		if len(self.build_queue) > 0:
+			self.log.info('ai.tick: build a queue item')
+			task = self.build_queue.popleft()
+			task()
+			call_again = True
+		elif self.village_builder.tents_to_build > self.tents:
+			if self.tents + 1 > 8 * len(self.fishers):
+				(fisher, success) = self.production_builder.build_fisher()
+				if success:
+					self.log.info('ai.tick: built a fisher')
+					call_again = True
+				elif fisher is not None:
+					self.log.info('ai.tick: not enough materials to build a fisher')
+					call_again = True
+				else:
+					self.log.info('ai.tick: failed to build a fisher')
+			else:
+				(tent, success) = self.village_builder.build_tent()
+				if success:
+					self.log.info('ai.tick: built a tent')
+					self.tents += 1
+					call_again = True
+				elif tent is not None:
+					self.log.info('ai.tick: not enough materials to build a tent')
+					call_again = True
+				else:
+					self.log.info('ai.tick: failed to build a tent')
+
+		if call_again:
+			Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 		else:
-			self.log.info('All tents have been built')
+			self.log.info('ai.tick: everything is done')
 
 	def report_success(self, mission, msg):
 		print mission, msg
@@ -80,18 +113,15 @@ class AIPlayer(GenericAI):
 			self.land_manager.settlement = mission.settlement
 			self.village_builder = VillageBuilder(self.land_manager)
 			self.village_builder.create_plan()
-			self.village_builder.build_roads()
-			self.village_builder.build_main_square()
-			self.village_builder.display()
-			Scheduler().add_new_object(Callback(self.build_tents), self)
-
 			self.production_builder = ProductionBuilder(self.land_manager, mission.branch_office)
-			self.production_builder.build_fisher()
-			self.production_builder.build_fisher()
-			self.production_builder.build_fisher()
-			self.production_builder.build_fisher()
-			self.production_builder.build_lumberjack()
+			
+			self.village_builder.display()
 			self.production_builder.display()
+
+			self.build_queue.append(self.village_builder.build_roads)
+			self.build_queue.append(self.production_builder.build_lumberjack)
+			self.build_queue.append(self.village_builder.build_main_square)
+			Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 
 	def report_failure(self, mission, msg):
 		print mission, msg
