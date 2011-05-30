@@ -122,7 +122,7 @@ class ProductionBuilder(object):
 				if distance > 9:
 					nodes[coords] += 0.5
 				elif 0 < distance <= 9:
-					nodes[coords] += 0.7 + (10 - distance) * 0.07
+					nodes[coords] += 0.7 + (10 - distance) * 0.15
 			else:
 				nodes[coords] += 0.1
 
