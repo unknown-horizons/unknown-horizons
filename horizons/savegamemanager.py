@@ -25,11 +25,7 @@ import os
 import os.path
 import glob
 import time
-import yaml
-try:
-	from yaml import CLoader as Loader
-except ImportError:
-	from yaml import Loader
+import yaml, json
 
 from horizons.constants import PATHS, VERSION
 from horizons.util import DbReader
@@ -40,6 +36,13 @@ class YamlCache(object):
 	"""Loads and caches YAML files
 	"""
 	cache = {}
+
+	@classmethod
+	def get_file(cls, filename):
+		# by default the filename contains ".yaml" :
+		if horizons.main.json:
+			return cls.get_json_file(filename.replace('.yaml', '.json'))
+		return cls.get_yaml_file(filename)
 
 	@classmethod
 	def get_yaml_file(cls, filename):
@@ -55,6 +58,14 @@ class YamlCache(object):
 
 		return cls.cache[filename][1]
 
+	@classmethod
+	def get_json_file(cls, filename):
+		f = open(filename, 'r')
+		h = hash(f.read())
+		f.seek(0)
+		if (filename in cls.cache and cls.cache[filename][0] != h) or (not filename in cls.cache):
+			cls.cache[filename] = (h, json.loads(f.read()))
+		return cls.cache[filename][1]
 
 class SavegameManager(object):
 	"""Controls savegamefiles.
@@ -345,7 +356,7 @@ class SavegameManager(object):
 		scenarios_lists = []
 		campaign_datas = []
 		for i, f in enumerate(files):
-			campaign = YamlCache.get_yaml_file(f)
+			campaign = YamlCache.get_file(f)
 			campaign_datas.append(campaign)
 			scenarios_lists.append([sc.get('level') for sc in campaign.get('scenarios',[])])
 		if not campaign_data:
@@ -391,7 +402,7 @@ class SavegameManager(object):
 				print _("Error: Cannot find scenario with file \"%s\".") % (file,)
 				return {}
 			index = sfiles.index(file)
-		data = YamlCache.get_yaml_file(sfiles[index])
+		data = YamlCache.get_file(sfiles[index])
 		return data
 
 	@classmethod
