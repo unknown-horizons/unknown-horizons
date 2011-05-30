@@ -250,6 +250,10 @@ class Ship(NamedObject, StorageHolder, Unit, WeaponHolder):
 		"""Moves the ship.
 		This is called when a ship is selected and RMB is pressed outside the ship"""
 		self.stop()
+		#NOTE stops the attack
+		#when the specialized attack ship will be instantiated
+		#this method should be overridden and self.stop_attack moved there
+		self.stop_attack()
 		
 		#disable the trading route
 		if hasattr(self, 'route'):

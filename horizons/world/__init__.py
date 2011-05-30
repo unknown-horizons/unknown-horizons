@@ -318,6 +318,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			#
 			#NOTE initialize another ship for testing
 			point = self.get_random_possible_ship_position()
+			while point not in Circle(ship.position, 5):
+				point = self.get_random_possible_ship_position()
 			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
 			#
 			#

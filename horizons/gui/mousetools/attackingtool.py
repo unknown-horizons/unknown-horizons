@@ -64,8 +64,8 @@ class AttackingTool(SelectionTool):
 					#TODO attack command
 					#dummy attack if possible
 					try:
-						i.attack(self._get_world_location_from_event(evt))
-						print 'attacked from', i
+						i.attack(target)
+						print 'instance', i, 'triggered an attack on', target
 					except AttributeError:
 						pass
 

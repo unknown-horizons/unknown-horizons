@@ -43,7 +43,7 @@ class Weapon(object):
 		self.attack_speed = 2
 		#time until attack is ready again
 		#will have one attack per 10 seconds
-		self.cooldown_time = 10
+		self.cooldown_time = 3
 		self.attack_ready = True
 		self.session = session
 

@@ -20,6 +20,7 @@
 # ###################################################
 from horizons.util import Annulus, Callback
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.scheduler import Scheduler
 
 class WeaponHolder(object):
 	def __init__(self, **kwargs):
@@ -28,13 +29,17 @@ class WeaponHolder(object):
 	
 	def __init(self):
 		self.create_weapon_storage()
+		self._target = None
 	
 	def create_weapon_storage(self):
 		self._weapon_storage = []
-	
+
 	def add_weapon_to_storage(self, weapon):
 		self._weapon_storage.append(weapon)
-	
+		#NOTE this should be done everytime the storage is changed
+		self._min_range = min([w.get_minimum_range() for w in self._weapon_storage])
+		self._max_range = max([w.get_maximum_range() for w in self._weapon_storage])
+
 	def attack_possible(self, dest):
 		distance = self.position.distance_to_point(dest)
 		for weapon in self._weapon_storage:
@@ -42,16 +47,30 @@ class WeaponHolder(object):
 				return True
 		return False
 
-	def attack(self, dest):
+	def try_attack_target(self):
+		if not self._target:
+			return
+		self.fire_all_weapons(self._target.position)
+		#try another attack in 2 ticks
+		Scheduler().add_new_object(self.try_attack_target, self, 2)
+
+	def attack(self, target):
+		if self._target is target:
+			pass
+		self._target = target
+		self.try_attack_target()
+
+	def stop_attack(self):
+		self._target = None
+
+	def fire_all_weapons(self, dest):
+		#fires all weapons at a given position
 		if self.is_moving:
 			self.stop()
 		print 'attack issued'
 		in_range = False
-		min_range = min([w.get_minimum_range() for w in self._weapon_storage])
-		max_range = max([w.get_maximum_range() for w in self._weapon_storage])
-		#TODO change to distance_to_point in distance and test it
-		distance = self.position.distance_to_point(dest)
-		if distance >= min_range and distance <= max_range:
+		distance = self.position.distance(dest)
+		if distance >= self._min_range and distance <= self._max_range:
 			for weapon in self._weapon_storage:
 				weapon.fire(dest, distance)
 			in_range = True
@@ -59,7 +78,7 @@ class WeaponHolder(object):
 		if not in_range:
 			if self.is_moving:
 				try:
-					self.move(Annulus(dest, min_range, max_range), Callback(self.attack, dest),
-						blocked_callback = Callback(self.attack, dest))
+					self.move(Annulus(dest, self._min_range, self._max_range), Callback(self.fire_all_weapons, dest),
+						blocked_callback = Callback(self.fire_all_weapons, dest))
 				except MoveNotPossible:
 					pass
