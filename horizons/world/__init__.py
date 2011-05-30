@@ -49,12 +49,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
 	                 This is important for pathfinding and quick tile fetching.z
+	   * full_map - a dictionary that binds tuples of coordinates with a reference to the tile (includes water and ground)
 	   * island_map - a dictionary that binds tuples of coordinates with a reference to the island
 	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
 	   * session - reference to horizons.session.Session instance of the current game
-	   * water - List of coordinates that are water
+	   * water - Dictionary of coordinates that are water
 	   * trader - The world's ingame free trader player instance
+	   * pirate - The world's ingame pirate player instance
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")
@@ -72,6 +74,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.players = None
 		self.player = None
 		self.ground_map = None
+		self.full_map = None
 		self.island_map = None
 		self.water = None
 		self.ship_map = None
@@ -174,14 +177,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
 								self.ground_map[(x+x_offset, y+y_offset)] = ground
 
-
-		# remove parts that are occupied by island, create the island map
+		# remove parts that are occupied by islands, create the island map and the full map
 		self.island_map = {}
+		self.full_map = copy.copy(self.ground_map)
 		for island in self.islands:
-			for coord in island.ground_map:
-				if coord in self.ground_map:
-					del self.ground_map[coord]
-					self.island_map[coord] = island
+			for coords in island.ground_map:
+				if coords in self.ground_map:
+					self.full_map[coords] = island.ground_map[coords]
+					del self.ground_map[coords]
+					self.island_map[coords] = island
 
 		# load world buildings (e.g. fish)
 		for (building_worldid, building_typeid) in \
@@ -435,10 +439,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		@param point: coords as Point
 		@return: instance of Ground at x, y
 		"""
-		i = self.get_island(point)
-		if i is not None:
-			return i.get_tile(point)
-		return self.ground_map[(point.x, point.y)]
+		return self.full_map[(point.x, point.y)]
 
 	def get_settlement(self, point):
 		"""Returns settlement on point. Very fast (O(1)).
