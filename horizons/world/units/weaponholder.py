@@ -18,7 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from horizons.util import Annulus, Callback
+from horizons.util import Annulus, Callback, Circle, Rect
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
 
@@ -50,13 +50,25 @@ class WeaponHolder(object):
 	def try_attack_target(self):
 		if not self._target:
 			return
-		self.fire_all_weapons(self._target.position)
+		if self._target.health <= 0:
+			self.stop_attack()
+			return
+
+		#TODO optimise that
+		dest = self._target.position
+		if isinstance(dest, Rect):
+			dest = dest.center()
+		elif isinstance(dest, Circle):
+			dest = dest.center
+
+		self.fire_all_weapons(dest)
 		#try another attack in 2 ticks
 		Scheduler().add_new_object(self.try_attack_target, self, 2)
 
 	def attack(self, target):
 		if self._target is target:
-			pass
+			return
+		self.stop_attack()
 		self._target = target
 		self.try_attack_target()
 
@@ -67,16 +79,16 @@ class WeaponHolder(object):
 		#fires all weapons at a given position
 		if self.is_moving:
 			self.stop()
-		print 'attack issued'
 		in_range = False
 		distance = self.position.distance(dest)
 		if distance >= self._min_range and distance <= self._max_range:
 			for weapon in self._weapon_storage:
 				weapon.fire(dest, distance)
 			in_range = True
+			print 'firing from', self
 
 		if not in_range:
-			if self.is_moving:
+			if self.movable:
 				try:
 					self.move(Annulus(dest, self._min_range, self._max_range), Callback(self.fire_all_weapons, dest),
 						blocked_callback = Callback(self.fire_all_weapons, dest))

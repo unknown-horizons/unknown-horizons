@@ -200,7 +200,8 @@ class Ship(NamedObject, StorageHolder, Unit, WeaponHolder):
 	def remove(self):
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
-		self.session.view.remove_change_listener()
+		#TODO fix it
+		#self.session.view.remove_change_listener(self.draw_health)
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):

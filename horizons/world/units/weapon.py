@@ -20,9 +20,11 @@
 # ###################################################
 
 from horizons.util import Circle, Callback
+from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 
+@metaChangeListenerDecorator("damage_dealt")
 class Weapon(object):
 	"""
 	Generic Weapon class
@@ -58,13 +60,19 @@ class Weapon(object):
 
 	def on_impact(self, position):
 		#deal damage to units in position callback
+		#TODO use damage_dealt listener
 
 		units = self.session.world.get_ships(position, self.attack_radius)
-		#TODO add buildings to units
+		for point in Circle(position, self.attack_radius):
+			unit = self.session.world.get_building(point)
+			if unit not in units and unit is not None:
+				units.append(unit)
 
 		for unit in units:
 			print 'dealing damage to ship:', unit
 			unit.health -= self.get_damage_modifier()
+			if unit.health <= 0:
+				unit.remove()
 
 	def make_attack_ready(self):
 		self.attack_ready = True
