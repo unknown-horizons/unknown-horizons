@@ -210,6 +210,23 @@ class ProductionBuilder(object):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		options = []
 
+		cell_value = {}
+		alignment_value = {}
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose == self.purpose.none:
+				cell_value[coords] = 3
+			elif purpose == self.purpose.tree:
+				cell_value[coords] = 1
+			else:
+				continue
+
+			alignment = 0
+			for dx, dy in moves:
+				coords2 = (coords[0] + dx, coords[1] + dy)
+				if coords2 not in self.plan or self.plan[coords][0] == self.purpose.road:
+					alignment += 2 if abs(dx) + abs(dy) == 1 else 1
+			alignment_value[coords] = alignment
+
 		for (x, y), (purpose, _) in self.plan.iteritems():
 			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
 				continue
@@ -224,20 +241,11 @@ class ProductionBuilder(object):
 			alignment = 0
 			used_area = set(lumberjack.position.get_radius_coordinates(3, True))
 			for coords in lumberjack.position.get_radius_coordinates(3):
-				if coords not in self.plan:
-					continue
-				purpose = self.plan[coords][0]
-				if purpose == self.purpose.none:
-					value += 1
-					for dx, dy in moves:
-						coords2 = (coords[0] + dx, coords[1] + dy)
-						if coords2 not in used_area:
-							alignment += 1
-				elif purpose == self.purpose.tree:
-					value += 0.3
-			value = min(value, 32)
-			
-			if value >= 10:
+				if coords in cell_value:
+					value += cell_value[coords]
+					alignment += alignment_value[coords]
+			value = min(value, 100)
+			if value >= 30:
 				options.append((-value - math.log(alignment + 1) - alignment / 5.0, lumberjack))
 
 		for _, lumberjack in sorted(options):
@@ -247,7 +255,7 @@ class ProductionBuilder(object):
 			for coords in lumberjack.position.tuple_iter():
 				self.plan[coords] = (self.purpose.reserved, None)
 			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (self.purpose.lumberjack, lumberjack)
-			
+
 			for coords in lumberjack.position.get_radius_coordinates(3):
 				if coords in self.plan and self.plan[coords][0] == self.purpose.none:
 					self.plan[coords] = (self.purpose.tree, None)
