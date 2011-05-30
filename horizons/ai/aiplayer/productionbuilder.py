@@ -20,7 +20,7 @@
 # ###################################################
 
 import math
-from Queue import Queue
+from collections import deque
 
 from builder import Builder
 from roadplanner import RoadPlanner
@@ -78,17 +78,15 @@ class ProductionBuilder(object):
 
 	def _fill_distance(self, distance, nodes):
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		queue = Queue()
-		for item in distance.iteritems():
-			queue.put(item)
+		queue = deque([item for item in distance.iteritems()])
 
-		while not queue.empty():
-			(coords, dist) = queue.get()
+		while len(queue) > 0:
+			(coords, dist) = queue.popleft()
 			for dx, dy in moves:
 				coords2 = (coords[0] + dx, coords[1] + dy)
 				if coords2 in nodes and coords2 not in distance:
 					distance[coords2] = dist + 1
-					queue.put((coords2, dist + 1))
+					queue.append((coords2, dist + 1))
 
 	def _get_path_nodes(self):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
