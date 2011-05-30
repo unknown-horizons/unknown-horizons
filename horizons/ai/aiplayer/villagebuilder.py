@@ -21,13 +21,18 @@
 
 from builder import Builder
 
-from horizons.ext.enum import Enum
 from horizons.constants import BUILDINGS
 from horizons.util import Point
 from horizons.util.python import decorators
 
 class VillageBuilder(object):
-	purpose = Enum('main_square', 'planned_tent', 'tent', 'road', 'reserved', 'none')
+	class purpose:
+		none = 1
+		reserved = 2
+		main_square = 3
+		planned_tent = 4
+		tent = 5
+		road = 6
 
 	def __init__(self, land_manager):
 		self.land_manager = land_manager

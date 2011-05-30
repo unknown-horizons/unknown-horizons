@@ -25,13 +25,19 @@ from Queue import Queue
 from builder import Builder
 from roadplanner import RoadPlanner
 
-from horizons.ext.enum import Enum
 from horizons.constants import BUILDINGS
 from horizons.util import Point, Rect
 from horizons.util.python import decorators
 
 class ProductionBuilder(object):
-	purpose = Enum('branch_office', 'road', 'fisher', 'lumberjack', 'tree', 'reserved', 'none')
+	class purpose:
+		none = 1
+		reserved = 2
+		branch_office = 3
+		road = 4
+		fisher = 5
+		lumberjack = 6
+		tree = 7
 
 	def __init__(self, land_manager, branch_office):
 		self.land_manager = land_manager
