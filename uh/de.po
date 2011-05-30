@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-27 01:28+0200\n"
-"Last-Translator: stubb <kili@mail.spaceleft.net>\n"
+"PO-Revision-Date: 2011-05-29 09:30+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1668,10 +1668,10 @@ msgstr "Berg"
 msgid "Pasture"
 msgstr "Weide"
 
+# *NICHT* Kapelle
 #: sqlite/Building
-#, fuzzy
 msgid "Pavilion"
-msgstr "Kapelle"
+msgstr "Pavillon"
 
 #: sqlite/Building
 msgid "Potato Field"
