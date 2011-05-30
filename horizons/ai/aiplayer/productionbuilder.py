@@ -153,6 +153,12 @@ class ProductionBuilder(object):
 				road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
 		return path is not None
 
+	def _near_collectors(self, position):
+		for building in self.collector_buildings:
+			if building.position.distance(position) <= building.radius:
+				return True
+		return False
+
 	def build_fisher(self):
 		"""
 		Finds a reasonable place for a fisher and builds the fisher and a road connection.
@@ -160,11 +166,13 @@ class ProductionBuilder(object):
 		options = []
 
 		for (x, y), (purpose, _) in self.plan.iteritems():
-			if purpose != self.purpose.none:
+			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
 				continue
 			point = Point(x, y)
 			fisher = Builder.create(BUILDINGS.FISHERMAN_CLASS, self.land_manager, point)
 			if not fisher or not self.land_manager.legal_for_production(fisher.position):
+				continue
+			if not self._near_collectors(fisher.position):
 				continue
 
 			fish_value = 0
@@ -199,11 +207,13 @@ class ProductionBuilder(object):
 		options = []
 
 		for (x, y), (purpose, _) in self.plan.iteritems():
-			if purpose != self.purpose.none:
+			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
 				continue
 			point = Point(x, y)
 			lumberjack = Builder.create(BUILDINGS.LUMBERJACK_CLASS, self.land_manager, point)
 			if not lumberjack or not self.land_manager.legal_for_production(lumberjack.position):
+				continue
+			if not self._near_collectors(lumberjack.position):
 				continue
 
 			value = 0
