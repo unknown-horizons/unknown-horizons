@@ -13,10 +13,11 @@
 		<ScrollArea max_size="300,400" horizontal_scrollbar="0" >
 			<ListBox name="savegamelist" />
 		</ScrollArea>
-
-		<Spacer />
-
-		<DeleteButton />
+	<Spacer />
+		<HBox max_size="34,40">
+		<!-- if no max_size is set, button reaction area expands to whole page -->
+			<DeleteButton tooltip="Delete selected savegame" />
+		</HBox>>
 	</VBox>
 
 	<VBox name="right_page" position="420,75"
@@ -38,13 +39,11 @@
 <!-- here a small screenshot will help the player to recognise the saved file -->
 			</HBox>
 		</VBox>
-
-		<Spacer />
-
-		<HBox min_size="350,40">
-			<CancelButton />
-			<Spacer />
-			<OkButton />
+	<Spacer />
+		<HBox min_size="300,40">
+			<CancelButton tooltip="Exit to main menu" />
+			<Spacer min_size="200" />
+			<OkButton tooltip="Start game" />
 		</HBox>
 	</VBox>
 </Container>

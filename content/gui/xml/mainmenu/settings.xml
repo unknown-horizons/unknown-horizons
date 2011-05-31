@@ -76,7 +76,10 @@
 			<CheckBox min_size="32,32" name="enable_sound" />
 		</HBox>
 	<Spacer />
-		<DeleteButton name="defaultButton" />
+	<HBox max_size="34,40">
+	<!-- if no max_size is set, button reaction area expands to whole page -->
+		<DeleteButton name="defaultButton" tooltip="Reset to default settings" />
+	</HBox>>
 	</VBox>
 </VBox> 
 
@@ -141,9 +144,9 @@
 	</VBox>
 <Spacer />
 	<HBox >
-		<CancelButton />
+		<CancelButton tooltip="Exit to main menu" />i
 	<Spacer min_size="220" />
-		<OkButton />
+		<OkButton tooltip="Apply" />
 	</HBox>
 </VBox>
 
