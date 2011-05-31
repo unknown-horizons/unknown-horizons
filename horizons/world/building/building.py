@@ -320,6 +320,9 @@ class SelectableBuilding(object):
 
 	def remove(self):
 		super(SelectableBuilding, self).remove()
+		#TODO move this as a listener
+		if self in self.session.selected_instances:
+			self.session.selected_instances.remove(self)
 		if self.owner == self.session.world.player:
 			self.deselect()
 

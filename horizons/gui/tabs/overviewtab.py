@@ -56,6 +56,8 @@ class OverviewTab(TabInterface):
 				self.widget.child_finder('player_emblem').image = \
 			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
 
+		if not self.instance.has_remove_listener(self.on_instance_removed):
+			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def refresh(self):
 		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
@@ -77,16 +79,12 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).show()
 		if not self.instance.has_change_listener(self.refresh):
 			self.instance.add_change_listener(self.refresh)
-		if not self.instance.has_remove_listener(self.on_instance_removed):
-			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def hide(self):
 		super(OverviewTab, self).hide()
 		if self.instance is not None:
 			if self.instance.has_change_listener(self.refresh):
 				self.instance.remove_change_listener(self.refresh)
-			if self.instance.has_remove_listener(self.on_instance_removed):
-				self.instance.remove_remove_listener(self.on_instance_removed)
 
 	def on_instance_removed(self):
 		self.on_remove()
