@@ -54,13 +54,27 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.__init), self)
 		Scheduler().add_new_object(Callback(self.start), self, run_in = 2)
 
+	def choose_island(self):
+		best_island = None
+		best_value = None
+
+		for island in self.session.world.islands:
+			flat_land = 0
+			for tile in island.ground_map.itervalues():
+				if 'constructible' in tile.classes:
+					flat_land += 1
+			if best_value is None or best_value < flat_land:
+				best_island = island
+				best_value = flat_land
+		return best_island
+
 	def __init(self):
 		for ship in self.session.world.ships:
 			if ship.owner == self:
 				self.ships[ship] = self.shipStates.on_a_mission
 
 		self.missions = {}
-		self.island = self.session.world.islands[0]
+		self.island = self.choose_island()
 
 		self.land_manager = LandManager(self.island, self)
 		self.land_manager.divide()
