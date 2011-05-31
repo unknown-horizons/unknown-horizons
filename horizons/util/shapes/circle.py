@@ -55,6 +55,9 @@ class Circle(object):
 		else:
 			return False
 
+	def center(self):
+		return self.center
+
 	def intersects_rect(self, rect):
 		if rect.distance_to_point(self.center) >  self.radius:
 			return True
