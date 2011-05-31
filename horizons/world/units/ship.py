@@ -198,10 +198,11 @@ class Ship(NamedObject, StorageHolder, Unit, WeaponHolder):
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
+		if self in self.session.selected_instances:
+			self.deselect()
+			self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
-		#TODO fix it
-		#self.session.view.remove_change_listener(self.draw_health)
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):

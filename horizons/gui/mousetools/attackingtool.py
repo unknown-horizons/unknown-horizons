@@ -63,11 +63,9 @@ class AttackingTool(SelectionTool):
 				for i in self.session.selected_instances:
 					#TODO attack command
 					#dummy attack if possible
-					try:
+					if hasattr(i, 'attack'):
 						i.attack(target)
 						print 'instance', i, 'triggered an attack on', target
-					except AttributeError:
-						pass
 
 			else:
 				for i in self.session.selected_instances:

@@ -70,7 +70,9 @@ class Weapon(object):
 
 		for unit in units:
 			print 'dealing damage to ship:', unit
+			#TODO call deal damage from unit code, remove from unit code
 			unit.health -= self.get_damage_modifier()
+			print unit.id
 			if unit.health <= 0:
 				unit.remove()
 

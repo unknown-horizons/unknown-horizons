@@ -18,6 +18,8 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+import weakref
 from horizons.util import Annulus, Callback, Circle, Rect
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
@@ -48,14 +50,17 @@ class WeaponHolder(object):
 		return False
 
 	def try_attack_target(self):
-		if not self._target:
+		if self._target:
+			target = self._target()
+		else:
 			return
-		if self._target.health <= 0:
-			self.stop_attack()
+		if not target:
+			self._target = None
+			print 'TARGET IS NONE'
 			return
 
 		#TODO optimise that
-		dest = self._target.position
+		dest = target.position
 		if isinstance(dest, Rect):
 			dest = dest.center()
 		elif isinstance(dest, Circle):
@@ -69,7 +74,7 @@ class WeaponHolder(object):
 		if self._target is target:
 			return
 		self.stop_attack()
-		self._target = target
+		self._target = weakref.ref(target)
 		self.try_attack_target()
 
 	def stop_attack(self):
