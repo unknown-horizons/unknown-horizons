@@ -64,12 +64,14 @@ class TabWidget(object):
 		for index, tab in enumerate(self._tabs):
 			container = pychan.Container()
 			background = pychan.Icon()
-			background.image = tab.button_background_image
+			background.name = "bg_%s" % index
 			button = TooltipButton()
 			button.name = index
 			if self.current_tab is tab:
+				background.image = tab.button_background_image_active
 				button.up_image = tab.button_active_image
 			else:
+				background.image = tab.button_background_image
 				button.up_image = tab.button_up_image
 			button.down_image = tab.button_down_image
 			button.hover_image = tab.button_hover_image
@@ -91,8 +93,13 @@ class TabWidget(object):
 		"""
 		self.current_tab.hide()
 		new_tab = self._tabs[number]
+		old_bg = self.content.findChild(name = "bg_%s" % self._tabs.index(self.current_tab))
+		old_bg.image = self.current_tab.button_background_image
 		old_button = self.content.findChild(name=self._tabs.index(self.current_tab))
 		old_button.up_image = self.current_tab.button_up_image
+
+		new_bg = self.content.findChild(name = "bg_%s" % number)
+		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=number)
 		new_button.up_image = new_tab.button_active_image
 		self.current_tab = new_tab

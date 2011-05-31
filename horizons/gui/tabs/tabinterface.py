@@ -47,11 +47,12 @@ class TabInterface(object):
 		else:
 			self.widget = None
 		# You can override these if you want to use separate images for your tab
-		self.button_up_image = 'content/gui/images/tabwidget/tab.png' # TabButtons upimage
-		self.button_down_image = 'content/gui/images/tabwidget/tab.png' # TabButtons downimage
+		self.button_up_image = 'content/gui/images/tabwidget/tab.png' # TabButtons usual image
+		self.button_down_image = 'content/gui/images/tabwidget/tab.png' # TabButtons image when mouse is pressed
 		self.button_hover_image = 'content/gui/images/tabwidget/tab_a.png' # TabButtons hoverimage
 		self.button_active_image = 'content/gui/images/tabwidget/tab.png' # TabButtons active image
-		self.button_background_image = 'content/gui/images/tabwidget/tab.png' # TabButtons background image
+		self.button_background_image = 'content/gui/images/tabwidget/tab_dark.png' # TabButtons background image
+		self.button_background_image_active = 'content/gui/images/tabwidget/tab_active.png' # TabButtons background image when selected
 
 	def init_values(self):
 		"""Call this method after the widget has been initialised."""

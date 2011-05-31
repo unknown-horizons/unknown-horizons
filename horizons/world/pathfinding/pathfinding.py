@@ -150,6 +150,8 @@ class FindPath(object):
 		dest_coords = self.destination.get_coordinates()
 		if len(dest_coords) > 5:
 			dest_coords = set(dest_coords)
+			if not self.make_target_walkable:
+				dest_coords = dest_coords.intersection(self.path_nodes)
 
 		# loop until we have no more nodes to check
 		while to_check:
