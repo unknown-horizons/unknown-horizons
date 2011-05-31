@@ -25,6 +25,7 @@ import logging
 from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
+from horizons.world.pathfinding import PathBlockedError
 from horizons.util import WorldObject, decorators, Callback
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.ext.enum import Enum
@@ -178,6 +179,7 @@ class Collector(StorageHolder, Unit):
 			self.setup_new_job()
 			# and notify us, when we're at target
 			self.add_move_callback(self.begin_working)
+			self.add_blocked_callback(self.handle_path_to_job_blocked)
 			self.show()
 		elif state == self.states.working:
 			# we are at the target and work
@@ -216,8 +218,7 @@ class Collector(StorageHolder, Unit):
 
 	def handle_no_possible_job(self):
 		"""Called when we can't find a job. default is to wait and try again in a few secs"""
-		self.log.debug("%s: found no possible job, retry in %s ticks", \
-		               (self, COLLECTORS.DEFAULT_WAIT_TICKS) )
+		self.log.debug("%s: found no possible job, retry in %s ticks", self, COLLECTORS.DEFAULT_WAIT_TICKS)
 		Scheduler().add_new_object(self.search_job, self, COLLECTORS.DEFAULT_WAIT_TICKS)
 
 	def setup_new_job(self):
@@ -308,8 +309,23 @@ class Collector(StorageHolder, Unit):
 		if job_location is None:
 			job_location = self.job.object.loading_area
 		self.move(job_location, self.begin_working, \
-		          destination_in_building = self.destination_always_in_building)
+		          destination_in_building = self.destination_always_in_building, \
+		          blocked_callback = self.handle_path_to_job_blocked)
 		self.state = self.states.moving_to_target
+
+	def resume_movement(self):
+		"""Try to resume movement after getting blocked. If that fails then wait and try again."""
+		try:
+			self._move_tick(resume=True)
+		except PathBlockedError:
+			Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
+
+	def handle_path_to_job_blocked(self):
+		"""Called when we get blocked while trying to move to the job location.
+		The default action is to resume movement in a few seconds."""
+		self.log.debug("%s: got blocked while moving to the job location, trying again in %s ticks.", \
+			self, COLLECTORS.DEFAULT_WAIT_TICKS)
+		Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
 
 	def begin_working(self):
 		"""Pretends that the collector works by waiting some time. finish_working is

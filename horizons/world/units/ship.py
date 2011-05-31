@@ -28,6 +28,7 @@ from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, TraderShipOverv
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
+from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
@@ -203,11 +204,17 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def create_route(self):
 		self.route=ShipRoute(self)
 
-	def _move_tick(self):
+	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
 		del self.session.world.ship_map[self.position.to_tuple()]
 
-		super(Ship, self)._move_tick()
+		try:
+			super(Ship, self)._move_tick(resume)
+		except PathBlockedError:
+			# if we fail to resume movement then the ship should still be on the map but the exception has to be raised again.
+			if resume:
+				self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+			raise
 
 		# save current and next position for ship, since it will be between them
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
