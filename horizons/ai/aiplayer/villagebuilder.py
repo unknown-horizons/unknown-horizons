@@ -168,7 +168,6 @@ class VillageBuilder(object):
 				if not builder.execute():
 					return (None, False)
 				self.plan[coords] = (self.purpose.tent, builder)
-				self.land_manager.owner.log.info('Built a tent')
 				return (builder, True)
 		return (None, False)
 

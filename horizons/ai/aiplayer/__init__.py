@@ -80,16 +80,27 @@ class AIPlayer(GenericAI):
 			task()
 			call_again = True
 		elif self.village_builder.tents_to_build > self.tents:
-			if self.tents + 1 > 8 * len(self.fishers):
-				(fisher, success) = self.production_builder.build_fisher()
-				if success:
-					self.log.info('ai.tick: built a fisher')
-					call_again = True
-				elif fisher is not None:
-					self.log.info('ai.tick: not enough materials to build a fisher')
-					call_again = True
+			if self.tents + 1 > 3 * len(self.fishers):
+				if self.production_builder.enough_collectors():
+					(details, success) = self.production_builder.build_fisher()
+					if success:
+						self.log.info('ai.tick: built a fisher')
+						call_again = True
+					elif details is not None:
+						self.log.info('ai.tick: not enough materials to build a fisher')
+						call_again = True
+					else:
+						self.log.info('ai.tick: failed to build a fisher')
 				else:
-					self.log.info('ai.tick: failed to build a fisher')
+					(details, success) = self.production_builder.improve_collector_coverage()
+					if success:
+						self.log.info('ai.tick: built a storage')
+						call_again = True
+					elif details is not None:
+						self.log.info('ai.tick: not enough materials to build a storage')
+						call_again = True
+					else:
+						self.log.info('ai.tick: failed to build a storage')
 			else:
 				(tent, success) = self.village_builder.build_tent()
 				if success:
@@ -119,6 +130,7 @@ class AIPlayer(GenericAI):
 			self.production_builder.display()
 
 			self.build_queue.append(self.village_builder.build_roads)
+			self.build_queue.append(self.production_builder.build_lumberjack)
 			self.build_queue.append(self.production_builder.build_lumberjack)
 			self.build_queue.append(self.village_builder.build_main_square)
 			Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)

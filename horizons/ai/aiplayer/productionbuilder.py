@@ -20,6 +20,8 @@
 # ###################################################
 
 import math
+import copy
+
 from collections import deque
 
 from builder import Builder
@@ -38,6 +40,7 @@ class ProductionBuilder(object):
 		fisher = 5
 		lumberjack = 6
 		tree = 7
+		storage = 8
 
 	def __init__(self, land_manager, branch_office):
 		self.land_manager = land_manager
@@ -46,6 +49,7 @@ class ProductionBuilder(object):
 		self.owner = self.land_manager.owner
 		self.settlement = land_manager.settlement
 		self.collector_buildings = [branch_office]
+		self.production_buildings = []
 		self.plan = dict.fromkeys(land_manager.production, (self.purpose.none, None))
 		for coords in branch_office.position.tuple_iter():
 			if coords in self.plan:
@@ -202,6 +206,7 @@ class ProductionBuilder(object):
 			for coords in fisher.position.tuple_iter():
 				self.plan[coords] = (self.purpose.reserved, None)
 			self.plan[sorted(fisher.position.tuple_iter())[0]] = (self.purpose.fisher, fisher)
+			self.production_buildings.append(fisher)
 			return (fisher, True)
 		return (None, False)
 
@@ -263,8 +268,136 @@ class ProductionBuilder(object):
 				if coords in self.plan and self.plan[coords][0] == self.purpose.none:
 					self.plan[coords] = (self.purpose.tree, None)
 					tree = Builder.create(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
+			self.production_buildings.append(lumberjack)
 			return lumberjack
 		return None
+	
+	def enough_collectors(self):
+		return 1 + 2 * len(self.collector_buildings) > len(self.production_buildings)
+
+	def _get_collector_data(self):
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		
+		data = {}
+		keys = {}
+		for building in self.production_buildings:
+			data[building] = {}
+			for coords in building.position.tuple_iter():
+				keys[coords] = building
+
+		for collector in self.collector_buildings:
+			distance = {}
+			queue = deque()
+			for tile in self._get_neighbour_tiles(collector.position):
+				if tile is None:
+					continue
+				point = Point(tile.x, tile.y)
+				building = self.session.world.get_building(point)
+				if building and building.id == BUILDINGS.TRAIL_CLASS:
+					distance[(tile.x, tile.y)] = 0
+					queue.append(((tile.x, tile.y), 0))
+
+			while len(queue) > 0:
+				(coords, dist) = queue.popleft()
+				for dx, dy in moves:
+					coords2 = (coords[0] + dx, coords[1] + dy)
+					if coords2 not in distance:
+						point2 = Point(coords2[0], coords2[1])
+						building = self.session.world.get_building(point2)
+						if building and building.id == BUILDINGS.TRAIL_CLASS:
+							distance[coords2] = dist + 1
+							queue.append((coords2, dist + 1))
+						elif coords2 in keys and collector not in data[keys[coords2]]:
+							distance[coords2] = dist + 1
+							data[keys[coords2]][collector] = dist + 1
+		return (data, keys)
+
+	def evaluate_collector_data(self, data):
+		"""
+		Calculates the value of the collector arrangement
+		@param data: {(x, y) -> {building -> distance}}
+		@return: the value of the arrangement (smaller is better)
+		"""
+		result = 0
+		for building_data in data.itervalues():
+			value = 0.000001
+			for collector, distance in building_data.iteritems():
+				collectors = 2 if isinstance(collector, Builder) else len(collector.get_local_collectors())
+				value += collectors / (5.0 + distance)
+			result += 1 / value
+		return result
+
+	def improve_collector_coverage(self):
+		"""
+		Builds a storage tent to improve collector coverage.
+		"""
+
+		(data, keys) = self._get_collector_data()
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		options = []
+
+		checked_resources = False
+		for (x, y), (purpose, _) in self.plan.iteritems():
+			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
+				continue
+			point = Point(x, y)
+			builder = Builder.create(BUILDINGS.STORAGE_CLASS, self.land_manager, point)
+			if not builder or not self.land_manager.legal_for_production(builder.position):
+				continue
+
+			if not checked_resources:
+				checked_resources = True
+				if not builder.have_resources():
+					return (True, False)
+
+			distance = {}
+			alignment = 1
+			queue = deque()
+			for tile in self._get_neighbour_tiles(builder.position):
+				if tile is None:
+					continue
+				point = Point(tile.x, tile.y)
+				coords = (tile.x, tile.y)
+				building = self.session.world.get_building(point)
+				if building and building.id == BUILDINGS.TRAIL_CLASS:
+					distance[coords] = 0
+					queue.append((coords, 0))
+				if coords not in self.plan or self.plan[coords][0] != self.purpose.none:
+					alignment += 1
+			if not distance:
+				continue
+
+			extra_data = {}
+			for key in data:
+				extra_data[key] = copy.copy(data[key])
+
+			while len(queue) > 0:
+				(coords, dist) = queue.popleft()
+				for dx, dy in moves:
+					coords2 = (coords[0] + dx, coords[1] + dy)
+					if coords2 not in distance:
+						point2 = Point(coords2[0], coords2[1])
+						building = self.session.world.get_building(point2)
+						if building and building.id == BUILDINGS.TRAIL_CLASS:
+							distance[coords2] = dist + 1
+							queue.append((coords2, dist + 1))
+						elif coords2 in keys and builder not in extra_data[keys[coords2]]:
+							distance[coords2] = dist + 1
+							extra_data[keys[coords2]][builder] = dist + 1
+
+			value = self.evaluate_collector_data(extra_data) - math.log(alignment) * 0.001
+			options.append((value, builder))
+
+		for _, builder in sorted(options):
+			building = builder.execute()
+			if not building:
+				return (None, False)
+			for coords in builder.position.tuple_iter():
+				self.plan[coords] = (self.purpose.reserved, None)
+			self.plan[sorted(builder.position.tuple_iter())[0]] = (self.purpose.storage, builder)
+			self.collector_buildings.append(building)
+			return (builder, True)
+		return (None, False)
 
 	def display(self):
 		road_colour = (30, 30, 30)
