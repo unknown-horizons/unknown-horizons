@@ -54,6 +54,9 @@ class Annulus(object):
 		else:
 			return False
 
+	def center(self):
+		return self.center
+
 	def __str__(self):
 		return "Annulus(center=%s,min_radius=%s,max_radius=%s)" % (self.center, self.min_radius, self.max_radius)
 

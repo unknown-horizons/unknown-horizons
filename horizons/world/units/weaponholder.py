@@ -20,9 +20,11 @@
 # ###################################################
 
 import weakref
-from horizons.util import Annulus, Callback, Circle, Rect
+from horizons.util import Annulus, Callback
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
+
+import gc
 
 class WeaponHolder(object):
 	def __init__(self, **kwargs):
@@ -59,19 +61,17 @@ class WeaponHolder(object):
 			print 'TARGET IS NONE'
 			return
 
-		#TODO optimise that
-		dest = target.position
-		if isinstance(dest, Rect):
-			dest = dest.center()
-		elif isinstance(dest, Circle):
-			dest = dest.center
+		#print self,'target, which is',target,'has the following refs'
+		#for ref in gc.get_referrers(target):
+		#	print 'Refference to target in:', ref
+		dest = target.position.center()
 
 		self.fire_all_weapons(dest)
 		#try another attack in 2 ticks
 		Scheduler().add_new_object(self.try_attack_target, self, 2)
 
 	def attack(self, target):
-		if self._target is target:
+		if self._target is not None and self._target() is target:
 			return
 		self.stop_attack()
 		self._target = weakref.ref(target)

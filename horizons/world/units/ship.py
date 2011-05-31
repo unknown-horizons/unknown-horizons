@@ -198,10 +198,12 @@ class Ship(NamedObject, StorageHolder, Unit, WeaponHolder):
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
+		#TODO make it work!!!
 		if self in self.session.selected_instances:
 			self.deselect()
 			self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
+		Scheduler().rem_all_classinst_calls(self)
 		self.session.world.ships.remove(self)
 		del self.session.world.ship_map[self.position.to_tuple()]
 
