@@ -315,7 +315,7 @@ class ProductionBuilder(object):
 	def evaluate_collector_data(self, data):
 		"""
 		Calculates the value of the collector arrangement
-		@param data: {(x, y) -> {building -> distance}}
+		@param data: {building -> {building/builder -> distance}}
 		@return: the value of the arrangement (smaller is better)
 		"""
 		result = 0
