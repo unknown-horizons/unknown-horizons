@@ -128,7 +128,7 @@
 		hover_image="content/gui/images/buttons/parrow_right_h.png"
 		down_image="content/gui/images/buttons/parrow_right_d.png"
 		tooltip="Read next entries" /> -->
-	<OkButton position="800,0" />
+	<OkButton position="800,0"  tooltip="Exit to main menu" />
 </Container>
 
 <Container position="810,0"  size="170,500">

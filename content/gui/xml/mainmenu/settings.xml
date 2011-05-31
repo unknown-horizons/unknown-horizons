@@ -144,7 +144,7 @@
 	</VBox>
 <Spacer />
 	<HBox >
-		<CancelButton tooltip="Exit to main menu" />i
+		<CancelButton tooltip="Exit to main menu" />
 	<Spacer min_size="220" />
 		<OkButton tooltip="Apply" />
 	</HBox>
