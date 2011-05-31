@@ -25,10 +25,9 @@ import horizons.main
 
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
-from horizons.constants import RES, UNITS, BUILDINGS
+from horizons.constants import RES, UNITS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
-from horizons.world.storageholder import StorageHolder
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import PirateShip, TradeShip, FisherShip
 from horizons.world.units.movingobject import MoveNotPossible
@@ -44,7 +43,6 @@ class Pirate(GenericAI):
 
 	caught_ship_radius = 5
 	home_radius = 2
-	sight_radius = 15
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Pirate, self).__init__(session, id, name, color, **kwargs)
@@ -67,7 +65,7 @@ class Pirate(GenericAI):
 		lowest_distance = None
 		nearest_ship = None
 		for ship in base_ship.find_nearby_ships():
-			if isinstance(ship, (PirateShip, TradeShip)):
+			if isinstance(ship, (PirateShip, TradeShip)) or not ship.is_selectable:
 				continue # don't attack these ships
 			distance = base_ship.position.distance_to_point(ship.position)
 			if lowest_distance is None or distance < lowest_distance:

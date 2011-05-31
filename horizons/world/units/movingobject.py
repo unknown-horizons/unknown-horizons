@@ -157,24 +157,32 @@ class MovingObject(ConcretObject):
 		self.move_callbacks.execute()
 
 	@decorators.make_constants()
-	def _move_tick(self):
+	def _move_tick(self, resume = False):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		assert self._next_target is not None
-		#self.log.debug("%s move tick from %s to %s", self, self.last_position, self._next_target)
-		self.last_position = self.position
-		self.position = self._next_target
-		location = fife.Location(self._instance.getLocationRef().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
-		# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
-		self._instance.setLocation(location)
-		self._changed()
+
+		if resume:
+			self.__is_moving = True
+		else:
+			#self.log.debug("%s move tick from %s to %s", self, self.last_position, self._next_target)
+			self.last_position = self.position
+			self.position = self._next_target
+			location = fife.Location(self._instance.getLocationRef().getLayer())
+			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
+			# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
+			self._instance.setLocation(location)
+			self._changed()
 
 		# try to get next step, handle a blocked path
 		while self._next_target == self.position:
 			try:
 				self._next_target = self.path.get_next_step()
 			except PathBlockedError:
+				# if we are trying to resume and it isn't possible then we need to raise it again
+				if resume:
+					raise
+
 				self.log.debug("path is blocked")
 				self.log.debug("owner: %s", self.owner)
 				self.__is_moving = False
@@ -228,6 +236,10 @@ class MovingObject(ConcretObject):
 		This has no effect if the unit isn't moving."""
 		if self.is_moving():
 			self.move_callbacks.append(callback)
+
+	def add_blocked_callback(self, blocked_callback):
+		"""Registers callback to be executed when movement of the unit gets blocked."""
+		self.blocked_callbacks.append(blocked_callback)
 
 	def add_conditional_callback(self, condition, callback):
 		"""Adds a callback, that gets called, if, at any time of the movement, the condition becomes
