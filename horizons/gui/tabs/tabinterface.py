@@ -21,6 +21,9 @@
 
 from horizons.i18n import load_xml_translated
 from horizons.util import PychanChildFinder
+from horizons.util.changelistener import metaChangeListenerDecorator
+
+@metaChangeListenerDecorator('remove')
 class TabInterface(object):
 	"""
 	The TabInterface should be used by all classes that represent Tabs for the
