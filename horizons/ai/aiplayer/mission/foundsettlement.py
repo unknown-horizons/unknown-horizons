@@ -32,11 +32,11 @@ class FoundSettlement(Mission):
 	the location and a branch office is built.
 	"""
 
-	def __init__(self, success_callback, failure_callback, session, ship, bo_location, **kwargs):
-		super(FoundSettlement, self).__init__(success_callback, failure_callback, session, **kwargs)
+	def __init__(self, success_callback, failure_callback, land_manager, ship, bo_location, **kwargs):
+		super(FoundSettlement, self).__init__(success_callback, failure_callback, land_manager.island.session, **kwargs)
+		self.land_manager = land_manager
 		self.ship = ship
 		self.bo_location = bo_location
-		self.settlement = None
 		self.branch_office = None
 
 	def start(self):
@@ -59,10 +59,10 @@ class FoundSettlement(Mission):
 
 		self.branch_office = self.bo_location.execute()
 		island = self.bo_location.land_manager.island
-		self.settlement = island.get_settlement(self.bo_location.point)
+		self.land_manager.settlement = island.get_settlement(self.bo_location.point)
 		self.log.info('Built the branch office')
 
-		self.ship.owner.complete_inventory.unload_all(self.ship, self.ship.owner.settlements[0])
+		self.ship.owner.complete_inventory.unload_all(self.ship, self.land_manager.settlement)
 		self.report_success('Built the branch office, transferred resources')
 
 	@classmethod
@@ -112,6 +112,6 @@ class FoundSettlement(Mission):
 	@classmethod
 	def create(cls, ship, land_manager, success_callback, failure_callback):
 		bo_location = cls.find_bo_location(ship, land_manager)
-		return FoundSettlement(success_callback, failure_callback, land_manager.island.session, ship, bo_location)
+		return FoundSettlement(success_callback, failure_callback, land_manager, ship, bo_location)
 
 decorators.bind_all(FoundSettlement)

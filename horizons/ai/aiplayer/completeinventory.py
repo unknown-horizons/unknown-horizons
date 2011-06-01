@@ -48,4 +48,14 @@ class CompleteInventory(object):
 		for res, amount in items:
 			self.move(ship, settlement, res, amount)
 
+	def load_foundation_resources(self, ship, settlement):
+		max_amounts = {RES.BOARDS_ID: 50, RES.FOOD_ID: 40, RES.TOOLS_ID: 30}
+		for res, max_amount in max_amounts.iteritems():
+			have = 0
+			for ship_res, ship_amount in ship.inventory:
+				if ship_res == res:
+					have = ship_amount
+					break
+			self.move(ship, settlement, res, have - max_amount)
+
 decorators.bind_all(CompleteInventory)

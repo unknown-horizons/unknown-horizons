@@ -23,48 +23,47 @@ import logging
 
 from collections import deque
 
-import horizons.main
-
 from mission.foundsettlement import FoundSettlement
+from mission.preparefoundationship import PrepareFoundationShip
 from landmanager import LandManager
 from completeinventory import CompleteInventory
-from villagebuilder import VillageBuilder
-from productionbuilder import ProductionBuilder
+from settlementmanager import SettlementManager
 
 from horizons.scheduler import Scheduler
-from horizons.util import Point, Callback, WorldObject, Circle
-from horizons.constants import RES, UNITS, BUILDINGS
+from horizons.util import Callback
+from horizons.constants import RES, BUILDINGS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
-from horizons.world.storageholder import StorageHolder
-from horizons.command.unit import CreateUnit
-from horizons.world.units.ship import Ship
-from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util.python import decorators
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
 
-	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission')
+	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission', 'waiting')
 
 	log = logging.getLogger("ai.aiplayer")
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
+		self.islands = {}
+		self.settlement_managers = []
 		Scheduler().add_new_object(Callback(self.__init), self)
-		Scheduler().add_new_object(Callback(self.start), self, run_in = 2)
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
 
-	def choose_island(self):
+	def choose_island(self, min_land):
 		best_island = None
 		best_value = None
 
 		for island in self.session.world.islands:
+			if island in self.islands:
+				continue
+
 			flat_land = 0
 			for tile in island.ground_map.itervalues():
 				if 'constructible' in tile.classes:
 					if tile.object is None or tile.object.id == BUILDINGS.TREE_CLASS:
 						flat_land += 1
-			if best_value is None or best_value < flat_land:
+			if flat_land >= min_land and (best_value is None or best_value < flat_land):
 				best_island = island
 				best_value = flat_land
 		return best_island
@@ -72,86 +71,26 @@ class AIPlayer(GenericAI):
 	def __init(self):
 		for ship in self.session.world.ships:
 			if ship.owner == self:
-				self.ships[ship] = self.shipStates.on_a_mission
+				self.ships[ship] = self.shipStates.waiting
 
 		self.missions = {}
-		self.island = self.choose_island()
-
-		self.land_manager = LandManager(self.island, self)
-		self.land_manager.divide()
-		self.land_manager.display()
-
 		self.fishers = []
-
 		self.complete_inventory = CompleteInventory(self)
-		self.build_queue = deque()
-		self.tents = 0
-
-	def tick(self):
-		call_again = False
-		if len(self.build_queue) > 0:
-			self.log.info('ai.tick: build a queue item')
-			task = self.build_queue.popleft()
-			task()
-			call_again = True
-		elif self.village_builder.tents_to_build > self.tents:
-			if self.tents + 1 > 3 * len(self.fishers):
-				if self.production_builder.enough_collectors():
-					(details, success) = self.production_builder.build_fisher()
-					if success:
-						self.log.info('ai.tick: built a fisher')
-						call_again = True
-					elif details is not None:
-						self.log.info('ai.tick: not enough materials to build a fisher')
-						call_again = True
-					else:
-						self.log.info('ai.tick: failed to build a fisher')
-				else:
-					(details, success) = self.production_builder.improve_collector_coverage()
-					if success:
-						self.log.info('ai.tick: built a storage')
-						call_again = True
-					elif details is not None:
-						self.log.info('ai.tick: not enough materials to build a storage')
-						call_again = True
-					else:
-						self.log.info('ai.tick: failed to build a storage')
-			else:
-				(tent, success) = self.village_builder.build_tent()
-				if success:
-					self.log.info('ai.tick: built a tent')
-					self.tents += 1
-					call_again = True
-				elif tent is not None:
-					self.log.info('ai.tick: not enough materials to build a tent')
-					call_again = True
-				else:
-					self.log.info('ai.tick: failed to build a tent')
-
-		if call_again:
-			Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
-		else:
-			self.log.info('ai.tick: everything is done')
 
 	def report_success(self, mission, msg):
 		print mission, msg
+		if mission.ship:
+			self.ships[mission.ship] = self.shipStates.waiting
 		if isinstance(mission, FoundSettlement):
-			self.land_manager.settlement = mission.settlement
-			self.village_builder = VillageBuilder(self.land_manager)
-			self.village_builder.create_plan()
-			self.production_builder = ProductionBuilder(self.land_manager, mission.branch_office)
-			
-			self.village_builder.display()
-			self.production_builder.display()
-
-			self.build_queue.append(self.village_builder.build_roads)
-			self.build_queue.append(self.production_builder.build_lumberjack)
-			self.build_queue.append(self.production_builder.build_lumberjack)
-			self.build_queue.append(self.village_builder.build_main_square)
-			Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
+			settlement_manager = SettlementManager(self, mission.land_manager, mission.branch_office)
+			self.settlement_managers.append(settlement_manager)
 
 	def report_failure(self, mission, msg):
 		print mission, msg
+		if mission.ship:
+			self.ships[mission.ship] = self.shipStates.waiting
+		if isinstance(mission, FoundSettlement):
+			del self.islands[mission.land_manager.island]
 
 	def save(self, db):
 		super(AIPlayer, self).save(db)
@@ -162,10 +101,66 @@ class AIPlayer(GenericAI):
 		# TODO: load from the db
 		Scheduler().add_new_object(Callback(self.__init), self)
 
-	def start(self):
-		found_settlement = FoundSettlement.create(self.ships.keys()[0], self.land_manager, self.report_success, self.report_failure)
+	def found_settlement(self, island, ship):
+		self.ships[ship] = self.shipStates.on_a_mission
+		land_manager = LandManager(island, self)
+		land_manager.divide()
+		land_manager.display()
+		self.islands[island] = land_manager
+
+		found_settlement = FoundSettlement.create(ship, land_manager, self.report_success, self.report_failure)
 		self.missions[FoundSettlement.__class__] = found_settlement
 		found_settlement.start()
+
+	def have_starting_resources(self, ship, settlement):
+		if self.complete_inventory.money < 3500:
+			return False
+
+		need = {RES.BOARDS_ID: 17, RES.FOOD_ID: 10, RES.TOOLS_ID: 5}
+		for res, amount in ship.inventory:
+			if res in need and need[res] > 0:
+				need[res] = max(0, need[res] - amount)
+
+		if settlement:
+			for res, amount in settlement.inventory:
+				if res in need and need[res] > 0:
+					need[res] = max(0, need[res] - amount)
+
+		for missing in need.itervalues():
+			if missing > 0:
+				return False
+		return True
+
+	def prepare_foundation_ship(self, settlement_manager, ship):
+		self.ships[ship] = self.shipStates.on_a_mission
+		mission = PrepareFoundationShip(settlement_manager, ship, self.report_success, self.report_failure)
+		self.missions[PrepareFoundationShip.__class__] = mission
+		mission.start()
+
+	def tick(self):
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
+
+		ship = self.ships.keys()[0]
+		if self.ships[ship] != self.shipStates.waiting:
+			#self.log.info('ai.tick: no available ships')
+			return
+
+		island = self.choose_island(500 if self.settlement_managers else 150)
+		if island is None:
+			#self.log.info('ai.tick: no good enough islands')
+			return
+
+		if self.have_starting_resources(ship, None):
+			self.log.info('ai.tick: send ship %s on a mission to found a settlement', ship)
+			self.found_settlement(island, ship)
+		else:
+			for settlement_manager in self.settlement_managers:
+				if not settlement_manager.can_provide_resources():
+					continue
+				if self.have_starting_resources(ship, settlement_manager.land_manager.settlement):
+					self.log.info('ai.tick: send ship %s on a mission to get resources for a new settlement', ship)
+					self.prepare_foundation_ship(settlement_manager, ship)
+					return
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)

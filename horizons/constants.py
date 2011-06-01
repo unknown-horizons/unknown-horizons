@@ -109,7 +109,10 @@ class BUILDINGS:
 
 class RES:
 	# ./development/print_db_data.py res
-	GOLD_ID   = 1
+	GOLD_ID = 1
+	BOARDS_ID = 4
+	FOOD_ID = 5
+	TOOLS_ID = 6
 	WILDANIMALFOOD_ID = 12
 	HAPPINESS_ID = 14
 	FISH_ID = 28
