@@ -43,7 +43,10 @@ class TabInterface(object):
 	ensure proper initialization of needed properties.
 	"""
 
-	def __init__(self, widget = None, **kwargs):
+	def __init__(self, widget=None, **kwargs):
+		"""
+		@param widget: filename of a widget. Set this to None if you create your own widget at self.widget
+		"""
 		super(TabInterface, self).__init__()
 		if widget is not None:
 			self.widget = load_xml_translated(widget)
