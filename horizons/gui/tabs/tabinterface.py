@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.i18n import load_xml_translated
+from horizons.gui.utility import stylize_widget
 from horizons.util import PychanChildFinder
 class TabInterface(object):
 	"""
@@ -58,13 +59,7 @@ class TabInterface(object):
 		"""Call this method after the widget has been initialised."""
 		self.x_pos = self.widget.position[0]
 		self.y_pos = self.widget.position[1]
-		self.widget.stylize('menu_black')
-		#TODO use gui.utility.LazyWidgetsDict._load_widget() here which styles
-		# headlines if their name starts with headline* or name*.
-		for w in self.widget.findChildren():
-			if w.name.startswith("headline") or \
-			   w.name is "name":
-				w.stylize('headline')
+		stylize_widget(self.widget, style='menu_black')
 
 	def show(self):
 		"""Shows the current widget"""
