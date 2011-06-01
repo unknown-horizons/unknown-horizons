@@ -39,7 +39,7 @@ from horizons.util.python import decorators
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
 
-	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission', 'waiting')
+	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission')
 
 	log = logging.getLogger("ai.aiplayer")
 
@@ -71,7 +71,7 @@ class AIPlayer(GenericAI):
 	def __init(self):
 		for ship in self.session.world.ships:
 			if ship.owner == self:
-				self.ships[ship] = self.shipStates.waiting
+				self.ships[ship] = self.shipStates.idle
 
 		self.missions = {}
 		self.fishers = []
@@ -80,7 +80,7 @@ class AIPlayer(GenericAI):
 	def report_success(self, mission, msg):
 		print mission, msg
 		if mission.ship:
-			self.ships[mission.ship] = self.shipStates.waiting
+			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
 			settlement_manager = SettlementManager(self, mission.land_manager, mission.branch_office)
 			self.settlement_managers.append(settlement_manager)
@@ -88,7 +88,7 @@ class AIPlayer(GenericAI):
 	def report_failure(self, mission, msg):
 		print mission, msg
 		if mission.ship:
-			self.ships[mission.ship] = self.shipStates.waiting
+			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
 			del self.islands[mission.land_manager.island]
 
@@ -141,7 +141,7 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
 
 		ship = self.ships.keys()[0]
-		if self.ships[ship] != self.shipStates.waiting:
+		if self.ships[ship] != self.shipStates.idle:
 			#self.log.info('ai.tick: no available ships')
 			return
 
