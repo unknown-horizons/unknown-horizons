@@ -77,7 +77,7 @@ class ProductionBuilder(object):
 				if road:
 					yield (tile.x, tile.y)
 			else:
-				if building.id == BUILDINGS.TREE_CLASS or building.id == BUILDINGS.TRAIL_CLASS:
+				if building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS:
 					yield (tile.x, tile.y)
 
 	def _fill_distance(self, distance, nodes):
