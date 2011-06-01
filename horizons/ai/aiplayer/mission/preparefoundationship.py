@@ -21,7 +21,7 @@
 
 from horizons.ai.aiplayer.mission import Mission
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, Circle, Callback
+from horizons.util import Point, Circle, Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
 from horizons.ext.enum import Enum
@@ -46,6 +46,25 @@ class PrepareFoundationShip(Mission):
 		super(PrepareFoundationShip, self).save(db)
 		db("INSERT INTO ai_mission_prepare_foundation_ship(rowid, settlement_manager, ship, state) VALUES(?, ?, ?, ?)", \
 			self.worldid, self.settlement_manager.worldid, self.ship.worldid, self.state.index)
+
+	@classmethod
+	def load(cls, db, worldid, success_callback, failure_callback):
+		self = cls.__new__(cls)
+		self._load(db, worldid, success_callback, failure_callback)
+		return self
+
+	def _load(self, db, worldid, success_callback, failure_callback):
+		db_result = db("SELECT settlement_manager, ship, state FROM ai_mission_prepare_foundation_ship WHERE rowid = ?", worldid)[0]
+		self.settlement_manager = WorldObject.get_object_by_id(db_result[0])
+		self.ship = WorldObject.get_object_by_id(db_result[1])
+		self.branch_office = self.settlement_manager.branch_office
+		self.state = self.missionStates[db_result[2]]
+		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback, \
+			self.settlement_manager.land_manager.island.session)
+
+		if self.state == self.missionStates.moving:
+			self.ship.add_move_callback(Callback(self._reached_bo_area))
+			self.ship.add_blocked_callback(Callback(self._move_to_bo_area))
 
 	def start(self):
 		self.state = self.missionStates.moving

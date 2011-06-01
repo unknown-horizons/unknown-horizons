@@ -32,6 +32,9 @@ class Mission(WorldObject):
 
 	def __init__(self, success_callback, failure_callback, session):
 		super(Mission, self).__init__()
+		self.__init(success_callback, failure_callback, session)
+
+	def __init(self, success_callback, failure_callback, session):
 		self.success_callback = success_callback
 		self.failure_callback = failure_callback
 		self.session = session
@@ -46,5 +49,9 @@ class Mission(WorldObject):
 
 	def save(self, db):
 		pass
+
+	def load(self, db, worldid, success_callback, failure_callback, session):
+		super(Mission, self).load(db, worldid)
+		self.__init(success_callback, failure_callback, session)
 
 decorators.bind_all(Mission)

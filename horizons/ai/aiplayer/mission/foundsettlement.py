@@ -23,7 +23,7 @@ from horizons.ai.aiplayer.mission import Mission
 from horizons.ai.aiplayer.builder import Builder
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GROUND, BUILDINGS
-from horizons.util import Point, Circle, Callback
+from horizons.util import Point, Circle, Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.ext.enum import Enum
 
@@ -49,6 +49,25 @@ class FoundSettlement(Mission):
 			self.worldid, self.land_manager.worldid, self.ship.worldid, self.bo_location.worldid, self.state.index)
 		assert isinstance(self.bo_location, Builder)
 		self.bo_location.save(db)
+
+	@classmethod
+	def load(cls, db, worldid, success_callback, failure_callback):
+		self = cls.__new__(cls)
+		self._load(db, worldid, success_callback, failure_callback)
+		return self
+
+	def _load(self, db, worldid, success_callback, failure_callback):
+		db_result = db("SELECT land_manager, ship, bo_builder, state FROM ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
+		self.land_manager = WorldObject.get_object_by_id(db_result[0])
+		self.ship = WorldObject.get_object_by_id(db_result[1])
+		self.bo_location = Builder.load(db, db_result[2], self.land_manager)
+		self.branch_office = None
+		self.state = self.missionStates[db_result[3]]
+		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, self.land_manager.island.session)
+
+		if self.state == self.missionStates.moving:
+			self.ship.add_move_callback(Callback(self._reached_bo_area))
+			self.ship.add_blocked_callback(Callback(self._move_to_bo_area))
 
 	def start(self):
 		self.state = self.missionStates.moving

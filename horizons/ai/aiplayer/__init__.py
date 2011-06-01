@@ -75,7 +75,7 @@ class AIPlayer(GenericAI):
 	def __init(self):
 		self.islands = {}
 		self.settlement_managers = []
-		self.missions = []
+		self.missions = set()
 		self.fishers = []
 		self.complete_inventory = CompleteInventory(self)
 
@@ -140,14 +140,21 @@ class AIPlayer(GenericAI):
 			island = WorldObject.get_object_by_id(island_id)
 			self.islands[island] = LandManager.load(db, self, island, worldid)
 
-		# load the settlement managers
+		# load the settlement managers and settlement foundation missions
 		for land_manager in self.islands.itervalues():
-			settlement_manager_id = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?", land_manager.worldid)[0][0]
-			self.settlement_managers.append(SettlementManager.load(db, settlement_manager_id))
+			db_result = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?", land_manager.worldid)
+			if db_result:
+				settlement_manager = SettlementManager.load(db, db_result[0][0])
+				self.settlement_managers.append(settlement_manager)
 
-		# TODO: load the missions
-		for mission in self.missions:
-			raise NotImplementedError
+				# load the foundation ship preparing missions
+				db_result = db("SELECT rowid FROM ai_mission_prepare_foundation_ship WHERE settlement_manager = ?", \
+					settlement_manager.worldid)
+				for (mission_id,) in db_result:
+					self.missions.add(PrepareFoundationShip.load(db, mission_id, self.report_success, self.report_failure))
+			else:
+				mission_id = db("SELECT rowid FROM ai_mission_found_settlement WHERE land_manager = ?", land_manager.worldid)[0][0]
+				self.missions.add(FoundSettlement.load(db, mission_id, self.report_success, self.report_failure))
 
 	def found_settlement(self, island, ship):
 		self.ships[ship] = self.shipStates.on_a_mission
@@ -156,7 +163,7 @@ class AIPlayer(GenericAI):
 		self.islands[island] = land_manager
 
 		found_settlement = FoundSettlement.create(ship, land_manager, self.report_success, self.report_failure)
-		self.missions.append(found_settlement)
+		self.missions.add(found_settlement)
 		found_settlement.start()
 
 	def have_starting_resources(self, ship, settlement):
@@ -181,7 +188,7 @@ class AIPlayer(GenericAI):
 	def prepare_foundation_ship(self, settlement_manager, ship):
 		self.ships[ship] = self.shipStates.on_a_mission
 		mission = PrepareFoundationShip(settlement_manager, ship, self.report_success, self.report_failure)
-		self.missions.append(mission)
+		self.missions.add(mission)
 		mission.start()
 
 	def tick(self):

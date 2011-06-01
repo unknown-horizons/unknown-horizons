@@ -32,7 +32,7 @@ class Builder(WorldObject):
 
 	rotations = [45, 135, 225, 315]
 
-	def __init__(self, building_id, land_manager, point, orientation=0, ship=None):
+	def __init__(self, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
 		"""
 		Check if a building is buildable here.
 		All tiles, that the building occupies are checked.
@@ -43,7 +43,7 @@ class Builder(WorldObject):
 		@param ship: ship instance if building from ship
 		@return instance of BuilderCommand
 		"""
-		super(Builder, self).__init__()
+		super(Builder, self).__init__(worldid)
 		self.building_id = building_id
 		self.land_manager = land_manager
 		self.point = point
@@ -65,7 +65,7 @@ class Builder(WorldObject):
 	def load(cls, db, worldid, land_manager):
 		db_result = db("SELECT building_type, x, y, orientation, ship FROM ai_builder WHERE rowid = ?", worldid)[0]
 		ship = WorldObject.get_object_by_id(db_result[4]) if db_result[4] else None
-		return cls.create(db_result[0], land_manager, Point(db_result[1], db_result[2]), db_result[3], ship)
+		return cls.create(db_result[0], land_manager, Point(db_result[1], db_result[2]), db_result[3], ship, worldid=worldid)
 
 	def __nonzero__(self):
 		"""Returns buildable value. This enables code such as "if cls.check_build()"""
@@ -89,13 +89,13 @@ class Builder(WorldObject):
 	cache_tick_id = -1
 
 	@classmethod
-	def create(cls, building_id, land_manager, point, orientation=0, ship=None):
+	def create(cls, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
 		if land_manager.session.timer.tick_next_id != cls.cache_tick_id:
 			cls.cache_tick_id = land_manager.session.timer.tick_next_id
 			cls.cache = {}
 		key = (building_id, point.to_tuple(), orientation)
 		if key not in cls.cache:
-			cls.cache[key] = Builder(building_id, land_manager, point, orientation, ship)
+			cls.cache[key] = Builder(building_id, land_manager, point, orientation, ship, worldid=worldid)
 		return cls.cache[key]
 
 decorators.bind_all(Builder)
