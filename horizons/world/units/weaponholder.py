@@ -72,24 +72,40 @@ class WeaponHolder(object):
 		if self._target is not None:
 			if self._target is not target:
 			#if target is changed remove the listener
-				if target.has_remove_listener(self.stop_attack):
-					target.remove_remove_listener(self.stop_attack)
+				if self._target.has_remove_listener(self.remove_target):
+					self._target.remove_remove_listener(self.remove_target)
 			else:
 			#else do not update the target
 				return
-		if not target.has_remove_listener(self.stop_attack):
-			target.add_remove_listener(self.stop_attack)
+		if not target.has_remove_listener(self.remove_target):
+			target.add_remove_listener(self.remove_target)
 		self._target = target
 		self.try_attack_target()
 
-	def stop_attack(self):
+	def remove_target(self):
+		#NOTE test code if the unit is really dead
 		if self._target is not None:
-			print self,'stopped attack'
-			print self._target,'still has the refs'
-			for ref in gc.get_referrers(self._target):
-				print ref
-			print '################################'
+			target_ref = weakref.ref(self._target)
+			def check_target_ref(target_ref):
+				if target_ref() is None:
+					print "Z's dead baby, Z's dead"
+					return
+				import gc
+				print target_ref(), 'has refs:'
+				gc.collect()
+				for ref in gc.get_referrers(target_ref()):
+					print ref
+			Scheduler().add_new_object(Callback(check_target_ref,target_ref), self, 3)
 		self._target = None
+
+	def stop_attack(self):
+		#when the ship is told to move, the target is None and the listeners in target removed
+		#TODO make another listener for target_changed
+		if self._target is not None:
+			if self._target.has_remove_listener(self.remove_target):
+				self._target.remove_remove_listener(self.remove_target)
+		self.remove_target()
+
 
 	def fire_all_weapons(self, dest):
 		#fires all weapons at a given position

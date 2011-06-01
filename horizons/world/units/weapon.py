@@ -39,7 +39,7 @@ class Weapon(object):
 		#area affected by attack
 		self.attack_radius = 4
 		#weapon damage
-		self.damage = 10
+		self.damage = 30
 		#bullet speed in tiles per second
 		#used to deal damage when bullet has reached the target
 		self.attack_speed = 2
