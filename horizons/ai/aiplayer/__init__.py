@@ -46,8 +46,7 @@ class AIPlayer(GenericAI):
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
 		self.__init()
-		# TODO: the call to finish_init should be done during the first tick
-		Scheduler().add_new_object(Callback(self.finish_init), self)
+		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
 
 	def choose_island(self, min_land):
