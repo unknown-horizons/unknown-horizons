@@ -23,8 +23,9 @@ from horizons.entities import Entities
 from horizons.constants import BUILDINGS
 from horizons.command.building import Build
 from horizons.util.python import decorators
+from horizons.util import Point, WorldObject
 
-class Builder(object):
+class Builder(WorldObject):
 	"""
 	This is a convenience class to make it easier for the AI to build buildings.
 	"""
@@ -42,6 +43,7 @@ class Builder(object):
 		@param ship: ship instance if building from ship
 		@return instance of BuilderCommand
 		"""
+		super(Builder, self).__init__()
 		self.building_id = building_id
 		self.land_manager = land_manager
 		self.point = point
@@ -52,6 +54,18 @@ class Builder(object):
 		self.build_position = Entities.buildings[building_id].check_build(self.land_manager.session, \
 			point, rotation = self.rotations[orientation], check_settlement = check_settlement, ship = None)
 		self.position = self.build_position.position
+
+	def save(self, db):
+		super(Builder, self).save(db)
+		db("INSERT INTO ai_builder(rowid, building_type, x, y, orientation, ship) VALUES(?, ?, ?, ?, ?, ?)", \
+			self.worldid, self.building_id, self.point.x, self.point.y, self.orientation, \
+			None if self.ship is None else self.ship.worldid)
+
+	@classmethod
+	def load(cls, db, worldid, land_manager):
+		db_result = db("SELECT building_type, x, y, orientation, ship FROM ai_builder WHERE rowid = ?", worldid)[0]
+		ship = WorldObject.get_object_by_id(db_result[4]) if db_result[4] else None
+		return cls.create(db_result[0], land_manager, Point(db_result[1], db_result[2]), db_result[3], ship)
 
 	def __nonzero__(self):
 		"""Returns buildable value. This enables code such as "if cls.check_build()"""

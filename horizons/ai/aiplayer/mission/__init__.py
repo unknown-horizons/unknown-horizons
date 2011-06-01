@@ -21,8 +21,9 @@
 
 import logging
 from horizons.util.python import decorators
+from horizons.util import WorldObject
 
-class Mission(object):
+class Mission(WorldObject):
 	"""
 	This class describes a general mission that an AI seeks to fulfil.
 	"""
@@ -42,5 +43,8 @@ class Mission(object):
 	def report_failure(self, msg):
 		self.log.debug('Mission failure: ' + msg)
 		self.failure_callback(self, msg)
+
+	def save(self, db):
+		pass
 
 decorators.bind_all(Mission)

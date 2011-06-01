@@ -27,37 +27,107 @@ from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback
+from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 
-class SettlementManager(object):
+class SettlementManager(WorldObject):
 	"""
 	An object of this class control one settlement of an AI player.
 	"""
 
 	log = logging.getLogger("ai.aiplayer")
 
-	def __init__(self, owner, land_manager, branch_office):
-		self.owner = owner
-		self.land_manager = land_manager
-		self.branch_office = branch_office
+	class buildCallType:
+		village_roads = 1
+		village_main_square = 2
+		production_lumberjack = 3
 
-		self.village_builder = VillageBuilder(self.land_manager)
+	def __init__(self, land_manager, branch_office):
+		super(SettlementManager, self).__init__()
+		self.__init(land_manager, branch_office)
+
+		self.village_builder = VillageBuilder(self)
 		self.village_builder.create_plan()
-		self.production_builder = ProductionBuilder(self.land_manager, branch_office)
+		self.production_builder = ProductionBuilder(self)
 		self.village_builder.display()
 		self.production_builder.display()
 
-		self.build_queue = deque()
 		self.tents = 0
 		self.num_fishers = 0
 		self.ticker_finished = False
 
-		self.build_queue.append(self.village_builder.build_roads)
-		self.build_queue.append(self.production_builder.build_lumberjack)
-		self.build_queue.append(self.production_builder.build_lumberjack)
-		self.build_queue.append(self.village_builder.build_main_square)
+		self.build_queue.append(self.buildCallType.village_roads)
+		self.build_queue.append(self.buildCallType.production_lumberjack)
+		self.build_queue.append(self.buildCallType.production_lumberjack)
+		self.build_queue.append(self.buildCallType.village_main_square)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
+
+	def __init(self, land_manager, branch_office):
+		self.owner = land_manager.owner
+		self.land_manager = land_manager
+		self.branch_office = branch_office
+
+		self.build_queue = deque()
+
+	def save(self, db):
+		super(SettlementManager, self).save(db)
+		current_callback = Callback(self.tick)
+		calls = Scheduler().get_classinst_calls(self, current_callback)
+		assert len(calls) <= 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
+		remaining_ticks = None if len(calls) == 0 else max(calls.values()[0], 1)
+		db("INSERT INTO ai_settlement_manager(rowid, land_manager, branch_office, remaining_ticks) VALUES(?, ?, ?, ?)", \
+			self.worldid, self.land_manager.worldid, self.branch_office.worldid, remaining_ticks)
+
+		for task_type in self.build_queue:
+			db("INSERT INTO ai_settlement_manager_build_queue(settlement_manager, task_type) VALUES(?, ?)", \
+				self.worldid, task_type)
+
+		self.village_builder.save(db)
+		self.production_builder.save(db)
+
+	@classmethod
+	def load(cls, db, worldid):
+		self = cls.__new__(cls)
+		self._load(db, worldid)
+		return self
+
+	def _load(self, db, worldid):
+		super(SettlementManager, self).load(db, worldid)
+
+		# load the main part
+		db_result = db("SELECT land_manager, branch_office, remaining_ticks FROM ai_settlement_manager WHERE rowid = ?", worldid)
+		(land_manager_id, branch_office_id, remaining_ticks) = db_result[0]
+		land_manager = WorldObject.get_object_by_id(land_manager_id)
+		branch_office = WorldObject.get_object_by_id(branch_office_id)
+		self.__init(land_manager, branch_office)
+
+		# find the settlement
+		for settlement in self.owner.session.world.settlements:
+			if settlement.owner == self.owner and settlement.island == self.land_manager.island:
+				land_manager.settlement = settlement
+				break
+		assert land_manager.settlement
+
+		if remaining_ticks:
+			Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
+			self.ticker_finished = False
+		else:
+			self.ticker_finished = True
+
+		# load the build queue
+		for (task_type,) in db("SELECT task_type FROM ai_settlement_manager_build_queue WHERE settlement_manager = ?", worldid):
+			self.build_queue.append(task_type)
+
+		# load the master builders
+		self.village_builder = VillageBuilder.load(db, self)
+		self.production_builder = ProductionBuilder.load(db, self)
+
+		self.village_builder.display()
+		self.production_builder.display()
+
+		# TODO: correctly init the following
+		self.tents = self.village_builder.count_tents()
+		self.num_fishers = self.production_builder.count_fishers()
 
 	def can_provide_resources(self):
 		return self.ticker_finished
@@ -69,8 +139,15 @@ class SettlementManager(object):
 		call_again = False
 		if len(self.build_queue) > 0:
 			self.log.info('ai.settlement.tick: build a queue item')
-			task = self.build_queue.popleft()
-			task()
+			task_type = self.build_queue.popleft()
+			if task_type == self.buildCallType.village_roads:
+				self.village_builder.build_roads()
+			elif task_type == self.buildCallType.village_main_square:
+				self.village_builder.build_main_square()
+			elif task_type == self.buildCallType.production_lumberjack:
+				self.production_builder.build_lumberjack()
+			else:
+				assert False # this should never happen
 			call_again = True
 		elif self.village_builder.tents_to_build > self.tents:
 			if not self.enough_fishers():

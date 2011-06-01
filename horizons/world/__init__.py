@@ -231,10 +231,17 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# let trader command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and trader has to exist before ships are loaded.
 			self.trader.load_ship_states(savegame_db)
+
 			# let pirate command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and pirate has to exist before ships are loaded.
 			if self.pirate:
 				self.pirate.load_ship_states(savegame_db)
+
+			# load the AI players
+			# this has to be done here because otherwise the ships and other objects won't exist
+			for player in self.players:
+				if not isinstance(player, HumanPlayer):
+					player.finish_loading(savegame_db)
 
 		self.inited = True
 		"""TUTORIAL:

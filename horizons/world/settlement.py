@@ -75,6 +75,11 @@ class Settlement(TradePost, NamedObject):
 		return self.cumulative_taxes + self.sell_income \
 					 - self.cumulative_running_costs - self.buy_expenses
 
+	@property
+	def island(self):
+		"""Returns the island this settlement is on"""
+		return self.session.world.get_island(self.branch_office.position.origin)
+
 	def level_upgrade(self, lvl):
 		"""Upgrades settlement to a new increment.
 		It only delegates the upgrade to its buildings."""

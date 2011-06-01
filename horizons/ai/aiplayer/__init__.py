@@ -30,7 +30,7 @@ from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback
+from horizons.util import Callback, WorldObject
 from horizons.constants import RES, BUILDINGS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
@@ -45,9 +45,9 @@ class AIPlayer(GenericAI):
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
-		self.islands = {}
-		self.settlement_managers = []
-		Scheduler().add_new_object(Callback(self.__init), self)
+		self.__init()
+		# TODO: the call to finish_init should be done during the first tick
+		Scheduler().add_new_object(Callback(self.finish_init), self)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
 
 	def choose_island(self, min_land):
@@ -68,11 +68,14 @@ class AIPlayer(GenericAI):
 				best_value = flat_land
 		return best_island
 
-	def __init(self):
+	def finish_init(self):
 		for ship in self.session.world.ships:
 			if ship.owner == self:
 				self.ships[ship] = self.shipStates.idle
 
+	def __init(self):
+		self.islands = {}
+		self.settlement_managers = []
 		self.missions = []
 		self.fishers = []
 		self.complete_inventory = CompleteInventory(self)
@@ -82,7 +85,7 @@ class AIPlayer(GenericAI):
 		if mission.ship:
 			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
-			settlement_manager = SettlementManager(self, mission.land_manager, mission.branch_office)
+			settlement_manager = SettlementManager(mission.land_manager, mission.branch_office)
 			self.settlement_managers.append(settlement_manager)
 
 	def report_failure(self, mission, msg):
@@ -94,17 +97,62 @@ class AIPlayer(GenericAI):
 
 	def save(self, db):
 		super(AIPlayer, self).save(db)
-		# TODO: save to the db
+
+		# save the player
+		current_callback = Callback(self.tick)
+		calls = Scheduler().get_classinst_calls(self, current_callback)
+		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
+		remaining_ticks = max(calls.values()[0], 1)
+		db("INSERT INTO ai_player(rowid, remaining_ticks) VALUES(?, ?)", self.worldid, remaining_ticks)
+
+		# save the ships
+		for ship, state in self.ships.iteritems():
+			db("INSERT INTO ai_ship(rowid, owner, state) VALUES(?, ?, ?)", ship.worldid, self.worldid, state.index)
+
+		# save the land managers
+		for island, land_manager in self.islands.iteritems():
+			land_manager.save(db)
+
+		# save the settlement managers
+		for settlement_manager in self.settlement_managers:
+			settlement_manager.save(db)
+
+		# save the missions
+		for mission in self.missions:
+			mission.save(db)
 
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
-		# TODO: load from the db
-		Scheduler().add_new_object(Callback(self.__init), self)
+		self.__init()
+
+		remaining_ticks = db("SELECT remaining_ticks FROM ai_player WHERE rowid = ?", worldid)[0][0]
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
+
+	def finish_loading(self, db):
+		""" This is called separately because most objects are loaded after the player. """
+
+		# load the ships
+		for ship_id, state_id in db("SELECT rowid, state FROM ai_ship WHERE owner = ?", self.worldid):
+			ship = WorldObject.get_object_by_id(ship_id)
+			self.ships[ship] = self.shipStates[state_id]
+
+		# load the land managers
+		for worldid, island_id in db("SELECT rowid, island FROM ai_land_manager WHERE owner = ?", self.worldid):
+			island = WorldObject.get_object_by_id(island_id)
+			self.islands[island] = LandManager.load(db, self, island, worldid)
+
+		# load the settlement managers
+		for land_manager in self.islands.itervalues():
+			settlement_manager_id = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?", land_manager.worldid)[0][0]
+			self.settlement_managers.append(SettlementManager.load(db, settlement_manager_id))
+
+		# TODO: load the missions
+		for mission in self.missions:
+			raise NotImplementedError
 
 	def found_settlement(self, island, ship):
 		self.ships[ship] = self.shipStates.on_a_mission
 		land_manager = LandManager(island, self)
-		land_manager.divide()
 		land_manager.display()
 		self.islands[island] = land_manager
 

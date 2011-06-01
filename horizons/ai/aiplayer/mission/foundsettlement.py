@@ -25,6 +25,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GROUND, BUILDINGS
 from horizons.util import Point, Circle, Callback
 from horizons.util.python import decorators
+from horizons.ext.enum import Enum
 
 class FoundSettlement(Mission):
 	"""
@@ -32,14 +33,25 @@ class FoundSettlement(Mission):
 	the location and a branch office is built.
 	"""
 
+	missionStates = Enum('created', 'moving')
+
 	def __init__(self, success_callback, failure_callback, land_manager, ship, bo_location, **kwargs):
 		super(FoundSettlement, self).__init__(success_callback, failure_callback, land_manager.island.session, **kwargs)
 		self.land_manager = land_manager
 		self.ship = ship
 		self.bo_location = bo_location
 		self.branch_office = None
+		self.state = self.missionStates.created
+
+	def save(self, db):
+		super(FoundSettlement, self).save(db)
+		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, bo_builder, state) VALUES(?, ?, ?, ?, ?)", \
+			self.worldid, self.land_manager.worldid, self.ship.worldid, self.bo_location.worldid, self.state.index)
+		assert isinstance(self.bo_location, Builder)
+		self.bo_location.save(db)
 
 	def start(self):
+		self.state = self.missionStates.moving
 		self._move_to_bo_area()
 
 	def _move_to_bo_area(self):

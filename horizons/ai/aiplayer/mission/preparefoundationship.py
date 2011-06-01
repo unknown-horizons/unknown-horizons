@@ -24,6 +24,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle, Callback
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
+from horizons.ext.enum import Enum
 
 class PrepareFoundationShip(Mission):
 	"""
@@ -31,14 +32,23 @@ class PrepareFoundationShip(Mission):
 	it with the resources required to start another settlement.
 	"""
 
+	missionStates = Enum('created', 'moving')
+
 	def __init__(self, settlement_manager, ship, success_callback, failure_callback, **kwargs):
 		super(PrepareFoundationShip, self).__init__(success_callback, failure_callback, \
 			settlement_manager.land_manager.island.session, **kwargs)
 		self.settlement_manager = settlement_manager
 		self.ship = ship
 		self.branch_office = self.settlement_manager.branch_office
+		self.state = self.missionStates.created
+
+	def save(self, db):
+		super(PrepareFoundationShip, self).save(db)
+		db("INSERT INTO ai_mission_prepare_foundation_ship(rowid, settlement_manager, ship, state) VALUES(?, ?, ?, ?)", \
+			self.worldid, self.settlement_manager.worldid, self.ship.worldid, self.state.index)
 
 	def start(self):
+		self.state = self.missionStates.moving
 		self._move_to_bo_area()
 
 	def _move_to_bo_area(self):

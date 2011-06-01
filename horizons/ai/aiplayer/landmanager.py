@@ -21,17 +21,57 @@
 
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
+from horizons.util import WorldObject
 
-class LandManager(object):
+class LandManager(WorldObject):
 	"""
 	Divides the given land into parts meant for different purposes.
 	"""
 
+	class purpose:
+		production = 0
+		village = 1
+
 	def __init__(self, island, owner):
+		super(LandManager, self).__init__()
+		self.__init(island, owner)
+		self._divide()
+
+	def __init(self, island, owner):
 		self.island = island
 		self.settlement = None
 		self.owner = owner
 		self.session = self.island.session
+		self.production = {}
+		self.village = {}
+
+	def save(self, db):
+		super(LandManager, self).save(db)
+		db("INSERT INTO ai_land_manager(rowid, owner, island) VALUES(?, ?, ?)", self.worldid, \
+			self.owner.worldid, self.island.worldid)
+		for (x, y) in self.production:
+			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)", \
+				self.worldid, x, y, self.purpose.production)
+		for (x, y) in self.village:
+			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)", \
+				self.worldid, x, y, self.purpose.village)
+
+	@classmethod
+	def load(cls, db, owner, island, worldid):
+		self = cls.__new__(cls)
+		self._load(db, owner, island, worldid)
+		return self
+
+	def _load(self, db, owner, island, worldid):
+		super(LandManager, self).load(db, worldid)
+		self.__init(island, owner)
+
+		for x, y, purpose in db("SELECT x, y, purpose FROM ai_land_manager_coords WHERE land_manager = ?", self.worldid):
+			coords = (x, y)
+			if purpose == self.purpose.production:
+				self.production[coords] = self.island.ground_map[coords]
+			elif purpose == self.purpose.village:
+				self.village[coords] = self.island.ground_map[coords]
 
 	def _coords_usable(self, coords):
 		if coords in self.island.ground_map:
@@ -49,12 +89,11 @@ class LandManager(object):
 				return False
 		return True
 
-	def divide(self):
+	def _divide(self):
 		"""
 		Divides the area of the island so that there is a large lump for the village
-		and the rest for production and main roads.
+		and the rest for production.
 		"""
-		self.system = {}
 		self.production = {}
 		self.village = {}
 

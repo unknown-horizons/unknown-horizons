@@ -28,10 +28,10 @@ from builder import Builder
 from roadplanner import RoadPlanner
 
 from horizons.constants import BUILDINGS
-from horizons.util import Point, Rect
+from horizons.util import Point, Rect, WorldObject
 from horizons.util.python import decorators
 
-class ProductionBuilder(object):
+class ProductionBuilder(WorldObject):
 	class purpose:
 		none = 1
 		reserved = 2
@@ -42,18 +42,62 @@ class ProductionBuilder(object):
 		tree = 7
 		storage = 8
 
-	def __init__(self, land_manager, branch_office):
-		self.land_manager = land_manager
-		self.island = land_manager.island
-		self.session = self.island.session
-		self.owner = self.land_manager.owner
-		self.settlement = land_manager.settlement
-		self.collector_buildings = [branch_office]
-		self.production_buildings = []
-		self.plan = dict.fromkeys(land_manager.production, (self.purpose.none, None))
-		for coords in branch_office.position.tuple_iter():
+	def __init__(self, settlement_manager):
+		super(ProductionBuilder, self).__init__()
+		self.__init(settlement_manager)
+		self.plan = dict.fromkeys(self.land_manager.production, (self.purpose.none, None))
+		for coords in settlement_manager.branch_office.position.tuple_iter():
 			if coords in self.plan:
 				self.plan[coords] = (self.purpose.branch_office, None)
+
+	def __init(self, settlement_manager):
+		self.settlement_manager = settlement_manager
+		self.land_manager = settlement_manager.land_manager
+		self.island = self.land_manager.island
+		self.session = self.island.session
+		self.owner = self.land_manager.owner
+		self.settlement = self.land_manager.settlement
+		self.collector_buildings = [settlement_manager.branch_office]
+		self.production_buildings = []
+		self.plan = {}
+
+	def save(self, db):
+		super(ProductionBuilder, self).save(db)
+		db("INSERT INTO ai_production_builder(rowid, settlement_manager) VALUES(?, ?)", self.worldid, \
+			self.settlement_manager.worldid)
+		for (x, y), (purpose, builder) in self.plan.iteritems():
+			db("INSERT INTO ai_production_builder_coords(production_builder, x, y, purpose, builder) VALUES(?, ?, ?, ?, ?)", \
+				self.worldid, x, y, purpose, None if builder is None else builder.worldid)
+			if builder is not None:
+				assert isinstance(builder, Builder)
+				builder.save(db)
+
+	@classmethod
+	def load(cls, db, settlement_manager):
+		self = cls.__new__(cls)
+		self._load(db, settlement_manager)
+		return self
+
+	def _load(self, db, settlement_manager):
+		worldid = db("SELECT rowid FROM ai_production_builder WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
+		super(ProductionBuilder, self).load(db, worldid)
+		self.__init(settlement_manager)
+
+		db_result = db("SELECT x, y, purpose, builder FROM ai_production_builder_coords WHERE production_builder = ?", worldid)
+		for x, y, purpose, builder_id in db_result:
+			coords = (x, y)
+			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
+			self.plan[coords] = (purpose, builder)
+			object = self.island.ground_map[coords].object
+			if object is None:
+				continue
+
+			if purpose == self.purpose.fisher and object.id == BUILDINGS.FISHERMAN_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == self.purpose.lumberjack and object.id == BUILDINGS.LUMBERJACK_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == self.purpose.storage and object.id == BUILDINGS.STORAGE_CLASS:
+				self.collector_buildings.append(object)
 
 	def _get_neighbour_tiles(self, rect):
 		"""
@@ -398,6 +442,13 @@ class ProductionBuilder(object):
 			self.collector_buildings.append(building)
 			return (builder, True)
 		return (None, False)
+
+	def count_fishers(self):
+		fishers = 0
+		for building in self.production_buildings:
+			if building.id == BUILDINGS.FISHERMAN_CLASS:
+				fishers += 1
+		return fishers
 
 	def display(self):
 		road_colour = (30, 30, 30)

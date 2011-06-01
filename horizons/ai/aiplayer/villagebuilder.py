@@ -22,10 +22,10 @@
 from builder import Builder
 
 from horizons.constants import BUILDINGS
-from horizons.util import Point
+from horizons.util import Point, WorldObject
 from horizons.util.python import decorators
 
-class VillageBuilder(object):
+class VillageBuilder(WorldObject):
 	class purpose:
 		none = 1
 		reserved = 2
@@ -34,13 +34,49 @@ class VillageBuilder(object):
 		tent = 5
 		road = 6
 
-	def __init__(self, land_manager):
-		self.land_manager = land_manager
-		self.island = land_manager.island
+	def __init__(self, settlement_manager):
+		super(VillageBuilder, self).__init__()
+		self.__init(settlement_manager)
+
+	def __init(self, settlement_manager):
+		self.settlement_manager = settlement_manager
+		self.land_manager = settlement_manager.land_manager
+		self.island = self.land_manager.island
 		self.session = self.island.session
 		self.owner = self.land_manager.owner
-		self.settlement = land_manager.settlement
+		self.settlement = self.land_manager.settlement
 		self.tents_to_build = 0
+		self.plan = {}
+
+	def save(self, db):
+		super(VillageBuilder, self).save(db)
+		db("INSERT INTO ai_village_builder(rowid, settlement_manager) VALUES(?, ?)", self.worldid, \
+			self.settlement_manager.worldid)
+		for (x, y), (purpose, builder) in self.plan.iteritems():
+			db("INSERT INTO ai_village_builder_coords(village_builder, x, y, purpose, builder) VALUES(?, ?, ?, ?, ?)", \
+				self.worldid, x, y, purpose, None if builder is None else builder.worldid)
+			if builder is not None:
+				assert isinstance(builder, Builder)
+				builder.save(db)
+
+	@classmethod
+	def load(cls, db, settlement_manager):
+		self = cls.__new__(cls)
+		self._load(db, settlement_manager)
+		return self
+
+	def _load(self, db, settlement_manager):
+		worldid = db("SELECT rowid FROM ai_village_builder WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
+		super(VillageBuilder, self).load(db, worldid)
+		self.__init(settlement_manager)
+
+		db_result = db("SELECT x, y, purpose, builder FROM ai_village_builder_coords WHERE village_builder = ?", worldid)
+		for x, y, purpose, builder_id in db_result:
+			coords = (x, y)
+			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
+			self.plan[coords] = (purpose, builder)
+			if purpose == self.purpose.planned_tent:
+				self.tents_to_build += 1
 
 	def create_plan(self):
 		"""
@@ -170,6 +206,16 @@ class VillageBuilder(object):
 				self.plan[coords] = (self.purpose.tent, builder)
 				return (builder, True)
 		return (None, False)
+
+	def count_tents(self):
+		tents = 0
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose != self.purpose.tent:
+				continue
+			object = self.island.ground_map[coords].object
+			if object is not None and object.id == BUILDINGS.RESIDENTIAL_CLASS:
+				tents += 1
+		return tents
 
 	def display(self):
 		road_colour = (30, 30, 30)
