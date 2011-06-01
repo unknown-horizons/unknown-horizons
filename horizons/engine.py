@@ -90,16 +90,24 @@ class Fife(ApplicationBase):
 		                                 changes_gui_xml="requirerestart.xml")
 		self._setting.setGuiStyle("book")
 
+		# TODO: find a way to apply changing to a running game in a clean fashion
+		#       possibility: use singaling via changelistener
+		def update_minimap(*args):
+			try: horizons.main._modules.session.ingame_gui.minimap.draw()
+			except AttributeError: pass # session or gui not yet initialised
+
+		def update_autosave_interval(*args):
+			try: horizons.main._modules.session.reset_autosave()
+			except AttributeError: pass # session or gui not yet initialised
+
+
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
-		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval")
+		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",
+		                                applyfunction=update_autosave_interval)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
 
-		def update_minimap(*args):
-			# sry for this gross violation of the encapsulation principle
-			try: horizons.main._modules.session.ingame_gui.minimap.draw()
-			except AttributeError: pass # session or gui not yet initialised
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation", \
 		                                applyfunction=update_minimap)
 
