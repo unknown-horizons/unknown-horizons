@@ -62,7 +62,8 @@ class AIPlayer(GenericAI):
 			flat_land = 0
 			for tile in island.ground_map.itervalues():
 				if 'constructible' in tile.classes:
-					flat_land += 1
+					if tile.object is None or tile.object.id == BUILDINGS.TREE_CLASS:
+						flat_land += 1
 			if best_value is None or best_value < flat_land:
 				best_island = island
 				best_value = flat_land
