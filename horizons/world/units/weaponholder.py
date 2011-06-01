@@ -57,32 +57,38 @@ class WeaponHolder(object):
 		return False
 
 	def try_attack_target(self):
-		if self._target:
-			target = self._target()
-		else:
-			return
-		if not target:
-			self._target = None
-			print 'TARGET IS NONE'
+		if self._target is None:
 			return
 
-		#print self,'target, which is',target,'has the following refs'
-		#for ref in gc.get_referrers(target):
-		#	print 'Refference to target in:', ref
-		dest = target.position.center()
+		print self._target,'has health:',self._target.health
+
+		dest = self._target.position.center()
 
 		self.fire_all_weapons(dest)
 		#try another attack in 2 ticks
 		Scheduler().add_new_object(self.try_attack_target, self, 2)
 
 	def attack(self, target):
-		if self._target is not None and self._target() is target:
-			return
-		self.stop_attack()
-		self._target = weakref.ref(target)
+		if self._target is not None:
+			if self._target is not target:
+			#if target is changed remove the listener
+				if target.has_remove_listener(self.stop_attack):
+					target.remove_remove_listener(self.stop_attack)
+			else:
+			#else do not update the target
+				return
+		if not target.has_remove_listener(self.stop_attack):
+			target.add_remove_listener(self.stop_attack)
+		self._target = target
 		self.try_attack_target()
 
 	def stop_attack(self):
+		if self._target is not None:
+			print self,'stopped attack'
+			print self._target,'still has the refs'
+			for ref in gc.get_referrers(self._target):
+				print ref
+			print '################################'
 		self._target = None
 
 	def fire_all_weapons(self, dest):
