@@ -23,9 +23,11 @@ import weakref
 from horizons.util import Annulus, Callback
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
+from horizons.util.changelistener import metaChangeListenerDecorator
 
 import gc
 
+@metaChangeListenerDecorator("storage_modified")
 class WeaponHolder(object):
 	def __init__(self, **kwargs):
 		super(WeaponHolder, self).__init__(**kwargs)
@@ -34,15 +36,18 @@ class WeaponHolder(object):
 	def __init(self):
 		self.create_weapon_storage()
 		self._target = None
+		self.add_storage_modified_listener(self.update_range)
 	
 	def create_weapon_storage(self):
 		self._weapon_storage = []
 
-	def add_weapon_to_storage(self, weapon):
-		self._weapon_storage.append(weapon)
-		#NOTE this should be done everytime the storage is changed
+	def update_range(self, caller=None):
 		self._min_range = min([w.get_minimum_range() for w in self._weapon_storage])
 		self._max_range = max([w.get_maximum_range() for w in self._weapon_storage])
+
+	def add_weapon_to_storage(self, weapon):
+		self._weapon_storage.append(weapon)
+		self.on_storage_modified()
 
 	def attack_possible(self, dest):
 		distance = self.position.distance_to_point(dest)
