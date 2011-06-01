@@ -73,12 +73,12 @@ class AIPlayer(GenericAI):
 			if ship.owner == self:
 				self.ships[ship] = self.shipStates.idle
 
-		self.missions = {}
+		self.missions = []
 		self.fishers = []
 		self.complete_inventory = CompleteInventory(self)
 
 	def report_success(self, mission, msg):
-		print mission, msg
+		self.missions.remove(mission)
 		if mission.ship:
 			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
@@ -86,7 +86,7 @@ class AIPlayer(GenericAI):
 			self.settlement_managers.append(settlement_manager)
 
 	def report_failure(self, mission, msg):
-		print mission, msg
+		self.missions.remove(mission)
 		if mission.ship:
 			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
@@ -109,7 +109,7 @@ class AIPlayer(GenericAI):
 		self.islands[island] = land_manager
 
 		found_settlement = FoundSettlement.create(ship, land_manager, self.report_success, self.report_failure)
-		self.missions[FoundSettlement.__class__] = found_settlement
+		self.missions.append(found_settlement)
 		found_settlement.start()
 
 	def have_starting_resources(self, ship, settlement):
@@ -134,7 +134,7 @@ class AIPlayer(GenericAI):
 	def prepare_foundation_ship(self, settlement_manager, ship):
 		self.ships[ship] = self.shipStates.on_a_mission
 		mission = PrepareFoundationShip(settlement_manager, ship, self.report_success, self.report_failure)
-		self.missions[PrepareFoundationShip.__class__] = mission
+		self.missions.append(mission)
 		mission.start()
 
 	def tick(self):
