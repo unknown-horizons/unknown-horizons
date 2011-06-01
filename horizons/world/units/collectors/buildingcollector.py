@@ -21,6 +21,8 @@
 
 from horizons.util import WorldObject, RadiusRect, Callback, decorators
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
+from horizons.constants import COLLECTORS
+from horizons.scheduler import Scheduler
 
 from collector import Collector, JobList
 
@@ -79,6 +81,7 @@ class BuildingCollector(Collector):
 		if state == self.states.moving_home:
 			# collector is on his way home
 			self.add_move_callback(self.reached_home)
+			self.add_blocked_callback(self.handle_path_home_blocked)
 			self.show()
 
 	def remove(self):
@@ -175,10 +178,18 @@ class BuildingCollector(Collector):
 		return self.home_building.island.get_providers_in_range(reach, reslist=reslist, \
 		                                                        player=self.owner)
 
+	def handle_path_home_blocked(self):
+		"""Called when we get blocked while trying to move to the job location.
+		The default action is to resume movement in a few seconds."""
+		self.log.debug("%s: got blocked while moving home, trying again in %s ticks.", \
+			self, COLLECTORS.DEFAULT_WAIT_TICKS)
+		Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
+
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
 		self.log.debug("%s move_home", self)
-		self.move_back(callback=callback, destination_in_building=True, action=action)
+		self.move_back(callback=callback, destination_in_building=True, action=action, \
+			blocked_callback=self.handle_path_home_blocked)
 		self.state = self.states.moving_home
 
 	def cancel(self, continue_action = None):
