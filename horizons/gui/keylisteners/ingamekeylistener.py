@@ -132,7 +132,11 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4, fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
 			num = int(keyval - fife.Key.NUM_0)
 			if evt.isControlPressed():
-				self.session.selection_groups[num] = self.session.selected_instances.copy()
+				# create new group (only consider units owned by the player)
+				self.session.selection_groups[num] = \
+				    set(filter(lambda unit : unit.owner == self.session.world.player,
+				               self.session.selected_instances.copy()))
+				# drop units of the new group from all other groups
 				for group in self.session.selection_groups:
 					if group is not self.session.selection_groups[num]:
 						group -= self.session.selection_groups[num]

@@ -233,6 +233,9 @@ class Session(LivingObject):
 		self.ingame_gui.display_game_speed(text)
 
 	def speed_up(self):
+		if self.speed_is_paused():
+			# TODO: sound feedback to signal that this is an invalid action
+			return
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)
 			if i + 1 < len(GAME_SPEED.TICK_RATES):
@@ -241,6 +244,9 @@ class Session(LivingObject):
 			self.speed_set(GAME_SPEED.TICK_RATES[0])
 
 	def speed_down(self):
+		if self.speed_is_paused():
+			# TODO: sound feedback to signal that this is an invalid action
+			return
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)
 			if i > 0:

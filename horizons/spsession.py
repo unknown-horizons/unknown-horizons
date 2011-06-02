@@ -71,11 +71,19 @@ class SPSession(Session):
 
 	def start(self):
 		super(SPSession, self).start()
-		interval = int(horizons.main.fife.get_uh_setting("AutosaveInterval"))
+		self.reset_autosave()
+
+	_old_autosave_interval = None
+	def reset_autosave(self):
+		"""(Re-)Set up autosave. Called if autosave interval has been changed."""
 		# get_uh_setting returns floats like 4.0 and 42.0 since slider stepping is 1.0.
-		if interval != 0: #autosave
-			self.log.debug("Initing autosave every %s minutes", interval)
-			ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
+		interval = int(horizons.main.fife.get_uh_setting("AutosaveInterval"))
+		if interval != self._old_autosave_interval:
+			self._old_autosave_interval = interval
+			ExtScheduler().rem_call(self, self.autosave)
+			if interval != 0: #autosave
+				self.log.debug("Initing autosave every %s minutes", interval)
+				ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
 
 	def autosave(self):
 		"""Called automatically in an interval"""

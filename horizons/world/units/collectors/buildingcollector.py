@@ -188,9 +188,14 @@ class BuildingCollector(Collector):
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
 		self.log.debug("%s move_home", self)
-		self.move_back(callback=callback, destination_in_building=True, action=action, \
-			blocked_callback=self.handle_path_home_blocked)
-		self.state = self.states.moving_home
+		if self.home_building.position.contains(self.position):
+			# already home
+			Scheduler().add_new_object(callback, self, run_in=0)
+		else:
+			# actually move home
+			self.move_back(callback=callback, destination_in_building=True, action=action, \
+			               blocked_callback=self.handle_path_home_blocked)
+			self.state = self.states.moving_home
 
 	def cancel(self, continue_action = None):
 		"""Cancels current job and moves back home"""

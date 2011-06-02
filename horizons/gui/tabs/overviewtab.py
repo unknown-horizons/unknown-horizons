@@ -76,15 +76,21 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).show()
 		if not self.instance.has_change_listener(self.refresh):
 			self.instance.add_change_listener(self.refresh)
-		if not self.instance.has_remove_listener(self.hide):
-			self.instance.add_remove_listener(self.hide)
+		if not self.instance.has_remove_listener(self.on_instance_removed):
+			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def hide(self):
 		super(OverviewTab, self).hide()
-		if self.instance.has_change_listener(self.refresh):
-			self.instance.remove_change_listener(self.refresh)
-		if self.instance.has_remove_listener(self.hide):
-			self.instance.remove_remove_listener(self.hide)
+		if self.instance is not None:
+			if self.instance.has_change_listener(self.refresh):
+				self.instance.remove_change_listener(self.refresh)
+			if self.instance.has_remove_listener(self.on_instance_removed):
+				self.instance.remove_remove_listener(self.on_instance_removed)
+
+	def on_instance_removed(self):
+		self.on_remove()
+		self.instance = None
+
 
 
 class BranchOfficeOverviewTab(OverviewTab):

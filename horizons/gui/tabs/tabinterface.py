@@ -20,7 +20,11 @@
 # ###################################################
 
 from horizons.i18n import load_xml_translated
+from horizons.gui.utility import stylize_widget
 from horizons.util import PychanChildFinder
+from horizons.util.changelistener import metaChangeListenerDecorator
+
+@metaChangeListenerDecorator('remove')
 class TabInterface(object):
 	"""
 	The TabInterface should be used by all classes that represent Tabs for the
@@ -39,7 +43,10 @@ class TabInterface(object):
 	ensure proper initialization of needed properties.
 	"""
 
-	def __init__(self, widget = None, **kwargs):
+	def __init__(self, widget=None, **kwargs):
+		"""
+		@param widget: filename of a widget. Set this to None if you create your own widget at self.widget
+		"""
 		super(TabInterface, self).__init__()
 		if widget is not None:
 			self.widget = load_xml_translated(widget)
@@ -52,19 +59,13 @@ class TabInterface(object):
 		self.button_hover_image = 'content/gui/images/tabwidget/tab_a.png' # TabButtons hoverimage
 		self.button_active_image = 'content/gui/images/tabwidget/tab.png' # TabButtons active image
 		self.button_background_image = 'content/gui/images/tabwidget/tab_dark.png' # TabButtons background image
-		self.button_background_image_active = 'content/gui/images/tabwidget/tab_active.png' # TabButtons background image when selected
+		self.button_background_image_active = 'content/gui/images/tabwidget/tab_active_xxl.png' # TabButtons background image when selected
 
 	def init_values(self):
 		"""Call this method after the widget has been initialised."""
 		self.x_pos = self.widget.position[0]
 		self.y_pos = self.widget.position[1]
-		self.widget.stylize('menu_black')
-		#TODO use gui.utility.LazyWidgetsDict._load_widget() here which styles
-		# headlines if their name starts with headline* or name*.
-		for w in self.widget.findChildren():
-			if w.name.startswith("headline") or \
-			   w.name is "name":
-				w.stylize('headline')
+		stylize_widget(self.widget, style='menu_black')
 
 	def show(self):
 		"""Shows the current widget"""

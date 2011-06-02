@@ -44,6 +44,17 @@ def adjust_widget_black_background(widget):
 	menu = widget.findChild(name='menu')
 	menu.position_technique="automatic" # "center:center"
 
+def stylize_widget(widget, style=None, center_widget=False):
+	"""Applies default uh style including further styling via arguments"""
+	if style:
+		widget.stylize(style)
+	for w in widget.findChildren():
+		if w.name.startswith("headline") or \
+		   w.name is "name":
+			w.stylize('headline')
+	if center_widget:
+		widget.position_technique = "automatic" # "center:center"
+	return widget
 
 class LazyWidgetsDict(dict):
 	"""Dictionary for UH widgets. Loads widget on first access."""
@@ -69,14 +80,8 @@ class LazyWidgetsDict(dict):
 		If you want your headlines to not be styled, rename them.
 		"""
 		widget = load_xml_translated(widgetname+'.xml')
-		if widgetname in self.styles:
-			widget.stylize(self.styles[widgetname])
-		for w in widget.findChildren():
-			if w.name.startswith("headline") or \
-			   w.name is "name":
-				w.stylize('headline')
-		if self.center_widgets:
-			widget.position_technique = "automatic" # "center:center"
+		stylize_widget(widget, style=self.styles.get(widgetname), \
+		               center_widget=self.center_widgets)
 		self[widgetname] = widget
 
 	def reload(self, widgetname):

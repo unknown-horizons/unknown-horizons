@@ -4,8 +4,8 @@
 <Container name="settings_window" size="800,580" background_image="content/gui/images/background/book.png">
 
 <!-- west side -->
-<VBox min_size="320,520"  max_size="320,520"  position="65,0">
-	<Spacer fixed_size="40" />
+<VBox min_size="320,545"  max_size="320,545"  position="65,0">
+<Spacer fixed_size="40" />
 	<VBox> 
 		<Label text="Settings"  name="headline" />
 		<Label text="Please make sure that you know what you do." 
@@ -24,9 +24,7 @@
 					<ListBox name="screen_resolution" />
 				</ScrollArea>
 			</VBox>
-
-			<Spacer min_size="25"/>
-
+		<Spacer min_size="25"/>
 			<VBox>
 				<Label name="color_depth_label"  text="Color depth:"
 					wrap_text="1"  max_size="140,20" />
@@ -41,16 +39,14 @@
 				</ScrollArea>
 			</VBox>
 		</HBox>
-
-		<Spacer min_size="10" />
-
+	<Spacer min_size="10" />
 		<HBox>
 			<Label name="screen_fullscreen_text"  text="Full screen:" />
 			<CheckBox min_size="160,32"  name="enable_fullscreen" />
 		</HBox>
 	</VBox>
 
-	<Spacer min_size="20" />
+<Spacer min_size="10" />
 
 	<VBox  name="sound_settings" ><!-- sound -->
 		<Label name="headline_sound" text="Sound" font="libertine_headline" />
@@ -74,17 +70,22 @@
 			<Slider size="300,20" name="volume_effects"
 				orientation="0" scale_start="0.0" scale_end="0.5" />
 		</VBox>
-		<Spacer min_size="10" />
+	<Spacer min_size="10" />
 		<HBox>
 			<Label name="sound_enable_opt_text" text="Enable sound:" />
 			<CheckBox min_size="32,32" name="enable_sound" />
 		</HBox>
+	<Spacer />
+	<HBox max_size="34,40">
+	<!-- if no max_size is set, button reaction area expands to whole page -->
+		<DeleteButton name="defaultButton" tooltip="Reset to default settings" />
+	</HBox>>
 	</VBox>
 </VBox> 
 
 <!-- east side -->
-<VBox min_size="320,520"  max_size="320,520"  position="420,0">
-	<Spacer fixed_size="40" />
+<VBox min_size="320,545"  max_size="320,545"  position="420,0">
+<Spacer fixed_size="40" />
 	<Label name="headline_saving"  text="Saving"  font="libertine_headline" 
 		position_technique="automatic" />
 <!-- automatic is a shorthand for center:center #TODO get this working at all -->
@@ -120,9 +121,7 @@
 		<Label name="edge_scrolling_label"  text="Enable edge scrolling:" />
 		<CheckBox min_size="21,32"  name="edgescrolling" />
 	</HBox>
-
-	<Spacer min_size="10" />
-
+<Spacer min_size="10" />
 	<VBox name="language_settings">
 		<Label text="Language" 
 			name="headline_language"  font="libertine_headline" />
@@ -133,9 +132,7 @@
 			</ScrollArea>
 		</HBox>
 	</VBox>
-
-	<Spacer min_size="10" />
-
+<Spacer min_size="10" />
 	<VBox name="network_settings">
 		<Label text="Network"
 			name="headline_network" font="libertine_headline" />
@@ -145,13 +142,11 @@
 			<Label text="(0 means default)" name="network_port_hint_lbl" />
 		</HBox>
 	</VBox>
-
-	<Spacer />
-
+<Spacer />
 	<HBox >
-		<CancelButton />
-		<OkButton />
-		<DeleteButton name="defaultButton" />
+		<CancelButton tooltip="Exit to main menu" />
+	<Spacer min_size="220" />
+		<OkButton tooltip="Apply" />
 	</HBox>
 </VBox>
 

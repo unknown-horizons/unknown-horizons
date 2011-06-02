@@ -62,6 +62,7 @@ class TabWidget(object):
 		"""Add enough tabbuttons for all widgets."""
 		# Load buttons
 		for index, tab in enumerate(self._tabs):
+			tab.add_remove_listener(self.hide)
 			container = pychan.Container()
 			background = pychan.Icon()
 			background.name = "bg_%s" % index
@@ -118,7 +119,7 @@ class TabWidget(object):
 		self.widget.show()
 		self.ingame_gui.minimap_to_front()
 
-	def hide(self):
+	def hide(self, caller=None):
 		"""Hide the current widget"""
 		self.current_tab.hide()
 		self.widget.hide()
