@@ -112,6 +112,7 @@ class AIPlayer(GenericAI):
 		super(AIPlayer, self).save(db)
 
 		# save the player
+		db("UPDATE player SET client_id = 'AIPlayer' WHERE rowid = ?", self.worldid)
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
 		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)

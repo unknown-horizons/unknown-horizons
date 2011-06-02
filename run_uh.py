@@ -106,6 +106,13 @@ def get_option_parser():
 	             help=_("Loads the last quicksave."))
 	p.add_option_group(start_uh_group)
 
+	ai_group = optparse.OptionGroup(p, _("AI options"))
+	ai_group.add_option("--ai-players", dest="ai_players", metavar="<ai_players>", type="int", default=0, \
+	             help=_("Uses <ai_players> AI players (excludes the possible human-AI hybrid)."))
+	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
+	             help=_("Makes the human player a human-AI hybrid (for development only)."))
+	p.add_option_group(ai_group)
+
 	dev_group = optparse.OptionGroup(p, _("Development options"))
 	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true", \
 	             default=False, help=_("Write debug output only to logfile, not to console. Implies -d."))

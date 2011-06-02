@@ -107,8 +107,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0 and is_pirate = 0"):
 			player = None
 			# check if player is an ai
-			# TODO: fix this hack
-			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE id = ?", player_worldid)
+			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE client_id = ?", client_id)
 			if len(ai_data) > 0:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
@@ -433,19 +432,22 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# don't yield if point is not in map, those points don't exist
 				yield point
 
-	def setup_player(self, id, name, color, local):
+	def setup_player(self, id, name, color, local, is_ai):
 		"""Sets up a new Player instance and adds him to the active world.
 		Only used for new games. Loading old players is done in _init().
 		@param local: bool, whether the player is the one sitting on front of this machine."""
 		inv = self.session.db.get_player_start_res()
 		player = None
 		if local:
-			# hack to make early ai development easier
-			player = AIPlayer(self.session, id, name, color, inventory=inv)
-			#player = HumanPlayer(self.session, id, name, color, inventory=inv)
+			if is_ai: # a human controlled AI player
+				player = AIPlayer(self.session, id, name, color, inventory=inv)
+			else:
+				player = HumanPlayer(self.session, id, name, color, inventory=inv)
 			self.player = player
 			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
 			                                          call_listener_now=True)
+		elif is_ai:
+			player = AIPlayer(self.session, id, name, color, inventory=inv)
 		else:
 			player = Player(self.session, id, name, color, inventory=inv)
 		self.players.append(player)
