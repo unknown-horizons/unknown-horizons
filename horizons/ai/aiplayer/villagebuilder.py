@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import deque
+
 from builder import Builder
 
 from horizons.constants import BUILDINGS
@@ -79,6 +81,33 @@ class VillageBuilder(WorldObject):
 			if purpose == self.purpose.planned_tent:
 				self.tents_to_build += 1
 
+	@classmethod
+	def _remove_unreachable_roads(cls, plan, main_square):
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		reachable = set()
+		queue = deque()
+		for (x, y) in main_square.position.tuple_iter():
+			for (dx, dy) in moves:
+				coords = (x + dx, y + dy)
+				if coords in plan and plan[coords][0] == cls.purpose.road:
+					queue.append(coords)
+					reachable.add(coords)
+
+		while queue:
+			(x, y) = queue.popleft()
+			for dx, dy in moves:
+				coords = (x + dx, y + dy)
+				if coords in plan and plan[coords][0] == cls.purpose.road and coords not in reachable:
+					reachable.add(coords)
+					queue.append(coords)
+
+		to_remove = []
+		for coords, (purpose, _) in plan.iteritems():
+			if purpose == cls.purpose.road and coords not in reachable:
+				to_remove.append(coords)
+		for coords in to_remove:
+			plan[coords] = (cls.purpose.none, None)
+
 	def _create_plan(self):
 		"""
 		The algorithm is as follows:
@@ -87,7 +116,7 @@ class VillageBuilder(WorldObject):
 		impossible road locations.
 		"""
 
-		self.plan = None
+		self.plan = {}
 		best_value = -1
 		xs = set([coords[0] for coords in self.land_manager.village])
 		ys = set([coords[1] for coords in self.land_manager.village])
@@ -151,6 +180,8 @@ class VillageBuilder(WorldObject):
 						plan[coords] = (self.purpose.road, road)
 					else:
 						bad_roads += 1
+
+			self._remove_unreachable_roads(plan, main_square)
 
 			# place the tents
 			for coords in sorted(plan):
