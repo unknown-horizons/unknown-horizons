@@ -50,8 +50,8 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
 
 	def choose_island(self, min_land):
-		best_island = None
-		best_value = None
+		options = []
+		total_land = 0
 
 		for island in self.session.world.islands:
 			if island in self.islands:
@@ -59,13 +59,24 @@ class AIPlayer(GenericAI):
 
 			flat_land = 0
 			for tile in island.ground_map.itervalues():
-				if 'constructible' in tile.classes:
-					if tile.object is None or tile.object.buildable_upon:
-						flat_land += 1
-			if flat_land >= min_land and (best_value is None or best_value < flat_land):
-				best_island = island
-				best_value = flat_land
-		return best_island
+				if 'constructible' not in tile.classes:
+					continue
+				if tile.object is not None and not tile.object.buildable_upon:
+					continue
+				if tile.settlement is not None:
+					continue
+				flat_land += 1
+			if flat_land >= min_land:
+				options.append((flat_land, island))
+				total_land += flat_land
+
+		# choose a random big enough island with probability proportional to the available land
+		choice = self.session.random.randint(0, total_land - 1)
+		for (land, island) in options:
+			if choice <= land:
+				return island
+			choice -= land
+		return None
 
 	def finish_init(self):
 		for ship in self.session.world.ships:
