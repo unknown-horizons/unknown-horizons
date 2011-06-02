@@ -89,6 +89,10 @@ class FoundSettlement(Mission):
 		self.log.info('Reached BO area')
 
 		self.branch_office = self.bo_location.execute()
+		if not self.branch_office:
+			self.report_failure('Unable to build the branch office')
+			return
+
 		island = self.bo_location.land_manager.island
 		self.land_manager.settlement = island.get_settlement(self.bo_location.point)
 		self.log.info('Built the branch office')
