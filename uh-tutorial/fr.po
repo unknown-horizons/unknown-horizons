@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-31 14:23+0200\n"
+"PO-Revision-Date: 2011-06-02 13:25+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -68,7 +68,7 @@ msgstr ""
 "nouveau.\n"
 "\n"
 "Pour toutes suggestions sur une meilleure rédaction, une incompréhension, ou "
-"pour nous rapporter un bug : N'hésitez pas à nous contacter et nous "
+"pour nous rapporter un bug: N'hésitez pas à nous contacter et nous "
 "essaierons d'améliorer ce didacticiel!\n"
 "\n"
 "Visitez www.unknown-horizons.org pour savoir comment contacter l'équipe!\n"
@@ -98,7 +98,7 @@ msgstr ""
 "clic droit sur la destination de votre choix.\n"
 "\n"
 "Une fois que vous êtes près de la côte, le bouton en forme d'ancre du "
-"panneau deviendra actif .\n"
+"panneau deviendra actif.\n"
 "\n"
 "Cela signifie que vous êtes alors capable de construire un comptoir ici en "
 "cliquant sur ce bouton (nommé «Construire la colonie»).\n"
@@ -143,7 +143,7 @@ msgstr ""
 "Cliquez sur le bouton. S'il n'est pas actif, déplacez votre vaisseau à "
 "proximité du comptoir, et réessayez.\n"
 "\n"
-"MISSION : Débutez les échanges commerciaux"
+"MISSION : Débutez les échanges commerciaux."
 
 #: po/tutorial.py:11
 msgid ""
@@ -161,7 +161,7 @@ msgid ""
 "TASK: Unload at least 10 tons of each resource your ship sailed around with."
 msgstr ""
 "Le panneau que vous avez sous les yeux est scindé entre les partenaires "
-"commerciaux 'Vaisseau' et 'Comptoir'.\n"
+"commerciaux «Vaisseau» et «Comptoir».\n"
 "\n"
 "Pour déplacer les marchandises d'un stock à l'autre, cliquez simplement "
 "dessus.\n"
@@ -185,6 +185,7 @@ msgstr ""
 "Déchargez au moins 10 tonnes de chaque ressource présente sur votre "
 "vaisseau."
 
+# I change this until we will have a system to make the longer sentences fitting properly (seb)
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
 msgstr "MISSION : LE BUCHERON"
@@ -369,7 +370,7 @@ msgstr ""
 "Par exemple, nous conseillons de ne pas placer vos tentes trop près de vos "
 "bucherons, cela détruirais leurs précieux arbres.\n"
 "\n"
-"MISSION: Construire une place centrale"
+"MISSION: Construire une place centrale."
 
 #: po/tutorial.py:23
 msgid ""
@@ -480,9 +481,10 @@ msgstr ""
 msgid "Build at least three additional tents and connect them to the main square."
 msgstr "Construisez 3 tentes supplémentaires et reliez les à la place centrale."
 
+# The translation is bad, but it fits. for the moment, this is the solution
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "NOUVELLE MISSION : FEU DE SIGNALISATION"
+msgstr "MISSION : LA SIGNALISATION"
 
 #: po/tutorial.py:31
 msgid ""
@@ -500,8 +502,7 @@ msgid ""
 msgstr ""
 "Voyez-vous le navire passer devant vos côtes de temps en temps ?\n"
 "\n"
-"C'est celui du \"Free Trader\" (le marchand libre), l'un des premiers colons "
-"de l'archipel.\n"
+"C'est celui du Marchand Libre, l'un des premiers colons de l'archipel.\n"
 "\n"
 "Ce marchand vous fournira en biens nécessaires que vous ne pouvez produire "
 "pour l'instant.\n"
@@ -533,14 +534,14 @@ msgstr ""
 "Avec cette petite aide, le bateau-marchand passera de temps en temps à votre "
 "comptoir.\n"
 "\n"
-"Vous pouvez proposer des offres via l'onglet 'Achat / Vente'. (qui est "
-"encore un peu difficile à utiliser, si vous avez une idée d'amélioration, "
-"n'hésitez pas, nous avons besoin d'aide !)\n"
+"Vous pouvez proposer des offres via l'onglet «Achat/Vente». (qui est encore "
+"un peu difficile à utiliser, si vous avez une idée d'amélioration, n'hésitez "
+"pas, nous avons besoin d'aide!)\n"
 "\n"
-"Au niveau 'marin', vous disposez de trois emplacements commerciaux.\n"
+"Au niveau «marin», vous disposez de trois emplacements commerciaux.\n"
 "\n"
-"Cliquez sur la petite icône pour changer le mode de l'emplacement en 'Achat' "
-"ou 'Vente' et vice versa.\n"
+"Cliquez sur la petite icône pour changer le mode de l'emplacement en «Achat» "
+"ou «Vente» et vice versa.\n"
 "\n"
 "Si vous cliquez dans l'emplacement, vous pouvez choisir le bien dont vous "
 "voulez faire le commerce. Nous expliquerons cela dès que vous serez prêt.\n"
@@ -551,9 +552,10 @@ msgstr ""
 msgid "Build a signal fire at the coast close to your branch office."
 msgstr "Construisez un feu de signalisation sur la côte proche du comptoir."
 
+# The translation is bad, but it fits. for the moment, this is the solution
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "NOUVELLE MISSION: APPRENDRE À COMMERCER"
+msgstr "MISSION: COMMERCER"
 
 #  « ... » uses a lot of space, i replaced it by «...»
 #: po/tutorial.py:35
@@ -581,7 +583,7 @@ msgstr ""
 "Quand vous achetez, vous allez acheter suffisamment pour atteindre votre "
 "«valeur cible» de stock.\n"
 "Quand vous vendez, la «valeur cible» est la quantité de produit que vous "
-"voulez garder en réserve et ne pas vendre."
+"voulez garder en réserve et ne pas vendre"
 
 # I used the suggestion from erdnaxeli and made some more changes.
 #: po/tutorial.py:36
@@ -607,7 +609,7 @@ msgstr ""
 "jusqu'à 5 tonnes.\n"
 "\n"
 "Cependant si le bateau-marchand n'en veut pas ou n'en a pas autant, vous "
-"devrez être patient et attendre son retour.  ;-)\n"
+"devrez être patient et attendre son prochain passage\n"
 "\n"
 "Unknown Horizons propose un système de prix intelligent, la valeur d'une "
 "unité peut donc varier.\n"
@@ -624,9 +626,10 @@ msgstr ""
 msgid "Reach an island stock of at least 30 tools."
 msgstr "Atteignez un stock d'au moins 30 outils."
 
+# The translation is bad, but it fits. for the moment, this is the solution
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "NOUVELLE MISSION: CONSTRUISEZ UN PAVILLON"
+msgstr "MISSION: LE PAVILLON"
 
 #: po/tutorial.py:39
 msgid ""
@@ -691,11 +694,11 @@ msgstr ""
 
 #: po/tutorial.py:41
 msgid "Build a pavilion with connection to the tents."
-msgstr "Construisez un pavillon connecté aux tentes. "
+msgstr "Construisez un pavillon connecté aux tentes."
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr "NOUVELLE MISSION: NIVEAU SUIVANT"
+msgstr "MISSION: NIVEAU SUIVANT"
 
 #: po/tutorial.py:43
 msgid ""
@@ -766,7 +769,7 @@ msgstr ""
 
 #: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
-msgstr "NOUVELLE MISSION: CONSTRUIRE UNE FERME"
+msgstr "MISSION: CONSTRUIRE UNE FERME"
 
 #: po/tutorial.py:47
 msgid ""
@@ -836,9 +839,10 @@ msgstr ""
 msgid "Build a farm and keep some empty space around it."
 msgstr "Construisez une ferme et laissez de l'espace libre autour d'elle."
 
+# The translation is bad, but it fits. for the moment, this is the solution
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr "NOUVELLE MISSION: CONSTRUISEZ DES CHAMPS"
+msgstr "MISSION: CHAMPS"
 
 #: po/tutorial.py:51
 msgid ""
@@ -911,7 +915,7 @@ msgstr ""
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr "NOUVELLE MISSION : CONSTRUIRE UN ENTREPÔT"
+msgstr "MISSION : L'ENTREPÔT"
 
 #: po/tutorial.py:55
 msgid ""
@@ -932,7 +936,7 @@ msgstr ""
 "arrêterons d'aller chercher les biens dans les entreprises lorsqu'il sera "
 "plein.\n"
 "Donc si aucun marin n'a amélioré sa tente, vous avez probablement beaucoup "
-"de planches et dans ce cas le bucheron fait peut-être une pause.\n"
+"de planches et dans ce cas le bucheron est peut-être inactif.\n"
 "Nous pouvons corriger cette situation par deux approches différentes que "
 "nous allons présenter plus bas.\n"
 "\n"
@@ -940,8 +944,8 @@ msgstr ""
 "Cela peut paraitre étrange mais essayez de cliquer sur les engrenages que "
 "vous voyez par exemple dans le sommaire du bucheron.\n"
 "\n"
-"Si ce mode «pause» est disponible (nous l'appelons «désaffection») les couts "
-"de fonctionnements que vous payez pour le bâtiment baisseront. Il ne "
+"Si ce mode «pause» est disponible (nous l'appelons «désaffection»), les "
+"couts de fonctionnements que vous payez pour le bâtiment baisseront. Il ne "
 "baisseront pas à zéro, mais ils seront déjà plus bas que si le bâtiment "
 "fonctionnait."
 
@@ -963,8 +967,8 @@ msgstr ""
 "bâtiments que vous ne voulez pas détruire mais dont vous n'avez pas besoin "
 "pour l'instant.\n"
 "\n"
-"Une autre solution est de construire le dernier bâtiment de «Niveau I» qui "
-"n'a pas encore été mentionné : l'entrepôt.\n"
+"Une autre solution est de construire le dernier bâtiment de niveau 1 qui n'a "
+"pas encore été mentionné : l'entrepôt.\n"
 "\n"
 "Ce bâtiment a deux fonctions. Il:\n"
 "* Offre plus d'espace de stockage pour vos biens et\n"
@@ -981,11 +985,11 @@ msgstr ""
 #: po/tutorial.py:57
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr ""
-"Construisez un entrepôt (dans l'onglet «Niveau I») à un emplacement utile."
+"Construisez un entrepôt (dans l'onglet niveau I) à un emplacement utile."
 
 #: po/tutorial.py:58
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr "NOUVELLE MISSION: CONSTRUISEZ UN TISSERAND"
+msgstr "MISSION: LE TISSERAND"
 
 #: po/tutorial.py:59
 msgid ""
@@ -1027,7 +1031,7 @@ msgstr ""
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "NOUVELLE MISSION : TERMINER LE DIDACTICIEL"
+msgstr "MISSION : FINIR LE DIDACTICIEL"
 
 #: po/tutorial.py:63
 msgid ""
@@ -1116,7 +1120,7 @@ msgstr ""
 #: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
-"Félicitations! Vous avez atteint la fin de ce didacticiel. Vous êtes "
+"Félicitations! Vous avez atteint la fin de ce didacticiel, vous êtes "
 "maintenant prêt à relever de nouveaux défis!"
 
 #~ msgid ""
