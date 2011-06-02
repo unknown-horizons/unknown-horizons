@@ -214,7 +214,12 @@ class AIPlayer(GenericAI):
 			#self.log.info('ai.tick: no available ships')
 			return
 
-		island = self.choose_island(500 if self.settlement_managers else 150)
+		island = None
+		sequence = [500, 300, 150]
+		for min_size in sequence:
+			island = self.choose_island(min_size)
+			if island is not None:
+				break
 		if island is None:
 			#self.log.info('ai.tick: no good enough islands')
 			return
