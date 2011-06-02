@@ -50,6 +50,7 @@ class VillageBuilder(WorldObject):
 		self.settlement = self.land_manager.settlement
 		self.tents_to_build = 0
 		self.plan = {}
+		self.tent_queue = deque()
 
 	def save(self, db):
 		super(VillageBuilder, self).save(db)
@@ -80,6 +81,7 @@ class VillageBuilder(WorldObject):
 			self.plan[coords] = (purpose, builder)
 			if purpose == self.purpose.planned_tent:
 				self.tents_to_build += 1
+		self._create_tent_queue()
 
 	@classmethod
 	def _remove_unreachable_roads(cls, plan, main_square):
@@ -121,7 +123,7 @@ class VillageBuilder(WorldObject):
 		xs = set([coords[0] for coords in self.land_manager.village])
 		ys = set([coords[1] for coords in self.land_manager.village])
 		tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
-		road_connections = [(-1, -1), (-1, 0), (-1, 1), (-1, 2), (0, -1), (0, 2), (1, -1), (1, 2), (2, -1), (2, 0), (2, 1), (2, 2)]
+		road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
 
 		for x, y in self.land_manager.village:
 			# will it fit in the area?
@@ -217,6 +219,131 @@ class VillageBuilder(WorldObject):
 				self.plan = plan
 				self.tents_to_build = good_tents
 				best_value = value
+		self._optimize_plan()
+		self._create_tent_queue()
+
+	def _optimize_plan(self):
+		# calculate distance from the main square to every tile
+		road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
+		tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		distance = {}
+		queue = deque()
+
+		for coords, (purpose, builder) in self.plan.iteritems():
+			if purpose == self.purpose.main_square:
+				for coords in builder.position.tuple_iter():
+					distance[coords] = 0
+					queue.append(coords)
+
+		while queue:
+			(x, y) = queue.popleft()
+			for dx, dy in moves:
+				coords = (x + dx, y + dy)
+				if coords in self.plan and coords not in distance:
+					distance[coords] = distance[(x, y)] + 1
+					queue.append(coords)
+
+		# remove planned tents from the plan
+		for (x, y) in self.plan:
+			coords = (x, y)
+			if self.plan[coords][0] == self.purpose.planned_tent:
+				for dx, dy in tent_squares:
+					self.plan[(x + dx, y + dy)] = (self.purpose.none, None)
+
+		# create new possible tent position list
+		possible_tents = []
+		for coords in self.plan:
+			if self.plan[coords][0] == self.purpose.none:
+				possible_tents.append((distance[coords], coords))
+		possible_tents.sort()
+
+		# place the tents
+		for _, (x, y) in possible_tents:
+			ok = True
+			for dx, dy in tent_squares:
+				coords = (x + dx, y + dy)
+				if coords not in self.plan or self.plan[coords][0] != self.purpose.none:
+					ok = False
+					break
+			if not ok:
+				continue
+			tent = Builder.create(BUILDINGS.RESIDENTIAL_CLASS, self.land_manager, Point(x, y))
+			if not tent:
+				continue
+
+			# is there a road connection?
+			ok = False
+			for dx, dy in road_connections:
+				coords = (x + dx, y + dy)
+				if coords in self.plan and self.plan[coords][0] == self.purpose.road:
+					ok = True
+					break
+
+			# connection to a road tile exists, build the tent
+			if ok:
+				for dx, dy in tent_squares:
+					self.plan[(x + dx, y + dy)] = (self.purpose.reserved, None)
+				self.plan[(x, y)] = (self.purpose.planned_tent, tent)
+
+		self._return_unused_space()
+
+	def _return_unused_space(self):
+		not_needed = []
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose == self.purpose.none:
+				not_needed.append(coords)
+		for coords in not_needed:
+			self.land_manager.add_to_production(coords)
+	
+	def _create_tent_queue(self):
+		""" This function takes the plan and orders all planned tents according to
+		the distance from the main square to the block they belong to. """
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		blocks = []
+		block = {}
+
+		# form blocks of tents
+		main_square = None
+		for coords, (purpose, builder) in self.plan.iteritems():
+			if purpose == self.purpose.main_square:
+				main_square = builder
+			if purpose != self.purpose.planned_tent or coords in block:
+				continue
+			block[coords] = len(blocks)
+
+			block_list = [coords]
+			queue = deque()
+			explored = set([coords])
+			queue.append(coords)
+			while queue:
+				(x, y) = queue.popleft()
+				for dx, dy in moves:
+					coords = (x + dx, y + dy)
+					if coords not in self.plan or coords in explored:
+						continue
+					if self.plan[coords][0] == self.purpose.planned_tent or self.plan[coords][0] == self.purpose.reserved:
+						explored.add(coords)
+						queue.append(coords)
+						if self.plan[coords][0] == self.purpose.planned_tent:
+							block[coords] = len(blocks)
+							block_list.append(coords)
+			blocks.append(block_list)
+
+		# calculate distance from the main square to the block
+		block_distances = []
+		for coords_list in blocks:
+			distance = 0
+			for coords in coords_list:
+				distance += main_square.position.distance(coords)
+			block_distances.append((distance / len(coords_list), coords_list))
+
+		# form the sorted tent queue
+		self.tent_queue = deque()
+		block_distances.sort()
+		for _, block in block_distances:
+			for coords in sorted(block):
+				self.tent_queue.append(coords)
 
 	def build_roads(self):
 		for (purpose, builder) in self.plan.itervalues():
@@ -229,14 +356,16 @@ class VillageBuilder(WorldObject):
 				builder.execute()
 
 	def build_tent(self):
-		for coords, (purpose, builder) in sorted(self.plan.iteritems()):
-			if purpose == self.purpose.planned_tent:
-				if not builder.have_resources():
-					return (builder, False)
-				if not builder.execute():
-					return (None, False)
-				self.plan[coords] = (self.purpose.tent, builder)
-				return (builder, True)
+		if self.tent_queue:
+			coords = self.tent_queue[0]
+			builder = self.plan[coords][1]
+			if not builder.have_resources():
+				return (builder, False)
+			if not builder.execute():
+				return (None, False)
+			self.plan[coords] = (self.purpose.tent, builder)
+			self.tent_queue.popleft()
+			return (builder, True)
 		return (None, False)
 
 	def count_tents(self):

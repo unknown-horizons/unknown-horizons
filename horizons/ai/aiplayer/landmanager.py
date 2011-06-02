@@ -124,6 +124,10 @@ class LandManager(WorldObject):
 			if coords not in self.village and self._coords_usable(coords):
 				self.production[coords] = tile
 
+	def add_to_production(self, coords):
+		self.production[coords] = self.village[coords]
+		del self.village[coords]
+
 	def display(self):
 		village_colour = (255, 255, 255)
 		production_colour = (255, 255, 0)
