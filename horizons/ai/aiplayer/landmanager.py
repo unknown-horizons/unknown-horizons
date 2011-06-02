@@ -78,8 +78,9 @@ class LandManager(WorldObject):
 			tile = self.island.ground_map[coords]
 			if 'constructible' not in tile.classes:
 				return False
-			if tile.object is None or tile.object.buildable_upon:
-				return True
+			if tile.object is not None and not tile.object.buildable_upon:
+				return False
+			return tile.settlement is None or tile.settlement.owner == self.owner
 		return False
 
 	def legal_for_production(self, rect):
