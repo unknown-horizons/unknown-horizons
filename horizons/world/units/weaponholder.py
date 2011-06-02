@@ -32,12 +32,16 @@ class WeaponHolder(object):
 	def __init__(self, **kwargs):
 		super(WeaponHolder, self).__init__(**kwargs)
 		self.__init()
-	
+
 	def __init(self):
 		self.create_weapon_storage()
 		self._target = None
 		self.add_storage_modified_listener(self.update_range)
-	
+
+	def remove(self):
+		self.remove_storage_modified_listener(self.update_range)
+		super(WeaponHolder, self).remove()
+
 	def create_weapon_storage(self):
 		self._weapon_storage = []
 
@@ -93,8 +97,10 @@ class WeaponHolder(object):
 				import gc
 				print target_ref(), 'has refs:'
 				gc.collect()
+				gc.collect()
+				import pprint
 				for ref in gc.get_referrers(target_ref()):
-					print ref
+					pprint.pprint(ref)
 			Scheduler().add_new_object(Callback(check_target_ref,target_ref), self, 3)
 		self._target = None
 

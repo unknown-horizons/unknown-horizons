@@ -179,7 +179,7 @@ class ShipRoute(object):
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
 
-class Ship(NamedObject, StorageHolder, Unit, WeaponHolder):
+class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -265,7 +265,7 @@ class Ship(NamedObject, StorageHolder, Unit, WeaponHolder):
 		#when the specialized attack ship will be instantiated
 		#this method should be overridden and self.stop_attack moved there
 		self.stop_attack()
-		
+
 		#disable the trading route
 		if hasattr(self, 'route'):
 			self.route.disable()
