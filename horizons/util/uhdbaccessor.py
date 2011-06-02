@@ -153,8 +153,8 @@ class UhDbAccessor(DbReader):
 		@param level: int level for which to return the production lines
 		@return: list of production lines"""
 		return self.cached_query("SELECT production_line \
-							FROM settler.settler_production_line \
-		                    WHERE level = ?", level)
+		                          FROM settler.settler_production_line \
+		                          WHERE level = ?", level)
 
 	def get_settler_name(self, level):
 		"""Returns the name for a specific settler level
@@ -163,21 +163,28 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT name FROM settler_level WHERE level = ?",
 		                         level)[0][0]
 
+	def get_settler_house_name(self, level):
+		"""Returns name of the residential building for a specific increment
+		@param level: int settler's level
+		@return: string settler's housing name"""
+		return self.cached_query("SELECT residential_name FROM settler_level \
+		                          WHERE level = ?", level)[0][0]
+
 	def get_settler_tax_income(self, level):
 		return self.cached_query("SELECT tax_income FROM settler.settler_level \
-		   									 WHERE level=?", level)[0][0]
+		                          WHERE level=?", level)[0][0]
 
 	def get_settler_inhabitants_max(self, level):
 		return self.cached_query("SELECT inhabitants_max FROM settler.settler_level \
-		   									 WHERE level=?", level)[0][0]
+		                          WHERE level=?", level)[0][0]
 
 	def get_settler_inhabitants(self, building_id):
 		return self.cached_query("SELECT inhabitants FROM settler WHERE rowid=?",
 		                         building_id)[0][0]
 
 	def get_settler_upgrade_material_prodline(self, level):
-		return self.cached_query("SELECT production_line FROM upgrade_material WHERE level = ?",
-		                         level)[0][0]
+		return self.cached_query("SELECT production_line FROM upgrade_material \
+		                          WHERE level = ?", level)[0][0]
 
 	@decorators.cachedmethod
 	def get_provided_resources(self, object_class):
