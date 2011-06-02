@@ -70,6 +70,9 @@ class AIPlayer(GenericAI):
 				options.append((flat_land, island))
 				total_land += flat_land
 
+		if total_land == 0:
+			return None
+
 		# choose a random big enough island with probability proportional to the available land
 		choice = self.session.random.randint(0, total_land - 1)
 		for (land, island) in options:
