@@ -47,7 +47,6 @@ class SettlementManager(WorldObject):
 		self.__init(land_manager, branch_office)
 
 		self.village_builder = VillageBuilder(self)
-		self.village_builder.create_plan()
 		self.production_builder = ProductionBuilder(self)
 		self.village_builder.display()
 		self.production_builder.display()

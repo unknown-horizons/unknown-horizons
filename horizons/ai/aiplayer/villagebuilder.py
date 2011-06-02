@@ -37,6 +37,7 @@ class VillageBuilder(WorldObject):
 	def __init__(self, settlement_manager):
 		super(VillageBuilder, self).__init__()
 		self.__init(settlement_manager)
+		self._create_plan()
 
 	def __init(self, settlement_manager):
 		self.settlement_manager = settlement_manager
@@ -78,7 +79,7 @@ class VillageBuilder(WorldObject):
 			if purpose == self.purpose.planned_tent:
 				self.tents_to_build += 1
 
-	def create_plan(self):
+	def _create_plan(self):
 		"""
 		The algorithm is as follows:
 		Place the main square and then form a road grid to support the tents;
