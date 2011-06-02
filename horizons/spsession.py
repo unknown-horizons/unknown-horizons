@@ -66,7 +66,10 @@ class SPSession(Session):
 				self.paused_time_missing =  None
 			self.timer.tick_next_time = None
 		else:
-			self.timer.tick_next_time += ((self.timer.tick_next_time - time.time()) * old / ticks)
+			# correct the time until the next tick starts
+			time_to_next_tick = self.timer.tick_next_time - time.time()
+			if time_to_next_tick > 0: # only do this if we aren't late
+				self.timer.tick_next_time += (time_to_next_tick * old / ticks)
 		self.display_speed()
 
 	def start(self):
