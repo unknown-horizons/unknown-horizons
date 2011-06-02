@@ -52,7 +52,8 @@ class Builder(WorldObject):
 
 		check_settlement = ship is None
 		self.build_position = Entities.buildings[building_id].check_build(self.land_manager.session, \
-			point, rotation = self.rotations[orientation], check_settlement = check_settlement, ship = None)
+			point, rotation = self.rotations[orientation], check_settlement = check_settlement, ship = None, \
+			issuer = self.land_manager.owner)
 		self.position = self.build_position.position
 
 	def save(self, db):
@@ -76,7 +77,7 @@ class Builder(WorldObject):
 		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island, \
 			self.build_position.rotation, settlement = self.land_manager.settlement, \
 			ship = self.ship, tearset = self.build_position.tearset)
-		return cmd.execute(self.land_manager.session)
+		return cmd(self.land_manager.owner)
 
 	def have_resources(self):
 		neededResources = {}
