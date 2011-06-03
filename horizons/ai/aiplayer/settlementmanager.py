@@ -29,6 +29,7 @@ from productionbuilder import ProductionBuilder
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
+from horizons.command.uioptions import SetTaxSetting
 
 class SettlementManager(WorldObject):
 	"""
@@ -187,6 +188,8 @@ class SettlementManager(WorldObject):
 			Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 		else:
 			self.log.info('ai.settlement.tick: everything is done')
+			SetTaxSetting(self.land_manager.settlement, 0.9).execute(self.land_manager.session)
+			self.log.info('ai.settlement.tick: set tax rate to 0.9')
 			self.ticker_finished = True
 
 decorators.bind_all(SettlementManager)
