@@ -33,14 +33,20 @@ from horizons.extscheduler import ExtScheduler
 from horizons.constants import PATHS, GAME_SPEED
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
+from horizons.timer import Timer
 
 
 class SPSession(Session):
+	"""Session tailored for singleplayer games."""
+
 	def create_manager(self):
 		return SPManager(self)
 
 	def create_rng(self):
 		return random.Random()
+
+	def create_timer(self):
+		return Timer(freeze_protection=True)
 
 	def load(self, *args, **kwargs):
 		super(SPSession, self).load(*args, **kwargs)
