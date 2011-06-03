@@ -152,7 +152,6 @@ class SizedSpecializedStorage(SpecializedStorage):
 
 		storeable_amount = self.get_free_space_for(res)
 		if amount > storeable_amount: # tried to store more than limit allows
-			amount = storeable_amount
 			ret = super(SizedSpecializedStorage, self).alter(res, storeable_amount)
 			return (amount - storeable_amount ) + ret
 
