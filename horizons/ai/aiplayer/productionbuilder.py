@@ -217,6 +217,7 @@ class ProductionBuilder(WorldObject):
 		Finds a reasonable place for a fisher and builds the fisher and a road connection.
 		"""
 		options = []
+		refill_cycle_in_tiles = 12
 
 		for (x, y), (purpose, _) in self.plan.iteritems():
 			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
@@ -228,16 +229,25 @@ class ProductionBuilder(WorldObject):
 			if not self._near_collectors(fisher.position):
 				continue
 
-			fish_value = 0
-			fishers_in_range = 1
+			fishers_in_range = 1.0
 			for other_fisher in self.owner.fishers:
 				distance = fisher.position.distance(other_fisher.position)
 				if distance < 16:
 					fishers_in_range += 1 - distance / 16.0
+
+			tiles_used = 0
+			fish_value = 0.0
 			for fish in self.session.world.fish_indexer.get_buildings_in_range((x, y)):
-				fish_value += 1.0 / math.log(point.distance(fish.position) + 2)
+				if tiles_used >= 3 * refill_cycle_in_tiles:
+					break
+				distance = fisher.position.distance(fish.position) + 1.0
+				if tiles_used >= refill_cycle_in_tiles:
+					fish_value += min(1.0, (3 * refill_cycle_in_tiles - tiles_used) / distance) / 10.0
+				else:
+					fish_value += min(1.0, (refill_cycle_in_tiles - tiles_used) / distance)
+				tiles_used += distance
 			if fish_value > 0:
-				options.append((fishers_in_range / 1.0 / fish_value, fisher))
+				options.append((fishers_in_range / fish_value, fisher))
 
 		for _, fisher in sorted(options):
 			if not fisher.have_resources():
