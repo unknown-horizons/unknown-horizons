@@ -262,7 +262,7 @@ def prepare_multiplayer(game):
 def start_multiplayer(game):
 	_modules.session.start()
 
-def load_game(ai_players, human_ai, savegame = None, is_scenario = False, campaign = {}):
+def load_game(ai_players=0, human_ai=False, savegame = None, is_scenario = False, campaign = {}):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
