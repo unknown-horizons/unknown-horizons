@@ -104,7 +104,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# load player
 		human_players = []
-		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0 and is_pirate = 0"):
+		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0 and is_pirate = 0 ORDER BY rowid"):
 			player = None
 			# check if player is an ai
 			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE client_id = ?", client_id)
@@ -133,6 +133,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			if(len(human_players) == 1):
 				# exactly one player, we can quite safely use this one
 				self.player = human_players[0]
+			elif not human_players and self.players:
+				# the first player should be the human-ai hybrid
+				self.player = self.players[0]
 
 		if self.player is not None:
 			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
