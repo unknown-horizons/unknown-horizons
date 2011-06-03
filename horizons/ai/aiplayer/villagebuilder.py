@@ -183,7 +183,8 @@ class VillageBuilder(WorldObject):
 					else:
 						bad_roads += 1
 
-			self._remove_unreachable_roads(plan, main_square)
+			if bad_roads > 0:
+				self._remove_unreachable_roads(plan, main_square)
 
 			# place the tents
 			for coords in sorted(plan):
