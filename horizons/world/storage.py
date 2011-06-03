@@ -222,7 +222,7 @@ class GlobalLimitStorage(GenericStorage):
 				self._storage[res] = self.limit
 		self._changed()
 
-	def get_limit(self, res):
+	def get_limit(self, res=None):
 		return self.limit
 
 class TotalStorage(GlobalLimitStorage):
