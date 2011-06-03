@@ -26,6 +26,10 @@ import os.path
 import glob
 import time
 import yaml
+try:
+	from yaml import CLoader as Loader
+except ImportError:
+	from yaml import Loader
 
 from horizons.constants import PATHS, VERSION
 from horizons.util import DbReader
@@ -299,7 +303,7 @@ class SavegameManager(object):
 	def get_campaign_status(cls):
 		"""Read the campaign status from the saved YAML file"""
 		if os.path.exists(cls.campaign_status_file):
-			return yaml.load(open(cls.campaign_status_file, 'r'), Loader=yaml.CLoader)
+			return yaml.load(open(cls.campaign_status_file, 'r'), Loader=Loader)
 		return {}
 
 	@classmethod
@@ -321,7 +325,7 @@ class SavegameManager(object):
 		scenarios_lists = []
 		campaign_datas = []
 		for i, f in enumerate(files):
-			campaign = yaml.load(open(f,'r'), Loader=yaml.CLoader)
+			campaign = yaml.load(open(f,'r'), Loader=Loader)
 			campaign_datas.append(campaign)
 			scenarios_lists.append([sc.get('level') for sc in campaign.get('scenarios',[])])
 		if not campaign_data:
@@ -367,7 +371,7 @@ class SavegameManager(object):
 				print _("Error: Cannot find scenario with file \"%s\".") % (file,)
 				return {}
 			index = sfiles.index(file)
-		data = yaml.load(open(sfiles[index], 'r'), Loader=yaml.CLoader)
+		data = yaml.load(open(sfiles[index], 'r'), Loader=Loader)
 		return data
 
 	@classmethod

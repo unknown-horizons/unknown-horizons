@@ -23,6 +23,11 @@ import yaml
 import copy
 import pickle
 
+try:
+	from yaml import CLoader as Loader
+except ImportError:
+	from yaml import Loader
+
 import horizons.main
 
 from horizons.ext.enum import Enum
@@ -72,7 +77,7 @@ class ScenarioEventHandler(LivingObject):
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self, \
-		                           run_in = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
+				                   run_in = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
 
 	def sleep(self, ticks):
 		"""Sleep the ScenarioEventHandler for number of ticks. This delays all
@@ -171,7 +176,7 @@ class ScenarioEventHandler(LivingObject):
 	@staticmethod
 	def _parse_yaml(string_or_stream):
 		try:
-			return yaml.load(string_or_stream, Loader=yaml.CLoader)
+			return yaml.load(string_or_stream, Loader=Loader)
 		except Exception, e: # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
 
@@ -189,7 +194,7 @@ class ScenarioEventHandler(LivingObject):
 		f.seek(0)
 		# check for updates or new files
 		if (filename in cls._yaml_file_cache and \
-		    cls._yaml_file_cache[filename][0] != h) or \
+			cls._yaml_file_cache[filename][0] != h) or \
 		   (not filename in cls._yaml_file_cache):
 			cls._yaml_file_cache[filename] = (h, cls._parse_yaml( f ) )
 
@@ -201,10 +206,10 @@ class ScenarioEventHandler(LivingObject):
 		"""
 		self._data = data
 		for event_dict in self._data['events']:
-				event = _Event(self.session, event_dict)
-				self._events.append( event )
-				for cond in event.conditions:
-					self._event_conditions[ cond.cond_type ].add( event )
+			event = _Event(self.session, event_dict)
+			self._events.append( event )
+			for cond in event.conditions:
+				self._event_conditions[ cond.cond_type ].add( event )
 		self.inited = True
 
 	def _scheduled_check(self):
@@ -267,22 +272,22 @@ class _Event(object):
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
 		return '{ actions: [ %s ] , conditions: [ %s ]  }' % \
-		       (', '.join(action.to_yaml() for action in self.actions), \
-		        ', '.join(cond.to_yaml() for cond in self.conditions))
+			   (', '.join(action.to_yaml() for action in self.actions), \
+				', '.join(cond.to_yaml() for cond in self.conditions))
 
 
 class _Action(object):
 	"""Internal data structure representing an ingame scenario action"""
 	action_types = {
-	  'message': show_message,
-	  'db_message': show_db_message,
-	  'win' : do_win,
-	  'lose' : do_lose,
-	  'set_var' : set_var,
-	  'logbook': show_logbook_entry_delayed, # set delay=0 for instant appearing
-	  'logbook_w': write_logbook_entry, # not showing the logbook
-	  'wait': wait,
-	  'goal_reached' : goal_reached,
+		'message': show_message,
+		'db_message': show_db_message,
+		'win' : do_win,
+		'lose' : do_lose,
+		'set_var' : set_var,
+		'logbook': show_logbook_entry_delayed, # set delay=0 for instant appearing
+		'logbook_w': write_logbook_entry, # not showing the logbook
+		'wait': wait,
+		'goal_reached' : goal_reached,
 	}
 
 	def __init__(self, action_dict):
@@ -339,4 +344,3 @@ class _Condition(object):
 		# NOTE: the line above used to end with this: .replace('\n', '')
 		# which broke formatting of logbook messages, of course. Revert in case of problems.
 		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type.key)
-
