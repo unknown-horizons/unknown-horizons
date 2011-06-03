@@ -44,7 +44,7 @@
 		</ScrollArea>-->
 		<Label name="set23" text="{S} = Screenshot" />
 		<Label name="set26" text="{C} = Chat" />
-		<Label name="set25" text="{SHIFT} = Hold to place or tear multiple buildings"
+		<Label name="set25" text="{SHIFT} = Hold to place multiple buildings"
 			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
 	</VBox> <Spacer />
 	<VBox>

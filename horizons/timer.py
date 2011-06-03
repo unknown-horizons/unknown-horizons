@@ -35,6 +35,10 @@ class Timer(LivingObject):
 	possible_ticks_per_second = GAME_SPEED.TICK_RATES
 	default_ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 
+	ACCEPTABLE_TICK_DELAY = 0.2 # sec
+	DEFER_TICK_ON_DELAY_BY = 0.4 # sec
+
+
 	def __init__(self, tick_next_id = 0):
 		"""
 		NOTE: timer will not start until activate() is called
@@ -103,6 +107,11 @@ class Timer(LivingObject):
 				elif r != self.TEST_RETRY_KEEP_NEXT_TICK_TIME:
 					continue
 				return
+			if self.tick_next_time:
+				# stretch time if we're too slow
+				diff = time.time() - self.tick_next_time
+				if diff > self.ACCEPTABLE_TICK_DELAY:
+					self.tick_next_time += self.DEFER_TICK_ON_DELAY_BY
 			for f in self.tick_func_call:
 				f(self.tick_next_id)
 			if self.ticks_per_second == 0:
