@@ -52,7 +52,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		@param use_inactive_icon: wheter to use inactive icon if amount == 0
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
-		icon, icon_disabled = db.get_res_icon(res)
+		icon, icon_disabled, _ = db.get_res_icon(res)
 		if not use_inactive_icon:
 			icon_disabled = icon
 		tooltip = db.get_res_name(res)
