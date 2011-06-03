@@ -47,19 +47,30 @@ class UhDbAccessor(DbReader):
 
 	# Resource table
 
-	def get_res_name(self, id):
+	def get_res_name(self, id, only_if_tradeable=False, only_if_inventory=False):
 		"""
 		Returns the name to a specific resource id.
 		@param id: int resource's id, of which the name is returned
 		"""
-		return self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
+		sql = "SELECT name FROM resource WHERE id = ?"
+		if not (only_if_tradeable or only_if_inventory):
+			return self.cached_query(sql, id)[0][0]
+		if only_if_tradeable:
+			sql += " AND tradeable = 1"
+		if only_if_inventory:
+			sql += " AND shown_in_inventory = 1"
+		try:
+			return self.cached_query(sql, id)[0][0]
+		except IndexError:
+			return None
 
 	def get_res_icon(self, res):
 		"""Returns icons of a resource
 		@param res: resource id
-		@return: tuple: (icon_path, icon_disabled_path)"""
+		@return: tuple: (icon_path, icon_disabled_path, icon_small_path)"""
 		return self.cached_query('SELECT icon, \
-			    CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END \
+			    CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END, \
+			    CASE WHEN (icon_small is null) THEN icon ELSE icon_small END \
 			    FROM data.resource WHERE id = ?', res)[0]
 
 	def get_res_value(self, id):
