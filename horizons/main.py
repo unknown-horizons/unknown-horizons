@@ -58,7 +58,7 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global fife, db, debug, preloading, json, cloader
+	global fife, db, debug, preloading
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
 
@@ -66,8 +66,6 @@ def start(command_line_arguments):
 
 	# handle commandline globals
 	debug = command_line_arguments.debug
-	json = command_line_arguments.json
-	cloader = command_line_arguments.cloader
 
 	if command_line_arguments.restore_settings:
 		# just delete the file, Settings ctor will create a new one

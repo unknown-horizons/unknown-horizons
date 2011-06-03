@@ -25,7 +25,12 @@ import os
 import os.path
 import glob
 import time
-import yaml, json, shelve
+import shelve
+from yaml import load
+try:
+	from yaml import CLoader as Loader
+except ImportError:
+	from yaml import Loader
 
 from horizons.constants import PATHS, VERSION
 from horizons.util import DbReader
@@ -45,20 +50,14 @@ class YamlCache(object):
 		if cls.virgin:
 			cls.read_bin_file()
 			cls.virgin = False
-		# by default the filename contains ".yaml" :
-		if horizons.main.json:
-			data = cls.get_json_file(filename.replace('.yaml', '.json'))
-		elif horizons.main.cloader:
-			data = cls.get_yaml_file(filename, cloader = True)
-		else:
-			data = cls.get_yaml_file(filename)
+		data = cls.get_yaml_file(filename)
 		if cls.dirty:
 			cls.write_bin_file()
 			cls.dirty = False
 		return data
 
 	@classmethod
-	def get_yaml_file(cls, filename, cloader = False):
+	def get_yaml_file(cls, filename):
 		# calc the hash
 		f = open(filename, 'r')
 		h = hash(f.read())
@@ -68,23 +67,10 @@ class YamlCache(object):
 		    cls.cache[filename][0] != h) or \
 		   (not filename in cls.cache):
 		   	cls.dirty = True
-			if cloader:
-				cls.cache[filename] = (h, yaml.load( f, Loader = yaml.CLoader ) )
-			else:
-				cls.cache[filename] = (h, yaml.load( f ) )
+			cls.cache[filename] = (h, load( f, Loader = Loader ) )
 
 		return cls.cache[filename][1]
 
-	@classmethod
-	def get_json_file(cls, filename):
-		f = open(filename, 'r')
-		h = hash(f.read())
-		f.seek(0)
-		if (filename in cls.cache and cls.cache[filename][0] != h) or (not filename in cls.cache):
-		   	cls.dirty = True
-			cls.cache[filename] = (h, json.loads(f.read()))
-		return cls.cache[filename][1]
-	
 	@classmethod
 	def write_bin_file(cls):
 		s = shelve.open(cls.yaml_cache)
