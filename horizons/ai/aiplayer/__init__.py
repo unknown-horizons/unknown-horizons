@@ -35,6 +35,7 @@ from horizons.constants import RES, BUILDINGS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.util.python import decorators
+from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -207,6 +208,7 @@ class AIPlayer(GenericAI):
 		mission.start()
 
 	def tick(self):
+		self.manage_resources()
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
 
 		ship = self.ships.keys()[0]
@@ -235,6 +237,28 @@ class AIPlayer(GenericAI):
 					self.log.info('ai.tick: send ship %s on a mission to get resources for a new settlement', ship)
 					self.prepare_foundation_ship(settlement_manager, ship)
 					return
+
+	buy_sell_thresholds = {RES.FOOD_ID: (20, 40), RES.BOARDS_ID: (20, 30)}
+
+	def manage_resources(self):
+		for settlement_manager in self.settlement_managers:
+			settlement = settlement_manager.land_manager.settlement
+			inventory = settlement.inventory
+			for res, (max_buy, min_sell) in self.buy_sell_thresholds.iteritems():
+				if inventory[res] < max_buy:
+					if res in settlement.sell_list:
+						RemoveFromSellList(settlement, res).execute(self.session)
+					if res not in settlement.buy_list:
+						AddToBuyList(settlement, res, max_buy).execute(self.session)
+				elif inventory[res] > min_sell:
+					if res in settlement.buy_list:
+						RemoveFromBuyList(settlement, res).execute(self.session)
+					if res not in settlement.sell_list:
+						AddToSellList(settlement, res, min_sell).execute(self.session)
+				elif res in settlement.buy_list:
+					RemoveFromBuyList(settlement, res).execute(self.session)
+				elif res in settlement.sell_list:
+					RemoveFromSellList(settlement, res).execute(self.session)
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
