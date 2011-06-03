@@ -32,7 +32,7 @@ from math import sin, cos
 class Minimap(object):
 	"""A basic minimap.
 
-	NOTE: Rendered images are sorted by name, so use minimap_${X)_foo,
+	NOTE: Rendered images are sorted by name, so use minimap_${X}_foo,
 				where X of {a, b, ..} indicating the z-order
 	"""
 	island_id, cam_border = range(0, 2)
