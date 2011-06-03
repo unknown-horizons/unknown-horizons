@@ -23,12 +23,18 @@ from horizons.gui.widgets.tooltip import TooltipIcon
 from horizons.i18n import load_xml_translated
 import horizons.main
 
-def create_resource_icon(res_id, db):
+def create_resource_icon(res_id, db, size=50):
 	"""Creates a pychan icon for a resource.
 	@param res_id:
 	@param db: dbreader for main db"""
-	return TooltipIcon(tooltip=db.get_res_name(res_id), \
-	                   image=db.get_res_icon(res_id)[0])
+	if size == 50:
+		return TooltipIcon(tooltip=db.get_res_name(res_id), \
+		                   image=db.get_res_icon(res_id)[0])
+	elif size == 16:
+		return TooltipIcon(tooltip=db.get_res_name(res_id), \
+		                   image=db.get_res_icon(res_id)[2])
+	else:
+		return None
 
 def adjust_widget_black_background(widget):
 	"""Resizes the black background container and centers the menu
