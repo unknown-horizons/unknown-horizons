@@ -4,7 +4,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-06-??: Milestone 2011.2
-changelog date: MAY 26; rev: eba3b01a1dfdf06ffa7399d81e1e1a3c1ddd916f
+changelog date: JUN 03; rev: 68b24535e1fe7254e96ab52b6fba8e97c7e4290f
   * New: Moved to new tileset structure // not merged yet
   * New: Made new fife editor work with new tileset structure // not merged yet
 
@@ -19,10 +19,16 @@ changelog date: MAY 26; rev: eba3b01a1dfdf06ffa7399d81e1e1a3c1ddd916f
          socket.fromfd on windows for python2.
   * New: compatibility layer for pyenet build with pyrex vs cpython
   * New: 
+  * New: 
   * Change: Randomize playlist of background music
   * Change: Try using installed pyenet version before searching for compiled one
   * Change: Made Callback class hashable for usage in dictionaries
   * Change: rename build menu icons to achieve unified naming convention
+  * Change: abort if an invalid fife-path has been specified at command line
+  * Change: roads on field layer instead of ground layer (simplifies rendering)
+  * Change: filter destination points in pathfinding
+  * Change: changes to autosave interval apply without restart
+  * Change: 
   * Change: 
   * Fix: save/load of scenario variables
   * Fix: properly destruct the messagewidget
@@ -32,6 +38,9 @@ changelog date: MAY 26; rev: eba3b01a1dfdf06ffa7399d81e1e1a3c1ddd916f
   * Fix: crash when saving when there were no saved games
   * Fix: crash when deleting trade routes
   * Fix: huge memory leak when rotating the minimap
+  * Fix: move_home checks now if a unit is already at home
+  * Fix: avoid freezes due to too little cpu power if game speed is high
+  * Fix: 
   * Fix: 
 
 * Gameplay and Balancing
@@ -44,22 +53,29 @@ changelog date: MAY 26; rev: eba3b01a1dfdf06ffa7399d81e1e1a3c1ddd916f
   * New: scenario chooser interface after winning a scenario
   * New: improvements to pathfinding speed on sea tiles
   * New: 
+  * New: 
   * Change: tavern building costs: 250 coins, 4 boards, 2 bricks (was 0,0,0)
   * Change: storage tent building costs: 350 coins (was 750), 4 boards (was 10)
   * Change: storage tent additional capacity per slot: 10t (was 30)
   * Change: storage tent radius: 17 (was 24). Reduces the covered area by 50%.
   * Change: Use pirate ship names for pirates instead of player ship names
   * Change: show empty logbook (was: silently not show)
-  * Change: more useful error messages (description, advice, technical details)
+  * Change: more useful error messages: description, advice, technical details
   * Change: update inventory once a second (was: on every settlement change)
   * Change: inhabitant taxes can now be set in 0.1 steps (was: 0.5)
   * Change: only display scenarios in selected language and English by default
+  * Change: tearing tool sticks if shift key is pressed, same as building tool
+  * Change: 
   * Change: 
   * Fix: show player's gold immediately after load
   * Fix: handling of multiple dialogs that pause the game (new pause stack)
   * Fix: reset of tile walkability after buildings have been removed
   * Fix: Made trader a bit faster when it can't find a path to a branch office
   * Fix: route entry slot was reset when adding new resource
+  * Fix: fishers no longer get stuck as easily
+  * Fix: paused game allowed to change game speed
+  * Fix: only allow grouping of units owned by the player
+  * Fix: 
   * Fix: 
 
 * Graphics and GUI
@@ -70,13 +86,15 @@ changelog date: MAY 26; rev: eba3b01a1dfdf06ffa7399d81e1e1a3c1ddd916f
   * New: half-timbered house
   * New: ship name label and dynamic spacing in trade / exchange widget
   * New: display settlement name as heading in several buildings
-  * New: tooltips for minimap HUD buttons
+  * New: tooltips for several buttons
   * New: up and down arrows, small rect-shaped delete button
   * New: dynamic positioning on most headlines. Causes intentional glitch
   * New: svg application icon without text for use in small icons
   * New: StepSlider that snaps to values
   * New: display tax rate as label
   * New: auto-style each widget named 'name' or 'headline*' as headline style
+  * New: highlight background of currently selected tab
+  * New: 
   * New: 
   * Change: custom tooltip widgets now support names set in python code
   * Change: made random maps prettier, coastline is now properly drawn
@@ -84,10 +102,17 @@ changelog date: MAY 26; rev: eba3b01a1dfdf06ffa7399d81e1e1a3c1ddd916f
             "center:center". Also modified other positioning code to use this.
   * Change: default style border size now 0 (was 2)
   * Change: new tooltip graphics
+  * Change: tab background images
+  * Change: minimap now based on fife.Image (was: Point)
+  * Change: button placement in settings to conform with other menus
+  * Change: proper residential names in inhabitant overview tab (was: 'Tent')
+  * Change: 
   * Change: 
   * Fix: spacing issues in build preview tab headline when rotating
   * Fix: 'Widget containment fumble' warning in buyselltab selection widget
   * Fix: properly translate tooltips in build menu
+  * Fix: menu closes correctly on instance removal (delete instance ref)
+  * Fix: 
   * Fix: 
 
 * Translations
@@ -100,11 +125,14 @@ changelog date: MAY 26; rev: eba3b01a1dfdf06ffa7399d81e1e1a3c1ddd916f
          to enable it.
   * New: testing gettext plural form support
   * New: 
+  * New: 
   * Change: large updates to all templates and translation files
   * Change: Rename unknownhorizons.mo to unknown-horizons.mo (usage of %name)
   * Change: unknown-horizons.mo now found in content/lang/ (was: build/mo/)
   * Change: 
+  * Change: 
   * Fix: duplicate string name in help.xml that caused wrong translation
+  * Fix: 
   * Fix: 
 
 
@@ -297,7 +325,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Do not require a restart for toggling sound
   * New: Limited the messagewidget to 5 messages max on screen
   * New: Game now pauses when logbook is shown
-  * New: community resource icon.
+  * New: community resource icon
   * New: inhabitant tab of the marketplace
   * New: Included system info in debug output
   * New: multiplayer
@@ -307,8 +335,8 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Added commandline flag to restore the default settings:
          --restore-settings
   * New: Pressing enter in a change name dialog (for ship or settlement) now
-         acts as submit button.
-  * New: Applied patch by Yeya to improve random map generation.
+         acts as submit button
+  * New: Applied patch by Yeya to improve random map generation
   * New: Game will now create a settings.xml file on first program launch
          containing the new settings, it's now used instead of the old sqlite
          database
@@ -349,8 +377,8 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * Change: Some settings have been moved to the constants, like View and Tick
             settings
   * Change: Made textiles a level 2 requirement instead of level 1
-  * Change: moved farm, weaver, pasture, potatofield to 2nd increment. -
-            rearranged ...
+  * Change: moved farm, weaver, pasture, potatofield to 2nd increment
+  * Change: rearranged build menu
   * Change: Rename cannonboat to huker
   * Change: Refactored engine sound management code
   * Change: Toggling sound on/off no longer requires reboot
@@ -378,14 +406,14 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Added gfx for pioneers house
   * New: Added a second pioneers house
   * New: Added school model for pioneers
-  * New: Added new level 2 farm model.
+  * New: Added new level 2 farm model
   * New: Added Clay Pit gfx
   * New: Added a building and resource tree made
   * New: Added clay resource
   * New: Added brickyard
   * New: Added multiplayer lobby with chat and ingamechat
   * New: Added new weaver model, and moved from sailors to pioneers
-  * New: Added an overview tab to the signal fire.
+  * New: Added an overview tab to the signal fire
   * New: Display a tab when clicking on resource deposit
   * New: Added new player emblems
   * New: Trader got an own overview tab
@@ -404,7 +432,6 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Added Catalan; Valencian translation
   * New: Added Portuguese (Brazil) translation
   * New: Added Spanish; Castilian translation
-  * New: Added Estonian translation
   * New: Added Estonian translation
   * New: Added Italian translation
   * Change: Updated English translation
@@ -512,7 +539,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Translations in Portuguese Norwegian German French
   * Change: Hotkeys: set g for grid, b for buildmenu and d for debugger
   * Fix: Building speed has been improved, lumberjack preview is now
-         almost lagfree.
+         almost lagfree
   * Fix: Loading speed has been improved
   * Fix: Tearing buildings no longer crashes the game
   * Fix: All exceptions when ending a session have been taken care of
@@ -560,7 +587,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * Fix: Herder goes backwards and his sheeps are all at the same place
   * Fix: Turning menu: picture and building are asynchron
   * Fix: Stock don't increase after building a storage tent
-  * Fix: Weaver steal in other weaver's tent.
+  * Fix: Weaver steal in other weaver's tent
   * Fix: Resource transfer crashes game when out of range
   * Fix: Buildable status only updated on mouse move
 
