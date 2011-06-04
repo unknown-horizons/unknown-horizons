@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-23 02:17+0200\n"
+"PO-Revision-Date: 2011-05-24 23:31+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -325,7 +325,6 @@ msgid "Build"
 msgstr "Construir"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
-#, fuzzy
 msgid "Boat builder overview"
 msgstr "Resumo do construtor de barcos"
 
@@ -368,7 +367,6 @@ msgid "Inventory"
 msgstr "Inventário"
 
 #: horizons/gui/tabs/inventorytab.py:63
-#, fuzzy
 msgid "Ship inventory"
 msgstr "Inventário do navio"
 
@@ -441,7 +439,6 @@ msgid "Sailor buildings"
 msgstr "Estruturas Marinheiros"
 
 #: horizons/i18n/guitranslations.py:44
-#, fuzzy
 msgid "Residents and infrastructure"
 msgstr "Habitantes e Infraestrutura"
 
@@ -704,7 +701,6 @@ msgid "Start production"
 msgstr "Iniciar produção"
 
 #: horizons/i18n/guitranslations.py:127
-#, fuzzy
 msgid "Leave Captain's log"
 msgstr "Diário do Capitão"
 
@@ -1237,7 +1233,6 @@ msgid "Resource deposit"
 msgstr "Depósito de recursos"
 
 #: horizons/i18n/guitranslations.py:312
-#, fuzzy
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 "Este é um depósito de recursos, onde você pode construir uma mina para "
@@ -1248,7 +1243,6 @@ msgid "It contains these resources:"
 msgstr "Contém estes recursos:"
 
 #: horizons/i18n/guitranslations.py:315
-#, fuzzy
 msgid "Needed resources:"
 msgstr "Recursos necessários:"
 
@@ -1472,7 +1466,6 @@ msgstr ""
 
 # 92%
 #: run_uh.py:90
-#, fuzzy
 msgid "Starting Unknown Horizons"
 msgstr "Iniciando Unknown Horizons"
 
