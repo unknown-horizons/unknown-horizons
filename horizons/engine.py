@@ -430,8 +430,12 @@ class Fife(ApplicationBase):
 			if langname == self.get_uh_setting('Language'):
 				return locale_code
 		# TODO : better way to find 'System default' ?
-		default_locale, default_encoding = locale.getdefaultlocale()
-		return default_locale.split('_')[0]
+		try:
+			default_locale, default_encoding = locale.getdefaultlocale()
+			return default_locale.split('_')[0]
+		except:
+			# If default locale could not be detected use 'EN' as fallback
+			return "en"
 
 	def set_network_port(self, port):
 		"""Sets a new value for client network port"""
