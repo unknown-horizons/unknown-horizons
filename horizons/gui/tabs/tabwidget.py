@@ -104,6 +104,8 @@ class TabWidget(object):
 		new_button = self.content.findChild(name=number)
 		new_button.up_image = new_tab.button_active_image
 		self.current_tab = new_tab
+		# important to display the tabs correctly in front
+		self.widget.hide()
 		self.show()
 
 	def _draw_widget(self):
