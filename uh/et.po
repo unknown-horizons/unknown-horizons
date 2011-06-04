@@ -1467,10 +1467,12 @@ msgstr ""
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Viga: Ei leita kaarti \"%s\"."
 
+# 81%
+# 76%
 #: horizons/savegamemanager.py:343
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr ""
+msgstr "Viga: Ei leita kaarti \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"

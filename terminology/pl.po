@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-22 22:45+0200\n"
+"PO-Revision-Date: 2011-05-22 22:48+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -134,7 +134,6 @@ msgstr "osada"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
-#, fuzzy
 msgid "start"
 msgstr "start"
 
@@ -178,7 +177,6 @@ msgstr "menu"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "produce"
 msgstr "produkuj"
 
@@ -209,7 +207,6 @@ msgstr "kliknij"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
-#, fuzzy
 msgid "main square"
 msgstr "rynek"
 
@@ -229,7 +226,6 @@ msgstr "czas"
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/buyselltab.py
 #: horizons/gui/tabs/boatbuildertab.py
-#, fuzzy
 msgid "trade"
 msgstr "handel"
 
@@ -370,7 +366,6 @@ msgstr "ogień"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/boatbuildertab.py
-#, fuzzy
 msgid "fisher"
 msgstr "rybak"
 
@@ -552,7 +547,6 @@ msgstr "menu budowy"
 #
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Captain's log"
 msgstr "Dziennik kapitański"
 
@@ -1008,7 +1002,6 @@ msgstr "czerwony"
 #
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "return"
 msgstr "powrót"
 
@@ -1058,7 +1051,6 @@ msgstr ""
 # 
 #: po/tutorial.py
 #: sqlite/Building
-#, fuzzy
 msgid "sugar field"
 msgstr "pole cukrowe"
 
