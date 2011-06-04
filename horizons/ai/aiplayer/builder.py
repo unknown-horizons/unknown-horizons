@@ -41,7 +41,6 @@ class Builder(WorldObject):
 		@param point: Point instance, bottom left corner coordinates
 		@param orientation: 0..3 for the rotations [45, 135, 225, 315]
 		@param ship: ship instance if building from ship
-		@return instance of BuilderCommand
 		"""
 		super(Builder, self).__init__(worldid)
 		self.building_id = building_id
