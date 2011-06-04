@@ -37,16 +37,15 @@ class BuildRelatedTab(OverviewTab):
 
 	def  __init__(self, instance, icon_path='content/gui/icons/tabwidget/production/related_%s.png'):
 		super(BuildRelatedTab, self).__init__(
-			widget = 'overview_buildrelated.xml',
-			instance = instance, 
-			icon_path='content/gui/icons/tabwidget/production/related_%s.png'
+		    widget = 'overview_buildrelated.xml',
+		    instance = instance,
+		    icon_path='content/gui/icons/tabwidget/production/related_%s.png'
 		)
 		self.tooltip = _("Build related fields")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		
-		
+
 		# remove old field data
 		parent_container = self.widget.child_finder('related_fields')
 		while len(parent_container.children) > 0:
@@ -54,62 +53,59 @@ class BuildRelatedTab(OverviewTab):
 
 		# Load all related Fields of this Farm
 		building_ids = self.instance.session.db.cached_query("SELECT related_building FROM related_buildings where building = ?", self.instance.id)
-		build_buttons = list()
 
+		container = self.__get_new_container()
+		counter = 0
+		for building_id in sorted(building_ids):
+			if self._create_build_buttons(building_id[0], container):
+				counter += 1
+				if counter%3==0: # This is here because we can only check if a building was added
+					parent_container.addChild(container)
+					container = self.__get_new_container()
+
+		if counter%3!=0:
+			# Still need to add last container
+			parent_container.addChild(container)
+
+		super(BuildRelatedTab, self).refresh()
+
+	def __get_new_container(self):
 		gui = load_xml_translated(self.relatedfields_gui_xml)
 		container = gui.findChild(name="fields_container")
-		for x,building_id in enumerate(sorted(building_ids)):
-			retVal = self._create_build_buttons(building_id[0], container)
-			if retVal != None:
-				build_buttons.append(retVal)
-				
-				if x%3==0:
-					container.stylize('menu_black')
-					parent_container.addChild(container)
-				else:
-					container = gui.findChild(name="fields_container")
-				
-		for name, cls in build_buttons:
-			self.widget.mapEvents({ name: Callback(self.buildField, cls) })
-		
-		super(BuildRelatedTab, self).refresh()
-	
+		container.stylize('menu_black')
+		return container
+
+
 	def _create_build_buttons(self, id, container):
-		building = Entities.buildings[id]( \
-					session=self.instance.session, \
-					x=0, y=0, \
-					rotation=45, owner=self.instance.owner, \
-					island=self.instance.island, \
-					instance=None)
-		
+		(level, name) = self.instance.session.db.cached_query("SELECT settler_level, name FROM building where id = ?", id)[0]
+
 		# Check if the level of the building is lower or same as the settler level
-		if building.level <= self.instance.owner.settler_level:
-			# Display Buildings
-			build_button = TooltipButton(name="build"+str(id), tooltip=_("Build")+" "+_(unicode(building.name)))
-			build_button_bg = pychan.widgets.Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")				
-			
+		if level <= self.instance.owner.settler_level:
 			buildmenu_image_path = "content/gui/icons/buildmenu/";
-			
-			build_button.up_image=buildmenu_image_path+building.name.lower().replace(" ", "")+".png"
-			build_button.down_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
-			build_button.hover_image=buildmenu_image_path+building.name.lower().replace(" ", "")+"_h.png"
-				
+			path = buildmenu_image_path + name.lower().replace(" ", "")
+
+			build_button = TooltipButton(name="build"+str(id), tooltip=_("Build")+" "+_(unicode(name)))
+			build_button.up_image = path + ".png"
+			build_button.down_image = path + "_h.png"
+			build_button.hover_image = path + "_h.png"
+			build_button.capture(Callback(self.buildField, id))
+
 			container.findChild(name="build_button_container").addChild(build_button)
+
+			build_button_bg = pychan.widgets.Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
 			container.findChild(name="build_button_bg_container").addChild(build_button_bg)
-			
-			return (build_button.name, building)
+
+			return True
 		else:
-			return None
-	
-	def buildField(self, building):
+			# No button built
+			return False
+
+	def buildField(self, buildingid):
 		self.hide()
-		
+
 		# deselect all
 		for instance in self.instance.session.selected_instances:
 			instance.deselect()
 		self.instance.session.selected_instances.clear()
-		
-		if hasattr(building, 'show_build_menu'):
-			building.show_build_menu()
-		self.instance.session.cursor = BuildingTool(self.instance.session, building, None)
 
+		self.instance.session.cursor = BuildingTool(self.instance.session, Entities.buildings[buildingid], None)
