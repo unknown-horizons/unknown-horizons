@@ -72,7 +72,6 @@ class BuildRelatedTab(OverviewTab):
 	def __get_new_container(self):
 		gui = load_xml_translated(self.relatedfields_gui_xml)
 		container = gui.findChild(name="fields_container")
-		container.stylize('menu_black')
 		return container
 
 
