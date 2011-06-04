@@ -25,7 +25,7 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, TraderShipOverviewTab
-from horizons.world.storage import PositiveTotalStorage
+from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
@@ -199,7 +199,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
-		self.inventory = PositiveTotalStorage(STORAGE.SHIP_TOTAL_STORAGE)
+		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
 
 	def create_route(self):
 		self.route=ShipRoute(self)
@@ -251,7 +251,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		"""Moves the ship.
 		This is called when a ship is selected and RMB is pressed outside the ship"""
 		self.stop()
-		
+
 		#disable the trading route
 		if hasattr(self, 'route'):
 			self.route.disable()

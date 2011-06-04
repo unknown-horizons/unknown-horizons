@@ -262,6 +262,24 @@ class PositiveTotalStorage(PositiveStorage, TotalStorage):
 			del self._storage[res]
 		return ret
 
+class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
+	"""A combination of the Total and Positive storage which only has a limited number of slots.
+	Used to set a limit and ensure there are no negative amounts in the storage."""
+	def __init__(self, limit, slotnum):
+		super(PositiveTotalNumSlotsStorage, self).__init__(limit)
+		self.slotnum = slotnum
+
+	def alter(self, res, amount):
+		if amount == 0:
+			return 0
+		if not res in self._storage and len(self._storage) >= self.slotnum:
+			return amount
+		ret = super(PositiveTotalNumSlotsStorage, self).alter(res, amount)
+		if self[res] == 0:
+			# remove empty slots, cause else they will get displayed in the ship inventory
+			del self._storage[res]
+		return ret
+
 class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 	"""A storage consisting of a slot for each resource, all slots have the same size 'limit'
 	Used by the branch office for example. So with a limit of 30 you could have a max of
