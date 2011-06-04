@@ -78,8 +78,8 @@ class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS
-	tabs = [ ResourceDepositOverviewTab ]
-	enemy_tabs = [ ResourceDepositOverviewTab ]
+	tabs = (ResourceDepositOverviewTab,)
+	enemy_tabs = (ResourceDepositOverviewTab,)
 	walkable = False
 
 	def __init__(self, inventory=None, *args, **kwargs):
