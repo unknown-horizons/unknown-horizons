@@ -24,7 +24,7 @@ from fife.extensions.pychan.widgets import Icon
 from horizons.gui.widgets  import TooltipButton
 from horizons.gui.mousetools  import BuildingTool
 from horizons.gui.tabs import OverviewTab
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from horizons.entities import Entities
 
@@ -78,7 +78,7 @@ class BuildRelatedTab(OverviewTab):
 		"""
 		Loads a background container xml file. Returns the loaded widget.
 		"""
-		gui = load_xml_translated(self.relatedfields_gui_xml)
+		gui = load_uh_widget(self.relatedfields_gui_xml)
 		container = gui.findChild(name="fields_container")
 		return container
 

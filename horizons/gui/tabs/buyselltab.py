@@ -22,12 +22,12 @@
 from fife.extensions import pychan
 import logging
 
-from horizons.i18n import load_xml_translated
 from tabinterface import TabInterface
 from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBuyList, \
                                        RemoveFromSellList
 from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.util import Callback
+from horizons.util.gui import load_uh_widget
 
 class BuySellTab(TabInterface):
 	"""
@@ -100,7 +100,7 @@ class BuySellTab(TabInterface):
 		content = self.widget.findChild(name="content")
 		assert(content is not None)
 		for num in range(0, num):
-			slot = load_xml_translated('trade_single_slot.xml')
+			slot = load_uh_widget('trade_single_slot.xml')
 			self.slots[num] = slot
 			slot.id = num
 			slot.action = 'buy'
@@ -277,7 +277,7 @@ class BuySellTab(TabInterface):
 		'None' resource which allows to delete slot actions.
 		The resources are ordered by their res_id.
 		"""
-		self.resources = load_xml_translated('select_trade_resource.xml')
+		self.resources = load_uh_widget('select_trade_resource.xml')
 		self.resources.position = self.widget.position
 		button_width = 50
 		vbox = self.resources.findChild(name="resources")
