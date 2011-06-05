@@ -50,7 +50,15 @@ class LocalizedSetting(Setting):
 	plain load_xml().
 	"""
 	def _loadWidget(self, dialog):
-		return load_uh_widget(dialog)
+		wdg = load_uh_widget(dialog, style="book")
+		# HACK: fife settings call stylize, which breaks our styling on widget load
+		no_restyle_str = "do_not_restyle_this"
+		self.setGuiStyle(no_restyle_str)
+		def no_restyle(style):
+			if style != no_restyle_str:
+				wdg.stylize(style)
+		wdg.stylize = no_restyle
+		return wdg
 
 	def _showChangeRequireRestartDialog(self):
 		"""Overwrites FIFE dialog call to use no xml file but a show_popup."""
@@ -89,7 +97,6 @@ class Fife(ApplicationBase):
 		                                 settings_file=PATHS.USER_CONFIG_FILE,
 		                                 settings_gui_xml="settings.xml",
 		                                 changes_gui_xml="requirerestart.xml")
-		self._setting.setGuiStyle("book")
 
 		# TODO: find a way to apply changing to a running game in a clean fashion
 		#       possibility: use singaling via changelistener
