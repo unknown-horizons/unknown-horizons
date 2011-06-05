@@ -66,6 +66,14 @@ class LocalizedSetting(Setting):
 		message = _("Some of your changes require a restart of Unknown Horizons.")
 		horizons.main._modules.gui.show_popup(headline, message)
 
+	def setDefaults(self):
+		title = _("Restore default settings")
+		msg = _("This will delete all changes to the settings you made so far. Do you want to continue?")
+		confirmed = horizons.main._modules.gui.show_popup(title, msg, \
+		                                                  show_cancel_button=True)
+		if confirmed:
+			super(LocalizedSetting, self).setDefaults()
+
 class Fife(ApplicationBase):
 	"""
 	"""
