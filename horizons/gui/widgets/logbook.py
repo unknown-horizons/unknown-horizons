@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 
@@ -124,7 +124,7 @@ class LogBook(object):
 
 	def _init_gui(self):
 		"""Initial init of gui."""
-		self._gui = load_xml_translated("captains_log.xml")
+		self._gui = load_uh_widget("captains_log.xml")
 		self._gui.mapEvents({
 		  'backwardButton' : Callback(self._scroll, -2),
 		  'forwardButton' : Callback(self._scroll, 2),

@@ -30,8 +30,7 @@ from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.gui.utility import create_resource_icon
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget, create_resource_icon
 
 
 class OverviewTab(TabInterface):
@@ -201,7 +200,7 @@ class ProductionOverviewTab(OverviewTab):
 		# sort by production line id to have a consistent (basically arbitrary) order
 		for production in sorted(self.instance._get_productions(), \
 								             key=(lambda x: x.get_production_line_id())):
-			gui = load_xml_translated(self.production_line_gui_xml)
+			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
 			container = gui.findChild(name="production_line_container")
 			if production.is_paused():

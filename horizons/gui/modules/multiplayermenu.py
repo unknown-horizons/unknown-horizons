@@ -32,7 +32,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util import Callback
 from horizons.network import CommandError
-from horizons.gui.utility import adjust_widget_black_background
+from horizons.util.gui import adjust_widget_black_background
 
 
 class MultiplayerMenu(object):

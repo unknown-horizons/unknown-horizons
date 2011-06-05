@@ -22,7 +22,7 @@ from fife.extensions import pychan
 from horizons.gui.widgets.tooltip import TooltipButton
 
 import horizons.main
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 
 class TabWidget(object):
@@ -43,7 +43,7 @@ class TabWidget(object):
 		self.ingame_gui = ingame_gui
 		self._tabs = tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
-		self.widget = load_xml_translated("tab_base.xml")
+		self.widget = load_uh_widget("tab_base.xml")
 		if position is None:
 			# add positioning here
 			self.widget.position = (

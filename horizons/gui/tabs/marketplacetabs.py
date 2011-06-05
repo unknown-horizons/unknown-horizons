@@ -27,7 +27,7 @@ from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.widgets.productionoverview import ProductionOverview
 
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.utility import create_resource_icon
+from horizons.util.gui import create_resource_icon
 
 class MarketPlaceTab(TabInterface):
 	"""Tab for marketplace. Refreshes when one building on the settlement changes"""

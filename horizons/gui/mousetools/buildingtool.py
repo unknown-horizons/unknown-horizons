@@ -31,7 +31,7 @@ from horizons.command.building import Build, Tear
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.constants import RES, BUILDINGS
 from horizons.extscheduler import ExtScheduler
 
@@ -104,7 +104,7 @@ class BuildingTool(NavigationTool):
 
 	def load_gui(self):
 		if self.gui is None:
-			self.gui = load_xml_translated("place_building.xml")
+			self.gui = load_uh_widget("place_building.xml")
 			top_bar = self.gui.findChild(name='top_bar')
 			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 			self.gui.position_technique = "right-14:top+157"

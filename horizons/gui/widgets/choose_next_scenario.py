@@ -1,4 +1,4 @@
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
@@ -15,7 +15,7 @@ class ScenarioChooser(object):
 
 	def _init_gui(self):
 		"""Initial init of gui."""
-		self._gui = load_xml_translated("choose_next_scenario.xml")
+		self._gui = load_uh_widget("choose_next_scenario.xml")
 		self._gui.mapEvents({
 		  'choose_scenario' : Callback(self.validate_choice),
 		  'cancelButton' : Callback(self.hide),

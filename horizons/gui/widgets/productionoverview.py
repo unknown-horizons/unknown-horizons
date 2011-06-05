@@ -19,11 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.i18n import load_xml_translated
-from horizons.util import Callback
 from fife.extensions.pychan import widgets
 
-from horizons.gui.utility import create_resource_icon
+from horizons.util.gui import load_uh_widget, create_resource_icon
+from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 
 
@@ -91,7 +90,7 @@ class ProductionOverview(object):
 		resource_entries : dict of all resources and their respective values
 		                   that will be displayed
 		"""
-		self._gui = load_xml_translated("island_production.xml")
+		self._gui = load_uh_widget("island_production.xml")
 		self._gui.mapEvents({
 		  'cancelButton' : self.hide,
 		  'refreshButton' : self.refresh

@@ -36,7 +36,8 @@ import horizons.main
 import horizons.gui.style
 from horizons.util import SQLiteAnimationLoader, Callback, parse_port
 from horizons.extscheduler import ExtScheduler
-from horizons.i18n import update_all_translations, load_xml_translated
+from horizons.i18n import update_all_translations
+from horizons.util.gui import load_uh_widget
 from horizons.i18n.utils import find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS, NETWORK
 from horizons.network.networkinterface import NetworkInterface
@@ -45,11 +46,11 @@ UH_MODULE="unknownhorizons"
 
 class LocalizedSetting(Setting):
 	"""
-	Localized settings dialog by using load_xml_translated() instead of
+	Localized settings dialog by using load_uh_widget() instead of
 	plain load_xml().
 	"""
 	def _loadWidget(self, dialog):
-		return load_xml_translated(dialog)
+		return load_uh_widget(dialog)
 
 	def _showChangeRequireRestartDialog(self):
 		"""Overwrites FIFE dialog call to use no xml file but a show_popup."""

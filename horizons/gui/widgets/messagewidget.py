@@ -27,7 +27,7 @@ import horizons.main
 
 from horizons.extscheduler import ExtScheduler
 from horizons.util import LivingObject, Callback
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.ambientsound import AmbientSound
 
 class MessageWidget(LivingObject):
@@ -45,12 +45,12 @@ class MessageWidget(LivingObject):
 		self.x_pos, self.y_pos = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
-		self.widget = load_xml_translated('hud_messages.xml')
+		self.widget = load_uh_widget('hud_messages.xml')
 		self.widget.position = (
 			 5,
 			 horizons.main.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
 
-		self.text_widget = load_xml_translated('hud_messages_text.xml')
+		self.text_widget = load_uh_widget('hud_messages_text.xml')
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
 		self.widget.show()
 		self.current_tick = 0

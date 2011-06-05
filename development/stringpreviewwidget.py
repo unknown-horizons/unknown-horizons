@@ -21,7 +21,7 @@
 
 import yaml
 
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.widgets.logbook import LogBook
 
@@ -36,7 +36,7 @@ class StringPreviewWidget(object):
 		self._gui.show()
 
 	def _init_gui(self):
-		self._gui = load_xml_translated("stringpreviewwidget.xml")
+		self._gui = load_uh_widget("stringpreviewwidget.xml")
 		self._gui.mapEvents({ 'load' : self.load })
 		self.scenarios = SavegameManager.get_scenarios()
 		self.listbox = self._gui.findChild(name="scenario_list")

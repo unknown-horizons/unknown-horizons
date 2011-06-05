@@ -25,7 +25,7 @@ from fife.extensions import pychan
 from horizons.command.production import AddProduction
 from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 
 class BoatbuilderTab(OverviewTab):
