@@ -32,6 +32,7 @@ from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
 from horizons.util.gui import adjust_widget_black_background, LazyWidgetsDict
 from horizons.ambientsound import AmbientSound
+from horizons.i18n.utils import N_
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 

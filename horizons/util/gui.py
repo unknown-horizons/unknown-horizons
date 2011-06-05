@@ -60,7 +60,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	# format headline
 	for w in widget.findChildren():
 		if w.name.startswith("headline") or \
-		   w.name is "name":
+		   w.name == "name":
 			w.stylize('headline')
 	if center_widget:
 		widget.position_technique = "automatic" # "center:center"
@@ -71,11 +71,7 @@ def create_resource_icon(res_id, db, size=50):
 	"""Creates a pychan icon for a resource.
 	@param res_id:
 	@param db: dbreader for main db"""
-	import time
-	a = time.time()
 	from horizons.gui.widgets.tooltip import TooltipIcon
-	b = time.time()
-	print 'a', b-a
 	if size == 50:
 		return TooltipIcon(tooltip=db.get_res_name(res_id), \
 		                   image=db.get_res_icon(res_id)[0])
