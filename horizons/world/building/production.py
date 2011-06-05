@@ -90,6 +90,8 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 		# seem to be needed anywhere
 		# if so, this can be removed
 		self.deselect_building(self.session)
+		renderer = self.session.view.renderer['InstanceRenderer']
+		renderer.removeOutlined(self._instance)
 
 	@classmethod
 	def deselect_building(cls, session):
