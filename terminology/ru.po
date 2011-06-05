@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-23 20:44+0200\n"
+"PO-Revision-Date: 2011-05-23 20:45+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -127,7 +127,6 @@ msgstr "начать"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "tab"
 msgstr "вкладка"
 
@@ -281,7 +280,6 @@ msgstr "цена"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "free"
 msgstr "свободный / бесплатный"
 
@@ -310,14 +308,12 @@ msgstr "выделять"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "stock"
 msgstr "запасы"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
-#, fuzzy
 msgid "storage"
 msgstr "склад / хранилище"
 
@@ -354,13 +350,11 @@ msgstr "основывать"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
-#, fuzzy
 msgid "pavilion"
 msgstr "павильон"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "signal"
 msgstr "подавать сигнал / сигнал"
 
@@ -438,7 +432,6 @@ msgstr "область действия / радиус / дистанция"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
-#, fuzzy
 msgid "running"
 msgstr "активно / работает"
 
@@ -450,7 +443,6 @@ msgstr "настройка"
 
 #: po/tutorial.py
 #: sqlite/Building
-#, fuzzy
 msgid "storage tent"
 msgstr "хранилище"
 
@@ -859,7 +851,6 @@ msgstr "запускать"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "service"
 msgstr "услуги"
 
@@ -872,7 +863,6 @@ msgstr "овца"
 # Is this about the key ?
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "SHIFT"
 msgstr "SHIFT"
 
@@ -903,6 +893,5 @@ msgstr "компаньон / партнёр по торговле"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "yields"
 msgstr "прибыль / доходы"
