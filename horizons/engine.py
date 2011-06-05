@@ -68,7 +68,8 @@ class LocalizedSetting(Setting):
 
 	def setDefaults(self):
 		title = _("Restore default settings")
-		msg = _("This will delete all changes to the settings you made so far. Do you want to continue?")
+		msg = _("This will delete all changes to the settings you made so far.") + \
+		      u" " + _("Do you want to continue?")
 		confirmed = horizons.main._modules.gui.show_popup(title, msg, \
 		                                                  show_cancel_button=True)
 		if confirmed:
