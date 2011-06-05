@@ -48,7 +48,7 @@ class TabInterface(object):
 		"""
 		super(TabInterface, self).__init__()
 		if widget is not None:
-			self.widget = load_uh_widget(widget)
+			self.widget = load_uh_widget(widget, style="menu_black")
 			self.widget.child_finder = PychanChildFinder(self.widget)
 		else:
 			self.widget = None
@@ -64,7 +64,6 @@ class TabInterface(object):
 		"""Call this method after the widget has been initialised."""
 		self.x_pos = self.widget.position[0]
 		self.y_pos = self.widget.position[1]
-		self.widget.stylize('menu_black')
 
 	def show(self):
 		"""Shows the current widget"""
