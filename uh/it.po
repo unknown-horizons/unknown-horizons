@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-25 00:41+0200\n"
+"PO-Revision-Date: 2011-05-25 00:42+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -1370,10 +1370,13 @@ msgstr ""
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Errore: Impossibile trovare la mappa \"%s\"."
 
+# 81%
+# 76%
+# 100%
 #: horizons/savegamemanager.py:343
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr ""
+msgstr "Errore: Impossibile trovare la mappa \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-08 10:38+0200\n"
-"Last-Translator: Mantas <dalelemanes@gmail.com>\n"
+"PO-Revision-Date: 2011-05-25 23:50+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -147,9 +147,11 @@ msgstr ""
 msgid "Details:"
 msgstr ""
 
+# 83%
 #: horizons/gui/gui.py:329
+#, fuzzy
 msgid "Error:"
-msgstr ""
+msgstr "Klaida"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -1033,9 +1035,11 @@ msgstr ""
 msgid "Enter filename:"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "Your saved games:"
-msgstr ""
+msgstr "Nėra išsaugotų žaidimų"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Choose a map to play:"
@@ -1118,9 +1122,11 @@ msgstr ""
 msgid "Running costs"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:269
+#, fuzzy
 msgid "Fishing boats"
-msgstr ""
+msgstr "Žvejų valtys"
 
 #: horizons/i18n/guitranslations.py:270
 msgid "Fishing boat"
@@ -1356,9 +1362,11 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
+# 75%
 #: horizons/spsession.py:97
+#, fuzzy
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Nepavyko įrašyti"
 
 #: horizons/spsession.py:98
 msgid "An error happened during quicksave. Your game has not been saved."
@@ -1397,9 +1405,11 @@ msgstr ""
 msgid "The savegame file is currently used by another program."
 msgstr ""
 
+# 83%
 #: horizons/world/units/ship.py:330
+#, fuzzy
 msgid "Trader"
-msgstr ""
+msgstr "Prekyba"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
