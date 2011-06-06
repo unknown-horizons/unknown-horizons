@@ -27,7 +27,7 @@ from collections import deque
 from builder import Builder
 from roadplanner import RoadPlanner
 
-from horizons.constants import BUILDINGS
+from horizons.constants import AI, BUILDINGS
 from horizons.util import Point, Rect, WorldObject
 from horizons.util.python import decorators
 
@@ -638,6 +638,9 @@ class ProductionBuilder(WorldObject):
 				self.unused_fields.append(coords)
 
 	def display(self):
+		if not AI.HIGHLIGHT_PLANS:
+			return
+
 		road_colour = (30, 30, 30)
 		fisher_colour = (128, 128, 128)
 		lumberjack_colour = (30, 255, 30)

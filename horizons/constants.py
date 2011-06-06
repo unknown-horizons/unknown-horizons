@@ -276,6 +276,8 @@ class NETWORK:
 	SERVER_PORT = 2001
 	CLIENT_ADDRESS = None
 
+class AI:
+	HIGHLIGHT_PLANS = False
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):

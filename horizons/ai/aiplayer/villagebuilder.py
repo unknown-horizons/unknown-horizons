@@ -23,7 +23,7 @@ from collections import deque
 
 from builder import Builder
 
-from horizons.constants import BUILDINGS
+from horizons.constants import AI, BUILDINGS
 from horizons.util import Point, WorldObject
 from horizons.util.python import decorators
 
@@ -380,6 +380,9 @@ class VillageBuilder(WorldObject):
 		return tents
 
 	def display(self):
+		if not AI.HIGHLIGHT_PLANS:
+			return
+
 		road_colour = (30, 30, 30)
 		tent_colour = (255, 255, 255)
 		planned_tent_colour = (200, 200, 200)

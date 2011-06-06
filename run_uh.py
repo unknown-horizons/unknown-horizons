@@ -111,6 +111,8 @@ def get_option_parser():
 	             help=_("Uses <ai_players> AI players (excludes the possible human-AI hybrid)."))
 	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
 	             help=_("Makes the human player a human-AI hybrid (for development only)."))
+	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true", \
+	             help=_("Shows AI plans as highlights (for development only)."))
 	p.add_option_group(ai_group)
 
 	dev_group = optparse.OptionGroup(p, _("Development options"))

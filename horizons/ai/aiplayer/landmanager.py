@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import BUILDINGS
+from horizons.constants import AI, BUILDINGS
 from horizons.util.python import decorators
 from horizons.util import WorldObject
 
@@ -129,6 +129,9 @@ class LandManager(WorldObject):
 		del self.village[coords]
 
 	def display(self):
+		if not AI.HIGHLIGHT_PLANS:
+			return
+
 		village_colour = (255, 255, 255)
 		production_colour = (255, 255, 0)
 		renderer = self.island.session.view.renderer['InstanceRenderer']

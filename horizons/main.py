@@ -45,7 +45,7 @@ from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import PATHS, NETWORK
+from horizons.constants import AI, PATHS, NETWORK
 from horizons.network.networkinterface import NetworkInterface
 
 # private module pointers of this module
@@ -93,6 +93,9 @@ def start(command_line_arguments):
 		except ValueError:
 			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
 			return False
+
+	if command_line_arguments.ai_highlights:
+		AI.HIGHLIGHT_PLANS = True
 
 	db = _create_db()
 
