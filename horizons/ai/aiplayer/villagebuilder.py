@@ -79,7 +79,7 @@ class VillageBuilder(WorldObject):
 			coords = (x, y)
 			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
 			self.plan[coords] = (purpose, builder)
-			if purpose == self.purpose.planned_tent:
+			if purpose == self.purpose.planned_tent or purpose == self.purpose.tent:
 				self.tents_to_build += 1
 		self._create_tent_queue()
 
