@@ -298,9 +298,6 @@ def set_translations():
 		"overview_branchoffice.xml" : {
 			"name_label"                  : _("Name:"),
 			"running_costs_label"         : _("Running costs:")},
-		"overview_enemybuilding.xml" : {
-			"headline"                    : _("Overview"),
-			"name_label"                  : _("Name:")},
 		"overview_mainsquare.xml" : {
 			"name_label"                  : _("Name:"),
 			"tax_label"                   : _("Taxes:"),

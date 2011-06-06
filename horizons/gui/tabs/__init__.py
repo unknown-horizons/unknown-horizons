@@ -20,10 +20,16 @@
 # ###################################################
 
 from inventorytab import InventoryTab, ShipInventoryTab
-from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, BranchOfficeOverviewTab, SettlerOverviewTab, MarketPlaceOverviewTab, SignalFireOverviewTab, TraderShipOverviewTab, EnemyBuildingOverviewTab, ResourceDepositOverviewTab
+from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
+                        BranchOfficeOverviewTab, SettlerOverviewTab, \
+                        MarketPlaceOverviewTab, SignalFireOverviewTab, \
+                        TraderShipOverviewTab, EnemyBuildingOverviewTab, \
+                        EnemyShipOverviewTab, ResourceDepositOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
-from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
+from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, \
+                           BoatbuilderTradeTab, BoatbuilderWar1Tab, \
+                           BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab
 from buildrelatedtab import BuildRelatedTab
