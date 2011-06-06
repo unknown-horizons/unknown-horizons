@@ -23,7 +23,7 @@ from random import randint
 
 from dbreader import DbReader
 
-from horizons.util import decorators
+from horizons.util import decorators, IconPathFinder
 
 ########################################################################
 class UhDbAccessor(DbReader):
@@ -54,16 +54,6 @@ class UhDbAccessor(DbReader):
 		"""
 		return self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
 
-	def get_res_icon(self, res):
-		"""Returns icons of a resource
-		@param res: resource id
-		@return: tuple: (icon_path, icon_disabled_path)"""
-		#TODO move to proper place now that we no longer use the db
-		ICON_PATH = 'content/gui/icons/resources/'
-		icon = ICON_PATH + '50/%03d.png' % res
-		icon_disabled = ICON_PATH + '50/greyscale/%03d.png' % res
-		return (icon, icon_disabled)
-
 	def get_res_value(self, id):
 		"""Returns the resource's value
 		@param id: resource id
@@ -90,13 +80,8 @@ class UhDbAccessor(DbReader):
 			sql += " WHERE tradeable = 1"
 		if only_inventory:
 			sql += " WHERE shown_in_inventory = 1"
-		import time
-		a = time.time()
 		query = self.cached_query(sql)
-		return [(query[res][0],self.get_res_icon(query[res][0])[0]) for res in xrange(len(query))]
-		b = time.time()
-		print "before %s after %s" % (a, b-a)
-		return foo
+		return [(query[res][0], IconPathFinder.get_res_icon(query[res][0])[0]) for res in xrange(len(query))]
 
 	# Sound table
 

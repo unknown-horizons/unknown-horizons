@@ -33,6 +33,7 @@ from named_object import NamedObject
 from dbreader import DbReader
 from savegameaccessor import SavegameAccessor
 from sqliteanimationloader import SQLiteAnimationLoader
+from iconpaths import IconPathFinder
 
 from shapes.point import Point, ConstPoint
 from shapes.rect import Rect, ConstRect
