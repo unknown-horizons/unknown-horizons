@@ -136,7 +136,7 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.
 	Uses BuildingResourceHandler additionally to ResourceHandler, to enable building-specific
 	behaviour"""
-	tabs = [ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)
+	tabs = (ProductionOverviewTab,) # don't show inventory, just production (i.e. running costs)
 
 	def add_production(self, production):
 		super(ProducerBuilding, self).add_production(production)

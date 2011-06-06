@@ -25,6 +25,8 @@ from horizons.session import Session
 from horizons.manager import MPManager
 
 class MPSession(Session):
+	"""Session class for multiplayer games."""
+
 	def __init__(self, gui, db, network_interface, rng_seed):
 		"""
 		@param network_interface: instance of NetworkInterface to use for this game
@@ -39,6 +41,9 @@ class MPSession(Session):
 
 	def create_rng(self):
 		return random.Random(self.__rng_seed)
+
+	def create_timer(self):
+		return Timer(freeze_protection=False)
 
 	def speed_set(self, ticks):
 		self.gui.show_popup(_("Not possible"), _("You cannot change the speed of a multiplayer game"))

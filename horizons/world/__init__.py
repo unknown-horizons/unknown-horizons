@@ -288,7 +288,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
 			for island in self.islands:
 				if maxclay <= minclay:
-					minclay = mayclay-1
+					minclay = maxclay-1
 				if maxmountains <= minmountains:
 					minmountains = maxmountains-1
 				max_clay_deposits = self.session.random.randint(minclay, maxclay)

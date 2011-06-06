@@ -10,7 +10,7 @@
 	</HBox>
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
-	<Container size="260,550" position="25,43">
+	<Container size="260,250" position="25,43">
 
 		<Label name="headline_income_label" position="0,0" text="Income:" />
 		<Label name="taxes_label" position="10,20" text="Taxes"/>
@@ -30,8 +30,16 @@
 
 		<Label name="headline_balance_label" position="0,140" text="Balance:" />
 		<Label position="160,140" name="balance"/>
-
 	</Container>
+
+	<Container size="260,50"  position="25,220">
+	<ToggleImageButton name="show_production_overview" position="180,0" border_size="0"
+		inactive_image="content/gui/icons/widgets/cityinfo/settlement.png"
+		up_image="content/gui/icons/widgets/cityinfo/settlement.png"
+		down_image="content/gui/icons/widgets/cityinfo/settlement.png"
+		hover_image="content/gui/icons/widgets/cityinfo/settlement.png" />
+	</Container>
+
 </Container>
 </Container>
 

@@ -36,7 +36,8 @@ import horizons.main
 import horizons.gui.style
 from horizons.util import SQLiteAnimationLoader, Callback, parse_port
 from horizons.extscheduler import ExtScheduler
-from horizons.i18n import update_all_translations, load_xml_translated
+from horizons.i18n import update_all_translations
+from horizons.util.gui import load_uh_widget
 from horizons.i18n.utils import find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS, NETWORK
 from horizons.network.networkinterface import NetworkInterface
@@ -45,17 +46,34 @@ UH_MODULE="unknownhorizons"
 
 class LocalizedSetting(Setting):
 	"""
-	Localized settings dialog by using load_xml_translated() instead of
+	Localized settings dialog by using load_uh_widget() instead of
 	plain load_xml().
 	"""
 	def _loadWidget(self, dialog):
-		return load_xml_translated(dialog)
+		wdg = load_uh_widget(dialog, style="book")
+		# HACK: fife settings call stylize, which breaks our styling on widget load
+		no_restyle_str = "do_not_restyle_this"
+		self.setGuiStyle(no_restyle_str)
+		def no_restyle(style):
+			if style != no_restyle_str:
+				wdg.stylize(style)
+		wdg.stylize = no_restyle
+		return wdg
 
 	def _showChangeRequireRestartDialog(self):
 		"""Overwrites FIFE dialog call to use no xml file but a show_popup."""
 		headline = _("Restart required")
 		message = _("Some of your changes require a restart of Unknown Horizons.")
 		horizons.main._modules.gui.show_popup(headline, message)
+
+	def setDefaults(self):
+		title = _("Restore default settings")
+		msg = _("This will delete all changes to the settings you made so far.") + \
+		      u" " + _("Do you want to continue?")
+		confirmed = horizons.main._modules.gui.show_popup(title, msg, \
+		                                                  show_cancel_button=True)
+		if confirmed:
+			super(LocalizedSetting, self).setDefaults()
 
 class Fife(ApplicationBase):
 	"""
@@ -88,7 +106,6 @@ class Fife(ApplicationBase):
 		                                 settings_file=PATHS.USER_CONFIG_FILE,
 		                                 settings_gui_xml="settings.xml",
 		                                 changes_gui_xml="requirerestart.xml")
-		self._setting.setGuiStyle("book")
 
 		# TODO: find a way to apply changing to a running game in a clean fashion
 		#       possibility: use singaling via changelistener
@@ -430,8 +447,12 @@ class Fife(ApplicationBase):
 			if langname == self.get_uh_setting('Language'):
 				return locale_code
 		# TODO : better way to find 'System default' ?
-		default_locale, default_encoding = locale.getdefaultlocale()
-		return default_locale.split('_')[0]
+		try:
+			default_locale, default_encoding = locale.getdefaultlocale()
+			return default_locale.split('_')[0]
+		except:
+			# If default locale could not be detected use 'EN' as fallback
+			return "en"
 
 	def set_network_port(self, port):
 		"""Sets a new value for client network port"""

@@ -32,7 +32,7 @@ from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
-from horizons.gui.utility import LazyWidgetsDict
+from horizons.util.gui import LazyWidgetsDict
 from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat

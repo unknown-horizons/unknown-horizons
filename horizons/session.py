@@ -29,7 +29,6 @@ from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool
 from horizons.gui.keylisteners import IngameKeyListener
 from horizons.gui.mousetools import TearingTool
-from horizons.timer import Timer
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.view import View
@@ -86,7 +85,7 @@ class Session(LivingObject):
 
 		#game
 		self.random = self.create_rng()
-		self.timer = Timer()
+		self.timer = self.create_timer()
 		Scheduler.create_instance(self.timer)
 		self.manager = self.create_manager()
 		self.view = View(self, (15, 15))
@@ -113,6 +112,10 @@ class Session(LivingObject):
 
 	def create_rng(self):
 		"""Returns a RNG (random number generator). Must support the python random.Random interface"""
+		raise NotImplementedError
+
+	def create_timer(self):
+		"""Returns a Timer instance."""
 		raise NotImplementedError
 
 	def end(self):

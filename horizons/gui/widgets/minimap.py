@@ -30,7 +30,11 @@ import math
 from math import sin, cos
 
 class Minimap(object):
-	"""A basic minimap"""
+	"""A basic minimap.
+
+	NOTE: Rendered images are sorted by name, so use minimap_${X}_foo,
+				where X of {a, b, ..} indicating the z-order
+	"""
 	island_id, cam_border = range(0, 2)
 	# the color of the water is determined by the MINIMAP_BASE_IMAGE
 	colors = { 0: (137, 117,  87),
@@ -74,6 +78,7 @@ class Minimap(object):
 		self.update_cam()
 
 		self._recalculate()
+		self._timed_update()
 
 		Scheduler().rem_all_classinst_calls(self)
 		Scheduler().add_new_object(self._timed_update, self, \
@@ -151,7 +156,8 @@ class Minimap(object):
 		# get img and release it
 		img_id = horizons.main.fife.imagepool.addResourceFromFile( self.MINIMAP_BASE_IMAGE )
 		self.renderer.removeAll("minimap_a_image")
-		horizons.main.fife.imagepool.release( img_id, True )
+		# NOTE: the refcount of the image is for some reason 0 here, so we must not decrease it.
+		horizons.main.fife.imagepool.release( img_id, False )
 
 		# load again
 		img_id = horizons.main.fife.imagepool.addResourceFromFile( self.MINIMAP_BASE_IMAGE )
@@ -233,7 +239,7 @@ class Minimap(object):
 			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 2, 2)
 			for tup in area_to_color.tuple_iter():
 				try:
-					node = fife.GenericRendererNode(fife.Point(*self._get_from_rotated_coords(tup)))
+					node = fife.GenericRendererNode(fife.Point(*self._get_rotated_coords(tup)))
 					self.renderer.addPoint("minimap_b_ship", node, *color)
 				except KeyError:
 					# this happens in rare cases, when the ship is at the border of the map,

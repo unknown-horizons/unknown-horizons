@@ -235,6 +235,7 @@ class STORAGE:
 	# Distributing overall delimiter, if one slot is "full" with respect to
 	# this value, you can't load further in any of the slots even if empty.
 	SHIP_TOTAL_STORAGE = 120
+	SHIP_TOTAL_SLOTS_NUMBER = 4
 
 ## ENGINE
 class LAYERS:
