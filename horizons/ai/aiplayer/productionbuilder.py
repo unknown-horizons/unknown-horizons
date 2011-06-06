@@ -220,6 +220,26 @@ class ProductionBuilder(WorldObject):
 				return True
 		return False
 
+	def make_builder(self, building_id, x, y, needs_collector):
+		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """
+		coords = (x, y)
+		if coords not in self.plan or self.plan[coords][0] != self.purpose.none or coords not in self.land_manager.settlement.ground_map:
+			return None
+		builder = Builder.create(building_id, self.land_manager, Point(x, y))
+		if not builder or not self.land_manager.legal_for_production(builder.position):
+			return None
+		if building_id == BUILDINGS.FISHERMAN_CLASS: #
+			for coords in builder.position.tuple_iter():
+				if coords in self.plan and self.plan[coords][0] != self.purpose.none:
+					return None
+		else:
+			for coords in builder.position.tuple_iter():
+				if coords not in self.plan or self.plan[coords][0] != self.purpose.none:
+					return None
+		if needs_collector and not self._near_collectors(builder.position):
+			return None
+		return builder
+
 	def build_fisher(self):
 		"""
 		Finds a reasonable place for a fisher and builds the fisher and a road connection.
@@ -227,14 +247,9 @@ class ProductionBuilder(WorldObject):
 		options = []
 		refill_cycle_in_tiles = 12
 
-		for (x, y), (purpose, _) in self.plan.iteritems():
-			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
-				continue
-			point = Point(x, y)
-			fisher = Builder.create(BUILDINGS.FISHERMAN_CLASS, self.land_manager, point)
-			if not fisher or not self.land_manager.legal_for_production(fisher.position):
-				continue
-			if not self._near_collectors(fisher.position):
+		for (x, y) in self.plan:
+			fisher = self.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True)
+			if not fisher:
 				continue
 
 			fishers_in_range = 1.0
@@ -298,14 +313,9 @@ class ProductionBuilder(WorldObject):
 					alignment += 2 if abs(dx) + abs(dy) == 1 else 1
 			alignment_value[coords] = alignment
 
-		for (x, y), (purpose, _) in self.plan.iteritems():
-			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
-				continue
-			point = Point(x, y)
-			lumberjack = Builder.create(BUILDINGS.LUMBERJACK_CLASS, self.land_manager, point)
-			if not lumberjack or not self.land_manager.legal_for_production(lumberjack.position):
-				continue
-			if not self._near_collectors(lumberjack.position):
+		for (x, y) in self.plan:
+			lumberjack = self.make_builder(BUILDINGS.LUMBERJACK_CLASS, x, y, True)
+			if not lumberjack:
 				continue
 
 			value = 0
@@ -359,19 +369,14 @@ class ProductionBuilder(WorldObject):
 		most_fields = 1
 		checked_resources = False
 
-		for (x, y), (purpose, _) in self.plan.iteritems():
-			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
-				continue
-			point = Point(x, y)
-			farm = Builder.create(BUILDINGS.FARM_CLASS, self.land_manager, point)
-			if not farm or not self.land_manager.legal_for_production(farm.position):
+		for (x, y) in self.plan:
+			farm = self.make_builder(BUILDINGS.FARM_CLASS, x, y, True)
+			if not farm:
 				continue
 			if not checked_resources:
 				if not farm.have_resources():
 					return (farm, False)
 				checked_resources = True
-			if not self._near_collectors(farm.position):
-				continue
 
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:
@@ -407,17 +412,15 @@ class ProductionBuilder(WorldObject):
 					if fields >= 8:
 						break # unable to place more anyway
 					coords = (x + dx, y + dy)
-					if coords not in self.plan or self.plan[coords][0] != self.purpose.none:
-						continue
-					field = Builder.create(BUILDINGS.POTATO_FIELD_CLASS, self.land_manager, Point(coords[0], coords[1]))
-					if not field or not self.land_manager.legal_for_production(field.position):
+					field = self.make_builder(BUILDINGS.POTATO_FIELD_CLASS, coords[0], coords[1], False)
+					if not field:
 						continue
 					for coords2 in field.position.tuple_iter():
-						if coords2 in farm_plan or coords2 not in self.plan or self.plan[coords2][0] != self.purpose.none:
+						if coords2 in farm_plan:
 							field = None
 							break
 					if field is None:
-						break # some part of the area is going to be used for something else
+						break # some part of the area is reserved for something else
 					fields += 1
 					for coords2 in field.position.tuple_iter():
 						farm_plan[coords2] = (self.purpose.reserved, None)
