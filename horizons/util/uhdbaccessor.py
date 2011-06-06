@@ -47,31 +47,22 @@ class UhDbAccessor(DbReader):
 
 	# Resource table
 
-	def get_res_name(self, id, only_if_tradeable=False, only_if_inventory=False):
+	def get_res_name(self, id):
 		"""
 		Returns the name to a specific resource id.
 		@param id: int resource's id, of which the name is returned
 		"""
-		sql = "SELECT name FROM resource WHERE id = ?"
-		if not (only_if_tradeable or only_if_inventory):
-			return self.cached_query(sql, id)[0][0]
-		if only_if_tradeable:
-			sql += " AND tradeable = 1"
-		if only_if_inventory:
-			sql += " AND shown_in_inventory = 1"
-		try:
-			return self.cached_query(sql, id)[0][0]
-		except IndexError:
-			return None
+		return self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
 
 	def get_res_icon(self, res):
 		"""Returns icons of a resource
 		@param res: resource id
-		@return: tuple: (icon_path, icon_disabled_path, icon_small_path)"""
-		return self.cached_query('SELECT icon, \
-			    CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END, \
-			    CASE WHEN (icon_small is null) THEN icon ELSE icon_small END \
-			    FROM data.resource WHERE id = ?', res)[0]
+		@return: tuple: (icon_path, icon_disabled_path)"""
+		#TODO move to proper place now that we no longer use the db
+		ICON_PATH = 'content/gui/icons/resources/'
+		icon = ICON_PATH + '50/%03d.png' % res
+		icon_disabled = ICON_PATH + '50/greyscale/%03d.png' % res
+		return (icon, icon_disabled)
 
 	def get_res_value(self, id):
 		"""Returns the resource's value
@@ -89,14 +80,23 @@ class UhDbAccessor(DbReader):
 		db_data = self.cached_query(sql)
 		return map(lambda x: x[0], db_data)
 
-	def get_res_id_and_icon(self, only_tradeable=False):
+	def get_res_id_and_icon(self, only_tradeable=False, only_inventory=False):
 		"""Returns a list of all resources and the matching icons.
 		@param only_tradeable: return only those you can trade.
+		@param only_inventory: return only those displayed in inventories.
 		@return: list of tuples: (resource ids, resource icon)"""
-		sql = "SELECT id, icon FROM resource "
+		sql = "SELECT id FROM resource "
 		if only_tradeable:
 			sql += " WHERE tradeable = 1"
-		return self.cached_query(sql)
+		if only_inventory:
+			sql += " WHERE shown_in_inventory = 1"
+		import time
+		a = time.time()
+		query = self.cached_query(sql)
+		return [(query[res][0],self.get_res_icon(query[res][0])[0]) for res in xrange(len(query))]
+		b = time.time()
+		print "before %s after %s" % (a, b-a)
+		return foo
 
 	# Sound table
 
