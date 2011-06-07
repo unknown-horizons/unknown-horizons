@@ -319,6 +319,16 @@ class EnemyBuildingOverviewTab(OverviewTab):
 			widget = 'overview_enemybuilding.xml',
 			instance = instance
 		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
+
+class EnemyShipOverviewTab(OverviewTab):
+	def  __init__(self, instance):
+		super(EnemyShipOverviewTab, self).__init__(
+			widget = 'overview_enemyunit.xml',
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
+			instance = instance
+		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
 
 class ResourceDepositOverviewTab(OverviewTab):
 	def  __init__(self, instance):
