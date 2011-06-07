@@ -30,6 +30,7 @@ from roadplanner import RoadPlanner
 from horizons.constants import AI, BUILDINGS
 from horizons.util import Point, Rect, WorldObject
 from horizons.util.python import decorators
+from horizons.entities import Entities
 
 class ProductionBuilder(WorldObject):
 	class purpose:
@@ -240,10 +241,16 @@ class ProductionBuilder(WorldObject):
 			return None
 		return builder
 
+	def have_resources(self, building_id):
+		return Entities.buildings[building_id].have_resources([self.land_manager.settlement], self.owner)
+
 	def build_fisher(self):
 		"""
 		Finds a reasonable place for a fisher and builds the fisher and a road connection.
 		"""
+		if not self.have_resources(BUILDINGS.FISHERMAN_CLASS):
+			return (True, False)
+
 		options = []
 		refill_cycle_in_tiles = 12
 
@@ -273,8 +280,6 @@ class ProductionBuilder(WorldObject):
 				options.append((fishers_in_range / fish_value, fisher))
 
 		for _, fisher in sorted(options):
-			if not fisher.have_resources():
-				return (fisher, False)
 			if not self._build_road_connection(fisher):
 				continue
 			building = fisher.execute()
@@ -293,6 +298,9 @@ class ProductionBuilder(WorldObject):
 		Finds a reasonable place for a lumberjack and builds the lumberjack along with
 		a road connection and additional trees.
 		"""
+		if not self.have_resources(BUILDINGS.LUMBERJACK_CLASS):
+			return (True, False)
+
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		options = []
 
@@ -333,6 +341,8 @@ class ProductionBuilder(WorldObject):
 			if not self._build_road_connection(lumberjack):
 				continue
 			building = lumberjack.execute()
+			if not building:
+				return (None, False)
 			for coords in lumberjack.position.tuple_iter():
 				self.plan[coords] = (self.purpose.reserved, None)
 			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (self.purpose.lumberjack, lumberjack)
@@ -342,8 +352,8 @@ class ProductionBuilder(WorldObject):
 					self.plan[coords] = (self.purpose.tree, None)
 					tree = Builder.create(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
 			self.production_buildings.append(building)
-			return lumberjack
-		return None
+			return (lumberjack, True)
+		return (None, False)
 
 	def _make_field_offsets(self):
 		# right next to the farm
@@ -361,22 +371,19 @@ class ProductionBuilder(WorldObject):
 		Finds a reasonable place for a farm and build the farm along with a road connection.
 		The fields will be reserved but not built.
 		"""
+		if not self.have_resources(BUILDINGS.FARM_CLASS):
+			return (True, False)
+
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		field_offsets = self._make_field_offsets()
 		options = []
 
 		most_fields = 1
-		checked_resources = False
-
 		for (x, y) in self.plan:
 			farm = self.make_builder(BUILDINGS.FARM_CLASS, x, y, True)
 			if not farm:
 				continue
-			if not checked_resources:
-				if not farm.have_resources():
-					return (farm, False)
-				checked_resources = True
 
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:

@@ -34,6 +34,7 @@ from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decora
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
 from horizons.gui.tabs import EnemyBuildingOverviewTab
+from horizons.command.building import Build
 
 
 class BasicBuilding(AmbientSound, ConcretObject):
@@ -279,6 +280,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		instance.act(action+"_"+str(action_set_id), facing_loc, True)
 		return instance
+
+	@classmethod
+	def have_resources(cls, inventory_holders, owner):
+		return Build.check_resources({}, cls.costs, owner, inventory_holders)[0]
 
 	def init(self):
 		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
