@@ -78,7 +78,9 @@ class SavegameAccessor(DbReader):
 	def _load_production(self):
 		self._production = {}
 		self._production_ids = {}
-		for row in self("SELECT rowid, state, owner, prod_line_id, remaining_ticks, _pause_old_state FROM production"):
+		db_data = self("SELECT rowid, state, owner, prod_line_id, remaining_ticks, \
+			_pause_old_state, last_counter, max_counter, current_counter, current_pos FROM production")
+		for row in db_data:
 			rowid = int(row[0])
 			self._production[rowid] = row[1:]
 			owner = int(row[2])
@@ -88,7 +90,7 @@ class SavegameAccessor(DbReader):
 				self._production_ids[owner] = [rowid]
 
 	def get_production_row(self, worldid):
-		"""Returns (state, owner, prod_line_id, remaining_ticks, _pause_old_state)"""
+		"""Returns (state, owner, prod_line_id, remaining_ticks, _pause_old_state, last_counter, max_counter, current_counter, current_pos)"""
 		return self._production[int(worldid)]
 
 	def get_production_ids_by_owner(self, ownerid):

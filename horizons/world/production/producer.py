@@ -60,7 +60,9 @@ class Producer(ResourceHandler):
 		# update capacity util. every 3 seconds
 		if hasattr(self, 'select'): # only for selectables
 			Scheduler().add_new_object(self._update_capacity_utilisation, self, \
-		                   Scheduler().get_ticks(self._capacity_utilisation_update_interval), -1)
+				Scheduler().get_ticks(self._capacity_utilisation_update_interval), -1)
+			Scheduler().add_new_object(self._collect_production_statistics, self, \
+				PRODUCTION.COUNTER_INTERVAL, -1)
 
 	def load(self, db, worldid):
 		super(Producer, self).load(db, worldid)
@@ -130,6 +132,12 @@ class Producer(ResourceHandler):
 		self.capacity_utilisation += part
 		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
 		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
+
+	def _collect_production_statistics(self):
+		for production in self._productions.itervalues():
+			production.record_state()
+		for production in self._inactive_productions.itervalues():
+			production.record_state()
 
 @metaChangeListenerDecorator("building_production_finished")
 class ProducerBuilding(Producer, BuildingResourceHandler):

@@ -190,6 +190,8 @@ class PRODUCTION:
 	# NOTE: 'done' is only for SingleUseProductions
 	# NOTE: 'none' is not used by an acctual production, just for a producer
 	CAPACITY_UTILISATION_CONSIDERED_SECONDS = 60 # seconds, that count for cap. util. calculation
+	COUNTER_LIMIT = 600 # 5 minutes in ticks * COUNTER_INTERVAL; used to keep track of current & max production levels
+	COUNTER_INTERVAL = 8
 
 
 ## GAME-RELATED, BALANCING VALUES

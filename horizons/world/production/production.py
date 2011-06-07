@@ -52,13 +52,13 @@ class Production(WorldObject):
 	## INIT/DESTRUCT
 	def __init__(self, inventory, prod_line_id, auto_start=True, **kwargs):
 		super(Production, self).__init__(**kwargs)
-		self.__init(inventory, prod_line_id, PRODUCTION.STATES.none)
+		self.__init(inventory, prod_line_id, PRODUCTION.STATES.none, None, 0, 0, 0)
 		if auto_start:
 			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 		else:
 			self.inventory.add_change_listener(self._check_inventory, call_listener_now=False)
 
-	def __init(self, inventory, prod_line_id, state, pause_old_state = None):
+	def __init(self, inventory, prod_line_id, state, last_counter, max_counter, current_counter, current_pos, pause_old_state = None):
 		"""
 		@param inventory: inventory of assigned building
 		@param prod_line_id: id of production line.
@@ -67,6 +67,11 @@ class Production(WorldObject):
 		self._state = state
 		self._pause_remaining_ticks = None # only used in pause()
 		self._pause_old_state = pause_old_state # only used in pause()
+
+		self.last_counter = last_counter
+		self.max_counter = max_counter
+		self.current_counter = current_counter
+		self.current_pos = current_pos
 
 		assert isinstance(prod_line_id, int)
 		self._prod_line = self._create_production_line(prod_line_id)
@@ -89,10 +94,11 @@ class Production(WorldObject):
 		# use a number > 0 for ticks
 		if remaining_ticks < 1:
 			remaining_ticks = 1
-		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
-		_pause_old_state) VALUES(?, ?, ?, ?, ?)', self.worldid, self._state.index, \
-												self._prod_line.id, remaining_ticks, \
-												None if self._pause_old_state is None else self._pause_old_state.index)
+		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, \
+			last_counter, max_counter, current_counter, current_pos) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', \
+			self.worldid, self._state.index, self._prod_line.id, remaining_ticks, \
+			None if self._pause_old_state is None else self._pause_old_state.index, \
+			self.last_counter, self.max_counter, self.current_counter, self.current_pos)
 
 	@classmethod
 	def load(cls, db, worldid):
@@ -105,7 +111,8 @@ class Production(WorldObject):
 
 		db_data = db.get_production_row(worldid)
 		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], \
-								PRODUCTION.STATES[db_data[0]], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
+								PRODUCTION.STATES[db_data[0]], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]],
+								db_data[5], db_data[6], db_data[7], db_data[8])
 		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION.STATES.producing:
@@ -132,6 +139,19 @@ class Production(WorldObject):
 	def get_produced_res(self):
 		"""Res that are produced here. Returns dict {res:amount}. Interface for _prod_line."""
 		return self._prod_line.produced_res
+
+	#----------------------------------------------------------------------
+	def record_state(self):
+		if self._state is not PRODUCTION.STATES.paused:
+			if self._state is PRODUCTION.STATES.producing:
+				self.current_counter += 1
+			self.current_pos += 1
+			if self.current_pos == PRODUCTION.COUNTER_LIMIT:
+				if self.max_counter is None or self.max_counter < self.current_counter:
+					self.max_counter = self.current_counter + 0
+				self.last_counter = self.current_counter + 0
+				self.current_counter = 0
+				self.current_pos = 0
 
 	#----------------------------------------------------------------------
 	def get_produced_units(self):
