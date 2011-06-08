@@ -138,7 +138,8 @@ class Fife(ApplicationBase):
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "language",
 		                                applyfunction=self.update_languages,
-		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages_map.keys())])
+		                                initialdata=[ LANGUAGENAMES[x] for x in sorted(languages_map.keys()) ])
+
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
 		                                applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
@@ -146,7 +147,6 @@ class Fife(ApplicationBase):
 
 		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
 		                                applyfunction=self.set_network_port)
-
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
@@ -309,9 +309,12 @@ class Fife(ApplicationBase):
 		               'QuicksaveMaxCount' : 'quicksavemaxcount'}
 
 		for x in slider_dict.keys():
-			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
-		slider_initial_data['volume_music_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
-		slider_initial_data['volume_effects_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
+			slider_initial_data[slider_dict[x]+'_value'] = unicode(int( \
+			        self._setting.get(UH_MODULE, x) ))
+		slider_initial_data['volume_music_value'] = unicode(int( \
+		             self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
+		slider_initial_data['volume_effects_value'] = unicode(int( \
+		             self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
 		self.OptionsDlg.distributeInitialData(slider_initial_data)
 
 		for x in slider_dict.values():
