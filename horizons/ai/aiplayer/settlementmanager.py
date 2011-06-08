@@ -30,6 +30,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.command.uioptions import SetTaxSetting
+from horizons.constants import RES, PRODUCTION, GAME_SPEED
 
 class SettlementManager(WorldObject):
 	"""
@@ -55,7 +56,7 @@ class SettlementManager(WorldObject):
 		self.tents = 0
 		self.num_fishers = 0
 		self.num_potato_fields = 0
-		self.ticker_finished = False
+		self.village_built = False
 
 		self.build_queue.append(self.buildCallType.village_roads)
 		self.build_queue.append(self.buildCallType.production_lumberjack)
@@ -111,11 +112,7 @@ class SettlementManager(WorldObject):
 				break
 		assert land_manager.settlement
 
-		if remaining_ticks:
-			Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
-			self.ticker_finished = False
-		else:
-			self.ticker_finished = True
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
 
 		# load the build queue
 		for (task_type,) in db("SELECT task_type FROM ai_settlement_manager_build_queue WHERE settlement_manager = ?", worldid):
@@ -132,15 +129,52 @@ class SettlementManager(WorldObject):
 		self.tents = self.village_builder.count_tents()
 		self.num_fishers = self.production_builder.count_fishers()
 		self.num_potato_fields = self.production_builder.count_potato_fields()
+		self.village_built = self.tents == self.village_builder.tents_to_build
 
 	def can_provide_resources(self):
-		return self.ticker_finished
+		return self.village_built
 
 	def enough_food_producers(self):
-		return self.tents + 1 <= 3 * self.num_fishers + 1.5 * self.num_potato_fields
+		# over-produce by a small amount
+		return self.get_resource_production(RES.FOOD_ID)[0] > self.get_resident_resource_usage(RES.FOOD_ID) * 1.05 + 0.001
+
+	def get_resource_production(self, resource_id):
+		providers = 0
+		new_providers = 0
+		amount = 0
+		for builder in self.production_builder.production_buildings:
+			point = builder.position.origin
+			coords = (point.x, point.y)
+			building = self.land_manager.settlement.ground_map[coords].object
+			if building.get_history_length(resource_id) is None:
+				continue
+			# TODO; make this work properly for farms where fields are added incrementally
+			if building.get_history_length(resource_id) < PRODUCTION.COUNTER_LIMIT:
+				new_providers += 1
+				amount += building.get_expected_production_level(resource_id)
+			else:
+				providers += 1
+				amount += building.get_absolute_production_level(resource_id)
+		return (amount, providers, new_providers)
+
+	def get_resident_resource_usage(self, resource_id):
+		total = 0
+		for coords, (purpose, _) in self.village_builder.plan.iteritems():
+			if purpose != self.village_builder.purpose.tent:
+				continue
+			tent = self.land_manager.settlement.ground_map[coords].object
+			for production in tent._get_productions():
+				production_line = production._prod_line
+				if resource_id in production_line.consumed_res:
+					# subtract because the amount will be negative
+					total -= production_line.consumed_res[resource_id] / production_line.time / GAME_SPEED.TICKS_PER_SECOND
+		return total
 
 	def tick(self):
+		self.log.info('current food production %.5f, consumption %.5f', \
+			self.get_resource_production(RES.FOOD_ID)[0], self.get_resident_resource_usage(RES.FOOD_ID))
 		call_again = False
+
 		if len(self.build_queue) > 0:
 			self.log.info('ai.settlement.tick: build a queue item')
 			task_type = self.build_queue.popleft()
@@ -153,64 +187,59 @@ class SettlementManager(WorldObject):
 			else:
 				assert False # this should never happen
 			call_again = True
-		elif self.village_builder.tents_to_build > self.tents:
-			if not self.enough_food_producers():
-				if self.production_builder.enough_collectors():
-					try_fisher = False
-					if self.owner.settler_level > 0:
-						(details, success) = self.production_builder.build_potato_field()
-						if success:
-							self.log.info('ai.settlement.tick: built a potato field')
-							self.num_potato_fields += 1
-							call_again = True
-						elif details is not None:
-							self.log.info('ai.settlement.tick: not enough materials to build a farm')
-							call_again = True
-						else:
-							self.log.info('ai.settlement.tick: failed to build a farm or a potato field')
-							try_fisher = True
-					else:
-						try_fisher = True
-
-					if try_fisher:
-						(details, success) = self.production_builder.build_fisher()
-						if success:
-							self.log.info('ai.settlement.tick: built a fisher')
-							self.num_fishers += 1
-							call_again = True
-						elif details is not None:
-							self.log.info('ai.settlement.tick: not enough materials to build a fisher')
-							call_again = True
-						else:
-							self.log.info('ai.settlement.tick: failed to build a fisher')
-				else:
-					(details, success) = self.production_builder.improve_collector_coverage()
+		elif not self.enough_food_producers():
+			if self.production_builder.enough_collectors():
+				try_fisher = False
+				if self.owner.settler_level > 0:
+					(details, success) = self.production_builder.build_potato_field()
 					if success:
-						self.log.info('ai.settlement.tick: built a storage')
+						self.log.info('ai.settlement.tick: built a potato field')
+						self.num_potato_fields += 1
 						call_again = True
 					elif details is not None:
-						self.log.info('ai.settlement.tick: not enough materials to build a storage')
+						self.log.info('ai.settlement.tick: not enough materials to build a farm')
 						call_again = True
 					else:
-						self.log.info('ai.settlement.tick: failed to build a storage')
+						self.log.info('ai.settlement.tick: failed to build a farm or a potato field')
+						try_fisher = True
+				else:
+					try_fisher = True
+
+				if try_fisher:
+					(details, success) = self.production_builder.build_fisher()
+					if success:
+						self.log.info('ai.settlement.tick: built a fisher')
+						self.num_fishers += 1
+						call_again = True
+					elif details is not None:
+						self.log.info('ai.settlement.tick: not enough materials to build a fisher')
+						call_again = True
+					else:
+						self.log.info('ai.settlement.tick: failed to build a fisher')
 			else:
-				(tent, success) = self.village_builder.build_tent()
+				(details, success) = self.production_builder.improve_collector_coverage()
 				if success:
-					self.log.info('ai.settlement.tick: built a tent')
-					self.tents += 1
+					self.log.info('ai.settlement.tick: built a storage')
 					call_again = True
-				elif tent is not None:
-					self.log.info('ai.settlement.tick: not enough materials to build a tent')
+				elif details is not None:
+					self.log.info('ai.settlement.tick: not enough materials to build a storage')
 					call_again = True
 				else:
-					self.log.info('ai.settlement.tick: failed to build a tent')
+					self.log.info('ai.settlement.tick: failed to build a storage')
+		elif self.village_builder.tents_to_build > self.tents:
+			(tent, success) = self.village_builder.build_tent()
+			if success:
+				self.log.info('ai.settlement.tick: built a tent')
+				self.tents += 1
+				call_again = True
+			elif tent is not None:
+				self.log.info('ai.settlement.tick: not enough materials to build a tent')
+				call_again = True
+			else:
+				self.log.info('ai.settlement.tick: failed to build a tent')
 
-		if call_again:
-			Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
-		else:
-			self.log.info('ai.settlement.tick: everything is done')
-			SetTaxSetting(self.land_manager.settlement, 0.9).execute(self.land_manager.session)
-			self.log.info('ai.settlement.tick: set tax rate to 0.9')
-			self.ticker_finished = True
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
+		if not call_again:
+			self.village_built = True
 
 decorators.bind_all(SettlementManager)

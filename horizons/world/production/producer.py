@@ -139,6 +139,21 @@ class Producer(ResourceHandler):
 		for production in self._inactive_productions.itervalues():
 			production.record_state()
 
+	def get_history_length(self, resource_id):
+		for production in self._get_productions():
+			if resource_id in production._prod_line.produced_res:
+				return production.get_history_length()
+		return None
+
+	def get_absolute_production_level(self, resource_id):
+		for production in self._get_productions():
+			if resource_id in production._prod_line.produced_res:
+				return production.get_absolute_production_level()
+		return None
+
+	def get_expected_production_level(self, resource_id):
+		return None
+
 @metaChangeListenerDecorator("building_production_finished")
 class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.

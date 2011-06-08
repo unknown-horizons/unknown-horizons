@@ -30,27 +30,49 @@ from horizons.util import Rect, Circle
 from horizons.util.shapes.radiusshape import RadiusShape, RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
-from horizons.constants import BUILDINGS, PRODUCTION, RES
+from horizons.constants import BUILDINGS, PRODUCTION, RES, GAME_SPEED
 from horizons.gui.tabs import ProductionOverviewTab
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
 	tabs = (ProductionOverviewTab,)
+
+	def _get_providers(self):
+		reach = RadiusRect(self.position, self.radius)
+		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
+		return [provider for provider in providers if isinstance(provider, Field)]
+
 	def _update_capacity_utilisation(self):
 		"""Farm doesn't acctually produce something, so calculate productivity by the number of fields
 		nearby."""
-		reach = RadiusRect(self.position, self.radius)
-		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
-		providers = [ p for p in providers if isinstance(p, Field) ]
-
-		self.capacity_utilisation = float(len(providers))/self.max_fields_possible
+		self.capacity_utilisation = float(len(self._get_providers())) / self.max_fields_possible
 		# sanity checks for theoretically impossible cases:
 		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
 		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
 
+	def get_expected_production_level(self, resource_id):
+		# TODO: make this work for the other resources / different field types
+		for production in self._get_productions():
+			if resource_id not in production._prod_line.produced_res:
+				continue
+
+			if resource_id == RES.FOOD_ID:
+				amount = 0
+				for sub_amount in production._prod_line.produced_res.itervalues():
+					amount += sub_amount
+				return 0.0375 * len(self._get_providers()) * float(amount) / production._prod_line.time / GAME_SPEED.TICKS_PER_SECOND
+		return None
+
 class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
+	def get_expected_production_level(self, resource_id):
+		if resource_id != RES.BOARDS_ID:
+			return None
+		production = [production for production in self._get_productions()][0]
+		amount = 0
+		for sub_amount in production._prod_line.produced_res.itervalues():
+			amount += sub_amount
+		return float(amount) / production._prod_line.time / GAME_SPEED.TICKS_PER_SECOND
 
 class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
@@ -105,6 +127,16 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 		# which isn't what we want. Therefore this workaround:
 		while cls._selected_tiles:
 			cls._selected_tiles.pop()
+
+	def get_expected_production_level(self, resource_id):
+		# TODO: make this provide a more realistic expectation depending on the location
+		if resource_id != RES.FOOD_ID:
+			return None
+		production = [production for production in self._get_productions()][0]
+		amount = 0
+		for sub_amount in production._prod_line.produced_res.itervalues():
+			amount += sub_amount
+		return float(amount) / production._prod_line.time / GAME_SPEED.TICKS_PER_SECOND
 
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.

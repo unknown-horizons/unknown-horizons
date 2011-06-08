@@ -26,7 +26,7 @@ import copy
 
 from horizons.util import WorldObject
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.constants import PRODUCTION
+from horizons.constants import PRODUCTION, GAME_SPEED
 from horizons.world.production.productionline import ProductionLine
 
 from horizons.scheduler import Scheduler
@@ -142,6 +142,7 @@ class Production(WorldObject):
 
 	#----------------------------------------------------------------------
 	def record_state(self):
+		"""Records statistics necessary to calculate the production level."""
 		if self._state is not PRODUCTION.STATES.paused:
 			if self._state is PRODUCTION.STATES.producing:
 				self.current_counter += 1
@@ -152,6 +153,26 @@ class Production(WorldObject):
 				self.last_counter = self.current_counter + 0
 				self.current_counter = 0
 				self.current_pos = 0
+
+	def get_history_length(self):
+		total = self.current_pos
+		if self.last_counter is not None:
+			total += PRODUCTION.COUNTER_LIMIT
+		return total
+
+	def get_absolute_production_level(self):
+		"""Returns the current absolute production level per tick."""
+		produced = self.current_counter
+		total = self.current_pos
+		if self.last_counter is not None:
+			produced += self.last_counter
+			total += PRODUCTION.COUNTER_LIMIT
+		if total == 0:
+			return 0
+		amount = 0
+		for sub_amount in self._prod_line.produced_res.itervalues():
+			amount += sub_amount
+		return float(amount) * produced / total / self._prod_line.time / GAME_SPEED.TICKS_PER_SECOND
 
 	#----------------------------------------------------------------------
 	def get_produced_units(self):
