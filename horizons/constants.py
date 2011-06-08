@@ -60,7 +60,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2011.2'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 16
+	SAVEGAMEREVISION= 17
 
 	@staticmethod
 	def string():
@@ -190,8 +190,8 @@ class PRODUCTION:
 	# NOTE: 'done' is only for SingleUseProductions
 	# NOTE: 'none' is not used by an acctual production, just for a producer
 	CAPACITY_UTILISATION_CONSIDERED_SECONDS = 60 # seconds, that count for cap. util. calculation
-	COUNTER_LIMIT = 600 # 5 minutes in ticks * COUNTER_INTERVAL; used to keep track of current & max production levels
-	COUNTER_INTERVAL = 8
+	COUNTER_LIMIT = 240 # 2 minutes in ticks * COUNTER_INTERVAL; used to keep track of current & max production levels
+	COUNTER_INTERVAL = 8 # production statistics are saved every COUNTER_INTERVAL ticks
 
 
 ## GAME-RELATED, BALANCING VALUES
