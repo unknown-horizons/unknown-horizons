@@ -27,32 +27,21 @@ from collections import deque
 from builder import Builder
 from roadplanner import RoadPlanner
 
+from horizons.ai.aiplayer.buildingevaluator.fisherevaluator import FisherEvaluator
+from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from horizons.constants import AI, BUILDINGS
 from horizons.util import Point, Rect, WorldObject
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
 class ProductionBuilder(WorldObject):
-	class purpose:
-		none = 1
-		reserved = 2
-		branch_office = 3
-		road = 4
-		fisher = 5
-		lumberjack = 6
-		tree = 7
-		storage = 8
-		farm = 9
-		farm_field = 10
-		potato_field = 11
-
 	def __init__(self, settlement_manager):
 		super(ProductionBuilder, self).__init__()
 		self.__init(settlement_manager)
-		self.plan = dict.fromkeys(self.land_manager.production, (self.purpose.none, None))
+		self.plan = dict.fromkeys(self.land_manager.production, (PRODUCTION_PURPOSE.NONE, None))
 		for coords in settlement_manager.branch_office.position.tuple_iter():
 			if coords in self.plan:
-				self.plan[coords] = (self.purpose.branch_office, None)
+				self.plan[coords] = (PRODUCTION_PURPOSE.BRANCH_OFFICE, None)
 
 	def __init(self, settlement_manager):
 		self.settlement_manager = settlement_manager
@@ -97,13 +86,13 @@ class ProductionBuilder(WorldObject):
 			if object is None:
 				continue
 
-			if purpose == self.purpose.fisher and object.id == BUILDINGS.FISHERMAN_CLASS:
+			if purpose == PRODUCTION_PURPOSE.FISHER and object.id == BUILDINGS.FISHERMAN_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == self.purpose.lumberjack and object.id == BUILDINGS.LUMBERJACK_CLASS:
+			elif purpose == PRODUCTION_PURPOSE.LUMBERJACK and object.id == BUILDINGS.LUMBERJACK_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == self.purpose.farm and object.id == BUILDINGS.FARM_CLASS:
+			elif purpose == PRODUCTION_PURPOSE.FARM and object.id == BUILDINGS.FARM_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == self.purpose.storage and object.id == BUILDINGS.STORAGE_CLASS:
+			elif purpose == PRODUCTION_PURPOSE.STORAGE and object.id == BUILDINGS.STORAGE_CLASS:
 				self.collector_buildings.append(object)
 
 		self.refresh_unused_fields()
@@ -152,9 +141,9 @@ class ProductionBuilder(WorldObject):
 		distance_to_road = {}
 		distance_to_boundary = {}
 		for coords in self.plan:
-			if self.plan[coords][0] == self.purpose.none:
+			if self.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
 				nodes[coords] = 1
-			elif self.plan[coords][0] == self.purpose.road:
+			elif self.plan[coords][0] == PRODUCTION_PURPOSE.ROAD:
 				nodes[coords] = 1
 				distance_to_road[coords] = 0
 
@@ -208,7 +197,7 @@ class ProductionBuilder(WorldObject):
 		if path is not None:
 			for x, y in path:
 				point = Point(x, y)
-				self.plan[point.to_tuple()] = (self.purpose.road, None)
+				self.plan[point.to_tuple()] = (PRODUCTION_PURPOSE.ROAD, None)
 				building = self.island.get_building(point)
 				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 					continue
@@ -224,18 +213,18 @@ class ProductionBuilder(WorldObject):
 	def make_builder(self, building_id, x, y, needs_collector):
 		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """
 		coords = (x, y)
-		if coords not in self.plan or self.plan[coords][0] != self.purpose.none or coords not in self.land_manager.settlement.ground_map:
+		if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE or coords not in self.land_manager.settlement.ground_map:
 			return None
 		builder = Builder.create(building_id, self.land_manager, Point(x, y))
 		if not builder or not self.land_manager.legal_for_production(builder.position):
 			return None
 		if building_id == BUILDINGS.FISHERMAN_CLASS: #
 			for coords in builder.position.tuple_iter():
-				if coords in self.plan and self.plan[coords][0] != self.purpose.none:
+				if coords in self.plan and self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
 					return None
 		else:
 			for coords in builder.position.tuple_iter():
-				if coords not in self.plan or self.plan[coords][0] != self.purpose.none:
+				if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
 					return None
 		if needs_collector and not self._near_collectors(builder.position):
 			return None
@@ -249,49 +238,19 @@ class ProductionBuilder(WorldObject):
 		Finds a reasonable place for a fisher and builds the fisher and a road connection.
 		"""
 		if not self.have_resources(BUILDINGS.FISHERMAN_CLASS):
-			return (True, False)
+			return BUILD_RESULT.NEED_RESOURCES
 
 		options = []
-		refill_cycle_in_tiles = 12
-
 		for (x, y) in self.plan:
-			fisher = self.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True)
-			if not fisher:
-				continue
+			builder = FisherEvaluator.create(self, x, y)
+			if builder is not None:
+				options.append((-builder.value, builder))
 
-			fishers_in_range = 1.0
-			for other_fisher in self.owner.fishers:
-				distance = fisher.position.distance(other_fisher.position)
-				if distance < 16:
-					fishers_in_range += 1 - distance / 16.0
-
-			tiles_used = 0
-			fish_value = 0.0
-			for fish in self.session.world.fish_indexer.get_buildings_in_range((x, y)):
-				if tiles_used >= 3 * refill_cycle_in_tiles:
-					break
-				distance = fisher.position.distance(fish.position) + 1.0
-				if tiles_used >= refill_cycle_in_tiles:
-					fish_value += min(1.0, (3 * refill_cycle_in_tiles - tiles_used) / distance) / 10.0
-				else:
-					fish_value += min(1.0, (refill_cycle_in_tiles - tiles_used) / distance)
-				tiles_used += distance
-			if fish_value > 0:
-				options.append((fishers_in_range / fish_value, fisher))
-
-		for _, fisher in sorted(options):
-			if not self._build_road_connection(fisher):
-				continue
-			building = fisher.execute()
-			if not building:
-				return (None, False)
-			self.owner.fishers.append(fisher)
-			for coords in fisher.position.tuple_iter():
-				self.plan[coords] = (self.purpose.reserved, None)
-			self.plan[sorted(fisher.position.tuple_iter())[0]] = (self.purpose.fisher, fisher)
-			self.production_buildings.append(building)
-			return (fisher, True)
-		return (None, False)
+		for _, evaluator in sorted(options):
+			result = evaluator.execute()
+			if result == BUILD_RESULT.OK:
+				return result
+		return BUILD_RESULT.IMPOSSIBLE
 
 	def build_lumberjack(self):
 		"""
@@ -307,9 +266,9 @@ class ProductionBuilder(WorldObject):
 		cell_value = {}
 		alignment_value = {}
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == self.purpose.none:
+			if purpose == PRODUCTION_PURPOSE.NONE:
 				cell_value[coords] = 3
-			elif purpose == self.purpose.tree:
+			elif purpose == PRODUCTION_PURPOSE.TREE:
 				cell_value[coords] = 1
 			else:
 				continue
@@ -317,7 +276,7 @@ class ProductionBuilder(WorldObject):
 			alignment = 0
 			for dx, dy in moves:
 				coords2 = (coords[0] + dx, coords[1] + dy)
-				if coords2 not in self.plan or self.plan[coords][0] == self.purpose.road:
+				if coords2 not in self.plan or self.plan[coords][0] == PRODUCTION_PURPOSE.ROAD:
 					alignment += 2 if abs(dx) + abs(dy) == 1 else 1
 			alignment_value[coords] = alignment
 
@@ -344,12 +303,12 @@ class ProductionBuilder(WorldObject):
 			if not building:
 				return (None, False)
 			for coords in lumberjack.position.tuple_iter():
-				self.plan[coords] = (self.purpose.reserved, None)
-			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (self.purpose.lumberjack, lumberjack)
+				self.plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
+			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (PRODUCTION_PURPOSE.LUMBERJACK, lumberjack)
 
 			for coords in lumberjack.position.get_radius_coordinates(3):
-				if coords in self.plan and self.plan[coords][0] == self.purpose.none:
-					self.plan[coords] = (self.purpose.tree, None)
+				if coords in self.plan and self.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
+					self.plan[coords] = (PRODUCTION_PURPOSE.TREE, None)
 					tree = Builder.create(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
 			self.production_buildings.append(building)
 			return (lumberjack, True)
@@ -397,14 +356,14 @@ class ProductionBuilder(WorldObject):
 						coords = (x + other_offset, y + road_dy)
 					else:
 						coords = (x + road_dx, y + other_offset)
-					if coords not in self.plan or (self.plan[coords][0] != self.purpose.none and self.plan[coords][0] != self.purpose.road):
+					if coords not in self.plan or (self.plan[coords][0] != PRODUCTION_PURPOSE.NONE and self.plan[coords][0] != PRODUCTION_PURPOSE.ROAD):
 						farm_plan = None
 						break
 
-					if self.plan[coords][0] == self.purpose.none:
+					if self.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
 						road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(coords[0], coords[1]))
 						if road:
-							farm_plan[coords] = (self.purpose.road, road)
+							farm_plan[coords] = (PRODUCTION_PURPOSE.ROAD, road)
 						else:
 							farm_plan = None
 							break
@@ -430,16 +389,16 @@ class ProductionBuilder(WorldObject):
 						break # some part of the area is reserved for something else
 					fields += 1
 					for coords2 in field.position.tuple_iter():
-						farm_plan[coords2] = (self.purpose.reserved, None)
-					farm_plan[coords] = (self.purpose.farm_field, None)
+						farm_plan[coords2] = (PRODUCTION_PURPOSE.RESERVED, None)
+					farm_plan[coords] = (PRODUCTION_PURPOSE.FARM_FIELD, None)
 				if fields < most_fields:
 					continue # go for the most fields possible
 				most_fields = fields
 
 				# add the farm itself to the plan
 				for coords in farm.position.tuple_iter():
-					farm_plan[coords] = (self.purpose.reserved, None)
-				farm_plan[(x, y)] = (self.purpose.farm, farm)
+					farm_plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
+				farm_plan[(x, y)] = (PRODUCTION_PURPOSE.FARM, farm)
 
 				alignment = 0
 				for x, y in farm_plan:
@@ -447,7 +406,7 @@ class ProductionBuilder(WorldObject):
 						coords = (x + dx, y + dy)
 						if coords in farm_plan:
 							continue
-						if coords not in self.plan or self.plan[coords][0] != self.purpose.none:
+						if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
 							alignment += 1
 
 				value = fields + existing_roads * 0.005 + alignment * 0.001
@@ -464,7 +423,7 @@ class ProductionBuilder(WorldObject):
 			if not building:
 				return (None, False)
 			for coords, (purpose, builder) in farm_plan.iteritems():
-				if purpose == self.purpose.farm_field:
+				if purpose == PRODUCTION_PURPOSE.FARM_FIELD:
 					self.unused_fields.append(coords)
 			self.production_buildings.append(building)
 			return (farm, True)
@@ -483,7 +442,7 @@ class ProductionBuilder(WorldObject):
 		if not builder.execute():
 			return (None, False)
 		self.unused_fields.popleft()
-		self.plan[coords] = (self.purpose.potato_field, builder)
+		self.plan[coords] = (PRODUCTION_PURPOSE.POTATO_FIELD, builder)
 		return (builder, True)
 
 	def enough_collectors(self):
@@ -558,14 +517,14 @@ class ProductionBuilder(WorldObject):
 
 		checked_resources = False
 		for (x, y), (purpose, _) in self.plan.iteritems():
-			if purpose != self.purpose.none or (x, y) not in self.land_manager.settlement.ground_map:
+			if purpose != PRODUCTION_PURPOSE.NONE or (x, y) not in self.land_manager.settlement.ground_map:
 				continue
 			point = Point(x, y)
 			builder = Builder.create(BUILDINGS.STORAGE_CLASS, self.land_manager, point)
 			if not builder or not self.land_manager.legal_for_production(builder.position):
 				continue
 			for coords in builder.position.tuple_iter():
-				if self.plan[coords][0] != self.purpose.none:
+				if self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
 					builder = None
 			if builder is None:
 				continue # part of the land is already reserved
@@ -587,7 +546,7 @@ class ProductionBuilder(WorldObject):
 				if building and building.id == BUILDINGS.TRAIL_CLASS:
 					distance[coords] = 0
 					queue.append((coords, 0))
-				if coords not in self.plan or self.plan[coords][0] != self.purpose.none:
+				if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
 					alignment += 1
 			if not distance:
 				continue
@@ -618,8 +577,8 @@ class ProductionBuilder(WorldObject):
 			if not building:
 				return (None, False)
 			for coords in builder.position.tuple_iter():
-				self.plan[coords] = (self.purpose.reserved, None)
-			self.plan[sorted(builder.position.tuple_iter())[0]] = (self.purpose.storage, builder)
+				self.plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
+			self.plan[sorted(builder.position.tuple_iter())[0]] = (PRODUCTION_PURPOSE.STORAGE, builder)
 			self.collector_buildings.append(building)
 			return (builder, True)
 		return (None, False)
@@ -641,7 +600,7 @@ class ProductionBuilder(WorldObject):
 	def refresh_unused_fields(self):
 		self.unused_fields = deque()
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == self.purpose.farm_field:
+			if purpose == PRODUCTION_PURPOSE.FARM_FIELD:
 				self.unused_fields.append(coords)
 
 	def display(self):
@@ -661,21 +620,21 @@ class ProductionBuilder(WorldObject):
 
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
-			if purpose == self.purpose.road:
+			if purpose == PRODUCTION_PURPOSE.ROAD:
 				renderer.addColored(tile._instance, *road_colour)
-			elif purpose == self.purpose.fisher:
+			elif purpose == PRODUCTION_PURPOSE.FISHER:
 				renderer.addColored(tile._instance, *fisher_colour)
-			elif purpose == self.purpose.lumberjack:
+			elif purpose == PRODUCTION_PURPOSE.LUMBERJACK:
 				renderer.addColored(tile._instance, *lumberjack_colour)
-			elif purpose == self.purpose.tree:
+			elif purpose == PRODUCTION_PURPOSE.TREE:
 				renderer.addColored(tile._instance, *tree_colour)
-			elif purpose == self.purpose.farm:
+			elif purpose == PRODUCTION_PURPOSE.FARM:
 				renderer.addColored(tile._instance, *farm_colour)
-			elif purpose == self.purpose.farm_field:
+			elif purpose == PRODUCTION_PURPOSE.FARM_FIELD:
 				renderer.addColored(tile._instance, *farm_field_colour)
-			elif purpose == self.purpose.potato_field:
+			elif purpose == PRODUCTION_PURPOSE.POTATO_FIELD:
 				renderer.addColored(tile._instance, *potato_field_colour)
-			elif purpose == self.purpose.reserved:
+			elif purpose == PRODUCTION_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)

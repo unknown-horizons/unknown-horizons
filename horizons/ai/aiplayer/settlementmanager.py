@@ -23,6 +23,7 @@ import logging
 
 from collections import deque
 
+from constants import BUILD_RESULT
 from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
 
@@ -206,12 +207,12 @@ class SettlementManager(WorldObject):
 					try_fisher = True
 
 				if try_fisher:
-					(details, success) = self.production_builder.build_fisher()
-					if success:
+					result = self.production_builder.build_fisher()
+					if result == BUILD_RESULT.OK:
 						self.log.info('ai.settlement.tick: built a fisher')
 						self.num_fishers += 1
 						call_again = True
-					elif details is not None:
+					elif result == BUILD_RESULT.NEED_RESOURCES:
 						self.log.info('ai.settlement.tick: not enough materials to build a fisher')
 						call_again = True
 					else:
