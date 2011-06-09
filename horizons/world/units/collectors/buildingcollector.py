@@ -91,7 +91,7 @@ class BuildingCollector(Collector):
 
 	def decouple_from_home_building(self):
 		"""Makes collector survive deletion of home building."""
-		self.cancel()
+		self.cancel(continue_action=lambda : 42) # don't continue
 		self.stop()
 		self.register_at_home_building(unregister=True)
 		self.home_building = None
