@@ -28,6 +28,7 @@ from builder import Builder
 from roadplanner import RoadPlanner
 
 from horizons.ai.aiplayer.buildingevaluator.fisherevaluator import FisherEvaluator
+from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from horizons.constants import AI, BUILDINGS
 from horizons.util import Point, Rect, WorldObject
@@ -314,125 +315,36 @@ class ProductionBuilder(WorldObject):
 			return (lumberjack, True)
 		return (None, False)
 
-	def _make_field_offsets(self):
-		# right next to the farm
-		first_class = [(-3, -3), (-3, 0), (-3, 3), (0, -3), (0, 3), (3, -3), (3, 0), (3, 3)]
-		# offset by a road right next to the farm
-		second_class = [(-4, -3), (-4, 0), (-4, 3), (-3, -4), (-3, 4), (0, -4), (0, 4), (3, -4), (3, 4), (4, -3), (4, 0), (4, 3)]
-		# offset by crossing roads
-		third_class = [(-4, -4), (-4, 4), (4, -4), (4, 4)]
-		first_class.extend(second_class)
-		first_class.extend(third_class)
-		return first_class
-
 	def build_farm(self):
 		"""
 		Finds a reasonable place for a farm and build the farm along with a road connection.
 		The fields will be reserved but not built.
 		"""
 		if not self.have_resources(BUILDINGS.FARM_CLASS):
-			return (True, False)
+			return BUILD_RESULT.NEED_RESOURCES
 
-		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
-		field_offsets = self._make_field_offsets()
 		options = []
 
 		most_fields = 1
 		for (x, y) in self.plan:
-			farm = self.make_builder(BUILDINGS.FARM_CLASS, x, y, True)
-			if not farm:
-				continue
-
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:
-				farm_plan = {}
+				builder = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields)
+				if builder is not None:
+					options.append((-builder.value, builder))
+					most_fields = max(most_fields, builder.fields)
 
-				# place the farm area road
-				existing_roads = 0
-				for other_offset in xrange(-3, 6):
-					coords = None
-					if road_dx == 0:
-						coords = (x + other_offset, y + road_dy)
-					else:
-						coords = (x + road_dx, y + other_offset)
-					if coords not in self.plan or (self.plan[coords][0] != PRODUCTION_PURPOSE.NONE and self.plan[coords][0] != PRODUCTION_PURPOSE.ROAD):
-						farm_plan = None
-						break
-
-					if self.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
-						road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(coords[0], coords[1]))
-						if road:
-							farm_plan[coords] = (PRODUCTION_PURPOSE.ROAD, road)
-						else:
-							farm_plan = None
-							break
-					else:
-						existing_roads += 1
-				if farm_plan is None:
-					continue # impossible to build some part of the road
-
-				# place the fields
-				fields = 0
-				for (dx, dy) in field_offsets:
-					if fields >= 8:
-						break # unable to place more anyway
-					coords = (x + dx, y + dy)
-					field = self.make_builder(BUILDINGS.POTATO_FIELD_CLASS, coords[0], coords[1], False)
-					if not field:
-						continue
-					for coords2 in field.position.tuple_iter():
-						if coords2 in farm_plan:
-							field = None
-							break
-					if field is None:
-						break # some part of the area is reserved for something else
-					fields += 1
-					for coords2 in field.position.tuple_iter():
-						farm_plan[coords2] = (PRODUCTION_PURPOSE.RESERVED, None)
-					farm_plan[coords] = (PRODUCTION_PURPOSE.FARM_FIELD, None)
-				if fields < most_fields:
-					continue # go for the most fields possible
-				most_fields = fields
-
-				# add the farm itself to the plan
-				for coords in farm.position.tuple_iter():
-					farm_plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
-				farm_plan[(x, y)] = (PRODUCTION_PURPOSE.FARM, farm)
-
-				alignment = 0
-				for x, y in farm_plan:
-					for dx, dy in moves:
-						coords = (x + dx, y + dy)
-						if coords in farm_plan:
-							continue
-						if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
-							alignment += 1
-
-				value = fields + existing_roads * 0.005 + alignment * 0.001
-				options.append((-value, farm_plan, farm))
-
-		for _, farm_plan, farm in sorted(options):
-			backup = copy.copy(self.plan)
-			for coords, plan_item in farm_plan.iteritems():
-				self.plan[coords] = plan_item
-			if not self._build_road_connection(farm):
-				self.plan = backup
-				continue
-			building = farm.execute()
-			if not building:
-				return (None, False)
-			for coords, (purpose, builder) in farm_plan.iteritems():
-				if purpose == PRODUCTION_PURPOSE.FARM_FIELD:
-					self.unused_fields.append(coords)
-			self.production_buildings.append(building)
-			return (farm, True)
-		return (None, False)
+		for _, evaluator in sorted(options):
+			result = evaluator.execute()
+			if result == BUILD_RESULT.OK:
+				return result
+		return BUILD_RESULT.IMPOSSIBLE
 
 	def build_potato_field(self):
 		if not self.unused_fields:
 			result = self.build_farm()
-			if not result[1]:
+			if result != BUILD_RESULT.OK:
 				return result
 			self.display()
 		assert len(self.unused_fields) > 0
@@ -440,10 +352,10 @@ class ProductionBuilder(WorldObject):
 		coords = self.unused_fields[0]
 		builder = Builder.create(BUILDINGS.POTATO_FIELD_CLASS, self.land_manager, Point(coords[0], coords[1]))
 		if not builder.execute():
-			return (None, False)
+			return BUILD_RESULT.UNKNOWN_ERROR
 		self.unused_fields.popleft()
 		self.plan[coords] = (PRODUCTION_PURPOSE.POTATO_FIELD, builder)
-		return (builder, True)
+		return BUILD_RESULT.OK
 
 	def enough_collectors(self):
 		produce_quantity = 0

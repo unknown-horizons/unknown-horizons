@@ -192,12 +192,12 @@ class SettlementManager(WorldObject):
 			if self.production_builder.enough_collectors():
 				try_fisher = False
 				if self.owner.settler_level > 0:
-					(details, success) = self.production_builder.build_potato_field()
-					if success:
+					result = self.production_builder.build_potato_field()
+					if result == BUILD_RESULT.OK:
 						self.log.info('ai.settlement.tick: built a potato field')
 						self.num_potato_fields += 1
 						call_again = True
-					elif details is not None:
+					elif result == BUILD_RESULT.NEED_RESOURCES:
 						self.log.info('ai.settlement.tick: not enough materials to build a farm')
 						call_again = True
 					else:
