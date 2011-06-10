@@ -69,7 +69,6 @@ class WorldObject(ChangeListener):
 
 	def load(self, db, worldid):
 		super(WorldObject, self).load(db, worldid)
-		assert not hasattr(self, '_WorldObject__id')
 		self.__init(worldid)
 		self.log.debug('loading worldobject %s %s', worldid, self)
 
