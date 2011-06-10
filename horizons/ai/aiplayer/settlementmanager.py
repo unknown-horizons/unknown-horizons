@@ -200,11 +200,11 @@ class SettlementManager(WorldObject):
 				else:
 					self.log.info('ai.settlement.tick: failed to build a food producer')
 			else:
-				(details, success) = self.production_builder.improve_collector_coverage()
-				if success:
+				result = self.production_builder.improve_collector_coverage()
+				if result == BUILD_RESULT.OK:
 					self.log.info('ai.settlement.tick: built a storage')
 					call_again = True
-				elif details is not None:
+				elif result == BUILD_RESULT.NEED_RESOURCES:
 					self.log.info('ai.settlement.tick: not enough materials to build a storage')
 					call_again = True
 				else:

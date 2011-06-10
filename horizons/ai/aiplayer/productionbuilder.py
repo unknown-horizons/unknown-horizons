@@ -464,12 +464,13 @@ class ProductionBuilder(WorldObject):
 		"""
 		Builds a storage tent to improve collector coverage.
 		"""
+		if not self.have_resources(BUILDINGS.STORAGE_CLASS):
+			return BUILD_RESULT.NEED_RESOURCES
 
 		(data, keys) = self._get_collector_data()
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		options = []
 
-		checked_resources = False
 		for (x, y), (purpose, _) in self.plan.iteritems():
 			if purpose != PRODUCTION_PURPOSE.NONE or (x, y) not in self.land_manager.settlement.ground_map:
 				continue
@@ -482,11 +483,6 @@ class ProductionBuilder(WorldObject):
 					builder = None
 			if builder is None:
 				continue # part of the land is already reserved
-
-			if not checked_resources:
-				checked_resources = True
-				if not builder.have_resources():
-					return (True, False)
 
 			distance = {}
 			alignment = 1
@@ -529,13 +525,13 @@ class ProductionBuilder(WorldObject):
 		for _, builder in sorted(options):
 			building = builder.execute()
 			if not building:
-				return (None, False)
+				return BUILD_RESULT.UNKNOWN_ERROR
 			for coords in builder.position.tuple_iter():
 				self.plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
 			self.plan[sorted(builder.position.tuple_iter())[0]] = (PRODUCTION_PURPOSE.STORAGE, builder)
 			self.collector_buildings.append(building)
-			return (builder, True)
-		return (None, False)
+			return BUILD_RESULT.OK
+		return BUILD_RESULT.IMPOSSIBLE
 
 	def count_fishers(self):
 		fishers = 0
