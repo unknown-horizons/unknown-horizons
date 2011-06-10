@@ -65,7 +65,7 @@ class SettlementManager(WorldObject):
 		self.build_queue.append(self.buildCallType.village_main_square)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
 		SetTaxSetting(self.land_manager.settlement, 0.5).execute(self.land_manager.session)
-		self.log.info('ai.settlement.tick: set tax rate to 0.5')
+		self.log.info('%s set tax rate to 0.5', self)
 
 	def __init(self, land_manager, branch_office):
 		self.owner = land_manager.owner
@@ -172,12 +172,12 @@ class SettlementManager(WorldObject):
 		return total
 
 	def tick(self):
-		self.log.info('current food production %.5f, consumption %.5f', \
-			self.get_resource_production(RES.FOOD_ID)[0], self.get_resident_resource_usage(RES.FOOD_ID))
+		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID)[0], \
+			self.get_resident_resource_usage(RES.FOOD_ID))
 		call_again = False
 
 		if len(self.build_queue) > 0:
-			self.log.info('ai.settlement.tick: build a queue item')
+			self.log.info('%s build a queue item', self)
 			task_type = self.build_queue.popleft()
 			if task_type == self.buildCallType.village_roads:
 				self.village_builder.build_roads()
@@ -192,37 +192,40 @@ class SettlementManager(WorldObject):
 			if self.production_builder.enough_collectors():
 				result = self.production_builder.build_food_producer()
 				if result == BUILD_RESULT.OK:
-					self.log.info('ai.settlement.tick: built a food producer')
+					self.log.info('%s built a food producer', self)
 					call_again = True
 				elif result == BUILD_RESULT.NEED_RESOURCES:
-					self.log.info('ai.settlement.tick: not enough materials to build a food producer')
+					self.log.info('%s not enough materials to build a food producer', self)
 					call_again = True
 				else:
-					self.log.info('ai.settlement.tick: failed to build a food producer')
+					self.log.info('%s failed to build a food producer', self)
 			else:
 				result = self.production_builder.improve_collector_coverage()
 				if result == BUILD_RESULT.OK:
-					self.log.info('ai.settlement.tick: built a storage')
+					self.log.info('%s built a storage', self)
 					call_again = True
 				elif result == BUILD_RESULT.NEED_RESOURCES:
-					self.log.info('ai.settlement.tick: not enough materials to build a storage')
+					self.log.info('%s not enough materials to build a storage', self)
 					call_again = True
 				else:
-					self.log.info('ai.settlement.tick: failed to build a storage')
+					self.log.info('%s failed to build a storage', self)
 		elif self.village_builder.tents_to_build > self.tents:
 			result = self.village_builder.build_tent()
 			if result == BUILD_RESULT.OK:
-				self.log.info('ai.settlement.tick: built a tent')
+				self.log.info('%s built a tent', self)
 				self.tents += 1
 				call_again = True
 			elif result == BUILD_RESULT.NEED_RESOURCES:
-				self.log.info('ai.settlement.tick: not enough materials to build a tent')
+				self.log.info('%s not enough materials to build a tent', self)
 				call_again = True
 			else:
-				self.log.info('ai.settlement.tick: failed to build a tent')
+				self.log.info('%s failed to build a tent', self)
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 		if not call_again:
 			self.village_built = True
+
+	def __str__(self):
+		return '%s.SM(%s/%d)' % (self.owner, self.land_manager.settlement.name, self.worldid)
 
 decorators.bind_all(SettlementManager)

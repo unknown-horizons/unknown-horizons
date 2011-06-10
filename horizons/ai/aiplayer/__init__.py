@@ -96,9 +96,9 @@ class AIPlayer(GenericAI):
 		self.complete_inventory = CompleteInventory(self)
 		self.virtual_farm = VirtualFarm(self.session)
 		self.virtual_fisher = VirtualFisher(self.session)
-		self.log.info('Expected 1 field farm food production %.5f/tick', \
+		self.log.info('%s Expected 1 field farm food production %.5f/tick', self, \
 			self.virtual_farm.get_expected_production_level(RES.FOOD_ID, 1))
-		self.log.info('Expected perfect fisher food production %.5f/tick', \
+		self.log.info('%s Expected perfect fisher food production %.5f/tick', self, \
 			self.virtual_fisher.get_expected_production_level(RES.FOOD_ID))
 
 	def report_success(self, mission, msg):
@@ -220,7 +220,7 @@ class AIPlayer(GenericAI):
 
 		ship = self.ships.keys()[0]
 		if self.ships[ship] != self.shipStates.idle:
-			#self.log.info('ai.tick: no available ships')
+			#self.log.info('%s.tick: no available ships', self)
 			return
 
 		island = None
@@ -230,18 +230,18 @@ class AIPlayer(GenericAI):
 			if island is not None:
 				break
 		if island is None:
-			#self.log.info('ai.tick: no good enough islands')
+			#self.log.info('%s.tick: no good enough islands', self)
 			return
 
 		if self.have_starting_resources(ship, None):
-			self.log.info('ai.tick: send ship %s on a mission to found a settlement', ship)
+			self.log.info('%s.tick: send ship %s on a mission to found a settlement', self, ship)
 			self.found_settlement(island, ship)
 		else:
 			for settlement_manager in self.settlement_managers:
 				if not settlement_manager.can_provide_resources():
 					continue
 				if self.have_starting_resources(ship, settlement_manager.land_manager.settlement):
-					self.log.info('ai.tick: send ship %s on a mission to get resources for a new settlement', ship)
+					self.log.info('%s.tick: send ship %s on a mission to get resources for a new settlement', self, ship)
 					self.prepare_foundation_ship(settlement_manager, ship)
 					return
 
@@ -268,6 +268,9 @@ class AIPlayer(GenericAI):
 					RemoveFromSellList(settlement, res).execute(self.session)
 
 	def notify_unit_path_blocked(self, unit):
-		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
+		self.log.warning("%s ship blocked (%s)", self, unit)
+
+	def __str__(self):
+		return 'AI(%s/%d)' % (self.name, self.worldid)
 
 decorators.bind_all(AIPlayer)
