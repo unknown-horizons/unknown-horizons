@@ -136,7 +136,7 @@ class SettlementManager(WorldObject):
 		return self.village_built
 
 	def enough_food_producers(self):
-		"""Returns true if and only if we are producing less than we should and we have a place to store it."""
+		"""Returns false if and only if we are producing less than we should and we have a place to store it."""
 		have = self.get_resource_production(RES.FOOD_ID)[0]
 		need = self.get_resident_resource_usage(RES.FOOD_ID) * 1.02 + 0.001
 		if have >= need:
