@@ -270,7 +270,7 @@ class ProductionBuilder(WorldObject):
 		a road connection and additional trees.
 		"""
 		if not self.have_resources(BUILDINGS.LUMBERJACK_CLASS):
-			return (True, False)
+			return BUILD_RESULT.NEED_RESOURCES
 
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		options = []
@@ -313,7 +313,7 @@ class ProductionBuilder(WorldObject):
 				continue
 			building = lumberjack.execute()
 			if not building:
-				return (None, False)
+				return BUILD_RESULT.UNKNOWN_ERROR
 			for coords in lumberjack.position.tuple_iter():
 				self.plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
 			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (PRODUCTION_PURPOSE.LUMBERJACK, lumberjack)
@@ -323,8 +323,8 @@ class ProductionBuilder(WorldObject):
 					self.plan[coords] = (PRODUCTION_PURPOSE.TREE, None)
 					tree = Builder.create(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
 			self.production_buildings.append(building)
-			return (lumberjack, True)
-		return (None, False)
+			return BUILD_RESULT.OK
+		return BUILD_RESULT.IMPOSSIBLE
 
 	def get_next_farm(self):
 		"""
