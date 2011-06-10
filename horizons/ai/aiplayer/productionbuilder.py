@@ -353,6 +353,8 @@ class ProductionBuilder(WorldObject):
 	def build_food_producer(self):
 		build_fields = False
 		if not self.unused_fields:
+			if not self.have_resources(BUILDINGS.FISHERMAN_CLASS) and not self.have_resources(BUILDINGS.FARM_CLASS):
+				return BUILD_RESULT.NEED_RESOURCES
 			next_fisher = self.get_next_fisher()
 			next_farm = self.get_next_farm()
 			if next_fisher is None:
