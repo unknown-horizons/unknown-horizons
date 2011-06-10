@@ -57,25 +57,33 @@ class Minimap(object):
 		self.world = None
 		self.location_center = self.location.center()
 
+		self.minimap_image = _MinimapImage(horizons.main.fife.imagepool, self.MINIMAP_BASE_IMAGE)
+
+
 	def end(self):
 		self.world = None
 		self.session = None
 		self.renderer = None
 
-	def draw(self, world = None):
+	def draw(self):
 		"""Recalculates and draws the whole minimap of self.session.world or world.
 		The world you specified is reused for every operation until the next draw().
 		"""
-		if world is None:
-			world = self.session.world
-		if not world.inited:
+		if not self.world:
+			self.world = self.session.world # use this from now on
+		if not self.world.inited:
 			return # don't draw while loading
-		self.world = world # use this from now on, until next redrawing
 
 		# update cam when view updates
 		if not self.session.view.has_change_listener(self.update_cam):
 			self.session.view.add_change_listener(self.update_cam)
 		self.update_cam()
+
+		# reset image
+		self.renderer.removeAll("minimap_a_image");
+		self.minimap_image.reset()
+		node = fife.GenericRendererNode( fife.Point(self.location.center().x, self.location.center().y) )
+		self.renderer.addImage("minimap_a_image", node, self.minimap_image.img_id)
 
 		self._recalculate()
 		self._timed_update()
@@ -152,21 +160,6 @@ class Minimap(object):
 		if where is None:
 			where = self.location
 
-		# reload img
-		# get img and release it
-		img_id = horizons.main.fife.imagepool.addResourceFromFile( self.MINIMAP_BASE_IMAGE )
-		self.renderer.removeAll("minimap_a_image")
-		# NOTE: the refcount of the image is for some reason 0 here, so we must not decrease it.
-		horizons.main.fife.imagepool.release( img_id, False )
-
-		# load again
-		img_id = horizons.main.fife.imagepool.addResourceFromFile( self.MINIMAP_BASE_IMAGE )
-		img = horizons.main.fife.imagepool.getImage( img_id )
-
-		# add image
-		node = fife.GenericRendererNode( fife.Point(self.location.center().x, self.location.center().y) )
-		self.renderer.addImage("minimap_a_image", node, img_id)
-
 		# calculate which area of the real map is mapped to which pixel on the minimap
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
 
@@ -181,6 +174,7 @@ class Minimap(object):
 		island_col = self.colors[self.island_id]
 		location_left = self.location.left
 		location_top = self.location.top
+		img = self.minimap_image.image
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this faciliates calculating the real world coords
@@ -333,5 +327,29 @@ class Minimap(object):
 		  int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y \
 		)
 
+class _MinimapImage(object):
+	"""Encapsulates handling of fife Image.
+	Provides:
+	- self.img_id: fife resource id of image
+	-	self.image: instance of fife.Image
+	"""
+	def __init__(self, imagepool, image_file_path):
+		self.imagepool = imagepool
+		self.image_file_path = image_file_path
+		self.img_id = None # fife resource id of image
+		self.image = None # instance of fife.Image
+		self._load_img()
+
+	def _load_img(self):
+		self.img_id = self.imagepool.addResourceFromFile( self.image_file_path )
+		self.image = self.imagepool.getImage( self.img_id )
+
+	def reset(self):
+		"""Reset image to original image"""
+		# release
+		# NOTE: the refcount of the image is for some reason 0 here, so we must not decrease it.
+		self.imagepool.release( self.img_id, False )
+		# load
+		self._load_img()
 
 bind_all(Minimap)

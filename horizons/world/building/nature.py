@@ -56,7 +56,7 @@ class AnimalField(CollectingBuilding, Field):
 
 	def remove(self):
 		while len(self.animals) > 0:
-			self.animals[0].cancel()
+			self.animals[0].cancel(continue_action=lambda : 42) # don't continue
 			self.animals[0].remove()
 		super(AnimalField, self).remove()
 

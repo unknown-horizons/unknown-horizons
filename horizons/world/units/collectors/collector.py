@@ -392,6 +392,8 @@ class Collector(StorageHolder, Unit):
 		"""Aborts the current job.
 		@param continue_action: Callback, gets called after cancel. Specifies what collector
 			                      is supposed to now.
+		NOTE: Subclasses set this to a proper action that makes the collector continue to work.
+		      If the collector is supposed to be remove, use a noop.
 		"""
 		self.log.debug("%s was cancel, continue action is %s", self, continue_action)
 		if self.job is not None:
