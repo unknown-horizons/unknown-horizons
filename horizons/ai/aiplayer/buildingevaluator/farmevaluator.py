@@ -75,6 +75,20 @@ class FarmEvaluator(BuildingEvaluator):
 		return first_class
 
 	@classmethod
+	def _suitable_for_road(self, production_builder, coords):
+		if coords in production_builder.plan:
+			return production_builder.plan[coords][0] == PRODUCTION_PURPOSE.NONE or \
+				production_builder.plan[coords][0] == PRODUCTION_PURPOSE.ROAD
+		else:
+			ground_map = production_builder.settlement.ground_map
+			if coords not in ground_map:
+				return False
+			object = ground_map[coords].object
+			if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
+				return True
+		return False
+
+	@classmethod
 	def create(cls, production_builder, x, y, road_dx, road_dy, min_fields):
 		builder = production_builder.make_builder(BUILDINGS.FARM_CLASS, x, y, True)
 		if not builder:
@@ -90,12 +104,10 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (x + other_offset, y + road_dy)
 			else:
 				coords = (x + road_dx, y + other_offset)
-			if coords not in production_builder.plan or (production_builder.plan[coords][0] != PRODUCTION_PURPOSE.NONE \
-														and production_builder.plan[coords][0] != PRODUCTION_PURPOSE.ROAD):
-				farm_plan = None
-				break
+			if not cls._suitable_for_road(production_builder, coords):
+				return None
 
-			if production_builder.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
+			if coords in production_builder.plan and production_builder.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
 				road = Builder.create(BUILDINGS.TRAIL_CLASS, production_builder.land_manager, Point(coords[0], coords[1]))
 				if road:
 					farm_plan[coords] = (PRODUCTION_PURPOSE.ROAD, road)
