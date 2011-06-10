@@ -147,7 +147,7 @@ class FarmEvaluator(BuildingEvaluator):
 		return FarmEvaluator(production_builder, builder, farm_plan, fields, existing_roads, alignment)
 
 	def execute(self):
-		if not self.production_builder.have_resources(BUILDINGS.FISHERMAN_CLASS):
+		if not self.production_builder.have_resources(self.builder.building_id):
 			return BUILD_RESULT.NEED_RESOURCES
 		backup = copy.copy(self.production_builder.plan)
 		for coords, plan_item in self.farm_plan.iteritems():

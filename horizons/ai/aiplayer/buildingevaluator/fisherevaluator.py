@@ -66,7 +66,7 @@ class FisherEvaluator(BuildingEvaluator):
 		return FisherEvaluator(production_builder, builder, fishers_in_range, fish_value)
 
 	def execute(self):
-		if not self.production_builder.have_resources(BUILDINGS.FISHERMAN_CLASS):
+		if not self.production_builder.have_resources(self.builder.building_id):
 			return BUILD_RESULT.NEED_RESOURCES
 		if not self.production_builder._build_road_connection(self.builder):
 			return BUILD_RESULT.IMPOSSIBLE
