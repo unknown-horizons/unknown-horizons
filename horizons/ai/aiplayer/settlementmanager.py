@@ -190,33 +190,15 @@ class SettlementManager(WorldObject):
 			call_again = True
 		elif not self.enough_food_producers():
 			if self.production_builder.enough_collectors():
-				try_fisher = False
-				if self.owner.settler_level > 0:
-					result = self.production_builder.build_potato_field()
-					if result == BUILD_RESULT.OK:
-						self.log.info('ai.settlement.tick: built a potato field')
-						self.num_potato_fields += 1
-						call_again = True
-					elif result == BUILD_RESULT.NEED_RESOURCES:
-						self.log.info('ai.settlement.tick: not enough materials to build a farm')
-						call_again = True
-					else:
-						self.log.info('ai.settlement.tick: failed to build a farm or a potato field')
-						try_fisher = True
+				result = self.production_builder.build_food_producer()
+				if result == BUILD_RESULT.OK:
+					self.log.info('ai.settlement.tick: built a food producer')
+					call_again = True
+				elif result == BUILD_RESULT.NEED_RESOURCES:
+					self.log.info('ai.settlement.tick: not enough materials to build a food producer')
+					call_again = True
 				else:
-					try_fisher = True
-
-				if try_fisher:
-					result = self.production_builder.build_fisher()
-					if result == BUILD_RESULT.OK:
-						self.log.info('ai.settlement.tick: built a fisher')
-						self.num_fishers += 1
-						call_again = True
-					elif result == BUILD_RESULT.NEED_RESOURCES:
-						self.log.info('ai.settlement.tick: not enough materials to build a fisher')
-						call_again = True
-					else:
-						self.log.info('ai.settlement.tick: failed to build a fisher')
+					self.log.info('ai.settlement.tick: failed to build a food producer')
 			else:
 				(details, success) = self.production_builder.improve_collector_coverage()
 				if success:

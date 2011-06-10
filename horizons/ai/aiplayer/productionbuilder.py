@@ -30,7 +30,7 @@ from roadplanner import RoadPlanner
 from horizons.ai.aiplayer.buildingevaluator.fisherevaluator import FisherEvaluator
 from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
-from horizons.constants import AI, BUILDINGS
+from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point, Rect, WorldObject
 from horizons.util.python import decorators
 from horizons.entities import Entities
@@ -205,6 +205,21 @@ class ProductionBuilder(WorldObject):
 				road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
 		return path is not None
 
+	def _road_connection_possible(self, builder):
+		collector_coords = set()
+		for building in self.collector_buildings:
+			for coords in self._get_possible_road_coords(building.position):
+				collector_coords.add(coords)
+
+		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
+		destination_coords = set(self._get_possible_road_coords(builder.position))
+
+		pos = builder.position
+		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
+
+		path = RoadPlanner()(collector_coords, destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
+		return  path is not None
+
 	def _near_collectors(self, position):
 		for building in self.collector_buildings:
 			if building.position.distance(position) <= building.radius:
@@ -234,24 +249,20 @@ class ProductionBuilder(WorldObject):
 	def have_resources(self, building_id):
 		return Entities.buildings[building_id].have_resources([self.land_manager.settlement], self.owner)
 
-	def build_fisher(self):
+	def get_next_fisher(self):
 		"""
-		Finds a reasonable place for a fisher and builds the fisher and a road connection.
+		Finds a reasonable place for a fisher and returns the BuildingEvaluator object.
 		"""
-		if not self.have_resources(BUILDINGS.FISHERMAN_CLASS):
-			return BUILD_RESULT.NEED_RESOURCES
-
 		options = []
 		for (x, y) in self.plan:
-			builder = FisherEvaluator.create(self, x, y)
-			if builder is not None:
-				options.append((-builder.value, builder))
+			evaluator = FisherEvaluator.create(self, x, y)
+			if evaluator is not None:
+				options.append((-evaluator.value, evaluator))
 
 		for _, evaluator in sorted(options):
-			result = evaluator.execute()
-			if result == BUILD_RESULT.OK:
-				return result
-		return BUILD_RESULT.IMPOSSIBLE
+			if self._road_connection_possible(evaluator.builder):
+				return evaluator
+		return None
 
 	def build_lumberjack(self):
 		"""
@@ -315,13 +326,12 @@ class ProductionBuilder(WorldObject):
 			return (lumberjack, True)
 		return (None, False)
 
-	def build_farm(self):
+	def get_next_farm(self):
 		"""
-		Finds a reasonable place for a farm and build the farm along with a road connection.
-		The fields will be reserved but not built.
+		Finds a reasonable place for a farm and returns the BuildingEvaluator object.
 		"""
-		if not self.have_resources(BUILDINGS.FARM_CLASS):
-			return BUILD_RESULT.NEED_RESOURCES
+		if self.owner.settler_level < 1:
+			return None
 
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		options = []
@@ -330,32 +340,62 @@ class ProductionBuilder(WorldObject):
 		for (x, y) in self.plan:
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:
-				builder = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields)
-				if builder is not None:
-					options.append((-builder.value, builder))
-					most_fields = max(most_fields, builder.fields)
+				evaluator = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields)
+				if evaluator is not None:
+					options.append((-evaluator.value, evaluator))
+					most_fields = max(most_fields, evaluator.fields)
 
 		for _, evaluator in sorted(options):
-			result = evaluator.execute()
-			if result == BUILD_RESULT.OK:
-				return result
-		return BUILD_RESULT.IMPOSSIBLE
+			if self._road_connection_possible(evaluator.builder):
+				return evaluator
+		return None
 
-	def build_potato_field(self):
+	def build_food_producer(self):
+		build_fields = False
 		if not self.unused_fields:
-			result = self.build_farm()
-			if result != BUILD_RESULT.OK:
+			next_fisher = self.get_next_fisher()
+			next_farm = self.get_next_farm()
+			if next_fisher is None:
+				if next_farm is None:
+					return BUILD_RESULT.IMPOSSIBLE
+				# build the farm
+				result = next_farm.execute()
+				if result != BUILD_RESULT.OK:
+					return result
+				build_fields = True
+			elif next_farm is None:
+				# build the fisher
+				result = next_fisher.execute()
+				if result == BUILD_RESULT.OK:
+					self.settlement_manager.num_fishers += 1
 				return result
-			self.display()
-		assert len(self.unused_fields) > 0
+			else:
+				resource_limits = {} # 
+				cost_farm = next_farm.get_unit_cost(RES.FOOD_ID, resource_limits)
+				cost_fisher = next_fisher.get_unit_cost(RES.FOOD_ID, resource_limits)
+				if cost_farm <= cost_fisher:
+					result = next_farm.execute()
+					if result != BUILD_RESULT.OK:
+						return result
+					build_fields = True
+				else:
+					result = next_fisher.execute()
+					if result == BUILD_RESULT.OK:
+						self.settlement_manager.num_fishers += 1
+					return result
+		else:
+			build_fields = True
 
-		coords = self.unused_fields[0]
-		builder = Builder.create(BUILDINGS.POTATO_FIELD_CLASS, self.land_manager, Point(coords[0], coords[1]))
-		if not builder.execute():
-			return BUILD_RESULT.UNKNOWN_ERROR
-		self.unused_fields.popleft()
-		self.plan[coords] = (PRODUCTION_PURPOSE.POTATO_FIELD, builder)
-		return BUILD_RESULT.OK
+		if build_fields:
+			assert len(self.unused_fields) > 0
+			coords = self.unused_fields[0]
+			builder = Builder.create(BUILDINGS.POTATO_FIELD_CLASS, self.land_manager, Point(coords[0], coords[1]))
+			if not builder.execute():
+				return BUILD_RESULT.UNKNOWN_ERROR
+			self.unused_fields.popleft()
+			self.plan[coords] = (PRODUCTION_PURPOSE.POTATO_FIELD, builder)
+			self.settlement_manager.num_potato_fields += 1
+			return BUILD_RESULT.OK
 
 	def enough_collectors(self):
 		produce_quantity = 0

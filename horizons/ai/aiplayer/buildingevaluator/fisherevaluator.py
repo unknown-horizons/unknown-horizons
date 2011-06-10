@@ -34,6 +34,9 @@ class FisherEvaluator(BuildingEvaluator):
 		self.fish_value = fish_value
 		self.value = fish_value / fishers_in_range
 
+	def get_expected_production_level(self, resource_id):
+		return self.production_builder.owner.virtual_fisher.get_expected_production_level(resource_id)
+
 	@classmethod
 	def create(cls, production_builder, x, y):
 		builder = production_builder.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True)

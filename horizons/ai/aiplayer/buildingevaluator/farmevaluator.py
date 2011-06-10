@@ -25,8 +25,9 @@ from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from horizons.util.python import decorators
-from horizons.util import Point
 from horizons.constants import BUILDINGS
+from horizons.entities import Entities
+from horizons.util import Point
 
 class FarmEvaluator(BuildingEvaluator):
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
@@ -39,6 +40,27 @@ class FarmEvaluator(BuildingEvaluator):
 		self.existing_roads = existing_roads
 		self.alignment = alignment
 		self.value = fields + existing_roads * 0.005 + alignment * 0.001
+
+	def _get_costs(self):
+		total = super(FarmEvaluator, self)._get_costs()
+		field_cost = Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].costs
+		for res, amount in field_cost.iteritems():
+			total[res] += amount * self.fields
+		return total
+
+	def _get_running_costs(self):
+		field_running_cost = Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].running_costs
+		return super(FarmEvaluator, self)._get_running_costs() * self.fields * field_running_cost
+
+	def _get_land_area(self):
+		return super(FarmEvaluator, self)._get_land_area() + self.fields * 9
+
+	def get_expected_production_level(self, resource_id):
+		return self.production_builder.owner.virtual_farm.get_expected_production_level(resource_id, self.fields)
+
+	@property
+	def preference_multiplier(self):
+		return 2.0
 
 	@classmethod
 	def _make_field_offsets(cls):
@@ -140,6 +162,7 @@ class FarmEvaluator(BuildingEvaluator):
 			if purpose == PRODUCTION_PURPOSE.FARM_FIELD:
 				self.production_builder.unused_fields.append(coords)
 		self.production_builder.production_buildings.append(building)
+		self.production_builder.display()
 		return BUILD_RESULT.OK
 
 FarmEvaluator.field_offsets = FarmEvaluator._make_field_offsets()
