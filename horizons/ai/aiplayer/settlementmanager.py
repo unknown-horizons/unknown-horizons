@@ -210,12 +210,12 @@ class SettlementManager(WorldObject):
 				else:
 					self.log.info('ai.settlement.tick: failed to build a storage')
 		elif self.village_builder.tents_to_build > self.tents:
-			(tent, success) = self.village_builder.build_tent()
-			if success:
+			result = self.village_builder.build_tent()
+			if result == BUILD_RESULT.OK:
 				self.log.info('ai.settlement.tick: built a tent')
 				self.tents += 1
 				call_again = True
-			elif tent is not None:
+			elif result == BUILD_RESULT.NEED_RESOURCES:
 				self.log.info('ai.settlement.tick: not enough materials to build a tent')
 				call_again = True
 			else:

@@ -22,6 +22,7 @@
 from collections import deque
 
 from builder import Builder
+from constants import BUILD_RESULT
 
 from horizons.constants import AI, BUILDINGS
 from horizons.util import Point, WorldObject
@@ -361,13 +362,13 @@ class VillageBuilder(WorldObject):
 			coords = self.tent_queue[0]
 			builder = self.plan[coords][1]
 			if not builder.have_resources():
-				return (builder, False)
+				return BUILD_RESULT.NEED_RESOURCES
 			if not builder.execute():
-				return (None, False)
+				return BUILD_RESULT.UNKNOWN_ERROR
 			self.plan[coords] = (self.purpose.tent, builder)
 			self.tent_queue.popleft()
-			return (builder, True)
-		return (None, False)
+			return BUILD_RESULT.OK
+		return BUILD_RESULT.IMPOSSIBLE
 
 	def count_tents(self):
 		tents = 0
