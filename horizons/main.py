@@ -94,8 +94,11 @@ def start(command_line_arguments):
 			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
 			return False
 
+	AI.AI_PLAYERS = command_line_arguments.ai_players
 	if command_line_arguments.ai_highlights:
 		AI.HIGHLIGHT_PLANS = True
+	if command_line_arguments.human_ai:
+		AI.HUMAN_AI = True
 
 	db = _create_db()
 

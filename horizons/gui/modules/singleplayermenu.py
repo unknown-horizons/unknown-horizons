@@ -25,6 +25,7 @@ from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import PlayerDataSelection
 from horizons.util.gui import adjust_widget_black_background
+from horizons.constants import AI
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'scenario'): # tutorial
@@ -160,7 +161,7 @@ class SingleplayerMenu(object):
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 				})
 		else: # free play/random map
-			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players=1)
+			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players=AI.AI_PLAYERS, human_ai=AI.HUMAN_AI)
 
 	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""

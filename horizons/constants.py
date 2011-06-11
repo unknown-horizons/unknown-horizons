@@ -280,6 +280,8 @@ class NETWORK:
 
 class AI:
 	HIGHLIGHT_PLANS = False
+	AI_PLAYERS = 1
+	HUMAN_AI = False
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):

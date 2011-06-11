@@ -107,8 +107,8 @@ def get_option_parser():
 	p.add_option_group(start_uh_group)
 
 	ai_group = optparse.OptionGroup(p, _("AI options"))
-	ai_group.add_option("--ai-players", dest="ai_players", metavar="<ai_players>", type="int", default=0, \
-	             help=_("Uses <ai_players> AI players (excludes the possible human-AI hybrid)."))
+	ai_group.add_option("--ai-players", dest="ai_players", metavar="<ai_players>", type="int", default=1, \
+	             help=_("Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."))
 	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
 	             help=_("Makes the human player a human-AI hybrid (for development only)."))
 	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true", \
