@@ -237,7 +237,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.log.debug("%s REPRODUCING", self)
 		# create offspring
 		CreateUnit(self.owner.worldid, self.id, self.position.x, self.position.y, \
-		           can_reproduce = self.next_clone_can_reproduce())
+		           can_reproduce = self.next_clone_can_reproduce())(issuer=None)
 		# reset own resources
 		for res in self.get_consumed_resources():
 			self.inventory.reset(res)

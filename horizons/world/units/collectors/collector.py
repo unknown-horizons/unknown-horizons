@@ -331,7 +331,7 @@ class Collector(StorageHolder, Unit):
 		"""Pretends that the collector works by waiting some time. finish_working is
 		called after that time."""
 		self.log.debug("%s begins working", self)
-		assert self.job is not None, '%s job is non in begin_working' % self
+		assert self.job is not None, '%s job is None in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, self.work_duration)
 		# play working sound
 		if self.soundfiles:
