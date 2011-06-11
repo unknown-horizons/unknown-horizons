@@ -208,6 +208,11 @@ class MESSAGES:
 	LOGBOOK_DEFAULT_DELAY = 4 # delay between condition fulfilled and logbook popping up
 
 # AI
+class AI:
+	HIGHLIGHT_PLANS = False
+	AI_PLAYERS = 1
+	HUMAN_AI = False
+
 class TRADER: # check resource values: ./development/print_db_data.py res
 	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
 	PRICE_MODIFIER_SELL = 1.5 # sell for x times the resource value
@@ -277,11 +282,6 @@ class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
 	SERVER_PORT = 2001
 	CLIENT_ADDRESS = None
-
-class AI:
-	HIGHLIGHT_PLANS = False
-	AI_PLAYERS = 1
-	HUMAN_AI = False
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):
