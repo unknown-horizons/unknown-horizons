@@ -30,7 +30,7 @@ import horizons.main
 from horizons.session import Session
 from horizons.manager import SPManager
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import PATHS, GAME_SPEED
+from horizons.constants import PATHS, GAME_SPEED, SINGLEPLAYER
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.timer import Timer
@@ -43,7 +43,7 @@ class SPSession(Session):
 		return SPManager(self)
 
 	def create_rng(self):
-		return random.Random()
+		return random.Random(SINGLEPLAYER.SEED)
 
 	def create_timer(self):
 		return Timer(freeze_protection=True)

@@ -104,6 +104,8 @@ def get_option_parser():
 	             help=_("Loads a saved game. <save> is the savegamename."))
 	start_uh_group.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true", \
 	             help=_("Loads the last quicksave."))
+	start_uh_group.add_option("--nature-seed", dest="nature_seed", type="int", \
+	             help=_("Sets the seed used to generate trees, fish, and other natural resources."))
 	p.add_option_group(start_uh_group)
 
 	ai_group = optparse.OptionGroup(p, _("AI options"))

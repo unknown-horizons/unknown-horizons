@@ -274,6 +274,10 @@ class PATHS:
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 
+## SINGLEPLAYER
+class SINGLEPLAYER:
+	SEED = None
+
 ## MULTIPLAYER
 class MULTIPLAYER:
 	MAX_PLAYER_COUNT = 8
