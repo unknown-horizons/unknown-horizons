@@ -58,10 +58,6 @@ class FarmEvaluator(BuildingEvaluator):
 	def get_expected_production_level(self, resource_id):
 		return self.production_builder.owner.virtual_farm.get_expected_production_level(resource_id, self.fields)
 
-	@property
-	def preference_multiplier(self):
-		return 2.0
-
 	@classmethod
 	def _make_field_offsets(cls):
 		# right next to the farm

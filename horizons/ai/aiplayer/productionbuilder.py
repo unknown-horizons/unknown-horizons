@@ -21,6 +21,7 @@
 
 import math
 import copy
+import logging
 
 from collections import deque
 
@@ -36,6 +37,8 @@ from horizons.util.python import decorators
 from horizons.entities import Entities
 
 class ProductionBuilder(WorldObject):
+	log = logging.getLogger("ai.aiplayer")
+
 	def __init__(self, settlement_manager):
 		super(ProductionBuilder, self).__init__()
 		self.__init(settlement_manager)
@@ -375,6 +378,7 @@ class ProductionBuilder(WorldObject):
 				resource_limits = {} # 
 				cost_farm = next_farm.get_unit_cost(RES.FOOD_ID, resource_limits)
 				cost_fisher = next_fisher.get_unit_cost(RES.FOOD_ID, resource_limits)
+				self.log.info('%s farm %.5f, fisher %.5f', self.settlement_manager, cost_farm, cost_fisher)
 				if cost_farm <= cost_fisher:
 					result = next_farm.execute()
 					if result != BUILD_RESULT.OK:

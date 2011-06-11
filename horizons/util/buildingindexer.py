@@ -94,6 +94,7 @@ class BuildingIndexer(object):
 			if self._changed:
 				self._update()
 			return self._map[coords].get_buildings_in_range()
+		return []
 
 	def get_random_building_in_range(self, coords):
 		"""
