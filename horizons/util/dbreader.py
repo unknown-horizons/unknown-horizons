@@ -54,6 +54,13 @@ class DbReader(object):
 		@params, return: same as in __call__"""
 		return self(command, *args)
 
+	def execute_many(self, command, parameters):
+		"""Executes a sql command for each sequence or mapping
+		found in parameters.
+		@param command: same as in __call__
+		@param parameters: sequence or iterator"""
+		return self.cur.executemany(command, parameters)
+
 	def execute_script(self, script):
 		"""Executes a multiline script.
 		@param script: multiline str containing an sql script."""
