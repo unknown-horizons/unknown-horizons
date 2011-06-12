@@ -28,9 +28,20 @@
 <ScrollArea background_color="255,255,255,0"  vertical_scrollbar="1"
 		max_size="310,470"  min_size="310,470">
 <VBox  name="credits">
+	<VBox> <Label text="Bulgarian"  name="headline" />
+		<VBox  name="box">
+			<Label text="balward" />
+		</VBox>
+	</VBox>
 	<VBox> <Label text="Catalan"  name="headline" />
 		<VBox  name="box">
 			<Label text="Siegfried Gevatter (RainCT)" />
+			<Label text="CatRoky" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Czech"  name="headline" />
+		<VBox  name="box">
+			<Label text="Kristian Hynek (Kris_CZ)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="German"  name="headline" />
@@ -41,7 +52,7 @@
 	<VBox> <Label text="Spanish"  name="headline" />
 		<VBox  name="box">
 			<Label text="Nikolai Woutlan" />
-			<Label text="William Cabrera" />
+			<Label text="William Cabrera (willicab)" />
 			<Label text="Álex Plaza" />
 			<Label text="Fabio Fernández (Catharsius)" />
 		</VBox>
@@ -55,18 +66,19 @@
 		<VBox  name="box">
 			<Label text="Marc Moussa (deathmaster9)" />
 			<Label text="Vincent Herilier (LiveWire)" />
-			<Label text="Sebastien Charpentier" />
+			<Label text="Sebastien Charpentier (seblabel)" />
 			<Label text="Hugues Fafard (Antagonym)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Lithuanian"  name="headline" />
 		<VBox  name="box">
-			<Label text="Mantas Kondrotas" />
+			<Label text="Mantas Kondrotas (Anielus)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Italian"  name="headline" />
 		<VBox  name="box">
 			<Label text="Fabio Pedretti" />
+			<Label text="sioux83" />
 		</VBox>
 	</VBox>
 </VBox>
@@ -88,13 +100,15 @@
 	<VBox> <Label text="Dutch"  name="headline" />
 		<VBox  name="box">
 			<Label text="Luth" />
+			<Label text="Jasper Tepper (Shadow23)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Polish"  name="headline" />
 		<VBox  name="box">
 			<Label text="Adrian Marcinkowski (Amfidiusz)" />
 			<Label text="Stanislaw Gackowski (soeb)" />
-			<Label text="Mateusz Bartkowski" />
+			<Label text="Mateusz Bartkowski (Eugen)" />
+			<Label text="Natrius" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Portuguese"  name="headline" />
@@ -111,6 +125,7 @@
 		<VBox  name="box">
 			<Label text="Sergei Chistyakov (devcode)" />
 			<Label text="Sergey Stepanov" />
+			<Label text="Alexander Olkhovskiy (fcxSanya)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Slovenian"  name="headline" />

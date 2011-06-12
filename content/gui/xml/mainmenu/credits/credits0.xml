@@ -38,6 +38,8 @@
 			<Label text="manuel (Manuel Mausz)" />
 			<Label text="gscai (Ott Tinn)" />
 			<Label text="mihaibivol (Mihai Bivol)" />
+			<Label text="Court-Jus" />
+			<Label text="squiddy (Reiner Gerecke)" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>

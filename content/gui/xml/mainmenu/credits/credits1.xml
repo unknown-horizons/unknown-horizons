@@ -29,6 +29,7 @@
 			<Label text="MadMonk (Focus bugfix)"  />
 			<Label text="MSSSSM (Several improvements)"  />
 			<Label text="soeb (Translation enhancements)"  />
+			<Label text="janus (Resource icons)"  />
 		</VBox>
 	</VBox>
 
@@ -51,6 +52,7 @@
 			<Label text="sids.aquarius (Several improvements)" />
 			<Label text="mayanks43 (Campaign system)" />
 			<Label text="sient (Minimap rectangle)" />
+			<Label text="hoffi (GUI improvements)" />
 		</VBox>
 	</VBox>
 </VBox>
