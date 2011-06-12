@@ -14,7 +14,7 @@
 <!-- this is the first container ( uh-team ) and could be visible by default.          !!!
 -->
 
-<VBox position="190,45"  name="credits">
+<VBox position="185,45"  name="credits">
 	<Label text="UH-Team"  name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox> <Label text="Project Coordination"  name="headline" />

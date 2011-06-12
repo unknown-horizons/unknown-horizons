@@ -22,9 +22,12 @@
 </Container>
 <!-- this is the third container ( translators ).                                      !!!
 -->
-<VBox position="190,45"  name="credits"  max_size="335,500"  min_size="335,450"  padding="0">
+<VBox  position="185,45"  padding="0">
 	<Label text="Translators"  name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
+<ScrollArea background_color="255,255,255,0"  vertical_scrollbar="1"
+		max_size="310,470"  min_size="310,470">
+<VBox  name="credits">
 	<VBox> <Label text="Catalan"  name="headline" />
 		<VBox  name="box">
 			<Label text="Siegfried Gevatter (RainCT)" />
@@ -66,11 +69,13 @@
 			<Label text="Fabio Pedretti" />
 		</VBox>
 	</VBox>
-
-	<Spacer />
 </VBox>
-
-<VBox position="525,70" name="credits2"  max_size="335,475"  min_size="335,425">
+</ScrollArea>
+</VBox>
+<!-- split at char 13 of the alphabet (start new page with N) -->
+<ScrollArea background_color="255,255,255,0"  vertical_scrollbar="1"
+		position="525,70"  max_size="310,475"  min_size="310,475">
+<VBox name="credits2">
 <!-- sooner or later the 70 needs to be a 45 just as the left box.
      for the time being the current alignment just looks better. -->
 	<VBox> <Label text="Norwegian"  name="headline" />
@@ -114,6 +119,7 @@
 		</VBox>
 	</VBox>
 </VBox>
+</ScrollArea>
 
 <Container position="0,500"  size="1000,100"> <!-- buttons, always visible.
   USE ––|–– THESE if there are more than 2 pages of content for one credits group
