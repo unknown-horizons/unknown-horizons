@@ -64,14 +64,30 @@ class UhDbAccessor(DbReader):
 		except IndexError:
 			return None
 
-	def get_res_icon(self, res):
-		"""Returns icons of a resource
+	def get_res_icon(self, res, main=True, disabled=True, small=True):
+		"""
+		Returns tuple of icon paths for a resource. Returns None for tuple
+		positions where selection parameters main, disabled or small are False.
+		If no disabled icon is specified in the database, we return the main
+		icon as disabled version, too.
 		@param res: resource id
-		@return: tuple: (icon_path, icon_disabled_path, icon_small_path)"""
-		return self.cached_query('SELECT icon, \
-			    CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END, \
-			    CASE WHEN (icon_small is null) THEN icon ELSE icon_small END \
-			    FROM data.resource WHERE id = ?', res)[0]
+		@param main: bool, whether to return the main icon path (50px)
+		@param disabled: bool, whether to return the disabled icon path (grayscale)
+		@param small: bool, whether to return the small icon path (16px)
+		@return: tuple: (icon_path, icon_disabled_path, icon_small_path)
+		"""
+		sql = 'SELECT icon, \
+		       CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END, \
+		       icon_small \
+		       FROM data.resource WHERE id = ?'
+		(main_icon, disabled_icon, small_icon) = self.cached_query(sql, res)[0]
+		if not main:
+			main_icon = None
+		if not disabled:
+			disabled_icon = None
+		if not small:
+			small_icon = None
+		return (main_icon, disabled_icon, small_icon)
 
 	def get_res_value(self, id):
 		"""Returns the resource's value
@@ -79,23 +95,29 @@ class UhDbAccessor(DbReader):
 		@return: float value"""
 		return self.cached_query("SELECT value FROM resource WHERE id=?", id)[0][0]
 
-	def get_res(self, only_tradeable=False):
+	def get_res(self, only_tradeable=False, only_inventory=False):
 		"""Returns a list of all resources.
 		@param only_tradeable: return only those you can trade.
+		@param only_inventory: return only those displayed in inventories.
 		@return: list of resource ids"""
-		sql = "SELECT id FROM resource "
+		sql = "SELECT id FROM resource WHERE id"
 		if only_tradeable:
-			sql += " WHERE tradeable = 1"
+			sql += " AND tradeable = 1"
+		if only_inventory:
+			sql += " AND shown_in_inventory = 1"
 		db_data = self.cached_query(sql)
 		return map(lambda x: x[0], db_data)
 
-	def get_res_id_and_icon(self, only_tradeable=False):
+	def get_res_id_and_icon(self, only_tradeable=True, only_inventory=True):
 		"""Returns a list of all resources and the matching icons.
 		@param only_tradeable: return only those you can trade.
+		@param only_inventory: return only those displayed in inventories.
 		@return: list of tuples: (resource ids, resource icon)"""
-		sql = "SELECT id, icon FROM resource "
+		sql = "SELECT id, icon FROM resource WHERE id"
 		if only_tradeable:
-			sql += " WHERE tradeable = 1"
+			sql += " AND tradeable = 1"
+		if only_inventory:
+			sql += " AND shown_in_inventory = 1"
 		return self.cached_query(sql)
 
 	# Sound table
@@ -105,8 +127,10 @@ class UhDbAccessor(DbReader):
 		Returns the soundfile to the related sound name.
 		@param sound: string, key in table sounds_special
 		"""
-		return self.cached_query("SELECT file FROM sounds INNER JOIN sounds_special ON \
-			    sounds.id = sounds_special.sound AND sounds_special.type = ?", soundname)[0][0]
+		sql = 'SELECT file FROM sounds \
+		       INNER JOIN sounds_special ON sounds.id = sounds_special.sound AND \
+		       sounds_special.type = ?'
+		return self.cached_query(sql, soundname)[0][0]
 
 
 	def get_random_action_set(self, object_id, level=0, exact_level=False):
@@ -119,14 +143,11 @@ class UhDbAccessor(DbReader):
 		@return: tuple: (action_set_id, preview_action_set_id)"""
 		assert level >= 0
 		sql = "SELECT action_set_id, preview_action_set_id FROM action_set \
-		      WHERE object_id = ? and level = ?"
+		       WHERE object_id = ? and level = ?"
 
 		if exact_level:
 			db_data = self.cached_query(sql, object_id, level)
-			if db_data:
-				return db_data[ randint(0, len(db_data)-1) ]
-			else:
-				return None
+			return db_data[ randint(0, len(db_data)-1) ] or None
 
 		else: # search all levels for an action set, starting with highest one
 			for possible_level in reversed(xrange(level+1)):
@@ -148,8 +169,9 @@ class UhDbAccessor(DbReader):
 
 	def get_building_id_buttonname_settlerlvl(self):
 		"""Returns a list of id, button_name and settler_level"""
-		return self.cached_query("SELECT id, button_name, settler_level FROM \
-		                          building WHERE button_name IS NOT NULL")
+		return self.cached_query("SELECT id, button_name, settler_level \
+		                          FROM building \
+		                          WHERE button_name IS NOT NULL")
 
 	#
 	#
