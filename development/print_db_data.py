@@ -183,10 +183,11 @@ def print_collector_restrictions():
 			print '\t%s(%s)' % (get_obj_name(obj),obj)
 
 def print_increment_data():
-	print '%16s %12s %s %s' % ('increment', 'residential', 'max_inh', 'base_tax')
-	print '=' * 46
+	from horizons.util.python.roman_numerals import int_to_roman
+	print '%16s %11s %s %s' % ('increment', 'residential', 'max_inh', 'base_tax')
+	print '=' * 45
 	for inc, name, hut, inh, tax in db('SELECT level, name, residential_name, inhabitants_max, tax_income FROM settler.settler_level'):
-		print '%3s %12s %12s %5s    %4s' % (inc, name, hut, inh, tax)
+		print '%3s %11s %12s %5s    %4s' % (int_to_roman(inc+1), name, hut, inh, tax)
 
 functions = {
 		'resources' : print_res,
