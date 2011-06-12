@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# This file uses encoding: utf-8
 
 """
 This script prints misc data from the db
@@ -40,7 +41,8 @@ def get_obj_name(obj):
 
 def get_res_name(res):
 	global db
-	return db("SELECT name FROM resource WHERE id = ?", res)[0][0]
+	name = db("SELECT name FROM resource WHERE id = ?", res)[0][0]
+	return name
 
 def get_settler_name(incr):
 	global db
@@ -77,7 +79,7 @@ def print_production_lines():
 
 def print_settler_lines():
 	print 'Settler Consumption Lines:'
-	for incr in xrange(0,SETTLER.CURRENT_MAX_INCR + 1):
+	for incr in xrange(0,6):
 		settlername = get_settler_name(incr)
 		print "Inhabitants of increment %i (%ss) desire the following goods:" % \
 		                               (incr, settlername)
@@ -174,7 +176,7 @@ def print_building_costs():
 	all = set(db('SELECT id FROM building'))
 	entries = set(db('SELECT DISTINCT building FROM balance.building_costs'))
 	for id, in sorted(all - entries):
-		print "%s(%i)" % (get_obj_name(id), id)
+		print "%2i: %s" % (id, get_obj_name(id))
 
 def print_collector_restrictions():
 	for c, in db("SELECT DISTINCT collector FROM collector_restrictions"):
@@ -184,10 +186,18 @@ def print_collector_restrictions():
 
 def print_increment_data():
 	from horizons.util.python.roman_numerals import int_to_roman
-	print '%16s %11s %s %s' % ('increment', 'residential', 'max_inh', 'base_tax')
-	print '=' * 45
+	upgrade_increments = range(1, SETTLER.CURRENT_MAX_INCR+1)
+	print '%15s %12s %s %s  %s' % ('increment', 'residential', 'max_inh', 'base_tax', 'upgrade_prod_line')
+	print '=' * 64
 	for inc, name, hut, inh, tax in db('SELECT level, name, residential_name, inhabitants_max, tax_income FROM settler.settler_level'):
-		print '%3s %11s %12s %5s    %4s' % (int_to_roman(inc+1), name, hut, inh, tax)
+		str = '%3s %11s %12s %5s    %4s' % (int_to_roman(inc+1), name, hut, inh, tax)
+		if inc+1 in upgrade_increments:
+			line = db("SELECT production_line FROM settler.upgrade_material WHERE level = ?", inc+1)[0][0]
+			str += 5 * ' ' + '%2s: ' % line
+			(consumption, _) = get_prod_line(line, list)
+			for (res, amount) in consumption:
+				str += '%i %s(%s), ' % (-amount, get_res_name(res), res)
+		print str
 
 functions = {
 		'resources' : print_res,
