@@ -52,10 +52,7 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Distillery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Refiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
 class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -70,7 +67,7 @@ class Smeltery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, 
 class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class SaltPond(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
 class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
