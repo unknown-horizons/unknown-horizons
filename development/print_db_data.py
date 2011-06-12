@@ -182,6 +182,12 @@ def print_collector_restrictions():
 		for obj, in db("SELECT object FROM collector_restrictions WHERE collector = ?", c):
 			print '\t%s(%s)' % (get_obj_name(obj),obj)
 
+def print_increment_data():
+	print '%16s %12s %s %s' % ('increment', 'residential', 'max_inh', 'base_tax')
+	print '=' * 46
+	for inc, name, hut, inh, tax in db('SELECT level, name, residential_name, inhabitants_max, tax_income FROM settler.settler_level'):
+		print '%3s %12s %12s %5s    %4s' % (inc, name, hut, inh, tax)
+
 functions = {
 		'resources' : print_res,
 		'units' : print_unit,
@@ -193,17 +199,20 @@ functions = {
 		'settler_lines' : print_settler_lines,
 		'collectors' : print_collectors,
 		'collector_restrictions': print_collector_restrictions,
+		'increments' : print_increment_data,
 		}
 abbrevs = {
-		'res' : 'resources',
 		'b' : 'buildings',
 		'building' : 'buildings',
-		'bc' : 'building_costs',
-		'vl' : 'verbose_lines',
-		'sl' : 'settler_lines',
-		'c': 'collectors',
+		'bc': 'building_costs',
+		'c' : 'collectors',
 		'cr': 'collector_restrictions',
+		'i' : 'increments',
+		'increment' : 'increments',
+		'res' : 'resources',
+		'sl': 'settler_lines',
 		'unit': 'units',
+		'vl': 'verbose_lines',
 		}
 
 flags = dict(functions)
