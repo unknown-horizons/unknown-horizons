@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# This file uses encoding: utf-8
 
 """
 This script prints misc data from the db
@@ -76,24 +75,6 @@ def print_production_lines():
 				str +=  '%s %s(%s), ' % (amount, get_res_name(res), res)
 
 		print str
-
-def print_settler_lines():
-	print 'Settler Consumption Lines:'
-	for incr in xrange(0,6):
-		settlername = get_settler_name(incr)
-		print "Inhabitants of increment %i (%ss) desire the following goods:" % \
-		                               (incr, settlername)
-		lines = db("SELECT production_line FROM settler.settler_production_line \
-		            WHERE level = ? ORDER BY production_line", incr)
-		sorted_lines = sorted([(get_prod_line(line[0], tuple)[0][0],line[0]) for i,line in enumerate(lines)])
-		for item,id in sorted_lines:
-			time = db("SELECT time FROM production_line WHERE id == ?",id)[0][0]
-			str = '%2s: Each %5s seconds, %ss consume ' % (id, time, settlername)
-			(consumption,production) = get_prod_line(id, tuple)
-			str += '%2i %-12s(%2s) for ' % (-consumption[1], get_res_name(consumption[0]), consumption[0])
-			str += '%2i %s(%2s).' % (production[1], get_res_name(production[0]), production[0])
-			print str
-		print ''
 
 def print_verbose_lines():
 	def _output_helper_prodlines(string, list):
@@ -186,7 +167,7 @@ def print_collector_restrictions():
 
 def print_increment_data():
 	from horizons.util.python.roman_numerals import int_to_roman
-	upgrade_increments = range(1, SETTLER.CURRENT_MAX_INCR+1)
+	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
 	print '%15s %12s %s %s  %s' % ('increment', 'residential', 'max_inh', 'base_tax', 'upgrade_prod_line')
 	print '=' * 64
 	for inc, name, hut, inh, tax in db('SELECT level, name, residential_name, inhabitants_max, tax_income FROM settler.settler_level'):
@@ -199,18 +180,34 @@ def print_increment_data():
 				str += '%i %s(%s), ' % (-amount, get_res_name(res), res)
 		print str
 
+	print '\n' + 'Settler Consumption Lines:'
+	for inc in xrange(SETTLER.CURRENT_MAX_INCR+1):
+		settlername = get_settler_name(inc)
+		print "In increment %3s, %ss desire the following goods:" % \
+		                                (int_to_roman(inc+1), settlername)
+		lines = db("SELECT production_line FROM settler.settler_production_line \
+		            WHERE level = ? ORDER BY production_line", inc)
+		sorted_lines = sorted([(get_prod_line(line[0], tuple)[0][0],line[0]) for i,line in enumerate(lines)])
+		for item,id in sorted_lines:
+			time = db("SELECT time FROM production_line WHERE id == ?",id)[0][0]
+			str = '%2s: Each %5s seconds, %ss consume ' % (id, time, settlername)
+			(consumption,production) = get_prod_line(id, tuple)
+			str += '%2i %-12s(%2s) for ' % (-consumption[1], get_res_name(consumption[0]), consumption[0])
+			str += '%2i %s(%2s).' % (production[1], get_res_name(production[0]), production[0])
+			print str
+		print ''
+
 functions = {
-		'resources' : print_res,
-		'units' : print_unit,
 		'buildings' : print_building,
 		'building_costs' : print_building_costs,
-		'storage' : print_storage,
-		'lines' : print_production_lines,
-		'verbose_lines' : print_verbose_lines,
-		'settler_lines' : print_settler_lines,
 		'collectors' : print_collectors,
 		'collector_restrictions': print_collector_restrictions,
 		'increments' : print_increment_data,
+		'lines' : print_production_lines,
+		'resources' : print_res,
+		'storage' : print_storage,
+		'units' : print_unit,
+		'verbose_lines' : print_verbose_lines,
 		}
 abbrevs = {
 		'b' : 'buildings',
@@ -221,7 +218,8 @@ abbrevs = {
 		'i' : 'increments',
 		'increment' : 'increments',
 		'res' : 'resources',
-		'sl': 'settler_lines',
+		'settler_lines': 'increments',
+		'sl': 'increments',
 		'unit': 'units',
 		'vl': 'verbose_lines',
 		}
@@ -233,7 +231,7 @@ for (x,y) in abbrevs.iteritems(): # add convenience abbreviations to possible fl
 args = sys.argv
 
 if len(args) == 1:
-	print 'Start with one of those args: %s \nSupported abbreviations: %s' % (functions.keys(), abbrevs.keys())
+	print 'Start with one of those args: %s \nSupported abbreviations: %s' % (sorted(functions.keys()), sorted(abbrevs.keys()))
 else:
 	for i in flags.iteritems():
 		if i[0].startswith(args[1]):
