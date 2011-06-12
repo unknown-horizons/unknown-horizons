@@ -170,6 +170,12 @@ def print_building_costs():
 			s += "%4i %s(%s) " % (amount, get_res_name(res),res)
 		print "%2s: %-18s %s" % (b, get_obj_name(b), s)
 
+	print "\nBuildings without building costs:"
+	all = set(db('SELECT id FROM building'))
+	entries = set(db('SELECT DISTINCT building FROM balance.building_costs'))
+	for id, in sorted(all - entries):
+		print "%s(%i)" % (get_obj_name(id), id)
+
 def print_collector_restrictions():
 	for c, in db("SELECT DISTINCT collector FROM collector_restrictions"):
 		print '%s(%s) is restricted to:' % (get_obj_name(c), c)
