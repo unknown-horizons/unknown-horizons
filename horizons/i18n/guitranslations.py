@@ -316,7 +316,6 @@ def set_translations():
 			"tax_label"                   : _("Taxes:"),
 			"happiness_label"             : _("Happiness"),
 			"paid_taxes_label"            : _("Paid taxes"),
-			"paid_taxes_label"            : _("Tax Rate"),
 			"residents_label"             : _("Residents"),
 			"happiness"                   : _("Happiness")},
 		"overview_ship.xml" : {
