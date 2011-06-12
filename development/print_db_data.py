@@ -109,17 +109,19 @@ def strw(s, width=0):
 
 
 def print_res():
-	print "Resources (id: resource (value))"
-	for id, name, value in db("SELECT id, name, value FROM resource"):
-		print "%2s:  %s (%s)" % (id, name, value or 0)
+	print 'Resources' + '\n' + '%2s: %-13s %5s %10s %19s' % ('id', 'resource', 'value', 'tradeable', 'shown_in_inventory')
+	print '=' * 54
+	for id, name, value, trade, inventory in db("SELECT id, name, value, tradeable, shown_in_inventory FROM resource"):
+		print "%2s: %-14s %3s %7s %13s " % (id, name, value or '-', trade or '-', inventory or '-')
 
 def print_building():
-	print "Buildings (id: name running_costs, size, radius, from class):"
+	print 'Buildings' + '\n' + '%2s: %-14s %11s %4s %6s %s' % ('id', 'name', 'running_costs', 'size', 'radius', 'from_class')
+	print '=' * 23 + 'R===P' + '=' * 50
 	for id, name, c_type, c_package, x, y, radius, cost, cost_inactive in \
 			db('SELECT id, name, class_type, class_package, size_x, size_y, radius, cost_active, cost_inactive FROM \
-			building LEFT OUTER JOIN balance.building_running_costs ON balance.building_running_costs.building = building.id'):
-		cost = " 0" if cost is None else cost
-		print "%2s: %-16s %2s$/%2s$  %sx%s  %-2s  from %s.%s" % (id, name, cost, cost_inactive or 0, x, y, radius, c_package, c_type)
+			building LEFT OUTER JOIN balance.building_running_costs ON balance.building_running_costs.building = building.id\
+			ORDER BY id'):
+		print "%2s: %-16s %3s / %2s %5sx%1s %4s   %s.%s" % (id, name, cost or '--', cost_inactive or '--', x, y, radius, c_package, c_type)
 
 def print_unit():
 	print "Units (id: name from class)"
@@ -147,7 +149,7 @@ def print_collectors():
 
 def print_building_costs():
 	print 'Building costs:'
-	for b, in db("SELECT DISTINCT building FROM balance.building_costs"):
+	for b, in db("SELECT DISTINCT building FROM balance.building_costs ORDER BY building"):
 		s = ''
 		for res, amount in db("SELECT resource, amount FROM balance.building_costs WHERE building = ?", b):
 			s += "%4i %s(%s) " % (amount, get_res_name(res),res)
