@@ -145,6 +145,8 @@ class ProductionBuilder(WorldObject):
 		distance_to_road = {}
 		distance_to_boundary = {}
 		for coords in self.plan:
+			if coords not in self.land_manager.settlement.ground_map:
+				continue
 			if self.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
 				nodes[coords] = 1
 			elif self.plan[coords][0] == PRODUCTION_PURPOSE.ROAD:
@@ -205,7 +207,7 @@ class ProductionBuilder(WorldObject):
 				building = self.island.get_building(point)
 				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 					continue
-				road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
+				assert Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
 		return path is not None
 
 	def _road_connection_possible(self, builder):
@@ -221,7 +223,7 @@ class ProductionBuilder(WorldObject):
 		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
 
 		path = RoadPlanner()(collector_coords, destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
-		return  path is not None
+		return path is not None
 
 	def _near_collectors(self, position):
 		for building in self.collector_buildings:
