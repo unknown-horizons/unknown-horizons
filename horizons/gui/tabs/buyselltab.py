@@ -26,7 +26,7 @@ from tabinterface import TabInterface
 from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBuyList, \
                                        RemoveFromSellList
 from horizons.gui.widgets.tooltip import TooltipButton
-from horizons.util import Callback
+from horizons.util import Callback, get_res_icon
 from horizons.util.gui import load_uh_widget
 
 class BuySellTab(TabInterface):
@@ -171,7 +171,7 @@ class BuySellTab(TabInterface):
 			icon = slot.findChild(name="icon")
 			fillbar.position = (icon.width - fillbar.width - 1, icon.height)
 		else:
-			icons = self.settlement.session.db.get_res_icon(res_id)
+			icons = get_res_icon(res_id)
 			button.up_image = icons[0]
 			button.down_image = icons[0]
 			button.hover_image = icons[1] # disabled icon
