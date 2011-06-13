@@ -23,7 +23,7 @@ from random import randint
 
 from dbreader import DbReader
 
-from horizons.util import decorators
+from horizons.util import decorators, get_res_icon
 
 ########################################################################
 class UhDbAccessor(DbReader):
@@ -47,14 +47,12 @@ class UhDbAccessor(DbReader):
 
 	# Resource table
 
-	def get_res_name(self, id, only_if_tradeable=False, only_if_inventory=False):
+	def get_res_name(self, id):
 		"""
 		Returns the name to a specific resource id.
 		@param id: int resource's id, of which the name is returned
 		"""
 		sql = "SELECT name FROM resource WHERE id = ?"
-		if not (only_if_tradeable or only_if_inventory):
-			return self.cached_query(sql, id)[0][0]
 		if only_if_tradeable:
 			sql += " AND tradeable = 1"
 		if only_if_inventory:
@@ -64,30 +62,6 @@ class UhDbAccessor(DbReader):
 		except IndexError:
 			return None
 
-	def get_res_icon(self, res, main=True, disabled=True, small=True):
-		"""
-		Returns tuple of icon paths for a resource. Returns None for tuple
-		positions where selection parameters main, disabled or small are False.
-		If no disabled icon is specified in the database, we return the main
-		icon as disabled version, too.
-		@param res: resource id
-		@param main: bool, whether to return the main icon path (50px)
-		@param disabled: bool, whether to return the disabled icon path (grayscale)
-		@param small: bool, whether to return the small icon path (16px)
-		@return: tuple: (icon_path, icon_disabled_path, icon_small_path)
-		"""
-		sql = 'SELECT icon, \
-		       CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END, \
-		       icon_small \
-		       FROM data.resource WHERE id = ?'
-		(main_icon, disabled_icon, small_icon) = self.cached_query(sql, res)[0]
-		if not main:
-			main_icon = None
-		if not disabled:
-			disabled_icon = None
-		if not small:
-			small_icon = None
-		return (main_icon, disabled_icon, small_icon)
 
 	def get_res_value(self, id):
 		"""Returns the resource's value
@@ -108,17 +82,18 @@ class UhDbAccessor(DbReader):
 		db_data = self.cached_query(sql)
 		return map(lambda x: x[0], db_data)
 
-	def get_res_id_and_icon(self, only_tradeable=True, only_inventory=True):
+	def get_res_id_and_icon(self, only_tradeable=False, only_inventory=False):
 		"""Returns a list of all resources and the matching icons.
 		@param only_tradeable: return only those you can trade.
 		@param only_inventory: return only those displayed in inventories.
 		@return: list of tuples: (resource ids, resource icon)"""
-		sql = "SELECT id, icon FROM resource WHERE id"
+		sql = "SELECT id FROM resource WHERE id "
 		if only_tradeable:
-			sql += " AND tradeable = 1"
+			sql += " AND tradeable = 1 "
 		if only_inventory:
-			sql += " AND shown_in_inventory = 1"
-		return self.cached_query(sql)
+			sql += " AND shown_in_inventory = 1 "
+		query = self.cached_query(sql)
+		return [(query[res][0], get_res_icon(query[res][0])[0]) for res in xrange(len(query))]
 
 	# Sound table
 
