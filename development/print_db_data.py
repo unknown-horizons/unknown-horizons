@@ -109,10 +109,10 @@ def strw(s, width=0):
 
 
 def print_res():
-	print 'Resources' + '\n' + '%2s: %-13s %5s %10s %19s' % ('id', 'resource', 'value', 'tradeable', 'shown_in_inventory')
+	print 'Resources' + '\n' + '%2s: %-15s %5s %10s %19s' % ('id', 'resource', 'value', 'tradeable', 'shown_in_inventory')
 	print '=' * 54
 	for id, name, value, trade, inventory in db("SELECT id, name, value, tradeable, shown_in_inventory FROM resource"):
-		print "%2s: %-14s %3s %7s %13s " % (id, name, value or '-', trade or '-', inventory or '-')
+		print "%2s: %-16s %3s %7s %13s " % (id, name[0:16], value or '-', trade or '-', inventory or '-')
 
 def print_building():
 	print 'Buildings' + '\n' + '%2s: %-14s %11s %4s %6s %s' % ('id', 'name', 'running_costs', 'size', 'radius', 'from_class')
