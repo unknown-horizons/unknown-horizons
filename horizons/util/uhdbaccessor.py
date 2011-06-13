@@ -47,7 +47,7 @@ class UhDbAccessor(DbReader):
 
 	# Resource table
 
-	def get_res_name(self, id):
+	def get_res_name(self, id, only_if_tradeable=False, only_if_inventory=False):
 		"""
 		Returns the name to a specific resource id.
 		@param id: int resource's id, of which the name is returned

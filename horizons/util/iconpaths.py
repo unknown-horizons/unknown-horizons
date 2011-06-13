@@ -22,19 +22,20 @@
 #from horizons.util import decorators
 
 ########################################################################
-class IconPathFinder(object):
-	"""
-	Generates and caches paths to various dynamic icons.
-	Currently used for resource icons.
-	"""
-#	@decorators.cachedmethod
-	def get_res_icon(res):
-		"""Returns icons of a resource
-		@param res: resource id
-		@return: tuple: (icon_path, icon_disabled_path)"""
-		#TODO move to proper place now that we no longer use the db
-		ICON_PATH = 'content/gui/icons/resources/'
-		icon = ICON_PATH + '50/%03d.png' % res
-		icon_disabled = ICON_PATH + '50/greyscale/%03d.png' % res
-		icon_small = ICON_PATH + '16/%03d.png' % res
-		return (icon, icon_disabled, icon_small)
+
+"""
+Generates and caches paths to various dynamic icons.
+Currently used for resource icons.
+"""
+
+#@decorators.cachedmethod
+def get_res_icon(res):
+	"""Returns icons of a resource
+	@param res: resource id
+	@return: tuple: (icon_path, icon_disabled_path)"""
+	#TODO move to proper place now that we no longer use the db
+	ICON_PATH = 'content/gui/icons/resources/'
+	icon = ICON_PATH + '50/%03d.png' % res
+	icon_disabled = ICON_PATH + '50/greyscale/%03d.png' % res
+	icon_small = ICON_PATH + '16/%03d.png' % res
+	return (icon, icon_disabled, icon_small)
