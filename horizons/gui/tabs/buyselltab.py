@@ -26,8 +26,8 @@ from tabinterface import TabInterface
 from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBuyList, \
                                        RemoveFromSellList
 from horizons.gui.widgets.tooltip import TooltipButton
-from horizons.util import Callback, get_res_icon
-from horizons.util.gui import load_uh_widget
+from horizons.util import Callback
+from horizons.util.gui import load_uh_widget, get_res_icon
 
 class BuySellTab(TabInterface):
 	"""

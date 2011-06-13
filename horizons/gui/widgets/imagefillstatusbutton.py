@@ -23,7 +23,8 @@ from fife.extensions import pychan
 
 from horizons.gui.widgets.tooltip import TooltipButton
 
-from horizons.util import Callback, get_res_icon
+from horizons.util import Callback
+from horizons.util.gui import get_res_icon
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
@@ -52,7 +53,8 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		@param use_inactive_icon: wheter to use inactive icon if amount == 0
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
-		icon, icon_disabled, _ = get_res_icon(res)
+		icons = get_res_icon(res)
+		icon, icon_disabled = icons[0], icons[1]
 		if not use_inactive_icon:
 			icon_disabled = icon
 		tooltip = db.get_res_name(res)

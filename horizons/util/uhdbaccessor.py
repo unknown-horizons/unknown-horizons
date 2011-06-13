@@ -23,7 +23,8 @@ from random import randint
 
 from dbreader import DbReader
 
-from horizons.util import decorators, get_res_icon
+from horizons.util import decorators
+from horizons.util.gui import get_res_icon
 
 ########################################################################
 class UhDbAccessor(DbReader):
