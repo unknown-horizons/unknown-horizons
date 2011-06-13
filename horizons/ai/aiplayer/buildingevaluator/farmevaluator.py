@@ -129,7 +129,7 @@ class FarmEvaluator(BuildingEvaluator):
 					field = None
 					break
 			if field is None:
-				break # some part of the area is reserved for something else
+				continue # some part of the area is reserved for something else
 			fields += 1
 			for coords2 in field.position.tuple_iter():
 				farm_plan[coords2] = (PRODUCTION_PURPOSE.RESERVED, None)
