@@ -152,7 +152,6 @@ class SizedSpecializedStorage(SpecializedStorage):
 
 		storeable_amount = self.get_free_space_for(res)
 		if amount > storeable_amount: # tried to store more than limit allows
-			amount = storeable_amount
 			ret = super(SizedSpecializedStorage, self).alter(res, storeable_amount)
 			return (amount - storeable_amount ) + ret
 
@@ -222,7 +221,7 @@ class GlobalLimitStorage(GenericStorage):
 				self._storage[res] = self.limit
 		self._changed()
 
-	def get_limit(self, res):
+	def get_limit(self, res=None):
 		return self.limit
 
 class TotalStorage(GlobalLimitStorage):
