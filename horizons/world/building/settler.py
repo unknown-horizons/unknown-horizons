@@ -168,7 +168,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 		if changed:
 			# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Supplying_citizens_with_resources
-			self.alter_production_time( 1 + (float(self.inhabitants)/10))
+			# Disabled because alter_production_time actually works now (avoid change in game behaviour)
+			# self.alter_production_time( 1 + (float(self.inhabitants)/10))
 			self._changed()
 
 	def level_check(self):
