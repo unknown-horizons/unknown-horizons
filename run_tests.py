@@ -34,8 +34,8 @@ except ImportError:
 if __name__ == '__main__':
 	gettext.install('', unicode=True) # no translations here
 
-	from run_uh import init_environment
-	init_environment()
+	from run_uh import setup_fife
+	setup_fife(sys.argv)
 
 	import horizons.main
 

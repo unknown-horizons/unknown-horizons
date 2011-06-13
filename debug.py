@@ -31,25 +31,16 @@ Useful for debugging, because when run_uh.py restarts, it can't be debugged with
 
 
 if __name__ == '__main__':
-	import run_uh
 	import sys
 	import os
 
 	import gettext
 	gettext.install("unknown-horizons", "content/lang", unicode=True)
 
-	#find fife and setup search paths
-	try:
-		from fife import fife
-	except ImportError, e:
-		if "--fife-in-library-path" in sys.argv:
-			print 'Failed to load FIFE:', e
-			exit(1)
-		run_uh.find_FIFE()
+	from run_uh import setup_fife
+	setup_fife(sys.argv)
 
 	args = sys.argv[1:]
-	if "--fife-in-library-path" in args:
-		args.remove("--fife-in-library-path")
 	print 'Executing with proper fife path: \"%s\" with args %s' % (sys.argv[1], args)
 	os.execvp(sys.argv[1], args)
 else:
