@@ -18,3 +18,64 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+import os
+import shutil
+import tempfile
+import unittest
+
+import horizons.main
+from horizons.util.uhdbaccessor import UhDbAccessor
+
+
+db = None
+temp_dir = None
+
+def setup_package():
+	"""
+	One-time database setup. Nose will call this function once for this package,
+	so we can avoid to create a database for each test. Using TestCase, we can
+	be sure that each test runs on an unmodified database.
+	"""
+	global db, temp_dir
+
+	temp_dir = tempfile.mkdtemp()
+
+	# Copy databases, we don't want to modify the existing ones.
+	shutil.copy('content/game.sqlite', temp_dir)
+	shutil.copy('content/settler.sqlite', temp_dir)
+	shutil.copy('content/balance.sqlite', temp_dir)
+
+	db = UhDbAccessor(':memory:')
+	db('ATTACH ? AS data', os.path.join(temp_dir, 'game.sqlite'))
+	db('ATTACH ? AS settler', os.path.join(temp_dir, 'settler.sqlite'))
+	db('ATTACH ? AS balance', os.path.join(temp_dir, 'balance.sqlite'))
+
+	# Truncate all tables. We don't want to rely on existing data.
+	for database in ('data', 'settler', 'balance'):
+		for (table_name, ) in db("SELECT name FROM %s.sqlite_master WHERE type = 'table'" % database):
+			db('DELETE FROM %s' % table_name)
+
+	# Some code is still accessing the global database reference.
+	horizons.main.db = db
+
+
+def teardown_package():
+	"""
+	Close database and remove the temporary directory.
+	"""
+	db.close()
+	shutil.rmtree(temp_dir)
+
+
+class TestCase(unittest.TestCase):
+	"""
+	For each test, open a new transaction and roll it back afterwards. This
+	way, the database will remain unmodified for each new test.
+	"""
+	def setUp(self):
+		self.db = db
+		self.db('BEGIN TRANSACTION')
+
+	def tearDown(self):
+		self.db('ROLLBACK TRANSACTION')
