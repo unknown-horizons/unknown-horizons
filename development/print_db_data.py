@@ -40,7 +40,8 @@ def get_obj_name(obj):
 
 def get_res_name(res):
 	global db
-	return db("SELECT name FROM resource WHERE id = ?", res)[0][0]
+	name = db("SELECT name FROM resource WHERE id = ?", res)[0][0]
+	return name
 
 def get_settler_name(incr):
 	global db
@@ -75,24 +76,6 @@ def print_production_lines():
 
 		print str
 
-def print_settler_lines():
-	print 'Settler Consumption Lines:'
-	for incr in xrange(0,SETTLER.CURRENT_MAX_INCR + 1):
-		settlername = get_settler_name(incr)
-		print "Inhabitants of increment %i (%ss) desire the following goods:" % \
-		                               (incr, settlername)
-		lines = db("SELECT production_line FROM settler.settler_production_line \
-		            WHERE level = ? ORDER BY production_line", incr)
-		sorted_lines = sorted([(get_prod_line(line[0], tuple)[0][0],line[0]) for i,line in enumerate(lines)])
-		for item,id in sorted_lines:
-			time = db("SELECT time FROM production_line WHERE id == ?",id)[0][0]
-			str = '%2s: Each %5s seconds, %ss consume ' % (id, time, settlername)
-			(consumption,production) = get_prod_line(id, tuple)
-			str += '%2i %-12s(%2s) for ' % (-consumption[1], get_res_name(consumption[0]), consumption[0])
-			str += '%2i %s(%2s).' % (production[1], get_res_name(production[0]), production[0])
-			print str
-		print ''
-
 def print_verbose_lines():
 	def _output_helper_prodlines(string, list):
 		if len(list) == 1:
@@ -126,17 +109,19 @@ def strw(s, width=0):
 
 
 def print_res():
-	print "Resources (id: resource (value))"
-	for id, name, value in db("SELECT id, name, value FROM resource"):
-		print "%2s:  %s (%s)" % (id, name, value or 0)
+	print 'Resources' + '\n' + '%2s: %-13s %5s %10s %19s' % ('id', 'resource', 'value', 'tradeable', 'shown_in_inventory')
+	print '=' * 54
+	for id, name, value, trade, inventory in db("SELECT id, name, value, tradeable, shown_in_inventory FROM resource"):
+		print "%2s: %-14s %3s %7s %13s " % (id, name, value or '-', trade or '-', inventory or '-')
 
 def print_building():
-	print "Buildings (id: name running_costs, size, radius, from class):"
+	print 'Buildings' + '\n' + '%2s: %-14s %11s %4s %6s %s' % ('id', 'name', 'running_costs', 'size', 'radius', 'from_class')
+	print '=' * 23 + 'R===P' + '=' * 50
 	for id, name, c_type, c_package, x, y, radius, cost, cost_inactive in \
 			db('SELECT id, name, class_type, class_package, size_x, size_y, radius, cost_active, cost_inactive FROM \
-			building LEFT OUTER JOIN balance.building_running_costs ON balance.building_running_costs.building = building.id'):
-		cost = " 0" if cost is None else cost
-		print "%2s: %-16s %2s$/%2s$  %sx%s  %-2s  from %s.%s" % (id, name, cost, cost_inactive or 0, x, y, radius, c_package, c_type)
+			building LEFT OUTER JOIN balance.building_running_costs ON balance.building_running_costs.building = building.id\
+			ORDER BY id'):
+		print "%2s: %-16s %3s / %2s %5sx%1s %4s   %s.%s" % (id, name, cost or '--', cost_inactive or '--', x, y, radius, c_package, c_type)
 
 def print_unit():
 	print "Units (id: name from class)"
@@ -164,11 +149,17 @@ def print_collectors():
 
 def print_building_costs():
 	print 'Building costs:'
-	for b, in db("SELECT DISTINCT building FROM balance.building_costs"):
+	for b, in db("SELECT DISTINCT building FROM balance.building_costs ORDER BY building"):
 		s = ''
 		for res, amount in db("SELECT resource, amount FROM balance.building_costs WHERE building = ?", b):
 			s += "%4i %s(%s) " % (amount, get_res_name(res),res)
 		print "%2s: %-18s %s" % (b, get_obj_name(b), s)
+
+	print "\nBuildings without building costs:"
+	all = set(db('SELECT id FROM building'))
+	entries = set(db('SELECT DISTINCT building FROM balance.building_costs'))
+	for id, in sorted(all - entries):
+		print "%2i: %s" % (id, get_obj_name(id))
 
 def print_collector_restrictions():
 	for c, in db("SELECT DISTINCT collector FROM collector_restrictions"):
@@ -176,28 +167,63 @@ def print_collector_restrictions():
 		for obj, in db("SELECT object FROM collector_restrictions WHERE collector = ?", c):
 			print '\t%s(%s)' % (get_obj_name(obj),obj)
 
+def print_increment_data():
+	from horizons.util.python.roman_numerals import int_to_roman
+	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
+	print '%15s %12s %s %s  %s' % ('increment', 'residential', 'max_inh', 'base_tax', 'upgrade_prod_line')
+	print '=' * 64
+	for inc, name, hut, inh, tax in db('SELECT level, name, residential_name, inhabitants_max, tax_income FROM settler.settler_level'):
+		str = '%3s %11s %12s %5s    %4s' % (int_to_roman(inc+1), name, hut, inh, tax)
+		if inc+1 in upgrade_increments:
+			line = db("SELECT production_line FROM settler.upgrade_material WHERE level = ?", inc+1)[0][0]
+			str += 5 * ' ' + '%2s: ' % line
+			(consumption, _) = get_prod_line(line, list)
+			for (res, amount) in consumption:
+				str += '%i %s(%s), ' % (-amount, get_res_name(res), res)
+		print str
+
+	print '\n' + 'Settler Consumption Lines:'
+	for inc in xrange(SETTLER.CURRENT_MAX_INCR+1):
+		settlername = get_settler_name(inc)
+		print "In increment %3s, %ss desire the following goods:" % \
+		                                (int_to_roman(inc+1), settlername)
+		lines = db("SELECT production_line FROM settler.settler_production_line \
+		            WHERE level = ? ORDER BY production_line", inc)
+		sorted_lines = sorted([(get_prod_line(line[0], tuple)[0][0],line[0]) for i,line in enumerate(lines)])
+		for item,id in sorted_lines:
+			time = db("SELECT time FROM production_line WHERE id == ?",id)[0][0]
+			str = '%2s: Each %5s seconds, %ss consume ' % (id, time, settlername)
+			(consumption,production) = get_prod_line(id, tuple)
+			str += '%2i %-12s(%2s) for ' % (-consumption[1], get_res_name(consumption[0]), consumption[0])
+			str += '%2i %s(%2s).' % (production[1], get_res_name(production[0]), production[0])
+			print str
+		print ''
+
 functions = {
-		'resources' : print_res,
-		'units' : print_unit,
 		'buildings' : print_building,
 		'building_costs' : print_building_costs,
-		'storage' : print_storage,
-		'lines' : print_production_lines,
-		'verbose_lines' : print_verbose_lines,
-		'settler_lines' : print_settler_lines,
 		'collectors' : print_collectors,
 		'collector_restrictions': print_collector_restrictions,
+		'increments' : print_increment_data,
+		'lines' : print_production_lines,
+		'resources' : print_res,
+		'storage' : print_storage,
+		'units' : print_unit,
+		'verbose_lines' : print_verbose_lines,
 		}
 abbrevs = {
-		'res' : 'resources',
 		'b' : 'buildings',
 		'building' : 'buildings',
-		'bc' : 'building_costs',
-		'vl' : 'verbose_lines',
-		'sl' : 'settler_lines',
-		'c': 'collectors',
+		'bc': 'building_costs',
+		'c' : 'collectors',
 		'cr': 'collector_restrictions',
+		'i' : 'increments',
+		'increment' : 'increments',
+		'res' : 'resources',
+		'settler_lines': 'increments',
+		'sl': 'increments',
 		'unit': 'units',
+		'vl': 'verbose_lines',
 		}
 
 flags = dict(functions)
@@ -207,7 +233,7 @@ for (x,y) in abbrevs.iteritems(): # add convenience abbreviations to possible fl
 args = sys.argv
 
 if len(args) == 1:
-	print 'Start with one of those args: %s \nSupported abbreviations: %s' % (functions.keys(), abbrevs.keys())
+	print 'Start with one of those args: %s \nSupported abbreviations: %s' % (sorted(functions.keys()), sorted(abbrevs.keys()))
 else:
 	for i in flags.iteritems():
 		if i[0].startswith(args[1]):

@@ -22,12 +22,26 @@
 </Container>
 <!-- this is the third container ( translators ).                                      !!!
 -->
-<VBox position="190,45"  name="credits"  max_size="335,500"  min_size="335,450"  padding="0">
+<VBox  position="185,45"  padding="0">
 	<Label text="Translators"  name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
+<ScrollArea background_color="255,255,255,0"  vertical_scrollbar="1"
+		max_size="310,470"  min_size="310,470">
+<VBox  name="credits">
+	<VBox> <Label text="Bulgarian"  name="headline" />
+		<VBox  name="box">
+			<Label text="balward" />
+		</VBox>
+	</VBox>
 	<VBox> <Label text="Catalan"  name="headline" />
 		<VBox  name="box">
 			<Label text="Siegfried Gevatter (RainCT)" />
+			<Label text="CatRoky" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Czech"  name="headline" />
+		<VBox  name="box">
+			<Label text="Kristian Hynek (Kris_CZ)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="German"  name="headline" />
@@ -38,7 +52,7 @@
 	<VBox> <Label text="Spanish"  name="headline" />
 		<VBox  name="box">
 			<Label text="Nikolai Woutlan" />
-			<Label text="William Cabrera" />
+			<Label text="William Cabrera (willicab)" />
 			<Label text="Álex Plaza" />
 			<Label text="Fabio Fernández (Catharsius)" />
 		</VBox>
@@ -52,25 +66,28 @@
 		<VBox  name="box">
 			<Label text="Marc Moussa (deathmaster9)" />
 			<Label text="Vincent Herilier (LiveWire)" />
-			<Label text="Sebastien Charpentier" />
+			<Label text="Sebastien Charpentier (seblabel)" />
 			<Label text="Hugues Fafard (Antagonym)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Lithuanian"  name="headline" />
 		<VBox  name="box">
-			<Label text="Mantas Kondrotas" />
+			<Label text="Mantas Kondrotas (Anielus)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Italian"  name="headline" />
 		<VBox  name="box">
 			<Label text="Fabio Pedretti" />
+			<Label text="sioux83" />
 		</VBox>
 	</VBox>
-
-	<Spacer />
 </VBox>
-
-<VBox position="525,70" name="credits2"  max_size="335,475"  min_size="335,425">
+</ScrollArea>
+</VBox>
+<!-- split at char 13 of the alphabet (start new page with N) -->
+<ScrollArea background_color="255,255,255,0"  vertical_scrollbar="1"
+		position="525,70"  max_size="310,475"  min_size="310,475">
+<VBox name="credits2">
 <!-- sooner or later the 70 needs to be a 45 just as the left box.
      for the time being the current alignment just looks better. -->
 	<VBox> <Label text="Norwegian"  name="headline" />
@@ -83,13 +100,15 @@
 	<VBox> <Label text="Dutch"  name="headline" />
 		<VBox  name="box">
 			<Label text="Luth" />
+			<Label text="Jasper Tepper (Shadow23)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Polish"  name="headline" />
 		<VBox  name="box">
 			<Label text="Adrian Marcinkowski (Amfidiusz)" />
 			<Label text="Stanislaw Gackowski (soeb)" />
-			<Label text="Mateusz Bartkowski" />
+			<Label text="Mateusz Bartkowski (Eugen)" />
+			<Label text="Natrius" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Portuguese"  name="headline" />
@@ -106,6 +125,7 @@
 		<VBox  name="box">
 			<Label text="Sergei Chistyakov (devcode)" />
 			<Label text="Sergey Stepanov" />
+			<Label text="Alexander Olkhovskiy (fcxSanya)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Slovenian"  name="headline" />
@@ -114,6 +134,7 @@
 		</VBox>
 	</VBox>
 </VBox>
+</ScrollArea>
 
 <Container position="0,500"  size="1000,100"> <!-- buttons, always visible.
   USE ––|–– THESE if there are more than 2 pages of content for one credits group

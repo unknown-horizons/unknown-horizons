@@ -27,9 +27,9 @@
 		<Setting name="QuicksaveMaxCount" type="float">10.0</Setting>
 		<Setting name="Language" type="unicode">System default</Setting>
 		<Setting name="ClientID" type="str"></Setting>
-		<Setting name="Nickname" type="str">Unnamed Traveler</Setting>
+		<Setting name="Nickname" type="unicode">Unnamed Traveler</Setting>
 		<Setting name="MinimapRotation" type="bool">False</Setting>
 		<Setting name="EdgeScrolling" type="bool">True</Setting>
-		<Setting name="NetworkPort" type="str">0</Setting>
+		<Setting name="NetworkPort" type="unicode">0</Setting>
 	</Module>
 </Settings>

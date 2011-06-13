@@ -25,7 +25,7 @@ from fife.extensions import pychan
 from horizons.command.production import AddProduction
 from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 
 class BoatbuilderTab(OverviewTab):
@@ -59,7 +59,7 @@ class BoatbuilderTab(OverviewTab):
 			if container_active is None:
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
-			container_active.findChild(name="headline_BB_builtship_label").text = u"Fishing boat"
+			container_active.findChild(name="headline_BB_builtship_label").text = _("Fishing boat")
 			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher\nStorage: 1 slot of 1t\nSpeed: average\nHealth: 40"
 
 			button_active = container_active.findChild(name="toggle_active_active")

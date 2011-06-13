@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from fife.extensions.pychan import widgets
 from horizons.gui.widgets.tooltip import TooltipButton
@@ -28,7 +28,7 @@ import horizons.main
 
 class RouteConfig(object):
 	"""
-	Widget that allows configurating a ship's trading route 
+	Widget that allows configurating a ship's trading route
 	"""
 	dummy_icon_path = "content/gui/icons/buildmenu/outdated/dummy_btn.png"
 	buy_button_path = "content/gui/images/tabwidget/buysell_buy.png"
@@ -258,7 +258,7 @@ class RouteConfig(object):
 		#initialize slots with empty dict
 		self.slots[entry] = {}
 		for num in range(0,num):
-			slot = load_xml_translated('trade_single_slot.xml')
+			slot = load_uh_widget('trade_single_slot.xml')
 			slot.position = x_position, 0
 
 			slot.action = "load"
@@ -285,7 +285,7 @@ class RouteConfig(object):
 
 	def add_gui_entry(self, branch_office, resource_list = {}):
 		vbox = self._gui.findChild(name="left_vbox")
-		entry = load_xml_translated("route_entry.xml")
+		entry = load_uh_widget("route_entry.xml")
 		self.widgets.append(entry)
 
 		label = entry.findChild(name="bo_name")
@@ -334,7 +334,7 @@ class RouteConfig(object):
 		widgets : list of route entry widgets
 		slots : dict with slots for each entry
 		"""
-		self._gui = load_xml_translated("configure_route.xml")
+		self._gui = load_uh_widget("configure_route.xml")
 		self.listbox = self._gui.findChild(name="branch_office_list")
 		self.listbox._setItems(list(self.branch_offices))
 

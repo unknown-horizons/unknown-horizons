@@ -22,8 +22,8 @@
 import time
 import horizons.main
 
-from util.living import LivingObject
-from constants import GAME_SPEED
+from horizons.util.living import LivingObject
+from horizons.constants import GAME_SPEED
 
 class Timer(LivingObject):
 	"""
@@ -35,12 +35,18 @@ class Timer(LivingObject):
 	possible_ticks_per_second = GAME_SPEED.TICK_RATES
 	default_ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 
-	def __init__(self, tick_next_id = 0):
+	ACCEPTABLE_TICK_DELAY = 0.2 # sec
+	DEFER_TICK_ON_DELAY_BY = 0.4 # sec
+
+
+	def __init__(self, tick_next_id = 0, freeze_protection=False):
 		"""
 		NOTE: timer will not start until activate() is called
 		@param tick_next_id: int next tick id
+		@param freeze_protection: whether to check for tick delay and strech time in case (breaks mp)
 		"""
 		super(Timer, self).__init__()
+		self._freeze_protection = freeze_protection
 		self.ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
@@ -103,6 +109,11 @@ class Timer(LivingObject):
 				elif r != self.TEST_RETRY_KEEP_NEXT_TICK_TIME:
 					continue
 				return
+			if self._freeze_protection and self.tick_next_time:
+				# stretch time if we're too slow
+				diff = time.time() - self.tick_next_time
+				if diff > self.ACCEPTABLE_TICK_DELAY:
+					self.tick_next_time += self.DEFER_TICK_ON_DELAY_BY
 			for f in self.tick_func_call:
 				f(self.tick_next_id)
 			if self.ticks_per_second == 0:

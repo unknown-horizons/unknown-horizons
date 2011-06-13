@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Container name="production_overview" size="1020,580" position="-20,0">
+<Icon image="content/gui/images/background/book.png" position="100,0" />
+
+<VBox name="page_vbox" max_size="695,508" min_size="695,508" position="175,40" padding="5">
+	<HBox>
+		<Label name="headline"  text="Production overview" />
+	<Spacer fixed_size="25" />
+		<TooltipButton name="refreshButton"  tooltip="Refresh data"
+			up_image="content/gui/icons/widgets/minimap/rotate_right.png"
+			down_image="content/gui/icons/widgets/minimap/rotate_right.png"
+			hover_image="content/gui/icons/widgets/minimap/rotate_left.png" />
+	</HBox>
+	<Icon image="content/gui/images/background/hr.png" />
+
+	<VBox name="resources_vbox" />
+<!--
+In this VBox a line is added per sensible resource with the following structure:
+	<HBox>
+		<Icon image="content/gui/icons/resources/16/4.png" />
+		<Label name="resource_4"  text="Boards" />
+		<Label name="produced_sum_4"  text="17314" />
+	</HBox>
+-->
+<Spacer />
+
+	<HBox max_size="80,36">
+		<CancelButton tooltip="Leave production overview" />
+	</HBox>
+</VBox>
+</Container>

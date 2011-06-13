@@ -27,7 +27,7 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from fife.extensions.pychan.widgets.common import UnicodeAttr
 from horizons.gui.widgets import ProgressBar
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
@@ -36,7 +36,7 @@ class _Tooltip(object):
 	SIZE_BG_BOTTOM = 17 # height of the image tooltip_bg_bottom.png
 	CHARS_PER_LINE = 19 # character count after which we start new line. no wrap
 	def init_tooltip(self, tooltip):
-		self.gui = load_xml_translated('tooltip.xml')
+		self.gui = load_uh_widget('tooltip.xml')
 		self.gui.hide()
 		self.tooltip = tooltip
 		self.mapEvents({

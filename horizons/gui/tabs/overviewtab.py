@@ -30,9 +30,7 @@ from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.gui.utility import create_resource_icon
-from horizons.i18n import load_xml_translated
-from horizons.gui.mousetools import AttackingTool
+from horizons.util.gui import load_uh_widget, create_resource_icon
 
 
 class OverviewTab(TabInterface):
@@ -56,8 +54,6 @@ class OverviewTab(TabInterface):
 				self.widget.child_finder('player_emblem').image = \
 			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
 
-		if not self.instance.has_remove_listener(self.on_instance_removed):
-			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def refresh(self):
 		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
@@ -79,12 +75,16 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).show()
 		if not self.instance.has_change_listener(self.refresh):
 			self.instance.add_change_listener(self.refresh)
+		if not self.instance.has_remove_listener(self.on_instance_removed):
+			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def hide(self):
 		super(OverviewTab, self).hide()
 		if self.instance is not None:
 			if self.instance.has_change_listener(self.refresh):
 				self.instance.remove_change_listener(self.refresh)
+			if self.instance.has_remove_listener(self.on_instance_removed):
+				self.instance.remove_remove_listener(self.on_instance_removed)
 
 	def on_instance_removed(self):
 		self.on_remove()
@@ -200,7 +200,7 @@ class ProductionOverviewTab(OverviewTab):
 		# sort by production line id to have a consistent (basically arbitrary) order
 		for production in sorted(self.instance._get_productions(), \
 								             key=(lambda x: x.get_production_line_id())):
-			gui = load_xml_translated(self.production_line_gui_xml)
+			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
 			container = gui.findChild(name="production_line_container")
 			if production.is_paused():
@@ -319,6 +319,16 @@ class EnemyBuildingOverviewTab(OverviewTab):
 			widget = 'overview_enemybuilding.xml',
 			instance = instance
 		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
+
+class EnemyShipOverviewTab(OverviewTab):
+	def  __init__(self, instance):
+		super(EnemyShipOverviewTab, self).__init__(
+			widget = 'overview_enemyunit.xml',
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
+			instance = instance
+		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
 
 class ResourceDepositOverviewTab(OverviewTab):
 	def  __init__(self, instance):

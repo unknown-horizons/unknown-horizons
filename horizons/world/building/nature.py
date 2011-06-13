@@ -56,7 +56,7 @@ class AnimalField(CollectingBuilding, Field):
 
 	def remove(self):
 		while len(self.animals) > 0:
-			self.animals[0].cancel()
+			self.animals[0].cancel(continue_action=lambda : 42) # don't continue
 			self.animals[0].remove()
 		super(AnimalField, self).remove()
 
@@ -78,8 +78,8 @@ class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS
-	tabs = [ ResourceDepositOverviewTab ]
-	enemy_tabs = [ ResourceDepositOverviewTab ]
+	tabs = (ResourceDepositOverviewTab,)
+	enemy_tabs = (ResourceDepositOverviewTab,)
 	walkable = False
 
 	def __init__(self, inventory=None, *args, **kwargs):

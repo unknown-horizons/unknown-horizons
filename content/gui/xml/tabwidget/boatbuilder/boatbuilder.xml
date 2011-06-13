@@ -20,43 +20,43 @@
 	</Container>
 
 	<!--	ONLY ACTIVE WHEN NOT BUILDING -->
-	<Container position="0,150" size="260,150" name="container_inactive">
-		<Label position="25,15" name="BB_howto_build_lbl" wrap_text="1" max_size="200,150"
-			text="To build a boat, click on one of the class tabs, select the desired ship and confirm the order." />
+	<Container position="25,150" size="260,150" name="container_inactive">
+		<Label position="0,15" name="BB_howto_build_lbl" wrap_text="1" max_size="200,150"
+		       text="To build a boat, click on one of the class tabs, select the desired ship and confirm the order." />
 	</Container>
 
 	<!--	ONLY ACTIVE WHEN BUILDING -->
 
-	<Container position="0,133" size="260,160" name="container_active">
+	<Container position="25,133" size="260,160" name="container_active">
 		<!-- Current order, pause -->
-		<Label name="BB_current_order" position="25,0" text="Currently building:" />
-		<Label name="headline_BB_builtship_label" position="45,20" text=""/> <!-- Fishing boat -->
-		<TooltipIcon image="content/gfx/dummies/square_120.png" position="25,40"
+		<Label name="BB_current_order" position="0,0" text="Currently building:" />
+		<Label name="headline_BB_builtship_label" position="0,20" text=""/> <!-- Fishing boat -->
+		<TooltipIcon image="content/gfx/dummies/square_120.png" position="0,40"
 			name="BB_cur_ship_icon" tooltip=""/>
-		<Icon image="content/gfx/units/ships/fishers/as_fisher0/idle/135/0.png" position="45,64" />
-		<VBox position="150,50" name="BB_upgrades_box"/> 	<!-- translations? -->
+		<Icon image="content/gfx/units/ships/fishers/as_fisher0/idle/135/0.png" position="20,64" />
+		<VBox position="125,50" name="BB_upgrades_box"/> 	<!-- translations? -->
 
 		<!-- one of those button gets removed at runtime -->
 		<TooltipButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
 			down_image="content/gui/icons/templates/production/toggle_active_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-			border_size="0" position="170,100" name="toggle_active_active" tooltip="Pause" />
+			position="145,100" border_size="0" name="toggle_active_active" tooltip="Pause" />
 		<TooltipButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
 			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
-			border_size="0" position="170,100" name="toggle_active_inactive" tooltip="Resume" />
+			position="145,100" border_size="0" name="toggle_active_inactive" tooltip="Resume" />
 	</Container>
 
 	<Container position="25,300" size="260,40" name="BB_progress_container">
 		<!-- Progress display -->
-		<ProgressBar position="0,5" name='progress'/>
+		<ProgressBar position="0,5" name="progress" />
 		<Label position="0,20" name="BB_progress_label" text="Construction progress:" />
 		<Label position="165,20" name="BB_progress_perc" text="" />
 	</Container>
 
 	<Container position="25,355" size="260,50" name="BB_needed_resources_container">
 	<!-- Resources -->
-		<Label position="0,0" name="BB_needed_res_label" text=""/>
+		<Label position="0,0" name="BB_needed_res_label" text="" />
 		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" />
 		<Label position="22,25" name="BB_needed_res_lbl_1" text="" />
 		<TooltipIcon image="" position="70,25" name="BB_needed_res_icon_2" tooltip="" />
@@ -67,11 +67,11 @@
 		[ ] 11t	[ ] 8t	[ ] 2t -->
 	</Container>
 
-	<Container position="30,420" size="260,100" >
+	<Container position="25,400" size="260,100" >
 	<!-- Cancel task -->
-		<Label position="30,10" name="BB_cancel_build_label" text="Cancel building:" />
-		<Label position="30,25" name="BB_cancel_warning_label" text="(lose all resources)" /> <!-- smaller font than the above one -->
-		<CancelButton name="BB_cancel_button"  position="150,0"  size="64,64"
+		<Label position="10,30" name="BB_cancel_build_label" text="Cancel building:" />
+		<Label position="10,45" name="BB_cancel_warning_label" text="(lose all resources)" /> <!-- smaller font than the above one -->
+		<CancelButton name="BB_cancel_button"  position="160,12"  size="64,64"
 			tooltip="Cancel all building progress" /> <!-- needs a confirmation popup -->
 	</Container>
 </Container>

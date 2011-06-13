@@ -175,6 +175,15 @@ class Trader(AIPlayer):
 			else:
 				self.office[ship.worldid] = branch_office
 			# try to find a possible position near the bo
+
+			if self.office[ship.worldid] == None:
+				# DEBUG output for http://trac.unknown-horizons.org/t/ticket/958
+				print "branch_office: ", branch_office
+				print "offices: ", [ str(i) for i in branchoffices ]
+				print "self.office: ", self.office
+				print "ship wid: ", ship.worldid
+				print "ship: ", ship
+
 			try:
 				ship.move(Circle(self.office[ship.worldid].position.center(), ship.radius), Callback(self.reached_branch, ship))
 				self.ships[ship] = self.shipStates.moving_to_branch

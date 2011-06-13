@@ -331,7 +331,7 @@ class Collector(StorageHolder, Unit):
 		"""Pretends that the collector works by waiting some time. finish_working is
 		called after that time."""
 		self.log.debug("%s begins working", self)
-		assert self.job is not None, '%s job is non in begin_working' % self
+		assert self.job is not None, '%s job is None in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, self.work_duration)
 		# play working sound
 		if self.soundfiles:
@@ -392,6 +392,8 @@ class Collector(StorageHolder, Unit):
 		"""Aborts the current job.
 		@param continue_action: Callback, gets called after cancel. Specifies what collector
 			                      is supposed to now.
+		NOTE: Subclasses set this to a proper action that makes the collector continue to work.
+		      If the collector is supposed to be remove, use a noop.
 		"""
 		self.log.debug("%s was cancel, continue action is %s", self, continue_action)
 		if self.job is not None:

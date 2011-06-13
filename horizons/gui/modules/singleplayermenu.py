@@ -24,7 +24,7 @@ import horizons.main
 from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import PlayerDataSelection
-from horizons.gui.utility import adjust_widget_black_background
+from horizons.util.gui import adjust_widget_black_background
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'scenario'): # tutorial

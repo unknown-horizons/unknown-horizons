@@ -20,12 +20,13 @@
 # ###################################################
 
 import logging
-from horizons.i18n.guitranslations import set_translations, text_translations
-import horizons.main
+import os
+import weakref
 
 from fife.extensions import pychan
-from os.path import basename
-import os
+
+import horizons.main
+from horizons.i18n.guitranslations import set_translations, text_translations
 
 log = logging.getLogger("i18n")
 
@@ -35,36 +36,8 @@ set_translations()
 # save translated widgets
 translated_widgets = {}
 
-# create dictionary with all gui .xml files
-xml_files = {}
-for root, dirs, files in os.walk('content/gui'):
-	files = filter(lambda s: s.split('.')[-1] in ('.xml'), files)
-	if files:
-		for i in files:
-			if i not in xml_files.keys():
-				xml_files[i] = root + '/' + i
-			else:
-				print 'Another file by the name %s already exists. Please use unique names!' % i
-
-"""
-def set_text(widget, text):
-	gui.find_child(name=widget).text = text
-
-def set_title(widget, title):
-	gui.findChild(name=widget).title = title
-"""
-
-def load_xml_translated(filename):
-	"""Just like pychan's load_xml, but translates strings according to the data specified
-	in guitranslations.py"""
+def translate_widget(untranslated, filename):
 	global translated_widgets
-	try:
-		untranslated = pychan.loadXML(xml_files[filename])
-	except (IOError, ValueError), e:
-		print 'PLEASE REPORT: invalid path', filename , 'in translation!', e
-		untranslated = pychan.loadXML(filename)
-
-
 	if filename in guitranslations.text_translations:
 		for i in guitranslations.text_translations[filename].iteritems():
 			try:
@@ -85,23 +58,28 @@ def load_xml_translated(filename):
 	else:
 		log.debug('No translation for file %s', filename)
 
-	translated_widgets[filename] = untranslated
+	# save as weakref for updates to translations
+	translated_widgets[filename] = weakref.ref(untranslated)
 
 	return untranslated
 
 def update_all_translations():
-	set_translations()
+	"""Update the translations in every active widget"""
 	global translated_widgets
-	for i in translated_widgets.iteritems():
-		for j in guitranslations.text_translations.get(i[0],{}).iteritems():
+	set_translations()
+	for (filename, widget) in translated_widgets.iteritems():
+		widget = widget() # resolve weakref
+		if not widget:
+			continue
+		for element_name, translation in guitranslations.text_translations.get(filename,{}).iteritems():
 			try:
-				widget = i[1].findChild(name=j[0])
+				w = widget.findChild(name=element_name)
 				#TODO presumably doesn't work with TooltipLabels, see above
-				if hasattr(widget, 'tooltip'):
-					widget.tooltip = j[1]
+				if hasattr(w, 'tooltip'):
+					w.tooltip = translation
 				else:
-					widget.text = j[1]
-				i[1].adaptLayout()
+					w.text = translation
+				widget.adaptLayout()
 			except AttributeError, e:
 				print e
-				print i, ' in ', i[0]
+				print filename, widget

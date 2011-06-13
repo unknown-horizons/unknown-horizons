@@ -18,6 +18,8 @@ tuempl (Harald Demel)
 manuel (Manuel Mausz)
 gscai (Ott Tinn)
 mihaibivol (Mihai Bivol)
+Court-Jus
+squiddy (Reiner Gerecke)
 
 = Game-Play Design
 dauerflucher (Andreas Lis)
@@ -46,6 +48,7 @@ abeaumont (Building bugfix)
 MadMonk (Focus bugfix)
 MSSSSM (Several improvements)
 soeb (Translation enhancements)
+janus (Resource icons)
 
 = 2010 
 Afrit (Resource tree)
@@ -62,19 +65,27 @@ Grickit (Random maps)
 sids.aquarius (Several improvements)
 mayanks43 (Campaign system)
 sient (Minimap rectangle)
+hoffi (GUI improvements)
 
 
 == Translators
 
+= Bulgarian
+balward
+
 = Catalan
 Siegfried Gevatter (RainCT)
+CatRoky
+
+= Czech
+Kristian Hynek (Kris_CZ)
 
 = German
 Michael Skiba
 
 = Spanish
 Nikolai Woutlan
-William Cabrera
+William Cabrera (willicab)
 Álex Plaza
 Fabio Fernández (Catharsius)
 
@@ -84,14 +95,15 @@ Mihkel Rämmel (RM87)
 = French
 Marc Moussa (deathmaster9)
 Vincent Herilier (LiveWire)
-Sebastien Charpentier
+Sebastien Charpentier (seblabel)
 Hugues Fafard (Antagonym)
 
 = Lithuanian
-Mantas Kondrotas
+Mantas Kondrotas (Anielus)
 
 = Italian
 Fabio Pedretti
+sioux83
 
 = Norwegian
 Frode Woldsund (frodus)
@@ -100,11 +112,13 @@ Audun Pers
 
 = Dutch
 Luth
+Jasper Tepper (Shadow23)
 
 = Polish
 Adrian Marcinkowski (Amfidiusz)
 Stanislaw Gackowski (soeb)
-Mateusz Bartkowski
+Mateusz Bartkowski (Eugen)
+Natrius
 
 = Portuguese
 Nuno Alves (MadMonk)
@@ -115,6 +129,7 @@ hpoyatos (Henrique Poyatos)
 = Russian
 Sergei Chistyakov (devcode)
 Sergey Stepanov
+Alexander Olkhovskiy (fcxSanya)
 
 = Slovenian
 Andrej Žnidaršič

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.i18n import load_xml_translated
+from horizons.util.gui import load_uh_widget
 from horizons.util import PychanChildFinder
 from horizons.util.changelistener import metaChangeListenerDecorator
 
@@ -42,10 +42,13 @@ class TabInterface(object):
 	ensure proper initialization of needed properties.
 	"""
 
-	def __init__(self, widget = None, **kwargs):
+	def __init__(self, widget=None, **kwargs):
+		"""
+		@param widget: filename of a widget. Set this to None if you create your own widget at self.widget
+		"""
 		super(TabInterface, self).__init__()
 		if widget is not None:
-			self.widget = load_xml_translated(widget)
+			self.widget = load_uh_widget(widget, style="menu_black")
 			self.widget.child_finder = PychanChildFinder(self.widget)
 		else:
 			self.widget = None
@@ -61,13 +64,6 @@ class TabInterface(object):
 		"""Call this method after the widget has been initialised."""
 		self.x_pos = self.widget.position[0]
 		self.y_pos = self.widget.position[1]
-		self.widget.stylize('menu_black')
-		#TODO use gui.utility.LazyWidgetsDict._load_widget() here which styles
-		# headlines if their name starts with headline* or name*.
-		for w in self.widget.findChildren():
-			if w.name.startswith("headline") or \
-			   w.name is "name":
-				w.stylize('headline')
 
 	def show(self):
 		"""Shows the current widget"""

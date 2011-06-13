@@ -17,15 +17,19 @@
 
 <!-- this is the second container ( patchers ).                                        !!!
 -->
-<VBox position="190,45" name="credits">
+<VBox  position="185,45"  padding="0">
 	<Label text="Patchers"  name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
+<ScrollArea background_color="255,255,255,0"  vertical_scrollbar="1"
+		max_size="310,470"  min_size="310,470">
+<VBox  name="credits">
 	<VBox> <Label text="2009"  name="headline" />
 		<VBox  name="box">
 			<Label text="abeaumont (Building bugfix)"  />
 			<Label text="MadMonk (Focus bugfix)"  />
 			<Label text="MSSSSM (Several improvements)"  />
 			<Label text="soeb (Translation enhancements)"  />
+			<Label text="janus (Resource icons)"  />
 		</VBox>
 	</VBox>
 
@@ -48,11 +52,16 @@
 			<Label text="sids.aquarius (Several improvements)" />
 			<Label text="mayanks43 (Campaign system)" />
 			<Label text="sient (Minimap rectangle)" />
+			<Label text="hoffi (GUI improvements)" />
 		</VBox>
-	</VBox> <Spacer />
+	</VBox>
+</VBox>
+</ScrollArea>
 </VBox>
 
-<VBox position="525,70" name="credits2">
+<ScrollArea background_color="255,255,255,0"  vertical_scrollbar="1"
+		position="525,70"  max_size="310,475"  min_size="310,475">
+<VBox name="credits2">
 
 	<VBox><!-- <Label text="2011"  name="headline" />-->
 		<VBox  name="box">
@@ -60,6 +69,7 @@
 		</VBox>
 	</VBox> <Spacer />
 </VBox>
+</ScrollArea>
 
 <Container position="0,500"  size="1000,100"> <!-- buttons, always visible.
   USE ––|–– THESE if there are more than 2 pages of content for one credits group

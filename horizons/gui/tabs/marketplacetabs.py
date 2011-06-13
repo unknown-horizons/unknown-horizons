@@ -24,9 +24,10 @@ import operator
 import horizons.main
 
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.widgets.productionoverview import ProductionOverview
 
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.utility import create_resource_icon
+from horizons.util.gui import create_resource_icon
 
 class MarketPlaceTab(TabInterface):
 	"""Tab for marketplace. Refreshes when one building on the settlement changes"""
@@ -71,6 +72,14 @@ class AccountTab(MarketPlaceTab):
 		self.button_down_image = icon_path % 'd'
 		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Account")
+
+		self.widget.mapEvents({
+		  'show_production_overview/mouseClicked' : self.show_production_overview
+		  })
+
+	def show_production_overview(self):
+		prod_overview = ProductionOverview(self.settlement)
+		prod_overview.toggle_visibility()
 
 	def refresh(self):
 		taxes = self.settlement.cumulative_taxes

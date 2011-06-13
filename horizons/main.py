@@ -90,7 +90,6 @@ def start(command_line_arguments):
 			mpieces = command_line_arguments.mp_bind.partition(':')
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
 			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2], allow_zero=True))
-			print 'asdf', fife.get_uh_setting("NetworkPort2")
 		except ValueError:
 			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
 			return False

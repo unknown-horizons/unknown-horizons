@@ -33,14 +33,20 @@ from horizons.extscheduler import ExtScheduler
 from horizons.constants import PATHS, GAME_SPEED
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
+from horizons.timer import Timer
 
 
 class SPSession(Session):
+	"""Session tailored for singleplayer games."""
+
 	def create_manager(self):
 		return SPManager(self)
 
 	def create_rng(self):
 		return random.Random()
+
+	def create_timer(self):
+		return Timer(freeze_protection=True)
 
 	def load(self, *args, **kwargs):
 		super(SPSession, self).load(*args, **kwargs)
@@ -66,16 +72,27 @@ class SPSession(Session):
 				self.paused_time_missing =  None
 			self.timer.tick_next_time = None
 		else:
-			self.timer.tick_next_time += ((self.timer.tick_next_time - time.time()) * old / ticks)
+			# correct the time until the next tick starts
+			time_to_next_tick = self.timer.tick_next_time - time.time()
+			if time_to_next_tick > 0: # only do this if we aren't late
+				self.timer.tick_next_time += (time_to_next_tick * old / ticks)
 		self.display_speed()
 
 	def start(self):
 		super(SPSession, self).start()
-		interval = int(horizons.main.fife.get_uh_setting("AutosaveInterval"))
+		self.reset_autosave()
+
+	_old_autosave_interval = None
+	def reset_autosave(self):
+		"""(Re-)Set up autosave. Called if autosave interval has been changed."""
 		# get_uh_setting returns floats like 4.0 and 42.0 since slider stepping is 1.0.
-		if interval != 0: #autosave
-			self.log.debug("Initing autosave every %s minutes", interval)
-			ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
+		interval = int(horizons.main.fife.get_uh_setting("AutosaveInterval"))
+		if interval != self._old_autosave_interval:
+			self._old_autosave_interval = interval
+			ExtScheduler().rem_call(self, self.autosave)
+			if interval != 0: #autosave
+				self.log.debug("Initing autosave every %s minutes", interval)
+				ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
 
 	def autosave(self):
 		"""Called automatically in an interval"""

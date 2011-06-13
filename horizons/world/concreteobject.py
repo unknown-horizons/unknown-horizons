@@ -34,8 +34,8 @@ class ConcretObject(WorldObject):
 	Assumes that object has a member _instance.
 	"""
 	movable = False # whether instance can move
-	tabs = [] # iterable collection of classes of tabs to show when selected
-	enemy_tabs = [] # same as tabs, but used when clicking on enemy's instances
+	tabs = tuple() # iterable collection of classes of tabs to show when selected
+	enemy_tabs = tuple() # same as tabs, but used when clicking on enemy's instances
 	is_unit = False
 	is_building = False
 	is_selectable = False
@@ -52,10 +52,10 @@ class ConcretObject(WorldObject):
 		self._instance = None # overwrite in subclass __init[__]
 		self._action = 'idle' # Default action is idle
 		self._action_set_id = self.session.db.get_random_action_set(self.id)[0]
-		
+
 		related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
-		
-		if len(related_building) > 0:
+
+		if len(related_building) > 0 and BuildRelatedTab not in self.tabs:
 			self.tabs += (BuildRelatedTab,)
 
 	@property
@@ -100,7 +100,7 @@ class ConcretObject(WorldObject):
 		"""Shows tabs from self.__class__.tabs, if there are any"""
 		# this local import prevents circular imports
 		from horizons.gui.tabs import TabWidget
-		tablist = []
+		tablist = None
 		if self.owner == self.session.world.player:
 			tablist = self.tabs
 		else: # this is an enemy instance with respect to the local player

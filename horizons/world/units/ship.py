@@ -24,8 +24,9 @@ from fife import fife
 
 import horizons.main
 
-from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, TraderShipOverviewTab
-from horizons.world.storage import PositiveTotalStorage
+from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
+                              TraderShipOverviewTab, EnemyShipOverviewTab
+from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
@@ -35,9 +36,7 @@ from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
-from horizons.constants import LAYERS, STORAGE
 from weapon import Cannon
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 
@@ -185,7 +184,8 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	@param y: int y position
 	"""
 	pather_class = ShipPather
-	tabs = (ShipOverviewTab, ShipInventoryTab)
+	tabs = (ShipOverviewTab, ShipInventoryTab, )
+	enemy_tabs = (EnemyShipOverviewTab, )
 	health_bar_y = -150
 	is_ship = True
 	is_selectable = True
@@ -209,7 +209,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
-		self.inventory = PositiveTotalStorage(STORAGE.SHIP_TOTAL_STORAGE)
+		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
 
 	def create_route(self):
 		self.route=ShipRoute(self)
@@ -340,7 +340,7 @@ class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()
 	def _possible_names(self):
-		names = self.session.db("SELECT name FROM data.shipnames WHERE for_pirates = 1")
+		names = self.session.db("SELECT name FROM data.shipnames WHERE for_pirate = 1")
 		return map(lambda x: x[0], names)
 
 class TradeShip(Ship):
