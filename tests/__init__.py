@@ -18,3 +18,19 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+
+import horizons.main
+from horizons.ext.dummy import Dummy
+
+import fife
+
+
+def mock_fife():
+	"""
+	Replace the fife module with a dummy. We leave fife.extensions as it is,
+	pychan / horizons.gui have isinstance checks which our Dummy objects fails.
+	That's okay, we won't test the GUI now.
+	"""
+	fife.fife = Dummy()
+	horizons.main.fife = Dummy()

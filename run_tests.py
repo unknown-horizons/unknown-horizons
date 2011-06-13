@@ -37,7 +37,8 @@ if __name__ == '__main__':
 	from run_uh import setup_fife
 	setup_fife(sys.argv)
 
-	import horizons.main
+	from tests import mock_fife
+	mock_fife()
 
 	nose.run(defaultTest='tests')
 
