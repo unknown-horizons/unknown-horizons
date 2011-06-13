@@ -215,6 +215,15 @@ class SettlementManager(WorldObject):
 					call_again = True
 				else:
 					self.log.info('%s failed to build a storage', self)
+		elif self.tents >= 10 and self.village_builder.pavilions_to_build > 0:
+			result = self.village_builder.build_pavilion()
+			if result == BUILD_RESULT.OK:
+				self.log.info('%s built a pavilion', self)
+			elif result == BUILD_RESULT.NEED_RESOURCES:
+				self.log.info('%s not enough materials to build a pavilion', self)
+			else:
+				self.log.info('%s failed to build a pavilion', self)
+			call_again = True
 		elif self.village_builder.tents_to_build > self.tents:
 			result = self.village_builder.build_tent()
 			if result == BUILD_RESULT.OK:

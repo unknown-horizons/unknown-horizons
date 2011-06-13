@@ -36,6 +36,7 @@ class VillageBuilder(WorldObject):
 		planned_tent = 4
 		tent = 5
 		road = 6
+		pavilion = 7
 
 	def __init__(self, settlement_manager):
 		super(VillageBuilder, self).__init__()
@@ -50,6 +51,7 @@ class VillageBuilder(WorldObject):
 		self.owner = self.land_manager.owner
 		self.settlement = self.land_manager.settlement
 		self.tents_to_build = 0
+		self.pavilions_to_build = 0
 		self.plan = {}
 		self.tent_queue = deque()
 
@@ -83,6 +85,14 @@ class VillageBuilder(WorldObject):
 			if purpose == self.purpose.planned_tent or purpose == self.purpose.tent:
 				self.tents_to_build += 1
 		self._create_tent_queue()
+
+		self.pavilions_to_build = 0
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose != self.purpose.pavilion:
+				continue
+			object = self.land_manager.island.ground_map[coords]
+			if object is not None or object.id != BUILDINGS.PAVILION_CLASS:
+				self.pavilions_to_build += 1
 
 	@classmethod
 	def _remove_unreachable_roads(cls, plan, main_square):
@@ -222,6 +232,7 @@ class VillageBuilder(WorldObject):
 				self.tents_to_build = good_tents
 				best_value = value
 		self._optimize_plan()
+		self._reserve_other_buildings()
 		self._create_tent_queue()
 
 	def _optimize_plan(self):
@@ -297,7 +308,32 @@ class VillageBuilder(WorldObject):
 				not_needed.append(coords)
 		for coords in not_needed:
 			self.land_manager.add_to_production(coords)
-	
+
+	def _reserve_other_buildings(self):
+		"""Replaces a planned tent with a pavilion. (schools and others later on)"""
+		tent_range = 12 # TODO: load it the right way
+		planned_tents = [builder for (purpose, builder) in self.plan.itervalues() if purpose == self.purpose.planned_tent]
+
+		max_covered = 0
+		min_distance = 0
+		best_point = None
+		for replaced_builder in planned_tents:
+			covered = 0
+			distance = 0
+			for builder in planned_tents:
+				if replaced_builder.position.distance(builder.position) <= tent_range:
+					covered += 1
+					distance += replaced_builder.position.distance(builder.position)
+			if covered > max_covered or (covered == max_covered and min_distance > distance):
+				max_covered = covered
+				min_distance = distance
+				best_point = replaced_builder.position.origin
+
+		if best_point is not None:
+			builder = Builder.create(BUILDINGS.PAVILION_CLASS, self.land_manager, best_point)
+			self.plan[best_point.to_tuple()] = (self.purpose.pavilion, builder)
+			self.pavilions_to_build = 1
+
 	def _create_tent_queue(self):
 		""" This function takes the plan and orders all planned tents according to
 		the distance from the main square to the block they belong to. """
@@ -357,6 +393,22 @@ class VillageBuilder(WorldObject):
 			if purpose == self.purpose.main_square:
 				builder.execute()
 
+	def build_pavilion(self):
+		if self.pavilions_to_build <= 0:
+			return BUILD_RESULT.IMPOSSIBLE
+
+		for coords, (purpose, builder) in self.plan.iteritems():
+			if purpose == self.purpose.pavilion:
+				object = self.land_manager.island.ground_map[coords]
+				if object is not None or object.id != BUILDINGS.PAVILION_CLASS:
+					if not builder.have_resources():
+						return BUILD_RESULT.NEED_RESOURCES
+					building = builder.execute()
+					if not building:
+						return BUILD_RESULT.UNKNOWN_ERROR
+					self.pavilions_to_build -= 1
+					return BUILD_RESULT.OK
+
 	def build_tent(self):
 		if self.tent_queue:
 			coords = self.tent_queue[0]
@@ -388,6 +440,7 @@ class VillageBuilder(WorldObject):
 		tent_colour = (255, 255, 255)
 		planned_tent_colour = (200, 200, 200)
 		sq_colour = (255, 0, 255)
+		pavilion_colour = (255, 128, 128)
 		reserved_colour = (0, 0, 255)
 		unknown_colour = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -402,6 +455,8 @@ class VillageBuilder(WorldObject):
 				renderer.addColored(tile._instance, *planned_tent_colour)
 			elif purpose == self.purpose.road:
 				renderer.addColored(tile._instance, *road_colour)
+			elif purpose == self.purpose.pavilion:
+				renderer.addColored(tile._instance, *pavilion_colour)
 			elif purpose == self.purpose.reserved:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
