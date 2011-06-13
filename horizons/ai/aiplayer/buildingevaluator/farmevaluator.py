@@ -33,13 +33,15 @@ class FarmEvaluator(BuildingEvaluator):
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	field_offsets = None
 
-	def __init__(self, production_builder, builder, farm_plan, fields, existing_roads, alignment):
+	def __init__(self, production_builder, builder, farm_plan, fields, existing_roads, alignment, extra_space, immidiate_connections):
 		super(FarmEvaluator, self).__init__(production_builder, builder)
 		self.farm_plan = farm_plan
 		self.fields = fields
 		self.existing_roads = existing_roads
 		self.alignment = alignment
-		self.value = fields + existing_roads * 0.005 + alignment * 0.001
+		self.extra_space = extra_space
+		self.immidiate_connections = immidiate_connections
+		self.value = fields + existing_roads * 0.005 + alignment * 0.001 - extra_space * 0.02 + immidiate_connections * 0.005
 
 	def _get_costs(self):
 		total = super(FarmEvaluator, self)._get_costs()
@@ -85,8 +87,8 @@ class FarmEvaluator(BuildingEvaluator):
 		return False
 
 	@classmethod
-	def create(cls, production_builder, x, y, road_dx, road_dy, min_fields):
-		builder = production_builder.make_builder(BUILDINGS.FARM_CLASS, x, y, True)
+	def create(cls, production_builder, farm_x, farm_y, road_dx, road_dy, min_fields):
+		builder = production_builder.make_builder(BUILDINGS.FARM_CLASS, farm_x, farm_y, True)
 		if not builder:
 			return None
 
@@ -97,9 +99,9 @@ class FarmEvaluator(BuildingEvaluator):
 		for other_offset in xrange(-3, 6):
 			coords = None
 			if road_dx == 0:
-				coords = (x + other_offset, y + road_dy)
+				coords = (farm_x + other_offset, farm_y + road_dy)
 			else:
-				coords = (x + road_dx, y + other_offset)
+				coords = (farm_x + road_dx, farm_y + other_offset)
 			if not cls._suitable_for_road(production_builder, coords):
 				return None
 
@@ -120,7 +122,7 @@ class FarmEvaluator(BuildingEvaluator):
 		for (dx, dy) in cls.field_offsets:
 			if fields >= 8:
 				break # unable to place more anyway
-			coords = (x + dx, y + dy)
+			coords = (farm_x + dx, farm_y + dy)
 			field = production_builder.make_builder(BUILDINGS.POTATO_FIELD_CLASS, coords[0], coords[1], False)
 			if not field:
 				continue
@@ -140,10 +142,17 @@ class FarmEvaluator(BuildingEvaluator):
 		# add the farm itself to the plan
 		for coords in builder.position.tuple_iter():
 			farm_plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
-		farm_plan[(x, y)] = (PRODUCTION_PURPOSE.FARM, builder)
+		farm_plan[(farm_x, farm_y)] = (PRODUCTION_PURPOSE.FARM, builder)
 
+		# calculate the alignment value and the rectangle that contains the whole farm
 		alignment = 0
+		min_x, max_x, min_y, max_y = None, None, None, None
 		for x, y in farm_plan:
+			min_x = x if min_x is None or min_x > x else min_x
+			max_x = x if max_x is None or max_x < x else max_x
+			min_y = y if min_y is None or min_y > y else min_y
+			max_y = y if max_y is None or max_y < y else max_y
+
 			for dx, dy in cls.moves:
 				coords = (x + dx, y + dy)
 				if coords in farm_plan:
@@ -151,8 +160,25 @@ class FarmEvaluator(BuildingEvaluator):
 				if coords not in production_builder.plan or production_builder.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
 					alignment += 1
 
-		value = fields + existing_roads * 0.005 + alignment * 0.001
-		return FarmEvaluator(production_builder, builder, farm_plan, fields, existing_roads, alignment)
+		# calculate the value of the farm road end points (larger is better)
+		immidiate_connections = 0
+		for other_offset in [-4, 6]:
+			if road_dx == 0:
+				coords = (farm_x + other_offset, farm_y + road_dy)
+			else:
+				coords = (farm_x + road_dx, farm_y + other_offset)
+			if coords in production_builder.plan:
+				if production_builder.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
+					immidiate_connections += 1
+				elif production_builder.plan[coords][0] == PRODUCTION_PURPOSE.ROAD:
+					immidiate_connections += 3
+			elif coords in production_builder.land_manager.settlement.ground_map:
+				object = production_builder.land_manager.settlement.ground_map[coords].object
+				if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
+					immidiate_connections += 3
+
+		extra_space = (max_x - min_x + 1) * (max_y - min_y + 1) - 9 * (fields + 2)
+		return FarmEvaluator(production_builder, builder, farm_plan, fields, existing_roads, alignment, extra_space, immidiate_connections)
 
 	def execute(self):
 		if not self.production_builder.have_resources(self.builder.building_id):
