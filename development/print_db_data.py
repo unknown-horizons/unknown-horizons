@@ -199,6 +199,17 @@ def print_increment_data():
 			print str
 		print ''
 
+def print_names():
+	text = ''
+	for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship','player'), ('ship','pirate'), ('ship','fisher'), ('ship','trader')]:
+		sql = "SELECT name FROM %snames WHERE for_%s = 1" % (table, type)
+		names = db(sql)
+		text += '\n' + "%s %s names" % (type, table) + '[list]\n'
+		for name in map(lambda x: x[0], names):
+			text += '[*] %s' % name + '\n'
+		text += '[/list]' + '\n'
+	print text
+
 functions = {
 		'buildings' : print_building,
 		'building_costs' : print_building_costs,
@@ -206,6 +217,7 @@ functions = {
 		'collector_restrictions': print_collector_restrictions,
 		'increments' : print_increment_data,
 		'lines' : print_production_lines,
+		'names' : print_names,
 		'resources' : print_res,
 		'storage' : print_storage,
 		'units' : print_unit,
@@ -219,6 +231,7 @@ abbrevs = {
 		'cr': 'collector_restrictions',
 		'i' : 'increments',
 		'increment' : 'increments',
+		'n' : 'names',
 		'res' : 'resources',
 		'settler_lines': 'increments',
 		'sl': 'increments',
