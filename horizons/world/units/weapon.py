@@ -2,7 +2,7 @@
 # Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
-#
+
 # Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
@@ -22,7 +22,7 @@
 from horizons.util import Circle, Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED, WEAPONS
+from horizons.constants import GAME_SPEED
 
 @metaChangeListenerDecorator("damage_dealt")
 class Weapon(object):
@@ -40,7 +40,11 @@ class Weapon(object):
 		@param session: game session
 		@param id: weapon id to be initialized
 		"""
-		data = session.db("SELECT * FROM weapon WHERE id = ?", id)
+		data = session.db("SELECT id, type, damage,\
+		                          min_range, max_range,\
+		                          cooldown_time, attack_speed,\
+		                          attack_radius \
+		                  FROM weapon WHERE id = ?", id)
 		data = data[0]
 		self.weapon_id = data[0]
 		self.weapon_type = data[1]
@@ -116,57 +120,59 @@ class Weapon(object):
 			return True
 		return False
 
-class SetCannonNumberError(Exception):
+class SetStackableWeaponNumberError(Exception):
 	"""
-	Raised when setting the number of weapons for cannon fails
+	Raised when setting the number of weapons for a stackable weapon fails
 	"""
 	pass
 
-class Cannon(Weapon):
+class StackableWeapon(Weapon):
 	"""
-	Cannon class
+	Stackable Weapon class
+	A generic Weapon that can have a number of weapons binded per instance
+	It deals the number of weapons times weapon's default damage
+	This is used for cannons, reducing the number of instances and bullets fired
+	To make a weapon stackable you need to add the id to WEAPONS.STACKABLE in constants.py
 	"""
-	def __init__(self, session):
-		#modifiers will be loaded from database
-		super(Cannon, self).__init__(session, WEAPONS.CANNON)
+	def __init__(self, session, id):
+		super(StackableWeapon, self).__init__(session, id)
 		self.__init()
 
 	def __init(self):
-		#number of cannons as resource binded to a Cannon object
 		self.number_of_weapons = 1
 		self.max_number_of_weapons = 3
 
 	def set_number_of_weapons(self, number):
 		"""
-		Sets number of cannons as resource binded to a Cannon object
-		the number of cannons increases the damage dealt by one Cannon instance
+		Sets number of cannons as resource binded to a StackableWeapon object
+		the number of cannons increases the damage dealt by one StackableWeapon instance
 		@param number : number of cannons
 		"""
 		if number > self.max_number_of_weapons:
-			raise SetCannonNumberError
+			raise SetStackableWeaponNumberError
 		else:
 			self.number_of_weapons = number
 
 	def increase_number_of_weapons(self, number):
 		"""
-		Increases number of cannons as resource binded to a Cannon object
+		Increases number of cannons as resource binded to a StackableWeapon object
 		@param number : number of cannons
 		"""
 		if number + self.number_of_weapons > self.max_number_of_weapons:
-			raise SetCannonNumberError
+			raise SetStackableWeaponNumberError
 		else:
 			self.number_of_weapons += number
 
 	def decrease_number_of_weapons(self, number):
 		"""
-		Decreases number of cannons as resource binded to a Cannon object
+		Decreases number of cannons as resource binded to a StackableWeapon object
 		@param number : number of cannons
 		"""
 		if self.number_of_weapons - number <= 0:
-			raise SetCannonNumberError
+			raise SetStackableWeaponNumberError
 		else:
 			self.number_of_weapons -= number
 
 	def get_damage_modifier(self):
-		return self.number_of_weapons * super(Cannon, self).get_damage_modifier()
+		return self.number_of_weapons * super(StackableWeapon, self).get_damage_modifier()
 

@@ -24,7 +24,7 @@ from horizons.util import Annulus, Callback
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
-from weapon import Weapon, Cannon, SetCannonNumberError
+from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.constants import WEAPONS
 
 import gc
@@ -56,21 +56,21 @@ class WeaponHolder(object):
 		adds weapon to storage
 		@param weapon_id : id of the weapon to be added
 		"""
-		#if weapon is cannon update the number of weapons binded per cannon instance
-		if weapon_id == WEAPONS.CANNON:
-			cannons = [w for w in self._weapon_storage if w.weapon_id == WEAPONS.CANNON]
+		#if weapon is stackable, try to stack
+		if weapon_id in WEAPONS.STACKABLE:
+			stackable = [w for w in self._weapon_storage if w.weapon_id == WEAPONS.CANNON]
 			#try to increase the number of weapons for one cannon
 			increased = False
-			for weapon in cannons:
+			for weapon in stackable:
 				try:
 					weapon.increase_number_of_weapons(1)
 					increased = True
 					break
-				except SetCannonNumberError:
+				except SetStackableWeaponNumberError:
 					continue
 
 			if not increased:
-				self._weapon_storage.append(Cannon(self.session))
+				self._weapon_storage.append(StackableWeapon(self.session, weapon_id))
 		else:
 			self._weapon_storage.append(Weapon(self.session, weapon_id))
 		self.on_storage_modified()
@@ -86,10 +86,10 @@ class WeaponHolder(object):
 		#remove last weapon added
 		weapon = weapons[-1]
 		#if cannon needs to be removed try decrease number
-		if weapon_id == WEAPONS.CANNON:
+		if weapon.weapon_id in WEAPONS.STACKABLE:
 			try:
 				weapon.decrease_number_of_weapons(1)
-			except SetCannonNumberError:
+			except SetStackableWeaponNumberError:
 				self._weapon_storage.remove(weapon)
 		else:
 			self._weapon_storage.remove(weapon)
