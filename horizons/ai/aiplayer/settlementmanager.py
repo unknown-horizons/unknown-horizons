@@ -31,6 +31,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.command.uioptions import SetTaxSetting
+from horizons.command.production import ToggleActive
 from horizons.constants import BUILDINGS, RES, PRODUCTION, GAME_SPEED
 
 class SettlementManager(WorldObject):
@@ -190,9 +191,32 @@ class SettlementManager(WorldObject):
 	def count_buildings(self, building_id):
 		return len(self.land_manager.settlement.get_buildings_by_id(building_id))
 
+	def manage_production(self):
+		"""Pauses and resumes production buildings when they have full inventories."""
+		for building in self.production_builder.production_buildings:
+			for production in building._get_productions():
+				all_full = True
+
+				# inventory full of the produced resources?
+				to_check = production._prod_line.production if building.id != BUILDINGS.CLAY_PIT_CLASS else production.get_produced_res()
+				for resource_id in to_check:
+					if production.inventory.get_free_space_for(resource_id) > 0:
+						all_full = False
+						break
+
+				if all_full:
+					if not production.is_paused():
+						ToggleActive(building, production)(self.owner)
+						self.log.info('%s paused a production at %s/%d', self, building.name, building.worldid)
+				else:
+					if production.is_paused():
+						ToggleActive(building, production)(self.owner)
+						self.log.info('%s resumed a production at %s/%d', self, building.name, building.worldid)
+
 	def tick(self):
 		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID)[0], \
 			self.get_resident_resource_usage(RES.FOOD_ID))
+		self.manage_production()
 		call_again = False
 
 		if len(self.build_queue) > 0:
