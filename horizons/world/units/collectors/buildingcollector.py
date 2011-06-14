@@ -201,7 +201,7 @@ class BuildingCollector(Collector):
 		"""Cancels current job and moves back home"""
 		self.log.debug("%s cancel", self)
 		if continue_action is None:
-			continue_action = Callback(self.move_home, callback=self.search_job, action='move')
+			continue_action = Callback(self.move_home, callback=self.end_job, action='move')
 		super(BuildingCollector, self).cancel(continue_action=continue_action)
 
 class StorageCollector(BuildingCollector):
