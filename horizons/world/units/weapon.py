@@ -22,30 +22,33 @@
 from horizons.util import Circle, Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED
+from horizons.constants import GAME_SPEED, WEAPONS
 
 @metaChangeListenerDecorator("damage_dealt")
 class Weapon(object):
 	"""
 	Generic Weapon class
+	it has the modifiers:
+		damage - damage dealt in hp
+		weapon_range - tuple with minimum and maximum attack range
+		cooldown_time - number of seconds until the attack is ready again
+		attack_speed - speed that calculates the time until attack reaches target
+		attack_radius - radius affected by attack
 	"""
-	def __init__(self, session):
-		#TODO add arguments
-		#it will have modifiers as arguments
-		#they will be loaded from database
-
-		#tuple with min range, max range
-		self.weapon_range = 5,15
-		#area affected by attack
-		self.attack_radius = 4
-		#weapon damage
-		self.damage = 30
-		#bullet speed in tiles per second
-		#used to deal damage when bullet has reached the target
-		self.attack_speed = 2
-		#time until attack is ready again
-		#will have one attack per 10 seconds
-		self.cooldown_time = 3
+	def __init__(self, session, id):
+		"""
+		@param session: game session
+		@param id: weapon id to be initialized
+		"""
+		data = session.db("SELECT * FROM weapon WHERE id = ?", id)
+		data = data[0]
+		self.weapon_id = data[0]
+		self.weapon_type = data[1]
+		self.damage = data[2]
+		self.weapon_range = data[3], data[4]
+		self.cooldown_time = data[5]
+		self.attack_speed = data[6]
+		self.attack_radius = data[7]
 		self.attack_ready = True
 		self.session = session
 
@@ -113,26 +116,56 @@ class Weapon(object):
 			return True
 		return False
 
+class SetCannonNumberError(Exception):
+	"""
+	Raised when setting the number of weapons for cannon fails
+	"""
+	pass
+
 class Cannon(Weapon):
 	"""
 	Cannon class
 	"""
 	def __init__(self, session):
 		#modifiers will be loaded from database
-		super(Cannon, self).__init__(session)
+		super(Cannon, self).__init__(session, WEAPONS.CANNON)
 		self.__init()
 
 	def __init(self):
-		self.weapon_type = 'ranged'
 		#number of cannons as resource binded to a Cannon object
 		self.number_of_weapons = 1
+		self.max_number_of_weapons = 3
 
 	def set_number_of_weapons(self, number):
 		"""
 		Sets number of cannons as resource binded to a Cannon object
+		the number of cannons increases the damage dealt by one Cannon instance
 		@param number : number of cannons
 		"""
-		self.number = number
+		if number > self.max_number_of_weapons:
+			raise SetCannonNumberError
+		else:
+			self.number_of_weapons = number
+
+	def increase_number_of_weapons(self, number):
+		"""
+		Increases number of cannons as resource binded to a Cannon object
+		@param number : number of cannons
+		"""
+		if number + self.number_of_weapons > self.max_number_of_weapons:
+			raise SetCannonNumberError
+		else:
+			self.number_of_weapons += number
+
+	def decrease_number_of_weapons(self, number):
+		"""
+		Decreases number of cannons as resource binded to a Cannon object
+		@param number : number of cannons
+		"""
+		if self.number_of_weapons - number <= 0:
+			raise SetCannonNumberError
+		else:
+			self.number_of_weapons -= number
 
 	def get_damage_modifier(self):
 		return self.number_of_weapons * super(Cannon, self).get_damage_modifier()

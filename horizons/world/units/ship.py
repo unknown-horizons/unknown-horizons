@@ -36,9 +36,8 @@ from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
-from weapon import Cannon
 from horizons.scheduler import Scheduler
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED
+from horizons.constants import LAYERS, STORAGE, GAME_SPEED, WEAPONS
 
 class ShipRoute(object):
 	"""
@@ -193,7 +192,8 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		#NOTE dummy cannon
-		self.add_weapon_to_storage(Cannon(self.session))
+		self.add_weapon_to_storage(WEAPONS.CANNON)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
 		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -204,7 +204,6 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 			self.deselect()
 			self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
-		Scheduler().rem_all_classinst_calls(self)
 		self.session.world.ships.remove(self)
 		del self.session.world.ship_map[self.position.to_tuple()]
 

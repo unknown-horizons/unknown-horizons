@@ -24,6 +24,8 @@ from horizons.util import Annulus, Callback
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
+from weapon import Weapon, Cannon, SetCannonNumberError
+from horizons.constants import WEAPONS
 
 import gc
 
@@ -49,8 +51,49 @@ class WeaponHolder(object):
 		self._min_range = min([w.get_minimum_range() for w in self._weapon_storage])
 		self._max_range = max([w.get_maximum_range() for w in self._weapon_storage])
 
-	def add_weapon_to_storage(self, weapon):
-		self._weapon_storage.append(weapon)
+	def add_weapon_to_storage(self, weapon_id):
+		"""
+		adds weapon to storage
+		@param weapon_id : id of the weapon to be added
+		"""
+		#if weapon is cannon update the number of weapons binded per cannon instance
+		if weapon_id == WEAPONS.CANNON:
+			cannons = [w for w in self._weapon_storage if w.weapon_id == WEAPONS.CANNON]
+			#try to increase the number of weapons for one cannon
+			increased = False
+			for weapon in cannons:
+				try:
+					weapon.increase_number_of_weapons(1)
+					increased = True
+					break
+				except SetCannonNumberError:
+					continue
+
+			if not increased:
+				self._weapon_storage.append(Cannon(self.session))
+		else:
+			self._weapon_storage.append(Weapon(self.session, weapon_id))
+		self.on_storage_modified()
+
+	def remove_weapon_from_storage(self, weapon_id):
+		"""
+		removes weapon to storage
+		@param weapon_id : id of the weapon to be removed
+		"""
+		weapons = [w for w in self._weapon_storage if w.weapon_id == weapon_id]
+		if len(weapons) == 0:
+			return
+		#remove last weapon added
+		weapon = weapons[-1]
+		#if cannon needs to be removed try decrease number
+		if weapon_id == WEAPONS.CANNON:
+			try:
+				weapon.decrease_number_of_weapons(1)
+			except SetCannonNumberError:
+				self._weapon_storage.remove(weapon)
+		else:
+			self._weapon_storage.remove(weapon)
+
 		self.on_storage_modified()
 
 	def attack_possible(self, dest):
