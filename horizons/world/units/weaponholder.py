@@ -116,6 +116,10 @@ class WeaponHolder(object):
 		Scheduler().add_new_object(self.try_attack_target, self, 2)
 
 	def attack(self, target):
+		"""
+		Triggers attack on target
+		@param target : target to be attacked
+		"""
 		if self._target is not None:
 			if self._target is not target:
 			#if target is changed remove the listener
@@ -175,3 +179,28 @@ class WeaponHolder(object):
 						blocked_callback = Callback(self.fire_all_weapons, dest))
 				except MoveNotPossible:
 					pass
+
+	def save(self, db):
+		super(WeaponHolder, self).save(db)
+		weapons = {}
+		for weapon in self._weapon_storage:
+			number = 1
+			if weapon.weapon_id == WEAPONS.CANNON:
+				number = weapon.number_of_weapons
+			if weapon.weapon_id in weapons:
+				weapons[weapon.weapon_id] += number
+			else:
+				weapons[weapon.weapon_id] = number
+
+		for weapon_id in weapons:
+			db("INSERT INTO weapon_storage(owner_id, weapon_id, number) VALUES(?, ?, ?)",
+				self.worldid, weapon_id, weapons[weapon_id])
+
+	def load(self, db, worldid):
+		super(WeaponHolder, self).load(db, worldid)
+		self.__init()
+		weapons = db("SELECT weapon_id, number FROM weapon_storage WHERE owner_id = ?", worldid)
+		for weapon_id, number in weapons:
+			for i in xrange(number):
+				self.add_weapon_to_storage(weapon_id)
+
