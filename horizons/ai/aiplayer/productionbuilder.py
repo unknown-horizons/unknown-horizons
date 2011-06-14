@@ -187,7 +187,7 @@ class ProductionBuilder(WorldObject):
 
 		return nodes
 
-	def _build_road_connection(self, builder):
+	def _get_road_to_builder(self, builder):
 		collector_coords = set()
 		for building in self.collector_buildings:
 			for coords in self._get_possible_road_coords(building.position):
@@ -199,7 +199,10 @@ class ProductionBuilder(WorldObject):
 		pos = builder.position
 		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
 
-		path = RoadPlanner()(collector_coords, destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
+		return RoadPlanner()(collector_coords, destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
+
+	def _build_road_connection(self, builder):
+		path = self._get_road_to_builder(builder)
 		if path is not None:
 			for x, y in path:
 				point = Point(x, y)
@@ -211,19 +214,7 @@ class ProductionBuilder(WorldObject):
 		return path is not None
 
 	def _road_connection_possible(self, builder):
-		collector_coords = set()
-		for building in self.collector_buildings:
-			for coords in self._get_possible_road_coords(building.position):
-				collector_coords.add(coords)
-
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
-		destination_coords = set(self._get_possible_road_coords(builder.position))
-
-		pos = builder.position
-		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
-
-		path = RoadPlanner()(collector_coords, destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
-		return path is not None
+		return self._get_road_to_builder(builder) is not None
 
 	def _near_collectors(self, position):
 		for building in self.collector_buildings:
