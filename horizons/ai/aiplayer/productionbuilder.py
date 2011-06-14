@@ -98,6 +98,10 @@ class ProductionBuilder(WorldObject):
 				self.production_buildings.append(object)
 			elif purpose == PRODUCTION_PURPOSE.FARM and object.id == BUILDINGS.FARM_CLASS:
 				self.production_buildings.append(object)
+			elif purpose == PRODUCTION_PURPOSE.CLAY_PIT and object.id == BUILDINGS.CLAY_PIT_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == PRODUCTION_PURPOSE.BRICKYARD and object.id == BUILDINGS.BRICKYARD_CLASS:
+				self.production_buildings.append(object)
 			elif purpose == PRODUCTION_PURPOSE.STORAGE and object.id == BUILDINGS.STORAGE_CLASS:
 				self.collector_buildings.append(object)
 
@@ -409,6 +413,8 @@ class ProductionBuilder(WorldObject):
 		for building in self.production_buildings:
 			if building.id == BUILDINGS.FARM_CLASS:
 				produce_quantity += 2
+			elif building.id == BUILDINGS.CLAY_PIT_CLASS:
+				pass
 			else:
 				produce_quantity += 1
 		return 1 + 2 * len(self.collector_buildings) > produce_quantity

@@ -35,9 +35,7 @@ class BrickyardEvaluator(BuildingEvaluator):
 		self.production_level = None
 
 		distance = distance_to_clay_pit
-		if distance is None:
-			distance = 3 + distance_to_collector
-		elif distance_to_collector is not None:
+		if distance_to_collector is not None:
 			distance *= 0.9 + distance_to_collector / float(self.radius) * 0.1
 		self.value = 10.0 / distance + alignment * 0.02
 
@@ -56,15 +54,14 @@ class BrickyardEvaluator(BuildingEvaluator):
 			distance = builder.position.distance(building.position)
 			if distance <= cls.radius:
 				distance_to_clay_pit = distance if distance_to_clay_pit is None or distance < distance_to_clay_pit else distance_to_clay_pit
+		if distance_to_clay_pit is None:
+			return None
 
 		distance_to_collector = None
 		for building in production_builder.collector_buildings:
 			distance = builder.position.distance(building.position)
 			if distance <= cls.radius:
 				distance_to_collector = distance if distance_to_collector is None or distance < distance_to_collector else distance_to_collector
-
-		if distance_to_clay_pit is None and distance_to_collector is None:
-			return None
 
 		alignment = 0
 		for coords in production_builder._get_neighbour_tiles(builder.position):
