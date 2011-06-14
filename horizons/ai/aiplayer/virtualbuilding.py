@@ -60,3 +60,16 @@ class VirtualFisher(VirtualBuilding):
 		for sub_amount in production_line.produced_res.itervalues():
 			amount += sub_amount
 		return float(amount) / production_line.time / GAME_SPEED.TICKS_PER_SECOND
+
+class VirtualClayPit(VirtualBuilding):
+	def __init__(self, session):
+		super(VirtualClayPit, self).__init__(session, BUILDINGS.CLAY_PIT_CLASS)
+
+	def get_expected_production_level(self, resource_id):
+		if resource_id != RES.CLAY_ID:
+			return None
+		production_line = self.production_lines[0]
+		amount = 0
+		for sub_amount in production_line.produced_res.itervalues():
+			amount += sub_amount
+		return float(amount) / production_line.time / GAME_SPEED.TICKS_PER_SECOND

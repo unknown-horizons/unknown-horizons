@@ -28,7 +28,7 @@ from mission.preparefoundationship import PrepareFoundationShip
 from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
-from virtualbuilding import VirtualFarm, VirtualFisher
+from virtualbuilding import VirtualFarm, VirtualFisher, VirtualClayPit
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
@@ -96,6 +96,7 @@ class AIPlayer(GenericAI):
 		self.complete_inventory = CompleteInventory(self)
 		self.virtual_farm = VirtualFarm(self.session)
 		self.virtual_fisher = VirtualFisher(self.session)
+		self.virtual_clay_pit = VirtualClayPit(self.session)
 		self.log.info('%s Expected 1 field farm food production %.5f/tick', self, \
 			self.virtual_farm.get_expected_production_level(RES.FOOD_ID, 1))
 		self.log.info('%s Expected perfect fisher food production %.5f/tick', self, \

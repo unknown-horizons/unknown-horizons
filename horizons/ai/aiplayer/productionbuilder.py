@@ -30,6 +30,8 @@ from roadplanner import RoadPlanner
 
 from horizons.ai.aiplayer.buildingevaluator.fisherevaluator import FisherEvaluator
 from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
+from horizons.ai.aiplayer.buildingevaluator.claypitevaluator import ClayPitEvaluator
+from horizons.ai.aiplayer.buildingevaluator.brickyardevaluator import BrickyardEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point, Rect, WorldObject
@@ -222,19 +224,25 @@ class ProductionBuilder(WorldObject):
 				return True
 		return False
 
-	def make_builder(self, building_id, x, y, needs_collector):
+	def make_builder(self, building_id, x, y, needs_collector, orientation=0):
 		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """
 		coords = (x, y)
-		if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE or coords not in self.land_manager.settlement.ground_map:
-			return None
-		builder = Builder.create(building_id, self.land_manager, Point(x, y))
+		if building_id == BUILDINGS.CLAY_PIT_CLASS:
+			# clay deposits are outside the production plan until they are constructed
+			if coords in self.plan or coords not in self.land_manager.settlement.ground_map:
+				return None
+		else:
+			if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE or coords not in self.land_manager.settlement.ground_map:
+				return None
+		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
 		if not builder or not self.land_manager.legal_for_production(builder.position):
 			return None
 		if building_id == BUILDINGS.FISHERMAN_CLASS: #
 			for coords in builder.position.tuple_iter():
 				if coords in self.plan and self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
 					return None
-		else:
+		elif building_id != BUILDINGS.CLAY_PIT_CLASS:
+			# clay deposits are outside the production plan until they are constructed
 			for coords in builder.position.tuple_iter():
 				if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
 					return None
@@ -530,6 +538,38 @@ class ProductionBuilder(WorldObject):
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
+	def build_clay_pit(self):
+		""" Builds a clay pit and a road leading to it """
+		if not self.have_resources(BUILDINGS.CLAY_PIT_CLASS):
+			return BUILD_RESULT.NEED_RESOURCES
+
+		options = []
+		for building in self.settlement.get_buildings_by_id(BUILDINGS.CLAY_DEPOSIT_CLASS):
+			(x, y) = building.position.origin.to_tuple()
+			evaluator = ClayPitEvaluator.create(self, x, y)
+			if evaluator is not None:
+				options.append((-evaluator.value, evaluator))
+
+		for _, evaluator in sorted(options):
+			return evaluator.execute()
+		return BUILD_RESULT.IMPOSSIBLE
+
+	def build_brickyard(self):
+		""" Builds a brickyard and a road leading to it """
+		if not self.have_resources(BUILDINGS.BRICKYARD_CLASS):
+			return BUILD_RESULT.NEED_RESOURCES
+
+		options = []
+		for (x, y) in self.plan:
+			for orientation in xrange(0, 2):
+				evaluator = BrickyardEvaluator.create(self, x, y, orientation)
+				if evaluator is not None:
+					options.append((-evaluator.value, evaluator))
+
+		for _, evaluator in sorted(options):
+			return evaluator.execute()
+		return BUILD_RESULT.IMPOSSIBLE
+
 	def count_fishers(self):
 		fishers = 0
 		for building in self.production_buildings:
@@ -563,6 +603,8 @@ class ProductionBuilder(WorldObject):
 		farm_colour = (128, 0, 255)
 		farm_field_colour = (255, 0, 128)
 		potato_field_colour = (0, 128, 0)
+		clay_pit_colour = (0, 64, 0)
+		brickyard_colour = (0, 32, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, (purpose, _) in self.plan.iteritems():
@@ -581,6 +623,10 @@ class ProductionBuilder(WorldObject):
 				renderer.addColored(tile._instance, *farm_field_colour)
 			elif purpose == PRODUCTION_PURPOSE.POTATO_FIELD:
 				renderer.addColored(tile._instance, *potato_field_colour)
+			elif purpose == PRODUCTION_PURPOSE.CLAY_PIT:
+				renderer.addColored(tile._instance, *clay_pit_colour)
+			elif purpose == PRODUCTION_PURPOSE.BRICKYARD:
+				renderer.addColored(tile._instance, *brickyard_colour)
 			elif purpose == PRODUCTION_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:

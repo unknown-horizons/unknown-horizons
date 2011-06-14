@@ -31,7 +31,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.command.uioptions import SetTaxSetting
-from horizons.constants import RES, PRODUCTION, GAME_SPEED
+from horizons.constants import BUILDINGS, RES, PRODUCTION, GAME_SPEED
 
 class SettlementManager(WorldObject):
 	"""
@@ -177,6 +177,19 @@ class SettlementManager(WorldObject):
 					total -= production_line.consumed_res[resource_id] / production_line.time / GAME_SPEED.TICKS_PER_SECOND
 		return total
 
+	def log_generic_build_result(self, result, call_again, name):
+		if result == BUILD_RESULT.OK:
+			self.log.info('%s built a %s', self, name)
+			call_again = True
+		elif result == BUILD_RESULT.NEED_RESOURCES:
+			self.log.info('%s not enough materials to build a %s', self, name)
+			call_again = True
+		else:
+			self.log.info('%s failed to build a %s', self, name)
+
+	def count_buildings(self, building_id):
+		return len(self.land_manager.settlement.get_buildings_by_id(building_id))
+
 	def tick(self):
 		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID)[0], \
 			self.get_resident_resource_usage(RES.FOOD_ID))
@@ -194,47 +207,27 @@ class SettlementManager(WorldObject):
 			else:
 				assert False # this should never happen
 			call_again = True
+		elif not self.production_builder.enough_collectors():
+			result = self.production_builder.improve_collector_coverage()
+			self.log_generic_build_result(result, call_again, 'storage')
 		elif not self.enough_food_producers():
-			if self.production_builder.enough_collectors():
-				result = self.production_builder.build_food_producer()
-				if result == BUILD_RESULT.OK:
-					self.log.info('%s built a food producer', self)
-					call_again = True
-				elif result == BUILD_RESULT.NEED_RESOURCES:
-					self.log.info('%s not enough materials to build a food producer', self)
-					call_again = True
-				else:
-					self.log.info('%s failed to build a food producer', self)
-			else:
-				result = self.production_builder.improve_collector_coverage()
-				if result == BUILD_RESULT.OK:
-					self.log.info('%s built a storage', self)
-					call_again = True
-				elif result == BUILD_RESULT.NEED_RESOURCES:
-					self.log.info('%s not enough materials to build a storage', self)
-					call_again = True
-				else:
-					self.log.info('%s failed to build a storage', self)
+			result = self.production_builder.build_food_producer()
+			self.log_generic_build_result(result, call_again, 'food producer')
 		elif self.tents >= 10 and self.village_builder.pavilions_to_build > 0:
 			result = self.village_builder.build_pavilion()
-			if result == BUILD_RESULT.OK:
-				self.log.info('%s built a pavilion', self)
-			elif result == BUILD_RESULT.NEED_RESOURCES:
-				self.log.info('%s not enough materials to build a pavilion', self)
-			else:
-				self.log.info('%s failed to build a pavilion', self)
-			call_again = True
+			self.log_generic_build_result(result, call_again, 'pavilion')
 		elif self.village_builder.tents_to_build > self.tents:
 			result = self.village_builder.build_tent()
+			self.log_generic_build_result(result, call_again, 'tent')
 			if result == BUILD_RESULT.OK:
-				self.log.info('%s built a tent', self)
 				self.tents += 1
-				call_again = True
-			elif result == BUILD_RESULT.NEED_RESOURCES:
-				self.log.info('%s not enough materials to build a tent', self)
-				call_again = True
-			else:
-				self.log.info('%s failed to build a tent', self)
+		elif not self.count_buildings(BUILDINGS.CLAY_PIT_CLASS) and self.count_buildings(BUILDINGS.CLAY_DEPOSIT_CLASS):
+			result = self.production_builder.build_clay_pit()
+			self.log_generic_build_result(result, call_again, 'clay pit')
+			self.production_builder.display()
+		elif not self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.count_buildings(BUILDINGS.CLAY_PIT_CLASS):
+			result = self.production_builder.build_brickyard()
+			self.log_generic_build_result(result, call_again, 'brickyard')
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 		if not call_again:
