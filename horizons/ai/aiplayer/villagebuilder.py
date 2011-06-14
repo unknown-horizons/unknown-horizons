@@ -331,7 +331,6 @@ class VillageBuilder(WorldObject):
 
 		if best_point is not None:
 			builder = Builder.create(building_id, self.land_manager, best_point)
-			print best_point, building_id
 			self.plan[best_point.to_tuple()] = (new_purpose, builder)
 			self.tents_to_build -= 1
 			return True
