@@ -37,6 +37,7 @@ class VillageBuilder(WorldObject):
 		tent = 5
 		road = 6
 		pavilion = 7
+		village_school = 8
 
 	def __init__(self, settlement_manager):
 		super(VillageBuilder, self).__init__()
@@ -309,8 +310,7 @@ class VillageBuilder(WorldObject):
 		for coords in not_needed:
 			self.land_manager.add_to_production(coords)
 
-	def _reserve_other_buildings(self):
-		"""Replaces a planned tent with a pavilion. (schools and others later on)"""
+	def _replace_planned_tent(self, building_id, new_purpose):
 		tent_range = 12 # TODO: load it the right way
 		planned_tents = [builder for (purpose, builder) in self.plan.itervalues() if purpose == self.purpose.planned_tent]
 
@@ -330,10 +330,18 @@ class VillageBuilder(WorldObject):
 				best_point = replaced_builder.position.origin
 
 		if best_point is not None:
-			builder = Builder.create(BUILDINGS.PAVILION_CLASS, self.land_manager, best_point)
-			self.plan[best_point.to_tuple()] = (self.purpose.pavilion, builder)
-			self.pavilions_to_build = 1
+			builder = Builder.create(building_id, self.land_manager, best_point)
+			print best_point, building_id
+			self.plan[best_point.to_tuple()] = (new_purpose, builder)
 			self.tents_to_build -= 1
+			return True
+		return False
+
+	def _reserve_other_buildings(self):
+		"""Replaces a planned tent with a pavilion and another with a school."""
+		assert self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, self.purpose.pavilion)
+		self.pavilions_to_build = 1
+		assert self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, self.purpose.village_school)
 
 	def _create_tent_queue(self):
 		""" This function takes the plan and orders all planned tents according to
@@ -389,26 +397,32 @@ class VillageBuilder(WorldObject):
 			if purpose == self.purpose.road:
 				builder.execute()
 
-	def build_main_square(self):
-		for (purpose, builder) in self.plan.itervalues():
-			if purpose == self.purpose.main_square:
-				builder.execute()
-
-	def build_pavilion(self):
-		if self.pavilions_to_build <= 0:
-			return BUILD_RESULT.IMPOSSIBLE
-
+	def build_village_building(self, building_id, building_purpose):
 		for coords, (purpose, builder) in self.plan.iteritems():
-			if purpose == self.purpose.pavilion:
+			if purpose == building_purpose:
 				object = self.land_manager.island.ground_map[coords]
-				if object is not None or object.id != BUILDINGS.PAVILION_CLASS:
+				if object is not None or object.id != building_id:
 					if not builder.have_resources():
 						return BUILD_RESULT.NEED_RESOURCES
 					building = builder.execute()
 					if not building:
 						return BUILD_RESULT.UNKNOWN_ERROR
-					self.pavilions_to_build -= 1
 					return BUILD_RESULT.OK
+		return BUILD_RESULT.IMPOSSIBLE
+
+	def build_main_square(self):
+		return self.build_village_building(BUILDINGS.MARKET_PLACE_CLASS, self.purpose.main_square)
+
+	def build_pavilion(self):
+		if self.pavilions_to_build <= 0:
+			return BUILD_RESULT.IMPOSSIBLE
+		result = self.build_village_building(BUILDINGS.PAVILION_CLASS, self.purpose.pavilion)
+		if result == BUILD_RESULT.OK:
+			self.pavilions_to_build -= 1
+		return result
+
+	def build_village_school(self):
+		return self.build_village_building(BUILDINGS.VILLAGE_SCHOOL_CLASS, self.purpose.village_school)
 
 	def build_tent(self):
 		if self.tent_queue:
@@ -442,6 +456,7 @@ class VillageBuilder(WorldObject):
 		planned_tent_colour = (200, 200, 200)
 		sq_colour = (255, 0, 255)
 		pavilion_colour = (255, 128, 128)
+		village_school_colour = (128, 128, 255)
 		reserved_colour = (0, 0, 255)
 		unknown_colour = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -456,6 +471,8 @@ class VillageBuilder(WorldObject):
 				renderer.addColored(tile._instance, *planned_tent_colour)
 			elif purpose == self.purpose.road:
 				renderer.addColored(tile._instance, *road_colour)
+			elif purpose == self.purpose.village_school:
+				renderer.addColored(tile._instance, *village_school_colour)
 			elif purpose == self.purpose.pavilion:
 				renderer.addColored(tile._instance, *pavilion_colour)
 			elif purpose == self.purpose.reserved:

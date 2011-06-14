@@ -228,6 +228,9 @@ class SettlementManager(WorldObject):
 		elif not self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.count_buildings(BUILDINGS.CLAY_PIT_CLASS):
 			result = self.production_builder.build_brickyard()
 			self.log_generic_build_result(result, call_again, 'brickyard')
+		elif not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
+			result = self.village_builder.build_village_school()
+			self.log_generic_build_result(result, call_again, 'village school')
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 		if not call_again:
