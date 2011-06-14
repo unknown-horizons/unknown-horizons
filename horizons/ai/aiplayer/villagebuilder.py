@@ -333,6 +333,7 @@ class VillageBuilder(WorldObject):
 			builder = Builder.create(BUILDINGS.PAVILION_CLASS, self.land_manager, best_point)
 			self.plan[best_point.to_tuple()] = (self.purpose.pavilion, builder)
 			self.pavilions_to_build = 1
+			self.tents_to_build -= 1
 
 	def _create_tent_queue(self):
 		""" This function takes the plan and orders all planned tents according to
