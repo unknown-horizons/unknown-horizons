@@ -206,11 +206,11 @@ class SettlementManager(WorldObject):
 
 				if all_full:
 					if not production.is_paused():
-						ToggleActive(building, production)(self.owner)
+						ToggleActive(building, production).execute(self.land_manager.session)
 						self.log.info('%s paused a production at %s/%d', self, building.name, building.worldid)
 				else:
 					if production.is_paused():
-						ToggleActive(building, production)(self.owner)
+						ToggleActive(building, production).execute(self.land_manager.session)
 						self.log.info('%s resumed a production at %s/%d', self, building.name, building.worldid)
 
 	def tick(self):
