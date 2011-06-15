@@ -198,7 +198,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-		self.health = HealthComponent(self)
+		self.create_health_component()
 
 	def remove(self):
 		#TODO make it work!!!
@@ -214,6 +214,18 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 
 	def create_route(self):
 		self.route=ShipRoute(self)
+
+	def create_health_component(self):
+		self.health = HealthComponent(self)
+		self.health.add_damage_dealt_listener(self.check_if_alive)
+		self.add_remove_listener(self.remove_health_component)
+
+	def remove_health_component(self):
+		self.health = None
+
+	def check_if_alive(self, caller=None):
+		if self.health.health <= 0:
+			self.remove()
 
 	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
@@ -327,7 +339,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 		# load health component
-		self.health=HealthComponent(self)
+		self.create_health_component()
 		self.health.load(db)
 
 		# if ship did not have route configured, do not add attribute

@@ -18,15 +18,15 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+from horizons.util.changelistener import metaChangeListenerDecorator
 
+@metaChangeListenerDecorator("damage_dealt")
 class HealthComponent(object):
 	"""
 	Class that handles the health component
 	"""
 
 	def __init__(self, instance):
-		self.instance = instance
-		instance.add_remove_listener(self.remove_health_component)
 		id = instance.id
 		db = instance.session.db
 		health = db.cached_query("SELECT max_health FROM health WHERE id = ?", id)[0][0]
@@ -38,14 +38,10 @@ class HealthComponent(object):
 		#scaling factor multiplies the damage taken by the unit
 		scaling_factor = 1
 		self.health -= scaling_factor * damage
-		if self.health <= 0:
-			self.instance.remove()
+		self.on_damage_dealt()
 
 	def save(self, db):
 		db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)", self.instance.worldid, self.health)
 
 	def load(self, db):
 		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", self.instance.worldid)[0][0]
-
-	def remove_health_component(self):
-		self.instance.health = None
