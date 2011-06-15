@@ -193,8 +193,11 @@ class WildAnimal(CollectorAnimal, Collector):
 			provider = self._building_index.get_random_building_in_range(pos)
 			if provider is not None and self.check_possible_job_target(provider):
 				job = self.check_possible_job_target_for(provider, self._required_resource_id)
-				if job is not None and self.check_move(job.object.loading_area):
-					return job
+				if job is not None:
+					path = self.check_move(job.object.loading_area)
+					if path:
+						job.path = path
+						return job
 
 		jobs = JobList(self, JobList.order_by.random)
 		# try all possible jobs

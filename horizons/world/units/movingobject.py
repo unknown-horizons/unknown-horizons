@@ -80,6 +80,7 @@ class MovingObject(ConcretObject):
 	def check_move(self, destination):
 		"""Tries to find a path to destination
 		@param destination: destination supported by pathfinding
+		@return: object that can be used in boolean expressions (the path in case there is one)
 		"""
 		return self.path.calc_path(destination, check_only = True)
 
@@ -109,15 +110,16 @@ class MovingObject(ConcretObject):
 		self._move_action = 'idle'
 
 	def move(self, destination, callback = None, destination_in_building = False, action='move', \
-	         _path_calculated = False, blocked_callback = None):
+	         _path_calculated = False, blocked_callback = None, path = None):
 		"""Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
 		@param action: action as string to use for movement
 		@param _path_calculated: only for internal use
 		@param blocked_callback: a parameter supported by WeakMethodList. Gets called when unit gets blocked.
+		@param path: a precalculated path (return value of FindPath()())
 		"""
-		if not _path_calculated:
+		if not _path_calculated or path:
 			# calculate the path
 			move_possible = self.path.calc_path(destination, destination_in_building)
 
@@ -126,6 +128,9 @@ class MovingObject(ConcretObject):
 
 			if not move_possible:
 				raise MoveNotPossible
+
+		if path:
+			self.path.move_on_path(path)
 
 		self.move_callbacks = WeakMethodList(callback)
 		self.blocked_callbacks = WeakMethodList(blocked_callback)

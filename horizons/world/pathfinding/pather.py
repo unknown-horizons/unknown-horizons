@@ -77,6 +77,19 @@ class AbstractPather(object):
 		@return: bool, true if path is blocked"""
 		return (point in self._get_blocked_coords())
 
+	def _get_position(self):
+		"""Returns current position considering movement status and being in a building"""
+		source = self.unit.position
+		if self.unit.is_moving() and self.path:
+			# we are moving, use next step as source
+			source = Point(*self.path[self.cur])
+		else:
+			# check if we are in a building
+			building = self.session.world.get_building(self.unit.position)
+			if building is not None:
+				source = building
+		return source
+
 	def calc_path(self, destination, destination_in_building = False, check_only = False,
 	              source = None):
 		"""Calculates a path to destination
@@ -85,18 +98,10 @@ class AbstractPather(object):
 		                                this makes the unit "enter the building"
 		@param check_only: if True the path isn't saved
 		@param source: use this as source of movement instead of self.unit.position
-		@return: True iff movement is possible"""
+		@return: True iff movement is possible or the path if check_only==True"""
 		# calculate our source
 		if source is None:
-			source = self.unit.position
-			if self.unit.is_moving() and self.path:
-				# we are moving, use next step as source
-				source = Point(*self.path[self.cur])
-			else:
-				# check if we are in a building
-				building = self.session.world.get_building(self.unit.position)
-				if building is not None:
-					source = building
+			source = self._get_position()
 
 		# call algorithm
 		# to use a different pathfinding code, just change the following line
@@ -109,16 +114,26 @@ class AbstractPather(object):
 
 		if not check_only:
 			# prepare movement
-			self.path = path
-			if self.unit.is_moving():
-				self.cur = 0
-				self.unit.show() # make sure unit is displayed
-			else:
-				self.cur = -1
-			self.source_in_building = hasattr(source, 'is_building') and source.is_building
-			self.destination_in_building = destination_in_building
+			self.move_on_path(path, source, destination_in_building)
+		else:
+			return path
 
 		return True
+
+	def move_on_path(self, path, source = None, destination_in_building = False):
+		"""Start moving on a precalculated path.
+		@param path: return value of FindPath()()
+		"""
+		if source is None:
+			source = self._get_position()
+		self.path = path
+		if self.unit.is_moving():
+			self.cur = 0
+			self.unit.show() # make sure unit is displayed
+		else:
+			self.cur = -1
+		self.source_in_building = hasattr(source, 'is_building') and source.is_building
+		self.destination_in_building = destination_in_building
 
 	def revert_path(self, destination_in_building):
 		"""Moves back to the source of last movement, using same path"""
