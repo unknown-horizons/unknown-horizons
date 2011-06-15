@@ -24,6 +24,7 @@ import horizons.main
 from storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList, NamedObject
 from tradepost import TradePost
+from horizons.constants import BUILDINGS, SETTLER
 
 class Settlement(TradePost, NamedObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
@@ -32,10 +33,10 @@ class Settlement(TradePost, NamedObject):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
-		self.__init(session, owner)
+		self.__init(session, owner, self.make_default_upgrade_permissions())
 		super(Settlement, self).__init__()
 
-	def __init(self, session, owner, tax_setting=1.0):
+	def __init(self, session, owner, upgrade_permissions, tax_setting=1.0):
 		self.session = session
 		self.owner = owner
 		self.tax_setting = tax_setting
@@ -45,9 +46,24 @@ class Settlement(TradePost, NamedObject):
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = {}
 		self.branch_office = None # this is set later in the same tick by the bo itself
+		self.upgrade_permissions = upgrade_permissions
+
+	@classmethod
+	def make_default_upgrade_permissions(cls):
+		upgrade_permissions = {}
+		for level in xrange(SETTLER.CURRENT_MAX_INCR):
+			upgrade_permissions[level] = True
+		upgrade_permissions[SETTLER.CURRENT_MAX_INCR] = False
+		return upgrade_permissions
 
 	def set_tax_setting(self, tax):
 		self.tax_setting = tax
+
+	def set_upgrade_permissions(self, level, allowed):
+		self.upgrade_permissions[level] = allowed
+		for building in self.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+			if building.level == level:
+				building.on_change_upgrade_permissions()
 
 	def _possible_names(self):
 		names = horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1")
@@ -98,6 +114,9 @@ class Settlement(TradePost, NamedObject):
 		for res, amount in self.produced_res.iteritems():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
 			   self.worldid, res, amount)
+		for level, allowed in self.upgrade_permissions.iteritems():
+			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed) VALUES(?, ?, ?)", \
+				self.worldid, level, allowed)
 		self.inventory.save(db, self.worldid)
 
 	@classmethod
@@ -105,7 +124,10 @@ class Settlement(TradePost, NamedObject):
 		self = cls.__new__(cls)
 
 		owner, tax = db("SELECT owner, tax_setting FROM settlement WHERE rowid = ?", worldid)[0]
-		self.__init(session, WorldObject.get_object_by_id(owner), tax)
+		upgrade_permissions = {}
+		for level, allowed in db("SELECT level, upgrading_allowed FROM settlement_level_properties"):
+			upgrade_permissions[level] = allowed
+		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax)
 
 		# load super here cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)

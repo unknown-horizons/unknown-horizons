@@ -28,6 +28,7 @@ from horizons.gui.widgets.productionoverview import ProductionOverview
 
 from horizons.extscheduler import ExtScheduler
 from horizons.util.gui import create_resource_icon
+from horizons.command.uioptions import SetSettlementUpgradePermissions
 
 class MarketPlaceTab(TabInterface):
 	"""Tab for marketplace. Refreshes when one building on the settlement changes"""
@@ -109,7 +110,37 @@ class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
 
 		self._old_most_needed_res_icon = None
 
+	def refresh_buttons(self):
+		buttons = {}
+		buttons[0] = ('sailor', _('Allow sailors to upgrade'), _('Don\'t allow sailors to upgrade'))
+		buttons[1] = ('pioneer', _('Allow pioneers to upgrade'), _('Don\'t allow pioneers to upgrade'))
+
+		for level, (name, inactive_msg, active_msg) in buttons.iteritems():
+			button_name = name + '_upgrades'
+			if self.settlement.upgrade_permissions[level]:
+				self.widget.child_finder(button_name).set_active()
+				self.widget.child_finder(button_name).tooltip = active_msg
+			else:
+				self.widget.child_finder(button_name).set_inactive()
+				self.widget.child_finder(button_name).tooltip = inactive_msg
+
+	def toggle_upgrades(self, level):
+		SetSettlementUpgradePermissions(self.settlement, level, not self.settlement.upgrade_permissions[level]).execute(self.settlement.session)
+		self.refresh_buttons()
+
+	def toggle_sailor_upgrades(self):
+		self.toggle_upgrades(0)
+
+	def toggle_pioneer_upgrades(self):
+		self.toggle_upgrades(1)
+
 	def refresh(self):
+		self.refresh_buttons()
+		self.widget.mapEvents({
+			'sailor_upgrades/mouseClicked' : self.toggle_sailor_upgrades,
+			'pioneer_upgrades/mouseClicked' : self.toggle_pioneer_upgrades
+		})
+
 		happinesses = []
 		needed_res = {}
 		for building in self.settlement.buildings:

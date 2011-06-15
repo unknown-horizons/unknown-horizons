@@ -26,6 +26,11 @@ class SetTaxSetting(GenericCommand):
 	def __init__(self, settlement, new_taxes):
 		super(SetTaxSetting, self).__init__(settlement, 'set_tax_setting', new_taxes)
 
+class SetSettlementUpgradePermissions(GenericCommand):
+	"""Sets the new upgrade permissions for a level in a settlement."""
+	def __init__(self, settlement, level, allowed):
+		super(SetSettlementUpgradePermissions, self).__init__(settlement, 'set_upgrade_permissions', level, allowed)
+
 class AddToBuyList(GenericCommand):
 	"""Adds a Resource to buy_list of TradePost"""
 	def __init__(self, tradepost, res_id, limit):

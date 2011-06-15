@@ -3,11 +3,12 @@
 Tab to be shown at the main square.
 It shows an overview over the inhabitants like average happiness and most needed
 resources.
+Also allows the player to deny upgrade resources to the people.
 -->
 <Container  size="250,350">
 <TabBG amount="4"/>
 
-	<Container position="0,70" size="600,400" >
+	<Container position="0,70" size="600,500" >
 
 		<HBox position="22,7"  min_size="170,20"  size="230,20" >
 		<Spacer min_size="0"  max_size="50" />
@@ -15,7 +16,24 @@ resources.
 		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
-		<Container size="260,550" position="25,43">
+
+		<Container size="260,75" position="25,43">
+			<Label name="upgrades_lbl" position="0,0" text="Allow upgrades:" />
+			<ToggleImageButton name="sailor_upgrades" border_size="0" position="0,20"
+				inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+				up_image="content/gui/icons/templates/production/toggle_active_n.png"
+				down_image="content/gui/icons/templates/production/toggle_active_d.png"
+				hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+				tooltip="Allow sailors to upgrade" />
+			<ToggleImageButton name="pioneer_upgrades" border_size="0" position="64,20"
+				inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+				up_image="content/gui/icons/templates/production/toggle_active_n.png"
+				down_image="content/gui/icons/templates/production/toggle_active_d.png"
+				hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+				tooltip="Allow pioneers to upgrade" />
+		</Container>
+
+		<Container size="260,550" position="25,120">
 
 			<Label name="avg_happiness_lbl" position="0,0" text="Average happiness:" /><Label name="avg_happiness" position="150,0"/>
 

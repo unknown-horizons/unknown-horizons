@@ -23,16 +23,16 @@ import logging
 
 from horizons.scheduler import Scheduler
 
-from horizons.gui.tabs import SettlerOverviewTab
+from horizons.gui.tabs import SettlerOverviewTab, ProductionOverviewTab, InventoryTab
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle
-from horizons.constants import RES, BUILDINGS, GAME
+from horizons.constants import RES, BUILDINGS, GAME, SETTLER
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
 from horizons.util import decorators
 from horizons.world.pathfinding.pather import StaticPather
-from horizons.constants import SETTLER
+from horizons.command.production import ToggleActive
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -48,7 +48,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	production_class = SettlerProduction
 
-	tabs = (SettlerOverviewTab,)
+	tabs = (SettlerOverviewTab, ProductionOverviewTab, InventoryTab)
 
 	default_level_on_build = 0
 
@@ -62,7 +62,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks_of_month())
 
 	def __init(self, happiness = None, loading = False):
-		self.level_max =  SETTLER.CURRENT_MAX_INCR # for now
+		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
 		if happiness is not None:
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data(loading = loading)
@@ -95,15 +95,14 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
-		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level + 1)
-		if not self.has_production_line(upgrade_material_prodline):
+		upgrade_material_production = self._get_upgrade_production()
+		if upgrade_material_production is None:
 			return
 
 		resources = {}
 		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
 			resources[resource] = amount
 
-		upgrade_material_production = self._get_production(upgrade_material_prodline)
 		for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
 			self.inventory.add_resource_slot(res, abs(amount))
 			if res in resources:
@@ -111,6 +110,22 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 		upgrade_material_production.add_production_finished_listener(self.level_up)
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
+
+	def _get_upgrade_production(self):
+		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
+		if self.has_production_line(upgrade_material_prodline):
+			return self._get_production(upgrade_material_prodline)
+		return None
+
+	@property
+	def upgrade_allowed(self):
+		return self.session.world.get_settlement(self.position.origin).upgrade_permissions[self.level]
+
+	def on_change_upgrade_permissions(self):
+		production = self._get_upgrade_production()
+		if production is not None:
+			if production.is_paused() == self.upgrade_allowed:
+				ToggleActive(self, production).execute(self.session, True)
 
 	@property
 	def happiness(self):
@@ -202,7 +217,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
 			 self.level < self.level_max:
 			# add a production line that gets the necessary upgrade material.
-			# when the production finished, it calls level_up as callback.
+			# when the production finishes, it calls upgrade_materials_collected.
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
@@ -213,14 +228,16 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 				self.inventory.add_resource_slot(res, abs(amount))
 			self.add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
+			if not self.upgrade_allowed:
+				ToggleActive(self, upgrade_material_production).execute(self.session, True)
 		elif self.happiness < self.__get_data("happiness_level_down_limit"):
 			self.level_down()
 			self._changed()
 
-	def level_up(self, production=None):
-		# NOTE: production, is unused, but get's passed by the production code
+	def level_up(self, production = None):
+		# NOTE: production is unused, but gets passed by the production code
 		self.level += 1
-		self.log.debug("%s: Leveling up to %s", self, self.level)
+		self.log.debug("%s: Levelling up to %s", self, self.level)
 		self._update_level_data()
 		# notify owner about new level
 		self.owner.notify_settler_reached_level(self)
