@@ -112,7 +112,8 @@ class WeaponHolder(object):
 		if self._target is None:
 			return
 
-		print self._target,'has health:',self._target.health
+		print self._target,'has health:',self._target.health.health
+		print self._target.health.max_health
 
 		if self.is_moving:
 			self.stop()

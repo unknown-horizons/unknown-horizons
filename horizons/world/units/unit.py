@@ -82,6 +82,11 @@ class Unit(AmbientSound, MovingObject):
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
+		#NOTE added if statement only for units that have HealthComponent
+		if not hasattr(self.health, 'max_health'):
+			return
+		health = self.health.health
+		max_health = self.health.max_health
 		renderer = self.session.view.renderer['GenericRenderer']
 		renderer.removeAll("health_" + str(self.worldid))
 		zoom = self.session.view.get_zoom()
@@ -89,15 +94,15 @@ class Unit(AmbientSound, MovingObject):
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
 		mid_node_up = fife.GenericRendererNode(self._instance, \
-									fife.Point(-width/2+int(((self.health/self.max_health)*width)),\
+									fife.Point(-width/2+int(((health/max_health)*width)),\
 		                                       y_pos-height)
 		                            )
 		mid_node_down = fife.GenericRendererNode(self._instance, \
 		                                         fife.Point(
-		                                             -width/2+int(((self.health/self.max_health)*width))
+		                                             -width/2+int(((health/max_health)*width))
 		                                             ,y_pos)
 		                                         )
-		if self.health != 0:
+		if health != 0:
 			renderer.addQuad("health_" + str(self.worldid), \
 			                fife.GenericRendererNode(self._instance, \
 			                                         fife.Point(-width/2, y_pos-height)), \
@@ -105,7 +110,7 @@ class Unit(AmbientSound, MovingObject):
 			                mid_node_down, \
 			                fife.GenericRendererNode(self._instance, fife.Point(-width/2, y_pos)), \
 			                0, 255, 0)
-		if self.health != self.max_health:
+		if health != max_health:
 			renderer.addQuad("health_" + str(self.worldid), mid_node_up, \
 			                 fife.GenericRendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
 			                 fife.GenericRendererNode(self._instance, fife.Point(width/2, y_pos)), \
@@ -122,11 +127,13 @@ class Unit(AmbientSound, MovingObject):
 
 	def save(self, db):
 		super(Unit, self).save(db)
+		#NOTE dummy health until self.health obsoleted
+		dummy_health = 100.0
 
 		owner_id = 0 if self.owner is None else self.owner.worldid
 		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
 			self.worldid, self.__class__.id, self.position.x, self.position.y, \
-					self.health, owner_id)
+					dummy_health, owner_id)
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)

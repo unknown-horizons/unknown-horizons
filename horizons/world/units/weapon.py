@@ -81,11 +81,9 @@ class Weapon(object):
 
 		for unit in units:
 			print 'dealing damage to ship:', unit
-			#TODO call deal damage from unit code, remove from unit code
-			unit.health -= self.get_damage_modifier()
-			print unit.id
-			if unit.health <= 0:
-				unit.remove()
+			#TODO remove the if when health attribute will only be HealthComponent
+			if hasattr(unit.health, 'deal_damage'):
+				unit.health.deal_damage(self.weapon_id, self.get_damage_modifier())
 
 	def make_attack_ready(self):
 		self.attack_ready = True

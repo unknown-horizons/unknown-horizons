@@ -38,6 +38,7 @@ from unit import Unit
 from horizons.command.uioptions import TransferResource
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED, WEAPONS
+from horizons.world.units.healthcomponent import HealthComponent
 
 class ShipRoute(object):
 	"""
@@ -197,6 +198,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+		self.health = HealthComponent(self)
 
 	def remove(self):
 		#TODO make it work!!!
@@ -312,6 +314,8 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 
 	def save(self, db):
 		super(Ship, self).save(db)
+		# save health component
+		self.health.save(db)
 		if hasattr(self, 'route'):
 			self.route.save(db)
 
@@ -321,6 +325,10 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		# register ship in world
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+
+		# load health component
+		self.health=HealthComponent(self)
+		self.health.load(db)
 
 		# if ship did not have route configured, do not add attribute
 		if len(db("SELECT * FROM ship_route WHERE ship_id = ?", self.worldid)) is 0:
