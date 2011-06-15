@@ -130,7 +130,7 @@ class MovingObject(ConcretObject):
 				raise MoveNotPossible
 
 		if path:
-			self.path.move_on_path(path)
+			self.path.move_on_path(path, destination_in_building=destination_in_building)
 
 		self.move_callbacks = WeakMethodList(callback)
 		self.blocked_callbacks = WeakMethodList(blocked_callback)

@@ -145,7 +145,7 @@ class Unit(AmbientSound, MovingObject):
 		"""Returns a random location in walking_range, that we can find a path to
 		Does not check every point, only a few samples are tried.
 		@param in_range: int, max distance to returned point from current position
-		@return: Instance of Point or None"""
+		@return: tuple(Instance of Point or None, path or None)"""
 		range_squared = in_range * in_range
 		randint = self.session.random.randint
 		# pick a sample, try tries times
@@ -166,9 +166,10 @@ class Unit(AmbientSound, MovingObject):
 				x_diff = -x_diff
 			# check this target
 			possible_target = Point(self.position.x + x_diff, self.position.y + y_diff)
-			if self.check_move(possible_target):
-				return possible_target
-		return None
+			path = self.check_move(possible_target)
+			if path:
+				return (possible_target, path)
+		return (None, None)
 
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
