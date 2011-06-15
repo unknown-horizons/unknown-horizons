@@ -82,18 +82,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		    db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
 		remaining_ticks = \
 		    db("SELECT ticks from remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
-
 		self.__init(loading = True)
-
-		# add the upgrade material slots
-		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level + 1)
-		if self.has_production_line(upgrade_material_prodline):
-			upgrade_material_production = self._get_production(upgrade_material_prodline)
-			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
-				self.inventory.add_resource_slot(res, abs(amount))
-			upgrade_material_production.add_production_finished_listener(self.level_up)
-			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
-
+		self._load_upgrade_data(db)
 		self.owner.notify_settler_reached_level(self)
 		self.run(remaining_ticks)
 
@@ -102,6 +92,25 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			return SingleUseProduction.load(db, worldid)
 		else:
 			return super(Settler, self).load_production(db, worldid)
+
+	def _load_upgrade_data(self, db):
+		"""Load the upgrade production and relevant stored resources"""
+		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level + 1)
+		if not self.has_production_line(upgrade_material_prodline):
+			return
+
+		resources = {}
+		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
+			resources[resource] = amount
+
+		upgrade_material_production = self._get_production(upgrade_material_prodline)
+		for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
+			self.inventory.add_resource_slot(res, abs(amount))
+			if res in resources:
+				self.inventory.alter(res, resources[res])
+
+		upgrade_material_production.add_production_finished_listener(self.level_up)
+		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 
 	@property
 	def happiness(self):
