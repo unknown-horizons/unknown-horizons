@@ -98,6 +98,10 @@ class SavegameAccessor(DbReader):
 		ownerid = int(ownerid)
 		return [] if ownerid not in self._production_ids else self._production_ids[ownerid]
 
+	def get_production_line_id(self, production_worldid):
+		"""Returns the prod_line_id of the given production"""
+		return self._production[int(production_worldid)][2]
+
 
 	def _load_storage(self):
 		self._storage = {}

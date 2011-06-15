@@ -61,11 +61,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks_of_month())
 
-	def __init(self, happiness = None):
+	def __init(self, happiness = None, loading = False):
 		self.level_max =  SETTLER.CURRENT_MAX_INCR # for now
 		if happiness is not None:
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
-		self._update_level_data()
+		self._update_level_data(loading = loading)
 		self.last_tax_payed = 0
 
 	def save(self, db):
@@ -83,9 +83,25 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		remaining_ticks = \
 		    db("SELECT ticks from remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 
-		self.__init()
+		self.__init(loading = True)
+
+		# add the upgrade material slots
+		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level + 1)
+		if self.has_production_line(upgrade_material_prodline):
+			upgrade_material_production = self._get_production(upgrade_material_prodline)
+			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
+				self.inventory.add_resource_slot(res, abs(amount))
+			upgrade_material_production.add_production_finished_listener(self.level_up)
+			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
+
 		self.owner.notify_settler_reached_level(self)
 		self.run(remaining_ticks)
+
+	def load_production(self, db, worldid):
+		if db.get_production_line_id(worldid) == self.session.db.get_settler_upgrade_material_prodline(self.level + 1):
+			return SingleUseProduction.load(db, worldid)
+		else:
+			return super(Settler, self).load_production(db, worldid)
 
 	@property
 	def happiness(self):
@@ -97,8 +113,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		house_name = self.session.db.get_settler_house_name(self.level)
 		return (_(level_name)+' '+_(house_name)).title()
 
-	def _update_level_data(self):
-		"""Updates all settler-related data because of a level change"""
+	def _update_level_data(self, loading = False):
+		"""Updates all settler-related data because of a level change or because of loading"""
 		# taxes, inhabitants
 		self.tax_base = self.session.db.get_settler_tax_income(self.level)
 		self.inhabitants_max = self.session.db.get_settler_inhabitants_max(self.level)
@@ -108,17 +124,18 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# consumption:
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
-		current_lines = self.get_production_lines()
-		for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
-			if not self.has_production_line(prod_line):
-				self.add_production_by_id(prod_line)
-			# cross out the new lines from the current lines, so only the old ones remain
-			if prod_line in current_lines:
-				current_lines.remove(prod_line)
-		for line in current_lines[:]: # iterate over copy for safe removal
-			# all lines, that were added here but are not used due to the current level
-			# NOTE: this contains the upgrade material production line
-			self.remove_production_by_id(line)
+		if not loading:
+			current_lines = self.get_production_lines()
+			for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
+				if not self.has_production_line(prod_line):
+					self.add_production_by_id(prod_line)
+				# cross out the new lines from the current lines, so only the old ones remain
+				if prod_line in current_lines:
+					current_lines.remove(prod_line)
+			for line in current_lines[:]: # iterate over copy for safe removal
+				# all lines, that were added here but are not used due to the current level
+				# NOTE: this contains the upgrade material production line
+				self.remove_production_by_id(line)
 		# update instance graphics
 		self.update_action_set_level(self.level)
 
