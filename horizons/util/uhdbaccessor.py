@@ -240,3 +240,10 @@ class UhDbAccessor(DbReader):
 	def get_storage_building_capacity(self, storage_type):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
+
+
+	# Weapon table
+
+	def get_weapon_stackable(self, weapon_id):
+		"""Returns True if the weapon is stackable, False otherwise."""
+		return self.cached_query("SELECT stackable FROM weapon WHERE id = ?", weapon_id)[0][0]

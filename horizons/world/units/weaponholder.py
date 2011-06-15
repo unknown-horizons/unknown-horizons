@@ -57,9 +57,9 @@ class WeaponHolder(object):
 		@param weapon_id : id of the weapon to be added
 		"""
 		#if weapon is stackable, try to stack
-		if weapon_id in WEAPONS.STACKABLE:
-			stackable = [w for w in self._weapon_storage if w.weapon_id == WEAPONS.CANNON]
-			#try to increase the number of weapons for one cannon
+		if self.session.db.get_weapon_stackable(weapon_id):
+			stackable = [w for w in self._weapon_storage if self.session.db.get_weapon_stackable(weapon_id)]
+			#try to increase the number of weapons for one stackable weapon
 			increased = False
 			for weapon in stackable:
 				try:
@@ -86,7 +86,7 @@ class WeaponHolder(object):
 		#remove last weapon added
 		weapon = weapons[-1]
 		#if cannon needs to be removed try decrease number
-		if weapon.weapon_id in WEAPONS.STACKABLE:
+		if self.session.db.get_weapon_stackable(weapon_id):
 			try:
 				weapon.decrease_number_of_weapons(1)
 			except SetStackableWeaponNumberError:

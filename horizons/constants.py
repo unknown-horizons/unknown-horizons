@@ -80,8 +80,6 @@ class UNITS:
 class WEAPONS:
 	CANNON = 26
 	DAGGER = 27
-	#list of stackable weapons
-	STACKABLE = [26]
 
 class BUILDINGS:
 	# ./development/print_db_data.py building

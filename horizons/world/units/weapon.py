@@ -132,7 +132,6 @@ class StackableWeapon(Weapon):
 	A generic Weapon that can have a number of weapons binded per instance
 	It deals the number of weapons times weapon's default damage
 	This is used for cannons, reducing the number of instances and bullets fired
-	To make a weapon stackable you need to add the id to WEAPONS.STACKABLE in constants.py
 	"""
 	def __init__(self, session, id):
 		super(StackableWeapon, self).__init__(session, id)
