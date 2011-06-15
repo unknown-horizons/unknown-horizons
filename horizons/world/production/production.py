@@ -111,8 +111,8 @@ class Production(WorldObject):
 
 		db_data = db.get_production_row(worldid)
 		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], \
-								PRODUCTION.STATES[db_data[0]], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]],
-								db_data[5], db_data[6], db_data[7], db_data[8])
+			PRODUCTION.STATES[db_data[0]], db_data[5], db_data[6], db_data[7], db_data[8], \
+			None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
 		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION.STATES.producing:
