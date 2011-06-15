@@ -26,9 +26,7 @@ class HealthComponent(object):
 	Class that handles the health component
 	"""
 
-	def __init__(self, instance):
-		id = instance.id
-		db = instance.session.db
+	def __init__(self, db, id):
 		health = db.cached_query("SELECT max_health FROM health WHERE id = ?", id)[0][0]
 		self.health = float(health)
 		self.max_health = float(health)

@@ -217,7 +217,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		self.route=ShipRoute(self)
 
 	def create_health_component(self):
-		self.health = HealthComponent(self)
+		self.health = HealthComponent(self.session.db, self.id)
 		self.health.add_damage_dealt_listener(self.check_if_alive)
 
 	def check_if_alive(self, caller=None):
