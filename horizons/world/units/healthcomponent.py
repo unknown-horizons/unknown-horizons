@@ -40,8 +40,8 @@ class HealthComponent(object):
 		self.health -= scaling_factor * damage
 		self.on_damage_dealt()
 
-	def save(self, db):
-		db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)", self.instance.worldid, self.health)
+	def save(self, db, worldid):
+		db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)", worldid, self.health)
 
-	def load(self, db):
-		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", self.instance.worldid)[0][0]
+	def load(self, db, worldid):
+		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", worldid)[0][0]

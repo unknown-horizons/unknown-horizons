@@ -207,6 +207,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 			self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
+		self.health = None
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
@@ -218,10 +219,6 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	def create_health_component(self):
 		self.health = HealthComponent(self)
 		self.health.add_damage_dealt_listener(self.check_if_alive)
-		self.add_remove_listener(self.remove_health_component)
-
-	def remove_health_component(self):
-		self.health = None
 
 	def check_if_alive(self, caller=None):
 		if self.health.health <= 0:
@@ -327,7 +324,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	def save(self, db):
 		super(Ship, self).save(db)
 		# save health component
-		self.health.save(db)
+		self.health.save(db, self.worldid)
 		if hasattr(self, 'route'):
 			self.route.save(db)
 
@@ -340,7 +337,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 
 		# load health component
 		self.create_health_component()
-		self.health.load(db)
+		self.health.load(db, self.worldid)
 
 		# if ship did not have route configured, do not add attribute
 		if len(db("SELECT * FROM ship_route WHERE ship_id = ?", self.worldid)) is 0:
