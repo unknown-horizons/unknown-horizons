@@ -103,17 +103,44 @@ class WeaponHolder(object):
 				return True
 		return False
 
+	def get_ticks_until_next_attack(self):
+		"""returns minimum number of ticks until a weapon that can hit the target can be fired again"""
+		distance = self.position.distance(self._target.position)
+		return min([w.remaining_ticks for w in self._weapon_storage if w.check_target_in_range(distance)])
+
 	def try_attack_target(self):
 		if self._target is None:
 			return
 
 		print self._target,'has health:',self._target.health
 
-		dest = self._target.position.center()
+		if self.is_moving:
+			self.stop()
 
-		self.fire_all_weapons(dest)
-		#try another attack in 2 ticks
-		Scheduler().add_new_object(self.try_attack_target, self, 2)
+		dest = self._target.position.center()
+		in_range = False
+		distance = self.position.distance(dest)
+
+		if distance >= self._min_range and distance <= self._max_range:
+			self.fire_all_weapons(dest)
+			in_range = True
+
+		if not in_range:
+			if self.movable:
+				try:
+					self.move(Annulus(dest, self._min_range, self._max_range), Callback(self.fire_all_weapons, dest),
+						blocked_callback = Callback(self.fire_all_weapons, dest))
+				except MoveNotPossible:
+					pass
+
+		if in_range:
+			#if tried to fire weapons get the next amount of ticks until another weapon can be fired again
+			ticks = self.get_ticks_until_next_attack()
+		else:
+			#else wait 10 ticks and try to fire again
+			ticks = 10
+
+		Scheduler().add_new_object(self.try_attack_target, self, ticks)
 
 	def attack(self, target):
 		"""
@@ -162,23 +189,9 @@ class WeaponHolder(object):
 
 	def fire_all_weapons(self, dest):
 		#fires all weapons at a given position
-		if self.is_moving:
-			self.stop()
-		in_range = False
 		distance = self.position.distance(dest)
-		if distance >= self._min_range and distance <= self._max_range:
-			for weapon in self._weapon_storage:
-				weapon.fire(dest, distance)
-			in_range = True
-			print 'firing from', self
-
-		if not in_range:
-			if self.movable:
-				try:
-					self.move(Annulus(dest, self._min_range, self._max_range), Callback(self.fire_all_weapons, dest),
-						blocked_callback = Callback(self.fire_all_weapons, dest))
-				except MoveNotPossible:
-					pass
+		for weapon in self._weapon_storage:
+			weapon.fire(dest, distance)
 
 	def save(self, db):
 		super(WeaponHolder, self).save(db)

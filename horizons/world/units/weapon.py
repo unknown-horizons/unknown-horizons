@@ -34,6 +34,9 @@ class Weapon(object):
 		cooldown_time - number of seconds until the attack is ready again
 		attack_speed - speed that calculates the time until attack reaches target
 		attack_radius - radius affected by attack
+
+	remaining_ticks attribute is updated with the ramaining ticks until the attack is ready again
+		it is 0 if the attack is ready
 	"""
 	def __init__(self, session, id):
 		"""
@@ -54,6 +57,7 @@ class Weapon(object):
 		self.attack_speed = data[6]
 		self.attack_radius = data[7]
 		self.attack_ready = True
+		self.remaining_ticks = 0
 		self.session = session
 
 	def get_damage_modifier(self):
@@ -92,15 +96,20 @@ class Weapon(object):
 		@param position : position where weapon will be fired
 		@param distance : distance between weapon and target
 		"""
+		#update remaining ticks
+		#if the attack isn't ready check the remaining ticks
+		#else the attack is ready and the remaining ticks are 0
+
+		if not self.attack_ready:
+			print 'attack not ready!'
+			self.remaining_ticks = Scheduler().get_remaining_ticks(self, self.make_attack_ready)
+			return
+		else:
+			self.remaining_ticks = 0
 
 		if not self.check_target_in_range(distance):
 			return
 
-		if not self.attack_ready:
-			print 'attack not ready!'
-			return
-
-		print 'firing weapon at position', position
 		#calculate the ticks until impact
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
 		#deal damage when attack reaches target
@@ -109,6 +118,9 @@ class Weapon(object):
 		#calculate the ticks until attack is ready again
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
 		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
+
+		#if weapon was fired update remaining ticks
+		self.remaining_ticks = ticks
 		self.attack_ready = False
 
 	def check_target_in_range(self, distance):
