@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
+import math
 import logging
+from fife import fife
 
 import horizons.main
 
@@ -142,18 +143,37 @@ class Unit(AmbientSound, MovingObject):
 
 	def get_random_location(self, in_range):
 		"""Returns a random location in walking_range, that we can find a path to
+		Does not check every point, only a few samples are tried.
 		@param in_range: int, max distance to returned point from current position
 		@return: Instance of Point or None"""
-		possible_walk_targets = Circle(self.position, in_range).get_coordinates()
-		possible_walk_targets.remove(self.position.to_tuple())
-		self.session.random.shuffle(possible_walk_targets)
-		for coord in possible_walk_targets:
-			target = Point(*coord)
-			if self.check_move(target):
-				return target
+		range_squared = in_range * in_range
+		randint = self.session.random.randint
+		# pick a sample, try tries times
+		tries = int(range_squared / 2)
+		for i in xrange(tries):
+			# choose x-difference, then y-difference so that the distance is in the range.
+			x_diff = randint(1, in_range) # always go at least 1 field
+			y_max_diff = int( math.sqrt(range_squared - x_diff*x_diff) )
+			y_diff = randint(0, y_max_diff)
+			# use randomness of x/y_diff below, randint calls are expensive
+			# this results in a higher chance for x > y than y < x, so equalize
+			if (x_diff + y_diff) % 2 == 0:
+				x_diff, y_diff = y_diff, x_diff
+			# direction
+			if x_diff % 2 == 0:
+				y_diff = -y_diff
+			if y_diff % 2 == 0:
+				x_diff = -x_diff
+			# check this target
+			possible_target = Point(self.position.x + x_diff, self.position.y + y_diff)
+			if self.check_move(possible_target):
+				return possible_target
 		return None
 
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
 																		 self.worldid)
+
+
+decorators.bind_all(Unit)
