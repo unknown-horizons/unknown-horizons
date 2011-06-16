@@ -60,10 +60,11 @@ class Settlement(TradePost, NamedObject):
 		self.tax_setting = tax
 
 	def set_upgrade_permissions(self, level, allowed):
-		self.upgrade_permissions[level] = allowed
-		for building in self.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
-			if building.level == level:
-				building.on_change_upgrade_permissions()
+		if self.upgrade_permissions[level] != allowed:
+			self.upgrade_permissions[level] = allowed
+			for building in self.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+				if building.level == level:
+					building.on_change_upgrade_permissions()
 
 	def _possible_names(self):
 		names = horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1")
