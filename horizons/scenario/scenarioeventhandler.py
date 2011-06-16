@@ -23,11 +23,6 @@ import yaml
 import copy
 import pickle
 
-try:
-	from yaml import CLoader as Loader
-except ImportError:
-	from yaml import Loader
-
 import horizons.main
 
 from horizons.ext.enum import Enum
@@ -36,6 +31,8 @@ from horizons.scheduler import Scheduler
 from horizons.util import Callback, LivingObject, decorators
 
 from horizons.scenario.conditions import CONDITIONS, _scheduled_checked_conditions
+
+from horizons.savegamemanager import YamlCache
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
@@ -188,17 +185,7 @@ class ScenarioEventHandler(LivingObject):
 	"""
 	@classmethod
 	def _parse_yaml_file(cls, filename):
-		# calc the hash
-		f = open(filename, 'r')
-		h = hash(f.read())
-		f.seek(0)
-		# check for updates or new files
-		if (filename in cls._yaml_file_cache and \
-			cls._yaml_file_cache[filename][0] != h) or \
-		   (not filename in cls._yaml_file_cache):
-			cls._yaml_file_cache[filename] = (h, cls._parse_yaml( f ) )
-
-		return cls._yaml_file_cache[filename][1]
+		return YamlCache.get_file(filename)
 
 	def _apply_data(self, data):
 		"""Apply data to self loaded via yaml.load
