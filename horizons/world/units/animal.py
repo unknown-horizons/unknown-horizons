@@ -199,6 +199,13 @@ class WildAnimal(CollectorAnimal, Collector):
 						job.path = path
 						return job
 
+		# NOTE: only use random job for now, see how it's working it
+		# it speeds up animal.search_job by a third (0.00321 -> 0.00231)
+		# and animal.get_job by 3/4 (0.00231 -> 0.00061)
+		return None
+
+
+
 		jobs = JobList(self, JobList.order_by.random)
 		# try all possible jobs
 		for provider in self.home_island.get_building_index(self._required_resource_id).get_buildings_in_range(pos):

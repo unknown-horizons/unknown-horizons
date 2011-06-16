@@ -274,7 +274,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					   Tree.check_build(self.session, tile, check_settlement=False):
 						building = Build(Tree, coords[0], coords[1], ownerless=True,island=island)(issuer=None)
 						building.finish_production_now() # make trees big and fill their inventory
-						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
+						if self.session.random.randint(0, 10) == 0: # add animal to every nth tree
 							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
 					elif num_clay_deposits < max_clay_deposits and \
 					     self.session.random.randint(0, 40) == 0 and \
