@@ -23,6 +23,7 @@
 import os
 import shutil
 import tempfile
+from functools import wraps
 
 import horizons.main
 import horizons.world	# needs to be imported before session
@@ -40,12 +41,15 @@ from horizons.util import (Color, DbReader, Rect, WorldObject, NamedObject, Livi
 from horizons.world import World
 
 
+db = None
+
 def setup_package():
 	"""
 	Setup read-only database. This might have to change in the future, tests should not
 	fail only because a production now takes 1 second more in the game.
 	"""
-	horizons.main.db = horizons.main._create_db()
+	global db
+	db = horizons.main._create_db()
 
 
 def create_map():
@@ -187,3 +191,24 @@ def new_settlement(session, pos=Point(20, 20)):
 	assert building, "Could not build branch office at %s" % pos
 
 	return (player.settlements[0], island)
+
+
+def game_test(func):
+	"""
+	Decorator that is needed for each test in this package. setup/teardown of function
+	based tests can't pass arguments to the test, or keep a reference somewhere.
+	If a test fails, we need to reset the session under all circumstances, otherwise we
+	break the rest of the tests. The global database reference has to be set each time too,
+	unittests use this too, and we can't predict the order tests run (we should not rely
+	on it anyway).
+	"""
+	@wraps(func)
+	def wrapped():
+		horizons.main.db = db
+		s, p = new_session()
+		try:
+			return func(s, p)
+		finally:
+			s.end()
+	return wrapped
+game_test.__test__ = False

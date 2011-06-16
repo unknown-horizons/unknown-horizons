@@ -23,17 +23,17 @@
 from horizons.command.building import Build
 from horizons.constants import RES
 
-from tests.game import new_session, new_settlement
+from tests.game import new_settlement, game_test
 
 
-def test_example():
+@game_test
+def test_example(s, p):
 	"""
 	Build a farm and 2 pastures. Confirm raw wool is produced at the
 	pastures and used by the farm to produce wool.
 	"""
 	PASTURE, FARM = 18, 20
 
-	s, p = new_session()
 	settlement, island = new_settlement(s)
 	settlement.inventory.alter(RES.GOLD_ID, 5000)
 	settlement.inventory.alter(4, 50)
@@ -71,6 +71,4 @@ def test_example():
 	production.pause(pause=False)
 	s.run(seconds=1)
 	assert farm.inventory[10]
-
-	s.end()
 
