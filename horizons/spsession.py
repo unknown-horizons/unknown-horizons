@@ -42,8 +42,8 @@ class SPSession(Session):
 	def create_manager(self):
 		return SPManager(self)
 
-	def create_rng(self):
-		return random.Random()
+	def create_rng(self, seed=None):
+		return random.Random(seed)
 
 	def create_timer(self):
 		return Timer(freeze_protection=True)
