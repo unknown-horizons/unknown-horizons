@@ -56,9 +56,6 @@ def setup_package():
 		for (table_name, ) in db("SELECT name FROM %s.sqlite_master WHERE type = 'table'" % database):
 			db('DELETE FROM %s' % table_name)
 
-	# Some code is still accessing the global database reference.
-	horizons.main.db = db
-
 
 def teardown_package():
 	"""
@@ -74,6 +71,9 @@ class TestCase(unittest.TestCase):
 	way, the database will remain unmodified for each new test.
 	"""
 	def setUp(self):
+		# Some code is still accessing the global database reference.
+		horizons.main.db = db
+
 		self.db = db
 		self.db('BEGIN TRANSACTION')
 

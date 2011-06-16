@@ -84,10 +84,10 @@ class TestProductionLineData(TestBase):
 
 class TestProductionLine(TestBase):
 
-	def tearDown(self):
+	def setUp(self):
 		"""Clear ProductionLine cache."""
 		ProductionLine.reset()
-		super(TestProductionLine, self).tearDown()
+		super(TestProductionLine, self).setUp()
 
 	def test_init_unknown_identifier(self):
 		self.assertRaises(IndexError, ProductionLine, 1)
