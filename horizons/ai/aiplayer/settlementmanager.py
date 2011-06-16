@@ -30,9 +30,10 @@ from productionbuilder import ProductionBuilder
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
-from horizons.command.uioptions import SetTaxSetting
+from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.command.production import ToggleActive
 from horizons.constants import BUILDINGS, RES, PRODUCTION, GAME_SPEED
+from horizons.entities import Entities
 
 class SettlementManager(WorldObject):
 	"""
@@ -65,8 +66,7 @@ class SettlementManager(WorldObject):
 		self.build_queue.append(self.buildCallType.production_lumberjack)
 		self.build_queue.append(self.buildCallType.village_main_square)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
-		SetTaxSetting(self.land_manager.settlement, 0.5).execute(self.land_manager.session)
-		self.log.info('%s set tax rate to 0.5', self)
+		self.set_taxes_and_permissions(0.5, False, False)
 
 	def __init(self, land_manager, branch_office):
 		self.owner = land_manager.owner
@@ -132,6 +132,13 @@ class SettlementManager(WorldObject):
 		self.num_fishers = self.production_builder.count_fishers()
 		self.num_potato_fields = self.production_builder.count_potato_fields()
 		self.village_built = self.tents == self.village_builder.tents_to_build
+
+	def set_taxes_and_permissions(self, taxes, sailors_can_upgrade, pioneers_can_upgrade):
+		self.log.info('%s tax %.1f, upgrade permissions %s, %s', self, taxes, \
+			'A' if sailors_can_upgrade else 'B', 'A' if pioneers_can_upgrade else 'B')
+		SetTaxSetting(self.land_manager.settlement, taxes).execute(self.land_manager.session)
+		SetSettlementUpgradePermissions(self.land_manager.settlement, 0, sailors_can_upgrade).execute(self.land_manager.session)
+		SetSettlementUpgradePermissions(self.land_manager.settlement, 1, pioneers_can_upgrade).execute(self.land_manager.session)
 
 	def can_provide_resources(self):
 		return self.village_built
@@ -213,6 +220,29 @@ class SettlementManager(WorldObject):
 						ToggleActive(building, production).execute(self.land_manager.session)
 						self.log.info('%s resumed a production at %s/%d', self, building.name, building.worldid)
 
+	def manual_upgrade(self, level, limit):
+		"""Enables upgrading residence buildings on the specified level until at least limit of them are upgrading."""
+		num_upgrading = 0
+		for building in self.land_manager.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+			if building.level == level:
+				upgrade_production = building._get_upgrade_production()
+				if upgrade_production is not None and not upgrade_production.is_paused():
+					num_upgrading += 1
+					if num_upgrading >= limit:
+						return False
+
+		upgraded_any = False
+		for building in self.land_manager.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+			if building.level == level:
+				upgrade_production = building._get_upgrade_production()
+				if upgrade_production is not None and upgrade_production.is_paused():
+					ToggleActive(building, upgrade_production).execute(self.land_manager.session)
+					num_upgrading += 1
+					upgraded_any = True
+					if num_upgrading >= limit:
+						return True
+		return upgraded_any
+
 	def tick(self):
 		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID)[0], \
 			self.get_resident_resource_usage(RES.FOOD_ID))
@@ -255,6 +285,19 @@ class SettlementManager(WorldObject):
 		elif not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			result = self.village_builder.build_village_school()
 			self.log_generic_build_result(result, call_again, 'village school')
+			if result == BUILD_RESULT.OK:
+				self.set_taxes_and_permissions(0.5, True, True)
+
+		if self.land_manager.owner.settler_level == 0:
+			# if we are on level 0 and there is a house that can be upgraded then do it.
+			if self.manual_upgrade(0, 1):
+				self.set_taxes_and_permissions(0.9, False, False)
+		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
+			# if we just need the school then upgrade sailors manually
+			free_boards = self.land_manager.settlement.inventory[RES.BOARDS_ID]
+			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS].costs[RES.BOARDS_ID]
+			if free_boards > 0:
+				self.manual_upgrade(0, free_boards)
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 		if not call_again:
