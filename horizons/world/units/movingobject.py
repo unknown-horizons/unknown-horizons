@@ -119,7 +119,7 @@ class MovingObject(ConcretObject):
 		@param blocked_callback: a parameter supported by WeakMethodList. Gets called when unit gets blocked.
 		@param path: a precalculated path (return value of FindPath()())
 		"""
-		if not _path_calculated or path:
+		if not _path_calculated and not path:
 			# calculate the path
 			move_possible = self.path.calc_path(destination, destination_in_building)
 
