@@ -23,7 +23,7 @@ import logging
 
 from collections import deque
 
-from constants import BUILD_RESULT
+from constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
 
@@ -58,7 +58,7 @@ class SettlementManager(WorldObject):
 
 		self.tents = 0
 		self.num_fishers = 0
-		self.num_potato_fields = 0
+		self.num_fields = {PRODUCTION_PURPOSE.POTATO_FIELD: 0, PRODUCTION_PURPOSE.PASTURE: 0}
 		self.village_built = False
 
 		self.build_queue.append(self.buildCallType.village_roads)
@@ -130,7 +130,7 @@ class SettlementManager(WorldObject):
 		# TODO: correctly init the following
 		self.tents = self.village_builder.count_tents()
 		self.num_fishers = self.production_builder.count_fishers()
-		self.num_potato_fields = self.production_builder.count_potato_fields()
+		self.num_fields = self.production_builder.count_fields()
 		self.village_built = self.tents == self.village_builder.tents_to_build
 
 	def set_taxes_and_permissions(self, taxes, sailors_can_upgrade, pioneers_can_upgrade):
@@ -143,15 +143,26 @@ class SettlementManager(WorldObject):
 	def can_provide_resources(self):
 		return self.village_built
 
-	def enough_food_producers(self):
+	def enough_resource_producers(self, produced_resource, consumed_resource):
 		"""Returns false if and only if we are producing less than we should and we have a place to store it."""
-		have = self.get_resource_production(RES.FOOD_ID)[0]
-		need = self.get_resident_resource_usage(RES.FOOD_ID) * 1.02 + 0.001
+		have = self.get_resource_production(produced_resource)[0]
+		need = self.get_resident_resource_usage(consumed_resource) * 1.02 + 0.001
 		if have >= need:
 			return True
-		storage_size = self.land_manager.settlement.inventory.get_limit(RES.FOOD_ID)
-		storage_used = self.land_manager.settlement.inventory[RES.FOOD_ID]
+		storage_size = self.land_manager.settlement.inventory.get_limit(produced_resource)
+		storage_used = self.land_manager.settlement.inventory[produced_resource]
 		return storage_used >= storage_size * 0.7 + 4
+
+	def need_weavers(self):
+		# TODO: do this the right way...
+		weaver_time = 12.0
+		pasture_time = 30.0
+		return self.count_buildings(BUILDINGS.PASTURE_CLASS) / pasture_time > self.count_buildings(BUILDINGS.WEAVER_CLASS) / weaver_time + 1e-9
+
+	def enough_textile_producers(self):
+		if self.need_weavers():
+			return False
+		return self.enough_resource_producers(RES.WOOL_ID, RES.TEXTILE_ID)
 
 	def get_resource_production(self, resource_id):
 		providers = 0
@@ -246,6 +257,8 @@ class SettlementManager(WorldObject):
 	def tick(self):
 		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID)[0], \
 			self.get_resident_resource_usage(RES.FOOD_ID))
+		self.log.info('%s wool/textile production %.5f / %.5f', self, self.get_resource_production(RES.WOOL_ID)[0], \
+			self.get_resident_resource_usage(RES.TEXTILE_ID))
 		self.manage_production()
 		call_again = False
 
@@ -264,12 +277,19 @@ class SettlementManager(WorldObject):
 		elif not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result, call_again, 'storage')
-		elif not self.enough_food_producers():
+		elif not self.enough_resource_producers(RES.FOOD_ID, RES.FOOD_ID):
 			result = self.production_builder.build_food_producer()
 			self.log_generic_build_result(result, call_again, 'food producer')
 		elif self.tents >= 10 and self.village_builder.pavilions_to_build > 0:
 			result = self.village_builder.build_pavilion()
 			self.log_generic_build_result(result, call_again, 'pavilion')
+		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and not self.enough_textile_producers():
+			if self.need_weavers():
+				result = self.production_builder.build_weaver()
+				self.log_generic_build_result(result, call_again, 'weaver')
+			else:
+				result = self.production_builder.build_wool_producer()
+				self.log_generic_build_result(result, call_again, 'wool producer')
 		elif self.village_builder.tents_to_build > self.tents:
 			result = self.village_builder.build_tent()
 			self.log_generic_build_result(result, call_again, 'tent')

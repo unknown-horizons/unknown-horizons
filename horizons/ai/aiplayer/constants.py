@@ -39,3 +39,14 @@ class PRODUCTION_PURPOSE:
 	POTATO_FIELD = 11
 	CLAY_PIT = 12
 	BRICKYARD = 13
+	UNUSED_PASTURE = 14
+	PASTURE = 15
+	WEAVER = 16
+
+	@classmethod
+	def get_used_purpose(cls, purpose):
+		if purpose == cls.UNUSED_POTATO_FIELD:
+			return cls.POTATO_FIELD
+		elif purpose == cls.UNUSED_PASTURE:
+			return cls.PASTURE
+		return None

@@ -33,10 +33,11 @@ class FarmEvaluator(BuildingEvaluator):
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	field_offsets = None
 
-	def __init__(self, production_builder, builder, farm_plan, fields, existing_roads, alignment, extra_space, immidiate_connections):
+	def __init__(self, production_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections):
 		super(FarmEvaluator, self).__init__(production_builder, builder)
 		self.farm_plan = farm_plan
 		self.fields = fields
+		self.unused_field_purpose = unused_field_purpose
 		self.existing_roads = existing_roads
 		self.alignment = alignment
 		self.extra_space = extra_space
@@ -178,7 +179,7 @@ class FarmEvaluator(BuildingEvaluator):
 					immidiate_connections += 3
 
 		extra_space = (max_x - min_x + 1) * (max_y - min_y + 1) - 9 * (fields + 2)
-		return FarmEvaluator(production_builder, builder, farm_plan, fields, existing_roads, alignment, extra_space, immidiate_connections)
+		return FarmEvaluator(production_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections)
 
 	def execute(self):
 		if not self.production_builder.have_resources(self.builder.building_id):
@@ -193,8 +194,8 @@ class FarmEvaluator(BuildingEvaluator):
 		if not building:
 			return BUILD_RESULT.UNKNOWN_ERROR
 		for coords, (purpose, builder) in self.farm_plan.iteritems():
-			if purpose == PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD:
-				self.production_builder.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD].append(coords)
+			if purpose == self.unused_field_purpose:
+				self.production_builder.unused_fields[PRODUCTION_PURPOSE.get_used_purpose(self.unused_field_purpose)].append(coords)
 		self.production_builder.production_buildings.append(building)
 		self.production_builder.display()
 		return BUILD_RESULT.OK

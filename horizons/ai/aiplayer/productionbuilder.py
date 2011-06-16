@@ -32,6 +32,7 @@ from horizons.ai.aiplayer.buildingevaluator.fisherevaluator import FisherEvaluat
 from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
 from horizons.ai.aiplayer.buildingevaluator.claypitevaluator import ClayPitEvaluator
 from horizons.ai.aiplayer.buildingevaluator.brickyardevaluator import BrickyardEvaluator
+from horizons.ai.aiplayer.buildingevaluator.weaverevaluator import WeaverEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point, Rect, WorldObject
@@ -65,6 +66,7 @@ class ProductionBuilder(WorldObject):
 	def _make_empty_unused_fields(self):
 		return {
 			PRODUCTION_PURPOSE.POTATO_FIELD: deque(),
+			PRODUCTION_PURPOSE.PASTURE: deque()
 		}
 
 	def save(self, db):
@@ -340,7 +342,7 @@ class ProductionBuilder(WorldObject):
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
-	def get_next_farm(self):
+	def get_next_farm(self, unused_field_purpose):
 		"""
 		Finds a reasonable place for a farm and returns the BuildingEvaluator object.
 		"""
@@ -354,7 +356,7 @@ class ProductionBuilder(WorldObject):
 		for (x, y) in self.plan:
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:
-				evaluator = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields, PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD)
+				evaluator = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields, unused_field_purpose)
 				if evaluator is not None:
 					options.append((-evaluator.value, evaluator))
 					most_fields = max(most_fields, evaluator.fields)
@@ -370,7 +372,7 @@ class ProductionBuilder(WorldObject):
 			if not self.have_resources(BUILDINGS.FISHERMAN_CLASS) and not self.have_resources(BUILDINGS.FARM_CLASS):
 				return BUILD_RESULT.NEED_RESOURCES
 			next_fisher = self.get_next_fisher()
-			next_farm = self.get_next_farm()
+			next_farm = self.get_next_farm(PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD)
 			if next_fisher is None:
 				if next_farm is None:
 					return BUILD_RESULT.IMPOSSIBLE
@@ -411,8 +413,45 @@ class ProductionBuilder(WorldObject):
 				return BUILD_RESULT.UNKNOWN_ERROR
 			self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD].popleft()
 			self.plan[coords] = (PRODUCTION_PURPOSE.POTATO_FIELD, builder)
-			self.settlement_manager.num_potato_fields += 1
+			self.settlement_manager.num_fields[PRODUCTION_PURPOSE.POTATO_FIELD] += 1
 			return BUILD_RESULT.OK
+
+	def build_wool_producer(self):
+		if not self.unused_fields[PRODUCTION_PURPOSE.PASTURE]:
+			if not self.have_resources(BUILDINGS.FARM_CLASS):
+				return BUILD_RESULT.NEED_RESOURCES
+			next_farm = self.get_next_farm(PRODUCTION_PURPOSE.UNUSED_PASTURE)
+			if next_farm is None:
+				return BUILD_RESULT.IMPOSSIBLE
+			# build the farm
+			result = next_farm.execute()
+			if result != BUILD_RESULT.OK:
+				return result
+
+		assert len(self.unused_fields[PRODUCTION_PURPOSE.PASTURE]) > 0
+		coords = self.unused_fields[PRODUCTION_PURPOSE.PASTURE][0]
+		builder = Builder.create(BUILDINGS.PASTURE_CLASS, self.land_manager, Point(coords[0], coords[1]))
+		if not builder.execute():
+			return BUILD_RESULT.UNKNOWN_ERROR
+		self.unused_fields[PRODUCTION_PURPOSE.PASTURE].popleft()
+		self.plan[coords] = (PRODUCTION_PURPOSE.PASTURE, builder)
+		self.settlement_manager.num_fields[PRODUCTION_PURPOSE.PASTURE] += 1
+		return BUILD_RESULT.OK
+
+	def build_weaver(self):
+		""" Builds a weaver and a road leading to it """
+		if not self.have_resources(BUILDINGS.WEAVER_CLASS):
+			return BUILD_RESULT.NEED_RESOURCES
+
+		options = []
+		for (x, y) in self.plan:
+			evaluator = WeaverEvaluator.create(self, x, y)
+			if evaluator is not None:
+				options.append((-evaluator.value, evaluator))
+
+		for _, evaluator in sorted(options):
+			return evaluator.execute()
+		return BUILD_RESULT.IMPOSSIBLE
 
 	def enough_collectors(self):
 		produce_quantity = 0
@@ -589,12 +628,14 @@ class ProductionBuilder(WorldObject):
 				fishers += 1
 		return fishers
 
-	def count_potato_fields(self):
-		potato_fields = 0
+	def count_fields(self):
+		fields = {PRODUCTION_PURPOSE.POTATO_FIELD: 0, PRODUCTION_PURPOSE.PASTURE: 0}
 		for building in self.production_buildings:
 			if building.id == BUILDINGS.POTATO_FIELD_CLASS:
-				potato_fields += 1
-		return potato_fields
+				fields[PRODUCTION_PURPOSE.POTATO_FIELD] += 1
+			elif building.id == BUILDINGS.PASTURE_CLASS:
+				fields[PRODUCTION_PURPOSE.PASTURE] += 1
+		return fields
 
 	def refresh_unused_fields(self):
 		self.unused_fields = self._make_empty_unused_fields()
@@ -615,6 +656,9 @@ class ProductionBuilder(WorldObject):
 		farm_colour = (128, 0, 255)
 		unused_potato_field_colour = (255, 0, 128)
 		potato_field_colour = (0, 128, 0)
+		unused_pasture_colour = (255, 0, 192)
+		pasture_colour = (0, 192, 0)
+		weaver_colour = (0, 64, 64)
 		clay_pit_colour = (0, 64, 0)
 		brickyard_colour = (0, 32, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -635,6 +679,12 @@ class ProductionBuilder(WorldObject):
 				renderer.addColored(tile._instance, *unused_potato_field_colour)
 			elif purpose == PRODUCTION_PURPOSE.POTATO_FIELD:
 				renderer.addColored(tile._instance, *potato_field_colour)
+			elif purpose == PRODUCTION_PURPOSE.UNUSED_PASTURE:
+				renderer.addColored(tile._instance, *unused_pasture_colour)
+			elif purpose == PRODUCTION_PURPOSE.PASTURE:
+				renderer.addColored(tile._instance, *pasture_colour)
+			elif purpose == PRODUCTION_PURPOSE.WEAVER:
+				renderer.addColored(tile._instance, *weaver_colour)
 			elif purpose == PRODUCTION_PURPOSE.CLAY_PIT:
 				renderer.addColored(tile._instance, *clay_pit_colour)
 			elif purpose == PRODUCTION_PURPOSE.BRICKYARD:

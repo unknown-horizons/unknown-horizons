@@ -52,17 +52,13 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
 
 	def get_expected_production_level(self, resource_id):
-		# TODO: make this work for the other resources / different field types
-		for production in self._get_productions():
-			if resource_id not in production._prod_line.produced_res:
-				continue
-
-			if resource_id == RES.FOOD_ID:
-				amount = 0
-				for sub_amount in production._prod_line.produced_res.itervalues():
-					amount += sub_amount
-				return 0.0375 * len(self._get_providers()) * float(amount) / production._prod_line.time / GAME_SPEED.TICKS_PER_SECOND
-		return None
+		fields = 0
+		for provider in self._get_providers():
+			if resource_id == RES.FOOD_ID and provider.id == BUILDINGS.POTATO_FIELD_CLASS:
+				fields += 1
+			elif resource_id == RES.WOOL_ID and provider.id == BUILDINGS.PASTURE_CLASS:
+				fields += 1
+		return self.owner.virtual_farm.get_expected_production_level(resource_id, fields)
 
 class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	def get_expected_production_level(self, resource_id):
