@@ -125,14 +125,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 			cls._selected_tiles.pop()
 
 	def get_expected_production_level(self, resource_id):
-		# TODO: make this provide a more realistic expectation depending on the location
-		if resource_id != RES.FOOD_ID:
-			return None
-		production = [production for production in self._get_productions()][0]
-		amount = 0
-		for sub_amount in production._prod_line.produced_res.itervalues():
-			amount += sub_amount
-		return float(amount) / production._prod_line.time / GAME_SPEED.TICKS_PER_SECOND
+		return self.owner.virtual_fisher.get_expected_production_level(resource_id)
 
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
