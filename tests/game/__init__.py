@@ -87,7 +87,7 @@ def create_map():
 
 class SPTestSession(SPSession):
 
-	def __init__(self, db):
+	def __init__(self, db, rng_seed=None):
 		"""
 		Unfortunately, right now there is no other way to setup Dummy versions of the GUI,
 		View etc., unless we want to patch the references in the session module.
@@ -103,7 +103,7 @@ class SPTestSession(SPSession):
 
 		# Game
 		self.current_tick = 0
-		self.random = self.create_rng()
+		self.random = self.create_rng(rng_seed)
 		self.timer = self.create_timer()
 		Scheduler.create_instance(self.timer)
 		ExtScheduler.create_instance(Dummy)
@@ -155,13 +155,13 @@ class SPTestSession(SPSession):
 			self.current_tick += 1
 
 
-def new_session(mapgen=create_map):
+def new_session(mapgen=create_map, rng_seed=None):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
 	otherwise). It returns both session and player to avoid making the function-baed
 	tests too verbose.
 	"""
-	session = SPTestSession(horizons.main.db)
+	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
 	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True}]
 
 	session.load(create_map(), players)
