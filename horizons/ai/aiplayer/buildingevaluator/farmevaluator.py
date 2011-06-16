@@ -87,7 +87,7 @@ class FarmEvaluator(BuildingEvaluator):
 		return False
 
 	@classmethod
-	def create(cls, production_builder, farm_x, farm_y, road_dx, road_dy, min_fields):
+	def create(cls, production_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
 		builder = production_builder.make_builder(BUILDINGS.FARM_CLASS, farm_x, farm_y, True)
 		if not builder:
 			return None
@@ -135,7 +135,7 @@ class FarmEvaluator(BuildingEvaluator):
 			fields += 1
 			for coords2 in field.position.tuple_iter():
 				farm_plan[coords2] = (PRODUCTION_PURPOSE.RESERVED, None)
-			farm_plan[coords] = (PRODUCTION_PURPOSE.FARM_FIELD, None)
+			farm_plan[coords] = (unused_field_purpose, None)
 		if fields < min_fields:
 			return None # go for the most fields possible
 
@@ -193,8 +193,8 @@ class FarmEvaluator(BuildingEvaluator):
 		if not building:
 			return BUILD_RESULT.UNKNOWN_ERROR
 		for coords, (purpose, builder) in self.farm_plan.iteritems():
-			if purpose == PRODUCTION_PURPOSE.FARM_FIELD:
-				self.production_builder.unused_fields.append(coords)
+			if purpose == PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD:
+				self.production_builder.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD].append(coords)
 		self.production_builder.production_buildings.append(building)
 		self.production_builder.display()
 		return BUILD_RESULT.OK

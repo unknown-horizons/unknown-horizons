@@ -59,7 +59,13 @@ class ProductionBuilder(WorldObject):
 		self.collector_buildings = [settlement_manager.branch_office]
 		self.production_buildings = []
 		self.plan = {}
-		self.unused_fields = deque()
+		self.unused_fields = self._make_empty_unused_fields()
+
+	@classmethod
+	def _make_empty_unused_fields(self):
+		return {
+			PRODUCTION_PURPOSE.POTATO_FIELD: deque(),
+		}
 
 	def save(self, db):
 		super(ProductionBuilder, self).save(db)
@@ -348,7 +354,7 @@ class ProductionBuilder(WorldObject):
 		for (x, y) in self.plan:
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:
-				evaluator = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields)
+				evaluator = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields, PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD)
 				if evaluator is not None:
 					options.append((-evaluator.value, evaluator))
 					most_fields = max(most_fields, evaluator.fields)
@@ -360,7 +366,7 @@ class ProductionBuilder(WorldObject):
 
 	def build_food_producer(self):
 		build_fields = False
-		if not self.unused_fields:
+		if not self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD]:
 			if not self.have_resources(BUILDINGS.FISHERMAN_CLASS) and not self.have_resources(BUILDINGS.FARM_CLASS):
 				return BUILD_RESULT.NEED_RESOURCES
 			next_fisher = self.get_next_fisher()
@@ -398,12 +404,12 @@ class ProductionBuilder(WorldObject):
 			build_fields = True
 
 		if build_fields:
-			assert len(self.unused_fields) > 0
-			coords = self.unused_fields[0]
+			assert len(self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD]) > 0
+			coords = self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD][0]
 			builder = Builder.create(BUILDINGS.POTATO_FIELD_CLASS, self.land_manager, Point(coords[0], coords[1]))
 			if not builder.execute():
 				return BUILD_RESULT.UNKNOWN_ERROR
-			self.unused_fields.popleft()
+			self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD].popleft()
 			self.plan[coords] = (PRODUCTION_PURPOSE.POTATO_FIELD, builder)
 			self.settlement_manager.num_potato_fields += 1
 			return BUILD_RESULT.OK
@@ -591,10 +597,10 @@ class ProductionBuilder(WorldObject):
 		return potato_fields
 
 	def refresh_unused_fields(self):
-		self.unused_fields = deque()
+		self.unused_fields = self._make_empty_unused_fields()
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == PRODUCTION_PURPOSE.FARM_FIELD:
-				self.unused_fields.append(coords)
+			if purpose == PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD:
+				self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD].append(coords)
 
 	def display(self):
 		if not AI.HIGHLIGHT_PLANS:
@@ -607,7 +613,7 @@ class ProductionBuilder(WorldObject):
 		reserved_colour = (0, 0, 128)
 		unknown_colour = (128, 0, 0)
 		farm_colour = (128, 0, 255)
-		farm_field_colour = (255, 0, 128)
+		unused_potato_field_colour = (255, 0, 128)
 		potato_field_colour = (0, 128, 0)
 		clay_pit_colour = (0, 64, 0)
 		brickyard_colour = (0, 32, 0)
@@ -625,8 +631,8 @@ class ProductionBuilder(WorldObject):
 				renderer.addColored(tile._instance, *tree_colour)
 			elif purpose == PRODUCTION_PURPOSE.FARM:
 				renderer.addColored(tile._instance, *farm_colour)
-			elif purpose == PRODUCTION_PURPOSE.FARM_FIELD:
-				renderer.addColored(tile._instance, *farm_field_colour)
+			elif purpose == PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD:
+				renderer.addColored(tile._instance, *unused_potato_field_colour)
 			elif purpose == PRODUCTION_PURPOSE.POTATO_FIELD:
 				renderer.addColored(tile._instance, *potato_field_colour)
 			elif purpose == PRODUCTION_PURPOSE.CLAY_PIT:
