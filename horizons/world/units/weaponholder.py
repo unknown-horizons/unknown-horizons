@@ -112,7 +112,7 @@ class WeaponHolder(object):
 		if self._target is None:
 			return
 
-		if hasattr(self._target, health):
+		if hasattr(self._target, 'health'):
 			print self._target,'has health:',self._target.health.health
 			print self._target.health.max_health
 

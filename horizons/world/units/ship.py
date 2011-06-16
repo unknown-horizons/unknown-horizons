@@ -39,6 +39,7 @@ from horizons.command.uioptions import TransferResource
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED, WEAPONS
 from horizons.world.units.healthcomponent import HealthComponent
+from horizons.world.units.healthcomponent import HealthDecorator
 
 class ShipRoute(object):
 	"""
@@ -177,7 +178,7 @@ class ShipRoute(object):
 			for res in entry['resource_list']:
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
-
+@HealthDecorator
 class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	"""Class representing a ship
 	@param x: int x position
@@ -198,7 +199,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-		self.create_health_component()
+		#self.create_health_component()
 
 	def remove(self):
 		#TODO make it work!!!
@@ -207,7 +208,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 			self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
-		self.health = None
+		#self.health = None
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
@@ -216,13 +217,13 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	def create_route(self):
 		self.route=ShipRoute(self)
 
-	def create_health_component(self):
-		self.health = HealthComponent(self.session.db, self.id)
-		self.health.add_damage_dealt_listener(self.check_if_alive)
+	#def create_health_component(self):
+	#	self.health = HealthComponent(self.session.db, self.id)
+	#	self.health.add_damage_dealt_listener(self.check_if_alive)
 
-	def check_if_alive(self, caller=None):
-		if self.health.health <= 0:
-			self.remove()
+	#def check_if_alive(self, caller=None):
+	#	if self.health.health <= 0:
+	#		self.remove()
 
 	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
@@ -324,7 +325,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	def save(self, db):
 		super(Ship, self).save(db)
 		# save health component
-		self.health.save(db, self.worldid)
+		#self.health.save(db, self.worldid)
 		if hasattr(self, 'route'):
 			self.route.save(db)
 
@@ -336,8 +337,8 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 		# load health component
-		self.create_health_component()
-		self.health.load(db, self.worldid)
+		#self.create_health_component()
+		#self.health.load(db, self.worldid)
 
 		# if ship did not have route configured, do not add attribute
 		if len(db("SELECT * FROM ship_route WHERE ship_id = ?", self.worldid)) is 0:

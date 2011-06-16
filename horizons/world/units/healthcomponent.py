@@ -43,3 +43,44 @@ class HealthComponent(object):
 
 	def load(self, db, worldid):
 		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", worldid)[0][0]
+
+def HealthDecorator(original_class):
+	orig_init = original_class.__init__
+	orig_save = original_class.save
+	orig_load = original_class.load
+	orig_remove =original_class.remove
+
+	def __init__(self, *args, **kwargs):
+		orig_init(self, *args, **kwargs)
+		self.create_health_component()
+
+	def save(self, db, *args, **kwargs):
+		orig_save(self, db, *args, **kwargs)
+		self.health.save(db, self.worldid)
+
+	def load(self, db, *args, **kwargs):
+		orig_load(self, db, *args, **kwargs)
+		self.create_health_component()
+		self.health.load(db, self.worldid)
+
+	def remove(self):
+		orig_remove(self)
+		self.health = None
+
+	def create_health_component(self):
+		self.health = HealthComponent(self.session.db, self.id)
+		self.health.add_damage_dealt_listener(self.check_if_alive)
+
+	def check_if_alive(self, caller=None):
+		if self.health.health <= 0:
+			self.remove()
+
+	original_class.__init__ = __init__
+	original_class.save = save
+	original_class.load = load
+	original_class.remove = remove
+	setattr(original_class, "create_health_component", create_health_component)
+	setattr(original_class, "check_if_alive", check_if_alive)
+
+	return original_class
+
