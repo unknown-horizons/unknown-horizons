@@ -69,12 +69,11 @@ class BuildingClass(type):
 		self.id = id
 		self._object = None
 
-		self.class_package, size_x, size_y, name, self.radius, health, inhabitants, inhabitants_max = \
-		    db("SELECT class_package, size_x, size_y, name, radius, health, \
+		self.class_package, size_x, size_y, name, self.radius, inhabitants, inhabitants_max = \
+		    db("SELECT class_package, size_x, size_y, name, radius, \
 		    inhabitants_start, inhabitants_max FROM data.building WHERE id = ?", id)[0]
 		self._name = name
 		self.size = (int(size_x), int(size_y))
-		self.health = int(health)
 		self.inhabitants = int(inhabitants)
 		self.inhabitants_max = int(inhabitants_max)
 		for (name,  value) in db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):

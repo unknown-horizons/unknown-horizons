@@ -41,11 +41,11 @@ class SavegameAccessor(DbReader):
 
 	def _load_building(self):
 		self._building = {}
-		for row in self("SELECT rowid, x, y, health, location, rotation, level FROM building"):
+		for row in self("SELECT rowid, x, y, location, rotation, level FROM building"):
 			self._building[int(row[0])] = row[1:]
 	
 	def get_building_row(self, worldid):
-		"""Returns (x, y, health, location, rotation, level)"""
+		"""Returns (x, y, location, rotation, level)"""
 		return self._building[int(worldid)]
 
 	def get_building_location(self, worldid):

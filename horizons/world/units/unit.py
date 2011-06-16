@@ -40,7 +40,7 @@ class Unit(AmbientSound, MovingObject):
 		super(Unit, self).__init__(x=x, y=y, **kwargs)
 		self.__init(x, y, owner)
 
-	def __init(self, x, y, owner, health = 100.0):
+	def __init(self, x, y, owner):
 		self.owner = owner
 		class Tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = Tmp()
@@ -57,9 +57,6 @@ class Unit(AmbientSound, MovingObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))
 		self.act(self._action, location, True)
 		self._instance.addActionListener(self.InstanceActionListener)
-
-		self.health = health
-		self.max_health = 100.0
 
 		self.loading_area = self.position
 
@@ -82,8 +79,7 @@ class Unit(AmbientSound, MovingObject):
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
-		#NOTE added if statement only for units that have HealthComponent
-		if not hasattr(self.health, 'max_health'):
+		if not hasattr(self, 'health'):
 			return
 		health = self.health.health
 		max_health = self.health.max_health
@@ -127,23 +123,21 @@ class Unit(AmbientSound, MovingObject):
 
 	def save(self, db):
 		super(Unit, self).save(db)
-		#NOTE dummy health until self.health obsoleted
-		dummy_health = 100.0
 
 		owner_id = 0 if self.owner is None else self.owner.worldid
-		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
+		db("INSERT INTO unit (rowid, type, x, y, owner) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.__class__.id, self.position.x, self.position.y, \
-					dummy_health, owner_id)
+					owner_id)
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)
 
-		x, y, health, owner_id = db("SELECT x, y, health, owner FROM unit WHERE rowid = ?", worldid)[0]
+		x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?", worldid)[0]
 		if (owner_id == 0):
 			owner = None
 		else:
 			owner = WorldObject.get_object_by_id(owner_id)
-		self.__init(x, y, owner, health)
+		self.__init(x, y, owner)
 
 		return self
 

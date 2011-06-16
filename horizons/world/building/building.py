@@ -122,18 +122,18 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)
-		db("INSERT INTO building (rowid, type, x, y, rotation, health, location, level) \
-		   VALUES (?, ?, ?, ?, ?, ?, ?, ?)", \
+		db("INSERT INTO building (rowid, type, x, y, rotation, location, level) \
+		   VALUES (?, ?, ?, ?, ?, ?, ?)", \
 								                       self.worldid, self.__class__.id, self.position.origin.x, \
 								                       self.position.origin.y, self.rotation, \
-								                       self.health, (self.settlement or self.island).worldid, self.level)
+								                       (self.settlement or self.island).worldid, self.level)
 		if self.has_running_costs:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self.get_payout)
 			db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES(?, ?)", self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
 		super(BasicBuilding, self).load(db, worldid)
-		x, y, self.health, location, rotation, level = db.get_building_row(worldid)
+		x, y, location, rotation, level = db.get_building_row(worldid)
 
 		owner_id = db.get_settlement_owner(location)
 		owner = None if owner_id is None else WorldObject.get_object_by_id(owner_id)
