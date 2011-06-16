@@ -189,9 +189,6 @@ class ProductionOverviewTab(OverviewTab):
 		cap_util = 0
 		if hasattr(self.instance, 'capacity_utilisation'):
 			cap_util = int(round( self.instance.capacity_utilisation * 100))
-		if hasattr(self.instance, 'get_production_statistics'):
-			text = str(self.instance.get_production_statistics())
-			print self.instance, text
 		self.widget.child_finder('capacity_utilisation').text = unicode(cap_util) + u'%'
 
 		# remove old production line data
@@ -282,9 +279,6 @@ class SettlerOverviewTab(OverviewTab):
 		self.widget.findChild(name="building_image").image = image
 
 	def refresh(self):
-		if hasattr(self.instance, 'get_production_statistics'):
-			text = str(self.instance.get_production_statistics())
-			print self.instance, text
 		self.widget.child_finder('happiness').progress = self.instance.happiness
 		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
 			self.instance.inhabitants, self.instance.inhabitants_max ) )

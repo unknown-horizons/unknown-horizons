@@ -138,14 +138,6 @@ class Producer(ResourceHandler):
 			production.record_state()
 		for production in self._inactive_productions.itervalues():
 			production.record_state()
-	
-	def get_production_statistics(self):
-		res = []
-		for production in self._productions.itervalues():
-			res.append((production.last_counter, production.max_counter, production.current_counter, production.current_pos))
-		for production in self._inactive_productions.itervalues():
-			res.append((production.last_counter, production.max_counter, production.current_counter, production.current_pos))
-		return res
 
 	def get_history_length(self, resource_id):
 		for production in self._get_productions():
