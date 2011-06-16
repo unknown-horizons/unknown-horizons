@@ -49,7 +49,7 @@ class SavegameAccessor(DbReader):
 		return self._building[int(worldid)]
 
 	def get_building_location(self, worldid):
-		return self._building[int(worldid)][3]
+		return self._building[int(worldid)][2]
 
 
 	def _load_settlement(self):
