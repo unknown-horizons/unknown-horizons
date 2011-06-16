@@ -97,7 +97,7 @@ class IslandPathNodes(PathNodes):
 		      walls against enemies)
 		@param coord: tuple: (x, y)
 		"""
-		tile_object = self.island.get_tile(Point(*coord))
+		tile_object = self.island.get_tile_tuple(coord)
 
 		if tile_object is None:
 			# tile is water

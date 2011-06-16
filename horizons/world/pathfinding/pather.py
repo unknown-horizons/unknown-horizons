@@ -23,7 +23,7 @@ import weakref
 import sys
 import logging
 
-from horizons.util import Rect, Point
+from horizons.util import Rect, Point, decorators
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.pathfinding.pathfinding import FindPath
@@ -284,6 +284,7 @@ class SoldierPather(AbstractPather):
 		return []
 
 	def _check_for_obstacles(self, point):
+		# retrieve island, island of soldier may change at any time
 		island = self.session.world.get_island(self.unit.position)
 		path_blocked = not island.path_nodes.is_walkable(self.path[self.cur])
 		if path_blocked:
@@ -317,3 +318,5 @@ class StaticPather(object):
 		@return: list of tuples or None in case no path is found"""
 		return FindPath()(source, destination, island.path_nodes.road_nodes)
 
+
+decorators.bind_all(AbstractPather)
