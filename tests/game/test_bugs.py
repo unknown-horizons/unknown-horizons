@@ -26,6 +26,7 @@ from tests.game import settle, game_test
 from tests.game.test_farm import _build_farm, POTATO_FIELD
 
 
+BOAT_BUILDER = 12
 TRAIL = 15
 
 
@@ -55,3 +56,18 @@ def test_ticket_979(s, p):
 
 	# Let the collector reach the not existing target
 	s.run(seconds=10)
+
+
+@game_test
+def test_ticket_1005(s, p):
+	settlement, island = settle(s)
+	assert len(s.world.ships) == 2
+
+	builder = Build(BOAT_BUILDER, 35, 20, island, settlement=settlement)(p)
+	builder.inventory.alter(3, 5)	# textile
+	builder.inventory.alter(4, 4)	# boards
+	builder.add_production_by_id(15)
+
+	s.run(seconds=130)
+
+	assert len(s.world.ships) == 3
