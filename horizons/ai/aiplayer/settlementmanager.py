@@ -280,7 +280,7 @@ class SettlementManager(WorldObject):
 		elif not self.enough_resource_producers(RES.FOOD_ID, RES.FOOD_ID):
 			result = self.production_builder.build_food_producer()
 			self.log_generic_build_result(result, call_again, 'food producer')
-		elif self.tents >= 10 and self.village_builder.pavilions_to_build > 0:
+		elif self.tents >= 10 and not self.count_buildings(BUILDINGS.PAVILION_CLASS):
 			result = self.village_builder.build_pavilion()
 			self.log_generic_build_result(result, call_again, 'pavilion')
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and not self.enough_textile_producers():

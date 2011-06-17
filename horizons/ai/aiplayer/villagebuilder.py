@@ -52,7 +52,6 @@ class VillageBuilder(WorldObject):
 		self.owner = self.land_manager.owner
 		self.settlement = self.land_manager.settlement
 		self.tents_to_build = 0
-		self.pavilions_to_build = 0
 		self.plan = {}
 		self.tent_queue = deque()
 
@@ -86,14 +85,6 @@ class VillageBuilder(WorldObject):
 			if purpose == self.purpose.planned_tent or purpose == self.purpose.tent:
 				self.tents_to_build += 1
 		self._create_tent_queue()
-
-		self.pavilions_to_build = 0
-		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose != self.purpose.pavilion:
-				continue
-			object = self.land_manager.island.ground_map[coords]
-			if object is not None or object.id != BUILDINGS.PAVILION_CLASS:
-				self.pavilions_to_build += 1
 
 	@classmethod
 	def _remove_unreachable_roads(cls, plan, main_square):
@@ -339,7 +330,6 @@ class VillageBuilder(WorldObject):
 	def _reserve_other_buildings(self):
 		"""Replaces a planned tent with a pavilion and another with a school."""
 		assert self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, self.purpose.pavilion)
-		self.pavilions_to_build = 1
 		assert self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, self.purpose.village_school)
 
 	def _create_tent_queue(self):
@@ -413,12 +403,7 @@ class VillageBuilder(WorldObject):
 		return self.build_village_building(BUILDINGS.MARKET_PLACE_CLASS, self.purpose.main_square)
 
 	def build_pavilion(self):
-		if self.pavilions_to_build <= 0:
-			return BUILD_RESULT.IMPOSSIBLE
-		result = self.build_village_building(BUILDINGS.PAVILION_CLASS, self.purpose.pavilion)
-		if result == BUILD_RESULT.OK:
-			self.pavilions_to_build -= 1
-		return result
+		return self.build_village_building(BUILDINGS.PAVILION_CLASS, self.purpose.pavilion)
 
 	def build_village_school(self):
 		return self.build_village_building(BUILDINGS.VILLAGE_SCHOOL_CLASS, self.purpose.village_school)
