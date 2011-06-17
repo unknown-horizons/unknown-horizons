@@ -56,6 +56,8 @@ class RoadPlanner(object):
 		heap = []
 		for coords in source:
 			if coords not in blocked_coords and coords in path_nodes:
+				if coords in destination:
+					return []
 				for dir in xrange(2): # 0 -> changed x, 1 -> changed y
 					real_distance = path_nodes[coords]
 					expected_distance = destination_beacon.distance_to_tuple(coords)
