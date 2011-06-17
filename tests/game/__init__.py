@@ -210,12 +210,12 @@ def game_test(func):
 	on it anyway).
 	"""
 	@wraps(func)
-	def wrapped():
+	def wrapped(*args):
 		horizons.main.db = db
 		s, p = new_session()
 		signal.alarm(5)
 		try:
-			return func(s, p)
+			return func(s, p, *args)
 		finally:
 			s.end()
 			signal.alarm(0)
