@@ -260,7 +260,7 @@ class VillageBuilder(WorldObject):
 		# create new possible tent position list
 		possible_tents = []
 		for coords in self.plan:
-			if self.plan[coords][0] == self.purpose.none:
+			if coords in distance and self.plan[coords][0] == self.purpose.none:
 				possible_tents.append((distance[coords], coords))
 		possible_tents.sort()
 
