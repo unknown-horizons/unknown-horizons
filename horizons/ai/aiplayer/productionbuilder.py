@@ -548,17 +548,9 @@ class ProductionBuilder(WorldObject):
 		options = []
 
 		for (x, y), (purpose, _) in self.plan.iteritems():
-			if purpose != PRODUCTION_PURPOSE.NONE or (x, y) not in self.land_manager.settlement.ground_map:
+			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
+			if not builder:
 				continue
-			point = Point(x, y)
-			builder = Builder.create(BUILDINGS.STORAGE_CLASS, self.land_manager, point)
-			if not builder or not self.land_manager.legal_for_production(builder.position):
-				continue
-			for coords in builder.position.tuple_iter():
-				if self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
-					builder = None
-			if builder is None:
-				continue # part of the land is already reserved
 
 			distance = {}
 			alignment = 1
