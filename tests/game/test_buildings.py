@@ -24,25 +24,14 @@ from itertools import product
 
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import RES, BUILDINGS, UNITS
+from horizons.constants import BUILDINGS, UNITS
 
-from tests.game import new_settlement, game_test
+from tests.game import game_test, settle
 
 
 LUMBERJACK = 8
 HUNTER = 9
 FISHERMAN = 11
-
-
-def settle(s):
-	"""
-	Create a new settlement, start with some resources.
-	"""
-	settlement, island = new_settlement(s)
-	settlement.inventory.alter(RES.GOLD_ID, 5000)
-	settlement.inventory.alter(4, 50)
-	settlement.inventory.alter(6, 50)
-	return settlement, island
 
 
 @game_test
@@ -118,4 +107,3 @@ def test_fisherman(s, p):
 	s.run(seconds=20)
 
 	assert fisherman.inventory[5]
-

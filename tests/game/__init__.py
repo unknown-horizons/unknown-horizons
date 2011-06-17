@@ -30,7 +30,7 @@ import horizons.world	# needs to be imported before session
 from horizons.ai.trader import Trader
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import PATHS, GROUND, UNITS, BUILDINGS, GAME_SPEED
+from horizons.constants import PATHS, GROUND, UNITS, BUILDINGS, GAME_SPEED, RES
 from horizons.entities import Entities
 from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
@@ -212,3 +212,15 @@ def game_test(func):
 			s.end()
 	return wrapped
 game_test.__test__ = False
+
+
+def settle(s):
+	"""
+	Create a new settlement, start with some resources.
+	"""
+	settlement, island = new_settlement(s)
+	settlement.inventory.alter(RES.GOLD_ID, 5000)
+	settlement.inventory.alter(4, 50) # boards
+	settlement.inventory.alter(6, 50) # tools
+	settlement.inventory.alter(7, 50) # bricks
+	return settlement, island
