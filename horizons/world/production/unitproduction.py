@@ -21,11 +21,11 @@
 # ###################################################
 import copy
 
-from horizons.world.production.production import Production
+from horizons.world.production.production import ChangingProduction
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
 
-class UnitProduction(Production):
+class UnitProduction(ChangingProduction):
 	"""Production, that produces units."""
 	def __init__(self, **kwargs):
 		super(UnitProduction, self).__init__(auto_start=False, **kwargs)
