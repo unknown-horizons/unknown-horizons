@@ -194,8 +194,9 @@ class UhDbAccessor(DbReader):
 		                         building_id)[0][0]
 
 	def get_settler_upgrade_material_prodline(self, level):
-		return self.cached_query("SELECT production_line FROM upgrade_material \
-		                          WHERE level = ?", level)[0][0]
+		db_result = self.cached_query("SELECT production_line FROM upgrade_material \
+		                          WHERE level = ?", level)
+		return db_result[0][0] if db_result else None
 
 	@decorators.cachedmethod
 	def get_provided_resources(self, object_class):
