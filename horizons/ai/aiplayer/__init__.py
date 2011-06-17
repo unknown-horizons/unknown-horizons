@@ -246,7 +246,7 @@ class AIPlayer(GenericAI):
 					self.prepare_foundation_ship(settlement_manager, ship)
 					return
 
-	buy_sell_thresholds = {RES.FOOD_ID: (20, 40), RES.BOARDS_ID: (20, 30)}
+	buy_sell_thresholds = {RES.FOOD_ID: (20, 40), RES.BOARDS_ID: (20, 30), RES.TOOLS_ID: (20, 40)}
 
 	def manage_resources(self):
 		for settlement_manager in self.settlement_managers:
