@@ -190,6 +190,7 @@ class BuildingCollector(Collector):
 		self.log.debug("%s move_home", self)
 		if self.home_building.position.contains(self.position):
 			# already home
+			self.stop() # make sure unit doesn't go anywhere in case a movement is going on
 			Scheduler().add_new_object(callback, self, run_in=0)
 		else:
 			# actually move home
