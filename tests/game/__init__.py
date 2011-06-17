@@ -20,6 +20,7 @@
 # ###################################################
 
 
+import inspect
 import os
 import shutil
 import signal
@@ -194,13 +195,7 @@ def new_settlement(session, pos=Point(30, 20)):
 	return (player.settlements[0], island)
 
 
-def handler(signum, frame):
-    raise Exception('Test run exceeded the limit of 5 seconds')
-
-signal.signal(signal.SIGALRM, handler)
-
-
-def game_test(func):
+def game_test(*args, **kwargs):
 	"""
 	Decorator that is needed for each test in this package. setup/teardown of function
 	based tests can't pass arguments to the test, or keep a reference somewhere.
@@ -208,18 +203,50 @@ def game_test(func):
 	break the rest of the tests. The global database reference has to be set each time too,
 	unittests use this too, and we can't predict the order tests run (we should not rely
 	on it anyway).
+
+	The decorator can be used in 2 ways:
+
+		1. No decorator arguments
+
+			@game_test
+			def foo(session, player):
+				pass
+
+		2. Pass extra arguments (timeout, different map generator)
+
+			@game_test(timeout=10, mapgen=my_map_generator)
+			def foo(session, player):
+				pass
 	"""
-	@wraps(func)
-	def wrapped(*args):
-		horizons.main.db = db
-		s, p = new_session()
-		signal.alarm(5)
-		try:
-			return func(s, p, *args)
-		finally:
-			s.end()
-			signal.alarm(0)
-	return wrapped
+	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
+
+	timeout = kwargs.get('timeout', 5)
+	mapgen = kwargs.get('mapgen', create_map)
+
+	def handler(signum, frame):
+		raise Exception('Test run exceeded %ds time limit' % timeout)
+	signal.signal(signal.SIGALRM, handler)
+
+	def deco(func):
+		@wraps(func)
+		def wrapped(*args):
+			horizons.main.db = db
+			s, p = new_session(mapgen)
+			signal.alarm(timeout)
+			try:
+				return func(s, p, *args)
+			finally:
+				s.end()
+				signal.alarm(0)
+		return wrapped
+
+	if no_decorator_arguments:
+		# return the wrapped function
+		return deco(args[0])
+	else:
+		# return a decorator
+		return deco
+
 game_test.__test__ = False
 
 
