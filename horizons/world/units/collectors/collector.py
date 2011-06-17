@@ -109,6 +109,7 @@ class Collector(StorageHolder, Unit):
 	def remove(self):
 		"""Removes the instance. Useful when the home building is destroyed"""
 		self.log.debug("%s: remove called", self)
+		self.cancel(continue_action=lambda : 42)
 		# remove from target collector list
 		if self.job is not None and self.state != self.states.moving_home:
 			# in the move_home state, there still is a job, but the collector is already deregistered

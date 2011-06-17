@@ -204,8 +204,6 @@ class WildAnimal(CollectorAnimal, Collector):
 		# and animal.get_job by 3/4 (0.00231 -> 0.00061)
 		return None
 
-
-
 		jobs = JobList(self, JobList.order_by.random)
 		# try all possible jobs
 		for provider in self.home_island.get_building_index(self._required_resource_id).get_buildings_in_range(pos):
@@ -264,8 +262,10 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.home_island.wild_animals.remove(self)
 		self.remove()
 
-	def cancel(self):
-		super(WildAnimal, self).cancel(continue_action=self.search_job)
+	def cancel(self, continue_action=None):
+		if continue_action is None:
+			continue_action = self.search_job
+		super(WildAnimal, self).cancel(continue_action=continue_action)
 
 	def __str__(self):
 		return "%s(health=%s)" % (super(WildAnimal, self).__str__(), \
