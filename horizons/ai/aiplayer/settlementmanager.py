@@ -316,6 +316,7 @@ class SettlementManager(WorldObject):
 			# if we just need the school then upgrade sailors manually
 			free_boards = self.land_manager.settlement.inventory[RES.BOARDS_ID]
 			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS].costs[RES.BOARDS_ID]
+			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
 				self.manual_upgrade(0, free_boards)
 
