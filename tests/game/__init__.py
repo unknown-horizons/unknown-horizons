@@ -69,7 +69,7 @@ def create_map():
 	db("BEGIN TRANSACTION")
 	tiles = []
 	for x, y in Rect.init_from_topleft_and_size(0, 0, 20, 20).tuple_iter():
-		if (2 < x < 18) and (2 < y < 18):
+		if (0 < x < 20) and (0 < y < 20):
 			ground = GROUND.DEFAULT_LAND
 		else:
 			# Add coastline at the borders.
@@ -169,7 +169,7 @@ def new_session(mapgen=create_map, rng_seed=42):
 	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
 	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True}]
 
-	session.load(create_map(), players)
+	session.load(mapgen(), players)
 	session.world.trader = Trader(session, 99999, 'Free Trader', Color())
 
 	return session, session.world.player
