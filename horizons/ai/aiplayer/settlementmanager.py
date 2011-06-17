@@ -58,7 +58,7 @@ class SettlementManager(WorldObject):
 
 		self.tents = 0
 		self.num_fishers = 0
-		self.num_fields = {PRODUCTION_PURPOSE.POTATO_FIELD: 0, PRODUCTION_PURPOSE.PASTURE: 0}
+		self.num_fields = {PRODUCTION_PURPOSE.POTATO_FIELD: 0, PRODUCTION_PURPOSE.PASTURE: 0, PRODUCTION_PURPOSE.SUGARCANE_FIELD: 0}
 		self.village_built = False
 
 		self.build_queue.append(self.buildCallType.village_roads)
@@ -164,6 +164,17 @@ class SettlementManager(WorldObject):
 			return False
 		return self.enough_resource_producers(RES.WOOL_ID, RES.TEXTILE_ID)
 
+	def need_distilleries(self):
+		# TODO: do this the right way...
+		distillery_time = 12.0
+		sugarcane_field_time = 30.0
+		return self.count_buildings(BUILDINGS.SUGARCANE_FIELD_CLASS) / sugarcane_field_time > self.count_buildings(BUILDINGS.DISTILLERY_CLASS) / distillery_time + 1e-9
+
+	def enough_liquor_producers(self):
+		if self.need_distilleries():
+			return False
+		return self.enough_resource_producers(RES.SUGAR_ID, RES.GET_TOGETHER_ID)
+
 	def get_resource_production(self, resource_id):
 		providers = 0
 		new_providers = 0
@@ -257,10 +268,13 @@ class SettlementManager(WorldObject):
 	def tick(self):
 		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID)[0], \
 			self.get_resident_resource_usage(RES.FOOD_ID))
-		self.log.info('%s wool/textile production %.5f / %.5f', self, self.get_resource_production(RES.WOOL_ID)[0], \
+		self.log.info('%s wool production %.5f / %.5f', self, self.get_resource_production(RES.WOOL_ID)[0], \
 			self.get_resident_resource_usage(RES.TEXTILE_ID))
+		self.log.info('%s sugar production %.5f / %.5f', self, self.get_resource_production(RES.SUGAR_ID)[0], \
+			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
 		self.manage_production()
 		call_again = False
+		need_materials = False
 
 		if len(self.build_queue) > 0:
 			self.log.info('%s build a queue item', self)
@@ -305,8 +319,20 @@ class SettlementManager(WorldObject):
 		elif not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			result = self.village_builder.build_village_school()
 			self.log_generic_build_result(result, call_again, 'village school')
-			if result == BUILD_RESULT.OK:
-				self.set_taxes_and_permissions(0.5, True, True)
+		elif not self.count_buildings(BUILDINGS.TAVERN_CLASS) and self.get_resource_production(RES.SUGAR_ID)[0] > 0:
+			result = self.village_builder.build_tavern()
+			self.log_generic_build_result(result, call_again, 'tavern')
+			if result == BUILD_RESULT.NEED_RESOURCES:
+				need_materials = True
+		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.land_manager.owner.settler_level > 1 and not self.enough_liquor_producers():
+			if self.need_distilleries():
+				result = self.production_builder.build_distillery()
+				self.log_generic_build_result(result, call_again, 'distillery')
+				if result == BUILD_RESULT.NEED_RESOURCES:
+					need_materials = True
+			else:
+				result = self.production_builder.build_sugar_producer()
+				self.log_generic_build_result(result, call_again, 'sugar producer')
 
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
@@ -319,6 +345,11 @@ class SettlementManager(WorldObject):
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
 				self.manual_upgrade(0, free_boards)
+		elif self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
+			if need_materials:
+				self.set_taxes_and_permissions(0.5, True, False)
+			else:
+				self.set_taxes_and_permissions(0.5, True, True)
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 		if not call_again:

@@ -33,6 +33,7 @@ from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
 from horizons.ai.aiplayer.buildingevaluator.claypitevaluator import ClayPitEvaluator
 from horizons.ai.aiplayer.buildingevaluator.brickyardevaluator import BrickyardEvaluator
 from horizons.ai.aiplayer.buildingevaluator.weaverevaluator import WeaverEvaluator
+from horizons.ai.aiplayer.buildingevaluator.distilleryevaluator import DistilleryEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point, Rect, WorldObject
@@ -66,7 +67,8 @@ class ProductionBuilder(WorldObject):
 	def _make_empty_unused_fields(self):
 		return {
 			PRODUCTION_PURPOSE.POTATO_FIELD: deque(),
-			PRODUCTION_PURPOSE.PASTURE: deque()
+			PRODUCTION_PURPOSE.PASTURE: deque(),
+			PRODUCTION_PURPOSE.SUGARCANE_FIELD: deque(),
 		}
 
 	def save(self, db):
@@ -109,6 +111,10 @@ class ProductionBuilder(WorldObject):
 			elif purpose == PRODUCTION_PURPOSE.CLAY_PIT and object.id == BUILDINGS.CLAY_PIT_CLASS:
 				self.production_buildings.append(object)
 			elif purpose == PRODUCTION_PURPOSE.BRICKYARD and object.id == BUILDINGS.BRICKYARD_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == PRODUCTION_PURPOSE.WEAVER and object.id == BUILDINGS.WEAVER_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == PRODUCTION_PURPOSE.DISTILLERY and object.id == BUILDINGS.DISTILLERY_CLASS:
 				self.production_buildings.append(object)
 			elif purpose == PRODUCTION_PURPOSE.STORAGE and object.id == BUILDINGS.STORAGE_CLASS:
 				self.collector_buildings.append(object)
@@ -416,11 +422,11 @@ class ProductionBuilder(WorldObject):
 			self.settlement_manager.num_fields[PRODUCTION_PURPOSE.POTATO_FIELD] += 1
 			return BUILD_RESULT.OK
 
-	def build_wool_producer(self):
-		if not self.unused_fields[PRODUCTION_PURPOSE.PASTURE]:
+	def build_simple_field_producer(self, field_purpose, field_id):
+		if not self.unused_fields[field_purpose]:
 			if not self.have_resources(BUILDINGS.FARM_CLASS):
 				return BUILD_RESULT.NEED_RESOURCES
-			next_farm = self.get_next_farm(PRODUCTION_PURPOSE.UNUSED_PASTURE)
+			next_farm = self.get_next_farm(PRODUCTION_PURPOSE.get_unused_purpose(field_purpose))
 			if next_farm is None:
 				return BUILD_RESULT.IMPOSSIBLE
 			# build the farm
@@ -428,30 +434,44 @@ class ProductionBuilder(WorldObject):
 			if result != BUILD_RESULT.OK:
 				return result
 
-		assert len(self.unused_fields[PRODUCTION_PURPOSE.PASTURE]) > 0
-		coords = self.unused_fields[PRODUCTION_PURPOSE.PASTURE][0]
-		builder = Builder.create(BUILDINGS.PASTURE_CLASS, self.land_manager, Point(coords[0], coords[1]))
+		assert len(self.unused_fields[field_purpose]) > 0
+		coords = self.unused_fields[field_purpose][0]
+		builder = Builder.create(field_id, self.land_manager, Point(coords[0], coords[1]))
 		if not builder.execute():
 			return BUILD_RESULT.UNKNOWN_ERROR
-		self.unused_fields[PRODUCTION_PURPOSE.PASTURE].popleft()
-		self.plan[coords] = (PRODUCTION_PURPOSE.PASTURE, builder)
-		self.settlement_manager.num_fields[PRODUCTION_PURPOSE.PASTURE] += 1
+		self.unused_fields[field_purpose].popleft()
+		self.plan[coords] = (field_purpose, builder)
+		self.settlement_manager.num_fields[field_purpose] += 1
 		return BUILD_RESULT.OK
 
-	def build_weaver(self):
-		""" Builds a weaver and a road leading to it """
-		if not self.have_resources(BUILDINGS.WEAVER_CLASS):
+	def build_wool_producer(self):
+		return self.build_simple_field_producer(PRODUCTION_PURPOSE.PASTURE, BUILDINGS.PASTURE_CLASS)
+
+	def build_sugar_producer(self):
+		return self.build_simple_field_producer(PRODUCTION_PURPOSE.SUGARCANE_FIELD, BUILDINGS.SUGARCANE_FIELD_CLASS)
+
+	def build_simple_producer(self, building_id, evaluator_class):
+		""" Builds a producer and a road leading to it """
+		if not self.have_resources(building_id):
 			return BUILD_RESULT.NEED_RESOURCES
 
 		options = []
 		for (x, y) in self.plan:
-			evaluator = WeaverEvaluator.create(self, x, y)
+			evaluator = evaluator_class.create(self, x, y)
 			if evaluator is not None:
 				options.append((-evaluator.value, evaluator))
 
 		for _, evaluator in sorted(options):
 			return evaluator.execute()
 		return BUILD_RESULT.IMPOSSIBLE
+
+	def build_weaver(self):
+		""" Builds a weaver and a road leading to it """
+		return self.build_simple_producer(BUILDINGS.WEAVER_CLASS, WeaverEvaluator)
+
+	def build_distillery(self):
+		""" Builds a distillery and a road leading to it """
+		return self.build_simple_producer(BUILDINGS.DISTILLERY_CLASS, DistilleryEvaluator)
 
 	def enough_collectors(self):
 		produce_quantity = 0
@@ -635,6 +655,8 @@ class ProductionBuilder(WorldObject):
 				fields[PRODUCTION_PURPOSE.POTATO_FIELD] += 1
 			elif building.id == BUILDINGS.PASTURE_CLASS:
 				fields[PRODUCTION_PURPOSE.PASTURE] += 1
+			elif building.id == BUILDINGS.SUGARCANE_FIELD_CLASS:
+				fields[PRODUCTION_PURPOSE.SUGARCANE_FIELD] += 1
 		return fields
 
 	def refresh_unused_fields(self):
@@ -642,6 +664,10 @@ class ProductionBuilder(WorldObject):
 		for coords, (purpose, _) in self.plan.iteritems():
 			if purpose == PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD:
 				self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD].append(coords)
+			elif purpose == PRODUCTION_PURPOSE.UNUSED_PASTURE:
+				self.unused_fields[PRODUCTION_PURPOSE.PASTURE].append(coords)
+			elif purpose == PRODUCTION_PURPOSE.UNUSED_SUGARCANE_FIELD:
+				self.unused_fields[PRODUCTION_PURPOSE.SUGARCANE_FIELD].append(coords)
 
 	def display(self):
 		if not AI.HIGHLIGHT_PLANS:
@@ -659,6 +685,9 @@ class ProductionBuilder(WorldObject):
 		unused_pasture_colour = (255, 0, 192)
 		pasture_colour = (0, 192, 0)
 		weaver_colour = (0, 64, 64)
+		unused_sugarcane_field_colour = (255, 255, 0)
+		sugarcane_field_colour = (192, 192, 0)
+		distillery_colour = (255, 128, 40)
 		clay_pit_colour = (0, 64, 0)
 		brickyard_colour = (0, 32, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -685,6 +714,12 @@ class ProductionBuilder(WorldObject):
 				renderer.addColored(tile._instance, *pasture_colour)
 			elif purpose == PRODUCTION_PURPOSE.WEAVER:
 				renderer.addColored(tile._instance, *weaver_colour)
+			elif purpose == PRODUCTION_PURPOSE.UNUSED_SUGARCANE_FIELD:
+				renderer.addColored(tile._instance, *unused_sugarcane_field_colour)
+			elif purpose == PRODUCTION_PURPOSE.SUGARCANE_FIELD:
+				renderer.addColored(tile._instance, *sugarcane_field_colour)
+			elif purpose == PRODUCTION_PURPOSE.DISTILLERY:
+				renderer.addColored(tile._instance, *distillery_colour)
 			elif purpose == PRODUCTION_PURPOSE.CLAY_PIT:
 				renderer.addColored(tile._instance, *clay_pit_colour)
 			elif purpose == PRODUCTION_PURPOSE.BRICKYARD:

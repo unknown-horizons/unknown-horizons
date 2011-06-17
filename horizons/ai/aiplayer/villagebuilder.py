@@ -38,6 +38,7 @@ class VillageBuilder(WorldObject):
 		road = 6
 		pavilion = 7
 		village_school = 8
+		tavern = 9
 
 	def __init__(self, settlement_manager):
 		super(VillageBuilder, self).__init__()
@@ -328,9 +329,10 @@ class VillageBuilder(WorldObject):
 		return False
 
 	def _reserve_other_buildings(self):
-		"""Replaces a planned tent with a pavilion and another with a school."""
+		"""Replaces planned tents with a pavilion, school, and tavern."""
 		assert self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, self.purpose.pavilion)
 		assert self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, self.purpose.village_school)
+		assert self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, self.purpose.tavern)
 
 	def _create_tent_queue(self):
 		""" This function takes the plan and orders all planned tents according to
@@ -408,6 +410,9 @@ class VillageBuilder(WorldObject):
 	def build_village_school(self):
 		return self.build_village_building(BUILDINGS.VILLAGE_SCHOOL_CLASS, self.purpose.village_school)
 
+	def build_tavern(self):
+		return self.build_village_building(BUILDINGS.TAVERN_CLASS, self.purpose.tavern)
+
 	def build_tent(self):
 		if self.tent_queue:
 			coords = self.tent_queue[0]
@@ -441,6 +446,7 @@ class VillageBuilder(WorldObject):
 		sq_colour = (255, 0, 255)
 		pavilion_colour = (255, 128, 128)
 		village_school_colour = (128, 128, 255)
+		tavern_colour = (255, 255, 0)
 		reserved_colour = (0, 0, 255)
 		unknown_colour = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -459,6 +465,8 @@ class VillageBuilder(WorldObject):
 				renderer.addColored(tile._instance, *village_school_colour)
 			elif purpose == self.purpose.pavilion:
 				renderer.addColored(tile._instance, *pavilion_colour)
+			elif purpose == self.purpose.tavern:
+				renderer.addColored(tile._instance, *tavern_colour)
 			elif purpose == self.purpose.reserved:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:

@@ -50,6 +50,11 @@ class VirtualFarm(VirtualBuilding):
 				for sub_amount in production_line.produced_res.itervalues():
 					amount += sub_amount
 				return 0.0333 * num_fields * float(amount) / production_line.time / GAME_SPEED.TICKS_PER_SECOND
+			elif resource_id == RES.SUGAR_ID:
+				amount = 0
+				for sub_amount in production_line.produced_res.itervalues():
+					amount += sub_amount
+				return 0.0333 * num_fields * float(amount) / production_line.time / GAME_SPEED.TICKS_PER_SECOND
 		return None
 
 class VirtualFisher(VirtualBuilding):

@@ -58,6 +58,8 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 				fields += 1
 			elif resource_id == RES.WOOL_ID and provider.id == BUILDINGS.PASTURE_CLASS:
 				fields += 1
+			elif resource_id == RES.SUGAR_ID and provider.id == BUILDINGS.SUGARCANE_FIELD_CLASS:
+				fields += 1
 		return self.owner.virtual_farm.get_expected_production_level(resource_id, fields)
 
 class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
