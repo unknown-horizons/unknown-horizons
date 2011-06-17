@@ -32,6 +32,8 @@ from tests.game import game_test, settle
 LUMBERJACK = 8
 HUNTER = 9
 FISHERMAN = 11
+BRICKYARD = 24
+CLAY_PIT = 25
 
 
 @game_test
@@ -107,3 +109,22 @@ def test_fisherman(s, p):
 	s.run(seconds=20)
 
 	assert fisherman.inventory[5]
+
+
+@game_test
+def test_brick_production_chain(s, p):
+	"""
+	A brickyard makes bricks from clay. Clay is collected by a clay pit on a deposit.
+	"""
+	settlement, island = settle(s)
+
+	assert Build(BUILDINGS.CLAY_DEPOSIT_CLASS, 30, 30, island, ownerless=True)(None)
+	assert Build(CLAY_PIT, 30, 30, island, settlement=settlement)(p)
+
+	brickyard = Build(BRICKYARD, 30, 25, island, settlement=settlement)(p)
+	assert brickyard.inventory[7] == 0 	# bricks
+	assert brickyard.inventory[21] == 0 # clay
+
+	s.run(seconds=60) # 15s clay pit, 15s brickyard
+
+	assert brickyard.inventory[7]
