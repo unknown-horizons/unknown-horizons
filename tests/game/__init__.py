@@ -22,6 +22,7 @@
 
 import os
 import shutil
+import signal
 import tempfile
 from functools import wraps
 
@@ -193,6 +194,12 @@ def new_settlement(session, pos=Point(30, 20)):
 	return (player.settlements[0], island)
 
 
+def handler(signum, frame):
+    raise Exception('Test run exceeded the limit of 5 seconds')
+
+signal.signal(signal.SIGALRM, handler)
+
+
 def game_test(func):
 	"""
 	Decorator that is needed for each test in this package. setup/teardown of function
@@ -206,10 +213,12 @@ def game_test(func):
 	def wrapped():
 		horizons.main.db = db
 		s, p = new_session()
+		signal.alarm(5)
 		try:
 			return func(s, p)
 		finally:
 			s.end()
+			signal.alarm(0)
 	return wrapped
 game_test.__test__ = False
 
