@@ -72,4 +72,9 @@ class BuildingEvaluator(WorldObject):
 		expected_production_level *= self.preference_multiplier
 		return float(self.get_combined_cost(resource_limits)) / expected_production_level
 
+	def __cmp__(self, other):
+		if abs(self.value - other.value) > 1e-9:
+			return 1 if self.value < other.value else -1
+		return self.builder.worldid - other.builder.worldid
+
 decorators.bind_all(BuildingEvaluator)

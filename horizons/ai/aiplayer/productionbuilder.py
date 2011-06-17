@@ -279,9 +279,9 @@ class ProductionBuilder(WorldObject):
 		for (x, y) in self.plan:
 			evaluator = FisherEvaluator.create(self, x, y)
 			if evaluator is not None:
-				options.append((-evaluator.value, evaluator))
+				options.append(evaluator)
 
-		for _, evaluator in sorted(options):
+		for evaluator in sorted(options):
 			if self._road_connection_possible(evaluator.builder):
 				return evaluator
 		return None
@@ -364,10 +364,10 @@ class ProductionBuilder(WorldObject):
 			for road_dx, road_dy in road_side:
 				evaluator = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields, unused_field_purpose)
 				if evaluator is not None:
-					options.append((-evaluator.value, evaluator))
+					options.append(evaluator)
 					most_fields = max(most_fields, evaluator.fields)
 
-		for _, evaluator in sorted(options):
+		for evaluator in sorted(options):
 			if self._road_connection_possible(evaluator.builder):
 				return evaluator
 		return None
@@ -459,9 +459,9 @@ class ProductionBuilder(WorldObject):
 		for (x, y) in self.plan:
 			evaluator = evaluator_class.create(self, x, y)
 			if evaluator is not None:
-				options.append((-evaluator.value, evaluator))
+				options.append(evaluator)
 
-		for _, evaluator in sorted(options):
+		for evaluator in sorted(options):
 			return evaluator.execute()
 		return BUILD_RESULT.IMPOSSIBLE
 
@@ -619,9 +619,9 @@ class ProductionBuilder(WorldObject):
 			(x, y) = building.position.origin.to_tuple()
 			evaluator = ClayPitEvaluator.create(self, x, y)
 			if evaluator is not None:
-				options.append((-evaluator.value, evaluator))
+				options.append(evaluator)
 
-		for _, evaluator in sorted(options):
+		for evaluator in sorted(options):
 			return evaluator.execute()
 		return BUILD_RESULT.IMPOSSIBLE
 
@@ -635,9 +635,9 @@ class ProductionBuilder(WorldObject):
 			for orientation in xrange(0, 2):
 				evaluator = BrickyardEvaluator.create(self, x, y, orientation)
 				if evaluator is not None:
-					options.append((-evaluator.value, evaluator))
+					options.append(evaluator)
 
-		for _, evaluator in sorted(options):
+		for evaluator in sorted(options):
 			return evaluator.execute()
 		return BUILD_RESULT.IMPOSSIBLE
 
