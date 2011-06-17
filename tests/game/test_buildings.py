@@ -109,7 +109,7 @@ def test_fisherman(s, p):
 		assert school
 		school.finish_production_now()
 
-	fisherman = Build(FISHERMAN, 39, 20, island, settlement=settlement)(p)
+	fisherman = Build(FISHERMAN, 25, 20, island, settlement=settlement)(p)
 	assert fisherman
 
 	assert fisherman.inventory[5] == 0		# food

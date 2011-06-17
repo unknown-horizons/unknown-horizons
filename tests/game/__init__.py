@@ -68,7 +68,7 @@ def create_map():
 	db("BEGIN TRANSACTION")
 	tiles = []
 	for x, y in Rect.init_from_topleft_and_size(0, 0, 20, 20).tuple_iter():
-		if (2 < x < 18) or (2 < y < 18):
+		if (2 < x < 18) and (2 < y < 18):
 			ground = GROUND.DEFAULT_LAND
 		else:
 			# Add coastline at the borders.
@@ -174,7 +174,7 @@ def new_session(mapgen=create_map, rng_seed=None):
 	return session, session.world.player
 
 
-def new_settlement(session, pos=Point(20, 20)):
+def new_settlement(session, pos=Point(30, 20)):
 	"""
 	Creates a settlement at the given position. It returns the settlement and the island
 	where it was created on, to avoid making function-baed tests too verbose.
