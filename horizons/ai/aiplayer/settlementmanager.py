@@ -147,6 +147,8 @@ class SettlementManager(WorldObject):
 		"""Returns false if and only if we are producing less than we should and we have a place to store it."""
 		have = self.get_resource_production(produced_resource)[0]
 		need = self.get_resident_resource_usage(consumed_resource) * 1.02 + 0.001
+		if consumed_resource == RES.GET_TOGETHER_ID:
+			need /= 4 # a tavern produces 4 units of get-together from 1 unit of liquor
 		if have >= need:
 			return True
 		storage_size = self.land_manager.settlement.inventory.get_limit(produced_resource)
@@ -176,6 +178,12 @@ class SettlementManager(WorldObject):
 		return self.enough_resource_producers(RES.SUGAR_ID, RES.GET_TOGETHER_ID)
 
 	def get_resource_production(self, resource_id):
+		# as long as there are enough collectors it is correct to calculate it this way
+		if resource_id == RES.WOOL_ID:
+			return (self.count_buildings(BUILDINGS.PASTURE_CLASS) / 30.0 / GAME_SPEED.TICKS_PER_SECOND, 0, 0)
+		elif resource_id == RES.SUGAR_ID:
+			return (self.count_buildings(BUILDINGS.SUGARCANE_FIELD_CLASS) / 30.0 / GAME_SPEED.TICKS_PER_SECOND, 0, 0)
+
 		providers = 0
 		new_providers = 0
 		amount = 0
@@ -185,6 +193,8 @@ class SettlementManager(WorldObject):
 			building = self.land_manager.settlement.ground_map[coords].object
 			if building.get_history_length(resource_id) is None:
 				continue
+			if resource_id == RES.FOOD_ID and building.id == BUILDINGS.FARM_CLASS:
+				continue
 			# TODO; make this work properly for farms where fields are added incrementally
 			if building.get_history_length(resource_id) < PRODUCTION.COUNTER_LIMIT:
 				new_providers += 1
@@ -192,6 +202,10 @@ class SettlementManager(WorldObject):
 			else:
 				providers += 1
 				amount += building.get_absolute_production_level(resource_id)
+
+		if resource_id == RES.FOOD_ID:
+			amount += self.count_buildings(BUILDINGS.POTATO_FIELD_CLASS) / 26.0 / GAME_SPEED.TICKS_PER_SECOND
+
 		return (amount, providers, new_providers)
 
 	def get_resident_resource_usage(self, resource_id):
@@ -271,7 +285,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s wool production %.5f / %.5f', self, self.get_resource_production(RES.WOOL_ID)[0], \
 			self.get_resident_resource_usage(RES.TEXTILE_ID))
 		self.log.info('%s sugar production %.5f / %.5f', self, self.get_resource_production(RES.SUGAR_ID)[0], \
-			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
+			self.get_resident_resource_usage(RES.GET_TOGETHER_ID) / 4) # a tavern produces 4 units of get-together from 1 unit of liquor
 		self.manage_production()
 		call_again = False
 		need_materials = False
