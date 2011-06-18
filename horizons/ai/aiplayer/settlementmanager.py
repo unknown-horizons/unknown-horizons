@@ -134,11 +134,15 @@ class SettlementManager(WorldObject):
 		self.village_built = self.tents == self.village_builder.tents_to_build
 
 	def set_taxes_and_permissions(self, taxes, sailors_can_upgrade, pioneers_can_upgrade):
-		self.log.info('%s tax %.1f, upgrade permissions %s, %s', self, taxes, \
-			'A' if sailors_can_upgrade else 'B', 'A' if pioneers_can_upgrade else 'B')
-		SetTaxSetting(self.land_manager.settlement, taxes).execute(self.land_manager.session)
-		SetSettlementUpgradePermissions(self.land_manager.settlement, 0, sailors_can_upgrade).execute(self.land_manager.session)
-		SetSettlementUpgradePermissions(self.land_manager.settlement, 1, pioneers_can_upgrade).execute(self.land_manager.session)
+		if abs(self.land_manager.settlement.tax_setting - taxes) > 1e-9:
+			self.log.info('%s set taxes from %.1f to %.1f', self, self.land_manager.settlement.tax_setting, taxes)
+			SetTaxSetting(self.land_manager.settlement, taxes).execute(self.land_manager.session)
+		if self.land_manager.settlement.upgrade_permissions[0] != sailors_can_upgrade:
+			self.log.info('%s set sailor upgrade permissions to %s', self, sailors_can_upgrade)
+			SetSettlementUpgradePermissions(self.land_manager.settlement, 0, sailors_can_upgrade).execute(self.land_manager.session)
+		if self.land_manager.settlement.upgrade_permissions[1] != pioneers_can_upgrade:
+			self.log.info('%s set pioneer upgrade permissions to %s', self, pioneers_can_upgrade)
+			SetSettlementUpgradePermissions(self.land_manager.settlement, 1, pioneers_can_upgrade).execute(self.land_manager.session)
 
 	def can_provide_resources(self):
 		return self.village_built
