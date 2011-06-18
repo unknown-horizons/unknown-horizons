@@ -192,7 +192,7 @@ def new_settlement(session, pos=Point(30, 20)):
 	building = Build(BUILDINGS.BRANCH_OFFICE_CLASS, pos.x, pos.y, island, ship=ship)(player)
 	assert building, "Could not build branch office at %s" % pos
 
-	return (player.settlements[0], island)
+	return (building.settlement, island)
 
 
 def game_test(*args, **kwargs):
