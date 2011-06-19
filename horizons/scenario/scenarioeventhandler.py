@@ -34,6 +34,11 @@ from horizons.scenario.conditions import CONDITIONS, _scheduled_checked_conditio
 
 from horizons.savegamemanager import YamlCache
 
+try:
+	from yaml import CLoader as Loader
+except ImportError:
+	from yaml import Loader
+
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
 		if msg is None:

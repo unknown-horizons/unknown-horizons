@@ -26,7 +26,7 @@ import os.path
 import glob
 import time
 import shelve
-from yaml import load
+import yaml
 try:
 	from yaml import CLoader as Loader
 except ImportError:
@@ -67,7 +67,7 @@ class YamlCache(object):
 				cls.cache[filename][0] != h) or \
 			 (not filename in cls.cache):
 			cls.dirty = True
-			cls.cache[filename] = (h, load( f, Loader = Loader ) )
+			cls.cache[filename] = (h, yaml.load( f, Loader = Loader ) )
 
 		return cls.cache[filename][1]
 
