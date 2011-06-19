@@ -264,3 +264,15 @@ def settle(s):
 	settlement.inventory.alter(6, 50) # tools
 	settlement.inventory.alter(7, 50) # bricks
 	return settlement, island
+
+
+def set_trace():
+	"""
+	Use this function instead of directly importing if from pdb. The test run
+	time limit will be disabled and stdout restored (so the debugger actually
+	works).
+	"""
+	signal.alarm(0)
+
+	from nose.tools import set_trace
+	set_trace()
