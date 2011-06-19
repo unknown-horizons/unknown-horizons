@@ -152,9 +152,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
 		if force or \
-		   self.show_popup(_("Quit Session"),message,show_cancel_button = True):
-			self.current.hide()
-			self.current = None
+		   self.show_popup(_("Quit Session"), message, show_cancel_button = True):
+			if self.current is not None:
+				# this can be None if not called from gui (e.g. scenario finished)
+				self.current.hide()
+				self.current = None
 			if self.session is not None:
 				self.session.end()
 				self.session = None

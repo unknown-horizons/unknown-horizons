@@ -64,9 +64,9 @@ class YamlCache(object):
 		f.seek(0)
 		# check for updates or new files
 		if (filename in cls.cache and \
-		    cls.cache[filename][0] != h) or \
-		   (not filename in cls.cache):
-		   	cls.dirty = True
+				cls.cache[filename][0] != h) or \
+			 (not filename in cls.cache):
+			cls.dirty = True
 			cls.cache[filename] = (h, load( f, Loader = Loader ) )
 
 		return cls.cache[filename][1]
@@ -185,7 +185,7 @@ class SavegameManager(object):
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
 		name = "%s/%s" % (cls.autosave_dir, \
-		                  cls.autosave_filenamepattern % {'timestamp':time.time()})
+								      cls.autosave_filenamepattern % {'timestamp':time.time()})
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
@@ -193,7 +193,7 @@ class SavegameManager(object):
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
 		name = "%s/%s" % (cls.quicksave_dir, \
-		                  cls.quicksave_filenamepattern % {'timestamp':time.time()})
+								      cls.quicksave_filenamepattern % {'timestamp':time.time()})
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
@@ -212,10 +212,10 @@ class SavegameManager(object):
 
 		if autosaves:
 			tmp_del("%s/*.%s" % (cls.autosave_dir, cls.savegame_extension),
-			                     horizons.main.fife.get_uh_setting("AutosaveMaxCount"))
+							horizons.main.fife.get_uh_setting("AutosaveMaxCount"))
 		if quicksaves:
 			tmp_del("%s/*.%s" % (cls.quicksave_dir, cls.savegame_extension),
-			                     horizons.main.fife.get_uh_setting("QuicksaveMaxCount"))
+							horizons.main.fife.get_uh_setting("QuicksaveMaxCount"))
 
 	@classmethod
 	def get_metadata(cls, savegamefile):
@@ -267,7 +267,7 @@ class SavegameManager(object):
 		"""Returns all savegames, that were saved via the ingame save dialog"""
 		cls.log.debug("Savegamemanager: regular saves from: %s", cls.savegame_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir], \
-		                                  include_displaynames = include_displaynames)
+								                     include_displaynames = include_displaynames)
 
 	@classmethod
 	def get_maps(cls, include_displaynames = True):
@@ -278,25 +278,25 @@ class SavegameManager(object):
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
 		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir, \
-		                                                                cls.autosave_dir, cls.quicksave_dir, cls.demo_dir)
+								  cls.autosave_dir, cls.quicksave_dir, cls.demo_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, \
-		                                  cls.quicksave_dir, cls.demo_dir], \
-		                                  include_displaynames = include_displaynames)
+								                      cls.quicksave_dir, cls.demo_dir], \
+								                     include_displaynames = include_displaynames)
 
 	@classmethod
 	def get_quicksaves(cls, include_displaynames = True):
 		"""Returns all savegames, that were saved via quicksave"""
 		cls.log.debug("Savegamemanager: quicksaves from: %s", cls.quicksave_dir)
 		return cls.__get_saves_from_dirs([cls.quicksave_dir], \
-		                                  include_displaynames = include_displaynames)
+								                     include_displaynames = include_displaynames)
 
 	@classmethod
 	def get_scenarios(cls, include_displaynames = True):
 		"""Returns all scenarios"""
 		cls.log.debug("Savegamemanager: scenarios from: %s", cls.scenarios_dir)
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], \
-		                                  include_displaynames = include_displaynames,
-		                  filename_extension = cls.scenario_extension)
+								                     include_displaynames = include_displaynames,
+								                     filename_extension = cls.scenario_extension)
 
 	@classmethod
 	def get_available_scenarios(cls, include_displaynames = True, locales = None):
@@ -366,8 +366,8 @@ class SavegameManager(object):
 		"""
 		cls.log.debug("Savegamemanager: campaigns from: %s", cls.campaigns_dir)
 		files, names = cls.__get_saves_from_dirs([cls.campaigns_dir], \
-			include_displaynames = include_displaynames,
-			filename_extension = cls.campaign_extension)
+								                             include_displaynames = include_displaynames,
+								                             filename_extension = cls.campaign_extension)
 		if not include_displaynames:
 			return (files,)
 		if not include_scenario_list:
