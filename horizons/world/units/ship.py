@@ -251,7 +251,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def go(self, x, y):
 		"""Moves the ship.
-		This is called when a ship is selected and RMB is pressed outside the ship"""
+		This is called when a ship is selected and the right mouse button is pressed outside the ship"""
 		self.stop()
 
 		#disable the trading route
@@ -269,30 +269,33 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.move(move_target, tmp)
 		except MoveNotPossible:
 			# find a near tile to move to
-			target_found = False
-			surrounding = Circle(move_target, radius=0)
-			while not target_found and surrounding.radius < 4:
-				surrounding.radius += 1
-				for move_target in surrounding:
-					try:
-						self.move(move_target, tmp)
-					except MoveNotPossible:
-						continue
-					target_found = True
-					break
-		if self.session.world.player == self.owner:
-			if self.position.x != move_target.x or self.position.y != move_target.y:
+			surrounding = Circle(move_target, radius=1)
+			move_target = None
+			while surrounding.radius < 5:
+				try:
+					self.move(surrounding, callback=tmp)
+				except MoveNotPossible:
+					surrounding.radius += 1
+					continue
+				# update actual target coord
 				move_target = self.get_move_target()
-			if move_target is not None:
-				loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
-				loc.thisown = 0
-				coords = fife.ModelCoordinate(move_target.x, move_target.y)
-				coords.thisown = 0
-				loc.setLayerCoordinates(coords)
-				self.session.view.renderer['GenericRenderer'].addAnimation(
-					"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
-					horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
-				)
+				break
+
+		if move_target is None: # can't move
+			# TODO: give player some kind of feedback
+			return
+
+		# draw buoy in case this is the player's ship
+		if self.session.world.player == self.owner:
+			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
+			loc.thisown = 0
+			coords = fife.ModelCoordinate(move_target.x, move_target.y)
+			coords.thisown = 0
+			loc.setLayerCoordinates(coords)
+			self.session.view.renderer['GenericRenderer'].addAnimation(
+				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
+				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
+			)
 
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM data.shipnames WHERE for_player = 1")
