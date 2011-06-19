@@ -88,7 +88,7 @@ def create_map():
 	db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", 20, 20, islandfile)
 	db("COMMIT")
 
-	return (savegame, islandfile)
+	return savegame
 
 
 class SPTestSession(SPSession):
@@ -126,27 +126,31 @@ class SPTestSession(SPSession):
 
 		GAME_SPEED.TICKS_PER_SECOND = 16
 
-	def load(self, db_files, players):
+	def load(self, savegame, players):
 		"""
 		Stripped version of the original code. We don't need to load selections,
 		or a scenario, setting up the gui or view.
 		"""
-		self.db_files = db_files	# keep the paths to the databases, so we can clean up
-		savegame_db = SavegameAccessor(db_files[0])
+		self.savegame = savegame
+		self.savegame_db = SavegameAccessor(self.savegame)
 
 		self.world = World(self)
-		self.world._init(savegame_db)
+		self.world._init(self.savegame_db)
 		for i in sorted(players):
 			self.world.setup_player(i['id'], i['name'], i['color'], i['local'])
-		self.manager.load(savegame_db)
+		self.manager.load(self.savegame_db)
 
 	def end(self):
 		"""
 		Clean up temporary files.
 		"""
 		super(SPTestSession, self).end()
-		for f in self.db_files:
-			os.remove(f)
+		# Find all islands in the map first
+		for (island_file, ) in self.savegame_db('SELECT file FROM island'):
+			os.remove(island_file)
+		# Finally remove savegame
+		self.savegame_db.close()
+		os.remove(self.savegame)
 
 	def run(self, ticks=1, seconds=None):
 		"""
