@@ -271,6 +271,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			# find a near tile to move to
 			surrounding = Circle(move_target, radius=1)
 			move_target = None
+			# try with smaller circles, increase radius if smaller circle isn't reachable
 			while surrounding.radius < 5:
 				try:
 					self.move(surrounding, callback=tmp)

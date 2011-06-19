@@ -35,7 +35,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	Inherited eg. by branch office, storage tent.
 	These objects don't have a storage themselves, but use the settlement storage.
 	"""
-	tabs = (BranchOfficeOverviewTab, InventoryTab, BuySellTab, AccountTab)
+	tabs = (BranchOfficeOverviewTab, InventoryTab, AccountTab)
 	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
@@ -61,6 +61,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
+	tabs = (BranchOfficeOverviewTab, InventoryTab, BuySellTab, AccountTab)
 	def __init__(self, *args, **kwargs):
 		super(BranchOffice, self).__init__(*args, **kwargs)
 		self.settlement.branch_office = self # we never need to unset this since bo's are indestructible
