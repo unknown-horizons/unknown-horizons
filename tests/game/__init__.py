@@ -44,6 +44,7 @@ from horizons.world import World
 
 
 db = None
+RANDOM_SEED = 42
 
 def setup_package():
 	"""
@@ -165,7 +166,7 @@ class SPTestSession(SPSession):
 			self.current_tick += 1
 
 
-def new_session(mapgen=create_map, rng_seed=42):
+def new_session(mapgen=create_map, rng_seed=RANDOM_SEED):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
 	otherwise). It returns both session and player to avoid making the function-baed

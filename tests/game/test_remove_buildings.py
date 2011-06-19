@@ -29,7 +29,7 @@ from horizons.constants import BUILDINGS, UNITS
 from horizons.util import Point
 from horizons.world.pathfinding.pather import StaticPather
 
-from tests.game import settle, game_test
+from tests.game import settle, game_test, RANDOM_SEED
 
 
 LUMBERJACK = 8
@@ -41,7 +41,7 @@ FARM = 20
 
 
 def test_removal():
-	rng = random.Random(42)
+	rng = random.Random(RANDOM_SEED)
 	for i in range(10):
 		yield remove, rng.randint(0, 200), rng.randint(0, 200), rng.randint(0, 8)
 
