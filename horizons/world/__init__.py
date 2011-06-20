@@ -38,6 +38,7 @@ from horizons.ai.pirate import Pirate
 from horizons.entities import Entities
 from horizons.util import decorators
 from horizons.world.buildingowner import BuildingOwner
+from horizons.world.diplomacy import Diplomacy
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -76,6 +77,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.trader = None
 		self.pirate = None
 		self.islands = None
+		self.diplomacy = None
 		super(World, self).end()
 
 	@decorators.make_constants()
@@ -224,6 +226,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			if self.pirate:
 				self.pirate.load_ship_states(savegame_db)
 
+		# load diplomacy
+		self.diplomacy = Diplomacy()
+		self.diplomacy.load(savegame_db)
+
 		self.inited = True
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
@@ -336,6 +342,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# add a pirate ship
 		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
+
+		# add diplomacy
+		self.diplomacy = Diplomacy()
 
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
@@ -548,6 +557,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.pirate.save(db)
 		for ship in self.ships:
 			ship.save(db)
+		self.diplomacy.save(db)
 
 	def get_checkup_hash(self):
 		dict = {

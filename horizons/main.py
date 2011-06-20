@@ -192,6 +192,8 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	from spsession import SPSession
 	_modules.session = SPSession(_modules.gui, db)
 	players = [ { 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True } ]
+	#NOTE Add dummy player
+	players.append({ 'id' : 2, 'name' : 'DumDum', 'color' : Color[2], 'local' : True })
 	try:
 		_modules.session.load(map_file, players, is_scenario=is_scenario, campaign = campaign)
 	except:
