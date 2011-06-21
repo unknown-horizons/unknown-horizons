@@ -31,6 +31,12 @@ class Diplomacy(object):
 		         for making the relationship symetrical a has a lower worldid than b
 		enemies: set of (a,b) tuples of player instances meaning a and b are enemies
 		if to players are not friends nore enemies, they are neutral
+
+		for listeners that are not Callback instances, the arguments must be:
+			caller, change_type, a, b
+			change_type is a string that can be 'friend', 'neutral' or 'enemy'
+			a is first player
+			b is second player
 	"""
 
 	def __init__(self):
@@ -43,7 +49,7 @@ class Diplomacy(object):
 			return
 		self.remove_enemy_pair(a, b)
 		self.friends.add(tup)
-		self.on_diplomacy_status_changed()
+		self.on_diplomacy_status_changed(change_type='friend', a = a, b = b)
 
 	def add_enemy_pair(self, a, b):
 		tup = make_tup(a, b)
@@ -51,7 +57,7 @@ class Diplomacy(object):
 			return
 		self.remove_friend_pair(a, b)
 		self.enemies.add(tup)
-		self.on_diplomacy_status_changed()
+		self.on_diplomacy_status_changed(change_type='enemy', a = a, b = b)
 
 	def add_neutral_pair(self, a, b):
 		tup = make_tup(a, b)
@@ -59,7 +65,7 @@ class Diplomacy(object):
 			return
 		self.remove_friend_pair(a,b)
 		self.remove_enemy_pair(a,b)
-		self.on_diplomacy_status_changed()
+		self.on_diplomacy_status_changed(change_type='neutral', a = a, b = b)
 
 	def remove_enemy_pair(self, a, b):
 		tup = make_tup(a,b)

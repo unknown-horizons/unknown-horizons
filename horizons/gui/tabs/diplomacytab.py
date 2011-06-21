@@ -55,11 +55,11 @@ class DiplomacyTab(TabInterface):
 	
 	def show(self):
 		super(DiplomacyTab, self).show()
-		self.diplomacy.add_diplomacy_status_changed_listener(self.check_diplomacy_state)
+		self.diplomacy.add_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def hide(self):
 		super(DiplomacyTab, self).hide()
-		self.diplomacy.remove_diplomacy_status_changed_listener(self.check_diplomacy_state)
+		self.diplomacy.remove_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def add_friend(self):
 		"""
@@ -79,7 +79,7 @@ class DiplomacyTab(TabInterface):
 		"""
 		self.diplomacy.add_enemy_pair(self.player, self.local_player)
 
-	def check_diplomacy_state(self, caller=None):
+	def check_diplomacy_state(self):
 		"""
 		Checks the box with the diplomacy status between local player and selected player
 		"""
