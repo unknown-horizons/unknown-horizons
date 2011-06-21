@@ -26,6 +26,7 @@ from collections import deque
 from constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
+from productionchain import ProductionChain
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
@@ -55,6 +56,9 @@ class SettlementManager(WorldObject):
 		self.production_builder = ProductionBuilder(self)
 		self.village_builder.display()
 		self.production_builder.display()
+
+		# TODO: load the production chains
+		self.textile_chain = ProductionChain.create(self, RES.TEXTILE_ID)
 
 		self.tents = 0
 		self.num_fishers = 0
@@ -158,17 +162,6 @@ class SettlementManager(WorldObject):
 		storage_size = self.land_manager.settlement.inventory.get_limit(produced_resource)
 		storage_used = self.land_manager.settlement.inventory[produced_resource]
 		return storage_used >= storage_size * 0.7 + 4
-
-	def need_weavers(self):
-		# TODO: do this the right way...
-		weaver_time = 12.0
-		pasture_time = 30.0
-		return self.count_buildings(BUILDINGS.PASTURE_CLASS) / pasture_time > self.count_buildings(BUILDINGS.WEAVER_CLASS) / weaver_time + 1e-9
-
-	def enough_textile_producers(self):
-		if self.need_weavers():
-			return False
-		return self.enough_resource_producers(RES.WOOL_ID, RES.TEXTILE_ID)
 
 	def need_distilleries(self):
 		# TODO: do this the right way...
@@ -283,6 +276,14 @@ class SettlementManager(WorldObject):
 						return True
 		return upgraded_any
 
+	def build_chain(self, chain, call_again):
+		amount = self.get_resident_resource_usage(chain.resource_id)
+		result = chain.build(amount * 1.02)
+		if result == BUILD_RESULT.ALL_BUILT:
+			return False # return and build something else instead
+		self.log_generic_build_result(result, call_again, 'textile producer')
+		return True
+
 	def tick(self):
 		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID)[0], \
 			self.get_resident_resource_usage(RES.FOOD_ID))
@@ -315,13 +316,8 @@ class SettlementManager(WorldObject):
 		elif self.tents >= 10 and not self.count_buildings(BUILDINGS.PAVILION_CLASS):
 			result = self.village_builder.build_pavilion()
 			self.log_generic_build_result(result, call_again, 'pavilion')
-		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and not self.enough_textile_producers():
-			if self.need_weavers():
-				result = self.production_builder.build_weaver()
-				self.log_generic_build_result(result, call_again, 'weaver')
-			else:
-				result = self.production_builder.build_wool_producer()
-				self.log_generic_build_result(result, call_again, 'wool producer')
+		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, call_again):
+			pass
 		elif self.village_builder.tents_to_build > self.tents:
 			result = self.village_builder.build_tent()
 			self.log_generic_build_result(result, call_again, 'tent')

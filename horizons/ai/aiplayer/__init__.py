@@ -29,8 +29,12 @@ from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
 from virtualbuilding import VirtualFarm, VirtualFisher, VirtualClayPit
+
+# all subclasses of AbstractBuilding have to imported here to register the available buildings
 from building import AbstractBuilding
-from productionchain import ProductionChain
+from building.farm import AbstractFarm
+from building.field import AbstractField
+from building.weaver import AbstractWeaver
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
@@ -53,8 +57,6 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
 		AbstractBuilding.load_all(session.db)
-		print ProductionChain.create(RES.TEXTILE_ID)
-		print ProductionChain.create(RES.GET_TOGETHER_ID)
 
 	def choose_island(self, min_land):
 		options = []

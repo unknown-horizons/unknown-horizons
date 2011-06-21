@@ -32,7 +32,6 @@ from horizons.ai.aiplayer.buildingevaluator.fisherevaluator import FisherEvaluat
 from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
 from horizons.ai.aiplayer.buildingevaluator.claypitevaluator import ClayPitEvaluator
 from horizons.ai.aiplayer.buildingevaluator.brickyardevaluator import BrickyardEvaluator
-from horizons.ai.aiplayer.buildingevaluator.weaverevaluator import WeaverEvaluator
 from horizons.ai.aiplayer.buildingevaluator.distilleryevaluator import DistilleryEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
 from horizons.constants import AI, BUILDINGS, RES
@@ -444,9 +443,6 @@ class ProductionBuilder(WorldObject):
 		self.settlement_manager.num_fields[field_purpose] += 1
 		return BUILD_RESULT.OK
 
-	def build_wool_producer(self):
-		return self.build_simple_field_producer(PRODUCTION_PURPOSE.PASTURE, BUILDINGS.PASTURE_CLASS)
-
 	def build_sugar_producer(self):
 		return self.build_simple_field_producer(PRODUCTION_PURPOSE.SUGARCANE_FIELD, BUILDINGS.SUGARCANE_FIELD_CLASS)
 
@@ -464,10 +460,6 @@ class ProductionBuilder(WorldObject):
 		for evaluator in sorted(options):
 			return evaluator.execute()
 		return BUILD_RESULT.IMPOSSIBLE
-
-	def build_weaver(self):
-		""" Builds a weaver and a road leading to it """
-		return self.build_simple_producer(BUILDINGS.WEAVER_CLASS, WeaverEvaluator)
 
 	def build_distillery(self):
 		""" Builds a distillery and a road leading to it """

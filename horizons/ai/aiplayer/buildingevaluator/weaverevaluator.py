@@ -43,8 +43,8 @@ class WeaverEvaluator(BuildingEvaluator):
 		return 0 # TODO: implement this
 
 	@classmethod
-	def create(cls, production_builder, x, y):
-		builder = production_builder.make_builder(BUILDINGS.WEAVER_CLASS, x, y, True)
+	def create(cls, production_builder, x, y, orientation):
+		builder = production_builder.make_builder(BUILDINGS.WEAVER_CLASS, x, y, True, orientation)
 		if not builder:
 			return None
 

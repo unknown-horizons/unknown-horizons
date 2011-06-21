@@ -121,6 +121,7 @@ class BUILDINGS:
 class RES:
 	# ./development/print_db_data.py res
 	GOLD_ID = 1
+	LAMB_WOOL_ID = 2
 	TEXTILE_ID = 3
 	BOARDS_ID = 4
 	FOOD_ID = 5
@@ -129,6 +130,8 @@ class RES:
 	WOOL_ID = 10
 	WILDANIMALFOOD_ID = 12
 	HAPPINESS_ID = 14
+	POTATOES_ID = 15
+	RAW_SUGAR_ID = 17
 	SUGAR_ID = 18
 	RAW_CLAY_ID = 20
 	CLAY_ID = 21
