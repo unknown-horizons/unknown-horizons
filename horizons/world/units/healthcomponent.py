@@ -48,7 +48,7 @@ def HealthDecorator(original_class):
 	orig_init = original_class.__init__
 	orig_save = original_class.save
 	orig_load = original_class.load
-	orig_remove =original_class.remove
+	orig_remove = original_class.remove
 
 	def __init__(self, *args, **kwargs):
 		orig_init(self, *args, **kwargs)
@@ -69,7 +69,13 @@ def HealthDecorator(original_class):
 
 	def create_health_component(self):
 		self.health = HealthComponent(self.session.db, self.id)
+		self.health.add_damage_dealt_listener(self.redraw_health)
 		self.health.add_damage_dealt_listener(self.check_if_alive)
+
+	def redraw_health(self, caller=None):
+		if self in self.session.selected_instances:
+			if hasattr(self, 'draw_health'):
+				self.draw_health()
 
 	def check_if_alive(self, caller=None):
 		if self.health.health <= 0:
@@ -81,6 +87,7 @@ def HealthDecorator(original_class):
 	original_class.remove = remove
 	setattr(original_class, "create_health_component", create_health_component)
 	setattr(original_class, "check_if_alive", check_if_alive)
+	setattr(original_class, "redraw_health", redraw_health)
 
 	return original_class
 
