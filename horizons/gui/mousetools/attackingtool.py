@@ -64,7 +64,7 @@ class AttackingTool(SelectionTool):
 		super(AttackingTool, self).mouseMoved(evt)
 		target = self._get_attackable_instance(evt)
 		if target:
-			horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.tearing_cursor_image)
+			horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.attacking_cursor_image)
 		else:
 			horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
 

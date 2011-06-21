@@ -263,6 +263,7 @@ class Fife(ApplicationBase):
 		self.cursor = self.engine.getCursor()
 		self.default_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor.png')
 		self.tearing_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_tear.png')
+		self.attacking_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_attack.png')
 		self.cursor.set(fife.CURSOR_IMAGE, self.default_cursor_image)
 
 		#init pychan
