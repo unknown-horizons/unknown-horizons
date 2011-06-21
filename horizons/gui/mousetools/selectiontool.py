@@ -21,6 +21,7 @@
 
 from fife import fife
 
+import horizons.main
 from horizons.command.unit import Act
 from horizons.util import WorldObject
 from navigationtool import NavigationTool
