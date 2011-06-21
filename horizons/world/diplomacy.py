@@ -19,6 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.util.changelistener import metaChangeListenerDecorator
+
+@metaChangeListenerDecorator("diplomacy_status_changed")
 class Diplomacy(object):
 	"""
 	Diplomacy class
@@ -40,6 +43,7 @@ class Diplomacy(object):
 			return
 		self.remove_enemy_pair(a, b)
 		self.friends.add(tup)
+		self.on_diplomacy_status_changed()
 
 	def add_enemy_pair(self, a, b):
 		tup = make_tup(a, b)
@@ -47,6 +51,7 @@ class Diplomacy(object):
 			return
 		self.remove_friend_pair(a, b)
 		self.enemies.add(tup)
+		self.on_diplomacy_status_changed()
 
 	def add_neutral_pair(self, a, b):
 		tup = make_tup(a, b)
@@ -54,6 +59,7 @@ class Diplomacy(object):
 			return
 		self.remove_friend_pair(a,b)
 		self.remove_enemy_pair(a,b)
+		self.on_diplomacy_status_changed()
 
 	def remove_enemy_pair(self, a, b):
 		tup = make_tup(a,b)

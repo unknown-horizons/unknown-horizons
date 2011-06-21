@@ -45,36 +45,41 @@ class DiplomacyTab(TabInterface):
 			'enemy_check_box' : self.add_enemy})
 
 		self.check_diplomacy_state()
-		
+
 		color = player.color.name
 		self.button_up_image = icon_path % color
 		self.button_active_image = icon_path % color
 		self.button_down_image = icon_path % color
 		self.button_hover_image = icon_path % color
 		self.tooltip = player.name
+	
+	def show(self):
+		super(DiplomacyTab, self).show()
+		self.diplomacy.add_diplomacy_status_changed_listener(self.check_diplomacy_state)
+
+	def hide(self):
+		super(DiplomacyTab, self).hide()
+		self.diplomacy.remove_diplomacy_status_changed_listener(self.check_diplomacy_state)
 
 	def add_friend(self):
 		"""
 		Callback for setting ally status between local player and tab's player
 		"""
 		self.diplomacy.add_friend_pair(self.player, self.local_player)
-		self.check_diplomacy_state()
 
 	def add_neutral(self):
 		"""
 		Callback for setting neutral status between local player and tab's player
 		"""
 		self.diplomacy.add_neutral_pair(self.player, self.local_player)
-		self.check_diplomacy_state()
 
 	def add_enemy(self):
 		"""
 		Callback for setting enemy status between local player and tab's player
 		"""
 		self.diplomacy.add_enemy_pair(self.player, self.local_player)
-		self.check_diplomacy_state()
-	
-	def check_diplomacy_state(self):
+
+	def check_diplomacy_state(self, caller=None):
 		"""
 		Checks the box with the diplomacy status between local player and selected player
 		"""
