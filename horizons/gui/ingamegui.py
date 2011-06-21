@@ -27,7 +27,7 @@ from horizons.entities import Entities
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool, SelectionTool
-from horizons.gui.tabs import TabWidget, BuildTab
+from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
@@ -108,7 +108,8 @@ class IngameGui(LivingObject):
 			'build' : self.show_build_menu,
 			'helpLink' : self.main_gui.on_help,
 			'gameMenuButton' : self.main_gui.show_pause,
-			'logbook' : self.logbook.toggle_visibility
+			'logbook' : self.logbook.toggle_visibility,
+			'diplomacyButton' : self.show_diplomacy_menu
 		})
 
 		self.widgets['tooltip'].hide()
@@ -299,6 +300,21 @@ class IngameGui(LivingObject):
 		self.widgets['minimap'].show()
 		self.widgets['menu_panel'].hide()
 		self.widgets['menu_panel'].show()
+
+	def show_diplomacy_menu(self):
+		# check if the menu is already shown
+		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "diplomacy_widget":
+			self.hide_menu()
+			return
+		players = self.session.world.players
+		local_player = self.session.world.player
+		dtabs = []
+		for player in players:
+			if player is not local_player:
+				dtabs.append(DiplomacyTab(player))
+		tab = TabWidget(self, tabs=dtabs, name="diplomacy_widget")
+		self.show_menu(tab)
+
 
 	def show_build_menu(self):
 		# check if build menu is already shown

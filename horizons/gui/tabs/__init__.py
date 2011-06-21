@@ -33,3 +33,5 @@ from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, \
                            BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab
 from buildrelatedtab import BuildRelatedTab
+
+from diplomacytab import DiplomacyTab

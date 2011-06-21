@@ -36,38 +36,54 @@ class Diplomacy(object):
 
 	def add_friend_pair(self, a, b):
 		tup = make_tup(a, b)
+		if tup is None:
+			return
 		self.remove_enemy_pair(a, b)
 		self.friends.add(tup)
 
 	def add_enemy_pair(self, a, b):
 		tup = make_tup(a, b)
+		if tup is None:
+			return
 		self.remove_friend_pair(a, b)
 		self.enemies.add(tup)
 
 	def add_neutral_pair(self, a, b):
 		tup = make_tup(a, b)
+		if tup is None:
+			return
 		self.remove_friend_pair(a,b)
 		self.remove_enemy_pair(a,b)
 
 	def remove_enemy_pair(self, a, b):
 		tup = make_tup(a,b)
+		if tup is None:
+			return
 		if tup in self.enemies:
 			self.enemies.remove(tup)
 
 	def remove_friend_pair(self, a, b):
 		tup = make_tup(a,b)
+		if tup is None:
+			return
 		if tup in self.friends:
 			self.friends.remove(tup)
 
 	def are_friends(self, a, b):
+		if a is b:
+			return True
 		tup = make_tup(a,b)
 		return tup in self.friends
 
 	def are_enemies(self, a, b):
+		if a is b:
+			return False
 		tup = make_tup(a,b)
 		return tup in self.enemies
 
 	def are_neutral(self, a, b):
+		if a is b:
+			return False
 		tup = make_tup(a,b)
 		return tup not in self.friends and tup not in self.enemies
 
@@ -83,7 +99,9 @@ def make_tup(a, b):
 	"""
 	Utility function that returns x,y tuple with x.worldid < y.worldid
 	"""
-	if a.worldid < b.worldid:
+	if a is b:
+		return None
+	elif a.worldid < b.worldid:
 		return a,b
 	else:
 		return b,a

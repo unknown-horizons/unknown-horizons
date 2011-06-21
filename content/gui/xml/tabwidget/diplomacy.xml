@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Container name="tab0" size="250,500" padding="2">
+<TabBG amount="7"/>
+
+<Container position="0,70" size="250,380">
+	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<Spacer min_size="0"  max_size="50" />
+		<Label name="headline"/>
+	</HBox>
+
+	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	
+	<VBox position="50, 50" size="70,70">
+			<Label name="ally_label" text="ally" />
+			<CheckBox name="ally_check_box" min_size="10,10" />
+			<Label name="neutral_label" text="neutral" />
+			<CheckBox name="neutral_check_box" min_size="10,10"/>
+			<Label name="enemy_label" text="enemy" />
+			<CheckBox name="enemy_check_box" min_size="10,10"/>
+	</VBox>
+
+</Container>
+</Container>
