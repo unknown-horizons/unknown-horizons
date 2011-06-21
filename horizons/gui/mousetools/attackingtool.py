@@ -21,6 +21,7 @@
 
 from fife import fife
 
+import horizons.main
 from horizons.command.unit import Act
 from horizons.util import WorldObject
 from selectiontool import SelectionTool
@@ -43,30 +44,14 @@ class AttackingTool(SelectionTool):
 			target_mapcoord = self.session.view.cam.toMapCoordinates(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
 
-			instances = self.session.view.cam.getMatchingInstances(\
-				fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
-			attackable = False
-			for i in instances:
-				id = i.getId()
-				if id == '':
-					continue
-				instance = WorldObject.get_object_by_id(int(id))
-				#NOTE attacks only buildings or ships
-				try:
-					if instance.is_building or instance.is_ship:
-						attackable = True
-						target = instance
-				except AttributeError:
-					pass
+			target = self._get_attackable_instance(evt)
 
-			if attackable:
+			if target:
 				for i in self.session.selected_instances:
 					#TODO attack command
 					#dummy attack if possible
 					if hasattr(i, 'attack'):
 						i.attack(target)
-						print 'instance', i, 'triggered an attack on', target
-
 			else:
 				for i in self.session.selected_instances:
 					if i.movable:
@@ -74,3 +59,42 @@ class AttackingTool(SelectionTool):
 			evt.consume()
 		else:
 			super(AttackingTool, self).mousePressed(evt)
+
+	def mouseMoved(self, evt):
+		super(AttackingTool, self).mouseMoved(evt)
+		target = self._get_attackable_instance(evt)
+		if target:
+			horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.tearing_cursor_image)
+		else:
+			horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
+
+	def _get_attackable_instance(self, evt):
+		"""
+		Returns target instance if mouse is over an attackable instance
+		Returns None if mouse is not over an attackable instance
+		"""
+		instances = self.session.view.cam.getMatchingInstances(\
+			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+
+		target = None
+		attackable = False
+		for i in instances:
+			id = i.getId()
+			if id == '':
+				continue
+			instance = WorldObject.get_object_by_id(int(id))
+			local_player = self.session.world.player
+			if not instance.owner:
+				continue
+			#check diplomacy state between local player and instance owner
+			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner):
+				continue
+			#NOTE attacks only buildings or ships
+			try:
+				if instance.is_building or instance.is_ship:
+					attackable = True
+					target = instance
+			except AttributeError:
+				pass
+		return target
+

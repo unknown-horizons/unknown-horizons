@@ -109,18 +109,21 @@ class SelectionTool(NavigationTool):
 		evt.consume()
 
 	def apply_select(self):
-		"""Called when selected instances changes. (Shows their menu)"""
+		"""
+		Called when selected instances changes. (Shows their menu)
+		If one of the selected instances can attack, switch mousetool to AttackingTool
+		"""
 		if len(self.session.selected_instances) > 1:
 			pass
 		elif len(self.session.selected_instances) == 1:
 			for i in self.session.selected_instances:
 				i.show_menu()
 
-		#NOTE change session cursor to attacking tool if selected instances can attack
+		#change session cursor to attacking tool if selected instances can attack
 		from attackingtool import AttackingTool
 		attacking_unit_found = False
 		for i in self.session.selected_instances:
-			if hasattr(i, 'attack'):
+			if hasattr(i, 'attack') and i.owner == self.session.world.player:
 				attacking_unit_found = True
 				break
 
@@ -128,8 +131,8 @@ class SelectionTool(NavigationTool):
 			self.session.cursor = AttackingTool(self.session)
 		if not attacking_unit_found and isinstance(self.session.cursor, AttackingTool):
 			self.session.cursor = SelectionTool(self.session)
+			horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
 			print 'selection tool selected'
-		#############################
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
