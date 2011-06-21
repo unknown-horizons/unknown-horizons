@@ -33,20 +33,21 @@ class ProductionChain:
 		self.chain = chain
 
 	@classmethod
-	def _get_chain(cls, resource_id, resource_producer):
+	def _get_chain(cls, resource_id, resource_producer, production_ratio):
 		""" Returns the first chain that can produce the given resource or None if it is impossible """
 		if resource_id in resource_producer:
 			for production_line, abstract_building in resource_producer[resource_id]:
 				possible = True
 				sources = []
-				for consumed_resource in production_line.consumed_res:
-					tail = cls._get_chain(consumed_resource, resource_producer)
+				for consumed_resource, amount in production_line.consumed_res.iteritems():
+					next_production_ratio = abs(production_ratio * amount / production_line.produced_res[resource_id])
+					tail = cls._get_chain(consumed_resource, resource_producer, next_production_ratio)
 					if not tail:
 						possible = False
 						break
 					sources.append(tail)
 				if possible:
-					return ProductionChainSubtree(resource_id, production_line, abstract_building, sources)
+					return ProductionChainSubtree(resource_id, production_line, abstract_building, sources, production_ratio)
 		return None
 
 	@classmethod
@@ -59,20 +60,21 @@ class ProductionChain:
 				if resource not in resource_producer:
 					resource_producer[resource] = []
 				resource_producer[resource].append((production_line, abstract_building))
-		return ProductionChain(resource_id, cls._get_chain(resource_id, resource_producer))
+		return ProductionChain(resource_id, cls._get_chain(resource_id, resource_producer, 1.0))
 
 	def __str__(self):
 		return 'ProductionChain(%d)\n%s' % (self.resource_id, self.chain)
 
 class ProductionChainSubtree:
-	def __init__(self, resource_id, production_line, abstract_building, children):
+	def __init__(self, resource_id, production_line, abstract_building, children, production_ratio):
 		self.resource_id = resource_id
 		self.production_line = production_line
 		self.abstract_building = abstract_building
 		self.children = children
+		self.production_ratio = production_ratio
 
 	def __str__(self, level = 0):
-		result = '%sProduce %d in %s\n' % ('  ' * level, self.resource_id, self.abstract_building.name)
+		result = '%sProduce %d (ratio %.2f) in %s\n' % ('  ' * level, self.resource_id, self.production_ratio, self.abstract_building.name)
 		for child in self.children:
 			result += child.__str__(level + 1)
 		return result
