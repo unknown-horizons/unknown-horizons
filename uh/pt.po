@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-25 13:29+0200\n"
+"PO-Revision-Date: 2011-06-17 23:12+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -127,7 +127,7 @@ msgstr "Carregar jogo"
 
 #: horizons/gui/gui.py:206 horizons/i18n/guitranslations.py:144
 msgid "Save game"
-msgstr "Guardar jogo"
+msgstr "Gravar jogo"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:252
@@ -198,7 +198,7 @@ msgstr "Nenhum ficheiro selecionado"
 
 #: horizons/gui/gui.py:440
 msgid "You need to select a savegame to delete"
-msgstr "Tem que selecionar uma gravação de jogo para apagar"
+msgstr "Necessida de selecionar uma gravação de jogo para apagar"
 
 #: horizons/gui/gui.py:443
 #, python-format
@@ -467,7 +467,7 @@ msgstr "Sinal de fogo: Permite ao jogador trocar com o mercador livre."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr "Lenhador: Corta arvores e converte-as em pranchas de madeira."
+msgstr "Lenhador: Corta árvores e converte-as em tábuas."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
@@ -480,11 +480,12 @@ msgstr "Tenda: Aloja os seus habitantes."
 #: horizons/i18n/guitranslations.py:53
 msgid "Storage: Extends stock and provides collectors."
 msgstr ""
-"Armazenamento: Extende a capacidade de armazenamento e force colecionadores."
+"Armazenamento: Extende a capacidade de armazenamento e fornece "
+"colecionadores."
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Trail: Needed for collecting goods."
-msgstr "Carreiro: Necessário para colecionar mercadorias."
+msgstr "Caminho: Necessário para colecionar mercadorias."
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
@@ -496,7 +497,7 @@ msgstr "Campos"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer buildings"
-msgstr "Edificios de Pioneiro"
+msgstr "Edifícios de pioneiro"
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
@@ -505,7 +506,7 @@ msgstr "Militar"
 #: horizons/i18n/guitranslations.py:62
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
-"Contrutor de barcos: contrói barcos e navios pequenos. Construídos na costa."
+"Contrutor de barcos: Contrói barcos e navios pequenos. Construídos na costa."
 
 #: horizons/i18n/guitranslations.py:63
 msgid "Brickyard: Turns clay into bricks."
@@ -513,7 +514,7 @@ msgstr "Olaria: Converte barro em tijolos."
 
 #: horizons/i18n/guitranslations.py:64
 msgid "Clay pit: Gets clay from deposit."
-msgstr "Poço de barro: Fornece barro do depósito."
+msgstr "Poço de barro: Extrai barro do depósito."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
@@ -521,7 +522,7 @@ msgstr "Destilaria: Converte o açucar em alcoól."
 
 #: horizons/i18n/guitranslations.py:66
 msgid "Farm: Grows field crops and raises livestock."
-msgstr "Quinta: crescem culturas e cria gado."
+msgstr "Quinta: Crescem culturas e cria gado."
 
 #: horizons/i18n/guitranslations.py:67
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
@@ -529,29 +530,29 @@ msgstr "Pasto: Cria ovelhas. Produz lã. Requer uma quinta."
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
-msgstr "Campo de batatas: Fornece comida. Necessita de uma quinta."
+msgstr "Campo de batatas: Fornece comida. Requer uma quinta."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
-"Plantação de cana de açucar: Utilizado na produção de alcoól. Requer uma "
+"Plantação de cana de açúcar: Utilizado na produção de alcoól. Requer uma "
 "quinta."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
-msgstr "Escola da aldeia: Fornece educação."
+msgstr "Escola: Fornece educação."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr "Tecelão: converte a lã em tecido."
+msgstr "Tecelão: Converte a lã em tecido."
 
 #: horizons/i18n/guitranslations.py:74
 msgid "Settler buildings"
-msgstr "Edífcios do colonizador"
+msgstr "Edífcios do colonizadores"
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr "Queima do carvão: Queima molhos de tabúas."
+msgstr "Fornalha: Queima molhos de tabúas e transforma-os em carvão."
 
 #: horizons/i18n/guitranslations.py:77
 msgid "Iron mine: Gets iron ore from deposit."
@@ -567,7 +568,7 @@ msgstr "Taverna: Fornece reuniões."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Toolmaker: Produces tools out of iron."
-msgstr "Ferreiro: Produz ferramentas a partir do ferro."
+msgstr "Ferramenteiro: Produz ferramentas a partir do ferro."
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:297
 msgid "Running costs:"
@@ -591,7 +592,7 @@ msgstr "Habitantes"
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Click to change the name of your settlement."
-msgstr "Clique para mudar o nome da sua colonato."
+msgstr "Clique para mudar o nome do seu povoação."
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Destroy"
@@ -612,7 +613,7 @@ msgstr "Ajuda"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Captain's log"
-msgstr "Diário do Capitão"
+msgstr "Diário de bordo"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Rotate map counterclockwise"
@@ -636,7 +637,7 @@ msgstr "Ampliar"
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Zoom out"
-msgstr "Diminuir amplicação"
+msgstr "Diminuir ampliação"
 
 #: horizons/i18n/guitranslations.py:105
 msgid "Boards"

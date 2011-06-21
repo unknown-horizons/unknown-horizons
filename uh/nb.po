@@ -51,7 +51,7 @@ msgstr ""
 #: horizons/engine.py:198
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Ønsket språk %(lang) i %(place) kunne ikke lastes"
+msgstr "Ønsket språk %(lang)s i %(place)s kunne ikke lastes"
 
 #: horizons/engine.py:426
 msgid "Invalid network port"

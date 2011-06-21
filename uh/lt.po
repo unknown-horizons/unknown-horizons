@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-25 23:50+0200\n"
+"PO-Revision-Date: 2011-06-17 15:53+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -85,7 +85,7 @@ msgstr "Klaida"
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr "Nepavyko įrašyti"
+msgstr "Nepavyko įrašyti."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -149,9 +149,8 @@ msgstr ""
 
 # 83%
 #: horizons/gui/gui.py:329
-#, fuzzy
 msgid "Error:"
-msgstr "Klaida"
+msgstr "Klaida:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-08 20:24+0200\n"
-"Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
+"PO-Revision-Date: 2011-06-17 15:15+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,7 @@ msgid "Welcome to Unknown Horizons!"
 msgstr "Vítej v Unknown Horizons!"
 
 #: po/tutorial.py:6
+#, fuzzy
 msgid ""
 "This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n"
 "\n"

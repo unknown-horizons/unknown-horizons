@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -688,7 +688,7 @@ msgstr "alcance"
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "running"
-msgstr "correr"
+msgstr "activo / correr"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #

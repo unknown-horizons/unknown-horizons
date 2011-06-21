@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-25 00:43+0200\n"
+"PO-Revision-Date: 2011-06-05 11:23+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -443,7 +443,7 @@ msgstr "impostazione"
 #: po/tutorial.py
 #: sqlite/Building
 msgid "storage tent"
-msgstr "tenda di stoggaggio"
+msgstr "tenda di stoccaggio"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -719,7 +719,7 @@ msgstr "di volta in volta"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trading"
-msgstr "commerciare"
+msgstr "negoziazione"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py

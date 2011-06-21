@@ -169,7 +169,7 @@ msgstr "Shranjeno na %s\n"
 
 #: horizons/gui/gui.py:401
 msgid "%H:%M, %A, %B %d"
-msgstr "%H:%M , %d. %m. "
+msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:412
 #, python-format
@@ -1368,10 +1368,12 @@ msgstr ""
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Napaka: Ni mogoče najti zemljevida \"%s\"."
 
+# 81%
+# 76%
 #: horizons/savegamemanager.py:343
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr ""
+msgstr "Napaka: Ni mogoče najti zemljevida \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-25 23:12+0200\n"
+"PO-Revision-Date: 2011-06-17 15:45+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -34,7 +34,7 @@ msgstr "peli"
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "building"
-msgstr ""
+msgstr "rakennus"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -76,7 +76,7 @@ msgstr "alus"
 #: sqlite/Building
 #: run_uh.py
 msgid "main"
-msgstr ""
+msgstr "pää-"
 
 #: horizons/constants.py
 #: horizons/scenario/scenarioeventhandler.py
@@ -145,11 +145,13 @@ msgstr "ruoka"
 #: horizons/gui/tabs/buildtabs.py
 msgid "increment"
 msgstr ""
+"siirtokuntataso (colony level) / kasvutaso (increase level) / asutustaso "
+"(residentual level)"
 
 #: po/tutorial.py
 #: horizons/gui/
 msgid "minimap"
-msgstr ""
+msgstr "minimap / minikartta / pikkukartta"
 
 #: po/tutorial.py
 #: horizons/gui/
@@ -165,7 +167,7 @@ msgstr "valikko"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "produce"
-msgstr "tuottaa"
+msgstr "tuottaa / valmistaa"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -292,12 +294,12 @@ msgstr "jäljellä"
 #: sqlite/Building
 #: run_uh.py
 msgid "log"
-msgstr "tukki"
+msgstr "tukki / lokikirja"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "reach"
-msgstr "saavuta"
+msgstr "saavuttaa / ylettää / olla kantamassa"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -308,7 +310,7 @@ msgstr "valitse"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "stock"
-msgstr ""
+msgstr "tarjonta / valikoima / varasto"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -351,6 +353,8 @@ msgstr "löydetty"
 #: sqlite/Building
 msgid "pavilion"
 msgstr ""
+"kokousteltta (tent for meetings) / tapahtumateltta (tent for happenings) / "
+"juhlateltta (tent for celebration)"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -366,7 +370,7 @@ msgstr "merkkituli"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "slider"
-msgstr "liu'utin"
+msgstr "vieritin"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -393,7 +397,7 @@ msgstr "kerääjä"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "help"
-msgstr "ohje"
+msgstr "ohje / apua"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -415,7 +419,7 @@ msgstr "laidun"
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "pioneeri"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -426,7 +430,7 @@ msgstr "peruna"
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "range"
-msgstr "kantama"
+msgstr "kantama / etäisyydellä / välillä"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -456,7 +460,7 @@ msgstr "sokeri"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "tree"
-msgstr ""
+msgstr "puu"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -631,7 +635,7 @@ msgstr "kauppapaikka"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "mode"
-msgstr ""
+msgstr "moodi / tila"
 
 # 
 #: po/tutorial.py
@@ -709,7 +713,7 @@ msgstr "ääni"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "team"
-msgstr "joukkue"
+msgstr "joukkue / ryhmä"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -729,7 +733,7 @@ msgstr "vieraile"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "weaver"
-msgstr ""
+msgstr "vaatturi/räätäli"
 
 # 
 #: horizons/gui/ingamegui.py

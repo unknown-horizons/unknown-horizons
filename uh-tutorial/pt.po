@@ -69,7 +69,7 @@ msgstr ""
 "Sugestões sobre vocabulário, tópicos ou mesmo falhas que gostaria de ver "
 "explicados: diga-nos e tentaremos melhorar o tutorial!\n"
 "\n"
-"Para ajuda sobre contactar a equipa, visite,  www.unknown-origins.org!\n"
+"Para ajuda sobre contactar a equipa, visite, www.unknown-horizons.org!\n"
 "\n"
 "E agora, vamos iniciar o jgoo."
 

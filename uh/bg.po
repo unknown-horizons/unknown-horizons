@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-23 02:15+0200\n"
+"PO-Revision-Date: 2011-05-26 18:21+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -148,9 +148,11 @@ msgstr ""
 msgid "Details:"
 msgstr ""
 
+# 83%
 #: horizons/gui/gui.py:329
+#, fuzzy
 msgid "Error:"
-msgstr ""
+msgstr "Грешка"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -1015,9 +1017,11 @@ msgstr ""
 msgid "Number of autosaves:"
 msgstr "Номер на автозапазване:"
 
+# 80%
 #: horizons/i18n/guitranslations.py:233
+#, fuzzy
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "Номер на автозапазване:"
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Full screen:"
@@ -1043,9 +1047,11 @@ msgstr ""
 msgid "Enter filename:"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "Your saved games:"
-msgstr ""
+msgstr "Няма запазени игри"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Choose a map to play:"
@@ -1128,9 +1134,11 @@ msgstr ""
 msgid "Running costs"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:269
+#, fuzzy
 msgid "Fishing boats"
-msgstr ""
+msgstr "Рибарски лодки"
 
 #: horizons/i18n/guitranslations.py:270
 msgid "Fishing boat"
@@ -1157,9 +1165,11 @@ msgstr ""
 msgid "Not yet implemented!"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:279
+#, fuzzy
 msgid "Select resources:"
-msgstr ""
+msgstr "Продай ресурси"
 
 #: horizons/i18n/guitranslations.py:281
 msgid "Buying"
@@ -1366,9 +1376,11 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
+# 75%
 #: horizons/spsession.py:97
+#, fuzzy
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Неуспех при запазване"
 
 #: horizons/spsession.py:98
 msgid "An error happened during quicksave. Your game has not been saved."
@@ -1407,9 +1419,11 @@ msgstr ""
 msgid "The savegame file is currently used by another program."
 msgstr ""
 
+# 83%
 #: horizons/world/units/ship.py:330
+#, fuzzy
 msgid "Trader"
-msgstr ""
+msgstr "Търговия"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -1723,13 +1737,17 @@ msgstr "Вашата мина се изчерпа от ресурси."
 msgid "Your settlers reached level ${level}."
 msgstr "Вашите колонисти достигнаха ниво ${level}."
 
+# 83%
 #: sqlite/Resources
+#, fuzzy
 msgid "boards"
-msgstr ""
+msgstr "Дъски"
 
+# 83%
 #: sqlite/Resources
+#, fuzzy
 msgid "bricks"
-msgstr ""
+msgstr "Тухли"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1759,9 +1777,11 @@ msgstr "Вяра"
 msgid "fish"
 msgstr "Риба"
 
+# 75%
 #: sqlite/Resources
+#, fuzzy
 msgid "food"
-msgstr ""
+msgstr "Храна"
 
 #: sqlite/Resources
 msgid "get-together"
@@ -1811,13 +1831,17 @@ msgstr "Суровина-захар"
 msgid "sugar"
 msgstr "Захар"
 
+# 75%
 #: sqlite/Resources
+#, fuzzy
 msgid "textile"
-msgstr ""
+msgstr "Текстил"
 
+# 80%
 #: sqlite/Resources
+#, fuzzy
 msgid "tools"
-msgstr ""
+msgstr "Инструменти"
 
 #: sqlite/Resources
 msgid "wild animal food 1"
