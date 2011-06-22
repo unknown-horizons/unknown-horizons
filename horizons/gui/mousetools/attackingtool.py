@@ -22,7 +22,7 @@
 from fife import fife
 
 import horizons.main
-from horizons.command.unit import Act
+from horizons.command.unit import Act, Attack
 from horizons.util import WorldObject
 from selectiontool import SelectionTool
 from horizons.constants import LAYERS
@@ -48,10 +48,8 @@ class AttackingTool(SelectionTool):
 
 			if target:
 				for i in self.session.selected_instances:
-					#TODO attack command
-					#dummy attack if possible
 					if hasattr(i, 'attack'):
-						i.attack(target)
+						Attack(i, target).execute(self.session)
 			else:
 				for i in self.session.selected_instances:
 					if i.movable:
