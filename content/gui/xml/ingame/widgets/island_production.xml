@@ -12,6 +12,7 @@
 			hover_image="content/gui/icons/widgets/minimap/rotate_left.png" />
 	</HBox>
 	<Icon image="content/gui/images/background/hr.png" />
+	<Label text="Resources produced in this settlement:" />
 
 	<VBox name="resources_vbox" />
 <!--
