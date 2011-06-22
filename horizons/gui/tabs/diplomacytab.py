@@ -23,6 +23,7 @@
 from fife.extensions import pychan
 from tabinterface import TabInterface
 from horizons.util import Callback
+from horizons.command.diplomacy import AddAllyPair, AddNeutralPair, AddEnemyPair
 
 class DiplomacyTab(TabInterface):
 	"""
@@ -66,7 +67,7 @@ class DiplomacyTab(TabInterface):
 		"""
 		Callback for setting ally status between local player and tab's player
 		"""
-		self.diplomacy.add_friend_pair(self.player, self.local_player)
+		AddAllyPair(self.player, self.local_player).execute(self.player.session)
 		# check the correct checkbox
 		self.check_diplomacy_state()
 
@@ -74,7 +75,7 @@ class DiplomacyTab(TabInterface):
 		"""
 		Callback for setting neutral status between local player and tab's player
 		"""
-		self.diplomacy.add_neutral_pair(self.player, self.local_player)
+		AddNeutralPair(self.player, self.local_player).execute(self.player.session)
 		# check the correct checkbox
 		self.check_diplomacy_state()
 
@@ -82,7 +83,7 @@ class DiplomacyTab(TabInterface):
 		"""
 		Callback for setting enemy status between local player and tab's player
 		"""
-		self.diplomacy.add_enemy_pair(self.player, self.local_player)
+		AddEnemyPair(self.player, self.local_player).execute(self.player.session)
 		# check the correct checkbox
 		self.check_diplomacy_state()
 
