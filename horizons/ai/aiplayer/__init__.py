@@ -36,6 +36,7 @@ from building.farm import AbstractFarm
 from building.field import AbstractField
 from building.weaver import AbstractWeaver
 from building.distillery import AbstractDistillery
+from building.villagebuilding import AbstractVillageBuilding
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject

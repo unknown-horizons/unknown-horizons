@@ -59,6 +59,9 @@ class SettlementManager(WorldObject):
 
 		# TODO: load the production chains
 		self.textile_chain = ProductionChain.create(self, RES.TEXTILE_ID)
+		self.faith_chain = ProductionChain.create(self, RES.FAITH_ID)
+		self.education_chain = ProductionChain.create(self, RES.EDUCATION_ID)
+		self.get_together_chain = ProductionChain.create(self, RES.GET_TOGETHER_ID)
 
 		self.tents = 0
 		self.num_fishers = 0
@@ -163,17 +166,6 @@ class SettlementManager(WorldObject):
 		storage_used = self.land_manager.settlement.inventory[produced_resource]
 		return storage_used >= storage_size * 0.7 + 4
 
-	def need_distilleries(self):
-		# TODO: do this the right way...
-		distillery_time = 12.0
-		sugarcane_field_time = 30.0
-		return self.count_buildings(BUILDINGS.SUGARCANE_FIELD_CLASS) / sugarcane_field_time > self.count_buildings(BUILDINGS.DISTILLERY_CLASS) / distillery_time + 1e-9
-
-	def enough_liquor_producers(self):
-		if self.need_distilleries():
-			return False
-		return self.enough_resource_producers(RES.SUGAR_ID, RES.GET_TOGETHER_ID)
-
 	def get_resource_production(self, resource_id):
 		# as long as there are enough collectors it is correct to calculate it this way
 		if resource_id == RES.WOOL_ID:
@@ -218,15 +210,15 @@ class SettlementManager(WorldObject):
 					total -= production_line.consumed_res[resource_id] / production_line.time / GAME_SPEED.TICKS_PER_SECOND
 		return total
 
-	def log_generic_build_result(self, result, call_again, name):
+	def log_generic_build_result(self, result, name):
 		if result == BUILD_RESULT.OK:
 			self.log.info('%s built a %s', self, name)
-			call_again = True
 		elif result == BUILD_RESULT.NEED_RESOURCES:
 			self.log.info('%s not enough materials to build a %s', self, name)
-			call_again = True
+		elif result == BUILD_RESULT.SKIP:
+			self.log.info('%s skipped building a %s', self, name)
 		else:
-			self.log.info('%s failed to build a %s', self, name)
+			self.log.info('%s failed to build a %s (%d)', self, name, result)
 
 	def count_buildings(self, building_id):
 		return len(self.land_manager.settlement.get_buildings_by_id(building_id))
@@ -276,12 +268,16 @@ class SettlementManager(WorldObject):
 						return True
 		return upgraded_any
 
-	def build_chain(self, chain, call_again):
+	def build_chain(self, chain, name):
 		amount = self.get_resident_resource_usage(chain.resource_id)
 		result = chain.build(amount * 1.02)
+		if result == BUILD_RESULT.NEED_RESOURCES:
+			self.need_materials = True
 		if result == BUILD_RESULT.ALL_BUILT:
 			return False # return and build something else instead
-		self.log_generic_build_result(result, call_again, 'textile producer')
+		if result == BUILD_RESULT.SKIP:
+			return False # unable to build a building on purpose: build something else instead
+		self.log_generic_build_result(result, name)
 		return True
 
 	def tick(self):
@@ -292,8 +288,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s sugar production %.5f / %.5f', self, self.get_resource_production(RES.SUGAR_ID)[0], \
 			self.get_resident_resource_usage(RES.GET_TOGETHER_ID) / 4) # a tavern produces 4 units of get-together from 1 unit of liquor
 		self.manage_production()
-		call_again = False
-		need_materials = False
+		self.need_materials = False
 
 		if len(self.build_queue) > 0:
 			self.log.info('%s build a queue item', self)
@@ -305,48 +300,35 @@ class SettlementManager(WorldObject):
 			elif task_type == self.buildCallType.production_lumberjack:
 				self.production_builder.build_lumberjack()
 			else:
-				assert False # this should never happen
-			call_again = True
+				assert False, 'unknown building in build queue'
 		elif not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
-			self.log_generic_build_result(result, call_again, 'storage')
+			self.log_generic_build_result(result,  'storage')
 		elif not self.enough_resource_producers(RES.FOOD_ID, RES.FOOD_ID):
 			result = self.production_builder.build_food_producer()
-			self.log_generic_build_result(result, call_again, 'food producer')
-		elif self.tents >= 10 and not self.count_buildings(BUILDINGS.PAVILION_CLASS):
-			result = self.village_builder.build_pavilion()
-			self.log_generic_build_result(result, call_again, 'pavilion')
-		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, call_again):
+			self.log_generic_build_result(result,  'food producer')
+		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
+			pass
+		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
 			pass
 		elif self.village_builder.tents_to_build > self.tents:
 			result = self.village_builder.build_tent()
-			self.log_generic_build_result(result, call_again, 'tent')
+			self.log_generic_build_result(result,  'tent')
 			if result == BUILD_RESULT.OK:
 				self.tents += 1
 		elif not self.count_buildings(BUILDINGS.CLAY_PIT_CLASS) and self.count_buildings(BUILDINGS.CLAY_DEPOSIT_CLASS):
 			result = self.production_builder.build_clay_pit()
-			self.log_generic_build_result(result, call_again, 'clay pit')
+			self.log_generic_build_result(result,  'clay pit')
 			self.production_builder.display()
 		elif not self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.count_buildings(BUILDINGS.CLAY_PIT_CLASS):
 			result = self.production_builder.build_brickyard()
-			self.log_generic_build_result(result, call_again, 'brickyard')
-		elif not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
-			result = self.village_builder.build_village_school()
-			self.log_generic_build_result(result, call_again, 'village school')
-		elif not self.count_buildings(BUILDINGS.TAVERN_CLASS) and self.get_resource_production(RES.SUGAR_ID)[0] > 0:
-			result = self.village_builder.build_tavern()
-			self.log_generic_build_result(result, call_again, 'tavern')
-			if result == BUILD_RESULT.NEED_RESOURCES:
-				need_materials = True
-		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.land_manager.owner.settler_level > 1 and not self.enough_liquor_producers():
-			if self.need_distilleries():
-				result = self.production_builder.build_distillery()
-				self.log_generic_build_result(result, call_again, 'distillery')
-				if result == BUILD_RESULT.NEED_RESOURCES:
-					need_materials = True
-			else:
-				result = self.production_builder.build_sugar_producer()
-				self.log_generic_build_result(result, call_again, 'sugar producer')
+			self.log_generic_build_result(result,  'brickyard')
+		elif self.build_chain(self.education_chain, 'school'):
+			pass
+		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.get_together_chain, 'get-together producer'):
+			pass
+		else:
+			self.village_built = True
 
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
@@ -360,14 +342,12 @@ class SettlementManager(WorldObject):
 			if free_boards > 0:
 				self.manual_upgrade(0, free_boards)
 		elif self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
-			if need_materials:
+			if self.need_materials:
 				self.set_taxes_and_permissions(0.5, True, False)
 			else:
 				self.set_taxes_and_permissions(0.5, True, True)
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
-		if not call_again:
-			self.village_built = True
 
 	def __str__(self):
 		return '%s.SM(%s/%d)' % (self.owner, self.land_manager.settlement.name, self.worldid)

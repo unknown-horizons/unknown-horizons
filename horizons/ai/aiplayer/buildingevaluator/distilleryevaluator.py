@@ -43,8 +43,8 @@ class DistilleryEvaluator(BuildingEvaluator):
 		return 0 # TODO: implement this
 
 	@classmethod
-	def create(cls, area_builder, x, y):
-		builder = area_builder.make_builder(BUILDINGS.DISTILLERY_CLASS, x, y, True)
+	def create(cls, area_builder, x, y, orientation):
+		builder = area_builder.make_builder(BUILDINGS.DISTILLERY_CLASS, x, y, True, orientation)
 		if not builder:
 			return None
 

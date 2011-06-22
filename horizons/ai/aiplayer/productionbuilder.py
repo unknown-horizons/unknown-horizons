@@ -254,50 +254,6 @@ class ProductionBuilder(AreaBuilder):
 			self.settlement_manager.num_fields[BUILDING_PURPOSE.POTATO_FIELD] += 1
 			return BUILD_RESULT.OK
 
-	def build_simple_field_producer(self, field_purpose, field_id):
-		if not self.unused_fields[field_purpose]:
-			if not self.have_resources(BUILDINGS.FARM_CLASS):
-				return BUILD_RESULT.NEED_RESOURCES
-			next_farm = self.get_next_farm(BUILDING_PURPOSE.get_unused_purpose(field_purpose))
-			if next_farm is None:
-				return BUILD_RESULT.IMPOSSIBLE
-			# build the farm
-			result = next_farm.execute()
-			if result != BUILD_RESULT.OK:
-				return result
-
-		assert len(self.unused_fields[field_purpose]) > 0
-		coords = self.unused_fields[field_purpose][0]
-		builder = Builder.create(field_id, self.land_manager, Point(coords[0], coords[1]))
-		if not builder.execute():
-			return BUILD_RESULT.UNKNOWN_ERROR
-		self.unused_fields[field_purpose].popleft()
-		self.plan[coords] = (field_purpose, builder)
-		self.settlement_manager.num_fields[field_purpose] += 1
-		return BUILD_RESULT.OK
-
-	def build_sugar_producer(self):
-		return self.build_simple_field_producer(BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDINGS.SUGARCANE_FIELD_CLASS)
-
-	def build_simple_producer(self, building_id, evaluator_class):
-		""" Builds a producer and a road leading to it """
-		if not self.have_resources(building_id):
-			return BUILD_RESULT.NEED_RESOURCES
-
-		options = []
-		for (x, y) in self.plan:
-			evaluator = evaluator_class.create(self, x, y)
-			if evaluator is not None:
-				options.append(evaluator)
-
-		for evaluator in sorted(options):
-			return evaluator.execute()
-		return BUILD_RESULT.IMPOSSIBLE
-
-	def build_distillery(self):
-		""" Builds a distillery and a road leading to it """
-		return self.build_simple_producer(BUILDINGS.DISTILLERY_CLASS, DistilleryEvaluator)
-
 	def enough_collectors(self):
 		produce_quantity = 0
 		for building in self.production_buildings:

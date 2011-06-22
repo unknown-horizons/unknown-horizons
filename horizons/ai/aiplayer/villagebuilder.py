@@ -375,15 +375,6 @@ class VillageBuilder(AreaBuilder):
 	def build_main_square(self):
 		return self.build_village_building(BUILDINGS.MARKET_PLACE_CLASS, BUILDING_PURPOSE.MAIN_SQUARE)
 
-	def build_pavilion(self):
-		return self.build_village_building(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION)
-
-	def build_village_school(self):
-		return self.build_village_building(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL)
-
-	def build_tavern(self):
-		return self.build_village_building(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN)
-
 	def build_tent(self):
 		if self.tent_queue:
 			coords = self.tent_queue[0]
