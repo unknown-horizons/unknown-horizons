@@ -21,29 +21,25 @@
 
 import math
 import copy
-import logging
 
 from collections import deque
 
+from areabuilder import AreaBuilder
 from builder import Builder
-from roadplanner import RoadPlanner
+from constants import BUILD_RESULT, BUILDING_PURPOSE
+from buildingevaluator.fisherevaluator import FisherEvaluator
+from buildingevaluator.farmevaluator import FarmEvaluator
+from buildingevaluator.claypitevaluator import ClayPitEvaluator
+from buildingevaluator.brickyardevaluator import BrickyardEvaluator
+from buildingevaluator.distilleryevaluator import DistilleryEvaluator
 
-from horizons.ai.aiplayer.buildingevaluator.fisherevaluator import FisherEvaluator
-from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
-from horizons.ai.aiplayer.buildingevaluator.claypitevaluator import ClayPitEvaluator
-from horizons.ai.aiplayer.buildingevaluator.brickyardevaluator import BrickyardEvaluator
-from horizons.ai.aiplayer.buildingevaluator.distilleryevaluator import DistilleryEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS, RES
-from horizons.util import Point, Rect, WorldObject
+from horizons.util import Point
 from horizons.util.python import decorators
-from horizons.entities import Entities
 
-class ProductionBuilder(WorldObject):
-	log = logging.getLogger("ai.aiplayer")
-
+class ProductionBuilder(AreaBuilder):
 	def __init__(self, settlement_manager):
-		super(ProductionBuilder, self).__init__()
+		super(ProductionBuilder, self).__init__(settlement_manager)
 		self.__init(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		for coords in settlement_manager.branch_office.position.tuple_iter():
@@ -51,15 +47,8 @@ class ProductionBuilder(WorldObject):
 				self.plan[coords] = (BUILDING_PURPOSE.BRANCH_OFFICE, None)
 
 	def __init(self, settlement_manager):
-		self.settlement_manager = settlement_manager
-		self.land_manager = settlement_manager.land_manager
-		self.island = self.land_manager.island
-		self.session = self.island.session
-		self.owner = self.land_manager.owner
-		self.settlement = self.land_manager.settlement
 		self.collector_buildings = [settlement_manager.branch_office]
 		self.production_buildings = []
-		self.plan = {}
 		self.unused_fields = self._make_empty_unused_fields()
 
 	@classmethod
@@ -71,21 +60,9 @@ class ProductionBuilder(WorldObject):
 		}
 
 	def save(self, db):
-		super(ProductionBuilder, self).save(db)
+		super(ProductionBuilder, self).save(db, 'ai_production_builder_coords')
 		db("INSERT INTO ai_production_builder(rowid, settlement_manager) VALUES(?, ?)", self.worldid, \
 			self.settlement_manager.worldid)
-		for (x, y), (purpose, builder) in self.plan.iteritems():
-			db("INSERT INTO ai_production_builder_coords(production_builder, x, y, purpose, builder) VALUES(?, ?, ?, ?, ?)", \
-				self.worldid, x, y, purpose, None if builder is None else builder.worldid)
-			if builder is not None:
-				assert isinstance(builder, Builder)
-				builder.save(db)
-
-	@classmethod
-	def load(cls, db, settlement_manager):
-		self = cls.__new__(cls)
-		self._load(db, settlement_manager)
-		return self
 
 	def _load(self, db, settlement_manager):
 		worldid = db("SELECT rowid FROM ai_production_builder WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
@@ -120,155 +97,11 @@ class ProductionBuilder(WorldObject):
 
 		self.refresh_unused_fields()
 
-	def _get_neighbour_tiles(self, rect):
-		"""
-		returns the surrounding tiles except the corners
-		"""
-		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		for x, y in rect.tuple_iter():
-			for dx, dy in moves:
-				coords = (x + dx, y + dy)
-				if not rect.contains_tuple(coords):
-					yield self.island.get_tile_tuple(coords)
-
-	def _get_possible_road_coords(self, rect):
-		for tile in self._get_neighbour_tiles(rect):
-			if tile is None:
-				continue
-			point = Point(tile.x, tile.y)
-			building = self.session.world.get_building(point)
-			if building is None:
-				road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
-				if road:
-					yield (tile.x, tile.y)
-			else:
-				if building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS:
-					yield (tile.x, tile.y)
-
-	def _fill_distance(self, distance, nodes):
-		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		queue = deque([item for item in distance.iteritems()])
-
-		while len(queue) > 0:
-			(coords, dist) = queue.popleft()
-			for dx, dy in moves:
-				coords2 = (coords[0] + dx, coords[1] + dy)
-				if coords2 in nodes and coords2 not in distance:
-					distance[coords2] = dist + 1
-					queue.append((coords2, dist + 1))
-
-	def _get_path_nodes(self):
-		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-
-		nodes = {}
-		distance_to_road = {}
-		distance_to_boundary = {}
-		for coords in self.plan:
-			if coords not in self.land_manager.settlement.ground_map:
-				continue
-			if self.plan[coords][0] == BUILDING_PURPOSE.NONE:
-				nodes[coords] = 1
-			elif self.plan[coords][0] == BUILDING_PURPOSE.ROAD:
-				nodes[coords] = 1
-				distance_to_road[coords] = 0
-
-			for (dx, dy) in moves:
-				coords2 = (coords[0] + dx, coords[1] + dy)
-				if coords2 not in self.land_manager.production:
-					distance_to_boundary[coords] = 1
-					break
-
-		for coords in self.land_manager.village:
-			building = self.island.get_building(Point(coords[0], coords[1]))
-			if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
-				nodes[coords] = 1
-				distance_to_road[coords] = 0
-
-		self._fill_distance(distance_to_road, self.island.path_nodes.nodes)
-		self._fill_distance(distance_to_boundary, self.island.path_nodes.nodes)
-
-		for coords in nodes:
-			if coords in distance_to_road:
-				distance = distance_to_road[coords]
-				if distance > 9:
-					nodes[coords] += 0.5
-				elif 0 < distance <= 9:
-					nodes[coords] += 0.7 + (10 - distance) * 0.15
-			else:
-				nodes[coords] += 0.1
-
-			if coords in distance_to_boundary:
-				distance = distance_to_boundary[coords]
-				if 1 < distance <= 10:
-					nodes[coords] += 0.3 + (11 - distance) * 0.03
-			else:
-				nodes[coords] += 0.1
-
-		return nodes
-
-	def _get_road_to_builder(self, builder):
-		collector_coords = set()
-		for building in self.collector_buildings:
-			for coords in self._get_possible_road_coords(building.position):
-				collector_coords.add(coords)
-
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
-		destination_coords = set(self._get_possible_road_coords(builder.position))
-
-		pos = builder.position
-		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
-
-		return RoadPlanner()(collector_coords, destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
-
-	def _build_road_connection(self, builder):
-		path = self._get_road_to_builder(builder)
-		if path is not None:
-			for x, y in path:
-				point = Point(x, y)
-				self.plan[point.to_tuple()] = (BUILDING_PURPOSE.ROAD, None)
-				building = self.island.get_building(point)
-				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
-					continue
-				assert Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
-		return path is not None
-
-	def _road_connection_possible(self, builder):
-		return self._get_road_to_builder(builder) is not None
-
 	def _near_collectors(self, position):
 		for building in self.collector_buildings:
 			if building.position.distance(position) <= building.radius:
 				return True
 		return False
-
-	def make_builder(self, building_id, x, y, needs_collector, orientation=0):
-		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """
-		coords = (x, y)
-		if building_id == BUILDINGS.CLAY_PIT_CLASS:
-			# clay deposits are outside the production plan until they are constructed
-			if coords in self.plan or coords not in self.land_manager.settlement.ground_map:
-				return None
-		else:
-			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.land_manager.settlement.ground_map:
-				return None
-		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
-		if not builder or not self.land_manager.legal_for_production(builder.position):
-			return None
-		if building_id == BUILDINGS.FISHERMAN_CLASS: #
-			for coords in builder.position.tuple_iter():
-				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					return None
-		elif building_id != BUILDINGS.CLAY_PIT_CLASS:
-			# clay deposits are outside the production plan until they are constructed
-			for coords in builder.position.tuple_iter():
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					return None
-		if needs_collector and not self._near_collectors(builder.position):
-			return None
-		return builder
-
-	def have_resources(self, building_id):
-		return Entities.buildings[building_id].have_resources([self.land_manager.settlement], self.owner)
 
 	def get_next_fisher(self):
 		"""

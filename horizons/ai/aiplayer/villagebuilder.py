@@ -21,46 +21,28 @@
 
 from collections import deque
 
+from areabuilder import AreaBuilder
 from builder import Builder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
 from horizons.constants import AI, BUILDINGS
-from horizons.util import Point, WorldObject
+from horizons.util import Point
 from horizons.util.python import decorators
 
-class VillageBuilder(WorldObject):
+class VillageBuilder(AreaBuilder):
 	def __init__(self, settlement_manager):
-		super(VillageBuilder, self).__init__()
+		super(VillageBuilder, self).__init__(settlement_manager)
 		self.__init(settlement_manager)
 		self._create_plan()
 
 	def __init(self, settlement_manager):
-		self.settlement_manager = settlement_manager
-		self.land_manager = settlement_manager.land_manager
-		self.island = self.land_manager.island
-		self.session = self.island.session
-		self.owner = self.land_manager.owner
-		self.settlement = self.land_manager.settlement
 		self.tents_to_build = 0
-		self.plan = {}
 		self.tent_queue = deque()
 
 	def save(self, db):
-		super(VillageBuilder, self).save(db)
+		super(VillageBuilder, self).save(db, 'ai_village_builder_coords')
 		db("INSERT INTO ai_village_builder(rowid, settlement_manager) VALUES(?, ?)", self.worldid, \
 			self.settlement_manager.worldid)
-		for (x, y), (purpose, builder) in self.plan.iteritems():
-			db("INSERT INTO ai_village_builder_coords(village_builder, x, y, purpose, builder) VALUES(?, ?, ?, ?, ?)", \
-				self.worldid, x, y, purpose, None if builder is None else builder.worldid)
-			if builder is not None:
-				assert isinstance(builder, Builder)
-				builder.save(db)
-
-	@classmethod
-	def load(cls, db, settlement_manager):
-		self = cls.__new__(cls)
-		self._load(db, settlement_manager)
-		return self
 
 	def _load(self, db, settlement_manager):
 		worldid = db("SELECT rowid FROM ai_village_builder WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
