@@ -23,6 +23,7 @@ from fife import fife
 
 import horizons.main
 from horizons.command.unit import Act, Attack
+from horizons.command.diplomacy import AddEnemyPair
 from horizons.util import WorldObject
 from selectiontool import SelectionTool
 from horizons.constants import LAYERS
@@ -47,6 +48,8 @@ class AttackingTool(SelectionTool):
 			target = self._get_attackable_instance(evt)
 
 			if target:
+				if not self.session.world.diplomacy.are_enemies(self.session.world.player, target.owner):
+					AddEnemyPair(self.session.world.player, target.owner).execute(self.session)
 				for i in self.session.selected_instances:
 					if hasattr(i, 'attack'):
 						Attack(i, target).execute(self.session)
@@ -79,8 +82,13 @@ class AttackingTool(SelectionTool):
 		for instance in instances:
 			if not instance.owner:
 				continue
+
+			if instance.owner is local_player:
+				continue
+
 			#check diplomacy state between local player and instance owner
-			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner):
+			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner) \
+				and not evt.isShiftPressed():
 				continue
 			#NOTE attacks only buildings or ships
 			#TODO attakc only instances that have health component
