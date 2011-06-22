@@ -48,7 +48,10 @@ class Diplomacy(object):
 		if tup is None:
 			return
 		self.remove_enemy_pair(a, b)
-		self.friends.add(tup)
+		if tup not in self.friends:
+			self.friends.add(tup)
+		else:
+			return
 		self.on_diplomacy_status_changed(change_type='friend', a = a, b = b)
 
 	def add_enemy_pair(self, a, b):
@@ -56,12 +59,17 @@ class Diplomacy(object):
 		if tup is None:
 			return
 		self.remove_friend_pair(a, b)
-		self.enemies.add(tup)
+		if tup not in self.enemies:
+			self.enemies.add(tup)
+		else:
+			return
 		self.on_diplomacy_status_changed(change_type='enemy', a = a, b = b)
 
 	def add_neutral_pair(self, a, b):
 		tup = make_tup(a, b)
 		if tup is None:
+			return
+		if tup not in self.friends and tup not in self.enemies:
 			return
 		self.remove_friend_pair(a,b)
 		self.remove_enemy_pair(a,b)

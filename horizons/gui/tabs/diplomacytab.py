@@ -55,6 +55,7 @@ class DiplomacyTab(TabInterface):
 	
 	def show(self):
 		super(DiplomacyTab, self).show()
+		# if diplomacy is changed by any player, change the checkbox
 		self.diplomacy.add_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def hide(self):
@@ -66,18 +67,24 @@ class DiplomacyTab(TabInterface):
 		Callback for setting ally status between local player and tab's player
 		"""
 		self.diplomacy.add_friend_pair(self.player, self.local_player)
+		# check the correct checkbox
+		self.check_diplomacy_state()
 
 	def add_neutral(self):
 		"""
 		Callback for setting neutral status between local player and tab's player
 		"""
 		self.diplomacy.add_neutral_pair(self.player, self.local_player)
+		# check the correct checkbox
+		self.check_diplomacy_state()
 
 	def add_enemy(self):
 		"""
 		Callback for setting enemy status between local player and tab's player
 		"""
 		self.diplomacy.add_enemy_pair(self.player, self.local_player)
+		# check the correct checkbox
+		self.check_diplomacy_state()
 
 	def check_diplomacy_state(self):
 		"""
