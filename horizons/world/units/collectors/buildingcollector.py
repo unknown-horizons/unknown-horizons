@@ -66,6 +66,13 @@ class BuildingCollector(Collector):
 
 		super(BuildingCollector, self).load(db, worldid)
 
+		if home_building_id is None:
+			self.show() # make sure that homebuildingsless units are visible on startup
+			# TODO: fix "homebuildingless buildingcollectors".
+			#       perhaps a new unit should be created, because a fisher ship without a
+			#       fisher basically isn't a buildingcollector anymore.
+
+
 	def register_at_home_building(self, unregister = False):
 		"""Creates reference for self at home building (only hard reference except for
 		in job.object)

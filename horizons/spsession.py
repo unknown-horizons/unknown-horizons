@@ -76,7 +76,7 @@ class SPSession(Session):
 			Under odd circumstances (anti-freeze protection just activated, game speed
 			decremented multiple times within this frame) this can delay the next tick
 			by minutes. Since the positive effects of the code aren't really observeable,
-			this code is commented out and possibly will be removed
+			this code is commented out and possibly will be removed.
 
 			# correct the time until the next tick starts
 			time_to_next_tick = self.timer.tick_next_time - time.time()
