@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-06-22 15:33+0200\n"
+"PO-Revision-Date: 2011-06-17 15:58+0200\n"
 "Last-Translator: MicMic <michael.aloys@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -144,7 +144,7 @@ msgstr ""
 "Haga clic en el botón. En caso de que no esté activo, mueva su barco hacia "
 "el asentamiento y vuelva a intentarlo.\n"
 "\n"
-"Objetivo: Abrir el menú comercial."
+"OBJETIVO: Abrir el menú comercial."
 
 #: po/tutorial.py:11
 msgid ""
@@ -184,7 +184,7 @@ msgstr "Descargue al menos 10 toneladas de cada recurso en su barco."
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "CONSTRUIR UN ASERRADERO"
+msgstr "NUEVO OBJETIVO: CONSTRUIR UN ASERRADERO"
 
 #: po/tutorial.py:14
 msgid ""
