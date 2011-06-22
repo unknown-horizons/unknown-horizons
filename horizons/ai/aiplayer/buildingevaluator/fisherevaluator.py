@@ -24,7 +24,7 @@ import math
 import heapq
 
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, COLLECTORS, RES
 
@@ -86,8 +86,8 @@ class FisherEvaluator(BuildingEvaluator):
 			return BUILD_RESULT.UNKNOWN_ERROR
 		self.production_builder.owner.fishers.append(self.builder)
 		for coords in self.builder.position.tuple_iter():
-			self.production_builder.plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
-		self.production_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (PRODUCTION_PURPOSE.FISHER, self.builder)
+			self.production_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+		self.production_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.FISHER, self.builder)
 		self.production_builder.production_buildings.append(building)
 		return BUILD_RESULT.OK
 

@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES
 
@@ -67,9 +67,9 @@ class BrickyardEvaluator(BuildingEvaluator):
 		for coords in production_builder._get_neighbour_tiles(builder.position):
 			if coords in production_builder.plan:
 				purpose = production_builder.plan[coords]
-				if purpose == PRODUCTION_PURPOSE.NONE:
+				if purpose == BUILDING_PURPOSE.NONE:
 					continue
-				elif purpose == PRODUCTION_PURPOSE.ROAD:
+				elif purpose == BUILDING_PURPOSE.ROAD:
 					alignment += 3
 				else:
 					alignment += 1
@@ -93,8 +93,8 @@ class BrickyardEvaluator(BuildingEvaluator):
 		if not building:
 			return BUILD_RESULT.UNKNOWN_ERROR
 		for coords in self.builder.position.tuple_iter():
-			self.production_builder.plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
-		self.production_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (PRODUCTION_PURPOSE.BRICKYARD, self.builder)
+			self.production_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+		self.production_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.BRICKYARD, self.builder)
 		self.production_builder.production_buildings.append(building)
 		return BUILD_RESULT.OK
 

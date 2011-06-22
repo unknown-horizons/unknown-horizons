@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
@@ -32,18 +32,18 @@ class AbstractFarm(AbstractBuilding):
 	@classmethod
 	def get_purpose(cls, resource_id):
 		if resource_id == RES.FOOD_ID:
-			return PRODUCTION_PURPOSE.POTATO_FIELD
+			return BUILDING_PURPOSE.POTATO_FIELD
 		elif resource_id == RES.WOOL_ID:
-			return PRODUCTION_PURPOSE.PASTURE
+			return BUILDING_PURPOSE.PASTURE
 		elif resource_id == RES.SUGAR_ID:
-			return PRODUCTION_PURPOSE.SUGARCANE_FIELD
+			return BUILDING_PURPOSE.SUGARCANE_FIELD
 		return None
 
 	def build(self, settlement_manager, resource_id):
 		if not self.have_resources(settlement_manager):
 			return BUILD_RESULT.NEED_RESOURCES
 
-		unused_field_purpose = PRODUCTION_PURPOSE.get_unused_purpose(self.get_purpose(resource_id))
+		unused_field_purpose = BUILDING_PURPOSE.get_unused_purpose(self.get_purpose(resource_id))
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		options = []
 

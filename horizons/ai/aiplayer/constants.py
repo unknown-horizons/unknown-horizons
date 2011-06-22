@@ -27,7 +27,7 @@ class BUILD_RESULT:
 	ALL_BUILT = 4
 	NEED_PARENT_FIRST = 5
 
-class PRODUCTION_PURPOSE:
+class BUILDING_PURPOSE:
 	NONE = 1
 	RESERVED = 2
 	BRANCH_OFFICE = 3
@@ -47,6 +47,12 @@ class PRODUCTION_PURPOSE:
 	UNUSED_SUGARCANE_FIELD = 17
 	SUGARCANE_FIELD = 18
 	DISTILLERY = 19
+	MAIN_SQUARE = 20
+	UNUSED_RESIDENCE = 21
+	RESIDENCE = 22
+	PAVILION = 24
+	VILLAGE_SCHOOL = 26
+	TAVERN = 28
 
 	@classmethod
 	def get_used_purpose(cls, purpose):
@@ -56,6 +62,8 @@ class PRODUCTION_PURPOSE:
 			return cls.PASTURE
 		elif purpose == cls.UNUSED_SUGARCANE_FIELD:
 			return cls.SUGARCANE_FIELD
+		elif purpose == cls.UNUSED_RESIDENCE:
+			return cls.RESIDENCE
 		return None
 
 	@classmethod
@@ -66,4 +74,6 @@ class PRODUCTION_PURPOSE:
 			return cls.UNUSED_PASTURE
 		elif purpose == cls.SUGARCANE_FIELD:
 			return cls.UNUSED_SUGARCANE_FIELD
+		elif purpose == cls.RESIDENCE:
+			return cls.UNUSED_RESIDENCE
 		return None

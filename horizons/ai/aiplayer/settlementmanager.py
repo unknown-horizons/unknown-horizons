@@ -23,7 +23,7 @@ import logging
 
 from collections import deque
 
-from constants import BUILD_RESULT, PRODUCTION_PURPOSE
+from constants import BUILD_RESULT, BUILDING_PURPOSE
 from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
 from productionchain import ProductionChain
@@ -62,7 +62,7 @@ class SettlementManager(WorldObject):
 
 		self.tents = 0
 		self.num_fishers = 0
-		self.num_fields = {PRODUCTION_PURPOSE.POTATO_FIELD: 0, PRODUCTION_PURPOSE.PASTURE: 0, PRODUCTION_PURPOSE.SUGARCANE_FIELD: 0}
+		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 		self.village_built = False
 
 		self.build_queue.append(self.buildCallType.village_roads)
@@ -208,7 +208,7 @@ class SettlementManager(WorldObject):
 	def get_resident_resource_usage(self, resource_id):
 		total = 0
 		for coords, (purpose, _) in self.village_builder.plan.iteritems():
-			if purpose != self.village_builder.purpose.tent:
+			if purpose != BUILDING_PURPOSE.RESIDENCE:
 				continue
 			tent = self.land_manager.settlement.ground_map[coords].object
 			for production in tent._get_productions():

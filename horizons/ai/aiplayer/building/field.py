@@ -21,7 +21,7 @@
 
 from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import RES, BUILDINGS
 from horizons.util import Point
 from horizons.util.python import decorators
@@ -30,11 +30,11 @@ class AbstractField(AbstractBuilding):
 	@classmethod
 	def get_purpose(cls, resource_id):
 		if resource_id == RES.POTATOES_ID:
-			return PRODUCTION_PURPOSE.POTATO_FIELD
+			return BUILDING_PURPOSE.POTATO_FIELD
 		elif resource_id == RES.LAMB_WOOL_ID:
-			return PRODUCTION_PURPOSE.PASTURE
+			return BUILDING_PURPOSE.PASTURE
 		elif resource_id == RES.RAW_SUGAR_ID:
-			return PRODUCTION_PURPOSE.SUGARCANE_FIELD
+			return BUILDING_PURPOSE.SUGARCANE_FIELD
 		return None
 
 	def build(self, settlement_manager, resource_id):

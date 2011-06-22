@@ -22,24 +22,13 @@
 from collections import deque
 
 from builder import Builder
-from constants import BUILD_RESULT
+from constants import BUILD_RESULT, BUILDING_PURPOSE
 
 from horizons.constants import AI, BUILDINGS
 from horizons.util import Point, WorldObject
 from horizons.util.python import decorators
 
 class VillageBuilder(WorldObject):
-	class purpose:
-		none = 1
-		reserved = 2
-		main_square = 3
-		planned_tent = 4
-		tent = 5
-		road = 6
-		pavilion = 7
-		village_school = 8
-		tavern = 9
-
 	def __init__(self, settlement_manager):
 		super(VillageBuilder, self).__init__()
 		self.__init(settlement_manager)
@@ -83,7 +72,7 @@ class VillageBuilder(WorldObject):
 			coords = (x, y)
 			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
 			self.plan[coords] = (purpose, builder)
-			if purpose == self.purpose.planned_tent or purpose == self.purpose.tent:
+			if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE or purpose == BUILDING_PURPOSE.RESIDENCE:
 				self.tents_to_build += 1
 		self._create_tent_queue()
 
@@ -95,7 +84,7 @@ class VillageBuilder(WorldObject):
 		for (x, y) in main_square.position.tuple_iter():
 			for (dx, dy) in moves:
 				coords = (x + dx, y + dy)
-				if coords in plan and plan[coords][0] == cls.purpose.road:
+				if coords in plan and plan[coords][0] == BUILDING_PURPOSE.ROAD:
 					queue.append(coords)
 					reachable.add(coords)
 
@@ -103,16 +92,16 @@ class VillageBuilder(WorldObject):
 			(x, y) = queue.popleft()
 			for dx, dy in moves:
 				coords = (x + dx, y + dy)
-				if coords in plan and plan[coords][0] == cls.purpose.road and coords not in reachable:
+				if coords in plan and plan[coords][0] == BUILDING_PURPOSE.ROAD and coords not in reachable:
 					reachable.add(coords)
 					queue.append(coords)
 
 		to_remove = []
 		for coords, (purpose, _) in plan.iteritems():
-			if purpose == cls.purpose.road and coords not in reachable:
+			if purpose == BUILDING_PURPOSE.ROAD and coords not in reachable:
 				to_remove.append(coords)
 		for coords in to_remove:
-			plan[coords] = (cls.purpose.none, None)
+			plan[coords] = (BUILDING_PURPOSE.NONE, None)
 
 	def _create_plan(self):
 		"""
@@ -139,15 +128,15 @@ class VillageBuilder(WorldObject):
 			if not main_square:
 				continue
 
-			plan = dict.fromkeys(self.land_manager.village, (self.purpose.none, None))
+			plan = dict.fromkeys(self.land_manager.village, (BUILDING_PURPOSE.NONE, None))
 			bad_roads = 0
 			good_tents = 0
 
 			# place the main square
 			for dy in xrange(6):
 				for dx in xrange(6):
-					plan[(x + dx, y + dy)] = (self.purpose.reserved, None)
-			plan[(x, y)] = (self.purpose.main_square, main_square)
+					plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.RESERVED, None)
+			plan[(x, y)] = (BUILDING_PURPOSE.MAIN_SQUARE, main_square)
 
 			# place the roads running parallel to the y-axis
 			for road_y in ys:
@@ -164,7 +153,7 @@ class VillageBuilder(WorldObject):
 						continue
 					road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
 					if road:
-						plan[coords] = (self.purpose.road, road)
+						plan[coords] = (BUILDING_PURPOSE.ROAD, road)
 					else:
 						bad_roads += 1
 
@@ -183,7 +172,7 @@ class VillageBuilder(WorldObject):
 						continue
 					road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
 					if road:
-						plan[coords] = (self.purpose.road, road)
+						plan[coords] = (BUILDING_PURPOSE.ROAD, road)
 					else:
 						bad_roads += 1
 
@@ -195,7 +184,7 @@ class VillageBuilder(WorldObject):
 				ok = True
 				for dx, dy in tent_squares:
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 not in plan or plan[coords2][0] != self.purpose.none:
+					if coords2 not in plan or plan[coords2][0] != BUILDING_PURPOSE.NONE:
 						ok = False
 						break
 				if not ok:
@@ -208,15 +197,15 @@ class VillageBuilder(WorldObject):
 				ok = False
 				for dx, dy in road_connections:
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 in plan and plan[coords2][0] == self.purpose.road:
+					if coords2 in plan and plan[coords2][0] == BUILDING_PURPOSE.ROAD:
 						ok = True
 						break
 
 				# connection to a road tile exists, build the tent
 				if ok:
 					for dx, dy in tent_squares:
-						plan[(coords[0] + dx, coords[1] + dy)] = (self.purpose.reserved, None)
-					plan[coords] = (self.purpose.planned_tent, tent)
+						plan[(coords[0] + dx, coords[1] + dy)] = (BUILDING_PURPOSE.RESERVED, None)
+					plan[coords] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, tent)
 					good_tents += 1
 
 			value = 10 * good_tents - bad_roads
@@ -237,7 +226,7 @@ class VillageBuilder(WorldObject):
 		queue = deque()
 
 		for coords, (purpose, builder) in self.plan.iteritems():
-			if purpose == self.purpose.main_square:
+			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
 				for coords in builder.position.tuple_iter():
 					distance[coords] = 0
 					queue.append(coords)
@@ -253,14 +242,14 @@ class VillageBuilder(WorldObject):
 		# remove planned tents from the plan
 		for (x, y) in self.plan:
 			coords = (x, y)
-			if self.plan[coords][0] == self.purpose.planned_tent:
+			if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
 				for dx, dy in tent_squares:
-					self.plan[(x + dx, y + dy)] = (self.purpose.none, None)
+					self.plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.NONE, None)
 
 		# create new possible tent position list
 		possible_tents = []
 		for coords in self.plan:
-			if coords in distance and self.plan[coords][0] == self.purpose.none:
+			if coords in distance and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				possible_tents.append((distance[coords], coords))
 		possible_tents.sort()
 
@@ -269,7 +258,7 @@ class VillageBuilder(WorldObject):
 			ok = True
 			for dx, dy in tent_squares:
 				coords = (x + dx, y + dy)
-				if coords not in self.plan or self.plan[coords][0] != self.purpose.none:
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					ok = False
 					break
 			if not ok:
@@ -282,29 +271,29 @@ class VillageBuilder(WorldObject):
 			ok = False
 			for dx, dy in road_connections:
 				coords = (x + dx, y + dy)
-				if coords in self.plan and self.plan[coords][0] == self.purpose.road:
+				if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.ROAD:
 					ok = True
 					break
 
 			# connection to a road tile exists, build the tent
 			if ok:
 				for dx, dy in tent_squares:
-					self.plan[(x + dx, y + dy)] = (self.purpose.reserved, None)
-				self.plan[(x, y)] = (self.purpose.planned_tent, tent)
+					self.plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.RESERVED, None)
+				self.plan[(x, y)] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, tent)
 
 		self._return_unused_space()
 
 	def _return_unused_space(self):
 		not_needed = []
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == self.purpose.none:
+			if purpose == BUILDING_PURPOSE.NONE:
 				not_needed.append(coords)
 		for coords in not_needed:
 			self.land_manager.add_to_production(coords)
 
 	def _replace_planned_tent(self, building_id, new_purpose):
 		tent_range = 12 # TODO: load it the right way
-		planned_tents = [builder for (purpose, builder) in self.plan.itervalues() if purpose == self.purpose.planned_tent]
+		planned_tents = [builder for (purpose, builder) in self.plan.itervalues() if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE]
 
 		max_covered = 0
 		min_distance = 0
@@ -330,9 +319,9 @@ class VillageBuilder(WorldObject):
 
 	def _reserve_other_buildings(self):
 		"""Replaces planned tents with a pavilion, school, and tavern."""
-		assert self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, self.purpose.pavilion)
-		assert self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, self.purpose.village_school)
-		assert self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, self.purpose.tavern)
+		assert self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION)
+		assert self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL)
+		assert self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN)
 
 	def _create_tent_queue(self):
 		""" This function takes the plan and orders all planned tents according to
@@ -344,9 +333,9 @@ class VillageBuilder(WorldObject):
 		# form blocks of tents
 		main_square = None
 		for coords, (purpose, builder) in self.plan.iteritems():
-			if purpose == self.purpose.main_square:
+			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
 				main_square = builder
-			if purpose != self.purpose.planned_tent or coords in block:
+			if purpose != BUILDING_PURPOSE.UNUSED_RESIDENCE or coords in block:
 				continue
 			block[coords] = len(blocks)
 
@@ -360,10 +349,10 @@ class VillageBuilder(WorldObject):
 					coords = (x + dx, y + dy)
 					if coords not in self.plan or coords in explored:
 						continue
-					if self.plan[coords][0] == self.purpose.planned_tent or self.plan[coords][0] == self.purpose.reserved:
+					if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE or self.plan[coords][0] == BUILDING_PURPOSE.RESERVED:
 						explored.add(coords)
 						queue.append(coords)
-						if self.plan[coords][0] == self.purpose.planned_tent:
+						if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
 							block[coords] = len(blocks)
 							block_list.append(coords)
 			blocks.append(block_list)
@@ -385,7 +374,7 @@ class VillageBuilder(WorldObject):
 
 	def build_roads(self):
 		for (purpose, builder) in self.plan.itervalues():
-			if purpose == self.purpose.road:
+			if purpose == BUILDING_PURPOSE.ROAD:
 				builder.execute()
 
 	def build_village_building(self, building_id, building_purpose):
@@ -402,16 +391,16 @@ class VillageBuilder(WorldObject):
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def build_main_square(self):
-		return self.build_village_building(BUILDINGS.MARKET_PLACE_CLASS, self.purpose.main_square)
+		return self.build_village_building(BUILDINGS.MARKET_PLACE_CLASS, BUILDING_PURPOSE.MAIN_SQUARE)
 
 	def build_pavilion(self):
-		return self.build_village_building(BUILDINGS.PAVILION_CLASS, self.purpose.pavilion)
+		return self.build_village_building(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION)
 
 	def build_village_school(self):
-		return self.build_village_building(BUILDINGS.VILLAGE_SCHOOL_CLASS, self.purpose.village_school)
+		return self.build_village_building(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL)
 
 	def build_tavern(self):
-		return self.build_village_building(BUILDINGS.TAVERN_CLASS, self.purpose.tavern)
+		return self.build_village_building(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN)
 
 	def build_tent(self):
 		if self.tent_queue:
@@ -421,7 +410,7 @@ class VillageBuilder(WorldObject):
 				return BUILD_RESULT.NEED_RESOURCES
 			if not builder.execute():
 				return BUILD_RESULT.UNKNOWN_ERROR
-			self.plan[coords] = (self.purpose.tent, builder)
+			self.plan[coords] = (BUILDING_PURPOSE.RESIDENCE, builder)
 			self.tent_queue.popleft()
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
@@ -429,7 +418,7 @@ class VillageBuilder(WorldObject):
 	def count_tents(self):
 		tents = 0
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose != self.purpose.tent:
+			if purpose != BUILDING_PURPOSE.RESIDENCE:
 				continue
 			object = self.island.ground_map[coords].object
 			if object is not None and object.id == BUILDINGS.RESIDENTIAL_CLASS:
@@ -453,21 +442,21 @@ class VillageBuilder(WorldObject):
 
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
-			if purpose == self.purpose.main_square:
+			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
 				renderer.addColored(tile._instance, *sq_colour)
-			elif purpose == self.purpose.tent:
+			elif purpose == BUILDING_PURPOSE.RESIDENCE:
 				renderer.addColored(tile._instance, *tent_colour)
-			elif purpose == self.purpose.planned_tent:
+			elif purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE:
 				renderer.addColored(tile._instance, *planned_tent_colour)
-			elif purpose == self.purpose.road:
+			elif purpose == BUILDING_PURPOSE.ROAD:
 				renderer.addColored(tile._instance, *road_colour)
-			elif purpose == self.purpose.village_school:
+			elif purpose == BUILDING_PURPOSE.VILLAGE_SCHOOL:
 				renderer.addColored(tile._instance, *village_school_colour)
-			elif purpose == self.purpose.pavilion:
+			elif purpose == BUILDING_PURPOSE.PAVILION:
 				renderer.addColored(tile._instance, *pavilion_colour)
-			elif purpose == self.purpose.tavern:
+			elif purpose == BUILDING_PURPOSE.TAVERN:
 				renderer.addColored(tile._instance, *tavern_colour)
-			elif purpose == self.purpose.reserved:
+			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)

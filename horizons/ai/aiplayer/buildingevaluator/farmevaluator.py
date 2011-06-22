@@ -23,7 +23,7 @@ import copy
 
 from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
@@ -76,8 +76,8 @@ class FarmEvaluator(BuildingEvaluator):
 	@classmethod
 	def _suitable_for_road(self, production_builder, coords):
 		if coords in production_builder.plan:
-			return production_builder.plan[coords][0] == PRODUCTION_PURPOSE.NONE or \
-				production_builder.plan[coords][0] == PRODUCTION_PURPOSE.ROAD
+			return production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE or \
+				production_builder.plan[coords][0] == BUILDING_PURPOSE.ROAD
 		else:
 			ground_map = production_builder.settlement.ground_map
 			if coords not in ground_map:
@@ -106,10 +106,10 @@ class FarmEvaluator(BuildingEvaluator):
 			if not cls._suitable_for_road(production_builder, coords):
 				return None
 
-			if coords in production_builder.plan and production_builder.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
+			if coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				road = Builder.create(BUILDINGS.TRAIL_CLASS, production_builder.land_manager, Point(coords[0], coords[1]))
 				if road:
-					farm_plan[coords] = (PRODUCTION_PURPOSE.ROAD, road)
+					farm_plan[coords] = (BUILDING_PURPOSE.ROAD, road)
 				else:
 					farm_plan = None
 					break
@@ -135,15 +135,15 @@ class FarmEvaluator(BuildingEvaluator):
 				continue # some part of the area is reserved for something else
 			fields += 1
 			for coords2 in field.position.tuple_iter():
-				farm_plan[coords2] = (PRODUCTION_PURPOSE.RESERVED, None)
+				farm_plan[coords2] = (BUILDING_PURPOSE.RESERVED, None)
 			farm_plan[coords] = (unused_field_purpose, None)
 		if fields < min_fields:
 			return None # go for the most fields possible
 
 		# add the farm itself to the plan
 		for coords in builder.position.tuple_iter():
-			farm_plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
-		farm_plan[(farm_x, farm_y)] = (PRODUCTION_PURPOSE.FARM, builder)
+			farm_plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+		farm_plan[(farm_x, farm_y)] = (BUILDING_PURPOSE.FARM, builder)
 
 		# calculate the alignment value and the rectangle that contains the whole farm
 		alignment = 0
@@ -158,7 +158,7 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (x + dx, y + dy)
 				if coords in farm_plan:
 					continue
-				if coords not in production_builder.plan or production_builder.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
+				if coords not in production_builder.plan or production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
 
 		# calculate the value of the farm road end points (larger is better)
@@ -169,9 +169,9 @@ class FarmEvaluator(BuildingEvaluator):
 			else:
 				coords = (farm_x + road_dx, farm_y + other_offset)
 			if coords in production_builder.plan:
-				if production_builder.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
+				if production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
 					immidiate_connections += 1
-				elif production_builder.plan[coords][0] == PRODUCTION_PURPOSE.ROAD:
+				elif production_builder.plan[coords][0] == BUILDING_PURPOSE.ROAD:
 					immidiate_connections += 3
 			elif coords in production_builder.land_manager.settlement.ground_map:
 				object = production_builder.land_manager.settlement.ground_map[coords].object
@@ -195,7 +195,7 @@ class FarmEvaluator(BuildingEvaluator):
 			return BUILD_RESULT.UNKNOWN_ERROR
 		for coords, (purpose, builder) in self.farm_plan.iteritems():
 			if purpose == self.unused_field_purpose:
-				self.production_builder.unused_fields[PRODUCTION_PURPOSE.get_used_purpose(self.unused_field_purpose)].append(coords)
+				self.production_builder.unused_fields[BUILDING_PURPOSE.get_used_purpose(self.unused_field_purpose)].append(coords)
 		self.production_builder.production_buildings.append(building)
 		self.production_builder.display()
 		return BUILD_RESULT.OK

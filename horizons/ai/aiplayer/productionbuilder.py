@@ -33,7 +33,7 @@ from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
 from horizons.ai.aiplayer.buildingevaluator.claypitevaluator import ClayPitEvaluator
 from horizons.ai.aiplayer.buildingevaluator.brickyardevaluator import BrickyardEvaluator
 from horizons.ai.aiplayer.buildingevaluator.distilleryevaluator import DistilleryEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, PRODUCTION_PURPOSE
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point, Rect, WorldObject
 from horizons.util.python import decorators
@@ -45,10 +45,10 @@ class ProductionBuilder(WorldObject):
 	def __init__(self, settlement_manager):
 		super(ProductionBuilder, self).__init__()
 		self.__init(settlement_manager)
-		self.plan = dict.fromkeys(self.land_manager.production, (PRODUCTION_PURPOSE.NONE, None))
+		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		for coords in settlement_manager.branch_office.position.tuple_iter():
 			if coords in self.plan:
-				self.plan[coords] = (PRODUCTION_PURPOSE.BRANCH_OFFICE, None)
+				self.plan[coords] = (BUILDING_PURPOSE.BRANCH_OFFICE, None)
 
 	def __init(self, settlement_manager):
 		self.settlement_manager = settlement_manager
@@ -65,9 +65,9 @@ class ProductionBuilder(WorldObject):
 	@classmethod
 	def _make_empty_unused_fields(self):
 		return {
-			PRODUCTION_PURPOSE.POTATO_FIELD: deque(),
-			PRODUCTION_PURPOSE.PASTURE: deque(),
-			PRODUCTION_PURPOSE.SUGARCANE_FIELD: deque(),
+			BUILDING_PURPOSE.POTATO_FIELD: deque(),
+			BUILDING_PURPOSE.PASTURE: deque(),
+			BUILDING_PURPOSE.SUGARCANE_FIELD: deque(),
 		}
 
 	def save(self, db):
@@ -101,21 +101,21 @@ class ProductionBuilder(WorldObject):
 			if object is None:
 				continue
 
-			if purpose == PRODUCTION_PURPOSE.FISHER and object.id == BUILDINGS.FISHERMAN_CLASS:
+			if purpose == BUILDING_PURPOSE.FISHER and object.id == BUILDINGS.FISHERMAN_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == PRODUCTION_PURPOSE.LUMBERJACK and object.id == BUILDINGS.LUMBERJACK_CLASS:
+			elif purpose == BUILDING_PURPOSE.LUMBERJACK and object.id == BUILDINGS.LUMBERJACK_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == PRODUCTION_PURPOSE.FARM and object.id == BUILDINGS.FARM_CLASS:
+			elif purpose == BUILDING_PURPOSE.FARM and object.id == BUILDINGS.FARM_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == PRODUCTION_PURPOSE.CLAY_PIT and object.id == BUILDINGS.CLAY_PIT_CLASS:
+			elif purpose == BUILDING_PURPOSE.CLAY_PIT and object.id == BUILDINGS.CLAY_PIT_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == PRODUCTION_PURPOSE.BRICKYARD and object.id == BUILDINGS.BRICKYARD_CLASS:
+			elif purpose == BUILDING_PURPOSE.BRICKYARD and object.id == BUILDINGS.BRICKYARD_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == PRODUCTION_PURPOSE.WEAVER and object.id == BUILDINGS.WEAVER_CLASS:
+			elif purpose == BUILDING_PURPOSE.WEAVER and object.id == BUILDINGS.WEAVER_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == PRODUCTION_PURPOSE.DISTILLERY and object.id == BUILDINGS.DISTILLERY_CLASS:
+			elif purpose == BUILDING_PURPOSE.DISTILLERY and object.id == BUILDINGS.DISTILLERY_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == PRODUCTION_PURPOSE.STORAGE and object.id == BUILDINGS.STORAGE_CLASS:
+			elif purpose == BUILDING_PURPOSE.STORAGE and object.id == BUILDINGS.STORAGE_CLASS:
 				self.collector_buildings.append(object)
 
 		self.refresh_unused_fields()
@@ -166,9 +166,9 @@ class ProductionBuilder(WorldObject):
 		for coords in self.plan:
 			if coords not in self.land_manager.settlement.ground_map:
 				continue
-			if self.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
+			if self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				nodes[coords] = 1
-			elif self.plan[coords][0] == PRODUCTION_PURPOSE.ROAD:
+			elif self.plan[coords][0] == BUILDING_PURPOSE.ROAD:
 				nodes[coords] = 1
 				distance_to_road[coords] = 0
 
@@ -225,7 +225,7 @@ class ProductionBuilder(WorldObject):
 		if path is not None:
 			for x, y in path:
 				point = Point(x, y)
-				self.plan[point.to_tuple()] = (PRODUCTION_PURPOSE.ROAD, None)
+				self.plan[point.to_tuple()] = (BUILDING_PURPOSE.ROAD, None)
 				building = self.island.get_building(point)
 				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 					continue
@@ -249,19 +249,19 @@ class ProductionBuilder(WorldObject):
 			if coords in self.plan or coords not in self.land_manager.settlement.ground_map:
 				return None
 		else:
-			if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE or coords not in self.land_manager.settlement.ground_map:
+			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.land_manager.settlement.ground_map:
 				return None
 		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
 		if not builder or not self.land_manager.legal_for_production(builder.position):
 			return None
 		if building_id == BUILDINGS.FISHERMAN_CLASS: #
 			for coords in builder.position.tuple_iter():
-				if coords in self.plan and self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
+				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
 		elif building_id != BUILDINGS.CLAY_PIT_CLASS:
 			# clay deposits are outside the production plan until they are constructed
 			for coords in builder.position.tuple_iter():
-				if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
 		if needs_collector and not self._near_collectors(builder.position):
 			return None
@@ -299,9 +299,9 @@ class ProductionBuilder(WorldObject):
 		cell_value = {}
 		alignment_value = {}
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == PRODUCTION_PURPOSE.NONE:
+			if purpose == BUILDING_PURPOSE.NONE:
 				cell_value[coords] = 3
-			elif purpose == PRODUCTION_PURPOSE.TREE:
+			elif purpose == BUILDING_PURPOSE.TREE:
 				cell_value[coords] = 1
 			else:
 				continue
@@ -309,7 +309,7 @@ class ProductionBuilder(WorldObject):
 			alignment = 0
 			for dx, dy in moves:
 				coords2 = (coords[0] + dx, coords[1] + dy)
-				if coords2 not in self.plan or self.plan[coords][0] == PRODUCTION_PURPOSE.ROAD:
+				if coords2 not in self.plan or self.plan[coords][0] == BUILDING_PURPOSE.ROAD:
 					alignment += 2 if abs(dx) + abs(dy) == 1 else 1
 			alignment_value[coords] = alignment
 
@@ -336,12 +336,12 @@ class ProductionBuilder(WorldObject):
 			if not building:
 				return BUILD_RESULT.UNKNOWN_ERROR
 			for coords in lumberjack.position.tuple_iter():
-				self.plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
-			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (PRODUCTION_PURPOSE.LUMBERJACK, lumberjack)
+				self.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (BUILDING_PURPOSE.LUMBERJACK, lumberjack)
 
 			for coords in lumberjack.position.get_radius_coordinates(3):
-				if coords in self.plan and self.plan[coords][0] == PRODUCTION_PURPOSE.NONE:
-					self.plan[coords] = (PRODUCTION_PURPOSE.TREE, None)
+				if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
+					self.plan[coords] = (BUILDING_PURPOSE.TREE, None)
 					tree = Builder.create(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
 			self.production_buildings.append(building)
 			return BUILD_RESULT.OK
@@ -373,11 +373,11 @@ class ProductionBuilder(WorldObject):
 
 	def build_food_producer(self):
 		build_fields = False
-		if not self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD]:
+		if not self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD]:
 			if not self.have_resources(BUILDINGS.FISHERMAN_CLASS) and not self.have_resources(BUILDINGS.FARM_CLASS):
 				return BUILD_RESULT.NEED_RESOURCES
 			next_fisher = self.get_next_fisher()
-			next_farm = self.get_next_farm(PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD)
+			next_farm = self.get_next_farm(BUILDING_PURPOSE.UNUSED_POTATO_FIELD)
 			if next_fisher is None:
 				if next_farm is None:
 					return BUILD_RESULT.IMPOSSIBLE
@@ -411,21 +411,21 @@ class ProductionBuilder(WorldObject):
 			build_fields = True
 
 		if build_fields:
-			assert len(self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD]) > 0
-			coords = self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD][0]
+			assert len(self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD]) > 0
+			coords = self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD][0]
 			builder = Builder.create(BUILDINGS.POTATO_FIELD_CLASS, self.land_manager, Point(coords[0], coords[1]))
 			if not builder.execute():
 				return BUILD_RESULT.UNKNOWN_ERROR
-			self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD].popleft()
-			self.plan[coords] = (PRODUCTION_PURPOSE.POTATO_FIELD, builder)
-			self.settlement_manager.num_fields[PRODUCTION_PURPOSE.POTATO_FIELD] += 1
+			self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD].popleft()
+			self.plan[coords] = (BUILDING_PURPOSE.POTATO_FIELD, builder)
+			self.settlement_manager.num_fields[BUILDING_PURPOSE.POTATO_FIELD] += 1
 			return BUILD_RESULT.OK
 
 	def build_simple_field_producer(self, field_purpose, field_id):
 		if not self.unused_fields[field_purpose]:
 			if not self.have_resources(BUILDINGS.FARM_CLASS):
 				return BUILD_RESULT.NEED_RESOURCES
-			next_farm = self.get_next_farm(PRODUCTION_PURPOSE.get_unused_purpose(field_purpose))
+			next_farm = self.get_next_farm(BUILDING_PURPOSE.get_unused_purpose(field_purpose))
 			if next_farm is None:
 				return BUILD_RESULT.IMPOSSIBLE
 			# build the farm
@@ -444,7 +444,7 @@ class ProductionBuilder(WorldObject):
 		return BUILD_RESULT.OK
 
 	def build_sugar_producer(self):
-		return self.build_simple_field_producer(PRODUCTION_PURPOSE.SUGARCANE_FIELD, BUILDINGS.SUGARCANE_FIELD_CLASS)
+		return self.build_simple_field_producer(BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDINGS.SUGARCANE_FIELD_CLASS)
 
 	def build_simple_producer(self, building_id, evaluator_class):
 		""" Builds a producer and a road leading to it """
@@ -556,7 +556,7 @@ class ProductionBuilder(WorldObject):
 				if building and building.id == BUILDINGS.TRAIL_CLASS:
 					distance[coords] = 0
 					queue.append((coords, 0))
-				if coords not in self.plan or self.plan[coords][0] != PRODUCTION_PURPOSE.NONE:
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
 			if not distance:
 				continue
@@ -587,8 +587,8 @@ class ProductionBuilder(WorldObject):
 			if not building:
 				return BUILD_RESULT.UNKNOWN_ERROR
 			for coords in builder.position.tuple_iter():
-				self.plan[coords] = (PRODUCTION_PURPOSE.RESERVED, None)
-			self.plan[sorted(builder.position.tuple_iter())[0]] = (PRODUCTION_PURPOSE.STORAGE, builder)
+				self.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+			self.plan[sorted(builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.STORAGE, builder)
 			self.collector_buildings.append(building)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
@@ -633,25 +633,25 @@ class ProductionBuilder(WorldObject):
 		return fishers
 
 	def count_fields(self):
-		fields = {PRODUCTION_PURPOSE.POTATO_FIELD: 0, PRODUCTION_PURPOSE.PASTURE: 0}
+		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0}
 		for building in self.production_buildings:
 			if building.id == BUILDINGS.POTATO_FIELD_CLASS:
-				fields[PRODUCTION_PURPOSE.POTATO_FIELD] += 1
+				fields[BUILDING_PURPOSE.POTATO_FIELD] += 1
 			elif building.id == BUILDINGS.PASTURE_CLASS:
-				fields[PRODUCTION_PURPOSE.PASTURE] += 1
+				fields[BUILDING_PURPOSE.PASTURE] += 1
 			elif building.id == BUILDINGS.SUGARCANE_FIELD_CLASS:
-				fields[PRODUCTION_PURPOSE.SUGARCANE_FIELD] += 1
+				fields[BUILDING_PURPOSE.SUGARCANE_FIELD] += 1
 		return fields
 
 	def refresh_unused_fields(self):
 		self.unused_fields = self._make_empty_unused_fields()
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD:
-				self.unused_fields[PRODUCTION_PURPOSE.POTATO_FIELD].append(coords)
-			elif purpose == PRODUCTION_PURPOSE.UNUSED_PASTURE:
-				self.unused_fields[PRODUCTION_PURPOSE.PASTURE].append(coords)
-			elif purpose == PRODUCTION_PURPOSE.UNUSED_SUGARCANE_FIELD:
-				self.unused_fields[PRODUCTION_PURPOSE.SUGARCANE_FIELD].append(coords)
+			if purpose == BUILDING_PURPOSE.UNUSED_POTATO_FIELD:
+				self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD].append(coords)
+			elif purpose == BUILDING_PURPOSE.UNUSED_PASTURE:
+				self.unused_fields[BUILDING_PURPOSE.PASTURE].append(coords)
+			elif purpose == BUILDING_PURPOSE.UNUSED_SUGARCANE_FIELD:
+				self.unused_fields[BUILDING_PURPOSE.SUGARCANE_FIELD].append(coords)
 
 	def display(self):
 		if not AI.HIGHLIGHT_PLANS:
@@ -678,37 +678,37 @@ class ProductionBuilder(WorldObject):
 
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
-			if purpose == PRODUCTION_PURPOSE.ROAD:
+			if purpose == BUILDING_PURPOSE.ROAD:
 				renderer.addColored(tile._instance, *road_colour)
-			elif purpose == PRODUCTION_PURPOSE.FISHER:
+			elif purpose == BUILDING_PURPOSE.FISHER:
 				renderer.addColored(tile._instance, *fisher_colour)
-			elif purpose == PRODUCTION_PURPOSE.LUMBERJACK:
+			elif purpose == BUILDING_PURPOSE.LUMBERJACK:
 				renderer.addColored(tile._instance, *lumberjack_colour)
-			elif purpose == PRODUCTION_PURPOSE.TREE:
+			elif purpose == BUILDING_PURPOSE.TREE:
 				renderer.addColored(tile._instance, *tree_colour)
-			elif purpose == PRODUCTION_PURPOSE.FARM:
+			elif purpose == BUILDING_PURPOSE.FARM:
 				renderer.addColored(tile._instance, *farm_colour)
-			elif purpose == PRODUCTION_PURPOSE.UNUSED_POTATO_FIELD:
+			elif purpose == BUILDING_PURPOSE.UNUSED_POTATO_FIELD:
 				renderer.addColored(tile._instance, *unused_potato_field_colour)
-			elif purpose == PRODUCTION_PURPOSE.POTATO_FIELD:
+			elif purpose == BUILDING_PURPOSE.POTATO_FIELD:
 				renderer.addColored(tile._instance, *potato_field_colour)
-			elif purpose == PRODUCTION_PURPOSE.UNUSED_PASTURE:
+			elif purpose == BUILDING_PURPOSE.UNUSED_PASTURE:
 				renderer.addColored(tile._instance, *unused_pasture_colour)
-			elif purpose == PRODUCTION_PURPOSE.PASTURE:
+			elif purpose == BUILDING_PURPOSE.PASTURE:
 				renderer.addColored(tile._instance, *pasture_colour)
-			elif purpose == PRODUCTION_PURPOSE.WEAVER:
+			elif purpose == BUILDING_PURPOSE.WEAVER:
 				renderer.addColored(tile._instance, *weaver_colour)
-			elif purpose == PRODUCTION_PURPOSE.UNUSED_SUGARCANE_FIELD:
+			elif purpose == BUILDING_PURPOSE.UNUSED_SUGARCANE_FIELD:
 				renderer.addColored(tile._instance, *unused_sugarcane_field_colour)
-			elif purpose == PRODUCTION_PURPOSE.SUGARCANE_FIELD:
+			elif purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
 				renderer.addColored(tile._instance, *sugarcane_field_colour)
-			elif purpose == PRODUCTION_PURPOSE.DISTILLERY:
+			elif purpose == BUILDING_PURPOSE.DISTILLERY:
 				renderer.addColored(tile._instance, *distillery_colour)
-			elif purpose == PRODUCTION_PURPOSE.CLAY_PIT:
+			elif purpose == BUILDING_PURPOSE.CLAY_PIT:
 				renderer.addColored(tile._instance, *clay_pit_colour)
-			elif purpose == PRODUCTION_PURPOSE.BRICKYARD:
+			elif purpose == BUILDING_PURPOSE.BRICKYARD:
 				renderer.addColored(tile._instance, *brickyard_colour)
-			elif purpose == PRODUCTION_PURPOSE.RESERVED:
+			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
