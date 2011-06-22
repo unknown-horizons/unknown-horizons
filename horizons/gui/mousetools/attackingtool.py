@@ -71,23 +71,19 @@ class AttackingTool(SelectionTool):
 		Returns target instance if mouse is over an attackable instance
 		Returns None if mouse is not over an attackable instance
 		"""
-		instances = self.session.view.cam.getMatchingInstances(\
-			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+		instances = self.get_hover_instances(evt)
 
 		target = None
 		attackable = False
-		for i in instances:
-			id = i.getId()
-			if id == '':
-				continue
-			instance = WorldObject.get_object_by_id(int(id))
-			local_player = self.session.world.player
+		local_player = self.session.world.player
+		for instance in instances:
 			if not instance.owner:
 				continue
 			#check diplomacy state between local player and instance owner
 			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner):
 				continue
 			#NOTE attacks only buildings or ships
+			#TODO attakc only instances that have health component
 			try:
 				if instance.is_building or instance.is_ship:
 					attackable = True

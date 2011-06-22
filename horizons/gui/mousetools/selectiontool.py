@@ -141,15 +141,8 @@ class SelectionTool(NavigationTool):
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			selectable = []
-			instances = self.session.view.cam.getMatchingInstances(\
-				fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
-			for i in instances:
-				# Check id, can be '' if instance is created and clicked on before
-				# actual game representation class is created (network play)
-				id = i.getId()
-				if id == '':
-					continue
-				instance = WorldObject.get_object_by_id(int(id))
+			instances = self.get_hover_instances(evt)
+			for instance in instances:
 				if instance.is_selectable:
 					selectable.append(instance)
 			if len(selectable) > 1:
