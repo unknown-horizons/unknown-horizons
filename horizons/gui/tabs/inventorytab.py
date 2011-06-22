@@ -63,8 +63,8 @@ class ShipInventoryTab(InventoryTab):
 		self.tooltip = _("Ship inventory")
 
 	def configure_route(self):
-		route_menu = RouteConfig(self.instance)
-		route_menu.toggle_visibility()
+		self.route_menu = RouteConfig(self.instance)
+		self.route_menu.toggle_visibility()
 
 	def refresh(self):
 		session = self.instance.session
