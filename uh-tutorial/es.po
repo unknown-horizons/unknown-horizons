@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-06-22 17:41+0200\n"
+"PO-Revision-Date: 2011-06-22 17:59+0200\n"
 "Last-Translator: MicMic <michael.aloys@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -35,7 +35,7 @@ msgstr ""
 
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
-msgstr "Construid una sucursal en la costa."
+msgstr "Construya una sucursal en la costa."
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
@@ -201,6 +201,22 @@ msgid ""
 "The build menu is sorted by increments.\n"
 "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
 msgstr ""
+"Con tu nuevo material de construcción ya puedes empezar a construir unos "
+"edificios basicos.\n"
+"\n"
+"Empezaremos con la construcción de una cabaña de leñador.\n"
+"\n"
+"El leñador es esencial porque en ese nivel tablones son lo único que tus "
+"marineros se pueden permitir para plantar sus tiendas. \n"
+"\n"
+"El pescador también necesita tablones para construir su barco.\n"
+"\n"
+"Para construir una cabaña de leñador, abra el menú de construcción. Para eso "
+"haga clic en el icono grande debajo del mapa pequeño o pulsando la tecla B\n"
+"\n"
+"El menú esta ordenado por nivel.\n"
+"Usted esta por el momento en el primer nivel (el nivel de marinero) así que "
+"solo puede construir edificios básicos."
 
 #: po/tutorial.py:15
 msgid ""
@@ -263,7 +279,7 @@ msgstr "Construya un cazador y un pescador. Conéctelos al asentamiento."
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "PLAZA PRINCIPAL"
+msgstr "NUEVO OBJETIVO: PLAZA PRINCIPAL"
 
 #: po/tutorial.py:22
 msgid ""
