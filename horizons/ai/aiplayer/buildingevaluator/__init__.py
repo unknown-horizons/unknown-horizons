@@ -27,9 +27,9 @@ from horizons.util import WorldObject
 from horizons.constants import RES
 
 class BuildingEvaluator(WorldObject):
-	def __init__(self, production_builder, builder, worldid=None):
+	def __init__(self, area_builder, builder, worldid=None):
 		super(BuildingEvaluator, self).__init__(worldid)
-		self.production_builder = production_builder
+		self.area_builder = area_builder
 		self.builder = builder
 
 	def _get_costs(self):
@@ -42,7 +42,7 @@ class BuildingEvaluator(WorldObject):
 		""" Returns the amount of useful land used. """
 		area = 0
 		for coords in self.builder.position.tuple_iter():
-			if coords in self.production_builder.plan:
+			if coords in self.area_builder.plan:
 				area += 1
 		return area
 

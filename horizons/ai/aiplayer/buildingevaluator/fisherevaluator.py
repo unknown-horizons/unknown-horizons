@@ -32,8 +32,8 @@ class FisherEvaluator(BuildingEvaluator):
 	refill_cycle_in_tiles = 12
 	fisher_range = 16
 
-	def __init__(self, production_builder, builder, fishers_in_range, fish_value):
-		super(FisherEvaluator, self).__init__(production_builder, builder)
+	def __init__(self, area_builder, builder, fishers_in_range, fish_value):
+		super(FisherEvaluator, self).__init__(area_builder, builder)
 		self.fishers_in_range = fishers_in_range
 		self.fish_value = fish_value
 		self.value = fish_value / fishers_in_range
@@ -42,27 +42,27 @@ class FisherEvaluator(BuildingEvaluator):
 	def get_expected_production_level(self, resource_id):
 		assert resource_id == RES.FOOD_ID
 		if self.production_level is None:
-			fishers_coords = [fisher.position.origin.to_tuple() for fisher in self.production_builder.owner.fishers]
-			self.production_level = FisherSimulator.extra_productivity(self.production_builder.session, \
+			fishers_coords = [fisher.position.origin.to_tuple() for fisher in self.area_builder.owner.fishers]
+			self.production_level = FisherSimulator.extra_productivity(self.area_builder.session, \
 				fishers_coords, self.builder.position.origin.to_tuple())
-		max_possible = self.production_builder.owner.virtual_fisher.get_expected_production_level(resource_id)
+		max_possible = self.area_builder.owner.virtual_fisher.get_expected_production_level(resource_id)
 		return min(self.production_level, max_possible)
 
 	@classmethod
-	def create(cls, production_builder, x, y):
-		builder = production_builder.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True)
+	def create(cls, area_builder, x, y):
+		builder = area_builder.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True)
 		if not builder:
 			return None
 
 		fishers_in_range = 1.0
-		for other_fisher in production_builder.owner.fishers:
+		for other_fisher in area_builder.owner.fishers:
 			distance = builder.position.distance(other_fisher.position)
 			if distance < cls.fisher_range:
 				fishers_in_range += 1 - distance / float(cls.fisher_range)
 
 		tiles_used = 0
 		fish_value = 0.0
-		for fish in production_builder.session.world.fish_indexer.get_buildings_in_range((x, y)):
+		for fish in area_builder.session.world.fish_indexer.get_buildings_in_range((x, y)):
 			if tiles_used >= 3 * cls.refill_cycle_in_tiles:
 				break
 			distance = builder.position.distance(fish.position) + 1.0
@@ -74,21 +74,21 @@ class FisherEvaluator(BuildingEvaluator):
 
 		if fish_value == 0:
 			return None
-		return FisherEvaluator(production_builder, builder, fishers_in_range, fish_value)
+		return FisherEvaluator(area_builder, builder, fishers_in_range, fish_value)
 
 	def execute(self):
-		if not self.production_builder.have_resources(self.builder.building_id):
+		if not self.builder.have_resources():
 			return BUILD_RESULT.NEED_RESOURCES
-		if not self.production_builder._build_road_connection(self.builder):
+		if not self.area_builder._build_road_connection(self.builder):
 			return BUILD_RESULT.IMPOSSIBLE
 		building = self.builder.execute()
 		if not building:
 			return BUILD_RESULT.UNKNOWN_ERROR
-		self.production_builder.owner.fishers.append(self.builder)
+		self.area_builder.owner.fishers.append(self.builder)
 		for coords in self.builder.position.tuple_iter():
-			self.production_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-		self.production_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.FISHER, self.builder)
-		self.production_builder.production_buildings.append(building)
+			self.area_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+		self.area_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.FISHER, self.builder)
+		self.area_builder.production_buildings.append(building)
 		return BUILD_RESULT.OK
 
 class FisherSimulator(object):

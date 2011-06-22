@@ -25,34 +25,34 @@ from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES
 
 class ClayPitEvaluator(BuildingEvaluator):
-	def __init__(self, production_builder, builder):
-		super(ClayPitEvaluator, self).__init__(production_builder, builder)
+	def __init__(self, area_builder, builder):
+		super(ClayPitEvaluator, self).__init__(area_builder, builder)
 		self.value = 0
 		self.production_level = None
 
 	def get_expected_production_level(self, resource_id):
 		assert resource_id == RES.CLAY_ID
-		return self.production_builder.owner.virtual_clay_pit.get_expected_production_level(resource_id)
+		return self.area_builder.owner.virtual_clay_pit.get_expected_production_level(resource_id)
 
 	@classmethod
-	def create(cls, production_builder, x, y):
-		builder = production_builder.make_builder(BUILDINGS.CLAY_PIT_CLASS, x, y, True)
+	def create(cls, area_builder, x, y):
+		builder = area_builder.make_builder(BUILDINGS.CLAY_PIT_CLASS, x, y, True)
 		if not builder:
 			return None
-		return ClayPitEvaluator(production_builder, builder)
+		return ClayPitEvaluator(area_builder, builder)
 
 	def execute(self):
-		if not self.production_builder.have_resources(self.builder.building_id):
+		if not self.builder.have_resources():
 			return BUILD_RESULT.NEED_RESOURCES
-		if not self.production_builder._build_road_connection(self.builder):
+		if not self.area_builder._build_road_connection(self.builder):
 			return BUILD_RESULT.IMPOSSIBLE
 		building = self.builder.execute()
 		if not building:
 			return BUILD_RESULT.UNKNOWN_ERROR
 		for coords in self.builder.position.tuple_iter():
-			self.production_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-		self.production_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.CLAY_PIT, self.builder)
-		self.production_builder.production_buildings.append(building)
+			self.area_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+		self.area_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.CLAY_PIT, self.builder)
+		self.area_builder.production_buildings.append(building)
 		return BUILD_RESULT.OK
 
 decorators.bind_all(ClayPitEvaluator)

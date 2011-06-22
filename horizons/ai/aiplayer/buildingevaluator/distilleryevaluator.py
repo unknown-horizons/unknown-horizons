@@ -26,8 +26,8 @@ from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
 
 class DistilleryEvaluator(BuildingEvaluator):
-	def __init__(self, production_builder, builder, distance_to_farm, distance_to_collector, alignment):
-		super(DistilleryEvaluator, self).__init__(production_builder, builder)
+	def __init__(self, area_builder, builder, distance_to_farm, distance_to_collector, alignment):
+		super(DistilleryEvaluator, self).__init__(area_builder, builder)
 		self.distance_to_farm = distance_to_farm
 		self.distance_to_collector = distance_to_collector
 		self.alignment = alignment
@@ -43,13 +43,13 @@ class DistilleryEvaluator(BuildingEvaluator):
 		return 0 # TODO: implement this
 
 	@classmethod
-	def create(cls, production_builder, x, y):
-		builder = production_builder.make_builder(BUILDINGS.DISTILLERY_CLASS, x, y, True)
+	def create(cls, area_builder, x, y):
+		builder = area_builder.make_builder(BUILDINGS.DISTILLERY_CLASS, x, y, True)
 		if not builder:
 			return None
 
 		distance_to_farm = None
-		for building in production_builder.settlement.get_buildings_by_id(BUILDINGS.FARM_CLASS):
+		for building in area_builder.settlement.get_buildings_by_id(BUILDINGS.FARM_CLASS):
 			distance = builder.position.distance(building.position)
 			if distance <= Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius:
 				sugarcane_producer = False
@@ -61,7 +61,7 @@ class DistilleryEvaluator(BuildingEvaluator):
 					distance_to_farm = distance if distance_to_farm is None or distance < distance_to_farm else distance_to_farm
 
 		distance_to_collector = None
-		for building in production_builder.collector_buildings:
+		for building in area_builder.collector_buildings:
 			distance = builder.position.distance(building.position)
 			if distance <= Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius:
 				distance_to_collector = distance if distance_to_collector is None or distance < distance_to_collector else distance_to_collector
@@ -69,17 +69,17 @@ class DistilleryEvaluator(BuildingEvaluator):
 			return None # require distilleries to have a collector building in range
 
 		alignment = 0
-		for coords in production_builder._get_neighbour_tiles(builder.position):
-			if coords in production_builder.plan:
-				purpose = production_builder.plan[coords]
+		for coords in area_builder._get_neighbour_tiles(builder.position):
+			if coords in area_builder.plan:
+				purpose = area_builder.plan[coords]
 				if purpose == BUILDING_PURPOSE.NONE:
 					continue
 				elif purpose == BUILDING_PURPOSE.ROAD:
 					alignment += 3
 				else:
 					alignment += 1
-			elif coords in production_builder.settlement.ground_map:
-				object = production_builder.settlement.ground_map[coords].object
+			elif coords in area_builder.settlement.ground_map:
+				object = area_builder.settlement.ground_map[coords].object
 				if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
 					alignment += 3
 				else:
@@ -87,20 +87,20 @@ class DistilleryEvaluator(BuildingEvaluator):
 			else:
 				alignment += 1
 
-		return DistilleryEvaluator(production_builder, builder, distance_to_farm, distance_to_collector, alignment)
+		return DistilleryEvaluator(area_builder, builder, distance_to_farm, distance_to_collector, alignment)
 
 	def execute(self):
-		if not self.production_builder.have_resources(self.builder.building_id):
+		if not self.builder.have_resources():
 			return BUILD_RESULT.NEED_RESOURCES
-		if not self.production_builder._build_road_connection(self.builder):
+		if not self.area_builder._build_road_connection(self.builder):
 			return BUILD_RESULT.IMPOSSIBLE
 		building = self.builder.execute()
 		if not building:
 			return BUILD_RESULT.UNKNOWN_ERROR
 		for coords in self.builder.position.tuple_iter():
-			self.production_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-		self.production_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.DISTILLERY, self.builder)
-		self.production_builder.production_buildings.append(building)
+			self.area_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+		self.area_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.DISTILLERY, self.builder)
+		self.area_builder.production_buildings.append(building)
 		return BUILD_RESULT.OK
 
 decorators.bind_all(DistilleryEvaluator)

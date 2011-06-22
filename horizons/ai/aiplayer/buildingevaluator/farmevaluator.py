@@ -33,8 +33,8 @@ class FarmEvaluator(BuildingEvaluator):
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	field_offsets = None
 
-	def __init__(self, production_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections):
-		super(FarmEvaluator, self).__init__(production_builder, builder)
+	def __init__(self, area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections):
+		super(FarmEvaluator, self).__init__(area_builder, builder)
 		self.farm_plan = farm_plan
 		self.fields = fields
 		self.unused_field_purpose = unused_field_purpose
@@ -59,7 +59,7 @@ class FarmEvaluator(BuildingEvaluator):
 		return super(FarmEvaluator, self)._get_land_area() + self.fields * 9
 
 	def get_expected_production_level(self, resource_id):
-		return self.production_builder.owner.virtual_farm.get_expected_production_level(resource_id, self.fields)
+		return self.area_builder.owner.virtual_farm.get_expected_production_level(resource_id, self.fields)
 
 	@classmethod
 	def _make_field_offsets(cls):
@@ -74,12 +74,12 @@ class FarmEvaluator(BuildingEvaluator):
 		return first_class
 
 	@classmethod
-	def _suitable_for_road(self, production_builder, coords):
-		if coords in production_builder.plan:
-			return production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE or \
-				production_builder.plan[coords][0] == BUILDING_PURPOSE.ROAD
+	def _suitable_for_road(self, area_builder, coords):
+		if coords in area_builder.plan:
+			return area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE or \
+				area_builder.plan[coords][0] == BUILDING_PURPOSE.ROAD
 		else:
-			ground_map = production_builder.settlement.ground_map
+			ground_map = area_builder.settlement.ground_map
 			if coords not in ground_map:
 				return False
 			object = ground_map[coords].object
@@ -88,8 +88,8 @@ class FarmEvaluator(BuildingEvaluator):
 		return False
 
 	@classmethod
-	def create(cls, production_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
-		builder = production_builder.make_builder(BUILDINGS.FARM_CLASS, farm_x, farm_y, True)
+	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
+		builder = area_builder.make_builder(BUILDINGS.FARM_CLASS, farm_x, farm_y, True)
 		if not builder:
 			return None
 
@@ -103,11 +103,11 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (farm_x + other_offset, farm_y + road_dy)
 			else:
 				coords = (farm_x + road_dx, farm_y + other_offset)
-			if not cls._suitable_for_road(production_builder, coords):
+			if not cls._suitable_for_road(area_builder, coords):
 				return None
 
-			if coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
-				road = Builder.create(BUILDINGS.TRAIL_CLASS, production_builder.land_manager, Point(coords[0], coords[1]))
+			if coords in area_builder.plan and area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
+				road = Builder.create(BUILDINGS.TRAIL_CLASS, area_builder.land_manager, Point(coords[0], coords[1]))
 				if road:
 					farm_plan[coords] = (BUILDING_PURPOSE.ROAD, road)
 				else:
@@ -124,7 +124,7 @@ class FarmEvaluator(BuildingEvaluator):
 			if fields >= 8:
 				break # unable to place more anyway
 			coords = (farm_x + dx, farm_y + dy)
-			field = production_builder.make_builder(BUILDINGS.POTATO_FIELD_CLASS, coords[0], coords[1], False)
+			field = area_builder.make_builder(BUILDINGS.POTATO_FIELD_CLASS, coords[0], coords[1], False)
 			if not field:
 				continue
 			for coords2 in field.position.tuple_iter():
@@ -158,7 +158,7 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (x + dx, y + dy)
 				if coords in farm_plan:
 					continue
-				if coords not in production_builder.plan or production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				if coords not in area_builder.plan or area_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
 
 		# calculate the value of the farm road end points (larger is better)
@@ -168,36 +168,36 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (farm_x + other_offset, farm_y + road_dy)
 			else:
 				coords = (farm_x + road_dx, farm_y + other_offset)
-			if coords in production_builder.plan:
-				if production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
+			if coords in area_builder.plan:
+				if area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
 					immidiate_connections += 1
-				elif production_builder.plan[coords][0] == BUILDING_PURPOSE.ROAD:
+				elif area_builder.plan[coords][0] == BUILDING_PURPOSE.ROAD:
 					immidiate_connections += 3
-			elif coords in production_builder.land_manager.settlement.ground_map:
-				object = production_builder.land_manager.settlement.ground_map[coords].object
+			elif coords in area_builder.land_manager.settlement.ground_map:
+				object = area_builder.land_manager.settlement.ground_map[coords].object
 				if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
 					immidiate_connections += 3
 
 		extra_space = (max_x - min_x + 1) * (max_y - min_y + 1) - 9 * (fields + 2)
-		return FarmEvaluator(production_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections)
+		return FarmEvaluator(area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections)
 
 	def execute(self):
-		if not self.production_builder.have_resources(self.builder.building_id):
+		if not self.builder.have_resources():
 			return BUILD_RESULT.NEED_RESOURCES
-		backup = copy.copy(self.production_builder.plan)
+		backup = copy.copy(self.area_builder.plan)
 		for coords, plan_item in self.farm_plan.iteritems():
-			self.production_builder.plan[coords] = plan_item
-		if not self.production_builder._build_road_connection(self.builder):
-			self.production_builder.plan = backup
+			self.area_builder.plan[coords] = plan_item
+		if not self.area_builder._build_road_connection(self.builder):
+			self.area_builder.plan = backup
 			return BUILD_RESULT.IMPOSSIBLE
 		building = self.builder.execute()
 		if not building:
 			return BUILD_RESULT.UNKNOWN_ERROR
 		for coords, (purpose, builder) in self.farm_plan.iteritems():
 			if purpose == self.unused_field_purpose:
-				self.production_builder.unused_fields[BUILDING_PURPOSE.get_used_purpose(self.unused_field_purpose)].append(coords)
-		self.production_builder.production_buildings.append(building)
-		self.production_builder.display()
+				self.area_builder.unused_fields[BUILDING_PURPOSE.get_used_purpose(self.unused_field_purpose)].append(coords)
+		self.area_builder.production_buildings.append(building)
+		self.area_builder.display()
 		return BUILD_RESULT.OK
 
 FarmEvaluator.field_offsets = FarmEvaluator._make_field_offsets()
