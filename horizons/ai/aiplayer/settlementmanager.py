@@ -62,6 +62,7 @@ class SettlementManager(WorldObject):
 		self.faith_chain = ProductionChain.create(self, RES.FAITH_ID)
 		self.education_chain = ProductionChain.create(self, RES.EDUCATION_ID)
 		self.get_together_chain = ProductionChain.create(self, RES.GET_TOGETHER_ID)
+		self.bricks_chain = ProductionChain.create(self, RES.BRICKS_ID)
 
 		self.tents = 0
 		self.num_fishers = 0
@@ -198,6 +199,9 @@ class SettlementManager(WorldObject):
 		return (amount, providers, new_providers)
 
 	def get_resident_resource_usage(self, resource_id):
+		if resource_id == RES.BRICKS_ID:
+			return 0.001 # dummy value to cause brick production to be built
+
 		total = 0
 		for coords, (purpose, _) in self.village_builder.plan.iteritems():
 			if purpose != BUILDING_PURPOSE.RESIDENCE:
@@ -316,13 +320,8 @@ class SettlementManager(WorldObject):
 			self.log_generic_build_result(result,  'tent')
 			if result == BUILD_RESULT.OK:
 				self.tents += 1
-		elif not self.count_buildings(BUILDINGS.CLAY_PIT_CLASS) and self.count_buildings(BUILDINGS.CLAY_DEPOSIT_CLASS):
-			result = self.production_builder.build_clay_pit()
-			self.log_generic_build_result(result,  'clay pit')
-			self.production_builder.display()
-		elif not self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.count_buildings(BUILDINGS.CLAY_PIT_CLASS):
-			result = self.production_builder.build_brickyard()
-			self.log_generic_build_result(result,  'brickyard')
+		elif self.count_buildings(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.build_chain(self.bricks_chain, 'bricks producer'):
+			pass
 		elif self.build_chain(self.education_chain, 'school'):
 			pass
 		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.get_together_chain, 'get-together producer'):

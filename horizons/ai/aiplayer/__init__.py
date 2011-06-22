@@ -28,7 +28,7 @@ from mission.preparefoundationship import PrepareFoundationShip
 from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
-from virtualbuilding import VirtualFarm, VirtualFisher, VirtualClayPit
+from virtualbuilding import VirtualFarm, VirtualFisher
 
 # all subclasses of AbstractBuilding have to imported here to register the available buildings
 from building import AbstractBuilding
@@ -37,6 +37,9 @@ from building.field import AbstractField
 from building.weaver import AbstractWeaver
 from building.distillery import AbstractDistillery
 from building.villagebuilding import AbstractVillageBuilding
+from building.claydeposit import AbstractClayDeposit
+from building.claypit import AbstractClayPit
+from building.brickyard import AbstractBrickyard
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
@@ -105,7 +108,6 @@ class AIPlayer(GenericAI):
 		self.complete_inventory = CompleteInventory(self)
 		self.virtual_farm = VirtualFarm(self.session)
 		self.virtual_fisher = VirtualFisher(self.session)
-		self.virtual_clay_pit = VirtualClayPit(self.session)
 		self.log.info('%s Expected 1 field farm food production %.5f/tick', self, \
 			self.virtual_farm.get_expected_production_level(RES.FOOD_ID, 1))
 		self.log.info('%s Expected perfect fisher food production %.5f/tick', self, \

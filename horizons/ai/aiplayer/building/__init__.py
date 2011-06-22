@@ -25,8 +25,9 @@ from horizons.constants import BUILDINGS, GAME_SPEED
 from horizons.util.python import decorators
 from horizons.world.production.productionline import ProductionLine
 
-class AbstractBuilding:
+class AbstractBuilding(object):
 	def __init__(self, building_id, name, production_line_ids):
+		super(AbstractBuilding, self).__init__()
 		self.id = building_id
 		self.name = name
 		self.lines = {} # output_resource_id: ProductionLine

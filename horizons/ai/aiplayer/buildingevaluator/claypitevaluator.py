@@ -35,8 +35,8 @@ class ClayPitEvaluator(BuildingEvaluator):
 		return self.area_builder.owner.virtual_clay_pit.get_expected_production_level(resource_id)
 
 	@classmethod
-	def create(cls, area_builder, x, y):
-		builder = area_builder.make_builder(BUILDINGS.CLAY_PIT_CLASS, x, y, True)
+	def create(cls, area_builder, x, y, orientation):
+		builder = area_builder.make_builder(BUILDINGS.CLAY_PIT_CLASS, x, y, True, orientation)
 		if not builder:
 			return None
 		return ClayPitEvaluator(area_builder, builder)

@@ -29,9 +29,6 @@ from builder import Builder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 from buildingevaluator.fisherevaluator import FisherEvaluator
 from buildingevaluator.farmevaluator import FarmEvaluator
-from buildingevaluator.claypitevaluator import ClayPitEvaluator
-from buildingevaluator.brickyardevaluator import BrickyardEvaluator
-from buildingevaluator.distilleryevaluator import DistilleryEvaluator
 
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point
@@ -380,38 +377,6 @@ class ProductionBuilder(AreaBuilder):
 			self.plan[sorted(builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.STORAGE, builder)
 			self.collector_buildings.append(building)
 			return BUILD_RESULT.OK
-		return BUILD_RESULT.IMPOSSIBLE
-
-	def build_clay_pit(self):
-		""" Builds a clay pit and a road leading to it """
-		if not self.have_resources(BUILDINGS.CLAY_PIT_CLASS):
-			return BUILD_RESULT.NEED_RESOURCES
-
-		options = []
-		for building in self.settlement.get_buildings_by_id(BUILDINGS.CLAY_DEPOSIT_CLASS):
-			(x, y) = building.position.origin.to_tuple()
-			evaluator = ClayPitEvaluator.create(self, x, y)
-			if evaluator is not None:
-				options.append(evaluator)
-
-		for evaluator in sorted(options):
-			return evaluator.execute()
-		return BUILD_RESULT.IMPOSSIBLE
-
-	def build_brickyard(self):
-		""" Builds a brickyard and a road leading to it """
-		if not self.have_resources(BUILDINGS.BRICKYARD_CLASS):
-			return BUILD_RESULT.NEED_RESOURCES
-
-		options = []
-		for (x, y) in self.plan:
-			for orientation in xrange(0, 2):
-				evaluator = BrickyardEvaluator.create(self, x, y, orientation)
-				if evaluator is not None:
-					options.append(evaluator)
-
-		for evaluator in sorted(options):
-			return evaluator.execute()
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def count_fishers(self):
