@@ -230,24 +230,12 @@ class ShipPather(AbstractPather):
 	def _get_blocked_coords(self):
 		return self.session.world.ship_map
 
-	def _check_for_obstacles(self, point):
-			#check if another ship is blocking the way (and other ship is not self)
-			if point in self.session.world.ship_map and \
-				 self.session.world.ship_map[self.path[self.cur]]() is not self.unit:
-				# issue a short debug message (no code execution here)
-				other = self.session.world.ship_map[self.path[self.cur]]()
-				self.log.debug("tile %s %s blocked for %s %s by another ship %s", \
-											 point[0], point[1], \
-											 self.unit, self.unit.worldid, other)
-				return True
-			else:
-				# also check in super class
-				return super(ShipPather, self)._check_for_obstacles(point)
 
 class FisherShipPather(ShipPather):
 	"""Can also drive through shallow water"""
 	def _get_path_nodes(self):
 		return self.session.world.water_and_coastline
+
 
 class BuildingCollectorPather(AbstractPather):
 	"""Pather for collectors, that move freely (without depending on roads)
@@ -258,6 +246,7 @@ class BuildingCollectorPather(AbstractPather):
 	def _get_path_nodes(self):
 			return self.unit.home_building.path_nodes.nodes
 
+
 class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
 	def __init__(self, unit, *args, **kwargs):
@@ -266,6 +255,7 @@ class RoadPather(AbstractPather):
 
 	def _get_path_nodes(self):
 		return self.island.path_nodes.road_nodes
+
 
 class SoldierPather(AbstractPather):
 	"""Pather for units, that move absolutely freely (such as soldiers)

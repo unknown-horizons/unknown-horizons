@@ -165,6 +165,7 @@ class MovingObject(ConcretObject):
 	def _move_tick(self, resume = False):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
+		if self.worldid == 100129: import pdb ; pdb.set_trace()
 		assert self._next_target is not None
 
 		# this data structure is needed multiple times, only create once
@@ -197,7 +198,8 @@ class MovingObject(ConcretObject):
 				if self.blocked_callbacks:
 					self.log.warning('PATH FOR UNIT %s is blocked. Calling blocked_callback', self)
 					self.blocked_callbacks.execute()
-				elif self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
+				elif self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked") and \
+				     self.worldid != 100129:
 					self.log.warning('PATH FOR UNIT %s is blocked. Delegating to owner %s', self, self.owner)
 					self.owner.notify_unit_path_blocked(self)
 				else:
