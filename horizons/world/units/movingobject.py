@@ -281,6 +281,6 @@ class MovingObject(ConcretObject):
 		if path_loaded:
 			self.__is_moving = True
 			self._setup_move()
-			Scheduler().add_new_object(self._move_tick, self, 1)
+			Scheduler().add_new_object(self._move_tick, self, run_in=0)
 
 decorators.bind_all(MovingObject)
