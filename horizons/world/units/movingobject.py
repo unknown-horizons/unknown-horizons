@@ -197,12 +197,23 @@ class MovingObject(ConcretObject):
 				if self.blocked_callbacks:
 					self.log.warning('PATH FOR UNIT %s is blocked. Calling blocked_callback', self)
 					self.blocked_callbacks.execute()
+					"""
+					# TODO: This is supposed to delegate control over the behaviour of the unit to the owner.
+					#       It is currently not used in a meaningful manner and possibly will be removed,
+					#       as blocked_callback solves this problem more elegantly.
+					#       Also, this sometimes triggers for collectors, who are supposed to use the
+					#       generic solution. Only uncomment this code if this problem is fixed, else
+					#       collectors will get stuck.
 				elif self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
 					self.log.warning('PATH FOR UNIT %s is blocked. Delegating to owner %s', self, self.owner)
 					self.owner.notify_unit_path_blocked(self)
+					"""
 				else:
 					# generic solution: retry in 2 secs
 					self.log.warning('PATH FOR UNIT %s is blocked. Retry in 2 secs', self)
+					# technically, the ship doesn't move, but it is in the process of moving,
+					# as it will continue soon in general. Needed in border cases for add_move_callback
+					self.__is_moving = True
 					Scheduler().add_new_object(self._move_tick, self, \
 					                           GAME_SPEED.TICKS_PER_SECOND * 2)
 				self.log.debug("Unit %s: path is blocked, no way around", self)
