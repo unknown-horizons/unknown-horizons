@@ -51,26 +51,8 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
 		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
 
-	def get_expected_production_level(self, resource_id):
-		fields = 0
-		for provider in self._get_providers():
-			if resource_id == RES.FOOD_ID and provider.id == BUILDINGS.POTATO_FIELD_CLASS:
-				fields += 1
-			elif resource_id == RES.WOOL_ID and provider.id == BUILDINGS.PASTURE_CLASS:
-				fields += 1
-			elif resource_id == RES.SUGAR_ID and provider.id == BUILDINGS.SUGARCANE_FIELD_CLASS:
-				fields += 1
-		return self.owner.virtual_farm.get_expected_production_level(resource_id, fields)
-
 class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	def get_expected_production_level(self, resource_id):
-		if resource_id != RES.BOARDS_ID:
-			return None
-		production = [production for production in self._get_productions()][0]
-		amount = 0
-		for sub_amount in production._prod_line.produced_res.itervalues():
-			amount += sub_amount
-		return float(amount) / production._prod_line.time / GAME_SPEED.TICKS_PER_SECOND
+	pass
 
 class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
@@ -125,9 +107,6 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 		# which isn't what we want. Therefore this workaround:
 		while cls._selected_tiles:
 			cls._selected_tiles.pop()
-
-	def get_expected_production_level(self, resource_id):
-		return self.owner.virtual_fisher.get_expected_production_level(resource_id)
 
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.

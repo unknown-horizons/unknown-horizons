@@ -21,6 +21,7 @@
 
 import copy
 
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.entities import Entities
 from horizons.util import WorldObject
@@ -32,49 +33,27 @@ class BuildingEvaluator(WorldObject):
 		self.area_builder = area_builder
 		self.builder = builder
 
-	def _get_costs(self):
-		return copy.copy(Entities.buildings[self.builder.building_id].costs)
-
-	def _get_running_costs(self):
-		return copy.copy(Entities.buildings[self.builder.building_id].running_costs)
-
-	def _get_land_area(self):
-		""" Returns the amount of useful land used. """
-		area = 0
-		for coords in self.builder.position.tuple_iter():
-			if coords in self.area_builder.plan:
-				area += 1
-		return area
-
-	@property
-	def preference_multiplier(self):
-		return 1.0
-
-	land_cost = 2
-	running_cost = 50
-	resource_cost = {RES.GOLD_ID: 1, RES.BOARDS_ID: 20, RES.TOOLS_ID: 50}
-
-	def get_combined_cost(self, resource_limits):
-		total = 0
-		costs = self._get_costs()
-		for resource_id, amount in costs.iteritems():
-			total += self.resource_cost[resource_id] * amount
-			if resource_id in resource_limits and amount > resource_limits[resource_id]:
-				return None
-		total += self.land_cost * self._get_land_area()
-		total += self.running_cost * self._get_running_costs()
-		return total
-
-	def get_unit_cost(self, resource_id, resource_limits):
-		expected_production_level = self.get_expected_production_level(resource_id)
-		if abs(expected_production_level) < 1e-9:
-			return None
-		expected_production_level *= self.preference_multiplier
-		return float(self.get_combined_cost(resource_limits)) / expected_production_level
-
 	def __cmp__(self, other):
 		if abs(self.value - other.value) > 1e-9:
 			return 1 if self.value < other.value else -1
 		return self.builder.worldid - other.builder.worldid
+
+	@property
+	def purpose(self):
+		raise NotImplementedError, 'This function has to be overridden.'
+
+	def execute(self):
+		if not self.builder.have_resources():
+			return (BUILD_RESULT.NEED_RESOURCES, None)
+		if not self.area_builder._build_road_connection(self.builder):
+			return (BUILD_RESULT.IMPOSSIBLE, None)
+		building = self.builder.execute()
+		if not building:
+			return (BUILD_RESULT.UNKNOWN_ERROR, None)
+		for coords in self.builder.position.tuple_iter():
+			self.area_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+		self.area_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (self.purpose, self.builder)
+		self.area_builder.production_buildings.append(building)
+		return (BUILD_RESULT.OK, building)
 
 decorators.bind_all(BuildingEvaluator)

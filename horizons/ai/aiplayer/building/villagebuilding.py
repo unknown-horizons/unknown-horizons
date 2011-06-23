@@ -44,12 +44,12 @@ class AbstractVillageBuilding(AbstractBuilding):
 				object = village_builder.land_manager.island.ground_map[coords].object
 				if object is None or object.id != self.id:
 					if not builder.have_resources():
-						return BUILD_RESULT.NEED_RESOURCES
+						return (BUILD_RESULT.NEED_RESOURCES, None)
 					building = builder.execute()
 					if not building:
-						return BUILD_RESULT.UNKNOWN_ERROR
-					return BUILD_RESULT.OK
-		return BUILD_RESULT.SKIP
+						return (BUILD_RESULT.UNKNOWN_ERROR, None)
+					return (BUILD_RESULT.OK, building)
+		return (BUILD_RESULT.SKIP, None)
 
 	@classmethod
 	def register_buildings(cls):

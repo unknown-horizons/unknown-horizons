@@ -100,21 +100,6 @@ class ProductionBuilder(AreaBuilder):
 				return True
 		return False
 
-	def get_next_fisher(self):
-		"""
-		Finds a reasonable place for a fisher and returns the BuildingEvaluator object.
-		"""
-		options = []
-		for (x, y) in self.plan:
-			evaluator = FisherEvaluator.create(self, x, y)
-			if evaluator is not None:
-				options.append(evaluator)
-
-		for evaluator in sorted(options):
-			if self._road_connection_possible(evaluator.builder):
-				return evaluator
-		return None
-
 	def build_lumberjack(self):
 		"""
 		Finds a reasonable place for a lumberjack and builds the lumberjack along with
@@ -176,80 +161,6 @@ class ProductionBuilder(AreaBuilder):
 			self.production_buildings.append(building)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
-
-	def get_next_farm(self, unused_field_purpose):
-		"""
-		Finds a reasonable place for a farm and returns the BuildingEvaluator object.
-		"""
-		if self.owner.settler_level < 1:
-			return None
-
-		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
-		options = []
-
-		most_fields = 1
-		for (x, y) in self.plan:
-			# try the 4 road configurations (road through the farm area on any of the farm's sides)
-			for road_dx, road_dy in road_side:
-				evaluator = FarmEvaluator.create(self, x, y, road_dx, road_dy, most_fields, unused_field_purpose)
-				if evaluator is not None:
-					options.append(evaluator)
-					most_fields = max(most_fields, evaluator.fields)
-
-		for evaluator in sorted(options):
-			if self._road_connection_possible(evaluator.builder):
-				return evaluator
-		return None
-
-	def build_food_producer(self):
-		build_fields = False
-		if not self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD]:
-			if not self.have_resources(BUILDINGS.FISHERMAN_CLASS) and not self.have_resources(BUILDINGS.FARM_CLASS):
-				return BUILD_RESULT.NEED_RESOURCES
-			next_fisher = self.get_next_fisher()
-			next_farm = self.get_next_farm(BUILDING_PURPOSE.UNUSED_POTATO_FIELD)
-			if next_fisher is None:
-				if next_farm is None:
-					return BUILD_RESULT.IMPOSSIBLE
-				# build the farm
-				result = next_farm.execute()
-				if result != BUILD_RESULT.OK:
-					return result
-				build_fields = True
-			elif next_farm is None:
-				# build the fisher
-				result = next_fisher.execute()
-				if result == BUILD_RESULT.OK:
-					self.settlement_manager.num_fishers += 1
-				return result
-			else:
-				resource_limits = {} # 
-				cost_farm = next_farm.get_unit_cost(RES.FOOD_ID, resource_limits)
-				cost_fisher = next_fisher.get_unit_cost(RES.FOOD_ID, resource_limits)
-				self.log.info('%s farm %.5f, fisher %.5f', self.settlement_manager, cost_farm, cost_fisher)
-				if cost_farm <= cost_fisher:
-					result = next_farm.execute()
-					if result != BUILD_RESULT.OK:
-						return result
-					build_fields = True
-				else:
-					result = next_fisher.execute()
-					if result == BUILD_RESULT.OK:
-						self.settlement_manager.num_fishers += 1
-					return result
-		else:
-			build_fields = True
-
-		if build_fields:
-			assert len(self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD]) > 0
-			coords = self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD][0]
-			builder = Builder.create(BUILDINGS.POTATO_FIELD_CLASS, self.land_manager, Point(coords[0], coords[1]))
-			if not builder.execute():
-				return BUILD_RESULT.UNKNOWN_ERROR
-			self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD].popleft()
-			self.plan[coords] = (BUILDING_PURPOSE.POTATO_FIELD, builder)
-			self.settlement_manager.num_fields[BUILDING_PURPOSE.POTATO_FIELD] += 1
-			return BUILD_RESULT.OK
 
 	def enough_collectors(self):
 		produce_quantity = 0
@@ -378,13 +289,6 @@ class ProductionBuilder(AreaBuilder):
 			self.collector_buildings.append(building)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
-
-	def count_fishers(self):
-		fishers = 0
-		for building in self.production_buildings:
-			if building.id == BUILDINGS.FISHERMAN_CLASS:
-				fishers += 1
-		return fishers
 
 	def count_fields(self):
 		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0}

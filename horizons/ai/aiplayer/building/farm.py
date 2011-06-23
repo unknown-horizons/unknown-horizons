@@ -26,8 +26,14 @@ from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
 
 class AbstractFarm(AbstractBuilding):
-	def get_expected_production_level(self, resource_id):
-		return None
+	@property
+	def directly_buildable(self):
+		""" farms have to be triggered by fields """
+		return False
+
+	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
+		""" the fields have to take into account the farm cost """
+		return 0
 
 	@classmethod
 	def get_purpose(cls, resource_id):
@@ -39,10 +45,7 @@ class AbstractFarm(AbstractBuilding):
 			return BUILDING_PURPOSE.SUGARCANE_FIELD
 		return None
 
-	def build(self, settlement_manager, resource_id):
-		if not self.have_resources(settlement_manager):
-			return BUILD_RESULT.NEED_RESOURCES
-
+	def get_evaluators(self, settlement_manager, resource_id):
 		unused_field_purpose = BUILDING_PURPOSE.get_unused_purpose(self.get_purpose(resource_id))
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		options = []
@@ -55,10 +58,7 @@ class AbstractFarm(AbstractBuilding):
 				if evaluator is not None:
 					options.append(evaluator)
 					most_fields = max(most_fields, evaluator.fields)
-
-		for evaluator in sorted(options):
-			return evaluator.execute()
-		return BUILD_RESULT.IMPOSSIBLE
+		return options
 
 	@classmethod
 	def register_buildings(cls):

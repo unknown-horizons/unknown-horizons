@@ -38,10 +38,6 @@ class WeaverEvaluator(BuildingEvaluator):
 			distance *= 0.7 + distance_to_farm / float(Entities.buildings[BUILDINGS.WEAVER_CLASS].radius) * 0.3
 		self.value = 10.0 / distance + alignment * 0.02
 
-	def get_expected_production_level(self, resource_id):
-		assert resource_id == RES.BRICKS_ID
-		return 0 # TODO: implement this
-
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
 		builder = area_builder.make_builder(BUILDINGS.WEAVER_CLASS, x, y, True, orientation)
@@ -89,18 +85,8 @@ class WeaverEvaluator(BuildingEvaluator):
 
 		return WeaverEvaluator(area_builder, builder, distance_to_farm, distance_to_collector, alignment)
 
-	def execute(self):
-		if not self.builder.have_resources():
-			return BUILD_RESULT.NEED_RESOURCES
-		if not self.area_builder._build_road_connection(self.builder):
-			return BUILD_RESULT.IMPOSSIBLE
-		building = self.builder.execute()
-		if not building:
-			return BUILD_RESULT.UNKNOWN_ERROR
-		for coords in self.builder.position.tuple_iter():
-			self.area_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-		self.area_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.WEAVER, self.builder)
-		self.area_builder.production_buildings.append(building)
-		return BUILD_RESULT.OK
+	@property
+	def purpose(self):
+		return BUILDING_PURPOSE.WEAVER
 
 decorators.bind_all(WeaverEvaluator)

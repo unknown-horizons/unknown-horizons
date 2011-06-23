@@ -19,26 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES
+from horizons.ai.aiplayer.building import AbstractBuilding
+from horizons.ai.aiplayer.constants import BUILD_RESULT
 
-class ClayPitEvaluator(BuildingEvaluator):
-	def __init__(self, area_builder, builder):
-		super(ClayPitEvaluator, self).__init__(area_builder, builder)
-		self.value = 0
-		self.production_level = None
+from horizons.constants import BUILDINGS
+from horizons.util.python import decorators
+
+class AbstractFishDeposit(AbstractBuilding):
+	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
+		""" you don't actually build fish deposits """
+		return 0
+
+	def build(self, settlement_manager, resource_id):
+		return (BUILD_RESULT.OK, None) # TODO: check whether there are available fish deposits
 
 	@classmethod
-	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.CLAY_PIT_CLASS, x, y, True, orientation)
-		if not builder:
-			return None
-		return ClayPitEvaluator(area_builder, builder)
+	def register_buildings(cls):
+		cls.available_buildings[BUILDINGS.FISH_DEPOSIT_CLASS] = cls
 
-	@property
-	def purpose(self):
-		return BUILDING_PURPOSE.CLAY_PIT
+AbstractFishDeposit.register_buildings()
 
-decorators.bind_all(ClayPitEvaluator)
+decorators.bind_all(AbstractFishDeposit)

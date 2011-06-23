@@ -44,23 +44,6 @@ class FarmEvaluator(BuildingEvaluator):
 		self.immidiate_connections = immidiate_connections
 		self.value = fields + existing_roads * 0.005 + alignment * 0.001 - extra_space * 0.02 + immidiate_connections * 0.005
 
-	def _get_costs(self):
-		total = super(FarmEvaluator, self)._get_costs()
-		field_cost = Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].costs
-		for res, amount in field_cost.iteritems():
-			total[res] += amount * self.fields
-		return total
-
-	def _get_running_costs(self):
-		field_running_cost = Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].running_costs
-		return super(FarmEvaluator, self)._get_running_costs() * self.fields * field_running_cost
-
-	def _get_land_area(self):
-		return super(FarmEvaluator, self)._get_land_area() + self.fields * 9
-
-	def get_expected_production_level(self, resource_id):
-		return self.area_builder.owner.virtual_farm.get_expected_production_level(resource_id, self.fields)
-
 	@classmethod
 	def _make_field_offsets(cls):
 		# right next to the farm
@@ -183,22 +166,22 @@ class FarmEvaluator(BuildingEvaluator):
 
 	def execute(self):
 		if not self.builder.have_resources():
-			return BUILD_RESULT.NEED_RESOURCES
+			return (BUILD_RESULT.NEED_RESOURCES, None)
 		backup = copy.copy(self.area_builder.plan)
 		for coords, plan_item in self.farm_plan.iteritems():
 			self.area_builder.plan[coords] = plan_item
 		if not self.area_builder._build_road_connection(self.builder):
 			self.area_builder.plan = backup
-			return BUILD_RESULT.IMPOSSIBLE
+			return (BUILD_RESULT.IMPOSSIBLE, None)
 		building = self.builder.execute()
 		if not building:
-			return BUILD_RESULT.UNKNOWN_ERROR
+			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		for coords, (purpose, builder) in self.farm_plan.iteritems():
 			if purpose == self.unused_field_purpose:
 				self.area_builder.unused_fields[BUILDING_PURPOSE.get_used_purpose(self.unused_field_purpose)].append(coords)
 		self.area_builder.production_buildings.append(building)
 		self.area_builder.display()
-		return BUILD_RESULT.OK
+		return (BUILD_RESULT.OK, building)
 
 FarmEvaluator.field_offsets = FarmEvaluator._make_field_offsets()
 

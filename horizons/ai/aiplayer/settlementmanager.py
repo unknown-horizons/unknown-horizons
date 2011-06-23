@@ -58,6 +58,7 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 		# TODO: load the production chains
+		self.food_chain = ProductionChain.create(self, RES.FOOD_ID)
 		self.textile_chain = ProductionChain.create(self, RES.TEXTILE_ID)
 		self.faith_chain = ProductionChain.create(self, RES.FAITH_ID)
 		self.education_chain = ProductionChain.create(self, RES.EDUCATION_ID)
@@ -65,7 +66,6 @@ class SettlementManager(WorldObject):
 		self.bricks_chain = ProductionChain.create(self, RES.BRICKS_ID)
 
 		self.tents = 0
-		self.num_fishers = 0
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 		self.village_built = False
 
@@ -137,7 +137,6 @@ class SettlementManager(WorldObject):
 
 		# TODO: correctly init the following
 		self.tents = self.village_builder.count_tents()
-		self.num_fishers = self.production_builder.count_fishers()
 		self.num_fields = self.production_builder.count_fields()
 		self.village_built = self.tents == self.village_builder.tents_to_build
 
@@ -155,48 +154,15 @@ class SettlementManager(WorldObject):
 	def can_provide_resources(self):
 		return self.village_built
 
-	def enough_resource_producers(self, produced_resource, consumed_resource):
-		"""Returns false if and only if we are producing less than we should and we have a place to store it."""
-		have = self.get_resource_production(produced_resource)[0]
-		need = self.get_resident_resource_usage(consumed_resource) * 1.02 + 0.001
-		if consumed_resource == RES.GET_TOGETHER_ID:
-			need /= 4 # a tavern produces 4 units of get-together from 1 unit of liquor
-		if have >= need:
-			return True
-		storage_size = self.land_manager.settlement.inventory.get_limit(produced_resource)
-		storage_used = self.land_manager.settlement.inventory[produced_resource]
-		return storage_used >= storage_size * 0.7 + 4
-
 	def get_resource_production(self, resource_id):
 		# as long as there are enough collectors it is correct to calculate it this way
 		if resource_id == RES.WOOL_ID:
-			return (self.count_buildings(BUILDINGS.PASTURE_CLASS) / 30.0 / GAME_SPEED.TICKS_PER_SECOND, 0, 0)
+			return self.textile_chain.get_final_production_level()
 		elif resource_id == RES.SUGAR_ID:
-			return (self.count_buildings(BUILDINGS.SUGARCANE_FIELD_CLASS) / 30.0 / GAME_SPEED.TICKS_PER_SECOND, 0, 0)
-
-		providers = 0
-		new_providers = 0
-		amount = 0
-		for builder in self.production_builder.production_buildings:
-			point = builder.position.origin
-			coords = (point.x, point.y)
-			building = self.land_manager.settlement.ground_map[coords].object
-			if building.get_history_length(resource_id) is None:
-				continue
-			if resource_id == RES.FOOD_ID and building.id == BUILDINGS.FARM_CLASS:
-				continue
-			# TODO; make this work properly for farms where fields are added incrementally
-			if building.get_history_length(resource_id) < PRODUCTION.COUNTER_LIMIT:
-				new_providers += 1
-				amount += building.get_expected_production_level(resource_id)
-			else:
-				providers += 1
-				amount += building.get_absolute_production_level(resource_id)
-
-		if resource_id == RES.FOOD_ID:
-			amount += self.count_buildings(BUILDINGS.POTATO_FIELD_CLASS) / 26.0 / GAME_SPEED.TICKS_PER_SECOND
-
-		return (amount, providers, new_providers)
+			return self.get_together_chain.get_final_production_level() / 4 # TODO: fix this
+		elif resource_id == RES.FOOD_ID:
+			return self.food_chain.get_final_production_level()
+		return None
 
 	def get_resident_resource_usage(self, resource_id):
 		if resource_id == RES.BRICKS_ID:
@@ -285,11 +251,11 @@ class SettlementManager(WorldObject):
 		return True
 
 	def tick(self):
-		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID)[0], \
+		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
 			self.get_resident_resource_usage(RES.FOOD_ID))
-		self.log.info('%s wool production %.5f / %.5f', self, self.get_resource_production(RES.WOOL_ID)[0], \
+		self.log.info('%s wool production %.5f / %.5f', self, self.get_resource_production(RES.WOOL_ID), \
 			self.get_resident_resource_usage(RES.TEXTILE_ID))
-		self.log.info('%s sugar production %.5f / %.5f', self, self.get_resource_production(RES.SUGAR_ID)[0], \
+		self.log.info('%s sugar production %.5f / %.5f', self, self.get_resource_production(RES.SUGAR_ID), \
 			self.get_resident_resource_usage(RES.GET_TOGETHER_ID) / 4) # a tavern produces 4 units of get-together from 1 unit of liquor
 		self.manage_production()
 		self.need_materials = False
@@ -308,9 +274,8 @@ class SettlementManager(WorldObject):
 		elif not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result,  'storage')
-		elif not self.enough_resource_producers(RES.FOOD_ID, RES.FOOD_ID):
-			result = self.production_builder.build_food_producer()
-			self.log_generic_build_result(result,  'food producer')
+		elif self.build_chain(self.food_chain, 'food producer'):
+			pass
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
 			pass
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):

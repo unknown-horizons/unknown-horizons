@@ -45,12 +45,11 @@ class FisherEvaluator(BuildingEvaluator):
 			fishers_coords = [fisher.position.origin.to_tuple() for fisher in self.area_builder.owner.fishers]
 			self.production_level = FisherSimulator.extra_productivity(self.area_builder.session, \
 				fishers_coords, self.builder.position.origin.to_tuple())
-		max_possible = self.area_builder.owner.virtual_fisher.get_expected_production_level(resource_id)
-		return min(self.production_level, max_possible)
+		return self.production_level
 
 	@classmethod
-	def create(cls, area_builder, x, y):
-		builder = area_builder.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True)
+	def create(cls, area_builder, x, y, orientation):
+		builder = area_builder.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True, orientation)
 		if not builder:
 			return None
 
@@ -76,20 +75,9 @@ class FisherEvaluator(BuildingEvaluator):
 			return None
 		return FisherEvaluator(area_builder, builder, fishers_in_range, fish_value)
 
-	def execute(self):
-		if not self.builder.have_resources():
-			return BUILD_RESULT.NEED_RESOURCES
-		if not self.area_builder._build_road_connection(self.builder):
-			return BUILD_RESULT.IMPOSSIBLE
-		building = self.builder.execute()
-		if not building:
-			return BUILD_RESULT.UNKNOWN_ERROR
-		self.area_builder.owner.fishers.append(self.builder)
-		for coords in self.builder.position.tuple_iter():
-			self.area_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-		self.area_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.FISHER, self.builder)
-		self.area_builder.production_buildings.append(building)
-		return BUILD_RESULT.OK
+	@property
+	def purpose(self):
+		return BUILDING_PURPOSE.FISHER
 
 class FisherSimulator(object):
 	# TODO: get these values the right way

@@ -84,18 +84,8 @@ class BrickyardEvaluator(BuildingEvaluator):
 
 		return BrickyardEvaluator(area_builder, builder, distance_to_clay_pit, distance_to_collector, alignment)
 
-	def execute(self):
-		if not self.builder.have_resources():
-			return BUILD_RESULT.NEED_RESOURCES
-		if not self.area_builder._build_road_connection(self.builder):
-			return BUILD_RESULT.IMPOSSIBLE
-		building = self.builder.execute()
-		if not building:
-			return BUILD_RESULT.UNKNOWN_ERROR
-		for coords in self.builder.position.tuple_iter():
-			self.area_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-		self.area_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.BRICKYARD, self.builder)
-		self.area_builder.production_buildings.append(building)
-		return BUILD_RESULT.OK
+	@property
+	def purpose(self):
+		return BUILDING_PURPOSE.BRICKYARD
 
 decorators.bind_all(BrickyardEvaluator)
