@@ -532,3 +532,6 @@ class JobList(list):
 
 	def __str__(self):
 		return str([ str(i) for i in self ])
+
+
+decorators.bind_all(Collector)

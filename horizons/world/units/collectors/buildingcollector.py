@@ -117,8 +117,6 @@ class BuildingCollector(Collector):
 		if self.home_building is None:
 			return None
 
-		#if self.home_building.id == 24: import pdb ; pdb.set_trace()
-
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
 			return None
@@ -259,3 +257,10 @@ class FisherShipCollector(BuildingCollector):
 		@param res: optional, only search for buildings that provide res"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.session.world.get_providers_in_range(reach, reslist=reslist)
+
+
+decorators.bind_all(BuildingCollector)
+decorators.bind_all(FieldCollector)
+decorators.bind_all(FisherShipCollector)
+decorators.bind_all(SettlerCollector)
+decorators.bind_all(StorageCollector)
