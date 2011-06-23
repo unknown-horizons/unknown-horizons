@@ -353,6 +353,48 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		ships.remove(self)
 		return ships
 
+	def fire_all_weapons(self, dest):
+		#TODO move it to specialized attacking ship
+		#rotate ship to face target
+		target_location = self._target._instance.getLocation()
+		self_location = self._instance.getLocation()
+		facing_location = self._instance.getFacingLocation()
+
+		# ship coords
+		x1 = self_location.getMapCoordinates().x
+		y1 = self_location.getMapCoordinates().y
+		# target coords
+		x2 = target_location.getMapCoordinates().x
+		y2 = target_location.getMapCoordinates().y
+		# facing coords
+		x3 = facing_location.getMapCoordinates().x
+		y3 = facing_location.getMapCoordinates().y
+		facing_coords = facing_location.getMapCoordinates()
+		# calculate the side of the ship - target line facing location is on
+		# side > 0 left, side <= 0 right
+		side = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)
+		# calculate x4 y4 the new facing location coords
+		# they are calculated by rotating 90' the target location
+		x4 = x2 - x1
+		y4 = y2 - y1
+		if side > 0:
+			x4 = y4 + x1
+			y4 = - x4 + y1
+		else:
+			x4 = - y4 + x1
+			y4 = x4 + y1
+
+		facing_coords.x = x4
+		facing_coords.y = y4
+		f = open('points.txt','w')
+		f.write(str((x2, x1, x4)))
+		f.write(str((y2, y1, y4)))
+
+		facing_location.setMapCoordinates(facing_coords)
+		self._instance.setFacingLocation(facing_location)
+	
+		super(Ship, self).fire_all_weapons(dest)
+
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()

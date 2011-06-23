@@ -29,8 +29,6 @@ from selectiontool import SelectionTool
 from horizons.constants import LAYERS
 
 class AttackingTool(SelectionTool):
-	#NOTE bug with selecting other units (tab not shown)
-	#also keylisteners don't work
 	"""
 		This will be used when attacking units are selected
 		it will have to respond on right click and change cursor image when hovering enemy units
@@ -40,7 +38,6 @@ class AttackingTool(SelectionTool):
 		print 'attacking tool selected'
 
 	def mousePressed(self, evt):
-		#NOTE for testing, catches only one right click event, then reverts to selection tool
 		if (evt.getButton() == fife.MouseEvent.RIGHT):
 			target_mapcoord = self.session.view.cam.toMapCoordinates(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)

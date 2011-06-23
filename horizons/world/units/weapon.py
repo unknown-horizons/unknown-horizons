@@ -112,6 +112,8 @@ class Weapon(object):
 
 		#calculate the ticks until attack is ready again
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
+		#NOTE hack to remove unwanted calls from scheduler
+		Scheduler().rem_call(self, self.make_attack_ready)
 		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
 
 		#if weapon was fired update remaining ticks
