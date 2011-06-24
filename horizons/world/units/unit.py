@@ -74,7 +74,7 @@ class Unit(AmbientSound, MovingObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate( \
 			self.position.x + self.position.x - self.last_position.x, \
 			self.position.y + self.position.y - self.last_position.y, 0))
-		self.act(self._action, location, True)
+		self.act(self._action, self._instance.getFacingLocation(), True)
 		self.session.view.cam.refresh()
 
 	def draw_health(self):

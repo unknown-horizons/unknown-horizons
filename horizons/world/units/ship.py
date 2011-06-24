@@ -376,13 +376,13 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		# calculate x4 y4 the new facing location coords
 		# they are calculated by rotating 90' the target location
 		if side > 0:
-			x4 = y2 - y1 + x1
-			y4 = x1 - x2 + y1
-			direction = 'right'
-		else:
 			x4 = y1 - y2 + x1
 			y4 = x2 - x1 + y1
 			direction = 'left'
+		else:
+			x4 = y2 - y1 + x1
+			y4 = x1 - x2 + y1
+			direction = 'right'
 
 		facing_coords.x = x4
 		facing_coords.y = y4
