@@ -31,7 +31,6 @@ class BrickyardEvaluator(BuildingEvaluator):
 		self.distance_to_clay_pit = distance_to_clay_pit
 		self.distance_to_collector = distance_to_collector
 		self.alignment = alignment
-		self.production_level = None
 
 		distance = distance_to_clay_pit
 		if distance_to_collector is not None:

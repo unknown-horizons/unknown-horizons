@@ -31,7 +31,6 @@ class WeaverEvaluator(BuildingEvaluator):
 		self.distance_to_farm = distance_to_farm
 		self.distance_to_collector = distance_to_collector
 		self.alignment = alignment
-		self.production_level = None
 
 		distance = distance_to_collector
 		if distance_to_farm is not None:

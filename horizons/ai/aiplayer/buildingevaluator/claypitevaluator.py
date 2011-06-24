@@ -28,7 +28,6 @@ class ClayPitEvaluator(BuildingEvaluator):
 	def __init__(self, area_builder, builder):
 		super(ClayPitEvaluator, self).__init__(area_builder, builder)
 		self.value = 0
-		self.production_level = None
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
