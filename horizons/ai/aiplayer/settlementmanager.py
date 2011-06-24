@@ -46,7 +46,6 @@ class SettlementManager(WorldObject):
 	class buildCallType:
 		village_roads = 1
 		village_main_square = 2
-		production_lumberjack = 3
 
 	def __init__(self, land_manager, branch_office):
 		super(SettlementManager, self).__init__()
@@ -58,6 +57,7 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 		# TODO: load the production chains
+		self.boards_chain = ProductionChain.create(self, RES.BOARDS_ID)
 		self.food_chain = ProductionChain.create(self, RES.FOOD_ID)
 		self.textile_chain = ProductionChain.create(self, RES.TEXTILE_ID)
 		self.faith_chain = ProductionChain.create(self, RES.FAITH_ID)
@@ -70,8 +70,6 @@ class SettlementManager(WorldObject):
 		self.village_built = False
 
 		self.build_queue.append(self.buildCallType.village_roads)
-		self.build_queue.append(self.buildCallType.production_lumberjack)
-		self.build_queue.append(self.buildCallType.production_lumberjack)
 		self.build_queue.append(self.buildCallType.village_main_square)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
 		self.set_taxes_and_permissions(0.5, False, False)
@@ -80,7 +78,6 @@ class SettlementManager(WorldObject):
 		self.owner = land_manager.owner
 		self.land_manager = land_manager
 		self.branch_office = branch_office
-
 		self.build_queue = deque()
 
 	def save(self, db):
@@ -167,6 +164,8 @@ class SettlementManager(WorldObject):
 	def get_resident_resource_usage(self, resource_id):
 		if resource_id == RES.BRICKS_ID:
 			return 0.001 # dummy value to cause brick production to be built
+		elif resource_id == RES.BOARDS_ID:
+			return 0.01 # force a low level of boards production to always exist
 
 		total = 0
 		for coords, (purpose, _) in self.village_builder.plan.iteritems():
@@ -267,14 +266,14 @@ class SettlementManager(WorldObject):
 				self.village_builder.build_roads()
 			elif task_type == self.buildCallType.village_main_square:
 				self.village_builder.build_main_square()
-			elif task_type == self.buildCallType.production_lumberjack:
-				self.production_builder.build_lumberjack()
 			else:
 				assert False, 'unknown building in build queue'
 		elif not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result,  'storage')
 		elif self.build_chain(self.food_chain, 'food producer'):
+			pass
+		elif self.build_chain(self.boards_chain, 'boards producer'):
 			pass
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
 			pass

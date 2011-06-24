@@ -23,24 +23,21 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
-class AbstractFishDeposit(AbstractBuilding):
-	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
-		""" You don't actually build fish deposits """
-		return 0
-
+class AbstractTree(AbstractBuilding):
 	@property
 	def directly_buildable(self):
-		""" You don't actually build fish deposits """
+		""" trees are built by the lumberjacks """
 		return False
 
 	@property
 	def ignore_production(self):
+		# TODO: improve the code so the actual lumberjack production can be calculated
 		return True
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.FISH_DEPOSIT_CLASS] = cls
+		cls.available_buildings[BUILDINGS.TREE_CLASS] = cls
 
-AbstractFishDeposit.register_buildings()
+AbstractTree.register_buildings()
 
-decorators.bind_all(AbstractFishDeposit)
+decorators.bind_all(AbstractTree)

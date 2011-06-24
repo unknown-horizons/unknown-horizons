@@ -172,13 +172,14 @@ class ProductionChainSubtree:
 	def get_final_production_level(self):
 		""" returns the production level at the bottleneck """
 		min_child_production = None
-		if self.abstract_building.id != BUILDINGS.FISHERMAN_CLASS: # fishers don't care about the deposits
-			for child in self.children:
-				production_level = child.get_final_production_level()
-				if min_child_production is None:
-					min_child_production = production_level
-				else:
-					min_child_production = min(min_child_production, production_level)
+		for child in self.children:
+			if child.abstract_building.ignore_production:
+				continue
+			production_level = child.get_final_production_level()
+			if min_child_production is None:
+				min_child_production = production_level
+			else:
+				min_child_production = min(min_child_production, production_level)
 		if min_child_production is None:
 			return self.get_root_production_level()
 		else:

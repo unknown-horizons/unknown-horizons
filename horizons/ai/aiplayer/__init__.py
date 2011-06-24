@@ -41,6 +41,8 @@ from building.claypit import AbstractClayPit
 from building.brickyard import AbstractBrickyard
 from building.fishdeposit import AbstractFishDeposit
 from building.fisher import AbstractFisher
+from building.tree import AbstractTree
+from building.lumberjack import AbstractLumberjack
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject

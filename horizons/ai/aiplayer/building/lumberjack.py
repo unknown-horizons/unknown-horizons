@@ -20,27 +20,19 @@
 # ###################################################
 
 from horizons.ai.aiplayer.building import AbstractBuilding
+from horizons.ai.aiplayer.buildingevaluator.lumberjackevaluator import LumberjackEvaluator
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
-class AbstractFishDeposit(AbstractBuilding):
-	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
-		""" You don't actually build fish deposits """
-		return 0
-
+class AbstractLumberjack(AbstractBuilding):
 	@property
-	def directly_buildable(self):
-		""" You don't actually build fish deposits """
-		return False
-
-	@property
-	def ignore_production(self):
-		return True
+	def evaluator_class(self):
+		return LumberjackEvaluator
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.FISH_DEPOSIT_CLASS] = cls
+		cls.available_buildings[BUILDINGS.LUMBERJACK_CLASS] = cls
 
-AbstractFishDeposit.register_buildings()
+AbstractLumberjack.register_buildings()
 
-decorators.bind_all(AbstractFishDeposit)
+decorators.bind_all(AbstractLumberjack)

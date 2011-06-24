@@ -20,8 +20,6 @@
 # ###################################################
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.ai.aiplayer.constants import BUILD_RESULT
-
 from horizons.world.production.productionline import ProductionLine
 from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
@@ -56,8 +54,14 @@ class AbstractClayDeposit(AbstractBuilding):
 		""" you don't actually build clay deposits """
 		return 0
 
-	def build(self, settlement_manager, resource_id):
-		return (BUILD_RESULT.OK, None) # TODO: check whether there are available clay deposits
+	@property
+	def directly_buildable(self):
+		""" You don't actually build clay deposits """
+		return False
+
+	@property
+	def ignore_production(self):
+		return True
 
 	@classmethod
 	def register_buildings(cls):

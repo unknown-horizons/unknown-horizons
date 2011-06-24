@@ -118,6 +118,11 @@ class AbstractBuilding(object):
 		""" A building is directly buildable if it doesn't need to be placed next to its children """
 		return True
 
+	@property
+	def ignore_production(self):
+		""" Child buildings that should not be used for production calculation set this to true """
+		return False
+
 	def get_evaluators(self, settlement_manager, resource_id):
 		options = []
 		for x, y, orientation in self.iter_potential_locations(settlement_manager):

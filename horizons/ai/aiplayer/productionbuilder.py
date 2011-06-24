@@ -98,68 +98,6 @@ class ProductionBuilder(AreaBuilder):
 				return True
 		return False
 
-	def build_lumberjack(self):
-		"""
-		Finds a reasonable place for a lumberjack and builds the lumberjack along with
-		a road connection and additional trees.
-		"""
-		if not self.have_resources(BUILDINGS.LUMBERJACK_CLASS):
-			return BUILD_RESULT.NEED_RESOURCES
-
-		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-		options = []
-
-		cell_value = {}
-		alignment_value = {}
-		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == BUILDING_PURPOSE.NONE:
-				cell_value[coords] = 3
-			elif purpose == BUILDING_PURPOSE.TREE:
-				cell_value[coords] = 1
-			else:
-				continue
-
-			alignment = 0
-			for dx, dy in moves:
-				coords2 = (coords[0] + dx, coords[1] + dy)
-				if coords2 not in self.plan or self.plan[coords][0] == BUILDING_PURPOSE.ROAD:
-					alignment += 2 if abs(dx) + abs(dy) == 1 else 1
-			alignment_value[coords] = alignment
-
-		for (x, y) in self.plan:
-			lumberjack = self.make_builder(BUILDINGS.LUMBERJACK_CLASS, x, y, True)
-			if not lumberjack:
-				continue
-
-			value = 0
-			alignment = 0
-			used_area = set(lumberjack.position.get_radius_coordinates(3, True))
-			for coords in lumberjack.position.get_radius_coordinates(3):
-				if coords in cell_value:
-					value += cell_value[coords]
-					alignment += alignment_value[coords]
-			value = min(value, 100)
-			if value >= 30:
-				options.append((-value - math.log(alignment + 1) - alignment / 5.0, lumberjack))
-
-		for _, lumberjack in sorted(options):
-			if not self._build_road_connection(lumberjack):
-				continue
-			building = lumberjack.execute()
-			if not building:
-				return BUILD_RESULT.UNKNOWN_ERROR
-			for coords in lumberjack.position.tuple_iter():
-				self.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-			self.plan[sorted(lumberjack.position.tuple_iter())[0]] = (BUILDING_PURPOSE.LUMBERJACK, lumberjack)
-
-			for coords in lumberjack.position.get_radius_coordinates(3):
-				if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
-					self.plan[coords] = (BUILDING_PURPOSE.TREE, None)
-					tree = Builder.create(BUILDINGS.TREE_CLASS, self.land_manager, Point(coords[0], coords[1])).execute()
-			self.production_buildings.append(building)
-			return BUILD_RESULT.OK
-		return BUILD_RESULT.IMPOSSIBLE
-
 	def enough_collectors(self):
 		produce_quantity = 0
 		for building in self.production_buildings:
