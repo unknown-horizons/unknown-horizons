@@ -156,10 +156,10 @@ class SettlementManager(WorldObject):
 
 	def get_resource_production(self, resource_id):
 		# as long as there are enough collectors it is correct to calculate it this way
-		if resource_id == RES.WOOL_ID:
+		if resource_id == RES.TEXTILE_ID:
 			return self.textile_chain.get_final_production_level()
-		elif resource_id == RES.SUGAR_ID:
-			return self.get_together_chain.get_final_production_level() / 4 # TODO: fix this
+		elif resource_id == RES.GET_TOGETHER_ID:
+			return self.get_together_chain.get_final_production_level()
 		elif resource_id == RES.FOOD_ID:
 			return self.food_chain.get_final_production_level()
 		return None
@@ -251,12 +251,12 @@ class SettlementManager(WorldObject):
 		return True
 
 	def tick(self):
-		self.log.info('%s food production %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
+		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
 			self.get_resident_resource_usage(RES.FOOD_ID))
-		self.log.info('%s wool production %.5f / %.5f', self, self.get_resource_production(RES.WOOL_ID), \
+		self.log.info('%s textile production      %.5f / %.5f', self, self.get_resource_production(RES.TEXTILE_ID), \
 			self.get_resident_resource_usage(RES.TEXTILE_ID))
-		self.log.info('%s sugar production %.5f / %.5f', self, self.get_resource_production(RES.SUGAR_ID), \
-			self.get_resident_resource_usage(RES.GET_TOGETHER_ID) / 4) # a tavern produces 4 units of get-together from 1 unit of liquor
+		self.log.info('%s get-together production %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER_ID), \
+			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
 		self.manage_production()
 		self.need_materials = False
 
