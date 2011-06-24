@@ -54,6 +54,10 @@ class BUILDING_PURPOSE:
 	PAVILION = 24
 	VILLAGE_SCHOOL = 26
 	TAVERN = 28
+	IRON_MINE = 29
+	SMELTERY = 30
+	TOOLMAKER = 31
+	CHARCOAL_BURNER = 32
 
 	@classmethod
 	def get_used_purpose(cls, purpose):

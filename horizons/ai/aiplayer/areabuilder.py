@@ -184,8 +184,8 @@ class AreaBuilder(WorldObject):
 	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
 		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """
 		coords = (x, y)
-		if building_id == BUILDINGS.CLAY_PIT_CLASS:
-			# clay deposits are outside the production plan until they are constructed
+		if building_id == BUILDINGS.CLAY_PIT_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
+			# clay deposits and mountains are outside the production plan until they are constructed
 			if coords in self.plan or coords not in self.settlement.ground_map:
 				return None
 		else:
@@ -198,8 +198,8 @@ class AreaBuilder(WorldObject):
 			for coords in builder.position.tuple_iter():
 				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
-		elif building_id != BUILDINGS.CLAY_PIT_CLASS:
-			# clay deposits are outside the production plan until they are constructed
+		elif building_id != BUILDINGS.CLAY_PIT_CLASS and building_id != BUILDINGS.IRON_MINE_CLASS:
+			# clay deposits and mountains are outside the production plan until they are constructed
 			for coords in builder.position.tuple_iter():
 				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None

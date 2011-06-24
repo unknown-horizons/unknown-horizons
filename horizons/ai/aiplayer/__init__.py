@@ -43,6 +43,11 @@ from building.fishdeposit import AbstractFishDeposit
 from building.fisher import AbstractFisher
 from building.tree import AbstractTree
 from building.lumberjack import AbstractLumberjack
+from building.irondeposit import AbstractIronDeposit
+from building.ironmine import AbstractIronMine
+from building.charcoalburner import AbstractCharcoalBurner
+from building.smeltery import AbstractSmeltery
+from building.toolmaker import AbstractToolmaker
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject

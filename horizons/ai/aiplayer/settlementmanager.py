@@ -64,6 +64,7 @@ class SettlementManager(WorldObject):
 		self.education_chain = ProductionChain.create(self, RES.EDUCATION_ID)
 		self.get_together_chain = ProductionChain.create(self, RES.GET_TOGETHER_ID)
 		self.bricks_chain = ProductionChain.create(self, RES.BRICKS_ID)
+		self.tools_chain = ProductionChain.create(self, RES.TOOLS_ID)
 
 		self.tents = 0
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
@@ -166,6 +167,8 @@ class SettlementManager(WorldObject):
 			return 0.001 # dummy value to cause brick production to be built
 		elif resource_id == RES.BOARDS_ID:
 			return 0.01 # force a low level of boards production to always exist
+		elif resource_id == RES.TOOLS_ID:
+			return 0.001 # dummy value to cause tools production to be built
 
 		total = 0
 		for coords, (purpose, _) in self.village_builder.plan.iteritems():
@@ -289,6 +292,8 @@ class SettlementManager(WorldObject):
 		elif self.build_chain(self.education_chain, 'school'):
 			pass
 		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.get_together_chain, 'get-together producer'):
+			pass
+		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.tools_chain, 'tools producer'):
 			pass
 		else:
 			self.village_built = True
