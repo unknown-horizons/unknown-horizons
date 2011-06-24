@@ -20,9 +20,9 @@
 # ###################################################
 
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
+from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
 class DistilleryEvaluator(BuildingEvaluator):
@@ -56,33 +56,11 @@ class DistilleryEvaluator(BuildingEvaluator):
 				if sugarcane_producer:
 					distance_to_farm = distance if distance_to_farm is None or distance < distance_to_farm else distance_to_farm
 
-		distance_to_collector = None
-		for building in area_builder.collector_buildings:
-			distance = builder.position.distance(building.position)
-			if distance <= Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius:
-				distance_to_collector = distance if distance_to_collector is None or distance < distance_to_collector else distance_to_collector
+		distance_to_collector = cls.distance_to_nearest_collector(area_builder, builder)
 		if distance_to_collector is None:
 			return None # require distilleries to have a collector building in range
 
-		alignment = 0
-		for coords in area_builder._get_neighbour_tiles(builder.position):
-			if coords in area_builder.plan:
-				purpose = area_builder.plan[coords]
-				if purpose == BUILDING_PURPOSE.NONE:
-					continue
-				elif purpose == BUILDING_PURPOSE.ROAD:
-					alignment += 3
-				else:
-					alignment += 1
-			elif coords in area_builder.settlement.ground_map:
-				object = area_builder.settlement.ground_map[coords].object
-				if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
-					alignment += 3
-				else:
-					alignment += 1
-			else:
-				alignment += 1
-
+		alignment = cls.get_alignment(area_builder, builder.position.tuple_iter())
 		return DistilleryEvaluator(area_builder, builder, distance_to_farm, distance_to_collector, alignment)
 
 	@property

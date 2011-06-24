@@ -24,7 +24,7 @@ import math
 import heapq
 
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
+from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, COLLECTORS, RES
 

@@ -27,8 +27,6 @@ from collections import deque
 from areabuilder import AreaBuilder
 from builder import Builder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
-from buildingevaluator.fisherevaluator import FisherEvaluator
-from buildingevaluator.farmevaluator import FarmEvaluator
 
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point

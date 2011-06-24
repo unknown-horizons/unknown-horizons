@@ -25,13 +25,83 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.entities import Entities
 from horizons.util import WorldObject
-from horizons.constants import RES
+from horizons.constants import BUILDINGS
 
 class BuildingEvaluator(WorldObject):
 	def __init__(self, area_builder, builder, worldid=None):
 		super(BuildingEvaluator, self).__init__(worldid)
 		self.area_builder = area_builder
 		self.builder = builder
+
+	@classmethod
+	def distance_to_nearest_building(cls, area_builder, builder, building_id):
+		"""
+		Returns the shortest distance to a building of type building_id that is in range of the builder
+		@param area_builder: AreaBuilder
+		@param builder: Builder
+		@param building_id: int, the id of the building to which the distance should be measured
+		"""
+
+		shortest_distance = None
+		for building in area_builder.settlement.get_buildings_by_id(building_id):
+			distance = builder.position.distance(building.position)
+			if distance <= Entities.buildings[builder.building_id].radius:
+				shortest_distance = distance if shortest_distance is None or distance < shortest_distance else shortest_distance
+		return shortest_distance
+
+	@classmethod
+	def distance_to_nearest_collector(cls, production_builder, builder):
+		"""
+		Returns the shortest distance to a collector that is in range of the builder
+		@param production_builder: ProductionBuilder
+		@param builder: Builder
+		"""
+
+		shortest_distance = None
+		for building in production_builder.collector_buildings:
+			distance = builder.position.distance(building.position)
+			if distance <= Entities.buildings[builder.building_id].radius:
+				shortest_distance = distance if shortest_distance is None or distance < shortest_distance else shortest_distance
+		return shortest_distance
+
+	@classmethod
+	def _get_outline_coords(cls, coords_list):
+		"""
+		returns the coordinates that surround the given coordinates (no corners)
+		"""
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		if not isinstance(coords_list, set):
+			coords_list = set(coords_list)
+
+		result = set()
+		for x, y in coords_list:
+			for dx, dy in moves:
+				coords = (x + dx, y + dy)
+				if coords not in coords_list:
+					result.add(coords)
+		return result
+
+	@classmethod
+	def get_alignment(cls, area_builder, coords_list):
+		alignment = 0
+		for coords in cls._get_outline_coords(coords_list):
+			if coords in area_builder.plan:
+				purpose = area_builder.plan[coords]
+				if purpose == BUILDING_PURPOSE.NONE:
+					continue
+				elif purpose == BUILDING_PURPOSE.ROAD:
+					alignment += 3
+				else:
+					alignment += 1
+			elif coords in area_builder.settlement.ground_map:
+				object = area_builder.settlement.ground_map[coords].object
+				if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
+					alignment += 3
+				else:
+					alignment += 1
+			else:
+				alignment += 1
+		return alignment
 
 	def __cmp__(self, other):
 		if abs(self.value - other.value) > 1e-9:

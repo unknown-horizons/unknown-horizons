@@ -20,13 +20,12 @@
 # ###################################################
 
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
+from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
+from horizons.entities import Entities
 from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import BUILDINGS
 
 class BrickyardEvaluator(BuildingEvaluator):
-	radius = 10 # TODO: load this properly
-
 	def __init__(self, area_builder, builder, distance_to_clay_pit, distance_to_collector, alignment):
 		super(BrickyardEvaluator, self).__init__(area_builder, builder)
 		self.distance_to_clay_pit = distance_to_clay_pit
@@ -36,12 +35,8 @@ class BrickyardEvaluator(BuildingEvaluator):
 
 		distance = distance_to_clay_pit
 		if distance_to_collector is not None:
-			distance *= 0.9 + distance_to_collector / float(self.radius) * 0.1
+			distance *= 0.9 + distance_to_collector / float(Entities.buildings[BUILDINGS.BRICKYARD_CLASS].radius) * 0.1
 		self.value = 10.0 / distance + alignment * 0.02
-
-	def get_expected_production_level(self, resource_id):
-		assert resource_id == RES.BRICKS_ID
-		return 0 # TODO: implement this
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -49,39 +44,12 @@ class BrickyardEvaluator(BuildingEvaluator):
 		if not builder:
 			return None
 
-		distance_to_clay_pit = None
-		for building in area_builder.settlement.get_buildings_by_id(BUILDINGS.CLAY_PIT_CLASS):
-			distance = builder.position.distance(building.position)
-			if distance <= cls.radius:
-				distance_to_clay_pit = distance if distance_to_clay_pit is None or distance < distance_to_clay_pit else distance_to_clay_pit
+		distance_to_clay_pit = cls.distance_to_nearest_building(area_builder, builder, BUILDINGS.CLAY_PIT_CLASS)
 		if distance_to_clay_pit is None:
 			return None
 
-		distance_to_collector = None
-		for building in area_builder.collector_buildings:
-			distance = builder.position.distance(building.position)
-			if distance <= cls.radius:
-				distance_to_collector = distance if distance_to_collector is None or distance < distance_to_collector else distance_to_collector
-
-		alignment = 0
-		for coords in area_builder._get_neighbour_tiles(builder.position):
-			if coords in area_builder.plan:
-				purpose = area_builder.plan[coords]
-				if purpose == BUILDING_PURPOSE.NONE:
-					continue
-				elif purpose == BUILDING_PURPOSE.ROAD:
-					alignment += 3
-				else:
-					alignment += 1
-			elif coords in area_builder.settlement.ground_map:
-				object = area_builder.settlement.ground_map[coords].object
-				if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
-					alignment += 3
-				else:
-					alignment += 1
-			else:
-				alignment += 1
-
+		distance_to_collector = cls.distance_to_nearest_collector(area_builder, builder)
+		alignment = cls.get_alignment(area_builder, builder.position.tuple_iter())
 		return BrickyardEvaluator(area_builder, builder, distance_to_clay_pit, distance_to_collector, alignment)
 
 	@property
