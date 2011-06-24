@@ -375,15 +375,13 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		side = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)
 		# calculate x4 y4 the new facing location coords
 		# they are calculated by rotating 90' the target location
-		x4 = x2 - x1
-		y4 = y2 - y1
 		if side > 0:
-			x4 = y4 + x1
-			y4 = - x4 + y1
+			x4 = y2 - y1 + x1
+			y4 = x1 - x2 + y1
 			direction = 'left'
 		else:
-			x4 = - y4 + x1
-			y4 = x4 + y1
+			x4 = y1 - y2 + x1
+			y4 = x2 - x1 + y1
 			direction = 'right'
 
 		facing_coords.x = x4
@@ -391,6 +389,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 
 		facing_location.setMapCoordinates(facing_coords)
 		self.act('attack_%s' % direction, facing_location, False)
+		self._instance.setFacingLocation(facing_location)
 	
 		super(Ship, self).fire_all_weapons(dest)
 
