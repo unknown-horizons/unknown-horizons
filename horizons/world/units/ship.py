@@ -396,7 +396,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		super(Ship, self).fire_all_weapons(dest)
 
 	def fire_weapon(self, weapon, dest):
-		CannonBall(self.position, dest, weapon.attack_speed, self.session)
+		CannonBall(self.position, dest, weapon.attack_speed, self.session.view)
 		super(Ship, self).fire_weapon(weapon, dest)
 
 class PirateShip(Ship):

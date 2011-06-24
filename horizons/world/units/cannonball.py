@@ -29,7 +29,7 @@ class CannonBall(object):
 	"""
 	Class for a canonball animation
 	"""
-	def __init__(self, source, dest, speed, session):
+	def __init__(self, source, dest, speed, view):
 		"""
 		@param source: Point with starting position
 		@param dest: Point with ending position
@@ -40,32 +40,30 @@ class CannonBall(object):
 		self.needed_ticks = int(GAME_SPEED.TICKS_PER_SECOND * source.distance(dest) / speed)
 		# the thick that the object is currently at
 		self.current_tick = 0
-		self.session = session
+		self.view = view
 		# get the current position
 		self.x = source.x
 		self.y = source.y
 		# calculate the axis ratio that is added per tick to move
 		self.x_ratio = float(dest.x - source.x)/self.needed_ticks
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
-		print self.x_ratio
-		print self.y_ratio
 		import random
 		self.id = random.randint(1,1000)
 		self._move_tick()
 
 	def _move_tick(self):
-		self.session.view.renderer['GenericRenderer'].removeAll("ball" + str(self.id))
+		self.view.renderer['GenericRenderer'].removeAll("ball" + str(self.id))
 		if self.current_tick == self.needed_ticks:
 			return
 		self.current_tick += 1
 		self.x += self.x_ratio
 		self.y += self.y_ratio
-		loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
+		loc = fife.Location(self.view.layers[LAYERS.OBJECTS])
 		loc.thisown = 0
 		coords = fife.ModelCoordinate(int(self.x), int(self.y))
 		coords.thisown = 0
 		loc.setLayerCoordinates(coords)
-		self.session.view.renderer['GenericRenderer'].addAnimation(
+		self.view.renderer['GenericRenderer'].addAnimation(
 			"ball" + str(self.id), fife.GenericRendererNode(loc),
 			horizons.main.fife.animationpool.addResourceFromFile("as_cannonball0-idle-45")
 		)
