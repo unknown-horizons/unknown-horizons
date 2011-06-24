@@ -380,18 +380,17 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		if side > 0:
 			x4 = y4 + x1
 			y4 = - x4 + y1
+			direction = 'left'
 		else:
 			x4 = - y4 + x1
 			y4 = x4 + y1
+			direction = 'right'
 
 		facing_coords.x = x4
 		facing_coords.y = y4
-		f = open('points.txt','w')
-		f.write(str((x2, x1, x4)))
-		f.write(str((y2, y1, y4)))
 
 		facing_location.setMapCoordinates(facing_coords)
-		self._instance.setFacingLocation(facing_location)
+		self.act('attack_%s' % direction, facing_location, False)
 	
 		super(Ship, self).fire_all_weapons(dest)
 
