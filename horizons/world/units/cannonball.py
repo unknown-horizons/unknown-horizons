@@ -45,8 +45,8 @@ class CannonBall(object):
 		self.x = source.x
 		self.y = source.y
 		# calculate the axis ratio that is added per tick to move
-		self.x_ratio = (dest.x - source.x)/self.needed_ticks
-		self.y_ratio = (dest.y - source.y)/self.needed_ticks
+		self.x_ratio = float(dest.x - source.x)/self.needed_ticks
+		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
 		print self.x_ratio
 		print self.y_ratio
 		import random
@@ -62,7 +62,7 @@ class CannonBall(object):
 		self.y += self.y_ratio
 		loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
 		loc.thisown = 0
-		coords = fife.ModelCoordinate(self.x, self.y)
+		coords = fife.ModelCoordinate(int(self.x), int(self.y))
 		coords.thisown = 0
 		loc.setLayerCoordinates(coords)
 		self.session.view.renderer['GenericRenderer'].addAnimation(
