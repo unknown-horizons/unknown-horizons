@@ -191,9 +191,13 @@ class WeaponHolder(object):
 
 	def fire_all_weapons(self, dest):
 		#fires all weapons at a given position
-		distance = self.position.distance(dest)
 		for weapon in self._weapon_storage:
-			weapon.fire(dest, distance)
+			self.fire_weapon(weapon, dest)
+
+	def fire_weapon(self, weapon, dest):
+		#fires a weapon at a given position
+		distance = self.position.distance(dest)
+		weapon.fire(dest, distance)
 
 	def save(self, db):
 		super(WeaponHolder, self).save(db)

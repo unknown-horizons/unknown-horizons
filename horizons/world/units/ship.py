@@ -40,6 +40,7 @@ from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED, WEAPONS
 from horizons.world.units.healthcomponent import HealthComponent
 from horizons.world.units.healthcomponent import HealthDecorator
+from horizons.world.units.cannonball import CannonBall
 
 class ShipRoute(object):
 	"""
@@ -393,6 +394,10 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		self._action = 'idle'
 	
 		super(Ship, self).fire_all_weapons(dest)
+
+	def fire_weapon(self, weapon, dest):
+		CannonBall(self.position, dest, weapon.attack_speed, self.session)
+		super(Ship, self).fire_weapon(weapon, dest)
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

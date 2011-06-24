@@ -71,11 +71,11 @@ class Weapon(object):
 		#deal damage to units in position callback
 
 		units = self.session.world.get_ships(position, self.attack_radius)
-		for point in Circle(position, self.attack_radius):
-			unit = self.session.world.get_building(point)
-			if unit not in units and unit is not None:
-				units.append(unit)
-
+#		for point in Circle(position, self.attack_radius):
+#			unit = self.session.world.get_building(point)
+#			if unit not in units and unit is not None:
+#				units.append(unit)
+#
 		for unit in units:
 			print 'dealing damage to ship:', unit
 			#TODO remove the if when health attribute will only be HealthComponent
