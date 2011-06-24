@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-25 23:49+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-06-24 11:13+0200\n"
+"Last-Translator: angellus <nzwaal@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -44,8 +44,8 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"De SDL renderer is als reservesysteem te gebruiken en kan serieuze gafische "
-"problemen geven. \n"
+"De SDL renderer is alleen bedoeld als reservesysteem en kan serieuze "
+"gafische problemen geven. \n"
 "\n"
 "Gebruik op eigen risico!"
 
@@ -70,7 +70,7 @@ msgstr "Controleer of de poort die u ingevooerd hebt in het goede bereik ligt."
 
 #: horizons/engine.py:440
 msgid "Failed to apply new network data."
-msgstr "Netwerk instellingen opslaan mislukt."
+msgstr "Opslaan van netwerk instellingen mislukt."
 
 #: horizons/engine.py:441 horizons/main.py:121
 msgid "Networking couldn't be initialised with the current configuration."
@@ -85,7 +85,7 @@ msgstr "Controleer de instellingen bij het onderdeel Netwerk."
 #: horizons/engine.py:445
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
-"Lage poortnummers hebben soms extra rechten nodig, probeer de 0 of een "
+"Lage poortnummers hebben soms extra rechten nodig, probeer de 0 of een getal "
 "groter dan 1024."
 
 #: horizons/gui/gui.py:121
@@ -97,17 +97,19 @@ msgstr "Fout"
 msgid "Failed to save."
 msgstr "Opslaan mislukt."
 
+# geen hoofdletters bij u tenzij u god aanspreekt.
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Weet U zeker dat U Unknown Horizons wilt verlaten?"
+msgstr "Weet u zeker dat u Unknown Horizons wilt verlaten?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
 msgstr "Verlaat spel"
 
+# ook u aangepast
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr "Weet U zeker dat U de actieve sessie wilt stoppen?"
+msgstr "Weet u zeker dat u de actieve sessie wilt stoppen?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
@@ -138,7 +140,7 @@ msgid ""
 "Should i overwrite it?"
 msgstr ""
 "Een opgeslagen spel met naam \"%s\" bestaat reeds. \n"
-"Overschrijven?"
+"Wilt u dat ik deze overschrijf?"
 
 #: horizons/gui/gui.py:253
 msgid "Confirmation for overwriting"
@@ -164,7 +166,7 @@ msgstr "Fout:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
-msgstr "Datum opslaan onbekend\n"
+msgstr "Datum van opslaan onbekend\n"
 
 #: horizons/gui/gui.py:400
 #, python-format
