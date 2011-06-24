@@ -389,7 +389,8 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 
 		facing_location.setMapCoordinates(facing_coords)
 		self._instance.setFacingLocation(facing_location)
-		self.act('attack_%s' % direction, repeating=False)
+		self.act('attack_%s' % direction, facing_location, repeating=False)
+		self._action = 'idle'
 	
 		super(Ship, self).fire_all_weapons(dest)
 
