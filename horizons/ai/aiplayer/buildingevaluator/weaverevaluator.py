@@ -32,10 +32,8 @@ class WeaverEvaluator(BuildingEvaluator):
 		self.distance_to_collector = distance_to_collector
 		self.alignment = alignment
 
-		distance = distance_to_collector
-		if distance_to_farm is not None:
-			distance *= 0.7 + distance_to_farm / float(Entities.buildings[BUILDINGS.WEAVER_CLASS].radius) * 0.3
-		self.value = 10.0 / distance + alignment * 0.02
+		distance = self._weighted_sum(distance_to_collector, [(0.3, distance_to_farm)])
+		self.value = float(Entities.buildings[BUILDINGS.WEAVER_CLASS].radius) / distance + alignment * 0.02
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):

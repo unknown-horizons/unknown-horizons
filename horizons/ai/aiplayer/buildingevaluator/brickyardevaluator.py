@@ -32,10 +32,8 @@ class BrickyardEvaluator(BuildingEvaluator):
 		self.distance_to_collector = distance_to_collector
 		self.alignment = alignment
 
-		distance = distance_to_clay_pit
-		if distance_to_collector is not None:
-			distance *= 0.9 + distance_to_collector / float(Entities.buildings[BUILDINGS.BRICKYARD_CLASS].radius) * 0.1
-		self.value = 10.0 / distance + alignment * 0.02
+		distance = self._weighted_sum(distance_to_clay_pit, [(0.1, distance_to_collector)])
+		self.value = float(Entities.buildings[BUILDINGS.BRICKYARD_CLASS].radius) / distance + alignment * 0.02
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):

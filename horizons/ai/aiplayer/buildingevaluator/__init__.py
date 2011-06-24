@@ -34,6 +34,23 @@ class BuildingEvaluator(WorldObject):
 		self.builder = builder
 
 	@classmethod
+	def _weighted_sum(cls, main_component, other_components):
+		"""
+		Returns the weights sum of the components where the specified amount is given to an element of other_components unless it is None
+		@param main_component: float
+		@param other_components: list[(weight, value)] where weight is a float and value is either None or a float
+		"""
+		others = 0.0
+		for weight, value in other_components:
+			if value is not None:
+				others += weight
+		result = (1 - others) * main_component
+		for weight, value in other_components:
+			if value is not None:
+				result += weight * value
+		return result
+
+	@classmethod
 	def distance_to_nearest_building(cls, area_builder, builder, building_id):
 		"""
 		Returns the shortest distance to a building of type building_id that is in range of the builder
