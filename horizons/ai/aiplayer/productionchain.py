@@ -128,12 +128,12 @@ class ProductionChainSubtreeChoice:
 class ProductionChainSubtree:
 	def __init__(self, settlement_manager, resource_id, production_line, abstract_building, children, production_ratio):
 		self.settlement_manager = settlement_manager
+		self.resource_manager = settlement_manager.resource_manager
 		self.resource_id = resource_id
 		self.production_line = production_line
 		self.abstract_building = abstract_building
 		self.children = children
 		self.production_ratio = production_ratio
-		self.buildings = []
 
 	@property
 	def available(self):
@@ -167,7 +167,8 @@ class ProductionChainSubtree:
 		return children_cost + root_cost
 
 	def get_root_production_level(self):
-		return sum(self.abstract_building.get_production_level(building, self.resource_id) for building in self.buildings) / self.production_ratio
+		""" returns the production level currently available to this subtree """
+		return self.resource_manager.get_quota(self, self.resource_id, self.abstract_building.id) / self.production_ratio
 
 	def get_final_production_level(self):
 		""" returns the production level at the bottleneck """
@@ -191,6 +192,10 @@ class ProductionChainSubtree:
 		return amount > self.get_root_production_level() + 1e-7
 
 	def build(self, amount):
+		# request a quota change (could be lower or higher)
+		self.resource_manager.request_quota_change(self, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+
+		# try to build one of the lower level buildings
 		result = None
 		for child in self.children:
 			result = child.build(amount)
@@ -202,11 +207,14 @@ class ProductionChainSubtree:
 				return result # error
 
 		if result == BUILD_RESULT.NEED_PARENT_FIRST or self.need_more_buildings(amount):
+			# build a building and then request quota change
 			(result, building) = self.abstract_building.build(self.settlement_manager, self.resource_id)
 			if result == BUILD_RESULT.OK:
-				self.buildings.append(building)
+				self.resource_manager.add_building(building, self.resource_id)
+				self.resource_manager.request_quota_change(self, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
 			return result
 		return BUILD_RESULT.ALL_BUILT
 
 decorators.bind_all(ProductionChain)
+decorators.bind_all(ProductionChainSubtreeChoice)
 decorators.bind_all(ProductionChainSubtree)

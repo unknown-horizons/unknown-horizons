@@ -27,6 +27,7 @@ from constants import BUILD_RESULT, BUILDING_PURPOSE
 from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
 from productionchain import ProductionChain
+from resourcemanager import ResourceManager
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
@@ -55,6 +56,8 @@ class SettlementManager(WorldObject):
 		self.production_builder = ProductionBuilder(self)
 		self.village_builder.display()
 		self.production_builder.display()
+
+		self.resource_manager = ResourceManager()
 
 		# TODO: load the production chains
 		self.boards_chain = ProductionChain.create(self, RES.BOARDS_ID)
@@ -260,6 +263,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s get-together production %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER_ID), \
 			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
 		self.manage_production()
+		self.resource_manager.refresh()
 		self.need_materials = False
 
 		if len(self.build_queue) > 0:
