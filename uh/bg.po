@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-05-26 18:21+0200\n"
-"Last-Translator: balward <balward@mail.com>\n"
+"PO-Revision-Date: 2011-06-25 14:38+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "Грешка"
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr "Неуспех при запазване"
+msgstr "Неуспех при запазване."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -150,9 +150,8 @@ msgstr ""
 
 # 83%
 #: horizons/gui/gui.py:329
-#, fuzzy
 msgid "Error:"
-msgstr "Грешка"
+msgstr "Грешка:"
 
 #: horizons/gui/gui.py:398
 msgid "Unknown savedate\n"
@@ -242,7 +241,7 @@ msgstr "Мрежова грешка"
 
 #: horizons/gui/modules/multiplayermenu.py:110
 msgid "Something went wrong with the network: "
-msgstr "Нещо се обърка с мрежата"
+msgstr "Нещо се обърка с мрежата: "
 
 #: horizons/gui/modules/multiplayermenu.py:125
 msgid "Version differs!"
@@ -250,15 +249,15 @@ msgstr "Версията се различава!"
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Map: "
-msgstr "Карта:"
+msgstr "Карта: "
 
 #: horizons/gui/modules/multiplayermenu.py:148
 msgid "Players: "
-msgstr "Играчи:"
+msgstr "Играчи: "
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid "Creator: "
-msgstr "Създал:"
+msgstr "Създал: "
 
 #: horizons/gui/modules/multiplayermenu.py:168
 #, python-format
@@ -276,17 +275,17 @@ msgstr "Грешна версия"
 #: horizons/gui/modules/singleplayermenu.py:90
 #: horizons/gui/modules/singleplayermenu.py:102
 msgid "Difficulty: "
-msgstr "Трудност:"
+msgstr "Трудност: "
 
 #: horizons/gui/modules/singleplayermenu.py:91
 #: horizons/gui/modules/singleplayermenu.py:103
 msgid "Author: "
-msgstr "Автор:"
+msgstr "Автор: "
 
 #: horizons/gui/modules/singleplayermenu.py:92
 #: horizons/gui/modules/singleplayermenu.py:104
 msgid "Description: "
-msgstr "Описание:"
+msgstr "Описание: "
 
 #: horizons/gui/modules/singleplayermenu.py:122
 msgid "Invalid player name"
@@ -306,7 +305,7 @@ msgid ""
 "Error message: "
 msgstr ""
 "Избраният файл не е валиден сценарий файл.\n"
-"Съобщение за грешка:"
+"Съобщение за грешка: "
 
 #: horizons/gui/modules/singleplayermenu.py:175
 msgid ""
@@ -405,7 +404,7 @@ msgstr "Унищожи сграда"
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: %st per slot"
-msgstr "Лимит:  %st на позиция"
+msgstr "Лимит: %st на позиция"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
@@ -975,7 +974,7 @@ msgstr "Ефекти на звука:"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Graphics"
-msgstr "Графики:"
+msgstr "Графики"
 
 #: horizons/i18n/guitranslations.py:223
 msgid "Language"

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-06-17 15:45+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-06-25 14:11+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -436,7 +436,7 @@ msgstr "kantama / etäisyydellä / välillä"
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "running"
-msgstr "juokseminen"
+msgstr "juokseva / suorittaminen"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -543,7 +543,7 @@ msgstr "asukkaat"
 #: po/tutorial.py
 #: horizons/gui/widgets/inventory.py
 msgid "slot"
-msgstr "paikka"
+msgstr "paikka / tavararuutu"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -565,7 +565,7 @@ msgstr "sinun"
 #: horizons/gui/tabs/marketplacetabs.py
 #: horizons/i18n/guitranslations.py
 msgid "account"
-msgstr "tili / käyttäjätili"
+msgstr "tili / pankkitili"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -773,7 +773,7 @@ msgstr "keskustelupalsta"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fulfill"
-msgstr "pane täytäntöön"
+msgstr "pane täytäntöön / toteuta"
 
 # 
 #: po/tutorial.py
@@ -806,7 +806,9 @@ msgstr "metsästää"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "income"
-msgstr "palkka / tienesti"
+msgstr ""
+"palkka (payment for working) / tienesti (earnings, but overly casual form), "
+"nettotuotto (net profit, but too scientific word despite widespreadness)"
 
 # 
 #: po/tutorial.py
@@ -855,7 +857,7 @@ msgstr "suorita"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "service"
-msgstr "palvelu"
+msgstr "palvelu/palvelus"
 
 # 
 #: po/tutorial.py

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-15 18:57+0200\n"
-"Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
+"PO-Revision-Date: 2011-06-25 14:02+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -1264,7 +1264,7 @@ msgstr "foro"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fulfill"
-msgstr "cumpler / realizar"
+msgstr "cumplir / realizar"
 
 # 
 #
@@ -1291,16 +1291,14 @@ msgstr "verde"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "grow"
-msgstr "credercultivar"
+msgstr "crecer / cultivar"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hold"
-msgstr "interrumpir"
+msgstr "parar / interrumpir"
 
 # 
 #
@@ -1431,7 +1429,7 @@ msgstr "socio comercial"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "yields"
-msgstr "produce"
+msgstr "genera"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 

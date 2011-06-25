@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-06-25 14:33+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. set translated building name in gui
 #: po/tutorial.py
@@ -18,7 +19,7 @@ msgstr ""
 #: sqlite/Messages
 #: horizons/i18n/guitranslations.py
 msgid "build"
-msgstr ""
+msgstr "ehita"
 
 #: horizons/gui/ingamegui.py
 #: horizons/gui/modules/multiplayermenu.py
@@ -26,14 +27,14 @@ msgstr ""
 #: horizons/mpsession.py
 #: %28poterminology%29+4+more+locations
 msgid "game"
-msgstr ""
+msgstr "mäng"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "building"
-msgstr ""
+msgstr "ehitise"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -52,7 +53,7 @@ msgstr ""
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Building
 msgid "branch office"
-msgstr ""
+msgstr "harukontor"
 
 #: po/tutorial.py
 #: horizons/gui/tabs/marketplacetabs.py
@@ -60,7 +61,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: %28poterminology%29+1+more+locations
 msgid "overview"
-msgstr ""
+msgstr "ülevaade"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -68,7 +69,7 @@ msgstr ""
 #: horizons/gui/tabs/boatbuildertab.py
 #: %28poterminology%29+1+more+locations
 msgid "ship"
-msgstr ""
+msgstr "laev"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -95,7 +96,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "meremehe"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -115,7 +116,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Messages
 msgid "settlement"
-msgstr ""
+msgstr "koloonia"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -194,7 +195,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "main square"
-msgstr ""
+msgstr "turuplats"
 
 #: horizons/gui/tabs/marketplacetabs.py
 #: sqlite/SettlerLevel
@@ -243,7 +244,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "lumberjack"
-msgstr ""
+msgstr "puuraidur"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -307,13 +308,13 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "stock"
-msgstr ""
+msgstr "lao"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "storage"
-msgstr ""
+msgstr "lao"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -336,7 +337,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "fisher"
-msgstr ""
+msgstr "kalur"
 
 #: horizons/spsession.py
 #: po/tutorial.py
@@ -349,7 +350,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pavilion"
-msgstr ""
+msgstr "paviljon"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -360,7 +361,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "signal fire"
-msgstr ""
+msgstr "signaalituli"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -371,7 +372,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "tools"
-msgstr ""
+msgstr "asunike"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -414,7 +415,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "pioneeri"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -498,12 +499,12 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "happiness"
-msgstr ""
+msgstr "õnnelikkus"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunter"
-msgstr ""
+msgstr "jahimehe"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py

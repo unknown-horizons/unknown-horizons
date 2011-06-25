@@ -52,7 +52,7 @@ msgstr "hra"
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "building"
-msgstr "buování"
+msgstr "budování"
 
 # (poterminology) uh-tutorial/tutorial.pot (24)
 #

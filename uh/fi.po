@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-17 15:39+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-06-17 15:40+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -1323,7 +1323,7 @@ msgstr "Virhe yritettäessä ottaa verkkoa käyttöön."
 
 #: horizons/main.py:122
 msgid "Check the data you entered in the Network section in the settings dialogue."
-msgstr "Tarkista kirjoittamasi tiedot Verkko-osiosta asetusikkunassa."
+msgstr "Tarkista asetusten ikkunassa Verkko-osioon  kirjoittamasi tiedot."
 
 #: horizons/main.py:205
 msgid "Failed to start/load the game"
