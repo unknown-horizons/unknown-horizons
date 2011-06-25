@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-25 17:08+0200\n"
+"PO-Revision-Date: 2011-06-25 17:04+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -1754,7 +1754,7 @@ msgstr "VENCEU!!!"
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
-msgstr "Precisa de mais ${resource} para construir este edificio."
+msgstr "Precisa de mais ${resource} para construir este edifício."
 
 #: sqlite/Messages
 msgid "Your game has been quicksaved."
@@ -1766,7 +1766,7 @@ msgstr "A sua mina ficou sem recursos."
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr "O seu colonizador chegou ao nível ${level}."
+msgstr "Os seus colonizadores chegaram ao nível ${level}."
 
 #: sqlite/Resources
 msgid "boards"
@@ -1842,15 +1842,15 @@ msgstr "batatas"
 
 #: sqlite/Resources
 msgid "raw clay"
-msgstr "barro crú"
+msgstr "argila"
 
 #: sqlite/Resources
 msgid "raw iron"
-msgstr "ferro crú"
+msgstr "minério de ferro"
 
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr "açucar crú"
+msgstr "cana de açucar"
 
 #: sqlite/Resources
 msgid "sugar"
@@ -1858,7 +1858,7 @@ msgstr "açucar"
 
 #: sqlite/Resources
 msgid "textile"
-msgstr "textil"
+msgstr "têxtil"
 
 #: sqlite/Resources
 msgid "tools"
