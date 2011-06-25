@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-17 23:12+0200\n"
+"PO-Revision-Date: 2011-06-25 15:13+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -754,7 +754,7 @@ msgstr "Definições"
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Return to game"
-msgstr "Voltar ao Jogo"
+msgstr "Voltar ao jogo"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "The FIFE and Unknown Horizons development teams"
@@ -770,35 +770,35 @@ msgstr "Definições das teclas"
 
 #: horizons/i18n/guitranslations.py:152
 msgid "{LEFT} = Scroll left"
-msgstr "{LEFT} = Ir para a esquerda"
+msgstr "{ESQUERDA} = Ir para a esquerda"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "{RIGHT} = Scroll right"
-msgstr "{RIGHT} = Ir para a direita"
+msgstr "{DIREITA} = Ir para a direita"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "{UP} = Scroll up"
-msgstr "{UP} = Ir para cima"
+msgstr "{CIMA} = Ir para cima"
 
 #: horizons/i18n/guitranslations.py:155
 msgid "{DOWN} = Scroll down"
-msgstr "{DOWN} = Ir para baixo"
+msgstr "{BAIXO} = Ir para baixo"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "{ , } = Rotate building left"
-msgstr "{ , } = Rodar edificio para a esquerda"
+msgstr "{ , } = Rodar edifício para a esquerda"
 
 #: horizons/i18n/guitranslations.py:157
 msgid "{ . } = Rotate building right"
-msgstr "{ . } = Rodar edificio para a direita"
+msgstr "{ . } = Rodar edifício para a direita"
 
 #: horizons/i18n/guitranslations.py:158
 msgid "{B} = Show build menu"
-msgstr "{B} = Mostar menu de construção"
+msgstr "{B} = Mostar o menu de construção"
 
 #: horizons/i18n/guitranslations.py:159
 msgid "{F1} = Display help"
-msgstr "{F1} = Mostrar ajuda"
+msgstr "{F1} = Mostrar a ajuda"
 
 #: horizons/i18n/guitranslations.py:160
 msgid "{F5} = Quicksave"
@@ -814,7 +814,7 @@ msgstr "{F10} = Ligar/desligar consola"
 
 #: horizons/i18n/guitranslations.py:163
 msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Mostrar menu de pausa"
+msgstr "{ESC} = Mostrar o menu de pausa"
 
 #: horizons/i18n/guitranslations.py:164
 msgid "{G} = Toggle grid on/off"
@@ -842,7 +842,7 @@ msgstr "{S} = Captura de ecrã"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Reter para colocar vários edificios"
+msgstr "{SHIFT} = Manter pressionado para colocar vários edificios"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "{C} = Chat"
@@ -1035,7 +1035,7 @@ msgstr "Número de gravações rápidas:"
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Full screen:"
-msgstr "Ecrã Inteiro:"
+msgstr "Ecrã inteiro:"
 
 #: horizons/i18n/guitranslations.py:235
 msgid "Screen resolution:"
@@ -1160,7 +1160,7 @@ msgstr "Cortador"
 
 #: horizons/i18n/guitranslations.py:272
 msgid "Herring fisher"
-msgstr "Arenque de Pescador"
+msgstr "Arenque de pescador"
 
 #: horizons/i18n/guitranslations.py:273
 msgid "Whaler"
@@ -1334,7 +1334,7 @@ msgstr ""
 #: horizons/main.py:287
 #, python-format
 msgid "Error: Cannot find map \"%s\"."
-msgstr "Erro: Não foi possível encontrar o mapa \"%s%."
+msgstr "Erro: Não foi possível encontrar o mapa \"%s\"."
 
 #: horizons/main.py:290 horizons/main.py:333
 msgid "Error: Found multiple matches: "
@@ -1372,17 +1372,17 @@ msgstr ""
 # 81%
 #: horizons/savegamemanager.py:338
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign \"%s\"."
-msgstr "Erro: Não foi possível encontrar o mapa \"%s%."
+msgstr "Erro: Não foi possível encontrar o campanã \"%s\"."
 
 # 81%
 # 76%
 #: horizons/savegamemanager.py:343
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr "Erro: Não foi possível encontrar o mapa \"%s%."
+msgstr "Erro: Não foi possível encontrar o campanã \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1466,8 +1466,8 @@ msgstr "Especifique servidor mestre alternativo para jogos em rede."
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
 "Especifique o endereço de rede para ligar o cliente da rede local. Poderá "
-"ser útil caso existam problemas na \"NAT holepunching\" e tiver necessidade de "
-"encaminhar para uma porta estática."
+"ser útil caso existam problemas de NAT e tiver necessidade de encaminhar "
+"para uma porta estática."
 
 # 92%
 #: run_uh.py:90

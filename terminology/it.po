@@ -421,7 +421,7 @@ msgstr "pioniere"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato"
-msgstr "patata"
+msgstr "patate"
 
 #: po/tutorial.py
 #: sqlite/Messages
@@ -438,7 +438,7 @@ msgstr "in esecuzione"
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "setting"
-msgstr "impostazione"
+msgstr "impostazioni"
 
 #: po/tutorial.py
 #: sqlite/Building
@@ -599,7 +599,7 @@ msgstr "pesce"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "increase"
-msgstr "aumenta"
+msgstr "incrementa"
 
 # 
 #: po/tutorial.py
@@ -631,7 +631,7 @@ msgstr "piazza del mercato"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "mode"
-msgstr "modalità"
+msgstr "modo"
 
 # 
 #: po/tutorial.py

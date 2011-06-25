@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-23 20:31+0200\n"
-"Last-Translator: Alexander <fcxSanya@gmail.com>\n"
+"PO-Revision-Date: 2011-06-25 15:18+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "НОВАЯ ЗАДАЧА: КОЛОНИЗИРОВАТЬ ОСТРОВ"
+msgstr "КОЛОНИЗИРОВАТЬ ОСТРОВ"
 
 #: po/tutorial.py:8
 msgid ""
@@ -111,7 +111,7 @@ msgstr ""
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr "НОВАЯ ЗАДАЧА: РАЗГРУЗИТЬ ТОВАРЫ"
+msgstr "РАЗГРУЗИТЬ ТОВАРЫ"
 
 #: po/tutorial.py:10
 msgid ""
@@ -181,7 +181,7 @@ msgstr "Разгрузите по крайней мере 10 тонн каждо
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "НОВАЯ ЗАДАЧА: СТРОИТЕЛЬСТВО ЛЕСОПИЛКИ"
+msgstr "СТРОИТЕЛЬСТВО ЛЕСОПИЛКИ"
 
 #: po/tutorial.py:14
 msgid ""
@@ -256,7 +256,7 @@ msgstr "Постройте лесопилку и соедините её с ко
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "НОВАЯ ЗАДАЧА: ОБЕСПЕЧЕНИЕ ПРОДОВОЛЬСТВИЕМ"
+msgstr "ОБЕСПЕЧЕНИЕ ПРОДОВОЛЬСТВИЕМ"
 
 #: po/tutorial.py:18
 msgid ""
@@ -323,7 +323,7 @@ msgstr "Построить здания охотника и рыбака. Сое
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "НОВАЯ ЗАДАЧА: ГЛАВНАЯ ПЛОЩАДЬ"
+msgstr "ГЛАВНАЯ ПЛОЩАДЬ"
 
 #: po/tutorial.py:22
 msgid ""
@@ -392,7 +392,7 @@ msgstr ""
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "НОВАЯ ЗАДАЧА: ЖИЛЫЕ ПОСТРОЙКИ"
+msgstr "ЖИЛЫЕ ПОСТРОЙКИ"
 
 #: po/tutorial.py:26
 msgid ""
@@ -466,7 +466,7 @@ msgstr ""
 
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "НОВАЯ ЗАДАЧА: ПОСТРОЙКА СИГНАЛЬНОГО ОГНЯ"
+msgstr "ПОСТРОЙКА СИГНАЛЬНОГО ОГНЯ"
 
 #: po/tutorial.py:31
 msgid ""
@@ -539,7 +539,7 @@ msgstr "Постройте сигнальный огонь на побережь
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "НОВАЯ ЗАДАЧА: ОБУЧЕНИЕ ТОРГОВЛЕ"
+msgstr "ОБУЧЕНИЕ ТОРГОВЛЕ"
 
 #: po/tutorial.py:35
 msgid ""
@@ -611,7 +611,7 @@ msgstr "Достигнуть запаса в 30 инструментов."
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "НОВАЯ ЗАДАЧА: СТРОИТЕЛЬСТВО ПАВИЛЬОНА"
+msgstr "СТРОИТЕЛЬСТВО ПАВИЛЬОНА"
 
 #: po/tutorial.py:39
 msgid ""
@@ -678,7 +678,7 @@ msgstr "Постройте павильон с дорогой к палатка�
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr "НОВАЯ ЗАДАЧА: СЛЕДУЮЩИЙ УРОВЕНЬ"
+msgstr "СЛЕДУЮЩИЙ УРОВЕНЬ"
 
 #: po/tutorial.py:43
 msgid ""
@@ -748,7 +748,7 @@ msgstr ""
 
 #: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
-msgstr "НОВАЯ ЗАДАЧА: СТРОИТЕЛЬСТВО ФЕРМЫ"
+msgstr "СТРОИТЕЛЬСТВО ФЕРМЫ"
 
 #: po/tutorial.py:47
 msgid ""
@@ -819,7 +819,7 @@ msgstr "Постройте ферму, оставив некоторое про�
 
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr "НОВАЯ ЗАДАЧА: СОЗДАНИЕ ПОЛЕЙ"
+msgstr "СОЗДАНИЕ ПОЛЕЙ"
 
 #: po/tutorial.py:51
 msgid ""
@@ -891,7 +891,7 @@ msgstr "Постройте как минимум одно пастбище и, �
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr "НОВАЯ ЗАДАЧА: СТРОИТЕЛЬСВО ХРАНИЛИЩА."
+msgstr "СТРОИТЕЛЬСВО ХРАНИЛИЩА"
 
 #: po/tutorial.py:55
 msgid ""
@@ -960,7 +960,7 @@ msgstr ""
 
 #: po/tutorial.py:58
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr "НОВАЯ ЗАДАЧА: СТРОИТЕЛЬСТВО ЖИЛИЩА ТКАЧА"
+msgstr "СТРОИТЕЛЬСТВО ЖИЛИЩА ТКАЧА"
 
 #: po/tutorial.py:59
 msgid ""
@@ -1002,7 +1002,7 @@ msgstr ""
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "НОВАЯ ЗАДАЧА: ЗАВЕРШЕНИЕ ОБУЧЕНИЯ"
+msgstr "ЗАВЕРШЕНИЕ ОБУЧЕНИЯ"
 
 #: po/tutorial.py:63
 msgid ""
