@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-25 15:13+0200\n"
+"PO-Revision-Date: 2011-06-25 16:49+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -271,9 +271,9 @@ msgstr "Criador: "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
-"A versão do jogo é diferente da sua versão. Cada jogador num jogo "
-"multiplayer deve utilizar a mesma versão. Isto pode ser resolvido fazendo "
-"uma actualização para a última versão disponível. Versão do jogo: %"
+"A versão do jogo é difere da sua. Todos os jogadores de um jogo em rede "
+"devem utilizar a mesma versão. Isto pode ser resolvido através de uma "
+"actualização para a última versão disponível. Versão do jogo: %"
 "(gameversion)s Versão instalada: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:168
@@ -689,7 +689,7 @@ msgstr "Comprar ou vender recursos"
 
 #: horizons/i18n/guitranslations.py:121
 msgid "Legend:"
-msgstr "Leganda:"
+msgstr "Legenda:"
 
 #: horizons/i18n/guitranslations.py:122
 msgid "Sell resources"
@@ -867,11 +867,11 @@ msgstr "Sair"
 
 #: horizons/i18n/guitranslations.py:184
 msgid "Singleplayer"
-msgstr "Um Jogador"
+msgstr "Jogo a Solo"
 
 #: horizons/i18n/guitranslations.py:185
 msgid "Multiplayer"
-msgstr "Vários Jogadores"
+msgstr "Jogo em Rede"
 
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:204
 msgid "Create game:"
@@ -907,7 +907,7 @@ msgstr "Sair:"
 
 #: horizons/i18n/guitranslations.py:197
 msgid "The game will start as soon as enough players have joined."
-msgstr "O jogo irá iniciar quando tiver jogadores suficientes ligados."
+msgstr "O jogo terá início quando se ligarem jogadores suficientes."
 
 #: horizons/i18n/guitranslations.py:198
 msgid "Chat:"
@@ -943,7 +943,7 @@ msgstr "Novo jogo - Jogo em Rede"
 
 #: horizons/i18n/guitranslations.py:208
 msgid "Join game"
-msgstr "Juntar-se ao jogo"
+msgstr "Junte-se ao jogo"
 
 #: horizons/i18n/guitranslations.py:209
 msgid "Apply:"
@@ -951,11 +951,11 @@ msgstr "Aplicar:"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Refresh list:"
-msgstr "Actualizar lista:"
+msgstr "Actualizar a lista:"
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Apply the new name"
-msgstr "Aplicar novo jogo"
+msgstr "Aplicar o jogo novo"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Create a new game"
@@ -963,7 +963,7 @@ msgstr "Criar um jogo novo"
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Join the selected game"
-msgstr "Juntar-se ao jogo selecionado"
+msgstr "Junte-se ao jogo selecionado"
 
 #: horizons/i18n/guitranslations.py:215
 msgid "Refresh list of active games"
@@ -991,7 +991,7 @@ msgstr "Gráficos"
 
 #: horizons/i18n/guitranslations.py:223
 msgid "Language"
-msgstr "Linguagem"
+msgstr "Língua"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Network"
@@ -1007,11 +1007,11 @@ msgstr "Som"
 
 #: horizons/i18n/guitranslations.py:227
 msgid "Select language:"
-msgstr "Escolha a linguagem:"
+msgstr "Escolha a língua:"
 
 #: horizons/i18n/guitranslations.py:228
 msgid "Enable minimap rotation:"
-msgstr "Ligar rotação da miniatura do mapa:"
+msgstr "Ligar rotação do mapa miniatura:"
 
 #: horizons/i18n/guitranslations.py:229
 msgid "Music volume:"
@@ -1047,15 +1047,15 @@ msgstr "Ligar som:"
 
 #: horizons/i18n/guitranslations.py:237
 msgid "Used renderer:"
-msgstr "Renderizador usado:"
+msgstr "Renderizador utilizado:"
 
 #: horizons/i18n/guitranslations.py:238
 msgid "Please make sure that you know what you do."
-msgstr "Por favor certifique-se que sabe o que está a fazer."
+msgstr "Por favor considere as opções que fizer."
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Enter filename:"
-msgstr "Introduzir nome do ficheiro:"
+msgstr "Introduzir o nome do ficheiro:"
 
 #: horizons/i18n/guitranslations.py:242
 msgid "Your saved games:"
@@ -1067,7 +1067,7 @@ msgstr "Selecione um mapa para jogar:"
 
 #: horizons/i18n/guitranslations.py:245
 msgid "New game - Singleplayer"
-msgstr "Novo Jogo - Modo Solitário"
+msgstr "Novo Jogo - Jogo a Solo"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Start game:"

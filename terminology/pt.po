@@ -210,7 +210,7 @@ msgstr "incremento"
 #: po/tutorial.py
 #: horizons/gui/
 msgid "minimap"
-msgstr "miniatura do mapa"
+msgstr "mapa miniatura"
 
 #: po/tutorial.py
 #: horizons/gui/
