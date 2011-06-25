@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-25 16:49+0200\n"
+"PO-Revision-Date: 2011-06-25 17:08+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -1071,7 +1071,7 @@ msgstr "Novo Jogo - Jogo a Solo"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Start game:"
-msgstr "Começar o jogo:"
+msgstr "Iniciar o jogo:"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "Campaign"
@@ -1097,7 +1097,7 @@ msgstr "Começar o jogo"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Color:"
-msgstr "Cor:"
+msgstr "Côr:"
 
 #: horizons/i18n/guitranslations.py:256
 msgid "Player name:"
@@ -1205,7 +1205,7 @@ msgstr "Impostos"
 
 #: horizons/i18n/guitranslations.py:292
 msgid "Average happiness:"
-msgstr "Nível de descontentamento:"
+msgstr "Rácio da felicidade:"
 
 #: horizons/i18n/guitranslations.py:294
 msgid "Most needed resource:"
@@ -1218,7 +1218,7 @@ msgstr "Nome:"
 
 #: horizons/i18n/guitranslations.py:303 horizons/i18n/guitranslations.py:316
 msgid "Taxes:"
-msgstr "Juros:"
+msgstr "Impostos:"
 
 #: horizons/i18n/guitranslations.py:304 horizons/i18n/guitranslations.py:319
 msgid "Tax Rate"
@@ -1226,7 +1226,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:308
 msgid "capacity utilization"
-msgstr "capacidade de utilização"
+msgstr "capacidade utilização"
 
 #: horizons/i18n/guitranslations.py:311
 msgid "Resource deposit"
@@ -1265,7 +1265,7 @@ msgstr "Construir povoação:"
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Click to change the name of this ship."
-msgstr "Cloque para mudar o nome deste navio."
+msgstr "Clique para mudar o nome deste navio."
 
 #: horizons/i18n/guitranslations.py:325
 msgid "Build settlement"
@@ -1281,7 +1281,7 @@ msgstr ""
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
 "Este é o navio do mercador livre. Ele irá visitá-lo de tempo a tempo para "
-"comprar e vender mercadorias."
+"comprar ou vender mercadorias."
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Exchange:"
@@ -1343,7 +1343,7 @@ msgstr "Erro: Foram encontrados vários jogos: "
 #: horizons/main.py:330
 #, python-format
 msgid "Error: Cannot find savegame \"%s\"."
-msgstr "Erro: Não foi possível encontrar o ficheiro de gravação \"%s\"."
+msgstr "Erro: Não foi possível encontrar a gravação \"%s\"."
 
 #: horizons/main.py:348
 msgid "Error: No quicksave found."
@@ -1386,7 +1386,7 @@ msgstr "Erro: Não foi possível encontrar o campanã \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
-msgstr "Ganhou!"
+msgstr "Venceu!"
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario. "
@@ -1416,8 +1416,7 @@ msgstr "Não foram encontradas gravações rápidas"
 #: horizons/spsession.py:106
 msgid "You need to quicksave before you can quickload."
 msgstr ""
-"Necessita de efectuar uma gravação rápida antes de fazer um carregamento "
-"rápido."
+"Deverá efectuar uma gravação rápida antes de fazer um carregamento rápido."
 
 #. usually invalid filename
 #: horizons/spsession.py:133
@@ -1446,7 +1445,7 @@ msgstr "Comerciante"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
-msgstr "Ligar mode de debug para o stderr e para um ficheiro de log."
+msgstr "Ligar modo de debug para o stderr e para um ficheiro de log."
 
 #: run_uh.py:81
 msgid "Specify the path to FIFE root directory."
@@ -1460,7 +1459,7 @@ msgstr ""
 
 #: run_uh.py:85
 msgid "Specify alternative multiplayer master server."
-msgstr "Especifique servidor mestre alternativo para jogos em rede."
+msgstr "Especifique um servidor mestre alternativo para jogos em rede."
 
 #: run_uh.py:87
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
@@ -1540,7 +1539,7 @@ msgstr ""
 
 #: run_uh.py:144
 msgid "Unknown Horizons crashed."
-msgstr "Falha no Unknown Horizons."
+msgstr "Falha em Unknown Horizons."
 
 #: run_uh.py:146
 msgid "We are very sorry for this, and want to fix this error."
@@ -1663,11 +1662,11 @@ msgstr "Fundição"
 
 #: sqlite/Building
 msgid "Storage Tent"
-msgstr "Barraca de armazenamento"
+msgstr "Armazém"
 
 #: sqlite/Building
 msgid "Sugar Field"
-msgstr "Campo de açucar"
+msgstr "Campo de açúcar"
 
 #: sqlite/Building
 msgid "Tavern"
@@ -1731,11 +1730,11 @@ msgstr "amarelo"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
-msgstr "Uma nova povoação foi creada pelo ${player}."
+msgstr "Uma nova povoação foi criada por ${player}."
 
 #: sqlite/Messages
 msgid "A new world has been created."
-msgstr "Um novo mundo foi creado."
+msgstr "Um novo mundo foi criado."
 
 #: sqlite/Messages
 msgid "One of your settler has no market place in it's range."
