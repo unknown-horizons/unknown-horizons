@@ -44,6 +44,9 @@ class LandManager(WorldObject):
 		self.session = self.island.session
 		self.production = {}
 		self.village = {}
+		self.resource_deposits = {}
+		self.resource_deposits[BUILDINGS.CLAY_DEPOSIT_CLASS] = self._get_buildings_by_id(BUILDINGS.CLAY_DEPOSIT_CLASS)
+		self.resource_deposits[BUILDINGS.MOUNTAIN_CLASS] = self._get_buildings_by_id(BUILDINGS.MOUNTAIN_CLASS)
 
 	def save(self, db):
 		super(LandManager, self).save(db)
@@ -72,6 +75,14 @@ class LandManager(WorldObject):
 				self.production[coords] = self.island.ground_map[coords]
 			elif purpose == self.purpose.village:
 				self.village[coords] = self.island.ground_map[coords]
+
+	def _get_buildings_by_id(self, building_id):
+		result = []
+		for coords in self.island.ground_map:
+			object = self.island.ground_map[coords].object
+			if object is not None and object.id == building_id:
+				result.append(object)
+		return result
 
 	def _coords_usable(self, coords):
 		if coords in self.island.ground_map:

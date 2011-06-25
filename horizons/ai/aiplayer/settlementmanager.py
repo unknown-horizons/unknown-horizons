@@ -255,6 +255,13 @@ class SettlementManager(WorldObject):
 		self.log_generic_build_result(result, name)
 		return True
 
+	def reachable_deposit(self, building_id):
+		""" returns true if there is a resource deposit outside the settlement that is not owned by another player """
+		for building in self.land_manager.resource_deposits[building_id]:
+			if building.settlement is None:
+				return True
+		return False
+
 	def tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
 			self.get_resident_resource_usage(RES.FOOD_ID))
@@ -265,6 +272,7 @@ class SettlementManager(WorldObject):
 		self.manage_production()
 		self.resource_manager.refresh()
 		self.need_materials = False
+		have_bricks = self.count_buildings(BUILDINGS.BRICKYARD_CLASS)
 
 		if len(self.build_queue) > 0:
 			self.log.info('%s build a queue item', self)
@@ -291,13 +299,19 @@ class SettlementManager(WorldObject):
 			self.log_generic_build_result(result,  'tent')
 			if result == BUILD_RESULT.OK:
 				self.tents += 1
+		elif not self.count_buildings(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
+			result = self.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
+			self.log_generic_build_result(result,  'clay deposit coverage storage')
 		elif self.count_buildings(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.build_chain(self.bricks_chain, 'bricks producer'):
 			pass
-		elif self.build_chain(self.education_chain, 'school'):
+		elif have_bricks and self.build_chain(self.education_chain, 'school'):
 			pass
-		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.get_together_chain, 'get-together producer'):
+		elif have_bricks and self.land_manager.owner.settler_level > 1 and self.build_chain(self.get_together_chain, 'get-together producer'):
 			pass
-		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.tools_chain, 'tools producer'):
+		elif have_bricks and not self.count_buildings(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.reachable_deposit(BUILDINGS.MOUNTAIN_CLASS):
+			result = self.production_builder.improve_deposit_coverage(BUILDINGS.MOUNTAIN_CLASS)
+			self.log_generic_build_result(result,  'mountain coverage storage')
+		elif have_bricks and self.count_buildings(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.tools_chain, 'tools producer'):
 			pass
 		else:
 			self.village_built = True

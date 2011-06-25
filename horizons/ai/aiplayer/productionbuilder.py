@@ -226,6 +226,54 @@ class ProductionBuilder(AreaBuilder):
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
+	def improve_deposit_coverage(self, building_id):
+		"""
+		Builds a storage tent to get settlement range closer to the resource deposit.
+		"""
+		if not self.have_resources(BUILDINGS.STORAGE_CLASS):
+			return BUILD_RESULT.NEED_RESOURCES
+
+		available_deposits = []
+		for building in self.land_manager.resource_deposits[building_id]:
+			if building.settlement is None:
+				available_deposits.append(building)
+		if not available_deposits:
+			return BUILD_RESULT.IMPOSSIBLE
+
+		options = []
+		for (x, y), (purpose, _) in self.plan.iteritems():
+			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
+			if not builder:
+				continue
+
+			min_distance = None
+			for building in available_deposits:
+				distance = building.position.distance(builder.position)
+				if min_distance is None or min_distance > distance:
+					min_distance = distance
+
+			alignment = 1
+			for tile in self._get_neighbour_tiles(builder.position):
+				if tile is None:
+					continue
+				coords = (tile.x, tile.y)
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+					alignment += 1
+
+			value = min_distance - alignment * 0.7
+			options.append((value, builder))
+
+		for _, builder in sorted(options):
+			building = builder.execute()
+			if not building:
+				return BUILD_RESULT.UNKNOWN_ERROR
+			for coords in builder.position.tuple_iter():
+				self.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
+			self.plan[sorted(builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.STORAGE, builder)
+			self.collector_buildings.append(building)
+			return BUILD_RESULT.OK
+		return BUILD_RESULT.IMPOSSIBLE
+
 	def count_fields(self):
 		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0}
 		for building in self.production_buildings:
