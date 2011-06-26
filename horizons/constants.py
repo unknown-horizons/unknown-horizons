@@ -215,9 +215,9 @@ class SETTLER:
 
 class WILD_ANIMAL:
 	HEALTH_INIT_VALUE = 50 # animals start with this value
-	HEALTH_INCREASE_ON_FEEDING = 4 # health increases by this value on feeding
-	HEALTH_DECREASE_ON_NO_JOB = 2 # health decreases by this value when they have no food
-	HEALTH_LEVEL_TO_REPRODUCE = 70 # this level has to be reached for reproducing
+	HEALTH_INCREASE_ON_FEEDING = 8 # health increases by this value on feeding
+	HEALTH_DECREASE_ON_NO_JOB = 20 # health decreases by this value when they have no food
+	HEALTH_LEVEL_TO_REPRODUCE = 75 # this level has to be reached for reproducing
 
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
