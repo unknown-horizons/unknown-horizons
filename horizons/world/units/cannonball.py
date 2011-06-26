@@ -34,6 +34,7 @@ class CannonBall(object):
 		@param source: Point with starting position
 		@param dest: Point with ending position
 		@param speed: Attack speed of the Weapon that fires the canonball
+		@param view: View
 		"""
 		self.position = source
 		# needed ticks to go to the destination
@@ -49,23 +50,41 @@ class CannonBall(object):
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
 		import random
 		self.id = random.randint(1,1000)
+
+		self._object = horizons.main.fife.engine.getModel().createObject(str(self.id), 'cannonball')
+		fife.ObjectVisual.create(self._object)
+		visual = self._object.get2dGfxVisual()
+		img = horizons.main.fife.imagepool.addResourceFromFile('content/gfx/misc/cannonballs/as_cannonball0/idle/45/0.png')
+		for rotation in [45, 135, 225, 315]:
+			visual.addStaticImage(rotation, img)
+		coords = fife.ModelCoordinate(int(self.x), int(self.y))
+		coords.thisown = 0
+		self._instance = self.view.layers[LAYERS.OBJECTS].createInstance(self._object, coords)
+		fife.InstanceVisual.create(self._instance)
+
+		loc = fife.Location(self.view.layers[LAYERS.OBJECTS])
+		loc.thisown = 0
+		coords = fife.ModelCoordinate(int(dest.x), int(dest.y))
+		coords.thisown = 0
+		loc.setLayerCoordinates(coords)
+
 		self._move_tick()
 
 	def _move_tick(self):
-		self.view.renderer['GenericRenderer'].removeAll("ball" + str(self.id))
 		if self.current_tick == self.needed_ticks:
+			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
+			self._instance = None
 			return
 		self.current_tick += 1
 		self.x += self.x_ratio
 		self.y += self.y_ratio
-		loc = fife.Location(self.view.layers[LAYERS.OBJECTS])
-		loc.thisown = 0
-		coords = fife.ModelCoordinate(int(self.x), int(self.y))
-		coords.thisown = 0
-		loc.setLayerCoordinates(coords)
-		self.view.renderer['GenericRenderer'].addAnimation(
-			"ball" + str(self.id), fife.GenericRendererNode(loc),
-			horizons.main.fife.animationpool.addResourceFromFile("as_cannonball0-idle-45")
-		)
+
+		loc = self._instance.getLocation()
+		coords = loc.getMapCoordinates()
+		coords.x = self.x
+		coords.y = self.y
+		loc.setMapCoordinates(coords)
+		self._instance.setLocation(loc)
+
 		Scheduler().add_new_object(self._move_tick, self, 1)
 
