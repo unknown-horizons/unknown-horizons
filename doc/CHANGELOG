@@ -174,9 +174,8 @@ User-Contributed Content
    + new tutorial translations: fi, pt, ru
    # updates to translations: ca, de, es, et, fr, it, nb, nl, pl, pt, pt_BR, ru,
                               sl
-   # updates to tutorial translations: de, fr, nl
+   # updates to tutorial translations: de, fr, it, nl
 * Campaigns and scenarios
-   + add campaign 'test' by Court-Jus)
    + add scenario 'sc1' by Court-Jus
    + add scenario 'sc2' by Court-Jus
    + add scenario 'sc3' by Court-Jus

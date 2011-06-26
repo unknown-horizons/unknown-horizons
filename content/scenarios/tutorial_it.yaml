@@ -282,12 +282,11 @@ events:
         \ 'Vendi' con 18 tonnellate in magazzino ed il selettore impostato a 13 vender\xE0\
         \ fino a 5 tonnellate.\n\nSe il libero commerciante, comunque, vuole comprare\
         \ o vendere meno di quanto tu hai impostato dovrai attendere il prossimo suo\
-        \ passaggio.\n\nUnknown Horizons consente valutazioni intelligenti, quindi\
-        \ il valore di un'unit\xE0 pu\xF2 variare.\nNON \xE8 possibile cambiare manualmente\
-        \ i prezzi!\n\nPuoi vedere il bilancio commerciale nella scheda 'Conto' e\
-        \ confrontare i valori 'Vendita' ed 'Acquisto'.\n\nOBIETTIVO: Compra tutti\
-        \ gli attrezzi di cui hai bisogno per avere 30 attrezzi in magazzino!\nSe\
-        \ ne hai ancora nelle stive della tua nave, questa \xE8 una buona occasione\
+        \ passaggio.\n\nIl valore di un'unit\xE0 pu\xF2 variare.\nNON \xE8 possibile\
+        \ cambiare manualmente i prezzi!\n\nPuoi vedere il bilancio commerciale nella\
+        \ scheda 'Conto' e confrontare i valori 'Vendita' ed 'Acquisto'.\n\nOBIETTIVO:\
+        \ Compra tutti gli attrezzi di cui hai bisogno per avere 30 attrezzi in magazzino!\n\
+        Se ne hai ancora nelle stive della tua nave, questa \xE8 una buona occasione\
         \ per scaricarli."]
     type: logbook
   - arguments: [!!python/unicode 'Raggiungi una scorta per l''isola di almeno 30 attrezzi.']
