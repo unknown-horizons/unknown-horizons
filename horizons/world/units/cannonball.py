@@ -74,7 +74,6 @@ class CannonBall(object):
 		if self.current_tick == self.needed_ticks:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 			self._instance = None
-			CannonBall.id -= 1
 			return
 		self.current_tick += 1
 		self.x += self.x_ratio
