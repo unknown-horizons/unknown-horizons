@@ -31,6 +31,7 @@ class Builder(WorldObject):
 	"""
 
 	rotations = [45, 135, 225, 315]
+	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS] # don't change orientation by random
 
 	def __init__(self, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
 		"""
@@ -45,13 +46,14 @@ class Builder(WorldObject):
 		super(Builder, self).__init__(worldid)
 		self.building_id = building_id
 		self.land_manager = land_manager
+		self.session = land_manager.session
 		self.point = point
 		self.orientation = orientation
 		self.ship = ship
 
 		check_settlement = ship is None
-		self.build_position = Entities.buildings[building_id].check_build(self.land_manager.session, \
-			point, rotation = self.rotations[orientation], check_settlement = check_settlement, ship = None, \
+		self.build_position = Entities.buildings[building_id].check_build(self.session, point, \
+			rotation = self.rotations[orientation], check_settlement = check_settlement, ship = None, \
 			issuer = self.land_manager.owner)
 		self.position = self.build_position.position
 
@@ -71,10 +73,21 @@ class Builder(WorldObject):
 		"""Returns buildable value. This enables code such as "if cls.check_build()"""
 		return self.build_position.buildable
 
+	def _get_rotation(self):
+		if self.building_id in self.non_rotatable_buildings:
+			return self.build_position.rotation
+		if Entities.buildings[self.building_id].size[0] == Entities.buildings[self.building_id].size[1]:
+			# any orientation could be chosen
+			return self.rotations[self.session.random.randint(0, 3)]
+		else:
+			# there are two possible orientations
+			assert 0 <= self.orientation <= 1
+			return self.rotations[self.orientation + 2 * self.session.random.randint(0, 1)]
+
 	def execute(self):
 		"""Actually builds the building."""
 		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island, \
-			self.build_position.rotation, settlement = self.land_manager.settlement, \
+			self._get_rotation(), settlement = self.land_manager.settlement, \
 			ship = self.ship, tearset = self.build_position.tearset)
 		return cmd(self.land_manager.owner)
 
