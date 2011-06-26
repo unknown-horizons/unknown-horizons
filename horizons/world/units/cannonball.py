@@ -29,6 +29,7 @@ class CannonBall(object):
 	"""
 	Class for a canonball animation
 	"""
+	id = -1
 	def __init__(self, source, dest, speed, view):
 		"""
 		@param source: Point with starting position
@@ -36,6 +37,7 @@ class CannonBall(object):
 		@param speed: Attack speed of the Weapon that fires the canonball
 		@param view: View
 		"""
+		CannonBall.id += 1
 		self.position = source
 		# needed ticks to go to the destination
 		self.needed_ticks = int(GAME_SPEED.TICKS_PER_SECOND * source.distance(dest) / speed)
@@ -48,8 +50,6 @@ class CannonBall(object):
 		# calculate the axis ratio that is added per tick to move
 		self.x_ratio = float(dest.x - source.x)/self.needed_ticks
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
-		import random
-		self.id = random.randint(1,1000)
 
 		self._object = horizons.main.fife.engine.getModel().createObject(str(self.id), 'cannonball')
 		fife.ObjectVisual.create(self._object)
@@ -74,6 +74,7 @@ class CannonBall(object):
 		if self.current_tick == self.needed_ticks:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 			self._instance = None
+			CannonBall.id -= 1
 			return
 		self.current_tick += 1
 		self.x += self.x_ratio
