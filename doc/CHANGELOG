@@ -3,8 +3,8 @@ Unknown Horizons
 
 -----------------------------------------------------
 
-2011-06-??: Milestone 2011.2
-changelog date: JUN 21; rev: 86b5399a50d9e5f003afc7b9cd87d4a82174f5b3
+2011-07-01: Milestone 2011.2
+changelog date: JUN 25; rev: a23a95c10e454db013a5c869ebb2a97a326121f0
 
 Gameplay and Balancing
 * New features
@@ -42,6 +42,7 @@ Gameplay and Balancing
    # clay found in deposits now between 750 and 1250 (was: 375, 625)
    # spawn more animals at game start, probability 10% per tile (was: 2.5%)
    # search more efficiently for targets when moving ship to unreachable coords
+   # improvements to wild animal health balancing
 * Fixed bugs and problems
    ~ show player's gold immediately after load
    ~ handling of multiple dialogs that pause the game (new pause stack)
@@ -65,6 +66,7 @@ Media Content
    + icon: grayscale version of speed_* minimap panel buttons
    + icon: small 16px versions of more resources
    + unit: lumberjack
+   + simple script that helps adding names to the database
 * Brush-ups and modifications
    # tooltip graphics
    # tab background images
@@ -118,6 +120,7 @@ Codebase
    + passing seed to RNG for all session types, use constant seed by default
    + YAML cache system. Yields faster loading times after first game start.
    + wrapper around pdb's set_trace
+   + BuildingCollectors can have no home building
 * Modified structures
    # removed our center_widget, now use pychan's position_technique="automatic"
      and modified positioning code to use this shortcut for "center:center"
@@ -159,6 +162,9 @@ Codebase
    ~ crash when a ship was being built
    ~ crash when a scenario was won
    ~ crash when loading a scenario savegame
+   ~ check for blocked paths for ships caused problems
+   ~ RouteConfig and ProductionOverview disappeared due to garbage collection
+   ~ movement now correctly started after loading
 
 User-Contributed Content
 * Translations
@@ -175,7 +181,7 @@ User-Contributed Content
    + add scenario 'sc2' by Court-Jus
    + add scenario 'sc3' by Court-Jus
 * Media Content
-   + add a lot more city and ship names
+   + a lot of new city and ship names
      ( http://forum.unknown-horizons.org/viewtopic.php?t=494 )
 * New team members with this release, Annotations
    + Push access was granted to:
@@ -183,7 +189,7 @@ User-Contributed Content
    + We accepted pull requests or patches by:
      hoffi, sids_aquarius
    + Translators that joined our teams and contributed several strings:
-     ---tbd---
+     Please refer to the credits!
    # Special thanks to kurtisevan for holding the weekly challenge More Variety
      at opengameart.org!
 
