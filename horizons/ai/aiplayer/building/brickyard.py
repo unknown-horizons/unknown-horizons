@@ -25,11 +25,6 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
 class AbstractBrickyard(AbstractBuilding):
-	def iter_potential_locations(self, settlement_manager):
-		for x, y, _ in super(AbstractBrickyard, self).iter_potential_locations(settlement_manager):
-			yield (x, y, 0)
-			yield (x, y, 1)
-
 	@property
 	def evaluator_class(self):
 		return BrickyardEvaluator

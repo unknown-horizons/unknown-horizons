@@ -33,6 +33,9 @@ class AbstractBuilding(object):
 		self.id = building_id
 		self.name = name
 		self.settler_level = settler_level
+		self.width = Entities.buildings[building_id].size[0]
+		self.height = Entities.buildings[building_id].size[1]
+		self.radius = Entities.buildings[building_id].radius
 		self.lines = {} # output_resource_id: ProductionLine
 		for production_line_id in production_line_ids:
 			production_line = ProductionLine(production_line_id)
@@ -106,8 +109,13 @@ class AbstractBuilding(object):
 		return Entities.buildings[self.id].have_resources([settlement_manager.land_manager.settlement], settlement_manager.owner)
 
 	def iter_potential_locations(self, settlement_manager):
-		for (x, y) in settlement_manager.production_builder.plan:
-			yield (x, y, 0)
+		if self.width == self.height:
+			for (x, y) in settlement_manager.production_builder.plan:
+				yield (x, y, 0)
+		else:
+			for (x, y) in settlement_manager.production_builder.plan:
+				yield (x, y, 0)
+				yield (x, y, 1)
 
 	@property
 	def evaluator_class(self):
