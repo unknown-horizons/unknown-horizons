@@ -115,13 +115,21 @@ class WeaponHolder(object):
 
 		if not in_range:
 			if self.movable:
-				try:
-					self.move(Annulus(dest, self._min_range, self._max_range), Callback(self.fire_all_weapons, dest),
-						blocked_callback = Callback(self.fire_all_weapons, dest))
-				except MoveNotPossible:
-					pass
+				if self._target.movable and self._target.is_moving():
+					try:
+						self.move(self._target.get_move_target(), blocked_callback = Callback(self.try_attack_target))
+					except MoveNotPossible:
+						pass
+					self._target.add_conditional_callback(self.attack_in_range, self.try_attack_target)
+					self._target.add_move_callback(self.try_attack_target)
+				else:
+					try:
+						self.move(Annulus(dest, self._min_range, self._max_range), Callback(self.fire_all_weapons, dest),
+							blocked_callback = Callback(self.fire_all_weapons, dest))
+					except MoveNotPossible:
+						pass
 		else:
-			if self.movable and self.is_moving:
+			if self.movable and self.is_moving():
 				self.stop()
 			self.fire_all_weapons(dest)
 	
@@ -176,7 +184,7 @@ class WeaponHolder(object):
 		#TODO make another listener for target_changed
 		if self._target is not None:
 			if self._target.has_remove_listener(self.remove_target):
-				self._target.remove_remove_listener(Callback(self.remove_target))
+				self._target.remove_remove_listener(self.remove_target)
 		self.remove_target()
 
 
