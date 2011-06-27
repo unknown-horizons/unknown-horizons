@@ -254,6 +254,8 @@ class SettlementManager(WorldObject):
 		if result == BUILD_RESULT.SKIP:
 			return False # unable to build a building on purpose: build something else instead
 		self.log_generic_build_result(result, name)
+		self.village_builder.display()
+		self.production_builder.display()
 		return True
 
 	def reachable_deposit(self, building_id):
