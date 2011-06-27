@@ -96,17 +96,11 @@ class WeaponHolder(object):
 
 		self.on_storage_modified()
 
-	def attack_possible(self, dest):
-		distance = self.position.distance_to_point(dest)
-		for weapon in self._weapon_storage:
-			if weapon.check_target_in_range(distance):
-				return True
+	def attack_in_range(self):
+		distance = self.position.distance(self._target.position.center())
+		if distance >= self._min_range and distance <= self._max_range:
+			return True
 		return False
-
-	def get_ticks_until_next_attack(self):
-		"""returns minimum number of ticks until a weapon that can hit the target can be fired again"""
-		distance = self.position.distance(self._target.position)
-		return min([w.remaining_ticks for w in self._weapon_storage if w.check_target_in_range(distance)])
 
 	def try_attack_target(self):
 		if self._target is None:
@@ -114,18 +108,10 @@ class WeaponHolder(object):
 
 		if hasattr(self._target, 'health'):
 			print self._target,'has health:',self._target.health.health
-			print self._target.health.max_health
 
-		if self.is_moving:
-			self.stop()
 
 		dest = self._target.position.center()
-		in_range = False
-		distance = self.position.distance(dest)
-
-		if distance >= self._min_range and distance <= self._max_range:
-			self.fire_all_weapons(dest)
-			in_range = True
+		in_range = self.attack_in_range()
 
 		if not in_range:
 			if self.movable:
@@ -134,15 +120,13 @@ class WeaponHolder(object):
 						blocked_callback = Callback(self.fire_all_weapons, dest))
 				except MoveNotPossible:
 					pass
-
-		if in_range:
-			#if tried to fire weapons get the next amount of ticks until another weapon can be fired again
-			ticks = self.get_ticks_until_next_attack()
 		else:
-			#else wait 10 ticks and try to fire again
-			ticks = 10
+			if self.movable and self.is_moving:
+				self.stop()
+			self.fire_all_weapons(dest)
+	
+		#TODO add movement callbacks to target if movable
 
-		Scheduler().add_new_object(self.try_attack_target, self, ticks)
 
 	def attack(self, target):
 		"""
@@ -160,11 +144,18 @@ class WeaponHolder(object):
 		if not target.has_remove_listener(self.remove_target):
 			target.add_remove_listener(self.remove_target)
 		self._target = target
+
+		# call try_attack_target when the attack is ready for all the weapons
+		for weapon in self._weapon_storage:
+			weapon.add_attack_ready_listener(Callback(self.try_attack_target))
+
 		self.try_attack_target()
 
 	def remove_target(self):
-		#NOTE test code if the unit is really dead
 		if self._target is not None:
+			for weapon in self._weapon_storage:
+				weapon.remove_attack_ready_listener(Callback(self.try_attack_target))
+			#NOTE test code if the unit is really dead
 			target_ref = weakref.ref(self._target)
 			def check_target_ref(target_ref):
 				if target_ref() is None:
@@ -185,7 +176,7 @@ class WeaponHolder(object):
 		#TODO make another listener for target_changed
 		if self._target is not None:
 			if self._target.has_remove_listener(self.remove_target):
-				self._target.remove_remove_listener(self.remove_target)
+				self._target.remove_remove_listener(Callback(self.remove_target))
 		self.remove_target()
 
 

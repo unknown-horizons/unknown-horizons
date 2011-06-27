@@ -22,7 +22,9 @@
 from horizons.util import Circle, Callback
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
+from horizons.util.changelistener import metaChangeListenerDecorator
 
+@metaChangeListenerDecorator("attack_ready")
 class Weapon(object):
 	"""
 	Generic Weapon class
@@ -33,8 +35,7 @@ class Weapon(object):
 		attack_speed - speed that calculates the time until attack reaches target
 		attack_radius - radius affected by attack
 
-	remaining_ticks attribute is updated with the ramaining ticks until the attack is ready again
-		it is 0 if the attack is ready
+		attack_ready callbacks are executed when the attack is made ready
 	"""
 	def __init__(self, session, id):
 		"""
@@ -84,6 +85,7 @@ class Weapon(object):
 
 	def make_attack_ready(self):
 		self.attack_ready = True
+		self.on_attack_ready()
 
 	def fire(self, position, distance):
 		"""
@@ -91,16 +93,8 @@ class Weapon(object):
 		@param position : position where weapon will be fired
 		@param distance : distance between weapon and target
 		"""
-		#update remaining ticks
-		#if the attack isn't ready check the remaining ticks
-		#else the attack is ready and the remaining ticks are 0
-
 		if not self.attack_ready:
 			print 'attack not ready!'
-			self.remaining_ticks = Scheduler().get_remaining_ticks(self, self.make_attack_ready)
-			return
-		else:
-			self.remaining_ticks = 0
 
 		if not self.check_target_in_range(distance):
 			return
@@ -112,12 +106,8 @@ class Weapon(object):
 
 		#calculate the ticks until attack is ready again
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
-		#NOTE hack to remove unwanted calls from scheduler
-		Scheduler().rem_call(self, self.make_attack_ready)
 		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
 
-		#if weapon was fired update remaining ticks
-		self.remaining_ticks = ticks
 		self.attack_ready = False
 
 	def check_target_in_range(self, distance):
