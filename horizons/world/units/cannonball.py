@@ -38,15 +38,18 @@ class CannonBall(object):
 		@param view: View
 		"""
 		CannonBall.id += 1
-		self.position = source
-		# needed ticks to go to the destination
-		self.needed_ticks = int(GAME_SPEED.TICKS_PER_SECOND * source.distance(dest) / speed)
-		# the thick that the object is currently at
-		self.current_tick = 0
-		self.view = view
 		# get the current position
 		self.x = source.x
 		self.y = source.y
+		# offset the position so it starts from the middle of the firing instance
+		self.x += 1
+		self.y -= 1
+		# needed ticks to go to the destination
+		self.needed_ticks = int(GAME_SPEED.TICKS_PER_SECOND * source.distance(dest) / speed)
+		self.needed_ticks -= 2
+		# the thick that the object is currently at
+		self.current_tick = 0
+		self.view = view
 		# calculate the axis ratio that is added per tick to move
 		self.x_ratio = float(dest.x - source.x)/self.needed_ticks
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
