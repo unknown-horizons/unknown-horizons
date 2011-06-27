@@ -71,7 +71,7 @@ class FarmEvaluator(BuildingEvaluator):
 		return False
 
 	@classmethod
-	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
+	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
 		builder = area_builder.make_builder(BUILDINGS.FARM_CLASS, farm_x, farm_y, True)
 		if not builder:
 			return None
@@ -163,6 +163,33 @@ class FarmEvaluator(BuildingEvaluator):
 
 		extra_space = (max_x - min_x + 1) * (max_y - min_y + 1) - 9 * (fields + 2)
 		return FarmEvaluator(area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections)
+
+	cache = {}
+	cache_tick_id = -1
+
+	@classmethod
+	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
+		if area_builder.session.timer.tick_next_id != cls.cache_tick_id:
+			cls.cache_tick_id = area_builder.session.timer.tick_next_id
+			cls.cache = {}
+		key = (area_builder.owner, farm_x, farm_y, road_dx, road_dy)
+		if key not in cls.cache:
+			cls.cache[key] = cls._create(area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose)
+		if cls.cache[key] is None:
+			return None
+		if cls.cache[key].unused_field_purpose != unused_field_purpose:
+			return cls.cache[key]._get_copy(unused_field_purpose)
+		return cls.cache[key]
+
+	def _get_copy(self, new_unused_field_purpose):
+		""" Returns a copy of the evaluator with a different field purpose """
+		evaluator = copy.copy(self)
+		evaluator.farm_plan = copy.copy(evaluator.farm_plan)
+		for coords, (purpose, builder) in evaluator.farm_plan:
+			if purpose == evaluator.unused_field_purpose:
+				evaluator.farm_plan[coords] = (new_unused_field_purpose, builder)
+		evaluator.unused_field_purpose = new_unused_field_purpose
+		return evaluator
 
 	def execute(self):
 		if not self.builder.have_resources():
