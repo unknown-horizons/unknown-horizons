@@ -81,6 +81,7 @@ class SettlementManager(WorldObject):
 	def __init(self, land_manager, branch_office):
 		self.owner = land_manager.owner
 		self.land_manager = land_manager
+		self.island = self.land_manager.island
 		self.branch_office = branch_office
 		self.build_queue = deque()
 

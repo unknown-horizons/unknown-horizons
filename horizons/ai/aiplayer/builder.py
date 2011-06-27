@@ -99,16 +99,19 @@ class Builder(WorldObject):
 		return enough_res
 
 	cache = {}
-	cache_tick_id = -1
 
 	@classmethod
 	def create(cls, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
-		if land_manager.session.timer.tick_next_id != cls.cache_tick_id:
-			cls.cache_tick_id = land_manager.session.timer.tick_next_id
-			cls.cache = {}
-		key = (building_id, point.to_tuple(), orientation)
+		coords = point.to_tuple()
+		key = (building_id, coords, orientation, land_manager.owner.worldid)
+		size = Entities.buildings[building_id].size
+		if orientation == 1 or orientation == 3:
+			size = (size[1], size[0])
+		last_changed = land_manager.island.last_changed[size][coords]
+		if key in cls.cache and last_changed != cls.cache[key][0]:
+			del cls.cache[key]
 		if key not in cls.cache:
-			cls.cache[key] = Builder(building_id, land_manager, point, orientation, ship, worldid=worldid)
-		return cls.cache[key]
+			cls.cache[key] = (last_changed, Builder(building_id, land_manager, point, orientation, ship, worldid=worldid))
+		return cls.cache[key][1]
 
 decorators.bind_all(Builder)
