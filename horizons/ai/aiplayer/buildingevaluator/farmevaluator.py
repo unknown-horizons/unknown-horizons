@@ -185,7 +185,7 @@ class FarmEvaluator(BuildingEvaluator):
 		""" Returns a copy of the evaluator with a different field purpose """
 		evaluator = copy.copy(self)
 		evaluator.farm_plan = copy.copy(evaluator.farm_plan)
-		for coords, (purpose, builder) in evaluator.farm_plan:
+		for coords, (purpose, builder) in evaluator.farm_plan.iteritems():
 			if purpose == evaluator.unused_field_purpose:
 				evaluator.farm_plan[coords] = (new_unused_field_purpose, builder)
 		evaluator.unused_field_purpose = new_unused_field_purpose
