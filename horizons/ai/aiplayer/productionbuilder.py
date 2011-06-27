@@ -31,17 +31,18 @@ from constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point
 from horizons.util.python import decorators
+from horizons.entities import Entities
 
 class ProductionBuilder(AreaBuilder):
 	def __init__(self, settlement_manager):
 		super(ProductionBuilder, self).__init__(settlement_manager)
-		self.__init(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
-		for coords in settlement_manager.branch_office.position.tuple_iter():
-			if coords in self.plan:
-				self.plan[coords] = (BUILDING_PURPOSE.BRANCH_OFFICE, None)
+		self.__init(settlement_manager)
+		for x, y in settlement_manager.branch_office.position.tuple_iter():
+			self.register_change(x, y, BUILDING_PURPOSE.BRANCH_OFFICE, None)
 
 	def __init(self, settlement_manager):
+		self._init_cache()
 		self.collector_buildings = [settlement_manager.branch_office]
 		self.production_buildings = []
 		self.unused_fields = self._make_empty_unused_fields()
@@ -68,7 +69,7 @@ class ProductionBuilder(AreaBuilder):
 		for x, y, purpose, builder_id in db_result:
 			coords = (x, y)
 			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
-			self.plan[coords] = (purpose, builder)
+			self.register_change(x, y, purpose, builder)
 			object = self.island.ground_map[coords].object
 			if object is None:
 				continue
@@ -219,9 +220,9 @@ class ProductionBuilder(AreaBuilder):
 			building = builder.execute()
 			if not building:
 				return BUILD_RESULT.UNKNOWN_ERROR
-			for coords in builder.position.tuple_iter():
-				self.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-			self.plan[sorted(builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.STORAGE, builder)
+			for x, y in builder.position.tuple_iter():
+				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
+			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
 			self.collector_buildings.append(building)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
@@ -267,9 +268,9 @@ class ProductionBuilder(AreaBuilder):
 			building = builder.execute()
 			if not building:
 				return BUILD_RESULT.UNKNOWN_ERROR
-			for coords in builder.position.tuple_iter():
-				self.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-			self.plan[sorted(builder.position.tuple_iter())[0]] = (BUILDING_PURPOSE.STORAGE, builder)
+			for x, y in builder.position.tuple_iter():
+				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
+			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
 			self.collector_buildings.append(building)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
@@ -354,5 +355,68 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
+
+	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
+		coords = (x, y)
+		key = (building_id, coords, needs_collector, orientation)
+		size = Entities.buildings[building_id].size
+		if orientation == 1 or orientation == 3:
+			size = (size[1], size[0])
+		if coords not in self.island.last_changed[size]:
+			return None
+
+		island_changed = self.island.last_changed[size][coords]
+		if key in self.builder_cache and island_changed != self.builder_cache[key][0]:
+			del self.builder_cache[key]
+
+		plan_changed = self.last_change_id
+		if key in self.builder_cache and plan_changed != self.builder_cache[key][1]:
+			del self.builder_cache[key]
+
+		if key not in self.builder_cache:
+			self.builder_cache[key] = (island_changed, plan_changed, self._make_builder(building_id, x, y, needs_collector, orientation))
+		return self.builder_cache[key][2]
+
+	def _init_cache(self):
+		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed in this area """ 
+		super(ProductionBuilder, self)._init_cache()
+
+		building_sizes = set()
+		db_result = self.session.db("SELECT DISTINCT size_x, size_y FROM building WHERE button_name IS NOT NULL")
+		for size_x, size_y in db_result:
+			building_sizes.add((size_x, size_y))
+			building_sizes.add((size_y, size_x))
+
+		self.last_changed = {}
+		for size in building_sizes:
+			self.last_changed[size] = {}
+
+		for (x, y) in self.plan:
+			for size_x, size_y in building_sizes:
+				all_legal = True
+				for dx in xrange(size_x):
+					for dy in xrange(size_y):
+						if (x + dx, y + dy) in self.land_manager.village:
+							all_legal = False
+							break
+					if not all_legal:
+						break
+				if all_legal:
+					self.last_changed[(size_x, size_y)][(x, y)] = self.last_change_id
+
+	def register_change(self, x, y, purpose, builder):
+		""" registers the possible buildability change of a rectangle on this island """
+		super(ProductionBuilder, self).register_change(x, y, purpose, builder)
+		coords = (x, y)
+		if coords in self.land_manager.village or coords not in self.plan:
+			return
+		self.last_change_id += 1
+		for (area_size_x, area_size_y), building_areas in self.last_changed.iteritems():
+			for dx in xrange(area_size_x):
+				for dy in xrange(area_size_y):
+					coords = (x - dx, y - dy)
+					# building area with origin at coords affected
+					if coords in building_areas:
+						building_areas[coords] = self.last_change_id
 
 decorators.bind_all(ProductionBuilder)

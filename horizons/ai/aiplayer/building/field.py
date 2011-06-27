@@ -89,7 +89,7 @@ class AbstractField(AbstractBuilding):
 		if not building:
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		production_builder.unused_fields[purpose].popleft()
-		production_builder.plan[coords] = (purpose, builder)
+		production_builder.register_change(coords[0], coords[1], purpose, builder)
 		settlement_manager.num_fields[purpose] += 1
 		return (BUILD_RESULT.OK, building)
 

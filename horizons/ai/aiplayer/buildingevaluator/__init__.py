@@ -137,9 +137,9 @@ class BuildingEvaluator(WorldObject):
 		building = self.builder.execute()
 		if not building:
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
-		for coords in self.builder.position.tuple_iter():
-			self.area_builder.plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-		self.area_builder.plan[sorted(self.builder.position.tuple_iter())[0]] = (self.purpose, self.builder)
+		for x, y in self.builder.position.tuple_iter():
+			self.area_builder.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
+		self.area_builder.register_change(self.builder.position.origin.x, self.builder.position.origin.y, self.purpose, self.builder)
 		self.area_builder.production_buildings.append(building)
 		return (BUILD_RESULT.OK, building)
 

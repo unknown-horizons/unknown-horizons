@@ -195,8 +195,8 @@ class FarmEvaluator(BuildingEvaluator):
 		if not self.builder.have_resources():
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 		backup = copy.copy(self.area_builder.plan)
-		for coords, plan_item in self.farm_plan.iteritems():
-			self.area_builder.plan[coords] = plan_item
+		for (x, y), (purpose, builder) in self.farm_plan.iteritems():
+			self.area_builder.register_change(x, y, purpose, builder)
 		if not self.area_builder._build_road_connection(self.builder):
 			self.area_builder.plan = backup
 			return (BUILD_RESULT.IMPOSSIBLE, None)

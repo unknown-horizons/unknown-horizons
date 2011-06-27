@@ -71,7 +71,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 
 		for coords in building.position.get_radius_coordinates(self.get_radius()):
 			if coords in self.area_builder.plan and self.area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
-				self.area_builder.plan[coords] = (BUILDING_PURPOSE.TREE, None)
+				self.area_builder.register_change(coords[0], coords[1], BUILDING_PURPOSE.TREE, None)
 				# TODO: don't ignore the return value
 				Builder.create(BUILDINGS.TREE_CLASS, self.area_builder.land_manager, Point(coords[0], coords[1])).execute()
 		return (BUILD_RESULT.OK, building)

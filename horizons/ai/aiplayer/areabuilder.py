@@ -47,6 +47,7 @@ class AreaBuilder(WorldObject):
 		self.owner = self.land_manager.owner
 		self.settlement = self.land_manager.settlement
 		self.plan = {}
+		self.builder_cache = {}
 
 	def save_plan(self, db, table_name):
 		db_query = 'INSERT INTO %s(production_builder, x, y, purpose, builder) VALUES(?, ?, ?, ?, ?)' % table_name
@@ -171,7 +172,7 @@ class AreaBuilder(WorldObject):
 		if path is not None:
 			for x, y in path:
 				point = Point(x, y)
-				self.plan[point.to_tuple()] = (BUILDING_PURPOSE.ROAD, None)
+				self.register_change(x, y, BUILDING_PURPOSE.ROAD, None)
 				building = self.island.get_building(point)
 				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 					continue
@@ -181,7 +182,7 @@ class AreaBuilder(WorldObject):
 	def _road_connection_possible(self, builder):
 		return self._get_road_to_builder(builder) is not None
 
-	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
+	def _make_builder(self, building_id, x, y, needs_collector, orientation):
 		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """
 		coords = (x, y)
 		if building_id == BUILDINGS.CLAY_PIT_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
@@ -207,10 +208,21 @@ class AreaBuilder(WorldObject):
 			return None
 		return builder
 
+	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
+		return self._make_builder(building_id, x, y, needs_collector, orientation)
+
 	def have_resources(self, building_id):
 		return Entities.buildings[building_id].have_resources([self.settlement], self.owner)
 
 	def display(self):
 		raise NotImplementedError, 'This function has to be overridden.'
+
+	def _init_cache(self):
+		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed in this area """ 
+		self.last_change_id = -1
+
+	def register_change(self, x, y, purpose, builder):
+		if (x, y) in self.plan:
+			self.plan[(x, y)] = (purpose, builder)
 
 decorators.bind_all(AreaBuilder)

@@ -38,6 +38,7 @@ class VillageBuilder(AreaBuilder):
 	def __init(self, settlement_manager):
 		self.tents_to_build = 0
 		self.tent_queue = deque()
+		self._init_cache()
 
 	def save(self, db):
 		super(VillageBuilder, self).save(db, 'ai_village_builder_coords')
@@ -53,7 +54,7 @@ class VillageBuilder(AreaBuilder):
 		for x, y, purpose, builder_id in db_result:
 			coords = (x, y)
 			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
-			self.plan[coords] = (purpose, builder)
+			self.register_change(x, y, purpose, builder)
 			if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE or purpose == BUILDING_PURPOSE.RESIDENCE:
 				self.tents_to_build += 1
 		self._create_tent_queue()
@@ -226,7 +227,7 @@ class VillageBuilder(AreaBuilder):
 			coords = (x, y)
 			if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
 				for dx, dy in tent_squares:
-					self.plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.NONE, None)
+					self.register_change(x + dx, y + dy, BUILDING_PURPOSE.NONE, None)
 
 		# create new possible tent position list
 		possible_tents = []
@@ -260,8 +261,8 @@ class VillageBuilder(AreaBuilder):
 			# connection to a road tile exists, build the tent
 			if ok:
 				for dx, dy in tent_squares:
-					self.plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.RESERVED, None)
-				self.plan[(x, y)] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, tent)
+					self.register_change(x + dx, y + dy, BUILDING_PURPOSE.RESERVED, None)
+				self.register_change(x, y, BUILDING_PURPOSE.UNUSED_RESIDENCE, tent)
 
 		self._return_unused_space()
 
@@ -294,7 +295,8 @@ class VillageBuilder(AreaBuilder):
 
 		if best_point is not None:
 			builder = Builder.create(building_id, self.land_manager, best_point)
-			self.plan[best_point.to_tuple()] = (new_purpose, builder)
+			(x, y) = best_point.to_tuple()
+			self.register_change(x, y, new_purpose, builder)
 			self.tents_to_build -= 1
 			return True
 		return False
@@ -383,7 +385,7 @@ class VillageBuilder(AreaBuilder):
 				return BUILD_RESULT.NEED_RESOURCES
 			if not builder.execute():
 				return BUILD_RESULT.UNKNOWN_ERROR
-			self.plan[coords] = (BUILDING_PURPOSE.RESIDENCE, builder)
+			self.register_change(coords[0], coords[1], BUILDING_PURPOSE.RESIDENCE, builder)
 			self.tent_queue.popleft()
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
