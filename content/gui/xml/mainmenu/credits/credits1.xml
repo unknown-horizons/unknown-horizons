@@ -46,15 +46,6 @@
 		</VBox>
 	</VBox>
 
-	<VBox> <Label text="2011"  name="headline" />
-		<VBox  name="box">
-			<Label text="Grickit (Random maps)" />
-			<Label text="sids.aquarius (Several improvements)" />
-			<Label text="mayanks43 (Campaign system)" />
-			<Label text="sient (Minimap rectangle)" />
-			<Label text="hoffi (GUI improvements)" />
-		</VBox>
-	</VBox>
 </VBox>
 </ScrollArea>
 </VBox>
@@ -63,11 +54,16 @@
 		position="525,70"  max_size="310,475"  min_size="310,475">
 <VBox name="credits2">
 
-	<VBox><!-- <Label text="2011"  name="headline" />-->
+	<VBox> <Label text="2011"  name="headline" />
 		<VBox  name="box">
-			<Label text="" />
+			<Label text="Grickit (Random maps)" />
+			<Label text="sids.aquarius (Several improvements)" />
+			<Label text="mayanks43 (Campaign system)" />
+			<Label text="sient (Minimap rectangle)" />
+			<Label text="hoffi (GUI improvements)" />
+			<Label text="riidom (Hut and tent variations)" />
 		</VBox>
-	</VBox> <Spacer />
+	</VBox>
 </VBox>
 </ScrollArea>
 
