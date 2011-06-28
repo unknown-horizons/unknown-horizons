@@ -125,6 +125,9 @@ class BuildingEvaluator(WorldObject):
 			return 1 if self.value < other.value else -1
 		return self.builder.worldid - other.builder.worldid
 
+	def __str__(self):
+		return '%s(%d): %s' % (self.__class__.__name__, self.worldid, self.builder)
+
 	@property
 	def purpose(self):
 		raise NotImplementedError, 'This function has to be overridden.'

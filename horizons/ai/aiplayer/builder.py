@@ -73,6 +73,9 @@ class Builder(WorldObject):
 		"""Returns buildable value. This enables code such as "if cls.check_build()"""
 		return self.build_position.buildable
 
+	def __str__(self):
+		return 'Builder(%d) of building %d at %s, orientation %d' % (self.worldid, self.building_id, self.point.to_tuple(), self.orientation)
+
 	def _get_rotation(self):
 		if self.building_id in self.non_rotatable_buildings:
 			return self.build_position.rotation
