@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-06-02 13:34+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2011-06-28 19:34+0200\n"
+"Last-Translator: tintou <tintou@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "MISSION: COLONISER UNE ILE"
+msgstr "MISSION: COLONISER UNE ÎLE"
 
 #: po/tutorial.py:8
 msgid ""
@@ -188,7 +188,7 @@ msgstr ""
 # I change this until we will have a system to make the longer sentences fitting properly (seb)
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "MISSION : LE BUCHERON"
+msgstr "MISSION : LE BÛCHERON"
 
 #: po/tutorial.py:14
 msgid ""
@@ -409,7 +409,7 @@ msgstr ""
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "NOUVELLE MISSION: L'HABITAT"
+msgstr "MISSION: LES HABITATIONS"
 
 #: po/tutorial.py:26
 msgid ""
@@ -1083,15 +1083,15 @@ msgstr ""
 "\n"
 "Nos forums vous sont également accessibles!\n"
 "\n"
-"Jusqu'à présent, le channel IRC a été le meilleur moyen de nous joindre, "
-"essayer donc cela en premier ;-) \n"
+"Jusqu'à présent, le canal IRC est le meilleur moyen de nous joindre, essayez "
+"donc cela en premier ;-) \n"
 "\n"
 "Dans l'intérêt des autres participants aux conversations et qui ne parlent "
 "peut-être pas le français, nous vous prions de parler anglais dans le chat."
 
 #: po/tutorial.py:66
 msgid "Thanks!"
-msgstr "Merci!"
+msgstr "Merci !"
 
 #: po/tutorial.py:67
 msgid ""
@@ -1120,8 +1120,8 @@ msgstr ""
 #: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
-"Félicitations! Vous avez atteint la fin de ce didacticiel, vous êtes "
-"maintenant prêt à relever de nouveaux défis!"
+"Félicitations ! Vous avez atteint la fin de ce didacticiel, vous êtes "
+"maintenant prêt à relever de nouveaux défis !"
 
 #~ msgid ""
 #~ "The Fisher needs a coastal building site like the branch office - and nothing more.\n"

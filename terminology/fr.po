@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-12 19:34+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2011-06-25 14:43+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1072,10 +1072,11 @@ msgstr "baisser"
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (1)
 # In the tutorial context, i often used 'bateau marchand' which can be translated in trading-ship.
+# Why not "marchand indépendant" ?
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "free trader"
-msgstr "marchand libre"
+msgstr "marchand indépendant"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (3)
