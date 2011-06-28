@@ -161,6 +161,8 @@ class AreaBuilder(WorldObject):
 	def _get_road_to_builder(self, builder):
 		collector_coords = set()
 		for building in self.collector_buildings:
+			if builder.position.distance(building.position) == 1:
+				return []
 			for coords in self._get_possible_road_coords(building.position):
 				collector_coords.add(coords)
 
