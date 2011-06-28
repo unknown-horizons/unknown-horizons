@@ -57,6 +57,7 @@ class WeaponHolder(object):
 		@param weapon_id : id of the weapon to be added
 		"""
 		#if weapon is stackable, try to stack
+		weapon = None
 		if self.session.db.get_weapon_stackable(weapon_id):
 			stackable = [w for w in self._weapon_storage if self.session.db.get_weapon_stackable(weapon_id)]
 			#try to increase the number of weapons for one stackable weapon
@@ -70,9 +71,11 @@ class WeaponHolder(object):
 					continue
 
 			if not increased:
-				self._weapon_storage.append(StackableWeapon(self.session, weapon_id))
+				weapon = StackableWeapon(self.session, weapon_id)
 		else:
-			self._weapon_storage.append(Weapon(self.session, weapon_id))
+			weapon = Weapon(self.session, weapon_id)
+		if weapon:
+			self._weapon_storage.append(weapon)
 		self.on_storage_modified()
 
 	def remove_weapon_from_storage(self, weapon_id):
@@ -85,13 +88,17 @@ class WeaponHolder(object):
 			return
 		#remove last weapon added
 		weapon = weapons[-1]
+		remove = False
 		#if cannon needs to be removed try decrease number
 		if self.session.db.get_weapon_stackable(weapon_id):
 			try:
 				weapon.decrease_number_of_weapons(1)
 			except SetStackableWeaponNumberError:
-				self._weapon_storage.remove(weapon)
+				remove = True
 		else:
+			remove = True
+
+		if remove:
 			self._weapon_storage.remove(weapon)
 
 		self.on_storage_modified()
@@ -102,13 +109,17 @@ class WeaponHolder(object):
 			return True
 		return False
 
+	def try_attack_next_tick(self):
+		"""hackish callback for weapon fired signal"""
+		Scheduler().rem_call(self, self.try_attack_target)
+		Scheduler().add_new_object(self.try_attack_target, self)
+
 	def try_attack_target(self):
 		if self._target is None:
 			return
 
 		if hasattr(self._target, 'health'):
 			print self._target,'has health:',self._target.health.health
-
 
 		dest = self._target.position.center()
 		in_range = self.attack_in_range()
@@ -132,9 +143,8 @@ class WeaponHolder(object):
 			if self.movable and self.is_moving():
 				self.stop()
 			self.fire_all_weapons(dest)
-	
-		#TODO add movement callbacks to target if movable
 
+		#TODO add movement callbacks to target if movable
 
 	def attack(self, target):
 		"""
@@ -155,14 +165,14 @@ class WeaponHolder(object):
 
 		# call try_attack_target when the attack is ready for all the weapons
 		for weapon in self._weapon_storage:
-			weapon.add_attack_ready_listener(Callback(self.try_attack_target))
+			weapon.add_attack_ready_listener(Callback(self.try_attack_next_tick))
 
 		self.try_attack_target()
 
 	def remove_target(self):
 		if self._target is not None:
 			for weapon in self._weapon_storage:
-				weapon.remove_attack_ready_listener(Callback(self.try_attack_target))
+				weapon.remove_attack_ready_listener(Callback(self.try_attack_next_tick))
 			#NOTE test code if the unit is really dead
 			target_ref = weakref.ref(self._target)
 			def check_target_ref(target_ref):
@@ -186,7 +196,6 @@ class WeaponHolder(object):
 			if self._target.has_remove_listener(self.remove_target):
 				self._target.remove_remove_listener(self.remove_target)
 		self.remove_target()
-
 
 	def fire_all_weapons(self, dest):
 		#fires all weapons at a given position

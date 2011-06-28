@@ -25,6 +25,7 @@ from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
 
 @metaChangeListenerDecorator("attack_ready")
+@metaChangeListenerDecorator("weapon_fired")
 class Weapon(object):
 	"""
 	Generic Weapon class
@@ -95,6 +96,7 @@ class Weapon(object):
 		"""
 		if not self.attack_ready:
 			print 'attack not ready!'
+			return
 
 		if not self.check_target_in_range(distance):
 			return
@@ -107,8 +109,10 @@ class Weapon(object):
 		#calculate the ticks until attack is ready again
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
 		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
+		print 'fired', self
 
 		self.attack_ready = False
+		self.on_weapon_fired()
 
 	def check_target_in_range(self, distance):
 		"""
@@ -138,7 +142,7 @@ class StackableWeapon(Weapon):
 
 	def __init(self):
 		self.number_of_weapons = 1
-		self.max_number_of_weapons = 3
+		self.max_number_of_weapons = 1
 
 	def set_number_of_weapons(self, number):
 		"""

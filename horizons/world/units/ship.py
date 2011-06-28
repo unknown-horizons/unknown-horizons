@@ -197,6 +197,8 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		#NOTE dummy cannon
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
 		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -392,8 +394,32 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		self._instance.setFacingLocation(facing_location)
 		self.act('attack_%s' % direction, facing_location, repeating=False)
 		self._action = 'idle'
+		# fire cannonballs displayed circular
+		# import here because this will be moved to attackingship.py
+		import math
+		fireable = [w for w in self._weapon_storage if w.attack_ready]
+		angle = (math.pi / 20) * (-len(fireable) / 2)
+
+		cos = math.cos(angle)
+		sin = math.sin(angle)
+
+		x = self.position.x
+		y = self.position.y
+
+		dest_x = dest.x
+		dest_y = dest.y
+
+		dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
+		dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
+
+		angle = math.pi / 20
+		cos = math.cos(angle)
+		sin = math.sin(angle)
 	
-		super(Ship, self).fire_all_weapons(dest)
+		for weapon in fireable:
+			self.fire_weapon(weapon, Point(dest_x, dest_y))
+			dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
+			dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 
 	def fire_weapon(self, weapon, dest):
 		if weapon.attack_ready:
