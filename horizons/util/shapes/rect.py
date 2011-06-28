@@ -63,6 +63,7 @@ class Rect(object):
 
 	@classmethod
 	def init_from_topleft_and_size(cls, x, y, width, height):
+		"""Init rect with (x, y) as the origin and width and height one more than given"""
 		self = cls.__new__(cls)
 		self.left = x
 		self.top = y
