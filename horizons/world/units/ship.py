@@ -359,6 +359,9 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 	def fire_all_weapons(self, dest):
 		#TODO move it to specialized attacking ship
 		#rotate ship to face target
+		if len(self._fireable) == 0:
+			return
+
 		target_location = self._target._instance.getLocation()
 		self_location = self._instance.getLocation()
 		facing_location = self._instance.getFacingLocation()

@@ -20,7 +20,7 @@
 # ###################################################
 
 import weakref
-from horizons.util import Annulus, Callback
+from horizons.util import Annulus, Point, Callback
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
@@ -128,6 +128,8 @@ class WeaponHolder(object):
 		self.on_storage_modified()
 
 	def attack_in_range(self):
+		if not self._target:
+			return
 		distance = self.position.distance(self._target.position.center())
 		if distance >= self._min_range and distance <= self._max_range:
 			return True
@@ -144,6 +146,7 @@ class WeaponHolder(object):
 			print self._target,'has health:',self._target.health.health
 
 		dest = self._target.position.center()
+		attack_dest = dest
 		in_range = self.attack_in_range()
 
 		if not in_range:
@@ -159,8 +162,12 @@ class WeaponHolder(object):
 		else:
 			if self.movable and self.is_moving():
 				self.stop()
-			self.fire_all_weapons(dest)
+
 			distance = self.position.distance(self._target.position)
+			if self._target.movable and self._target.is_moving():
+				attack_dest = self._target._next_target
+
+			self.fire_all_weapons(attack_dest)
 
 			if distance > self._min_range:
 				# get closer
@@ -172,7 +179,7 @@ class WeaponHolder(object):
 			else:
 				# try in another second (weapons shouldn't be fired more often than that)
 				Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
-			#TODO fire in the target's moving direction if it's moving Don't commit suicide
+			#TODO don't fire until attack animation was finished
 
 	def attack(self, target):
 		"""
@@ -221,6 +228,8 @@ class WeaponHolder(object):
 
 	def fire_all_weapons(self, dest):
 		#fires all weapons at a given position
+		if len(self._fireable) == 0:
+			return
 		distance = self.position.distance(dest)
 		for weapon in self._fireable:
 			weapon.fire(dest, distance)
