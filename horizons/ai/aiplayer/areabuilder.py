@@ -130,6 +130,11 @@ class AreaBuilder(WorldObject):
 			if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 				nodes[coords] = 1
 				distance_to_road[coords] = 0
+				for (dx, dy) in moves:
+					coords2 = (coords[0] + dx, coords[1] + dy)
+					if coords2 not in self.land_manager.production:
+						distance_to_boundary[coords] = 1
+						break
 
 		self._fill_distance(distance_to_road, self.island.path_nodes.nodes)
 		self._fill_distance(distance_to_boundary, self.island.path_nodes.nodes)
