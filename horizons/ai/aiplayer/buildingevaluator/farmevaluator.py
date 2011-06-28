@@ -165,12 +165,13 @@ class FarmEvaluator(BuildingEvaluator):
 		return FarmEvaluator(area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections)
 
 	cache = {}
-	cache_tick_id = -1
+	cache_changes = (-1, -1)
 
 	@classmethod
 	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
-		if area_builder.session.timer.tick_next_id != cls.cache_tick_id:
-			cls.cache_tick_id = area_builder.session.timer.tick_next_id
+		new_cache_changes = (area_builder.island.last_change_id, area_builder.last_change_id)
+		if new_cache_changes != cls.cache_changes:
+			cls.cache_changes = new_cache_changes
 			cls.cache = {}
 		key = (area_builder.owner, farm_x, farm_y, road_dx, road_dy)
 		if key not in cls.cache:
