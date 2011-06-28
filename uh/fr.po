@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-28 18:41+0200\n"
+"PO-Revision-Date: 2011-06-28 18:47+0200\n"
 "Last-Translator: tintou <tintou@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -941,7 +941,7 @@ msgstr "Hall de la partie"
 
 #: horizons/i18n/guitranslations.py:200
 msgid "Game details:"
-msgstr "Détails de la partie:"
+msgstr "Détails de la partie :"
 
 #: horizons/i18n/guitranslations.py:201
 msgid "Exit gamelobby"
@@ -949,15 +949,15 @@ msgstr "Quitter le hall de la partie"
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Active games:"
-msgstr "Parties actives:"
+msgstr "Parties actives :"
 
 #: horizons/i18n/guitranslations.py:205 horizons/i18n/guitranslations.py:246
 msgid "Main menu:"
-msgstr "Menu principal:"
+msgstr "Menu principal :"
 
 #: horizons/i18n/guitranslations.py:206
 msgid "Show only games with the same version:"
-msgstr "Ne montrer que des parties avec la même version:"
+msgstr "Ne montrer que des parties avec la même version :"
 
 #: horizons/i18n/guitranslations.py:207
 msgid "New game - Multiplayer"
@@ -969,11 +969,11 @@ msgstr "Rejoindre la partie"
 
 #: horizons/i18n/guitranslations.py:209
 msgid "Apply:"
-msgstr "Appliquer:"
+msgstr "Appliquer :"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Refresh list:"
-msgstr "Rafraîchir la liste:"
+msgstr "Rafraîchir la liste :"
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Apply the new name"
@@ -993,19 +993,19 @@ msgstr "Rafraîchir la liste des parties actives"
 
 #: horizons/i18n/guitranslations.py:217
 msgid "Autosave interval in minutes:"
-msgstr "Intervalle des sauvegardes automatiques en minutes:"
+msgstr "Intervalle des sauvegardes automatiques en minutes :"
 
 #: horizons/i18n/guitranslations.py:218
 msgid "Color depth:"
-msgstr "Profondeur des couleurs:"
+msgstr "Profondeur des couleurs :"
 
 #: horizons/i18n/guitranslations.py:219
 msgid "Enable edge scrolling:"
-msgstr "Activer la défilement sur le bord d'écran:"
+msgstr "Activer la défilement sur le bord d'écran :"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Effects volume:"
-msgstr "Volume des effets:"
+msgstr "Volume des effets sonores :"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Graphics"
@@ -1037,7 +1037,7 @@ msgstr "Activer la rotation de la mini-carte"
 
 #: horizons/i18n/guitranslations.py:229
 msgid "Music volume:"
-msgstr "Volume de la musique:"
+msgstr "Volume de la musique :"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "(0 means default)"
@@ -1045,31 +1045,31 @@ msgstr "(0 pour valeur par défaut)"
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Network port:"
-msgstr "Port réseau:"
+msgstr "Port réseau :"
 
 #: horizons/i18n/guitranslations.py:232
 msgid "Number of autosaves:"
-msgstr "Nombre de sauvegardes automatiques:"
+msgstr "Nombre de sauvegardes automatiques :"
 
 #: horizons/i18n/guitranslations.py:233
 msgid "Number of quicksaves:"
-msgstr "Nombre de sauvegardes rapides:"
+msgstr "Nombre de sauvegardes rapides :"
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Full screen:"
-msgstr "Plein écran:"
+msgstr "Plein écran :"
 
 #: horizons/i18n/guitranslations.py:235
 msgid "Screen resolution:"
-msgstr "Résolution de l'écran:"
+msgstr "Résolution de l'écran :"
 
 #: horizons/i18n/guitranslations.py:236
 msgid "Enable sound:"
-msgstr "Activer le son:"
+msgstr "Activer le son :"
 
 #: horizons/i18n/guitranslations.py:237
 msgid "Used renderer:"
-msgstr "Moteur de rendu utilisé:"
+msgstr "Moteur de rendu utilisé :"
 
 #: horizons/i18n/guitranslations.py:238
 msgid "Please make sure that you know what you do."
@@ -1077,15 +1077,15 @@ msgstr "Veuillez vous assurer que vous savez ce que vous faites."
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Enter filename:"
-msgstr "Entrer le nom du fichier:"
+msgstr "Entrer le nom du fichier :"
 
 #: horizons/i18n/guitranslations.py:242
 msgid "Your saved games:"
-msgstr "Vos parties sauvegardées:"
+msgstr "Vos parties sauvegardées :"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Choose a map to play:"
-msgstr "Choisir une carte:"
+msgstr "Choisir une carte :"
 
 #: horizons/i18n/guitranslations.py:245
 msgid "New game - Singleplayer"
@@ -1093,7 +1093,7 @@ msgstr "Nouvelle partie - Solo"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Start game:"
-msgstr "Commencer la partie:"
+msgstr "Commencer la partie :"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "Campaign"
@@ -1115,15 +1115,15 @@ msgstr "Scénario"
 # 100%
 #: horizons/i18n/guitranslations.py:252
 msgid "Start game"
-msgstr "Commencer la partie:"
+msgstr "Commencer la partie :"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Color:"
-msgstr "Couleur:"
+msgstr "Couleur :"
 
 #: horizons/i18n/guitranslations.py:256
 msgid "Player name:"
-msgstr "Nom du joueur:"
+msgstr "Nom du joueur :"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Cancel building:"
@@ -1136,7 +1136,7 @@ msgstr "(perdre toutes les ressources)"
 # context is the boat builder overview, so it means 'ship that currently gets constructed'
 #: horizons/i18n/guitranslations.py:260
 msgid "Currently building:"
-msgstr "En cours de construction:"
+msgstr "En cours de construction :"
 
 #: horizons/i18n/guitranslations.py:261
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
@@ -1146,7 +1146,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Construction progress:"
-msgstr "Progrès de construction:"
+msgstr "Progrès de construction :"
 
 #: horizons/i18n/guitranslations.py:263 horizons/i18n/guitranslations.py:306
 msgid "Building overview"
