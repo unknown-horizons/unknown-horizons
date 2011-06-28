@@ -32,7 +32,7 @@ from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.units.weaponholder import WeaponHolder
-from horizons.util import Point, NamedObject, Circle, WorldObject
+from horizons.util import Point, NamedObject, Circle, WorldObject, Callback
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
@@ -397,8 +397,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		# fire cannonballs displayed circular
 		# import here because this will be moved to attackingship.py
 		import math
-		fireable = [w for w in self._weapon_storage if w.attack_ready]
-		angle = (math.pi / 20) * (-len(fireable) / 2)
+		angle = (math.pi / 30) * (-len(self._fireable) / 2)
 
 		cos = math.cos(angle)
 		sin = math.sin(angle)
@@ -412,19 +411,19 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 		dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 
-		angle = math.pi / 20
+		angle = math.pi / 30
 		cos = math.cos(angle)
 		sin = math.sin(angle)
 	
-		for weapon in fireable:
-			self.fire_weapon(weapon, Point(dest_x, dest_y))
+		distance = self.position.distance(dest)
+		for weapon in self._fireable:
+			destination = Point(dest_x, dest_y)
+			weapon.add_weapon_fired_listener(Callback(CannonBall, self.position, destination, weapon.attack_speed, self.session.view))
+			weapon.fire(destination, distance)
+			weapon.remove_weapon_fired_listener(Callback(CannonBall, self.position, destination, weapon.attack_speed, self.session.view))
 			dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 			dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 
-	def fire_weapon(self, weapon, dest):
-		if weapon.attack_ready:
-			CannonBall(self.position, dest, weapon.attack_speed, self.session.view)
-		super(Ship, self).fire_weapon(weapon, dest)
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

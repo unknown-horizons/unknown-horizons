@@ -25,7 +25,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
-from horizons.constants import WEAPONS
+from horizons.constants import WEAPONS, GAME_SPEED
 
 import gc
 
@@ -42,14 +42,32 @@ class WeaponHolder(object):
 
 	def remove(self):
 		self.remove_storage_modified_listener(self.update_range)
+		for weapon in self._weapon_storage:
+			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
+			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
 		super(WeaponHolder, self).remove()
 
 	def create_weapon_storage(self):
 		self._weapon_storage = []
+		self._fireable = []
 
 	def update_range(self, caller=None):
 		self._min_range = min([w.get_minimum_range() for w in self._weapon_storage])
 		self._max_range = max([w.get_maximum_range() for w in self._weapon_storage])
+
+	def _add_to_fireable(self, weapon):
+		"""
+		Callback executed when weapon attack is ready
+		"""
+		self._fireable.append(weapon)
+
+	def _remove_from_fireable(self, weapon):
+		"""
+		Callback executed when weapon is fired
+		"""
+		# remove in the next tick
+		f = lambda w: self._fireable.remove(w)
+		Scheduler().add_new_object(Callback(f, weapon), self)
 
 	def add_weapon_to_storage(self, weapon_id):
 		"""
@@ -76,6 +94,9 @@ class WeaponHolder(object):
 			weapon = Weapon(self.session, weapon_id)
 		if weapon:
 			self._weapon_storage.append(weapon)
+			weapon.add_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
+			weapon.add_attack_ready_listener(Callback(self._add_to_fireable, weapon))
+			self._fireable.append(weapon)
 		self.on_storage_modified()
 
 	def remove_weapon_from_storage(self, weapon_id):
@@ -100,6 +121,9 @@ class WeaponHolder(object):
 
 		if remove:
 			self._weapon_storage.remove(weapon)
+			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
+			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
+			self._fireable.remove(weapon)
 
 		self.on_storage_modified()
 
@@ -109,12 +133,10 @@ class WeaponHolder(object):
 			return True
 		return False
 
-	def try_attack_next_tick(self):
-		"""hackish callback for weapon fired signal"""
-		Scheduler().rem_call(self, self.try_attack_target)
-		Scheduler().add_new_object(self.try_attack_target, self)
-
 	def try_attack_target(self):
+		"""
+		Attacking loop
+		"""
 		if self._target is None:
 			return
 
@@ -126,25 +148,31 @@ class WeaponHolder(object):
 
 		if not in_range:
 			if self.movable:
-				if self._target.movable and self._target.is_moving():
-					try:
-						self.move(self._target.get_move_target(), blocked_callback = Callback(self.try_attack_target))
-					except MoveNotPossible:
-						pass
-					self._target.add_conditional_callback(self.attack_in_range, self.try_attack_target)
-					self._target.add_move_callback(self.try_attack_target)
-				else:
-					try:
-						self.move(Annulus(dest, self._min_range, self._max_range), Callback(self.fire_all_weapons, dest),
-							blocked_callback = Callback(self.fire_all_weapons, dest))
-					except MoveNotPossible:
-						pass
+				try:
+					self.move(Annulus(dest, self._min_range, self._max_range), callback = self.try_attack_target,
+						blocked_callback = self.try_attack_target)
+				except MoveNotPossible:
+					self.stop_attack()
+
+				# if target passes near self, attack!
+				self.add_conditional_callback(self.attack_in_range, self.try_attack_target)
 		else:
 			if self.movable and self.is_moving():
 				self.stop()
 			self.fire_all_weapons(dest)
+			distance = self.position.distance(self._target.position)
 
-		#TODO add movement callbacks to target if movable
+			if distance > self._min_range:
+				# get closer
+				try:
+					self.move(Annulus(dest, self._min_range, int(self._min_range + (distance - self._min_range)/2)), \
+						callback = self.try_attack_target, blocked_callback = self.try_attack_target)
+				except MoveNotPossible:
+					pass
+			else:
+				# try in another second (weapons shouldn't be fired more often than that)
+				Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
+			#TODO fire in the target's moving direction if it's moving Don't commit suicide
 
 	def attack(self, target):
 		"""
@@ -163,16 +191,10 @@ class WeaponHolder(object):
 			target.add_remove_listener(self.remove_target)
 		self._target = target
 
-		# call try_attack_target when the attack is ready for all the weapons
-		for weapon in self._weapon_storage:
-			weapon.add_attack_ready_listener(Callback(self.try_attack_next_tick))
-
 		self.try_attack_target()
 
 	def remove_target(self):
 		if self._target is not None:
-			for weapon in self._weapon_storage:
-				weapon.remove_attack_ready_listener(Callback(self.try_attack_next_tick))
 			#NOTE test code if the unit is really dead
 			target_ref = weakref.ref(self._target)
 			def check_target_ref(target_ref):
@@ -199,13 +221,9 @@ class WeaponHolder(object):
 
 	def fire_all_weapons(self, dest):
 		#fires all weapons at a given position
-		for weapon in self._weapon_storage:
-			self.fire_weapon(weapon, dest)
-
-	def fire_weapon(self, weapon, dest):
-		#fires a weapon at a given position
 		distance = self.position.distance(dest)
-		weapon.fire(dest, distance)
+		for weapon in self._fireable:
+			weapon.fire(dest, distance)
 
 	def save(self, db):
 		super(WeaponHolder, self).save(db)
