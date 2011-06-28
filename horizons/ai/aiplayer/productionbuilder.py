@@ -124,11 +124,7 @@ class ProductionBuilder(AreaBuilder):
 			distance = {}
 			queue = deque()
 			for tile in self._get_neighbour_tiles(collector.position):
-				if tile is None:
-					continue
-				point = Point(tile.x, tile.y)
-				building = self.session.world.get_building(point)
-				if building and building.id == BUILDINGS.TRAIL_CLASS:
+				if tile is not None and tile.object is not None and tile.object.id == BUILDINGS.TRAIL_CLASS:
 					distance[(tile.x, tile.y)] = 0
 					queue.append(((tile.x, tile.y), 0))
 
@@ -136,10 +132,9 @@ class ProductionBuilder(AreaBuilder):
 				(coords, dist) = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 not in distance:
-						point2 = Point(coords2[0], coords2[1])
-						building = self.session.world.get_building(point2)
-						if building and building.id == BUILDINGS.TRAIL_CLASS:
+					if coords2 not in distance and coords2 in self.settlement.ground_map:
+						building = self.settlement.ground_map[coords2].object
+						if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 							distance[coords2] = dist + 1
 							queue.append((coords2, dist + 1))
 						elif coords2 in keys and collector not in data[keys[coords2]]:
@@ -184,10 +179,8 @@ class ProductionBuilder(AreaBuilder):
 			for tile in self._get_neighbour_tiles(builder.position):
 				if tile is None:
 					continue
-				point = Point(tile.x, tile.y)
 				coords = (tile.x, tile.y)
-				building = self.session.world.get_building(point)
-				if building and building.id == BUILDINGS.TRAIL_CLASS:
+				if tile.object is not None and tile.object.id == BUILDINGS.TRAIL_CLASS:
 					distance[coords] = 0
 					queue.append((coords, 0))
 				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
@@ -203,10 +196,9 @@ class ProductionBuilder(AreaBuilder):
 				(coords, dist) = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 not in distance:
-						point2 = Point(coords2[0], coords2[1])
-						building = self.session.world.get_building(point2)
-						if building and building.id == BUILDINGS.TRAIL_CLASS:
+					if coords2 not in distance and coords2 in self.settlement.ground_map:
+						building = self.settlement.ground_map[coords2].object
+						if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 							distance[coords2] = dist + 1
 							queue.append((coords2, dist + 1))
 						elif coords2 in keys and builder not in extra_data[keys[coords2]]:
