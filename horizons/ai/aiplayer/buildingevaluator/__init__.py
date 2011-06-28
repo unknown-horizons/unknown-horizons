@@ -99,9 +99,9 @@ class BuildingEvaluator(WorldObject):
 		return result
 
 	@classmethod
-	def get_alignment(cls, area_builder, coords_list):
+	def get_alignment_from_outline(cls, area_builder, outline_coords_list):
 		alignment = 0
-		for coords in cls._get_outline_coords(coords_list):
+		for coords in outline_coords_list:
 			if coords in area_builder.plan:
 				purpose = area_builder.plan[coords]
 				if purpose == BUILDING_PURPOSE.NONE:
@@ -119,6 +119,10 @@ class BuildingEvaluator(WorldObject):
 			else:
 				alignment += 1
 		return alignment
+
+	@classmethod
+	def get_alignment(cls, area_builder, coords_list):
+		return cls.get_alignment_from_outline(area_builder, cls._get_outline_coords(coords_list))
 
 	def __cmp__(self, other):
 		if abs(self.value - other.value) > 1e-9:

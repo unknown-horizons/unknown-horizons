@@ -26,9 +26,11 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.util.python import decorators
-from horizons.util import Point
+from horizons.util import Point, Rect
 
 class LumberjackEvaluator(BuildingEvaluator):
+	_template_outline = None
+
 	def __init__(self, area_builder, builder, area_value, alignment):
 		super(LumberjackEvaluator, self).__init__(area_builder, builder)
 		self.area_value = area_value
@@ -38,6 +40,35 @@ class LumberjackEvaluator(BuildingEvaluator):
 	@classmethod
 	def get_radius(cls):
 		return Entities.buildings[BUILDINGS.LUMBERJACK_CLASS].radius
+
+	@classmethod
+	def _init_outline(cls):
+		"""
+		produces a template outline that surrounds the lumberjack (no corners)
+		"""
+		size = Entities.buildings[BUILDINGS.LUMBERJACK_CLASS].size
+		assert size[0] == size[1]
+		position = Rect.init_from_topleft_and_size(0, 0, size[0] - 1, size[1] - 1)
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		coords_list = set(position.get_radius_coordinates(cls.get_radius(), True))
+
+		result = set()
+		for x, y in coords_list:
+			for dx, dy in moves:
+				coords = (x + dx, y + dy)
+				if coords not in coords_list:
+					result.add(coords)
+		cls._template_outline = list(result)
+
+	@classmethod
+	def _get_outline(cls, x, y):
+		if cls._template_outline is None:
+			cls._init_outline()
+
+		result = []
+		for dx, dy in cls._template_outline:
+			result.append((x + dx, y + dy))
+		return result
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -57,7 +88,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 		if area_value < 30:
 			return None # the area is too bad for a lumberjack
 
-		alignment = cls.get_alignment(area_builder, builder.position.get_radius_coordinates(cls.get_radius(), True))
+		alignment = cls.get_alignment_from_outline(area_builder, cls._get_outline(x, y))
 		return LumberjackEvaluator(area_builder, builder, area_value, alignment)
 
 	@property
