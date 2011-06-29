@@ -279,6 +279,8 @@ class VillageBuilder(AreaBuilder):
 			self.land_manager.add_to_production(coords)
 
 	def _replace_planned_tent(self, building_id, new_purpose, max_buildings, capacity):
+		""" replaces up to max_buildings planned tents with buildings of type building_id."""
+
 		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
 		planned_tents = set([builder.position for (purpose, builder) in self.plan.itervalues() if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE])
 		possible_positions = copy.copy(planned_tents)
@@ -302,7 +304,7 @@ class VillageBuilder(AreaBuilder):
 			positions.sort()
 			return positions
 
-		for i in xrange(max_buildings):
+		for _ in xrange(max_buildings):
 			if len(planned_tents) <= 1:
 				break
 			best_score = None
