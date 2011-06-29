@@ -151,8 +151,10 @@ class AbstractBuilding(object):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
 		for evaluator in sorted(self.get_evaluators(settlement_manager, resource_id)):
-			return evaluator.execute()
-		self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__)
+			result = evaluator.execute()
+			if result[0] != BUILD_RESULT.IMPOSSIBLE:
+				return result
+		self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__, settlement_manager, resource_id)
 		return (BUILD_RESULT.IMPOSSIBLE, None)
 
 decorators.bind_all(AbstractBuilding)
