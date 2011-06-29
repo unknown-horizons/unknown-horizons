@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-06-25 14:08+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-06-29 18:02+0200\n"
+"Last-Translator: MicMic <michael.aloys@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -242,15 +242,16 @@ msgstr ""
 "Mas adelante también podrá plantar sus propios arboles - pero esto cuesta "
 "dinero. Así que utilice lo que la naturaleza les da!\n"
 "\n"
-"A company always needs a trail connection to a storage or branch office, "
-"otherwise goods will remain at the company and not be collected.\n"
+"Un negocio siempre necesita un camino que le conecta con un almacén o una "
+"sucursal, si no los bienes permanecerán en el negocio y no serán recogidos.\n"
 "\n"
-"This means that you have to build a trail connecting your branch office (or "
-"storage) and lumberjack.\n"
+"Eso significa que tendrá que construir un camino que conecta su sucursal (o "
+"un almacén) con su leñador.\n"
 "\n"
-"TASK: Build a lumberjack in a wooded area and connect it to a road.\n"
+"OBJETIVO: Construya un leñador en una zona con arboles y conecte lo con la "
+"calle\n"
 "\n"
-"Watch how a collector will fetch your first self-produced boards."
+"Ahora relaje y observe como recogerán sus primeros tablones."
 
 #: po/tutorial.py:16
 msgid "Build a lumberjack and connect it to the branch office using a trail."
@@ -258,7 +259,7 @@ msgstr "Construya un aserradero y conéctelo al asentamiento usando un sendero."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "SUMINISTRO DE ALIMENTOS"
+msgstr "NUEVO OBJETIVO: SUMINISTRO DE ALIMENTOS"
 
 #: po/tutorial.py:18
 msgid ""
@@ -274,6 +275,20 @@ msgid ""
 "\n"
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"También necesitaran negocios que fabriquen comida porque la gente "
+"normalmente es bastante hambrienta (y especialmente los marineros).\n"
+"\n"
+"En el primer nivel son disponibles el cazador y el pescador.\n"
+"\n"
+"Como ya sabrás, el cazador caza animales en el bosque, así que necesita "
+"arboles a su alrededor.\n"
+"\n"
+"Tenga en cuenta que puede colocar el cazador cerca del bosque del leñador.\n"
+"\n"
+"Puede pasar que los animales no se reproduzcan bastante rápidos o que "
+"simplemente se escondan muy bien.\n"
+"\n"
+"Conclusión: El cazador no es muy fiable si necesita un suministro continuo."
 
 #: po/tutorial.py:19
 msgid ""
@@ -381,7 +396,7 @@ msgstr ""
 # sin contexto (construye/haz)
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "CONSTRUIR UNA SEÑAL DE FUEGO"
+msgstr "NUEVO OBJETIVO: CONSTRUIR UNA SEÑAL DE FUEGO"
 
 #: po/tutorial.py:31
 msgid ""
@@ -665,7 +680,7 @@ msgstr ""
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "COMPLETA EL TUTORIAL"
+msgstr "NUEVO OBJETIVO: COMPLETA EL TUTORIAL"
 
 #: po/tutorial.py:63
 msgid ""

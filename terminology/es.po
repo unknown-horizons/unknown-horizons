@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
 "PO-Revision-Date: 2011-06-25 14:02+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"Last-Translator: MicMic <michael.aloys@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -285,14 +285,12 @@ msgid "change"
 msgstr "cambiar"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
-#
 # (poterminology) uh/unknownhorizons.pot (4)
-#
 #: horizons/gui/ingamegui.py
 #: horizons/i18n/guitranslations.py
 #: po/tutorial.py
 msgid "click"
-msgstr "click"
+msgstr "hacer clic"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
@@ -343,7 +341,7 @@ msgstr "comerciar"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "trail"
-msgstr "rastro"
+msgstr "camino"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -423,13 +421,11 @@ msgid "coast"
 msgstr "costa"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "companies"
-msgstr "compañías"
+msgstr "negocio"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
