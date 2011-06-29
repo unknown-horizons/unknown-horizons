@@ -20,6 +20,7 @@
 # ###################################################
 
 import math
+import logging
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.entities import Entities
@@ -28,6 +29,8 @@ from horizons.util.python import decorators
 from horizons.world.production.productionline import ProductionLine
 
 class AbstractBuilding(object):
+	log = logging.getLogger("ai.aiplayer.building")
+
 	def __init__(self, building_id, name, settler_level, production_line_ids):
 		super(AbstractBuilding, self).__init__()
 		self.id = building_id
@@ -149,6 +152,7 @@ class AbstractBuilding(object):
 
 		for evaluator in sorted(self.get_evaluators(settlement_manager, resource_id)):
 			return evaluator.execute()
+		self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__)
 		return (BUILD_RESULT.IMPOSSIBLE, None)
 
 decorators.bind_all(AbstractBuilding)

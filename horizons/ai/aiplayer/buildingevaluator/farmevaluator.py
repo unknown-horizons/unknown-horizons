@@ -200,9 +200,11 @@ class FarmEvaluator(BuildingEvaluator):
 			self.area_builder.register_change(x, y, purpose, builder)
 		if not self.area_builder._build_road_connection(self.builder):
 			self.area_builder.plan = backup
+			self.log.debug('%s, unable to reach by road', self)
 			return (BUILD_RESULT.IMPOSSIBLE, None)
 		building = self.builder.execute()
 		if not building:
+			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		for coords, (purpose, builder) in self.farm_plan.iteritems():
 			if purpose == self.unused_field_purpose:

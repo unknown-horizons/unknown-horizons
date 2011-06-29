@@ -20,6 +20,7 @@
 # ###################################################
 
 import copy
+import logging
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
@@ -28,6 +29,8 @@ from horizons.util import WorldObject
 from horizons.constants import BUILDINGS
 
 class BuildingEvaluator(WorldObject):
+	log = logging.getLogger("ai.aiplayer.buildingevaluator")
+
 	def __init__(self, area_builder, builder, worldid=None):
 		super(BuildingEvaluator, self).__init__(worldid)
 		self.area_builder = area_builder
@@ -140,9 +143,11 @@ class BuildingEvaluator(WorldObject):
 		if not self.builder.have_resources():
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 		if not self.area_builder._build_road_connection(self.builder):
+			self.log.debug('%s, unable to reach by road', self)
 			return (BUILD_RESULT.IMPOSSIBLE, None)
 		building = self.builder.execute()
 		if not building:
+			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		for x, y in self.builder.position.tuple_iter():
 			self.area_builder.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)

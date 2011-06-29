@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 from horizons.entities import Entities
 from horizons.constants import BUILDINGS
 from horizons.command.building import Build
@@ -29,6 +31,8 @@ class Builder(WorldObject):
 	"""
 	This is a convenience class to make it easier for the AI to build buildings.
 	"""
+
+	log = logging.getLogger("ai.aiplayer.builder")
 
 	rotations = [45, 135, 225, 315]
 	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS] # don't change orientation by random
@@ -92,7 +96,9 @@ class Builder(WorldObject):
 		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island, \
 			self._get_rotation(), settlement = self.land_manager.settlement, \
 			ship = self.ship, tearset = self.build_position.tearset)
-		return cmd(self.land_manager.owner)
+		result = cmd(self.land_manager.owner)
+		#self.log.debug('%s.execute(): %s', self.__class__.__name__, result)
+		return result
 
 	def have_resources(self):
 		neededResources = {}
