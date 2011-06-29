@@ -28,6 +28,7 @@ from constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS
 from horizons.util import Point
 from horizons.util.python import decorators
+from horizons.entities import Entities
 
 class VillageBuilder(AreaBuilder):
 	def __init__(self, settlement_manager):
@@ -100,10 +101,11 @@ class VillageBuilder(AreaBuilder):
 		ys = set([coords[1] for coords in self.land_manager.village])
 		tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
 		road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
+		main_square_size = Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].size
+		tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
 
 		for x, y in self.land_manager.village:
 			# will it fit in the area?
-			main_square_size = Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].size
 			if (x + main_square_size[0], y + main_square_size[1]) not in self.land_manager.village:
 				continue
 
@@ -174,8 +176,8 @@ class VillageBuilder(AreaBuilder):
 				if not ok:
 					continue
 				tent = Builder.create(BUILDINGS.RESIDENTIAL_CLASS, self.land_manager, Point(coords[0], coords[1]))
-				if not tent:
-					continue
+				if not tent or main_square.position.distance(tent.position) > tent_radius:
+					continue # unable to build or out of main square range
 
 				# is there a road connection?
 				ok = False
