@@ -103,7 +103,8 @@ class VillageBuilder(AreaBuilder):
 
 		for x, y in self.land_manager.village:
 			# will it fit in the area?
-			if (x + 5, y + 5) not in self.land_manager.village:
+			main_square_size = Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].size
+			if (x + main_square_size[0], y + main_square_size[1]) not in self.land_manager.village:
 				continue
 
 			point = Point(x, y)
@@ -116,8 +117,8 @@ class VillageBuilder(AreaBuilder):
 			good_tents = 0
 
 			# place the main square
-			for dy in xrange(6):
-				for dx in xrange(6):
+			for dx in xrange(main_square_size[0]):
+				for dy in xrange(main_square_size[1]):
 					plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.RESERVED, None)
 			plan[(x, y)] = (BUILDING_PURPOSE.MAIN_SQUARE, main_square)
 
