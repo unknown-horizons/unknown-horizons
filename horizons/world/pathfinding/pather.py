@@ -182,6 +182,11 @@ class AbstractPather(object):
 
 		return Point(*self.path[self.cur])
 
+	def get_move_source(self):
+		"""Returns the source Point of the current movment.
+		@return: Point or Non if no path has been calculated"""
+		return None if not self.path else Point(*self.path[0])
+
 	def get_move_target(self):
 		"""Returns the point where the path leads
 		@return: Point or None if no path has been calculated"""

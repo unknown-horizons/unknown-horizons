@@ -199,8 +199,15 @@ class BuildingCollector(Collector):
 			Scheduler().add_new_object(callback, self, run_in=0)
 		else:
 			# actually move home
-			self.move_back(callback=callback, destination_in_building=True, action=action, \
-			               blocked_callback=self.handle_path_home_blocked)
+
+			# only reuse old path if it leads home. This is not provided if the path had to be
+			# recalculated on the way to the target due to a blockade.
+			if self.home_building.position.contains( self.path.get_move_source() ):
+				self.move_back(callback=callback, destination_in_building=True, action=action, \
+				               blocked_callback=self.handle_path_home_blocked)
+			else:
+				self.move(self.home_building, callback=callback, destination_in_building=True, action=action, \
+				          blocked_callback=self.handle_path_home_blocked)
 			self.state = self.states.moving_home
 
 	def cancel(self, continue_action = None):
