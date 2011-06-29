@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 from building import AbstractBuilding
 from constants import BUILD_RESULT
 
@@ -29,6 +31,8 @@ from horizons.util.python import decorators
 from horizons.util import Point, WorldObject
 
 class ProductionChain:
+	log = logging.getLogger("ai.aiplayer.productionchain")
+
 	def __init__(self, settlement_manager, resource_id, chain):
 		self.settlement_manager = settlement_manager
 		self.resource_id = resource_id
@@ -108,6 +112,7 @@ class ProductionChainSubtreeChoice:
 			if option.available:
 				available_options.append(option)
 		if not available_options:
+			self.log.debug('%s: no available options', self)
 			return BUILD_RESULT.IMPOSSIBLE
 		elif len(available_options) == 1:
 			return available_options[0].build(amount)
@@ -121,6 +126,7 @@ class ProductionChainSubtreeChoice:
 				expected_costs.append((cost, i, option))
 
 		if not expected_costs:
+			self.log.debug('%s: no possible options', self)
 			return BUILD_RESULT.IMPOSSIBLE
 		else:
 			return sorted(expected_costs)[0][2].build(amount)
