@@ -35,7 +35,7 @@ class LandManager(WorldObject):
 	def __init__(self, island, owner):
 		super(LandManager, self).__init__()
 		self.__init(island, owner)
-		self._divide()
+		self._divide(23)
 
 	def __init(self, island, owner):
 		self.island = island
@@ -101,7 +101,7 @@ class LandManager(WorldObject):
 				return False
 		return True
 
-	def _divide(self):
+	def _divide(self, village_size):
 		"""
 		Divides the area of the island so that there is a large lump for the village
 		and the rest for production.
@@ -114,19 +114,19 @@ class LandManager(WorldObject):
 
 		for (x, y), tile in self.island.ground_map.iteritems():
 			buildable = 0
-			for dy in xrange(15):
-				for dx in xrange(15):
+			for dy in xrange(village_size):
+				for dx in xrange(village_size):
 					if self._coords_usable((x + dx, y + dy)):
 						buildable += 1
 
 			if buildable > best_buildable:
 				best_coords = (x, y)
 				best_buildable = buildable
-				if buildable == 15 * 15:
+				if buildable == village_size * village_size:
 					break
 
-		for dy in xrange(15):
-			for dx in xrange(15):
+		for dy in xrange(village_size):
+			for dx in xrange(village_size):
 				coords = (best_coords[0] + dx, best_coords[1] + dy)
 				if self._coords_usable(coords):
 					self.village[coords] = self.island.ground_map[coords]
