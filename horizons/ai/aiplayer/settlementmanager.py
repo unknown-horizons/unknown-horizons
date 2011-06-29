@@ -82,6 +82,7 @@ class SettlementManager(WorldObject):
 		self.owner = land_manager.owner
 		self.land_manager = land_manager
 		self.island = self.land_manager.island
+		self.settlement = self.land_manager.settlement
 		self.branch_office = branch_office
 		self.build_queue = deque()
 
@@ -143,15 +144,15 @@ class SettlementManager(WorldObject):
 		self.village_built = self.tents == self.village_builder.tents_to_build
 
 	def set_taxes_and_permissions(self, taxes, sailors_can_upgrade, pioneers_can_upgrade):
-		if abs(self.land_manager.settlement.tax_setting - taxes) > 1e-9:
-			self.log.info('%s set taxes from %.1f to %.1f', self, self.land_manager.settlement.tax_setting, taxes)
-			SetTaxSetting(self.land_manager.settlement, taxes).execute(self.land_manager.session)
-		if self.land_manager.settlement.upgrade_permissions[0] != sailors_can_upgrade:
+		if abs(self.settlement.tax_setting - taxes) > 1e-9:
+			self.log.info('%s set taxes from %.1f to %.1f', self, self.settlement.tax_setting, taxes)
+			SetTaxSetting(self.settlement, taxes).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[0] != sailors_can_upgrade:
 			self.log.info('%s set sailor upgrade permissions to %s', self, sailors_can_upgrade)
-			SetSettlementUpgradePermissions(self.land_manager.settlement, 0, sailors_can_upgrade).execute(self.land_manager.session)
-		if self.land_manager.settlement.upgrade_permissions[1] != pioneers_can_upgrade:
+			SetSettlementUpgradePermissions(self.settlement, 0, sailors_can_upgrade).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[1] != pioneers_can_upgrade:
 			self.log.info('%s set pioneer upgrade permissions to %s', self, pioneers_can_upgrade)
-			SetSettlementUpgradePermissions(self.land_manager.settlement, 1, pioneers_can_upgrade).execute(self.land_manager.session)
+			SetSettlementUpgradePermissions(self.settlement, 1, pioneers_can_upgrade).execute(self.land_manager.session)
 
 	def can_provide_resources(self):
 		return self.village_built
@@ -178,7 +179,7 @@ class SettlementManager(WorldObject):
 		for coords, (purpose, _) in self.village_builder.plan.iteritems():
 			if purpose != BUILDING_PURPOSE.RESIDENCE:
 				continue
-			tent = self.land_manager.settlement.ground_map[coords].object
+			tent = self.settlement.ground_map[coords].object
 			for production in tent._get_productions():
 				production_line = production._prod_line
 				if resource_id in production_line.consumed_res:
@@ -197,7 +198,7 @@ class SettlementManager(WorldObject):
 			self.log.info('%s failed to build a %s (%d)', self, name, result)
 
 	def count_buildings(self, building_id):
-		return len(self.land_manager.settlement.get_buildings_by_id(building_id))
+		return len(self.settlement.get_buildings_by_id(building_id))
 
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full inventories."""
@@ -224,7 +225,7 @@ class SettlementManager(WorldObject):
 	def manual_upgrade(self, level, limit):
 		"""Enables upgrading residence buildings on the specified level until at least limit of them are upgrading."""
 		num_upgrading = 0
-		for building in self.land_manager.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
 			if building.level == level:
 				upgrade_production = building._get_upgrade_production()
 				if upgrade_production is not None and not upgrade_production.is_paused():
@@ -233,7 +234,7 @@ class SettlementManager(WorldObject):
 						return False
 
 		upgraded_any = False
-		for building in self.land_manager.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
 			if building.level == level:
 				upgrade_production = building._get_upgrade_production()
 				if upgrade_production is not None and upgrade_production.is_paused():
@@ -262,6 +263,16 @@ class SettlementManager(WorldObject):
 		""" returns true if there is a resource deposit outside the settlement that is not owned by another player """
 		for building in self.land_manager.resource_deposits[building_id]:
 			if building.settlement is None:
+				return True
+		return False
+
+	def have_deposit(self, building_id):
+		""" returns true if there is a resource deposit inside the settlement """
+		for building in self.land_manager.resource_deposits[building_id]:
+			if building.settlement is None:
+				continue
+			coords = building.position.origin.to_tuple()
+			if coords in self.settlement.ground_map:
 				return True
 		return False
 
@@ -302,19 +313,19 @@ class SettlementManager(WorldObject):
 			self.log_generic_build_result(result,  'tent')
 			if result == BUILD_RESULT.OK:
 				self.tents += 1
-		elif not self.count_buildings(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
+		elif not self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
 			result = self.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
 			self.log_generic_build_result(result,  'clay deposit coverage storage')
-		elif self.count_buildings(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.build_chain(self.bricks_chain, 'bricks producer'):
+		elif self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.build_chain(self.bricks_chain, 'bricks producer'):
 			pass
 		elif have_bricks and self.build_chain(self.education_chain, 'school'):
 			pass
 		elif have_bricks and self.land_manager.owner.settler_level > 1 and self.build_chain(self.get_together_chain, 'get-together producer'):
 			pass
-		elif have_bricks and not self.count_buildings(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.reachable_deposit(BUILDINGS.MOUNTAIN_CLASS):
+		elif have_bricks and not self.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.reachable_deposit(BUILDINGS.MOUNTAIN_CLASS):
 			result = self.production_builder.improve_deposit_coverage(BUILDINGS.MOUNTAIN_CLASS)
 			self.log_generic_build_result(result,  'mountain coverage storage')
-		elif have_bricks and self.count_buildings(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.tools_chain, 'tools producer'):
+		elif have_bricks and self.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.tools_chain, 'tools producer'):
 			pass
 		else:
 			self.village_built = True
@@ -325,7 +336,7 @@ class SettlementManager(WorldObject):
 				self.set_taxes_and_permissions(0.9, False, False)
 		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			# if we just need the school then upgrade sailors manually
-			free_boards = self.land_manager.settlement.inventory[RES.BOARDS_ID]
+			free_boards = self.settlement.inventory[RES.BOARDS_ID]
 			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS].costs[RES.BOARDS_ID]
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
@@ -339,6 +350,6 @@ class SettlementManager(WorldObject):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 
 	def __str__(self):
-		return '%s.SM(%s/%d)' % (self.owner, self.land_manager.settlement.name, self.worldid)
+		return '%s.SM(%s/%d)' % (self.owner, self.settlement.name, self.worldid)
 
 decorators.bind_all(SettlementManager)
