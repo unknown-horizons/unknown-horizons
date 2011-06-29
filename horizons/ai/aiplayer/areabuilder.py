@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import copy
 import logging
 
 from collections import deque
@@ -174,20 +175,33 @@ class AreaBuilder(WorldObject):
 
 		return RoadPlanner()(collector_coords, destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
 
-	def _build_road_connection(self, builder):
+	def build_road_connection(self, builder):
 		path = self._get_road_to_builder(builder)
 		if path is not None:
 			for x, y in path:
-				point = Point(x, y)
 				self.register_change(x, y, BUILDING_PURPOSE.ROAD, None)
-				building = self.island.get_building(point)
+				building = self.island.ground_map[(x, y)].object
 				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
 					continue
-				assert Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point).execute()
+				assert Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(x, y)).execute()
 		return path is not None
 
-	def _road_connection_possible(self, builder):
-		return self._get_road_to_builder(builder) is not None
+	def get_road_connection_cost(self, builder):
+		path = self._get_road_to_builder(builder)
+		if path is None:
+			return None
+		length = 0
+		if path is not None:
+			for x, y in path:
+				building = self.island.ground_map[(x, y)].object
+				if building is None or building.id != BUILDINGS.TRAIL_CLASS:
+					length += 1
+		if length == 0:
+			return {}
+		costs = copy.copy(Entities.buildings[BUILDINGS.TRAIL_CLASS].costs)
+		for resource in costs:
+			costs[resource] *= length
+		return costs
 
 	def _make_builder(self, building_id, x, y, needs_collector, orientation):
 		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """

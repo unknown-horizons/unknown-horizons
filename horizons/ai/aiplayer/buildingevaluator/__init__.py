@@ -139,12 +139,24 @@ class BuildingEvaluator(WorldObject):
 	def purpose(self):
 		raise NotImplementedError, 'This function has to be overridden.'
 
-	def execute(self):
+	def have_resources(self):
+		""" returns none if it is unreachable by road, false if there are not enough resources, and true otherwise """
+		# check without road first because the road is unlikely to be the problem and pathfinding isn't cheap
 		if not self.builder.have_resources():
-			return (BUILD_RESULT.NEED_RESOURCES, None)
-		if not self.area_builder._build_road_connection(self.builder):
+			return False
+		road_cost = self.area_builder.get_road_connection_cost(self.builder)
+		if road_cost is None:
+			return None
+		return self.builder.have_resources(road_cost)
+
+	def execute(self):
+		resource_check = self.have_resources()
+		if resource_check is None:
 			self.log.debug('%s, unable to reach by road', self)
 			return (BUILD_RESULT.IMPOSSIBLE, None)
+		elif not resource_check:
+			return (BUILD_RESULT.NEED_RESOURCES, None)
+		assert self.area_builder.build_road_connection(self.builder)
 		building = self.builder.execute()
 		if not building:
 			self.log.debug('%s, unknown error', self)

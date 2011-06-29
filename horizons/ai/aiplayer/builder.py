@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import copy
 import logging
 
 from horizons.entities import Entities
@@ -100,10 +101,11 @@ class Builder(WorldObject):
 		#self.log.debug('%s.execute(): %s', self.__class__.__name__, result)
 		return result
 
-	def have_resources(self):
-		neededResources = {}
+	def have_resources(self, extra_resources = None):
+		# the copy has to be made because Build.check_resources modifies it
+		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}
 		inventories = [self.land_manager.settlement, self.ship]
-		(enough_res, missing_res) = Build.check_resources(neededResources, \
+		(enough_res, _) = Build.check_resources(extra_resources, \
 			Entities.buildings[self.building_id].costs, self.land_manager.owner, inventories)
 		return enough_res
 

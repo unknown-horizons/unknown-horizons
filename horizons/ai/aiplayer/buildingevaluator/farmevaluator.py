@@ -193,15 +193,24 @@ class FarmEvaluator(BuildingEvaluator):
 		return evaluator
 
 	def execute(self):
+		# cheap resource check first, then pre-reserve the tiles and check again
 		if not self.builder.have_resources():
 			return (BUILD_RESULT.NEED_RESOURCES, None)
+
 		backup = copy.copy(self.area_builder.plan)
 		for (x, y), (purpose, builder) in self.farm_plan.iteritems():
 			self.area_builder.register_change(x, y, purpose, builder)
-		if not self.area_builder._build_road_connection(self.builder):
+
+		resource_check = self.have_resources()
+		if resource_check is None:
 			self.area_builder.plan = backup
 			self.log.debug('%s, unable to reach by road', self)
 			return (BUILD_RESULT.IMPOSSIBLE, None)
+		elif not resource_check:
+			self.area_builder.plan = backup
+			return (BUILD_RESULT.NEED_RESOURCES, None)
+		assert self.area_builder.build_road_connection(self.builder)
+
 		building = self.builder.execute()
 		if not building:
 			self.log.debug('%s, unknown error', self)
