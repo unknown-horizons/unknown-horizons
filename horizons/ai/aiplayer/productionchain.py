@@ -195,6 +195,8 @@ class ProductionChainSubtree:
 	def need_more_buildings(self, amount):
 		if not self.abstract_building.directly_buildable:
 			return False # building must be triggered by children instead
+		if self.abstract_building.coverage_building:
+			return True
 		return amount > self.get_root_production_level() + 1e-7
 
 	def build(self, amount):

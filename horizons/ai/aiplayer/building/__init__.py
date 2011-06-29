@@ -134,6 +134,11 @@ class AbstractBuilding(object):
 		return True
 
 	@property
+	def coverage_building(self):
+		""" pavilions, schools, and taverns are buildings that need to be built even if the total production is enough """
+		return False
+
+	@property
 	def ignore_production(self):
 		""" Child buildings that should not be used for production calculation set this to true """
 		return False

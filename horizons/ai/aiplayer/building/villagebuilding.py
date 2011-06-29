@@ -51,6 +51,11 @@ class AbstractVillageBuilding(AbstractBuilding):
 					return (BUILD_RESULT.OK, building)
 		return (BUILD_RESULT.SKIP, None)
 
+	@property
+	def coverage_building(self):
+		""" pavilions, schools, and taverns are buildings that need to be built even if the total production is enough """
+		return True
+
 	@classmethod
 	def register_buildings(cls):
 		cls.available_buildings[BUILDINGS.PAVILION_CLASS] = cls
