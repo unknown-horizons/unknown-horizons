@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import copy
 from collections import deque
 
 from areabuilder import AreaBuilder
@@ -277,38 +278,69 @@ class VillageBuilder(AreaBuilder):
 		for coords in not_needed:
 			self.land_manager.add_to_production(coords)
 
-	def _replace_planned_tent(self, building_id, new_purpose):
-		tent_range = 12 # TODO: load it the right way
-		planned_tents = [builder for (purpose, builder) in self.plan.itervalues() if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE]
+	def _replace_planned_tent(self, building_id, new_purpose, max_buildings, capacity):
+		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
+		planned_tents = set([builder.position for (purpose, builder) in self.plan.itervalues() if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE])
+		possible_positions = copy.copy(planned_tents)
 
-		max_covered = 0
-		min_distance = 0
-		best_point = None
-		for replaced_builder in planned_tents:
-			covered = 0
-			distance = 0
-			for builder in planned_tents:
-				if replaced_builder.position.distance(builder.position) <= tent_range:
-					covered += 1
-					distance += replaced_builder.position.distance(builder.position)
-			if covered > max_covered or (covered == max_covered and min_distance > distance):
-				max_covered = covered
-				min_distance = distance
-				best_point = replaced_builder.position.origin
+		def get_centroid(planned, blocked):
+			total_x, total_y = 0, 0
+			for position in planned_tents:
+				if position not in blocked:
+					total_x += position.left
+					total_y += position.top
+			mid_x = total_x / float(len(planned) - len(blocked))
+			mid_y = total_y / float(len(planned) - len(blocked))
+			return (mid_x, mid_y)
 
-		if best_point is not None:
-			builder = Builder.create(building_id, self.land_manager, best_point)
-			(x, y) = best_point.to_tuple()
+		def get_centroid_distance_pairs(planned, blocked):
+			centroid = get_centroid(planned_tents, blocked)
+			positions = []
+			for position in planned_tents:
+				if position not in blocked:
+					positions.append((-position.distance(centroid), position))
+			positions.sort()
+			return positions
+
+		for i in xrange(max_buildings):
+			if len(planned_tents) <= 1:
+				break
+			best_score = None
+			best_pos = None
+			best_in_range = 0
+
+			for replaced_pos in possible_positions:
+				positions = get_centroid_distance_pairs(planned_tents, set([replaced_pos]))
+				score = 0
+				in_range = 0
+				for negative_distance_to_centroid, position in positions:
+					if in_range < capacity and replaced_pos.distance(position) <= tent_range:
+						in_range += 1
+					else:
+						score -= negative_distance_to_centroid
+				if best_score is None or best_score > score:
+					best_score = score
+					best_pos = replaced_pos
+					best_in_range = in_range
+
+			in_range = 0
+			positions = get_centroid_distance_pairs(planned_tents, set([best_pos]))
+			for _, position in positions:
+				if in_range < capacity and best_pos.distance(position) <= tent_range:
+					planned_tents.remove(position)
+					in_range += 1
+
+			possible_positions.remove(best_pos)
+			builder = Builder.create(building_id, self.land_manager, best_pos.origin)
+			(x, y) = best_pos.origin.to_tuple()
 			self.register_change(x, y, new_purpose, builder)
 			self.tents_to_build -= 1
-			return True
-		return False
 
 	def _reserve_other_buildings(self):
 		"""Replaces planned tents with a pavilion, school, and tavern."""
-		assert self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION)
-		assert self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL)
-		assert self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN)
+		self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION, 4, 22)
+		self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL, 4, 22)
+		self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN, 4, 22)
 
 	def _create_tent_queue(self):
 		""" This function takes the plan and orders all planned tents according to
