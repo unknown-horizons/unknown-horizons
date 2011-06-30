@@ -337,9 +337,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@param show_cancel_button: boolean, include cancel button or not
 		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
 		"""
+		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
+		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
 		if show_cancel_button:
+			self.widgets.reload('popup_with_cancel')
 			popup = self.widgets['popup_with_cancel']
 		else:
+			self.widgets.reload('popup')
 			popup = self.widgets['popup']
 		headline = popup.findChild(name='headline')
 		# just to be safe, the gettext-function is used twice,
