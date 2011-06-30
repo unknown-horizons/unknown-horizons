@@ -67,8 +67,7 @@ class WeaponHolder(object):
 		Callback executed when weapon is fired
 		"""
 		# remove in the next tick
-		f = lambda w: self._fireable.remove(w)
-		Scheduler().add_new_object(Callback(f, weapon), self)
+		Scheduler().add_new_object(Callback(self._fireable.remove, weapon), self)
 
 	def add_weapon_to_storage(self, weapon_id):
 		"""
@@ -110,21 +109,25 @@ class WeaponHolder(object):
 			return
 		#remove last weapon added
 		weapon = weapons[-1]
-		remove = False
-		#if cannon needs to be removed try decrease number
+		#
+		remove_from_storage = False
+		#if stackable weapon needs to be removed try decrease number
 		if self.session.db.get_weapon_stackable(weapon_id):
 			try:
 				weapon.decrease_number_of_weapons(1)
 			except SetStackableWeaponNumberError:
-				remove = True
+				remove_from_storage = True
 		else:
-			remove = True
+			remove_from_storage = True
 
-		if remove:
+		if remove_from_storage:
 			self._weapon_storage.remove(weapon)
 			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
 			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
-			self._fireable.remove(weapon)
+			try:
+				self._fireable.remove(weapon)
+			except ValueError:
+				pass
 
 		self.on_storage_modified()
 
@@ -151,12 +154,11 @@ class WeaponHolder(object):
 		try:
 			self.move(destination, callback = self.try_attack_target,
 				blocked_callback = self.try_attack_target)
+			if callback:
+				callback()
 		except MoveNotPossible:
 			if not_possible_action:
 				not_possible_action()
-
-		if callback:
-			callback()
 
 	def try_attack_target(self):
 		"""
@@ -168,31 +170,28 @@ class WeaponHolder(object):
 		if hasattr(self._target, 'health'):
 			print self._target,'has health:',self._target.health.health
 
-		dest = self._target.position.center()
-		attack_dest = dest
-		in_range = self.attack_in_range()
-
-		if not in_range:
+		if not self.attack_in_range():
 			if self.movable:
-				destination = Annulus(dest, self._min_range, self._max_range)
+				destination = Annulus(self._target.position.center(), self._min_range, self._max_range)
 				not_possible_action = self.stop_attack
 				# if target passes near self, attack!
 				callback = Callback(self.add_conditional_callback, self.attack_in_range, self.try_attack_target)
-				# if executes attack action try to move in 3 seconds
+				# if executes attack action try to move in 1 seconds
 				if self._instance.getCurrentAction().getId() in self.attack_actions:
 					Scheduler().add_new_object(Callback(self._move_and_attack, destination, not_possible_action, callback),
 						self, GAME_SPEED.TICKS_PER_SECOND)
 				else:
 					self._move_and_attack(destination, not_possible_action, callback)
 		else:
-			if self.movable and self.is_moving() and len(self._fireable):
+			if self.movable and self.is_moving() and self._fireable:
 				self.stop()
 
 			distance = self.position.distance(self._target.position)
+			dest = self._target.position.center()
 			if self._target.movable and self._target.is_moving():
-				attack_dest = self._target._next_target
+				dest = self._target._next_target
 
-			self.fire_all_weapons(attack_dest)
+			self.fire_all_weapons(dest)
 
 			if self.movable and distance > self._min_range:
 				# get closer
@@ -213,11 +212,11 @@ class WeaponHolder(object):
 		"""
 		if self._target is not None:
 			if self._target is not target:
-			#if target is changed remove the listener
+				#if target is changed remove the listener
 				if self._target.has_remove_listener(self.remove_target):
 					self._target.remove_remove_listener(self.remove_target)
 			else:
-			#else do not update the target
+				#else do not update the target
 				return
 		if not target.has_remove_listener(self.remove_target):
 			target.add_remove_listener(self.remove_target)
@@ -226,8 +225,16 @@ class WeaponHolder(object):
 		self.try_attack_target()
 
 	def remove_target(self):
+		"""
+		Removes refference from target,
+		this happens when the attack is stopped or the target is dead
+		either way the refs are checked using gc module
+		this is used because after unit death it's possbile that it still has refs
+		"""
 		if self._target is not None:
 			#NOTE test code if the unit is really dead
+			# weakref the target, collect the garbage, than check in 3 ticks if it was really removed
+			# weakref call should return none in that case
 			target_ref = weakref.ref(self._target)
 			def check_target_ref(target_ref):
 				if target_ref() is None:
@@ -252,8 +259,12 @@ class WeaponHolder(object):
 		self.remove_target()
 
 	def fire_all_weapons(self, dest):
-		#fires all weapons at a given position
-		if len(self._fireable) == 0:
+		"""
+		Fires all weapons in storage at a given position
+		@param dest : Point with the given position
+		"""
+
+		if not self._fireable:
 			return
 		distance = self.position.distance(dest)
 		for weapon in self._fireable:
@@ -264,7 +275,7 @@ class WeaponHolder(object):
 		weapons = {}
 		for weapon in self._weapon_storage:
 			number = 1
-			if weapon.weapon_id == WEAPONS.CANNON:
+			if self.session.db.get_weapon_stackable(weapon.weapon_id):
 				number = weapon.number_of_weapons
 			if weapon.weapon_id in weapons:
 				weapons[weapon.weapon_id] += number

@@ -119,7 +119,7 @@ class Weapon(object):
 		Checks if the distance between the weapon and target is in weapon range
 		@param distance : distance between weapon and target
 		"""
-		if distance >= self.weapon_range[0] and distance <= self.weapon_range[1]:
+		if self.weapon_range[0] <= distance <= self.weapon_range[1]:
 			return True
 		return False
 
