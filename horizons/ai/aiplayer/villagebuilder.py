@@ -20,6 +20,8 @@
 # ###################################################
 
 import copy
+import math
+
 from collections import deque
 
 from areabuilder import AreaBuilder
@@ -27,7 +29,7 @@ from builder import Builder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
 from horizons.constants import AI, BUILDINGS
-from horizons.util import Point
+from horizons.util import Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
@@ -38,6 +40,7 @@ class VillageBuilder(AreaBuilder):
 		self._create_plan()
 
 	def __init(self, settlement_manager):
+		self.land_manager = settlement_manager.land_manager
 		self.tents_to_build = 0
 		self.tent_queue = deque()
 		self._init_cache()
@@ -60,6 +63,92 @@ class VillageBuilder(AreaBuilder):
 			if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE or purpose == BUILDING_PURPOSE.RESIDENCE:
 				self.tents_to_build += 1
 		self._create_tent_queue()
+
+	def _get_village_section_coordinates(self, start_x, start_y, width, height):
+		result = set()
+		for dx in xrange(width):
+			for dy in xrange(height):
+				coords = (start_x + dx, start_y + dy)
+				if coords in self.land_manager.village and self.land_manager._coords_usable(coords):
+					result.add(coords)
+		return result
+
+	def _create_plan(self):
+		"""
+		1. find a way to cut the village area into rectangular sections
+		2. each section gets a plan with a main square, roads, and possible tent locations
+		3. the plan is stitched together and other village buildings are added
+		"""
+
+		xs = set([x for (x, _) in self.land_manager.village])
+		ys = set([y for (_, y) in self.land_manager.village])
+		max_size = 22
+
+		width = max(xs) - min(xs) + 1
+		height = max(ys) - min(ys) + 1
+		horizontal_sections = int(math.ceil(float(width) / max_size))
+		vertical_sections = int(math.ceil(float(height) / max_size))
+
+		sections = []
+		vertical_roads = []
+		horizontal_roads = []
+		if horizontal_sections == 1 and vertical_sections == 1:
+			# just one section, no extra roads needed
+			section = self._create_section_plan(self.land_manager.village, [], [])
+			sections.append(section[1])
+		elif horizontal_sections == 1:
+			# partition by the y coordinate
+			section_height = height / vertical_sections
+			start_x = min(xs)
+			start_y = min(ys)
+			for i in xrange(vertical_sections):
+				build_road = i + 1 < vertical_sections
+				max_y = min(max(ys), start_y + section_height)
+				current_height = max_y - start_y + 1
+				section_coords_set = self._get_village_section_coordinates(start_x, start_y, width, current_height - build_road)
+				section = self._create_section_plan(section_coords_set)
+				sections.append(section[1])
+				start_y += current_height
+				if build_road:
+					horizontal_roads.append(start_y - 1)
+		elif vertical_sections == 1:
+			# partition by the x coordinate
+			raise NotImplementedError
+			pass
+		else:
+			# partition both ways
+			raise NotImplementedError
+			pass
+
+		self._compose_sections(sections, vertical_roads, horizontal_roads)
+
+	def _compose_sections(self, sections, vertical_roads, horizontal_roads):
+		self.plan = {}
+		ys = set([y for (_, y) in self.land_manager.village])
+		for road_x in vertical_roads:
+			for road_y in ys:
+				coords = (road_x, road_y)
+				if self.land_manager._coords_usable(coords):
+					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+
+		xs = set([x for (x, _) in self.land_manager.village])
+		for road_y in horizontal_roads:
+			for road_x in xs:
+				coords = (road_x, road_y)
+				if self.land_manager._coords_usable(coords):
+					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+
+		for plan in sections:
+			for coords in plan:
+				if plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
+					builder = Builder.create(BUILDINGS.RESIDENTIAL_CLASS, self.land_manager, Point(coords[0], coords[1]))
+					plan[coords] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, builder)
+			self._optimize_plan(plan)
+			self._create_tent_queue(plan)
+			for coords in plan:
+				self.plan[coords] = plan[coords]
+		self.num_sections = len(sections)
+		self._reserve_other_buildings()
 
 	@classmethod
 	def _remove_unreachable_roads(cls, plan, main_square):
@@ -88,7 +177,32 @@ class VillageBuilder(AreaBuilder):
 		for coords in to_remove:
 			plan[coords] = (BUILDING_PURPOSE.NONE, None)
 
-	def _create_plan(self):
+	def _get_possible_road_positions(self, section_coords_set):
+		result = set()
+		for coords in section_coords_set:
+			if self.land_manager._coords_usable(coords):
+				result.add(coords)
+		return result
+
+	def _get_possible_residence_positions(self, section_coords_set):
+		size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
+		result = []
+		for (x, y) in section_coords_set:
+			ok = True
+			for dx in xrange(size[0]):
+				for dy in xrange(size[1]):
+					coords = (x + dx, y + dy)
+					if coords not in section_coords_set or not self.land_manager._coords_usable(coords):
+						ok = False
+						break
+				if not ok:
+					break
+			if ok:
+				result.append(((x, y), Rect.init_from_topleft_and_size(x, y, size[0] - 1, size[1] - 1)))
+		result.sort()
+		return result
+
+	def _create_section_plan(self, section_coords_set):
 		"""
 		The algorithm is as follows:
 		Place the main square and then form a road grid to support the tents;
@@ -96,26 +210,29 @@ class VillageBuilder(AreaBuilder):
 		impossible road locations.
 		"""
 
-		self.plan = {}
+		best_plan = {}
+		best_tents = 0
 		best_value = -1
-		xs = set([coords[0] for coords in self.land_manager.village])
-		ys = set([coords[1] for coords in self.land_manager.village])
+		xs = set([x for (x, _) in section_coords_set])
+		ys = set([y for (_, y) in section_coords_set])
 		tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
 		road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
 		main_square_size = Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].size
 		tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
 
-		for x, y in self.land_manager.village:
+		possible_road_positions = self._get_possible_road_positions(section_coords_set)
+		possible_residence_positions = self._get_possible_residence_positions(section_coords_set)
+
+		for x, y in section_coords_set:
 			# will it fit in the area?
-			if (x + main_square_size[0], y + main_square_size[1]) not in self.land_manager.village:
+			if (x + main_square_size[0], y + main_square_size[1]) not in section_coords_set:
 				continue
 
-			point = Point(x, y)
-			main_square = Builder.create(BUILDINGS.MARKET_PLACE_CLASS, self.land_manager, point)
+			main_square = Builder.create(BUILDINGS.MARKET_PLACE_CLASS, self.land_manager, Point(x, y))
 			if not main_square:
 				continue
 
-			plan = dict.fromkeys(self.land_manager.village, (BUILDING_PURPOSE.NONE, None))
+			plan = dict.fromkeys(section_coords_set, (BUILDING_PURPOSE.NONE, None))
 			bad_roads = 0
 			good_tents = 0
 
@@ -135,12 +252,8 @@ class VillageBuilder(AreaBuilder):
 						continue
 				for road_x in xs:
 					coords = (road_x, road_y)
-					if coords not in self.land_manager.village:
-						bad_roads += 1
-						continue
-					road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
-					if road:
-						plan[coords] = (BUILDING_PURPOSE.ROAD, road)
+					if coords in possible_road_positions:
+						plan[coords] = (BUILDING_PURPOSE.ROAD, None)
 					else:
 						bad_roads += 1
 
@@ -154,12 +267,8 @@ class VillageBuilder(AreaBuilder):
 						continue
 				for road_y in ys:
 					coords = (road_x, road_y)
-					if coords not in self.land_manager.village:
-						bad_roads += 1
-						continue
-					road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(road_x, road_y))
-					if road:
-						plan[coords] = (BUILDING_PURPOSE.ROAD, road)
+					if coords in possible_road_positions:
+						plan[coords] = (BUILDING_PURPOSE.ROAD, None)
 					else:
 						bad_roads += 1
 
@@ -167,17 +276,16 @@ class VillageBuilder(AreaBuilder):
 				self._remove_unreachable_roads(plan, main_square)
 
 			# place the tents
-			for coords in sorted(plan):
+			for coords, position in possible_residence_positions:
 				ok = True
 				for dx, dy in tent_squares:
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 not in plan or plan[coords2][0] != BUILDING_PURPOSE.NONE:
+					if plan[coords2][0] != BUILDING_PURPOSE.NONE:
 						ok = False
 						break
 				if not ok:
 					continue
-				tent = Builder.create(BUILDINGS.RESIDENTIAL_CLASS, self.land_manager, Point(coords[0], coords[1]))
-				if not tent or main_square.position.distance(tent.position) > tent_radius:
+				if main_square.position.distance(position) > tent_radius:
 					continue # unable to build or out of main square range
 
 				# is there a road connection?
@@ -192,19 +300,17 @@ class VillageBuilder(AreaBuilder):
 				if ok:
 					for dx, dy in tent_squares:
 						plan[(coords[0] + dx, coords[1] + dy)] = (BUILDING_PURPOSE.RESERVED, None)
-					plan[coords] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, tent)
+					plan[coords] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, None)
 					good_tents += 1
 
 			value = 10 * good_tents - bad_roads
 			if best_value < value:
-				self.plan = plan
-				self.tents_to_build = good_tents
+				best_plan = plan
+				best_tents = good_tents
 				best_value = value
-		self._optimize_plan()
-		self._reserve_other_buildings()
-		self._create_tent_queue()
+		return (best_tents, best_plan)
 
-	def _optimize_plan(self):
+	def _optimize_plan(self, plan):
 		# calculate distance from the main square to every tile
 		road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
 		tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
@@ -212,7 +318,7 @@ class VillageBuilder(AreaBuilder):
 		distance = {}
 		queue = deque()
 
-		for coords, (purpose, builder) in self.plan.iteritems():
+		for coords, (purpose, builder) in plan.iteritems():
 			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
 				for coords in builder.position.tuple_iter():
 					distance[coords] = 0
@@ -222,21 +328,21 @@ class VillageBuilder(AreaBuilder):
 			(x, y) = queue.popleft()
 			for dx, dy in moves:
 				coords = (x + dx, y + dy)
-				if coords in self.plan and coords not in distance:
+				if coords in plan and coords not in distance:
 					distance[coords] = distance[(x, y)] + 1
 					queue.append(coords)
 
 		# remove planned tents from the plan
-		for (x, y) in self.plan:
+		for (x, y) in plan:
 			coords = (x, y)
-			if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
+			if plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
 				for dx, dy in tent_squares:
-					self.register_change(x + dx, y + dy, BUILDING_PURPOSE.NONE, None)
+					plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.NONE, None)
 
 		# create new possible tent position list
 		possible_tents = []
-		for coords in self.plan:
-			if coords in distance and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
+		for coords in plan:
+			if coords in distance and plan[coords][0] == BUILDING_PURPOSE.NONE:
 				possible_tents.append((distance[coords], coords))
 		possible_tents.sort()
 
@@ -245,7 +351,7 @@ class VillageBuilder(AreaBuilder):
 			ok = True
 			for dx, dy in tent_squares:
 				coords = (x + dx, y + dy)
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				if coords not in plan or plan[coords][0] != BUILDING_PURPOSE.NONE:
 					ok = False
 					break
 			if not ok:
@@ -258,21 +364,21 @@ class VillageBuilder(AreaBuilder):
 			ok = False
 			for dx, dy in road_connections:
 				coords = (x + dx, y + dy)
-				if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.ROAD:
+				if coords in plan and plan[coords][0] == BUILDING_PURPOSE.ROAD:
 					ok = True
 					break
 
 			# connection to a road tile exists, build the tent
 			if ok:
 				for dx, dy in tent_squares:
-					self.register_change(x + dx, y + dy, BUILDING_PURPOSE.RESERVED, None)
-				self.register_change(x, y, BUILDING_PURPOSE.UNUSED_RESIDENCE, tent)
+					plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.RESERVED, None)
+				plan[(x, y)] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, tent)
 
-		self._return_unused_space()
+		self._return_unused_space(plan)
 
-	def _return_unused_space(self):
+	def _return_unused_space(self, plan):
 		not_needed = []
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _) in plan.iteritems():
 			if purpose == BUILDING_PURPOSE.NONE:
 				not_needed.append(coords)
 		for coords in not_needed:
@@ -340,11 +446,19 @@ class VillageBuilder(AreaBuilder):
 
 	def _reserve_other_buildings(self):
 		"""Replaces planned tents with a pavilion, school, and tavern."""
-		self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION, 4, 22)
-		self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL, 4, 22)
-		self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN, 4, 22)
+		# TODO: load these constants in a better way
+		max_capacity = 22
+		normal_capacity = 20
+		num_other_buildings = 0
+		tents = len(self.tent_queue)
+		while tents > 0:
+			num_other_buildings += 3
+			tents -= 3 + normal_capacity
+		self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION, num_other_buildings, max_capacity)
+		self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings, max_capacity)
+		self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN, num_other_buildings, max_capacity)
 
-	def _create_tent_queue(self):
+	def _create_tent_queue(self, plan):
 		""" This function takes the plan and orders all planned tents according to
 		the distance from the main square to the block they belong to. """
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
@@ -353,7 +467,7 @@ class VillageBuilder(AreaBuilder):
 
 		# form blocks of tents
 		main_square = None
-		for coords, (purpose, builder) in self.plan.iteritems():
+		for coords, (purpose, builder) in plan.iteritems():
 			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
 				main_square = builder
 			if purpose != BUILDING_PURPOSE.UNUSED_RESIDENCE or coords in block:
@@ -368,12 +482,12 @@ class VillageBuilder(AreaBuilder):
 				(x, y) = queue.popleft()
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
-					if coords not in self.plan or coords in explored:
+					if coords not in plan or coords in explored:
 						continue
-					if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE or self.plan[coords][0] == BUILDING_PURPOSE.RESERVED:
+					if plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE or plan[coords][0] == BUILDING_PURPOSE.RESERVED:
 						explored.add(coords)
 						queue.append(coords)
-						if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
+						if plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
 							block[coords] = len(blocks)
 							block_list.append(coords)
 			blocks.append(block_list)
@@ -387,22 +501,21 @@ class VillageBuilder(AreaBuilder):
 			block_distances.append((distance / len(coords_list), coords_list))
 
 		# form the sorted tent queue
-		self.tent_queue = deque()
 		block_distances.sort()
 		for _, block in block_distances:
 			for coords in sorted(block):
 				self.tent_queue.append(coords)
 
 	def build_roads(self):
-		for (purpose, builder) in self.plan.itervalues():
+		for (x, y), (purpose, _) in self.plan.iteritems():
 			if purpose == BUILDING_PURPOSE.ROAD:
-				builder.execute()
+				 Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(x, y)).execute()
 
 	def build_village_building(self, building_id, building_purpose):
 		for coords, (purpose, builder) in self.plan.iteritems():
 			if purpose == building_purpose:
-				object = self.land_manager.island.ground_map[coords]
-				if object is not None or object.id != building_id:
+				building = self.land_manager.island.ground_map[coords].object
+				if building is None or building.id != building_id:
 					if not builder.have_resources():
 						return BUILD_RESULT.NEED_RESOURCES
 					building = builder.execute()
@@ -412,9 +525,20 @@ class VillageBuilder(AreaBuilder):
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def build_main_square(self):
-		return self.build_village_building(BUILDINGS.MARKET_PLACE_CLASS, BUILDING_PURPOSE.MAIN_SQUARE)
+		result = self.build_village_building(BUILDINGS.MARKET_PLACE_CLASS, BUILDING_PURPOSE.MAIN_SQUARE)
+		if result == BUILD_RESULT.OK:
+			self.num_sections -= 1
+		return result
 
 	def build_tent(self):
+		# the expected tents may have been replaced with omething else
+		# TODO: fix it the right way
+		while self.tent_queue:
+			coords = self.tent_queue[0]
+			if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
+				break
+			self.tent_queue.popleft()
+
 		if self.tent_queue:
 			coords = self.tent_queue[0]
 			builder = self.plan[coords][1]

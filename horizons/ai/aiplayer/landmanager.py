@@ -35,7 +35,7 @@ class LandManager(WorldObject):
 	def __init__(self, island, owner):
 		super(LandManager, self).__init__()
 		self.__init(island, owner)
-		self._divide(23)
+		self._divide(20, 40)
 
 	def __init(self, island, owner):
 		self.island = island
@@ -101,7 +101,7 @@ class LandManager(WorldObject):
 				return False
 		return True
 
-	def _divide(self, village_size):
+	def _divide(self, side1, side2):
 		"""
 		Divides the area of the island so that there is a large lump for the village
 		and the rest for production.
@@ -111,22 +111,32 @@ class LandManager(WorldObject):
 
 		best_coords = (0, 0)
 		best_buildable = 0
+		best_sides = (None, None)
 
 		for (x, y), tile in self.island.ground_map.iteritems():
-			buildable = 0
-			for dy in xrange(village_size):
-				for dx in xrange(village_size):
-					if self._coords_usable((x + dx, y + dy)):
-						buildable += 1
-
-			if buildable > best_buildable:
-				best_coords = (x, y)
-				best_buildable = buildable
-				if buildable == village_size * village_size:
+			for switch in xrange(2):
+				# TODO: enable side switching
+				if switch:# and side1 == side2:
 					break
+				buildable = 0
+				width = side2 if switch else side1
+				height = side1 if switch else side2
+				for dx in xrange(width):
+					for dy in xrange(height):
+						if self._coords_usable((x + dx, y + dy)):
+							buildable += 1
 
-		for dy in xrange(village_size):
-			for dx in xrange(village_size):
+				if buildable > best_buildable:
+					best_coords = (x, y)
+					best_buildable = buildable
+					best_sides = (width, height)
+					if buildable == side1 * side2:
+						break
+			if best_buildable == side1 * side2:
+				break
+
+		for dx in xrange(best_sides[0]):
+			for dy in xrange(best_sides[1]):
 				coords = (best_coords[0] + dx, best_coords[1] + dy)
 				if self._coords_usable(coords):
 					self.village[coords] = self.island.ground_map[coords]

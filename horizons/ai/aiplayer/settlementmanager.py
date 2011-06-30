@@ -180,6 +180,8 @@ class SettlementManager(WorldObject):
 			if purpose != BUILDING_PURPOSE.RESIDENCE:
 				continue
 			tent = self.settlement.ground_map[coords].object
+			if tent.id != BUILDINGS.RESIDENTIAL_CLASS:
+				continue # most likely an abandoned tent
 			for production in tent._get_productions():
 				production_line = production._prod_line
 				if resource_id in production_line.consumed_res:
@@ -304,13 +306,16 @@ class SettlementManager(WorldObject):
 			pass
 		elif self.build_chain(self.boards_chain, 'boards producer'):
 			pass
+		elif self.village_builder.num_sections > 0:
+			result = self.village_builder.build_main_square()
+			self.log_generic_build_result(result, 'main square')
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
 			pass
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
 			pass
-		elif self.village_builder.tents_to_build > self.tents:
+		elif self.village_builder.tent_queue:
 			result = self.village_builder.build_tent()
-			self.log_generic_build_result(result,  'tent')
+			self.log_generic_build_result(result, 'tent')
 			if result == BUILD_RESULT.OK:
 				self.tents += 1
 		elif not self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
