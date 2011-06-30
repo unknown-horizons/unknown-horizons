@@ -57,6 +57,27 @@ def test_ticket_979(s, p):
 	# Let the collector reach the not existing target
 	s.run(seconds=10)
 
+@game_test
+def test_ticket_1016(s, p):
+	settlement, island = settle(s)
+
+	farm = _build_farm(30, 30, POTATO_FIELD, island, settlement, p)
+
+	# tear down job target, then home building (in the same tick)
+
+	torn_down = False
+	while not torn_down:
+		s.run(seconds=1)
+		for col in farm._CollectingBuilding__collectors:
+			if col.job:
+				Tear(col.job.object)(p)
+				Tear(farm)(p)
+				torn_down = True
+				break
+
+	s.run(seconds=30)
+
+
 
 @game_test
 def test_ticket_1005(s, p):

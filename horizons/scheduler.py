@@ -124,6 +124,10 @@ class Scheduler(LivingObject):
 				if callback_obj.class_instance is class_instance:
 					self.schedule[key].remove(callback_obj)
 
+		# filter additional callbacks as well
+		self.additional_cur_tick_schedule = \
+		    [ cb for cb in self.additional_cur_tick_schedule if cb.class_instance is not class_instance ]
+
 	def rem_call(self, instance, callback):
 		"""Removes all callbacks of 'instance' that are 'callback'
 		@param instance: the instance that would execute the call
