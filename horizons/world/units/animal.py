@@ -131,8 +131,8 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.home_island.wild_animals.append(self)
 
 		resources = self.get_needed_resources()
-		assert resources == [RES.WILDANIMALFOOD_ID]
-		self._required_resource_id = resources[0]
+		assert resources == [RES.WILDANIMALFOOD_ID] or resources == []
+		self._required_resource_id = RES.WILDANIMALFOOD_ID
 		self._building_index = self.home_island.get_building_index(self._required_resource_id)
 
 	def save(self, db):
