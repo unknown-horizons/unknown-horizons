@@ -232,7 +232,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.log.debug("%s end_job; health: %s", self, self.health)
 		self.health += WILD_ANIMAL.HEALTH_INCREASE_ON_FEEDING
 		if self.can_reproduce and self.health >= WILD_ANIMAL.HEALTH_LEVEL_TO_REPRODUCE and \
-			len(self.home_island.wild_animals) < (len(self.home_island.ground_map) // 10):
+			len(self.home_island.wild_animals) < (self.home_island.num_trees // WILD_ANIMAL.POPULATION_LIMIT):
 			self.reproduce()
 			# reproduction costs health
 			self.health = WILD_ANIMAL.HEALTH_INIT_VALUE

@@ -120,6 +120,7 @@ class Island(BuildingOwner, WorldObject):
 
 		self.settlements = []
 		self.wild_animals = []
+		self.num_trees = 0
 
 		self.path_nodes = IslandPathNodes(self)
 
@@ -280,6 +281,10 @@ class Island(BuildingOwner, WorldObject):
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
 
+		# keep track of the number of trees for animal population control
+		if building.id == BUILDINGS.TREE_CLASS:
+			self.num_trees += 1
+
 		return building
 
 	def remove_building(self, building):
@@ -295,6 +300,10 @@ class Island(BuildingOwner, WorldObject):
 		# Reset the tiles this building was covering (after building has been completely removed)
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
+
+		# keep track of the number of trees for animal population control
+		if building.id == BUILDINGS.TREE_CLASS:
+			self.num_trees -= 1
 
 	def get_building_index(self, resource_id):
 		if resource_id == RES.WILDANIMALFOOD_ID:

@@ -218,6 +218,9 @@ class WILD_ANIMAL:
 	HEALTH_INCREASE_ON_FEEDING = 8 # health increases by this value on feeding
 	HEALTH_DECREASE_ON_NO_JOB = 20 # health decreases by this value when they have no food
 	HEALTH_LEVEL_TO_REPRODUCE = 75 # this level has to be reached for reproducing
+	POPULATION_LIMIT = 20 # minimum number of trees per animal to allow reproducing
+	FOOD_AVAILABLE_ON_START = 0.5 # probability that a tree has wild animal food in the beginning
+	POPUlATION_INIT_RATIO = 10 # every N-th tree gets an animal in the beginning
 
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
