@@ -241,6 +241,10 @@ class FisherShipPather(ShipPather):
 	def _get_path_nodes(self):
 		return self.session.world.water_and_coastline
 
+	def _get_blocked_coords(self):
+		# don't let fisher be blocked by other ships (#1023)
+		return []
+
 
 class BuildingCollectorPather(AbstractPather):
 	"""Pather for collectors, that move freely (without depending on roads)

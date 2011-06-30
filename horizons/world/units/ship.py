@@ -189,16 +189,21 @@ class Ship(NamedObject, StorageHolder, Unit):
 	is_ship = True
 	is_selectable = True
 
+	in_ship_map = True # (#1023)
+
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		self.session.world.ships.append(self)
-		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+
+		if self.in_ship_map:
+			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
 		self.session.view.remove_change_listener()
-		del self.session.world.ship_map[self.position.to_tuple()]
+		if self.in_ship_map:
+			del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
@@ -208,19 +213,22 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
-		del self.session.world.ship_map[self.position.to_tuple()]
+		if self.in_ship_map:
+			del self.session.world.ship_map[self.position.to_tuple()]
 
 		try:
 			super(Ship, self)._move_tick(resume)
 		except PathBlockedError:
 			# if we fail to resume movement then the ship should still be on the map but the exception has to be raised again.
 			if resume:
-				self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+				if self.in_ship_map:
+					self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 			raise
 
-		# save current and next position for ship, since it will be between them
-		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-		self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
+		if self.in_ship_map:
+			# save current and next position for ship, since it will be between them
+			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+			self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
@@ -350,3 +358,5 @@ class FisherShip(FisherShipCollector, Ship):
 	pather_class = FisherShipPather
 	health_bar_y = -50
 	is_selectable = False
+
+	in_ship_map = False # (#1023)
