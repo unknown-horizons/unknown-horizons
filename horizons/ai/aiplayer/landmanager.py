@@ -115,8 +115,7 @@ class LandManager(WorldObject):
 
 		for (x, y), tile in self.island.ground_map.iteritems():
 			for switch in xrange(2):
-				# TODO: enable side switching
-				if switch:# and side1 == side2:
+				if switch and side1 == side2:
 					break
 				buildable = 0
 				width = side2 if switch else side1
