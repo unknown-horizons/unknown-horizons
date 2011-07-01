@@ -197,8 +197,6 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		#NOTE dummy cannon
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
 		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)

@@ -77,6 +77,10 @@ class MovingObject(ConcretObject):
 
 		self.path = self.pather_class(self, session=self.session)
 
+	def remove(self):
+		self.stop()
+		super(MovingObject, self).remove()
+
 	def check_move(self, destination):
 		"""Tries to find a path to destination
 		@param destination: destination supported by pathfinding

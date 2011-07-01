@@ -45,6 +45,7 @@ class WeaponHolder(object):
 
 	def remove(self):
 		self.remove_storage_modified_listener(self.update_range)
+		self.stop_attack()
 		for weapon in self._weapon_storage:
 			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
 			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
@@ -218,9 +219,10 @@ class WeaponHolder(object):
 		else:
 			units = self.session.world.get_ships(self.position, self._max_range)
 			target = None
-			for unit in units:
+			for unit in sorted(units, key = lambda u: self.position.distance(u.position)):
 				if self.session.world.diplomacy.are_enemies(unit.owner, self.owner):
 					target = unit
+					break
 			if target:
 				self.attack(target)
 		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 5)
