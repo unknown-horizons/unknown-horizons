@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import math
+
 from horizons.constants import AI, BUILDINGS
 from horizons.util.python import decorators
 from horizons.util import WorldObject
@@ -35,7 +37,64 @@ class LandManager(WorldObject):
 	def __init__(self, island, owner):
 		super(LandManager, self).__init__()
 		self.__init(island, owner)
-		self._divide(20, 40)
+		self._divide_island()
+
+	def _divide_island(self):
+		min_side = 18
+		max_side = 22
+
+		min_x, max_x = None, None
+		min_y, max_y = None, None
+		land = 0
+		for (x, y), tile in self.island.ground_map.iteritems():
+			if 'constructible' not in tile.classes:
+				continue
+			if tile.object is not None and not tile.object.buildable_upon:
+				continue
+			if tile.settlement is not None:
+				continue
+
+			land += 1
+			if min_x is None or x < min_x:
+				min_x = x
+			if max_x is None or x > max_x:
+				max_x = x
+			if min_y is None or y < min_y:
+				min_y = y
+			if max_y is None or y > max_y:
+				max_y = y
+		width = max_x - min_x + 1
+		height = max_y - min_y + 1
+
+		village_area = 0.28
+		if land > 40 * 40:
+			village_area = 0.3
+		elif land > 50 * 50:
+			village_area = 0.32
+		elif land > 60 * 60:
+			village_area = 0.35
+		chosen_area = max(9 * 9, int(round(land * village_area)))
+
+		side = int(math.floor(math.sqrt(chosen_area)))
+		if side <= max_side:
+			side = min(side, width)
+			self._divide(side, chosen_area // side)
+		else:
+			best_sections = 1000
+			best_side1 = None
+			best_side2 = None
+
+			for side1 in xrange(9, max(10, chosen_area // 9 + 1)):
+				real_side1 = min(side1, width)
+				real_side2 = min(chosen_area // real_side1, height)
+				horizontal_sections = int(math.ceil(float(real_side1) / max_side))
+				vertical_sections = int(math.ceil(float(real_side2) / max_side))
+				sections = horizontal_sections * vertical_sections
+				if best_sections > sections or (best_sections == sections and abs(real_side1 - real_side2) < abs(best_side1 - best_side2)):
+					best_sections = sections
+					best_side1 = real_side1
+					best_side2 = real_side2
+			self._divide(best_side1, best_side2)
 
 	def __init(self, island, owner):
 		self.island = island

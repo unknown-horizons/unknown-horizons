@@ -94,7 +94,7 @@ class VillageBuilder(AreaBuilder):
 		horizontal_roads = []
 		if horizontal_sections == 1 and vertical_sections == 1:
 			# just one section, no extra roads needed
-			section = self._create_section_plan(self.land_manager.village, [], [])
+			section = self._create_section_plan(self.land_manager.village)
 			sections.append(section[1])
 		else:
 			# partition with roads between the sections
