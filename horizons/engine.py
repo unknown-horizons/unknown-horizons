@@ -257,7 +257,8 @@ class Fife(ApplicationBase):
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
 		#self.eventmanager.setNonConsumableKeys([fife.Key.ESCAPE, fife.Key.F10])
-		self.guimanager = self.engine.getGuiManager()
+		pychan.init(self.engine)
+		self.guimanager = pychan.manager.hook.guimanager
 		self.console = self.guimanager.getConsole()
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
