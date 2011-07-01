@@ -228,6 +228,8 @@ class Minimap(object):
 		# update ship dots
 		self.renderer.removeAll("minimap_b_ship")
 		for ship in self.world.ship_map.itervalues():
+			if not ship():
+				continue
 			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
 			color = ship().owner.color.to_tuple()
 			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 2, 2)

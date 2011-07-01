@@ -39,7 +39,9 @@ class WeaponHolder(object):
 		self.create_weapon_storage()
 		self._target = None
 		self.add_storage_modified_listener(self.update_range)
+		self.stance = 'aggressive'
 		self.attack_actions = ['attack_left_as_huker0', 'attack_right_as_huker0']
+		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 10)
 
 	def remove(self):
 		self.remove_storage_modified_listener(self.update_range)
@@ -204,6 +206,24 @@ class WeaponHolder(object):
 			else:
 				# try in another second (weapons shouldn't be fired more often than that)
 				Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
+
+	def _stance_tick(self):
+		"""
+		Executes every few seconds, doing movement depending on the stance.
+		"""
+		if self._target:
+			return
+		if self.stance == 'defensive':
+			pass
+		else:
+			units = self.session.world.get_ships(self.position, self._max_range)
+			target = None
+			for unit in units:
+				if self.session.world.diplomacy.are_enemies(unit.owner, self.owner):
+					target = unit
+			if target:
+				self.attack(target)
+		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 5)
 
 	def attack(self, target):
 		"""
