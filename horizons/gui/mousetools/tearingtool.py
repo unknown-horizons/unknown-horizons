@@ -42,11 +42,11 @@ class TearingTool(NavigationTool):
 		self.oldedges = None
 		self.tear_tool_active = True
 		self.session.gui.on_escape = self.on_escape
-		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.tearing_cursor_image)
+		horizons.main.fife.cursor.set(horizons.main.fife.tearing_cursor_image)
 
 	def end(self):
 		self.tear_tool_active = False
-		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
+		horizons.main.fife.cursor.set(horizons.main.fife.default_cursor_image)
 		super(TearingTool, self).end()
 
 	def mouseDragged(self, evt):

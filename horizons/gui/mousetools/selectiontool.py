@@ -48,13 +48,13 @@ class SelectionTool(NavigationTool):
 				d = fife.Point(min(self.select_begin[0], evt.getX()), \
 											 max(self.select_begin[1], evt.getY()))
 				self.session.view.renderer['GenericRenderer'].addLine("select", \
-				                                                      fife.GenericRendererNode(a), fife.GenericRendererNode(b), 200, 200, 200)
+				                                                      fife.RendererNode(a), fife.RendererNode(b), 200, 200, 200)
 				self.session.view.renderer['GenericRenderer'].addLine("select", \
-				                                                      fife.GenericRendererNode(b), fife.GenericRendererNode(c), 200, 200, 200)
+				                                                      fife.RendererNode(b), fife.RendererNode(c), 200, 200, 200)
 				self.session.view.renderer['GenericRenderer'].addLine("select", \
-				                                                      fife.GenericRendererNode(d), fife.GenericRendererNode(c), 200, 200, 200)
+				                                                      fife.RendererNode(d), fife.RendererNode(c), 200, 200, 200)
 				self.session.view.renderer['GenericRenderer'].addLine("select", \
-				                                                      fife.GenericRendererNode(a), fife.GenericRendererNode(d), 200, 200, 200)
+				                                                      fife.RendererNode(a), fife.RendererNode(d), 200, 200, 200)
 			selectable = []
 			instances = self.session.view.cam.getMatchingInstances(\
 				fife.Rect(min(self.select_begin[0], evt.getX()), \

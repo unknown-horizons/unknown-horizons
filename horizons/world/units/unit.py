@@ -89,27 +89,27 @@ class Unit(AmbientSound, MovingObject):
 		height = int(5 * zoom)
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
-		mid_node_up = fife.GenericRendererNode(self._instance, \
+		mid_node_up = fife.RendererNode(self._instance, \
 									fife.Point(-width/2+int(((self.health/self.max_health)*width)),\
 		                                       y_pos-height)
 		                            )
-		mid_node_down = fife.GenericRendererNode(self._instance, \
+		mid_node_down = fife.RendererNode(self._instance, \
 		                                         fife.Point(
 		                                             -width/2+int(((self.health/self.max_health)*width))
 		                                             ,y_pos)
 		                                         )
 		if self.health != 0:
 			renderer.addQuad("health_" + str(self.worldid), \
-			                fife.GenericRendererNode(self._instance, \
+			                fife.RendererNode(self._instance, \
 			                                         fife.Point(-width/2, y_pos-height)), \
 			                mid_node_up, \
 			                mid_node_down, \
-			                fife.GenericRendererNode(self._instance, fife.Point(-width/2, y_pos)), \
+			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)), \
 			                0, 255, 0)
 		if self.health != self.max_health:
 			renderer.addQuad("health_" + str(self.worldid), mid_node_up, \
-			                 fife.GenericRendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
-			                 fife.GenericRendererNode(self._instance, fife.Point(width/2, y_pos)), \
+			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
+			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)), \
 			                 mid_node_down, 255, 0, 0)
 
 	def hide(self):

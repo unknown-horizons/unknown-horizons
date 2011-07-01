@@ -85,6 +85,9 @@ class Fife(ApplicationBase):
 
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
+		
+		logToPrompt, logToFile, debugPychan = True, True, False
+		self._log = fifelog.LogManager(self.engine, 1 if logToPrompt else 0, 1 if logToFile else 0)
 
 		self.loadSettings()
 
@@ -168,9 +171,14 @@ class Fife(ApplicationBase):
 		                        "1680x1050","1920x1080","1920x1200",] # Add more supported resolutions here.
 		current_state = self.engine_settings.isFullScreen()
 		self.engine_settings.setFullScreen(1)
-		for x,y in self.engine_settings.getPossibleResolutions():
-			if x >= 1024 and y >= 768 and str(x) + "x" + str(y) not in possible_resolutions:
-				possible_resolutions.append(str(x) + "x" + str(y))
+		modes = self.engine.getDeviceCaps().getSupportedScreenModes()
+		for mode in modes:
+			if mode.isFullScreen():
+				x = mode.getWidth
+				y = mode.getHeight()
+				txt = str(x) + "x" + str(y)
+				if x >= 1024 and y >= 768 and txt not in possible_resolutions:
+					possible_resolutions.append(txt)
 		self.engine_settings.setFullScreen(current_state)
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = possible_resolutions
 
@@ -254,16 +262,14 @@ class Fife(ApplicationBase):
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
 		self.setup_sound()
-		self.imagepool = self.engine.getImagePool()
-		self.animationpool = self.engine.getAnimationPool()
+		self.imagemanager = self.engine.getImageManager()
 		self.animationloader = SQLiteAnimationLoader()
-		self.animationpool.addResourceLoader(self.animationloader)
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
-		self.default_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor.png')
-		self.tearing_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_tear.png')
-		self.cursor.set(fife.CURSOR_IMAGE, self.default_cursor_image)
+		self.default_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor.png')
+		self.tearing_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor_tear.png')
+		self.cursor.set(self.default_cursor_image)
 
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)

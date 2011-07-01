@@ -180,7 +180,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
-	fife.cursor.set(fife_module.CURSOR_IMAGE, fife.default_cursor_image)
+	fife.cursor.set(fife.default_cursor_image)
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
@@ -218,7 +218,7 @@ def prepare_multiplayer(game):
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
-	fife.cursor.set(fife_module.CURSOR_IMAGE, fife.default_cursor_image)
+	fife.cursor.set(fife.default_cursor_image)
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()

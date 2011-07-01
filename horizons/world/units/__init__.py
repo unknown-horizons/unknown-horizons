@@ -84,8 +84,8 @@ class UnitClass(type):
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in action_sets[action_set_id][action_id].iterkeys():
-					anim_id = horizons.main.fife.animationpool.addResourceFromFile( \
+					anim = horizons.main.fife.animationloader.loadResource( \
 						str(action_set_id)+"-"+str(action_id)+"-"+ \
 						str(rotation) + ':shift:center+0,bottom+8')
-					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
-					action.setDuration(horizons.main.fife.animationpool.getAnimation(anim_id).getDuration())
+					action.get2dGfxVisual().addAnimation(int(rotation), anim)
+					action.setDuration(anim.getDuration())
