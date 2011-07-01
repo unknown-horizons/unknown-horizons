@@ -203,7 +203,10 @@ class WeaponHolder(object):
 					Scheduler().add_new_object(Callback(self._move_and_attack, destination),
 						self, GAME_SPEED.TICKS_PER_SECOND)
 				else:
-					self._move_and_attack(destination)
+					callback = None
+					if self._target.movable and	self._target.is_moving():
+						callback = Callback(self.add_conditional_callback, self.attack_in_range, self.try_attack_target)
+					self._move_and_attack(destination, callback = callback)
 			else:
 				# try in another second (weapons shouldn't be fired more often than that)
 				Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
@@ -212,20 +215,24 @@ class WeaponHolder(object):
 		"""
 		Executes every few seconds, doing movement depending on the stance.
 		"""
-		if self._target:
-			return
+
+		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 5)
+
 		if self.stance == 'defensive':
 			pass
 		else:
-			units = self.session.world.get_ships(self.position, self._max_range)
+			units = self.session.world.get_ships(self.position, max(self._max_range, self.radius * 2))
+			# if other target selected than the one in range attack that one
+			# this means keeping the current target while passing near other enemy units
+			if self._target and self._target not in units:
+				return
 			target = None
 			for unit in sorted(units, key = lambda u: self.position.distance(u.position)):
 				if self.session.world.diplomacy.are_enemies(unit.owner, self.owner):
 					target = unit
 					break
-			if target:
+			if target and self._target is not target:
 				self.attack(target)
-		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 5)
 
 	def attack(self, target):
 		"""
