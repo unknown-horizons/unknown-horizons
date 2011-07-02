@@ -172,7 +172,7 @@ class FarmEvaluator(BuildingEvaluator):
 		new_cache_changes = (area_builder.island.last_change_id, area_builder.last_change_id)
 		if new_cache_changes != cls.cache_changes:
 			cls.cache_changes = new_cache_changes
-			cls.cache = {}
+			cls.cache.clear()
 		key = (area_builder.owner, farm_x, farm_y, road_dx, road_dy)
 		if key not in cls.cache:
 			cls.cache[key] = cls._create(area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose)
