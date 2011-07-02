@@ -121,6 +121,7 @@ class VillageBuilder(AreaBuilder):
 
 		self._compose_sections(sections, vertical_roads, horizontal_roads)
 		self._return_unused_space()
+		self._clean_tent_queue()
 
 	def _compose_sections(self, sections, vertical_roads, horizontal_roads):
 		self.plan = {}
@@ -491,20 +492,19 @@ class VillageBuilder(AreaBuilder):
 			for coords in sorted(block):
 				self.tent_queue.append(coords)
 
+	def _clean_tent_queue(self):
+		queue = deque()
+		for coords in self.tent_queue:
+			if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
+				queue.append(coords)
+		self.tent_queue = queue
+
 	def build_roads(self):
 		for (x, y), (purpose, _) in self.plan.iteritems():
 			if purpose == BUILDING_PURPOSE.ROAD:
 				 Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(x, y)).execute()
 
 	def build_tent(self):
-		# the expected tents may have been replaced with omething else
-		# TODO: fix it the right way
-		while self.tent_queue:
-			coords = self.tent_queue[0]
-			if self.plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
-				break
-			self.tent_queue.popleft()
-
 		if self.tent_queue:
 			coords = self.tent_queue[0]
 			builder = self.plan[coords][1]
