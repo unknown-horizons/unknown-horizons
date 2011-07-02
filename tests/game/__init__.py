@@ -176,7 +176,9 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED):
 	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True}]
 
 	session.load(mapgen(), players)
-	session.world.trader = Trader(session, 99999, 'Free Trader', Color())
+	# use different trader id here, so that init_new_world can be called
+	# (else there would be a worldid conflict)
+	session.world.trader = Trader(session, 99999 + 42, 'Free Trader', Color())
 
 	return session, session.world.player
 
