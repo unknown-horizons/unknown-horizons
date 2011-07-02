@@ -46,7 +46,6 @@ class SettlementManager(WorldObject):
 
 	class buildCallType:
 		village_roads = 1
-		village_main_square = 2
 
 	def __init__(self, land_manager, branch_office):
 		super(SettlementManager, self).__init__()
@@ -60,6 +59,7 @@ class SettlementManager(WorldObject):
 		self.resource_manager = ResourceManager()
 
 		# TODO: load the production chains
+		self.community_chain = ProductionChain.create(self, RES.COMMUNITY_ID)
 		self.boards_chain = ProductionChain.create(self, RES.BOARDS_ID)
 		self.food_chain = ProductionChain.create(self, RES.FOOD_ID)
 		self.textile_chain = ProductionChain.create(self, RES.TEXTILE_ID)
@@ -74,7 +74,6 @@ class SettlementManager(WorldObject):
 		self.village_built = False
 
 		self.build_queue.append(self.buildCallType.village_roads)
-		self.build_queue.append(self.buildCallType.village_main_square)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
 		self.set_taxes_and_permissions(0.5, False, False)
 
@@ -295,20 +294,17 @@ class SettlementManager(WorldObject):
 			task_type = self.build_queue.popleft()
 			if task_type == self.buildCallType.village_roads:
 				self.village_builder.build_roads()
-			elif task_type == self.buildCallType.village_main_square:
-				self.village_builder.build_main_square()
 			else:
 				assert False, 'unknown building in build queue'
 		elif not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result,  'storage')
+		elif self.build_chain(self.community_chain, 'main square'):
+			pass
 		elif self.build_chain(self.food_chain, 'food producer'):
 			pass
 		elif self.build_chain(self.boards_chain, 'boards producer'):
 			pass
-		elif self.village_builder.num_sections > 0:
-			result = self.village_builder.build_main_square()
-			self.log_generic_build_result(result, 'main square')
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
 			pass
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):

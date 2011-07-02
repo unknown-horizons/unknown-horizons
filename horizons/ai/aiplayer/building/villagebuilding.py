@@ -33,6 +33,8 @@ class AbstractVillageBuilding(AbstractBuilding):
 			return BUILDING_PURPOSE.VILLAGE_SCHOOL
 		elif resource_id == RES.GET_TOGETHER_ID:
 			return BUILDING_PURPOSE.TAVERN
+		elif resource_id == RES.COMMUNITY_ID:
+			return BUILDING_PURPOSE.MAIN_SQUARE
 		return None
 
 	def build(self, settlement_manager, resource_id):
@@ -53,11 +55,12 @@ class AbstractVillageBuilding(AbstractBuilding):
 
 	@property
 	def coverage_building(self):
-		""" pavilions, schools, and taverns are buildings that need to be built even if the total production is enough """
+		""" main squares, pavilions, schools, and taverns are buildings that need to be built even if the total production is enough """
 		return True
 
 	@classmethod
 	def register_buildings(cls):
+		cls.available_buildings[BUILDINGS.MARKET_PLACE_CLASS] = cls
 		cls.available_buildings[BUILDINGS.PAVILION_CLASS] = cls
 		cls.available_buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS] = cls
 		cls.available_buildings[BUILDINGS.TAVERN_CLASS] = cls

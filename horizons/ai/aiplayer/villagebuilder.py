@@ -500,25 +500,6 @@ class VillageBuilder(AreaBuilder):
 			if purpose == BUILDING_PURPOSE.ROAD:
 				 Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(x, y)).execute()
 
-	def build_village_building(self, building_id, building_purpose):
-		for coords, (purpose, builder) in self.plan.iteritems():
-			if purpose == building_purpose:
-				building = self.land_manager.island.ground_map[coords].object
-				if building is None or building.id != building_id:
-					if not builder.have_resources():
-						return BUILD_RESULT.NEED_RESOURCES
-					building = builder.execute()
-					if not building:
-						return BUILD_RESULT.UNKNOWN_ERROR
-					return BUILD_RESULT.OK
-		return BUILD_RESULT.IMPOSSIBLE
-
-	def build_main_square(self):
-		result = self.build_village_building(BUILDINGS.MARKET_PLACE_CLASS, BUILDING_PURPOSE.MAIN_SQUARE)
-		if result == BUILD_RESULT.OK:
-			self.num_sections -= 1
-		return result
-
 	def build_tent(self):
 		# the expected tents may have been replaced with omething else
 		# TODO: fix it the right way
