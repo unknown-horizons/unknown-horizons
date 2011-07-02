@@ -37,6 +37,12 @@ class AbstractVillageBuilding(AbstractBuilding):
 			return BUILDING_PURPOSE.MAIN_SQUARE
 		return None
 
+	def in_settlement(self, settlement_manager, position):
+		for coords in position.tuple_iter():
+			if coords not in settlement_manager.settlement.ground_map:
+				return False
+		return True
+
 	def build(self, settlement_manager, resource_id):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
@@ -47,6 +53,8 @@ class AbstractVillageBuilding(AbstractBuilding):
 				if object is None or object.id != self.id:
 					if not builder.have_resources():
 						return (BUILD_RESULT.NEED_RESOURCES, None)
+					if not self.in_settlement(settlement_manager, builder.position):
+						return (BUILD_RESULT.OUT_OF_SETTLEMENT, builder.position)
 					building = builder.execute()
 					if not building:
 						return (BUILD_RESULT.UNKNOWN_ERROR, None)

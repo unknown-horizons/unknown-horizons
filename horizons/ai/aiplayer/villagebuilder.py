@@ -44,6 +44,7 @@ class VillageBuilder(AreaBuilder):
 		self.tents_to_build = 0
 		self.tent_queue = deque()
 		self._init_cache()
+		self.roads_built = False
 
 	def save(self, db):
 		super(VillageBuilder, self).save(db, 'ai_village_builder_coords')
@@ -500,22 +501,41 @@ class VillageBuilder(AreaBuilder):
 		self.tent_queue = queue
 
 	def build_roads(self):
-		for (x, y), (purpose, _) in self.plan.iteritems():
-			if purpose == BUILDING_PURPOSE.ROAD:
-				 Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(x, y)).execute()
+		all_built = True
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose != BUILDING_PURPOSE.ROAD:
+				continue
+			object = self.island.ground_map[coords].object
+			if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
+				continue
+			if Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(coords[0], coords[1])).execute() is None:
+				all_built = False
+		self.roads_built = all_built
 
-	def build_tent(self):
-		if self.tent_queue:
+	def build_tent(self, coords = None):
+		if not self.tent_queue:
+			return BUILD_RESULT.IMPOSSIBLE
+		if coords is None:
 			coords = self.tent_queue[0]
-			builder = self.plan[coords][1]
-			if not builder.have_resources():
-				return BUILD_RESULT.NEED_RESOURCES
-			if not builder.execute():
-				return BUILD_RESULT.UNKNOWN_ERROR
-			self.register_change(coords[0], coords[1], BUILDING_PURPOSE.RESIDENCE, builder)
+
+		builder = self.plan[coords][1]
+		if not builder.have_resources():
+			return BUILD_RESULT.NEED_RESOURCES
+		if not builder.execute():
+			return BUILD_RESULT.UNKNOWN_ERROR
+
+		self.register_change(coords[0], coords[1], BUILDING_PURPOSE.RESIDENCE, builder)
+		if self.tent_queue[0] == coords:
 			self.tent_queue.popleft()
-			return BUILD_RESULT.OK
-		return BUILD_RESULT.IMPOSSIBLE
+		else:
+			for i in xrange(len(self.tent_queue)):
+				if self.tent_queue[i] == coords:
+					del self.tent_queue[i]
+					break
+
+		if not self.roads_built:
+			self.build_roads()
+		return BUILD_RESULT.OK
 
 	def count_tents(self):
 		tents = 0

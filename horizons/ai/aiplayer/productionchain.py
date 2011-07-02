@@ -28,7 +28,7 @@ from horizons.entities import Entities
 from horizons.constants import BUILDINGS
 from horizons.command.building import Build
 from horizons.util.python import decorators
-from horizons.util import Point, WorldObject
+from horizons.util import Point, Rect, WorldObject
 
 class ProductionChain:
 	log = logging.getLogger("ai.aiplayer.productionchain")
@@ -199,6 +199,41 @@ class ProductionChainSubtree:
 			return True
 		return amount > self.get_root_production_level() + 1e-7
 
+	def _extend_settlement_with_tent(self, position):
+		size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
+		min_distance = None
+		best_coords = None
+
+		for (x, y) in self.settlement_manager.village_builder.tent_queue:
+			ok = True
+			for dx in xrange(size[0]):
+				for dy in xrange(size[1]):
+					if (x + dx, y + dy) not in self.settlement_manager.settlement.ground_map:
+						ok = False
+						break
+			if not ok:
+				continue
+
+			distance = Rect.init_from_topleft_and_size(x, y, size[0] - 1, size[1] - 1).distance(position)
+			if min_distance is None or distance < min_distance:
+				min_distance = distance
+				best_coords = (x, y)
+
+		if min_distance is None:
+			return BUILD_RESULT.IMPOSSIBLE
+		return self.settlement_manager.village_builder.build_tent(best_coords)
+
+	def _extend_settlement_with_storage(self, position):
+		raise NotImplementedError, 'TODO'
+
+	def _extend_settlement(self, position):
+		""" build a tent or a storage to extend the settlement towards the position """
+		result = self._extend_settlement_with_tent(position)
+		if result != BUILD_RESULT.OK:
+			result = self._extend_settlement_with_storage(position)
+		print 'extend settlement', result
+		return result
+
 	def build(self, amount):
 		# request a quota change (could be lower or higher)
 		self.resource_manager.request_quota_change(self, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
@@ -220,6 +255,8 @@ class ProductionChainSubtree:
 			if result == BUILD_RESULT.OK:
 				self.resource_manager.add_building(building, self.resource_id)
 				self.resource_manager.request_quota_change(self, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+			elif result == BUILD_RESULT.OUT_OF_SETTLEMENT:
+				return self._extend_settlement(building)
 			return result
 		return BUILD_RESULT.ALL_BUILT
 
