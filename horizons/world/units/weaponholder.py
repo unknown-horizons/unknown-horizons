@@ -39,7 +39,7 @@ class WeaponHolder(object):
 		self.create_weapon_storage()
 		self._target = None
 		self.add_storage_modified_listener(self.update_range)
-		self.stance = 'aggressive'
+		self.stance = 'defensive'
 		self.attack_actions = ['attack_left_as_huker0', 'attack_right_as_huker0']
 		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 10)
 
@@ -216,28 +216,37 @@ class WeaponHolder(object):
 		Executes every few seconds, doing movement depending on the stance.
 		"""
 
-		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 5)
+		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 3)
+
+		enemies = [u for u in self.session.world.get_ships(self.position.center(), max(self._max_range, self.radius * 2)) \
+			if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
+
+		if not enemies:
+			return
 
 		if self.stance == 'defensive':
-			pass
+			# enemies are all the units that target a friendly unit
+			enemies = [u for u in enemies if hasattr(u, '_target') and u._target and u._target.owner is self.owner]
+			if enemies:
+				target = sorted(enemies, key = lambda u: self.position.distance(u.position))[0]
+				# move away from the target after firing
+				if self._fireable:
+					self.fire_all_weapons(target.position.center())
+				else:
+					self.move(Annulus(target.position.center(), target._max_range + 1, target._max_range * 2))
 		else:
-			units = self.session.world.get_ships(self.position, max(self._max_range, self.radius * 2))
 			# if other target selected than the one in range attack that one
 			# this means keeping the current target while passing near other enemy units
-			if self._target and self._target not in units:
+			if self._target and self._target not in enemies:
 				return
-			target = None
-			for unit in sorted(units, key = lambda u: self.position.distance(u.position)):
-				if self.session.world.diplomacy.are_enemies(unit.owner, self.owner):
-					target = unit
-					break
-			if target and self._target is not target:
-				self.attack(target)
+			target = sorted(enemies, key = lambda u: self.position.distance(u.position))[0]
+			self.attack(target)
 
 	def attack(self, target):
 		"""
 		Triggers attack on target
 		@param target : target to be attacked
+		@param move : wether the unit to move or not when attacking
 		"""
 		if self._target is not None:
 			if self._target is not target:
@@ -250,6 +259,7 @@ class WeaponHolder(object):
 		if not target.has_remove_listener(self.remove_target):
 			target.add_remove_listener(self.remove_target)
 		self._target = target
+		self.stance = 'aggressive'
 
 		self.try_attack_target()
 

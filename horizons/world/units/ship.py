@@ -1,4 +1,4 @@
-# ###################################################
+ ###################################################
 # Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -360,7 +360,6 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		if len(self._fireable) == 0:
 			return
 
-		target_location = self._target._instance.getLocation()
 		self_location = self._instance.getLocation()
 		facing_location = self._instance.getFacingLocation()
 
@@ -368,8 +367,8 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		x1 = self_location.getMapCoordinates().x
 		y1 = self_location.getMapCoordinates().y
 		# target coords
-		x2 = target_location.getMapCoordinates().x
-		y2 = target_location.getMapCoordinates().y
+		x2 = dest.x
+		y2 = dest.y
 		# facing coords
 		x3 = facing_location.getMapCoordinates().x
 		y3 = facing_location.getMapCoordinates().y
