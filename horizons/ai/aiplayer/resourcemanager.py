@@ -82,7 +82,7 @@ class SingleResourceManager:
 			change = self.total - production
 			if change > self.available and self.total - self.available > 1e-7:
 				# unable to honour current quota assignments, decreasing all equally
-				multiplier = (self.total - self.available) / production
+				multiplier = 0.0 if abs(production) < 1e-7 else (self.total - self.available) / production
 				for quota_holder in self.quotas:
 					amount = self.quotas[quota_holder]
 					if amount > 1e-7:
