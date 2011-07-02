@@ -65,11 +65,12 @@ class VillageBuilder(AreaBuilder):
 		self._create_tent_queue()
 
 	def _get_village_section_coordinates(self, start_x, start_y, width, height):
+		bo_coords_set = set(self.land_manager.settlement.branch_office.position.tuple_iter())
 		result = set()
 		for dx in xrange(width):
 			for dy in xrange(height):
 				coords = (start_x + dx, start_y + dy)
-				if coords in self.land_manager.village and self.land_manager._coords_usable(coords):
+				if coords in self.land_manager.village and self.land_manager._coords_usable(coords) and coords not in bo_coords_set:
 					result.add(coords)
 		return result
 
@@ -92,37 +93,34 @@ class VillageBuilder(AreaBuilder):
 		sections = []
 		vertical_roads = []
 		horizontal_roads = []
-		if horizontal_sections == 1 and vertical_sections == 1:
-			# just one section, no extra roads needed
-			section = self._create_section_plan(self.land_manager.village)
-			sections.append(section[1])
-		else:
-			# partition with roads between the sections
-			start_y = min(ys)
-			section_width = width / horizontal_sections
-			section_height = height / vertical_sections
-			for i in xrange(vertical_sections):
-				bottom_road = i + 1 < vertical_sections
-				max_y = min(max(ys), start_y + section_height)
-				current_height = max_y - start_y + 1
-				start_x = min(xs)
 
-				for j in xrange(horizontal_sections):
-					right_road = j + 1 < horizontal_sections
-					max_x = min(max(xs), start_x + section_width)
-					current_width = max_x - start_x + 1
-					section_coords_set = self._get_village_section_coordinates(start_x, start_y, current_width - right_road, current_height - bottom_road)
-					section = self._create_section_plan(section_coords_set)
-					sections.append(section[1])
-					start_x += current_width
-					if i == 0 and right_road:
-						vertical_roads.append(start_x - 1)
+		# partition with roads between the sections
+		start_y = min(ys)
+		section_width = width / horizontal_sections
+		section_height = height / vertical_sections
+		for i in xrange(vertical_sections):
+			bottom_road = i + 1 < vertical_sections
+			max_y = min(max(ys), start_y + section_height)
+			current_height = max_y - start_y + 1
+			start_x = min(xs)
 
-				start_y += current_height
-				if bottom_road:
-					horizontal_roads.append(start_y - 1)
+			for j in xrange(horizontal_sections):
+				right_road = j + 1 < horizontal_sections
+				max_x = min(max(xs), start_x + section_width)
+				current_width = max_x - start_x + 1
+				section_coords_set = self._get_village_section_coordinates(start_x, start_y, current_width - right_road, current_height - bottom_road)
+				section = self._create_section_plan(section_coords_set)
+				sections.append(section[1])
+				start_x += current_width
+				if i == 0 and right_road:
+					vertical_roads.append(start_x - 1)
+
+			start_y += current_height
+			if bottom_road:
+				horizontal_roads.append(start_y - 1)
 
 		self._compose_sections(sections, vertical_roads, horizontal_roads)
+		self._return_unused_space()
 
 	def _compose_sections(self, sections, vertical_roads, horizontal_roads):
 		self.plan = {}
@@ -363,12 +361,10 @@ class VillageBuilder(AreaBuilder):
 					plan[(x + dx, y + dy)] = (BUILDING_PURPOSE.RESERVED, None)
 				plan[(x, y)] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, None)
 
-		self._return_unused_space(plan)
-
-	def _return_unused_space(self, plan):
+	def _return_unused_space(self):
 		not_needed = []
-		for coords, (purpose, _) in plan.iteritems():
-			if purpose == BUILDING_PURPOSE.NONE:
+		for coords in self.land_manager.village:
+			if coords not in self.plan or self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				not_needed.append(coords)
 		for coords in not_needed:
 			self.land_manager.add_to_production(coords)
