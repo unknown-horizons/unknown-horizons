@@ -101,25 +101,6 @@ def test_ticket_1005(s, p):
 	assert len(s.world.ships) == 3
 
 
-
-def test_no_clay():
-	r = random.Random(RANDOM_SEED)
-
-	@game_test
-	def do_test(s, p, local_seed):
-		s.random.seed( local_seed )
-		s.world.init_new_world() # set up trees, clay..
-		for island in s.world.islands:
-			for building in island.buildings:
-				if building.id == CLAY_PIT:
-					assert building.inventory[RAW_CLAY]
-				elif building.id == MOUNTAIN:
-					assert building.inventory[RAW_IRON]
-
-	for i in xrange(100):
-		yield do_test, r.random()
-
-
 def test_brick_tool_interference():
 	"""
 	Running the brick test at first will break the tool test.
