@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-07-03 03:36+0200\n"
+"PO-Revision-Date: 2011-07-03 03:21+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -242,6 +242,9 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Não foi possível ligar ao servidor principal. Por favor, verifique a sua "
+"ligação de Internet. Se não for da sua ligação então o é o nosso servidor "
+"principal que está temporariamente em baixo."
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -578,7 +581,7 @@ msgstr "Custos de manutenção:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "String Previewer Tool for Scenario files"
-msgstr ""
+msgstr "Expressão (comando) para pré-visualizar ficheiros de cenário."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
