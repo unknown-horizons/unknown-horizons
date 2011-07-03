@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-28 19:23+0200\n"
+"PO-Revision-Date: 2011-07-03 22:18+0200\n"
 "Last-Translator: tintou <tintou@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -46,9 +46,9 @@ msgid ""
 "Use at own risk!"
 msgstr ""
 "Le \"SDL-Renderer\" est uniquement un système de réserve et peut engendrer de "
-"sérieux problèmes graphiques.\n"
+"gravesérieux problèmes graphiques.\n"
 "\n"
-"Utilisation à vos propres risques!"
+"Utilisation à vos propres risques et périls !"
 
 #: horizons/engine.py:198
 #, python-format
@@ -99,7 +99,7 @@ msgstr "Échec de la sauvegarde."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Êtes vous sûr de vouloir quitter Unknown Horizons ?"
+msgstr "Voulez-vous vraiment quitter Unknown Horizons ?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
@@ -107,11 +107,11 @@ msgstr "Quitter la partie"
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr "Êtes vous sûr de vouloir abandonner la session en cours ?"
+msgstr "Voulez-vous vraiment abandonner la partie en cours ?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
-msgstr "Quitter la session"
+msgstr "Abandonner la partie"
 
 #: horizons/gui/gui.py:199
 msgid "No saved games"
@@ -143,7 +143,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:253
 msgid "Confirmation for overwriting"
-msgstr "Confirmation d'écrasement"
+msgstr "Confirmation de l'écrasement"
 
 #: horizons/gui/gui.py:261
 msgid "Please select a savegame or click on cancel."
@@ -688,7 +688,7 @@ msgstr "Or"
 
 #: horizons/i18n/guitranslations.py:113
 msgid "Enter new name:"
-msgstr "Entrer un nouveau nom:"
+msgstr "Entrer un nouveau nom :"
 
 #: horizons/i18n/guitranslations.py:114
 msgid "Change name"
@@ -696,7 +696,7 @@ msgstr "Changer le nom"
 
 #: horizons/i18n/guitranslations.py:116
 msgid "Enter your message:"
-msgstr "Entrer votre message:"
+msgstr "Entrer votre message :"
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Chat"
@@ -768,7 +768,7 @@ msgstr "Crédits"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Cancel game"
-msgstr "Annuler la partie"
+msgstr "Abandonner la partie"
 
 #: horizons/i18n/guitranslations.py:145 horizons/i18n/guitranslations.py:183
 #: horizons/i18n/guitranslations.py:221
