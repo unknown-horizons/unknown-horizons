@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-25 15:03+0200\n"
+"PO-Revision-Date: 2011-06-25 15:04+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb\n"
@@ -1269,7 +1269,6 @@ msgid "Click to change the name of this ship."
 msgstr "Klikk for å bytte navn på skipet."
 
 #: horizons/i18n/guitranslations.py:325
-#, fuzzy
 msgid "Build settlement"
 msgstr "Bygg bosetning"
 
