@@ -24,6 +24,7 @@ import random
 from horizons.command.building import Build, Tear
 
 from tests.game import settle, game_test, RANDOM_SEED
+from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
 from tests.game.test_farm import _build_farm, POTATO_FIELD
 
 
@@ -119,4 +120,17 @@ def test_no_clay():
 		yield do_test, r.random()
 
 
+def test_brick_tool_interference():
+	"""
+	Running the brick test at first will break the tool test.
+	"""
+	test_brick_production_chain()
+	test_tool_production_chain()
 
+
+def test_tool_brick_interference():
+	"""
+	Running the tool test at first will break the brick test.
+	"""
+	test_tool_production_chain()
+	test_brick_production_chain()

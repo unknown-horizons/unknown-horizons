@@ -26,7 +26,6 @@ from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.constants import BUILDINGS, UNITS
 
-from nose.plugins.skip import SkipTest
 from tests.game import game_test, settle
 
 
@@ -121,11 +120,10 @@ def test_brick_production_chain(s, p):
 	"""
 	A brickyard makes bricks from clay. Clay is collected by a clay pit on a deposit.
 	"""
-	raise SkipTest('Building a clay pit breaks the tool_production_chain test.')
-
 	settlement, island = settle(s)
 
 	assert Build(BUILDINGS.CLAY_DEPOSIT_CLASS, 30, 30, island, ownerless=True)(None)
+	# THIS breaks test_tool_production_chain
 	assert Build(CLAY_PIT, 30, 30, island, settlement=settlement)(p)
 
 	brickyard = Build(BRICKYARD, 30, 25, island, settlement=settlement)(p)
@@ -144,6 +142,9 @@ def test_tool_production_chain(s, p):
 	to charcoal and tools are produced.
 
 	Pretty much for a single test, but these are rather trivial in their assertions anyway.
+
+	IF THIS TEST BREAKS, IT IS MOST LIKELY CAUSED BY test_brick_production_chain! Once it builds a
+	claypit, the toolmaker here will not produce tools.
 	"""
 	settlement, island = settle(s)
 
