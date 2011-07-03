@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-07-03 03:21+0200\n"
+"PO-Revision-Date: 2011-07-03 03:51+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -765,7 +765,7 @@ msgstr "Voltar ao jogo"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "As equipas de desenvolvimento FIFE e Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:150
 msgid "Have fun."
@@ -1002,7 +1002,7 @@ msgstr "Língua"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Network"
-msgstr ""
+msgstr "Rede"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Saving"
@@ -1018,7 +1018,7 @@ msgstr "Escolha a língua:"
 
 #: horizons/i18n/guitranslations.py:228
 msgid "Enable minimap rotation:"
-msgstr "Ligar rotação do mapa miniatura:"
+msgstr "Ligar rotação do mapa em miniatura:"
 
 #: horizons/i18n/guitranslations.py:229
 msgid "Music volume:"
@@ -1030,7 +1030,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Network port:"
-msgstr ""
+msgstr "Porta de rede:"
 
 #: horizons/i18n/guitranslations.py:232
 msgid "Number of autosaves:"
