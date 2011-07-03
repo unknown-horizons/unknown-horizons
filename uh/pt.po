@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-25 17:08+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-07-03 03:36+0200\n"
+"Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -232,6 +232,8 @@ msgstr "A rede não está inicializada"
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
 msgstr ""
+"A rede não está inicializada, provalvelmente devido a problemas de "
+"configuração. Verifique as suas definições!"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -416,19 +418,19 @@ msgstr "Limite: %st por escatel"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr ""
+msgstr "Vazio"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "O seu diário de bordo ainda está em branco!"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:133
 msgid "Start route"
-msgstr ""
+msgstr "Iniciar o rumo"
 
 #: horizons/gui/widgets/routeconfig.py:60
 msgid "Stop route"
-msgstr ""
+msgstr "Parar o rumo"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73
@@ -556,19 +558,19 @@ msgstr "Fornalha: Queima molhos de tabúas e transforma-os em carvão."
 
 #: horizons/i18n/guitranslations.py:77
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr "Mina de ferro: Fornece minério de ferro."
+msgstr "Mina de ferro: fornece minério de ferro."
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Smeltery: Refines all kind of ores."
-msgstr "Fundição: Refina todos os tipos de minério."
+msgstr "Fundição: purifica todos os tipos de minério."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Tavern: Provides get-together."
-msgstr "Taverna: Fornece reuniões."
+msgstr "Taverna: proporciona reuniões."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Toolmaker: Produces tools out of iron."
-msgstr "Ferramenteiro: Produz ferramentas a partir do ferro."
+msgstr "Ferramenteiro: fabrica ferramentas a partir do ferro."
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:297
 msgid "Running costs:"
@@ -581,10 +583,12 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:86
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
+"Seleccione um cenário e pressione em carregar/descarregar para actualizar as "
+"mensagens no diário de bordo."
 
 #: horizons/i18n/guitranslations.py:87
 msgid "load/reload"
-msgstr ""
+msgstr "carregar/descarregar"
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Inhabitants"
@@ -592,7 +596,7 @@ msgstr "Habitantes"
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Click to change the name of your settlement."
-msgstr "Clique para mudar o nome do seu povoação."
+msgstr "Pressione para alterar o nome da sua colónia."
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Destroy"
@@ -637,7 +641,7 @@ msgstr "Ampliar"
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Zoom out"
-msgstr "Diminuir ampliação"
+msgstr "Reduzir"
 
 #: horizons/i18n/guitranslations.py:105
 msgid "Boards"
@@ -649,11 +653,11 @@ msgstr "Tijolos"
 
 #: horizons/i18n/guitranslations.py:107
 msgid "Food"
-msgstr "Comida"
+msgstr "Alimentos"
 
 #: horizons/i18n/guitranslations.py:108
 msgid "Textiles"
-msgstr "Texteis"
+msgstr "Têxteis"
 
 #: horizons/i18n/guitranslations.py:109
 msgid "Tools"
@@ -677,7 +681,7 @@ msgstr "Introduzir a sua mensagem:"
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Chat"
-msgstr "Conversa"
+msgstr "Conversa fiada"
 
 #: horizons/i18n/guitranslations.py:119
 msgid "Buy resources"
@@ -725,15 +729,15 @@ msgstr "Adicionar à lista"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Delete entry"
-msgstr ""
+msgstr "Apagar entrada"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Move down"
-msgstr ""
+msgstr "Mover para baixo"
 
 #: horizons/i18n/guitranslations.py:137
 msgid "Move up"
-msgstr ""
+msgstr "Mover para cima"
 
 #: horizons/i18n/guitranslations.py:139 horizons/i18n/guitranslations.py:178
 msgid "Attention please!"
@@ -867,7 +871,7 @@ msgstr "Sair"
 
 #: horizons/i18n/guitranslations.py:184
 msgid "Singleplayer"
-msgstr "Jogo a Solo"
+msgstr "Jogo individual"
 
 #: horizons/i18n/guitranslations.py:185
 msgid "Multiplayer"
@@ -1067,7 +1071,7 @@ msgstr "Selecione um mapa para jogar:"
 
 #: horizons/i18n/guitranslations.py:245
 msgid "New game - Singleplayer"
-msgstr "Novo Jogo - Jogo a Solo"
+msgstr "Novo Jogo - jogo individual"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Start game:"
@@ -1075,7 +1079,7 @@ msgstr "Iniciar o jogo:"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "Campaign"
-msgstr ""
+msgstr "campanha"
 
 #: horizons/i18n/guitranslations.py:249
 msgid "Free play"
@@ -1097,7 +1101,7 @@ msgstr "Começar o jogo"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Color:"
-msgstr "Côr:"
+msgstr "Cor:"
 
 #: horizons/i18n/guitranslations.py:256
 msgid "Player name:"
@@ -1113,13 +1117,13 @@ msgstr "(perder todos os recursos)"
 
 #: horizons/i18n/guitranslations.py:260
 msgid "Currently building:"
-msgstr "Em contrução:"
+msgstr "Em construção:"
 
 #: horizons/i18n/guitranslations.py:261
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
-"Para construir um barco, clique numa das guias de classe, selecione o barco "
-"desejado e confirme a ordem."
+"Para construir um barco, pressione numa das guias de classe, seleccione o "
+"barco desejado e confirme a ordem."
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Construction progress:"
@@ -1222,7 +1226,7 @@ msgstr "Impostos:"
 
 #: horizons/i18n/guitranslations.py:304 horizons/i18n/guitranslations.py:319
 msgid "Tax Rate"
-msgstr ""
+msgstr "taxa de contribuição"
 
 #: horizons/i18n/guitranslations.py:308
 msgid "capacity utilization"
@@ -1325,7 +1329,7 @@ msgstr ""
 
 #: horizons/main.py:206
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "O progresso/jogo seleccionado não pode ser iniciado"
 
 #: horizons/main.py:207
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -1421,7 +1425,7 @@ msgstr ""
 #. usually invalid filename
 #: horizons/spsession.py:133
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Falhou a criação do ficheiro para guardar o jogo"
 
 #: horizons/spsession.py:134
 msgid "There has been an error while creating your savegame file."
@@ -1433,11 +1437,11 @@ msgstr ""
 
 #: horizons/spsession.py:141
 msgid "File used by another process"
-msgstr ""
+msgstr "Ficheiro usado por outro processo"
 
 #: horizons/spsession.py:142
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "O ficheiro de progresso de jogo está ser utilizado por outro programa"
 
 #: horizons/world/units/ship.py:330
 msgid "Trader"
@@ -1484,7 +1488,7 @@ msgstr "Inicia um mapa aleatório."
 
 #: run_uh.py:96
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "Inicia um mapa qualquer com grão <grão>"
 
 #: run_uh.py:98
 msgid "Starts <scenario>. <scenario> is the scenarioname."
