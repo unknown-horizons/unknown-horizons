@@ -27,6 +27,14 @@ import signal
 import tempfile
 from functools import wraps
 
+# check if SIGALRM is supported, this is not the case on Windows
+# we might provide an alternative later, but for now, this will do
+try:
+	from signal import SIGALRM
+	TEST_TIMELIMIT = True
+except ImportError:
+	TEST_TIMELIMIT = False
+
 import horizons.main
 import horizons.world	# needs to be imported before session
 from horizons.ai.trader import Trader
@@ -230,21 +238,24 @@ def game_test(*args, **kwargs):
 	timeout = kwargs.get('timeout', 5)
 	mapgen = kwargs.get('mapgen', create_map)
 
-	def handler(signum, frame):
-		raise Exception('Test run exceeded %ds time limit' % timeout)
-	signal.signal(signal.SIGALRM, handler)
+	if TEST_TIMELIMIT:
+		def handler(signum, frame):
+			raise Exception('Test run exceeded %ds time limit' % timeout)
+		signal.signal(signal.SIGALRM, handler)
 
 	def deco(func):
 		@wraps(func)
 		def wrapped(*args):
 			horizons.main.db = db
 			s, p = new_session(mapgen)
-			signal.alarm(timeout)
+			if TEST_TIMELIMIT:
+				signal.alarm(timeout)
 			try:
 				return func(s, p, *args)
 			finally:
 				s.end()
-				signal.alarm(0)
+				if TEST_TIMELIMIT:
+					signal.alarm(0)
 		return wrapped
 
 	if no_decorator_arguments:
@@ -275,7 +286,8 @@ def set_trace():
 	time limit will be disabled and stdout restored (so the debugger actually
 	works).
 	"""
-	signal.alarm(0)
+	if TEST_TIMELIMIT:
+		signal.alarm(0)
 
 	from nose.tools import set_trace
 	set_trace()
