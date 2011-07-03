@@ -264,6 +264,7 @@ class Fife(ApplicationBase):
 		self.soundmanager.init()
 		self.setup_sound()
 		self.imagemanager = self.engine.getImageManager()
+		self.targetrenderer = self.engine.getTargetRenderer()
 		self.animationloader = SQLiteAnimationLoader()
 
 		#Set game cursor
