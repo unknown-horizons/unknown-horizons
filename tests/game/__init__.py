@@ -70,7 +70,8 @@ def create_map():
 	"""
 
 	# Create island.
-	islandfile = tempfile.mkstemp()[1]
+	fd, islandfile = tempfile.mkstemp()
+	os.close(fd)
 
 	db = DbReader(islandfile)
 	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
@@ -89,7 +90,8 @@ def create_map():
 	db("COMMIT")
 
 	# Create savegame with the island above.
-	savegame = tempfile.mkstemp()[1]
+	fd, savegame = tempfile.mkstemp()
+	os.close(fd)
 	shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, savegame)
 
 	db = DbReader(savegame)
