@@ -30,7 +30,29 @@ class ResourceManager(WorldObject):
 
 	def __init__(self):
 		super(ResourceManager, self).__init__()
+		self.__init()
+
+	def __init(self):
 		self.data = {} # (resource_id, building_id): SingleResourceManager
+
+	def save(self, db, settlement_manager):
+		super(ResourceManager, self).save(db)
+		db("INSERT INTO ai_resource_manager(rowid, settlement_manager) VALUES(?, ?)", self.worldid, settlement_manager.worldid)
+		for (_, building_id), resource_manager in self.data.iteritems():
+			resource_manager.save(db, self, building_id)
+
+	def _load(self, db, settlement_manager):
+		worldid = db("SELECT rowid FROM ai_resource_manager WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
+		super(ResourceManager, self).load(db, worldid)
+		self.__init()
+		for db_row in db("SELECT rowid, resource_id, building_id FROM ai_single_resource_manager WHERE resource_manager = ?", worldid):
+			self.data[(db_row[1], db_row[2])] = SingleResourceManager.load(db, db_row[0])
+
+	@classmethod
+	def load(cls, db, settlement_manager):
+		self = cls.__new__(cls)
+		self._load(db, settlement_manager)
+		return self
 
 	def refresh(self):
 		for resource_manager in self.data.itervalues():
@@ -60,13 +82,42 @@ class ResourceManager(WorldObject):
 			result += '\n' + resource_manager.__str__()
 		return result
 
-class SingleResourceManager:
+class SingleResourceManager(WorldObject):
 	def __init__(self, resource_id):
+		super(SingleResourceManager, self).__init__()
+		self.__init(resource_id)
+		self.available = 0.0 # unused resource production per tick
+		self.total = 0.0 # total resource production per tick
+
+	def __init(self, resource_id):
 		self.resource_id = resource_id
 		self.quotas = {} # {quota_holder: amount, ...}
 		self.buildings = [] # [building, ...]
-		self.available = 0.0 # unused resource production per tick
-		self.total = 0.0 # total resource production per tick
+
+	def save(self, db, resource_manager, building_id):
+		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, available, total) VALUES(?, ?, ?, ?, ?, ?)", \
+			self.worldid, resource_manager.worldid, self.resource_id, building_id, self.available, self.total)
+		for building in self.buildings:
+			db("INSERT INTO ai_single_resource_manager_building(single_resource_manager, building_id) VALUES(?, ?)", self.worldid, building.worldid)
+		for identifier, quota in self.quotas.iteritems():
+			db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager, identifier, quota) VALUES(?, ?, ?)", self.worldid, identifier, quota)
+
+	def _load(self, db, worldid):
+		super(SingleResourceManager, self).load(db, worldid)
+		(resource_id, self.available, self.total) = db("SELECT resource_id, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
+		self.__init(resource_id)
+
+		for (building_worldid,) in db("SELECT building_id FROM ai_single_resource_manager_building WHERE single_resource_manager = ?", worldid):
+			self.buildings.append(WorldObject.get_object_by_id(building_worldid))
+
+		for (identifier, quota) in db("SELECT identifier, quota FROM ai_single_resource_manager_quota WHERE single_resource_manager = ?", worldid):
+			self.quotas[identifier] = quota
+
+	@classmethod
+	def load(cls, db, worldid):
+		self = cls.__new__(cls)
+		self._load(db, worldid)
+		return self
 
 	def _get_current_production(self):
 		total = 0.0

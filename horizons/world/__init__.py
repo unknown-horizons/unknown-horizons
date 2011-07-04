@@ -241,6 +241,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 			# load the AI players
 			# this has to be done here because otherwise the ships and other objects won't exist
+			AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 			for player in self.players:
 				if not isinstance(player, HumanPlayer):
 					player.finish_loading(savegame_db)
@@ -351,6 +352,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				ship.inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = (point.x, point.y)
+		AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 
 		# add a pirate ship
 		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())

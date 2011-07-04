@@ -30,16 +30,17 @@ from horizons.command.building import Build
 from horizons.util.python import decorators
 from horizons.util import Point, Rect, WorldObject
 
-class ProductionChain:
+class ProductionChain(object):
 	log = logging.getLogger("ai.aiplayer.productionchain")
 
-	def __init__(self, settlement_manager, resource_id, chain):
+	def __init__(self, settlement_manager, resource_id, resource_producer):
+		super(ProductionChain, self).__init__()
 		self.settlement_manager = settlement_manager
 		self.resource_id = resource_id
-		self.chain = chain
+		self.chain = self._get_chain(resource_id, resource_producer, 1.0)
+		self.chain.assign_identifier('/%d,%d' % (self.settlement_manager.worldid, self.resource_id))
 
-	@classmethod
-	def _get_chain(cls, settlement_manager, resource_id, resource_producer, production_ratio):
+	def _get_chain(self, resource_id, resource_producer, production_ratio):
 		""" Returns None, ProductionChainSubtree, or ProductionChainSubtreeChoice depending on the number of options """
 		options = []
 		if resource_id in resource_producer:
@@ -48,13 +49,13 @@ class ProductionChain:
 				sources = []
 				for consumed_resource, amount in production_line.consumed_res.iteritems():
 					next_production_ratio = abs(production_ratio * amount / production_line.produced_res[resource_id])
-					subtree = cls._get_chain(settlement_manager, consumed_resource, resource_producer, next_production_ratio)
+					subtree = self._get_chain(consumed_resource, resource_producer, next_production_ratio)
 					if not subtree:
 						possible = False
 						break
 					sources.append(subtree)
 				if possible:
-					options.append(ProductionChainSubtree(settlement_manager, resource_id, production_line, abstract_building, sources, production_ratio))
+					options.append(ProductionChainSubtree(self.settlement_manager, resource_id, production_line, abstract_building, sources, production_ratio))
 		if not options:
 			return None
 		elif len(options) == 1:
@@ -70,7 +71,7 @@ class ProductionChain:
 				if resource not in resource_producer:
 					resource_producer[resource] = []
 				resource_producer[resource].append((production_line, abstract_building))
-		return ProductionChain(settlement_manager, resource_id, cls._get_chain(settlement_manager, resource_id, resource_producer, 1.0))
+		return ProductionChain(settlement_manager, resource_id, resource_producer)
 
 	def __str__(self):
 		return 'ProductionChain(%d)\n%s' % (self.resource_id, self.chain)
@@ -83,9 +84,14 @@ class ProductionChain:
 		""" returns the production level at the bottleneck """
 		return self.chain.get_final_production_level()
 
-class ProductionChainSubtreeChoice:
+class ProductionChainSubtreeChoice(object):
 	def __init__(self, options):
 		self.options = options
+
+	def assign_identifier(self, prefix):
+		self.identifier = prefix + '/choice'
+		for option in self.options:
+			option.assign_identifier(self.identifier)
 
 	def __str__(self, level = 0):
 		result = '%sChoice between %d options\n' % ('  ' * level, len(self.options))
@@ -141,6 +147,11 @@ class ProductionChainSubtree:
 		self.children = children
 		self.production_ratio = production_ratio
 
+	def assign_identifier(self, prefix):
+		self.identifier = '%s/%d,%d' % (prefix, self.resource_id, self.abstract_building.id)
+		for child in self.children:
+			child.assign_identifier(self.identifier)
+
 	@property
 	def available(self):
 		return self.settlement_manager.owner.settler_level >= self.abstract_building.settler_level
@@ -174,7 +185,7 @@ class ProductionChainSubtree:
 
 	def get_root_production_level(self):
 		""" returns the production level currently available to this subtree """
-		return self.resource_manager.get_quota(self, self.resource_id, self.abstract_building.id) / self.production_ratio
+		return self.resource_manager.get_quota(self.identifier, self.resource_id, self.abstract_building.id) / self.production_ratio
 
 	def get_final_production_level(self):
 		""" returns the production level at the bottleneck """
@@ -231,12 +242,11 @@ class ProductionChainSubtree:
 		result = self._extend_settlement_with_tent(position)
 		if result != BUILD_RESULT.OK:
 			result = self._extend_settlement_with_storage(position)
-		print 'extend settlement', result
 		return result
 
 	def build(self, amount):
 		# request a quota change (could be lower or higher)
-		self.resource_manager.request_quota_change(self, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+		self.resource_manager.request_quota_change(self.identifier, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
 
 		# try to build one of the lower level buildings
 		result = None
@@ -254,7 +264,7 @@ class ProductionChainSubtree:
 			(result, building) = self.abstract_building.build(self.settlement_manager, self.resource_id)
 			if result == BUILD_RESULT.OK:
 				self.resource_manager.add_building(building, self.resource_id)
-				self.resource_manager.request_quota_change(self, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+				self.resource_manager.request_quota_change(self.identifier, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
 			elif result == BUILD_RESULT.OUT_OF_SETTLEMENT:
 				return self._extend_settlement(building)
 			return result

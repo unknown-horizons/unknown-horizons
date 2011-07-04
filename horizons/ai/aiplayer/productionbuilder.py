@@ -56,21 +56,20 @@ class ProductionBuilder(AreaBuilder):
 		}
 
 	def save(self, db):
-		super(ProductionBuilder, self).save(db, 'ai_production_builder_coords')
+		super(ProductionBuilder, self).save(db)
 		db("INSERT INTO ai_production_builder(rowid, settlement_manager) VALUES(?, ?)", self.worldid, \
 			self.settlement_manager.worldid)
 
 	def _load(self, db, settlement_manager):
 		worldid = db("SELECT rowid FROM ai_production_builder WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
-		super(ProductionBuilder, self).load(db, worldid)
+		super(ProductionBuilder, self)._load(db, settlement_manager, worldid)
 		self.__init(settlement_manager)
 
-		db_result = db("SELECT x, y, purpose, builder FROM ai_production_builder_coords WHERE production_builder = ?", worldid)
+		db_result = db("SELECT x, y, purpose, builder FROM ai_area_builder_plan WHERE area_builder = ?", worldid)
 		for x, y, purpose, builder_id in db_result:
-			coords = (x, y)
 			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
-			self.register_change(x, y, purpose, builder)
-			object = self.island.ground_map[coords].object
+			self.plan[(x, y)] = (purpose, builder)
+			object = self.island.ground_map[(x, y)].object
 			if object is None:
 				continue
 
@@ -87,6 +86,14 @@ class ProductionBuilder(AreaBuilder):
 			elif purpose == BUILDING_PURPOSE.WEAVER and object.id == BUILDINGS.WEAVER_CLASS:
 				self.production_buildings.append(object)
 			elif purpose == BUILDING_PURPOSE.DISTILLERY and object.id == BUILDINGS.DISTILLERY_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == BUILDING_PURPOSE.IRON_MINE and object.id == BUILDINGS.IRON_MINE_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == BUILDING_PURPOSE.SMELTERY and object.id == BUILDINGS.SMELTERY_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == BUILDING_PURPOSE.TOOLMAKER and object.id == BUILDINGS.TOOLMAKER_CLASS:
+				self.production_buildings.append(object)
+			elif purpose == BUILDING_PURPOSE.CHARCOAL_BURNER and object.id == BUILDINGS.CHARCOAL_BURNER_CLASS:
 				self.production_buildings.append(object)
 			elif purpose == BUILDING_PURPOSE.STORAGE and object.id == BUILDINGS.STORAGE_CLASS:
 				self.collector_buildings.append(object)
@@ -268,7 +275,7 @@ class ProductionBuilder(AreaBuilder):
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def count_fields(self):
-		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0}
+		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 		for building in self.production_buildings:
 			if building.id == BUILDINGS.POTATO_FIELD_CLASS:
 				fields[BUILDING_PURPOSE.POTATO_FIELD] += 1

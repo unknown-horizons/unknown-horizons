@@ -29,7 +29,7 @@ from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
 
-# all subclasses of AbstractBuilding have to imported here to register the available buildings
+# all subclasses of AbstractBuilding have to be imported here to register the available buildings
 from building import AbstractBuilding
 from building.farm import AbstractFarm
 from building.field import AbstractField
@@ -69,7 +69,6 @@ class AIPlayer(GenericAI):
 		self.__init()
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
-		AbstractBuilding.load_all(session.db)
 
 	def choose_island(self, min_land):
 		options = []
@@ -120,7 +119,7 @@ class AIPlayer(GenericAI):
 		if mission.ship:
 			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
-			settlement_manager = SettlementManager(mission.land_manager, mission.branch_office)
+			settlement_manager = SettlementManager(self, mission.land_manager)
 			self.settlement_managers.append(settlement_manager)
 
 	def report_failure(self, mission, msg):
@@ -181,7 +180,7 @@ class AIPlayer(GenericAI):
 		for land_manager in self.islands.itervalues():
 			db_result = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?", land_manager.worldid)
 			if db_result:
-				settlement_manager = SettlementManager.load(db, db_result[0][0])
+				settlement_manager = SettlementManager.load(db, self, db_result[0][0])
 				self.settlement_managers.append(settlement_manager)
 
 				# load the foundation ship preparing missions
@@ -284,7 +283,11 @@ class AIPlayer(GenericAI):
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s ship blocked (%s)", self, unit)
 
+	@classmethod
+	def load_abstract_buildings(cls, db):
+		AbstractBuilding.load_all(db)
+
 	def __str__(self):
-		return 'AI(%s/%d)' % (self.name, self.worldid)
+		return 'AI(%s/%d)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid)
 
 decorators.bind_all(AIPlayer)

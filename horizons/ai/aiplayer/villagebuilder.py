@@ -41,29 +41,30 @@ class VillageBuilder(AreaBuilder):
 
 	def __init(self, settlement_manager):
 		self.land_manager = settlement_manager.land_manager
-		self.tents_to_build = 0
 		self.tent_queue = deque()
 		self._init_cache()
 		self.roads_built = False
 
 	def save(self, db):
-		super(VillageBuilder, self).save(db, 'ai_village_builder_coords')
+		super(VillageBuilder, self).save(db)
 		db("INSERT INTO ai_village_builder(rowid, settlement_manager) VALUES(?, ?)", self.worldid, \
 			self.settlement_manager.worldid)
 
+		for x, y in self.tent_queue:
+			db("INSERT INTO ai_village_builder_tent_queue(village_builder, x, y) VALUES(?, ?, ?)", self.worldid, x, y)
+
 	def _load(self, db, settlement_manager):
 		worldid = db("SELECT rowid FROM ai_village_builder WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
-		super(VillageBuilder, self).load(db, worldid)
+		super(VillageBuilder, self)._load(db, settlement_manager, worldid)
 		self.__init(settlement_manager)
 
-		db_result = db("SELECT x, y, purpose, builder FROM ai_village_builder_coords WHERE village_builder = ?", worldid)
+		db_result = db("SELECT x, y, purpose, builder FROM ai_area_builder_plan WHERE area_builder = ?", worldid)
 		for x, y, purpose, builder_id in db_result:
-			coords = (x, y)
 			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
-			self.register_change(x, y, purpose, builder)
-			if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE or purpose == BUILDING_PURPOSE.RESIDENCE:
-				self.tents_to_build += 1
-		self._create_tent_queue()
+			self.plan[(x, y)] = (purpose, builder)
+
+		for x, y in db("SELECT x, y FROM ai_village_builder_tent_queue WHERE village_builder = ? ORDER BY rowid ASC", worldid):
+			self.tent_queue.append((x, y))
 
 	def _get_village_section_coordinates(self, start_x, start_y, width, height):
 		bo_coords_set = set(self.land_manager.settlement.branch_office.position.tuple_iter())
@@ -429,7 +430,6 @@ class VillageBuilder(AreaBuilder):
 			builder = Builder.create(building_id, self.land_manager, best_pos.origin)
 			(x, y) = best_pos.origin.to_tuple()
 			self.register_change(x, y, new_purpose, builder)
-			self.tents_to_build -= 1
 
 	def _reserve_other_buildings(self):
 		"""Replaces planned tents with a pavilion, school, and tavern."""

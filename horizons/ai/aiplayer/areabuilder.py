@@ -50,23 +50,27 @@ class AreaBuilder(WorldObject):
 		self.plan = {}
 		self.builder_cache = {}
 
-	def save_plan(self, db, table_name):
-		db_query = 'INSERT INTO %s(production_builder, x, y, purpose, builder) VALUES(?, ?, ?, ?, ?)' % table_name
+	def save_plan(self, db):
+		db_query = 'INSERT INTO ai_area_builder_plan(area_builder, x, y, purpose, builder) VALUES(?, ?, ?, ?, ?)'
 		for (x, y), (purpose, builder) in self.plan.iteritems():
 			db(db_query, self.worldid, x, y, purpose, None if builder is None else builder.worldid)
 			if builder is not None:
 				assert isinstance(builder, Builder)
 				builder.save(db)
 
-	def save(self, db, table_name):
-		super(ProductionBuilder, self).save(db)
-		self.save_plan(db, table_name)
+	def save(self, db):
+		super(AreaBuilder, self).save(db)
+		self.save_plan(db)
 
 	@classmethod
 	def load(cls, db, settlement_manager):
 		self = cls.__new__(cls)
 		self._load(db, settlement_manager)
 		return self
+
+	def _load(self, db, settlement_manager, worldid):
+		super(AreaBuilder, self).load(db, worldid)
+		self.__init(settlement_manager)
 
 	def _get_neighbour_tiles(self, rect):
 		"""

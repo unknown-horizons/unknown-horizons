@@ -47,18 +47,29 @@ class SettlementManager(WorldObject):
 	class buildCallType:
 		village_roads = 1
 
-	def __init__(self, land_manager, branch_office):
+	def __init__(self, owner, land_manager):
 		super(SettlementManager, self).__init__()
-		self.__init(land_manager, branch_office)
+		self.owner = owner
+		self.resource_manager = ResourceManager()
+		self.__init(land_manager)
 
 		self.village_builder = VillageBuilder(self)
 		self.production_builder = ProductionBuilder(self)
 		self.village_builder.display()
 		self.production_builder.display()
 
-		self.resource_manager = ResourceManager()
+		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
+		self.village_built = False
 
-		# TODO: load the production chains
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
+		self.set_taxes_and_permissions(0.5, False, False)
+
+	def __init(self, land_manager):
+		self.owner = land_manager.owner
+		self.land_manager = land_manager
+		self.island = self.land_manager.island
+		self.settlement = self.land_manager.settlement
+
 		self.community_chain = ProductionChain.create(self, RES.COMMUNITY_ID)
 		self.boards_chain = ProductionChain.create(self, RES.BOARDS_ID)
 		self.food_chain = ProductionChain.create(self, RES.FOOD_ID)
@@ -69,70 +80,60 @@ class SettlementManager(WorldObject):
 		self.bricks_chain = ProductionChain.create(self, RES.BRICKS_ID)
 		self.tools_chain = ProductionChain.create(self, RES.TOOLS_ID)
 
-		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
-		self.village_built = False
-
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
-		self.set_taxes_and_permissions(0.5, False, False)
-
-	def __init(self, land_manager, branch_office):
-		self.owner = land_manager.owner
-		self.land_manager = land_manager
-		self.island = self.land_manager.island
-		self.settlement = self.land_manager.settlement
-		self.branch_office = branch_office
-
 	def save(self, db):
 		super(SettlementManager, self).save(db)
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
-		assert len(calls) <= 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
+		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
 		remaining_ticks = None if len(calls) == 0 else max(calls.values()[0], 1)
-		db("INSERT INTO ai_settlement_manager(rowid, land_manager, branch_office, remaining_ticks) VALUES(?, ?, ?, ?)", \
-			self.worldid, self.land_manager.worldid, self.branch_office.worldid, remaining_ticks)
+		db("INSERT INTO ai_settlement_manager(rowid, land_manager, remaining_ticks) VALUES(?, ?, ?)", \
+			self.worldid, self.land_manager.worldid, remaining_ticks)
 
 		self.village_builder.save(db)
 		self.production_builder.save(db)
+		self.resource_manager.save(db, self)
 
 	@classmethod
-	def load(cls, db, worldid):
+	def load(cls, db, owner, worldid):
 		self = cls.__new__(cls)
-		self._load(db, worldid)
+		self._load(db, owner, worldid)
 		return self
 
-	def _load(self, db, worldid):
+	def _load(self, db, owner, worldid):
+		self.owner = owner
 		super(SettlementManager, self).load(db, worldid)
 
 		# load the main part
-		db_result = db("SELECT land_manager, branch_office, remaining_ticks FROM ai_settlement_manager WHERE rowid = ?", worldid)
-		(land_manager_id, branch_office_id, remaining_ticks) = db_result[0]
+		db_result = db("SELECT land_manager, remaining_ticks FROM ai_settlement_manager WHERE rowid = ?", worldid)
+		(land_manager_id, remaining_ticks) = db_result[0]
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
 		land_manager = WorldObject.get_object_by_id(land_manager_id)
-		branch_office = WorldObject.get_object_by_id(branch_office_id)
-		self.__init(land_manager, branch_office)
 
 		# find the settlement
 		for settlement in self.owner.session.world.settlements:
-			if settlement.owner == self.owner and settlement.island == self.land_manager.island:
+			if settlement.owner == self.owner and settlement.island == land_manager.island:
 				land_manager.settlement = settlement
 				break
 		assert land_manager.settlement
-
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
+		self.resource_manager = ResourceManager.load(db, self)
+		self.__init(land_manager)
 
 		# load the master builders
 		self.village_builder = VillageBuilder.load(db, self)
 		self.production_builder = ProductionBuilder.load(db, self)
-
 		self.village_builder.display()
 		self.production_builder.display()
 
-		# TODO: correctly init the following
 		self.num_fields = self.production_builder.count_fields()
-		self.village_built = self.tents == self.village_builder.tents_to_build
+		self.village_built = not self.village_builder.tent_queue
 
 	@property
 	def tents(self):
 		return self.count_buildings(BUILDINGS.RESIDENTIAL_CLASS)
+
+	@property
+	def branch_office(self):
+		return self.settlement.branch_office
 
 	def set_taxes_and_permissions(self, taxes, sailors_can_upgrade, pioneers_can_upgrade):
 		if abs(self.settlement.tax_setting - taxes) > 1e-9:
@@ -334,6 +335,6 @@ class SettlementManager(WorldObject):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 
 	def __str__(self):
-		return '%s.SM(%s/%d)' % (self.owner, self.settlement.name, self.worldid)
+		return '%s.SM(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
 
 decorators.bind_all(SettlementManager)
