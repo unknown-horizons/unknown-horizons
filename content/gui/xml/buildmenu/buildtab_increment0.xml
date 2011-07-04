@@ -114,6 +114,11 @@
 				hover_image="content/gui/icons/buildmenu/fisherman_h.png"
 				down_image="content/gui/icons/buildmenu/fisherman_h.png"
 				tooltip="Cannon Builder: Produces cannons for ships" />
+			<TooltipButton name="cannon-tower-1"
+				up_image="content/gui/icons/buildmenu/fisherman.png"
+				hover_image="content/gui/icons/buildmenu/fisherman_h.png"
+				down_image="content/gui/icons/buildmenu/fisherman_h.png"
+				tooltip="Cannon Tower: Provides defense for settlement" />
 		</HBox>
 	</Container>
 

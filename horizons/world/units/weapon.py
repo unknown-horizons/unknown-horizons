@@ -109,7 +109,7 @@ class Weapon(object):
 		#calculate the ticks until impact
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
 		#deal damage when attack reaches target
-		Scheduler().add_new_object(Callback(self.on_impact, position), self, ticks)
+		Scheduler().add_new_object(Callback(self.on_impact, destination), self, ticks)
 
 		#calculate the ticks until attack is ready again
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)

@@ -71,6 +71,7 @@ class Bullet(object):
 		coords = fife.ModelCoordinate(int(dest.x), int(dest.y))
 		coords.thisown = 0
 		loc.setLayerCoordinates(coords)
+		self._instance.setLocation(loc)
 
 		self._move_tick()
 

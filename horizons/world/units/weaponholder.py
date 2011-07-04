@@ -163,6 +163,8 @@ class WeaponHolder(object):
 		Executes every few seconds, doing movement depending on the stance.
 		Static WeaponHolders are aggressive, attacking all enemies that are in range
 		"""
+		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 3)
+
 		enemies = [u for u in self.session.world.get_ships(self.position.center(), self._max_range) \
 			if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
 
