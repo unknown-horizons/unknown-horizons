@@ -58,6 +58,8 @@ class AbstractVillageBuilding(AbstractBuilding):
 					building = builder.execute()
 					if not building:
 						return (BUILD_RESULT.UNKNOWN_ERROR, None)
+					if self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE and not settlement_manager.village_builder.roads_built:
+						settlement_manager.village_builder.build_roads()
 					return (BUILD_RESULT.OK, building)
 		return (BUILD_RESULT.SKIP, None)
 

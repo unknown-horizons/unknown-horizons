@@ -69,11 +69,9 @@ class SettlementManager(WorldObject):
 		self.bricks_chain = ProductionChain.create(self, RES.BRICKS_ID)
 		self.tools_chain = ProductionChain.create(self, RES.TOOLS_ID)
 
-		self.tents = 0
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 		self.village_built = False
 
-		self.build_queue.append(self.buildCallType.village_roads)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
 		self.set_taxes_and_permissions(0.5, False, False)
 
@@ -83,7 +81,6 @@ class SettlementManager(WorldObject):
 		self.island = self.land_manager.island
 		self.settlement = self.land_manager.settlement
 		self.branch_office = branch_office
-		self.build_queue = deque()
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
@@ -93,10 +90,6 @@ class SettlementManager(WorldObject):
 		remaining_ticks = None if len(calls) == 0 else max(calls.values()[0], 1)
 		db("INSERT INTO ai_settlement_manager(rowid, land_manager, branch_office, remaining_ticks) VALUES(?, ?, ?, ?)", \
 			self.worldid, self.land_manager.worldid, self.branch_office.worldid, remaining_ticks)
-
-		for task_type in self.build_queue:
-			db("INSERT INTO ai_settlement_manager_build_queue(settlement_manager, task_type) VALUES(?, ?)", \
-				self.worldid, task_type)
 
 		self.village_builder.save(db)
 		self.production_builder.save(db)
@@ -126,10 +119,6 @@ class SettlementManager(WorldObject):
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
 
-		# load the build queue
-		for (task_type,) in db("SELECT task_type FROM ai_settlement_manager_build_queue WHERE settlement_manager = ?", worldid):
-			self.build_queue.append(task_type)
-
 		# load the master builders
 		self.village_builder = VillageBuilder.load(db, self)
 		self.production_builder = ProductionBuilder.load(db, self)
@@ -138,9 +127,12 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 		# TODO: correctly init the following
-		self.tents = self.village_builder.count_tents()
 		self.num_fields = self.production_builder.count_fields()
 		self.village_built = self.tents == self.village_builder.tents_to_build
+
+	@property
+	def tents(self):
+		return self.count_buildings(BUILDINGS.RESIDENTIAL_CLASS)
 
 	def set_taxes_and_permissions(self, taxes, sailors_can_upgrade, pioneers_can_upgrade):
 		if abs(self.settlement.tax_setting - taxes) > 1e-9:
@@ -289,14 +281,7 @@ class SettlementManager(WorldObject):
 		self.need_materials = False
 		have_bricks = self.count_buildings(BUILDINGS.BRICKYARD_CLASS)
 
-		if len(self.build_queue) > 0:
-			self.log.info('%s build a queue item', self)
-			task_type = self.build_queue.popleft()
-			if task_type == self.buildCallType.village_roads:
-				self.village_builder.build_roads()
-			else:
-				assert False, 'unknown building in build queue'
-		elif not self.production_builder.enough_collectors():
+		if not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result,  'storage')
 		elif self.build_chain(self.community_chain, 'main square'):
@@ -312,8 +297,6 @@ class SettlementManager(WorldObject):
 		elif self.village_builder.tent_queue:
 			result = self.village_builder.build_tent()
 			self.log_generic_build_result(result, 'tent')
-			if result == BUILD_RESULT.OK:
-				self.tents += 1
 		elif not self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
 			result = self.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
 			self.log_generic_build_result(result,  'clay deposit coverage storage')

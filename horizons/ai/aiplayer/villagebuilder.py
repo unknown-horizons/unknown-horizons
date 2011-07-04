@@ -537,16 +537,6 @@ class VillageBuilder(AreaBuilder):
 			self.build_roads()
 		return BUILD_RESULT.OK
 
-	def count_tents(self):
-		tents = 0
-		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose != BUILDING_PURPOSE.RESIDENCE:
-				continue
-			object = self.island.ground_map[coords].object
-			if object is not None and object.id == BUILDINGS.RESIDENTIAL_CLASS:
-				tents += 1
-		return tents
-
 	def display(self):
 		if not AI.HIGHLIGHT_PLANS:
 			return
