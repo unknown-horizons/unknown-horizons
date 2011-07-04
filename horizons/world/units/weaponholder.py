@@ -299,23 +299,24 @@ class MovingWeaponHolder(WeaponHolder):
 			target = sorted(enemies, key = lambda u: self.position.distance(u.position))[0]
 			self.attack(target)
 
-	def _move_and_attack(self, destination, not_possible_action = None, callback = None):
+	def _move_and_attack(self, destination, not_possible_action = None, in_range_callback = None):
 		"""
 		Callback for moving to a destination, then attack
 		@param destination : moving destination
 		@param not_possible_action : execute if MoveNotPossible is thrown
-		@param callback : execute after setting up movement
+		@param in_range_callback : sets up a conditional callback that is executed if the target is in range
 		"""
 		if not_possible_action:
 			assert callable(not_possible_action)
-		if callback:
-			assert callable(callback)
+		if in_range_callback:
+			assert callable(in_range_callback)
 
 		try:
 			self.move(destination, callback = self.try_attack_target,
 				blocked_callback = self.try_attack_target)
-			if callback:
-				callback()
+			if in_range_callback:
+				self.add_conditional_callback(self.attack_in_range, in_range_callback)
+
 		except MoveNotPossible:
 			if not_possible_action:
 				not_possible_action()
@@ -334,13 +335,13 @@ class MovingWeaponHolder(WeaponHolder):
 			destination = Annulus(self._target.position.center(), self._min_range, self._max_range)
 			not_possible_action = self.stop_attack
 			# if target passes near self, attack!
-			callback = Callback(self.add_conditional_callback, self.attack_in_range, self.try_attack_target)
+			in_range_callback = self.try_attack_target
 			# if executes attack action try to move in 1 second
 			if self._instance.getCurrentAction().getId() in self.attack_actions:
-				Scheduler().add_new_object(Callback(self._move_and_attack, destination, not_possible_action, callback),
+				Scheduler().add_new_object(Callback(self._move_and_attack, destination, not_possible_action, in_range_callback),
 					self, GAME_SPEED.TICKS_PER_SECOND)
 			else:
-				self._move_and_attack(destination, not_possible_action, callback)
+				self._move_and_attack(destination, not_possible_action, in_range_callback)
 		else:
 			if self.is_moving() and self._fireable:
 				self.stop()
@@ -361,8 +362,8 @@ class MovingWeaponHolder(WeaponHolder):
 				else:
 					callback = None
 					if self._target.movable and	self._target.is_moving():
-						callback = Callback(self.add_conditional_callback, self.attack_in_range, self.try_attack_target)
-					self._move_and_attack(destination, callback = callback)
+						in_range_callback = self.try_attack_target
+					self._move_and_attack(destination, in_range_callback = in_range_callback)
 			else:
 				# try in another second (weapons shouldn't be fired more often than that)
 				Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
