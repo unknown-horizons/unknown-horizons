@@ -25,7 +25,7 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-                              TraderShipOverviewTab, EnemyShipOverviewTab
+     TraderShipOverviewTab, EnemyShipOverviewTab
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
@@ -414,7 +414,7 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		angle = math.pi / 30
 		cos = math.cos(angle)
 		sin = math.sin(angle)
-	
+
 		distance = self.position.distance(dest)
 		for weapon in self._fireable:
 			destination = Point(dest_x, dest_y)
