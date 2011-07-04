@@ -294,7 +294,7 @@ class RouteConfig(object):
 		self.add_trade_slots(entry, self.slots_per_entry)
 
 		index = 1
-		resource_list = resource_list or []
+		resource_list = resource_list or {}
 		for res_id in resource_list:
 			if index > self.slots_per_entry:
 				break
