@@ -73,6 +73,9 @@ class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableS
 class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
+class CannonBuilder(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
 class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
 
 	@classmethod
