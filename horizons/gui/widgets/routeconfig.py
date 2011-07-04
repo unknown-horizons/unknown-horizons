@@ -283,7 +283,7 @@ class RouteConfig(object):
 			entry.addChild(slot)
 			self.slots[entry][num] = slot
 
-	def add_gui_entry(self, branch_office, resource_list = {}):
+	def add_gui_entry(self, branch_office, resource_list = None):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
 		self.widgets.append(entry)
@@ -294,6 +294,7 @@ class RouteConfig(object):
 		self.add_trade_slots(entry, self.slots_per_entry)
 
 		index = 1
+		resource_list = resource_list or []
 		for res_id in resource_list:
 			if index > self.slots_per_entry:
 				break

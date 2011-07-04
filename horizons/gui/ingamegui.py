@@ -241,7 +241,7 @@ class IngameGui(LivingObject):
 			self.update_settlement()
 			settlement.add_change_listener(self.update_settlement)
 
-	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
+	def resourceinfo_set(self, source, res_needed = None, res_usable = None, res_from_ship = False):
 		city = source if not res_from_ship else None
 		self.cityinfo_set(city)
 		if source is not self.resource_source:
@@ -256,8 +256,8 @@ class IngameGui(LivingObject):
 			if source is not self.resource_source:
 				source.add_change_listener(self.update_resource_source)
 			self.resource_source = source
-			self.resources_needed = res_needed
-			self.resources_usable = res_usable
+			self.resources_needed = {} if not res_needed else res_needed
+			self.resources_usable = {} if not res_usable else res_usable
 			self.update_resource_source()
 			self.widgets['status'].show()
 
