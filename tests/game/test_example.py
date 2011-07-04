@@ -21,9 +21,9 @@
 
 
 from horizons.command.building import Build
-from horizons.constants import RES
+from horizons.constants import RES, BUILDINGS
 
-from tests.game import new_settlement, game_test
+from tests.game import game_test, settle
 
 
 @game_test
@@ -32,14 +32,9 @@ def test_example(s, p):
 	Build a farm and 2 pastures. Confirm raw wool is produced at the
 	pastures and used by the farm to produce wool.
 	"""
-	PASTURE, FARM = 18, 20
+	settlement, island = settle(s)
 
-	settlement, island = new_settlement(s)
-	settlement.inventory.alter(RES.GOLD_ID, 5000)
-	settlement.inventory.alter(4, 50)
-	settlement.inventory.alter(6, 50)
-
-	farm = Build(FARM, 30, 30, island, settlement=settlement)(p)
+	farm = Build(BUILDINGS.FARM_CLASS, 30, 30, island, settlement=settlement)(p)
 	assert farm
 
 	# Pause the production, we want to start it explicitly later.
@@ -47,28 +42,28 @@ def test_example(s, p):
 	production.pause()
 
 	# Farm has no raw wool or wool.
-	assert farm.inventory[2] == 0
-	assert farm.inventory[10] == 0
+	assert farm.inventory[RES.LAMB_WOOL_ID] == 0
+	assert farm.inventory[RES.WOOL_ID] == 0
 
 	# Build pastures, let the game run for 31 seconds. Pastures currently need
 	# 30s to produce wool.
-	p1 = Build(PASTURE, 27, 30, island, settlement=settlement)(p)
-	p2 = Build(PASTURE, 33, 30, island, settlement=settlement)(p)
+	p1 = Build(BUILDINGS.PASTURE_CLASS, 27, 30, island, settlement=settlement)(p)
+	p2 = Build(BUILDINGS.PASTURE_CLASS, 33, 30, island, settlement=settlement)(p)
 	assert p1 and p2
 
 	s.run(seconds=31)
 
-	assert p1.inventory[2]
-	assert p2.inventory[2]
+	assert p1.inventory[RES.LAMB_WOOL_ID]
+	assert p2.inventory[RES.LAMB_WOOL_ID]
 
 	# Give farm collectors a chance to get the wool from the pastures.
 	s.run(seconds=5)
 
-	assert farm.inventory[2]
+	assert farm.inventory[RES.LAMB_WOOL_ID]
 
 	# Resume the production, let the game run for a second. The farm should have
 	# produced wool now.
 	production.pause(pause=False)
 	s.run(seconds=1)
-	assert farm.inventory[10]
+	assert farm.inventory[RES.WOOL_ID]
 

@@ -276,9 +276,9 @@ def settle(s):
 	"""
 	settlement, island = new_settlement(s)
 	settlement.inventory.alter(RES.GOLD_ID, 5000)
-	settlement.inventory.alter(4, 50) # boards
-	settlement.inventory.alter(6, 50) # tools
-	settlement.inventory.alter(7, 50) # bricks
+	settlement.inventory.alter(RES.BOARDS_ID, 50)
+	settlement.inventory.alter(RES.TOOLS_ID, 50)
+	settlement.inventory.alter(RES.BRICKS_ID, 50)
 	return settlement, island
 
 
