@@ -341,7 +341,7 @@ class PirateShip(Ship):
 	tabs = ()
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM data.shipnames WHERE for_pirate = 1")
-		return map(lambda x: x[0], names)
+		return map(lambda x: unicode(x[0]), names)
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""
@@ -350,7 +350,7 @@ class TradeShip(Ship):
 	health_bar_y = -220
 
 	def _possible_names(self):
-		return [ _('Trader') ]
+		return [ _(u'Trader') ]
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""

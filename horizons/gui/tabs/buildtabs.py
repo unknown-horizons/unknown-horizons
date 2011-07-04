@@ -24,11 +24,11 @@ from horizons.util.python.roman_numerals import int_to_roman
 
 class BuildTab(TabInterface):
 	last_active_build_tab = None
-	def __init__(self, tabindex = 0, events = {}):
+	def __init__(self, tabindex = 0, events = None):
 		super(BuildTab, self).__init__(widget = 'buildtab_increment' + str(tabindex) + '.xml')
 		self.init_values()
 		icon_path = 'content/gui/icons/tabwidget/buildmenu/level%s_%s.png'
-		self.widget.mapEvents(events)
+		self.widget.mapEvents(events or {})
 		self.button_up_image = icon_path % (tabindex,'u')
 		self.button_active_image = icon_path % (tabindex,'a')
 		self.button_down_image = icon_path % (tabindex,'d')

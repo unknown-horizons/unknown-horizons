@@ -30,7 +30,7 @@ class TabWidget(object):
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""
 
-	def __init__(self, ingame_gui, tabs=[], position=None, name=None, active_tab=None):
+	def __init__(self, ingame_gui, tabs=None, position=None, name=None, active_tab=None):
 		"""
 		@param ingame_gui: IngameGui instance
 		@param tabs: tab instances to show
@@ -41,7 +41,7 @@ class TabWidget(object):
 		super(TabWidget, self).__init__()
 		self.name = name
 		self.ingame_gui = ingame_gui
-		self._tabs = tabs
+		self._tabs = [] if not tabs else tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
 		self.widget = load_uh_widget("tab_base.xml")
 		if position is None:

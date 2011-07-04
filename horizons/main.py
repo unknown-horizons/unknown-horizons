@@ -167,7 +167,7 @@ def quit():
 	ExtScheduler.destroy_instance()
 	fife.quit()
 
-def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False, campaign={}):
+def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False, campaign=None):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
 	"""
@@ -238,7 +238,7 @@ def prepare_multiplayer(game):
 def start_multiplayer(game):
 	_modules.session.start()
 
-def load_game(savegame = None, is_scenario = False, campaign = {}):
+def load_game(savegame = None, is_scenario = False, campaign = None):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
@@ -265,7 +265,7 @@ def _start_dev_map():
 	load_game(first_map)
 	return True
 
-def _start_map(map_name, is_scenario = False, campaign = {}):
+def _start_map(map_name, is_scenario = False, campaign = None):
 	"""Start a map specified by user
 	@return: bool, whether loading succeded"""
 	maps = SavegameManager.get_available_scenarios() if is_scenario else SavegameManager.get_maps()

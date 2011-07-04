@@ -32,14 +32,6 @@ from horizons.world.pathfinding.pather import StaticPather
 from tests.game import settle, game_test, RANDOM_SEED
 
 
-LUMBERJACK = 8
-HUNTER = 9
-FISHERMAN = 11
-TRAIL = 15
-PASTURE = 18
-FARM = 20
-
-
 def test_removal():
 	rng = random.Random(RANDOM_SEED)
 	for i in range(10):
@@ -62,9 +54,9 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 			assert tree
 			tree.finish_production_now()
 
-	jack = Build(LUMBERJACK, 25, 30, island, settlement=settlement)(p)
+	jack = Build(BUILDINGS.LUMBERJACK_CLASS, 25, 30, island, settlement=settlement)(p)
 	assert jack
-	jack = Build(LUMBERJACK, 35, 30, island, settlement=settlement)(p)
+	jack = Build(BUILDINGS.LUMBERJACK_CLASS, 35, 30, island, settlement=settlement)(p)
 	assert jack
 
 	# Throw some fish into the water
@@ -73,9 +65,9 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 		assert school
 		school.finish_production_now()
 
-	fisherman = Build(FISHERMAN, 25, 20, island, settlement=settlement)(p)
+	fisherman = Build(BUILDINGS.FISHERMAN_CLASS, 25, 20, island, settlement=settlement)(p)
 	assert fisherman
-	fisherman = Build(FISHERMAN, 35, 20, island, settlement=settlement)(p)
+	fisherman = Build(BUILDINGS.FISHERMAN_CLASS, 35, 20, island, settlement=settlement)(p)
 	assert fisherman
 
 	# Some wild animals in the forest
@@ -86,13 +78,13 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 		assert animal
 		animal.finish_production_now()
 
-	hunter = Build(HUNTER, 30, 35, island, settlement=settlement)(p)
+	hunter = Build(BUILDINGS.HUNTER_CLASS, 30, 35, island, settlement=settlement)(p)
 	assert hunter
 
 	# Build a farm
-	assert Build(FARM, 26, 33, island, settlement=settlement)(p)
-	assert Build(PASTURE, 22, 33, island, settlement=settlement)(p)
-	assert Build(PASTURE, 26, 37, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.FARM_CLASS, 26, 33, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.PASTURE_CLASS, 22, 33, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.PASTURE_CLASS, 26, 37, island, settlement=settlement)(p)
 
 	# Build roads
 	for (start, dest) in [(Point(27, 30), Point(30, 23)), (Point(32, 23), Point(35, 30)),
@@ -101,11 +93,11 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 		path = StaticPather.get_direct_path(island, start, dest)
 		assert path
 		for (x, y) in path:
-			a = Build(TRAIL, x, y, island, settlement=settlement)(p)
+			a = Build(BUILDINGS.TRAIL_CLASS, x, y, island, settlement=settlement)(p)
 
 	s.run(seconds=before_ticks)
 	# Tear down a random building that is not a trail or tree.
-	target = [b for b in settlement.buildings if b.id not in (TRAIL, BUILDINGS.TREE_CLASS)][tear_index]
+	target = [b for b in settlement.buildings if b.id not in (BUILDINGS.TRAIL_CLASS, BUILDINGS.TREE_CLASS)][tear_index]
 	Tear(target)(p)
 	s.run(seconds=after_ticks)
 

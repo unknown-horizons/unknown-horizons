@@ -27,6 +27,14 @@ import signal
 import tempfile
 from functools import wraps
 
+# check if SIGALRM is supported, this is not the case on Windows
+# we might provide an alternative later, but for now, this will do
+try:
+	from signal import SIGALRM
+	TEST_TIMELIMIT = True
+except ImportError:
+	TEST_TIMELIMIT = False
+
 import horizons.main
 import horizons.world	# needs to be imported before session
 from horizons.ai.trader import Trader
@@ -62,7 +70,8 @@ def create_map():
 	"""
 
 	# Create island.
-	islandfile = tempfile.mkstemp()[1]
+	fd, islandfile = tempfile.mkstemp()
+	os.close(fd)
 
 	db = DbReader(islandfile)
 	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
@@ -81,7 +90,8 @@ def create_map():
 	db("COMMIT")
 
 	# Create savegame with the island above.
-	savegame = tempfile.mkstemp()[1]
+	fd, savegame = tempfile.mkstemp()
+	os.close(fd)
 	shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, savegame)
 
 	db = DbReader(savegame)
@@ -176,7 +186,9 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED):
 	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True}]
 
 	session.load(mapgen(), players)
-	session.world.trader = Trader(session, 99999, 'Free Trader', Color())
+	# use different trader id here, so that init_new_world can be called
+	# (else there would be a worldid conflict)
+	session.world.trader = Trader(session, 99999 + 42, 'Free Trader', Color())
 
 	return session, session.world.player
 
@@ -228,21 +240,24 @@ def game_test(*args, **kwargs):
 	timeout = kwargs.get('timeout', 5)
 	mapgen = kwargs.get('mapgen', create_map)
 
-	def handler(signum, frame):
-		raise Exception('Test run exceeded %ds time limit' % timeout)
-	signal.signal(signal.SIGALRM, handler)
+	if TEST_TIMELIMIT:
+		def handler(signum, frame):
+			raise Exception('Test run exceeded %ds time limit' % timeout)
+		signal.signal(signal.SIGALRM, handler)
 
 	def deco(func):
 		@wraps(func)
 		def wrapped(*args):
 			horizons.main.db = db
 			s, p = new_session(mapgen)
-			signal.alarm(timeout)
+			if TEST_TIMELIMIT:
+				signal.alarm(timeout)
 			try:
 				return func(s, p, *args)
 			finally:
 				s.end()
-				signal.alarm(0)
+				if TEST_TIMELIMIT:
+					signal.alarm(0)
 		return wrapped
 
 	if no_decorator_arguments:
@@ -261,9 +276,9 @@ def settle(s):
 	"""
 	settlement, island = new_settlement(s)
 	settlement.inventory.alter(RES.GOLD_ID, 5000)
-	settlement.inventory.alter(4, 50) # boards
-	settlement.inventory.alter(6, 50) # tools
-	settlement.inventory.alter(7, 50) # bricks
+	settlement.inventory.alter(RES.BOARDS_ID, 50)
+	settlement.inventory.alter(RES.TOOLS_ID, 50)
+	settlement.inventory.alter(RES.BRICKS_ID, 50)
 	return settlement, island
 
 
@@ -273,7 +288,8 @@ def set_trace():
 	time limit will be disabled and stdout restored (so the debugger actually
 	works).
 	"""
-	signal.alarm(0)
+	if TEST_TIMELIMIT:
+		signal.alarm(0)
 
 	from nose.tools import set_trace
 	set_trace()

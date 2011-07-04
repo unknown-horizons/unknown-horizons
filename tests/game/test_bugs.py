@@ -19,15 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 from horizons.command.building import Build, Tear
+from horizons.constants import BUILDINGS, RES
 
 from tests.game import settle, game_test
-from tests.game.test_farm import _build_farm, POTATO_FIELD
-
-
-BOAT_BUILDER = 12
-TRAIL = 15
+from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
+from tests.game.test_farm import _build_farm
 
 
 @game_test
@@ -35,15 +32,15 @@ def test_ticket_979(s, p):
 	settlement, island = settle(s)
 	storage_collectors = settlement.branch_office.get_local_collectors()
 
-	farm = _build_farm(30, 30, POTATO_FIELD, island, settlement, p)
+	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
 
 	# Let it work for a bit
 	s.run(seconds=60)
-	assert farm.inventory[5]
+	assert farm.inventory[RES.FOOD_ID]
 
 	# Build a road, connecting farm and branch office
 	for y in range(23, 30):
-		assert Build(TRAIL, 30, y, island, settlement=settlement)(p)
+		assert Build(BUILDINGS.TRAIL_CLASS, 30, y, island, settlement=settlement)(p)
 
 	# Step forward in time until a collector picked a job
 	got_job = False
@@ -61,7 +58,7 @@ def test_ticket_979(s, p):
 def test_ticket_1016(s, p):
 	settlement, island = settle(s)
 
-	farm = _build_farm(30, 30, POTATO_FIELD, island, settlement, p)
+	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
 
 	# tear down job target, then home building (in the same tick)
 
@@ -84,11 +81,27 @@ def test_ticket_1005(s, p):
 	settlement, island = settle(s)
 	assert len(s.world.ships) == 2
 
-	builder = Build(BOAT_BUILDER, 35, 20, island, settlement=settlement)(p)
-	builder.inventory.alter(3, 5)	# textile
-	builder.inventory.alter(4, 4)	# boards
+	builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(p)
+	builder.inventory.alter(RES.TEXTILE_ID, 5)
+	builder.inventory.alter(RES.BOARDS_ID, 4)
 	builder.add_production_by_id(15)
 
 	s.run(seconds=130)
 
 	assert len(s.world.ships) == 3
+
+
+def test_brick_tool_interference():
+	"""
+	Running the brick test at first will break the tool test.
+	"""
+	test_brick_production_chain()
+	test_tool_production_chain()
+
+
+def test_tool_brick_interference():
+	"""
+	Running the tool test at first will break the brick test.
+	"""
+	test_tool_production_chain()
+	test_brick_production_chain()

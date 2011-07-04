@@ -162,7 +162,7 @@ class Session(LivingObject):
 	def save(self, savegame):
 		raise NotImplementedError
 
-	def load(self, savegame, players, is_scenario=False, campaign={}):
+	def load(self, savegame, players, is_scenario=False, campaign=None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color and local
@@ -173,7 +173,7 @@ class Session(LivingObject):
 			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)
 			savegame = os.path.join(SavegameManager.maps_dir, \
 			                        self.scenario_eventhandler.get_map_file())
-		self.campaign = campaign
+		self.campaign = {} if not campaign else campaign
 
 		self.log.debug("Session: Loading from %s", savegame)
 		savegame_db = SavegameAccessor(savegame) # Initialize new dbreader

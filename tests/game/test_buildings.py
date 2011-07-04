@@ -24,21 +24,9 @@ from itertools import product
 
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, UNITS
+from horizons.constants import BUILDINGS, UNITS, RES
 
-from nose.plugins.skip import SkipTest
 from tests.game import game_test, settle
-
-
-LUMBERJACK = 8
-HUNTER = 9
-FISHERMAN = 11
-BRICKYARD = 24
-CLAY_PIT = 25
-IRON_MINE = 28
-SMELTERY = 29
-TOOLMAKER = 30
-CHARCOAL_BURNING = 31
 
 
 @game_test
@@ -48,11 +36,11 @@ def test_lumberjack(s, p):
 	"""
 	settlement, island = settle(s)
 
-	jack = Build(LUMBERJACK, 30, 30, island, settlement=settlement)(p)
+	jack = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(p)
 	assert jack
 
-	assert jack.inventory[4] == 0	# boards
-	assert jack.inventory[8] == 0	# woord
+	assert jack.inventory[RES.BOARDS_ID] == 0
+	assert jack.inventory[RES.WOOD_ID] == 0
 
 	for (x_off, y_off) in product([-2, 2], repeat=2):
 		x = 30 + x_off
@@ -63,7 +51,7 @@ def test_lumberjack(s, p):
 
 	s.run(seconds=20)
 
-	assert jack.inventory[4]
+	assert jack.inventory[RES.BOARDS_ID]
 
 
 @game_test
@@ -73,11 +61,11 @@ def test_hunter(s, p):
 	"""
 	settlement, island = settle(s)
 
-	hunter = Build(HUNTER, 30, 30, island, settlement=settlement)(p)
+	hunter = Build(BUILDINGS.HUNTER_CLASS, 30, 30, island, settlement=settlement)(p)
 	assert hunter
 
-	assert hunter.inventory[5] == 0		# food
-	assert hunter.inventory[13] == 0 	# dear meat
+	assert hunter.inventory[RES.FOOD_ID] == 0
+	assert hunter.inventory[RES.DEER_MEAT_ID] == 0
 
 	for (x_off, y_off) in product([-5, -4, 4, 5], repeat=2):
 		x = 30 + x_off
@@ -90,7 +78,7 @@ def test_hunter(s, p):
 
 	s.run(seconds=30)
 
-	assert hunter.inventory[5]
+	assert hunter.inventory[RES.FOOD_ID]
 
 
 @game_test
@@ -105,15 +93,15 @@ def test_fisherman(s, p):
 		assert school
 		school.finish_production_now()
 
-	fisherman = Build(FISHERMAN, 25, 20, island, settlement=settlement)(p)
+	fisherman = Build(BUILDINGS.FISHERMAN_CLASS, 25, 20, island, settlement=settlement)(p)
 	assert fisherman
 
-	assert fisherman.inventory[5] == 0		# food
-	assert fisherman.inventory[28] == 0 	# fish
+	assert fisherman.inventory[RES.FOOD_ID] == 0
+	assert fisherman.inventory[RES.FISH_ID] == 0
 
 	s.run(seconds=20)
 
-	assert fisherman.inventory[5]
+	assert fisherman.inventory[RES.FOOD_ID]
 
 
 @game_test
@@ -121,20 +109,18 @@ def test_brick_production_chain(s, p):
 	"""
 	A brickyard makes bricks from clay. Clay is collected by a clay pit on a deposit.
 	"""
-	raise SkipTest('Building a clay pit breaks the tool_production_chain test.')
-
 	settlement, island = settle(s)
 
 	assert Build(BUILDINGS.CLAY_DEPOSIT_CLASS, 30, 30, island, ownerless=True)(None)
-	assert Build(CLAY_PIT, 30, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.CLAY_PIT_CLASS, 30, 30, island, settlement=settlement)(p)
 
-	brickyard = Build(BRICKYARD, 30, 25, island, settlement=settlement)(p)
-	assert brickyard.inventory[7] == 0 	# bricks
-	assert brickyard.inventory[21] == 0 # clay
+	brickyard = Build(BUILDINGS.BRICKYARD_CLASS, 30, 25, island, settlement=settlement)(p)
+	assert brickyard.inventory[RES.BRICKS_ID] == 0
+	assert brickyard.inventory[RES.CLAY_ID] == 0
 
 	s.run(seconds=60) # 15s clay pit, 15s brickyard
 
-	assert brickyard.inventory[7]
+	assert brickyard.inventory[RES.BRICKS_ID]
 
 
 @game_test
@@ -148,18 +134,18 @@ def test_tool_production_chain(s, p):
 	settlement, island = settle(s)
 
 	assert Build(BUILDINGS.MOUNTAIN_CLASS, 30, 35, island, ownerless=True)(None)
-	assert Build(IRON_MINE, 30, 35, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.IRON_MINE_CLASS, 30, 35, island, settlement=settlement)(p)
 
-	charcoal = Build(CHARCOAL_BURNING, 25, 35, island, settlement=settlement)(p)
+	charcoal = Build(BUILDINGS.CHARCOAL_BURNER_CLASS, 25, 35, island, settlement=settlement)(p)
 	assert charcoal
-	charcoal.inventory.alter(4, 10) # give him boards directly
+	charcoal.inventory.alter(RES.BOARDS_ID, 10) # give him boards directly
 
-	assert Build(SMELTERY, 25, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.SMELTERY_CLASS, 25, 30, island, settlement=settlement)(p)
 
-	toolmaker = Build(TOOLMAKER, 22, 32, island, settlement=settlement)(p)
+	toolmaker = Build(BUILDINGS.TOOLMAKER_CLASS, 22, 32, island, settlement=settlement)(p)
 	assert toolmaker
-	toolmaker.inventory.alter(4, 10) # give him boards directly
+	toolmaker.inventory.alter(RES.BOARDS_ID, 10) # give him boards directly
 
-	assert toolmaker.inventory[6] == 0
+	assert toolmaker.inventory[RES.TOOLS_ID] == 0
 	s.run(seconds=120)
-	assert toolmaker.inventory[6]
+	assert toolmaker.inventory[RES.TOOLS_ID]

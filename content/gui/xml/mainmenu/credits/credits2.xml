@@ -114,6 +114,8 @@
 	<VBox> <Label text="Portuguese"  name="headline" />
 		<VBox  name="box">
 			<Label text="Nuno Alves (MadMonk)" />
+			<Label text="Nelson Marques (nmarques)" />
+
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Brazilian Portuguese"  name="headline" />

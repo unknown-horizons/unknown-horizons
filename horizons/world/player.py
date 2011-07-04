@@ -29,7 +29,7 @@ from horizons.scenario import CONDITIONS
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
 
-	def __init__(self, session, worldid, name, color, inventory = {}):
+	def __init__(self, session, worldid, name, color, inventory = None):
 		"""
 		@param session: Session instance
 		@param worldid: player's worldid
@@ -41,8 +41,9 @@ class Player(StorageHolder, WorldObject):
 		super(Player, self).__init__(worldid=worldid)
 		self.__init(name, color)
 
-		for res, value in inventory.iteritems():
-			self.inventory.alter(res, value)
+		if inventory:
+			for res, value in inventory.iteritems():
+				self.inventory.alter(res, value)
 
 	def __init(self, name, color, settlerlevel = 0):
 		assert isinstance(color, Color)

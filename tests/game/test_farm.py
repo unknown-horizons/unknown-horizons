@@ -23,16 +23,9 @@
 from itertools import product
 
 from horizons.command.building import Build
+from horizons.constants import BUILDINGS, RES
 
 from tests.game import game_test, settle
-
-
-WEAVER = 7
-PASTURE = 18
-POTATO_FIELD = 19
-FARM = 20
-SUGAR_FIELD = 22
-DISTILLERY = 26
 
 
 def _build_farm(x, y, field_type, island, settlement, owner):
@@ -43,7 +36,7 @@ def _build_farm(x, y, field_type, island, settlement, owner):
 	  X		  (X - farm, F - field)
 	F   F
 	"""
-	farm = Build(FARM, x, y, island, settlement=settlement)(owner)
+	farm = Build(BUILDINGS.FARM_CLASS, x, y, island, settlement=settlement)(owner)
 	assert farm, "Failed to build a farm at (%d, %d)" % (x, y)
 
 	for (x_off, y_off) in product([-3, 3], repeat=2):
@@ -63,15 +56,15 @@ def test_weaver(s, p):
 	"""
 	settlement, island = settle(s)
 
-	_build_farm(30, 30, PASTURE, island, settlement, p)
+	_build_farm(30, 30, BUILDINGS.PASTURE_CLASS, island, settlement, p)
 
-	weaver = Build(WEAVER, 27, 30, island, settlement=settlement)(p)
+	weaver = Build(BUILDINGS.WEAVER_CLASS, 27, 30, island, settlement=settlement)(p)
 	assert weaver
-	assert weaver.inventory[3] == 0	# textile
+	assert weaver.inventory[RES.TEXTILE_ID] == 0
 
 	s.run(seconds=60)	# pasture 30s, farm 1s, weaver 12s
 
-	assert weaver.inventory[3]
+	assert weaver.inventory[RES.TEXTILE_ID]
 
 
 @game_test
@@ -82,15 +75,15 @@ def test_distillery(s, p):
 	"""
 	settlement, island = settle(s)
 
-	_build_farm(30, 30, SUGAR_FIELD, island, settlement, p)
+	_build_farm(30, 30, BUILDINGS.SUGARCANE_FIELD_CLASS, island, settlement, p)
 
-	distillery = Build(DISTILLERY, 27, 30, island, settlement=settlement)(p)
+	distillery = Build(BUILDINGS.DISTILLERY_CLASS, 27, 30, island, settlement=settlement)(p)
 	assert distillery
-	assert distillery.inventory[22] == 0	# liquor
+	assert distillery.inventory[RES.LIQUOR_ID] == 0
 
 	s.run(seconds=60)	# sugarfield 30s, farm 1s, distillery 12s
 
-	assert distillery.inventory[22]
+	assert distillery.inventory[RES.LIQUOR_ID]
 
 
 @game_test
@@ -100,10 +93,10 @@ def test_potato_field(s, p):
 	"""
 	settlement, island = settle(s)
 
-	farm = _build_farm(30, 30, POTATO_FIELD, island, settlement, p)
-	assert farm.inventory[5] == 0	# food
-	assert farm.inventory[15] == 0	# potatoes
+	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
+	assert farm.inventory[RES.FOOD_ID] == 0
+	assert farm.inventory[RES.POTATOES_ID] == 0
 
 	s.run(seconds=60)	# potato field 26s, farm 1s
 
-	assert farm.inventory[5]
+	assert farm.inventory[RES.FOOD_ID]
