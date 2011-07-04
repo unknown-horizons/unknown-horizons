@@ -50,8 +50,8 @@ def HealthDecorator(original_class):
 	orig_load = original_class.load
 	orig_remove = original_class.remove
 
-	def __init__(self, *args, **kwargs):
-		orig_init(self, *args, **kwargs)
+	def __init__(self, **kwargs):
+		orig_init(self, **kwargs)
 		self.create_health_component()
 
 	def save(self, db, *args, **kwargs):

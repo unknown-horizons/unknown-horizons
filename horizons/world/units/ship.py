@@ -25,13 +25,13 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-                              TraderShipOverviewTab, EnemyShipOverviewTab
+	TraderShipOverviewTab, EnemyShipOverviewTab
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.units.weaponholder import WeaponHolder
+from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.util import Point, NamedObject, Circle, WorldObject, Callback
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
@@ -180,7 +180,7 @@ class ShipRoute(object):
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
 @HealthDecorator
-class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
+class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -415,12 +415,9 @@ class Ship(NamedObject, StorageHolder, WeaponHolder, Unit):
 		cos = math.cos(angle)
 		sin = math.sin(angle)
 	
-		distance = self.position.distance(dest)
 		for weapon in self._fireable:
 			destination = Point(dest_x, dest_y)
-			weapon.add_weapon_fired_listener(Callback(CannonBall, self.position, destination, weapon.attack_speed, self.session.view))
-			weapon.fire(destination, distance)
-			weapon.remove_weapon_fired_listener(Callback(CannonBall, self.position, destination, weapon.attack_speed, self.session.view))
+			weapon.fire(destination, self.position.center())
 			dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 			dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 

@@ -25,19 +25,20 @@ from fife import fife
 from horizons.constants import GAME_SPEED, LAYERS
 from horizons.scheduler import Scheduler
 
-class CannonBall(object):
+class Bullet(object):
 	"""
-	Class for a canonball animation
+	Class for Bullet animation
 	"""
 	id = -1
-	def __init__(self, source, dest, speed, view):
+	def __init__(self, image, source, dest, speed, view):
 		"""
+		@param image: path to file with bullet image
 		@param source: Point with starting position
 		@param dest: Point with ending position
 		@param speed: Attack speed of the Weapon that fires the canonball
 		@param view: View
 		"""
-		CannonBall.id += 1
+		Bullet.id += 1
 		# get the current position
 		self.x = source.x
 		self.y = source.y
@@ -57,7 +58,7 @@ class CannonBall(object):
 		self._object = horizons.main.fife.engine.getModel().createObject(str(self.id), 'cannonball')
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
-		img = horizons.main.fife.imagepool.addResourceFromFile('content/gfx/misc/cannonballs/as_cannonball0/idle/45/0.png')
+		img = horizons.main.fife.imagepool.addResourceFromFile(image)
 		for rotation in [45, 135, 225, 315]:
 			visual.addStaticImage(rotation, img)
 		coords = fife.ModelCoordinate(int(self.x), int(self.y))

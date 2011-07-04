@@ -78,8 +78,8 @@ class UNITS:
 	DIFFERENCE_BUILDING_UNIT_ID = 1000000
 
 class WEAPONS:
-	CANNON = 26
-	DAGGER = 27
+	CANNON = 29
+	DAGGER = 30
 
 class BUILDINGS:
 	# ./development/print_db_data.py building

@@ -23,6 +23,7 @@ from horizons.util import Circle, Callback
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.world.units.bullet import Bullet
 
 @metaChangeListenerDecorator("attack_ready")
 @metaChangeListenerDecorator("weapon_fired")
@@ -35,6 +36,8 @@ class Weapon(object):
 		cooldown_time - number of seconds until the attack is ready again
 		attack_speed - speed that calculates the time until attack reaches target
 		attack_radius - radius affected by attack
+		bullet_image - path to file with the bullet image,
+			if no string is provided, then no animation will be played
 
 		attack_ready callbacks are executed when the attack is made ready
 	"""
@@ -46,7 +49,7 @@ class Weapon(object):
 		data = session.db("SELECT id, type, damage,\
 		                          min_range, max_range,\
 		                          cooldown_time, attack_speed,\
-		                          attack_radius \
+		                          attack_radius, bullet_image \
 		                  FROM weapon WHERE id = ?", id)
 		data = data[0]
 		self.weapon_id = data[0]
@@ -56,6 +59,7 @@ class Weapon(object):
 		self.cooldown_time = data[5]
 		self.attack_speed = data[6]
 		self.attack_radius = data[7]
+		self.bullet_image = data[8]
 		self.attack_ready = True
 		self.remaining_ticks = 0
 		self.session = session
@@ -88,16 +92,17 @@ class Weapon(object):
 		self.attack_ready = True
 		self.on_attack_ready()
 
-	def fire(self, position, distance):
+	def fire(self, destination, position):
 		"""
-		Fires the weapon at a certain position
-		@param position : position where weapon will be fired
-		@param distance : distance between weapon and target
+		Fires the weapon at a certain destination
+		@param destination : Point with position where weapon will be fired
+		@param position : position where the weapon is fired from
 		"""
 		if not self.attack_ready:
 			print 'attack not ready!'
 			return
 
+		distance = destination.distance(position)
 		if not self.check_target_in_range(distance):
 			return
 
@@ -109,6 +114,9 @@ class Weapon(object):
 		#calculate the ticks until attack is ready again
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
 		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
+
+		if self.bullet_image:
+			Bullet(self.bullet_image, position, destination, self.attack_speed, self.session.view)
 		print 'fired', self
 
 		self.attack_ready = False
