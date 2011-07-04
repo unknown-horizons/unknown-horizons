@@ -65,7 +65,7 @@ def test_hunter(s, p):
 	assert hunter
 
 	assert hunter.inventory[RES.FOOD_ID] == 0
-	assert hunter.inventory[RES.DEAR_MEAT_ID] == 0
+	assert hunter.inventory[RES.DEER_MEAT_ID] == 0
 
 	for (x_off, y_off) in product([-5, -4, 4, 5], repeat=2):
 		x = 30 + x_off
