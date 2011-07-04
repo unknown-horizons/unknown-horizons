@@ -32,7 +32,7 @@ from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
 from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
 from horizons.util.color import Color
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
@@ -303,8 +303,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					   Tree.check_build(self.session, tile, check_settlement=False):
 						building = Build(Tree, coords[0], coords[1], ownerless=True,island=island)(issuer=None)
 						building.finish_production_now() # make trees big and fill their inventory
-						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
+						if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
+						if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
+							building.inventory.alter(RES.WILDANIMALFOOD_ID, -1)
 					elif num_clay_deposits < max_clay_deposits and \
 					     self.session.random.randint(0, 40) == 0 and \
 					     Clay.check_build(self.session, tile, check_settlement=False):

@@ -131,8 +131,8 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.home_island.wild_animals.append(self)
 
 		resources = self.get_needed_resources()
-		assert resources == [RES.WILDANIMALFOOD_ID]
-		self._required_resource_id = resources[0]
+		assert resources == [RES.WILDANIMALFOOD_ID] or resources == []
+		self._required_resource_id = RES.WILDANIMALFOOD_ID
 		self._building_index = self.home_island.get_building_index(self._required_resource_id)
 
 	def save(self, db):
@@ -174,10 +174,10 @@ class WildAnimal(CollectorAnimal, Collector):
 			return
 
 		# if can't find a job, we walk to a random location near us and search there
-		target = self.get_random_location(self.walking_range)
+		(target, path) = self.get_random_location(self.walking_range)
 		if target is not None:
 			self.log.debug('%s: no possible job, walking to %s', self, str(target))
-			self.move(target, callback=self.search_job)
+			self.move(target, callback=self.search_job, path=path)
 			self.state = self.states.no_job_walking_randomly
 		else:
 			# we couldn't find a target, just try again 3 secs later
@@ -193,8 +193,16 @@ class WildAnimal(CollectorAnimal, Collector):
 			provider = self._building_index.get_random_building_in_range(pos)
 			if provider is not None and self.check_possible_job_target(provider):
 				job = self.check_possible_job_target_for(provider, self._required_resource_id)
-				if job is not None and self.check_move(job.object.loading_area):
-					return job
+				if job is not None:
+					path = self.check_move(job.object.loading_area)
+					if path:
+						job.path = path
+						return job
+
+		# NOTE: only use random job for now, see how it's working it
+		# it speeds up animal.search_job by a third (0.00321 -> 0.00231)
+		# and animal.get_job by 3/4 (0.00231 -> 0.00061)
+		return None
 
 		jobs = JobList(self, JobList.order_by.random)
 		# try all possible jobs
@@ -224,7 +232,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.log.debug("%s end_job; health: %s", self, self.health)
 		self.health += WILD_ANIMAL.HEALTH_INCREASE_ON_FEEDING
 		if self.can_reproduce and self.health >= WILD_ANIMAL.HEALTH_LEVEL_TO_REPRODUCE and \
-			len(self.home_island.wild_animals) < (len(self.home_island.ground_map) // 4):
+			len(self.home_island.wild_animals) < (self.home_island.num_trees // WILD_ANIMAL.POPULATION_LIMIT):
 			self.reproduce()
 			# reproduction costs health
 			self.health = WILD_ANIMAL.HEALTH_INIT_VALUE
@@ -237,7 +245,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.log.debug("%s REPRODUCING", self)
 		# create offspring
 		CreateUnit(self.owner.worldid, self.id, self.position.x, self.position.y, \
-		           can_reproduce = self.next_clone_can_reproduce())
+		           can_reproduce = self.next_clone_can_reproduce())(issuer=None)
 		# reset own resources
 		for res in self.get_consumed_resources():
 			self.inventory.reset(res)
@@ -254,8 +262,10 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.home_island.wild_animals.remove(self)
 		self.remove()
 
-	def cancel(self):
-		super(WildAnimal, self).cancel(continue_action=self.search_job)
+	def cancel(self, continue_action=None):
+		if continue_action is None:
+			continue_action = self.search_job
+		super(WildAnimal, self).cancel(continue_action=continue_action)
 
 	def __str__(self):
 		return "%s(health=%s)" % (super(WildAnimal, self).__str__(), \

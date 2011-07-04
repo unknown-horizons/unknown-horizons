@@ -3,8 +3,8 @@ Unknown Horizons
 
 -----------------------------------------------------
 
-2011-06-??: Milestone 2011.2
-changelog date: JUN 03; rev: 68b24535e1fe7254e96ab52b6fba8e97c7e4290f
+2011-07-01: Milestone 2011.2
+changelog date: JUL 01; rev: 5bfb7f58f2c8fd8cb3e16185ff5b510b752fc4ba
 
 Gameplay and Balancing
 * New features
@@ -16,8 +16,12 @@ Gameplay and Balancing
    + scenario chooser interface after winning a scenario
    + improvements to pathfinding speed on sea tiles
    + randomized playlist of background music
+   + first version of production overview widget
+   + display hint to tell players that roads can be dragged when detecting that
+     they build them one-by-one
 * Modifications and changes
    # tavern building costs: 250 coins, 4 boards, 2 bricks (was: 0, 0, 0)
+   # sugar cane field building costs: 150 gold coins (was: 0)
    # storage tent building costs: 350 coins (was 750), 4 boards (was: 10)
    # storage tent additional capacity per slot: 10t (was: 30)
    # storage tent radius: 17 (was: 24). Reduces the covered area by 50%.
@@ -27,10 +31,18 @@ Gameplay and Balancing
      (was: description, technical details)
    # update inventory once a second (was: on every settlement change)
    # apply changes to autosave interval at runtime (was: only after restart)
-   # inhabitant taxes can now be set in steps of 0.1 (was: 0.5)
+   # inhabitant taxes can now be set in 10 steps of 0.1 (was: 3, 0.5)
    # only display scenarios in selected language and English by default
      (was: display all scenarios)
    # tearing tool sticks if shift key is pressed, same as building tool
+   # ships only have a limited amount of slots now (was: unlimited - GUI: four).
+     The overall storage limit can be distributed without further restrictions.
+   # ships of other players now have overview tabs (was: None)
+   # tabs of enemy buildings and units tell the player name of their owner
+   # clay found in deposits now between 750 and 1250 (was: 375, 625)
+   # spawn more animals at game start, probability 10% per tile (was: 2.5%)
+   # search more efficiently for targets when moving ship to unreachable coords
+   # improvements to wild animal health balancing
 * Fixed bugs and problems
    ~ show player's gold immediately after load
    ~ handling of multiple dialogs that pause the game (new pause stack)
@@ -40,6 +52,9 @@ Gameplay and Balancing
    ~ fishers no longer get stuck as easily
    ~ paused game allowed to change game speed
    ~ only allow grouping of units owned by the player
+   ~ remove fisher outline when deselected
+   ~ ask for confirmation before restoring default settings in the settings menu
+   ~ WildAnimal did not reproduce
 
 Media Content
 * New files and features
@@ -48,10 +63,15 @@ Media Content
    + building: half-timbered house
    + icon: up and down arrows, small rect-shaped delete button
    + icon: svg application icon without text for use in small icons
-   + five city names, mostly South-American flavored
+   + icon: grayscale version of speed_* minimap panel buttons
+   + icon: small 16px versions of more resources
+   + unit: lumberjack
+   + simple script that helps adding names to the database
 * Brush-ups and modifications
    # tooltip graphics
    # tab background images
+   # pasture animated with more frames
+   # save icon in game menu
 
 User Interface
 * Additions and new features
@@ -61,20 +81,26 @@ User Interface
    + added tooltips to several buttons and labels
    + display tax rate as label
    + highlight background of currently selected tab
+   + first version of tab 'build related fields' for e.g. farm and lumberjack
 * Repositioning and modifications
    # dynamic positioning on most headlines. Causes intentional glitch
    # made random maps prettier, coastline is now properly drawn
    # default style border size now 0 (was 2)
    # button placement in settings
    # display correct residential names in inhabitant overview tab (was: 'Tent')
+   # added scrollareas to credits
 * Fixed bugs and usability problems
    ~ duplicate string name in help.xml that caused wrong translation
    ~ spacing issues with headline of build preview tab when rotating the preview
    ~ 'Widget containment fumble' warning in buyselltab selection widget
    ~ properly translate tooltips in build menu
+   ~ buy/sell tab no longer displayed at storages, now only available at branch
+     office and main square
 
 Codebase
 * New functionalities
+   + test infrastructure
+   + large amount of tests
    + string preview tool for translators. Start UH with  --string-previewer  to
      enable it.
    + starting random maps with specific seeds from the command line
@@ -90,6 +116,11 @@ Codebase
    + made Callback class hashable for usage in dictionaries
    + cache yaml files unless altered. Faster scenario selection in SP menu.
    + testing gettext plural form support
+   + execute_many available in DbReader
+   + passing seed to RNG for all session types, use constant seed by default
+   + YAML cache system. Yields faster loading times after first game start.
+   + wrapper around pdb's set_trace
+   + BuildingCollectors can have no home building
 * Modified structures
    # removed our center_widget, now use pychan's position_technique="automatic"
      and modified positioning code to use this shortcut for "center:center"
@@ -99,7 +130,14 @@ Codebase
    # try to use installed pyenet version before searching for compiled one
    # rename build menu icons to achieve unified naming convention
    # roads on field layer instead of ground layer (simplifies rendering)
-   # minimap now based on fife.Image (was: Point)
+   # minimap now based on fife.Image (was: Point). Introduces zoom problems
+     which are fixed in the development branch of FIFE, ETA next UH release.
+   # basic styling for all widgets via load_uh_widget
+   # not store hard references to any gui file anymore
+   # new changelog formatting
+   # moved fife path setup into own function, run_tests uses this now
+   # doubled speed of get_random_location by seldomly finding invalid positions
+   # only try random jobs for animals
 * Fixed crashes and inconsistencies
    ~ fixed save/load of scenario variables
    ~ properly destruct the messagewidget
@@ -113,29 +151,44 @@ Codebase
    ~ menu closes correctly on instance removal (delete instance ref)
    ~ move_home checks now if a unit is already at home
    ~ avoid freezes due to too little cpu power if game speed is high
+   ~ fix several problems with build-related-fields tab
+   ~ Mac-specific error when defaultlocale was None. Use 'en' as fallback.
+   ~ several crashes when collectors were deleted
+   ~ crashes when removing hunter and farm
+   ~ minimap forgot about islands when settling there
+   ~ shipnames and citynames tables now use same restriction names
+   ~ wrong state was set when a collector had been canceled
+   ~ collectors calculated paths twice
+   ~ crash when a ship was being built
+   ~ crash when a scenario was won
+   ~ crash when loading a scenario savegame
+   ~ check for blocked paths for ships caused problems
+   ~ RouteConfig and ProductionOverview disappeared due to garbage collection
+   ~ movement now correctly started after loading
 
 User-Contributed Content
 * Translations
    + glossary translations with all important terms (terminology)
    + new translations: bg, cs, fi, hu, lt
-   + new terminology translations: cs, de, es, fr, nl, pl, pt, pt_BR
-   + new tutorial translations: Finnish, Portuguese, Russian
+   + new terminology translations: cs, da, de, es, fi, fr, nl, pl, pt, pt_BR, sl
+   + new tutorial translations: fi, pt, ru
    # updates to translations: ca, de, es, et, fr, it, nb, nl, pl, pt, pt_BR, ru,
                               sl
-   # updates to tutorial translations: de, fr, nl
+   # updates to tutorial translations: de, fr, it, nl
 * Campaigns and scenarios
-   + add campaign 'test' by Court-Jus)
    + add scenario 'sc1' by Court-Jus
    + add scenario 'sc2' by Court-Jus
    + add scenario 'sc3' by Court-Jus
-
+* Media Content
+   + a lot of new city and ship names
+     ( http://forum.unknown-horizons.org/viewtopic.php?t=494 )
 * New team members with this release, Annotations
    + Push access was granted to:
-     Court-Jus, gscai, mihaibivol
+     Court-Jus, gscai, mihaibivol, squiddy
    + We accepted pull requests or patches by:
      hoffi, sids_aquarius
    + Translators that joined our teams and contributed several strings:
-     ---tbd---
+     Please refer to the credits!
    # Special thanks to kurtisevan for holding the weekly challenge More Variety
      at opengameart.org!
 

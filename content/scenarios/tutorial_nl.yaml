@@ -443,7 +443,7 @@ events:
         gereedschappen zullen eerst wel genoeg zijn. Goed gedaan!
 
 
-        U heeft nu huizen, een marktplaats en voedsel vor uw inwonders.
+        U heeft nu huizen, een marktplaats en voedsel voor uw inwonders.
 
 
         Er is alleen nog een vraag waar we nog niet aan hebben voldaan. U kunt dat
@@ -465,8 +465,8 @@ events:
         nodig is omdat de ''grote'' ook biedt wat uw inwoners kleine versie zoeken.
 
 
-        Houdt bij het ontwikkelen van uw stad er rekening mee dat geavanceerde gebouwen
-        groter zijn dan de basis gebouwen.
+        Probeer rekening te houden bij het ontwikkelen van uw stad dat de geavanceerde
+        gebouwen groter zijn dan de basis gebouwen.
 
 
         Let erop dat geloof wordt behandeld als een fysieke grondstof, eenheden moeten
@@ -479,10 +479,10 @@ events:
         van de tent staat.
 
 
-        OPDRACHT: Plaats een pavilioen met een pad naar de tenten om te voldoen aan
+        OPDRACHT: Plaats een paviljoen met een pad naar de tenten om te voldoen aan
         de vraag naar geloof van de zeelui.']
     type: logbook
-  - arguments: [!!python/unicode 'Plaats een pavilioen met verbinding naar de tenten.']
+  - arguments: [!!python/unicode 'Plaats een paviljoen met verbinding naar de tenten.']
     type: message
   - arguments: [tutStepDone, 40]
     type: set_var

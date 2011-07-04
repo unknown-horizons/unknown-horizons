@@ -79,8 +79,8 @@ class AccountTab(MarketPlaceTab):
 		  })
 
 	def show_production_overview(self):
-		prod_overview = ProductionOverview(self.settlement)
-		prod_overview.toggle_visibility()
+		self.prod_overview = ProductionOverview(self.settlement)
+		self.prod_overview.toggle_visibility()
 
 	def refresh(self):
 		taxes = self.settlement.cumulative_taxes

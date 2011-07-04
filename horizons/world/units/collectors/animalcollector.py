@@ -108,11 +108,11 @@ class AnimalCollector(BuildingCollector):
 
 	@decorators.make_constants()
 	def check_possible_job_target_for(self, target, res):
-		# An animal can only be collected by one collector. 
+		# An animal can only be collected by one collector.
 		# Since a collector only retrieves one type of res, and
-		# an animal might produce more than one, two collectors 
+		# an animal might produce more than one, two collectors
 		# could take this animal as a target.
-		# This could also happen, if the animal has an inventory 
+		# This could also happen, if the animal has an inventory
 		# with a limit > 1. In this case, one collector might register
 		# for the first ton, then the animal produces another one, which
 		# might then be spotted by another collector.
@@ -162,4 +162,12 @@ class HunterCollector(AnimalCollector):
 	kill_animal = True
 
 	def get_animals_in_range(self, res=None):
-		return self.home_building.island.wild_animals
+		dist = self.home_building.position.distance_to_point
+		radius = self.home_building.radius
+		return [ animal for animal in self.home_building.island.wild_animals if \
+		         dist(animal.position) <= radius ]
+
+
+decorators.bind_all(AnimalCollector)
+decorators.bind_all(FarmAnimalCollector)
+decorators.bind_all(HunterCollector)

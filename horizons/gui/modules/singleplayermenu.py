@@ -66,6 +66,11 @@ class SingleplayerMenu(object):
 				del eventMap['showCampaign']
 				self.current.findChild(name="showCampaign").marked = True
 				self.current.files, maps_display = SavegameManager.get_campaigns()
+				# tell people that we don't have any content
+				text = u"We currently don't have any campaigns available for you. " + \
+				u"If you are interested in adding campaigns to Unknown Horizons, " + \
+				u"please contact us via our website (http://www.unknown-horizons.org)!"
+				self.show_popup("No campaigns available yet", text)
 			else: # scenario
 				del eventMap['showScenario']
 				self.current.findChild(name="showScenario").marked = True

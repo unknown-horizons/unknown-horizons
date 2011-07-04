@@ -8,5 +8,6 @@ events:
   conditions:
   - arguments: [1]
     type: time_passed
+locale: nodefault
 mapfile: development.sqlite
 

@@ -290,6 +290,7 @@ class BuildingTool(NavigationTool):
 			self._check_update_preview(point)
 		evt.consume()
 
+	_last_road_built = []
 	def mouseReleased(self, evt):
 		"""Acctually build."""
 		self.log.debug("BuildingTool mouseReleased")
@@ -303,6 +304,20 @@ class BuildingTool(NavigationTool):
 
 			# acctually do the build
 			found_buildable = self.do_build()
+
+			# HACK: users sometimes don't realise that roads can be dragged
+			# check if 3 roads have been built within 1.2 seconds, and display
+			# a hint in case
+			if self._class.class_package == 'path':
+				import time
+				now = time.time()
+				self._last_road_built.append(now)
+				if len(self._last_road_built) > 2:
+					if (now - self._last_road_built[-3]) < 1.2:
+						self.session.ingame_gui.message_widget.add(None, None, "DRAG_ROADS_HINT")
+						# don't display hint multiple times at the same build situation
+						self.__class__._last_road_built = []
+					self.__class__._last_road_built = self.__class__._last_road_built[-3:]
 
 			# check how to continue: either build again or escapte
 			if evt.isShiftPressed() or not found_buildable or self._class.class_package == 'path':

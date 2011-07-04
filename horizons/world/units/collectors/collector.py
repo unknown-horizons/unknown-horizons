@@ -109,6 +109,7 @@ class Collector(StorageHolder, Unit):
 	def remove(self):
 		"""Removes the instance. Useful when the home building is destroyed"""
 		self.log.debug("%s: remove called", self)
+		self.cancel(continue_action=lambda : 42)
 		# remove from target collector list
 		if self.job is not None and self.state != self.states.moving_home:
 			# in the move_home state, there still is a job, but the collector is already deregistered
@@ -295,7 +296,9 @@ class Collector(StorageHolder, Unit):
 		jobs.sort_jobs()
 		# check if we can move to that targets
 		for job in jobs:
-			if self.check_move(job.object.loading_area):
+			path = self.check_move(job.object.loading_area)
+			if path:
+				job.path = path
 				return job
 
 		return None
@@ -310,7 +313,7 @@ class Collector(StorageHolder, Unit):
 			job_location = self.job.object.loading_area
 		self.move(job_location, self.begin_working, \
 		          destination_in_building = self.destination_always_in_building, \
-		          blocked_callback = self.handle_path_to_job_blocked)
+		          blocked_callback = self.handle_path_to_job_blocked, path=self.job.path)
 		self.state = self.states.moving_to_target
 
 	def resume_movement(self):
@@ -331,7 +334,7 @@ class Collector(StorageHolder, Unit):
 		"""Pretends that the collector works by waiting some time. finish_working is
 		called after that time."""
 		self.log.debug("%s begins working", self)
-		assert self.job is not None, '%s job is non in begin_working' % self
+		assert self.job is not None, '%s job is None in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, self.work_duration)
 		# play working sound
 		if self.soundfiles:
@@ -442,6 +445,8 @@ class Job(object):
 
 		self.target_inventory_full = target_inventory_full
 
+		self.path = None # attribute to temporarily store path
+
 		# this is rather a dummy for now
 		self.rating = amount
 
@@ -527,3 +532,6 @@ class JobList(list):
 
 	def __str__(self):
 		return str([ str(i) for i in self ])
+
+
+decorators.bind_all(Collector)

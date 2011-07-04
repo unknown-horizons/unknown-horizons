@@ -19,10 +19,11 @@
 			<Label name='health' position="55,25" text="" />-->
 			<Label position="0,25" name="tax_label" text="Taxes:" />
 			<StepSlider position="55,25" size="140,20" name="tax_slider" orientation="0" />
-			<Label position="55,50" name="tax_val_label" text="" />
+			<TooltipLabel position="55,50" name="tax_val_label" text=""
+				tooltip="Tax rate" />
 			<TooltipIcon name="tax_rate_label" position="80,50"
 				image="content/gui/icons/resources/running_costs.png"
-				tooltip="Tax Rate" />
+				tooltip="Tax rate" />
 		</Container>
 
 	</Container>

@@ -25,6 +25,7 @@ import os
 import os.path
 import glob
 import time
+import shelve
 import yaml
 try:
 	from yaml import CLoader as Loader
@@ -35,6 +36,55 @@ from horizons.constants import PATHS, VERSION
 from horizons.util import DbReader
 
 import horizons.main
+
+class YamlCache(object):
+	"""Loads and caches YAML files
+	"""
+	cache = {}
+	virgin = True
+	dirty = False
+	yaml_cache = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
+
+	@classmethod
+	def get_file(cls, filename):
+		if cls.virgin:
+			cls.read_bin_file()
+			cls.virgin = False
+		data = cls.get_yaml_file(filename)
+		if cls.dirty:
+			cls.write_bin_file()
+			cls.dirty = False
+		return data
+
+	@classmethod
+	def get_yaml_file(cls, filename):
+		# calc the hash
+		f = open(filename, 'r')
+		h = hash(f.read())
+		f.seek(0)
+		# check for updates or new files
+		if (filename in cls.cache and \
+				cls.cache[filename][0] != h) or \
+			 (not filename in cls.cache):
+			cls.dirty = True
+			cls.cache[filename] = (h, yaml.load( f, Loader = Loader ) )
+
+		return cls.cache[filename][1]
+
+	@classmethod
+	def write_bin_file(cls):
+		s = shelve.open(cls.yaml_cache)
+		for key, value in cls.cache.iteritems():
+			# TODO : manage unicode problems (paths with accents ?)
+			s[str(key)] = value # We have to decode it because _user_dir is encoded in constants
+		s.close()
+
+	@classmethod
+	def read_bin_file(cls):
+		s = shelve.open(cls.yaml_cache)
+		for key, value in s.iteritems():
+			cls.cache[key] = value
+		s.close()
 
 class SavegameManager(object):
 	"""Controls savegamefiles.
@@ -135,7 +185,7 @@ class SavegameManager(object):
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
 		name = "%s/%s" % (cls.autosave_dir, \
-		                  cls.autosave_filenamepattern % {'timestamp':time.time()})
+								      cls.autosave_filenamepattern % {'timestamp':time.time()})
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
@@ -143,7 +193,7 @@ class SavegameManager(object):
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
 		name = "%s/%s" % (cls.quicksave_dir, \
-		                  cls.quicksave_filenamepattern % {'timestamp':time.time()})
+								      cls.quicksave_filenamepattern % {'timestamp':time.time()})
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
@@ -162,10 +212,10 @@ class SavegameManager(object):
 
 		if autosaves:
 			tmp_del("%s/*.%s" % (cls.autosave_dir, cls.savegame_extension),
-			                     horizons.main.fife.get_uh_setting("AutosaveMaxCount"))
+							horizons.main.fife.get_uh_setting("AutosaveMaxCount"))
 		if quicksaves:
 			tmp_del("%s/*.%s" % (cls.quicksave_dir, cls.savegame_extension),
-			                     horizons.main.fife.get_uh_setting("QuicksaveMaxCount"))
+							horizons.main.fife.get_uh_setting("QuicksaveMaxCount"))
 
 	@classmethod
 	def get_metadata(cls, savegamefile):
@@ -217,7 +267,7 @@ class SavegameManager(object):
 		"""Returns all savegames, that were saved via the ingame save dialog"""
 		cls.log.debug("Savegamemanager: regular saves from: %s", cls.savegame_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir], \
-		                                  include_displaynames = include_displaynames)
+								                     include_displaynames = include_displaynames)
 
 	@classmethod
 	def get_maps(cls, include_displaynames = True):
@@ -228,25 +278,25 @@ class SavegameManager(object):
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
 		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir, \
-		                                                                cls.autosave_dir, cls.quicksave_dir, cls.demo_dir)
+								  cls.autosave_dir, cls.quicksave_dir, cls.demo_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, \
-		                                  cls.quicksave_dir, cls.demo_dir], \
-		                                  include_displaynames = include_displaynames)
+								                      cls.quicksave_dir, cls.demo_dir], \
+								                     include_displaynames = include_displaynames)
 
 	@classmethod
 	def get_quicksaves(cls, include_displaynames = True):
 		"""Returns all savegames, that were saved via quicksave"""
 		cls.log.debug("Savegamemanager: quicksaves from: %s", cls.quicksave_dir)
 		return cls.__get_saves_from_dirs([cls.quicksave_dir], \
-		                                  include_displaynames = include_displaynames)
+								                     include_displaynames = include_displaynames)
 
 	@classmethod
 	def get_scenarios(cls, include_displaynames = True):
 		"""Returns all scenarios"""
 		cls.log.debug("Savegamemanager: scenarios from: %s", cls.scenarios_dir)
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], \
-		                                  include_displaynames = include_displaynames,
-		                  filename_extension = cls.scenario_extension)
+								                     include_displaynames = include_displaynames,
+								                     filename_extension = cls.scenario_extension)
 
 	@classmethod
 	def get_available_scenarios(cls, include_displaynames = True, locales = None):
@@ -303,7 +353,7 @@ class SavegameManager(object):
 	def get_campaign_status(cls):
 		"""Read the campaign status from the saved YAML file"""
 		if os.path.exists(cls.campaign_status_file):
-			return yaml.load(open(cls.campaign_status_file, 'r'), Loader=Loader)
+			return YamlCache.get_yaml_file(cls.campaign_status_file)
 		return {}
 
 	@classmethod
@@ -316,8 +366,8 @@ class SavegameManager(object):
 		"""
 		cls.log.debug("Savegamemanager: campaigns from: %s", cls.campaigns_dir)
 		files, names = cls.__get_saves_from_dirs([cls.campaigns_dir], \
-			include_displaynames = include_displaynames,
-			filename_extension = cls.campaign_extension)
+								                             include_displaynames = include_displaynames,
+								                             filename_extension = cls.campaign_extension)
 		if not include_displaynames:
 			return (files,)
 		if not include_scenario_list:
@@ -325,7 +375,7 @@ class SavegameManager(object):
 		scenarios_lists = []
 		campaign_datas = []
 		for i, f in enumerate(files):
-			campaign = yaml.load(open(f,'r'), Loader=Loader)
+			campaign = YamlCache.get_file(f)
 			campaign_datas.append(campaign)
 			scenarios_lists.append([sc.get('level') for sc in campaign.get('scenarios',[])])
 		if not campaign_data:
@@ -371,7 +421,7 @@ class SavegameManager(object):
 				print _("Error: Cannot find scenario with file \"%s\".") % (file,)
 				return {}
 			index = sfiles.index(file)
-		data = yaml.load(open(sfiles[index], 'r'), Loader=Loader)
+		data = YamlCache.get_file(sfiles[index])
 		return data
 
 	@classmethod

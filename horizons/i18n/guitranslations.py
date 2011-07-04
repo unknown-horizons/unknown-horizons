@@ -301,7 +301,7 @@ def set_translations():
 		"overview_mainsquare.xml" : {
 			"name_label"                  : _("Name:"),
 			"tax_label"                   : _("Taxes:"),
-			"tax_rate_label"              : _("Tax Rate")},
+			"tax_rate_label"              : _("Tax rate")},
 		"overview_productionbuilding.xml" : {
 			"headline"                    : _("Building overview"),
 			"running_costs_label"         : _("Running costs"),
@@ -316,7 +316,6 @@ def set_translations():
 			"tax_label"                   : _("Taxes:"),
 			"happiness_label"             : _("Happiness"),
 			"paid_taxes_label"            : _("Paid taxes"),
-			"paid_taxes_label"            : _("Tax Rate"),
 			"residents_label"             : _("Residents"),
 			"happiness"                   : _("Happiness")},
 		"overview_ship.xml" : {
