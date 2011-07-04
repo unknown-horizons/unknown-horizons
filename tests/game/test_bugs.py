@@ -19,11 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import random
-
 from horizons.command.building import Build, Tear
 
-from tests.game import settle, game_test, RANDOM_SEED
+from tests.game import settle, game_test
 from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
 from tests.game.test_farm import _build_farm, POTATO_FIELD
 
