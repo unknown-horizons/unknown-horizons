@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-07-05 09:23+0200\n"
+"PO-Revision-Date: 2011-07-05 09:32+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -77,7 +77,7 @@ msgstr "Omreženja ni bilo mogoče začeti s trenutnimi nastavitvami."
 
 #: horizons/engine.py:442
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Preverite podatke, ki ste jih vnesli v odsek Omrežje."
 
 #: horizons/engine.py:445
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
