@@ -31,16 +31,14 @@ from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.util import Point, NamedObject, Circle, WorldObject, Callback
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
 from horizons.scheduler import Scheduler
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED, WEAPONS
+from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.world.units.healthcomponent import HealthComponent
 from horizons.world.units.healthcomponent import HealthDecorator
-from horizons.world.units.cannonball import CannonBall
 
 class ShipRoute(object):
 	"""
@@ -180,7 +178,7 @@ class ShipRoute(object):
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
 @HealthDecorator
-class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
+class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -194,13 +192,8 @@ class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
-		#NOTE dummy cannon
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		######
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-		#self.create_health_component()
 
 	def remove(self):
 		#TODO make it work!!!
@@ -209,7 +202,6 @@ class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 			self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
-		#self.health = None
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
@@ -217,14 +209,6 @@ class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 
 	def create_route(self):
 		self.route=ShipRoute(self)
-
-	#def create_health_component(self):
-	#	self.health = HealthComponent(self.session.db, self.id)
-	#	self.health.add_damage_dealt_listener(self.check_if_alive)
-
-	#def check_if_alive(self, caller=None):
-	#	if self.health.health <= 0:
-	#		self.remove()
 
 	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
@@ -273,10 +257,6 @@ class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 		"""Moves the ship.
 		This is called when a ship is selected and RMB is pressed outside the ship"""
 		self.stop()
-		#NOTE stops the attack
-		#when the specialized attack ship will be instantiated
-		#this method should be overridden and self.stop_attack moved there
-		self.stop_attack()
 
 		#disable the trading route
 		if hasattr(self, 'route'):
@@ -337,10 +317,6 @@ class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
-		# load health component
-		#self.create_health_component()
-		#self.health.load(db, self.worldid)
-
 		# if ship did not have route configured, do not add attribute
 		if len(db("SELECT * FROM ship_route WHERE ship_id = ?", self.worldid)) is 0:
 			return
@@ -353,46 +329,6 @@ class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 		ships = self.session.world.get_ships(self.position, radius)
 		ships.remove(self)
 		return ships
-
-	def fire_all_weapons(self, dest, rotate = True):
-		#TODO move it to specialized attacking ship
-		#rotate ship to face target
-		super(Ship, self).fire_all_weapons(dest, rotate)
-
-		self_location = self._instance.getLocation()
-		facing_location = self._instance.getFacingLocation()
-
-		# ship coords
-		x1 = self_location.getMapCoordinates().x
-		y1 = self_location.getMapCoordinates().y
-		# target coords
-		x2 = dest.x
-		y2 = dest.y
-		# facing coords
-		x3 = facing_location.getMapCoordinates().x
-		y3 = facing_location.getMapCoordinates().y
-		facing_coords = facing_location.getMapCoordinates()
-		# calculate the side of the ship - target line facing location is on
-		# side > 0 left, side <= 0 right
-		side = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)
-		# calculate x4 y4 the new facing location coords
-		# they are calculated by rotating 90' the target location
-		if side > 0:
-			x4 = y1 - y2 + x1
-			y4 = x2 - x1 + y1
-			direction = 'left'
-		else:
-			x4 = y2 - y1 + x1
-			y4 = x1 - x2 + y1
-			direction = 'right'
-
-		facing_coords.x = x4
-		facing_coords.y = y4
-
-		facing_location.setMapCoordinates(facing_coords)
-		self._instance.setFacingLocation(facing_location)
-		self.act('attack_%s' % direction, facing_location, repeating=False)
-		self._action = 'idle'
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
