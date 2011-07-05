@@ -160,43 +160,78 @@ class LandManager(WorldObject):
 				return False
 		return True
 
+	def _get_usability_map(self, extra_space):
+		map = {}
+		for coords, tile in self.island.ground_map.iteritems():
+			if 'constructible' not in tile.classes:
+				continue
+			if tile.object is not None and not tile.object.buildable_upon:
+				continue
+			if tile.settlement is None or tile.settlement.owner == self.owner:
+				map[coords] = 1
+
+		xs, ys = zip(*map.iterkeys())
+		min_x = min(xs) - extra_space
+		max_x = max(xs)
+		min_y = min(ys) - extra_space
+		max_y = max(ys)
+
+		for x in xrange(min_x, max_x + 1):
+			for y in xrange(min_y, max_y + 1):
+				coords = (x, y)
+				if coords not in map:
+					map[coords] = 0
+
+		return (map, min_x, max_x, min_y, max_y)
+
 	def _divide(self, side1, side2):
 		"""
 		Divides the area of the island so that there is a large lump for the village
 		and the rest for production.
 		"""
-		self.production = {}
-		self.village = {}
+		usability_map, min_x, max_x, min_y, max_y = self._get_usability_map(max(side1, side2))
 
 		best_coords = (0, 0)
 		best_buildable = 0
 		best_sides = (None, None)
 
-		for (x, y), tile in self.island.ground_map.iteritems():
-			for switch in xrange(2):
-				if switch and side1 == side2:
-					break
-				buildable = 0
-				width = side2 if switch else side1
-				height = side1 if switch else side2
-				for dx in xrange(width):
-					for dy in xrange(height):
-						if self._coords_usable((x + dx, y + dy)):
-							buildable += 1
+		sizes = [(side1, side2)]
+		if side1 != side2:
+			sizes.append((side2, side1))
 
-				if buildable > best_buildable:
-					best_coords = (x, y)
-					best_buildable = buildable
-					best_sides = (width, height)
-					if buildable == side1 * side2:
-						break
-			if best_buildable == side1 * side2:
-				break
+		for width, height in sizes:
+			horizontal_strip = {} # (x, y): number of usable tiles from (x - width + 1, y) to (x, y)
+			usable_area = {} # (x, y): number of usable tiles from (x - width + 1, y - height + 1) to (x, y)
+			for x in xrange(min_x, max_x + 1):
+				for dy in xrange(height):
+					horizontal_strip[(x, min_y + dy)] = 0
+					usable_area[(x, min_y + dy)] = 0
+			for y in xrange(min_y, max_y + 1):
+				for dx in xrange(width):
+					horizontal_strip[(min_x +dx, y)] = 0
+					usable_area[(min_x + dx, y)] = 0
+
+			for y in xrange(min_y + height, max_y + 1):
+				for x in xrange(min_x + width, max_x + 1):
+					horizontal_strip[(x, y)] = horizontal_strip[(x - 1, y)] + usability_map[(x, y)] - usability_map[(x - width, y)]
+
+			for x in xrange(min_x + width, max_x + 1):
+				for y in xrange(min_y + height, max_y + 1):
+					coords = (x, y)
+					usable_area[coords] = usable_area[(x, y - 1)] + horizontal_strip[(x, y)] - horizontal_strip[(x, y - height)]
+
+					if usable_area[coords] > best_buildable:
+						best_coords = (x - width + 1, y - height + 1)
+						best_buildable = usable_area[coords]
+						best_sides = (width, height)
+
+		self.production = {}
+		self.village = {}
 
 		for dx in xrange(best_sides[0]):
 			for dy in xrange(best_sides[1]):
 				coords = (best_coords[0] + dx, best_coords[1] + dy)
-				if self._coords_usable(coords):
+				if usability_map[coords] == 1:
 					self.village[coords] = self.island.ground_map[coords]
 
 		for coords, tile in self.island.ground_map.iteritems():
