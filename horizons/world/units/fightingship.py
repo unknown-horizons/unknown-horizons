@@ -46,6 +46,8 @@ class FightingShip(MovingWeaponHolder, Ship):
 	def fire_all_weapons(self, dest, rotate = True):
 		# rotate ship to face target
 		super(FightingShip, self).fire_all_weapons(dest, rotate)
+		if not self._fireable:
+			return
 
 		self_location = self._instance.getLocation()
 		facing_location = self._instance.getFacingLocation()
