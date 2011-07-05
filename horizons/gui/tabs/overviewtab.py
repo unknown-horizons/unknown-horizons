@@ -111,8 +111,6 @@ class MarketPlaceOverviewTab(OverviewTab):
 			widget = 'overview_mainsquare.xml',
 			instance = instance
 		)
-		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'), self.instance.settlement)
-		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_setting)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 		self.tooltip = _("Market place overview")
 
@@ -270,9 +268,9 @@ class SettlerOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Settler overview")
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'), self.instance.settlement)
+		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'), self.instance)
 
-		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_setting)
+		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_settings[self.instance.level])
 		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
@@ -348,15 +346,15 @@ class ResourceDepositOverviewTab(OverviewTab):
 ###
 # Minor utility functions
 
-def _setup_tax_slider(slider, val_label, settlement):
+def _setup_tax_slider(slider, val_label, building):
 	"""Set up a slider to work as tax slider"""
 	slider.setScaleStart(SETTLER.TAX_SETTINGS_MIN)
 	slider.setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
 	slider.setStepLength(SETTLER.TAX_SETTINGS_STEP)
-	slider.setValue(settlement.tax_setting)
+	slider.setValue(building.settlement.tax_settings[building.level])
 	slider.stylize('book')
 	def on_slider_change():
 		val_label.text = unicode(slider.getValue())
-		if(settlement.tax_setting != slider.getValue()):
-			SetTaxSetting(settlement, slider.getValue()).execute(settlement.session)
+		if(building.settlement.tax_settings[building.level] != slider.getValue()):
+			SetTaxSetting(building.settlement, building.level, slider.getValue()).execute(building.settlement.session)
 	slider.capture(on_slider_change)

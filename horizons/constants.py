@@ -60,7 +60,7 @@ class VERSION:
 	# RELEASE_VERSION = u'2011.2'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 19
+	SAVEGAMEREVISION= 20
 
 	@staticmethod
 	def string():
@@ -254,6 +254,9 @@ class TRADER: # check resource values: ./development/print_db_data.py res
 
 # Taxes and Restrictions
 class SETTLER:
+	SAILOR_LEVEL = 0
+	PIONEER_LEVEL = 1
+	SETTLER_LEVEL = 2
 	CURRENT_MAX_INCR = 2 # counting starts at 0!
 	TAX_SETTINGS_MIN = 0.5
 	TAX_SETTINGS_MAX = 1.5

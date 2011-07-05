@@ -23,8 +23,8 @@ from horizons.command import GenericCommand
 
 class SetTaxSetting(GenericCommand):
 	"""Sets the taxes for a settlement."""
-	def __init__(self, settlement, new_taxes):
-		super(SetTaxSetting, self).__init__(settlement, 'set_tax_setting', new_taxes)
+	def __init__(self, settlement, level, new_taxes):
+		super(SetTaxSetting, self).__init__(settlement, 'set_tax_setting', level, new_taxes)
 
 class SetSettlementUpgradePermissions(GenericCommand):
 	"""Sets the new upgrade permissions for a level in a settlement."""

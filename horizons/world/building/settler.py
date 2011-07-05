@@ -180,13 +180,13 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
 		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
 		happiness_tax_modifier = (float(self.happiness)-50)/200 + 1
-		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants * self.settlement.tax_setting
+		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants * self.settlement.tax_settings[self.level]
 		taxes = int(round(taxes))
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
 		self.last_tax_payed = taxes
 
 		# decrease happiness
-		happiness_decrease = taxes + self.tax_base + ((self.settlement.tax_setting-1)*10)
+		happiness_decrease = taxes + self.tax_base + ((self.settlement.tax_settings[self.level] - 1) * 10)
 		happiness_decrease = int(round(happiness_decrease))
 		self.inventory.alter(RES.HAPPINESS_ID, -happiness_decrease)
 		self._changed()

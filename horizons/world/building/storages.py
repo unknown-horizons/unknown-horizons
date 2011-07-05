@@ -22,7 +22,8 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab
+		 MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab, \
+		 MarketPlaceSailorsTab, MarketPlacePioneersTab, MarketPlaceSettlersTab
 from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
@@ -71,7 +72,7 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		self.settlement.branch_office = self
 
 class MarketPlace(ProducerBuilding, StorageBuilding):
-	tabs = (MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab)
+	tabs = (MarketPlaceOverviewTab, AccountTab, MarketPlaceSailorsTab, MarketPlacePioneersTab, MarketPlaceSettlersTab, MarketPlaceSettlerTabSettlerTab)
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.

@@ -33,13 +33,12 @@ class Settlement(TradePost, NamedObject):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
-		self.__init(session, owner, self.make_default_upgrade_permissions())
+		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 		super(Settlement, self).__init__()
 
-	def __init(self, session, owner, upgrade_permissions, tax_setting=1.0):
+	def __init(self, session, owner, upgrade_permissions, tax_settings):
 		self.session = session
 		self.owner = owner
-		self.tax_setting = tax_setting
 		self.buildings = []
 		self.setup_storage()
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
@@ -47,6 +46,7 @@ class Settlement(TradePost, NamedObject):
 		self.buildings_by_id = {}
 		self.branch_office = None # this is set later in the same tick by the bo itself
 		self.upgrade_permissions = upgrade_permissions
+		self.tax_settings = tax_settings
 
 	@classmethod
 	def make_default_upgrade_permissions(cls):
@@ -56,8 +56,15 @@ class Settlement(TradePost, NamedObject):
 		upgrade_permissions[SETTLER.CURRENT_MAX_INCR] = False
 		return upgrade_permissions
 
-	def set_tax_setting(self, tax):
-		self.tax_setting = tax
+	@classmethod
+	def make_default_tax_settings(cls):
+		tax_settings = {}
+		for level in xrange(SETTLER.CURRENT_MAX_INCR + 1):
+			tax_settings[level] = 1.0
+		return tax_settings
+
+	def set_tax_setting(self, level, tax):
+		self.tax_settings[level] = tax
 
 	def set_upgrade_permissions(self, level, allowed):
 		if self.upgrade_permissions[level] != allowed:
@@ -110,25 +117,27 @@ class Settlement(TradePost, NamedObject):
 	def save(self, db, islandid):
 		super(Settlement, self).save(db)
 
-		db("INSERT INTO settlement (rowid, island, owner, tax_setting) VALUES(?, ?, ?, ?)",
-			self.worldid, islandid, self.owner.worldid, self.tax_setting)
+		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
+			self.worldid, islandid, self.owner.worldid)
 		for res, amount in self.produced_res.iteritems():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
 			   self.worldid, res, amount)
-		for level, allowed in self.upgrade_permissions.iteritems():
-			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed) VALUES(?, ?, ?)", \
-				self.worldid, level, allowed)
+		for level in xrange(SETTLER.CURRENT_MAX_INCR + 1):
+			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)", \
+				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 		self.inventory.save(db, self.worldid)
 
 	@classmethod
 	def load(cls, db, worldid, session):
 		self = cls.__new__(cls)
 
-		owner, tax = db("SELECT owner, tax_setting FROM settlement WHERE rowid = ?", worldid)[0]
+		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		upgrade_permissions = {}
-		for level, allowed in db("SELECT level, upgrading_allowed FROM settlement_level_properties"):
+		tax_settings = {}
+		for level, allowed, tax in db("SELECT level, upgrading_allowed, tax_setting FROM settlement_level_properties"):
 			upgrade_permissions[level] = allowed
-		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax)
+			tax_settings[level] = tax
+		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
 		# load super here cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)

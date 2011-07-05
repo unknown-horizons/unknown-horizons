@@ -29,7 +29,9 @@ from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
 from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, \
-                           BoatbuilderTradeTab, BoatbuilderWar1Tab, \
-                           BoatbuilderWar2Tab, BoatbuilderConfirmTab
-from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab
+						BoatbuilderTradeTab, BoatbuilderWar1Tab, \
+						BoatbuilderWar2Tab, BoatbuilderConfirmTab
+from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab, \
+						MarketPlaceSailorsTab, MarketPlacePioneersTab, \
+						MarketPlaceSettlersTab
 from buildrelatedtab import BuildRelatedTab
