@@ -20,6 +20,7 @@
 		<Setting name="Lighting" type="int"> 0 </Setting>
 	</Module>
 	<Module name="unknownhorizons">
+		<Setting name="AIPlayers" type="int">1</Setting>
 		<Setting name="VolumeMusic" type="float">0.20</Setting>
 		<Setting name="VolumeEffects" type="float">0.5</Setting>
 		<Setting name="AutosaveInterval" type="float">10.0</Setting>

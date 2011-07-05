@@ -136,18 +136,13 @@ class SingleplayerMenu(object):
 			return
 		playercolor = self.current.playerdata.get_player_color()
 		horizons.main.fife.set_uh_setting("Nickname", playername)
-		horizons.main.fife.save_settings()
-
+		
 		is_scenario = bool(self.current.collectData('showScenario'))
 		is_campaign = bool(self.current.collectData('showCampaign'))
 		if not is_scenario and not is_campaign:
-			ai_players = self.current.aidata.get_ai_players()
-			try:
-				ai_players = int(ai_players)
-				assert 0 <= ai_players <= 6
-			except:
-				self.show_popup(_("Invalid number of AI players"), _("The number of AI players must be between 0 and 6 inclusive."))
-				return
+			ai_players = int(self.current.aidata.get_ai_players())
+			horizons.main.fife.set_uh_setting("AIPlayers", ai_players)
+		horizons.main.fife.save_settings()
 
 		if self.current.collectData('showRandom'):
 			map_file = random_map.generate_map()
