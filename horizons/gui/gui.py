@@ -53,6 +53,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'multiplayer_creategame' : 'book',
 	  'multiplayer_gamelobby' : 'book',
 	  'playerdataselection' : 'book',
+	  'aidataselection' : 'book',
 	  'select_savegame': 'book',
 	  'ingame_pause': 'book',
 #	  'credits': 'book',

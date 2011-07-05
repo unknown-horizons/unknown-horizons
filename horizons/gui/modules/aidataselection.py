@@ -19,9 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""Modules for gui/ingamegui"""
+import horizons.main
 
-from playerdataselection import PlayerDataSelection
-from aidataselection import AIDataSelection
-from singleplayermenu import SingleplayerMenu
-from multiplayermenu import MultiplayerMenu
+from horizons.constants import AI
+
+class AIDataSelection(object):
+	"""Subwidget for selecting AI settings."""
+
+	def __init__(self, parent_gui, widgets):
+		"""
+		Adds the aidataselection container to a parent gui
+		@param parent_gui: a pychan gui object containing a container named "aidataselectioncontainer"
+		@param widgets: WidgetsDict
+		"""
+		widgets.reload('aidataselection')
+		self.gui = widgets['aidataselection']
+
+		self.gui.distributeData({
+			'ai_players': unicode(str(AI.AI_PLAYERS))
+		})
+		parent_gui.findChild(name="aidataselectioncontainer").addChild(self.gui)
+
+	def get_ai_players(self):
+		"""Returns the number that was entered by the user"""
+		return self.gui.collectData('ai_players')

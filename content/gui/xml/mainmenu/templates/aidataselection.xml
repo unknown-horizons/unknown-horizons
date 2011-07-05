@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<HBox position="100,190" name="aidataselection" border_size="1">
+	<VBox>
+		<Label name="player_label" text="AI players:" min_size="76,16"/>
+	</VBox>
+	<VBox>
+		<TextField name="ai_players" text="whatever" min_size="20,16"/>
+	</VBox>
+</HBox>
+

@@ -24,6 +24,7 @@ import horizons.main
 from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import PlayerDataSelection
+from horizons.gui.modules import AIDataSelection
 from horizons.util.gui import adjust_widget_black_background
 from horizons.constants import AI
 
@@ -49,6 +50,7 @@ class SingleplayerMenu(object):
 		adjust_widget_black_background(self.widgets['singleplayermenu'])
 
 		# init gui for subcategory
+		show_ai_options = False
 		if show == 'random':
 			del eventMap['showRandom']
 			self.current.findChild(name="showRandom").marked = True
@@ -56,12 +58,14 @@ class SingleplayerMenu(object):
 			to_remove.parent.removeChild(to_remove)
 			to_remove = self.current.findChild(name="choose_map_lbl")
 			to_remove.parent.removeChild(to_remove)
+			show_ai_options = True
 			# need to add some options here (generation algo, size, ... )
 		else:
 			if show == 'free_maps':
 				del eventMap['showMaps']
 				self.current.findChild(name="showMaps").marked = True
 				self.current.files, maps_display = SavegameManager.get_maps()
+				show_ai_options = True
 			elif show == 'campaign':
 				del eventMap['showCampaign']
 				self.current.findChild(name="showCampaign").marked = True
@@ -118,6 +122,8 @@ class SingleplayerMenu(object):
 		self.current.mapEvents(eventMap)
 
 		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
+		if show_ai_options:
+			self.current.aidata = AIDataSelection(self.current, self.widgets)
 		self.current.show()
 		self.on_escape = self.show_main
 
@@ -132,14 +138,23 @@ class SingleplayerMenu(object):
 		horizons.main.fife.set_uh_setting("Nickname", playername)
 		horizons.main.fife.save_settings()
 
+		is_scenario = bool(self.current.collectData('showScenario'))
+		is_campaign = bool(self.current.collectData('showCampaign'))
+		if not is_scenario and not is_campaign:
+			ai_players = self.current.aidata.get_ai_players()
+			try:
+				ai_players = int(ai_players)
+				assert 0 <= ai_players <= 6
+			except:
+				self.show_popup(_("Invalid number of AI players"), _("The number of AI players must be between 0 and 6 inclusive."))
+				return
+
 		if self.current.collectData('showRandom'):
 			map_file = random_map.generate_map()
 		else:
 			assert self.current.collectData('maplist') != -1
 			map_file = self.__get_selected_map()
 
-		is_scenario = bool(self.current.collectData('showScenario'))
-		is_campaign = bool(self.current.collectData('showCampaign'))
 		self.show_loading_screen()
 		if is_scenario:
 			from horizons.scenario import InvalidScenarioFileFormat
@@ -166,7 +181,7 @@ class SingleplayerMenu(object):
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 				})
 		else: # free play/random map
-			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players=AI.AI_PLAYERS, human_ai=AI.HUMAN_AI)
+			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players=ai_players, human_ai=AI.HUMAN_AI)
 
 	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
