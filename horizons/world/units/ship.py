@@ -354,11 +354,10 @@ class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 		ships.remove(self)
 		return ships
 
-	def fire_all_weapons(self, dest):
+	def fire_all_weapons(self, dest, rotate = True):
 		#TODO move it to specialized attacking ship
 		#rotate ship to face target
-		if len(self._fireable) == 0:
-			return
+		super(Ship, self).fire_all_weapons(dest, rotate)
 
 		self_location = self._instance.getLocation()
 		facing_location = self._instance.getFacingLocation()
@@ -394,33 +393,6 @@ class Ship(NamedObject, StorageHolder, MovingWeaponHolder, Unit):
 		self._instance.setFacingLocation(facing_location)
 		self.act('attack_%s' % direction, facing_location, repeating=False)
 		self._action = 'idle'
-		# fire cannonballs displayed circular
-		# import here because this will be moved to attackingship.py
-		import math
-		angle = (math.pi / 30) * (-len(self._fireable) / 2)
-
-		cos = math.cos(angle)
-		sin = math.sin(angle)
-
-		x = self.position.x
-		y = self.position.y
-
-		dest_x = dest.x
-		dest_y = dest.y
-
-		dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
-		dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
-
-		angle = math.pi / 30
-		cos = math.cos(angle)
-		sin = math.sin(angle)
-	
-		for weapon in self._fireable:
-			destination = Point(dest_x, dest_y)
-			weapon.fire(destination, self.position.center())
-			dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
-			dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
-
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

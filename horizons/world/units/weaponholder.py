@@ -20,6 +20,7 @@
 # ###################################################
 
 import weakref
+import math
 from horizons.util import Annulus, Point, Callback
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
@@ -226,16 +227,43 @@ class WeaponHolder(object):
 				self._target.remove_remove_listener(self.remove_target)
 		self.remove_target()
 
-	def fire_all_weapons(self, dest):
+	def fire_all_weapons(self, dest, rotated = False):
 		"""
 		Fires all weapons in storage at a given position
-		@param dest : Point with the given position
+		@param dest: Point with the given position
+		@param rotated: If True weapons will be fired at different locations, rotated around dest
+			override to True for units that need to fire at rotated coords
 		"""
 
 		if not self._fireable:
 			return
-		for weapon in self._fireable:
-			weapon.fire(dest, self.position.center())
+
+		if not rotated:
+			for weapon in self._fireable:
+				weapon.fire(dest, self.position.center())
+		else:
+			angle = (math.pi / 30) * (-len(self._fireable) / 2)
+			cos = math.cos(angle)
+			sin = math.sin(angle)
+
+			x = self.position.center().x
+			y = self.position.center().y
+
+			dest_x = dest.x
+			dest_y = dest.y
+
+			dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
+			dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
+
+			angle = math.pi / 30
+			cos = math.cos(angle)
+			sin = math.sin(angle)
+
+			for weapon in self._fireable:
+				destination = Point(dest_x, dest_y)
+				weapon.fire(destination, self.position.center())
+				dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
+				dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 
 	def save(self, db):
 		super(WeaponHolder, self).save(db)
@@ -360,7 +388,7 @@ class MovingWeaponHolder(WeaponHolder):
 					Scheduler().add_new_object(Callback(self._move_and_attack, destination),
 						self, GAME_SPEED.TICKS_PER_SECOND)
 				else:
-					callback = None
+					in_range_callback = None
 					if self._target.movable and	self._target.is_moving():
 						in_range_callback = self.try_attack_target
 					self._move_and_attack(destination, in_range_callback = in_range_callback)

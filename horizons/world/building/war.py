@@ -29,3 +29,6 @@ class CannonTower(SelectableBuilding, BasicBuilding, BuildableSingle, WeaponHold
 		super(CannonTower, self).__init__(*args, **kwargs)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
+
+	def fire_all_weapons(self, dest, rotate = True):
+		super(CannonTower, self).fire_all_weapons(dest, rotate)
