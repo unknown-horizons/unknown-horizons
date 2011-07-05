@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-07-05 09:32+0200\n"
+"PO-Revision-Date: 2011-07-05 10:18+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -82,6 +82,8 @@ msgstr "Preverite podatke, ki ste jih vnesli v odsek Omrežje."
 #: horizons/engine.py:445
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Nizka števila vrat včasih zahtevajo posebne pravice. Poskusite z vrati "
+"večjimi kot 1024 ali 0."
 
 #: horizons/gui/gui.py:121
 msgid "Error"
@@ -141,12 +143,12 @@ msgstr "Potrditev za prepis"
 
 #: horizons/gui/gui.py:261
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Izberite shranjeno igro ali kliknite na prekliči."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:261
 msgid "Select a savegame"
-msgstr ""
+msgstr "Izberite shranjeno igro"
 
 #: horizons/gui/gui.py:328 horizons/i18n/guitranslations.py:241
 msgid "Details:"
@@ -223,7 +225,7 @@ msgstr "Igra je v premoru"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
-msgstr ""
+msgstr "Omrežene ni začeto"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
