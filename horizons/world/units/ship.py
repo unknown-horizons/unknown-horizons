@@ -37,8 +37,7 @@ from unit import Unit
 from horizons.command.uioptions import TransferResource
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED
-from horizons.world.units.healthcomponent import HealthComponent
-from horizons.world.units.healthcomponent import HealthDecorator
+from horizons.world.component.healthcomponent import HealthComponent
 
 class ShipRoute(object):
 	"""
@@ -177,7 +176,7 @@ class ShipRoute(object):
 			for res in entry['resource_list']:
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
-@HealthDecorator
+
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
 	@param x: int x position
@@ -194,6 +193,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+		self.add_component('health', HealthComponent)
 
 	def remove(self):
 		#TODO make it work!!!
@@ -305,8 +305,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def save(self, db):
 		super(Ship, self).save(db)
-		# save health component
-		#self.health.save(db, self.worldid)
 		if hasattr(self, 'route'):
 			self.route.save(db)
 

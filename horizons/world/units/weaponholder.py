@@ -148,8 +148,8 @@ class WeaponHolder(object):
 		if self._target is None:
 			return
 
-		if hasattr(self._target, 'health'):
-			print self._target,'has health:',self._target.health.health
+		if self._target.has_component('health'):
+			print self._target,'has health:', self._target.get_component('health').health
 
 		if self.attack_in_range():
 			dest = self._target.position.center()
@@ -356,8 +356,8 @@ class MovingWeaponHolder(WeaponHolder):
 		if self._target is None:
 			return
 
-		if hasattr(self._target, 'health'):
-			print self._target,'has health:',self._target.health.health
+		if self._target.has_component('health'):
+			print self._target,'has health:', self._target.get_component('health').health
 
 		if not self.attack_in_range():
 			destination = Annulus(self._target.position.center(), self._min_range, self._max_range)

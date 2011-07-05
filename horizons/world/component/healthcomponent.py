@@ -19,17 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.world.component import Component
 
 @metaChangeListenerDecorator("damage_dealt")
-class HealthComponent(object):
+class HealthComponent(Component):
 	"""
 	Class that handles the health component
 	"""
 
-	def __init__(self, db, id):
-		health = db.cached_query("SELECT max_health FROM health WHERE id = ?", id)[0][0]
+	def __init__(self, instance):
+		super(HealthComponent, self).__init__(instance)
+		health = self.instance.session.db.cached_query("SELECT max_health FROM health WHERE id = ?", self.instance.id)[0][0]
 		self.health = float(health)
 		self.max_health = float(health)
+		self.add_damage_dealt_listener(self.check_if_alive)
+		self.add_damage_dealt_listener(self.redraw_health)
 
 	def deal_damage(self, weapon_id, damage):
 		#TODO retrieve modifiers from database by owner_id/weapon_id
@@ -43,51 +47,15 @@ class HealthComponent(object):
 
 	def load(self, db, worldid):
 		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", worldid)[0][0]
-
-def HealthDecorator(original_class):
-	orig_init = original_class.__init__
-	orig_save = original_class.save
-	orig_load = original_class.load
-	orig_remove = original_class.remove
-
-	def __init__(self, **kwargs):
-		orig_init(self, **kwargs)
-		self.create_health_component()
-
-	def save(self, db, *args, **kwargs):
-		orig_save(self, db, *args, **kwargs)
-		self.health.save(db, self.worldid)
-
-	def load(self, db, *args, **kwargs):
-		orig_load(self, db, *args, **kwargs)
-		self.create_health_component()
-		self.health.load(db, self.worldid)
-
-	def remove(self):
-		orig_remove(self)
-		self.health = None
-
-	def create_health_component(self):
-		self.health = HealthComponent(self.session.db, self.id)
-		self.health.add_damage_dealt_listener(self.redraw_health)
-		self.health.add_damage_dealt_listener(self.check_if_alive)
-
-	def redraw_health(self, caller=None):
-		if self in self.session.selected_instances:
-			if hasattr(self, 'draw_health'):
-				self.draw_health()
-
-	def check_if_alive(self, caller=None):
-		if self.health.health <= 0:
-			self.remove()
-
-	original_class.__init__ = __init__
-	original_class.save = save
-	original_class.load = load
-	original_class.remove = remove
-	setattr(original_class, "create_health_component", create_health_component)
-	setattr(original_class, "check_if_alive", check_if_alive)
-	setattr(original_class, "redraw_health", redraw_health)
-
-	return original_class
+	
+	def check_if_alive(self, caller = None):
+		if self.health <= 0:
+			self.instance.remove()
+	
+	def redraw_health(self, caller = None):
+		if not self.instance:
+			return
+		if self.instance in self.instance.session.selected_instances:
+			if hasattr(self.instance, 'draw_health'):
+				self.instance.draw_health()
 
