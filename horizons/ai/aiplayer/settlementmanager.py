@@ -270,6 +270,13 @@ class SettlementManager(WorldObject):
 				return True
 		return False
 
+	def min_residential_level(self):
+		result = None
+		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+			if result is None or result > building.level:
+				result = building.level
+		return result
+
 	def tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
 			self.get_resident_resource_usage(RES.FOOD_ID))
@@ -327,8 +334,8 @@ class SettlementManager(WorldObject):
 			if free_boards > 0:
 				self.manual_upgrade(0, free_boards)
 		elif self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
-			if self.need_materials:
-				self.set_taxes_and_permissions(0.5, True, False)
+			if self.need_materials or self.min_residential_level() == 2:
+				self.set_taxes_and_permissions(0.9, True, False)
 			else:
 				self.set_taxes_and_permissions(0.5, True, True)
 
