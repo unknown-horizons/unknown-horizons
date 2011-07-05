@@ -18,7 +18,7 @@ Shows info about sailors and allows the player to change taxes or deny upgrade r
 		<Container size="260,60" position="25,43">
 			<!-- Taxes -->
 			<Label position="0,0" name="tax_label" text="Taxes:" />
-			<TooltipLabel name='taxes' position="55,0" text=""
+			<TooltipLabel name='taxes' position="40,0" text=""
 				tooltip="Paid taxes" />
 			<TooltipIcon name="paid_taxes_label" position="72,0"
 				image="content/gui/icons/resources/running_costs.png"

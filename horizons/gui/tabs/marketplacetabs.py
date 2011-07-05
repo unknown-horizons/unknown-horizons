@@ -215,6 +215,7 @@ class MarketPlaceSettlerLevelTab(MarketPlaceTab):
 		self.widget.child_finder('house_count').text = unicode(houses)
 		self.widget.child_finder('resident_count').text = unicode(residents)
 
+		self.widget.adaptLayout()
 		super(MarketPlaceSettlerLevelTab, self).refresh()
 
 	def toggle_upgrades(self):
