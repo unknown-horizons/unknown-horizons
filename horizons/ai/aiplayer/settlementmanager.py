@@ -34,7 +34,7 @@ from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.command.production import ToggleActive
-from horizons.constants import BUILDINGS, RES, PRODUCTION, GAME_SPEED
+from horizons.constants import BUILDINGS, RES, PRODUCTION, GAME_SPEED, SETTLER
 from horizons.entities import Entities
 
 class SettlementManager(WorldObject):
@@ -62,7 +62,7 @@ class SettlementManager(WorldObject):
 		self.village_built = False
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
-		self.set_taxes_and_permissions(0.5, False, False)
+		self.set_taxes_and_permissions(0.5, 0.8, 0.5, False, False)
 
 	def __init(self, land_manager):
 		self.owner = land_manager.owner
@@ -135,16 +135,22 @@ class SettlementManager(WorldObject):
 	def branch_office(self):
 		return self.settlement.branch_office
 
-	def set_taxes_and_permissions(self, taxes, sailors_can_upgrade, pioneers_can_upgrade):
-		if abs(self.settlement.tax_setting - taxes) > 1e-9:
-			self.log.info('%s set taxes from %.1f to %.1f', self, self.settlement.tax_setting, taxes)
-			SetTaxSetting(self.settlement, taxes).execute(self.land_manager.session)
-		if self.settlement.upgrade_permissions[0] != sailors_can_upgrade:
+	def set_taxes_and_permissions(self, sailors_taxes, pioneers_taxes, settlers_taxes, sailors_can_upgrade, pioneers_can_upgrade):
+		if abs(self.settlement.tax_settings[SETTLER.SAILOR_LEVEL] - sailors_taxes) > 1e-9:
+			self.log.info('%s set sailors\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.SAILOR_LEVEL], sailors_taxes)
+			SetTaxSetting(self.settlement, SETTLER.SAILOR_LEVEL, sailors_taxes).execute(self.land_manager.session)
+		if abs(self.settlement.tax_settings[SETTLER.PIONEER_LEVEL] - pioneers_taxes) > 1e-9:
+			self.log.info('%s set pioneers\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.PIONEER_LEVEL], pioneers_taxes)
+			SetTaxSetting(self.settlement, SETTLER.PIONEER_LEVEL, pioneers_taxes).execute(self.land_manager.session)
+		if abs(self.settlement.tax_settings[SETTLER.SETTLER_LEVEL] - settlers_taxes) > 1e-9:
+			self.log.info('%s set settlers\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.SETTLER_LEVEL], settlers_taxes)
+			SetTaxSetting(self.settlement, SETTLER.SETTLER_LEVEL, settlers_taxes).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[SETTLER.SAILOR_LEVEL] != sailors_can_upgrade:
 			self.log.info('%s set sailor upgrade permissions to %s', self, sailors_can_upgrade)
-			SetSettlementUpgradePermissions(self.settlement, 0, sailors_can_upgrade).execute(self.land_manager.session)
-		if self.settlement.upgrade_permissions[1] != pioneers_can_upgrade:
+			SetSettlementUpgradePermissions(self.settlement, SETTLER.SAILOR_LEVEL, sailors_can_upgrade).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[SETTLER.PIONEER_LEVEL] != pioneers_can_upgrade:
 			self.log.info('%s set pioneer upgrade permissions to %s', self, pioneers_can_upgrade)
-			SetSettlementUpgradePermissions(self.settlement, 1, pioneers_can_upgrade).execute(self.land_manager.session)
+			SetSettlementUpgradePermissions(self.settlement, SETTLER.PIONEER_LEVEL, pioneers_can_upgrade).execute(self.land_manager.session)
 
 	def can_provide_resources(self):
 		return self.village_built
@@ -241,7 +247,7 @@ class SettlementManager(WorldObject):
 
 	def build_chain(self, chain, name):
 		amount = self.get_resident_resource_usage(chain.resource_id)
-		result = chain.build(amount * 1.02)
+		result = chain.build(amount * 1.07)
 		if result == BUILD_RESULT.NEED_RESOURCES:
 			self.need_materials = True
 		if result == BUILD_RESULT.ALL_BUILT:
@@ -325,7 +331,7 @@ class SettlementManager(WorldObject):
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
 			if self.manual_upgrade(0, 1):
-				self.set_taxes_and_permissions(0.9, False, False)
+				self.set_taxes_and_permissions(0.9, 0.8, 0.5, False, False)
 		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			# if we just need the school then upgrade sailors manually
 			free_boards = self.settlement.inventory[RES.BOARDS_ID]
@@ -333,11 +339,15 @@ class SettlementManager(WorldObject):
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
 				self.manual_upgrade(0, free_boards)
+			self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, True)
 		elif self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
-			if self.need_materials or self.min_residential_level() == 2:
-				self.set_taxes_and_permissions(0.9, True, False)
+			if self.need_materials:
+				if self.min_residential_level() == 2:
+					self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, False)
+				else:
+					self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, False)
 			else:
-				self.set_taxes_and_permissions(0.5, True, True)
+				self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, True)
 
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 
