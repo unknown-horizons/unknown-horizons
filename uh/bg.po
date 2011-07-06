@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-07-06 17:50+0200\n"
+"PO-Revision-Date: 2011-07-06 18:37+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -518,19 +518,21 @@ msgstr "Пасище: Увеличава овце. Произвежда вълн
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
+msgstr "Картофено поле: Добива картофи. Нуждае се от ферма."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
+"Захарната тръстика поле: Използва се в производството на алкохол. Нуждае се "
+"от ферма."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
-msgstr ""
+msgstr "Селско училище: Осигурява образование."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
+msgstr "Тъкач: Превръща агнешката вълна в плат."
 
 # 76%
 #: horizons/i18n/guitranslations.py:74
@@ -539,35 +541,37 @@ msgstr "Заселнически сгради"
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr ""
+msgstr "Изгаряне на въглища: Гори много дъски."
 
 #: horizons/i18n/guitranslations.py:77
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr ""
+msgstr "Желязна мина: Добива желязна руда от залеж."
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Smeltery: Refines all kind of ores."
-msgstr ""
+msgstr "Топилня: Рафинира всички видове руди."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "Таверна: Осигурява задружност."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Шлосер: Произвежда инструменти от желязо."
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:297
 msgid "Running costs:"
-msgstr ""
+msgstr "Текущи разходи"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "String Previewer Tool for Scenario files"
-msgstr ""
+msgstr "String Previewer Tool за сценарий файлове"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
+"изберете сценарий и кликнете, за да презаредите актуализирането на съобщения "
+"в дневника на капитана"
 
 #: horizons/i18n/guitranslations.py:87
 msgid "load/reload"
@@ -579,7 +583,7 @@ msgstr "Жители"
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Click to change the name of your settlement."
-msgstr ""
+msgstr "Натисни за смяна на името на селището."
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Destroy"
@@ -696,7 +700,7 @@ msgstr "Напусни записките на капитана"
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Read prev. entries"
-msgstr "Прочети пред. вписвания"
+msgstr "Прочети предв. вписвания"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Read next entries"
@@ -712,15 +716,15 @@ msgstr "Добави към листа"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Delete entry"
-msgstr ""
+msgstr "Изтриване на запис"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Move down"
-msgstr ""
+msgstr "Премести долу"
 
 #: horizons/i18n/guitranslations.py:137
 msgid "Move up"
-msgstr ""
+msgstr "Премести горе"
 
 #: horizons/i18n/guitranslations.py:139 horizons/i18n/guitranslations.py:178
 msgid "Attention please!"
@@ -732,7 +736,7 @@ msgstr "Заслуги"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Cancel game"
-msgstr "Анулирай играта"
+msgstr "Анулиране на играта"
 
 #: horizons/i18n/guitranslations.py:145 horizons/i18n/guitranslations.py:183
 #: horizons/i18n/guitranslations.py:221
@@ -745,7 +749,7 @@ msgstr "Върни се към играта"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "Екипът на FIFE и Unknown Horizons разработчиците"
 
 #: horizons/i18n/guitranslations.py:150
 msgid "Have fun."
@@ -753,91 +757,91 @@ msgstr "Приятно забавление!"
 
 #: horizons/i18n/guitranslations.py:151
 msgid "Key bindings"
-msgstr ""
+msgstr "Ключови комбинации"
 
 #: horizons/i18n/guitranslations.py:152
 msgid "{LEFT} = Scroll left"
-msgstr ""
+msgstr "{LEFT} = Преместване на ляво"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "{RIGHT} = Scroll right"
-msgstr ""
+msgstr "{RIGHT} = Преместване надясно"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "{UP} = Scroll up"
-msgstr ""
+msgstr "{UP} = Преместване нагоре"
 
 #: horizons/i18n/guitranslations.py:155
 msgid "{DOWN} = Scroll down"
-msgstr ""
+msgstr "{DOWN} = Преместване надолу"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "{ , } = Rotate building left"
-msgstr ""
+msgstr "{ , } = Завъртане сграда наляво"
 
 #: horizons/i18n/guitranslations.py:157
 msgid "{ . } = Rotate building right"
-msgstr ""
+msgstr "{ . } = Завъртане сграда надясно"
 
 #: horizons/i18n/guitranslations.py:158
 msgid "{B} = Show build menu"
-msgstr ""
+msgstr "{B} = Показва менюто за строеж"
 
 #: horizons/i18n/guitranslations.py:159
 msgid "{F1} = Display help"
-msgstr ""
+msgstr "{F1} = Показване на помощ"
 
 #: horizons/i18n/guitranslations.py:160
 msgid "{F5} = Quicksave"
-msgstr ""
+msgstr "{F5} = Бързо запазване"
 
 #: horizons/i18n/guitranslations.py:161
 msgid "{F9} = Quickload"
-msgstr ""
+msgstr "{F9} = Бързо зареждане"
 
 #: horizons/i18n/guitranslations.py:162
 msgid "{F10} = Toggle console on/off"
-msgstr ""
+msgstr "{F10} = Вкл./изкл. козола"
 
 #: horizons/i18n/guitranslations.py:163
 msgid "{ESC} = Show pause menu"
-msgstr ""
+msgstr "{ESC} = Покажи пауза меню"
 
 #: horizons/i18n/guitranslations.py:164
 msgid "{G} = Toggle grid on/off"
-msgstr ""
+msgstr "{G} = Вкл./изкл. решетка"
 
 #: horizons/i18n/guitranslations.py:165
 msgid "{X} = Enable destruct mode"
-msgstr ""
+msgstr "{X} = Разреши разрушителен режим"
 
 #: horizons/i18n/guitranslations.py:166
 msgid "{P} = Pause game"
-msgstr ""
+msgstr "{P} = Пауза игра"
 
 #: horizons/i18n/guitranslations.py:167
 msgid "{ + } = Increase game speed"
-msgstr ""
+msgstr "{ + } = Повиши скоростта на играта"
 
 #: horizons/i18n/guitranslations.py:168
 msgid "{ - } = Decrease game speed"
-msgstr ""
+msgstr "{ - } = Намали скоростта на играта"
 
 #: horizons/i18n/guitranslations.py:169
 msgid "{S} = Screenshot"
-msgstr ""
+msgstr "{S} = Скрийншот"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr ""
+msgstr "{SHIFT} = Задръж за поставяне на повече сгради"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "{C} = Chat"
-msgstr ""
+msgstr "{C} = Чат"
 
 #: horizons/i18n/guitranslations.py:172
 msgid "{L} = Toggle Captain's log"
-msgstr ""
+msgstr "{L} = Отвори дневника на капитана"
 
 #: horizons/i18n/guitranslations.py:173 horizons/i18n/guitranslations.py:214
 #: horizons/i18n/guitranslations.py:253
@@ -910,7 +914,7 @@ msgstr "Детайли на играта:"
 
 #: horizons/i18n/guitranslations.py:201
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "Излизане от геймлоби"
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Active games:"
