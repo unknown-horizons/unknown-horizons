@@ -79,10 +79,10 @@ class Unit(AmbientSound, MovingObject):
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
-		if not hasattr(self, 'health'):
+		if not self.has_component('health'):
 			return
-		health = self.health.health
-		max_health = self.health.max_health
+		health = self.get_component('health').health
+		max_health = self.get_component('health').max_health
 		renderer = self.session.view.renderer['GenericRenderer']
 		renderer.removeAll("health_" + str(self.worldid))
 		zoom = self.session.view.get_zoom()
