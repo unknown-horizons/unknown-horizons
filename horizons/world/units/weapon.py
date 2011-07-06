@@ -116,7 +116,7 @@ class Weapon(object):
 		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
 
 		if self.bullet_image:
-			Bullet(self.bullet_image, position, destination, self.attack_speed, self.session.view)
+			Bullet(self.bullet_image, position, destination, self.attack_speed, self.session)
 		print 'fired', self
 
 		self.attack_ready = False

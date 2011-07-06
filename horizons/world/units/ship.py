@@ -208,6 +208,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.world.ships.remove(self)
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
+			self.in_ship_map = False
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)

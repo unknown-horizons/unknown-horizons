@@ -24,21 +24,24 @@ import horizons.main
 from fife import fife
 from horizons.constants import GAME_SPEED, LAYERS
 from horizons.scheduler import Scheduler
+from horizons.util import WorldObject
 
-class Bullet(object):
+class Bullet(WorldObject):
 	"""
 	Class for Bullet animation
 	"""
-	id = -1
-	def __init__(self, image, source, dest, speed, view):
+	is_selectable = False
+	def __init__(self, image, source, dest, speed, session):
 		"""
 		@param image: path to file with bullet image
 		@param source: Point with starting position
 		@param dest: Point with ending position
 		@param speed: Attack speed of the Weapon that fires the canonball
-		@param view: View
+		@param session: Horizons Session
 		"""
-		Bullet.id += 1
+
+		super(Bullet, self).__init__()
+		self.session = session
 		# get the current position
 		self.x = source.x
 		self.y = source.y
@@ -50,12 +53,11 @@ class Bullet(object):
 		self.needed_ticks -= 2
 		# the thick that the object is currently at
 		self.current_tick = 0
-		self.view = view
 		# calculate the axis ratio that is added per tick to move
 		self.x_ratio = float(dest.x - source.x)/self.needed_ticks
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
 
-		self._object = horizons.main.fife.engine.getModel().createObject(str(self.id), 'cannonball')
+		self._object = horizons.main.fife.engine.getModel().createObject(str(self.worldid), 'cannonball')
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 		img = horizons.main.fife.imagepool.addResourceFromFile(image)
@@ -63,15 +65,17 @@ class Bullet(object):
 			visual.addStaticImage(rotation, img)
 		coords = fife.ModelCoordinate(int(self.x), int(self.y))
 		coords.thisown = 0
-		self._instance = self.view.layers[LAYERS.OBJECTS].createInstance(self._object, coords)
+		self._instance = session.view.layers[LAYERS.OBJECTS].createInstance(self._object, coords)
+		self._instance.setId(str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 
-		loc = fife.Location(self.view.layers[LAYERS.OBJECTS])
+		loc = fife.Location(session.view.layers[LAYERS.OBJECTS])
 		loc.thisown = 0
 		coords = fife.ModelCoordinate(int(dest.x), int(dest.y))
 		coords.thisown = 0
 		loc.setLayerCoordinates(coords)
 		self._instance.setLocation(loc)
+		self.session.world.bullets.append(self)
 
 		self._move_tick()
 
@@ -79,6 +83,8 @@ class Bullet(object):
 		if self.current_tick == self.needed_ticks:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 			self._instance = None
+			self.session.world.bullets.remove(self)
+			self.remove()
 			return
 		self.current_tick += 1
 		self.x += self.x_ratio
@@ -93,3 +99,6 @@ class Bullet(object):
 
 		Scheduler().add_new_object(self._move_tick, self, 1)
 
+	def save(self, db):
+		#TODO 
+		pass

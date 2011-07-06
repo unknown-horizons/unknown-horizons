@@ -78,6 +78,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.pirate = None
 		self.islands = None
 		self.diplomacy = None
+		self.bullets = None
 		super(World, self).end()
 
 	@decorators.make_constants()
@@ -203,6 +204,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		# create shiplist, which is currently used for saving ships
 		# and having at least one reference to them
 		self.ships = []
+
+		# create bullets list, used for saving bullets in ongoing attacks
+		self.bullets = []
 
 		if self.session.is_game_loaded():
 			# for now, we have one trader in every game, so this is safe:
@@ -572,6 +576,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.pirate.save(db)
 		for ship in self.ships:
 			ship.save(db)
+		for bullet in self.bullets:
+			bullet.save(db)
 		self.diplomacy.save(db)
 
 	def get_checkup_hash(self):
