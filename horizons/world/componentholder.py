@@ -1,6 +1,11 @@
 from component import Component
+import sys
 
 class ComponentHolder(object):
+	"""
+	Class that manages Component plug-ins
+	It can be inherided by all objects that can hold components
+	"""
 	def __init__(self, *args, **kwargs):
 		self.components = {}
 		super(ComponentHolder, self).__init__(*args, **kwargs)
@@ -11,12 +16,21 @@ class ComponentHolder(object):
 		super(ComponentHolder, self).remove()
 
 	def load(self, db, worldid):
-		#TODO create the components then load their content by calling component load method
 		super(ComponentHolder, self).load(db, worldid)
+		self.components = {}
+		for name, module_name, class_name in db('SELECT name, module, class FROM component WHERE worldid = ?', worldid):
+			# get the class object from module and call init on it
+			module = __import__(module_name)
+			module = sys.modules[module_name]
+			self.components[name] = getattr(module, class_name)(self)
+			self.components[name].load(db, worldid)
 
 	def save(self, db):
-		#TODO save the dict of components and call save on all of them
 		super(ComponentHolder, self).save(db)
+		for name in self.components:
+			db('INSERT INTO component(worldid, name, module, class) VALUES(?, ?, ?, ?)', \
+				self.worldid, name, self.components[name].__class__.__module__, self.components[name].__class__.__name__)
+			self.components[name].save(db)
 
 	def add_component(self, component_name, component_class):
 		"""
