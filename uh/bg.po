@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-06-25 14:38+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-07-06 17:32+0200\n"
+"Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -319,15 +319,15 @@ msgstr ""
 #: horizons/gui/mousetools/buildingtool.py:114
 #: horizons/i18n/guitranslations.py:82
 msgid "Build"
-msgstr ""
+msgstr "Построй"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Корабостроител-преглед"
 
 #: horizons/gui/tabs/boatbuildertab.py:111
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Още нужни ресурси:"
 
 #: horizons/gui/tabs/boatbuildertab.py:167
 msgid "Fisher boats"
@@ -369,7 +369,7 @@ msgstr "Корабен инвентар"
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:282
 msgid "Account"
-msgstr "Акаунт"
+msgstr "Сметка"
 
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:266 horizons/i18n/guitranslations.py:293
@@ -412,15 +412,15 @@ msgstr ""
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Няма още нищо написано в твоят дневник!"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:133
 msgid "Start route"
-msgstr ""
+msgstr "Стартирай маршрут"
 
 #: horizons/gui/widgets/routeconfig.py:60
 msgid "Stop route"
-msgstr ""
+msgstr "Спри маршрут"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73
@@ -442,35 +442,35 @@ msgstr "Услуги"
 
 #: horizons/i18n/guitranslations.py:46
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
+msgstr "Палата: Отговаря на религиозните потребности на моряците."
 
 #: horizons/i18n/guitranslations.py:47
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
+msgstr "Рибар: Лови в морето, произвежда храна."
 
 #: horizons/i18n/guitranslations.py:48
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "Ловец: Лови диви животни, произвежда храна."
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
+msgstr "Сигнален огън: Позволява търговия със свободни търговци."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
+msgstr "Дървар: Реже дървета и ги оформя в дъски."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
+msgstr "Централния площад: Доставки на гражданите със стоки."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
-msgstr ""
+msgstr "Палатка: Подслонява вашите жители."
 
 #: horizons/i18n/guitranslations.py:53
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
+msgstr "Склад: Разширява запасите и осигурява събирачи."
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Trail: Needed for collecting goods."
