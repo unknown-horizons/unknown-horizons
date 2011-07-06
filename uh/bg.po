@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-07-06 18:49+0200\n"
+"PO-Revision-Date: 2011-07-06 18:52+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -1089,23 +1089,23 @@ msgstr "Стартиране на игра"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Color:"
-msgstr ""
+msgstr "Цвят:"
 
 #: horizons/i18n/guitranslations.py:256
 msgid "Player name:"
-msgstr ""
+msgstr "Име на играч:"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Cancel building:"
-msgstr ""
+msgstr "Анулиране на сграда:"
 
 #: horizons/i18n/guitranslations.py:259
 msgid "(lose all resources)"
-msgstr ""
+msgstr "(изгуби всички ресурси)"
 
 #: horizons/i18n/guitranslations.py:260
 msgid "Currently building:"
-msgstr ""
+msgstr "Моментна сграда:"
 
 #: horizons/i18n/guitranslations.py:261
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
