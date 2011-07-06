@@ -10,6 +10,7 @@ import platform
 from glob import glob
 from commands import getoutput
 from shutil import move, rmtree, copytree
+from horizons.constants import VERSION
 
 # Ensure we are in the correct directory
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
@@ -47,6 +48,7 @@ class _build_i18n(build_i18n.build_i18n):
 		Since specifying a .mofile dir is not supported, we manually move build/mo/
 		to a place more appropriate in our opinion, currently content/lang/.
 		"""
+		print VERSION.RELEASE_VERSION
 		build_i18n.build_i18n.run(self)
 		if os.path.exists(os.path.join("content", "lang")):
 			rmtree(os.path.join("content", "lang"))
@@ -77,7 +79,7 @@ cmdclass = {
 
 setup(
 	name='UnknownHorizons',
-	version='2011.1',
+	version=VERSION.RELEASE_VERSION,
 	description='Realtime Economy Simulation and Strategy Game',
 	author='The Unknown Horizons Team',
 	author_email='team@unknown-horizons.org',
