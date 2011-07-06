@@ -203,7 +203,7 @@ class AIPlayer(GenericAI):
 		found_settlement.start()
 
 	def have_starting_resources(self, ship, settlement):
-		if self.complete_inventory.money < 3500:
+		if self.complete_inventory.money < 8000:
 			return False
 
 		need = {RES.BOARDS_ID: 17, RES.FOOD_ID: 10, RES.TOOLS_ID: 5}
