@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-06 20:48+0200\n"
+"PO-Revision-Date: 2011-07-06 21:05+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -27,15 +27,15 @@ msgstr "Einige Eurer Änderungen erfordern einen Neustart von Unknown Horizons."
 
 #: horizons/engine.py:70
 msgid "Restore default settings"
-msgstr ""
+msgstr "Werkseinstellungen"
 
 #: horizons/engine.py:71
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "All Eure bisherigen Änderungen werden hierdurch entfernt."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Möchtet Ihr fortfahren?"
 
 #: horizons/engine.py:135
 msgid "System default"
@@ -382,7 +382,7 @@ msgstr "Auftrag bestätigen"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Zugehörige Felder"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -577,36 +577,43 @@ msgid "Settler buildings"
 msgstr "Siedlerbauten"
 
 #: horizons/i18n/guitranslations.py:78
+#, fuzzy
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Metzgerei: "
 
 #: horizons/i18n/guitranslations.py:79
+#, fuzzy
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Viehweide: "
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
 msgstr "Kohlenmeiler: Ein Köhler stellt hier Holzkohle her."
 
 #: horizons/i18n/guitranslations.py:81
+#, fuzzy
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Arzt: "
 
 #: horizons/i18n/guitranslations.py:82
+#, fuzzy
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr ""
+msgstr "Kräutergarten: "
 
 #: horizons/i18n/guitranslations.py:83
 msgid "Iron mine: Gets iron ore from deposit."
 msgstr "Eisenstollen: Dient dem Abbau von Eisenerz."
 
 #: horizons/i18n/guitranslations.py:84
+#, fuzzy
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Schweinestall: "
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
 msgstr ""
+"Salzgarten: Verdunstet Meerwasser zu Salz. Muss an der Küste errichtet "
+"werden."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Smeltery: Refines all kind of ores."
@@ -617,12 +624,14 @@ msgid "Tavern: Provides get-together."
 msgstr "Taverne: Erfüllt den Gemeinschaftssinn Eurer Untertanen."
 
 #: horizons/i18n/guitranslations.py:88
+#, fuzzy
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Tabakplantage: "
 
 #: horizons/i18n/guitranslations.py:89
+#, fuzzy
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Tabakdreher: "
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."
@@ -782,19 +791,19 @@ msgstr "Spätere Einträge"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Vorhandene Szenarien"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Scenario description"
-msgstr ""
+msgstr "Szenarienbeschreibung"
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr ""
+msgstr "Spiel fortsetzen"
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Dieses Szenario auswählen"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "Exit"
@@ -806,11 +815,11 @@ msgstr "Zur Liste hinzufügen"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "Leave production overview"
-msgstr ""
+msgstr "Produktionsübersicht verlassen"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "Refresh data"
-msgstr ""
+msgstr "Daten aktualisieren"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "Delete entry"
@@ -1146,7 +1155,7 @@ msgstr "Anwenden"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Werkseinstellungen verwenden"
 
 #: horizons/i18n/guitranslations.py:264
 msgid "Enter filename:"
@@ -1164,7 +1173,7 @@ msgstr "Spiel starten"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Ausgewählten Speicherstand entfernen"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Choose a map to play:"
@@ -1300,11 +1309,11 @@ msgstr "Steuern"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Anzeige bisher produzierter Waren dieser Siedlung"
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
-msgstr ""
+msgstr "Felder errichten"
 
 #: horizons/i18n/guitranslations.py:322
 msgid "Average happiness:"
@@ -1527,6 +1536,8 @@ msgstr ""
 #: horizons/spsession.py:123
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"Sollte dieser Fehler erneut auftreten, nehmt bitte Kontakt zu den "
+"Entwicklern auf:"
 
 #: horizons/spsession.py:131
 msgid "No quicksaves found"
@@ -1703,11 +1714,11 @@ msgstr "Ziegelei"
 
 #: sqlite/Building
 msgid "Butchery"
-msgstr ""
+msgstr "Metzgerei"
 
 #: sqlite/Building
 msgid "Cattle Run"
-msgstr ""
+msgstr "Viehweide"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
@@ -1729,7 +1740,7 @@ msgstr "Brennerei"
 
 #: sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Arzt"
 
 #: sqlite/Building
 msgid "Farm"
@@ -1745,7 +1756,7 @@ msgstr "Fischer"
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr ""
+msgstr "Kräutergarten"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -1787,7 +1798,7 @@ msgstr "Pavillon"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Schweinestall"
 
 #: sqlite/Building
 msgid "Potato Field"
@@ -1799,7 +1810,7 @@ msgstr "Schutzwall"
 
 #: sqlite/Building
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Salzgarten"
 
 #: sqlite/Building
 msgid "Signal Fire"
@@ -1831,11 +1842,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Tabakplantage"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabakdreher"
 
 #: sqlite/Building
 msgid "Toolmaker"
@@ -1929,7 +1940,7 @@ msgstr "Eure Siedler haben die Stufe ${level} erreicht."
 
 #: sqlite/Resources
 msgid "acorns"
-msgstr ""
+msgstr "Eicheln"
 
 #: sqlite/Resources
 msgid "boards"
@@ -1941,11 +1952,11 @@ msgstr "Ziegel"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr ""
+msgstr "Vieh"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "Schlachtvieh"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1966,11 +1977,11 @@ msgstr "Gemeinschaft"
 
 #: sqlite/Resources
 msgid "deer food A"
-msgstr ""
+msgstr "Wildnahrung A"
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "Wildfleisch"
 
 #: sqlite/Resources
 msgid "education"
@@ -2002,7 +2013,7 @@ msgstr "Zufriedenheit"
 
 #: sqlite/Resources
 msgid "herbs"
-msgstr ""
+msgstr "Kräuter"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -2023,11 +2034,11 @@ msgstr "Spirituosen"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "Schweine"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "Schlachtvieh"
 
 #: sqlite/Resources
 msgid "potatoes"
@@ -2040,7 +2051,7 @@ msgstr "Lehm"
 
 #: sqlite/Resources
 msgid "raw herbs"
-msgstr ""
+msgstr "Kräuterbüschel"
 
 #: sqlite/Resources
 msgid "raw iron"
@@ -2052,11 +2063,11 @@ msgstr "Zuckerrohr"
 
 #: sqlite/Resources
 msgid "raw tobacco"
-msgstr ""
+msgstr "Tabakpflanzen"
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "Salz"
 
 #: sqlite/Resources
 msgid "sugar"
@@ -2068,11 +2079,11 @@ msgstr "Kleidung"
 
 #: sqlite/Resources
 msgid "tobacco"
-msgstr ""
+msgstr "Tabak"
 
 #: sqlite/Resources
 msgid "tobaccos"
-msgstr ""
+msgstr "Tabakwaren"
 
 #: sqlite/Resources
 msgid "tools"
@@ -2088,15 +2099,15 @@ msgstr "Wolle"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "Aristokrat"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "Bürger"
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "Kaufmann"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
