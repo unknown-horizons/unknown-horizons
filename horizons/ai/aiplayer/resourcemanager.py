@@ -22,6 +22,7 @@
 from building import AbstractBuilding
 from horizons.util import WorldObject
 from horizons.util.python import decorators
+from horizons.constants import BUILDINGS, RES
 
 class ResourceManager(WorldObject):
 	"""
@@ -120,9 +121,19 @@ class SingleResourceManager(WorldObject):
 		return self
 
 	def _get_current_production(self):
+		if not self.buildings:
+			return 0.0
 		total = 0.0
-		for building in self.buildings:
-			total += AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id)
+		if self.resource_id == RES.FOOD_ID and self.buildings[0].id == BUILDINGS.FARM_CLASS:
+			# TODO: make this block of code work in a better way
+			# return the production of the potato fields because the farm is not the limiting factor
+			buildings = self.buildings[0].settlement.get_buildings_by_id(BUILDINGS.POTATO_FIELD_CLASS)
+			if not buildings:
+				return 0.0
+			return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], RES.POTATOES_ID)
+		else:
+			for building in self.buildings:
+				total += AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id)
 		return total
 
 	def refresh(self):
@@ -170,8 +181,8 @@ class SingleResourceManager(WorldObject):
 
 	def __str__(self):
 		result = 'Resource %d production %.5f/%.5f' % (self.resource_id, self.available, self.total)
-		for quota in self.quotas.itervalues():
-			result += '\n  quota assignment %.5f' % quota
+		for quota_holder, quota in self.quotas.iteritems():
+			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)
 		return result
 
 decorators.bind_all(ResourceManager)

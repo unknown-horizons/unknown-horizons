@@ -28,6 +28,7 @@ from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
 from productionchain import ProductionChain
 from resourcemanager import ResourceManager
+from trademanager import TradeManager
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
@@ -51,6 +52,7 @@ class SettlementManager(WorldObject):
 		super(SettlementManager, self).__init__()
 		self.owner = owner
 		self.resource_manager = ResourceManager()
+		self.trade_manager = TradeManager(self)
 		self.__init(land_manager)
 
 		self.village_builder = VillageBuilder(self)
@@ -116,6 +118,7 @@ class SettlementManager(WorldObject):
 				break
 		assert land_manager.settlement
 		self.resource_manager = ResourceManager.load(db, self)
+		self.trade_manager = TradeManager(self) # TODO: actually load it
 		self.__init(land_manager)
 
 		# load the master builders
@@ -291,6 +294,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s get-together production %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER_ID), \
 			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
 		self.manage_production()
+		self.trade_manager.refresh()
 		self.resource_manager.refresh()
 		self.need_materials = False
 		have_bricks = self.count_buildings(BUILDINGS.BRICKYARD_CLASS)
@@ -349,6 +353,9 @@ class SettlementManager(WorldObject):
 			else:
 				self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, True)
 
+		self.trade_manager.finalize_requests()
+		#print self.trade_manager
+		self.trade_manager.organize_shipping()
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 
 	def __str__(self):

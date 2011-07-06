@@ -141,6 +141,7 @@ class ProductionChainSubtree:
 	def __init__(self, settlement_manager, resource_id, production_line, abstract_building, children, production_ratio):
 		self.settlement_manager = settlement_manager
 		self.resource_manager = settlement_manager.resource_manager
+		self.trade_manager = settlement_manager.trade_manager
 		self.resource_id = resource_id
 		self.production_line = production_line
 		self.abstract_building = abstract_building
@@ -247,6 +248,12 @@ class ProductionChainSubtree:
 	def build(self, amount):
 		# request a quota change (could be lower or higher)
 		self.resource_manager.request_quota_change(self.identifier, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+
+		# check how much we can import
+		required_amount = amount - self.get_root_production_level()
+		self.trade_manager.request_quota_change(self.identifier, self.resource_id, required_amount * self.production_ratio)
+		importable_amount = self.trade_manager.get_quota(self.identifier, self.resource_id) / self.production_ratio
+		amount -= importable_amount
 
 		# try to build one of the lower level buildings
 		result = None
