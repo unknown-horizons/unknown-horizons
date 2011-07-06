@@ -27,13 +27,13 @@ from horizons.command import Command
 from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.scenario import CONDITIONS
-from horizons.constants import RES, GAME
+from horizons.constants import RES
 
 class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building, x, y, island, rotation = 45, \
-	             ship = None, ownerless=False, settlement=None, tearset=set(), data={}):
+	             ship = None, ownerless=False, settlement=None, tearset=None, data=None):
 		"""Create the command
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
@@ -55,8 +55,8 @@ class Build(Command):
 		self.ownerless = ownerless
 		self.island = island.worldid
 		self.settlement = settlement.worldid if settlement is not None else None
-		self.tearset = tearset
-		self.data = data
+		self.tearset = set() if not tearset else tearset
+		self.data = {} if not data else data
 
 	def __call__(self, issuer=None):
 		"""Execute the command

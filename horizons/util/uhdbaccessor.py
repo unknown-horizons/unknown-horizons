@@ -147,7 +147,7 @@ class UhDbAccessor(DbReader):
 
 		if exact_level:
 			db_data = self.cached_query(sql, object_id, level)
-			return db_data[ randint(0, len(db_data)-1) ] or None
+			return db_data[randint(0, len(db_data) - 1)] if db_data else None
 
 		else: # search all levels for an action set, starting with highest one
 			for possible_level in reversed(xrange(level+1)):

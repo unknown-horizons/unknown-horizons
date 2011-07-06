@@ -152,9 +152,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
 		if force or \
-		   self.show_popup(_("Quit Session"),message,show_cancel_button = True):
-			self.current.hide()
-			self.current = None
+		   self.show_popup(_("Quit Session"), message, show_cancel_button = True):
+			if self.current is not None:
+				# this can be None if not called from gui (e.g. scenario finished)
+				self.current.hide()
+				self.current = None
 			if self.session is not None:
 				self.session.end()
 				self.session = None
@@ -335,9 +337,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@param show_cancel_button: boolean, include cancel button or not
 		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
 		"""
+		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
+		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
 		if show_cancel_button:
+			self.widgets.reload('popup_with_cancel')
 			popup = self.widgets['popup_with_cancel']
 		else:
+			self.widgets.reload('popup')
 			popup = self.widgets['popup']
 		headline = popup.findChild(name='headline')
 		# just to be safe, the gettext-function is used twice,

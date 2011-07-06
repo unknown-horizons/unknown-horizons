@@ -66,6 +66,13 @@ class BuildingCollector(Collector):
 
 		super(BuildingCollector, self).load(db, worldid)
 
+		if home_building_id is None:
+			self.show() # make sure that homebuildingsless units are visible on startup
+			# TODO: fix "homebuildingless buildingcollectors".
+			#       perhaps a new unit should be created, because a fisher ship without a
+			#       fisher basically isn't a buildingcollector anymore.
+
+
 	def register_at_home_building(self, unregister = False):
 		"""Creates reference for self at home building (only hard reference except for
 		in job.object)
@@ -109,8 +116,6 @@ class BuildingCollector(Collector):
 		"""Returns the next job or None"""
 		if self.home_building is None:
 			return None
-
-		#if self.home_building.id == 24: import pdb ; pdb.set_trace()
 
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
@@ -190,18 +195,26 @@ class BuildingCollector(Collector):
 		self.log.debug("%s move_home", self)
 		if self.home_building.position.contains(self.position):
 			# already home
+			self.stop() # make sure unit doesn't go anywhere in case a movement is going on
 			Scheduler().add_new_object(callback, self, run_in=0)
 		else:
 			# actually move home
-			self.move_back(callback=callback, destination_in_building=True, action=action, \
-			               blocked_callback=self.handle_path_home_blocked)
+
+			# only reuse old path if it leads home. This is not provided if the path had to be
+			# recalculated on the way to the target due to a blockade.
+			if self.home_building.position.contains( self.path.get_move_source() ):
+				self.move_back(callback=callback, destination_in_building=True, action=action, \
+				               blocked_callback=self.handle_path_home_blocked)
+			else:
+				self.move(self.home_building, callback=callback, destination_in_building=True, action=action, \
+				          blocked_callback=self.handle_path_home_blocked)
 			self.state = self.states.moving_home
 
 	def cancel(self, continue_action = None):
 		"""Cancels current job and moves back home"""
 		self.log.debug("%s cancel", self)
 		if continue_action is None:
-			continue_action = Callback(self.move_home, callback=self.search_job, action='move')
+			continue_action = Callback(self.move_home, callback=self.end_job, action='move')
 		super(BuildingCollector, self).cancel(continue_action=continue_action)
 
 class StorageCollector(BuildingCollector):
@@ -251,3 +264,10 @@ class FisherShipCollector(BuildingCollector):
 		@param res: optional, only search for buildings that provide res"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.session.world.get_providers_in_range(reach, reslist=reslist)
+
+
+decorators.bind_all(BuildingCollector)
+decorators.bind_all(FieldCollector)
+decorators.bind_all(FisherShipCollector)
+decorators.bind_all(SettlerCollector)
+decorators.bind_all(StorageCollector)

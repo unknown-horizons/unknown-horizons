@@ -43,7 +43,7 @@ class SavegameAccessor(DbReader):
 		self._building = {}
 		for row in self("SELECT rowid, x, y, location, rotation, level FROM building"):
 			self._building[int(row[0])] = row[1:]
-	
+
 	def get_building_row(self, worldid):
 		"""Returns (x, y, location, rotation, level)"""
 		return self._building[int(worldid)]
@@ -70,7 +70,7 @@ class SavegameAccessor(DbReader):
 		self._concrete_object = {}
 		for row in self("SELECT id, action_runtime FROM concrete_object"):
 			self._concrete_object[int(row[0])] = int(row[1])
-	
+
 	def get_concrete_object_action_runtime(self, worldid):
 		return self._concrete_object[int(worldid)]
 
@@ -144,7 +144,7 @@ class SavegameAccessor(DbReader):
 	def _load_building_collector(self):
 		self._building_collector = {}
 		for row in self("SELECT rowid, home_building FROM building_collector"):
-			self._building_collector[int(row[0])] = int(row[1])
+			self._building_collector[int(row[0])] = int(row[1]) if row[1] is not None else None
 
 	def get_building_collectors_home(self, worldid):
 		"""Returns the id of the building collector's home or None otherwise"""

@@ -363,3 +363,5 @@ class FisherShip(FisherShipCollector, Ship):
 	pather_class = FisherShipPather
 	health_bar_y = -50
 	is_selectable = False
+
+	in_ship_map = False # (#1023)

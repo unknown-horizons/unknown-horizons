@@ -21,62 +21,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-import os
+import gettext
 import sys
-import run_uh
-import unittest
+
+try:
+	import nose
+except ImportError:
+	print 'The nose package is needed to run the UH tests.'
+	sys.exit(1)
+
 
 if __name__ == '__main__':
-
-
-	import gettext
 	gettext.install('', unicode=True) # no translations here
 
-	from run_uh import init_environment
-	init_environment()
+	from run_uh import setup_fife
+	setup_fife(sys.argv)
 
-	import horizons.main
+	from tests import mock_fife
+	mock_fife()
 
+	nose.run(defaultTest='tests')
 
-	loader = unittest.TestLoader()
-	result = unittest.TestResult()
-	suite = unittest.TestSuite()
-
-	from tests import *
-
-
-	# add tests here:
-
-	# this test isn't maintained any more:
-	# suite.addTest(loader.loadTestsFromModule(pathfinding))
-
-	suite.addTest(loader.loadTestsFromModule(shapes))
-
-	suite.addTest(loader.loadTestsFromModule(storage))
-
-	suite.run(result)
-
-
-	print "\nRESULTS:\n"
-
-	print result.testsRun, 'tests were run'
-	print 'All successful:', result.wasSuccessful()
-
-	if not result.wasSuccessful():
-
-		print
-
-		print len(result.failures),'Failures:'
-		for (case, error) in result.failures:
-			print 'Case:', case
-			print error
-			print
-
-		print
-
-		print len(result.errors),'Errors:'
-		for (case, error) in result.errors:
-			print 'Case:', case
-			print error
-			print

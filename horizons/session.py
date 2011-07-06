@@ -71,7 +71,7 @@ class Session(LivingObject):
 
 	log = logging.getLogger('session')
 
-	def __init__(self, gui, db):
+	def __init__(self, gui, db, rng_seed=None):
 		super(Session, self).__init__()
 		self.log.debug("Initing session")
 		self.gui = gui # main gui, not ingame gui
@@ -84,7 +84,7 @@ class Session(LivingObject):
 		NamedObject.reset()
 
 		#game
-		self.random = self.create_rng()
+		self.random = self.create_rng(rng_seed)
 		self.timer = self.create_timer()
 		Scheduler.create_instance(self.timer)
 		self.manager = self.create_manager()
@@ -110,7 +110,7 @@ class Session(LivingObject):
 		"""Returns instance of command manager (currently MPManager or SPManager)"""
 		raise NotImplementedError
 
-	def create_rng(self):
+	def create_rng(self, seed=None):
 		"""Returns a RNG (random number generator). Must support the python random.Random interface"""
 		raise NotImplementedError
 
@@ -162,7 +162,7 @@ class Session(LivingObject):
 	def save(self, savegame):
 		raise NotImplementedError
 
-	def load(self, savegame, players, is_scenario=False, campaign={}):
+	def load(self, savegame, players, is_scenario=False, campaign=None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color and local
@@ -173,7 +173,7 @@ class Session(LivingObject):
 			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)
 			savegame = os.path.join(SavegameManager.maps_dir, \
 			                        self.scenario_eventhandler.get_map_file())
-		self.campaign = campaign
+		self.campaign = {} if not campaign else campaign
 
 		self.log.debug("Session: Loading from %s", savegame)
 		savegame_db = SavegameAccessor(savegame) # Initialize new dbreader

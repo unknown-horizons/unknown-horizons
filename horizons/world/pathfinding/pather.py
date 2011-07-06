@@ -23,7 +23,7 @@ import weakref
 import sys
 import logging
 
-from horizons.util import Rect, Point
+from horizons.util import Rect, Point, decorators
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.pathfinding.pathfinding import FindPath
@@ -77,6 +77,19 @@ class AbstractPather(object):
 		@return: bool, true if path is blocked"""
 		return (point in self._get_blocked_coords())
 
+	def _get_position(self):
+		"""Returns current position considering movement status and being in a building"""
+		source = self.unit.position
+		if self.unit.is_moving() and self.path:
+			# we are moving, use next step as source
+			source = Point(*self.path[self.cur])
+		else:
+			# check if we are in a building
+			building = self.session.world.get_building(self.unit.position)
+			if building is not None:
+				source = building
+		return source
+
 	def calc_path(self, destination, destination_in_building = False, check_only = False,
 	              source = None):
 		"""Calculates a path to destination
@@ -85,18 +98,10 @@ class AbstractPather(object):
 		                                this makes the unit "enter the building"
 		@param check_only: if True the path isn't saved
 		@param source: use this as source of movement instead of self.unit.position
-		@return: True iff movement is possible"""
+		@return: True iff movement is possible or the path if check_only==True"""
 		# calculate our source
 		if source is None:
-			source = self.unit.position
-			if self.unit.is_moving() and self.path:
-				# we are moving, use next step as source
-				source = Point(*self.path[self.cur])
-			else:
-				# check if we are in a building
-				building = self.session.world.get_building(self.unit.position)
-				if building is not None:
-					source = building
+			source = self._get_position()
 
 		# call algorithm
 		# to use a different pathfinding code, just change the following line
@@ -109,16 +114,26 @@ class AbstractPather(object):
 
 		if not check_only:
 			# prepare movement
-			self.path = path
-			if self.unit.is_moving():
-				self.cur = 0
-				self.unit.show() # make sure unit is displayed
-			else:
-				self.cur = -1
-			self.source_in_building = hasattr(source, 'is_building') and source.is_building
-			self.destination_in_building = destination_in_building
+			self.move_on_path(path, source, destination_in_building)
+		else:
+			return path
 
 		return True
+
+	def move_on_path(self, path, source = None, destination_in_building = False):
+		"""Start moving on a precalculated path.
+		@param path: return value of FindPath()()
+		"""
+		if source is None:
+			source = self._get_position()
+		self.path = path
+		if self.unit.is_moving():
+			self.cur = 0
+			self.unit.show() # make sure unit is displayed
+		else:
+			self.cur = -1
+		self.source_in_building = hasattr(source, 'is_building') and source.is_building
+		self.destination_in_building = destination_in_building
 
 	def revert_path(self, destination_in_building):
 		"""Moves back to the source of last movement, using same path"""
@@ -166,6 +181,11 @@ class AbstractPather(object):
 			self.unit.show()
 
 		return Point(*self.path[self.cur])
+
+	def get_move_source(self):
+		"""Returns the source Point of the current movment.
+		@return: Point or Non if no path has been calculated"""
+		return None if not self.path else Point(*self.path[0])
 
 	def get_move_target(self):
 		"""Returns the point where the path leads
@@ -215,24 +235,16 @@ class ShipPather(AbstractPather):
 	def _get_blocked_coords(self):
 		return self.session.world.ship_map
 
-	def _check_for_obstacles(self, point):
-			#check if another ship is blocking the way (and other ship is not self)
-			if point in self.session.world.ship_map and \
-				 self.session.world.ship_map[self.path[self.cur]]() is not self.unit:
-				# issue a short debug message (no code execution here)
-				other = self.session.world.ship_map[self.path[self.cur]]()
-				self.log.debug("tile %s %s blocked for %s %s by another ship %s", \
-											 point[0], point[1], \
-											 self.unit, self.unit.worldid, other)
-				return True
-			else:
-				# also check in super class
-				return super(ShipPather, self)._check_for_obstacles(point)
 
 class FisherShipPather(ShipPather):
 	"""Can also drive through shallow water"""
 	def _get_path_nodes(self):
 		return self.session.world.water_and_coastline
+
+	def _get_blocked_coords(self):
+		# don't let fisher be blocked by other ships (#1023)
+		return []
+
 
 class BuildingCollectorPather(AbstractPather):
 	"""Pather for collectors, that move freely (without depending on roads)
@@ -243,6 +255,7 @@ class BuildingCollectorPather(AbstractPather):
 	def _get_path_nodes(self):
 			return self.unit.home_building.path_nodes.nodes
 
+
 class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
 	def __init__(self, unit, *args, **kwargs):
@@ -251,6 +264,7 @@ class RoadPather(AbstractPather):
 
 	def _get_path_nodes(self):
 		return self.island.path_nodes.road_nodes
+
 
 class SoldierPather(AbstractPather):
 	"""Pather for units, that move absolutely freely (such as soldiers)
@@ -269,6 +283,7 @@ class SoldierPather(AbstractPather):
 		return []
 
 	def _check_for_obstacles(self, point):
+		# retrieve island, island of soldier may change at any time
 		island = self.session.world.get_island(self.unit.position)
 		path_blocked = not island.path_nodes.is_walkable(self.path[self.cur])
 		if path_blocked:
@@ -302,3 +317,5 @@ class StaticPather(object):
 		@return: list of tuples or None in case no path is found"""
 		return FindPath()(source, destination, island.path_nodes.road_nodes)
 
+
+decorators.bind_all(AbstractPather)

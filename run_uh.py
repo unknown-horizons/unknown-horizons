@@ -261,6 +261,28 @@ Functions controlling the program environment.
 NOTE: these are supposed to be in an extra file, but are placed here for simplifying
 			distribution
 """
+def setup_fife(args):
+	""" Find FIFE and setup search paths, if it can't be imported yet."""
+	try:
+		from fife import fife
+	except ImportError, e:
+		if '--fife_in_library_path' in args:
+			# fife should already be in LD_LIBRARY_PATH
+			log_paths()
+			print 'Failed to load FIFE:', e
+			exit(1)
+		log().debug('Failed to load FIFE from default paths: %s', e)
+		log().debug('Searching for FIFE')
+		find_FIFE() # this restarts or terminates the program
+		assert False
+
+	log().debug('Using fife: %s', fife)
+
+	for arg in ['--fife-in-library-path', '--fife-path']:
+		if arg in args:
+			args.remove(arg)
+
+
 def init_environment():
 	"""Sets up everything. Use in any program that requires access to FIFE and uh modules.
 	It will parse sys.args, so this var has to contain only valid uh options."""
@@ -275,28 +297,11 @@ def init_environment():
 		find_FIFE(options.fife_path) 
 
 	#find FIFE and setup search paths, if it can't be imported yet
-	try:
-		from fife import fife
-	except ImportError, e:
-		if options.fife_in_library_path:
-			# fife should already be in LD_LIBRARY_PATH
-			log_paths()
-			print _('Failed to load FIFE:'), e
-			exit(1)
-		log().debug('Failed to load FIFE from default paths: %s', e)
-		log().debug('Searching for FIFE')
-		find_FIFE() # this restarts or terminates the program
-		assert False
-
-	log().debug('Using fife: %s', fife)
+	setup_fife(sys.argv)
 
 	#for some external libraries distributed with UH
 	sys.path.append( os.path.join('horizons', 'ext') )
 
-	args_to_discard_now = ['--fife-in-library-path', '--fife-path']
-	for arg in args_to_discard_now:
-		if arg in sys.argv:
-			sys.argv.remove(arg)
 
 def get_fife_path(fife_custom_path=None):
 	"""Returns absolute path to FIFE engine. Calls sys.exit() if it can't be found."""

@@ -242,7 +242,7 @@ class IngameGui(LivingObject):
 			self.update_settlement()
 			settlement.add_change_listener(self.update_settlement)
 
-	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
+	def resourceinfo_set(self, source, res_needed = None, res_usable = None, res_from_ship = False):
 		city = source if not res_from_ship else None
 		self.cityinfo_set(city)
 		if source is not self.resource_source:
@@ -257,8 +257,8 @@ class IngameGui(LivingObject):
 			if source is not self.resource_source:
 				source.add_change_listener(self.update_resource_source)
 			self.resource_source = source
-			self.resources_needed = res_needed
-			self.resources_usable = res_usable
+			self.resources_needed = {} if not res_needed else res_needed
+			self.resources_usable = {} if not res_usable else res_usable
 			self.update_resource_source()
 			self.widgets['status'].show()
 
@@ -452,25 +452,28 @@ class IngameGui(LivingObject):
 			RenameObject(instance, new_name).execute(self.session)
 		self._hide_change_name_dialog()
 
-	_toggle_ingame_pause_shown = False
+	_toggle_ingame_pause_shown = None
 	def toggle_ingame_pause(self):
 		"""
 		Called when the hotkey for pause is pressed.
 		Displays pause notification and does the actual (un)pausing.
 		"""
-		message = _("Hit P to continue the game or click below!")
-		popup = self.main_gui.build_popup(_("Game paused"), message)
-		if not self._toggle_ingame_pause_shown:
+		if not self.__class__._toggle_ingame_pause_shown:
 			self.session.speed_pause()
 			self.main_gui.on_escape = self.toggle_ingame_pause
+
+			message = _("Hit P to continue the game or click below!")
+			popup = self.main_gui.build_popup(_("Game paused"), message)
 			popup.mapEvents({'okButton': self.toggle_ingame_pause})
 			popup.show()
-			self._toggle_ingame_pause_shown = True
+			# remember reference to popup for hiding
+			self.__class__._toggle_ingame_pause_shown = popup
 		else:
 			self.main_gui.on_escape = self.main_gui.show_pause
-			popup.hide()
 			self.session.speed_unpause()
-			self._toggle_ingame_pause_shown = False
+
+			self.__class__._toggle_ingame_pause_shown.hide()
+			self.__class__._toggle_ingame_pause_shown = None
 
 	def on_escape(self):
 		if self.logbook.is_visible():

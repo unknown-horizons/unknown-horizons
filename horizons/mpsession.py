@@ -27,20 +27,19 @@ from horizons.manager import MPManager
 class MPSession(Session):
 	"""Session class for multiplayer games."""
 
-	def __init__(self, gui, db, network_interface, rng_seed):
+	def __init__(self, gui, db, network_interface, **kwargs):
 		"""
 		@param network_interface: instance of NetworkInterface to use for this game
 		@param rng_seed: seed for random number generator
 		"""
 		self.__network_interface = network_interface
-		self.__rng_seed = rng_seed
-		super(MPSession, self).__init__(gui, db)
+		super(MPSession, self).__init__(gui, db, **kwargs)
 
 	def create_manager(self):
 		return MPManager(self, self.__network_interface)
 
-	def create_rng(self):
-		return random.Random(self.__rng_seed)
+	def create_rng(self, seed=None):
+		return random.Random(seed)
 
 	def create_timer(self):
 		return Timer(freeze_protection=False)

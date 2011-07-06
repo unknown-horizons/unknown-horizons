@@ -52,12 +52,12 @@ class VERSION:
 				return unicode(open(head_file).readline().strip()[0:7])
 		return u"<unknown>"
 
-	RELEASE_NAME    = _("Unknown Horizons Version %s")
+	RELEASE_NAME    = "Unknown Horizons Version %s"
 	RELEASE_VERSION = _set_version()
 
 	# change to sth like this for release
-	#RELEASE_NAME = _("Unknown Horizons Alpha %s")
-	#RELEASE_VERSION = u'2011.2'
+	# RELEASE_NAME = _("Unknown Horizons Alpha %s")
+	# RELEASE_VERSION = u'2011.2'
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION= 15
@@ -88,10 +88,30 @@ class BUILDINGS:
 	STORAGE_CLASS = 2
 	RESIDENTIAL_CLASS = 3
 	MARKET_PLACE_CLASS = 4
+	PAVILION_CLASS = 5
 	SIGNAL_FIRE_CLASS = 6
+	WEAVER_CLASS = 7
+	LUMBERJACK_CLASS = 8
+	HUNTER_CLASS = 9
 	SETTLER_RUIN_CLASS = 10
+	FISHERMAN_CLASS = 11
+	BOATBUILDER_CLASS = 12
+	TRAIL_CLASS = 15
 	TREE_CLASS = 17
+	PASTURE_CLASS = 18
+	POTATO_FIELD_CLASS = 19
+	FARM_CLASS = 20
+	VILLAGE_SCHOOL_CLASS = 21
+	SUGARCANE_FIELD_CLASS = 22
 	CLAY_DEPOSIT_CLASS = 23
+	BRICKYARD_CLASS = 24
+	CLAY_PIT_CLASS = 25
+	DISTILLERY_CLASS = 26
+	IRON_MINE_CLASS = 28
+	SMELTERY_CLASS = 29
+	TOOLMAKER_CLASS = 30
+	CHARCOAL_BURNER_CLASS = 31
+	TAVERN_CLASS = 32
 	FISH_DEPOSIT_CLASS = 33
 	MOUNTAIN_CLASS = 34
 
@@ -111,9 +131,28 @@ class BUILDINGS:
 
 class RES:
 	# ./development/print_db_data.py res
-	GOLD_ID   = 1
+	GOLD_ID = 1
+	LAMB_WOOL_ID = 2
+	TEXTILE_ID = 3
+	BOARDS_ID = 4
+	FOOD_ID = 5
+	TOOLS_ID = 6
+	BRICKS_ID = 7
+	WOOD_ID = 8
+	WOOL_ID = 10
+	FAITH_ID = 11
 	WILDANIMALFOOD_ID = 12
+	DEER_MEAT_ID = 13
 	HAPPINESS_ID = 14
+	POTATOES_ID = 15
+	EDUCATION_ID = 16
+	RAW_SUGAR_ID = 17
+	SUGAR_ID = 18
+	COMMUNITY_ID = 19
+	RAW_CLAY_ID = 20
+	CLAY_ID = 21
+	LIQUOR_ID = 22
+	GET_TOGETHER_ID = 27
 	FISH_ID = 28
 
 class GROUND:
@@ -220,9 +259,12 @@ class SETTLER:
 
 class WILD_ANIMAL:
 	HEALTH_INIT_VALUE = 50 # animals start with this value
-	HEALTH_INCREASE_ON_FEEDING = 4 # health increases by this value on feeding
-	HEALTH_DECREASE_ON_NO_JOB = 2 # health decreases by this value when they have no food
-	HEALTH_LEVEL_TO_REPRODUCE = 70 # this level has to be reached for reproducing
+	HEALTH_INCREASE_ON_FEEDING = 8 # health increases by this value on feeding
+	HEALTH_DECREASE_ON_NO_JOB = 20 # health decreases by this value when they have no food
+	HEALTH_LEVEL_TO_REPRODUCE = 75 # this level has to be reached for reproducing
+	POPULATION_LIMIT = 15 # minimum number of trees per animal to allow reproducing
+	FOOD_AVAILABLE_ON_START = 0.5 # probability that a tree has wild animal food in the beginning
+	POPUlATION_INIT_RATIO = 15 # every N-th tree gets an animal in the beginning
 
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
