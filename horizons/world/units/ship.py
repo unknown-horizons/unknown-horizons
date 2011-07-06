@@ -31,12 +31,12 @@ from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, NamedObject, Circle, WorldObject, Callback
+from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
-from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED
+from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 
 class ShipRoute(object):
@@ -189,11 +189,15 @@ class Ship(NamedObject, StorageHolder, Unit):
 	is_ship = True
 	is_selectable = True
 
+	in_ship_map = True # (#1023)
+
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		self.session.world.ships.append(self)
-		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 		self.add_component('health', HealthComponent)
+
+		if self.in_ship_map:
+			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
 		#TODO make it work!!!
@@ -202,7 +206,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
-		del self.session.world.ship_map[self.position.to_tuple()]
+		self.session.view.remove_change_listener()
+		if self.in_ship_map:
+			del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
@@ -212,19 +218,22 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
-		del self.session.world.ship_map[self.position.to_tuple()]
+		if self.in_ship_map:
+			del self.session.world.ship_map[self.position.to_tuple()]
 
 		try:
 			super(Ship, self)._move_tick(resume)
 		except PathBlockedError:
 			# if we fail to resume movement then the ship should still be on the map but the exception has to be raised again.
 			if resume:
-				self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+				if self.in_ship_map:
+					self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 			raise
 
-		# save current and next position for ship, since it will be between them
-		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-		self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
+		if self.in_ship_map:
+			# save current and next position for ship, since it will be between them
+			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+			self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
@@ -255,7 +264,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def go(self, x, y):
 		"""Moves the ship.
-		This is called when a ship is selected and RMB is pressed outside the ship"""
+		This is called when a ship is selected and the right mouse button is pressed outside the ship"""
 		self.stop()
 
 		#disable the trading route
@@ -273,30 +282,34 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.move(move_target, tmp)
 		except MoveNotPossible:
 			# find a near tile to move to
-			target_found = False
-			surrounding = Circle(move_target, radius=0)
-			while not target_found and surrounding.radius < 4:
-				surrounding.radius += 1
-				for move_target in surrounding:
-					try:
-						self.move(move_target, tmp)
-					except MoveNotPossible:
-						continue
-					target_found = True
-					break
-		if self.session.world.player == self.owner:
-			if self.position.x != move_target.x or self.position.y != move_target.y:
+			surrounding = Circle(move_target, radius=1)
+			move_target = None
+			# try with smaller circles, increase radius if smaller circle isn't reachable
+			while surrounding.radius < 5:
+				try:
+					self.move(surrounding, callback=tmp)
+				except MoveNotPossible:
+					surrounding.radius += 1
+					continue
+				# update actual target coord
 				move_target = self.get_move_target()
-			if move_target is not None:
-				loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
-				loc.thisown = 0
-				coords = fife.ModelCoordinate(move_target.x, move_target.y)
-				coords.thisown = 0
-				loc.setLayerCoordinates(coords)
-				self.session.view.renderer['GenericRenderer'].addAnimation(
-					"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
-					horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
-				)
+				break
+
+		if move_target is None: # can't move
+			# TODO: give player some kind of feedback
+			return
+
+		# draw buoy in case this is the player's ship
+		if self.session.world.player == self.owner:
+			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
+			loc.thisown = 0
+			coords = fife.ModelCoordinate(move_target.x, move_target.y)
+			coords.thisown = 0
+			loc.setLayerCoordinates(coords)
+			self.session.view.renderer['GenericRenderer'].addAnimation(
+				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
+				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
+			)
 
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM data.shipnames WHERE for_player = 1")
@@ -333,7 +346,7 @@ class PirateShip(Ship):
 	tabs = ()
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM data.shipnames WHERE for_pirate = 1")
-		return map(lambda x: x[0], names)
+		return map(lambda x: unicode(x[0]), names)
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""
@@ -342,7 +355,7 @@ class TradeShip(Ship):
 	health_bar_y = -220
 
 	def _possible_names(self):
-		return [ _('Trader') ]
+		return [ _(u'Trader') ]
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""
