@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-23 02:09+0200\n"
-"PO-Revision-Date: 2011-07-06 18:37+0200\n"
+"PO-Revision-Date: 2011-07-06 18:49+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -986,7 +986,7 @@ msgstr "Език"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Network"
-msgstr ""
+msgstr "Мрежа"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Saving"
@@ -1010,11 +1010,11 @@ msgstr "Сила на звука:"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "(0 means default)"
-msgstr ""
+msgstr "(0 означава под разбиране)"
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Network port:"
-msgstr ""
+msgstr "Мрежов порт:"
 
 #: horizons/i18n/guitranslations.py:232
 msgid "Number of autosaves:"
@@ -1028,65 +1028,64 @@ msgstr "Номер на автозапазване:"
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Full screen:"
-msgstr ""
+msgstr "Цял екран:"
 
 #: horizons/i18n/guitranslations.py:235
 msgid "Screen resolution:"
-msgstr ""
+msgstr "Резолюция на екрана:"
 
 #: horizons/i18n/guitranslations.py:236
 msgid "Enable sound:"
-msgstr ""
+msgstr "Включи звук:"
 
 #: horizons/i18n/guitranslations.py:237
 msgid "Used renderer:"
-msgstr ""
+msgstr "Използва се рендер:"
 
 #: horizons/i18n/guitranslations.py:238
 msgid "Please make sure that you know what you do."
-msgstr ""
+msgstr "Моля, уверете се, че знаете какво правите."
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Enter filename:"
-msgstr ""
+msgstr "Въведи име на файл:"
 
 # 76%
 #: horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "Your saved games:"
-msgstr "Няма запазени игри"
+msgstr "Вашите запазени игри:"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Избери карта за игра:"
 
 #: horizons/i18n/guitranslations.py:245
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Нова игра - Сингълплейър"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Start game:"
-msgstr ""
+msgstr "Старт игра:"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "Campaign"
-msgstr ""
+msgstr "Кампания"
 
 #: horizons/i18n/guitranslations.py:249
 msgid "Free play"
-msgstr ""
+msgstr "Свободна игра"
 
 #: horizons/i18n/guitranslations.py:250
 msgid "Random map"
-msgstr ""
+msgstr "Произволна карта"
 
 #: horizons/i18n/guitranslations.py:251
 msgid "Scenario"
-msgstr ""
+msgstr "Сценарий"
 
 #: horizons/i18n/guitranslations.py:252
 msgid "Start game"
-msgstr ""
+msgstr "Стартиране на игра"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Color:"
