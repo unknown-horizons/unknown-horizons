@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-05-30 08:53+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-07-06 20:48+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1142,7 +1142,7 @@ msgstr "Dies ist der Einstellungsdialog. Handelt weise!"
 
 #: horizons/i18n/guitranslations.py:260
 msgid "Apply"
-msgstr ""
+msgstr "Anwenden"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
@@ -1494,12 +1494,12 @@ msgstr "Fehler: Konnte die Kampagne \"%s\" nicht finden."
 #: horizons/savegamemanager.py:416
 #, python-format
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr ""
+msgstr "Fehler: Das Szenario \"%s\" konnte nicht gefunden werden."
 
 #: horizons/savegamemanager.py:421
 #, python-format
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr ""
+msgstr "Fehler: Konnte das Szenario \"%s\" nicht finden."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
