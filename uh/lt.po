@@ -327,9 +327,12 @@ msgstr "Darinys"
 msgid "Boat builder overview"
 msgstr ""
 
+# 76%
+# 92%
 #: horizons/gui/tabs/boatbuildertab.py:62 horizons/i18n/guitranslations.py:297
+#, fuzzy
 msgid "Fishing boat"
-msgstr ""
+msgstr "Žvejų valtys"
 
 #: horizons/gui/tabs/boatbuildertab.py:111
 msgid "Resources still needed:"
