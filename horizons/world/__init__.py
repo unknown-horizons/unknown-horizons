@@ -39,6 +39,7 @@ from horizons.entities import Entities
 from horizons.util import decorators
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
+from horizons.world.units.bullet import Bullet
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -229,6 +230,11 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# initialised for this, and pirate has to exist before ships are loaded.
 			if self.pirate:
 				self.pirate.load_ship_states(savegame_db)
+
+		# load bullets
+		if self.session.is_game_loaded():
+			for (worldid, sx, sy, dx, dy, speed, img) in savegame_db("SELECT worldid, startx, starty, destx, desty, speed, image FROM bullet"):
+				Bullet(img, Point(sx, sy), Point(dx, dy), speed, self.session, False, worldid)
 
 		# load diplomacy
 		self.diplomacy = Diplomacy()

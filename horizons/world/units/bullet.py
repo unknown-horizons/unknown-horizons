@@ -31,34 +31,47 @@ class Bullet(WorldObject):
 	Class for Bullet animation
 	"""
 	is_selectable = False
-	def __init__(self, image, source, dest, speed, session):
+	_object = horizons.main.fife.engine.getModel().createObject('cb', 'cannonball')
+	fife.ObjectVisual.create(_object)
+
+	def __init__(self, image, source, dest, speed, session, offset = True, worldid = None):
 		"""
 		@param image: path to file with bullet image
 		@param source: Point with starting position
 		@param dest: Point with ending position
 		@param speed: Attack speed of the Weapon that fires the canonball
 		@param session: Horizons Session
+		@param offset: True if image should be offseted from start location
 		"""
 
-		super(Bullet, self).__init__()
+		super(Bullet, self).__init__(worldid)
 		self.session = session
 		# get the current position
 		self.x = source.x
 		self.y = source.y
+
+		# needed for saving the bullet
+		self.dest_x = dest.x
+		self.dest_y = dest.y
+		self.speed = speed
+		self.image = image
+
 		# offset the position so it starts from the middle of the firing instance
-		self.x += 1
-		self.y -= 1
+		if offset:
+			self.x += 1
+			self.y -= 1
+
 		# needed ticks to go to the destination
 		self.needed_ticks = int(GAME_SPEED.TICKS_PER_SECOND * source.distance(dest) / speed)
 		self.needed_ticks -= 2
+
 		# the thick that the object is currently at
 		self.current_tick = 0
+
 		# calculate the axis ratio that is added per tick to move
 		self.x_ratio = float(dest.x - source.x)/self.needed_ticks
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
 
-		self._object = horizons.main.fife.engine.getModel().createObject(str(self.worldid), 'cannonball')
-		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 		img = horizons.main.fife.imagepool.addResourceFromFile(image)
 		for rotation in [45, 135, 225, 315]:
@@ -83,6 +96,7 @@ class Bullet(WorldObject):
 		if self.current_tick == self.needed_ticks:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 			self._instance = None
+			self._object = None
 			self.session.world.bullets.remove(self)
 			self.remove()
 			return
@@ -100,5 +114,5 @@ class Bullet(WorldObject):
 		Scheduler().add_new_object(self._move_tick, self, 1)
 
 	def save(self, db):
-		#TODO 
-		pass
+		db("INSERT INTO bullet(worldid, startx, starty, destx, desty, speed, image) VALUES(?, ?, ?, ?, ?, ?, ?)", \
+			self.worldid, self.x, self.y, self.dest_x, self.dest_y, self.speed, self.image)

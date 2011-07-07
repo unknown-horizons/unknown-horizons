@@ -69,7 +69,7 @@ class WeaponHolder(object):
 		Callback executed when weapon is fired
 		"""
 		# remove in the next tick
-		Scheduler().add_new_object(Callback(self._fireable.remove, weapon), self)
+		Scheduler().add_new_object(Callback(self._fireable.remove, weapon), self, run_in = 0)
 
 	def add_weapon_to_storage(self, weapon_id):
 		"""
@@ -288,6 +288,7 @@ class WeaponHolder(object):
 		for weapon_id, number in weapons:
 			for i in xrange(number):
 				self.add_weapon_to_storage(weapon_id)
+		self.attack_actions = []
 
 class MovingWeaponHolder(WeaponHolder):
 	def __init__(self, **kwargs):
