@@ -102,8 +102,9 @@ class Weapon(object):
 			print 'attack not ready!'
 			return
 
-		distance = destination.distance(position)
+		distance = round(position.distance(destination.center()))
 		if not self.check_target_in_range(distance):
+			print self, 'not in range'
 			return
 
 		#calculate the ticks until impact

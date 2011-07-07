@@ -45,6 +45,7 @@ class WeaponHolder(object):
 	def remove(self):
 		self.remove_storage_modified_listener(self.update_range)
 		self.stop_attack()
+		print self.worldid, 'just died'
 		for weapon in self._weapon_storage:
 			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
 			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
@@ -135,9 +136,9 @@ class WeaponHolder(object):
 
 	def attack_in_range(self):
 		if not self._target:
-			return
+			return False
 		distance = self.position.distance(self._target.position.center())
-		if distance >= self._min_range and distance <= self._max_range:
+		if self._min_range <= distance <= self._max_range:
 			return True
 		return False
 
@@ -375,7 +376,7 @@ class MovingWeaponHolder(WeaponHolder):
 			if self.is_moving() and self._fireable:
 				self.stop()
 
-			distance = self.position.distance(self._target.position)
+			distance = self.position.distance(self._target.position.center())
 			dest = self._target.position.center()
 			if self._target.movable and self._target.is_moving():
 				dest = self._target._next_target
