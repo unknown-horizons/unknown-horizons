@@ -41,7 +41,7 @@ class ProductionChain(object):
 		self.chain.assign_identifier('/%d,%d' % (self.settlement_manager.worldid, self.resource_id))
 
 	def _get_chain(self, resource_id, resource_producer, production_ratio):
-		""" Returns None, ProductionChainSubtree, or ProductionChainSubtreeChoice depending on the number of options """
+		""" Returns None or ProductionChainSubtreeChoice depending on the number of options """
 		options = []
 		if resource_id in resource_producer:
 			for production_line, abstract_building in resource_producer[resource_id]:
@@ -58,8 +58,6 @@ class ProductionChain(object):
 					options.append(ProductionChainSubtree(self.settlement_manager, resource_id, production_line, abstract_building, sources, production_ratio))
 		if not options:
 			return None
-		elif len(options) == 1:
-			return options[0]
 		return ProductionChainSubtreeChoice(options)
 
 	@classmethod
@@ -87,9 +85,13 @@ class ProductionChain(object):
 class ProductionChainSubtreeChoice(object):
 	def __init__(self, options):
 		self.options = options
+		self.resource_id = options[0].resource_id
+		self.production_ratio = options[0].production_ratio
+		self.ignore_production = options[0].ignore_production
+		self.trade_manager = options[0].trade_manager
 
 	def assign_identifier(self, prefix):
-		self.identifier = prefix + '/choice'
+		self.identifier = prefix + ('/choice' if len(self.options) > 1 else '')
 		for option in self.options:
 			option.assign_identifier(self.identifier)
 
@@ -106,9 +108,19 @@ class ProductionChainSubtreeChoice(object):
 		""" returns the production level at the bottleneck """
 		return sum(option.get_final_production_level() for option in self.options)
 
+	def get_expected_cost(self, amount):
+		return min(option.get_expected_cost(amount) for option in self.options)
+
 	def build(self, amount):
 		""" Builds the subtree that is currently the cheapest """
 		current_production = self.get_final_production_level()
+
+		# check how much we can import
+		required_amount = amount - current_production
+		self.trade_manager.request_quota_change(self.identifier, self.resource_id, required_amount * self.production_ratio)
+		importable_amount = self.trade_manager.get_quota(self.identifier, self.resource_id) / self.production_ratio
+		amount -= importable_amount
+
 		if amount < current_production + 1e-7:
 			return BUILD_RESULT.ALL_BUILT
 
@@ -147,6 +159,7 @@ class ProductionChainSubtree:
 		self.abstract_building = abstract_building
 		self.children = children
 		self.production_ratio = production_ratio
+		self.ignore_production = abstract_building.ignore_production
 
 	def assign_identifier(self, prefix):
 		self.identifier = '%s/%d,%d' % (prefix, self.resource_id, self.abstract_building.id)
@@ -192,7 +205,7 @@ class ProductionChainSubtree:
 		""" returns the production level at the bottleneck """
 		min_child_production = None
 		for child in self.children:
-			if child.abstract_building.ignore_production:
+			if child.ignore_production:
 				continue
 			production_level = child.get_final_production_level()
 			if min_child_production is None:
@@ -248,12 +261,6 @@ class ProductionChainSubtree:
 	def build(self, amount):
 		# request a quota change (could be lower or higher)
 		self.resource_manager.request_quota_change(self.identifier, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
-
-		# check how much we can import
-		required_amount = amount - self.get_final_production_level()
-		self.trade_manager.request_quota_change(self.identifier, self.resource_id, required_amount * self.production_ratio)
-		importable_amount = self.trade_manager.get_quota(self.identifier, self.resource_id) / self.production_ratio
-		amount -= importable_amount
 
 		# try to build one of the lower level buildings
 		result = None
