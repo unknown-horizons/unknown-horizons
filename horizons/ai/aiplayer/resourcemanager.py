@@ -29,25 +29,26 @@ class ResourceManager(WorldObject):
 	An object of this class manages the resources of one settlement.
 	"""
 
-	def __init__(self):
+	def __init__(self, settlement_manager):
 		super(ResourceManager, self).__init__()
-		self.__init()
+		self.__init(settlement_manager)
 
-	def __init(self):
+	def __init(self, settlement_manager):
+		self.settlement_manager = settlement_manager
 		self.data = {} # (resource_id, building_id): SingleResourceManager
 
-	def save(self, db, settlement_manager):
+	def save(self, db):
 		super(ResourceManager, self).save(db)
-		db("INSERT INTO ai_resource_manager(rowid, settlement_manager) VALUES(?, ?)", self.worldid, settlement_manager.worldid)
-		for (_, building_id), resource_manager in self.data.iteritems():
-			resource_manager.save(db, self, building_id)
+		db("INSERT INTO ai_resource_manager(rowid, settlement_manager) VALUES(?, ?)", self.worldid, self.settlement_manager.worldid)
+		for resource_manager in self.data.itervalues():
+			resource_manager.save(db, self.worldid)
 
 	def _load(self, db, settlement_manager):
 		worldid = db("SELECT rowid FROM ai_resource_manager WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
 		super(ResourceManager, self).load(db, worldid)
-		self.__init()
+		self.__init(settlement_manager)
 		for db_row in db("SELECT rowid, resource_id, building_id FROM ai_single_resource_manager WHERE resource_manager = ?", worldid):
-			self.data[(db_row[1], db_row[2])] = SingleResourceManager.load(db, db_row[0])
+			self.data[(db_row[1], db_row[2])] = SingleResourceManager.load(db, settlement_manager, db_row[0])
 
 	@classmethod
 	def load(cls, db, settlement_manager):
@@ -59,22 +60,16 @@ class ResourceManager(WorldObject):
 		for resource_manager in self.data.itervalues():
 			resource_manager.refresh()
 
-	def add_building(self, building, resource_id):
-		key = (resource_id, building.id)
-		if key not in self.data:
-			self.data[key] = SingleResourceManager(resource_id)
-		self.data[key].add_building(building)
-
 	def request_quota_change(self, quota_holder, resource_id, building_id, amount):
 		key = (resource_id, building_id)
 		if key not in self.data:
-			self.data[key] = SingleResourceManager(resource_id)
+			self.data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
 		self.data[key].request_quota_change(quota_holder, amount)
 
 	def get_quota(self, quota_holder, resource_id, building_id):
 		key = (resource_id, building_id)
 		if key not in self.data:
-			self.data[key] = SingleResourceManager(resource_id)
+			self.data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
 		return self.data[key].get_quota(quota_holder)
 
 	def __str__(self):
@@ -84,55 +79,52 @@ class ResourceManager(WorldObject):
 		return result
 
 class SingleResourceManager(WorldObject):
-	def __init__(self, resource_id):
+	def __init__(self, settlement_manager, resource_id, building_id):
 		super(SingleResourceManager, self).__init__()
-		self.__init(resource_id)
+		self.__init(settlement_manager, resource_id, building_id)
 		self.available = 0.0 # unused resource production per tick
 		self.total = 0.0 # total resource production per tick
 
-	def __init(self, resource_id):
+	def __init(self, settlement_manager, resource_id, building_id):
+		self.settlement_manager = settlement_manager
 		self.resource_id = resource_id
+		self.building_id = building_id
 		self.quotas = {} # {quota_holder: amount, ...}
-		self.buildings = [] # [building, ...]
 
-	def save(self, db, resource_manager, building_id):
+	def save(self, db, resource_manager_id):
 		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, available, total) VALUES(?, ?, ?, ?, ?, ?)", \
-			self.worldid, resource_manager.worldid, self.resource_id, building_id, self.available, self.total)
-		for building in self.buildings:
-			db("INSERT INTO ai_single_resource_manager_building(single_resource_manager, building_id) VALUES(?, ?)", self.worldid, building.worldid)
+			self.worldid, resource_manager_id, self.resource_id, self.building_id, self.available, self.total)
 		for identifier, quota in self.quotas.iteritems():
 			db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager, identifier, quota) VALUES(?, ?, ?)", self.worldid, identifier, quota)
 
-	def _load(self, db, worldid):
+	def _load(self, db, settlement_manager, worldid):
 		super(SingleResourceManager, self).load(db, worldid)
-		(resource_id, self.available, self.total) = db("SELECT resource_id, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
-		self.__init(resource_id)
-
-		for (building_worldid,) in db("SELECT building_id FROM ai_single_resource_manager_building WHERE single_resource_manager = ?", worldid):
-			self.buildings.append(WorldObject.get_object_by_id(building_worldid))
+		(resource_id, building_id, self.available, self.total) = db("SELECT resource_id, building_id, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
+		self.__init(settlement_manager, resource_id, building_id)
 
 		for (identifier, quota) in db("SELECT identifier, quota FROM ai_single_resource_manager_quota WHERE single_resource_manager = ?", worldid):
 			self.quotas[identifier] = quota
 
 	@classmethod
-	def load(cls, db, worldid):
+	def load(cls, db, settlement_manager, worldid):
 		self = cls.__new__(cls)
-		self._load(db, worldid)
+		self._load(db, settlement_manager, worldid)
 		return self
 
 	def _get_current_production(self):
-		if not self.buildings:
+		buildings = self.settlement_manager.settlement.get_buildings_by_id(self.building_id)
+		if not buildings:
 			return 0.0
 		total = 0.0
-		if self.resource_id == RES.FOOD_ID and self.buildings[0].id == BUILDINGS.FARM_CLASS:
+		if self.resource_id == RES.FOOD_ID and self.building_id == BUILDINGS.FARM_CLASS:
 			# TODO: make this block of code work in a better way
 			# return the production of the potato fields because the farm is not the limiting factor
-			buildings = self.buildings[0].settlement.get_buildings_by_id(BUILDINGS.POTATO_FIELD_CLASS)
+			buildings = self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.POTATO_FIELD_CLASS)
 			if not buildings:
 				return 0.0
 			return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], RES.POTATOES_ID)
 		else:
-			for building in self.buildings:
+			for building in buildings:
 				total += AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id)
 		return total
 
@@ -153,10 +145,6 @@ class SingleResourceManager(WorldObject):
 			else:
 				self.available -= change
 		self.total = production
-
-	def add_building(self, building):
-		self.buildings.append(building)
-		self.refresh()
 
 	def get_quota(self, quota_holder):
 		if quota_holder not in self.quotas:

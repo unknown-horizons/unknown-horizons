@@ -51,7 +51,7 @@ class SettlementManager(WorldObject):
 	def __init__(self, owner, land_manager):
 		super(SettlementManager, self).__init__()
 		self.owner = owner
-		self.resource_manager = ResourceManager()
+		self.resource_manager = ResourceManager(self)
 		self.trade_manager = TradeManager(self)
 		self.__init(land_manager)
 
@@ -93,7 +93,7 @@ class SettlementManager(WorldObject):
 
 		self.village_builder.save(db)
 		self.production_builder.save(db)
-		self.resource_manager.save(db, self)
+		self.resource_manager.save(db)
 
 	@classmethod
 	def load(cls, db, owner, worldid):
