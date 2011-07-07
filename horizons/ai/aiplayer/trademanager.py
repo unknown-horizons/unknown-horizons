@@ -19,19 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import math
+import logging
+
 from mission.domestictrade import DomesticTrade
 
 from building import AbstractBuilding
-from horizons.util import WorldObject
+from horizons.util import Circle, WorldObject
 from horizons.util.python import decorators
-from horizons.constants import RES
+from horizons.constants import BUILDINGS, RES
 
 class TradeManager(WorldObject):
 	"""
 	An object of this class manages the trade routes of one settlement.
 	"""
 
-	legal_resources = [RES.FOOD_ID, RES.BRICKS_ID, RES.TOOLS_ID]
+	log = logging.getLogger("ai.aiplayer.trademanager")
+	legal_resources = [RES.FOOD_ID]
 
 	def __init__(self, settlement_manager):
 		super(TradeManager, self).__init__()
@@ -80,10 +84,10 @@ class TradeManager(WorldObject):
 			self.data[resource_id] = SingleResourceTradeManager(self.settlement_manager, resource_id)
 		return self.data[resource_id].get_quota(quota_holder)
 
-	def load_resources(self, source_settlement_manager, ship):
+	def load_resources(self, destination_settlement_manager, ship):
 		""" the given ship has arrived at the source settlement to pick up the resources required by this trade manager """
 		total_amount = {}
-		for resource_manager in source_settlement_manager.trade_manager.data.itervalues():
+		for resource_manager in destination_settlement_manager.trade_manager.data.itervalues():
 			for settlement_manager, amount in resource_manager.partners.iteritems():
 				if settlement_manager != self.settlement_manager:
 					continue # not the right one
@@ -91,12 +95,21 @@ class TradeManager(WorldObject):
 					total_amount[resource_manager.resource_id] = 0.0
 				total_amount[resource_manager.resource_id] += amount
 
+		destination_position = destination_settlement_manager.settlement.branch_office.position
+		destination = Circle(destination_position.origin, BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE) # TODO: this should be a RadiusShape
+		path_length = ship.get_estimated_travel_time(destination)
+		if path_length is None:
+			return False
+
+		self.settlement_manager.settlement.branch_office
 		any_transferred = False
 		for resource_id, amount in total_amount.iteritems():
-			actual_amount = int(round(5000 * amount)) # take resources for 5000 ticks
+			actual_amount = int(math.ceil(2 * path_length * amount))
+			self.log.info('Transfer %d of %d to %s for a journey from %s to %s (path length %d, import %.5f per tick)', actual_amount, \
+				resource_id, ship, self.settlement_manager.settlement.name, destination_settlement_manager.settlement.name, path_length, amount)
 			if actual_amount > 0:
 				any_transferred = True
-			self.settlement_manager.owner.complete_inventory.move(ship, source_settlement_manager.settlement, resource_id, -actual_amount)
+			self.settlement_manager.owner.complete_inventory.move(ship, destination_settlement_manager.settlement, resource_id, -actual_amount)
 		return any_transferred
 
 	def _get_source_settlement_manager(self):
