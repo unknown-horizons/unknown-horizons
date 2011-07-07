@@ -267,8 +267,9 @@ class MovingObject(ConcretObject):
 		self._conditional_callbacks[condition] = callback
 
 	def get_unit_velocity(self):
-		"""Returns number of ticks that it takes to do a straight (i.e. vertical or horizontal) movement
-		@return: int
+		"""Returns the number of ticks that it takes to do a straight (i.e. vertical or horizontal)
+		or diagonal movement as a tuple in this order.
+		@return: (int, int)
 		"""
 		tile = self.session.world.get_tile(self.position)
 		if self.id in tile.velocity:
