@@ -31,8 +31,8 @@ class Bullet(WorldObject):
 	Class for Bullet animation
 	"""
 	is_selectable = False
-	_object = horizons.main.fife.engine.getModel().createObject('cb', 'cannonball')
-	fife.ObjectVisual.create(_object)
+	_object = None
+	owner = None
 
 	def __init__(self, image, source, dest, speed, session, offset = True, worldid = None):
 		"""
@@ -72,6 +72,10 @@ class Bullet(WorldObject):
 		self.x_ratio = float(dest.x - source.x)/self.needed_ticks
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
 
+		if not Bullet._object:
+			Bullet._object = horizons.main.fife.engine.getModel().createObject('cb', 'cannonball')
+			fife.ObjectVisual.create(Bullet._object)
+
 		visual = self._object.get2dGfxVisual()
 		img = horizons.main.fife.imagepool.addResourceFromFile(image)
 		for rotation in [45, 135, 225, 315]:
@@ -96,7 +100,6 @@ class Bullet(WorldObject):
 		if self.current_tick == self.needed_ticks:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 			self._instance = None
-			self._object = None
 			self.session.world.bullets.remove(self)
 			self.remove()
 			return
