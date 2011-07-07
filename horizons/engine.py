@@ -356,7 +356,7 @@ class Fife(ApplicationBase):
 	def enable_sound(self):
 		"""Enable all sound and start playing music."""
 		if self._setting.get(FIFE_MODULE, "PlaySounds"): # Set up sound if it is enabled
-			self.soundclippool = self.engine.getSoundClipPool()
+			self.soundclipmanager = self.engine.getSoundClipManager()
 			self.emitter['bgsound'] = self.soundmanager.createEmitter()
 			self.emitter['bgsound'].setGain(self._setting.get(UH_MODULE, "VolumeMusic"))
 			self.emitter['bgsound'].setLooping(False)
@@ -417,7 +417,7 @@ class Fife(ApplicationBase):
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
-			emitter.setSoundClip(horizons.main.fife.soundclippool.addResourceFromFile(soundfile))
+			emitter.setSoundClip(horizons.main.fife.soundclipmanager.load(soundfile))
 			emitter.play()
 
 	def set_volume(self, emitter_name, value):
