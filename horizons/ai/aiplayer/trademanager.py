@@ -149,7 +149,7 @@ class TradeManager(WorldObject):
 		mission.start()
 
 	def __str__(self):
-		result = 'TradeManager(%d)' % self.worldid
+		result = 'TradeManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
 		for resource_manager in self.data.itervalues():
 			result += '\n' + resource_manager.__str__()
 		return result
@@ -189,7 +189,7 @@ class SingleResourceTradeManager(WorldObject):
 	def _refresh_current_production(self):
 		total = 0.0
 		for settlement_manager in self.settlement_manager.owner.settlement_managers:
-			if self.settlement_manager != settlement_manager:
+			if self.settlement_manager is not settlement_manager:
 				resource_manager = settlement_manager.resource_manager
 				for building_id in self.building_ids:
 					resource_manager.request_quota_change(self.identifier, self.resource_id, building_id, 100)
@@ -197,22 +197,19 @@ class SingleResourceTradeManager(WorldObject):
 		return total
 
 	def refresh(self):
-		production = self._refresh_current_production()
-		if production >= self.total:
-			self.available += production - self.total
+		currently_used = sum(self.quotas.itervalues())
+		self.total = self._refresh_current_production()
+		if self.total >= currently_used:
+			self.available = self.total - currently_used
 		else:
-			change = self.total - production
-			if change > self.available and self.total - self.available > 1e-7:
-				# unable to honour current quota assignments, decreasing all equally
-				multiplier = 0.0 if abs(production) < 1e-7 else (self.total - self.available) / production
-				for quota_holder in self.quotas:
-					amount = self.quotas[quota_holder]
-					if amount > 1e-7:
-						amount *= multiplier
-				self.available = 0.0
-			else:
-				self.available -= change
-		self.total = production
+			self.available = 0.0
+			# unable to honour current quota assignments, decreasing all equally
+			multiplier = 0.0 if abs(self.total) < 1e-7 else self.total / currently_used
+			for quota_holder in self.quotas:
+				if self.quotas[quota_holder] > 1e-7:
+					self.quotas[quota_holder] *= multiplier
+				else:
+					self.quotas[quota_holder] = 0
 
 	def finalize_requests(self):
 		options = []
@@ -250,7 +247,9 @@ class SingleResourceTradeManager(WorldObject):
 			self.quotas[quota_holder] = 0.0
 		amount = max(amount, 0.0)
 
-		if amount <= self.quotas[quota_holder]:
+		if abs(amount - self.quotas[quota_holder]) < 1e-7:
+			pass
+		elif amount < self.quotas[quota_holder]:
 			# lower the amount of reserved import
 			change = self.quotas[quota_holder] - amount
 			self.available += change
@@ -263,8 +262,8 @@ class SingleResourceTradeManager(WorldObject):
 
 	def __str__(self):
 		result = 'Resource %d import %.5f/%.5f' % (self.resource_id, self.available, self.total)
-		for quota in self.quotas.itervalues():
-			result += '\n  quota assignment %.5f' % quota
+		for quota_holder, quota in self.quotas.iteritems():
+			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)
 		for settlement_manager, amount in self.partners.iteritems():
 			result += '\n  import %.5f from %s' % (amount, settlement_manager.settlement.name)
 		return result

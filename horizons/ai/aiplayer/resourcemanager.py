@@ -73,7 +73,7 @@ class ResourceManager(WorldObject):
 		return self.data[key].get_quota(quota_holder)
 
 	def __str__(self):
-		result = 'ResourceManager(%d)' % self.worldid
+		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
 		for resource_manager in self.data.itervalues():
 			result += '\n' + resource_manager.__str__()
 		return result
@@ -129,22 +129,19 @@ class SingleResourceManager(WorldObject):
 		return total
 
 	def refresh(self):
-		production = self._get_current_production()
-		if production >= self.total:
-			self.available += production - self.total
+		currently_used = sum(self.quotas.itervalues())
+		self.total = self._get_current_production()
+		if self.total >= currently_used:
+			self.available = self.total - currently_used
 		else:
-			change = self.total - production
-			if change > self.available and self.total - self.available > 1e-7:
-				# unable to honour current quota assignments, decreasing all equally
-				multiplier = 0.0 if abs(production) < 1e-7 else (self.total - self.available) / production
-				for quota_holder in self.quotas:
-					amount = self.quotas[quota_holder]
-					if amount > 1e-7:
-						amount *= multiplier
-				self.available = 0.0
-			else:
-				self.available -= change
-		self.total = production
+			self.available = 0.0
+			# unable to honour current quota assignments, decreasing all equally
+			multiplier = 0.0 if abs(self.total) < 1e-7 else self.total / currently_used
+			for quota_holder in self.quotas:
+				if self.quotas[quota_holder] > 1e-7:
+					self.quotas[quota_holder] *= multiplier
+				else:
+					self.quotas[quota_holder] = 0
 
 	def get_quota(self, quota_holder):
 		if quota_holder not in self.quotas:
@@ -156,7 +153,9 @@ class SingleResourceManager(WorldObject):
 			self.quotas[quota_holder] = 0.0
 		amount = max(amount, 0.0)
 
-		if amount <= self.quotas[quota_holder]:
+		if abs(amount - self.quotas[quota_holder]) < 1e-7:
+			pass
+		elif amount < self.quotas[quota_holder]:
 			# lower the amount of reserved production
 			change = self.quotas[quota_holder] - amount
 			self.available += change

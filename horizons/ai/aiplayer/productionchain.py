@@ -250,7 +250,7 @@ class ProductionChainSubtree:
 		self.resource_manager.request_quota_change(self.identifier, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
 
 		# check how much we can import
-		required_amount = amount - self.get_root_production_level()
+		required_amount = amount - self.get_final_production_level()
 		self.trade_manager.request_quota_change(self.identifier, self.resource_id, required_amount * self.production_ratio)
 		importable_amount = self.trade_manager.get_quota(self.identifier, self.resource_id) / self.production_ratio
 		amount -= importable_amount
