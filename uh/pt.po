@@ -1136,9 +1136,11 @@ msgstr "Renderizador utilizado:"
 msgid "Please make sure that you know what you do."
 msgstr "Por favor considere as opções que fizer."
 
+# 83%
 #: horizons/i18n/guitranslations.py:260
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar:"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
@@ -1319,10 +1321,12 @@ msgstr "Nome:"
 msgid "Taxes:"
 msgstr "Impostos:"
 
+# 87%
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
+#, fuzzy
 msgid "Tax rate"
-msgstr ""
+msgstr "taxa de contribuição"
 
 #: horizons/i18n/guitranslations.py:336
 msgid "capacity utilization"
@@ -1484,15 +1488,17 @@ msgstr "Erro: Não foi possível encontrar o campanã \"%s\"."
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Erro: Não foi possível encontrar o campanã \"%s\"."
 
+# 81%
 #: horizons/savegamemanager.py:416
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr ""
+msgstr "Erro: Não foi possível encontrar a gravação \"%s\"."
 
+# 83%
 #: horizons/savegamemanager.py:421
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr ""
+msgstr "Erro: Não foi possível encontrar o campanã \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1805,9 +1811,11 @@ msgstr "Taverna"
 msgid "Tent"
 msgstr "Tenda"
 
+# 77%
 #: sqlite/Building
+#, fuzzy
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Ruínas"
 
 #: sqlite/Building
 msgid "Tobacco Field"
