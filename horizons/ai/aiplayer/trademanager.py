@@ -35,7 +35,7 @@ class TradeManager(WorldObject):
 	"""
 
 	log = logging.getLogger("ai.aiplayer.trademanager")
-	legal_resources = [RES.FOOD_ID]
+	legal_resources = [RES.FOOD_ID, RES.BRICKS_ID]
 
 	def __init__(self, settlement_manager):
 		super(TradeManager, self).__init__()
@@ -105,11 +105,14 @@ class TradeManager(WorldObject):
 		any_transferred = False
 		for resource_id, amount in total_amount.iteritems():
 			actual_amount = int(math.ceil(2 * path_length * amount))
+			actual_amount -= ship.inventory[resource_id] # load up to the specified amount
+			if actual_amount <= 0:
+				continue # TODO: consider unloading the resources if there is more than needed
 			self.log.info('Transfer %d of %d to %s for a journey from %s to %s (path length %d, import %.5f per tick)', actual_amount, \
 				resource_id, ship, self.settlement_manager.settlement.name, destination_settlement_manager.settlement.name, path_length, amount)
 			if actual_amount > 0:
 				any_transferred = True
-			self.settlement_manager.owner.complete_inventory.move(ship, destination_settlement_manager.settlement, resource_id, -actual_amount)
+			self.settlement_manager.owner.complete_inventory.move(ship, self.settlement_manager.settlement, resource_id, -actual_amount)
 		return any_transferred
 
 	def _get_source_settlement_manager(self):

@@ -166,6 +166,8 @@ class SettlementManager(WorldObject):
 			return self.get_together_chain.get_final_production_level()
 		elif resource_id == RES.FOOD_ID:
 			return self.food_chain.get_final_production_level()
+		elif resource_id == RES.BRICKS_ID:
+			return self.bricks_chain.get_final_production_level()
 		return None
 
 	def get_resident_resource_usage(self, resource_id):
@@ -297,7 +299,7 @@ class SettlementManager(WorldObject):
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
 		self.need_materials = False
-		have_bricks = self.count_buildings(BUILDINGS.BRICKYARD_CLASS)
+		have_bricks = self.get_resource_production(RES.BRICKS_ID) > 0
 
 		if not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
@@ -318,7 +320,7 @@ class SettlementManager(WorldObject):
 		elif not self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
 			result = self.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
 			self.log_generic_build_result(result,  'clay deposit coverage storage')
-		elif self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.build_chain(self.bricks_chain, 'bricks producer'):
+		elif self.land_manager.owner.settler_level > 0 and self.build_chain(self.bricks_chain, 'bricks producer'):
 			pass
 		elif have_bricks and self.build_chain(self.education_chain, 'school'):
 			pass

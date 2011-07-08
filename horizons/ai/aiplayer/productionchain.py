@@ -104,9 +104,12 @@ class ProductionChainSubtreeChoice(object):
 	def get_root_production_level(self):
 		return sum(option.get_root_production_level() for option in self.options)
 
+	def get_root_import_level(self):
+		return self.trade_manager.get_quota(self.identifier, self.resource_id) / self.production_ratio
+
 	def get_final_production_level(self):
 		""" returns the production level at the bottleneck """
-		return sum(option.get_final_production_level() for option in self.options)
+		return sum(option.get_final_production_level() for option in self.options) + self.get_root_import_level()
 
 	def get_expected_cost(self, amount):
 		return min(option.get_expected_cost(amount) for option in self.options)
@@ -116,10 +119,9 @@ class ProductionChainSubtreeChoice(object):
 		current_production = self.get_final_production_level()
 
 		# check how much we can import
-		required_amount = amount - current_production
+		required_amount = amount - current_production + self.get_root_import_level()
 		self.trade_manager.request_quota_change(self.identifier, self.resource_id, required_amount * self.production_ratio)
-		importable_amount = self.trade_manager.get_quota(self.identifier, self.resource_id) / self.production_ratio
-		amount -= importable_amount
+		amount -= self.get_root_import_level()
 
 		if amount < current_production + 1e-7:
 			return BUILD_RESULT.ALL_BUILT
