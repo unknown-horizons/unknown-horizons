@@ -1125,9 +1125,11 @@ msgstr "Uporabljen izrisovalnik:"
 msgid "Please make sure that you know what you do."
 msgstr "Prepričajte se, da veste kaj delate."
 
+# 83%
 #: horizons/i18n/guitranslations.py:260
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Uveljavi:"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
@@ -1470,15 +1472,19 @@ msgstr "Napaka: Ni mogoče najti zemljevida \"%s\"."
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Napaka: Ni mogoče najti zemljevida \"%s\"."
 
+# 81%
 #: horizons/savegamemanager.py:416
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr ""
+msgstr "Napaka: Ni mogoče najti shranjene igre \"%s\"."
 
+# 81%
+# 76%
+# 83%
 #: horizons/savegamemanager.py:421
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr ""
+msgstr "Napaka: Ni mogoče najti zemljevida \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1789,9 +1795,11 @@ msgstr "Gostilna"
 msgid "Tent"
 msgstr "Šotor"
 
+# 77%
 #: sqlite/Building
+#, fuzzy
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Razviline_šotora"
 
 #: sqlite/Building
 msgid "Tobacco Field"
