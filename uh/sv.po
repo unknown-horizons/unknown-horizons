@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-08 17:49+0200\n"
+"PO-Revision-Date: 2011-07-08 17:50+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -461,11 +461,11 @@ msgstr "Jägare: Jagar vilda djur i skogen, producerar föda."
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
+msgstr "Signalbrand: Tillåter spelaren handel med fria köpmän."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
+msgstr "Timmerman: Hugger ner träd och gör dem till plank."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."

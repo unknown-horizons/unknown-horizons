@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-06-29 17:54+0200\n"
-"Last-Translator: MicMic <michael.aloys@gmail.com>\n"
+"PO-Revision-Date: 2011-07-08 18:27+0200\n"
+"Last-Translator: William <cabrerawilliam@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -467,8 +467,12 @@ msgstr "nivel"
 msgid "move"
 msgstr "mover"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+# 80%
 msgid "moved"
-msgstr ""
+msgstr "movido"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 #
@@ -477,8 +481,11 @@ msgstr ""
 msgid "produce"
 msgstr "producir / fabricar"
 
+# (poterminology) uh-tutorial/tutorial.pot (9)
+# (poterminology) uh/unknownhorizons.pot (4)
+# 87%
 msgid "produced"
-msgstr ""
+msgstr "producido / fabricado"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -607,13 +614,13 @@ msgid "settler"
 msgstr "colonos"
 
 msgid "citizen"
-msgstr ""
+msgstr "ciudadanos"
 
 msgid "merchant"
-msgstr ""
+msgstr "mercante"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristócrata"
 
 #
 #
@@ -1002,16 +1009,16 @@ msgid "red"
 msgstr "rojo"
 
 msgid "check"
-msgstr ""
+msgstr "comprobar"
 
 msgid "connection"
-msgstr ""
+msgstr "conexión"
 
 msgid "no"
-msgstr ""
+msgstr "no"
 
 msgid "tax"
-msgstr ""
+msgstr "impuesto"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1021,79 +1028,83 @@ msgid "feature"
 msgstr "característica"
 
 msgid "reached"
-msgstr ""
+msgstr "llegado"
 
 msgid "slider"
 msgstr "deslizador"
 
 msgid "condition"
-msgstr ""
+msgstr "condición"
 
 msgid "consume"
-msgstr ""
+msgstr "consumir"
 
 msgid "contact"
-msgstr ""
+msgstr "contacto"
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialogo"
 
 msgid "issues"
-msgstr ""
+msgstr "problemas"
 
 msgid "minimap"
 msgstr "minimapa"
 
 msgid "playing"
-msgstr ""
+msgstr "jugando"
 
+# 75%
 msgid "ruin"
-msgstr ""
+msgstr "ruina"
 
 msgid "seed"
-msgstr ""
+msgstr "semilla"
 
 msgid "temporarily"
-msgstr ""
+msgstr "temporalmente"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "lagunas de agua salada"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tabaco"
 
 msgid "cattle"
-msgstr ""
+msgstr "ganado"
 
 msgid "pig"
-msgstr ""
+msgstr "cerdo"
 
 msgid "herbs"
-msgstr ""
+msgstr "hierbas"
 
 msgid "herbary"
-msgstr ""
+msgstr "herbario"
 
 msgid "butchery"
-msgstr ""
+msgstr "carnicería"
 
 msgid "doctor"
-msgstr ""
+msgstr "doctor"
 
 msgid "education"
-msgstr ""
+msgstr "educación"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 75%
 msgid "clay"
-msgstr ""
+msgstr "arcilla"
 
 msgid "charcoal"
-msgstr ""
+msgstr "carbón"
 
 msgid "iron"
-msgstr ""
+msgstr "hierro"
 
 msgid "ore"
-msgstr ""
+msgstr "mineral"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
