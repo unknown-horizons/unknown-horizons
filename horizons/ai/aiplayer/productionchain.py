@@ -262,7 +262,7 @@ class ProductionChainSubtree:
 
 	def build(self, amount):
 		# request a quota change (could be lower or higher)
-		self.resource_manager.request_quota_change(self.identifier, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+		self.resource_manager.request_quota_change(self.identifier, True, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
 
 		# try to build one of the lower level buildings
 		result = None
@@ -279,7 +279,7 @@ class ProductionChainSubtree:
 			# build a building and then request quota change
 			(result, building) = self.abstract_building.build(self.settlement_manager, self.resource_id)
 			if result == BUILD_RESULT.OK:
-				self.resource_manager.request_quota_change(self.identifier, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+				self.resource_manager.request_quota_change(self.identifier, True, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
 			elif result == BUILD_RESULT.OUT_OF_SETTLEMENT:
 				return self._extend_settlement(building)
 			return result

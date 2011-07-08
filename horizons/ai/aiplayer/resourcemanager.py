@@ -60,11 +60,11 @@ class ResourceManager(WorldObject):
 		for resource_manager in self.data.itervalues():
 			resource_manager.refresh()
 
-	def request_quota_change(self, quota_holder, resource_id, building_id, amount):
+	def request_quota_change(self, quota_holder, priority, resource_id, building_id, amount):
 		key = (resource_id, building_id)
 		if key not in self.data:
 			self.data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
-		self.data[key].request_quota_change(quota_holder, amount)
+		self.data[key].request_quota_change(quota_holder, priority, amount)
 
 	def get_quota(self, quota_holder, resource_id, building_id):
 		key = (resource_id, building_id)
@@ -79,9 +79,12 @@ class ResourceManager(WorldObject):
 		return result
 
 class SingleResourceManager(WorldObject):
+	epsilon = 1e-7 # epsilon for avoiding problems with miniscule values
+
 	def __init__(self, settlement_manager, resource_id, building_id):
 		super(SingleResourceManager, self).__init__()
 		self.__init(settlement_manager, resource_id, building_id)
+		self.low_priority = 0.0 # used resource production per tick assigned to low priority holders
 		self.available = 0.0 # unused resource production per tick
 		self.total = 0.0 # total resource production per tick
 
@@ -89,21 +92,22 @@ class SingleResourceManager(WorldObject):
 		self.settlement_manager = settlement_manager
 		self.resource_id = resource_id
 		self.building_id = building_id
-		self.quotas = {} # {quota_holder: amount, ...}
+		self.quotas = {} # {quota_holder: (amount, priority), ...}
 
 	def save(self, db, resource_manager_id):
-		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, available, total) VALUES(?, ?, ?, ?, ?, ?)", \
-			self.worldid, resource_manager_id, self.resource_id, self.building_id, self.available, self.total)
-		for identifier, quota in self.quotas.iteritems():
-			db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager, identifier, quota) VALUES(?, ?, ?)", self.worldid, identifier, quota)
+		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, low_priority, available, total) VALUES(?, ?, ?, ?, ?, ?, ?)", \
+			self.worldid, resource_manager_id, self.resource_id, self.building_id, self.low_priority, self.available, self.total)
+		for identifier, (quota, priority) in self.quotas.iteritems():
+			db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager, identifier, quota, priority) VALUES(?, ?, ?, ?)", self.worldid, identifier, quota, priority)
 
 	def _load(self, db, settlement_manager, worldid):
 		super(SingleResourceManager, self).load(db, worldid)
-		(resource_id, building_id, self.available, self.total) = db("SELECT resource_id, building_id, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
+		(resource_id, building_id, self.low_priority, self.available, self.total) = \
+			db("SELECT resource_id, building_id, low_priority, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
 		self.__init(settlement_manager, resource_id, building_id)
 
-		for (identifier, quota) in db("SELECT identifier, quota FROM ai_single_resource_manager_quota WHERE single_resource_manager = ?", worldid):
-			self.quotas[identifier] = quota
+		for (identifier, quota, priority) in db("SELECT identifier, quota, priority FROM ai_single_resource_manager_quota WHERE single_resource_manager = ?", worldid):
+			self.quotas[identifier] = (quota, priority)
 
 	@classmethod
 	def load(cls, db, settlement_manager, worldid):
@@ -129,47 +133,79 @@ class SingleResourceManager(WorldObject):
 		return total
 
 	def refresh(self):
-		currently_used = sum(self.quotas.itervalues())
+		currently_used = sum(zip(*self.quotas.itervalues())[0])
 		self.total = self._get_current_production()
-		if self.total >= currently_used:
+		if self.total + self.epsilon >= currently_used:
 			self.available = self.total - currently_used
 		else:
+			# unable to honour current quota assignments
 			self.available = 0.0
-			# unable to honour current quota assignments, decreasing all equally
-			multiplier = 0.0 if abs(self.total) < 1e-7 else self.total / currently_used
-			for quota_holder in self.quotas:
-				if self.quotas[quota_holder] > 1e-7:
-					self.quotas[quota_holder] *= multiplier
-				else:
-					self.quotas[quota_holder] = 0
+			if currently_used - self.total <= self.low_priority and self.low_priority > self.epsilon:
+				# the problem can be solved by reducing low priority quotas
+				new_low_priority = max(0.0, self.low_priority - (currently_used - self.total))
+				multiplier = 0.0 if new_low_priority < self.epsilon else new_low_priority / self.low_priority
+				assert 0.0 <= multiplier < 1.0
+				for quota_holder, (quota, priority) in self.quotas.iteritems():
+					if quota > self.epsilon and not priority:
+						self.quotas[quota_holder] = (quota * multiplier, priority)
+					elif not priority:
+						self.quotas[quota_holder] = (0.0, priority)
+				self.low_priority = new_low_priority
+			elif currently_used > self.total + self.epsilon:
+				# decreasing all high priority quotas equally, removing low priority quotas completely
+				multiplier = 0.0 if self.total < self.epsilon else self.total / (currently_used - self.low_priority)
+				assert 0.0 <= multiplier < 1.0
+				for quota_holder, (quota, priority) in self.quotas.iteritems():
+					if quota > self.epsilon and priority:
+						self.quotas[quota_holder] = (quota * multiplier, priority)
+					else:
+						self.quotas[quota_holder] = (0.0, priority)
+				self.low_priority = 0.0
 
 	def get_quota(self, quota_holder):
 		if quota_holder not in self.quotas:
-			self.quotas[quota_holder] = 0.0
-		return self.quotas[quota_holder]
+			self.quotas[quota_holder] = (0.0, False)
+		return self.quotas[quota_holder][0]
 
-	def request_quota_change(self, quota_holder, amount):
+	def request_quota_change(self, quota_holder, priority, amount):
 		if quota_holder not in self.quotas:
-			self.quotas[quota_holder] = 0.0
+			self.quotas[quota_holder] = (0.0, priority)
 		amount = max(amount, 0.0)
 
-		if abs(amount - self.quotas[quota_holder]) < 1e-7:
-			pass
-		elif amount < self.quotas[quota_holder]:
+		if abs(amount - self.quotas[quota_holder][0]) < self.epsilon:
+			pass # ignore miniscule change requests
+		elif amount < self.quotas[quota_holder][0]:
 			# lower the amount of reserved production
-			change = self.quotas[quota_holder] - amount
+			change = self.quotas[quota_holder][0] - amount
 			self.available += change
-			self.quotas[quota_holder] -= change
+			self.quotas[quota_holder] = (self.quotas[quota_holder][0] - change, priority)
+			if not priority:
+				self.low_priority -= change
 		else:
-			# raise the amount of reserved production
-			change = min(amount - self.quotas[quota_holder], self.available)
+			if priority and self.available < (amount - self.quotas[quota_holder][0]) and self.low_priority > self.epsilon:
+				# can't get the full requested amount but can get more by reusing some of the low priority quotas
+				new_low_priority = max(0.0, self.low_priority - (amount - self.quotas[quota_holder][0] - self.available))
+				multiplier = 0.0 if new_low_priority < self.epsilon else new_low_priority / self.low_priority
+				assert 0.0 <= multiplier < 1.0
+				for quota_holder, (quota, priority) in self.quotas.iteritems():
+					if quota > self.epsilon and not priority:
+						self.quotas[quota_holder] = (quota * multiplier, priority)
+					elif not priority:
+						self.quotas[quota_holder] = (0.0, priority)
+				self.available += self.low_priority - new_low_priority
+				self.low_priority = new_low_priority
+
+			# raise the amount of reserved production as much as possible
+			change = min(amount - self.quotas[quota_holder][0], self.available)
 			self.available -= change
-			self.quotas[quota_holder] += change
+			self.quotas[quota_holder] = (self.quotas[quota_holder][0] + change, priority)
+			if not priority:
+				self.low_priority += change
 
 	def __str__(self):
 		result = 'Resource %d production %.5f/%.5f' % (self.resource_id, self.available, self.total)
-		for quota_holder, quota in self.quotas.iteritems():
-			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)
+		for quota_holder, (quota, priority) in self.quotas.iteritems():
+			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)
 		return result
 
 decorators.bind_all(ResourceManager)

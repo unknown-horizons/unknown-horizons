@@ -195,7 +195,7 @@ class SingleResourceTradeManager(WorldObject):
 			if self.settlement_manager is not settlement_manager:
 				resource_manager = settlement_manager.resource_manager
 				for building_id in self.building_ids:
-					resource_manager.request_quota_change(self.identifier, self.resource_id, building_id, 100)
+					resource_manager.request_quota_change(self.identifier, False, self.resource_id, building_id, 100)
 					total += resource_manager.get_quota(self.identifier, self.resource_id, building_id)
 		return total
 
@@ -228,7 +228,7 @@ class SingleResourceTradeManager(WorldObject):
 		needed_amount = self.total - self.available
 		for amount, building_id, _, resource_manager, settlement_manager in options:
 			if amount > needed_amount:
-				resource_manager.request_quota_change(self.identifier, self.resource_id, building_id, needed_amount)
+				resource_manager.request_quota_change(self.identifier, False, self.resource_id, building_id, needed_amount)
 				#print resource_manager.data[(self.resource_id, building_id)]
 				self.partners[settlement_manager] = needed_amount
 				needed_amount = 0
