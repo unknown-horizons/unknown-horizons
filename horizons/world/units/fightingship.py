@@ -41,6 +41,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 
 	def go(self, x, y):
 		super(FightingShip, self).go(x, y)
+		self.stance = 'defensive'
 		self.stop_attack()
 
 	def fire_all_weapons(self, dest, rotate = True):
