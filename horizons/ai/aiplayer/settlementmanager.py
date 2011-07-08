@@ -63,14 +63,18 @@ class SettlementManager(WorldObject):
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 		self.village_built = False
 
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
-		self.set_taxes_and_permissions(0.5, 0.8, 0.5, False, False)
+		if self.feeder_island:
+			Scheduler().add_new_object(Callback(self.feeder_tick), self, run_in = 31)
+		else:
+			Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
+			self.set_taxes_and_permissions(0.5, 0.8, 0.5, False, False)
 
 	def __init(self, land_manager):
 		self.owner = land_manager.owner
 		self.land_manager = land_manager
 		self.island = self.land_manager.island
 		self.settlement = self.land_manager.settlement
+		self.feeder_island = land_manager.feeder_island
 
 		self.community_chain = ProductionChain.create(self, RES.COMMUNITY_ID)
 		self.boards_chain = ProductionChain.create(self, RES.BOARDS_ID)
@@ -128,7 +132,7 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 		self.num_fields = self.production_builder.count_fields()
-		self.village_built = not self.village_builder.tent_queue
+		self.village_built = False # TODO: actually save and load this
 
 	@property
 	def tents(self):
@@ -168,6 +172,8 @@ class SettlementManager(WorldObject):
 			return self.food_chain.get_final_production_level()
 		elif resource_id == RES.BRICKS_ID:
 			return self.bricks_chain.get_final_production_level()
+		elif resource_id == RES.BOARDS_ID:
+			return self.boards_chain.get_final_production_level()
 		return None
 
 	def get_resident_resource_usage(self, resource_id):
@@ -250,9 +256,9 @@ class SettlementManager(WorldObject):
 						return True
 		return upgraded_any
 
-	def build_chain(self, chain, name):
-		amount = self.get_resident_resource_usage(chain.resource_id)
-		result = chain.build(amount * 1.07)
+	def build_generic_chain(self, chain, name, amount):
+		""" build resources for another settlement """
+		result = chain.build(amount)
 		if result == BUILD_RESULT.NEED_RESOURCES:
 			self.need_materials = True
 		if result == BUILD_RESULT.ALL_BUILT:
@@ -260,9 +266,12 @@ class SettlementManager(WorldObject):
 		if result == BUILD_RESULT.SKIP:
 			return False # unable to build a building on purpose: build something else instead
 		self.log_generic_build_result(result, name)
-		self.village_builder.display()
 		self.production_builder.display()
 		return True
+
+	def build_chain(self, chain, name):
+		amount = self.get_resident_resource_usage(chain.resource_id) * 1.07
+		return self.build_generic_chain(chain, name, amount)
 
 	def reachable_deposit(self, building_id):
 		""" returns true if there is a resource deposit outside the settlement that is not owned by another player """
@@ -287,6 +296,17 @@ class SettlementManager(WorldObject):
 			if result is None or result > building.level:
 				result = building.level
 		return result
+
+	def get_total_missing_production(self, settlement_managers, resource_id):
+		total = 0.0
+		for settlement_manager in settlement_managers:
+			usage = settlement_manager.get_resident_resource_usage(resource_id)
+			production = settlement_manager.get_resource_production(resource_id)
+			total += max(0.0, usage - production)
+		return total
+
+	def feeder_tick(self):
+		Scheduler().add_new_object(Callback(self.feeder_tick), self, run_in = 32)
 
 	def tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
@@ -314,6 +334,8 @@ class SettlementManager(WorldObject):
 			pass
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
 			pass
+		elif self.owner.need_feeder_island(self) and not self.owner.have_feeder_island() and self.owner.can_found_feeder_island():
+			self.owner.found_feeder_island()
 		elif self.village_builder.tent_queue:
 			result = self.village_builder.build_tent()
 			self.log_generic_build_result(result, 'tent')

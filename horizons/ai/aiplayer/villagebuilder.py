@@ -37,7 +37,10 @@ class VillageBuilder(AreaBuilder):
 	def __init__(self, settlement_manager):
 		super(VillageBuilder, self).__init__(settlement_manager)
 		self.__init(settlement_manager)
-		self._create_plan()
+		if self.land_manager.feeder_island:
+			pass
+		else:
+			self._create_plan()
 
 	def __init(self, settlement_manager):
 		self.land_manager = settlement_manager.land_manager

@@ -28,6 +28,7 @@ from mission.preparefoundationship import PrepareFoundationShip
 from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
+from constants import BUILDING_PURPOSE
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
 from building import AbstractBuilding
@@ -70,10 +71,8 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
 
-	def choose_island(self, min_land):
+	def get_available_islands(self, min_land):
 		options = []
-		total_land = 0
-
 		for island in self.session.world.islands:
 			if island in self.islands:
 				continue
@@ -89,8 +88,11 @@ class AIPlayer(GenericAI):
 				flat_land += 1
 			if flat_land >= min_land:
 				options.append((flat_land, island))
-				total_land += flat_land
+		return options
 
+	def choose_island(self, min_land):
+		options = self.get_available_islands(min_land)
+		total_land = sum(zip(*options)[0])
 		if total_land == 0:
 			return None
 
@@ -113,6 +115,7 @@ class AIPlayer(GenericAI):
 		self.missions = set()
 		self.fishers = []
 		self.complete_inventory = CompleteInventory(self)
+		self._need_feeder_island = False
 
 	def report_success(self, mission, msg):
 		self.missions.remove(mission)
@@ -192,9 +195,9 @@ class AIPlayer(GenericAI):
 				mission_id = db("SELECT rowid FROM ai_mission_found_settlement WHERE land_manager = ?", land_manager.worldid)[0][0]
 				self.missions.add(FoundSettlement.load(db, mission_id, self.report_success, self.report_failure))
 
-	def found_settlement(self, island, ship):
+	def found_settlement(self, island, ship, feeder_island):
 		self.ships[ship] = self.shipStates.on_a_mission
-		land_manager = LandManager(island, self)
+		land_manager = LandManager(island, self, feeder_island)
 		land_manager.display()
 		self.islands[island] = land_manager
 
@@ -202,28 +205,33 @@ class AIPlayer(GenericAI):
 		self.missions.add(found_settlement)
 		found_settlement.start()
 
-	def have_starting_resources(self, ship, settlement):
-		if self.complete_inventory.money < 8000:
+	def _have_settlement_starting_resources(self, ship, settlement, min_money, min_resources):
+		if self.complete_inventory.money < min_money:
 			return False
 
-		need = {RES.BOARDS_ID: 17, RES.FOOD_ID: 10, RES.TOOLS_ID: 5}
 		for res, amount in ship.inventory:
-			if res in need and need[res] > 0:
-				need[res] = max(0, need[res] - amount)
+			if res in min_resources and min_resources[res] > 0:
+				min_resources[res] = max(0, min_resources[res] - amount)
 
 		if settlement:
 			for res, amount in settlement.inventory:
-				if res in need and need[res] > 0:
-					need[res] = max(0, need[res] - amount)
+				if res in min_resources and min_resources[res] > 0:
+					min_resources[res] = max(0, min_resources[res] - amount)
 
-		for missing in need.itervalues():
+		for missing in min_resources.itervalues():
 			if missing > 0:
 				return False
 		return True
 
-	def prepare_foundation_ship(self, settlement_manager, ship):
+	def have_starting_resources(self, ship, settlement):
+		return self._have_settlement_starting_resources(ship, settlement, 8000, {RES.BOARDS_ID: 17, RES.FOOD_ID: 10, RES.TOOLS_ID: 5})
+
+	def have_feeder_island_starting_resources(self, ship, settlement):
+		return self._have_settlement_starting_resources(ship, settlement, 4000, {RES.BOARDS_ID: 20, RES.TOOLS_ID: 10})
+
+	def prepare_foundation_ship(self, settlement_manager, ship, feeder_island):
 		self.ships[ship] = self.shipStates.on_a_mission
-		mission = PrepareFoundationShip(settlement_manager, ship, self.report_success, self.report_failure)
+		mission = PrepareFoundationShip(settlement_manager, ship, feeder_island, self.report_success, self.report_failure)
 		self.missions.add(mission)
 		mission.start()
 
@@ -246,17 +254,28 @@ class AIPlayer(GenericAI):
 			#self.log.info('%s.tick: no good enough islands', self)
 			return
 
-		if self.have_starting_resources(ship, None):
-			self.log.info('%s.tick: send ship %s on a mission to found a settlement', self, ship)
-			self.found_settlement(island, ship)
+		if self._need_feeder_island:
+			if self.have_feeder_island_starting_resources(ship, None):
+				self.log.info('%s.tick: send %s on a mission to found a feeder settlement', self, ship)
+				self.found_settlement(island, ship, True)
+			else:
+				for settlement_manager in self.settlement_managers:
+					if self.have_feeder_island_starting_resources(ship, settlement_manager.land_manager.settlement):
+						self.log.info('%s.tick: send ship %s on a mission to get resources for a new feeder settlement', self, ship)
+						self.prepare_foundation_ship(settlement_manager, ship, True)
+						return
 		else:
-			for settlement_manager in self.settlement_managers:
-				if not settlement_manager.can_provide_resources():
-					continue
-				if self.have_starting_resources(ship, settlement_manager.land_manager.settlement):
-					self.log.info('%s.tick: send ship %s on a mission to get resources for a new settlement', self, ship)
-					self.prepare_foundation_ship(settlement_manager, ship)
-					return
+			if self.have_starting_resources(ship, None):
+				self.log.info('%s.tick: send ship %s on a mission to found a settlement', self, ship)
+				self.found_settlement(island, ship, False)
+			else:
+				for settlement_manager in self.settlement_managers:
+					if not settlement_manager.can_provide_resources():
+						continue
+					if self.have_starting_resources(ship, settlement_manager.land_manager.settlement):
+						self.log.info('%s.tick: send ship %s on a mission to get resources for a new settlement', self, ship)
+						self.prepare_foundation_ship(settlement_manager, ship, False)
+						return
 
 	buy_sell_thresholds = {RES.FOOD_ID: (20, 40), RES.BOARDS_ID: (20, 30), RES.TOOLS_ID: (20, 40)}
 
@@ -279,6 +298,28 @@ class AIPlayer(GenericAI):
 					RemoveFromBuyList(settlement, res).execute(self.session)
 				elif res in settlement.sell_list:
 					RemoveFromSellList(settlement, res).execute(self.session)
+
+	@classmethod
+	def need_feeder_island(cls, settlement_manager):
+		free_area = 0
+		for purpose in zip(*settlement_manager.production_builder.plan.itervalues())[0]:
+			if purpose == BUILDING_PURPOSE.NONE:
+				free_area += 1
+		island_area = len(settlement_manager.land_manager.village) + len(settlement_manager.land_manager.production)
+		return free_area < island_area * 0.3 or free_area < 50
+
+	def have_feeder_island(self):
+		for settlement_manager in self.settlement_managers:
+			if not self.need_feeder_island(settlement_manager):
+				return True
+		return False
+
+	def can_found_feeder_island(self):
+		islands = self.get_available_islands(400)
+		return len(islands) > 0
+
+	def found_feeder_island(self):
+		self._need_feeder_island = True
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s ship blocked (%s)", self, unit)

@@ -34,10 +34,13 @@ class LandManager(WorldObject):
 		production = 0
 		village = 1
 
-	def __init__(self, island, owner):
+	def __init__(self, island, owner, feeder_island):
 		super(LandManager, self).__init__()
-		self.__init(island, owner)
-		self._divide_island()
+		self.__init(island, owner, feeder_island)
+		if self.feeder_island:
+			self._prepare_feeder_island()
+		else:
+			self._divide_island()
 
 	def _divide_island(self):
 		min_side = 18
@@ -73,6 +76,7 @@ class LandManager(WorldObject):
 			village_area = 0.32
 		elif land > 60 * 60:
 			village_area = 0.35
+		village_area *= 2.5
 		chosen_area = max(9 * 9, int(round(land * village_area)))
 
 		side = int(math.floor(math.sqrt(chosen_area)))
@@ -96,10 +100,11 @@ class LandManager(WorldObject):
 					best_side2 = real_side2
 			self._divide(best_side1, best_side2)
 
-	def __init(self, island, owner):
+	def __init(self, island, owner, feeder_island):
 		self.island = island
 		self.settlement = None
 		self.owner = owner
+		self.feeder_island = feeder_island
 		self.session = self.island.session
 		self.production = {}
 		self.village = {}
@@ -237,6 +242,13 @@ class LandManager(WorldObject):
 
 		for coords, tile in self.island.ground_map.iteritems():
 			if coords not in self.village and self._coords_usable(coords):
+				self.production[coords] = tile
+
+	def _prepare_feeder_island(self):
+		self.production = {}
+		self.village = {}
+		for coords, tile in self.island.ground_map.iteritems():
+			if self._coords_usable(coords):
 				self.production[coords] = tile
 
 	def add_to_production(self, coords):
