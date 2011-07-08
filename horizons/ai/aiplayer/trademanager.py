@@ -124,7 +124,11 @@ class TradeManager(WorldObject):
 				total_amount[settlement_manager] += amount
 		options = [(amount, settlement_manager.worldid, settlement_manager) for settlement_manager, amount in total_amount.iteritems()]
 		options.sort(reverse = True)
-		return options[0][2] if options else None
+		if not options:
+			return None
+		if options[0][0] < 1e-7:
+			return None
+		return options[0][2]
 
 	def organize_shipping(self):
 		source_settlement_manager = self._get_source_settlement_manager()
