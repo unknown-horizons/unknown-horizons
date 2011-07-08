@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-08 18:50+0200\n"
+"PO-Revision-Date: 2011-07-08 18:59+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -516,79 +516,81 @@ msgid "feature"
 msgstr "возможность / функция"
 
 msgid "reached"
-msgstr ""
+msgstr "достигнутый"
 
 msgid "slider"
 msgstr "слайдер / ползунок"
 
 msgid "condition"
-msgstr ""
+msgstr "условие"
 
 msgid "consume"
-msgstr ""
+msgstr "потреблять"
 
 msgid "contact"
-msgstr ""
+msgstr "контакт / контактировать"
 
 msgid "dialogue"
-msgstr ""
+msgstr "диалог"
 
 msgid "issues"
-msgstr ""
+msgstr "проблемы"
 
 msgid "minimap"
 msgstr "миникарта"
 
 msgid "playing"
-msgstr ""
+msgstr "играя"
 
+# 75%
 msgid "ruin"
-msgstr ""
+msgstr "руины / разрушать"
 
 msgid "seed"
-msgstr ""
+msgstr "семя / сеять"
 
 msgid "temporarily"
-msgstr ""
+msgstr "временно"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "солёные озёра"
 
 msgid "tobacco"
-msgstr ""
+msgstr "табак"
 
 msgid "cattle"
-msgstr ""
+msgstr "скот"
 
 msgid "pig"
-msgstr ""
+msgstr "свинья"
 
 msgid "herbs"
-msgstr ""
+msgstr "травы"
 
 msgid "herbary"
-msgstr ""
+msgstr "сад трав"
 
 msgid "butchery"
-msgstr ""
+msgstr "скотобойня"
 
 msgid "doctor"
-msgstr ""
+msgstr "врач"
 
 msgid "education"
-msgstr ""
+msgstr "образование"
 
+# 75%
 msgid "clay"
-msgstr ""
+msgstr "глина"
 
 msgid "charcoal"
-msgstr ""
+msgstr "уголь"
 
 msgid "iron"
-msgstr ""
+msgstr "железо"
 
 msgid "ore"
-msgstr ""
+msgstr "руда"
 
 #~ msgid "lamb"
 #~ msgstr "овца"

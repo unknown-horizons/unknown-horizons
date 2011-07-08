@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-08 18:45+0200\n"
+"PO-Revision-Date: 2011-07-08 19:40+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -37,7 +37,7 @@ msgstr "Это удалит все изменения настроек, сдел
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Вы хотите продолжить?"
 
 #: horizons/engine.py:135
 msgid "System default"
@@ -381,7 +381,7 @@ msgstr "Подтвердить приказ"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Создать связанные поля"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -577,11 +577,11 @@ msgstr "Здания поселенцев"
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Бойня: нуждается в свиньях или скоте. Производит пищу."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Выгон скота: разводит скот. Нуждается в ферме."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
@@ -589,23 +589,24 @@ msgstr "Костёр для углежжения: Сжигает большое 
 
 #: horizons/i18n/guitranslations.py:81
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Врач: лечит болезни. Расходует травы."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr ""
+msgstr "Сад трав: производит травы. Нуждается в ферме."
 
 #: horizons/i18n/guitranslations.py:83
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr "Железный рудник: Добывает железную руду из месторождения."
+msgstr "Железный рудник: добывает железную руду из месторождения."
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Свинарник: разводит свиней. Нуждается в ферме."
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
 msgstr ""
+"Солёные озера: выпаривают соль. Должны быть расположены на морском берегу."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Smeltery: Refines all kind of ores."
@@ -617,11 +618,11 @@ msgstr "Таверна: Предоставляет место для встре�
 
 #: horizons/i18n/guitranslations.py:88
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Табачное поле: Производит сырьё для табака. Нуждается в ферме."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Табачная лавка: производит табак из табачного сырья."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."
@@ -781,19 +782,19 @@ msgstr "Читать следующую запись"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Доступные сценарии"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Scenario description"
-msgstr ""
+msgstr "Описание сценария"
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr ""
+msgstr "Продолжить игру"
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Выбрать этот сценарий"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "Exit"
@@ -805,11 +806,11 @@ msgstr "Добавить в список"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "Leave production overview"
-msgstr ""
+msgstr "Покинуть обзор производства"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "Refresh data"
-msgstr ""
+msgstr "Обновить данные"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "Delete entry"
@@ -1140,13 +1141,12 @@ msgstr "Пожалуйста, убедитесь, что вы знаете, чт
 
 # 83%
 #: horizons/i18n/guitranslations.py:260
-#, fuzzy
 msgid "Apply"
-msgstr "Применить:"
+msgstr "Применить"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Восстановить настройки по умолчанию"
 
 #: horizons/i18n/guitranslations.py:264
 msgid "Enter filename:"
@@ -1163,7 +1163,7 @@ msgstr "Начать игру"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Удалить выбранную сохранённую игру"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Choose a map to play:"
@@ -1299,11 +1299,11 @@ msgstr "Налог"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Показать ресурсы, произведённые в данном поселении"
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
-msgstr ""
+msgstr "Строить поля"
 
 #: horizons/i18n/guitranslations.py:322
 msgid "Average happiness:"
@@ -1489,15 +1489,15 @@ msgstr "Ошибка: Не найдена кампания с файлом \"%s\
 
 # 81%
 #: horizons/savegamemanager.py:416
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr "Ошибка: Не найдено сохранение \"%s\"."
+msgstr "Ошибка: Не найден сценарий \"%s\"."
 
 # 83%
 #: horizons/savegamemanager.py:421
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr "Ошибка: Не найдена кампания с файлом \"%s\"."
+msgstr "Ошибка: Не найден сценарий с файлом \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1523,7 +1523,7 @@ msgstr ""
 
 #: horizons/spsession.py:123
 msgid "If this error happens again, please contact the development team:"
-msgstr ""
+msgstr "Если эта ошибка повторится, пожалуйста свяжитесь с разработчиками:"
 
 #: horizons/spsession.py:131
 msgid "No quicksaves found"
@@ -1694,11 +1694,11 @@ msgstr "Кирпичный завод"
 
 #: sqlite/Building
 msgid "Butchery"
-msgstr ""
+msgstr "Бойня"
 
 #: sqlite/Building
 msgid "Cattle Run"
-msgstr ""
+msgstr "Выгон скота"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
@@ -1718,7 +1718,7 @@ msgstr "Винокуренный завод"
 
 #: sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Врач"
 
 #: sqlite/Building
 msgid "Farm"
@@ -1734,7 +1734,7 @@ msgstr "Палатка рыбака"
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr ""
+msgstr "Сад трав"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -1774,7 +1774,7 @@ msgstr "Павильон"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Свинарник"
 
 #: sqlite/Building
 msgid "Potato Field"
@@ -1786,7 +1786,7 @@ msgstr "Защитный вал"
 
 #: sqlite/Building
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Солёные озёра"
 
 #: sqlite/Building
 msgid "Signal Fire"
@@ -1821,11 +1821,11 @@ msgstr "Разрушенный шатёр"
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Табачное поле"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr ""
+msgstr "Табачная лавка"
 
 #: sqlite/Building
 msgid "Toolmaker"
@@ -1917,7 +1917,7 @@ msgstr "Ваши поселенцы достигли ${level} уровня."
 
 #: sqlite/Resources
 msgid "acorns"
-msgstr ""
+msgstr "жёлуди"
 
 #: sqlite/Resources
 msgid "boards"
@@ -1929,11 +1929,11 @@ msgstr "кирпич"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr ""
+msgstr "скот"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "скот на убой"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1953,11 +1953,11 @@ msgstr "общество"
 
 #: sqlite/Resources
 msgid "deer food A"
-msgstr ""
+msgstr "еда оленя A"
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "мясо оленя"
 
 #: sqlite/Resources
 msgid "education"
@@ -1990,7 +1990,7 @@ msgstr "удовлетворение"
 
 #: sqlite/Resources
 msgid "herbs"
-msgstr ""
+msgstr "травы"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -2010,11 +2010,11 @@ msgstr "алкоголь"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "свиньи"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "свиньи для бойни"
 
 #: sqlite/Resources
 msgid "potatoes"
@@ -2026,7 +2026,7 @@ msgstr "необработанная глина"
 
 #: sqlite/Resources
 msgid "raw herbs"
-msgstr ""
+msgstr "пучки трав"
 
 #: sqlite/Resources
 msgid "raw iron"
@@ -2038,11 +2038,11 @@ msgstr "сахарный тростник"
 
 #: sqlite/Resources
 msgid "raw tobacco"
-msgstr ""
+msgstr "табак-сырец"
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "соль"
 
 #: sqlite/Resources
 msgid "sugar"
@@ -2054,11 +2054,11 @@ msgstr "ткань"
 
 #: sqlite/Resources
 msgid "tobacco"
-msgstr ""
+msgstr "табак"
 
 #: sqlite/Resources
 msgid "tobaccos"
-msgstr ""
+msgstr "табачные изделия"
 
 #: sqlite/Resources
 msgid "tools"
@@ -2074,15 +2074,15 @@ msgstr "шерсть"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "аристократ"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "горожанин"
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "торговец"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"

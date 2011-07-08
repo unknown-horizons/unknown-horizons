@@ -1128,9 +1128,11 @@ msgstr "Gjeldende renderer:"
 msgid "Please make sure that you know what you do."
 msgstr "Vær sikker på at du vet hva du gjør."
 
+# 83%
 #: horizons/i18n/guitranslations.py:260
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Utfør:"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
@@ -1469,15 +1471,18 @@ msgstr ""
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Feil: Kan ikke finne kart \"%s\"."
 
+# 81%
+# 76%
 #: horizons/savegamemanager.py:398
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr ""
+msgstr "Feil: Kan ikke finne kart \"%s\"."
 
+# 81%
 #: horizons/savegamemanager.py:416
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr ""
+msgstr "Feil: Finner ikke lagret spill \"%s\"."
 
 #: horizons/savegamemanager.py:421
 #, python-format
@@ -1790,9 +1795,11 @@ msgstr ""
 msgid "Tent"
 msgstr "Telt"
 
+# 77%
 #: sqlite/Building
+#, fuzzy
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Telt_ruin"
 
 #: sqlite/Building
 msgid "Tobacco Field"
