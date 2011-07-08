@@ -25,7 +25,7 @@ from building import AbstractBuilding
 from constants import BUILD_RESULT
 
 from horizons.entities import Entities
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, RES
 from horizons.command.building import Build
 from horizons.util.python import decorators
 from horizons.util import Point, Rect, WorldObject
@@ -276,6 +276,9 @@ class ProductionChainSubtree:
 				return result # error
 
 		if result == BUILD_RESULT.NEED_PARENT_FIRST or self.need_more_buildings(amount):
+			if self.resource_id == RES.FOOD_ID and not self.settlement_manager.feeder_island and len(self.settlement_manager.owner.settlement_managers) > 1:
+				return BUILD_RESULT.ALL_BUILT # hack to force food to be produced on a feeder island
+
 			# build a building and then request quota change
 			(result, building) = self.abstract_building.build(self.settlement_manager, self.resource_id)
 			if result == BUILD_RESULT.OK:

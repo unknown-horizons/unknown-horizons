@@ -124,6 +124,8 @@ class AIPlayer(GenericAI):
 		if isinstance(mission, FoundSettlement):
 			settlement_manager = SettlementManager(self, mission.land_manager)
 			self.settlement_managers.append(settlement_manager)
+			if settlement_manager.feeder_island:
+				self._need_feeder_island = False
 
 	def report_failure(self, mission, msg):
 		self.missions.remove(mission)

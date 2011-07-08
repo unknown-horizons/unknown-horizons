@@ -307,6 +307,20 @@ class SettlementManager(WorldObject):
 
 	def feeder_tick(self):
 		Scheduler().add_new_object(Callback(self.feeder_tick), self, run_in = 32)
+		self.manage_production()
+		self.resource_manager.refresh()
+
+		if self.build_chain(self.boards_chain, 'boards producer'):
+			return
+
+		settlement_managers = []
+		for settlement_manager in self.owner.settlement_managers:
+			if not settlement_manager.feeder_island:
+				settlement_managers.append(settlement_manager)
+
+		needed_food = self.get_total_missing_production(settlement_managers, RES.FOOD_ID)
+		if needed_food > 0 and self.build_generic_chain(self.food_chain, 'food producer', needed_food):
+			return
 
 	def tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
