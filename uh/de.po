@@ -1335,7 +1335,7 @@ msgstr "Steuern:"
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
 msgid "Tax rate"
-msgstr ""
+msgstr "Steuerrate"
 
 #: horizons/i18n/guitranslations.py:336
 msgid "capacity utilization"
@@ -1838,7 +1838,7 @@ msgstr "Zelt"
 
 #: sqlite/Building
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Verlassenes Zelt"
 
 #: sqlite/Building
 msgid "Tobacco Field"
