@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-05 14:40+0200\n"
+"POT-Creation-Date: 2011-07-08 16:54+0200\n"
 "PO-Revision-Date: 2011-06-25 14:43+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,18 +11,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
 # (poterminology) uh/unknownhorizons.pot (10)
 #
 # I added 'installer' cause in my opinion, you cannot build a weaver...french will understand that
-#. set translated building name in gui
-#: po/tutorial.py
-#: horizons/gui/mousetools/buildingtool.py
-#: sqlite/Messages
-#: horizons/i18n/guitranslations.py
 msgid "build"
 msgstr "construire, installer"
 
@@ -30,11 +25,6 @@ msgstr "construire, installer"
 #
 # (poterminology) uh/unknownhorizons.pot (37)
 #
-#: horizons/gui/ingamegui.py
-#: horizons/gui/modules/multiplayermenu.py
-#: sqlite/Messages
-#: horizons/mpsession.py
-#: %28poterminology%29+4+more+locations
 msgid "game"
 msgstr "jeu"
 
@@ -42,10 +32,6 @@ msgstr "jeu"
 #
 # (poterminology) uh/unknownhorizons.pot (12)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
 msgid "building"
 msgstr "bâtiment"
 
@@ -53,9 +39,6 @@ msgstr "bâtiment"
 #
 # (poterminology) uh/unknownhorizons.pot (6)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "tent"
 msgstr "tente"
 
@@ -63,10 +46,6 @@ msgstr "tente"
 #
 # (poterminology) uh/unknownhorizons.pot (14)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Messages
-#: horizons/gui/tabs/boatbuildertab.py
 msgid "resource"
 msgstr "resources"
 
@@ -82,11 +61,43 @@ msgstr "resources"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Building
 msgid "branch office"
 msgstr "comptoir"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "your"
+msgstr "votre"
+
+# (poterminology) uh-tutorial/tutorial.pot (19)
+#
+# (poterminology) uh/unknownhorizons.pot (5)
+#
+msgid "farm"
+msgstr "ferme"
+
+# (poterminology) uh-tutorial/tutorial.pot (13)
+#
+# (poterminology) uh/unknownhorizons.pot (6)
+#
+#
+#
+#
+#
+#
+#
+#
+#
+msgid "field"
+msgstr "champ"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -100,11 +111,6 @@ msgstr "comptoir"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/gui/tabs/marketplacetabs.py
-#: horizons/gui/tabs/overviewtab.py
-#: horizons/i18n/guitranslations.py
-#: %28poterminology%29+1+more+locations
 msgid "overview"
 msgstr "sommaire"
 
@@ -112,11 +118,6 @@ msgstr "sommaire"
 #
 # (poterminology) uh/unknownhorizons.pot (9)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-#: horizons/gui/tabs/boatbuildertab.py
-#: %28poterminology%29+1+more+locations
 msgid "ship"
 msgstr "navire"
 
@@ -124,75 +125,8 @@ msgstr "navire"
 #
 # (poterminology) uh/unknownhorizons.pot (5)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: run_uh.py
 msgid "main"
 msgstr "principale"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (10)
-#
-#: horizons/constants.py
-#: horizons/scenario/scenarioeventhandler.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-#: %28poterminology%29+3+more+locations
-msgid "unknown"
-msgstr "inconnue"
-
-# (poterminology) uh-tutorial/tutorial.pot (19)
-#
-# (poterminology) uh/unknownhorizons.pot (5)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "farm"
-msgstr "ferme"
-
-# (poterminology) uh-tutorial/tutorial.pot (12)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/SettlerLevel
-msgid "sailor"
-msgstr "marin"
-
-# (poterminology) uh-tutorial/tutorial.pot (12)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "inhabitants"
-msgstr "habitants"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (10)
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py
-#: horizons/main.py
-#: po/tutorial.py
-#: %28poterminology%29+2+more+locations
-msgid "map"
-msgstr "carte"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 #
@@ -206,9 +140,6 @@ msgstr "carte"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Messages
 msgid "settlement"
 msgstr "colonie"
 
@@ -222,37 +153,67 @@ msgstr "colonie"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
 msgid "start"
 msgstr "début / débuter"
+
+# (poterminology) uh-tutorial/tutorial.pot (8)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+# Noun or verb?
+msgid "click"
+msgstr "cliquer / clic"
+
+# (poterminology) uh-tutorial/tutorial.pot (12)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+msgid "inhabitants"
+msgstr "habitants"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (10)
+#
+#
+#
+#
+#
+#
+#
+#
+#
+msgid "map"
+msgstr "carte"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (8)
+#
+msgid "menu"
+msgstr "menu"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+msgid "production"
+msgstr "production"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # (poterminology) uh/unknownhorizons.pot (1)
 # I think that tab is not the good word in some case, i had here some other words i used in the tuto translation, seblabel
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "tab"
 msgstr "onglet / fenêtre / panneau"
 
-# (poterminology) uh-tutorial/tutorial.pot (13)
+# (poterminology) uh-tutorial/tutorial.pot (3)
 #
-# (poterminology) uh/unknownhorizons.pot (6)
+# (poterminology) uh/unknownhorizons.pot (10)
 #
-#
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "field"
-msgstr "champ"
+msgid "unknown"
+msgstr "inconnue"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -266,9 +227,6 @@ msgstr "champ"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
 msgid "food"
 msgstr "nourriture"
 
@@ -284,67 +242,48 @@ msgstr "nourriture"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/gui/tabs/buildtabs.py
 msgid "increment"
 msgstr "niveau"
 
-#: po/tutorial.py
-#: horizons/gui/
-msgid "minimap"
-msgstr "mini-carte"
-
-#: po/tutorial.py
-#: horizons/gui/
-msgid "running costs"
-msgstr "coûts de fonctionnement"
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+#
+#
+#
+#
+msgid "select"
+msgstr "sélectionner / choisir"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
-# (poterminology) uh/unknownhorizons.pot (8)
+# (poterminology) uh/unknownhorizons.pot (2)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "menu"
-msgstr "menu"
+#
+#
+#
+#
+#
+#
+msgid "setting"
+msgstr "préférence"
 
-# (poterminology) uh-tutorial/tutorial.pot (9)
+# (poterminology) uh-tutorial/tutorial.pot (13)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+msgid "time"
+msgstr "temps"
+
+# (poterminology) uh-tutorial/tutorial.pot (8)
 #
 # (poterminology) uh/unknownhorizons.pot (4)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "produce"
-msgstr "produire"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-msgid "production"
-msgstr "production"
-
-# (poterminology) uh-tutorial/tutorial.pot (6)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "boards"
-msgstr "planches"
+msgid "trade"
+msgstr "commerce"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -358,92 +297,42 @@ msgstr "planches"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/mpsession.py
 msgid "change"
 msgstr "changer"
 
-# (poterminology) uh-tutorial/tutorial.pot (8)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-# Noun or verb?
-#: horizons/gui/ingamegui.py
-#: horizons/i18n/guitranslations.py
-#: po/tutorial.py
-msgid "click"
-msgstr "cliquer / clic"
-
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "main square"
 msgstr "place principale"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (6)
-#
-#: horizons/gui/tabs/marketplacetabs.py
-#: sqlite/SettlerLevel
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "settler"
-msgstr "colon"
-
-# (poterminology) uh-tutorial/tutorial.pot (13)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "time"
-msgstr "temps"
-
-# (poterminology) uh-tutorial/tutorial.pot (8)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/buyselltab.py
-#: horizons/gui/tabs/boatbuildertab.py
-msgid "trade"
-msgstr "commerce"
-
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "trail"
 msgstr "sentier"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh-tutorial/tutorial.pot (6)
 #
-# (poterminology) uh/unknownhorizons.pot (11)
+# (poterminology) uh/unknownhorizons.pot (4)
 #
-#: horizons/constants.py
-#: po/tutorial.py
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py
-#: %28poterminology%29+1+more+locations
-msgid "version"
-msgstr "version"
+#
+#
+#
+#
+#
+#
+#
+#
+msgid "boards"
+msgstr "planches"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 #
 # (poterminology) uh/unknownhorizons.pot (4)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "buy"
 msgstr "acheter"
 
@@ -451,81 +340,26 @@ msgstr "acheter"
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/gui/modules/multiplayermenu.py
-msgid "connect"
-msgstr "connecter"
-
-# (poterminology) uh-tutorial/tutorial.pot (11)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-# Woodcutter will be translated by bucheron. Lumberjack is difficult to translate because it is not just cutting trees...
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "lumberjack"
-msgstr "camp de bucheron"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sell"
-msgstr "vendre"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "taxes"
-msgstr "taxes"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "wool"
-msgstr "laine"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "coast"
 msgstr "côte"
 
-# (poterminology) uh-tutorial/tutorial.pot (8)
+# (poterminology) uh-tutorial/tutorial.pot (7)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "companies"
-msgstr "entreprises"
+#
+#
+#
+#
+#
+#
+msgid "connect"
+msgstr "connecter"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "cost"
 msgstr "coût"
 
@@ -539,25 +373,8 @@ msgstr "coût"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "free"
 msgstr "libre"
-
-# (poterminology) uh-tutorial/tutorial.pot (5)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "left"
-msgstr "gauche"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -569,66 +386,36 @@ msgstr "gauche"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: run_uh.py
 msgid "log"
 msgstr "journal de bord"
 
-# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh-tutorial/tutorial.pot (11)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
 #
+# Woodcutter will be translated by bucheron. Lumberjack is difficult to translate because it is not just cutting trees...
 #
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "reach"
-msgstr "atteindre"
+msgid "lumberjack"
+msgstr "camp de bucheron"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh-tutorial/tutorial.pot (7)
 #
 # (poterminology) uh/unknownhorizons.pot (4)
 #
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "select"
-msgstr "sélectionner / choisir"
-
-# (poterminology) uh-tutorial/tutorial.pot (9)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "stock"
-msgstr "stock"
+msgid "sell"
+msgstr "vendre"
 
 # (poterminology) uh-tutorial/tutorial.pot (11)
 # (poterminology) uh/unknownhorizons.pot (2)
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "storage"
 msgstr "dépôt / entrepôt"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+msgid "taxes"
+msgstr "taxes"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -640,26 +427,22 @@ msgstr "dépôt / entrepôt"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/world/units/ship.py
 msgid "trader"
 msgstr "commerçant / marchand"
 
-# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (11)
+#
+msgid "version"
+msgstr "version"
+
+# (poterminology) uh-tutorial/tutorial.pot (8)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "balance"
-msgstr "bilan"
+msgid "companies"
+msgstr "entreprises"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -671,9 +454,6 @@ msgstr "bilan"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "fire"
 msgstr "feu"
 
@@ -687,9 +467,107 @@ msgstr "feu"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/boatbuildertab.py
+msgid "left"
+msgstr "gauche"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "reach"
+msgstr "atteindre"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#
+#
+#
+#
+msgid "signal"
+msgstr "signaler / le signal"
+
+msgid "signal fire"
+msgstr "feu de signalisation"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "stock"
+msgstr "stock"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#
+#
+#
+#
+msgid "tools"
+msgstr "outils"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+msgid "wool"
+msgstr "laine"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "balance"
+msgstr "bilan"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "choose"
+msgstr "choisir"
+
+# (poterminology) uh-tutorial/tutorial.pot (5)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
 msgid "fisher"
 msgstr "pêcheur"
 
@@ -703,109 +581,14 @@ msgstr "pêcheur"
 #
 #
 #
-#: horizons/spsession.py
-#: po/tutorial.py
-#: run_uh.py
-#: horizons/main.py
 msgid "found"
 msgstr "trouvé"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (2)
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "pavilion"
 msgstr "pavillon"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "signal"
-msgstr "signaler / le signal"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "signal fire"
-msgstr "feu de signalisation"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "slider"
-msgstr "régleur"
-
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "tools"
-msgstr "outils"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "active"
-msgstr "actif"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "choose"
-msgstr "choisir"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "collector"
-msgstr "collecteur"
-
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -816,80 +599,6 @@ msgstr "collecteur"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "help"
-msgstr "aide"
-
-# (poterminology) uh-tutorial/tutorial.pot (5)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "house"
-msgstr "maison"
-
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "level"
-msgstr "niveau"
-
-# (poterminology) uh-tutorial/tutorial.pot (6)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "pasture"
-msgstr "pré"
-
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/SettlerLevel
-msgid "pioneer"
-msgstr "pionnier"
-
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "potato"
 msgstr "pomme de terre"
 
@@ -903,10 +612,23 @@ msgstr "pomme de terre"
 #
 #
 #
-#: po/tutorial.py
-#: sqlite/Messages
 msgid "range"
 msgstr "rayon d'action"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#
+#
+#
+#
+msgid "raw"
+msgstr "brut"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -918,13 +640,26 @@ msgstr "rayon d'action"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
 msgid "running"
 msgstr "actif / en service"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
+msgid "running costs"
+msgstr "coûts de fonctionnement"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "collector"
+msgstr "collecteur"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
 #
@@ -934,11 +669,85 @@ msgstr "actif / en service"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "setting"
-msgstr "préférence"
+msgid "help"
+msgstr "aide"
+
+# (poterminology) uh-tutorial/tutorial.pot (5)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "house"
+msgstr "maison"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "inventory"
+msgstr "inventaire / cargaison / stock"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "level"
+msgstr "niveau"
+
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+msgid "move"
+msgstr "déplacer / déménager"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "moved"
+msgstr "déplacé / déménagé"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+msgid "produce"
+msgstr "produire"
+
+msgid "produced"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+msgid "pasture"
+msgstr "pré"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -950,8 +759,6 @@ msgstr "préférence"
 #
 #
 #
-#: po/tutorial.py
-#: sqlite/Building
 msgid "storage tent"
 msgstr "tente de stockage / entrepôt"
 
@@ -965,10 +772,6 @@ msgstr "tente de stockage / entrepôt"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: sqlite/Resources
 msgid "sugar"
 msgstr "sucre"
 
@@ -982,14 +785,24 @@ msgstr "sucre"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "tree"
 msgstr "arbre"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#
+#
+#
+#
+msgid "active"
+msgstr "actif"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
 # (poterminology) uh/unknownhorizons.pot (1)
 #
 #
@@ -998,29 +811,11 @@ msgstr "arbre"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "add"
 msgstr "ajouter"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "animal"
-msgstr "animal"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
 #
 #
@@ -1029,253 +824,8 @@ msgstr "animal"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "build menu"
 msgstr "menu de construction"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "Captain's log"
-msgstr "Journal de bord"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "construction"
-msgstr "construction"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "decrease"
-msgstr "baisser"
-
-# (poterminology) uh-tutorial/tutorial.pot (4)
-# (poterminology) uh/unknownhorizons.pot (1)
-# In the tutorial context, i often used 'bateau marchand' which can be translated in trading-ship.
-# Why not "marchand indépendant" ?
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "free trader"
-msgstr "marchand indépendant"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-# (poterminology) uh/unknownhorizons.pot (3)
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "happiness"
-msgstr "satisfaction / contentement"
-
-# (poterminology) uh-tutorial/tutorial.pot (6)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "hunter"
-msgstr "chasseur"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/inventorytab.py
-msgid "inventory"
-msgstr "inventaire / cargaison / stock"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-# (poterminology) uh/unknownhorizons.pot (2)
-# Here all is about wool, so it's better to use 'mouton', i had a talk about that with eoc. Lamb will certainly disappeared from UH glossary
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "lamb"
-msgstr "mouton / agneau"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "liquor"
-msgstr "liqueur / alcool"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: sqlite/Resources
-msgid "raw"
-msgstr "brut"
-
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "residents"
-msgstr "habitants"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-# (poterminology) uh/unknownhorizons.pot (1)
-#: po/tutorial.py
-#: horizons/gui/widgets/inventory.py
-msgid "slot"
-msgstr "emplacement"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "stop"
-msgstr "arrêter / l'arrêt"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "village"
-msgstr "village"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "your"
-msgstr "votre"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/gui/tabs/marketplacetabs.py
-#: horizons/i18n/guitranslations.py
-msgid "account"
-msgstr "compte / fincances / bilan"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "back"
-msgstr "retour"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "build settlement"
-msgstr "ériger une colonie"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1289,10 +839,179 @@ msgstr "ériger une colonie"
 #
 # (poterminology) uh/unknownhorizons.pot (10)
 # 80%
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "built"
 msgstr "construit / érigé"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+msgid "construction"
+msgstr "construction"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "continue"
+msgstr "continuer"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+msgid "decrease"
+msgstr "baisser"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (1)
+# In the tutorial context, i often used 'bateau marchand' which can be translated in trading-ship.
+# Why not "marchand indépendant" ?
+msgid "free trader"
+msgstr "marchand indépendant"
+
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "hunter"
+msgstr "chasseur"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "leave"
+msgstr "quitter / partir"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "market"
+msgstr "marché"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "partner"
+msgstr "partenaire"
+
+# (poterminology) uh-tutorial/tutorial.pot (12)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+msgid "sailor"
+msgstr "marin"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "pioneer"
+msgstr "pionnier"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (6)
+#
+msgid "settler"
+msgstr "colon"
+
+msgid "citizen"
+msgstr ""
+
+msgid "merchant"
+msgstr ""
+
+msgid "aristocrat"
+msgstr ""
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "refresh"
+msgstr "actualiser / rafraîchir"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "residents"
+msgstr "habitants"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+# Of course, here is all about context cause run can also be translated by 'courir' (using legs for running !)
+msgid "run"
+msgstr "rouler / exploiter"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh/unknownhorizons.pot (1)
+msgid "slot"
+msgstr "emplacement"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1304,43 +1023,119 @@ msgstr "construit / érigé"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+msgid "stop"
+msgstr "arrêter / l'arrêt"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "team"
+msgstr "équipe"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "village"
+msgstr "village"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "account"
+msgstr "compte / fincances / bilan"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "back"
+msgstr "retour"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+msgid "build settlement"
+msgstr "ériger une colonie"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#
+#
+#
+#
+msgid "Captain's log"
+msgstr "Journal de bord"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
 msgid "cloth"
 msgstr "tissu / toile / habits"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "feature"
-msgstr "fonction"
+msgid "description"
+msgstr "description"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: sqlite/Resources
-#: sqlite/Building
-msgid "fish"
-msgstr "poisson"
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (3)
+msgid "happiness"
+msgstr "satisfaction / contentement"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1352,26 +1147,14 @@ msgstr "poisson"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "increase"
 msgstr "augmenter"
 
-# 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (2)
-# see lamb. wool come from sheep, lambs give meat
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "lamb wool"
-msgstr "laine de mouton"
-
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
-# (poterminology) uh/unknownhorizons.pot (2)
+# (poterminology) uh/unknownhorizons.pot (3)
 #
 #
 #
@@ -1379,46 +1162,8 @@ msgstr "laine de mouton"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "leave"
-msgstr "quitter / partir"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "market"
-msgstr "marché"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "market place"
-msgstr "place du marché"
+msgid "liquor"
+msgstr "liqueur / alcool"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1430,24 +1175,19 @@ msgstr "place du marché"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "mode"
 msgstr "le mode"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/main.py
 msgid "multiple"
 msgstr "multiple"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1459,27 +1199,10 @@ msgstr "multiple"
 #
 #
 #
-#: po/tutorial.py
-#: run_uh.py
 msgid "output"
 msgstr "produit / résultat"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "partner"
-msgstr "partenaire"
-
-# 
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1491,46 +1214,9 @@ msgstr "partenaire"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "play"
 msgstr "jouer"
 
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "potato field"
-msgstr "champ de pommes de terre"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "refresh"
-msgstr "actualiser / rafraîchir"
-
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1541,12 +1227,10 @@ msgstr "actualiser / rafraîchir"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "sale"
 msgstr "vente"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1558,13 +1242,10 @@ msgstr "vente"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
 msgid "save"
 msgstr "sauvegarder / la sauvegarde"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1576,13 +1257,10 @@ msgstr "sauvegarder / la sauvegarde"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "school"
 msgstr "école"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1594,8 +1272,6 @@ msgstr "école"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "screen"
 msgstr "écran"
 
@@ -1603,12 +1279,10 @@ msgstr "écran"
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
-#: po/tutorial.py
-#: horizons/engine.py
 msgid "solution"
 msgstr "solution"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1620,8 +1294,6 @@ msgstr "solution"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "sound"
 msgstr "son"
 
@@ -1635,23 +1307,6 @@ msgstr "son"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "team"
-msgstr "équipe"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "from time to time"
 msgstr "de temps en temps"
 
@@ -1661,8 +1316,6 @@ msgstr "de temps en temps"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "trading"
 msgstr "commercer / marchander / ~ de commerce"
 
@@ -1676,8 +1329,6 @@ msgstr "commercer / marchander / ~ de commerce"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "visit"
 msgstr "visiter / la visite"
 
@@ -1687,16 +1338,12 @@ msgstr "visiter / la visite"
 #
 # tisserand is really more beautifull than tisseur, isn't it ?
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "weaver"
 msgstr "tisserand"
 
-# 
+# (poterminology) uh-tutorial/tutorial.pot (2)
 #
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
+# (poterminology) uh/unknownhorizons.pot (3)
 #
 #
 #
@@ -1704,25 +1351,12 @@ msgstr "tisserand"
 #
 #
 #
-#: horizons/gui/ingamegui.py
-#: po/tutorial.py
-msgid "continue"
-msgstr "continuer"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#: po/tutorial.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "description"
-msgstr "description"
+msgid "animal"
+msgstr "animal"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
@@ -1730,12 +1364,10 @@ msgstr "description"
 #
 #
 #
-#: po/tutorial.py
-#: sqlite/Resources
-msgid "faith"
-msgstr "foi"
+msgid "fish"
+msgstr "poisson"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1747,8 +1379,6 @@ msgstr "foi"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "fisherman"
 msgstr "pêcheur"
 
@@ -1762,12 +1392,10 @@ msgstr "pêcheur"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "forest"
 msgstr "forêt"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1779,12 +1407,10 @@ msgstr "forêt"
 #
 #
 #
-#: po/tutorial.py
-#: run_uh.py
 msgid "forum"
 msgstr "forum"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1796,45 +1422,22 @@ msgstr "forum"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "fulfill"
 msgstr "accomplir"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "graphics"
 msgstr "graphiques"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: sqlite/Colors
-msgid "green"
-msgstr "vert"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 # 80%
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "grow"
 msgstr "croitre"
 
@@ -1848,27 +1451,11 @@ msgstr "croitre"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "hold"
 msgstr "tenir"
 
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "hunts"
-msgstr "chasse"
+msgid "hunt"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1880,24 +1467,20 @@ msgstr "chasse"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "income"
 msgstr "revenu"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
-#: po/tutorial.py
-#: run_uh.py
 msgid "information"
 msgstr "information"
 
 # (keyboard)
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1909,12 +1492,17 @@ msgstr "information"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "key"
 msgstr "clé / touche"
 
-# 
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
+# see lamb. wool come from sheep, lambs give meat
+msgid "lamb wool"
+msgstr "laine de mouton"
+
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1926,22 +1514,10 @@ msgstr "clé / touche"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "load/unload"
 msgstr "charger/décharger"
 
-# 
-# (poterminology) uh-tutorial/tutorial.pot (1)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
-# 80%
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "move"
-msgstr "déplacer / déménager"
-
-# 
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1953,41 +1529,10 @@ msgstr "déplacer / déménager"
 #
 #
 #
-#: po/tutorial.py
-#: sqlite/Colors
-msgid "red"
-msgstr "rouge"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "return"
 msgstr "retour / retourner"
 
-# 
 #
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-# Of course, here is all about context cause run can also be translated by 'courir' (using legs for running !)
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "run"
-msgstr "rouler / exploiter"
-
-# 
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1999,12 +1544,10 @@ msgstr "rouler / exploiter"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "service"
 msgstr "service"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -2016,12 +1559,10 @@ msgstr "service"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "sheep"
 msgstr "mouton"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -2033,29 +1574,10 @@ msgstr "mouton"
 #
 #
 #
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "SHIFT"
-msgstr "SHIFT"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/gui/tabs/inventorytab.py
 msgid "ship inventory"
 msgstr "inventaire/cargaison du navire"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -2067,12 +1589,10 @@ msgstr "inventaire/cargaison du navire"
 #
 #
 #
-#: po/tutorial.py
-#: run_uh.py
 msgid "starting"
 msgstr "lance / commence / débute"
 
-# 
+#
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -2084,35 +1604,246 @@ msgstr "lance / commence / débute"
 #
 #
 #
-#: po/tutorial.py
-#: sqlite/Building
-msgid "sugar field"
-msgstr "champ de canne à sucre"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "trade partner"
 msgstr "partenaire commercial"
 
-# 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "yields"
 msgstr "rendements"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "faith"
+msgstr "foi"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "green"
+msgstr "vert"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "red"
+msgstr "rouge"
+
+msgid "check"
+msgstr ""
+
+msgid "connection"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "tax"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+msgid "feature"
+msgstr "fonction"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+msgid "reached"
+msgstr "atteint"
+
+msgid "slider"
+msgstr "régleur"
+
+msgid "condition"
+msgstr ""
+
+msgid "consume"
+msgstr ""
+
+msgid "contact"
+msgstr ""
+
+msgid "dialogue"
+msgstr ""
+
+msgid "issues"
+msgstr ""
+
+msgid "minimap"
+msgstr "mini-carte"
+
+msgid "playing"
+msgstr ""
+
+msgid "ruin"
+msgstr ""
+
+msgid "seed"
+msgstr ""
+
+msgid "temporarily"
+msgstr ""
+
+msgid "salt ponds"
+msgstr ""
+
+msgid "tobacco"
+msgstr ""
+
+msgid "cattle"
+msgstr ""
+
+msgid "pig"
+msgstr ""
+
+msgid "herbs"
+msgstr ""
+
+msgid "herbary"
+msgstr ""
+
+msgid "butchery"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "clay"
+msgstr ""
+
+msgid "charcoal"
+msgstr ""
+
+msgid "iron"
+msgstr ""
+
+msgid "ore"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (2)
+# Here all is about wool, so it's better to use 'mouton', i had a talk about that with eoc. Lamb will certainly disappeared from UH glossary
+#~ msgid "lamb"
+#~ msgstr "mouton / agneau"
+
+# 
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+#~ msgid "market place"
+#~ msgstr "place du marché"
+
+# 
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#
+#
+#
+#
+#~ msgid "potato field"
+#~ msgstr "champ de pommes de terre"
+
+# 
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+#~ msgid "hunts"
+#~ msgstr "chasse"
+
+# 
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+#~ msgid "SHIFT"
+#~ msgstr "SHIFT"
+
+# 
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#
+#
+#
+#
+#~ msgid "sugar field"
+#~ msgstr "champ de canne à sucre"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -2127,19 +1858,6 @@ msgstr "rendements"
 #~ msgid "IRC"
 #~ msgstr "IRC"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
-#
-#
-#
-#
-#
-#
-#~ msgid "moved"
-#~ msgstr "déplacé / déménagé"
-
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -2152,17 +1870,6 @@ msgstr "rendements"
 #
 #~ msgid "potatoes"
 #~ msgstr "pommes de terre"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
-#
-#
-#
-#
-#~ msgid "reached"
-#~ msgstr "atteint"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 

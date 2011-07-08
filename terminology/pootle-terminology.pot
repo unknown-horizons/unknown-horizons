@@ -339,9 +339,6 @@ msgstr ""
 msgid "liquor"
 msgstr ""
 
-#msgid "market place"
-#msgstr ""
-
 msgid "mode"
 msgstr ""
 
@@ -352,9 +349,6 @@ msgid "output"
 msgstr ""
 
 msgid "play"
-msgstr ""
-
-msgid "potato field"
 msgstr ""
 
 msgid "sale"
@@ -447,9 +441,6 @@ msgstr ""
 msgid "starting"
 msgstr ""
 
-msgid "sugar field"
-msgstr ""
-
 msgid "trade partner"
 msgstr ""
 
@@ -507,9 +498,6 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
-msgid "potatoes"
-msgstr ""
-
 msgid "ruin"
 msgstr ""
 
@@ -517,4 +505,43 @@ msgid "seed"
 msgstr ""
 
 msgid "temporarily"
+msgstr ""
+
+msgid "salt ponds"
+msgstr ""
+
+msgid "tobacco"
+msgstr ""
+
+msgid "cattle"
+msgstr ""
+
+msgid "pig"
+msgstr ""
+
+msgid "herbs"
+msgstr ""
+
+msgid "herbary"
+msgstr ""
+
+msgid "butchery"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "clay"
+msgstr ""
+
+msgid "charcoal"
+msgstr ""
+
+msgid "iron"
+msgstr ""
+
+msgid "ore"
 msgstr ""

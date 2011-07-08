@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-08 17:41+0200\n"
+"PO-Revision-Date: 2011-07-08 17:49+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -326,7 +326,7 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:62 horizons/i18n/guitranslations.py:297
 msgid "Fishing boat"
-msgstr ""
+msgstr "Fiskebåt"
 
 #: horizons/gui/tabs/boatbuildertab.py:111
 msgid "Resources still needed:"
@@ -338,15 +338,15 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:176
 msgid "Trade boats"
-msgstr ""
+msgstr "Handelsfartyg"
 
 #: horizons/gui/tabs/boatbuildertab.py:182
 msgid "War boats"
-msgstr ""
+msgstr "Krigsbåtar"
 
 #: horizons/gui/tabs/boatbuildertab.py:188
 msgid "War ships"
-msgstr ""
+msgstr "Krigsfartyg"
 
 #: horizons/gui/tabs/boatbuildertab.py:205
 msgid "Confirm order"
@@ -358,25 +358,25 @@ msgstr ""
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "Tillväxt"
 
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:366
 msgid "Trade"
-msgstr ""
+msgstr "Handel"
 
 #: horizons/gui/tabs/inventorytab.py:39 horizons/i18n/guitranslations.py:320
 #: horizons/i18n/guitranslations.py:371
 msgid "Inventory"
-msgstr ""
+msgstr "Inventarie"
 
 #: horizons/gui/tabs/inventorytab.py:63
 msgid "Ship inventory"
-msgstr ""
+msgstr "Fartygslast"
 
 #: horizons/gui/tabs/marketplacetabs.py:74
 #: horizons/i18n/guitranslations.py:309
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #: horizons/gui/tabs/marketplacetabs.py:108
 #: horizons/gui/tabs/overviewtab.py:271 horizons/i18n/guitranslations.py:323
@@ -386,7 +386,7 @@ msgstr ""
 #: horizons/gui/tabs/overviewtab.py:46 horizons/gui/tabs/overviewtab.py:314
 #: horizons/i18n/guitranslations.py:362
 msgid "Overview"
-msgstr ""
+msgstr "Översikt"
 
 #: horizons/gui/tabs/overviewtab.py:102
 msgid "Branch office overview"
@@ -406,7 +406,7 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:182
 msgid "Destroy building"
-msgstr ""
+msgstr "Förstör byggnad"
 
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
@@ -432,7 +432,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73 horizons/i18n/guitranslations.py:74
 msgid "Companies"
-msgstr ""
+msgstr "Företag"
 
 #: horizons/i18n/guitranslations.py:43
 msgid "Sailor buildings"
@@ -453,11 +453,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:47
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
+msgstr "Fiskare: Fiskar i haven, producerar föda."
 
 #: horizons/i18n/guitranslations.py:48
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "Jägare: Jagar vilda djur i skogen, producerar föda."
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."

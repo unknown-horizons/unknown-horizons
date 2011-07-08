@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-05 14:40+0200\n"
+"POT-Creation-Date: 2011-07-08 16:54+0200\n"
 "PO-Revision-Date: 2011-06-03 18:38+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,887 +11,584 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
 
-#. set translated building name in gui
-#: po/tutorial.py
-#: horizons/gui/mousetools/buildingtool.py
-#: sqlite/Messages
-#: horizons/i18n/guitranslations.py
 msgid "build"
 msgstr "opbygge"
 
-#: horizons/gui/ingamegui.py
-#: horizons/gui/modules/multiplayermenu.py
-#: sqlite/Messages
-#: horizons/mpsession.py
-#: %28poterminology%29+4+more+locations
 msgid "game"
 msgstr "spil"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
 msgid "building"
 msgstr "bygning"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "tent"
 msgstr "telt"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Messages
-#: horizons/gui/tabs/boatbuildertab.py
 msgid "resource"
 msgstr "ressource"
 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Building
 msgid "branch office"
 msgstr "afdelingskontor"
 
-#: po/tutorial.py
-#: horizons/gui/tabs/marketplacetabs.py
-#: horizons/gui/tabs/overviewtab.py
-#: horizons/i18n/guitranslations.py
-#: %28poterminology%29+1+more+locations
-msgid "overview"
-msgstr "oversigt"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-#: horizons/gui/tabs/boatbuildertab.py
-#: %28poterminology%29+1+more+locations
-msgid "ship"
-msgstr "skib"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: run_uh.py
-msgid "main"
-msgstr "væsentligste"
-
-#: horizons/constants.py
-#: horizons/scenario/scenarioeventhandler.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-#: %28poterminology%29+3+more+locations
-msgid "unknown"
-msgstr "ukendt"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "farm"
-msgstr "gård"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/SettlerLevel
-msgid "sailor"
-msgstr "sømand"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "inhabitants"
-msgstr "indbyggere"
-
-# 
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py
-#: horizons/main.py
-#: po/tutorial.py
-#: %28poterminology%29+2+more+locations
-msgid "map"
-msgstr "kort"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Messages
-msgid "settlement"
-msgstr "afregning"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "start"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "tab"
-msgstr "Fanen"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "field"
-msgstr "felt"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "food"
-msgstr "mad"
-
-#: po/tutorial.py
-#: horizons/gui/tabs/buildtabs.py
-msgid "increment"
-msgstr "tilvækst"
-
-#: po/tutorial.py
-#: horizons/gui/
-msgid "minimap"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/gui/
-msgid "running costs"
-msgstr "driftsomkostninger"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "menu"
-msgstr "menu"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "produce"
-msgstr "producere"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-msgid "production"
-msgstr "produktion"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "boards"
-msgstr "bestyrelser"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/mpsession.py
-msgid "change"
-msgstr "ændring"
-
-#: horizons/gui/ingamegui.py
-#: horizons/i18n/guitranslations.py
-#: po/tutorial.py
-msgid "click"
-msgstr "klik"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "main square"
-msgstr "største torv"
-
-#: horizons/gui/tabs/marketplacetabs.py
-#: sqlite/SettlerLevel
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "settler"
-msgstr "bosætter"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "time"
-msgstr "tid"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/buyselltab.py
-#: horizons/gui/tabs/boatbuildertab.py
-msgid "trade"
-msgstr "handel"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "trail"
-msgstr "trail"
-
-#: horizons/constants.py
-#: po/tutorial.py
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py
-#: %28poterminology%29+1+more+locations
-msgid "version"
-msgstr "version"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "buy"
-msgstr "Køb"
-
-#: po/tutorial.py
-#: horizons/gui/modules/multiplayermenu.py
-msgid "connect"
-msgstr "forbindelse"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "lumberjack"
-msgstr "skovhugger"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sell"
-msgstr "sælger"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "taxes"
-msgstr "skatter"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "wool"
-msgstr "uld"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "coast"
-msgstr "kyst"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "companies"
-msgstr "selskaber"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "cost"
-msgstr "omkostninger"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "free"
-msgstr "gratis"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "left"
-msgstr "venstre"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: run_uh.py
-msgid "log"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "reach"
-msgstr "rækkevidde"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "select"
-msgstr "vælg"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "stock"
-msgstr "lager"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "storage"
-msgstr "opbevaring"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/world/units/ship.py
-msgid "trader"
-msgstr "erhvervsdrivende"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "balance"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "fire"
-msgstr "brand"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/boatbuildertab.py
-msgid "fisher"
-msgstr ""
-
-#: horizons/spsession.py
-#: po/tutorial.py
-#: run_uh.py
-#: horizons/main.py
-msgid "found"
-msgstr "fundet"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "pavilion"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "signal"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "signal fire"
-msgstr "signal brand"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "slider"
-msgstr "skyderen"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "tools"
-msgstr "værktøjer"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "active"
-msgstr "aktive"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "choose"
-msgstr "vælge"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "collector"
-msgstr "opsamler"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "help"
-msgstr "hjælp"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "house"
-msgstr "hus"
-
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "level"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "pasture"
-msgstr "græsarealer"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/SettlerLevel
-msgid "pioneer"
-msgstr "pioner"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "potato"
-msgstr "kartoffel"
-
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "range"
-msgstr "rækkevidde"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "running"
-msgstr "kører"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "setting"
-msgstr "indstilling"
-
-#: po/tutorial.py
-#: sqlite/Building
-msgid "storage tent"
-msgstr "opbevaringstelt"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: sqlite/Resources
-msgid "sugar"
-msgstr "sukker"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "tree"
-msgstr "træ"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "add"
-msgstr "Tilføj"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "animal"
-msgstr "dyr"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "build menu"
-msgstr "opbygge menuen"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "Captain's log"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "construction"
-msgstr "byggeri"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "decrease"
-msgstr "Faldet"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "free trader"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "happiness"
-msgstr "lykke"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "hunter"
-msgstr "jæger"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/inventorytab.py
-msgid "inventory"
-msgstr "opgørelse"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "lamb"
-msgstr ""
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "liquor"
-msgstr "spiritus"
-
-# 
-#: po/tutorial.py
-#: sqlite/Resources
-msgid "raw"
-msgstr "rå"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "residents"
-msgstr "beboere"
-
-#: po/tutorial.py
-#: horizons/gui/widgets/inventory.py
-msgid "slot"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "stop"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "village"
-msgstr "landsby"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "your"
 msgstr ""
 
-#: po/tutorial.py
-#: horizons/gui/tabs/marketplacetabs.py
-#: horizons/i18n/guitranslations.py
-msgid "account"
-msgstr "konto"
+msgid "farm"
+msgstr "gård"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "back"
-msgstr "tilbage"
+msgid "field"
+msgstr "felt"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "build settlement"
-msgstr "opbygge afregning"
+msgid "overview"
+msgstr "oversigt"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+msgid "ship"
+msgstr "skib"
+
+msgid "main"
+msgstr "væsentligste"
+
+msgid "settlement"
+msgstr "afregning"
+
+msgid "start"
+msgstr ""
+
+msgid "click"
+msgstr "klik"
+
+msgid "inhabitants"
+msgstr "indbyggere"
+
+#
+msgid "map"
+msgstr "kort"
+
+msgid "menu"
+msgstr "menu"
+
+msgid "production"
+msgstr "produktion"
+
+msgid "tab"
+msgstr "Fanen"
+
+msgid "unknown"
+msgstr "ukendt"
+
+msgid "food"
+msgstr "mad"
+
+msgid "increment"
+msgstr "tilvækst"
+
+msgid "select"
+msgstr "vælg"
+
+msgid "setting"
+msgstr "indstilling"
+
+msgid "time"
+msgstr "tid"
+
+msgid "trade"
+msgstr "handel"
+
+msgid "change"
+msgstr "ændring"
+
+msgid "main square"
+msgstr "største torv"
+
+msgid "trail"
+msgstr "trail"
+
+msgid "boards"
+msgstr "bestyrelser"
+
+msgid "buy"
+msgstr "Køb"
+
+msgid "coast"
+msgstr "kyst"
+
+msgid "connect"
+msgstr "forbindelse"
+
+msgid "cost"
+msgstr "omkostninger"
+
+msgid "free"
+msgstr "gratis"
+
+msgid "log"
+msgstr ""
+
+msgid "lumberjack"
+msgstr "skovhugger"
+
+msgid "sell"
+msgstr "sælger"
+
+msgid "storage"
+msgstr "opbevaring"
+
+msgid "taxes"
+msgstr "skatter"
+
+msgid "trader"
+msgstr "erhvervsdrivende"
+
+msgid "version"
+msgstr "version"
+
+msgid "companies"
+msgstr "selskaber"
+
+msgid "fire"
+msgstr "brand"
+
+msgid "left"
+msgstr "venstre"
+
+msgid "reach"
+msgstr "rækkevidde"
+
+msgid "signal"
+msgstr ""
+
+msgid "signal fire"
+msgstr "signal brand"
+
+msgid "stock"
+msgstr "lager"
+
+msgid "tools"
+msgstr "værktøjer"
+
+msgid "wool"
+msgstr "uld"
+
+msgid "balance"
+msgstr ""
+
+msgid "choose"
+msgstr "vælge"
+
+msgid "fisher"
+msgstr ""
+
+msgid "found"
+msgstr "fundet"
+
+msgid "pavilion"
+msgstr ""
+
+msgid "potato"
+msgstr "kartoffel"
+
+msgid "range"
+msgstr "rækkevidde"
+
+#
+msgid "raw"
+msgstr "rå"
+
+msgid "running"
+msgstr "kører"
+
+msgid "running costs"
+msgstr "driftsomkostninger"
+
+msgid "collector"
+msgstr "opsamler"
+
+msgid "help"
+msgstr "hjælp"
+
+msgid "house"
+msgstr "hus"
+
+msgid "inventory"
+msgstr "opgørelse"
+
+msgid "level"
+msgstr ""
+
+#
+msgid "move"
+msgstr "flytte"
+
+msgid "moved"
+msgstr ""
+
+msgid "produce"
+msgstr "producere"
+
+msgid "produced"
+msgstr ""
+
+msgid "pasture"
+msgstr "græsarealer"
+
+msgid "storage tent"
+msgstr "opbevaringstelt"
+
+msgid "sugar"
+msgstr "sukker"
+
+msgid "tree"
+msgstr "træ"
+
+msgid "active"
+msgstr "aktive"
+
+msgid "add"
+msgstr "Tilføj"
+
+msgid "build menu"
+msgstr "opbygge menuen"
+
 msgid "built"
 msgstr "bygget"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "cloth"
-msgstr "klud"
+msgid "construction"
+msgstr "byggeri"
 
-#: po/tutorial.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "feature"
-msgstr "funktion"
-
-#: po/tutorial.py
-#: sqlite/Resources
-#: sqlite/Building
-msgid "fish"
-msgstr "fisk"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "increase"
-msgstr "stigning"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "lamb wool"
-msgstr ""
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "leave"
-msgstr "orlov"
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "market"
-msgstr "marked"
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "market place"
-msgstr "markedsplads"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "mode"
-msgstr "mode"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/main.py
-msgid "multiple"
-msgstr "flere"
-
-# 
-#: po/tutorial.py
-#: run_uh.py
-msgid "output"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "partner"
-msgstr ""
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "play"
-msgstr "spiller"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "potato field"
-msgstr "kartoffelmark"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "refresh"
-msgstr "genopfriske"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sale"
-msgstr "salg"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "save"
-msgstr "spare"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "school"
-msgstr "skole"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "screen"
-msgstr "skærm"
-
-#: po/tutorial.py
-#: horizons/engine.py
-msgid "solution"
-msgstr "løsning"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sound"
-msgstr "lyd"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "team"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "from time to time"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "trading"
-msgstr "handel"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "visit"
-msgstr "besøg"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "weaver"
-msgstr "væver"
-
-# 
-#: horizons/gui/ingamegui.py
-#: po/tutorial.py
+#
 msgid "continue"
 msgstr "fortsætte"
 
-# 
-#: po/tutorial.py
-#: horizons/gui/modules/singleplayermenu.py
+msgid "decrease"
+msgstr "Faldet"
+
+msgid "free trader"
+msgstr ""
+
+msgid "hunter"
+msgstr "jæger"
+
+#
+msgid "leave"
+msgstr "orlov"
+
+#
+msgid "market"
+msgstr "marked"
+
+msgid "partner"
+msgstr ""
+
+msgid "sailor"
+msgstr "sømand"
+
+msgid "pioneer"
+msgstr "pioner"
+
+msgid "settler"
+msgstr "bosætter"
+
+msgid "citizen"
+msgstr ""
+
+msgid "merchant"
+msgstr ""
+
+msgid "aristocrat"
+msgstr ""
+
+#
+msgid "refresh"
+msgstr "genopfriske"
+
+msgid "residents"
+msgstr "beboere"
+
+#
+msgid "run"
+msgstr "køre"
+
+msgid "slot"
+msgstr ""
+
+msgid "stop"
+msgstr ""
+
+msgid "team"
+msgstr ""
+
+msgid "village"
+msgstr "landsby"
+
+msgid "account"
+msgstr "konto"
+
+msgid "back"
+msgstr "tilbage"
+
+#
+msgid "build settlement"
+msgstr "opbygge afregning"
+
+msgid "Captain's log"
+msgstr ""
+
+msgid "cloth"
+msgstr "klud"
+
+#
 msgid "description"
 msgstr "beskrivelse"
 
-#: po/tutorial.py
-#: sqlite/Resources
-msgid "faith"
-msgstr "tro"
+msgid "happiness"
+msgstr "lykke"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
+msgid "increase"
+msgstr "stigning"
+
+#
+msgid "liquor"
+msgstr "spiritus"
+
+msgid "mode"
+msgstr "mode"
+
+#
+msgid "multiple"
+msgstr "flere"
+
+msgid "output"
+msgstr ""
+
+#
+msgid "play"
+msgstr "spiller"
+
+msgid "sale"
+msgstr "salg"
+
+#
+msgid "save"
+msgstr "spare"
+
+#
+msgid "school"
+msgstr "skole"
+
+#
+msgid "screen"
+msgstr "skærm"
+
+msgid "solution"
+msgstr "løsning"
+
+#
+msgid "sound"
+msgstr "lyd"
+
+msgid "from time to time"
+msgstr ""
+
+msgid "trading"
+msgstr "handel"
+
+msgid "visit"
+msgstr "besøg"
+
+msgid "weaver"
+msgstr "væver"
+
+msgid "animal"
+msgstr "dyr"
+
+msgid "fish"
+msgstr "fisk"
+
+#
 msgid "fisherman"
 msgstr "fisker"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "forest"
 msgstr "skov"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
+#
 msgid "forum"
 msgstr "forum"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "fulfill"
 msgstr "opfylde"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "graphics"
 msgstr "grafik"
 
-# 
-#: po/tutorial.py
-#: sqlite/Colors
-msgid "green"
-msgstr "grøn"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "grow"
 msgstr "vokse"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "hold"
 msgstr ""
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "hunts"
+msgid "hunt"
 msgstr ""
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "income"
 msgstr "indkomst"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
+#
 msgid "information"
 msgstr "oplysninger"
 
 # (keyboard)
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "key"
 msgstr "nøgle"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+msgid "lamb wool"
+msgstr ""
+
+#
 #, fuzzy
 msgid "load/unload"
 msgstr "load / losse"
 
-# 
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "move"
-msgstr "flytte"
-
-# 
-#: po/tutorial.py
-#: sqlite/Colors
-msgid "red"
-msgstr "rød"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "return"
 msgstr "tilbage"
 
-# 
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "run"
-msgstr "køre"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "service"
 msgstr ""
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "sheep"
 msgstr "får"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "SHIFT"
-msgstr ""
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/inventorytab.py
+#
 msgid "ship inventory"
 msgstr "skib opgørelse"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
 msgid "starting"
 msgstr ""
 
-# 
-#: po/tutorial.py
-#: sqlite/Building
-msgid "sugar field"
-msgstr "sukker felt"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "trade partner"
 msgstr "handelspartner"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "yields"
 msgstr "udbytter"
+
+msgid "faith"
+msgstr "tro"
+
+#
+msgid "green"
+msgstr "grøn"
+
+#
+msgid "red"
+msgstr "rød"
+
+msgid "check"
+msgstr ""
+
+msgid "connection"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "tax"
+msgstr ""
+
+msgid "feature"
+msgstr "funktion"
+
+msgid "reached"
+msgstr ""
+
+msgid "slider"
+msgstr "skyderen"
+
+msgid "condition"
+msgstr ""
+
+msgid "consume"
+msgstr ""
+
+msgid "contact"
+msgstr ""
+
+msgid "dialogue"
+msgstr ""
+
+msgid "issues"
+msgstr ""
+
+msgid "minimap"
+msgstr ""
+
+msgid "playing"
+msgstr ""
+
+msgid "ruin"
+msgstr ""
+
+msgid "seed"
+msgstr ""
+
+msgid "temporarily"
+msgstr ""
+
+msgid "salt ponds"
+msgstr ""
+
+msgid "tobacco"
+msgstr ""
+
+msgid "cattle"
+msgstr ""
+
+msgid "pig"
+msgstr ""
+
+msgid "herbs"
+msgstr ""
+
+msgid "herbary"
+msgstr ""
+
+msgid "butchery"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "clay"
+msgstr ""
+
+msgid "charcoal"
+msgstr ""
+
+msgid "iron"
+msgstr ""
+
+msgid "ore"
+msgstr ""
+
+# 
+#~ msgid "market place"
+#~ msgstr "markedsplads"
+
+# 
+#~ msgid "potato field"
+#~ msgstr "kartoffelmark"
+
+# 
+#~ msgid "sugar field"
+#~ msgstr "sukker felt"

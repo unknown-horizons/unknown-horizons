@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-05 14:40+0200\n"
+"POT-Creation-Date: 2011-07-08 16:54+0200\n"
 "PO-Revision-Date: 2011-06-05 11:23+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,886 +11,595 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
 
-#. set translated building name in gui
-#: po/tutorial.py
-#: horizons/gui/mousetools/buildingtool.py
-#: sqlite/Messages
-#: horizons/i18n/guitranslations.py
 msgid "build"
 msgstr "costruzione"
 
-#: horizons/gui/ingamegui.py
-#: horizons/gui/modules/multiplayermenu.py
-#: sqlite/Messages
-#: horizons/mpsession.py
-#: %28poterminology%29+4+more+locations
 msgid "game"
 msgstr "gioco"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
 msgid "building"
 msgstr "costruzione / costruire"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "tent"
 msgstr "tenda"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Messages
-#: horizons/gui/tabs/boatbuildertab.py
 msgid "resource"
 msgstr "risorsa"
 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Building
 msgid "branch office"
 msgstr "filiale"
 
-#: po/tutorial.py
-#: horizons/gui/tabs/marketplacetabs.py
-#: horizons/gui/tabs/overviewtab.py
-#: horizons/i18n/guitranslations.py
-#: %28poterminology%29+1+more+locations
-msgid "overview"
-msgstr "panoramica"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-#: horizons/gui/tabs/boatbuildertab.py
-#: %28poterminology%29+1+more+locations
-msgid "ship"
-msgstr "nave"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: run_uh.py
-msgid "main"
-msgstr "principale"
-
-#: horizons/constants.py
-#: horizons/scenario/scenarioeventhandler.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-#: %28poterminology%29+3+more+locations
-msgid "unknown"
-msgstr "sconosciuto"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "farm"
-msgstr "fattoria"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/SettlerLevel
-msgid "sailor"
-msgstr "marinaio"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "inhabitants"
-msgstr "abitanti"
-
-# 
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py
-#: horizons/main.py
-#: po/tutorial.py
-#: %28poterminology%29+2+more+locations
-msgid "map"
-msgstr "mappa"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Messages
-msgid "settlement"
-msgstr "insediamento"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "start"
-msgstr "avvio / inizio"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "tab"
-msgstr "scheda"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "field"
-msgstr "campo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "food"
-msgstr "cibo"
-
-#: po/tutorial.py
-#: horizons/gui/tabs/buildtabs.py
-msgid "increment"
-msgstr "guadagno"
-
-#: po/tutorial.py
-#: horizons/gui/
-msgid "minimap"
-msgstr "minimappa"
-
-#: po/tutorial.py
-#: horizons/gui/
-msgid "running costs"
-msgstr "costi d'esercizio"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "menu"
-msgstr "menu"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "produce"
-msgstr "produrre"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-msgid "production"
-msgstr "produzione"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "boards"
-msgstr "tavole"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/mpsession.py
-msgid "change"
-msgstr "cambia / -mento"
-
-#: horizons/gui/ingamegui.py
-#: horizons/i18n/guitranslations.py
-#: po/tutorial.py
-msgid "click"
-msgstr "clicca"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "main square"
-msgstr "piazza principale"
-
-#: horizons/gui/tabs/marketplacetabs.py
-#: sqlite/SettlerLevel
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "settler"
-msgstr "colono"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "time"
-msgstr "tempo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/buyselltab.py
-#: horizons/gui/tabs/boatbuildertab.py
-msgid "trade"
-msgstr "commercio"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "trail"
-msgstr "sentiero"
-
-#: horizons/constants.py
-#: po/tutorial.py
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py
-#: %28poterminology%29+1+more+locations
-msgid "version"
-msgstr "versione"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "buy"
-msgstr "comprare"
-
-#: po/tutorial.py
-#: horizons/gui/modules/multiplayermenu.py
-msgid "connect"
-msgstr "connetti / collegare"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "lumberjack"
-msgstr "taglialegna / tagliaboschi"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sell"
-msgstr "vendere"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "taxes"
-msgstr "tasse"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "wool"
-msgstr "lana"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "coast"
-msgstr "costa"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "companies"
-msgstr "compagnie / aziende"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "cost"
-msgstr "costo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "free"
-msgstr "libero"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "left"
-msgstr "sinistra"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: run_uh.py
-msgid "log"
-msgstr "diario / registro"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "reach"
-msgstr "raggiungere"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "select"
-msgstr "selezione"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "stock"
-msgstr "stock"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "storage"
-msgstr "magazzino"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/world/units/ship.py
-msgid "trader"
-msgstr "commerciante"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "balance"
-msgstr "equilibrio"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "fire"
-msgstr "fuoco"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/boatbuildertab.py
-msgid "fisher"
-msgstr "pescatore"
-
-#: horizons/spsession.py
-#: po/tutorial.py
-#: run_uh.py
-#: horizons/main.py
-msgid "found"
-msgstr "trovati"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "pavilion"
-msgstr "padiglione"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "signal"
-msgstr "segnale"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "signal fire"
-msgstr "segnale di fuoco"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "slider"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "tools"
-msgstr "strumenti"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "active"
-msgstr "attivo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "choose"
-msgstr "scegliere"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "collector"
-msgstr "raccolto"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "help"
-msgstr "aiuto"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "house"
-msgstr "casa"
-
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "level"
-msgstr "livello"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "pasture"
-msgstr "pascolo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/SettlerLevel
-msgid "pioneer"
-msgstr "pioniere"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "potato"
-msgstr "patate"
-
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "range"
-msgstr "gamma"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "running"
-msgstr "in esecuzione"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "setting"
-msgstr "impostazioni"
-
-#: po/tutorial.py
-#: sqlite/Building
-msgid "storage tent"
-msgstr "tenda di stoccaggio"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: sqlite/Resources
-msgid "sugar"
-msgstr "zucchero"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "tree"
-msgstr "albero"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "add"
-msgstr "aggiungi"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "animal"
-msgstr "animale"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "build menu"
-msgstr "menù principale"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "Captain's log"
-msgstr "diario del capitano"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "construction"
-msgstr "costruzione"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "decrease"
-msgstr "diminuire"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "free trader"
-msgstr "commercio libero"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "happiness"
-msgstr "felicità"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "hunter"
-msgstr "cacciatore"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/inventorytab.py
-msgid "inventory"
-msgstr "inventario"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "lamb"
-msgstr "agnello"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "liquor"
-msgstr "liquore"
-
-# 
-#: po/tutorial.py
-#: sqlite/Resources
-msgid "raw"
-msgstr "grezzo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "residents"
-msgstr "residenti"
-
-#: po/tutorial.py
-#: horizons/gui/widgets/inventory.py
-msgid "slot"
-msgstr ""
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "stop"
-msgstr "stop"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "village"
-msgstr "villaggio"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "your"
 msgstr "tua"
 
-#: po/tutorial.py
-#: horizons/gui/tabs/marketplacetabs.py
-#: horizons/i18n/guitranslations.py
-msgid "account"
-msgstr "conto"
+msgid "farm"
+msgstr "fattoria"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "back"
-msgstr "indietro"
+msgid "field"
+msgstr "campo"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "build settlement"
-msgstr "costruire insediamenti"
+msgid "overview"
+msgstr "panoramica"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+msgid "ship"
+msgstr "nave"
+
+msgid "main"
+msgstr "principale"
+
+msgid "settlement"
+msgstr "insediamento"
+
+msgid "start"
+msgstr "avvio / inizio"
+
+msgid "click"
+msgstr "clicca"
+
+msgid "inhabitants"
+msgstr "abitanti"
+
+#
+msgid "map"
+msgstr "mappa"
+
+msgid "menu"
+msgstr "menu"
+
+msgid "production"
+msgstr "produzione"
+
+msgid "tab"
+msgstr "scheda"
+
+msgid "unknown"
+msgstr "sconosciuto"
+
+msgid "food"
+msgstr "cibo"
+
+msgid "increment"
+msgstr "guadagno"
+
+msgid "select"
+msgstr "selezione"
+
+msgid "setting"
+msgstr "impostazioni"
+
+msgid "time"
+msgstr "tempo"
+
+msgid "trade"
+msgstr "commercio"
+
+msgid "change"
+msgstr "cambia / -mento"
+
+msgid "main square"
+msgstr "piazza principale"
+
+msgid "trail"
+msgstr "sentiero"
+
+msgid "boards"
+msgstr "tavole"
+
+msgid "buy"
+msgstr "comprare"
+
+msgid "coast"
+msgstr "costa"
+
+msgid "connect"
+msgstr "connetti / collegare"
+
+msgid "cost"
+msgstr "costo"
+
+msgid "free"
+msgstr "libero"
+
+msgid "log"
+msgstr "diario / registro"
+
+msgid "lumberjack"
+msgstr "taglialegna / tagliaboschi"
+
+msgid "sell"
+msgstr "vendere"
+
+msgid "storage"
+msgstr "magazzino"
+
+msgid "taxes"
+msgstr "tasse"
+
+msgid "trader"
+msgstr "commerciante"
+
+msgid "version"
+msgstr "versione"
+
+msgid "companies"
+msgstr "compagnie / aziende"
+
+msgid "fire"
+msgstr "fuoco"
+
+msgid "left"
+msgstr "sinistra"
+
+msgid "reach"
+msgstr "raggiungere"
+
+msgid "signal"
+msgstr "segnale"
+
+msgid "signal fire"
+msgstr "segnale di fuoco"
+
+msgid "stock"
+msgstr "stock"
+
+msgid "tools"
+msgstr "strumenti"
+
+msgid "wool"
+msgstr "lana"
+
+msgid "balance"
+msgstr "equilibrio"
+
+msgid "choose"
+msgstr "scegliere"
+
+msgid "fisher"
+msgstr "pescatore"
+
+msgid "found"
+msgstr "trovati"
+
+msgid "pavilion"
+msgstr "padiglione"
+
+msgid "potato"
+msgstr "patate"
+
+msgid "range"
+msgstr "gamma"
+
+#
+msgid "raw"
+msgstr "grezzo"
+
+msgid "running"
+msgstr "in esecuzione"
+
+msgid "running costs"
+msgstr "costi d'esercizio"
+
+msgid "collector"
+msgstr "raccolto"
+
+msgid "help"
+msgstr "aiuto"
+
+msgid "house"
+msgstr "casa"
+
+msgid "inventory"
+msgstr "inventario"
+
+msgid "level"
+msgstr "livello"
+
+#
+msgid "move"
+msgstr "muovi"
+
+msgid "moved"
+msgstr ""
+
+msgid "produce"
+msgstr "produrre"
+
+msgid "produced"
+msgstr ""
+
+msgid "pasture"
+msgstr "pascolo"
+
+msgid "storage tent"
+msgstr "tenda di stoccaggio"
+
+msgid "sugar"
+msgstr "zucchero"
+
+msgid "tree"
+msgstr "albero"
+
+msgid "active"
+msgstr "attivo"
+
+msgid "add"
+msgstr "aggiungi"
+
+msgid "build menu"
+msgstr "menù principale"
+
 msgid "built"
 msgstr "costruito"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "cloth"
-msgstr "panno"
+msgid "construction"
+msgstr "costruzione"
 
-#: po/tutorial.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "feature"
-msgstr "caratteristica"
-
-#: po/tutorial.py
-#: sqlite/Resources
-#: sqlite/Building
-msgid "fish"
-msgstr "pesce"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "increase"
-msgstr "incrementa"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "lamb wool"
-msgstr "lana d'agnello"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "leave"
-msgstr "invia"
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "market"
-msgstr "mercato"
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "market place"
-msgstr "piazza del mercato"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "mode"
-msgstr "modo"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/main.py
-msgid "multiple"
-msgstr "di più"
-
-# 
-#: po/tutorial.py
-#: run_uh.py
-msgid "output"
-msgstr "uscita"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "partner"
-msgstr "socio"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "play"
-msgstr "giocare"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "potato field"
-msgstr "campo di patate"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "refresh"
-msgstr "rinfrescare"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sale"
-msgstr "vendita"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "save"
-msgstr "salvare"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "school"
-msgstr "scuola"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "screen"
-msgstr "schermo"
-
-#: po/tutorial.py
-#: horizons/engine.py
-msgid "solution"
-msgstr "soluzione"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sound"
-msgstr "suono"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "team"
-msgstr "squadra"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "from time to time"
-msgstr "di volta in volta"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "trading"
-msgstr "negoziazione"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "visit"
-msgstr "visita"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "weaver"
-msgstr "tessitore"
-
-# 
-#: horizons/gui/ingamegui.py
-#: po/tutorial.py
+#
 msgid "continue"
 msgstr "continua"
 
-# 
-#: po/tutorial.py
-#: horizons/gui/modules/singleplayermenu.py
+msgid "decrease"
+msgstr "diminuire"
+
+msgid "free trader"
+msgstr "commercio libero"
+
+msgid "hunter"
+msgstr "cacciatore"
+
+#
+msgid "leave"
+msgstr "invia"
+
+#
+msgid "market"
+msgstr "mercato"
+
+msgid "partner"
+msgstr "socio"
+
+msgid "sailor"
+msgstr "marinaio"
+
+msgid "pioneer"
+msgstr "pioniere"
+
+msgid "settler"
+msgstr "colono"
+
+msgid "citizen"
+msgstr ""
+
+msgid "merchant"
+msgstr ""
+
+msgid "aristocrat"
+msgstr ""
+
+#
+msgid "refresh"
+msgstr "rinfrescare"
+
+msgid "residents"
+msgstr "residenti"
+
+#
+msgid "run"
+msgstr "correre"
+
+msgid "slot"
+msgstr ""
+
+msgid "stop"
+msgstr "stop"
+
+msgid "team"
+msgstr "squadra"
+
+msgid "village"
+msgstr "villaggio"
+
+msgid "account"
+msgstr "conto"
+
+msgid "back"
+msgstr "indietro"
+
+#
+msgid "build settlement"
+msgstr "costruire insediamenti"
+
+#
+msgid "Captain's log"
+msgstr "diario del capitano"
+
+msgid "cloth"
+msgstr "panno"
+
+#
 msgid "description"
 msgstr "descrizione"
 
-#: po/tutorial.py
-#: sqlite/Resources
-msgid "faith"
-msgstr "fede"
+msgid "happiness"
+msgstr "felicità"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
+msgid "increase"
+msgstr "incrementa"
+
+#
+msgid "liquor"
+msgstr "liquore"
+
+msgid "mode"
+msgstr "modo"
+
+#
+msgid "multiple"
+msgstr "di più"
+
+#
+msgid "output"
+msgstr "uscita"
+
+#
+msgid "play"
+msgstr "giocare"
+
+msgid "sale"
+msgstr "vendita"
+
+#
+msgid "save"
+msgstr "salvare"
+
+#
+msgid "school"
+msgstr "scuola"
+
+#
+msgid "screen"
+msgstr "schermo"
+
+msgid "solution"
+msgstr "soluzione"
+
+#
+msgid "sound"
+msgstr "suono"
+
+msgid "from time to time"
+msgstr "di volta in volta"
+
+msgid "trading"
+msgstr "negoziazione"
+
+msgid "visit"
+msgstr "visita"
+
+msgid "weaver"
+msgstr "tessitore"
+
+msgid "animal"
+msgstr "animale"
+
+msgid "fish"
+msgstr "pesce"
+
+#
 msgid "fisherman"
 msgstr "pescatore"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "forest"
 msgstr "foresta"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
+#
 msgid "forum"
 msgstr "forum"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "fulfill"
 msgstr "eseguire"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "graphics"
 msgstr "grafica"
 
-# 
-#: po/tutorial.py
-#: sqlite/Colors
-msgid "green"
-msgstr "verde"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "grow"
 msgstr "coltivare"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "hold"
 msgstr ""
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "hunts"
-msgstr "caccia"
+msgid "hunt"
+msgstr ""
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "income"
 msgstr "reddito"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
+#
 msgid "information"
 msgstr "informazione"
 
 # (keyboard)
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "key"
 msgstr "chiave"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
+msgid "lamb wool"
+msgstr "lana d'agnello"
+
+#
 msgid "load/unload"
 msgstr "carica/scarica"
 
-# 
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "move"
-msgstr "muovi"
-
-# 
-#: po/tutorial.py
-#: sqlite/Colors
-msgid "red"
-msgstr "rosso"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "return"
 msgstr "ritorna"
 
-# 
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "run"
-msgstr "correre"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "service"
 msgstr "servizio"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "sheep"
 msgstr "pecore"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "SHIFT"
-msgstr ""
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/inventorytab.py
+#
 msgid "ship inventory"
 msgstr "inventario nave"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
+#
 msgid "starting"
 msgstr "avviamento"
 
-# 
-#: po/tutorial.py
-#: sqlite/Building
-msgid "sugar field"
-msgstr "campo di zucchero"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "trade partner"
 msgstr "partner commerciale"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "yields"
 msgstr "rendimenti"
+
+msgid "faith"
+msgstr "fede"
+
+#
+msgid "green"
+msgstr "verde"
+
+#
+msgid "red"
+msgstr "rosso"
+
+msgid "check"
+msgstr ""
+
+msgid "connection"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "tax"
+msgstr ""
+
+msgid "feature"
+msgstr "caratteristica"
+
+msgid "reached"
+msgstr ""
+
+msgid "slider"
+msgstr ""
+
+msgid "condition"
+msgstr ""
+
+msgid "consume"
+msgstr ""
+
+msgid "contact"
+msgstr ""
+
+msgid "dialogue"
+msgstr ""
+
+msgid "issues"
+msgstr ""
+
+msgid "minimap"
+msgstr "minimappa"
+
+msgid "playing"
+msgstr ""
+
+msgid "ruin"
+msgstr ""
+
+msgid "seed"
+msgstr ""
+
+msgid "temporarily"
+msgstr ""
+
+msgid "salt ponds"
+msgstr ""
+
+msgid "tobacco"
+msgstr ""
+
+msgid "cattle"
+msgstr ""
+
+msgid "pig"
+msgstr ""
+
+msgid "herbs"
+msgstr ""
+
+msgid "herbary"
+msgstr ""
+
+msgid "butchery"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "clay"
+msgstr ""
+
+msgid "charcoal"
+msgstr ""
+
+msgid "iron"
+msgstr ""
+
+msgid "ore"
+msgstr ""
+
+#~ msgid "lamb"
+#~ msgstr "agnello"
+
+# 
+#~ msgid "market place"
+#~ msgstr "piazza del mercato"
+
+# 
+#~ msgid "potato field"
+#~ msgstr "campo di patate"
+
+# 
+#~ msgid "hunts"
+#~ msgstr "caccia"
+
+# 
+#~ msgid "sugar field"
+#~ msgstr "campo di zucchero"

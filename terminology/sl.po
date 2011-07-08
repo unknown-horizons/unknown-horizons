@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-05 14:40+0200\n"
+"POT-Creation-Date: 2011-07-08 16:54+0200\n"
 "PO-Revision-Date: 2011-05-27 11:42+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,886 +12,599 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
 
-#. set translated building name in gui
-#: po/tutorial.py
-#: horizons/gui/mousetools/buildingtool.py
-#: sqlite/Messages
-#: horizons/i18n/guitranslations.py
 msgid "build"
 msgstr "Izgradi"
 
-#: horizons/gui/ingamegui.py
-#: horizons/gui/modules/multiplayermenu.py
-#: sqlite/Messages
-#: horizons/mpsession.py
-#: %28poterminology%29+4+more+locations
 msgid "game"
 msgstr "Igra"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
 msgid "building"
 msgstr "zgradba"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "tent"
 msgstr "šotor"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Messages
-#: horizons/gui/tabs/boatbuildertab.py
 msgid "resource"
 msgstr "vir"
 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Building
 msgid "branch office"
 msgstr "območna pisarna"
 
-#: po/tutorial.py
-#: horizons/gui/tabs/marketplacetabs.py
-#: horizons/gui/tabs/overviewtab.py
-#: horizons/i18n/guitranslations.py
-#: %28poterminology%29+1+more+locations
-msgid "overview"
-msgstr "pregled"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-#: horizons/gui/tabs/boatbuildertab.py
-#: %28poterminology%29+1+more+locations
-msgid "ship"
-msgstr "ladja"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: run_uh.py
-msgid "main"
-msgstr "glavna zgradba"
-
-#: horizons/constants.py
-#: horizons/scenario/scenarioeventhandler.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-#: %28poterminology%29+3+more+locations
-msgid "unknown"
-msgstr "neznano"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "farm"
-msgstr "kmetija"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/SettlerLevel
-msgid "sailor"
-msgstr "mornar"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "inhabitants"
-msgstr "prebivalci"
-
-# 
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py
-#: horizons/main.py
-#: po/tutorial.py
-#: %28poterminology%29+2+more+locations
-msgid "map"
-msgstr "začetek"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Messages
-msgid "settlement"
-msgstr "naselbina"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "start"
-msgstr "začetek"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "tab"
-msgstr "zavihek"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "field"
-msgstr "polje"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "food"
-msgstr "hrana"
-
-#: po/tutorial.py
-#: horizons/gui/tabs/buildtabs.py
-msgid "increment"
-msgstr "povečanje"
-
-#: po/tutorial.py
-#: horizons/gui/
-msgid "minimap"
-msgstr "mini zemljevid"
-
-#: po/tutorial.py
-#: horizons/gui/
-msgid "running costs"
-msgstr "stroški poslovanja"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "menu"
-msgstr "meni"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "produce"
-msgstr "proizvedi"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/overviewtab.py
-msgid "production"
-msgstr "proizvodnja"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "boards"
-msgstr "lesene deske"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/mpsession.py
-msgid "change"
-msgstr "spremeni"
-
-#: horizons/gui/ingamegui.py
-#: horizons/i18n/guitranslations.py
-#: po/tutorial.py
-msgid "click"
-msgstr "kliknite"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "main square"
-msgstr "glavni trg"
-
-#: horizons/gui/tabs/marketplacetabs.py
-#: sqlite/SettlerLevel
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "settler"
-msgstr "naseljenec"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "time"
-msgstr "čas"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/buyselltab.py
-#: horizons/gui/tabs/boatbuildertab.py
-msgid "trade"
-msgstr "menjava"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "trail"
-msgstr "sled"
-
-#: horizons/constants.py
-#: po/tutorial.py
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py
-#: %28poterminology%29+1+more+locations
-msgid "version"
-msgstr "različica"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "buy"
-msgstr "kupi"
-
-#: po/tutorial.py
-#: horizons/gui/modules/multiplayermenu.py
-msgid "connect"
-msgstr "poveži"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "lumberjack"
-msgstr "gozdar"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sell"
-msgstr "prodaj"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "taxes"
-msgstr "davki"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "wool"
-msgstr "volna"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "coast"
-msgstr "obala"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "companies"
-msgstr "družbe"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "cost"
-msgstr "cena"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "free"
-msgstr "prosto"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "left"
-msgstr "levo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: run_uh.py
-msgid "log"
-msgstr "zapisnik"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "reach"
-msgstr "doseg"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "select"
-msgstr "izberi"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "stock"
-msgstr "zaloga"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "storage"
-msgstr "shramba"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/world/units/ship.py
-msgid "trader"
-msgstr "trgovec"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "balance"
-msgstr "ravnovesje"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "fire"
-msgstr "ogenj"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/boatbuildertab.py
-msgid "fisher"
-msgstr "ribič"
-
-#: horizons/spsession.py
-#: po/tutorial.py
-#: run_uh.py
-#: horizons/main.py
-msgid "found"
-msgstr "najdeno"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "pavilion"
-msgstr "paviljon"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "signal"
-msgstr "signal"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "signal fire"
-msgstr "signalni ogenj"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "slider"
-msgstr "drsnik"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "tools"
-msgstr "orodje"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "active"
-msgstr "dejavno"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "choose"
-msgstr "izberite"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "collector"
-msgstr "zbiralec"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "help"
-msgstr "pomoč"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "house"
-msgstr "hiša"
-
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "level"
-msgstr "stopnja"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "pasture"
-msgstr "pašnik"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/SettlerLevel
-msgid "pioneer"
-msgstr "pionir"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "potato"
-msgstr "krompir"
-
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "range"
-msgstr "doseg"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "running"
-msgstr "izvajanje"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: run_uh.py
-msgid "setting"
-msgstr "nastavljanje"
-
-#: po/tutorial.py
-#: sqlite/Building
-msgid "storage tent"
-msgstr "šotor za shrambo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-#: sqlite/Resources
-msgid "sugar"
-msgstr "sladkor"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "tree"
-msgstr "drevo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "add"
-msgstr "dodaj"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "animal"
-msgstr "žival"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "build menu"
-msgstr "meni gradnje"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "Captain's log"
-msgstr "Kapitanov dnevnik"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "construction"
-msgstr "izgradnja"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "decrease"
-msgstr "zmanjšaj"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "free trader"
-msgstr "neodvisni trgovec"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "happiness"
-msgstr "zadovoljstvo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "hunter"
-msgstr "lovec"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/tabs/inventorytab.py
-msgid "inventory"
-msgstr "inventer"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "lamb"
-msgstr "jagnje"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "liquor"
-msgstr "žganje"
-
-# 
-#: po/tutorial.py
-#: sqlite/Resources
-msgid "raw"
-msgstr "surovo"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "residents"
-msgstr "prebivalci"
-
-#: po/tutorial.py
-#: horizons/gui/widgets/inventory.py
-msgid "slot"
-msgstr "mesto"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "stop"
-msgstr "zaustavi"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "village"
-msgstr "vas"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "your"
 msgstr "vaš"
 
-#: po/tutorial.py
-#: horizons/gui/tabs/marketplacetabs.py
-#: horizons/i18n/guitranslations.py
-msgid "account"
-msgstr "račun"
+msgid "farm"
+msgstr "kmetija"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "back"
-msgstr "nazaj"
+msgid "field"
+msgstr "polje"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "build settlement"
-msgstr "izgradi naselbino"
+msgid "overview"
+msgstr "pregled"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+msgid "ship"
+msgstr "ladja"
+
+msgid "main"
+msgstr "glavna zgradba"
+
+msgid "settlement"
+msgstr "naselbina"
+
+msgid "start"
+msgstr "začetek"
+
+msgid "click"
+msgstr "kliknite"
+
+msgid "inhabitants"
+msgstr "prebivalci"
+
+#
+msgid "map"
+msgstr "začetek"
+
+msgid "menu"
+msgstr "meni"
+
+msgid "production"
+msgstr "proizvodnja"
+
+msgid "tab"
+msgstr "zavihek"
+
+msgid "unknown"
+msgstr "neznano"
+
+msgid "food"
+msgstr "hrana"
+
+msgid "increment"
+msgstr "povečanje"
+
+msgid "select"
+msgstr "izberi"
+
+msgid "setting"
+msgstr "nastavljanje"
+
+msgid "time"
+msgstr "čas"
+
+msgid "trade"
+msgstr "menjava"
+
+msgid "change"
+msgstr "spremeni"
+
+msgid "main square"
+msgstr "glavni trg"
+
+msgid "trail"
+msgstr "sled"
+
+msgid "boards"
+msgstr "lesene deske"
+
+msgid "buy"
+msgstr "kupi"
+
+msgid "coast"
+msgstr "obala"
+
+msgid "connect"
+msgstr "poveži"
+
+msgid "cost"
+msgstr "cena"
+
+msgid "free"
+msgstr "prosto"
+
+msgid "log"
+msgstr "zapisnik"
+
+msgid "lumberjack"
+msgstr "gozdar"
+
+msgid "sell"
+msgstr "prodaj"
+
+msgid "storage"
+msgstr "shramba"
+
+msgid "taxes"
+msgstr "davki"
+
+msgid "trader"
+msgstr "trgovec"
+
+msgid "version"
+msgstr "različica"
+
+msgid "companies"
+msgstr "družbe"
+
+msgid "fire"
+msgstr "ogenj"
+
+msgid "left"
+msgstr "levo"
+
+msgid "reach"
+msgstr "doseg"
+
+msgid "signal"
+msgstr "signal"
+
+msgid "signal fire"
+msgstr "signalni ogenj"
+
+msgid "stock"
+msgstr "zaloga"
+
+msgid "tools"
+msgstr "orodje"
+
+msgid "wool"
+msgstr "volna"
+
+msgid "balance"
+msgstr "ravnovesje"
+
+msgid "choose"
+msgstr "izberite"
+
+msgid "fisher"
+msgstr "ribič"
+
+msgid "found"
+msgstr "najdeno"
+
+msgid "pavilion"
+msgstr "paviljon"
+
+msgid "potato"
+msgstr "krompir"
+
+msgid "range"
+msgstr "doseg"
+
+#
+msgid "raw"
+msgstr "surovo"
+
+msgid "running"
+msgstr "izvajanje"
+
+msgid "running costs"
+msgstr "stroški poslovanja"
+
+msgid "collector"
+msgstr "zbiralec"
+
+msgid "help"
+msgstr "pomoč"
+
+msgid "house"
+msgstr "hiša"
+
+msgid "inventory"
+msgstr "inventer"
+
+msgid "level"
+msgstr "stopnja"
+
+#
+msgid "move"
+msgstr "premakni"
+
+msgid "moved"
+msgstr ""
+
+msgid "produce"
+msgstr "proizvedi"
+
+msgid "produced"
+msgstr ""
+
+msgid "pasture"
+msgstr "pašnik"
+
+msgid "storage tent"
+msgstr "šotor za shrambo"
+
+msgid "sugar"
+msgstr "sladkor"
+
+msgid "tree"
+msgstr "drevo"
+
+msgid "active"
+msgstr "dejavno"
+
+msgid "add"
+msgstr "dodaj"
+
+msgid "build menu"
+msgstr "meni gradnje"
+
 msgid "built"
 msgstr "zgrajeno"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "cloth"
-msgstr "tkanina"
+msgid "construction"
+msgstr "izgradnja"
 
-#: po/tutorial.py
-#: horizons/gui/modules/singleplayermenu.py
-msgid "feature"
-msgstr "zmožnost"
-
-#: po/tutorial.py
-#: sqlite/Resources
-#: sqlite/Building
-msgid "fish"
-msgstr "riba"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "increase"
-msgstr "povečaj"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Resources
-msgid "lamb wool"
-msgstr "ovčja volna"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "leave"
-msgstr "odidi"
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "market"
-msgstr "trg"
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/overviewtab.py
-#: sqlite/Messages
-msgid "market place"
-msgstr "tržnica"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "mode"
-msgstr "način"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/main.py
-msgid "multiple"
-msgstr "več"
-
-# 
-#: po/tutorial.py
-#: run_uh.py
-msgid "output"
-msgstr "izhod"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "partner"
-msgstr "partner"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "play"
-msgstr "igraj"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "potato field"
-msgstr "polje krompirja"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "refresh"
-msgstr "osveži"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sale"
-msgstr "prodaj"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-msgid "save"
-msgstr "shrani"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-#: sqlite/Building
-msgid "school"
-msgstr "šola"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "screen"
-msgstr "zaslon"
-
-#: po/tutorial.py
-#: horizons/engine.py
-msgid "solution"
-msgstr "rešitev"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "sound"
-msgstr "zvok"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "team"
-msgstr "ekipa"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "from time to time"
-msgstr "od časa do časa"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "trading"
-msgstr "trgovanje"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "visit"
-msgstr "obišči"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "weaver"
-msgstr "tkalec"
-
-# 
-#: horizons/gui/ingamegui.py
-#: po/tutorial.py
+#
 msgid "continue"
 msgstr "nadaljuj"
 
-# 
-#: po/tutorial.py
-#: horizons/gui/modules/singleplayermenu.py
+msgid "decrease"
+msgstr "zmanjšaj"
+
+msgid "free trader"
+msgstr "neodvisni trgovec"
+
+msgid "hunter"
+msgstr "lovec"
+
+#
+msgid "leave"
+msgstr "odidi"
+
+#
+msgid "market"
+msgstr "trg"
+
+msgid "partner"
+msgstr "partner"
+
+msgid "sailor"
+msgstr "mornar"
+
+msgid "pioneer"
+msgstr "pionir"
+
+msgid "settler"
+msgstr "naseljenec"
+
+msgid "citizen"
+msgstr ""
+
+msgid "merchant"
+msgstr ""
+
+msgid "aristocrat"
+msgstr ""
+
+#
+msgid "refresh"
+msgstr "osveži"
+
+msgid "residents"
+msgstr "prebivalci"
+
+#
+msgid "run"
+msgstr "poženi"
+
+msgid "slot"
+msgstr "mesto"
+
+msgid "stop"
+msgstr "zaustavi"
+
+msgid "team"
+msgstr "ekipa"
+
+msgid "village"
+msgstr "vas"
+
+msgid "account"
+msgstr "račun"
+
+msgid "back"
+msgstr "nazaj"
+
+#
+msgid "build settlement"
+msgstr "izgradi naselbino"
+
+#
+msgid "Captain's log"
+msgstr "Kapitanov dnevnik"
+
+msgid "cloth"
+msgstr "tkanina"
+
+#
 msgid "description"
 msgstr "opis"
 
-#: po/tutorial.py
-#: sqlite/Resources
-msgid "faith"
-msgstr "vera"
+msgid "happiness"
+msgstr "zadovoljstvo"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
+msgid "increase"
+msgstr "povečaj"
+
+#
+msgid "liquor"
+msgstr "žganje"
+
+msgid "mode"
+msgstr "način"
+
+#
+msgid "multiple"
+msgstr "več"
+
+#
+msgid "output"
+msgstr "izhod"
+
+#
+msgid "play"
+msgstr "igraj"
+
+msgid "sale"
+msgstr "prodaj"
+
+#
+msgid "save"
+msgstr "shrani"
+
+#
+msgid "school"
+msgstr "šola"
+
+#
+msgid "screen"
+msgstr "zaslon"
+
+msgid "solution"
+msgstr "rešitev"
+
+#
+msgid "sound"
+msgstr "zvok"
+
+msgid "from time to time"
+msgstr "od časa do časa"
+
+msgid "trading"
+msgstr "trgovanje"
+
+msgid "visit"
+msgstr "obišči"
+
+msgid "weaver"
+msgstr "tkalec"
+
+msgid "animal"
+msgstr "žival"
+
+msgid "fish"
+msgstr "riba"
+
+#
 msgid "fisherman"
 msgstr "ribič"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "forest"
 msgstr "gozd"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
+#
 msgid "forum"
 msgstr "forum"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "fulfill"
 msgstr "izpolni"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "graphics"
 msgstr "grafika"
 
-# 
-#: po/tutorial.py
-#: sqlite/Colors
-msgid "green"
-msgstr "zeleno"
-
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "grow"
 msgstr "rasti"
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "hold"
 msgstr "držati"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "hunts"
-msgstr "lovi"
+msgid "hunt"
+msgstr ""
 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
 msgid "income"
 msgstr "prihodek"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
+#
 msgid "information"
 msgstr "informacija"
 
 # (keyboard)
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "key"
 msgstr "ključ"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
+msgid "lamb wool"
+msgstr "ovčja volna"
+
+#
 msgid "load/unload"
 msgstr "naloži/razloži"
 
-# 
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "move"
-msgstr "premakni"
-
-# 
-#: po/tutorial.py
-#: sqlite/Colors
-msgid "red"
-msgstr "rdeče"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "return"
 msgstr "vrni se"
 
-# 
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "run"
-msgstr "poženi"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "service"
 msgstr "storitev"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "sheep"
 msgstr "ovca"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "SHIFT"
-msgstr "SHIFT"
-
-# 
-#: po/tutorial.py
-#: horizons/gui/tabs/inventorytab.py
+#
 msgid "ship inventory"
 msgstr "inventar ladje"
 
-# 
-#: po/tutorial.py
-#: run_uh.py
+#
 msgid "starting"
 msgstr "začenjanje"
 
-# 
-#: po/tutorial.py
-#: sqlite/Building
-msgid "sugar field"
-msgstr "polje sladkornega trsa"
-
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "trade partner"
 msgstr "trgovnski partner"
 
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
+#
 msgid "yields"
 msgstr "izkoristki"
+
+msgid "faith"
+msgstr "vera"
+
+#
+msgid "green"
+msgstr "zeleno"
+
+#
+msgid "red"
+msgstr "rdeče"
+
+msgid "check"
+msgstr ""
+
+msgid "connection"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "tax"
+msgstr ""
+
+msgid "feature"
+msgstr "zmožnost"
+
+msgid "reached"
+msgstr ""
+
+msgid "slider"
+msgstr "drsnik"
+
+msgid "condition"
+msgstr ""
+
+msgid "consume"
+msgstr ""
+
+msgid "contact"
+msgstr ""
+
+msgid "dialogue"
+msgstr ""
+
+msgid "issues"
+msgstr ""
+
+msgid "minimap"
+msgstr "mini zemljevid"
+
+msgid "playing"
+msgstr ""
+
+msgid "ruin"
+msgstr ""
+
+msgid "seed"
+msgstr ""
+
+msgid "temporarily"
+msgstr ""
+
+msgid "salt ponds"
+msgstr ""
+
+msgid "tobacco"
+msgstr ""
+
+msgid "cattle"
+msgstr ""
+
+msgid "pig"
+msgstr ""
+
+msgid "herbs"
+msgstr ""
+
+msgid "herbary"
+msgstr ""
+
+msgid "butchery"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "clay"
+msgstr ""
+
+msgid "charcoal"
+msgstr ""
+
+msgid "iron"
+msgstr ""
+
+msgid "ore"
+msgstr ""
+
+#~ msgid "lamb"
+#~ msgstr "jagnje"
+
+# 
+#~ msgid "market place"
+#~ msgstr "tržnica"
+
+# 
+#~ msgid "potato field"
+#~ msgstr "polje krompirja"
+
+# 
+#~ msgid "hunts"
+#~ msgstr "lovi"
+
+# 
+#~ msgid "SHIFT"
+#~ msgstr "SHIFT"
+
+# 
+#~ msgid "sugar field"
+#~ msgstr "polje sladkornega trsa"
