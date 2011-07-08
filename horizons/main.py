@@ -198,7 +198,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	players.append({ 'id' : 4, 'name' : 'DumDum3', 'color' : Color[4], 'local' : True })
 	players.append({ 'id' : 5, 'name' : 'DumDum4', 'color' : Color[5], 'local' : True })
 	players.append({ 'id' : 6, 'name' : 'DumDum5', 'color' : Color[6], 'local' : True })
-	players.append({ 'id' : 7, 'name' : 'DumDum6', 'color' : Color[7], 'local' : True })
+	players.append({ 'id' : 7, 'name' : 'Big Boss', 'color' : Color[7], 'local' : True })
 	try:
 		_modules.session.load(map_file, players, is_scenario=is_scenario, campaign = campaign)
 	except:
