@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-05-23 20:45+0200\n"
+"PO-Revision-Date: 2011-07-08 18:50+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "строить"
@@ -221,14 +221,16 @@ msgstr "уровень"
 msgid "move"
 msgstr "двигать"
 
+# 80%
 msgid "moved"
-msgstr ""
+msgstr "перемещённый"
 
 msgid "produce"
 msgstr "производить"
 
+# 87%
 msgid "produced"
-msgstr ""
+msgstr "произведённый"
 
 msgid "pasture"
 msgstr "пастбище"
@@ -291,13 +293,13 @@ msgid "settler"
 msgstr "поселенец"
 
 msgid "citizen"
-msgstr ""
+msgstr "горожанин"
 
 msgid "merchant"
-msgstr ""
+msgstr "торговец"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "аристократ"
 
 #
 msgid "refresh"
@@ -434,8 +436,10 @@ msgstr "расти"
 msgid "hold"
 msgstr "удерживать / держать"
 
+# 3-е лицо
+# 80%
 msgid "hunt"
-msgstr ""
+msgstr "охотиться"
 
 msgid "income"
 msgstr "доход / прибыль"
@@ -497,16 +501,16 @@ msgid "red"
 msgstr "красный"
 
 msgid "check"
-msgstr ""
+msgstr "проверять"
 
 msgid "connection"
-msgstr ""
+msgstr "соединение"
 
 msgid "no"
-msgstr ""
+msgstr "нет"
 
 msgid "tax"
-msgstr ""
+msgstr "налог"
 
 msgid "feature"
 msgstr "возможность / функция"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-08 18:34+0200\n"
+"PO-Revision-Date: 2011-07-08 18:43+0200\n"
 "Last-Translator: William <cabrerawilliam@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -69,10 +69,14 @@ msgstr "Puerto de red inválido"
 #: horizons/engine.py:468
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"El puerto que ha spcificado no es válido. Debe ser un número entre 1 y "
+"65535."
 
 #: horizons/engine.py:469
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
+"Por favor, compruebe que ha introducido el puerto y asegúrese de que está en "
+"el rango especificado."
 
 #: horizons/engine.py:481
 msgid "Failed to apply new network data."
