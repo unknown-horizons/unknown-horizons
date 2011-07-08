@@ -103,6 +103,7 @@ class LandManager(WorldObject):
 		self.session = self.island.session
 		self.production = {}
 		self.village = {}
+		self.roads = set() # set((x, y), ...) of coordinates where road can be built independent of the area purpose
 		self.resource_deposits = {}
 		self.resource_deposits[BUILDINGS.CLAY_DEPOSIT_CLASS] = self._get_buildings_by_id(BUILDINGS.CLAY_DEPOSIT_CLASS)
 		self.resource_deposits[BUILDINGS.MOUNTAIN_CLASS] = self._get_buildings_by_id(BUILDINGS.MOUNTAIN_CLASS)

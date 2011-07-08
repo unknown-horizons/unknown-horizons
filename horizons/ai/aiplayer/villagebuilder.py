@@ -62,6 +62,8 @@ class VillageBuilder(AreaBuilder):
 		for x, y, purpose, builder_id in db_result:
 			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
 			self.plan[(x, y)] = (purpose, builder)
+			if purpose == BUILDING_PURPOSE.ROAD:
+				self.land_manager.roads.add((x, y))
 
 		for x, y in db("SELECT x, y FROM ai_village_builder_tent_queue WHERE village_builder = ? ORDER BY rowid ASC", worldid):
 			self.tent_queue.append((x, y))
@@ -155,6 +157,11 @@ class VillageBuilder(AreaBuilder):
 				self.plan[coords] = plan[coords]
 		self.num_sections = len(sections)
 		self._reserve_other_buildings()
+
+		# add potential roads to the island's network
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose == BUILDING_PURPOSE.ROAD:
+				self.land_manager.roads.add(coords)
 
 	@classmethod
 	def _remove_unreachable_roads(cls, plan, main_square):

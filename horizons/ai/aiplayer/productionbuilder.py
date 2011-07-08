@@ -97,6 +97,8 @@ class ProductionBuilder(AreaBuilder):
 				self.production_buildings.append(object)
 			elif purpose == BUILDING_PURPOSE.STORAGE and object.id == BUILDINGS.STORAGE_CLASS:
 				self.collector_buildings.append(object)
+			elif purpose == BUILDING_PURPOSE.ROAD:
+				self.land_manager.roads.add((x, y))
 
 		self.refresh_unused_fields()
 

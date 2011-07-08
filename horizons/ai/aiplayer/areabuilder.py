@@ -93,8 +93,7 @@ class AreaBuilder(WorldObject):
 				road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
 				if road:
 					yield (tile.x, tile.y)
-			else:
-				if building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS:
+			elif building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS or point.to_tuple() in self.land_manager.roads:
 					yield (tile.x, tile.y)
 
 	def _fill_distance(self, distance, nodes):
@@ -131,8 +130,7 @@ class AreaBuilder(WorldObject):
 					break
 
 		for coords in self.land_manager.village:
-			building = self.island.get_building(Point(coords[0], coords[1]))
-			if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
+			if coords in self.land_manager.roads:
 				nodes[coords] = 1
 				distance_to_road[coords] = 0
 				for (dx, dy) in moves:
@@ -249,5 +247,7 @@ class AreaBuilder(WorldObject):
 	def register_change(self, x, y, purpose, builder):
 		if (x, y) in self.plan:
 			self.plan[(x, y)] = (purpose, builder)
+			if purpose == BUILDING_PURPOSE.ROAD:
+				self.land_manager.roads.add((x, y))
 
 decorators.bind_all(AreaBuilder)
