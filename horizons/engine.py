@@ -70,10 +70,17 @@ class LocalizedSetting(Setting):
 		title = _("Restore default settings")
 		msg = _("This will delete all changes to the settings you made so far.") + \
 		      u" " + _("Do you want to continue?")
-		confirmed = horizons.main._modules.gui.show_popup(title, msg, \
-		                                                  show_cancel_button=True)
+		try:
+			confirmed = horizons.main._modules.gui.show_popup(title, msg, \
+			                                                  show_cancel_button=True)
+		except AttributeError: #no gui available, called by e.g. cmd line param
+			confirmed = True
 		if confirmed:
-			super(LocalizedSetting, self).setDefaults()
+			try:
+				super(LocalizedSetting, self).setDefaults()
+			except AttributeError, err: #weird stuff happens in settings module reset
+				print "A problem occured while updating: %s" % err + "\n" + \
+				      "Please contact the developers if this happens more than once."
 
 class Fife(ApplicationBase):
 	"""
