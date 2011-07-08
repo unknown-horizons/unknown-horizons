@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-08 17:23+0200\n"
+"PO-Revision-Date: 2011-07-08 20:14+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "bygg"
@@ -102,7 +102,7 @@ msgid "main square"
 msgstr "huvudtorget"
 
 msgid "trail"
-msgstr "spår"
+msgstr "väg"
 
 msgid "boards"
 msgstr "plankor"
@@ -126,7 +126,7 @@ msgid "log"
 msgstr "loggbok"
 
 msgid "lumberjack"
-msgstr "timmerhuggare"
+msgstr "timmerman"
 
 msgid "sell"
 msgstr "sälja"
@@ -541,13 +541,13 @@ msgid "salt ponds"
 msgstr ""
 
 msgid "tobacco"
-msgstr ""
+msgstr "tobak"
 
 msgid "cattle"
-msgstr ""
+msgstr "nötkreatur"
 
 msgid "pig"
-msgstr ""
+msgstr "gris"
 
 msgid "herbs"
 msgstr ""
@@ -556,25 +556,25 @@ msgid "herbary"
 msgstr ""
 
 msgid "butchery"
-msgstr ""
+msgstr "slaktare"
 
 msgid "doctor"
-msgstr ""
+msgstr "läkare"
 
 msgid "education"
-msgstr ""
+msgstr "utbildning"
 
 msgid "clay"
-msgstr ""
+msgstr "lera"
 
 msgid "charcoal"
-msgstr ""
+msgstr "träkol"
 
 msgid "iron"
-msgstr ""
+msgstr "järn"
 
 msgid "ore"
-msgstr ""
+msgstr "malm"
 
 #~ msgid "lamb"
 #~ msgstr "lamm"
