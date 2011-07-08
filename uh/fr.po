@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-03 22:18+0200\n"
+"PO-Revision-Date: 2011-07-03 22:20+0200\n"
 "Last-Translator: tintou <tintou@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1152,9 +1152,11 @@ msgstr "Moteur de rendu utilisé :"
 msgid "Please make sure that you know what you do."
 msgstr "Veuillez vous assurer que vous savez ce que vous faites."
 
+# 83%
 #: horizons/i18n/guitranslations.py:260
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Appliquer :"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
@@ -1337,10 +1339,12 @@ msgstr "Nom :"
 msgid "Taxes:"
 msgstr "Impôts :"
 
+# 87%
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
+#, fuzzy
 msgid "Tax rate"
-msgstr ""
+msgstr "Taux d'impôts :"
 
 # le contexte est à vérifier
 #: horizons/i18n/guitranslations.py:336
@@ -1506,15 +1510,17 @@ msgstr "Erreur: Impossible de trouver la campagne \"%s\"."
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Erreur: Impossible de trouver la campagne avec le fichier \"%s\"."
 
+# 81%
 #: horizons/savegamemanager.py:416
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr ""
+msgstr "Erreur: Impossible de trouver la sauvegarde \"%s\"."
 
+# 83%
 #: horizons/savegamemanager.py:421
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr ""
+msgstr "Erreur: Impossible de trouver la campagne avec le fichier \"%s\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1839,9 +1845,11 @@ msgstr "Taverne"
 msgid "Tent"
 msgstr "Tente"
 
+# 77%
 #: sqlite/Building
+#, fuzzy
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Tente abîmée"
 
 #: sqlite/Building
 msgid "Tobacco Field"

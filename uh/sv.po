@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-08 16:42+0200\n"
+"PO-Revision-Date: 2011-07-08 17:41+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Vill du fortsätta?"
 
 #: horizons/engine.py:135
 msgid "System default"
@@ -44,7 +44,7 @@ msgstr ""
 
 #: horizons/engine.py:159
 msgid "Warning"
-msgstr ""
+msgstr "Varning"
 
 #: horizons/engine.py:160
 msgid ""
@@ -92,15 +92,15 @@ msgstr ""
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr ""
+msgstr "Misslyckade att spara."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Är du säker att du vill avsluta Unknown Horizons?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
-msgstr ""
+msgstr "Avsluta spelet"
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
@@ -108,24 +108,24 @@ msgstr ""
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
-msgstr ""
+msgstr "Avsluta sessionen"
 
 #: horizons/gui/gui.py:201
 msgid "No saved games"
-msgstr ""
+msgstr "Inga sparade spel"
 
 #: horizons/gui/gui.py:201
 msgid "There are no saved games to load"
-msgstr ""
+msgstr "Det finns inga sparade spel att ladda"
 
 #: horizons/gui/gui.py:208 horizons/i18n/guitranslations.py:163
 #: horizons/i18n/guitranslations.py:202
 msgid "Load game"
-msgstr ""
+msgstr "Ladda spel"
 
 #: horizons/gui/gui.py:208 horizons/i18n/guitranslations.py:165
 msgid "Save game"
-msgstr ""
+msgstr "Spara spel"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:254
@@ -134,6 +134,8 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Ett sparat spel med namnet \"%s\" finns redan. \n"
+"Vill du skriva över filen?"
 
 #: horizons/gui/gui.py:255
 msgid "Confirmation for overwriting"
@@ -141,17 +143,17 @@ msgstr ""
 
 #: horizons/gui/gui.py:263
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Välj ett sparat spel eller klicka på avbryt."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:263
 msgid "Select a savegame"
-msgstr ""
+msgstr "Välj ett sparat spel"
 
 #: horizons/gui/gui.py:330 horizons/i18n/guitranslations.py:144
 #: horizons/i18n/guitranslations.py:265
 msgid "Details:"
-msgstr ""
+msgstr "Detaljer:"
 
 #: horizons/gui/gui.py:331
 msgid "Error:"
@@ -197,7 +199,7 @@ msgstr ""
 #: horizons/gui/gui.py:449
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Vill du verkligen radera det sparade spelet \"%s\"?"
 
 #: horizons/gui/gui.py:451
 msgid "Confirm deletion"
@@ -209,15 +211,15 @@ msgstr ""
 
 #: horizons/gui/gui.py:456
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Misslyckades att radera sparat spel!"
 
 #: horizons/gui/ingamegui.py:449
 msgid "Hit P to continue the game or click below!"
-msgstr ""
+msgstr "Tryck P för att fortsätta eller klicka nedan!"
 
 #: horizons/gui/ingamegui.py:450
 msgid "Game paused"
-msgstr ""
+msgstr "Spel pausat"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
@@ -251,15 +253,15 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Map: "
-msgstr ""
+msgstr "Karta:"
 
 #: horizons/gui/modules/multiplayermenu.py:148
 msgid "Players: "
-msgstr ""
+msgstr "Spelare:"
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid "Creator: "
-msgstr ""
+msgstr "Skapare:"
 
 #: horizons/gui/modules/multiplayermenu.py:168
 #, python-format
@@ -274,7 +276,7 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:108
 #: horizons/gui/widgets/choose_next_scenario.py:45
 msgid "Difficulty: "
-msgstr ""
+msgstr "Svårighetsgrad:"
 
 #: horizons/gui/modules/singleplayermenu.py:97
 #: horizons/gui/modules/singleplayermenu.py:109
@@ -286,7 +288,7 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:110
 #: horizons/gui/widgets/choose_next_scenario.py:47
 msgid "Description: "
-msgstr ""
+msgstr "Beskrivning:"
 
 #: horizons/gui/modules/singleplayermenu.py:128
 msgid "Invalid player name"
@@ -316,7 +318,7 @@ msgstr ""
 #: horizons/gui/mousetools/buildingtool.py:114
 #: horizons/gui/tabs/buildrelatedtab.py:96 horizons/i18n/guitranslations.py:92
 msgid "Build"
-msgstr ""
+msgstr "bygg"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
