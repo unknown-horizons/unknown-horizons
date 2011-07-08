@@ -279,7 +279,7 @@ class MovingObject(ConcretObject):
 
 	def get_estimated_travel_time(self, destination):
 		path = self.path.calc_path(destination, check_only = True)
-		if path is None:
+		if not path and path != []:
 			return None
 
 		path_length = 0 # length in ticks to travel the distance
