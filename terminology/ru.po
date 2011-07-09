@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-08 18:59+0200\n"
+"PO-Revision-Date: 2011-07-08 19:41+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -439,7 +439,7 @@ msgstr "удерживать / держать"
 # 3-е лицо
 # 80%
 msgid "hunt"
-msgstr "охотиться"
+msgstr "охотится"
 
 msgid "income"
 msgstr "доход / прибыль"
