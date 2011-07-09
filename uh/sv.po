@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-09 13:20+0200\n"
+"PO-Revision-Date: 2011-07-09 14:20+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -666,7 +666,7 @@ msgstr "Zooma ut"
 
 #: horizons/i18n/guitranslations.py:115
 msgid "Boards"
-msgstr ""
+msgstr "Timmer"
 
 #: horizons/i18n/guitranslations.py:116
 msgid "Bricks"
@@ -1848,7 +1848,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "boards"
-msgstr ""
+msgstr "timmer"
 
 #: sqlite/Resources
 msgid "bricks"
