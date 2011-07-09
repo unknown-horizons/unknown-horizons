@@ -305,12 +305,29 @@ class SettlementManager(WorldObject):
 			total += max(0.0, usage - production)
 		return total
 
+	def need_more_storage(self):
+		limit = self.settlement.inventory.get_limit(RES.FOOD_ID)
+		if limit >= 120:
+			return False
+		important_resources = [RES.FOOD_ID]
+		for resource_id in important_resources:
+			if self.settlement.inventory[resource_id] + 5 >= limit:
+				return True
+		return False
+
 	def feeder_tick(self):
 		Scheduler().add_new_object(Callback(self.feeder_tick), self, run_in = 32)
 		self.manage_production()
 		self.resource_manager.refresh()
 
+		self.log.info('%s food production %.5f', self, self.get_resource_production(RES.FOOD_ID))
+
 		if self.build_chain(self.boards_chain, 'boards producer'):
+			return
+
+		if not self.production_builder.enough_collectors():
+			result = self.production_builder.improve_collector_coverage()
+			self.log_generic_build_result(result,  'storage')
 			return
 
 		settlement_managers = []
@@ -319,8 +336,13 @@ class SettlementManager(WorldObject):
 				settlement_managers.append(settlement_manager)
 
 		needed_food = self.get_total_missing_production(settlement_managers, RES.FOOD_ID)
-		if needed_food > 0 and self.build_generic_chain(self.food_chain, 'food producer', needed_food):
-			return
+		self.log.info('%s food requirement %.5f', self, needed_food)
+		if needed_food > 0:
+			if self.need_more_storage():
+				result = self.production_builder.improve_collector_coverage()
+				self.log_generic_build_result(result, 'storage')
+			if self.build_generic_chain(self.food_chain, 'food producer', needed_food):
+				return
 
 	def tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
