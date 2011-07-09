@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-08 18:27+0200\n"
+"PO-Revision-Date: 2011-07-08 18:29+0200\n"
 "Last-Translator: William <cabrerawilliam@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -918,8 +918,12 @@ msgstr "crecer / cultivar"
 msgid "hold"
 msgstr "parar / interrumpir"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+#, fuzzy
 msgid "hunt"
-msgstr ""
+msgstr "caza"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
