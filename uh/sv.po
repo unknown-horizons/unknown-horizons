@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-09 15:39+0200\n"
+"PO-Revision-Date: 2011-07-09 15:45+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -529,15 +529,15 @@ msgstr "Potatisfält: Ger föda. Behöver en gård."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr ""
+msgstr "Sockerrörsodling: Används till produktion av sprit. Behöver en gård."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
-msgstr ""
+msgstr "Byskola: Ger utbildning."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
+msgstr "Vävare: Väver fårull till textilier."
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Settler buildings"
@@ -545,7 +545,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Slaktare: Behöver grisar eller nötkreatur. Producerar föda."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Cattle run: Raises cattle. Needs a farm."
