@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-08 20:15+0200\n"
+"PO-Revision-Date: 2011-07-09 12:37+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -92,7 +92,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr "Misslyckade att spara."
+msgstr "Misslyckades att spara."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -253,15 +253,15 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Map: "
-msgstr "Karta:"
+msgstr "Karta: "
 
 #: horizons/gui/modules/multiplayermenu.py:148
 msgid "Players: "
-msgstr "Spelare:"
+msgstr "Spelare: "
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid "Creator: "
-msgstr "Skapare:"
+msgstr "Skapare: "
 
 #: horizons/gui/modules/multiplayermenu.py:168
 #, python-format
@@ -276,7 +276,7 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:108
 #: horizons/gui/widgets/choose_next_scenario.py:45
 msgid "Difficulty: "
-msgstr "Svårighetsgrad:"
+msgstr "Svårighetsgrad: "
 
 #: horizons/gui/modules/singleplayermenu.py:97
 #: horizons/gui/modules/singleplayermenu.py:109
@@ -288,7 +288,7 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:110
 #: horizons/gui/widgets/choose_next_scenario.py:47
 msgid "Description: "
-msgstr "Beskrivning:"
+msgstr "Beskrivning: "
 
 #: horizons/gui/modules/singleplayermenu.py:128
 msgid "Invalid player name"
@@ -513,7 +513,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
-msgstr "Destilleri: Omvandlar socker till sprit."
+msgstr "Destilleri: Bränner socker till sprit."
 
 #: horizons/i18n/guitranslations.py:66
 msgid "Farm: Grows field crops and raises livestock."

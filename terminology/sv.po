@@ -220,14 +220,18 @@ msgstr ""
 msgid "move"
 msgstr "flytta"
 
+# 80%
+#, fuzzy
 msgid "moved"
-msgstr ""
+msgstr "flytta"
 
 msgid "produce"
 msgstr "producera"
 
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "producera"
 
 msgid "pasture"
 msgstr "betesmark"
@@ -343,15 +347,19 @@ msgstr "beskrivning"
 msgid "happiness"
 msgstr "lycka"
 
+# 75%
+#, fuzzy
 msgid "increase"
-msgstr ""
+msgstr "minska"
 
 #
 msgid "liquor"
 msgstr "sprit"
 
+# 75%
+#, fuzzy
 msgid "mode"
-msgstr ""
+msgstr "flytta"
 
 msgid "multiple"
 msgstr ""
@@ -362,8 +370,10 @@ msgstr ""
 msgid "play"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "sale"
-msgstr ""
+msgstr "spara"
 
 #
 msgid "save"
@@ -528,8 +538,10 @@ msgstr "minikarta"
 msgid "playing"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "ruin"
-msgstr ""
+msgstr "kör"
 
 msgid "seed"
 msgstr ""
