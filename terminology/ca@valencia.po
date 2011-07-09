@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "construir"
@@ -138,8 +138,10 @@ msgstr "emmagatzematge"
 msgid "taxes"
 msgstr "impostos"
 
+# 83%
+#, fuzzy
 msgid "trader"
-msgstr ""
+msgstr "comerç"
 
 msgid "version"
 msgstr "versió"
@@ -225,8 +227,10 @@ msgstr ""
 msgid "produce"
 msgstr "produir"
 
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "produir"
 
 msgid "pasture"
 msgstr ""
@@ -237,8 +241,10 @@ msgstr ""
 msgid "sugar"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "tree"
-msgstr ""
+msgstr "lliure"
 
 msgid "active"
 msgstr ""
@@ -249,8 +255,10 @@ msgstr ""
 msgid "build menu"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "built"
-msgstr ""
+msgstr "construir"
 
 msgid "construction"
 msgstr ""
