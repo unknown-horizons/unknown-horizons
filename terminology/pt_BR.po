@@ -4,14 +4,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
 "PO-Revision-Date: 2011-05-13 18:58+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "construir"
@@ -225,8 +225,10 @@ msgstr ""
 msgid "produce"
 msgstr "produzir"
 
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "produzir"
 
 msgid "pasture"
 msgstr "pasto"
@@ -249,8 +251,10 @@ msgstr "adicionar / acrescentar"
 msgid "build menu"
 msgstr "menu de construção"
 
+# 80%
+#, fuzzy
 msgid "built"
-msgstr ""
+msgstr "construir"
 
 msgid "construction"
 msgstr ""
@@ -369,8 +373,10 @@ msgstr ""
 msgid "solution"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "sound"
-msgstr ""
+msgstr "estabelecer / (fundar)"
 
 msgid "from time to time"
 msgstr ""

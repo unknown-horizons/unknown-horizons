@@ -1475,9 +1475,11 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
+# 75%
 #: horizons/spsession.py:121
+#, fuzzy
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "No es pot salvar."
 
 #: horizons/spsession.py:122
 msgid "An error happened during quicksave. Your game has not been saved."
