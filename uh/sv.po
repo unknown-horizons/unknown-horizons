@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-09 12:48+0200\n"
+"PO-Revision-Date: 2011-07-09 13:20+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -318,7 +318,7 @@ msgstr ""
 #: horizons/gui/mousetools/buildingtool.py:114
 #: horizons/gui/tabs/buildrelatedtab.py:96 horizons/i18n/guitranslations.py:92
 msgid "Build"
-msgstr "bygg"
+msgstr "Bygg"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
@@ -465,7 +465,7 @@ msgstr "Signalbrand: Tillåter spelaren handel med fria köpmän."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr "Timmerman: Hugger ner träd och gör dem till plank."
+msgstr "Timmerstuga: Hugger ner träd som sågas till timmer."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
@@ -754,7 +754,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr "Fortsätt spela"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
@@ -803,7 +803,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:242
 msgid "Settings"
-msgstr ""
+msgstr "Inställningar"
 
 #: horizons/i18n/guitranslations.py:167
 msgid "Return to game"
@@ -899,7 +899,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:192
 msgid "{C} = Chat"
-msgstr ""
+msgstr "{C} = Chatt"
 
 #: horizons/i18n/guitranslations.py:193
 msgid "{L} = Toggle Captain's log"
@@ -913,7 +913,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:196
 msgid "Loading ..."
-msgstr ""
+msgstr "Laddar ..."
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Quit"
@@ -929,7 +929,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 msgid "Create game:"
-msgstr ""
+msgstr "Skapa spel:"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Back:"
@@ -1037,11 +1037,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:243
 msgid "Graphics"
-msgstr ""
+msgstr "Grafik"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 #: horizons/i18n/guitranslations.py:245
 msgid "Network"
@@ -1255,7 +1255,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Taxes"
-msgstr ""
+msgstr "Skatter"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
@@ -1280,7 +1280,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:330 horizons/i18n/guitranslations.py:344
 msgid "Taxes:"
-msgstr ""
+msgstr "Skatter:"
 
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
@@ -1620,7 +1620,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Brickyard"
-msgstr ""
+msgstr "Tegelbruk"
 
 #: sqlite/Building
 msgid "Butchery"
@@ -1648,11 +1648,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Läkare"
 
 #: sqlite/Building
 msgid "Farm"
-msgstr ""
+msgstr "Gård"
 
 #: sqlite/Building
 msgid "Fish Deposit"
@@ -1672,7 +1672,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Iron Mine"
-msgstr ""
+msgstr "Järngruva"
 
 #: sqlite/Building
 msgid "Log"
@@ -1692,7 +1692,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Mountain"
-msgstr ""
+msgstr "Berg"
 
 #: sqlite/Building
 msgid "Pasture"
@@ -1772,35 +1772,35 @@ msgstr ""
 
 #: sqlite/Colors
 msgid "black"
-msgstr ""
+msgstr "svart"
 
 #: sqlite/Colors
 msgid "blue"
-msgstr ""
+msgstr "blå"
 
 #: sqlite/Colors
 msgid "cyan"
-msgstr ""
+msgstr "cyan"
 
 #: sqlite/Colors
 msgid "green"
-msgstr ""
+msgstr "grön"
 
 #: sqlite/Colors
 msgid "pink"
-msgstr ""
+msgstr "rosa"
 
 #: sqlite/Colors
 msgid "red"
-msgstr ""
+msgstr "röd"
 
 #: sqlite/Colors
 msgid "white"
-msgstr ""
+msgstr "vit"
 
 #: sqlite/Colors
 msgid "yellow"
-msgstr ""
+msgstr "gul"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
@@ -1852,11 +1852,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "bricks"
-msgstr ""
+msgstr "brickor"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr ""
+msgstr "nötkreatur"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
@@ -1864,15 +1864,15 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr ""
+msgstr "träkol"
 
 #: sqlite/Resources
 msgid "clay"
-msgstr ""
+msgstr "lera"
 
 #: sqlite/Resources
 msgid "coins"
-msgstr ""
+msgstr "mynt"
 
 #: sqlite/Resources
 msgid "community"
@@ -1888,19 +1888,19 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "education"
-msgstr ""
+msgstr "utbildning"
 
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "tro"
 
 #: sqlite/Resources
 msgid "fish"
-msgstr ""
+msgstr "fisk"
 
 #: sqlite/Resources
 msgid "food"
-msgstr ""
+msgstr "föda"
 
 #: sqlite/Resources
 msgid "get-together"
@@ -1908,11 +1908,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "grass"
-msgstr ""
+msgstr "gräs"
 
 #: sqlite/Resources
 msgid "happiness"
-msgstr ""
+msgstr "lycka"
 
 #: sqlite/Resources
 msgid "herbs"
@@ -1920,23 +1920,23 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr ""
+msgstr "järntackor"
 
 #: sqlite/Resources
 msgid "iron ore"
-msgstr ""
+msgstr "järnmalm"
 
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "lammull"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "sprit"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "grisar"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
@@ -1968,11 +1968,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "salt"
 
 #: sqlite/Resources
 msgid "sugar"
-msgstr ""
+msgstr "socker"
 
 #: sqlite/Resources
 msgid "textile"
@@ -1980,7 +1980,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "tobacco"
-msgstr ""
+msgstr "tobak"
 
 #: sqlite/Resources
 msgid "tobaccos"
@@ -1988,19 +1988,19 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "tools"
-msgstr ""
+msgstr "verktyg"
 
 #: sqlite/Resources
 msgid "wood"
-msgstr ""
+msgstr "trä"
 
 #: sqlite/Resources
 msgid "wool"
-msgstr ""
+msgstr "ull"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokrat"
 
 #: sqlite/SettlerLevel
 msgid "citizen"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-08 20:14+0200\n"
+"PO-Revision-Date: 2011-07-09 13:05+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -126,7 +126,7 @@ msgid "log"
 msgstr "loggbok"
 
 msgid "lumberjack"
-msgstr "timmerman"
+msgstr "timmerstuga"
 
 msgid "sell"
 msgstr "sälja"
@@ -221,17 +221,15 @@ msgid "move"
 msgstr "flytta"
 
 # 80%
-#, fuzzy
 msgid "moved"
-msgstr "flytta"
+msgstr "flyttad"
 
 msgid "produce"
 msgstr "producera"
 
 # 87%
-#, fuzzy
 msgid "produced"
-msgstr "producera"
+msgstr ""
 
 msgid "pasture"
 msgstr "betesmark"
@@ -348,18 +346,16 @@ msgid "happiness"
 msgstr "lycka"
 
 # 75%
-#, fuzzy
 msgid "increase"
-msgstr "minska"
+msgstr "öka"
 
 #
 msgid "liquor"
 msgstr "sprit"
 
 # 75%
-#, fuzzy
 msgid "mode"
-msgstr "flytta"
+msgstr ""
 
 msgid "multiple"
 msgstr ""
@@ -371,9 +367,8 @@ msgid "play"
 msgstr ""
 
 # 75%
-#, fuzzy
 msgid "sale"
-msgstr "spara"
+msgstr ""
 
 #
 msgid "save"
@@ -506,7 +501,7 @@ msgid "no"
 msgstr ""
 
 msgid "tax"
-msgstr ""
+msgstr "skatt"
 
 msgid "feature"
 msgstr ""
@@ -539,9 +534,8 @@ msgid "playing"
 msgstr ""
 
 # 75%
-#, fuzzy
 msgid "ruin"
-msgstr "kör"
+msgstr ""
 
 msgid "seed"
 msgstr ""
