@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-09 14:20+0200\n"
+"PO-Revision-Date: 2011-07-09 15:39+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -100,11 +100,11 @@ msgstr "Är du säker att du vill avsluta Unknown Horizons?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
-msgstr "Avsluta spelet"
+msgstr "Avsluta spel"
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Är du säker att du vill avbryta den pågående sessionen?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
@@ -270,7 +270,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:168
 msgid "Wrong version"
-msgstr ""
+msgstr "Fel version"
 
 #: horizons/gui/modules/singleplayermenu.py:96
 #: horizons/gui/modules/singleplayermenu.py:108
@@ -481,7 +481,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Trail: Needed for collecting goods."
-msgstr ""
+msgstr "Gångstig: Behövs för att samla in varor."
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
@@ -517,15 +517,15 @@ msgstr "Destilleri: Bränner socker till sprit."
 
 #: horizons/i18n/guitranslations.py:66
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
+msgstr "Gård: Odlar grödor och föder upp boskap."
 
 #: horizons/i18n/guitranslations.py:67
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "Betesmark: Föder upp får. Producerar ull. Behöver en gård."
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
+msgstr "Potatisfält: Ger föda. Behöver en gård."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
