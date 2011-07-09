@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-09 12:37+0200\n"
+"PO-Revision-Date: 2011-07-09 12:48+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -593,11 +593,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Verktygsmakare: Producerar verktyg av järn."
 
 #: horizons/i18n/guitranslations.py:93 horizons/i18n/guitranslations.py:327
 msgid "Running costs:"
-msgstr ""
+msgstr "Driftskostnader:"
 
 #: horizons/i18n/guitranslations.py:95
 msgid "String Previewer Tool for Scenario files"
@@ -613,11 +613,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Inhabitants"
-msgstr ""
+msgstr "Invånare"
 
 #: horizons/i18n/guitranslations.py:100
 msgid "Click to change the name of your settlement."
-msgstr ""
+msgstr "Klicka för att ändra namnet på din bosättning."
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Destroy"
@@ -625,7 +625,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Build menu"
-msgstr ""
+msgstr "Byggnader"
 
 #: horizons/i18n/guitranslations.py:104
 msgid "Game menu"
@@ -634,7 +634,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:105 horizons/i18n/guitranslations.py:162
 #: horizons/i18n/guitranslations.py:201
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
 #: horizons/i18n/guitranslations.py:106
 msgid "Captain's log"
@@ -642,11 +642,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:108
 msgid "Rotate map counterclockwise"
-msgstr ""
+msgstr "Rotera kartan moturs"
 
 #: horizons/i18n/guitranslations.py:109
 msgid "Rotate map clockwise"
-msgstr ""
+msgstr "Rotera kartan medurs"
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Decrease game speed"
@@ -658,11 +658,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:112
 msgid "Zoom in"
-msgstr ""
+msgstr "Zooma in"
 
 #: horizons/i18n/guitranslations.py:113
 msgid "Zoom out"
-msgstr ""
+msgstr "Zooma ut"
 
 #: horizons/i18n/guitranslations.py:115
 msgid "Boards"
@@ -670,7 +670,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:116
 msgid "Bricks"
-msgstr ""
+msgstr "Brickor"
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Food"
@@ -678,15 +678,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:118
 msgid "Textiles"
-msgstr ""
+msgstr "Textilier"
 
 #: horizons/i18n/guitranslations.py:119
 msgid "Tools"
-msgstr ""
+msgstr "Verktyg"
 
 #: horizons/i18n/guitranslations.py:121
 msgid "Gold"
-msgstr ""
+msgstr "Guld"
 
 #: horizons/i18n/guitranslations.py:123
 msgid "Enter new name:"
@@ -706,7 +706,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Chat"
-msgstr ""
+msgstr "Chatt"
 
 #: horizons/i18n/guitranslations.py:130
 msgid "Buy resources"
@@ -754,7 +754,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr ""
+msgstr "Fortsätt spela"
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
