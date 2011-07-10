@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-10 17:38+0200\n"
+"PO-Revision-Date: 2011-07-10 18:20+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -465,7 +465,7 @@ msgstr "Signalbrand: Tillåter spelaren handel med fria köpmän."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr "Timmerstuga: Hugger ner träd som sågas till timmer."
+msgstr "Timmerstuga: Avverkar träd för att få fram trä."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
@@ -509,7 +509,7 @@ msgstr "Tegelbruk: Bränner lera till tegel."
 
 #: horizons/i18n/guitranslations.py:64
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
+msgstr "Lergrop: Ger lera från fyndighet."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
@@ -553,7 +553,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr ""
+msgstr "Kolmila: Bränner trä till träkol."
 
 #: horizons/i18n/guitranslations.py:81
 msgid "Doctor: Treats diseases. Consumes herbs."
@@ -666,7 +666,7 @@ msgstr "Zooma ut"
 
 #: horizons/i18n/guitranslations.py:115
 msgid "Boards"
-msgstr "Timmer"
+msgstr "Trä"
 
 #: horizons/i18n/guitranslations.py:116
 msgid "Bricks"
@@ -1293,11 +1293,13 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:339
 msgid "Resource deposit"
-msgstr ""
+msgstr "Råvarufyndighet"
 
 #: horizons/i18n/guitranslations.py:340
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
+"Det här är en råvarufyndighet där du kan bygga en gruva för att komma åt "
+"råvaror."
 
 #: horizons/i18n/guitranslations.py:341
 msgid "It contains these resources:"
@@ -1632,19 +1634,19 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Kolmila"
 
 #: sqlite/Building
 msgid "Clay Deposit"
-msgstr ""
+msgstr "Lerfyndighet"
 
 #: sqlite/Building
 msgid "Clay Pit"
-msgstr ""
+msgstr "Lergrop"
 
 #: sqlite/Building
 msgid "Distillery"
-msgstr ""
+msgstr "Bränneri"
 
 #: sqlite/Building
 msgid "Doctor"
@@ -1664,7 +1666,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr ""
+msgstr "Örtagård"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -1696,7 +1698,7 @@ msgstr "Berg"
 
 #: sqlite/Building
 msgid "Pasture"
-msgstr ""
+msgstr "Betesmark"
 
 #: sqlite/Building
 msgid "Pavilion"
@@ -1708,7 +1710,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Potato Field"
-msgstr ""
+msgstr "Potatisfält"
 
 #: sqlite/Building
 msgid "Rampart"
@@ -1716,19 +1718,19 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Saliner"
 
 #: sqlite/Building
 msgid "Signal Fire"
-msgstr ""
+msgstr "Signalbrand"
 
 #: sqlite/Building
 msgid "Smeltery"
-msgstr ""
+msgstr "Smältverk"
 
 #: sqlite/Building
 msgid "Storage Tent"
-msgstr ""
+msgstr "Förvaringstält"
 
 #: sqlite/Building
 msgid "Sugar Field"
@@ -1736,11 +1738,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Tavern"
-msgstr ""
+msgstr "Taverna"
 
 #: sqlite/Building
 msgid "Tent"
-msgstr ""
+msgstr "Tält"
 
 #: sqlite/Building
 msgid "Tent Ruin"
@@ -1748,19 +1750,19 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Tobaksfält"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tobakshandlare"
 
 #: sqlite/Building
 msgid "Toolmaker"
-msgstr ""
+msgstr "Verktygsmakare"
 
 #: sqlite/Building
 msgid "Trail"
-msgstr ""
+msgstr "Gångstig"
 
 #: sqlite/Building
 msgid "Village school"
@@ -1848,7 +1850,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "boards"
-msgstr "timmer"
+msgstr "trä"
 
 #: sqlite/Resources
 msgid "bricks"
