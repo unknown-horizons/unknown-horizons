@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -634,8 +634,12 @@ msgstr "pohyboval"
 msgid "produce"
 msgstr "produkování"
 
+# (poterminology) uh-tutorial/tutorial.pot (9)
+# (poterminology) uh/unknownhorizons.pot (4)
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "produkování"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -1208,8 +1212,12 @@ msgstr "růst / roste"
 msgid "hold"
 msgstr "držet"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+#, fuzzy
 msgid "hunt"
-msgstr ""
+msgstr "lovy"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1425,8 +1433,12 @@ msgstr "minimapa"
 msgid "playing"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "ruin"
-msgstr ""
+msgstr "běh"
 
 msgid "seed"
 msgstr ""
@@ -1461,8 +1473,12 @@ msgstr ""
 msgid "education"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 75%
+#, fuzzy
 msgid "clay"
-msgstr ""
+msgstr "hrát"
 
 msgid "charcoal"
 msgstr ""
