@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-09 15:45+0200\n"
+"PO-Revision-Date: 2011-07-10 15:33+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -670,7 +670,7 @@ msgstr "Timmer"
 
 #: horizons/i18n/guitranslations.py:116
 msgid "Bricks"
-msgstr "Brickor"
+msgstr "Tegel"
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Food"
@@ -1202,7 +1202,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:313
 #: horizons/i18n/guitranslations.py:335 horizons/i18n/guitranslations.py:337
 msgid "Running costs"
-msgstr ""
+msgstr "Driftskostnader"
 
 #: horizons/i18n/guitranslations.py:296
 msgid "Fishing boats"
@@ -1235,23 +1235,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:308
 msgid "Buying"
-msgstr ""
+msgstr "Varuomkostnader"
 
 #: horizons/i18n/guitranslations.py:310
 msgid "Balance:"
-msgstr ""
+msgstr "Saldo:"
 
 #: horizons/i18n/guitranslations.py:311
 msgid "Expenses:"
-msgstr ""
+msgstr "Utgifter:"
 
 #: horizons/i18n/guitranslations.py:312
 msgid "Income:"
-msgstr ""
+msgstr "Inkomster:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Sale"
-msgstr ""
+msgstr "Försäljning"
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Taxes"
@@ -1852,7 +1852,7 @@ msgstr "timmer"
 
 #: sqlite/Resources
 msgid "bricks"
-msgstr "brickor"
+msgstr "tegel"
 
 #: sqlite/Resources
 msgid "cattle"
@@ -1960,11 +1960,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr ""
+msgstr "råsocker"
 
 #: sqlite/Resources
 msgid "raw tobacco"
-msgstr ""
+msgstr "råtobak"
 
 #: sqlite/Resources
 msgid "salt"
@@ -1976,7 +1976,7 @@ msgstr "socker"
 
 #: sqlite/Resources
 msgid "textile"
-msgstr ""
+msgstr "textil"
 
 #: sqlite/Resources
 msgid "tobacco"
@@ -2008,16 +2008,16 @@ msgstr ""
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "köpman"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "pionjär"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "sjöman"
 
 #: sqlite/SettlerLevel
 msgid "settler"
-msgstr ""
+msgstr "nybyggare"

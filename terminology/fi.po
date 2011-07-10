@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "rakenna"
@@ -224,14 +224,18 @@ msgstr "taso"
 msgid "move"
 msgstr "liikuta"
 
+# 80%
+#, fuzzy
 msgid "moved"
-msgstr ""
+msgstr "liikuta"
 
 msgid "produce"
 msgstr "tuottaa / valmistaa"
 
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "tuottaa / valmistaa"
 
 msgid "pasture"
 msgstr "laidun"
@@ -437,8 +441,10 @@ msgstr "kasvata"
 msgid "hold"
 msgstr "pidä"
 
+# 80%
+#, fuzzy
 msgid "hunt"
-msgstr ""
+msgstr "metsästää"
 
 msgid "income"
 msgstr ""
@@ -543,8 +549,10 @@ msgstr "minimap / minikartta / pikkukartta"
 msgid "playing"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "ruin"
-msgstr ""
+msgstr "suorita"
 
 msgid "seed"
 msgstr ""
@@ -579,8 +587,10 @@ msgstr ""
 msgid "education"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "clay"
-msgstr ""
+msgstr "pelaa"
 
 msgid "charcoal"
 msgstr ""
