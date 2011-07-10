@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-10 18:20+0200\n"
+"PO-Revision-Date: 2011-07-10 19:37+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -457,7 +457,7 @@ msgstr "Fiskare: Fiskar i haven, producerar föda."
 
 #: horizons/i18n/guitranslations.py:48
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr "Jägare: Jagar vilda djur i skogen, producerar föda."
+msgstr "Jaktstuga: Jagar vilda djur i skogen. Producerar föda."
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
@@ -1670,7 +1670,7 @@ msgstr "Örtagård"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Jägartält"
 
 #: sqlite/Building
 msgid "Iron Mine"

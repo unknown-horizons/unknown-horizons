@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-10 17:31+0200\n"
+"PO-Revision-Date: 2011-07-10 19:28+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -102,7 +102,7 @@ msgid "main square"
 msgstr "marknadsplats"
 
 msgid "trail"
-msgstr "väg"
+msgstr "gångstig"
 
 msgid "boards"
 msgstr "trä"
@@ -244,7 +244,7 @@ msgid "tree"
 msgstr "träd"
 
 msgid "active"
-msgstr ""
+msgstr "aktiv"
 
 msgid "add"
 msgstr ""
@@ -272,7 +272,7 @@ msgid "hunter"
 msgstr "jägare"
 
 msgid "leave"
-msgstr ""
+msgstr "lämna"
 
 #
 msgid "market"
@@ -291,7 +291,7 @@ msgid "settler"
 msgstr "nybyggare"
 
 msgid "citizen"
-msgstr ""
+msgstr "medborgare"
 
 msgid "merchant"
 msgstr "köpman"
@@ -368,7 +368,7 @@ msgstr "spela"
 
 # 75%
 msgid "sale"
-msgstr ""
+msgstr "försäljning"
 
 #
 msgid "save"
@@ -522,10 +522,10 @@ msgid "contact"
 msgstr ""
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialog"
 
 msgid "issues"
-msgstr ""
+msgstr "problem"
 
 msgid "minimap"
 msgstr "världskarta"
