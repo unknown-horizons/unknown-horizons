@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-06 21:05+0200\n"
+"PO-Revision-Date: 2011-07-10 22:26+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -577,37 +577,32 @@ msgid "Settler buildings"
 msgstr "Siedlerbauten"
 
 #: horizons/i18n/guitranslations.py:78
-#, fuzzy
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr "Metzgerei: "
+msgstr "Metzgerei: Verwertet Schlachtvieh zu Nahrung."
 
 #: horizons/i18n/guitranslations.py:79
-#, fuzzy
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr "Viehweide: "
+msgstr "Viehweide: Zieht Schlachtvieh auf. Benötigt eine Farm."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
 msgstr "Kohlenmeiler: Ein Köhler stellt hier Holzkohle her."
 
 #: horizons/i18n/guitranslations.py:81
-#, fuzzy
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr "Arzt: "
+msgstr "Arzt: Behandelt Seuchen. Verbraucht Heilkräuter."
 
 #: horizons/i18n/guitranslations.py:82
-#, fuzzy
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr "Kräutergarten: "
+msgstr "Kräutergarten: Anbau von Heilkräutern. Benötigt eine Farm."
 
 #: horizons/i18n/guitranslations.py:83
 msgid "Iron mine: Gets iron ore from deposit."
 msgstr "Eisenstollen: Dient dem Abbau von Eisenerz."
 
 #: horizons/i18n/guitranslations.py:84
-#, fuzzy
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr "Schweinestall: "
+msgstr "Schweinestall: Zieht Schweine auf. Benötigt eine Farm."
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
@@ -624,14 +619,12 @@ msgid "Tavern: Provides get-together."
 msgstr "Taverne: Erfüllt den Gemeinschaftssinn Eurer Untertanen."
 
 #: horizons/i18n/guitranslations.py:88
-#, fuzzy
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr "Tabakplantage: "
+msgstr "Tabakplantage: Produziert Tabakpflanzen. Benötigt eine Farm."
 
 #: horizons/i18n/guitranslations.py:89
-#, fuzzy
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr "Tabakdreher: "
+msgstr "Tabakdreher: Produziert Tabakwaren aus Tabak."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."

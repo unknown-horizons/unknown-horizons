@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-08 17:49+0200\n"
+"PO-Revision-Date: 2011-07-10 22:20+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -4689,7 +4689,7 @@ msgid "pig"
 msgstr "Schwein"
 
 msgid "herbs"
-msgstr "Kräuter"
+msgstr "Heilkräuter"
 
 msgid "herbary"
 msgstr "Kräutergarten"
@@ -4707,13 +4707,13 @@ msgid "clay"
 msgstr "Lehm"
 
 msgid "charcoal"
-msgstr ""
+msgstr "Holzkohle"
 
 msgid "iron"
-msgstr ""
+msgstr "Eisen"
 
 msgid "ore"
-msgstr ""
+msgstr "Erz"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
