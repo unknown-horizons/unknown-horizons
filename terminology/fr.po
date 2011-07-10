@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-06-25 14:43+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-06-28 19:27+0200\n"
+"Last-Translator: tintou <tintou@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -739,8 +739,12 @@ msgstr "déplacé / déménagé"
 msgid "produce"
 msgstr "produire"
 
+# (poterminology) uh-tutorial/tutorial.pot (9)
+# (poterminology) uh/unknownhorizons.pot (4)
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "produire"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -1454,8 +1458,12 @@ msgstr "croitre"
 msgid "hold"
 msgstr "tenir"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+#, fuzzy
 msgid "hunt"
-msgstr ""
+msgstr "chasse"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1716,8 +1724,13 @@ msgstr "mini-carte"
 msgid "playing"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# Of course, here is all about context cause run can also be translated by 'courir' (using legs for running !)
+# 75%
+#, fuzzy
 msgid "ruin"
-msgstr ""
+msgstr "rouler / exploiter"
 
 msgid "seed"
 msgstr ""
@@ -1752,8 +1765,12 @@ msgstr ""
 msgid "education"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 75%
+#, fuzzy
 msgid "clay"
-msgstr ""
+msgstr "jouer"
 
 msgid "charcoal"
 msgstr ""
