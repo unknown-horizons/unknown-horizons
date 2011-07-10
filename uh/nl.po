@@ -1139,9 +1139,11 @@ msgstr "Renderer:"
 msgid "Please make sure that you know what you do."
 msgstr "Controleer dat u weet wat u doet."
 
+# 83%
 #: horizons/i18n/guitranslations.py:260
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Toepassen:"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
@@ -1322,10 +1324,12 @@ msgstr "Naam:"
 msgid "Taxes:"
 msgstr "Belastingen:"
 
+# 87%
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
+#, fuzzy
 msgid "Tax rate"
-msgstr ""
+msgstr "Belasting"
 
 #: horizons/i18n/guitranslations.py:336
 msgid "capacity utilization"
@@ -1490,15 +1494,17 @@ msgstr "Fout: Kan de campagne \"%s\" niet vinden."
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Fout: Kan de campagne met de bestandsnaam \"%s\" niet vinden."
 
+# 81%
 #: horizons/savegamemanager.py:416
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr ""
+msgstr "Fout: Kan opgeslagen spel \"%s\" niet vinden."
 
+# 83%
 #: horizons/savegamemanager.py:421
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr ""
+msgstr "Fout: Kan de campagne met de bestandsnaam \"%s\" niet vinden."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -1813,9 +1819,11 @@ msgstr "Herberg"
 msgid "Tent"
 msgstr "Tent"
 
+# 77%
 #: sqlite/Building
+#, fuzzy
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Verlaten tent"
 
 #: sqlite/Building
 msgid "Tobacco Field"
