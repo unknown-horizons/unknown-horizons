@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-10 15:33+0200\n"
+"PO-Revision-Date: 2011-07-10 17:38+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -469,7 +469,7 @@ msgstr "Timmerstuga: Hugger ner träd som sågas till timmer."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
+msgstr "Marknadsplats: Levererar varor till invånarna."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
@@ -557,15 +557,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:81
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Läkare: "
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr ""
+msgstr "Örtagård:"
 
 #: horizons/i18n/guitranslations.py:83
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr ""
+msgstr "Järngruva: Bryter järnmalm från fyndighet."
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Pigsty: Raises pigs. Needs a farm."
@@ -625,11 +625,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Build menu"
-msgstr "Byggnader"
+msgstr "Byggmenyn"
 
 #: horizons/i18n/guitranslations.py:104
 msgid "Game menu"
-msgstr ""
+msgstr "Spelmenyn"
 
 #: horizons/i18n/guitranslations.py:105 horizons/i18n/guitranslations.py:162
 #: horizons/i18n/guitranslations.py:201
@@ -847,7 +847,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:179
 msgid "{B} = Show build menu"
-msgstr ""
+msgstr "{B} = Visa byggmenyn"
 
 #: horizons/i18n/guitranslations.py:180
 msgid "{F1} = Display help"
@@ -1688,7 +1688,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Main Square"
-msgstr ""
+msgstr "Marknadsplats"
 
 #: sqlite/Building
 msgid "Mountain"
@@ -1944,7 +1944,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "potatoes"
-msgstr ""
+msgstr "potatis"
 
 #: sqlite/Resources
 msgid "raw clay"

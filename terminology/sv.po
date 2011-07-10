@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-09 14:22+0200\n"
+"PO-Revision-Date: 2011-07-10 17:30+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -99,7 +99,7 @@ msgid "change"
 msgstr "förändring"
 
 msgid "main square"
-msgstr "huvudtorget"
+msgstr "marknadsplats"
 
 msgid "trail"
 msgstr "väg"
@@ -250,7 +250,7 @@ msgid "add"
 msgstr ""
 
 msgid "build menu"
-msgstr "byggnader"
+msgstr "byggmenyn"
 
 msgid "built"
 msgstr "byggt"
@@ -294,10 +294,10 @@ msgid "citizen"
 msgstr ""
 
 msgid "merchant"
-msgstr ""
+msgstr "köpman"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokrat"
 
 msgid "refresh"
 msgstr ""
@@ -364,7 +364,7 @@ msgid "output"
 msgstr ""
 
 msgid "play"
-msgstr ""
+msgstr "spela"
 
 # 75%
 msgid "sale"
@@ -528,10 +528,10 @@ msgid "issues"
 msgstr ""
 
 msgid "minimap"
-msgstr "minikarta"
+msgstr "världskarta"
 
 msgid "playing"
-msgstr ""
+msgstr "spelar"
 
 # 75%
 msgid "ruin"
@@ -544,7 +544,7 @@ msgid "temporarily"
 msgstr ""
 
 msgid "salt ponds"
-msgstr ""
+msgstr "Saliner"
 
 msgid "tobacco"
 msgstr "tobak"
@@ -556,10 +556,10 @@ msgid "pig"
 msgstr "gris"
 
 msgid "herbs"
-msgstr ""
+msgstr "örter"
 
 msgid "herbary"
-msgstr ""
+msgstr "örtagård"
 
 msgid "butchery"
 msgstr "slaktare"
