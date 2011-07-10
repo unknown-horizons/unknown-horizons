@@ -1616,7 +1616,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Branch Office"
-msgstr ""
+msgstr "Handelskontor"
 
 #: sqlite/Building
 msgid "Brickyard"
