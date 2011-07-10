@@ -1325,7 +1325,6 @@ msgstr "Налог:"
 # 87%
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
-#, fuzzy
 msgid "Tax rate"
 msgstr "Налог"
 
@@ -1815,7 +1814,6 @@ msgstr "Палатка"
 
 # 77%
 #: sqlite/Building
-#, fuzzy
 msgid "Tent Ruin"
 msgstr "Разрушенный шатёр"
 

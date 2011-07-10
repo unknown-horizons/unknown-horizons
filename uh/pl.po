@@ -1137,9 +1137,11 @@ msgstr "Silnik graficzny:"
 msgid "Please make sure that you know what you do."
 msgstr "Proszę miej pewność, że wiesz co robisz."
 
+# 83%
 #: horizons/i18n/guitranslations.py:260
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Zastosuj:"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
@@ -1477,15 +1479,18 @@ msgstr ""
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Błąd: nie można odnaleźć mapy \"%s\"."
 
+# 81%
+# 76%
 #: horizons/savegamemanager.py:398
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr ""
+msgstr "Błąd: nie można odnaleźć mapy \"%s\"."
 
+# 81%
 #: horizons/savegamemanager.py:416
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr ""
+msgstr "Błąd: nie można odnaleźć zapisu \"%s\"."
 
 #: horizons/savegamemanager.py:421
 #, python-format
@@ -1812,9 +1817,11 @@ msgstr "Tawerna"
 msgid "Tent"
 msgstr "Namiot"
 
+# 77%
 #: sqlite/Building
+#, fuzzy
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Ruiny namiotu"
 
 #: sqlite/Building
 msgid "Tobacco Field"
