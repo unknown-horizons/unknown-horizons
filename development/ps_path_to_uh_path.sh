@@ -11,7 +11,7 @@ fi
 S=$1
 T=$2
 OBJECT_ID=$3
-ACTION_NAME=$4
+ACTION_SET_NAME=$4
 ANIM_ID=$5
 
 # TODO: gravel_to_dirt
@@ -42,7 +42,7 @@ function create_sqls() {
 	echo "------- BEGIN SQL ----------"
 
 	# action set
-	echo "INSERT INTO \"action_set\" VALUES('${ACTION_NAME}',NULL,${OBJECT_ID},0);"
+	echo "INSERT INTO \"action_set\" VALUES('${ACTION_SET_NAME}',NULL,${OBJECT_ID},0);"
 
 	# animations
 	ANIM_ID_ITER=$ANIM_ID

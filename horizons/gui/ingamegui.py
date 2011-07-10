@@ -123,7 +123,6 @@ class IngameGui(LivingObject):
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
 
 		# map button names to build functions calls with the building id
-		callbackWithArguments = pychan.tools.callbackWithArguments
 		self.callbacks_build = {}
 		for id,button_name,settler_level in horizons.main.db.get_building_id_buttonname_settlerlvl():
 			if not settler_level in self.callbacks_build:
