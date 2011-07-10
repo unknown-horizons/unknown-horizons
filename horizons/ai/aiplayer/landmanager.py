@@ -115,8 +115,8 @@ class LandManager(WorldObject):
 
 	def save(self, db):
 		super(LandManager, self).save(db)
-		db("INSERT INTO ai_land_manager(rowid, owner, island) VALUES(?, ?, ?)", self.worldid, \
-			self.owner.worldid, self.island.worldid)
+		db("INSERT INTO ai_land_manager(rowid, owner, island, feeder_island) VALUES(?, ?, ?, ?)", self.worldid, \
+			self.owner.worldid, self.island.worldid, self.feeder_island)
 		for (x, y) in self.production:
 			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)", \
 				self.worldid, x, y, self.purpose.production)
@@ -125,14 +125,15 @@ class LandManager(WorldObject):
 				self.worldid, x, y, self.purpose.village)
 
 	@classmethod
-	def load(cls, db, owner, island, worldid):
+	def load(cls, db, owner, worldid):
 		self = cls.__new__(cls)
-		self._load(db, owner, island, worldid)
+		self._load(db, owner, worldid)
 		return self
 
-	def _load(self, db, owner, island, worldid):
+	def _load(self, db, owner, worldid):
 		super(LandManager, self).load(db, worldid)
-		self.__init(island, owner)
+		island_id, feeder_island = db("SELECT island, feeder_island FROM ai_land_manager WHERE rowid = ?", worldid)[0]
+		self.__init(WorldObject.get_object_by_id(island_id), owner, feeder_island)
 
 		for x, y, purpose in db("SELECT x, y, purpose FROM ai_land_manager_coords WHERE land_manager = ?", self.worldid):
 			coords = (x, y)

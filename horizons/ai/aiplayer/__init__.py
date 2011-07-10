@@ -25,6 +25,7 @@ from collections import deque
 
 from mission.foundsettlement import FoundSettlement
 from mission.preparefoundationship import PrepareFoundationShip
+from mission.domestictrade import DomesticTrade
 from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
@@ -177,9 +178,9 @@ class AIPlayer(GenericAI):
 			self.ships[ship] = self.shipStates[state_id]
 
 		# load the land managers
-		for worldid, island_id in db("SELECT rowid, island FROM ai_land_manager WHERE owner = ?", self.worldid):
-			island = WorldObject.get_object_by_id(island_id)
-			self.islands[island] = LandManager.load(db, self, island, worldid)
+		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):
+			land_manager = LandManager.load(db, self, worldid)
+			self.islands[land_manager.island] = land_manager
 
 		# load the settlement managers and settlement foundation missions
 		for land_manager in self.islands.itervalues():
@@ -196,6 +197,12 @@ class AIPlayer(GenericAI):
 			else:
 				mission_id = db("SELECT rowid FROM ai_mission_found_settlement WHERE land_manager = ?", land_manager.worldid)[0][0]
 				self.missions.add(FoundSettlement.load(db, mission_id, self.report_success, self.report_failure))
+
+		# load the domestic trade missions
+		for settlement_manager in self.settlement_managers:
+			db_result = db("SELECT rowid FROM ai_mission_domestic_trade WHERE source_settlement_manager = ?", settlement_manager.worldid)
+			for (mission_id,) in db_result:
+				self.missions.add(DomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
 
 	def found_settlement(self, island, ship, feeder_island):
 		self.ships[ship] = self.shipStates.on_a_mission

@@ -95,6 +95,7 @@ class SingleResourceManager(WorldObject):
 		self.quotas = {} # {quota_holder: (amount, priority), ...}
 
 	def save(self, db, resource_manager_id):
+		super(SingleResourceManager, self).save(db)
 		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, low_priority, available, total) VALUES(?, ?, ?, ?, ?, ?, ?)", \
 			self.worldid, resource_manager_id, self.resource_id, self.building_id, self.low_priority, self.available, self.total)
 		for identifier, (quota, priority) in self.quotas.iteritems():

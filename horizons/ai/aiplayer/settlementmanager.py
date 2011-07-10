@@ -63,14 +63,13 @@ class SettlementManager(WorldObject):
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 		self.village_built = False
 
-		if self.feeder_island:
-			Scheduler().add_new_object(Callback(self.feeder_tick), self, run_in = 31)
-		else:
-			Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
+		if not self.feeder_island:
 			self.set_taxes_and_permissions(0.5, 0.8, 0.5, False, False)
 
 	def __init(self, land_manager):
 		self.owner = land_manager.owner
+		self.session = self.owner.session
 		self.land_manager = land_manager
 		self.island = self.land_manager.island
 		self.settlement = self.land_manager.settlement
@@ -98,6 +97,7 @@ class SettlementManager(WorldObject):
 		self.village_builder.save(db)
 		self.production_builder.save(db)
 		self.resource_manager.save(db)
+		self.trade_manager.save(db)
 
 	@classmethod
 	def load(cls, db, owner, worldid):
@@ -122,7 +122,7 @@ class SettlementManager(WorldObject):
 				break
 		assert land_manager.settlement
 		self.resource_manager = ResourceManager.load(db, self)
-		self.trade_manager = TradeManager(self) # TODO: actually load it
+		self.trade_manager = TradeManager.load(db, self)
 		self.__init(land_manager)
 
 		# load the master builders
@@ -315,8 +315,7 @@ class SettlementManager(WorldObject):
 				return True
 		return False
 
-	def feeder_tick(self):
-		Scheduler().add_new_object(Callback(self.feeder_tick), self, run_in = 32)
+	def _feeder_tick(self):
 		self.manage_production()
 		self.resource_manager.refresh()
 
@@ -344,7 +343,7 @@ class SettlementManager(WorldObject):
 			if self.build_generic_chain(self.food_chain, 'food producer', needed_food):
 				return
 
-	def tick(self):
+	def _general_tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
 			self.get_resident_resource_usage(RES.FOOD_ID))
 		self.log.info('%s textile production      %.5f / %.5f', self, self.get_resource_production(RES.TEXTILE_ID), \
@@ -416,6 +415,12 @@ class SettlementManager(WorldObject):
 		self.trade_manager.finalize_requests()
 		#print self.trade_manager
 		self.trade_manager.organize_shipping()
+
+	def tick(self):
+		if self.feeder_island:
+			self._feeder_tick()
+		else:
+			self._general_tick()
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
 
 	def __str__(self):

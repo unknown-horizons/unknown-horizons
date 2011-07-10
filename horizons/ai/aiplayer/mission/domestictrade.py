@@ -44,7 +44,8 @@ class DomesticTrade(Mission):
 
 	def save(self, db):
 		super(DomesticTrade, self).save(db)
-		pass # TODO: save
+		db("INSERT INTO ai_mission_domestic_trade(rowid, source_settlement_manager, destination_settlement_manager, ship, state) VALUES(?, ?, ?, ?, ?)", \
+			self.worldid, self.source_settlement_manager.worldid, self.destination_settlement_manager.worldid, self.ship.worldid, self.state.index)
 
 	@classmethod
 	def load(cls, db, worldid, success_callback, failure_callback):
@@ -53,7 +54,19 @@ class DomesticTrade(Mission):
 		return self
 
 	def _load(self, db, worldid, success_callback, failure_callback):
-		pass # TODO: load
+		db_result = db("SELECT source_settlement_manager, destination_settlement_manager, ship, state FROM ai_mission_domestic_trade WHERE rowid = ?", worldid)[0]
+		self.source_settlement_manager = WorldObject.get_object_by_id(db_result[0])
+		self.destination_settlement_manager = WorldObject.get_object_by_id(db_result[1])
+		self.ship = WorldObject.get_object_by_id(db_result[2])
+		self.state = self.missionStates[db_result[3]]
+		super(DomesticTrade, self).load(db, worldid, success_callback, failure_callback, self.source_settlement_manager.session)
+
+		if self.state == self.missionStates.moving_to_source_bo:
+			self.ship.add_move_callback(Callback(self._reached_source_bo_area))
+			self.ship.add_blocked_callback(Callback(self._move_to_source_bo_area))
+		elif self.state == self.missionStates.moving_to_destination_bo:
+			self.ship.add_move_callback(Callback(self._reached_destination_bo_area))
+			self.ship.add_blocked_callback(Callback(self._move_to_destination_bo_area))
 
 	def start(self):
 		self.state = self.missionStates.moving_to_source_bo
