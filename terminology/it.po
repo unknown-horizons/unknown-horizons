@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "costruzione"
@@ -220,14 +220,18 @@ msgstr "livello"
 msgid "move"
 msgstr "muovi"
 
+# 80%
+#, fuzzy
 msgid "moved"
-msgstr ""
+msgstr "muovi"
 
 msgid "produce"
 msgstr "produrre"
 
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "produrre"
 
 msgid "pasture"
 msgstr "pascolo"
@@ -433,8 +437,10 @@ msgstr "coltivare"
 msgid "hold"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "hunt"
-msgstr ""
+msgstr "caccia"
 
 msgid "income"
 msgstr "reddito"
@@ -537,8 +543,10 @@ msgstr "minimappa"
 msgid "playing"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "ruin"
-msgstr ""
+msgstr "correre"
 
 msgid "seed"
 msgstr ""
@@ -573,8 +581,10 @@ msgstr ""
 msgid "education"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "clay"
-msgstr ""
+msgstr "giocare"
 
 msgid "charcoal"
 msgstr ""
