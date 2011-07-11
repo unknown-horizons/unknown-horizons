@@ -72,7 +72,7 @@ class ProductionChain(object):
 		return ProductionChain(settlement_manager, resource_id, resource_producer)
 
 	def __str__(self):
-		return 'ProductionChain(%d)\n%s' % (self.resource_id, self.chain)
+		return 'ProductionChain(%d): %.5f\n%s' % (self.resource_id, self.get_final_production_level(), self.chain)
 
 	def build(self, amount):
 		"""Builds a building that gets it closer to producing at least amount of resource per tick."""
@@ -96,9 +96,11 @@ class ProductionChainSubtreeChoice(object):
 			option.assign_identifier(self.identifier)
 
 	def __str__(self, level = 0):
-		result = '%sChoice between %d options\n' % ('  ' * level, len(self.options))
+		result = '%sChoice between %d options: %.5f\n' % ('  ' * level, len(self.options), self.get_final_production_level())
 		for option in self.options:
 			result += option.__str__(level + 1)
+		if self.get_root_import_level() > 1e-9:
+			result += '\n%sImport %.5f' % ('  ' * (level + 1), self.get_root_import_level())
 		return result
 
 	def get_root_production_level(self):
@@ -118,13 +120,11 @@ class ProductionChainSubtreeChoice(object):
 		""" Builds the subtree that is currently the cheapest """
 		current_production = self.get_final_production_level()
 
+		# TODO: split this function up because it is a bad idea to check how much we can import first: it could mean ignoring the existing production
 		# check how much we can import
 		required_amount = amount - current_production + self.get_root_import_level()
 		self.trade_manager.request_quota_change(self.identifier, self.resource_id, required_amount * self.production_ratio)
 		amount -= self.get_root_import_level()
-
-		if amount < current_production + 1e-7:
-			return BUILD_RESULT.ALL_BUILT
 
 		# filter out unavailable options
 		available_options = []
@@ -137,19 +137,30 @@ class ProductionChainSubtreeChoice(object):
 		elif len(available_options) == 1:
 			return available_options[0].build(amount)
 
-		# build the cheapest subtree
-		expected_costs = []
-		for i in xrange(len(available_options)):
-			option = available_options[i]
-			cost = option.get_expected_cost(amount - current_production + option.get_final_production_level())
-			if cost is not None:
-				expected_costs.append((cost, i, option))
-
-		if not expected_costs:
-			self.log.debug('%s: no possible options', self)
-			return BUILD_RESULT.IMPOSSIBLE
+		if abs(amount - current_production) < 1e-7:
+			# same requirements within a margin of error
+			return BUILD_RESULT.ALL_BUILT
+		elif amount < current_production:
+			# we no longer need to produce as much as before so some quotas will need to be released
+			for option in available_options:
+				option.build(amount)
+				amount -= option.get_final_production_level()
+			return BUILD_RESULT.ALL_BUILT
 		else:
-			return sorted(expected_costs)[0][2].build(amount)
+			# need to increase production
+			# build the cheapest subtree
+			expected_costs = []
+			for i in xrange(len(available_options)):
+				option = available_options[i]
+				cost = option.get_expected_cost(amount - current_production + option.get_final_production_level())
+				if cost is not None:
+					expected_costs.append((cost, i, option))
+
+			if not expected_costs:
+				self.log.debug('%s: no possible options', self)
+				return BUILD_RESULT.IMPOSSIBLE
+			else:
+				return sorted(expected_costs)[0][2].build(amount)
 
 class ProductionChainSubtree:
 	def __init__(self, settlement_manager, resource_id, production_line, abstract_building, children, production_ratio):

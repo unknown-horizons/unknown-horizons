@@ -250,6 +250,8 @@ class SingleResourceTradeManager(WorldObject):
 		self.partners = {}
 		needed_amount = self.total - self.available
 		for amount, building_id, _, resource_manager, settlement_manager in options:
+			if needed_amount < 1e-9:
+				break
 			if amount > needed_amount:
 				resource_manager.request_quota_change(self.identifier, False, self.resource_id, building_id, needed_amount)
 				#print resource_manager.data[(self.resource_id, building_id)]
@@ -258,8 +260,6 @@ class SingleResourceTradeManager(WorldObject):
 			else:
 				self.partners[settlement_manager.worldid] = amount
 				needed_amount -= amount
-			if needed_amount < 1e-9:
-				break
 		self.total -= self.available
 		self.available = 0.0
 

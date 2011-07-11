@@ -316,8 +316,6 @@ class SettlementManager(WorldObject):
 		self.manage_production()
 		self.resource_manager.refresh()
 
-		self.log.info('%s food production %.5f', self, self.get_resource_production(RES.FOOD_ID))
-
 		if self.build_chain(self.boards_chain, 'boards producer'):
 			return
 
@@ -337,7 +335,15 @@ class SettlementManager(WorldObject):
 			if self.need_more_storage():
 				result = self.production_builder.improve_collector_coverage()
 				self.log_generic_build_result(result, 'storage')
-			if self.build_generic_chain(self.food_chain, 'food producer', needed_food):
+				return
+
+			# the first build_generic_chain call tries to build enough producers to produce the needed food
+			# that also reserves the production for the (non-existent) settlement so it can't be transferred
+			# the second build_generic_chain call declares that the settlement doesn't need it after all thus freeing it
+			# TODO: make this a single explicit action: right now import quotas are deleted by the first step which can make it look like less resources can be imported
+			result = self.build_generic_chain(self.food_chain, 'food producer', needed_food)
+			self.build_generic_chain(self.food_chain, 'food producer', 0.0)
+			if result:
 				return
 
 	def _general_tick(self):
