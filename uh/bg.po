@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-06 18:52+0200\n"
+"PO-Revision-Date: 2011-07-11 15:39+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -27,15 +27,16 @@ msgstr "Някои от вашите промени изискват реста�
 
 #: horizons/engine.py:70
 msgid "Restore default settings"
-msgstr ""
+msgstr "Върни настройките под разбиране"
 
 #: horizons/engine.py:71
 msgid "This will delete all changes to the settings you made so far."
 msgstr ""
+"Това ще изтрие всички промени по настройките, който си направил по-рано."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Искаш ли да продължиш?"
 
 #: horizons/engine.py:135
 msgid "System default"
