@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-10 19:42+0200\n"
+"PO-Revision-Date: 2011-07-11 12:19+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -358,7 +358,7 @@ msgstr ""
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr "Tillväxt"
+msgstr "Steg"
 
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:366
 msgid "Trade"
@@ -440,16 +440,16 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:44
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "Bostäder och infrastruktur"
 
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:61
 #: horizons/i18n/guitranslations.py:77
 msgid "Services"
-msgstr ""
+msgstr "Tjänster"
 
 #: horizons/i18n/guitranslations.py:46
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
+msgstr "Paviljong: Erbjuder befolkningens religiösa behov."
 
 #: horizons/i18n/guitranslations.py:47
 msgid "Fisherman: Fishes the sea, produces food."
@@ -577,19 +577,19 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Smeltery: Refines all kind of ores."
-msgstr ""
+msgstr "Smältverk: Utvinner metaller ur malmer."
 
 #: horizons/i18n/guitranslations.py:87
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "Taverna: Umgängesplats för invånarna."
 
 #: horizons/i18n/guitranslations.py:88
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Tobaksfält: Odling av råtobak. Behöver en gård."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Tobakshandlare: Producerar tobak av råtobak."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."
@@ -638,7 +638,7 @@ msgstr "Hjälp"
 
 #: horizons/i18n/guitranslations.py:106
 msgid "Captain's log"
-msgstr ""
+msgstr "Loggbok"
 
 #: horizons/i18n/guitranslations.py:108
 msgid "Rotate map counterclockwise"
