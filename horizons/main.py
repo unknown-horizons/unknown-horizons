@@ -37,6 +37,7 @@ import os.path
 import random
 import threading
 import thread # for thread.error raised by threading.Lock.release
+import shutil
 
 from fife import fife as fife_module
 
@@ -308,9 +309,26 @@ def _start_campaign(campaign_name):
 	"""Finds the first scenario in this campaign and
 	loads it.
 	@return: bool, whether loading succeded"""
+	if os.path.exists(campaign_name):
+		# a file was specified. In order to make sure everything works properly,
+		# we need to copy the file over to the UH campaign directory.
+		# This is not very clean, but it's safe.
+
+		if not campaign_name.endswith(".yaml"):
+			print _("Error: campaign filenames have to end in \".yaml\".")
+			return False
+
+		# check if the user specified a file in the UH campaign dir
+		campaign_basename = os.path.basename( campaign_name )
+		path_in_campaign_dir = os.path.join(SavegameManager.campaigns_dir, campaign_basename)
+		if not (os.path.exists(path_in_campaign_dir) and \
+		        os.path.samefile(campaign_name, path_in_campaign_dir)):
+			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
+		# use campaign file name below
+		campaign_name = os.path.splitext( campaign_basename )[0]
 	campaign = SavegameManager.get_campaign_info(name = campaign_name)
 	if not campaign:
-		print _("Error: Cannot find campaign \"%s\".") % map_name
+		print _("Error: Cannot find campaign \"%s\".") % campaign_name
 		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
