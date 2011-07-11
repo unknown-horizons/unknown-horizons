@@ -267,7 +267,9 @@ def _start_dev_map():
 
 def _start_map(map_name, is_scenario = False, campaign = None):
 	"""Start a map specified by user
+	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
+	# check for exact/partial matches in map list first
 	maps = SavegameManager.get_available_scenarios() if is_scenario else SavegameManager.get_maps()
 	map_file = None
 	for i in xrange(0, len(maps[1])):
@@ -283,8 +285,12 @@ def _start_map(map_name, is_scenario = False, campaign = None):
 			else:
 				map_file = maps[0][i]
 	if map_file is None:
-		print _("Error: Cannot find map \"%s\".") % map_name
-		return False
+		# not a map name, check for path to file or fail
+		if os.path.exists(map_name):
+			map_file = map_name
+		else:
+			print _("Error: Cannot find map \"%s\".") % map_name
+			return False
 	if len(map_file.splitlines()) > 1:
 		print _("Error: Found multiple matches: ")
 		for match in map_file.splitlines():
@@ -303,31 +309,40 @@ def _start_campaign(campaign_name):
 	loads it.
 	@return: bool, whether loading succeded"""
 	campaign = SavegameManager.get_campaign_info(name = campaign_name)
+	if not campaign:
+		print _("Error: Cannot find campaign \"%s\".") % map_name
+		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
 		return False
 	return _start_map(scenarios[0], is_scenario = True, campaign = {'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]})
 
-def _load_map(savegamename):
-	"""Load a map specified by user
+def _load_map(savegame):
+	"""Load a map specified by user.
+	@param savegame: eiter the displayname of a savegame or a path to a savegame
 	@return: bool, whether loading succeded"""
+	# first check for partial or exact matches in the normal savegame list
 	saves = SavegameManager.get_saves()
 	map_file = None
 	for i in xrange(0, len(saves[1])):
 		# exact match
-		if saves[1][i] == savegamename:
+		if saves[1][i] == savegame:
 			map_file = saves[0][i]
 			break
 		# check for partial match
-		if saves[1][i].startswith(savegamename):
+		if saves[1][i].startswith(savegame):
 			if map_file is not None:
 				# multiple matches, collect all for output
 				map_file += u'\n' + saves[0][i]
 			else:
 				map_file = saves[0][i]
 	if map_file is None:
-		print _("Error: Cannot find savegame \"%s\".") % savegamename
-		return False
+		# not a savegame, check for path to file or fail
+		if os.path.exists(savegame):
+			map_file = savegame
+		else:
+			print _("Error: Cannot find savegame \"%s\".") % savegame
+			return False
 	if len(map_file.splitlines()) > 1:
 		print _("Error: Found multiple matches: ")
 		for match in map_file.splitlines():

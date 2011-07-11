@@ -383,21 +383,21 @@ class SavegameManager(object):
 		return (files, names, scenarios_lists, campaign_datas)
 
 	@classmethod
-	def get_campaign_info(cls, name = "", file = ""):
+	def get_campaign_info(cls, name = "", filename = ""):
 		"""Return this campaign's data"""
-		assert (name or file)
+		assert (name or filename)
 		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames = True, include_scenario_list = True, campaign_data = True)
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in cnames:
 				print _("Error: Cannot find campaign \"%s\".") % (name,)
-				return False
+				return None
 			index = cnames.index(name)
-		elif file:
-			if not file in cfiles:
-				print _("Error: Cannot find campaign with file \"%s\".") % (file,)
-				return False
-			index = cfiles.index(file)
+		elif filename:
+			if not filename in cfiles:
+				print _("Error: Cannot find campaign with file \"%s\".") % (filename,)
+				return None
+			index = cfiles.index(filename)
 		infos = cdatas[index]
 		infos.update({'codename': cnames[index], 'filename': cfiles[index], 'scenario_names' : cscenarios[index]})
 		for scenario in cscenarios[index]:
