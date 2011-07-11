@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-11 15:50+0200\n"
+"PO-Revision-Date: 2011-07-11 16:07+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -1213,11 +1213,11 @@ msgstr "Прекрати целият процес на сградите"
 
 #: horizons/i18n/guitranslations.py:292
 msgid "Pause"
-msgstr ""
+msgstr "Паузи"
 
 #: horizons/i18n/guitranslations.py:293
 msgid "Resume"
-msgstr ""
+msgstr "Върни"
 
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:313
 #: horizons/i18n/guitranslations.py:335 horizons/i18n/guitranslations.py:337
@@ -1232,24 +1232,24 @@ msgstr "Рибарски лодки"
 
 #: horizons/i18n/guitranslations.py:298
 msgid "Cutter"
-msgstr ""
+msgstr "Крояч"
 
 #: horizons/i18n/guitranslations.py:299
 msgid "Herring fisher"
-msgstr ""
+msgstr "Рибар на херинга"
 
 #: horizons/i18n/guitranslations.py:300
 msgid "Whaler"
-msgstr ""
+msgstr "Китоловец"
 
 #: horizons/i18n/guitranslations.py:301
 msgid "Build this ship!"
-msgstr ""
+msgstr "Построй този кораб!"
 
 #: horizons/i18n/guitranslations.py:302 horizons/i18n/guitranslations.py:303
 #: horizons/i18n/guitranslations.py:304
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Не е още завършено!"
 
 # 76%
 #: horizons/i18n/guitranslations.py:306
@@ -1259,31 +1259,31 @@ msgstr "Продай ресурси"
 
 #: horizons/i18n/guitranslations.py:308
 msgid "Buying"
-msgstr ""
+msgstr "Купуване"
 
 #: horizons/i18n/guitranslations.py:310
 msgid "Balance:"
-msgstr ""
+msgstr "Баланс:"
 
 #: horizons/i18n/guitranslations.py:311
 msgid "Expenses:"
-msgstr ""
+msgstr "Разходи:"
 
 #: horizons/i18n/guitranslations.py:312
 msgid "Income:"
-msgstr ""
+msgstr "Приходи:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Sale"
-msgstr ""
+msgstr "Продажба"
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Taxes"
-msgstr ""
+msgstr "Такси"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Покажи произведените ресурси"
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
@@ -1295,7 +1295,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Most needed resource:"
-msgstr ""
+msgstr "Най-нужните ресурси:"
 
 #: horizons/i18n/guitranslations.py:326 horizons/i18n/guitranslations.py:329
 #: horizons/i18n/guitranslations.py:363
@@ -1724,19 +1724,19 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Pasture"
-msgstr ""
+msgstr "Пасище"
 
 #: sqlite/Building
 msgid "Pavilion"
-msgstr ""
+msgstr "Палата"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Кочина"
 
 #: sqlite/Building
 msgid "Potato Field"
-msgstr ""
+msgstr "Картофено поле"
 
 #: sqlite/Building
 msgid "Rampart"
@@ -1876,15 +1876,13 @@ msgstr ""
 
 # 83%
 #: sqlite/Resources
-#, fuzzy
 msgid "boards"
-msgstr "Дъски"
+msgstr "дъски"
 
 # 83%
 #: sqlite/Resources
-#, fuzzy
 msgid "bricks"
-msgstr "Тухли"
+msgstr "тухли"
 
 #: sqlite/Resources
 msgid "cattle"
@@ -1896,19 +1894,19 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr "Дървени въглища"
+msgstr "дървени въглища"
 
 #: sqlite/Resources
 msgid "clay"
-msgstr "Глина"
+msgstr "глина"
 
 #: sqlite/Resources
 msgid "coins"
-msgstr "Монети"
+msgstr "монети"
 
 #: sqlite/Resources
 msgid "community"
-msgstr "Общество"
+msgstr "общество"
 
 #: sqlite/Resources
 msgid "deer food A"
@@ -1920,21 +1918,20 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "education"
-msgstr "Образование"
+msgstr "образование"
 
 #: sqlite/Resources
 msgid "faith"
-msgstr "Вяра"
+msgstr "вяра"
 
 #: sqlite/Resources
 msgid "fish"
-msgstr "Риба"
+msgstr "риба"
 
 # 75%
 #: sqlite/Resources
-#, fuzzy
 msgid "food"
-msgstr "Храна"
+msgstr "храна"
 
 #: sqlite/Resources
 msgid "get-together"
@@ -1942,11 +1939,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "grass"
-msgstr "Трева"
+msgstr "трева"
 
 #: sqlite/Resources
 msgid "happiness"
-msgstr "Щастие"
+msgstr "щастие"
 
 #: sqlite/Resources
 msgid "herbs"
