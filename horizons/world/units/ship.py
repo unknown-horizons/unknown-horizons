@@ -201,7 +201,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def remove(self):
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
-		self.session.view.remove_change_listener()
+		if self.session.view.has_change_listener(self.draw_health):
+			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
 
