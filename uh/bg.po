@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-11 15:39+0200\n"
+"PO-Revision-Date: 2011-07-11 15:50+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -32,11 +32,11 @@ msgstr "Върни настройките под разбиране"
 #: horizons/engine.py:71
 msgid "This will delete all changes to the settings you made so far."
 msgstr ""
-"Това ще изтрие всички промени по настройките, който си направил по-рано."
+"Това ще изтрие всички промени по настройките, които сте направили по-рано."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr "Искаш ли да продължиш?"
+msgstr "Искате ли да продължите?"
 
 #: horizons/engine.py:135
 msgid "System default"
@@ -65,8 +65,7 @@ msgstr "Грешен мрежов порт"
 #: horizons/engine.py:468
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Портът, който сте установили не е валиден. Трябва да бъде номер от 1 до "
-"65535."
+"Портът, който си установил не е валиден. Трябва да бъде номер от 1 до 65535."
 
 #: horizons/engine.py:469
 msgid "Please check the port you entered and make sure it's in the specified range."
@@ -561,7 +560,7 @@ msgstr "Заселнически сгради"
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Кланица: Нужни са прасета или добитък. Произвежда храна."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Cattle run: Raises cattle. Needs a farm."
@@ -668,11 +667,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Decrease game speed"
-msgstr ""
+msgstr "Намали скоростта на играта"
 
 #: horizons/i18n/guitranslations.py:111
 msgid "Increase game speed"
-msgstr ""
+msgstr "Увеличи скоростта на играта"
 
 #: horizons/i18n/guitranslations.py:112
 msgid "Zoom in"
@@ -776,7 +775,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Избери този сценарий"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "Exit"
@@ -1146,7 +1145,7 @@ msgstr "Стартиране на игра"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Изтриване на избраната игра"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Choose a map to play:"
@@ -1206,11 +1205,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:290 horizons/i18n/guitranslations.py:334
 msgid "Building overview"
-msgstr ""
+msgstr "Преглед сграда"
 
 #: horizons/i18n/guitranslations.py:291
 msgid "Cancel all building progress"
-msgstr ""
+msgstr "Прекрати целият процес на сградите"
 
 #: horizons/i18n/guitranslations.py:292
 msgid "Pause"
