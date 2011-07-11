@@ -45,9 +45,6 @@ class SettlementManager(WorldObject):
 
 	log = logging.getLogger("ai.aiplayer")
 
-	class buildCallType:
-		village_roads = 1
-
 	def __init__(self, owner, land_manager):
 		super(SettlementManager, self).__init__()
 		self.owner = owner
