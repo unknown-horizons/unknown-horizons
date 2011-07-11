@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 # (poterminology) uh/unknownhorizons.pot (10)
@@ -452,8 +452,12 @@ msgstr "movido"
 msgid "produce"
 msgstr "produzir"
 
+# (poterminology) uh-tutorial/tutorial.pot (9)
+# (poterminology) uh/unknownhorizons.pot (4)
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "produzir"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -893,8 +897,12 @@ msgstr "crescer"
 msgid "hold"
 msgstr "mantenha"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+#, fuzzy
 msgid "hunt"
-msgstr ""
+msgstr "caça"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1057,8 +1065,12 @@ msgstr "mapa miniatura"
 msgid "playing"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "ruin"
-msgstr ""
+msgstr "executar"
 
 msgid "seed"
 msgstr ""
@@ -1093,8 +1105,12 @@ msgstr ""
 msgid "education"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 75%
+#, fuzzy
 msgid "clay"
-msgstr ""
+msgstr "jogar"
 
 msgid "charcoal"
 msgstr ""
