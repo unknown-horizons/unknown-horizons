@@ -323,6 +323,9 @@ def _start_campaign(campaign_name):
 		path_in_campaign_dir = os.path.join(SavegameManager.campaigns_dir, campaign_basename)
 		if not (os.path.exists(path_in_campaign_dir) and \
 		        os.path.samefile(campaign_name, path_in_campaign_dir)):
+			print _("Due to technical reasons, the campaign file will be copied to the UH campaign directory (%s).") % SavegameManager.campaigns_dir + \
+			      "\n" + _("This means that changes in the file you specified will not apply to the game directly.") + \
+			      _("To see the changes, either always start UH with the current arguments or edit the file %s.") % path_in_campaign_dir
 			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
 		# use campaign file name below
 		campaign_name = os.path.splitext( campaign_basename )[0]
