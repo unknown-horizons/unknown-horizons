@@ -23,6 +23,7 @@ import random
 
 from horizons.session import Session
 from horizons.manager import MPManager
+from horizons.timer import Timer
 
 class MPSession(Session):
 	"""Session class for multiplayer games."""
