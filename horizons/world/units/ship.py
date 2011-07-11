@@ -205,6 +205,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
+		self.deselect()
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
@@ -256,7 +257,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
 		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
-		self.session.view.remove_change_listener(self.draw_health)
+		# this is necessary to make deselect idempotent
+		if self.session.view.has_change_listener(self.draw_health):
+			self.session.view.remove_change_listener(self.draw_health)
 
 	def go(self, x, y):
 		"""Moves the ship.
