@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-11 12:19+0200\n"
+"PO-Revision-Date: 2011-07-11 13:33+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -650,11 +650,11 @@ msgstr "Rotera kartan medurs"
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Decrease game speed"
-msgstr ""
+msgstr "Minska spelhastigheten"
 
 #: horizons/i18n/guitranslations.py:111
 msgid "Increase game speed"
-msgstr ""
+msgstr "Öka spelhastigheten"
 
 #: horizons/i18n/guitranslations.py:112
 msgid "Zoom in"
@@ -674,7 +674,7 @@ msgstr "Tegel"
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Food"
-msgstr ""
+msgstr "Föda"
 
 #: horizons/i18n/guitranslations.py:118
 msgid "Textiles"
@@ -690,15 +690,15 @@ msgstr "Guld"
 
 #: horizons/i18n/guitranslations.py:123
 msgid "Enter new name:"
-msgstr ""
+msgstr "Skriv nytt namn:"
 
 #: horizons/i18n/guitranslations.py:124
 msgid "Change name"
-msgstr ""
+msgstr "Ändra namn"
 
 #: horizons/i18n/guitranslations.py:125 horizons/i18n/guitranslations.py:232
 msgid "Apply the new name"
-msgstr ""
+msgstr "Tryck för att ändra namnet"
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Enter your message:"
@@ -710,39 +710,39 @@ msgstr "Chatt"
 
 #: horizons/i18n/guitranslations.py:130
 msgid "Buy resources"
-msgstr ""
+msgstr "Köp varor"
 
 #: horizons/i18n/guitranslations.py:131
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "Köpa/sälja varor"
 
 #: horizons/i18n/guitranslations.py:132
 msgid "Legend:"
-msgstr ""
+msgstr "Förklaring:"
 
 #: horizons/i18n/guitranslations.py:133
 msgid "Sell resources"
-msgstr ""
+msgstr "Sälj varor"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Pause production"
-msgstr ""
+msgstr "Pausa produktion"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Start production"
-msgstr ""
+msgstr "Fortsätt produktion"
 
 #: horizons/i18n/guitranslations.py:138
 msgid "Leave Captain's log"
-msgstr ""
+msgstr "Stäng loggboken"
 
 #: horizons/i18n/guitranslations.py:139
 msgid "Read prev. entries"
-msgstr ""
+msgstr "Tidigare poster"
 
 #: horizons/i18n/guitranslations.py:140
 msgid "Read next entries"
-msgstr ""
+msgstr "Senare poster"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
@@ -823,27 +823,27 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:173
 msgid "{LEFT} = Scroll left"
-msgstr ""
+msgstr "{LEFT} = Flytta vyn åt vänster"
 
 #: horizons/i18n/guitranslations.py:174
 msgid "{RIGHT} = Scroll right"
-msgstr ""
+msgstr "{RIGHT} = Flytta vyn åt höger"
 
 #: horizons/i18n/guitranslations.py:175
 msgid "{UP} = Scroll up"
-msgstr ""
+msgstr "{UP} = Flytta vyn uppåt"
 
 #: horizons/i18n/guitranslations.py:176
 msgid "{DOWN} = Scroll down"
-msgstr ""
+msgstr "{DOWN} = Flytta vyn nedåt"
 
 #: horizons/i18n/guitranslations.py:177
 msgid "{ , } = Rotate building left"
-msgstr ""
+msgstr "{ , } = Rotera byggnaden åt vänster"
 
 #: horizons/i18n/guitranslations.py:178
 msgid "{ . } = Rotate building right"
-msgstr ""
+msgstr "{ . } = Rotera byggnaden åt höger"
 
 #: horizons/i18n/guitranslations.py:179
 msgid "{B} = Show build menu"
@@ -851,27 +851,28 @@ msgstr "{B} = Visa byggmenyn"
 
 #: horizons/i18n/guitranslations.py:180
 msgid "{F1} = Display help"
-msgstr ""
+msgstr "{F1} = Visa hjälp"
 
 #: horizons/i18n/guitranslations.py:181
 msgid "{F5} = Quicksave"
-msgstr ""
+msgstr "{F5} = Snabbspara"
 
 #: horizons/i18n/guitranslations.py:182
 msgid "{F9} = Quickload"
-msgstr ""
+msgstr "{F9} = Snabbladda"
 
 #: horizons/i18n/guitranslations.py:183
 msgid "{F10} = Toggle console on/off"
-msgstr ""
+msgstr "{F10} = Visa konsoll av/på"
 
 #: horizons/i18n/guitranslations.py:184
+#, fuzzy
 msgid "{ESC} = Show pause menu"
-msgstr ""
+msgstr "{ESC} = Visa pausemenyn"
 
 #: horizons/i18n/guitranslations.py:185
 msgid "{G} = Toggle grid on/off"
-msgstr ""
+msgstr "{G} = Visa rutnät av/på"
 
 #: horizons/i18n/guitranslations.py:186
 msgid "{X} = Enable destruct mode"
@@ -879,23 +880,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:187
 msgid "{P} = Pause game"
-msgstr ""
+msgstr "{P} = Pausa spel"
 
 #: horizons/i18n/guitranslations.py:188
 msgid "{ + } = Increase game speed"
-msgstr ""
+msgstr "{ + } = Öka spelhastigheten"
 
 #: horizons/i18n/guitranslations.py:189
 msgid "{ - } = Decrease game speed"
-msgstr ""
+msgstr "{ - } = Minska spelhastigheten"
 
 #: horizons/i18n/guitranslations.py:190
 msgid "{S} = Screenshot"
-msgstr ""
+msgstr "{S} = Skärmdump"
 
 #: horizons/i18n/guitranslations.py:191
 msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr ""
+msgstr "{SHIFT} = Håll ner för att placera flera byggnader"
 
 #: horizons/i18n/guitranslations.py:192
 msgid "{C} = Chat"
@@ -903,7 +904,7 @@ msgstr "{C} = Chatt"
 
 #: horizons/i18n/guitranslations.py:193
 msgid "{L} = Toggle Captain's log"
-msgstr ""
+msgstr "{L} = Visa loggboken"
 
 #: horizons/i18n/guitranslations.py:194 horizons/i18n/guitranslations.py:235
 #: horizons/i18n/guitranslations.py:261 horizons/i18n/guitranslations.py:268
