@@ -344,7 +344,6 @@ class ResourceDepositOverviewTab(OverviewTab):
 		self.widget.child_finder("inventory").update()
 
 
-
 ###
 # Minor utility functions
 

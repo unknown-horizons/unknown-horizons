@@ -306,6 +306,9 @@ class MovingWeaponHolder(WeaponHolder):
 		super(MovingWeaponHolder, self).__init__(**kwargs)
 		#TODO move in specialized unit code
 		self.add_component('hold_ground', HoldGroundComponent)
+		self.add_component('aggressive', HoldGroundComponent)
+		self.add_component('none', HoldGroundComponent)
+		self.add_component('flee', HoldGroundComponent)
 		self.stance = 'hold_ground'
 		self.attack_actions = ['attack_left_as_huker0', 'attack_right_as_huker0']
 
@@ -370,6 +373,14 @@ class MovingWeaponHolder(WeaponHolder):
 
 			self.fire_all_weapons(dest)
 			Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
+
+	def set_stance(self, stance):
+		"""
+		Sets the stance to a specific one and passes the current state
+		"""
+		state = self.get_component(self.stance).get_state()
+		self.stance = stance
+		self.get_component(stance).set_state(state)
 
 	def go(self, x, y):
 		super(MovingWeaponHolder, self).go(x, y)

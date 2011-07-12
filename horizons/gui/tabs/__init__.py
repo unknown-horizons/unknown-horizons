@@ -25,6 +25,7 @@ from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
                         MarketPlaceOverviewTab, SignalFireOverviewTab, \
                         TraderShipOverviewTab, EnemyBuildingOverviewTab, \
                         EnemyShipOverviewTab, ResourceDepositOverviewTab
+from fightingtab import FightingUnitTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
