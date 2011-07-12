@@ -88,6 +88,13 @@ class TradeManager(WorldObject):
 			self.data[resource_id] = SingleResourceTradeManager(self.settlement_manager, resource_id)
 		return self.data[resource_id].get_quota(quota_holder)
 
+	def get_total_import(self, resource_id):
+		if resource_id not in self.legal_resources:
+			return 0.0
+		if resource_id not in self.data:
+			self.data[resource_id] = SingleResourceTradeManager(self.settlement_manager, resource_id)
+		return self.data[resource_id].get_total_import()
+
 	def load_resources(self, destination_settlement_manager, ship):
 		""" the given ship has arrived at the source settlement to pick up the resources required by this trade manager """
 		total_amount = {}
@@ -268,6 +275,9 @@ class SingleResourceTradeManager(WorldObject):
 		if quota_holder not in self.quotas:
 			self.quotas[quota_holder] = 0.0
 		return self.quotas[quota_holder]
+
+	def get_total_import(self):
+		return self.total - self.available
 
 	def request_quota_change(self, quota_holder, amount):
 		if quota_holder not in self.quotas:

@@ -178,6 +178,9 @@ class SettlementManager(WorldObject):
 			return self.liquor_chain.get_final_production_level()
 		return None
 
+	def get_resource_import(self, resource_id):
+		return self.trade_manager.get_total_import(resource_id)
+
 	def get_resident_resource_usage(self, resource_id):
 		if resource_id == RES.BRICKS_ID:
 			return 0.001 # dummy value to cause brick production to be built
@@ -306,7 +309,8 @@ class SettlementManager(WorldObject):
 		for settlement_manager in settlement_managers:
 			usage = settlement_manager.get_resident_resource_usage(resource_id)
 			production = settlement_manager.get_resource_production(resource_id)
-			total += max(0.0, usage - production)
+			resource_import = settlement_manager.get_resource_import(resource_id)
+			total += max(0.0, usage - production + resource_import)
 		return total
 
 	def need_more_storage(self):
@@ -332,11 +336,12 @@ class SettlementManager(WorldObject):
 		# the second build_generic_chain call declares that the settlement doesn't need it after all thus freeing it
 		# TODO: make this a single explicit action: right now import quotas are deleted by the first step which can make it look like less resources can be imported
 		result = self.build_generic_chain(chain, '%s producer' % name, needed_amount)
-		self.build_generic_chain(self.food_chain, '%s producer' % name, 0.0)
+		self.build_generic_chain(chain, '%s producer' % name, 0.0)
 		return result
 
 	def _feeder_tick(self):
 		self.manage_production()
+		self.trade_manager.refresh()
 		self.resource_manager.refresh()
 
 		if self.build_chain(self.boards_chain, 'boards producer'):
