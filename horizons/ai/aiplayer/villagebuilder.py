@@ -21,6 +21,7 @@
 
 import copy
 import math
+import logging
 
 from collections import deque
 
@@ -34,6 +35,8 @@ from horizons.util.python import decorators
 from horizons.entities import Entities
 
 class VillageBuilder(AreaBuilder):
+	log = logging.getLogger("ai.aiplayer")
+
 	def __init__(self, settlement_manager):
 		super(VillageBuilder, self).__init__(settlement_manager)
 		self.__init(settlement_manager)
@@ -528,20 +531,43 @@ class VillageBuilder(AreaBuilder):
 		if coords is None:
 			coords = self.tent_queue[0]
 
-		builder = self.plan[coords][1]
-		if not builder.have_resources():
-			return BUILD_RESULT.NEED_RESOURCES
-		if not builder.execute():
-			return BUILD_RESULT.UNKNOWN_ERROR
+		ok = True
+		x, y = coords
+		owned_by_other = False
+		size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
+		for dx in xrange(size[0]):
+			for dy in xrange(size[1]):
+				coords2 = (x + dx, y + dy)
+				if coords2 not in self.settlement.ground_map:
+					ok = False
+					if self.island.ground_map[coords2].settlement is not None:
+						owned_by_other = True
 
-		self.register_change(coords[0], coords[1], BUILDING_PURPOSE.RESIDENCE, builder)
-		if self.tent_queue[0] == coords:
-			self.tent_queue.popleft()
-		else:
-			for i in xrange(len(self.tent_queue)):
-				if self.tent_queue[i] == coords:
-					del self.tent_queue[i]
-					break
+		if ok and not owned_by_other:
+			builder = self.plan[coords][1]
+			if not builder.have_resources():
+				return BUILD_RESULT.NEED_RESOURCES
+			if not builder.execute():
+				self.log.debug('%s unable to build tent at (%d, %d)', self, x, y)
+				return BUILD_RESULT.UNKNOWN_ERROR
+			self.register_change(coords[0], coords[1], BUILDING_PURPOSE.RESIDENCE, builder)
+
+		if ok or owned_by_other:
+			if self.tent_queue[0] == coords:
+				self.tent_queue.popleft()
+			else:
+				for i in xrange(len(self.tent_queue)):
+					if self.tent_queue[i] == coords:
+						del self.tent_queue[i]
+						break
+			if owned_by_other:
+				self.log.debug('%s tent position owned by other player at (%d, %d)', self, x, y)
+				return BUILD_RESULT.IMPOSSIBLE
+
+		if not ok:
+			# need to extends the area, it is not owned by another player
+			self.log.debug('%s tent position not owned by the player at (%d, %d), extending settlement area instead', self, x, y)
+			return self.extend_settlement(Rect.init_from_topleft_and_size(x, y, size[0] - 1, size[1] - 1))
 
 		if not self.roads_built:
 			self.build_roads()
@@ -582,5 +608,8 @@ class VillageBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
+
+	def __str__(self):
+		return '%s VillageBuilder(%d)' % (self.settlement_manager, self.worldid)
 
 decorators.bind_all(VillageBuilder)

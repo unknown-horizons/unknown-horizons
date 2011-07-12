@@ -27,7 +27,7 @@ from collections import deque
 from builder import Builder
 from roadplanner import RoadPlanner
 
-from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
+from horizons.ai.aiplayer.constants import BUILDING_PURPOSE, BUILD_RESULT
 from horizons.constants import BUILDINGS
 from horizons.util import Point, Rect, WorldObject
 from horizons.util.python import decorators
@@ -236,6 +236,40 @@ class AreaBuilder(WorldObject):
 
 	def have_resources(self, building_id):
 		return Entities.buildings[building_id].have_resources([self.settlement], self.owner)
+
+	def _extend_settlement_with_tent(self, position):
+		size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
+		min_distance = None
+		best_coords = None
+
+		for (x, y) in self.settlement_manager.village_builder.tent_queue:
+			ok = True
+			for dx in xrange(size[0]):
+				for dy in xrange(size[1]):
+					if (x + dx, y + dy) not in self.settlement.ground_map:
+						ok = False
+						break
+			if not ok:
+				continue
+
+			distance = Rect.init_from_topleft_and_size(x, y, size[0] - 1, size[1] - 1).distance(position)
+			if min_distance is None or distance < min_distance:
+				min_distance = distance
+				best_coords = (x, y)
+
+		if min_distance is None:
+			return BUILD_RESULT.IMPOSSIBLE
+		return self.settlement_manager.village_builder.build_tent(best_coords)
+
+	def _extend_settlement_with_storage(self, position):
+		raise NotImplementedError, 'TODO'
+
+	def extend_settlement(self, position):
+		""" build a tent or a storage to extend the settlement towards the position """
+		result = self._extend_settlement_with_tent(position)
+		if result != BUILD_RESULT.OK:
+			result = self._extend_settlement_with_storage(position)
+		return result
 
 	def display(self):
 		raise NotImplementedError, 'This function has to be overridden.'
