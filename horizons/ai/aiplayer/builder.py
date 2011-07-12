@@ -81,6 +81,9 @@ class Builder(WorldObject):
 	def __str__(self):
 		return 'Builder(%d) of building %d at %s, orientation %d' % (self.worldid, self.building_id, self.point.to_tuple(), self.orientation)
 
+	def __lt__(self, other):
+		return self.worldid < other.worldid
+
 	def _get_rotation(self):
 		if self.building_id in self.non_rotatable_buildings:
 			return self.build_position.rotation

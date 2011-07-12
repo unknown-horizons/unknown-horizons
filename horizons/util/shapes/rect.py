@@ -288,6 +288,15 @@ class Rect(object):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
+	def __lt__(self, other):
+		if self.left != other.left:
+			return self.left < other.left
+		if self.top != other.top:
+			return self.top < other.top
+		if self.right != other.right:
+			return self.right < other.right
+		return self.bottom < other.bottom
+
 	def __iter__(self):
 		"""Generates an iterator, that returns Points"""
 		for x in xrange(self.left, self.right+1):

@@ -238,7 +238,7 @@ class VillageBuilder(AreaBuilder):
 		possible_residence_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size)
 		possible_main_square_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].size)
 
-		for (x, y), main_square in possible_main_square_positions.iteritems():
+		for (x, y), main_square in sorted(possible_main_square_positions.iteritems()):
 			plan = dict.fromkeys(section_coords_set, (BUILDING_PURPOSE.NONE, None))
 			bad_roads = 0
 			good_tents = 0
@@ -282,7 +282,7 @@ class VillageBuilder(AreaBuilder):
 				self._remove_unreachable_roads(plan, main_square)
 
 			# place the tents
-			for coords, position in possible_residence_positions.iteritems():
+			for coords, position in sorted(possible_residence_positions.iteritems()):
 				ok = True
 				for dx, dy in tent_squares:
 					coords2 = (coords[0] + dx, coords[1] + dy)
@@ -324,7 +324,7 @@ class VillageBuilder(AreaBuilder):
 		distance = {}
 		queue = deque()
 
-		for coords, (purpose, _) in plan.iteritems():
+		for coords, (purpose, _) in sorted(plan.iteritems()):
 			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
 				for coords in self._get_main_square_position(*coords).tuple_iter():
 					distance[coords] = 0
@@ -347,7 +347,7 @@ class VillageBuilder(AreaBuilder):
 
 		# create new possible tent position list
 		possible_tents = []
-		for coords in plan:
+		for coords in sorted(plan):
 			if coords in distance and plan[coords][0] == BUILDING_PURPOSE.NONE:
 				possible_tents.append((distance[coords], coords))
 		possible_tents.sort()
@@ -389,7 +389,7 @@ class VillageBuilder(AreaBuilder):
 		""" replaces up to max_buildings planned tents with buildings of type building_id."""
 
 		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
-		planned_tents = set([builder.position for (purpose, builder) in self.plan.itervalues() if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE])
+		planned_tents = sorted(set([builder.position for (purpose, builder) in self.plan.itervalues() if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE]))
 		possible_positions = copy.copy(planned_tents)
 
 		def get_centroid(planned, blocked):
@@ -467,7 +467,7 @@ class VillageBuilder(AreaBuilder):
 
 		# form blocks of tents
 		main_square = None
-		for coords, (purpose, _) in plan.iteritems():
+		for coords, (purpose, _) in sorted(plan.iteritems()):
 			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
 				main_square = self._get_main_square_position(*coords)
 			if purpose != BUILDING_PURPOSE.UNUSED_RESIDENCE or coords in block:
