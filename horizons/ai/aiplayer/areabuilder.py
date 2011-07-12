@@ -69,8 +69,8 @@ class AreaBuilder(WorldObject):
 		return self
 
 	def _load(self, db, settlement_manager, worldid):
-		super(AreaBuilder, self).load(db, worldid)
 		self.__init(settlement_manager)
+		super(AreaBuilder, self).load(db, worldid)
 
 	def _get_neighbour_tiles(self, rect):
 		"""

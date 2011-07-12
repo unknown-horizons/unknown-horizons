@@ -26,6 +26,7 @@ from mission.domestictrade import DomesticTrade
 
 from building import AbstractBuilding
 from horizons.util import Circle, WorldObject
+from horizons.util.worldobject import WorldObjectNotFound
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES
 
@@ -291,7 +292,11 @@ class SingleResourceTradeManager(WorldObject):
 		for quota_holder, quota in self.quotas.iteritems():
 			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)
 		for settlement_manager_id, amount in self.partners.iteritems():
-			settlement_name = WorldObject.get_object_by_id(settlement_manager_id).settlement.name
+			settlement_name = 'unknown'
+			try:
+				settlement_name = WorldObject.get_object_by_id(settlement_manager_id).settlement.name
+			except WorldObjectNotFound:
+				pass
 			result += '\n  import %.5f from %s' % (amount, settlement_name)
 		return result
 
