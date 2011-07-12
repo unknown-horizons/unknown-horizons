@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-06-03 18:38+0200\n"
+"PO-Revision-Date: 2011-06-03 18:39+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "opbygge"
@@ -220,14 +220,18 @@ msgstr ""
 msgid "move"
 msgstr "flytte"
 
+# 80%
+#, fuzzy
 msgid "moved"
-msgstr ""
+msgstr "flytte"
 
 msgid "produce"
 msgstr "producere"
 
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "producere"
 
 msgid "pasture"
 msgstr "græsarealer"
@@ -533,8 +537,10 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "ruin"
-msgstr ""
+msgstr "køre"
 
 msgid "seed"
 msgstr ""
@@ -569,8 +575,10 @@ msgstr ""
 msgid "education"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "clay"
-msgstr ""
+msgstr "spiller"
 
 msgid "charcoal"
 msgstr ""
