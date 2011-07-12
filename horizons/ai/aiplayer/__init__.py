@@ -293,7 +293,7 @@ class AIPlayer(GenericAI):
 			settlement = settlement_manager.land_manager.settlement
 			inventory = settlement.inventory
 			for res, (max_buy, min_sell) in self.buy_sell_thresholds.iteritems():
-				if inventory[res] < max_buy:
+				if inventory[res] < max_buy and (not settlement_manager.feeder_island or res != RES.FOOD_ID):
 					if res in settlement.sell_list:
 						RemoveFromSellList(settlement, res).execute(self.session)
 					if res not in settlement.buy_list:
