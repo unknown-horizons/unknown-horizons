@@ -48,11 +48,11 @@ class YamlCache(object):
 	@classmethod
 	def get_file(cls, filename):
 		if cls.virgin:
-			cls.read_bin_file()
+			cls._read_bin_file()
 			cls.virgin = False
 		data = cls.get_yaml_file(filename)
 		if cls.dirty:
-			cls.write_bin_file()
+			cls._write_bin_file()
 			cls.dirty = False
 		return data
 
@@ -72,7 +72,7 @@ class YamlCache(object):
 		return cls.cache[filename][1]
 
 	@classmethod
-	def write_bin_file(cls):
+	def _write_bin_file(cls):
 		s = shelve.open(cls.yaml_cache)
 		for key, value in cls.cache.iteritems():
 			# TODO : manage unicode problems (paths with accents ?)
@@ -80,8 +80,18 @@ class YamlCache(object):
 		s.close()
 
 	@classmethod
-	def read_bin_file(cls):
-		s = shelve.open(cls.yaml_cache)
+	def _read_bin_file(cls):
+		try:
+			s = shelve.open(cls.yaml_cache)
+		except ImportError:
+			# Some python distributions used to use the bsddb module as underlying shelve.
+			# The bsddb module is now deprecated since 2.6 and is not present in some 2.7 distributions.
+			# Therefore, the line above will yield an ImportError if it has been executed with
+			# a python supporting bsddb and now is executed again with python with no support for it.
+			# Since this may also be caused by a different error, we just try again once.
+			os.remove(cls.yaml_cache)
+			s = shelve.open(cls.yaml_cache)
+
 		for key, value in s.iteritems():
 			cls.cache[key] = value
 		s.close()
