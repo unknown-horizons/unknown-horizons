@@ -27,10 +27,12 @@ from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.constants import WEAPONS, GAME_SPEED
+from horizons.world.component.holdgroundcomponent import HoldGroundComponent
 
 import gc
 
 @metaChangeListenerDecorator("storage_modified")
+@metaChangeListenerDecorator("user_attack_issued")
 class WeaponHolder(object):
 	def __init__(self, **kwargs):
 		super(WeaponHolder, self).__init__(**kwargs)
@@ -194,6 +196,13 @@ class WeaponHolder(object):
 
 		self.try_attack_target()
 
+	def user_attack(self, target):
+		"""
+		Called when the user triggeres the attack, executes the user_attack_issued callbacks
+		"""
+		self.attack(target)
+		self.on_user_attack_issued()
+
 	def remove_target(self):
 		"""
 		Removes refference from target,
@@ -291,43 +300,21 @@ class WeaponHolder(object):
 				self.add_weapon_to_storage(weapon_id)
 		self.attack_actions = []
 
+@metaChangeListenerDecorator("user_move_issued")
 class MovingWeaponHolder(WeaponHolder):
 	def __init__(self, **kwargs):
 		super(MovingWeaponHolder, self).__init__(**kwargs)
-		self.stance = 'defensive'
 		#TODO move in specialized unit code
+		self.add_component('hold_ground', HoldGroundComponent)
+		self.stance = 'hold_ground'
 		self.attack_actions = ['attack_left_as_huker0', 'attack_right_as_huker0']
 
 	def _stance_tick(self):
 		"""
 		Executes every few seconds, doing movement depending on the stance.
 		"""
-
 		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 3)
-
-		enemies = [u for u in self.session.world.get_ships(self.position.center(), max(self._max_range, self.radius * 2)) \
-			if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
-
-		if not enemies:
-			return
-
-		if self.stance == 'defensive':
-			# enemies are all the units that target a friendly unit
-			enemies = [u for u in enemies if hasattr(u, '_target') and u._target and u._target.owner is self.owner]
-			if enemies:
-				target = sorted(enemies, key = lambda u: self.position.distance(u.position))[0]
-				# move away from the target after firing
-				if self._fireable:
-					self.fire_all_weapons(target.position.center())
-				else:
-					self.move(Annulus(target.position.center(), target._max_range + 1, target._max_range * 2))
-		else:
-			# if other target selected than the one in range attack that one
-			# this means keeping the current target while passing near other enemy units
-			if self._target and self._target not in enemies:
-				return
-			target = sorted(enemies, key = lambda u: self.position.distance(u.position))[0]
-			self.attack(target)
+		self.get_component(self.stance).act()
 
 	def _move_and_attack(self, destination, not_possible_action = None, in_range_callback = None):
 		"""
@@ -382,22 +369,9 @@ class MovingWeaponHolder(WeaponHolder):
 				dest = self._target._next_target
 
 			self.fire_all_weapons(dest)
+			Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
 
-			if distance > self._min_range:
-				# get closer
-				destination = Annulus(dest, self._min_range, int(self._min_range + (distance - self._min_range)/2))
-				if self._instance.getCurrentAction().getId() in self.attack_actions:
-					Scheduler().add_new_object(Callback(self._move_and_attack, destination),
-						self, GAME_SPEED.TICKS_PER_SECOND)
-				else:
-					in_range_callback = None
-					if self._target.movable and	self._target.is_moving():
-						in_range_callback = self.try_attack_target
-					self._move_and_attack(destination, in_range_callback = in_range_callback)
-			else:
-				# try in another second (weapons shouldn't be fired more often than that)
-				Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
+	def go(self, x, y):
+		super(MovingWeaponHolder, self).go(x, y)
+		self.on_user_move_issued()
 
-	def attack(self, target):
-		self.stance = 'aggressive'
-		super(MovingWeaponHolder, self).attack(target)
