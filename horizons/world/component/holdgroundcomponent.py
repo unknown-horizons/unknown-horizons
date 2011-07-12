@@ -55,7 +55,7 @@ class HoldGroundComponent(StanceComponent):
 		"""
 		If attack ends, move update the returning position to current position and continue stance
 		"""
-		if not self.instance._target:
+		if not self.instance.is_attacking():
 			self.state = 'idle'
 			self.return_position = self.instance.position.center().copy()
 
@@ -75,7 +75,7 @@ class HoldGroundComponent(StanceComponent):
 		Check if target still exists or if unit exited the hold ground area
 		"""
 		if not Circle(self.return_position, self.stance_range).contains(self.instance.position.center()) or \
-			not self.instance._target:
+			not self.instance.is_attacking():
 				try:
 					self.instance.move(self.return_position)
 					self.state = 'move_back'

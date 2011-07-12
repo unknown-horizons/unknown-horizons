@@ -203,6 +203,12 @@ class WeaponHolder(object):
 		self.attack(target)
 		self.on_user_attack_issued()
 
+	def is_attacking(self):
+		"""
+		Returns True if the WeaponHolder is trying to attack a target
+		"""
+		return True if self._target else False
+
 	def remove_target(self):
 		"""
 		Removes refference from target,

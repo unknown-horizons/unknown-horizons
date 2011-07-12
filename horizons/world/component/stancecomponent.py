@@ -60,7 +60,7 @@ class StanceComponent(Component):
 		pass
 
 	def act_user_attack(self):
-		if not self.instance._target:
+		if not self.instance.is_attacking():
 			self.state = 'idle'
 
 	def act_user_move(self):
