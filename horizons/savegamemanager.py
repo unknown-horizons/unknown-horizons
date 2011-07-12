@@ -124,8 +124,9 @@ class SavegameManager(object):
 	display_timeformat = "%y/%m/%d %H:%M"
 
 	# metadata of a savegame with default values
-	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0 }
-	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int }
+	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : ""  }
+	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int, \
+	                            'rng_state' : str }
 
 	campaign_status_file = os.path.join(savegame_dir, 'campaign_status.yaml')
 
@@ -240,7 +241,7 @@ class SavegameManager(object):
 		return metadata
 
 	@classmethod
-	def write_metadata(cls, db, savecounter):
+	def write_metadata(cls, db, savecounter, rng_state):
 		"""Writes metadata to db.
 		@param db: DbReader
 		@param savecounter: int"""
@@ -248,6 +249,7 @@ class SavegameManager(object):
 		metadata['timestamp'] = time.time()
 		metadata['savecounter'] = savecounter
 		metadata['savegamerev'] = VERSION.SAVEGAMEREVISION
+		metadata['rng_state'] = rng_state
 
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)

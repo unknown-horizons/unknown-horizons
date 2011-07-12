@@ -22,6 +22,7 @@
 import os
 import os.path
 import logging
+import json
 
 import horizons.main
 
@@ -177,12 +178,23 @@ class Session(LivingObject):
 
 		self.log.debug("Session: Loading from %s", savegame)
 		savegame_db = SavegameAccessor(savegame) # Initialize new dbreader
-		try:
-			# load how often the game has been saved (used to know the difference between
-			# a loaded and a new game)
-			self.savecounter = SavegameManager.get_metadata(savegame)['savecounter']
-		except KeyError:
-			self.savecounter = 0
+		savegame_data = SavegameManager.get_metadata(savegame)
+
+		# load how often the game has been saved (used to know the difference between
+		# a loaded and a new game)
+		self.savecounter = 0 if not 'savecounter' in savegame_data else savegame_data['savecounter']
+
+		if savegame_data.get('rng_state', None):
+			rng_state_list = json.loads( savegame_data['rng_state'] )
+			# json treats tuples as lists, but we need tuples here, so convert back
+			def rec_list_to_tuple(x):
+				if isinstance(x, list):
+					return tuple( rec_list_to_tuple(i) for i in x )
+				else:
+					return x
+			rng_state_tuple = rec_list_to_tuple(rng_state_list)
+			# changing the rng is safe for mp, as all players have to have the same map
+			self.random.setstate( rng_state_tuple )
 
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(savegame_db)
