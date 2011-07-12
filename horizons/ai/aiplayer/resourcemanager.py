@@ -128,6 +128,18 @@ class SingleResourceManager(WorldObject):
 			if not buildings:
 				return 0.0
 			return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], RES.POTATOES_ID)
+		elif self.resource_id == RES.WOOL_ID and self.building_id == BUILDINGS.FARM_CLASS:
+			# TODO: same as above
+			buildings = self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.PASTURE_CLASS)
+			if not buildings:
+				return 0.0
+			return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], RES.LAMB_WOOL_ID)
+		elif self.resource_id == RES.SUGAR_ID and self.building_id == BUILDINGS.FARM_CLASS:
+			# TODO: same as above
+			buildings = self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.SUGARCANE_FIELD_CLASS)
+			if not buildings:
+				return 0.0
+			return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], RES.RAW_SUGAR_ID)
 		else:
 			for building in buildings:
 				total += AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id)

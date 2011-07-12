@@ -35,7 +35,7 @@ class TradeManager(WorldObject):
 	"""
 
 	log = logging.getLogger("ai.aiplayer.trademanager")
-	legal_resources = [RES.FOOD_ID, RES.BRICKS_ID]
+	legal_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.BRICKS_ID]
 
 	def __init__(self, settlement_manager):
 		super(TradeManager, self).__init__()

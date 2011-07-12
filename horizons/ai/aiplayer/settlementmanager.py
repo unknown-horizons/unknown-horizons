@@ -45,6 +45,8 @@ class SettlementManager(WorldObject):
 
 	log = logging.getLogger("ai.aiplayer")
 
+	production_level_multiplier = 1.1
+
 	def __init__(self, owner, land_manager):
 		super(SettlementManager, self).__init__()
 		self.owner = owner
@@ -81,6 +83,7 @@ class SettlementManager(WorldObject):
 		self.get_together_chain = ProductionChain.create(self, RES.GET_TOGETHER_ID)
 		self.bricks_chain = ProductionChain.create(self, RES.BRICKS_ID)
 		self.tools_chain = ProductionChain.create(self, RES.TOOLS_ID)
+		self.liquor_chain = ProductionChain.create(self, RES.LIQUOR_ID)
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
@@ -171,6 +174,8 @@ class SettlementManager(WorldObject):
 			return self.bricks_chain.get_final_production_level()
 		elif resource_id == RES.BOARDS_ID:
 			return self.boards_chain.get_final_production_level()
+		elif resource_id == RES.LIQUOR_ID:
+			return self.liquor_chain.get_final_production_level()
 		return None
 
 	def get_resident_resource_usage(self, resource_id):
@@ -180,6 +185,8 @@ class SettlementManager(WorldObject):
 			return 0.01 # force a low level of boards production to always exist
 		elif resource_id == RES.TOOLS_ID:
 			return 0.001 # dummy value to cause tools production to be built
+		elif resource_id == RES.LIQUOR_ID:
+			return self.get_together_chain.get_ratio(resource_id) * self.get_resident_resource_usage(RES.GET_TOGETHER_ID)
 
 		total = 0
 		for coords, (purpose, _) in self.village_builder.plan.iteritems():
@@ -267,7 +274,7 @@ class SettlementManager(WorldObject):
 		return True
 
 	def build_chain(self, chain, name):
-		amount = self.get_resident_resource_usage(chain.resource_id) * 1.07
+		amount = self.get_resident_resource_usage(chain.resource_id) * self.production_level_multiplier
 		return self.build_generic_chain(chain, name, amount)
 
 	def reachable_deposit(self, building_id):
@@ -306,45 +313,49 @@ class SettlementManager(WorldObject):
 		limit = self.settlement.inventory.get_limit(RES.FOOD_ID)
 		if limit >= 120:
 			return False
-		important_resources = [RES.FOOD_ID]
+		important_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
 		for resource_id in important_resources:
 			if self.settlement.inventory[resource_id] + 5 >= limit:
 				return True
 		return False
+
+	def build_feeder_chain(self, chain, name):
+		settlement_managers = []
+		for settlement_manager in self.owner.settlement_managers:
+			if not settlement_manager.feeder_island:
+				settlement_managers.append(settlement_manager)
+
+		needed_amount = self.get_total_missing_production(settlement_managers, chain.resource_id) * self.production_level_multiplier
+		self.log.info('%s %s requirement %.5f', self, name, needed_amount)
+		# the first build_generic_chain call tries to build enough producers to produce the needed resource
+		# that also reserves the production for the (non-existent) settlement so it can't be transferred
+		# the second build_generic_chain call declares that the settlement doesn't need it after all thus freeing it
+		# TODO: make this a single explicit action: right now import quotas are deleted by the first step which can make it look like less resources can be imported
+		result = self.build_generic_chain(chain, '%s producer' % name, needed_amount)
+		self.build_generic_chain(self.food_chain, '%s producer' % name, 0.0)
+		return result
 
 	def _feeder_tick(self):
 		self.manage_production()
 		self.resource_manager.refresh()
 
 		if self.build_chain(self.boards_chain, 'boards producer'):
-			return
-
-		if not self.production_builder.enough_collectors():
+			pass
+		elif not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result,  'storage')
-			return
-
-		settlement_managers = []
-		for settlement_manager in self.owner.settlement_managers:
-			if not settlement_manager.feeder_island:
-				settlement_managers.append(settlement_manager)
-
-		needed_food = self.get_total_missing_production(settlement_managers, RES.FOOD_ID)
-		self.log.info('%s food requirement %.5f', self, needed_food)
-		if needed_food > 0:
-			if self.need_more_storage():
-				result = self.production_builder.improve_collector_coverage()
-				self.log_generic_build_result(result, 'storage')
-				return
-
-			# the first build_generic_chain call tries to build enough producers to produce the needed food
-			# that also reserves the production for the (non-existent) settlement so it can't be transferred
-			# the second build_generic_chain call declares that the settlement doesn't need it after all thus freeing it
-			# TODO: make this a single explicit action: right now import quotas are deleted by the first step which can make it look like less resources can be imported
-			result = self.build_generic_chain(self.food_chain, 'food producer', needed_food)
-			self.build_generic_chain(self.food_chain, 'food producer', 0.0)
-			if result:
-				return
+		elif self.need_more_storage():
+			result = self.production_builder.improve_collector_coverage()
+			self.log_generic_build_result(result, 'storage')
+			pass
+		elif self.build_feeder_chain(self.food_chain, 'food'):
+			pass
+		elif self.build_feeder_chain(self.textile_chain, 'textile'):
+			pass
+		elif self.land_manager.owner.settler_level > 1 and self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.build_chain(self.bricks_chain, 'bricks producer'):
+			pass
+		elif self.build_feeder_chain(self.liquor_chain, 'liquor'):
+			pass
 
 	def _general_tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
@@ -362,11 +373,11 @@ class SettlementManager(WorldObject):
 		if not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result,  'storage')
+		elif self.build_chain(self.boards_chain, 'boards producer'):
+			pass
 		elif self.build_chain(self.community_chain, 'main square'):
 			pass
 		elif self.build_chain(self.food_chain, 'food producer'):
-			pass
-		elif self.build_chain(self.boards_chain, 'boards producer'):
 			pass
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
 			pass

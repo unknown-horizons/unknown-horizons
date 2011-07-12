@@ -82,6 +82,9 @@ class ProductionChain(object):
 		""" returns the production level at the bottleneck """
 		return self.chain.get_final_production_level()
 
+	def get_ratio(self, resource_id):
+		return self.chain.get_ratio(resource_id)
+
 class ProductionChainSubtreeChoice(object):
 	def __init__(self, options):
 		self.options = options
@@ -161,6 +164,9 @@ class ProductionChainSubtreeChoice(object):
 				return BUILD_RESULT.IMPOSSIBLE
 			else:
 				return sorted(expected_costs)[0][2].build(amount)
+
+	def get_ratio(self, resource_id):
+		return sum(option.get_ratio(resource_id) for option in self.options)
 
 class ProductionChainSubtree:
 	def __init__(self, settlement_manager, resource_id, production_line, abstract_building, children, production_ratio):
@@ -287,8 +293,9 @@ class ProductionChainSubtree:
 				return result # error
 
 		if result == BUILD_RESULT.NEED_PARENT_FIRST or self.need_more_buildings(amount):
-			if self.resource_id == RES.FOOD_ID and not self.settlement_manager.feeder_island and len(self.settlement_manager.owner.settlement_managers) > 1:
-				return BUILD_RESULT.ALL_BUILT # hack to force food to be produced on a feeder island
+			if not self.settlement_manager.feeder_island and len(self.settlement_manager.owner.settlement_managers) > 1:
+				if self.resource_id == RES.FOOD_ID or self.resource_id == RES.TEXTILE_ID or self.resource_id == RES.LIQUOR_ID:
+					return BUILD_RESULT.ALL_BUILT # hack to force some resources to be produced on a feeder island
 
 			# build a building and then request quota change
 			(result, building) = self.abstract_building.build(self.settlement_manager, self.resource_id)
@@ -298,6 +305,10 @@ class ProductionChainSubtree:
 				return self._extend_settlement(building)
 			return result
 		return BUILD_RESULT.ALL_BUILT
+
+	def get_ratio(self, resource_id):
+		result = self.production_ratio if self.resource_id == resource_id else 0
+		return result + sum(child.get_ratio(resource_id) for child in self.children)
 
 decorators.bind_all(ProductionChain)
 decorators.bind_all(ProductionChainSubtreeChoice)
