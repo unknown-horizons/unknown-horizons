@@ -112,11 +112,13 @@ class TradeManager(WorldObject):
 		if path_length is None:
 			return False
 
+		destination_inventory = destination_settlement_manager.settlement.inventory
 		self.settlement_manager.settlement.branch_office
 		any_transferred = False
 		for resource_id, amount in total_amount.iteritems():
 			actual_amount = int(math.ceil(2 * path_length * amount))
 			actual_amount -= ship.inventory[resource_id] # load up to the specified amount
+			actual_amount = min(actual_amount, destination_inventory.get_limit(resource_id) - destination_inventory[resource_id])
 			if actual_amount <= 0:
 				continue # TODO: consider unloading the resources if there is more than needed
 			self.log.info('Transfer %d of %d to %s for a journey from %s to %s (path length %d, import %.5f per tick)', actual_amount, \
