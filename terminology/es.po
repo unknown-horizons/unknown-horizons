@@ -921,9 +921,8 @@ msgstr "parar / interrumpir"
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
 # 80%
-#, fuzzy
 msgid "hunt"
-msgstr "caza"
+msgstr "cazar"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
