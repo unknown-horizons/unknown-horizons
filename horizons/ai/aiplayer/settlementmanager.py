@@ -175,6 +175,8 @@ class SettlementManager(WorldObject):
 		elif resource_id == RES.BOARDS_ID:
 			return self.boards_chain.get_final_production_level()
 		elif resource_id == RES.LIQUOR_ID:
+			if not self.feeder_island:
+				return self.get_resource_production(RES.GET_TOGETHER_ID) * self.get_together_chain.get_ratio(RES.LIQUOR_ID)
 			return self.liquor_chain.get_final_production_level()
 		return None
 
@@ -307,7 +309,7 @@ class SettlementManager(WorldObject):
 	def get_total_missing_production(self, settlement_managers, resource_id):
 		total = 0.0
 		for settlement_manager in settlement_managers:
-			usage = settlement_manager.get_resident_resource_usage(resource_id)
+			usage = settlement_manager.get_resident_resource_usage(resource_id) * self.production_level_multiplier
 			production = settlement_manager.get_resource_production(resource_id)
 			resource_import = settlement_manager.get_resource_import(resource_id)
 			total += max(0.0, usage - production + resource_import)
@@ -329,7 +331,7 @@ class SettlementManager(WorldObject):
 			if not settlement_manager.feeder_island:
 				settlement_managers.append(settlement_manager)
 
-		needed_amount = self.get_total_missing_production(settlement_managers, chain.resource_id) * self.production_level_multiplier
+		needed_amount = self.get_total_missing_production(settlement_managers, chain.resource_id)
 		self.log.info('%s %s requirement %.5f', self, name, needed_amount)
 		# the first build_generic_chain call tries to build enough producers to produce the needed resource
 		# that also reserves the production for the (non-existent) settlement so it can't be transferred
@@ -341,7 +343,6 @@ class SettlementManager(WorldObject):
 
 	def _feeder_tick(self):
 		self.manage_production()
-		self.trade_manager.refresh()
 		self.resource_manager.refresh()
 
 		if self.build_chain(self.boards_chain, 'boards producer'):
@@ -433,7 +434,6 @@ class SettlementManager(WorldObject):
 				self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, True)
 
 		self.trade_manager.finalize_requests()
-		#print self.trade_manager
 		self.trade_manager.organize_shipping()
 
 	def tick(self):
