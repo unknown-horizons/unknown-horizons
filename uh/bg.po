@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-11 16:07+0200\n"
+"PO-Revision-Date: 2011-07-11 16:08+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -336,9 +336,12 @@ msgstr "Построй"
 msgid "Boat builder overview"
 msgstr "Корабостроител-преглед"
 
+# 76%
+# 92%
 #: horizons/gui/tabs/boatbuildertab.py:62 horizons/i18n/guitranslations.py:297
+#, fuzzy
 msgid "Fishing boat"
-msgstr ""
+msgstr "Рибарски лодки"
 
 #: horizons/gui/tabs/boatbuildertab.py:111
 msgid "Resources still needed:"
@@ -1122,9 +1125,11 @@ msgstr "Използва се рендер:"
 msgid "Please make sure that you know what you do."
 msgstr "Моля, уверете се, че знаете какво правите."
 
+# 83%
 #: horizons/i18n/guitranslations.py:260
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Приеми:"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
@@ -1219,10 +1224,12 @@ msgstr "Паузи"
 msgid "Resume"
 msgstr "Върни"
 
+# 92%
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:313
 #: horizons/i18n/guitranslations.py:335 horizons/i18n/guitranslations.py:337
+#, fuzzy
 msgid "Running costs"
-msgstr ""
+msgstr "Текущи разходи"
 
 # 76%
 #: horizons/i18n/guitranslations.py:296
@@ -1331,9 +1338,11 @@ msgstr ""
 msgid "Needed resources:"
 msgstr ""
 
+# 88%
 #: horizons/i18n/guitranslations.py:345 horizons/i18n/guitranslations.py:352
+#, fuzzy
 msgid "Happiness"
-msgstr ""
+msgstr "Щастие"
 
 #: horizons/i18n/guitranslations.py:346 horizons/i18n/guitranslations.py:351
 msgid "Paid taxes"
