@@ -111,7 +111,7 @@ class FoundSettlement(Mission):
 		island = land_manager.island
 		options = []
 
-		for (x, y), tile in island.ground_map.iteritems():
+		for (x, y), tile in sorted(island.ground_map.iteritems()):
 			ok = False
 			for x_offset, y_offset in moves:
 				for d in xrange(2, 6):
@@ -136,6 +136,10 @@ class FoundSettlement(Mission):
 					cost += 100
 				else:
 					cost += distance
+
+			for settlement_manager in land_manager.owner.settlement_managers:
+				cost += branch_office.position.distance(settlement_manager.branch_office.position) * 1000
+
 			options.append((cost, branch_office))
 
 		for _, build_info in sorted(options):

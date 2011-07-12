@@ -381,11 +381,11 @@ class SettlementManager(WorldObject):
 			pass
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
 			pass
-		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
-			pass
-		elif self.owner.need_feeder_island(self) and not self.owner.have_feeder_island() and self.owner.can_found_feeder_island():
+		elif self.tents >= 16 and self.owner.need_feeder_island(self) and not self.owner.have_feeder_island() and self.owner.can_found_feeder_island():
 			self.log.info('%s waiting for a feeder islands to be founded', self)
 			self.owner.found_feeder_island()
+		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
+			pass
 		elif self.village_builder.tent_queue:
 			result = self.village_builder.build_tent()
 			self.log_generic_build_result(result, 'tent')
