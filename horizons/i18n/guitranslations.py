@@ -138,16 +138,13 @@ def set_translations():
 			"delete_bo"                   : _("Delete entry"),
 			"move_down"                   : _("Move down"),
 			"move_up"                     : _("Move up")},
-		"gamemenu.xml" : {
-			"chimebell"                   : _("Attention please!"),
-			"credits"                     : _("Credits"),
+		"ingamemenu.xml" : {
 			"help"                        : _("Help"),
 			"loadgame"                    : _("Load game"),
 			"quit"                        : _("Cancel game"),
 			"savegame"                    : _("Save game"),
 			"settings"                    : _("Settings"),
-			"start"                       : _("Return to game"),
-			"version_label"               : VERSION.string()},
+			"start"                       : _("Return to game")},
 		"help.xml" : {
 			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons development teams"),
 			"have_fun_lbl"                : _("Have fun."),
