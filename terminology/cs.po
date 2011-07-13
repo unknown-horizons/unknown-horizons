@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-13 10:35+0200\n"
+"PO-Revision-Date: 2011-07-13 10:39+0200\n"
 "Last-Translator: peca <peca@email.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -178,13 +178,9 @@ msgid "menu"
 msgstr "menu"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
-#
 # (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
 msgid "production"
-msgstr "produkce"
+msgstr "výroba"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 #
@@ -922,16 +918,10 @@ msgstr "zpět"
 msgid "build settlement"
 msgstr "postav osadu"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
 msgid "Captain's log"
-msgstr "kapitánův deník"
+msgstr "Lodní deník"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
