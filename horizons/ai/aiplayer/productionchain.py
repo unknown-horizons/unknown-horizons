@@ -86,6 +86,8 @@ class ProductionChain(object):
 		return self.chain.get_ratio(resource_id)
 
 class ProductionChainSubtreeChoice(object):
+	log = logging.getLogger("ai.aiplayer.productionchain")
+
 	def __init__(self, options):
 		self.options = options
 		self.resource_id = options[0].resource_id

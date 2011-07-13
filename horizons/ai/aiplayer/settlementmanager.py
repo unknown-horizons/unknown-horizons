@@ -360,7 +360,7 @@ class SettlementManager(WorldObject):
 			pass
 		elif self.land_manager.owner.settler_level > 1 and self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.build_chain(self.bricks_chain, 'bricks producer'):
 			pass
-		elif self.build_feeder_chain(self.liquor_chain, 'liquor'):
+		elif self.land_manager.owner.settler_level > 1 and self.build_feeder_chain(self.liquor_chain, 'liquor'):
 			pass
 
 	def _general_tick(self):
