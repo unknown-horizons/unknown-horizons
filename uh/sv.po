@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 19:48+0200\n"
+"PO-Revision-Date: 2011-07-13 20:06+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -255,7 +255,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:125
 msgid "Version differs!"
-msgstr ""
+msgstr "Versionerna skiljer sig!"
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Map: "
@@ -298,11 +298,11 @@ msgstr "Beskrivning: "
 
 #: horizons/gui/modules/singleplayermenu.py:128
 msgid "Invalid player name"
-msgstr ""
+msgstr "Ogiltigt spelarnamn"
 
 #: horizons/gui/modules/singleplayermenu.py:128
 msgid "You entered an invalid playername"
-msgstr ""
+msgstr "Du skrev in ett ogiltigt spelarnamn"
 
 #: horizons/gui/modules/singleplayermenu.py:179
 msgid "Invalid scenario file"
@@ -359,8 +359,9 @@ msgid "Confirm order"
 msgstr ""
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
+#, fuzzy
 msgid "Build related fields"
-msgstr ""
+msgstr "Bygg nya fält"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -386,8 +387,9 @@ msgstr "Konto"
 
 #: horizons/gui/tabs/marketplacetabs.py:108
 #: horizons/gui/tabs/overviewtab.py:271 horizons/i18n/guitranslations.py:323
+#, fuzzy
 msgid "Settler overview"
-msgstr ""
+msgstr "Nybyggaröversikt"
 
 #: horizons/gui/tabs/overviewtab.py:46 horizons/gui/tabs/overviewtab.py:314
 #: horizons/i18n/guitranslations.py:362
@@ -404,7 +406,7 @@ msgstr "Marknadsplatsöversikt"
 
 #: horizons/gui/tabs/overviewtab.py:131 horizons/gui/tabs/overviewtab.py:169
 msgid "Ship overview"
-msgstr ""
+msgstr "Fartygsöversikt"
 
 #: horizons/gui/tabs/overviewtab.py:179 horizons/i18n/guitranslations.py:152
 msgid "Production overview"
@@ -421,7 +423,7 @@ msgstr ""
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr ""
+msgstr "Tomt"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
@@ -579,8 +581,9 @@ msgid "Pigsty: Raises pigs. Needs a farm."
 msgstr "Svinstia: Föder upp grisar. Behöver en gård."
 
 #: horizons/i18n/guitranslations.py:85
+#, fuzzy
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Saliner: Saltavdunstning. Byggs längsmed kusten."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Smeltery: Refines all kind of ores."
