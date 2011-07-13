@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 21:37+0200\n"
+"PO-Revision-Date: 2011-07-13 21:47+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -1254,18 +1254,20 @@ msgstr "Kutter"
 msgid "Herring fisher"
 msgstr "Sillfiskare"
 
+# Valfångstfartyg?
 #: horizons/i18n/guitranslations.py:300
+#, fuzzy
 msgid "Whaler"
-msgstr ""
+msgstr "Valfångare"
 
 #: horizons/i18n/guitranslations.py:301
 msgid "Build this ship!"
-msgstr ""
+msgstr "Bygg fartyget!"
 
 #: horizons/i18n/guitranslations.py:302 horizons/i18n/guitranslations.py:303
 #: horizons/i18n/guitranslations.py:304
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Ännu inte implementerat!"
 
 #: horizons/i18n/guitranslations.py:306
 msgid "Select resources:"
@@ -1301,15 +1303,18 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
-msgstr ""
+msgstr "Bygg fält"
 
 #: horizons/i18n/guitranslations.py:322
+#, fuzzy
 msgid "Average happiness:"
-msgstr ""
+msgstr "Genomsnittlig lycka:"
 
+# mest behövda resurs? Krockar med vara som används i andra delar av översättningen.
 #: horizons/i18n/guitranslations.py:324
+#, fuzzy
 msgid "Most needed resource:"
-msgstr ""
+msgstr "Mest behövda vara:"
 
 #: horizons/i18n/guitranslations.py:326 horizons/i18n/guitranslations.py:329
 #: horizons/i18n/guitranslations.py:363
