@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 21:47+0200\n"
+"PO-Revision-Date: 2011-07-13 22:03+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -1325,14 +1325,18 @@ msgstr "Namn:"
 msgid "Taxes:"
 msgstr "Skatter:"
 
+# alt. marginalskatt beroende på översättning.
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
+#, fuzzy
 msgid "Tax rate"
-msgstr ""
+msgstr "Skattesats"
 
+# Låter uppåt väggarna märkligt, men kan stämma.
 #: horizons/i18n/guitranslations.py:336
+#, fuzzy
 msgid "capacity utilization"
-msgstr ""
+msgstr "kapacitetsutnyttjande"
 
 #: horizons/i18n/guitranslations.py:339
 msgid "Resource deposit"
@@ -1344,17 +1348,21 @@ msgstr ""
 "Det här är en råvarufyndighet där du kan bygga en gruva för att komma åt "
 "råvaror."
 
+# resurser, varor eller råvaror.
 #: horizons/i18n/guitranslations.py:341
+#, fuzzy
 msgid "It contains these resources:"
-msgstr ""
+msgstr "Innehåller dessa resurser:"
 
 #: horizons/i18n/guitranslations.py:343
 msgid "Needed resources:"
 msgstr ""
 
+# Lycka rätt form av mätning?
 #: horizons/i18n/guitranslations.py:345 horizons/i18n/guitranslations.py:352
+#, fuzzy
 msgid "Happiness"
-msgstr ""
+msgstr "Lycka"
 
 #: horizons/i18n/guitranslations.py:346 horizons/i18n/guitranslations.py:351
 msgid "Paid taxes"
@@ -1362,19 +1370,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:348 horizons/i18n/guitranslations.py:349
 msgid "Residents"
-msgstr ""
+msgstr "Inneboende"
 
+# bosättning eller kanske koloni?
 #: horizons/i18n/guitranslations.py:354
+#, fuzzy
 msgid "Build settlement:"
-msgstr ""
+msgstr "Bygg bosättning:"
 
 #: horizons/i18n/guitranslations.py:355
 msgid "Click to change the name of this ship."
-msgstr ""
+msgstr "Tryck för att ändra namnet på fartyget."
 
+# eller koloni? se 313.
 #: horizons/i18n/guitranslations.py:356
+#, fuzzy
 msgid "Build settlement"
-msgstr ""
+msgstr "Bygg bosättning"
 
 #: horizons/i18n/guitranslations.py:358
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."

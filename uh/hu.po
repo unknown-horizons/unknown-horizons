@@ -7,42 +7,43 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-07-13 22:38+0200\n"
+"Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/engine.py:65
 msgid "Restart required"
-msgstr ""
+msgstr "Újraindítás szükséges"
 
 #: horizons/engine.py:66
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "Néhány beállítás érvénybe lépése a játék újraindítását igényli."
 
 #: horizons/engine.py:70
 msgid "Restore default settings"
-msgstr ""
+msgstr "Visszaállítás az eredeti beállításokra"
 
 #: horizons/engine.py:71
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Ez törli az összes beállítást, amelyet korábban módosítottál."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Folytatod?"
 
 #: horizons/engine.py:135
 msgid "System default"
-msgstr ""
+msgstr "Rendszer alapértelmezett"
 
 #: horizons/engine.py:159
 msgid "Warning"
-msgstr ""
+msgstr "Figyelmeztetés"
 
 #: horizons/engine.py:160
 msgid ""
@@ -58,72 +59,79 @@ msgstr ""
 
 #: horizons/engine.py:467
 msgid "Invalid network port"
-msgstr ""
+msgstr "Hibás hálózati port"
 
 #: horizons/engine.py:468
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"A port, amelyet megadtál nem valós. 1 és 65535 közötti számnak kell lennie."
 
 #: horizons/engine.py:469
+#, fuzzy
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
+"Kérlek ellenőrizd a portot amelyet megadtál, hogy biztosan benne van-e a "
+"számintervallumban. "
 
 #: horizons/engine.py:481
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Nem sikerült menteni az új hálózati adatokat."
 
+# "összehozni", jobb ötletem nem volt
 #: horizons/engine.py:482 horizons/main.py:120
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr ""
+msgstr "A hálózatot nem sikerült összehozni ezzel a beállítással."
 
 #: horizons/engine.py:483
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Ellenőrizd az adatokat a Hálózat részben."
 
 #: horizons/engine.py:486
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Alacsony port számok használata néha speciális jogokat igényelnek, próbálj "
+"1024-nél nagyobbat használni, vagy a 0-át."
 
 #: horizons/gui/gui.py:121
 msgid "Error"
-msgstr ""
+msgstr "Hiba"
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr ""
+msgstr "Nem sikerült menteni."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Valóban ki akarsz lépni a játékból?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
-msgstr ""
+msgstr "Kilépés"
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Valóban megszakítod a futó munkamenetet?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
-msgstr ""
+msgstr "Munkamenet elhagyása"
 
 #: horizons/gui/gui.py:201
 msgid "No saved games"
-msgstr ""
+msgstr "Nincsenek mentett játékok"
 
 #: horizons/gui/gui.py:201
 msgid "There are no saved games to load"
-msgstr ""
+msgstr "Nincsenek mentett játékok a betöltéshez"
 
 #: horizons/gui/gui.py:208 horizons/i18n/guitranslations.py:163
 #: horizons/i18n/guitranslations.py:202
 msgid "Load game"
-msgstr ""
+msgstr "Játék betöltése"
 
 #: horizons/gui/gui.py:208 horizons/i18n/guitranslations.py:165
 msgid "Save game"
-msgstr ""
+msgstr "Játék mentése"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:254
@@ -132,46 +140,49 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Egy mentett játék ezzel a névvel \"%s\" már létezik.\n"
+" Felül írod?"
 
 #: horizons/gui/gui.py:255
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Felülírás megerősítése"
 
 #: horizons/gui/gui.py:263
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Válassz egy mentést, vagy klikk a mégsére."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:263
 msgid "Select a savegame"
-msgstr ""
+msgstr "Válassz egy mentést"
 
 #: horizons/gui/gui.py:330 horizons/i18n/guitranslations.py:144
 #: horizons/i18n/guitranslations.py:265
 msgid "Details:"
-msgstr ""
+msgstr "Részletek:"
 
 #: horizons/gui/gui.py:331
 msgid "Error:"
-msgstr ""
+msgstr "Hiba:"
 
 #: horizons/gui/gui.py:404
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Ismeretlen mentési idő\n"
 
 #: horizons/gui/gui.py:406
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Mentve ekkor %s\n"
 
 #: horizons/gui/gui.py:407
+#, fuzzy
 msgid "%H:%M, %A, %B %d"
-msgstr ""
+msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:418
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "Mentett játék verzió %d"
 
 #: horizons/gui/gui.py:420
 #, python-format
@@ -179,43 +190,45 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"FIGYELEM: Nem kompatibilis verzió %(ver)!\n"
+"Szüks. ver. %(need)!"
 
 #: horizons/gui/gui.py:423
 msgid "INCOMPATIBLE VERSION\n"
-msgstr ""
+msgstr "NEM KOMPATIBILIS VERZIÓ\n"
 
 #: horizons/gui/gui.py:446
 msgid "No file selected"
-msgstr ""
+msgstr "Nincs fájl kiválasztva"
 
 #: horizons/gui/gui.py:446
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Ki kell választanod egy mentést a törléshez"
 
 #: horizons/gui/gui.py:449
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Valóban törlöd a mentést \"%s\"?"
 
 #: horizons/gui/gui.py:451
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Törlés megerősítése"
 
 #: horizons/gui/gui.py:456
 msgid "Error!"
-msgstr ""
+msgstr "Hiba!"
 
 #: horizons/gui/gui.py:456
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Nem sikerült a mentés törlése!"
 
 #: horizons/gui/ingamegui.py:449
 msgid "Hit P to continue the game or click below!"
-msgstr ""
+msgstr "Üsd le a P -t a folytatáshoz, vagy kattints lentre!"
 
 #: horizons/gui/ingamegui.py:450
 msgid "Game paused"
-msgstr ""
+msgstr "Játék szüneteltetve"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
