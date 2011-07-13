@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <Container name="menu" size="250,350" background_image="content/gui/images/background/mainmenu/ingame.png">
 
-<VBox name="button_backgrounds"  padding="6"  position="19,27">
-	<Icon image="content/gui/images/buttons/glass_big.png" />
-	<Icon image="content/gui/images/buttons/glass_big.png" />
-	<Icon image="content/gui/images/buttons/glass_big.png" />
-	<Icon image="content/gui/images/buttons/glass_big.png" />
-	<Icon image="content/gui/images/buttons/glass_big.png" />
-	<Icon image="content/gui/images/buttons/glass_big.png" />
+<VBox name="button_backgrounds"  padding="1"  position="15,15">
+	<Icon image="content/gui/images/buttons/msg_button.png" />
+	<Icon image="content/gui/images/buttons/msg_button.png" />
+	<Icon image="content/gui/images/buttons/msg_button.png" />
+	<Icon image="content/gui/images/buttons/msg_button.png" />
+	<Icon image="content/gui/images/buttons/msg_button.png" />
+	<Icon image="content/gui/images/buttons/msg_button.png" />
 </VBox>
 
-<VBox name="button_labels"  padding="32"  position="65,38" max_size="185,312" min_size="185,312">
+<VBox name="button_labels"  padding="35"  position="68,32" max_size="185,312" min_size="185,312">
 	<Label name="start" text="Return to game" />
 	<Label name="savegame" text="Save game"  />
 	<Label name="loadgame" text="Load game" />
@@ -19,7 +19,7 @@
 	<Label name="quit" text="Cancel game"/>
 </VBox>
 
-<VBox name="button_images"  padding="18"  position="23,31">
+<VBox name="button_images"  padding="21"  position="25,25">
 	<ImageButton name="startGame"
 		up_image="content/gui/icons/mainmenu/32/compass_bw.png"
 		down_image="content/gui/icons/mainmenu/32/compass.png"
