@@ -3,546 +3,548 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-05-25 00:32+0200\n"
-"Last-Translator: Anonymous Pootle User\n"
+"PO-Revision-Date: 2011-07-13 23:28+0200\n"
+"Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
-msgstr ""
+msgstr "építés"
 
 msgid "game"
-msgstr ""
+msgstr "játék"
 
 msgid "building"
-msgstr ""
+msgstr "épület"
 
 msgid "tent"
-msgstr ""
+msgstr "sátor"
 
 msgid "resource"
-msgstr ""
+msgstr "nyersanyag"
 
 msgid "branch office"
-msgstr ""
+msgstr "fiókiroda"
 
 msgid "your"
-msgstr ""
+msgstr "tiéd"
 
 msgid "farm"
 msgstr "tanya"
 
 msgid "field"
-msgstr ""
+msgstr "mező"
 
 msgid "overview"
 msgstr "áttekintés"
 
 msgid "ship"
-msgstr ""
+msgstr "hajó"
 
 msgid "main"
-msgstr ""
+msgstr "fő"
 
 msgid "settlement"
 msgstr "gyarmat"
 
 msgid "start"
-msgstr ""
+msgstr "kezdés"
 
 msgid "click"
-msgstr ""
+msgstr "klikk"
 
 msgid "inhabitants"
-msgstr ""
+msgstr "lakosok"
 
 msgid "map"
-msgstr ""
+msgstr "térkép"
 
 msgid "menu"
-msgstr ""
+msgstr "menü"
 
 msgid "production"
-msgstr ""
+msgstr "termelés"
 
 msgid "tab"
-msgstr ""
+msgstr "fül"
 
 msgid "unknown"
-msgstr ""
+msgstr "ismeretlen"
 
 msgid "food"
 msgstr "étel"
 
 msgid "increment"
-msgstr "növekmény"
+msgstr "növekedés"
 
 msgid "select"
-msgstr ""
+msgstr "választás"
 
 msgid "setting"
-msgstr ""
+msgstr "beállítás"
 
 msgid "time"
-msgstr ""
+msgstr "idő"
 
 msgid "trade"
-msgstr ""
+msgstr "kereskedelem"
 
 msgid "change"
-msgstr ""
+msgstr "változtat"
 
 msgid "main square"
-msgstr ""
+msgstr "főtér"
 
+# még google translate sem ismeri
+#, fuzzy
 msgid "trail"
-msgstr ""
+msgstr "trall"
 
 msgid "boards"
-msgstr ""
+msgstr "táblák"
 
 msgid "buy"
-msgstr ""
+msgstr "vásárol"
 
 msgid "coast"
-msgstr ""
+msgstr "part"
 
 msgid "connect"
-msgstr ""
+msgstr "kapcsolódás"
 
 msgid "cost"
-msgstr ""
+msgstr "ár"
 
 msgid "free"
-msgstr ""
+msgstr "szabad"
 
 msgid "log"
-msgstr ""
+msgstr "napló"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "favágó"
 
 msgid "sell"
-msgstr ""
+msgstr "elad"
 
 msgid "storage"
-msgstr ""
+msgstr "raktár"
 
 msgid "taxes"
-msgstr ""
+msgstr "adók"
 
 msgid "trader"
-msgstr ""
+msgstr "kereskedő"
 
 msgid "version"
-msgstr ""
+msgstr "verzió"
 
 msgid "companies"
-msgstr ""
+msgstr "vállalatok"
 
 msgid "fire"
-msgstr ""
+msgstr "tűz"
 
 msgid "left"
-msgstr ""
+msgstr "bal"
 
 msgid "reach"
-msgstr ""
+msgstr "elér"
 
 msgid "signal"
-msgstr ""
+msgstr "jelzés"
 
 msgid "signal fire"
-msgstr ""
+msgstr "jelző tűz"
 
 msgid "stock"
-msgstr ""
+msgstr "készlet"
 
 msgid "tools"
-msgstr ""
+msgstr "eszközök"
 
 msgid "wool"
-msgstr ""
+msgstr "gyapjú"
 
 msgid "balance"
-msgstr ""
+msgstr "egyensúly"
 
 msgid "choose"
-msgstr ""
+msgstr "választás"
 
 msgid "fisher"
-msgstr ""
+msgstr "halász"
 
 msgid "found"
-msgstr ""
+msgstr "talált"
 
 msgid "pavilion"
-msgstr ""
+msgstr "pavilon"
 
 msgid "potato"
-msgstr ""
+msgstr "paradicsom"
 
 msgid "range"
-msgstr ""
+msgstr "távolság"
 
 msgid "raw"
-msgstr ""
+msgstr "nyers"
 
 msgid "running"
-msgstr ""
+msgstr "futás"
 
 msgid "running costs"
-msgstr ""
+msgstr "üzemeltetési ár"
 
 msgid "collector"
-msgstr ""
+msgstr "begyűjtő"
 
 msgid "help"
-msgstr ""
+msgstr "súgó"
 
 msgid "house"
-msgstr ""
+msgstr "ház"
 
 msgid "inventory"
-msgstr ""
+msgstr "raktár"
 
 msgid "level"
-msgstr ""
+msgstr "szint"
 
 msgid "move"
-msgstr ""
+msgstr "mozgás"
 
 msgid "moved"
-msgstr ""
+msgstr "áthelyezve"
 
 msgid "produce"
-msgstr ""
+msgstr "termel"
 
 msgid "produced"
-msgstr ""
+msgstr "termelt"
 
 msgid "pasture"
-msgstr ""
+msgstr "legelő"
 
 msgid "storage tent"
-msgstr ""
+msgstr "raktár sátor"
 
 msgid "sugar"
-msgstr ""
+msgstr "cukor"
 
 msgid "tree"
-msgstr ""
+msgstr "fa"
 
 msgid "active"
-msgstr ""
+msgstr "aktív"
 
 msgid "add"
-msgstr ""
+msgstr "hozzáadás"
 
 msgid "build menu"
-msgstr ""
+msgstr "építési menü"
 
 msgid "built"
-msgstr ""
+msgstr "épült"
 
 msgid "construction"
-msgstr ""
+msgstr "építés"
 
 msgid "continue"
-msgstr ""
+msgstr "folytatás"
 
 msgid "decrease"
-msgstr ""
+msgstr "csökkentés"
 
 msgid "free trader"
-msgstr ""
+msgstr "szabad kereskedő"
 
 msgid "hunter"
-msgstr ""
+msgstr "vadász"
 
 msgid "leave"
-msgstr ""
+msgstr "elhagy"
 
 msgid "market"
-msgstr ""
+msgstr "piac"
 
 msgid "partner"
-msgstr ""
+msgstr "társ"
 
 msgid "sailor"
-msgstr ""
+msgstr "tengerész"
 
 msgid "pioneer"
-msgstr ""
+msgstr "telepes"
 
 msgid "settler"
-msgstr ""
+msgstr "gyarmatos"
 
 msgid "citizen"
-msgstr ""
+msgstr "polgár"
 
 msgid "merchant"
-msgstr ""
+msgstr "kereskedő"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "arisztokrata"
 
 msgid "refresh"
-msgstr ""
+msgstr "frissítés"
 
 msgid "residents"
-msgstr ""
+msgstr "lakosok"
 
 msgid "run"
-msgstr ""
+msgstr "futás"
 
 msgid "slot"
-msgstr ""
+msgstr "egység"
 
 msgid "stop"
-msgstr ""
+msgstr "állj"
 
 msgid "team"
-msgstr ""
+msgstr "csapat"
 
 msgid "village"
-msgstr ""
+msgstr "falu"
 
 msgid "account"
-msgstr ""
+msgstr "fiók"
 
 msgid "back"
-msgstr ""
+msgstr "vissza"
 
 msgid "build settlement"
-msgstr ""
+msgstr "település építése"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "A Kapitány naplója"
 
 msgid "cloth"
-msgstr ""
+msgstr "ruha"
 
 msgid "description"
-msgstr ""
+msgstr "leírás"
 
 msgid "happiness"
-msgstr ""
+msgstr "boldogság"
 
 msgid "increase"
-msgstr ""
+msgstr "növekedés"
 
 msgid "liquor"
-msgstr ""
+msgstr "likőr"
 
 msgid "mode"
-msgstr ""
+msgstr "mód"
 
 msgid "multiple"
-msgstr ""
+msgstr "több"
 
 msgid "output"
-msgstr ""
+msgstr "kimenet"
 
 msgid "play"
-msgstr ""
+msgstr "játék"
 
 msgid "sale"
-msgstr ""
+msgstr "eladás"
 
 msgid "save"
-msgstr ""
+msgstr "mentés"
 
 msgid "school"
-msgstr ""
+msgstr "iskola"
 
 msgid "screen"
-msgstr ""
+msgstr "kép"
 
 msgid "solution"
-msgstr ""
+msgstr "megoldás"
 
 msgid "sound"
-msgstr ""
+msgstr "hang"
 
 msgid "from time to time"
-msgstr ""
+msgstr "időről időre"
 
 msgid "trading"
-msgstr ""
+msgstr "kereskedés"
 
 msgid "visit"
-msgstr ""
+msgstr "látogatás"
 
 msgid "weaver"
-msgstr ""
+msgstr "takács"
 
 msgid "animal"
-msgstr ""
+msgstr "állat"
 
 msgid "fish"
-msgstr ""
+msgstr "hal"
 
 msgid "fisherman"
-msgstr ""
+msgstr "halász"
 
 msgid "forest"
-msgstr ""
+msgstr "erdő"
 
 msgid "forum"
-msgstr ""
+msgstr "fórum"
 
 msgid "fulfill"
-msgstr ""
+msgstr "eleget"
 
 msgid "graphics"
-msgstr ""
+msgstr "grafika"
 
 msgid "grow"
-msgstr ""
+msgstr "növekedés"
 
 msgid "hold"
-msgstr ""
+msgstr "tart"
 
 msgid "hunt"
-msgstr ""
+msgstr "vadászat"
 
 msgid "income"
-msgstr ""
+msgstr "bevétel"
 
 msgid "information"
-msgstr ""
+msgstr "információ"
 
 msgid "key"
-msgstr ""
+msgstr "kulcs"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "bárány gyapjú"
 
 msgid "load/unload"
-msgstr ""
+msgstr "berakod/kirakod"
 
 msgid "return"
-msgstr ""
+msgstr "vissza"
 
 msgid "service"
-msgstr ""
+msgstr "szolgáltatás"
 
 msgid "sheep"
-msgstr ""
+msgstr "bárány"
 
 msgid "ship inventory"
-msgstr ""
+msgstr "hajó raktár"
 
 msgid "starting"
-msgstr ""
+msgstr "kezdés"
 
 msgid "trade partner"
-msgstr ""
+msgstr "kereskedő partner"
 
 msgid "yields"
-msgstr ""
+msgstr "hozam"
 
 msgid "faith"
-msgstr ""
+msgstr "gyűlölet"
 
 msgid "green"
-msgstr ""
+msgstr "zőld"
 
 msgid "red"
-msgstr ""
+msgstr "piros"
 
 msgid "check"
-msgstr ""
+msgstr "ellenőrzés"
 
 msgid "connection"
-msgstr ""
+msgstr "kapcsolódás"
 
 msgid "no"
-msgstr ""
+msgstr "nem"
 
 msgid "tax"
-msgstr ""
+msgstr "adó"
 
 msgid "feature"
-msgstr ""
+msgstr "funkció"
 
 msgid "reached"
-msgstr ""
+msgstr "elérve"
 
 msgid "slider"
-msgstr ""
+msgstr "csúszka"
 
 msgid "condition"
-msgstr ""
+msgstr "állapot"
 
 msgid "consume"
-msgstr ""
+msgstr "fogyasztás"
 
 msgid "contact"
-msgstr ""
+msgstr "kapcsolat"
 
 msgid "dialogue"
-msgstr ""
+msgstr "párbeszéd"
 
 msgid "issues"
-msgstr ""
+msgstr "kérdések"
 
 msgid "minimap"
-msgstr "kistérkép"
+msgstr "kis térkép"
 
 msgid "playing"
-msgstr ""
+msgstr "játszik"
 
 msgid "ruin"
-msgstr ""
+msgstr "rom"
 
 msgid "seed"
-msgstr ""
+msgstr "mag"
 
 msgid "temporarily"
-msgstr ""
+msgstr "ideiglenesen"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "sós tavak"
 
 msgid "tobacco"
-msgstr ""
+msgstr "dohány"
 
 msgid "cattle"
-msgstr ""
+msgstr "marha"
 
 msgid "pig"
-msgstr ""
+msgstr "malac"
 
 msgid "herbs"
-msgstr ""
+msgstr "gyógynövények"
 
 msgid "herbary"
-msgstr ""
+msgstr "gyógynövényes"
 
 msgid "butchery"
-msgstr ""
+msgstr "mészárszék"
 
 msgid "doctor"
-msgstr ""
+msgstr "orvos"
 
 msgid "education"
-msgstr ""
+msgstr "oktatás"
 
 msgid "clay"
-msgstr ""
+msgstr "agyag"
 
 msgid "charcoal"
-msgstr ""
+msgstr "faszén"
 
 msgid "iron"
-msgstr ""
+msgstr "vas"
 
 msgid "ore"
-msgstr ""
+msgstr "érc"

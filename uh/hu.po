@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 22:49+0200\n"
+"PO-Revision-Date: 2011-07-13 22:59+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -67,11 +67,10 @@ msgstr ""
 "A port, amelyet megadtál nem valós. 1 és 65535 közötti számnak kell lennie."
 
 #: horizons/engine.py:469
-#, fuzzy
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
 "Kérlek ellenőrizd a portot amelyet megadtál, hogy biztosan benne van-e a "
-"számintervallumban. "
+"számintervallumban."
 
 #: horizons/engine.py:481
 msgid "Failed to apply new network data."
@@ -140,8 +139,8 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
-"Egy mentett játék ezzel a névvel \"%s\" már létezik.\n"
-" Felül írod?"
+"Egy mentett játék ezzel a névvel \"%s\" már létezik. \n"
+"Felül írod?"
 
 #: horizons/gui/gui.py:255
 msgid "Confirmation for overwriting"
@@ -175,7 +174,6 @@ msgid "Saved at %s\n"
 msgstr "Mentve ekkor %s\n"
 
 #: horizons/gui/gui.py:407
-#, fuzzy
 msgid "%H:%M, %A, %B %d"
 msgstr "%H:%M, %A, %B %d"
 
@@ -190,8 +188,8 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
-"FIGYELEM: Nem kompatibilis verzió %(ver)!\n"
-"Szüks. ver. %(need)!"
+"FIGYELEM: Nem kompatibilis ver. %(ver)d!\n"
+"Szüks. ver. %(need)d!"
 
 #: horizons/gui/gui.py:423
 msgid "INCOMPATIBLE VERSION\n"
@@ -283,8 +281,8 @@ msgid "The game's version differs from your version. Every player in a multiplay
 msgstr ""
 "A játék verziója eltér a tiédtől. Minden játékosnak a hálózati játékban, "
 "ugyan olyan verzióval kell rendelkeznie. Ez azzal hozható helyre, ha "
-"mindenki a legújabb verzióra frissít. Játék verió: %(gameversion) Te "
-"verziód: %(ownversion)"
+"mindenki a legújabb verzióra frissít. Játék verió: %(gameversion)s Te "
+"verziód: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:168
 msgid "Wrong version"
@@ -393,85 +391,85 @@ msgstr "Kereskedelem"
 #: horizons/gui/tabs/inventorytab.py:39 horizons/i18n/guitranslations.py:320
 #: horizons/i18n/guitranslations.py:371
 msgid "Inventory"
-msgstr ""
+msgstr "Raktár"
 
 #: horizons/gui/tabs/inventorytab.py:63
 msgid "Ship inventory"
-msgstr ""
+msgstr "Hajó raktár"
 
 #: horizons/gui/tabs/marketplacetabs.py:74
 #: horizons/i18n/guitranslations.py:309
 msgid "Account"
-msgstr ""
+msgstr "Fiók"
 
 #: horizons/gui/tabs/marketplacetabs.py:108
 #: horizons/gui/tabs/overviewtab.py:271 horizons/i18n/guitranslations.py:323
 msgid "Settler overview"
-msgstr ""
+msgstr "Telepes áttekintés"
 
 #: horizons/gui/tabs/overviewtab.py:46 horizons/gui/tabs/overviewtab.py:314
 #: horizons/i18n/guitranslations.py:362
 msgid "Overview"
-msgstr ""
+msgstr "Áttekintés"
 
 #: horizons/gui/tabs/overviewtab.py:102
 msgid "Branch office overview"
-msgstr ""
+msgstr "Fióktelep áttekintés"
 
 #: horizons/gui/tabs/overviewtab.py:117
 msgid "Market place overview"
-msgstr ""
+msgstr "Piactér áttekintés"
 
 #: horizons/gui/tabs/overviewtab.py:131 horizons/gui/tabs/overviewtab.py:169
 msgid "Ship overview"
-msgstr ""
+msgstr "Hajó áttekintés"
 
 #: horizons/gui/tabs/overviewtab.py:179 horizons/i18n/guitranslations.py:152
 msgid "Production overview"
-msgstr ""
+msgstr "Termelési áttekintés"
 
 #: horizons/gui/tabs/overviewtab.py:182
 msgid "Destroy building"
-msgstr ""
+msgstr "Épület lerombolása"
 
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Korlát: %s tonna / hely"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr ""
+msgstr "Üresség"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Nincs semmi írva az eseménykönyvedbe eddig!"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:150
 msgid "Start route"
-msgstr ""
+msgstr "Útvonal indítása"
 
 #: horizons/gui/widgets/routeconfig.py:60
 msgid "Stop route"
-msgstr ""
+msgstr "Útvonal leállítása"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73 horizons/i18n/guitranslations.py:74
 msgid "Companies"
-msgstr ""
+msgstr "Vállalatok"
 
 #: horizons/i18n/guitranslations.py:43
 msgid "Sailor buildings"
-msgstr ""
+msgstr "Tengerész épületek"
 
 #: horizons/i18n/guitranslations.py:44
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "Lakosok és épületek"
 
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:61
 #: horizons/i18n/guitranslations.py:77
 msgid "Services"
-msgstr ""
+msgstr "Szolgáltatások"
 
 #: horizons/i18n/guitranslations.py:46
 msgid "Pavilion: Fulfills religious needs of sailors."
