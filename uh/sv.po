@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 14:44+0200\n"
+"PO-Revision-Date: 2011-07-13 18:38+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -1680,7 +1680,7 @@ msgstr "Järngruva"
 
 #: sqlite/Building
 msgid "Log"
-msgstr ""
+msgstr "Logg"
 
 #: sqlite/Building
 msgid "Lookout"
@@ -1688,7 +1688,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Timmerstuga"
 
 #: sqlite/Building
 msgid "Main Square"
@@ -1736,7 +1736,7 @@ msgstr "Förvaringstält"
 
 #: sqlite/Building
 msgid "Sugar Field"
-msgstr ""
+msgstr "Sockerrörsodling"
 
 #: sqlite/Building
 msgid "Tavern"
@@ -1768,11 +1768,12 @@ msgstr "Gångstig"
 
 #: sqlite/Building
 msgid "Village school"
-msgstr ""
+msgstr "Byskola"
 
+# Eg. Vävaretält. jämför weaver description.
 #: sqlite/Building
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Vävare"
 
 #: sqlite/Colors
 msgid "black"
@@ -1808,31 +1809,34 @@ msgstr "gul"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
-msgstr ""
+msgstr "En ny bosättning har skapats av ${player}"
 
 #: sqlite/Messages
 msgid "A new world has been created."
-msgstr ""
+msgstr "En ny värld har skapats."
 
 #: sqlite/Messages
 msgid "One of your settler has no market place in it's range."
-msgstr ""
+msgstr "En av dina nybyggare har ingen marknadsplats inom sin räckvidd."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
-msgstr ""
+msgstr "Skärmdump har sparats till ${file}."
 
 #: sqlite/Messages
+#, fuzzy
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Några av din nybyggare har flyttat ut."
 
 #: sqlite/Messages
+#, fuzzy
 msgid "YOU HAVE WON!!!"
-msgstr ""
+msgstr "DU HAR VUNNIT!!!"
 
 #: sqlite/Messages
+#, fuzzy
 msgid "You need more ${resource} to build this building."
-msgstr ""
+msgstr "Du behöver mer ${resource} för att bygga den här byggnaden."
 
 #: sqlite/Messages
 msgid "Your game has been quicksaved."
@@ -1848,7 +1852,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "acorns"
-msgstr ""
+msgstr "ekollon"
 
 #: sqlite/Resources
 msgid "boards"
@@ -1888,7 +1892,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "rådjurskött"
 
 #: sqlite/Resources
 msgid "education"
@@ -1908,7 +1912,7 @@ msgstr "föda"
 
 #: sqlite/Resources
 msgid "get-together"
-msgstr ""
+msgstr "träffpunkt / samlingspunkt / samlingsplats"
 
 #: sqlite/Resources
 msgid "grass"
@@ -1920,7 +1924,7 @@ msgstr "lycka"
 
 #: sqlite/Resources
 msgid "herbs"
-msgstr ""
+msgstr "örter"
 
 #: sqlite/Resources
 msgid "iron ingots"
