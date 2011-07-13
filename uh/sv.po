@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 18:53+0200\n"
+"PO-Revision-Date: 2011-07-13 19:48+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -31,16 +31,20 @@ msgid "Restore default settings"
 msgstr "Återställ standard inställningar"
 
 #: horizons/engine.py:71
+#, fuzzy
 msgid "This will delete all changes to the settings you made so far."
 msgstr ""
+"Det här kommer att radera alla ändringar på inställningarna du har gjort "
+"hittills."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
 msgstr "Vill du fortsätta?"
 
 #: horizons/engine.py:135
+#, fuzzy
 msgid "System default"
-msgstr ""
+msgstr "Systemstandard"
 
 #: horizons/engine.py:159
 msgid "Warning"
@@ -60,11 +64,13 @@ msgstr ""
 
 #: horizons/engine.py:467
 msgid "Invalid network port"
-msgstr ""
+msgstr "Ogiltig nätverksport"
 
 #: horizons/engine.py:468
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"Porten du specificerade är inte giltig. Det måste vara ett tal mellan 1 och "
+"65535."
 
 #: horizons/engine.py:469
 msgid "Please check the port you entered and make sure it's in the specified range."
