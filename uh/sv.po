@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 14:41+0200\n"
+"PO-Revision-Date: 2011-07-13 14:44+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -1127,11 +1127,11 @@ msgstr "Starta spel"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Radera sparat spel"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Välj en bana att spela:"
 
 #: horizons/i18n/guitranslations.py:272
 msgid "New game - Singleplayer"
@@ -1139,7 +1139,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:274
 msgid "Start game:"
-msgstr ""
+msgstr "Starta spel:"
 
 #: horizons/i18n/guitranslations.py:275
 msgid "Campaign"
@@ -1151,7 +1151,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:277
 msgid "Random map"
-msgstr ""
+msgstr "Slumpmässig karta"
 
 #: horizons/i18n/guitranslations.py:278
 msgid "Scenario"
@@ -1159,7 +1159,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:282
 msgid "Color:"
-msgstr ""
+msgstr "Färg:"
 
 #: horizons/i18n/guitranslations.py:283
 msgid "Player name:"
@@ -1187,7 +1187,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:290 horizons/i18n/guitranslations.py:334
 msgid "Building overview"
-msgstr ""
+msgstr "Byggnadsöversikt"
 
 #: horizons/i18n/guitranslations.py:291
 msgid "Cancel all building progress"
@@ -1278,7 +1278,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:326 horizons/i18n/guitranslations.py:329
 #: horizons/i18n/guitranslations.py:363
 msgid "Name:"
-msgstr ""
+msgstr "Namn:"
 
 #: horizons/i18n/guitranslations.py:330 horizons/i18n/guitranslations.py:344
 msgid "Taxes:"
