@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 22:38+0200\n"
+"PO-Revision-Date: 2011-07-13 22:49+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -232,11 +232,13 @@ msgstr "Játék szüneteltetve"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
-msgstr ""
+msgstr "A hálózatot nem sikerült betölteni"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
 msgstr ""
+"A hálózat nincs betöltve, valószínűleg beállítási hiba. Nézd át a "
+"beállításaidat!"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -245,133 +247,148 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Nem sikerült csatlakozni a mester szerverhez. Kérlek ellenőrizd az Internet "
+"kapcsolatod. Hogyha az rendben van, akkor a mester szerver nem elérhető.\n"
+"Részletek: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
 #: horizons/gui/modules/multiplayermenu.py:109
 msgid "Network Error"
-msgstr ""
+msgstr "Hálózati Hiba"
 
 #: horizons/gui/modules/multiplayermenu.py:110
 msgid "Something went wrong with the network: "
-msgstr ""
+msgstr "Valami gubanc van a hálózattal: "
 
 #: horizons/gui/modules/multiplayermenu.py:125
 msgid "Version differs!"
-msgstr ""
+msgstr "A verzió eltér!"
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Map: "
-msgstr ""
+msgstr "Térkép: "
 
 #: horizons/gui/modules/multiplayermenu.py:148
 msgid "Players: "
-msgstr ""
+msgstr "Játékosok: "
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid "Creator: "
-msgstr ""
+msgstr "Létrehozta: "
 
 #: horizons/gui/modules/multiplayermenu.py:168
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"A játék verziója eltér a tiédtől. Minden játékosnak a hálózati játékban, "
+"ugyan olyan verzióval kell rendelkeznie. Ez azzal hozható helyre, ha "
+"mindenki a legújabb verzióra frissít. Játék verió: %(gameversion) Te "
+"verziód: %(ownversion)"
 
 #: horizons/gui/modules/multiplayermenu.py:168
 msgid "Wrong version"
-msgstr ""
+msgstr "Hibás verzió"
 
 #: horizons/gui/modules/singleplayermenu.py:96
 #: horizons/gui/modules/singleplayermenu.py:108
 #: horizons/gui/widgets/choose_next_scenario.py:45
 msgid "Difficulty: "
-msgstr ""
+msgstr "Nehézség: "
 
 #: horizons/gui/modules/singleplayermenu.py:97
 #: horizons/gui/modules/singleplayermenu.py:109
 #: horizons/gui/widgets/choose_next_scenario.py:46
 msgid "Author: "
-msgstr ""
+msgstr "Létrehozta: "
 
 #: horizons/gui/modules/singleplayermenu.py:98
 #: horizons/gui/modules/singleplayermenu.py:110
 #: horizons/gui/widgets/choose_next_scenario.py:47
 msgid "Description: "
-msgstr ""
+msgstr "Leírás: "
 
 #: horizons/gui/modules/singleplayermenu.py:128
 msgid "Invalid player name"
-msgstr ""
+msgstr "Hibás játékos név"
 
 #: horizons/gui/modules/singleplayermenu.py:128
 msgid "You entered an invalid playername"
-msgstr ""
+msgstr "Hibás játékos nevet adtál meg"
 
+# szkenárió?? 
 #: horizons/gui/modules/singleplayermenu.py:179
+#, fuzzy
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "Hibás szkenárió fájl"
 
 #: horizons/gui/modules/singleplayermenu.py:180
+#, fuzzy
 msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
+"A kiválasztott állomány nem valós szkenárió fájl.\n"
+"Hibaüzenet: "
 
 #: horizons/gui/modules/singleplayermenu.py:181
 msgid ""
 "\n"
 "Please report this to the author."
 msgstr ""
+"\n"
+"Kérlek ezt jelentsd az alkotójának."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:114
 #: horizons/gui/tabs/buildrelatedtab.py:96 horizons/i18n/guitranslations.py:92
 msgid "Build"
-msgstr ""
+msgstr "Épít"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Hajó építő áttekintés"
 
 #: horizons/gui/tabs/boatbuildertab.py:62 horizons/i18n/guitranslations.py:297
 msgid "Fishing boat"
-msgstr ""
+msgstr "Halász hajó"
 
 #: horizons/gui/tabs/boatbuildertab.py:111
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Nyersanyagok kellenek:"
 
 #: horizons/gui/tabs/boatbuildertab.py:167
 msgid "Fisher boats"
-msgstr ""
+msgstr "Halász hajó"
 
 #: horizons/gui/tabs/boatbuildertab.py:176
 msgid "Trade boats"
-msgstr ""
+msgstr "Kereskedő hajó"
 
 #: horizons/gui/tabs/boatbuildertab.py:182
 msgid "War boats"
-msgstr ""
+msgstr "Csata hajó"
 
 #: horizons/gui/tabs/boatbuildertab.py:188
 msgid "War ships"
-msgstr ""
+msgstr "Csata hajó"
 
 #: horizons/gui/tabs/boatbuildertab.py:205
 msgid "Confirm order"
-msgstr ""
+msgstr "Megerősítés"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
+#, fuzzy
 msgid "Build related fields"
-msgstr ""
+msgstr "Kapcsolódó területek építése"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "Növekedés"
 
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:366
 msgid "Trade"
-msgstr ""
+msgstr "Kereskedelem"
 
 #: horizons/gui/tabs/inventorytab.py:39 horizons/i18n/guitranslations.py:320
 #: horizons/i18n/guitranslations.py:371
