@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-11 13:33+0200\n"
+"PO-Revision-Date: 2011-07-13 13:17+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -390,11 +390,11 @@ msgstr "Översikt"
 
 #: horizons/gui/tabs/overviewtab.py:102
 msgid "Branch office overview"
-msgstr ""
+msgstr "Handelskontorsöversikt"
 
 #: horizons/gui/tabs/overviewtab.py:117
 msgid "Market place overview"
-msgstr ""
+msgstr "Marknadsplatsöversikt"
 
 #: horizons/gui/tabs/overviewtab.py:131 horizons/gui/tabs/overviewtab.py:169
 msgid "Ship overview"
@@ -402,7 +402,7 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:179 horizons/i18n/guitranslations.py:152
 msgid "Production overview"
-msgstr ""
+msgstr "Produktionsöversikt"
 
 #: horizons/gui/tabs/overviewtab.py:182
 msgid "Destroy building"
@@ -419,7 +419,7 @@ msgstr ""
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Det finns inget skrivet i din loggbok ännu!"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:150
 msgid "Start route"
@@ -493,11 +493,11 @@ msgstr "Fält"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "Pionjärsbyggnader"
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
-msgstr "Militär"
+msgstr "Militära"
 
 #: horizons/i18n/guitranslations.py:62
 msgid "Boat builder: Builds boats and small ships. Built on coast."
@@ -507,6 +507,7 @@ msgstr ""
 msgid "Brickyard: Turns clay into bricks."
 msgstr "Tegelbruk: Bränner lera till tegel."
 
+# Ev. lergrop eller lergrav.
 #: horizons/i18n/guitranslations.py:64
 msgid "Clay pit: Gets clay from deposit."
 msgstr "Lergrop: Ger lera från fyndighet."
@@ -569,7 +570,7 @@ msgstr "Järngruva: Bryter järnmalm från fyndighet."
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Svinstia: Föder upp grisar. Behöver en gård."
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
