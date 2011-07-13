@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 13:17+0200\n"
+"PO-Revision-Date: 2011-07-13 14:41+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -622,7 +622,7 @@ msgstr "Klicka för att ändra namnet på din bosättning."
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Destroy"
-msgstr ""
+msgstr "Riva"
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Build menu"
@@ -703,7 +703,7 @@ msgstr "Tryck för att ändra namnet"
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Enter your message:"
-msgstr ""
+msgstr "Skriv ditt meddelande:"
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Chat"
@@ -795,11 +795,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:200
 msgid "Credits"
-msgstr ""
+msgstr "Medverkande"
 
 #: horizons/i18n/guitranslations.py:164
 msgid "Cancel game"
-msgstr ""
+msgstr "Avbryt spel"
 
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:242
@@ -808,7 +808,7 @@ msgstr "Inställningar"
 
 #: horizons/i18n/guitranslations.py:167
 msgid "Return to game"
-msgstr ""
+msgstr "Återgå till spel"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "The FIFE and Unknown Horizons development teams"
@@ -877,7 +877,7 @@ msgstr "{G} = Visa rutnät av/på"
 
 #: horizons/i18n/guitranslations.py:186
 msgid "{X} = Enable destruct mode"
-msgstr ""
+msgstr "{X} = Aktivera rivläge"
 
 #: horizons/i18n/guitranslations.py:187
 msgid "{P} = Pause game"
@@ -919,7 +919,7 @@ msgstr "Laddar ..."
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Quit"
-msgstr ""
+msgstr "Avsluta spelet"
 
 #: horizons/i18n/guitranslations.py:205
 msgid "Singleplayer"
@@ -935,11 +935,11 @@ msgstr "Skapa spel:"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Back:"
-msgstr ""
+msgstr "Backa:"
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Choose a map:"
-msgstr ""
+msgstr "Välj en bana:"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Create game - Multiplayer"
@@ -951,7 +951,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:214
 msgid "Create this new game"
-msgstr ""
+msgstr "Skapa det nya spelet"
 
 #: horizons/i18n/guitranslations.py:215
 msgid "Exit to multiplayer menu"
@@ -959,7 +959,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:217
 msgid "Leave:"
-msgstr ""
+msgstr "Lämna:"
 
 #: horizons/i18n/guitranslations.py:218
 msgid "The game will start as soon as enough players have joined."
@@ -967,7 +967,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:219
 msgid "Chat:"
-msgstr ""
+msgstr "Chatt:"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Gamelobby"
@@ -975,7 +975,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Game details:"
-msgstr ""
+msgstr "Detaljer:"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Exit gamelobby"
@@ -987,11 +987,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:226 horizons/i18n/guitranslations.py:273
 msgid "Main menu:"
-msgstr ""
+msgstr "Huvudmenyn:"
 
 #: horizons/i18n/guitranslations.py:227
 msgid "Show only games with the same version:"
-msgstr ""
+msgstr "Visa endast spel med samma version:"
 
 #: horizons/i18n/guitranslations.py:228
 msgid "New game - Multiplayer"
@@ -999,7 +999,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:229
 msgid "Join game"
-msgstr ""
+msgstr "Gå med i spel"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "Apply:"
@@ -1007,15 +1007,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Refresh list:"
-msgstr ""
+msgstr "Uppdatera lista:"
 
 #: horizons/i18n/guitranslations.py:233
 msgid "Create a new game"
-msgstr ""
+msgstr "Skapa nytt spel"
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Join the selected game"
-msgstr ""
+msgstr "Gå med i det valda spelet"
 
 #: horizons/i18n/guitranslations.py:236
 msgid "Refresh list of active games"
@@ -1047,19 +1047,19 @@ msgstr "Språk"
 
 #: horizons/i18n/guitranslations.py:245
 msgid "Network"
-msgstr ""
+msgstr "Nätverk"
 
 #: horizons/i18n/guitranslations.py:246
 msgid "Saving"
-msgstr ""
+msgstr "Spara"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Sound"
-msgstr ""
+msgstr "Ljud"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "Select language:"
-msgstr ""
+msgstr "Välj språk:"
 
 #: horizons/i18n/guitranslations.py:249
 msgid "Enable minimap rotation:"
@@ -1067,7 +1067,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:250
 msgid "Music volume:"
-msgstr ""
+msgstr "Musikvolym:"
 
 #: horizons/i18n/guitranslations.py:251
 msgid "(0 means default)"
@@ -1079,23 +1079,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:253
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "Antal automatiska sparanden:"
 
 #: horizons/i18n/guitranslations.py:254
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "Antal snabbsparanden:"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Full screen:"
-msgstr ""
+msgstr "Helskärm:"
 
 #: horizons/i18n/guitranslations.py:256
 msgid "Screen resolution:"
-msgstr ""
+msgstr "Skärmupplösning:"
 
 #: horizons/i18n/guitranslations.py:257
 msgid "Enable sound:"
-msgstr ""
+msgstr "Aktivera ljud:"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Used renderer:"
@@ -1115,15 +1115,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:264
 msgid "Enter filename:"
-msgstr ""
+msgstr "Skriv filnamn:"
 
 #: horizons/i18n/guitranslations.py:266
 msgid "Your saved games:"
-msgstr ""
+msgstr "Dina sparade spel:"
 
 #: horizons/i18n/guitranslations.py:267 horizons/i18n/guitranslations.py:279
 msgid "Start game"
-msgstr ""
+msgstr "Starta spel"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
