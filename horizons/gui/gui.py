@@ -89,12 +89,20 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		Show Pause menu
 		"""
 		self._switch_current_widget('ingamemenu', center=True, show=True, event_map={
+		    # icons
 			'loadgameButton' : horizons.main.load_game,
 			'savegameButton' : self.save_game,
 			'settingsLink'   : self.show_settings,
 			'helpLink'       : self.on_help,
 			'startGame'      : self.return_to_game,
 			'closeButton'    : self.quit_session,
+			# labels
+			'loadgame' : horizons.main.load_game,
+			'savegame' : self.save_game,
+			'settings' : self.show_settings,
+			'help'     : self.on_help,
+			'start'    : self.return_to_game,
+			'quit'     : self.quit_session,
 		})
 
 		self.session.speed_pause()
