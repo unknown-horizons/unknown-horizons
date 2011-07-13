@@ -46,7 +46,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	styles = {
 	  'mainmenu': 'menu',
 	  'requirerestart': 'book',
-	  'gamemenu': 'menu',
+	  'ingamemenu': 'headline',
 	  'help': 'book',
 	  'singleplayermenu': 'book',
 	  'multiplayermenu' : 'book',
@@ -88,18 +88,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		Show Pause menu
 		"""
-		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
-			'startGame'      : self.return_to_game,
+		self._switch_current_widget('ingamemenu', center=True, show=True, event_map={
+			'loadgameButton' : horizons.main.load_game,
 			'savegameButton' : self.save_game,
 			'settingsLink'   : self.show_settings,
 			'helpLink'       : self.on_help,
+			'startGame'      : self.return_to_game,
 			'closeButton'    : self.quit_session,
-			'dead_link'      : self.on_chime,
-			'creditsLink'    : self.show_credits,
-			'loadgameButton' : horizons.main.load_game
 		})
-
-		adjust_widget_black_background(self.widgets['gamemenu'])
 
 		self.session.speed_pause()
 		self.on_escape = self.return_to_game
@@ -131,13 +127,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if not self._help_is_displayed:
 			self._help_is_displayed = True
 			# make game pause if there is a game and we're not in the main menu
-			if self.session is not None and self.current != self.widgets['gamemenu']:
+			if self.session is not None and self.current != self.widgets['ingamemenu']:
 				self.session.speed_pause()
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
 			self.on_help() # toggle state
 		else:
 			self._help_is_displayed = False
-			if self.session is not None and self.current != self.widgets['gamemenu']:
+			if self.session is not None and self.current != self.widgets['ingamemenu']:
 				self.session.speed_unpause()
 			help_dlg.hide()
 
