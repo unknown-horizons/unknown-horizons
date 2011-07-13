@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-10 19:32+0200\n"
+"PO-Revision-Date: 2011-07-13 19:41+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -26,7 +26,7 @@ msgid "tent"
 msgstr "tält"
 
 msgid "resource"
-msgstr "resurs"
+msgstr "vara"
 
 msgid "branch office"
 msgstr "handelskontor"
@@ -50,7 +50,7 @@ msgid "main"
 msgstr "huvudsakliga"
 
 msgid "settlement"
-msgstr "bosättning"
+msgstr "bosättning / nybygge / koloni"
 
 msgid "start"
 msgstr "start"
@@ -120,7 +120,7 @@ msgid "cost"
 msgstr "kostnad"
 
 msgid "free"
-msgstr "fritt"
+msgstr "fri"
 
 msgid "log"
 msgstr "logg"
@@ -150,7 +150,7 @@ msgid "fire"
 msgstr "brand"
 
 msgid "left"
-msgstr "över"
+msgstr "över / vänster"
 
 msgid "reach"
 msgstr "nå"
@@ -174,7 +174,7 @@ msgid "balance"
 msgstr "balans"
 
 msgid "choose"
-msgstr "välj"
+msgstr "välj / välja"
 
 msgid "fisher"
 msgstr "fiskare"
@@ -189,7 +189,7 @@ msgid "potato"
 msgstr "potatis"
 
 msgid "range"
-msgstr ""
+msgstr "räckvidd"
 
 #
 msgid "raw"
@@ -202,7 +202,7 @@ msgid "running costs"
 msgstr "driftskostnader"
 
 msgid "collector"
-msgstr "samlare"
+msgstr "samlare / insamlare"
 
 msgid "help"
 msgstr "hjälp"
@@ -214,7 +214,7 @@ msgid "inventory"
 msgstr "inventarie"
 
 msgid "level"
-msgstr ""
+msgstr "nivå / plan"
 
 #
 msgid "move"
@@ -222,14 +222,14 @@ msgstr "flytta"
 
 # 80%
 msgid "moved"
-msgstr "flyttad"
+msgstr "flyttad / flyttat"
 
 msgid "produce"
 msgstr "producera"
 
 # 87%
 msgid "produced"
-msgstr ""
+msgstr "producerad / producerat"
 
 msgid "pasture"
 msgstr "betesmark"
@@ -244,29 +244,29 @@ msgid "tree"
 msgstr "träd"
 
 msgid "active"
-msgstr "aktiv"
+msgstr "aktiv / verksam"
 
 msgid "add"
-msgstr ""
+msgstr "addera / lägga till"
 
 msgid "build menu"
 msgstr "byggmenyn"
 
 msgid "built"
-msgstr "byggt"
+msgstr "byggd / byggt"
 
 msgid "construction"
-msgstr "bygga"
+msgstr "konstruktion / byggnad / bygge"
 
 #
 msgid "continue"
-msgstr "fortsätt"
+msgstr "fortsätt / fortsätta"
 
 msgid "decrease"
 msgstr "minska"
 
 msgid "free trader"
-msgstr "fria köpmän"
+msgstr "fri köpman"
 
 msgid "hunter"
 msgstr "jägare"
@@ -300,20 +300,20 @@ msgid "aristocrat"
 msgstr "aristokrat"
 
 msgid "refresh"
-msgstr ""
+msgstr "förfriska / förnya"
 
 msgid "residents"
 msgstr "invånare"
 
 #
 msgid "run"
-msgstr "kör"
+msgstr "kör / springa"
 
 msgid "slot"
-msgstr ""
+msgstr "kortplats / lucka / spår"
 
 msgid "stop"
-msgstr "stopp"
+msgstr "stopp / stoppa"
 
 msgid "team"
 msgstr "lag"
@@ -325,11 +325,11 @@ msgid "account"
 msgstr "konto"
 
 msgid "back"
-msgstr ""
+msgstr "tillbaka"
 
 #
 msgid "build settlement"
-msgstr "bygg bosättning"
+msgstr "bygg bosättning / nybygge / koloni"
 
 #
 msgid "Captain's log"
@@ -343,7 +343,7 @@ msgid "description"
 msgstr "beskrivning"
 
 msgid "happiness"
-msgstr "lycka"
+msgstr "lycka / glädje"
 
 # 75%
 msgid "increase"
@@ -355,13 +355,13 @@ msgstr "sprit"
 
 # 75%
 msgid "mode"
-msgstr ""
+msgstr "läge"
 
 msgid "multiple"
-msgstr ""
+msgstr "flera / flerdubbel"
 
 msgid "output"
-msgstr ""
+msgstr "utgång / effekt / produktion"
 
 msgid "play"
 msgstr "spela"
@@ -396,7 +396,7 @@ msgid "trading"
 msgstr "handel"
 
 msgid "visit"
-msgstr "besöka"
+msgstr "besök / besöka"
 
 msgid "weaver"
 msgstr "vävare"
@@ -420,20 +420,20 @@ msgstr "forum"
 
 #
 msgid "fulfill"
-msgstr "fullfölja"
+msgstr "fullfölja / fullgöra"
 
 #
 msgid "graphics"
 msgstr "grafik"
 
 msgid "grow"
-msgstr ""
+msgstr "växa / öka / gro / stiga / odla"
 
 msgid "hold"
-msgstr "hålla"
+msgstr "hålla / hejda"
 
 msgid "hunt"
-msgstr ""
+msgstr "jaga / jakt / jakten"
 
 msgid "income"
 msgstr "inkomst"
@@ -456,7 +456,7 @@ msgid "load/unload"
 msgstr "lasta/avlasta"
 
 msgid "return"
-msgstr ""
+msgstr "tillbaka / återgå / återlämna"
 
 #
 msgid "service"
@@ -471,17 +471,17 @@ msgid "ship inventory"
 msgstr "farygslast"
 
 msgid "starting"
-msgstr ""
+msgstr "start / startande"
 
 #
 msgid "trade partner"
 msgstr "handelspartner"
 
 msgid "yields"
-msgstr ""
+msgstr "ger"
 
 msgid "faith"
-msgstr "tro"
+msgstr "tro / religion"
 
 #
 msgid "green"
@@ -492,34 +492,34 @@ msgid "red"
 msgstr "röd"
 
 msgid "check"
-msgstr ""
+msgstr "kolla / kontrollera"
 
 msgid "connection"
-msgstr ""
+msgstr "anslutning"
 
 msgid "no"
-msgstr ""
+msgstr "nej / ingen / inga"
 
 msgid "tax"
 msgstr "skatt"
 
 msgid "feature"
-msgstr ""
+msgstr "funktion / kännetecken"
 
 msgid "reached"
-msgstr ""
+msgstr "uppnått / nådd / nått"
 
 msgid "slider"
 msgstr ""
 
 msgid "condition"
-msgstr ""
+msgstr "villkor / skick / tillstånd"
 
 msgid "consume"
-msgstr ""
+msgstr "konsumera / förbruka"
 
 msgid "contact"
-msgstr ""
+msgstr "kontakt / kontakta"
 
 msgid "dialogue"
 msgstr "dialog"
@@ -535,16 +535,16 @@ msgstr "spelar"
 
 # 75%
 msgid "ruin"
-msgstr ""
+msgstr "ruin / ruinera / förstöra / ödelägga"
 
 msgid "seed"
 msgstr ""
 
 msgid "temporarily"
-msgstr ""
+msgstr "tillfälligt"
 
 msgid "salt ponds"
-msgstr "Saliner"
+msgstr "saliner"
 
 msgid "tobacco"
 msgstr "tobak"
@@ -562,7 +562,7 @@ msgid "herbary"
 msgstr "örtagård"
 
 msgid "butchery"
-msgstr "slaktare"
+msgstr "slakteri"
 
 msgid "doctor"
 msgstr "läkare"
