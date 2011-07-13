@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 20:06+0200\n"
+"PO-Revision-Date: 2011-07-13 21:37+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -756,35 +756,40 @@ msgstr "Senare poster"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Tillgängliga Scenarion:"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Scenario description"
-msgstr ""
+msgstr "Scenariobeskrivning"
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr ""
+msgstr "Fortsätt spela"
 
 #: horizons/i18n/guitranslations.py:146
+#, fuzzy
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Välj det här scenariot"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "Exit"
 msgstr ""
 
+# Lista eller bestämd form listan?
 #: horizons/i18n/guitranslations.py:149
+#, fuzzy
 msgid "Add to list"
-msgstr ""
+msgstr "Lägg till i lista"
 
+# Lämna, stäng eller stäng ner?
 #: horizons/i18n/guitranslations.py:153
+#, fuzzy
 msgid "Leave production overview"
-msgstr ""
+msgstr "Lämna produktionsöversikten"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "Refresh data"
-msgstr ""
+msgstr "Uppdatera data"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "Delete entry"
@@ -819,17 +824,19 @@ msgstr "Inställningar"
 msgid "Return to game"
 msgstr "Återgå till spel"
 
+# utvecklingsteam?
 #: horizons/i18n/guitranslations.py:170
+#, fuzzy
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "FIFE och Unknown Horizons utvecklingslag"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "Have fun."
-msgstr ""
+msgstr "Ha så roligt."
 
 #: horizons/i18n/guitranslations.py:172
 msgid "Key bindings"
-msgstr ""
+msgstr "Kortkommandon"
 
 #: horizons/i18n/guitranslations.py:173
 msgid "{LEFT} = Scroll left"
@@ -992,7 +999,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Active games:"
-msgstr ""
+msgstr "Aktiva spel:"
 
 #: horizons/i18n/guitranslations.py:226 horizons/i18n/guitranslations.py:273
 msgid "Main menu:"
@@ -1028,23 +1035,25 @@ msgstr "Gå med i det valda spelet"
 
 #: horizons/i18n/guitranslations.py:236
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "Uppdatera listan över aktiva spel"
 
 #: horizons/i18n/guitranslations.py:238
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Intervall mellan varje autosparande i minuter:"
 
 #: horizons/i18n/guitranslations.py:239
 msgid "Color depth:"
-msgstr ""
+msgstr "Färgdjup:"
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Enable edge scrolling:"
 msgstr ""
 
+# volym för effekter?
 #: horizons/i18n/guitranslations.py:241
+#, fuzzy
 msgid "Effects volume:"
-msgstr ""
+msgstr "Effektvolym:"
 
 #: horizons/i18n/guitranslations.py:243
 msgid "Graphics"
@@ -1084,7 +1093,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:252
 msgid "Network port:"
-msgstr ""
+msgstr "Nätverksport:"
 
 #: horizons/i18n/guitranslations.py:253
 msgid "Number of autosaves:"
@@ -1108,19 +1117,21 @@ msgstr "Aktivera ljud:"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Used renderer:"
-msgstr ""
+msgstr "Rendering:"
 
 #: horizons/i18n/guitranslations.py:259
+#, fuzzy
 msgid "Please make sure that you know what you do."
-msgstr ""
+msgstr "Var säker på att du vet vad du gör."
 
 #: horizons/i18n/guitranslations.py:260
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Ändra inställningar"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Återställ till standardinställningar"
 
 #: horizons/i18n/guitranslations.py:264
 msgid "Enter filename:"
@@ -1150,9 +1161,11 @@ msgstr ""
 msgid "Start game:"
 msgstr "Starta spel:"
 
+# Rätt översatt?
 #: horizons/i18n/guitranslations.py:275
+#, fuzzy
 msgid "Campaign"
-msgstr ""
+msgstr "Kampanj"
 
 #: horizons/i18n/guitranslations.py:276
 msgid "Free play"
@@ -1164,7 +1177,7 @@ msgstr "Slumpmässig karta"
 
 #: horizons/i18n/guitranslations.py:278
 msgid "Scenario"
-msgstr ""
+msgstr "Scenario"
 
 #: horizons/i18n/guitranslations.py:282
 msgid "Color:"
@@ -1172,7 +1185,7 @@ msgstr "Färg:"
 
 #: horizons/i18n/guitranslations.py:283
 msgid "Player name:"
-msgstr ""
+msgstr "Spelarnamn:"
 
 #: horizons/i18n/guitranslations.py:285
 msgid "Cancel building:"
@@ -1182,33 +1195,43 @@ msgstr ""
 msgid "(lose all resources)"
 msgstr ""
 
+# Vagt?
 #: horizons/i18n/guitranslations.py:287
+#, fuzzy
 msgid "Currently building:"
-msgstr ""
+msgstr "Nybyggnationer:"
 
+# Fritt översatt?
 #: horizons/i18n/guitranslations.py:288
+#, fuzzy
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
+"För att bygga ett fartyg, klicka på en av flikarna, välj önskat fartyg och "
+"godkänn byggnationen."
 
+# procent färdigt?
 #: horizons/i18n/guitranslations.py:289
+#, fuzzy
 msgid "Construction progress:"
-msgstr ""
+msgstr "Framsteg i byggnationen:"
 
 #: horizons/i18n/guitranslations.py:290 horizons/i18n/guitranslations.py:334
 msgid "Building overview"
 msgstr "Byggnadsöversikt"
 
 #: horizons/i18n/guitranslations.py:291
+#, fuzzy
 msgid "Cancel all building progress"
-msgstr ""
+msgstr "Avbryt all byggnation"
 
 #: horizons/i18n/guitranslations.py:292
 msgid "Pause"
-msgstr ""
+msgstr "Pausa"
 
 #: horizons/i18n/guitranslations.py:293
+#, fuzzy
 msgid "Resume"
-msgstr ""
+msgstr "Återuppta"
 
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:313
 #: horizons/i18n/guitranslations.py:335 horizons/i18n/guitranslations.py:337
@@ -1217,15 +1240,19 @@ msgstr "Driftskostnader"
 
 #: horizons/i18n/guitranslations.py:296
 msgid "Fishing boats"
-msgstr ""
+msgstr "Fiskefartyg"
 
+# Är det per definition en kutter? Osäker på fartygstyper.
 #: horizons/i18n/guitranslations.py:298
+#, fuzzy
 msgid "Cutter"
-msgstr ""
+msgstr "Kutter"
 
+# Är det en speciell båt, eller fiskar den bara specifikt sill?
 #: horizons/i18n/guitranslations.py:299
+#, fuzzy
 msgid "Herring fisher"
-msgstr ""
+msgstr "Sillfiskare"
 
 #: horizons/i18n/guitranslations.py:300
 msgid "Whaler"
