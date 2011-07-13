@@ -407,8 +407,8 @@ class VillageBuilder(AreaBuilder):
 			positions = []
 			for position in planned_tents:
 				if position not in blocked:
-					positions.append((-position.distance(centroid), position))
-			positions.sort()
+					positions.append((position.distance(centroid), position))
+			positions.sort(reverse = True)
 			return positions
 
 		for _ in xrange(max_buildings):
@@ -422,11 +422,11 @@ class VillageBuilder(AreaBuilder):
 				positions = get_centroid_distance_pairs(planned_tents, set([replaced_pos]))
 				score = 0
 				in_range = 0
-				for negative_distance_to_centroid, position in positions:
+				for distance_to_centroid, position in positions:
 					if in_range < capacity and replaced_pos.distance(position) <= tent_range:
 						in_range += 1
 					else:
-						score -= negative_distance_to_centroid
+						score += distance_to_centroid
 				if best_score is None or best_score > score:
 					best_score = score
 					best_pos = replaced_pos
@@ -438,6 +438,8 @@ class VillageBuilder(AreaBuilder):
 				if in_range < capacity and best_pos.distance(position) <= tent_range:
 					planned_tents.remove(position)
 					in_range += 1
+			if not in_range:
+				continue
 
 			possible_positions.remove(best_pos)
 			builder = Builder.create(building_id, self.land_manager, best_pos.origin)
