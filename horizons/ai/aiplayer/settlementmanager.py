@@ -194,7 +194,7 @@ class SettlementManager(WorldObject):
 			return self.get_together_chain.get_ratio(resource_id) * self.get_resident_resource_usage(RES.GET_TOGETHER_ID)
 
 		total = 0
-		for coords, (purpose, _) in self.village_builder.plan.iteritems():
+		for coords, (purpose, _, _) in self.village_builder.plan.iteritems():
 			if purpose != BUILDING_PURPOSE.RESIDENCE:
 				continue
 			tent = self.settlement.ground_map[coords].object

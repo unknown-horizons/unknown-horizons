@@ -51,23 +51,32 @@ class VillageBuilder(AreaBuilder):
 		self._init_cache()
 		self.roads_built = False
 
+	def save_plan(self, db):
+		db_query = 'INSERT INTO ai_area_builder_plan(area_builder, x, y, purpose, builder, section) VALUES(?, ?, ?, ?, ?, ?)'
+		for (x, y), (purpose, builder, section) in self.plan.iteritems():
+			db(db_query, self.worldid, x, y, purpose, None if builder is None else builder.worldid, section)
+			if builder is not None:
+				assert isinstance(builder, Builder)
+				builder.save(db)
+
 	def save(self, db):
 		super(VillageBuilder, self).save(db)
-		db("INSERT INTO ai_village_builder(rowid, settlement_manager) VALUES(?, ?)", self.worldid, \
-			self.settlement_manager.worldid)
+		db("INSERT INTO ai_village_builder(rowid, settlement_manager, num_sections, current_section) VALUES(?, ?, ?, ?)", \
+			self.worldid, self.settlement_manager.worldid, self.num_sections, self.current_section)
 
 		for x, y in self.tent_queue:
 			db("INSERT INTO ai_village_builder_tent_queue(village_builder, x, y) VALUES(?, ?, ?)", self.worldid, x, y)
 
 	def _load(self, db, settlement_manager):
 		self.__init(settlement_manager)
-		worldid = db("SELECT rowid FROM ai_village_builder WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
+		db_result = db("SELECT rowid, num_sections, current_section FROM ai_village_builder WHERE settlement_manager = ?", settlement_manager.worldid)
+		worldid, self.num_sections, self.current_section = db_result[0]
 		super(VillageBuilder, self)._load(db, settlement_manager, worldid)
 
-		db_result = db("SELECT x, y, purpose, builder FROM ai_area_builder_plan WHERE area_builder = ?", worldid)
-		for x, y, purpose, builder_id in db_result:
+		db_result = db("SELECT x, y, purpose, builder, section FROM ai_area_builder_plan WHERE area_builder = ?", worldid)
+		for x, y, purpose, builder_id, section in db_result:
 			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
-			self.plan[(x, y)] = (purpose, builder)
+			self.plan[(x, y)] = (purpose, builder, section)
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
 
@@ -140,16 +149,17 @@ class VillageBuilder(AreaBuilder):
 			for road_y in ys:
 				coords = (road_x, road_y)
 				if self.land_manager._coords_usable(coords):
-					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None, 0)
 
 		xs = set([x for (x, _) in self.land_manager.village])
 		for road_y in horizontal_roads:
 			for road_x in xs:
 				coords = (road_x, road_y)
 				if self.land_manager._coords_usable(coords):
-					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None, 0)
 
-		for plan in sections:
+		for i in xrange(len(sections)):
+			plan = sections[i]
 			self._optimize_plan(plan)
 			for coords in plan:
 				if plan[coords][0] == BUILDING_PURPOSE.UNUSED_RESIDENCE:
@@ -160,12 +170,13 @@ class VillageBuilder(AreaBuilder):
 					plan[coords] = (BUILDING_PURPOSE.MAIN_SQUARE, builder)
 			self._create_tent_queue(plan)
 			for coords in plan:
-				self.plan[coords] = plan[coords]
+				self.plan[coords] = (plan[coords][0], plan[coords][1], i)
 		self.num_sections = len(sections)
+		self.current_section = 0
 		self._reserve_other_buildings()
 
 		# add potential roads to the island's network
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _, _) in self.plan.iteritems():
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add(coords)
 
@@ -389,7 +400,7 @@ class VillageBuilder(AreaBuilder):
 		""" replaces up to max_buildings planned tents with buildings of type building_id."""
 
 		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
-		planned_tents = sorted(set([builder.position for (purpose, builder) in self.plan.itervalues() if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE]))
+		planned_tents = sorted(set([builder.position for (purpose, builder, _) in self.plan.itervalues() if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE]))
 		possible_positions = copy.copy(planned_tents)
 
 		def get_centroid(planned, blocked):
@@ -444,7 +455,7 @@ class VillageBuilder(AreaBuilder):
 			possible_positions.remove(best_pos)
 			builder = Builder.create(building_id, self.land_manager, best_pos.origin)
 			(x, y) = best_pos.origin.to_tuple()
-			self.register_change(x, y, new_purpose, builder)
+			self.register_change(x, y, new_purpose, builder, self.plan[(x, y)][2])
 
 	def _reserve_other_buildings(self):
 		"""Replaces planned tents with a pavilion, school, and tavern."""
@@ -517,7 +528,10 @@ class VillageBuilder(AreaBuilder):
 
 	def build_roads(self):
 		all_built = True
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _, section) in self.plan.iteritems():
+			if section > self.current_section:
+				all_built = False
+				continue
 			if purpose != BUILDING_PURPOSE.ROAD:
 				continue
 			object = self.island.ground_map[coords].object
@@ -530,8 +544,14 @@ class VillageBuilder(AreaBuilder):
 	def build_tent(self, coords = None):
 		if not self.tent_queue:
 			return BUILD_RESULT.IMPOSSIBLE
+
+		# can_trigger_next_section is used to start building the next section when the old one is done
+		# if a tent is built just to extend the area then that can't trigger the next section
+		# TODO: handle extension tents nicer than just letting them die
+		can_trigger_next_section = False
 		if coords is None:
 			coords = self.tent_queue[0]
+			can_trigger_next_section = True
 
 		ok = True
 		x, y = coords
@@ -552,7 +572,7 @@ class VillageBuilder(AreaBuilder):
 			if not builder.execute():
 				self.log.debug('%s unable to build tent at (%d, %d)', self, x, y)
 				return BUILD_RESULT.UNKNOWN_ERROR
-			self.register_change(coords[0], coords[1], BUILDING_PURPOSE.RESIDENCE, builder)
+			self.register_change(coords[0], coords[1], BUILDING_PURPOSE.RESIDENCE, builder, self.plan[coords][2])
 
 		if ok or owned_by_other:
 			if self.tent_queue[0] == coords:
@@ -573,6 +593,8 @@ class VillageBuilder(AreaBuilder):
 
 		if not self.roads_built:
 			self.build_roads()
+		if can_trigger_next_section and self.plan[coords][2] > self.current_section:
+			self.current_section = self.plan[coords][2]
 		return BUILD_RESULT.OK
 
 	def display(self):
@@ -590,7 +612,7 @@ class VillageBuilder(AreaBuilder):
 		unknown_colour = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
 			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
 				renderer.addColored(tile._instance, *sq_colour)
