@@ -43,6 +43,23 @@ class AbstractVillageBuilding(AbstractBuilding):
 				return False
 		return True
 
+	def _need_producer(self, settlement_manager, builder, resource_id):
+		if not settlement_manager.count_buildings(builder.building_id):
+			return True # if none exist and we need the resource then build it
+		coords = builder.point.to_tuple()
+		assigned_residences = settlement_manager.village_builder.producer_assignment[self.get_purpose(resource_id)][coords]
+		total = len(assigned_residences)
+		not_serviced = 0
+		for residence_coords in assigned_residences:
+			if settlement_manager.village_builder.plan[residence_coords][0] != BUILDING_PURPOSE.RESIDENCE:
+				continue
+			not_serviced += 1
+
+		# build it if at least 75% of the assigned residences have been built
+		if not_serviced > 0 and not_serviced >= total * 0.75: # TODO: use a better place to store this constant
+			return True
+		return False
+
 	def build(self, settlement_manager, resource_id):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
@@ -53,6 +70,9 @@ class AbstractVillageBuilding(AbstractBuilding):
 			if purpose == building_purpose:
 				object = village_builder.land_manager.island.ground_map[coords].object
 				if object is None or object.id != self.id:
+					if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
+						if not self._need_producer(settlement_manager, builder, resource_id):
+							continue
 					if not builder.have_resources():
 						return (BUILD_RESULT.NEED_RESOURCES, None)
 					if not self.in_settlement(settlement_manager, builder.position):

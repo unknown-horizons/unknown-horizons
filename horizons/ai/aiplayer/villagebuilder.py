@@ -83,6 +83,8 @@ class VillageBuilder(AreaBuilder):
 		for x, y in db("SELECT x, y FROM ai_village_builder_tent_queue WHERE village_builder = ? ORDER BY rowid ASC", worldid):
 			self.tent_queue.append((x, y))
 
+		self._create_village_producer_assignments()
+
 	def _get_village_section_coordinates(self, start_x, start_y, width, height):
 		bo_coords_set = set(self.land_manager.settlement.branch_office.position.tuple_iter())
 		result = set()
@@ -470,6 +472,38 @@ class VillageBuilder(AreaBuilder):
 		self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION, num_other_buildings, max_capacity)
 		self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings, max_capacity)
 		self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN, num_other_buildings, max_capacity)
+		self._create_village_producer_assignments()
+
+	def _create_village_producer_assignments(self):
+		""" assign (potential) residences to village producers to know which of the producers should be built """
+		self.producer_assignment = {} # {purpose: {(x,y): [(x,y), ...]}}
+		purposes = [BUILDING_PURPOSE.PAVILION, BUILDING_PURPOSE.VILLAGE_SCHOOL, BUILDING_PURPOSE.TAVERN]
+		residence_positions = sorted(set([builder.position for (purpose, builder, _) in self.plan.itervalues() if purpose in [BUILDING_PURPOSE.UNUSED_RESIDENCE, BUILDING_PURPOSE.UNUSED_RESIDENCE]]))
+		residence_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
+		max_capacity = 22
+
+		for purpose in purposes:
+			producer_positions = sorted(set([builder.position for (pos_purpose, builder, _) in self.plan.itervalues() if pos_purpose == purpose]))
+			self.producer_assignment[purpose] = {}
+			for producer_position in producer_positions:
+				self.producer_assignment[purpose][producer_position.origin.to_tuple()] = []
+
+			options = []
+			for producer_position in producer_positions:
+				for position in residence_positions:
+					distance = producer_position.distance(position)
+					if distance <= residence_range:
+						options.append((distance, producer_position.origin.to_tuple(), position.origin.to_tuple()))
+			options.sort(reverse = True)
+
+			assigned_residence_coords = set()
+			for _, producer_coords, residence_coords in options:
+				if residence_coords in assigned_residence_coords:
+					continue
+				if len(self.producer_assignment[purpose][producer_coords]) >= max_capacity:
+					continue
+				assigned_residence_coords.add(residence_coords)
+				self.producer_assignment[purpose][producer_coords].append(residence_coords)
 
 	def _create_tent_queue(self, plan):
 		""" This function takes the plan and orders all planned tents according to
