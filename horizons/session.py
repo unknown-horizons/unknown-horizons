@@ -160,7 +160,7 @@ class Session(LivingObject):
 		raise NotImplementedError
 	def quickload(self):
 		raise NotImplementedError
-	def save(self, savegame):
+	def save(self, savegame=None):
 		raise NotImplementedError
 
 	def load(self, savegame, players, is_scenario=False, campaign=None):

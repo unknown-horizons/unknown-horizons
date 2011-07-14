@@ -58,5 +58,5 @@ class MPSession(Session):
 		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
 	def quickload(self):
 		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
-	def save(self, savegame):
+	def save(self, savegame=None):
 		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
