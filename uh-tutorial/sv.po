@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-07-13 22:31+0200\n"
+"PO-Revision-Date: 2011-07-14 13:40+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -79,9 +79,8 @@ msgstr ""
 msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgstr "NY UPPGIFT: BOSÄTTA SIG PÅ EN NY Ö"
 
-# Inte klar.
+# Ändra build settlement till svenska.
 #: po/tutorial.py:8
-#, fuzzy
 msgid ""
 "To move your ship, select it with a left click and right click on the location you want it to go to.\n"
 "\n"
@@ -102,11 +101,20 @@ msgstr ""
 "När du kommit nära kusten så aktiveras den ankar-liknande knappen i "
 "översiktsfliken.\n"
 "\n"
-"Det betyder att du nu kan bygga ett handelskontor"
+"Det betyder att du nu kan bygga ett handelskontor genom att trycka på "
+"knappen(kallad 'Build Settlement').\n"
+"\n"
+"En förhandsvisning av din byggnad går att se när du flyttar runt med "
+"pekaren.\n"
+"\n"
+"Du kan bygga på alla platser där förhandsvisningen inte är färgad röd.\n"
+"Tryck där du vill placera din byggnad.\n"
+"\n"
+"UPPGIFT: Bygg ett handelskontor vid kusten."
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr ""
+msgstr "NY UPPGIFT: AVLASTA DINA VAROR"
 
 #: po/tutorial.py:10
 msgid ""
