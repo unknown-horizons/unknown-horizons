@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import platform
 import os.path
 import re
 import locale
@@ -289,7 +290,11 @@ class LAYERS:
 
 ## PATHS
 # workaround, so it can be used to create paths withing PATHS
-_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
+
+if platform.system() != "Windows":
+	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
+else:
+	_user_dir = os.path.join(os.environ['APPDATA'], "unknown-horizons")
 _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 
 class PATHS:
