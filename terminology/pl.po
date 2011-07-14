@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -256,14 +256,18 @@ msgstr "poziom"
 msgid "move"
 msgstr "przesuń"
 
+# 80%
+#, fuzzy
 msgid "moved"
-msgstr ""
+msgstr "przesuń"
 
 msgid "produce"
 msgstr "produkuj"
 
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "produkuj"
 
 msgid "pasture"
 msgstr "pastwisko"
@@ -459,8 +463,10 @@ msgstr ""
 msgid "liquor"
 msgstr "alkohol"
 
+# 75%
+#, fuzzy
 msgid "mode"
-msgstr ""
+msgstr "przesuń"
 
 msgid "multiple"
 msgstr ""

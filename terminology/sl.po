@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-05-27 11:42+0200\n"
+"PO-Revision-Date: 2011-07-05 09:08+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "Izgradi"
@@ -221,14 +221,18 @@ msgstr "stopnja"
 msgid "move"
 msgstr "premakni"
 
+# 80%
+#, fuzzy
 msgid "moved"
-msgstr ""
+msgstr "premakni"
 
 msgid "produce"
 msgstr "proizvedi"
 
+# 87%
+#, fuzzy
 msgid "produced"
-msgstr ""
+msgstr "proizvedi"
 
 msgid "pasture"
 msgstr "pašnik"
@@ -434,8 +438,10 @@ msgstr "rasti"
 msgid "hold"
 msgstr "držati"
 
+# 80%
+#, fuzzy
 msgid "hunt"
-msgstr ""
+msgstr "lovi"
 
 msgid "income"
 msgstr "prihodek"
@@ -538,8 +544,10 @@ msgstr "mini zemljevid"
 msgid "playing"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "ruin"
-msgstr ""
+msgstr "poženi"
 
 msgid "seed"
 msgstr ""
@@ -574,8 +582,10 @@ msgstr ""
 msgid "education"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "clay"
-msgstr ""
+msgstr "igraj"
 
 msgid "charcoal"
 msgstr ""
