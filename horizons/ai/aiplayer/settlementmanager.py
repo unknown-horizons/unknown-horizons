@@ -393,6 +393,9 @@ class SettlementManager(WorldObject):
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and not self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS):
 			result = self.production_builder.build_boat_builder()
 			self.log_generic_build_result(result, 'boat builder')
+		elif self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS) and len(self.owner.ships) + self.owner.unit_builder.num_ships_being_built < 2:
+			self.log.info('%s start building a ship', self)
+			self.owner.unit_builder.build_ship()
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
 			pass
 		elif self.village_builder.tent_queue:

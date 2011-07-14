@@ -222,6 +222,8 @@ class PRODUCTION:
 	COUNTER_LIMIT = 240 # 2 minutes in ticks * COUNTER_INTERVAL; used to keep track of current & max production levels
 	COUNTER_INTERVAL = 8 # production statistics are saved every COUNTER_INTERVAL ticks
 
+class PRODUCTIONLINES:
+	FISHING_BOAT = 15
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:

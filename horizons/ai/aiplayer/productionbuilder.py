@@ -119,6 +119,10 @@ class ProductionBuilder(AreaBuilder):
 				produce_quantity += 2
 			elif building.id == BUILDINGS.CLAY_PIT_CLASS:
 				pass
+			elif building.id == BUILDINGS.MOUNTAIN_CLASS:
+				pass
+			elif building.id == BUILDINGS.BOATBUILDER_CLASS:
+				pass
 			else:
 				produce_quantity += 1
 		return 1 + 2 * len(self.collector_buildings) > produce_quantity

@@ -29,6 +29,7 @@ from mission.domestictrade import DomesticTrade
 from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
+from unitbuilder import UnitBuilder
 from constants import BUILDING_PURPOSE
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
@@ -108,7 +109,14 @@ class AIPlayer(GenericAI):
 
 	def finish_init(self):
 		for ship in self.session.world.ships:
-			if ship.owner == self:
+			if ship.owner == self and ship.is_selectable:
+				self.ships[ship] = self.shipStates.idle
+
+	def refresh_ships(self):
+		""" called when a new ship is added to the fleet """
+		for ship in self.session.world.ships:
+			if ship.owner == self and ship.is_selectable and ship not in self.ships:
+				self.log.info('%s Added %s to the fleet', self, ship)
 				self.ships[ship] = self.shipStates.idle
 
 	def __init(self):
@@ -118,6 +126,7 @@ class AIPlayer(GenericAI):
 		self.fishers = []
 		self.complete_inventory = CompleteInventory(self)
 		self._need_feeder_island = False
+		self.unit_builder = UnitBuilder(self)
 
 	def report_success(self, mission, msg):
 		self.missions.remove(mission)
