@@ -36,7 +36,7 @@ class Builder(WorldObject):
 	log = logging.getLogger("ai.aiplayer.builder")
 
 	rotations = [45, 135, 225, 315]
-	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS] # don't change orientation by random
+	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS] # don't change orientation by random
 
 	def __init__(self, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
 		"""

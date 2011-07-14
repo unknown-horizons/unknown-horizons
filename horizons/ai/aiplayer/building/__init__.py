@@ -41,10 +41,11 @@ class AbstractBuilding(object):
 		self.size = (self.width, self.height)
 		self.radius = Entities.buildings[building_id].radius
 		self.lines = {} # output_resource_id: ProductionLine
-		for production_line_id in production_line_ids:
-			production_line = ProductionLine(production_line_id)
-			assert len(production_line.produced_res) == 1
-			self.lines[production_line.produced_res.keys()[0]] = production_line
+		if self.producer_building:
+			for production_line_id in production_line_ids:
+				production_line = ProductionLine(production_line_id)
+				assert len(production_line.produced_res) == 1
+				self.lines[production_line.produced_res.keys()[0]] = production_line
 
 	loaded = False
 	buildings = {} # building_id: AbstractBuilding
@@ -143,6 +144,11 @@ class AbstractBuilding(object):
 		""" Child buildings that should not be used for production calculation set this to true """
 		return False
 
+	@property
+	def producer_building(self):
+		""" Most buildings produce some resource """
+		return True
+
 	def get_evaluators(self, settlement_manager, resource_id):
 		options = []
 		for x, y, orientation in self.iter_potential_locations(settlement_manager):
@@ -159,7 +165,7 @@ class AbstractBuilding(object):
 			result = evaluator.execute()
 			if result[0] != BUILD_RESULT.IMPOSSIBLE:
 				return result
-		self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__, settlement_manager, resource_id)
+		self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__, settlement_manager, resource_id if resource_id else -1)
 		return (BUILD_RESULT.IMPOSSIBLE, None)
 
 decorators.bind_all(AbstractBuilding)

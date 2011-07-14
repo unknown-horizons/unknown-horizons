@@ -390,6 +390,9 @@ class SettlementManager(WorldObject):
 		elif self.tents >= 16 and self.owner.need_feeder_island(self) and not self.owner.have_feeder_island() and self.owner.can_found_feeder_island():
 			self.log.info('%s waiting for a feeder islands to be founded', self)
 			self.owner.found_feeder_island()
+		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and not self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS):
+			result = self.production_builder.build_boat_builder()
+			self.log_generic_build_result(result, 'boat builder')
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
 			pass
 		elif self.village_builder.tent_queue:

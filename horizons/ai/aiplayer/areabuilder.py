@@ -218,7 +218,7 @@ class AreaBuilder(WorldObject):
 		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
 		if not builder or not self.land_manager.legal_for_production(builder.position):
 			return None
-		if building_id == BUILDINGS.FISHERMAN_CLASS: #
+		if building_id == BUILDINGS.FISHERMAN_CLASS or building_id == BUILDINGS.BOATBUILDER_CLASS:
 			for coords in builder.position.tuple_iter():
 				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None

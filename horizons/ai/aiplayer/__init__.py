@@ -50,6 +50,7 @@ from building.ironmine import AbstractIronMine
 from building.charcoalburner import AbstractCharcoalBurner
 from building.smeltery import AbstractSmeltery
 from building.toolmaker import AbstractToolmaker
+from building.boatbuilder import AbstractBoatBuilder
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
@@ -329,6 +330,9 @@ class AIPlayer(GenericAI):
 
 	def found_feeder_island(self):
 		self._need_feeder_island = True
+
+	def count_buildings(self, building_id):
+		return sum(settlement_manager.count_buildings(building_id) for settlement_manager in self.settlement_managers)
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s ship blocked (%s)", self, unit)

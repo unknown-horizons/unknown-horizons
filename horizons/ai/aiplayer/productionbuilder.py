@@ -27,6 +27,7 @@ from collections import deque
 from areabuilder import AreaBuilder
 from builder import Builder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
+from building import AbstractBuilding
 
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util import Point
@@ -101,6 +102,9 @@ class ProductionBuilder(AreaBuilder):
 				self.land_manager.roads.add((x, y))
 
 		self.refresh_unused_fields()
+
+	def build_boat_builder(self):
+		return AbstractBuilding.buildings[BUILDINGS.BOATBUILDER_CLASS].build(self.settlement_manager, None)[0]
 
 	def _near_collectors(self, position):
 		for building in self.collector_buildings:
@@ -318,6 +322,7 @@ class ProductionBuilder(AreaBuilder):
 		distillery_colour = (255, 128, 40)
 		clay_pit_colour = (0, 64, 0)
 		brickyard_colour = (0, 32, 0)
+		boatbuilder_colour = (163, 73, 164)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, (purpose, _) in self.plan.iteritems():
@@ -352,6 +357,8 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *clay_pit_colour)
 			elif purpose == BUILDING_PURPOSE.BRICKYARD:
 				renderer.addColored(tile._instance, *brickyard_colour)
+			elif purpose == BUILDING_PURPOSE.BOAT_BUILDER:
+				renderer.addColored(tile._instance, *boatbuilder_colour)
 			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
