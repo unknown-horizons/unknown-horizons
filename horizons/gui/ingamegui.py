@@ -38,7 +38,8 @@ from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 
 class IngameGui(LivingObject):
-	"""Class handling all the ingame gui events."""
+	"""Class handling all the ingame gui events.
+	Assumes that only 1 instance is used (class variables)"""
 
 	gui = livingProperty()
 	tabwidgets = livingProperty()
@@ -107,7 +108,7 @@ class IngameGui(LivingObject):
 			'destroy_tool' : self.session.destroy_tool,
 			'build' : self.show_build_menu,
 			'helpLink' : self.main_gui.on_help,
-			'gameMenuButton' : self.main_gui.show_pause,
+			'gameMenuButton' : self.main_gui.toggle_pause,
 			'logbook' : self.logbook.toggle_visibility
 		})
 
@@ -424,7 +425,7 @@ class IngameGui(LivingObject):
 	def _hide_change_name_dialog(self):
 		"""Escapes the change_name dialog"""
 		self.session.speed_unpause()
-		self.main_gui.on_escape = self.main_gui.show_pause
+		self.main_gui.on_escape = self.main_gui.toggle_pause
 		self.widgets['change_name'].hide()
 
 	def change_name(self, instance):
@@ -452,7 +453,7 @@ class IngameGui(LivingObject):
 			# remember reference to popup for hiding
 			self.__class__._toggle_ingame_pause_shown = popup
 		else:
-			self.main_gui.on_escape = self.main_gui.show_pause
+			self.main_gui.on_escape = self.main_gui.toggle_pause
 			self.session.speed_unpause()
 
 			self.__class__._toggle_ingame_pause_shown.hide()
@@ -497,7 +498,7 @@ class IngameGui(LivingObject):
 
 	def _hide_chat_dialog(self):
 		"""Escapes the chat dialog"""
-		self.main_gui.on_escape = self.main_gui.show_pause
+		self.main_gui.on_escape = self.main_gui.toggle_pause
 		self.widgets['chat'].hide()
 
 	def _do_chat(self):
