@@ -336,6 +336,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"pt"    : u'Português',
 	"ru"    : u'Русский',
 	"sl"    : u'Slovenski',
+	"sv"    : u'Svenska',
 	})
 
 AUTO_CONTINUE_CAMPAIGN=True
