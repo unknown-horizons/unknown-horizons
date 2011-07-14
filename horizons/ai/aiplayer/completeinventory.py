@@ -49,7 +49,7 @@ class CompleteInventory(object):
 			self.move(ship, settlement, res, amount)
 
 	def load_foundation_resources(self, ship, settlement):
-		max_amounts = {RES.BOARDS_ID: 50, RES.FOOD_ID: 40, RES.TOOLS_ID: 30}
+		max_amounts = {RES.BOARDS_ID: 30, RES.FOOD_ID: 30, RES.TOOLS_ID: 30}
 		for res, max_amount in max_amounts.iteritems():
 			have = 0
 			for ship_res, ship_amount in ship.inventory:
@@ -59,7 +59,7 @@ class CompleteInventory(object):
 			self.move(ship, settlement, res, have - max_amount)
 
 	def load_feeder_island_foundation_resources(self, ship, settlement):
-		max_amounts = {RES.BOARDS_ID: 50, RES.FOOD_ID: 40, RES.TOOLS_ID: 30}
+		max_amounts = {RES.BOARDS_ID: 30, RES.TOOLS_ID: 30}
 		for res, max_amount in max_amounts.iteritems():
 			have = 0
 			for ship_res, ship_amount in ship.inventory:

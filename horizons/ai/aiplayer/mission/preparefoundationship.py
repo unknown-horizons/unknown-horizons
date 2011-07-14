@@ -59,7 +59,7 @@ class PrepareFoundationShip(Mission):
 		self.settlement_manager = WorldObject.get_object_by_id(db_result[0])
 		self.ship = WorldObject.get_object_by_id(db_result[1])
 		self.branch_office = self.settlement_manager.branch_office
-		self.feeder_island = feeder_island
+		self.feeder_island = db_result[2]
 		self.state = self.missionStates[db_result[2]]
 		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback, \
 			self.settlement_manager.land_manager.island.session)
@@ -82,8 +82,13 @@ class PrepareFoundationShip(Mission):
 
 	def _reached_bo_area(self):
 		self.log.info('Reached BO area')
-		self.ship.owner.complete_inventory.load_foundation_resources(self.ship, \
-			self.settlement_manager.land_manager.settlement)
+		if self.feeder_island:
+			self.ship.owner.complete_inventory.load_feeder_island_foundation_resources(\
+				self.ship, self.settlement_manager.land_manager.settlement)
+		else:
+			self.ship.owner.complete_inventory.load_foundation_resources(self.ship, \
+				self.settlement_manager.land_manager.settlement)
+
 		success = False
 		if self.feeder_island:
 			success = self.settlement_manager.owner.have_feeder_island_starting_resources(self.ship, None)

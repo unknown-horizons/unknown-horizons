@@ -258,8 +258,12 @@ class AIPlayer(GenericAI):
 		self.manage_resources()
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
 
-		ship = self.ships.keys()[0]
-		if self.ships[ship] != self.shipStates.idle:
+		ship = None
+		for possible_ship, state in self.ships.iteritems():
+			if state is self.shipStates.idle:
+				ship = possible_ship
+				break
+		if not ship:
 			#self.log.info('%s.tick: no available ships', self)
 			return
 
