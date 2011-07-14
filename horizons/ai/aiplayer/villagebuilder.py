@@ -51,6 +51,10 @@ class VillageBuilder(AreaBuilder):
 		self._init_cache()
 		self.roads_built = False
 
+		# initialise here for feeder islands
+		self.num_sections = 0
+		self.current_section = 0
+
 	def save_plan(self, db):
 		db_query = 'INSERT INTO ai_area_builder_plan(area_builder, x, y, purpose, builder, section) VALUES(?, ?, ?, ?, ?, ?)'
 		for (x, y), (purpose, builder, section) in self.plan.iteritems():
