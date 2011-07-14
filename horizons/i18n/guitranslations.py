@@ -111,7 +111,8 @@ def set_translations():
 			"gold_icon"                   : _("Gold")},
 		"change_name.xml" : {
 			"enter_new_name_lbl"          : _("Enter new name:"),
-			"headline_change_name"        : _("Change name")},
+			"headline_change_name"        : _("Change name"),
+			"okButton"                    : _("Apply the new name")},
 		"chat.xml" : {
 			"chat_lbl"                    : _("Enter your message:"),
 			"headline"                    : _("Chat")},
@@ -127,24 +128,24 @@ def set_translations():
 			"cancelButton"                : _("Leave Captain's log"),
 			"backwardButton"              : _("Read prev. entries"),
 			"forwardButton"               : _("Read next entries")},
+		"choose_next_scenario.xml" : {
+			"head_left"                   : _("Available Scenarios"),
+			"head_right"                  : _("Scenario description"),
+			"scenario_details"            : _("Details:"),
+			"cancelButton"                : _("Continue playing"),
+			"choose_scenario"             : _("Choose this scenario")},
 		"configure_route.xml" : {
 			"cancelButton"                : _("Exit"),
 			"add_bo"                      : _("Add to list"),
 			"start_route"                 : _("Start route")},
-		"choose_next_scenario.xml" : {
-			"cancelButton"                : _("Exit"),
-			"choose_scenario"             : _("Choose this scenario")},
+		"island_production.xml" : {
+			"headline"                    : _("Production overview"),
+			"cancelButton"                : _("Leave production overview"),
+			"refreshButton"               : _("Refresh data")},
 		"route_entry.xml" : {
 			"delete_bo"                   : _("Delete entry"),
 			"move_down"                   : _("Move down"),
 			"move_up"                     : _("Move up")},
-		"ingamemenu.xml" : {
-			"help"                        : _("Help"),
-			"loadgame"                    : _("Load game"),
-			"quit"                        : _("Cancel game"),
-			"savegame"                    : _("Save game"),
-			"settings"                    : _("Settings"),
-			"start"                       : _("Return to game")},
 		"help.xml" : {
 			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons development teams"),
 			"have_fun_lbl"                : _("Have fun."),
@@ -171,6 +172,13 @@ def set_translations():
 			"set26"                       : _("{C} = Chat"),
 			"set27"                       : _("{L} = Toggle Captain's log"),
 			"okButton"                    : _("Exit to main menu")},
+		"ingamemenu.xml" : {
+			"help"                        : _("Help"),
+			"loadgame"                    : _("Load game"),
+			"quit"                        : _("Cancel game"),
+			"savegame"                    : _("Save game"),
+			"settings"                    : _("Settings"),
+			"start"                       : _("Return to game")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading ..."),
 			"version_label"               : VERSION.string()},
@@ -235,11 +243,17 @@ def set_translations():
 			"screen_resolution_label"     : _("Screen resolution:"),
 			"sound_enable_opt_text"       : _("Enable sound:"),
 			"use_renderer_label"          : _("Used renderer:"),
-			"warning"                     : _("Please make sure that you know what you do.")},
+			"warning"                     : _("Please make sure that you know what you do."),
+			"okButton"                    : _("Apply"),
+			"cancelButton"                : _("Exit to main menu"),
+			"defaultButton"               : _("Reset to default settings")},
 		"select_savegame.xml" : {
 			"enter_filename_label"        : _("Enter filename:"),
 			"headline_details_label"      : _("Details:"),
-			"headline_saved_games_label"  : _("Your saved games:")},
+			"headline_saved_games_label"  : _("Your saved games:"),
+			"okButton"                    : _("Start game"),
+			"cancelButton"                : _("Exit to main menu"),
+			"deleteButton"                : _("Delete selected savegame")},
 		"singleplayermenu.xml" : {
 			"choose_map_lbl"              : _("Choose a map to play:"),
 			"headline"                    : _("New game - Singleplayer"),
@@ -285,7 +299,10 @@ def set_translations():
 			"headline_income_label"       : _("Income:"),
 			"running_costs_label"         : _("Running costs"),
 			"sell_income_label"           : _("Sale"),
-			"taxes_label"                 : _("Taxes")},
+			"taxes_label"                 : _("Taxes"),
+			"show_production_overview"    : _("Show resources produced in this settlement")},
+		"overview_buildrelated.xml" : {
+			"headline"                    : _("Build fields")},
 		"island_inventory.xml" : {
 			"headline"                    : _("Inventory")},
 		"mainsquare_inhabitants.xml" : {
@@ -298,7 +315,8 @@ def set_translations():
 		"overview_mainsquare.xml" : {
 			"name_label"                  : _("Name:"),
 			"tax_label"                   : _("Taxes:"),
-			"tax_rate_label"              : _("Tax rate")},
+			"tax_rate_label"              : _("Tax rate"),
+			"tax_val_label"               : _("Tax rate")},
 		"overview_productionbuilding.xml" : {
 			"headline"                    : _("Building overview"),
 			"running_costs_label"         : _("Running costs"),
@@ -313,7 +331,11 @@ def set_translations():
 			"tax_label"                   : _("Taxes:"),
 			"happiness_label"             : _("Happiness"),
 			"paid_taxes_label"            : _("Paid taxes"),
+			"paid_taxes_label"            : _("Tax rate"),
 			"residents_label"             : _("Residents"),
+			"inhabitants"                 : _("Residents"),
+			"tax_val_label"               : _("Tax rate"),
+			"taxes"                       : _("Paid taxes"),
 			"happiness"                   : _("Happiness")},
 		"overview_ship.xml" : {
 			"foundSettlement_label"       : _("Build settlement:"),
