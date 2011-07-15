@@ -24,6 +24,7 @@ import glob, random
 import gettext
 import os
 import locale
+import sys
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
@@ -224,6 +225,8 @@ class Fife(ApplicationBase):
 				trans = gettext.translation('unknown-horizons', position, languages=[name], fallback=fallback)
 				trans.install(unicode=True, names=['ngettext',])
 			else:
+				if "win" in sys.platform:
+					os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
 				gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 				name = ''
 
