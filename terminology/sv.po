@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-13 19:41+0200\n"
+"PO-Revision-Date: 2011-07-15 18:13+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -125,8 +125,9 @@ msgstr "fri"
 msgid "log"
 msgstr "logg"
 
+# lumberjack och lumberjacks camp syftar till samma byggnad/yrke
 msgid "lumberjack"
-msgstr "timmerstuga"
+msgstr "Skogshuggare"
 
 msgid "sell"
 msgstr "sälja"
@@ -196,7 +197,7 @@ msgid "raw"
 msgstr "rå"
 
 msgid "running"
-msgstr ""
+msgstr "kör / springer"
 
 msgid "running costs"
 msgstr "driftskostnader"
@@ -266,7 +267,7 @@ msgid "decrease"
 msgstr "minska"
 
 msgid "free trader"
-msgstr "fri köpman"
+msgstr "köpman / köpmän"
 
 msgid "hunter"
 msgstr "jägare"

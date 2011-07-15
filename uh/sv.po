@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 22:03+0200\n"
+"PO-Revision-Date: 2011-07-15 18:34+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -463,17 +463,19 @@ msgstr "Paviljong: Erbjuder befolkningens religiösa behov."
 msgid "Fisherman: Fishes the sea, produces food."
 msgstr "Fiskare: Fiskar i haven, producerar föda."
 
+# hunter och hunters tent syftar till samma byggnad/yrke. Allt heter Jägare.
 #: horizons/i18n/guitranslations.py:48
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr "Jaktstuga: Jagar vilda djur i skogen. Producerar föda."
+msgstr "Jägare: Jagar vilda djur i skogen. Producerar föda."
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr "Signalbrand: Tillåter spelaren handel med fria köpmän."
 
+# lumberjack och lumberjacks camp syftar till samma byggnad/yrke. Allt heter Skogshuggare
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr "Timmerstuga: Avverkar träd för att få fram trä."
+msgstr "Skogshuggare: Avverkar träd för att få fram trä."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
@@ -518,7 +520,7 @@ msgstr "Tegelbruk: Bränner lera till tegel."
 # Ev. lergrop eller lergrav.
 #: horizons/i18n/guitranslations.py:64
 msgid "Clay pit: Gets clay from deposit."
-msgstr "Lergrop: Ger lera från fyndighet."
+msgstr "Lertäkt: Gräver upp lera från fyndighet."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
@@ -1697,7 +1699,7 @@ msgstr "Lerfyndighet"
 
 #: sqlite/Building
 msgid "Clay Pit"
-msgstr "Lergrop"
+msgstr "Lertäkt"
 
 #: sqlite/Building
 msgid "Distillery"
@@ -1723,9 +1725,10 @@ msgstr ""
 msgid "Herbary"
 msgstr "Örtagård"
 
+# hunter och hunters tent syftar till samma byggnad/yrke. Allt heter Jägare
 #: sqlite/Building
 msgid "Hunter's Tent"
-msgstr "Jägartält"
+msgstr "Jägare"
 
 #: sqlite/Building
 msgid "Iron Mine"
@@ -1735,13 +1738,15 @@ msgstr "Järngruva"
 msgid "Log"
 msgstr "Logg"
 
+# Byggnad finns inte ännu. Tror det är byggnaden som syftas till.
 #: sqlite/Building
 msgid "Lookout"
-msgstr ""
+msgstr "Utkiksplats"
 
+# lumberjack och lumberjacks camp syftar till samma byggnad/yrke. Allt heter Skogshuggare
 #: sqlite/Building
 msgid "Lumberjack Camp"
-msgstr "Timmerstuga"
+msgstr "Skogshuggare"
 
 #: sqlite/Building
 msgid "Main Square"
