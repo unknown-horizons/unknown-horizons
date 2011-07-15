@@ -245,7 +245,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
-				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
+				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0+idle+45")
 			)
 		self.draw_health()
 		if reset_cam:
@@ -307,7 +307,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
-				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
+				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0+idle+45")
 			)
 
 	def _possible_names(self):

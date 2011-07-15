@@ -152,52 +152,52 @@ class RES:
 	FISH_ID = 28
 
 class GROUND:
-	DEFAULT_LAND = 3
-	SAND = 6
-	SHALLOW_WATER = 1
-	WATER = 0
+	DEFAULT_LAND = (3, "straight", 45)
+	SAND = (6, "straight", 45)
+	SHALLOW_WATER = (1, "straight", 45)
+	WATER = (0, "straight", 45)
 
 	# sand to shallow water tiles
-	COAST_SOUTH = 5
-	COAST_EAST = 5
-	COAST_NORTH = 5
-	COAST_WEST = 5
-	COAST_SOUTHWEST3 = 5
-	COAST_NORTHWEST3 = 5
-	COAST_NORTHEAST3 = 5
-	COAST_SOUTHEAST3 = 5
-	COAST_NORTHEAST1 = 5
-	COAST_SOUTHEAST1 = 5
-	COAST_SOUTHWEST1 = 5
-	COAST_NORTHWEST1 = 5
+	COAST_SOUTH = (5, "straight", 45)
+	COAST_EAST = (5, "straight", 135)
+	COAST_NORTH = (5, "straight", 225)
+	COAST_WEST = (5, "straight", 315)
+	COAST_SOUTHWEST3 = (5, "curve_in", 45)
+	COAST_NORTHWEST3 = (5, "curve_in", 135)
+	COAST_NORTHEAST3 = (5, "curve_in", 225)
+	COAST_SOUTHEAST3 = (5, "curve_in", 315)
+	COAST_NORTHEAST1 = (5, "curve_out", 45)
+	COAST_SOUTHEAST1 = (5, "curve_out", 135)
+	COAST_SOUTHWEST1 = (5, "curve_out", 225)
+	COAST_NORTHWEST1 = (5, "curve_out", 315)
 
 	# grass to sand tiles
-	SAND_SOUTH = 4
-	SAND_EAST = 4
-	SAND_NORTH = 4
-	SAND_WEST = 4
-	SAND_SOUTHWEST3 = 4
-	SAND_NORTHWEST3 = 4
-	SAND_NORTHEAST3 = 4
-	SAND_SOUTHEAST3 = 4
-	SAND_NORTHEAST1 = 4
-	SAND_SOUTHEAST1 = 4
-	SAND_SOUTHWEST1 = 4
-	SAND_NORTHWEST1 = 4
+	SAND_SOUTH = (4, "straight", 45)
+	SAND_EAST =  (4, "straight", 135)
+	SAND_NORTH = (4, "straight", 225)
+	SAND_WEST =  (4, "straight", 315)
+	SAND_SOUTHWEST3 = (4, "curve_in", 45)
+	SAND_NORTHWEST3 = (4, "curve_in", 135)
+	SAND_NORTHEAST3 = (4, "curve_in", 225)
+	SAND_SOUTHEAST3 = (4, "curve_in", 315)
+	SAND_NORTHEAST1 = (4, "curve_out", 45)
+	SAND_SOUTHEAST1 = (4, "curve_out", 135)
+	SAND_SOUTHWEST1 = (4, "curve_out", 225)
+	SAND_NORTHWEST1 = (4, "curve_out", 315)
 
 	# shallow water to deep water tiles
-	DEEP_WATER_SOUTH = 2
-	DEEP_WATER_EAST = 2
-	DEEP_WATER_NORTH = 2
-	DEEP_WATER_WEST = 2
-	DEEP_WATER_SOUTHWEST3 = 2
-	DEEP_WATER_NORTHWEST3 = 2
-	DEEP_WATER_NORTHEAST3 = 2
-	DEEP_WATER_SOUTHEAST3 = 2
-	DEEP_WATER_NORTHEAST1 = 2
-	DEEP_WATER_SOUTHEAST1 = 2
-	DEEP_WATER_SOUTHWEST1 = 2
-	DEEP_WATER_NORTHWEST1 = 2
+	DEEP_WATER_SOUTH = (2, "straight", 45)
+	DEEP_WATER_EAST =  (2, "straight", 135)
+	DEEP_WATER_NORTH = (2, "straight", 225)
+	DEEP_WATER_WEST =  (2, "straight", 315)
+	DEEP_WATER_SOUTHWEST3 = (2, "curve_in", 45)
+	DEEP_WATER_NORTHWEST3 = (2, "curve_in", 135)
+	DEEP_WATER_NORTHEAST3 = (2, "curve_in", 225)
+	DEEP_WATER_SOUTHEAST3 = (2, "curve_in", 315)
+	DEEP_WATER_NORTHEAST1 = (2, "curve_out", 45)
+	DEEP_WATER_SOUTHEAST1 = (2, "curve_out", 135)
+	DEEP_WATER_SOUTHWEST1 = (2, "curve_out", 225)
+	DEEP_WATER_NORTHWEST1 = (2, "curve_out", 315)
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16

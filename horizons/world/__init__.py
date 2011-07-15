@@ -157,7 +157,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		#add water
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
-		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER))]
+		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
 
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
