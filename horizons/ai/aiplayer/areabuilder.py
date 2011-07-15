@@ -262,7 +262,34 @@ class AreaBuilder(WorldObject):
 		return self.settlement_manager.village_builder.build_tent(best_coords)
 
 	def _extend_settlement_with_storage(self, position):
-		raise NotImplementedError, 'TODO'
+		options = []
+		for (x, y), (purpose, _) in self.plan.iteritems():
+			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
+			if not builder:
+				continue
+
+			alignment = 1
+			for tile in self._get_neighbour_tiles(builder.position):
+				if tile is None:
+					continue
+				coords = (tile.x, tile.y)
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+					alignment += 1
+
+			distance = position.distance(builder.position)
+			value = distance - alignment * 0.7
+			options.append((value, builder))
+
+		for _, builder in sorted(options):
+			building = builder.execute()
+			if not building:
+				return BUILD_RESULT.UNKNOWN_ERROR
+			for x, y in builder.position.tuple_iter():
+				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
+			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
+			self.collector_buildings.append(building)
+			return BUILD_RESULT.OK
+		return BUILD_RESULT.IMPOSSIBLE
 
 	def extend_settlement(self, position):
 		""" build a tent or a storage to extend the settlement towards the position """
