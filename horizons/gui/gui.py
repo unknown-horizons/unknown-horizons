@@ -38,7 +38,6 @@ from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 
 class Gui(SingleplayerMenu, MultiplayerMenu):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
-
 	"""
 	log = logging.getLogger("gui")
 
@@ -46,7 +45,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	styles = {
 	  'mainmenu': 'menu',
 	  'requirerestart': 'book',
-	  'gamemenu': 'menu',
+	  'ingamemenu': 'headline',
 	  'help': 'book',
 	  'singleplayermenu': 'book',
 	  'multiplayermenu' : 'book',
@@ -64,6 +63,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
 		self.session = None
 		self.current_dialog = None
+
+		self.__pause_displayed = False
 
 # basic menu widgets
 
@@ -84,25 +85,34 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		adjust_widget_black_background(self.widgets['mainmenu'])
 
-	def show_pause(self):
+	def toggle_pause(self):
 		"""
 		Show Pause menu
 		"""
-		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
-			'startGame'      : self.return_to_game,
-			'savegameButton' : self.save_game,
-			'settingsLink'   : self.show_settings,
-			'helpLink'       : self.on_help,
-			'closeButton'    : self.quit_session,
-			'dead_link'      : self.on_chime,
-			'creditsLink'    : self.show_credits,
-			'loadgameButton' : horizons.main.load_game
-		})
+		if self.__pause_displayed:
+			self.__pause_displayed = False
+			self.return_to_game()
+		else:
+			self.__pause_displayed = True
+			self._switch_current_widget('ingamemenu', center=True, show=True, event_map={
+				  # icons
+				'loadgameButton' : horizons.main.load_game,
+				'savegameButton' : self.save_game,
+				'settingsLink'   : self.show_settings,
+				'helpLink'       : self.on_help,
+				'startGame'      : self.return_to_game,
+				'closeButton'    : self.quit_session,
+				# labels
+				'loadgame' : horizons.main.load_game,
+				'savegame' : self.save_game,
+				'settings' : self.show_settings,
+				'help'     : self.on_help,
+				'start'    : self.return_to_game,
+				'quit'     : self.quit_session,
+			})
 
-		adjust_widget_black_background(self.widgets['gamemenu'])
-
-		self.session.speed_pause()
-		self.on_escape = self.return_to_game
+			self.session.speed_pause()
+			self.on_escape = self.toggle_pause
 
 # what happens on button clicks
 
@@ -111,7 +121,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.hide() # Hide old gui
 		self.current = None
 		self.session.speed_unpause()
-		self.on_escape = self.show_pause
+		self.on_escape = self.toggle_pause
 
 	def save_game(self):
 		"""Wrapper for saving for separating gui messages from save logic
@@ -131,13 +141,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if not self._help_is_displayed:
 			self._help_is_displayed = True
 			# make game pause if there is a game and we're not in the main menu
-			if self.session is not None and self.current != self.widgets['gamemenu']:
+			if self.session is not None and self.current != self.widgets['ingamemenu']:
 				self.session.speed_pause()
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
 			self.on_help() # toggle state
 		else:
 			self._help_is_displayed = False
-			if self.session is not None and self.current != self.widgets['gamemenu']:
+			if self.session is not None and self.current != self.widgets['ingamemenu']:
 				self.session.speed_unpause()
 			help_dlg.hide()
 
@@ -261,6 +271,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if selected_savegame is None:
 				# ok button has been pressed, but no savegame was selected
 				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."));
+				self.current = old_current
 				return self.show_select_savegame(mode=mode) # reshow dialog
 		self.current = old_current # reuse old widget
 		return selected_savegame

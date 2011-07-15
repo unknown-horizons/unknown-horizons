@@ -48,11 +48,11 @@ class YamlCache(object):
 	@classmethod
 	def get_file(cls, filename):
 		if cls.virgin:
-			cls.read_bin_file()
+			cls._read_bin_file()
 			cls.virgin = False
 		data = cls.get_yaml_file(filename)
 		if cls.dirty:
-			cls.write_bin_file()
+			cls._write_bin_file()
 			cls.dirty = False
 		return data
 
@@ -72,7 +72,7 @@ class YamlCache(object):
 		return cls.cache[filename][1]
 
 	@classmethod
-	def write_bin_file(cls):
+	def _write_bin_file(cls):
 		s = shelve.open(cls.yaml_cache)
 		for key, value in cls.cache.iteritems():
 			# TODO : manage unicode problems (paths with accents ?)
@@ -80,8 +80,18 @@ class YamlCache(object):
 		s.close()
 
 	@classmethod
-	def read_bin_file(cls):
-		s = shelve.open(cls.yaml_cache)
+	def _read_bin_file(cls):
+		try:
+			s = shelve.open(cls.yaml_cache)
+		except ImportError:
+			# Some python distributions used to use the bsddb module as underlying shelve.
+			# The bsddb module is now deprecated since 2.6 and is not present in some 2.7 distributions.
+			# Therefore, the line above will yield an ImportError if it has been executed with
+			# a python supporting bsddb and now is executed again with python with no support for it.
+			# Since this may also be caused by a different error, we just try again once.
+			os.remove(cls.yaml_cache)
+			s = shelve.open(cls.yaml_cache)
+
 		for key, value in s.iteritems():
 			cls.cache[key] = value
 		s.close()
@@ -124,8 +134,9 @@ class SavegameManager(object):
 	display_timeformat = "%y/%m/%d %H:%M"
 
 	# metadata of a savegame with default values
-	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0 }
-	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int }
+	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : ""  }
+	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int, \
+	                            'rng_state' : str }
 
 	campaign_status_file = os.path.join(savegame_dir, 'campaign_status.yaml')
 
@@ -240,7 +251,7 @@ class SavegameManager(object):
 		return metadata
 
 	@classmethod
-	def write_metadata(cls, db, savecounter):
+	def write_metadata(cls, db, savecounter, rng_state):
 		"""Writes metadata to db.
 		@param db: DbReader
 		@param savecounter: int"""
@@ -248,6 +259,7 @@ class SavegameManager(object):
 		metadata['timestamp'] = time.time()
 		metadata['savecounter'] = savecounter
 		metadata['savegamerev'] = VERSION.SAVEGAMEREVISION
+		metadata['rng_state'] = rng_state
 
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
@@ -383,21 +395,21 @@ class SavegameManager(object):
 		return (files, names, scenarios_lists, campaign_datas)
 
 	@classmethod
-	def get_campaign_info(cls, name = "", file = ""):
+	def get_campaign_info(cls, name = "", filename = ""):
 		"""Return this campaign's data"""
-		assert (name or file)
+		assert (name or filename)
 		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames = True, include_scenario_list = True, campaign_data = True)
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in cnames:
 				print _("Error: Cannot find campaign \"%s\".") % (name,)
-				return False
+				return None
 			index = cnames.index(name)
-		elif file:
-			if not file in cfiles:
-				print _("Error: Cannot find campaign with file \"%s\".") % (file,)
-				return False
-			index = cfiles.index(file)
+		elif filename:
+			if not filename in cfiles:
+				print _("Error: Cannot find campaign with file \"%s\".") % (filename,)
+				return None
+			index = cfiles.index(filename)
 		infos = cdatas[index]
 		infos.update({'codename': cnames[index], 'filename': cfiles[index], 'scenario_names' : cscenarios[index]})
 		for scenario in cscenarios[index]:

@@ -100,7 +100,7 @@ class SingleplayerMenu(object):
 				elif show == 'campaign': # update infos for campaign
 					def _update_infos():
 						"""Fill in infos of selected campaign to label"""
-						campaign_info = SavegameManager.get_campaign_info(file = self.__get_selected_map())
+						campaign_info = SavegameManager.get_campaign_info(filename = self.__get_selected_map())
 						if not campaign_info:
 							# TODO : an "invalid campaign popup"
 							self.__show_invalid_scenario_file_popup(e)
@@ -148,7 +148,7 @@ class SingleplayerMenu(object):
 				self.__show_invalid_scenario_file_popup(e)
 				self.show_single(show = 'scenario')
 		elif is_campaign:
-			campaign_info = SavegameManager.get_campaign_info(file = map_file)
+			campaign_info = SavegameManager.get_campaign_info(filename = map_file)
 			if not campaign_info:
 				# TODO : an "invalid campaign popup"
 				self.__show_invalid_scenario_file_popup(e)

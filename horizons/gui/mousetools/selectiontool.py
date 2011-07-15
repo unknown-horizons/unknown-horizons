@@ -30,7 +30,7 @@ from horizons.constants import LAYERS
 class SelectionTool(NavigationTool):
 	def __init__(self, session):
 		super(SelectionTool, self).__init__(session)
-		self.session.gui.on_escape = self.session.gui.show_pause
+		self.session.gui.on_escape = self.session.gui.toggle_pause
 
 	def end(self):
 		super(SelectionTool, self).end()

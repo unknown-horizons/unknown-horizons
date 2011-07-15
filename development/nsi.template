@@ -64,9 +64,9 @@ Section "-Misc"
 
 	SetOutPath "$INSTDIR"
 	CreateDirectory "$SMPROGRAMS\Unknown Horizons"
-	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\run_uh.bat" "" "${UH_ICON}"
+	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\unknownhorizons.bat" "" "${UH_ICON}"
 	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Uninstall.lnk" "$INSTDIR\uninst.exe"
-	CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\run_uh.bat" "" "${UH_ICON}"
+	CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\unknownhorizons.bat" "" "${UH_ICON}"
 SectionEnd
 
 Section "Uninstall"

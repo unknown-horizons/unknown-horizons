@@ -206,6 +206,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
+		if self.session.view.has_change_listener(self.draw_health):
+			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
 			self.in_ship_map = False
@@ -260,7 +262,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
 		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
-		self.session.view.remove_change_listener(self.draw_health)
+		# this is necessary to make deselect idempotent
+		if self.session.view.has_change_listener(self.draw_health):
+			self.session.view.remove_change_listener(self.draw_health)
 
 	def go(self, x, y):
 		"""Moves the ship.

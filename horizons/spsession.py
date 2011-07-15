@@ -24,6 +24,7 @@ import os
 import time
 import shutil
 import traceback
+import json
 
 import horizons.main
 
@@ -182,7 +183,8 @@ class SPSession(Session):
 				for instance in self.selection_groups[group]:
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
 
-			SavegameManager.write_metadata(db, self.savecounter)
+			rng_state = json.dumps( self.random.getstate() )
+			SavegameManager.write_metadata(db, self.savecounter, rng_state)
 			# make sure everything get's written now
 			db("COMMIT")
 			db.close()

@@ -65,7 +65,9 @@ class GeneralLoader(object):
 		rotations = {}
 		time = 500
 		dirs = os.listdir(dir)
-		try: dirs.remove('.svn')
+		try: 
+			dirs.remove('.svn')
+			dirs.remove('.DS_Store')
 		except ValueError: pass
 
 		for dirname in dirs:
@@ -77,8 +79,9 @@ class GeneralLoader(object):
 			try:
 				rotations[int(dirname)] = cls._load_files(os.path.join(dir, dirname),time)
 			except Exception, e:
-				raise Exception("Failed to load action sets from %s with time %d: %s" % \
-				                (os.path.join(dir, dirname), time, e))
+				if dirname != '.DS_Store':
+					raise Exception("Failed to load action sets from %s with time %d: %s" % \
+				                	(os.path.join(dir, dirname), time, e))
 
 		return rotations
 
@@ -92,10 +95,13 @@ class GeneralLoader(object):
 		"""
 		actions = {}
 		dirs = os.listdir(dir)
-		try: dirs.remove('.svn')
+		try: 
+			dirs.remove('.svn')
+			dirs.remove('.DS_Store')
 		except ValueError: pass
 
 		for dirname in dirs:
-			actions[dirname] = cls._load_rotation(os.path.join(dir, dirname))
+			if dirname != '.DS_Store':
+				actions[dirname] = cls._load_rotation(os.path.join(dir, dirname))
 
 		return actions

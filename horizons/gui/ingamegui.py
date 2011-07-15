@@ -38,7 +38,8 @@ from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 
 class IngameGui(LivingObject):
-	"""Class handling all the ingame gui events."""
+	"""Class handling all the ingame gui events.
+	Assumes that only 1 instance is used (class variables)"""
 
 	gui = livingProperty()
 	tabwidgets = livingProperty()
@@ -107,9 +108,8 @@ class IngameGui(LivingObject):
 			'destroy_tool' : self.session.destroy_tool,
 			'build' : self.show_build_menu,
 			'helpLink' : self.main_gui.on_help,
-			'gameMenuButton' : self.main_gui.show_pause,
-			'logbook' : self.logbook.toggle_visibility,
-			'diplomacyButton' : self.show_diplomacy_menu
+			'gameMenuButton' : self.main_gui.toggle_pause,
+			'logbook' : self.logbook.toggle_visibility
 		})
 
 		self.widgets['tooltip'].hide()
@@ -124,12 +124,13 @@ class IngameGui(LivingObject):
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
 
 		# map button names to build functions calls with the building id
-		callbackWithArguments = pychan.tools.callbackWithArguments
 		self.callbacks_build = {}
 		for id,button_name,settler_level in horizons.main.db.get_building_id_buttonname_settlerlvl():
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = Callback(self._build, id)
+
+		self.__toggle_ingame_pause_shown = None
 
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
@@ -441,7 +442,7 @@ class IngameGui(LivingObject):
 	def _hide_change_name_dialog(self):
 		"""Escapes the change_name dialog"""
 		self.session.speed_unpause()
-		self.main_gui.on_escape = self.main_gui.show_pause
+		self.main_gui.on_escape = self.main_gui.toggle_pause
 		self.widgets['change_name'].hide()
 
 	def change_name(self, instance):
@@ -452,13 +453,12 @@ class IngameGui(LivingObject):
 			RenameObject(instance, new_name).execute(self.session)
 		self._hide_change_name_dialog()
 
-	_toggle_ingame_pause_shown = None
 	def toggle_ingame_pause(self):
 		"""
 		Called when the hotkey for pause is pressed.
 		Displays pause notification and does the actual (un)pausing.
 		"""
-		if not self.__class__._toggle_ingame_pause_shown:
+		if not self.__toggle_ingame_pause_shown:
 			self.session.speed_pause()
 			self.main_gui.on_escape = self.toggle_ingame_pause
 
@@ -467,13 +467,13 @@ class IngameGui(LivingObject):
 			popup.mapEvents({'okButton': self.toggle_ingame_pause})
 			popup.show()
 			# remember reference to popup for hiding
-			self.__class__._toggle_ingame_pause_shown = popup
+			self.__toggle_ingame_pause_shown = popup
 		else:
-			self.main_gui.on_escape = self.main_gui.show_pause
+			self.main_gui.on_escape = self.main_gui.toggle_pause
 			self.session.speed_unpause()
 
-			self.__class__._toggle_ingame_pause_shown.hide()
-			self.__class__._toggle_ingame_pause_shown = None
+			self.__toggle_ingame_pause_shown.hide()
+			self.__toggle_ingame_pause_shown = None
 
 	def on_escape(self):
 		if self.logbook.is_visible():
@@ -514,7 +514,7 @@ class IngameGui(LivingObject):
 
 	def _hide_chat_dialog(self):
 		"""Escapes the chat dialog"""
-		self.main_gui.on_escape = self.main_gui.show_pause
+		self.main_gui.on_escape = self.main_gui.toggle_pause
 		self.widgets['chat'].hide()
 
 	def _do_chat(self):
