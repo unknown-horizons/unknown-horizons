@@ -23,7 +23,7 @@ from fife import fife
 
 import horizons.main
 
-from horizons.util import ActionSetLoader
+from horizons.util import ActionSetLoader, TileSetLoader
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
@@ -46,13 +46,22 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		"""
 		commands = location.getFilename().split(':')
 		id = commands.pop(0)
-		actionset, action, rotation = id.split('-')
+		actionset, action, rotation = id.split('+')
 		commands = zip(commands[0::2], commands[1::2])
+
+		# Set the correct loader based on the actionset
+		loader = None
+		if actionset.startswith("ts_"):
+			loader = TileSetLoader
+		elif actionset.startswith("as_"):
+			loader = ActionSetLoader
+		else:
+			assert False, "Invalid set being loaded: " + actionset
 
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
-			frame_end = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]
+		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
+			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
 			idx = horizons.main.fife.imagepool.addResourceFromFile(file)
 			img = horizons.main.fife.imagepool.getImage(idx)
 			for command, arg in commands:

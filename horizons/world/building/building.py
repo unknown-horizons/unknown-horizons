@@ -88,7 +88,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			run_in = remaining_ticks_of_month if remaining_ticks_of_month is not None else interval
 			Scheduler().add_new_object(self.get_payout, self, \
 			                           run_in=run_in, loops=-1, loop_interval=interval)
-		
+
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
 			if self.soundfiles:
@@ -267,7 +267,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			action_set_id = session.db.get_random_action_set(cls.id, level=level)[0]
 		fife.InstanceVisual.create(instance)
 
-		action_sets = ActionSetLoader.get_action_sets()
+		action_sets = ActionSetLoader.get_sets()
 		if not action in action_sets[action_set_id]:
 			if 'idle' in action_sets[action_set_id]:
 				action='idle'
