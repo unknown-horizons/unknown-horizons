@@ -240,3 +240,13 @@ class UhDbAccessor(DbReader):
 	def get_storage_building_capacity(self, storage_type):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
+
+	# Tile stes
+
+	def get_random_tile_set(self, ground_id):
+		"""Returns an tile set for a tile of type id"""
+		sql = "SELECT set_id FROM tile_set \
+		       WHERE ground_id = ?"
+		db_data = self.cached_query(sql, ground_id)
+		return db_data[randint(0, len(db_data) - 1)] if db_data else None
+

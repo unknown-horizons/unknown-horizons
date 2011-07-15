@@ -50,8 +50,8 @@ class SurfaceTile(object):
 		fife.InstanceVisual.create(self._instance)
 
 	def __str__(self):
-		return "SurfaceTile(x=%s, y=%s, water=%s, obj=%s)" % \
-		       (self.x, self.y, self.is_water, self.object)
+		return "SurfaceTile(id=%s, x=%s, y=%s, water=%s, obj=%s)" % \
+		       (self.id, self.x, self.y, self.is_water, self.object)
 
 class Ground(SurfaceTile):
 	"""Default land surface"""
@@ -77,6 +77,7 @@ class GroundClass(type):
 		self.id = id
 		self._object = None
 		self.velocity = {}
+		self._tile_set_id = db.get_random_tile_set(id)[0]
 		for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
 			self.velocity[unit] = (straight, diagonal)
 		self.classes = ['ground[' + str(id) + ']']
@@ -88,28 +89,28 @@ class GroundClass(type):
 		"""
 		@param id: ground id.
 		"""
-		if id == GROUND.WATER:
+		if id == GROUND.WATER[0]:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Water,), {})
 		else:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
 
-	def _loadObject(self, db):
+	def _loadObject(cls, db):
 		""" Loads the ground object from the db (animations, etc)
 		"""
-		self.log.debug('Loading ground %s', self.id)
+		cls.log.debug('Loading ground %s', cls.id)
 		try:
-			self._object = horizons.main.fife.engine.getModel().createObject(str(self.id), 'ground')
+			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'ground')
 		except RuntimeError:
-			self.log.debug('Already loaded ground %s', self.id)
-			self._object = horizons.main.fife.engine.getModel().getObject(str(self.id), 'ground')
+			cls.log.debug('Already loaded ground %s', cls.id)
+			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'ground')
 			return
-		fife.ObjectVisual.create(self._object)
-		visual = self._object.get2dGfxVisual()
+		fife.ObjectVisual.create(cls._object)
 
 		tile_sets = TileSetLoader.get_sets()
-		for (tile_set_id,) in db("SELECT set_id FROM data.tile_set WHERE ground_id=?", self.id):
+		for (tile_set_id,) in db("SELECT set_id FROM data.tile_set WHERE ground_id=?", cls.id):
 			for action_id in tile_sets[tile_set_id].iterkeys():
-				action = self._object.createAction(action_id+"_"+str(tile_set_id))
+				print "Adding action: ", action_id, "for tile:", cls.id
+				action = cls._object.createAction(action_id+"_"+str(tile_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
 					anim_id = horizons.main.fife.animationpool.addResourceFromFile( \
@@ -117,14 +118,3 @@ class GroundClass(type):
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 					action.setDuration(horizons.main.fife.animationpool.getAnimation(anim_id).getDuration())
-
-		#animation_45, animation_135, animation_225, animation_315 = \
-		#     db("SELECT \
-		#     (SELECT file FROM data.animation WHERE animation_id = animation_45 LIMIT 1), \
-		#     (SELECT file FROM data.animation WHERE animation_id = animation_135 LIMIT 1), \
-		#     (SELECT file FROM data.animation WHERE animation_id = animation_225 LIMIT 1), \
-		#     (SELECT file FROM data.animation WHERE animation_id = animation_315 LIMIT 1) \
-		#     FROM data.ground WHERE id = ?", self.id)[0]
-		#for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
-	#		img = horizons.main.fife.imagepool.addResourceFromFile(file)
-		#	visual.addStaticImage(int(rotation), img)
