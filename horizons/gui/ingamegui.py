@@ -107,9 +107,9 @@ class IngameGui(LivingObject):
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : self.session.destroy_tool,
 			'build' : self.show_build_menu,
-			'helpLink' : self.main_gui.on_help,
+			'diplomacyButton' : self.show_diplomacy_menu,
 			'gameMenuButton' : self.main_gui.toggle_pause,
-			'logbook' : self.logbook.toggle_visibility
+			'logbook' : self.logbook.toggle_visibility,
 		})
 
 		self.widgets['tooltip'].hide()
@@ -136,7 +136,7 @@ class IngameGui(LivingObject):
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : None,
 			'build' : None,
-			'helpLink' : None,
+			'diplomacyButton' : None,
 			'gameMenuButton' : None
 		})
 
