@@ -91,6 +91,7 @@ class ProductionChain(object):
 
 class ProductionChainSubtreeChoice(object):
 	log = logging.getLogger("ai.aiplayer.productionchain")
+	coverage_resources = set([RES.COMMUNITY_ID, RES.FAITH_ID, RES.EDUCATION_ID, RES.GET_TOGETHER_ID])
 
 	def __init__(self, options):
 		self.options = options
@@ -136,7 +137,7 @@ class ProductionChainSubtreeChoice(object):
 	def build(self, amount):
 		""" Builds the subtree that is currently the cheapest """
 		current_production = self.get_final_production_level()
-		if amount < current_production + 1e-7:
+		if amount < current_production + 1e-7 and self.resource_id not in self.coverage_resources:
 			# we are already producing enough
 			return BUILD_RESULT.ALL_BUILT
 
