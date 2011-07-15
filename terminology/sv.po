@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-15 18:13+0200\n"
+"PO-Revision-Date: 2011-07-15 19:01+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -294,8 +294,9 @@ msgstr "nybyggare"
 msgid "citizen"
 msgstr "medborgare"
 
+# merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att lösa detta.
 msgid "merchant"
-msgstr "köpman"
+msgstr "borgare"
 
 msgid "aristocrat"
 msgstr "aristokrat"
@@ -391,7 +392,7 @@ msgid "sound"
 msgstr "ljud"
 
 msgid "from time to time"
-msgstr "från tid till annan"
+msgstr "från tid till annan / då och då"
 
 msgid "trading"
 msgstr "handel"

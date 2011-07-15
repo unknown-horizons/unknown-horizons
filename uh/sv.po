@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-15 18:42+0200\n"
+"PO-Revision-Date: 2011-07-15 19:12+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -548,7 +548,7 @@ msgstr "Byskola: Ger utbildning."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr "Vävare: Väver fårull till textilier."
+msgstr "Vävare: Väver fårull till tyg."
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Settler buildings"
@@ -690,7 +690,7 @@ msgstr "Föda"
 
 #: horizons/i18n/guitranslations.py:118
 msgid "Textiles"
-msgstr "Textilier"
+msgstr "Tyg"
 
 #: horizons/i18n/guitranslations.py:119
 msgid "Tools"
@@ -742,7 +742,7 @@ msgstr "Pausa produktion"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Start production"
-msgstr "Fortsätt produktion"
+msgstr "Återuppta produktion"
 
 #: horizons/i18n/guitranslations.py:138
 msgid "Leave Captain's log"
@@ -2045,7 +2045,7 @@ msgstr "socker"
 
 #: sqlite/Resources
 msgid "textile"
-msgstr "textil"
+msgstr "tyg"
 
 #: sqlite/Resources
 msgid "tobacco"
@@ -2073,11 +2073,12 @@ msgstr "aristokrat"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "medborgare"
 
+# merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att skilja dem åt.
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr "köpman"
+msgstr "borgare"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
