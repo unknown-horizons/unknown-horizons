@@ -44,6 +44,7 @@ class SurfaceTile(object):
 		self.settlement = None
 		self.blocked = False
 		self.object = None
+		self.session = session
 
 		self._instance = session.view.layers[self.layer].createInstance(self._object, \
 		                    fife.ModelCoordinate(int(x), int(y), 0), "")
@@ -52,6 +53,27 @@ class SurfaceTile(object):
 	def __str__(self):
 		return "SurfaceTile(id=%s, x=%s, y=%s, water=%s, obj=%s)" % \
 		       (self.id, self.x, self.y, self.is_water, self.object)
+
+	def act(self, action, rotation):
+		self._instance.setRotation(rotation)
+
+		facing_loc = fife.Location(self.session.view.layers[self.layer])
+		x = self.x
+		y = self.y
+		layer_coords = list((x, y, 0))
+
+		if rotation == 45:
+			layer_coords[0] = x+3
+		elif rotation == 135:
+			layer_coords[1] = y-3
+		elif rotation == 225:
+			layer_coords[0] = x-3
+		elif rotation == 315:
+			layer_coords[1] = y+3
+		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
+
+		self._instance.act(action+"_"+str(self._tile_set_id), facing_loc, True)
+
 
 class Ground(SurfaceTile):
 	"""Default land surface"""

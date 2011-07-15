@@ -114,8 +114,7 @@ class Island(BuildingOwner, WorldObject):
 		self.ground_map = {}
 		for (rel_x, rel_y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground"): # Load grounds
 			ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
-			ground._instance.act(action_id+"_"+ground._tile_set_id, ground._instance.getLocation(), True)
-			ground._instance.setRotation(rotation)
+			ground.act(action_id, rotation)
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.ground_map[(ground.x, ground.y)] = ground
