@@ -287,7 +287,7 @@ class AIPlayer(GenericAI):
 						self.log.info('%s.tick: send ship %s on a mission to get resources for a new feeder settlement', self, ship)
 						self.prepare_foundation_ship(settlement_manager, ship, True)
 						return
-		else:
+		elif self.want_another_village():
 			if self.have_starting_resources(ship, None):
 				self.log.info('%s.tick: send ship %s on a mission to found a settlement', self, ship)
 				self.found_settlement(island, ship, False)
@@ -299,6 +299,13 @@ class AIPlayer(GenericAI):
 						self.log.info('%s.tick: send ship %s on a mission to get resources for a new settlement', self, ship)
 						self.prepare_foundation_ship(settlement_manager, ship, False)
 						return
+
+	def want_another_village(self):
+		""" Avoid having more than one developing island with a village at a time """
+		for settlement_manager in self.settlement_managers:
+			if not settlement_manager.feeder_island and not settlement_manager.can_provide_resources():
+				return False
+		return True
 
 	buy_sell_thresholds = {RES.FOOD_ID: (20, 40), RES.BOARDS_ID: (20, 30), RES.TOOLS_ID: (20, 40)}
 
