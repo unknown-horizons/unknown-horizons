@@ -22,6 +22,8 @@
 import math
 import logging
 
+from collections import defaultdict
+
 from mission.domestictrade import DomesticTrade
 
 from building import AbstractBuilding
@@ -157,7 +159,7 @@ class TradeManager(WorldObject):
 
 		# need to get a ship
 		for ship, ship_state in player.ships.iteritems():
-			if ship_state == player.shipStates.idle:
+			if ship_state is player.shipStates.idle:
 				self.ship = ship
 				break
 		if self.ship is None:
@@ -257,7 +259,7 @@ class SingleResourceTradeManager(WorldObject):
 					options.append((amount, building_id, resource_manager.worldid, resource_manager, settlement_manager))
 		options.sort(reverse = True)
 
-		self.partners = {}
+		self.partners = defaultdict(lambda: 0.0)
 		needed_amount = self.total - self.available
 		for amount, building_id, _, resource_manager, settlement_manager in options:
 			if needed_amount < 1e-9:
@@ -265,10 +267,10 @@ class SingleResourceTradeManager(WorldObject):
 			if amount > needed_amount:
 				resource_manager.request_quota_change(self.identifier, False, self.resource_id, building_id, needed_amount)
 				#print resource_manager.data[(self.resource_id, building_id)]
-				self.partners[settlement_manager.worldid] = needed_amount
+				self.partners[settlement_manager.worldid] += needed_amount
 				needed_amount = 0
 			else:
-				self.partners[settlement_manager.worldid] = amount
+				self.partners[settlement_manager.worldid] += amount
 				needed_amount -= amount
 		self.total -= self.available
 		self.available = 0.0

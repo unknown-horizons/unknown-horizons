@@ -78,6 +78,10 @@ class ProductionChain(object):
 		"""Builds a building that gets it closer to producing at least amount of resource per tick."""
 		return self.chain.build(amount)
 
+	def reserve(self, amount, may_import):
+		"""Reserves currently available production and imports from other islands if allowed"""
+		return self.chain.reserve(amount, may_import)
+
 	def get_final_production_level(self):
 		""" returns the production level at the bottleneck """
 		return self.chain.get_final_production_level()
@@ -94,6 +98,7 @@ class ProductionChainSubtreeChoice(object):
 		self.production_ratio = options[0].production_ratio
 		self.ignore_production = options[0].ignore_production
 		self.trade_manager = options[0].trade_manager
+		self.settlement_manager = options[0].settlement_manager
 
 	def assign_identifier(self, prefix):
 		self.identifier = prefix + ('/choice' if len(self.options) > 1 else '')
@@ -121,51 +126,57 @@ class ProductionChainSubtreeChoice(object):
 	def get_expected_cost(self, amount):
 		return min(option.get_expected_cost(amount) for option in self.options)
 
-	def build(self, amount):
-		""" Builds the subtree that is currently the cheapest """
-		current_production = self.get_final_production_level()
-
-		# TODO: split this function up because it is a bad idea to check how much we can import first: it could mean ignoring the existing production
-		# check how much we can import
-		required_amount = amount - current_production + self.get_root_import_level()
-		self.trade_manager.request_quota_change(self.identifier, self.resource_id, required_amount * self.production_ratio)
-		amount -= self.get_root_import_level()
-
-		# filter out unavailable options
+	def _get_available_options(self):
 		available_options = []
 		for option in self.options:
 			if option.available:
 				available_options.append(option)
+		return available_options
+
+	def build(self, amount):
+		""" Builds the subtree that is currently the cheapest """
+		current_production = self.get_final_production_level()
+		if amount < current_production + 1e-7:
+			# we are already producing enough
+			return BUILD_RESULT.ALL_BUILT
+
+		available_options = self._get_available_options()
 		if not available_options:
 			self.log.debug('%s: no available options', self)
 			return BUILD_RESULT.IMPOSSIBLE
 		elif len(available_options) == 1:
 			return available_options[0].build(amount)
 
-		if abs(amount - current_production) < 1e-7:
-			# same requirements within a margin of error
-			return BUILD_RESULT.ALL_BUILT
-		elif amount < current_production:
-			# we no longer need to produce as much as before so some quotas will need to be released
-			for option in available_options:
-				option.build(amount)
-				amount -= option.get_final_production_level()
-			return BUILD_RESULT.ALL_BUILT
-		else:
-			# need to increase production
-			# build the cheapest subtree
-			expected_costs = []
-			for i in xrange(len(available_options)):
-				option = available_options[i]
-				cost = option.get_expected_cost(amount - current_production + option.get_final_production_level())
-				if cost is not None:
-					expected_costs.append((cost, i, option))
+		# need to increase production: build the cheapest subtree
+		expected_costs = []
+		for i in xrange(len(available_options)):
+			option = available_options[i]
+			cost = option.get_expected_cost(amount - current_production + option.get_final_production_level())
+			if cost is not None:
+				expected_costs.append((cost, i, option))
 
-			if not expected_costs:
-				self.log.debug('%s: no possible options', self)
-				return BUILD_RESULT.IMPOSSIBLE
-			else:
-				return sorted(expected_costs)[0][2].build(amount)
+		if not expected_costs:
+			self.log.debug('%s: no possible options', self)
+			return BUILD_RESULT.IMPOSSIBLE
+		else:
+			return sorted(expected_costs)[0][2].build(amount)
+
+	def reserve(self, amount, may_import):
+		"""
+		Reserves currently available production and imports from other islands if allowed
+		Returns the total amount it can reserve or import
+		"""
+		total_reserved = 0.0
+		for option in self._get_available_options():
+			total_reserved += option.reserve(max(0.0, amount - total_reserved), may_import)
+
+		# check how much we can import
+		if may_import:
+			required_amount = max(0.0, amount - total_reserved)
+			self.trade_manager.request_quota_change(self.identifier, self.resource_id, required_amount * self.production_ratio)
+			total_reserved += self.get_root_import_level()
+
+		return total_reserved
 
 	def get_ratio(self, resource_id):
 		return sum(option.get_ratio(resource_id) for option in self.options)
@@ -246,9 +257,6 @@ class ProductionChainSubtree:
 		return amount > self.get_root_production_level() + 1e-7
 
 	def build(self, amount):
-		# request a quota change (could be lower or higher)
-		self.resource_manager.request_quota_change(self.identifier, True, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
-
 		# try to build one of the lower level buildings
 		result = None
 		for child in self.children:
@@ -265,14 +273,25 @@ class ProductionChainSubtree:
 				if self.resource_id == RES.FOOD_ID or self.resource_id == RES.TEXTILE_ID or self.resource_id == RES.LIQUOR_ID:
 					return BUILD_RESULT.ALL_BUILT # hack to force some resources to be produced on a feeder island
 
-			# build a building and then request quota change
+			# build a building
 			(result, building) = self.abstract_building.build(self.settlement_manager, self.resource_id)
-			if result == BUILD_RESULT.OK:
-				self.resource_manager.request_quota_change(self.identifier, True, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
-			elif result == BUILD_RESULT.OUT_OF_SETTLEMENT:
+			if result == BUILD_RESULT.OUT_OF_SETTLEMENT:
 				return self.settlement_manager.production_builder.extend_settlement(building)
 			return result
 		return BUILD_RESULT.ALL_BUILT
+
+	def reserve(self, amount, may_import):
+		"""
+		Reserves currently available production and imports from other islands if allowed
+		Returns the total amount it can reserve or import
+		"""
+		total_reserved = amount
+		for child in self.children:
+			total_reserved = min(total_reserved, child.reserve(amount, may_import))
+
+		self.resource_manager.request_quota_change(self.identifier, True, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+		total_reserved = min(total_reserved, self.resource_manager.get_quota(self.identifier, self.resource_id, self.abstract_building.id))
+		return total_reserved
 
 	def get_ratio(self, resource_id):
 		result = self.production_ratio if self.resource_id == resource_id else 0

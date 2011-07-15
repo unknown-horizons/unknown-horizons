@@ -116,6 +116,12 @@ class SingleResourceManager(WorldObject):
 		self._load(db, settlement_manager, worldid)
 		return self
 
+	def _get_hackish_production(self, building_id, resource_id):
+		buildings = self.settlement_manager.settlement.get_buildings_by_id(building_id)
+		if not buildings:
+			return 0.0
+		return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], resource_id)
+
 	def _get_current_production(self):
 		buildings = self.settlement_manager.settlement.get_buildings_by_id(self.building_id)
 		if not buildings:
@@ -124,22 +130,18 @@ class SingleResourceManager(WorldObject):
 		if self.resource_id == RES.FOOD_ID and self.building_id == BUILDINGS.FARM_CLASS:
 			# TODO: make this block of code work in a better way
 			# return the production of the potato fields because the farm is not the limiting factor
-			buildings = self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.POTATO_FIELD_CLASS)
-			if not buildings:
-				return 0.0
-			return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], RES.POTATOES_ID)
-		elif self.resource_id == RES.WOOL_ID and self.building_id == BUILDINGS.FARM_CLASS:
+			return self._get_hackish_production(BUILDINGS.POTATO_FIELD_CLASS, RES.POTATOES_ID)
+		elif self.resource_id == RES.WOOL_ID:
 			# TODO: same as above
-			buildings = self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.PASTURE_CLASS)
-			if not buildings:
-				return 0.0
-			return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], RES.LAMB_WOOL_ID)
+			return self._get_hackish_production(BUILDINGS.PASTURE_CLASS, RES.LAMB_WOOL_ID)
+		elif self.resource_id == RES.TEXTILE_ID:
+			# TODO: same as above
+			wool = self._get_hackish_production(BUILDINGS.PASTURE_CLASS, RES.LAMB_WOOL_ID)
+			textile = self._get_hackish_production(BUILDINGS.WEAVER_CLASS, RES.TEXTILE_ID)
+			return min(wool, textile)
 		elif self.resource_id == RES.SUGAR_ID and self.building_id == BUILDINGS.FARM_CLASS:
 			# TODO: same as above
-			buildings = self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.SUGARCANE_FIELD_CLASS)
-			if not buildings:
-				return 0.0
-			return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], RES.RAW_SUGAR_ID)
+			return self._get_hackish_production(BUILDINGS.SUGARCANE_FIELD_CLASS, RES.RAW_SUGAR_ID)
 		else:
 			for building in buildings:
 				total += AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id)

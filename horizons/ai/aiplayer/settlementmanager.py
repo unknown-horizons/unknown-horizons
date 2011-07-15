@@ -278,8 +278,9 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 		return True
 
-	def build_chain(self, chain, name):
+	def build_chain(self, chain, name, may_import = True):
 		amount = self.get_resident_resource_usage(chain.resource_id) * self.production_level_multiplier
+		chain.reserve(amount, may_import) # first reserve and import, then see how much has to be built
 		return self.build_generic_chain(chain, name, amount)
 
 	def reachable_deposit(self, building_id):
@@ -306,14 +307,16 @@ class SettlementManager(WorldObject):
 				result = building.level
 		return result
 
-	def get_total_missing_production(self, settlement_managers, resource_id):
+	def get_total_missing_production(self, resource_id):
 		total = 0.0
-		for settlement_manager in settlement_managers:
+		for settlement_manager in self.owner.settlement_managers:
 			usage = settlement_manager.get_resident_resource_usage(resource_id) * self.production_level_multiplier
 			production = settlement_manager.get_resource_production(resource_id)
 			resource_import = settlement_manager.get_resource_import(resource_id)
-			total += max(0.0, usage - production + resource_import)
-		return total
+			total += usage
+			if settlement_manager is not self:
+				total -= production - resource_import
+		return max(0.0, total)
 
 	def need_more_storage(self):
 		limit = self.settlement.inventory.get_limit(RES.FOOD_ID)
@@ -326,24 +329,27 @@ class SettlementManager(WorldObject):
 		return False
 
 	def build_feeder_chain(self, chain, name):
-		settlement_managers = []
-		for settlement_manager in self.owner.settlement_managers:
-			if not settlement_manager.feeder_island:
-				settlement_managers.append(settlement_manager)
-
-		needed_amount = self.get_total_missing_production(settlement_managers, chain.resource_id)
+		needed_amount = self.get_total_missing_production(chain.resource_id)
 		self.log.info('%s %s requirement %.5f', self, name, needed_amount)
 		# the first build_generic_chain call tries to build enough producers to produce the needed resource
 		# that also reserves the production for the (non-existent) settlement so it can't be transferred
 		# the second build_generic_chain call declares that the settlement doesn't need it after all thus freeing it
 		# TODO: make this a single explicit action: right now import quotas are deleted by the first step which can make it look like less resources can be imported
+		chain.reserve(needed_amount, False)
 		result = self.build_generic_chain(chain, '%s producer' % name, needed_amount)
-		self.build_generic_chain(chain, '%s producer' % name, 0.0)
+		chain.reserve(0, False)
 		return result
 
 	def _feeder_tick(self):
 		self.manage_production()
+		self.trade_manager.refresh()
 		self.resource_manager.refresh()
+		need_bricks = False
+		if self.land_manager.owner.settler_level > 0:
+			if self.get_total_missing_production(RES.BRICKS_ID) > self.get_resident_resource_usage(RES.BRICKS_ID):
+				need_bricks = True
+			elif self.get_total_missing_production(RES.LIQUOR_ID):
+				need_bricks = True
 
 		if self.build_chain(self.boards_chain, 'boards producer'):
 			pass
@@ -358,10 +364,20 @@ class SettlementManager(WorldObject):
 			pass
 		elif self.build_feeder_chain(self.textile_chain, 'textile'):
 			pass
-		elif self.land_manager.owner.settler_level > 1 and self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.build_chain(self.bricks_chain, 'bricks producer'):
+		elif need_bricks and not self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
+			result = self.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
+			self.log_generic_build_result(result,  'clay deposit coverage storage')
+		elif need_bricks and self.land_manager.owner.settler_level > 0 and self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.build_feeder_chain(self.bricks_chain, 'bricks'):
+			# produce bricks because another island needs them
+			pass
+		elif need_bricks and self.land_manager.owner.settler_level > 1 and self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.build_chain(self.bricks_chain, 'bricks producer'):
+			# produce bricks to build buildings on this island
 			pass
 		elif self.land_manager.owner.settler_level > 1 and self.build_feeder_chain(self.liquor_chain, 'liquor'):
 			pass
+
+		self.trade_manager.finalize_requests()
+		self.trade_manager.organize_shipping()
 
 	def _general_tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
