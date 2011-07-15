@@ -21,7 +21,7 @@
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
 	EnemyShipOverviewTab, FightingUnitTab
-from horizons.constants import WEAPONS
+from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
 
@@ -49,6 +49,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 		if not self._fireable:
 			return
 
+		self.stop_for(GAME_SPEED.TICKS_PER_SECOND * 1)
 		self_location = self._instance.getLocation()
 		facing_location = self._instance.getFacingLocation()
 

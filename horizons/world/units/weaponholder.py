@@ -27,7 +27,8 @@ from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.constants import WEAPONS, GAME_SPEED
-from horizons.world.component.holdgroundcomponent import HoldGroundComponent
+from horizons.world.component.stancecomponent import HoldGroundStance, AggressiveStance, \
+	NoneStance, FleeStance
 
 import gc
 
@@ -242,6 +243,16 @@ class WeaponHolder(object):
 			if self._target.has_remove_listener(self.remove_target):
 				self._target.remove_remove_listener(self.remove_target)
 		self.remove_target()
+	
+	def stop_for(self, ticks):
+		"""
+		Delays movement for a number of ticks.
+		Used when shooting in specialized unit code.
+		"""
+		Scheduler().rem_call(self, self._move_tick)
+		Scheduler().add_new_object(self._move_tick, self, ticks)
+		
+		
 
 	def fire_all_weapons(self, dest, rotated = False):
 		"""
@@ -311,10 +322,10 @@ class MovingWeaponHolder(WeaponHolder):
 	def __init__(self, **kwargs):
 		super(MovingWeaponHolder, self).__init__(**kwargs)
 		#TODO move in specialized unit code
-		self.add_component('hold_ground', HoldGroundComponent)
-		self.add_component('aggressive', HoldGroundComponent)
-		self.add_component('none', HoldGroundComponent)
-		self.add_component('flee', HoldGroundComponent)
+		self.add_component('hold_ground', HoldGroundStance)
+		self.add_component('aggressive', AggressiveStance)
+		self.add_component('none', NoneStance)
+		self.add_component('flee', FleeStance)
 		self.stance = 'hold_ground'
 		self.attack_actions = ['attack_left_as_huker0', 'attack_right_as_huker0']
 
