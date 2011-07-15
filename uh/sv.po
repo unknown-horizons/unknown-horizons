@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-15 18:34+0200\n"
+"PO-Revision-Date: 2011-07-15 18:42+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -2012,21 +2012,24 @@ msgstr ""
 msgid "potatoes"
 msgstr "potatis"
 
+# raw clay är fyndigheten. clay är det som grävts upp. Ser inget fel i att det kan heta samma sak.
 #: sqlite/Resources
 msgid "raw clay"
-msgstr ""
+msgstr "lera"
 
 #: sqlite/Resources
 msgid "raw herbs"
 msgstr ""
 
+# raw iron är fyndigheten. iron ore är det som grävts upp. Ser inget fel med att båda heter järnmalm.
 #: sqlite/Resources
 msgid "raw iron"
-msgstr ""
+msgstr "järnmalm"
 
+# raw sugar kommer från sockerrörsodling för att få fram socker. Bilden visar sockerrör, ser inga hinder att kalla det sockerrör.
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr "råsocker"
+msgstr "sockerrör"
 
 #: sqlite/Resources
 msgid "raw tobacco"
