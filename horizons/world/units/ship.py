@@ -218,7 +218,7 @@ class ShipRoute(object):
 			})
 
 		waiting = False
-		for res, amount in db("SELECT res, amount FROM ship_route_current_transfer WHERE ship_id = ?", self.worldid):
+		for res, amount in db("SELECT res, amount FROM ship_route_current_transfer WHERE ship_id = ?", self.ship.worldid):
 			waiting = True
 			self.current_transfer[res] = amount
 			Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)

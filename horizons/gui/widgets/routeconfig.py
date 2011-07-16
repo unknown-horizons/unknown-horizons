@@ -31,8 +31,8 @@ class RouteConfig(object):
 	Widget that allows configurating a ship's trading route
 	"""
 	dummy_icon_path = "content/gui/icons/buildmenu/outdated/dummy_btn.png"
-	buy_button_path = "content/gui/images/tabwidget/buysell_buy.png"
-	sell_button_path = "content/gui/images/tabwidget/buysell_sell.png"
+	buy_button_path = "content/gui/images/tabwidget/branch_to_ship.png"
+	sell_button_path = "content/gui/images/tabwidget/ship_to_branch.png"
 	MAX_ENTRIES = 6
 	MIN_ENTRIES = 2
 	def __init__(self, instance):
@@ -282,6 +282,7 @@ class RouteConfig(object):
 
 			entry.addChild(slot)
 			self.slots[entry][num] = slot
+			self.show_load_icon(slot)
 
 	def add_gui_entry(self, branch_office, resource_list = None):
 		vbox = self._gui.findChild(name="left_vbox")
@@ -339,8 +340,8 @@ class RouteConfig(object):
 		self.listbox = self._gui.findChild(name="branch_office_list")
 		self.listbox._setItems(list(self.branch_offices))
 
-		self.widgets=[]
-		self.slots={}
+		self.widgets = []
+		self.slots = {}
 		self.slots_per_entry = 3
 
 		resources = horizons.main.db.get_res_id_and_icon(True)
@@ -361,6 +362,19 @@ class RouteConfig(object):
 		self.start_button_set_active()
 		if self.instance.route.enabled:
 			self.start_button_set_inactive()
+
+		wait_at_unload_box = self._gui.findChild(name="wait_at_unload")
+		wait_at_unload_box.marked = self.instance.route.wait_at_unload
+		def toggle_wait_at_unload():
+			self.instance.route.wait_at_unload = not self.instance.route.wait_at_unload
+		wait_at_unload_box.capture(toggle_wait_at_unload)
+
+		wait_at_load_box = self._gui.findChild(name="wait_at_load")
+		wait_at_load_box.marked = self.instance.route.wait_at_load
+		def toggle_wait_at_load():
+			self.instance.route.wait_at_load = not self.instance.route.wait_at_load
+			print 'set to', self.instance.route.wait_at_load
+		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
 		  'cancelButton' : self.hide,
