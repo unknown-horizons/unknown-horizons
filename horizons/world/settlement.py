@@ -93,8 +93,6 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
 			   self.worldid, res, amount)
 
-		print 'save, set limit: ', self.inventory.limit
-
 	@classmethod
 	def load(cls, db, worldid, session):
 		self = cls.__new__(cls)
@@ -115,12 +113,6 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 
 		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):
 			self.produced_res[res] = amount
-
-		print 'load, set limit: ', self.inventory.limit
-		# load inventory after buildings, since buildings, specifically storages, determine
-		# the size of the settlement's inventory
-		#self.inventory.load(db, worldid)
-		#print 'load, set limit: ', self.inventory.limit
 
 		return self
 
