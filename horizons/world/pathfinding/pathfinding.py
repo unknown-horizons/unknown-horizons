@@ -153,11 +153,10 @@ class FindPath(object):
 			if not self.make_target_walkable:
 				dest_coords = dest_coords.intersection(self.path_nodes)
 
-		"""
-		from time import time
-		_a = _b = _c = _d = _e = _f = 0
-		l = []
-		"""
+		from heapq import heappush, heappop
+		heap = []
+		for coords, data in to_check.iteritems():
+			heappush(heap, (data[2], coords))
 
 		# pull dereferencing out of loop
 		path_nodes = self.path_nodes
@@ -167,25 +166,16 @@ class FindPath(object):
 		# loop until we have no more nodes to check
 		while to_check:
 
-			minimum = sys.maxint
-			cur_node_coords = None
-			cur_node_data = None
-
 			# find next node to check, which is the one with best rating
-			# optimization note: this is faster than min(to_check, key=lambda k : to_check[k][3])
-			# optimization note2: the values could be kept in a dict, or a structure
-			#					that can easily be sorted/minimumed by a value
-			#_a = time()
-			for (node_coords, node_data) in to_check.iteritems():
-				if node_data[2] < minimum:
-					minimum = node_data[2]
-					cur_node_coords = node_coords
-					cur_node_data = node_data
-			#_b = time()
+			(_, cur_node_coords) = heappop(heap)
+			cur_node_data = to_check[cur_node_coords]
 
 			# shortcuts:
 			x = cur_node_coords[0]
 			y = cur_node_coords[1]
+
+			# Profiling info: The if/else below uses half of the execution time.
+			#                 The for loop below that the other half. The rest is really insignifiant.
 
 			# find possible neighbors
 			# optimisation TODO: use data structures more suitable for contains-check
@@ -206,7 +196,6 @@ class FindPath(object):
 											 i in dest_coords ) and \
 											i not in checked and \
 											i not in blocked_coords ]
-			#_c = time()
 
 			for neighbor_node in neighbors:
 
@@ -216,15 +205,16 @@ class FindPath(object):
 					# save previous node, calc distance to neighbor_node
 					# and estimate from neighbor_node to destination
 					dist_to_here = cur_node_data[1] + path_nodes.get(cur_node_coords, 0)
-					dist_to_destination = destination.distance_to_tuple(neighbor_node)
+					total_dist_estimation = destination.distance_to_tuple(neighbor_node) + dist_to_here
 					to_check[neighbor_node] = (cur_node_coords,
 					                           dist_to_here,
-					                           dist_to_here + dist_to_destination )
+					                           total_dist_estimation)
+
+					heappush(heap, (total_dist_estimation, neighbor_node))
 
 				else:
 					# neighbor has been processed,
 					# check if current node provides a better path to this neighbor
-
 					distance_to_neighbor = cur_node_data[1] + path_nodes.get(cur_node_coords, 0)
 
 					neighbor = to_check[neighbor_node]
@@ -234,8 +224,6 @@ class FindPath(object):
 						neighbor = ( cur_node_coords, \
 							           distance_to_neighbor, \
 							           distance_to_neighbor + ( neighbor[2]-neighbor[1] ) )
-
-			#_d = time()
 
 
 			# done processing cur_node
@@ -253,21 +241,8 @@ class FindPath(object):
 					previous_node = checked[previous_node][0]
 
 				return path
-			#_e = time()
-
-			#l.append( (_b-_a, _c-_b, _d-_c, _e-_d )  )
 
 		else:
-			"""
-			res = [0,0,0,0]
-			for i in l:
-				res[0] += i[0]
-				res[1] += i[1]
-				res[2] += i[2]
-				res[3] += i[3]
-
-			print res
-			"""
 			return None
 
 
