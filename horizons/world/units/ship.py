@@ -20,6 +20,7 @@
 # ###################################################
 
 import weakref
+import copy
 from fife import fife
 
 import horizons.main
@@ -55,6 +56,11 @@ class ShipRoute(object):
 		self.current_waypoint = -1
 		self.enabled = False
 
+		self.wait_at_load = False # wait until every res has been loaded
+		self.wait_at_unload = False #  wait until every res could be unloaded
+
+		self.current_transfer = {} # used for partial unloading in combination with waiting
+
 	def append(self, branch_office):
 		self.waypoints.append({
 		  'branch_office' : branch_office,
@@ -81,22 +87,65 @@ class ShipRoute(object):
 
 	def on_route_bo_reached(self):
 		branch_office = self.get_location()['branch_office']
-		resource_list = self.get_location()['resource_list']
+		resource_list = self.current_transfer or self.get_location()['resource_list']
 		settlement = branch_office.settlement
 		# if ship and branch office have the same owner, the ship will
 		# load/unload resources without paying anything
 		if settlement.owner == self.ship.owner:
-			for res in resource_list:
-				amount = resource_list[res]
-				if amount > 0:
-					try:
-						amount = max(0, amount - self.ship.inventory._storage[res])
-					except KeyError:
-						pass
-					TransferResource (amount, res, branch_office, self.ship).execute(self.ship.session)
-				else:
-					TransferResource (-amount, res, self.ship, branch_office).execute(self.ship.session)
-		self.move_to_next_route_bo()
+			status = self._transer_resources(settlement, resource_list)
+			if (not status.settlement_has_enough_space_to_take_res and self.wait_at_unload) or \
+			   (not status.settlement_provides_enough_res and self.wait_at_load):
+				self.current_transfer = status.remaining_transfers
+				# retry
+				Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)
+			else:
+				self.current_transfer = None
+				self.move_to_next_route_bo()
+		else:
+			# TODO: trade with other players
+			self.move_to_next_route_bo()
+
+	def _transer_resources(self, settlement, resource_list):
+		"""Transfers resources to/from settlement according to list.
+		@return: TransferStatus instance
+		"""
+		class TransferStatus(object):
+			def __init__(self):
+				self.settlement_provides_enough_res = self.settlement_has_enough_space_to_take_res = True
+				self.remaining_transfers = {}
+		status = TransferStatus()
+		status.remaining_transfers = copy.copy(resource_list)
+
+		for res in resource_list:
+			amount = resource_list[res]
+			if amount == 0:
+				continue
+			if amount > 0:
+				#  load from settlement onto ship
+				if settlement.inventory[res] < amount: # not enough res
+					status.settlement_provides_enough_res = False
+					amount = settlement.inventory[res]
+
+				# check if ship has enough space is handled implicitly below
+
+				amount_transfered = settlement.transfer_to_storageholder(amount, res, self.ship)
+				status.remaining_transfers[res] -= amount_transfered
+
+			else:
+				# load from ship onto settlement
+				amount = -amount # use positive below
+
+				if self.ship.inventory[res] < amount: # check if ship has as much as planned
+					amount = self.ship.inventory[res]
+
+				if settlement.inventory.get_free_space_for(res) < amount: # too little space
+					status.settlement_has_enough_space_to_take_res = False
+					amount = settlement.inventory.get_free_space_for(res)
+
+				amount_transfered = self.ship.transfer_to_storageholder(amount, res, settlement)
+				status.remaining_transfers[res] += amount_transfered
+
+		return status
 
 	def on_ship_blocked(self):
 		# the ship was blocked while it was already moving so try again
@@ -134,19 +183,26 @@ class ShipRoute(object):
 		return self.waypoints[self.current_waypoint]
 
 	def enable(self):
-		self.enabled=True
+		self.enabled = True
 		self.move_to_next_route_bo()
 
 	def disable(self):
-		self.enabled=False
+		self.enabled = False
 		self.ship.stop()
 
 	def clear(self):
-		self.waypoints=[]
-		self.current_waypoint=-1
+		self.waypoints = []
+		self.current_waypoint = -1
+
+	@classmethod
+	def has_route(self, db, worldid):
+		"""Check if a savegame contains route information for a certain ship"""
+		return len(db("SELECT * FROM ship_route WHERE ship_id = ?", worldid)) != 0
 
 	def load(self, db):
-		enabled, self.current_waypoint = db("SELECT enabled, current_waypoint FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
+		enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload = \
+		       db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload " + \
+		          "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
 
 		query = "SELECT branch_office_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
 		offices_id = db(query, self.ship.worldid)
@@ -161,14 +217,27 @@ class ShipRoute(object):
 			  'resource_list' : resource_list
 			})
 
-		if enabled:
+		waiting = False
+		for res, amount in db("SELECT res, amount FROM ship_route_current_transfer WHERE ship_id = ?", self.worldid):
+			waiting = True
+			self.current_transfer[res] = amount
+			Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)
+
+		if enabled and not waiting:
 			self.current_waypoint -= 1
 			self.enable()
 
 	def save(self, db):
 		worldid = self.ship.worldid
-		db("INSERT INTO ship_route(ship_id, enabled, current_waypoint) VALUES(?, ?, ?)",
-		   worldid, self.enabled, self.current_waypoint)
+
+		db("INSERT INTO ship_route(ship_id, enabled, current_waypoint, wait_at_load, wait_at_unload) VALUES(?, ?, ?, ?, ?)",
+		   worldid, self.enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload)
+
+		if self.current_transfer:
+			for res, amount in self.current_transfer.iteritems():
+				db("INSERT INTO ship_route_current_transfer(ship_id, res, amount) VALUES(?, ?, ?)",
+				   worldid, res, amount);
+
 		for entry in self.waypoints:
 			index = self.waypoints.index(entry)
 			db("INSERT INTO ship_route_waypoint(ship_id, branch_office_id, waypoint_index) VALUES(?, ?, ?)",
@@ -211,7 +280,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
 
 	def create_route(self):
-		self.route=ShipRoute(self)
+		self.route = ShipRoute(self)
 
 	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
@@ -328,10 +397,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 		# if ship did not have route configured, do not add attribute
-		if len(db("SELECT * FROM ship_route WHERE ship_id = ?", self.worldid)) is 0:
-			return
-		self.create_route()
-		self.route.load(db)
+		if ShipRoute.has_route(db, worldid):
+			self.create_route()
+			self.route.load(db)
 
 	def find_nearby_ships(self, radius=15):
 		# TODO: Replace 15 with a distance dependant on the ship type and any
