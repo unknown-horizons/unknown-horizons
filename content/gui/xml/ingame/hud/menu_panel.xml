@@ -23,10 +23,10 @@
 		down_image="content/gui/icons/widgets/minimap/build_l_h.png" 
 		hover_image="content/gui/icons/widgets/minimap/build_l_h.png" 
 		is_focusable="0" tooltip="Build menu" />
-	<TooltipButton name="helpLink" size="32,32" position="129,31" 
-		up_image="content/gui/icons/widgets/minimap/help.png" 
-		down_image="content/gui/icons/widgets/minimap/help_h.png" 
-		hover_image="content/gui/icons/widgets/minimap/help_h.png" 
+	<TooltipButton name="helpLink" size="32,32" position="130,32"
+		up_image="content/gui/icons/widgets/minimap/diplomacy.png"
+		down_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
+		hover_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
 		tooltip="Help" />
 	<TooltipButton name="gameMenuButton" size="32,32" position="161,0" 
 		up_image="content/gui/icons/widgets/minimap/gamemenu.png" 

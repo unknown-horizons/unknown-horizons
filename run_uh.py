@@ -51,19 +51,19 @@ def find_uh_position():
 	"""Returns path, where uh is located"""
 	# first check around cur dir and sys.argv[0]
 	for i in (
-	  os.path.split(sys.argv[0])[0],
-	  '.', '..'
-	  ):
+		os.path.split(sys.argv[0])[0],
+		'.', '..'
+		):
 		i = os.path.realpath(i)
 		if os.path.exists( os.path.join(i, 'content')):
 			return i
 	else:
 		# also check system wide dirs
 		positions = (
-		  '/usr/share/games',
-		  '/usr/share',
-		  '/usr/local/share/games',
-		  '/usr/local/share'
+			'/usr/share/games',
+			'/usr/share',
+			'/usr/local/share/games',
+			'/usr/local/share'
 		)
 		for i in positions:
 			pos = os.path.join(i, 'unknown-horizons')
@@ -76,36 +76,36 @@ def get_option_parser():
 	from horizons.constants import VERSION
 	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
 	p.add_option("-d", "--debug", dest="debug", action="store_true", \
-	             default=False, help=_("Enable debug output to stderr and a logfile."))
+				       default=False, help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
-	             help=_("Specify the path to FIFE root directory."))
+				       help=_("Specify the path to FIFE root directory."))
 	p.add_option("--restore-settings", dest="restore_settings", action="store_true", \
-	             default=False, help=_("Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."))
+				       default=False, help=_("Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."))
 	p.add_option("--mp-master", dest="mp_master", metavar="<ip:port>", \
-	             help=_("Specify alternative multiplayer master server."))
+				       help=_("Specify alternative multiplayer master server."))
 	p.add_option("--mp-bind", dest="mp_bind", metavar="<ip:port>", \
-	             help=_("Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."))
+				       help=_("Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."))
 
 
 	start_uh_group = optparse.OptionGroup(p, _("Starting Unknown Horizons"))
 	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
-	             help=_("Starts <map>. <map> is the mapname."))
+				                    help=_("Starts <map>. <map> is the mapname."))
 	start_uh_group.add_option("--start-random-map", dest="start_random_map", action="store_true", \
-	             help=_("Starts a random map."))
+				                    help=_("Starts a random map."))
 	start_uh_group.add_option("--start-specific-random-map", dest="start_specific_random_map", \
-	             type="int", metavar="<seed>", help=_("Starts a random map with seed <seed>."))
+				                    type="int", metavar="<seed>", help=_("Starts a random map with seed <seed>."))
 	start_uh_group.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>", \
-	             help=_("Starts <scenario>. <scenario> is the scenarioname."))
+				                    help=_("Starts <scenario>. <scenario> is the scenarioname."))
 	start_uh_group.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>", \
-	             help=_("Starts <campaign>. <campaign> is the campaign name."))
+				                    help=_("Starts <campaign>. <campaign> is the campaign name."))
 	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
-	             default=False, help=_("Starts the development map without displaying the main menu."))
+				                    default=False, help=_("Starts the development map without displaying the main menu."))
 	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \
-	             help=_("Loads a saved game. <save> is the savegamename."))
+				                    help=_("Loads a saved game. <save> is the savegamename."))
 	start_uh_group.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true", \
-	             help=_("Loads the last quicksave."))
+				                    help=_("Loads the last quicksave."))
 	start_uh_group.add_option("--nature-seed", dest="nature_seed", type="int", \
-	             help=_("Sets the seed used to generate trees, fish, and other natural resources."))
+				                    help=_("Sets the seed used to generate trees, fish, and other natural resources."))
 	p.add_option_group(start_uh_group)
 
 	ai_group = optparse.OptionGroup(p, _("AI options"))
@@ -119,18 +119,18 @@ def get_option_parser():
 
 	dev_group = optparse.OptionGroup(p, _("Development options"))
 	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true", \
-	             default=False, help=_("Write debug output only to logfile, not to console. Implies -d."))
+				               default=False, help=_("Write debug output only to logfile, not to console. Implies -d."))
 	dev_group.add_option("--debug-module", action="append", dest="debug_module", \
-	             metavar="<module>", default=[], \
-	             help=_("Enable logging for a certain logging module (for developing only)."))
+				               metavar="<module>", default=[], \
+				               help=_("Enable logging for a certain logging module (for developing only)."))
 	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
-	             help=_("Writes log to <filename> instead of to the uh-userdir"))
+				               help=_("Writes log to <filename> instead of to the uh-userdir"))
 	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", action="store_true", \
-	             default=False, help=_("For internal use only."))
+				               default=False, help=_("For internal use only."))
 	dev_group.add_option("--profile", dest="profile", action="store_true", \
-	             default=False, help=_("Enable profiling (for developing only)."))
+				               default=False, help=_("Enable profiling (for developing only)."))
 	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true", \
-	             default=False, help=_("Enable the string previewer tool for scenario writers"))
+				               default=False, help=_("Enable the string previewer tool for scenario writers"))
 	p.add_option_group(dev_group)
 
 	return p
@@ -192,6 +192,16 @@ def main():
 	# NOTE: this might cause a program restart
 	init_environment()
 
+	# test if required libs can be found or display specific error message
+	try:
+		import yaml
+	except ImportError:
+		headline = _(u"Error: Unable to find required libraries")
+		msg = _(u"We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + u"\n" + \
+		    _(u"Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\".")
+		standalone_error_popup(headline, msg)
+		exit(1)
+
 	#start UH
 	import horizons.main
 	ret = True
@@ -208,7 +218,7 @@ def main():
 		outfilename = tempfile.mkstemp(text = True)[1]
 		print 'Starting in profile mode. Writing output to:', outfilename
 		profile.runctx('horizons.main.start(options)', globals(), locals(), \
-		               outfilename)
+								   outfilename)
 		print 'Program ended. Profiling output:', outfilename
 
 	if ret:
@@ -239,7 +249,7 @@ def parse_args():
 			logfilename = options.logfile
 		else:
 			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
-			                                          time.strftime("%y-%m-%d_%H-%M-%S"))
+												         time.strftime("%y-%m-%d_%H-%M-%S"))
 		print 'Logging to %s' % logfilename
 		# create logfile
 		logfile = open(logfilename, 'w')
@@ -305,7 +315,7 @@ def init_environment():
 	if options.fife_path and not options.fife_in_library_path:
 		# we got an explicit path, search there
 		# (but skip on second run, else we've got an endless loop)
-		find_FIFE(options.fife_path) 
+		find_FIFE(options.fife_path)
 
 	#find FIFE and setup search paths, if it can't be imported yet
 	setup_fife(sys.argv)
@@ -337,9 +347,9 @@ def get_fife_path(fife_custom_path=None):
 		except (ImportError, AttributeError):
 		# no config, try frequently used paths
 			_paths += [ os.path.join(a, b, c) for \
-			                         a in ('.', '..', '../..') for \
-			                            b in ('.', 'fife', 'FIFE', 'Fife') for \
-			                               c in ('.', 'trunk') ]
+									a in ('.', '..', '../..') for \
+									b in ('.', 'fife', 'FIFE', 'Fife') for \
+									c in ('.', 'trunk') ]
 
 	fife_path = None
 	for p in _paths:
@@ -378,7 +388,7 @@ def check_path_for_fife(path):
 	really a FIFE dir, but it generally works."""
 	absolute_path = os.path.abspath(path)
 	for pe in [ os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/python/fife',  \
-	                                                     'engine/python/fife/extensions') ]:
+				                                               'engine/python/fife/extensions') ]:
 		if not os.path.exists(pe):
 			return False
 	return True
@@ -393,8 +403,8 @@ def find_FIFE(fife_custom_path=None):
 	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
 		[ os.path.abspath(fife_path + '/' + a) for  \
 			a in ('ext/minizip', 'ext/install/lib') ] + \
-		  (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if \
-			 os.environ.has_key('LD_LIBRARY_PATH') else []))
+		(os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if \
+		 os.environ.has_key('LD_LIBRARY_PATH') else []))
 
 	log().debug("Restarting with proper LD_LIBRARY_PATH...")
 	log_paths()
@@ -427,6 +437,41 @@ def log_sys_info():
 	"""Prints debug info about the current system to log"""
 	log().debug("Python version: %s", sys.version_info)
 	log().debug("Plattform: %s", platform.platform())
+
+
+def standalone_error_popup(headline, msg):
+	"""Display an error via gui.
+	Use only for errors that make 'import horizons.main' fail."""
+	from fife.extensions import pychan
+	from fife import fife
+
+	e = fife.Engine()
+	e.getSettings().setDefaultFontPath("content/fonts/LinLibertine_Re-4.4.1.ttf")
+	e.init()
+
+	pychan.init(e)
+	pychan.loadFonts("content/fonts/libertine.fontdef")
+
+	# hack for accessing this in do_quit (global does't work as the variables here are local)
+	class Quit(object):
+		do = False
+
+	def do_quit():
+		Quit.do=True
+
+	dlg = pychan.loadXML("content/gui/xml/startup_error_popup.xml")
+	# can't translate as translations are only set up later
+	dlg.findChild(name="headline").text = headline
+	dlg.findChild(name="msg").text = msg
+	dlg.mapEvents({'quit_button': do_quit})
+	dlg.show()
+
+
+	e.initializePumping()
+	while not Quit.do:
+		e.pump()
+	e.finalizePumping()
+
 
 
 if __name__ == '__main__':

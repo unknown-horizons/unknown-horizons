@@ -37,6 +37,7 @@ import os.path
 import random
 import threading
 import thread # for thread.error raised by threading.Lock.release
+import shutil
 
 from fife import fife as fife_module
 
@@ -301,7 +302,9 @@ def _start_dev_map(ai_players, human_ai):
 
 def _start_map(map_name, ai_players, human_ai, is_scenario = False, campaign = None):
 	"""Start a map specified by user
+	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
+	# check for exact/partial matches in map list first
 	maps = SavegameManager.get_available_scenarios() if is_scenario else SavegameManager.get_maps()
 	map_file = None
 	for i in xrange(0, len(maps[1])):
@@ -317,8 +320,12 @@ def _start_map(map_name, ai_players, human_ai, is_scenario = False, campaign = N
 			else:
 				map_file = maps[0][i]
 	if map_file is None:
-		print _("Error: Cannot find map \"%s\".") % map_name
-		return False
+		# not a map name, check for path to file or fail
+		if os.path.exists(map_name):
+			map_file = map_name
+		else:
+			print _("Error: Cannot find map \"%s\".") % map_name
+			return False
 	if len(map_file.splitlines()) > 1:
 		print _("Error: Found multiple matches: ")
 		for match in map_file.splitlines():
@@ -336,32 +343,61 @@ def _start_campaign(campaign_name):
 	"""Finds the first scenario in this campaign and
 	loads it.
 	@return: bool, whether loading succeded"""
+	if os.path.exists(campaign_name):
+		# a file was specified. In order to make sure everything works properly,
+		# we need to copy the file over to the UH campaign directory.
+		# This is not very clean, but it's safe.
+
+		if not campaign_name.endswith(".yaml"):
+			print _("Error: campaign filenames have to end in \".yaml\".")
+			return False
+
+		# check if the user specified a file in the UH campaign dir
+		campaign_basename = os.path.basename( campaign_name )
+		path_in_campaign_dir = os.path.join(SavegameManager.campaigns_dir, campaign_basename)
+		if not (os.path.exists(path_in_campaign_dir) and \
+		        os.path.samefile(campaign_name, path_in_campaign_dir)):
+			print _("Due to technical reasons, the campaign file will be copied to the UH campaign directory (%s).") % SavegameManager.campaigns_dir + \
+			      "\n" + _("This means that changes in the file you specified will not apply to the game directly.") + \
+			      _("To see the changes, either always start UH with the current arguments or edit the file %s.") % path_in_campaign_dir
+			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
+		# use campaign file name below
+		campaign_name = os.path.splitext( campaign_basename )[0]
 	campaign = SavegameManager.get_campaign_info(name = campaign_name)
+	if not campaign:
+		print _("Error: Cannot find campaign \"%s\".") % campaign_name
+		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
 		return False
 	return _start_map(scenarios[0], 0, False, is_scenario = True, campaign = {'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]})
 
-def _load_map(savegamename, ai_players, human_ai):
-	"""Load a map specified by user
+def _load_map(savegame, ai_players, human_ai):
+	"""Load a map specified by user.
+	@param savegame: eiter the displayname of a savegame or a path to a savegame
 	@return: bool, whether loading succeded"""
+	# first check for partial or exact matches in the normal savegame list
 	saves = SavegameManager.get_saves()
 	map_file = None
 	for i in xrange(0, len(saves[1])):
 		# exact match
-		if saves[1][i] == savegamename:
+		if saves[1][i] == savegame:
 			map_file = saves[0][i]
 			break
 		# check for partial match
-		if saves[1][i].startswith(savegamename):
+		if saves[1][i].startswith(savegame):
 			if map_file is not None:
 				# multiple matches, collect all for output
 				map_file += u'\n' + saves[0][i]
 			else:
 				map_file = saves[0][i]
 	if map_file is None:
-		print _("Error: Cannot find savegame \"%s\".") % savegamename
-		return False
+		# not a savegame, check for path to file or fail
+		if os.path.exists(savegame):
+			map_file = savegame
+		else:
+			print _("Error: Cannot find savegame \"%s\".") % savegame
+			return False
 	if len(map_file.splitlines()) > 1:
 		print _("Error: Found multiple matches: ")
 		for match in map_file.splitlines():

@@ -220,7 +220,10 @@ STYLES= {
 		},
 		'Label' : {
 			'font' : 'libertine_headline'
-		}
+		},
+		# NOTE: This is a hack to add padding attributs to boxes of this style
+		('Container','HBox','VBox') : {
+		},
 },
 
 'book': { # style for book widgets

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Container name="" size="800,600" position="0,0">
+<!--
+The notice bg would look nice, but the text is too big for it
+<Icon image="content/gui/images/background/notice.png" position="230,200"/>
+-->
+
+<VBox position="250,210" padding="10" base_color="255, 255, 255">
+	<Label name="headline" text="" font="libertine_14_black" min_size="300,0"/>
+	<Icon image="content/gui/images/background/hr.png" />
+	<Label name="msg" text="" wrap_text="1" min_size="330,140" max_size="330,140" font="libertine_14_black"/>
+	<Button name="quit_button" text="Quit" font="libertine_14_black" base_color="200,200,200"/>
+</VBox>
+
+</Container>
