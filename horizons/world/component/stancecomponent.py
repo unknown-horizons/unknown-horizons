@@ -169,9 +169,9 @@ class LimitedMoveStance(StanceComponent):
 			not self.instance.is_attacking():
 				try:
 					self.instance.move(self.return_position)
-					self.state = 'move_back'
 				except MoveNotPossible:
-					pass
+					self.instance.move(Circle(self.return_position, self.stance_radius))
+				self.state = 'move_back'
 
 	def get_target(self, radius):
 		"""
@@ -183,7 +183,7 @@ class LimitedMoveStance(StanceComponent):
 		if not enemies:
 			return None
 
-		return sorted(enemies, key = lambda e: self.instance.position.distance(e.position))[0]
+		return min(enemies, key = lambda e: self.instance.position.distance(e.position))
 
 class AggressiveStance(LimitedMoveStance):
 	"""
@@ -237,7 +237,7 @@ class FleeStance(StanceComponent):
 		unit = self.get_approaching_unit()
 		if unit:
 			try:
-				self.instance.move(Annulus(unit.position.center(), unit._max_range, self.lookout_distance + 1))
+				self.instance.move(Annulus(unit.position.center(), unit._max_range + 1, unit._max_range + 2))
 				self.state = 'flee'
 			except MoveNotPossible:
 				pass
@@ -252,10 +252,13 @@ class FleeStance(StanceComponent):
 			self.act_idle()
 
 	def get_approaching_unit(self):
+		"""
+		Gets the closest unit that can fire to instance
+		"""
 		enemies = [u for u in self.instance.session.world.get_ships(self.instance.position.center(), self.lookout_distance) \
 			if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
 
 		if not enemies:
 			return None
 
-		return sorted(enemies, key = lambda e: self.instance.position.distance(e.position) + e._max_range)[0]
+		return min(enemies, key = lambda e: self.instance.position.distance(e.position) + e._max_range)

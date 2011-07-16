@@ -249,10 +249,8 @@ class WeaponHolder(object):
 		Delays movement for a number of ticks.
 		Used when shooting in specialized unit code.
 		"""
-		Scheduler().rem_call(self, self._move_tick)
-		Scheduler().add_new_object(self._move_tick, self, ticks)
-		
-		
+		if Scheduler().rem_call(self, self._move_tick):
+			Scheduler().add_new_object(self._move_tick, self, ticks)
 
 	def fire_all_weapons(self, dest, rotated = False):
 		"""
@@ -291,6 +289,9 @@ class WeaponHolder(object):
 				weapon.fire(destination, self.position.center())
 				dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 				dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
+
+	def get_attack_target(self):
+		return self._target
 
 	def save(self, db):
 		super(WeaponHolder, self).save(db)
