@@ -328,7 +328,7 @@ class MovingWeaponHolder(WeaponHolder):
 		self.add_component('none', NoneStance)
 		self.add_component('flee', FleeStance)
 		self.stance = 'hold_ground'
-		self.attack_actions = ['attack_left_as_huker0', 'attack_right_as_huker0']
+		self.attack_actions = ['fire_left_as_frigate0', 'fire_right_as_frigate0']
 
 	def _stance_tick(self):
 		"""
