@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-18 00:39+0200\n"
+"PO-Revision-Date: 2011-07-18 00:44+0200\n"
 "Last-Translator: Quentin <lawnask@legtux.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1725,7 +1725,7 @@ msgstr "Briqueterie"
 
 #: sqlite/Building
 msgid "Butchery"
-msgstr ""
+msgstr "Boucherie"
 
 #: sqlite/Building
 msgid "Cattle Run"
@@ -1749,7 +1749,7 @@ msgstr "Distillerie"
 
 #: sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Médecin"
 
 # Building
 #: sqlite/Building
@@ -1766,7 +1766,7 @@ msgstr "Tente du pêcheur"
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr ""
+msgstr "Herbier"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -1806,7 +1806,7 @@ msgstr "Pavillon"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Porcherie"
 
 # Building
 #: sqlite/Building
@@ -1853,11 +1853,11 @@ msgstr "Tente abîmée"
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Champ de tabac"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr ""
+msgstr "marchand de tabac"
 
 #: sqlite/Building
 msgid "Toolmaker"
