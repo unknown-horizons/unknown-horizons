@@ -37,6 +37,7 @@ class ResourceManager(WorldObject):
 		self.settlement_manager = settlement_manager
 		self._data = {} # {(resource_id, building_id): SingleResourceManager, ...}
 		self._chain = {} # {resource_id: SimpleProductionChainSubtreeChoice, ...}
+		self._low_priority_requests = {} # {(quota_holder, resource_id): amount, ...}
 
 	def save(self, db):
 		super(ResourceManager, self).save(db)
@@ -107,21 +108,43 @@ class ResourceManager(WorldObject):
 	def request_deep_quota_change(self, quota_holder, priority, resource_id, amount):
 		if resource_id not in self._chain:
 			self._chain[resource_id] = self._make_chain(resource_id)
-		self._chain[resource_id].request_quota_change(quota_holder, amount, priority)
+		actual_amount = self._chain[resource_id].request_quota_change(quota_holder, amount, priority)
+		if not priority:
+			self._low_priority_requests[(quota_holder, resource_id)] = actual_amount
+		if actual_amount + 1e-9 < amount:
+			# release excess production that can't be used
+			self._chain[resource_id].request_quota_change(quota_holder, actual_amount, priority)
+		return actual_amount
 
 	def get_deep_quota(self, quota_holder, resource_id):
 		if resource_id not in self._chain:
 			self._chain[resource_id] = self._make_chain(resource_id)
 		return self._chain[resource_id].get_quota(quota_holder)
 
+	def replay_deep_low_priority_requests(self):
+		for (quota_holder, resource_id), amount in self._low_priority_requests.iteritems():
+			self.request_deep_quota_change(quota_holder, False, resource_id, amount)
+
+	def get_total_export(self, resource_id):
+		total = 0
+		for resource_manager in self._data.itervalues():
+			if resource_manager.resource_id == resource_id:
+				total += resource_manager.get_total_export()
+		return total
+
 	def __str__(self):
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
 		for resource_manager in self._data.itervalues():
+			res = resource_manager.resource_id
+			if res not in [RES.FOOD_ID, RES.TEXTILE_ID, RES.BRICKS_ID]:
+				continue
 			result += '\n' + resource_manager.__str__()
 		return result
 
 class SingleResourceManager(WorldObject):
 	epsilon = 1e-7 # epsilon for avoiding problems with miniscule values
+	virtual_resources = set([RES.FISH_ID, RES.RAW_CLAY_ID, RES.RAW_IRON_ID]) # resources that are not actually produced by player owned buildings
+	virtual_production = 9999 # pretend that virtual resources are always produced in this amount (should be larger than actually needed)
 
 	def __init__(self, settlement_manager, resource_id, building_id):
 		super(SingleResourceManager, self).__init__()
@@ -159,6 +182,8 @@ class SingleResourceManager(WorldObject):
 		return self
 
 	def _get_current_production(self):
+		if self.resource_id in self.virtual_resources:
+			return self.virtual_production
 		buildings = self.settlement_manager.settlement.get_buildings_by_id(self.building_id)
 		return sum(AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id) for building in buildings)
 
@@ -231,6 +256,10 @@ class SingleResourceManager(WorldObject):
 			self.quotas[quota_holder] = (self.quotas[quota_holder][0] + change, priority)
 			if not priority:
 				self.low_priority += change
+
+	def get_total_export(self):
+		# this is accurate for now because all trade is set to low priority and nothing else is
+		return self.low_priority
 
 	def __str__(self):
 		result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (self.resource_id, self.available, self.total, self.low_priority)

@@ -183,6 +183,9 @@ class SettlementManager(WorldObject):
 	def get_resource_import(self, resource_id):
 		return self.trade_manager.get_total_import(resource_id)
 
+	def get_resource_export(self, resource_id):
+		return self.resource_manager.get_total_export(resource_id)
+
 	def get_resident_resource_usage(self, resource_id):
 		if resource_id == RES.BRICKS_ID:
 			return 0.001 # dummy value to cause brick production to be built
@@ -313,9 +316,10 @@ class SettlementManager(WorldObject):
 			usage = settlement_manager.get_resident_resource_usage(resource_id) * self.production_level_multiplier
 			production = settlement_manager.get_resource_production(resource_id)
 			resource_import = settlement_manager.get_resource_import(resource_id)
+			resource_export = settlement_manager.get_resource_export(resource_id)
 			total += usage
 			if settlement_manager is not self:
-				total -= production - resource_import
+				total -= production + resource_export - resource_import
 		return max(0.0, total)
 
 	def need_more_storage(self):
@@ -378,6 +382,7 @@ class SettlementManager(WorldObject):
 
 		self.trade_manager.finalize_requests()
 		self.trade_manager.organize_shipping()
+		self.resource_manager.replay_deep_low_priority_requests()
 
 	def _general_tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
