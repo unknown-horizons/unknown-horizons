@@ -482,7 +482,7 @@ class VillageBuilder(AreaBuilder):
 		""" assign (potential) residences to village producers to know which of the producers should be built """
 		self.producer_assignment = {} # {purpose: {(x,y): [(x,y), ...]}}
 		purposes = [BUILDING_PURPOSE.PAVILION, BUILDING_PURPOSE.VILLAGE_SCHOOL, BUILDING_PURPOSE.TAVERN]
-		residence_positions = sorted(set([builder.position for (purpose, builder, _) in self.plan.itervalues() if purpose in [BUILDING_PURPOSE.UNUSED_RESIDENCE, BUILDING_PURPOSE.UNUSED_RESIDENCE]]))
+		residence_positions = sorted(set([builder.position for (purpose, builder, _) in self.plan.itervalues() if purpose in [BUILDING_PURPOSE.UNUSED_RESIDENCE, BUILDING_PURPOSE.RESIDENCE]]))
 		residence_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
 		max_capacity = 22
 
