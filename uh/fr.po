@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-18 00:44+0200\n"
+"PO-Revision-Date: 2011-07-18 01:07+0200\n"
 "Last-Translator: Quentin <lawnask@legtux.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -601,12 +601,17 @@ msgid "Charcoal burning: Burns a lot of boards."
 msgstr "Charbonnier : Produit du charbon de bois."
 
 #: horizons/i18n/guitranslations.py:81
+#, fuzzy
 msgid "Doctor: Treats diseases. Consumes herbs."
 msgstr ""
+"Médecin : traite les maladies. Consommes des herbes / plantes médicinales"
 
 #: horizons/i18n/guitranslations.py:82
+#, fuzzy
 msgid "Herbary: Produces herbs. Needs a farm."
 msgstr ""
+"herboristerie : Produit des herbes / plantes médicinales. Nécessite une "
+"ferme."
 
 # I think it's good like that
 #: horizons/i18n/guitranslations.py:83
@@ -795,11 +800,11 @@ msgstr "Lire les pages suiv."
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Scénarios disponibles"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Scenario description"
-msgstr ""
+msgstr "Description du scénario"
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
@@ -807,7 +812,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Choisir ce scénario"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "Exit"
@@ -1375,7 +1380,7 @@ msgstr "Satisfaction"
 
 #: horizons/i18n/guitranslations.py:346 horizons/i18n/guitranslations.py:351
 msgid "Paid taxes"
-msgstr "Taxes payées"
+msgstr "Impôts payées"
 
 #: horizons/i18n/guitranslations.py:348 horizons/i18n/guitranslations.py:349
 msgid "Residents"
@@ -1766,7 +1771,7 @@ msgstr "Tente du pêcheur"
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr "Herbier"
+msgstr "herboristerie"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -2063,8 +2068,9 @@ msgid "raw clay"
 msgstr "argile brute"
 
 #: sqlite/Resources
+#, fuzzy
 msgid "raw herbs"
-msgstr "herbes brutes"
+msgstr "herbes brutes / plante médicinale brut"
 
 #: sqlite/Resources
 msgid "raw iron"
