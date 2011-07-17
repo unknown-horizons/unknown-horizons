@@ -35,12 +35,13 @@ class ResourceManager(WorldObject):
 
 	def __init(self, settlement_manager):
 		self.settlement_manager = settlement_manager
-		self.data = {} # (resource_id, building_id): SingleResourceManager
+		self._data = {} # {(resource_id, building_id): SingleResourceManager, ...}
+		self._chain = {} # {resource_id: SimpleProductionChainSubtreeChoice, ...}
 
 	def save(self, db):
 		super(ResourceManager, self).save(db)
 		db("INSERT INTO ai_resource_manager(rowid, settlement_manager) VALUES(?, ?)", self.worldid, self.settlement_manager.worldid)
-		for resource_manager in self.data.itervalues():
+		for resource_manager in self._data.itervalues():
 			resource_manager.save(db, self.worldid)
 
 	def _load(self, db, settlement_manager):
@@ -48,7 +49,7 @@ class ResourceManager(WorldObject):
 		super(ResourceManager, self).load(db, worldid)
 		self.__init(settlement_manager)
 		for db_row in db("SELECT rowid, resource_id, building_id FROM ai_single_resource_manager WHERE resource_manager = ?", worldid):
-			self.data[(db_row[1], db_row[2])] = SingleResourceManager.load(db, settlement_manager, db_row[0])
+			self._data[(db_row[1], db_row[2])] = SingleResourceManager.load(db, settlement_manager, db_row[0])
 
 	@classmethod
 	def load(cls, db, settlement_manager):
@@ -56,25 +57,66 @@ class ResourceManager(WorldObject):
 		self._load(db, settlement_manager)
 		return self
 
+	def _get_chain(self, resource_id, resource_producer, production_ratio):
+		""" Returns None or SimpleProductionChainSubtreeChoice depending on the number of options """
+		options = []
+		if resource_id in resource_producer:
+			for production_line, abstract_building in resource_producer[resource_id]:
+				possible = True
+				sources = []
+				for consumed_resource, amount in production_line.consumed_res.iteritems():
+					next_production_ratio = abs(production_ratio * amount / production_line.produced_res[resource_id])
+					subtree = self._get_chain(consumed_resource, resource_producer, next_production_ratio)
+					if not subtree:
+						possible = False
+						break
+					sources.append(subtree)
+				if possible:
+					options.append(SimpleProductionChainSubtree(self, resource_id, production_line, abstract_building, sources, production_ratio))
+		if not options:
+			return None
+		return SimpleProductionChainSubtreeChoice(options)
+
+	def _make_chain(self, resource_id):
+		resource_producer = {}
+		for abstract_building in AbstractBuilding.buildings.itervalues():
+			for resource, production_line in abstract_building.lines.iteritems():
+				if resource not in resource_producer:
+					resource_producer[resource] = []
+				resource_producer[resource].append((production_line, abstract_building))
+		chain = self._get_chain(resource_id, resource_producer, 1.0)
+		chain.assign_identifier('')
+		return chain
+
 	def refresh(self):
-		for resource_manager in self.data.itervalues():
+		for resource_manager in self._data.itervalues():
 			resource_manager.refresh()
 
 	def request_quota_change(self, quota_holder, priority, resource_id, building_id, amount):
 		key = (resource_id, building_id)
-		if key not in self.data:
-			self.data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
-		self.data[key].request_quota_change(quota_holder, priority, amount)
+		if key not in self._data:
+			self._data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
+		self._data[key].request_quota_change(quota_holder, priority, amount)
 
 	def get_quota(self, quota_holder, resource_id, building_id):
 		key = (resource_id, building_id)
-		if key not in self.data:
-			self.data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
-		return self.data[key].get_quota(quota_holder)
+		if key not in self._data:
+			self._data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
+		return self._data[key].get_quota(quota_holder)
+
+	def request_deep_quota_change(self, quota_holder, priority, resource_id, amount):
+		if resource_id not in self._chain:
+			self._chain[resource_id] = self._make_chain(resource_id)
+		self._chain[resource_id].request_quota_change(quota_holder, amount, priority)
+
+	def get_deep_quota(self, quota_holder, resource_id):
+		if resource_id not in self._chain:
+			self._chain[resource_id] = self._make_chain(resource_id)
+		return self._chain[resource_id].get_quota(quota_holder)
 
 	def __str__(self):
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
-		for resource_manager in self.data.itervalues():
+		for resource_manager in self._data.itervalues():
 			result += '\n' + resource_manager.__str__()
 		return result
 
@@ -116,36 +158,9 @@ class SingleResourceManager(WorldObject):
 		self._load(db, settlement_manager, worldid)
 		return self
 
-	def _get_hackish_production(self, building_id, resource_id):
-		buildings = self.settlement_manager.settlement.get_buildings_by_id(building_id)
-		if not buildings:
-			return 0.0
-		return len(buildings) * AbstractBuilding.buildings[buildings[0].id].get_production_level(buildings[0], resource_id)
-
 	def _get_current_production(self):
 		buildings = self.settlement_manager.settlement.get_buildings_by_id(self.building_id)
-		if not buildings:
-			return 0.0
-		total = 0.0
-		if self.resource_id == RES.FOOD_ID and self.building_id == BUILDINGS.FARM_CLASS:
-			# TODO: make this block of code work in a better way
-			# return the production of the potato fields because the farm is not the limiting factor
-			return self._get_hackish_production(BUILDINGS.POTATO_FIELD_CLASS, RES.POTATOES_ID)
-		elif self.resource_id == RES.WOOL_ID:
-			# TODO: same as above
-			return self._get_hackish_production(BUILDINGS.PASTURE_CLASS, RES.LAMB_WOOL_ID)
-		elif self.resource_id == RES.TEXTILE_ID:
-			# TODO: same as above
-			wool = self._get_hackish_production(BUILDINGS.PASTURE_CLASS, RES.LAMB_WOOL_ID)
-			textile = self._get_hackish_production(BUILDINGS.WEAVER_CLASS, RES.TEXTILE_ID)
-			return min(wool, textile)
-		elif self.resource_id == RES.SUGAR_ID and self.building_id == BUILDINGS.FARM_CLASS:
-			# TODO: same as above
-			return self._get_hackish_production(BUILDINGS.SUGARCANE_FIELD_CLASS, RES.RAW_SUGAR_ID)
-		else:
-			for building in buildings:
-				total += AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id)
-		return total
+		return sum(AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id) for building in buildings)
 
 	def refresh(self):
 		currently_used = sum(zip(*self.quotas.itervalues())[0])
@@ -202,11 +217,11 @@ class SingleResourceManager(WorldObject):
 				new_low_priority = max(0.0, self.low_priority - (amount - self.quotas[quota_holder][0] - self.available))
 				multiplier = 0.0 if new_low_priority < self.epsilon else new_low_priority / self.low_priority
 				assert 0.0 <= multiplier < 1.0
-				for quota_holder, (quota, priority) in self.quotas.iteritems():
-					if quota > self.epsilon and not priority:
-						self.quotas[quota_holder] = (quota * multiplier, priority)
-					elif not priority:
-						self.quotas[quota_holder] = (0.0, priority)
+				for other_quota_holder, (quota, other_priority) in self.quotas.iteritems():
+					if quota > self.epsilon and not other_priority:
+						self.quotas[other_quota_holder] = (quota * multiplier, other_priority)
+					elif not other_priority:
+						self.quotas[other_quota_holder] = (0.0, other_priority)
 				self.available += self.low_priority - new_low_priority
 				self.low_priority = new_low_priority
 
@@ -218,10 +233,67 @@ class SingleResourceManager(WorldObject):
 				self.low_priority += change
 
 	def __str__(self):
-		result = 'Resource %d production %.5f/%.5f' % (self.resource_id, self.available, self.total)
+		result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (self.resource_id, self.available, self.total, self.low_priority)
 		for quota_holder, (quota, priority) in self.quotas.iteritems():
 			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)
 		return result
 
+class SimpleProductionChainSubtreeChoice(object):
+	def __init__(self, options):
+		self.options = options
+		self.resource_id = options[0].resource_id
+
+	def assign_identifier(self, prefix):
+		self.identifier = prefix + ('/choice' if len(self.options) > 1 else '')
+		for option in self.options:
+			option.assign_identifier(self.identifier)
+
+	def request_quota_change(self, quota_holder, amount, priority):
+		"""
+		Reserves currently available production and imports from other islands if allowed
+		Returns the total amount it can reserve or import
+		"""
+		total_reserved = 0.0
+		for option in self.options:
+			total_reserved += option.request_quota_change(quota_holder, max(0.0, amount - total_reserved), priority)
+		return total_reserved
+
+	def get_quota(self, quota_holder):
+		return sum(option.get_quota(quota_holder) for option in self.options)
+
+class SimpleProductionChainSubtree:
+	def __init__(self, resource_manager, resource_id, production_line, abstract_building, children, production_ratio):
+		self.resource_manager = resource_manager
+		self.resource_id = resource_id
+		self.production_line = production_line
+		self.abstract_building = abstract_building
+		self.children = children
+		self.production_ratio = production_ratio
+
+	def assign_identifier(self, prefix):
+		self.identifier = '%s/%d,%d' % (prefix, self.resource_id, self.abstract_building.id)
+		for child in self.children:
+			child.assign_identifier(self.identifier)
+
+	def request_quota_change(self, quota_holder, amount, priority):
+		"""
+		Reserves currently available production and imports from other islands if allowed
+		Returns the total amount it can reserve or import
+		"""
+		total_reserved = amount
+		for child in self.children:
+			total_reserved = min(total_reserved, child.request_quota_change(quota_holder, amount, priority))
+
+		self.resource_manager.request_quota_change(quota_holder + self.identifier, priority, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
+		return min(total_reserved, self.resource_manager.get_quota(quota_holder + self.identifier, self.resource_id, self.abstract_building.id) / self.production_ratio)
+
+	def get_quota(self, quota_holder):
+		root_quota = self.resource_manager.get_quota(quota_holder + self.identifier, self.resource_id, self.abstract_building.id) / self.production_ratio
+		if self.children:
+			return min(root_quota, min(child.get_quota(quota_holder) for child in self.children))
+		return root_quota
+
 decorators.bind_all(ResourceManager)
 decorators.bind_all(SingleResourceManager)
+decorators.bind_all(SimpleProductionChainSubtreeChoice)
+decorators.bind_all(SimpleProductionChainSubtree)

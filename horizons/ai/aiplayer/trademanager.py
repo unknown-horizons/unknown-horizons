@@ -229,9 +229,8 @@ class SingleResourceTradeManager(WorldObject):
 		for settlement_manager in self.settlement_manager.owner.settlement_managers:
 			if self.settlement_manager is not settlement_manager:
 				resource_manager = settlement_manager.resource_manager
-				for building_id in self.building_ids:
-					resource_manager.request_quota_change(self.identifier, False, self.resource_id, building_id, 100)
-					total += resource_manager.get_quota(self.identifier, self.resource_id, building_id)
+				resource_manager.request_deep_quota_change(self.identifier, False, self.resource_id, 100)
+				total += resource_manager.get_deep_quota(self.identifier, self.resource_id)
 		return total
 
 	def refresh(self):
@@ -254,19 +253,17 @@ class SingleResourceTradeManager(WorldObject):
 		for settlement_manager in self.settlement_manager.owner.settlement_managers:
 			if self.settlement_manager != settlement_manager:
 				resource_manager = settlement_manager.resource_manager
-				for building_id in self.building_ids:
-					amount = resource_manager.get_quota(self.identifier, self.resource_id, building_id)
-					options.append((amount, building_id, resource_manager.worldid, resource_manager, settlement_manager))
+				amount = resource_manager.get_deep_quota(self.identifier, self.resource_id)
+				options.append((amount, resource_manager.worldid, resource_manager, settlement_manager))
 		options.sort(reverse = True)
 
 		self.partners = defaultdict(lambda: 0.0)
 		needed_amount = self.total - self.available
-		for amount, building_id, _, resource_manager, settlement_manager in options:
+		for amount, _, resource_manager, settlement_manager in options:
 			if needed_amount < 1e-9:
 				break
 			if amount > needed_amount:
-				resource_manager.request_quota_change(self.identifier, False, self.resource_id, building_id, needed_amount)
-				#print resource_manager.data[(self.resource_id, building_id)]
+				resource_manager.request_deep_quota_change(self.identifier, False, self.resource_id, needed_amount)
 				self.partners[settlement_manager.worldid] += needed_amount
 				needed_amount = 0
 			else:

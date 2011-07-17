@@ -263,15 +263,15 @@ class ProductionChainSubtree:
 		for child in self.children:
 			result = child.build(amount)
 			if result == BUILD_RESULT.ALL_BUILT:
-				continue # build another child
+				continue # build another child or build this building
 			elif result == BUILD_RESULT.NEED_PARENT_FIRST:
 				break # parent building has to be built before child (example: farm before field)
-			elif result != BUILD_RESULT.OK:
-				return result # error
+			else:
+				return result # an error or successful building
 
 		if result == BUILD_RESULT.NEED_PARENT_FIRST or self.need_more_buildings(amount):
 			if not self.settlement_manager.feeder_island and len(self.settlement_manager.owner.settlement_managers) > 1:
-				if self.resource_id == RES.FOOD_ID or self.resource_id == RES.TEXTILE_ID or self.resource_id == RES.LIQUOR_ID:
+				if self.resource_id == RES.FOOD_ID:
 					return BUILD_RESULT.ALL_BUILT # hack to force some resources to be produced on a feeder island
 
 			# build a building
@@ -291,7 +291,7 @@ class ProductionChainSubtree:
 			total_reserved = min(total_reserved, child.reserve(amount, may_import))
 
 		self.resource_manager.request_quota_change(self.identifier, True, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
-		total_reserved = min(total_reserved, self.resource_manager.get_quota(self.identifier, self.resource_id, self.abstract_building.id))
+		total_reserved = min(total_reserved, self.resource_manager.get_quota(self.identifier, self.resource_id, self.abstract_building.id) / self.production_ratio)
 		return total_reserved
 
 	def get_ratio(self, resource_id):
