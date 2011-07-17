@@ -137,6 +137,8 @@ class AIPlayer(GenericAI):
 			self.settlement_managers.append(settlement_manager)
 			if settlement_manager.feeder_island:
 				self._need_feeder_island = False
+		elif isinstance(mission, PrepareFoundationShip):
+			self._found_settlements()
 
 	def report_failure(self, mission, msg):
 		self.missions.remove(mission)
@@ -257,7 +259,9 @@ class AIPlayer(GenericAI):
 	def tick(self):
 		self.manage_resources()
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
+		self._found_settlements()
 
+	def _found_settlements(self):
 		ship = None
 		for possible_ship, state in self.ships.iteritems():
 			if state is self.shipStates.idle:
