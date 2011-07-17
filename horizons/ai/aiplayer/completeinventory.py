@@ -38,10 +38,14 @@ class CompleteInventory(object):
 		"""
 		Moves up to amount tons of res from the ship to the settlement
 		"""
-		if amount != 0:
+		if amount > 0:
 			missing = ship.inventory.alter(res, -amount)
 			overflow = settlement.inventory.alter(res, amount - missing)
 			ship.inventory.alter(res, overflow)
+		elif amount < 0:
+			missing = settlement.inventory.alter(res, amount)
+			overflow = ship.inventory.alter(res, missing - amount)
+			settlement.inventory.alter(res, overflow)
 
 	def unload_all(self, ship, settlement):
 		items = [x for x in ship.inventory]
