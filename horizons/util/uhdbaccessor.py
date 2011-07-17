@@ -216,3 +216,8 @@ class UhDbAccessor(DbReader):
 	def get_storage_building_capacity(self, storage_type):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
+
+	def get_translucent_buildings(self):
+		"""Returns building types that should become translucent on demand"""
+		# use set because of quick contains check
+		return frozenset( i[0] for i in self("SELECT type from translucent_buildings") )

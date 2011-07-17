@@ -38,6 +38,7 @@
 	<VBox>
 		<Label name="set20" text="{P} = Pause game" />
 		<Label name="set13" text="{G} = Toggle grid on/off" />
+		<Label name="set28" text="{T} = Toggle translucency of ambient buildings" />
 		<Label name="set14" text="{X} = Enable destruct mode" />
 		<!--<ScrollArea min_size="320,500" horizontal_scrollbar="0">
 			<TextBox name="helpBox" filename="content/infotext.txt"/>
