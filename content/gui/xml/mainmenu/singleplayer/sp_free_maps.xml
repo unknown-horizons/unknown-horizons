@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side">
-	<Label text="Choose a map to play:"  name="choose_map_lbl" />
+	<Label text="Choose a map to play:"  name="headline_choose_map_lbl" />
 	<ScrollArea max_size="290,140"  min_size="290,140"  horizontal_scrollbar="0"  name="map_list_area">
 		<ListBox name="maplist" />
 	</ScrollArea>
 
-	<Label text="Choose your opponents:"  name="choose_opponents_lbl" />
-	<ScrollArea max_size="290, 80"  min_size="290, 80"  vertical_scrollbar="1"  name="opponent_list_area">
+	<Label text="Choose your opponents:"  name="headline_choose_opponents_lbl" />
+	<ScrollArea horizontal_scrollbar="1"  vertical_scrollbar="0"  name="opponent_list_area">
 		<HBox name="opponent_list">
 			<VBox>
 				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Emma Stonard" />
@@ -26,40 +26,8 @@
 		</HBox>
 	</ScrollArea>
 
-	<VBox name="game_settings">
-		<Label name="game_settings_lbl" text="Game settings:" />
-		<HBox name="param_ai_factions" padding="15">
-			<HBox name="map_param">
-				<CheckBox name="free_trader" min_size="15,15" marked="1" />
-				<Label text="Free Trader" />
-			</HBox>
-			<HBox name="map_param">
-				<CheckBox name="pirates" min_size="15,15"  marked="1" />
-				<Label text="Pirates" />
-			</HBox>
-			<HBox name="map_param">
-				<CheckBox name="peoples" min_size="15,15" />
-				<Label text="Peoples" />
-			</HBox>
-		</HBox>
-
-		<HBox name="param_catastrophes" padding="15">
-			<HBox name="map_param">
-				<CheckBox name="fire" min_size="15,15"  marked="1" />
-				<Label text="Fire" />
-			</HBox>
-			<HBox name="map_param">
-				<CheckBox name="black_death" min_size="15,15" />
-				<Label text="Black Death" />
-			</HBox>
-			<HBox name="map_param">
-				<CheckBox name="rat_plague" min_size="15,15" />
-				<Label text="Rat Plague" />
-			</HBox>
-		</HBox>
-	</VBox>
+	<VBox name="game_settings_box" />
 
 <Spacer />
-
 
 </VBox>

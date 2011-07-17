@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<VBox name="game_settings">
+	<Label name="headline_game_settings_lbl" text="Game settings:" />
+	<HBox name="param_ai_factions" padding="15">
+		<HBox name="map_param">
+			<CheckBox name="free_trader" min_size="15,15" marked="1" />
+			<Label text="Free Trader" />
+		</HBox>
+		<HBox name="map_param">
+			<CheckBox name="pirates" min_size="15,15"  marked="1" />
+			<Label text="Pirates" />
+		</HBox>
+		<HBox name="map_param">
+			<CheckBox name="peoples" min_size="15,15" />
+			<Label text="Peoples" />
+		</HBox>
+	</HBox>
+
+	<HBox name="param_catastrophes" padding="15">
+		<HBox name="map_param">
+			<CheckBox name="fire" min_size="15,15"  marked="1" />
+			<Label text="Fire" />
+		</HBox>
+		<HBox name="map_param">
+			<CheckBox name="black_death" min_size="15,15" />
+			<Label text="Black Death" />
+		</HBox>
+		<HBox name="map_param">
+			<CheckBox name="rat_plague" min_size="15,15" />
+			<Label text="Rat Plague" />
+		</HBox>
+	</HBox>
+</VBox>
