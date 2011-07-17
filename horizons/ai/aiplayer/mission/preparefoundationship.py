@@ -92,10 +92,12 @@ class PrepareFoundationShip(Mission):
 		success = False
 		if self.feeder_island:
 			success = self.settlement_manager.owner.have_feeder_island_starting_resources(self.ship, None)
-			self.report_success('Transferred enough feeder island foundation resources to the ship')
+			if success:
+				self.report_success('Transferred enough feeder island foundation resources to the ship')
 		else:
 			success = self.settlement_manager.owner.have_starting_resources(self.ship, None)
-			self.report_success('Transferred enough foundation resources to the ship')
+			if success:
+				self.report_success('Transferred enough foundation resources to the ship')
 		if not success:
 			self.report_failure('Not enough foundation resources available')
 
