@@ -160,7 +160,11 @@ class ProductionChainSubtreeChoice(object):
 			self.log.debug('%s: no possible options', self)
 			return BUILD_RESULT.IMPOSSIBLE
 		else:
-			return sorted(expected_costs)[0][2].build(amount)
+			for option in zip(*sorted(expected_costs))[2]:
+				result = option.build(amount)
+				if result != BUILD_RESULT.IMPOSSIBLE:
+					return result
+			return BUILD_RESULT.IMPOSSIBLE
 
 	def reserve(self, amount, may_import):
 		"""
