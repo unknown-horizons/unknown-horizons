@@ -84,7 +84,6 @@ class Weapon(object):
 #
 		for unit in units:
 			print 'dealing damage to ship:', unit
-			#TODO remove the if when health attribute will only be HealthComponent
 			if unit.has_component('health'):
 				unit.get_component('health').deal_damage(self.weapon_id, self.get_damage_modifier())
 

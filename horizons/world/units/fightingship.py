@@ -38,17 +38,29 @@ class FightingShip(MovingWeaponHolder, Ship):
 		#NOTE dummy cannon
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
 
 	def go(self, x, y):
 		super(FightingShip, self).go(x, y)
 		self.stop_attack()
 
 	def fire_all_weapons(self, dest, rotate = True):
-		# rotate ship to face target
+		"""
+		Rotate ship so it is perpendicular on dest
+		"""
 		super(FightingShip, self).fire_all_weapons(dest, rotate)
+
 		if not self._fireable:
 			return
 
+		if not self._min_range <= self.position.distance(dest) <= self._max_range:
+			return
+
+		# rotate the ship so it faces dest
+		# for this rotate facing location coordinates around position coordinates
 		self.stop_for(GAME_SPEED.TICKS_PER_SECOND * 1)
 		self_location = self._instance.getLocation()
 		facing_location = self._instance.getFacingLocation()

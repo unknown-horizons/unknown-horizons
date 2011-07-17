@@ -267,7 +267,7 @@ class WeaponHolder(object):
 			for weapon in self._fireable:
 				weapon.fire(dest, self.position.center())
 		else:
-			angle = (math.pi / 30) * (-len(self._fireable) / 2)
+			angle = (math.pi / 60) * (-len(self._fireable) / 2)
 			cos = math.cos(angle)
 			sin = math.sin(angle)
 
@@ -280,7 +280,7 @@ class WeaponHolder(object):
 			dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 			dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 
-			angle = math.pi / 30
+			angle = math.pi / 60
 			cos = math.cos(angle)
 			sin = math.sin(angle)
 
