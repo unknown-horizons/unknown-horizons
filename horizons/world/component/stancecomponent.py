@@ -237,7 +237,8 @@ class FleeStance(StanceComponent):
 		unit = self.get_approaching_unit()
 		if unit:
 			try:
-				self.instance.move(Annulus(unit.position.center(), unit._max_range + 1, unit._max_range + 2))
+				distance = unit._max_range + self.lookout_distance
+				self.instance.move(Annulus(unit.position.center(), distance, distance + 2))
 				self.state = 'flee'
 			except MoveNotPossible:
 				pass
