@@ -24,7 +24,6 @@ import horizons.main
 from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import PlayerDataSelection
-from horizons.util.gui import adjust_widget_black_background
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'free_maps'): # tutorial
@@ -45,7 +44,6 @@ class SingleplayerMenu(object):
 			'showMaps' : Callback(self.show_single, show='free_maps')
 		}
 
-		adjust_widget_black_background(self.widgets['singleplayermenu'])
 
 		# init gui for subcategory
 		right_side = self.widgets['sp_%s' % show]

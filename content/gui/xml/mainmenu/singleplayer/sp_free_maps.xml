@@ -5,14 +5,36 @@
 		<ListBox name="maplist" />
 	</ScrollArea>
 
-	<VBox name="map_settings">
+	<Label text="Choose your opponents:"  name="choose_opponents_lbl" />
+	<ScrollArea max_size="290, 80"  min_size="290, 80"  vertical_scrollbar="1"  name="opponent_list_area">
+		<HBox name="opponent_list">
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Emma Stonard" />
+			</VBox>
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Arthur Gordon" />
+			</VBox>
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Baron Hill" />
+			</VBox>
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Cristina de Bolsena" />
+			</VBox>
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Pietro Gonzale" />
+			</VBox>
+		</HBox>
+	</ScrollArea>
+
+	<VBox name="game_settings">
+		<Label name="game_settings_lbl" text="Game settings:" />
 		<HBox name="param_ai_factions" padding="15">
 			<HBox name="map_param">
-				<CheckBox name="free_trader" min_size="15,15" />
+				<CheckBox name="free_trader" min_size="15,15" marked="1" />
 				<Label text="Free Trader" />
 			</HBox>
 			<HBox name="map_param">
-				<CheckBox name="pirates" min_size="15,15" />
+				<CheckBox name="pirates" min_size="15,15"  marked="1" />
 				<Label text="Pirates" />
 			</HBox>
 			<HBox name="map_param">
@@ -23,7 +45,7 @@
 
 		<HBox name="param_catastrophes" padding="15">
 			<HBox name="map_param">
-				<CheckBox name="fire" min_size="15,15" />
+				<CheckBox name="fire" min_size="15,15"  marked="1" />
 				<Label text="Fire" />
 			</HBox>
 			<HBox name="map_param">
@@ -35,13 +57,6 @@
 				<Label text="Rat Plague" />
 			</HBox>
 		</HBox>
-
-		<Label name="map_author"     wrap_text="1" max_size="300,40" />
-		<Label name="map_difficulty" wrap_text="1" max_size="300,20" />
-		<Label name="map_desc"       wrap_text="1" max_size="300,120"/>
-		<!--
-		<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
-		-->
 	</VBox>
 
 <Spacer />
