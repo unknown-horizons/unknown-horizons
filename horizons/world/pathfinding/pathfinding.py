@@ -174,28 +174,31 @@ class FindPath(object):
 			x = cur_node_coords[0]
 			y = cur_node_coords[1]
 
-			# Profiling info: The if/else below uses half of the execution time.
-			#                 The for loop below that the other half. The rest is really insignifiant.
-
 			# find possible neighbors
 			# optimisation TODO: use data structures more suitable for contains-check
 			if self.diagonal:
 				# all relevant adjacent neighbors
-				neighbors = [ i for i in [(xx, yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2)] if \
+				x_p1 = x+1
+				x_m1 = x-1
+				y_p1 = y+1
+				y_m1 = y-1
+				neighbors = ( i for i in ((x_m1, y_m1), (x_m1, y), (x_m1, y_p1), (x, y_m1), (x, y_p1), (x_p1, y_m1), (x_p1, y), (x_p1, y_p1) ) if
+											i not in checked and \
 											(i in path_nodes or \
 											 i in source_coords or \
 											 i in dest_coords) and\
-											i not in checked and \
-											i != (x, y) and \
-											i not in blocked_coords ]
+											i not in blocked_coords ) # conditions are sorted by likelyhood in ship worst case
 			else:
 				# all relevant vertical and horizontal neighbors
-				neighbors = [ i for i in [(x-1, y), (x+1, y), (x, y-1), (x, y+1) ] if \
+				neighbors = ( i for i in ((x-1, y), (x+1, y), (x, y-1), (x, y+1) ) if \
 											(i in path_nodes  or \
 											 i in source_coords or \
 											 i in dest_coords ) and \
 											i not in checked and \
-											i not in blocked_coords ]
+											i not in blocked_coords )
+
+			# Profiling info: In the worst case, this for-loop takes 80% of the time.
+			# Parts of this are actually spent in evaluating the generator expressions from the if above
 
 			for neighbor_node in neighbors:
 
