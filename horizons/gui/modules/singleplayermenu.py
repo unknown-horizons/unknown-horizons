@@ -27,7 +27,7 @@ from horizons.gui.modules import PlayerDataSelection
 from horizons.util.gui import adjust_widget_black_background
 
 class SingleplayerMenu(object):
-	def show_single(self, show = 'scenario'): # tutorial
+	def show_single(self, show = 'free_maps'): # tutorial
 		"""
 		@param show: string, which type of games to show
 		"""
@@ -48,13 +48,11 @@ class SingleplayerMenu(object):
 		adjust_widget_black_background(self.widgets['singleplayermenu'])
 
 		# init gui for subcategory
+		right_side = self.widgets['sp_%s' % show]
+		self.current.findChild(name="right_side_box").addChild(right_side)
 		if show == 'random':
 			del eventMap['showRandom']
 			self.current.findChild(name="showRandom").marked = True
-			to_remove = self.current.findChild(name="map_list_area")
-			to_remove.parent.removeChild(to_remove)
-			to_remove = self.current.findChild(name="choose_map_lbl")
-			to_remove.parent.removeChild(to_remove)
 			# need to add some options here (generation algo, size, ... )
 		else:
 			if show == 'free_maps':

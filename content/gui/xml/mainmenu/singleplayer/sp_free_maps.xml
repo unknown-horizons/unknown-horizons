@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side">
+	<Label text="Choose a map to play:"  name="choose_map_lbl" />
+	<ScrollArea max_size="290,140"  min_size="290,140"  horizontal_scrollbar="0"  name="map_list_area">
+		<ListBox name="maplist" />
+	</ScrollArea>
+
+	<VBox name="map_settings">
+		<HBox name="param_ai_factions" padding="15">
+			<HBox name="map_param">
+				<CheckBox name="free_trader" min_size="15,15" />
+				<Label text="Free Trader" />
+			</HBox>
+			<HBox name="map_param">
+				<CheckBox name="pirates" min_size="15,15" />
+				<Label text="Pirates" />
+			</HBox>
+			<HBox name="map_param">
+				<CheckBox name="peoples" min_size="15,15" />
+				<Label text="Peoples" />
+			</HBox>
+		</HBox>
+
+		<HBox name="param_catastrophes" padding="15">
+			<HBox name="map_param">
+				<CheckBox name="fire" min_size="15,15" />
+				<Label text="Fire" />
+			</HBox>
+			<HBox name="map_param">
+				<CheckBox name="black_death" min_size="15,15" />
+				<Label text="Black Death" />
+			</HBox>
+			<HBox name="map_param">
+				<CheckBox name="rat_plague" min_size="15,15" />
+				<Label text="Rat Plague" />
+			</HBox>
+		</HBox>
+
+		<Label name="map_author"     wrap_text="1" max_size="300,40" />
+		<Label name="map_difficulty" wrap_text="1" max_size="300,20" />
+		<Label name="map_desc"       wrap_text="1" max_size="300,120"/>
+		<!--
+		<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
+		-->
+	</VBox>
+
+<Spacer />
+
+
+</VBox>
