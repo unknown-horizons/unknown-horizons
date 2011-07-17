@@ -111,6 +111,8 @@ class BUILDINGS:
 	FISH_DEPOSIT_CLASS = 33
 	MOUNTAIN_CLASS = 34
 
+	TRANSPARENCY_VALUE = 180
+
 	class ACTION:
 		# data for calculating gfx for paths.
 		# think: animation contains key, if there is a path at offset value

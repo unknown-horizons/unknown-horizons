@@ -584,12 +584,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				if b.id in building_types:
 					fife_instance = b._instance
 					add( create_weakref(fife_instance) )
-					fife_instance.get2dGfxVisual().setTransparency( 180 )
+					fife_instance.keep_translucency = True
+					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
 
 		else: # undo translucency
 			for inst in self._translucent_buildings:
 				try:
 					inst().get2dGfxVisual().setTransparency( 0 )
+					inst().keep_translucency = False
 				except AttributeError:
 					pass # obj has been deleted, inst() returned None
 			self._translucent_buildings.clear()
