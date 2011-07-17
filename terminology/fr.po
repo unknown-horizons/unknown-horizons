@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-06-28 19:27+0200\n"
-"Last-Translator: tintou <tintou@mailoo.org>\n"
+"PO-Revision-Date: 2011-07-18 00:34+0200\n"
+"Last-Translator: Quentin <lawnask@legtux.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -213,7 +213,7 @@ msgstr "onglet / fenêtre / panneau"
 # (poterminology) uh/unknownhorizons.pot (10)
 #
 msgid "unknown"
-msgstr "inconnue"
+msgstr "inconnu"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -966,13 +966,13 @@ msgid "settler"
 msgstr "colon"
 
 msgid "citizen"
-msgstr ""
+msgstr "citoyen"
 
 msgid "merchant"
-msgstr ""
+msgstr "marchand"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocrate"
 
 #
 #
@@ -1670,11 +1670,12 @@ msgstr ""
 msgid "connection"
 msgstr ""
 
+#, fuzzy
 msgid "no"
-msgstr ""
+msgstr "aucun"
 
 msgid "tax"
-msgstr ""
+msgstr "taxe"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1710,13 +1711,14 @@ msgid "consume"
 msgstr ""
 
 msgid "contact"
-msgstr ""
+msgstr "contact"
 
 msgid "dialogue"
 msgstr ""
 
+#, fuzzy
 msgid "issues"
-msgstr ""
+msgstr "problème"
 
 msgid "minimap"
 msgstr "mini-carte"
@@ -1742,35 +1744,35 @@ msgid "salt ponds"
 msgstr ""
 
 msgid "tobacco"
-msgstr ""
+msgstr "tabac"
 
 msgid "cattle"
 msgstr ""
 
 msgid "pig"
-msgstr ""
+msgstr "porc"
 
 msgid "herbs"
-msgstr ""
+msgstr "herbes"
 
 msgid "herbary"
-msgstr ""
+msgstr "herbier"
 
 msgid "butchery"
-msgstr ""
+msgstr "boucherie"
 
 msgid "doctor"
-msgstr ""
+msgstr "médecin"
 
 msgid "education"
-msgstr ""
+msgstr "éducation"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
 # 75%
 #, fuzzy
 msgid "clay"
-msgstr "jouer"
+msgstr "argile / terre"
 
 msgid "charcoal"
 msgstr ""
