@@ -287,7 +287,6 @@ class AreaBuilder(WorldObject):
 			for x, y in builder.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
 			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
-			self.collector_buildings.append(building)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 

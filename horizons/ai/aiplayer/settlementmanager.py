@@ -133,6 +133,10 @@ class SettlementManager(WorldObject):
 
 		self.num_fields = self.production_builder.count_fields()
 
+		# the add_building events happen before the settlement manager is loaded so they have to be repeated here
+		for building in self.settlement.buildings:
+			self.add_building(building)
+
 	@property
 	def tents(self):
 		return self.count_buildings(BUILDINGS.RESIDENTIAL_CLASS)
@@ -485,6 +489,14 @@ class SettlementManager(WorldObject):
 			self._general_tick()
 		self.resource_manager.record_expected_exportable_production(self.tick_interval)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval)
+
+	def add_building(self, building):
+		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
+			self.production_builder.collector_buildings.append(building)
+
+	def remove_building(self, building):
+		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
+			self.production_builder.collector_buildings.remove(building)
 
 	def __str__(self):
 		return '%s.SM(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)

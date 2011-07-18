@@ -183,6 +183,9 @@ class Settlement(TradePost, NamedObject):
 			self.buildings_by_id[building.id] = [building]
 		if hasattr(building, "add_building_production_finished_listener"):
 			building.add_building_production_finished_listener(self.settlement_building_production_finished)
+		if hasattr(self.owner, 'add_building'):
+			# notify interested players of added building
+			self.owner.add_building(building)
 
 	def remove_building(self, building):
 		"""Properly removes a building from the settlement"""
@@ -190,6 +193,9 @@ class Settlement(TradePost, NamedObject):
 		self.buildings_by_id[building.id].remove(building)
 		if hasattr(building, "remove_building_production_finished_listener"):
 			building.remove_building_production_finished_listener(self.settlement_building_production_finished)
+		if hasattr(self.owner, 'remove_building'):
+			# notify interested players of removed building
+			self.owner.remove_building(building)
 
 	def get_buildings_by_id(self, id):
 		"""Returns all buildings on this island that have the given id"""

@@ -44,7 +44,7 @@ class ProductionBuilder(AreaBuilder):
 
 	def __init(self, settlement_manager):
 		self._init_cache()
-		self.collector_buildings = [settlement_manager.branch_office]
+		self.collector_buildings = []
 		self.production_buildings = []
 		self.unused_fields = self._make_empty_unused_fields()
 
@@ -96,8 +96,6 @@ class ProductionBuilder(AreaBuilder):
 				self.production_buildings.append(object)
 			elif purpose == BUILDING_PURPOSE.CHARCOAL_BURNER and object.id == BUILDINGS.CHARCOAL_BURNER_CLASS:
 				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.STORAGE and object.id == BUILDINGS.STORAGE_CLASS:
-				self.collector_buildings.append(object)
 			elif purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
 
@@ -232,7 +230,6 @@ class ProductionBuilder(AreaBuilder):
 			for x, y in builder.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
 			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
-			self.collector_buildings.append(building)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
@@ -280,7 +277,6 @@ class ProductionBuilder(AreaBuilder):
 			for x, y in builder.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
 			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
-			self.collector_buildings.append(building)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 

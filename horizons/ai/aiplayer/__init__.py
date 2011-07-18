@@ -124,6 +124,7 @@ class AIPlayer(GenericAI):
 	def __init(self):
 		self.islands = {}
 		self.settlement_managers = []
+		self._settlement_manager_by_settlement_id = {}
 		self.missions = set()
 		self.fishers = []
 		self.complete_inventory = CompleteInventory(self)
@@ -137,6 +138,8 @@ class AIPlayer(GenericAI):
 		if isinstance(mission, FoundSettlement):
 			settlement_manager = SettlementManager(self, mission.land_manager)
 			self.settlement_managers.append(settlement_manager)
+			self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
+			self.add_building(settlement_manager.settlement.branch_office)
 			if settlement_manager.feeder_island:
 				self._need_feeder_island = False
 		elif isinstance(mission, PrepareFoundationShip):
@@ -202,6 +205,7 @@ class AIPlayer(GenericAI):
 			if db_result:
 				settlement_manager = SettlementManager.load(db, self, db_result[0][0])
 				self.settlement_managers.append(settlement_manager)
+				self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
 
 				# load the foundation ship preparing missions
 				db_result = db("SELECT rowid FROM ai_mission_prepare_foundation_ship WHERE settlement_manager = ?", \
@@ -360,6 +364,14 @@ class AIPlayer(GenericAI):
 	def request_ship(self):
 		self.log.info('%s received request for more ships', self)
 		self.need_more_ships = True
+
+	def add_building(self, building):
+		# if the id is not present then this is a new settlement that has to be handled separately
+		if building.settlement.worldid in self._settlement_manager_by_settlement_id:
+			self._settlement_manager_by_settlement_id[building.settlement.worldid].add_building(building)
+
+	def remove_building(self, building):
+		self._settlement_manager_by_settlement_id[building.settlement.worldid].remove_building(building)
 
 	def count_buildings(self, building_id):
 		return sum(settlement_manager.count_buildings(building_id) for settlement_manager in self.settlement_managers)
