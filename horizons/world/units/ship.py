@@ -338,23 +338,18 @@ class Ship(NamedObject, StorageHolder, Unit):
 		#disable the trading route
 		if hasattr(self, 'route'):
 			self.route.disable()
-		ship_id = self.worldid # this has to happen here,
-		# cause a reference to self in a temporary function is implemented
-		# as a hard reference, which causes a memory leak
-		def tmp():
-			if self.session.world.player == self.owner:
-				self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
-		tmp()
+
 		move_target = Point(int(round(x)), int(round(y)))
+
 		try:
-			self.move(move_target, tmp)
+			self.move(move_target)
 		except MoveNotPossible:
 			# find a near tile to move to
 			surrounding = Circle(move_target, radius=1)
 			# try with smaller circles, increase radius if smaller circle isn't reachable
 			while surrounding.radius < 5:
 				try:
-					self.move(surrounding, callback=tmp)
+					self.move(surrounding)
 				except MoveNotPossible:
 					surrounding.radius += 1
 					continue
@@ -366,8 +361,20 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)
-		if self.session.world.player == self.owner:
+		if self.session.world.player == self.owner: # handle buoy
+			# set remove buoy callback
+			ship_id = self.worldid
+			session = self.session # this has to happen here,
+			# cause a reference to self in a temporary function is implemented
+			# as a hard reference, which causes a memory leak
+			def tmp():
+				session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
+			tmp() # also remove now
+
+			self.add_move_callback(tmp)
+
 			self._update_buoy()
+
 
 	def _update_buoy(self):
 		# draw buoy in case this is the player's ship
