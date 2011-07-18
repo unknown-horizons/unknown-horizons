@@ -46,8 +46,9 @@ class TradeManager(WorldObject):
 
 	def __init(self, settlement_manager):
 		self.settlement_manager = settlement_manager
+		self.owner = settlement_manager.owner
 		self.data = {} # resource_id: SingleResourceTradeManager
-		self.ship = None # TODO: save this
+		self.ships_sent = defaultdict(lambda: 0) # {settlement_manager_id: num_sent, ...}
 
 	def save(self, db):
 		super(TradeManager, self).save(db)
@@ -99,76 +100,69 @@ class TradeManager(WorldObject):
 
 	def load_resources(self, destination_settlement_manager, ship):
 		""" the given ship has arrived at the source settlement to pick up the resources required by this trade manager """
-		total_amount = {}
-		for resource_manager in destination_settlement_manager.trade_manager.data.itervalues():
-			for settlement_manager_id, amount in resource_manager.partners.iteritems():
-				if settlement_manager_id != self.settlement_manager.worldid:
-					continue # not the right one
-				if resource_manager.resource_id not in total_amount:
-					total_amount[resource_manager.resource_id] = 0.0
-				total_amount[resource_manager.resource_id] += amount
-
-		destination_position = destination_settlement_manager.settlement.branch_office.position
-		destination = Circle(destination_position.origin, BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE) # TODO: this should be a RadiusShape
-		path_length = ship.get_estimated_travel_time(destination)
-		if path_length is None:
-			return False
+		total_amount = defaultdict(lambda: 0)
+		resource_manager = self.settlement_manager.resource_manager
+		for resource_id, amount in resource_manager.trade_storage[destination_settlement_manager.worldid].iteritems():
+			available_amount = int(min(math.floor(amount), self.settlement_manager.settlement.inventory[resource_id]))
+			if available_amount > 0:
+				total_amount[resource_id] += available_amount
 
 		destination_inventory = destination_settlement_manager.settlement.inventory
-		self.settlement_manager.settlement.branch_office
 		any_transferred = False
 		for resource_id, amount in total_amount.iteritems():
-			actual_amount = int(math.ceil(2 * path_length * amount))
-			actual_amount -= ship.inventory[resource_id] # load up to the specified amount
+			actual_amount = amount - ship.inventory[resource_id]
 			actual_amount = min(actual_amount, destination_inventory.get_limit(resource_id) - destination_inventory[resource_id])
 			if actual_amount <= 0:
 				continue # TODO: consider unloading the resources if there is more than needed
-			self.log.info('Transfer %d of %d to %s for a journey from %s to %s (path length %d, import %.5f per tick)', actual_amount, \
-				resource_id, ship, self.settlement_manager.settlement.name, destination_settlement_manager.settlement.name, path_length, amount)
-			if actual_amount > 0:
-				any_transferred = True
+			any_transferred = True
+			self.log.info('Transfer %d of %d to %s for a journey from %s to %s, total amount %d', actual_amount, \
+				resource_id, ship, self.settlement_manager.settlement.name, destination_settlement_manager.settlement.name, amount)
+			old_amount = self.settlement_manager.settlement.inventory[resource_id]
 			self.settlement_manager.owner.complete_inventory.move(ship, self.settlement_manager.settlement, resource_id, -actual_amount)
+			actually_transferred = old_amount - self.settlement_manager.settlement.inventory[resource_id]
+			resource_manager.trade_storage[destination_settlement_manager.worldid][resource_id] -= actually_transferred
+
+		destination_settlement_manager.trade_manager.ships_sent[self.settlement_manager.worldid] -= 1
 		return any_transferred
 
 	def _get_source_settlement_manager(self):
-		total_amount = {}
-		for resource_manager in self.data.itervalues():
-			for settlement_manager_id, amount in resource_manager.partners.iteritems():
-				if settlement_manager_id not in total_amount:
-					total_amount[settlement_manager_id] = 0.0
-				total_amount[settlement_manager_id] += amount
-		options = [(amount, settlement_manager_id) for settlement_manager_id, amount in total_amount.iteritems()]
-		options.sort(reverse = True)
-		if not options:
-			return None
-		if options[0][0] < 1e-7:
-			return None
-		return WorldObject.get_object_by_id(options[0][1])
+		options = [] # (available resource amount, available number of resources, settlement_manager_id)
+		for settlement_manager in self.owner.settlement_managers:
+			if settlement_manager is self.settlement_manager:
+				continue
+			resource_manager = settlement_manager.resource_manager
+			num_resources = 0
+			total_amount = 0
+			for resource_id, amount in resource_manager.trade_storage[self.settlement_manager.worldid].iteritems():
+				available_amount = int(min(math.floor(amount), settlement_manager.settlement.inventory[resource_id]))
+				if available_amount > 0:
+					num_resources += 1
+					total_amount += available_amount
+			ships_needed = int(max(math.ceil(num_resources / 4.0), math.ceil(total_amount / 120.0)))
+			if ships_needed > self.ships_sent[settlement_manager.worldid]:
+				self.log.info('have %d ships, need %d ships, %d resource types, %d total amount', self.ships_sent[settlement_manager.worldid], ships_needed, num_resources, total_amount)
+				options.append((total_amount - 120 * self.ships_sent[settlement_manager.worldid], num_resources - 4 * self.ships_sent[settlement_manager.worldid], settlement_manager.worldid))
+		return None if not options else WorldObject.get_object_by_id(max(options)[2])
 
 	def organize_shipping(self):
 		source_settlement_manager = self._get_source_settlement_manager()
 		if source_settlement_manager is None:
 			return # no trade ships needed
 
-		player = self.settlement_manager.owner
-		if self.ship is not None:
-			if player.ships[self.ship] == player.shipStates.idle:
-				self.ship = None
-		if self.ship is not None:
-			return # already using a ship
-
 		# need to get a ship
-		for ship, ship_state in player.ships.iteritems():
-			if ship_state is player.shipStates.idle:
-				self.ship = ship
-				break
-		if self.ship is None:
+		chosen_ship = None
+		for ship, ship_state in sorted(self.owner.ships.iteritems()):
+			if ship_state is self.owner.shipStates.idle:
+				chosen_ship = ship
+		if chosen_ship is None:
+			self.owner.request_ship()
 			return # no available ships
 
-		player.ships[self.ship] = player.shipStates.on_a_mission
-		mission = DomesticTrade(source_settlement_manager, self.settlement_manager, self.ship, player.report_success, player.report_failure)
-		player.missions.add(mission)
+		self.owner.ships[chosen_ship] = self.owner.shipStates.on_a_mission
+		mission = DomesticTrade(source_settlement_manager, self.settlement_manager, chosen_ship, self.owner.report_success, self.owner.report_failure)
+		self.owner.missions.add(mission)
 		mission.start()
+		self.ships_sent[source_settlement_manager.worldid] += 1
 
 	def __str__(self):
 		result = 'TradeManager(%s, %d)' % (self.settlement_manager.settlement.name if hasattr(self.settlement_manager, 'settlement') else 'unknown', self.worldid)

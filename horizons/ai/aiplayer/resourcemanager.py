@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict
+
 from building import AbstractBuilding
 from horizons.util import WorldObject
 from horizons.util.python import decorators
@@ -38,6 +40,8 @@ class ResourceManager(WorldObject):
 		self._data = {} # {(resource_id, building_id): SingleResourceManager, ...}
 		self._chain = {} # {resource_id: SimpleProductionChainSubtreeChoice, ...}
 		self._low_priority_requests = {} # {(quota_holder, resource_id): amount, ...}
+		self.trade_storage = defaultdict(lambda: defaultdict(lambda: 0)) # {settlement_manager_id: {resource_id: amount}, ...}
+		self._settlement_manager_id = {} # {quota_holder: settlement_manager_id, ...}
 
 	def save(self, db):
 		super(ResourceManager, self).save(db)
@@ -124,6 +128,13 @@ class ResourceManager(WorldObject):
 	def replay_deep_low_priority_requests(self):
 		for (quota_holder, resource_id), amount in self._low_priority_requests.iteritems():
 			self.request_deep_quota_change(quota_holder, False, resource_id, amount)
+
+	def record_expected_exportable_production(self, ticks):
+		""" records the amount of production that should be transferred to other islands """
+		for (quota_holder, resource_id), amount in self._low_priority_requests.iteritems():
+			if quota_holder not in self._settlement_manager_id:
+				self._settlement_manager_id[quota_holder] = WorldObject.get_object_by_id(int(quota_holder[1:].split(',')[0])).settlement_manager.worldid
+			self.trade_storage[self._settlement_manager_id[quota_holder]][resource_id] += ticks * amount
 
 	def get_total_export(self, resource_id):
 		total = 0

@@ -44,6 +44,7 @@ class SettlementManager(WorldObject):
 	"""
 
 	log = logging.getLogger("ai.aiplayer")
+	tick_interval = 32
 
 	production_level_multiplier = 1.1
 
@@ -60,9 +61,8 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
-		self.village_built = False
 
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = 31)
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval - 1)
 		if not self.feeder_island:
 			self.set_taxes_and_permissions(0.5, 0.8, 0.5, False, False)
 
@@ -132,7 +132,6 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 		self.num_fields = self.production_builder.count_fields()
-		self.village_built = False # TODO: actually save and load this
 
 	@property
 	def tents(self):
@@ -160,7 +159,16 @@ class SettlementManager(WorldObject):
 			SetSettlementUpgradePermissions(self.settlement, SETTLER.PIONEER_LEVEL, pioneers_can_upgrade).execute(self.land_manager.session)
 
 	def can_provide_resources(self):
-		return self.village_built
+		if self.village_builder.tent_queue:
+			return False
+		settler_houses = 0
+		residences = self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS)
+		for building in residences:
+			if building.level == SETTLER.SETTLER_LEVEL:
+				settler_houses += 1
+		if settler_houses * 3 > residences * 2:
+			return True
+		return False
 
 	def get_resource_production(self, resource_id):
 		# as long as there are enough collectors it is correct to calculate it this way
@@ -345,8 +353,10 @@ class SettlementManager(WorldObject):
 		return result
 
 	def _feeder_tick(self):
+		#print 'TRADE STORAGE', self.settlement.name, self.resource_manager.trade_storage
+		#print self.trade_manager
 		self.manage_production()
-		self.trade_manager.refresh()
+		#self.trade_manager.refresh()
 		self.resource_manager.refresh()
 		need_bricks = False
 		if self.land_manager.owner.settler_level > 0:
@@ -380,8 +390,8 @@ class SettlementManager(WorldObject):
 		elif self.land_manager.owner.settler_level > 1 and self.build_feeder_chain(self.liquor_chain, 'liquor'):
 			pass
 
-		self.trade_manager.finalize_requests()
-		self.trade_manager.organize_shipping()
+		#self.trade_manager.finalize_requests()
+		#self.trade_manager.organize_shipping()
 		self.resource_manager.replay_deep_low_priority_requests()
 
 	def _general_tick(self):
@@ -391,6 +401,8 @@ class SettlementManager(WorldObject):
 			self.get_resident_resource_usage(RES.TEXTILE_ID))
 		self.log.info('%s get-together production %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER_ID), \
 			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
+		#print 'TRADE STORAGE', self.settlement.name, self.resource_manager.trade_storage
+		#print self.trade_manager
 		self.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
@@ -414,14 +426,19 @@ class SettlementManager(WorldObject):
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and not self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS):
 			result = self.production_builder.build_boat_builder()
 			self.log_generic_build_result(result, 'boat builder')
-		elif self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS) and len(self.owner.ships) + self.owner.unit_builder.num_ships_being_built < 2:
+		elif self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS) and self.owner.need_more_ships and not self.owner.unit_builder.num_ships_being_built:
 			self.log.info('%s start building a ship', self)
 			self.owner.unit_builder.build_ship()
 		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
 			pass
 		elif self.village_builder.tent_queue:
-			result = self.village_builder.build_tent()
-			self.log_generic_build_result(result, 'tent')
+			# build tents only if enough food is supplied
+			# TODO: move the leniency constant to a better place
+			if self.get_resource_production(RES.FOOD_ID) + 0.05 >= self.get_resident_resource_usage(RES.FOOD_ID):
+				result = self.village_builder.build_tent()
+				self.log_generic_build_result(result, 'tent')
+			else:
+				self.log.info('%s waiting for feeder islands to provide food', self)
 		elif not self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
 			result = self.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
 			self.log_generic_build_result(result,  'clay deposit coverage storage')
@@ -436,8 +453,6 @@ class SettlementManager(WorldObject):
 			self.log_generic_build_result(result,  'mountain coverage storage')
 		elif have_bricks and self.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.tools_chain, 'tools producer'):
 			pass
-		else:
-			self.village_built = True
 
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
@@ -468,7 +483,8 @@ class SettlementManager(WorldObject):
 			self._feeder_tick()
 		else:
 			self._general_tick()
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = 32)
+		self.resource_manager.record_expected_exportable_production(self.tick_interval)
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval)
 
 	def __str__(self):
 		return '%s.SM(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)

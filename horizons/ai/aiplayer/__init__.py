@@ -70,6 +70,7 @@ class AIPlayer(GenericAI):
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
+		self.need_more_ships = False
 		self.__init()
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
@@ -118,6 +119,7 @@ class AIPlayer(GenericAI):
 			if ship.owner == self and ship.is_selectable and ship not in self.ships:
 				self.log.info('%s Added %s to the fleet', self, ship)
 				self.ships[ship] = self.shipStates.idle
+		self.need_more_ships = False
 
 	def __init(self):
 		self.islands = {}
@@ -354,6 +356,10 @@ class AIPlayer(GenericAI):
 
 	def found_feeder_island(self):
 		self._need_feeder_island = True
+
+	def request_ship(self):
+		self.log.info('%s received request for more ships', self)
+		self.need_more_ships = True
 
 	def count_buildings(self, building_id):
 		return sum(settlement_manager.count_buildings(building_id) for settlement_manager in self.settlement_managers)
