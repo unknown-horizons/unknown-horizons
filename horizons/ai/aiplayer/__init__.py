@@ -341,12 +341,7 @@ class AIPlayer(GenericAI):
 
 	@classmethod
 	def need_feeder_island(cls, settlement_manager):
-		free_area = 0
-		for purpose in zip(*settlement_manager.production_builder.plan.itervalues())[0]:
-			if purpose == BUILDING_PURPOSE.NONE:
-				free_area += 1
-		island_area = len(settlement_manager.land_manager.village) + len(settlement_manager.land_manager.production)
-		return free_area < island_area * 0.3 or free_area < 50
+		return settlement_manager.production_builder.count_available_squares(3, 30)[1] < 30
 
 	def have_feeder_island(self):
 		for settlement_manager in self.settlement_managers:
@@ -359,7 +354,8 @@ class AIPlayer(GenericAI):
 		return len(islands) > 0
 
 	def found_feeder_island(self):
-		self._need_feeder_island = True
+		if self.can_found_feeder_island():
+			self._need_feeder_island = True
 
 	def request_ship(self):
 		self.log.info('%s received request for more ships', self)

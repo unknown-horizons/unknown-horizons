@@ -373,10 +373,9 @@ class ProductionBuilder(AreaBuilder):
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
-	def need_to_enlarge_collector_area(self):
+	def count_available_squares(self, size, max_num = None):
 		""" decide based on the number of 3 x 3 squares available vs still possible """
-		# TODO: store the constants in a better place
-		offsets = list(itertools.product(xrange(3), xrange(3)))
+		offsets = list(itertools.product(xrange(size), xrange(size)))
 		collector_area = self._get_collector_area()
 
 		available_squares = 0
@@ -393,11 +392,16 @@ class ProductionBuilder(AreaBuilder):
 					accessible = True
 			if ok:
 				total_squares += 1
-				if total_squares >= 100:
-					return False
+				if max_num is not None and total_squares >= max_num:
+					break
 				if accessible:
 					available_squares += 1
+		return (available_squares, total_squares)
 
+	def need_to_enlarge_collector_area(self):
+		""" decide based on the number of 3 x 3 squares available vs still possible """
+		# TODO: store the constants in a better place
+		available_squares, total_squares = self.count_available_squares(3, 100)
 		self.log.info('%s collector area: %d of %d useable', self, available_squares, total_squares)
 		return available_squares < min(100, total_squares - 5)
 
