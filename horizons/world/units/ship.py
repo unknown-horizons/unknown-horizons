@@ -351,7 +351,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 		except MoveNotPossible:
 			# find a near tile to move to
 			surrounding = Circle(move_target, radius=1)
-			move_target = None
 			# try with smaller circles, increase radius if smaller circle isn't reachable
 			while surrounding.radius < 5:
 				try:
@@ -359,16 +358,21 @@ class Ship(NamedObject, StorageHolder, Unit):
 				except MoveNotPossible:
 					surrounding.radius += 1
 					continue
-				# update actual target coord
-				move_target = self.get_move_target()
 				break
 
-		if move_target is None: # can't move
+		if self.get_move_target() is None: # neither target nor surrounding possible
 			# TODO: give player some kind of feedback
-			return
+			pass
 
-		# draw buoy in case this is the player's ship
+	def move(self, *args, **kwargs):
+		super(Ship, self).move(*args, **kwargs)
 		if self.session.world.player == self.owner:
+			self._update_buoy()
+
+	def _update_buoy(self):
+		# draw buoy in case this is the player's ship
+		move_target = self.get_move_target()
+		if move_target != None:
 			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
 			loc.thisown = 0
 			coords = fife.ModelCoordinate(move_target.x, move_target.y)
@@ -432,3 +436,6 @@ class FisherShip(FisherShipCollector, Ship):
 	is_selectable = False
 
 	in_ship_map = False # (#1023)
+
+	def _update_buoy(self):
+		pass # no buoy for the fisher
