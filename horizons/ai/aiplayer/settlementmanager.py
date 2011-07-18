@@ -378,6 +378,9 @@ class SettlementManager(WorldObject):
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result, 'storage')
 			pass
+		elif self.production_builder.need_to_enlarge_collector_area():
+			result = self.production_builder.enlarge_collector_area()
+			self.log_generic_build_result(result,  'storage coverage building')
 		elif self.build_feeder_chain(self.food_chain, 'food'):
 			pass
 		elif self.build_feeder_chain(self.textile_chain, 'textile'):
@@ -415,11 +418,14 @@ class SettlementManager(WorldObject):
 
 		if not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
-			self.log_generic_build_result(result,  'storage')
+			self.log_generic_build_result(result, 'storage')
 		elif self.build_chain(self.boards_chain, 'boards producer'):
 			pass
 		elif self.build_chain(self.community_chain, 'main square'):
 			pass
+		elif self.production_builder.need_to_enlarge_collector_area():
+			result = self.production_builder.enlarge_collector_area()
+			self.log_generic_build_result(result,  'storage coverage building')
 		elif self.build_chain(self.food_chain, 'food producer'):
 			pass
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):

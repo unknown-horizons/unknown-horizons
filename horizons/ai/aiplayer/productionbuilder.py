@@ -21,8 +21,9 @@
 
 import math
 import copy
+import itertools
 
-from collections import deque
+from collections import deque, defaultdict
 
 from areabuilder import AreaBuilder
 from builder import Builder
@@ -280,6 +281,126 @@ class ProductionBuilder(AreaBuilder):
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
+	def _get_collector_area(self):
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		collector_area = set() # unused tiles that are reachable from at least one collector
+		for building in self.collector_buildings:
+			coverage_area = set()
+			for coords in building.position.get_radius_coordinates(building.radius, True):
+				coverage_area.add(coords)
+
+			reachable = set()
+			queue = deque()
+			for coords in building.position.tuple_iter():
+				reachable.add(coords)
+				queue.append(coords)
+
+			while queue:
+				x, y = queue[0]
+				queue.popleft()
+				for dx, dy in moves:
+					coords = (x + dx, y + dy)
+					if coords not in reachable and coords in coverage_area:
+						if coords in self.land_manager.roads or (coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
+							queue.append(coords)
+							reachable.add(coords)
+							if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
+								collector_area.add(coords)
+		return collector_area
+
+	def enlarge_collector_area(self):
+		if not self.have_resources(BUILDINGS.STORAGE_CLASS):
+			return BUILD_RESULT.NEED_RESOURCES
+
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		collector_area = self._get_collector_area()
+
+		# area_label contains free tiles in the production area and all road tiles
+		area_label = dict.fromkeys(self.land_manager.roads) # {(x, y): area_number, ...}
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose == BUILDING_PURPOSE.NONE:
+				area_label[coords] = None
+		areas = 0
+		for coords in collector_area:
+			if area_label[coords] is not None:
+				continue
+
+			queue = deque([coords])
+			while queue:
+				x, y = queue[0]
+				queue.popleft()
+				for dx, dy in moves:
+					coords2 = (x + dx, y + dy)
+					if coords2 in area_label and area_label[coords2] is None:
+						area_label[coords2] = areas
+						queue.append(coords2)
+			areas += 1
+
+		coords_set_by_area = defaultdict(lambda: set())
+		for coords, area_number in area_label.iteritems():
+			if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
+				coords_set_by_area[area_number].add(coords)
+
+		options = []
+		for (x, y), area_number in area_label.iteritems():
+			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
+			if not builder:
+				continue
+
+			coords_set = set(builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.STORAGE_CLASS].radius))
+			useful_area = len(coords_set_by_area[area_number].intersection(coords_set))
+			if not useful_area:
+				continue
+
+			alignment = 1
+			for tile in self._get_neighbour_tiles(builder.position):
+				if tile is None:
+					continue
+				coords = (tile.x, tile.y)
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+					alignment += 1
+
+			value = useful_area + alignment * 3
+			options.append((-value, builder))
+
+		for _, builder in sorted(options):
+			building = builder.execute()
+			if not building:
+				return BUILD_RESULT.UNKNOWN_ERROR
+			for x, y in builder.position.tuple_iter():
+				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
+			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
+			return BUILD_RESULT.OK
+		return BUILD_RESULT.IMPOSSIBLE
+
+	def need_to_enlarge_collector_area(self):
+		""" decide based on the number of 3 x 3 squares available vs still possible """
+		# TODO: store the constants in a better place
+		offsets = list(itertools.product(xrange(3), xrange(3)))
+		collector_area = self._get_collector_area()
+
+		available_squares = 0
+		total_squares = 0
+		for x, y in self.plan:
+			ok = True
+			accessible = False
+			for dx, dy in offsets:
+				coords = (x + dx, y + dy)
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+					ok = False
+					break
+				if coords in collector_area:
+					accessible = True
+			if ok:
+				total_squares += 1
+				if total_squares >= 100:
+					return False
+				if accessible:
+					available_squares += 1
+
+		self.log.info('%s collector area: %d of %d useable', self, available_squares, total_squares)
+		return available_squares < min(100, total_squares - 5)
+
 	def count_fields(self):
 		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 		for building in self.production_buildings:
@@ -426,5 +547,8 @@ class ProductionBuilder(AreaBuilder):
 					# building area with origin at coords affected
 					if coords in building_areas:
 						building_areas[coords] = self.last_change_id
+
+	def __str__(self):
+		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
 
 decorators.bind_all(ProductionBuilder)
