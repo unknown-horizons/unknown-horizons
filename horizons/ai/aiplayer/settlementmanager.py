@@ -166,7 +166,7 @@ class SettlementManager(WorldObject):
 		for building in residences:
 			if building.level == SETTLER.SETTLER_LEVEL:
 				settler_houses += 1
-		if settler_houses * 3 > residences * 2:
+		if settler_houses * 3 > len(residences) * 2:
 			return True
 		return False
 
