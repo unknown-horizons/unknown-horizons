@@ -246,6 +246,8 @@ class ShipRoute(object):
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
 
+
+
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
 	@param x: int x position
@@ -262,8 +264,26 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
-		self.session.world.ships.append(self)
+		self.__init()
 
+	def save(self, db):
+		super(Ship, self).save(db)
+		if hasattr(self, 'route'):
+			self.route.save(db)
+
+	def load(self, db, worldid):
+		super(Ship, self).load(db, worldid)
+		self.__init()
+
+		# if ship did not have route configured, do not add attribute
+		if ShipRoute.has_route(db, worldid):
+			self.create_route()
+			self.route.load(db)
+
+	def __init(self):
+		self._selected = False
+		# register ship in world
+		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
@@ -274,7 +294,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
-		self.deselect()
+		if self._selected:
+			self.deselect()
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
@@ -303,19 +324,11 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
+		self._selected = True
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		# add a buoy at the ship's target if the player owns the ship
-		if self.is_moving() and self.session.world.player == self.owner:
-			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
-			loc.thisown = 0 # thisown = 0 because the genericrenderernode might delete it
-			move_target = self.get_move_target()
-			coords = fife.ModelCoordinate(move_target.x, move_target.y)
-			coords.thisown = 1 # thisown = 1 because setLayerCoordinates will create a copy
-			loc.setLayerCoordinates(coords)
-			self.session.view.renderer['GenericRenderer'].addAnimation(
-				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
-				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
-			)
+		if self.session.world.player == self.owner:
+			self._update_buoy()
 		self.draw_health()
 		if reset_cam:
 			self.session.view.set_location(self.position.to_tuple())
@@ -323,6 +336,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
+		self._selected = False
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
 		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
@@ -361,7 +375,15 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)
-		if self.session.world.player == self.owner: # handle buoy
+		if self._selected and self.session.world.player == self.owner: # handle buoy
+			# if move() is called as move_callback, tmp() from above might
+			# be executed after this, so draw the new buoy after move_callbacks have finished.
+			Scheduler().add_new_object(self._update_buoy, self, run_in=0)
+
+	def _update_buoy(self):
+		"""Draw a buoy at the move target if the ship is moving."""
+		move_target = self.get_move_target()
+		if move_target != None:
 			# set remove buoy callback
 			ship_id = self.worldid
 			session = self.session # this has to happen here,
@@ -373,17 +395,10 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 			self.add_move_callback(tmp)
 
-			self._update_buoy()
-
-
-	def _update_buoy(self):
-		# draw buoy in case this is the player's ship
-		move_target = self.get_move_target()
-		if move_target != None:
 			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
-			loc.thisown = 0
+			loc.thisown = 0  # thisown = 0 because the genericrenderernode might delete it
 			coords = fife.ModelCoordinate(move_target.x, move_target.y)
-			coords.thisown = 0
+			coords.thisown = 1 # thisown = 1 because setLayerCoordinates will create a copy
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
@@ -395,22 +410,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 		# We need unicode strings as the name is displayed on screen.
 		return map(lambda x: unicode(x[0], 'utf-8'), names)
 
-	def save(self, db):
-		super(Ship, self).save(db)
-		if hasattr(self, 'route'):
-			self.route.save(db)
-
-	def load(self, db, worldid):
-		super(Ship, self).load(db, worldid)
-
-		# register ship in world
-		self.session.world.ships.append(self)
-		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-
-		# if ship did not have route configured, do not add attribute
-		if ShipRoute.has_route(db, worldid):
-			self.create_route()
-			self.route.load(db)
 
 	def find_nearby_ships(self, radius=15):
 		# TODO: Replace 15 with a distance dependant on the ship type and any

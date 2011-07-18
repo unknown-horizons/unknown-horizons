@@ -46,7 +46,6 @@ class MovingObject(ConcretObject):
 	*moving methods:
 	- move
 	- stop
-	- move_back
 	- add_move_callback
 
 	*getters/checkers:
@@ -144,16 +143,6 @@ class MovingObject(ConcretObject):
 			# this assures that a movement takes at least 1 tick, which is sometimes subtly
 			# assumed e.g. in the collector code
 			Scheduler().add_new_object(self._move_tick, self)
-
-	def move_back(self, callback = None, destination_in_building = False, action='move', blocked_callback = None):
-		"""Return to the place where last movement started. Same path is used, but in reverse order.
-		@param callback: same as callback in move()
-		@param destination_in_building: bool, whether target is in a building
-		@param blocked_callback: same as blocked_callback in move()
-		"""
-		self.log.debug("%s: Moving back to %s", self, self.get_move_target())
-		self.path.revert_path(destination_in_building)
-		self.move(None, callback, destination_in_building, action, _path_calculated = True, blocked_callback = blocked_callback)
 
 	def _movement_finished(self):
 		self.log.debug("%s: movement finished. calling callbacks %s", self, self.move_callbacks)
