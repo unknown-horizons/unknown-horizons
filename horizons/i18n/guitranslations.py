@@ -182,6 +182,7 @@ def set_translations():
 			"set25"                       : _("{SHIFT} = Hold to place multiple buildings"),
 			"set26"                       : _("{C} = Chat"),
 			"set27"                       : _("{L} = Toggle Captain's log"),
+			"set28"                       : _("{T} = Toggle translucency of ambient buildings"),
 			"okButton"                    : _("Exit to main menu")},
 		"ingamemenu.xml" : {
 			"help"                        : _("Help"),
@@ -281,7 +282,10 @@ def set_translations():
 			"headline_choose_map_lbl"     : _("Choose a map to play:"),
 			"headline_choose_opponents_lbl": _("Choose your opponents:")},
 		"sp_random.xml" : {
-			"headline_game_settings_lbl"  : _("Game settings:"),
+			"climate_lbl"                 : _("Climate zone:"),
+			"climate_zone_lbl_cold"       : _("frosty"),
+			"climate_zone_lbl_warm"       : _("torrid"),
+			"headline_map_settings_lbl"   : _("Map settings:"),
 			"island_size_lbl"             : _("Island size:"),
 			"island_size_lbl_huge"        : _("huge"),
 			"island_size_lbl_small"       : _("small"),
@@ -289,8 +293,8 @@ def set_translations():
 			"map_size_lbl_huge"           : _("huge"),
 			"map_size_lbl_small"          : _("small"),
 			"resource_density_lbl"        : _("Resource density:"),
-			"resource_density_lbl_huge"   : _("dense"),
-			"resource_density_lbl_small"  : _("few")},
+			"resource_density_lbl_dense"  : _("dense"),
+			"resource_density_lbl_few"    : _("few")},
 		"sp_scenario.xml" : {
 			"choose_map_lbl"              : _("Choose a map to play:")},
 		"game_settings.xml" : {

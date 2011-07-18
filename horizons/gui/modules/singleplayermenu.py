@@ -26,7 +26,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import PlayerDataSelection
 
 class SingleplayerMenu(object):
-	def show_single(self, show = 'random'): # tutorial
+	def show_single(self, show = 'scenario'): # tutorial
 		"""
 		@param show: string, which type of games to show
 		"""
