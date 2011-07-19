@@ -53,10 +53,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 		"""
 		super(FightingShip, self).fire_all_weapons(dest, rotate)
 
-		if not self._fireable:
-			return
-
-		if not self._min_range <= self.position.distance(dest) <= self._max_range:
+		if not self.can_attack_position(dest):
 			return
 
 		# rotate the ship so it faces dest

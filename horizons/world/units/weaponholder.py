@@ -138,12 +138,28 @@ class WeaponHolder(object):
 		self.on_storage_modified()
 
 	def attack_in_range(self):
+		"""
+		Returns True if the target is in range, False otherwise
+		"""
 		if not self._target:
 			return False
 		distance = self.position.distance(self._target.position.center())
 		if self._min_range <= distance <= self._max_range:
 			return True
 		return False
+
+	def can_attack_position(self, position):
+		"""
+		Returns True if the holder can attack position at call time
+		@param position: position of desired attack
+		"""
+		# if no fireable weapon return false
+		if not self._fireable:
+			return False
+		# if position not in range return false
+		if not self._min_range <= self.position.distance(position.center()) <= self._max_range:
+			return False
+		return True
 
 	def try_attack_target(self):
 		"""
@@ -260,7 +276,7 @@ class WeaponHolder(object):
 			override to True for units that need to fire at rotated coords
 		"""
 
-		if not self._fireable:
+		if not self.can_attack_position(dest):
 			return
 
 		if not rotated:
