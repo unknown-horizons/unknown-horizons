@@ -316,7 +316,6 @@ class WeaponHolder(object):
 		for weapon_id, number in weapons:
 			for i in xrange(number):
 				self.add_weapon_to_storage(weapon_id)
-		self.attack_actions = []
 
 @metaChangeListenerDecorator("user_move_issued")
 class MovingWeaponHolder(WeaponHolder):
@@ -328,7 +327,6 @@ class MovingWeaponHolder(WeaponHolder):
 		self.add_component('none', NoneStance)
 		self.add_component('flee', FleeStance)
 		self.stance = 'hold_ground'
-		self.attack_actions = ['fire_left_as_frigate0', 'fire_right_as_frigate0']
 
 	def _stance_tick(self):
 		"""
@@ -375,14 +373,10 @@ class MovingWeaponHolder(WeaponHolder):
 			# if target passes near self, attack!
 			in_range_callback = self.try_attack_target
 			# if executes attack action try to move in 1 second
-			if self._instance.getCurrentAction().getId() in self.attack_actions:
-				Scheduler().add_new_object(Callback(self._move_and_attack, destination, not_possible_action, in_range_callback),
-					self, GAME_SPEED.TICKS_PER_SECOND)
-			else:
-				self._move_and_attack(destination, not_possible_action, in_range_callback)
+			self._move_and_attack(destination, not_possible_action, in_range_callback)
 		else:
 			if self.is_moving() and self._fireable:
-				self.stop()
+				Scheduler().rem_call(self, self._move_tick)
 
 			distance = self.position.distance(self._target.position.center())
 			dest = self._target.position.center()
