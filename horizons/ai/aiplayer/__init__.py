@@ -71,6 +71,7 @@ class AIPlayer(GenericAI):
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
 		self.need_more_ships = False
+		self._need_feeder_island = False
 		self.__init()
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
@@ -128,7 +129,6 @@ class AIPlayer(GenericAI):
 		self.missions = set()
 		self.fishers = []
 		self.complete_inventory = CompleteInventory(self)
-		self._need_feeder_island = False
 		self.unit_builder = UnitBuilder(self)
 
 	def report_success(self, mission, msg):
@@ -161,7 +161,8 @@ class AIPlayer(GenericAI):
 		calls = Scheduler().get_classinst_calls(self, current_callback)
 		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
 		remaining_ticks = max(calls.values()[0], 1)
-		db("INSERT INTO ai_player(rowid, remaining_ticks) VALUES(?, ?)", self.worldid, remaining_ticks)
+		db("INSERT INTO ai_player(rowid, need_more_ships, need_feeder_island, remaining_ticks) VALUES(?, ?, ?, ?)", \
+			self.worldid, self.need_more_ships, self._need_feeder_island, remaining_ticks)
 
 		# save the ships
 		for ship, state in self.ships.iteritems():
@@ -183,7 +184,8 @@ class AIPlayer(GenericAI):
 		super(AIPlayer, self)._load(db, worldid)
 		self.__init()
 
-		remaining_ticks = db("SELECT remaining_ticks FROM ai_player WHERE rowid = ?", worldid)[0][0]
+		self.need_more_ships, self._need_feeder_island, remaining_ticks = \
+			db("SELECT need_more_ships, need_feeder_island, remaining_ticks FROM ai_player WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
 
 	def finish_loading(self, db):
