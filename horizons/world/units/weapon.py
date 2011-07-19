@@ -73,19 +73,25 @@ class Weapon(object):
 	def get_maximum_range(self):
 		return self.weapon_range[1]
 
-	def on_impact(self, position):
-		#deal damage to units in position callback
+	@classmethod
+	def on_impact(cls, session, weapon_id, damage, position):
+		"""
+		Classmethod that deals damage to units at position, depending on weapon_id
+		Damage is done independent of the weapon instance, which may not exist at the time damage is done
+		@param session : UH session
+		@param weapon_id : id of the weapon
+		@param damage : damage to be done
+		@param position : Point with position where damage needs to be done
+		"""
+		# deal damage to units in position callback
+		attack_radius = session.db.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
 
-		units = self.session.world.get_ships(position, self.attack_radius)
-#		for point in Circle(position, self.attack_radius):
-#			unit = self.session.world.get_building(point)
-#			if unit not in units and unit is not None:
-#				units.append(unit)
-#
+		units = session.world.get_ships(position, attack_radius)
+
 		for unit in units:
 			print 'dealing damage to ship:', unit
 			if unit.has_component('health'):
-				unit.get_component('health').deal_damage(self.weapon_id, self.get_damage_modifier())
+				unit.get_component('health').deal_damage(weapon_id, damage)
 
 	def make_attack_ready(self):
 		self.attack_ready = True
@@ -98,18 +104,18 @@ class Weapon(object):
 		@param position : position where the weapon is fired from
 		"""
 		if not self.attack_ready:
-			print 'attack not ready!'
 			return
 
 		distance = round(position.distance(destination.center()))
 		if not self.check_target_in_range(distance):
-			print self, 'not in range'
 			return
 
 		#calculate the ticks until impact
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
 		#deal damage when attack reaches target
-		Scheduler().add_new_object(Callback(self.on_impact, destination), self, ticks)
+		Scheduler().add_new_object(Callback(Weapon.on_impact,
+			self.session, self.weapon_id, self.get_damage_modifier(), destination),
+			Weapon, ticks)
 
 		#calculate the ticks until attack is ready again
 		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
