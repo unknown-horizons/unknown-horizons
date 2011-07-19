@@ -134,7 +134,7 @@ class Settlement(TradePost, NamedObject):
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		upgrade_permissions = {}
 		tax_settings = {}
-		for level, allowed, tax in db("SELECT level, upgrading_allowed, tax_setting FROM settlement_level_properties"):
+		for level, allowed, tax in db("SELECT level, upgrading_allowed, tax_setting FROM settlement_level_properties WHERE settlement = ?", worldid):
 			upgrade_permissions[level] = allowed
 			tax_settings[level] = tax
 		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
