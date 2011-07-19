@@ -38,6 +38,6 @@ class Component(object):
 		"""
 		pass
 	
-	def load(self, db):
+	def load(self, db, worldid):
 		pass
 

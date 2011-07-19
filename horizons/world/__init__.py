@@ -40,6 +40,7 @@ from horizons.util import decorators
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
+from horizons.world.units.weapon import Weapon
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -235,6 +236,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		if self.session.is_game_loaded():
 			for (worldid, sx, sy, dx, dy, speed, img) in savegame_db("SELECT worldid, startx, starty, destx, desty, speed, image FROM bullet"):
 				Bullet(img, Point(sx, sy), Point(dx, dy), speed, self.session, False, worldid)
+
+		# load ongoing attacks
+		if self.session.is_game_loaded():
+			Weapon.load_attacks(self.session, savegame_db)
 
 		# load diplomacy
 		self.diplomacy = Diplomacy()
@@ -608,6 +613,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		for bullet in self.bullets:
 			bullet.save(db)
 		self.diplomacy.save(db)
+		Weapon.save_attacks(db)
 
 	def get_checkup_hash(self):
 		dict = {

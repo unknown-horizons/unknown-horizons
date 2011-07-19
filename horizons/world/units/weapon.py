@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import Circle, Callback
+from horizons.util import Point, Circle, Callback
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
@@ -84,7 +84,7 @@ class Weapon(object):
 		@param position : Point with position where damage needs to be done
 		"""
 		# deal damage to units in position callback
-		attack_radius = session.db.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
+		attack_radius = session.db.get_weapon_attack_radius(weapon_id)
 
 		units = session.world.get_ships(position, attack_radius)
 
@@ -136,6 +136,32 @@ class Weapon(object):
 		if self.weapon_range[0] <= distance <= self.weapon_range[1]:
 			return True
 		return False
+
+	@classmethod
+	def load_attacks(cls, session, db):
+		"""
+		Loads ongoing attacks from savegame database
+		Creates scheduled calls for on_impact
+		"""
+		for (ticks, weapon_id, damage, dx, dy) in db("SELECT remaining_ticks, weapon_id, damage, dest_x, dest_y FROM attacks"):
+			Scheduler().add_new_object(Callback(Weapon.on_impact,
+				session, weapon_id, damage, Point(dx, dy)), Weapon, ticks)
+
+	@classmethod
+	def save_attacks(cls, db):
+		"""
+		Saves ongoing attacks
+		"""
+		calls = Scheduler().get_classinst_calls(Weapon)
+		for call in calls:
+			callback = call.callback
+			weapon_id = callback.args[1]
+			damage = callback.args[2]
+			dest_x = callback.args[3].x
+			dest_y = callback.args[3].y
+			ticks = calls[call]
+			db("INSERT INTO attacks(remaining_ticks, weapon_id, damage, dest_x, dest_y) VALUES (?, ?, ?, ?, ?)",
+				ticks, weapon_id, damage, dest_x, dest_y)
 
 class SetStackableWeaponNumberError(Exception):
 	"""

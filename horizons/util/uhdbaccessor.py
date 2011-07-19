@@ -247,3 +247,7 @@ class UhDbAccessor(DbReader):
 	def get_weapon_stackable(self, weapon_id):
 		"""Returns True if the weapon is stackable, False otherwise."""
 		return self.cached_query("SELECT stackable FROM weapon WHERE id = ?", weapon_id)[0][0]
+
+	def get_weapon_attack_radius(self, weapon_id):
+		"""Returns weapon's attack radius modifier."""
+		return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
