@@ -376,6 +376,9 @@ class MovingWeaponHolder(WeaponHolder):
 			self._move_and_attack(destination, not_possible_action, in_range_callback)
 		else:
 			if self.is_moving() and self._fireable:
+				# stop to shoot
+				self.stop()
+				# do not execute the next move tick
 				Scheduler().rem_call(self, self._move_tick)
 
 			distance = self.position.distance(self._target.position.center())
