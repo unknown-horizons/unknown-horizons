@@ -336,7 +336,7 @@ class SettlementManager(WorldObject):
 
 	def need_more_storage(self):
 		limit = self.settlement.inventory.get_limit(RES.FOOD_ID)
-		if limit >= 120:
+		if limit >= 60:
 			return False
 		important_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
 		for resource_id in important_resources:
