@@ -169,10 +169,10 @@ INSERT INTO "animation" VALUES(195,'content/gfx/base/water/shallow-deep/shallow-
 INSERT INTO "animation" VALUES(196,'content/gfx/base/water/shallow-deep/shallow-deep_23.png',0.0);
 INSERT INTO "animation" VALUES(197,'content/gfx/base/water/shallow-deep/shallow-deep_24.png',0.0);
 CREATE TABLE "speech" ("group_id" INTEGER NOT NULL  DEFAULT 0 ,"file" TEXT NOT NULL );
-INSERT INTO "speech" VALUES(1,'content/audio/voice/eng/gamestart/0.ogg');
-INSERT INTO "speech" VALUES(1,'content/audio/voice/eng/gamestart/1.ogg');
-INSERT INTO "speech" VALUES(1,'content/audio/voice/eng/gamestart/2.ogg');
-INSERT INTO "speech" VALUES(1,'content/audio/voice/eng/gamestart/3.ogg');
+INSERT INTO "speech" VALUES(1,'content/audio/voice/map_creation/en/0.ogg');
+INSERT INTO "speech" VALUES(1,'content/audio/voice/map_creation/en/1.ogg');
+INSERT INTO "speech" VALUES(1,'content/audio/voice/map_creation/en/2.ogg');
+INSERT INTO "speech" VALUES(1,'content/audio/voice/map_creation/en/3.ogg');
 INSERT INTO "speech" VALUES(2,'content/audio/sounds/events/new_settlement.ogg');
 INSERT INTO "speech" VALUES(3,'content/audio/sounds/events/new_era.ogg');
 CREATE TABLE "sounds" ("file" TEXT NOT NULL  DEFAULT '', id auto_increment not null default -1);
