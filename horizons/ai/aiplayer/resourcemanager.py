@@ -143,6 +143,14 @@ class ResourceManager(WorldObject):
 				total += resource_manager.get_total_export()
 		return total
 
+	def get_production_value(self):
+		""" returns an estimated amount of resources that have to be collected by the general collectors per tick """
+		total = 0
+		for resource_id, building_id in self._data:
+			if building_id in AbstractBuilding.buildings:
+				total += AbstractBuilding.buildings[building_id].get_total_production_value(self.settlement_manager, resource_id)
+		return total
+
 	def __str__(self):
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
 		for resource_manager in self._data.itervalues():

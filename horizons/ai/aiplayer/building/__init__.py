@@ -110,6 +110,20 @@ class AbstractBuilding(object):
 		""" Most buildings can get away with reporting the expected production level """
 		return self.get_expected_production_level(resource_id)
 
+	def get_total_production_value(self, settlement_manager, resource_id):
+		total = 0
+		for building in settlement_manager.settlement.get_buildings_by_id(self.id):
+			total += self.get_production_value(building, resource_id)
+		return total
+
+	def get_production_value(self, building, resource_id):
+		if not self.producer_building or self.ignore_production:
+			return 0
+		return self.get_production_level(building, resource_id) * self.get_collector_likelihood(building, resource_id)
+
+	def get_collector_likelihood(self, building, resource_id):
+		return 1
+
 	def have_resources(self, settlement_manager):
 		return Entities.buildings[self.id].have_resources([settlement_manager.land_manager.settlement], settlement_manager.owner)
 

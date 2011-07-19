@@ -112,19 +112,11 @@ class ProductionBuilder(AreaBuilder):
 		return False
 
 	def enough_collectors(self):
-		produce_quantity = 0
-		for building in self.production_buildings:
-			if building.id == BUILDINGS.FARM_CLASS:
-				produce_quantity += 2
-			elif building.id == BUILDINGS.CLAY_PIT_CLASS:
-				pass
-			elif building.id == BUILDINGS.MOUNTAIN_CLASS:
-				pass
-			elif building.id == BUILDINGS.BOATBUILDER_CLASS:
-				pass
-			else:
-				produce_quantity += 1
-		return 1 + 2 * len(self.collector_buildings) > produce_quantity
+		production_value = self.settlement_manager.resource_manager.get_production_value()
+		collector_capacity = 0.007 # resource collected per collector per tick
+		total_collector_capacity = (1 + 2 * len(self.collector_buildings)) * collector_capacity
+		self.log.info('%s collector capacity %.3f, need %.3f', self, total_collector_capacity, production_value)
+		return total_collector_capacity > production_value
 
 	def _get_collector_data(self):
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]

@@ -35,6 +35,9 @@ class AbstractFarm(AbstractBuilding):
 		""" the fields have to take into account the farm cost """
 		return 0
 
+	def get_collector_likelihood(self, building, resource_id):
+		return 0 # just use the values of the fields
+
 	@classmethod
 	def get_purpose(cls, resource_id):
 		if resource_id == RES.FOOD_ID:

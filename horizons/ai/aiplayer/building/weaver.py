@@ -29,6 +29,9 @@ class AbstractWeaver(AbstractBuilding):
 	def evaluator_class(self):
 		return WeaverEvaluator
 
+	def get_collector_likelihood(self, building, resource_id):
+		return 0.5 # the low value reflects the usual closeness to a storage
+
 	@classmethod
 	def register_buildings(cls):
 		cls.available_buildings[BUILDINGS.WEAVER_CLASS] = cls
