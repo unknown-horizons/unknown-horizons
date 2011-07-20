@@ -23,7 +23,8 @@ from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
 		 MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab, \
-		 MarketPlaceSailorsTab, MarketPlacePioneersTab, MarketPlaceSettlersTab
+		 MarketPlaceSailorsTab, MarketPlacePioneersTab, MarketPlaceSettlersTab, \
+		 EnemyBranchOfficeOverviewTab
 from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
@@ -63,6 +64,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
 	tabs = (BranchOfficeOverviewTab, InventoryTab, BuySellTab, AccountTab)
+	enemy_tabs = (EnemyBranchOfficeOverviewTab,)
 	def __init__(self, *args, **kwargs):
 		super(BranchOffice, self).__init__(*args, **kwargs)
 		self.settlement.branch_office = self # we never need to unset this since bo's are indestructible

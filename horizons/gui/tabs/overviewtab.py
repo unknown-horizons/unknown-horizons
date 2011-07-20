@@ -319,6 +319,26 @@ class EnemyBuildingOverviewTab(OverviewTab):
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
 
+class EnemyBranchOfficeOverviewTab(OverviewTab):
+	def __init__(self, instance):
+		super(EnemyBranchOfficeOverviewTab, self).__init__(
+			widget = 'overview_enemybranchoffice.xml',
+			instance = instance
+		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.tooltip = _("Branch office overview")
+
+	def refresh(self):
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+
+		selling_inventory = self.widget.findChild(name='selling_inventory')
+		selling_inventory.init(self.instance.session.db, self.instance.settlement.inventory, self.instance.settlement.sell_list, True)
+
+		buying_inventory = self.widget.findChild(name='buying_inventory')
+		buying_inventory.init(self.instance.session.db, self.instance.settlement.inventory, self.instance.settlement.buy_list, False)
+
+		super(EnemyBranchOfficeOverviewTab, self).refresh()
+
 class EnemyShipOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(EnemyShipOverviewTab, self).__init__(
