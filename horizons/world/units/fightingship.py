@@ -94,8 +94,4 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self.act('fire_%s' % direction, facing_location, repeating=False)
 		self._action = 'idle'
 
-	def load(self, db, worldid):
-		super(FightingShip, self).load(db, worldid)
-		#TODO load it!
-		self.stance = 'hold_ground'
 
