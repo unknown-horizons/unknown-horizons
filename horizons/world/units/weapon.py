@@ -137,6 +137,14 @@ class Weapon(object):
 			return True
 		return False
 
+	def get_ticks_until_ready(self):
+		"""
+		Returns the number of ticks until the attack is ready
+		If attack is ready return 0
+		"""
+		return 0 if self.attack_ready else Scheduler().get_remaining_ticks(self, self.make_attack_ready)
+
+
 	@classmethod
 	def load_attacks(cls, session, db):
 		"""
