@@ -311,27 +311,51 @@ class WeaponHolder(object):
 
 	def save(self, db):
 		super(WeaponHolder, self).save(db)
-		weapons = {}
+		# save weapon storage
 		for weapon in self._weapon_storage:
 			number = 1
+			ticks = weapon.get_ticks_until_ready()
 			if self.session.db.get_weapon_stackable(weapon.weapon_id):
 				number = weapon.number_of_weapons
-			if weapon.weapon_id in weapons:
-				weapons[weapon.weapon_id] += number
-			else:
-				weapons[weapon.weapon_id] = number
 
-		for weapon_id in weapons:
-			db("INSERT INTO weapon_storage(owner_id, weapon_id, number) VALUES(?, ?, ?)",
-				self.worldid, weapon_id, weapons[weapon_id])
+			db("INSERT INTO weapon_storage(owner_id, weapon_id, number, remaining_ticks) VALUES(?, ?, ?, ?)",
+				self.worldid, weapon.weapon_id, number, ticks)
+		# save target
+		if self._target:
+			db("INSERT INTO target(worldid, target_id) VALUES(?, ?)", self.worldid, self._target.worldid) 
+
+	def load_target(self, db):
+		"""
+		Loads target from database
+		"""
+		target_id = db("SELECT target_id from target WHERE worldid = ?", self.worldid)
+		if target_id:
+			target = self.session.world.get_object_by_id(target_id[0][0])
+			self.attack(target)
 
 	def load(self, db, worldid):
 		super(WeaponHolder, self).load(db, worldid)
 		self.__init()
-		weapons = db("SELECT weapon_id, number FROM weapon_storage WHERE owner_id = ?", worldid)
-		for weapon_id, number in weapons:
-			for i in xrange(number):
-				self.add_weapon_to_storage(weapon_id)
+		weapons = db("SELECT weapon_id, number, remaining_ticks FROM weapon_storage WHERE owner_id = ?", worldid)
+		for weapon_id, number, ticks in weapons:
+			# create weapon and add to storage manually
+			if self.session.db.get_weapon_stackable(weapon_id):
+				weapon = StackableWeapon(self.session, weapon_id)
+				weapon.set_number_of_weapons(number)
+			else:
+				weapon = Weapon(self.session, weapon_id)
+			self._weapon_storage.append(weapon)
+			# if weapon not ready add scheduled call and remove from fireable
+			if ticks:
+				weapon.attack_ready = False
+				Scheduler().add_new_object(weapon.make_attack_ready, weapon, ticks)
+			else:
+				self._fireable.append(weapon)
+			weapon.add_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
+			weapon.add_attack_ready_listener(Callback(self._add_to_fireable, weapon))
+		self.on_storage_modified()
+		# load target after all objects have been loaded
+		Scheduler().add_new_object(Callback(self.load_target, db), self, run_in = 0)
 
 @metaChangeListenerDecorator("user_move_issued")
 class MovingWeaponHolder(WeaponHolder):

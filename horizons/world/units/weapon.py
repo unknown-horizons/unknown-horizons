@@ -61,7 +61,6 @@ class Weapon(object):
 		self.attack_radius = data[7]
 		self.bullet_image = data[8]
 		self.attack_ready = True
-		self.remaining_ticks = 0
 		self.session = session
 
 	def get_damage_modifier(self):
