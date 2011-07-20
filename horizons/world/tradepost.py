@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import RES
+from horizons.constants import RES, TRADER
 from horizons.scheduler import Scheduler
 
 class TradePost(object):
@@ -126,6 +126,52 @@ class TradePost(object):
 			self.total_income += amount*price
 			return True
 		assert False
+
+	def sell_resource(self, ship, resource_id, amount):
+		"""Attempt to sell the given amount of resource to the ship"""
+		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
+		assert price > 0
+
+		# can't sell more than what we have
+		amount = min(amount, self.inventory[resource_id])
+		# can't sell more than the ship can fit in its inventory
+		amount = min(amount, ship.inventory.get_free_space_for(resource_id))
+		# can't sell more than the ship's owner can afford
+		amount = min(amount, ship.owner.inventory[RES.GOLD_ID] // price)
+		# can't sell more than we are trying to sell according to the settings
+		amount = min(amount, self.inventory[resource_id] - self.sell_list[resource_id])
+
+		if amount > 0:
+			total_price = price * amount
+			assert self.owner.inventory.alter(RES.GOLD_ID, total_price) == 0
+			assert ship.owner.inventory.alter(RES.GOLD_ID, -total_price) == 0
+			assert self.inventory.alter(resource_id, -amount) == 0
+			assert ship.inventory.alter(resource_id, amount) == 0
+			self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
+			self.total_income += total_price
+
+	def buy_resource(self, ship, resource_id, amount):
+		"""Attempt to buy the given amount of resource from the ship"""
+		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
+		assert price > 0
+
+		# can't buy more than the ship has
+		amount = min(amount, ship.inventory[resource_id])
+		# can't buy more than we can fit in the inventory
+		amount = min(amount, self.inventory.get_free_space_for(resource_id))
+		# can't buy more than we can afford
+		amount = min(amount, self.owner.inventory[RES.GOLD_ID] // price)
+		# can't buy more than we are trying to buy according to the settings
+		amount = min(amount, self.buy_list[resource_id] - self.inventory[resource_id])
+
+		if amount > 0:
+			total_price = price * amount
+			assert self.owner.inventory.alter(RES.GOLD_ID, -total_price) == 0
+			assert ship.owner.inventory.alter(RES.GOLD_ID, total_price) == 0
+			assert self.inventory.alter(resource_id, amount) == 0
+			assert ship.inventory.alter(resource_id, -amount) == 0
+			self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
+			self.total_expenses += total_price
 
 	@property
 	def sell_income(self):

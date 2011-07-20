@@ -21,6 +21,7 @@
 
 from tabinterface import TabInterface
 from horizons.gui.widgets.tradewidget import TradeWidget
+from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.util import Callback
 from horizons.scheduler import Scheduler
@@ -69,14 +70,20 @@ class ShipInventoryTab(InventoryTab):
 	def refresh(self):
 		session = self.instance.session
 		branches = session.world.get_branch_offices(self.instance.position, \
-		                                            self.instance.radius, \
-		                                            self.instance.owner)
+			self.instance.radius, self.instance.owner, True)
 		events = {}
 
 		events['configure_route/mouseClicked'] = Callback(self.configure_route)
 
-		if len(branches) > 0:
+		# TODO: use a better way to decide which label should be shown
+		if len(branches) > 0 and branches[0].owner is self.instance.owner:
 			events['trade'] = Callback(session.ingame_gui.show_menu, TradeWidget(self.instance))
+			self.widget.findChild(name='load_unload_label').text = _('Load/Unload:')
+			self.widget.findChild(name='bg_button').set_active()
+			self.widget.findChild(name='trade').set_active()
+		elif len(branches) > 0:
+			events['trade'] = Callback(session.ingame_gui.show_menu, InternationalTradeWidget(self.instance))
+			self.widget.findChild(name='load_unload_label').text = _('Buy/Sell:')
 			self.widget.findChild(name='bg_button').set_active()
 			self.widget.findChild(name='trade').set_active()
 		else:

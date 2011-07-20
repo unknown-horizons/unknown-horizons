@@ -281,6 +281,7 @@ class Fife(ApplicationBase):
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 
 		from gui.widgets.inventory import Inventory
+		from gui.widgets.buysellinventory import BuySellInventory
 		from gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
 		from gui.widgets.progressbar import ProgressBar
 		from gui.widgets.toggleimagebutton import ToggleImageButton
@@ -292,6 +293,7 @@ class Fife(ApplicationBase):
 		pychan.widgets.registerWidget(CancelButton)
 		pychan.widgets.registerWidget(DeleteButton)
 		pychan.widgets.registerWidget(Inventory)
+		pychan.widgets.registerWidget(BuySellInventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
 		pychan.widgets.registerWidget(OkButton)
 		pychan.widgets.registerWidget(ProgressBar)

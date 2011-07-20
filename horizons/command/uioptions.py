@@ -52,9 +52,19 @@ class RemoveFromSellList(GenericCommand):
 		super(RemoveFromSellList, self).__init__(tradepost, 'remove_from_sell_list', res_id)
 
 class TransferResource(GenericCommand):
-	"""Transfers an amount of a Resouce from one Storage to another"""
+	"""Transfers an amount of a resource from one Storage to another"""
 	def __init__(self, amount, res_id, transfer_from, transfer_to):
 		super(TransferResource, self).__init__(transfer_from, 'transfer_to_storageholder', amount, res_id, transfer_to.worldid)
+
+class SellResource(GenericCommand):
+	"""The given settlement attempts to sell the given amount of resource to the ship"""
+	def __init__(self, settlement, ship, resource_id, amount):
+		super(SellResource, self).__init__(settlement, 'sell_resource', ship, resource_id, amount)
+
+class BuyResource(GenericCommand):
+	"""The given settlement attempts to buy the given amount of resource from the ship"""
+	def __init__(self, settlement, ship, resource_id, amount):
+		super(BuyResource, self).__init__(settlement, 'buy_resource', ship, resource_id, amount)
 
 class RenameObject(GenericCommand):
 	"""Rename a NamedObject"""

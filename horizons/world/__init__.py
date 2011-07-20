@@ -510,12 +510,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		return islands
 
 	@decorators.make_constants()
-	def get_branch_offices(self, position=None, radius=None, owner=None):
+	def get_branch_offices(self, position=None, radius=None, owner=None, include_friendly=False):
 		"""Returns all branch offices on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
 		@param owner: Player instance, list only branch offices belonging to this player.
+		@param include_friendly also list the branch offices belonging to friends
 		@return: List of branch offices.
 		"""
 		branchoffices = []
@@ -530,7 +531,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				bo = settlement.branch_office
 				if (radius is None or position is None or \
 				    bo.position.distance(position) <= radius) and \
-				   (owner is None or bo.owner == owner):
+				   (owner is None or bo.owner == owner or include_friendly):
 					branchoffices.append(bo)
 		return branchoffices
 
