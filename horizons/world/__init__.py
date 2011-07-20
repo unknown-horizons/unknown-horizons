@@ -243,7 +243,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# load diplomacy
 		self.diplomacy = Diplomacy()
-		self.diplomacy.load(savegame_db)
+		if self.session.is_game_loaded():
+			self.diplomacy.load(self, savegame_db)
 
 		# add diplomacy notification listeners
 		def notify_change(caller, change_type, a, b):

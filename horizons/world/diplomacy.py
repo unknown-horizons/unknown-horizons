@@ -107,13 +107,21 @@ class Diplomacy(object):
 		tup = make_tup(a,b)
 		return tup not in self.friends and tup not in self.enemies
 
-	def load(self, db):
-		#TODO implement
-		pass
+	def load(self, world, db):
+		for a, b in db("SELECT player1, player2 FROM diplomacy_allies"):
+			tup = world.get_object_by_id(a), world.get_object_by_id(b)
+			self.friends.add(tup)
+		for a, b in db("SELECT player1, player2 FROM diplomacy_enemies"):
+			tup = world.get_object_by_id(a), world.get_object_by_id(b)
+			self.enemies.add(tup)
 
 	def save(self, db):
-		#TODO implement
-		pass
+		for tup in self.friends:
+			db("INSERT INTO diplomacy_allies(player1, player2) VALUES(?, ?)",
+				tup[0].worldid, tup[1].worldid)
+		for tup in self.enemies:
+			db("INSERT INTO diplomacy_enemies(player1, player2) VALUES(?, ?)",
+				tup[0].worldid, tup[1].worldid)
 
 def make_tup(a, b):
 	"""
