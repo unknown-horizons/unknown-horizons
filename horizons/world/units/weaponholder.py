@@ -440,3 +440,14 @@ class MovingWeaponHolder(WeaponHolder):
 		super(MovingWeaponHolder, self).go(x, y)
 		self.on_user_move_issued()
 
+	def save(self, db):
+		super(MovingWeaponHolder, self).save(db)
+		db("INSERT INTO stance(worldid, stance, state) VALUES(?, ?, ?)",
+			self.worldid, self.stance, self.get_component(self.stance).get_state())
+
+	def load (self, db, worldid):
+		super(MovingWeaponHolder, self).load(db, worldid)
+		stance, state = db("SELECT stance, state FROM stance WHERE worldid = ?", worldid)[0]
+		self.stance = stance
+		self.get_component(self.get_component(self.stance).set_state(state))
+
