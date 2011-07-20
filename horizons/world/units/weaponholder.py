@@ -43,7 +43,7 @@ class WeaponHolder(object):
 		self.create_weapon_storage()
 		self._target = None
 		self.add_storage_modified_listener(self.update_range)
-		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 10)
+		Scheduler().add_new_object(self._stance_tick, self, run_in = 2, loops = -1, loop_interval = GAME_SPEED.TICKS_PER_SECOND)
 
 	def remove(self):
 		self.remove_storage_modified_listener(self.update_range)
@@ -184,8 +184,6 @@ class WeaponHolder(object):
 		Executes every few seconds, doing movement depending on the stance.
 		Static WeaponHolders are aggressive, attacking all enemies that are in range
 		"""
-		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 3)
-
 		enemies = [u for u in self.session.world.get_ships(self.position.center(), self._max_range) \
 			if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
 
@@ -371,7 +369,6 @@ class MovingWeaponHolder(WeaponHolder):
 		"""
 		Executes every few seconds, doing movement depending on the stance.
 		"""
-		Scheduler().add_new_object(self._stance_tick, self, GAME_SPEED.TICKS_PER_SECOND * 3)
 		self.get_component(self.stance).act()
 
 	def _move_and_attack(self, destination, not_possible_action = None, in_range_callback = None):
