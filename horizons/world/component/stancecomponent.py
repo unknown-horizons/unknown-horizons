@@ -22,6 +22,7 @@
 from horizons.world.component import Component
 from horizons.util import Callback, Circle, Annulus
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.scheduler import Scheduler
 
 class StanceComponent(Component):
 	"""
@@ -122,6 +123,10 @@ class LimitedMoveStance(StanceComponent):
 		#TODO get range from db
 		self.stance_radius = 0
 		self.move_range = 0
+		# get instance data after it was inited
+		Scheduler().add_new_object(self.get_instance_data, self, run_in = 0)
+
+	def get_instance_data(self):
 		# get a copy of the center Point object
 		self.return_position = self.instance.position.center().copy()
 

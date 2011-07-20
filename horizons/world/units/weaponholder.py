@@ -337,7 +337,6 @@ class WeaponHolder(object):
 class MovingWeaponHolder(WeaponHolder):
 	def __init__(self, **kwargs):
 		super(MovingWeaponHolder, self).__init__(**kwargs)
-		#TODO move in specialized unit code
 		self.add_component('hold_ground', HoldGroundStance)
 		self.add_component('aggressive', AggressiveStance)
 		self.add_component('none', NoneStance)
