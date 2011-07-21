@@ -129,6 +129,9 @@ class TradePost(object):
 
 	def sell_resource(self, ship, resource_id, amount):
 		"""Attempt to sell the given amount of resource to the ship"""
+		if resource_id not in self.sell_list:
+			return
+
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
 		assert price > 0
 
@@ -152,6 +155,9 @@ class TradePost(object):
 
 	def buy_resource(self, ship, resource_id, amount):
 		"""Attempt to buy the given amount of resource from the ship"""
+		if resource_id not in self.buy_list:
+			return
+
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
 		assert price > 0
 
