@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import math
+
 from collections import defaultdict
 
 from building import AbstractBuilding
@@ -142,6 +144,14 @@ class ResourceManager(WorldObject):
 			if resource_manager.resource_id == resource_id:
 				total += resource_manager.get_total_export()
 		return total
+
+	def get_total_trade_storage(self, resource_id):
+		total = 0
+		for settlement_storage in self.trade_storage.itervalues():
+			for stored_resource_id, amount in settlement_storage.iteritems():
+				if stored_resource_id == resource_id:
+					total += amount
+		return int(math.ceil(total))
 
 	def get_production_value(self):
 		""" returns an estimated amount of resources that have to be collected by the general collectors per tick """
