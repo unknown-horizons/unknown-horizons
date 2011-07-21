@@ -36,7 +36,7 @@ from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.command.production import ToggleActive
-from horizons.constants import BUILDINGS, RES, PRODUCTION, GAME_SPEED, SETTLER
+from horizons.constants import BUILDINGS, RES, PRODUCTION, GAME_SPEED, SETTLER, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
 from horizons.entities import Entities
 
@@ -538,29 +538,55 @@ class SettlementManager(WorldObject):
 		settlement = self.land_manager.settlement
 		inventory = settlement.inventory
 
-		# TODO: limit the number of resources being sold and bought to the number available to regular players
+		buy_sell_list = [] # [(importance (lower is better), resource_id, limit, sell), ...]
 		for resource_id in managed_resources:
 			current_requirement = self.get_current_resource_requirement(resource_id)
-			# set max_buy and min_sell so that 
 			max_buy = int(round(current_requirement * 0.66666)) # when to stop buying
 			if 0 < current_requirement <= 5: # avoid not buying resources when very little is needed in the first place
 				max_buy = current_requirement
 			min_sell = int(round(current_requirement * 1.33333)) # when to start selling
 
 			if inventory[resource_id] < max_buy:
-				if resource_id in settlement.sell_list:
-					RemoveFromSellList(settlement, resource_id).execute(self.session)
-				if resource_id not in settlement.buy_list:
-					AddToBuyList(settlement, resource_id, max_buy).execute(self.session)
+				# have 0, need 100, max_buy 67, importance -0.0434
+				# have 0, need 30, max_buy 20, importance -0.034
+				# have 10, need 30, max_buy 20, importance 0.288
+				# have 19, need 30, max_buy 20, importance 0.578
+				# have 66, need 100, max_buy 67, importance 0.610
+				importance = inventory[resource_id] / float(current_requirement + 1) - math.log(max_buy + 10) / 100
+				buy_sell_list.append((importance, resource_id, max_buy, False))
 			elif inventory[resource_id] > min_sell:
-				if resource_id in settlement.buy_list:
-					RemoveFromBuyList(settlement, resource_id).execute(self.session)
-				if resource_id not in settlement.sell_list:
-					AddToSellList(settlement, resource_id, min_sell).execute(self.session)
-			elif resource_id in settlement.buy_list:
-				RemoveFromBuyList(settlement, resource_id).execute(self.session)
-			elif resource_id in settlement.sell_list:
-				RemoveFromSellList(settlement, resource_id).execute(self.session)
+				price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY)
+				# have 50, need 30, min_sell 40, gold 5000, price 15, importance 0.08625
+				# have 100, need 30, min_sell 40, gold 5000, price 15, importance 0.02464
+				# have 50, need 30, min_sell 40, gold 0, price 15, importance 0.05341
+				# have 50, need 20, min_sell 27, gold 5000, price 15, importance 0.07717
+				# have 28, need 20, min_sell 27, gold 5000, price 15, importance 0.23150
+				# have 28, need 20, min_sell 27, gold 0, price 15, importance 0.14335
+				# have 50, need 30, min_sell 40, gold 10000000, price 15, importance 0.16248
+				# have 40, need 30, min_sell 40, gold 5000, price 30, importance 0.04452
+				importance = 100.0 / (inventory[resource_id] - min_sell + 10) / (current_requirement + 1) * math.log(self.owner.inventory[RES.GOLD_ID] + 200) / (price + 1)
+				buy_sell_list.append((importance, resource_id, min_sell, True))
+
+		# discard the less important ones
+		buy_sell_list = sorted(buy_sell_list)[:3]
+		bought_sold_resources = zip(*buy_sell_list)[1]
+		# make sure the right resources are sold and bought with the right limits
+		for resource_id in managed_resources:
+			if resource_id in bought_sold_resources:
+				limit, sell = buy_sell_list[bought_sold_resources.index(resource_id)][2:]
+				if sell and resource_id in self.settlement.buy_list:
+					RemoveFromBuyList(self.settlement, resource_id).execute(self.session)
+				elif not sell and resource_id in self.settlement.sell_list:
+					RemoveFromSellList(self.settlement, resource_id).execute(self.session)
+				if sell and (resource_id not in self.settlement.sell_list or self.settlement.sell_list[resource_id] != limit):
+					AddToSellList(self.settlement, resource_id, limit).execute(self.session)
+				elif not sell and (resource_id not in self.settlement.buy_list or self.settlement.buy_list[resource_id] != limit):
+					AddToBuyList(self.settlement, resource_id, limit).execute(self.session)
+			else:
+				if resource_id in self.settlement.buy_list:
+					RemoveFromBuyList(self.settlement, resource_id).execute(self.session)
+				elif resource_id in self.settlement.sell_list:
+					RemoveFromSellList(self.settlement, resource_id).execute(self.session)
 
 	def add_building(self, building):
 		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
