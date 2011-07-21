@@ -26,7 +26,8 @@ from collections import defaultdict
 from building import AbstractBuilding
 from horizons.util import WorldObject
 from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import BUILDINGS, RES, TRADER
+from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
 
 class ResourceManager(WorldObject):
 	"""
@@ -160,6 +161,97 @@ class ResourceManager(WorldObject):
 			if building_id in AbstractBuilding.buildings:
 				total += AbstractBuilding.buildings[building_id].get_total_production_value(self.settlement_manager, resource_id)
 		return total
+
+	def get_default_resource_requirement(self, resource_id):
+		""" returns the default level that should exist all the time """
+		if resource_id in [RES.TOOLS_ID, RES.BOARDS_ID]:
+			return 30
+		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS_ID:
+				return 20 if self.settlement_manager.owner.settler_level > 0 else 0
+		elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD_ID:
+			return 30
+		return 0
+
+	def get_unit_building_costs(self, resource_id):
+		return 0 # TODO: take into account all the resources that are needed to build units
+
+	def get_required_upgrade_resources(self, resource_id, upgrade_limit):
+		return 0 # TODO
+
+	def get_required_building_resources(self, resource_id):
+		return 0 # TODO
+
+	def get_current_resource_requirement(self, resource_id):
+		""" returns the extra level that should exist right now (taking into account the default level)"""
+		reserve_time = 1000 # number of ticks to pre-reserve resources for
+		max_upgraded_houses = 10 # maximum number of houses whose upgrades should be accounted for
+
+		currently_reserved = self.get_total_trade_storage(resource_id)
+		future_reserve = int(math.ceil(self.get_total_export(resource_id) * reserve_time))
+		current_usage = int(math.ceil(self.settlement_manager.get_resident_resource_usage(resource_id) * reserve_time))
+		unit_building_costs = self.get_unit_building_costs(resource_id)
+		upgrade_costs = self.get_required_upgrade_resources(resource_id, max_upgraded_houses)
+		building_costs = self.get_required_building_resources(resource_id)
+
+		total_needed = currently_reserved + future_reserve + current_usage + unit_building_costs + upgrade_costs + building_costs
+		return max(total_needed, self.get_default_resource_requirement(resource_id))
+
+	def manager_buysell(self):
+		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
+		settlement = self.settlement_manager.settlement
+		inventory = settlement.inventory
+		session = self.settlement_manager.session
+		gold = self.settlement_manager.owner.inventory[RES.GOLD_ID]
+
+		buy_sell_list = [] # [(importance (lower is better), resource_id, limit, sell), ...]
+		for resource_id in managed_resources:
+			current_requirement = self.get_current_resource_requirement(resource_id)
+			max_buy = int(round(current_requirement * 0.66666)) # when to stop buying
+			if 0 < current_requirement <= 5: # avoid not buying resources when very little is needed in the first place
+				max_buy = current_requirement
+			min_sell = int(round(current_requirement * 1.33333)) # when to start selling
+
+			if inventory[resource_id] < max_buy:
+				# have 0, need 100, max_buy 67, importance -0.0434
+				# have 0, need 30, max_buy 20, importance -0.034
+				# have 10, need 30, max_buy 20, importance 0.288
+				# have 19, need 30, max_buy 20, importance 0.578
+				# have 66, need 100, max_buy 67, importance 0.610
+				importance = inventory[resource_id] / float(current_requirement + 1) - math.log(max_buy + 10) / 100
+				buy_sell_list.append((importance, resource_id, max_buy, False))
+			elif inventory[resource_id] > min_sell:
+				price = int(session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY)
+				# have 50, need 30, min_sell 40, gold 5000, price 15, importance 0.08625
+				# have 100, need 30, min_sell 40, gold 5000, price 15, importance 0.02464
+				# have 50, need 30, min_sell 40, gold 0, price 15, importance 0.05341
+				# have 50, need 20, min_sell 27, gold 5000, price 15, importance 0.07717
+				# have 28, need 20, min_sell 27, gold 5000, price 15, importance 0.23150
+				# have 28, need 20, min_sell 27, gold 0, price 15, importance 0.14335
+				# have 50, need 30, min_sell 40, gold 10000000, price 15, importance 0.16248
+				# have 40, need 30, min_sell 40, gold 5000, price 30, importance 0.04452
+				importance = 100.0 / (inventory[resource_id] - min_sell + 10) / (current_requirement + 1) * math.log(gold + 200) / (price + 1)
+				buy_sell_list.append((importance, resource_id, min_sell, True))
+
+		# discard the less important ones
+		buy_sell_list = sorted(buy_sell_list)[:3]
+		bought_sold_resources = zip(*buy_sell_list)[1]
+		# make sure the right resources are sold and bought with the right limits
+		for resource_id in managed_resources:
+			if resource_id in bought_sold_resources:
+				limit, sell = buy_sell_list[bought_sold_resources.index(resource_id)][2:]
+				if sell and resource_id in settlement.buy_list:
+					RemoveFromBuyList(settlement, resource_id).execute(session)
+				elif not sell and resource_id in settlement.sell_list:
+					RemoveFromSellList(settlement, resource_id).execute(session)
+				if sell and (resource_id not in settlement.sell_list or settlement.sell_list[resource_id] != limit):
+					AddToSellList(settlement, resource_id, limit).execute(session)
+				elif not sell and (resource_id not in settlement.buy_list or settlement.buy_list[resource_id] != limit):
+					AddToBuyList(settlement, resource_id, limit).execute(session)
+			else:
+				if resource_id in settlement.buy_list:
+					RemoveFromBuyList(settlement, resource_id).execute(session)
+				elif resource_id in settlement.sell_list:
+					RemoveFromSellList(settlement, resource_id).execute(session)
 
 	def __str__(self):
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
