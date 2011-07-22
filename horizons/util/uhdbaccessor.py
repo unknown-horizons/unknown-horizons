@@ -63,7 +63,6 @@ class UhDbAccessor(DbReader):
 		except IndexError:
 			return None
 
-
 	def get_res_value(self, id):
 		"""Returns the resource's value
 		@param id: resource id
@@ -139,7 +138,7 @@ class UhDbAccessor(DbReader):
 		"""Returns data for class of a building class.
 		@param building_class_id: class of building, int
 		@return: tuple: (class_package, class_name)"""
-		sql = "SELECT class_package, class_type FROM data.building WHERE id = ?"
+		sql = "SELECT class_package, class_type FROM building WHERE id = ?"
 		return self.cached_query(sql, building_class_id)[0]
 
 
@@ -162,7 +161,7 @@ class UhDbAccessor(DbReader):
 		@param level: int level for which to return the production lines
 		@return: list of production lines"""
 		return self.cached_query("SELECT production_line \
-		                          FROM settler.settler_production_line \
+		                          FROM settler_production_line \
 		                          WHERE level = ?", level)
 
 	def get_settler_name(self, level):
@@ -180,11 +179,11 @@ class UhDbAccessor(DbReader):
 		                          WHERE level = ?", level)[0][0]
 
 	def get_settler_tax_income(self, level):
-		return self.cached_query("SELECT tax_income FROM settler.settler_level \
+		return self.cached_query("SELECT tax_income FROM settler_level \
 		                          WHERE level=?", level)[0][0]
 
 	def get_settler_inhabitants_max(self, level):
-		return self.cached_query("SELECT inhabitants_max FROM settler.settler_level \
+		return self.cached_query("SELECT inhabitants_max FROM settler_level \
 		                          WHERE level=?", level)[0][0]
 
 	def get_settler_inhabitants(self, building_id):
@@ -198,7 +197,7 @@ class UhDbAccessor(DbReader):
 	@decorators.cachedmethod
 	def get_provided_resources(self, object_class):
 		"""Returns resources that are provided by a building- or unitclass as set"""
-		db_data = self("SELECT resource FROM balance.production WHERE amount > 0 AND \
+		db_data = self("SELECT resource FROM production WHERE amount > 0 AND \
 		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", object_class)
 		return set(map(lambda x: x[0], db_data))
 
@@ -220,4 +219,4 @@ class UhDbAccessor(DbReader):
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
-		return frozenset( i[0] for i in self("SELECT type from translucent_buildings") )
+		return frozenset( i[0] for i in self("SELECT type FROM translucent_buildings") )

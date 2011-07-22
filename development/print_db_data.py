@@ -45,12 +45,12 @@ def get_res_name(res):
 
 def get_settler_name(incr):
 	global db
-	return db("SELECT name FROM settler.settler_level WHERE level = ?", incr)[0][0]
+	return db("SELECT name FROM settler_level WHERE level = ?", incr)[0][0]
 
 def get_prod_line(id, type):
-	consumption = db("SELECT resource, amount FROM balance.production \
+	consumption = db("SELECT resource, amount FROM production \
                       WHERE production_line = ? AND amount < 0 ORDER BY amount ASC", id)
-	production = db("SELECT resource, amount FROM balance.production \
+	production = db("SELECT resource, amount FROM production \
                      WHERE production_line = ? AND amount > 0 ORDER BY amount ASC", id)
 	if type is list:
 		return (consumption, production)
@@ -149,15 +149,15 @@ def print_collectors():
 
 def print_building_costs():
 	print 'Building costs:'
-	for b, in db("SELECT DISTINCT building FROM balance.building_costs ORDER BY building"):
+	for b, in db("SELECT DISTINCT building FROM building_costs ORDER BY building"):
 		s = ''
-		for res, amount in db("SELECT resource, amount FROM balance.building_costs WHERE building = ?", b):
+		for res, amount in db("SELECT resource, amount FROM building_costs WHERE building = ?", b):
 			s += "%4i %s(%s) " % (amount, get_res_name(res),res)
 		print "%2s: %-18s %s" % (b, get_obj_name(b), s)
 
 	print "\nBuildings without building costs:"
 	all = set(db('SELECT id FROM building'))
-	entries = set(db('SELECT DISTINCT building FROM balance.building_costs'))
+	entries = set(db('SELECT DISTINCT building FROM building_costs'))
 	for id, in sorted(all - entries):
 		print "%2i: %s" % (id, get_obj_name(id))
 
@@ -172,10 +172,10 @@ def print_increment_data():
 	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
 	print '%15s %12s %s %s  %s' % ('increment', 'residential', 'max_inh', 'base_tax', 'upgrade_prod_line')
 	print '=' * 64
-	for inc, name, hut, inh, tax in db('SELECT level, name, residential_name, inhabitants_max, tax_income FROM settler.settler_level'):
+	for inc, name, hut, inh, tax in db('SELECT level, name, residential_name, inhabitants_max, tax_income FROM settler_level'):
 		str = '%3s %11s %12s %5s    %4s' % (int_to_roman(inc+1), name, hut, inh, tax)
 		if inc+1 in upgrade_increments:
-			line = db("SELECT production_line FROM settler.upgrade_material WHERE level = ?", inc+1)[0][0]
+			line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc+1)[0][0]
 			str += 5 * ' ' + '%2s: ' % line
 			(consumption, _) = get_prod_line(line, list)
 			for (res, amount) in consumption:
@@ -187,7 +187,7 @@ def print_increment_data():
 		settlername = get_settler_name(inc)
 		print "In increment %3s, %ss desire the following goods:" % \
 		                                (int_to_roman(inc+1), settlername)
-		lines = db("SELECT production_line FROM settler.settler_production_line \
+		lines = db("SELECT production_line FROM settler_production_line \
 		            WHERE level = ? ORDER BY production_line", inc)
 		sorted_lines = sorted([(get_prod_line(line[0], tuple)[0][0],line[0]) for i,line in enumerate(lines)])
 		for item,id in sorted_lines:

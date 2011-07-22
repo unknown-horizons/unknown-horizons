@@ -406,7 +406,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			)
 
 	def _possible_names(self):
-		names = self.session.db("SELECT name FROM data.shipnames WHERE for_player = 1")
+		names = self.session.db("SELECT name FROM shipnames WHERE for_player = 1")
 		# We need unicode strings as the name is displayed on screen.
 		return map(lambda x: unicode(x[0], 'utf-8'), names)
 
@@ -422,7 +422,7 @@ class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()
 	def _possible_names(self):
-		names = self.session.db("SELECT name FROM data.shipnames WHERE for_pirate = 1")
+		names = self.session.db("SELECT name FROM shipnames WHERE for_pirate = 1")
 		return map(lambda x: unicode(x[0]), names)
 
 class TradeShip(Ship):

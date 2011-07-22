@@ -243,7 +243,7 @@ class SavegameManager(object):
 
 		screenshot_data = None
 		try:
-			screenshot_data = db("SELECT value from metadata_blob where name = ?", "screen")[0][0]
+			screenshot_data = db("SELECT value FROM metadata_blob where name = ?", "screen")[0][0]
 		except IndexError: pass
 		except sqlite3.OperationalError: pass
 		metadata['screenshot'] = screenshot_data

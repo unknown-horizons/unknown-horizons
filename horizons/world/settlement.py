@@ -50,7 +50,7 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		self.tax_setting = tax
 
 	def _possible_names(self):
-		names = horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1")
+		names = horizons.main.db("SELECT name FROM citynames WHERE for_player = 1")
 		return map(lambda x: x[0], names)
 
 	@property

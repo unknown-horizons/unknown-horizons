@@ -81,7 +81,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		self.inhabitants = \
 		    db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
 		remaining_ticks = \
-		    db("SELECT ticks from remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
+		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 
 		self.__init()
 		self.owner.notify_settler_reached_level(self)
@@ -251,5 +251,5 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		"""Returns constant settler-related data from the db.
 		The values are cached by python, so the underlying data must not change."""
 		return int(
-		  self.session.db("SELECT value from settler.balance_values WHERE name = ?", key)[0][0]
+		  self.session.db("SELECT value FROM balance_values WHERE name = ?", key)[0][0]
 		  )

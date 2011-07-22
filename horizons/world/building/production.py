@@ -202,7 +202,7 @@ class AnimalFarm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 		self.animals = []
 
 		# NOTE: animals have to be created before the AnimalCollector
-		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
+		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
 				Entities.units[animal](self)
