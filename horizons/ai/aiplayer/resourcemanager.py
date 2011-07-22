@@ -45,6 +45,7 @@ class ResourceManager(WorldObject):
 		self._low_priority_requests = {} # {(quota_holder, resource_id): amount, ...}
 		self.trade_storage = defaultdict(lambda: defaultdict(lambda: 0)) # {settlement_manager_id: {resource_id: amount}, ...}
 		self._settlement_manager_id = {} # {quota_holder: settlement_manager_id, ...}
+		self.resource_requirements = {} # TODO: save and load
 
 	def save(self, db):
 		super(ResourceManager, self).save(db)
@@ -206,6 +207,7 @@ class ResourceManager(WorldObject):
 		buy_sell_list = [] # [(importance (lower is better), resource_id, limit, sell), ...]
 		for resource_id in managed_resources:
 			current_requirement = self.get_current_resource_requirement(resource_id)
+			self.resource_requirements[resource_id] = current_requirement
 			max_buy = int(round(current_requirement * 0.66666)) # when to stop buying
 			if 0 < current_requirement <= 5: # avoid not buying resources when very little is needed in the first place
 				max_buy = current_requirement

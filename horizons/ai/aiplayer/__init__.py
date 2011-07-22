@@ -21,11 +21,12 @@
 
 import logging
 
-from collections import deque
+from collections import deque, defaultdict
 
 from mission.foundsettlement import FoundSettlement
 from mission.preparefoundationship import PrepareFoundationShip
 from mission.domestictrade import DomesticTrade
+from mission.internationaltrade import InternationalTrade
 from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
@@ -55,7 +56,7 @@ from building.boatbuilder import AbstractBoatBuilder
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
-from horizons.constants import RES, BUILDINGS
+from horizons.constants import RES, BUILDINGS, TRADER
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.util.python import decorators
@@ -122,6 +123,7 @@ class AIPlayer(GenericAI):
 		self.need_more_ships = False
 
 	def __init(self):
+		self.world = self.session.world
 		self.islands = {}
 		self.settlement_managers = []
 		self._settlement_manager_by_settlement_id = {}
@@ -223,6 +225,8 @@ class AIPlayer(GenericAI):
 			for (mission_id,) in db_result:
 				self.missions.add(DomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
 
+		# TODO: load the international trade missions
+
 	def found_settlement(self, island, ship, feeder_island):
 		self.ships[ship] = self.shipStates.on_a_mission
 		land_manager = LandManager(island, self, feeder_island)
@@ -266,6 +270,7 @@ class AIPlayer(GenericAI):
 	def tick(self):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
 		self._found_settlements()
+		self.manage_international_trade()
 
 	def _found_settlements(self):
 		ship = None
@@ -352,6 +357,85 @@ class AIPlayer(GenericAI):
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s ship blocked (%s)", self, unit)
+
+	def _international_trade_mission_exists(self, settlement, settlement_manager):
+		for mission in self.missions:
+			if not isinstance(mission, InternationalTrade):
+				continue
+			if mission.settlement is settlement and mission.settlement_manager is settlement_manager:
+				return True
+		return False
+
+	def manage_international_trade(self):
+		ship_capacity = 120 # TODO: handle different ship capacities
+		little_money = 3000 # cutoff to decide that we really need to get more money
+
+		ship = None
+		for possible_ship, state in self.ships.iteritems():
+			if state is self.shipStates.idle:
+				ship = possible_ship
+				break
+		if not ship:
+			#self.log.info('%s international trade: no available ships', self)
+			return
+
+		options = defaultdict(lambda: [])
+		for settlement in self.world.settlements:
+			if settlement.owner is self:
+				continue
+			for settlement_manager in self.settlement_managers:
+				if self._international_trade_mission_exists(settlement, settlement_manager):
+					continue # allow only one international trade route between a pair of settlements
+				my_inventory = settlement_manager.settlement.inventory
+				resource_manager = settlement_manager.resource_manager
+
+				for resource_id, limit in settlement.buy_list.iteritems():
+					if resource_id not in resource_manager.resource_requirements:
+						continue # not a well-known resource: ignore it
+					if limit <= settlement.inventory[resource_id]:
+						continue # they aren't actually buying the resource
+					if my_inventory[resource_id] <= resource_manager.resource_requirements[resource_id]:
+						continue # my settlement is unable to sell the resource
+					price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL)
+					tradable_amount = min(my_inventory[resource_id] - resource_manager.resource_requirements[resource_id], \
+						limit - settlement.inventory[resource_id], ship_capacity, settlement.owner.inventory[RES.GOLD_ID] // price)
+					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, True))
+
+				for resource_id, limit in settlement.sell_list.iteritems():
+					if resource_id not in resource_manager.resource_requirements:
+						continue # not a well-known resource: ignore it
+					if limit >= settlement.inventory[resource_id]:
+						continue # they aren't actually selling the resource
+					if my_inventory[resource_id] >= resource_manager.resource_requirements[resource_id]:
+						continue # my settlement doesn't want to buy the resource
+					price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY)
+					tradable_amount = min(resource_manager.resource_requirements[resource_id] - my_inventory[resource_id], \
+						settlement.inventory[resource_id] - limit, ship_capacity, self.inventory[RES.GOLD_ID] // price)
+					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, False))
+		if not options:
+			#self.log.info('%s international trade: no interesting options', self)
+			return
+
+		final_options = []
+		for (settlement, settlement_manager), option in sorted(options.iteritems()):
+			best_buy = None # largest amount of resources
+			best_sale = None # most expensive sale
+			for total_price, tradable_amount, resource_id, selling in option:
+				if selling:
+					if best_sale is None or best_sale[0] < total_price:
+						best_sale = (total_price, tradable_amount, resource_id)
+				else:
+					if best_buy is None or best_buy[1] < tradable_amount:
+						best_buy = (total_price, tradable_amount, resource_id)
+			total_value = (best_sale[0] if best_sale else 0) + (best_buy[1] if best_buy else 0) * (30 if self.inventory[RES.GOLD_ID] > little_money else 10)
+			# TODO: make settlement and settlement_manager properly sortable
+			final_options.append((total_value, best_buy[2] if best_buy else None, best_sale[2] if best_sale else None, settlement, settlement_manager))
+
+		bought_resource, sold_resource, settlement, settlement_manager = max(final_options)[1:]
+		mission = InternationalTrade(settlement_manager, settlement, ship, bought_resource, sold_resource, self.report_success, self.report_failure)
+		self.ships[ship] = self.shipStates.on_a_mission
+		self.missions.add(mission)
+		mission.start()
 
 	@classmethod
 	def load_abstract_buildings(cls, db):
