@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-13 22:59+0200\n"
+"PO-Revision-Date: 2011-07-14 07:58+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -51,11 +51,14 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"Az SDL megjelenítő egy visszalépés, és veszélyes grafikai hibákat tartalmaz.\n"
+"\n"
+"Csak saját felelősségre!"
 
 #: horizons/engine.py:224
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "A beállított nyelv %(lang)s innen: %(place)s nem betölthető"
 
 #: horizons/engine.py:467
 msgid "Invalid network port"
@@ -314,7 +317,7 @@ msgstr "Hibás játékos név"
 msgid "You entered an invalid playername"
 msgstr "Hibás játékos nevet adtál meg"
 
-# szkenárió?? 
+# szkenárió??
 #: horizons/gui/modules/singleplayermenu.py:179
 #, fuzzy
 msgid "Invalid scenario file"
@@ -473,119 +476,119 @@ msgstr "Szolgáltatások"
 
 #: horizons/i18n/guitranslations.py:46
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
+msgstr "Pavilon: Kielégíti a hajósok vallási szükségleteit"
 
 #: horizons/i18n/guitranslations.py:47
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
+msgstr "Halász: Halászik a tengeren, élelmet készít"
 
 #: horizons/i18n/guitranslations.py:48
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "Vadász: Vadakra vadászik az erdőben, élelmet készít"
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
+msgstr "Jelző tűz: Kereskedelmi szándék jelzése a szabad kereskedők felé."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
+msgstr "Favágó: Kivágja a fákat, és deszkákat készít belőlük."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
+msgstr "Főtér: Ellátja a lakosokat termékekkel."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
-msgstr ""
+msgstr "Sátor: Lakás a lakosoknak."
 
 #: horizons/i18n/guitranslations.py:53
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
+msgstr "Raktár: Több helyet és hordárt biztosít."
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Trail: Needed for collecting goods."
-msgstr ""
+msgstr "Nyom: Szükséges az áruk begyűjtéséhez."
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
-msgstr ""
+msgstr "Fa"
 
 #: horizons/i18n/guitranslations.py:58 horizons/i18n/guitranslations.py:75
 msgid "Fields"
-msgstr ""
+msgstr "Mező"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "Tengerész épületek"
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
-msgstr ""
+msgstr "Hadsereg"
 
 #: horizons/i18n/guitranslations.py:62
 msgid "Boat builder: Builds boats and small ships. Built on coast."
-msgstr ""
+msgstr "Csónak építő: Csónakokat és kis hajókat épít. Partra épül."
 
 #: horizons/i18n/guitranslations.py:63
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
+msgstr "Téglagyár: Agyagból téglát készít."
 
 #: horizons/i18n/guitranslations.py:64
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
+msgstr "Agyagbánya: Agyagot termel"
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
-msgstr ""
+msgstr "Szeszfőzde: Cukorból szeszes italt készít."
 
 #: horizons/i18n/guitranslations.py:66
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
+msgstr "Farm: Növényeket és élő állatokat nevel."
 
 #: horizons/i18n/guitranslations.py:67
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "Legelő: Bárányokat tenyészt. Gyapjút termel. Egy farm szükséges."
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
+msgstr "Krumpli föld: Ételt termel. Egy farm szükséges."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr ""
+msgstr "Cukornád mező: Szeszes ital termeléshez szükséges. Egy farm szükséges."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
-msgstr ""
+msgstr "Falusi iskola: Oktatást szolgáltat"
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
+msgstr "Takács: Ruhát készít a gyapjúból."
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Settler buildings"
-msgstr ""
+msgstr "Telepes épületek"
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Mészáros: Malac vagy marha szükséges. Élelmiszert termel."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Marha kifutó: Marhákat nevel. Egy farm szükséges."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr ""
+msgstr "Faszén égető: Rengeteg deszkát éget."
 
 #: horizons/i18n/guitranslations.py:81
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Orvos: Kezeli a betegségeket. Gyógynövényeket készít."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr ""
+msgstr "Gyógynövény: Gyógynövényeket termel. Egy farm szükséges."
 
 #: horizons/i18n/guitranslations.py:83
 msgid "Iron mine: Gets iron ore from deposit."
