@@ -73,8 +73,6 @@ class SelectMultiTab(TabInterface):
 				i.remove_remove_listener(Callback(self.on_instance_removed, i))
 
 	def on_instance_removed(self, instance):
-		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
 		if hasattr(instance, 'stance'):
 			self.stance_units.remove(instance)
 		else:

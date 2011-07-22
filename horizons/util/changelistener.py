@@ -70,7 +70,6 @@ class ChangeListener(object):
 		"""A listener that listens for removal of the object"""
 		assert callable(listener)
 		self.__remove_listeners.append(listener)
-		print self.__remove_listeners
 
 	def remove_remove_listener(self, listener):
 		self.__remove_listeners.remove(listener)
