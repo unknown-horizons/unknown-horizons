@@ -302,11 +302,16 @@ class IngameGui(LivingObject):
 		self.widgets['menu_panel'].hide()
 		self.widgets['menu_panel'].show()
 
-	def show_build_menu(self):
+	def show_build_menu(self, update=False):
+		"""
+		@param update: set when build possiblities change (e.g. after settler upgrade)
+		"""
 		# check if build menu is already shown
 		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
 			self.hide_menu()
-			return
+
+			if not update: # this was only a toggle call, don't reshow
+				return
 
 		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
@@ -482,7 +487,7 @@ class IngameGui(LivingObject):
 		if hasattr(menu, "name"):
 			if menu.name == "build_menu_tab_widget":
 				# player changed and build menu is currently displayed
-				self.show_build_menu()
+				self.show_build_menu(update=True)
 
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""

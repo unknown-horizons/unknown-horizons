@@ -84,7 +84,6 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 
 		self.__init()
-		import pdb ; pdb.set_trace()
 		self.owner.notify_settler_reached_level(self)
 		self.run(remaining_ticks)
 
