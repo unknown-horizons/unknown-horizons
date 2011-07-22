@@ -233,6 +233,8 @@ class ResourceManager(WorldObject):
 				# have 40, need 30, min_sell 40, gold 5000, price 30, importance 0.04452
 				importance = 100.0 / (inventory[resource_id] - min_sell + 10) / (current_requirement + 1) * math.log(gold + 200) / (price + 1)
 				buy_sell_list.append((importance, resource_id, min_sell, True))
+		if not buy_sell_list:
+			return # nothing to buy nor sell
 
 		# discard the less important ones
 		buy_sell_list = sorted(buy_sell_list)[:3]
