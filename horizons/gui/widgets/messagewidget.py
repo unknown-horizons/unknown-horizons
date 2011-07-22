@@ -67,8 +67,8 @@ class MessageWidget(LivingObject):
 		# play a message sound, if one is specified in the database
 		sound = None
 		if play_sound:
-			sound = horizons.main.db("SELECT data.speech.file FROM speech LEFT JOIN data.message \
-			ON data.speech.group_id=data.message.speech_group_id WHERE data.message.id_string=? ORDER BY random() LIMIT 1",id)
+			sound = horizons.main.db("SELECT speech.file FROM speech LEFT JOIN message \
+			ON speech.group_id=message.speech_group_id WHERE message.id_string=? ORDER BY random() LIMIT 1",id)
 			sound = sound[0][0] if len(sound) > 0 else None
 		self._add_message(Message(x, y, id, self.current_tick, message_dict=message_dict), sound)
 

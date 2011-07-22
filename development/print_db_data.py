@@ -119,7 +119,7 @@ def print_building():
 	print '=' * 23 + 'R===P' + '=' * 50
 	for id, name, c_type, c_package, x, y, radius, cost, cost_inactive in \
 			db('SELECT id, name, class_type, class_package, size_x, size_y, radius, cost_active, cost_inactive FROM \
-			building LEFT OUTER JOIN balance.building_running_costs ON balance.building_running_costs.building = building.id\
+			building LEFT OUTER JOIN building_running_costs ON building_running_costs.building = building.id\
 			ORDER BY id'):
 		print "%2s: %-16s %3s / %2s %5sx%1s %4s   %s.%s" % (id, name, cost or '--', cost_inactive or '--', x, y, radius, c_package, c_type)
 
