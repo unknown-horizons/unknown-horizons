@@ -79,7 +79,7 @@ class AIPlayer(GenericAI):
 	def get_available_islands(self, min_land):
 		options = []
 		for island in self.session.world.islands:
-			if island in self.islands:
+			if island.worldid in self.islands:
 				continue
 
 			flat_land = 0
@@ -131,6 +131,7 @@ class AIPlayer(GenericAI):
 		self.fishers = []
 		self.complete_inventory = CompleteInventory(self)
 		self.unit_builder = UnitBuilder(self)
+		self.settlement_expansions = [] # [(coords, settlement)]
 
 	def report_success(self, mission, msg):
 		self.missions.remove(mission)
@@ -151,7 +152,7 @@ class AIPlayer(GenericAI):
 		if mission.ship:
 			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
-			del self.islands[mission.land_manager.island]
+			del self.islands[mission.land_manager.island.worldid]
 
 	def save(self, db):
 		super(AIPlayer, self).save(db)
@@ -170,7 +171,7 @@ class AIPlayer(GenericAI):
 			db("INSERT INTO ai_ship(rowid, owner, state) VALUES(?, ?, ?)", ship.worldid, self.worldid, state.index)
 
 		# save the land managers
-		for island, land_manager in self.islands.iteritems():
+		for land_manager in self.islands.itervalues():
 			land_manager.save(db)
 
 		# save the settlement managers
@@ -200,7 +201,7 @@ class AIPlayer(GenericAI):
 		# load the land managers
 		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):
 			land_manager = LandManager.load(db, self, worldid)
-			self.islands[land_manager.island] = land_manager
+			self.islands[land_manager.island.worldid] = land_manager
 
 		# load the settlement managers and settlement foundation missions
 		for land_manager in self.islands.itervalues():
@@ -231,7 +232,7 @@ class AIPlayer(GenericAI):
 		self.ships[ship] = self.shipStates.on_a_mission
 		land_manager = LandManager(island, self, feeder_island)
 		land_manager.display()
-		self.islands[island] = land_manager
+		self.islands[island.worldid] = land_manager
 
 		found_settlement = FoundSettlement.create(ship, land_manager, self.report_success, self.report_failure)
 		self.missions.add(found_settlement)
@@ -271,6 +272,7 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
 		self._found_settlements()
 		self.manage_international_trade()
+		self.handle_enemy_expansions()
 
 	def _found_settlements(self):
 		ship = None
@@ -436,6 +438,58 @@ class AIPlayer(GenericAI):
 		self.ships[ship] = self.shipStates.on_a_mission
 		self.missions.add(mission)
 		mission.start()
+
+	def on_settlement_expansion(self, settlement, coords):
+		""" stores the ownership change in a list for later processing """
+		if settlement.owner is not self:
+			self.settlement_expansions.append((coords, settlement))
+
+	def handle_enemy_expansions(self):
+		if not self.settlement_expansions:
+			return # no changes in land ownership
+
+		change_lists = defaultdict(lambda: [])
+		for coords, settlement in self.settlement_expansions:
+			if settlement.island.worldid not in self.islands:
+				continue # we don't have a settlement there and have no current plans to create one
+			change_lists[settlement.island.worldid].append(coords)
+		self.settlement_expansions = []
+		if not change_lists:
+			return # no changes in land ownership on islands we care about
+
+		for island_id, changed_coords in change_lists.iteritems():
+			affects_us = False
+			land_manager = self.islands[island_id]
+			for coords in changed_coords:
+				if coords in land_manager.production or coords in land_manager.village:
+					affects_us = True
+					break
+			if not affects_us:
+				continue # we weren't using that land anyway
+
+			settlement_manager = None
+			for potential_settlement_manager in self.settlement_managers:
+				if potential_settlement_manager.settlement.island.worldid == island_id:
+					settlement_manager = potential_settlement_manager
+					break
+
+			if settlement_manager is None:
+				self.handle_enemy_settling_on_our_chosen_island(island_id)
+				# we are on the way to found a settlement on that island
+				pass
+			else:
+				# we already have a settlement there
+				pass
+
+	def handle_enemy_settling_on_our_chosen_island(self, island_id):
+		mission = None
+		for a_mission in self.missions:
+			if isinstance(a_mission, FoundSettlement) and a_mission.land_manager.island.worldid == island_id:
+				mission = a_mission
+				break
+		assert mission
+		mission.cancel()
+		self._found_settlements()
 
 	@classmethod
 	def load_abstract_buildings(cls, db):

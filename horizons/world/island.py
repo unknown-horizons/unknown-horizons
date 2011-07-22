@@ -254,6 +254,11 @@ class Island(BuildingOwner, WorldObject):
 					self.session.ingame_gui.minimap.update(coord)
 					self._register_change(coord[0], coord[1])
 
+					# notify all AI players when land ownership changes
+					for player in self.session.world.players:
+						if hasattr(player, 'on_settlement_expansion'):
+							player.on_settlement_expansion(settlement, coord)
+
 				building = tile.object
 				# assign buildings on tiles to settlement
 				if building is not None and building.settlement is None and \

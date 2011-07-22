@@ -100,6 +100,10 @@ class FoundSettlement(Mission):
 		self.ship.owner.complete_inventory.unload_all(self.ship, self.land_manager.settlement)
 		self.report_success('Built the branch office, transferred resources')
 
+	def cancel(self):
+		self.ship.stop()
+		self.report_failure('Mission cancelled')
+
 	@classmethod
 	def find_bo_location(cls, ship, land_manager):
 		"""
