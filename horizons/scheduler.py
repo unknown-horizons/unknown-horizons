@@ -127,7 +127,7 @@ class Scheduler(LivingObject):
 		"""Removes all callbacks from the scheduler that belong to the class instance class_inst."""
 		for key in self.schedule:
 			callback_objects = self.schedule[key]
-			for i in xrange(len(callback_objects) - 1, 0, -1):
+			for i in xrange(len(callback_objects) - 1, -1, -1):
 				if callback_objects[i].class_instance is class_instance:
 					del callback_objects[i]
 
@@ -145,11 +145,11 @@ class Scheduler(LivingObject):
 		removed_calls = 0
 		for key in self.schedule:
 			callback_objects = self.schedule[key]
-			for i in xrange(len(callback_objects) - 1, 0, -1):
+			for i in xrange(len(callback_objects) - 1, -1, -1):
 				if callback_objects[i].class_instance is instance and callback_objects[i].callback == callback:
 					del callback_objects[i]
 					removed_calls += 1
-		for i in xrange(len(self.additional_cur_tick_schedule) - 1, 0, -1):
+		for i in xrange(len(self.additional_cur_tick_schedule) - 1, -1, -1):
 			if self.additional_cur_tick_schedule[i].class_instance is instance and \
 				self.additional_cur_tick_schedule[i].callback == callback:
 					del callback_objects[i]
