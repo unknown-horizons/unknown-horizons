@@ -47,9 +47,13 @@ class RouteConfig(object):
 
 	def show(self):
 		self._gui.show()
+		if not self.instance.has_remove_listener(self.on_instance_removed):
+			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def hide(self):
 		self._gui.hide()
+		if not self.instance.has_remove_listener(self.on_instance_removed):
+			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def start_button_set_active(self):
 		self._gui.findChild(name='start_route').set_active()

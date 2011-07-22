@@ -27,7 +27,7 @@ from horizons.entities import Entities
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool, SelectionTool
-from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab
+from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
@@ -316,6 +316,9 @@ class IngameGui(LivingObject):
 		tab = TabWidget(self, tabs=dtabs, name="diplomacy_widget")
 		self.show_menu(tab)
 
+	def show_multi_select_tab(self):
+		tab = TabWidget(self, tabs = [SelectMultiTab(self.session)], name = 'select_multi')
+		self.show_menu(tab)
 
 	def show_build_menu(self):
 		# check if build menu is already shown

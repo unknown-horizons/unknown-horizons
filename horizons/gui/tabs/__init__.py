@@ -36,3 +36,4 @@ from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab
 from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab
+from selectmultitab import SelectMultiTab

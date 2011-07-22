@@ -21,6 +21,7 @@
 
 from tabinterface import TabInterface
 from horizons.util import Callback
+from horizons.util.gui import load_uh_widget
 
 class FightingUnitTab(TabInterface):
 
@@ -34,6 +35,8 @@ class FightingUnitTab(TabInterface):
 		self.button_down_image = icon_path % 'd'
 		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Fighting Tab")
+		stance_widget = load_uh_widget('stancewidget.xml')
+		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
 		self.widget.mapEvents({
 			'aggressive': Callback(self.set_stance, 'aggressive'),

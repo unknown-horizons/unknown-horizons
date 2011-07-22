@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--Stance widget, used by fighting ship and multi tab-->
+<HBox position="15,30">
+<ToggleImageButton name="aggressive" border_size="0" position="175,480"
+			inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+			up_image="content/gui/icons/templates/production/toggle_active_n.png"
+			down_image="content/gui/icons/templates/production/toggle_active_d.png"
+			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+			tooltip="Aggressive" />
+		<ToggleImageButton name="hold_ground" border_size="0" position="175,480"
+			inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+			up_image="content/gui/icons/templates/production/toggle_active_n.png"
+			down_image="content/gui/icons/templates/production/toggle_active_d.png"
+			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+			tooltip="Hold Ground" />
+		<ToggleImageButton name="none" border_size="0" position="175,480"
+			inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+			up_image="content/gui/icons/templates/production/toggle_active_n.png"
+			down_image="content/gui/icons/templates/production/toggle_active_d.png"
+			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+			tooltip="None" />
+		<ToggleImageButton name="flee" border_size="0" position="175,480"
+			inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+			up_image="content/gui/icons/templates/production/toggle_active_n.png"
+			down_image="content/gui/icons/templates/production/toggle_active_d.png"
+			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+			tooltip="Flee" />
+</HBox>

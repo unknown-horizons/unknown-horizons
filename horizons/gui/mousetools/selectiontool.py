@@ -115,7 +115,7 @@ class SelectionTool(NavigationTool):
 		If one of the selected instances can attack, switch mousetool to AttackingTool
 		"""
 		if len(self.session.selected_instances) > 1:
-			pass
+			self.session.ingame_gui.show_multi_select_tab()
 		elif len(self.session.selected_instances) == 1:
 			for i in self.session.selected_instances:
 				i.show_menu()
