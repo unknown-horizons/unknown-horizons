@@ -389,7 +389,7 @@ def _create_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
 	NOTE: This data is read_only, so there are no concurrency issues"""
 	_db = UhDbAccessor(':memory:')
-	for i in "content/game.sql", "content/settler.sql", "content/balance.sql":
+	for i in PATHS.DB_FILES:
 		f = open(i, "r")
 		sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
 		_db.execute_script(sql)
