@@ -105,20 +105,20 @@ class BranchOfficeOverviewTab(OverviewTab):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 		super(BranchOfficeOverviewTab, self).refresh()
 
-class MarketPlaceOverviewTab(OverviewTab):
+class MainSquareOverviewTab(OverviewTab):
 	def  __init__(self, instance):
-		super(MarketPlaceOverviewTab, self).__init__(
+		super(MainSquareOverviewTab, self).__init__(
 			widget = 'overview_mainsquare.xml',
 			instance = instance
 		)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'), self.instance.settlement)
 		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_setting)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		self.tooltip = _("Market place overview")
+		self.tooltip = _("Main square overview")
 
 	def refresh(self):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		super(MarketPlaceOverviewTab, self).refresh()
+		super(MainSquareOverviewTab, self).refresh()
 
 
 class ShipOverviewTab(OverviewTab):

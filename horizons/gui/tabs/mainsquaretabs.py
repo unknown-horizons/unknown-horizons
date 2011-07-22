@@ -29,21 +29,21 @@ from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.extscheduler import ExtScheduler
 from horizons.util.gui import create_resource_icon
 
-class MarketPlaceTab(TabInterface):
-	"""Tab for marketplace. Refreshes when one building on the settlement changes"""
+class MainSquareTab(TabInterface):
+	"""Tab for main square. Refreshes when one building on the settlement changes"""
 	def __init__(self, *args, **kwargs):
-		super(MarketPlaceTab, self).__init__(*args, **kwargs)
+		super(MainSquareTab, self).__init__(*args, **kwargs)
 		self._refresh_scheduled = False
 
 	def show(self):
-		super(MarketPlaceTab, self).show()
+		super(MainSquareTab, self).show()
 		# update self when a building of the settlement changes.
 		for building in self.settlement.buildings:
 			if not building.has_change_listener(self._schedule_refresh):
 				building.add_change_listener(self._schedule_refresh)
 
 	def hide(self):
-		super(MarketPlaceTab, self).hide()
+		super(MainSquareTab, self).hide()
 		for building in self.settlement.buildings:
 			if building.has_change_listener(self._schedule_refresh):
 				building.remove_change_listener(self._schedule_refresh)
@@ -56,11 +56,11 @@ class MarketPlaceTab(TabInterface):
 			ExtScheduler().add_new_object(self.refresh, self, run_in=0.3)
 
 	def refresh(self):
-		super(MarketPlaceTab, self).refresh()
+		super(MainSquareTab, self).refresh()
 		self._refresh_scheduled = False
 
 
-class AccountTab(MarketPlaceTab):
+class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
 	def __init__(self, instance):
 		super(AccountTab, self).__init__(widget = 'tab_account.xml')
@@ -94,10 +94,10 @@ class AccountTab(MarketPlaceTab):
 		self.widget.child_finder('sale').text = unicode(sell_income)
 		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
 
-class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
+class MainSquareSettlerTabSettlerTab(MainSquareTab):
 	"""Displays information about the settlers on average as overview"""
 	def __init__(self, instance):
-		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'mainsquare_inhabitants.xml')
+		super(MainSquareSettlerTabSettlerTab, self).__init__(widget = 'mainsquare_inhabitants.xml')
 		self.settlement = instance.settlement
 		self.init_values()
 		icon_path = 'content/gui/icons/widgets/cityinfo/inhabitants.png'
