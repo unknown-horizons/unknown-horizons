@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 22:34+0200\n"
+"PO-Revision-Date: 2011-07-24 00:41+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -29,11 +29,12 @@ msgstr ""
 
 #: horizons/engine.py:70
 msgid "Restore default settings"
-msgstr ""
+msgstr "Atkurti numatytąsias nuostatas "
 
 #: horizons/engine.py:71
 msgid "This will delete all changes to the settings you made so far."
 msgstr ""
+"Tai panaikins visus nuostatų pakeitimus, kurios buvote atlikęs iki šiol."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
@@ -41,7 +42,7 @@ msgstr "Ar norite tęsti?"
 
 #: horizons/engine.py:135
 msgid "System default"
-msgstr "Standartinė sistema"
+msgstr "Numatytoji sistema"
 
 #: horizons/engine.py:159
 msgid "Warning"
@@ -53,6 +54,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDL atvaizdavimas yra skirtas, tik kaip atsarginis sprendimas, kuris turi "
+"rimtų grafikos trikdžių. \n"
+"\n"
+"Naudokite tik įvertinę riziką!"
 
 #: horizons/engine.py:224
 #, python-format
@@ -1668,11 +1673,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Gydytojas"
 
 #: sqlite/Building
 msgid "Farm"
-msgstr ""
+msgstr "Ūkis"
 
 #: sqlite/Building
 msgid "Fish Deposit"
@@ -1684,7 +1689,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr ""
+msgstr "Herbariumas"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -1696,7 +1701,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Log"
-msgstr ""
+msgstr "Žurnalas"
 
 #: sqlite/Building
 msgid "Lookout"
@@ -1712,51 +1717,51 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Mountain"
-msgstr ""
+msgstr "Kalnas"
 
 #: sqlite/Building
 msgid "Pasture"
-msgstr ""
+msgstr "Ganykla"
 
 #: sqlite/Building
 msgid "Pavilion"
-msgstr ""
+msgstr "Paviljonas"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Kiaulidė"
 
 #: sqlite/Building
 msgid "Potato Field"
-msgstr ""
+msgstr "Bulvių laukas"
 
 #: sqlite/Building
 msgid "Rampart"
-msgstr ""
+msgstr "Pylimas"
 
 #: sqlite/Building
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Druskos tvenkiniai"
 
 #: sqlite/Building
 msgid "Signal Fire"
-msgstr ""
+msgstr "Ugnies signalas"
 
 #: sqlite/Building
 msgid "Smeltery"
-msgstr ""
+msgstr "Lydykla"
 
 #: sqlite/Building
 msgid "Storage Tent"
-msgstr ""
+msgstr "Saugojimo palapinė"
 
 #: sqlite/Building
 msgid "Sugar Field"
-msgstr ""
+msgstr "Cukraus laukas"
 
 #: sqlite/Building
 msgid "Tavern"
-msgstr ""
+msgstr "Smuklė"
 
 #: sqlite/Building
 msgid "Tent"
@@ -1792,35 +1797,35 @@ msgstr ""
 
 #: sqlite/Colors
 msgid "black"
-msgstr ""
+msgstr "juoda"
 
 #: sqlite/Colors
 msgid "blue"
-msgstr ""
+msgstr "mėlyna"
 
 #: sqlite/Colors
 msgid "cyan"
-msgstr ""
+msgstr "žydra"
 
 #: sqlite/Colors
 msgid "green"
-msgstr ""
+msgstr "žalia"
 
 #: sqlite/Colors
 msgid "pink"
-msgstr ""
+msgstr "rožinė"
 
 #: sqlite/Colors
 msgid "red"
-msgstr ""
+msgstr "raudona"
 
 #: sqlite/Colors
 msgid "white"
-msgstr ""
+msgstr "balta"
 
 #: sqlite/Colors
 msgid "yellow"
-msgstr ""
+msgstr "geltona"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
@@ -1844,7 +1849,7 @@ msgstr ""
 
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
-msgstr ""
+msgstr "JŪS LAIMĖJOTE!!!"
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
@@ -1864,55 +1869,55 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "acorns"
-msgstr ""
+msgstr "gilės"
 
 #: sqlite/Resources
 msgid "boards"
-msgstr ""
+msgstr "lentos"
 
 #: sqlite/Resources
 msgid "bricks"
-msgstr ""
+msgstr "plytos"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr ""
+msgstr "galvijai"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "skerdimui skirti galvijai"
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr ""
+msgstr "anglis"
 
 #: sqlite/Resources
 msgid "clay"
-msgstr ""
+msgstr "molis"
 
 #: sqlite/Resources
 msgid "coins"
-msgstr ""
+msgstr "monetos"
 
 #: sqlite/Resources
 msgid "community"
-msgstr ""
+msgstr "bendruomenė"
 
 #: sqlite/Resources
 msgid "deer food A"
-msgstr ""
+msgstr "elnio maistas A"
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "elnio mėsa"
 
 #: sqlite/Resources
 msgid "education"
-msgstr ""
+msgstr "išsilavinimas"
 
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "tikėjimas"
 
 #: sqlite/Resources
 msgid "fish"
@@ -1924,7 +1929,7 @@ msgstr "maistas"
 
 #: sqlite/Resources
 msgid "get-together"
-msgstr ""
+msgstr "susitikimas"
 
 #: sqlite/Resources
 msgid "grass"
@@ -1932,115 +1937,115 @@ msgstr "žolė"
 
 #: sqlite/Resources
 msgid "happiness"
-msgstr ""
+msgstr "pasitenkinimas"
 
 #: sqlite/Resources
 msgid "herbs"
-msgstr ""
+msgstr "vaistažolės"
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr ""
+msgstr "geležies luitai"
 
 #: sqlite/Resources
 msgid "iron ore"
-msgstr ""
+msgstr "geležies rūda"
 
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "ėriuko vilna"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "alkoholis"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "kiaulės"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "skerdimui skirtos kiaulės"
 
 #: sqlite/Resources
 msgid "potatoes"
-msgstr ""
+msgstr "bulvės"
 
 #: sqlite/Resources
 msgid "raw clay"
-msgstr ""
+msgstr "molio žaliava"
 
 #: sqlite/Resources
 msgid "raw herbs"
-msgstr ""
+msgstr "vaistažolių žaliava"
 
 #: sqlite/Resources
 msgid "raw iron"
-msgstr ""
+msgstr "geležies žaliava"
 
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr ""
+msgstr "cukraus žaliava"
 
 #: sqlite/Resources
 msgid "raw tobacco"
-msgstr ""
+msgstr "tabako žaliava"
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "druska"
 
 #: sqlite/Resources
 msgid "sugar"
-msgstr ""
+msgstr "cukrus"
 
 #: sqlite/Resources
 msgid "textile"
-msgstr ""
+msgstr "tekstilė"
 
 #: sqlite/Resources
 msgid "tobacco"
-msgstr ""
+msgstr "tabakas"
 
 #: sqlite/Resources
 msgid "tobaccos"
-msgstr ""
+msgstr "tabakui"
 
 #: sqlite/Resources
 msgid "tools"
-msgstr ""
+msgstr "įrankiai"
 
 #: sqlite/Resources
 msgid "wood"
-msgstr ""
+msgstr "mediena"
 
 #: sqlite/Resources
 msgid "wool"
-msgstr ""
+msgstr "vilna"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokratas"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "miestiečiai"
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "pirklys"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "pionierius"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "jūreivis"
 
 #: sqlite/SettlerLevel
 msgid "settler"
-msgstr ""
+msgstr "naujakurys"
 
 #, python-format
 #~ msgid "Unknown Horizons Version %s"

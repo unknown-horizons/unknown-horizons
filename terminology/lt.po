@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-23 23:45+0200\n"
+"PO-Revision-Date: 2011-07-24 00:10+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -258,85 +258,85 @@ msgid "continue"
 msgstr "tęsti"
 
 msgid "decrease"
-msgstr ""
+msgstr "sumažinti"
 
 msgid "free trader"
-msgstr ""
+msgstr "nepriklausomas pirklys"
 
 msgid "hunter"
-msgstr ""
+msgstr "medžiotojas"
 
 msgid "leave"
-msgstr ""
+msgstr "palikti"
 
 msgid "market"
-msgstr ""
+msgstr "turgus"
 
 msgid "partner"
-msgstr ""
+msgstr "partneris"
 
 msgid "sailor"
-msgstr ""
+msgstr "jūreivis"
 
 msgid "pioneer"
-msgstr ""
+msgstr "pionierius"
 
 msgid "settler"
-msgstr ""
+msgstr "naujakurys"
 
 msgid "citizen"
-msgstr ""
+msgstr "miestiečiai"
 
 msgid "merchant"
-msgstr ""
+msgstr "pirklys"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokratas"
 
 msgid "refresh"
-msgstr ""
+msgstr "atnaujinti"
 
 msgid "residents"
-msgstr ""
+msgstr "gyventojai"
 
 msgid "run"
-msgstr ""
+msgstr "vykdyti"
 
 msgid "slot"
-msgstr ""
+msgstr "lizdas"
 
 msgid "stop"
-msgstr ""
+msgstr "stabdyti"
 
 msgid "team"
-msgstr ""
+msgstr "komanda"
 
 msgid "village"
-msgstr ""
+msgstr "kaimas"
 
 msgid "account"
-msgstr ""
+msgstr "paskyra"
 
 msgid "back"
-msgstr ""
+msgstr "grįžti"
 
 msgid "build settlement"
-msgstr ""
+msgstr "statyti nausėdiją"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "Kapitono žurnalas"
 
 msgid "cloth"
-msgstr ""
+msgstr "drobė"
 
 msgid "description"
-msgstr ""
+msgstr "aprašymas"
 
 msgid "happiness"
-msgstr ""
+msgstr "laimė"
 
 msgid "increase"
-msgstr ""
+msgstr "padidinti"
 
 msgid "liquor"
 msgstr "alkoholis"
@@ -345,52 +345,52 @@ msgid "mode"
 msgstr "būsena"
 
 msgid "multiple"
-msgstr ""
+msgstr "įvairiarūšis"
 
 msgid "output"
-msgstr ""
+msgstr "išvesti"
 
 msgid "play"
-msgstr ""
+msgstr "žaisti"
 
 msgid "sale"
-msgstr ""
+msgstr "pardavimas"
 
 msgid "save"
-msgstr ""
+msgstr "įrašyti"
 
 msgid "school"
-msgstr ""
+msgstr "mokykla"
 
 msgid "screen"
-msgstr ""
+msgstr "ekranas"
 
 msgid "solution"
-msgstr ""
+msgstr "sprendimas"
 
 msgid "sound"
-msgstr ""
+msgstr "garsas"
 
 msgid "from time to time"
-msgstr ""
+msgstr "kada ne kada"
 
 msgid "trading"
-msgstr ""
+msgstr "prekiavimas"
 
 msgid "visit"
-msgstr ""
+msgstr "apsilankymas"
 
 msgid "weaver"
-msgstr ""
+msgstr "audėjas"
 
 msgid "animal"
-msgstr ""
+msgstr "gyvūnas"
 
 msgid "fish"
-msgstr ""
+msgstr "žuvis"
 
 msgid "fisherman"
-msgstr ""
+msgstr "žvejys"
 
 msgid "forest"
 msgstr "miškas"
