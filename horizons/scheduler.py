@@ -126,9 +126,10 @@ class Scheduler(LivingObject):
 	def rem_all_classinst_calls(self, class_instance):
 		"""Removes all callbacks from the scheduler that belong to the class instance class_inst."""
 		for key in self.schedule:
-			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance is class_instance:
-					self.schedule[key].remove(callback_obj)
+			callback_objects = self.schedule[key]
+			for i in xrange(len(callback_objects) - 1, -1, -1):
+				if callback_objects[i].class_instance is class_instance:
+					del callback_objects[i]
 
 		# filter additional callbacks as well
 		self.additional_cur_tick_schedule = \
@@ -143,9 +144,15 @@ class Scheduler(LivingObject):
 		assert callable(callback)
 		removed_calls = 0
 		for key in self.schedule:
-			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance is instance and callback_obj.callback == callback:
-					self.schedule[key].remove(callback_obj)
+			callback_objects = self.schedule[key]
+			for i in xrange(len(callback_objects) - 1, -1, -1):
+				if callback_objects[i].class_instance is instance and callback_objects[i].callback == callback:
+					del callback_objects[i]
+					removed_calls += 1
+		for i in xrange(len(self.additional_cur_tick_schedule) - 1, -1, -1):
+			if self.additional_cur_tick_schedule[i].class_instance is instance and \
+				self.additional_cur_tick_schedule[i].callback == callback:
+					del callback_objects[i]
 					removed_calls += 1
 		return removed_calls
 
