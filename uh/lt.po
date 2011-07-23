@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 16:50+0200\n"
+"PO-Revision-Date: 2011-07-23 17:40+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -935,7 +935,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 msgid "Create game:"
-msgstr ""
+msgstr "Sukurti žaidimą:"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Back:"
@@ -943,7 +943,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Choose a map:"
-msgstr ""
+msgstr "Pasirinkite žemėlapį:"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Create game - Multiplayer"
@@ -955,15 +955,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:214
 msgid "Create this new game"
-msgstr ""
+msgstr "Sukurti šį naują žaidimą"
 
 #: horizons/i18n/guitranslations.py:215
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "Išeiti į kelių žaidėjų meniu"
 
 #: horizons/i18n/guitranslations.py:217
 msgid "Leave:"
-msgstr ""
+msgstr "Palikti:"
 
 #: horizons/i18n/guitranslations.py:218
 msgid "The game will start as soon as enough players have joined."
@@ -971,27 +971,27 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:219
 msgid "Chat:"
-msgstr ""
+msgstr "Pokalbis:"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Gamelobby"
-msgstr ""
+msgstr "Žaidimo kambarys"
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Game details:"
-msgstr ""
+msgstr "Išsamiau apie žaidimą:"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "Palikti žaidimo kambarį"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Active games:"
-msgstr ""
+msgstr "Aktyvūs žaidimai:"
 
 #: horizons/i18n/guitranslations.py:226 horizons/i18n/guitranslations.py:273
 msgid "Main menu:"
-msgstr ""
+msgstr "Pagrindinis meniu:"
 
 #: horizons/i18n/guitranslations.py:227
 msgid "Show only games with the same version:"
@@ -1007,7 +1007,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:230
 msgid "Apply:"
-msgstr ""
+msgstr "Taikyti:"
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Refresh list:"
@@ -1015,7 +1015,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:233
 msgid "Create a new game"
-msgstr ""
+msgstr "Sukurti naują žaidimą"
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Join the selected game"
@@ -1031,7 +1031,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:239
 msgid "Color depth:"
-msgstr ""
+msgstr "Spalvos gylis:"
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Enable edge scrolling:"
@@ -1047,23 +1047,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Language"
-msgstr ""
+msgstr "Kalba"
 
 #: horizons/i18n/guitranslations.py:245
 msgid "Network"
-msgstr ""
+msgstr "Tinklas"
 
 #: horizons/i18n/guitranslations.py:246
 msgid "Saving"
-msgstr ""
+msgstr "Išsaugojimas"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Sound"
-msgstr ""
+msgstr "Garsas"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "Select language:"
-msgstr ""
+msgstr "Pasirinkti kalbą:"
 
 #: horizons/i18n/guitranslations.py:249
 msgid "Enable minimap rotation:"
@@ -1071,7 +1071,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:250
 msgid "Music volume:"
-msgstr ""
+msgstr "Muzikos garsis:"
 
 #: horizons/i18n/guitranslations.py:251
 msgid "(0 means default)"
@@ -1091,57 +1091,56 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Full screen:"
-msgstr ""
+msgstr "Visas ekranas:"
 
 #: horizons/i18n/guitranslations.py:256
 msgid "Screen resolution:"
-msgstr ""
+msgstr "Ekrano skiriamoji geba:"
 
 #: horizons/i18n/guitranslations.py:257
 msgid "Enable sound:"
-msgstr ""
+msgstr "Įgalinti garsą:"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Used renderer:"
-msgstr ""
+msgstr "Naudoti atvaizdavimą:"
 
 #: horizons/i18n/guitranslations.py:259
 msgid "Please make sure that you know what you do."
-msgstr ""
+msgstr "Prašome įsitikinti, kad žinote, ką darote."
 
 #: horizons/i18n/guitranslations.py:260
 msgid "Apply"
-msgstr ""
+msgstr "Taikyti"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Atkurti numatytąsias nuostatas"
 
 #: horizons/i18n/guitranslations.py:264
 msgid "Enter filename:"
-msgstr ""
+msgstr "Įveskite failo pavadinimą:"
 
 # 76%
 #: horizons/i18n/guitranslations.py:266
-#, fuzzy
 msgid "Your saved games:"
-msgstr "Nėra išsaugotų žaidimų"
+msgstr "Jūsų išsaugoti žaidimai:"
 
 #: horizons/i18n/guitranslations.py:267 horizons/i18n/guitranslations.py:279
 msgid "Start game"
-msgstr ""
+msgstr "Pradėti žaidimą"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Pašalinti pasirinktą išsaugotą žaidimą"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Pasirinkite žaidimui žemėlapį:"
 
 #: horizons/i18n/guitranslations.py:272
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Naujas žaidimas - Vieno žaidėjo"
 
 #: horizons/i18n/guitranslations.py:274
 msgid "Start game:"
@@ -1173,15 +1172,16 @@ msgstr "Žaidėjo vardas:"
 
 #: horizons/i18n/guitranslations.py:285
 msgid "Cancel building:"
-msgstr ""
+msgstr "Atšaukti statybas:"
 
 #: horizons/i18n/guitranslations.py:286
+#, fuzzy
 msgid "(lose all resources)"
-msgstr ""
+msgstr "(prarasti visi resursai)"
 
 #: horizons/i18n/guitranslations.py:287
 msgid "Currently building:"
-msgstr ""
+msgstr "Dabartinės statybos:"
 
 #: horizons/i18n/guitranslations.py:288
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
@@ -1193,7 +1193,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:290 horizons/i18n/guitranslations.py:334
 msgid "Building overview"
-msgstr ""
+msgstr "Statybų apžvalga"
 
 #: horizons/i18n/guitranslations.py:291
 msgid "Cancel all building progress"
@@ -1205,7 +1205,7 @@ msgstr "Pauzė"
 
 #: horizons/i18n/guitranslations.py:293
 msgid "Resume"
-msgstr ""
+msgstr "Tęsti"
 
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:313
 #: horizons/i18n/guitranslations.py:335 horizons/i18n/guitranslations.py:337
@@ -1220,11 +1220,12 @@ msgstr "Žvejų valtys"
 
 #: horizons/i18n/guitranslations.py:298
 msgid "Cutter"
-msgstr ""
+msgstr "Kateris"
 
 #: horizons/i18n/guitranslations.py:299
+#, fuzzy
 msgid "Herring fisher"
-msgstr ""
+msgstr "Silkių gaudytojas"
 
 #: horizons/i18n/guitranslations.py:300
 msgid "Whaler"
@@ -1241,31 +1242,31 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:306
 msgid "Select resources:"
-msgstr ""
+msgstr "Pasirinkti išteklius:"
 
 #: horizons/i18n/guitranslations.py:308
 msgid "Buying"
-msgstr ""
+msgstr "Pirkimas"
 
 #: horizons/i18n/guitranslations.py:310
 msgid "Balance:"
-msgstr ""
+msgstr "Likutis:"
 
 #: horizons/i18n/guitranslations.py:311
 msgid "Expenses:"
-msgstr ""
+msgstr "Išlaidos:"
 
 #: horizons/i18n/guitranslations.py:312
 msgid "Income:"
-msgstr ""
+msgstr "Pajamos:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Sale"
-msgstr ""
+msgstr "Pardavimas"
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Taxes"
-msgstr ""
+msgstr "Mokesčiai"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
@@ -1286,11 +1287,11 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:326 horizons/i18n/guitranslations.py:329
 #: horizons/i18n/guitranslations.py:363
 msgid "Name:"
-msgstr ""
+msgstr "Pavadinimas:"
 
 #: horizons/i18n/guitranslations.py:330 horizons/i18n/guitranslations.py:344
 msgid "Taxes:"
-msgstr ""
+msgstr "Mokesčiai:"
 
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
