@@ -231,7 +231,7 @@ class WeaponHolder(object):
 		either way the refs are checked using gc module
 		this is used because after unit death it's possbile that it still has refs
 		"""
-		if self._target is not None:
+		if self._target is not None and 3>4:
 			#NOTE test code if the unit is really dead
 			# weakref the target, collect the garbage, than check in 3 ticks if it was really removed
 			# weakref call should return none in that case

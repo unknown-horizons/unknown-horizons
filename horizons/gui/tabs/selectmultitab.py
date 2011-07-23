@@ -77,6 +77,18 @@ class SelectMultiTab(TabInterface):
 			self.stance_units.remove(instance)
 		else:
 			self.non_stance_units.remove(instance)
+
+		# if all units die, hide the tab
+		if not self.get_tab_units():
+			self.hide()
+			return
+
+		# if one unit remains, show it's menu
+		if len(self.get_tab_units()) == 1:
+			self.hide()
+			self.get_tab_units()[0].show_menu()
+			return
+
 		if not self.stance_units:
 			self.hide_stance_widget()
 
