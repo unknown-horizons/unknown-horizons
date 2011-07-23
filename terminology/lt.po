@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-23 23:40+0200\n"
+"PO-Revision-Date: 2011-07-23 23:45+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -339,10 +339,10 @@ msgid "increase"
 msgstr ""
 
 msgid "liquor"
-msgstr ""
+msgstr "alkoholis"
 
 msgid "mode"
-msgstr ""
+msgstr "būsena"
 
 msgid "multiple"
 msgstr ""
@@ -441,28 +441,28 @@ msgid "ship inventory"
 msgstr "laivo inventorius"
 
 msgid "starting"
-msgstr ""
+msgstr "pradinis"
 
 msgid "trade partner"
-msgstr ""
+msgstr "prekybos partneris"
 
 msgid "yields"
-msgstr ""
+msgstr "derlius"
 
 msgid "faith"
-msgstr ""
+msgstr "tikėjimas"
 
 msgid "green"
-msgstr ""
+msgstr "žalias"
 
 msgid "red"
-msgstr ""
+msgstr "raudonas"
 
 msgid "check"
-msgstr ""
+msgstr "tikrinti"
 
 msgid "connection"
-msgstr ""
+msgstr "ryšys"
 
 msgid "no"
 msgstr "ne"
