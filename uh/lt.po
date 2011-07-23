@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 17:40+0200\n"
+"PO-Revision-Date: 2011-07-23 17:43+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -692,15 +692,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:121
 msgid "Gold"
-msgstr ""
+msgstr "Auksas"
 
 #: horizons/i18n/guitranslations.py:123
 msgid "Enter new name:"
-msgstr ""
+msgstr "Įveskite naują vardą:"
 
 #: horizons/i18n/guitranslations.py:124
 msgid "Change name"
-msgstr ""
+msgstr "Pakeisti vardą"
 
 #: horizons/i18n/guitranslations.py:125 horizons/i18n/guitranslations.py:232
 msgid "Apply the new name"
@@ -800,20 +800,20 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:200
 msgid "Credits"
-msgstr ""
+msgstr "Titrai"
 
 #: horizons/i18n/guitranslations.py:164
 msgid "Cancel game"
-msgstr ""
+msgstr "Atšaukti žaidimą"
 
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:242
 msgid "Settings"
-msgstr ""
+msgstr "Nuostatos"
 
 #: horizons/i18n/guitranslations.py:167
 msgid "Return to game"
-msgstr ""
+msgstr "Grįžti į žaidimą"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "The FIFE and Unknown Horizons development teams"
@@ -919,19 +919,19 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:196
 msgid "Loading ..."
-msgstr ""
+msgstr "Įkeliama ..."
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Quit"
-msgstr ""
+msgstr "Baigti"
 
 #: horizons/i18n/guitranslations.py:205
 msgid "Singleplayer"
-msgstr ""
+msgstr "Vieno žaidėjo žaidimas"
 
 #: horizons/i18n/guitranslations.py:206
 msgid "Multiplayer"
-msgstr ""
+msgstr "Kelių žaidėjų žaidimas"
 
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 msgid "Create game:"
@@ -939,7 +939,7 @@ msgstr "Sukurti žaidimą:"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Back:"
-msgstr ""
+msgstr "Grįžti:"
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Choose a map:"
@@ -947,11 +947,11 @@ msgstr "Pasirinkite žemėlapį:"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Sukurti žaidimą - Kelių žaidėjų"
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Player limit:"
-msgstr ""
+msgstr "Žaidėjų riba:"
 
 #: horizons/i18n/guitranslations.py:214
 msgid "Create this new game"
@@ -1079,7 +1079,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:252
 msgid "Network port:"
-msgstr ""
+msgstr "Tinklo jungtis:"
 
 #: horizons/i18n/guitranslations.py:253
 msgid "Number of autosaves:"
