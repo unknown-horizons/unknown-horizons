@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 19:39+0200\n"
+"PO-Revision-Date: 2011-07-23 19:48+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -491,11 +491,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
-msgstr ""
+msgstr "Medis"
 
 #: horizons/i18n/guitranslations.py:58 horizons/i18n/guitranslations.py:75
 msgid "Fields"
-msgstr ""
+msgstr "Laukai"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer buildings"
@@ -503,7 +503,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
-msgstr ""
+msgstr "Kariuomenė"
 
 #: horizons/i18n/guitranslations.py:62
 msgid "Boat builder: Builds boats and small ships. Built on coast."
@@ -615,23 +615,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:97
 msgid "load/reload"
-msgstr ""
+msgstr "įkelti/perkrauti"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Inhabitants"
-msgstr ""
+msgstr "Gyventojai"
 
 #: horizons/i18n/guitranslations.py:100
 msgid "Click to change the name of your settlement."
-msgstr ""
+msgstr "Spragtelėkite, kad pakeistumėte jūsų gyvenvietės pavadinimą."
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Destroy"
-msgstr ""
+msgstr "Sugriauti"
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Build menu"
-msgstr "Statybos meniu"
+msgstr "Statymo meniu"
 
 #: horizons/i18n/guitranslations.py:104
 msgid "Game menu"
@@ -644,7 +644,7 @@ msgstr "Pagalba"
 
 #: horizons/i18n/guitranslations.py:106
 msgid "Captain's log"
-msgstr ""
+msgstr "Kapitono žurnalas"
 
 #: horizons/i18n/guitranslations.py:108
 msgid "Rotate map counterclockwise"
