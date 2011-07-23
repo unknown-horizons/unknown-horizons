@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 20:47+0200\n"
+"PO-Revision-Date: 2011-07-23 22:34+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -485,11 +485,11 @@ msgstr "Palapinės: Jūsų gyventojų namai."
 
 #: horizons/i18n/guitranslations.py:53
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
+msgstr "Saugykla: Išplečia sandėlį ir teikia mokesčių rinkėjus."
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Trail: Needed for collecting goods."
-msgstr ""
+msgstr "Takas: Reikalingas surinkti prekėms."
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
@@ -510,14 +510,15 @@ msgstr "Kariuomenė"
 #: horizons/i18n/guitranslations.py:62
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
+"Valties statybininkas: Stato valtis ir mažus laivelius. Statoma ant kranto."
 
 #: horizons/i18n/guitranslations.py:63
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
+msgstr "Plytinė: Paverčia molį į plytas."
 
 #: horizons/i18n/guitranslations.py:64
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
+msgstr "Molio karjeras: Paima molio iš telkinio."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
@@ -525,27 +526,27 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:66
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
+msgstr "Ūkis: Augina lauko kultūras ir gyvulius."
 
 #: horizons/i18n/guitranslations.py:67
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "Ganykla: Augina avis. Teikia vilną. Reikalingas ūkis."
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
-msgstr "Bulvių laukas: Teikia maisto. Reikia ūkio."
+msgstr "Bulvių laukas: Teikia maistą. Reikalingas ūkis."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr ""
+msgstr "Cukranendrės laukas: Naudojama alkoholio gamybai. Reikalingas ūkis."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
-msgstr "Kaimo mokykla: Teikia švietimą."
+msgstr "Kaimo mokykla: Suteikia išsilavinimą."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
+msgstr "Audėjas: Ėriukų vilną paverčia į audinį."
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Settler buildings"
@@ -553,35 +554,37 @@ msgstr "Naujakurių pastatai"
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Skerdykla: Reikalingos kiaulės ar galvijai. Gamina maistą."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Paleisti galvijai: Didina galvijų skaičių. Reikalingas ūkis."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr ""
+msgstr "Anglies deginimas: Sudegina daug lentų."
 
 #: horizons/i18n/guitranslations.py:81
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Gydytojas: Gydo ligas. Naudoja vaistažoles."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr ""
+msgstr "Herbariumas: Augina vaistažoles. Reikalingas ūkis."
 
 #: horizons/i18n/guitranslations.py:83
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr ""
+msgstr "Geležies kasykla: Paima geležies rūdą iš telkinio."
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Kiaulidė: Didina kiaulių skaičių. Reikalingas ūkis."
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
 msgstr ""
+"Druskos tvenkiniai: Išgarina vandenį ir surenka druską. Statomi prie jūros "
+"kranto."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Smeltery: Refines all kind of ores."
