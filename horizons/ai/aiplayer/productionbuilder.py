@@ -31,7 +31,7 @@ from constants import BUILD_RESULT, BUILDING_PURPOSE
 from building import AbstractBuilding
 
 from horizons.constants import AI, BUILDINGS, RES
-from horizons.util import Point
+from horizons.util import Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
@@ -45,8 +45,8 @@ class ProductionBuilder(AreaBuilder):
 
 	def __init(self, settlement_manager):
 		self._init_cache()
-		self.collector_buildings = []
-		self.production_buildings = []
+		self.collector_buildings = [] # [building, ...]
+		self.production_buildings = [] # [building, ...]
 		self.unused_fields = self._make_empty_unused_fields()
 
 	@classmethod
@@ -177,7 +177,7 @@ class ProductionBuilder(AreaBuilder):
 		options = []
 
 		for (x, y), (purpose, _) in self.plan.iteritems():
-			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
+			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
 			if not builder:
 				continue
 
@@ -242,7 +242,7 @@ class ProductionBuilder(AreaBuilder):
 
 		options = []
 		for (x, y), (purpose, _) in self.plan.iteritems():
-			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
+			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
 			if not builder:
 				continue
 
@@ -335,7 +335,7 @@ class ProductionBuilder(AreaBuilder):
 
 		options = []
 		for (x, y), area_number in area_label.iteritems():
-			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
+			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
 			if not builder:
 				continue
 
@@ -363,6 +363,25 @@ class ProductionBuilder(AreaBuilder):
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
 			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
 			return BUILD_RESULT.OK
+
+		if self.settlement_manager.village_builder.tent_queue:
+			# impossible to build a storage but may be possible to help a bit with a tent
+			# TODO: prefer the current section of the village
+			tent_size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
+			tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
+			best_coords = None
+			best_area = 0
+
+			for x, y in self.settlement_manager.village_builder.tent_queue:
+				new_area = 0
+				for coords in Rect.init_from_topleft_and_size(x, y, tent_size[0] - 1, tent_size[1] - 1).get_radius_coordinates(tent_radius):
+					if coords in area_label and coords not in self.land_manager.roads and coords not in collector_area:
+						new_area += 1
+				if new_area > best_area:
+					best_coords = (x, y)
+					best_area = new_area
+			return self._extend_settlement_with_tent(Rect.init_from_topleft_and_size(best_coords[0], best_coords[1], tent_size[0] - 1, tent_size[1] - 1))
+
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def count_available_squares(self, size, max_num = None):
