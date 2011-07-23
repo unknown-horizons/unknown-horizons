@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 17:55+0200\n"
+"PO-Revision-Date: 2011-07-23 19:39+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -631,16 +631,16 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Build menu"
-msgstr ""
+msgstr "Statybos meniu"
 
 #: horizons/i18n/guitranslations.py:104
 msgid "Game menu"
-msgstr ""
+msgstr "Žaidimo meniu"
 
 #: horizons/i18n/guitranslations.py:105 horizons/i18n/guitranslations.py:162
 #: horizons/i18n/guitranslations.py:201
 msgid "Help"
-msgstr ""
+msgstr "Pagalba"
 
 #: horizons/i18n/guitranslations.py:106
 msgid "Captain's log"
@@ -736,7 +736,7 @@ msgstr "Pristabdyti gamybą"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Start production"
-msgstr ""
+msgstr "Pradėti gamybą"
 
 #: horizons/i18n/guitranslations.py:138
 msgid "Leave Captain's log"
@@ -752,27 +752,27 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Galimi scenarijai"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Scenario description"
-msgstr ""
+msgstr "Scenarijaus aprašas"
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr ""
+msgstr "Tęsti žaidimą"
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Pasirinkti šį scenarijų"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "Exit"
-msgstr ""
+msgstr "Išeiti"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "Add to list"
-msgstr ""
+msgstr "Įdėti į sąrašą"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "Leave production overview"
@@ -780,23 +780,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:154
 msgid "Refresh data"
-msgstr ""
+msgstr "Atnaujinti duomenis"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "Delete entry"
-msgstr ""
+msgstr "Pašalinti įrašą"
 
 #: horizons/i18n/guitranslations.py:157
 msgid "Move down"
-msgstr ""
+msgstr "Nuleisti"
 
 #: horizons/i18n/guitranslations.py:158
 msgid "Move up"
-msgstr ""
+msgstr "Pakelti"
 
 #: horizons/i18n/guitranslations.py:160 horizons/i18n/guitranslations.py:199
 msgid "Attention please!"
-msgstr ""
+msgstr "Prašome dėmesio!"
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:200
 msgid "Credits"
