@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 20:38+0200\n"
+"PO-Revision-Date: 2011-07-23 20:40+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -459,7 +459,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:47
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
+msgstr "Žvejys: Gaudo jūros žuvis, teikia maistą."
 
 #: horizons/i18n/guitranslations.py:48
 msgid "Hunter: Hunts wild forest animals, produces food."
@@ -468,14 +468,15 @@ msgstr "Medžiotojas: Medžioja laukinio miško gyvūnus, teikia maistą."
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
+"Gaisro signalas: Leidžia žaidėjui prekiauti su nepriklausomu prekybininku."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
+msgstr "Medkirtys: Kerta medžius ir paverčia juos lentomis."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
+msgstr "Pagrindinė aikštė: Aprūpina miestiečius prekėmis."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
