@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-24 00:41+0200\n"
+"PO-Revision-Date: 2011-07-24 00:49+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -597,19 +597,19 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:87
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "Smuklė: Suteikia vietą susitikimui."
 
 #: horizons/i18n/guitranslations.py:88
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Tabako laukas: Teikia tabaką. Reikalingas ūkis."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Tabakininkas: Teikia tabako gaminius iš tabako."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Įrankininkas: Teikia įrankius iš geležies."
 
 #: horizons/i18n/guitranslations.py:93 horizons/i18n/guitranslations.py:327
 msgid "Running costs:"
@@ -1220,7 +1220,7 @@ msgstr "Tęsti"
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:313
 #: horizons/i18n/guitranslations.py:335 horizons/i18n/guitranslations.py:337
 msgid "Running costs"
-msgstr ""
+msgstr "Einamosios išlaidos"
 
 # 76%
 #: horizons/i18n/guitranslations.py:296
@@ -1239,7 +1239,7 @@ msgstr "Silkių gaudytojas"
 
 #: horizons/i18n/guitranslations.py:300
 msgid "Whaler"
-msgstr ""
+msgstr "Laivas banginiams"
 
 #: horizons/i18n/guitranslations.py:301
 msgid "Build this ship!"
@@ -1248,7 +1248,7 @@ msgstr "Pastatyti šį laivą!"
 #: horizons/i18n/guitranslations.py:302 horizons/i18n/guitranslations.py:303
 #: horizons/i18n/guitranslations.py:304
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Dar neįgyvendinta!"
 
 #: horizons/i18n/guitranslations.py:306
 msgid "Select resources:"
@@ -1366,19 +1366,19 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:367
 msgid "Ship:"
-msgstr ""
+msgstr "Laivas:"
 
 #: horizons/i18n/guitranslations.py:368
 msgid "Trade partner:"
-msgstr ""
+msgstr "Prekybos partneris:"
 
 #: horizons/i18n/guitranslations.py:370
 msgid "Configure trading route:"
-msgstr ""
+msgstr "Konfigūruoti prekybos maršrutą:"
 
 #: horizons/i18n/guitranslations.py:372
 msgid "Load/Unload:"
-msgstr ""
+msgstr "Įkelti/Perkrauti"
 
 #: horizons/main.py:82
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
@@ -1523,9 +1523,8 @@ msgstr ""
 
 # 83%
 #: horizons/world/units/ship.py:353
-#, fuzzy
 msgid "Trader"
-msgstr "Prekyba"
+msgstr "Pirklys"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -1765,35 +1764,35 @@ msgstr "Smuklė"
 
 #: sqlite/Building
 msgid "Tent"
-msgstr ""
+msgstr "Palapinė"
 
 #: sqlite/Building
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Palapinės griuvėsiai"
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Tabako laukas"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabakininkas"
 
 #: sqlite/Building
 msgid "Toolmaker"
-msgstr ""
+msgstr "Įrankininkas"
 
 #: sqlite/Building
 msgid "Trail"
-msgstr ""
+msgstr "Takas"
 
 #: sqlite/Building
 msgid "Village school"
-msgstr ""
+msgstr "Kaimo mokykla"
 
 #: sqlite/Building
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Audėjo palapinė"
 
 #: sqlite/Colors
 msgid "black"
