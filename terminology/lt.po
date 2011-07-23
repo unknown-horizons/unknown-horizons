@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-23 22:50+0200\n"
+"PO-Revision-Date: 2011-07-23 23:40+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -84,178 +84,178 @@ msgid "increment"
 msgstr "prieaugis"
 
 msgid "select"
-msgstr ""
+msgstr "pasirinkti"
 
 msgid "setting"
-msgstr ""
+msgstr "nuostata"
 
 msgid "time"
-msgstr ""
+msgstr "laikas"
 
 msgid "trade"
-msgstr ""
+msgstr "prekyba"
 
 msgid "change"
-msgstr ""
+msgstr "keisti"
 
 msgid "main square"
-msgstr ""
+msgstr "pagrindinė aikštė"
 
 msgid "trail"
-msgstr ""
+msgstr "takas"
 
 msgid "boards"
-msgstr ""
+msgstr "lentos"
 
 msgid "buy"
-msgstr ""
+msgstr "pirkti"
 
 msgid "coast"
-msgstr ""
+msgstr "pakrantė"
 
 msgid "connect"
-msgstr ""
+msgstr "užmegzti ryšį"
 
 msgid "cost"
-msgstr ""
+msgstr "kaina"
 
 msgid "free"
-msgstr ""
+msgstr "laisvas"
 
 msgid "log"
-msgstr ""
+msgstr "žurnalas"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "medkirtys"
 
 msgid "sell"
-msgstr ""
+msgstr "parduoti"
 
 msgid "storage"
-msgstr ""
+msgstr "saugykla"
 
 msgid "taxes"
-msgstr ""
+msgstr "mokesčiai"
 
 msgid "trader"
-msgstr ""
+msgstr "pirklys"
 
 msgid "version"
-msgstr ""
+msgstr "versija"
 
 msgid "companies"
-msgstr ""
+msgstr "įmonės"
 
 msgid "fire"
-msgstr ""
+msgstr "ugnis"
 
 msgid "left"
-msgstr ""
+msgstr "kairė"
 
 msgid "reach"
-msgstr ""
+msgstr "pasiekti"
 
 msgid "signal"
-msgstr ""
+msgstr "signalas"
 
 msgid "signal fire"
-msgstr ""
+msgstr "ugnies signalas"
 
 msgid "stock"
-msgstr ""
+msgstr "ištekliai"
 
 msgid "tools"
-msgstr ""
+msgstr "įrankiai"
 
 msgid "wool"
-msgstr ""
+msgstr "vilna"
 
 msgid "balance"
-msgstr ""
+msgstr "balansas"
 
 msgid "choose"
-msgstr ""
+msgstr "pasirinkti"
 
 msgid "fisher"
-msgstr ""
+msgstr "žvejys"
 
 msgid "found"
-msgstr ""
+msgstr "rasti"
 
 msgid "pavilion"
-msgstr ""
+msgstr "paviljonas"
 
 msgid "potato"
-msgstr ""
+msgstr "bulvės"
 
 msgid "range"
-msgstr ""
+msgstr "sritis"
 
 msgid "raw"
-msgstr ""
+msgstr "žaliava"
 
 msgid "running"
-msgstr ""
+msgstr "veikimas"
 
 msgid "running costs"
-msgstr ""
+msgstr "einamosios išlaidos"
 
 msgid "collector"
-msgstr ""
+msgstr "surinkėjas"
 
 msgid "help"
-msgstr ""
+msgstr "pagalba"
 
 msgid "house"
-msgstr ""
+msgstr "namas"
 
 msgid "inventory"
-msgstr ""
+msgstr "inventorius"
 
 msgid "level"
-msgstr ""
+msgstr "lygis"
 
 msgid "move"
-msgstr ""
+msgstr "perkelti"
 
 msgid "moved"
-msgstr ""
+msgstr "perkeltas"
 
 msgid "produce"
-msgstr ""
+msgstr "gaminti"
 
 msgid "produced"
-msgstr ""
+msgstr "pagamintas"
 
 msgid "pasture"
-msgstr ""
+msgstr "ganykla"
 
 msgid "storage tent"
-msgstr ""
+msgstr "saugojimo palapinė"
 
 msgid "sugar"
-msgstr ""
+msgstr "cukrus"
 
 msgid "tree"
-msgstr ""
+msgstr "medis"
 
 msgid "active"
-msgstr ""
+msgstr "aktyvus"
 
 msgid "add"
-msgstr ""
+msgstr "papildyti"
 
 msgid "build menu"
-msgstr ""
+msgstr "statymo meniu"
 
 msgid "built"
-msgstr ""
+msgstr "pastatymas"
 
 msgid "construction"
-msgstr ""
+msgstr "statyba"
 
 msgid "continue"
-msgstr ""
+msgstr "tęsti"
 
 msgid "decrease"
 msgstr ""
@@ -393,52 +393,52 @@ msgid "fisherman"
 msgstr ""
 
 msgid "forest"
-msgstr ""
+msgstr "miškas"
 
 msgid "forum"
-msgstr ""
+msgstr "forumas"
 
 msgid "fulfill"
-msgstr ""
+msgstr "patenkinti"
 
 msgid "graphics"
-msgstr ""
+msgstr "grafika"
 
 msgid "grow"
-msgstr ""
+msgstr "augti"
 
 msgid "hold"
-msgstr ""
+msgstr "turėti"
 
 msgid "hunt"
-msgstr ""
+msgstr "medžioklė"
 
 msgid "income"
-msgstr ""
+msgstr "pajamos"
 
 msgid "information"
-msgstr ""
+msgstr "informacija"
 
 msgid "key"
-msgstr ""
+msgstr "klavišas"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "ėriuko vilna"
 
 msgid "load/unload"
-msgstr ""
+msgstr "įkelti/perkrauti"
 
 msgid "return"
-msgstr ""
+msgstr "grįžti"
 
 msgid "service"
-msgstr ""
+msgstr "paslauga"
 
 msgid "sheep"
-msgstr ""
+msgstr "avis"
 
 msgid "ship inventory"
-msgstr ""
+msgstr "laivo inventorius"
 
 msgid "starting"
 msgstr ""
@@ -465,85 +465,85 @@ msgid "connection"
 msgstr ""
 
 msgid "no"
-msgstr ""
+msgstr "ne"
 
 msgid "tax"
-msgstr ""
+msgstr "mokestis"
 
 msgid "feature"
-msgstr ""
+msgstr "funkcija"
 
 msgid "reached"
-msgstr ""
+msgstr "pasiekti"
 
 msgid "slider"
-msgstr ""
+msgstr "šliaužiklis"
 
 msgid "condition"
-msgstr ""
+msgstr "sąlyga"
 
 msgid "consume"
-msgstr ""
+msgstr "vartoti"
 
 msgid "contact"
-msgstr ""
+msgstr "susisiekti"
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialogas"
 
 msgid "issues"
-msgstr ""
+msgstr "pelnas"
 
 msgid "minimap"
-msgstr ""
+msgstr "mažas žemėlapis"
 
 msgid "playing"
-msgstr ""
+msgstr "žaisti"
 
 msgid "ruin"
-msgstr ""
+msgstr "griuvėsiai"
 
 msgid "seed"
-msgstr ""
+msgstr "sėkla"
 
 msgid "temporarily"
-msgstr ""
+msgstr "laikinai"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "druskos tvenkiniai"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tabakas"
 
 msgid "cattle"
-msgstr ""
+msgstr "galvijai"
 
 msgid "pig"
-msgstr ""
+msgstr "kiaulė"
 
 msgid "herbs"
-msgstr ""
+msgstr "vaistažolės"
 
 msgid "herbary"
-msgstr ""
+msgstr "herbariumas"
 
 msgid "butchery"
-msgstr ""
+msgstr "skerdykla"
 
 msgid "doctor"
-msgstr ""
+msgstr "gydytojas"
 
 msgid "education"
-msgstr ""
+msgstr "išsilavinimas"
 
 msgid "clay"
-msgstr ""
+msgstr "molis"
 
 msgid "charcoal"
-msgstr ""
+msgstr "anglis"
 
 msgid "iron"
-msgstr ""
+msgstr "geležis"
 
 msgid "ore"
-msgstr ""
+msgstr "rūda"
