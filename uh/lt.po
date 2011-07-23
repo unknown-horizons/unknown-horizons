@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 19:48+0200\n"
+"PO-Revision-Date: 2011-07-23 20:38+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -24,7 +24,8 @@ msgstr "Privaloma perkrauti"
 
 #: horizons/engine.py:66
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Kai kurie jūsų pakeitimai reikalauja Nežinomų Horizontų perkrovimo."
+msgstr ""
+"Kai kurie jūsų pakeitimai reikalauja žaidimo Nežinomi Horizontai perkrovimo."
 
 #: horizons/engine.py:70
 msgid "Restore default settings"
@@ -36,7 +37,7 @@ msgstr ""
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Ar norite tęsti?"
 
 #: horizons/engine.py:135
 msgid "System default"
@@ -60,7 +61,7 @@ msgstr ""
 
 #: horizons/engine.py:467
 msgid "Invalid network port"
-msgstr ""
+msgstr "Negaliojanti tinklo jungtis"
 
 #: horizons/engine.py:468
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
@@ -153,7 +154,7 @@ msgstr ""
 #: horizons/gui/gui.py:330 horizons/i18n/guitranslations.py:144
 #: horizons/i18n/guitranslations.py:265
 msgid "Details:"
-msgstr ""
+msgstr "Išsamiau:"
 
 # 83%
 #: horizons/gui/gui.py:331
@@ -167,11 +168,11 @@ msgstr ""
 #: horizons/gui/gui.py:406
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Įrašyta į %s\n"
 
 #: horizons/gui/gui.py:407
 msgid "%H:%M, %A, %B %d"
-msgstr ""
+msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:418
 #, python-format
@@ -191,20 +192,20 @@ msgstr ""
 
 #: horizons/gui/gui.py:446
 msgid "No file selected"
-msgstr ""
+msgstr "Failas nepasirinktas"
 
 #: horizons/gui/gui.py:446
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Jums reikia pasirinkti išsaugotą žaidimą, kad pašalintumėte"
 
 #: horizons/gui/gui.py:449
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Ar tikrai norite pašalinti išsaugotą žaidimą \"%s\"?"
 
 #: horizons/gui/gui.py:451
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Patvirtinkite pašalinimą"
 
 #: horizons/gui/gui.py:456
 msgid "Error!"
@@ -212,15 +213,15 @@ msgstr "Klaida!"
 
 #: horizons/gui/gui.py:456
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Nepavyko pašalinti įrašyto failo!"
 
 #: horizons/gui/ingamegui.py:449
 msgid "Hit P to continue the game or click below!"
-msgstr ""
+msgstr "Spustelėkite P, kad tęstumėte žaidimą arba spauskite žemiau!"
 
 #: horizons/gui/ingamegui.py:450
 msgid "Game paused"
-msgstr ""
+msgstr "Žaidimas sustabdytas"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
@@ -250,7 +251,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:125
 msgid "Version differs!"
-msgstr ""
+msgstr "Skiriasi versija!"
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Map: "
@@ -258,11 +259,11 @@ msgstr "Žemėlapis: "
 
 #: horizons/gui/modules/multiplayermenu.py:148
 msgid "Players: "
-msgstr ""
+msgstr "Žaidėjai: "
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid "Creator: "
-msgstr ""
+msgstr "Kūrėjas: "
 
 #: horizons/gui/modules/multiplayermenu.py:168
 #, python-format
@@ -271,7 +272,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:168
 msgid "Wrong version"
-msgstr ""
+msgstr "Bloga versija"
 
 #: horizons/gui/modules/singleplayermenu.py:96
 #: horizons/gui/modules/singleplayermenu.py:108
@@ -321,26 +322,25 @@ msgstr ""
 #: horizons/gui/mousetools/buildingtool.py:114
 #: horizons/gui/tabs/buildrelatedtab.py:96 horizons/i18n/guitranslations.py:92
 msgid "Build"
-msgstr "Darinys"
+msgstr "Sudėjimas"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Valties statybos apžvalga"
 
 # 76%
 # 92%
 #: horizons/gui/tabs/boatbuildertab.py:62 horizons/i18n/guitranslations.py:297
-#, fuzzy
 msgid "Fishing boat"
-msgstr "Žvejų valtys"
+msgstr "Žvejybos valtis"
 
 #: horizons/gui/tabs/boatbuildertab.py:111
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Vis dar reikalingi resursai:"
 
 #: horizons/gui/tabs/boatbuildertab.py:167
 msgid "Fisher boats"
-msgstr "Žvejų valtys"
+msgstr "Žvejo valtys"
 
 #: horizons/gui/tabs/boatbuildertab.py:176
 msgid "Trade boats"
@@ -360,7 +360,7 @@ msgstr "Patvirtinti tvarką"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Statyti susijusiuose laukuose"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -377,7 +377,7 @@ msgstr "Inventorius"
 
 #: horizons/gui/tabs/inventorytab.py:63
 msgid "Ship inventory"
-msgstr ""
+msgstr "Laivo inventorius"
 
 #: horizons/gui/tabs/marketplacetabs.py:74
 #: horizons/i18n/guitranslations.py:309
@@ -396,11 +396,11 @@ msgstr "Apžvalga"
 
 #: horizons/gui/tabs/overviewtab.py:102
 msgid "Branch office overview"
-msgstr ""
+msgstr "Filialo apžvalga"
 
 #: horizons/gui/tabs/overviewtab.py:117
 msgid "Market place overview"
-msgstr ""
+msgstr "Rinkos apžvalga"
 
 #: horizons/gui/tabs/overviewtab.py:131 horizons/gui/tabs/overviewtab.py:169
 msgid "Ship overview"
@@ -412,7 +412,7 @@ msgstr "Gamybos apžvalga"
 
 #: horizons/gui/tabs/overviewtab.py:182
 msgid "Destroy building"
-msgstr ""
+msgstr "Sugriauti pastatą"
 
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
@@ -429,29 +429,29 @@ msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:150
 msgid "Start route"
-msgstr ""
+msgstr "Pradėti maršrutą"
 
 #: horizons/gui/widgets/routeconfig.py:60
 msgid "Stop route"
-msgstr ""
+msgstr "Stabdyti maršrutą"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73 horizons/i18n/guitranslations.py:74
 msgid "Companies"
-msgstr ""
+msgstr "Įmonės"
 
 #: horizons/i18n/guitranslations.py:43
 msgid "Sailor buildings"
-msgstr ""
+msgstr "Jūriniai pastatai"
 
 #: horizons/i18n/guitranslations.py:44
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "Gyventojai ir infrastruktūra"
 
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:61
 #: horizons/i18n/guitranslations.py:77
 msgid "Services"
-msgstr ""
+msgstr "Paslaugos"
 
 #: horizons/i18n/guitranslations.py:46
 msgid "Pavilion: Fulfills religious needs of sailors."
@@ -463,7 +463,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:48
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "Medžiotojas: Medžioja laukinio miško gyvūnus, teikia maistą."
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
@@ -499,7 +499,7 @@ msgstr "Laukai"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "Pionierių pastatai"
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
@@ -531,7 +531,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
+msgstr "Bulvių laukas: Teikia maisto. Reikia ūkio."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
@@ -539,7 +539,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
-msgstr ""
+msgstr "Kaimo mokykla: Teikia švietimą."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."
@@ -547,7 +547,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Settler buildings"
-msgstr ""
+msgstr "Naujakurių pastatai"
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Butchery: Needs pigs or cattle. Produces food."
