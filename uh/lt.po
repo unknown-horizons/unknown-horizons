@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-06-17 15:53+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-07-23 16:50+0200\n"
+"Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -1145,31 +1145,31 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:274
 msgid "Start game:"
-msgstr ""
+msgstr "Pradėti žaidimą:"
 
 #: horizons/i18n/guitranslations.py:275
 msgid "Campaign"
-msgstr ""
+msgstr "Žygis"
 
 #: horizons/i18n/guitranslations.py:276
 msgid "Free play"
-msgstr ""
+msgstr "Laisvasis žaidimas"
 
 #: horizons/i18n/guitranslations.py:277
 msgid "Random map"
-msgstr ""
+msgstr "Atsitiktinis žemėlapis"
 
 #: horizons/i18n/guitranslations.py:278
 msgid "Scenario"
-msgstr ""
+msgstr "Scenarijus"
 
 #: horizons/i18n/guitranslations.py:282
 msgid "Color:"
-msgstr ""
+msgstr "Spalva:"
 
 #: horizons/i18n/guitranslations.py:283
 msgid "Player name:"
-msgstr ""
+msgstr "Žaidėjo vardas:"
 
 #: horizons/i18n/guitranslations.py:285
 msgid "Cancel building:"
@@ -1201,7 +1201,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:292
 msgid "Pause"
-msgstr ""
+msgstr "Pauzė"
 
 #: horizons/i18n/guitranslations.py:293
 msgid "Resume"
@@ -1232,7 +1232,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:301
 msgid "Build this ship!"
-msgstr ""
+msgstr "Pastatyti šį laivą!"
 
 #: horizons/i18n/guitranslations.py:302 horizons/i18n/guitranslations.py:303
 #: horizons/i18n/guitranslations.py:304
@@ -1910,11 +1910,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "fish"
-msgstr ""
+msgstr "žuvis"
 
 #: sqlite/Resources
 msgid "food"
-msgstr ""
+msgstr "maistas"
 
 #: sqlite/Resources
 msgid "get-together"
@@ -1922,7 +1922,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "grass"
-msgstr ""
+msgstr "žolė"
 
 #: sqlite/Resources
 msgid "happiness"
