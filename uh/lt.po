@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 17:43+0200\n"
+"PO-Revision-Date: 2011-07-23 17:55+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -704,35 +704,35 @@ msgstr "Pakeisti vardą"
 
 #: horizons/i18n/guitranslations.py:125 horizons/i18n/guitranslations.py:232
 msgid "Apply the new name"
-msgstr ""
+msgstr "Taikyti naują vardą"
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Enter your message:"
-msgstr ""
+msgstr "Įveskite Jūsų žinutę:"
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Chat"
-msgstr ""
+msgstr "Pokalbis"
 
 #: horizons/i18n/guitranslations.py:130
 msgid "Buy resources"
-msgstr ""
+msgstr "Pirkti resursus"
 
 #: horizons/i18n/guitranslations.py:131
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "Pirkti ar parduoti resursus"
 
 #: horizons/i18n/guitranslations.py:132
 msgid "Legend:"
-msgstr ""
+msgstr "Legenda:"
 
 #: horizons/i18n/guitranslations.py:133
 msgid "Sell resources"
-msgstr ""
+msgstr "Parduoti resursus"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Pause production"
-msgstr ""
+msgstr "Pristabdyti gamybą"
 
 #: horizons/i18n/guitranslations.py:136
 msgid "Start production"
