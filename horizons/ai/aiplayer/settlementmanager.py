@@ -426,7 +426,7 @@ class SettlementManager(WorldObject):
 			pass
 		elif self.production_builder.need_to_enlarge_collector_area():
 			result = self.production_builder.enlarge_collector_area()
-			self.log_generic_build_result(result,  'storage coverage building')
+			self.log_generic_build_result(result, 'storage coverage building')
 		elif self.build_chain(self.food_chain, 'food producer'):
 			pass
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
@@ -505,6 +505,22 @@ class SettlementManager(WorldObject):
 	def remove_building(self, building):
 		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
 			self.production_builder.collector_buildings.remove(building)
+
+	def handle_lost_area(self, coords_list):
+		"""
+		* remove the lost area from the village, production, and road areas
+		* remove village sections with impossible main squares
+		* remove all planned buildings that are now impossible from the village area
+		* if the village area takes too much of the total area then remove / reduce the remaining sections (TODO)
+		* remove planned fields that are now impossible
+		"""
+
+		self.land_manager.handle_lost_area(coords_list)
+		self.village_builder.handle_lost_area(coords_list)
+		self.production_builder.handle_lost_area(coords_list)
+		self.production_builder.handle_new_area()
+		self.village_builder.display()
+		self.production_builder.display()
 
 	def __str__(self):
 		return '%s.SM(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)

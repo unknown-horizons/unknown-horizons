@@ -476,10 +476,9 @@ class AIPlayer(GenericAI):
 			if settlement_manager is None:
 				self.handle_enemy_settling_on_our_chosen_island(island_id)
 				# we are on the way to found a settlement on that island
-				pass
 			else:
 				# we already have a settlement there
-				pass
+				settlement_manager.handle_lost_area(changed_coords)
 
 	def handle_enemy_settling_on_our_chosen_island(self, island_id):
 		mission = None

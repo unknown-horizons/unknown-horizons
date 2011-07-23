@@ -297,6 +297,12 @@ class AreaBuilder(WorldObject):
 			result = self._extend_settlement_with_storage(position)
 		return result
 
+	def handle_lost_area(self, coords_list):
+		# remove the affected tiles from the plan
+		for coords in coords_list:
+			if coords in self.plan:
+				del self.plan[coords]
+
 	def display(self):
 		raise NotImplementedError, 'This function has to be overridden.'
 

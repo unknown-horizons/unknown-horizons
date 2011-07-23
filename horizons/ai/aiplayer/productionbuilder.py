@@ -563,6 +563,31 @@ class ProductionBuilder(AreaBuilder):
 					if coords in building_areas:
 						building_areas[coords] = self.last_change_id
 
+	def handle_lost_area(self, coords_list):
+		# remove planned fields that are now impossible
+		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].size
+		removed_list = []
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose in [BUILDING_PURPOSE.UNUSED_POTATO_FIELD, BUILDING_PURPOSE.UNUSED_PASTURE, BUILDING_PURPOSE.UNUSED_SUGARCANE_FIELD]:
+				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
+				for field_coords in rect.tuple_iter():
+					if field_coords not in self.land_manager.production:
+						removed_list.append(coords)
+						break
+
+		for coords in removed_list:
+			rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
+			for field_coords in rect.tuple_iter():
+				self.plan[field_coords] = (BUILDING_PURPOSE.NONE, None)
+		self.refresh_unused_fields()
+		super(ProductionBuilder, self).handle_lost_area(coords_list)
+
+	def handle_new_area(self):
+		# new production area may be freed up when the village area is reduced
+		for coords in self.land_manager.production:
+			if coords not in self.plan:
+				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
+
 	def __str__(self):
 		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
 

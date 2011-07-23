@@ -256,6 +256,15 @@ class LandManager(WorldObject):
 		self.production[coords] = self.village[coords]
 		del self.village[coords]
 
+	def handle_lost_area(self, coords_list):
+		# reduce the areas for the village, production, and roads
+		for coords in coords_list:
+			if coords in self.village:
+				del self.village[coords]
+			elif coords in self.production:
+				del self.production[coords]
+			self.roads.discard(coords)
+
 	def display(self):
 		if not AI.HIGHLIGHT_PLANS:
 			return

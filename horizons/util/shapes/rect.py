@@ -73,6 +73,16 @@ class Rect(object):
 		return self
 
 	@classmethod
+	def init_from_topleft_and_size_tuples(cls, coords, size):
+		self = cls.__new__(cls)
+		self.left = coords[0]
+		self.top = coords[1]
+		self.right = coords[0] + size[0] - 1
+		self.bottom = coords[1] + size[1] - 1
+		self.origin = Point(self.left, self.top)
+		return self
+
+	@classmethod
 	def init_from_corners(cls, point1, point2):
 		"""Init rect with 2 points interpreted as 2 corner points"""
 		self = cls.__new__(cls)

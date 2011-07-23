@@ -155,14 +155,14 @@ class VillageBuilder(AreaBuilder):
 			for road_y in ys:
 				coords = (road_x, road_y)
 				if self.land_manager._coords_usable(coords):
-					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None, 0)
+					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None, -1)
 
 		xs = set([x for (x, _) in self.land_manager.village])
 		for road_y in horizontal_roads:
 			for road_x in xs:
 				coords = (road_x, road_y)
 				if self.land_manager._coords_usable(coords):
-					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None, 0)
+					self.plan[coords] = (BUILDING_PURPOSE.ROAD, None, -1)
 
 		for i in xrange(len(sections)):
 			plan = sections[i]
@@ -634,6 +634,69 @@ class VillageBuilder(AreaBuilder):
 		if can_trigger_next_section and self.plan[coords][2] > self.current_section:
 			self.current_section = self.plan[coords][2]
 		return BUILD_RESULT.OK
+
+	def handle_lost_area(self, coords_list):
+		# remove village sections with impossible main squares
+		removed_sections = set()
+		for coords, (purpose, builder, section) in self.plan.iteritems():
+			if purpose != BUILDING_PURPOSE.MAIN_SQUARE:
+				continue
+			possible = True
+			for main_square_coords in builder.position.tuple_iter():
+				if main_square_coords not in self.land_manager.village:
+					possible = False
+					break
+			if not possible:
+				# impossible to build the main square because a part of the area is owned by another player: remove the whole section
+				removed_sections.add(section)
+
+		removed_coords_list = []
+		for coords, (purpose, builder, section) in self.plan.iteritems():
+			if purpose == BUILDING_PURPOSE.RESERVED or purpose == BUILDING_PURPOSE.NONE:
+				continue
+			building = None
+			if coords in self.settlement.ground_map:
+				building = self.settlement.ground_map[coords].object
+
+			if section in removed_sections:
+				if purpose == BUILDING_PURPOSE.ROAD:
+					if building is None or building.id != BUILDINGS.TRAIL_CLASS:
+						removed_coords_list.append(coords)
+					continue # leave existing roads behind
+				elif building is not None and not building.buildable_upon:
+					# TODO: remove the actual building
+					pass
+
+				for building_coords in builder.position.tuple_iter():
+					removed_coords_list.append(building_coords)
+				if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE:
+					self.tent_queue.remove(coords)
+			else:
+				# remove the planned village buildings that are no longer possible
+				if purpose == BUILDING_PURPOSE.ROAD:
+					if coords not in self.land_manager.village:
+						removed_coords_list.append(coords)
+					continue
+
+				possible = True
+				for building_coords in builder.position.tuple_iter():
+					if building_coords not in self.land_manager.village:
+						possible = False
+				if possible:
+					continue
+
+				for building_coords in builder.position.tuple_iter():
+					removed_coords_list.append(building_coords)
+				if purpose == BUILDING_PURPOSE.UNUSED_RESIDENCE:
+					self.tent_queue.remove(coords)
+
+		for coords in removed_coords_list:
+			del self.plan[coords]
+		# TODO: renumber the sections
+		# TODO: create a new plan with village producers
+		self._return_unused_space()
+		self._create_village_producer_assignments()
+		super(VillageBuilder, self).handle_lost_area(coords_list)
 
 	def display(self):
 		if not AI.HIGHLIGHT_PLANS:
