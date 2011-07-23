@@ -3,83 +3,85 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-07-23 22:50+0200\n"
+"Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
-msgstr ""
+msgstr "statyti"
 
 msgid "game"
-msgstr ""
+msgstr "žaidimas"
 
 msgid "building"
-msgstr ""
+msgstr "pastatas"
 
 msgid "tent"
-msgstr ""
+msgstr "palapinė"
 
 msgid "resource"
-msgstr ""
+msgstr "šaltinis"
 
 msgid "branch office"
-msgstr ""
+msgstr "filialas"
 
 msgid "your"
-msgstr ""
+msgstr "jūsų"
 
 msgid "farm"
-msgstr ""
+msgstr "ūkis"
 
 msgid "field"
-msgstr ""
+msgstr "laukas"
 
 msgid "overview"
-msgstr ""
+msgstr "apžvalga"
 
 msgid "ship"
-msgstr ""
+msgstr "laivas"
 
 msgid "main"
-msgstr ""
+msgstr "pagrindinis"
 
 msgid "settlement"
-msgstr ""
+msgstr "nausėdija"
 
 msgid "start"
-msgstr ""
+msgstr "pradėti"
 
 msgid "click"
-msgstr ""
+msgstr "spragtelėti"
 
 msgid "inhabitants"
-msgstr ""
+msgstr "gyventojai"
 
 msgid "map"
-msgstr ""
+msgstr "žemėlapis"
 
 msgid "menu"
-msgstr ""
+msgstr "meniu"
 
 msgid "production"
-msgstr ""
+msgstr "gamyba"
 
 msgid "tab"
-msgstr ""
+msgstr "skirtukas"
 
 msgid "unknown"
-msgstr ""
+msgstr "nežinomas"
 
 msgid "food"
-msgstr ""
+msgstr "maistas"
 
 msgid "increment"
-msgstr ""
+msgstr "prieaugis"
 
 msgid "select"
 msgstr ""
