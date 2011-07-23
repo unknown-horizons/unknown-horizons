@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-23 20:40+0200\n"
+"PO-Revision-Date: 2011-07-23 20:47+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -454,8 +454,9 @@ msgid "Services"
 msgstr "Paslaugos"
 
 #: horizons/i18n/guitranslations.py:46
+#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
+msgstr "Pavilijonas: Suteikia jūreiviams prieigą prie religijos."
 
 #: horizons/i18n/guitranslations.py:47
 msgid "Fisherman: Fishes the sea, produces food."
@@ -480,7 +481,7 @@ msgstr "Pagrindinė aikštė: Aprūpina miestiečius prekėmis."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
-msgstr ""
+msgstr "Palapinės: Jūsų gyventojų namai."
 
 #: horizons/i18n/guitranslations.py:53
 msgid "Storage: Extends stock and provides collectors."
