@@ -24,6 +24,7 @@ import logging
 
 from collections import deque
 
+from building import AbstractBuilding
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
@@ -239,6 +240,8 @@ class SettlementManager(WorldObject):
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full inventories."""
 		for building in self.production_builder.production_buildings:
+			if not AbstractBuilding.buildings[building.id].producer_building:
+				continue
 			for production in building._get_productions():
 				all_full = True
 
@@ -372,6 +375,9 @@ class SettlementManager(WorldObject):
 
 		if self.build_chain(self.boards_chain, 'boards producer'):
 			pass
+		elif not self.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS):
+			result = self.production_builder.build_signal_fire()
+			self.log_generic_build_result(result, 'signal fire')
 		elif not self.production_builder.enough_collectors():
 			result = self.production_builder.improve_collector_coverage()
 			self.log_generic_build_result(result,  'storage')
@@ -429,6 +435,9 @@ class SettlementManager(WorldObject):
 			self.log_generic_build_result(result, 'storage coverage building')
 		elif self.build_chain(self.food_chain, 'food producer'):
 			pass
+		elif not self.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS):
+			result = self.production_builder.build_signal_fire()
+			self.log_generic_build_result(result, 'signal fire')
 		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
 			pass
 		elif self.tents >= 16 and self.owner.need_feeder_island(self) and not self.owner.have_feeder_island() and self.owner.can_found_feeder_island():

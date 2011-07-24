@@ -60,6 +60,7 @@ class BUILDING_PURPOSE:
 	TOOLMAKER = 31
 	CHARCOAL_BURNER = 32
 	BOAT_BUILDER = 33
+	SIGNAL_FIRE = 34
 
 	@classmethod
 	def get_used_purpose(cls, purpose):

@@ -105,6 +105,9 @@ class ProductionBuilder(AreaBuilder):
 	def build_boat_builder(self):
 		return AbstractBuilding.buildings[BUILDINGS.BOATBUILDER_CLASS].build(self.settlement_manager, None)[0]
 
+	def build_signal_fire(self):
+		return AbstractBuilding.buildings[BUILDINGS.SIGNAL_FIRE_CLASS].build(self.settlement_manager, None)[0]
+
 	def _near_collectors(self, position):
 		for building in self.collector_buildings:
 			if building.position.distance(position) <= building.radius:

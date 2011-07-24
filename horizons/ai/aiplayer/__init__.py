@@ -53,6 +53,7 @@ from building.charcoalburner import AbstractCharcoalBurner
 from building.smeltery import AbstractSmeltery
 from building.toolmaker import AbstractToolmaker
 from building.boatbuilder import AbstractBoatBuilder
+from building.signalfire import AbstractSignalFire
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
