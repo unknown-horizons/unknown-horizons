@@ -27,8 +27,10 @@ import locale
 
 from ext.enum import Enum
 
-"""This file keeps track of some constants, that have to be used in the code.
-NOTE: Using constants is generally a bad style, so avoid where possible."""
+"""This file keeps track of the constants that are used in Unknown Horizons.
+NOTE: Using magic constants in code is generally a bad style, so avoid where
+possible and instead import the proper class of this file.
+"""
 
 ##Versioning
 class VERSION:
