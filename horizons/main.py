@@ -302,7 +302,7 @@ def _start_map(map_name, is_scenario = False, campaign = None):
 
 def _start_random_map(seed = None):
 	from horizons.util import random_map
-	start_singleplayer( random_map.generate_map(seed) )
+	start_singleplayer( random_map.generate_map(seed=seed) )
 	return True
 
 def _start_campaign(campaign_name):
