@@ -10,18 +10,20 @@ Run without arguments for help
 import os.path
 import sys
 
-dbfile = 'content/game.sqlite'
-
-if not os.path.exists(dbfile):
-	print 'please run from uh root dir'
-	sys.exit(1)
-
 sys.path.append(".")
 sys.path.append("./horizons")
 sys.path.append("./horizons/util")
 
 import gettext
 gettext.install('', unicode=True)
+
+try:
+	import run_uh
+except ImportError, e:
+	print e.message
+	print 'Please run from uh root dir'
+	sys.exit(1)
+
 
 from run_uh import init_environment
 init_environment()
