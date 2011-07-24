@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-24 15:42+0200\n"
+"PO-Revision-Date: 2011-07-24 16:09+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -1291,11 +1291,11 @@ msgstr "Mokesčiai"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Rodyti resursus, pagamintus šioje gyvenvietėje"
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
-msgstr "Statyti laukus"
+msgstr "Kurti laukus"
 
 #: horizons/i18n/guitranslations.py:322
 msgid "Average happiness:"
@@ -1317,15 +1317,15 @@ msgstr "Mokesčiai:"
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
 msgid "Tax rate"
-msgstr ""
+msgstr "Mokesčio tarifas"
 
 #: horizons/i18n/guitranslations.py:336
 msgid "capacity utilization"
-msgstr ""
+msgstr "galios panaudojimas"
 
 #: horizons/i18n/guitranslations.py:339
 msgid "Resource deposit"
-msgstr ""
+msgstr "Indėlių resursai"
 
 #: horizons/i18n/guitranslations.py:340
 msgid "This is a resource deposit where you can build a mine to dig up resources."
@@ -1337,31 +1337,31 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:343
 msgid "Needed resources:"
-msgstr ""
+msgstr "Reikalingi resursai"
 
 #: horizons/i18n/guitranslations.py:345 horizons/i18n/guitranslations.py:352
 msgid "Happiness"
-msgstr ""
+msgstr "Pasitenkinimas"
 
 #: horizons/i18n/guitranslations.py:346 horizons/i18n/guitranslations.py:351
 msgid "Paid taxes"
-msgstr ""
+msgstr "Sumokėti mokesčiai"
 
 #: horizons/i18n/guitranslations.py:348 horizons/i18n/guitranslations.py:349
 msgid "Residents"
-msgstr ""
+msgstr "Gyventojai"
 
 #: horizons/i18n/guitranslations.py:354
 msgid "Build settlement:"
-msgstr ""
+msgstr "Statyti nausėdiją:"
 
 #: horizons/i18n/guitranslations.py:355
 msgid "Click to change the name of this ship."
-msgstr ""
+msgstr "Spragtelėkite, kad pakeistumėte šio laivo pavadinimą."
 
 #: horizons/i18n/guitranslations.py:356
 msgid "Build settlement"
-msgstr ""
+msgstr "Statyti nausėdiją"
 
 #: horizons/i18n/guitranslations.py:358
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
@@ -1373,7 +1373,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:365
 msgid "Exchange:"
-msgstr ""
+msgstr "Keistis:"
 
 #: horizons/i18n/guitranslations.py:367
 msgid "Ship:"
@@ -1435,7 +1435,7 @@ msgstr ""
 
 #: horizons/main.py:347
 msgid "Error: No quicksave found."
-msgstr ""
+msgstr "Klaida: Nėra greito įrašymo."
 
 #: horizons/mpsession.py:48 horizons/mpsession.py:55 horizons/mpsession.py:57
 #: horizons/mpsession.py:59 horizons/mpsession.py:61
@@ -1459,7 +1459,7 @@ msgstr ""
 #: horizons/savegamemanager.py:393
 #, python-format
 msgid "Error: Cannot find campaign \"%s\"."
-msgstr ""
+msgstr "Klaida: Negalima surasti žygio \"%s\"."
 
 #: horizons/savegamemanager.py:398
 #, python-format
@@ -1478,7 +1478,7 @@ msgstr ""
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
-msgstr ""
+msgstr "Jūs laimėjote!"
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario. "
@@ -1487,13 +1487,12 @@ msgstr ""
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
 msgid "unknown"
-msgstr ""
+msgstr "nežinomas"
 
 # 75%
 #: horizons/spsession.py:121
-#, fuzzy
 msgid "Failed to quicksave."
-msgstr "Nepavyko įrašyti"
+msgstr "Nepavyko greitai įrašyti."
 
 #: horizons/spsession.py:122
 msgid "An error happened during quicksave. Your game has not been saved."
@@ -1505,7 +1504,7 @@ msgstr ""
 
 #: horizons/spsession.py:131
 msgid "No quicksaves found"
-msgstr ""
+msgstr "Nerasta greito įrašymo"
 
 #: horizons/spsession.py:131
 msgid "You need to quicksave before you can quickload."
