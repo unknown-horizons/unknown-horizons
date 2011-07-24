@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-24 14:38+0200\n"
+"PO-Revision-Date: 2011-07-24 14:47+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -232,7 +232,7 @@ msgstr "Žaidimas sustabdytas"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
-msgstr ""
+msgstr "Tinklas neinicijuotas"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
@@ -254,7 +254,7 @@ msgstr "Tinklo klaida"
 
 #: horizons/gui/modules/multiplayermenu.py:110
 msgid "Something went wrong with the network: "
-msgstr ""
+msgstr "Kažkas negerai su tinklu: "
 
 #: horizons/gui/modules/multiplayermenu.py:125
 msgid "Version differs!"
@@ -276,6 +276,10 @@ msgstr "Kūrėjas: "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Žaidimo versija skiriasi nuo jūsų versijos. Kiekvienas žaidėjas daugelio "
+"žaidėjų žaidimo režime privalo naudoti tą pačią versiją. Tai gali būti "
+"ištaisoma, atsisiunčiant kiekvienam žaidėjui naujausią žaidimo versiją. "
+"Žaidimo versija: %(gameversion)s Jūsų versija: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:168
 msgid "Wrong version"
@@ -424,7 +428,7 @@ msgstr "Sugriauti pastatą"
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Riba: %st už lizdą"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-24 14:41+0200\n"
+"PO-Revision-Date: 2011-07-24 14:50+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -250,6 +250,10 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Не може да се свържете с главният сървър. Моля, проверете интернет връзката "
+"си. Ако тя е добре, това означава, че нашият главен сървърът е временно "
+"извън линия.\n"
+"Детайли: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -506,7 +510,7 @@ msgstr "Склад: Разширява запасите и осигурява с
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Trail: Needed for collecting goods."
-msgstr ""
+msgstr "Trail: Нужен е за събиране на стоки."
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
@@ -776,15 +780,15 @@ msgstr "Прочети следв. вписвания"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Налични сценарии"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Scenario description"
-msgstr ""
+msgstr "Описание на сценария"
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr ""
+msgstr "Продължи играта"
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
@@ -800,11 +804,11 @@ msgstr "Добави към листа"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "Leave production overview"
-msgstr ""
+msgstr "Напусни преглед на продукцията"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "Refresh data"
-msgstr ""
+msgstr "Опресни данните"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "Delete entry"
@@ -999,7 +1003,7 @@ msgstr "Чат:"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Gamelobby"
-msgstr ""
+msgstr "Геймлоби"
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Game details:"
@@ -1302,11 +1306,11 @@ msgstr "Покажи произведените ресурси"
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
-msgstr ""
+msgstr "Построй полета"
 
 #: horizons/i18n/guitranslations.py:322
 msgid "Average happiness:"
-msgstr ""
+msgstr "Ниво на щастие:"
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Most needed resource:"
@@ -1315,16 +1319,16 @@ msgstr "Най-нужните ресурси:"
 #: horizons/i18n/guitranslations.py:326 horizons/i18n/guitranslations.py:329
 #: horizons/i18n/guitranslations.py:363
 msgid "Name:"
-msgstr ""
+msgstr "Име:"
 
 #: horizons/i18n/guitranslations.py:330 horizons/i18n/guitranslations.py:344
 msgid "Taxes:"
-msgstr ""
+msgstr "Такси:"
 
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
 msgid "Tax rate"
-msgstr ""
+msgstr "Данъчна ставка"
 
 #: horizons/i18n/guitranslations.py:336
 msgid "capacity utilization"
