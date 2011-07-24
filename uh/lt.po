@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-24 15:39+0200\n"
+"PO-Revision-Date: 2011-07-24 15:42+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -1218,7 +1218,7 @@ msgstr "Statybos apžvalga"
 
 #: horizons/i18n/guitranslations.py:291
 msgid "Cancel all building progress"
-msgstr ""
+msgstr "Atšaukti visų statybų progresą"
 
 #: horizons/i18n/guitranslations.py:292
 msgid "Pause"
@@ -1295,15 +1295,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
-msgstr ""
+msgstr "Statyti laukus"
 
 #: horizons/i18n/guitranslations.py:322
 msgid "Average happiness:"
-msgstr ""
+msgstr "Vidutinis pasitenkinimas:"
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Most needed resource:"
-msgstr ""
+msgstr "Patys reikalingiausi resursai:"
 
 #: horizons/i18n/guitranslations.py:326 horizons/i18n/guitranslations.py:329
 #: horizons/i18n/guitranslations.py:363
