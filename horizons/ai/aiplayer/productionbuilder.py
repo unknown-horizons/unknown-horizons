@@ -417,7 +417,7 @@ class ProductionBuilder(AreaBuilder):
 		# TODO: store the constants in a better place
 		available_squares, total_squares = self.count_available_squares(3, 100)
 		self.log.info('%s collector area: %d of %d useable', self, available_squares, total_squares)
-		return available_squares < min(100, total_squares - 5)
+		return available_squares < min(100, total_squares - 10)
 
 	def count_fields(self):
 		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
