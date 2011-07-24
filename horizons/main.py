@@ -114,13 +114,6 @@ def start(command_line_arguments):
 	fife.init()
 	_modules.gui = Gui()
 	SavegameManager.init()
-	try:
-		NetworkInterface.create_instance()
-	except RuntimeError, e:
-		headline = _(u"Failed to initialize networking.")
-		descr = _(u"Networking couldn't be initialised with the current configuration.")
-		advice = _(u"Check the data you entered in the Network section in the settings dialogue.")
-		_modules.gui.show_error_popup(headline, descr, advice, unicode(e))
 
 	# for preloading game data while in main screen
 	preload_lock = threading.Lock()

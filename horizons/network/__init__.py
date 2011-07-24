@@ -53,7 +53,10 @@ def find_enet_module():
     return arch_module.enet
   except ImportError:
     pass
-  raise ImportError("Failed to import enet. Maybe there is no version for your platform (%s)" % (dir))
+
+  # we can't raise an ImportError here, because the game should work even when
+  # there's no enet.
+  return None
 
 class NetworkException(Exception):
   pass
