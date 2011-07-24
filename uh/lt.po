@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-24 00:49+0200\n"
+"PO-Revision-Date: 2011-07-24 14:38+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -102,7 +102,7 @@ msgstr "Nepavyko įrašyti."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Ar tikrai norite išeiti iš Nežinomų Horizontų?"
+msgstr "Ar tikrai norite išeiti iš žaidimo Nežinomi Horizonti?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
@@ -149,12 +149,12 @@ msgstr "Perrašymo patvirtinimas"
 
 #: horizons/gui/gui.py:263
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Prašome pasirinkti išsaugotą žaidimą arba spragtelėti ant atšaukti."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:263
 msgid "Select a savegame"
-msgstr ""
+msgstr "Pasirinkite įrašyti žaidimą"
 
 #: horizons/gui/gui.py:330 horizons/i18n/guitranslations.py:144
 #: horizons/i18n/guitranslations.py:265
@@ -168,7 +168,7 @@ msgstr "Klaida:"
 
 #: horizons/gui/gui.py:404
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Nežinomi įrašo duomenys\n"
 
 #: horizons/gui/gui.py:406
 #, python-format
@@ -182,7 +182,7 @@ msgstr "%H:%M, %A, %B %d"
 #: horizons/gui/gui.py:418
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "Įrašyto žaidimo ver. %d"
 
 #: horizons/gui/gui.py:420
 #, python-format
@@ -190,6 +190,8 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"ĮSPĖJIMAS: Nesuderinta ver. %(ver)d!\n"
+"Reikalinga ver. %(need)d!"
 
 #: horizons/gui/gui.py:423
 msgid "INCOMPATIBLE VERSION\n"

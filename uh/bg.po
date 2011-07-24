@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-11 16:08+0200\n"
+"PO-Revision-Date: 2011-07-24 14:41+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -52,6 +52,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDL рендерът се има предвид само като резервно решение и има сериозни "
+"графични бъгове. \n"
+"\n"
+"Използвайте на собствен риск!"
 
 #: horizons/engine.py:224
 #, python-format
@@ -70,22 +74,26 @@ msgstr ""
 #: horizons/engine.py:469
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
+"Моля, проверете порта, който сте въвели и се уверете, че това е в определен "
+"обхват."
 
 #: horizons/engine.py:481
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Неуспех да се приложат новите мрежови данни."
 
 #: horizons/engine.py:482 horizons/main.py:120
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr ""
+msgstr "Мрежата не може да бъде инициализирана с текущата конфигурация."
 
 #: horizons/engine.py:483
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Проверете данните, които въведохте в мрежовият раздел."
 
 #: horizons/engine.py:486
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Понякога малките порт номера изискват специални привилегии, опитайте "
+"по-големи от 1024 или 0."
 
 #: horizons/gui/gui.py:121
 msgid "Error"
@@ -144,17 +152,17 @@ msgstr "Потвърждение за презаписване"
 
 #: horizons/gui/gui.py:263
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Моля, избери съхранена игра или натисни на отхвърляне"
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:263
 msgid "Select a savegame"
-msgstr ""
+msgstr "Избери съхранена игра"
 
 #: horizons/gui/gui.py:330 horizons/i18n/guitranslations.py:144
 #: horizons/i18n/guitranslations.py:265
 msgid "Details:"
-msgstr ""
+msgstr "Детайли:"
 
 # 83%
 #: horizons/gui/gui.py:331
@@ -227,11 +235,13 @@ msgstr "Прекъсната игра"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Networking isn't initialised"
-msgstr ""
+msgstr "Мрежата не е инициализирана"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
 msgstr ""
+"Мрежата не е инициализирана, вероятно от конфигурацията. Проверете вашите "
+"настройки!"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -369,7 +379,7 @@ msgstr "Потвърди поръчка"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Построй подобни полета"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -430,7 +440,7 @@ msgstr "Лимит: %st на позиция"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr ""
+msgstr "Празнота"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
@@ -567,7 +577,7 @@ msgstr "Кланица: Нужни са прасета или добитък. П
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Кравеферма: Отглежда говеда. Нуждае се от ферма."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
@@ -575,11 +585,11 @@ msgstr "Изгаряне на въглища: Гори много дъски."
 
 #: horizons/i18n/guitranslations.py:81
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Доктор: Лекува болести. Използва билки."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr ""
+msgstr "Дрогерия: Произвежда билки. Нуждае се от ферма."
 
 #: horizons/i18n/guitranslations.py:83
 msgid "Iron mine: Gets iron ore from deposit."
@@ -587,11 +597,11 @@ msgstr "Желязна мина: Добива желязна руда от за�
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Кочина: Отглежда прасета. Нуждае се от ферма."
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Солни езера: Отделят сол. Построй на брега."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Smeltery: Refines all kind of ores."
@@ -603,11 +613,11 @@ msgstr "Таверна: Осигурява задружност."
 
 #: horizons/i18n/guitranslations.py:88
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Тютюнево поле: Произвежда тютюн. Нуждае се от ферма."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Тютюнопродавач: Произвежда тютюневи изделия."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."
@@ -1127,13 +1137,12 @@ msgstr "Моля, уверете се, че знаете какво правит
 
 # 83%
 #: horizons/i18n/guitranslations.py:260
-#, fuzzy
 msgid "Apply"
-msgstr "Приеми:"
+msgstr "Приеми"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Избере настройки под разбиране"
 
 #: horizons/i18n/guitranslations.py:264
 msgid "Enter filename:"
@@ -1260,9 +1269,8 @@ msgstr "Не е още завършено!"
 
 # 76%
 #: horizons/i18n/guitranslations.py:306
-#, fuzzy
 msgid "Select resources:"
-msgstr "Продай ресурси"
+msgstr "Продай ресурси:"
 
 #: horizons/i18n/guitranslations.py:308
 msgid "Buying"
@@ -1332,11 +1340,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:341
 msgid "It contains these resources:"
-msgstr ""
+msgstr "Съдържа тези ресурси:"
 
 #: horizons/i18n/guitranslations.py:343
 msgid "Needed resources:"
-msgstr ""
+msgstr "Нужни ресурси:"
 
 # 88%
 #: horizons/i18n/guitranslations.py:345 horizons/i18n/guitranslations.py:352
@@ -1346,7 +1354,7 @@ msgstr "Щастие"
 
 #: horizons/i18n/guitranslations.py:346 horizons/i18n/guitranslations.py:351
 msgid "Paid taxes"
-msgstr ""
+msgstr "Платени такси"
 
 #: horizons/i18n/guitranslations.py:348 horizons/i18n/guitranslations.py:349
 msgid "Residents"
@@ -1705,7 +1713,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Палатката на ловеца"
 
 #: sqlite/Building
 msgid "Iron Mine"
@@ -1757,7 +1765,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Signal Fire"
-msgstr ""
+msgstr "Сигнален огън"
 
 #: sqlite/Building
 msgid "Smeltery"
@@ -1773,11 +1781,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Tavern"
-msgstr ""
+msgstr "Таверна"
 
 #: sqlite/Building
 msgid "Tent"
-msgstr ""
+msgstr "Палатка"
 
 #: sqlite/Building
 msgid "Tent Ruin"
@@ -1809,47 +1817,47 @@ msgstr ""
 
 #: sqlite/Colors
 msgid "black"
-msgstr ""
+msgstr "черен"
 
 #: sqlite/Colors
 msgid "blue"
-msgstr ""
+msgstr "син"
 
 #: sqlite/Colors
 msgid "cyan"
-msgstr ""
+msgstr "циан"
 
 #: sqlite/Colors
 msgid "green"
-msgstr ""
+msgstr "зелен"
 
 #: sqlite/Colors
 msgid "pink"
-msgstr ""
+msgstr "розов"
 
 #: sqlite/Colors
 msgid "red"
-msgstr ""
+msgstr "червен"
 
 #: sqlite/Colors
 msgid "white"
-msgstr ""
+msgstr "бял"
 
 #: sqlite/Colors
 msgid "yellow"
-msgstr ""
+msgstr "жълт"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
-msgstr ""
+msgstr "Едно ново заселване беше направено от ${player}."
 
 #: sqlite/Messages
 msgid "A new world has been created."
-msgstr ""
+msgstr "Един нов свят беше създаден."
 
 #: sqlite/Messages
 msgid "One of your settler has no market place in it's range."
-msgstr ""
+msgstr "Някой от твоите заселници няма пазар в обсега си."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
@@ -1861,7 +1869,7 @@ msgstr ""
 
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
-msgstr ""
+msgstr "ПОБЕДИ!!!"
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
@@ -1976,7 +1984,7 @@ msgstr "Ликьор"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "прасета"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
@@ -2004,11 +2012,11 @@ msgstr "Суровина-захар"
 
 #: sqlite/Resources
 msgid "raw tobacco"
-msgstr ""
+msgstr "суровина-тютюн"
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "сол"
 
 #: sqlite/Resources
 msgid "sugar"
@@ -2022,7 +2030,7 @@ msgstr "Текстил"
 
 #: sqlite/Resources
 msgid "tobacco"
-msgstr ""
+msgstr "тютюн"
 
 #: sqlite/Resources
 msgid "tobaccos"
@@ -2046,19 +2054,19 @@ msgstr "Вълна"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "аристократ"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "гражданин"
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "търговец"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr "Пионер"
+msgstr "новозаселник"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
