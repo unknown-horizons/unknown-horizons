@@ -4,7 +4,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-??-??: Milestone 2011.3
-changelog date: JUL 24; rev: 
+changelog date: JUL 24; rev: 81a18ff47c290d4011e7a540a82f5793417e832b
 
 Gameplay and Balancing
 * New features
@@ -60,6 +60,7 @@ Codebase
    # use %APPDATA%\unknown-horizons as user dir on windows
    # Settlement now is a StorageHolder for consistency and simplicity
    # huge improvements to pathfinding speed
+   # use plain text sql statements instead of binary sqlite databases
    # 
 * Fixed crashes and inconsistencies
    ~ most tests crashed on windows (open file handle)
