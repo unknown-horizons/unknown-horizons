@@ -76,8 +76,7 @@ class GroundClass(type):
 		self.id = id
 		self._object = None
 		self.velocity = {}
-		for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM unit_velocity WHERE ground = ?", self.id):
-			self.velocity[unit] = (straight, diagonal)
+		#for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM unit_velocity WHERE ground = ?", self.id):
 		self.classes = ['ground[' + str(id) + ']']
 		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)

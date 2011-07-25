@@ -29,7 +29,7 @@ from ext.enum import Enum
 
 """This file keeps track of the constants that are used in Unknown Horizons.
 NOTE: Using magic constants in code is generally a bad style, so avoid where
-possible and instead import the proper class of this file.
+possible and instead import the proper classes of this file.
 """
 
 ##Versioning

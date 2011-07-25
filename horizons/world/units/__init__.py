@@ -43,7 +43,7 @@ class UnitClass(type):
 			return self
 
 		attributes = {'load': load}
-		attributes.update(db("SELECT name, value FROM unit_property WHERE unit = ?", str(id)))
+		#attributes.update(db("SELECT name, value FROM unit_property WHERE unit = ?", str(id)))
 
 		self.class_package,  self.class_name = db("SELECT class_package, class_type FROM unit WHERE id = ?", id)[0]
 		__import__('horizons.world.units.'+self.class_package)

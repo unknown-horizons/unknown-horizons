@@ -77,8 +77,8 @@ class BuildingClass(type):
 		self.health = int(health)
 		self.inhabitants = int(inhabitants)
 		self.inhabitants_max = int(inhabitants_max)
-		for (name,  value) in db("SELECT name, value FROM building_property WHERE building = ?", str(id)):
-			setattr(self, name, value)
+		#for (name,  value) in db("SELECT name, value FROM building_property WHERE building = ?", str(id)):
+		#	setattr(self, name, value)
 		self.costs = {}
 		for (name, value) in db("SELECT resource, amount FROM building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
