@@ -8,7 +8,7 @@
 		<Setting name="BitsPerPixel" type="int"> 0 </Setting>
 		<Setting name="InitialVolume" type="float"> 5.0 </Setting>
 		<Setting name="SDLRemoveFakeAlpha" type="int"> 1 </Setting>
-		<Setting name="GLCompressImages" type="int"> 1 </Setting>
+		<Setting name="GLCompressImages" type="bool"> True </Setting>
 		<Setting name="WindowTitle" type="str"> Unknown Horizons Alpha </Setting>
 		<Setting name="WindowIcon" type="str">content/gui/images/logos/uh_32.png</Setting>
 		<Setting name="Font" type="str"> content/fonts/LinLibertine_Re-4.4.1.ttf </Setting>
