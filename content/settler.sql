@@ -13,6 +13,8 @@ INSERT INTO "settler_production_line" VALUES(2,20);
 INSERT INTO "settler_production_line" VALUES(2,21);
 INSERT INTO "settler_production_line" VALUES(2,44);
 INSERT INTO "settler_production_line" VALUES(2,41);
+INSERT INTO "settler_production_line" VALUES(2,69);
+INSERT INTO "settler_production_line" VALUES(2,70);
 CREATE TABLE upgrade_material(level INT NOT NULL, production_line INT NOT NULL);
 INSERT INTO "upgrade_material" VALUES(1,24);
 INSERT INTO "upgrade_material" VALUES(2,35);

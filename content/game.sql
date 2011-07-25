@@ -331,6 +331,8 @@ INSERT INTO "production_line" VALUES(120.0,1,62,12,1);
 INSERT INTO "production_line" VALUES(120.0,1,63,12,1);
 INSERT INTO "production_line" VALUES(120.0,1,64,12,1);
 INSERT INTO "production_line" VALUES(120.0,1,68,12,1);
+INSERT INTO "production_line" VALUES(90.0,0,69,3,0);
+INSERT INTO "production_line" VALUES(180.0,0,70,3,0);
 CREATE TABLE collector_restrictions(collector INTEGER, object INTEGER);
 INSERT INTO "collector_restrictions" VALUES(1000011,4);
 INSERT INTO "collector_restrictions" VALUES(1000011,5);
