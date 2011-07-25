@@ -3,6 +3,96 @@ Unknown Horizons
 
 -----------------------------------------------------
 
+2011-??-??: Milestone 2011.3
+changelog date: JUL 24; rev: 
+
+Gameplay and Balancing
+* New features
+   + trade routes can wait for load and unload
+   + new in-game pause menu
+   + hotkey "T" toggles translucency of trees and mountains
+   + 
+* Modifications and changes
+   # buoys now also displayed for user interactions like trade routes
+   # rename market place to main square
+   # 
+* Fixed bugs and problems
+   ~ mutable default arguments caused resource deposits to be empty 
+   ~ check full area of branch office for other settlements before building
+   ~ 
+
+Media Content
+* New files and features
+   + building: gravel path
+   + building: wooden storage hut
+   + icon: diplomacy in minimap panel
+   + icon: buysell tab slot modes
+   + 
+* Brush-ups and modifications
+   # 
+
+User Interface
+* Additions and new features
+   + display error message when yaml can't be found
+   + build menu now updates when inhabitants upgrade
+   + random map parameters map size and island size can be set via UI
+   + 
+* Repositioning and modifications
+   # use unicode strings for all ship names
+   # use templates for different boxes in singleplayer menu
+   # removed need for adjust_black_background
+   # 
+* Fixed bugs and usability problems
+   ~ boxes in settings expanded for some languages, buttons were unreachable
+   ~ in-game ui appeared around the main menu under certain conditions
+   ~ trying to save in multiplayer no longer causes a crash
+   ~ recognise the system default language on windows
+   ~ 
+
+Codebase
+* New functionalities
+   + support explicit paths to files for --start-map --load-map --start-scenario
+     and --start-campaign
+   + save and load the rng state
+   + 
+* Modified structures
+   # deselect instances before removal
+   # use %APPDATA%\unknown-horizons as user dir on windows
+   # Settlement now is a StorageHolder for consistency and simplicity
+   # huge improvements to pathfinding speed
+   # 
+* Fixed crashes and inconsistencies
+   ~ most tests crashed on windows (open file handle)
+   ~ scheduler removes callbacks of current tick as well now
+   ~ catch exceptions that happened during 'reset settings to default'
+     this lead to a crash right at start for players with older settings.xml
+   ~ missing import which caused a crash when starting multiplayer
+   ~ several crashes related to removing units and buildings
+   ~ upgrading python to a version not supporting bsddb anymore caused crash
+   ~ loading games could fail on mac due to .DS_Store files in content/
+   ~ 
+
+User-Contributed Content
+* Translations
+   + new translations: sv
+   + new terminology translations: sv
+   + new tutorial translations: 
+   # updates to translations: bg, ca, cs, de, es, et, fi, fr, hu, it, lt, nb,
+                              nl, pl, pt, pt_BR, ru, sl
+   # updates to tutorial translations: 
+* Campaigns and scenarios
+* Media Content
+* New team members with this release, Annotations
+   + Push access was granted to:
+     wentam
+   + We accepted pull requests or patches by:
+     hoffi
+   + Translators that joined our teams and contributed several strings:
+     Please refer to the credits!
+
+
+-----------------------------------------------------
+
 2011-07-01: Milestone 2011.2
 changelog date: JUL 01; rev: 5bfb7f58f2c8fd8cb3e16185ff5b510b752fc4ba
 
