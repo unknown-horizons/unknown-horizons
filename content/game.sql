@@ -118,7 +118,6 @@ INSERT INTO "unit" VALUES('StorageCollector','collectors','StorageCollector',12.
 INSERT INTO "unit" VALUES('FieldCollector','collectors','FieldCollector',12.0,5,1000009);
 INSERT INTO "unit" VALUES('LumberjackCollector','collectors','FieldCollector',12.0,5,1000010);
 INSERT INTO "unit" VALUES('SettlerCollector','collectors','StorageCollector',12.0,5,1000011);
-INSERT INTO "unit" VALUES('FarmerCollector','collectors','BuildingCollector',12.0,5,1000012);
 INSERT INTO "unit" VALUES('Deer','animal','WildAnimal',12.0,5,1000013);
 INSERT INTO "unit" VALUES('HunterCollector','collectors','HunterCollector',12.0,5,1000014);
 INSERT INTO "unit" VALUES('FarmAnimalCollector','collectors','FarmAnimalCollector',12.0,5,1000015);
