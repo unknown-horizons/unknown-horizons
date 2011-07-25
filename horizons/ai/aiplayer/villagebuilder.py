@@ -116,13 +116,14 @@ class VillageBuilder(AreaBuilder):
 		vertical_sections = int(math.ceil(float(height) / max_size))
 
 		sections = []
-		vertical_roads = []
-		horizontal_roads = []
+		vertical_roads = set()
+		horizontal_roads = set()
 
 		# partition with roads between the sections
 		start_y = min(ys)
 		section_width = width / horizontal_sections
 		section_height = height / vertical_sections
+		section_coords_set_list = []
 		for i in xrange(vertical_sections):
 			bottom_road = i + 1 < vertical_sections
 			max_y = min(max(ys), start_y + section_height)
@@ -133,16 +134,18 @@ class VillageBuilder(AreaBuilder):
 				right_road = j + 1 < horizontal_sections
 				max_x = min(max(xs), start_x + section_width)
 				current_width = max_x - start_x + 1
-				section_coords_set = self._get_village_section_coordinates(start_x, start_y, current_width - right_road, current_height - bottom_road)
-				section = self._create_section_plan(section_coords_set)
-				sections.append(section[1])
+				section_coords_set_list.append(self._get_village_section_coordinates(start_x, start_y, current_width - right_road, current_height - bottom_road))
 				start_x += current_width
 				if i == 0 and right_road:
-					vertical_roads.append(start_x - 1)
+					vertical_roads.add(start_x - 1)
 
 			start_y += current_height
 			if bottom_road:
-				horizontal_roads.append(start_y - 1)
+				horizontal_roads.add(start_y - 1)
+
+		for section_coords_set in section_coords_set_list:
+			section = self._create_section_plan(section_coords_set, vertical_roads, horizontal_roads)
+			sections.append(section[1])
 
 		self._compose_sections(sections, vertical_roads, horizontal_roads)
 		self._return_unused_space()
@@ -234,7 +237,7 @@ class VillageBuilder(AreaBuilder):
 		size = Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].size
 		return Rect.init_from_topleft_and_size(x, y, size[0] - 1, size[1] - 1)
 
-	def _create_section_plan(self, section_coords_set):
+	def _create_section_plan(self, section_coords_set, vertical_roads, horizontal_roads):
 		"""
 		The algorithm is as follows:
 		Place the main square and then form a road grid to support the tents;
@@ -245,11 +248,21 @@ class VillageBuilder(AreaBuilder):
 		best_plan = {}
 		best_tents = 0
 		best_value = -1
-		xs = set([x for (x, _) in section_coords_set])
-		ys = set([y for (_, y) in section_coords_set])
 		tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
 		road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
 		tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
+
+		xs = set(x for (x, _) in section_coords_set)
+		for x in vertical_roads:
+			if x - 1 in xs or x + 1 in xs:
+				xs.add(x)
+		xs = sorted(xs)
+
+		ys = set(y for (_, y) in section_coords_set)
+		for y in horizontal_roads:
+			if y - 1 in ys or y + 1 in ys:
+				ys.add(y)
+		ys = sorted(ys)
 
 		possible_road_positions = self._get_possible_building_positions(section_coords_set, (1, 1))
 		possible_residence_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size)
@@ -259,6 +272,7 @@ class VillageBuilder(AreaBuilder):
 			plan = dict.fromkeys(section_coords_set, (BUILDING_PURPOSE.NONE, None))
 			bad_roads = 0
 			good_tents = 0
+			double_roads = 0
 
 			# place the main square
 			for coords in main_square.tuple_iter():
@@ -266,34 +280,50 @@ class VillageBuilder(AreaBuilder):
 			plan[(x, y)] = (BUILDING_PURPOSE.MAIN_SQUARE, None)
 
 			# place the roads running parallel to the y-axis
+			last_road_y = None
 			for road_y in ys:
-				if road_y < y:
-					if (y - road_y) % 5 != 1:
-						continue
-				else:
-					if road_y < y + 6 or (road_y - y) % 5 != 1:
-						continue
-				for road_x in xs:
-					coords = (road_x, road_y)
-					if coords in possible_road_positions:
-						plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+				if road_y not in horizontal_roads:
+					if road_y < y:
+						if (y - road_y) % 5 != 1:
+							continue
 					else:
-						bad_roads += 1
+						if road_y < y + 6 or (road_y - y) % 5 != 1:
+							continue
+
+				if last_road_y == road_y - 1:
+					double_roads += 1
+				last_road_y = road_y
+
+				for road_x in xs:
+					if road_x not in vertical_roads:
+						coords = (road_x, road_y)
+						if coords in possible_road_positions:
+							plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+						else:
+							bad_roads += 1
 
 			# place the roads running parallel to the x-axis
+			last_road_x = None
 			for road_x in xs:
-				if road_x < x:
-					if (x - road_x) % 5 != 1:
-						continue
-				else:
-					if road_x < x + 6 or (road_x - x) % 5 != 1:
-						continue
-				for road_y in ys:
-					coords = (road_x, road_y)
-					if coords in possible_road_positions:
-						plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+				if road_x not in vertical_roads:
+					if road_x < x:
+						if (x - road_x) % 5 != 1:
+							continue
 					else:
-						bad_roads += 1
+						if road_x < x + 6 or (road_x - x) % 5 != 1:
+							continue
+
+				if last_road_x == road_x - 1:
+					double_roads += 1
+				last_road_x = road_x
+
+				for road_y in ys:
+					if road_y not in horizontal_roads:
+						coords = (road_x, road_y)
+						if coords in possible_road_positions:
+							plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+						else:
+							bad_roads += 1
 
 			if bad_roads > 0:
 				self._remove_unreachable_roads(plan, main_square)
@@ -326,7 +356,7 @@ class VillageBuilder(AreaBuilder):
 					plan[coords] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, None)
 					good_tents += 1
 
-			value = 10 * good_tents - bad_roads
+			value = 10 * good_tents - bad_roads - 30 * double_roads
 			if best_value < value:
 				best_plan = plan
 				best_tents = good_tents
