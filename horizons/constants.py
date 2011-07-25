@@ -20,14 +20,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import platform
 import os.path
 import re
 import locale
 
 from ext.enum import Enum
 
-"""This file keeps track of some constants, that have to be used in the code.
-NOTE: Using constants is generally a bad style, so avoid where possible."""
+"""This file keeps track of the constants that are used in Unknown Horizons.
+NOTE: Using magic constants in code is generally a bad style, so avoid where
+possible and instead import the proper classes of this file.
+"""
 
 ##Versioning
 class VERSION:
@@ -52,7 +55,7 @@ class VERSION:
 				return unicode(open(head_file).readline().strip()[0:7])
 		return u"<unknown>"
 
-	RELEASE_NAME    = _("Unknown Horizons Version %s")
+	RELEASE_NAME    = "Unknown Horizons Version %s"
 	RELEASE_VERSION = _set_version()
 
 	# change to sth like this for release
@@ -60,7 +63,7 @@ class VERSION:
 	# RELEASE_VERSION = u'2011.2'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 15
+	SAVEGAMEREVISION= 17
 
 	@staticmethod
 	def string():
@@ -82,7 +85,7 @@ class BUILDINGS:
 	BRANCH_OFFICE_CLASS = 1
 	STORAGE_CLASS = 2
 	RESIDENTIAL_CLASS = 3
-	MARKET_PLACE_CLASS = 4
+	MAIN_SQUARE_CLASS = 4
 	PAVILION_CLASS = 5
 	SIGNAL_FIRE_CLASS = 6
 	WEAVER_CLASS = 7
@@ -109,6 +112,8 @@ class BUILDINGS:
 	TAVERN_CLASS = 32
 	FISH_DEPOSIT_CLASS = 33
 	MOUNTAIN_CLASS = 34
+
+	TRANSPARENCY_VALUE = 180
 
 	class ACTION:
 		# data for calculating gfx for paths.
@@ -284,7 +289,11 @@ class LAYERS:
 
 ## PATHS
 # workaround, so it can be used to create paths withing PATHS
-_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
+
+if platform.system() != "Windows":
+	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
+else:
+	_user_dir = os.path.join(os.environ['APPDATA'], "unknown-horizons")
 _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 
 class PATHS:
@@ -298,6 +307,9 @@ class PATHS:
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
+
+	DB_FILES = tuple(os.path.join("content", i) for i in \
+	                 ("game.sql", "settler.sql", "balance.sql") )
 
 ## MULTIPLAYER
 class MULTIPLAYER:
@@ -336,6 +348,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"pt"    : u'Português',
 	"ru"    : u'Русский',
 	"sl"    : u'Slovenski',
+	"sv"    : u'Svenska',
 	})
 
 AUTO_CONTINUE_CAMPAIGN=True

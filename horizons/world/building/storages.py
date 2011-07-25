@@ -22,7 +22,7 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab
+		 MainSquareOverviewTab, AccountTab, MainSquareSettlerTabSettlerTab
 from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
@@ -39,9 +39,6 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
-		self.__init()
-
-	def __init(self):
 		self.inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 
 	def create_inventory(self):
@@ -55,9 +52,6 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		self.inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()
 
-	def load(self, db, worldid):
-		super(StorageBuilding, self).load(db, worldid)
-		self.__init()
 
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
@@ -70,8 +64,8 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		super(BranchOffice, self).load(db, worldid)
 		self.settlement.branch_office = self
 
-class MarketPlace(ProducerBuilding, StorageBuilding):
-	tabs = (MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab)
+class MainSquare(ProducerBuilding, StorageBuilding):
+	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSettlerTabSettlerTab)
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.

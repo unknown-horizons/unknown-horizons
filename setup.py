@@ -10,6 +10,7 @@ import platform
 from glob import glob
 from commands import getoutput
 from shutil import move, rmtree, copytree
+from horizons.constants import VERSION
 
 # Ensure we are in the correct directory
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
@@ -77,7 +78,7 @@ cmdclass = {
 
 setup(
 	name='UnknownHorizons',
-	version='2011.1',
+	version=VERSION.RELEASE_VERSION,
 	description='Realtime Economy Simulation and Strategy Game',
 	author='The Unknown Horizons Team',
 	author_email='team@unknown-horizons.org',

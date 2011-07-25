@@ -20,10 +20,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import glob, random
+import glob
+import random
 import gettext
 import os
 import locale
+import platform
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
@@ -39,7 +41,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations
 from horizons.util.gui import load_uh_widget
 from horizons.i18n.utils import find_available_languages
-from horizons.constants import LANGUAGENAMES, PATHS, NETWORK
+from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 
 UH_MODULE="unknownhorizons"
@@ -70,10 +72,17 @@ class LocalizedSetting(Setting):
 		title = _("Restore default settings")
 		msg = _("This will delete all changes to the settings you made so far.") + \
 		      u" " + _("Do you want to continue?")
-		confirmed = horizons.main._modules.gui.show_popup(title, msg, \
-		                                                  show_cancel_button=True)
+		try:
+			confirmed = horizons.main._modules.gui.show_popup(title, msg, \
+			                                                  show_cancel_button=True)
+		except AttributeError: #no gui available, called by e.g. cmd line param
+			confirmed = True
 		if confirmed:
-			super(LocalizedSetting, self).setDefaults()
+			try:
+				super(LocalizedSetting, self).setDefaults()
+			except AttributeError, err: #weird stuff happens in settings module reset
+				print "A problem occured while updating: %s" % err + "\n" + \
+				      "Please contact the developers if this happens more than once."
 
 class Fife(ApplicationBase):
 	"""
@@ -225,6 +234,8 @@ class Fife(ApplicationBase):
 				trans = gettext.translation('unknown-horizons', position, languages=[name], fallback=fallback)
 				trans.install(unicode=True, names=['ngettext',])
 			else:
+				if platform.system() == "Windows": # win doesn't set the language variable by default
+					os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
 				gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 				name = ''
 
@@ -396,7 +407,8 @@ class Fife(ApplicationBase):
 				self.music = self.menu_music
 
 		if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
-			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
+			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and \
+			   self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
 				# last track has finished (TODO: find cleaner way to check for this)
 				skip = 0 if len(self.music) == 1 else random.randint(1, len(self.music)-1)
 				self.music_rand_element = (self.music_rand_element + skip) % len(self.music)

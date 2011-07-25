@@ -41,7 +41,7 @@ class FindPath(object):
 
 	@decorators.make_constants()
 	def __call__(self, source, destination, path_nodes, blocked_coords = list(), \
-							 diagonal = False, make_target_walkable = True):
+				       diagonal = False, make_target_walkable = True):
 		"""
 		@param source: Rect, Point or BasicBuilding
 		@param destination: Rect, Point or BasicBuilding
@@ -120,8 +120,8 @@ class FindPath(object):
 	def execute(self):
 		"""Executes algorithm"""
 		# nodes are the keys of the following dicts (x, y)
-		# the val of the keys are: [previous node, distance to this node from source,
-		# distance to destination, sum of the last two elements]
+		# the val of the keys are: (previous node, distance to here,
+		# distance to here + estimated distance to target)
 		# we use this data structure out of speed consideration,
 		# using a class would admittedly be more readable
 
@@ -143,7 +143,7 @@ class FindPath(object):
 			# Find out if this costs a significant amount of time,
 			# and if so, try to resolve this here.
 			source_to_dest_dist = Point(*c).distance(self.destination)
-			to_check[c] = [None, 0, source_to_dest_dist, source_to_dest_dist]
+			to_check[c] = (None, 0, source_to_dest_dist)
 
 		# if one of the dest_coords has been processed
 		# (i.e. is in checked), a good path is found
@@ -153,22 +153,22 @@ class FindPath(object):
 			if not self.make_target_walkable:
 				dest_coords = dest_coords.intersection(self.path_nodes)
 
+		from heapq import heappush, heappop
+		heap = []
+		for coords, data in to_check.iteritems():
+			heappush(heap, (data[2], coords))
+
+		# pull dereferencing out of loop
+		path_nodes = self.path_nodes
+		blocked_coords = self.blocked_coords
+		destination = self.destination
+
 		# loop until we have no more nodes to check
 		while to_check:
 
-			minimum = sys.maxint
-			cur_node_coords = None
-			cur_node_data = None
-
 			# find next node to check, which is the one with best rating
-			# optimization note: this is faster than min(to_check, key=lambda k : to_check[k][3])
-			# optimization note2: the values could be kept in a dict, or a structure
-			#					that can easily be sorted/minimumed by a value
-			for (node_coords, node_data) in to_check.iteritems():
-				if node_data[3] < minimum:
-					minimum = node_data[3]
-					cur_node_coords = node_coords
-					cur_node_data = node_data
+			(_, cur_node_coords) = heappop(heap)
+			cur_node_data = to_check[cur_node_coords]
 
 			# shortcuts:
 			x = cur_node_coords[0]
@@ -178,21 +178,27 @@ class FindPath(object):
 			# optimisation TODO: use data structures more suitable for contains-check
 			if self.diagonal:
 				# all relevant adjacent neighbors
-				neighbors = [ i for i in [(xx, yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2)] if \
-											(i in self.path_nodes or \
+				x_p1 = x+1
+				x_m1 = x-1
+				y_p1 = y+1
+				y_m1 = y-1
+				neighbors = ( i for i in ((x_m1, y_m1), (x_m1, y), (x_m1, y_p1), (x, y_m1), (x, y_p1), (x_p1, y_m1), (x_p1, y), (x_p1, y_p1) ) if
+											i not in checked and \
+											(i in path_nodes or \
 											 i in source_coords or \
 											 i in dest_coords) and\
-											i not in checked and \
-											i != (x, y) and \
-											i not in self.blocked_coords ]
+											i not in blocked_coords ) # conditions are sorted by likelyhood in ship worst case
 			else:
 				# all relevant vertical and horizontal neighbors
-				neighbors = [ i for i in [(x-1, y), (x+1, y), (x, y-1), (x, y+1) ] if \
-											(i in self.path_nodes  or \
+				neighbors = ( i for i in ((x-1, y), (x+1, y), (x, y-1), (x, y+1) ) if \
+											(i in path_nodes  or \
 											 i in source_coords or \
 											 i in dest_coords ) and \
 											i not in checked and \
-											i not in self.blocked_coords ]
+											i not in blocked_coords )
+
+			# Profiling info: In the worst case, this for-loop takes 80% of the time.
+			# Parts of this are actually spent in evaluating the generator expressions from the if above
 
 			for neighbor_node in neighbors:
 
@@ -201,27 +207,27 @@ class FindPath(object):
 
 					# save previous node, calc distance to neighbor_node
 					# and estimate from neighbor_node to destination
-					to_check[neighbor_node] = [cur_node_coords, \
-																		 cur_node_data[1] + \
-																		 self.path_nodes.get(cur_node_coords, 0), \
-																		 self.destination.distance_to_tuple(neighbor_node) ]
-					# append sum of last to values  (i.e. complete path duration estimation) as cache
-					to_check[neighbor_node].append( \
-						to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])
+					dist_to_here = cur_node_data[1] + path_nodes.get(cur_node_coords, 0)
+					total_dist_estimation = destination.distance_to_tuple(neighbor_node) + dist_to_here
+					to_check[neighbor_node] = (cur_node_coords,
+					                           dist_to_here,
+					                           total_dist_estimation)
+
+					heappush(heap, (total_dist_estimation, neighbor_node))
 
 				else:
 					# neighbor has been processed,
 					# check if current node provides a better path to this neighbor
-
-					distance_to_neighbor = cur_node_data[1]+self.path_nodes.get(cur_node_coords, 0)
+					distance_to_neighbor = cur_node_data[1] + path_nodes.get(cur_node_coords, 0)
 
 					neighbor = to_check[neighbor_node]
 
 					if neighbor[1] > distance_to_neighbor:
 						# found better path to neighbor, update values
-						neighbor[0] = cur_node_coords
-						neighbor[1] = distance_to_neighbor
-						neighbor[3] = distance_to_neighbor + neighbor[2]
+						neighbor = ( cur_node_coords, \
+							           distance_to_neighbor, \
+							           distance_to_neighbor + ( neighbor[2]-neighbor[1] ) )
+
 
 			# done processing cur_node
 			checked[cur_node_coords] = cur_node_data

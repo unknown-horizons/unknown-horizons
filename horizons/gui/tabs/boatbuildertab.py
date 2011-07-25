@@ -25,7 +25,7 @@ from fife.extensions import pychan
 from horizons.command.production import AddProduction
 from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
-from horizons.util.gui import load_uh_widget
+from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
 
 class BoatbuilderTab(OverviewTab):
@@ -112,7 +112,7 @@ class BoatbuilderTab(OverviewTab):
 			for res, amount in still_needed_res.iteritems():
 				assert i <= 3, "Only 3 still needed res for ships are currently supported"
 
-				icon = self.instance.session.db("SELECT icon_small FROM resource WHERE id = ?", res)[0][0]
+				icon = get_res_icon(res)[3]
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i)).image = icon
 				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i)).text = unicode(-1*amount)+u't' # -1 make them positive
 				i += 1

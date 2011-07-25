@@ -93,6 +93,7 @@
 
 		<HBox position="0,30" padding="2">
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
 		<TooltipButton name="boat_builder-1" position="0,32"
@@ -100,6 +101,11 @@
 			hover_image="content/gui/icons/buildmenu/boatbuilder_h.png"
 			down_image="content/gui/icons/buildmenu/boatbuilder_h.png"
 			tooltip="Boat builder: Builds boats and small ships. Built on coast." />
+		<TooltipButton name="tower-1" position="56,32"
+			up_image="content/gui/icons/buildmenu/woodentower.png"
+			hover_image="content/gui/icons/buildmenu/woodentower_h.png"
+			down_image="content/gui/icons/buildmenu/woodentower_h.png"
+			tooltip="Wooden tower: Defends your settlement." />
 
 	</Container>
 

@@ -76,10 +76,9 @@ class GroundClass(type):
 		self.id = id
 		self._object = None
 		self.velocity = {}
-		for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
-			self.velocity[unit] = (straight, diagonal)
+		#for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM unit_velocity WHERE ground = ?", self.id):
 		self.classes = ['ground[' + str(id) + ']']
-		for (name,) in db("SELECT class FROM data.ground_class WHERE ground = ?", id):
+		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)
 		self._loadObject(db)
 
@@ -106,7 +105,7 @@ class GroundClass(type):
 		visual = self._object.get2dGfxVisual()
 
 		#tile_sets = TileSetLoader.get_sets()
-		#for (tile_set_id,) in db("SELECT tile_set_name FROM data.tile_set WHERE ground_id=?", cls.id):
+		#for (tile_set_id,) in db("SELECT tile_set_name FROM tile_set WHERE ground_id=?", cls.id):
 		#	for action_id in tile_sets[tile_set_id].iterkeys():
 		#		action = cls._object.createAction(action_id+"_"+str(tile_set_id))
 		#		fife.ActionVisual.create(action)
@@ -119,11 +118,11 @@ class GroundClass(type):
 
 		animation_45, animation_135, animation_225, animation_315 = \
 		     db("SELECT \
-		     (SELECT file FROM data.animation WHERE animation_id = animation_45 LIMIT 1), \
-		     (SELECT file FROM data.animation WHERE animation_id = animation_135 LIMIT 1), \
-		     (SELECT file FROM data.animation WHERE animation_id = animation_225 LIMIT 1), \
-		     (SELECT file FROM data.animation WHERE animation_id = animation_315 LIMIT 1) \
-		     FROM data.ground WHERE id = ?", self.id)[0]
+		     (SELECT file FROM animation WHERE animation_id = animation_45 LIMIT 1), \
+		     (SELECT file FROM animation WHERE animation_id = animation_135 LIMIT 1), \
+		     (SELECT file FROM animation WHERE animation_id = animation_225 LIMIT 1), \
+		     (SELECT file FROM animation WHERE animation_id = animation_315 LIMIT 1) \
+		     FROM ground WHERE id = ?", self.id)[0]
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
 			img = horizons.main.fife.imagemanager.load(file)
 			visual.addStaticImage(int(rotation), img.getHandle())

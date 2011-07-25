@@ -43,9 +43,9 @@ class UnitClass(type):
 			return self
 
 		attributes = {'load': load}
-		attributes.update(db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)))
+		#attributes.update(db("SELECT name, value FROM unit_property WHERE unit = ?", str(id)))
 
-		self.class_package,  self.class_name = db("SELECT class_package, class_type FROM data.unit WHERE id = ?", id)[0]
+		self.class_package,  self.class_name = db("SELECT class_package, class_type FROM unit WHERE id = ?", id)[0]
 		__import__('horizons.world.units.'+self.class_package)
 
 		return type.__new__(self, 'Unit[' + str(id) + ']',
@@ -60,7 +60,7 @@ class UnitClass(type):
 		self.id = id
 		self._object = None
 		self._loadObject(db)
-		self.radius = int(db("SELECT radius FROM data.unit WHERE id=?", id)[0][0])
+		self.radius = int(db("SELECT radius FROM unit WHERE id=?", id)[0][0])
 		soundfiles = db("SELECT file FROM sounds INNER JOIN object_sounds ON \
 			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]
@@ -79,7 +79,7 @@ class UnitClass(type):
 		cls._object.setBlocking(False)
 		cls._object.setStatic(False)
 		action_sets = ActionSetLoader.get_action_sets()
-		for (action_set_id,) in db("SELECT action_set_id FROM data.action_set WHERE object_id=?", cls.id):
+		for (action_set_id,) in db("SELECT action_set_id FROM action_set WHERE object_id=?", cls.id):
 			for action_id in action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)

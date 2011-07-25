@@ -42,10 +42,11 @@
 			tooltip="Charcoal burning: Burns a lot of boards." />
 	</Container>
 
-	<Container position="20,107" size="250,80" >
+	<Container position="20,107" size="125,80" >
 		<Label position="0,11" text="Services" name="services_label" />
 
-		<HBox position="0,30" padding="2">
+		<HBox position="0,30"  padding="2">
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
@@ -54,68 +55,73 @@
 			hover_image="content/gui/icons/buildmenu/tavern_h.png"
 			down_image="content/gui/icons/buildmenu/tavern_h.png"
 			tooltip="Tavern: Provides get-together." />
+		<TooltipButton name="doctor-1" position="56,32"
+			up_image="content/gui/icons/buildmenu/doctor.png"
+			hover_image="content/gui/icons/buildmenu/doctor_h.png"
+			down_image="content/gui/icons/buildmenu/doctor_h.png"
+			tooltip="Doctor: Treats diseases. Consumes herbs." />
 
 	</Container>
 
-<!--
-	<Container position="20,182" size="60,80" >
+
+	<Container position="20,182" size="250,80" >
 		<Label position="0,11" text="Fields" name="fields_label" />
 
-		<HBox position="0,30">
+		<HBox position="0,30"  padding="2">
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
-		<TooltipButton name="cattlefield-1" position="2,32"
-			up_image="content/gui/icons/buildmenu/potatofield.png"
-			hover_image="content/gui/icons/buildmenu/potatofield_h.png"
-			down_image="content/gui/icons/buildmenu/potatofield_h.png"
-			tooltip="Potato Field: Yields food. Needs a farm." />
-		<TooltipButton name="pasture-1" position="56,32"
-			up_image="content/gui/icons/buildmenu/pasture.png"
-			hover_image="content/gui/icons/buildmenu/pasture_h.png"
-			down_image="content/gui/icons/buildmenu/pasture_h.png"
-			tooltip="Pasture: Raises sheep. Produces wool. Needs a farm." />
-		<TooltipButton name="sugarfield-1" position="110,32"
-			up_image="content/gui/icons/buildmenu/sugarfield.png"
-			hover_image="content/gui/icons/buildmenu/sugarfield_h.png"
-			down_image="content/gui/icons/buildmenu/sugarfield_h.png"
-			tooltip="Test. Needs a farm." />
-	</Container>-->
-<!-- apothecary * salt gardens
+		<TooltipButton name="tobaccofield-1" position="2,32"
+			up_image="content/gui/icons/buildmenu/tobaccofield.png"
+			hover_image="content/gui/icons/buildmenu/tobaccofield_h.png"
+			down_image="content/gui/icons/buildmenu/tobaccofield_h.png"
+			tooltip="Tobacco field: Produces tobacco. Needs a farm." />
+		<TooltipButton name="herbary-1" position="56,32"
+			up_image="content/gui/icons/buildmenu/herbary.png"
+			hover_image="content/gui/icons/buildmenu/herbary_h.png"
+			down_image="content/gui/icons/buildmenu/herbary_h.png"
+			tooltip="Herbary: Produces herbs. Needs a farm." />
+		<TooltipButton name="cattlerun-1" position="110,32"
+			up_image="content/gui/icons/buildmenu/cattlerun.png"
+			hover_image="content/gui/icons/buildmenu/cattlerun_h.png"
+			down_image="content/gui/icons/buildmenu/cattlerun_h.png"
+			tooltip="Cattle run: Raises cattle. Needs a farm." />
+		<TooltipButton name="pigsty-1" position="164,32"
+			up_image="content/gui/icons/buildmenu/pigsty.png"
+			hover_image="content/gui/icons/buildmenu/pigsty_h.png"
+			down_image="content/gui/icons/buildmenu/pigsty_h.png"
+			tooltip="Pigsty: Raises pigs. Needs a farm." />
+	</Container>
 
 
-	<Container position="130,182" size="60,80" >
-		<Label position="0,11" text="Military" name="military_label" />
-
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
-
-		<TooltipButton name="weaponsmith-1" position="0,32"
-			up_image="content/gui/icons/buildmenu/boatbuilder.png"
-			hover_image="content/gui/icons/buildmenu/boatbuilder_h.png"
-			down_image="content/gui/icons/buildmenu/boatbuilder_h.png"
-			tooltip="Boat builder: Builds boats and small ships. Built on coast." />
-	</Container>-->
-<!--
-	<Container position="20,257" size="250,80">
+	<Container position="20,257" size="185,80" >
 		<Label position="0,11" text="Companies" name="companies_label" />
 
-		<HBox position="0,30">
+		<HBox position="0,30"  padding="2">
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
-		<TooltipButton name="butchery-1" position="164,32"
+		<TooltipButton name="saltponds-1" position="2,32"
+			up_image="content/gui/icons/buildmenu/saltponds.png"
+			hover_image="content/gui/icons/buildmenu/saltponds_h.png"
+			down_image="content/gui/icons/buildmenu/saltponds_h.png"
+			tooltip="Salt ponds: Evaporates salt. Built on sea coast." />
+		<TooltipButton name="butchery-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/butchery.png"
 			hover_image="content/gui/icons/buildmenu/butchery_h.png"
 			down_image="content/gui/icons/buildmenu/butchery_h.png"
-			tooltip="Butchery: ." />
-		<TooltipButton name="tannery-1" position="56,32"
-			up_image="content/gui/icons/buildmenu/tannery.png"
-			hover_image="content/gui/icons/buildmenu/tannery_h.png"
-			down_image="content/gui/icons/buildmenu/tannery_h.png"
-			tooltip="Tannery: Turns hides into leather." />
-	</Container>-->
+			tooltip="Butchery: Needs pigs or cattle. Produces food." />
+		<TooltipButton name="tobacconist-1" position="110,32"
+			up_image="content/gui/icons/buildmenu/tobacconist.png"
+			hover_image="content/gui/icons/buildmenu/tobacconist_h.png"
+			down_image="content/gui/icons/buildmenu/tobacconist_h.png"
+			tooltip="Tobacconist: Produces tobaccos out of tobacco." />
+	</Container>
 
 </Container>
 </Container>

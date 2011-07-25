@@ -15,6 +15,17 @@
 		down_image="content/gui/icons/templates/production/toggle_active_d.png"
 		hover_image="content/gui/icons/templates/production/toggle_active_h.png"
 		tooltip="Start route" />
+	<VBox position="250,485">
+		<HBox>
+			<Label text="wait at load:"/>
+			<CheckBox name="wait_at_load" min_size="15,15" />
+		</HBox>
+		<HBox>
+			<Label text="wait at unload:"/>
+			<CheckBox name="wait_at_unload" min_size="15,15" />
+		</HBox>
+	</VBox>
+
 
 
 	<!-- right side -->

@@ -47,7 +47,7 @@ STYLES= {
 			'font' : 'libertine_14_black',
 			'border_size': 0,
 		},
-		'Slider' : {
+		('Slider','StepSlider') : {
 			'base_color' : fife.Color(80,80,40,128),
 		},
 		'TextBox' : {
@@ -125,7 +125,7 @@ STYLES= {
 			'margins' : (0,0)
 		},
 		'Label' : {
-            		'margins': (0,0),
+			'margins': (0,0),
 			'font' : 'libertine_14_black'
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
@@ -216,7 +216,10 @@ STYLES= {
 		},
 		'Label' : {
 			'font' : 'libertine_headline'
-		}
+		},
+		# NOTE: This is a hack to add padding attributs to boxes of this style
+		('Container','HBox','VBox') : {
+		},
 },
 
 'book': { # style for book widgets
@@ -242,10 +245,7 @@ STYLES= {
 			'foreground_color' : fife.Color(80,80,40),
 			'font' : 'libertine_14_black',
 		},
-		'Slider' : {
-			'base_color' : fife.Color(80,80,40,128),
-		},
-		'StepSlider' : {
+		('Slider','StepSlider') : {
 			'base_color' : fife.Color(80,80,40,128),
 		},
 		'TextBox' : {

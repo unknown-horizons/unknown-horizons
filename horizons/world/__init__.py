@@ -561,6 +561,41 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		if len(self.settlements) > self.trader.get_ship_count() * 2:
 			self.trader.create_ship()
 
+	@decorators.make_constants()
+	def toggle_translucency(self):
+		"""Make certain building types translucent"""
+		if not hasattr(self, "_translucent_buildings"):
+			self._translucent_buildings = set()
+
+		if not self._translucent_buildings: # no translucent buildings saved => enable
+			building_types = self.session.db.get_translucent_buildings()
+			add = self._translucent_buildings.add
+			from weakref import ref as create_weakref
+
+			def get_all_buildings(world):
+				for island in world.islands:
+					for b in island.buildings:
+						yield b
+					for s in island.settlements:
+						for b in s.buildings:
+							yield b
+
+			for b in get_all_buildings(self):
+				if b.id in building_types:
+					fife_instance = b._instance
+					add( create_weakref(fife_instance) )
+					fife_instance.keep_translucency = True
+					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+
+		else: # undo translucency
+			for inst in self._translucent_buildings:
+				try:
+					inst().get2dGfxVisual().setTransparency( 0 )
+					inst().keep_translucency = False
+				except AttributeError:
+					pass # obj has been deleted, inst() returned None
+			self._translucent_buildings.clear()
+
 
 def load_building(session, db, typeid, worldid):
 	"""Loads a saved building. Don't load buildings yourself in the game code."""

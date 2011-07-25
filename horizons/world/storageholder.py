@@ -58,7 +58,7 @@ class StorageHolder(object):
 	def create_inventory(self):
 		"""Some buildings don't have an own inventory (e.g. storage building). Those can just
 		overwrite this function to do nothing. see also: save_inventory() and load_inventory()"""
-		db_data = horizons.main.db.cached_query("SELECT resource, size FROM balance.storage WHERE object_id = ?", \
+		db_data = horizons.main.db.cached_query("SELECT resource, size FROM storage WHERE object_id = ?", \
 		                           self.id)
 
 		if len(db_data) == 0:
@@ -81,13 +81,22 @@ class StorageHolder(object):
 		if self.has_own_inventory:
 			self.inventory.load(db, worldid)
 
-	def transfer_to_storageholder(self, amount, res_id, transfer_to_id):
-		transfer_to = WorldObject.get_object_by_id(transfer_to_id)
+	def transfer_to_storageholder(self, amount, res_id, transfer_to):
+		"""Transfers amount of res_id to transfer_to.
+		@param transfer_to: worldid or object reference
+		@return: amount that was actually transfered (NOTE: this is different from the
+						 return value of inventory.alter, since here are 2 storages involved)
+		"""
+		try:
+			transfer_to = WorldObject.get_object_by_id( int(transfer_to) )
+		except TypeError: # transfer_to not an int, assume already obj
+			pass
 		# take res from self
 		ret = self.inventory.alter(res_id, -amount)
 		# check if we were able to get the planed amount
 		ret = amount if amount < abs(ret) else abs(ret)
 		# put res to transfer_to
 		ret = transfer_to.inventory.alter(res_id, amount-ret)
-		self.inventory.alter(res_id, ret) #return resources that did not fit
+		self.inventory.alter(res_id, ret) # return resources that did not fit
+		return amount-ret
 

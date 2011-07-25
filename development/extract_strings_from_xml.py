@@ -71,6 +71,7 @@ files_to_skip = {
 	'credits1.xml',
 	'credits2.xml',
 	'credits3.xml',
+	'startup_error_popup.xml'
 	}
 
 import glob
