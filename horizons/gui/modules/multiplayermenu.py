@@ -43,7 +43,7 @@ class MultiplayerMenu(object):
 		"""Shows main multiplayer menu"""
 		if enet == None:
 			headline = _(u"Unable to find pyenet")
-			descr = (u"The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system.")
+			descr = _(u"The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system.")
 			advice = _(u"Linux users: Try to install pyenet through your package manager.") + "\n" + \
 			       _(u"Windows users: There is currently no reasonable support for Windows.")
 			self.show_error_popup(headline, descr, advice)
