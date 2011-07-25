@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+import math
 
 from horizons.scheduler import Scheduler
 
@@ -167,9 +168,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
 		if changed:
-			# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Supplying_citizens_with_resources
-			# Disabled because alter_production_time actually works now (avoid change in game behaviour)
-			# self.alter_production_time( 1 + (float(self.inhabitants)/10))
+			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
+			self.alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
 			self._changed()
 
 	def level_check(self):
