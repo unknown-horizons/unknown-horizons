@@ -50,8 +50,9 @@ class BuildingTool(NavigationTool):
 
 	gui = None # share gui between instances
 
-	def __init__(self, session, building, ship = None):
+	def __init__(self, session, building, ship=None, build_related=None):
 		super(BuildingTool, self).__init__(session)
+		assert not (ship and build_related)
 		self.renderer = self.session.view.renderer['InstanceRenderer']
 		self.ship = ship
 		self._class = building
@@ -64,10 +65,12 @@ class BuildingTool(NavigationTool):
 		self._modified_instances = set() # fife instances modified for transparency
 		self._buildable_tiles = set() # tiles marked as buildable
 		self._build_logic = None
-		if self.ship is None:
-			self._build_logic = SettlementBuildingToolLogic()
-		else:
+		if self.ship is not None:
 			self._build_logic = ShipBuildingToolLogic(ship)
+		elif build_related is not None:
+			self._build_logic = BuildRelatedBuildingToolLogic( weakref.ref(build_related) )
+		else:
+			self._build_logic = SettlementBuildingToolLogic()
 
 		if self._class.show_buildingtool_preview_tab:
 			self.load_gui()
@@ -529,4 +532,16 @@ class SettlementBuildingToolLogic(object):
 
 	def add_change_listener(self, instance, building_tool):
 		instance.add_change_listener(building_tool.force_update)
+
+
+class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
+	"""Same as normal build, except quitting it drops to the build related tab."""
+	def __init__(self, instance):
+		# instance must be weakref
+		self.instance = instance
+
+	def on_escape(self, session):
+		from horizons.gui.tabs import BuildRelatedTab
+		self.instance().show_menu(jump_to_tabclass=BuildRelatedTab)
+
 

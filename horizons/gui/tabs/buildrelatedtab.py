@@ -117,4 +117,5 @@ class BuildRelatedTab(OverviewTab):
 
 		self.instance.session.cursor = BuildingTool(self.instance.session, \
 		                                            Entities.buildings[building_id], \
-		                                            None)
+		                                            ship=None,
+		                                            build_related=self.instance)
