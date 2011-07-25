@@ -55,13 +55,12 @@ class BuildRelatedTab(OverviewTab):
 			parent_container.removeChild(parent_container.children[0])
 
 		# Load all related Fields of this Farm
-		sql = "SELECT related_building FROM related_buildings WHERE building = ?"
-		building_ids = self.instance.session.db.cached_query(sql, self.instance.id)
+		building_ids = self.instance.session.db.get_related_building_ids(self.instance.id)
 
 		container = self.__get_new_container()
 		counter = 0
 		for building_id in sorted(building_ids):
-			if self._create_build_buttons(building_id[0], container):
+			if self._create_build_buttons(building_id, container):
 				counter += 1
 				if counter % 3 == 0:
 				# This is here because we can only check if a building was added
@@ -84,8 +83,7 @@ class BuildRelatedTab(OverviewTab):
 
 
 	def _create_build_buttons(self, building_id, container):
-		sql = "SELECT settler_level, name FROM building WHERE id = ?"
-		(level, name) = self.instance.session.db.cached_query(sql, building_id)[0]
+		(level, name) = self.instance.session.db.get_building_level_name(building_id)
 
 		# Check if the level of the building is lower or same as the settler level
 		if level <= self.instance.owner.settler_level:

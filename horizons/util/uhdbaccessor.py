@@ -137,8 +137,17 @@ class UhDbAccessor(DbReader):
 	def get_building_class_data(self, building_class_id):
 		"""Returns data for class of a building class.
 		@param building_class_id: class of building, int
-		@return: tuple: (class_package, class_name)"""
+		@return: tuple: (class_package, class_name)
+		"""
 		sql = "SELECT class_package, class_type FROM building WHERE id = ?"
+		return self.cached_query(sql, building_class_id)[0]
+
+	def get_building_level_name(self, building_class_id):
+		"""Returns settler_level and name of a building class.
+		@param building_class_id: class of building, int
+		@return: tuple: (settler_level, name)
+		"""
+		sql = "SELECT settler_level, name FROM building WHERE id = ?"
 		return self.cached_query(sql, building_class_id)[0]
 
 
@@ -147,6 +156,15 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT id, button_name, settler_level \
 		                          FROM building \
 		                          WHERE button_name IS NOT NULL")
+
+	def get_related_building_ids(self, building_class_id):
+		"""Returns list of building ids related to building_class_id.
+		@param building_class_id: class of building, int
+		@return list of building class ids
+		"""
+		sql = "SELECT related_building FROM related_buildings WHERE building = ?"
+		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
+
 
 	#
 	#
