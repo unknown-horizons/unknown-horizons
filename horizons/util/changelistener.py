@@ -109,7 +109,7 @@ production_finished listener.
 def metaChangeListenerDecorator(event_name):
 	def decorator(clas):
 		list_name = "__"+event_name+"_listeners"
-		# trivial changelistener operations
+		# trivial changelistener operations
 		def add(self, listener):
 			assert callable(listener)
 			getattr(self, list_name).append(listener)
