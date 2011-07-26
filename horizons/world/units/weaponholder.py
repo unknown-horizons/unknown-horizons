@@ -414,6 +414,8 @@ class MovingWeaponHolder(WeaponHolder):
 			if self.is_moving() and self._fireable:
 				# stop to shoot
 				self.stop()
+				# finish the move before removing the move tick
+				self._movement_finished()
 				# do not execute the next move tick
 				Scheduler().rem_call(self, self._move_tick)
 
