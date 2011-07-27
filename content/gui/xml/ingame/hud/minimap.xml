@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Container size="255,215"> <!-- positioning happens in ingamegui#init -->
-	<Label name="speed_text" text="" position="35,22" font="libertine_18"/>
 	<Icon name="minimap_overlay_image" position="31, 1"
 		image="content/gui/images/background/widgets/map_bg.png" />
+	<Label name="speed_text" text="" position="48,88" font="libertine_small_black"/>
 
 	<TooltipButton name="speedUp" size="28,28" position="48,63"
 		up_image="content/gui/icons/widgets/minimap/speed_up.png"
@@ -10,7 +10,7 @@
 		hover_image="content/gui/icons/widgets/minimap/speed_up_h.png"
 		tooltip="Increase game speed"
 		is_focusable="0" />
-	<TooltipButton name="speedDown" size="28,28" position="48,103"
+	<TooltipButton name="speedDown" size="28,28" position="48,105"
 		up_image="content/gui/icons/widgets/minimap/speed_down.png"
 		down_image="content/gui/icons/widgets/minimap/speed_down_h.png"
 		hover_image="content/gui/icons/widgets/minimap/speed_down_h.png"
@@ -36,7 +36,7 @@
 		hover_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
 		tooltip="Zoom in"
 		is_focusable="0" />
-	<TooltipButton name="zoomOut" size="28,28" position="195,103"
+	<TooltipButton name="zoomOut" size="28,28" position="195,105"
 		up_image="content/gui/icons/widgets/minimap/zoom_out.png"
 		down_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
 		hover_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
