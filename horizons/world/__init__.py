@@ -388,6 +388,21 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				while point not in Circle(ship.position, 5):
 					point = self.get_random_possible_ship_position()
 				ship = CreateUnit(player.worldid, UNITS.FRIGATE, point.x, point.y)(issuer=self.session.world.player)
+				point = self.get_random_possible_ship_position()
+				while point not in Circle(ship.position, 5):
+					point = self.get_random_possible_ship_position()
+				ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
+				point = self.get_random_possible_ship_position()
+				while point not in Circle(ship.position, 5):
+					point = self.get_random_possible_ship_position()
+				ship = CreateUnit(player.worldid, UNITS.PIRATE_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
+				point = self.get_random_possible_ship_position()
+				while point not in Circle(ship.position, 5):
+					point = self.get_random_possible_ship_position()
+				ship = CreateUnit(player.worldid, UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
+				while point not in Circle(ship.position, 5):
+					point = self.get_random_possible_ship_position()
+				ship = CreateUnit(player.worldid, 1000016, point.x, point.y)(issuer=self.session.world.player)
 			#
 			#
 			#

@@ -22,11 +22,14 @@
 from tabinterface import TabInterface
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget
+from fife.extensions import pychan
 
 class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
 	"""
+	row_entry_number = 3
+	column_entry_number = 4
 	def __init__(self, session = None, widget = 'overview_select_multi.xml', \
 	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
 		super(SelectMultiTab, self).__init__(widget = widget)
@@ -44,6 +47,9 @@ class SelectMultiTab(TabInterface):
 		self.non_stance_units = []
 		# if the stance units are no longer selected hide the stance menu
 
+		# dict with unit id and number of instances to be displayed
+		self.displayed_units = {}
+
 		self.tooltip = _("Selected Units")
 		for i in self.session.selected_instances:
 			if hasattr(i, 'stance'):
@@ -51,8 +57,22 @@ class SelectMultiTab(TabInterface):
 			else:
 				self.non_stance_units.append(i)
 
+			if i.id in self.displayed_units:
+				self.displayed_units[i.id] += 1
+			else:
+				self.displayed_units[i.id] = 1
+
 		if self.stance_units:
 			self.show_stance_widget()
+
+		self.draw_selected_units_widget()
+
+	def get_thumbnail_icon(self, id):
+		"""
+		Returns the name of the Thumbnail Icon for unit with id
+		"""
+		#TODO get a system for loading thumbnail by id
+		return "content/gui/icons/unit_thumbnails/dummy.png"
 
 	def get_tab_units(self):
 		"""
@@ -71,6 +91,29 @@ class SelectMultiTab(TabInterface):
 		for i in self.get_tab_units():
 			if i.has_remove_listener(Callback(self.on_instance_removed, i)):
 				i.remove_remove_listener(Callback(self.on_instance_removed, i))
+
+	def draw_selected_units_widget(self):
+		hbox_number = 0
+		entry_number = 0
+		for unit_id in self.displayed_units:
+			if entry_number > self.column_entry_number - 1:
+				entry_number = 0
+				hbox_number += 1
+			#TODO replace with stand alone widget
+			widget = pychan.Container(name = "unit_%s" % unit_id, size = (50, 50))
+			unit_thumbnail = pychan.widgets.Icon(image = self.get_thumbnail_icon(unit_id))
+			widget.addChild(unit_thumbnail)
+			#widget.addChild(unit_label)
+			self.widget.findChild(name="hbox_%s" % hbox_number).addChild(widget)
+			entry_number += 1
+
+	def refresh_unit_widget(self):
+		for i in xrange(0, self.row_entry_number):
+			self.widget.findChild(name="hbox_%s" % i).removeAllChildren()
+		self.draw_selected_units_widget()
+
+	def update_unit_number(self, unit_id):
+		pass
 
 	def on_instance_removed(self, instance):
 		if hasattr(instance, 'stance'):
@@ -91,6 +134,15 @@ class SelectMultiTab(TabInterface):
 
 		if not self.stance_units:
 			self.hide_stance_widget()
+
+		self.displayed_units[instance.id] -= 1
+		if self.displayed_units[instance.id] == 0:
+			self.displayed_units.pop(instance.id)
+			self.refresh_unit_widget()
+		else:
+			self.update_unit_number(instance.id)
+
+		self.widget.adaptLayout()
 
 	def show_stance_widget(self):
 		stance_widget = load_uh_widget('stancewidget.xml')
