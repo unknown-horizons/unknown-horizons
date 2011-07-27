@@ -32,6 +32,17 @@ from productionchain import ProductionChain
 from resourcemanager import ResourceManager
 from trademanager import TradeManager
 
+from goal.boatbuilder import BoatBuilderGoal
+from goal.claydepositcoverage import ClayDepositCoverageGoal
+from goal.enlargecollectorarea import EnlargeCollectorAreaGoal
+from goal.foundfeederisland import FoundFeederIslandGoal
+from goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
+from goal.mountaincoverage import MountainCoverageGoal
+from goal.productionchaingoal import ProductionChainGoal, FaithGoal, TextileGoal, BricksGoal, EducationGoal, GetTogetherGoal, ToolsGoal
+from goal.signalfire import SignalFireGoal
+from goal.tent import TentGoal
+from goal.tradingship import TradingShipGoal
+
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
@@ -64,8 +75,9 @@ class SettlementManager(WorldObject):
 
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval - 1)
-		if not self.feeder_island:
+		if self.feeder_island:
+			Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval - 1)
+		else:
 			self.set_taxes_and_permissions(0.5, 0.8, 0.5, False, False)
 
 	def __init(self, land_manager):
@@ -86,6 +98,27 @@ class SettlementManager(WorldObject):
 		self.bricks_chain = ProductionChain.create(self, RES.BRICKS_ID)
 		self.tools_chain = ProductionChain.create(self, RES.TOOLS_ID)
 		self.liquor_chain = ProductionChain.create(self, RES.LIQUOR_ID)
+
+		self.goals = []
+		if not self.feeder_island:
+			self.goals.append(BoatBuilderGoal(self))
+			self.goals.append(ClayDepositCoverageGoal(self))
+			self.goals.append(EnlargeCollectorAreaGoal(self))
+			self.goals.append(FoundFeederIslandGoal(self))
+			self.goals.append(ImproveCollectorCoverageGoal(self))
+			self.goals.append(MountainCoverageGoal(self))
+			self.goals.append(ProductionChainGoal(self, self.boards_chain, 'boards producer'))
+			self.goals.append(ProductionChainGoal(self, self.food_chain, 'food producer'))
+			self.goals.append(ProductionChainGoal(self, self.community_chain, 'main square'))
+			self.goals.append(FaithGoal(self, self.faith_chain, 'pavilion'))
+			self.goals.append(TextileGoal(self, self.textile_chain, 'textile producer'))
+			self.goals.append(BricksGoal(self, self.bricks_chain, 'bricks producer'))
+			self.goals.append(EducationGoal(self, self.education_chain, 'school'))
+			self.goals.append(GetTogetherGoal(self, self.get_together_chain, 'get-together producer'))
+			self.goals.append(ToolsGoal(self, self.tools_chain, 'tools producer'))
+			self.goals.append(SignalFireGoal(self))
+			self.goals.append(TentGoal(self))
+			self.goals.append(TradingShipGoal(self))
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
@@ -408,7 +441,7 @@ class SettlementManager(WorldObject):
 		#self.trade_manager.organize_shipping()
 		self.resource_manager.replay_deep_low_priority_requests()
 
-	def _general_tick(self):
+	def _start_general_tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
 			self.get_resident_resource_usage(RES.FOOD_ID))
 		self.log.info('%s textile production      %.5f / %.5f', self, self.get_resource_production(RES.TEXTILE_ID), \
@@ -423,57 +456,7 @@ class SettlementManager(WorldObject):
 		self.need_materials = False
 		have_bricks = self.get_resource_production(RES.BRICKS_ID) > 0
 
-		if not self.production_builder.enough_collectors():
-			result = self.production_builder.improve_collector_coverage()
-			self.log_generic_build_result(result, 'storage')
-		elif self.build_chain(self.boards_chain, 'boards producer'):
-			pass
-		elif self.build_chain(self.community_chain, 'main square'):
-			pass
-		elif self.production_builder.need_to_enlarge_collector_area():
-			result = self.production_builder.enlarge_collector_area()
-			self.log_generic_build_result(result, 'storage coverage building')
-		elif self.build_chain(self.food_chain, 'food producer'):
-			pass
-		elif not self.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS):
-			result = self.production_builder.build_signal_fire()
-			self.log_generic_build_result(result, 'signal fire')
-		elif self.tents >= 10 and self.build_chain(self.faith_chain, 'pavilion'):
-			pass
-		elif self.tents >= 16 and self.owner.need_feeder_island(self) and not self.owner.have_feeder_island() and self.owner.can_found_feeder_island():
-			self.log.info('%s waiting for a feeder islands to be founded', self)
-			self.owner.found_feeder_island()
-		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and not self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS):
-			result = self.production_builder.build_boat_builder()
-			self.log_generic_build_result(result, 'boat builder')
-		elif self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS) and self.owner.need_more_ships and not self.owner.unit_builder.num_ships_being_built:
-			self.log.info('%s start building a ship', self)
-			self.owner.unit_builder.build_ship()
-		elif self.tents >= 16 and self.land_manager.owner.settler_level > 0 and self.build_chain(self.textile_chain, 'textile producer'):
-			pass
-		elif self.village_builder.tent_queue:
-			# build tents only if enough food is supplied
-			# TODO: move the leniency constant to a better place
-			if self.get_resource_production(RES.FOOD_ID) + 0.05 >= self.get_resident_resource_usage(RES.FOOD_ID):
-				result = self.village_builder.build_tent()
-				self.log_generic_build_result(result, 'tent')
-			else:
-				self.log.info('%s waiting for feeder islands to provide food', self)
-		elif not self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
-			result = self.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
-			self.log_generic_build_result(result,  'clay deposit coverage storage')
-		elif self.land_manager.owner.settler_level > 0 and self.build_chain(self.bricks_chain, 'bricks producer'):
-			pass
-		elif have_bricks and self.build_chain(self.education_chain, 'school'):
-			pass
-		elif have_bricks and self.land_manager.owner.settler_level > 1 and self.build_chain(self.get_together_chain, 'get-together producer'):
-			pass
-		elif have_bricks and not self.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.reachable_deposit(BUILDINGS.MOUNTAIN_CLASS):
-			result = self.production_builder.improve_deposit_coverage(BUILDINGS.MOUNTAIN_CLASS)
-			self.log_generic_build_result(result,  'mountain coverage storage')
-		elif have_bricks and self.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and self.land_manager.owner.settler_level > 1 and self.build_chain(self.tools_chain, 'tools producer'):
-			pass
-
+	def _end_general_tick(self):
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
 			if self.manual_upgrade(0, 1):
@@ -497,15 +480,25 @@ class SettlementManager(WorldObject):
 
 		self.trade_manager.finalize_requests()
 		self.trade_manager.organize_shipping()
-
-	def tick(self):
-		if self.feeder_island:
-			self._feeder_tick()
-		else:
-			self._general_tick()
 		self.resource_manager.record_expected_exportable_production(self.tick_interval)
 		self.resource_manager.manager_buysell()
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval)
+
+	def _add_goals(self, goals):
+		for goal in self.goals:
+			goal.update()
+			if goal.active:
+				goals.append(goal)
+
+	def tick(self, goals = None):
+		if self.feeder_island:
+			self._feeder_tick()
+			self.resource_manager.record_expected_exportable_production(self.tick_interval)
+			self.resource_manager.manager_buysell()
+			Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval)
+		else:
+			self._start_general_tick()
+			self._add_goals(goals)
+			self._end_general_tick()
 
 	def add_building(self, building):
 		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:

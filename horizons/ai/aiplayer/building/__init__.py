@@ -182,4 +182,7 @@ class AbstractBuilding(object):
 		self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__, settlement_manager, resource_id if resource_id else -1)
 		return (BUILD_RESULT.IMPOSSIBLE, None)
 
+	def need_to_build_more_buildings(self, settlement_manager, resource_id):
+		return False # true if and only if there is a particular coverage building that should be built
+
 decorators.bind_all(AbstractBuilding)

@@ -272,8 +272,9 @@ class AIPlayer(GenericAI):
 	def tick(self):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
 		self._found_settlements()
-		self.manage_international_trade()
 		self.handle_enemy_expansions()
+		self.handle_settlements()
+		self.manage_international_trade()
 
 	def _found_settlements(self):
 		ship = None
@@ -317,6 +318,17 @@ class AIPlayer(GenericAI):
 						self.log.info('%s.tick: send ship %s on a mission to get resources for a new settlement', self, ship)
 						self.prepare_foundation_ship(settlement_manager, ship, False)
 						return
+
+	def handle_settlements(self):
+		goals = []
+		for settlement_manager in self.settlement_managers:
+			settlement_manager.tick(goals)
+		if goals:
+			goal = max(goals)
+			goal.execute()
+		self.log.info('%s, had %d goals', self, len(goals))
+		for goal in reversed(sorted(goals)):
+			self.log.info('%s goal(%d): %s', self, goal.priority, goal)
 
 	def want_another_village(self):
 		""" Avoid having more than one developing island with a village at a time """

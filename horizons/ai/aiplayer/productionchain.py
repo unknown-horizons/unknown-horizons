@@ -82,6 +82,9 @@ class ProductionChain(object):
 		"""Reserves currently available production and imports from other islands if allowed"""
 		return self.chain.reserve(amount, may_import)
 
+	def need_to_build_more_buildings(self, amount):
+		return self.chain.need_to_build_more_buildings(amount)
+
 	def get_final_production_level(self):
 		""" returns the production level at the bottleneck """
 		return self.chain.get_final_production_level()
@@ -161,7 +164,7 @@ class ProductionChainSubtreeChoice(object):
 			return BUILD_RESULT.IMPOSSIBLE
 		else:
 			for option in zip(*sorted(expected_costs))[2]:
-				result = option.build(amount)
+				result = option.build(amount) # TODO: this amount should not include the part provided by the other options
 				if result != BUILD_RESULT.IMPOSSIBLE:
 					return result
 			return BUILD_RESULT.IMPOSSIBLE
@@ -182,6 +185,15 @@ class ProductionChainSubtreeChoice(object):
 			total_reserved += self.get_root_import_level()
 
 		return total_reserved
+
+	def need_to_build_more_buildings(self, amount):
+		current_production = self.get_final_production_level()
+		if self.resource_id not in self.coverage_resources:
+			return current_production + 1e-7 <= amount
+		for option in self._get_available_options():
+			if option.need_to_build_more_buildings(amount):
+				return True
+		return False
 
 	def get_ratio(self, resource_id):
 		return sum(option.get_ratio(resource_id) for option in self.options)
@@ -297,6 +309,14 @@ class ProductionChainSubtree:
 		self.resource_manager.request_quota_change(self.identifier, True, self.resource_id, self.abstract_building.id, amount * self.production_ratio)
 		total_reserved = min(total_reserved, self.resource_manager.get_quota(self.identifier, self.resource_id, self.abstract_building.id) / self.production_ratio)
 		return total_reserved
+
+	def need_to_build_more_buildings(self, amount):
+		for child in self.children:
+			if child.need_to_build_more_buildings(amount):
+				return True
+		if not self.need_more_buildings(amount):
+			return False
+		return self.abstract_building.need_to_build_more_buildings(self.settlement_manager, self.resource_id)
 
 	def get_ratio(self, resource_id):
 		result = self.production_ratio if self.resource_id == resource_id else 0

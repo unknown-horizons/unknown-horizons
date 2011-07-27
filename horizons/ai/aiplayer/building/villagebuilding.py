@@ -85,6 +85,22 @@ class AbstractVillageBuilding(AbstractBuilding):
 					return (BUILD_RESULT.OK, building)
 		return (BUILD_RESULT.SKIP, None)
 
+	def need_to_build_more_buildings(self, settlement_manager, resource_id):
+		village_builder = settlement_manager.village_builder
+		building_purpose = self.get_purpose(resource_id)
+
+		for coords, (purpose, builder, section) in village_builder.plan.iteritems():
+			if section > village_builder.current_section:
+				continue
+			if purpose == building_purpose:
+				object = village_builder.land_manager.island.ground_map[coords].object
+				if object is None or object.id != self.id:
+					if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
+						if not self._need_producer(settlement_manager, builder, resource_id):
+							continue
+					return True
+		return False
+
 	def get_collector_likelihood(self, building, resource_id):
 		return 0 # the resources produced here can't be picked up by the general collectors
 
