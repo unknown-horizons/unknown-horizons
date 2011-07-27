@@ -31,6 +31,8 @@ from horizons.constants import BUILDINGS
 class BuildingEvaluator(WorldObject):
 	log = logging.getLogger("ai.aiplayer.buildingevaluator")
 
+	need_collector_connection = True
+
 	def __init__(self, area_builder, builder, worldid=None):
 		super(BuildingEvaluator, self).__init__(worldid)
 		self.area_builder = area_builder
@@ -156,7 +158,8 @@ class BuildingEvaluator(WorldObject):
 			return (BUILD_RESULT.IMPOSSIBLE, None)
 		elif not resource_check:
 			return (BUILD_RESULT.NEED_RESOURCES, None)
-		assert self.area_builder.build_road_connection(self.builder)
+		if self.need_collector_connection:
+			assert self.area_builder.build_road_connection(self.builder)
 		building = self.builder.execute()
 		if not building:
 			self.log.debug('%s, unknown error', self)

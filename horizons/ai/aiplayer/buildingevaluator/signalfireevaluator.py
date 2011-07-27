@@ -26,6 +26,8 @@ from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
 class SignalFireEvaluator(BuildingEvaluator):
+	need_collector_connection = False
+
 	def __init__(self, area_builder, builder, sea_area, alignment):
 		super(SignalFireEvaluator, self).__init__(area_builder, builder)
 		self.sea_area = sea_area
@@ -34,7 +36,7 @@ class SignalFireEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.SIGNAL_FIRE_CLASS, x, y, False, orientation)
+		builder = area_builder.make_builder(BUILDINGS.SIGNAL_FIRE_CLASS, x, y, cls.need_collector_connection, orientation)
 		if not builder:
 			return None
 
