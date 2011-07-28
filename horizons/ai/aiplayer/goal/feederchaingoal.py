@@ -58,7 +58,7 @@ class FeederTextileGoal(FeederChainGoal):
 	def can_be_activated(self):
 		return self.owner.settler_level > 0
 
-class FeederLiquorGoal(ProductionChainGoal):
+class FeederLiquorGoal(FeederChainGoal):
 	@property
 	def can_be_activated(self):
 		return self.owner.settler_level > 1 and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
