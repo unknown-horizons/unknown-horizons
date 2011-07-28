@@ -35,15 +35,17 @@ from trademanager import TradeManager
 from goal.boatbuilder import BoatBuilderGoal
 from goal.claydepositcoverage import ClayDepositCoverageGoal
 from goal.enlargecollectorarea import EnlargeCollectorAreaGoal
+from goal.feederchaingoal import FeederChainGoal, FeederTextileGoal, FeederLiquorGoal
 from goal.foundfeederisland import FoundFeederIslandGoal
 from goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from goal.mountaincoverage import MountainCoverageGoal
-from goal.productionchaingoal import ProductionChainGoal, FaithGoal, TextileGoal, BricksGoal, EducationGoal, GetTogetherGoal, ToolsGoal
+from goal.productionchaingoal import ProductionChainGoal, FaithGoal, TextileGoal, BricksGoal, \
+	EducationGoal, GetTogetherGoal, ToolsGoal
 from goal.signalfire import SignalFireGoal
+from goal.storagespace import StorageSpaceGoal
 from goal.tent import TentGoal
 from goal.tradingship import TradingShipGoal
 
-from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
@@ -57,7 +59,6 @@ class SettlementManager(WorldObject):
 	"""
 
 	log = logging.getLogger("ai.aiplayer")
-	tick_interval = 32
 
 	production_level_multiplier = 1.1
 
@@ -75,9 +76,7 @@ class SettlementManager(WorldObject):
 
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 
-		if self.feeder_island:
-			Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval - 1)
-		else:
+		if not self.feeder_island:
 			self.set_taxes_and_permissions(0.5, 0.8, 0.5, False, False)
 
 	def __init(self, land_manager):
@@ -100,34 +99,35 @@ class SettlementManager(WorldObject):
 		self.liquor_chain = ProductionChain.create(self, RES.LIQUOR_ID)
 
 		self.goals = []
-		if not self.feeder_island:
+		self.goals.append(ProductionChainGoal(self, self.boards_chain, 'boards producer'))
+		self.goals.append(SignalFireGoal(self))
+		self.goals.append(EnlargeCollectorAreaGoal(self))
+		self.goals.append(ImproveCollectorCoverageGoal(self))
+		self.goals.append(BricksGoal(self, self.bricks_chain, 'bricks producer'))
+		if self.feeder_island:
+			self.goals.append(StorageSpaceGoal(self))
+			self.goals.append(FeederChainGoal(self, self.food_chain, 'food producer'))
+			self.goals.append(FeederTextileGoal(self, self.textile_chain, 'textile producer'))
+			self.goals.append(FeederLiquorGoal(self, self.liquor_chain, 'liquor producer'))
+		else:
 			self.goals.append(BoatBuilderGoal(self))
 			self.goals.append(ClayDepositCoverageGoal(self))
-			self.goals.append(EnlargeCollectorAreaGoal(self))
 			self.goals.append(FoundFeederIslandGoal(self))
-			self.goals.append(ImproveCollectorCoverageGoal(self))
 			self.goals.append(MountainCoverageGoal(self))
-			self.goals.append(ProductionChainGoal(self, self.boards_chain, 'boards producer'))
 			self.goals.append(ProductionChainGoal(self, self.food_chain, 'food producer'))
 			self.goals.append(ProductionChainGoal(self, self.community_chain, 'main square'))
 			self.goals.append(FaithGoal(self, self.faith_chain, 'pavilion'))
 			self.goals.append(TextileGoal(self, self.textile_chain, 'textile producer'))
-			self.goals.append(BricksGoal(self, self.bricks_chain, 'bricks producer'))
 			self.goals.append(EducationGoal(self, self.education_chain, 'school'))
 			self.goals.append(GetTogetherGoal(self, self.get_together_chain, 'get-together producer'))
 			self.goals.append(ToolsGoal(self, self.tools_chain, 'tools producer'))
-			self.goals.append(SignalFireGoal(self))
 			self.goals.append(TentGoal(self))
 			self.goals.append(TradingShipGoal(self))
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
-		current_callback = Callback(self.tick)
-		calls = Scheduler().get_classinst_calls(self, current_callback)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
-		remaining_ticks = None if len(calls) == 0 else max(calls.values()[0], 1)
-		db("INSERT INTO ai_settlement_manager(rowid, land_manager, remaining_ticks) VALUES(?, ?, ?)", \
-			self.worldid, self.land_manager.worldid, remaining_ticks)
+		db("INSERT INTO ai_settlement_manager(rowid, land_manager) VALUES(?, ?)", \
+			self.worldid, self.land_manager.worldid)
 
 		self.village_builder.save(db)
 		self.production_builder.save(db)
@@ -145,9 +145,7 @@ class SettlementManager(WorldObject):
 		super(SettlementManager, self).load(db, worldid)
 
 		# load the main part
-		db_result = db("SELECT land_manager, remaining_ticks FROM ai_settlement_manager WHERE rowid = ?", worldid)
-		(land_manager_id, remaining_ticks) = db_result[0]
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
+		land_manager_id = db("SELECT land_manager FROM ai_settlement_manager WHERE rowid = ?", worldid)[0][0]
 		land_manager = WorldObject.get_object_by_id(land_manager_id)
 
 		# find the settlement
@@ -317,24 +315,6 @@ class SettlementManager(WorldObject):
 						return True
 		return upgraded_any
 
-	def build_generic_chain(self, chain, name, amount):
-		""" build resources for another settlement """
-		result = chain.build(amount)
-		if result == BUILD_RESULT.NEED_RESOURCES:
-			self.need_materials = True
-		if result == BUILD_RESULT.ALL_BUILT:
-			return False # return and build something else instead
-		if result == BUILD_RESULT.SKIP:
-			return False # unable to build a building on purpose: build something else instead
-		self.log_generic_build_result(result, name)
-		self.production_builder.display()
-		return True
-
-	def build_chain(self, chain, name, may_import = True):
-		amount = self.get_resident_resource_usage(chain.resource_id) * self.production_level_multiplier
-		chain.reserve(amount, may_import) # first reserve and import, then see how much has to be built
-		return self.build_generic_chain(chain, name, amount)
-
 	def reachable_deposit(self, building_id):
 		""" returns true if there is a resource deposit outside the settlement that is not owned by another player """
 		for building in self.land_manager.resource_deposits[building_id]:
@@ -381,65 +361,23 @@ class SettlementManager(WorldObject):
 				return True
 		return False
 
-	def build_feeder_chain(self, chain, name):
-		needed_amount = self.get_total_missing_production(chain.resource_id)
-		self.log.info('%s %s requirement %.5f', self, name, needed_amount)
-		# the first build_generic_chain call tries to build enough producers to produce the needed resource
-		# that also reserves the production for the (non-existent) settlement so it can't be transferred
-		# the second build_generic_chain call declares that the settlement doesn't need it after all thus freeing it
-		# TODO: make this a single explicit action: right now import quotas are deleted by the first step which can make it look like less resources can be imported
-		chain.reserve(needed_amount, False)
-		result = self.build_generic_chain(chain, '%s producer' % name, needed_amount)
-		chain.reserve(0, False)
-		return result
-
-	def _feeder_tick(self):
+	def _start_feeder_tick(self):
+		self.log.info('%s food requirement %.5f', self, self.get_total_missing_production(RES.FOOD_ID))
+		self.log.info('%s textile requirement %.5f', self, self.get_total_missing_production(RES.TEXTILE_ID))
+		self.log.info('%s liquor requirement %.5f', self, self.get_total_missing_production(RES.LIQUOR_ID))
 		#print 'TRADE STORAGE', self.settlement.name, self.resource_manager.trade_storage
+		#print 'RES MANAGER', self.resource_manager
 		#print self.trade_manager
 		self.manage_production()
 		#self.trade_manager.refresh()
 		self.resource_manager.refresh()
-		need_bricks = False
-		if self.land_manager.owner.settler_level > 0:
-			if self.get_total_missing_production(RES.BRICKS_ID) > self.get_resident_resource_usage(RES.BRICKS_ID):
-				need_bricks = True
-			elif self.get_total_missing_production(RES.LIQUOR_ID):
-				need_bricks = True
 
-		if self.build_chain(self.boards_chain, 'boards producer'):
-			pass
-		elif not self.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS):
-			result = self.production_builder.build_signal_fire()
-			self.log_generic_build_result(result, 'signal fire')
-		elif not self.production_builder.enough_collectors():
-			result = self.production_builder.improve_collector_coverage()
-			self.log_generic_build_result(result,  'storage')
-		elif self.need_more_storage():
-			result = self.production_builder.improve_collector_coverage()
-			self.log_generic_build_result(result, 'storage')
-			pass
-		elif self.production_builder.need_to_enlarge_collector_area():
-			result = self.production_builder.enlarge_collector_area()
-			self.log_generic_build_result(result,  'storage coverage building')
-		elif self.build_feeder_chain(self.food_chain, 'food'):
-			pass
-		elif self.build_feeder_chain(self.textile_chain, 'textile'):
-			pass
-		elif need_bricks and not self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.land_manager.owner.settler_level > 0 and self.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS):
-			result = self.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
-			self.log_generic_build_result(result,  'clay deposit coverage storage')
-		elif need_bricks and self.land_manager.owner.settler_level > 0 and self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.build_feeder_chain(self.bricks_chain, 'bricks'):
-			# produce bricks because another island needs them
-			pass
-		elif need_bricks and self.land_manager.owner.settler_level > 1 and self.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and self.build_chain(self.bricks_chain, 'bricks producer'):
-			# produce bricks to build buildings on this island
-			pass
-		elif self.land_manager.owner.settler_level > 1 and self.build_feeder_chain(self.liquor_chain, 'liquor'):
-			pass
-
+	def _end_feeder_tick(self):
 		#self.trade_manager.finalize_requests()
 		#self.trade_manager.organize_shipping()
 		self.resource_manager.replay_deep_low_priority_requests()
+		self.resource_manager.record_expected_exportable_production(self.owner.tick_interval)
+		self.resource_manager.manager_buysell()
 
 	def _start_general_tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
@@ -480,21 +418,20 @@ class SettlementManager(WorldObject):
 
 		self.trade_manager.finalize_requests()
 		self.trade_manager.organize_shipping()
-		self.resource_manager.record_expected_exportable_production(self.tick_interval)
+		self.resource_manager.record_expected_exportable_production(self.owner.tick_interval)
 		self.resource_manager.manager_buysell()
 
 	def _add_goals(self, goals):
 		for goal in self.goals:
 			goal.update()
-			if goal.active:
+			if goal.can_be_activated:
 				goals.append(goal)
 
-	def tick(self, goals = None):
+	def tick(self, goals):
 		if self.feeder_island:
-			self._feeder_tick()
-			self.resource_manager.record_expected_exportable_production(self.tick_interval)
-			self.resource_manager.manager_buysell()
-			Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval)
+			self._start_feeder_tick()
+			self._add_goals(goals)
+			self._end_feeder_tick()
 		else:
 			self._start_general_tick()
 			self._add_goals(goals)

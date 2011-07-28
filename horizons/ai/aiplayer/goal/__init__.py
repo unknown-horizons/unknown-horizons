@@ -21,6 +21,7 @@
 
 import logging
 
+from horizons.ai.aiplayer.constants import BUILD_RESULT, GOAL_RESULT
 from horizons.util import WorldObject
 from horizons.util.python import decorators
 
@@ -61,7 +62,22 @@ class Goal(WorldObject):
 		raise NotImplementedError, "This function has to be overridden."
 
 	def update(self):
+		"""All goals are updated before checking whether they are active"""
 		pass
+
+	def late_update(self):
+		"""Some goals require an update after the goal execution phase if can be activated"""
+		pass
+
+	@classmethod
+	def _translate_build_result(cls, result):
+		if result == BUILD_RESULT.OK:
+			return GOAL_RESULT.BLOCK_ALL_BUILDING_ACTIONS
+		elif result == BUILD_RESULT.NEED_RESOURCES:
+			return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
+		elif result in [BUILD_RESULT.IMPOSSIBLE, BUILD_RESULT.UNKNOWN_ERROR, BUILD_RESULT.ALL_BUILT, BUILD_RESULT.SKIP]:
+			return GOAL_RESULT.SKIP
+		assert False, 'Unable to translate BUILD_RESULT %d to a GOAL_RESULT' % result
 
 	def __lt__(self, other):
 		if self.priority != other.priority:

@@ -36,5 +36,6 @@ class ClayDepositCoverageGoal(SettlementGoal):
 	def execute(self):
 		result = self.settlement_manager.production_builder.improve_deposit_coverage(BUILDINGS.CLAY_DEPOSIT_CLASS)
 		self.settlement_manager.log_generic_build_result(result,  'clay deposit coverage storage')
+		return self._translate_build_result(result)
 
 decorators.bind_all(ClayDepositCoverageGoal)

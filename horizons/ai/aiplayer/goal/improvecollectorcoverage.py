@@ -34,5 +34,6 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 	def execute(self):
 		result = self.settlement_manager.production_builder.improve_collector_coverage()
 		self.settlement_manager.log_generic_build_result(result, 'storage')
+		return self._translate_build_result(result)
 
 decorators.bind_all(ImproveCollectorCoverageGoal)

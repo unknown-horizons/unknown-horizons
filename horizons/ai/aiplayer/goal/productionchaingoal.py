@@ -20,6 +20,8 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
+from horizons.ai.aiplayer.constants import BUILD_RESULT
+
 from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 
@@ -54,13 +56,19 @@ class ProductionChainGoal(SettlementGoal):
 		return priorities[self.chain.resource_id] + self.settlement_manager.feeder_island
 
 	def execute(self):
-		self.settlement_manager.build_generic_chain(self.chain, self.name, self._needed_amount)
+		result = self.chain.build(self._needed_amount)
+		if result != BUILD_RESULT.ALL_BUILT and result != BUILD_RESULT.SKIP:
+			self.settlement_manager.log_generic_build_result(result, self.name)
+		return self._translate_build_result(result)
+
+	def _update_needed_amount(self):
+		self._needed_amount = self.settlement_manager.get_resident_resource_usage(self.chain.resource_id) * \
+			self.settlement_manager.production_level_multiplier
 
 	def update(self):
 		super(ProductionChainGoal, self).update()
 		if self.can_be_activated:
-			self._needed_amount = self.settlement_manager.get_resident_resource_usage(self.chain.resource_id) * \
-				self.settlement_manager.production_level_multiplier
+			self._update_needed_amount()
 			self._current_amount = self.chain.reserve(self._needed_amount, self._may_import)
 			self._is_active = self.chain.need_to_build_more_buildings(self._needed_amount)
 		else:

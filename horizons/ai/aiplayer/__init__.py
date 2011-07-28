@@ -31,7 +31,7 @@ from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
 from unitbuilder import UnitBuilder
-from constants import BUILDING_PURPOSE
+from constants import BUILDING_PURPOSE, GOAL_RESULT
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
 from building import AbstractBuilding
@@ -55,6 +55,8 @@ from building.toolmaker import AbstractToolmaker
 from building.boatbuilder import AbstractBoatBuilder
 from building.signalfire import AbstractSignalFire
 
+from goal.settlementgoal import SettlementGoal
+
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.constants import RES, BUILDINGS, TRADER
@@ -68,6 +70,7 @@ class AIPlayer(GenericAI):
 	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission')
 
 	log = logging.getLogger("ai.aiplayer")
+	tick_interval = 32
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
@@ -270,7 +273,7 @@ class AIPlayer(GenericAI):
 		mission.start()
 
 	def tick(self):
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = 37)
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval)
 		self._found_settlements()
 		self.handle_enemy_expansions()
 		self.handle_settlements()
@@ -323,12 +326,31 @@ class AIPlayer(GenericAI):
 		goals = []
 		for settlement_manager in self.settlement_managers:
 			settlement_manager.tick(goals)
-		if goals:
-			goal = max(goals)
-			goal.execute()
-		self.log.info('%s, had %d goals', self, len(goals))
-		for goal in reversed(sorted(goals)):
-			self.log.info('%s goal(%d): %s', self, goal.priority, goal)
+		goals.sort(reverse = True)
+
+		settlements_blocked = set() # set([settlement_manager_id, ...])
+		for goal in goals:
+			if not goal.active:
+				continue
+			if isinstance(goal, SettlementGoal) and goal.settlement_manager.worldid in settlements_blocked:
+				continue # can't build anything in this settlement
+			result = goal.execute()
+			if result == GOAL_RESULT.SKIP:
+				self.log.info('%s, skipped goal %s', self, goal)
+			elif result == GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE:
+				self.log.info('%s blocked further settlement resource usage by goal %s', self, goal)
+				settlements_blocked.add(goal.settlement_manager.worldid)
+			else:
+				break # built something that; stop because otherwise the AI could look too fast
+
+		# do any required cleanup before the next phase
+		for goal in goals:
+			goal.late_update()
+
+		self.log.info('%s, had %d active goals', self, sum(goal.active for goal in goals))
+		for goal in goals:
+			if goal.active:
+				self.log.info('%s goal(%d): %s', self, goal.priority, goal)
 
 	def want_another_village(self):
 		""" Avoid having more than one developing island with a village at a time """

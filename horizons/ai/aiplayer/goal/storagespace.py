@@ -20,21 +20,20 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
-class SignalFireGoal(SettlementGoal):
+class StorageSpaceGoal(SettlementGoal):
 	@property
 	def priority(self):
-		return 750
+		return 825
 
 	@property
 	def active(self):
-		return not self.settlement_manager.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS)
+		return self.settlement_manager.need_more_storage()
 
 	def execute(self):
-		result = self.settlement_manager.production_builder.build_signal_fire()
-		self.settlement_manager.log_generic_build_result(result, 'signal fire')
+		result = self.settlement_manager.production_builder.improve_collector_coverage()
+		self.settlement_manager.log_generic_build_result(result, 'storage space provider')
 		return self._translate_build_result(result)
 
-decorators.bind_all(SignalFireGoal)
+decorators.bind_all(StorageSpaceGoal)
