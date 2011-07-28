@@ -22,29 +22,25 @@
 import logging
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT, GOAL_RESULT
-from horizons.util import WorldObject
 from horizons.util.python import decorators
 
-class Goal(WorldObject):
+class Goal(object):
 	"""
 	An object of this class describes a goal that an AI player attempts to fulfil.
 	"""
 
 	log = logging.getLogger("ai.aiplayer.goal")
 
+	__next_id = 0 # used to assign sequence numbers to goals to ensure consistent ordering
+
 	def __init__(self, owner):
 		super(Goal, self).__init__()
-		self.__init(owner)
+		self.__init(owner, self.__next_id)
+		self.__next_id += 1
 
-	def __init(self, owner):
+	def __init(self, owner, sequence_number):
+		self.sequence_number = sequence_number
 		self.owner = owner
-
-	def save(self, db):
-		pass
-
-	def load(self, db, worldid, owner):
-		super(Goal, self).load(db, worldid)
-		self.__init(owner)
 
 	@property
 	def priority(self):
@@ -78,6 +74,6 @@ class Goal(WorldObject):
 	def __lt__(self, other):
 		if self.priority != other.priority:
 			return self.priority < other.priority
-		return self.worldid < other.worldid
+		return self.sequence_number < other.sequence_number
 
 decorators.bind_all(Goal)
