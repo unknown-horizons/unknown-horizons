@@ -224,13 +224,16 @@ class AIPlayer(GenericAI):
 				mission_id = db("SELECT rowid FROM ai_mission_found_settlement WHERE land_manager = ?", land_manager.worldid)[0][0]
 				self.missions.add(FoundSettlement.load(db, mission_id, self.report_success, self.report_failure))
 
-		# load the domestic trade missions
 		for settlement_manager in self.settlement_managers:
+			# load the domestic trade missions
 			db_result = db("SELECT rowid FROM ai_mission_domestic_trade WHERE source_settlement_manager = ?", settlement_manager.worldid)
 			for (mission_id,) in db_result:
 				self.missions.add(DomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
 
-		# TODO: load the international trade missions
+			# load the international trade missions
+			db_result = db("SELECT rowid FROM ai_mission_international_trade WHERE settlement_manager = ?", settlement_manager.worldid)
+			for (mission_id,) in db_result:
+				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success, self.report_failure))
 
 	def found_settlement(self, island, ship, feeder_island):
 		self.ships[ship] = self.shipStates.on_a_mission

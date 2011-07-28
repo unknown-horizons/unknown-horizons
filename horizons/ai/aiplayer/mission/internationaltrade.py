@@ -47,7 +47,7 @@ class InternationalTrade(Mission):
 		self.state = self.missionStates.created
 
 	def save(self, db):
-		super(DomesticTrade, self).save(db)
+		super(InternationalTrade, self).save(db)
 		db("INSERT INTO ai_mission_international_trade(rowid, settlement_manager, settlement, ship, bought_resource, sold_resource, state) VALUES(?, ?, ?, ?, ?, ?, ?)", \
 			self.worldid, self.settlement_manager.worldid, self.settlement.worldid, self.ship.worldid, self.bought_resource, self.sold_resource, self.state.index)
 
