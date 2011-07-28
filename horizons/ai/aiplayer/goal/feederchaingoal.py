@@ -40,11 +40,18 @@ class FeederChainGoal(ProductionChainGoal):
 	def __init(self):
 		self._may_import = False
 
+	def execute(self):
+		self.chain.reserve(self._needed_amount, self._may_import)
+		result = super(FeederChainGoal, self).execute()
+		self.chain.reserve(0, False)
+		return result
+
 	def _update_needed_amount(self):
 		self._needed_amount = self.settlement_manager.get_total_missing_production(self.chain.resource_id)
 
-	def late_update(self):
-		self.chain.reserve(0, False) # remove the reserved production quota so it can be exported
+	def update(self):
+		super(FeederChainGoal, self).update()
+		self.chain.reserve(0, False)
 
 class FeederTextileGoal(FeederChainGoal):
 	@property

@@ -65,10 +65,6 @@ class Goal(WorldObject):
 		"""All goals are updated before checking whether they are active"""
 		pass
 
-	def late_update(self):
-		"""Some goals require an update after the goal execution phase if can be activated"""
-		pass
-
 	@classmethod
 	def _translate_build_result(cls, result):
 		if result == BUILD_RESULT.OK:

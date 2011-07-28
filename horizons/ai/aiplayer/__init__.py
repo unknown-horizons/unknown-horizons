@@ -343,10 +343,6 @@ class AIPlayer(GenericAI):
 			else:
 				break # built something that; stop because otherwise the AI could look too fast
 
-		# do any required cleanup before the next phase
-		for goal in goals:
-			goal.late_update()
-
 		self.log.info('%s, had %d active goals', self, sum(goal.active for goal in goals))
 		for goal in goals:
 			if goal.active:
