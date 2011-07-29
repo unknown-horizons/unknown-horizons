@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-29 11:38+0200\n"
+"PO-Revision-Date: 2011-07-29 11:41+0200\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1667,11 +1667,10 @@ msgid "check"
 msgstr "vérifier"
 
 msgid "connection"
-msgstr "connection"
+msgstr "connexion"
 
-#, fuzzy
 msgid "no"
-msgstr "aucun"
+msgstr "non"
 
 msgid "tax"
 msgstr "taxe"
