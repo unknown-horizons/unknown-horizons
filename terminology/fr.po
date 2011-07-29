@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-18 00:34+0200\n"
-"Last-Translator: Quentin <lawnask@legtux.org>\n"
+"PO-Revision-Date: 2011-07-29 11:38+0200\n"
+"Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -744,7 +744,7 @@ msgstr "produire"
 # 87%
 #, fuzzy
 msgid "produced"
-msgstr "produire"
+msgstr "produit"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -1461,9 +1461,8 @@ msgstr "tenir"
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
 # 80%
-#, fuzzy
 msgid "hunt"
-msgstr "chasse"
+msgstr "chasser"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1665,10 +1664,10 @@ msgid "red"
 msgstr "rouge"
 
 msgid "check"
-msgstr ""
+msgstr "vérifier"
 
 msgid "connection"
-msgstr ""
+msgstr "connection"
 
 #, fuzzy
 msgid "no"
