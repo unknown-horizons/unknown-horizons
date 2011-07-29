@@ -277,6 +277,9 @@ class ProductionBuilder(AreaBuilder):
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def _get_collector_area(self):
+		if self.__collector_area_cache is not None and self.last_change_id == self.__collector_area_cache[0]:
+			return self.__collector_area_cache[1]
+
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		collector_area = set() # unused tiles that are reachable from at least one collector
 		for building in self.collector_buildings:
@@ -301,6 +304,7 @@ class ProductionBuilder(AreaBuilder):
 							reachable.add(coords)
 							if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 								collector_area.add(coords)
+		self.__collector_area_cache = (self.last_change_id, collector_area)
 		return collector_area
 
 	def enlarge_collector_area(self):
@@ -389,6 +393,10 @@ class ProductionBuilder(AreaBuilder):
 
 	def count_available_squares(self, size, max_num = None):
 		""" decide based on the number of 3 x 3 squares available vs still possible """
+		key = (size, max_num)
+		if key in self.__available_squares_cache and self.last_change_id == self.__available_squares_cache[key][0]:
+			return self.__available_squares_cache[key][1]
+
 		offsets = list(itertools.product(xrange(size), xrange(size)))
 		collector_area = self._get_collector_area()
 
@@ -410,7 +418,8 @@ class ProductionBuilder(AreaBuilder):
 					break
 				if accessible:
 					available_squares += 1
-		return (available_squares, total_squares)
+		self.__available_squares_cache[key] = (self.last_change_id, (available_squares, total_squares))
+		return self.__available_squares_cache[key][1]
 
 	def need_to_enlarge_collector_area(self):
 		""" decide based on the number of 3 x 3 squares available vs still possible """
@@ -550,6 +559,10 @@ class ProductionBuilder(AreaBuilder):
 						break
 				if all_legal:
 					self.last_changed[(size_x, size_y)][(x, y)] = self.last_change_id
+
+		# initialise other caches
+		self.__collector_area_cache = None
+		self.__available_squares_cache = {}
 
 	def register_change(self, x, y, purpose, builder):
 		""" registers the possible buildability change of a rectangle on this island """
