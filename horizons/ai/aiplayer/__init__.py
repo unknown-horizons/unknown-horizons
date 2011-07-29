@@ -86,17 +86,20 @@ class AIPlayer(GenericAI):
 			if island.worldid in self.islands:
 				continue
 
-			flat_land = 0
-			for tile in island.ground_map.itervalues():
-				if 'constructible' not in tile.classes:
-					continue
-				if tile.object is not None and not tile.object.buildable_upon:
-					continue
-				if tile.settlement is not None:
-					continue
-				flat_land += 1
-			if flat_land >= min_land:
-				options.append((flat_land, island))
+			if island.worldid not in self.__island_value_cache or self.__island_value_cache[island.worldid][0] != island.last_change_id:
+				flat_land = 0
+				for tile in island.ground_map.itervalues():
+					if 'constructible' not in tile.classes:
+						continue
+					if tile.object is not None and not tile.object.buildable_upon:
+						continue
+					if tile.settlement is not None:
+						continue
+					flat_land += 1
+				self.__island_value_cache[island.worldid] = (island.last_change_id, (flat_land, island))
+
+			if self.__island_value_cache[island.worldid][1][0] >= min_land:
+				options.append(self.__island_value_cache[island.worldid][1])
 		return options
 
 	def choose_island(self, min_land):
@@ -136,6 +139,8 @@ class AIPlayer(GenericAI):
 		self.complete_inventory = CompleteInventory(self)
 		self.unit_builder = UnitBuilder(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
+
+		self.__island_value_cache = {} # cache island values
 
 	def report_success(self, mission, msg):
 		self.missions.remove(mission)
