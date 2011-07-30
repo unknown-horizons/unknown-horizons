@@ -22,14 +22,15 @@
 from tabinterface import TabInterface
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget
+from horizons.scheduler import Scheduler
 from fife.extensions import pychan
 
 class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
 	"""
-	row_entry_number = 3
-	column_entry_number = 4
+	max_row_entry_number = 3
+	max_column_entry_number = 4
 	def __init__(self, session = None, widget = 'overview_select_multi.xml', \
 	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
 		super(SelectMultiTab, self).__init__(widget = widget)
@@ -42,107 +43,106 @@ class SelectMultiTab(TabInterface):
 		self.button_hover_image = icon_path % 'h'
 
 		# keep track of units that have stance
-		self.stance_units = []
-		# keep track of units that don't have a stance
-		self.non_stance_units = []
-		# if the stance units are no longer selected hide the stance menu
+		self.stance_unit_number = 0
 
-		# dict with unit id and number of instances to be displayed
-		self.displayed_units = {}
+		# keep local track of selected instances
+		self.instances = []
+		# keep track of number of instances per type
+		self.type_number = {}
 
 		self.tooltip = _("Selected Units")
 		for i in self.session.selected_instances:
 			if hasattr(i, 'stance'):
-				self.stance_units.append(i)
-			else:
-				self.non_stance_units.append(i)
-
-			if i.id in self.displayed_units:
-				self.displayed_units[i.id] += 1
-			else:
-				self.displayed_units[i.id] = 1
-
-		if self.stance_units:
-			self.show_stance_widget()
-
-		self.draw_selected_units_widget()
-
-	def get_thumbnail_icon(self, id):
-		"""
-		Returns the name of the Thumbnail Icon for unit with id
-		"""
-		#TODO get a system for loading thumbnail by id
-		return "content/gui/icons/unit_thumbnails/dummy.png"
-
-	def get_tab_units(self):
-		"""
-		Returns list of units shown in the tab
-		"""
-		return self.stance_units + self.non_stance_units
-
-	def show(self):
-		super(SelectMultiTab, self).show()
-		for i in self.get_tab_units():
+				self.stance_unit_number += 1
+			self.instances.append(i)
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
 				i.add_remove_listener(Callback(self.on_instance_removed, i))
+			if not i.id in self.type_number:
+				self.type_number[i.id] = 1
+			else:
+				self.type_number[i.id] += 1
 
-	def hide(self):
-		super(SelectMultiTab, self).hide()
-		for i in self.get_tab_units():
-			if i.has_remove_listener(Callback(self.on_instance_removed, i)):
-				i.remove_remove_listener(Callback(self.on_instance_removed, i))
+		if self.stance_unit_number != 0:
+			self.show_stance_widget()
 
-	def draw_selected_units_widget(self):
-		hbox_number = 0
-		entry_number = 0
-		for unit_id in self.displayed_units:
-			if entry_number > self.column_entry_number - 1:
-				entry_number = 0
-				hbox_number += 1
-			#TODO replace with stand alone widget
-			widget = pychan.Container(name = "unit_%s" % unit_id, size = (50, 50))
-			unit_thumbnail = pychan.widgets.Icon(image = self.get_thumbnail_icon(unit_id))
-			widget.addChild(unit_thumbnail)
-			#widget.addChild(unit_label)
-			self.widget.findChild(name="hbox_%s" % hbox_number).addChild(widget)
-			entry_number += 1
-
-	def refresh_unit_widget(self):
-		for i in xrange(0, self.row_entry_number):
-			self.widget.findChild(name="hbox_%s" % i).removeAllChildren()
+		self._scheduled_refresh = False
 		self.draw_selected_units_widget()
 
-	def update_unit_number(self, unit_id):
-		pass
+	def add_entry(self, entry):
+		if self.column_number > self.max_column_entry_number - 1:
+			self.column_number = 0
+			self.row_number += 1
+		self.column_number += 1
+		entry.widget.mapEvents({"unit_button" : self.hide})
+		self.widget.findChild(name="hbox_%s" % self.row_number).addChild(entry.widget)
+		self.entries.append(entry)
+
+	def draw_selected_units_widget(self):
+		self.entries = []
+		self.row_number = 0
+		self.column_number = 0
+		# if only one type of units is selected draw individual widgets for selected units
+		if len(self.type_number) == 1:
+			for instance in self.instances:
+				self.add_entry(UnitEntry([instance], False))
+		else:
+			entry_instances = {}
+			for instance in self.instances:
+				if instance.id not in entry_instances:
+					entry_instances[instance.id] = [instance]
+				else:
+					entry_instances[instance.id].append(instance)
+			for instances in entry_instances.values():
+				self.add_entry(UnitEntry(instances))
+
+	def hide_selected_units_widget(self):
+		for entry in self.entries:
+			entry.remove()
+		for i in xrange(0, self.max_row_entry_number):
+			self.widget.findChild(name="hbox_%s" % i).removeAllChildren()
+
+	def schedule_unit_widget_refresh(self):
+		if not self._scheduled_refresh:
+			self._scheduled_refresh = True
+			Scheduler().add_new_object(self.refresh_unit_widget, self, run_in = 0)
+
+	def refresh_unit_widget(self):
+		self._scheduled_refresh = False
+		self.hide_selected_units_widget()
+		self.draw_selected_units_widget()
+		self.widget.adaptLayout()
 
 	def on_instance_removed(self, instance):
 		if hasattr(instance, 'stance'):
-			self.stance_units.remove(instance)
-		else:
-			self.non_stance_units.remove(instance)
+			self.stance_unit_number -= 1
+
+		self.instances.remove(instance)
+		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
+			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
 
 		# if all units die, hide the tab
-		if not self.get_tab_units():
-			self.hide()
+		if not self.instances:
+			self.session.ingame_gui.hide_menu()
 			return
 
 		# if one unit remains, show it's menu
-		if len(self.get_tab_units()) == 1:
-			self.hide()
-			self.get_tab_units()[0].show_menu()
+		if len(self.instances) == 1:
+			self.session.ingame_gui.hide_menu()
+			self.instances[0].show_menu()
 			return
 
-		if not self.stance_units:
+		self.type_number[instance.id] -= 1
+		if self.type_number[instance.id] == 0:
+			del self.type_number[instance.id]
+			# if one type of units dies, schedule refresh
+			self.schedule_unit_widget_refresh()
+
+		# if one type of units is left, any removal would mean refresh
+		if len(self.type_number) == 1:
+			self.schedule_unit_widget_refresh()
+
+		if self.stance_unit_number == 0:
 			self.hide_stance_widget()
-
-		self.displayed_units[instance.id] -= 1
-		if self.displayed_units[instance.id] == 0:
-			self.displayed_units.pop(instance.id)
-			self.refresh_unit_widget()
-		else:
-			self.update_unit_number(instance.id)
-
-		self.widget.adaptLayout()
 
 	def show_stance_widget(self):
 		stance_widget = load_uh_widget('stancewidget.xml')
@@ -159,8 +159,9 @@ class SelectMultiTab(TabInterface):
 		self.widget.findChild(name='stance').removeAllChildren()
 
 	def set_stance(self, stance):
-		for i in self.stance_units:
-			i.set_stance(stance)
+		for i in self.instances:
+			if hasattr(i, 'stance'):
+				i.set_stance(stance)
 		self.toggle_stance()
 
 	def toggle_stance(self):
@@ -172,9 +173,67 @@ class SelectMultiTab(TabInterface):
 		self.widget.findChild(name='none').set_inactive()
 		self.widget.findChild(name='flee').set_inactive()
 		# get first unit stance
-		stance = self.stance_units[0].stance
-		for unit in self.stance_units[1:]:
+		stance_units = [u for u in self.instances if hasattr(u, "stance")]
+		stance = stance_units[0].stance
+		for unit in stance_units[1:]:
 			if unit.stance != stance:
 				return
 		self.widget.findChild(name = stance).set_active()
-				
+
+class UnitEntry(object):
+	def __init__(self, instances, show_number = True):
+		self.instances = instances
+		self.widget = load_uh_widget("unit_entry_widget.xml")
+		# get the icon of the first instance
+		self.widget.findChild(name="unit_button").up_image = self.get_thumbnail_icon(instances[0].id)
+		if show_number:
+			self.widget.findChild(name="instance_number").text = unicode(str(len(self.instances)))
+		# only two callbacks are needed so drop unwanted changelistener inheritance
+		for i in instances:
+			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
+				i.add_remove_listener(Callback(self.on_instance_removed, i))
+			health_component = i.get_component("health")
+			if not health_component.has_damage_dealt_listener(self.draw_health):
+				health_component.add_damage_dealt_listener(self.draw_health)
+
+	def get_thumbnail_icon(self, id):
+		"""
+		Returns the name of the Thumbnail Icon for unit with id
+		"""
+		#TODO get a system for loading thumbnail by id
+		return "content/gui/icons/unit_thumbnails/dummy.png"
+
+	def on_instance_removed(self, instance):
+		self.instances.remove(instance)
+		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
+			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+		health_component = instance.get_component("health")
+		if health_component.has_damage_dealt_listener(self.draw_health):
+			health_component.remove_damage_dealt_listener(self.draw_health)
+
+		if self.instances:
+			self.widget.findChild(name = "instance_number").text = unicode(str(len(self.instances)))
+
+	def draw_health(self, caller = None):
+		health = 0
+		max_health = 0
+		for instance in self.instances:
+			health_component = instance.get_component("health")
+			health += health_component.health
+			max_health += health_component.max_health
+		health_ratio = float(health) / max_health
+		container = self.widget.findChild(name="main_container")
+		health_bar = self.widget.findChild(name="health")
+		health_bar.position = (health_bar.position[0], int((1 - health_ratio) * container.height))
+
+	def remove(self):
+		"""
+		Clears all the listeners in instances
+		"""
+		for instance in self.instances:
+			if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
+				instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+			health_component = instance.get_component("health")
+			if health_component.has_damage_dealt_listener(self.draw_health):
+				health_component.remove_damage_dealt_listener(self.draw_health)
+
