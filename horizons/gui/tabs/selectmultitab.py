@@ -195,6 +195,7 @@ class UnitEntry(object):
 			health_component = i.get_component("health")
 			if not health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.add_damage_dealt_listener(self.draw_health)
+		self.draw_health()
 
 	def get_thumbnail_icon(self, id):
 		"""
