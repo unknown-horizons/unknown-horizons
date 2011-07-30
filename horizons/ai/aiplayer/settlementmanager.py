@@ -46,6 +46,7 @@ from goal.storagespace import StorageSpaceGoal
 from goal.tent import TentGoal
 from goal.tradingship import TradingShipGoal
 
+from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
@@ -123,6 +124,9 @@ class SettlementManager(WorldObject):
 			self.goals.append(ToolsGoal(self, self.tools_chain, 'tools producer'))
 			self.goals.append(TentGoal(self))
 			self.goals.append(TradingShipGoal(self))
+
+		# initialise caches
+		self.__resident_resource_usage_cache = {}
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
@@ -232,28 +236,31 @@ class SettlementManager(WorldObject):
 		return self.resource_manager.get_total_export(resource_id)
 
 	def get_resident_resource_usage(self, resource_id):
-		if resource_id == RES.BRICKS_ID:
-			return 0.001 if self.owner.settler_level > 0 else 0 # dummy value to cause brick production to be built
-		elif resource_id == RES.BOARDS_ID:
-			return 0.01 # force a low level of boards production to always exist
-		elif resource_id == RES.TOOLS_ID:
-			return 0.001 if self.owner.settler_level > 1 else 0 # dummy value to cause tools production to be built
-		elif resource_id == RES.LIQUOR_ID:
-			return self.get_together_chain.get_ratio(resource_id) * self.get_resident_resource_usage(RES.GET_TOGETHER_ID)
+		if resource_id not in self.__resident_resource_usage_cache or self.__resident_resource_usage_cache[resource_id][0] != Scheduler().cur_tick:
+			total = 0
+			if resource_id == RES.BRICKS_ID:
+				total = 0.001 if self.owner.settler_level > 0 else 0 # dummy value to cause brick production to be built
+			elif resource_id == RES.BOARDS_ID:
+				total = 0.01 # force a low level of boards production to always exist
+			elif resource_id == RES.TOOLS_ID:
+				total = 0.001 if self.owner.settler_level > 1 else 0 # dummy value to cause tools production to be built
+			elif resource_id == RES.LIQUOR_ID:
+				total = self.get_together_chain.get_ratio(resource_id) * self.get_resident_resource_usage(RES.GET_TOGETHER_ID)
+			else:
+				for coords, (purpose, _, _) in self.village_builder.plan.iteritems():
+					if purpose != BUILDING_PURPOSE.RESIDENCE:
+						continue
+					tent = self.settlement.ground_map[coords].object
+					if tent.id != BUILDINGS.RESIDENTIAL_CLASS:
+						continue # most likely an abandoned tent
+					for production in tent._get_productions():
+						production_line = production._prod_line
+						if resource_id in production_line.consumed_res:
+							# subtract because the amount will be negative
+							total -= production_line.consumed_res[resource_id] / production_line.time / GAME_SPEED.TICKS_PER_SECOND
 
-		total = 0
-		for coords, (purpose, _, _) in self.village_builder.plan.iteritems():
-			if purpose != BUILDING_PURPOSE.RESIDENCE:
-				continue
-			tent = self.settlement.ground_map[coords].object
-			if tent.id != BUILDINGS.RESIDENTIAL_CLASS:
-				continue # most likely an abandoned tent
-			for production in tent._get_productions():
-				production_line = production._prod_line
-				if resource_id in production_line.consumed_res:
-					# subtract because the amount will be negative
-					total -= production_line.consumed_res[resource_id] / production_line.time / GAME_SPEED.TICKS_PER_SECOND
-		return total
+			self.__resident_resource_usage_cache[resource_id] = (Scheduler().cur_tick, total)
+		return self.__resident_resource_usage_cache[resource_id][1]
 
 	def log_generic_build_result(self, result, name):
 		if result == BUILD_RESULT.OK:
