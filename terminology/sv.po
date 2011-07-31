@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-15 21:21+0200\n"
+"PO-Revision-Date: 2011-07-15 21:23+0200\n"
 "Last-Translator: pilen <gaistn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -28,6 +28,7 @@ msgstr "tält"
 msgid "resource"
 msgstr "vara"
 
+# Otydlig. Ursprungliga översättning från tyskans "kontor".
 msgid "branch office"
 msgstr "handelskontor"
 
@@ -183,6 +184,7 @@ msgstr "fiskare"
 msgid "found"
 msgstr "funnen"
 
+# för kyrkobyggnad
 msgid "pavilion"
 msgstr "paviljong"
 
