@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-18 01:07+0200\n"
+"PO-Revision-Date: 2011-07-18 01:08+0200\n"
 "Last-Translator: Quentin <lawnask@legtux.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1126,6 +1126,7 @@ msgid "(0 means default)"
 msgstr "(0 pour valeur par défaut)"
 
 #: horizons/i18n/guitranslations.py:252
+#, fuzzy
 msgid "Network port:"
 msgstr "Port réseau :"
 
