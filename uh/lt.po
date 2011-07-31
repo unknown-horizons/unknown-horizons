@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-24 16:09+0200\n"
+"PO-Revision-Date: 2011-07-24 16:10+0200\n"
 "Last-Translator: Mantas <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -426,7 +426,7 @@ msgid "Destroy building"
 msgstr "Sugriauti pastatą"
 
 #: horizons/gui/widgets/inventory.py:103
-#, python-format
+#, python-format, fuzzy
 msgid "Limit: %st per slot"
 msgstr "Riba: %st už lizdą"
 
@@ -1235,7 +1235,6 @@ msgstr "Einamosios išlaidos"
 
 # 76%
 #: horizons/i18n/guitranslations.py:296
-#, fuzzy
 msgid "Fishing boats"
 msgstr "Žvejų valtys"
 
