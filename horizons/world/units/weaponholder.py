@@ -29,6 +29,7 @@ from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.component.stancecomponent import HoldGroundStance, AggressiveStance, \
 	NoneStance, FleeStance
+from horizons.world.storage import PositiveTotalNumSlotsStorage
 
 import gc
 
@@ -57,10 +58,16 @@ class WeaponHolder(object):
 	def create_weapon_storage(self):
 		self._weapon_storage = []
 		self._fireable = []
+		#TODO make a system for making it load from db
+		self.total_number_of_weapons = 30
 
 	def update_range(self, caller=None):
-		self._min_range = min([w.get_minimum_range() for w in self._weapon_storage])
-		self._max_range = max([w.get_maximum_range() for w in self._weapon_storage])
+		if self._weapon_storage:
+			self._min_range = min([w.get_minimum_range() for w in self._weapon_storage])
+			self._max_range = max([w.get_maximum_range() for w in self._weapon_storage])
+		else:
+			self._min_range = 0
+			self._max_range = 0
 
 	def _add_to_fireable(self, weapon):
 		"""
@@ -136,6 +143,21 @@ class WeaponHolder(object):
 				pass
 
 		self.on_storage_modified()
+
+	def get_weapon_storage(self):
+		"""
+		Returns storage object for self._weapon_storage
+		"""
+		storage = PositiveTotalNumSlotsStorage(self.total_number_of_weapons, 4)
+		for weapon in self._weapon_storage:
+			weapon_id = weapon.weapon_id
+			if self.session.db.get_weapon_stackable(weapon_id):
+				number = weapon.number_of_weapons
+			else:
+				number = 1
+			storage.alter(weapon_id, number)
+		return storage
+
 
 	def attack_in_range(self):
 		"""
@@ -257,7 +279,7 @@ class WeaponHolder(object):
 			if self._target.has_remove_listener(self.remove_target):
 				self._target.remove_remove_listener(self.remove_target)
 		self.remove_target()
-	
+
 	def stop_for(self, ticks):
 		"""
 		Delays movement for a number of ticks.
@@ -320,7 +342,7 @@ class WeaponHolder(object):
 				self.worldid, weapon.weapon_id, number, ticks)
 		# save target
 		if self._target:
-			db("INSERT INTO target(worldid, target_id) VALUES(?, ?)", self.worldid, self._target.worldid) 
+			db("INSERT INTO target(worldid, target_id) VALUES(?, ?)", self.worldid, self._target.worldid)
 
 	def load_target(self, db):
 		"""

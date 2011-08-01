@@ -24,6 +24,7 @@ from horizons.gui.widgets.tradewidget import TradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.util import Callback
 from horizons.scheduler import Scheduler
+from horizons.constants import WEAPONS
 
 class InventoryTab(TabInterface):
 
@@ -54,12 +55,10 @@ class InventoryTab(TabInterface):
 
 class ShipInventoryTab(InventoryTab):
 
-	def __init__(self, instance = None):
-		super(ShipInventoryTab, self).__init__(
-			widget = 'ship_inventory.xml',
-			icon_path='content/gui/icons/tabwidget/common/inventory_%s.png',
-			instance = instance,
-		)
+	def __init__(self, instance = None, widget = 'ship_inventory.xml',
+			icon_path = 'content/gui/icons/tabwidget/common/inventory_%s.png'):
+		#if no other widget or icon path are passed via inheritance, use default ones
+		super(ShipInventoryTab, self).__init__(instance, widget, icon_path)
 		self.tooltip = _("Ship inventory")
 
 	def configure_route(self):
@@ -96,3 +95,43 @@ class ShipInventoryTab(InventoryTab):
 		if self.instance.has_change_listener(self.refresh):
 			self.instance.remove_change_listener(self.refresh)
 		super(ShipInventoryTab, self).hide()
+
+class FightingShipInventoryTab(ShipInventoryTab):
+
+	def __init__(self, instance = None):
+		widget = 'fighting_ship_inventory.xml'
+		super(FightingShipInventoryTab, self).__init__(instance, widget)
+		#create weapon inventory, needed only in gui for inventory widget
+		self.weapon_inventory = self.instance.get_weapon_storage()
+		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, \
+			self.weapon_inventory)
+
+	def refresh(self):
+		ship_inventory_weapon_buttons = [ b for b in self.widget.findChild(name='inventory').get_buttons()\
+			if b.res_id == WEAPONS.CANNON ]
+		weapon_inventory_weapon_buttons = [ b for b in self.widget.findChild(name='weapon_inventory').get_buttons()\
+			if b.res_id == WEAPONS.CANNON ]
+		for button in ship_inventory_weapon_buttons:
+			button.button.tooltip = _("Equip weapon")
+			button.button.capture(Callback(self.equip_weapon, button.res_id))
+		for button in weapon_inventory_weapon_buttons:
+			button.button.tooltip = _("Unequip weapon")
+			button.button.capture(Callback(self.unequip_weapon, button.res_id))
+		super(FightingShipInventoryTab, self).refresh()
+
+	def equip_weapon(self, weapon_id):
+		if self.weapon_inventory.alter(weapon_id, 1) == 0:
+			if self.instance.inventory.alter(weapon_id, -1) == 0:
+				self.instance.add_weapon_to_storage(weapon_id)
+			else:
+				self.weapon_inventory.alter(weapon_id, -1)
+		self.widget.child_finder('weapon_inventory').update()
+
+	def unequip_weapon(self, weapon_id):
+		if self.instance.inventory.alter(weapon_id, 1) == 0:
+			if self.weapon_inventory.alter(weapon_id, -1) == 0:
+				self.instance.remove_weapon_from_storage(weapon_id)
+			else:
+				self.instance.inventory.alter(weapon_id, -1)
+		self.widget.child_finder('weapon_inventory').update()
+

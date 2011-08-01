@@ -106,3 +106,12 @@ class Inventory(pychan.widgets.Container):
 			self.addChildren(label, self.__icon)
 		self.adaptLayout()
 		self.stylize('menu_black')
+
+	def get_buttons(self):
+		"""Gets all the buttons in inventory by searching for ImageFillStatusButton"""
+		buttons = []
+		def _find_widget(widget):
+			if isinstance(widget, ImageFillStatusButton):
+				buttons.append(widget)
+		self.deepApply(_find_widget)
+		return buttons

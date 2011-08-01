@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-	EnemyShipOverviewTab, FightingUnitTab
+	EnemyShipOverviewTab, FightingUnitTab, FightingShipInventoryTab
 from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
@@ -30,7 +30,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 	@param x: int x position
 	@param y: int y position
 	"""
-	tabs = (ShipOverviewTab, ShipInventoryTab, FightingUnitTab)
+	tabs = (ShipOverviewTab, FightingShipInventoryTab, FightingUnitTab)
 	enemy_tabs = (EnemyShipOverviewTab, FightingUnitTab)
 
 	def __init__(self, x, y, **kwargs):
