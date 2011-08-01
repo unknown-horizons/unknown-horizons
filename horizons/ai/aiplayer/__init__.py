@@ -27,6 +27,8 @@ from mission.foundsettlement import FoundSettlement
 from mission.preparefoundationship import PrepareFoundationShip
 from mission.domestictrade import DomesticTrade
 from mission.internationaltrade import InternationalTrade
+
+from personalitymanager import PersonalityManager
 from landmanager import LandManager
 from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
@@ -136,6 +138,8 @@ class AIPlayer(GenericAI):
 		self._settlement_manager_by_settlement_id = {}
 		self.missions = set()
 		self.fishers = []
+		self.personality_manager = PersonalityManager()
+		self.personality = self.personality_manager.get('AIPlayer')
 		self.complete_inventory = CompleteInventory(self)
 		self.unit_builder = UnitBuilder(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
@@ -269,10 +273,12 @@ class AIPlayer(GenericAI):
 		return True
 
 	def have_starting_resources(self, ship, settlement):
-		return self._have_settlement_starting_resources(ship, settlement, 8000, {RES.BOARDS_ID: 17, RES.FOOD_ID: 10, RES.TOOLS_ID: 5})
+		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_island_gold, \
+			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.FOOD_ID: self.personality.min_new_island_food, RES.TOOLS_ID: self.personality.min_new_island_tools})
 
 	def have_feeder_island_starting_resources(self, ship, settlement):
-		return self._have_settlement_starting_resources(ship, settlement, 4000, {RES.BOARDS_ID: 20, RES.TOOLS_ID: 10})
+		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_feeder_island_gold, \
+			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.TOOLS_ID: self.personality.min_new_island_tools})
 
 	def prepare_foundation_ship(self, settlement_manager, ship, feeder_island):
 		self.ships[ship] = self.shipStates.on_a_mission
@@ -298,8 +304,7 @@ class AIPlayer(GenericAI):
 			return
 
 		island = None
-		sequence = [500, 300, 150]
-		for min_size in sequence:
+		for min_size in self.personality.island_size_sequence:
 			island = self.choose_island(min_size)
 			if island is not None:
 				break
@@ -363,9 +368,8 @@ class AIPlayer(GenericAI):
 				return False
 		return True
 
-	@classmethod
-	def need_feeder_island(cls, settlement_manager):
-		return settlement_manager.production_builder.count_available_squares(3, 30)[1] < 30
+	def need_feeder_island(self, settlement_manager):
+		return settlement_manager.production_builder.count_available_squares(3, self.personality.feeder_island_requirement_cutoff)[1] < self.personality.feeder_island_requirement_cutoff
 
 	def have_feeder_island(self):
 		for settlement_manager in self.settlement_managers:
@@ -374,7 +378,7 @@ class AIPlayer(GenericAI):
 		return False
 
 	def can_found_feeder_island(self):
-		islands = self.get_available_islands(400)
+		islands = self.get_available_islands(self.personality.min_feeder_island_area)
 		return len(islands) > 0
 
 	def found_feeder_island(self):
@@ -409,7 +413,6 @@ class AIPlayer(GenericAI):
 
 	def manage_international_trade(self):
 		ship_capacity = 120 # TODO: handle different ship capacities
-		little_money = 3000 # cutoff to decide that we really need to get more money
 
 		ship = None
 		for possible_ship, state in self.ships.iteritems():
@@ -468,7 +471,8 @@ class AIPlayer(GenericAI):
 				else:
 					if best_buy is None or best_buy[1] < tradable_amount:
 						best_buy = (total_price, tradable_amount, resource_id)
-			total_value = (best_sale[0] if best_sale else 0) + (best_buy[1] if best_buy else 0) * (30 if self.inventory[RES.GOLD_ID] > little_money else 10)
+			buy_coefficient = self.personality.buy_coefficient_rich if self.inventory[RES.GOLD_ID] > self.personality.little_money else self.personality.buy_coefficient_poor
+			total_value = (best_sale[0] if best_sale else 0) + (best_buy[1] if best_buy else 0) * buy_coefficient
 			# TODO: make settlement and settlement_manager properly sortable
 			final_options.append((total_value, best_buy[2] if best_buy else None, best_sale[2] if best_sale else None, settlement, settlement_manager))
 

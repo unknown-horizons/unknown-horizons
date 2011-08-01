@@ -145,19 +145,21 @@ class AreaBuilder(WorldObject):
 		for coords in nodes:
 			if coords in distance_to_road:
 				distance = distance_to_road[coords]
-				if distance > 9:
-					nodes[coords] += 0.5
-				elif 0 < distance <= 9:
-					nodes[coords] += 0.7 + (10 - distance) * 0.15
+				if distance > self.personality.path_road_penalty_threshold:
+					nodes[coords] += self.personality.path_distant_road_penalty
+				elif distance > 0:
+					nodes[coords] += self.personality.path_near_road_constant_penalty + \
+						(self.personality.path_road_penalty_threshold - distance + 1) * self.personality.path_near_road_linear_penalty
 			else:
-				nodes[coords] += 0.1
+				nodes[coords] += self.personality.path_unreachable_road_penalty
 
 			if coords in distance_to_boundary:
 				distance = distance_to_boundary[coords]
-				if 1 < distance <= 10:
-					nodes[coords] += 0.3 + (11 - distance) * 0.03
+				if 1 < distance <= self.personality.path_boundary_penalty_threshold:
+					nodes[coords] += self.personality.path_near_boundary_constant_penalty + \
+						(self.personality.path_boundary_penalty_threshold - distance + 1) * self.personality.path_near_boundary_linear_penalty
 			else:
-				nodes[coords] += 0.1
+				nodes[coords] += self.personality.path_unreachable_boundary_penalty
 
 		return nodes
 

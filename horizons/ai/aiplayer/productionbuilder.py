@@ -48,6 +48,7 @@ class ProductionBuilder(AreaBuilder):
 		self.collector_buildings = [] # [building, ...]
 		self.production_buildings = [] # [building, ...]
 		self.unused_fields = self._make_empty_unused_fields()
+		self.personality = self.owner.personality_manager.get('ProductionBuilder')
 
 	@classmethod
 	def _make_empty_unused_fields(self):
@@ -116,8 +117,7 @@ class ProductionBuilder(AreaBuilder):
 
 	def enough_collectors(self):
 		production_value = self.settlement_manager.resource_manager.get_production_value()
-		collector_capacity = 0.007 # resource collected per collector per tick
-		total_collector_capacity = (1 + 2 * len(self.collector_buildings)) * collector_capacity
+		total_collector_capacity = (1 + 2 * len(self.collector_buildings)) * self.personality.expected_collector_capacity
 		self.log.info('%s collector capacity %.3f, need %.3f', self, total_collector_capacity, production_value)
 		return total_collector_capacity > production_value
 

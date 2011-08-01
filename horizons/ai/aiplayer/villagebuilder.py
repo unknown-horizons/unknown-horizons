@@ -50,6 +50,7 @@ class VillageBuilder(AreaBuilder):
 		self.tent_queue = deque()
 		self._init_cache()
 		self.roads_built = False
+		self.personality = self.owner.personality_manager.get('VillageBuilder')
 
 		# initialise here for feeder islands
 		self.num_sections = 0
@@ -108,12 +109,11 @@ class VillageBuilder(AreaBuilder):
 
 		xs = set([x for (x, _) in self.land_manager.village])
 		ys = set([y for (_, y) in self.land_manager.village])
-		max_size = 22
 
 		width = max(xs) - min(xs) + 1
 		height = max(ys) - min(ys) + 1
-		horizontal_sections = int(math.ceil(float(width) / max_size))
-		vertical_sections = int(math.ceil(float(height) / max_size))
+		horizontal_sections = int(math.ceil(float(width) / self.personality.max_village_section_size))
+		vertical_sections = int(math.ceil(float(height) / self.personality.max_village_section_size))
 
 		sections = []
 		vertical_roads = set()
@@ -356,7 +356,7 @@ class VillageBuilder(AreaBuilder):
 					plan[coords] = (BUILDING_PURPOSE.UNUSED_RESIDENCE, None)
 					good_tents += 1
 
-			value = 10 * good_tents - bad_roads - 30 * double_roads
+			value = self.personality.tent_value * good_tents - self.personality.bad_road_penalty * bad_roads - self.personality.double_road_penalty * double_roads
 			if best_value < value:
 				best_plan = plan
 				best_tents = good_tents
@@ -495,17 +495,14 @@ class VillageBuilder(AreaBuilder):
 
 	def _reserve_other_buildings(self):
 		"""Replaces planned tents with a pavilion, school, and tavern."""
-		# TODO: load these constants in a better way
-		max_capacity = 22
-		normal_capacity = 20
 		num_other_buildings = 0
 		tents = len(self.tent_queue)
 		while tents > 0:
 			num_other_buildings += 3
-			tents -= 3 + normal_capacity
-		self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION, num_other_buildings, max_capacity)
-		self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings, max_capacity)
-		self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN, num_other_buildings, max_capacity)
+			tents -= 3 + self.personality.normal_coverage_building_capacity
+		self._replace_planned_tent(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION, num_other_buildings, self.personality.max_coverage_building_capacity)
+		self._replace_planned_tent(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings, self.personality.max_coverage_building_capacity)
+		self._replace_planned_tent(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN, num_other_buildings, self.personality.max_coverage_building_capacity)
 		self._create_village_producer_assignments()
 
 	def _create_village_producer_assignments(self):
@@ -514,7 +511,6 @@ class VillageBuilder(AreaBuilder):
 		purposes = [BUILDING_PURPOSE.PAVILION, BUILDING_PURPOSE.VILLAGE_SCHOOL, BUILDING_PURPOSE.TAVERN]
 		residence_positions = sorted(set([builder.position for (purpose, builder, _) in self.plan.itervalues() if purpose in [BUILDING_PURPOSE.UNUSED_RESIDENCE, BUILDING_PURPOSE.RESIDENCE]]))
 		residence_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
-		max_capacity = 22
 
 		for purpose in purposes:
 			producer_positions = sorted(set([builder.position for (pos_purpose, builder, _) in self.plan.itervalues() if pos_purpose == purpose]))
@@ -534,7 +530,7 @@ class VillageBuilder(AreaBuilder):
 			for _, producer_coords, residence_coords in options:
 				if residence_coords in assigned_residence_coords:
 					continue
-				if len(self.producer_assignment[purpose][producer_coords]) >= max_capacity:
+				if len(self.producer_assignment[purpose][producer_coords]) >= self.personality.max_coverage_building_capacity:
 					continue
 				assigned_residence_coords.add(residence_coords)
 				self.producer_assignment[purpose][producer_coords].append(residence_coords)
