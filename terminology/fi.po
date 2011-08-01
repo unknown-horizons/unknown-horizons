@@ -298,10 +298,10 @@ msgid "settler"
 msgstr "uudisasukas"
 
 msgid "citizen"
-msgstr ""
+msgstr "kaupunkilainen"
 
 msgid "merchant"
-msgstr ""
+msgstr "kauppamatkustaja"
 
 msgid "aristocrat"
 msgstr ""
@@ -508,16 +508,16 @@ msgid "red"
 msgstr "punainen"
 
 msgid "check"
-msgstr ""
+msgstr "tarkistaa"
 
 msgid "connection"
-msgstr ""
+msgstr "yhteys"
 
 msgid "no"
-msgstr ""
+msgstr "ei"
 
 msgid "tax"
-msgstr ""
+msgstr "vero"
 
 msgid "feature"
 msgstr "ominaisuus"
@@ -555,37 +555,37 @@ msgid "ruin"
 msgstr "suorita"
 
 msgid "seed"
-msgstr ""
+msgstr "siemen"
 
 msgid "temporarily"
-msgstr ""
+msgstr "väliaikaisesti"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "suola-altaat"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tupakka"
 
 msgid "cattle"
-msgstr ""
+msgstr "karja"
 
 msgid "pig"
 msgstr ""
 
 msgid "herbs"
-msgstr ""
+msgstr "yrttejä"
 
 msgid "herbary"
-msgstr ""
+msgstr "yrittitarha"
 
 msgid "butchery"
-msgstr ""
+msgstr "teurastamo"
 
 msgid "doctor"
-msgstr ""
+msgstr "tohtori"
 
 msgid "education"
-msgstr ""
+msgstr "koulutus"
 
 # 75%
 #, fuzzy

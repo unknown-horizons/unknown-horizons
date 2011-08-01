@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-14 07:58+0200\n"
-"Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
+"PO-Revision-Date: 2011-08-01 15:40+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -476,15 +476,15 @@ msgstr "Szolgáltatások"
 
 #: horizons/i18n/guitranslations.py:46
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr "Pavilon: Kielégíti a hajósok vallási szükségleteit"
+msgstr "Pavilon: Kielégíti a hajósok vallási szükségleteit."
 
 #: horizons/i18n/guitranslations.py:47
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr "Halász: Halászik a tengeren, élelmet készít"
+msgstr "Halász: Halászik a tengeren, élelmet készít."
 
 #: horizons/i18n/guitranslations.py:48
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr "Vadász: Vadakra vadászik az erdőben, élelmet készít"
+msgstr "Vadász: Vadakra vadászik az erdőben, élelmet készít."
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
@@ -536,7 +536,7 @@ msgstr "Téglagyár: Agyagból téglát készít."
 
 #: horizons/i18n/guitranslations.py:64
 msgid "Clay pit: Gets clay from deposit."
-msgstr "Agyagbánya: Agyagot termel"
+msgstr "Agyagbánya: Agyagot termel."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
@@ -560,7 +560,7 @@ msgstr "Cukornád mező: Szeszes ital termeléshez szükséges. Egy farm szüks�
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
-msgstr "Falusi iskola: Oktatást szolgáltat"
+msgstr "Falusi iskola: Oktatást szolgáltat."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."

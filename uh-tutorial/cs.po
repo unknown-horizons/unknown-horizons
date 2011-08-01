@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-06-25 14:41+0200\n"
+"PO-Revision-Date: 2011-08-01 15:35+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -43,6 +43,7 @@ msgid "Welcome to Unknown Horizons!"
 msgstr "Vítej v Unknown Horizons!"
 
 #: po/tutorial.py:6
+#, fuzzy
 msgid ""
 "This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n"
 "\n"
@@ -70,7 +71,7 @@ msgstr ""
 "\n"
 "Na www.unknown-horizons.org nás můžeš kontaktovat.\n"
 "\n"
-"A nyní pojď hrát"
+"A nyní pojď hrát."
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
@@ -105,7 +106,7 @@ msgstr ""
 "Můžeš postavit budovu na jakémkoliv místě kde náhled není zbarven červeně.\n"
 "Klikni kdekoliv pro umístění tvé první budovy.\n"
 "\n"
-"ÚKOL: Postav pobočku na pobřeží"
+"ÚKOL: Postav pobočku na pobřeží."
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"

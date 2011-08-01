@@ -20,7 +20,7 @@ msgstr ""
 #
 #
 msgid "build"
-msgstr "bouw"
+msgstr "bouwen"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #

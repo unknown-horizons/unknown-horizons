@@ -1141,9 +1141,8 @@ msgstr "Controleer dat u weet wat u doet."
 
 # 83%
 #: horizons/i18n/guitranslations.py:260
-#, fuzzy
 msgid "Apply"
-msgstr "Toepassen:"
+msgstr "Toepassen"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
