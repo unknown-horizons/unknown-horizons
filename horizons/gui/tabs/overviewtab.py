@@ -122,12 +122,9 @@ class MarketPlaceOverviewTab(OverviewTab):
 
 
 class ShipOverviewTab(OverviewTab):
-	def __init__(self, instance):
-		super(ShipOverviewTab, self).__init__(
-			widget = 'overview_ship.xml',
-			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
-			instance = instance
-		)
+	def __init__(self, instance, widget = 'overview_ship.xml', \
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
+		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
 		self.tooltip = _("Ship overview")
 
 	def refresh(self):
@@ -158,6 +155,30 @@ class ShipOverviewTab(OverviewTab):
 
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
+
+class FightingShipOverviewTab(ShipOverviewTab):
+	def __init__(self, instance, widget = 'overview_fighting_unit.xml'):
+		super(FightingShipOverviewTab, self).__init__(instance, widget)
+		stance_widget = load_uh_widget('stancewidget.xml')
+		self.widget.findChild(name='stance').addChild(stance_widget)
+		self.toggle_stance()
+		self.widget.mapEvents({
+			'aggressive': Callback(self.set_stance, 'aggressive'),
+			'hold_ground': Callback(self.set_stance, 'hold_ground'),
+			'none': Callback(self.set_stance, 'none'),
+			'flee': Callback(self.set_stance, 'flee')
+			})
+
+	def set_stance(self, stance):
+		self.instance.set_stance(stance)
+		self.toggle_stance()
+
+	def toggle_stance(self):
+		self.widget.findChild(name='aggressive').set_inactive()
+		self.widget.findChild(name='hold_ground').set_inactive()
+		self.widget.findChild(name='none').set_inactive()
+		self.widget.findChild(name='flee').set_inactive()
+		self.widget.findChild(name=self.instance.stance).set_active()
 
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
