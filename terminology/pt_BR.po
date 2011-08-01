@@ -374,9 +374,8 @@ msgid "solution"
 msgstr ""
 
 # 80%
-#, fuzzy
 msgid "sound"
-msgstr "estabelecer / (fundar)"
+msgstr "estabelecer / fundar"
 
 msgid "from time to time"
 msgstr ""

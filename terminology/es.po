@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-08 18:29+0200\n"
-"Last-Translator: William <cabrerawilliam@gmail.com>\n"
+"PO-Revision-Date: 2011-07-12 11:56+0200\n"
+"Last-Translator: MicMic <michael.aloys@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -495,7 +495,7 @@ msgid "pasture"
 msgstr "prado"
 
 msgid "storage tent"
-msgstr "tienda de almacenamiento"
+msgstr "tienda almacén"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
