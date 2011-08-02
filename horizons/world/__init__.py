@@ -76,6 +76,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.water = None
 		self.ship_map = None
 		self.ships = None
+		self.ground_units = None
 		self.trader = None
 		self.pirate = None
 		self.islands = None
@@ -202,10 +203,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
+		self.ground_unit_map = {}
 
 		# create shiplist, which is currently used for saving ships
 		# and having at least one reference to them
 		self.ships = []
+		self.ground_units = []
 
 		# create bullets list, used for saving bullets in ongoing attacks
 		self.bullets = []
@@ -409,6 +412,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					point = self.get_random_possible_ship_position()
 				ship = CreateUnit(player.worldid, UNITS.FRIGATE, point.x, point.y)(issuer=self.session.world.player)
 				ship.name="Gigi"
+				point = self.islands[0].ground_map.keys()[10]
+				CreateUnit(player.worldid, 1000018, point[0], point[1])(issuer=self.session.world.player)
+				point = self.islands[0].ground_map.keys()[13]
+				CreateUnit(player.worldid, 1000018, point[0], point[1])(issuer=self.session.world.player)
+				point = self.islands[0].ground_map.keys()[15]
+				CreateUnit(player.worldid, 1000018, point[0], point[1])(issuer=self.session.world.player)
+				point = self.islands[0].ground_map.keys()[18]
+				CreateUnit(player.worldid, 1000018, point[0], point[1])(issuer=self.session.world.player)
+				point = Point(point[0], point[1])
 			#
 			#
 			#
@@ -632,6 +644,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.pirate.save(db)
 		for ship in self.ships:
 			ship.save(db)
+		for ground_unit in self.ground_units:
+			ground_unit.save(db)
 		for bullet in self.bullets:
 			bullet.save(db)
 		self.diplomacy.save(db)
