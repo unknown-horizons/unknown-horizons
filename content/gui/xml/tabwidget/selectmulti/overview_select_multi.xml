@@ -9,5 +9,5 @@
 			<HBox name="hbox_2"/>
 		</VBox>
 	</Container>
-	<Container position="0,250" size = "600,300" name="stance"/>
+	<Container position="0,270" size = "600,300" name="stance"/>
 </Container>

@@ -1,9 +1,14 @@
 <?xml version="1.0"?>
-<Container size="250,400">
-<TabBG amount="5"/>
+<Container size="250,550">
+<TabBG amount="6"/>
 	<Icon name="player_emblem" position="25,50"/>
+	<Label name="health_label" text="100/100" position="185,70"/>
+	<Container size="50,15" position="185,88">
+		<Icon image="content/gui/images/background/bar_bg.png" size="60,20"/>
+		<ProgressBar name="health_bar" position="1,1" size="47,20"/>
+	</Container>
 
-<Container position="0,70" size="245,300" >
+<Container position="0,70" size="245,320" >
 	<!-- Name of Ship -->
 	<HBox position="22,7"  min_size="170,20"  size="230,20" >
 	<Spacer min_size="0"  max_size="50" />
@@ -13,17 +18,20 @@
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 	<!-- Picture -->
-	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,30" />
-	<Icon image="content/gui/images/background/hr.png" position="20,175" />
+	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,20" />
+	<Container name="weapon_storage_container" size="245,50" position = "20,170">
+		<HBox>
+			<Label text="Weapons:"/>
+			<HBox name="weapons">
+				<TooltipIcon image="content/gui/icons/resources/none.png" tooltip="none"/>
+			</HBox>
+		</HBox>
+	</Container>
 
-	<!-- Let's implement that when actually having some sense. The positioning should fit though.
-	<HBox position="30,205">
-		<Label name="health_label" text="Health:" /><Label name='health' text="" />
-	</HBox>
-	-->
+	<Icon image="content/gui/images/background/hr.png" position="20,190" />
 
-	<Label name="foundSettlement_label" text="Build settlement:" position="25,205" />
-	<HBox position="180,190">
+	<Label name="foundSettlement_label" text="Build settlement:" position="25,215" />
+	<HBox position="180,200">
 		<ToggleImageButton name='bg_button' border_size="0" 
 			inactive_image="content/gui/images/buttons/msg_button_bw.png" 
 			up_image="content/gui/images/buttons/msg_button.png" 
@@ -31,13 +39,15 @@
 			hover_image="content/gui/images/buttons/msg_button_h.png" />
 	</HBox>
 
-	<HBox position="186,195">
+	<HBox position="186,205">
 		<ToggleImageButton name="foundSettlement" tooltip="Build settlement" 
 			inactive_image="content/gui/icons/ship/anchor_bw.png" 
 			up_image="content/gui/icons/ship/anchor.png" 
 			down_image="content/gui/icons/ship/anchor_a.png" 
 			hover_image="content/gui/icons/ship/anchor_h.png" />
 	</HBox>
+
+	<Container position="0,250" size="600,100" name="stance"/>
 
 </Container>
 </Container>

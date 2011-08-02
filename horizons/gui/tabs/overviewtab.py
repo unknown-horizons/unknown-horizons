@@ -25,7 +25,7 @@ from fife.extensions import pychan
 from tabinterface import TabInterface
 from horizons.util import Callback, ActionSetLoader, NamedObject
 from horizons.constants import RES, SETTLER, BUILDINGS
-from horizons.gui.widgets  import TooltipButton, DeleteButton
+from horizons.gui.widgets  import TooltipButton, DeleteButton, TooltipIcon
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
@@ -126,6 +126,23 @@ class ShipOverviewTab(OverviewTab):
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
 		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
 		self.tooltip = _("Ship overview")
+		self.draw_health()
+		self.widget.adaptLayout()
+
+	def show(self):
+		health_component = self.instance.get_component('health')
+		if not health_component.has_damage_dealt_listener(self.draw_health):
+			health_component.add_damage_dealt_listener(self.draw_health)
+		super(ShipOverviewTab, self).show()
+
+	def hide(self):
+		super(ShipOverviewTab, self).hide()
+		# hide is called in remove and then in hide menu
+		if not self.instance:
+			return
+		health_component = self.instance.get_component('health')
+		if health_component.has_damage_dealt_listener(self.draw_health):
+			health_component.remove_damage_dealt_listener(self.draw_health)
 
 	def refresh(self):
 		# show rename when you click on name
@@ -156,8 +173,15 @@ class ShipOverviewTab(OverviewTab):
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
 
+	def draw_health(self, caller = None):
+		health_component = self.instance.get_component('health')
+		max_health = int(health_component.max_health)
+		health = int(health_component.health)
+		self.widget.findChild(name='health_label').text = unicode(str(health)+'/'+str(max_health))
+		self.widget.findChild(name='health_bar').progress = int(health * 100. / max_health)
+
 class FightingShipOverviewTab(ShipOverviewTab):
-	def __init__(self, instance, widget = 'overview_fighting_unit.xml'):
+	def __init__(self, instance, widget = 'overview_ship.xml'):
 		super(FightingShipOverviewTab, self).__init__(instance, widget)
 		stance_widget = load_uh_widget('stancewidget.xml')
 		self.widget.findChild(name='stance').addChild(stance_widget)
@@ -168,6 +192,25 @@ class FightingShipOverviewTab(ShipOverviewTab):
 			'none': Callback(self.set_stance, 'none'),
 			'flee': Callback(self.set_stance, 'flee')
 			})
+
+	def show(self):
+		self.draw_weapon_storage()
+		super(FightingShipOverviewTab, self).show()
+
+	def draw_weapon_storage(self):
+		storage = self.instance.get_weapon_storage()
+		self.widget.findChild(name='weapons').removeAllChildren()
+		weapons_added = False
+		for weapon, amount in storage:
+			weapons_added = True
+			icon_name = self.instance.session.db.get_res_icon(weapon)[2]
+			icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
+			icon = TooltipIcon(image = icon_name, tooltip = icon_tooltip)
+			self.widget.findChild(name='weapons').addChild(icon)
+		if not weapons_added:
+			icon_name = "content/gui/icons/resources/none.png"
+			icon = TooltipIcon(image = icon_name, tooltip = _("none"))
+			self.widget.findChild(name='weapons').addChild(icon)
 
 	def set_stance(self, stance):
 		self.instance.set_stance(stance)
