@@ -75,3 +75,12 @@ class DefaultPersonality:
 
 		max_coverage_building_capacity = 22 # maximum number of residences a coverage building can service
 		normal_coverage_building_capacity = 20 # the initial plan calls for this number of residences per coverage building (may or may not be optimised away)
+
+	class LandManager:
+		max_section_side = 22 # minimise the number of village sections by considering this to be its maximum side length
+
+		village_area_small = 0.28 # use this fraction of the area for the village if <= 1600 tiles are available for the settlement
+		village_area_40 = 0.3 # use this fraction of the area for the village if <= 2500 tiles are available for the settlement
+		village_area_50 = 0.32 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
+		village_area_60 = 0.35 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
+		min_village_size = 81 # minimum possible village size in tiles

@@ -43,9 +43,6 @@ class LandManager(WorldObject):
 			self._divide_island()
 
 	def _divide_island(self):
-		min_side = 18
-		max_side = 22
-
 		min_x, max_x = None, None
 		min_y, max_y = None, None
 		land = 0
@@ -69,18 +66,17 @@ class LandManager(WorldObject):
 		width = max_x - min_x + 1
 		height = max_y - min_y + 1
 
-		village_area = 0.28
-		if land > 40 * 40:
-			village_area = 0.3
+		village_area = self.personality.village_area_small
+		if land > 60 * 60:
+			village_area = self.personality.village_area_60
 		elif land > 50 * 50:
-			village_area = 0.32
-		elif land > 60 * 60:
-			village_area = 0.35
-		village_area *= 2.5
-		chosen_area = max(9 * 9, int(round(land * village_area)))
+			village_area = self.personality.village_area_50
+		elif land > 40 * 40:
+			village_area = self.personality.village_area_40
+		chosen_area = max(self.personality.min_village_size, int(round(land * village_area)))
 
 		side = int(math.floor(math.sqrt(chosen_area)))
-		if side <= max_side:
+		if side <= self.personality.max_section_side:
 			side = min(side, width)
 			self._divide(side, chosen_area // side)
 		else:
@@ -91,8 +87,8 @@ class LandManager(WorldObject):
 			for side1 in xrange(9, max(10, chosen_area // 9 + 1)):
 				real_side1 = min(side1, width)
 				real_side2 = min(chosen_area // real_side1, height)
-				horizontal_sections = int(math.ceil(float(real_side1) / max_side))
-				vertical_sections = int(math.ceil(float(real_side2) / max_side))
+				horizontal_sections = int(math.ceil(float(real_side1) / self.personality.max_section_side))
+				vertical_sections = int(math.ceil(float(real_side2) / self.personality.max_section_side))
 				sections = horizontal_sections * vertical_sections
 				if best_sections > sections or (best_sections == sections and abs(real_side1 - real_side2) < abs(best_side1 - best_side2)):
 					best_sections = sections
@@ -112,6 +108,7 @@ class LandManager(WorldObject):
 		self.resource_deposits = {}
 		self.resource_deposits[BUILDINGS.CLAY_DEPOSIT_CLASS] = self._get_buildings_by_id(BUILDINGS.CLAY_DEPOSIT_CLASS)
 		self.resource_deposits[BUILDINGS.MOUNTAIN_CLASS] = self._get_buildings_by_id(BUILDINGS.MOUNTAIN_CLASS)
+		self.personality = self.owner.personality_manager.get('LandManager')
 
 	def save(self, db):
 		super(LandManager, self).save(db)
