@@ -164,7 +164,7 @@ class ProductionBuilder(AreaBuilder):
 			value = 0.000001
 			for collector, distance in building_data.iteritems():
 				collectors = 2 if isinstance(collector, Builder) else len(collector.get_local_collectors())
-				value += collectors / (5.0 + distance)
+				value += collectors / (self.personality.collector_extra_distance + distance)
 			result += 1 / value
 		return result
 
@@ -216,7 +216,7 @@ class ProductionBuilder(AreaBuilder):
 							distance[coords2] = dist + 1
 							extra_data[keys[coords2]][builder] = dist + 1
 
-			value = self.evaluate_collector_data(extra_data) - math.log(alignment) * 0.001
+			value = self.evaluate_collector_data(extra_data) - math.log(alignment) * self.personality.collector_coverage_alignment_coefficient
 			options.append((value, builder))
 
 		for _, builder in sorted(options):
@@ -255,7 +255,7 @@ class ProductionBuilder(AreaBuilder):
 				if min_distance is None or min_distance > distance:
 					min_distance = distance
 
-			alignment = 1
+			alignment = 0
 			for tile in self._get_neighbour_tiles(builder.position):
 				if tile is None:
 					continue
@@ -263,7 +263,7 @@ class ProductionBuilder(AreaBuilder):
 				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
 
-			value = min_distance - alignment * 0.7
+			value = min_distance - alignment * self.personality.deposit_coverage_alignment_coefficient
 			options.append((value, builder))
 
 		for _, builder in sorted(options):
@@ -359,7 +359,7 @@ class ProductionBuilder(AreaBuilder):
 				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
 
-			value = useful_area + alignment * 3
+			value = useful_area + alignment * self.personality.collector_area_enlargement_alignment_coefficient
 			options.append((-value, builder))
 
 		for _, builder in sorted(options):
@@ -423,10 +423,9 @@ class ProductionBuilder(AreaBuilder):
 
 	def need_to_enlarge_collector_area(self):
 		""" decide based on the number of 3 x 3 squares available vs still possible """
-		# TODO: store the constants in a better place
-		available_squares, total_squares = self.count_available_squares(3, 100)
+		available_squares, total_squares = self.count_available_squares(3, self.personality.max_interesting_collector_area)
 		self.log.info('%s collector area: %d of %d useable', self, available_squares, total_squares)
-		return available_squares < min(100, total_squares - 10)
+		return available_squares < min(self.personality.max_interesting_collector_area, total_squares - self.personality.max_collector_area_unreachable)
 
 	def count_fields(self):
 		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
