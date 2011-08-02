@@ -107,3 +107,50 @@ class DefaultPersonality:
 
 	class RoadPlanner:
 		turn_penalty = 1 # penalty for a bend in the road
+
+	class SettlementManager:
+		production_level_multiplier = 1.1 # always aim to produce the needed_amount * production_level_multiplier of required resources per tick
+		new_settlement_settler_ratio = 0.5 # more than this proportion of residences must have settler status to be able to start a new settlement
+
+		# dummy values to cause various producers to be built (production per tick)
+		dummy_bricks_requirement = 0.001
+		dummy_boards_requirement = 0.01
+		dummy_tools_requirement = 0.001
+
+		max_required_storage_space = 60 # maximum storage capacity to go for when the inventory starts to get full
+		full_storage_threshold = 5 # when there is less than this amount of free space for a resource then we might need more space
+
+		# tax rates and upgrade rights in new settlements
+		initial_sailor_taxes = 0.5
+		initial_pioneer_taxes = 0.8
+		initial_settler_taxes = 0.5
+		initial_sailor_upgrades = False
+		initial_pioneer_upgrades = False
+
+		# tax rates and upgrade rights in settlements where the first sailors have been given the right to upgrade
+		early_sailor_taxes = 0.9
+		early_pioneer_taxes = 0.8
+		early_settler_taxes = 0.5
+		early_sailor_upgrades = False
+		early_pioneer_upgrades = False
+
+		# tax rates and upgrade rights in settlements where bricks production exists but there is no school
+		no_school_sailor_taxes = 0.9
+		no_school_pioneer_taxes = 0.8
+		no_school_settler_taxes = 0.5
+		no_school_sailor_upgrades = True
+		no_school_pioneer_upgrades = True
+
+		# tax rates and upgrade rights in settlements where there is a school but not enough bricks to build some building
+		school_sailor_taxes = 0.9
+		school_pioneer_taxes = 0.8
+		school_settler_taxes = 0.5
+		school_sailor_upgrades = True
+		school_pioneer_upgrades = False
+
+		# tax rates and upgrade rights in settlements with a school and none of the above problems
+		final_sailor_taxes = 0.9
+		final_pioneer_taxes = 0.8
+		final_settler_taxes = 0.5
+		final_sailor_upgrades = True
+		final_pioneer_upgrades = True

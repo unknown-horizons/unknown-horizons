@@ -63,7 +63,7 @@ class ProductionChainGoal(SettlementGoal):
 
 	def _update_needed_amount(self):
 		self._needed_amount = self.settlement_manager.get_resident_resource_usage(self.chain.resource_id) * \
-			self.settlement_manager.production_level_multiplier
+			self.settlement_manager.personality.production_level_multiplier
 
 	def update(self):
 		super(ProductionChainGoal, self).update()

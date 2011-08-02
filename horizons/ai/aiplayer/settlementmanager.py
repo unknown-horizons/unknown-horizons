@@ -61,8 +61,6 @@ class SettlementManager(WorldObject):
 
 	log = logging.getLogger("ai.aiplayer")
 
-	production_level_multiplier = 1.1
-
 	def __init__(self, owner, land_manager):
 		super(SettlementManager, self).__init__()
 		self.owner = owner
@@ -78,7 +76,8 @@ class SettlementManager(WorldObject):
 		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 
 		if not self.feeder_island:
-			self.set_taxes_and_permissions(0.5, 0.8, 0.5, False, False)
+			self.set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, \
+				self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades, self.personality.initial_pioneer_upgrades)
 
 	def __init(self, land_manager):
 		self.owner = land_manager.owner
@@ -87,6 +86,7 @@ class SettlementManager(WorldObject):
 		self.island = self.land_manager.island
 		self.settlement = self.land_manager.settlement
 		self.feeder_island = land_manager.feeder_island
+		self.personality = self.owner.personality_manager.get('SettlementManager')
 
 		self.community_chain = ProductionChain.create(self, RES.COMMUNITY_ID)
 		self.boards_chain = ProductionChain.create(self, RES.BOARDS_ID)
@@ -200,6 +200,7 @@ class SettlementManager(WorldObject):
 			SetSettlementUpgradePermissions(self.settlement, SETTLER.PIONEER_LEVEL, pioneers_can_upgrade).execute(self.land_manager.session)
 
 	def can_provide_resources(self):
+		""" is this settlement allowed to provide the resources for a new settlement? """
 		if self.village_builder.tent_queue:
 			return False
 		settler_houses = 0
@@ -207,7 +208,7 @@ class SettlementManager(WorldObject):
 		for building in residences:
 			if building.level == SETTLER.SETTLER_LEVEL:
 				settler_houses += 1
-		if settler_houses * 2 > len(residences):
+		if settler_houses > len(residences) * self.personality.new_settlement_settler_ratio:
 			return True
 		return False
 
@@ -239,11 +240,11 @@ class SettlementManager(WorldObject):
 		if resource_id not in self.__resident_resource_usage_cache or self.__resident_resource_usage_cache[resource_id][0] != Scheduler().cur_tick:
 			total = 0
 			if resource_id == RES.BRICKS_ID:
-				total = 0.001 if self.owner.settler_level > 0 else 0 # dummy value to cause brick production to be built
+				total = self.personality.dummy_bricks_requirement if self.owner.settler_level > 0 else 0 # dummy value to cause bricks production to be built
 			elif resource_id == RES.BOARDS_ID:
-				total = 0.01 # force a low level of boards production to always exist
+				total = self.personality.dummy_boards_requirement # dummy value to cause boards production to be built
 			elif resource_id == RES.TOOLS_ID:
-				total = 0.001 if self.owner.settler_level > 1 else 0 # dummy value to cause tools production to be built
+				total = self.personality.dummy_tools_requirement if self.owner.settler_level > 1 else 0 # dummy value to cause tools production to be built
 			elif resource_id == RES.LIQUOR_ID:
 				total = self.get_together_chain.get_ratio(resource_id) * self.get_resident_resource_usage(RES.GET_TOGETHER_ID)
 			else:
@@ -349,7 +350,7 @@ class SettlementManager(WorldObject):
 	def get_total_missing_production(self, resource_id):
 		total = 0.0
 		for settlement_manager in self.owner.settlement_managers:
-			usage = settlement_manager.get_resident_resource_usage(resource_id) * self.production_level_multiplier
+			usage = settlement_manager.get_resident_resource_usage(resource_id) * self.personality.production_level_multiplier
 			production = settlement_manager.get_resource_production(resource_id)
 			resource_import = settlement_manager.get_resource_import(resource_id)
 			resource_export = settlement_manager.get_resource_export(resource_id)
@@ -360,11 +361,11 @@ class SettlementManager(WorldObject):
 
 	def need_more_storage(self):
 		limit = self.settlement.inventory.get_limit(RES.FOOD_ID)
-		if limit >= 60:
+		if limit >= self.personality.max_required_storage_space:
 			return False
 		important_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
 		for resource_id in important_resources:
-			if self.settlement.inventory[resource_id] + 5 >= limit:
+			if self.settlement.inventory[resource_id] + self.personality.full_storage_threshold >= limit:
 				return True
 		return False
 
@@ -405,23 +406,24 @@ class SettlementManager(WorldObject):
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
 			if self.manual_upgrade(0, 1):
-				self.set_taxes_and_permissions(0.9, 0.8, 0.5, False, False)
-		elif self.count_buildings(BUILDINGS.BRICKYARD_CLASS) and not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
+				self.set_taxes_and_permissions(self.personality.early_sailor_taxes, self.personality.early_pioneer_taxes, \
+					self.personality.early_settler_taxes, self.personality.early_sailor_upgrades, self.personality.early_pioneer_upgrades)
+		elif self.get_resource_production(RES.BRICKS_ID) > 1e-9 and not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			# if we just need the school then upgrade sailors manually
 			free_boards = self.settlement.inventory[RES.BOARDS_ID]
 			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS].costs[RES.BOARDS_ID]
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
 				self.manual_upgrade(0, free_boards)
-			self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, True)
+			self.set_taxes_and_permissions(self.personality.no_school_sailor_taxes, self.personality.no_school_pioneer_taxes, \
+				self.personality.no_school_settler_taxes, self.personality.no_school_sailor_upgrades, self.personality.no_school_pioneer_upgrades)
 		elif self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			if self.need_materials:
-				if self.min_residential_level() == 2:
-					self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, False)
-				else:
-					self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, False)
+				self.set_taxes_and_permissions(self.personality.school_sailor_taxes, self.personality.school_pioneer_taxes, \
+					self.personality.school_settler_taxes, self.personality.school_sailor_upgrades, self.personality.school_pioneer_upgrades)
 			else:
-				self.set_taxes_and_permissions(0.9, 0.8, 0.5, True, True)
+				self.set_taxes_and_permissions(self.personality.final_sailor_taxes, self.personality.final_pioneer_taxes, \
+					self.personality.final_settler_taxes, self.personality.final_sailor_upgrades, self.personality.final_pioneer_upgrades)
 
 		self.trade_manager.finalize_requests()
 		self.trade_manager.organize_shipping()
