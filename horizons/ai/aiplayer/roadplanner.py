@@ -33,9 +33,7 @@ class RoadPlanner(object):
 	* not close to boundaries (coast, mountains, etc.)
 	"""
 
-	turn_penalty = 1
-
-	def __call__(self, source, destination, destination_beacon, path_nodes, blocked_coords = set()):
+	def __call__(self, personality, source, destination, destination_beacon, path_nodes, blocked_coords = set()):
 		"""
 		@param source: list of tuples
 		@param destination: list of tuples
@@ -84,7 +82,7 @@ class RoadPlanner(object):
 					continue
 				reduced_dir = 0 if moves[dir][0] != 0 else 1
 				next_key = (coords[0], coords[1], reduced_dir)
-				real_distance = distance_so_far + path_nodes[coords] + (0 if reduced_dir == key[2] else self.turn_penalty)
+				real_distance = distance_so_far + path_nodes[coords] + (0 if reduced_dir == key[2] else personality.turn_penalty)
 				expected_distance = real_distance + destination_beacon.distance_to_tuple(coords)
 				if next_key not in distance or distance[next_key][0] > real_distance:
 					distance[next_key] = (real_distance, key)

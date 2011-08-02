@@ -104,3 +104,6 @@ class DefaultPersonality:
 		buy_threshold = 0.66666 # when more than buy_threshold * needed_amount of resource exists then stop buying
 		sell_threshold = 1.33333 # when less than sell_threshold * needed_amount of resource exists then stop selling
 		low_requirement_threshold = 5 # when we need less than or equal to this amount of resource then disregard buy_threshold
+
+	class RoadPlanner:
+		turn_penalty = 1 # penalty for a bend in the road
