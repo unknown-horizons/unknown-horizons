@@ -46,6 +46,7 @@ class ResourceManager(WorldObject):
 		self.trade_storage = defaultdict(lambda: defaultdict(lambda: 0)) # {settlement_manager_id: {resource_id: amount}, ...}
 		self._settlement_manager_id = {} # {quota_holder: settlement_manager_id, ...}
 		self.resource_requirements = {} # TODO: save and load
+		self.personality = self.settlement_manager.owner.personality_manager.get('ResourceManager')
 
 	def save(self, db):
 		super(ResourceManager, self).save(db)
@@ -166,11 +167,11 @@ class ResourceManager(WorldObject):
 	def get_default_resource_requirement(self, resource_id):
 		""" returns the default level that should exist all the time """
 		if resource_id in [RES.TOOLS_ID, RES.BOARDS_ID]:
-			return 30
+			return self.personality.default_resource_requirement
 		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS_ID:
-				return 20 if self.settlement_manager.owner.settler_level > 0 else 0
+				return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.settler_level > 0 else 0
 		elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD_ID:
-			return 30
+			return self.personality.default_food_requirement
 		return 0
 
 	def get_unit_building_costs(self, resource_id):
@@ -184,14 +185,11 @@ class ResourceManager(WorldObject):
 
 	def get_current_resource_requirement(self, resource_id):
 		""" returns the extra level that should exist right now (taking into account the default level)"""
-		reserve_time = 1000 # number of ticks to pre-reserve resources for
-		max_upgraded_houses = 10 # maximum number of houses whose upgrades should be accounted for
-
 		currently_reserved = self.get_total_trade_storage(resource_id)
-		future_reserve = int(math.ceil(self.get_total_export(resource_id) * reserve_time))
-		current_usage = int(math.ceil(self.settlement_manager.get_resident_resource_usage(resource_id) * reserve_time))
+		future_reserve = int(math.ceil(self.get_total_export(resource_id) * self.personality.reserve_time))
+		current_usage = int(math.ceil(self.settlement_manager.get_resident_resource_usage(resource_id) * self.personality.reserve_time))
 		unit_building_costs = self.get_unit_building_costs(resource_id)
-		upgrade_costs = self.get_required_upgrade_resources(resource_id, max_upgraded_houses)
+		upgrade_costs = self.get_required_upgrade_resources(resource_id, self.personality.max_upgraded_houses)
 		building_costs = self.get_required_building_resources(resource_id)
 
 		total_needed = currently_reserved + future_reserve + current_usage + unit_building_costs + upgrade_costs + building_costs
@@ -208,10 +206,10 @@ class ResourceManager(WorldObject):
 		for resource_id in managed_resources:
 			current_requirement = self.get_current_resource_requirement(resource_id)
 			self.resource_requirements[resource_id] = current_requirement
-			max_buy = int(round(current_requirement * 0.66666)) # when to stop buying
-			if 0 < current_requirement <= 5: # avoid not buying resources when very little is needed in the first place
+			max_buy = int(round(current_requirement * self.personality.buy_threshold)) # when to stop buying
+			if 0 < current_requirement <= self.personality.low_requirement_threshold: # avoid not buying resources when very little is needed in the first place
 				max_buy = current_requirement
-			min_sell = int(round(current_requirement * 1.33333)) # when to start selling
+			min_sell = int(round(current_requirement * self.personality.sell_threshold)) # when to start selling
 
 			if inventory[resource_id] < max_buy:
 				# have 0, need 100, max_buy 67, importance -0.0434

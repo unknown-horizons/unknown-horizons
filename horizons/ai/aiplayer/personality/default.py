@@ -92,3 +92,15 @@ class DefaultPersonality:
 		village_area_50 = 0.32 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
 		village_area_60 = 0.35 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
 		min_village_size = 81 # minimum possible village size in tiles
+
+	class ResourceManager:
+		default_resource_requirement = 30 # try to always have this much tools and boards in settlement inventory
+		default_food_requirement = 30 # try to always have this much food in settlement inventory in settlements with a village
+		default_feeder_island_brick_requirement = 20 # try to always have this much bricks in feeder island inventory (active on level > 0)
+
+		# the following constants affect the way the AI buys and sells resources
+		reserve_time = 1000 # number of ticks to pre-reserve resources for
+		max_upgraded_houses = 10 # maximum number of houses whose upgrades should be accounted for in the reserve_time
+		buy_threshold = 0.66666 # when more than buy_threshold * needed_amount of resource exists then stop buying
+		sell_threshold = 1.33333 # when less than sell_threshold * needed_amount of resource exists then stop selling
+		low_requirement_threshold = 5 # when we need less than or equal to this amount of resource then disregard buy_threshold
