@@ -29,6 +29,7 @@ class CompleteInventory(object):
 
 	def __init__(self, owner):
 		self.owner = owner
+		self.personality = self.owner.personality # the constants here make more sense in the player category
 
 	@property
 	def money(self):
@@ -53,7 +54,8 @@ class CompleteInventory(object):
 			self.move(ship, settlement, res, amount)
 
 	def load_foundation_resources(self, ship, settlement):
-		max_amounts = {RES.BOARDS_ID: 30, RES.FOOD_ID: 30, RES.TOOLS_ID: 30}
+		max_amounts = {RES.BOARDS_ID: self.personality.max_new_island_boards, RES.FOOD_ID: self.personality.max_new_island_food, \
+			RES.TOOLS_ID: self.personality.max_new_island_tools}
 		for res, max_amount in max_amounts.iteritems():
 			have = 0
 			for ship_res, ship_amount in ship.inventory:
@@ -63,7 +65,7 @@ class CompleteInventory(object):
 			self.move(ship, settlement, res, have - max_amount)
 
 	def load_feeder_island_foundation_resources(self, ship, settlement):
-		max_amounts = {RES.BOARDS_ID: 30, RES.TOOLS_ID: 30}
+		max_amounts = {RES.BOARDS_ID: self.personality.max_new_feeder_island_boards, RES.TOOLS_ID: self.personality.max_new_feeder_island_tools}
 		for res, max_amount in max_amounts.iteritems():
 			have = 0
 			for ship_res, ship_amount in ship.inventory:

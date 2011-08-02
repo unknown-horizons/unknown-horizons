@@ -37,10 +37,19 @@ class DefaultPersonality:
 		min_new_island_boards = 17
 		min_new_island_food = 10
 
+		# maximum amount of a resource loaded on a ship to found a new settlement
+		max_new_island_tools = 30
+		max_new_island_boards = 30
+		max_new_island_food = 30
+
 		# minimum amount of a resource required to start a new feeder island
 		min_new_feeder_island_gold = 4000
 		min_new_feeder_island_tools = 10
 		min_new_feeder_island_boards = 20
+
+		# maximum amount of a resource loaded on a ship to start a new feeder island
+		max_new_feeder_island_tools = 30
+		max_new_feeder_island_boards = 30
 
 	class AreaBuilder:
 		path_road_penalty_threshold = 9
