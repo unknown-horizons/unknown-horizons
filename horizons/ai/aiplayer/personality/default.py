@@ -313,7 +313,7 @@ class DefaultPersonality:
 
 	class DistilleryEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
-		collector_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
+		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
 
 	class FarmEvaluator:
 		alignment_importance = 0.001 # the larger this value, the larger the effect of alignment on the placement
