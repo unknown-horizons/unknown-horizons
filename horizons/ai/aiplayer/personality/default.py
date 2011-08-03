@@ -338,3 +338,9 @@ class DefaultPersonality:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		collector_distance_importance = 0.3 # importance of the distance to the nearest collector in the range [0, 1]
 		charcoal_burner_distance_importance = 0.2 # importance of the distance to the nearest charcoal burner in the range [0, 1]
+
+	class ToolmakerEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		smeltery_distance_importance = 0.4 # importance of the distance to the nearest smeltery in the range [0, 1]
+		lumberjack_distance_importance = 0.1 # importance of the distance to the nearest lumberjack in the range [0, 1]
+		charcoal_burner_distance_importance = 0.4 # importance of the distance to the nearest charcoal burner in the range [0, 1]

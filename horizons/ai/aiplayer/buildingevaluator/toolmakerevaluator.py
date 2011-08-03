@@ -34,8 +34,10 @@ class ToolmakerEvaluator(BuildingEvaluator):
 		self.distance_to_collector = distance_to_collector
 		self.alignment = alignment
 
-		distance = self._weighted_sum(distance_to_collector, [(0.4, distance_to_smeltery), (0.4, distance_to_charcoal_burner), (0.1, distance_to_lumberjack)])
-		self.value = float(Entities.buildings[BUILDINGS.TOOLMAKER_CLASS].radius) / distance + alignment * 0.02
+		personality = area_builder.owner.personality_manager.get('ToolmakerEvaluator')
+		distance = self._weighted_sum(distance_to_collector, [(personality.smeltery_distance_importance, distance_to_smeltery), \
+			(personality.charcoal_burner_distance_importance, distance_to_charcoal_burner), (personality.lumberjack_distance_importance, distance_to_lumberjack)])
+		self.value = float(Entities.buildings[BUILDINGS.TOOLMAKER_CLASS].radius) / distance + alignment * personality.alignment_importance
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
