@@ -55,7 +55,7 @@ class GroundUnit(Unit):
 			self.deselect()
 			self.session.selected_instances.remove(self)
 		super(GroundUnit, self).remove()
-		self.session.ground_units.remove(self)
+		self.session.world.ground_units.remove(self)
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
