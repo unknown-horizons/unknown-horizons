@@ -333,3 +333,8 @@ class DefaultPersonality:
 
 	class SignalFireEvaluator:
 		alignment_importance = 1.5 # the larger this value, the larger the effect of alignment on the placement
+
+	class SmelteryEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		collector_distance_importance = 0.3 # importance of the distance to the nearest collector in the range [0, 1]
+		charcoal_burner_distance_importance = 0.2 # importance of the distance to the nearest charcoal burner in the range [0, 1]
