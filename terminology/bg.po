@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-08-03 14:40+0200\n"
+"PO-Revision-Date: 2011-08-03 14:49+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -101,7 +101,7 @@ msgid "main square"
 msgstr "централен площад"
 
 msgid "trail"
-msgstr ""
+msgstr "следа"
 
 msgid "boards"
 msgstr "дъски"
@@ -341,13 +341,13 @@ msgid "liquor"
 msgstr "ликьор"
 
 msgid "mode"
-msgstr ""
+msgstr "метод"
 
 msgid "multiple"
-msgstr ""
+msgstr "многоброен"
 
 msgid "output"
-msgstr ""
+msgstr "изходни данни"
 
 msgid "play"
 msgstr "играй"
@@ -482,67 +482,67 @@ msgid "condition"
 msgstr "условие"
 
 msgid "consume"
-msgstr ""
+msgstr "консумирам"
 
 msgid "contact"
-msgstr ""
+msgstr "контакт"
 
 msgid "dialogue"
-msgstr ""
+msgstr "диалог"
 
 msgid "issues"
-msgstr ""
+msgstr "въпроси"
 
 msgid "minimap"
-msgstr ""
+msgstr "миникарта"
 
 msgid "playing"
 msgstr ""
 
 msgid "ruin"
-msgstr ""
+msgstr "разрушавам"
 
 msgid "seed"
-msgstr ""
+msgstr "садя"
 
 msgid "temporarily"
-msgstr ""
+msgstr "временно"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "солници"
 
 msgid "tobacco"
-msgstr ""
+msgstr "тютюн"
 
 msgid "cattle"
-msgstr ""
+msgstr "добитък"
 
 msgid "pig"
-msgstr ""
+msgstr "свиня"
 
 msgid "herbs"
-msgstr ""
+msgstr "билки"
 
 msgid "herbary"
-msgstr ""
+msgstr "дрогерия"
 
 msgid "butchery"
-msgstr ""
+msgstr "кланица"
 
 msgid "doctor"
-msgstr ""
+msgstr "лекар"
 
 msgid "education"
-msgstr ""
+msgstr "образование"
 
 msgid "clay"
-msgstr ""
+msgstr "глина"
 
 msgid "charcoal"
-msgstr ""
+msgstr "дървени въглища"
 
 msgid "iron"
-msgstr ""
+msgstr "желязо"
 
 msgid "ore"
-msgstr ""
+msgstr "руда"
