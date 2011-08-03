@@ -291,3 +291,10 @@ class DefaultPersonality:
 
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
+
+	class BuildingEvaluator:
+		# the following constants are used to calculate the alignment bonus for buildings
+		alignment_road = 3
+		alignment_production_building = 1
+		alignment_other_building = 1
+		alignment_edge = 1

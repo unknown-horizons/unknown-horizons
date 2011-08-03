@@ -105,24 +105,21 @@ class BuildingEvaluator(WorldObject):
 
 	@classmethod
 	def get_alignment_from_outline(cls, area_builder, outline_coords_list):
+		personality = area_builder.owner.personality_manager.get('BuildingEvaluator')
 		alignment = 0
 		for coords in outline_coords_list:
-			if coords in area_builder.plan:
+			if coords in area_builder.land_manager.roads:
+				alignment += personality.alignment_road
+			elif coords in area_builder.plan:
 				purpose = area_builder.plan[coords]
-				if purpose == BUILDING_PURPOSE.NONE:
-					continue
-				elif purpose == BUILDING_PURPOSE.ROAD:
-					alignment += 3
-				else:
-					alignment += 1
+				if purpose != BUILDING_PURPOSE.NONE:
+					alignment += personality.alignment_production_building
 			elif coords in area_builder.settlement.ground_map:
 				object = area_builder.settlement.ground_map[coords].object
-				if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
-					alignment += 3
-				else:
-					alignment += 1
+				if object is not None and not object.buildable_upon:
+					alignment += personality.alignment_other_building
 			else:
-				alignment += 1
+				alignment += personality.alignment_edge
 		return alignment
 
 	@classmethod
