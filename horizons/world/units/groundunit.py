@@ -27,11 +27,12 @@ import horizons.main
 from horizons.world.pathfinding.pather import SoldierPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, NamedObject, Circle, WorldObject
+from horizons.util import Point, Circle
 from unit import Unit
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED
+from horizons.constants import LAYERS, GAME_SPEED, WEAPONS
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.units.weaponholder import MovingWeaponHolder
 
 class GroundUnit(Unit):
 	"""Class representing ground unit
@@ -123,3 +124,34 @@ class GroundUnit(Unit):
 		# register unit in world
 		self.session.world.ground_units.append(self)
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
+
+class FightingGroundUnit(GroundUnit, MovingWeaponHolder):
+	"""Weapon Holder Ground Unit"""
+	def __init__(self, x, y, **kwargs):
+		super(FightingGroundUnit, self).__init__(x=x, y=y, **kwargs)
+		#NOTE weapons
+		self.add_weapon_to_storage(WEAPONS.DAGGER)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
+
+	def fire_all_weapons(self, dest, rotate = False):
+		"""
+		Rotates to target and acts correctly
+		"""
+		super(FightingGroundUnit, self).fire_all_weapons(dest, rotate)
+		if not self.can_attack_position(dest):
+			return
+		facing_location = self._instance.getFacingLocation()
+		facing_coords = facing_location.getMapCoordinates()
+		facing_coords.x = dest.x
+		facing_coords.y = dest.y
+		facing_location.setMapCoordinates(facing_coords)
+		self._instance.setFacingLocation(facing_location)
+
+		if dest.distance(self.position) <= 1:
+			action = 'melee'
+		else:
+			action = 'ranged'
+
+		self.act('attack_%s' % action, facing_location, repeating = False)
+		self._action = 'idle'
+

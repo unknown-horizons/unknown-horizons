@@ -90,7 +90,7 @@ class WeaponHolder(object):
 		#if weapon is stackable, try to stack
 		weapon = None
 		if self.session.db.get_weapon_stackable(weapon_id):
-			stackable = [w for w in self._weapon_storage if self.session.db.get_weapon_stackable(weapon_id)]
+			stackable = [w for w in self._weapon_storage if weapon_id == w.weapon_id]
 			#try to increase the number of weapons for one stackable weapon
 			increased = False
 			for weapon in stackable:
