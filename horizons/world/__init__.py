@@ -628,6 +628,46 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			return self.ships
 
+	@decorators.make_constants()
+	def get_ground_units(self, position=None, radius=None):
+		"""@see get_ships"""
+		if position is not None and radius is not None:
+			circle = Circle(position, radius)
+			units = []
+			for unit in self.ground_units:
+				if circle.contains(unit.position):
+					units.append(unit)
+			return units
+		else:
+			return self.ground_units
+
+	@decorators.make_constants()
+	def get_buildings(self, position=None, radius=None):
+		"""@see get_ships"""
+		buildings = []
+		if position is not None and radius is not None:
+			circle = Circle(position, radius)
+			for island in self.islands:
+				for building in island.buildings:
+					if circle.contains(building.position.center()):
+						buildings.append(building)
+		else:
+			for island in self.islands:
+				for building in island.buildings:
+					buildings.append(building)
+		return buildings
+
+	@decorators.make_constants()
+	def get_health_instances(self, position=None, radius=None):
+		"""Returns all instances that have health"""
+		instances = []
+		for instance in self.get_buildings(position, radius)+\
+				self.get_ships(position, radius)+\
+				self.get_ground_units(position, radius):
+			if instance.has_component('health'):
+				instances.append(instance)
+		return instances
+
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""

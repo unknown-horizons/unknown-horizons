@@ -33,15 +33,15 @@ from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 
-class GroundUnit(NamedObject, Unit):
-	"""Class representing a ship
+class GroundUnit(Unit):
+	"""Class representing ground unit
 	@param x: int x position
 	@param y: int y position
 	"""
 	pather_class = SoldierPather
 	tabs = ()
 	enemy_tabs = ()
-	health_bar_y = -150
+	health_bar_y = -70
 	is_selectable = True
 
 	def __init__(self, x, y, **kwargs):
@@ -116,13 +116,6 @@ class GroundUnit(NamedObject, Unit):
 		if move_target is None: # can't move
 			# TODO: give player some kind of feedback
 			return
-
-		# draw buoy in case this is the player's ship
-
-	def _possible_names(self):
-		names = self.session.db("SELECT name FROM data.shipnames WHERE for_player = 1")
-		# We need unicode strings as the name is displayed on screen.
-		return map(lambda x: unicode(x[0], 'utf-8'), names)
 
 	def load(self, db, worldid):
 		super(Ship, self).load(db, worldid)

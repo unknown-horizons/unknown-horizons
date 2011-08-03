@@ -85,7 +85,7 @@ class Weapon(object):
 		# deal damage to units in position callback
 		attack_radius = session.db.get_weapon_attack_radius(weapon_id)
 
-		units = session.world.get_ships(position, attack_radius)
+		units = session.world.get_health_instances(position, attack_radius)
 
 		for unit in units:
 			print 'dealing damage to ship:', unit

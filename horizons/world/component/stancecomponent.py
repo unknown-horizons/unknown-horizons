@@ -182,7 +182,7 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		Returns closest attackable unit in radius
 		"""
-		enemies = [u for u in self.instance.session.world.get_ships(self.instance.position.center(), radius) \
+		enemies = [u for u in self.instance.session.world.get_health_instances(self.instance.position.center(), radius) \
 			if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
 
 		if not enemies:
@@ -223,7 +223,7 @@ class HoldGroundStance(LimitedMoveStance):
 		super(HoldGroundStance, self).__init__(instance)
 		self.stance_radius = 5
 		self.move_range = 15
-	
+
 class NoneStance(StanceComponent):
 	pass
 
@@ -261,7 +261,7 @@ class FleeStance(StanceComponent):
 		"""
 		Gets the closest unit that can fire to instance
 		"""
-		enemies = [u for u in self.instance.session.world.get_ships(self.instance.position.center(), self.lookout_distance) \
+		enemies = [u for u in self.instance.session.world.get_health_instances(self.instance.position.center(), self.lookout_distance) \
 			if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
 
 		if not enemies:
