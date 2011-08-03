@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-08-03 12:41+0200\n"
+"PO-Revision-Date: 2011-08-03 12:48+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -619,7 +619,7 @@ msgstr "Porcherie : Elève des porcs. Nécessite une ferme."
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Salines: Produit du sel. Construit en bord de mer."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Smeltery: Refines all kind of ores."
@@ -632,11 +632,11 @@ msgstr "Taverne: Rapproche les hommes !"
 
 #: horizons/i18n/guitranslations.py:88
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Champ de tabac: Produit du tabac. Nécessite une ferme."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Fabrique de cigares: Produit des cigares à partir de tabac."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."
@@ -803,7 +803,7 @@ msgstr "Description du scénario"
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr ""
+msgstr "Continuer à jouer"
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
@@ -819,11 +819,11 @@ msgstr "Ajouter à la liste"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "Leave production overview"
-msgstr ""
+msgstr "Quitter la fenetre de production"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "Refresh data"
-msgstr ""
+msgstr "Actualiser les données"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "Delete entry"
@@ -1155,13 +1155,12 @@ msgstr "Veuillez vous assurer que vous savez ce que vous faites."
 
 # 83%
 #: horizons/i18n/guitranslations.py:260
-#, fuzzy
 msgid "Apply"
-msgstr "Appliquer :"
+msgstr "Appliquer"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Restaurer les paramètres par défaut"
 
 #: horizons/i18n/guitranslations.py:264
 msgid "Enter filename:"
@@ -1179,7 +1178,7 @@ msgstr "Commencer la partie :"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Effacer la sauvegarde séléctionnée"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Choose a map to play:"
@@ -1316,11 +1315,11 @@ msgstr "Impôts"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Montrer les ressources produites dans cette colonie "
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
-msgstr ""
+msgstr "Construire des champs"
 
 # Resources
 #: horizons/i18n/guitranslations.py:322
@@ -1343,9 +1342,8 @@ msgstr "Impôts :"
 # 87%
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
-#, fuzzy
 msgid "Tax rate"
-msgstr "Taux d'impôts :"
+msgstr "Taux d'imposition"
 
 # le contexte est à vérifier
 #: horizons/i18n/guitranslations.py:336
