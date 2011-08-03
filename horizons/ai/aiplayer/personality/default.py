@@ -344,3 +344,7 @@ class DefaultPersonality:
 		smeltery_distance_importance = 0.4 # importance of the distance to the nearest smeltery in the range [0, 1]
 		lumberjack_distance_importance = 0.1 # importance of the distance to the nearest lumberjack in the range [0, 1]
 		charcoal_burner_distance_importance = 0.4 # importance of the distance to the nearest charcoal burner in the range [0, 1]
+
+	class WeaverEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
