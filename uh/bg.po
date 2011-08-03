@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-24 15:05+0200\n"
+"PO-Revision-Date: 2011-08-03 14:27+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -1658,7 +1658,7 @@ msgstr ""
 
 #: run_uh.py:204
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Благодаря Ви, че използвахте Unknown Horizons!"
 
 #: run_uh.py:361
 msgid "FIFE was not found."
@@ -1706,7 +1706,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Farm"
-msgstr ""
+msgstr "Ферма"
 
 #: sqlite/Building
 msgid "Fish Deposit"
@@ -1738,15 +1738,15 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Лагерът на дървара"
 
 #: sqlite/Building
 msgid "Main Square"
-msgstr ""
+msgstr "Централен площад"
 
 #: sqlite/Building
 msgid "Mountain"
-msgstr ""
+msgstr "Планина"
 
 #: sqlite/Building
 msgid "Pasture"
@@ -1786,7 +1786,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Sugar Field"
-msgstr ""
+msgstr "Захарно поле"
 
 #: sqlite/Building
 msgid "Tavern"
@@ -1802,7 +1802,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Тютюнево поле"
 
 #: sqlite/Building
 msgid "Tobacconist"
@@ -1810,7 +1810,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Toolmaker"
-msgstr ""
+msgstr "Стругар"
 
 #: sqlite/Building
 msgid "Trail"
@@ -1822,7 +1822,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Палатката на тъкача"
 
 #: sqlite/Colors
 msgid "black"
@@ -1870,11 +1870,11 @@ msgstr "Някой от твоите заселници няма пазар в �
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
-msgstr ""
+msgstr "Скрийншотът беше запазен в ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Някои от твоите сезелници се преместиха."
 
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
@@ -1940,7 +1940,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "еленско месо"
 
 #: sqlite/Resources
 msgid "education"
@@ -1993,11 +1993,11 @@ msgstr "ликьор"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr "прасета"
+msgstr "свине"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "свине за клане"
 
 #: sqlite/Resources
 msgid "potatoes"

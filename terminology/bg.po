@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-11 15:36+0200\n"
+"PO-Revision-Date: 2011-08-03 14:40+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -182,7 +182,7 @@ msgid "found"
 msgstr "основавам"
 
 msgid "pavilion"
-msgstr ""
+msgstr "палата"
 
 msgid "potato"
 msgstr "картоф"
@@ -191,7 +191,7 @@ msgid "range"
 msgstr "обхват"
 
 msgid "raw"
-msgstr "суров"
+msgstr "суровина"
 
 msgid "running"
 msgstr "текущ"
@@ -320,25 +320,25 @@ msgid "back"
 msgstr "върни"
 
 msgid "build settlement"
-msgstr ""
+msgstr "построй колония"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "Дневникът на капитана"
 
 msgid "cloth"
-msgstr ""
+msgstr "плат"
 
 msgid "description"
-msgstr ""
+msgstr "описание"
 
 msgid "happiness"
 msgstr "щастие"
 
 msgid "increase"
-msgstr ""
+msgstr "нараства"
 
 msgid "liquor"
-msgstr ""
+msgstr "ликьор"
 
 msgid "mode"
 msgstr ""
@@ -350,136 +350,136 @@ msgid "output"
 msgstr ""
 
 msgid "play"
-msgstr ""
+msgstr "играй"
 
 msgid "sale"
-msgstr ""
+msgstr "продай"
 
 msgid "save"
-msgstr ""
+msgstr "запази"
 
 msgid "school"
-msgstr ""
+msgstr "училище"
 
 msgid "screen"
-msgstr ""
+msgstr "екран"
 
 msgid "solution"
-msgstr ""
+msgstr "решение"
 
 msgid "sound"
-msgstr ""
+msgstr "звук"
 
 msgid "from time to time"
-msgstr ""
+msgstr "от време на време"
 
 msgid "trading"
-msgstr ""
+msgstr "търгуване"
 
 msgid "visit"
-msgstr ""
+msgstr "посети"
 
 msgid "weaver"
-msgstr ""
+msgstr "тъкач"
 
 msgid "animal"
-msgstr ""
+msgstr "животно"
 
 msgid "fish"
-msgstr ""
+msgstr "риба"
 
 msgid "fisherman"
-msgstr ""
+msgstr "рибар"
 
 msgid "forest"
-msgstr ""
+msgstr "гора"
 
 msgid "forum"
-msgstr ""
+msgstr "форум"
 
 msgid "fulfill"
-msgstr ""
+msgstr "изпълнявам"
 
 msgid "graphics"
-msgstr ""
+msgstr "графики"
 
 msgid "grow"
-msgstr ""
+msgstr "растя"
 
 msgid "hold"
-msgstr ""
+msgstr "задържам"
 
 msgid "hunt"
-msgstr ""
+msgstr "ловувам"
 
 msgid "income"
-msgstr ""
+msgstr "приход"
 
 msgid "information"
-msgstr ""
+msgstr "информация"
 
 msgid "key"
-msgstr ""
+msgstr "ключ"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "агнешка вълна"
 
 msgid "load/unload"
-msgstr ""
+msgstr "зареди/презареди"
 
 msgid "return"
-msgstr ""
+msgstr "върни"
 
 msgid "service"
-msgstr ""
+msgstr "услуга"
 
 msgid "sheep"
-msgstr ""
+msgstr "овца"
 
 msgid "ship inventory"
-msgstr ""
+msgstr "инвентар на кораба"
 
 msgid "starting"
-msgstr ""
+msgstr "стартиране"
 
 msgid "trade partner"
-msgstr ""
+msgstr "търговски партньор"
 
 msgid "yields"
-msgstr ""
+msgstr "добиви"
 
 msgid "faith"
-msgstr ""
+msgstr "доверие"
 
 msgid "green"
-msgstr ""
+msgstr "зелен"
 
 msgid "red"
-msgstr ""
+msgstr "червен"
 
 msgid "check"
-msgstr ""
+msgstr "провери"
 
 msgid "connection"
-msgstr ""
+msgstr "свържи се"
 
 msgid "no"
-msgstr ""
+msgstr "няма"
 
 msgid "tax"
-msgstr ""
+msgstr "такса"
 
 msgid "feature"
-msgstr ""
+msgstr "характерна черта"
 
 msgid "reached"
 msgstr "достигна"
 
 msgid "slider"
-msgstr ""
+msgstr "плъзгач"
 
 msgid "condition"
-msgstr ""
+msgstr "условие"
 
 msgid "consume"
 msgstr ""
