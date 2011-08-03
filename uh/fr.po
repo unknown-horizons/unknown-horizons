@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-08-03 12:48+0200\n"
+"PO-Revision-Date: 2011-08-03 12:59+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1121,9 +1121,8 @@ msgid "(0 means default)"
 msgstr "(0 pour valeur par défaut)"
 
 #: horizons/i18n/guitranslations.py:252
-#, fuzzy
 msgid "Network port:"
-msgstr "Port réseau :"
+msgstr "Port réseau:"
 
 #: horizons/i18n/guitranslations.py:253
 msgid "Number of autosaves:"
@@ -1547,6 +1546,7 @@ msgstr ""
 #: horizons/spsession.py:123
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"Si cette erreur se reproduit, veuillez contacter l'équipe de développement:"
 
 #: horizons/spsession.py:131
 msgid "No quicksaves found"
@@ -1728,7 +1728,7 @@ msgstr "Boucherie"
 
 #: sqlite/Building
 msgid "Cattle Run"
-msgstr ""
+msgstr "Elevage bovin"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
@@ -1846,9 +1846,8 @@ msgstr "Tente"
 
 # 77%
 #: sqlite/Building
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Tente abîmée"
+msgstr "Tente abandonnée"
 
 #: sqlite/Building
 msgid "Tobacco Field"
@@ -1964,11 +1963,11 @@ msgstr "briques"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr ""
+msgstr "bétail"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "Animal de boucherie"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1988,11 +1987,11 @@ msgstr "communauté"
 
 #: sqlite/Resources
 msgid "deer food A"
-msgstr ""
+msgstr "Nourriture pour biche A"
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "Viande de cerf"
 
 #: sqlite/Resources
 msgid "education"
@@ -2050,7 +2049,7 @@ msgstr "porcs"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "porcs d'élevage"
 
 # Resources
 #: sqlite/Resources
@@ -2062,9 +2061,8 @@ msgid "raw clay"
 msgstr "argile brute"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "raw herbs"
-msgstr "herbes brutes / plante médicinale brut"
+msgstr "plantes brutes"
 
 #: sqlite/Resources
 msgid "raw iron"

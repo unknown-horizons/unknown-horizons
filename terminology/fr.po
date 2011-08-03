@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-29 11:41+0200\n"
-"Last-Translator: Hugues <fafardh@hotmail.de>\n"
+"PO-Revision-Date: 2011-08-03 12:59+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -742,7 +742,6 @@ msgstr "produire"
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # (poterminology) uh/unknownhorizons.pot (4)
 # 87%
-#, fuzzy
 msgid "produced"
 msgstr "produit"
 
@@ -1664,7 +1663,7 @@ msgid "red"
 msgstr "rouge"
 
 msgid "check"
-msgstr "vérifier"
+msgstr "Vérifier"
 
 msgid "connection"
 msgstr "connexion"
@@ -1703,49 +1702,48 @@ msgid "slider"
 msgstr "régleur"
 
 msgid "condition"
-msgstr ""
+msgstr "condition"
 
 msgid "consume"
-msgstr ""
+msgstr "consommer"
 
 msgid "contact"
 msgstr "contact"
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialogue"
 
 #, fuzzy
 msgid "issues"
-msgstr "problème"
+msgstr "problèmes"
 
 msgid "minimap"
 msgstr "mini-carte"
 
 msgid "playing"
-msgstr ""
+msgstr "jouant"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
 # Of course, here is all about context cause run can also be translated by 'courir' (using legs for running !)
 # 75%
-#, fuzzy
 msgid "ruin"
-msgstr "rouler / exploiter"
+msgstr "ruine"
 
 msgid "seed"
-msgstr ""
+msgstr "graine"
 
 msgid "temporarily"
-msgstr ""
+msgstr "temporairement"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "marais salants"
 
 msgid "tobacco"
 msgstr "tabac"
 
 msgid "cattle"
-msgstr ""
+msgstr "bétail"
 
 msgid "pig"
 msgstr "porc"
@@ -1770,16 +1768,16 @@ msgstr "éducation"
 # 75%
 #, fuzzy
 msgid "clay"
-msgstr "argile / terre"
+msgstr "argile"
 
 msgid "charcoal"
-msgstr ""
+msgstr "charbon de bois"
 
 msgid "iron"
-msgstr ""
+msgstr "fer"
 
 msgid "ore"
-msgstr ""
+msgstr "minerai"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (2)
