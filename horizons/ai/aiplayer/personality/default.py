@@ -288,3 +288,6 @@ class DefaultPersonality:
 		default_priority = 250
 		residences_required = 0
 		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class AbstractVillageBuilding:
+		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built

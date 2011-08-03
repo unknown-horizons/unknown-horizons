@@ -55,8 +55,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 				continue
 			not_serviced += 1
 
-		# build it if at least 75% of the assigned residences have been built
-		if not_serviced > 0 and not_serviced >= total * 0.75: # TODO: use a better place to store this constant
+		if not_serviced > 0 and not_serviced >= total * settlement_manager.owner.personality_manager.get('AbstractVillageBuilding').fraction_of_assigned_residences_built:
 			return True
 		return False
 
