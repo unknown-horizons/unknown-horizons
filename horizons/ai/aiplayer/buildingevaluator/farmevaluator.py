@@ -33,7 +33,7 @@ class FarmEvaluator(BuildingEvaluator):
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	field_offsets = None
 
-	def __init__(self, area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections):
+	def __init__(self, area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immediate_connections):
 		super(FarmEvaluator, self).__init__(area_builder, builder)
 		self.farm_plan = farm_plan
 		self.fields = fields
@@ -41,8 +41,12 @@ class FarmEvaluator(BuildingEvaluator):
 		self.existing_roads = existing_roads
 		self.alignment = alignment
 		self.extra_space = extra_space
-		self.immidiate_connections = immidiate_connections
-		self.value = fields + existing_roads * 0.005 + alignment * 0.001 - extra_space * 0.02 + immidiate_connections * 0.005
+		self.immediate_connections = immediate_connections
+
+		personality = area_builder.owner.personality_manager.get('FarmEvaluator')
+		self.value = fields + existing_roads * personality.existing_road_importance + \
+			alignment * personality.alignment_importance - extra_space * personality.wasted_space_penalty + \
+			immediate_connections * personality.immediate_connection_importance
 
 	@classmethod
 	def _make_field_offsets(cls):
@@ -145,24 +149,21 @@ class FarmEvaluator(BuildingEvaluator):
 					alignment += 1
 
 		# calculate the value of the farm road end points (larger is better)
-		immidiate_connections = 0
+		personality = area_builder.owner.personality_manager.get('FarmEvaluator')
+		immediate_connections = 0
 		for other_offset in [-4, 6]:
 			if road_dx == 0:
 				coords = (farm_x + other_offset, farm_y + road_dy)
 			else:
 				coords = (farm_x + road_dx, farm_y + other_offset)
-			if coords in area_builder.plan:
+			if coords in area_builder.land_manager.roads:
+				immediate_connections += personality.immediate_connection_road
+			elif coords in area_builder.plan:
 				if area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
-					immidiate_connections += 1
-				elif area_builder.plan[coords][0] == BUILDING_PURPOSE.ROAD:
-					immidiate_connections += 3
-			elif coords in area_builder.land_manager.settlement.ground_map:
-				object = area_builder.land_manager.settlement.ground_map[coords].object
-				if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
-					immidiate_connections += 3
+					immediate_connections += personality.immediate_connection_free
 
 		extra_space = (max_x - min_x + 1) * (max_y - min_y + 1) - 9 * (fields + 2)
-		return FarmEvaluator(area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immidiate_connections)
+		return FarmEvaluator(area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immediate_connections)
 
 	cache = {}
 	cache_changes = (-1, -1)

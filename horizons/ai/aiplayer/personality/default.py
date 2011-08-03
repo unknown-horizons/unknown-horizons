@@ -314,3 +314,12 @@ class DefaultPersonality:
 	class DistilleryEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		collector_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
+
+	class FarmEvaluator:
+		alignment_importance = 0.001 # the larger this value, the larger the effect of alignment on the placement
+		existing_road_importance = 0.005 # bonus for every reused tile of existing (or planned) road
+		wasted_space_penalty = 0.02 
+		immediate_connection_importance = 0.005 # bonus for road and non-blocked access to the road
+
+		immediate_connection_road = 3 # bonus for a road in an entrance of the farm
+		immediate_connection_free = 1 # bonus for an unused tile in an entrance of the farm
