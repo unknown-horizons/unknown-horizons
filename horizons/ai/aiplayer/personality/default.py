@@ -301,3 +301,7 @@ class DefaultPersonality:
 
 	class BoatBuilderEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+
+	class BrickyardEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		collector_distance_importance = 0.1 # importance of the distance to the nearest collector in the range [0, 1]
