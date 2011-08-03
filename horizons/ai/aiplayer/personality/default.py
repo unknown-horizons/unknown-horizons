@@ -154,3 +154,11 @@ class DefaultPersonality:
 		final_settler_taxes = 0.5
 		final_sailor_upgrades = True
 		final_pioneer_upgrades = True
+
+	class FoundSettlement:
+		# use a penalty for branch office being too close to the village area
+		too_close_penalty_threshold = 3
+		too_close_constant_penalty = 100
+		too_close_linear_penalty = 0
+
+		linear_branch_office_penalty = 1000 # add a penalty of this constant * distance to a branch office to the branch office penalty

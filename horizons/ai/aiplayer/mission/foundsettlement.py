@@ -113,6 +113,7 @@ class FoundSettlement(Mission):
 		"""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		island = land_manager.island
+		personality = land_manager.owner.personality_manager.get('FoundSettlement')
 		options = []
 
 		for (x, y), tile in sorted(island.ground_map.iteritems()):
@@ -136,13 +137,13 @@ class FoundSettlement(Mission):
 			cost = 0
 			for coords in land_manager.village:
 				distance = point.distance_to_tuple(coords)
-				if distance < 3:
-					cost += 100
+				if distance < personality.too_close_penalty_threshold:
+					cost += personality.too_close_constant_penalty + personality.too_close_linear_penalty / (distance + 1.0)
 				else:
 					cost += distance
 
 			for settlement_manager in land_manager.owner.settlement_managers:
-				cost += branch_office.position.distance(settlement_manager.branch_office.position) * 1000
+				cost += branch_office.position.distance(settlement_manager.branch_office.position) * personality.linear_branch_office_penalty
 
 			options.append((cost, branch_office))
 
