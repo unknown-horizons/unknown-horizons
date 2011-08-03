@@ -330,3 +330,6 @@ class DefaultPersonality:
 		shared_tree = 1 # number of points for a shared tree in range (at least one lumberjack already using it)
 		min_forest_value = 30 # minimum number of points to consider the position
 		max_forest_value = 100 # maximum number of relevant points (more than this is ignored)
+
+	class SignalFireEvaluator:
+		alignment_importance = 1.5 # the larger this value, the larger the effect of alignment on the placement

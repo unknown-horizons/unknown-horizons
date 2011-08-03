@@ -32,7 +32,9 @@ class SignalFireEvaluator(BuildingEvaluator):
 		super(SignalFireEvaluator, self).__init__(area_builder, builder)
 		self.sea_area = sea_area
 		self.alignment = alignment
-		self.value = sea_area + alignment * 1.5
+
+		personality = area_builder.owner.personality_manager.get('SignalFireEvaluator')
+		self.value = sea_area + alignment * personality.alignment_importance
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
