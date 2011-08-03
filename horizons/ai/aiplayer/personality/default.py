@@ -323,3 +323,10 @@ class DefaultPersonality:
 
 		immediate_connection_road = 3 # bonus for a road in an entrance of the farm
 		immediate_connection_free = 1 # bonus for an unused tile in an entrance of the farm
+
+	class LumberjackEvaluator:
+		alignment_importance = 0.5 # the larger this value, the larger the effect of alignment on the placement
+		new_tree = 3 # number of points for a new tree in range
+		shared_tree = 1 # number of points for a shared tree in range (at least one lumberjack already using it)
+		min_forest_value = 30 # minimum number of points to consider the position
+		max_forest_value = 100 # maximum number of relevant points (more than this is ignored)

@@ -35,7 +35,8 @@ class LumberjackEvaluator(BuildingEvaluator):
 		super(LumberjackEvaluator, self).__init__(area_builder, builder)
 		self.area_value = area_value
 		self.alignment = alignment
-		self.value = area_value + alignment * 0.5
+		personality = area_builder.owner.personality_manager.get('LumberjackEvaluator')
+		self.value = area_value + alignment * personality.alignment_importance
 	
 	@classmethod
 	def get_radius(cls):
@@ -77,15 +78,16 @@ class LumberjackEvaluator(BuildingEvaluator):
 			return None
 
 		area_value = 0
+		personality = area_builder.owner.personality_manager.get('LumberjackEvaluator')
 		for coords in builder.position.get_radius_coordinates(cls.get_radius()):
 			if coords in area_builder.plan:
 				purpose = area_builder.plan[coords][0]
 				if purpose == BUILDING_PURPOSE.NONE:
-					area_value += 3
+					area_value += personality.new_tree
 				elif purpose == BUILDING_PURPOSE.TREE:
-					area_value += 1
-		area_value = min(area_value, 100) # the lumberjack doesn't actually need all the trees
-		if area_value < 30:
+					area_value += personality.shared_tree
+		area_value = min(area_value, personality.max_forest_value) # the lumberjack doesn't actually need all the trees
+		if area_value < personality.min_forest_value:
 			return None # the area is too bad for a lumberjack
 
 		alignment = cls.get_alignment_from_outline(area_builder, cls._get_outline(x, y))
