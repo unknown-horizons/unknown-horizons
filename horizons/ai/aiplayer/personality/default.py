@@ -298,3 +298,6 @@ class DefaultPersonality:
 		alignment_production_building = 1
 		alignment_other_building = 1
 		alignment_edge = 1
+
+	class BoatBuilderEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement

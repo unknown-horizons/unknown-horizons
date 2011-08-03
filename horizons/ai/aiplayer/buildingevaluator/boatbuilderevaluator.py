@@ -30,7 +30,8 @@ class BoatBuilderEvaluator(BuildingEvaluator):
 		super(BoatBuilderEvaluator, self).__init__(area_builder, builder)
 		self.distance_to_collector = distance_to_collector
 		self.alignment = alignment
-		self.value = float(Entities.buildings[BUILDINGS.BOATBUILDER_CLASS].radius) / distance_to_collector + alignment * 0.02
+		personality = area_builder.owner.personality_manager.get('BoatBuilderEvaluator')
+		self.value = float(Entities.buildings[BUILDINGS.BOATBUILDER_CLASS].radius) / distance_to_collector + alignment * personality.alignment_importance
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
