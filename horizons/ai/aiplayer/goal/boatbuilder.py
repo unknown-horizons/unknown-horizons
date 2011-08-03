@@ -24,13 +24,12 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
 class BoatBuilderGoal(SettlementGoal):
-	@property
-	def priority(self):
-		return 600
+	def get_personality_name(self):
+		return 'BoatBuilderGoal'
 
 	@property
 	def active(self):
-		return self.settlement_manager.tents >= 16 and self.owner.settler_level > 0 and not self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS)
+		return super(BoatBuilderGoal, self).active and not self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS)
 
 	def execute(self):
 		result = self.settlement_manager.production_builder.build_boat_builder()

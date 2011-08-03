@@ -35,24 +35,26 @@ class Goal(object):
 
 	def __init__(self, owner):
 		super(Goal, self).__init__()
-		self.__init(owner, self.__next_id)
+		self.owner = owner
+		self.personality = self.owner.personality_manager.get(self.get_personality_name())
+
+		self.sequence_number = self.__next_id
 		self.__next_id += 1
 
-	def __init(self, owner, sequence_number):
-		self.sequence_number = sequence_number
-		self.owner = owner
+	def get_personality_name(self):
+		raise NotImplementedError, 'This function has to be overridden.'
 
 	@property
 	def priority(self):
-		return 0
+		return self.personality.default_priority
 
 	@property
 	def active(self):
-		return False
+		return self.can_be_activated
 
 	@property
 	def can_be_activated(self):
-		return True
+		return self.personality.enabled and self.owner.settler_level >= self.personality.min_settler_level
 
 	def execute(self):
 		raise NotImplementedError, "This function has to be overridden."

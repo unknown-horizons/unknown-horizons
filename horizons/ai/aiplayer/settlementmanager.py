@@ -35,12 +35,12 @@ from trademanager import TradeManager
 from goal.boatbuilder import BoatBuilderGoal
 from goal.claydepositcoverage import ClayDepositCoverageGoal
 from goal.enlargecollectorarea import EnlargeCollectorAreaGoal
-from goal.feederchaingoal import FeederChainGoal, FeederTextileGoal, FeederLiquorGoal
+from goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal
 from goal.foundfeederisland import FoundFeederIslandGoal
 from goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from goal.mountaincoverage import MountainCoverageGoal
-from goal.productionchaingoal import ProductionChainGoal, FaithGoal, TextileGoal, BricksGoal, \
-	EducationGoal, GetTogetherGoal, ToolsGoal
+from goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, EducationGoal, \
+	GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal
 from goal.signalfire import SignalFireGoal
 from goal.storagespace import StorageSpaceGoal
 from goal.tent import TentGoal
@@ -100,28 +100,28 @@ class SettlementManager(WorldObject):
 		self.liquor_chain = ProductionChain.create(self, RES.LIQUOR_ID)
 
 		self.goals = []
-		self.goals.append(ProductionChainGoal(self, self.boards_chain, 'boards producer'))
+		self.goals.append(BoardsGoal(self))
 		self.goals.append(SignalFireGoal(self))
 		self.goals.append(EnlargeCollectorAreaGoal(self))
 		self.goals.append(ImproveCollectorCoverageGoal(self))
-		self.goals.append(BricksGoal(self, self.bricks_chain, 'bricks producer'))
+		self.goals.append(BricksGoal(self))
 		if self.feeder_island:
 			self.goals.append(StorageSpaceGoal(self))
-			self.goals.append(FeederChainGoal(self, self.food_chain, 'food producer'))
-			self.goals.append(FeederTextileGoal(self, self.textile_chain, 'textile producer'))
-			self.goals.append(FeederLiquorGoal(self, self.liquor_chain, 'liquor producer'))
+			self.goals.append(FeederFoodGoal(self))
+			self.goals.append(FeederTextileGoal(self))
+			self.goals.append(FeederLiquorGoal(self))
 		else:
 			self.goals.append(BoatBuilderGoal(self))
 			self.goals.append(ClayDepositCoverageGoal(self))
 			self.goals.append(FoundFeederIslandGoal(self))
 			self.goals.append(MountainCoverageGoal(self))
-			self.goals.append(ProductionChainGoal(self, self.food_chain, 'food producer'))
-			self.goals.append(ProductionChainGoal(self, self.community_chain, 'main square'))
-			self.goals.append(FaithGoal(self, self.faith_chain, 'pavilion'))
-			self.goals.append(TextileGoal(self, self.textile_chain, 'textile producer'))
-			self.goals.append(EducationGoal(self, self.education_chain, 'school'))
-			self.goals.append(GetTogetherGoal(self, self.get_together_chain, 'get-together producer'))
-			self.goals.append(ToolsGoal(self, self.tools_chain, 'tools producer'))
+			self.goals.append(FoodGoal(self))
+			self.goals.append(CommunityGoal(self))
+			self.goals.append(FaithGoal(self))
+			self.goals.append(TextileGoal(self))
+			self.goals.append(EducationGoal(self))
+			self.goals.append(GetTogetherGoal(self))
+			self.goals.append(ToolsGoal(self))
 			self.goals.append(TentGoal(self))
 			self.goals.append(TradingShipGoal(self))
 

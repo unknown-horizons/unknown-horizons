@@ -24,13 +24,13 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
 class TradingShipGoal(SettlementGoal):
-	@property
-	def priority(self):
-		return 550
+	def get_personality_name(self):
+		return 'TradingShipGoal'
 
 	@property
 	def active(self):
-		return self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS) and self.owner.need_more_ships and not self.owner.unit_builder.num_ships_being_built
+		return super(TradingShipGoal, self).active and self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS) and \
+			self.owner.need_more_ships and not self.owner.unit_builder.num_ships_being_built
 
 	def execute(self):
 		self.settlement_manager.log.info('%s start building a ship', self)

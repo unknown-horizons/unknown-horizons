@@ -23,13 +23,12 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.util.python import decorators
 
 class ImproveCollectorCoverageGoal(SettlementGoal):
-	@property
-	def priority(self):
-		return 1000
+	def get_personality_name(self):
+		return 'ImproveCollectorCoverageGoal'
 
 	@property
 	def active(self):
-		return not self.settlement_manager.production_builder.enough_collectors()
+		return super(ImproveCollectorCoverageGoal, self).active and not self.settlement_manager.production_builder.enough_collectors()
 
 	def execute(self):
 		result = self.settlement_manager.production_builder.improve_collector_coverage()

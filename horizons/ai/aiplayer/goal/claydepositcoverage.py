@@ -24,13 +24,12 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
 class ClayDepositCoverageGoal(SettlementGoal):
-	@property
-	def priority(self):
-		return 450
+	def get_personality_name(self):
+		return 'ClayDepositCoverageGoal'
 
 	@property
 	def active(self):
-		return self.owner.settler_level > 0 and not self.settlement_manager.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and \
+		return super(ClayDepositCoverageGoal, self).active and not self.settlement_manager.have_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS) and \
 			self.settlement_manager.reachable_deposit(BUILDINGS.CLAY_DEPOSIT_CLASS)
 
 	def execute(self):

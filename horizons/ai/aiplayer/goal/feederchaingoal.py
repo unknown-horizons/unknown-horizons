@@ -35,10 +35,12 @@ class FeederChainGoal(ProductionChainGoal):
 
 	def __init__(self, settlement_manager, chain, name):
 		super(FeederChainGoal, self).__init__(settlement_manager, chain, name)
-		self.__init()
-
-	def __init(self):
 		self._may_import = False
+		self._feeder_personality = self.owner.personality_manager.get('FeederChainGoal')
+
+	@property
+	def priority(self):
+		return super(FeederChainGoal, self).priority + self._feeder_personality.extra_priority
 
 	def execute(self):
 		self.chain.reserve(self._needed_amount, self._may_import)
@@ -53,16 +55,32 @@ class FeederChainGoal(ProductionChainGoal):
 		super(FeederChainGoal, self).update()
 		self.chain.reserve(0, False)
 
+class FeederFoodGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederFoodGoal, self).__init__(settlement_manager, settlement_manager.food_chain, 'food producer')
+
+	def get_personality_name(self):
+		return 'FoodGoal'
+
 class FeederTextileGoal(FeederChainGoal):
-	@property
-	def can_be_activated(self):
-		return self.owner.settler_level > 0
+	def __init__(self, settlement_manager):
+		super(FeederTextileGoal, self).__init__(settlement_manager, settlement_manager.textile_chain, 'textile producer')
+
+	def get_personality_name(self):
+		return 'TextileGoal'
 
 class FeederLiquorGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederLiquorGoal, self).__init__(settlement_manager, settlement_manager.liquor_chain, 'liquor producer')
+
+	def get_personality_name(self):
+		return 'LiquorGoal'
+
 	@property
 	def can_be_activated(self):
-		return self.owner.settler_level > 1 and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
+		return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
 
 decorators.bind_all(FeederChainGoal)
+decorators.bind_all(FeederFoodGoal)
 decorators.bind_all(FeederTextileGoal)
 decorators.bind_all(FeederLiquorGoal)

@@ -73,10 +73,10 @@ class VillageBuilder(AreaBuilder):
 			db("INSERT INTO ai_village_builder_tent_queue(village_builder, x, y) VALUES(?, ?, ?)", self.worldid, x, y)
 
 	def _load(self, db, settlement_manager):
-		self.__init(settlement_manager)
 		db_result = db("SELECT rowid, num_sections, current_section FROM ai_village_builder WHERE settlement_manager = ?", settlement_manager.worldid)
 		worldid, self.num_sections, self.current_section = db_result[0]
 		super(VillageBuilder, self)._load(db, settlement_manager, worldid)
+		self.__init(settlement_manager)
 
 		db_result = db("SELECT x, y, purpose, builder, section FROM ai_area_builder_plan WHERE area_builder = ?", worldid)
 		for x, y, purpose, builder_id, section in db_result:

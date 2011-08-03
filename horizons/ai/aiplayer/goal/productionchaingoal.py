@@ -28,32 +28,13 @@ from horizons.util.python import decorators
 class ProductionChainGoal(SettlementGoal):
 	def __init__(self, settlement_manager, chain, name):
 		super(ProductionChainGoal, self).__init__(settlement_manager)
-		self.__init(chain, name)
-
-	def __init(self, chain, name):
 		self.chain = chain
 		self.name = name
 		self._may_import = True
 
 	@property
 	def active(self):
-		return self._is_active
-
-	@property
-	def priority(self):
-		priorities = {
-			RES.BOARDS_ID: 950,
-			RES.COMMUNITY_ID: 900,
-			RES.FOOD_ID: 800,
-			RES.FAITH_ID: 700,
-			RES.TEXTILE_ID: 500,
-			RES.BRICKS_ID: 350,
-			RES.EDUCATION_ID: 300,
-			RES.LIQUOR_ID: 250,
-			RES.GET_TOGETHER_ID: 250,
-			RES.TOOLS_ID: 150
-		}
-		return priorities[self.chain.resource_id] + self.settlement_manager.feeder_island
+		return super(ProductionChainGoal, self).active and self._is_active
 
 	def execute(self):
 		result = self.chain.build(self._needed_amount)
@@ -75,35 +56,80 @@ class ProductionChainGoal(SettlementGoal):
 			self._is_active = False
 
 class FaithGoal(ProductionChainGoal):
-	@property
-	def can_be_activated(self):
-		return self.settlement_manager.tents >= 10
+	def __init__(self, settlement_manager):
+		super(FaithGoal, self).__init__(settlement_manager, settlement_manager.faith_chain, 'pavilion')
+
+	def get_personality_name(self):
+		return 'FaithGoal'
 
 class TextileGoal(ProductionChainGoal):
-	@property
-	def can_be_activated(self):
-		return self.settlement_manager.tents >= 16 and self.owner.settler_level > 0
+	def __init__(self, settlement_manager):
+		super(TextileGoal, self).__init__(settlement_manager, settlement_manager.textile_chain, 'textile producer')
+
+	def get_personality_name(self):
+		return 'TextileGoal'
 
 class BricksGoal(ProductionChainGoal):
-	@property
-	def can_be_activated(self):
-		return self.owner.settler_level > 0
+	def __init__(self, settlement_manager):
+		super(BricksGoal, self).__init__(settlement_manager, settlement_manager.bricks_chain, 'bricks producer')
+
+	def get_personality_name(self):
+		return 'BricksGoal'
 
 class EducationGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(EducationGoal, self).__init__(settlement_manager, settlement_manager.education_chain, 'school')
+
+	def get_personality_name(self):
+		return 'EducationGoal'
+
 	@property
 	def can_be_activated(self):
-		return self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
+		return super(EducationGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
 
 class GetTogetherGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(GetTogetherGoal, self).__init__(settlement_manager, settlement_manager.get_together_chain, 'get-together producer')
+
+	def get_personality_name(self):
+		return 'GetTogetherGoal'
+
 	@property
 	def can_be_activated(self):
-		return self.owner.settler_level > 1 and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
+		return super(GetTogetherGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
 
 class ToolsGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(ToolsGoal, self).__init__(settlement_manager, settlement_manager.tools_chain, 'tools producer')
+
+	def get_personality_name(self):
+		return 'ToolsGoal'
+
 	@property
 	def can_be_activated(self):
-		return self.owner.settler_level > 1 and self.settlement_manager.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and \
+		return super(ToolsGoal, self).can_be_activated and self.settlement_manager.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and \
 			self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
+
+class BoardsGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(BoardsGoal, self).__init__(settlement_manager, settlement_manager.boards_chain, 'boards producer')
+
+	def get_personality_name(self):
+		return 'BoardsGoal'
+
+class FoodGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(FoodGoal, self).__init__(settlement_manager, settlement_manager.food_chain, 'food producer')
+
+	def get_personality_name(self):
+		return 'FoodGoal'
+
+class CommunityGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(CommunityGoal, self).__init__(settlement_manager, settlement_manager.community_chain, 'main square')
+
+	def get_personality_name(self):
+		return 'CommunityGoal'
 
 decorators.bind_all(ProductionChainGoal)
 decorators.bind_all(FaithGoal)
@@ -112,3 +138,6 @@ decorators.bind_all(BricksGoal)
 decorators.bind_all(EducationGoal)
 decorators.bind_all(GetTogetherGoal)
 decorators.bind_all(ToolsGoal)
+decorators.bind_all(BoardsGoal)
+decorators.bind_all(FoodGoal)
+decorators.bind_all(CommunityGoal)

@@ -24,13 +24,12 @@ from horizons.ai.aiplayer.constants import GOAL_RESULT
 from horizons.util.python import decorators
 
 class FoundFeederIslandGoal(SettlementGoal):
-	@property
-	def priority(self):
-		return 650
+	def get_personality_name(self):
+		return 'FoundFeederIslandGoal'
 
 	@property
 	def active(self):
-		return self.settlement_manager.tents >= 16 and self.owner.need_feeder_island(self.settlement_manager) and \
+		return super(FoundFeederIslandGoal, self).active and self.owner.need_feeder_island(self.settlement_manager) and \
 			not self.owner.have_feeder_island() and self.owner.can_found_feeder_island()
 
 	def execute(self):

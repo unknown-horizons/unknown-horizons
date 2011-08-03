@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constants import SETTLER
+
 class DefaultPersonality:
 	class AIPlayer:
 		little_money = 3000 # cutoff to decide that we really need to get more money by selling resources on other players' islands
@@ -162,3 +164,127 @@ class DefaultPersonality:
 		too_close_linear_penalty = 0
 
 		linear_branch_office_penalty = 1000 # add a penalty of this constant * distance to a branch office to the branch office penalty
+
+	class FeederChainGoal:
+		extra_priority = 1 # extra priority given to goals that are supposed to produce resources for other settlements on feeder islands
+
+	class BoatBuilderGoal:
+		enabled = True
+		default_priority = 600
+		residences_required = 16
+		min_settler_level = SETTLER.PIONEER_LEVEL
+
+	class ClayDepositCoverageGoal:
+		enabled = True
+		default_priority = 450
+		residences_required = 0
+		min_settler_level = SETTLER.PIONEER_LEVEL
+
+	class EnlargeCollectorAreaGoal:
+		enabled = True
+		default_priority = 850
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class FoundFeederIslandGoal:
+		enabled = True
+		default_priority = 650
+		residences_required = 16
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class ImproveCollectorCoverageGoal:
+		enabled = True
+		default_priority = 1000
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class MountainCoverageGoal:
+		enabled = True
+		default_priority = 200
+		residences_required = 0
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class SignalFireGoal:
+		enabled = True
+		default_priority = 750
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class StorageSpaceGoal:
+		enabled = True
+		default_priority = 825
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class TentGoal:
+		enabled = True
+		default_priority = 480
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class TradingShipGoal:
+		enabled = True
+		default_priority = 550
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class FaithGoal:
+		enabled = True
+		default_priority = 700
+		residences_required = 10
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class TextileGoal:
+		enabled = True
+		default_priority = 520
+		residences_required = 0
+		min_settler_level = SETTLER.PIONEER_LEVEL
+
+	class BricksGoal:
+		enabled = True
+		default_priority = 350
+		residences_required = 0
+		min_settler_level = SETTLER.PIONEER_LEVEL
+
+	class EducationGoal:
+		enabled = True
+		default_priority = 300
+		residences_required = 10
+		min_settler_level = SETTLER.PIONEER_LEVEL
+
+	class GetTogetherGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 10
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class ToolsGoal:
+		enabled = True
+		default_priority = 150
+		residences_required = 0
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class BoardsGoal:
+		enabled = True
+		default_priority = 950
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class FoodGoal:
+		enabled = True
+		default_priority = 800
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class CommunityGoal:
+		enabled = True
+		default_priority = 900
+		residences_required = 0
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class LiquorGoal:
+		# this goal is only used on feeder islands
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_settler_level = SETTLER.SETTLER_LEVEL

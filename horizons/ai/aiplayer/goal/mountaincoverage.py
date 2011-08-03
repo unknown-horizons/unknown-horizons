@@ -24,13 +24,12 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
 class MountainCoverageGoal(SettlementGoal):
-	@property
-	def priority(self):
-		return 200
+	def get_personality_name(self):
+		return 'MountainCoverageGoal'
 
 	@property
 	def active(self):
-		return self.owner.settler_level > 1 and not self.settlement_manager.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and \
+		return super(MountainCoverageGoal, self).active and not self.settlement_manager.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and \
 			self.settlement_manager.reachable_deposit(BUILDINGS.MOUNTAIN_CLASS) and \
 			self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
 

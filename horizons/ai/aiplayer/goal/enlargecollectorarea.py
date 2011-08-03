@@ -23,13 +23,12 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.util.python import decorators
 
 class EnlargeCollectorAreaGoal(SettlementGoal):
-	@property
-	def priority(self):
-		return 850
+	def get_personality_name(self):
+		return 'EnlargeCollectorAreaGoal'
 
 	@property
 	def active(self):
-		return self.settlement_manager.production_builder.need_to_enlarge_collector_area()
+		return super(EnlargeCollectorAreaGoal, self).active and self.settlement_manager.production_builder.need_to_enlarge_collector_area()
 
 	def execute(self):
 		result = self.settlement_manager.production_builder.enlarge_collector_area()

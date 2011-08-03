@@ -24,13 +24,12 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
 class SignalFireGoal(SettlementGoal):
-	@property
-	def priority(self):
-		return 750
+	def get_personality_name(self):
+		return 'SignalFireGoal'
 
 	@property
 	def active(self):
-		return not self.settlement_manager.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS)
+		return super(SignalFireGoal, self).active and not self.settlement_manager.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS)
 
 	def execute(self):
 		result = self.settlement_manager.production_builder.build_signal_fire()
