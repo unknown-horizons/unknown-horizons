@@ -185,6 +185,23 @@ class TraderShipOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Ship overview")
 
+class GroundUnitOverviewTab(OverviewTab):
+	def __init__(self, instance):
+		super(GroundUnitOverviewTab, self).__init__(
+			widget = 'overview_groundunit.xml',
+			instance = instance)
+		self.tooltip = _("Unit overview")
+		health_widget = self.widget.findChild(name='health')
+		health_widget.init(self.instance)
+		self.add_remove_listener(health_widget.remove)
+		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
+		weapon_storage_widget.init(self.instance)
+		self.add_remove_listener(weapon_storage_widget.remove)
+		stance_widget = StanceWidget()
+		stance_widget.init(self.instance)
+		self.add_remove_listener(stance_widget.remove)
+		self.widget.findChild(name='stance').addChild(stance_widget)
+
 class ProductionOverviewTab(OverviewTab):
 	production_line_gui_xml = "overview_productionline.xml"
 

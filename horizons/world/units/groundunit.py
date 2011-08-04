@@ -33,6 +33,7 @@ from horizons.constants import LAYERS, GAME_SPEED, WEAPONS
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.units.weaponholder import MovingWeaponHolder
+from horizons.gui.tabs import GroundUnitOverviewTab
 
 class GroundUnit(Unit):
 	"""Class representing ground unit
@@ -40,7 +41,7 @@ class GroundUnit(Unit):
 	@param y: int y position
 	"""
 	pather_class = SoldierPather
-	tabs = ()
+	tabs = (GroundUnitOverviewTab,)
 	enemy_tabs = ()
 	health_bar_y = -70
 	is_selectable = True
