@@ -167,4 +167,7 @@ class BuildingEvaluator(WorldObject):
 		self.area_builder.production_buildings.append(building)
 		return (BUILD_RESULT.OK, building)
 
+	def __str__(self):
+		return '%s at %d, %d with value %f' % (self.__class__.__name__, self.builder.point.x, self.builder.point.y, self.value)
+
 decorators.bind_all(BuildingEvaluator)

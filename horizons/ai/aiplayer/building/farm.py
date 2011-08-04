@@ -22,6 +22,7 @@
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.buildingevaluator.farmevaluator import FarmEvaluator
+from horizons.ai.aiplayer.buildingevaluator.modifiedfieldevaluator import ModifiedFieldEvaluator
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
 
@@ -53,6 +54,7 @@ class AbstractFarm(AbstractBuilding):
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		options = []
 
+		# create evaluators for completely new farms
 		most_fields = 1
 		for x, y, orientation in self.iter_potential_locations(settlement_manager):
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
@@ -61,6 +63,13 @@ class AbstractFarm(AbstractBuilding):
 				if evaluator is not None:
 					options.append(evaluator)
 					most_fields = max(most_fields, evaluator.fields)
+
+		# create evaluators for modified farms (change unused field type)
+		for coords_list in settlement_manager.production_builder.unused_fields.itervalues():
+			for x, y in coords_list:
+				evaluator = ModifiedFieldEvaluator.create(settlement_manager.production_builder, x, y, unused_field_purpose)
+				if evaluator is not None:
+					options.append(evaluator)
 		return options
 
 	@classmethod
