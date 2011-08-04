@@ -1945,11 +1945,11 @@ msgstr "Ziegel"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr "Vieh"
+msgstr "Rinder"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr "Schlachtvieh"
+msgstr "Schlachtrinder"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -2029,9 +2029,10 @@ msgstr "Spirituosen"
 msgid "pigs"
 msgstr "Schweine"
 
+# 2x Schlachtvieh für Cattle und Pigs?
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr "Schlachtvieh"
+msgstr "Mastschweine"
 
 #: sqlite/Resources
 msgid "potatoes"

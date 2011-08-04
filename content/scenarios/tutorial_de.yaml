@@ -437,7 +437,7 @@ events:
         \ Farm nicht alle Felder versorgen kann.\n\nIm Moment braucht Ihr Euch dar\xFC\
         ber aber noch keine Gedanken machen, da noch gar keine Felder angelegt sind.\
         \ Lasst uns das \xE4ndern!\n\nAUFGABE: Legt mindestens eine Weide im Einzugsbereich\
-        \ der Farm an und f\xFCgt Kartoffelfelder hinzu, wenn Ihr wollt. "]
+        \ der Farm an und f\xFCgt Kartoffelfelder hinzu, wenn Ihr wollt."]
     type: logbook
   - arguments: ["Legt mindestens eine Weide im Einzugsbereich der Farm an und f\xFC\
         gt Kartoffelfelder hinzu, wenn Ihr wollt."]
