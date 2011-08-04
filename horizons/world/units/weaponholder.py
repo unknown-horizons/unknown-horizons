@@ -464,8 +464,14 @@ class MovingWeaponHolder(WeaponHolder):
 			if self._target.movable and self._target.is_moving():
 				dest = self._target._next_target
 
+			fireable_number = len(self._fireable)
 			self.fire_all_weapons(dest)
-			Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
+			# if no weapon was fired, because of holder positioned in dead range, move closer
+			if self._fired_weapons_number == 0 and fireable_number != 0:
+				destination = Annulus(self._target.position.center(), self._min_range, self._min_range)
+				self._move_and_attack(destination)
+			else:
+				Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
 
 	def set_stance(self, stance):
 		"""
