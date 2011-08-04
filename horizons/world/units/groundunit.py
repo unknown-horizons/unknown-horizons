@@ -133,13 +133,10 @@ class FightingGroundUnit(GroundUnit, MovingWeaponHolder):
 		self.add_weapon_to_storage(WEAPONS.DAGGER)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 
-	def fire_all_weapons(self, dest, rotate = False):
+	def act_attack(self, dest):
 		"""
 		Rotates to target and acts correctly
 		"""
-		super(FightingGroundUnit, self).fire_all_weapons(dest, rotate)
-		if not self.can_attack_position(dest):
-			return
 		facing_location = self._instance.getFacingLocation()
 		facing_coords = facing_location.getMapCoordinates()
 		facing_coords.x = dest.x

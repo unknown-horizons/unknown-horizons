@@ -53,6 +53,7 @@ class WeaponHolder(object):
 		for weapon in self._weapon_storage:
 			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
 			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
+			weapon.remove_weapon_fired_listener(self._increase_fired_weapons_number)
 		super(WeaponHolder, self).remove()
 
 	def create_weapon_storage(self):
@@ -82,6 +83,12 @@ class WeaponHolder(object):
 		# remove in the next tick
 		Scheduler().add_new_object(Callback(self._fireable.remove, weapon), self, run_in = 0)
 
+	def _increase_fired_weapons_number(self, caller=None):
+		"""
+		Callback that helps keeping tack of succesful weapon fire number
+		"""
+		self._fired_weapons_number += 1
+
 	def add_weapon_to_storage(self, weapon_id):
 		"""
 		adds weapon to storage
@@ -109,6 +116,7 @@ class WeaponHolder(object):
 			self._weapon_storage.append(weapon)
 			weapon.add_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
 			weapon.add_attack_ready_listener(Callback(self._add_to_fireable, weapon))
+			weapon.add_weapon_fired_listener(self._increase_fired_weapons_number)
 			self._fireable.append(weapon)
 		self.on_storage_modified()
 
@@ -137,6 +145,7 @@ class WeaponHolder(object):
 			self._weapon_storage.remove(weapon)
 			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
 			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
+			weapon.remove_weapon_fired_listener(self._increase_fired_weapons_number)
 			try:
 				self._fireable.remove(weapon)
 			except ValueError:
@@ -295,7 +304,7 @@ class WeaponHolder(object):
 		@param rotated: If True weapons will be fired at different locations, rotated around dest
 			override to True for units that need to fire at rotated coords
 		"""
-
+		self._fired_weapons_number = 0
 		if not self.can_attack_position(dest):
 			return
 
@@ -325,6 +334,15 @@ class WeaponHolder(object):
 				weapon.fire(destination, self.position.center())
 				dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 				dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
+
+		if self._fired_weapons_number != 0:
+			self.act_attack(dest)
+
+	def act_attack(self, dest):
+		"""
+		Overridde in subclasses for action code
+		"""
+		pass
 
 	def get_attack_target(self):
 		return self._target

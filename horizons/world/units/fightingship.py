@@ -49,13 +49,14 @@ class FightingShip(MovingWeaponHolder, Ship):
 
 	def fire_all_weapons(self, dest, rotate = True):
 		"""
-		Rotate ship so it is perpendicular on dest
+		Fire weapons at rotated coordinates
 		"""
 		super(FightingShip, self).fire_all_weapons(dest, rotate)
 
-		if not self.can_attack_position(dest):
-			return
-
+	def act_attack(self, dest):
+		"""
+		Rotates the ship and triggeres correct animation
+		"""
 		# rotate the ship so it faces dest
 		# for this rotate facing location coordinates around position coordinates
 		self.stop_for(GAME_SPEED.TICKS_PER_SECOND * 1)
@@ -93,5 +94,4 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self._instance.setFacingLocation(facing_location)
 		self.act('fire_%s' % direction, facing_location, repeating=False)
 		self._action = 'idle'
-
 
