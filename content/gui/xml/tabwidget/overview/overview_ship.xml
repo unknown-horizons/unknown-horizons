@@ -30,8 +30,8 @@
 
 	<Icon image="content/gui/images/background/hr.png" position="20,190" />
 
-	<Label name="foundSettlement_label" text="Build settlement:" position="25,215" />
-	<HBox position="180,200">
+	<Label name="foundSettlement_label" text="Build settlement:" position="25,225" />
+	<HBox position="180,210">
 		<ToggleImageButton name='bg_button' border_size="0" 
 			inactive_image="content/gui/images/buttons/msg_button_bw.png" 
 			up_image="content/gui/images/buttons/msg_button.png" 
@@ -39,7 +39,7 @@
 			hover_image="content/gui/images/buttons/msg_button_h.png" />
 	</HBox>
 
-	<HBox position="186,205">
+	<HBox position="186,215">
 		<ToggleImageButton name="foundSettlement" tooltip="Build settlement" 
 			inactive_image="content/gui/icons/ship/anchor_bw.png" 
 			up_image="content/gui/icons/ship/anchor.png" 
@@ -47,7 +47,7 @@
 			hover_image="content/gui/icons/ship/anchor_h.png" />
 	</HBox>
 
-	<Container position="0,250" size="600,100" name="stance"/>
+	<Container position="0,270" size="600,100" name="stance"/>
 
 </Container>
 </Container>
