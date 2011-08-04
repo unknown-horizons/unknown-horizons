@@ -130,8 +130,6 @@ class IngameGui(LivingObject):
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = Callback(self._build, id)
 
-		self.__toggle_ingame_pause_shown = None
-
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : None,
@@ -442,28 +440,6 @@ class IngameGui(LivingObject):
 		if not (len(new_name) == 0 or new_name.isspace()):
 			RenameObject(instance, new_name).execute(self.session)
 		self._hide_change_name_dialog()
-
-	def toggle_ingame_pause(self):
-		"""
-		Called when the hotkey for pause is pressed.
-		Displays pause notification and does the actual (un)pausing.
-		"""
-		if not self.__toggle_ingame_pause_shown:
-			self.session.speed_pause()
-			self.main_gui.on_escape = self.toggle_ingame_pause
-
-			message = _("Hit P to continue the game or click below!")
-			popup = self.main_gui.build_popup(_("Game paused"), message)
-			popup.mapEvents({'okButton': self.toggle_ingame_pause})
-			popup.show()
-			# remember reference to popup for hiding
-			self.__toggle_ingame_pause_shown = popup
-		else:
-			self.main_gui.on_escape = self.main_gui.toggle_pause
-			self.session.speed_unpause()
-
-			self.__toggle_ingame_pause_shown.hide()
-			self.__toggle_ingame_pause_shown = None
 
 	def on_escape(self):
 		if self.logbook.is_visible():

@@ -73,7 +73,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == '-':
 			self.session.speed_down()
 		elif keystr == 'p':
-			self.session.ingame_gui.toggle_ingame_pause()
+			self.session.gui.toggle_pause()
 		elif keystr == 'l':
 			self.session.ingame_gui.logbook.toggle_visibility()
 		elif keystr == 'd':
