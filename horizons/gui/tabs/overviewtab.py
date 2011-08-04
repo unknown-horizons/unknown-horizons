@@ -197,10 +197,9 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
-		stance_widget = StanceWidget()
+		stance_widget = self.widget.findChild(name='stance')
 		stance_widget.init(self.instance)
 		self.add_remove_listener(stance_widget.remove)
-		self.widget.findChild(name='stance').addChild(stance_widget)
 
 class ProductionOverviewTab(OverviewTab):
 	production_line_gui_xml = "overview_productionline.xml"

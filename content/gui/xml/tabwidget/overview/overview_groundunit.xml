@@ -1,17 +1,20 @@
 <?xml version="1.0"?>
 <Container size="250,550">
-<TabBG amount="6"/>
+<TabBG amount="5"/>
 	<Icon name="player_emblem" position="25,50"/>
 <Container position="0,70" size="245,320" >
+	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<Spacer min_size="0"  max_size="50" />
+		<Label name='name'  border_size="0"/>
+	</HBox>
+	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-	<HBox position="20,170">
+	<HBox position="20,200">
 		<Label text="Weapons:"/>
 		<WeaponStorageWidget name="weapon_storage"/>
 	</HBox>
-	<HealthWidget name="health" position="180,165"/>
+	<HealthWidget name="health" position="180,195"/>
 
-	<Icon image="content/gui/images/background/hr.png" position="20,190" />
-
-	<Container position="0,270" size="600,100" name="stance"/>
+	<StanceWidget position="0,220" name="stance"/>
 </Container>
 </Container>

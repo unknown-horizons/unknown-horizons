@@ -133,6 +133,8 @@ class FightingGroundUnit(GroundUnit, MovingWeaponHolder):
 		#NOTE weapons
 		self.add_weapon_to_storage(WEAPONS.DAGGER)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
+		#TODO make system for loading unit name
+		self.name = 'Bomber Man'
 
 	def act_attack(self, dest):
 		"""
