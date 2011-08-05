@@ -31,6 +31,7 @@ from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget, create_resource_icon
+from horizons.entities import Entities
 
 
 class OverviewTab(TabInterface):
@@ -147,8 +148,8 @@ class ShipOverviewTab(OverviewTab):
 
 		if island_without_player_settlement_found:
 			events['foundSettlement'] = Callback(self.instance.session.ingame_gui._build, \
-		                                       BUILDINGS.BRANCH_OFFICE_CLASS, \
-		                                       weakref.ref(self.instance) )
+			                                     BUILDINGS.BRANCH_OFFICE_CLASS, \
+			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettlement').set_active()
 		else:
@@ -156,6 +157,15 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('bg_button').set_inactive()
 			self.widget.child_finder('foundSettlement').set_inactive()
 
+		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
+		   self.instance,
+		   Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].costs,
+		   {},
+		   res_from_ship = True )
+		events['foundSettlement/mouseEntered'] = cb
+		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
+		   None ) # hides the resource status widget
+		events['foundSettlement/mouseExited'] = cb
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
 
