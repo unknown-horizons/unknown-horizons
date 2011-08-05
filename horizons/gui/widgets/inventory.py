@@ -107,11 +107,18 @@ class Inventory(pychan.widgets.Container):
 		self.adaptLayout()
 		self.stylize('menu_black')
 
-	def get_buttons(self):
-		"""Gets all the buttons in inventory by searching for ImageFillStatusButton"""
-		buttons = []
+	def apply_to_buttons(self, action, filt = None):
+		"""Applies action to all buttons shown in inventory
+		@param action: function called that touches button
+		@param filt: function used to filter the buttons
+		both functions take one parameter which is the button
+		"""
+		if filt:
+			assert callable(filt)
+		assert callable(action)
+
 		def _find_widget(widget):
 			if isinstance(widget, ImageFillStatusButton):
-				buttons.append(widget)
+				if filt == None or filt(widget):
+					action(widget)
 		self.deepApply(_find_widget)
-		return buttons

@@ -107,16 +107,15 @@ class FightingShipInventoryTab(ShipInventoryTab):
 			self.weapon_inventory)
 
 	def refresh(self):
-		ship_inventory_weapon_buttons = [ b for b in self.widget.findChild(name='inventory').get_buttons()\
-			if b.res_id == WEAPONS.CANNON ]
-		weapon_inventory_weapon_buttons = [ b for b in self.widget.findChild(name='weapon_inventory').get_buttons()\
-			if b.res_id == WEAPONS.CANNON ]
-		for button in ship_inventory_weapon_buttons:
+		#TODO system for getting equipable weapons
+		def apply_equip(button):
 			button.button.tooltip = _("Equip weapon")
 			button.button.capture(Callback(self.equip_weapon, button.res_id))
-		for button in weapon_inventory_weapon_buttons:
+		def apply_unequip(button):
 			button.button.tooltip = _("Unequip weapon")
 			button.button.capture(Callback(self.unequip_weapon, button.res_id))
+		self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip, lambda b: b.res_id == WEAPONS.CANNON)
+		self.widget.findChild(name='inventory').apply_to_buttons(apply_equip, lambda b: b.res_id == WEAPONS.CANNON)
 		super(FightingShipInventoryTab, self).refresh()
 
 	def equip_weapon(self, weapon_id):
