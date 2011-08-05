@@ -73,7 +73,6 @@ class SelectMultiTab(TabInterface):
 			self.column_number = 0
 			self.row_number += 1
 		self.column_number += 1
-		entry.widget.mapEvents({"unit_button" : self.hide})
 		self.widget.findChild(name="hbox_%s" % self.row_number).addChild(entry.widget)
 		self.entries.append(entry)
 
@@ -120,16 +119,17 @@ class SelectMultiTab(TabInterface):
 		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
 			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
 
-		# if all units die, hide the tab
-		if not self.instances:
-			self.session.ingame_gui.hide_menu()
-			return
+		if self.widget.isVisible():
+			# if all units die, hide the tab
+			if not self.instances:
+				self.session.ingame_gui.hide_menu()
+				return
 
-		# if one unit remains, show it's menu
-		if len(self.instances) == 1:
-			self.session.ingame_gui.hide_menu()
-			self.instances[0].show_menu()
-			return
+			# if one unit remains, show it's menu
+			if len(self.instances) == 1:
+				self.session.ingame_gui.hide_menu()
+				self.instances[0].show_menu()
+				return
 
 		self.type_number[instance.id] -= 1
 		if self.type_number[instance.id] == 0:
