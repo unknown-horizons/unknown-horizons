@@ -27,6 +27,8 @@ import random
 import logging
 import copy
 
+from collections import deque
+
 import horizons.main
 from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
@@ -56,6 +58,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	   * fish_indexer - a BuildingIndexer for all fish on the map
 	   * session - reference to horizons.session.Session instance of the current game
 	   * water - Dictionary of coordinates that are water
+	   * water_body - Dictionary of water bodies {coords: area_number, ...}
+	   * sea_number - The water_body number of the sea
 	   * trader - The world's ingame free trader player instance
 	   * pirate - The world's ingame pirate player instance
 	   TUTORIAL: You should now check out the _init() function.
@@ -198,6 +202,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# use a dict because it's directly supported by the pathfinding algo
 		self.water = dict.fromkeys(list(self.ground_map), 1.0)
+		self._init_water_bodies()
+		self.sea_number = self.water_body[(self.min_x, self.min_y)]
 
 		# assemble list of water and coastline for ship, that can drive through shallow water
 		# NOTE: this is rather a temporary fix to make the fisher be able to move
@@ -250,6 +256,28 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
+
+	def _init_water_bodies(self):
+		""" This function runs the flood fill algorithm on the water to make it easy to recognise different water bodies """
+		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+
+		n = 0
+		self.water_body = dict.fromkeys(self.water)
+		for coords, num in self.water_body.iteritems():
+			if num is not None:
+				continue
+
+			self.water_body[coords] = n
+			queue = deque([coords])
+			while queue:
+				x, y = queue[0]
+				queue.popleft()
+				for dx, dy in moves:
+					coords2 = (x + dx, y + dy)
+					if coords2 in self.water_body and self.water_body[coords2] is None:
+						self.water_body[coords2] = n
+						queue.append(coords2)
+			n += 1
 
 	def init_fish_indexer(self):
 		self.fish_indexer = BuildingIndexer(16, self.full_map)

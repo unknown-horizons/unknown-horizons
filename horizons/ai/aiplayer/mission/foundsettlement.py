@@ -113,6 +113,7 @@ class FoundSettlement(Mission):
 		"""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		island = land_manager.island
+		world = island.session.world
 		personality = land_manager.owner.personality_manager.get('FoundSettlement')
 		options = []
 
@@ -120,11 +121,10 @@ class FoundSettlement(Mission):
 			ok = False
 			for x_offset, y_offset in moves:
 				for d in xrange(2, 6):
-					x2 = x + d * x_offset
-					y2 = y + d * y_offset
-					if (x2, y2) not in island.ground_map:
+					coords = (x + d * x_offset, y + d * y_offset)
+					if coords in world.water_body and world.water_body[coords] == world.water_body[ship.position.to_tuple()]:
+						# the planned branch office should be reachable from the ship's water body
 						ok = True
-						break
 			if not ok:
 				continue
 
