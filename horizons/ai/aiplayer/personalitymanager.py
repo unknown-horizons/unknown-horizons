@@ -25,7 +25,7 @@ from horizons.util.python import decorators
 
 class PersonalityManager(object):
 	def __init__(self):
-		self._personality = OtherPersonality
+		self._personality = DefaultPersonality
 
 	def get(self, name):
 		return getattr(self._personality, name)
