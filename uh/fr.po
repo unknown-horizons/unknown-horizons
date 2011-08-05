@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-08-05 09:46+0200\n"
+"PO-Revision-Date: 2011-08-05 10:08+0200\n"
 "Last-Translator: deather <deather.jeuxlinux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -36,7 +36,7 @@ msgstr "Ceci effacera tous les changements effectués jusque là."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr "Voulez vous continuer ?"
+msgstr "Voulez-vous continuer ?"
 
 #: horizons/engine.py:135
 msgid "System default"
@@ -450,11 +450,11 @@ msgstr "Limite : %st par place"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr "vide"
+msgstr "Vide"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr "Il n'y a encore rien dans votre journal de bord!"
+msgstr "Il n'y a encore rien dans votre journal de bord !"
 
 #: horizons/gui/widgets/routeconfig.py:56 horizons/i18n/guitranslations.py:150
 msgid "Start route"
@@ -590,11 +590,11 @@ msgstr "Bâtiments des colons"
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr "Boucherie: A besoin de cochons ou de bétails. Produit de la nourriture."
+msgstr "Boucherie : Besoin de cochons ou de bovins. Produit de la nourriture."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr "Elevage bovin: Elève du bétail. Necessite une ferme"
+msgstr "Enclos de bovin: Élève des bovins. Nécessite une ferme."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
@@ -602,11 +602,11 @@ msgstr "Charbonnier : Produit du charbon de bois."
 
 #: horizons/i18n/guitranslations.py:81
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr "Médecin : traite les maladies. Utilise des plantes médicinales"
+msgstr "Médecin : Traite les maladies. Utilise des plantes médicinales."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr "herboristerie : Produit des plantes médicinales. Nécessite une ferme."
+msgstr "Herboristerie : Produit des plantes médicinales. Nécessite une ferme."
 
 # I think it's good like that
 #: horizons/i18n/guitranslations.py:83
@@ -819,7 +819,7 @@ msgstr "Ajouter à la liste"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "Leave production overview"
-msgstr "Quitter la fenetre de production"
+msgstr "Quitter la fenêtre de production"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "Refresh data"
@@ -1078,7 +1078,7 @@ msgstr "Profondeur des couleurs :"
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Enable edge scrolling:"
-msgstr "Activer la défilement sur le bord d'écran :"
+msgstr "Activer le défilement sur le bord d'écran :"
 
 #: horizons/i18n/guitranslations.py:241
 msgid "Effects volume:"
@@ -1106,7 +1106,7 @@ msgstr "Son"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "Select language:"
-msgstr "Sélectionner la langue:"
+msgstr "Sélectionner la langue :"
 
 #: horizons/i18n/guitranslations.py:249
 msgid "Enable minimap rotation:"
@@ -1122,7 +1122,7 @@ msgstr "(0 pour valeur par défaut)"
 
 #: horizons/i18n/guitranslations.py:252
 msgid "Network port:"
-msgstr "Port réseau:"
+msgstr "Port réseau :"
 
 #: horizons/i18n/guitranslations.py:253
 msgid "Number of autosaves:"
@@ -1177,7 +1177,7 @@ msgstr "Commencer la partie :"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
-msgstr "Effacer la sauvegarde séléctionnée"
+msgstr "Effacer la sauvegarde sélectionnée"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Choose a map to play:"
@@ -1221,7 +1221,7 @@ msgstr "Annuler la construction:"
 
 #: horizons/i18n/guitranslations.py:286
 msgid "(lose all resources)"
-msgstr "(perdre toutes les ressources)"
+msgstr "(Perdre toutes les ressources)"
 
 # context is the boat builder overview, so it means 'ship that currently gets constructed'
 #: horizons/i18n/guitranslations.py:287
@@ -1314,7 +1314,7 @@ msgstr "Impôts"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
-msgstr "Montrer les ressources produites dans cette colonie "
+msgstr "Montrer les ressources produites dans cette colonie."
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
