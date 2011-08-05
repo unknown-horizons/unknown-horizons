@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-08-03 13:00+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2011-08-05 09:46+0200\n"
+"Last-Translator: deather <deather.jeuxlinux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr ""
 #: horizons/engine.py:469
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
-"Vérifiez le port entré et assurez vous qu'il soit dans l'intervalle indiqué."
+"Vérifiez le port entré et assurez-vous qu'il soit dans l'intervalle indiqué."
 
 #: horizons/engine.py:481
 msgid "Failed to apply new network data."
@@ -126,7 +126,7 @@ msgstr "Aucune partie sauvegardée"
 
 #: horizons/gui/gui.py:201
 msgid "There are no saved games to load"
-msgstr "Il y a aucune partie sauvegardée à charger"
+msgstr "Il n'y a aucune partie sauvegardée à charger."
 
 #: horizons/gui/gui.py:208 horizons/i18n/guitranslations.py:163
 #: horizons/i18n/guitranslations.py:202
@@ -209,7 +209,7 @@ msgstr "Aucun fichier sélectionné"
 # "supprimer" is better than "effacer"
 #: horizons/gui/gui.py:446
 msgid "You need to select a savegame to delete"
-msgstr "Vous devez sélectionner une sauvegarde à supprimer"
+msgstr "Vous devez sélectionner une sauvegarde à supprimer."
 
 #: horizons/gui/gui.py:449
 #, python-format
@@ -243,8 +243,8 @@ msgstr "Réseau non initialisé"
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Networking isn't initialised, probably because of configuration issues. Check your settings!"
 msgstr ""
-"Le réseau n'a pas été initialisé, cela peut être du à des problèmes de "
-"configuration. Veuillez vérifiez votre configuration !"
+"Le réseau n'a pas été initialisé, cela peut être dû à des problèmes de "
+"configuration. Veuillez vérifier votre configuration !"
 
 #: horizons/gui/modules/multiplayermenu.py:90
 #: horizons/gui/modules/multiplayermenu.py:102
@@ -288,10 +288,10 @@ msgstr "Créateur : "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
-"La version du jeu de la personne qui a crée cette partie diffère de la "
+"La version du jeu de la personne qui a créé cette partie diffère de la "
 "votre. Chaque joueur doit utiliser la même version. Cela peut être corrigé "
 "si chaque joueur effectue une mise à jour vers la dernière version. Version "
-"du jeu: %(gameversion)s Votre version: %(ownversion)s"
+"du jeu: %(gameversion)s. Votre version: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:168
 msgid "Wrong version"
@@ -321,7 +321,7 @@ msgstr "Nom du joueur invalide"
 
 #: horizons/gui/modules/singleplayermenu.py:128
 msgid "You entered an invalid playername"
-msgstr "Vous avez entrer un nom de joueur invalide"
+msgstr "Vous avez entré un nom de joueur invalide."
 
 #: horizons/gui/modules/singleplayermenu.py:179
 msgid "Invalid scenario file"
