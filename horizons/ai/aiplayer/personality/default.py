@@ -180,6 +180,13 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = SETTLER.PIONEER_LEVEL
 
+	class DoNothingGoal:
+		enabled = True
+		default_priority = 1500 # mean priority; changing this will influence which goals are more important than doing nothing
+		min_settler_level = SETTLER.SAILOR_LEVEL
+		priority_variance = 50
+		likelihood = 0.1 # likelihood that it will be active [0, 1]
+
 	class EnlargeCollectorAreaGoal:
 		enabled = True
 		default_priority = 850

@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import copy
 import logging
 
 from collections import deque, defaultdict
@@ -58,6 +59,7 @@ from building.boatbuilder import AbstractBoatBuilder
 from building.signalfire import AbstractSignalFire
 
 from goal.settlementgoal import SettlementGoal
+from goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
@@ -143,6 +145,7 @@ class AIPlayer(GenericAI):
 		self.complete_inventory = CompleteInventory(self)
 		self.unit_builder = UnitBuilder(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
+		self.goals = [DoNothingGoal(self)]
 
 		self.__island_value_cache = {} # cache island values
 
@@ -337,6 +340,10 @@ class AIPlayer(GenericAI):
 
 	def handle_settlements(self):
 		goals = []
+		for goal in self.goals:
+			goal.update()
+			if goal.can_be_activated:
+				goals.append(goal)
 		for settlement_manager in self.settlement_managers:
 			settlement_manager.tick(goals)
 		goals.sort(reverse = True)
@@ -354,7 +361,8 @@ class AIPlayer(GenericAI):
 				self.log.info('%s blocked further settlement resource usage by goal %s', self, goal)
 				settlements_blocked.add(goal.settlement_manager.worldid)
 			else:
-				break # built something that; stop because otherwise the AI could look too fast
+				self.log.info('%s all further goals during this tick blocked by goal %s', self, goal)
+				break # built something; stop because otherwise the AI could look too fast
 
 		self.log.info('%s, had %d active goals', self, sum(goal.active for goal in goals))
 		for goal in goals:
