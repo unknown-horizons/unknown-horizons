@@ -89,6 +89,7 @@ class Buildable(object):
 			# TODO: if the rotation changes here for non-quadratic buildings, wrong results will be returned
 			rotation = cls._check_rotation(session, position, rotation)
 			tearset = cls._check_buildings(session, position)
+			cls._check_units(session, position)
 			if check_settlement:
 				cls._check_settlement(session, position, ship=ship, issuer=issuer)
 		except _NotBuildableError:
@@ -187,6 +188,11 @@ class Buildable(object):
 						raise _NotBuildableError()
 		return tearset
 
+	@classmethod
+	def _check_units(cls, session, position):
+		for tup in position.tuple_iter():
+			if tup in session.world.ground_unit_map:
+				raise _NotBuildableError()
 
 class BuildableSingle(Buildable):
 	"""Buildings one can build single. """
