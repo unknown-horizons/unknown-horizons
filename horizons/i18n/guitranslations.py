@@ -89,6 +89,11 @@ def set_translations():
 			"tobaccofield-1"              : _("Tobacco field: Produces tobacco. Needs a farm."),
 			"tobacconist-1"               : _("Tobacconist: Produces tobaccos out of tobacco."),
 			"toolmaker-1"                 : _("Toolmaker: Produces tools out of iron.")},
+		"buildtab_no_settlement.xml" : {
+			"headline"                    : _("Game start"),
+			"howto_1_need_bo"             : _("You need to found a settlement before you can construct buildings!"),
+			"howto_2_navigate_ship"       : _("Select your ship and approach the coast via right-click."),
+			"howto_3_build_bo"            : _("Afterwards, press the large button in the ship overview tab.")},
 		"place_building.xml" : {
 			"headline"                    : _("Build"),
 			"running_costs_label"         : _("Running costs:")},
@@ -338,7 +343,7 @@ def set_translations():
 		"overview_buildrelated.xml" : {
 			"headline"                    : _("Build fields")},
 		"island_inventory.xml" : {
-			"headline"                    : _("Inventory")},
+			"headline"                    : _("Settlement inventory")},
 		"mainsquare_inhabitants.xml" : {
 			"avg_happiness_lbl"           : _("Average happiness:"),
 			"headline"                    : _("Settler overview"),

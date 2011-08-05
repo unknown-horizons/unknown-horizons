@@ -36,7 +36,7 @@ class InventoryTab(TabInterface):
 		self.button_active_image = icon_path % 'a'
 		self.button_down_image = icon_path % 'd'
 		self.button_hover_image = icon_path % 'h'
-		self.tooltip = _("Inventory")
+		self.tooltip = _("Settlement inventory")
 		self.widget.child_finder('inventory').init(self.instance.session.db, \
 		                                           self.instance.inventory)
 

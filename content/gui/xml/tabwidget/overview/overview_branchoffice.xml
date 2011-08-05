@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Overview tab for buildings -->
-<Container size="260,400">
-<TabBG amount="5"/>
+<Container size="260,450">
+<TabBG amount="6" />
 	<Icon name="player_emblem" position="25,50"/>
 
 	<Container position="0,70" size="245,300" >
