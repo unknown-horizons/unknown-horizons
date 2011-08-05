@@ -337,6 +337,7 @@ class WeaponHolder(object):
 
 		if self._fired_weapons_number != 0:
 			self.act_attack(dest)
+			print 'acted attack ftw'
 
 	def act_attack(self, dest):
 		"""
@@ -466,8 +467,19 @@ class MovingWeaponHolder(WeaponHolder):
 
 			fireable_number = len(self._fireable)
 			self.fire_all_weapons(dest)
+			move_closer = False
 			# if no weapon was fired, because of holder positioned in dead range, move closer
 			if self._fired_weapons_number == 0 and fireable_number != 0:
+				# no weapon was fired but i could have fired weapons
+				# check if i have weapons that could be shot from this position
+				move_closer = True
+				distance = self.position.center().distance(self._target.position.center())
+				for weapon in self._weapon_storage:
+					if weapon.check_target_in_range(distance):
+						move_closer = False
+						break
+
+			if move_closer:
 				destination = Annulus(self._target.position.center(), self._min_range, self._min_range)
 				self._move_and_attack(destination)
 			else:

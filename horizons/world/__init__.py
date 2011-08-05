@@ -370,6 +370,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			while point not in Circle(ship.position, 5):
 				point = self.get_random_possible_ship_position()
 			ship = CreateUnit(player.worldid, UNITS.FRIGATE, point.x, point.y)(issuer=self.session.world.player)
+			point = self.get_random_possible_ground_unit_position()
+			unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+			point = self.get_random_possible_ground_unit_position()
+			while point not in Circle(unit.position, 5):
+				point = self.get_random_possible_ground_unit_position()
+			unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
 			if player is self.player:
 				point = self.get_random_possible_ship_position()
 				while point not in Circle(ship.position, 5):
@@ -411,16 +417,21 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				while point not in Circle(ship.position, 5):
 					point = self.get_random_possible_ship_position()
 				ship = CreateUnit(player.worldid, UNITS.FRIGATE, point.x, point.y)(issuer=self.session.world.player)
-				ship.name="Gigi"
-				point = self.islands[0].ground_map.keys()[10]
-				CreateUnit(player.worldid, 1000018, point[0], point[1])(issuer=self.session.world.player)
-				point = self.islands[0].ground_map.keys()[13]
-				CreateUnit(player.worldid, 1000018, point[0], point[1])(issuer=self.session.world.player)
-				point = self.islands[0].ground_map.keys()[15]
-				CreateUnit(player.worldid, 1000018, point[0], point[1])(issuer=self.session.world.player)
-				point = self.islands[0].ground_map.keys()[18]
-				CreateUnit(player.worldid, 1000018, point[0], point[1])(issuer=self.session.world.player)
-				point = Point(point[0], point[1])
+				point = self.get_random_possible_ground_unit_position()
+				unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+				point = self.get_random_possible_ground_unit_position()
+				while point not in Circle(unit.position, 5):
+					point = self.get_random_possible_ground_unit_position()
+				unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+				point = self.get_random_possible_ground_unit_position()
+				while point not in Circle(unit.position, 5):
+					point = self.get_random_possible_ground_unit_position()
+				unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+				point = self.get_random_possible_ground_unit_position()
+				while point not in Circle(unit.position, 5):
+					point = self.get_random_possible_ground_unit_position()
+				unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+
 			#
 			#
 			#
@@ -437,6 +448,21 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are None. No players loaded?"
 		return ret_coords
+
+	@decorators.make_constants()
+	def get_random_possible_ground_unit_position(self):
+		"""Returns a position in water, that is not at the border of the world"""
+		offset = 2
+		while True:
+			x = self.session.random.randint(self.min_x + offset, self.max_x - offset)
+			y = self.session.random.randint(self.min_y + offset, self.max_y - offset)
+
+			if (x, y) in self.ground_unit_map:
+				continue
+
+			for island in self.islands:
+				if (x, y) in island.path_nodes.nodes:
+					return Point(x, y)
 
 	@decorators.make_constants()
 	def get_random_possible_ship_position(self):
