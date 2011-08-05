@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-08-05 10:08+0200\n"
+"PO-Revision-Date: 2011-08-05 10:00+0200\n"
 "Last-Translator: deather <deather.jeuxlinux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -32,7 +32,7 @@ msgstr "Restaurer les paramètres par défaut"
 
 #: horizons/engine.py:71
 msgid "This will delete all changes to the settings you made so far."
-msgstr "Ceci effacera tous les changements effectués jusque là."
+msgstr "Ceci effacera tous les réglages effectués jusque là."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
@@ -52,15 +52,15 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"Le \"SDL-Renderer\" est uniquement un système de réserve et peut engendrer de "
-"gravesérieux problèmes graphiques.\n"
+"Le SDL renderer est uniquement un système de réserve et peut engendrer de "
+"sérieux problèmes graphiques.\n"
 "\n"
-"Utilisation à vos propres risques et périls !"
+"Utilisation à vos propres risques!"
 
 #: horizons/engine.py:224
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Le langage configuré %(lang)s de %(place)s ne peut être chargé."
+msgstr "Le langage configuré %(lang)s de %(place)s ne peut être chargé"
 
 #: horizons/engine.py:467
 msgid "Invalid network port"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: horizons/engine.py:481
 msgid "Failed to apply new network data."
-msgstr "Échec lors de l'application des nouvelles données réseau"
+msgstr "Échec lors de l'application des nouvelles données réseau."
 
 #: horizons/engine.py:482 horizons/main.py:120
 msgid "Networking couldn't be initialised with the current configuration."
@@ -126,7 +126,7 @@ msgstr "Aucune partie sauvegardée"
 
 #: horizons/gui/gui.py:201
 msgid "There are no saved games to load"
-msgstr "Il n'y a aucune partie sauvegardée à charger."
+msgstr "Il n'y a aucune partie sauvegardée à charger"
 
 #: horizons/gui/gui.py:208 horizons/i18n/guitranslations.py:163
 #: horizons/i18n/guitranslations.py:202
@@ -209,12 +209,12 @@ msgstr "Aucun fichier sélectionné"
 # "supprimer" is better than "effacer"
 #: horizons/gui/gui.py:446
 msgid "You need to select a savegame to delete"
-msgstr "Vous devez sélectionner une sauvegarde à supprimer."
+msgstr "Vous devez sélectionner une sauvegarde à supprimer"
 
 #: horizons/gui/gui.py:449
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr "Voulez-vous vraiment supprimer la sauvegarde \"%s\" ?"
+msgstr "Voulez-vous vraiment supprimer la sauvegarde \"%s\"?"
 
 #: horizons/gui/gui.py:451
 msgid "Confirm deletion"
@@ -321,7 +321,7 @@ msgstr "Nom du joueur invalide"
 
 #: horizons/gui/modules/singleplayermenu.py:128
 msgid "You entered an invalid playername"
-msgstr "Vous avez entré un nom de joueur invalide."
+msgstr "Vous avez entré un nom de joueur invalide"
 
 #: horizons/gui/modules/singleplayermenu.py:179
 msgid "Invalid scenario file"
@@ -351,7 +351,7 @@ msgstr "Construction"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr "Sommaire du constructeur de bateaux."
+msgstr "Sommaire du constructeur de bateaux"
 
 #: horizons/gui/tabs/boatbuildertab.py:62 horizons/i18n/guitranslations.py:297
 msgid "Fishing boat"
@@ -653,7 +653,7 @@ msgstr "Outil de pré-visualisation de textes pour les fichiers Scénario"
 #: horizons/i18n/guitranslations.py:96
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
-"Sélectionnez un scénario et cliquez sur charger/décharger pour mettre à jour "
+"sélectionnez un scénario et cliquez sur charger/décharger pour mettre à jour "
 "le journal de bord"
 
 #: horizons/i18n/guitranslations.py:97
@@ -691,7 +691,7 @@ msgstr "Journal de bord"
 
 #: horizons/i18n/guitranslations.py:108
 msgid "Rotate map counterclockwise"
-msgstr "Tourner la carte dans le sens anti-horaire."
+msgstr "Tourner la carte dans le sens anti-horaire"
 
 #: horizons/i18n/guitranslations.py:109
 msgid "Rotate map clockwise"
@@ -787,11 +787,11 @@ msgstr "Quitter le journal de bord"
 
 #: horizons/i18n/guitranslations.py:139
 msgid "Read prev. entries"
-msgstr "Lire les pages préc."
+msgstr "Lire les pages précèdentes"
 
 #: horizons/i18n/guitranslations.py:140
 msgid "Read next entries"
-msgstr "Lire les pages suiv."
+msgstr "Lire les pages suivantes"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
@@ -1110,7 +1110,7 @@ msgstr "Sélectionner la langue :"
 
 #: horizons/i18n/guitranslations.py:249
 msgid "Enable minimap rotation:"
-msgstr "Activer la rotation de la mini-carte"
+msgstr "Activer la rotation de la mini-carte:"
 
 #: horizons/i18n/guitranslations.py:250
 msgid "Music volume:"
@@ -1173,7 +1173,7 @@ msgstr "Vos parties sauvegardées :"
 # 100%
 #: horizons/i18n/guitranslations.py:267 horizons/i18n/guitranslations.py:279
 msgid "Start game"
-msgstr "Commencer la partie :"
+msgstr "Commencer la partie"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
@@ -1221,7 +1221,7 @@ msgstr "Annuler la construction:"
 
 #: horizons/i18n/guitranslations.py:286
 msgid "(lose all resources)"
-msgstr "(Perdre toutes les ressources)"
+msgstr "(perdre toutes les ressources)"
 
 # context is the boat builder overview, so it means 'ship that currently gets constructed'
 #: horizons/i18n/guitranslations.py:287
@@ -1314,7 +1314,7 @@ msgstr "Impôts"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
-msgstr "Montrer les ressources produites dans cette colonie."
+msgstr "Montrer les ressources produites dans cette colonie"
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
@@ -1347,7 +1347,7 @@ msgstr "Taux d'imposition"
 # le contexte est à vérifier
 #: horizons/i18n/guitranslations.py:336
 msgid "capacity utilization"
-msgstr "Capacité utilisée"
+msgstr "capacité utilisée"
 
 #: horizons/i18n/guitranslations.py:339
 msgid "Resource deposit"
@@ -1465,7 +1465,7 @@ msgstr "Erreur: Impossible de trouver la carte \"%s\"."
 
 #: horizons/main.py:289 horizons/main.py:332
 msgid "Error: Found multiple matches: "
-msgstr "Erreur: Plusieurs correspondances trouvées: "
+msgstr "Erreur: Plusieurs correspondances trouvées:"
 
 #: horizons/main.py:329
 #, python-format
@@ -1546,7 +1546,7 @@ msgstr ""
 #: horizons/spsession.py:123
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
-"Si cette erreur se reproduit, veuillez contacter l'équipe de développement:"
+"Si cette erreur se reproduit, merci de contacter l'équipe de développement:"
 
 #: horizons/spsession.py:131
 msgid "No quicksaves found"
@@ -1765,7 +1765,7 @@ msgstr "Tente du pêcheur"
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr "herboristerie"
+msgstr "Herboristerie"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -1855,7 +1855,7 @@ msgstr "Champ de tabac"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr "marchand de tabac"
+msgstr "Marchand de tabac"
 
 #: sqlite/Building
 msgid "Toolmaker"
@@ -1967,7 +1967,7 @@ msgstr "bétail"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr "Animal de boucherie"
+msgstr "animal de boucherie"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1987,11 +1987,11 @@ msgstr "communauté"
 
 #: sqlite/Resources
 msgid "deer food A"
-msgstr "Nourriture pour biche A"
+msgstr "nourriture pour cerf A"
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr "Viande de cerf"
+msgstr "viande de cerf"
 
 #: sqlite/Resources
 msgid "education"
