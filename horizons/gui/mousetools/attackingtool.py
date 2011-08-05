@@ -87,10 +87,8 @@ class AttackingTool(SelectionTool):
 			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner) \
 				and not evt.isShiftPressed():
 				continue
-			#NOTE attacks only buildings or ships
-			#TODO attakc only instances that have health component
 			try:
-				if instance.is_building or instance.is_ship:
+				if instance.has_component('health'):
 					attackable = True
 					target = instance
 			except AttributeError:

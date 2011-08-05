@@ -89,7 +89,7 @@ class WeaponStorageWidget(pychan.widgets.HBox):
 		self.instance = instance
 		self.update()
 
-	def remove(self):
+	def remove(self, caller = None):
 		self.instance = None
 
 	def update(self):
