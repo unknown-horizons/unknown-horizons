@@ -321,7 +321,7 @@ class ProductionBuilder(AreaBuilder):
 				area_label[coords] = None
 		areas = 0
 		for coords in collector_area:
-			if area_label[coords] is not None:
+			if coords in area_label and area_label[coords] is not None:
 				continue
 
 			queue = deque([coords])
