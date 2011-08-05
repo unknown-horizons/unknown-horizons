@@ -4,13 +4,15 @@
 		image="content/gui/images/background/widgets/map_bg.png" />
 	<Label name="speed_text" text="" position="48,88" font="libertine_small_black"/>
 
-	<TooltipButton name="speedUp" size="28,28" position="48,63"
+	<ToggleImageButton name="speedUp" size="28,28" position="48,63"
+		inactive_image="content/gui/icons/widgets/minimap/speed_up_bw.png"
 		up_image="content/gui/icons/widgets/minimap/speed_up.png"
 		down_image="content/gui/icons/widgets/minimap/speed_up_h.png"
 		hover_image="content/gui/icons/widgets/minimap/speed_up_h.png"
 		tooltip="Increase game speed"
 		is_focusable="0" />
-	<TooltipButton name="speedDown" size="28,28" position="48,105"
+	<ToggleImageButton name="speedDown" size="28,28" position="48,105"
+		inactive_image="content/gui/icons/widgets/minimap/speed_down_bw.png"
 		up_image="content/gui/icons/widgets/minimap/speed_down.png"
 		down_image="content/gui/icons/widgets/minimap/speed_down_h.png"
 		hover_image="content/gui/icons/widgets/minimap/speed_down_h.png"
@@ -30,13 +32,13 @@
 		tooltip="Rotate map clockwise"
 		is_focusable="0" />
 
-	<TooltipButton name="zoomIn" size="28,28" position="195,63"
+	<ToggleImageButton name="zoomIn" size="28,28" position="195,63"
 		up_image="content/gui/icons/widgets/minimap/zoom_in.png"
 		down_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
 		hover_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
 		tooltip="Zoom in"
 		is_focusable="0" />
-	<TooltipButton name="zoomOut" size="28,28" position="195,105"
+	<ToggleImageButton name="zoomOut" size="28,28" position="195,105"
 		up_image="content/gui/icons/widgets/minimap/zoom_out.png"
 		down_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
 		hover_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
