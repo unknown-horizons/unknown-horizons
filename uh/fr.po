@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-08-03 12:59+0200\n"
+"PO-Revision-Date: 2011-08-03 13:00+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -60,7 +60,7 @@ msgstr ""
 #: horizons/engine.py:224
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Le langage configuré %(lang)s de %(place)s ne peut être chargé"
+msgstr "Le langage configuré %(lang)s de %(place)s ne peut être chargé."
 
 #: horizons/engine.py:467
 msgid "Invalid network port"
