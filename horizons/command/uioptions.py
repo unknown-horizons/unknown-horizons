@@ -55,3 +55,13 @@ class RenameObject(GenericCommand):
 	"""Rename a NamedObject"""
 	def __init__(self, obj, new_name):
 		super(RenameObject, self).__init__(obj, "set_name", new_name)
+
+class EquipWeaponFromInventory(GenericCommand):
+	"""Equips a weapon to weapon storage from resource inventory"""
+	def __init__(self, obj, weapon_id, number):
+		super(EquipWeaponFromInventory, self).__init__(obj, "equip_from_inventory", weapon_id, number)
+
+class UnequipWeaponToInventory(GenericCommand):
+	"""Equips a weapon to weapon storage from resource inventory"""
+	def __init__(self, obj, weapon_id, number):
+		super(UnequipWeaponToInventory, self).__init__(obj, "unequip_to_inventory", weapon_id, number)

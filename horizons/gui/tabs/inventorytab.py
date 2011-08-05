@@ -25,6 +25,7 @@ from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.util import Callback
 from horizons.scheduler import Scheduler
 from horizons.constants import WEAPONS
+from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
 
 class InventoryTab(TabInterface):
 
@@ -119,18 +120,12 @@ class FightingShipInventoryTab(ShipInventoryTab):
 		super(FightingShipInventoryTab, self).refresh()
 
 	def equip_weapon(self, weapon_id):
-		if self.weapon_inventory.alter(weapon_id, 1) == 0:
-			if self.instance.inventory.alter(weapon_id, -1) == 0:
-				self.instance.add_weapon_to_storage(weapon_id)
-			else:
-				self.weapon_inventory.alter(weapon_id, -1)
+		if EquipWeaponFromInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
+			self.weapon_inventory.alter(weapon_id, 1)
 		self.widget.child_finder('weapon_inventory').update()
 
 	def unequip_weapon(self, weapon_id):
-		if self.instance.inventory.alter(weapon_id, 1) == 0:
-			if self.weapon_inventory.alter(weapon_id, -1) == 0:
-				self.instance.remove_weapon_from_storage(weapon_id)
-			else:
-				self.instance.inventory.alter(weapon_id, -1)
+		if UnequipWeaponToInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
+			self.weapon_inventory.alter(weapon_id, -1)
 		self.widget.child_finder('weapon_inventory').update()
 

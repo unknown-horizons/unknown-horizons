@@ -44,6 +44,7 @@ class WeaponHolder(object):
 		self.create_weapon_storage()
 		self._target = None
 		self.add_storage_modified_listener(self.update_range)
+		self.equipped_weapon_number = 0
 		Scheduler().add_new_object(self._stance_tick, self, run_in = 2, loops = -1, loop_interval = GAME_SPEED.TICKS_PER_SECOND)
 
 	def remove(self):
@@ -96,6 +97,8 @@ class WeaponHolder(object):
 		"""
 		#if weapon is stackable, try to stack
 		weapon = None
+		if self.equipped_weapon_number == self.total_number_of_weapons:
+			return False
 		if self.session.db.get_weapon_stackable(weapon_id):
 			stackable = [w for w in self._weapon_storage if weapon_id == w.weapon_id]
 			#try to increase the number of weapons for one stackable weapon
@@ -118,7 +121,9 @@ class WeaponHolder(object):
 			weapon.add_attack_ready_listener(Callback(self._add_to_fireable, weapon))
 			weapon.add_weapon_fired_listener(self._increase_fired_weapons_number)
 			self._fireable.append(weapon)
+			self.equipped_weapon_number += 1
 		self.on_storage_modified()
+		return True
 
 	def remove_weapon_from_storage(self, weapon_id):
 		"""
@@ -127,7 +132,7 @@ class WeaponHolder(object):
 		"""
 		weapons = [w for w in self._weapon_storage if w.weapon_id == weapon_id]
 		if len(weapons) == 0:
-			return
+			return False
 		#remove last weapon added
 		weapon = weapons[-1]
 		#
@@ -152,6 +157,44 @@ class WeaponHolder(object):
 				pass
 
 		self.on_storage_modified()
+		self.equipped_weapon_number -= 1
+		return True
+
+	def equip_from_inventory(self, weapon_id, number):
+		"""Equips weapon if present in inventory
+		@param weapon_id: weapon id to be equipped
+		@param number: number of weapons to be equipped
+		returns the number of weapons that were not equipped
+		"""
+		while number:
+			if self.inventory.alter(weapon_id, -1) == 0:
+				# try to decrease number from inventory
+				if not self.add_weapon_to_storage(weapon_id):
+					# if not added, put back in inventory and break
+					self.inventory.alter(weapon_id, 1)
+					break
+			else:
+				break
+			number -= 1
+		return number
+
+	def unequip_to_inventory(self, weapon_id, number):
+		"""Unequips weapon and adds it to inventory
+		@param weapon_id: weapon id to be unequipped
+		@param number: number of weapons to be unequipped
+		returns the number of weapons that were not added to storage
+		"""
+		while number:
+			if self.remove_weapon_from_storage(weapon_id):
+				# try to remove from weapon storage
+				if self.inventory.alter(weapon_id, 1) == 1:
+					# if not added to holder inventory move back to storage and break
+					self.add_weapon_to_storage(weapon_id)
+					break
+			else:
+				break
+			number -= 1
+		return number
 
 	def get_weapon_storage(self):
 		"""
