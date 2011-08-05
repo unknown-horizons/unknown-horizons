@@ -140,6 +140,7 @@ class FightingGroundUnit(GroundUnit, MovingWeaponHolder):
 		"""
 		Rotates to target and acts correctly
 		"""
+		self.stop_for(GAME_SPEED.TICKS_PER_SECOND * 2)
 		facing_location = self._instance.getFacingLocation()
 		facing_coords = facing_location.getMapCoordinates()
 		facing_coords.x = dest.x

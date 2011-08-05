@@ -289,13 +289,6 @@ class WeaponHolder(object):
 				self._target.remove_remove_listener(self.remove_target)
 		self.remove_target()
 
-	def stop_for(self, ticks):
-		"""
-		Delays movement for a number of ticks.
-		Used when shooting in specialized unit code.
-		"""
-		if Scheduler().rem_call(self, self._move_tick):
-			Scheduler().add_new_object(self._move_tick, self, ticks)
 
 	def fire_all_weapons(self, dest, rotated = False):
 		"""
@@ -411,6 +404,14 @@ class MovingWeaponHolder(WeaponHolder):
 		Executes every few seconds, doing movement depending on the stance.
 		"""
 		self.get_component(self.stance).act()
+
+	def stop_for(self, ticks):
+		"""
+		Delays movement for a number of ticks.
+		Used when shooting in specialized unit code.
+		"""
+		if Scheduler().rem_call(self, self._move_tick):
+			Scheduler().add_new_object(Callback(self._move_tick, True), self, ticks)
 
 	def _move_and_attack(self, destination, not_possible_action = None, in_range_callback = None):
 		"""

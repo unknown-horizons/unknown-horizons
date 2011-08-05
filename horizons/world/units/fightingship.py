@@ -59,7 +59,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 		"""
 		# rotate the ship so it faces dest
 		# for this rotate facing location coordinates around position coordinates
-		self.stop_for(GAME_SPEED.TICKS_PER_SECOND * 1)
+		self.stop_for(GAME_SPEED.TICKS_PER_SECOND * 2)
 		self_location = self._instance.getLocation()
 		facing_location = self._instance.getFacingLocation()
 
