@@ -266,7 +266,7 @@ class AreaBuilder(WorldObject):
 
 	def _extend_settlement_with_storage(self, position):
 		options = []
-		for (x, y), (purpose, _) in self.plan.iteritems():
+		for x, y in self.plan:
 			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
 			if not builder:
 				continue
