@@ -24,6 +24,7 @@ from fife import fife
 import horizons.main
 from horizons.command.unit import Act
 from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObjectNotFound
 from navigationtool import NavigationTool
 from horizons.constants import LAYERS
 
@@ -64,14 +65,20 @@ class SelectionTool(NavigationTool):
 									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
 			# Only one unit, select anyway
 			if len(instances) == 1:
-				instance = WorldObject.get_object_by_id(int(instances[0].getId()))
-				if instance.is_selectable:
-					selectable.append(instance)
+				try:
+					instance = WorldObject.get_object_by_id(int(instances[0].getId()))
+					if instance.is_selectable:
+						selectable.append(instance)
+				except WorldObjectNotFound:
+					pass
 			else:
 				for i in instances:
-					instance = WorldObject.get_object_by_id(int(i.getId()))
-					if instance.is_selectable and instance.owner == self.session.world.player:
-						selectable.append(instance)
+					try:
+						instance = WorldObject.get_object_by_id(int(i.getId()))
+						if instance.is_selectable and instance.owner == self.session.world.player:
+							selectable.append(instance)
+					except WorldObjectNotFound:
+						pass
 
 			if len(selectable) > 1:
 				if do_multi:
