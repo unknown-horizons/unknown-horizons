@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-15 19:12+0200\n"
-"Last-Translator: pilen <gaistn@gmail.com>\n"
+"PO-Revision-Date: 2011-08-01 20:37+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -396,10 +396,12 @@ msgstr "Nybyggaröversikt"
 msgid "Overview"
 msgstr "Översikt"
 
+# Mellanslag, bindesstreck eller utan genitiv?
 #: horizons/gui/tabs/overviewtab.py:102
 msgid "Branch office overview"
 msgstr "Handelskontorsöversikt"
 
+# Mellanslag, bindesstreck eller utan genitiv?
 #: horizons/gui/tabs/overviewtab.py:117
 msgid "Market place overview"
 msgstr "Marknadsplatsöversikt"
@@ -408,6 +410,7 @@ msgstr "Marknadsplatsöversikt"
 msgid "Ship overview"
 msgstr "Fartygsöversikt"
 
+# Mellanslag, bindesstreck eller utan genitiv?
 #: horizons/gui/tabs/overviewtab.py:179 horizons/i18n/guitranslations.py:152
 msgid "Production overview"
 msgstr "Produktionsöversikt"
@@ -421,7 +424,9 @@ msgstr "Förstör byggnad"
 msgid "Limit: %st per slot"
 msgstr ""
 
+# Rubriken när loggboken är tom. Något bättre alternativ?
 #: horizons/gui/widgets/logbook.py:149
+#, fuzzy
 msgid "Emptiness"
 msgstr "Tomt"
 
@@ -567,10 +572,12 @@ msgid "Charcoal burning: Burns a lot of boards."
 msgstr "Kolmila: Bränner trä till träkol."
 
 #: horizons/i18n/guitranslations.py:81
+#, fuzzy
 msgid "Doctor: Treats diseases. Consumes herbs."
 msgstr "Läkare: "
 
 #: horizons/i18n/guitranslations.py:82
+#, fuzzy
 msgid "Herbary: Produces herbs. Needs a farm."
 msgstr "Örtagård:"
 
@@ -813,6 +820,7 @@ msgstr ""
 msgid "Credits"
 msgstr "Medverkande"
 
+# Avbryta spelet?
 #: horizons/i18n/guitranslations.py:164
 msgid "Cancel game"
 msgstr "Avbryt spel"
@@ -884,6 +892,7 @@ msgstr "{F9} = Snabbladda"
 msgid "{F10} = Toggle console on/off"
 msgstr "{F10} = Visa konsoll av/på"
 
+# Pausemeny detsamma som huvudmenyn?
 #: horizons/i18n/guitranslations.py:184
 #, fuzzy
 msgid "{ESC} = Show pause menu"
@@ -1085,7 +1094,9 @@ msgstr "Välj språk:"
 msgid "Enable minimap rotation:"
 msgstr ""
 
+# volym för musik?
 #: horizons/i18n/guitranslations.py:250
+#, fuzzy
 msgid "Music volume:"
 msgstr "Musikvolym:"
 
@@ -1824,12 +1835,15 @@ msgstr "Verktygsmakare"
 msgid "Trail"
 msgstr "Gångstig"
 
+# Kallas endast skola?
 #: sqlite/Building
+#, fuzzy
 msgid "Village school"
 msgstr "Byskola"
 
-# Eg. Vävaretält. jämför weaver description.
+# Eg. Vävaretält. jämför weaver description. Byggnaden är inte ens ett tält, snarare en hydda.
 #: sqlite/Building
+#, fuzzy
 msgid "Weaver's Tent"
 msgstr "Vävare"
 
@@ -1969,6 +1983,7 @@ msgid "food"
 msgstr "föda"
 
 #: sqlite/Resources
+#, fuzzy
 msgid "get-together"
 msgstr "träffpunkt / samlingspunkt / samlingsplats"
 
@@ -2012,7 +2027,7 @@ msgstr ""
 msgid "potatoes"
 msgstr "potatis"
 
-# raw clay är fyndigheten. clay är det som grävts upp. Ser inget fel i att det kan heta samma sak.
+# raw clay är fyndigheten. clay är det som grävts upp. Ser inget fel med att båda heter lera.
 #: sqlite/Resources
 msgid "raw clay"
 msgstr "lera"
