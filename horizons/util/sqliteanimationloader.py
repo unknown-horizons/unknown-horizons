@@ -29,7 +29,7 @@ class SQLiteAnimationLoader(object):
 	"""Loads animations from a SQLite database.
 	"""
 	def __init__(self):
-		self.thisown = 0
+		pass
 
 	def loadResource(self, location):
 		"""
@@ -77,55 +77,7 @@ class SQLiteAnimationLoader(object):
 
 					img.setXShift(x)
 					img.setYShift(y)
-				elif command == 'cut':
-					pass
-					# loc = fife.ImageLocation('asdf')
-					# loc.setParentSource(img)
-					# x, y, w, h = arg.split(',')
 
-					# if x.startswith('left'):
-						# x = int(x[4:])
-					# elif x.startswith('right'):
-						# x = int(x[5:]) + img.getWidth()
-					# elif x.startswith(('center', 'middle')):
-						# x = int(x[6:]) + int(img.getWidth() / 2)
-					# else:
-						# x = int(x)
-
-					# if y.startswith('top'):
-						# y = int(y[3:])
-					# elif y.startswith('bottom'):
-						# y = int(y[6:]) - img.getHeight()
-					# elif y.startswith(('center', 'middle')):
-						# y = int(y[6:]) + int(img.getHeight() / 2)
-					# else:
-						# y = int(y)
-
-					# if w.startswith('left'):
-						# w = int(w[4:]) - x
-					# elif w.startswith('right'):
-						# w = int(w[5:]) + img.getWidth() - x
-					# elif w.startswith(('center', 'middle')):
-						# w = int(w[6:]) + int(img.getWidth() / 2) - x
-					# else:
-						# w = int(w)
-
-					# if h.startswith('top'):
-						# h = int(h[3:]) - y
-					# elif h.startswith('bottom'):
-						# h = int(h[6:]) + img.getHeight() - y
-					# elif h.startswith(('center', 'middle')):
-						# h = int(h[6:]) + int(img.getHeight() / 2) - y
-					# else:
-						# h = int(h)
-
-					# loc.setXShift(x)
-					# loc.setYShift(y)
-					# loc.setWidth(w)
-					# loc.setHeight(h)
-
-					# idx = horizons.main.fife.imagepool.addResourceFromLocation(loc)
-					#img = horizons.main.fife.imagepool.getImage(idx)
 			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
