@@ -80,18 +80,11 @@ class Bullet(WorldObject):
 		img = horizons.main.fife.imagepool.addResourceFromFile(image)
 		for rotation in [45, 135, 225, 315]:
 			visual.addStaticImage(rotation, img)
-		coords = fife.ModelCoordinate(int(self.x), int(self.y))
-		coords.thisown = 0
-		self._instance = session.view.layers[LAYERS.OBJECTS].createInstance(self._object, coords)
-		self._instance.setId(str(self.worldid))
+		self._instance = session.view.layers[LAYERS.OBJECTS].createInstance( \
+			self._object, fife.ModelCoordinate(int(self.x),int(self.y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
-
-		loc = fife.Location(session.view.layers[LAYERS.OBJECTS])
-		loc.thisown = 0
-		coords = fife.ModelCoordinate(int(dest.x), int(dest.y))
-		coords.thisown = 0
-		loc.setLayerCoordinates(coords)
-		self._instance.setLocation(loc)
+		location = fife.Location(self._instance.getLocation().getLayer())
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.x, self.y, 0))
 		self.session.world.bullets.append(self)
 
 		self._move_tick()
@@ -106,13 +99,9 @@ class Bullet(WorldObject):
 		self.current_tick += 1
 		self.x += self.x_ratio
 		self.y += self.y_ratio
-
-		loc = self._instance.getLocation()
-		coords = loc.getMapCoordinates()
-		coords.x = self.x
-		coords.y = self.y
-		loc.setMapCoordinates(coords)
-		self._instance.setLocation(loc)
+		fife_location = fife.Location(self._instance.getLocationRef().getLayer())
+		fife_location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.x, self.y, 0))
+		self._instance.setLocation(fife_location)
 
 		Scheduler().add_new_object(self._move_tick, self, 1)
 
