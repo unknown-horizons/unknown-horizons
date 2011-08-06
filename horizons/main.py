@@ -46,7 +46,7 @@ from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, PATHS, NETWORK, SINGLEPLAYER
+from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER
 from horizons.network.networkinterface import NetworkInterface
 
 # private module pointers of this module
@@ -104,6 +104,10 @@ def start(command_line_arguments):
 	# set singleplayer natural resource seed
 	if command_line_arguments.nature_seed:
 		SINGLEPLAYER.SEED = command_line_arguments.nature_seed
+
+	# set MAX_TICKS
+	if command_line_arguments.max_ticks:
+		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
 	db = _create_db()
 

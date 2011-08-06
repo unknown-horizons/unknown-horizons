@@ -233,6 +233,7 @@ class GAME:
 	# payed in this interval).
 
 	WORLD_WORLDID = 0 # worldid of World object
+	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
 
 # Messagewidget and Logbook
 class MESSAGES:
