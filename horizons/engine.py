@@ -36,7 +36,7 @@ from fife.extensions.fife_settings import Setting, FIFE_MODULE
 import horizons.main
 
 import horizons.gui.style
-from horizons.util import SQLiteAnimationLoader, Callback, parse_port
+from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader, Callback, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations
 from horizons.util.gui import load_uh_widget
@@ -273,7 +273,9 @@ class Fife(ApplicationBase):
 		self.setup_sound()
 		self.imagemanager = self.engine.getImageManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
-		self.animationloader = SQLiteAnimationLoader()
+		self.use_atlases = True
+		if self.use_atlases: self.animationloader = SQLiteAtlasLoader()
+		else: self.animationloader =  SQLiteAnimationLoader()
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
