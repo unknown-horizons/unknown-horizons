@@ -184,14 +184,19 @@ class SPTestSession(SPSession):
 			self.current_tick += 1
 
 
-def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, is_ai = False):
+def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai_players = 0):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
 	otherwise). It returns both session and player to avoid making the function-baed
 	tests too verbose.
 	"""
 	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
-	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': is_ai}]
+	players = []
+	if human_player:
+		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': False})
+	for i in xrange(ai_players):
+		id = i + human_player + 1
+		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'is_ai': True})
 
 	session.load(mapgen(), players)
 	session.world.init_fish_indexer()
@@ -199,7 +204,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, is_ai = False):
 	# (else there would be a worldid conflict)
 	session.world.trader = Trader(session, 99999 + 42, 'Free Trader', Color())
 
-	if is_ai: # currently only ai tests use the ships
+	if ai_players > 0: # currently only ai tests use the ships
 		for player in session.world.players:
 			point = session.world.get_random_possible_ship_position()
 			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=player)
@@ -257,7 +262,8 @@ def game_test(*args, **kwargs):
 
 	timeout = kwargs.get('timeout', 5)
 	mapgen = kwargs.get('mapgen', create_map)
-	is_ai = kwargs.get('is_ai', False)
+	human_player = kwargs.get('human_player', True)
+	ai_players = kwargs.get('ai_players', 0)
 
 	if TEST_TIMELIMIT:
 		def handler(signum, frame):
@@ -268,7 +274,7 @@ def game_test(*args, **kwargs):
 		@wraps(func)
 		def wrapped(*args):
 			horizons.main.db = db
-			s, p = new_session(mapgen = mapgen, is_ai = is_ai)
+			s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
 			if TEST_TIMELIMIT:
 				signal.alarm(timeout)
 			try:

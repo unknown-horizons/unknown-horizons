@@ -25,12 +25,12 @@ from tests.game import game_test
 
 def test_ai_long():
 	def generate_test(seed):
-		@game_test(mapgen = partial(generate_map, seed), is_ai = True)
-		def do_test(session, player):
+		@game_test(mapgen = partial(generate_map, seed), human_player = False, ai_players = 2)
+		def do_test(session, _):
 			"""
-			Let the AI play alone for 1 hour.
+			Let 2 AI players play for 40 minutes.
 			"""
-			session.run(seconds = 3600)
+			session.run(seconds = 2400)
 			assert session.world.settlements
 		return do_test
 
