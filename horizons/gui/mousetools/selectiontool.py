@@ -66,15 +66,20 @@ class SelectionTool(NavigationTool):
 			# Only one unit, select anyway
 			if len(instances) == 1:
 				try:
-					instance = WorldObject.get_object_by_id(int(instances[0].getId()))
-					if instance.is_selectable:
-						selectable.append(instance)
+					i_id = instances[0].getId()
+					if i_id != '':
+						instance = WorldObject.get_object_by_id(int(i_id))
+						if instance.is_selectable:
+							selectable.append(instance)
 				except WorldObjectNotFound:
 					pass
 			else:
 				for i in instances:
 					try:
-						instance = WorldObject.get_object_by_id(int(i.getId()))
+						i_id = i.getId()
+						if i_id == '':
+							continue
+						instance = WorldObject.get_object_by_id(int(i_id))
 						if instance.is_selectable and instance.owner == self.session.world.player:
 							selectable.append(instance)
 					except WorldObjectNotFound:
