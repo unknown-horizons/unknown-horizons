@@ -342,7 +342,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 		# TODO: Replace 15 with a distance dependant on the ship type and any
 		# other conditions.
 		ships = self.session.world.get_ships(self.position, radius)
-		ships.remove(self)
+		if self in ships:
+			ships.remove(self)
 		return ships
 
 class PirateShip(Ship):
