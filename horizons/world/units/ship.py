@@ -359,6 +359,10 @@ class TradeShip(Ship):
 	enemy_tabs = (TraderShipOverviewTab, )
 	health_bar_y = -220
 
+	def __init__(self, x, y, **kwargs):
+		super(TradeShip, self).__init__(x, y, **kwargs)
+		self.remove_component('health')
+
 	def _possible_names(self):
 		return [ _(u'Trader') ]
 
