@@ -30,6 +30,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 	@param x: int x position
 	@param y: int y position
 	"""
+	health_bar_y = -190
 	tabs = (FightingShipOverviewTab, FightingShipInventoryTab)
 	enemy_tabs = (EnemyShipOverviewTab, FightingShipOverviewTab)
 
