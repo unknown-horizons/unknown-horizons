@@ -35,6 +35,7 @@ from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
 from unitbuilder import UnitBuilder
 from constants import BUILDING_PURPOSE, GOAL_RESULT
+from builder import Builder
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
 from building import AbstractBuilding
@@ -544,6 +545,10 @@ class AIPlayer(GenericAI):
 	@classmethod
 	def load_abstract_buildings(cls, db):
 		AbstractBuilding.load_all(db)
+
+	@classmethod
+	def clear_caches(cls):
+		Builder.cache.clear()
 
 	def __str__(self):
 		return 'AI(%s/%d)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid)

@@ -26,6 +26,7 @@ import json
 
 import horizons.main
 
+from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool
 from horizons.gui.keylisteners import IngameKeyListener
@@ -83,6 +84,7 @@ class Session(LivingObject):
 
 		WorldObject.reset()
 		NamedObject.reset()
+		AIPlayer.clear_caches()
 
 		#game
 		self.random = self.create_rng(rng_seed)

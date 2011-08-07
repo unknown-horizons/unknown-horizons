@@ -118,6 +118,7 @@ class SPTestSession(SPSession):
 
 		WorldObject.reset()
 		NamedObject.reset()
+		AIPlayer.clear_caches()
 
 		# Game
 		self.current_tick = 0
