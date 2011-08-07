@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-08-05 10:00+0200\n"
-"Last-Translator: deather <deather.jeuxlinux@gmail.com>\n"
+"PO-Revision-Date: 2011-08-05 17:21+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -361,6 +361,7 @@ msgstr "Bateau de pêche"
 msgid "Resources still needed:"
 msgstr "Ressources encore nécessaires :"
 
+# Je propose une "Bateaux de pêcheurs" pour éviter d'avoir la chaîne en doublon.
 #: horizons/gui/tabs/boatbuildertab.py:167
 msgid "Fisher boats"
 msgstr "Bateaux de pêche"
@@ -1510,13 +1511,13 @@ msgstr "Erreur: Impossible de trouver la campagne avec le fichier \"%s\"."
 
 # 81%
 #: horizons/savegamemanager.py:416
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario \"%s\"."
 msgstr "Erreur: Impossible de trouver la sauvegarde \"%s\"."
 
 # 83%
 #: horizons/savegamemanager.py:421
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario with file \"%s\"."
 msgstr "Erreur: Impossible de trouver la campagne avec le fichier \"%s\"."
 
