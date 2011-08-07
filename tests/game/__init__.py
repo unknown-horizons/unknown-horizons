@@ -37,6 +37,7 @@ except ImportError:
 
 import horizons.main
 import horizons.world	# needs to be imported before session
+from horizons.ai.aiplayer import AIPlayer
 from horizons.ai.trader import Trader
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
@@ -157,11 +158,17 @@ class SPTestSession(SPSession):
 		"""
 		super(SPTestSession, self).end()
 		# Find all islands in the map first
+		random_map = False
 		for (island_file, ) in self.savegame_db('SELECT file FROM island'):
-			os.remove(island_file)
+			if island_file[:7] != 'random:': # random islands don't exist as files
+				os.remove(island_file)
+			else:
+				random_map = True
+				break
 		# Finally remove savegame
 		self.savegame_db.close()
-		os.remove(self.savegame)
+		if not random_map:
+			os.remove(self.savegame)
 
 	def run(self, ticks=1, seconds=None):
 		"""
@@ -176,19 +183,29 @@ class SPTestSession(SPSession):
 			self.current_tick += 1
 
 
-def new_session(mapgen=create_map, rng_seed=RANDOM_SEED):
+def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, is_ai = False):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
 	otherwise). It returns both session and player to avoid making the function-baed
 	tests too verbose.
 	"""
 	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
-	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': False}]
+	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': is_ai}]
 
 	session.load(mapgen(), players)
+	session.world.init_fish_indexer()
 	# use different trader id here, so that init_new_world can be called
 	# (else there would be a worldid conflict)
 	session.world.trader = Trader(session, 99999 + 42, 'Free Trader', Color())
+
+	if is_ai: # currently only ai tests use the ships
+		for player in session.world.players:
+			point = session.world.get_random_possible_ship_position()
+			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=player)
+			# give ship basic resources
+			for res, amount in session.db("SELECT resource, amount FROM start_resources"):
+				ship.inventory.alter(res, amount)
+		AIPlayer.load_abstract_buildings(session.db)
 
 	return session, session.world.player
 
@@ -239,6 +256,7 @@ def game_test(*args, **kwargs):
 
 	timeout = kwargs.get('timeout', 5)
 	mapgen = kwargs.get('mapgen', create_map)
+	is_ai = kwargs.get('is_ai', False)
 
 	if TEST_TIMELIMIT:
 		def handler(signum, frame):
@@ -249,7 +267,7 @@ def game_test(*args, **kwargs):
 		@wraps(func)
 		def wrapped(*args):
 			horizons.main.db = db
-			s, p = new_session(mapgen)
+			s, p = new_session(mapgen = mapgen, is_ai = is_ai)
 			if TEST_TIMELIMIT:
 				signal.alarm(timeout)
 			try:
