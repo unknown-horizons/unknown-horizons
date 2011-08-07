@@ -148,7 +148,7 @@ class SPTestSession(SPSession):
 		self.world = World(self)
 		self.world._init(self.savegame_db)
 		for i in sorted(players):
-			self.world.setup_player(i['id'], i['name'], i['color'], i['local'])
+			self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['is_ai'])
 		self.manager.load(self.savegame_db)
 
 	def end(self):
@@ -183,7 +183,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED):
 	tests too verbose.
 	"""
 	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
-	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True}]
+	players = [{'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': False}]
 
 	session.load(mapgen(), players)
 	# use different trader id here, so that init_new_world can be called
