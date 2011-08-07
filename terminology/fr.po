@@ -1713,7 +1713,6 @@ msgstr "contact"
 msgid "dialogue"
 msgstr "dialogue"
 
-#, fuzzy
 msgid "issues"
 msgstr "problèmes"
 
@@ -1766,7 +1765,6 @@ msgstr "éducation"
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
 # 75%
-#, fuzzy
 msgid "clay"
 msgstr "argile"
 
