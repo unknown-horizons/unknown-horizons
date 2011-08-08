@@ -93,6 +93,7 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 	def remove(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
+		print 'instance removed'
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
 		super(ConcretObject, self).remove()
