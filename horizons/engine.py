@@ -273,7 +273,7 @@ class Fife(ApplicationBase):
 		self.setup_sound()
 		self.imagemanager = self.engine.getImageManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
-		self.use_atlases = True
+		self.use_atlases = False
 		if self.use_atlases: self.animationloader = SQLiteAtlasLoader()
 		else: self.animationloader =  SQLiteAnimationLoader()
 
