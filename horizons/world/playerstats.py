@@ -165,7 +165,7 @@ class PlayerStats(WorldObject):
 		self.unit_score = int(total * self.unit_score_coefficient)
 
 	settlement_value = 30
-	land_score_coefficient = 0.06
+	land_score_coefficient = 0.03
 
 	def _calculate_land_score(self, usable_land, settlements):
 		total = 0
