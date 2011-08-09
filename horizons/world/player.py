@@ -23,11 +23,15 @@ import horizons.main
 
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
-from horizons.util import WorldObject, Color
+from horizons.util import WorldObject, Callback, Color
 from horizons.scenario import CONDITIONS
+from horizons.scheduler import Scheduler
+from horizons.world.playerstats import PlayerStats
 
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
+
+	regular_player = False # either a human player or a normal AI player (not trader or pirate)
 
 	def __init__(self, session, worldid, name, color, inventory = None):
 		"""
@@ -52,6 +56,13 @@ class Player(StorageHolder, WorldObject):
 		self.color = color
 		self.settler_level = settlerlevel
 		assert self.color.is_default_color, "Player color has to be a default color"
+
+		if self.regular_player:
+			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 1)
+
+	def update_stats(self):
+		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 42)
+		stats = PlayerStats(self)
 
 	@property
 	def settlements(self):
@@ -108,6 +119,8 @@ class Player(StorageHolder, WorldObject):
 
 
 class HumanPlayer(Player):
+	regular_player = True
+
 	"""Class for players that physically sit in front of the machine where the game is run"""
 	def notify_settler_reached_level(self, settler):
 		level_up = super(HumanPlayer, self).notify_settler_reached_level(settler)
@@ -119,5 +132,3 @@ class HumanPlayer(Player):
 			                                                    {'level': settler.level+1})
 			self.session.ingame_gui._player_settler_level_change_listener()
 		return level_up
-
-

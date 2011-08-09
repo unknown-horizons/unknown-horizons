@@ -140,6 +140,9 @@ class Production(WorldObject):
 		"""Res that are produced here. Returns dict {res:amount}. Interface for _prod_line."""
 		return self._prod_line.produced_res
 
+	def get_production_time(self):
+		return self._prod_line.time
+
 	#----------------------------------------------------------------------
 	def record_state(self):
 		"""Records statistics necessary to calculate the production level."""
