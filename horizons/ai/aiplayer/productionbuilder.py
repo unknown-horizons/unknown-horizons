@@ -387,7 +387,8 @@ class ProductionBuilder(AreaBuilder):
 				if new_area > best_area:
 					best_coords = (x, y)
 					best_area = new_area
-			return self._extend_settlement_with_tent(Rect.init_from_topleft_and_size(best_coords[0], best_coords[1], tent_size[0] - 1, tent_size[1] - 1))
+			if best_coords is not None:
+				return self._extend_settlement_with_tent(Rect.init_from_topleft_and_size(best_coords[0], best_coords[1], tent_size[0] - 1, tent_size[1] - 1))
 
 		return BUILD_RESULT.IMPOSSIBLE
 
