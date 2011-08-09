@@ -33,6 +33,7 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 		super(ModifiedFieldEvaluator, self).__init__(area_builder, builder)
 		self.builder = builder
 		self.new_unused_field_purpose = new_unused_field_purpose
+		self.fields = 1 # required for comparison with FarmEvalutor-s
 
 		self.value = 0
 		personality = area_builder.owner.personality_manager.get('ModifiedFieldEvaluator')
