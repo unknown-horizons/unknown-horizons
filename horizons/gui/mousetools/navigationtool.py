@@ -126,6 +126,10 @@ class NavigationTool(CursorTool):
 		"""
 		instances = self.session.view.cam.getMatchingInstances(\
 			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+
+		layer_instances = [i.this for i in self.session.view.layers[LAYERS.OBJECTS].getInstances()]
+		instances = [i for i in instances if i.this in layer_instances]
+
 		hover_instances = []
 		for i in instances:
 			id = i.getId()

@@ -24,7 +24,6 @@ from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
 from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
-from horizons.scheduler import Scheduler
 
 class FightingShip(MovingWeaponHolder, Ship):
 	"""Class representing a fighting ship ship
@@ -44,7 +43,6 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
-		Scheduler().add_new_object(self.remove, self, run_in = GAME_SPEED.TICKS_PER_SECOND * 15)
 
 	def go(self, x, y):
 		super(FightingShip, self).go(x, y)
