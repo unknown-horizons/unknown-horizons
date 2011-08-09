@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import math
+
 from collections import defaultdict
 
 from horizons.util import WorldObject
@@ -172,12 +174,15 @@ class PlayerStats(WorldObject):
 		self.land_score = int(total * self.land_score_coefficient)
 
 	running_cost_coefficient = 10
-	money_score_coefficient = 0.008
+	minimum_money = 500
+	money_power = 0.4
+	money_score_coefficient = 1.3
 
 	def _calculate_money_score(self, running_costs, taxes, money):
 		total = 0
 		total += money
 		total += self.running_cost_coefficient * (taxes - running_costs)
+		total = math.pow(max(self.minimum_money, total), self.money_power)
 		self.money_score = int(total * self.money_score_coefficient)
 
 	def _calculate_total_score(self):
