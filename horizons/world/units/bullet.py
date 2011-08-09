@@ -81,7 +81,6 @@ class Bullet(WorldObject):
 			for rotation in [45, 135, 225, 315]:
 				visual.addStaticImage(rotation, img)
 
-		print 'this should be alright', int(str(self.worldid))
 
 		self._instance = session.view.layers[LAYERS.FIELDS].createInstance( \
 			self._object, fife.ModelCoordinate(int(self.x),int(self.y), 0), str(self.worldid))
@@ -98,7 +97,6 @@ class Bullet(WorldObject):
 			self._instance = None
 			self.session.world.bullets.remove(self)
 			self.remove()
-			print 'this should be alright', int(str(self.worldid))
 			return
 		self.current_tick += 1
 		self.x += self.x_ratio
