@@ -88,7 +88,7 @@ class Weapon(object):
 		units = session.world.get_health_instances(position, attack_radius)
 
 		for unit in units:
-			print 'dealing damage to ship:', unit
+			print 'dealing damage to unit:', unit
 			if unit.has_component('health'):
 				unit.get_component('health').deal_damage(weapon_id, damage)
 
@@ -96,7 +96,7 @@ class Weapon(object):
 		self.attack_ready = True
 		self.on_attack_ready()
 
-	def fire(self, destination, position):
+	def fire(self, destination, position, bullet_delay = 0):
 		"""
 		Fires the weapon at a certain destination
 		@param destination : Point with position where weapon will be fired
@@ -110,18 +110,21 @@ class Weapon(object):
 			return
 
 		#calculate the ticks until impact
-		ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
+		impact_ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
 		#deal damage when attack reaches target
 		Scheduler().add_new_object(Callback(Weapon.on_impact,
 			self.session, self.weapon_id, self.get_damage_modifier(), destination),
-			Weapon, ticks)
+			Weapon, impact_ticks)
 
 		#calculate the ticks until attack is ready again
-		ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
-		Scheduler().add_new_object(self.make_attack_ready, self, ticks)
+		ready_ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
+		Scheduler().add_new_object(self.make_attack_ready, self, ready_ticks)
 
 		if self.bullet_image:
-			Bullet(self.bullet_image, position, destination, self.attack_speed, self.session)
+			Scheduler().add_new_object(\
+				Callback(Bullet, self.bullet_image, position, destination, impact_ticks - bullet_delay, self.session),
+				self,
+				run_in = bullet_delay)
 		print 'fired', self
 
 		self.attack_ready = False

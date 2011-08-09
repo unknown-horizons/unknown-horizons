@@ -34,7 +34,7 @@ class Bullet(WorldObject):
 	_object = None
 	owner = None
 
-	def __init__(self, image, source, dest, speed, session, offset = True, worldid = None):
+	def __init__(self, image, source, dest, needed_ticks, session, offset = True, worldid = None):
 		"""
 		@param image: path to file with bullet image
 		@param source: Point with starting position
@@ -53,7 +53,6 @@ class Bullet(WorldObject):
 		# needed for saving the bullet
 		self.dest_x = dest.x
 		self.dest_y = dest.y
-		self.speed = speed
 		self.image = image
 
 		# offset the position so it starts from the middle of the firing instance
@@ -62,7 +61,7 @@ class Bullet(WorldObject):
 			self.y -= 1
 
 		# needed ticks to go to the destination
-		self.needed_ticks = int(GAME_SPEED.TICKS_PER_SECOND * source.distance(dest) / speed)
+		self.needed_ticks = needed_ticks
 		self.needed_ticks -= 2
 
 		# the thick that the object is currently at
@@ -109,4 +108,4 @@ class Bullet(WorldObject):
 
 	def save(self, db):
 		db("INSERT INTO bullet(worldid, startx, starty, destx, desty, speed, image) VALUES(?, ?, ?, ?, ?, ?, ?)", \
-			self.worldid, self.x, self.y, self.dest_x, self.dest_y, self.speed, self.image)
+			self.worldid, self.x, self.y, self.dest_x, self.dest_y, self.needed_ticks, self.image)

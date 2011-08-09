@@ -48,11 +48,11 @@ class FightingShip(MovingWeaponHolder, Ship):
 		super(FightingShip, self).go(x, y)
 		self.stop_attack()
 
-	def fire_all_weapons(self, dest, rotate = True):
+	def fire_all_weapons(self, dest, rotate = True, bullet_delay = GAME_SPEED.TICKS_PER_SECOND):
 		"""
 		Fire weapons at rotated coordinates
 		"""
-		super(FightingShip, self).fire_all_weapons(dest, rotate)
+		super(FightingShip, self).fire_all_weapons(dest, rotate, bullet_delay)
 
 	def act_attack(self, dest):
 		"""
