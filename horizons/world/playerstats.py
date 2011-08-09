@@ -136,6 +136,7 @@ class PlayerStats(WorldObject):
 		self.building_score = int(total * self.building_score_coefficient)
 
 	unavailable_resource_coefficient = 0.3 # the resource exists but isn't usable so it is worth less
+	overridden_resource_values = {RES.RAW_CLAY_ID: 1, RES.RAW_IRON_ID: 3}
 	resource_score_coefficient = 0.01
 
 	def _calculate_resource_score(self, available_resources, total_resources):
@@ -143,9 +144,13 @@ class PlayerStats(WorldObject):
 		for resource_id, amount in available_resources.iteritems():
 			total += amount * self.db.get_res_value(resource_id)
 		for resource_id, amount in total_resources.iteritems():
-			value = self.db.get_res_value(resource_id)
-			if value is not None: # happiness and some coverage resources have no value
-				total += (amount - available_resources[resource_id]) * value * self.unavailable_resource_coefficient
+			extra_amount = (amount - available_resources[resource_id])
+			if resource_id in self.overridden_resource_values: # natural resources have 0 value by default
+				total += extra_amount * self.overridden_resource_values[resource_id] * self.unavailable_resource_coefficient
+			else:
+				value = self.db.get_res_value(resource_id)
+				if value is not None: # happiness and some coverage resources have no value
+					total += extra_amount * value * self.unavailable_resource_coefficient
 		self.resource_score = int(total * self.resource_score_coefficient)
 
 	unit_value = {UNITS.PLAYER_SHIP_CLASS: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT: 0.05}
