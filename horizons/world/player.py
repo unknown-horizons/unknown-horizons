@@ -32,6 +32,7 @@ class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
 
 	regular_player = False # either a human player or a normal AI player (not trader or pirate)
+	stats_update_ticks = 42
 
 	def __init__(self, session, worldid, name, color, inventory = None):
 		"""
@@ -61,8 +62,11 @@ class Player(StorageHolder, WorldObject):
 			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 1)
 
 	def update_stats(self):
-		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 42)
-		stats = PlayerStats(self)
+		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = self.stats_update_ticks)
+		self.stats = PlayerStats(self)
+
+	def get_latest_stats(self):
+		return self.stats
 
 	@property
 	def settlements(self):

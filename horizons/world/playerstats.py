@@ -70,7 +70,6 @@ class PlayerStats(WorldObject):
 				# resource held by collectors
 				if hasattr(building, 'get_local_collectors'):
 					for collector in building.get_local_collectors():
-						print collector.inventory
 						for resource_id, amount in collector.inventory:
 							total_resources[resource_id] += amount
 
@@ -106,15 +105,6 @@ class PlayerStats(WorldObject):
 		self._calculate_money_score(running_costs, taxes, self.player.inventory[RES.GOLD_ID])
 		self._calculate_total_score()
 
-		# TODO: remove these and add a gui
-		print 'settler', self.settler_score
-		print 'building', self.building_score
-		print 'resource', self.resource_score
-		print 'unit', self.unit_score
-		print 'land', self.land_score
-		print 'money', self.money_score
-		print 'total', self.total_score
-
 	settler_values = {SETTLER.SAILOR_LEVEL: 2, SETTLER.PIONEER_LEVEL: 3, SETTLER.SETTLER_LEVEL: 7}
 	settler_building_values = {SETTLER.SAILOR_LEVEL: 3, SETTLER.PIONEER_LEVEL: 5, SETTLER.SETTLER_LEVEL: 11}
 	settler_resource_provided_coefficient = 0.1
@@ -128,7 +118,7 @@ class PlayerStats(WorldObject):
 			total += self.settler_building_values[level] * number
 		for amount in settler_resources_provided.itervalues():
 			total += amount * self.settler_resource_provided_coefficient
-		self.settler_score = total * self.settler_score_coefficient
+		self.settler_score = int(total * self.settler_score_coefficient)
 
 	building_score_coefficient = 0.006
 
@@ -143,7 +133,7 @@ class PlayerStats(WorldObject):
 				total += amount # for some reason the value of gold is 0 by default
 			else:
 				total += amount * self.db.get_res_value(resource_id) 
-		self.building_score = total * self.building_score_coefficient
+		self.building_score = int(total * self.building_score_coefficient)
 
 	unavailable_resource_coefficient = 0.3 # the resource exists but isn't usable so it is worth less
 	resource_score_coefficient = 0.01
@@ -156,7 +146,7 @@ class PlayerStats(WorldObject):
 			value = self.db.get_res_value(resource_id)
 			if value is not None: # happiness and some coverage resources have no value
 				total += (amount - available_resources[resource_id]) * value * self.unavailable_resource_coefficient
-		self.resource_score = total * self.resource_score_coefficient
+		self.resource_score = int(total * self.resource_score_coefficient)
 
 	unit_value = {UNITS.PLAYER_SHIP_CLASS: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT: 0.05}
 	unit_score_coefficient = 10
@@ -165,7 +155,7 @@ class PlayerStats(WorldObject):
 		total = 0
 		for unit_id, amount in ships.iteritems():
 			total += self.unit_value[unit_id] * amount
-		self.unit_score = total * self.unit_score_coefficient
+		self.unit_score = int(total * self.unit_score_coefficient)
 
 	settlement_value = 30
 	land_score_coefficient = 0.06
@@ -174,7 +164,7 @@ class PlayerStats(WorldObject):
 		total = 0
 		total += usable_land
 		total += self.settlement_value * settlements
-		self.land_score = total * self.land_score_coefficient
+		self.land_score = int(total * self.land_score_coefficient)
 
 	running_cost_coefficient = 10
 	money_score_coefficient = 0.008
@@ -183,7 +173,7 @@ class PlayerStats(WorldObject):
 		total = 0
 		total += money
 		total += self.running_cost_coefficient * (taxes - running_costs)
-		self.money_score = total * self.money_score_coefficient
+		self.money_score = int(total * self.money_score_coefficient)
 
 	def _calculate_total_score(self):
 		self.total_score = self.settler_score + self.building_score + self.resource_score + self.unit_score + self.land_score + self.money_score
