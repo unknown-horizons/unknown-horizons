@@ -25,12 +25,13 @@ import heapq
 
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
+
+from horizons.entities import Entities
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, COLLECTORS, RES
 
 class FisherEvaluator(BuildingEvaluator):
-	refill_cycle_in_tiles = 12
-	fisher_range = 16
+	refill_cycle_in_tiles = 12 # TODO: replace this with a direct calculation
 
 	def __init__(self, area_builder, builder, fishers_in_range, fish_value):
 		super(FisherEvaluator, self).__init__(area_builder, builder)
@@ -53,11 +54,12 @@ class FisherEvaluator(BuildingEvaluator):
 		if not builder:
 			return None
 
+		fisher_radius = Entities.buildings[BUILDINGS.FISHERMAN_CLASS].radius
 		fishers_in_range = 1.0
 		for other_fisher in area_builder.owner.fishers:
 			distance = builder.position.distance(other_fisher.position)
-			if distance < cls.fisher_range:
-				fishers_in_range += 1 - distance / float(cls.fisher_range)
+			if distance < fisher_radius:
+				fishers_in_range += 1 - distance / float(fisher_radius)
 
 		tiles_used = 0
 		fish_value = 0.0
