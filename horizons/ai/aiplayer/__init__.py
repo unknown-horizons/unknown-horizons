@@ -82,6 +82,7 @@ class AIPlayer(GenericAI):
 		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
 		self.need_more_ships = False
 		self._need_feeder_island = False
+		self.personality_manager = PersonalityManager(self)
 		self.__init()
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
@@ -142,7 +143,6 @@ class AIPlayer(GenericAI):
 		self._settlement_manager_by_settlement_id = {}
 		self.missions = set()
 		self.fishers = []
-		self.personality_manager = PersonalityManager()
 		self.personality = self.personality_manager.get('AIPlayer')
 		self.complete_inventory = CompleteInventory(self)
 		self.unit_builder = UnitBuilder(self)
@@ -200,8 +200,12 @@ class AIPlayer(GenericAI):
 		for mission in self.missions:
 			mission.save(db)
 
+		# save the personality manager
+		self.personality_manager.save(db)
+
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
+		self.personality_manager = PersonalityManager.load(db, self)
 		self.__init()
 
 		self.need_more_ships, self._need_feeder_island, remaining_ticks = \
