@@ -103,9 +103,9 @@ class ConcretObject(ComponentHolder, WorldObject):
 		from horizons.gui.tabs import TabWidget
 		tablist = None
 		if self.owner == self.session.world.player:
-			tablist = self.tabs
+			tablist = self.__class__.tabs
 		else: # this is an enemy instance with respect to the local player
-			tablist = self.enemy_tabs
+			tablist = self.__class__.enemy_tabs
 
 		if tablist:
 			tabs = [ tabclass(self) for tabclass in tablist ]

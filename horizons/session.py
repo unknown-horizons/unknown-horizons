@@ -222,7 +222,9 @@ class Session(LivingObject):
 
 		# cursor has to be inited last, else player interacts with a not inited world with it.
 		self.cursor = SelectionTool(self)
-		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
+        # Set cursor correctly, menus might need to be opened.
+		# Open menus later, they may need unit data not yet inited
+		self.cursor.apply_select()
 
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""

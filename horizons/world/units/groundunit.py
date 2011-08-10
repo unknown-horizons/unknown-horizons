@@ -68,7 +68,6 @@ class GroundUnit(Unit):
 		try:
 			super(GroundUnit, self)._move_tick(resume)
 		except PathBlockedError:
-			# if we fail to resume movement then the ship should still be on the map but the exception has to be raised again.
 			if resume:
 				self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 			raise
@@ -94,7 +93,7 @@ class GroundUnit(Unit):
 
 	def go(self, x, y):
 		"""Moves the unit.
-		This is called when a unit is selected and the right mouse button is pressed outside the ship"""
+		This is called when a unit is selected and the right mouse button is pressed outside the unit"""
 		self.stop()
 
 		move_target = Point(int(round(x)), int(round(y)))
@@ -120,13 +119,13 @@ class GroundUnit(Unit):
 			return
 
 	def load(self, db, worldid):
-		super(Ship, self).load(db, worldid)
+		super(GroundUnit, self).load(db, worldid)
 
 		# register unit in world
 		self.session.world.ground_units.append(self)
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 
-class FightingGroundUnit(GroundUnit, MovingWeaponHolder):
+class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 	"""Weapon Holder Ground Unit"""
 	def __init__(self, x, y, **kwargs):
 		super(FightingGroundUnit, self).__init__(x=x, y=y, **kwargs)
