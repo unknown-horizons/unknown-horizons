@@ -4,17 +4,22 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-??-??: Milestone 2011.3
-changelog date: JUL 24; rev: 81a18ff47c290d4011e7a540a82f5793417e832b
+changelog date: AUG 09; rev: 88c9e112020b61d6a45dda4e15a878513b288fba
 
 Gameplay and Balancing
 * New features
    + trade routes can wait for load and unload
-   + new in-game pause menu
+   + new in-game pause menu, replaces pause popup and in-game menu
    + hotkey "T" toggles translucency of trees and mountains
    + 
 * Modifications and changes
-   # buoys now also displayed for user interactions like trade routes
    # rename market place to main square
+   # modified ALL resource values, refer to development/print_db_data.py res
+     for the new values. Drastically lowered the price of most resources.
+   # settler consumption formula now properly considers number of inhabitants
+   # settler tax and happiness formula
+   # 'raw' resources now have reasonable names (sugar cane, tobacco plants).
+     Also renamed raw iron and raw clay to iron and clay deposit, respectively.
    # 
 * Fixed bugs and problems
    ~ mutable default arguments caused resource deposits to be empty 
@@ -26,7 +31,7 @@ Media Content
    + building: gravel path
    + building: wooden storage hut
    + icon: diplomacy in minimap panel
-   + icon: buysell tab slot modes
+   + icon: trade route slot modes (load ship, unload ship)
    + 
 * Brush-ups and modifications
    # 
@@ -36,17 +41,24 @@ User Interface
    + display error message when yaml can't be found
    + build menu now updates when inhabitants upgrade
    + random map parameters map size and island size can be set via UI
+   + buoys now also displayed for user interactions like trade routes
    + 
 * Repositioning and modifications
    # use unicode strings for all ship names
    # use templates for different boxes in singleplayer menu
    # removed need for adjust_black_background
+   # slim minimap images, icon positioning in minimap panel
+   # disable game speed buttons when min / max is reached or the game is paused
    # 
 * Fixed bugs and usability problems
    ~ boxes in settings expanded for some languages, buttons were unreachable
    ~ in-game ui appeared around the main menu under certain conditions
    ~ trying to save in multiplayer no longer causes a crash
    ~ recognise the system default language on windows
+   ~ display warning if pyenet is not found and disable multiplayer (was: crash)
+   ~ cancelling a build action issued through 'Build related' opened build menu
+   ~ removed problems with highlight cache (TearingTool cleanup)
+   ~ display needed resources if hovering 'Found settlement' in ship overview
    ~ 
 
 Codebase
@@ -61,6 +73,8 @@ Codebase
    # Settlement now is a StorageHolder for consistency and simplicity
    # huge improvements to pathfinding speed
    # use plain text sql statements instead of binary sqlite databases
+   # removed some outdated sql tables
+   # obsolete and misleading FarmerCollector replaced by BuildingCollector
    # 
 * Fixed crashes and inconsistencies
    ~ most tests crashed on windows (open file handle)
