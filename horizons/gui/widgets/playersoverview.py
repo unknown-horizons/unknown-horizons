@@ -73,7 +73,7 @@ class PlayersOverview(object):
 
 		name = widgets.Label(name='player_%d' % player.worldid)
 		name.text = unicode(player.name)
-		name.min_size = (120, 20)
+		name.min_size = (108, 20)
 
 		money_score = widgets.Label(name='money_score_%d' % player.worldid)
 		money_score.text = unicode(stats.money_score)
