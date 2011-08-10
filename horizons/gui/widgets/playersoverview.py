@@ -67,6 +67,10 @@ class PlayersOverview(object):
 	def _add_player_line_to_gui(self, gui, player):
 		stats = player.get_latest_stats()
 
+		emblem = widgets.Label(name='emblem_%d' % player.worldid, text=u"   ")
+		emblem.background_color = player.color
+		emblem.min_size = (12, 20)
+
 		name = widgets.Label(name='player_%d' % player.worldid)
 		name.text = unicode(player.name)
 		name.min_size = (120, 20)
@@ -100,6 +104,7 @@ class PlayersOverview(object):
 		total_score.min_size = (70, 20)
 
 		hbox = widgets.HBox()
+		hbox.addChild(emblem)
 		hbox.addChild(name)
 		hbox.addChild(money_score)
 		hbox.addChild(land_score)
