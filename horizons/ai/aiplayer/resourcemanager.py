@@ -41,11 +41,11 @@ class ResourceManager(WorldObject):
 	def __init(self, settlement_manager):
 		self.settlement_manager = settlement_manager
 		self._data = {} # {(resource_id, building_id): SingleResourceManager, ...}
-		self._chain = {} # {resource_id: SimpleProductionChainSubtreeChoice, ...}
-		self._low_priority_requests = {} # {(quota_holder, resource_id): amount, ...}
-		self.trade_storage = defaultdict(lambda: defaultdict(lambda: 0)) # {settlement_manager_id: {resource_id: amount}, ...}
-		self._settlement_manager_id = {} # {quota_holder: settlement_manager_id, ...}
-		self.resource_requirements = {} # TODO: save and load
+		self._chain = {} # {resource_id: SimpleProductionChainSubtreeChoice, ...} (cache that doesn't have to be saved)
+		self._low_priority_requests = {} # {(quota_holder, resource_id): amount, ...} (only used during 1 tick, doesn't have to be saved)
+		self._settlement_manager_id = {} # {quota_holder: settlement_manager_id, ...} (cache that doesn't have to be saved)
+		self.trade_storage = defaultdict(lambda: defaultdict(lambda: 0)) # {settlement_manager_id: {resource_id: float(amount)}, ...} shows how much of a resource is reserved for a particular settlement
+		self.resource_requirements = {} # {resource_id: int(amount), ...} the amount of resource the settlement would like to have in inventory (used to make buy/sell decisions)
 		self.personality = self.settlement_manager.owner.personality_manager.get('ResourceManager')
 
 	def save(self, db):
@@ -53,6 +53,13 @@ class ResourceManager(WorldObject):
 		db("INSERT INTO ai_resource_manager(rowid, settlement_manager) VALUES(?, ?)", self.worldid, self.settlement_manager.worldid)
 		for resource_manager in self._data.itervalues():
 			resource_manager.save(db, self.worldid)
+		for settlement_manager_id, reserved_storage in self.trade_storage.iteritems():
+			for resource_id, amount in reserved_storage.iteritems():
+				if amount > 1e-9:
+					db("INSERT INTO ai_resource_manager_trade_storage(resource_manager, settlement_manager, resource, amount) VALUES(?, ?, ?, ?)", \
+						self.worldid, settlement_manager_id, resource_id, amount)
+		for resource_id, amount in self.resource_requirements.iteritems():
+			db("INSERT INTO ai_resource_manager_requirement(resource_manager, resource, amount) VALUES(?, ?, ?)", self.worldid, resource_id, amount)
 
 	def _load(self, db, settlement_manager):
 		worldid = db("SELECT rowid FROM ai_resource_manager WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
@@ -60,6 +67,10 @@ class ResourceManager(WorldObject):
 		self.__init(settlement_manager)
 		for db_row in db("SELECT rowid, resource_id, building_id FROM ai_single_resource_manager WHERE resource_manager = ?", worldid):
 			self._data[(db_row[1], db_row[2])] = SingleResourceManager.load(db, settlement_manager, db_row[0])
+		for db_row in db("SELECT settlement_manager, resource, amount FROM ai_resource_manager_trade_storage WHERE resource_manager = ?", worldid):
+			self.trade_storage[db_row[0]][db_row[1]] = db_row[2]
+		for db_row in db("SELECT resource, amount FROM ai_resource_manager_requirement WHERE resource_manager = ?", worldid):
+			self.resource_requirements[db_row[0]] = db_row[1]
 
 	@classmethod
 	def load(cls, db, settlement_manager):
@@ -254,6 +265,10 @@ class ResourceManager(WorldObject):
 					RemoveFromBuyList(settlement, resource_id).execute(session)
 				elif resource_id in settlement.sell_list:
 					RemoveFromSellList(settlement, resource_id).execute(session)
+
+	def finish_tick(self):
+		""" clear data used during a single tick """
+		self._low_priority_requests.clear()
 
 	def __str__(self):
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)

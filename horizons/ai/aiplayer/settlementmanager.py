@@ -386,6 +386,7 @@ class SettlementManager(WorldObject):
 		self.resource_manager.replay_deep_low_priority_requests()
 		self.resource_manager.record_expected_exportable_production(self.owner.tick_interval)
 		self.resource_manager.manager_buysell()
+		self.resource_manager.finish_tick()
 
 	def _start_general_tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
@@ -429,6 +430,7 @@ class SettlementManager(WorldObject):
 		self.trade_manager.organize_shipping()
 		self.resource_manager.record_expected_exportable_production(self.owner.tick_interval)
 		self.resource_manager.manager_buysell()
+		self.resource_manager.finish_tick()
 
 	def _add_goals(self, goals):
 		for goal in self.goals:
