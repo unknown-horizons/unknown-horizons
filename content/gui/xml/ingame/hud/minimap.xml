@@ -33,12 +33,14 @@
 		is_focusable="0" />
 
 	<ToggleImageButton name="zoomIn" size="28,28" position="195,63"
+		inactive_image="content/gui/icons/widgets/minimap/zoom_in_bw.png"
 		up_image="content/gui/icons/widgets/minimap/zoom_in.png"
 		down_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
 		hover_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
 		tooltip="Zoom in"
 		is_focusable="0" />
 	<ToggleImageButton name="zoomOut" size="28,28" position="195,105"
+		inactive_image="content/gui/icons/widgets/minimap/zoom_out_bw.png"
 		up_image="content/gui/icons/widgets/minimap/zoom_out.png"
 		down_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
 		hover_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
