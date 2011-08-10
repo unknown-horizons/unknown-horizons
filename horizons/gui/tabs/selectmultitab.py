@@ -202,7 +202,7 @@ class UnitEntry(object):
 		Returns the name of the Thumbnail Icon for unit with id
 		"""
 		#TODO get a system for loading thumbnail by id
-		return "content/gui/icons/unit_thumbnails/dummy.png"
+		return "content/gui/icons/unit_thumbnails/"+str(id)+".png"
 
 	def on_instance_removed(self, instance):
 		self.instances.remove(instance)
