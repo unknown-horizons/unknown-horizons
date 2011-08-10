@@ -49,7 +49,7 @@ class BuildingEvaluator(WorldObject):
 		for weight, value in other_components:
 			if value is not None:
 				others += weight
-		result = (1 - others) * main_component
+		result = (1 - others) * (main_component if main_component is not None else 0)
 		for weight, value in other_components:
 			if value is not None:
 				result += weight * value

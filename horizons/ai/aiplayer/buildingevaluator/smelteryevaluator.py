@@ -45,12 +45,9 @@ class SmelteryEvaluator(BuildingEvaluator):
 			return None
 
 		distance_to_iron_mine = cls.distance_to_nearest_building(area_builder, builder, BUILDINGS.IRON_MINE_CLASS)
-		if distance_to_iron_mine is None:
-			return None
-
 		distance_to_collector = cls.distance_to_nearest_collector(area_builder, builder)
 		distance_to_charcoal_burner = cls.distance_to_nearest_building(area_builder, builder, BUILDINGS.CHARCOAL_BURNER_CLASS)
-		if distance_to_collector is None and distance_to_charcoal_burner is None:
+		if distance_to_collector is None and (distance_to_charcoal_burner is None or distance_to_iron_mine is None):
 			return None
 
 		alignment = cls.get_alignment(area_builder, builder.position.tuple_iter())

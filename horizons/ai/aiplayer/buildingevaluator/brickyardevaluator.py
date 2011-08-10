@@ -43,10 +43,10 @@ class BrickyardEvaluator(BuildingEvaluator):
 			return None
 
 		distance_to_clay_pit = cls.distance_to_nearest_building(area_builder, builder, BUILDINGS.CLAY_PIT_CLASS)
-		if distance_to_clay_pit is None:
+		distance_to_collector = cls.distance_to_nearest_collector(area_builder, builder)
+		if distance_to_clay_pit is None and distance_to_collector is None:
 			return None
 
-		distance_to_collector = cls.distance_to_nearest_collector(area_builder, builder)
 		alignment = cls.get_alignment(area_builder, builder.position.tuple_iter())
 		return BrickyardEvaluator(area_builder, builder, distance_to_clay_pit, distance_to_collector, alignment)
 
