@@ -25,16 +25,19 @@ from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES
 
 class ClayPitEvaluator(BuildingEvaluator):
-	def __init__(self, area_builder, builder):
+	def __init__(self, area_builder, builder, distance_to_collector):
 		super(ClayPitEvaluator, self).__init__(area_builder, builder)
-		self.value = 0
+		self.distance_to_collector = distance_to_collector
+		self.value = 1.0 / (distance_to_collector + 1)
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
 		builder = area_builder.make_builder(BUILDINGS.CLAY_PIT_CLASS, x, y, True, orientation)
 		if not builder:
 			return None
-		return ClayPitEvaluator(area_builder, builder)
+
+		distance_to_collector = cls.distance_to_nearest_collector(area_builder, builder, False)
+		return ClayPitEvaluator(area_builder, builder, distance_to_collector)
 
 	@property
 	def purpose(self):

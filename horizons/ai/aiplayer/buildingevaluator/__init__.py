@@ -72,7 +72,7 @@ class BuildingEvaluator(WorldObject):
 		return shortest_distance
 
 	@classmethod
-	def distance_to_nearest_collector(cls, production_builder, builder):
+	def distance_to_nearest_collector(cls, production_builder, builder, must_be_in_range = True):
 		"""
 		Returns the shortest distance to a collector that is in range of the builder
 		@param production_builder: ProductionBuilder
@@ -82,7 +82,7 @@ class BuildingEvaluator(WorldObject):
 		shortest_distance = None
 		for building in production_builder.collector_buildings:
 			distance = builder.position.distance(building.position)
-			if distance <= Entities.buildings[builder.building_id].radius:
+			if not must_be_in_range or distance <= Entities.buildings[builder.building_id].radius:
 				shortest_distance = distance if shortest_distance is None or distance < shortest_distance else shortest_distance
 		return shortest_distance
 
