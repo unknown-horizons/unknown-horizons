@@ -61,6 +61,15 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		super(StorageBuilding, self).load(db, worldid)
 		self.__init()
 
+	def get_utilisation_history_length(self):
+		return None if not self.get_local_collectors() else self.get_local_collectors()[0].get_utilisation_history_length()
+
+	def get_collector_utilisation(self):
+		collectors = self.get_local_collectors()
+		if not collectors:
+			return None
+		return sum(collector.get_utilisation() for collector in collectors) / float(len(collectors))
+
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
 	tabs = (BranchOfficeOverviewTab, InventoryTab, BuySellTab, AccountTab)

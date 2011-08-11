@@ -61,7 +61,7 @@ class VERSION:
 	# RELEASE_VERSION = u'2011.2'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 29
+	SAVEGAMEREVISION= 30
 
 	@staticmethod
 	def string():
@@ -281,6 +281,7 @@ class WILD_ANIMAL:
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
 	DEFAULT_WAIT_TICKS = 32 # how long collectors wait before again looking for a job
+	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for calculating how busy a collector is
 
 class STORAGE:
 	DEFAULT_STORAGE_SIZE = 30 # Our usual inventorys are 30 tons big

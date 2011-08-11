@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict, deque
+
 from horizons.util import DbReader
 
 ########################################################################
@@ -149,10 +151,17 @@ class SavegameAccessor(DbReader):
 
 	def _load_building_collector(self):
 		self._building_collector = {}
-		for row in self("SELECT rowid, home_building FROM building_collector"):
-			self._building_collector[int(row[0])] = int(row[1]) if row[1] is not None else None
+		for row in self("SELECT rowid, home_building, creation_tick FROM building_collector"):
+			self._building_collector[int(row[0])] = (int(row[1]) if row[1] is not None else None, row[2])
 
-	def get_building_collectors_home(self, worldid):
-		"""Returns the id of the building collector's home or None otherwise"""
+		self._building_collector_failures = defaultdict(lambda: deque())
+		for collector_id, failure_tick in self("SELECT collector, failure_tick FROM building_collector_job_search_failure ORDER BY collector, failure_tick"):
+			self._building_collector_failures[int(collector_id)].append(failure_tick)
+
+	def get_building_collectors_data(self, worldid):
+		"""Returns (id of the building collector's home or None otherwise, creation_tick)"""
 		worldid = int(worldid)
 		return None if worldid not in self._building_collector else self._building_collector[worldid]
+
+	def get_building_collector_job_search_failures(self, worldid):
+		return self._building_collector_failures[int(worldid)]

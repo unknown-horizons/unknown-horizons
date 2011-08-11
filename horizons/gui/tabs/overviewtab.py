@@ -19,19 +19,22 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import weakref
+
 from fife.extensions import pychan
 
 from tabinterface import TabInterface
+
+from horizons.scheduler import Scheduler
 from horizons.util import Callback, ActionSetLoader, NamedObject
-from horizons.constants import RES, SETTLER, BUILDINGS
+from horizons.constants import GAME_SPEED, RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton, DeleteButton
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget, create_resource_icon
-
 
 class OverviewTab(TabInterface):
 	def __init__(self, instance, widget = 'overviewtab.xml', \
@@ -93,6 +96,8 @@ class OverviewTab(TabInterface):
 
 
 class BranchOfficeOverviewTab(OverviewTab):
+	""" the main tab of branch offices and storages """
+
 	def __init__(self, instance):
 		super(BranchOfficeOverviewTab, self).__init__(
 			widget = 'overview_branchoffice.xml',
@@ -100,10 +105,29 @@ class BranchOfficeOverviewTab(OverviewTab):
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 		self.tooltip = _("Branch office overview")
+		self._refresh_collector_utilisation()
+
+	def _refresh_collector_utilisation(self):
+		utilisation = int(round(self.instance.get_collector_utilisation() * 100))
+		self.widget.findChild(name="collector_utilisation").text = unicode(str(utilisation) + '%')
 
 	def refresh(self):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self._refresh_collector_utilisation()
 		super(BranchOfficeOverviewTab, self).refresh()
+
+	def show(self):
+		super(BranchOfficeOverviewTab, self).show()
+		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+
+	def hide(self):
+		super(BranchOfficeOverviewTab, self).hide()
+		Scheduler().rem_all_classinst_calls(self)
+
+	def on_instance_removed(self):
+		Scheduler().rem_all_classinst_calls(self)
+		super(BranchOfficeOverviewTab, self).on_instance_removed()
+
 
 class MarketPlaceOverviewTab(OverviewTab):
 	def  __init__(self, instance):

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Overview tab for buildings -->
+<!-- Overview tab for branch offices and storages -->
 <Container size="260,400">
 <TabBG amount="5"/>
 	<Icon name="player_emblem" position="25,50"/>
@@ -15,7 +15,8 @@
 		<Container size="260,550" position="22,43">
 			<Label position="0,0" name="name_label" text="Name:" /><Label name='name' position="70,0" text="" />
 			<!--<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="70,25" text="" />-->
-			<Label position="0,25" name="running_costs_label" text="Running costs:" /><Label name="running_costs" position="120,25" text=""/>
+			<Label position="0,25" name="running_costs_label" text="Running costs:" /><Label name="running_costs" position="130,25" text=""/>
+			<Label position="0,45" name="collector_utilisation_label" text="Collector utilisation:" /><Label name="collector_utilisation" position="130,45" text=""/>
 		</Container>
 	</Container>
 </Container>

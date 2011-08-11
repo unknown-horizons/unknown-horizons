@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import deque
+
 from horizons.util import WorldObject, RadiusRect, Callback, decorators
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.constants import COLLECTORS
@@ -43,6 +45,8 @@ class BuildingCollector(Collector):
 		kwargs['x'] = home_building.position.origin.x
 		kwargs['y'] = home_building.position.origin.y
 		super(BuildingCollector, self).__init__(**kwargs)
+		self.job_search_failures = deque()
+		self.creation_tick = Scheduler().cur_tick + 1 # adjusted for the initial delay
 		self.__init(home_building)
 
 	def __init(self, home_building):
@@ -52,16 +56,26 @@ class BuildingCollector(Collector):
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
-		# save home_building
-		db("INSERT INTO building_collector(rowid, home_building) VALUES(?, ?)",
-		   self.worldid, self.home_building.worldid if self.home_building is not None else None)
+		self._clean_job_search_failure_log()
+		current_tick = Scheduler().cur_tick
+
+		# save home_building and creation tick
+		translated_creation_tick = self.creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
+		db("INSERT INTO building_collector(rowid, home_building, creation_tick) VALUES(?, ?, ?)", \
+			self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
+
+		# save job search failures
+		for job_search_failure in self.job_search_failures:
+			 # pre-translate the tick number for the loading process
+			translated_tick = job_search_failure - current_tick + 1
+			db("INSERT INTO building_collector_job_search_failure(collector, failure_tick) VALUES(?, ?)", self.worldid, translated_tick)
 
 	def load(self, db, worldid):
 		# we have to call __init here before super().load, because a superclass uses a method,
 		# which is overwritten here, that uses a member, which has to be initialised via __init.
 
 		# load home_building
-		home_building_id = db.get_building_collectors_home(worldid)
+		home_building_id, self.creation_tick = db.get_building_collectors_data(worldid)
 		self.__init(None if home_building_id is None else WorldObject.get_object_by_id(home_building_id))
 
 		super(BuildingCollector, self).load(db, worldid)
@@ -72,6 +86,10 @@ class BuildingCollector(Collector):
 			#       perhaps a new unit should be created, because a fisher ship without a
 			#       fisher basically isn't a buildingcollector anymore.
 
+		# load job search failures
+		# the tick values were translated to assume that it is currently tick 0
+		assert Scheduler().cur_tick == 0
+		self.job_search_failures = db.get_building_collector_job_search_failures(worldid)
 
 	def register_at_home_building(self, unregister = False):
 		"""Creates reference for self at home building (only hard reference except for
@@ -137,6 +155,20 @@ class BuildingCollector(Collector):
 		jobs.sort(key=lambda job: job.object.worldid)
 
 		return self.get_best_possible_job(jobs)
+
+	def search_job(self):
+		self._clean_job_search_failure_log()
+		super(BuildingCollector, self).search_job()
+
+	def _clean_job_search_failure_log(self):
+		""" remove too old entries """
+		first_irrelevant_tick = Scheduler().cur_tick - COLLECTORS.STATISTICAL_WINDOW - COLLECTORS.DEFAULT_WAIT_TICKS
+		while self.job_search_failures and self.job_search_failures[0] <= first_irrelevant_tick:
+			self.job_search_failures.popleft()
+
+	def handle_no_possible_job(self):
+		super(BuildingCollector, self).handle_no_possible_job()
+		self.job_search_failures.append(Scheduler().cur_tick)
 
 	def finish_working(self, collector_already_home=False):
 		"""Called when collector has stayed at the target for a while.
@@ -216,6 +248,35 @@ class BuildingCollector(Collector):
 		if continue_action is None:
 			continue_action = Callback(self.move_home, callback=self.end_job, action='move')
 		super(BuildingCollector, self).cancel(continue_action=continue_action)
+
+	def get_utilisation_history_length(self):
+		return min(COLLECTORS.STATISTICAL_WINDOW, Scheduler().cur_tick - self.creation_tick)
+
+	def get_utilisation(self):
+		""" returns the utilisation of the collector (it is being utilised unless it fails to find a job) """
+		history_length = self.get_utilisation_history_length()
+		if history_length <= 0:
+			return 0
+
+		current_tick = Scheduler().cur_tick
+		first_relevant_tick = current_tick - history_length
+
+		self._clean_job_search_failure_log()
+		failure_ticks = 0
+		for failure_tick in self.job_search_failures:
+			failure_ticks += COLLECTORS.DEFAULT_WAIT_TICKS
+
+			if failure_tick < first_relevant_tick:
+				# the beginning is not relevant
+				failure_ticks -= first_relevant_tick - failure_tick
+
+			last_failure_tick = failure_tick + COLLECTORS.DEFAULT_WAIT_TICKS - 1
+			if last_failure_tick >= current_tick:
+				# the end is not relevant
+				failure_ticks -= last_failure_tick - current_tick + 1
+
+		assert 0 <= failure_ticks <= history_length
+		return (history_length - failure_ticks) / float(history_length)
 
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
