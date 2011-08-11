@@ -168,6 +168,8 @@ class AreaBuilder(WorldObject):
 		for building in self.collector_buildings:
 			if builder.position.distance(building.position) == 1:
 				return []
+			if builder.position.distance(building.position) > building.radius:
+				continue # the collector building is too far to be useful
 			for coords in self._get_possible_road_coords(building.position):
 				collector_coords.add(coords)
 
