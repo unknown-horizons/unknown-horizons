@@ -135,6 +135,10 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		#TODO make system for loading unit name
 		self.name = 'Bomber Man'
 
+	def go(self, x, y):
+		super(FightingGroundUnit, self).go(x, y)
+		self.stop_attack()
+
 	def act_attack(self, dest):
 		"""
 		Rotates to target and acts correctly
