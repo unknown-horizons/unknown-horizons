@@ -507,6 +507,7 @@ class Fife(ApplicationBase):
 		self.__setup_screen_resolutions()
 		self.engine.initializePumping()
 		self.loop()
+		self.__kill_engine()
 		self.engine.finalizePumping()
 
 	def loop(self):
@@ -523,8 +524,6 @@ class Fife(ApplicationBase):
 			if self._doBreak:
 				self._doBreak = False
 				return self._doReturn
-
-		self.__kill_engine()
 
 	def __kill_engine(self):
 		"""Called when the engine is quit"""
