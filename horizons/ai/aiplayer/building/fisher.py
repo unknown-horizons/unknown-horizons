@@ -28,10 +28,7 @@ from horizons.util.python import decorators
 
 class AbstractFisher(AbstractBuilding):
 	def get_production_level(self, building, resource_id):
-		if building.get_history_length(resource_id) < PRODUCTION.COUNTER_LIMIT:
-			return self.get_expected_production_level(resource_id)
-		else:
-			return building.get_absolute_production_level(resource_id)
+		return self.get_expected_production_level(resource_id) * building.get_non_paused_utilisation()
 
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
 		evaluators = self.get_evaluators(settlement_manager, resource_id)

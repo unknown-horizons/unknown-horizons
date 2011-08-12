@@ -24,6 +24,8 @@ import math
 import logging
 import copy
 
+from collections import defaultdict, deque
+
 from horizons.util import WorldObject
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.constants import PRODUCTION, GAME_SPEED
@@ -52,13 +54,14 @@ class Production(WorldObject):
 	## INIT/DESTRUCT
 	def __init__(self, inventory, prod_line_id, auto_start=True, **kwargs):
 		super(Production, self).__init__(**kwargs)
-		self.__init(inventory, prod_line_id, PRODUCTION.STATES.none, None, 0, 0, 0)
+		self._state_history = deque()
+		self.__init(inventory, prod_line_id, PRODUCTION.STATES.none, Scheduler().cur_tick)
 		if auto_start:
 			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 		else:
 			self.inventory.add_change_listener(self._check_inventory, call_listener_now=False)
 
-	def __init(self, inventory, prod_line_id, state, last_counter, max_counter, current_counter, current_pos, pause_old_state = None):
+	def __init(self, inventory, prod_line_id, state, creation_tick, pause_old_state = None):
 		"""
 		@param inventory: inventory of assigned building
 		@param prod_line_id: id of production line.
@@ -67,11 +70,7 @@ class Production(WorldObject):
 		self._state = state
 		self._pause_remaining_ticks = None # only used in pause()
 		self._pause_old_state = pause_old_state # only used in pause()
-
-		self.last_counter = last_counter
-		self.max_counter = max_counter
-		self.current_counter = current_counter
-		self.current_pos = current_pos
+		self._creation_tick = creation_tick
 
 		assert isinstance(prod_line_id, int)
 		self._prod_line = self._create_production_line(prod_line_id)
@@ -86,6 +85,10 @@ class Production(WorldObject):
 			return ProductionLine.data[prod_line_id]
 
 	def save(self, db):
+		self._clean_state_history()
+		current_tick = Scheduler().cur_tick
+		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
+
 		remaining_ticks = None
 		if self._state == PRODUCTION.STATES.paused:
 			remaining_ticks = self._pause_remaining_ticks
@@ -94,11 +97,16 @@ class Production(WorldObject):
 		# use a number > 0 for ticks
 		if remaining_ticks < 1:
 			remaining_ticks = 1
-		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, \
-			last_counter, max_counter, current_counter, current_pos) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', \
+		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, creation_tick) VALUES(?, ?, ?, ?, ?, ?)', \
 			self.worldid, self._state.index, self._prod_line.id, remaining_ticks, \
-			None if self._pause_old_state is None else self._pause_old_state.index, \
-			self.last_counter, self.max_counter, self.current_counter, self.current_pos)
+			None if self._pause_old_state is None else self._pause_old_state.index, translated_creation_tick)
+
+		# save state history
+		for tick, state in self._state_history:
+			 # pre-translate the tick number for the loading process
+			translated_tick = tick - current_tick + 1
+			db("INSERT INTO production_state_history(production, tick, state) VALUES(?, ?, ?)", \
+				self.worldid, translated_tick, state)
 
 	@classmethod
 	def load(cls, db, worldid):
@@ -110,9 +118,8 @@ class Production(WorldObject):
 		super(Production, self).load(db, worldid)
 
 		db_data = db.get_production_row(worldid)
-		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], \
-			PRODUCTION.STATES[db_data[0]], db_data[5], db_data[6], db_data[7], db_data[8], \
-			None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
+		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
+			db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
 		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION.STATES.producing:
@@ -120,6 +127,8 @@ class Production(WorldObject):
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
 		     self._state == PRODUCTION.STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)
+
+		self._state_history = db.get_production_state_history(worldid)
 
 	def remove(self):
 		# depending on state, a check_inventory listener might be active
@@ -143,41 +152,6 @@ class Production(WorldObject):
 	def get_production_time(self):
 		return self._prod_line.time
 
-	#----------------------------------------------------------------------
-	def record_state(self):
-		"""Records statistics necessary to calculate the production level."""
-		if self._state is not PRODUCTION.STATES.paused:
-			if self._state is PRODUCTION.STATES.producing:
-				self.current_counter += 1
-			self.current_pos += 1
-			if self.current_pos == PRODUCTION.COUNTER_LIMIT:
-				if self.max_counter is None or self.max_counter < self.current_counter:
-					self.max_counter = self.current_counter + 0
-				self.last_counter = self.current_counter + 0
-				self.current_counter = 0
-				self.current_pos = 0
-
-	def get_history_length(self):
-		total = self.current_pos
-		if self.last_counter is not None:
-			total += PRODUCTION.COUNTER_LIMIT
-		return total
-
-	def get_absolute_production_level(self):
-		"""Returns the current absolute production level per tick."""
-		produced = self.current_counter
-		total = self.current_pos
-		if self.last_counter is not None:
-			produced += self.last_counter
-			total += PRODUCTION.COUNTER_LIMIT
-		if total == 0:
-			return 0
-		amount = 0
-		for sub_amount in self._prod_line.produced_res.itervalues():
-			amount += sub_amount
-		return float(amount) * produced / total / self._prod_line.time / GAME_SPEED.TICKS_PER_SECOND
-
-	#----------------------------------------------------------------------
 	def get_produced_units(self):
 		"""@return dict of produced units {unit_id: amount}"""
 		return self._prod_line.unit_production
@@ -258,7 +232,92 @@ class Production(WorldObject):
 		except AttributeError: # production line doesn't have this alter method
 			pass
 
+	def get_state_history_length(self):
+		return min(PRODUCTION.STATISTICAL_WINDOW, Scheduler().cur_tick - self._creation_tick)
+
+	def get_state_history_times(self, ignore_pause):
+		"""
+		Returns the part of time 0 <= x <= 1 the production has been in a state during the last history_length ticks.
+		"""
+
+		self._clean_state_history()
+		result = defaultdict(lambda: 0)
+		current_tick = Scheduler().cur_tick
+		pause_state = PRODUCTION.STATES.paused.index
+		first_relevant_tick = self._get_first_relevant_tick(ignore_pause)
+		num_entries = len(self._state_history)
+
+		for i in xrange(num_entries):
+			if ignore_pause and self._state_history[i][1] == pause_state:
+				continue
+			tick = self._state_history[i][0]
+			if tick >= current_tick:
+				break
+
+			next_tick = min(self._state_history[i + 1][0], current_tick) if i + 1 < num_entries else current_tick
+			if next_tick <= first_relevant_tick:
+				continue
+			relevant_ticks = next_tick - tick
+			if tick < first_relevant_tick:
+				# the beginning is not relevant
+				relevant_ticks -= first_relevant_tick - tick
+			result[self._state_history[i][1]] += relevant_ticks
+
+		total_length = sum(result.itervalues())
+		if total_length == 0:
+			return 0
+		for key in result:
+			result[key] /= float(total_length)
+		return result
+
+	def get_age(self):
+		return Scheduler().cur_tick - self._creation_tick
+
 	## PROTECTED METHODS
+	def _get_first_relevant_tick(self, ignore_pause):
+		"""
+		Returns the first tick that is relevant for production utilisation calculation
+		@param ignore_pause: whether to ignore the time spent in the pause state
+		"""
+
+		current_tick = Scheduler().cur_tick
+		first_relevant_tick = current_tick - self.get_state_history_length()
+		if not ignore_pause:
+			return first_relevant_tick
+
+		# ignore paused time
+		pause_state = PRODUCTION.STATES.paused.index
+		for i in xrange(len(self._state_history) - 1, -1, -1):
+			if self._state_history[i][1] != pause_state:
+				continue
+			tick = self._state_history[i][0]
+			next_tick = self._state_history[i + 1][0] if i + 1 < len(self._state_history) else current_tick
+			if next_tick <= first_relevant_tick:
+				break
+			first_relevant_tick -= next_tick - tick
+		return max(self._creation_tick, first_relevant_tick)
+
+	def _clean_state_history(self):
+		""" remove the part of the state history that is too old to matter """
+		first_relevant_tick = self._get_first_relevant_tick(True)
+		while len(self._state_history) > 1 and self._state_history[1][0] < first_relevant_tick:
+			self._state_history.popleft()
+
+	def _changed(self):
+		super(Production, self)._changed()
+		if not self._prod_line.save_statistics:
+			return
+
+		state = self._state.index
+		current_tick = Scheduler().cur_tick
+
+		if self._state_history and self._state_history[-1][0] == current_tick:
+			self._state_history.pop() # make sure no two events are on the same tick
+		if not self._state_history or self._state_history[-1][1] != state:
+			self._state_history.append((current_tick, state))
+
+		self._clean_state_history()
+
 	def _check_inventory(self):
 		"""Called when assigned building's inventory changed in some way"""
 		check_space = self._check_for_space_for_produced_res()

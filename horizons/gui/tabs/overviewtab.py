@@ -208,10 +208,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		cap_util = 0
-		if hasattr(self.instance, 'capacity_utilisation'):
-			cap_util = int(round( self.instance.capacity_utilisation * 100))
-		self.widget.child_finder('capacity_utilisation').text = unicode(cap_util) + u'%'
+		self._refresh_utilisation()
 
 		# remove old production line data
 		parent_container = self.widget.child_finder('production_lines')
@@ -283,6 +280,23 @@ class ProductionOverviewTab(OverviewTab):
 			self.destruct_button.hide_tooltip()
 		Tear(self.instance).execute(self.instance.session)
 
+	def _refresh_utilisation(self):
+		utilisation = 0
+		if hasattr(self.instance, 'capacity_utilisation'):
+			utilisation = int(round(self.instance.capacity_utilisation * 100))
+		self.widget.child_finder('capacity_utilisation').text = unicode(str(utilisation) + '%')
+
+	def show(self):
+		super(ProductionOverviewTab, self).show()
+		Scheduler().add_new_object(Callback(self._refresh_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+
+	def hide(self):
+		super(ProductionOverviewTab, self).hide()
+		Scheduler().rem_all_classinst_calls(self)
+
+	def on_instance_removed(self):
+		Scheduler().rem_all_classinst_calls(self)
+		super(ProductionOverviewTab, self).on_instance_removed()
 
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):

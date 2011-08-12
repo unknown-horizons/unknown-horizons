@@ -43,30 +43,26 @@ class Producer(ResourceHandler):
 
 	production_class = Production
 
-	_capacity_utilisation_update_interval = 3.0
-
 	# INIT
 	def __init__(self, auto_init=True, **kwargs):
 		super(Producer, self).__init__(**kwargs)
-		self.__init()
 		# add production lines as specified in db.
 		if auto_init:
 			for prod_line in self.session.db("SELECT id FROM production_line WHERE object_id = ? \
 			    AND enabled_by_default = 1", self.id):
 				self.add_production_by_id(prod_line[0], self.production_class)
 
-	def __init(self):
-		self.capacity_utilisation = 0.0 # float from 0.0 to 1.0
-		# update capacity util. every 3 seconds
-		if hasattr(self, 'select'): # only for selectables
-			Scheduler().add_new_object(self._update_capacity_utilisation, self, \
-				Scheduler().get_ticks(self._capacity_utilisation_update_interval), -1)
-			Scheduler().add_new_object(self._collect_production_statistics, self, \
-				PRODUCTION.COUNTER_INTERVAL, -1)
+	@property
+	def capacity_utilisation(self):
+		total = 0
+		productions = self._get_productions()
+		for production in productions:
+			state_history = production.get_state_history_times(False)
+			total += state_history[PRODUCTION.STATES.producing.index]
+		return total / len(productions)
 
 	def load(self, db, worldid):
 		super(Producer, self).load(db, worldid)
-		self.__init()
 
 	def load_production(self, db, worldid):
 		return self.production_class.load(db, worldid)
@@ -122,37 +118,6 @@ class Producer(ResourceHandler):
 			self.act("work", repeating=True)
 		elif state is PRODUCTION.STATES.inventory_full:
 			self.act("idle_full", repeating=True)
-
-	def _update_capacity_utilisation(self):
-		"""Update the capacity utilisation value"""
-		capacity_used = (self._get_current_state() == PRODUCTION.STATES.producing)
-		part = self._capacity_utilisation_update_interval / \
-		     PRODUCTION.CAPACITY_UTILISATION_CONSIDERED_SECONDS
-		part *= 1 if capacity_used else -1
-		self.capacity_utilisation += part
-		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
-		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
-
-	def _collect_production_statistics(self):
-		for production in self._productions.itervalues():
-			production.record_state()
-		for production in self._inactive_productions.itervalues():
-			production.record_state()
-
-	def get_history_length(self, resource_id):
-		for production in self._get_productions():
-			if resource_id in production._prod_line.produced_res:
-				return production.get_history_length()
-		return None
-
-	def get_absolute_production_level(self, resource_id):
-		for production in self._get_productions():
-			if resource_id in production._prod_line.produced_res:
-				return production.get_absolute_production_level()
-		return None
-
-	def get_expected_production_level(self, resource_id):
-		return None
 
 @metaChangeListenerDecorator("building_production_finished")
 class ProducerBuilding(Producer, BuildingResourceHandler):

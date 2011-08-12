@@ -43,13 +43,17 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
 		return [provider for provider in providers if isinstance(provider, Field)]
 
-	def _update_capacity_utilisation(self):
-		"""Farm doesn't acctually produce something, so calculate productivity by the number of fields
-		nearby."""
-		self.capacity_utilisation = float(len(self._get_providers())) / self.max_fields_possible
+	@property
+	def capacity_utilisation(self):
+		"""
+		Farm doesn't actually produce something, so calculate productivity by the number of fields nearby.
+		"""
+
+		result = float(len(self._get_providers())) / self.max_fields_possible
 		# sanity checks for theoretically impossible cases:
-		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
-		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
+		result = min(result, 1.0)
+		result = max(result, 0.0)
+		return result
 
 class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
@@ -107,6 +111,16 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 		# which isn't what we want. Therefore this workaround:
 		while cls._selected_tiles:
 			cls._selected_tiles.pop()
+
+	def get_non_paused_utilisation(self):
+		total = 0
+		productions = self._get_productions()
+		for production in productions:
+			if production.get_age() < PRODUCTION.STATISTICAL_WINDOW * 1.5:
+				return 1
+			state_history = production.get_state_history_times(True)
+			total += state_history[PRODUCTION.STATES.producing.index]
+		return total / float(len(productions))
 
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
