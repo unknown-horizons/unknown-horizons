@@ -14,12 +14,10 @@ msgstr ""
 "X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
-#
 # (poterminology) uh/unknownhorizons.pot (10)
-#
 # I added 'installer' cause in my opinion, you cannot build a weaver...french will understand that
 msgid "build"
-msgstr "construire, installer"
+msgstr "Construire/Installer"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
