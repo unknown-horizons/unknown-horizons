@@ -56,7 +56,7 @@ class BuildingCollector(Collector):
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
-		self._clean_job_search_failure_log()
+		self._clean_job_history_log()
 		current_tick = Scheduler().cur_tick
 
 		# save home_building and creation tick
@@ -64,7 +64,7 @@ class BuildingCollector(Collector):
 		db("INSERT INTO building_collector(rowid, home_building, creation_tick) VALUES(?, ?, ?)", \
 			self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
 
-		# save job search failures
+		# save job history
 		for tick, utilisation in self._job_history:
 			 # pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + 1
@@ -158,10 +158,10 @@ class BuildingCollector(Collector):
 		return self.get_best_possible_job(jobs)
 
 	def search_job(self):
-		self._clean_job_search_failure_log()
+		self._clean_job_history_log()
 		super(BuildingCollector, self).search_job()
 
-	def _clean_job_search_failure_log(self):
+	def _clean_job_history_log(self):
 		""" remove too old entries """
 		first_relevant_tick = Scheduler().cur_tick - self.get_utilisation_history_length()
 		while len(self._job_history) > 1 and self._job_history[1][0] < first_relevant_tick:
@@ -277,7 +277,7 @@ class BuildingCollector(Collector):
 		current_tick = Scheduler().cur_tick
 		first_relevant_tick = current_tick - history_length
 
-		self._clean_job_search_failure_log()
+		self._clean_job_history_log()
 		num_entries = len(self._job_history)
 		total_utilisation = 0
 		for i in xrange(num_entries):
