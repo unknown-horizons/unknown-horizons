@@ -45,8 +45,8 @@ class BuildingCollector(Collector):
 		kwargs['x'] = home_building.position.origin.x
 		kwargs['y'] = home_building.position.origin.y
 		super(BuildingCollector, self).__init__(**kwargs)
-		self.job_search_failures = deque()
-		self.creation_tick = Scheduler().cur_tick + 1 # adjusted for the initial delay
+		self._job_history = deque()
+		self._creation_tick = Scheduler().cur_tick + 1 # adjusted for the initial delay
 		self.__init(home_building)
 
 	def __init(self, home_building):
@@ -60,22 +60,23 @@ class BuildingCollector(Collector):
 		current_tick = Scheduler().cur_tick
 
 		# save home_building and creation tick
-		translated_creation_tick = self.creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
+		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
 		db("INSERT INTO building_collector(rowid, home_building, creation_tick) VALUES(?, ?, ?)", \
 			self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
 
 		# save job search failures
-		for job_search_failure in self.job_search_failures:
+		for tick, utilisation in self._job_history:
 			 # pre-translate the tick number for the loading process
-			translated_tick = job_search_failure - current_tick + 1
-			db("INSERT INTO building_collector_job_search_failure(collector, failure_tick) VALUES(?, ?)", self.worldid, translated_tick)
+			translated_tick = tick - current_tick + 1
+			db("INSERT INTO building_collector_job_history(collector, tick, utilisation) VALUES(?, ?, ?)", \
+				self.worldid, translated_tick, utilisation)
 
 	def load(self, db, worldid):
 		# we have to call __init here before super().load, because a superclass uses a method,
 		# which is overwritten here, that uses a member, which has to be initialised via __init.
 
 		# load home_building
-		home_building_id, self.creation_tick = db.get_building_collectors_data(worldid)
+		home_building_id, self._creation_tick = db.get_building_collectors_data(worldid)
 		self.__init(None if home_building_id is None else WorldObject.get_object_by_id(home_building_id))
 
 		super(BuildingCollector, self).load(db, worldid)
@@ -89,7 +90,7 @@ class BuildingCollector(Collector):
 		# load job search failures
 		# the tick values were translated to assume that it is currently tick 0
 		assert Scheduler().cur_tick == 0
-		self.job_search_failures = db.get_building_collector_job_search_failures(worldid)
+		self._job_history = db.get_building_collector_job_history(worldid)
 
 	def register_at_home_building(self, unregister = False):
 		"""Creates reference for self at home building (only hard reference except for
@@ -162,13 +163,23 @@ class BuildingCollector(Collector):
 
 	def _clean_job_search_failure_log(self):
 		""" remove too old entries """
-		first_irrelevant_tick = Scheduler().cur_tick - COLLECTORS.STATISTICAL_WINDOW - COLLECTORS.DEFAULT_WAIT_TICKS
-		while self.job_search_failures and self.job_search_failures[0] <= first_irrelevant_tick:
-			self.job_search_failures.popleft()
+		first_relevant_tick = Scheduler().cur_tick - self.get_utilisation_history_length()
+		while len(self._job_history) > 1 and self._job_history[1][0] < first_relevant_tick:
+			self._job_history.popleft()
 
 	def handle_no_possible_job(self):
 		super(BuildingCollector, self).handle_no_possible_job()
-		self.job_search_failures.append(Scheduler().cur_tick)
+		# only append a new element if it is different from the last one
+		if not self._job_history or abs(self._job_history[-1][1]) > 1e-9:
+			self._job_history.append((Scheduler().cur_tick, 0))
+
+	def begin_current_job(self, job_location = None):
+		super(BuildingCollector, self).begin_current_job(job_location)
+		max_amount = min(self.inventory.get_limit(self.job.res), self.job.object.inventory.get_limit(self.job.res))
+		utilisation = self.job.amount / float(max_amount)
+		# only append a new element if it is different from the last one
+		if not self._job_history or abs(self._job_history[-1][1] - utilisation) > 1e-9:
+			self._job_history.append((Scheduler().cur_tick, utilisation))
 
 	def finish_working(self, collector_already_home=False):
 		"""Called when collector has stayed at the target for a while.
@@ -250,10 +261,15 @@ class BuildingCollector(Collector):
 		super(BuildingCollector, self).cancel(continue_action=continue_action)
 
 	def get_utilisation_history_length(self):
-		return min(COLLECTORS.STATISTICAL_WINDOW, Scheduler().cur_tick - self.creation_tick)
+		return min(COLLECTORS.STATISTICAL_WINDOW, Scheduler().cur_tick - self._creation_tick)
 
 	def get_utilisation(self):
-		""" returns the utilisation of the collector (it is being utilised unless it fails to find a job) """
+		"""
+		Returns the utilisation of the collector.
+		It is calculated by observing how full the inventory of the collector is or
+		how full it would be if it had reached the place where it picks up the resources.
+		"""
+
 		history_length = self.get_utilisation_history_length()
 		if history_length <= 0:
 			return 0
@@ -262,21 +278,22 @@ class BuildingCollector(Collector):
 		first_relevant_tick = current_tick - history_length
 
 		self._clean_job_search_failure_log()
-		failure_ticks = 0
-		for failure_tick in self.job_search_failures:
-			failure_ticks += COLLECTORS.DEFAULT_WAIT_TICKS
+		num_entries = len(self._job_history)
+		total_utilisation = 0
+		for i in xrange(num_entries):
+			tick = self._job_history[i][0]
+			if tick >= current_tick:
+				break
 
-			if failure_tick < first_relevant_tick:
+			next_tick = min(self._job_history[i + 1][0], current_tick) if i + 1 < num_entries else current_tick
+			relevant_ticks = next_tick - tick
+			if tick < first_relevant_tick:
 				# the beginning is not relevant
-				failure_ticks -= first_relevant_tick - failure_tick
+				relevant_ticks -= first_relevant_tick - tick
+			total_utilisation += relevant_ticks * self._job_history[i][1]
 
-			last_failure_tick = failure_tick + COLLECTORS.DEFAULT_WAIT_TICKS - 1
-			if last_failure_tick >= current_tick:
-				# the end is not relevant
-				failure_ticks -= last_failure_tick - current_tick + 1
-
-		assert 0 <= failure_ticks <= history_length
-		return (history_length - failure_ticks) / float(history_length)
+		#assert -1e-7 < total_utilisation / float(history_length) < 1 + 1e-7
+		return total_utilisation / float(history_length)
 
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
