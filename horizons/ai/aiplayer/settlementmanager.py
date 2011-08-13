@@ -248,13 +248,8 @@ class SettlementManager(WorldObject):
 			elif resource_id == RES.LIQUOR_ID:
 				total = self.get_together_chain.get_ratio(resource_id) * self.get_resident_resource_usage(RES.GET_TOGETHER_ID)
 			else:
-				for coords, (purpose, _, _) in self.village_builder.plan.iteritems():
-					if purpose != BUILDING_PURPOSE.RESIDENCE:
-						continue
-					tent = self.settlement.ground_map[coords].object
-					if tent.id != BUILDINGS.RESIDENTIAL_CLASS:
-						continue # most likely an abandoned tent
-					for production in tent._get_productions():
+				for residence in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+					for production in residence._get_productions():
 						production_line = production._prod_line
 						if resource_id in production_line.consumed_res:
 							# subtract because the amount will be negative
