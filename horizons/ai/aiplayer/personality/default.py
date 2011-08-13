@@ -66,15 +66,22 @@ class DefaultPersonality:
 		path_unreachable_boundary_penalty = 0.1
 
 	class ProductionBuilder(AreaBuilder):
-		expected_collector_capacity = 0.07 # resource collected per collector per tick
-		collector_coverage_alignment_coefficient = 0.001 # the importance of alignment when choosing a location for a storage to improve collector coverage
-		collector_extra_distance = 5 # constant distance on top of the actual distance a collector has to move (accounts for breaks)
-
 		collector_area_enlargement_alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
 		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
 		max_collector_area_unreachable = 10 # maximum collector area (of 3x3 squares) that doesn't have to be reachable when considering whether to enlarge the area
 
 		deposit_coverage_alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
+
+		min_bad_collector_coverage = 0.5 # collector coverage should be improved when a production building is stopped for more than this amount of time
+		min_free_space = 20 # if there is less than this much free space for a resource then it doesn't matter that the building in badly covered
+		max_good_collector_utilisation = 0.7 # if the collector building is used more than this then don't attempt to improve coverage by connecting more production buildings
+
+		max_reasonably_served_buildings = 3 # maximum number of buildings a storage can reasonably serve (not a hard limit)
+		collector_extra_distance = 6.0 # constant distance on top of the actual distance a collector has to move (accounts for breaks)
+		improved_collector_coverage_alignment_coefficient = 0.001 # the importance of alignment when choosing a location for a storage to improve collector coverage
+
+		collector_improvement_road_expires = 1500 # minimum number of ticks between collector improvement road connections
+		collector_improvement_storage_expires = 4000 # minimum number of ticks between collector improvement extra storages
 
 	class VillageBuilder(AreaBuilder):
 		max_village_section_size = 22 # maximum side length of a village section

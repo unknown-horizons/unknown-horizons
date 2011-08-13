@@ -135,6 +135,10 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 		produced_res = production.get_produced_res()
 		self.on_building_production_finished(produced_res)
 
+	def get_output_blocked_time(self):
+		""" gets the amount of time in range [0, 1] the output storage is blocked for the AI """
+		return max(production.get_output_blocked_time() for production in self._get_productions())
+
 class QueueProducer(Producer):
 	"""The QueueProducer stores all productions in a queue and runs them one
 	by one. """

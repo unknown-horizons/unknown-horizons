@@ -30,7 +30,8 @@ from builder import Builder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 from building import AbstractBuilding
 
-from horizons.constants import AI, BUILDINGS, RES
+from horizons.constants import AI, BUILDINGS, RES, PRODUCTION
+from horizons.scheduler import Scheduler
 from horizons.util import Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
@@ -39,16 +40,18 @@ class ProductionBuilder(AreaBuilder):
 	def __init__(self, settlement_manager):
 		super(ProductionBuilder, self).__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
-		self.__init(settlement_manager)
+		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
 		for x, y in settlement_manager.branch_office.position.tuple_iter():
 			self.register_change(x, y, BUILDING_PURPOSE.BRANCH_OFFICE, None)
 
-	def __init(self, settlement_manager):
+	def __init(self, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road):
 		self._init_cache()
 		self.collector_buildings = [] # [building, ...]
 		self.production_buildings = [] # [building, ...]
 		self.unused_fields = self._make_empty_unused_fields()
 		self.personality = self.owner.personality_manager.get('ProductionBuilder')
+		self._last_collector_improvement_storage = last_collector_improvement_storage
+		self._last_collector_improvement_road = last_collector_improvement_road
 
 	@classmethod
 	def _make_empty_unused_fields(self):
@@ -60,13 +63,17 @@ class ProductionBuilder(AreaBuilder):
 
 	def save(self, db):
 		super(ProductionBuilder, self).save(db)
-		db("INSERT INTO ai_production_builder(rowid, settlement_manager) VALUES(?, ?)", self.worldid, \
-			self.settlement_manager.worldid)
+		translated_last_collector_improvement_storage = self._last_collector_improvement_storage - Scheduler().cur_tick # pre-translate for the loading process
+		translated_last_collector_improvement_road = self._last_collector_improvement_road - Scheduler().cur_tick # pre-translate for the loading process
+		db("INSERT INTO ai_production_builder(rowid, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road) VALUES(?, ?, ?, ?)", \
+			self.worldid, self.settlement_manager.worldid, translated_last_collector_improvement_storage, translated_last_collector_improvement_road)
 
 	def _load(self, db, settlement_manager):
-		worldid = db("SELECT rowid FROM ai_production_builder WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
+		worldid, last_storage, last_road = \
+			db("SELECT rowid, last_collector_improvement_storage, last_collector_improvement_road FROM ai_production_builder WHERE settlement_manager = ?", \
+			settlement_manager.worldid)[0]
 		super(ProductionBuilder, self)._load(db, settlement_manager, worldid)
-		self.__init(settlement_manager)
+		self.__init(settlement_manager, last_storage, last_road)
 
 		db_result = db("SELECT x, y, purpose, builder FROM ai_area_builder_plan WHERE area_builder = ?", worldid)
 		for x, y, purpose, builder_id in db_result:
@@ -115,109 +122,127 @@ class ProductionBuilder(AreaBuilder):
 				return True
 		return False
 
-	def enough_collectors(self):
-		production_value = self.settlement_manager.resource_manager.get_production_value()
-		total_collector_capacity = (1 + 2 * len(self.collector_buildings)) * self.personality.expected_collector_capacity
-		self.log.info('%s collector capacity %.3f, need %.3f', self, total_collector_capacity, production_value)
-		return total_collector_capacity > production_value
-
-	def _get_collector_data(self):
-		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		
-		data = {}
-		keys = {}
+	def _get_problematic_collector_coverage_buildings(self):
+		problematic_buildings = {}
 		for building in self.production_buildings:
-			data[building] = {}
-			for coords in building.position.tuple_iter():
-				keys[coords] = building
+			for production in building._get_productions():
+				if production.get_age() < 1.5 * PRODUCTION.STATISTICAL_WINDOW:
+					continue
+				history = production.get_state_history_times(False)
+				# take paused time into account because the AI pauses the production when the output storage is full
+				amount_paused = history[PRODUCTION.STATES.inventory_full.index] + history[PRODUCTION.STATES.paused.index]
+				if amount_paused < self.personality.min_bad_collector_coverage:
+					continue
+				for resource_id in production.get_produced_res():
+					if self.settlement.inventory.get_free_space_for(resource_id) > self.personality.min_free_space:
+						# this is actually problematic
+						problematic_buildings[building.worldid] = building
+		return problematic_buildings.values()
 
-		for collector in self.collector_buildings:
-			distance = {}
-			queue = deque()
-			for tile in self._get_neighbour_tiles(collector.position):
-				if tile is not None and tile.object is not None and tile.object.id == BUILDINGS.TRAIL_CLASS:
-					distance[(tile.x, tile.y)] = 0
-					queue.append(((tile.x, tile.y), 0))
+	def enough_collectors(self):
+		if self._last_collector_improvement_road + self.personality.collector_improvement_road_expires > Scheduler().cur_tick:
+			return True # skip this to leave time for the collectors to do their work
 
-			while len(queue) > 0:
-				(coords, dist) = queue.popleft()
-				for dx, dy in moves:
-					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 not in distance and coords2 in self.settlement.ground_map:
-						building = self.settlement.ground_map[coords2].object
-						if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
-							distance[coords2] = dist + 1
-							queue.append((coords2, dist + 1))
-						elif coords2 in keys and collector not in data[keys[coords2]]:
-							distance[coords2] = dist + 1
-							data[keys[coords2]][collector] = dist + 1
-		return (data, keys)
-
-	def evaluate_collector_data(self, data):
-		"""
-		Calculates the value of the collector arrangement
-		@param data: {building -> {building/builder -> distance}}
-		@return: the value of the arrangement (smaller is better)
-		"""
-		result = 0
-		for building_data in data.itervalues():
-			value = 0.000001
-			for collector, distance in building_data.iteritems():
-				collectors = 2 if isinstance(collector, Builder) else len(collector.get_local_collectors())
-				value += collectors / (self.personality.collector_extra_distance + distance)
-			result += 1 / value
-		return result
+		problematic_buildings = self._get_problematic_collector_coverage_buildings()
+		return not problematic_buildings
 
 	def improve_collector_coverage(self):
 		"""
-		Builds a storage tent to improve collector coverage.
+		Builds a road to a collector building or an extra storage tent to improve collector coverage.
 		"""
+		current_tick = Scheduler().cur_tick
+
+		# which collectors could have actual unused capacity?
+		usable_collectors = []
+		for building in self.collector_buildings:
+			if building.get_utilisation_history_length() < 1000 or building.get_collector_utilisation() < self.personality.max_good_collector_utilisation:
+				usable_collectors.append(building)
+
+		# find possible problematic building to usable collector links
+		problematic_buildings = self._get_problematic_collector_coverage_buildings()
+		potential_road_connections = []
+		for building in problematic_buildings:
+			for collector_building in usable_collectors:
+				distance = building.loading_area.distance(collector_building.position)
+				if distance > collector_building.radius:
+					continue # out of range anyway
+				potential_road_connections.append((distance * collector_building.get_collector_utilisation(), building, collector_building))
+
+		# try the best link from the above list
+		for _, building, collector_building in sorted(potential_road_connections):
+			result = self.build_extra_road_connection(building, collector_building)
+			if result:
+				self._last_collector_improvement_road = current_tick
+				self.log.info('%s connected %s at %d, %d with %s at %d, %d', self, building.name, building.position.origin.x, \
+					building.position.origin.y, collector_building.name, collector_building.position.origin.x, collector_building.position.origin.y)
+				return BUILD_RESULT.OK
+		self.log.info('%s found no good way to connect buildings that need more collectors to existing collector buildings', self)
+
 		if not self.have_resources(BUILDINGS.STORAGE_CLASS):
 			return BUILD_RESULT.NEED_RESOURCES
+		if self._last_collector_improvement_storage + self.personality.collector_improvement_storage_expires > current_tick:
+			return BUILD_RESULT.IMPOSSIBLE # skip this to leave time for the collectors to do their work
 
-		(data, keys) = self._get_collector_data()
+		reachable = dict.fromkeys(self.land_manager.roads) # {(x, y): [(building worldid, distance), ...], ...}
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose == BUILDING_PURPOSE.NONE:
+				reachable[coords] = []
+		for key in reachable:
+			if reachable[key] is None:
+				reachable[key] = []
+
+		storage_radius = Entities.buildings[BUILDINGS.STORAGE_CLASS].radius
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		options = []
+		for building in problematic_buildings:
+			distance = dict.fromkeys(reachable)
+			queue = deque()
+			for coords in self._get_possible_road_coords(building.loading_area):
+				if coords in distance:
+					distance[coords] = 0
+					queue.append(coords)
 
-		for (x, y), (purpose, _) in self.plan.iteritems():
+			while queue:
+				x, y = queue[0]
+				queue.popleft()
+				for dx, dy in moves:
+					coords2 = (x + dx, y + dy)
+					if coords2 in distance and distance[coords2] is None:
+						distance[coords2] = distance[(x, y)] + 1
+						queue.append(coords2)
+
+			for coords, dist in distance.iteritems():
+				if dist is not None:
+					if building.loading_area.distance(coords) <= storage_radius:
+						reachable[coords].append((building.worldid, dist))
+
+		options = []
+		for (x, y), building_distances in reachable.iteritems():
 			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
 			if not builder:
 				continue
 
-			distance = {}
+			actual_distance = {}
+			for coords in builder.position.tuple_iter():
+				for building_worldid, distance in reachable[coords]:
+					if building_worldid not in actual_distance or actual_distance[building_worldid] > distance:
+						actual_distance[building_worldid] = distance
+			if not actual_distance:
+				continue
+
+			usefulness = min(len(actual_distance), self.personality.max_reasonably_served_buildings)
+			for distance in actual_distance.itervalues():
+				usefulness += 1.0 / (distance + self.personality.collector_extra_distance)
+
 			alignment = 1
-			queue = deque()
 			for tile in self._get_neighbour_tiles(builder.position):
 				if tile is None:
 					continue
 				coords = (tile.x, tile.y)
-				if tile.object is not None and tile.object.id == BUILDINGS.TRAIL_CLASS:
-					distance[coords] = 0
-					queue.append((coords, 0))
 				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
-			if not distance:
-				continue
 
-			extra_data = {}
-			for key in data:
-				extra_data[key] = copy.copy(data[key])
-
-			while len(queue) > 0:
-				(coords, dist) = queue.popleft()
-				for dx, dy in moves:
-					coords2 = (coords[0] + dx, coords[1] + dy)
-					if coords2 not in distance and coords2 in self.settlement.ground_map:
-						building = self.settlement.ground_map[coords2].object
-						if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
-							distance[coords2] = dist + 1
-							queue.append((coords2, dist + 1))
-						elif coords2 in keys and builder not in extra_data[keys[coords2]]:
-							distance[coords2] = dist + 1
-							extra_data[keys[coords2]][builder] = dist + 1
-
-			value = self.evaluate_collector_data(extra_data) - math.log(alignment) * self.personality.collector_coverage_alignment_coefficient
-			options.append((value, builder))
+			value = usefulness + alignment * self.personality.improved_collector_coverage_alignment_coefficient
+			options.append((-value, builder))
 
 		for _, builder in sorted(options):
 			building = builder.execute()
@@ -226,7 +251,9 @@ class ProductionBuilder(AreaBuilder):
 			for x, y in builder.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
 			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
+			self._last_collector_improvement_storage = current_tick
 			return BUILD_RESULT.OK
+
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def improve_deposit_coverage(self, building_id):
@@ -277,6 +304,7 @@ class ProductionBuilder(AreaBuilder):
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def _get_collector_area(self):
+		""" returns the set of all coordinates that are reachable from at least one collector by road or open space """
 		if self.__collector_area_cache is not None and self.last_change_id == self.__collector_area_cache[0]:
 			return self.__collector_area_cache[1]
 

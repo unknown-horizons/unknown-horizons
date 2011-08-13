@@ -265,7 +265,7 @@ class Production(WorldObject):
 
 		total_length = sum(result.itervalues())
 		if total_length == 0:
-			return 0
+			return result
 		for key in result:
 			result[key] /= float(total_length)
 		return result

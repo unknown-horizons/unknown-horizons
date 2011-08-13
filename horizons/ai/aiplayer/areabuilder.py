@@ -94,9 +94,14 @@ class AreaBuilder(WorldObject):
 				if road:
 					yield (tile.x, tile.y)
 			elif building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS or point.to_tuple() in self.land_manager.roads:
-					yield (tile.x, tile.y)
+				yield (tile.x, tile.y)
 
 	def _fill_distance(self, distance, nodes):
+		"""
+		fills the distance dict with the shortest distance
+		@param distance: {(x, y): distance, ...}
+		@param nodes: {(x, y): penalty, ...}
+		"""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		queue = deque([item for item in distance.iteritems()])
 
@@ -109,9 +114,10 @@ class AreaBuilder(WorldObject):
 					queue.append((coords2, dist + 1))
 
 	def _get_path_nodes(self):
+		""" returns coordinates of current and possible future road tiles in the settlement """
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
-		nodes = {}
+		nodes = {} # {(x, y): penalty, ...}
 		distance_to_road = {}
 		distance_to_boundary = {}
 		for coords in self.plan:
@@ -182,8 +188,7 @@ class AreaBuilder(WorldObject):
 		return RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \
 			destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
 
-	def build_road_connection(self, builder):
-		path = self._get_road_to_builder(builder)
+	def _build_road(self, path):
 		if path is not None:
 			for x, y in path:
 				self.register_change(x, y, BUILDING_PURPOSE.ROAD, None)
@@ -192,6 +197,23 @@ class AreaBuilder(WorldObject):
 					continue
 				assert Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(x, y)).execute()
 		return path is not None
+
+	def build_road_connection(self, builder):
+		path = self._get_road_to_builder(builder)
+		return self._build_road(path)
+
+	def build_extra_road_connection(self, building, collector_building):
+		collector_coords = set()
+		for coords in self._get_possible_road_coords(collector_building.position):
+			collector_coords.add(coords)
+
+		destination_coords = set(self._get_possible_road_coords(building.position))
+		pos = building.position
+		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
+
+		path = RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \
+			destination_coords, beacon, self._get_path_nodes())
+		return self._build_road(path)
 
 	def get_road_connection_cost(self, builder):
 		path = self._get_road_to_builder(builder)
