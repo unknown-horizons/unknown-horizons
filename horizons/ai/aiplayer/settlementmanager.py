@@ -450,6 +450,8 @@ class SettlementManager(WorldObject):
 	def remove_building(self, building):
 		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
 			self.production_builder.collector_buildings.remove(building)
+		elif building.id == BUILDINGS.RESIDENTIAL_CLASS:
+			self.village_builder.recreate_tent_queue(building.position.origin.to_tuple())
 
 	def handle_lost_area(self, coords_list):
 		"""

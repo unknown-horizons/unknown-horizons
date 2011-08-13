@@ -63,7 +63,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
 
-		for coords, (purpose, builder, section) in village_builder.plan.iteritems():
+		for coords, (purpose, builder, section, _) in village_builder.plan.iteritems():
 			if section > village_builder.current_section:
 				continue
 			if purpose == building_purpose:
@@ -88,7 +88,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
 
-		for coords, (purpose, builder, section) in village_builder.plan.iteritems():
+		for coords, (purpose, builder, section, _) in village_builder.plan.iteritems():
 			if section > village_builder.current_section:
 				continue
 			if purpose == building_purpose:

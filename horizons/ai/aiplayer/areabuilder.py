@@ -337,12 +337,12 @@ class AreaBuilder(WorldObject):
 		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed in this area """ 
 		self.last_change_id = -1
 
-	def register_change(self, x, y, purpose, builder, section = None):
+	def register_change(self, x, y, purpose, builder, section = None, seq_no = None):
 		if (x, y) in self.plan:
 			if section is None:
 				self.plan[(x, y)] = (purpose, builder)
 			else:
-				self.plan[(x, y)] = (purpose, builder, section)
+				self.plan[(x, y)] = (purpose, builder, section, seq_no)
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
 

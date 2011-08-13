@@ -55,7 +55,6 @@ class BUILDING_PURPOSE:
 	SUGARCANE_FIELD = 18
 	DISTILLERY = 19
 	MAIN_SQUARE = 20
-	UNUSED_RESIDENCE = 21
 	RESIDENCE = 22
 	PAVILION = 24
 	VILLAGE_SCHOOL = 26
@@ -75,8 +74,6 @@ class BUILDING_PURPOSE:
 			return cls.PASTURE
 		elif purpose == cls.UNUSED_SUGARCANE_FIELD:
 			return cls.SUGARCANE_FIELD
-		elif purpose == cls.UNUSED_RESIDENCE:
-			return cls.RESIDENCE
 		return None
 
 	@classmethod
@@ -87,6 +84,4 @@ class BUILDING_PURPOSE:
 			return cls.UNUSED_PASTURE
 		elif purpose == cls.SUGARCANE_FIELD:
 			return cls.UNUSED_SUGARCANE_FIELD
-		elif purpose == cls.RESIDENCE:
-			return cls.UNUSED_RESIDENCE
 		return None
