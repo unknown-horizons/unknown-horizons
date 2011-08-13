@@ -100,9 +100,6 @@ class AbstractVillageBuilding(AbstractBuilding):
 					return True
 		return False
 
-	def get_collector_likelihood(self, building, resource_id):
-		return 0 # the resources produced here can't be picked up by the general collectors
-
 	@property
 	def coverage_building(self):
 		""" main squares, pavilions, schools, and taverns are buildings that need to be built even if the total production is enough """

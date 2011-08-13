@@ -29,9 +29,6 @@ class AbstractCharcoalBurner(AbstractBuilding):
 	def evaluator_class(self):
 		return CharcoalBurnerEvaluator
 
-	def get_collector_likelihood(self, building, resource_id):
-		return 3 # it needs a lot more attention because of the small output inventory
-
 	@classmethod
 	def register_buildings(cls):
 		cls.available_buildings[BUILDINGS.CHARCOAL_BURNER_CLASS] = cls

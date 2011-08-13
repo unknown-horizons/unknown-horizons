@@ -58,9 +58,6 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 		""" you don't actually build resource deposits """
 		return 0
 
-	def get_collector_likelihood(self, building, resource_id):
-		return 0 # the resources are not collected from the deposits
-
 	@property
 	def directly_buildable(self):
 		""" You don't actually build resource deposits """

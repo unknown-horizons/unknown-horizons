@@ -167,14 +167,6 @@ class ResourceManager(WorldObject):
 					total += amount
 		return int(math.ceil(total))
 
-	def get_production_value(self):
-		""" returns an estimated amount of resources that have to be collected by the general collectors per tick """
-		total = 0
-		for resource_id, building_id in self._data:
-			if building_id in AbstractBuilding.buildings:
-				total += AbstractBuilding.buildings[building_id].get_total_production_value(self.settlement_manager, resource_id)
-		return total
-
 	def get_default_resource_requirement(self, resource_id):
 		""" returns the default level that should exist all the time """
 		if resource_id in [RES.TOOLS_ID, RES.BOARDS_ID]:

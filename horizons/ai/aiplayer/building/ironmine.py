@@ -34,9 +34,6 @@ class AbstractIronMine(AbstractBuilding):
 	def evaluator_class(self):
 		return IronMineEvaluator
 
-	def get_collector_likelihood(self, building, resource_id):
-		return 0 # it should always be picked up by the smeltery collector
-
 	@classmethod
 	def register_buildings(cls):
 		cls.available_buildings[BUILDINGS.IRON_MINE_CLASS] = cls
