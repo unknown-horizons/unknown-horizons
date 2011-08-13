@@ -32,6 +32,7 @@ class BuildingEvaluator(WorldObject):
 	log = logging.getLogger("ai.aiplayer.buildingevaluator")
 
 	need_collector_connection = True
+	is_production_building = True
 
 	def __init__(self, area_builder, builder, worldid=None):
 		super(BuildingEvaluator, self).__init__(worldid)
@@ -164,7 +165,8 @@ class BuildingEvaluator(WorldObject):
 		for x, y in self.builder.position.tuple_iter():
 			self.area_builder.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
 		self.area_builder.register_change(self.builder.position.origin.x, self.builder.position.origin.y, self.purpose, self.builder)
-		self.area_builder.production_buildings.append(building)
+		if self.is_production_building:
+			self.area_builder.production_buildings.append(building)
 		return (BUILD_RESULT.OK, building)
 
 	def __str__(self):

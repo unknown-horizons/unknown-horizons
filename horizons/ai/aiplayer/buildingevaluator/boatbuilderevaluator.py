@@ -26,6 +26,8 @@ from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
 class BoatBuilderEvaluator(BuildingEvaluator):
+	is_production_building = False
+
 	def __init__(self, area_builder, builder, distance_to_collector, alignment):
 		super(BoatBuilderEvaluator, self).__init__(area_builder, builder)
 		self.distance_to_collector = distance_to_collector
