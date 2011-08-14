@@ -48,7 +48,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
 from horizons.util import (Color, DbReader, Rect, WorldObject, NamedObject, LivingObject,
-						   SavegameAccessor, Point)
+						   SavegameAccessor, Point, DifficultySettings)
 from horizons.world import World
 
 
@@ -150,7 +150,7 @@ class SPTestSession(SPSession):
 		self.world = World(self)
 		self.world._init(self.savegame_db)
 		for i in sorted(players):
-			self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['is_ai'])
+			self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['is_ai'], i['difficulty'])
 		self.manager.load(self.savegame_db)
 
 	def end(self):
@@ -191,12 +191,15 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai
 	tests too verbose.
 	"""
 	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
+	human_difficulty = DifficultySettings.DEFAULT_LEVEL
+	ai_difficulty = DifficultySettings.EASY_LEVEL
+
 	players = []
 	if human_player:
-		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': False})
+		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': False, 'difficulty': human_difficulty})
 	for i in xrange(ai_players):
 		id = i + human_player + 1
-		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'is_ai': True})
+		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'is_ai': True, 'difficulty': ai_difficulty})
 
 	session.load(mapgen(), players)
 	session.world.init_fish_indexer()
