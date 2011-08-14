@@ -585,7 +585,7 @@ class VillageBuilder(AreaBuilder):
 		queue = []
 		for coords, (purpose, _, _, seq_no) in self.plan.iteritems():
 			if purpose == BUILDING_PURPOSE.RESIDENCE:
-				object = self.settlement.ground_map[coords].object
+				object = self.island.ground_map[coords].object
 				if object is None or object.id != BUILDINGS.RESIDENTIAL_CLASS or removal_location == coords:
 					queue.append((seq_no, coords))
 		queue.sort()
