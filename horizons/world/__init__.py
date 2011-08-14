@@ -467,7 +467,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# don't yield if point is not in map, those points don't exist
 				yield point
 
-	def setup_player(self, id, name, color, local, is_ai):
+	def setup_player(self, id, name, color, local, is_ai, difficulty_level):
 		"""Sets up a new Player instance and adds him to the active world.
 		Only used for new games. Loading old players is done in _init().
 		@param local: bool, whether the player is the one sitting on front of this machine."""
@@ -475,16 +475,16 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		player = None
 		if local:
 			if is_ai: # a human controlled AI player
-				player = AIPlayer(self.session, id, name, color, inventory=inv)
+				player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
 			else:
-				player = HumanPlayer(self.session, id, name, color, inventory=inv)
+				player = HumanPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
 			self.player = player
 			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
 			                                          call_listener_now=True)
 		elif is_ai:
-			player = AIPlayer(self.session, id, name, color, inventory=inv)
+			player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
 		else:
-			player = Player(self.session, id, name, color, inventory=inv)
+			player = Player(self.session, id, name, color, difficulty_level, inventory=inv)
 		self.players.append(player)
 
 	def get_tile(self, point):

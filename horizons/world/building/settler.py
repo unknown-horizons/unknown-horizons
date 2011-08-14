@@ -129,7 +129,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	@property
 	def happiness(self):
-		return self.inventory[RES.HAPPINESS_ID]
+		difficulty = self.owner.difficulty
+		result = int(round(difficulty.extra_happiness_constant + self.inventory[RES.HAPPINESS_ID] * difficulty.happiness_multiplier))
+		return max(0, min(result, self.inventory.get_limit(RES.HAPPINESS_ID)))
 
 	@property
 	def name(self):
@@ -181,16 +183,16 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
 		happiness_tax_modifier = (float(self.happiness)-50)/200 + 1
 		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants * self.settlement.tax_settings[self.level]
-		taxes = int(round(taxes))
-		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
-		self.last_tax_payed = taxes
+		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
+		self.settlement.owner.inventory.alter(RES.GOLD_ID, real_taxes)
+		self.last_tax_payed = real_taxes
 
 		# decrease happiness
-		happiness_decrease = taxes + self.tax_base + ((self.settlement.tax_settings[self.level] - 1) * 10)
+		happiness_decrease = int(round(taxes)) + self.tax_base + ((self.settlement.tax_settings[self.level] - 1) * 10)
 		happiness_decrease = int(round(happiness_decrease))
 		self.inventory.alter(RES.HAPPINESS_ID, -happiness_decrease)
 		self._changed()
-		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, taxes, \
+		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, real_taxes, \
 									 happiness_decrease, self.happiness)
 
 	def inhabitant_check(self):

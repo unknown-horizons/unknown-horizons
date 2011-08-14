@@ -78,8 +78,8 @@ class AIPlayer(GenericAI):
 	regular_player = True
 	tick_interval = 32
 
-	def __init__(self, session, id, name, color, **kwargs):
-		super(AIPlayer, self).__init__(session, id, name, color, **kwargs)
+	def __init__(self, session, id, name, color, difficulty_level, **kwargs):
+		super(AIPlayer, self).__init__(session, id, name, color, difficulty_level, **kwargs)
 		self.need_more_ships = False
 		self._need_feeder_island = False
 		self.personality_manager = PersonalityManager(self)

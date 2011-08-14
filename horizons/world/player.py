@@ -23,10 +23,10 @@ import horizons.main
 
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
-from horizons.util import WorldObject, Callback, Color
+from horizons.util import WorldObject, Callback, Color, DifficultySettings
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
-from horizons.world.playerstats import PlayerStats
+from playerstats import PlayerStats
 
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
@@ -34,7 +34,7 @@ class Player(StorageHolder, WorldObject):
 	regular_player = False # either a human player or a normal AI player (not trader or pirate)
 	stats_update_ticks = 42
 
-	def __init__(self, session, worldid, name, color, inventory = None):
+	def __init__(self, session, worldid, name, color, difficulty_level = None, inventory = None):
 		"""
 		@param session: Session instance
 		@param worldid: player's worldid
@@ -44,17 +44,18 @@ class Player(StorageHolder, WorldObject):
 		"""
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
-		self.__init(name, color)
+		self.__init(name, color, difficulty_level)
 
 		if inventory:
 			for res, value in inventory.iteritems():
 				self.inventory.alter(res, value)
 
-	def __init(self, name, color, settlerlevel = 0):
+	def __init(self, name, color, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
 		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
 		self.name = name
 		self.color = color
+		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel
 		assert self.color.is_default_color, "Player color has to be a default color"
 
@@ -81,8 +82,8 @@ class Player(StorageHolder, WorldObject):
 		super(Player, self).save(db)
 		client_id = None if self is not self.session.world.player else \
 		          horizons.main.fife.get_uh_setting("ClientID")
-		db("INSERT INTO player(rowid, name, color, client_id, settler_level) VALUES(?, ?, ?, ?, ?)", \
-			 self.worldid, self.name, self.color.id, client_id, self.settler_level)
+		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level) VALUES(?, ?, ?, ?, ?, ?)", \
+			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None)
 
 	@classmethod
 	def load(cls, session, db, worldid):
@@ -96,8 +97,8 @@ class Player(StorageHolder, WorldObject):
 		Player instance, which is used e.g. in Trader.load"""
 		super(Player, self).load(db, worldid)
 
-		color, name, settlerlevel = db("SELECT color, name, settler_level FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color[color], settlerlevel = settlerlevel)
+		color, name, settlerlevel, difficulty_level = db("SELECT color, name, settler_level, difficulty_level FROM player WHERE rowid = ?", worldid)[0]
+		self.__init(name, Color[color], difficulty_level, settlerlevel = settlerlevel)
 
 	def notify_unit_path_blocked(self, unit):
 		"""Notify the user that a unit stopped moving

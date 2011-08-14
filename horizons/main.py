@@ -41,7 +41,7 @@ import shutil
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, TileSetLoader, Color, parse_port
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port
 from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
@@ -212,7 +212,9 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	from spsession import SPSession
 	_modules.session = SPSession(_modules.gui, db)
 
-	players = [{ 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True, 'ai': human_ai}]
+	# for now just make it a bit easier for the AI
+	difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
+	players = [{ 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True, 'ai': human_ai, 'difficulty': difficulty_level[bool(human_ai)]}]
 
 	# add AI players with a distinct color; if none can be found then use black
 	for num in xrange(ai_players):
@@ -228,7 +230,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 			if available:
 				color = possible_color
 				break
-		players.append({'id': num + 2, 'name' : 'AI' + str(num + 1), 'color' : color, 'local' : False, 'ai': True})
+		players.append({'id': num + 2, 'name' : 'AI' + str(num + 1), 'color' : color, 'local' : False, 'ai': True, 'difficulty': difficulty_level[True]})
 
 	try:
 		_modules.session.load(map_file, players, is_scenario=is_scenario, campaign = campaign)
