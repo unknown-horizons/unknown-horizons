@@ -139,6 +139,21 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		for res, amount in inventory.iteritems():
 			self.inventory.alter(res, amount)
 
+	@classmethod
+	def get_loading_area(cls, building_id, rotation, pos):
+		if building_id == BUILDINGS.MOUNTAIN_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
+			if rotation == 45:
+				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 0, 2)
+			elif rotation == 135:
+				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 2, 0)
+			elif rotation == 225:
+				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 0, 2)
+			elif rotation == 315:
+				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 2, 0)
+			assert False
+		else:
+			return pos
+
 	def __init(self, deposit_class, mine_empty_msg_shown):
 		self.__deposit_class = deposit_class
 		self._mine_empty_msg_shown = mine_empty_msg_shown
@@ -146,19 +161,7 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		# setup loading area
 		# TODO: for now we assume that a mine building is 5x5 with a 3x1 entry on 1 side
 		#       this needs to be generalised, possibly by defining the loading tiles in the db
-		if deposit_class == BUILDINGS.MOUNTAIN_CLASS:
-			# the clay pit is a Mine but the same loading area doesn't make sense there
-			pos = self.position
-			if self.rotation == 45:
-				self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 0, 2)
-			elif self.rotation == 135:
-				self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 2, 0)
-			elif self.rotation == 225:
-				self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 0, 2)
-			elif self.rotation == 315:
-				self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 2, 0)
-			else:
-				assert False
+		self.loading_area = self.get_loading_area(deposit_class, self.rotation, self.position)
 
 	@classmethod
 	def get_prebuild_data(cls, session, position):

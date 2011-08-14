@@ -196,7 +196,7 @@ class ProductionBuilder(AreaBuilder):
 		for building in problematic_buildings:
 			distance = dict.fromkeys(reachable)
 			queue = deque()
-			for coords in self._get_possible_road_coords(building.loading_area):
+			for coords in self._get_possible_road_coords(building.loading_area, building.position):
 				if coords in distance:
 					distance[coords] = 0
 					queue.append(coords)

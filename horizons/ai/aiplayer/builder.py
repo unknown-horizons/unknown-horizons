@@ -27,6 +27,7 @@ from horizons.constants import BUILDINGS
 from horizons.command.building import Build
 from horizons.util.python import decorators
 from horizons.util import Point, WorldObject
+from horizons.world.building.production import Mine
 
 class Builder(WorldObject):
 	"""
@@ -36,7 +37,7 @@ class Builder(WorldObject):
 	log = logging.getLogger("ai.aiplayer.builder")
 
 	rotations = [45, 135, 225, 315]
-	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS] # don't change orientation by random
+	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, BUILDINGS.IRON_MINE_CLASS] # don't change orientation by random
 
 	def __init__(self, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
 		"""
@@ -94,6 +95,12 @@ class Builder(WorldObject):
 			# there are two possible orientations
 			assert 0 <= self.orientation <= 1
 			return self.rotations[self.orientation + 2 * self.session.random.randint(0, 1)]
+
+	def get_loading_area(self):
+		if self.building_id == BUILDINGS.IRON_MINE_CLASS:
+			return Mine.get_loading_area(self.building_id, self.rotations[self.orientation], self.position)
+		else:
+			return self.position
 
 	def execute(self):
 		"""Actually builds the building."""

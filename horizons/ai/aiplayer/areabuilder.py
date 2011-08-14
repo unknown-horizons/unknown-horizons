@@ -83,18 +83,21 @@ class AreaBuilder(WorldObject):
 				if not rect.contains_tuple(coords):
 					yield self.island.get_tile_tuple(coords)
 
-	def _get_possible_road_coords(self, rect):
+	def _get_possible_road_coords(self, rect, blocked_rect):
+		blocked_coords = set(coords for coords in blocked_rect.tuple_iter())
 		for tile in self._get_neighbour_tiles(rect):
 			if tile is None:
 				continue
 			point = Point(tile.x, tile.y)
 			building = self.session.world.get_building(point)
-			if building is None:
-				road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
-				if road:
-					yield (tile.x, tile.y)
-			elif building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS or point.to_tuple() in self.land_manager.roads:
-				yield (tile.x, tile.y)
+			coords = point.to_tuple()
+			if coords not in blocked_coords:
+				if building is None:
+					road = Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, point)
+					if road:
+						yield coords
+				elif building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS or coords in self.land_manager.roads:
+					yield coords
 
 	def _fill_distance(self, distance, nodes):
 		"""
@@ -176,11 +179,11 @@ class AreaBuilder(WorldObject):
 				return []
 			if builder.position.distance(building.position) > building.radius:
 				continue # the collector building is too far to be useful
-			for coords in self._get_possible_road_coords(building.position):
+			for coords in self._get_possible_road_coords(building.position, building.position):
 				collector_coords.add(coords)
 
 		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
-		destination_coords = set(self._get_possible_road_coords(builder.position))
+		destination_coords = set(self._get_possible_road_coords(builder.get_loading_area(), builder.position))
 
 		pos = builder.position
 		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
@@ -203,12 +206,9 @@ class AreaBuilder(WorldObject):
 		return self._build_road(path)
 
 	def build_extra_road_connection(self, building, collector_building):
-		collector_coords = set()
-		for coords in self._get_possible_road_coords(collector_building.position):
-			collector_coords.add(coords)
-
-		destination_coords = set(self._get_possible_road_coords(building.position))
-		pos = building.position
+		collector_coords = set(coords for coords in self._get_possible_road_coords(collector_building.position, collector_building.position))
+		destination_coords = set(coords for coords in self._get_possible_road_coords(building.loading_area, building.position))
+		pos = building.loading_area
 		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
 
 		path = RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \

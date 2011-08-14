@@ -28,7 +28,8 @@ class AbstractIronMine(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
 		for building in settlement_manager.land_manager.settlement.get_buildings_by_id(BUILDINGS.MOUNTAIN_CLASS):
 			(x, y) = building.position.origin.to_tuple()
-			yield (x, y, 0)
+			for rotation in xrange(4):
+				yield (x, y, rotation)
 
 	@property
 	def evaluator_class(self):
