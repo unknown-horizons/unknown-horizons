@@ -32,7 +32,7 @@ from building import AbstractBuilding
 
 from horizons.constants import AI, BUILDINGS, RES, PRODUCTION
 from horizons.scheduler import Scheduler
-from horizons.util import Point, Rect
+from horizons.util import Callback, Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
@@ -469,13 +469,13 @@ class ProductionBuilder(AreaBuilder):
 
 	def refresh_unused_fields(self):
 		self.unused_fields = self._make_empty_unused_fields()
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _) in sorted(self.plan.iteritems()):
 			usable = True
 			for dx in xrange(3):
 				for dy in xrange(3):
 					coords2 = (coords[0] + dx, coords[1] + dy)
 					object = self.island.ground_map[coords2].object
-					if object is not None and not onject.buildable_upon:
+					if object is not None and not object.buildable_upon:
 						usable = False
 			if not usable:
 				continue # don't add used field spots to the list
@@ -632,6 +632,17 @@ class ProductionBuilder(AreaBuilder):
 		for coords in self.land_manager.production:
 			if coords not in self.plan:
 				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
+
+	def add_building(self, building):
+		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
+			self.collector_buildings.append(building)
+
+	def remove_building(self, building):
+		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
+			self.collector_buildings.remove(building)
+		elif building.id in [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]:
+			# this can't be handled right now because the building still exists and in worst case multiple fields could be remove during the same tick
+			Scheduler().add_new_object(Callback(self.refresh_unused_fields), self, run_in = 0)
 
 	def __str__(self):
 		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)

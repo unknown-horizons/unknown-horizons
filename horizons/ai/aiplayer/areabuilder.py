@@ -330,6 +330,12 @@ class AreaBuilder(WorldObject):
 			if coords in self.plan:
 				del self.plan[coords]
 
+	def add_building(self, building):
+		raise NotImplementedError, 'This function has to be overridden.'
+
+	def remove_building(self, building):
+		raise NotImplementedError, 'This function has to be overridden.'
+
 	def display(self):
 		raise NotImplementedError, 'This function has to be overridden.'
 
