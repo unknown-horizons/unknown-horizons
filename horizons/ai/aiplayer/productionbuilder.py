@@ -24,6 +24,7 @@ import copy
 import itertools
 
 from collections import deque, defaultdict
+from functools import partial
 
 from areabuilder import AreaBuilder
 from builder import Builder
@@ -637,12 +638,23 @@ class ProductionBuilder(AreaBuilder):
 		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
 			self.collector_buildings.append(building)
 
+		super(ProductionBuilder, self).add_building(building)
+
 	def remove_building(self, building):
-		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
-			self.collector_buildings.remove(building)
-		elif building.id in [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]:
+		if building.id in [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]:
 			# this can't be handled right now because the building still exists and in worst case multiple fields could be remove during the same tick
 			Scheduler().add_new_object(Callback(self.refresh_unused_fields), self, run_in = 0)
+			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in = 0)
+		elif building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS:
+			pass # don't react to road, trees and tent ruins being destroyed
+		else:
+			for x, y in building.position.tuple_iter():
+				self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+
+			if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
+				self.collector_buildings.remove(building)
+
+			super(ProductionBuilder, self).remove_building(building)
 
 	def __str__(self):
 		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)

@@ -726,11 +726,13 @@ class VillageBuilder(AreaBuilder):
 		super(VillageBuilder, self).handle_lost_area(coords_list)
 
 	def add_building(self, building):
-		pass
+		super(VillageBuilder, self).add_building(building)
 
 	def remove_building(self, building):
 		if building.id == BUILDINGS.RESIDENTIAL_CLASS:
 			self.recreate_tent_queue(building.position.origin.to_tuple())
+
+		super(VillageBuilder, self).remove_building(building)
 
 	def display(self):
 		if not AI.HIGHLIGHT_PLANS:

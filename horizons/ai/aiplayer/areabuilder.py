@@ -325,10 +325,12 @@ class AreaBuilder(WorldObject):
 				del self.plan[coords]
 
 	def add_building(self, building):
-		raise NotImplementedError, 'This function has to be overridden.'
+		""" called when a new building is added in the area (the building already exists during the call) """
+		self.display()
 
 	def remove_building(self, building):
-		raise NotImplementedError, 'This function has to be overridden.'
+		""" called when a building is removed from the area (the building still exists during the call) """
+		self.display()
 
 	def display(self):
 		raise NotImplementedError, 'This function has to be overridden.'

@@ -220,7 +220,6 @@ class FarmEvaluator(BuildingEvaluator):
 			if purpose == self.field_purpose:
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		self.area_builder.production_buildings.append(building)
-		self.area_builder.display()
 		return (BUILD_RESULT.OK, building)
 
 FarmEvaluator.field_offsets = FarmEvaluator._make_field_offsets()
