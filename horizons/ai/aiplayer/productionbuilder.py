@@ -31,6 +31,7 @@ from builder import Builder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 from building import AbstractBuilding
 
+from horizons.command.building import Tear
 from horizons.constants import AI, BUILDINGS, RES, PRODUCTION
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, Point, Rect
@@ -653,8 +654,53 @@ class ProductionBuilder(AreaBuilder):
 			if coords not in used_trees and coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
 				self.register_change(coords[0], coords[1], BUILDING_PURPOSE.NONE, None)
 
+	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]
+
+	def _handle_farm_removal(self, building):
+		""" release the unused fields around the farm """
+		unused_fields = set()
+		farms = self.settlement.get_buildings_by_id(BUILDINGS.FARM_CLASS)
+		for coords in building.position.get_radius_coordinates(building.radius):
+			if not coords in self.plan:
+				continue
+			object = self.island.ground_map[coords].object
+			if object is None or object.id not in self.field_building_classes:
+				continue
+
+			used_by_another_farm = False
+			for farm in farms:
+				if farm.worldid != building.worldid and object.position.distance(farm.position) <= farm.radius:
+					used_by_another_farm = True
+					break
+			if not used_by_another_farm:
+				unused_fields.add(object)
+
+		# tear the finished but no longer used fields down
+		for unused_field in unused_fields:
+			for x, y in unused_field.position.tuple_iter():
+				self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+			Tear(unused_field).execute(self.session)
+
+		# remove the planned but never built fields from the plan
+		self.refresh_unused_fields()
+		for unused_fields_list in self.unused_fields.itervalues():
+			for coords in unused_fields_list:
+				position = Rect.init_from_topleft_and_size_tuples(coords, Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].size)
+				if building.position.distance(position) > building.radius:
+					continue # it never belonged to the removed building
+
+				used_by_another_farm = False
+				for farm in farms:
+					if farm.worldid != building.worldid and position.distance(farm.position) <= farm.radius:
+						used_by_another_farm = True
+						break
+				if not used_by_another_farm:
+					for x, y in position.tuple_iter():
+						self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+		self.refresh_unused_fields()
+
 	def remove_building(self, building):
-		if building.id in [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]:
+		if building.id in self.field_building_classes:
 			# this can't be handled right now because the building still exists
 			Scheduler().add_new_object(Callback(self.refresh_unused_fields), self, run_in = 0)
 			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in = 0)
@@ -668,6 +714,8 @@ class ProductionBuilder(AreaBuilder):
 				self.collector_buildings.remove(building)
 			elif building.id == BUILDINGS.LUMBERJACK_CLASS:
 				self._handle_lumberjack_removal(building)
+			elif building.id == BUILDINGS.FARM_CLASS:
+				self._handle_farm_removal(building)
 
 			super(ProductionBuilder, self).remove_building(building)
 
