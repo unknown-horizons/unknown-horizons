@@ -640,9 +640,22 @@ class ProductionBuilder(AreaBuilder):
 
 		super(ProductionBuilder, self).add_building(building)
 
+	def _handle_lumberjack_removal(self, building):
+		""" release the trees around it that are no longer used """
+		used_trees = set()
+		for lumberjack_building in self.settlement.get_buildings_by_id(BUILDINGS.LUMBERJACK_CLASS):
+			if lumberjack_building.worldid == building.worldid:
+				continue
+			for coords in lumberjack_building.position.get_radius_coordinates(lumberjack_building.radius):
+				used_trees.add(coords)
+
+		for coords in building.position.get_radius_coordinates(building.radius):
+			if coords not in used_trees and coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
+				self.register_change(coords[0], coords[1], BUILDING_PURPOSE.NONE, None)
+
 	def remove_building(self, building):
 		if building.id in [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]:
-			# this can't be handled right now because the building still exists and in worst case multiple fields could be remove during the same tick
+			# this can't be handled right now because the building still exists
 			Scheduler().add_new_object(Callback(self.refresh_unused_fields), self, run_in = 0)
 			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in = 0)
 		elif building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS:
@@ -653,6 +666,8 @@ class ProductionBuilder(AreaBuilder):
 
 			if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
 				self.collector_buildings.remove(building)
+			elif building.id == BUILDINGS.LUMBERJACK_CLASS:
+				self._handle_lumberjack_removal(building)
 
 			super(ProductionBuilder, self).remove_building(building)
 
