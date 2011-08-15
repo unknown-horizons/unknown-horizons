@@ -470,12 +470,22 @@ class ProductionBuilder(AreaBuilder):
 	def refresh_unused_fields(self):
 		self.unused_fields = self._make_empty_unused_fields()
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == BUILDING_PURPOSE.UNUSED_POTATO_FIELD:
-				self.unused_fields[BUILDING_PURPOSE.POTATO_FIELD].append(coords)
-			elif purpose == BUILDING_PURPOSE.UNUSED_PASTURE:
-				self.unused_fields[BUILDING_PURPOSE.PASTURE].append(coords)
-			elif purpose == BUILDING_PURPOSE.UNUSED_SUGARCANE_FIELD:
-				self.unused_fields[BUILDING_PURPOSE.SUGARCANE_FIELD].append(coords)
+			usable = True
+			for dx in xrange(3):
+				for dy in xrange(3):
+					coords2 = (coords[0] + dx, coords[1] + dy)
+					object = self.island.ground_map[coords2].object
+					if object is not None and not onject.buildable_upon:
+						usable = False
+			if not usable:
+				continue # don't add used field spots to the list
+
+			if purpose == BUILDING_PURPOSE.POTATO_FIELD:
+				self.unused_fields[purpose].append(coords)
+			elif purpose == BUILDING_PURPOSE.PASTURE:
+				self.unused_fields[purpose].append(coords)
+			elif purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
+				self.unused_fields[purpose].append(coords)
 
 	def display(self):
 		if not AI.HIGHLIGHT_PLANS:
@@ -488,12 +498,9 @@ class ProductionBuilder(AreaBuilder):
 		reserved_colour = (0, 0, 128)
 		unknown_colour = (128, 0, 0)
 		farm_colour = (128, 0, 255)
-		unused_potato_field_colour = (255, 0, 128)
-		potato_field_colour = (0, 128, 0)
-		unused_pasture_colour = (255, 0, 192)
+		potato_field_colour = (255, 0, 128)
 		pasture_colour = (0, 192, 0)
 		weaver_colour = (0, 64, 64)
-		unused_sugarcane_field_colour = (255, 255, 0)
 		sugarcane_field_colour = (192, 192, 0)
 		distillery_colour = (255, 128, 40)
 		clay_pit_colour = (0, 64, 0)
@@ -513,18 +520,12 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *tree_colour)
 			elif purpose == BUILDING_PURPOSE.FARM:
 				renderer.addColored(tile._instance, *farm_colour)
-			elif purpose == BUILDING_PURPOSE.UNUSED_POTATO_FIELD:
-				renderer.addColored(tile._instance, *unused_potato_field_colour)
 			elif purpose == BUILDING_PURPOSE.POTATO_FIELD:
 				renderer.addColored(tile._instance, *potato_field_colour)
-			elif purpose == BUILDING_PURPOSE.UNUSED_PASTURE:
-				renderer.addColored(tile._instance, *unused_pasture_colour)
 			elif purpose == BUILDING_PURPOSE.PASTURE:
 				renderer.addColored(tile._instance, *pasture_colour)
 			elif purpose == BUILDING_PURPOSE.WEAVER:
 				renderer.addColored(tile._instance, *weaver_colour)
-			elif purpose == BUILDING_PURPOSE.UNUSED_SUGARCANE_FIELD:
-				renderer.addColored(tile._instance, *unused_sugarcane_field_colour)
 			elif purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
 				renderer.addColored(tile._instance, *sugarcane_field_colour)
 			elif purpose == BUILDING_PURPOSE.DISTILLERY:
@@ -612,7 +613,7 @@ class ProductionBuilder(AreaBuilder):
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].size
 		removed_list = []
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose in [BUILDING_PURPOSE.UNUSED_POTATO_FIELD, BUILDING_PURPOSE.UNUSED_PASTURE, BUILDING_PURPOSE.UNUSED_SUGARCANE_FIELD]:
+			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD]:
 				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 				for field_coords in rect.tuple_iter():
 					if field_coords not in self.land_manager.production:

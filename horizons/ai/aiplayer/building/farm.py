@@ -47,7 +47,7 @@ class AbstractFarm(AbstractBuilding):
 		return None
 
 	def get_evaluators(self, settlement_manager, resource_id):
-		unused_field_purpose = BUILDING_PURPOSE.get_unused_purpose(self.get_purpose(resource_id))
+		field_purpose = self.get_purpose(resource_id)
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		options = []
 
@@ -56,7 +56,7 @@ class AbstractFarm(AbstractBuilding):
 		for x, y, orientation in self.iter_potential_locations(settlement_manager):
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:
-				evaluator = FarmEvaluator.create(settlement_manager.production_builder, x, y, road_dx, road_dy, most_fields, unused_field_purpose)
+				evaluator = FarmEvaluator.create(settlement_manager.production_builder, x, y, road_dx, road_dy, most_fields, field_purpose)
 				if evaluator is not None:
 					options.append(evaluator)
 					most_fields = max(most_fields, evaluator.fields)
@@ -64,7 +64,7 @@ class AbstractFarm(AbstractBuilding):
 		# create evaluators for modified farms (change unused field type)
 		for coords_list in settlement_manager.production_builder.unused_fields.itervalues():
 			for x, y in coords_list:
-				evaluator = ModifiedFieldEvaluator.create(settlement_manager.production_builder, x, y, unused_field_purpose)
+				evaluator = ModifiedFieldEvaluator.create(settlement_manager.production_builder, x, y, field_purpose)
 				if evaluator is not None:
 					options.append(evaluator)
 		return options

@@ -33,11 +33,11 @@ class FarmEvaluator(BuildingEvaluator):
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	field_offsets = None
 
-	def __init__(self, area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immediate_connections):
+	def __init__(self, area_builder, builder, farm_plan, fields, field_purpose, existing_roads, alignment, extra_space, immediate_connections):
 		super(FarmEvaluator, self).__init__(area_builder, builder)
 		self.farm_plan = farm_plan
 		self.fields = fields
-		self.unused_field_purpose = unused_field_purpose
+		self.field_purpose = field_purpose
 		self.existing_roads = existing_roads
 		self.alignment = alignment
 		self.extra_space = extra_space
@@ -75,7 +75,7 @@ class FarmEvaluator(BuildingEvaluator):
 		return False
 
 	@classmethod
-	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
+	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose):
 		builder = area_builder.make_builder(BUILDINGS.FARM_CLASS, farm_x, farm_y, True)
 		if not builder:
 			return None
@@ -123,7 +123,7 @@ class FarmEvaluator(BuildingEvaluator):
 			fields += 1
 			for coords2 in field.position.tuple_iter():
 				farm_plan[coords2] = (BUILDING_PURPOSE.RESERVED, None)
-			farm_plan[coords] = (unused_field_purpose, None)
+			farm_plan[coords] = (field_purpose, None)
 		if fields < min_fields:
 			return None # go for the most fields possible
 
@@ -163,34 +163,34 @@ class FarmEvaluator(BuildingEvaluator):
 					immediate_connections += personality.immediate_connection_free
 
 		extra_space = (max_x - min_x + 1) * (max_y - min_y + 1) - 9 * (fields + 2)
-		return FarmEvaluator(area_builder, builder, farm_plan, fields, unused_field_purpose, existing_roads, alignment, extra_space, immediate_connections)
+		return FarmEvaluator(area_builder, builder, farm_plan, fields, field_purpose, existing_roads, alignment, extra_space, immediate_connections)
 
 	cache = {}
 	cache_changes = (-1, -1)
 
 	@classmethod
-	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose):
+	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose):
 		new_cache_changes = (area_builder.island.last_change_id, area_builder.last_change_id)
 		if new_cache_changes != cls.cache_changes:
 			cls.cache_changes = new_cache_changes
 			cls.cache.clear()
 		key = (area_builder.owner, farm_x, farm_y, road_dx, road_dy)
 		if key not in cls.cache:
-			cls.cache[key] = cls._create(area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, unused_field_purpose)
+			cls.cache[key] = cls._create(area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose)
 		if cls.cache[key] is None:
 			return None
-		if cls.cache[key].unused_field_purpose != unused_field_purpose:
-			return cls.cache[key]._get_copy(unused_field_purpose)
+		if cls.cache[key].field_purpose != field_purpose:
+			return cls.cache[key]._get_copy(field_purpose)
 		return cls.cache[key]
 
-	def _get_copy(self, new_unused_field_purpose):
+	def _get_copy(self, new_field_purpose):
 		""" Returns a copy of the evaluator with a different field purpose """
 		evaluator = copy.copy(self)
 		evaluator.farm_plan = copy.copy(evaluator.farm_plan)
 		for coords, (purpose, builder) in evaluator.farm_plan.iteritems():
-			if purpose == evaluator.unused_field_purpose:
-				evaluator.farm_plan[coords] = (new_unused_field_purpose, builder)
-		evaluator.unused_field_purpose = new_unused_field_purpose
+			if purpose == evaluator.field_purpose:
+				evaluator.farm_plan[coords] = (new_field_purpose, builder)
+		evaluator.field_purpose = new_field_purpose
 		return evaluator
 
 	def execute(self):
@@ -217,8 +217,8 @@ class FarmEvaluator(BuildingEvaluator):
 			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		for coords, (purpose, builder) in self.farm_plan.iteritems():
-			if purpose == self.unused_field_purpose:
-				self.area_builder.unused_fields[BUILDING_PURPOSE.get_used_purpose(self.unused_field_purpose)].append(coords)
+			if purpose == self.field_purpose:
+				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		self.area_builder.production_buildings.append(building)
 		self.area_builder.display()
 		return (BUILD_RESULT.OK, building)

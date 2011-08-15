@@ -44,44 +44,21 @@ class BUILDING_PURPOSE:
 	TREE = 7
 	STORAGE = 8
 	FARM = 9
-	UNUSED_POTATO_FIELD = 10
-	POTATO_FIELD = 11
-	CLAY_PIT = 12
-	BRICKYARD = 13
-	UNUSED_PASTURE = 14
-	PASTURE = 15
-	WEAVER = 16
-	UNUSED_SUGARCANE_FIELD = 17
-	SUGARCANE_FIELD = 18
-	DISTILLERY = 19
-	MAIN_SQUARE = 20
-	RESIDENCE = 22
-	PAVILION = 24
-	VILLAGE_SCHOOL = 26
-	TAVERN = 28
-	IRON_MINE = 29
-	SMELTERY = 30
-	TOOLMAKER = 31
-	CHARCOAL_BURNER = 32
-	BOAT_BUILDER = 33
-	SIGNAL_FIRE = 34
-
-	@classmethod
-	def get_used_purpose(cls, purpose):
-		if purpose == cls.UNUSED_POTATO_FIELD:
-			return cls.POTATO_FIELD
-		elif purpose == cls.UNUSED_PASTURE:
-			return cls.PASTURE
-		elif purpose == cls.UNUSED_SUGARCANE_FIELD:
-			return cls.SUGARCANE_FIELD
-		return None
-
-	@classmethod
-	def get_unused_purpose(cls, purpose):
-		if purpose == cls.POTATO_FIELD:
-			return cls.UNUSED_POTATO_FIELD
-		elif purpose == cls.PASTURE:
-			return cls.UNUSED_PASTURE
-		elif purpose == cls.SUGARCANE_FIELD:
-			return cls.UNUSED_SUGARCANE_FIELD
-		return None
+	POTATO_FIELD = 10
+	CLAY_PIT = 11
+	BRICKYARD = 12
+	PASTURE = 13
+	WEAVER = 14
+	SUGARCANE_FIELD = 15
+	DISTILLERY = 16
+	MAIN_SQUARE = 17
+	RESIDENCE = 18
+	PAVILION = 19
+	VILLAGE_SCHOOL = 20
+	TAVERN = 21
+	IRON_MINE = 22
+	SMELTERY = 23
+	TOOLMAKER = 24
+	CHARCOAL_BURNER = 25
+	BOAT_BUILDER = 26
+	SIGNAL_FIRE = 27

@@ -364,9 +364,9 @@ class DefaultPersonality:
 		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
 
 	class ModifiedFieldEvaluator:
-		add_unused_potato_field_value = 1.5 # the value of adding an unused potato field
-		add_unused_pasture_value = 2.5 # the value of adding an unused pasture
-		add_unused_sugarcane_field_value = 3.5 # the value of adding an unused sugarcane field
+		add_potato_field_value = 1.5 # the value of adding a potato field
+		add_pasture_value = 2.5 # the value of adding a pasture
+		add_sugarcane_field_value = 3.5 # the value of adding a sugarcane field
 		remove_unused_potato_field_penalty = 0 # the penalty for removing an unused potato field
 		remove_unused_pasture_penalty = 1 # the penalty for removing an unused potato field
 		remove_unused_sugarcane_field_penalty = 1.5 # the penalty for removing an unused potato field
