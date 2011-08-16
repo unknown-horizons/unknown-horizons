@@ -108,7 +108,7 @@ def set_translations():
 			"destroy_tool"                : _("Destroy"),
 			"build"                       : _("Build menu"),
 			"gameMenuButton"              : _("Game menu"),
-			"helpLink"                    : _("Help"),
+			"diplomacyButton"             : _("Diplomacy"),
 			"logbook"                     : _("Captain's log")},
 		"minimap.xml" : {
 			"rotateLeft"                  : _("Rotate map counterclockwise"),
