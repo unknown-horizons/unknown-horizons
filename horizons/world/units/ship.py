@@ -264,8 +264,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
-		self.session.world.ships.append(self)
-		self.add_component('health', HealthComponent)
 		self.__init()
 
 	def save(self, db):
@@ -285,6 +283,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def __init(self):
 		self._selected = False
 		# register ship in world
+		self.add_component('health', HealthComponent)
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
