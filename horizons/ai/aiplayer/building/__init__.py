@@ -115,11 +115,11 @@ class AbstractBuilding(object):
 
 	def iter_potential_locations(self, settlement_manager):
 		if self.width == self.height:
-			for (x, y) in settlement_manager.production_builder.plan:
+			for x, y in settlement_manager.production_builder.plan:
 				if (x, y) in settlement_manager.island.last_changed[self.size]:
 					yield (x, y, 0)
 		else:
-			for (x, y) in settlement_manager.production_builder.plan:
+			for x, y in settlement_manager.production_builder.plan:
 				if (x, y) in settlement_manager.island.last_changed[self.size]:
 					yield (x, y, 0)
 				if (x, y) in settlement_manager.island.last_changed[(self.size[1], self.size[0])]:

@@ -43,10 +43,9 @@ class AbstractVillageBuilding(AbstractBuilding):
 				return False
 		return True
 
-	def _need_producer(self, settlement_manager, builder, resource_id):
-		if not settlement_manager.count_buildings(builder.building_id):
+	def _need_producer(self, settlement_manager, coords, resource_id):
+		if not settlement_manager.count_buildings(BUILDING_PURPOSE.get_building(self.get_purpose(resource_id))):
 			return True # if none exist and we need the resource then build it
-		coords = builder.point.to_tuple()
 		assigned_residences = settlement_manager.village_builder.producer_assignment[self.get_purpose(resource_id)][coords]
 		total = len(assigned_residences)
 		not_serviced = 0
@@ -63,39 +62,44 @@ class AbstractVillageBuilding(AbstractBuilding):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
 
-		for coords, (purpose, builder, section, _) in village_builder.plan.iteritems():
-			if section > village_builder.current_section:
+		for coords, (purpose, (section, _)) in village_builder.plan.iteritems():
+			if section > village_builder.current_section or purpose != building_purpose:
 				continue
-			if purpose == building_purpose:
-				object = village_builder.land_manager.island.ground_map[coords].object
-				if object is None or object.id != self.id:
-					if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
-						if not self._need_producer(settlement_manager, builder, resource_id):
-							continue
-					if not builder.have_resources():
-						return (BUILD_RESULT.NEED_RESOURCES, None)
-					if not self.in_settlement(settlement_manager, builder.position):
-						return (BUILD_RESULT.OUT_OF_SETTLEMENT, builder.position)
-					building = builder.execute()
-					if not building:
-						return (BUILD_RESULT.UNKNOWN_ERROR, None)
-					if self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE and not settlement_manager.village_builder.roads_built:
-						settlement_manager.village_builder.build_roads()
-					return (BUILD_RESULT.OK, building)
+
+			object = village_builder.land_manager.island.ground_map[coords].object
+			if object is not None and object.id == self.id:
+				continue
+
+			if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
+				if not self._need_producer(settlement_manager, coords, resource_id):
+					continue
+
+			builder = village_builder.make_builder(BUILDING_PURPOSE.get_building(purpose), coords[0], coords[1], False)
+			if not builder.have_resources():
+				return (BUILD_RESULT.NEED_RESOURCES, None)
+			if not self.in_settlement(settlement_manager, builder.position):
+				return (BUILD_RESULT.OUT_OF_SETTLEMENT, builder.position)
+
+			building = builder.execute()
+			if not building:
+				return (BUILD_RESULT.UNKNOWN_ERROR, None)
+			if self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE and not village_builder.roads_built:
+				village_builder.build_roads()
+			return (BUILD_RESULT.OK, building)
 		return (BUILD_RESULT.SKIP, None)
 
 	def need_to_build_more_buildings(self, settlement_manager, resource_id):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
 
-		for coords, (purpose, builder, section, _) in village_builder.plan.iteritems():
+		for coords, (purpose, (section, _)) in village_builder.plan.iteritems():
 			if section > village_builder.current_section:
 				continue
 			if purpose == building_purpose:
 				object = village_builder.land_manager.island.ground_map[coords].object
 				if object is None or object.id != self.id:
 					if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
-						if not self._need_producer(settlement_manager, builder, resource_id):
+						if not self._need_producer(settlement_manager, coords, resource_id):
 							continue
 					return True
 		return False

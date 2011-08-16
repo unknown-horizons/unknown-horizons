@@ -26,10 +26,10 @@ import itertools
 from collections import deque, defaultdict
 from functools import partial
 
-from areabuilder import AreaBuilder
 from builder import Builder
-from constants import BUILD_RESULT, BUILDING_PURPOSE
+from areabuilder import AreaBuilder
 from building import AbstractBuilding
+from constants import BUILD_RESULT, BUILDING_PURPOSE
 
 from horizons.command.building import Tear
 from horizons.constants import AI, BUILDINGS, RES, PRODUCTION
@@ -69,6 +69,8 @@ class ProductionBuilder(AreaBuilder):
 		translated_last_collector_improvement_road = self._last_collector_improvement_road - Scheduler().cur_tick # pre-translate for the loading process
 		db("INSERT INTO ai_production_builder(rowid, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road) VALUES(?, ?, ?, ?)", \
 			self.worldid, self.settlement_manager.worldid, translated_last_collector_improvement_storage, translated_last_collector_improvement_road)
+		for (x, y), (purpose, _) in self.plan.iteritems():
+			db("INSERT INTO ai_production_builder_plan(production_builder, x, y, purpose) VALUES(?, ?, ?, ?)", self.worldid, x, y, purpose)
 
 	def _load(self, db, settlement_manager):
 		worldid, last_storage, last_road = \
@@ -77,13 +79,10 @@ class ProductionBuilder(AreaBuilder):
 		super(ProductionBuilder, self)._load(db, settlement_manager, worldid)
 		self.__init(settlement_manager, last_storage, last_road)
 
-		db_result = db("SELECT x, y, purpose, builder FROM ai_area_builder_plan WHERE area_builder = ?", worldid)
-		for x, y, purpose, builder_id in db_result:
-			builder = Builder.load(db, builder_id, self.land_manager) if builder_id else None
-			self.plan[(x, y)] = (purpose, builder)
+		db_result = db("SELECT x, y, purpose FROM ai_production_builder_plan WHERE production_builder = ?", worldid)
+		for x, y, purpose in db_result:
+			self.plan[(x, y)] = (purpose, None)
 			object = self.island.ground_map[(x, y)].object
-			if object is None:
-				continue
 
 			if purpose == BUILDING_PURPOSE.FISHER and object.id == BUILDINGS.FISHERMAN_CLASS:
 				self.production_buildings.append(object)
@@ -252,7 +251,7 @@ class ProductionBuilder(AreaBuilder):
 				return BUILD_RESULT.UNKNOWN_ERROR
 			for x, y in builder.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
+			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, None)
 			self._last_collector_improvement_storage = current_tick
 			return BUILD_RESULT.OK
 
@@ -273,7 +272,7 @@ class ProductionBuilder(AreaBuilder):
 			return BUILD_RESULT.IMPOSSIBLE
 
 		options = []
-		for (x, y), (purpose, _) in self.plan.iteritems():
+		for x, y in self.plan:
 			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
 			if not builder:
 				continue
@@ -301,7 +300,7 @@ class ProductionBuilder(AreaBuilder):
 				return BUILD_RESULT.UNKNOWN_ERROR
 			for x, y in builder.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
+			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, None)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
@@ -398,7 +397,7 @@ class ProductionBuilder(AreaBuilder):
 				return BUILD_RESULT.UNKNOWN_ERROR
 			for x, y in builder.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
+			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, None)
 			return BUILD_RESULT.OK
 
 		if self.settlement_manager.village_builder.tent_queue:
@@ -543,6 +542,32 @@ class ProductionBuilder(AreaBuilder):
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
 
+	def _make_new_builder(self, building_id, x, y, needs_collector, orientation):
+		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """
+		coords = (x, y)
+		if building_id == BUILDINGS.CLAY_PIT_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
+			# clay deposits and mountains are outside the production plan until they are constructed
+			if coords in self.plan or coords not in self.settlement.ground_map:
+				return None
+		else:
+			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.settlement.ground_map:
+				return None
+		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
+		if not builder or not self.land_manager.legal_for_production(builder.position):
+			return None
+		if building_id == BUILDINGS.FISHERMAN_CLASS or building_id == BUILDINGS.BOATBUILDER_CLASS:
+			for coords in builder.position.tuple_iter():
+				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+					return None
+		elif building_id != BUILDINGS.CLAY_PIT_CLASS and building_id != BUILDINGS.IRON_MINE_CLASS:
+			# clay deposits and mountains are outside the production plan until they are constructed
+			for coords in builder.position.tuple_iter():
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+					return None
+		if needs_collector and not self._near_collectors(builder.position):
+			return None
+		return builder
+
 	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
 		coords = (x, y)
 		key = (building_id, coords, needs_collector, orientation)
@@ -561,7 +586,7 @@ class ProductionBuilder(AreaBuilder):
 			del self.builder_cache[key]
 
 		if key not in self.builder_cache:
-			self.builder_cache[key] = (island_changed, plan_changed, self._make_builder(building_id, x, y, needs_collector, orientation))
+			self.builder_cache[key] = (island_changed, plan_changed, self._make_new_builder(building_id, x, y, needs_collector, orientation))
 		return self.builder_cache[key][2]
 
 	def _init_cache(self):
@@ -578,7 +603,7 @@ class ProductionBuilder(AreaBuilder):
 		for size in building_sizes:
 			self.last_changed[size] = {}
 
-		for (x, y) in self.plan:
+		for x, y in self.plan:
 			for size_x, size_y in building_sizes:
 				all_legal = True
 				for dx in xrange(size_x):
@@ -595,9 +620,9 @@ class ProductionBuilder(AreaBuilder):
 		self.__collector_area_cache = None
 		self.__available_squares_cache = {}
 
-	def register_change(self, x, y, purpose, builder):
+	def register_change(self, x, y, purpose, data):
 		""" registers the possible buildability change of a rectangle on this island """
-		super(ProductionBuilder, self).register_change(x, y, purpose, builder)
+		super(ProductionBuilder, self).register_change(x, y, purpose, data)
 		coords = (x, y)
 		if coords in self.land_manager.village or coords not in self.plan:
 			return

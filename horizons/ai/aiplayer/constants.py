@@ -19,6 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constants import BUILDINGS
+from horizons.util.python import decorators
+
 class BUILD_RESULT:
 	OK = 0
 	NEED_RESOURCES = 1
@@ -62,3 +65,51 @@ class BUILDING_PURPOSE:
 	CHARCOAL_BURNER = 25
 	BOAT_BUILDER = 26
 	SIGNAL_FIRE = 27
+
+	purpose_to_building = {}
+	building_to_purpose = {}
+
+	@classmethod
+	def init_translation(cls):
+		cls.purpose_to_building[cls.BRANCH_OFFICE] = BUILDINGS.BRANCH_OFFICE_CLASS
+		cls.purpose_to_building[cls.ROAD] = BUILDINGS.TRAIL_CLASS
+		cls.purpose_to_building[cls.FISHER] = BUILDINGS.FISHERMAN_CLASS
+		cls.purpose_to_building[cls.LUMBERJACK] = BUILDINGS.LUMBERJACK_CLASS
+		cls.purpose_to_building[cls.TREE] = BUILDINGS.TREE_CLASS
+		cls.purpose_to_building[cls.STORAGE] = BUILDINGS.STORAGE_CLASS
+		cls.purpose_to_building[cls.FARM] = BUILDINGS.FARM_CLASS
+		cls.purpose_to_building[cls.POTATO_FIELD] = BUILDINGS.POTATO_FIELD_CLASS
+		cls.purpose_to_building[cls.CLAY_PIT] = BUILDINGS.CLAY_PIT_CLASS
+		cls.purpose_to_building[cls.BRICKYARD] = BUILDINGS.BRICKYARD_CLASS
+		cls.purpose_to_building[cls.PASTURE] = BUILDINGS.PASTURE_CLASS
+		cls.purpose_to_building[cls.WEAVER] = BUILDINGS.WEAVER_CLASS
+		cls.purpose_to_building[cls.SUGARCANE_FIELD] = BUILDINGS.SUGARCANE_FIELD_CLASS
+		cls.purpose_to_building[cls.DISTILLERY] = BUILDINGS.DISTILLERY_CLASS
+		cls.purpose_to_building[cls.MAIN_SQUARE] = BUILDINGS.MARKET_PLACE_CLASS
+		cls.purpose_to_building[cls.RESIDENCE] = BUILDINGS.RESIDENTIAL_CLASS
+		cls.purpose_to_building[cls.PAVILION] = BUILDINGS.PAVILION_CLASS
+		cls.purpose_to_building[cls.VILLAGE_SCHOOL] = BUILDINGS.VILLAGE_SCHOOL_CLASS
+		cls.purpose_to_building[cls.TAVERN] = BUILDINGS.TAVERN_CLASS
+		cls.purpose_to_building[cls.IRON_MINE] = BUILDINGS.IRON_MINE_CLASS
+		cls.purpose_to_building[cls.SMELTERY] = BUILDINGS.SMELTERY_CLASS
+		cls.purpose_to_building[cls.TOOLMAKER] = BUILDINGS.TOOLMAKER_CLASS
+		cls.purpose_to_building[cls.CHARCOAL_BURNER] = BUILDINGS.CHARCOAL_BURNER_CLASS
+		cls.purpose_to_building[cls.BOAT_BUILDER] = BUILDINGS.BOATBUILDER_CLASS
+		cls.purpose_to_building[cls.SIGNAL_FIRE] = BUILDINGS.SIGNAL_FIRE_CLASS
+
+		for purpose, building_id in cls.purpose_to_building.iteritems():
+			cls.building_to_purpose[building_id] = purpose
+
+	@classmethod
+	def get_building(cls, purpose):
+		return cls.purpose_to_building[purpose]
+
+	@classmethod
+	def get_purpose(cls, building_id):
+		return cls.purpose_to_building[building_id]
+
+BUILDING_PURPOSE.init_translation()
+
+decorators.bind_all(BUILD_RESULT)
+decorators.bind_all(GOAL_RESULT)
+decorators.bind_all(BUILDING_PURPOSE)

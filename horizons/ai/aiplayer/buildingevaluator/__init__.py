@@ -112,7 +112,7 @@ class BuildingEvaluator(WorldObject):
 			if coords in area_builder.land_manager.roads:
 				alignment += personality.alignment_road
 			elif coords in area_builder.plan:
-				purpose = area_builder.plan[coords]
+				purpose = area_builder.plan[coords][0]
 				if purpose != BUILDING_PURPOSE.NONE:
 					alignment += personality.alignment_production_building
 			elif coords in area_builder.settlement.ground_map:
@@ -164,7 +164,7 @@ class BuildingEvaluator(WorldObject):
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		for x, y in self.builder.position.tuple_iter():
 			self.area_builder.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-		self.area_builder.register_change(self.builder.position.origin.x, self.builder.position.origin.y, self.purpose, self.builder)
+		self.area_builder.register_change(self.builder.position.origin.x, self.builder.position.origin.y, self.purpose, None)
 		if self.is_production_building:
 			self.area_builder.production_buildings.append(building)
 		return (BUILD_RESULT.OK, building)

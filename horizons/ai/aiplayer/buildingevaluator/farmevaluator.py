@@ -62,17 +62,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def _suitable_for_road(self, area_builder, coords):
-		if coords in area_builder.plan:
-			return area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE or \
-				area_builder.plan[coords][0] == BUILDING_PURPOSE.ROAD
-		else:
-			ground_map = area_builder.settlement.ground_map
-			if coords not in ground_map:
-				return False
-			object = ground_map[coords].object
-			if object is not None and object.id == BUILDINGS.TRAIL_CLASS:
-				return True
-		return False
+		return coords in area_builder.land_manager.roads or (coords in area_builder.plan and area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
 
 	@classmethod
 	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose):
@@ -200,7 +190,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 		backup = copy.copy(self.area_builder.plan)
 		for (x, y), (purpose, builder) in self.farm_plan.iteritems():
-			self.area_builder.register_change(x, y, purpose, builder)
+			self.area_builder.register_change(x, y, purpose, None)
 
 		resource_check = self.have_resources()
 		if resource_check is None:

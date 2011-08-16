@@ -50,18 +50,6 @@ class AreaBuilder(WorldObject):
 		self.plan = {}
 		self.builder_cache = {}
 
-	def save_plan(self, db):
-		db_query = 'INSERT INTO ai_area_builder_plan(area_builder, x, y, purpose, builder) VALUES(?, ?, ?, ?, ?)'
-		for (x, y), (purpose, builder) in self.plan.iteritems():
-			db(db_query, self.worldid, x, y, purpose, None if builder is None else builder.worldid)
-			if builder is not None:
-				assert isinstance(builder, Builder)
-				builder.save(db)
-
-	def save(self, db):
-		super(AreaBuilder, self).save(db)
-		self.save_plan(db)
-
 	@classmethod
 	def load(cls, db, settlement_manager):
 		self = cls.__new__(cls)
@@ -226,34 +214,8 @@ class AreaBuilder(WorldObject):
 			costs[resource] *= length
 		return costs
 
-	def _make_builder(self, building_id, x, y, needs_collector, orientation):
-		""" Returns the Builder if it is allowed to be built at the location, otherwise returns None """
-		coords = (x, y)
-		if building_id == BUILDINGS.CLAY_PIT_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
-			# clay deposits and mountains are outside the production plan until they are constructed
-			if coords in self.plan or coords not in self.settlement.ground_map:
-				return None
-		else:
-			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.settlement.ground_map:
-				return None
-		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
-		if not builder or not self.land_manager.legal_for_production(builder.position):
-			return None
-		if building_id == BUILDINGS.FISHERMAN_CLASS or building_id == BUILDINGS.BOATBUILDER_CLASS:
-			for coords in builder.position.tuple_iter():
-				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					return None
-		elif building_id != BUILDINGS.CLAY_PIT_CLASS and building_id != BUILDINGS.IRON_MINE_CLASS:
-			# clay deposits and mountains are outside the production plan until they are constructed
-			for coords in builder.position.tuple_iter():
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					return None
-		if needs_collector and not self._near_collectors(builder.position):
-			return None
-		return builder
-
 	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
-		return self._make_builder(building_id, x, y, needs_collector, orientation)
+		return Builder.create(building_id, self.land_manager, Point(x, y), orientation = orientation)
 
 	def have_resources(self, building_id):
 		return Entities.buildings[building_id].have_resources([self.settlement], self.owner)
@@ -307,7 +269,7 @@ class AreaBuilder(WorldObject):
 				return BUILD_RESULT.UNKNOWN_ERROR
 			for x, y in builder.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, builder)
+			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, None)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
@@ -339,12 +301,9 @@ class AreaBuilder(WorldObject):
 		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed in this area """ 
 		self.last_change_id = -1
 
-	def register_change(self, x, y, purpose, builder, section = None, seq_no = None):
+	def register_change(self, x, y, purpose, data):
 		if (x, y) in self.plan:
-			if section is None:
-				self.plan[(x, y)] = (purpose, builder)
-			else:
-				self.plan[(x, y)] = (purpose, builder, section, seq_no)
+			self.plan[(x, y)] = (purpose, data)
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
 
