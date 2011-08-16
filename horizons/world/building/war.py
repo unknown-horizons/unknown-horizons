@@ -32,4 +32,4 @@ class Tower(BuildableSingle, SelectableBuilding, BasicBuilding, WeaponHolder):
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 
 	def fire_all_weapons(self, dest, rotate = True):
-		super(CannonTower, self).fire_all_weapons(dest, rotate)
+		super(Tower, self).fire_all_weapons(dest, rotate)

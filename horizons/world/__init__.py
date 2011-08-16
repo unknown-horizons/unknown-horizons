@@ -377,6 +377,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				point = self.get_random_possible_ground_unit_position()
 			unit = CreateUnit(player.worldid, 1000021, point.x, point.y)(issuer=self.session.world.player)
 			if player is self.player:
+				player.settler_level = 2
 				point = self.get_random_possible_ship_position()
 				while point not in Circle(ship.position, 5):
 					point = self.get_random_possible_ship_position()
