@@ -425,6 +425,7 @@ class VillageBuilder(AreaBuilder):
 			if coords not in self.plan or self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				not_needed.append(coords)
 		for coords in not_needed:
+			del self.plan[coords]
 			self.land_manager.add_to_production(coords)
 
 	def _replace_planned_tent(self, building_id, new_purpose, max_buildings, capacity):
