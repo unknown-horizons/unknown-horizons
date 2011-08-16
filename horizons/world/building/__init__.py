@@ -71,18 +71,18 @@ class BuildingClass(type):
 
 		self.class_package, size_x, size_y, name, self.radius, inhabitants, inhabitants_max = \
 		    db("SELECT class_package, size_x, size_y, name, radius, \
-		    inhabitants_start, inhabitants_max FROM data.building WHERE id = ?", id)[0]
+		    inhabitants_start, inhabitants_max FROM building WHERE id = ?", id)[0]
 		self._name = name
 		self.size = (int(size_x), int(size_y))
 		self.inhabitants = int(inhabitants)
 		self.inhabitants_max = int(inhabitants_max)
-		for (name,  value) in db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
-			setattr(self, name, value)
+		#for (name,  value) in db("SELECT name, value FROM building_property WHERE building = ?", str(id)):
+		#	setattr(self, name, value)
 		self.costs = {}
-		for (name, value) in db("SELECT resource, amount FROM balance.building_costs WHERE building = ?", str(id)):
+		for (name, value) in db("SELECT resource, amount FROM building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
 		self._loadObject(db)
-		running_costs = db("SELECT cost_active, cost_inactive FROM balance.building_running_costs WHERE building=?", self.id)
+		running_costs = db("SELECT cost_active, cost_inactive FROM building_running_costs WHERE building=?", self.id)
 		if len(running_costs) > 0:
 			self.running_costs = running_costs[0][0]
 			self.running_costs_inactive = running_costs[0][1]
@@ -118,7 +118,7 @@ class BuildingClass(type):
 			cls.log.debug("Already loaded building %s", cls.id)
 			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
-		action_sets = db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
+		action_sets = db("SELECT action_set_id FROM action_set WHERE object_id=?",cls.id)
 		all_action_sets = ActionSetLoader.get_action_sets()
 		for (action_set_id,) in action_sets:
 			for action_id in all_action_sets[action_set_id].iterkeys():

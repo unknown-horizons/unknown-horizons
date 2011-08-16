@@ -23,6 +23,7 @@ import math
 from fife import fife
 import logging
 import random
+import weakref
 
 import horizons.main
 
@@ -45,13 +46,13 @@ class BuildingTool(NavigationTool):
 
 	buildable_color = (255, 255, 255)
 	not_buildable_color = (255, 0, 0)
-	nearby_objects_transparency = 180
 	nearby_objects_radius = 3
 
 	gui = None # share gui between instances
 
-	def __init__(self, session, building, ship = None):
+	def __init__(self, session, building, ship=None, build_related=None):
 		super(BuildingTool, self).__init__(session)
+		assert not (ship and build_related)
 		self.renderer = self.session.view.renderer['InstanceRenderer']
 		self.ship = ship
 		self._class = building
@@ -61,13 +62,15 @@ class BuildingTool(NavigationTool):
 		self.rotation = 45 + random.randint(0, 3)*90
 		self.startPoint, self.endPoint = None, None
 		self.last_change_listener = None
-		self._modified_objects = set() # fife instances modified for transparency
+		self._modified_instances = set() # fife instances modified for transparency
 		self._buildable_tiles = set() # tiles marked as buildable
 		self._build_logic = None
-		if self.ship is None:
-			self._build_logic = SettlementBuildingToolLogic()
-		else:
+		if self.ship is not None:
 			self._build_logic = ShipBuildingToolLogic(ship)
+		elif build_related is not None:
+			self._build_logic = BuildRelatedBuildingToolLogic( weakref.ref(build_related) )
+		else:
+			self._build_logic = SettlementBuildingToolLogic()
 
 		if self._class.show_buildingtool_preview_tab:
 			self.load_gui()
@@ -94,7 +97,7 @@ class BuildingTool(NavigationTool):
 		self._remove_building_instances()
 		self._remove_coloring()
 		self._buildable_tiles = None
-		self._modified_objects = None
+		self._modified_instances = None
 		self.buildings = None
 		if self.gui is not None:
 			self.session.view.remove_change_listener(self.draw_gui)
@@ -248,9 +251,9 @@ class BuildingTool(NavigationTool):
 				continue
 			tile = get_tile(p)
 			if tile.object is not None and tile.object.buildable_upon:
-				tile.object.fife_instance.get2dGfxVisual().setTransparency( \
-				  self.nearby_objects_transparency )
-				self._modified_objects.add(tile.object)
+				inst = tile.object.fife_instance
+				inst.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+				self._modified_instances.add( weakref.ref(inst) )
 
 	def on_escape(self):
 		self.session.ingame_gui.resourceinfo_set(None)
@@ -442,10 +445,11 @@ class BuildingTool(NavigationTool):
 			deselected_tiles = self._class.deselect_building(self.session)
 			# redraw buildables (removal of selection might have tampered with it)
 			self.highlight_buildable(deselected_tiles)
-		for obj in self._modified_objects:
-			if obj.fife_instance is not None:
-				obj.fife_instance.get2dGfxVisual().setTransparency(0)
-		self._modified_objects.clear()
+		for fife_instance in self._modified_instances:
+			if fife_instance():
+				if not hasattr(fife_instance(), "keep_translucency") or not fife_instance().keep_translucency:
+					fife_instance().get2dGfxVisual().setTransparency(0)
+		self._modified_instances.clear()
 		for fife_instance in self.buildings_fife_instances.itervalues():
 			layer = fife_instance.getLocationRef().getLayer()
 			# layer might not exist, happens for some reason after a build
@@ -528,4 +532,16 @@ class SettlementBuildingToolLogic(object):
 
 	def add_change_listener(self, instance, building_tool):
 		instance.add_change_listener(building_tool.force_update)
+
+
+class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
+	"""Same as normal build, except quitting it drops to the build related tab."""
+	def __init__(self, instance):
+		# instance must be weakref
+		self.instance = instance
+
+	def on_escape(self, session):
+		from horizons.gui.tabs import BuildRelatedTab
+		self.instance().show_menu(jump_to_tabclass=BuildRelatedTab)
+
 

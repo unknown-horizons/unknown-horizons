@@ -1127,9 +1127,8 @@ msgstr "Prepričajte se, da veste kaj delate."
 
 # 83%
 #: horizons/i18n/guitranslations.py:260
-#, fuzzy
 msgid "Apply"
-msgstr "Uveljavi:"
+msgstr "Uveljavi"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"

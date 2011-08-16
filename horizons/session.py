@@ -239,14 +239,27 @@ class Session(LivingObject):
 
 	def display_speed(self):
 		text = u''
+		up_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedUp')
+		down_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedDown')
 		tps = self.timer.ticks_per_second
 		if tps == 0: # pause
 			text = u'0x'
+			up_icon.set_inactive()
+			down_icon.set_inactive()
 		elif tps == GAME_SPEED.TICKS_PER_SECOND: # normal speed, 1x
-			pass # display nothing
+			up_icon.set_active()
+			down_icon.set_inactive() # do not display label '1x'!
 		else:
 			text = unicode(tps/GAME_SPEED.TICKS_PER_SECOND) + u'x' # 2x, 4x, ...
+			#FIXME Yes, this is just fugly harcoded stuff. Sorry. Please improve
+			# by introducing a query for whether we are at max speed currently.
+			if text == u'4x':
+				up_icon.set_inactive()
+			else:
+				up_icon.set_active()
+			down_icon.set_active()
 		self.ingame_gui.display_game_speed(text)
+
 
 	def speed_up(self):
 		if self.speed_is_paused():

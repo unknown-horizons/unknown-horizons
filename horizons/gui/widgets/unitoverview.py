@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from fife.extensions import pychan
-from horizons.util.gui import load_uh_widget
+from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
 from horizons.gui.widgets import TooltipIcon
 
@@ -99,7 +99,7 @@ class WeaponStorageWidget(pychan.widgets.HBox):
 			storage = self.instance.get_weapon_storage()
 			for weapon, amount in storage:
 				weapons_added = True
-				icon_name = self.instance.session.db.get_res_icon(weapon)[2]
+				icon_name = get_res_icon(weapon)[3]
 				icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
 				icon = TooltipIcon(image = icon_name, tooltip = icon_tooltip)
 				self.addChild(icon)

@@ -97,8 +97,10 @@ class ConcretObject(ComponentHolder, WorldObject):
 		Scheduler().rem_all_classinst_calls(self)
 		super(ConcretObject, self).remove()
 
-	def show_menu(self):
-		"""Shows tabs from self.__class__.tabs, if there are any"""
+	def show_menu(self, jump_to_tabclass=None):
+		"""Shows tabs from self.__class__.tabs, if there are any.
+		@param jump_to_tabclass: open the first tab that is a subclass to this parameter
+		"""
 		# this local import prevents circular imports
 		from horizons.gui.tabs import TabWidget
 		tablist = None
@@ -109,6 +111,17 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 		if tablist:
 			tabs = [ tabclass(self) for tabclass in tablist ]
-			self.session.ingame_gui.show_menu(TabWidget(self.session.ingame_gui, \
-			                                            tabs=tabs))
+			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs)
+
+			if jump_to_tabclass:
+				num = None
+				for i in xrange( len(tabs) ):
+					if isinstance(tabs[i], jump_to_tabclass):
+						num = i
+						break
+				if num is not None:
+					tabwidget._show_tab(num)
+
+			self.session.ingame_gui.show_menu( tabwidget )
+
 

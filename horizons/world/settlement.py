@@ -21,11 +21,12 @@
 
 import horizons.main
 
-from storage import PositiveSizedSlotStorage
+from horizons.world.storageholder import StorageHolder
+from horizons.world.storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList, NamedObject
-from tradepost import TradePost
+from horizons.world.tradepost import TradePost
 
-class Settlement(TradePost, NamedObject):
+class Settlement(TradePost, StorageHolder, NamedObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, session, owner):
@@ -40,7 +41,6 @@ class Settlement(TradePost, NamedObject):
 		self.owner = owner
 		self.tax_setting = tax_setting
 		self.buildings = []
-		self.setup_storage()
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = {}
@@ -50,7 +50,7 @@ class Settlement(TradePost, NamedObject):
 		self.tax_setting = tax
 
 	def _possible_names(self):
-		names = horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1")
+		names = horizons.main.db("SELECT name FROM citynames WHERE for_player = 1")
 		return map(lambda x: x[0], names)
 
 	@property
@@ -81,9 +81,8 @@ class Settlement(TradePost, NamedObject):
 		for building in self.buildings:
 			building.level_upgrade(lvl)
 
-	def setup_storage(self):
+	def create_inventory(self):
 		self.inventory = PositiveSizedSlotStorage(0)
-		self.inventory.add_change_listener(self._changed)
 
 	def save(self, db, islandid):
 		super(Settlement, self).save(db)
@@ -93,7 +92,6 @@ class Settlement(TradePost, NamedObject):
 		for res, amount in self.produced_res.iteritems():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
 			   self.worldid, res, amount)
-		self.inventory.save(db, self.worldid)
 
 	@classmethod
 	def load(cls, db, worldid, session):
@@ -115,10 +113,6 @@ class Settlement(TradePost, NamedObject):
 
 		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):
 			self.produced_res[res] = amount
-
-		# load inventory after buildings, since buildings, specifically storages, determine
-		# the size of the settlement's inventory
-		self.inventory.load(db, worldid)
 
 		return self
 

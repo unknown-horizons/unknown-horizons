@@ -30,7 +30,7 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
-from horizons.util.gui import adjust_widget_black_background, LazyWidgetsDict
+from horizons.util.gui import LazyWidgetsDict
 from horizons.ambientsound import AmbientSound
 from horizons.i18n.utils import N_
 
@@ -82,8 +82,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		})
 
 		self.on_escape = self.show_quit
-
-		adjust_widget_black_background(self.widgets['mainmenu'])
 
 	def toggle_pause(self):
 		"""
@@ -415,7 +413,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				details_label.text += _("Unknown savedate\n")
 			else:
 				details_label.text += _("Saved at %s\n") % \
-										time.strftime(_("%H:%M, %A, %B %d"), time.localtime(savegame_info['timestamp']))
+										time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 			counter = savegame_info['savecounter']
 			# N_ takes care of plural forms for different languages
 			details_label.text += N_("Saved %(counter)d time\n", \

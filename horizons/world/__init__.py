@@ -371,11 +371,11 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				point = self.get_random_possible_ship_position()
 			ship = CreateUnit(player.worldid, UNITS.FRIGATE, point.x, point.y)(issuer=self.session.world.player)
 			point = self.get_random_possible_ground_unit_position()
-			unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+			unit = CreateUnit(player.worldid, 1000021, point.x, point.y)(issuer=self.session.world.player)
 			point = self.get_random_possible_ground_unit_position()
 			while point not in Circle(unit.position, 5):
 				point = self.get_random_possible_ground_unit_position()
-			unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+			unit = CreateUnit(player.worldid, 1000021, point.x, point.y)(issuer=self.session.world.player)
 			if player is self.player:
 				point = self.get_random_possible_ship_position()
 				while point not in Circle(ship.position, 5):
@@ -414,19 +414,19 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					point = self.get_random_possible_ship_position()
 				ship = CreateUnit(player.worldid, UNITS.FRIGATE, point.x, point.y)(issuer=self.session.world.player)
 				point = self.get_random_possible_ground_unit_position()
-				unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+				unit = CreateUnit(player.worldid, 1000021, point.x, point.y)(issuer=self.session.world.player)
 				point = self.get_random_possible_ground_unit_position()
 				while point not in Circle(unit.position, 5):
 					point = self.get_random_possible_ground_unit_position()
-				unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+				unit = CreateUnit(player.worldid, 1000021, point.x, point.y)(issuer=self.session.world.player)
 				point = self.get_random_possible_ground_unit_position()
 				while point not in Circle(unit.position, 5):
 					point = self.get_random_possible_ground_unit_position()
-				unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+				unit = CreateUnit(player.worldid, 1000021, point.x, point.y)(issuer=self.session.world.player)
 				point = self.get_random_possible_ground_unit_position()
 				while point not in Circle(unit.position, 5):
 					point = self.get_random_possible_ground_unit_position()
-				unit = CreateUnit(player.worldid, 1000018, point.x, point.y)(issuer=self.session.world.player)
+				unit = CreateUnit(player.worldid, 1000021, point.x, point.y)(issuer=self.session.world.player)
 
 			#
 			#
@@ -735,6 +735,41 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		# make sure there's a trader ship for 2 settlements
 		if len(self.settlements) > self.trader.get_ship_count() * 2:
 			self.trader.create_ship()
+
+	@decorators.make_constants()
+	def toggle_translucency(self):
+		"""Make certain building types translucent"""
+		if not hasattr(self, "_translucent_buildings"):
+			self._translucent_buildings = set()
+
+		if not self._translucent_buildings: # no translucent buildings saved => enable
+			building_types = self.session.db.get_translucent_buildings()
+			add = self._translucent_buildings.add
+			from weakref import ref as create_weakref
+
+			def get_all_buildings(world):
+				for island in world.islands:
+					for b in island.buildings:
+						yield b
+					for s in island.settlements:
+						for b in s.buildings:
+							yield b
+
+			for b in get_all_buildings(self):
+				if b.id in building_types:
+					fife_instance = b._instance
+					add( create_weakref(fife_instance) )
+					fife_instance.keep_translucency = True
+					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+
+		else: # undo translucency
+			for inst in self._translucent_buildings:
+				try:
+					inst().get2dGfxVisual().setTransparency( 0 )
+					inst().keep_translucency = False
+				except AttributeError:
+					pass # obj has been deleted, inst() returned None
+			self._translucent_buildings.clear()
 
 
 def load_building(session, db, typeid, worldid):

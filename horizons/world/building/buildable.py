@@ -351,10 +351,11 @@ class BuildableSingleFromShip(BuildableSingleOnCoast):
 		if ship.position.distance(position) > BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE:
 			raise _NotBuildableError()
 
-		# and the island mustn't be owned by anyone else
-		settlement = session.world.get_settlement(position.center())
-		if settlement is not None:
-			raise _NotBuildableError()
+		for i in position:
+			# and the position mustn't be owned by anyone else
+			settlement = session.world.get_settlement(i)
+			if settlement is not None:
+				raise _NotBuildableError()
 
 		# and player mustn't have a settlement here already
 		island = session.world.get_island(position.center())

@@ -22,7 +22,7 @@
 from inventorytab import InventoryTab, ShipInventoryTab, FightingShipInventoryTab
 from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
                         BranchOfficeOverviewTab, SettlerOverviewTab, \
-                        MarketPlaceOverviewTab, SignalFireOverviewTab, \
+                        MainSquareOverviewTab, SignalFireOverviewTab, \
                         TraderShipOverviewTab, EnemyBuildingOverviewTab, \
                         EnemyShipOverviewTab, ResourceDepositOverviewTab, \
 						FightingShipOverviewTab, GroundUnitOverviewTab
@@ -32,7 +32,7 @@ from tabwidget import TabWidget
 from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, \
                            BoatbuilderTradeTab, BoatbuilderWar1Tab, \
                            BoatbuilderWar2Tab, BoatbuilderConfirmTab
-from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab
+from mainsquaretabs import AccountTab, MainSquareSettlerTabSettlerTab
 from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab

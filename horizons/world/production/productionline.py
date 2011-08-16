@@ -75,7 +75,7 @@ class _ProductionLineData(object):
 		"""Inits self from db and registers itself as template"""
 		self._init_finished = False
 		self.id = ident
-		db_data = horizons.main.db("SELECT time, changes_animation FROM data.production_line WHERE id = ?", self.id)[0]
+		db_data = horizons.main.db("SELECT time, changes_animation FROM production_line WHERE id = ?", self.id)[0]
 		self.time = float(db_data[0]) # time in seconds that production takes
 		self.changes_animation = bool(db_data[1]) # whether this prodline influences animation
 		# here we store all resource information.
@@ -83,7 +83,7 @@ class _ProductionLineData(object):
 		self.production = {}
 		self.produced_res = {} # contains only produced
 		self.consumed_res = {} # contains only consumed
-		for res, amount in horizons.main.db("SELECT resource, amount FROM balance.production WHERE production_line = ?", self.id):
+		for res, amount in horizons.main.db("SELECT resource, amount FROM production WHERE production_line = ?", self.id):
 			self.production[res] = amount
 			if amount > 0:
 				self.produced_res[res] = amount
@@ -93,7 +93,7 @@ class _ProductionLineData(object):
 				assert False
 		# Stores unit_id: amount entries, if units are to be produced by this production line
 		self.unit_production = {}
-		for unit, amount in horizons.main.db("SELECT unit, amount FROM balance.unit_production WHERE production_line = ?", self.id):
+		for unit, amount in horizons.main.db("SELECT unit, amount FROM unit_production WHERE production_line = ?", self.id):
 			self.unit_production[int(unit)] = amount # Store the correct unit id =>  -1.000.000
 
 		self._init_finished = True

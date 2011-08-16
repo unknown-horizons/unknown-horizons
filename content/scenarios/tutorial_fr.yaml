@@ -25,16 +25,16 @@ events:
         \ pour savoir comment contacter l'\xE9quipe!\n\nEt maintenant, commen\xE7\
         ons \xE0 jouer."]
     type: logbook_w
-  - arguments: [!!python/unicode 'MISSION: COLONISER UNE ILE', "Pour d\xE9placer votre\
-        \ bateau, s\xE9lectionnez le par un clic gauche et faites un clic droit sur\
-        \ la destination de votre choix.\n\nUne fois que vous \xEAtes pr\xE8s de la\
-        \ c\xF4te, le bouton en forme d'ancre du panneau deviendra actif.\n\nCela\
-        \ signifie que vous \xEAtes alors capable de construire un comptoir ici en\
-        \ cliquant sur ce bouton (nomm\xE9 \xABConstruire la colonie\xBB).\n\nMaintenant,\
-        \ un aper\xE7u de votre comptoir devrait suivre votre curseur.\n\nVous pouvez\
-        \ construire aux endroits o\xF9 cet aper\xE7u n\u2019apparait pas en rouge.\n\
-        Cliquez \xE0 l'endroit o\xF9 vous voulez placer votre premi\xE8re construction.\n\
-        \nMISSION: Construire un comptoir sur la c\xF4te.", 2]
+  - arguments: ["MISSION: COLONISER UNE \xCELE", "Pour d\xE9placer votre bateau, s\xE9\
+        lectionnez le par un clic gauche et faites un clic droit sur la destination\
+        \ de votre choix.\n\nUne fois que vous \xEAtes pr\xE8s de la c\xF4te, le bouton\
+        \ en forme d'ancre du panneau deviendra actif.\n\nCela signifie que vous \xEA\
+        tes alors capable de construire un comptoir ici en cliquant sur ce bouton\
+        \ (nomm\xE9 \xABConstruire la colonie\xBB).\n\nMaintenant, un aper\xE7u de\
+        \ votre comptoir devrait suivre votre curseur.\n\nVous pouvez construire aux\
+        \ endroits o\xF9 cet aper\xE7u n\u2019apparait pas en rouge.\nCliquez \xE0\
+        \ l'endroit o\xF9 vous voulez placer votre premi\xE8re construction.\n\nMISSION:\
+        \ Construire un comptoir sur la c\xF4te.", 2]
     type: logbook
   - arguments: [tutStepDone, 6]
     type: set_var
@@ -77,17 +77,17 @@ events:
   - arguments: [tutStepDone, 16]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION : LE BUCHERON', "Avec ces nouveaux mat\xE9\
-        riaux disponibles dans votre comptoir, vous pouvez commencer \xE0 construire\
-        \ quelques b\xE2timents de base.\n\nCommen\xE7ons par \xE9tablir un b\xFB\
-        cheron.\n\nC'est essentiel parce que, \xE0 ce niveau, le bois est la seule\
-        \ mati\xE8re que les marins peuvent s'offrir pour monter leurs tentes.\n\n\
-        Le p\xEAcheur a \xE9galement besoin de planches pour construire son bateau.\n\
-        \nPour construire une cabane de b\xFBcheron, ouvrez le menu construction en\
-        \ cliquant sur le grand ic\xF4ne sous la mini-carte, ou en pressant la touche\
-        \ B.\n\nLe menu construction est class\xE9 par niveaux.\nCela signifie que\
-        \ seuls les b\xE2timents de base sont accessibles quand on est au premier\
-        \ niveau (celui des marins)."]
+  - arguments: ["MISSION : LE B\xDBCHERON", "Avec ces nouveaux mat\xE9riaux disponibles\
+        \ dans votre comptoir, vous pouvez commencer \xE0 construire quelques b\xE2\
+        timents de base.\n\nCommen\xE7ons par \xE9tablir un b\xFBcheron.\n\nC'est\
+        \ essentiel parce que, \xE0 ce niveau, le bois est la seule mati\xE8re que\
+        \ les marins peuvent s'offrir pour monter leurs tentes.\n\nLe p\xEAcheur a\
+        \ \xE9galement besoin de planches pour construire son bateau.\n\nPour construire\
+        \ une cabane de b\xFBcheron, ouvrez le menu construction en cliquant sur le\
+        \ grand ic\xF4ne sous la mini-carte, ou en pressant la touche B.\n\nLe menu\
+        \ construction est class\xE9 par niveaux.\nCela signifie que seuls les b\xE2\
+        timents de base sont accessibles quand on est au premier niveau (celui des\
+        \ marins)."]
     type: logbook_w
   - arguments: ['', "Plus votre civilisation avancera et plus vous pourrez construire\
         \ de b\xE2timents complexes.\n\nMaintenant construisez un camp de bucheron\
@@ -189,9 +189,9 @@ events:
   - arguments: [tutStepDone, 25]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOUVELLE MISSION: L''HABITAT', "Les colons veulent\
-        \ avoir un toit au dessus de la t\xEAte, autrement ils ne penseront m\xEA\
-        me pas \xE0 venir vivre dans votre ville! Vous devez leurs fournir des tentes.\n\
+  - arguments: [!!python/unicode 'MISSION: LES HABITATIONS', "Les colons veulent avoir\
+        \ un toit au dessus de la t\xEAte, autrement ils ne penseront m\xEAme pas\
+        \ \xE0 venir vivre dans votre ville! Vous devez leurs fournir des tentes.\n\
         \nLes tentes constituent l'habitation de base. Vos habitants voudront les\
         \ am\xE9liorer quand ils atteindront des niveaux sup\xE9rieurs.\n\nLes marins\
         \ peuvent sembler peu ou pas tr\xE8s utiles dans la mesure o\xF9 ils essaieront\
@@ -543,13 +543,13 @@ events:
         \nSi vous avez des propositions sur ce que nous pourrions am\xE9liorer, ajouter\
         \ ou enlever:\n\nwww.unknown-horizons.org\n\n#unknown-horizons @ irc.freenode.net\n\
         \nteam@unknown-horizons.org\n\nNos forums vous sont \xE9galement accessibles!\n\
-        \nJusqu'\xE0 pr\xE9sent, le channel IRC a \xE9t\xE9 le meilleur moyen de nous\
-        \ joindre, essayer donc cela en premier ;-) \n\nDans l'int\xE9r\xEAt des autres\
-        \ participants aux conversations et qui ne parlent peut-\xEAtre pas le fran\xE7\
-        ais, nous vous prions de parler anglais dans le chat."]
+        \nJusqu'\xE0 pr\xE9sent, le canal IRC est le meilleur moyen de nous joindre,\
+        \ essayez donc cela en premier ;-) \n\nDans l'int\xE9r\xEAt des autres participants\
+        \ aux conversations et qui ne parlent peut-\xEAtre pas le fran\xE7ais, nous\
+        \ vous prions de parler anglais dans le chat."]
     type: logbook
-  - arguments: [!!python/unicode 'Merci!', "\n\n\n\n\n\n\nMerci d'avoir suivi ce didacticiel!\n\
-        \nL'\xE9quipe d'UH"]
+  - arguments: [!!python/unicode 'Merci !', "\n\n\n\n\n\n\nMerci d'avoir suivi ce\
+        \ didacticiel!\n\nL'\xE9quipe d'UH"]
     type: logbook
   - arguments: [tutStepDone, 61]
     type: set_var
@@ -570,8 +570,8 @@ events:
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: ["F\xE9licitations!\_Vous avez atteint la fin de ce didacticiel, vous\
-        \ \xEAtes maintenant pr\xEAt \xE0 relever de nouveaux d\xE9fis!"]
+  - arguments: ["F\xE9licitations !\_Vous avez atteint la fin de ce didacticiel, vous\
+        \ \xEAtes maintenant pr\xEAt \xE0 relever de nouveaux d\xE9fis !"]
     type: message
   conditions:
   - arguments: [tutStepDone, 60]

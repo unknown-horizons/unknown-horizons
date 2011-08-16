@@ -36,7 +36,7 @@ files = glob.glob('po/*.po')
 for x in files:
 	file = x.rpartition("\\")[2]
 	dir = file[:-len('.po')]
-	dir = os.path.join('build', 'mo', dir, 'LC_MESSAGES', '')
+	dir = os.path.join('content', 'lang', dir, 'LC_MESSAGES', '')
 	if not os.path.isdir(dir):
 		os.makedirs(dir)
 	print 'Generating translations for', file

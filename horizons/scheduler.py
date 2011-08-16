@@ -174,13 +174,17 @@ class Scheduler(LivingObject):
 						calls[callback_obj] = key - self.cur_tick
 		return calls
 
-	def get_remaining_ticks(self, instance, callback):
+	def get_remaining_ticks(self, instance, callback, assert_present=True):
 		"""Returns in how many ticks a callback is executed. You must specify 1 single call.
 		@param *: just like get_classinst_calls
-		@return int."""
+		@param assert_present: assert that there must be sucha call
+		@return int or possbile None if not assert_present"""
 		calls = self.get_classinst_calls(instance, callback)
-		assert len(calls) == 1, 'got %i calls for %s %s' % (len(calls), instance, callback)
-		return calls.values()[0]
+		if assert_present:
+			assert len(calls) == 1, 'got %i calls for %s %s' % (len(calls), instance, callback)
+			return calls.itervalues().next()
+		else:
+			return calls.itervalues().next() if calls else None
 
 	def get_ticks(self, seconds):
 		"""Call propagated to time instance"""

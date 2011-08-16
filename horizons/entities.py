@@ -47,7 +47,7 @@ class Entities(object):
 			return
 		from world.ground import GroundClass
 		cls.grounds = {}
-		for (ground_id,) in db("SELECT id FROM data.ground"):
+		for (ground_id,) in db("SELECT id FROM ground"):
 			assert ground_id not in cls.grounds
 			cls.grounds[ground_id] = GroundClass(db, ground_id)
 
@@ -59,7 +59,7 @@ class Entities(object):
 			return
 		cls.buildings = {}
 		from world.building import BuildingClass
-		for (building_id,) in db("SELECT id FROM data.building"):
+		for (building_id,) in db("SELECT id FROM building"):
 			assert building_id not in cls.buildings
 			cls.buildings[building_id] = BuildingClass(db, building_id)
 
@@ -71,6 +71,6 @@ class Entities(object):
 			return
 		cls.units = {}
 		from world.units import UnitClass
-		for (unit_id,) in db("SELECT id FROM data.unit"):
+		for (unit_id,) in db("SELECT id FROM unit"):
 			assert unit_id not in cls.units
 			cls.units[unit_id] = UnitClass(db, unit_id)

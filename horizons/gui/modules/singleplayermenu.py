@@ -24,7 +24,6 @@ import horizons.main
 from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import PlayerDataSelection
-from horizons.util.gui import adjust_widget_black_background
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'scenario'): # tutorial
@@ -37,43 +36,41 @@ class SingleplayerMenu(object):
 		self.widgets.reload('singleplayermenu')
 		self._switch_current_widget('singleplayermenu', center=True)
 		eventMap = {
-			'cancel'   : self.show_main,
-			'okay'     : self.start_single,
-			'showScenario' : Callback(self.show_single, show='scenario'),
-			'showCampaign' : Callback(self.show_single, show='campaign'),
-			'showRandom' : Callback(self.show_single, show='random'),
-			'showMaps' : Callback(self.show_single, show='free_maps')
+			'cancel'    : self.show_main,
+			'okay'      : self.start_single,
+			'scenario'  : Callback(self.show_single, show='scenario'),
+			'campaign'  : Callback(self.show_single, show='campaign'),
+			'random'    : Callback(self.show_single, show='random'),
+			'free_maps' : Callback(self.show_single, show='free_maps')
 		}
 
-		adjust_widget_black_background(self.widgets['singleplayermenu'])
 
 		# init gui for subcategory
+		del eventMap[show]
+		self.current.findChild(name=show).marked = True
+		right_side = self.widgets['sp_%s' % show]
+		self.current.findChild(name="right_side_box").addChild(right_side)
 		if show == 'random':
-			del eventMap['showRandom']
-			self.current.findChild(name="showRandom").marked = True
-			to_remove = self.current.findChild(name="map_list_area")
-			to_remove.parent.removeChild(to_remove)
-			to_remove = self.current.findChild(name="choose_map_lbl")
-			to_remove.parent.removeChild(to_remove)
-			# need to add some options here (generation algo, size, ... )
+			game_settings = self.widgets['game_settings']
+			self.current.findChild(name="game_settings_box").addChild(game_settings)
+		elif show == 'free_maps':
+			self.current.files, maps_display = SavegameManager.get_maps()
+			game_settings = self.widgets['game_settings']
+			self.current.findChild(name="game_settings_box").addChild(game_settings)
+			self.current.distributeInitialData({ 'maplist' : maps_display, })
+			if len(maps_display) > 0:
+				# select first entry
+				self.current.distributeData({ 'maplist' : 0, })
 		else:
-			if show == 'free_maps':
-				del eventMap['showMaps']
-				self.current.findChild(name="showMaps").marked = True
-				self.current.files, maps_display = SavegameManager.get_maps()
-			elif show == 'campaign':
-				del eventMap['showCampaign']
-				self.current.findChild(name="showCampaign").marked = True
+			choosable_locales = ['en', horizons.main.fife.get_locale()]
+			if show == 'campaign':
 				self.current.files, maps_display = SavegameManager.get_campaigns()
 				# tell people that we don't have any content
 				text = u"We currently don't have any campaigns available for you. " + \
 				u"If you are interested in adding campaigns to Unknown Horizons, " + \
 				u"please contact us via our website (http://www.unknown-horizons.org)!"
 				self.show_popup("No campaigns available yet", text)
-			else: # scenario
-				del eventMap['showScenario']
-				self.current.findChild(name="showScenario").marked = True
-				choosable_locales = ['en',horizons.main.fife.get_locale()]
+			elif show == 'scenario':
 				self.current.files, maps_display = SavegameManager.get_available_scenarios(locales = choosable_locales)
 
 			# get the map files and their display names
@@ -109,9 +106,8 @@ class SingleplayerMenu(object):
 						self.current.findChild(name="map_author").text = _("Author: ") + unicode(campaign_info.get('author', ''))
 						self.current.findChild(name="map_desc").text = _("Description: ") + unicode(campaign_info.get('description', ''))
 
-				if show in ('scenario', 'campaign'):
-					self.current.findChild(name="maplist").capture(_update_infos)
-					_update_infos()
+				self.current.findChild(name="maplist").capture(_update_infos)
+				_update_infos()
 
 
 		self.current.mapEvents(eventMap)
@@ -131,14 +127,16 @@ class SingleplayerMenu(object):
 		horizons.main.fife.set_uh_setting("Nickname", playername)
 		horizons.main.fife.save_settings()
 
-		if self.current.collectData('showRandom'):
-			map_file = random_map.generate_map()
+		if self.current.collectData('random'):
+			map_size = int( self.current.findChild(name="map_size_slider").getValue() )
+			island_size = int( self.current.findChild(name="island_size_slider").getValue() )
+			map_file = random_map.generate_map(seed='yay', island_size=island_size, map_size=map_size)
 		else:
 			assert self.current.collectData('maplist') != -1
 			map_file = self.__get_selected_map()
 
-		is_scenario = bool(self.current.collectData('showScenario'))
-		is_campaign = bool(self.current.collectData('showCampaign'))
+		is_scenario = bool(self.current.collectData('scenario'))
+		is_campaign = bool(self.current.collectData('campaign'))
 		self.show_loading_screen()
 		if is_scenario:
 			from horizons.scenario import InvalidScenarioFileFormat
