@@ -763,5 +763,5 @@ CREATE TABLE "weapon" (
 	"attack_radius" INT,
 	"stackable" BOOLEAN,
 	"bullet_image" TEXT);
-INSERT INTO "weapon" VALUES(40,'ranged',10,5,15,3,4,2,1,'content/gfx/misc/cannonballs/as_cannonball0/idle/45/0.png');
+INSERT INTO "weapon" VALUES(40,'ranged',10,5,15,3,4,2,1,'content/gfx/misc/cannonballs/cannonball.png');
 INSERT INTO "weapon" VALUES(41,'melee',3,1,1,3,2,1,0,'');
