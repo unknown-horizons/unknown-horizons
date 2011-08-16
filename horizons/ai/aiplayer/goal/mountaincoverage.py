@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 
 class MountainCoverageGoal(SettlementGoal):
