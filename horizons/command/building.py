@@ -175,6 +175,8 @@ class Tear(Command):
 		@param issuer: the issuer of the command
 		"""
 		building = WorldObject.get_object_by_id(self.building)
-		self.log.debug("Tear: tearing down %s", building)
-		building.remove()
-
+		if building is None or not building.fife_instance:
+			self.log.warning("Tear: attempting to tear down a building that shouldn't exist %s", building)
+		else:
+			self.log.debug("Tear: tearing down %s", building)
+			building.remove()
