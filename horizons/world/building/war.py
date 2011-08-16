@@ -19,14 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle
+from building import SelectableBuilding, BasicBuilding
+
 from horizons.world.units.weaponholder import WeaponHolder
 from horizons.constants import WEAPONS
 
-class CannonTower(SelectableBuilding, BasicBuilding, BuildableSingle, WeaponHolder):
+class Tower(BuildableSingle, SelectableBuilding, BasicBuilding, WeaponHolder):
 	def __init__(self, *args, **kwargs):
-		super(CannonTower, self).__init__(*args, **kwargs)
+		super(Tower, self).__init__(*args, **kwargs)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 
