@@ -308,7 +308,7 @@ class IngameGui(LivingObject):
 		players = self.session.world.players
 		local_player = self.session.world.player
 		dtabs = []
-		for player in players:
+		for player in players + [self.session.world.pirate]:
 			if player is not local_player:
 				dtabs.append(DiplomacyTab(player))
 		tab = TabWidget(self, tabs=dtabs, name="diplomacy_widget")
