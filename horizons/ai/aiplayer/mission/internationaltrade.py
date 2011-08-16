@@ -45,6 +45,7 @@ class InternationalTrade(Mission):
 		self.bought_resource = bought_resource
 		self.sold_resource = sold_resource
 		self.state = self.missionStates.created
+		self.ship.add_remove_listener(self.cancel)
 
 	def save(self, db):
 		super(InternationalTrade, self).save(db)
@@ -76,6 +77,16 @@ class InternationalTrade(Mission):
 		elif self.state is self.missionStates.returning_to_my_settlement:
 			self.ship.add_move_callback(Callback(self._returned_to_my_settlement))
 			self.ship.add_blocked_callback(Callback(self._return_to_my_settlement))
+
+		self.ship.add_remove_listener(self.cancel)
+
+	def report_success(self, msg):
+		self.ship.remove_remove_listener(self.cancel)
+		super(InternationalTrade, self).report_success(msg)
+
+	def report_failure(self, msg):
+		self.ship.remove_remove_listener(self.cancel)
+		super(InternationalTrade, self).report_failure(msg)
 
 	def start(self):
 		if self.sold_resource is not None:
@@ -178,5 +189,9 @@ class InternationalTrade(Mission):
 	def _returned_to_my_settlement(self):
 		self.settlement_manager.owner.complete_inventory.unload_all(self.ship, self.settlement_manager.settlement)
 		self.report_success('Unloaded the bought resources at %s' % self.settlement_manager.settlement.name)
+
+	def cancel(self):
+		self.ship.stop()
+		super(InternationalTrade, self).cancel()
 
 decorators.bind_all(InternationalTrade)

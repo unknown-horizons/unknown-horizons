@@ -42,6 +42,7 @@ class FoundSettlement(Mission):
 		self.bo_location = bo_location
 		self.branch_office = None
 		self.state = self.missionStates.created
+		self.ship.add_remove_listener(self.cancel)
 
 	def save(self, db):
 		super(FoundSettlement, self).save(db)
@@ -68,6 +69,16 @@ class FoundSettlement(Mission):
 		if self.state == self.missionStates.moving:
 			self.ship.add_move_callback(Callback(self._reached_bo_area))
 			self.ship.add_blocked_callback(Callback(self._move_to_bo_area))
+
+		self.ship.add_remove_listener(self.cancel)
+
+	def report_success(self, msg):
+		self.ship.remove_remove_listener(self.cancel)
+		super(FoundSettlement, self).report_success(msg)
+
+	def report_failure(self, msg):
+		self.ship.remove_remove_listener(self.cancel)
+		super(FoundSettlement, self).report_failure(msg)
 
 	def start(self):
 		self.state = self.missionStates.moving
@@ -102,7 +113,7 @@ class FoundSettlement(Mission):
 
 	def cancel(self):
 		self.ship.stop()
-		self.report_failure('Mission cancelled')
+		super(FoundSettlement, self).cancel()
 
 	@classmethod
 	def find_bo_location(cls, ship, land_manager):

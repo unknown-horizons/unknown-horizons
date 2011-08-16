@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+
 from horizons.util.python import decorators
 from horizons.util import WorldObject
 
@@ -53,5 +54,8 @@ class Mission(WorldObject):
 	def load(self, db, worldid, success_callback, failure_callback, session):
 		super(Mission, self).load(db, worldid)
 		self.__init(success_callback, failure_callback, session)
+
+	def cancel(self):
+		self.report_failure('Mission cancelled')
 
 decorators.bind_all(Mission)

@@ -41,6 +41,7 @@ class DomesticTrade(Mission):
 		self.destination_settlement_manager = destination_settlement_manager
 		self.ship = ship
 		self.state = self.missionStates.created
+		self.ship.add_remove_listener(self.cancel)
 
 	def save(self, db):
 		super(DomesticTrade, self).save(db)
@@ -67,6 +68,16 @@ class DomesticTrade(Mission):
 		elif self.state == self.missionStates.moving_to_destination_bo:
 			self.ship.add_move_callback(Callback(self._reached_destination_bo_area))
 			self.ship.add_blocked_callback(Callback(self._move_to_destination_bo_area))
+
+		self.ship.add_remove_listener(self.cancel)
+
+	def report_success(self, msg):
+		self.ship.remove_remove_listener(self.cancel)
+		super(DomesticTrade, self).report_success(msg)
+
+	def report_failure(self, msg):
+		self.ship.remove_remove_listener(self.cancel)
+		super(DomesticTrade, self).report_failure(msg)
 
 	def start(self):
 		self.state = self.missionStates.moving_to_source_bo
@@ -101,5 +112,9 @@ class DomesticTrade(Mission):
 		self.log.info('Reached destination branch office area')
 		self.ship.owner.complete_inventory.unload_all(self.ship, self.destination_settlement_manager.settlement)
 		self.report_success('Unloaded resources')
+
+	def cancel(self):
+		self.ship.stop()
+		super(DomesticTrade, self).cancel()
 
 decorators.bind_all(DomesticTrade)

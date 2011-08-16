@@ -66,6 +66,8 @@ class Unit(AmbientSound, MovingObject):
 
 	def remove(self):
 		self.log.debug("Unit.remove for %s started", self)
+		if hasattr(self.owner, 'remove_unit'):
+			self.owner.remove_unit(self)
 		self._instance.removeActionListener(self.InstanceActionListener)
 		super(Unit, self).remove()
 

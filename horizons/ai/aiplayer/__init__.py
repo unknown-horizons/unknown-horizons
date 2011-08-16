@@ -153,7 +153,7 @@ class AIPlayer(GenericAI):
 
 	def report_success(self, mission, msg):
 		self.missions.remove(mission)
-		if mission.ship:
+		if mission.ship and mission.ship in self.ships:
 			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
 			settlement_manager = SettlementManager(self, mission.land_manager)
@@ -167,7 +167,7 @@ class AIPlayer(GenericAI):
 
 	def report_failure(self, mission, msg):
 		self.missions.remove(mission)
-		if mission.ship:
+		if mission.ship and mission.ship in self.ships:
 			self.ships[mission.ship] = self.shipStates.idle
 		if isinstance(mission, FoundSettlement):
 			del self.islands[mission.land_manager.island.worldid]
@@ -410,6 +410,10 @@ class AIPlayer(GenericAI):
 
 	def remove_building(self, building):
 		self._settlement_manager_by_settlement_id[building.settlement.worldid].remove_building(building)
+
+	def remove_unit(self, unit):
+		if unit in self.ships:
+			del self.ships[unit]
 
 	def count_buildings(self, building_id):
 		return sum(settlement_manager.count_buildings(building_id) for settlement_manager in self.settlement_managers)

@@ -42,6 +42,7 @@ class PrepareFoundationShip(Mission):
 		self.feeder_island = feeder_island
 		self.branch_office = self.settlement_manager.branch_office
 		self.state = self.missionStates.created
+		self.ship.add_remove_listener(self.cancel)
 
 	def save(self, db):
 		super(PrepareFoundationShip, self).save(db)
@@ -67,6 +68,16 @@ class PrepareFoundationShip(Mission):
 		if self.state == self.missionStates.moving:
 			self.ship.add_move_callback(Callback(self._reached_bo_area))
 			self.ship.add_blocked_callback(Callback(self._move_to_bo_area))
+
+		self.ship.add_remove_listener(self.cancel)
+
+	def report_success(self, msg):
+		self.ship.remove_remove_listener(self.cancel)
+		super(PrepareFoundationShip, self).report_success(msg)
+
+	def report_failure(self, msg):
+		self.ship.remove_remove_listener(self.cancel)
+		super(PrepareFoundationShip, self).report_failure(msg)
 
 	def start(self):
 		self.state = self.missionStates.moving
@@ -100,5 +111,9 @@ class PrepareFoundationShip(Mission):
 				self.report_success('Transferred enough foundation resources to the ship')
 		if not success:
 			self.report_failure('Not enough foundation resources available')
+
+	def cancel(self):
+		self.ship.stop()
+		super(PrepareFoundationShip, self).cancel()
 
 decorators.bind_all(PrepareFoundationShip)
