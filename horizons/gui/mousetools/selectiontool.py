@@ -147,7 +147,6 @@ class SelectionTool(NavigationTool):
 		if not attacking_unit_found and isinstance(self.session.cursor, AttackingTool):
 			self.session.cursor = SelectionTool(self.session)
 			horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
-			print 'selection tool selected'
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():

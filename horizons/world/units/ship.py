@@ -342,6 +342,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
 		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
+		if self in self.session.selected_instances:
+			self.session.selected_instances.remove(self)
 		# this is necessary to make deselect idempotent
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)

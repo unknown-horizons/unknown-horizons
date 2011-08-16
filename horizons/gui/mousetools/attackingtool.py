@@ -35,7 +35,6 @@ class AttackingTool(SelectionTool):
 	"""
 	def __init__(self, session):
 		super(AttackingTool, self).__init__(session)
-		print 'attacking tool selected'
 
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.RIGHT):

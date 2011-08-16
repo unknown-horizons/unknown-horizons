@@ -50,7 +50,6 @@ class WeaponHolder(object):
 	def remove(self):
 		self.remove_storage_modified_listener(self.update_range)
 		self.stop_attack()
-		print self.worldid, 'just died'
 		for weapon in self._weapon_storage:
 			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
 			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
@@ -242,9 +241,6 @@ class WeaponHolder(object):
 		if self._target is None:
 			return
 
-		if self._target.has_component('health'):
-			print self._target,'has health:', self._target.get_component('health').health
-
 		if self.attack_in_range():
 			dest = self._target.position.center()
 			if self._target.movable and self._target.is_moving():
@@ -373,7 +369,6 @@ class WeaponHolder(object):
 
 		if self._fired_weapons_number != 0:
 			self.act_attack(dest)
-			print 'acted attack ftw'
 
 	def act_attack(self, dest):
 		"""
@@ -484,9 +479,6 @@ class MovingWeaponHolder(WeaponHolder):
 		"""
 		if self._target is None:
 			return
-
-		if self._target.has_component('health'):
-			print self._target,'has health:', self._target.get_component('health').health
 
 		if not self.attack_in_range():
 			destination = Annulus(self._target.position.center(), self._min_range, self._max_range)

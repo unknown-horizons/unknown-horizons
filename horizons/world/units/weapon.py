@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 from horizons.util import Point, Circle, Callback
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
@@ -41,6 +43,8 @@ class Weapon(object):
 
 		attack_ready callbacks are executed when the attack is made ready
 	"""
+	log = logging.getLogger("world.units.weapon")
+
 	def __init__(self, session, id):
 		"""
 		@param session: game session
@@ -88,9 +92,8 @@ class Weapon(object):
 		units = session.world.get_health_instances(position, attack_radius)
 
 		for unit in units:
-			print 'dealing damage to unit:', unit
-			if unit.has_component('health'):
-				unit.get_component('health').deal_damage(weapon_id, damage)
+			cls.log.debug("dealing damage to %s", unit)
+			unit.get_component('health').deal_damage(weapon_id, damage)
 
 	def make_attack_ready(self):
 		self.attack_ready = True
@@ -125,7 +128,7 @@ class Weapon(object):
 				Callback(Bullet, self.bullet_image, position, destination, impact_ticks - bullet_delay, self.session),
 				self,
 				run_in = bullet_delay)
-		print 'fired', self
+		self.log.debug("fired %s", self)
 
 		self.attack_ready = False
 		self.on_weapon_fired()
