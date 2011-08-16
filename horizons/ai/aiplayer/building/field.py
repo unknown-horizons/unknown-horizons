@@ -90,7 +90,6 @@ class AbstractField(AbstractBuilding):
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		production_builder.unused_fields[purpose].popleft()
 		production_builder.register_change(coords[0], coords[1], purpose, None)
-		settlement_manager.num_fields[purpose] += 1
 		return (BUILD_RESULT.OK, building)
 
 	@classmethod

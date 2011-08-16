@@ -24,7 +24,6 @@ import logging
 
 from collections import deque
 
-from building import AbstractBuilding
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 from villagebuilder import VillageBuilder
 from productionbuilder import ProductionBuilder
@@ -72,8 +71,6 @@ class SettlementManager(WorldObject):
 		self.production_builder = ProductionBuilder(self)
 		self.village_builder.display()
 		self.production_builder.display()
-
-		self.num_fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
 
 		if not self.feeder_island:
 			self.set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, \
@@ -167,8 +164,6 @@ class SettlementManager(WorldObject):
 		self.production_builder = ProductionBuilder.load(db, self)
 		self.village_builder.display()
 		self.production_builder.display()
-
-		self.num_fields = self.production_builder.count_fields()
 
 		# the add_building events happen before the settlement manager is loaded so they have to be repeated here
 		for building in self.settlement.buildings:
@@ -271,30 +266,6 @@ class SettlementManager(WorldObject):
 	def count_buildings(self, building_id):
 		return len(self.settlement.get_buildings_by_id(building_id))
 
-	def manage_production(self):
-		"""Pauses and resumes production buildings when they have full inventories."""
-		for building in self.production_builder.production_buildings:
-			if not AbstractBuilding.buildings[building.id].producer_building:
-				continue
-			for production in building._get_productions():
-				all_full = True
-
-				# inventory full of the produced resources?
-				to_check = production._prod_line.production if building.id != BUILDINGS.CLAY_PIT_CLASS else production.get_produced_res()
-				for resource_id in to_check:
-					if production.inventory.get_free_space_for(resource_id) > 0:
-						all_full = False
-						break
-
-				if all_full:
-					if not production.is_paused():
-						ToggleActive(building, production).execute(self.land_manager.session)
-						self.log.info('%s paused a production at %s/%d', self, building.name, building.worldid)
-				else:
-					if production.is_paused():
-						ToggleActive(building, production).execute(self.land_manager.session)
-						self.log.info('%s resumed a production at %s/%d', self, building.name, building.worldid)
-
 	def manual_upgrade(self, level, limit):
 		"""Enables upgrading residence buildings on the specified level until at least limit of them are upgrading."""
 		num_upgrading = 0
@@ -371,7 +342,7 @@ class SettlementManager(WorldObject):
 		#print 'TRADE STORAGE', self.settlement.name, self.resource_manager.trade_storage
 		#print 'RES MANAGER', self.resource_manager
 		#print self.trade_manager
-		self.manage_production()
+		self.production_builder.manage_production()
 		#self.trade_manager.refresh()
 		self.resource_manager.refresh()
 
@@ -392,7 +363,7 @@ class SettlementManager(WorldObject):
 			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
 		#print 'TRADE STORAGE', self.settlement.name, self.resource_manager.trade_storage
 		#print self.trade_manager
-		self.manage_production()
+		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
 		self.need_materials = False

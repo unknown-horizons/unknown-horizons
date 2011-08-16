@@ -32,6 +32,7 @@ from building import AbstractBuilding
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
 from horizons.command.building import Tear
+from horizons.command.production import ToggleActive
 from horizons.constants import AI, BUILDINGS, RES, PRODUCTION
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, Point, Rect
@@ -82,33 +83,8 @@ class ProductionBuilder(AreaBuilder):
 		db_result = db("SELECT x, y, purpose FROM ai_production_builder_plan WHERE production_builder = ?", worldid)
 		for x, y, purpose in db_result:
 			self.plan[(x, y)] = (purpose, None)
-			object = self.island.ground_map[(x, y)].object
-
-			if purpose == BUILDING_PURPOSE.FISHER and object.id == BUILDINGS.FISHERMAN_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.LUMBERJACK and object.id == BUILDINGS.LUMBERJACK_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.FARM and object.id == BUILDINGS.FARM_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.CLAY_PIT and object.id == BUILDINGS.CLAY_PIT_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.BRICKYARD and object.id == BUILDINGS.BRICKYARD_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.WEAVER and object.id == BUILDINGS.WEAVER_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.DISTILLERY and object.id == BUILDINGS.DISTILLERY_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.IRON_MINE and object.id == BUILDINGS.IRON_MINE_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.SMELTERY and object.id == BUILDINGS.SMELTERY_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.TOOLMAKER and object.id == BUILDINGS.TOOLMAKER_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.CHARCOAL_BURNER and object.id == BUILDINGS.CHARCOAL_BURNER_CLASS:
-				self.production_buildings.append(object)
-			elif purpose == BUILDING_PURPOSE.ROAD:
+			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
-
 		self.refresh_unused_fields()
 
 	def build_boat_builder(self):
@@ -457,17 +433,6 @@ class ProductionBuilder(AreaBuilder):
 		self.log.info('%s collector area: %d of %d useable', self, available_squares, total_squares)
 		return available_squares < min(self.personality.max_interesting_collector_area, total_squares - self.personality.max_collector_area_unreachable)
 
-	def count_fields(self):
-		fields = {BUILDING_PURPOSE.POTATO_FIELD: 0, BUILDING_PURPOSE.PASTURE: 0, BUILDING_PURPOSE.SUGARCANE_FIELD: 0}
-		for building in self.production_buildings:
-			if building.id == BUILDINGS.POTATO_FIELD_CLASS:
-				fields[BUILDING_PURPOSE.POTATO_FIELD] += 1
-			elif building.id == BUILDINGS.PASTURE_CLASS:
-				fields[BUILDING_PURPOSE.PASTURE] += 1
-			elif building.id == BUILDINGS.SUGARCANE_FIELD_CLASS:
-				fields[BUILDING_PURPOSE.SUGARCANE_FIELD] += 1
-		return fields
-
 	def refresh_unused_fields(self):
 		self.unused_fields = self._make_empty_unused_fields()
 		for coords, (purpose, _) in sorted(self.plan.iteritems()):
@@ -660,9 +625,17 @@ class ProductionBuilder(AreaBuilder):
 			if coords not in self.plan:
 				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
 
+	collector_building_classes = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]
+	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]
+	production_building_classes = set([BUILDINGS.FISHERMAN_CLASS, BUILDINGS.LUMBERJACK_CLASS, BUILDINGS.FARM_CLASS, BUILDINGS.CLAY_PIT_CLASS,
+		BUILDINGS.BRICKYARD_CLASS, BUILDINGS.WEAVER_CLASS, BUILDINGS.DISTILLERY_CLASS, BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SMELTERY_CLASS,
+		BUILDINGS.TOOLMAKER_CLASS, BUILDINGS.CHARCOAL_BURNER_CLASS])
+
 	def add_building(self, building):
-		if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
+		if building.id in self.collector_building_classes:
 			self.collector_buildings.append(building)
+		elif building.id in self.production_building_classes:
+			self.production_buildings.append(building)
 
 		super(ProductionBuilder, self).add_building(building)
 
@@ -678,8 +651,6 @@ class ProductionBuilder(AreaBuilder):
 		for coords in building.position.get_radius_coordinates(building.radius):
 			if coords not in used_trees and coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
 				self.register_change(coords[0], coords[1], BUILDING_PURPOSE.NONE, None)
-
-	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]
 
 	def _handle_farm_removal(self, building):
 		""" release the unused fields around the farm """
@@ -735,14 +706,39 @@ class ProductionBuilder(AreaBuilder):
 			for x, y in building.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
 
-			if building.id in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]:
+			if building.id in self.collector_building_classes:
 				self.collector_buildings.remove(building)
-			elif building.id == BUILDINGS.LUMBERJACK_CLASS:
+			elif building.id in self.production_building_classes:
+				self.production_buildings.remove(building)
+
+			if building.id == BUILDINGS.LUMBERJACK_CLASS:
 				self._handle_lumberjack_removal(building)
 			elif building.id == BUILDINGS.FARM_CLASS:
 				self._handle_farm_removal(building)
 
 			super(ProductionBuilder, self).remove_building(building)
+
+	def manage_production(self):
+		"""Pauses and resumes production buildings when they have full inventories."""
+		for building in self.production_buildings:
+			for production in building._get_productions():
+				all_full = True
+
+				# inventory full of the produced resources?
+				to_check = production._prod_line.production if building.id != BUILDINGS.CLAY_PIT_CLASS else production.get_produced_res()
+				for resource_id in to_check:
+					if production.inventory.get_free_space_for(resource_id) > 0:
+						all_full = False
+						break
+
+				if all_full:
+					if not production.is_paused():
+						ToggleActive(building, production).execute(self.land_manager.session)
+						self.log.info('%s paused a production at %s/%d', self, building.name, building.worldid)
+				else:
+					if production.is_paused():
+						ToggleActive(building, production).execute(self.land_manager.session)
+						self.log.info('%s resumed a production at %s/%d', self, building.name, building.worldid)
 
 	def __str__(self):
 		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
