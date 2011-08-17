@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python2
+
 # ###################################################
 # Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -24,7 +25,6 @@ import sys
 import os
 import glob
 
-os.chdir("../../")
 sys.path.append(".")
 
 import gettext
@@ -34,7 +34,7 @@ try:
 	import run_uh
 except ImportError, e:
 	print e.message
-	print "Please run from", os.path.join("<uh>", "development", "atlas"), "directory"
+	print 'Please run from uh root dir'
 	sys.exit(1)
 
 
@@ -59,9 +59,13 @@ class AtlasEntry(object):
 		self.file = ""
 		
 # We add info of every atlases to .sql file
-f = open(os.path.join("development", "atlas", "atlas.sql"), "w+")
-print >> f, "CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);"
-
+try:
+	f = open(os.path.join("development", "atlas", "atlas.sql"), "w+")
+	print >> f, "CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);"
+except IOError, e:
+	print e.message
+	print 'Please make sure you have', os.path.join("development", "atlas"), "directory populated with atlas files."
+	sys.exit(1)
 atlases = {}
 mapping = {}
 
@@ -153,9 +157,9 @@ if not_found > 0:
 	print "Total not found images: ", not_found
 	
 import shutil
-print "Copying atlas.sql..."
+print "Copying atlas.sql to", os.path.join("content", "atlas.sql")
 shutil.copyfile(os.path.join("development","atlas", "atlas.sql"), os.path.join("content", "atlas.sql"))
-print "Copying actionsets.json.."
+print "Copying actionsets.json to", os.path.join("content", "actionsets.json")
 shutil.copyfile(os.path.join("development","atlas", "actionsets.json"), os.path.join("content", "actionsets.json"))
 
 atlas_path = os.path.join("content", "gfx", "atlas")
@@ -163,6 +167,7 @@ if os.path.exists(atlas_path) == False:
 	os.mkdir(atlas_path)
 
 for image in glob.glob(os.path.join("development", "atlas", "*.png")):
-	print "Copying", image
-	shutil.copyfile(image, os.path.join(atlas_path, os.path.basename(image)))
-print "Done"
+	dest  = os.path.join(atlas_path, os.path.basename(image))
+	print "Copying", image, "to", dest
+	shutil.copyfile(image, dest)
+print "All done"
