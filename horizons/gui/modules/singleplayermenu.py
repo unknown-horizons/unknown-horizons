@@ -52,11 +52,13 @@ class SingleplayerMenu(object):
 		self.current.findChild(name="right_side_box").addChild(right_side)
 		if show == 'random':
 			game_settings = self.widgets['game_settings']
-			self.current.findChild(name="game_settings_box").addChild(game_settings)
+			if self.current.findChild(name="game_settings") is None:
+				self.current.findChild(name="game_settings_box").addChild(game_settings)
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
 			game_settings = self.widgets['game_settings']
-			self.current.findChild(name="game_settings_box").addChild(game_settings)
+			if self.current.findChild(name="game_settings") is None:
+				self.current.findChild(name="game_settings_box").addChild(game_settings)
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
