@@ -96,7 +96,7 @@ INSERT INTO "building" VALUES(2,3,6,'Charcoal Burning','CharcoalBurning','produc
 INSERT INTO "building" VALUES(2,2,6,'Tavern','SettlerServiceProvider','production',1000,2,2,32,'tavern-1',2,'Provides get-together.');
 INSERT INTO "building" VALUES(1,1,0,'Fish Deposit','Fish','nature',10,0,0,33,NULL,0,NULL);
 INSERT INTO "building" VALUES(5,5,0,'Mountain','ResourceDeposit','nature',10,0,0,34,NULL,0,NULL);
-INSERT INTO "building" VALUES(3,3,3,'Salt Ponds','SaltPond','production',1000,1,1,35,'saltponds-1',2,'Evaporates salt. Built on sea coast'.);
+INSERT INTO "building" VALUES(3,3,3,'Salt Ponds','SaltPond','production',1000,1,1,35,'saltponds-1',2,'Evaporates salt. Built on sea coast.');
 INSERT INTO "building" VALUES(3,3,0,'Tobacco Field','Field','nature',10,0,0,36,'tobaccofield-1',2,'Produces tobacco. Needs a farm.');
 INSERT INTO "building" VALUES(2,2,8,'Tobacconist','Refiner','production',1000,2,2,37,'tobacconist-1',2,'Produces tobaccos out of tobacco.');
 INSERT INTO "building" VALUES(3,3,0,'Cattle Run','Field','nature',10,0,0,38,'cattlerun-1',2,'Raises cattle. Needs a farm.');
@@ -105,7 +105,7 @@ INSERT INTO "building" VALUES(3,3,0,'Herbary','Field','nature',10,0,0,40,'herbar
 INSERT INTO "building" VALUES(2,2,8,'Butchery','Refiner','production',1000,2,2,41,'butchery-1',2,'Needs pigs or cattle. Produces food.');
 INSERT INTO "building" VALUES(2,2,10,'Doctor','Doctor','prevention',1000,2,3,42,'doctor-1',2,'Treats diseases. Consumes herbs.');
 INSERT INTO "building" VALUES(1,1,0,'Gravel Path','Path','path',10,0,0,43,NULL,0,NULL);
-INSERT INTO "building" VALUES(2,2,6,'Wooden Tower','Tower','war',1000,1,1,44,'tower-1',1,'Defends your settlement.'); 
+INSERT INTO "building" VALUES(2,2,6,'Wooden Tower','Tower','war',1000,1,1,44,'tower-1',1,'Defends your settlement.');
 CREATE TABLE `unit` (`name` TEXT NOT NULL ,`class_package` TEXT NOT NULL ,`class_type` TEXT NOT NULL , `base_velocity` FLOAT DEFAULT '12.0', "radius" INTEGER DEFAULT 5, "id" INTEGER AUTO_INCREMENT);
 INSERT INTO "unit" VALUES('Ship','ship','Ship',5.0,5,1000001);
 INSERT INTO "unit" VALUES('BuildingCollector','collectors','BuildingCollector',12.0,5,1000002);
