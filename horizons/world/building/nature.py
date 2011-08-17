@@ -48,7 +48,7 @@ class AnimalField(CollectingBuilding, Field):
 	walkable = False
 	def create_collector(self):
 		self.animals = []
-		for (animal, number) in self.session.db("SELECT unit_id, count FROM balance.animals \
+		for (animal, number) in self.session.db("SELECT unit_id, count FROM animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
 				Entities.units[animal](self, session=self.session)

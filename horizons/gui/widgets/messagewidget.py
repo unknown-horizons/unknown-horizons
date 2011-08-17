@@ -67,8 +67,8 @@ class MessageWidget(LivingObject):
 		# play a message sound, if one is specified in the database
 		sound = None
 		if play_sound:
-			sound = horizons.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
-			ON data.speech.group_id=data.message.speech_group_id WHERE data.message.id_string=? ORDER BY random() LIMIT 1",id)
+			sound = horizons.main.db("SELECT speech.file FROM speech LEFT JOIN message \
+			ON speech.group_id=message.speech_group_id WHERE message.id_string=? ORDER BY random() LIMIT 1",id)
 			sound = sound[0][0] if len(sound) > 0 else None
 		self._add_message(Message(x, y, id, self.current_tick, message_dict=message_dict), sound)
 
@@ -189,13 +189,13 @@ class Message(object):
 		self.id = id
 		self.read = read
 		self.created = created
-		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for from data.message WHERE id_string=?', id).rows[0][0])
-		icon = icon_id if icon_id else horizons.main.db('SELECT icon FROM data.message where id_string = ?', id)[0][0]
-		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image from data.message_icon WHERE color=? AND icon_id = ?', 1, icon)[0]
+		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for FROM message WHERE id_string=?', id).rows[0][0])
+		icon = icon_id if icon_id else horizons.main.db('SELECT icon FROM message where id_string = ?', id)[0][0]
+		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image FROM message_icon WHERE color=? AND icon_id = ?', 1, icon)[0]
 		if message is not None:
 			assert isinstance(message, str) or isinstance(message, unicode)
 			self.message = message
 		else:
-			text = horizons.main.db('SELECT text from data.message WHERE id_string=?', id)[0][0]
+			text = horizons.main.db('SELECT text FROM message WHERE id_string=?', id)[0][0]
 			self.message = Template(_(text)).safe_substitute( \
 			  message_dict if message_dict is not None else {})

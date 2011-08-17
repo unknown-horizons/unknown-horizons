@@ -24,3 +24,4 @@ from cursortool import CursorTool
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from tearingtool import TearingTool
+from attackingtool import AttackingTool

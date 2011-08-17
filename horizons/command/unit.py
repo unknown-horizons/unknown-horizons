@@ -41,6 +41,14 @@ class Act(GenericUnitCommand):
 	def __init__(self, unit, x, y):
 		super(Act, self).__init__(unit, "go", x, y)
 
+class Attack(GenericUnitCommand):
+	"""Command class that triggers attack
+	@param unit: Instance of Unit
+	@param target: Instance of Target
+	"""
+	def __init__(self, unit, target):
+		super(Attack, self).__init__(unit, "user_attack", target)
+
 class CreateUnit(Command):
 	"""Command class that creates a unit.
 	"""

@@ -85,7 +85,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.WEAVER] = BUILDINGS.WEAVER_CLASS
 		cls.purpose_to_building[cls.SUGARCANE_FIELD] = BUILDINGS.SUGARCANE_FIELD_CLASS
 		cls.purpose_to_building[cls.DISTILLERY] = BUILDINGS.DISTILLERY_CLASS
-		cls.purpose_to_building[cls.MAIN_SQUARE] = BUILDINGS.MARKET_PLACE_CLASS
+		cls.purpose_to_building[cls.MAIN_SQUARE] = BUILDINGS.MAIN_SQUARE_CLASS
 		cls.purpose_to_building[cls.RESIDENCE] = BUILDINGS.RESIDENTIAL_CLASS
 		cls.purpose_to_building[cls.PAVILION] = BUILDINGS.PAVILION_CLASS
 		cls.purpose_to_building[cls.VILLAGE_SCHOOL] = BUILDINGS.VILLAGE_SCHOOL_CLASS

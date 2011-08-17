@@ -274,6 +274,7 @@ class Fife(ApplicationBase):
 		self.cursor = self.engine.getCursor()
 		self.default_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor.png')
 		self.tearing_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_tear.png')
+		self.attacking_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_attack.png')
 		self.cursor.set(fife.CURSOR_IMAGE, self.default_cursor_image)
 
 		#init pychan
@@ -289,6 +290,7 @@ class Fife(ApplicationBase):
 		from gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
 		from gui.widgets.icongroup import TabBG
 		from gui.widgets.stepslider import StepSlider
+		from gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 
 		pychan.widgets.registerWidget(CancelButton)
 		pychan.widgets.registerWidget(DeleteButton)
@@ -304,6 +306,9 @@ class Fife(ApplicationBase):
 		pychan.widgets.registerWidget(TooltipLabel)
 		pychan.widgets.registerWidget(TooltipProgressBar)
 		pychan.widgets.registerWidget(StepSlider)
+		pychan.widgets.registerWidget(HealthWidget)
+		pychan.widgets.registerWidget(StanceWidget)
+		pychan.widgets.registerWidget(WeaponStorageWidget)
 
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
@@ -506,6 +511,7 @@ class Fife(ApplicationBase):
 		self.__setup_screen_resolutions()
 		self.engine.initializePumping()
 		self.loop()
+		self.__kill_engine()
 		self.engine.finalizePumping()
 
 	def loop(self):
@@ -522,8 +528,6 @@ class Fife(ApplicationBase):
 			if self._doBreak:
 				self._doBreak = False
 				return self._doReturn
-
-		self.__kill_engine()
 
 	def __kill_engine(self):
 		"""Called when the engine is quit"""

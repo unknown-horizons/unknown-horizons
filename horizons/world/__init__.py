@@ -41,6 +41,9 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.util import decorators, BuildingIndexer
 from horizons.world.buildingowner import BuildingOwner
+from horizons.world.diplomacy import Diplomacy
+from horizons.world.units.bullet import Bullet
+from horizons.world.units.weapon import Weapon
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -85,9 +88,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.ships = None
 		self.ship_map = None
 		self.fish_indexer = None
+		self.ground_units = None
 		self.trader = None
 		self.pirate = None
 		self.islands = None
+		self.diplomacy = None
+		self.bullets = None
 		super(World, self).end()
 
 	@decorators.make_constants()
@@ -217,10 +223,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
+		self.ground_unit_map = {}
 
 		# create shiplist, which is currently used for saving ships
 		# and having at least one reference to them
 		self.ships = []
+		self.ground_units = []
+
+		# create bullets list, used for saving bullets in ongoing attacks
+		self.bullets = []
 
 		if self.session.is_game_loaded():
 			# for now, we have one trader in every game, so this is safe:
@@ -251,6 +262,38 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			for player in self.players:
 				if not isinstance(player, HumanPlayer):
 					player.finish_loading(savegame_db)
+
+		# load bullets
+		if self.session.is_game_loaded():
+			for (worldid, sx, sy, dx, dy, speed, img) in savegame_db("SELECT worldid, startx, starty, destx, desty, speed, image FROM bullet"):
+				Bullet(img, Point(sx, sy), Point(dx, dy), speed, self.session, False, worldid)
+
+		# load ongoing attacks
+		if self.session.is_game_loaded():
+			Weapon.load_attacks(self.session, savegame_db)
+
+		# load diplomacy
+		self.diplomacy = Diplomacy()
+		if self.session.is_game_loaded():
+			self.diplomacy.load(self, savegame_db)
+
+		# add diplomacy notification listeners
+		def notify_change(caller, change_type, a, b):
+			player1 = a.name
+			player2 = b.name
+
+			#check if status really changed, if so update status string
+			if change_type == 'friend':
+				status = 'friends'
+			elif change_type == 'enemy':
+				status = 'enemies'
+			else:
+				status = 'neutral'
+
+			self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'DIPLOMACY_STATUS_CHANGED',
+				{'player1' : player1, 'player2' : player2, 'status' : status})
+
+		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
 		self.inited = True
 		"""TUTORIAL:
@@ -391,6 +434,21 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are None. No players loaded?"
 		return ret_coords
+
+	@decorators.make_constants()
+	def get_random_possible_ground_unit_position(self):
+		"""Returns a position in water, that is not at the border of the world"""
+		offset = 2
+		while True:
+			x = self.session.random.randint(self.min_x + offset, self.max_x - offset)
+			y = self.session.random.randint(self.min_y + offset, self.max_y - offset)
+
+			if (x, y) in self.ground_unit_map:
+				continue
+
+			for island in self.islands:
+				if (x, y) in island.path_nodes.nodes:
+					return Point(x, y)
 
 	@decorators.make_constants()
 	def get_random_possible_ship_position(self):
@@ -581,6 +639,45 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			return self.ships
 
+	@decorators.make_constants()
+	def get_ground_units(self, position=None, radius=None):
+		"""@see get_ships"""
+		if position is not None and radius is not None:
+			circle = Circle(position, radius)
+			units = []
+			for unit in self.ground_units:
+				if circle.contains(unit.position):
+					units.append(unit)
+			return units
+		else:
+			return self.ground_units
+
+	@decorators.make_constants()
+	def get_buildings(self, position=None, radius=None):
+		"""@see get_ships"""
+		buildings = []
+		if position is not None and radius is not None:
+			circle = Circle(position, radius)
+			for island in self.islands:
+				for building in island.buildings:
+					if circle.contains(building.position.center()):
+						buildings.append(building)
+		else:
+			for island in self.islands:
+				for building in island.buildings:
+					buildings.append(building)
+		return buildings
+
+	@decorators.make_constants()
+	def get_health_instances(self, position=None, radius=None):
+		"""Returns all instances that have health"""
+		instances = []
+		for instance in self.get_ships(position, radius)+\
+				self.get_ground_units(position, radius):
+			if instance.has_component('health'):
+				instances.append(instance)
+		return instances
+
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
@@ -597,6 +694,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.pirate.save(db)
 		for ship in self.ships:
 			ship.save(db)
+		for ground_unit in self.ground_units:
+			ground_unit.save(db)
+		for bullet in self.bullets:
+			bullet.save(db)
+		self.diplomacy.save(db)
+		Weapon.save_attacks(db)
 
 	def get_checkup_hash(self):
 		dict = {
@@ -621,6 +724,41 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		# make sure there's a trader ship for 2 settlements
 		if len(self.settlements) > self.trader.get_ship_count() * 2:
 			self.trader.create_ship()
+
+	@decorators.make_constants()
+	def toggle_translucency(self):
+		"""Make certain building types translucent"""
+		if not hasattr(self, "_translucent_buildings"):
+			self._translucent_buildings = set()
+
+		if not self._translucent_buildings: # no translucent buildings saved => enable
+			building_types = self.session.db.get_translucent_buildings()
+			add = self._translucent_buildings.add
+			from weakref import ref as create_weakref
+
+			def get_all_buildings(world):
+				for island in world.islands:
+					for b in island.buildings:
+						yield b
+					for s in island.settlements:
+						for b in s.buildings:
+							yield b
+
+			for b in get_all_buildings(self):
+				if b.id in building_types:
+					fife_instance = b._instance
+					add( create_weakref(fife_instance) )
+					fife_instance.keep_translucency = True
+					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+
+		else: # undo translucency
+			for inst in self._translucent_buildings:
+				try:
+					inst().get2dGfxVisual().setTransparency( 0 )
+					inst().keep_translucency = False
+				except AttributeError:
+					pass # obj has been deleted, inst() returned None
+			self._translucent_buildings.clear()
 
 
 def load_building(session, db, typeid, worldid):

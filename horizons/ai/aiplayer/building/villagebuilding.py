@@ -111,7 +111,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.MARKET_PLACE_CLASS] = cls
+		cls.available_buildings[BUILDINGS.MAIN_SQUARE_CLASS] = cls
 		cls.available_buildings[BUILDINGS.PAVILION_CLASS] = cls
 		cls.available_buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS] = cls
 		cls.available_buildings[BUILDINGS.TAVERN_CLASS] = cls

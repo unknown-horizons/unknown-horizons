@@ -24,8 +24,9 @@ from fife import fife
 import horizons.main
 
 from cursortool import CursorTool
-from horizons.util import Point
+from horizons.util import Point, WorldObject
 from horizons.gui.widgets.tooltip import TooltipIcon
+from horizons.constants import LAYERS
 
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
@@ -140,3 +141,25 @@ class NavigationTool(CursorTool):
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_APP_ICONIFIED or command.getCommandType() == fife.CMD_INPUT_FOCUS_LOST:
 			self.session.view.autoscroll(0, 0) #stop autoscroll
+
+	def get_hover_instances(self, evt):
+		"""
+		Utility method, returns the instances under the cursor
+		"""
+		instances = self.session.view.cam.getMatchingInstances(\
+			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+
+		layer_instances = [i.this for i in self.session.view.layers[LAYERS.OBJECTS].getInstances()]
+		instances = [i for i in instances if i.this in layer_instances]
+
+		hover_instances = []
+		for i in instances:
+			id = i.getId()
+			# Check id, can be '' if instance is created and clicked on before
+			# actual game representation class is created (network play)
+			if id == '':
+				continue
+			instance = WorldObject.get_object_by_id(int(id))
+			hover_instances.append(instance)
+		return hover_instances
+

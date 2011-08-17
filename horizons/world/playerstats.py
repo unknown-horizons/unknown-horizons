@@ -65,7 +65,7 @@ class PlayerStats(WorldObject):
 								settler_resources_provided[resource_id] += happiness / production.get_production_time()
 
 				# resources held in buildings
-				if hasattr(building, 'inventory') and building.id not in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS, BUILDINGS.MARKET_PLACE_CLASS]:
+				if hasattr(building, 'inventory') and building.id not in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS, BUILDINGS.MAIN_SQUARE_CLASS]:
 					for resource_id, amount in building.inventory:
 						total_resources[resource_id] += amount
 
@@ -144,7 +144,12 @@ class PlayerStats(WorldObject):
 	def _calculate_resource_score(self, available_resources, total_resources):
 		total = 0
 		for resource_id, amount in available_resources.iteritems():
-			total += amount * self.db.get_res_value(resource_id)
+			if resource_id in self.overridden_resource_values: # natural resources have 0 value by default
+				total += amount * self.overridden_resource_values[resource_id]
+			else:
+				value = self.db.get_res_value(resource_id)
+				if value is not None: # happiness and some coverage resources have no value
+					total += amount * value
 		for resource_id, amount in total_resources.iteritems():
 			extra_amount = (amount - available_resources[resource_id])
 			if resource_id in self.overridden_resource_values: # natural resources have 0 value by default

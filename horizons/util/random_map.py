@@ -406,9 +406,11 @@ def create_random_island(id_string):
 	return map_db
 
 
-def generate_map(seed = None) :
+def generate_map(seed = None, island_size=2, map_size=2):
 	"""Generates a whole map.
 	@param seed: argument passed to random.seed
+	@param island_size: island_size of [0..4]
+	@param map_size: island_size of [0..4]
 	@return filename to the sqlite db containing the new map"""
 	rand = random.Random(seed)
 
@@ -417,12 +419,18 @@ def generate_map(seed = None) :
 
 	db = DbReader(filename)
 
+
+	island_sizes = [ (20+i, 28+i) for i in xrange(0, 25, 5) ]
+	map_sizes = [ (68+i) for i in xrange(0, 150, 30) ]
+
+	#method = min(2, rand.randint(0, 9)) # choose map creation method with 80% chance for method 2
+	method = 2 # only 2 supports the parameters
+
+
+	"""
 	island_space = (35, 35)
 	island_min_size = (25, 25)
 	island_max_size = (28, 28)
-
-	method = min(2, rand.randint(0, 9)) # choose map creation method with 80% chance for method 2
-
 	if method == 0:
 		# generate up to 9 islands
 		number_of_islands = 0
@@ -477,12 +485,17 @@ def generate_map(seed = None) :
 		island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
 
 		db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", x, y, island_string)
-	elif method == 2:
-		# tries to fill at most land_coefficient * 100% of the map with land 
-		map_width = 140
-		map_height = 140
-		min_island_size = 20
-		max_island_size = 65
+	"""
+	if method == 2:
+		# tries to fill at most land_coefficient * 100% of the map with land
+		map_width = map_height = map_sizes[map_size]
+
+		# old default values:
+		#min_island_size = 20
+		#max_island_size = 65
+
+		min_island_size, max_island_size = island_sizes[island_size]
+
 		max_islands = 20
 		min_space = 2
 		land_coefficient = max(0.3, min(0.6, rand.gauss(0.45, 0.07)))
@@ -505,7 +518,7 @@ def generate_map(seed = None) :
 				# try to place the island 7 times
 				x = rand.randint(0, map_width - width)
 				y = rand.randint(0, map_height - height)
-				
+
 				rect = Rect.init_from_topleft_and_size(x, y, width, height)
 				blocked = False
 				for existing_island in islands:

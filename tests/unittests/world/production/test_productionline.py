@@ -34,19 +34,19 @@ class TestBase(TestCase):
 		@param resources: mapping of {resource: amount}
 		@param units: mapping of {unit: amount}
 		"""
-		self.db('INSERT INTO data.production_line (id, time, changes_animation) \
+		self.db('INSERT INTO production_line (id, time, changes_animation) \
 				 VALUES (?, ?, ?)', ident, time, int(changes_animation))
 
 		if resources:
 			self.db.execute_many(
-				'INSERT INTO balance.production (production_line, resource, amount) \
+				'INSERT INTO production (production_line, resource, amount) \
 				 VALUES (?, ?, ?)',
 				[(ident, res, amount) for (res, amount) in resources.items()]
 			)
 
 		if units:
 			self.db.execute_many(
-				'INSERT INTO balance.unit_production (production_line, unit, amount) \
+				'INSERT INTO unit_production (production_line, unit, amount) \
 				 VALUES (?, ?, ?)',
 				[(ident, unit, amount) for (unit, amount) in units.items()]
 			)

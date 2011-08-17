@@ -75,7 +75,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == '-':
 			self.session.speed_down()
 		elif keystr == 'p':
-			self.session.ingame_gui.toggle_ingame_pause()
+			self.session.gui.toggle_pause()
 		elif keystr == 'l':
 			self.session.ingame_gui.logbook.toggle_visibility()
 		elif keystr == 'd':
@@ -131,6 +131,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 				self.session.ingame_gui.minimap.rotate_left()
 		elif keystr == 'c':
 			self.session.ingame_gui.show_chat_dialog()
+		elif keystr == 't':
+			self.session.world.toggle_translucency()
 		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4, fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
 			num = int(keyval - fife.Key.NUM_0)
 			if evt.isControlPressed():

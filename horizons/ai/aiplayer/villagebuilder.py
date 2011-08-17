@@ -164,7 +164,7 @@ class VillageBuilder(AreaBuilder):
 					builder = self.make_builder(BUILDINGS.RESIDENTIAL_CLASS, coords[0], coords[1], False)
 					plan[coords] = (BUILDING_PURPOSE.RESIDENCE, builder)
 				elif plan[coords][0] == BUILDING_PURPOSE.MAIN_SQUARE:
-					builder = self.make_builder(BUILDINGS.MARKET_PLACE_CLASS, coords[0], coords[1], False)
+					builder = self.make_builder(BUILDINGS.MAIN_SQUARE_CLASS, coords[0], coords[1], False)
 					plan[coords] = (BUILDING_PURPOSE.MAIN_SQUARE, builder)
 			tent_lookup = self._create_tent_queue(plan)
 			for coords, (purpose, _) in plan.iteritems():
@@ -251,7 +251,7 @@ class VillageBuilder(AreaBuilder):
 
 		possible_road_positions = self._get_possible_building_positions(section_coords_set, (1, 1))
 		possible_residence_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size)
-		possible_main_square_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.MARKET_PLACE_CLASS].size)
+		possible_main_square_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.MAIN_SQUARE_CLASS].size)
 
 		for (x, y), main_square in sorted(possible_main_square_positions.iteritems()):
 			plan = dict.fromkeys(section_coords_set, (BUILDING_PURPOSE.NONE, None))
@@ -358,7 +358,7 @@ class VillageBuilder(AreaBuilder):
 
 		for coords, (purpose, _) in sorted(plan.iteritems()):
 			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
-				for coords in self._get_position(coords, BUILDINGS.MARKET_PLACE_CLASS).tuple_iter():
+				for coords in self._get_position(coords, BUILDINGS.MAIN_SQUARE_CLASS).tuple_iter():
 					distance[coords] = 0
 					queue.append(coords)
 
@@ -541,7 +541,7 @@ class VillageBuilder(AreaBuilder):
 		main_square = None
 		for coords, (purpose, _) in sorted(plan.iteritems()):
 			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
-				main_square = self._get_position(coords, BUILDINGS.MARKET_PLACE_CLASS)
+				main_square = self._get_position(coords, BUILDINGS.MAIN_SQUARE_CLASS)
 			if purpose != BUILDING_PURPOSE.RESIDENCE or coords in block:
 				continue
 			block[coords] = len(blocks)
@@ -671,7 +671,7 @@ class VillageBuilder(AreaBuilder):
 			if purpose != BUILDING_PURPOSE.MAIN_SQUARE:
 				continue
 			possible = True
-			for main_square_coords in self._get_position(coords, BUILDINGS.MARKET_PLACE_CLASS).tuple_iter():
+			for main_square_coords in self._get_position(coords, BUILDINGS.MAIN_SQUARE_CLASS).tuple_iter():
 				if main_square_coords not in self.land_manager.village:
 					possible = False
 					break

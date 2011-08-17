@@ -135,20 +135,6 @@ class AbstractPather(object):
 		self.source_in_building = hasattr(source, 'is_building') and source.is_building
 		self.destination_in_building = destination_in_building
 
-	def revert_path(self, destination_in_building):
-		"""Moves back to the source of last movement, using same path"""
-		if self.cur is None:
-			self.cur = -1 # path has been finished
-			self.source_in_building = bool(self.session.world.get_building(self.unit.position))
-		else: # unit is somewhere in the path
-			self.cur = len(self.path) - self.cur - 1
-			self.source_in_building = False
-
-		# last destination is now source
-		self.destination_in_building = destination_in_building
-
-		self.path.reverse()
-
 	def get_next_step(self):
 		"""Returns the next step in the current movement
 		@return: Point"""
@@ -157,8 +143,9 @@ class AbstractPather(object):
 
 		self.cur += 1
 		if not self.path or self.cur == len(self.path):
-			self.cur = None
 			# movement finished
+			self.cur = None
+			self.path = None
 			return None
 
 		if self._check_for_obstacles(self.path[self.cur]):
@@ -279,8 +266,7 @@ class SoldierPather(AbstractPather):
 		return island.path_nodes.nodes
 
 	def _get_blocked_coords(self):
-		# TODO: think of concept for blocking land units
-		return []
+		return self.session.world.ground_unit_map
 
 	def _check_for_obstacles(self, point):
 		# retrieve island, island of soldier may change at any time

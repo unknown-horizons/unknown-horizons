@@ -21,7 +21,6 @@
 
 __all__ = ['building', 'unit', 'sounds']
 
-import horizons.main
 from horizons.util import WorldObject
 
 class Command(object):

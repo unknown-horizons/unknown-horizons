@@ -79,7 +79,7 @@ class TradePost(object):
 		for (res, limit) in db("SELECT resource, trade_limit FROM trade_sell WHERE object = ?", worldid):
 			self.sell_list[res] = limit
 
-		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses from trade_values WHERE object = ?",
+		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses FROM trade_values WHERE object = ?",
 		   self.worldid)[0]
 
 	def buy(self, res, amount, price):

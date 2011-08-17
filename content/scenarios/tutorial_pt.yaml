@@ -23,17 +23,16 @@ events:
         \ sobre contactar a equipa, visite, www.unknown-horizons.org!\n\nE agora,\
         \ vamos iniciar o jgoo."]
     type: logbook_w
-  - arguments: ["NOVA TAREFA: ESTABELE\xC7A A SUA POVOA\xC7\xC2O NA ILHA", "Para movimentar\
-        \ o seu navio, selecione-o com um clique de bot\xE3o esquerdo e clique com\
-        \ o bot\xE3o direito do rato na posi\xE7\xE3o para onde pretende ir.\n\nUma\
-        \ vez perto da costa, o bot\xE3o com a \xE2ncora ir\xE1 ficar activo na guia\
-        \ de resumo.\n\nIsto indica que \xE9 poss\xEDvel criar uma filial na costa\
-        \ pressionando esse bot\xE3o (chamado 'Construir povoa\xE7\xE3o').\n\nUma\
-        \ pr\xE9-visualiza\xE7\xE3o do edif\xEDcio ficar\xE1 dispon\xEDvel quando\
-        \ move o cursor.\n\nPoder\xE1 construir em qualquer local em que a pr\xE9\
-        -visualiza\xE7\xE3o n\xE3o esteja sombreada de vermelho.\nClique onde deseja\
-        \ edificar a constru\xE7\xE3o.\n\nTAREFA: Construir uma filial na costa.",
-      2]
+  - arguments: ["ESTABELE\xC7A A SUA POVOA\xC7\xC2O NA ILHA", "Para movimentar o seu\
+        \ navio, selecione-o com um clique de bot\xE3o esquerdo e clique com o bot\xE3\
+        o direito do rato na posi\xE7\xE3o para onde pretende ir.\n\nUma vez perto\
+        \ da costa, o bot\xE3o com a \xE2ncora ir\xE1 ficar activo na guia de resumo.\n\
+        \nIsto indica que \xE9 poss\xEDvel criar uma filial na costa pressionando\
+        \ esse bot\xE3o (chamado 'Construir povoa\xE7\xE3o').\n\nUma pr\xE9-visualiza\xE7\
+        \xE3o do edif\xEDcio ficar\xE1 dispon\xEDvel quando move o cursor.\n\nPoder\xE1\
+        \ construir em qualquer local em que a pr\xE9-visualiza\xE7\xE3o n\xE3o esteja\
+        \ sombreada de vermelho.\nClique onde deseja edificar a constru\xE7\xE3o.\n\
+        \nTAREFA: Construir uma filial na costa.", 2]
     type: logbook
   - arguments: [tutStepDone, 6]
     type: set_var
@@ -41,12 +40,12 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: DESEMBARQUE AS MERCADORIAS', "Agora\
-        \ que construiu uma filial, necessita de transferir alguns dos seus recursos\
-        \ para o armaz\xE9m.\n\nPara efectuar esta opera\xE7\xE3o, selecione o seu\
-        \ navio e v\xE1 \xE0 guia com a caixa de madeira chamada 'Invet\xE1rio do\
-        \ Navio'.\n\nAqui tem um resumo da carga do navio e um bot\xE3o de 'Carregar/Descarregar'.\n\
-        \nEste bot\xE3o fica activo se o seu navio estiver numa dist\xE2ncia em que\
+  - arguments: [!!python/unicode 'DESEMBARQUE AS MERCADORIAS', "Agora que construiu\
+        \ uma filial, necessita de transferir alguns dos seus recursos para o armaz\xE9\
+        m.\n\nPara efectuar esta opera\xE7\xE3o, selecione o seu navio e v\xE1 \xE0\
+        \ guia com a caixa de madeira chamada 'Invet\xE1rio do Navio'.\n\nAqui tem\
+        \ um resumo da carga do navio e um bot\xE3o de 'Carregar/Descarregar'.\n\n\
+        Este bot\xE3o fica activo se o seu navio estiver numa dist\xE2ncia em que\
         \ \xE9 poss\xEDvel efectuar trocas com um parceiro comercial, como por exemplo\
         \ uma filial.\n\nClique no bot\xE3o. Se n\xE3o estiver activo, mova o seu\
         \ navio para uma posi\xE7\xE3o mais pr\xF3xima da filial e tente novamente.\n\
@@ -75,17 +74,17 @@ events:
   - arguments: [tutStepDone, 16]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: CRIE UM LENHADOR', "Com os seus novos\
-        \ materiais de constru\xE7\xE3o na sua filial, poder\xE1 come\xE7ar a construir\
-        \ alguns edif\xEDcios b\xE1sicos.\n\nIremos come\xE7ar criando um lenhador.\n\
-        \nIsto \xE9 essencial, pois nesta altura, as t\xE1buas s\xE3o os \xFAnicos\
-        \ materiais dispon\xEDveis para os marinheiros construirem as suas tendas.\n\
-        \nOs pescadores tamb\xE9m necessitam de algumas t\xE1buas para constru\xED\
-        rem os seus barcos.\n\nPara construir lenhadores; abra o menu de constru\xE7\
-        \xE3o, atrav\xE9s de um clique no icon por baixo do mapa miniatura ou pressionando\
-        \ a tecla 'B'.\n\nO menu de constru\xE7\xE3o \xE9 controlado atrav\xE9s de\
-        \ n\xEDveis.\nEst\xE1 presentemente no primeiro n\xEDvel (o n\xEDvel dos marinheiros),\
-        \ pelo que s\xF3 estar\xE3o dispon\xEDveis edif\xEDcios b\xE1sicos."]
+  - arguments: [!!python/unicode 'CRIE UM LENHADOR', "Com os seus novos materiais\
+        \ de constru\xE7\xE3o na sua filial, poder\xE1 come\xE7ar a construir alguns\
+        \ edif\xEDcios b\xE1sicos.\n\nIremos come\xE7ar criando um lenhador.\n\nIsto\
+        \ \xE9 essencial, pois nesta altura, as t\xE1buas s\xE3o os \xFAnicos materiais\
+        \ dispon\xEDveis para os marinheiros construirem as suas tendas.\n\nOs pescadores\
+        \ tamb\xE9m necessitam de algumas t\xE1buas para constru\xEDrem os seus barcos.\n\
+        \nPara construir lenhadores; abra o menu de constru\xE7\xE3o, atrav\xE9s de\
+        \ um clique no icon por baixo do mapa miniatura ou pressionando a tecla B.\n\
+        \nO menu de constru\xE7\xE3o \xE9 controlado atrav\xE9s de n\xEDveis.\nEst\xE1\
+        \ presentemente no primeiro n\xEDvel (o n\xEDvel dos marinheiros), pelo que\
+        \ s\xF3 estar\xE3o dispon\xEDveis edif\xEDcios b\xE1sicos."]
     type: logbook_w
   - arguments: ['', "Enquanto a sua civiliza\xE7\xE3o progride, ganhar\xE1 acesso\
         \ a novos edif\xEDcios mais complexos.\n\nPor enquanto, selecione o lenhador\
@@ -115,17 +114,17 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: FORNECIMENTO DE COMIDA', "Tamb\xE9\
-        m ir\xE1 necessitar de algumas unidades para produzir comida, isto porque\
-        \ a popula\xE7\xE3o em geral (e especialmente os marinheiros) andam sempre\
-        \ esfomeados.\n\nAs unidades dispon\xEDveis no primeiro n\xEDvel s\xE3o o\
-        \ ca\xE7ador e o pescador.\n\nO ca\xE7ador, surpreendemente, ca\xE7a animais\
-        \ nas florestas, portanto necessita de \xE1rvores por perto.\n\nPoder\xE1\
-        \ inclusiv\xE9 colocar os seus ca\xE7adores juntos \xE0 serra\xE7\xE3o nas\
-        \ florestas.\n\nPoder\xE1 acontecer que os animais n\xE3o se reproduzam suficientemente\
-        \ r\xE1pido ou que simplesmente sejam bons a esconderem-se dos ca\xE7adores.\n\
-        \nConclus\xE3o: os ca\xE7adores poder\xE3o n\xE3o ser muito fi\xE1veis, sobretudo\
-        \ se necessitar de uma oferta cont\xEDnua."]
+  - arguments: [!!python/unicode 'FORNECIMENTO DE COMIDA', "Tamb\xE9m ir\xE1 necessitar\
+        \ de algumas unidades para produzir comida, isto porque a popula\xE7\xE3o\
+        \ em geral (e especialmente os marinheiros) andam sempre esfomeados.\n\nAs\
+        \ unidades dispon\xEDveis no primeiro n\xEDvel s\xE3o o ca\xE7ador e o pescador.\n\
+        \nO ca\xE7ador, surpreendemente, ca\xE7a animais nas florestas, portanto necessita\
+        \ de \xE1rvores por perto.\n\nPoder\xE1 inclusiv\xE9 colocar os seus ca\xE7\
+        adores juntos \xE0 serra\xE7\xE3o nas florestas.\n\nPoder\xE1 acontecer que\
+        \ os animais n\xE3o se reproduzam suficientemente r\xE1pido ou que simplesmente\
+        \ sejam bons a esconderem-se dos ca\xE7adores.\n\nConclus\xE3o: os ca\xE7\
+        adores poder\xE3o n\xE3o ser muito fi\xE1veis, sobretudo se necessitar de\
+        \ uma oferta cont\xEDnua."]
     type: logbook_w
   - arguments: ['', "O pescador necessita de um edificio na costa (como a filial)\
         \ e uma escola de pesca ao seu alcance.\n\nEle ir\xE1 construir uma pequena\
@@ -150,17 +149,17 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: ["NOVA TAREFA: PRA\xC7A PRINCIPAL", "Os seus residentes necessitam\
-        \ de uma Pra\xE7a Principal onde poder\xE3o adquirir as suas mercadorias.\n\
-        \nIsto significa que eles ir\xE3o necessitar de um caminho da sua casa para\
-        \ a Pra\xE7a Principal.\n\nTodas as mercadorias na sua prefeitoria est\xE3\
-        o dispon\xEDveis neste 'mercado', portanto os seus residentes n\xE3o necessitam\
-        \ de visitar os pescadores, ou at\xE9 mesmo a prefeitoria.\n\nDever\xE1 considerar\
-        \ fundar a sua \xE0rea habitacional numa \xE0rea onde poder\xE1 expandi-la\
-        \ facilmente e construir caminhos.\n\nDever\xE1 evitar colocar tendas demasiado\
-        \ pr\xF3ximas dos seus lenhadores, por exemplo porque construir tendas ir\xE1\
-        \ remover \xE1rvores que os seus lenhadores precisam para produzir t\xE1buas.\n\
-        \nTAREFA: Construir a Pra\xE7a Principal."]
+  - arguments: ["PRA\xC7A PRINCIPAL", "Os seus residentes necessitam de uma Pra\xE7\
+        a Principal onde poder\xE3o adquirir as suas mercadorias.\n\nIsto significa\
+        \ que eles ir\xE3o necessitar de um caminho da sua casa para a Pra\xE7a Principal.\n\
+        \nTodas as mercadorias na sua prefeitoria est\xE3o dispon\xEDveis neste 'mercado',\
+        \ portanto os seus residentes n\xE3o necessitam de visitar os pescadores,\
+        \ ou at\xE9 mesmo a prefeitoria.\n\nDever\xE1 considerar fundar a sua \xE0\
+        rea habitacional numa \xE0rea onde poder\xE1 expandi-la facilmente e construir\
+        \ caminhos.\n\nDever\xE1 evitar colocar tendas demasiado pr\xF3ximas dos seus\
+        \ lenhadores, por exemplo porque construir tendas ir\xE1 remover \xE1rvores\
+        \ que os seus lenhadores precisam para produzir t\xE1buas.\n\nTAREFA: Construir\
+        \ a Pra\xE7a Principal."]
     type: logbook_w
   - arguments: ['', "Observemos a Pra\xE7a Principal um pouco mais de perto.\n\nNa\
         \ guia dos resumo poder\xE1 facilmente ajustar os impostos.\n\nNa segunda\
@@ -190,15 +189,15 @@ events:
   - arguments: [tutStepDone, 25]
     type: var_lt
 - actions:
-  - arguments: ["NOVA TAREFA: EDIF\xCDCIOS RESIDENCIAIS", "Os povoadores ir\xE3o necessitar\
-        \ de um telhado sobre as suas cabe\xE7as, caso contr\xE1rio n\xE3o ir\xE3\
-        o sequer considerar viver na sua povoa\xE7\xE3o! Dever\xE1 fornecer estas\
-        \ tendas.\n\nAs tendas s\xE3o o edif\xEDcio residencial mais b\xE1sico. Os\
-        \ seus habitantes ir\xE3o querer que fa\xE7a melhoramentos quando chegar a\
-        \ n\xEDveis mais altos.\n\nOs povoadores podem n\xE3o parecer muito importantes,\
-        \ uma vez que apenas consomem mercadorias e recursos - mas s\xE3o eles que\
-        \ pagam os impostos, e \xE9 a \xFAnica maneira que tem de produzir moeda por\
-        \ enquanto!\n\nTAREFA: Constr\xFAa uma tenda e ligue-a \xE0 Pra\xE7a Principal."]
+  - arguments: ["EDIF\xCDCIOS RESIDENCIAIS", "Os povoadores ir\xE3o necessitar de\
+        \ um telhado sobre as suas cabe\xE7as, caso contr\xE1rio n\xE3o ir\xE3o sequer\
+        \ considerar viver na sua povoa\xE7\xE3o! Dever\xE1 fornecer estas tendas.\n\
+        \nAs tendas s\xE3o o edif\xEDcio residencial mais b\xE1sico. Os seus habitantes\
+        \ ir\xE3o querer que fa\xE7a melhoramentos quando chegar a n\xEDveis mais\
+        \ altos.\n\nOs povoadores podem n\xE3o parecer muito importantes, uma vez\
+        \ que apenas consomem mercadorias e recursos - mas s\xE3o eles que pagam os\
+        \ impostos, e \xE9 a \xFAnica maneira que tem de produzir moeda por enquanto!\n\
+        \nTAREFA: Constr\xFAa uma tenda e ligue-a \xE0 Pra\xE7a Principal."]
     type: logbook
   - arguments: ["Constr\xFAa uma tenda e ligue-a \xE0 Pra\xE7a Principal."]
     type: message
@@ -236,11 +235,11 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: CONSTUIR O SINAL DE FOGO', "Viu um\
-        \ navio que passa pr\xF3ximo da sua povoa\xE7\xE3o de tempo a tempo?\n\nEste\
-        \ navio \xE9 o Mercador Livre, um dos primeiros colonos neste arquip\xE9lago.\n\
-        \nEste mercador ir\xE1 fornecer \xE0 sua povoa\xE7\xE3o os materiais necess\xE1\
-        rios que n\xE3o pode ainda produzir.\n\nPoder\xE1 tamb\xE9m vender supra-numer\xE1\
+  - arguments: [!!python/unicode 'CONSTRUIR O SINAL DE FOGO', "Viu um navio que passa\
+        \ pr\xF3ximo da sua povoa\xE7\xE3o de tempo a tempo?\n\nEste navio \xE9 o\
+        \ Mercador Livre, um dos primeiros colonos neste arquip\xE9lago.\n\nEste mercador\
+        \ ir\xE1 fornecer \xE0 sua povoa\xE7\xE3o os materiais necess\xE1rios que\
+        \ n\xE3o pode ainda produzir.\n\nPoder\xE1 tamb\xE9m vender supra-numer\xE1\
         rios da sua produ\xE7\xE3o, mas em geral ser\xE1 melhor investimento utiliz\xE1\
         -los na constru\xE7\xE3o de novos edif\xEDcios em vez de os vender ao mercador\
         \ livre.\n\nNormalmente os navios de mercador viajam procurando neg\xF3cios,\
@@ -269,8 +268,8 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: APRENDA A TROCAR', "Excelente! o Mercador\
-        \ Livre ir\xE1 agora parar na sua prefeitoria de tempo a tempo.\n\nVamos continuar\
+  - arguments: [!!python/unicode 'APRENDA A TROCAR', "Excelente! o Mercador Livre\
+        \ ir\xE1 agora parar na sua prefeitoria de tempo a tempo.\n\nVamos continuar\
         \ o tutorial sobre como trocar mercadorias.\n\nAp\xF3s selecionar um tipo\
         \ de mercadoria, a barra verde no fundo do escatel (se vis\xEDvel) mostra\
         \ quanto tem dispon\xEDvel em armaz\xE9m desta mercadoria.\n\nArrastando a\
@@ -306,16 +305,16 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: ["NOVA TAREFA: CONSTRUA UM PAVILH\xC3O", "Estas ferramentas ser\xE3\
-        o o suficiente por agora. Bom trabalho!\n\nAgora fornece alojamento, uma Pra\xE7\
-        a Principal e alimenta\xE7\xE3o aos seus habitantes.\n\nNo entanto existe\
-        \ ainda outra exig\xEAncia a cumprir, poder\xE1 verificar que no mercado ou\
-        \ na guia das tendas - os seus marinheiros querem um edif\xEDcio basico onde\
-        \ possam praticar a ora\xE7\xE3o.\n\nA solu\xE7\xE3o \xE9 construir um Pavilh\xE3\
-        o.\n\nOs edificios de servi\xE7os como este, tamb\xE9m necessitam de serem\
-        \ ligados \xE0s tendas com um caminho, caso contr\xE1rio os seus habitantes\
-        \ n\xE3o conseguem aceder ao mesmo.\n\nNos n\xEDveis superiores, vers\xF5\
-        es melhoradas destes edif\xEDcios ser\xE3o disponibilizadas."]
+  - arguments: ["CONSTRUA UM PAVILH\xC3O", "Estas ferramentas ser\xE3o o suficiente\
+        \ por agora. Bom trabalho!\n\nAgora fornece alojamento, uma Pra\xE7a Principal\
+        \ e alimenta\xE7\xE3o aos seus habitantes.\n\nNo entanto existe ainda outra\
+        \ exig\xEAncia a cumprir, poder\xE1 verificar que no mercado ou na guia das\
+        \ tendas - os seus marinheiros querem um edif\xEDcio basico onde possam praticar\
+        \ a ora\xE7\xE3o.\n\nA solu\xE7\xE3o \xE9 construir um Pavilh\xE3o.\n\nOs\
+        \ edificios de servi\xE7os como este, tamb\xE9m necessitam de serem ligados\
+        \ \xE0s tendas com um caminho, caso contr\xE1rio os seus habitantes n\xE3\
+        o conseguem aceder ao mesmo.\n\nNos n\xEDveis superiores, vers\xF5es melhoradas\
+        \ destes edif\xEDcios ser\xE3o disponibilizadas."]
     type: logbook_w
   - arguments: ['', "Nesse caso a vers\xE3o 'pequena' n\xE3o ser\xE1 mais necess\xE1\
         ria, uma vez que a 'grande' ir\xE1 fornecer o que os seus habitantes procuram\
@@ -340,17 +339,17 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: ["NOVA TAREFA: O PR\xD3XIMO INCREMENTO", "Todas as exig\xEAncias est\xE3\
-        o cumpridas se os seus habitantes visitarem regularmente a Pra\xE7a Principal\
-        \ e o Pavilh\xE3o e se o fornecimento de comida for adequado.\n\nSe os marinheiros\
-        \ estiverem felizes, eles ir\xE3o querer avan\xE7ar para o pr\xF3ximo n\xED\
-        vel, chamado de Pioneiros.\n\nPara os manter felizes, a \xFAnica coisa que\
-        \ ter\xE1 que fazer \xE9 baixar um pouco os impostos, uma vez que satisfez\
-        \ todas as suas necessidades.\n\nDever\xE1 tentar sempre recorrer a impostos\
-        \ baixos, no entanto dever\xE1 ter em aten\xE7\xE3o que tal poder\xE1 levar\
-        \ \xE0 bancarrota.\n\nAp\xF3s algum tempo, a primeira unidade dever\xE1 entrar\
-        \ na Pra\xE7a Principal e construir uma casa de madeira. Este edif\xEDcio\
-        \ ir\xE1 substituir as tenda pr\xE9via."]
+  - arguments: ["O PR\xD3XIMO INCREMENTO", "Todas as exig\xEAncias est\xE3o cumpridas\
+        \ se os seus habitantes visitarem regularmente a Pra\xE7a Principal e o Pavilh\xE3\
+        o e se o fornecimento de comida for adequado.\n\nSe os marinheiros estiverem\
+        \ felizes, eles ir\xE3o querer avan\xE7ar para o pr\xF3ximo n\xEDvel, chamado\
+        \ de Pioneiros.\n\nPara os manter felizes, a \xFAnica coisa que ter\xE1 que\
+        \ fazer \xE9 baixar um pouco os impostos, uma vez que satisfez todas as suas\
+        \ necessidades.\n\nDever\xE1 tentar sempre recorrer a impostos baixos, no\
+        \ entanto dever\xE1 ter em aten\xE7\xE3o que tal poder\xE1 levar \xE0 bancarrota.\n\
+        \nAp\xF3s algum tempo, a primeira unidade dever\xE1 entrar na Pra\xE7a Principal\
+        \ e construir uma casa de madeira. Este edif\xEDcio ir\xE1 substituir as tenda\
+        \ pr\xE9via."]
     type: logbook_w
   - arguments: ['', "Tais remodela\xE7\xF5es residenciais custam recursos e n\xE3\
         o podem ser restrictas por si.\n\nExistem remodela\xE7\xF5es manuais para\
@@ -377,16 +376,15 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: CONSTRUA UMA QUINTA', "Parab\xE9ns!\
-        \ Alguns dos seus habitantes foram promovidos!\n\nAgora tem acesso a novos\
-        \ edif\xEDcios, veja novamente o Menu de constru\xE7\xE3o.\n\nUma nova guia\
-        \ apareceu!\n\nOs pioneiros ir\xE3o exigir tecido, portanto ir\xE1 ser necess\xE1\
-        rio produzir tecido. Isto \xE9 feito atrav\xE9s da l\xE3 das ovelhas (que\
-        \ \xE9 um dos recursos produzidos nas quintas).\n\nA Quinta \xE9 um edif\xED\
-        cio de produ\xE7\xE3o especial, uma vez que n\xE3o produz apenas um tipo de\
-        \ recurso, mas sim v\xE1rios, se optar por isso.\n\nOs recursos dispon\xED\
-        veis nas Quintas dependem do tipo de campos \xE0 volta do local onde a constr\xF3\
-        i."]
+  - arguments: [!!python/unicode 'CONSTRUA UMA QUINTA', "Parab\xE9ns! Alguns dos seus\
+        \ habitantes foram promovidos!\n\nAgora tem acesso a novos edif\xEDcios, veja\
+        \ novamente o Menu de constru\xE7\xE3o.\n\nUma nova guia apareceu!\n\nOs pioneiros\
+        \ ir\xE3o exigir tecido, portanto ir\xE1 ser necess\xE1rio produzir tecido.\
+        \ Isto \xE9 feito atrav\xE9s da l\xE3 das ovelhas (que \xE9 um dos recursos\
+        \ produzidos nas quintas).\n\nA Quinta \xE9 um edif\xEDcio de produ\xE7\xE3\
+        o especial, uma vez que n\xE3o produz apenas um tipo de recurso, mas sim v\xE1\
+        rios, se optar por isso.\n\nOs recursos dispon\xEDveis nas Quintas dependem\
+        \ do tipo de campos \xE0 volta do local onde a constr\xF3i."]
     type: logbook_w
   - arguments: ['', "Iremos ver isto mais tarde.\n\nAs quintas tal como todas as outras\
         \ unidades que produzem materiais n\xE3o necessitam for\xE7osamente de estarem\
@@ -411,18 +409,18 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: CONSTRUA CAMPOS', "A Quinta por si\
-        \ s\xF3 n\xE3o ir\xE1 produzir nada sem campos.\n\nActualmente ter\xE1 como\
-        \ op\xE7\xE3o criar pastagens, campos de batatas e plata\xE7\xF5es de cana\
-        \ de a\xE7\xFAcar.\n\nEm mais detalhe:\n* Pastagems: onde as ovelhas pastam,\
-        \ produzindo l\xE3.\n* Campo de Batatas: onde crescem batatas, utilizadas\
-        \ para a alimenta\xE7\xE3o da popula\xE7\xE3o.\n* Planta\xE7\xF5es de Cana\
-        \ de A\xE7\xFAcar: Onde cresce cana de a\xE7\xFAcar, utilizada pelas destilarias\
-        \ para produzir alco\xF3l e mais tarde pastelaria.\n\nNeste momento s\xF3\
-        \ necessitamos de pastagens, mas caso a procura por comida seja elevado (muitos\
-        \ edif\xEDcios habitacionais?) poder\xE1 tamb\xE9m produzir algumas batatas.\n\
-        \nTenha em aten\xE7\xE3o que para produzir batatas ser\xE1 necess\xE1rio um\
-        \ caminho a ligar \xE0 Quinta (n\xE3o o campo)."]
+  - arguments: [!!python/unicode 'CONSTRUA CAMPOS', "A Quinta por si s\xF3 n\xE3o\
+        \ ir\xE1 produzir nada sem campos.\n\nActualmente ter\xE1 como op\xE7\xE3\
+        o criar pastagens, campos de batatas e plata\xE7\xF5es de cana de a\xE7\xFA\
+        car.\n\nEm mais detalhe:\n* Pastagems: onde as ovelhas pastam, produzindo\
+        \ l\xE3.\n* Campo de Batatas: onde crescem batatas, utilizadas para a alimenta\xE7\
+        \xE3o da popula\xE7\xE3o.\n* Planta\xE7\xF5es de Cana de A\xE7\xFAcar: Onde\
+        \ cresce cana de a\xE7\xFAcar, utilizada pelas destilarias para produzir alco\xF3\
+        l e mais tarde pastelaria.\n\nNeste momento s\xF3 necessitamos de pastagens,\
+        \ mas caso a procura por comida seja elevado (muitos edif\xEDcios habitacionais?)\
+        \ poder\xE1 tamb\xE9m produzir algumas batatas.\n\nTenha em aten\xE7\xE3o\
+        \ que para produzir batatas ser\xE1 necess\xE1rio um caminho a ligar \xE0\
+        \ Quinta (n\xE3o o campo)."]
     type: logbook_w
   - arguments: ['', "Certifique-se que todos os campos s\xE3o criados na \xE1rea envolvente\
         \ da Quinta.\n\nPoder\xE1 combinar a produ\xE7\xE3o - uma pastagem n\xE3o\
@@ -447,18 +445,17 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: ["NOVA TAREFA: CONSTRUA UM ARMAZ\xC9M", "Tem observado a Serra\xE7\xE3\
-        o recentemente?\n\nDesde que a sua Prefeitoria n\xE3o tem espa\xE7o ilimitado\
-        \ para armazenar mercadorias, os colecionadores ir\xE3o parar de as recolher\
-        \ quando o armaz\xE9m est\xE1 cheio.\nSe nenhum marinheiro quis recentemente\
-        \ remodelar a sua tenda, possivelmente ter\xE1 muitas t\xE1buas, e nesse caso\
-        \ a serra\xE7\xE3o poder\xE1 estar parada.\nPodemos rectificar esta situa\xE7\
-        \xE3o de duas formas!\n\nTodas as unidades oferecem a possibilidade de paragem.\n\
-        Isto pode parecer estranho, clique na roda dentada que v\xEA, por exemplo,\
-        \ no resumo da serra\xE7\xE3o.\n\nSe este modo for ligado, a produ\xE7\xE3\
-        o p\xE1ra e pagar\xE1 menos custos de manuten\xE7\xE3o. N\xE3o ser\xE3o nulos,\
-        \ mas ser\xE3o inferiores aos custos apresentados caso  a unidade esteja a\
-        \ produzir."]
+  - arguments: ["CONSTRUA UM ARMAZ\xC9M", "Tem observado a lenhador recentemente?\n\
+        \nDesde que a sua Prefeitoria n\xE3o tem espa\xE7o ilimitado para armazenar\
+        \ mercadorias, os colecionadores ir\xE3o parar de as recolher quando o armaz\xE9\
+        m est\xE1 cheio.\nSe nenhum marinheiro quis recentemente remodelar a sua tenda,\
+        \ possivelmente ter\xE1 muitas t\xE1buas, e nesse caso a serra\xE7\xE3o poder\xE1\
+        \ estar parada.\nPodemos rectificar esta situa\xE7\xE3o de duas formas!\n\n\
+        Todas as unidades oferecem a possibilidade de paragem.\nIsto pode parecer\
+        \ estranho, clique na roda dentada que v\xEA, por exemplo, no resumo da serra\xE7\
+        \xE3o.\n\nSe este modo for ligado, a produ\xE7\xE3o p\xE1ra e pagar\xE1 menos\
+        \ custos de manuten\xE7\xE3o. N\xE3o ser\xE3o nulos, mas ser\xE3o inferiores\
+        \ aos custos apresentados caso a unidade esteja a produzir."]
     type: logbook_w
   - arguments: ['', "Isto significa que poder\xE1 poupar moedas quando n\xE3o necessitar\
         \ que uma unidade produza recursos durante um periodo de tempo e n\xE3o a\
@@ -484,14 +481,14 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: ["NOVA TAREFA: CRIE UM TECEL\xC3O", "Agora que a produ\xE7\xE3o de\
-        \ l\xE3 est\xE1 operacional, ainda precisa de um tecel\xE3o para produzir\
-        \ o tecido a partir da l\xE3.\n\nExistem dois lugares onde poder\xE1 constru\xED\
-        -lo - ou junto a uma quinta or junto a um Armaz\xE9m (ou Prefeitoria).\n\n\
-        Em ambos os casos dever\xE1 certificar-se que existem caminhos.\n\nPoder\xE1\
-        \ colocar o Tecel\xE3o junto \xE0 Quinta e utilizar qualquer caminho para\
-        \ a Quinta e verificar se se o colecionador recolhe tamb\xE9m a l\xE3.\n\n\
-        TAREFA: Construa um Tecel\xE3o posicionado para recolher l\xE3."]
+  - arguments: ["CRIE UM TECEL\xC3O", "Agora que a produ\xE7\xE3o de l\xE3 est\xE1\
+        \ operacional, ainda precisa de um tecel\xE3o para produzir o tecido a partir\
+        \ da l\xE3.\n\nExistem dois lugares onde poder\xE1 constru\xED-lo - ou junto\
+        \ a uma quinta or junto a um Armaz\xE9m (ou Prefeitoria).\n\nEm ambos os casos\
+        \ dever\xE1 certificar-se que existem caminhos.\n\nPoder\xE1 colocar o Tecel\xE3\
+        o junto \xE0 Quinta e utilizar qualquer caminho para a Quinta e verificar\
+        \ se se o colecionador recolhe tamb\xE9m a l\xE3.\n\nTAREFA: Construa um Tecel\xE3\
+        o posicionado para recolher l\xE3."]
     type: logbook
   - arguments: ["Construa um Tecel\xE3o posicionado para recolher a l\xE3 da sua Quinta."]
     type: message
@@ -508,12 +505,12 @@ events:
   - arguments: ["Aloje 50 ou mais habitantes na sua cidade para terminar este tutorial.\
         \ Necessita de um balan\xE7o positivo."]
     type: message
-  - arguments: [!!python/unicode 'NOVA TAREFA: TERMINE O TUTORIAL', "Tente alojar\
-        \ um total de 50 ou mais habitantes na sua povo\xE7\xE3o e forne\xE7a os edif\xED\
-        cios residenciais necess\xE1rios.\n\nUma vez que consiga uma economia que\
-        \ satizfa\xE7a este n\xFAmero de habitantes, est\xE1 pronto para descobrir\
-        \ novos Horizontes Desconhecidos!\n\nTAREFA: Atinja um n\xFAmero de 50 ou\
-        \ mais habitantes e balan\xE7o positivo para completar este tutorial."]
+  - arguments: [!!python/unicode 'TERMINE O TUTORIAL', "Tente alojar um total de 50\
+        \ ou mais habitantes na sua povo\xE7\xE3o e forne\xE7a os edif\xEDcios residenciais\
+        \ necess\xE1rios.\n\nUma vez que consiga uma economia que satizfa\xE7a este\
+        \ n\xFAmero de habitantes, est\xE1 pronto para descobrir novos Horizontes\
+        \ Desconhecidos!\n\nTAREFA: Atinja um n\xFAmero de 50 ou mais habitantes e\
+        \ balan\xE7o positivo para completar este tutorial."]
     type: logbook
   - arguments: [tutStepDone, 58]
     type: set_var

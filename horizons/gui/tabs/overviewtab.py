@@ -30,11 +30,13 @@ from horizons.scheduler import Scheduler
 from horizons.util import Callback, ActionSetLoader, NamedObject
 from horizons.constants import GAME_SPEED, RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton, DeleteButton
+from horizons.gui.widgets.unitoverview import StanceWidget
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget, create_resource_icon
+from horizons.entities import Entities
 
 class OverviewTab(TabInterface):
 	def __init__(self, instance, widget = 'overviewtab.xml', \
@@ -129,28 +131,31 @@ class BranchOfficeOverviewTab(OverviewTab):
 		super(BranchOfficeOverviewTab, self).on_instance_removed()
 
 
-class MarketPlaceOverviewTab(OverviewTab):
+class MainSquareOverviewTab(OverviewTab):
 	def  __init__(self, instance):
-		super(MarketPlaceOverviewTab, self).__init__(
+		super(MainSquareOverviewTab, self).__init__(
 			widget = 'overview_mainsquare.xml',
 			instance = instance
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		self.tooltip = _("Market place overview")
+		self.tooltip = _("Main square overview")
 
 	def refresh(self):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		super(MarketPlaceOverviewTab, self).refresh()
+		super(MainSquareOverviewTab, self).refresh()
 
 
 class ShipOverviewTab(OverviewTab):
-	def __init__(self, instance):
-		super(ShipOverviewTab, self).__init__(
-			widget = 'overview_ship.xml',
-			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
-			instance = instance
-		)
+	def __init__(self, instance, widget = 'overview_ship.xml', \
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
+		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
 		self.tooltip = _("Ship overview")
+		health_widget = self.widget.findChild(name='health')
+		health_widget.init(self.instance)
+		self.add_remove_listener(health_widget.remove)
+		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
+		weapon_storage_widget.init(self.instance)
+		self.add_remove_listener(weapon_storage_widget.remove)
 
 	def refresh(self):
 		# show rename when you click on name
@@ -169,8 +174,8 @@ class ShipOverviewTab(OverviewTab):
 
 		if island_without_player_settlement_found:
 			events['foundSettlement'] = Callback(self.instance.session.ingame_gui._build, \
-		                                       BUILDINGS.BRANCH_OFFICE_CLASS, \
-		                                       weakref.ref(self.instance) )
+			                                     BUILDINGS.BRANCH_OFFICE_CLASS, \
+			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettlement').set_active()
 		else:
@@ -178,8 +183,30 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('bg_button').set_inactive()
 			self.widget.child_finder('foundSettlement').set_inactive()
 
+		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
+		   self.instance,
+		   Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].costs,
+		   {},
+		   res_from_ship = True )
+		events['foundSettlement/mouseEntered'] = cb
+		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
+		   None ) # hides the resource status widget
+		events['foundSettlement/mouseExited'] = cb
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
+
+
+class FightingShipOverviewTab(ShipOverviewTab):
+	def __init__(self, instance, widget = 'overview_ship.xml'):
+		super(FightingShipOverviewTab, self).__init__(instance, widget)
+		stance_widget = StanceWidget()
+		stance_widget.init(self.instance)
+		self.add_remove_listener(stance_widget.remove)
+		self.widget.findChild(name='stance').addChild(stance_widget)
+
+	def show(self):
+		self.widget.findChild(name='weapon_storage').update()
+		super(FightingShipOverviewTab, self).show()
 
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
@@ -189,6 +216,22 @@ class TraderShipOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = _("Ship overview")
+
+class GroundUnitOverviewTab(OverviewTab):
+	def __init__(self, instance):
+		super(GroundUnitOverviewTab, self).__init__(
+			widget = 'overview_groundunit.xml',
+			instance = instance)
+		self.tooltip = _("Unit overview")
+		health_widget = self.widget.findChild(name='health')
+		health_widget.init(self.instance)
+		self.add_remove_listener(health_widget.remove)
+		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
+		weapon_storage_widget.init(self.instance)
+		self.add_remove_listener(weapon_storage_widget.remove)
+		stance_widget = self.widget.findChild(name='stance')
+		stance_widget.init(self.instance)
+		self.add_remove_listener(stance_widget.remove)
 
 class ProductionOverviewTab(OverviewTab):
 	production_line_gui_xml = "overview_productionline.xml"
@@ -398,7 +441,6 @@ class ResourceDepositOverviewTab(OverviewTab):
 	def refresh(self):
 		super(ResourceDepositOverviewTab, self).refresh()
 		self.widget.child_finder("inventory").update()
-
 
 
 ###

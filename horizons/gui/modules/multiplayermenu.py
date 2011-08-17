@@ -30,20 +30,35 @@ from horizons.savegamemanager import SavegameManager
 from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
+from horizons.network import find_enet_module
 from horizons.util import Callback
 from horizons.network import CommandError
-from horizons.util.gui import adjust_widget_black_background
 
+enet = find_enet_module()
 
 class MultiplayerMenu(object):
 	log = logging.getLogger("networkinterface")
 
 	def show_multi(self):
 		"""Shows main multiplayer menu"""
-		if NetworkInterface() is None:
-			self.show_popup(_("Networking isn't initialised"), \
-			           _("Networking isn't initialised, probably because of configuration issues. Check your settings!"))
+		if enet == None:
+			headline = _(u"Unable to find pyenet")
+			descr = _(u"The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system.")
+			advice = _(u"Linux users: Try to install pyenet through your package manager.") + "\n" + \
+			       _(u"Windows users: There is currently no reasonable support for Windows.")
+			self.show_error_popup(headline, descr, advice)
 			return
+
+		if NetworkInterface() is None:
+			try:
+				NetworkInterface.create_instance()
+			except RuntimeError, e:
+				headline = _(u"Failed to initialize networking.")
+				descr = _(u"Networking couldn't be initialised with the current configuration.")
+				advice = _(u"Check the data you entered in the Network section in the settings dialogue.")
+				self.show_error_popup(headline, descr, advice, unicode(e))
+				return
+
 		if not NetworkInterface().isconnected():
 			connected = self.__connect_to_server()
 			if not connected:
@@ -62,8 +77,6 @@ class MultiplayerMenu(object):
 		}
 		self.widgets.reload('multiplayermenu')
 		self._switch_current_widget('multiplayermenu', center=True, event_map=event_map, hide_old=True)
-
-		adjust_widget_black_background(self.widgets['multiplayermenu'])
 
 		refresh_worked = self.__refresh()
 		if not refresh_worked:
@@ -191,8 +204,6 @@ class MultiplayerMenu(object):
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
 		self._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
 
-		adjust_widget_black_background(self.widgets['multiplayer_gamelobby'])
-
 		self.__update_game_details(game)
 		self.current.findChild(name="game_players").text = u", ".join(game.get_players())
 		textfield = self.current.findChild(name="chatTextField")
@@ -230,8 +241,6 @@ class MultiplayerMenu(object):
 		  'create' : self.__create_game
 		}
 		self._switch_current_widget('multiplayer_creategame', center=True, event_map=event_map, hide_old=True)
-
-		adjust_widget_black_background(self.widgets['multiplayer_creategame'])
 
 		self.current.files, self.maps_display = SavegameManager.get_maps()
 		self.current.distributeInitialData({

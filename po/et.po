@@ -1120,9 +1120,8 @@ msgstr "Palun veendu, et tead, mida teed."
 
 # 83%
 #: horizons/i18n/guitranslations.py:260
-#, fuzzy
 msgid "Apply"
-msgstr "Rakenda:"
+msgstr "Rakenda"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"

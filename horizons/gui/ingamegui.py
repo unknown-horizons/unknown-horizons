@@ -27,7 +27,7 @@ from horizons.entities import Entities
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool, SelectionTool
-from horizons.gui.tabs import TabWidget, BuildTab
+from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
@@ -87,7 +87,7 @@ class IngameGui(LivingObject):
 		minimap.position_technique = "right-20:top+4"
 		minimap.show()
 
-		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 55, 120, 120)
+		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 52, 120, 117)
 
 		self.minimap = Minimap(minimap_rect, self.session, \
 		                       self.session.view.renderer['GenericRenderer'])
@@ -109,7 +109,7 @@ class IngameGui(LivingObject):
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : self.session.destroy_tool,
 			'build' : self.show_build_menu,
-			'helpLink' : self.players_overview.toggle_visibility, # TODO: find a better place for the player stats overview
+			'diplomacyButton' : self.show_diplomacy_menu,
 			'gameMenuButton' : self.main_gui.toggle_pause,
 			'logbook' : self.logbook.toggle_visibility
 		})
@@ -132,13 +132,11 @@ class IngameGui(LivingObject):
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = Callback(self._build, id)
 
-		self.__toggle_ingame_pause_shown = None
-
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : None,
 			'build' : None,
-			'helpLink' : None,
+			'diplomacyButton' : None,
 			'gameMenuButton' : None
 		})
 
@@ -304,11 +302,34 @@ class IngameGui(LivingObject):
 		self.widgets['menu_panel'].hide()
 		self.widgets['menu_panel'].show()
 
-	def show_build_menu(self):
+	def show_diplomacy_menu(self):
+		# check if the menu is already shown
+		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "diplomacy_widget":
+			self.hide_menu()
+			return
+		players = self.session.world.players
+		local_player = self.session.world.player
+		dtabs = []
+		for player in players + [self.session.world.pirate]:
+			if player is not local_player:
+				dtabs.append(DiplomacyTab(player))
+		tab = TabWidget(self, tabs=dtabs, name="diplomacy_widget")
+		self.show_menu(tab)
+
+	def show_multi_select_tab(self):
+		tab = TabWidget(self, tabs = [SelectMultiTab(self.session)], name = 'select_multi')
+		self.show_menu(tab)
+
+	def show_build_menu(self, update=False):
+		"""
+		@param update: set when build possiblities change (e.g. after settler upgrade)
+		"""
 		# check if build menu is already shown
 		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
 			self.hide_menu()
-			return
+
+			if not update: # this was only a toggle call, don't reshow
+				return
 
 		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
@@ -440,28 +461,6 @@ class IngameGui(LivingObject):
 			RenameObject(instance, new_name).execute(self.session)
 		self._hide_change_name_dialog()
 
-	def toggle_ingame_pause(self):
-		"""
-		Called when the hotkey for pause is pressed.
-		Displays pause notification and does the actual (un)pausing.
-		"""
-		if not self.__toggle_ingame_pause_shown:
-			self.session.speed_pause()
-			self.main_gui.on_escape = self.toggle_ingame_pause
-
-			message = _("Hit P to continue the game or click below!")
-			popup = self.main_gui.build_popup(_("Game paused"), message)
-			popup.mapEvents({'okButton': self.toggle_ingame_pause})
-			popup.show()
-			# remember reference to popup for hiding
-			self.__toggle_ingame_pause_shown = popup
-		else:
-			self.main_gui.on_escape = self.main_gui.toggle_pause
-			self.session.speed_unpause()
-
-			self.__toggle_ingame_pause_shown.hide()
-			self.__toggle_ingame_pause_shown = None
-
 	def on_escape(self):
 		if self.logbook.is_visible():
 			self.logbook.hide()
@@ -484,7 +483,7 @@ class IngameGui(LivingObject):
 		if hasattr(menu, "name"):
 			if menu.name == "build_menu_tab_widget":
 				# player changed and build menu is currently displayed
-				self.show_build_menu()
+				self.show_build_menu(update=True)
 
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""

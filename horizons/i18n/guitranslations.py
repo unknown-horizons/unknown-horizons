@@ -67,17 +67,33 @@ def set_translations():
 			"pasture-1"                   : _("Pasture: Raises sheep. Produces wool. Needs a farm."),
 			"potatofield-1"               : _("Potato field: Yields food. Needs a farm."),
 			"sugarfield-1"                : _("Sugarcane field: Used in liquor production. Needs a farm."),
+			"tower-1"                     : _("Wooden tower: Defends your settlement."),
 			"villageschool-1"             : _("Village school: Provides education."),
 			"weaver-1"                    : _("Weaver: Turns lamb wool into cloth.")},
 		"buildtab_increment2.xml" : {
 			"companies_label"             : _("Companies"),
+			"companies_label"             : _("Companies"),
+			"fields_label"                : _("Fields"),
 			"headline"                    : _("Settler buildings"),
 			"services_label"              : _("Services"),
+			"butchery-1"                  : _("Butchery: Needs pigs or cattle. Produces food."),
+			"cattlerun-1"                 : _("Cattle run: Raises cattle. Needs a farm."),
 			"charcoal-burning-1"          : _("Charcoal burning: Burns a lot of boards."),
+			"doctor-1"                    : _("Doctor: Treats diseases. Consumes herbs."),
+			"herbary-1"                   : _("Herbary: Produces herbs. Needs a farm."),
 			"iron-mine-1"                 : _("Iron mine: Gets iron ore from deposit."),
+			"pigsty-1"                    : _("Pigsty: Raises pigs. Needs a farm."),
+			"saltponds-1"                 : _("Salt ponds: Evaporates salt. Built on sea coast."),
 			"smeltery-1"                  : _("Smeltery: Refines all kind of ores."),
 			"tavern-1"                    : _("Tavern: Provides get-together."),
+			"tobaccofield-1"              : _("Tobacco field: Produces tobacco. Needs a farm."),
+			"tobacconist-1"               : _("Tobacconist: Produces tobaccos out of tobacco."),
 			"toolmaker-1"                 : _("Toolmaker: Produces tools out of iron.")},
+		"buildtab_no_settlement.xml" : {
+			"headline"                    : _("Game start"),
+			"howto_1_need_bo"             : _("You need to found a settlement before you can construct buildings!"),
+			"howto_2_navigate_ship"       : _("Select your ship and approach the coast via right-click."),
+			"howto_3_build_bo"            : _("Afterwards, press the large button in the ship overview tab.")},
 		"place_building.xml" : {
 			"headline"                    : _("Build"),
 			"running_costs_label"         : _("Running costs:")},
@@ -92,7 +108,7 @@ def set_translations():
 			"destroy_tool"                : _("Destroy"),
 			"build"                       : _("Build menu"),
 			"gameMenuButton"              : _("Game menu"),
-			"helpLink"                    : _("Help"),
+			"diplomacyButton"             : _("Diplomacy"),
 			"logbook"                     : _("Captain's log")},
 		"minimap.xml" : {
 			"rotateLeft"                  : _("Rotate map counterclockwise"),
@@ -171,6 +187,7 @@ def set_translations():
 			"set25"                       : _("{SHIFT} = Hold to place multiple buildings"),
 			"set26"                       : _("{C} = Chat"),
 			"set27"                       : _("{L} = Toggle Captain's log"),
+			"set28"                       : _("{T} = Toggle translucency of ambient buildings"),
 			"okButton"                    : _("Exit to main menu")},
 		"ingamemenu.xml" : {
 			"help"                        : _("Help"),
@@ -255,16 +272,38 @@ def set_translations():
 			"cancelButton"                : _("Exit to main menu"),
 			"deleteButton"                : _("Delete selected savegame")},
 		"singleplayermenu.xml" : {
-			"choose_map_lbl"              : _("Choose a map to play:"),
 			"headline"                    : _("New game - Singleplayer"),
 			"main_menu_label"             : _("Main menu:"),
 			"start_game_label"            : _("Start game:"),
-			"showCampaign"                : _("Campaign"),
-			"showMaps"                    : _("Free play"),
-			"showRandom"                  : _("Random map"),
-			"showScenario"                : _("Scenario"),
+			"campaign"                    : _("Campaign"),
+			"free_maps"                   : _("Free play"),
+			"random"                      : _("Random map"),
+			"scenario"                    : _("Scenario"),
 			"okay"                        : _("Start game"),
 			"cancel"                      : _("Exit to main menu")},
+		"sp_campaign.xml" : {
+			"choose_map_lbl"              : _("Choose a map to play:")},
+		"sp_free_maps.xml" : {
+			"headline_choose_map_lbl"     : _("Choose a map to play:"),
+			"headline_choose_opponents_lbl": _("Choose your opponents:")},
+		"sp_random.xml" : {
+			"climate_lbl"                 : _("Climate zone:"),
+			"climate_zone_lbl_cold"       : _("frosty"),
+			"climate_zone_lbl_warm"       : _("torrid"),
+			"headline_map_settings_lbl"   : _("Map settings:"),
+			"island_size_lbl"             : _("Island size:"),
+			"island_size_lbl_huge"        : _("huge"),
+			"island_size_lbl_small"       : _("small"),
+			"map_size_lbl"                : _("Map size:"),
+			"map_size_lbl_huge"           : _("huge"),
+			"map_size_lbl_small"          : _("small"),
+			"resource_density_lbl"        : _("Resource density:"),
+			"resource_density_lbl_dense"  : _("dense"),
+			"resource_density_lbl_few"    : _("few")},
+		"sp_scenario.xml" : {
+			"choose_map_lbl"              : _("Choose a map to play:")},
+		"game_settings.xml" : {
+			"headline_game_settings_lbl"  : _("Game settings:")},
 		"playerdataselection.xml" : {
 			"color_label"                 : _("Color:"),
 			"player_label"                : _("Player name:")},
@@ -304,7 +343,7 @@ def set_translations():
 		"overview_buildrelated.xml" : {
 			"headline"                    : _("Build fields")},
 		"island_inventory.xml" : {
-			"headline"                    : _("Inventory")},
+			"headline"                    : _("Settlement inventory")},
 		"mainsquare_inhabitants.xml" : {
 			"avg_happiness_lbl"           : _("Average happiness:"),
 			"headline"                    : _("Settler overview"),

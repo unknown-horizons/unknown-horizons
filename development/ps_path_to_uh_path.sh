@@ -4,127 +4,106 @@
 
 
 if [ $# -ne 5 ] ; then
-	echo "USAGE: $0 <source-dir> <target-dir> <object-id> <action-set-name> <next-animation-id>"
+	echo "USAGE: $0 <source-dir> <target-dir> <action-set-name> <object-id> <settler-level>"
 	exit 1
 fi
 
 S=$1
 T=$2
-OBJECT_ID=$3
-ACTION_SET_NAME=$4
-ANIM_ID=$5
+ACTION_SET_NAME=$3
+OBJECT_ID=$4
+SETTLER_LEVEL=$5
 
-# TODO: gravel_to_dirt
-
-function do_cp() {
-	cp $S/crossing/45/0.png $T/abcd.png
-
-	cp $S/curve/45/0.png $T/ab.png
-	cp $S/curve/135/0.png $T/ad.png
-	cp $S/curve/225/0.png $T/cd.png
-	cp $S/curve/315/0.png $T/bc.png
-
-	cp $S/deadend/45/0.png $T/d.png
-	cp $S/deadend/135/0.png $T/c.png
-	cp $S/deadend/225/0.png $T/b.png
-	cp $S/deadend/315/0.png $T/a.png
-
-	cp $S/straight/45/0.png $T/bd.png
-	cp $S/straight/135/0.png $T/ac.png
-	
-	cp $S/turning/45/0.png $T/abc.png
-	cp $S/turning/135/0.png $T/abd.png
-	cp $S/turning/225/0.png $T/acd.png
-	cp $S/turning/315/0.png $T/bcd.png
+function _mk_dirs() {
+	mkdir $1
+	mkdir $1/45 $1/135 $1/225 $1/315
 }
 
-function create_sqls() {
-	echo "------- BEGIN SQL ----------"
-
-	# action set
-	echo "INSERT INTO \"action_set\" VALUES('${ACTION_SET_NAME}',NULL,${OBJECT_ID},0);"
-
-	# animations
-	ANIM_ID_ITER=$ANIM_ID
-	REL_PATH="content${T##*content}"
-	for i in a ab abc abcd abd ac acd ad b bc bcd bd c cd d; do
-		echo "INSERT INTO \"animation\" VALUES(${ANIM_ID_ITER},'${REL_PATH}/${i}.png',0.0);"
-		let "ANIM_ID_ITER += 1"
+function do_cp() {
+	for i in a b c d ab ac ad bc bd cd abc abd acd bcd abcd; do
+		_mk_dirs "$T/$i"
 	done
 
-	# actions
-	cat <<EOF
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'default', 45, $((5+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'default', 315, $((11+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'default', 225, $((5+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'default', 135, $((11+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ac', 45, $((5+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ac', 315, $((11+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ac', 225, $((5+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ac', 135, $((11+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bd', 45, $((11+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bd', 315, $((5+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bd', 225, $((11+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bd', 135, $((5+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'a', 45, $((0+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'a', 315, $((8+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'a', 225, $((12+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'a', 135, $((14+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'c', 45, $((12+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'c', 315, $((14+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'c', 225, $((0+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'c', 135, $((8+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'b', 45, $((8+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'b', 315, $((12+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'b', 225, $((14+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'b', 135, $((0+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'd', 45, $((14+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'd', 315, $((0+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'd', 225, $((8+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'd', 135, $((12+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ab', 45, $((1+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ab', 315, $((9+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ab', 225, $((13+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ab', 135, $((7+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bc', 45, $((9+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bc', 315, $((13+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bc', 225, $((7+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bc', 135, $((1+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'cd', 45, $((13+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'cd', 315, $((7+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'cd', 225, $((1+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'cd', 135, $((9+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ad', 45, $((7+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ad', 315, $((1+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ad', 225, $((9+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'ad', 135, $((13+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abcd', 45, $((3+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abcd', 315, $((3+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abcd', 225, $((3+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abcd', 135, $((3+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bcd', 45, $((10+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bcd', 315, $((6+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bcd', 225, $((4+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'bcd', 135, $((2+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'acd', 45, $((6+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'acd', 315, $((4+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'acd', 225, $((2+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'acd', 135, $((10+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abd', 45, $((4+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abd', 315, $((2+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abd', 225, $((10+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abd', 135, $((6+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abc', 45, $((2+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abc', 315, $((10+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abc', 225, $((6+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'abc', 135, $((4+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'default', 45, $((5+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'default', 315, $((11+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'default', 225, $((5+$ANIM_ID)));
-INSERT INTO "action" VALUES('${OBJECT_ID}', 'default', 135, $((11+$ANIM_ID)));
-EOF
+	cp $S/crossing/45/0.png $T/abcd/45/
+	cp $S/crossing/45/0.png $T/abcd/135/
+	cp $S/crossing/45/0.png $T/abcd/225/
+	cp $S/crossing/45/0.png $T/abcd/315/
+	
+	cp $S/curve/* -r $T/ab
 
-	echo "------- END SQL ----------"
+	cp $S/curve/135/0.png $T/ad/45
+	cp $S/curve/225/0.png $T/ad/135
+	cp $S/curve/315/0.png $T/ad/225
+	cp $S/curve/45/0.png $T/ad/315
+
+	cp $S/curve/315/0.png $T/bc/45
+	cp $S/curve/45/0.png $T/bc/135
+	cp $S/curve/135/0.png $T/bc/225
+	cp $S/curve/225/0.png $T/bc/315
+
+	cp $S/curve/225/0.png $T/cd/45
+	cp $S/curve/315/0.png $T/cd/135
+	cp $S/curve/45/0.png $T/cd/225
+	cp $S/curve/135/0.png $T/cd/315
+	
+	cp $S/straight/45/0.png $T/ac/315
+	cp $S/straight/45/0.png $T/ac/135
+	cp $S/straight/135/0.png $T/ac/45
+	cp $S/straight/135/0.png $T/ac/225
+
+	cp $S/straight/135/0.png $T/bd/135
+	cp $S/straight/135/0.png $T/bd/315
+	cp $S/straight/45/0.png $T/bd/45
+	cp $S/straight/45/0.png $T/bd/225
+
+	cp $S/turning/45/0.png $T/abc/45
+	cp $S/turning/135/0.png $T/abc/135
+	cp $S/turning/225/0.png $T/abc/225
+	cp $S/turning/315/0.png $T/abc/315
+
+	cp $S/turning/45/0.png $T/abd/315
+	cp $S/turning/135/0.png $T/abd/45
+	cp $S/turning/225/0.png $T/abd/135
+	cp $S/turning/315/0.png $T/abd/225
+
+	cp $S/turning/45/0.png $T/acd/225
+	cp $S/turning/135/0.png $T/acd/315
+	cp $S/turning/225/0.png $T/acd/45
+	cp $S/turning/315/0.png $T/acd/135
+
+	cp $S/turning/45/0.png $T/bcd/135
+	cp $S/turning/135/0.png $T/bcd/225
+	cp $S/turning/225/0.png $T/bcd/315
+	cp $S/turning/315/0.png $T/bcd/45
+
+	# hmm.. acab is still missing..
+
+	cp $S/deadend/* -r $T/d
+
+	cp $S/deadend/45/0.png $T/b/225
+	cp $S/deadend/135/0.png $T/b/315
+	cp $S/deadend/225/0.png $T/b/45
+	cp $S/deadend/315/0.png $T/b/135
+	
+	cp $S/deadend/45/0.png $T/c/315
+	cp $S/deadend/135/0.png $T/c/45
+	cp $S/deadend/225/0.png $T/c/135
+	cp $S/deadend/315/0.png $T/c/225
+
+	cp $S/deadend/45/0.png $T/a/135
+	cp $S/deadend/135/0.png $T/a/225
+	cp $S/deadend/225/0.png $T/a/315
+	cp $S/deadend/315/0.png $T/a/45
+
+}
+
+
+function create_sqls() {
+	echo "--------- BEGIN SQL ----------"
+
+	# action set
+	echo "INSERT INTO \"action_set\" VALUES('${ACTION_SET_NAME}',NULL,${OBJECT_ID},${SETTLER_LEVEL});"
+	echo "--------- END SQL ------------"
 }
 
 

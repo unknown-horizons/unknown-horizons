@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+import math
 
 from horizons.scheduler import Scheduler
 
@@ -57,9 +58,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		self.__init(self.__get_data("happiness_init_value"))
 		self.run()
-		# give the user a month (about 30 seconds) to build a market place in range
+		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner == self.session.world.player:
-			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks_of_month())
+			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
 
 	def __init(self, happiness = None, loading = False):
 		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
@@ -81,7 +82,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		self.inhabitants = \
 		    db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
 		remaining_ticks = \
-		    db("SELECT ticks from remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
+		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 		self.__init(loading = True)
 		self._load_upgrade_data(db)
 		self.owner.notify_settler_reached_level(self)
@@ -181,16 +182,22 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		"""Pays the tax for this settler"""
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
 		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
-		happiness_tax_modifier = (float(self.happiness)-50)/200 + 1
-		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants * self.settlement.tax_settings[self.level]
+
+		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
+		happiness_tax_modifier = 0.5 + (float(self.happiness)/100.0)
+		inhabitants_tax_modifier = float(self.inhabitants) / self.inhabitants_max
+		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
 		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
+
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, real_taxes)
 		self.last_tax_payed = real_taxes
 
-		# decrease happiness
-		happiness_decrease = int(round(taxes)) + self.tax_base + ((self.settlement.tax_settings[self.level] - 1) * 10)
+		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
+		difference = 1.0 - self.settlement.tax_settings[self.level]
+		happiness_decrease = 45 * difference - 15 * abs(difference)
 		happiness_decrease = int(round(happiness_decrease))
-		self.inventory.alter(RES.HAPPINESS_ID, -happiness_decrease)
+		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
+
 		self._changed()
 		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, real_taxes, \
 									 happiness_decrease, self.happiness)
@@ -210,9 +217,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
 		if changed:
-			# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Supplying_citizens_with_resources
-			# Disabled because alter_production_time actually works now (avoid change in game behaviour)
-			# self.alter_production_time( 1 + (float(self.inhabitants)/10))
+			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
+			self.alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
 			self._changed()
 
 	def level_check(self):
@@ -269,16 +275,16 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 
-	def _check_market_place_in_range(self):
-		"""Notifies the user via a message in case there is no market place in range"""
+	def _check_main_square_in_range(self):
+		"""Notifies the user via a message in case there is no main square in range"""
 		for building in self.get_buildings_in_range():
-			if building.id == BUILDINGS.MARKET_PLACE_CLASS:
+			if building.id == BUILDINGS.MAIN_SQUARE_CLASS:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:
-					# a market place is in range
+					# a main square is in range
 					return
-		# no market place found
+		# no main square found
 		self.session.ingame_gui.message_widget.add(self.position.origin.x, self.position.origin.y, \
-		                                           'NO_MARKET_PLACE_IN_RANGE')
+		                                           'NO_MAIN_SQUARE_IN_RANGE')
 
 	def level_upgrade(self, lvl):
 		"""Settlers only level up by themselves"""
@@ -296,5 +302,5 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		"""Returns constant settler-related data from the db.
 		The values are cached by python, so the underlying data must not change."""
 		return int(
-		  self.session.db("SELECT value from settler.balance_values WHERE name = ?", key)[0][0]
+		  self.session.db("SELECT value FROM balance_values WHERE name = ?", key)[0][0]
 		  )

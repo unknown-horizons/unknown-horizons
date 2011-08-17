@@ -132,6 +132,7 @@ class SPTestSession(SPSession):
 		Entities.load(self.db)
 		self.scenario_eventhandler = Dummy()
 		self.campaign = {}
+		self.selected_instances = []
 
 		# GUI
 		self.gui.session = self
