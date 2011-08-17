@@ -24,7 +24,7 @@ import math
 
 from horizons.scheduler import Scheduler
 
-from horizons.gui.tabs import SettlerOverviewTab, ProductionOverviewTab, InventoryTab
+from horizons.gui.tabs import SettlerOverviewTab
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle
 from horizons.constants import RES, BUILDINGS, GAME, SETTLER
@@ -49,7 +49,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	production_class = SettlerProduction
 
-	tabs = (SettlerOverviewTab, ProductionOverviewTab, InventoryTab)
+	tabs = (SettlerOverviewTab,)
 
 	default_level_on_build = 0
 
