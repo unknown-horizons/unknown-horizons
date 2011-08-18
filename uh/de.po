@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-18 17:39+0200\n"
+"PO-Revision-Date: 2011-08-18 17:50+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -1342,11 +1342,11 @@ msgstr "{L} = Logbuch anzeigen"
 
 #: horizons/i18n/guitranslations.py:362
 msgid "{T} = Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "{T} = Transparenz atmosphärischer Elemente an-/ausschalten"
 
 #: horizons/i18n/guitranslations.py:363
 msgid "{R} = Show player scores"
-msgstr ""
+msgstr "{R} = Spiel-Statistiken anzeigen"
 
 #: horizons/i18n/guitranslations.py:364 horizons/i18n/guitranslations.py:412
 #: horizons/i18n/guitranslations.py:438 horizons/i18n/guitranslations.py:445
@@ -1629,59 +1629,59 @@ msgstr "Wählt eine Karte:"
 
 #: horizons/i18n/guitranslations.py:461
 msgid "Choose your opponents:"
-msgstr ""
+msgstr "Wählt Eure Gegner:"
 
 #: horizons/i18n/guitranslations.py:463
 msgid "Climate zone:"
-msgstr ""
+msgstr "Klimazone:"
 
 #: horizons/i18n/guitranslations.py:464
 msgid "frosty"
-msgstr ""
+msgstr "frostig"
 
 #: horizons/i18n/guitranslations.py:465
 msgid "torrid"
-msgstr ""
+msgstr "heiß"
 
 #: horizons/i18n/guitranslations.py:466
 msgid "Map settings:"
-msgstr ""
+msgstr "Karteneinstellungen:"
 
 #: horizons/i18n/guitranslations.py:467
 msgid "Island size:"
-msgstr ""
+msgstr "Inselgröße:"
 
 #: horizons/i18n/guitranslations.py:468 horizons/i18n/guitranslations.py:471
 msgid "huge"
-msgstr ""
+msgstr "riesig"
 
 #: horizons/i18n/guitranslations.py:469 horizons/i18n/guitranslations.py:472
 msgid "small"
-msgstr ""
+msgstr "klein"
 
 #: horizons/i18n/guitranslations.py:470
 msgid "Map size:"
-msgstr ""
+msgstr "Kartengröße:"
 
 #: horizons/i18n/guitranslations.py:473
 msgid "Resource density:"
-msgstr ""
+msgstr "Rohstoffvorkommen:"
 
 #: horizons/i18n/guitranslations.py:474
 msgid "dense"
-msgstr ""
+msgstr "dicht"
 
 #: horizons/i18n/guitranslations.py:475
 msgid "few"
-msgstr ""
+msgstr "kaum"
 
 #: horizons/i18n/guitranslations.py:479
 msgid "AI players:"
-msgstr ""
+msgstr "KI-Spieler:"
 
 #: horizons/i18n/guitranslations.py:481
 msgid "Game settings:"
-msgstr ""
+msgstr "Spieleinstellungen:"
 
 #: horizons/i18n/guitranslations.py:483
 msgid "Color:"
@@ -1727,21 +1727,27 @@ msgstr "Fehler: Mehrere Treffer gefunden: "
 
 #: horizons/main.py:351
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr ""
+msgstr "Fehler: Kampagnen-Dateien müssen auf \".yaml\" enden."
 
 #: horizons/main.py:359
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory (%s)."
 msgstr ""
+"Aus technischen Gründen wird die Kampagne in das Kampagnenverzeichnis von UH "
+"kopiert (%s)."
 
 #: horizons/main.py:360
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"Daher werden Änderungen in der angegebenen Datei nicht direkt im Spiel "
+"sichtbar sein."
 
 #: horizons/main.py:361
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file %s."
 msgstr ""
+"Um sie zu sehen, sollte UH immer mit den momentanen Argumenten gestartet "
+"oder die Datei %s bearbeitet werden."
 
 #: horizons/main.py:367 horizons/savegamemanager.py:405
 #, python-format
@@ -1926,14 +1932,18 @@ msgstr "Lädt die letzte Schnellspeicherung."
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Setzt den Seed, vermittels dessen Bäume, Fisch und andere natürliche "
+"Rohstoffe generiert werden."
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "KI-Einstellungen"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
 msgstr ""
+"Verwendet <ai_players> KI-Spieler (ohne möglichen Mensch-KI Hybriden; "
+"standardmäßig 1)."
 
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
