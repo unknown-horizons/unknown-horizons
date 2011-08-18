@@ -280,6 +280,7 @@ class _Action(object):
 		'logbook_w': write_logbook_entry, # not showing the logbook
 		'wait': wait,
 		'goal_reached' : goal_reached,
+		'spawn_ships': spawn_ships
 	}
 
 	def __init__(self, action_dict):
