@@ -30,6 +30,10 @@ import sqlalchemy.ext.declarative
 import sqlite3
 import tempfile
 import os
+import sys
+
+sys.path.append(".")
+sys.path.append("./horizons")
 
 from horizons.constants import PATHS
 
