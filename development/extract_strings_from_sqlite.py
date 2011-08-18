@@ -27,16 +27,32 @@ visible ingame. Once that changes, please uncomment lines 109f.
 import sqlalchemy
 import sqlalchemy.orm
 import sqlalchemy.ext.declarative
+import sqlite3
+import tempfile
+import os
 
-engine = sqlalchemy.create_engine('sqlite:///content/game.sqlite')
-Session = sqlalchemy.orm.sessionmaker(bind=engine)
-session_game = Session()
+from horizons.constants import PATHS
 
-engine = sqlalchemy.create_engine('sqlite:///content/settler.sqlite')
+
+# sqlalchemy doesn't support importing sql files,
+# therefore we work around this by using sqlite3
+
+filename = tempfile.mkstemp(text = True)[1]
+conn = sqlite3.connect(filename)
+
+for db_file in PATHS.DB_FILES:
+	conn.executescript( open(db_file, "r").read()) 
+
+conn.commit()
+
+engine = sqlalchemy.create_engine('sqlite:///'+filename) # must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
+
 Session = sqlalchemy.orm.sessionmaker(bind=engine)
-session_settler = Session()
+db_session = Session()
 
 Base = sqlalchemy.ext.declarative.declarative_base()
+
+
 
 #
 # Classes
@@ -103,25 +119,27 @@ def print_msgid(msgid):
 def collect_all():
 	collector = MSGID_collect()
 
-	for building in session_game.query(Building):
+	for building in db_session.query(Building):
 		collector.add_to_collection(building.name, 'Building')
 
-#	for unit in session_game.query(Unit):
+#	for unit in db_session.query(Unit):
 #		collector.add_to_collection(unit.name, 'Unit')
 
-	for color in session_game.query(Colors):
+	for color in db_session.query(Colors):
 		collector.add_to_collection(color.name, 'Colors')
 
-	for message in session_game.query(Message):
+	for message in db_session.query(Message):
 		collector.add_to_collection(message.text, 'Messages')
 
-	for resource in session_game.query(Resource):
+	for resource in db_session.query(Resource):
 		collector.add_to_collection(resource.name, 'Resources')
 
-	for settler_level in session_settler.query(SettlerLevel):
+	for settler_level in db_session.query(SettlerLevel):
 		collector.add_to_collection(settler_level.name, 'SettlerLevel')
 
 	return collector
 
-if __name__ == '__main__':
-	print collect_all()
+
+print collect_all()
+os.unlink(filename)
+
