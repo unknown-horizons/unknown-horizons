@@ -128,9 +128,9 @@ class TradePost(object):
 		assert False
 
 	def sell_resource(self, ship, resource_id, amount):
-		"""Attempt to sell the given amount of resource to the ship"""
+		""" Attempt to sell the given amount of resource to the ship, returns the amount sold """
 		if resource_id not in self.sell_list:
-			return
+			return 0
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
 		assert price > 0
@@ -143,20 +143,22 @@ class TradePost(object):
 		amount = min(amount, ship.owner.inventory[RES.GOLD_ID] // price)
 		# can't sell more than we are trying to sell according to the settings
 		amount = min(amount, self.inventory[resource_id] - self.sell_list[resource_id])
+		if amount <= 0:
+			return 0
 
-		if amount > 0:
-			total_price = price * amount
-			assert self.owner.inventory.alter(RES.GOLD_ID, total_price) == 0
-			assert ship.owner.inventory.alter(RES.GOLD_ID, -total_price) == 0
-			assert self.inventory.alter(resource_id, -amount) == 0
-			assert ship.inventory.alter(resource_id, amount) == 0
-			self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
-			self.total_income += total_price
+		total_price = price * amount
+		assert self.owner.inventory.alter(RES.GOLD_ID, total_price) == 0
+		assert ship.owner.inventory.alter(RES.GOLD_ID, -total_price) == 0
+		assert self.inventory.alter(resource_id, -amount) == 0
+		assert ship.inventory.alter(resource_id, amount) == 0
+		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
+		self.total_income += total_price
+		return amount
 
 	def buy_resource(self, ship, resource_id, amount):
-		"""Attempt to buy the given amount of resource from the ship"""
+		""" Attempt to buy the given amount of resource from the ship, return the amount bought """
 		if resource_id not in self.buy_list:
-			return
+			return 0
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
 		assert price > 0
@@ -169,15 +171,17 @@ class TradePost(object):
 		amount = min(amount, self.owner.inventory[RES.GOLD_ID] // price)
 		# can't buy more than we are trying to buy according to the settings
 		amount = min(amount, self.buy_list[resource_id] - self.inventory[resource_id])
+		if amount <= 0:
+			return 0
 
-		if amount > 0:
-			total_price = price * amount
-			assert self.owner.inventory.alter(RES.GOLD_ID, -total_price) == 0
-			assert ship.owner.inventory.alter(RES.GOLD_ID, total_price) == 0
-			assert self.inventory.alter(resource_id, amount) == 0
-			assert ship.inventory.alter(resource_id, -amount) == 0
-			self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
-			self.total_expenses += total_price
+		total_price = price * amount
+		assert self.owner.inventory.alter(RES.GOLD_ID, -total_price) == 0
+		assert ship.owner.inventory.alter(RES.GOLD_ID, total_price) == 0
+		assert self.inventory.alter(resource_id, amount) == 0
+		assert ship.inventory.alter(resource_id, -amount) == 0
+		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
+		self.total_expenses += total_price
+		return amount
 
 	@property
 	def sell_income(self):
