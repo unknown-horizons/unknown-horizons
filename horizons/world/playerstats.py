@@ -134,7 +134,7 @@ class PlayerStats(WorldObject):
 			if resource_id == RES.GOLD_ID:
 				total += amount # for some reason the value of gold is 0 by default
 			else:
-				total += amount * self.db.get_res_value(resource_id) 
+				total += amount * self.db.get_res_value(resource_id)
 		self.building_score = int(total * self.building_score_coefficient)
 
 	unavailable_resource_coefficient = 0.3 # the resource exists but isn't usable so it is worth less
@@ -160,7 +160,7 @@ class PlayerStats(WorldObject):
 					total += extra_amount * value * self.unavailable_resource_coefficient
 		self.resource_score = int(total * self.resource_score_coefficient)
 
-	unit_value = {UNITS.PLAYER_SHIP_CLASS: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT: 0.05}
+	unit_value = {UNITS.FRIGATE: 1.5, UNITS.PLAYER_SHIP_CLASS: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT: 0.05}
 	unit_score_coefficient = 10
 
 	def _calculate_unit_score(self, ships):

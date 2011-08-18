@@ -423,6 +423,7 @@ class WeaponHolder(object):
 				self._fireable.append(weapon)
 			weapon.add_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
 			weapon.add_attack_ready_listener(Callback(self._add_to_fireable, weapon))
+			weapon.add_weapon_fired_listener(self._increase_fired_weapons_number)
 		self.on_storage_modified()
 		# load target after all objects have been loaded
 		Scheduler().add_new_object(Callback(self.load_target, db), self, run_in = 0)
