@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-18 17:50+0200\n"
+"PO-Revision-Date: 2011-08-18 17:57+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -451,7 +451,7 @@ msgstr "Seefahrer"
 #: horizons/gui/tabs/mainsquaretabs.py:233
 #: horizons/i18n/guitranslations.py:181
 msgid "Pioneers"
-msgstr ""
+msgstr "Pioniere"
 
 #: horizons/gui/tabs/mainsquaretabs.py:238
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:328
@@ -477,7 +477,7 @@ msgstr "Schiffsübersicht"
 
 #: horizons/gui/tabs/overviewtab.py:225
 msgid "Unit overview"
-msgstr ""
+msgstr "Einheiten-Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -1197,7 +1197,7 @@ msgstr "Gebäude"
 
 #: horizons/i18n/guitranslations.py:323
 msgid "Player scores"
-msgstr ""
+msgstr "Spielstatistiken"
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Land"
@@ -1948,10 +1948,12 @@ msgstr ""
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
 msgstr ""
+"Erstellt einen Mensch-KI Hybriden aus menschlichem Spieler (nur für "
+"Entwickler)."
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
-msgstr ""
+msgstr "Anzeige der KI-Pläne per Farbhighlight (nur für Entwickler)."
 
 #: run_uh.py:120
 msgid "Development options"
@@ -1983,7 +1985,7 @@ msgstr "Aktiviere Profiling (nur für Entwickler)."
 
 #: run_uh.py:133
 msgid "Run the game for <max_ticks> ticks."
-msgstr ""
+msgstr "Betreibt das Spiel für <max_ticks> Ticks."
 
 #: run_uh.py:135
 msgid "Enable the string previewer tool for scenario writers"
@@ -2009,15 +2011,20 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Fehler: Konnte benötigte Bibliotheken nicht finden"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Eine von Unknown Horizons benötigte Systembibliothek scheint leider zu "
+"fehlen und muss daher installiert werden."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Installationsprogramme für Windows-Nutzer findet Ihr unter "
+"\"http://pyyaml.org/wiki/PyYAML\", Linux-Nutzer sollten die Pakete \"pyyaml\" "
+"oder \"python-yaml\" per Paketmanager installieren."
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
@@ -2084,7 +2091,7 @@ msgstr "Fischer"
 
 #: sqlite/Building
 msgid "Gravel Path"
-msgstr ""
+msgstr "Schotterpfad"
 
 #: sqlite/Building
 msgid "Herbary"
@@ -2199,7 +2206,7 @@ msgstr "Weber"
 
 #: sqlite/Building
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Turm"
 
 #: sqlite/Colors
 msgid "black"
@@ -2235,7 +2242,7 @@ msgstr "gelb"
 
 #: sqlite/Messages
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} und ${player2} sind nun ${status}"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
@@ -2259,7 +2266,7 @@ msgstr "Einige Eurer Siedler haben Euch den Rücken gekehrt."
 
 #: sqlite/Messages
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Ihr könnt Straßen auch bei gedrückter Maustaste aufziehen."
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
@@ -2292,7 +2299,7 @@ msgstr "Ziegel"
 
 #: sqlite/Resources
 msgid "cannon"
-msgstr ""
+msgstr "Kanonen"
 
 #: sqlite/Resources
 msgid "cattle"
@@ -2325,7 +2332,7 @@ msgstr "Gemeinschaft"
 
 #: sqlite/Resources
 msgid "dagger"
-msgstr ""
+msgstr "Dolch"
 
 #: sqlite/Resources
 msgid "deer food A"
@@ -2369,7 +2376,7 @@ msgstr "Kräuter"
 
 #: sqlite/Resources
 msgid "iron deposit"
-msgstr ""
+msgstr "Eisenvorkommen"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -2390,7 +2397,7 @@ msgstr "Spirituosen"
 
 #: sqlite/Resources
 msgid "medical herbs"
-msgstr ""
+msgstr "Heilkräuter"
 
 #: sqlite/Resources
 msgid "pigs"
@@ -2415,7 +2422,7 @@ msgstr "Zucker"
 
 #: sqlite/Resources
 msgid "sugar cane"
-msgstr ""
+msgstr "Zuckerrohr"
 
 #: sqlite/Resources
 msgid "textile"
@@ -2423,11 +2430,11 @@ msgstr "Kleidung"
 
 #: sqlite/Resources
 msgid "tobacco leaves"
-msgstr ""
+msgstr "Tabakschnitt"
 
 #: sqlite/Resources
 msgid "tobacco plants"
-msgstr ""
+msgstr "Tabakpflanzen"
 
 #: sqlite/Resources
 msgid "tobaccos"

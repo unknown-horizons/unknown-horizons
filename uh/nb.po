@@ -433,15 +433,19 @@ msgstr ""
 msgid "Sailors"
 msgstr ""
 
+# 75%
 #: horizons/gui/tabs/mainsquaretabs.py:233
 #: horizons/i18n/guitranslations.py:181
+#, fuzzy
 msgid "Pioneers"
-msgstr ""
+msgstr "pionér"
 
+# 75%
 #: horizons/gui/tabs/mainsquaretabs.py:238
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:328
+#, fuzzy
 msgid "Settlers"
-msgstr ""
+msgstr "nybygger"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:393
 #: horizons/i18n/guitranslations.py:267
@@ -461,9 +465,11 @@ msgstr ""
 msgid "Ship overview"
 msgstr "Skipsoversikt"
 
+# 76%
 #: horizons/gui/tabs/overviewtab.py:225
+#, fuzzy
 msgid "Unit overview"
-msgstr ""
+msgstr "Skipsoversikt"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 #, fuzzy
@@ -960,10 +966,12 @@ msgstr ""
 msgid "3 residents"
 msgstr ""
 
+# 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
 #: horizons/i18n/guitranslations.py:221
+#, fuzzy
 msgid "residents"
-msgstr ""
+msgstr "Beboere"
 
 #: horizons/i18n/guitranslations.py:189 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:222 horizons/i18n/guitranslations.py:249
@@ -1189,9 +1197,11 @@ msgstr ""
 msgid "Money"
 msgstr ""
 
+# 80%
 #: horizons/i18n/guitranslations.py:326
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Navn:"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Resources"
@@ -1647,9 +1657,11 @@ msgstr ""
 msgid "Map size:"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:473
+#, fuzzy
 msgid "Resource density:"
-msgstr ""
+msgstr "Ressurslager"
 
 #: horizons/i18n/guitranslations.py:474
 msgid "dense"
@@ -1772,10 +1784,13 @@ msgstr "Feil: Kan ikke finne kart \"%s\"."
 msgid "Error: Cannot find scenario \"%s\"."
 msgstr "Feil: Finner ikke lagret spill \"%s\"."
 
+# 81%
+# 76%
+# 83%
 #: horizons/savegamemanager.py:433
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr ""
+msgstr "Feil: Kan ikke finne kart \"%s\"."
 
 #: horizons/scenario/actions.py:75 sqlite/Messages
 msgid "You have won!"
@@ -2203,9 +2218,11 @@ msgstr "En ny bosetting opprettet av ${player}."
 msgid "A new world has been created."
 msgstr "En ny verden har blitt skapt."
 
+# 85%
 #: sqlite/Messages
+#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "En av dine nybyggere din har ingen markedsplass i rekkevidde."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
@@ -2267,9 +2284,11 @@ msgstr ""
 msgid "clay"
 msgstr "leire"
 
+# 83%
 #: sqlite/Resources
+#, fuzzy
 msgid "clay deposit"
-msgstr ""
+msgstr "Leirelager"
 
 #: sqlite/Resources
 msgid "coins"
