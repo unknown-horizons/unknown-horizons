@@ -28,6 +28,7 @@ from functools import partial
 
 from builder import Builder
 from areabuilder import AreaBuilder
+from roadplanner import RoadPlanner
 from building import AbstractBuilding
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
@@ -99,6 +100,26 @@ class ProductionBuilder(AreaBuilder):
 				return True
 		return False
 
+	def build_extra_road_connection(self, building, collector_building):
+		collector_coords = set(coords for coords in self._get_possible_road_coords(collector_building.position, collector_building.position))
+		destination_coords = set(coords for coords in self._get_possible_road_coords(building.loading_area, building.position))
+		pos = building.loading_area
+		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
+
+		path = RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \
+			destination_coords, beacon, self._get_path_nodes())
+		if path is None:
+			return BUILD_RESULT.IMPOSSIBLE
+
+		cost = self._get_road_cost(path)
+		for resource_id, amount in cost.iteritems():
+			if resource_id == RES.GOLD_ID:
+				if self.owner.inventory[resource_id] < amount:
+					return BUILD_RESULT.NEED_RESOURCES
+			elif self.settlement.inventory[resource_id] < amount:
+				return BUILD_RESULT.NEED_RESOURCES
+		return BUILD_RESULT.OK if self._build_road(path) else BUILD_RESULT.UNKNOWN_ERROR
+
 	def _get_problematic_collector_coverage_buildings(self):
 		problematic_buildings = {}
 		for building in self.production_buildings:
@@ -143,16 +164,17 @@ class ProductionBuilder(AreaBuilder):
 				distance = building.loading_area.distance(collector_building.position)
 				if distance > collector_building.radius:
 					continue # out of range anyway
+				# TODO: check whether the link already exists
 				potential_road_connections.append((distance * collector_building.get_collector_utilisation(), building, collector_building))
 
 		# try the best link from the above list
 		for _, building, collector_building in sorted(potential_road_connections):
 			result = self.build_extra_road_connection(building, collector_building)
-			if result:
+			if result == BUILD_RESULT.OK:
 				self._last_collector_improvement_road = current_tick
 				self.log.info('%s connected %s at %d, %d with %s at %d, %d', self, building.name, building.position.origin.x, \
 					building.position.origin.y, collector_building.name, collector_building.position.origin.x, collector_building.position.origin.y)
-				return BUILD_RESULT.OK
+			return result
 		self.log.info('%s found no good way to connect buildings that need more collectors to existing collector buildings', self)
 
 		if not self.have_resources(BUILDINGS.STORAGE_CLASS):

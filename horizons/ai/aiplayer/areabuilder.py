@@ -187,18 +187,7 @@ class AreaBuilder(WorldObject):
 		path = self._get_road_to_builder(builder)
 		return self._build_road(path)
 
-	def build_extra_road_connection(self, building, collector_building):
-		collector_coords = set(coords for coords in self._get_possible_road_coords(collector_building.position, collector_building.position))
-		destination_coords = set(coords for coords in self._get_possible_road_coords(building.loading_area, building.position))
-		pos = building.loading_area
-		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
-
-		path = RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \
-			destination_coords, beacon, self._get_path_nodes())
-		return self._build_road(path)
-
-	def get_road_connection_cost(self, builder):
-		path = self._get_road_to_builder(builder)
+	def _get_road_cost(self, path):
 		if path is None:
 			return None
 		length = 0
@@ -213,6 +202,9 @@ class AreaBuilder(WorldObject):
 		for resource in costs:
 			costs[resource] *= length
 		return costs
+
+	def get_road_connection_cost(self, builder):
+		return self._get_road_cost(self._get_road_to_builder(builder))
 
 	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
 		return Builder.create(building_id, self.land_manager, Point(x, y), orientation = orientation)
