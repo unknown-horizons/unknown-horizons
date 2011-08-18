@@ -23,10 +23,6 @@ from horizons.constants import SETTLER
 
 class DefaultPersonality:
 	class AIPlayer:
-		little_money = 3000 # cutoff to decide that we really need to get more money by selling resources on other players' islands
-		buy_coefficient_rich = 30 # value coefficient of buying resources when we have more than little_money gold
-		buy_coefficient_poor = 10 # value coefficient of buying resources when we have less than or equal to little_money gold
-
 		min_feeder_island_area = 400 # minimum amount of usable free land on an island to consider turning it into a feeder island
 		feeder_island_requirement_cutoff = 30 # if there are less than this many free 3x3 squares in a settlement then a feeder island is needed
 
@@ -52,6 +48,11 @@ class DefaultPersonality:
 		# maximum amount of a resource loaded on a ship to start a new feeder island
 		max_new_feeder_island_tools = 30
 		max_new_feeder_island_boards = 30
+
+	class InternationalTradeManager:
+		little_money = 3000 # cutoff to decide that we really need to get more money by selling resources on other players' islands
+		buy_coefficient_rich = 30 # value coefficient of buying resources when we have more than little_money gold
+		buy_coefficient_poor = 10 # value coefficient of buying resources when we have less than or equal to little_money gold
 
 	class AreaBuilder:
 		path_road_penalty_threshold = 9
