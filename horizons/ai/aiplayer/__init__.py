@@ -370,10 +370,10 @@ class AIPlayer(GenericAI):
 				self.log.info('%s all further goals during this tick blocked by goal %s', self, goal)
 				break # built something; stop because otherwise the AI could look too fast
 
-		self.log.info('%s, had %d active goals', self, sum(goal.active for goal in goals))
+		self.log.info('%s had %d active goals', self, sum(goal.active for goal in goals))
 		for goal in goals:
 			if goal.active:
-				self.log.info('%s goal(%d): %s', self, goal.priority, goal)
+				self.log.info('%s %s', self, goal)
 
 	def want_another_village(self):
 		""" Avoid having more than one developing island with a village at a time """

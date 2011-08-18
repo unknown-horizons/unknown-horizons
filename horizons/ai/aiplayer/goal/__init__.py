@@ -31,15 +31,15 @@ class Goal(object):
 
 	log = logging.getLogger("ai.aiplayer.goal")
 
-	__next_id = 0 # used to assign sequence numbers to goals to ensure consistent ordering
-
 	def __init__(self, owner):
 		super(Goal, self).__init__()
 		self.owner = owner
 		self.personality = self.owner.personality_manager.get(self.get_personality_name())
 
-		self.sequence_number = self.__next_id
-		self.__next_id += 1
+		if not hasattr(Goal, '_next_id'):
+			Goal._next_id = 1 # used to assign sequence numbers to goals to ensure consistent ordering
+		self.sequence_number = Goal._next_id
+		Goal._next_id += 1
 
 	def get_personality_name(self):
 		raise NotImplementedError, 'This function has to be overridden.'
@@ -77,5 +77,8 @@ class Goal(object):
 		if self.priority != other.priority:
 			return self.priority < other.priority
 		return self.sequence_number < other.sequence_number
+
+	def __str__(self):
+		return 'Goal(%d): %s(%d)' % (self.priority, self.__class__.__name__, self.sequence_number)
 
 decorators.bind_all(Goal)

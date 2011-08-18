@@ -38,4 +38,7 @@ class SettlementGoal(Goal):
 	def can_be_activated(self):
 		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement_manager.tents
 
+	def __str__(self):
+		return super(SettlementGoal, self).__str__() + ', ' + self.settlement_manager.settlement.name
+
 decorators.bind_all(SettlementGoal)
