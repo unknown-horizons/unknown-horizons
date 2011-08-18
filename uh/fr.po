@@ -226,7 +226,7 @@ msgstr "Échec lors de l'effacement de la sauvegarde !"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Impossible de trouver pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
