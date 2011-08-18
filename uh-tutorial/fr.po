@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-02-27 18:14+0100\n"
+"POT-Creation-Date: 2011-08-18 21:21+0200\n"
 "PO-Revision-Date: 2011-06-28 19:34+0200\n"
 "Last-Translator: tintou <tintou@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,89 +110,14 @@ msgstr ""
 "\n"
 "MISSION: Construire un comptoir sur la côte."
 
-#: po/tutorial.py:9
-msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr "MISSION : DÉCHARGEZ VOS MARCHANDISES"
-
-# I don't know how to translate 'Open the trade dialogue' cause the context is about loading/unloading stuff from the boat...is it really about trade ?
-#: po/tutorial.py:10
-msgid ""
-"Now that you have built the Branch Office, you need to move some of your resources to its stock.\n"
-"\n"
-"To do so, select your ship and go into the tab with the wooden box icon called 'Ship Inventory'.\n"
-"\n"
-"Here you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n"
-"\n"
-"This button becomes active if your ship is in range of a possible trade partner like a branch office.\n"
-"\n"
-"Click on the button. If it is not active, move your ship towards the branch office and then try again.\n"
-"\n"
-"TASK: Open the trade dialogue."
-msgstr ""
-"Maintenant que vous avez établi un comptoir, vous devez alimenter son stock.\n"
-"\n"
-"Pour ce faire, sélectionnez votre navire et rendez-vous dans le panneau "
-"signalé par une caisse en bois appelé «Cargaison du navire».\n"
-"\n"
-"Vous avez ici un aperçu de la cargaison de votre navire et vous y trouverez "
-"le bouton «Chargez/Déchargez».\n"
-"\n"
-"Ce bouton devient actif lorsque votre vaisseau se trouve à portée d'un "
-"partenaire commercial potentiel, comme par exemple un comptoir.\n"
-"\n"
-"Cliquez sur le bouton. S'il n'est pas actif, déplacez votre vaisseau à "
-"proximité du comptoir, et réessayez.\n"
-"\n"
-"MISSION : Débutez les échanges commerciaux."
-
-#: po/tutorial.py:11
-msgid ""
-"The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
-"\n"
-"To move goods from one stock to the other, simply click on them.\n"
-"\n"
-"Try clicking on the boards currently on your ship first and then try moving them back.\n"
-"\n"
-"You can customize the quantity moved by using the self-explanatory radio buttons in the middle.\n"
-"\n"
-"Did you get used to the trade tab?\n"
-"You need some construction material in your settlement now!\n"
-"\n"
-"TASK: Unload at least 10 tons of each resource your ship sailed around with."
-msgstr ""
-"Le panneau que vous avez sous les yeux est scindé entre les partenaires "
-"commerciaux «Vaisseau» et «Comptoir».\n"
-"\n"
-"Pour déplacer les marchandises d'un stock à l'autre, cliquez simplement "
-"dessus.\n"
-"\n"
-"Essayez de cliquer sur les planches de votre navire pour les décharger, puis "
-"rechargez-les à bord.\n"
-"\n"
-"Vous pouvez choisir la quantité à déplacer en utilisant les boutons prévus à "
-"cet effet.\n"
-"\n"
-"Maitrisez-vous le panneau des échanges commerciaux?\n"
-"Vous avez maintenant besoin de matériaux de construction pour votre "
-"comptoir!\n"
-"\n"
-"MISSION : Déchargez au moins 10 tonnes de chaque ressource disponible à bord "
-"de votre navire dans votre comptoir."
-
-#: po/tutorial.py:12
-msgid "Unload at least 10 tons of each resource on your ship."
-msgstr ""
-"Déchargez au moins 10 tonnes de chaque ressource présente sur votre "
-"vaisseau."
-
 # I change this until we will have a system to make the longer sentences fitting properly (seb)
-#: po/tutorial.py:13
+#: po/tutorial.py:9
 msgid "NEW TASK: BUILD A LUMBERJACK"
 msgstr "MISSION : LE BÛCHERON"
 
-#: po/tutorial.py:14
+#: po/tutorial.py:10
 msgid ""
-"With your new construction material in the branch office, you can start to construct some basic buildings.\n"
+"The construction material on your ship got unloaded automatically. You can now construct some basic buildings.\n"
 "\n"
 "We will start with building a lumberjack.\n"
 "\n"
@@ -205,24 +130,8 @@ msgid ""
 "The build menu is sorted by increments.\n"
 "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
 msgstr ""
-"Avec ces nouveaux matériaux disponibles dans votre comptoir, vous pouvez "
-"commencer à construire quelques bâtiments de base.\n"
-"\n"
-"Commençons par établir un bûcheron.\n"
-"\n"
-"C'est essentiel parce que, à ce niveau, le bois est la seule matière que les "
-"marins peuvent s'offrir pour monter leurs tentes.\n"
-"\n"
-"Le pêcheur a également besoin de planches pour construire son bateau.\n"
-"\n"
-"Pour construire une cabane de bûcheron, ouvrez le menu construction en "
-"cliquant sur le grand icône sous la mini-carte, ou en pressant la touche B.\n"
-"\n"
-"Le menu construction est classé par niveaux.\n"
-"Cela signifie que seuls les bâtiments de base sont accessibles quand on est "
-"au premier niveau (celui des marins)."
 
-#: po/tutorial.py:15
+#: po/tutorial.py:11
 msgid ""
 "As your civilization advances, you also gain more and more complex buildings.\n"
 "\n"
@@ -257,18 +166,18 @@ msgstr ""
 "\n"
 "Regardez-le produire vos premières planches."
 
-#: po/tutorial.py:16
+#: po/tutorial.py:12
 msgid "Build a lumberjack and connect it to the branch office using a trail."
 msgstr ""
 "Construisez un campement de bucheron et connectez le à votre comptoir par "
 "une route."
 
 # as upper, i put a smaller sentence here for the moment (too long)
-#: po/tutorial.py:17
+#: po/tutorial.py:13
 msgid "NEW TASK: FOOD SUPPLY"
 msgstr "MISSION: LA NOURRITURE"
 
-#: po/tutorial.py:18
+#: po/tutorial.py:14
 msgid ""
 "You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.\n"
 "\n"
@@ -300,7 +209,7 @@ msgstr ""
 
 # also needs a fish school in range nowadays.
 # fish school means 'banc de poisson'
-#: po/tutorial.py:19
+#: po/tutorial.py:15
 msgid ""
 "The Fisher needs a coastal building site like the branch office and a fish school in range.\n"
 "\n"
@@ -330,17 +239,17 @@ msgstr ""
 "\n"
 "Et n'oubliez pas les sentiers les reliant à votre comptoir!"
 
-#: po/tutorial.py:20
+#: po/tutorial.py:16
 msgid "Build a hunter and a fisher. Connect them to the branch office."
 msgstr ""
 "Construisez une cabane de chasseur et une de pêcheur. Connectez les à votre "
 "comptoir."
 
-#: po/tutorial.py:21
+#: po/tutorial.py:17
 msgid "NEW TASK: MAIN SQUARE"
 msgstr "MISSION: LA PLACE CENTRALE"
 
-#: po/tutorial.py:22
+#: po/tutorial.py:18
 msgid ""
 "Your residents need a main square where they can fetch their goods from.\n"
 "\n"
@@ -372,7 +281,7 @@ msgstr ""
 "\n"
 "MISSION: Construire une place centrale."
 
-#: po/tutorial.py:23
+#: po/tutorial.py:19
 msgid ""
 "Now let's have a closer look at the main square.\n"
 "\n"
@@ -401,17 +310,17 @@ msgstr ""
 "Dans l'onglet «Colons» vous pouvez voir le niveau de satisfaction des "
 "habitants et les ressources qui manquent à la majorité d'entre eux."
 
-#: po/tutorial.py:24
+#: po/tutorial.py:20
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
 "Construisez une place centrale. Choisissez un endroit peu chargé en "
 "bâtiments économiques."
 
-#: po/tutorial.py:25
+#: po/tutorial.py:21
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
 msgstr "MISSION: LES HABITATIONS"
 
-#: po/tutorial.py:26
+#: po/tutorial.py:22
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.\n"
 "\n"
@@ -435,11 +344,11 @@ msgstr ""
 "\n"
 "MISSION: Construisez une tente et connectez la à la place centrale."
 
-#: po/tutorial.py:27
+#: po/tutorial.py:23
 msgid "Build a tent and connect it to the main square."
 msgstr "Construisez une tente et connectez la à la place centrale."
 
-#: po/tutorial.py:28
+#: po/tutorial.py:24
 msgid ""
 "Let's have a look at the tent overview tab.\n"
 "You can see\n"
@@ -477,16 +386,16 @@ msgstr ""
 "Astuce: Il est plus simple de construire plusieurs bâtiments du même type en "
 "gardant la touche SHIFT enfoncée."
 
-#: po/tutorial.py:29
+#: po/tutorial.py:25
 msgid "Build at least three additional tents and connect them to the main square."
 msgstr "Construisez 3 tentes supplémentaires et reliez les à la place centrale."
 
 # The translation is bad, but it fits. for the moment, this is the solution
-#: po/tutorial.py:30
+#: po/tutorial.py:26
 msgid "NEW TASK: BUILD SIGNAL FIRE"
 msgstr "MISSION : LA SIGNALISATION"
 
-#: po/tutorial.py:31
+#: po/tutorial.py:27
 msgid ""
 "Can you see the ship passing your island from time to time?\n"
 "\n"
@@ -517,7 +426,7 @@ msgstr ""
 "Pour cela, vous pouvez construire un feu de signalisation sur la cote, près "
 "de votre comptoir, il montrera la voie aux bateaux."
 
-#: po/tutorial.py:32
+#: po/tutorial.py:28
 msgid ""
 "After this little advertisment, the trader will stop by from time to time and look into your branch office.\n"
 "\n"
@@ -548,17 +457,17 @@ msgstr ""
 "\n"
 "MISSION: Construisez un feu de signalisation près de votre comptoir."
 
-#: po/tutorial.py:33
+#: po/tutorial.py:29
 msgid "Build a signal fire at the coast close to your branch office."
 msgstr "Construisez un feu de signalisation sur la côte proche du comptoir."
 
 # The translation is bad, but it fits. for the moment, this is the solution
-#: po/tutorial.py:34
+#: po/tutorial.py:30
 msgid "NEW TASK: LEARN TO TRADE"
 msgstr "MISSION: COMMERCER"
 
 #  « ... » uses a lot of space, i replaced it by «...»
-#: po/tutorial.py:35
+#: po/tutorial.py:31
 msgid ""
 "Excellent! The Free Trader will now stop by at your branch office from time to time.\n"
 "\n"
@@ -585,8 +494,7 @@ msgstr ""
 "Quand vous vendez, la «valeur cible» est la quantité de produit que vous "
 "voulez garder en réserve et ne pas vendre"
 
-# I used the suggestion from erdnaxeli and made some more changes.
-#: po/tutorial.py:36
+#: po/tutorial.py:32
 msgid ""
 "For example: \n"
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\n"
@@ -599,39 +507,19 @@ msgid ""
 "\n"
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.\n"
 "\n"
-"TASK: Buy as many tools as you need to have 30 tools in stock!\n"
-"If you still have some in your ship's inventory, this seems like a good point to unload them."
+"TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
-"Voici un exemple :\n"
-"Un emplacement «achat» avec 5 tonnes en stock et un curseur à 9 achètera "
-"jusqu'à 4 tonnes.\n"
-"Un emplacement «vente» avec 18 tonnes en stock et un curseur à 13 vendra "
-"jusqu'à 5 tonnes.\n"
-"\n"
-"Cependant si le bateau-marchand n'en veut pas ou n'en a pas autant, vous "
-"devrez être patient et attendre son prochain passage\n"
-"\n"
-"Unknown Horizons propose un système de prix intelligent, la valeur d'une "
-"unité peut donc varier.\n"
-"Il n'est pas possible de changer les prix!\n"
-"\n"
-"Vous pouvez voir votre balance commerciale dans l'onglet «Compte» mettant en "
-"relief «Vente» et «Achat».\n"
-"\n"
-"MISSION: Achetez autant d'outils que nécessaire pour en avoir 30 en stock!\n"
-"Si vous en avez encore dans votre vaisseau, ce serait le bon moment pour les "
-"décharger."
 
-#: po/tutorial.py:37
+#: po/tutorial.py:33
 msgid "Reach an island stock of at least 30 tools."
 msgstr "Atteignez un stock d'au moins 30 outils."
 
 # The translation is bad, but it fits. for the moment, this is the solution
-#: po/tutorial.py:38
+#: po/tutorial.py:34
 msgid "NEW TASK: BUILD A PAVILION"
 msgstr "MISSION: LE PAVILLON"
 
-#: po/tutorial.py:39
+#: po/tutorial.py:35
 msgid ""
 "Those tools will be enough for the moment. Well done!\n"
 "\n"
@@ -664,7 +552,7 @@ msgstr ""
 "Dans les niveaux suivants, des versions améliorées des bâtiments seront "
 "disponibles."
 
-#: po/tutorial.py:40
+#: po/tutorial.py:36
 msgid ""
 "In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
 "\n"
@@ -692,15 +580,15 @@ msgstr ""
 "MISSION: Construire un pavillon connecté aux tentes pour assouvir la demande "
 "religieuse de vos marins."
 
-#: po/tutorial.py:41
+#: po/tutorial.py:37
 msgid "Build a pavilion with connection to the tents."
 msgstr "Construisez un pavillon connecté aux tentes."
 
-#: po/tutorial.py:42
+#: po/tutorial.py:38
 msgid "NEW TASK: NEXT INCREMENT"
 msgstr "MISSION: NIVEAU SUIVANT"
 
-#: po/tutorial.py:43
+#: po/tutorial.py:39
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.\n"
 "\n"
@@ -731,7 +619,7 @@ msgstr ""
 "chercher du matériel nécessaire à la construction d'une maison en rondin. "
 "Cette maison remplacera la vieille tente."
 
-#: po/tutorial.py:44
+#: po/tutorial.py:40
 msgid ""
 "Such residential upgrades are the only ones which cost resources and can not be restricted by you.\n"
 "\n"
@@ -761,17 +649,17 @@ msgstr ""
 "MISSION: Baissez les taxes (côté gauche du régleur) et attendez que les "
 "marins se développent."
 
-#: po/tutorial.py:45
+#: po/tutorial.py:41
 msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
 "Réglez les taxes sur Bas (côté gauche du régleur) et attendez que vos marins "
 "se développent."
 
-#: po/tutorial.py:46
+#: po/tutorial.py:42
 msgid "NEW TASK: BUILD A FARM"
 msgstr "MISSION: CONSTRUIRE UNE FERME"
 
-#: po/tutorial.py:47
+#: po/tutorial.py:43
 msgid ""
 "Congratulations! Some of your inhabitants have reached increment II!\n"
 "\n"
@@ -802,7 +690,7 @@ msgstr ""
 "La production d'une ferme dépend du type de champ que vous placez autour "
 "d'elle."
 
-#: po/tutorial.py:48
+#: po/tutorial.py:44
 msgid ""
 "We will have a closer look at this later.\n"
 "\n"
@@ -835,16 +723,16 @@ msgstr ""
 "\n"
 "MISSION: Construisez une ferme."
 
-#: po/tutorial.py:49
+#: po/tutorial.py:45
 msgid "Build a farm and keep some empty space around it."
 msgstr "Construisez une ferme et laissez de l'espace libre autour d'elle."
 
 # The translation is bad, but it fits. for the moment, this is the solution
-#: po/tutorial.py:50
+#: po/tutorial.py:46
 msgid "NEW TASK: BUILD FIELDS"
 msgstr "MISSION: CHAMPS"
 
-#: po/tutorial.py:51
+#: po/tutorial.py:47
 msgid ""
 "The farm itself is not going to produce anything without some fields.\n"
 "\n"
@@ -879,7 +767,7 @@ msgstr ""
 "(pas les champs!) au réseau routier puisque c'est la seule entreprise de "
 "cette chaine de production."
 
-#: po/tutorial.py:52
+#: po/tutorial.py:48
 msgid ""
 "Make sure that all fields you build are in the area covered by the farm.\n"
 "\n"
@@ -907,17 +795,17 @@ msgstr ""
 "MISSION: Construisez au moins un pré dans le rayon d'action de la ferme et "
 "ajoutez des champs de pommes de terre si vous le souhaitez."
 
-#: po/tutorial.py:53
+#: po/tutorial.py:49
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
 "Construisez au moins un pré et ajoutez des champs de pommes de terre si vous "
 "voulez."
 
-#: po/tutorial.py:54
+#: po/tutorial.py:50
 msgid "NEW TASK: BUILD STORAGE"
 msgstr "MISSION : L'ENTREPÔT"
 
-#: po/tutorial.py:55
+#: po/tutorial.py:51
 msgid ""
 "Did you watch your lumberjack recently?\n"
 "\n"
@@ -949,7 +837,7 @@ msgstr ""
 "baisseront pas à zéro, mais ils seront déjà plus bas que si le bâtiment "
 "fonctionnait."
 
-#: po/tutorial.py:56
+#: po/tutorial.py:52
 msgid ""
 "This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.\n"
 "\n"
@@ -982,16 +870,16 @@ msgstr ""
 "MISSION: Construisez un entrepôt, de préférence quelque part où vous avez "
 "besoin de collecteurs."
 
-#: po/tutorial.py:57
+#: po/tutorial.py:53
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr ""
 "Construisez un entrepôt (dans l'onglet niveau I) à un emplacement utile."
 
-#: po/tutorial.py:58
+#: po/tutorial.py:54
 msgid "NEW TASK: BUILD A WEAVER"
 msgstr "MISSION: LE TISSERAND"
 
-#: po/tutorial.py:59
+#: po/tutorial.py:55
 msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth out of this wool.\n"
 "\n"
@@ -1019,21 +907,21 @@ msgstr ""
 "MISSION: Construisez un tisserand à un emplacement à partir duquel il pourra "
 "aller chercher de la laine."
 
-#: po/tutorial.py:60
+#: po/tutorial.py:56
 msgid "Build a weaver that can somehow reach the wool of your farm."
 msgstr "Installer un tisserand qui pourra accéder à la laine de votre ferme."
 
-#: po/tutorial.py:61
+#: po/tutorial.py:57
 msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
 msgstr ""
 "Logez un total de 50 habitants au moins dans votre ville pour compléter ce "
 "didacticiel. Il vous faut un bilan financier positif."
 
-#: po/tutorial.py:62
+#: po/tutorial.py:58
 msgid "NEW TASK: COMPLETE TUTORIAL"
 msgstr "MISSION : FINIR LE DIDACTICIEL"
 
-#: po/tutorial.py:63
+#: po/tutorial.py:59
 msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.\n"
 "\n"
@@ -1050,11 +938,11 @@ msgstr ""
 "MISSION: Atteignez un total de 50 habitants et un bilan positif pour "
 "terminer ce didacticiel."
 
-#: po/tutorial.py:64
+#: po/tutorial.py:60
 msgid "NO TASKS LEFT"
 msgstr "AUCUNE MISSION RESTANTE"
 
-#: po/tutorial.py:65
+#: po/tutorial.py:61
 msgid ""
 "There is nothing left to do now.\n"
 "\n"
@@ -1089,11 +977,11 @@ msgstr ""
 "Dans l'intérêt des autres participants aux conversations et qui ne parlent "
 "peut-être pas le français, nous vous prions de parler anglais dans le chat."
 
-#: po/tutorial.py:66
+#: po/tutorial.py:62
 msgid "Thanks!"
 msgstr "Merci !"
 
-#: po/tutorial.py:67
+#: po/tutorial.py:63
 msgid ""
 "\n"
 "\n"
@@ -1117,11 +1005,149 @@ msgstr ""
 "\n"
 "L'équipe d'UH"
 
-#: po/tutorial.py:68
+#: po/tutorial.py:64
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
 "Félicitations ! Vous avez atteint la fin de ce didacticiel, vous êtes "
 "maintenant prêt à relever de nouveaux défis !"
+
+#~ msgid "NEW TASK: UNLOAD YOUR GOODS"
+#~ msgstr "MISSION : DÉCHARGEZ VOS MARCHANDISES"
+
+# I don't know how to translate 'Open the trade dialogue' cause the context is about loading/unloading stuff from the boat...is it really about trade ?
+#~ msgid ""
+#~ "Now that you have built the Branch Office, you need to move some of your resources to its stock.\n"
+#~ "\n"
+#~ "To do so, select your ship and go into the tab with the wooden box icon called 'Ship Inventory'.\n"
+#~ "\n"
+#~ "Here you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n"
+#~ "\n"
+#~ "This button becomes active if your ship is in range of a possible trade partner like a branch office.\n"
+#~ "\n"
+#~ "Click on the button. If it is not active, move your ship towards the branch office and then try again.\n"
+#~ "\n"
+#~ "TASK: Open the trade dialogue."
+#~ msgstr ""
+#~ "Maintenant que vous avez établi un comptoir, vous devez alimenter son stock.\n"
+#~ "\n"
+#~ "Pour ce faire, sélectionnez votre navire et rendez-vous dans le panneau "
+#~ "signalé par une caisse en bois appelé «Cargaison du navire».\n"
+#~ "\n"
+#~ "Vous avez ici un aperçu de la cargaison de votre navire et vous y trouverez "
+#~ "le bouton «Chargez/Déchargez».\n"
+#~ "\n"
+#~ "Ce bouton devient actif lorsque votre vaisseau se trouve à portée d'un "
+#~ "partenaire commercial potentiel, comme par exemple un comptoir.\n"
+#~ "\n"
+#~ "Cliquez sur le bouton. S'il n'est pas actif, déplacez votre vaisseau à "
+#~ "proximité du comptoir, et réessayez.\n"
+#~ "\n"
+#~ "MISSION : Débutez les échanges commerciaux."
+
+#~ msgid ""
+#~ "The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
+#~ "\n"
+#~ "To move goods from one stock to the other, simply click on them.\n"
+#~ "\n"
+#~ "Try clicking on the boards currently on your ship first and then try moving them back.\n"
+#~ "\n"
+#~ "You can customize the quantity moved by using the self-explanatory radio buttons in the middle.\n"
+#~ "\n"
+#~ "Did you get used to the trade tab?\n"
+#~ "You need some construction material in your settlement now!\n"
+#~ "\n"
+#~ "TASK: Unload at least 10 tons of each resource your ship sailed around with."
+#~ msgstr ""
+#~ "Le panneau que vous avez sous les yeux est scindé entre les partenaires "
+#~ "commerciaux «Vaisseau» et «Comptoir».\n"
+#~ "\n"
+#~ "Pour déplacer les marchandises d'un stock à l'autre, cliquez simplement "
+#~ "dessus.\n"
+#~ "\n"
+#~ "Essayez de cliquer sur les planches de votre navire pour les décharger, puis "
+#~ "rechargez-les à bord.\n"
+#~ "\n"
+#~ "Vous pouvez choisir la quantité à déplacer en utilisant les boutons prévus à "
+#~ "cet effet.\n"
+#~ "\n"
+#~ "Maitrisez-vous le panneau des échanges commerciaux?\n"
+#~ "Vous avez maintenant besoin de matériaux de construction pour votre "
+#~ "comptoir!\n"
+#~ "\n"
+#~ "MISSION : Déchargez au moins 10 tonnes de chaque ressource disponible à bord "
+#~ "de votre navire dans votre comptoir."
+
+#~ msgid "Unload at least 10 tons of each resource on your ship."
+#~ msgstr ""
+#~ "Déchargez au moins 10 tonnes de chaque ressource présente sur votre "
+#~ "vaisseau."
+
+#~ msgid ""
+#~ "With your new construction material in the branch office, you can start to construct some basic buildings.\n"
+#~ "\n"
+#~ "We will start with building a lumberjack.\n"
+#~ "\n"
+#~ "This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.\n"
+#~ "\n"
+#~ "The fisherman needs some boards to build his vessel as well.\n"
+#~ "\n"
+#~ "In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.\n"
+#~ "\n"
+#~ "The build menu is sorted by increments.\n"
+#~ "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
+#~ msgstr ""
+#~ "Avec ces nouveaux matériaux disponibles dans votre comptoir, vous pouvez "
+#~ "commencer à construire quelques bâtiments de base.\n"
+#~ "\n"
+#~ "Commençons par établir un bûcheron.\n"
+#~ "\n"
+#~ "C'est essentiel parce que, à ce niveau, le bois est la seule matière que les "
+#~ "marins peuvent s'offrir pour monter leurs tentes.\n"
+#~ "\n"
+#~ "Le pêcheur a également besoin de planches pour construire son bateau.\n"
+#~ "\n"
+#~ "Pour construire une cabane de bûcheron, ouvrez le menu construction en "
+#~ "cliquant sur le grand icône sous la mini-carte, ou en pressant la touche B.\n"
+#~ "\n"
+#~ "Le menu construction est classé par niveaux.\n"
+#~ "Cela signifie que seuls les bâtiments de base sont accessibles quand on est "
+#~ "au premier niveau (celui des marins)."
+
+# I used the suggestion from erdnaxeli and made some more changes.
+#~ msgid ""
+#~ "For example: \n"
+#~ "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\n"
+#~ "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.\n"
+#~ "\n"
+#~ "If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.\n"
+#~ "\n"
+#~ "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
+#~ "It is NOT possible to change prices manually!\n"
+#~ "\n"
+#~ "You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.\n"
+#~ "\n"
+#~ "TASK: Buy as many tools as you need to have 30 tools in stock!\n"
+#~ "If you still have some in your ship's inventory, this seems like a good point to unload them."
+#~ msgstr ""
+#~ "Voici un exemple :\n"
+#~ "Un emplacement «achat» avec 5 tonnes en stock et un curseur à 9 achètera "
+#~ "jusqu'à 4 tonnes.\n"
+#~ "Un emplacement «vente» avec 18 tonnes en stock et un curseur à 13 vendra "
+#~ "jusqu'à 5 tonnes.\n"
+#~ "\n"
+#~ "Cependant si le bateau-marchand n'en veut pas ou n'en a pas autant, vous "
+#~ "devrez être patient et attendre son prochain passage\n"
+#~ "\n"
+#~ "Unknown Horizons propose un système de prix intelligent, la valeur d'une "
+#~ "unité peut donc varier.\n"
+#~ "Il n'est pas possible de changer les prix!\n"
+#~ "\n"
+#~ "Vous pouvez voir votre balance commerciale dans l'onglet «Compte» mettant en "
+#~ "relief «Vente» et «Achat».\n"
+#~ "\n"
+#~ "MISSION: Achetez autant d'outils que nécessaire pour en avoir 30 en stock!\n"
+#~ "Si vous en avez encore dans votre vaisseau, ce serait le bon moment pour les "
+#~ "décharger."
 
 #~ msgid ""
 #~ "The Fisher needs a coastal building site like the branch office - and nothing more.\n"

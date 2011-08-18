@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-02-27 18:14+0100\n"
+"POT-Creation-Date: 2011-08-18 21:21+0200\n"
 "PO-Revision-Date: 2011-05-22 12:41+0200\n"
 "Last-Translator: Tobias <tschroefel@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,82 +112,12 @@ msgstr ""
 "OPDRACHT: Plaats een kantoor aan de kust."
 
 #: po/tutorial.py:9
-msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr "OPDRACHT: LAAD DE GOEDEREN UIT"
-
-#: po/tutorial.py:10
-msgid ""
-"Now that you have built the Branch Office, you need to move some of your resources to its stock.\n"
-"\n"
-"To do so, select your ship and go into the tab with the wooden box icon called 'Ship Inventory'.\n"
-"\n"
-"Here you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n"
-"\n"
-"This button becomes active if your ship is in range of a possible trade partner like a branch office.\n"
-"\n"
-"Click on the button. If it is not active, move your ship towards the branch office and then try again.\n"
-"\n"
-"TASK: Open the trade dialogue."
-msgstr ""
-"Nu het hoofdkantoor geplaatst is, moeten grondstoffen worden verplaatst naar "
-"de opslag.\n"
-"\n"
-"Selecteer het schip en open het scherm 'Scheepsinventaris' door op de knop "
-"met het houten krat te klikken.\n"
-"\n"
-"Hier is een overzicht van de inventaris van het schip en een knop "
-"'Laden/Uitladen'.\n"
-"\n"
-"Deze knop wordt actief zodra uw schip in de buurt is van een mogelijke "
-"handelspartner, zoals het hoofdkantoor\n"
-"\n"
-"Klik op de knop. Verplaats uw schip dichterbij het hoofdkantoor als de knop "
-"niet actief is en probeer opnieuw.\n"
-"\n"
-"OPDRACHT: Open het handelsscherm."
-
-#: po/tutorial.py:11
-msgid ""
-"The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
-"\n"
-"To move goods from one stock to the other, simply click on them.\n"
-"\n"
-"Try clicking on the boards currently on your ship first and then try moving them back.\n"
-"\n"
-"You can customize the quantity moved by using the self-explanatory radio buttons in the middle.\n"
-"\n"
-"Did you get used to the trade tab?\n"
-"You need some construction material in your settlement now!\n"
-"\n"
-"TASK: Unload at least 10 tons of each resource your ship sailed around with."
-msgstr ""
-"Het scherm wat u ziet is verdeeld in 'Schip' en 'Kolonie' als "
-"handelspartners.\n"
-"\n"
-"Om goederen van een voorraad naar de andere voorraad te verplaatsen, kunt u "
-"er simpelweg op klikken.\n"
-"\n"
-"Probeer eerst op de planken op het schip te klikken en probeer vervolgens "
-"deze terug te plaatsen.\n"
-"\n"
-"U kunt de verplaatste hoeveelheid aanpassen met de knoppen in het midden.\n"
-"\n"
-"Heeft u zichzelf bekend gemaakt met het handelsscherm?\n"
-"U heeft nu constructie materiaal nodig in uw kolonie!\n"
-"\n"
-"OPDRACHT: Laad tenminste 10 ton van iedere grondstof op het schip uit."
-
-#: po/tutorial.py:12
-msgid "Unload at least 10 tons of each resource on your ship."
-msgstr "Laad tenminste 10 ton van iedere grondstof op het schip uit."
-
-#: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
 msgstr "OPDRACHT: BOUW EEN HOUTHAKKER"
 
-#: po/tutorial.py:14
+#: po/tutorial.py:10
 msgid ""
-"With your new construction material in the branch office, you can start to construct some basic buildings.\n"
+"The construction material on your ship got unloaded automatically. You can now construct some basic buildings.\n"
 "\n"
 "We will start with building a lumberjack.\n"
 "\n"
@@ -200,24 +130,8 @@ msgid ""
 "The build menu is sorted by increments.\n"
 "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
 msgstr ""
-"Met het nieuwe constructie materiaal in het kantoor kunnen de eerste "
-"gebouwen geplaatst worden.\n"
-"\n"
-"We zullen starten met het plaatsen van een houthakker.\n"
-"\n"
-"De houthakker is belangrijk aangezien planken in deze fase de enige middelen "
-"zijn die de zeelui kunnen gebruiken voor hun tenten.\n"
-"\n"
-"De visser heeft ook hout nodig om zijn schip te maken.\n"
-"\n"
-"Om een houthakker te plaatsen, ga naar het constructie menu door op de grote "
-"knop onder de kleine kaart te klikken of druk de B toets.\n"
-"\n"
-"Het constructie menu is gesorteerd op niveau's.\n"
-"Dat betekent dat alleen standaard gebouwen beschikbaar zijn op het zeelui "
-"niveau (waarop u zich nu bevindt)."
 
-#: po/tutorial.py:15
+#: po/tutorial.py:11
 msgid ""
 "As your civilization advances, you also gain more and more complex buildings.\n"
 "\n"
@@ -252,15 +166,15 @@ msgstr ""
 "\n"
 "Let op hoe een verzamelaar uw eerste zelf geproduceerde planken ophaalt."
 
-#: po/tutorial.py:16
+#: po/tutorial.py:12
 msgid "Build a lumberjack and connect it to the branch office using a trail."
 msgstr "Plaats een houthakker en verbind deze met het kantoor met een pad."
 
-#: po/tutorial.py:17
+#: po/tutorial.py:13
 msgid "NEW TASK: FOOD SUPPLY"
 msgstr "OPDRACHT: AANVOER VAN VOEDSEL"
 
-#: po/tutorial.py:18
+#: po/tutorial.py:14
 msgid ""
 "You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.\n"
 "\n"
@@ -289,7 +203,7 @@ msgstr ""
 "Conclusie: de jager is niet betrouwbaar genoeg voor een gelijkmatig aanbod "
 "van voedsel."
 
-#: po/tutorial.py:19
+#: po/tutorial.py:15
 msgid ""
 "The Fisher needs a coastal building site like the branch office and a fish school in range.\n"
 "\n"
@@ -318,15 +232,15 @@ msgstr ""
 "\n"
 "En vergeet de paden naar het hoofdkantoor niet!"
 
-#: po/tutorial.py:20
+#: po/tutorial.py:16
 msgid "Build a hunter and a fisher. Connect them to the branch office."
 msgstr "Plaats een jager en een visser. Verbind ze met het kantoor."
 
-#: po/tutorial.py:21
+#: po/tutorial.py:17
 msgid "NEW TASK: MAIN SQUARE"
 msgstr "OPDRACHT: MARKTPLAATS"
 
-#: po/tutorial.py:22
+#: po/tutorial.py:18
 msgid ""
 "Your residents need a main square where they can fetch their goods from.\n"
 "\n"
@@ -356,7 +270,7 @@ msgstr ""
 "\n"
 "OPDRACHT: Plaats een plein."
 
-#: po/tutorial.py:23
+#: po/tutorial.py:19
 msgid ""
 "Now let's have a closer look at the main square.\n"
 "\n"
@@ -385,15 +299,15 @@ msgstr ""
 "In het scherm 'Kolonisten' kunt u zien hoe blij de inwoners zijn en welke "
 "goederen ze het meest nodig hebben."
 
-#: po/tutorial.py:24
+#: po/tutorial.py:20
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr "Plaats een plein. Kies een gebied zonder economische gebouwen."
 
-#: po/tutorial.py:25
+#: po/tutorial.py:21
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
 msgstr "OPDRACHT: RESIDENTIELE GEBOUWEN"
 
-#: po/tutorial.py:26
+#: po/tutorial.py:22
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.\n"
 "\n"
@@ -415,11 +329,11 @@ msgstr ""
 "\n"
 "OPDRACHT: Plaats een tent en verbind deze met het plein."
 
-#: po/tutorial.py:27
+#: po/tutorial.py:23
 msgid "Build a tent and connect it to the main square."
 msgstr "Plaats een tent en verbind deze met het plein."
 
-#: po/tutorial.py:28
+#: po/tutorial.py:24
 msgid ""
 "Let's have a look at the tent overview tab.\n"
 "You can see\n"
@@ -457,15 +371,15 @@ msgstr ""
 "TIP: Om meerdere gebouwen van het zelfde soort te plaatsen kunt u SHIFT "
 "indrukken."
 
-#: po/tutorial.py:29
+#: po/tutorial.py:25
 msgid "Build at least three additional tents and connect them to the main square."
 msgstr "Plaats tenminste drie extra tenten en verbind deze met het plein."
 
-#: po/tutorial.py:30
+#: po/tutorial.py:26
 msgid "NEW TASK: BUILD SIGNAL FIRE"
 msgstr "OPDRACHT: SIGNAALVUUR"
 
-#: po/tutorial.py:31
+#: po/tutorial.py:27
 msgid ""
 "Can you see the ship passing your island from time to time?\n"
 "\n"
@@ -499,7 +413,7 @@ msgstr ""
 "Hiervoor kan u een signaalvuur bouwen aan de kust bij uw hoofdkantoor om de "
 "schepen de weg naar uw kolonie te wijzen."
 
-#: po/tutorial.py:32
+#: po/tutorial.py:28
 msgid ""
 "After this little advertisment, the trader will stop by from time to time and look into your branch office.\n"
 "\n"
@@ -530,15 +444,15 @@ msgstr ""
 "\n"
 "OPDRACHT: Bouw een signaalvuur bij de kust in de buurt van uw hoofdkantoor."
 
-#: po/tutorial.py:33
+#: po/tutorial.py:29
 msgid "Build a signal fire at the coast close to your branch office."
 msgstr "Plaats een signaal vuur bij de kust nabij het kantoor."
 
-#: po/tutorial.py:34
+#: po/tutorial.py:30
 msgid "NEW TASK: LEARN TO TRADE"
 msgstr "OPDRACHT: LEER HANDELEN"
 
-#: po/tutorial.py:35
+#: po/tutorial.py:31
 msgid ""
 "Excellent! The Free Trader will now stop by at your branch office from time to time.\n"
 "\n"
@@ -565,7 +479,7 @@ msgstr ""
 "Bij verkoop is de 'streefwaarde' het aantal dat je reserve houdt en niet "
 "verkoopt"
 
-#: po/tutorial.py:36
+#: po/tutorial.py:32
 msgid ""
 "For example: \n"
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\n"
@@ -578,37 +492,18 @@ msgid ""
 "\n"
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.\n"
 "\n"
-"TASK: Buy as many tools as you need to have 30 tools in stock!\n"
-"If you still have some in your ship's inventory, this seems like a good point to unload them."
+"TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
-"Als voorbeeld: \n"
-"Wanneer uw slot op 'kopen' staat en u 5 ton in voorraad hebt en u de "
-"schuifbalk op 9 ton heeft staan. Dat zorgt ervoor dat u maximaal 4 ton extra "
-"zal inkopen. Verkopen werkt ongeveer hetzelfde. Een 'verkoop' slot met 18 "
-"ton in voorraad en de schuifbalk op 13 zal maximaal 5 ton verkopen.\n"
-"\n"
-"Als de handelaar minder dan u hebt aangegeven wil kopen of verkopen, dan "
-"zult u gewoon moeten wachten tot tot hij terug is.\n"
-"\n"
-"UH werkt met slimme prijzen, dus de waarde van een eenheid kan verschillen. "
-"Dit kan NIET handmatig worden aangepast.\n"
-"\n"
-"U kunt uw handels balans nakijkenbij de tab 'Account', waar je de 'koop' en "
-"'verkoop' waardes kan bekijken.\n"
-"\n"
-"OPDRACHT: Koop zoveel werktuigen als nodig om er 30 op voorraad te hebben!\n"
-"Als u er nog een aantal in de scheeps inventaris heeft, dan is dit een prima "
-"tijd om die ook nog uit te laden."
 
-#: po/tutorial.py:37
+#: po/tutorial.py:33
 msgid "Reach an island stock of at least 30 tools."
 msgstr "Bereik een voorraad van tenminste 30 stuks gereedschap op het eiland."
 
-#: po/tutorial.py:38
+#: po/tutorial.py:34
 msgid "NEW TASK: BUILD A PAVILION"
 msgstr "OPDRACHT: PLAATS EEN PAVILJOEN"
 
-#: po/tutorial.py:39
+#: po/tutorial.py:35
 msgid ""
 "Those tools will be enough for the moment. Well done!\n"
 "\n"
@@ -638,7 +533,7 @@ msgstr ""
 "\n"
 "Veel later in het spel zullen er ook upgrades voor de gebouwen komen."
 
-#: po/tutorial.py:40
+#: po/tutorial.py:36
 msgid ""
 "In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
 "\n"
@@ -667,15 +562,15 @@ msgstr ""
 "OPDRACHT: Plaats een paviljoen met een pad naar de tenten om te voldoen aan "
 "de vraag naar geloof van de zeelui."
 
-#: po/tutorial.py:41
+#: po/tutorial.py:37
 msgid "Build a pavilion with connection to the tents."
 msgstr "Plaats een paviljoen met verbinding naar de tenten."
 
-#: po/tutorial.py:42
+#: po/tutorial.py:38
 msgid "NEW TASK: NEXT INCREMENT"
 msgstr "OPDRACHT: VOLGENDE NIVEAU"
 
-#: po/tutorial.py:43
+#: po/tutorial.py:39
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.\n"
 "\n"
@@ -704,7 +599,7 @@ msgstr ""
 "er nog bouwmaterialen zijn om een blokhut te bouwen. Deze blokhut zal de "
 "oude tent vervangen."
 
-#: po/tutorial.py:44
+#: po/tutorial.py:40
 msgid ""
 "Such residential upgrades are the only ones which cost resources and can not be restricted by you.\n"
 "\n"
@@ -734,17 +629,17 @@ msgstr ""
 "OPDRACHT: Zet het belastingniveau op laag (links op het eind) en wacht tot "
 "de zeelui de woningen verbeteren."
 
-#: po/tutorial.py:45
+#: po/tutorial.py:41
 msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
 "Zet het belasting niveau op laag (linkerkant) en wacht totdat de zeelui "
 "promoveren."
 
-#: po/tutorial.py:46
+#: po/tutorial.py:42
 msgid "NEW TASK: BUILD A FARM"
 msgstr "OPDRACHT: BOUW EEN BOERDERIJ"
 
-#: po/tutorial.py:47
+#: po/tutorial.py:43
 msgid ""
 "Congratulations! Some of your inhabitants have reached increment II!\n"
 "\n"
@@ -774,7 +669,7 @@ msgstr ""
 "De uitvoer van de boerderij hangt af van het type velden wat je rond de "
 "boerderij aanlegt."
 
-#: po/tutorial.py:48
+#: po/tutorial.py:44
 msgid ""
 "We will have a closer look at this later.\n"
 "\n"
@@ -805,15 +700,15 @@ msgstr ""
 "\n"
 "OPDRACHT: Bouw een boerderij."
 
-#: po/tutorial.py:49
+#: po/tutorial.py:45
 msgid "Build a farm and keep some empty space around it."
 msgstr "Plaats een boerderij, zorg voor vrije ruimte eromheen."
 
-#: po/tutorial.py:50
+#: po/tutorial.py:46
 msgid "NEW TASK: BUILD FIELDS"
 msgstr "OPDRACHT: PLAATS VELDEN"
 
-#: po/tutorial.py:51
+#: po/tutorial.py:47
 msgid ""
 "The farm itself is not going to produce anything without some fields.\n"
 "\n"
@@ -845,7 +740,7 @@ msgstr ""
 "Let op dat je voor aardappels een pad moet hebben naar de boerderij (niet "
 "het veld), omdat het het enige bedrijf is wat aan dat product werkt."
 
-#: po/tutorial.py:52
+#: po/tutorial.py:48
 msgid ""
 "Make sure that all fields you build are in the area covered by the farm.\n"
 "\n"
@@ -874,16 +769,16 @@ msgstr ""
 "OPDRACHT: Plaats in ieder geval een weide bij de boerderij en plaats "
 "aardappelvelden als je dat zou willen."
 
-#: po/tutorial.py:53
+#: po/tutorial.py:49
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
 "Plaats tenminste een weiland en voeg aardappelvelden toe naar eigen inzicht."
 
-#: po/tutorial.py:54
+#: po/tutorial.py:50
 msgid "NEW TASK: BUILD STORAGE"
 msgstr "OPDRACHT: OPSLAGRUIMTE"
 
-#: po/tutorial.py:55
+#: po/tutorial.py:51
 msgid ""
 "Did you watch your lumberjack recently?\n"
 "\n"
@@ -913,7 +808,7 @@ msgstr ""
 "afnemen. Onderhoudskosten zullen niet altijd helemaal nul zijn, maar allicht "
 "wel lager dan in actieve status."
 
-#: po/tutorial.py:56
+#: po/tutorial.py:52
 msgid ""
 "This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.\n"
 "\n"
@@ -945,15 +840,15 @@ msgstr ""
 "OPDRACHT: Plaats een opslag tent, bij voorkeur waar u verzamelaars nodig "
 "heeft."
 
-#: po/tutorial.py:57
+#: po/tutorial.py:53
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr "Plaats een opslag tent (niveau I scherm)."
 
-#: po/tutorial.py:58
+#: po/tutorial.py:54
 msgid "NEW TASK: BUILD A WEAVER"
 msgstr "OPDRACHT: KLEERMAKER"
 
-#: po/tutorial.py:59
+#: po/tutorial.py:55
 msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth out of this wool.\n"
 "\n"
@@ -979,21 +874,21 @@ msgstr ""
 "\n"
 "OPDRACHT: Plaats een kleermaker waar het wol kan ophalen."
 
-#: po/tutorial.py:60
+#: po/tutorial.py:56
 msgid "Build a weaver that can somehow reach the wool of your farm."
 msgstr "Plaats een kleermaker die de wel van je boerderij kan bereiken."
 
-#: po/tutorial.py:61
+#: po/tutorial.py:57
 msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
 msgstr ""
 "Bereik een totaal van 50 inwoners om deze tutorial te voltooien. U heeft een "
 "positieve balans nodig."
 
-#: po/tutorial.py:62
+#: po/tutorial.py:58
 msgid "NEW TASK: COMPLETE TUTORIAL"
 msgstr "OPDRACHT: VOLTOOI TUTORIAL"
 
-#: po/tutorial.py:63
+#: po/tutorial.py:59
 msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.\n"
 "\n"
@@ -1009,11 +904,11 @@ msgstr ""
 "OPDRACHT: Bereik een totaal van 50 inwoners en een positieve balans om deze "
 "tutorial te voltooien."
 
-#: po/tutorial.py:64
+#: po/tutorial.py:60
 msgid "NO TASKS LEFT"
 msgstr "GEEN OPDRACHTEN RESTEREND"
 
-#: po/tutorial.py:65
+#: po/tutorial.py:61
 msgid ""
 "There is nothing left to do now.\n"
 "\n"
@@ -1044,11 +939,11 @@ msgstr ""
 "De beste resultaten tot nu toe zijn behaald via het IRC kanaal, wij raden "
 "aan dit eerst te proberen (-;"
 
-#: po/tutorial.py:66
+#: po/tutorial.py:62
 msgid "Thanks!"
 msgstr "Dank u wel!"
 
-#: po/tutorial.py:67
+#: po/tutorial.py:63
 msgid ""
 "\n"
 "\n"
@@ -1072,11 +967,142 @@ msgstr ""
 "\n"
 "Het UH-Team"
 
-#: po/tutorial.py:68
+#: po/tutorial.py:64
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
 "Gefeliciteerd! U heeft het einde van deze handleiding bereikt en bent nu "
 "klaar voor nieuwe uitdagingen!"
+
+#~ msgid "NEW TASK: UNLOAD YOUR GOODS"
+#~ msgstr "OPDRACHT: LAAD DE GOEDEREN UIT"
+
+#~ msgid ""
+#~ "Now that you have built the Branch Office, you need to move some of your resources to its stock.\n"
+#~ "\n"
+#~ "To do so, select your ship and go into the tab with the wooden box icon called 'Ship Inventory'.\n"
+#~ "\n"
+#~ "Here you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n"
+#~ "\n"
+#~ "This button becomes active if your ship is in range of a possible trade partner like a branch office.\n"
+#~ "\n"
+#~ "Click on the button. If it is not active, move your ship towards the branch office and then try again.\n"
+#~ "\n"
+#~ "TASK: Open the trade dialogue."
+#~ msgstr ""
+#~ "Nu het hoofdkantoor geplaatst is, moeten grondstoffen worden verplaatst naar "
+#~ "de opslag.\n"
+#~ "\n"
+#~ "Selecteer het schip en open het scherm 'Scheepsinventaris' door op de knop "
+#~ "met het houten krat te klikken.\n"
+#~ "\n"
+#~ "Hier is een overzicht van de inventaris van het schip en een knop "
+#~ "'Laden/Uitladen'.\n"
+#~ "\n"
+#~ "Deze knop wordt actief zodra uw schip in de buurt is van een mogelijke "
+#~ "handelspartner, zoals het hoofdkantoor\n"
+#~ "\n"
+#~ "Klik op de knop. Verplaats uw schip dichterbij het hoofdkantoor als de knop "
+#~ "niet actief is en probeer opnieuw.\n"
+#~ "\n"
+#~ "OPDRACHT: Open het handelsscherm."
+
+#~ msgid ""
+#~ "The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
+#~ "\n"
+#~ "To move goods from one stock to the other, simply click on them.\n"
+#~ "\n"
+#~ "Try clicking on the boards currently on your ship first and then try moving them back.\n"
+#~ "\n"
+#~ "You can customize the quantity moved by using the self-explanatory radio buttons in the middle.\n"
+#~ "\n"
+#~ "Did you get used to the trade tab?\n"
+#~ "You need some construction material in your settlement now!\n"
+#~ "\n"
+#~ "TASK: Unload at least 10 tons of each resource your ship sailed around with."
+#~ msgstr ""
+#~ "Het scherm wat u ziet is verdeeld in 'Schip' en 'Kolonie' als "
+#~ "handelspartners.\n"
+#~ "\n"
+#~ "Om goederen van een voorraad naar de andere voorraad te verplaatsen, kunt u "
+#~ "er simpelweg op klikken.\n"
+#~ "\n"
+#~ "Probeer eerst op de planken op het schip te klikken en probeer vervolgens "
+#~ "deze terug te plaatsen.\n"
+#~ "\n"
+#~ "U kunt de verplaatste hoeveelheid aanpassen met de knoppen in het midden.\n"
+#~ "\n"
+#~ "Heeft u zichzelf bekend gemaakt met het handelsscherm?\n"
+#~ "U heeft nu constructie materiaal nodig in uw kolonie!\n"
+#~ "\n"
+#~ "OPDRACHT: Laad tenminste 10 ton van iedere grondstof op het schip uit."
+
+#~ msgid "Unload at least 10 tons of each resource on your ship."
+#~ msgstr "Laad tenminste 10 ton van iedere grondstof op het schip uit."
+
+#~ msgid ""
+#~ "With your new construction material in the branch office, you can start to construct some basic buildings.\n"
+#~ "\n"
+#~ "We will start with building a lumberjack.\n"
+#~ "\n"
+#~ "This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.\n"
+#~ "\n"
+#~ "The fisherman needs some boards to build his vessel as well.\n"
+#~ "\n"
+#~ "In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.\n"
+#~ "\n"
+#~ "The build menu is sorted by increments.\n"
+#~ "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
+#~ msgstr ""
+#~ "Met het nieuwe constructie materiaal in het kantoor kunnen de eerste "
+#~ "gebouwen geplaatst worden.\n"
+#~ "\n"
+#~ "We zullen starten met het plaatsen van een houthakker.\n"
+#~ "\n"
+#~ "De houthakker is belangrijk aangezien planken in deze fase de enige middelen "
+#~ "zijn die de zeelui kunnen gebruiken voor hun tenten.\n"
+#~ "\n"
+#~ "De visser heeft ook hout nodig om zijn schip te maken.\n"
+#~ "\n"
+#~ "Om een houthakker te plaatsen, ga naar het constructie menu door op de grote "
+#~ "knop onder de kleine kaart te klikken of druk de B toets.\n"
+#~ "\n"
+#~ "Het constructie menu is gesorteerd op niveau's.\n"
+#~ "Dat betekent dat alleen standaard gebouwen beschikbaar zijn op het zeelui "
+#~ "niveau (waarop u zich nu bevindt)."
+
+#~ msgid ""
+#~ "For example: \n"
+#~ "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\n"
+#~ "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.\n"
+#~ "\n"
+#~ "If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.\n"
+#~ "\n"
+#~ "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
+#~ "It is NOT possible to change prices manually!\n"
+#~ "\n"
+#~ "You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.\n"
+#~ "\n"
+#~ "TASK: Buy as many tools as you need to have 30 tools in stock!\n"
+#~ "If you still have some in your ship's inventory, this seems like a good point to unload them."
+#~ msgstr ""
+#~ "Als voorbeeld: \n"
+#~ "Wanneer uw slot op 'kopen' staat en u 5 ton in voorraad hebt en u de "
+#~ "schuifbalk op 9 ton heeft staan. Dat zorgt ervoor dat u maximaal 4 ton extra "
+#~ "zal inkopen. Verkopen werkt ongeveer hetzelfde. Een 'verkoop' slot met 18 "
+#~ "ton in voorraad en de schuifbalk op 13 zal maximaal 5 ton verkopen.\n"
+#~ "\n"
+#~ "Als de handelaar minder dan u hebt aangegeven wil kopen of verkopen, dan "
+#~ "zult u gewoon moeten wachten tot tot hij terug is.\n"
+#~ "\n"
+#~ "UH werkt met slimme prijzen, dus de waarde van een eenheid kan verschillen. "
+#~ "Dit kan NIET handmatig worden aangepast.\n"
+#~ "\n"
+#~ "U kunt uw handels balans nakijkenbij de tab 'Account', waar je de 'koop' en "
+#~ "'verkoop' waardes kan bekijken.\n"
+#~ "\n"
+#~ "OPDRACHT: Koop zoveel werktuigen als nodig om er 30 op voorraad te hebben!\n"
+#~ "Als u er nog een aantal in de scheeps inventaris heeft, dan is dit een prima "
+#~ "tijd om die ook nog uit te laden."
 
 #~ msgid ""
 #~ "The Fisher needs a coastal building site like the branch office - and nothing more.\n"
