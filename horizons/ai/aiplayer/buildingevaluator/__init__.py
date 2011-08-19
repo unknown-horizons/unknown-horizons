@@ -39,19 +39,21 @@ class BuildingEvaluator(WorldObject):
 		self.builder = builder
 
 	@classmethod
-	def _weighted_sum(cls, main_component, other_components):
+	def _weighted_sum(cls, main_component, other_components, none_value):
 		"""
 		Returns the weights sum of the components where the specified amount is given to an element of other_components unless it is None
 		@param main_component: float
 		@param other_components: list[(weight, value)] where weight is a float and value is either None or a float
+		@param none_value: the penalty for a None value
 		"""
 		others = 0.0
 		for weight, value in other_components:
-			if value is not None:
-				others += weight
-		result = (1 - others) * (main_component if main_component is not None else 0)
+			others += weight
+		result = (1 - others) * (main_component if main_component is not None else none_value)
 		for weight, value in other_components:
-			if value is not None:
+			if value is None:
+				result += weight * none_value
+			else:
 				result += weight * value
 		return result
 

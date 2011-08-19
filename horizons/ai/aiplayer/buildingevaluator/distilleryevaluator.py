@@ -33,7 +33,8 @@ class DistilleryEvaluator(BuildingEvaluator):
 		self.alignment = alignment
 
 		personality = area_builder.owner.personality_manager.get('DistilleryEvaluator')
-		distance = self._weighted_sum(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)])
+		distance_penalty = Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius * personality.distance_penalty
+		distance = self._weighted_sum(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
 		self.value = float(Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius) / distance + alignment * personality.alignment_importance
 
 	@classmethod

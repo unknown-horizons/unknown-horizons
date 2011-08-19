@@ -336,15 +336,18 @@ class DefaultPersonality:
 	class BrickyardEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		collector_distance_importance = 0.1 # importance of the distance to the nearest collector in the range [0, 1]
+		distance_penalty = 2 # when no clay pit is in reach then apply a penalty of this times the radius
 
 	class CharcoalBurnerEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		lumberjack_distance_importance = 0.05 # importance of the distance to the nearest lumberjack in the range [0, 1]
 		iron_mine_distance_importance = 0.1 # importance of the distance to the nearest iron mine in the range [0, 1]
+		distance_penalty = 2 # when no lumberjack or iron mine is in reach then apply a penalty of this times the radius
 
 	class DistilleryEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
+		distance_penalty = 2 # when no relevant farm is in reach then apply a penalty of this times the radius
 
 	class FarmEvaluator:
 		alignment_importance = 0.001 # the larger this value, the larger the effect of alignment on the placement
@@ -369,16 +372,19 @@ class DefaultPersonality:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		collector_distance_importance = 0.4 # importance of the distance to the nearest collector in the range [0, 1]
 		charcoal_burner_distance_importance = 0.1 # importance of the distance to the nearest charcoal burner in the range [0, 1]
+		distance_penalty = 2 # when no collector or charcoal burner is in reach then apply a penalty of this times the radius
 
 	class ToolmakerEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		smeltery_distance_importance = 0.4 # importance of the distance to the nearest smeltery in the range [0, 1]
 		lumberjack_distance_importance = 0.1 # importance of the distance to the nearest lumberjack in the range [0, 1]
 		charcoal_burner_distance_importance = 0.4 # importance of the distance to the nearest charcoal burner in the range [0, 1]
+		distance_penalty = 2 # when no smeltery, lumberjack, or charcoal burner is in reach then apply a penalty of this times the radius
 
 	class WeaverEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
+		distance_penalty = 2 # when no relevant farm is in reach then apply a penalty of this times the radius
 
 	class ModifiedFieldEvaluator:
 		add_potato_field_value = 1.5 # the value of adding a potato field

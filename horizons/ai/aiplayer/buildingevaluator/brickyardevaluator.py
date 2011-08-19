@@ -33,7 +33,8 @@ class BrickyardEvaluator(BuildingEvaluator):
 		self.alignment = alignment
 
 		personality = area_builder.owner.personality_manager.get('BrickyardEvaluator')
-		distance = self._weighted_sum(distance_to_clay_pit, [(personality.collector_distance_importance, distance_to_collector)])
+		distance_penalty = Entities.buildings[BUILDINGS.BRICKYARD_CLASS].radius * personality.distance_penalty
+		distance = self._weighted_sum(distance_to_clay_pit, [(personality.collector_distance_importance, distance_to_collector)], distance_penalty)
 		self.value = float(Entities.buildings[BUILDINGS.BRICKYARD_CLASS].radius) / distance + alignment * personality.alignment_importance
 
 	@classmethod

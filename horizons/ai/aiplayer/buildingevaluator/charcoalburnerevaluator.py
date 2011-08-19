@@ -34,8 +34,9 @@ class CharcoalBurnerEvaluator(BuildingEvaluator):
 		self.alignment = alignment
 
 		personality = area_builder.owner.personality_manager.get('CharcoalBurnerEvaluator')
+		distance_penalty = Entities.buildings[BUILDINGS.CHARCOAL_BURNER_CLASS].radius * personality.distance_penalty
 		distance = self._weighted_sum(distance_to_collector, [(personality.lumberjack_distance_importance, distance_to_lumberjack), \
-			(personality.iron_mine_distance_importance, distance_to_iron_mine)])
+			(personality.iron_mine_distance_importance, distance_to_iron_mine)], distance_penalty)
 		self.value = float(Entities.buildings[BUILDINGS.CHARCOAL_BURNER_CLASS].radius) / distance + alignment * personality.alignment_importance
 
 	@classmethod
