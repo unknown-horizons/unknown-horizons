@@ -27,6 +27,8 @@ from collections import deque, defaultdict
 from mission.foundsettlement import FoundSettlement
 from mission.preparefoundationship import PrepareFoundationShip
 from mission.domestictrade import DomesticTrade
+from mission.specialdomestictrade import SpecialDomesticTrade
+from mission.internationaltrade import InternationalTrade
 
 from personalitymanager import PersonalityManager
 from landmanager import LandManager
@@ -35,6 +37,7 @@ from settlementmanager import SettlementManager
 from unitbuilder import UnitBuilder
 from constants import BUILDING_PURPOSE, GOAL_RESULT
 from builder import Builder
+from specialdomestictrademanager import SpecialDomesticTradeManager
 from internationaltrademanager import InternationalTradeManager
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
@@ -148,6 +151,7 @@ class AIPlayer(GenericAI):
 		self.unit_builder = UnitBuilder(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
 		self.goals = [DoNothingGoal(self)]
+		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
 		self.international_trade_manager = InternationalTradeManager(self)
 
 		self.__island_value_cache = {} # cache island values
@@ -249,6 +253,11 @@ class AIPlayer(GenericAI):
 			for (mission_id,) in db_result:
 				self.missions.add(DomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
 
+			# load the special domestic trade missions
+			db_result = db("SELECT rowid FROM ai_mission_special_domestic_trade WHERE source_settlement_manager = ?", settlement_manager.worldid)
+			for (mission_id,) in db_result:
+				self.missions.add(SpecialDomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
+
 			# load the international trade missions
 			db_result = db("SELECT rowid FROM ai_mission_international_trade WHERE settlement_manager = ?", settlement_manager.worldid)
 			for (mission_id,) in db_result:
@@ -301,6 +310,7 @@ class AIPlayer(GenericAI):
 		self._found_settlements()
 		self.handle_enemy_expansions()
 		self.handle_settlements()
+		self.special_domestic_trade_manager.tick()
 		self.international_trade_manager.tick()
 
 	def _found_settlements(self):
