@@ -45,6 +45,7 @@ class TearingTool(NavigationTool):
 		horizons.main.fife.cursor.set(horizons.main.fife.tearing_cursor_image)
 
 	def end(self):
+		self._mark()
 		self.tear_tool_active = False
 		horizons.main.fife.cursor.set(horizons.main.fife.default_cursor_image)
 		super(TearingTool, self).end()
@@ -63,8 +64,7 @@ class TearingTool(NavigationTool):
 		evt.consume()
 
 	def on_escape(self):
-		self._mark()
-		self.tear_tool_active = False
+		# cleanup in end() is called implicitly
 		self.session.cursor = SelectionTool(self.session)
 
 	def mouseReleased(self,  evt):

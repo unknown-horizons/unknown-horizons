@@ -13,24 +13,24 @@
 
 	<DeleteButton name="destroy_tool" size="30,30" position="2,0"
 		is_focusable="0" tooltip="Destroy" />
-	<TooltipButton name="logbook" size="30,30" position="39,32" 
-		up_image="content/gui/icons/widgets/minimap/captainslog_l.png" 
-		down_image="content/gui/icons/widgets/minimap/captainslog_l_h.png" 
-		hover_image="content/gui/icons/widgets/minimap/captainslog_l_h.png" 
+	<TooltipButton name="logbook" size="30,30" position="39,32"
+		up_image="content/gui/icons/widgets/minimap/captainslog.png"
+		down_image="content/gui/icons/widgets/minimap/captainslog_h.png"
+		hover_image="content/gui/icons/widgets/minimap/captainslog_h.png"
 		is_focusable="0" tooltip="Captain's log" />
-	<TooltipButton name="build" size="30,30" position="84,45" 
-		up_image="content/gui/icons/widgets/minimap/build_l.png" 
-		down_image="content/gui/icons/widgets/minimap/build_l_h.png" 
-		hover_image="content/gui/icons/widgets/minimap/build_l_h.png" 
+	<TooltipButton name="build" size="30,30" position="84,45"
+		up_image="content/gui/icons/widgets/minimap/build.png"
+		down_image="content/gui/icons/widgets/minimap/build_h.png"
+		hover_image="content/gui/icons/widgets/minimap/build_h.png"
 		is_focusable="0" tooltip="Build menu" />
-	<TooltipButton name="helpLink" size="32,32" position="130,32"
+	<TooltipButton name="diplomacyButton" size="32,32" position="130,32"
 		up_image="content/gui/icons/widgets/minimap/diplomacy.png"
 		down_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
 		hover_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
-		tooltip="Help" />
-	<TooltipButton name="gameMenuButton" size="32,32" position="161,0" 
-		up_image="content/gui/icons/widgets/minimap/gamemenu.png" 
-		down_image="content/gui/icons/widgets/minimap/gamemenu_h.png" 
-		hover_image="content/gui/icons/widgets/minimap/gamemenu_h.png" 
+		tooltip="Diplomacy" />
+	<TooltipButton name="gameMenuButton" size="32,32" position="161,0"
+		up_image="content/gui/icons/widgets/minimap/gamemenu.png"
+		down_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
+		hover_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
 		tooltip="Game menu" />
 </Container>

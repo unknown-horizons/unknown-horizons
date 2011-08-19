@@ -62,6 +62,7 @@
 			<Label text="sient (Minimap rectangle)" />
 			<Label text="hoffi (GUI improvements)" />
 			<Label text="riidom (Hut and tent variations)" />
+			<Label text="abeaumont (Two renitent segfaults)" />
 		</VBox>
 	</VBox>
 </VBox>

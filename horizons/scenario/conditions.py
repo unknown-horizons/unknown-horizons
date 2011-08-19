@@ -24,6 +24,7 @@ from horizons.constants import RES
 from horizons.constants import BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.world.pathfinding.pather import StaticPather
+from horizons.util.worldobject import WorldObject
 
 
 # event conditions to specify at check_events()
@@ -36,7 +37,8 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'var_eq', 'var_gt', 'var_lt',
                   'buildings_connected_to_branch_gt', 'buildings_connected_to_branch_lt',\
                   'buildings_connected_to_building_gt', 'buildings_connected_to_building_lt', \
-                  'settlement_produced_res_greater', 'player_produced_res_greater')
+                  'settlement_produced_res_greater', 'player_produced_res_greater', \
+                  'player_number_of_ships_gt', 'player_number_of_ships_lt')
 
 # Condition checking is split up in 2 types:
 # 1. possible condition change is notified somewhere in the game code
@@ -59,7 +61,9 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.buildings_connected_to_building_gt,
                                 CONDITIONS.buildings_connected_to_building_lt,
                                 CONDITIONS.settlement_produced_res_greater,
-                                CONDITIONS.player_produced_res_greater)
+                                CONDITIONS.player_produced_res_greater,
+                                CONDITIONS.player_number_of_ships_gt,
+								CONDITIONS.player_number_of_ships_lt)
 
 ###
 # Scenario Conditions
@@ -207,6 +211,14 @@ def _building_connected_to_any_of(session, building_class, *classes):
 				found_connected += 1
 				break
 	return found_connected
+
+def player_number_of_ships_gt(session, player_id, number):
+	number_of_ships = len([s for s in session.world.ships if s.owner.worldid == player_id])
+	return number_of_ships > number
+
+def player_number_of_ships_lt(session, player_id, number):
+	number_of_ships = len([s for s in session.world.ships if s.owner.worldid == player_id])
+	return number_of_ships < number
 
 def _building_connected_to_all_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are

@@ -75,9 +75,10 @@ class _ProductionLineData(object):
 		"""Inits self from db and registers itself as template"""
 		self._init_finished = False
 		self.id = ident
-		db_data = horizons.main.db("SELECT time, changes_animation FROM production_line WHERE id = ?", self.id)[0]
+		db_data = horizons.main.db("SELECT time, changes_animation, save_statistics FROM production_line WHERE id = ?", self.id)[0]
 		self.time = float(db_data[0]) # time in seconds that production takes
 		self.changes_animation = bool(db_data[1]) # whether this prodline influences animation
+		self.save_statistics = bool(db_data[2]) # whether statistics about this production line should be kept
 		# here we store all resource information.
 		# needed resources have a negative amount, produced ones are positive.
 		self.production = {}

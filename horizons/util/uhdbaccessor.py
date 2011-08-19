@@ -137,8 +137,17 @@ class UhDbAccessor(DbReader):
 	def get_building_class_data(self, building_class_id):
 		"""Returns data for class of a building class.
 		@param building_class_id: class of building, int
-		@return: tuple: (class_package, class_name)"""
+		@return: tuple: (class_package, class_name)
+		"""
 		sql = "SELECT class_package, class_type FROM building WHERE id = ?"
+		return self.cached_query(sql, building_class_id)[0]
+
+	def get_building_level_name(self, building_class_id):
+		"""Returns settler_level and name of a building class.
+		@param building_class_id: class of building, int
+		@return: tuple: (settler_level, name)
+		"""
+		sql = "SELECT settler_level, name FROM building WHERE id = ?"
 		return self.cached_query(sql, building_class_id)[0]
 
 
@@ -147,6 +156,15 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT id, button_name, settler_level \
 		                          FROM building \
 		                          WHERE button_name IS NOT NULL")
+
+	def get_related_building_ids(self, building_class_id):
+		"""Returns list of building ids related to building_class_id.
+		@param building_class_id: class of building, int
+		@return list of building class ids
+		"""
+		sql = "SELECT related_building FROM related_buildings WHERE building = ?"
+		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
+
 
 	#
 	#
@@ -191,8 +209,9 @@ class UhDbAccessor(DbReader):
 		                         building_id)[0][0]
 
 	def get_settler_upgrade_material_prodline(self, level):
-		return self.cached_query("SELECT production_line FROM upgrade_material \
-		                          WHERE level = ?", level)[0][0]
+		db_result = self.cached_query("SELECT production_line FROM upgrade_material \
+		                          WHERE level = ?", level)
+		return db_result[0][0] if db_result else None
 
 	@decorators.cachedmethod
 	def get_provided_resources(self, object_class):
@@ -215,8 +234,19 @@ class UhDbAccessor(DbReader):
 	def get_storage_building_capacity(self, storage_type):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
-
+	
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
 		return frozenset( i[0] for i in self("SELECT type FROM translucent_buildings") )
+
+
+	# Weapon table
+
+	def get_weapon_stackable(self, weapon_id):
+		"""Returns True if the weapon is stackable, False otherwise."""
+		return self.cached_query("SELECT stackable FROM weapon WHERE id = ?", weapon_id)[0][0]
+
+	def get_weapon_attack_radius(self, weapon_id):
+		"""Returns weapon's attack radius modifier."""
+		return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]

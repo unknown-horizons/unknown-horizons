@@ -63,11 +63,22 @@ class Rect(object):
 
 	@classmethod
 	def init_from_topleft_and_size(cls, x, y, width, height):
+		"""Init rect with (x, y) as the origin and width and height one more than given"""
 		self = cls.__new__(cls)
 		self.left = x
 		self.top = y
 		self.right = x + width
 		self.bottom = y + height
+		self.origin = Point(self.left, self.top)
+		return self
+
+	@classmethod
+	def init_from_topleft_and_size_tuples(cls, coords, size):
+		self = cls.__new__(cls)
+		self.left = coords[0]
+		self.top = coords[1]
+		self.right = coords[0] + size[0] - 1
+		self.bottom = coords[1] + size[1] - 1
 		self.origin = Point(self.left, self.top)
 		return self
 
@@ -286,6 +297,15 @@ class Rect(object):
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
+
+	def __lt__(self, other):
+		if self.left != other.left:
+			return self.left < other.left
+		if self.top != other.top:
+			return self.top < other.top
+		if self.right != other.right:
+			return self.right < other.right
+		return self.bottom < other.bottom
 
 	def __iter__(self):
 		"""Generates an iterator, that returns Points"""

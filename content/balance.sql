@@ -309,6 +309,9 @@ INSERT INTO "building_costs" VALUES(42,1,500);
 INSERT INTO "building_costs" VALUES(42,4,3);
 INSERT INTO "building_costs" VALUES(42,6,3);
 INSERT INTO "building_costs" VALUES(42,7,3);
+INSERT INTO "building_costs" VALUES(44,1,750);
+INSERT INTO "building_costs" VALUES(44,4,12);
+INSERT INTO "building_costs" VALUES(44,6,4);
 CREATE TABLE "building_running_costs" ("building" INTEGER NOT NULL , "cost_active" INTEGER NOT NULL , "cost_inactive" INTEGER NOT NULL );
 INSERT INTO "building_running_costs" VALUES(8,5,0);
 INSERT INTO "building_running_costs" VALUES(7,10,5);
@@ -352,3 +355,13 @@ CREATE TABLE storage_building_capacity(type INT, size INT);
 INSERT INTO "storage_building_capacity" VALUES(1,30);
 INSERT INTO "storage_building_capacity" VALUES(2,10);
 INSERT INTO "storage_building_capacity" VALUES(4,0);
+CREATE TABLE health (
+	'id' INTEGER,
+	'max_health' INTEGER);
+INSERT INTO "health" VALUES(1000006,100);
+INSERT INTO "health" VALUES(1000005,100);
+INSERT INTO "health" VALUES(1000001,100);
+INSERT INTO "health" VALUES(1000004,100);
+INSERT INTO "health" VALUES(1000016,100);
+INSERT INTO "health" VALUES(1000020,100);
+INSERT INTO "health" VALUES(1000021,100);

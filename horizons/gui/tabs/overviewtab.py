@@ -19,19 +19,24 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import weakref
+
 from fife.extensions import pychan
 
 from tabinterface import TabInterface
+
+from horizons.scheduler import Scheduler
 from horizons.util import Callback, ActionSetLoader, NamedObject
-from horizons.constants import RES, SETTLER, BUILDINGS
+from horizons.constants import GAME_SPEED, RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton, DeleteButton
+from horizons.gui.widgets.unitoverview import StanceWidget
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget, create_resource_icon
-
+from horizons.entities import Entities
 
 class OverviewTab(TabInterface):
 	def __init__(self, instance, widget = 'overviewtab.xml', \
@@ -93,6 +98,8 @@ class OverviewTab(TabInterface):
 
 
 class BranchOfficeOverviewTab(OverviewTab):
+	""" the main tab of branch offices and storages """
+
 	def __init__(self, instance):
 		super(BranchOfficeOverviewTab, self).__init__(
 			widget = 'overview_branchoffice.xml',
@@ -100,10 +107,29 @@ class BranchOfficeOverviewTab(OverviewTab):
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 		self.tooltip = _("Branch office overview")
+		self._refresh_collector_utilisation()
+
+	def _refresh_collector_utilisation(self):
+		utilisation = int(round(self.instance.get_collector_utilisation() * 100))
+		self.widget.findChild(name="collector_utilisation").text = unicode(str(utilisation) + '%')
 
 	def refresh(self):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self._refresh_collector_utilisation()
 		super(BranchOfficeOverviewTab, self).refresh()
+
+	def show(self):
+		super(BranchOfficeOverviewTab, self).show()
+		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+
+	def hide(self):
+		super(BranchOfficeOverviewTab, self).hide()
+		Scheduler().rem_all_classinst_calls(self)
+
+	def on_instance_removed(self):
+		Scheduler().rem_all_classinst_calls(self)
+		super(BranchOfficeOverviewTab, self).on_instance_removed()
+
 
 class MainSquareOverviewTab(OverviewTab):
 	def  __init__(self, instance):
@@ -111,8 +137,6 @@ class MainSquareOverviewTab(OverviewTab):
 			widget = 'overview_mainsquare.xml',
 			instance = instance
 		)
-		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'), self.instance.settlement)
-		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_setting)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 		self.tooltip = _("Main square overview")
 
@@ -122,13 +146,16 @@ class MainSquareOverviewTab(OverviewTab):
 
 
 class ShipOverviewTab(OverviewTab):
-	def __init__(self, instance):
-		super(ShipOverviewTab, self).__init__(
-			widget = 'overview_ship.xml',
-			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
-			instance = instance
-		)
+	def __init__(self, instance, widget = 'overview_ship.xml', \
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
+		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
 		self.tooltip = _("Ship overview")
+		health_widget = self.widget.findChild(name='health')
+		health_widget.init(self.instance)
+		self.add_remove_listener(health_widget.remove)
+		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
+		weapon_storage_widget.init(self.instance)
+		self.add_remove_listener(weapon_storage_widget.remove)
 
 	def refresh(self):
 		# show rename when you click on name
@@ -147,8 +174,8 @@ class ShipOverviewTab(OverviewTab):
 
 		if island_without_player_settlement_found:
 			events['foundSettlement'] = Callback(self.instance.session.ingame_gui._build, \
-		                                       BUILDINGS.BRANCH_OFFICE_CLASS, \
-		                                       weakref.ref(self.instance) )
+			                                     BUILDINGS.BRANCH_OFFICE_CLASS, \
+			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettlement').set_active()
 		else:
@@ -156,8 +183,30 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('bg_button').set_inactive()
 			self.widget.child_finder('foundSettlement').set_inactive()
 
+		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
+		   self.instance,
+		   Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].costs,
+		   {},
+		   res_from_ship = True )
+		events['foundSettlement/mouseEntered'] = cb
+		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
+		   None ) # hides the resource status widget
+		events['foundSettlement/mouseExited'] = cb
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
+
+
+class FightingShipOverviewTab(ShipOverviewTab):
+	def __init__(self, instance, widget = 'overview_ship.xml'):
+		super(FightingShipOverviewTab, self).__init__(instance, widget)
+		stance_widget = StanceWidget()
+		stance_widget.init(self.instance)
+		self.add_remove_listener(stance_widget.remove)
+		self.widget.findChild(name='stance').addChild(stance_widget)
+
+	def show(self):
+		self.widget.findChild(name='weapon_storage').update()
+		super(FightingShipOverviewTab, self).show()
 
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
@@ -167,6 +216,22 @@ class TraderShipOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = _("Ship overview")
+
+class GroundUnitOverviewTab(OverviewTab):
+	def __init__(self, instance):
+		super(GroundUnitOverviewTab, self).__init__(
+			widget = 'overview_groundunit.xml',
+			instance = instance)
+		self.tooltip = _("Unit overview")
+		health_widget = self.widget.findChild(name='health')
+		health_widget.init(self.instance)
+		self.add_remove_listener(health_widget.remove)
+		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
+		weapon_storage_widget.init(self.instance)
+		self.add_remove_listener(weapon_storage_widget.remove)
+		stance_widget = self.widget.findChild(name='stance')
+		stance_widget.init(self.instance)
+		self.add_remove_listener(stance_widget.remove)
 
 class ProductionOverviewTab(OverviewTab):
 	production_line_gui_xml = "overview_productionline.xml"
@@ -186,10 +251,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		cap_util = 0
-		if hasattr(self.instance, 'capacity_utilisation'):
-			cap_util = int(round( self.instance.capacity_utilisation * 100))
-		self.widget.child_finder('capacity_utilisation').text = unicode(cap_util) + u'%'
+		self._refresh_utilisation()
 
 		# remove old production line data
 		parent_container = self.widget.child_finder('production_lines')
@@ -261,6 +323,23 @@ class ProductionOverviewTab(OverviewTab):
 			self.destruct_button.hide_tooltip()
 		Tear(self.instance).execute(self.instance.session)
 
+	def _refresh_utilisation(self):
+		utilisation = 0
+		if hasattr(self.instance, 'capacity_utilisation'):
+			utilisation = int(round(self.instance.capacity_utilisation * 100))
+		self.widget.child_finder('capacity_utilisation').text = unicode(str(utilisation) + '%')
+
+	def show(self):
+		super(ProductionOverviewTab, self).show()
+		Scheduler().add_new_object(Callback(self._refresh_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+
+	def hide(self):
+		super(ProductionOverviewTab, self).hide()
+		Scheduler().rem_all_classinst_calls(self)
+
+	def on_instance_removed(self):
+		Scheduler().rem_all_classinst_calls(self)
+		super(ProductionOverviewTab, self).on_instance_removed()
 
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
@@ -270,9 +349,9 @@ class SettlerOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Settler overview")
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'), self.instance.settlement)
+		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'), self.instance)
 
-		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_setting)
+		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_settings[self.instance.level])
 		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
@@ -321,6 +400,26 @@ class EnemyBuildingOverviewTab(OverviewTab):
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
 
+class EnemyBranchOfficeOverviewTab(OverviewTab):
+	def __init__(self, instance):
+		super(EnemyBranchOfficeOverviewTab, self).__init__(
+			widget = 'overview_enemybranchoffice.xml',
+			instance = instance
+		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.tooltip = _("Branch office overview")
+
+	def refresh(self):
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+
+		selling_inventory = self.widget.findChild(name='selling_inventory')
+		selling_inventory.init(self.instance.session.db, self.instance.settlement.inventory, self.instance.settlement.sell_list, True)
+
+		buying_inventory = self.widget.findChild(name='buying_inventory')
+		buying_inventory.init(self.instance.session.db, self.instance.settlement.inventory, self.instance.settlement.buy_list, False)
+
+		super(EnemyBranchOfficeOverviewTab, self).refresh()
+
 class EnemyShipOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(EnemyShipOverviewTab, self).__init__(
@@ -344,19 +443,18 @@ class ResourceDepositOverviewTab(OverviewTab):
 		self.widget.child_finder("inventory").update()
 
 
-
 ###
 # Minor utility functions
 
-def _setup_tax_slider(slider, val_label, settlement):
+def _setup_tax_slider(slider, val_label, building):
 	"""Set up a slider to work as tax slider"""
 	slider.setScaleStart(SETTLER.TAX_SETTINGS_MIN)
 	slider.setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
 	slider.setStepLength(SETTLER.TAX_SETTINGS_STEP)
-	slider.setValue(settlement.tax_setting)
+	slider.setValue(building.settlement.tax_settings[building.level])
 	slider.stylize('book')
 	def on_slider_change():
 		val_label.text = unicode(slider.getValue())
-		if(settlement.tax_setting != slider.getValue()):
-			SetTaxSetting(settlement, slider.getValue()).execute(settlement.session)
+		if(building.settlement.tax_settings[building.level] != slider.getValue()):
+			SetTaxSetting(building.settlement, building.level, slider.getValue()).execute(building.settlement.session)
 	slider.capture(on_slider_change)

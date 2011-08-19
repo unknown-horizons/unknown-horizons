@@ -21,10 +21,11 @@
 
 import horizons.main
 
+from horizons.world.tradepost import TradePost
 from horizons.world.storageholder import StorageHolder
 from horizons.world.storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList, NamedObject
-from horizons.world.tradepost import TradePost
+from horizons.constants import BUILDINGS, SETTLER
 
 class Settlement(TradePost, StorageHolder, NamedObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
@@ -33,21 +34,44 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
-		self.__init(session, owner)
+		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 		super(Settlement, self).__init__()
 
-	def __init(self, session, owner, tax_setting=1.0):
+	def __init(self, session, owner, upgrade_permissions, tax_settings):
 		self.session = session
 		self.owner = owner
-		self.tax_setting = tax_setting
 		self.buildings = []
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = {}
 		self.branch_office = None # this is set later in the same tick by the bo itself
+		self.upgrade_permissions = upgrade_permissions
+		self.tax_settings = tax_settings
 
-	def set_tax_setting(self, tax):
-		self.tax_setting = tax
+	@classmethod
+	def make_default_upgrade_permissions(cls):
+		upgrade_permissions = {}
+		for level in xrange(SETTLER.CURRENT_MAX_INCR):
+			upgrade_permissions[level] = True
+		upgrade_permissions[SETTLER.CURRENT_MAX_INCR] = False
+		return upgrade_permissions
+
+	@classmethod
+	def make_default_tax_settings(cls):
+		tax_settings = {}
+		for level in xrange(SETTLER.CURRENT_MAX_INCR + 1):
+			tax_settings[level] = 1.0
+		return tax_settings
+
+	def set_tax_setting(self, level, tax):
+		self.tax_settings[level] = tax
+
+	def set_upgrade_permissions(self, level, allowed):
+		if self.upgrade_permissions[level] != allowed:
+			self.upgrade_permissions[level] = allowed
+			for building in self.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+				if building.level == level:
+					building.on_change_upgrade_permissions()
 
 	def _possible_names(self):
 		names = horizons.main.db("SELECT name FROM citynames WHERE for_player = 1")
@@ -75,6 +99,11 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		return self.cumulative_taxes + self.sell_income \
 					 - self.cumulative_running_costs - self.buy_expenses
 
+	@property
+	def island(self):
+		"""Returns the island this settlement is on"""
+		return self.session.world.get_island(self.branch_office.position.origin)
+
 	def level_upgrade(self, lvl):
 		"""Upgrades settlement to a new increment.
 		It only delegates the upgrade to its buildings."""
@@ -87,18 +116,26 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 	def save(self, db, islandid):
 		super(Settlement, self).save(db)
 
-		db("INSERT INTO settlement (rowid, island, owner, tax_setting) VALUES(?, ?, ?, ?)",
-			self.worldid, islandid, self.owner.worldid, self.tax_setting)
+		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
+			self.worldid, islandid, self.owner.worldid)
 		for res, amount in self.produced_res.iteritems():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
 			   self.worldid, res, amount)
+		for level in xrange(SETTLER.CURRENT_MAX_INCR + 1):
+			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)", \
+				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 
 	@classmethod
 	def load(cls, db, worldid, session):
 		self = cls.__new__(cls)
 
-		owner, tax = db("SELECT owner, tax_setting FROM settlement WHERE rowid = ?", worldid)[0]
-		self.__init(session, WorldObject.get_object_by_id(owner), tax)
+		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
+		upgrade_permissions = {}
+		tax_settings = {}
+		for level, allowed, tax in db("SELECT level, upgrading_allowed, tax_setting FROM settlement_level_properties WHERE settlement = ?", worldid):
+			upgrade_permissions[level] = allowed
+			tax_settings[level] = tax
+		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
 		# load super here cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)
@@ -140,6 +177,9 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 			self.buildings_by_id[building.id] = [building]
 		if hasattr(building, "add_building_production_finished_listener"):
 			building.add_building_production_finished_listener(self.settlement_building_production_finished)
+		if hasattr(self.owner, 'add_building'):
+			# notify interested players of added building
+			self.owner.add_building(building)
 
 	def remove_building(self, building):
 		"""Properly removes a building from the settlement"""
@@ -147,6 +187,9 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		self.buildings_by_id[building.id].remove(building)
 		if hasattr(building, "remove_building_production_finished_listener"):
 			building.remove_building_production_finished_listener(self.settlement_building_production_finished)
+		if hasattr(self.owner, 'remove_building'):
+			# notify interested players of removed building
+			self.owner.remove_building(building)
 
 	def get_buildings_by_id(self, id):
 		"""Returns all buildings on this island that have the given id"""

@@ -23,7 +23,8 @@ import horizons.main
 
 from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
-from horizons.gui.modules import PlayerDataSelection
+from horizons.gui.modules import AIDataSelection, PlayerDataSelection
+from horizons.constants import AI
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'scenario'): # tutorial
@@ -44,23 +45,27 @@ class SingleplayerMenu(object):
 			'free_maps' : Callback(self.show_single, show='free_maps')
 		}
 
-
 		# init gui for subcategory
+		show_ai_options = False
 		del eventMap[show]
 		self.current.findChild(name=show).marked = True
 		right_side = self.widgets['sp_%s' % show]
 		self.current.findChild(name="right_side_box").addChild(right_side)
 		if show == 'random':
 			game_settings = self.widgets['game_settings']
-			self.current.findChild(name="game_settings_box").addChild(game_settings)
+			if self.current.findChild(name="game_settings") is None:
+				self.current.findChild(name="game_settings_box").addChild(game_settings)
+			show_ai_options = True
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
 			game_settings = self.widgets['game_settings']
-			self.current.findChild(name="game_settings_box").addChild(game_settings)
+			if self.current.findChild(name="game_settings") is None:
+				self.current.findChild(name="game_settings_box").addChild(game_settings)
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
+			show_ai_options = True
 		else:
 			choosable_locales = ['en', horizons.main.fife.get_locale()]
 			if show == 'campaign':
@@ -113,6 +118,8 @@ class SingleplayerMenu(object):
 		self.current.mapEvents(eventMap)
 
 		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
+		if show_ai_options:
+			self.current.aidata = AIDataSelection(self.current, self.widgets)
 		self.current.show()
 		self.on_escape = self.show_main
 
@@ -125,7 +132,6 @@ class SingleplayerMenu(object):
 			return
 		playercolor = self.current.playerdata.get_player_color()
 		horizons.main.fife.set_uh_setting("Nickname", playername)
-		horizons.main.fife.save_settings()
 
 		if self.current.collectData('random'):
 			map_size = int( self.current.findChild(name="map_size_slider").getValue() )
@@ -137,6 +143,11 @@ class SingleplayerMenu(object):
 
 		is_scenario = bool(self.current.collectData('scenario'))
 		is_campaign = bool(self.current.collectData('campaign'))
+		if not is_scenario and not is_campaign:
+			ai_players = int(self.current.aidata.get_ai_players())
+			horizons.main.fife.set_uh_setting("AIPlayers", ai_players)
+		horizons.main.fife.save_settings()
+
 		self.show_loading_screen()
 		if is_scenario:
 			from horizons.scenario import InvalidScenarioFileFormat
@@ -163,7 +174,7 @@ class SingleplayerMenu(object):
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 				})
 		else: # free play/random map
-			horizons.main.start_singleplayer(map_file, playername, playercolor)
+			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players=ai_players, human_ai=AI.HUMAN_AI)
 
 	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""

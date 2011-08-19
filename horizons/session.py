@@ -26,6 +26,7 @@ import json
 
 import horizons.main
 
+from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool
 from horizons.gui.keylisteners import IngameKeyListener
@@ -83,6 +84,7 @@ class Session(LivingObject):
 
 		WorldObject.reset()
 		NamedObject.reset()
+		AIPlayer.clear_caches()
 
 		#game
 		self.random = self.create_rng(rng_seed)
@@ -98,6 +100,7 @@ class Session(LivingObject):
 		self.gui.session = self
 		self.ingame_gui = IngameGui(self, self.gui)
 		self.keylistener = IngameKeyListener(self)
+		self.coordinates_tooltip = None
 		self.display_speed()
 
 		self.selected_instances = set()
@@ -203,13 +206,14 @@ class Session(LivingObject):
 			# NOTE: this must be sorted before iteration, cause there is no defined order for
 			#       iterating a dict, and it must happen in the same order for mp games.
 			for i in sorted(players):
-				self.world.setup_player(i['id'], i['name'], i['color'], i['local'])
+				self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['ai'], i['difficulty'])
 			center = self.world.init_new_world()
 			self.view.center(center[0], center[1])
 		else:
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
+		self.world.init_fish_indexer() # now the fish should exist
 		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
@@ -222,7 +226,9 @@ class Session(LivingObject):
 
 		# cursor has to be inited last, else player interacts with a not inited world with it.
 		self.cursor = SelectionTool(self)
-		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
+        # Set cursor correctly, menus might need to be opened.
+		# Open menus later, they may need unit data not yet inited
+		self.cursor.apply_select()
 
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""
@@ -237,14 +243,27 @@ class Session(LivingObject):
 
 	def display_speed(self):
 		text = u''
+		up_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedUp')
+		down_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedDown')
 		tps = self.timer.ticks_per_second
 		if tps == 0: # pause
 			text = u'0x'
+			up_icon.set_inactive()
+			down_icon.set_inactive()
 		elif tps == GAME_SPEED.TICKS_PER_SECOND: # normal speed, 1x
-			pass # display nothing
+			up_icon.set_active()
+			down_icon.set_inactive() # do not display label '1x'!
 		else:
 			text = unicode(tps/GAME_SPEED.TICKS_PER_SECOND) + u'x' # 2x, 4x, ...
+			#FIXME Yes, this is just fugly harcoded stuff. Sorry. Please improve
+			# by introducing a query for whether we are at max speed currently.
+			if text == u'4x':
+				up_icon.set_inactive()
+			else:
+				up_icon.set_active()
+			down_icon.set_active()
 		self.ingame_gui.display_game_speed(text)
+
 
 	def speed_up(self):
 		if self.speed_is_paused():

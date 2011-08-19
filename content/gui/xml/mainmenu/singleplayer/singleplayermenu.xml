@@ -26,6 +26,7 @@
 	which might be the source of this bug
 	-->
 	<VBox name="playerdataselectioncontainer"  position="200,320" />
+	<VBox name="aidataselectioncontainer"  position="200,500" />
 
 	<!-- load the proper xml submenu template (scenario, random maps, free play, ..) -->
 	<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side_box" />

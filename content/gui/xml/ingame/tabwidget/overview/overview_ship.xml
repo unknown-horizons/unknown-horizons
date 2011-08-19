@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Container size="250,550">
+<TabBG amount="6"/>
+	<Icon name="player_emblem" position="25,50"/>
+
+<Container position="0,70" size="245,320" >
+	<!-- Name of Ship -->
+	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<Spacer min_size="0"  max_size="50" />
+		<TooltipLabel name='name'  border_size="0"  tooltip="Click to change the name of this ship."/>
+	</HBox>
+
+	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+
+	<!-- Picture -->
+	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,20" />
+	<Container name="weapon_storage_container" size="245,50" position = "20,170">
+		<HBox>
+			<Label text="Weapons:"/>
+			<WeaponStorageWidget name="weapon_storage"/>
+		</HBox>
+	</Container>
+	<HealthWidget name="health" position="180,165"/>
+
+	<Icon image="content/gui/images/background/hr.png" position="20,190" />
+
+	<Label name="foundSettlement_label" text="Build settlement:" position="25,225" />
+	<HBox position="180,210">
+		<ToggleImageButton name='bg_button' border_size="0" 
+			inactive_image="content/gui/images/buttons/msg_button_bw.png" 
+			up_image="content/gui/images/buttons/msg_button.png" 
+			down_image="content/gui/images/buttons/msg_button_d.png" 
+			hover_image="content/gui/images/buttons/msg_button_h.png" />
+	</HBox>
+
+	<HBox position="186,215">
+		<ToggleImageButton name="foundSettlement" tooltip="Build settlement" 
+			inactive_image="content/gui/icons/ship/anchor_bw.png" 
+			up_image="content/gui/icons/ship/anchor.png" 
+			down_image="content/gui/icons/ship/anchor_a.png" 
+			hover_image="content/gui/icons/ship/anchor_h.png" />
+	</HBox>
+
+	<Container position="0,270" size="600,100" name="stance"/>
+
+</Container>
+</Container>

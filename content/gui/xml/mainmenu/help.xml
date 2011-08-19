@@ -40,6 +40,7 @@
 		<Label name="set13" text="{G} = Toggle grid on/off" />
 		<Label name="set28" text="{T} = Toggle translucency of ambient buildings" />
 		<Label name="set14" text="{X} = Enable destruct mode" />
+		<Label name="set42" text="{R} = Show player scores" />
 		<!--<ScrollArea min_size="320,500" horizontal_scrollbar="0">
 			<TextBox name="helpBox" filename="content/infotext.txt"/>
 		</ScrollArea>-->
@@ -59,6 +60,6 @@
 	</VBox>
 </VBox>
 
-<OkButton position="695,500"  tooltip="Exit to main menu" />
+<OkButton position="695,500"  tooltip="Return" />
 
 </Container>

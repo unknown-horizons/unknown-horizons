@@ -27,7 +27,8 @@ from horizons.command import Command
 from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.scenario import CONDITIONS
-from horizons.constants import RES
+from horizons.constants import BUILDINGS, RES
+from horizons.world.player import HumanPlayer
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -132,6 +133,14 @@ class Build(Command):
 		# building is now officially built and existent
 		building.start()
 
+		# unload the remaining resources on the human player ship if we just founded a new settlement
+		if building.id == BUILDINGS.BRANCH_OFFICE_CLASS and isinstance(building.owner, HumanPlayer):
+			ship = WorldObject.get_object_by_id(self.ship)
+			for res, amount in [(res, amount) for res, amount in ship.inventory]: # copy the inventory first because otherwise we would modify it while iterating
+				amount = min(amount, building.settlement.inventory.get_free_space_for(res))
+				building.settlement.inventory.alter(res, amount)
+				ship.inventory.alter(res, -amount)
+
 		# NOTE: conditions are not MP-safe! no problem as long as there are no MP-scenarios
 		session.scenario_eventhandler.schedule_check(CONDITIONS.building_num_of_type_greater)
 
@@ -175,6 +184,8 @@ class Tear(Command):
 		@param issuer: the issuer of the command
 		"""
 		building = WorldObject.get_object_by_id(self.building)
-		self.log.debug("Tear: tearing down %s", building)
-		building.remove()
-
+		if building is None or not building.fife_instance:
+			self.log.warning("Tear: attempting to tear down a building that shouldn't exist %s", building)
+		else:
+			self.log.debug("Tear: tearing down %s", building)
+			building.remove()

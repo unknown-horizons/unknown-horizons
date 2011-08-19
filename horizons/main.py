@@ -41,12 +41,12 @@ import shutil
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, TileSetLoader, Color, parse_port
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port
 from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import PATHS, NETWORK
+from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER
 from horizons.network.networkinterface import NetworkInterface
 
 # private module pointers of this module
@@ -95,6 +95,20 @@ def start(command_line_arguments):
 			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
 			return False
 
+	AI.AI_PLAYERS = command_line_arguments.ai_players
+	if command_line_arguments.ai_highlights:
+		AI.HIGHLIGHT_PLANS = True
+	if command_line_arguments.human_ai:
+		AI.HUMAN_AI = True
+
+	# set singleplayer natural resource seed
+	if command_line_arguments.nature_seed:
+		SINGLEPLAYER.SEED = command_line_arguments.nature_seed
+
+	# set MAX_TICKS
+	if command_line_arguments.max_ticks:
+		GAME.MAX_TICKS = command_line_arguments.max_ticks
+
 	db = _create_db()
 
 	# init game parts
@@ -123,23 +137,26 @@ def start(command_line_arguments):
 	# start something according to commandline parameters
 	startup_worked = True
 	if command_line_arguments.start_dev_map:
-		startup_worked = _start_dev_map()
+		startup_worked = _start_dev_map(command_line_arguments.ai_players, command_line_arguments.human_ai)
 	elif command_line_arguments.start_random_map:
-		startup_worked = _start_random_map()
+		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai)
 	elif command_line_arguments.start_specific_random_map is not None:
-		startup_worked = _start_random_map(command_line_arguments.start_specific_random_map)
+		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai, \
+			seed=command_line_arguments.start_specific_random_map)
 	elif command_line_arguments.start_map is not None:
-		startup_worked = _start_map(command_line_arguments.start_map)
+		startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players, \
+			command_line_arguments.human_ai)
 	elif command_line_arguments.start_scenario is not None:
-		startup_worked = _start_map(command_line_arguments.start_scenario, True)
+		startup_worked = _start_map(command_line_arguments.start_scenario, 0, False, True)
 	elif command_line_arguments.start_campaign is not None:
 		startup_worked = _start_campaign(command_line_arguments.start_campaign)
 	elif command_line_arguments.load_map is not None:
-		startup_worked = _load_map(command_line_arguments.load_map)
+		startup_worked = _load_map(command_line_arguments.load_map, command_line_arguments.ai_players, \
+			command_line_arguments.human_ai)
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
 	elif command_line_arguments.stringpreview:
-		startup_worked = _start_map("development_no_trees")
+		startup_worked = _start_map("development_no_trees", 0, False)
 		from development.stringpreviewwidget import StringPreviewWidget
 		StringPreviewWidget().show()
 	else: # no commandline parameter, show main screen
@@ -161,9 +178,11 @@ def quit():
 	ExtScheduler.destroy_instance()
 	fife.quit()
 
-def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False, campaign=None):
+def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False, campaign=None, ai_players=0, human_ai=False):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
+	@param ai_players: number of AI players to start (excludes possible human AI)
+	@param human_ai: whether to start the human player as an AI
 	"""
 	global fife, preloading, db
 	preload_game_join(preloading)
@@ -185,7 +204,27 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	# start new session
 	from spsession import SPSession
 	_modules.session = SPSession(_modules.gui, db)
-	players = [ { 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True } ]
+
+	# for now just make it a bit easier for the AI
+	difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
+	players = [{ 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True, 'ai': human_ai, 'difficulty': difficulty_level[bool(human_ai)]}]
+
+	# add AI players with a distinct color; if none can be found then use black
+	for num in xrange(ai_players):
+		color = Color[7] # if none can be found then be black
+		for possible_color in Color:
+			if possible_color == Color[7]:
+				continue # black is used by the trader and the pirate
+			available = True
+			for player in players:
+				if player['color'].to_tuple() == possible_color.to_tuple():
+					available = False
+					break
+			if available:
+				color = possible_color
+				break
+		players.append({'id': num + 2, 'name' : 'AI' + str(num + 1), 'color' : color, 'local' : False, 'ai': True, 'difficulty': difficulty_level[True]})
+
 	try:
 		_modules.session.load(map_file, players, is_scenario=is_scenario, campaign = campaign)
 	except:
@@ -199,7 +238,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 		descr = _(u"The game you selected couldn't be started.") + \
 		      _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
-		load_game()
+		load_game(ai_players, human_ai)
 
 def prepare_multiplayer(game):
 	"""Starts a multiplayer game server
@@ -232,7 +271,7 @@ def prepare_multiplayer(game):
 def start_multiplayer(game):
 	_modules.session.start()
 
-def load_game(savegame = None, is_scenario = False, campaign = None):
+def load_game(ai_players=0, human_ai=False, savegame = None, is_scenario = False, campaign = None):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
@@ -240,7 +279,8 @@ def load_game(savegame = None, is_scenario = False, campaign = None):
 			return # user aborted dialog
 	_modules.gui.show_loading_screen()
 #TODO
-	start_singleplayer(savegame, is_scenario = is_scenario, campaign = campaign)
+	start_singleplayer(savegame, is_scenario = is_scenario, campaign = campaign, \
+		ai_players=ai_players, human_ai=human_ai)
 
 
 def _init_gettext(fife):
@@ -253,13 +293,13 @@ def _init_gettext(fife):
 
 ## GAME START FUNCTIONS
 
-def _start_dev_map():
+def _start_dev_map(ai_players, human_ai):
 	# start the development map (it's the first one)
 	first_map = SavegameManager.get_maps()[0][1]
-	load_game(first_map)
+	load_game(ai_players, human_ai, first_map)
 	return True
 
-def _start_map(map_name, is_scenario = False, campaign = None):
+def _start_map(map_name, ai_players, human_ai, is_scenario = False, campaign = None):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
@@ -290,12 +330,12 @@ def _start_map(map_name, is_scenario = False, campaign = None):
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
-	load_game(map_file, is_scenario, campaign = campaign)
+	load_game(ai_players, human_ai, map_file, is_scenario, campaign = campaign)
 	return True
 
-def _start_random_map(seed = None):
+def _start_random_map(ai_players, human_ai, seed = None):
 	from horizons.util import random_map
-	start_singleplayer( random_map.generate_map(seed=seed) )
+	start_singleplayer(random_map.generate_map(seed), ai_players=ai_players, human_ai=human_ai)
 	return True
 
 def _start_campaign(campaign_name):
@@ -329,9 +369,9 @@ def _start_campaign(campaign_name):
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
 		return False
-	return _start_map(scenarios[0], is_scenario = True, campaign = {'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]})
+	return _start_map(scenarios[0], 0, False, is_scenario = True, campaign = {'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]})
 
-def _load_map(savegame):
+def _load_map(savegame, ai_players, human_ai):
 	"""Load a map specified by user.
 	@param savegame: eiter the displayname of a savegame or a path to a savegame
 	@return: bool, whether loading succeded"""
@@ -362,7 +402,7 @@ def _load_map(savegame):
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
-	load_game(map_file)
+	load_game(ai_players, human_ai, map_file)
 	return True
 
 def _load_last_quicksave():
@@ -375,7 +415,7 @@ def _load_last_quicksave():
 	except KeyError:
 		print _("Error: No quicksave found.")
 		return False
-	load_game(save)
+	load_game(0, False, save)
 	return True
 
 def _create_db():

@@ -26,7 +26,7 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-                              TraderShipOverviewTab, EnemyShipOverviewTab
+	TraderShipOverviewTab, EnemyShipOverviewTab
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
@@ -38,7 +38,7 @@ from unit import Unit
 from horizons.command.uioptions import TransferResource
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.scheduler import Scheduler
-
+from horizons.world.component.healthcomponent import HealthComponent
 
 class ShipRoute(object):
 	"""
@@ -88,31 +88,35 @@ class ShipRoute(object):
 	def on_route_bo_reached(self):
 		branch_office = self.get_location()['branch_office']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
+
+		if self.current_transfer is not None:
+			for res in copy.copy(self.current_transfer):
+				# make sure we don't keep trying to (un)load something when the decision about that resource has changed
+				if self.current_transfer[res] == 0 or res not in self.get_location()['resource_list'] or \
+						cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
+					del self.current_transfer[res]
+
 		settlement = branch_office.settlement
-		# if ship and branch office have the same owner, the ship will
-		# load/unload resources without paying anything
-		if settlement.owner == self.ship.owner:
-			status = self._transer_resources(settlement, resource_list)
-			if (not status.settlement_has_enough_space_to_take_res and self.wait_at_unload) or \
-			   (not status.settlement_provides_enough_res and self.wait_at_load):
-				self.current_transfer = status.remaining_transfers
-				# retry
-				Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)
-			else:
-				self.current_transfer = None
-				self.move_to_next_route_bo()
+		status = self._transer_resources(settlement, resource_list)
+		if (not status.settlement_has_enough_space_to_take_res and self.wait_at_unload) or \
+		   (not status.settlement_provides_enough_res and self.wait_at_load):
+			self.current_transfer = status.remaining_transfers
+			# retry
+			Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)
 		else:
-			# TODO: trade with other players
+			self.current_transfer = None
 			self.move_to_next_route_bo()
 
 	def _transer_resources(self, settlement, resource_list):
 		"""Transfers resources to/from settlement according to list.
 		@return: TransferStatus instance
 		"""
+
 		class TransferStatus(object):
 			def __init__(self):
 				self.settlement_provides_enough_res = self.settlement_has_enough_space_to_take_res = True
 				self.remaining_transfers = {}
+
 		status = TransferStatus()
 		status.remaining_transfers = copy.copy(resource_list)
 
@@ -120,31 +124,38 @@ class ShipRoute(object):
 			amount = resource_list[res]
 			if amount == 0:
 				continue
+
 			if amount > 0:
-				#  load from settlement onto ship
-				if settlement.inventory[res] < amount: # not enough res
+				# load from settlement onto ship
+				if settlement.owner is self.ship.owner:
+					if settlement.inventory[res] < amount: # not enough res
+						amount = settlement.inventory[res]
+
+					# check if ship has enough space is handled implicitly below
+					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
+				else:
+					amount_transferred = settlement.sell_resource(self.ship, res, amount)
+
+				if amount_transferred < status.remaining_transfers[res] and self.ship.inventory.get_free_space_for(res) > 0:
 					status.settlement_provides_enough_res = False
-					amount = settlement.inventory[res]
-
-				# check if ship has enough space is handled implicitly below
-
-				amount_transfered = settlement.transfer_to_storageholder(amount, res, self.ship)
-				status.remaining_transfers[res] -= amount_transfered
-
+				status.remaining_transfers[res] -= amount_transferred
 			else:
 				# load from ship onto settlement
 				amount = -amount # use positive below
+				if settlement.owner is self.ship.owner:
+					if self.ship.inventory[res] < amount: # check if ship has as much as planned
+						amount = self.ship.inventory[res]
 
-				if self.ship.inventory[res] < amount: # check if ship has as much as planned
-					amount = self.ship.inventory[res]
+					if settlement.inventory.get_free_space_for(res) < amount: # too little space
+						amount = settlement.inventory.get_free_space_for(res)
 
-				if settlement.inventory.get_free_space_for(res) < amount: # too little space
+					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
+				else:
+					amount_transferred = settlement.buy_resource(self.ship, res, amount)
+
+				if amount_transferred < -status.remaining_transfers[res] and self.ship.inventory[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False
-					amount = settlement.inventory.get_free_space_for(res)
-
-				amount_transfered = self.ship.transfer_to_storageholder(amount, res, settlement)
-				status.remaining_transfers[res] += amount_transfered
-
+				status.remaining_transfers[res] += amount_transferred
 		return status
 
 	def on_ship_blocked(self):
@@ -283,6 +294,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def __init(self):
 		self._selected = False
 		# register ship in world
+		self.add_component('health', HealthComponent)
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -294,8 +306,11 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
+			self.in_ship_map = False
 		if self._selected:
 			self.deselect()
+			if self in self.session.selected_instances:
+				self.session.selected_instances.remove(self)
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
@@ -416,7 +431,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 		# TODO: Replace 15 with a distance dependant on the ship type and any
 		# other conditions.
 		ships = self.session.world.get_ships(self.position, radius)
-		ships.remove(self)
+		if self in ships:
+			ships.remove(self)
 		return ships
 
 class PirateShip(Ship):
@@ -431,6 +447,10 @@ class TradeShip(Ship):
 	tabs = ()
 	enemy_tabs = (TraderShipOverviewTab, )
 	health_bar_y = -220
+
+	def __init__(self, x, y, **kwargs):
+		super(TradeShip, self).__init__(x, y, **kwargs)
+		self.remove_component('health')
 
 	def _possible_names(self):
 		return [ _(u'Trader') ]

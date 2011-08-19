@@ -27,6 +27,7 @@ from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
+from horizons.constants import PRODUCTIONLINES
 
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
@@ -166,7 +167,7 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
 		self.tooltip = _("Fisher boats")
 		# TODO: generalize this hard coded value
-		events = { 'BB_build_fisher_1' : Callback(self.start_production, 15) }
+		events = { 'BB_build_fisher_1' : Callback(self.start_production, PRODUCTIONLINES.FISHING_BOAT) }
 		self.widget.mapEvents(events)
 
 class BoatbuilderTradeTab(BoatbuilderSelectTab):

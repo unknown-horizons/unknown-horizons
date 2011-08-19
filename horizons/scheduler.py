@@ -22,6 +22,8 @@
 import logging
 import copy
 
+import horizons.main
+
 from horizons.util import LivingObject, ManualConstructionSingleton, decorators
 from horizons.constants import GAME
 
@@ -56,6 +58,11 @@ class Scheduler(LivingObject):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
 		"""
+
+		if GAME.MAX_TICKS is not None and tick_id >= GAME.MAX_TICKS:
+			horizons.main.quit()
+			return
+
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.schedule[self.cur_tick])

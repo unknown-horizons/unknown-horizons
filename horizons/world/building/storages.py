@@ -22,7 +22,9 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MainSquareOverviewTab, AccountTab, MainSquareSettlerTabSettlerTab
+		 MainSquareOverviewTab, AccountTab, MainSquareSettlerTabSettlerTab, \
+		 MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
+		 EnemyBranchOfficeOverviewTab
 from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
@@ -53,9 +55,19 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		super(StorageBuilding, self).remove()
 
 
+	def get_utilisation_history_length(self):
+		return None if not self.get_local_collectors() else self.get_local_collectors()[0].get_utilisation_history_length()
+
+	def get_collector_utilisation(self):
+		collectors = self.get_local_collectors()
+		if not collectors:
+			return None
+		return sum(collector.get_utilisation() for collector in collectors) / float(len(collectors))
+
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
 	tabs = (BranchOfficeOverviewTab, InventoryTab, BuySellTab, AccountTab)
+	enemy_tabs = (EnemyBranchOfficeOverviewTab,)
 	def __init__(self, *args, **kwargs):
 		super(BranchOffice, self).__init__(*args, **kwargs)
 		self.settlement.branch_office = self # we never need to unset this since bo's are indestructible
@@ -65,7 +77,7 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		self.settlement.branch_office = self
 
 class MainSquare(ProducerBuilding, StorageBuilding):
-	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSettlerTabSettlerTab)
+	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, MainSquareSettlerTabSettlerTab)
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.

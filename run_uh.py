@@ -104,7 +104,18 @@ def get_option_parser():
 				                    help=_("Loads a saved game. <save> is the savegamename."))
 	start_uh_group.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true", \
 				                    help=_("Loads the last quicksave."))
+	start_uh_group.add_option("--nature-seed", dest="nature_seed", type="int", \
+				                    help=_("Sets the seed used to generate trees, fish, and other natural resources."))
 	p.add_option_group(start_uh_group)
+
+	ai_group = optparse.OptionGroup(p, _("AI options"))
+	ai_group.add_option("--ai-players", dest="ai_players", metavar="<ai_players>", type="int", default=1, \
+	             help=_("Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."))
+	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
+	             help=_("Makes the human player a human-AI hybrid (for development only)."))
+	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true", \
+	             help=_("Shows AI plans as highlights (for development only)."))
+	p.add_option_group(ai_group)
 
 	dev_group = optparse.OptionGroup(p, _("Development options"))
 	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true", \
@@ -118,6 +129,8 @@ def get_option_parser():
 				               default=False, help=_("For internal use only."))
 	dev_group.add_option("--profile", dest="profile", action="store_true", \
 				               default=False, help=_("Enable profiling (for developing only)."))
+	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int", \
+				               help=_("Run the game for <max_ticks> ticks."))
 	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true", \
 				               default=False, help=_("Enable the string previewer tool for scenario writers"))
 	p.add_option_group(dev_group)

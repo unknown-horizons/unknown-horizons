@@ -95,14 +95,30 @@ class Inventory(pychan.widgets.Container):
 			sum_stored_res = self._inventory.get_sum_of_stored_resources()
 			label = pychan.widgets.Label()
 			label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
-			label.position = (170, 50)
-			self.__icon.position = (150, 50)
+			label.position = (170, 53)
+			self.__icon.position = (150, 53)
 			self.addChildren(label, self.__icon)
 		elif isinstance(self._inventory, PositiveSizedSlotStorage):
 			label = pychan.widgets.Label()
 			label.text = _('Limit: %st per slot') % self._inventory.get_limit(None)
-			label.position = (110, 150)
-			self.__icon.position = (90, 150)
+			label.position = (20, 203)
+			self.__icon.position = (0, 203)
 			self.addChildren(label, self.__icon)
 		self.adaptLayout()
 		self.stylize('menu_black')
+
+	def apply_to_buttons(self, action, filt = None):
+		"""Applies action to all buttons shown in inventory
+		@param action: function called that touches button
+		@param filt: function used to filter the buttons
+		both functions take one parameter which is the button
+		"""
+		if filt:
+			assert callable(filt)
+		assert callable(action)
+
+		def _find_widget(widget):
+			if isinstance(widget, ImageFillStatusButton):
+				if filt == None or filt(widget):
+					action(widget)
+		self.deepApply(_find_widget)

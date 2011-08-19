@@ -21,8 +21,10 @@
 
 from fife import fife
 
+import horizons.main
 from horizons.command.unit import Act
 from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObjectNotFound
 from navigationtool import NavigationTool
 from horizons.constants import LAYERS
 
@@ -61,16 +63,29 @@ class SelectionTool(NavigationTool):
 									min(self.select_begin[1], evt.getY()), \
 									abs(evt.getX() - self.select_begin[0]), \
 									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+			layer_instances = [i.this for i in self.session.view.layers[LAYERS.OBJECTS].getInstances()]
+			instances = [i for i in instances if i.this in layer_instances]
 			# Only one unit, select anyway
 			if len(instances) == 1:
-				instance = WorldObject.get_object_by_id(int(instances[0].getId()))
-				if instance.is_selectable:
-					selectable.append(instance)
+				try:
+					i_id = instances[0].getId()
+					if i_id != '':
+						instance = WorldObject.get_object_by_id(int(i_id))
+						if instance.is_selectable:
+							selectable.append(instance)
+				except WorldObjectNotFound:
+					pass
 			else:
 				for i in instances:
-					instance = WorldObject.get_object_by_id(int(i.getId()))
-					if instance.is_selectable and instance.owner == self.session.world.player:
-						selectable.append(instance)
+					try:
+						i_id = i.getId()
+						if i_id == '':
+							continue
+						instance = WorldObject.get_object_by_id(int(i_id))
+						if instance.is_selectable and instance.owner == self.session.world.player:
+							selectable.append(instance)
+					except WorldObjectNotFound:
+						pass
 
 			if len(selectable) > 1:
 				if do_multi:
@@ -109,12 +124,29 @@ class SelectionTool(NavigationTool):
 		evt.consume()
 
 	def apply_select(self):
-		"""Called when selected instances changes. (Shows their menu)"""
+		"""
+		Called when selected instances changes. (Shows their menu)
+		If one of the selected instances can attack, switch mousetool to AttackingTool
+		"""
 		if len(self.session.selected_instances) > 1:
-			pass
+			self.session.ingame_gui.show_multi_select_tab()
 		elif len(self.session.selected_instances) == 1:
 			for i in self.session.selected_instances:
 				i.show_menu()
+
+		#change session cursor to attacking tool if selected instances can attack
+		from attackingtool import AttackingTool
+		attacking_unit_found = False
+		for i in self.session.selected_instances:
+			if hasattr(i, 'attack') and i.owner == self.session.world.player:
+				attacking_unit_found = True
+				break
+
+		if attacking_unit_found and not isinstance(self.session.cursor, AttackingTool):
+			self.session.cursor = AttackingTool(self.session)
+		if not attacking_unit_found and isinstance(self.session.cursor, AttackingTool):
+			self.session.cursor = SelectionTool(self.session)
+			horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
@@ -122,15 +154,8 @@ class SelectionTool(NavigationTool):
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			selectable = []
-			instances = self.session.view.cam.getMatchingInstances(\
-				fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
-			for i in instances:
-				# Check id, can be '' if instance is created and clicked on before
-				# actual game representation class is created (network play)
-				id = i.getId()
-				if id == '':
-					continue
-				instance = WorldObject.get_object_by_id(int(id))
+			instances = self.get_hover_instances(evt)
+			for instance in instances:
 				if instance.is_selectable:
 					selectable.append(instance)
 			if len(selectable) > 1:

@@ -66,6 +66,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == 'g':
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
+		elif keystr == 'h':
+			self.session.coordinates_tooltip.toggle()
 		elif keystr == 'x':
 			self.session.destroy_tool()
 		elif keystr == '+':
@@ -73,7 +75,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == '-':
 			self.session.speed_down()
 		elif keystr == 'p':
-			self.session.ingame_gui.toggle_ingame_pause()
+			self.session.gui.toggle_pause()
+		elif keystr == 'r':
+			self.session.ingame_gui.players_overview.toggle_visibility()
 		elif keystr == 'l':
 			self.session.ingame_gui.logbook.toggle_visibility()
 		elif keystr == 'd':

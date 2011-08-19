@@ -23,8 +23,13 @@ from horizons.command import GenericCommand
 
 class SetTaxSetting(GenericCommand):
 	"""Sets the taxes for a settlement."""
-	def __init__(self, settlement, new_taxes):
-		super(SetTaxSetting, self).__init__(settlement, 'set_tax_setting', new_taxes)
+	def __init__(self, settlement, level, new_taxes):
+		super(SetTaxSetting, self).__init__(settlement, 'set_tax_setting', level, new_taxes)
+
+class SetSettlementUpgradePermissions(GenericCommand):
+	"""Sets the new upgrade permissions for a level in a settlement."""
+	def __init__(self, settlement, level, allowed):
+		super(SetSettlementUpgradePermissions, self).__init__(settlement, 'set_upgrade_permissions', level, allowed)
 
 class AddToBuyList(GenericCommand):
 	"""Adds a Resource to buy_list of TradePost"""
@@ -47,11 +52,31 @@ class RemoveFromSellList(GenericCommand):
 		super(RemoveFromSellList, self).__init__(tradepost, 'remove_from_sell_list', res_id)
 
 class TransferResource(GenericCommand):
-	"""Transfers an amount of a Resouce from one Storage to another"""
+	"""Transfers an amount of a resource from one Storage to another"""
 	def __init__(self, amount, res_id, transfer_from, transfer_to):
 		super(TransferResource, self).__init__(transfer_from, 'transfer_to_storageholder', amount, res_id, transfer_to.worldid)
+
+class SellResource(GenericCommand):
+	"""The given settlement attempts to sell the given amount of resource to the ship"""
+	def __init__(self, settlement, ship, resource_id, amount):
+		super(SellResource, self).__init__(settlement, 'sell_resource', ship, resource_id, amount)
+
+class BuyResource(GenericCommand):
+	"""The given settlement attempts to buy the given amount of resource from the ship"""
+	def __init__(self, settlement, ship, resource_id, amount):
+		super(BuyResource, self).__init__(settlement, 'buy_resource', ship, resource_id, amount)
 
 class RenameObject(GenericCommand):
 	"""Rename a NamedObject"""
 	def __init__(self, obj, new_name):
 		super(RenameObject, self).__init__(obj, "set_name", new_name)
+
+class EquipWeaponFromInventory(GenericCommand):
+	"""Equips a weapon to weapon storage from resource inventory"""
+	def __init__(self, obj, weapon_id, number):
+		super(EquipWeaponFromInventory, self).__init__(obj, "equip_from_inventory", weapon_id, number)
+
+class UnequipWeaponToInventory(GenericCommand):
+	"""Equips a weapon to weapon storage from resource inventory"""
+	def __init__(self, obj, weapon_id, number):
+		super(UnequipWeaponToInventory, self).__init__(obj, "unequip_to_inventory", weapon_id, number)

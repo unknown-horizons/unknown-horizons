@@ -28,6 +28,8 @@ from horizons.gui.widgets.productionoverview import ProductionOverview
 
 from horizons.extscheduler import ExtScheduler
 from horizons.util.gui import create_resource_icon
+from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
+from horizons.constants import BUILDINGS, SETTLER
 
 class MainSquareTab(TabInterface):
 	"""Tab for main square. Refreshes when one building on the settlement changes"""
@@ -136,3 +138,101 @@ class MainSquareSettlerTabSettlerTab(MainSquareTab):
 			container.addChild(most_needed_res_icon)
 			self._old_most_needed_res_icon = most_needed_res_icon
 		container.adaptLayout()
+
+class MainSquareSettlerLevelTab(MainSquareTab):
+	def __init__(self, instance, widget, level):
+		super(MainSquareSettlerLevelTab, self).__init__(widget = widget)
+		self.settlement = instance.settlement
+		self.level = level
+		self.init_values()
+		icon_path = 'content/gui/icons/widgets/cityinfo/inhabitants.png'
+		self.button_up_image = icon_path
+		self.button_active_image = icon_path
+		self.button_down_image = icon_path
+		self.button_hover_image = icon_path
+
+		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.level)
+
+		self._setup_tax_slider()
+		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.level])
+
+	def _setup_tax_slider(self):
+		"""Set up a slider to work as tax slider"""
+		slider = self.widget.child_finder('tax_slider')
+		val_label = self.widget.child_finder('tax_val_label')
+		slider.setScaleStart(SETTLER.TAX_SETTINGS_MIN)
+		slider.setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
+		slider.setStepLength(SETTLER.TAX_SETTINGS_STEP)
+		slider.setValue(self.settlement.tax_settings[self.level])
+		slider.stylize('book')
+		def on_slider_change():
+			val_label.text = unicode(slider.getValue())
+			if(self.settlement.tax_settings[self.level] != slider.getValue()):
+				SetTaxSetting(self.settlement, self.level, slider.getValue()).execute(self.settlement.session)
+		slider.capture(on_slider_change)
+
+	def _get_last_tax_paid(self):
+		return sum([building.last_tax_payed for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS) if \
+			building.level == self.level])
+
+	def _get_resident_counts(self):
+		result = {}
+		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+			if building.level == self.level:
+				if building.inhabitants not in result:
+					result[building.inhabitants] = 0
+				result[building.inhabitants] += 1
+		return result
+
+	def refresh(self):
+		self.widget.mapEvents({
+			'allow_upgrades/mouseClicked' : self.toggle_upgrades,
+		})
+
+		# refresh taxes
+		self.widget.child_finder('taxes').text = unicode(self._get_last_tax_paid())
+
+		# refresh upgrade permissions
+		upgrades_button = self.widget.child_finder('allow_upgrades')
+		if self.settlement.upgrade_permissions[self.level]:
+			upgrades_button.set_active()
+			upgrades_button.tooltip = _('Allow upgrades')
+		else:
+			upgrades_button.set_inactive()
+			upgrades_button.tooltip = _('Don\'t allow upgrades')
+
+		# refresh residents per house info
+		resident_counts = self._get_resident_counts()
+		houses = 0
+		residents = 0
+		for number in xrange(1, self.max_inhabitants + 1):
+			house_count = resident_counts[number] if number in resident_counts else 0
+			self.widget.child_finder('resident_count_%d' % number).text = unicode(house_count)
+			houses += house_count
+			residents += house_count * number
+
+		# refresh the summary
+		self.widget.child_finder('house_count').text = unicode(houses)
+		self.widget.child_finder('resident_count').text = unicode(residents)
+
+		self.widget.adaptLayout()
+		super(MainSquareSettlerLevelTab, self).refresh()
+
+	def toggle_upgrades(self):
+		SetSettlementUpgradePermissions(self.settlement, self.level, not self.settlement.upgrade_permissions[self.level]).execute(self.settlement.session)
+		self.refresh()
+
+class MainSquareSailorsTab(MainSquareSettlerLevelTab):
+	def __init__(self, instance):
+		super(MainSquareSailorsTab, self).__init__(instance, 'mainsquare_sailors.xml', SETTLER.SAILOR_LEVEL)
+		self.tooltip = _("Sailors")
+
+class MainSquarePioneersTab(MainSquareSettlerLevelTab):
+	def __init__(self, instance):
+		super(MainSquarePioneersTab, self).__init__(instance, 'mainsquare_pioneers.xml', SETTLER.PIONEER_LEVEL)
+		self.tooltip = _("Pioneers")
+
+class MainSquareSettlersTab(MainSquareSettlerLevelTab):
+	def __init__(self, instance):
+		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml', SETTLER.SETTLER_LEVEL)
+		self.tooltip = _("Settlers")

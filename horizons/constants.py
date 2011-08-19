@@ -63,7 +63,7 @@ class VERSION:
 	# RELEASE_VERSION = u'2011.2'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 17
+	SAVEGAMEREVISION= 39
 
 	@staticmethod
 	def string():
@@ -74,11 +74,18 @@ class UNITS:
 	# ./development/print_db_data.py unit
 	PLAYER_SHIP_CLASS          = 1000001
 	BUILDING_COLLECTOR_CLASS   = 1000002
+	FISHER_BOAT                = 1000004
 	PIRATE_SHIP_CLASS          = 1000005
 	TRADER_SHIP_CLASS          = 1000006
 	WILD_ANIMAL_CLASS          = 1000013
+	USABLE_FISHER_BOAT         = 1000016
+	FRIGATE                    = 1000020
 
 	DIFFERENCE_BUILDING_UNIT_ID = 1000000
+
+class WEAPONS:
+	CANNON = 40
+	DAGGER = 41
 
 class BUILDINGS:
 	# ./development/print_db_data.py building
@@ -152,6 +159,7 @@ class RES:
 	RAW_CLAY_ID = 20
 	CLAY_ID = 21
 	LIQUOR_ID = 22
+	RAW_IRON_ID = 24
 	GET_TOGETHER_ID = 27
 	FISH_ID = 28
 
@@ -205,7 +213,7 @@ class GROUND:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [16, 32, 48, 64]
+	TICK_RATES = [16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176]
 
 class VIEW:
 	ZOOM_MAX = 1
@@ -222,9 +230,11 @@ class PRODUCTION:
 	# ./development/print_db_data.py lines
 	STATES = Enum('none', 'waiting_for_res', 'inventory_full', 'producing', 'paused', 'done')
 	# NOTE: 'done' is only for SingleUseProductions
-	# NOTE: 'none' is not used by an acctual production, just for a producer
-	CAPACITY_UTILISATION_CONSIDERED_SECONDS = 60 # seconds, that count for cap. util. calculation
+	# NOTE: 'none' is not used by an actual production, just for a producer
+	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for keeping track of how busy a production is
 
+class PRODUCTIONLINES:
+	FISHING_BOAT = 15
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
@@ -232,6 +242,7 @@ class GAME:
 	# payed in this interval).
 
 	WORLD_WORLDID = 0 # worldid of World object
+	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
 
 # Messagewidget and Logbook
 class MESSAGES:
@@ -240,6 +251,11 @@ class MESSAGES:
 	LOGBOOK_DEFAULT_DELAY = 4 # delay between condition fulfilled and logbook popping up
 
 # AI
+class AI:
+	HIGHLIGHT_PLANS = False
+	AI_PLAYERS = 1
+	HUMAN_AI = False
+
 class TRADER: # check resource values: ./development/print_db_data.py res
 	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
 	PRICE_MODIFIER_SELL = 1.5 # sell for x times the resource value
@@ -252,6 +268,9 @@ class TRADER: # check resource values: ./development/print_db_data.py res
 
 # Taxes and Restrictions
 class SETTLER:
+	SAILOR_LEVEL = 0
+	PIONEER_LEVEL = 1
+	SETTLER_LEVEL = 2
 	CURRENT_MAX_INCR = 2 # counting starts at 0!
 	TAX_SETTINGS_MIN = 0.5
 	TAX_SETTINGS_MAX = 1.5
@@ -269,6 +288,7 @@ class WILD_ANIMAL:
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
 	DEFAULT_WAIT_TICKS = 32 # how long collectors wait before again looking for a job
+	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for calculating how busy a collector is
 
 class STORAGE:
 	DEFAULT_STORAGE_SIZE = 30 # Our usual inventorys are 30 tons big
@@ -312,6 +332,12 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in \
 	                 ("game.sql", "settler.sql", "balance.sql", "atlas.sql") )
 
+## SINGLEPLAYER
+class SINGLEPLAYER:
+	SEED = None
+	DB_FILES = tuple(os.path.join("content", i) for i in \
+	                 ("game.sql", "settler.sql", "balance.sql") )
+
 ## MULTIPLAYER
 class MULTIPLAYER:
 	MAX_PLAYER_COUNT = 8
@@ -320,7 +346,6 @@ class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
 	SERVER_PORT = 2001
 	CLIENT_ADDRESS = None
-
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):

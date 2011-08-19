@@ -23,7 +23,8 @@ import horizons.main
 
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
-from horizons.util import Callback
+from horizons.util import Callback, WorldObject, Point, Circle
+from horizons.command.unit import CreateUnit
 from horizons.scenario import CONDITIONS
 from horizons.savegamemanager import SavegameManager
 from horizons.constants import MESSAGES, AUTO_CONTINUE_CAMPAIGN
@@ -109,4 +110,28 @@ def wait(session, time):
 	delay = Scheduler().get_ticks(time)
 	session.scenario_eventhandler.sleep(delay)
 
+def spawn_ships(session, owner, id, number, *position):
+	"""
+	spawns a number of ships for owner
+	@param owner: the owner worldid
+	@param id: the ship id
+	@param number: number of ships to be spawned
+	@param position: position around the ships to be spawned
+	"""
+	center = Point(*position)
+	player = WorldObject.get_object_by_id(owner)
+	import math
+	# calculate a radius that should fit all the ships
+	# if it doesn't fit them all increase the radius
+	radius = int(math.sqrt(number))
+	while number != 0:
+		for point in Circle(center, radius):
+			if (point.x, point.y) in session.world.ship_map \
+				or session.world.get_island(point) is not None:
+					continue
+			CreateUnit(owner, id, point.x, point.y)(issuer=player)
+			number -= 1
+			if number == 0:
+				break
+		radius += 1
 

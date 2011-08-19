@@ -266,8 +266,7 @@ class SoldierPather(AbstractPather):
 		return island.path_nodes.nodes
 
 	def _get_blocked_coords(self):
-		# TODO: think of concept for blocking land units
-		return []
+		return self.session.world.ground_unit_map
 
 	def _check_for_obstacles(self, point):
 		# retrieve island, island of soldier may change at any time

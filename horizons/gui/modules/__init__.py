@@ -22,5 +22,6 @@
 """Modules for gui/ingamegui"""
 
 from playerdataselection import PlayerDataSelection
+from aidataselection import AIDataSelection
 from singleplayermenu import SingleplayerMenu
 from multiplayermenu import MultiplayerMenu

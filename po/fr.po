@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-07-06 20:29+0200\n"
-"PO-Revision-Date: 2011-07-03 22:20+0200\n"
-"Last-Translator: tintou <tintou@mailoo.org>\n"
+"PO-Revision-Date: 2011-08-03 12:59+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -28,15 +28,15 @@ msgstr ""
 
 #: horizons/engine.py:70
 msgid "Restore default settings"
-msgstr ""
+msgstr "Restaurer les paramètres par défaut"
 
 #: horizons/engine.py:71
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Ceci effacera tous les changements effectués jusque là."
 
 #: horizons/engine.py:72
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Voulez vous continuer ?"
 
 #: horizons/engine.py:135
 msgid "System default"
@@ -383,7 +383,7 @@ msgstr "Valider la commande"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Construire les champs associés"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -590,11 +590,11 @@ msgstr "Bâtiments des colons"
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Boucherie: A besoin de cochons ou de bétails. Produit de la nourriture."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Elevage bovin: Elève du bétail. Necessite une ferme"
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Charcoal burning: Burns a lot of boards."
@@ -602,11 +602,11 @@ msgstr "Charbonnier : Produit du charbon de bois."
 
 #: horizons/i18n/guitranslations.py:81
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Médecin : traite les maladies. Utilise des plantes médicinales"
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr ""
+msgstr "herboristerie : Produit des plantes médicinales. Nécessite une ferme."
 
 # I think it's good like that
 #: horizons/i18n/guitranslations.py:83
@@ -615,11 +615,11 @@ msgstr "Mine de fer : Extrait le minerai de fer d'un gisement."
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Porcherie : Elève des porcs. Nécessite une ferme."
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Salines: Produit du sel. Construit en bord de mer."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Smeltery: Refines all kind of ores."
@@ -632,11 +632,11 @@ msgstr "Taverne: Rapproche les hommes !"
 
 #: horizons/i18n/guitranslations.py:88
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Champ de tabac: Produit du tabac. Nécessite une ferme."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Fabrique de cigares: Produit des cigares à partir de tabac."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Toolmaker: Produces tools out of iron."
@@ -795,19 +795,19 @@ msgstr "Lire les pages suiv."
 
 #: horizons/i18n/guitranslations.py:142
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Scénarios disponibles"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Scenario description"
-msgstr ""
+msgstr "Description du scénario"
 
 #: horizons/i18n/guitranslations.py:145
 msgid "Continue playing"
-msgstr ""
+msgstr "Continuer à jouer"
 
 #: horizons/i18n/guitranslations.py:146
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Choisir ce scénario"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "Exit"
@@ -819,11 +819,11 @@ msgstr "Ajouter à la liste"
 
 #: horizons/i18n/guitranslations.py:153
 msgid "Leave production overview"
-msgstr ""
+msgstr "Quitter la fenetre de production"
 
 #: horizons/i18n/guitranslations.py:154
 msgid "Refresh data"
-msgstr ""
+msgstr "Actualiser les données"
 
 #: horizons/i18n/guitranslations.py:156
 msgid "Delete entry"
@@ -1122,7 +1122,7 @@ msgstr "(0 pour valeur par défaut)"
 
 #: horizons/i18n/guitranslations.py:252
 msgid "Network port:"
-msgstr "Port réseau :"
+msgstr "Port réseau:"
 
 #: horizons/i18n/guitranslations.py:253
 msgid "Number of autosaves:"
@@ -1154,13 +1154,12 @@ msgstr "Veuillez vous assurer que vous savez ce que vous faites."
 
 # 83%
 #: horizons/i18n/guitranslations.py:260
-#, fuzzy
 msgid "Apply"
-msgstr "Appliquer :"
+msgstr "Appliquer"
 
 #: horizons/i18n/guitranslations.py:262
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Restaurer les paramètres par défaut"
 
 #: horizons/i18n/guitranslations.py:264
 msgid "Enter filename:"
@@ -1178,7 +1177,7 @@ msgstr "Commencer la partie :"
 
 #: horizons/i18n/guitranslations.py:269
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Effacer la sauvegarde séléctionnée"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Choose a map to play:"
@@ -1315,11 +1314,11 @@ msgstr "Impôts"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Montrer les ressources produites dans cette colonie "
 
 #: horizons/i18n/guitranslations.py:318
 msgid "Build fields"
-msgstr ""
+msgstr "Construire des champs"
 
 # Resources
 #: horizons/i18n/guitranslations.py:322
@@ -1342,9 +1341,8 @@ msgstr "Impôts :"
 # 87%
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:332
 #: horizons/i18n/guitranslations.py:347 horizons/i18n/guitranslations.py:350
-#, fuzzy
 msgid "Tax rate"
-msgstr "Taux d'impôts :"
+msgstr "Taux d'imposition"
 
 # le contexte est à vérifier
 #: horizons/i18n/guitranslations.py:336
@@ -1375,7 +1373,7 @@ msgstr "Satisfaction"
 
 #: horizons/i18n/guitranslations.py:346 horizons/i18n/guitranslations.py:351
 msgid "Paid taxes"
-msgstr "Taxes payées"
+msgstr "Impôts payées"
 
 #: horizons/i18n/guitranslations.py:348 horizons/i18n/guitranslations.py:349
 msgid "Residents"
@@ -1548,6 +1546,7 @@ msgstr ""
 #: horizons/spsession.py:123
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"Si cette erreur se reproduit, veuillez contacter l'équipe de développement:"
 
 #: horizons/spsession.py:131
 msgid "No quicksaves found"
@@ -1725,11 +1724,11 @@ msgstr "Briqueterie"
 
 #: sqlite/Building
 msgid "Butchery"
-msgstr ""
+msgstr "Boucherie"
 
 #: sqlite/Building
 msgid "Cattle Run"
-msgstr ""
+msgstr "Elevage bovin"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
@@ -1749,7 +1748,7 @@ msgstr "Distillerie"
 
 #: sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Médecin"
 
 # Building
 #: sqlite/Building
@@ -1766,7 +1765,7 @@ msgstr "Tente du pêcheur"
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr ""
+msgstr "herboristerie"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -1806,7 +1805,7 @@ msgstr "Pavillon"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Porcherie"
 
 # Building
 #: sqlite/Building
@@ -1819,7 +1818,7 @@ msgstr "Rempart"
 
 #: sqlite/Building
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Salines"
 
 #: sqlite/Building
 msgid "Signal Fire"
@@ -1847,17 +1846,16 @@ msgstr "Tente"
 
 # 77%
 #: sqlite/Building
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Tente abîmée"
+msgstr "Tente abandonnée"
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Champ de tabac"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr ""
+msgstr "marchand de tabac"
 
 #: sqlite/Building
 msgid "Toolmaker"
@@ -1953,7 +1951,7 @@ msgstr "Vos colons ont atteints le niveau ${level}."
 
 #: sqlite/Resources
 msgid "acorns"
-msgstr ""
+msgstr "glands"
 
 #: sqlite/Resources
 msgid "boards"
@@ -1965,11 +1963,11 @@ msgstr "briques"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr ""
+msgstr "bétail"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "Animal de boucherie"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1989,11 +1987,11 @@ msgstr "communauté"
 
 #: sqlite/Resources
 msgid "deer food A"
-msgstr ""
+msgstr "Nourriture pour biche A"
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "Viande de cerf"
 
 #: sqlite/Resources
 msgid "education"
@@ -2027,7 +2025,7 @@ msgstr "satisfaction"
 
 #: sqlite/Resources
 msgid "herbs"
-msgstr ""
+msgstr "herbes"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -2047,11 +2045,11 @@ msgstr "alcool"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "porcs"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "porcs d'élevage"
 
 # Resources
 #: sqlite/Resources
@@ -2064,7 +2062,7 @@ msgstr "argile brute"
 
 #: sqlite/Resources
 msgid "raw herbs"
-msgstr ""
+msgstr "plantes brutes"
 
 #: sqlite/Resources
 msgid "raw iron"
@@ -2077,11 +2075,11 @@ msgstr "sucre brut"
 
 #: sqlite/Resources
 msgid "raw tobacco"
-msgstr ""
+msgstr "tabac brut"
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "sel"
 
 # Resources
 #: sqlite/Resources
@@ -2094,11 +2092,11 @@ msgstr "tissus"
 
 #: sqlite/Resources
 msgid "tobacco"
-msgstr ""
+msgstr "tabac"
 
 #: sqlite/Resources
 msgid "tobaccos"
-msgstr ""
+msgstr "tabacs"
 
 #: sqlite/Resources
 msgid "tools"
@@ -2114,15 +2112,15 @@ msgstr "laine"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocrate"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "citoyen"
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "marchand"
 
 # please don't translate anything in <tags> - thanks!
 # Resources
