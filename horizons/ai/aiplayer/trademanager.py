@@ -34,7 +34,7 @@ from horizons.constants import BUILDINGS, RES
 
 class TradeManager(WorldObject):
 	"""
-	An object of this class manages the trade routes of one settlement.
+	An object of this class manages the continuous domestic resource import process of one settlement.
 	"""
 
 	log = logging.getLogger("ai.aiplayer.trademanager")
