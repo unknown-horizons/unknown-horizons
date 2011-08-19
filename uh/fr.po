@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-19 17:41+0200\n"
+"PO-Revision-Date: 2011-08-19 17:49+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1012,9 +1012,8 @@ msgstr "3 habitants"
 # 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
 #: horizons/i18n/guitranslations.py:221
-#, fuzzy
 msgid "residents"
-msgstr "Résidents"
+msgstr "habitants"
 
 #: horizons/i18n/guitranslations.py:189 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:222 horizons/i18n/guitranslations.py:249
@@ -1024,7 +1023,7 @@ msgstr "Impôts :"
 #: horizons/i18n/guitranslations.py:190 horizons/i18n/guitranslations.py:205
 #: horizons/i18n/guitranslations.py:223
 msgid "Allow upgrades:"
-msgstr ""
+msgstr "Permettre les améliorations:"
 
 #: horizons/i18n/guitranslations.py:191 horizons/i18n/guitranslations.py:194
 #: horizons/i18n/guitranslations.py:206 horizons/i18n/guitranslations.py:209
@@ -1041,17 +1040,21 @@ msgstr "Impôts payées"
 msgid "Tax rate"
 msgstr "Taux d'imposition"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:219
 msgid "4 residents"
-msgstr ""
+msgstr "4 habitants"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:220
 msgid "5 residents"
-msgstr ""
+msgstr "5 habitants"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "Collector utilisation:"
-msgstr ""
+msgstr "Utilisation des collecteurs:"
 
 #: horizons/i18n/guitranslations.py:231 horizons/i18n/guitranslations.py:237
 #: horizons/i18n/guitranslations.py:268
@@ -1060,7 +1063,7 @@ msgstr "Nom :"
 
 #: horizons/i18n/guitranslations.py:235 horizons/i18n/guitranslations.py:273
 msgid "Selling"
-msgstr ""
+msgstr "Vente"
 
 # le contexte est à vérifier
 #: horizons/i18n/guitranslations.py:241
@@ -1213,7 +1216,7 @@ msgstr "Ajouter à la liste"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #: horizons/i18n/guitranslations.py:319
 msgid "Leave production overview"
@@ -1225,45 +1228,44 @@ msgstr "Actualiser les données"
 
 #: horizons/i18n/guitranslations.py:322
 msgid "Buildings"
-msgstr ""
+msgstr "Bâtiments"
 
 #: horizons/i18n/guitranslations.py:323
 msgid "Player scores"
-msgstr ""
+msgstr "Scores de joueurs"
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Land"
-msgstr ""
+msgstr "Terrain"
 
 #: horizons/i18n/guitranslations.py:325
 msgid "Money"
-msgstr ""
+msgstr "Argent"
 
 # 80%
 #: horizons/i18n/guitranslations.py:326
-#, fuzzy
 msgid "Name"
-msgstr "Nom :"
+msgstr "Nom"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Resources"
-msgstr ""
+msgstr "Ressources"
 
 #: horizons/i18n/guitranslations.py:329
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: horizons/i18n/guitranslations.py:330
 msgid "Units"
-msgstr ""
+msgstr "Unités"
 
 #: horizons/i18n/guitranslations.py:331
 msgid "Leave player scores"
-msgstr ""
+msgstr "Quitter le panneau des scores"
 
 #: horizons/i18n/guitranslations.py:333
 msgid "Aggressive"
-msgstr ""
+msgstr "Aggressif"
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Flee"
@@ -1271,7 +1273,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:335
 msgid "Hold ground"
-msgstr ""
+msgstr "Tenir la position"
 
 #: horizons/i18n/guitranslations.py:336
 msgid "None"
