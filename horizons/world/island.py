@@ -48,6 +48,7 @@ class Island(BuildingOwner, WorldObject):
 	* grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
+	* position - a Rect that borders the island with the smallest possible area
 	* buildings - a list of all Building instances that are present on the island.
 	* settlements - a list of all Settlement instances that are present on the island.
 	* path_nodes - a special dictionary used by the pather to save paths.
@@ -125,6 +126,13 @@ class Island(BuildingOwner, WorldObject):
 		self.num_trees = 0
 
 		self.path_nodes = IslandPathNodes(self)
+
+		# define the rectangle with the smallest area that contains every island tile its position
+		min_x = min(zip(*self.ground_map.keys())[0])
+		max_x = max(zip(*self.ground_map.keys())[0])
+		min_y = min(zip(*self.ground_map.keys())[1])
+		max_y = max(zip(*self.ground_map.keys())[1])
+		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		# repopulate wild animals every 2 mins if they die out.
 		Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)

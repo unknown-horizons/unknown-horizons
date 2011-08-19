@@ -29,6 +29,22 @@ class DefaultPersonality:
 		# found a settlement on a random island that is at least as large as the first element; if it is impossible then try the next size
 		island_size_sequence = [500, 300, 150]
 
+		enemy_settlement_penalty = 200 # penalty for every enemy settlement on the island
+		compact_empire_importance = 100 # importance of keeping our islands close together
+		extra_branch_office_distance = 1 # extra distance to add to the usual branch office to island distance when choosing an island
+		nearby_enemy_penalty = 100 # importance of keeping our islands away from other players' islands
+		extra_enemy_island_distance = 1 # extra distance to add to the usual island to other player's island distance when choosing an island
+
+		min_raw_clay = 100 # if the island has less than this much then apply the penalty
+		max_raw_clay = 300 # no more than this much will count for the bonus value
+		raw_clay_importance = 0.3 # how important is the available resource amount
+		no_raw_clay_penalty = 100 # penalty for having less than this much of the resource on the island
+
+		min_raw_iron = 100 # if the island has less than this much then apply the penalty
+		max_raw_iron = 300 # no more than this much will count for the bonus value
+		raw_iron_importance = 0.05 # how important is the available resource amount
+		no_raw_iron_penalty = 30 # penalty for having less than this much of the resource on the island
+
 		# minimum amount of a resource required to found a new settlement
 		min_new_island_gold = 8000
 		min_new_island_tools = 5

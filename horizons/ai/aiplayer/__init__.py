@@ -90,6 +90,7 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
 
 	def get_available_islands(self, min_land):
+		""" returns a list of available islands in the form [(value, island), ...] """
 		options = []
 		for island in self.session.world.islands:
 			if island.worldid in self.islands:
@@ -97,15 +98,46 @@ class AIPlayer(GenericAI):
 
 			if island.worldid not in self.__island_value_cache or self.__island_value_cache[island.worldid][0] != island.last_change_id:
 				flat_land = 0
+				resources = defaultdict(lambda: 0)
+
 				for tile in island.ground_map.itervalues():
 					if 'constructible' not in tile.classes:
 						continue
-					if tile.object is not None and not tile.object.buildable_upon:
+					object = tile.object
+					if object is not None and not object.buildable_upon:
+						if object.id in [BUILDINGS.CLAY_DEPOSIT_CLASS, BUILDINGS.MOUNTAIN_CLASS] and (tile.x, tile.y) == object.position.origin.to_tuple():
+							# take the natural resources into account
+							usable = True # is the deposit fully available (no part owned by a player)?
+							for coords in object.position.tuple_iter():
+								if island.ground_map[coords].settlement is not None:
+									usable = False
+									break
+							if usable:
+								for resource_id, amount in object.inventory:
+									resources[resource_id] += amount
 						continue
 					if tile.settlement is not None:
 						continue
 					flat_land += 1
-				self.__island_value_cache[island.worldid] = (island.last_change_id, (flat_land, island))
+
+				# calculate the value of the island by taking into account the available land, resources, and number of enemy settlements
+				value = flat_land
+				value += min(resources[RES.RAW_CLAY_ID], self.personality.max_raw_clay) * self.personality.raw_clay_importance
+				if resources[RES.RAW_CLAY_ID] < self.personality.min_raw_clay:
+					value -= self.personality.no_raw_clay_penalty
+				value += min(resources[RES.RAW_IRON_ID], self.personality.max_raw_iron) * self.personality.raw_iron_importance
+				if resources[RES.RAW_IRON_ID] < self.personality.min_raw_iron:
+					value -= self.personality.no_raw_iron_penalty
+				value -= len(island.settlements) * self.personality.enemy_settlement_penalty
+
+				# take into the distance to our old branch offices and the other players' islands
+				for settlement in self.world.settlements:
+					if settlement.owner is self:
+						value += self.personality.compact_empire_importance / float(island.position.distance(settlement.branch_office.position) + self.personality.extra_branch_office_distance)
+					else:
+						value -= self.personality.nearby_enemy_penalty / float(island.position.distance(settlement.island.position) + self.personality.extra_enemy_island_distance)
+
+				self.__island_value_cache[island.worldid] = (island.last_change_id, (max(2, int(value)), island))
 
 			if self.__island_value_cache[island.worldid][1][0] >= min_land:
 				options.append(self.__island_value_cache[island.worldid][1])
@@ -115,10 +147,10 @@ class AIPlayer(GenericAI):
 		options = self.get_available_islands(min_land)
 		if not options:
 			return None
-		total_land = sum(zip(*options)[0])
+		total_value = sum(zip(*options)[0])
 
-		# choose a random big enough island with probability proportional to the available land
-		choice = self.session.random.randint(0, total_land - 1)
+		# choose a random big enough island with probability proportional to its value
+		choice = self.session.random.randint(0, total_value - 1)
 		for (land, island) in options:
 			if choice <= land:
 				return island
