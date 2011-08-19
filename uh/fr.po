@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-19 17:58+0200\n"
+"PO-Revision-Date: 2011-08-19 22:15+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1986,7 +1986,7 @@ msgstr ""
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
-msgstr ""
+msgstr "Montrer les plans de l'IA par surlignement (développement seulement)"
 
 #: run_uh.py:120
 msgid "Development options"
@@ -2047,15 +2047,21 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Erreur: Impossible de trouver les bibliothèques requises"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Nous sommes désolé de vous informer qu'une bibliothèque requise par Unknown "
+"Horizons est manquante et doit être installé."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Les installeurs pour Windows sont disponibles sur "
+"\"http://pyyaml.org/wiki/PyYAML\", les utilisateurs de gnu/linux devrait le "
+"trouver avec leurs gestionnaire de paquets sous le nom \"pyyaml\" ou \"python-"
+"yaml\"."
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
@@ -2120,7 +2126,7 @@ msgstr "Tente du pêcheur"
 
 #: sqlite/Building
 msgid "Gravel Path"
-msgstr ""
+msgstr "Chemin de gravier"
 
 #: sqlite/Building
 msgid "Herbary"
@@ -2235,7 +2241,7 @@ msgstr "Tente du tisseur"
 
 #: sqlite/Building
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Tour de Bois"
 
 #: sqlite/Colors
 msgid "black"
@@ -2271,7 +2277,7 @@ msgstr "jaune"
 
 #: sqlite/Messages
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} et ${player2} sont maintenant ${status}"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
@@ -2283,9 +2289,8 @@ msgstr "Un nouveau monde a été créé."
 
 # 85%
 #: sqlite/Messages
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr "Un de vos colons n'a pas de marché dans son périmètre."
+msgstr "Un de vos colons n'a pas de place marchande dans son périmètre."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
@@ -2297,7 +2302,7 @@ msgstr "Certains de vos colons viennent juste de déménager."
 
 #: sqlite/Messages
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Vous pouvez cliquer-glisser des routes."
 
 # Messages
 #: sqlite/Messages
@@ -2331,7 +2336,7 @@ msgstr "briques"
 
 #: sqlite/Resources
 msgid "cannon"
-msgstr ""
+msgstr "canon"
 
 #: sqlite/Resources
 msgid "cattle"
@@ -2351,9 +2356,8 @@ msgstr "argile"
 
 # 83%
 #: sqlite/Resources
-#, fuzzy
 msgid "clay deposit"
-msgstr "Gisement d'argile"
+msgstr "gisement d'argile"
 
 #: sqlite/Resources
 msgid "coins"
@@ -2365,7 +2369,7 @@ msgstr "communauté"
 
 #: sqlite/Resources
 msgid "dagger"
-msgstr ""
+msgstr "dague"
 
 #: sqlite/Resources
 msgid "deer food A"
@@ -2411,7 +2415,7 @@ msgstr "herbes"
 
 #: sqlite/Resources
 msgid "iron deposit"
-msgstr ""
+msgstr "gisement de fer"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -2431,7 +2435,7 @@ msgstr "alcool"
 
 #: sqlite/Resources
 msgid "medical herbs"
-msgstr ""
+msgstr "herbes médicinales"
 
 #: sqlite/Resources
 msgid "pigs"
@@ -2457,7 +2461,7 @@ msgstr "sucre"
 
 #: sqlite/Resources
 msgid "sugar cane"
-msgstr ""
+msgstr "sucre de canne"
 
 #: sqlite/Resources
 msgid "textile"
@@ -2465,11 +2469,11 @@ msgstr "tissus"
 
 #: sqlite/Resources
 msgid "tobacco leaves"
-msgstr ""
+msgstr "feuilles de tabac"
 
 #: sqlite/Resources
 msgid "tobacco plants"
-msgstr ""
+msgstr "plants de tabac"
 
 #: sqlite/Resources
 msgid "tobaccos"
