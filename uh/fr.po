@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-05 17:21+0200\n"
+"PO-Revision-Date: 2011-08-19 17:41+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -231,14 +231,20 @@ msgstr "Impossible de trouver pyenet"
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"Le mode multijoueur nécessite la bibliothèque \"pyenet\", qui n'a pas été "
+"trouvée sur votre système."
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Utilisateurs de gnu/linux: Essayez d'installer pyenet avec votre "
+"gestionnaire de paquets."
 
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Utilisateurs de Windows: Il n'y a actuellement aucune réelle prise en charge "
+"pour Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
@@ -401,7 +407,7 @@ msgstr "Commercer"
 
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:175
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Inventaire de la colonie"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
@@ -414,15 +420,15 @@ msgstr "Charger/Décharger :"
 
 #: horizons/gui/tabs/inventorytab.py:86
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "Achat/Vente:"
 
 #: horizons/gui/tabs/inventorytab.py:120
 msgid "Equip weapon"
-msgstr ""
+msgstr "Armer"
 
 #: horizons/gui/tabs/inventorytab.py:123
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Désarmer"
 
 #: horizons/gui/tabs/mainsquaretabs.py:76 horizons/i18n/guitranslations.py:160
 msgid "Account"
@@ -438,16 +444,16 @@ msgstr "Sommaire des colons"
 #: horizons/i18n/guitranslations.py:195 horizons/i18n/guitranslations.py:210
 #: horizons/i18n/guitranslations.py:228
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Permettre des améliorations"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Interdire les améliorations"
 
 #: horizons/gui/tabs/mainsquaretabs.py:228
 #: horizons/i18n/guitranslations.py:197
 msgid "Sailors"
-msgstr ""
+msgstr "Marins"
 
 # please don't translate anything in <tags> - thanks!
 # Resources
@@ -456,16 +462,14 @@ msgstr ""
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:233
 #: horizons/i18n/guitranslations.py:181
-#, fuzzy
 msgid "Pioneers"
-msgstr "pionier"
+msgstr "Pionniers"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:238
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:328
-#, fuzzy
 msgid "Settlers"
-msgstr "colon"
+msgstr "Colons"
 
 # An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:393
@@ -480,7 +484,7 @@ msgstr "Sommaire du comptoir"
 
 #: horizons/gui/tabs/overviewtab.py:141
 msgid "Main square overview"
-msgstr ""
+msgstr "Fenêtre Place principale"
 
 # An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:218
@@ -490,9 +494,8 @@ msgstr "Sommaire du navire"
 # An "apercu" is more a preview than an overview.
 # 76%
 #: horizons/gui/tabs/overviewtab.py:225
-#, fuzzy
 msgid "Unit overview"
-msgstr "Sommaire du navire"
+msgstr "Sommaire de l'unité"
 
 # An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
@@ -505,7 +508,7 @@ msgstr "Démolir le bâtiment"
 
 #: horizons/gui/tabs/selectmultitab.py:53
 msgid "Selected Units"
-msgstr ""
+msgstr "Unités sélectionnées"
 
 #: horizons/gui/widgets/buysellinventory.py:84
 #: horizons/gui/widgets/inventory.py:103
@@ -531,7 +534,7 @@ msgstr "Arrêt route"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "aucun"
 
 #: horizons/i18n/guitranslations.py:42
 msgid "String Previewer Tool for Scenario files"
@@ -661,7 +664,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:74
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Tour de bois: Défend votre colonie."
 
 #: horizons/i18n/guitranslations.py:75
 msgid "Village school: Provides education."
@@ -731,19 +734,20 @@ msgstr "Forgeron : Forge des outils."
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Game start"
-msgstr ""
+msgstr "Début de partie"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr ""
+"Vous devez fonder une colonie avant de pouvoir construire des bâtiments!"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Sélectionnez votre navire et approchez de la côte par un clic droit."
 
 #: horizons/i18n/guitranslations.py:100
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Ensuite, pressez le grand bouton dans la fenêtre du navire."
 
 #: horizons/i18n/guitranslations.py:103 horizons/i18n/guitranslations.py:232
 msgid "Running costs:"
@@ -767,7 +771,7 @@ msgstr "Menu de construction"
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomatie"
 
 #: horizons/i18n/guitranslations.py:111
 msgid "Game menu"
@@ -949,15 +953,15 @@ msgstr "Montrer les ressources produites dans cette colonie"
 
 #: horizons/i18n/guitranslations.py:169
 msgid "ally"
-msgstr ""
+msgstr "allié"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "enemy"
-msgstr ""
+msgstr "ennemie"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "neutral"
-msgstr ""
+msgstr "neutre"
 
 #: horizons/i18n/guitranslations.py:173
 msgid "Build fields"
@@ -975,31 +979,35 @@ msgstr "Ressource la plus demandée :"
 #: horizons/i18n/guitranslations.py:182 horizons/i18n/guitranslations.py:198
 #: horizons/i18n/guitranslations.py:213
 msgid "Residents per house"
-msgstr ""
+msgstr "Habitants par maison"
 
 #: horizons/i18n/guitranslations.py:183 horizons/i18n/guitranslations.py:199
 #: horizons/i18n/guitranslations.py:214
 msgid "Summary"
-msgstr ""
+msgstr "Sommaire"
 
 #: horizons/i18n/guitranslations.py:184 horizons/i18n/guitranslations.py:200
 #: horizons/i18n/guitranslations.py:215
 msgid "houses"
-msgstr ""
+msgstr "maisons"
 
 #: horizons/i18n/guitranslations.py:185 horizons/i18n/guitranslations.py:201
 #: horizons/i18n/guitranslations.py:216
 msgid "1 resident"
-msgstr ""
+msgstr "1 habitant"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:186 horizons/i18n/guitranslations.py:202
 #: horizons/i18n/guitranslations.py:217
 msgid "2 residents"
-msgstr ""
+msgstr "2 habitants"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:187 horizons/i18n/guitranslations.py:218
 msgid "3 residents"
-msgstr ""
+msgstr "3 habitants"
 
 # 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
