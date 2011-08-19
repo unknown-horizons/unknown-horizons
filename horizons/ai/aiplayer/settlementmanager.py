@@ -339,16 +339,10 @@ class SettlementManager(WorldObject):
 		self.log.info('%s food requirement %.5f', self, self.get_total_missing_production(RES.FOOD_ID))
 		self.log.info('%s textile requirement %.5f', self, self.get_total_missing_production(RES.TEXTILE_ID))
 		self.log.info('%s liquor requirement %.5f', self, self.get_total_missing_production(RES.LIQUOR_ID))
-		#print 'TRADE STORAGE', self.settlement.name, self.resource_manager.trade_storage
-		#print 'RES MANAGER', self.resource_manager
-		#print self.trade_manager
 		self.production_builder.manage_production()
-		#self.trade_manager.refresh()
 		self.resource_manager.refresh()
 
 	def _end_feeder_tick(self):
-		#self.trade_manager.finalize_requests()
-		#self.trade_manager.organize_shipping()
 		self.resource_manager.replay_deep_low_priority_requests()
 		self.resource_manager.record_expected_exportable_production(self.owner.tick_interval)
 		self.resource_manager.manager_buysell()
@@ -361,8 +355,6 @@ class SettlementManager(WorldObject):
 			self.get_resident_resource_usage(RES.TEXTILE_ID))
 		self.log.info('%s get-together production %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER_ID), \
 			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
-		#print 'TRADE STORAGE', self.settlement.name, self.resource_manager.trade_storage
-		#print self.trade_manager
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
