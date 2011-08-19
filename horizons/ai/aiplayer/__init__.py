@@ -88,7 +88,6 @@ class AIPlayer(GenericAI):
 		self.personality_manager = PersonalityManager(self)
 		self.__init()
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
 
 	def get_available_islands(self, min_land):
 		options = []
@@ -126,10 +125,22 @@ class AIPlayer(GenericAI):
 			choice -= land
 		return None
 
+	def start(self):
+		""" Start the AI tick process. Try to space out their ticks evenly. """
+		ai_players = 0
+		position = None
+		for i in xrange(len(self.world.players)):
+			player = self.world.players[i]
+			if isinstance(player, AIPlayer):
+				if player is self:
+					position = ai_players
+				ai_players += 1
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval * position / ai_players + 1)
+
 	def finish_init(self):
-		for ship in self.session.world.ships:
-			if ship.owner == self and ship.is_selectable:
-				self.ships[ship] = self.shipStates.idle
+		# initialise the things that couldn't be initialised before because of the loading order
+		self.refresh_ships()
+		self.start()
 
 	def refresh_ships(self):
 		""" called when a new ship is added to the fleet """
