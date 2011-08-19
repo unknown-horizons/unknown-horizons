@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-19 18:02+0200\n"
+"PO-Revision-Date: 2011-08-19 17:58+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1269,7 +1269,7 @@ msgstr "Aggressif"
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Flee"
-msgstr ""
+msgstr "Fuir"
 
 #: horizons/i18n/guitranslations.py:335
 msgid "Hold ground"
@@ -1974,7 +1974,7 @@ msgstr ""
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "Option d'IA"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
