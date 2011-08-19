@@ -448,15 +448,19 @@ msgstr ""
 msgid "Sailors"
 msgstr ""
 
+# 75%
 #: horizons/gui/tabs/mainsquaretabs.py:233
 #: horizons/i18n/guitranslations.py:181
+#, fuzzy
 msgid "Pioneers"
-msgstr ""
+msgstr "pionier"
 
+# 75%
 #: horizons/gui/tabs/mainsquaretabs.py:238
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:328
+#, fuzzy
 msgid "Settlers"
-msgstr ""
+msgstr "kolonist"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:393
 #: horizons/i18n/guitranslations.py:267
@@ -475,9 +479,11 @@ msgstr ""
 msgid "Ship overview"
 msgstr "Schip overzicht"
 
+# 76%
 #: horizons/gui/tabs/overviewtab.py:225
+#, fuzzy
 msgid "Unit overview"
-msgstr ""
+msgstr "Schip overzicht"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -975,10 +981,12 @@ msgstr ""
 msgid "3 residents"
 msgstr ""
 
+# 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
 #: horizons/i18n/guitranslations.py:221
+#, fuzzy
 msgid "residents"
-msgstr ""
+msgstr "Inwoners"
 
 #: horizons/i18n/guitranslations.py:189 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:222 horizons/i18n/guitranslations.py:249
@@ -1202,9 +1210,11 @@ msgstr ""
 msgid "Money"
 msgstr ""
 
+# 80%
 #: horizons/i18n/guitranslations.py:326
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Naam:"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Resources"
@@ -1657,9 +1667,11 @@ msgstr ""
 msgid "Map size:"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:473
+#, fuzzy
 msgid "Resource density:"
-msgstr ""
+msgstr "Grondstoffen afzetting"
 
 #: horizons/i18n/guitranslations.py:474
 msgid "dense"
@@ -2222,9 +2234,11 @@ msgstr "${player} heeft een nieuwe kolonie gesticht."
 msgid "A new world has been created."
 msgstr "Een nieuwe wereld is aangemaakt"
 
+# 85%
 #: sqlite/Messages
+#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "Een van uw kolonisten heeft geen marktplaats binnen bereik."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
@@ -2286,9 +2300,11 @@ msgstr "kolen"
 msgid "clay"
 msgstr "klei"
 
+# 83%
 #: sqlite/Resources
+#, fuzzy
 msgid "clay deposit"
-msgstr ""
+msgstr "Klei Afzetting"
 
 #: sqlite/Resources
 msgid "coins"

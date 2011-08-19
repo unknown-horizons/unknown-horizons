@@ -471,9 +471,11 @@ msgstr ""
 msgid "Ship overview"
 msgstr "Hajó áttekintés"
 
+# 76%
 #: horizons/gui/tabs/overviewtab.py:225
+#, fuzzy
 msgid "Unit overview"
-msgstr ""
+msgstr "Hajó áttekintés"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -852,9 +854,11 @@ msgstr ""
 msgid "Running costs"
 msgstr ""
 
+# 92%
 #: horizons/i18n/guitranslations.py:147
+#, fuzzy
 msgid "Fishing boats"
-msgstr ""
+msgstr "Halász hajó"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "Cutter"
@@ -1548,17 +1552,21 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
+# 84%
 #: horizons/i18n/guitranslations.py:439
+#, fuzzy
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Visszaállítás az eredeti beállításokra"
 
 #: horizons/i18n/guitranslations.py:441
 msgid "Enter filename:"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:443
+#, fuzzy
 msgid "Your saved games:"
-msgstr ""
+msgstr "Nincsenek mentett játékok"
 
 #: horizons/i18n/guitranslations.py:444 horizons/i18n/guitranslations.py:455
 msgid "Start game"
@@ -1769,9 +1777,11 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
+# 75%
 #: horizons/spsession.py:122
+#, fuzzy
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Nem sikerült menteni."
 
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
@@ -1810,9 +1820,11 @@ msgstr ""
 msgid "The savegame file is currently used by another program."
 msgstr ""
 
+# 83%
 #: horizons/world/units/ship.py:455
+#, fuzzy
 msgid "Trader"
-msgstr ""
+msgstr "Kereskedelem"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
