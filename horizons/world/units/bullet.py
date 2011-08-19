@@ -76,9 +76,9 @@ class Bullet(WorldObject):
 			fife.ObjectVisual.create(Bullet._object)
 
 			visual = self._object.get2dGfxVisual()
-			img = horizons.main.fife.imagepool.addResourceFromFile(image)
+			img = horizons.main.fife.imagemanager.load(image)
 			for rotation in [45, 135, 225, 315]:
-				visual.addStaticImage(rotation, img)
+				visual.addStaticImage(rotation, img.getHandle())
 
 
 		self._instance = session.view.layers[LAYERS.FIELDS].createInstance( \
