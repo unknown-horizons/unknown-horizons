@@ -32,12 +32,11 @@ from resourcemanager import ResourceManager
 from trademanager import TradeManager
 
 from goal.boatbuilder import BoatBuilderGoal
-from goal.claydepositcoverage import ClayDepositCoverageGoal
+from goal.depositcoverage import ClayDepositCoverageGoal, MountainCoverageGoal
 from goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal
 from goal.foundfeederisland import FoundFeederIslandGoal
 from goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
-from goal.mountaincoverage import MountainCoverageGoal
 from goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, EducationGoal, \
 	GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal
 from goal.signalfire import SignalFireGoal
@@ -293,23 +292,6 @@ class SettlementManager(WorldObject):
 					if num_upgrading >= limit:
 						return True
 		return upgraded_any
-
-	def reachable_deposit(self, building_id):
-		""" returns true if there is a resource deposit outside the settlement that is not owned by another player """
-		for building in self.land_manager.resource_deposits[building_id]:
-			if building.settlement is None:
-				return True
-		return False
-
-	def have_deposit(self, building_id):
-		""" returns true if there is a resource deposit inside the settlement """
-		for building in self.land_manager.resource_deposits[building_id]:
-			if building.settlement is None:
-				continue
-			coords = building.position.origin.to_tuple()
-			if coords in self.settlement.ground_map:
-				return True
-		return False
 
 	def min_residential_level(self):
 		result = None

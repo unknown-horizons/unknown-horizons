@@ -83,7 +83,7 @@ class DefaultPersonality:
 		path_unreachable_boundary_penalty = 0.1
 
 	class ProductionBuilder(AreaBuilder):
-		deposit_coverage_alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
+		pass
 
 	class VillageBuilder(AreaBuilder):
 		max_village_section_size = 22 # maximum side length of a village section
@@ -189,6 +189,8 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = SETTLER.PIONEER_LEVEL
 
+		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
+
 	class DoNothingGoal:
 		enabled = True
 		default_priority = 1500 # mean priority; changing this will influence which goals are more important than doing nothing
@@ -234,6 +236,8 @@ class DefaultPersonality:
 		default_priority = 200
 		residences_required = 0
 		min_settler_level = SETTLER.SETTLER_LEVEL
+
+		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 
 	class SignalFireGoal:
 		enabled = True

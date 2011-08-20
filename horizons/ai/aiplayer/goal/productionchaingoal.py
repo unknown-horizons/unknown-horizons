@@ -107,7 +107,7 @@ class ToolsGoal(ProductionChainGoal):
 
 	@property
 	def can_be_activated(self):
-		return super(ToolsGoal, self).can_be_activated and self.settlement_manager.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and \
+		return super(ToolsGoal, self).can_be_activated and self.production_builder.have_deposit(BUILDINGS.MOUNTAIN_CLASS) and \
 			self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
 
 class BoardsGoal(ProductionChainGoal):

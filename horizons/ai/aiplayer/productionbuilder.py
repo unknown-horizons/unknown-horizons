@@ -90,6 +90,16 @@ class ProductionBuilder(AreaBuilder):
 				return True
 		return False
 
+	def have_deposit(self, building_id):
+		"""Returns true if there is a resource deposit of the relevant type inside the settlement."""
+		for building in self.land_manager.resource_deposits[building_id]:
+			if building.settlement is None:
+				continue
+			coords = building.position.origin.to_tuple()
+			if coords in self.settlement.ground_map:
+				return True
+		return False
+
 	def build_best_option(self, options, purpose):
 		"""Build the best option where an option is in the format (value, builder)."""
 		if not options:
@@ -102,53 +112,6 @@ class ProductionBuilder(AreaBuilder):
 			self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
 		self.register_change(builder.position.origin.x, builder.position.origin.y, purpose, None)
 		return BUILD_RESULT.OK
-
-	def improve_deposit_coverage(self, building_id):
-		"""
-		Builds a storage tent to get settlement range closer to the resource deposit.
-		"""
-		if not self.have_resources(BUILDINGS.STORAGE_CLASS):
-			return BUILD_RESULT.NEED_RESOURCES
-
-		available_deposits = []
-		for building in self.land_manager.resource_deposits[building_id]:
-			if building.settlement is None:
-				available_deposits.append(building)
-		if not available_deposits:
-			return BUILD_RESULT.IMPOSSIBLE
-
-		options = []
-		for x, y in self.plan:
-			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
-			if not builder:
-				continue
-
-			min_distance = None
-			for building in available_deposits:
-				distance = building.position.distance(builder.position)
-				if min_distance is None or min_distance > distance:
-					min_distance = distance
-
-			alignment = 0
-			for tile in self.get_neighbour_tiles(builder.position):
-				if tile is None:
-					continue
-				coords = (tile.x, tile.y)
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					alignment += 1
-
-			value = min_distance - alignment * self.personality.deposit_coverage_alignment_coefficient
-			options.append((value, builder))
-
-		for _, builder in sorted(options):
-			building = builder.execute()
-			if not building:
-				return BUILD_RESULT.UNKNOWN_ERROR
-			for x, y in builder.position.tuple_iter():
-				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, None)
-			return BUILD_RESULT.OK
-		return BUILD_RESULT.IMPOSSIBLE
 
 	def get_collector_area(self):
 		""" returns the set of all coordinates that are reachable from at least one collector by road or open space """
