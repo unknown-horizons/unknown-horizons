@@ -470,9 +470,11 @@ msgstr ""
 msgid "Ship overview"
 msgstr "Resumo do navio"
 
+# 76%
 #: horizons/gui/tabs/overviewtab.py:225
+#, fuzzy
 msgid "Unit overview"
-msgstr ""
+msgstr "Resumo do navio"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -1197,9 +1199,11 @@ msgstr ""
 msgid "Money"
 msgstr ""
 
+# 80%
 #: horizons/i18n/guitranslations.py:326
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Nome:"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Resources"
@@ -1650,9 +1654,11 @@ msgstr ""
 msgid "Map size:"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:473
+#, fuzzy
 msgid "Resource density:"
-msgstr ""
+msgstr "Depósito de recursos"
 
 #: horizons/i18n/guitranslations.py:474
 msgid "dense"
