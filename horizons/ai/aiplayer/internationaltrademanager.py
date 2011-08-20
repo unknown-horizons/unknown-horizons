@@ -50,8 +50,6 @@ class InternationalTradeManager(object):
 		return False
 
 	def add_route(self):
-		ship_capacity = 120 # TODO: handle different ship capacities
-
 		ship = None
 		for possible_ship, state in self.owner.ships.iteritems():
 			if state is self.owner.shipStates.idle:
@@ -80,7 +78,7 @@ class InternationalTradeManager(object):
 						continue # my settlement is unable to sell the resource
 					price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL)
 					tradable_amount = min(my_inventory[resource_id] - resource_manager.resource_requirements[resource_id], \
-						limit - settlement.inventory[resource_id], ship_capacity, settlement.owner.inventory[RES.GOLD_ID] // price)
+						limit - settlement.inventory[resource_id], ship.inventory.get_limit(), settlement.owner.inventory[RES.GOLD_ID] // price)
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, True))
 
 				for resource_id, limit in settlement.sell_list.iteritems():
@@ -92,7 +90,7 @@ class InternationalTradeManager(object):
 						continue # my settlement doesn't want to buy the resource
 					price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY)
 					tradable_amount = min(resource_manager.resource_requirements[resource_id] - my_inventory[resource_id], \
-						settlement.inventory[resource_id] - limit, ship_capacity, self.owner.inventory[RES.GOLD_ID] // price)
+						settlement.inventory[resource_id] - limit, ship.inventory.get_limit(), self.owner.inventory[RES.GOLD_ID] // price)
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, False))
 		if not options:
 			#self.log.info('%s international trade: no interesting options', self)
@@ -111,7 +109,6 @@ class InternationalTradeManager(object):
 						best_buy = (total_price, tradable_amount, resource_id)
 			buy_coefficient = self.personality.buy_coefficient_rich if self.owner.inventory[RES.GOLD_ID] > self.personality.little_money else self.personality.buy_coefficient_poor
 			total_value = (best_sale[0] if best_sale else 0) + (best_buy[1] if best_buy else 0) * buy_coefficient
-			# TODO: make settlement and settlement_manager properly sortable
 			final_options.append((total_value, best_buy[2] if best_buy else None, best_sale[2] if best_sale else None, settlement, settlement_manager))
 
 		bought_resource, sold_resource, settlement, settlement_manager = max(final_options)[1:]
