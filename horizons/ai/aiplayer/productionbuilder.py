@@ -86,9 +86,6 @@ class ProductionBuilder(AreaBuilder):
 				self.land_manager.roads.add((x, y))
 		self.refresh_unused_fields()
 
-	def build_boat_builder(self):
-		return AbstractBuilding.buildings[BUILDINGS.BOATBUILDER_CLASS].build(self.settlement_manager, None)[0]
-
 	def build_signal_fire(self):
 		return AbstractBuilding.buildings[BUILDINGS.SIGNAL_FIRE_CLASS].build(self.settlement_manager, None)[0]
 
