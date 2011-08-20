@@ -392,8 +392,8 @@ class SettlementManager(WorldObject):
 
 	def _add_goals(self, goals):
 		for goal in self.goals:
-			goal.update()
 			if goal.can_be_activated:
+				goal.update()
 				goals.append(goal)
 
 	def tick(self, goals):

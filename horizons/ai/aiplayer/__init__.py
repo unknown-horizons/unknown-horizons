@@ -401,8 +401,8 @@ class AIPlayer(GenericAI):
 	def handle_settlements(self):
 		goals = []
 		for goal in self.goals:
-			goal.update()
 			if goal.can_be_activated:
+				goal.update()
 				goals.append(goal)
 		for settlement_manager in self.settlement_managers:
 			settlement_manager.tick(goals)
