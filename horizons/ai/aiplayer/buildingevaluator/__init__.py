@@ -128,10 +128,10 @@ class BuildingEvaluator(WorldObject):
 	def get_alignment(cls, area_builder, coords_list):
 		return cls.get_alignment_from_outline(area_builder, cls._get_outline_coords(coords_list))
 
-	def __cmp__(self, other):
+	def __lt__(self, other):
 		if abs(self.value - other.value) > 1e-9:
-			return 1 if self.value < other.value else -1
-		return self.builder.worldid - other.builder.worldid
+			return self.value > other.value
+		return self.worldid - other.worldid
 
 	def __str__(self):
 		return '%s(%d): %s' % (self.__class__.__name__, self.worldid, self.builder)
