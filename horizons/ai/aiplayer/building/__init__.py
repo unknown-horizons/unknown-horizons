@@ -29,6 +29,12 @@ from horizons.util.python import decorators
 from horizons.world.production.productionline import ProductionLine
 
 class AbstractBuilding(object):
+	"""
+	An object of this class is a convenient way for the AI to find out how to build a
+	building, where it can be placed, and how much of which resources it consumes / produces.
+	There should be only one instance of every subclass at any time.
+	"""
+
 	log = logging.getLogger("ai.aiplayer.building")
 
 	def __init__(self, building_id, name, settler_level, production_line_ids):
