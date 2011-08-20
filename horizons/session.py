@@ -205,7 +205,7 @@ class Session(LivingObject):
 		if not self.is_game_loaded():
 			# NOTE: this must be sorted before iteration, cause there is no defined order for
 			#       iterating a dict, and it must happen in the same order for mp games.
-			for i in sorted(players):
+			for i in sorted(players, lambda p1, p2: cmp(p1['id'], p2['id'])):
 				self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['ai'], i['difficulty'])
 			center = self.world.init_new_world()
 			self.view.center(center[0], center[1])
