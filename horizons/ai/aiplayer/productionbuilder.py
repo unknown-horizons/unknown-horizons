@@ -27,7 +27,6 @@ from functools import partial
 from builder import Builder
 from areabuilder import AreaBuilder
 from roadplanner import RoadPlanner
-from building import AbstractBuilding
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
 from horizons.command.building import Tear
@@ -85,9 +84,6 @@ class ProductionBuilder(AreaBuilder):
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
 		self.refresh_unused_fields()
-
-	def build_signal_fire(self):
-		return AbstractBuilding.buildings[BUILDINGS.SIGNAL_FIRE_CLASS].build(self.settlement_manager, None)[0]
 
 	def _near_collectors(self, position):
 		for building in self.collector_buildings:
