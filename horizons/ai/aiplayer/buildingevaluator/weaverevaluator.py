@@ -33,7 +33,7 @@ class WeaverEvaluator(BuildingEvaluator):
 		self.alignment = alignment
 
 		personality = area_builder.owner.personality_manager.get('WeaverEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.BRICKYARD_CLASS].radius * personality.distance_penalty
+		distance_penalty = Entities.buildings[BUILDINGS.WEAVER_CLASS].radius * personality.distance_penalty
 		distance = self._weighted_sum(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
 		self.value = float(Entities.buildings[BUILDINGS.WEAVER_CLASS].radius) / distance + alignment * personality.alignment_importance
 
