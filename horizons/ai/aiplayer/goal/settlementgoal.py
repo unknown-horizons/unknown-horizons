@@ -33,6 +33,7 @@ class SettlementGoal(Goal):
 		self.land_manager = settlement_manager.land_manager
 		self.production_builder = settlement_manager.production_builder
 		self.village_builder = settlement_manager.village_builder
+		self.settlement = settlement_manager.settlement
 
 	@property
 	def can_be_activated(self):

@@ -71,7 +71,7 @@ class AreaBuilder(WorldObject):
 				if not rect.contains_tuple(coords):
 					yield self.island.get_tile_tuple(coords)
 
-	def _get_possible_road_coords(self, rect, blocked_rect):
+	def iter_possible_road_coords(self, rect, blocked_rect):
 		blocked_coords_set = set(coords for coords in blocked_rect.tuple_iter())
 		for tile in self.get_neighbour_tiles(rect):
 			if tile is None:
@@ -99,7 +99,7 @@ class AreaBuilder(WorldObject):
 					distance[coords2] = dist + 1
 					queue.append((coords2, dist + 1))
 
-	def _get_path_nodes(self):
+	def get_path_nodes(self):
 		""" returns coordinates of current and possible future road tiles in the settlement """
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
@@ -163,17 +163,17 @@ class AreaBuilder(WorldObject):
 				return []
 			if loading_area.distance(building.position) > building.radius:
 				continue # the collector building is too far to be useful
-			for coords in self._get_possible_road_coords(building.position, building.position):
+			for coords in self.iter_possible_road_coords(building.position, building.position):
 				collector_coords.add(coords)
 
 		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
-		destination_coords = set(self._get_possible_road_coords(loading_area, builder.position))
+		destination_coords = set(self.iter_possible_road_coords(loading_area, builder.position))
 		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1, loading_area.right + 1, loading_area.bottom + 1)
 
 		return RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \
-			destination_coords, beacon, self._get_path_nodes(), blocked_coords = blocked_coords)
+			destination_coords, beacon, self.get_path_nodes(), blocked_coords = blocked_coords)
 
-	def _build_road(self, path):
+	def build_road(self, path):
 		if path is not None:
 			for x, y in path:
 				self.register_change(x, y, BUILDING_PURPOSE.ROAD, None)
@@ -185,9 +185,9 @@ class AreaBuilder(WorldObject):
 
 	def build_road_connection(self, builder):
 		path = self._get_road_to_builder(builder)
-		return self._build_road(path)
+		return self.build_road(path)
 
-	def _get_road_cost(self, path):
+	def get_road_cost(self, path):
 		if path is None:
 			return None
 		length = 0
@@ -204,7 +204,7 @@ class AreaBuilder(WorldObject):
 		return costs
 
 	def get_road_connection_cost(self, builder):
-		return self._get_road_cost(self._get_road_to_builder(builder))
+		return self.get_road_cost(self._get_road_to_builder(builder))
 
 	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
 		return Builder.create(building_id, self.land_manager, Point(x, y), orientation = orientation)
