@@ -293,13 +293,6 @@ class SettlementManager(WorldObject):
 						return True
 		return upgraded_any
 
-	def min_residential_level(self):
-		result = None
-		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
-			if result is None or result > building.level:
-				result = building.level
-		return result
-
 	def get_total_missing_production(self, resource_id):
 		total = 0.0
 		for settlement_manager in self.owner.settlement_managers:
