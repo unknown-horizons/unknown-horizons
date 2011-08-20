@@ -29,10 +29,10 @@ class SettlementGoal(Goal):
 
 	def __init__(self, settlement_manager):
 		super(SettlementGoal, self).__init__(settlement_manager.owner)
-		self.__init(settlement_manager)
-
-	def __init(self, settlement_manager):
 		self.settlement_manager = settlement_manager
+		self.land_manager = settlement_manager.land_manager
+		self.production_builder = settlement_manager.production_builder
+		self.village_builder = settlement_manager.village_builder
 
 	@property
 	def can_be_activated(self):

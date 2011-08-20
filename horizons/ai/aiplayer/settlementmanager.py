@@ -72,6 +72,8 @@ class SettlementManager(WorldObject):
 		self.village_builder.display()
 		self.production_builder.display()
 
+		self.__init_goals()
+
 		if not self.feeder_island:
 			self.set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, \
 				self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades, self.personality.initial_pioneer_upgrades)
@@ -96,6 +98,10 @@ class SettlementManager(WorldObject):
 		self.tools_chain = ProductionChain.create(self, RES.TOOLS_ID)
 		self.liquor_chain = ProductionChain.create(self, RES.LIQUOR_ID)
 
+		# initialise caches
+		self.__resident_resource_usage_cache = {}
+
+	def __init_goals(self):
 		self.goals = []
 		self.goals.append(BoardsGoal(self))
 		self.goals.append(SignalFireGoal(self))
@@ -121,9 +127,6 @@ class SettlementManager(WorldObject):
 			self.goals.append(ToolsGoal(self))
 			self.goals.append(TentGoal(self))
 			self.goals.append(TradingShipGoal(self))
-
-		# initialise caches
-		self.__resident_resource_usage_cache = {}
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
@@ -164,6 +167,8 @@ class SettlementManager(WorldObject):
 		self.production_builder = ProductionBuilder.load(db, self)
 		self.village_builder.display()
 		self.production_builder.display()
+
+		self.__init_goals()
 
 		# the add_building events happen before the settlement manager is loaded so they have to be repeated here
 		for building in self.settlement.buildings:

@@ -19,11 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
-import copy
 import itertools
 
-from collections import deque, defaultdict
+from collections import deque
 from functools import partial
 
 from builder import Builder
@@ -99,6 +97,19 @@ class ProductionBuilder(AreaBuilder):
 			if building.position.distance(position) <= building.radius:
 				return True
 		return False
+
+	def build_best_option(self, options, purpose):
+		"""Build the best option where an option is in the format (value, builder)."""
+		if not options:
+			return BUILD_RESULT.IMPOSSIBLE
+
+		builder = max(options)[1]
+		if not builder.execute():
+			return BUILD_RESULT.UNKNOWN_ERROR
+		for x, y in builder.position.tuple_iter():
+			self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
+		self.register_change(builder.position.origin.x, builder.position.origin.y, purpose, None)
+		return BUILD_RESULT.OK
 
 	def build_extra_road_connection(self, building, collector_building):
 		collector_coords = set(coords for coords in self._get_possible_road_coords(collector_building.position, collector_building.position))
@@ -233,7 +244,7 @@ class ProductionBuilder(AreaBuilder):
 				usefulness += 1.0 / (distance + self.personality.collector_extra_distance)
 
 			alignment = 1
-			for tile in self._get_neighbour_tiles(builder.position):
+			for tile in self.get_neighbour_tiles(builder.position):
 				if tile is None:
 					continue
 				coords = (tile.x, tile.y)
@@ -282,7 +293,7 @@ class ProductionBuilder(AreaBuilder):
 					min_distance = distance
 
 			alignment = 0
-			for tile in self._get_neighbour_tiles(builder.position):
+			for tile in self.get_neighbour_tiles(builder.position):
 				if tile is None:
 					continue
 				coords = (tile.x, tile.y)
@@ -302,7 +313,7 @@ class ProductionBuilder(AreaBuilder):
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 
-	def _get_collector_area(self):
+	def get_collector_area(self):
 		""" returns the set of all coordinates that are reachable from at least one collector by road or open space """
 		if self.__collector_area_cache is not None and self.last_change_id == self.__collector_area_cache[0]:
 			return self.__collector_area_cache[1]
@@ -334,91 +345,6 @@ class ProductionBuilder(AreaBuilder):
 		self.__collector_area_cache = (self.last_change_id, collector_area)
 		return collector_area
 
-	def enlarge_collector_area(self):
-		if not self.have_resources(BUILDINGS.STORAGE_CLASS):
-			return BUILD_RESULT.NEED_RESOURCES
-
-		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		collector_area = self._get_collector_area()
-
-		# area_label contains free tiles in the production area and all road tiles
-		area_label = dict.fromkeys(self.land_manager.roads) # {(x, y): area_number, ...}
-		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose == BUILDING_PURPOSE.NONE:
-				area_label[coords] = None
-		areas = 0
-		for coords in collector_area:
-			if coords in area_label and area_label[coords] is not None:
-				continue
-
-			queue = deque([coords])
-			while queue:
-				x, y = queue[0]
-				queue.popleft()
-				for dx, dy in moves:
-					coords2 = (x + dx, y + dy)
-					if coords2 in area_label and area_label[coords2] is None:
-						area_label[coords2] = areas
-						queue.append(coords2)
-			areas += 1
-
-		coords_set_by_area = defaultdict(lambda: set())
-		for coords, area_number in area_label.iteritems():
-			if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
-				coords_set_by_area[area_number].add(coords)
-
-		options = []
-		for (x, y), area_number in area_label.iteritems():
-			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
-			if not builder:
-				continue
-
-			coords_set = set(builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.STORAGE_CLASS].radius))
-			useful_area = len(coords_set_by_area[area_number].intersection(coords_set))
-			if not useful_area:
-				continue
-
-			alignment = 1
-			for tile in self._get_neighbour_tiles(builder.position):
-				if tile is None:
-					continue
-				coords = (tile.x, tile.y)
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					alignment += 1
-
-			value = useful_area + alignment * self.personality.collector_area_enlargement_alignment_coefficient
-			options.append((-value, builder))
-
-		for _, builder in sorted(options):
-			building = builder.execute()
-			if not building:
-				return BUILD_RESULT.UNKNOWN_ERROR
-			for x, y in builder.position.tuple_iter():
-				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, None)
-			return BUILD_RESULT.OK
-
-		if self.settlement_manager.village_builder.tent_queue:
-			# impossible to build a storage but may be possible to help a bit with a tent
-			# TODO: prefer the current section of the village
-			tent_size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
-			tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
-			best_coords = None
-			best_area = 0
-
-			for x, y in self.settlement_manager.village_builder.tent_queue:
-				new_area = 0
-				for coords in Rect.init_from_topleft_and_size(x, y, tent_size[0] - 1, tent_size[1] - 1).get_radius_coordinates(tent_radius):
-					if coords in area_label and coords not in self.land_manager.roads and coords not in collector_area:
-						new_area += 1
-				if new_area > best_area:
-					best_coords = (x, y)
-					best_area = new_area
-			if best_coords is not None:
-				return self._extend_settlement_with_tent(Rect.init_from_topleft_and_size(best_coords[0], best_coords[1], tent_size[0] - 1, tent_size[1] - 1))
-
-		return BUILD_RESULT.IMPOSSIBLE
-
 	def count_available_squares(self, size, max_num = None):
 		""" decide based on the number of 3 x 3 squares available vs still possible """
 		key = (size, max_num)
@@ -426,7 +352,7 @@ class ProductionBuilder(AreaBuilder):
 			return self.__available_squares_cache[key][1]
 
 		offsets = list(itertools.product(xrange(size), xrange(size)))
-		collector_area = self._get_collector_area()
+		collector_area = self.get_collector_area()
 
 		available_squares = 0
 		total_squares = 0
@@ -448,12 +374,6 @@ class ProductionBuilder(AreaBuilder):
 					available_squares += 1
 		self.__available_squares_cache[key] = (self.last_change_id, (available_squares, total_squares))
 		return self.__available_squares_cache[key][1]
-
-	def need_to_enlarge_collector_area(self):
-		""" decide based on the number of 3 x 3 squares available vs still possible """
-		available_squares, total_squares = self.count_available_squares(3, self.personality.max_interesting_collector_area)
-		self.log.info('%s collector area: %d of %d useable', self, available_squares, total_squares)
-		return available_squares < min(self.personality.max_interesting_collector_area, total_squares - self.personality.max_collector_area_unreachable)
 
 	def refresh_unused_fields(self):
 		self.unused_fields = self._make_empty_unused_fields()

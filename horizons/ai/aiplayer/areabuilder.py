@@ -60,7 +60,7 @@ class AreaBuilder(WorldObject):
 		self.__init(settlement_manager)
 		super(AreaBuilder, self).load(db, worldid)
 
-	def _get_neighbour_tiles(self, rect):
+	def get_neighbour_tiles(self, rect):
 		"""
 		returns the surrounding tiles except the corners
 		"""
@@ -73,7 +73,7 @@ class AreaBuilder(WorldObject):
 
 	def _get_possible_road_coords(self, rect, blocked_rect):
 		blocked_coords_set = set(coords for coords in blocked_rect.tuple_iter())
-		for tile in self._get_neighbour_tiles(rect):
+		for tile in self.get_neighbour_tiles(rect):
 			if tile is None:
 				continue
 			coords = (tile.x, tile.y)
@@ -212,7 +212,7 @@ class AreaBuilder(WorldObject):
 	def have_resources(self, building_id):
 		return Entities.buildings[building_id].have_resources([self.settlement], self.owner)
 
-	def _extend_settlement_with_tent(self, position):
+	def extend_settlement_with_tent(self, position):
 		size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
 		min_distance = None
 		best_coords = None
@@ -244,7 +244,7 @@ class AreaBuilder(WorldObject):
 				continue
 
 			alignment = 1
-			for tile in self._get_neighbour_tiles(builder.position):
+			for tile in self.get_neighbour_tiles(builder.position):
 				if tile is None:
 					continue
 				coords = (tile.x, tile.y)
@@ -267,7 +267,7 @@ class AreaBuilder(WorldObject):
 
 	def extend_settlement(self, position):
 		""" build a tent or a storage to extend the settlement towards the position """
-		result = self._extend_settlement_with_tent(position)
+		result = self.extend_settlement_with_tent(position)
 		if result != BUILD_RESULT.OK:
 			result = self._extend_settlement_with_storage(position)
 		return result

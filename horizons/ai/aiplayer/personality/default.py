@@ -83,10 +83,6 @@ class DefaultPersonality:
 		path_unreachable_boundary_penalty = 0.1
 
 	class ProductionBuilder(AreaBuilder):
-		collector_area_enlargement_alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
-		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
-		max_collector_area_unreachable = 10 # maximum collector area (of 3x3 squares) that doesn't have to be reachable when considering whether to enlarge the area
-
 		deposit_coverage_alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 
 		min_bad_collector_coverage = 0.5 # collector coverage should be improved when a production building is stopped for more than this amount of time
@@ -216,6 +212,10 @@ class DefaultPersonality:
 		default_priority = 850
 		residences_required = 0
 		min_settler_level = SETTLER.SAILOR_LEVEL
+
+		alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
+		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
+		max_collector_area_unreachable = 10 # maximum collector area (of 3x3 squares) that doesn't have to be reachable when considering whether to enlarge the area
 
 	class FoundFeederIslandGoal:
 		enabled = True
