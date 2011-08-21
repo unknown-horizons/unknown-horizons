@@ -112,10 +112,7 @@ class InternationalTradeManager(object):
 			final_options.append((total_value, best_buy[2] if best_buy else None, best_sale[2] if best_sale else None, settlement, settlement_manager))
 
 		bought_resource, sold_resource, settlement, settlement_manager = max(final_options)[1:]
-		mission = InternationalTrade(settlement_manager, settlement, ship, bought_resource, sold_resource, self.owner.report_success, self.owner.report_failure)
-		self.owner.ships[ship] = self.owner.shipStates.on_a_mission
-		self.owner.missions.add(mission)
-		mission.start()
+		self.owner.start_mission(InternationalTrade(settlement_manager, settlement, ship, bought_resource, sold_resource, self.owner.report_success, self.owner.report_failure))
 
 	def tick(self):
 		self.add_route()

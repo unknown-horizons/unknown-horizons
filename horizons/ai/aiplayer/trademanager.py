@@ -158,10 +158,7 @@ class TradeManager(WorldObject):
 			self.owner.request_ship()
 			return # no available ships
 
-		self.owner.ships[chosen_ship] = self.owner.shipStates.on_a_mission
-		mission = DomesticTrade(source_settlement_manager, self.settlement_manager, chosen_ship, self.owner.report_success, self.owner.report_failure)
-		self.owner.missions.add(mission)
-		mission.start()
+		self.owner.start_mission(DomesticTrade(source_settlement_manager, self.settlement_manager, chosen_ship, self.owner.report_success, self.owner.report_failure))
 		self.ships_sent[source_settlement_manager.worldid] += 1
 
 	def __str__(self):

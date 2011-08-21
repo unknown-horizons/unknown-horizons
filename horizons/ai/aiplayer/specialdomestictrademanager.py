@@ -96,10 +96,7 @@ class SpecialDomesticTradeManager(object):
 			final_options.append((total_value, source_settlement_manager, destination_settlement_manager))
 
 		source_settlement_manager, destination_settlement_manager = max(final_options)[1:]
-		mission = SpecialDomesticTrade(source_settlement_manager, destination_settlement_manager, ship, self.owner.report_success, self.owner.report_failure)
-		self.owner.ships[ship] = self.owner.shipStates.on_a_mission
-		self.owner.missions.add(mission)
-		mission.start()
+		self.owner.start_mission(SpecialDomesticTrade(source_settlement_manager, destination_settlement_manager, ship, self.owner.report_success, self.owner.report_failure))
 
 	def tick(self):
 		self.add_route()
