@@ -295,6 +295,6 @@ class LandManager(WorldObject):
 			renderer.addColored(tile._instance, *village_colour)
 
 	def __str__(self):
-		return '%s LandManager(%d)' % (self.owner, self.worldid)
+		return '%s LandManager(%d)' % (self.owner if hasattr(self, 'owner') else 'unknown player', self.worldid)
 
 decorators.bind_all(LandManager)
