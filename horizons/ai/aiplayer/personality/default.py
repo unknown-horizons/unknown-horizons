@@ -102,6 +102,7 @@ class DefaultPersonality:
 		village_area_50 = 0.32 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
 		village_area_60 = 0.35 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
 		min_village_size = 81 # minimum possible village size in tiles
+		min_village_proportion = 0.95 # the proportion of the chosen village area size that must be present
 
 	class ResourceManager:
 		default_resource_requirement = 30 # try to always have this much tools and boards in settlement inventory
