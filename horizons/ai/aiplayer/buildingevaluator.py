@@ -27,11 +27,18 @@ from horizons.entities import Entities
 from horizons.util import WorldObject
 
 class BuildingEvaluator(WorldObject):
-	log = logging.getLogger("ai.aiplayer.buildingevaluator")
+	"""Class representing a set of instructions for building a building complex along with its value."""
 
+	log = logging.getLogger("ai.aiplayer.buildingevaluator")
 	need_collector_connection = True
 
 	def __init__(self, area_builder, builder, value):
+		"""
+		@param area_builder: the relevant AreaBuilder instance
+		@param builder: Builder instance
+		@param value: the value of the evaluator (bigger is better)
+		"""
+
 		super(BuildingEvaluator, self).__init__()
 		self.area_builder = area_builder
 		self.builder = builder
@@ -40,11 +47,13 @@ class BuildingEvaluator(WorldObject):
 	@classmethod
 	def _weighted_distance(cls, main_component, other_components, none_value):
 		"""
-		Returns the weights sum of the components where the specified amount is given to an element of other_components unless it is None
-		@param main_component: float
-		@param other_components: list[(weight, value)] where weight is a float and value is either None or a float
-		@param none_value: the penalty for a None value
+		Return the weights sum of the component distances with the specified weights.
+
+		@param main_component: value of the main component
+		@param other_components: list[(weight, value), ...] where weight is a float and value is either None or a float
+		@param none_value: the penalty for None in place of a component value
 		"""
+
 		others = 0.0
 		for weight, value in other_components:
 			others += weight
@@ -59,10 +68,11 @@ class BuildingEvaluator(WorldObject):
 	@classmethod
 	def _distance_to_nearest_building(cls, area_builder, builder, building_id):
 		"""
-		Returns the shortest distance to a building of type building_id that is in range of the builder
-		@param area_builder: AreaBuilder
-		@param builder: Builder
-		@param building_id: int, the id of the building to which the distance should be measured
+		Return the shortest distance to a building of type building_id that is in range of the builder.
+
+		@param area_builder: AreaBuilder instance
+		@param builder: Builder instance
+		@param building_id: the building type id of the building to which the distance should be measured
 		"""
 
 		shortest_distance = None
@@ -75,9 +85,11 @@ class BuildingEvaluator(WorldObject):
 	@classmethod
 	def _distance_to_nearest_collector(cls, production_builder, builder, must_be_in_range = True):
 		"""
-		Returns the shortest distance to a collector that is in range of the builder
-		@param production_builder: ProductionBuilder
-		@param builder: Builder
+		Return the shortest distance to a collector that (usually) has to be in range of the builder.
+
+		@param production_builder: ProductionBuilder instance
+		@param builder: Builder instance
+		@param must_be_in_range: whether the building has to be in range of the builder
 		"""
 
 		shortest_distance = None
@@ -88,10 +100,8 @@ class BuildingEvaluator(WorldObject):
 		return shortest_distance
 
 	@classmethod
-	def _get_outline_coords(cls, coords_list):
-		"""
-		returns the coordinates that surround the given coordinates (no corners)
-		"""
+	def _get_outline_coords_list(cls, coords_list):
+		"""Return the list of coordinates that share sides the given coordinates list."""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		if not isinstance(coords_list, set):
 			coords_list = set(coords_list)
@@ -106,6 +116,7 @@ class BuildingEvaluator(WorldObject):
 
 	@classmethod
 	def _get_alignment_from_outline(cls, area_builder, outline_coords_list):
+		"""Return an alignment value given the list of coordinates that form the outline of a shape."""
 		personality = area_builder.owner.personality_manager.get('BuildingEvaluator')
 		alignment = 0
 		for coords in outline_coords_list:
@@ -125,7 +136,8 @@ class BuildingEvaluator(WorldObject):
 
 	@classmethod
 	def _get_alignment(cls, area_builder, coords_list):
-		return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords(coords_list))
+		"""Return an alignment value based on the outline of the given coordinates list."""
+		return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords_list(coords_list))
 
 	def __lt__(self, other):
 		if abs(self.value - other.value) > 1e-9:
@@ -134,10 +146,11 @@ class BuildingEvaluator(WorldObject):
 
 	@property
 	def purpose(self):
+		"""Return the BUILDING_PURPOSE constant relevant to the builder."""
 		raise NotImplementedError, 'This function has to be overridden.'
 
 	def have_resources(self):
-		"""Return None if it is unreachable by road, False if there are not enough resources, and True otherwise."""
+		"""Return None if the builder is unreachable by road, False if there are not enough resources, and True otherwise."""
 		# check without road first because the road is unlikely to be the problem and pathfinding isn't cheap
 		if not self.builder.have_resources():
 			return False
@@ -147,6 +160,7 @@ class BuildingEvaluator(WorldObject):
 		return self.builder.have_resources(road_cost)
 
 	def execute(self):
+		"""Build the specified building complex. Return (BUILD_RESULT constant, building object)."""
 		resource_check = self.have_resources()
 		if resource_check is None:
 			self.log.debug('%s, unable to reach by road', self)
