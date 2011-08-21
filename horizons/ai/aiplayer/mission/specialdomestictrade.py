@@ -19,14 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.mission import Mission
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, Circle, Callback, WorldObject
+from horizons.ai.aiplayer.mission import ShipMission
+from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
-from horizons.constants import BUILDINGS
 from horizons.ext.enum import Enum
 
-class SpecialDomesticTrade(Mission):
+class SpecialDomesticTrade(ShipMission):
 	"""
 	Given a ship and two settlement managers the ship will go to the source destination,
 	load the most useful resources for the destination settlement, and then unload at the
@@ -35,13 +33,11 @@ class SpecialDomesticTrade(Mission):
 
 	missionStates = Enum('created', 'moving_to_source_settlement', 'moving_to_destination_settlement')
 
-	def __init__(self, source_settlement_manager, destination_settlement_manager, ship, success_callback, failure_callback, **kwargs):
-		super(SpecialDomesticTrade, self).__init__(success_callback, failure_callback, source_settlement_manager.session, **kwargs)
+	def __init__(self, source_settlement_manager, destination_settlement_manager, ship, success_callback, failure_callback):
+		super(SpecialDomesticTrade, self).__init__(success_callback, failure_callback, ship)
 		self.source_settlement_manager = source_settlement_manager
 		self.destination_settlement_manager = destination_settlement_manager
-		self.ship = ship
 		self.state = self.missionStates.created
-		self.ship.add_remove_listener(self.cancel)
 
 	def save(self, db):
 		super(SpecialDomesticTrade, self).save(db)
@@ -58,9 +54,8 @@ class SpecialDomesticTrade(Mission):
 		db_result = db("SELECT source_settlement_manager, destination_settlement_manager, ship, state FROM ai_mission_special_domestic_trade WHERE rowid = ?", worldid)[0]
 		self.source_settlement_manager = WorldObject.get_object_by_id(db_result[0])
 		self.destination_settlement_manager = WorldObject.get_object_by_id(db_result[1])
-		self.ship = WorldObject.get_object_by_id(db_result[2])
 		self.state = self.missionStates[db_result[3]]
-		super(SpecialDomesticTrade, self).load(db, worldid, success_callback, failure_callback, self.source_settlement_manager.session)
+		super(SpecialDomesticTrade, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
 
 		if self.state is self.missionStates.moving_to_source_settlement:
 			self.ship.add_move_callback(Callback(self._reached_source_settlement))
@@ -68,30 +63,18 @@ class SpecialDomesticTrade(Mission):
 		elif self.state is self.missionStates.moving_to_destination_settlement:
 			self.ship.add_move_callback(Callback(self._reached_destination_settlement))
 			self.ship.add_blocked_callback(Callback(self._move_to_destination_settlement))
-
-		self.ship.add_remove_listener(self.cancel)
-
-	def report_success(self, msg):
-		self.ship.remove_remove_listener(self.cancel)
-		super(SpecialDomesticTrade, self).report_success(msg)
-
-	def report_failure(self, msg):
-		self.ship.remove_remove_listener(self.cancel)
-		super(SpecialDomesticTrade, self).report_failure(msg)
+		else:
+			assert False, 'invalid state'
 
 	def start(self):
 		self.state = self.missionStates.moving_to_source_settlement
 		self._move_to_source_settlement()
-		self.log.info('Started a special domestic trade mission from %s to %s using %s', \
+		self.log.info('%s started a special domestic trade mission from %s to %s using %s', self, \
 			self.source_settlement_manager.settlement.name, self.destination_settlement_manager.settlement.name, self.ship)
 
 	def _move_to_source_settlement(self):
-		(x, y) = self.source_settlement_manager.branch_office.position.get_coordinates()[4]
-		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
-		try:
-			self.ship.move(area, Callback(self._reached_source_settlement), blocked_callback = Callback(self._move_to_source_settlement))
-		except MoveNotPossible:
-			self.report_failure('Unable to move to the source settlement (%s)' % self.source_settlement_manager.settlement.name)
+		self._move_to_branch_office_area(self.source_settlement_manager.branch_office.position, Callback(self._reached_source_settlement), \
+			Callback(self._move_to_source_settlement), 'Unable to move to the source settlement (%s)' % self.source_settlement_manager.settlement.name)
 
 	def _load_resources(self):
 		source_resource_manager = self.source_settlement_manager.resource_manager
@@ -106,7 +89,7 @@ class SpecialDomesticTrade(Mission):
 			if source_inventory[resource_id] <= source_resource_manager.resource_requirements[resource_id]:
 				continue # the source settlement doesn't have a surplus of the resource
 
-			price = self.session.db.get_res_value(resource_id)
+			price = self.owner.session.db.get_res_value(resource_id)
 			tradable_amount = min(self.ship.inventory.get_limit(resource_id), limit - destination_inventory[resource_id], \
 				source_inventory[resource_id] - source_resource_manager.resource_requirements[resource_id])
 			options.append((tradable_amount * price, tradable_amount, resource_id))
@@ -116,32 +99,23 @@ class SpecialDomesticTrade(Mission):
 
 		options.sort(reverse = True)
 		for _, amount, resource_id in options:
-			self.source_settlement_manager.owner.complete_inventory.move(self.source_settlement_manager.settlement, self.ship, resource_id, amount)
+			self.move_resource(self.source_settlement_manager.settlement, self.ship, resource_id, amount)
 		return True
 
 	def _reached_source_settlement(self):
-		self.log.info('Reached the first branch office area (%s)', self.source_settlement_manager.settlement.name)
+		self.log.info('%s reached the first branch office area (%s)', self, self.source_settlement_manager.settlement.name)
 		if self._load_resources():
 			self.state = self.missionStates.moving_to_destination_settlement
 			self._move_to_destination_settlement()
 		else:
-			self.log.info('No resources to transport')
 			self.report_failure('No resources to transport')
 
 	def _move_to_destination_settlement(self):
-		(x, y) = self.destination_settlement_manager.settlement.branch_office.position.get_coordinates()[4]
-		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
-		try:
-			self.ship.move(area, Callback(self._reached_destination_settlement), blocked_callback = Callback(self._move_to_destination_settlement))
-		except MoveNotPossible:
-			self.report_failure('Unable to move to the destination settlement (%s)' % self.settlement.name)
+		self._move_to_branch_office_area(self.destination_settlement_manager.settlement.branch_office.position, Callback(self._reached_destination_settlement), \
+			Callback(self._move_to_destination_settlement), 'Unable to move to the destination settlement (%s)' % self.destination_settlement_manager.settlement.name)
 
 	def _reached_destination_settlement(self):
-		self.destination_settlement_manager.owner.complete_inventory.unload_all(self.ship, self.destination_settlement_manager.settlement)
-		self.log.info('Reached the destination branch office area (%s)', self.destination_settlement_manager.settlement.name)
-
-	def cancel(self):
-		self.ship.stop()
-		super(SpecialDomesticTrade, self).cancel()
+		self._unload_all_resources(self.destination_settlement_manager.settlement)
+		self.log.info('%s reached the destination branch office area (%s)', self, self.destination_settlement_manager.settlement.name)
 
 decorators.bind_all(SpecialDomesticTrade)

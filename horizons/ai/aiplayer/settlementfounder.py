@@ -115,7 +115,7 @@ class SettlementFounder(object):
 		self.owner.start_mission(FoundSettlement.create(ship, land_manager, self.owner.report_success, self.owner.report_failure))
 
 	def _have_settlement_starting_resources(self, ship, settlement, min_money, min_resources):
-		if self.owner.complete_inventory.money < min_money:
+		if self.owner.inventory[RES.GOLD_ID] < min_money:
 			return False
 
 		for res, amount in ship.inventory:

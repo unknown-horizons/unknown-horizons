@@ -31,7 +31,6 @@ from mission.internationaltrade import InternationalTrade
 
 from personalitymanager import PersonalityManager
 from landmanager import LandManager
-from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
 from unitbuilder import UnitBuilder
 from constants import GOAL_RESULT
@@ -121,7 +120,6 @@ class AIPlayer(GenericAI):
 		self.missions = set()
 		self.fishers = []
 		self.settlement_founder = SettlementFounder(self)
-		self.complete_inventory = CompleteInventory(self)
 		self.unit_builder = UnitBuilder(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
 		self.goals = [DoNothingGoal(self)]

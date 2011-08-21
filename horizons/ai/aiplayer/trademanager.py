@@ -98,8 +98,11 @@ class TradeManager(WorldObject):
 			self.data[resource_id] = SingleResourceTradeManager(self.settlement_manager, resource_id)
 		return self.data[resource_id].get_total_import()
 
-	def load_resources(self, destination_settlement_manager, ship):
-		""" the given ship has arrived at the source settlement to pick up the resources required by this trade manager """
+	def load_resources(self, mission):
+		"""The given ship has arrived at the source settlement to pick up the resources required by this trade manager."""
+		destination_settlement_manager = mission.destination_settlement_manager
+		ship = mission.ship
+
 		total_amount = defaultdict(lambda: 0)
 		resource_manager = self.settlement_manager.resource_manager
 		for resource_id, amount in resource_manager.trade_storage[destination_settlement_manager.worldid].iteritems():
@@ -118,7 +121,7 @@ class TradeManager(WorldObject):
 			self.log.info('Transfer %d of %d to %s for a journey from %s to %s, total amount %d', actual_amount, \
 				resource_id, ship, self.settlement_manager.settlement.name, destination_settlement_manager.settlement.name, amount)
 			old_amount = self.settlement_manager.settlement.inventory[resource_id]
-			self.settlement_manager.owner.complete_inventory.move(ship, self.settlement_manager.settlement, resource_id, -actual_amount)
+			mission.move_resource(ship, self.settlement_manager.settlement, resource_id, -actual_amount)
 			actually_transferred = old_amount - self.settlement_manager.settlement.inventory[resource_id]
 			resource_manager.trade_storage[destination_settlement_manager.worldid][resource_id] -= actually_transferred
 

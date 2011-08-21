@@ -19,14 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.mission import Mission
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, Circle, Callback, WorldObject
+from horizons.ai.aiplayer.mission import ShipMission
+from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
-from horizons.constants import BUILDINGS
 from horizons.ext.enum import Enum
+from horizons.constants import RES
 
-class PrepareFoundationShip(Mission):
+class PrepareFoundationShip(ShipMission):
 	"""
 	Given a ship and a settlement manager it moves the ship to the branch office and loads
 	it with the resources required to start another settlement.
@@ -34,15 +33,12 @@ class PrepareFoundationShip(Mission):
 
 	missionStates = Enum('created', 'moving')
 
-	def __init__(self, settlement_manager, ship, feeder_island, success_callback, failure_callback, **kwargs):
-		super(PrepareFoundationShip, self).__init__(success_callback, failure_callback, \
-			settlement_manager.land_manager.island.session, **kwargs)
+	def __init__(self, settlement_manager, ship, feeder_island, success_callback, failure_callback):
+		super(PrepareFoundationShip, self).__init__(success_callback, failure_callback, ship)
 		self.settlement_manager = settlement_manager
-		self.ship = ship
 		self.feeder_island = feeder_island
 		self.branch_office = self.settlement_manager.branch_office
 		self.state = self.missionStates.created
-		self.ship.add_remove_listener(self.cancel)
 
 	def save(self, db):
 		super(PrepareFoundationShip, self).save(db)
@@ -58,47 +54,39 @@ class PrepareFoundationShip(Mission):
 	def _load(self, db, worldid, success_callback, failure_callback):
 		db_result = db("SELECT settlement_manager, ship, feeder_island, state FROM ai_mission_prepare_foundation_ship WHERE rowid = ?", worldid)[0]
 		self.settlement_manager = WorldObject.get_object_by_id(db_result[0])
-		self.ship = WorldObject.get_object_by_id(db_result[1])
 		self.branch_office = self.settlement_manager.branch_office
 		self.feeder_island = db_result[2]
 		self.state = self.missionStates[db_result[2]]
 		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback, \
-			self.settlement_manager.land_manager.island.session)
+			WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
 			self.ship.add_move_callback(Callback(self._reached_bo_area))
 			self.ship.add_blocked_callback(Callback(self._move_to_bo_area))
-
-		self.ship.add_remove_listener(self.cancel)
-
-	def report_success(self, msg):
-		self.ship.remove_remove_listener(self.cancel)
-		super(PrepareFoundationShip, self).report_success(msg)
-
-	def report_failure(self, msg):
-		self.ship.remove_remove_listener(self.cancel)
-		super(PrepareFoundationShip, self).report_failure(msg)
+		else:
+			assert False, 'invalid state'
 
 	def start(self):
 		self.state = self.missionStates.moving
 		self._move_to_bo_area()
 
 	def _move_to_bo_area(self):
-		(x, y) = self.branch_office.position.get_coordinates()[4]
-		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
-		try:
-			self.ship.move(area, Callback(self._reached_bo_area), blocked_callback = Callback(self._move_to_bo_area))
-		except MoveNotPossible:
-			self.report_failure('Move not possible')
+		self._move_to_branch_office_area(self.branch_office.position, Callback(self._reached_bo_area), \
+			Callback(self._move_to_bo_area), 'Move not possible')
+
+	def _load_foundation_resources(self):
+		personality = self.owner.personality_manager.get('SettlementFounder')
+		if self.feeder_island:
+			max_amounts = {RES.BOARDS_ID: personality.max_new_feeder_island_boards, RES.TOOLS_ID: personality.max_new_feeder_island_tools}
+		else:
+			max_amounts = {RES.BOARDS_ID: personality.max_new_island_boards, RES.FOOD_ID: personality.max_new_island_food, RES.TOOLS_ID: personality.max_new_island_tools}
+
+		for resource_id, max_amount in max_amounts.iteritems():
+			self.move_resource(self.ship, self.settlement_manager.settlement, resource_id, self.ship.inventory[resource_id] - max_amount)
 
 	def _reached_bo_area(self):
-		self.log.info('Reached BO area')
-		if self.feeder_island:
-			self.ship.owner.complete_inventory.load_feeder_island_foundation_resources(\
-				self.ship, self.settlement_manager.land_manager.settlement)
-		else:
-			self.ship.owner.complete_inventory.load_foundation_resources(self.ship, \
-				self.settlement_manager.land_manager.settlement)
+		self.log.info('%s reached BO area', self)
+		self._load_foundation_resources()
 
 		success = False
 		if self.feeder_island:
