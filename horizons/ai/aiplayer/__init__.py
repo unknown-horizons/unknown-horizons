@@ -436,15 +436,6 @@ class AIPlayer(GenericAI):
 				return False
 		return True
 
-	def need_feeder_island(self, settlement_manager):
-		return settlement_manager.production_builder.count_available_squares(3, self.personality.feeder_island_requirement_cutoff)[1] < self.personality.feeder_island_requirement_cutoff
-
-	def have_feeder_island(self):
-		for settlement_manager in self.settlement_managers:
-			if not self.need_feeder_island(settlement_manager):
-				return True
-		return False
-
 	def can_found_feeder_island(self):
 		islands = self.get_available_islands(self.personality.min_feeder_island_area)
 		return len(islands) > 0

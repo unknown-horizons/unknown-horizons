@@ -27,10 +27,12 @@ class FoundFeederIslandGoal(SettlementGoal):
 	def get_personality_name(self):
 		return 'FoundFeederIslandGoal'
 
+	def _need_feeder_island(self):
+		return self.production_builder.count_available_squares(3, self.personality.feeder_island_requirement_cutoff)[1] < self.personality.feeder_island_requirement_cutoff
+
 	@property
 	def active(self):
-		return super(FoundFeederIslandGoal, self).active and self.owner.need_feeder_island(self.settlement_manager) and \
-			not self.owner.have_feeder_island() and self.owner.can_found_feeder_island()
+		return super(FoundFeederIslandGoal, self).active and self._need_feeder_island() and self.owner.can_found_feeder_island()
 
 	def execute(self):
 		self.settlement_manager.log.info('%s waiting for a feeder islands to be founded', self)
