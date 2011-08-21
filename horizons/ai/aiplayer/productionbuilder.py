@@ -52,6 +52,7 @@ class ProductionBuilder(AreaBuilder):
 		self.personality = self.owner.personality_manager.get('ProductionBuilder')
 		self.last_collector_improvement_storage = last_collector_improvement_storage
 		self.last_collector_improvement_road = last_collector_improvement_road
+		self.__builder_cache = {}
 
 	@classmethod
 	def _make_empty_unused_fields(self):
@@ -285,16 +286,16 @@ class ProductionBuilder(AreaBuilder):
 			return None
 
 		island_changed = self.island.last_changed[size][coords]
-		if key in self.builder_cache and island_changed != self.builder_cache[key][0]:
-			del self.builder_cache[key]
+		if key in self.__builder_cache and island_changed != self.__builder_cache[key][0]:
+			del self.__builder_cache[key]
 
 		plan_changed = self.last_change_id
-		if key in self.builder_cache and plan_changed != self.builder_cache[key][1]:
-			del self.builder_cache[key]
+		if key in self.__builder_cache and plan_changed != self.__builder_cache[key][1]:
+			del self.__builder_cache[key]
 
-		if key not in self.builder_cache:
-			self.builder_cache[key] = (island_changed, plan_changed, self._make_new_builder(building_id, x, y, needs_collector, orientation))
-		return self.builder_cache[key][2]
+		if key not in self.__builder_cache:
+			self.__builder_cache[key] = (island_changed, plan_changed, self._make_new_builder(building_id, x, y, needs_collector, orientation))
+		return self.__builder_cache[key][2]
 
 	def _init_cache(self):
 		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed in this area """ 

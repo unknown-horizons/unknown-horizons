@@ -171,7 +171,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				usefulness += 1.0 / (distance + self.personality.collector_extra_distance)
 
 			alignment = 1
-			for tile in self.production_builder.get_neighbour_tiles(builder.position):
+			for tile in self.production_builder.iter_neighbour_tiles(builder.position):
 				coords = (tile.x, tile.y)
 				if coords not in self.production_builder.plan or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
