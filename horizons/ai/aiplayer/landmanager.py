@@ -46,23 +46,17 @@ class LandManager(WorldObject):
 		min_x, max_x = None, None
 		min_y, max_y = None, None
 		land = 0
-		for (x, y), tile in self.island.ground_map.iteritems():
-			if 'constructible' not in tile.classes:
-				continue
-			if tile.object is not None and not tile.object.buildable_upon:
-				continue
-			if tile.settlement is not None:
-				continue
-
-			land += 1
-			if min_x is None or x < min_x:
-				min_x = x
-			if max_x is None or x > max_x:
-				max_x = x
-			if min_y is None or y < min_y:
-				min_y = y
-			if max_y is None or y > max_y:
-				max_y = y
+		for x, y in self.island.ground_map:
+			if self._coords_usable((x, y)):
+				land += 1
+				if min_x is None or x < min_x:
+					min_x = x
+				if max_x is None or x > max_x:
+					max_x = x
+				if min_y is None or y < min_y:
+					min_y = y
+				if max_y is None or y > max_y:
+					max_y = y
 		width = max_x - min_x + 1
 		height = max_y - min_y + 1
 
@@ -154,7 +148,7 @@ class LandManager(WorldObject):
 				return False
 			if tile.object is not None and not tile.object.buildable_upon:
 				return False
-			return tile.settlement is None or tile.settlement.owner == self.owner
+			return tile.settlement is None or tile.settlement.owner is self.owner
 		return False
 
 	def legal_for_production(self, rect):
