@@ -117,11 +117,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 	def _build_extra_storage(self):
 		"""Build an extra storage tent to improve collector coverage."""
-		current_tick = Scheduler().cur_tick
 		if not self.production_builder.have_resources(BUILDINGS.STORAGE_CLASS):
 			return BUILD_RESULT.NEED_RESOURCES
-		if self.production_builder.last_collector_improvement_storage + self.personality.collector_improvement_storage_expires > current_tick:
-			return BUILD_RESULT.IMPOSSIBLE # skip this to leave time for the collectors to do their work
 
 		reachable = dict.fromkeys(self.land_manager.roads) # {(x, y): [(building worldid, distance), ...], ...}
 		for coords, (purpose, _) in self.production_builder.plan.iteritems():
@@ -187,7 +184,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 	def execute(self):
 		result = self._build_extra_road()
 		if result == BUILD_RESULT.IMPOSSIBLE:
-			result = self._build_extra_storage()
+			if self.production_builder.last_collector_improvement_storage + self.personality.collector_improvement_storage_expires <= Scheduler().cur_tick:
+				result = self._build_extra_storage()
 		self.settlement_manager.log_generic_build_result(result, 'storage')
 		return self._translate_build_result(result)
 

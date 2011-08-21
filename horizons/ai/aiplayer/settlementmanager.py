@@ -305,16 +305,6 @@ class SettlementManager(WorldObject):
 				total -= production + resource_export - resource_import
 		return max(0.0, total)
 
-	def need_more_storage(self):
-		limit = self.settlement.inventory.get_limit(RES.FOOD_ID)
-		if limit >= self.personality.max_required_storage_space:
-			return False
-		important_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
-		for resource_id in important_resources:
-			if self.settlement.inventory[resource_id] + self.personality.full_storage_threshold >= limit:
-				return True
-		return False
-
 	def _start_feeder_tick(self):
 		self.log.info('%s food requirement %.5f', self, self.get_total_missing_production(RES.FOOD_ID))
 		self.log.info('%s textile requirement %.5f', self, self.get_total_missing_production(RES.TEXTILE_ID))

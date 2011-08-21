@@ -128,9 +128,6 @@ class DefaultPersonality:
 		dummy_boards_requirement = 0.01
 		dummy_tools_requirement = 0.001
 
-		max_required_storage_space = 60 # maximum storage capacity to go for when the inventory starts to get full
-		full_storage_threshold = 5 # when there is less than this amount of free space for a resource then we might need more space
-
 		# tax rates and upgrade rights in new settlements
 		initial_sailor_taxes = 0.5
 		initial_pioneer_taxes = 0.8
@@ -245,11 +242,14 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = SETTLER.SAILOR_LEVEL
 
-	class StorageSpaceGoal:
+	class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 		enabled = True
 		default_priority = 825
 		residences_required = 0
 		min_settler_level = SETTLER.SAILOR_LEVEL
+
+		max_required_storage_space = 60 # maximum storage capacity to go for when the inventory starts to get full
+		full_storage_threshold = 5 # when there is less than this amount of free space for a resource then we might need more space
 
 	class TentGoal:
 		enabled = True
