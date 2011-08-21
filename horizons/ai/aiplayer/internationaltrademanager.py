@@ -29,7 +29,12 @@ from horizons.util.python import decorators
 
 class InternationalTradeManager(object):
 	"""
-	Manages the international trade routes of one AI player.
+	An object of this class manages the international trade routes of one AI player.
+
+	The current implementation is limited to one active route between each pair of our
+	settlement and another player's settlement where each route can have at most one
+	bought and one sold resource. The routes are automatically removed when they have
+	been used once or when the ship gets destroyed.
 	"""
 
 	log = logging.getLogger("ai.aiplayer.internationaltrade")
@@ -41,7 +46,8 @@ class InternationalTradeManager(object):
 		self.session = owner.session
 		self.personality = owner.personality_manager.get('InternationalTradeManager')
 
-	def _international_trade_mission_exists(self, settlement, settlement_manager):
+	def _trade_mission_exists(self, settlement, settlement_manager):
+		"""Return a boolean showing whether there is a trade route between the settlements."""
 		for mission in self.owner.missions:
 			if not isinstance(mission, InternationalTrade):
 				continue
@@ -49,7 +55,8 @@ class InternationalTradeManager(object):
 				return True
 		return False
 
-	def add_route(self):
+	def _add_route(self):
+		"""Add a new international trade route if possible."""
 		ship = None
 		for possible_ship, state in self.owner.ships.iteritems():
 			if state is self.owner.shipStates.idle:
@@ -59,16 +66,18 @@ class InternationalTradeManager(object):
 			#self.log.info('%s international trade: no available ships', self)
 			return
 
-		options = defaultdict(lambda: [])
+		# find all possible legal trade route options
+		options = defaultdict(lambda: []) # {(settlement, settlement_manager): (total value, amount, resource id, bool(selling)), ...}
 		for settlement in self.world.settlements:
 			if settlement.owner is self.owner:
-				continue
+				continue # don't allow routes of this type between the player's own settlements
 			for settlement_manager in self.owner.settlement_managers:
-				if self._international_trade_mission_exists(settlement, settlement_manager):
+				if self._trade_mission_exists(settlement, settlement_manager):
 					continue # allow only one international trade route between a pair of settlements
 				my_inventory = settlement_manager.settlement.inventory
 				resource_manager = settlement_manager.resource_manager
 
+				# add the options where we sell to the other player
 				for resource_id, limit in settlement.buy_list.iteritems():
 					if resource_id not in resource_manager.resource_requirements:
 						continue # not a well-known resource: ignore it
@@ -81,6 +90,7 @@ class InternationalTradeManager(object):
 						limit - settlement.inventory[resource_id], ship.inventory.get_limit(), settlement.owner.inventory[RES.GOLD_ID] // price)
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, True))
 
+				# add the options where we buy from the other player
 				for resource_id, limit in settlement.sell_list.iteritems():
 					if resource_id not in resource_manager.resource_requirements:
 						continue # not a well-known resource: ignore it
@@ -96,7 +106,8 @@ class InternationalTradeManager(object):
 			#self.log.info('%s international trade: no interesting options', self)
 			return
 
-		final_options = []
+		# make up final options where a route is limited to at most one resource bought and one resource sold
+		final_options = [] # [(value, bought resource id or None, sold resource id or None, settlement, settlement_manager), ...]
 		for (settlement, settlement_manager), option in sorted(options.iteritems()):
 			best_buy = None # largest amount of resources
 			best_sale = None # most expensive sale
@@ -115,6 +126,6 @@ class InternationalTradeManager(object):
 		self.owner.start_mission(InternationalTrade(settlement_manager, settlement, ship, bought_resource, sold_resource, self.owner.report_success, self.owner.report_failure))
 
 	def tick(self):
-		self.add_route()
+		self._add_route()
 
 decorators.bind_all(InternationalTradeManager)
