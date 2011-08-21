@@ -211,6 +211,7 @@ class DefaultPersonality:
 		min_settler_level = SETTLER.SAILOR_LEVEL
 
 		feeder_island_requirement_cutoff = 30 # if there are less than this many free 3x3 squares in a settlement then a feeder island is needed
+		usable_feeder_island_cutoff = 30 # if there are less than this many free 3x3 on a feeder island then another feeder island may be needed
 
 	class ImproveCollectorCoverageGoal:
 		enabled = True

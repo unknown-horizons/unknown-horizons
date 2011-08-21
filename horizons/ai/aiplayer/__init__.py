@@ -348,7 +348,7 @@ class AIPlayer(GenericAI):
 				break
 		assert mission
 		mission.cancel()
-		self._found_settlements()
+		self.settlement_founder.tick()
 
 	@classmethod
 	def load_abstract_buildings(cls, db):
