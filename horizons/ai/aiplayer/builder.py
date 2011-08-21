@@ -30,25 +30,24 @@ from horizons.util import Point, WorldObject
 from horizons.world.building.production import Mine
 
 class Builder(WorldObject):
-	"""
-	This is a convenience class to make it easier for the AI to build buildings.
-	"""
+	"""An object of this class represents a plan to build a building at a specific place."""
 
 	log = logging.getLogger("ai.aiplayer.builder")
 
 	rotations = [45, 135, 225, 315]
-	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, BUILDINGS.IRON_MINE_CLASS] # don't change orientation by random
+	# don't change the orientation of the following building types
+	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, BUILDINGS.IRON_MINE_CLASS]
 
-	def __init__(self, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
+	def __init__(self, building_id, land_manager, point, orientation = 0, ship = None, worldid = None):
 		"""
-		Check if a building is buildable here.
-		All tiles, that the building occupies are checked.
-		@param building_id: int, the id of the building class
-		@param land_manager: LandManager
-		@param point: Point instance, bottom left corner coordinates
+		@param building_id: the id of the building class
+		@param land_manager: LandManager instance
+		@param point: the origin coordinates
 		@param orientation: 0..3 for the rotations [45, 135, 225, 315]
 		@param ship: ship instance if building from ship
+		@param worldid: the worldid of a loaded object
 		"""
+
 		super(Builder, self).__init__(worldid)
 		self.building_id = building_id
 		self.land_manager = land_manager
@@ -59,7 +58,7 @@ class Builder(WorldObject):
 
 		check_settlement = ship is None
 		self.build_position = Entities.buildings[building_id].check_build(self.session, point, \
-			rotation = self.rotations[orientation], check_settlement = check_settlement, ship = None, \
+			rotation = self.rotations[orientation], check_settlement = check_settlement, ship = ship, \
 			issuer = self.land_manager.owner)
 		self.position = self.build_position.position
 
@@ -76,16 +75,14 @@ class Builder(WorldObject):
 		return cls.create(db_result[0], land_manager, Point(db_result[1], db_result[2]), db_result[3], ship, worldid=worldid)
 
 	def __nonzero__(self):
-		"""Returns buildable value. This enables code such as "if cls.check_build()"""
+		"""Return a boolean showing whether it is possible to build the building at this place."""
 		return self.build_position.buildable
 
 	def __str__(self):
 		return 'Builder(%d) of building %d at %s, orientation %d' % (self.worldid, self.building_id, self.point.to_tuple(), self.orientation)
 
-	def __lt__(self, other):
-		return self.worldid < other.worldid
-
 	def _get_rotation(self):
+		"""Return the rotation of the new building (randomise it if allowed)."""
 		if self.building_id in self.non_rotatable_buildings:
 			return self.build_position.rotation
 		if Entities.buildings[self.building_id].size[0] == Entities.buildings[self.building_id].size[1]:
@@ -97,13 +94,14 @@ class Builder(WorldObject):
 			return self.rotations[self.orientation + 2 * self.session.random.randint(0, 1)]
 
 	def get_loading_area(self):
+		"""Return the position of the loading area."""
 		if self.building_id == BUILDINGS.IRON_MINE_CLASS:
 			return Mine.get_loading_area(self.building_id, self.rotations[self.orientation], self.position)
 		else:
 			return self.position
 
 	def execute(self):
-		"""Actually builds the building."""
+		"""Build the building."""
 		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island, \
 			self._get_rotation(), settlement = self.land_manager.settlement, \
 			ship = self.ship, tearset = self.build_position.tearset)
@@ -112,6 +110,7 @@ class Builder(WorldObject):
 		return result
 
 	def have_resources(self, extra_resources = None):
+		"""Return a boolean showing whether we have the resources to build the building right now."""
 		# the copy has to be made because Build.check_resources modifies it
 		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}
 		inventories = [self.land_manager.settlement, self.ship]
@@ -123,6 +122,17 @@ class Builder(WorldObject):
 
 	@classmethod
 	def create(cls, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
+		"""
+		Return a Builder object. Use the __nonzero__ function to know whether it is usable.
+
+		@param building_id: the id of the building class
+		@param land_manager: LandManager instance
+		@param point: the origin coordinates
+		@param orientation: 0..3 for the rotations [45, 135, 225, 315]
+		@param ship: ship instance if building from ship
+		@param worldid: the worldid of a loaded object
+		"""
+
 		coords = point.to_tuple()
 		key = (building_id, coords, orientation, land_manager.owner.worldid)
 		size = Entities.buildings[building_id].size
