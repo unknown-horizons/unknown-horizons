@@ -32,11 +32,11 @@ class FoundFeederIslandGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(FoundFeederIslandGoal, self).active and self._need_feeder_island() and self.owner.can_found_feeder_island()
+		return super(FoundFeederIslandGoal, self).active and self._need_feeder_island() and self.owner.settlement_founder.can_found_feeder_island()
 
 	def execute(self):
 		self.settlement_manager.log.info('%s waiting for a feeder islands to be founded', self)
-		self.owner.found_feeder_island()
+		self.owner.settlement_founder.found_feeder_island()
 		return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
 
 decorators.bind_all(FoundFeederIslandGoal)

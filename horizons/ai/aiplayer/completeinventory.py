@@ -29,7 +29,7 @@ class CompleteInventory(object):
 
 	def __init__(self, owner):
 		self.owner = owner
-		self.personality = self.owner.personality # the constants here make more sense in the player category
+		self.personality = self.owner.settlement_founder.personality # the constants here make more sense in the settlement foundation category
 
 	@property
 	def money(self):

@@ -22,9 +22,8 @@
 from horizons.constants import SETTLER
 
 class DefaultPersonality:
-	class AIPlayer:
+	class SettlementFounder:
 		min_feeder_island_area = 400 # minimum amount of usable free land on an island to consider turning it into a feeder island
-		feeder_island_requirement_cutoff = 30 # if there are less than this many free 3x3 squares in a settlement then a feeder island is needed
 
 		# found a settlement on a random island that is at least as large as the first element; if it is impossible then try the next size
 		island_size_sequence = [500, 300, 150]
@@ -210,6 +209,8 @@ class DefaultPersonality:
 		default_priority = 650
 		residences_required = 16
 		min_settler_level = SETTLER.SAILOR_LEVEL
+
+		feeder_island_requirement_cutoff = 30 # if there are less than this many free 3x3 squares in a settlement then a feeder island is needed
 
 	class ImproveCollectorCoverageGoal:
 		enabled = True
