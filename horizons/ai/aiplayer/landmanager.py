@@ -106,7 +106,7 @@ class LandManager(WorldObject):
 		min_y, max_y = None, None
 		land = 0
 		for x, y in self.island.ground_map:
-			if self._coords_usable((x, y)):
+			if self.coords_usable((x, y)):
 				land += 1
 				if min_x is None or x < min_x:
 					min_x = x
@@ -155,7 +155,7 @@ class LandManager(WorldObject):
 					best_side2 = real_side2
 			self._divide(best_side1, best_side2)
 
-	def _coords_usable(self, coords):
+	def coords_usable(self, coords):
 		"""Return a boolean showing whether the land on the given coordinate is usable for a normal building."""
 		if coords in self.island.ground_map:
 			tile = self.island.ground_map[coords]
@@ -253,7 +253,7 @@ class LandManager(WorldObject):
 					self.village[coords] = self.island.ground_map[coords]
 
 		for coords, tile in self.island.ground_map.iteritems():
-			if coords not in self.village and self._coords_usable(coords):
+			if coords not in self.village and self.coords_usable(coords):
 				self.production[coords] = tile
 
 	def _prepare_feeder_island(self):
@@ -261,7 +261,7 @@ class LandManager(WorldObject):
 		self.production = {}
 		self.village = {}
 		for coords, tile in self.island.ground_map.iteritems():
-			if self._coords_usable(coords):
+			if self.coords_usable(coords):
 				self.production[coords] = tile
 
 	def add_to_production(self, coords):
