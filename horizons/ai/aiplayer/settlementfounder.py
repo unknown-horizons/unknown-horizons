@@ -30,6 +30,8 @@ from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
 
 class SettlementFounder(object):
+	"""This class handles the settlement founding activities of an AI player."""
+
 	log = logging.getLogger("ai.aiplayer.settlement_founder")
 
 	def __init__(self, owner):
@@ -38,9 +40,10 @@ class SettlementFounder(object):
 		self.session = owner.session
 		self.world = owner.world
 		self.personality = owner.personality_manager.get('SettlementFounder')
-		self.__island_value_cache = {} # island value cache {island_id: (last_change_id, value), ...}
+		self.__island_value_cache = {} # {island_id: (last_change_id, value), ...}
 
 	def _evaluate_island(self, island):
+		"""Return (flat land, utility value) of the given island."""
 		flat_land = 0
 		resources = defaultdict(lambda: 0)
 
@@ -81,7 +84,7 @@ class SettlementFounder(object):
 			else:
 				value -= self.personality.nearby_enemy_penalty / float(island.position.distance(settlement.island.position) + self.personality.extra_enemy_island_distance)
 
-		return max(2, int(value))
+		return (flat_land, max(2, int(value)))
 
 	def _get_available_islands(self, min_land):
 		"""Return a list of available islands in the form [(value, island), ...]."""
@@ -89,12 +92,13 @@ class SettlementFounder(object):
 		for island in self.owner.world.islands:
 			if island.worldid not in self.owner.islands:
 				if island.worldid not in self.__island_value_cache or self.__island_value_cache[island.worldid][0] != island.last_change_id:
-					self.__island_value_cache[island.worldid] = (island.last_change_id, (self._evaluate_island(island), island))
+					self.__island_value_cache[island.worldid] = (island.last_change_id, self._evaluate_island(island))
 				if self.__island_value_cache[island.worldid][1][0] >= min_land:
-					options.append(self.__island_value_cache[island.worldid][1])
+					options.append((self.__island_value_cache[island.worldid][1][1], island))
 		return options
 
 	def _choose_island(self, min_land):
+		"""Randomly choose one of the big enough islands. Return the island or None if it is impossible."""
 		options = self._get_available_islands(min_land)
 		if not options:
 			return None
@@ -109,12 +113,14 @@ class SettlementFounder(object):
 		return None
 
 	def _found_settlement(self, island, ship, feeder_island):
+		"""Found a settlement on the given island using the given ship."""
 		land_manager = LandManager(island, self.owner, feeder_island)
 		land_manager.display()
 		self.owner.islands[island.worldid] = land_manager
 		self.owner.start_mission(FoundSettlement.create(ship, land_manager, self.owner.report_success, self.owner.report_failure))
 
 	def _have_settlement_starting_resources(self, ship, settlement, min_money, min_resources):
+		"""Returns a boolean showing whether we have enough resources to found a new settlement."""
 		if self.owner.inventory[RES.GOLD_ID] < min_money:
 			return False
 
@@ -133,24 +139,29 @@ class SettlementFounder(object):
 		return True
 
 	def have_starting_resources(self, ship, settlement):
+		"""Returns a boolean showing whether we have enough resources to found a new normal settlement."""
 		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_island_gold, \
 			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.FOOD_ID: self.personality.min_new_island_food, RES.TOOLS_ID: self.personality.min_new_island_tools})
 
 	def have_feeder_island_starting_resources(self, ship, settlement):
+		"""Returns a boolean showing whether we have enough resources to found a new feeder island."""
 		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_feeder_island_gold, \
 			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.TOOLS_ID: self.personality.min_new_island_tools})
 
 	def _prepare_foundation_ship(self, settlement_manager, ship, feeder_island):
+		"""Start a mission to load the settlement foundation resources on the given ship from the specified settlement."""
 		self.owner.start_mission(PrepareFoundationShip(settlement_manager, ship, feeder_island, self.owner.report_success, self.owner.report_failure))
 
 	def _want_another_village(self):
-		""" Avoid having more than one developing island with a village at a time """
+		"""Return a boolean showing whether we want to start another settlement with a village."""
+		# avoid having more than one developing island with a village at a time
 		for settlement_manager in self.owner.settlement_managers:
 			if not settlement_manager.feeder_island and not settlement_manager.can_provide_resources():
 				return False
 		return True
 
 	def tick(self):
+		"""Found a new settlement or prepare a foundation ship if possible and required."""
 		ship = None
 		for possible_ship, state in self.owner.ships.iteritems():
 			if state is self.owner.shipStates.idle:
@@ -193,9 +204,11 @@ class SettlementFounder(object):
 						return
 
 	def can_found_feeder_island(self):
+		"""Return a boolean showing whether there is an island that could be turned into a feeder island."""
 		return bool(self._get_available_islands(self.personality.min_feeder_island_area))
 
 	def found_feeder_island(self):
+		"""Call this function to let the player know that a new feeder island is needed."""
 		if self.can_found_feeder_island():
 			self.owner.need_feeder_island = True
 
