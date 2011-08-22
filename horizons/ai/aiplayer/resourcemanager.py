@@ -23,15 +23,33 @@ import math
 
 from collections import defaultdict
 
-from building import AbstractBuilding
+from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.util import WorldObject
 from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES, TRADER
+from horizons.constants import RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
 
 class ResourceManager(WorldObject):
 	"""
-	An object of this class manages the resources of one settlement.
+	An object of this class manages production capacity and keeps track of over/under stock.
+
+	The main task of this class is to keep track of the available and used production capacity.
+	That knowledge is used to figure out how much of the settlement's production
+	capacity is being exported and the relevant data is saved accordingly.
+
+	The other important task of this class is to keep track of how much resources the
+	settlement should have in inventory and how much it actually has.
+	That data is used by this class to make buy/sell decisions in this settlement,
+	by InternationalTradeManager to decide which resources to buy/sell at other players'
+	branch offices and by SpecialDomesticTradeManager to decide which resources to transfer
+	between the player's settlements in order to make best use of them.
+
+	Currently the quota priority system works by assigning local requests a high priority
+	and the export requests a low priority which should minimise the amount of resources
+	that have to be transferred.
+
+	The division of resources and production capacities is purely logical and does not
+	affect the way the actual game works.
 	"""
 
 	def __init__(self, settlement_manager):
@@ -79,7 +97,7 @@ class ResourceManager(WorldObject):
 		return self
 
 	def _get_chain(self, resource_id, resource_producer, production_ratio):
-		""" Returns None or SimpleProductionChainSubtreeChoice depending on the number of options """
+		"""Return a SimpleProductionChainSubtreeChoice or None if it impossible to produce the resource."""
 		options = []
 		if resource_id in resource_producer:
 			for production_line, abstract_building in resource_producer[resource_id]:
@@ -99,6 +117,7 @@ class ResourceManager(WorldObject):
 		return SimpleProductionChainSubtreeChoice(options)
 
 	def _make_chain(self, resource_id):
+		"""Return a SimpleProductionChainSubtreeChoice that knows how to produce the resource."""
 		resource_producer = {}
 		for abstract_building in AbstractBuilding.buildings.itervalues():
 			for resource, production_line in abstract_building.lines.iteritems():
@@ -110,22 +129,35 @@ class ResourceManager(WorldObject):
 		return chain
 
 	def refresh(self):
+		"""Refresh the actual production capacity of the buildings and lower quotas if necessary."""
 		for resource_manager in self._data.itervalues():
 			resource_manager.refresh()
 
 	def request_quota_change(self, quota_holder, priority, resource_id, building_id, amount):
+		"""
+		Request that the quota of quota_holder be changed to the given amount for the specific resource/building pair.
+
+		@param quota_holder: a string identifying the quota holder (persistent over save/load cycles)
+		@param priority: boolean showing whether this quota has high priority (high priority means that low priority quotas can be lowered if necessary)
+		@param resource_id: the required resource
+		@param building_id: the type of building where this capacity should be gotten from
+		@param amount: the amount of resource per tick that is needed
+		"""
+
 		key = (resource_id, building_id)
 		if key not in self._data:
 			self._data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
 		self._data[key].request_quota_change(quota_holder, priority, amount)
 
 	def get_quota(self, quota_holder, resource_id, building_id):
+		"""Return the current quota given the resource and the type of building that should produce it."""
 		key = (resource_id, building_id)
 		if key not in self._data:
 			self._data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
 		return self._data[key].get_quota(quota_holder)
 
 	def request_deep_quota_change(self, quota_holder, priority, resource_id, amount):
+		"""Request that the quota of quota_holder be changed to the given amount recursively."""
 		if resource_id not in self._chain:
 			self._chain[resource_id] = self._make_chain(resource_id)
 		actual_amount = self._chain[resource_id].request_quota_change(quota_holder, amount, priority)
@@ -137,22 +169,25 @@ class ResourceManager(WorldObject):
 		return actual_amount
 
 	def get_deep_quota(self, quota_holder, resource_id):
+		"""Return the current quota at the bottleneck."""
 		if resource_id not in self._chain:
 			self._chain[resource_id] = self._make_chain(resource_id)
 		return self._chain[resource_id].get_quota(quota_holder)
 
 	def replay_deep_low_priority_requests(self):
+		"""Retry adding low priority quota requests. This is required to make the feeder island mechanism work."""
 		for (quota_holder, resource_id), amount in self._low_priority_requests.iteritems():
 			self.request_deep_quota_change(quota_holder, False, resource_id, amount)
 
 	def record_expected_exportable_production(self, ticks):
-		""" records the amount of production that should be transferred to other islands """
+		"""Record the amount of production that should be transferred to other islands."""
 		for (quota_holder, resource_id), amount in self._low_priority_requests.iteritems():
 			if quota_holder not in self._settlement_manager_id:
 				self._settlement_manager_id[quota_holder] = WorldObject.get_object_by_id(int(quota_holder[1:].split(',')[0])).settlement_manager.worldid
 			self.trade_storage[self._settlement_manager_id[quota_holder]][resource_id] += ticks * amount
 
 	def get_total_export(self, resource_id):
+		"""Return the total amount of the given resource being (logically) exported per tick."""
 		total = 0
 		for resource_manager in self._data.itervalues():
 			if resource_manager.resource_id == resource_id:
@@ -160,6 +195,7 @@ class ResourceManager(WorldObject):
 		return total
 
 	def get_total_trade_storage(self, resource_id):
+		"""Return the amount of the given resource that should be kept aside for other settlements."""
 		total = 0
 		for settlement_storage in self.trade_storage.itervalues():
 			for stored_resource_id, amount in settlement_storage.iteritems():
@@ -168,7 +204,7 @@ class ResourceManager(WorldObject):
 		return int(math.ceil(total))
 
 	def get_default_resource_requirement(self, resource_id):
-		""" returns the default level that should exist all the time """
+		"""Return the default amount of resource that should be in the settlement inventory."""
 		if resource_id in [RES.TOOLS_ID, RES.BOARDS_ID]:
 			return self.personality.default_resource_requirement
 		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS_ID:
@@ -187,7 +223,7 @@ class ResourceManager(WorldObject):
 		return 0 # TODO
 
 	def get_current_resource_requirement(self, resource_id):
-		""" returns the extra level that should exist right now (taking into account the default level)"""
+		"""Return the amount of resource that should be in the settlement inventory to provide for all needs."""
 		currently_reserved = self.get_total_trade_storage(resource_id)
 		future_reserve = int(math.ceil(self.get_total_export(resource_id) * self.personality.reserve_time))
 		current_usage = int(math.ceil(self.settlement_manager.get_resident_resource_usage(resource_id) * self.personality.reserve_time))
@@ -199,6 +235,7 @@ class ResourceManager(WorldObject):
 		return max(total_needed, self.get_default_resource_requirement(resource_id))
 
 	def manager_buysell(self):
+		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
 		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
 		settlement = self.settlement_manager.settlement
 		inventory = settlement.inventory
@@ -259,7 +296,7 @@ class ResourceManager(WorldObject):
 					RemoveFromSellList(settlement, resource_id).execute(session)
 
 	def finish_tick(self):
-		""" clear data used during a single tick """
+		"""Clear data used during a single tick."""
 		self._low_priority_requests.clear()
 
 	def __str__(self):
@@ -272,6 +309,8 @@ class ResourceManager(WorldObject):
 		return result
 
 class SingleResourceManager(WorldObject):
+	"""An object of this class keeps track of the production capacity of a single resource/building type pair of a settlement."""
+
 	epsilon = 1e-7 # epsilon for avoiding problems with miniscule values
 	virtual_resources = set([RES.FISH_ID, RES.RAW_CLAY_ID, RES.RAW_IRON_ID]) # resources that are not actually produced by player owned buildings
 	virtual_production = 9999 # pretend that virtual resources are always produced in this amount (should be larger than actually needed)
@@ -312,12 +351,14 @@ class SingleResourceManager(WorldObject):
 		return self
 
 	def _get_current_production(self):
+		"""Return the current amount of resource per tick being produced at buildings of this type."""
 		if self.resource_id in self.virtual_resources:
 			return self.virtual_production
 		buildings = self.settlement_manager.settlement.get_buildings_by_id(self.building_id)
 		return sum(AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id) for building in buildings)
 
 	def refresh(self):
+		"""Adjust the quotas to take into account the current production levels."""
 		currently_used = sum(zip(*self.quotas.itervalues())[0])
 		self.total = self._get_current_production()
 		if self.total + self.epsilon >= currently_used:
@@ -348,11 +389,27 @@ class SingleResourceManager(WorldObject):
 				self.low_priority = 0.0
 
 	def get_quota(self, quota_holder):
+		"""Return the current quota of the given quota holder."""
 		if quota_holder not in self.quotas:
 			self.quotas[quota_holder] = (0.0, False)
 		return self.quotas[quota_holder][0]
 
 	def request_quota_change(self, quota_holder, priority, amount):
+		"""
+		Request that the quota of quota_holder be changed to the given amount.
+
+		The algorithm:
+		* if the new amount is less than before: set the new quota to the requested value
+		* else if there is enough spare capacity to raise the quota: do it
+		* else assign all the spare capacity
+			* if this is a high priority request:
+				* reduce the low priority quotas to get the maximum possible amount for this quota holder
+
+		@param quota_holder: a string identifying the quota holder (persistent over save/load cycles)
+		@param priority: boolean showing whether this quota has high priority (high priority means that low priority quotas can be lowered if necessary)
+		@param amount: the amount of resource per tick that is needed
+		"""
+
 		if quota_holder not in self.quotas:
 			self.quotas[quota_holder] = (0.0, priority)
 		amount = max(amount, 0.0)
@@ -388,6 +445,7 @@ class SingleResourceManager(WorldObject):
 				self.low_priority += change
 
 	def get_total_export(self):
+		"""Return the total amount of capacity that is reserved by quota holders in other settlements."""
 		# this is accurate for now because all trade is set to low priority and nothing else is
 		return self.low_priority
 
@@ -398,20 +456,21 @@ class SingleResourceManager(WorldObject):
 		return result
 
 class SimpleProductionChainSubtreeChoice(object):
+	"""This is a simple version of ProductionChainSubtreeChoice used to make recursive quotas possible."""
+
 	def __init__(self, options):
-		self.options = options
+		super(SimpleProductionChainSubtreeChoice, self).__init__()
+		self.options = options # [SimpleProductionChainSubtree, ...]
 		self.resource_id = options[0].resource_id
 
 	def assign_identifier(self, prefix):
+		"""Recursively assign an identifier to this subtree to know which subtree owns which resource quota."""
 		self.identifier = prefix + ('/choice' if len(self.options) > 1 else '')
 		for option in self.options:
 			option.assign_identifier(self.identifier)
 
 	def request_quota_change(self, quota_holder, amount, priority):
-		"""
-		Reserves currently available production and imports from other islands if allowed
-		Returns the total amount it can reserve or import
-		"""
+		"""Try to reserve currently available production. Return the total amount that can be reserved."""
 		total_reserved = 0.0
 		for option in self.options:
 			total_reserved += option.request_quota_change(quota_holder, max(0.0, amount - total_reserved), priority)
@@ -420,25 +479,26 @@ class SimpleProductionChainSubtreeChoice(object):
 	def get_quota(self, quota_holder):
 		return sum(option.get_quota(quota_holder) for option in self.options)
 
-class SimpleProductionChainSubtree:
+class SimpleProductionChainSubtree(object):
+	"""This is a simple version of ProductionChainSubtree used to make recursive quotas possible."""
+
 	def __init__(self, resource_manager, resource_id, production_line, abstract_building, children, production_ratio):
+		super(SimpleProductionChainSubtree, self).__init__()
 		self.resource_manager = resource_manager
 		self.resource_id = resource_id
 		self.production_line = production_line
 		self.abstract_building = abstract_building
-		self.children = children
+		self.children = children # [SimpleProductionChainSubtreeChoice, ...]
 		self.production_ratio = production_ratio
 
 	def assign_identifier(self, prefix):
+		"""Recursively assign an identifier to this subtree to know which subtree owns which resource quota."""
 		self.identifier = '%s/%d,%d' % (prefix, self.resource_id, self.abstract_building.id)
 		for child in self.children:
 			child.assign_identifier(self.identifier)
 
 	def request_quota_change(self, quota_holder, amount, priority):
-		"""
-		Reserves currently available production and imports from other islands if allowed
-		Returns the total amount it can reserve or import
-		"""
+		"""Try to reserve currently available production. Return the total amount that can be reserved."""
 		total_reserved = amount
 		for child in self.children:
 			total_reserved = min(total_reserved, child.request_quota_change(quota_holder, amount, priority))
@@ -447,6 +507,7 @@ class SimpleProductionChainSubtree:
 		return min(total_reserved, self.resource_manager.get_quota(quota_holder + self.identifier, self.resource_id, self.abstract_building.id) / self.production_ratio)
 
 	def get_quota(self, quota_holder):
+		"""Return the current quota at the bottleneck."""
 		root_quota = self.resource_manager.get_quota(quota_holder + self.identifier, self.resource_id, self.abstract_building.id) / self.production_ratio
 		if self.children:
 			return min(root_quota, min(child.get_quota(quota_holder) for child in self.children))
