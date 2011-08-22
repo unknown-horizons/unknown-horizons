@@ -19,42 +19,49 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
 
-from collections import deque
+from horizons.ai.aiplayer.villagebuilder import VillageBuilder
+from horizons.ai.aiplayer.productionbuilder import ProductionBuilder
+from horizons.ai.aiplayer.productionchain import ProductionChain
+from horizons.ai.aiplayer.resourcemanager import ResourceManager
+from horizons.ai.aiplayer.trademanager import TradeManager
 
-from constants import BUILD_RESULT, BUILDING_PURPOSE
-from villagebuilder import VillageBuilder
-from productionbuilder import ProductionBuilder
-from productionchain import ProductionChain
-from resourcemanager import ResourceManager
-from trademanager import TradeManager
-
-from goal.boatbuilder import BoatBuilderGoal
-from goal.depositcoverage import ClayDepositCoverageGoal, MountainCoverageGoal
-from goal.enlargecollectorarea import EnlargeCollectorAreaGoal
-from goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal
-from goal.foundfeederisland import FoundFeederIslandGoal
-from goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
-from goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, EducationGoal, \
-	GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal
-from goal.signalfire import SignalFireGoal
-from goal.storagespace import StorageSpaceGoal
-from goal.tent import TentGoal
-from goal.tradingship import TradingShipGoal
+from horizons.ai.aiplayer.goal.boatbuilder import BoatBuilderGoal
+from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, MountainCoverageGoal
+from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
+from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal
+from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
+from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
+from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
+	EducationGoal, GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal
+from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
+from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
+from horizons.ai.aiplayer.goal.tent import TentGoal
+from horizons.ai.aiplayer.goal.tradingship import TradingShipGoal
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, WorldObject
+from horizons.util import WorldObject
 from horizons.util.python import decorators
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.command.production import ToggleActive
-from horizons.constants import BUILDINGS, RES, PRODUCTION, GAME_SPEED, SETTLER
+from horizons.constants import BUILDINGS, RES, GAME_SPEED, SETTLER
 from horizons.entities import Entities
 
 class SettlementManager(WorldObject):
 	"""
-	An object of this class control one settlement of an AI player.
+	This is the main settlement control class.
+
+	Important attributes:
+	* feeder_island: boolean showing whether the island is a feeder island (feeder islands have no village area)
+	* island: Island instance
+	* settlement: Settlement instance
+	* land_manager: LandManager instance
+	* production_chain: dictionary where the key is a resource id and the value is the ProductionChain instance
+	* production_builder: ProductionBuilder instance
+	* village_builder: VillageBuilder instance
+	* resource_manager: ResourceManager instance
+	* trade_manager: TradeManager instance
 	"""
 
 	log = logging.getLogger("ai.aiplayer")
@@ -74,7 +81,7 @@ class SettlementManager(WorldObject):
 		self.__init_goals()
 
 		if not self.feeder_island:
-			self.set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, \
+			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, \
 				self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades, self.personality.initial_pioneer_upgrades)
 
 	def __init(self, land_manager):
@@ -86,46 +93,42 @@ class SettlementManager(WorldObject):
 		self.feeder_island = land_manager.feeder_island
 		self.personality = self.owner.personality_manager.get('SettlementManager')
 
-		self.community_chain = ProductionChain.create(self, RES.COMMUNITY_ID)
-		self.boards_chain = ProductionChain.create(self, RES.BOARDS_ID)
-		self.food_chain = ProductionChain.create(self, RES.FOOD_ID)
-		self.textile_chain = ProductionChain.create(self, RES.TEXTILE_ID)
-		self.faith_chain = ProductionChain.create(self, RES.FAITH_ID)
-		self.education_chain = ProductionChain.create(self, RES.EDUCATION_ID)
-		self.get_together_chain = ProductionChain.create(self, RES.GET_TOGETHER_ID)
-		self.bricks_chain = ProductionChain.create(self, RES.BRICKS_ID)
-		self.tools_chain = ProductionChain.create(self, RES.TOOLS_ID)
-		self.liquor_chain = ProductionChain.create(self, RES.LIQUOR_ID)
+		# create a production chain for every building material, settler consumed resource, and resources that have to be imported from feeder islands
+		self.production_chain = {}
+		for resource_id in [RES.COMMUNITY_ID, RES.BOARDS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.FAITH_ID, \
+						RES.EDUCATION_ID, RES.GET_TOGETHER_ID, RES.BRICKS_ID, RES.TOOLS_ID, RES.LIQUOR_ID]:
+			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialise caches
 		self.__resident_resource_usage_cache = {}
 
 	def __init_goals(self):
-		self.goals = []
-		self.goals.append(BoardsGoal(self))
-		self.goals.append(SignalFireGoal(self))
-		self.goals.append(EnlargeCollectorAreaGoal(self))
-		self.goals.append(ImproveCollectorCoverageGoal(self))
-		self.goals.append(BricksGoal(self))
+		"""Initialise the list of all the goals the settlement can use."""
+		self._goals = [] # [SettlementGoal, ...]
+		self._goals.append(BoardsGoal(self))
+		self._goals.append(SignalFireGoal(self))
+		self._goals.append(EnlargeCollectorAreaGoal(self))
+		self._goals.append(ImproveCollectorCoverageGoal(self))
+		self._goals.append(BricksGoal(self))
 		if self.feeder_island:
-			self.goals.append(StorageSpaceGoal(self))
-			self.goals.append(FeederFoodGoal(self))
-			self.goals.append(FeederTextileGoal(self))
-			self.goals.append(FeederLiquorGoal(self))
+			self._goals.append(StorageSpaceGoal(self))
+			self._goals.append(FeederFoodGoal(self))
+			self._goals.append(FeederTextileGoal(self))
+			self._goals.append(FeederLiquorGoal(self))
 		else:
-			self.goals.append(BoatBuilderGoal(self))
-			self.goals.append(ClayDepositCoverageGoal(self))
-			self.goals.append(FoundFeederIslandGoal(self))
-			self.goals.append(MountainCoverageGoal(self))
-			self.goals.append(FoodGoal(self))
-			self.goals.append(CommunityGoal(self))
-			self.goals.append(FaithGoal(self))
-			self.goals.append(TextileGoal(self))
-			self.goals.append(EducationGoal(self))
-			self.goals.append(GetTogetherGoal(self))
-			self.goals.append(ToolsGoal(self))
-			self.goals.append(TentGoal(self))
-			self.goals.append(TradingShipGoal(self))
+			self._goals.append(BoatBuilderGoal(self))
+			self._goals.append(ClayDepositCoverageGoal(self))
+			self._goals.append(FoundFeederIslandGoal(self))
+			self._goals.append(MountainCoverageGoal(self))
+			self._goals.append(FoodGoal(self))
+			self._goals.append(CommunityGoal(self))
+			self._goals.append(FaithGoal(self))
+			self._goals.append(TextileGoal(self))
+			self._goals.append(EducationGoal(self))
+			self._goals.append(GetTogetherGoal(self))
+			self._goals.append(ToolsGoal(self))
+			self._goals.append(TentGoal(self))
+			self._goals.append(TradingShipGoal(self))
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
@@ -173,15 +176,8 @@ class SettlementManager(WorldObject):
 		for building in self.settlement.buildings:
 			self.add_building(building)
 
-	@property
-	def tents(self):
-		return self.count_buildings(BUILDINGS.RESIDENTIAL_CLASS)
-
-	@property
-	def branch_office(self):
-		return self.settlement.branch_office
-
-	def set_taxes_and_permissions(self, sailors_taxes, pioneers_taxes, settlers_taxes, sailors_can_upgrade, pioneers_can_upgrade):
+	def _set_taxes_and_permissions(self, sailors_taxes, pioneers_taxes, settlers_taxes, sailors_can_upgrade, pioneers_can_upgrade):
+		"""Set new tax settings and building permissions."""
 		if abs(self.settlement.tax_settings[SETTLER.SAILOR_LEVEL] - sailors_taxes) > 1e-9:
 			self.log.info('%s set sailors\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.SAILOR_LEVEL], sailors_taxes)
 			SetTaxSetting(self.settlement, SETTLER.SAILOR_LEVEL, sailors_taxes).execute(self.land_manager.session)
@@ -199,7 +195,7 @@ class SettlementManager(WorldObject):
 			SetSettlementUpgradePermissions(self.settlement, SETTLER.PIONEER_LEVEL, pioneers_can_upgrade).execute(self.land_manager.session)
 
 	def can_provide_resources(self):
-		""" is this settlement allowed to provide the resources for a new settlement? """
+		"""Return a boolean showing whether this settlement is complete enough to concentrate on building a new settlement."""
 		if self.village_builder.tent_queue:
 			return False
 		settler_houses = 0
@@ -212,30 +208,17 @@ class SettlementManager(WorldObject):
 		return False
 
 	def get_resource_production(self, resource_id):
+		"""Return the current production capacity (including import) per tick of the given resource."""
 		# as long as there are enough collectors it is correct to calculate it this way
-		if resource_id == RES.TEXTILE_ID:
-			return self.textile_chain.get_final_production_level()
-		elif resource_id == RES.GET_TOGETHER_ID:
-			return self.get_together_chain.get_final_production_level()
-		elif resource_id == RES.FOOD_ID:
-			return self.food_chain.get_final_production_level()
-		elif resource_id == RES.BRICKS_ID:
-			return self.bricks_chain.get_final_production_level()
-		elif resource_id == RES.BOARDS_ID:
-			return self.boards_chain.get_final_production_level()
-		elif resource_id == RES.LIQUOR_ID:
-			if not self.feeder_island:
-				return self.get_resource_production(RES.GET_TOGETHER_ID) * self.get_together_chain.get_ratio(RES.LIQUOR_ID)
-			return self.liquor_chain.get_final_production_level()
-		return None
+		if resource_id == RES.LIQUOR_ID and not self.feeder_island:
+			# normal settlements go straight for get-together so their separate liquor production is zero.
+			# feeder islands have to produce liquor because get-together is not tradable
+			return self.get_resource_production(RES.GET_TOGETHER_ID) * self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID)
+		else:
+			return self.production_chain[resource_id].get_final_production_level() 
 
-	def get_resource_import(self, resource_id):
-		return self.trade_manager.get_total_import(resource_id)
-
-	def get_resource_export(self, resource_id):
-		return self.resource_manager.get_total_export(resource_id)
-
-	def get_resident_resource_usage(self, resource_id):
+	def get_resource_production_requirement(self, resource_id):
+		"""Return the amount of resource per tick the settlement needs."""
 		if resource_id not in self.__resident_resource_usage_cache or self.__resident_resource_usage_cache[resource_id][0] != Scheduler().cur_tick:
 			total = 0
 			if resource_id == RES.BRICKS_ID:
@@ -245,7 +228,7 @@ class SettlementManager(WorldObject):
 			elif resource_id == RES.TOOLS_ID:
 				total = self.personality.dummy_tools_requirement if self.owner.settler_level > 1 else 0 # dummy value to cause tools production to be built
 			elif resource_id == RES.LIQUOR_ID:
-				total = self.get_together_chain.get_ratio(resource_id) * self.get_resident_resource_usage(RES.GET_TOGETHER_ID)
+				total = self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID) * self.get_resource_production_requirement(RES.GET_TOGETHER_ID)
 			else:
 				for residence in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
 					for production in residence._get_productions():
@@ -257,21 +240,15 @@ class SettlementManager(WorldObject):
 			self.__resident_resource_usage_cache[resource_id] = (Scheduler().cur_tick, total)
 		return self.__resident_resource_usage_cache[resource_id][1]
 
-	def log_generic_build_result(self, result, name):
-		if result == BUILD_RESULT.OK:
-			self.log.info('%s built a %s', self, name)
-		elif result == BUILD_RESULT.NEED_RESOURCES:
-			self.log.info('%s not enough materials to build a %s', self, name)
-		elif result == BUILD_RESULT.SKIP:
-			self.log.info('%s skipped building a %s', self, name)
-		else:
-			self.log.info('%s failed to build a %s (%d)', self, name, result)
+	def _manual_upgrade(self, level, limit):
+		"""
+		Manually allow settlers to upgrade. If more then the set limit are already upgrading then don't stop them.
+		
+		@param level: the initial settler level from which to upgrade
+		@param limit: the maximum number of residences of the specified level upgrading at the same time
+		@return: boolean showing whether we gave any new residences the right to upgrade
+		"""
 
-	def count_buildings(self, building_id):
-		return len(self.settlement.get_buildings_by_id(building_id))
-
-	def manual_upgrade(self, level, limit):
-		"""Enables upgrading residence buildings on the specified level until at least limit of them are upgrading."""
 		num_upgrading = 0
 		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
 			if building.level == level:
@@ -293,22 +270,30 @@ class SettlementManager(WorldObject):
 						return True
 		return upgraded_any
 
-	def get_total_missing_production(self, resource_id):
+	def get_ideal_production_level(self, resource_id):
+		"""
+		Return the amount of resource per tick the settlement should produce.
+
+		This is the amount that should be produced to satisfy the people in this settlement,
+		keep up the current export rate, and fix the player's global deficit. This means
+		that different (feeder) islands will have different ideal production levels.
+		"""
+
 		total = 0.0
 		for settlement_manager in self.owner.settlement_managers:
-			usage = settlement_manager.get_resident_resource_usage(resource_id) * self.personality.production_level_multiplier
+			usage = settlement_manager.get_resource_production_requirement(resource_id) * self.personality.production_level_multiplier
 			production = settlement_manager.get_resource_production(resource_id)
-			resource_import = settlement_manager.get_resource_import(resource_id)
-			resource_export = settlement_manager.get_resource_export(resource_id)
+			resource_import = settlement_manager.trade_manager.get_total_import(resource_id)
+			resource_export = settlement_manager.resource_manager.get_total_export(resource_id)
 			total += usage
 			if settlement_manager is not self:
 				total -= production + resource_export - resource_import
 		return max(0.0, total)
 
 	def _start_feeder_tick(self):
-		self.log.info('%s food requirement %.5f', self, self.get_total_missing_production(RES.FOOD_ID))
-		self.log.info('%s textile requirement %.5f', self, self.get_total_missing_production(RES.TEXTILE_ID))
-		self.log.info('%s liquor requirement %.5f', self, self.get_total_missing_production(RES.LIQUOR_ID))
+		self.log.info('%s food requirement %.5f', self, self.get_ideal_production_level(RES.FOOD_ID))
+		self.log.info('%s textile requirement %.5f', self, self.get_ideal_production_level(RES.TEXTILE_ID))
+		self.log.info('%s liquor requirement %.5f', self, self.get_ideal_production_level(RES.LIQUOR_ID))
 		self.production_builder.manage_production()
 		self.resource_manager.refresh()
 
@@ -320,38 +305,38 @@ class SettlementManager(WorldObject):
 
 	def _start_general_tick(self):
 		self.log.info('%s food production         %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
-			self.get_resident_resource_usage(RES.FOOD_ID))
+			self.get_resource_production_requirement(RES.FOOD_ID))
 		self.log.info('%s textile production      %.5f / %.5f', self, self.get_resource_production(RES.TEXTILE_ID), \
-			self.get_resident_resource_usage(RES.TEXTILE_ID))
+			self.get_resource_production_requirement(RES.TEXTILE_ID))
 		self.log.info('%s get-together production %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER_ID), \
-			self.get_resident_resource_usage(RES.GET_TOGETHER_ID))
+			self.get_resource_production_requirement(RES.GET_TOGETHER_ID))
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
 		self.need_materials = False
-		have_bricks = self.get_resource_production(RES.BRICKS_ID) > 0
 
 	def _end_general_tick(self):
+		# set new tax settings and upgrade permissions
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
-			if self.manual_upgrade(0, 1):
-				self.set_taxes_and_permissions(self.personality.early_sailor_taxes, self.personality.early_pioneer_taxes, \
+			if self._manual_upgrade(0, 1):
+				self._set_taxes_and_permissions(self.personality.early_sailor_taxes, self.personality.early_pioneer_taxes, \
 					self.personality.early_settler_taxes, self.personality.early_sailor_upgrades, self.personality.early_pioneer_upgrades)
-		elif self.get_resource_production(RES.BRICKS_ID) > 1e-9 and not self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
+		elif self.get_resource_production(RES.BRICKS_ID) > 1e-9 and not self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			# if we just need the school then upgrade sailors manually
 			free_boards = self.settlement.inventory[RES.BOARDS_ID]
 			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS].costs[RES.BOARDS_ID]
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
-				self.manual_upgrade(0, free_boards)
-			self.set_taxes_and_permissions(self.personality.no_school_sailor_taxes, self.personality.no_school_pioneer_taxes, \
+				self._manual_upgrade(0, free_boards)
+			self._set_taxes_and_permissions(self.personality.no_school_sailor_taxes, self.personality.no_school_pioneer_taxes, \
 				self.personality.no_school_settler_taxes, self.personality.no_school_sailor_upgrades, self.personality.no_school_pioneer_upgrades)
-		elif self.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
+		elif self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			if self.need_materials:
-				self.set_taxes_and_permissions(self.personality.school_sailor_taxes, self.personality.school_pioneer_taxes, \
+				self._set_taxes_and_permissions(self.personality.school_sailor_taxes, self.personality.school_pioneer_taxes, \
 					self.personality.school_settler_taxes, self.personality.school_sailor_upgrades, self.personality.school_pioneer_upgrades)
 			else:
-				self.set_taxes_and_permissions(self.personality.final_sailor_taxes, self.personality.final_pioneer_taxes, \
+				self._set_taxes_and_permissions(self.personality.final_sailor_taxes, self.personality.final_pioneer_taxes, \
 					self.personality.final_settler_taxes, self.personality.final_sailor_upgrades, self.personality.final_pioneer_upgrades)
 
 		self.trade_manager.finalize_requests()
@@ -361,12 +346,14 @@ class SettlementManager(WorldObject):
 		self.resource_manager.finish_tick()
 
 	def _add_goals(self, goals):
-		for goal in self.goals:
+		"""Add the settlement's goals that can be activated to the goals list."""
+		for goal in self._goals:
 			if goal.can_be_activated:
 				goal.update()
 				goals.append(goal)
 
 	def tick(self, goals):
+		"""Refresh the settlement info and add its goals to the player's goal list."""
 		if self.feeder_island:
 			self._start_feeder_tick()
 			self._add_goals(goals)
@@ -377,6 +364,7 @@ class SettlementManager(WorldObject):
 			self._end_general_tick()
 
 	def add_building(self, building):
+		"""Called when a new building is added to the settlement (the building already exists during the call)."""
 		coords = building.position.origin.to_tuple()
 		if coords in self.village_builder.plan:
 			self.village_builder.add_building(building)
@@ -384,6 +372,7 @@ class SettlementManager(WorldObject):
 			self.production_builder.add_building(building)
 
 	def remove_building(self, building):
+		"""Called when a building is removed from the settlement (the building still exists during the call)."""
 		coords = building.position.origin.to_tuple()
 		if coords in self.village_builder.plan:
 			self.village_builder.remove_building(building)
@@ -392,17 +381,22 @@ class SettlementManager(WorldObject):
 
 	def handle_lost_area(self, coords_list):
 		"""
+		Handle losing the potential land in the given coordinates list.
+
+		Take the following actions:
 		* remove the lost area from the village, production, and road areas
 		* remove village sections with impossible main squares
 		* remove all planned buildings that are now impossible from the village area
-		* if the village area takes too much of the total area then remove / reduce the remaining sections (TODO)
 		* remove planned fields that are now impossible
+		* remove fields that can no longer be serviced by a farm
+		* TODO: if the village area takes too much of the total area then remove / reduce the remaining sections
 		"""
 
 		self.land_manager.handle_lost_area(coords_list)
 		self.village_builder.handle_lost_area(coords_list)
 		self.production_builder.handle_lost_area(coords_list)
-		self.production_builder.handle_new_area()
+		self.production_builder.handle_new_area() # some of the village area may have been repurposed as production area
+
 		self.village_builder.display()
 		self.production_builder.display()
 

@@ -20,9 +20,7 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal.productionchaingoal import ProductionChainGoal
-from horizons.ai.aiplayer.constants import BUILD_RESULT
-
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import RES
 from horizons.util.python import decorators
 
 class FeederChainGoal(ProductionChainGoal):
@@ -33,8 +31,8 @@ class FeederChainGoal(ProductionChainGoal):
 	TODO: make that a single explicit action: right now import quotas are deleted by the first step which can make it look like less resources can be imported.
 	"""
 
-	def __init__(self, settlement_manager, chain, name):
-		super(FeederChainGoal, self).__init__(settlement_manager, chain, name)
+	def __init__(self, settlement_manager, resource_id, name):
+		super(FeederChainGoal, self).__init__(settlement_manager, resource_id, name)
 		self._may_import = False
 		self._feeder_personality = self.owner.personality_manager.get('FeederChainGoal')
 
@@ -49,7 +47,7 @@ class FeederChainGoal(ProductionChainGoal):
 		return result
 
 	def _update_needed_amount(self):
-		self._needed_amount = self.settlement_manager.get_total_missing_production(self.chain.resource_id)
+		self._needed_amount = self.settlement_manager.get_ideal_production_level(self.chain.resource_id)
 
 	def update(self):
 		super(FeederChainGoal, self).update()
@@ -57,21 +55,21 @@ class FeederChainGoal(ProductionChainGoal):
 
 class FeederFoodGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederFoodGoal, self).__init__(settlement_manager, settlement_manager.food_chain, 'food producer')
+		super(FeederFoodGoal, self).__init__(settlement_manager, RES.FOOD_ID, 'food producer')
 
 	def get_personality_name(self):
 		return 'FoodGoal'
 
 class FeederTextileGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederTextileGoal, self).__init__(settlement_manager, settlement_manager.textile_chain, 'textile producer')
+		super(FeederTextileGoal, self).__init__(settlement_manager, RES.TEXTILE_ID, 'textile producer')
 
 	def get_personality_name(self):
 		return 'TextileGoal'
 
 class FeederLiquorGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederLiquorGoal, self).__init__(settlement_manager, settlement_manager.liquor_chain, 'liquor producer')
+		super(FeederLiquorGoal, self).__init__(settlement_manager, RES.LIQUOR_ID, 'liquor producer')
 
 	def get_personality_name(self):
 		return 'LiquorGoal'

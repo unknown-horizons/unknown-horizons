@@ -198,6 +198,10 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		else:
 			return []
 
+	def count_buildings(self, id):
+		"""Returns the number of buildings in the settlement that are of the given type."""
+		return len(self.buildings_by_id[id]) if id in self.buildings_by_id else 0
+
 	def settlement_building_production_finished(self, building, produced_res):
 		"""Callback function for registering the production of resources."""
 		for res, amount in produced_res.iteritems():

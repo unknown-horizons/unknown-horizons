@@ -186,7 +186,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		if result == BUILD_RESULT.IMPOSSIBLE:
 			if self.production_builder.last_collector_improvement_storage + self.personality.collector_improvement_storage_expires <= Scheduler().cur_tick:
 				result = self._build_extra_storage()
-		self.settlement_manager.log_generic_build_result(result, 'storage')
+		self._log_generic_build_result(result, 'storage')
 		return self._translate_build_result(result)
 
 decorators.bind_all(ImproveCollectorCoverageGoal)

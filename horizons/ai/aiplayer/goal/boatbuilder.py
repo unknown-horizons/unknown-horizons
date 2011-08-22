@@ -34,7 +34,7 @@ class BoatBuilderGoal(SettlementGoal):
 
 	def execute(self):
 		result = AbstractBuilding.buildings[BUILDINGS.BOATBUILDER_CLASS].build(self.settlement_manager, None)[0]
-		self.settlement_manager.log_generic_build_result(result, 'boat builder')
+		self._log_generic_build_result(result, 'boat builder')
 		return self._translate_build_result(result)
 
 decorators.bind_all(BoatBuilderGoal)

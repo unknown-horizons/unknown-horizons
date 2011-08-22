@@ -37,7 +37,7 @@ class PrepareFoundationShip(ShipMission):
 		super(PrepareFoundationShip, self).__init__(success_callback, failure_callback, ship)
 		self.settlement_manager = settlement_manager
 		self.feeder_island = feeder_island
-		self.branch_office = self.settlement_manager.branch_office
+		self.branch_office = self.settlement_manager.settlement.branch_office
 		self.state = self.missionStates.created
 
 	def save(self, db):
@@ -54,7 +54,7 @@ class PrepareFoundationShip(ShipMission):
 	def _load(self, db, worldid, success_callback, failure_callback):
 		db_result = db("SELECT settlement_manager, ship, feeder_island, state FROM ai_mission_prepare_foundation_ship WHERE rowid = ?", worldid)[0]
 		self.settlement_manager = WorldObject.get_object_by_id(db_result[0])
-		self.branch_office = self.settlement_manager.branch_office
+		self.branch_office = self.settlement_manager.settlement.branch_office
 		self.feeder_island = db_result[2]
 		self.state = self.missionStates[db_result[2]]
 		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback, \

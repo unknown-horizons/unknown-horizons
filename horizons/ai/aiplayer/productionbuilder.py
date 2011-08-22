@@ -55,7 +55,7 @@ class ProductionBuilder(AreaBuilder):
 		super(ProductionBuilder, self).__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
-		for x, y in settlement_manager.branch_office.position.tuple_iter():
+		for x, y in settlement_manager.settlement.branch_office.position.tuple_iter():
 			self.register_change(x, y, BUILDING_PURPOSE.BRANCH_OFFICE, None)
 		self._refresh_unused_fields()
 

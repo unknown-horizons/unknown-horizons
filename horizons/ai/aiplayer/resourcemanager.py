@@ -226,7 +226,7 @@ class ResourceManager(WorldObject):
 		"""Return the amount of resource that should be in the settlement inventory to provide for all needs."""
 		currently_reserved = self.get_total_trade_storage(resource_id)
 		future_reserve = int(math.ceil(self.get_total_export(resource_id) * self.personality.reserve_time))
-		current_usage = int(math.ceil(self.settlement_manager.get_resident_resource_usage(resource_id) * self.personality.reserve_time))
+		current_usage = int(math.ceil(self.settlement_manager.get_resource_production_requirement(resource_id) * self.personality.reserve_time))
 		unit_building_costs = self.get_unit_building_costs(resource_id)
 		upgrade_costs = self.get_required_upgrade_resources(resource_id, self.personality.max_upgraded_houses)
 		building_costs = self.get_required_building_resources(resource_id)

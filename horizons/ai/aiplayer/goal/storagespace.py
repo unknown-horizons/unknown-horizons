@@ -48,7 +48,7 @@ class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 
 	def execute(self):
 		result = self._build_extra_storage()
-		self.settlement_manager.log_generic_build_result(result, 'storage space provider')
+		self._log_generic_build_result(result, 'storage space provider')
 		return self._translate_build_result(result)
 
 decorators.bind_all(StorageSpaceGoal)

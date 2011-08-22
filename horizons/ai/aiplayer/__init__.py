@@ -294,7 +294,7 @@ class AIPlayer(GenericAI):
 			del self.ships[unit]
 
 	def count_buildings(self, building_id):
-		return sum(settlement_manager.count_buildings(building_id) for settlement_manager in self.settlement_managers)
+		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s ship blocked (%s)", self, unit)

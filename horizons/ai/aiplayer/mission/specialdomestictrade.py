@@ -73,7 +73,7 @@ class SpecialDomesticTrade(ShipMission):
 			self.source_settlement_manager.settlement.name, self.destination_settlement_manager.settlement.name, self.ship)
 
 	def _move_to_source_settlement(self):
-		self._move_to_branch_office_area(self.source_settlement_manager.branch_office.position, Callback(self._reached_source_settlement), \
+		self._move_to_branch_office_area(self.source_settlement_manager.settlement.branch_office.position, Callback(self._reached_source_settlement), \
 			Callback(self._move_to_source_settlement), 'Unable to move to the source settlement (%s)' % self.source_settlement_manager.settlement.name)
 
 	def _load_resources(self):

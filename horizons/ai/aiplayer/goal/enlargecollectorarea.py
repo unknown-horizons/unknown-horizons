@@ -120,7 +120,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 	def execute(self):
 		result = self._enlarge_collector_area()
-		self.settlement_manager.log_generic_build_result(result, 'storage coverage building')
+		self._log_generic_build_result(result, 'storage coverage building')
 		return self._translate_build_result(result)
 
 decorators.bind_all(EnlargeCollectorAreaGoal)

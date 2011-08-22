@@ -70,7 +70,7 @@ class DomesticTrade(ShipMission):
 		self._move_to_source_bo_area()
 
 	def _move_to_source_bo_area(self):
-		self._move_to_branch_office_area(self.source_settlement_manager.branch_office.position, Callback(self._reached_source_bo_area), \
+		self._move_to_branch_office_area(self.source_settlement_manager.settlement.branch_office.position, Callback(self._reached_source_bo_area), \
 			Callback(self._move_to_source_bo_area), 'First move not possible')
 
 	def _reached_source_bo_area(self):
@@ -83,7 +83,7 @@ class DomesticTrade(ShipMission):
 			self.report_failure('No need for the ship at the source branch office')
 
 	def _move_to_destination_bo_area(self):
-		self._move_to_branch_office_area(self.destination_settlement_manager.branch_office.position, Callback(self._reached_destination_bo_area), \
+		self._move_to_branch_office_area(self.destination_settlement_manager.settlement.branch_office.position, Callback(self._reached_destination_bo_area), \
 			Callback(self._move_to_destination_bo_area), 'Second move not possible')
 
 	def _reached_destination_bo_area(self):

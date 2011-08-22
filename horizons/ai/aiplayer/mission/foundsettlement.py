@@ -134,7 +134,7 @@ class FoundSettlement(ShipMission):
 					cost += distance
 
 			for settlement_manager in land_manager.owner.settlement_managers:
-				cost += branch_office.position.distance(settlement_manager.branch_office.position) * personality.linear_branch_office_penalty
+				cost += branch_office.position.distance(settlement_manager.settlement.branch_office.position) * personality.linear_branch_office_penalty
 
 			options.append((cost, branch_office))
 

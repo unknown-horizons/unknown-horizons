@@ -87,7 +87,7 @@ class InternationalTrade(ShipMission):
 			self.settlement_manager.settlement.name, self.settlement.name, self.sold_resource, self.bought_resource, self.ship)
 
 	def _move_to_my_settlement(self):
-		self._move_to_branch_office_area(self.settlement_manager.branch_office.position, Callback(self._reached_my_settlement), \
+		self._move_to_branch_office_area(self.settlement_manager.settlement.branch_office.position, Callback(self._reached_my_settlement), \
 			Callback(self._move_to_my_settlement), 'Unable to move to my settlement (%s)' % self.settlement_manager.settlement.name)
 
 	def _get_max_sellable_amount(self, available_amount):
@@ -158,7 +158,7 @@ class InternationalTrade(ShipMission):
 		self._return_to_my_settlement()
 
 	def _return_to_my_settlement(self):
-		self._move_to_branch_office_area(self.settlement_manager.branch_office.position, Callback(self._returned_to_my_settlement), \
+		self._move_to_branch_office_area(self.settlement_manager.settlement.branch_office.position, Callback(self._returned_to_my_settlement), \
 			Callback(self._return_to_my_settlement), 'Unable to return to %s' % self.settlement_manager.settlement.name)
 
 	def _returned_to_my_settlement(self):
