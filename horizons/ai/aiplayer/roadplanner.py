@@ -25,7 +25,9 @@ from horizons.util.python import decorators
 
 class RoadPlanner(object):
 	"""
-	Finds and builds the most reasonable road between two areas.
+	Finds the most reasonable road between two areas.
+
+	This class uses the A* algorithm to find a path that would look nice as a road.
 	Penalties are give for the following:
 	* not an existing road
 	* close to an existing road
@@ -35,11 +37,14 @@ class RoadPlanner(object):
 
 	def __call__(self, personality, source, destination, destination_beacon, path_nodes, blocked_coords = set()):
 		"""
-		@param source: list of tuples
-		@param destination: list of tuples
-		@param destination: object with a defined distance_to_tuple function (must contain all of destination)
-		@param path_nodes: dict {(x, y) = penalty}
-		@param blocked_coords: temporarily blocked coordinates as a set of tuples
+		Return the path from the source to the destination or None if it is impossible.
+
+		@param personality: the personality class that contains the relevant personality bits
+		@param source: list of tuples [(x, y), ...]
+		@param destination: list of tuples [(x, y), ...]
+		@param destination_beacon: object with a defined distance_to_tuple function (must contain all of destination)
+		@param path_nodes: dict {(x, y): penalty}
+		@param blocked_coords: temporarily blocked coordinates set([(x, y), ...])
 		"""
 
 		target_blocked = True
