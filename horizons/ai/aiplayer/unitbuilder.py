@@ -26,39 +26,37 @@ from horizons.constants import BUILDINGS, PRODUCTIONLINES
 from horizons.command.production import AddProduction
 
 class UnitBuilder(object):
-	"""
-	An object of this class builds the units of one player.
-	"""
+	"""An object of this class builds the units of one player."""
 
-	log = logging.getLogger("ai.aiplayer")
+	log = logging.getLogger("ai.aiplayer.unit_builder")
 
 	def __init__(self, owner):
 		super(UnitBuilder, self).__init__()
-		self.__init(owner)
-
-	def __init(self, owner):
 		self.owner = owner
-		self.session = owner.session
 
 	def _get_boat_builders(self):
-		result = []
+		"""Return a list of all boat builders owned by the player."""
+		result = [] # [building, ...]
 		for settlement_manager in self.owner.settlement_managers:
 			result.extend(settlement_manager.settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS))
 		return result
 
 	def build_ship(self):
+		"""Build a new usable fishing boat."""
 		boat_builder = self._get_boat_builders()[0]
-		AddProduction(boat_builder, PRODUCTIONLINES.FISHING_BOAT).execute(self.session)
+		AddProduction(boat_builder, PRODUCTIONLINES.FISHING_BOAT).execute(self.owner.session)
 		production = boat_builder._get_production(PRODUCTIONLINES.FISHING_BOAT)
 		production.add_production_finished_listener(self._ship_built)
 		self.log.info('%s started building a ship', self)
 
 	def _ship_built(self, production):
+		"""Called when a new ship has been built."""
 		self.log.info('%s ship building finished', self)
 		self.owner.refresh_ships()
 
 	@property
 	def num_ships_being_built(self):
+		"""Return the number of ships being built by all the boat builders of the player."""
 		return sum(len(boat_builder.get_production_lines()) for boat_builder in self._get_boat_builders())
 
 	def __str__(self):
