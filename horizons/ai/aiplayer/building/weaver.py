@@ -33,7 +33,7 @@ class AbstractWeaver(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.WEAVER_CLASS] = cls
+		cls._available_buildings[BUILDINGS.WEAVER_CLASS] = cls
 
 class WeaverEvaluator(BuildingEvaluator):
 	@classmethod

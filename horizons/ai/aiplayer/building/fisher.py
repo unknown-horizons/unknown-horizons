@@ -50,7 +50,7 @@ class AbstractFisher(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.FISHERMAN_CLASS] = cls
+		cls._available_buildings[BUILDINGS.FISHERMAN_CLASS] = cls
 
 class FisherEvaluator(BuildingEvaluator):
 	refill_cycle_in_tiles = 12 # TODO: replace this with a direct calculation

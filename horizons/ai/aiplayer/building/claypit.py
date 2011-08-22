@@ -37,7 +37,7 @@ class AbstractClayPit(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.CLAY_PIT_CLASS] = cls
+		cls._available_buildings[BUILDINGS.CLAY_PIT_CLASS] = cls
 
 class ClayPitEvaluator(BuildingEvaluator):
 	@classmethod

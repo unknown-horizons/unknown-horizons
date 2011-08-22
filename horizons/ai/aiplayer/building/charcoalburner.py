@@ -33,7 +33,7 @@ class AbstractCharcoalBurner(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.CHARCOAL_BURNER_CLASS] = cls
+		cls._available_buildings[BUILDINGS.CHARCOAL_BURNER_CLASS] = cls
 
 class CharcoalBurnerEvaluator(BuildingEvaluator):
 	@classmethod

@@ -111,10 +111,10 @@ class AbstractVillageBuilding(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.MAIN_SQUARE_CLASS] = cls
-		cls.available_buildings[BUILDINGS.PAVILION_CLASS] = cls
-		cls.available_buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS] = cls
-		cls.available_buildings[BUILDINGS.TAVERN_CLASS] = cls
+		cls._available_buildings[BUILDINGS.MAIN_SQUARE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.PAVILION_CLASS] = cls
+		cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS] = cls
+		cls._available_buildings[BUILDINGS.TAVERN_CLASS] = cls
 
 AbstractVillageBuilding.register_buildings()
 

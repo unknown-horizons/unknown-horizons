@@ -35,7 +35,7 @@ class AbstractLumberjack(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.LUMBERJACK_CLASS] = cls
+		cls._available_buildings[BUILDINGS.LUMBERJACK_CLASS] = cls
 
 class LumberjackEvaluator(BuildingEvaluator):
 	__template_outline = None

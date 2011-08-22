@@ -33,7 +33,7 @@ class AbstractDistillery(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.DISTILLERY_CLASS] = cls
+		cls._available_buildings[BUILDINGS.DISTILLERY_CLASS] = cls
 
 class DistilleryEvaluator(BuildingEvaluator):
 	@classmethod

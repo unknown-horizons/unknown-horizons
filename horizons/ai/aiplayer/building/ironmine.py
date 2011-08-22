@@ -38,7 +38,7 @@ class AbstractIronMine(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.IRON_MINE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.IRON_MINE_CLASS] = cls
 
 class IronMineEvaluator(BuildingEvaluator):
 	@classmethod

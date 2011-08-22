@@ -94,9 +94,9 @@ class AbstractField(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.POTATO_FIELD_CLASS] = cls
-		cls.available_buildings[BUILDINGS.PASTURE_CLASS] = cls
-		cls.available_buildings[BUILDINGS.SUGARCANE_FIELD_CLASS] = cls
+		cls._available_buildings[BUILDINGS.POTATO_FIELD_CLASS] = cls
+		cls._available_buildings[BUILDINGS.PASTURE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD_CLASS] = cls
 
 AbstractField.register_buildings()
 

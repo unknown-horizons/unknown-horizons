@@ -74,7 +74,7 @@ class AbstractFarm(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.FARM_CLASS] = cls
+		cls._available_buildings[BUILDINGS.FARM_CLASS] = cls
 
 class FarmEvaluator(BuildingEvaluator):
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]

@@ -38,7 +38,7 @@ class AbstractBoatBuilder(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.BOATBUILDER_CLASS] = cls
+		cls._available_buildings[BUILDINGS.BOATBUILDER_CLASS] = cls
 
 class BoatBuilderEvaluator(BuildingEvaluator):
 	@classmethod

@@ -33,7 +33,7 @@ class AbstractSmeltery(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.SMELTERY_CLASS] = cls
+		cls._available_buildings[BUILDINGS.SMELTERY_CLASS] = cls
 
 class SmelteryEvaluator(BuildingEvaluator):
 	@classmethod

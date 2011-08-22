@@ -33,7 +33,7 @@ class AbstractToolmaker(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.TOOLMAKER_CLASS] = cls
+		cls._available_buildings[BUILDINGS.TOOLMAKER_CLASS] = cls
 
 class ToolmakerEvaluator(BuildingEvaluator):
 	@classmethod
