@@ -60,8 +60,8 @@ class BoatbuilderTab(OverviewTab):
 			if container_active is None:
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
-			container_active.findChild(name="headline_BB_builtship_label").text = _("Fishing boat")
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher\nStorage: 1 slot of 1t\nSpeed: average\nHealth: 40"
+			container_active.findChild(name="headline_BB_builtship_label").text = _("Huker")
+			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
@@ -156,6 +156,7 @@ class BoatbuilderSelectTab(OverviewTab):
 		self.button_active_image = bb_image_path % 'a'
 		self.button_down_image = bb_image_path % 'd'
 		self.button_hover_image = bb_image_path % 'h'
+
 	def start_production(self, prod_line_id):
 		AddProduction(self.instance, prod_line_id).execute(self.instance.session)
 		# show overview tab
@@ -174,13 +175,17 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderTradeTab, self).__init__(instance, 'trade')
+		events = { 'BB_build_trade_1' : Callback(self.start_production, PRODUCTIONLINES.HUKER) }
 		self.tooltip = _("Trade boats")
+		self.widget.mapEvents(events)
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar1Tab, self).__init__(instance, 'war1')
+		events = { 'BB_build_war1_1' : Callback(self.start_production, PRODUCTIONLINES.FRIGATE) }
 		self.tooltip = _("War boats")
+		self.widget.mapEvents(events)
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 

@@ -63,7 +63,7 @@ class VERSION:
 	# RELEASE_VERSION = u'2011.2'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 39
+	SAVEGAMEREVISION= 40
 
 	@staticmethod
 	def string():
@@ -234,7 +234,9 @@ class PRODUCTION:
 	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for keeping track of how busy a production is
 
 class PRODUCTIONLINES:
-	FISHING_BOAT = 15
+	HUKER = 15
+	FISHING_BOAT = None # will get added later
+	FRIGATE = 58
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
