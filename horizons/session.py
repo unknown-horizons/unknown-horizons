@@ -169,7 +169,7 @@ class Session(LivingObject):
 	def load(self, savegame, players, is_scenario=False, campaign=None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
-		@param players: iterable of dictionaries containing id, name, color and local
+		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
 		@param is_scenario: Bool whether the loaded map is a scenario or not
 		"""
 		if is_scenario:
