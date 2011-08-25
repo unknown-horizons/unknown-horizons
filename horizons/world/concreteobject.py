@@ -56,8 +56,8 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 		related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
 
-		if len(related_building) > 0 and BuildRelatedTab not in self.tabs:
-			self.tabs += (BuildRelatedTab,)
+		if len(related_building) > 0 and BuildRelatedTab not in self.__class__.tabs:
+			self.__class__.tabs += (BuildRelatedTab,)
 
 	@property
 	def fife_instance(self):
