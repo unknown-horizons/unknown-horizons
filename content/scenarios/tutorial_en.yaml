@@ -5,7 +5,7 @@
 events:
 - # Show a message after starting the game (how to move)
   actions:
-   - {type: message, arguments: ["Build a branch office at the coast."]}
+   - {type: message, arguments: ["Build a branch office at the coast, so it is easy accessible for other ships like the Free Trader."]}
    - {type: logbook_w, arguments: ["Welcome to Unknown Horizons!",
 "This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n\nIf you are interested in longer descriptions, your log will hopefully provide all the help you need.\n\nAfter you close this log, it can be re-opened with the 'Captain's Log' icon in the top-right corner (below the mini-map, with a sealed document and a feather).\n\nFor any suggestions on better wording, topics you would like to have explained or even buggy conditions: Please tell us and we will try to improve the tutorial!\n\nVisit www.unknown-horizons.org for help on how to contact the team!\n\nAnd now, let's start the actual game."]}
    - {type: logbook, arguments: ["NEW TASK: SETTLE ON AN ISLAND",
@@ -98,8 +98,7 @@ events:
 
 - # Build a signal fire
   actions:
-   - {type: logbook_w, arguments: ["NEW TASK: BUILD SIGNAL FIRE",
-"Can you see the ship passing your island from time to time?\n\nThis is the ship of the Free Trader, one of the first settlers in this archipelago.\n\nThis trader will supply your settlement with necessary goods which you can't produce yet.\n\nYou can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling to the Free Trader yields more profit.\n\nNormally the ships just sail around and look for deals, but small settlements like yours first need some promotion, otherwise you won't be found.\n\nFor this purpose, you can build a signal fire at the coast near your branch office to show ships the way to your settlement."]}
+   - {type: logbook_w, arguments: ["NEW TASK: BUILD SIGNAL FIRE","Can you see the ship passing your island from time to time?\n\nThis is the ship of the Free Trader, one of the first settlers in this archipelago.\n\nThis trader will supply your settlement with necessary goods which you can't produce yet.\n\nYou can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling to the Free Trader yields more profit.\n\nNormally the ships just sail around and look for deals, but small settlements like yours first need some promotion, otherwise you won't be found.\n\nFor this purpose, you can build a signal fire at the coast near your branch office to show ships the way to your settlement. Don't forget that the signal fire have to cover the area which the ships pass through just like the branch office's position."]}
    - {type: logbook, arguments: ["",
 "After this little advertisment, the trader will stop by from time to time and look into your branch office.\n\nYou can propose deals via the tab 'Buy/Sell'. (This feature is currently quite fiddly to use, but a re-design is in the pipeline. If you have found a nice way of doing it, please share your thoughts! We need your help here!)\n\nAt the 'sailors' increment, you are equipped with three trading slots.\n\nClick on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.\n\nIf you click in the slot, you can choose the good you want to trade with. We will further explain this once you are ready to trade.\n\nTASK: Build a signal fire at the coast close to your branch office."]}
    - {type: message, arguments: ["Build a signal fire at the coast close to your branch office."]}
