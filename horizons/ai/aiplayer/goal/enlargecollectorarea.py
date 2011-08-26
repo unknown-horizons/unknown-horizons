@@ -108,14 +108,14 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 			for x, y in self.village_builder.tent_queue:
 				new_area = 0
-				for coords in Rect.init_from_topleft_and_size(x, y, tent_size[0] - 1, tent_size[1] - 1).get_radius_coordinates(tent_radius):
+				for coords in Rect.init_from_topleft_and_size(x, y, tent_size[0], tent_size[1]).get_radius_coordinates(tent_radius):
 					if coords in area_label and coords not in self.land_manager.roads and coords not in collector_area:
 						new_area += 1
 				if new_area > best_area:
 					best_coords = (x, y)
 					best_area = new_area
 			if best_coords is not None:
-				return self.production_builder.extend_settlement_with_tent(Rect.init_from_topleft_and_size(best_coords[0], best_coords[1], tent_size[0] - 1, tent_size[1] - 1))
+				return self.production_builder.extend_settlement_with_tent(Rect.init_from_topleft_and_size_tuples(best_coords, tent_size))
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def execute(self):

@@ -726,7 +726,7 @@ class VillageBuilder(AreaBuilder):
 		if not ok:
 			# need to extends the area, it is not owned by another player
 			self.log.debug('%s tent position not owned by the player at (%d, %d), extending settlement area instead', self, x, y)
-			return self.extend_settlement(Rect.init_from_topleft_and_size(x, y, size[0] - 1, size[1] - 1))
+			return self.extend_settlement(Rect.init_from_topleft_and_size(x, y, size[0], size[1]))
 
 		if not self.roads_built:
 			self.build_roads()

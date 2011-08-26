@@ -246,7 +246,7 @@ class AreaBuilder(WorldObject):
 			if not ok:
 				continue
 
-			distance = Rect.init_from_topleft_and_size(x, y, size[0] - 1, size[1] - 1).distance(position)
+			distance = Rect.init_from_topleft_and_size(x, y, size[0], size[1]).distance(position)
 			if min_distance is None or distance < min_distance:
 				min_distance = distance
 				best_coords = (x, y)

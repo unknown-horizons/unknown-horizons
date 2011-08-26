@@ -133,8 +133,8 @@ class Minimap(object):
 		minimap_point = self._get_rotated_coords(self._world_coord_to_minimap_coord(tup))
 		world_to_minimap = self._get_world_to_minimap_ratio()
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], \
-		                                       int(round(1/world_to_minimap[0])), \
-		                                       int(round(1/world_to_minimap[1])))
+		                                       int(round(1/world_to_minimap[0])) + 1, \
+		                                       int(round(1/world_to_minimap[1])) + 1)
 		self._recalculate(rect)
 
 	def use_overlay_icon(self, icon):
@@ -237,7 +237,7 @@ class Minimap(object):
 				continue
 			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
 			color = ship().owner.color.to_tuple()
-			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 2, 2)
+			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 3, 3)
 			for tup in area_to_color.tuple_iter():
 				try:
 					node = fife.GenericRendererNode(fife.Point(*self._get_rotated_coords(tup)))

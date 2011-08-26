@@ -143,13 +143,13 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 	def get_loading_area(cls, building_id, rotation, pos):
 		if building_id == BUILDINGS.MOUNTAIN_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
 			if rotation == 45:
-				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 0, 2)
+				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 1, 3)
 			elif rotation == 135:
-				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 2, 0)
+				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 3, 1)
 			elif rotation == 225:
-				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 0, 2)
+				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 1, 3)
 			elif rotation == 315:
-				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 2, 0)
+				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 3, 1)
 			assert False
 		else:
 			return pos
