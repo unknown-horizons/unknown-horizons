@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-27 14:20+0200\n"
+"PO-Revision-Date: 2011-08-27 15:14+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -1936,7 +1936,7 @@ msgstr ""
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "Ustawienia SI"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
@@ -2005,15 +2005,21 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Błąd: Brak wymaganych bibliotek"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Prosimy o zainstalowania brakujących bibliotek, które są niezbędne do "
+"prawidłowego działania Unknow Horizons."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Instalator dla użytkowników Windowsa dostępny jest pod adresem: "
+"\"http://pyyaml.org/wiki/PyYAML\". Użytkownicy Linuksa powinny znaleźć "
+"biblioteki za pomocą menadżera pakietów pod nazwami \"pyyaml\" lub \"python-"
+"yaml\"."
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
@@ -2065,7 +2071,7 @@ msgstr "Gorzelnia"
 
 #: sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Lekarz"
 
 # Building
 #: sqlite/Building
@@ -2206,7 +2212,7 @@ msgstr "Namiot tkacki"
 
 #: sqlite/Building
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Drewniana wieża"
 
 # Colors
 #: sqlite/Colors
@@ -2246,8 +2252,9 @@ msgid "yellow"
 msgstr "żółty"
 
 #: sqlite/Messages
+#, fuzzy
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} i ${player2} są teraz ${status}"
 
 # Messages
 #: sqlite/Messages
@@ -2291,7 +2298,7 @@ msgstr "Gra została zapisana."
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Twoja kopalnia wyczerpała zasoby."
 
 # Messages
 #: sqlite/Messages
@@ -2370,7 +2377,7 @@ msgstr "wiara"
 
 #: sqlite/Resources
 msgid "fish"
-msgstr ""
+msgstr "ryba"
 
 #: sqlite/Resources
 msgid "food"
@@ -2391,7 +2398,7 @@ msgstr "zadowolenie"
 
 #: sqlite/Resources
 msgid "herbs"
-msgstr ""
+msgstr "zioła"
 
 #: sqlite/Resources
 msgid "iron deposit"
