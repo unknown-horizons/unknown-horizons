@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-27 12:30+0200\n"
+"PO-Revision-Date: 2011-08-27 12:33+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -158,7 +158,7 @@ msgstr "Proszę wybrać rekord lub kliknąć anuluj."
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:272
 msgid "Select a savegame"
-msgstr ""
+msgstr "Wybierz zapisany stan gry."
 
 #: horizons/gui/gui.py:340 horizons/i18n/guitranslations.py:308
 #: horizons/i18n/guitranslations.py:442
