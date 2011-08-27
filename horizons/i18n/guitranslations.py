@@ -460,14 +460,8 @@ def set_translations():
 			"headline_choose_map_lbl"     : _("Choose a map to play:"),
 			"headline_choose_opponents_lbl": _("Choose your opponents:")},
 		"sp_random.xml" : {
-			"climate_lbl"                 : _("Climate zone:"),
-			"climate_zone_lbl_cold"       : _("frosty"),
-			"climate_zone_lbl_warm"       : _("torrid"),
 			"headline_map_settings_lbl"   : _("Map settings:"),
-			"map_size_lbl"                : _("Map size:"),
-			"resource_density_lbl"        : _("Resource density:"),
-			"resource_density_lbl_dense"  : _("dense"),
-			"resource_density_lbl_few"    : _("few")},
+			"map_size_lbl"                : _("Map size:")},
 		"sp_scenario.xml" : {
 			"choose_map_lbl"              : _("Choose a map to play:")},
 		"aidataselection.xml" : {
