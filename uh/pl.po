@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-27 12:33+0200\n"
+"PO-Revision-Date: 2011-08-27 13:49+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -228,10 +228,14 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"Brak biblioteki \"pyenet\", która jest wymagana aby grać w trybie wielu "
+"graczy. "
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Użytkownicy Linuksa: Spróbuj zainstalować pyenet za pomocą menadżera "
+"pakietów."
 
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
@@ -239,11 +243,11 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Inicjalizacja sieci niepowiodła się."
 
 #: horizons/gui/modules/multiplayermenu.py:58
 msgid "Check the data you entered in the Network section in the settings dialogue."
-msgstr ""
+msgstr "Sprawdź czy dane które podałeś w sekcji Sieć są poprawne."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
