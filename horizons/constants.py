@@ -330,6 +330,8 @@ class PATHS:
 
 	DB_FILES = tuple(os.path.join("content", i) for i in \
 	                 ("game.sql", "settler.sql", "balance.sql") )
+	#voice paths
+	VOICE_DIR = os.path.join("content", "audio", "voice")
 
 ## SINGLEPLAYER
 class SINGLEPLAYER:
