@@ -136,7 +136,7 @@ class SingleplayerMenu(object):
 		if self.current.collectData('random'):
 			map_size = int( self.current.findChild(name="map_size_slider").getValue() )
 			island_size = int( self.current.findChild(name="island_size_slider").getValue() )
-			map_file = random_map.generate_map(seed='yay', island_size=island_size, map_size=map_size)
+			map_file = random_map.generate_map(island_size=island_size, map_size=map_size)
 		else:
 			assert self.current.collectData('maplist') != -1
 			map_file = self.__get_selected_map()
