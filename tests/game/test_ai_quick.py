@@ -20,12 +20,12 @@
 # ###################################################
 
 from functools import partial
-from horizons.util.random_map import generate_map
+from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
 
 def test_ai_quick():
 	def generate_test(seed):
-		@game_test(mapgen = partial(generate_map, seed), human_player = False, ai_players = 2)
+		@game_test(mapgen = partial(generate_map_from_seed, seed), human_player = False, ai_players = 2)
 		def do_test(session, _):
 			"""
 			Let 2 AI players play for three minutes.

@@ -20,12 +20,12 @@
 # ###################################################
 
 from functools import partial
-from horizons.util.random_map import generate_map
+from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
 
 def test_ai_long():
 	def generate_test(seed):
-		@game_test(mapgen = partial(generate_map, seed), human_player = False, ai_players = 2)
+		@game_test(mapgen = partial(generate_map_from_seed, seed), human_player = False, ai_players = 2)
 		def do_test(session, _):
 			"""
 			Let 2 AI players play for 40 minutes.
@@ -34,9 +34,5 @@ def test_ai_long():
 			assert session.world.settlements
 		return do_test
 
-	# 1: a single island
-	# 2: many very small islands
-	# 3: 2 large, 2 small islands
-	# 4: a variety of small and large islands
 	for seed in [1, 2, 3, 4]:
 		yield generate_test(seed)

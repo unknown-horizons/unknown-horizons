@@ -56,6 +56,7 @@ class SingleplayerMenu(object):
 			if self.current.findChild(name="game_settings") is None:
 				self.current.findChild(name="game_settings_box").addChild(game_settings)
 			show_ai_options = True
+			self.__setup_random_map_selection(right_side)
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
 			game_settings = self.widgets['game_settings']
@@ -134,9 +135,7 @@ class SingleplayerMenu(object):
 		horizons.main.fife.set_uh_setting("Nickname", playername)
 
 		if self.current.collectData('random'):
-			map_size = int( self.current.findChild(name="map_size_slider").getValue() )
-			island_size = int( self.current.findChild(name="island_size_slider").getValue() )
-			map_file = random_map.generate_map(island_size=island_size, map_size=map_size)
+			map_file = self.__get_random_map_file()
 		else:
 			assert self.current.collectData('maplist') != -1
 			map_file = self.__get_selected_map()
@@ -176,10 +175,60 @@ class SingleplayerMenu(object):
 		else: # free play/random map
 			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players=ai_players, human_ai=AI.HUMAN_AI)
 
+	# random map options
+	map_sizes = [50, 100, 150, 200, 250]
+	water_percents = [20, 30, 40, 50, 60, 70, 80]
+	island_sizes = [30, 40, 50, 60, 70]
+	island_size_deviations = [5, 10, 20, 30, 40]
+
+	def __setup_random_map_selection(self, widget):
+		map_size_slider = widget.findChild(name = 'map_size_slider')
+		def on_map_size_slider_change():
+			widget.findChild(name = 'map_size_lbl').text = _('Map size: ') + \
+				unicode(self.map_sizes[int(map_size_slider.getValue())])
+		map_size_slider.capture(on_map_size_slider_change)
+
+		water_percent_slider = widget.findChild(name = 'water_percent_slider')
+		def on_water_percent_slider_change():
+			widget.findChild(name = 'water_percent_lbl').text = _('Water: ') + \
+				unicode(self.water_percents[int(water_percent_slider.getValue())]) + '%'
+		water_percent_slider.capture(on_water_percent_slider_change)
+
+		max_island_size_slider = widget.findChild(name = 'max_island_size_slider')
+		def on_max_island_size_slider_change():
+			widget.findChild(name = 'max_island_size_lbl').text = _('Max island size: ') + \
+				unicode(self.island_sizes[int(max_island_size_slider.getValue())])
+		max_island_size_slider.capture(on_max_island_size_slider_change)
+
+		preferred_island_size_slider = widget.findChild(name = 'preferred_island_size_slider')
+		def on_preferred_island_size_slider_change():
+			widget.findChild(name = 'preferred_island_size_lbl').text = _('Preferred island size: ') + \
+				unicode(self.island_sizes[int(preferred_island_size_slider.getValue())])
+		preferred_island_size_slider.capture(on_preferred_island_size_slider_change)
+
+		island_size_deviation_slider = widget.findChild(name = 'island_size_deviation_slider')
+		def on_island_size_deviation_slider_change():
+			widget.findChild(name = 'island_size_deviation_lbl').text = _('Island size deviation: ') + \
+				unicode(self.island_size_deviations[int(island_size_deviation_slider.getValue())])
+		island_size_deviation_slider.capture(on_island_size_deviation_slider_change)
+
+		on_map_size_slider_change()
+		on_water_percent_slider_change()
+		on_max_island_size_slider_change()
+		on_preferred_island_size_slider_change()
+		on_island_size_deviation_slider_change()
+
+	def __get_random_map_file(self):
+		map_size = self.map_sizes[int(self.current.findChild(name = 'map_size_slider').getValue())]
+		water_percent = self.water_percents[int(self.current.findChild(name = 'water_percent_slider').getValue())]
+		max_island_size = self.island_sizes[int(self.current.findChild(name = 'max_island_size_slider').getValue())]
+		preferred_island_size = self.island_sizes[int(self.current.findChild(name = 'preferred_island_size_slider').getValue())]
+		island_size_deviation = self.island_size_deviations[int(self.current.findChild(name = 'island_size_deviation_slider').getValue())]
+		return random_map.generate_map(None, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
+
 	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
 		return self.current.files[ self.current.collectData('maplist') ]
-
 
 	def __show_invalid_scenario_file_popup(self, exception):
 		"""Shows a popup complaining about invalid scenario file.
@@ -188,4 +237,3 @@ class SingleplayerMenu(object):
 		self.show_popup(_("Invalid scenario file"), \
 		                _("The selected file is not a valid scenario file.\nError message: ") + \
 		                unicode(str(exception)) + _("\nPlease report this to the author."))
-
