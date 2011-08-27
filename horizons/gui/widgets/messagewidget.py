@@ -29,6 +29,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.util import LivingObject, Callback
 from horizons.util.gui import load_uh_widget
 from horizons.ambientsound import AmbientSound
+from horizons.i18n.voice import get_speech_file
 
 class MessageWidget(LivingObject):
 	"""Class that organises the messages in the top right of the screen.
@@ -58,19 +59,20 @@ class MessageWidget(LivingObject):
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
-	def add(self, x, y, id, message_dict=None, play_sound = True):
+	def add(self, x, y, string_id, message_dict=None, sound_file):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id string, needed to retrieve the message from the database.
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
 		# play a message sound, if one is specified in the database
-		sound = None
-		if play_sound:
-			sound = horizons.main.db("SELECT speech.file FROM speech LEFT JOIN message \
-			ON speech.group_id=message.speech_group_id WHERE message.id_string=? ORDER BY random() LIMIT 1",id)
-			sound = sound[0][0] if len(sound) > 0 else None
-		self._add_message(Message(x, y, id, self.current_tick, message_dict=message_dict), sound)
+#		sound = None
+#		if play_sound:
+#			sound = horizons.main.db("SELECT speech.file FROM speech LEFT JOIN message \
+#			ON speech.group_id=message.speech_group_id WHERE message.id_string=? ORDER BY random() LIMIT 1",id)
+#			sound = sound[0][0] if len(sound) > 0 else None
+#			sound = get_speech_file(string_id)
+		self._add_message(Message(x, y, string_id, self.current_tick, message_dict=message_dict), sound_file)
 
 	def add_custom(self, x, y, messagetext, visible_for=40, sound=None, icon_id=1):
 		self._add_message( Message(x, y, None, self.current_tick, display=visible_for, message=messagetext, icon_id=icon_id), sound)

@@ -29,26 +29,42 @@ from random import randrange
 """
 Internationalization for speech|voice files
 """
+class Speech:
+	"""Definition of category ids, those id are the name of directory where speech is"""
+	NEW_SETTLEMENT = 2
+	NEW_WORLD = 1
+	QUICKSAVE = None
+	SCREENSHOT = None
+	SETTLER_LEVEL_UP = None
+	NEED_MORE_RES = None
+	NO_MAIN_SQUARE_IN_RANGE = None
+	SETTLERS_MOVED_OUT = None
+	MINE_EMPTY = None
+	DRAG_ROADS_HINT = None
+	DIPLOMACY_STATUS_CHANGED = None
 
 DEFAULT_LANG="en"
 DEFAULT_VARIATION=0
 DEFAULT_SPEAKER=0
 
-def get_speech_file(category_id, variation_id=None, speaker_id=DEFAULT_SPEAKER):
+def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 	"""Get speech file path.
 	@param speaker_id: speaker id
 	@param category_id: category id, the same as sentence
 	@param variation_id: variation id of sentence
 	@params random if true variation is random if false we try to find by variation_id
 	@return: Path to Speach file or None if not exist"""
+	cat_id = eval_category_id(category)
+	if cat_id == None: return None
 	lang = horizons.main.fife.get_locale()
-	path = prepare_path(lang, category_id, variation_id, speaker_id)
+	path = prepare_path(lang, cat_id, variation_id, speaker_id)
 	if path == None:
-		path = prepare_path(DEFAULT_LANG, category_id, DEFAULT_VARIATION, DEFAULT_SPEAKER)
+		path = prepare_path(DEFAULT_LANG, cat_id, DEFAULT_VARIATION, DEFAULT_SPEAKER)
 	return path
 
 def prepare_path(lang, cat_id, var_id, spkr_id):
 	dir_path = get_dir_path(lang, cat_id, spkr_id)
+	if not os.path.isdir(dir_path): return None
 	file_path = get_file_path(dir_path, var_id)
 	if (file_path != None) and os.path.isfile(file_path):
 		return file_path
@@ -70,11 +86,12 @@ def get_dir_path(lang, cat_id, spkr_id):
 def count_variations(dir_name):
   return len([f for f in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name,f))])
 
-
-class Speach:
-	"""Define category ids"""
-	MAP_CREATED = 0
-	MAP_LOADED = 1
-	CAMPAIGN_LOADED = 2
-
+def eval_category_id(category):
+	cat_id = None
+	print category
+	try:
+		cat_id = eval('Speech.'+category)
+	except:
+		print "Incorect name of speech category"
+	return cat_id
 
