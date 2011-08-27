@@ -173,7 +173,9 @@ class SingleplayerMenu(object):
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 				})
 		else: # free play/random map
-			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players=ai_players, human_ai=AI.HUMAN_AI)
+			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players = ai_players, \
+				human_ai = AI.HUMAN_AI, trader_enabled = self.widgets['game_settings'].findChild(name = 'free_trader').marked, \
+				pirate_enabled = self.widgets['game_settings'].findChild(name = 'pirates').marked)
 
 	# random map options
 	map_sizes = [50, 100, 150, 200, 250]

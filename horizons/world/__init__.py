@@ -234,9 +234,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.bullets = []
 
 		if self.session.is_game_loaded():
-			# for now, we have one trader in every game, so this is safe:
-			trader_id = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
-			self.trader = Trader.load(self.session, savegame_db, trader_id)
+			# there are 0 or 1 trader AIs so this is safe
+			trader_data = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")
+			if trader_data:
+				self.trader = Trader.load(self.session, savegame_db, trader_id)[0][0]
 			# there are 0 or 1 pirate AIs so this is safe
 			pirate_data = savegame_db("SELECT rowid FROM player WHERE is_pirate = 1")
 			if pirate_data:
@@ -249,7 +250,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		if self.session.is_game_loaded():
 			# let trader command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and trader has to exist before ships are loaded.
-			self.trader.load_ship_states(savegame_db)
+			if self.trader:
+				self.trader.load_ship_states(savegame_db)
 
 			# let pirate command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and pirate has to exist before ships are loaded.
@@ -330,7 +332,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.fish_indexer._update()
 
 	@decorators.make_constants()
-	def init_new_world(self, minclay = 2, maxclay = 3, minmountains = 1, maxmountains = 3):
+	def init_new_world(self, trader_enabled, pirate_enabled, minclay = 2, maxclay = 3, minmountains = 1, maxmountains = 3):
 		"""
 		This should be called if a new map is loaded (not a savegame, a fresh
 		map). In other words when it is loaded for the first time.
@@ -408,7 +410,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			logging.getLogger(logger_name).setLevel(level)
 
 		# add free trader
-		self.trader = Trader(self.session, 99999, u"Free Trader", Color())
+		if trader_enabled:
+			self.trader = Trader(self.session, 99999, u"Free Trader", Color())
 
 		ret_coords = None
 		for player in self.players:
@@ -426,7 +429,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 
 		# add a pirate ship
-		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
+		if pirate_enabled:
+			self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
@@ -721,7 +725,7 @@ str(settlement.tax_settings),
 	def notify_new_settlement(self):
 		"""Called when a new settlement is created"""
 		# make sure there's a trader ship for 2 settlements
-		if len(self.settlements) > self.trader.get_ship_count() * 2:
+		if self.trader and len(self.settlements) > self.trader.get_ship_count() * 2:
 			self.trader.create_ship()
 
 	@decorators.make_constants()

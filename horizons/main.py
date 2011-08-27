@@ -178,7 +178,7 @@ def quit():
 	ExtScheduler.destroy_instance()
 	fife.quit()
 
-def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False, campaign=None, ai_players=0, human_ai=False):
+def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False, campaign=None, ai_players=0, human_ai=False, trader_enabled=True, pirate_enabled=True):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
 	@param ai_players: number of AI players to start (excludes possible human AI)
@@ -226,7 +226,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 		players.append({'id': num + 2, 'name' : 'AI' + str(num + 1), 'color' : color, 'local' : False, 'ai': True, 'difficulty': difficulty_level[True]})
 
 	try:
-		_modules.session.load(map_file, players, is_scenario=is_scenario, campaign = campaign)
+		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, is_scenario=is_scenario, campaign = campaign)
 	except:
 		import traceback
 		print "Failed to load", map_file
@@ -240,7 +240,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai)
 
-def prepare_multiplayer(game):
+def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True):
 	"""Starts a multiplayer game server
 	TODO: acctual game data parameter passing
 	"""
@@ -266,7 +266,7 @@ def prepare_multiplayer(game):
 	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
 	_modules.session.load("content/maps/" + game.get_map_name() + ".sqlite", \
-	                      game.get_player_list())
+	                      game.get_player_list(), trader_enabled, pirate_enabled)
 
 def start_multiplayer(game):
 	_modules.session.start()
