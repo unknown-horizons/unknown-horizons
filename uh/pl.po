@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-27 13:49+0200\n"
+"PO-Revision-Date: 2011-08-27 14:20+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -55,7 +55,7 @@ msgstr ""
 "Renderowanie SDL jest przewidziane wyłącznie jako awaryjne i powoduje spore "
 "problemy z wyświetlaniem grafiki. \n"
 "\n"
-" Używasz na własne ryzyko!"
+"Używasz na własne ryzyko!"
 
 #: horizons/engine.py:235
 #, python-format
@@ -256,6 +256,10 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Błąd podczas połączenia z głównym serwerem. Proszę sprawdzić swoje "
+"połączenie internetowe. Jeżeli twoje połączenie działa może to oznaczać iż "
+"tymczasowo nasz serwer jest wyłączony.\n"
+"Szczegóły: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
@@ -410,7 +414,7 @@ msgstr "Załaduj/Wyładuj:"
 
 #: horizons/gui/tabs/inventorytab.py:86
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "Kup/Sprzedaj:"
 
 #: horizons/gui/tabs/inventorytab.py:120
 msgid "Equip weapon"
@@ -470,7 +474,7 @@ msgstr "Przegląd faktorii handlowej"
 
 #: horizons/gui/tabs/overviewtab.py:141
 msgid "Main square overview"
-msgstr ""
+msgstr "Podgląd rynku głównego"
 
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:218
 msgid "Ship overview"
@@ -478,9 +482,8 @@ msgstr "Przegląd statku"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:225
-#, fuzzy
 msgid "Unit overview"
-msgstr "Przegląd statku"
+msgstr "Przegląd jednostki"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -492,7 +495,7 @@ msgstr "Zniszcz budowlę"
 
 #: horizons/gui/tabs/selectmultitab.py:53
 msgid "Selected Units"
-msgstr ""
+msgstr "Zaznaczone jednostki"
 
 #: horizons/gui/widgets/buysellinventory.py:84
 #: horizons/gui/widgets/inventory.py:103
@@ -518,7 +521,7 @@ msgstr ""
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "brak"
 
 #: horizons/i18n/guitranslations.py:42
 msgid "String Previewer Tool for Scenario files"
@@ -714,7 +717,7 @@ msgstr "Narzędziowiec: Wytwarza narzędzia z żelaza."
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Game start"
-msgstr ""
+msgstr "Rozpocznij grę"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "You need to found a settlement before you can construct buildings!"
@@ -723,6 +726,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:99
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
+"Wybierz swój okręt i podpłyń do wybrzeża, używająć prawego klawisza myszy."
 
 #: horizons/i18n/guitranslations.py:100
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -2428,7 +2432,7 @@ msgstr "ziemniaki"
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "sól"
 
 # Resources
 #: sqlite/Resources
@@ -2445,7 +2449,7 @@ msgstr "tekstylia"
 
 #: sqlite/Resources
 msgid "tobacco leaves"
-msgstr ""
+msgstr "liście tytoniu"
 
 #: sqlite/Resources
 msgid "tobacco plants"
@@ -2453,7 +2457,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "tobaccos"
-msgstr ""
+msgstr "tytoń"
 
 #: sqlite/Resources
 msgid "tools"
@@ -2469,15 +2473,15 @@ msgstr "wełna"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "arystokrata"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "obywatel"
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "kupiec"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
