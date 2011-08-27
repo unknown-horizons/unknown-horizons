@@ -4,7 +4,7 @@
 	<ScrollArea max_size="290,140"  min_size="290,140"  horizontal_scrollbar="0"  name="map_list_area">
 		<ListBox name="maplist" />
 	</ScrollArea>
-
+<!--
 	<Label text="Choose your opponents:"  name="headline_choose_opponents_lbl" />
 	<ScrollArea horizontal_scrollbar="1"  vertical_scrollbar="0"  name="opponent_list_area">
 		<HBox name="opponent_list">
@@ -25,7 +25,7 @@
 			</VBox>
 		</HBox>
 	</ScrollArea>
-
+-->
 	<VBox name="game_settings_box" />
 
 <Spacer />

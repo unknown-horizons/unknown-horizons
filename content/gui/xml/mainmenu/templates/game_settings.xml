@@ -11,12 +11,14 @@
 			<CheckBox name="pirates" min_size="15,15"  marked="1" />
 			<Label text="Pirates" />
 		</HBox>
+		<!--
 		<HBox name="map_param">
 			<CheckBox name="peoples" min_size="15,15" />
 			<Label text="Peoples" />
 		</HBox>
+		-->
 	</HBox>
-
+	<!--
 	<HBox name="param_catastrophes" padding="15">
 		<HBox name="map_param">
 			<CheckBox name="fire" min_size="15,15"  marked="1" />
@@ -31,5 +33,6 @@
 			<Label text="Rat Plague" />
 		</HBox>
 	</HBox>
+	-->
 
 </VBox>
