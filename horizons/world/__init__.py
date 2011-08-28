@@ -237,7 +237,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# there are 0 or 1 trader AIs so this is safe
 			trader_data = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")
 			if trader_data:
-				self.trader = Trader.load(self.session, savegame_db, trader_id)[0][0]
+				self.trader = Trader.load(self.session, savegame_db, trader_data[0][0])
 			# there are 0 or 1 pirate AIs so this is safe
 			pirate_data = savegame_db("SELECT rowid FROM player WHERE is_pirate = 1")
 			if pirate_data:
