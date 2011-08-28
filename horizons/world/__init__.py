@@ -22,10 +22,12 @@
 
 __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
+import bisect
 import weakref
 import random
 import logging
 import copy
+import itertools
 
 from collections import deque
 
@@ -44,6 +46,8 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
+from horizons.command.building import Build
+from horizons.command.unit import CreateUnit
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -332,7 +336,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.fish_indexer._update()
 
 	@decorators.make_constants()
-	def init_new_world(self, trader_enabled, pirate_enabled, minclay = 2, maxclay = 3, minmountains = 1, maxmountains = 3):
+	def init_new_world(self, trader_enabled, pirate_enabled, natural_resource_multiplier):
 		"""
 		This should be called if a new map is loaded (not a savegame, a fresh
 		map). In other words when it is loaded for the first time.
@@ -342,8 +346,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		      This is necessary because else the commands would be transmitted
 		      over the wire in network games.
 
-		@return: Returs the coordinates of the players first ship
+		@return: the coordinates of the players first ship
 		"""
+
 		# workaround: the creation of all the objects causes a lot of logging output, we don't need
 		#             therefore, reset the levels for now
 		loggers_to_silence = { 'world.production' : None }
@@ -352,58 +357,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			loggers_to_silence[logger_name] = logger.getEffectiveLevel()
 			logger.setLevel( logging.WARN )
 
-		from horizons.command.building import Build
-		from horizons.command.unit import CreateUnit
-		# add a random number of environmental objects to the gameworld
-		if int(self.properties.get('RandomTrees', 1)) == 1:
-			Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
-			Clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
-			Fish = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
-			Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
-			for island in self.islands:
-				if maxclay <= minclay:
-					minclay = maxclay-1
-				if maxmountains <= minmountains:
-					minmountains = maxmountains-1
-				max_clay_deposits = self.session.random.randint(minclay, maxclay)
-				max_mountains = self.session.random.randint(minmountains, maxmountains)
-				num_clay_deposits = 0
-				num_mountains = 0
-				# TODO: fix this sorted()-call. its slow but orderness of dict-loop isn't guaranteed
-				for coords, tile in sorted(island.ground_map.iteritems()):
-					# add tree to every nth tile
-					if self.session.random.randint(0, 2) == 0 and \
-					   Tree.check_build(self.session, tile, check_settlement=False):
-						building = Build(Tree, coords[0], coords[1], ownerless=True,island=island)(issuer=None)
-						building.finish_production_now() # make trees big and fill their inventory
-						if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
-							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
-						if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
-							building.inventory.alter(RES.WILDANIMALFOOD_ID, -1)
-					elif num_clay_deposits < max_clay_deposits and \
-					     self.session.random.randint(0, 40) == 0 and \
-					     Clay.check_build(self.session, tile, check_settlement=False):
-						num_clay_deposits += 1
-						Build(Clay, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
-					elif num_mountains < max_mountains and \
-					     self.session.random.randint(0, 40) == 0 and \
-					     Mountain.check_build(self.session, tile, check_settlement=False):
-						num_mountains += 1
-						Build(Mountain, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
-					if 'coastline' in tile.classes and self.session.random.randint(0, 4) == 0:
-						# try to place fish
-						# from the current position, go to random directions 2 times
-						directions = [ (i, j) for i in xrange(-1, 2) for j in xrange(-1, 2) ]
-						for (x_dir, y_dir) in self.session.random.sample(directions, 2):
-							# move a random amount in both directions
-							coord_to_check = (
-							  coords[0] + x_dir * self.session.random.randint(3, 9),
-							  coords[1] + y_dir * self.session.random.randint(3, 9),
-							)
-							# now we have the location, check if we can build here
-							if coord_to_check in self.ground_map:
-								Build(Fish, coord_to_check[0], coord_to_check[1], ownerless=True, \
-								      island=self)(issuer=None)
+		# add a random number of environmental objects
+		self._add_nature_objects(natural_resource_multiplier)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
@@ -436,6 +391,159 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are None. No players loaded?"
 		return ret_coords
+
+	def _add_resource_deposits(self, resource_multiplier):
+		"""
+		Place clay deposits and mountains.
+
+		The algorithm:
+		1. calculate the manhattan distance from each island tile to the sea
+		2. calculate the value of a tile
+		3. calculate the value of an object's location as min(covered tile values)
+		4. for each island place a number of clay deposits and mountains
+		5. place a number of extra clay deposits and mountains without caring about the island
+		* the probability of choosing a resource deposit location is proportional to its value
+
+		@param natural_resource_multiplier: multiply the amount of clay deposits and mountains by this.
+		"""
+
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		ClayDeposit = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
+		Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
+		clay_deposit_locations = []
+		mountain_locations = []
+
+		def get_valid_locations(usable_part, island, width, height):
+			"""Return a list of all valid locations for a width times height object in the format [(value, (x, y), island), ...]."""
+			locations = []
+			offsets = list(itertools.product(xrange(width), xrange(height)))
+			for x, y in sorted(usable_part):
+				min_value = None
+				for dx, dy in offsets:
+					coords = (x + dx, y + dy)
+					if coords in usable_part:
+						value = usable_part[coords]
+						min_value = value if min_value is None or min_value > value else min_value
+					else:
+						min_value = None
+						break
+				if min_value:
+					locations.append((1.0 / min_value, (x, y), island))
+			return locations
+
+		def place_objects(locations, max_objects, object_class):
+			"""Place at most max_objects objects of the given class."""
+			if not locations:
+				return
+
+			total_sum = [0]
+			last_sum = 0
+			for value in zip(*locations)[0]:
+				last_sum += value
+				total_sum.append(last_sum)
+
+			for _ in xrange(max_objects):
+				for _ in xrange(7): # try to place the object 7 times
+					object_sum = self.session.random.random() * last_sum
+					pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
+					x, y = locations[pos][1]
+					if object_class.check_build(self.session, Point(x, y), check_settlement = False):
+						Build(object_class, x, y, ownerless = True, island = locations[pos][2])(issuer = None)
+						break
+
+		for island in self.islands:
+			# mark island tiles that are next to the sea
+			queue = deque()
+			distance = {}
+			for (x, y), tile in island.ground_map.iteritems():
+				if len(tile.classes) == 1: # could be a shallow to deep water tile
+					for dx, dy in moves:
+						coords = (x + dx, y + dy)
+						if coords in self.water_body and self.water_body[coords] == self.sea_number:
+							distance[(x, y)] = 1
+							queue.append((x, y, 1))
+							break
+
+			# calculate the manhattan distance to the sea
+			while queue:
+				x, y, dist = queue[0]
+				queue.popleft()
+				for dx, dy in moves:
+					coords = (x + dx, y + dy)
+					if coords in distance:
+						continue
+					if coords in self.water_body and self.water_body[coords] == self.sea_number:
+						continue
+					distance[coords] = dist + 1
+					queue.append((coords[0], coords[1], dist + 1))
+
+			# calculate tiles' values
+			usable_part = {}
+			for coords, dist in distance.iteritems():
+				if coords in island.ground_map and 'constructible' in island.ground_map[coords].classes:
+					usable_part[coords] = (dist + 5) ** 2
+
+			# place the local clay deposits
+			local_clay_deposit_locations = get_valid_locations(usable_part, island, *ClayDeposit.size)
+			clay_deposit_locations.extend(local_clay_deposit_locations)
+			local_clay_deposits_base = 0.3 + len(local_clay_deposit_locations) ** 0.7 / 60.0
+			num_local_clay_deposits = int(max(0, resource_multiplier * min(3, local_clay_deposits_base + abs(self.session.random.gauss(0, 0.7)))))
+			place_objects(local_clay_deposit_locations, num_local_clay_deposits, ClayDeposit)
+
+			# place the local mountains
+			local_mountain_locations = get_valid_locations(usable_part, island, *Mountain.size)
+			mountain_locations.extend(local_mountain_locations)
+			local_mountains_base = 0.1 + len(local_mountain_locations) ** 0.5 / 120.0
+			num_local_mountains = int(max(0, resource_multiplier * min(2, local_mountains_base + abs(self.session.random.gauss(0, 0.8)))))
+			place_objects(local_mountain_locations, num_local_mountains, Mountain)
+
+		# place some extra clay deposits
+		extra_clay_base = len(clay_deposit_locations) ** 0.8 / 400.0
+		num_extra_clay_deposits = int(round(max(1, resource_multiplier * min(7, len(self.islands) * 1.0 + 2, extra_clay_base + abs(self.session.random.gauss(0, 1))))))
+		place_objects(clay_deposit_locations, num_extra_clay_deposits, ClayDeposit)
+
+		# place some extra mountains
+		extra_mountains_base = len(mountain_locations) ** 0.8 / 700.0
+		num_extra_mountains = int(round(max(1, resource_multiplier * min(4, len(self.islands) * 0.5 + 2, extra_mountains_base + abs(self.session.random.gauss(0, 0.7))))))
+		place_objects(mountain_locations, num_extra_mountains, Mountain)
+
+	def _add_nature_objects(self, natural_resource_multiplier):
+		"""
+		Place trees, wild animals, fish deposits, clay deposits, and mountains.
+
+		@param natural_resource_multiplier: multiply the amount of fish deposits, clay deposits, and mountains by this.
+		"""
+
+		if not int(self.properties.get('RandomTrees', 1)):
+			return
+
+		self._add_resource_deposits(natural_resource_multiplier)
+		Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
+		FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
+		fish_directions = [(i, j) for i in xrange(-1, 2) for j in xrange(-1, 2)]
+
+		# add trees, wild animals, and fish
+		for island in self.islands:
+			for (x, y), tile in sorted(island.ground_map.iteritems()):
+				# add tree to every nth tile and an animal to one in every M trees
+				if self.session.random.randint(0, 2) == 0 and \
+				   Tree.check_build(self.session, tile, check_settlement = False):
+					building = Build(Tree, x, y, ownerless = True, island = island)(issuer = None)
+					building.finish_production_now() # make trees big and fill their inventory
+					if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
+						CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
+					if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
+						building.inventory.alter(RES.WILDANIMALFOOD_ID, -1)
+
+				if 'coastline' in tile.classes and self.session.random.random() < natural_resource_multiplier / 4.0:
+					# try to place fish: from the current position go to a random directions twice
+					for (x_dir, y_dir) in self.session.random.sample(fish_directions, 2):
+						# move a random amount in both directions
+						fish_x = x + x_dir * self.session.random.randint(3, 9)
+						fish_y = y + y_dir * self.session.random.randint(3, 9)
+						# now we have the location, check if we can build here
+						if (fish_x, fish_y) in self.ground_map:
+							Build(FishDeposit, fish_x, fish_y, ownerless = True, island = self)(issuer = None)
 
 	@decorators.make_constants()
 	def get_random_possible_ground_unit_position(self):

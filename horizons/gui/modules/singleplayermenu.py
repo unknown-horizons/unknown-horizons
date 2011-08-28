@@ -52,21 +52,18 @@ class SingleplayerMenu(object):
 		right_side = self.widgets['sp_%s' % show]
 		self.current.findChild(name="right_side_box").addChild(right_side)
 		if show == 'random':
-			game_settings = self.widgets['game_settings']
-			if self.current.findChild(name="game_settings") is None:
-				self.current.findChild(name="game_settings_box").addChild(game_settings)
 			show_ai_options = True
 			self.__setup_random_map_selection(right_side)
+			self.__setup_game_settings_selection()
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
-			game_settings = self.widgets['game_settings']
-			if self.current.findChild(name="game_settings") is None:
-				self.current.findChild(name="game_settings_box").addChild(game_settings)
+			
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
 			show_ai_options = True
+			self.__setup_game_settings_selection()
 		else:
 			choosable_locales = ['en', horizons.main.fife.get_locale()]
 			if show == 'campaign':
@@ -175,7 +172,8 @@ class SingleplayerMenu(object):
 		else: # free play/random map
 			horizons.main.start_singleplayer(map_file, playername, playercolor, ai_players = ai_players, \
 				human_ai = AI.HUMAN_AI, trader_enabled = self.widgets['game_settings'].findChild(name = 'free_trader').marked, \
-				pirate_enabled = self.widgets['game_settings'].findChild(name = 'pirates').marked)
+				pirate_enabled = self.widgets['game_settings'].findChild(name = 'pirates').marked, \
+				natural_resource_multiplier = self.__get_natural_resource_multiplier())
 
 	# random map options
 	map_sizes = [50, 100, 150, 200, 250]
@@ -220,6 +218,22 @@ class SingleplayerMenu(object):
 		on_preferred_island_size_slider_change()
 		on_island_size_deviation_slider_change()
 
+	# game options
+	resource_densities = [0.5, 0.7, 1, 1.4, 2]
+
+	def __setup_game_settings_selection(self):
+		widget = self.widgets['game_settings']
+		if self.current.findChild(name = widget.name) is None:
+			self.current.findChild(name = 'game_settings_box').addChild(widget)
+
+		resource_density_slider = widget.findChild(name = 'resource_density_slider')
+		def on_resource_density_slider_change():
+			widget.findChild(name = 'resource_density_lbl').text = _('Resource density: ') + \
+				unicode(self.resource_densities[int(resource_density_slider.getValue())]) + 'x'
+		resource_density_slider.capture(on_resource_density_slider_change)
+
+		on_resource_density_slider_change()
+
 	def __get_random_map_file(self):
 		map_size = self.map_sizes[int(self.current.findChild(name = 'map_size_slider').getValue())]
 		water_percent = self.water_percents[int(self.current.findChild(name = 'water_percent_slider').getValue())]
@@ -227,6 +241,9 @@ class SingleplayerMenu(object):
 		preferred_island_size = self.island_sizes[int(self.current.findChild(name = 'preferred_island_size_slider').getValue())]
 		island_size_deviation = self.island_size_deviations[int(self.current.findChild(name = 'island_size_deviation_slider').getValue())]
 		return random_map.generate_map(None, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
+
+	def __get_natural_resource_multiplier(self):
+		return self.resource_densities[int(self.widgets['game_settings'].findChild(name = 'resource_density_slider').getValue())]
 
 	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""

@@ -24,14 +24,6 @@
 			<StepSlider name="island_size_deviation_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
 		</HBox>
 		<!--<HBox><Label text="TODO: all values below this aren't implemented yet"/></HBox>
-		<HBox name="resource_density">
-			<Label name="resource_density_lbl" text="Resource density:" />
-			<Spacer />
-			<Label name="resource_density_lbl_few"   text="few"   />
-			<StepSlider name="resource_density_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
-			<Label name="resource_density_lbl_dense" text="dense" />
-		</HBox>
-
 		<HBox name="param_climate">
 			<Label name="climate_lbl" text="Climate zone:" />
 		<Spacer />

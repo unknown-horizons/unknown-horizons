@@ -166,7 +166,7 @@ class Session(LivingObject):
 	def save(self, savegame=None):
 		raise NotImplementedError
 
-	def load(self, savegame, players, trader_enabled, pirate_enabled, is_scenario=False, campaign=None):
+	def load(self, savegame, players, trader_enabled, pirate_enabled, natural_resource_multiplier, is_scenario=False, campaign=None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
@@ -207,7 +207,7 @@ class Session(LivingObject):
 			#       iterating a dict, and it must happen in the same order for mp games.
 			for i in sorted(players, lambda p1, p2: cmp(p1['id'], p2['id'])):
 				self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['ai'], i['difficulty'])
-			center = self.world.init_new_world(trader_enabled, pirate_enabled)
+			center = self.world.init_new_world(trader_enabled, pirate_enabled, natural_resource_multiplier)
 			self.view.center(center[0], center[1])
 		else:
 			# try to load scenario data
