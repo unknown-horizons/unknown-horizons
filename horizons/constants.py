@@ -60,7 +60,7 @@ class VERSION:
 
 	# change to sth like this for release, please don't add %s to the first string
 	#RELEASE_NAME = _("Unknown Horizons") + unicode(" %s")
-	#RELEASE_VERSION = u'2011.2'
+	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION= 40
