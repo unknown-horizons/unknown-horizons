@@ -58,9 +58,9 @@ class VERSION:
 	RELEASE_NAME    = "Unknown Horizons Version %s"
 	RELEASE_VERSION = _set_version()
 
-	# change to sth like this for release
-	# RELEASE_NAME = _("Unknown Horizons Alpha %s")
-	# RELEASE_VERSION = u'2011.2'
+	# change to sth like this for release, please don't add %s to the first string
+	#RELEASE_NAME = _("Unknown Horizons") + unicode(" %s")
+	#RELEASE_VERSION = u'2011.2'
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION= 40
