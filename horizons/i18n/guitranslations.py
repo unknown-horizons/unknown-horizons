@@ -76,16 +76,16 @@ def set_translations():
 			"weaver-1"                    : _("Weaver: Turns lamb wool into cloth.")},
 		"buildtab_increment2.xml" : {
 			"companies_label"             : _("Companies"),
-			"companies_label"             : _("Companies"),
+			"companies_label"             : _("Mining"),
 			"fields_label"                : _("Fields"),
 			"headline"                    : _("Settler buildings"),
 			"services_label"              : _("Services"),
 			"butchery-1"                  : _("Butchery: Needs pigs or cattle. Produces food."),
 			"cattlerun-1"                 : _("Cattle run: Raises cattle. Needs a farm."),
-			"charcoal-burning-1"          : _("Charcoal burning: Burns a lot of boards."),
+			"charcoal-burning-1"          : _("Charcoal burning: Burns a lot of boards to charcoal."),
 			"doctor-1"                    : _("Doctor: Treats diseases. Consumes herbs."),
 			"herbary-1"                   : _("Herbary: Produces herbs. Needs a farm."),
-			"iron-mine-1"                 : _("Iron mine: Gets iron ore from deposit."),
+			"iron-mine-1"                 : _("Mine: Gets ores from deposit."),
 			"pigsty-1"                    : _("Pigsty: Raises pigs. Needs a farm."),
 			"saltponds-1"                 : _("Salt ponds: Evaporates salt. Built on sea coast."),
 			"smeltery-1"                  : _("Smeltery: Refines all kind of ores."),
@@ -105,8 +105,8 @@ def set_translations():
 			"city_info_inhabitants"       : _("Inhabitants"),
 			"city_name"                   : _("Click to change the name of your settlement.")},
 		"menu_panel.xml" : {
-			"destroy_tool"                : _("Destroy"),
 			"build"                       : _("Build menu"),
+			"destroy_tool"                : _("Destroy"),
 			"diplomacyButton"             : _("Diplomacy"),
 			"gameMenuButton"              : _("Game menu"),
 			"logbook"                     : _("Captain's log")},
@@ -143,16 +143,14 @@ def set_translations():
 			"toggle_active_active"        : _("Pause"),
 			"toggle_active_inactive"      : _("Resume"),
 			"running_costs_label"         : _("Running costs")},
-		"boatbuilder_fisher.xml" : {
-			"headline"                    : _("Fishing boats"),
-			"headline_BB_fisher_ship1"    : _("Fishing boat"),
-			"headline_BB_fisher_ship2"    : _("Cutter"),
-			"headline_BB_fisher_ship3"    : _("Herring fisher"),
-			"headline_BB_fisher_ship4"    : _("Whaler"),
-			"BB_build_fisher_1"           : _("Build this ship!"),
-			"cancelButton"                : _("Not yet implemented!"),
-			"cancelButton"                : _("Not yet implemented!"),
-			"cancelButton"                : _("Not yet implemented!")},
+		"boatbuilder_trade.xml" : {
+			"headline"                    : _("Trade boats"),
+			"headline_BB_trade_ship1"     : _("Huker"),
+			"BB_build_trade_1"            : _("Build this ship!")},
+		"boatbuilder_war1.xml" : {
+			"headline"                    : _("War boats"),
+			"headline_BB_war1_ship1"      : _("Frigate"),
+			"BB_build_war1_1"             : _("Build this ship!")},
 		"select_trade_resource.xml" : {
 			"headline"                    : _("Select resources:")},
 		"tab_account.xml" : {
@@ -361,7 +359,7 @@ def set_translations():
 			"set27"                       : _("{L} = Toggle Captain's log"),
 			"set28"                       : _("{T} = Toggle translucency of ambient buildings"),
 			"set42"                       : _("{R} = Show player scores"),
-			"okButton"                    : _("Exit to main menu")},
+			"okButton"                    : _("Return")},
 		"ingamemenu.xml" : {
 			"help"                        : _("Help"),
 			"loadgame"                    : _("Load game"),
@@ -435,7 +433,7 @@ def set_translations():
 			"use_renderer_label"          : _("Used renderer:"),
 			"warning"                     : _("Please make sure that you know what you do."),
 			"okButton"                    : _("Apply"),
-			"cancelButton"                : _("Exit to main menu"),
+			"cancelButton"                : _("Return"),
 			"defaultButton"               : _("Reset to default settings")},
 		"select_savegame.xml" : {
 			"enter_filename_label"        : _("Enter filename:"),
@@ -457,11 +455,9 @@ def set_translations():
 		"sp_campaign.xml" : {
 			"choose_map_lbl"              : _("Choose a map to play:")},
 		"sp_free_maps.xml" : {
-			"headline_choose_map_lbl"     : _("Choose a map to play:"),
-			"headline_choose_opponents_lbl": _("Choose your opponents:")},
+			"headline_choose_map_lbl"     : _("Choose a map to play:")},
 		"sp_random.xml" : {
-			"headline_map_settings_lbl"   : _("Map settings:"),
-			"map_size_lbl"                : _("Map size:")},
+			"headline_map_settings_lbl"   : _("Map settings:")},
 		"sp_scenario.xml" : {
 			"choose_map_lbl"              : _("Choose a map to play:")},
 		"aidataselection.xml" : {

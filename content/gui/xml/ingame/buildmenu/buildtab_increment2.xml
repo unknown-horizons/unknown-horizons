@@ -18,13 +18,13 @@
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
-		<Label position="0,11" text="Companies" name="companies_label" />
+		<Label position="0,11" text="Mining" name="companies_label" />
 
 		<TooltipButton name="iron-mine-1" position="2,32"
 			up_image="content/gui/icons/buildmenu/ironmine.png"
 			hover_image="content/gui/icons/buildmenu/ironmine_h.png"
 			down_image="content/gui/icons/buildmenu/ironmine_h.png"
-			tooltip="Iron mine: Gets iron ore from deposit." />
+			tooltip="Mine: Gets ores from deposit." />
 		<TooltipButton name="smeltery-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/smeltery.png"
 			hover_image="content/gui/icons/buildmenu/smeltery_h.png"
@@ -39,28 +39,34 @@
 			up_image="content/gui/icons/buildmenu/charcoalburning.png"
 			hover_image="content/gui/icons/buildmenu/charcoalburning_h.png"
 			down_image="content/gui/icons/buildmenu/charcoalburning_h.png"
-			tooltip="Charcoal burning: Burns a lot of boards." />
+			tooltip="Charcoal burning: Burns a lot of boards to charcoal." />
 	</Container>
 
-	<Container position="20,107" size="125,80" >
-		<Label position="0,11" text="Services" name="services_label" />
+
+	<Container position="20,107" size="185,80" >
+		<Label position="0,11" text="Companies" name="companies_label" />
 
 		<HBox position="0,30"  padding="2">
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
-		<TooltipButton name="tavern-1" position="0,32"
-			up_image="content/gui/icons/buildmenu/tavern.png"
-			hover_image="content/gui/icons/buildmenu/tavern_h.png"
-			down_image="content/gui/icons/buildmenu/tavern_h.png"
-			tooltip="Tavern: Provides get-together." />
-		<TooltipButton name="doctor-1" position="56,32"
-			up_image="content/gui/icons/buildmenu/doctor.png"
-			hover_image="content/gui/icons/buildmenu/doctor_h.png"
-			down_image="content/gui/icons/buildmenu/doctor_h.png"
-			tooltip="Doctor: Treats diseases. Consumes herbs." />
-
+		<TooltipButton name="saltponds-1" position="2,32"
+			up_image="content/gui/icons/buildmenu/saltponds.png"
+			hover_image="content/gui/icons/buildmenu/saltponds_h.png"
+			down_image="content/gui/icons/buildmenu/saltponds_h.png"
+			tooltip="Salt ponds: Evaporates salt. Built on sea coast." />
+		<TooltipButton name="butchery-1" position="56,32"
+			up_image="content/gui/icons/buildmenu/butchery.png"
+			hover_image="content/gui/icons/buildmenu/butchery_h.png"
+			down_image="content/gui/icons/buildmenu/butchery_h.png"
+			tooltip="Butchery: Needs pigs or cattle. Produces food." />
+		<TooltipButton name="tobacconist-1" position="110,32"
+			up_image="content/gui/icons/buildmenu/tobacconist.png"
+			hover_image="content/gui/icons/buildmenu/tobacconist_h.png"
+			down_image="content/gui/icons/buildmenu/tobacconist_h.png"
+			tooltip="Tobacconist: Produces tobaccos out of tobacco." />
 	</Container>
 
 
@@ -97,30 +103,25 @@
 	</Container>
 
 
-	<Container position="20,257" size="185,80" >
-		<Label position="0,11" text="Companies" name="companies_label" />
+	<Container position="20,257" size="125,80" >
+		<Label position="0,11" text="Services" name="services_label" />
 
 		<HBox position="0,30"  padding="2">
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
-			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
-		<TooltipButton name="saltponds-1" position="2,32"
-			up_image="content/gui/icons/buildmenu/saltponds.png"
-			hover_image="content/gui/icons/buildmenu/saltponds_h.png"
-			down_image="content/gui/icons/buildmenu/saltponds_h.png"
-			tooltip="Salt ponds: Evaporates salt. Built on sea coast." />
-		<TooltipButton name="butchery-1" position="56,32"
-			up_image="content/gui/icons/buildmenu/butchery.png"
-			hover_image="content/gui/icons/buildmenu/butchery_h.png"
-			down_image="content/gui/icons/buildmenu/butchery_h.png"
-			tooltip="Butchery: Needs pigs or cattle. Produces food." />
-		<TooltipButton name="tobacconist-1" position="110,32"
-			up_image="content/gui/icons/buildmenu/tobacconist.png"
-			hover_image="content/gui/icons/buildmenu/tobacconist_h.png"
-			down_image="content/gui/icons/buildmenu/tobacconist_h.png"
-			tooltip="Tobacconist: Produces tobaccos out of tobacco." />
+		<TooltipButton name="tavern-1" position="0,32"
+			up_image="content/gui/icons/buildmenu/tavern.png"
+			hover_image="content/gui/icons/buildmenu/tavern_h.png"
+			down_image="content/gui/icons/buildmenu/tavern_h.png"
+			tooltip="Tavern: Provides get-together." />
+		<TooltipButton name="doctor-1" position="56,32"
+			up_image="content/gui/icons/buildmenu/doctor.png"
+			hover_image="content/gui/icons/buildmenu/doctor_h.png"
+			down_image="content/gui/icons/buildmenu/doctor_h.png"
+			tooltip="Doctor: Treats diseases. Consumes herbs." />
+
 	</Container>
 
 </Container>
