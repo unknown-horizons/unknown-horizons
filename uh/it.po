@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-28 23:41+0200\n"
+"PO-Revision-Date: 2011-08-28 23:42+0200\n"
 "Last-Translator: tagarista <tagarista@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -720,15 +720,17 @@ msgstr "Produttore di utensili: Produce utensili dal ferro."
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Game start"
-msgstr ""
+msgstr "Inizio Gioco"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "È necessario trovare una soluzione prima possibile costruire edifici!"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
+"Seleziona la tua nave e avvicinarsi alla costa tramite tasto destro del "
+"mouse."
 
 #: horizons/i18n/guitranslations.py:100
 msgid "Afterwards, press the large button in the ship overview tab."
