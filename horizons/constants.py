@@ -257,7 +257,6 @@ class AI:
 	HIGHLIGHT_PLANS = False # whether to show the AI players' plans on the map
 	AI_PLAYERS = 1 # number of AI players in a game started from the command line
 	HUMAN_AI = False # whether the human player is controlled by the AI
-	MAX_AI_COUNT = 8
 
 class TRADER: # check resource values: ./development/print_db_data.py res
 	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
