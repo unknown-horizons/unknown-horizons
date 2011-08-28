@@ -252,11 +252,11 @@ class MESSAGES:
 	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
 	LOGBOOK_DEFAULT_DELAY = 4 # delay between condition fulfilled and logbook popping up
 
-# AI
+# AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:
-	HIGHLIGHT_PLANS = False
-	AI_PLAYERS = 1
-	HUMAN_AI = False
+	HIGHLIGHT_PLANS = False # whether to show the AI players' plans on the map
+	AI_PLAYERS = 1 # number of AI players in a game started from the command line
+	HUMAN_AI = False # whether the human player is controlled by the AI
 
 class TRADER: # check resource values: ./development/print_db_data.py res
 	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
