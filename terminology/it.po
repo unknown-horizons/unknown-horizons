@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-06-05 11:23+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2011-08-28 23:11+0200\n"
+"Last-Translator: tagarista <tagarista@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -229,9 +229,8 @@ msgid "produce"
 msgstr "produrre"
 
 # 87%
-#, fuzzy
 msgid "produced"
-msgstr "produrre"
+msgstr "prodotto"
 
 msgid "pasture"
 msgstr "pascolo"
@@ -294,13 +293,13 @@ msgid "settler"
 msgstr "colono"
 
 msgid "citizen"
-msgstr ""
+msgstr "cittadino"
 
 msgid "merchant"
-msgstr ""
+msgstr "mercante"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocratico"
 
 #
 msgid "refresh"
@@ -314,7 +313,7 @@ msgid "run"
 msgstr "correre"
 
 msgid "slot"
-msgstr ""
+msgstr "slot"
 
 msgid "stop"
 msgstr "stop"
@@ -435,7 +434,7 @@ msgid "grow"
 msgstr "coltivare"
 
 msgid "hold"
-msgstr ""
+msgstr "tenere"
 
 # 80%
 #, fuzzy
@@ -502,98 +501,98 @@ msgid "red"
 msgstr "rosso"
 
 msgid "check"
-msgstr ""
+msgstr "controlla"
 
 msgid "connection"
-msgstr ""
+msgstr "connessione"
 
 msgid "no"
-msgstr ""
+msgstr "no"
 
 msgid "tax"
-msgstr ""
+msgstr "tassa"
 
 msgid "feature"
 msgstr "caratteristica"
 
 msgid "reached"
-msgstr ""
+msgstr "raggiungere"
 
 msgid "slider"
-msgstr ""
+msgstr "cursore"
 
 msgid "condition"
-msgstr ""
+msgstr "condizione"
 
+# Dipende dal contesto della frase.
 msgid "consume"
-msgstr ""
+msgstr "consumare"
 
 msgid "contact"
-msgstr ""
+msgstr "contatto"
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialogo"
 
 msgid "issues"
-msgstr ""
+msgstr "problemi"
 
 msgid "minimap"
 msgstr "minimappa"
 
 msgid "playing"
-msgstr ""
+msgstr "giocando"
 
 # 75%
-#, fuzzy
 msgid "ruin"
-msgstr "correre"
+msgstr "rovina"
 
+#, fuzzy
 msgid "seed"
-msgstr ""
+msgstr "seme"
 
 msgid "temporarily"
-msgstr ""
+msgstr "temporaneamente"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "laghi salati"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tabacco"
 
 msgid "cattle"
-msgstr ""
+msgstr "bestiame"
 
 msgid "pig"
-msgstr ""
+msgstr "maiale"
 
 msgid "herbs"
-msgstr ""
+msgstr "erbe"
 
 msgid "herbary"
-msgstr ""
+msgstr "erborista"
 
 msgid "butchery"
-msgstr ""
+msgstr "macellaio"
 
 msgid "doctor"
-msgstr ""
+msgstr "dottore"
 
 msgid "education"
-msgstr ""
+msgstr "educare"
 
 # 75%
-#, fuzzy
 msgid "clay"
-msgstr "giocare"
+msgstr "argilla"
 
 msgid "charcoal"
-msgstr ""
+msgstr "carbone"
 
 msgid "iron"
-msgstr ""
+msgstr "ferro"
 
 msgid "ore"
-msgstr ""
+msgstr "minerale"
 
 #~ msgid "lamb"
 #~ msgstr "agnello"

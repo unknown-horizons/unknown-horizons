@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-05-25 00:42+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-08-28 23:41+0200\n"
+"Last-Translator: tagarista <tagarista@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -27,15 +27,15 @@ msgstr "Alcuni dei tuoi cambiamenti richiedono un riavvio di Unknown Horizons."
 
 #: horizons/engine.py:72
 msgid "Restore default settings"
-msgstr ""
+msgstr "Ripristinare le impostazioni predefinite"
 
 #: horizons/engine.py:73
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Questo cancellerà tutti i cambiamenti che hai fatto finora."
 
 #: horizons/engine.py:74
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Sei sicuro di voler continuare?"
 
 #: horizons/engine.py:144
 msgid "System default"
@@ -63,31 +63,37 @@ msgstr "La lingua configurata %(lang)s a %(place)s non può essere caricata"
 
 #: horizons/engine.py:483
 msgid "Invalid network port"
-msgstr ""
+msgstr "Porta di rete invalida"
 
 #: horizons/engine.py:484
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"La porta da te specificata non è valida. Deve essere un numero compreso tra "
+"1 e 65535."
 
 #: horizons/engine.py:485
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
+"Si prega di controllare la porta inserita e assicurarsi che sia nel range "
+"specificato."
 
 #: horizons/engine.py:497
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Fallito applicazione della nuova rete dati."
 
 #: horizons/engine.py:498 horizons/gui/modules/multiplayermenu.py:57
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr ""
+msgstr "Rete non può essere inizializzato con la configurazione attuale."
 
 #: horizons/engine.py:499
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Controllare i dati inseriti nella sezione Network."
 
 #: horizons/engine.py:502
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Le porte inferiori alla 1024 richiedono spesso permessi speciali, prova una "
+"porta superiore alla 1024"
 
 #: horizons/gui/gui.py:130
 msgid "Error"
@@ -147,12 +153,12 @@ msgstr "Conferma di sovrascrittura"
 
 #: horizons/gui/gui.py:272
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Seleziona un salvataggio o fare clic su Annulla."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:272
 msgid "Select a savegame"
-msgstr ""
+msgstr "seleziona salvataggio"
 
 #: horizons/gui/gui.py:340 horizons/i18n/guitranslations.py:308
 #: horizons/i18n/guitranslations.py:442
@@ -218,27 +224,34 @@ msgstr "Impossibile cancellare il salvataggio!"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "impossibile trovare la libreria pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"la modalità multiplayer richiede la libreria \"pyenet\" , che non è stato "
+"trovato sul vostro sistema."
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Utente Linux : Provare a installare pyenet tramite il vostro gestore di "
+"pacchetti."
 
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Utente Windows : Attualmente non esiste un supporto adeguato per Windows"
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Impossibile inizializzare il collegamento in rete."
 
 #: horizons/gui/modules/multiplayermenu.py:58
 msgid "Check the data you entered in the Network section in the settings dialogue."
 msgstr ""
+"Controllare i dati inseriti nella sezione Rete nel dialogo delle "
+"impostazioni."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
@@ -247,6 +260,10 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Impossibile connettersi al server master. Si prega di verificare la "
+"connessione internet. Se va bene, significa che il nostro server principale "
+"è temporaneamente inattivo.\n"
+"Details: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
@@ -374,7 +391,7 @@ msgstr "Confermare l'ordine"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Riempire campi correlati"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -387,7 +404,7 @@ msgstr "Commercio"
 
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:175
 msgid "Settlement inventory"
-msgstr ""
+msgstr "liquidazione delle scorte"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
@@ -400,15 +417,15 @@ msgstr "Carregar/Descarregar:"
 
 #: horizons/gui/tabs/inventorytab.py:86
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "compra/vendi"
 
 #: horizons/gui/tabs/inventorytab.py:120
 msgid "Equip weapon"
-msgstr ""
+msgstr "Equipaggiare arma"
 
 #: horizons/gui/tabs/inventorytab.py:123
 msgid "Unequip weapon"
-msgstr ""
+msgstr "disequipaggiare arma"
 
 #: horizons/gui/tabs/mainsquaretabs.py:76 horizons/i18n/guitranslations.py:160
 msgid "Account"
@@ -423,16 +440,16 @@ msgstr "Panoramica dei coloni"
 #: horizons/i18n/guitranslations.py:195 horizons/i18n/guitranslations.py:210
 #: horizons/i18n/guitranslations.py:228
 msgid "Allow upgrades"
-msgstr ""
+msgstr "permetti aggiornamenti"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Non permettere l'aggiornamento"
 
 #: horizons/gui/tabs/mainsquaretabs.py:228
 #: horizons/i18n/guitranslations.py:197
 msgid "Sailors"
-msgstr ""
+msgstr "marinai"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:233
@@ -458,8 +475,9 @@ msgid "Branch office overview"
 msgstr "Panoramica filiale"
 
 #: horizons/gui/tabs/overviewtab.py:141
+#, fuzzy
 msgid "Main square overview"
-msgstr ""
+msgstr "Principali panoramica piazza"
 
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:218
 msgid "Ship overview"
@@ -467,9 +485,8 @@ msgstr "Panoramica nave"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:225
-#, fuzzy
 msgid "Unit overview"
-msgstr "Panoramica nave"
+msgstr "Panoramica unità"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -481,7 +498,7 @@ msgstr "Demolisci edificio"
 
 #: horizons/gui/tabs/selectmultitab.py:53
 msgid "Selected Units"
-msgstr ""
+msgstr "seleziona unità"
 
 #: horizons/gui/widgets/buysellinventory.py:84
 #: horizons/gui/widgets/inventory.py:103
@@ -491,35 +508,39 @@ msgstr "Limite: %st per posizione"
 
 #: horizons/gui/widgets/logbook.py:149
 msgid "Emptiness"
-msgstr ""
+msgstr "vuoto"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Non c'è niente di scritto nel tuo diario di bordo ancora!"
 
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:314
 msgid "Start route"
-msgstr ""
+msgstr "Inizio percorso"
 
 #: horizons/gui/widgets/routeconfig.py:68
 msgid "Stop route"
-msgstr ""
+msgstr "Stop percorso"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "nessuno"
 
 #: horizons/i18n/guitranslations.py:42
+#, fuzzy
 msgid "String Previewer Tool for Scenario files"
-msgstr ""
+msgstr "Stringa Strumento Previewer per i file Scenario"
 
+# load / reload = carica / ricarica
 #: horizons/i18n/guitranslations.py:43
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
+"selezionare uno scenario e cliccare su load / reload per aggiornare i "
+"messaggi nel registro del capitano"
 
 #: horizons/i18n/guitranslations.py:44
 msgid "load/reload"
-msgstr ""
+msgstr "carica/ricarica"
 
 #: horizons/i18n/guitranslations.py:46 horizons/i18n/guitranslations.py:61
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:79
@@ -631,7 +652,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:74
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Torre di legno: Difende la tua base."
 
 #: horizons/i18n/guitranslations.py:75
 msgid "Village school: Provides education."
@@ -647,11 +668,11 @@ msgstr "Edifici dei Coloni"
 
 #: horizons/i18n/guitranslations.py:83
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Macelleria: Bisogno di maiali o bestiame. Produce cibo."
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Eseguire Bestiame : Aumenta bestiame. Ha bisogno di una fattoria."
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Charcoal burning: Burns a lot of boards."
@@ -659,11 +680,11 @@ msgstr "Bruciatore di carbone: Brucia le assi."
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Doctor: Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Dottore : Cura le malattie. Consuma erbe."
 
 #: horizons/i18n/guitranslations.py:87
 msgid "Herbary: Produces herbs. Needs a farm."
-msgstr ""
+msgstr "Erboristeria : Produce erbe. Ha bisogno di una fattoria."
 
 #: horizons/i18n/guitranslations.py:88
 msgid "Iron mine: Gets iron ore from deposit."
@@ -671,11 +692,11 @@ msgstr "Miniera di ferro: Ottiene ferro dal deposito."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Porcile : Aumenta maiali. Ha bisogno di una fattoria."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "sale stagni: il sale Evapora. Costruire sulla costa del mare."
 
 #: horizons/i18n/guitranslations.py:91
 msgid "Smeltery: Refines all kind of ores."
@@ -687,11 +708,11 @@ msgstr "Taverna: Consente incontri."
 
 #: horizons/i18n/guitranslations.py:93
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Campo di Tobacco : produce tabacco. Ha bisogno di fattoria"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Tabaccaio: produce tabacchi da tabacco."
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Toolmaker: Produces tools out of iron."
