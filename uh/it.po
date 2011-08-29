@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-29 12:47+0200\n"
+"PO-Revision-Date: 2011-08-29 13:33+0200\n"
 "Last-Translator: tagarista <tagarista@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -1966,14 +1966,17 @@ msgstr "Opzione AI"
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
 msgstr ""
+"Utilizza <ai_players> giocatori AI (esclude il possibile uomo-AI ibridi; "
+"default 1)."
 
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
 msgstr ""
+"Rende il player umano in player umano-AI ibrido (solo per sviluppatori)."
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
-msgstr ""
+msgstr "Mostra in evidenzia i piani AI (solo per lo sviluppo)."
 
 #: run_uh.py:120
 msgid "Development options"
@@ -2003,11 +2006,11 @@ msgstr "Abilita il profiling (solo per sviluppatori)."
 
 #: run_uh.py:133
 msgid "Run the game for <max_ticks> ticks."
-msgstr ""
+msgstr "Eseguire il gioco per <max_ticks> ticks."
 
 #: run_uh.py:135
 msgid "Enable the string previewer tool for scenario writers"
-msgstr ""
+msgstr "Attivare lo strumento visualizzatore stringa per \"sceneggiatori\""
 
 #: run_uh.py:157
 msgid "Unknown Horizons crashed."
@@ -2029,15 +2032,20 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Errore: Impossibile trovare le librerie richieste"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Siamo spiacenti di informarvi che la libreria  richiesta da Unknown "
+"Horizons, non è presente e deve essere installato."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Installazione per gli utenti windows è avviabile nel seguente sito  "
+"\"http://pyyaml.org/wiki/PyYAML\", Per utenti Linux dovrebbe trovare nel loro "
+"sistema di gestione pachetti sotto il nome  \"pyyaml\" o \"python-yaml\""
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
@@ -2061,11 +2069,11 @@ msgstr "Deposito di mattoni"
 
 #: sqlite/Building
 msgid "Butchery"
-msgstr ""
+msgstr "Macellaio"
 
 #: sqlite/Building
 msgid "Cattle Run"
-msgstr ""
+msgstr "Esegui il bestiame"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
@@ -2085,7 +2093,7 @@ msgstr "Distilleria"
 
 #: sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Dottore"
 
 # Building
 #: sqlite/Building
@@ -2102,11 +2110,11 @@ msgstr "Tenda dei pescatori"
 
 #: sqlite/Building
 msgid "Gravel Path"
-msgstr ""
+msgstr "Percorso di ghiaia"
 
 #: sqlite/Building
 msgid "Herbary"
-msgstr ""
+msgstr "Erboristeria"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -2146,7 +2154,7 @@ msgstr "Padiglione"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Porcile"
 
 # Building
 #: sqlite/Building
@@ -2159,7 +2167,7 @@ msgstr "Bastione"
 
 #: sqlite/Building
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Laghi salati"
 
 #: sqlite/Building
 msgid "Signal Fire"
@@ -2188,17 +2196,16 @@ msgstr "Tenda"
 
 # 77%
 #: sqlite/Building
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Tenda_danneggiata"
+msgstr "tenda Ruin"
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Campo di Tabacco"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabaccaio"
 
 #: sqlite/Building
 msgid "Toolmaker"
@@ -2219,7 +2226,7 @@ msgstr "Tenda del Tessitore"
 
 #: sqlite/Building
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Torre di Legno"
 
 #: sqlite/Colors
 msgid "black"
@@ -2255,7 +2262,7 @@ msgstr "giallo"
 
 #: sqlite/Messages
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} e ${player2} sono ora ${status}"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
@@ -2282,7 +2289,7 @@ msgstr "Alcuni coloni se ne sono andati."
 
 #: sqlite/Messages
 msgid "You can also drag roads."
-msgstr ""
+msgstr "È anche possibile trascinare le strade."
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
@@ -2303,7 +2310,7 @@ msgstr "I tuoi coloni hanno raggiunto il livello ${level}."
 
 #: sqlite/Resources
 msgid "acorns"
-msgstr ""
+msgstr "ghiande"
 
 #: sqlite/Resources
 msgid "boards"
@@ -2315,15 +2322,15 @@ msgstr "mattoni"
 
 #: sqlite/Resources
 msgid "cannon"
-msgstr ""
+msgstr "cannone"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr ""
+msgstr "bestiame"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "bestiame da macello"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -2349,15 +2356,15 @@ msgstr "comunità"
 
 #: sqlite/Resources
 msgid "dagger"
-msgstr ""
+msgstr "pugnale"
 
 #: sqlite/Resources
 msgid "deer food A"
-msgstr ""
+msgstr "Cervo cibo A"
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "carne di cervo"
 
 # Resources
 #: sqlite/Resources
@@ -2392,11 +2399,11 @@ msgstr "felicità"
 
 #: sqlite/Resources
 msgid "herbs"
-msgstr ""
+msgstr "erbe"
 
 #: sqlite/Resources
 msgid "iron deposit"
-msgstr ""
+msgstr "deposito di ferro"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -2416,15 +2423,15 @@ msgstr "liquore"
 
 #: sqlite/Resources
 msgid "medical herbs"
-msgstr ""
+msgstr "erbe mediche"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "maiali"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "maiali da macello"
 
 # Resources
 #: sqlite/Resources
@@ -2433,7 +2440,7 @@ msgstr "patate"
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "sale"
 
 # Resources
 #: sqlite/Resources
@@ -2442,7 +2449,7 @@ msgstr "zucchero"
 
 #: sqlite/Resources
 msgid "sugar cane"
-msgstr ""
+msgstr "canna da zucchero"
 
 #: sqlite/Resources
 msgid "textile"
@@ -2450,15 +2457,15 @@ msgstr "tessile"
 
 #: sqlite/Resources
 msgid "tobacco leaves"
-msgstr ""
+msgstr "foglie di tabacco"
 
 #: sqlite/Resources
 msgid "tobacco plants"
-msgstr ""
+msgstr "piante di tabacco"
 
 #: sqlite/Resources
 msgid "tobaccos"
-msgstr ""
+msgstr "tabacchi"
 
 #: sqlite/Resources
 msgid "tools"
@@ -2474,15 +2481,15 @@ msgstr "lana"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocratico"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "cittadino"
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "mercante"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
