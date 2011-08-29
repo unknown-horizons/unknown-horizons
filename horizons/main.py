@@ -46,7 +46,7 @@ from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER
+from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER
 from horizons.network.networkinterface import NetworkInterface
 
 # private module pointers of this module
@@ -213,9 +213,9 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 
 	# add AI players with a distinct color; if none can be found then use black
 	for num in xrange(ai_players):
-		color = Color[7] # if none can be found then be black
+		color = Color[COLORS.BLACK] # if none can be found then be black
 		for possible_color in Color:
-			if possible_color == Color[7]:
+			if possible_color == Color[COLORS.BLACK]:
 				continue # black is used by the trader and the pirate
 			available = True
 			for player in players:
