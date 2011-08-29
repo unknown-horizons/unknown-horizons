@@ -32,6 +32,7 @@ from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.playersoverview import PlayersOverview
+from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.util.gui import LazyWidgetsDict
 from horizons.constants import RES
@@ -78,6 +79,7 @@ class IngameGui(LivingObject):
 		self.logbook.add_pause_request_listener(Callback(self.session.speed_pause))
 		self.logbook.add_unpause_request_listener(Callback(self.session.speed_unpause))
 		self.players_overview = PlayersOverview(self.session)
+		self.players_ships = PlayersShips(self.session)
 		self.scenario_chooser = ScenarioChooser(self.session)
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,

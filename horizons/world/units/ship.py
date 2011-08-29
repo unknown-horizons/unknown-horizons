@@ -257,7 +257,11 @@ class ShipRoute(object):
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
 
-
+	def get_ship_status(self):
+		"""Return the current status of the ship."""
+		if self.ship.is_moving():
+			return _('Trade route: moving to ') + self.ship.get_location_based_status(self.ship.get_move_target())
+		return _('Trade route: waiting at ') + self.ship.get_location_based_status(self.ship.position)
 
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
@@ -433,6 +437,32 @@ class Ship(NamedObject, StorageHolder, Unit):
 		if self in ships:
 			ships.remove(self)
 		return ships
+
+	def get_location_based_status(self, position):
+		branch_offices = self.session.world.get_branch_offices(position, self.radius, self.owner, True)
+		if branch_offices:
+			branch_office = branch_offices[0] # TODO: don't ignore the other possibilities
+			player_suffix = ''
+			if branch_office.owner is not self.owner:
+				player_suffix = ' (' + branch_office.owner.name + ')'
+			return branch_office.settlement.name + player_suffix
+		return None
+
+	def get_status(self):
+		"""Return the current status of the ship."""
+		if hasattr(self, 'route') and self.route.enabled:
+			return self.route.get_ship_status()
+		elif self.is_moving():
+			target = self.get_move_target()
+			location_based_status = self.get_location_based_status(target)
+			if location_based_status is not None:
+				return _('Moving to ') + location_based_status
+			return _('Moving to ') + ('%d, %d' % (target.x, target.y))
+		else:
+			location_based_status = self.get_location_based_status(self.position)
+			if location_based_status is not None:
+				return _('Idle at ') + location_based_status
+			return _('Idle at ') + ('%d, %d' % (self.position.x, self.position.y))
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
