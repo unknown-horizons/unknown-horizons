@@ -213,7 +213,7 @@ class GROUND:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176]
+	TICK_RATES = [8, 16, 32, 48, 64, 96, 128, 176] #starting at 0.5x with max of 11x
 
 class COLORS:
 	BLACK = 9

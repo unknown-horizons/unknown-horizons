@@ -251,17 +251,19 @@ class Session(LivingObject):
 			up_icon.set_inactive()
 			down_icon.set_inactive()
 		elif tps == GAME_SPEED.TICKS_PER_SECOND: # normal speed, 1x
-			up_icon.set_active()
-			down_icon.set_inactive() # do not display label '1x'!
+			up_icon.set_active() # do not display label '1x'!
 		else:
-			text = unicode(tps/GAME_SPEED.TICKS_PER_SECOND) + u'x' # 2x, 4x, ...
-			#FIXME Yes, this is just fugly harcoded stuff. Sorry. Please improve
-			# by introducing a query for whether we are at max speed currently.
-			if text == u'4x':
+			text = unicode("%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND))
+			#%1g: displays 0.5x, but 2x and not 2.0x
+			index = GAME_SPEED.TICK_RATES.index(tps)
+			if index + 1 >= len(GAME_SPEED.TICK_RATES):
 				up_icon.set_inactive()
 			else:
 				up_icon.set_active()
-			down_icon.set_active()
+			if index > 0:
+				down_icon.set_active()
+			else:
+				down_icon.set_inactive()
 		self.ingame_gui.display_game_speed(text)
 
 
