@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-29 12:40+0200\n"
+"PO-Revision-Date: 2011-08-29 12:47+0200\n"
 "Last-Translator: tagarista <tagarista@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -475,9 +475,8 @@ msgid "Branch office overview"
 msgstr "Panoramica filiale"
 
 #: horizons/gui/tabs/overviewtab.py:141
-#, fuzzy
 msgid "Main square overview"
-msgstr "Principali panoramica piazza"
+msgstr "Panoramica della piazza principale"
 
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:218
 msgid "Ship overview"
@@ -1884,7 +1883,7 @@ msgstr "File usato da un altro processo"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "Il file del salvataggio è attualmente usato da un altro programma."
 
 #: horizons/world/units/ship.py:455
 msgid "Trader"
@@ -1892,7 +1891,7 @@ msgstr "Commerciante"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
-msgstr "Abilita messaggi di debug sullo stderr e su un file di log."
+msgstr "Abilita messaggi di debug sullo stderr e sul file di log."
 
 #: run_uh.py:81
 msgid "Specify the path to FIFE root directory."
@@ -1932,15 +1931,15 @@ msgstr "Avvia una mappa casuale."
 
 #: run_uh.py:96
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "Avvio mappa casuale con seme <seed>."
 
 #: run_uh.py:98
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr ""
+msgstr "Avvio <scenario>. <scenario> is the nome scenario."
 
 #: run_uh.py:100
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr ""
+msgstr "Avvio <campaign>. <campaign> è il nome campagna."
 
 #: run_uh.py:102
 msgid "Starts the development map without displaying the main menu."
@@ -1957,10 +1956,12 @@ msgstr "Carica l'ultimo salvataggio rapido."
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Imposta il seme utilizzato per generare gli alberi, i pesci e altre risorse "
+"naturali."
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "Opzione AI"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
