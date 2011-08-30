@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-18 17:58+0200\n"
+"PO-Revision-Date: 2011-08-26 21:05+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -456,7 +456,7 @@ msgstr "Pioniere"
 #: horizons/gui/tabs/mainsquaretabs.py:238
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:328
 msgid "Settlers"
-msgstr ""
+msgstr "Siedler"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:393
 #: horizons/i18n/guitranslations.py:267
@@ -983,7 +983,7 @@ msgstr "3 Bewohner"
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
 #: horizons/i18n/guitranslations.py:221
 msgid "residents"
-msgstr ""
+msgstr "Bewohner"
 
 #: horizons/i18n/guitranslations.py:189 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:222 horizons/i18n/guitranslations.py:249
@@ -2254,7 +2254,7 @@ msgstr "Eine neue Welt wurde erschaffen."
 
 #: sqlite/Messages
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "Einer Eurer Siedler hat keinen Zugang zu einem Marktplatz."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
@@ -2320,7 +2320,7 @@ msgstr "Lehm"
 
 #: sqlite/Resources
 msgid "clay deposit"
-msgstr ""
+msgstr "Lehmvorkommen"
 
 #: sqlite/Resources
 msgid "coins"
