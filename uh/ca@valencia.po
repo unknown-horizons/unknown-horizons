@@ -449,9 +449,11 @@ msgstr ""
 msgid "Ship overview"
 msgstr "Resum"
 
+# 76%
 #: horizons/gui/tabs/overviewtab.py:225
+#, fuzzy
 msgid "Unit overview"
-msgstr ""
+msgstr "Resum"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -948,10 +950,12 @@ msgstr ""
 msgid "3 residents"
 msgstr ""
 
+# 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
 #: horizons/i18n/guitranslations.py:221
+#, fuzzy
 msgid "residents"
-msgstr ""
+msgstr "Residentes"
 
 #: horizons/i18n/guitranslations.py:189 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:222 horizons/i18n/guitranslations.py:249
@@ -1170,9 +1174,11 @@ msgstr ""
 msgid "Money"
 msgstr ""
 
+# 80%
 #: horizons/i18n/guitranslations.py:326
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Nome:"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Resources"
