@@ -39,7 +39,8 @@ In this VBox a line is added per player in the following format:
 -->
 
 		<Spacer />
-		<HBox max_size="80,36">
+		<HBox>
+			<Spacer min_size="627" />
 			<CancelButton tooltip="Close" />
 		</HBox>
 	</VBox>
