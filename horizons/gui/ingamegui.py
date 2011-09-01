@@ -63,6 +63,7 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).__init__()
 		self.session = session
 		self.main_gui = gui
+		self.main_widget = None
 		self.widgets = {}
 		self.tabwidgets = {}
 		self.settlement = None
@@ -468,9 +469,19 @@ class IngameGui(LivingObject):
 	def on_escape(self):
 		if self.logbook.is_visible():
 			self.logbook.hide()
+		elif self.main_widget:
+			self.main_widget.hide()
 		else:
 			return False
 		return True
+
+	def on_switch_main_widget(self, widget):
+		"""The main widget has been switched to the given one (possible None)."""
+		if self.main_widget: # close the old one if it exists
+			old_main_widget = self.main_widget
+			self.main_widget = None
+			old_main_widget.hide()
+		self.main_widget = widget
 
 	def display_game_speed(self, text):
 		"""

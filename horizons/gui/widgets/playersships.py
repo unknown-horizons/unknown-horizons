@@ -21,67 +21,42 @@
 
 from fife.extensions.pychan import widgets
 
-from horizons.util.gui import load_uh_widget
+from horizons.constants import GAME_SPEED
+from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util import Callback
-from horizons.constants import GAME_SPEED
 from horizons.util.python import decorators
 from horizons.world.units.fightingship import FightingShip
 
-class PlayersShips(object):
-	"""
-	Widget that shows a list of the player's ships.
-	"""
+class PlayersShips(StatsWidget):
+	"""Widget that shows a list of the player's ships."""
+
+	widget_file_name = 'ships_list.xml'
 
 	def __init__(self, session):
-		super(PlayersShips, self).__init__()
-		self.session = session
-		self.player = None # fill this in on the first tick real refresh tick because it hasn't been initialised yet
-		self._initialised = False
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = 1)
-
-	def _refresh_tick(self):
-		if self.player is None:
-			self.player = self.session.world.player
-		if self._initialised:
-			self.refresh()
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = GAME_SPEED.TICKS_PER_SECOND / 3)
-
-	def show(self):
-		self._gui.show()
-
-	def hide(self):
-		self._gui.hide()
+		super(PlayersShips, self).__init__(session)
+		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = 1, loops = -1, loop_interval = GAME_SPEED.TICKS_PER_SECOND / 3)
 
 	def refresh(self):
+		super(PlayersShips, self).refresh()
+		player = self.session.world.player
 		self._clear_entries()
-		self._gui.findChild(name = 'headline').text = self.player.name + _('\'s ships')
+		self._gui.findChild(name = 'headline').text = player.name + _('\'s ships')
 
 		sequence_number = 0
 		events = {}
-		for ship in self.player.session.world.ships:
-			if ship.owner is self.player and ship.is_selectable:
+		for ship in self.session.world.ships:
+			if ship.owner is player and ship.is_selectable:
 				sequence_number += 1
-				name_label = self._add_ship_line_to_gui(self._gui.findChild(name = 'ships_vbox'), ship, sequence_number)
+				name_label = self._add_line_to_gui(ship, sequence_number)
 				events['%s/mouseClicked' % name_label.name] = Callback(self._go_to_ship, ship)
 		self._gui.mapEvents(events)
+		self._content_vbox.adaptLayout()
 
 	def _go_to_ship(self, ship):
 		self.session.view.center(ship.position.x, ship.position.y)
 
-	def is_visible(self):
-		return self._gui.isVisible()
-
-	def toggle_visibility(self):
-		if not self._initialised:
-			self._initialised = True
-			self._init_gui()
-		if self.is_visible():
-			self.hide()
-		else:
-			self.show()
-
-	def _add_ship_line_to_gui(self, gui, ship, sequence_number):
+	def _add_line_to_gui(self, ship, sequence_number):
 		sequence_number_label = widgets.Label(name = 'sequence_number_%d' % ship.worldid)
 		sequence_number_label.text = unicode(sequence_number)
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
@@ -122,19 +97,7 @@ class PlayersShips(object):
 		hbox.addChild(weapons)
 		hbox.addChild(health)
 		hbox.addChild(status)
-		gui.addChild(hbox)
-		gui.adaptLayout()
+		self._content_vbox.addChild(hbox)
 		return ship_name
-
-	def _init_gui(self):
-		self._gui = load_uh_widget("ships_list.xml")
-		self._gui.mapEvents({
-		  'cancelButton' : self.hide,
-		  })
-		self._gui.position_technique = "automatic"
-		self.refresh()
-
-	def _clear_entries(self):
-		self._gui.findChild(name='ships_vbox').removeAllChildren()
 
 decorators.bind_all(PlayersShips)

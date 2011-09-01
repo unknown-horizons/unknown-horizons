@@ -336,6 +336,9 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in \
 	                 ("game.sql", "settler.sql", "balance.sql") )
 
+class PLAYER:
+	STATS_UPDATE_FREQUENCY = 42
+
 ## SINGLEPLAYER
 class SINGLEPLAYER:
 	SEED = None

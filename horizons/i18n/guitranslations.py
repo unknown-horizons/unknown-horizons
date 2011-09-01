@@ -326,7 +326,7 @@ def set_translations():
 			"settler_score"               : _("Settlers"),
 			"total_score"                 : _("Total"),
 			"unit_score"                  : _("Units"),
-			"cancelButton"                : _("Leave player scores")},
+			"cancelButton"                : _("Close")},
 		"stancewidget.xml" : {
 			"aggressive"                  : _("Aggressive"),
 			"flee"                        : _("Flee"),

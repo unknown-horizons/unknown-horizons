@@ -21,34 +21,23 @@
 
 from fife.extensions.pychan import widgets
 
-from horizons.util.gui import load_uh_widget
-from horizons.scheduler import Scheduler
-from horizons.util import Callback
 from horizons.constants import GAME_SPEED
+from horizons.gui.widgets.statswidget import StatsWidget
+from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
+from horizons.util import Callback
 
-class PlayersSettlements(object):
+class PlayersSettlements(StatsWidget):
 	"""Widget that shows a list of the player's settlements."""
 
+	widget_file_name = 'players_settlements.xml'
+
 	def __init__(self, session):
-		super(PlayersSettlements, self).__init__()
-		self.session = session
-		self._initialised = False
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = 1)
-
-	def _refresh_tick(self):
-		if self._initialised:
-			self.refresh()
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = GAME_SPEED.TICKS_PER_SECOND / 3)
-
-	def show(self):
-		self._gui.show()
-
-	def hide(self):
-		self._gui.hide()
+		super(PlayersSettlements, self).__init__(session)
+		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = 1, loops = -1, loop_interval = GAME_SPEED.TICKS_PER_SECOND / 3)
 
 	def refresh(self):
-		self._clear_entries()
+		super(PlayersSettlements, self).refresh()
 		self._gui.findChild(name = 'headline').text = self.session.world.player.name + _('\'s settlements')
 
 		sequence_number = 0
@@ -57,27 +46,16 @@ class PlayersSettlements(object):
 		for settlement in self.session.world.settlements:
 			if settlement.owner is self.session.world.player:
 				sequence_number += 1
-				name_label = self._add_line_to_gui(self._gui.findChild(name = 'content_vbox'), settlement, sequence_number)
+				name_label = self._add_line_to_gui(settlement, sequence_number)
 				events['%s/mouseClicked' % name_label.name] = Callback(self._go_to_settlement, settlement)
 		self._gui.mapEvents(events)
+		self._content_vbox.adaptLayout()
 
 	def _go_to_settlement(self, settlement):
 		position = settlement.branch_office.position.center()
 		self.session.view.center(position.x, position.y)
 
-	def is_visible(self):
-		return self._gui.isVisible()
-
-	def toggle_visibility(self):
-		if not self._initialised:
-			self._initialised = True
-			self._init_gui()
-		if self.is_visible():
-			self.hide()
-		else:
-			self.show()
-
-	def _add_line_to_gui(self, gui, settlement, sequence_number):
+	def _add_line_to_gui(self, settlement, sequence_number):
 		sequence_number_label = widgets.Label(name = 'sequence_number_%d' % settlement.worldid)
 		sequence_number_label.text = unicode(sequence_number)
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
@@ -109,17 +87,7 @@ class PlayersSettlements(object):
 		hbox.addChild(taxes)
 		hbox.addChild(running_costs)
 		hbox.addChild(balance)
-		gui.addChild(hbox)
-		gui.adaptLayout()
+		self._content_vbox.addChild(hbox)
 		return name
-
-	def _init_gui(self):
-		self._gui = load_uh_widget('players_settlements.xml')
-		self._gui.mapEvents({'cancelButton': self.hide})
-		self._gui.position_technique = 'automatic'
-		self.refresh()
-
-	def _clear_entries(self):
-		self._gui.findChild(name='content_vbox').removeAllChildren()
 
 decorators.bind_all(PlayersSettlements)
