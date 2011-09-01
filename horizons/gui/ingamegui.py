@@ -77,7 +77,7 @@ class IngameGui(LivingObject):
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
 		cityinfo.position_technique = "center-10:top+5"
 
-		self.logbook = LogBook()
+		self.logbook = LogBook(self.session)
 		self.logbook.add_pause_request_listener(Callback(self.session.speed_pause))
 		self.logbook.add_unpause_request_listener(Callback(self.session.speed_unpause))
 		self.players_overview = PlayersOverview(self.session)
@@ -467,9 +467,7 @@ class IngameGui(LivingObject):
 		self._hide_change_name_dialog()
 
 	def on_escape(self):
-		if self.logbook.is_visible():
-			self.logbook.hide()
-		elif self.main_widget:
+		if self.main_widget:
 			self.main_widget.hide()
 		else:
 			return False

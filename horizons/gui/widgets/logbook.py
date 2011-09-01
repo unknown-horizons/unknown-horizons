@@ -34,14 +34,16 @@ class LogBook(object):
 	It displays longer messages, that are essential for scenarios.
 	Headings can be specified for each entry.
 	"""
-	def __init__(self):
+	def __init__(self, session):
+		self.session = session
 		self._headings = []
 		self._messages = [] # list of all headings / messages
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 
 		self._init_gui()
+		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 
-#		self.add_entry(u"Heading",u"Welcome to the Captains log") # test code
+		#self.add_entry(u"Heading",u"Welcome to the Captains log") # test code
 
 	def save(self, db):
 		for i in xrange(0, len(self._headings)):
@@ -87,10 +89,15 @@ class LogBook(object):
 		#	return
 		self._gui.show()
 		self.on_pause_request()
+		self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
-		self._gui.hide()
-		self.on_unpause_request()
+		if not self._hiding_widget:
+			self._hiding_widget = True
+			self.session.ingame_gui.on_switch_main_widget(None)
+			self._gui.hide()
+			self.on_unpause_request()
+			self._hiding_widget = False
 
 	def is_visible(self):
 		return self._gui.isVisible()
