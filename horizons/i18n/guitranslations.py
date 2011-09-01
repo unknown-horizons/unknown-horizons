@@ -313,9 +313,7 @@ def set_translations():
 		"healthwidget.xml" : {
 			"health_label"                : _("100/100")},
 		"island_production.xml" : {
-			"headline"                    : _("Production overview"),
-			"cancelButton"                : _("Leave production overview"),
-			"refreshButton"               : _("Refresh data")},
+			"cancelButton"                : _("Close")},
 		"players_overview.xml" : {
 			"building_score"              : _("Buildings"),
 			"headline"                    : _("Player scores"),
