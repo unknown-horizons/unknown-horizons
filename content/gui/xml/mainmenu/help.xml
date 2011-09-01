@@ -40,8 +40,9 @@
 		<Label name="set13" text="{G} = Toggle grid on/off" />
 		<Label name="set28" text="{T} = Toggle translucency of ambient buildings" />
 		<Label name="set14" text="{X} = Enable destruct mode" />
-		<Label name="set42" text="{R} = Show player scores" />
-		<Label name="set43" text="{F2} = Show ships list" />
+		<Label name="set42" text="{F2} = Show player scores" />
+		<Label name="set43" text="{F3} = Show settlement list" />
+		<Label name="set44" text="{F4} = Show ship list" />
 		<!--<ScrollArea min_size="320,500" horizontal_scrollbar="0">
 			<TextBox name="helpBox" filename="content/infotext.txt"/>
 		</ScrollArea>-->
