@@ -59,20 +59,20 @@ class MessageWidget(LivingObject):
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
-	def add(self, x, y, string_id, message_dict=None, sound_file):
+	def add(self, x, y, string_id, message_dict=None, sound_file=None):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id string, needed to retrieve the message from the database.
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
+		@params sound_file if not set play default message speech for string_id
+						if set for False do not play sound
+						if set sound file path play this sound, for example some event sound
 		"""
-		# play a message sound, if one is specified in the database
-#		sound = None
-#		if play_sound:
-#			sound = horizons.main.db("SELECT speech.file FROM speech LEFT JOIN message \
-#			ON speech.group_id=message.speech_group_id WHERE message.id_string=? ORDER BY random() LIMIT 1",id)
-#			sound = sound[0][0] if len(sound) > 0 else None
-#			sound = get_speech_file(string_id)
-		self._add_message(Message(x, y, string_id, self.current_tick, message_dict=message_dict), sound_file)
+		sound = {
+							None: get_speech_file(string_id),
+							False: None
+							}.get(sound_file, sound_file)
+		self._add_message(Message(x, y, string_id, self.current_tick, message_dict=message_dict), sound)
 
 	def add_custom(self, x, y, messagetext, visible_for=40, sound=None, icon_id=1):
 		self._add_message( Message(x, y, None, self.current_tick, display=visible_for, message=messagetext, icon_id=icon_id), sound)

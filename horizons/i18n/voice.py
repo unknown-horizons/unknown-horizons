@@ -30,9 +30,9 @@ from random import randrange
 Internationalization for speech|voice files
 """
 class Speech:
-	"""Definition of category ids, those id are the name of directory where speech is"""
-	NEW_SETTLEMENT = 2
-	NEW_WORLD = 1
+	"""Definition of category names, those names are the name of directory where speech should be"""
+	NEW_SETTLEMENT = "new_settlement" 
+	NEW_WORLD = "new_world"
 	QUICKSAVE = None
 	SCREENSHOT = None
 	SETTLER_LEVEL_UP = None
@@ -88,7 +88,6 @@ def count_variations(dir_name):
 
 def eval_category_id(category):
 	cat_id = None
-	print category
 	try:
 		cat_id = eval('Speech.'+category)
 	except:
