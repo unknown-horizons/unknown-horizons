@@ -54,7 +54,7 @@ def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 	@param variation_id: variation id of sentence
 	@params random if true variation is random if false we try to find by variation_id
 	@return: Path to Speach file or None if not exist"""
-	cat_id = eval_category_id(category)
+	cat_id = eval_category_name(category)
 	if cat_id == None: return None
 	lang = horizons.main.fife.get_locale()
 	path = prepare_path(lang, cat_id, variation_id, speaker_id)
@@ -86,11 +86,11 @@ def get_dir_path(lang, cat_id, spkr_id):
 def count_variations(dir_name):
   return len([f for f in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name,f))])
 
-def eval_category_id(category):
-	cat_id = None
+def eval_category_name(category):
+	cat_name = None
 	try:
-		cat_id = eval('Speech.'+category)
+		cat_name = getattr(Speech, category)
 	except:
 		print "Incorect name of speech category"
-	return cat_id
+	return cat_name
 
