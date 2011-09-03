@@ -968,14 +968,20 @@ msgstr ""
 msgid "1 resident"
 msgstr ""
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:186 horizons/i18n/guitranslations.py:202
 #: horizons/i18n/guitranslations.py:217
+#, fuzzy
 msgid "2 residents"
-msgstr ""
+msgstr "Residentes"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:187 horizons/i18n/guitranslations.py:218
+#, fuzzy
 msgid "3 residents"
-msgstr ""
+msgstr "Residentes"
 
 # 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
@@ -1008,13 +1014,19 @@ msgstr "Impuestos pagados"
 msgid "Tax rate"
 msgstr ""
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:219
+#, fuzzy
 msgid "4 residents"
-msgstr ""
+msgstr "Residentes"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:220
+#, fuzzy
 msgid "5 residents"
-msgstr ""
+msgstr "Residentes"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "Collector utilisation:"
