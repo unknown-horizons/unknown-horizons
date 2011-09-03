@@ -59,7 +59,7 @@ class MessageWidget(LivingObject):
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
-	def add(self, x, y, string_id, message_dict=None, sound_file=None):
+	def add(self, x, y, string_id, message_dict=None, sound_file=True):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id string, needed to retrieve the message from the database.
@@ -69,7 +69,7 @@ class MessageWidget(LivingObject):
 						if set sound file path play this sound, for example some event sound
 		"""
 		sound = {
-							None: get_speech_file(string_id),
+							True: get_speech_file(string_id),
 							False: None
 							}.get(sound_file, sound_file)
 		self._add_message(Message(x, y, string_id, self.current_tick, message_dict=message_dict), sound)
