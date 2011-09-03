@@ -6,29 +6,29 @@
 	<Label text="Key bindings" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox>
-		<Label name="set01" text="{LEFT} = Scroll left" />
-		<Label name="set02" text="{RIGHT} = Scroll right" />
-		<Label name="set03" text="{UP} = Scroll up" />
-		<Label name="set04" text="{DOWN} = Scroll down" />
+		<Label name="lbl_left" text="{LEFT} = Scroll left" />
+		<Label name="lbl_right" text="{RIGHT} = Scroll right" />
+		<Label name="lbl_up" text="{UP} = Scroll up" />
+		<Label name="lbl_down" text="{DOWN} = Scroll down" />
 	</VBox>
 	<VBox>
-		<Label name="set21" text="{ + } = Increase game speed" />
-		<Label name="set22" text="{ - } = Decrease game speed" />
+		<Label name="lbl_plus" text="{ + } = Increase game speed" />
+		<Label name="lbl_minus" text="{ - } = Decrease game speed" />
 	</VBox>
 	<VBox>
-		<Label name="set05" text="{ , } = Rotate building left" />
-		<Label name="set06" text="{ . } = Rotate building right" />
+		<Label name="lbl_comma" text="{ , } = Rotate building left" />
+		<Label name="lbl_period" text="{ . } = Rotate building right" />
 	</VBox>
 	<VBox>
-		<Label name="set07" text="{B} = Show build menu" />
-		<Label name="set27" text="{L} = Toggle Captain's log" />
-		<Label name="set12" text="{ESC} = Show pause menu" />
+		<Label name="lbl_b" text="{B} = Show build menu" />
+		<Label name="lbl_l" text="{L} = Toggle Captain's log" />
+		<Label name="lbl_escape" text="{ESC} = Show pause menu" />
 	</VBox>
 	<VBox>
-		<Label name="set08" text="{F1} = Display help" />
-		<Label name="set09" text="{F5} = Quicksave" />
-		<Label name="set10" text="{F9} = Quickload" />
-		<Label name="set11" text="{F10} = Toggle console on/off" />
+		<Label name="lbl_f1" text="{F1} = Display help" />
+		<Label name="lbl_f5" text="{F5} = Quicksave" />
+		<Label name="lbl_f9" text="{F9} = Quickload" />
+		<Label name="lbl_f10" text="{F10} = Toggle console on/off" />
 	</VBox>
 
 	<Spacer />
@@ -36,26 +36,27 @@
 
 <VBox position="447,82" max_size="340,380" min_size="340,380">
 	<VBox>
-		<Label name="set20" text="{P} = Pause game" />
-		<Label name="set13" text="{G} = Toggle grid on/off" />
-		<Label name="set28" text="{T} = Toggle translucency of ambient buildings" />
-		<Label name="set14" text="{X} = Enable destruct mode" />
-		<Label name="set42" text="{F2} = Show player scores" />
-		<Label name="set43" text="{F3} = Show settlement list" />
-		<Label name="set44" text="{F4} = Show ship list" />
-		<!--<ScrollArea min_size="320,500" horizontal_scrollbar="0">
-			<TextBox name="helpBox" filename="content/infotext.txt"/>
-		</ScrollArea>-->
-		<Label name="set23" text="{S} = Screenshot" />
-		<Label name="set26" text="{C} = Chat" />
-		<Label name="set25" text="{SHIFT} = Hold to place multiple buildings"
+		<Label name="lbl_p" text="{P} = Pause game" />
+		<Label name="lbl_g" text="{G} = Toggle grid on/off" />
+		<Label name="lbl_t" text="{T} = Toggle translucency of ambient buildings" />
+		<Label name="lbl_x" text="{X} = Enable destruct mode" />
+	</VBox>
+	<VBox>
+		<Label name="lbl_f2" text="{F2} = Show player scores" />
+		<Label name="lbl_f3" text="{F3} = Show settlement list" />
+		<Label name="lbl_f4" text="{F4} = Show ship list" />
+	</VBox>
+	<VBox>
+		<Label name="lbl_s" text="{S} = Screenshot" />
+		<Label name="lbl_c" text="{C} = Chat" />
+		<Label name="lbl_shift" text="{SHIFT} = Hold to place multiple buildings"
 			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
 	</VBox> <Spacer />
 	<VBox>
-		<Label name="have_fun_lbl" text="Have fun." />
+		<Label name="lbl_have_fun" text="Have fun." />
 	</VBox>
 	<VBox>
-		<Label name="fife_and_uh_team_lbl"  wrap_text="1"  max_size="315,40"
+		<Label name="lbl_fife_and_uh_team"  wrap_text="1"  max_size="315,40"
 			text="The FIFE and Unknown Horizons development teams" />
 		<Label text="http://www.unknown-horizons.org" />
 		<Label text="http://www.fifengine.de" />
