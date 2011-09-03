@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-03 14:27+0200\n"
+"PO-Revision-Date: 2011-08-03 14:30+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -446,15 +446,19 @@ msgstr ""
 msgid "Sailors"
 msgstr ""
 
+# 75%
 #: horizons/gui/tabs/mainsquaretabs.py:233
 #: horizons/i18n/guitranslations.py:181
+#, fuzzy
 msgid "Pioneers"
-msgstr ""
+msgstr "новозаселник"
 
+# 75%
 #: horizons/gui/tabs/mainsquaretabs.py:238
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:328
+#, fuzzy
 msgid "Settlers"
-msgstr ""
+msgstr "колонизатор"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:393
 #: horizons/i18n/guitranslations.py:267
@@ -473,9 +477,11 @@ msgstr ""
 msgid "Ship overview"
 msgstr "Кораб-преглед"
 
+# 76%
 #: horizons/gui/tabs/overviewtab.py:225
+#, fuzzy
 msgid "Unit overview"
-msgstr ""
+msgstr "Кораб-преглед"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -975,10 +981,12 @@ msgstr ""
 msgid "3 residents"
 msgstr ""
 
+# 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
 #: horizons/i18n/guitranslations.py:221
+#, fuzzy
 msgid "residents"
-msgstr ""
+msgstr "Жители"
 
 #: horizons/i18n/guitranslations.py:189 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:222 horizons/i18n/guitranslations.py:249
@@ -1200,9 +1208,11 @@ msgstr ""
 msgid "Money"
 msgstr ""
 
+# 80%
 #: horizons/i18n/guitranslations.py:326
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Име:"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Resources"
@@ -1656,9 +1666,11 @@ msgstr ""
 msgid "Map size:"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:473
+#, fuzzy
 msgid "Resource density:"
-msgstr ""
+msgstr "Ресурсен залеж"
 
 #: horizons/i18n/guitranslations.py:474
 msgid "dense"
@@ -2197,9 +2209,11 @@ msgstr "Едно ново заселване беше направено от ${
 msgid "A new world has been created."
 msgstr "Един нов свят беше създаден."
 
+# 85%
 #: sqlite/Messages
+#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "Някой от твоите заселници няма пазар в обсега си."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
