@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.util import WorldObject
 from horizons.constants import RES, TRADER
 from horizons.scheduler import Scheduler
 
@@ -127,10 +128,11 @@ class TradePost(object):
 			return True
 		assert False
 
-	def sell_resource(self, ship, resource_id, amount):
+	def sell_resource(self, ship_worldid, resource_id, amount):
 		""" Attempt to sell the given amount of resource to the ship, returns the amount sold """
 		if resource_id not in self.sell_list:
 			return 0
+		ship = WorldObject.get_object_by_id(ship_worldid)
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
 		assert price > 0
@@ -155,10 +157,11 @@ class TradePost(object):
 		self.total_income += total_price
 		return amount
 
-	def buy_resource(self, ship, resource_id, amount):
+	def buy_resource(self, ship_worldid, resource_id, amount):
 		""" Attempt to buy the given amount of resource from the ship, return the amount bought """
 		if resource_id not in self.buy_list:
 			return 0
+		ship = WorldObject.get_object_by_id(ship_worldid)
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
 		assert price > 0

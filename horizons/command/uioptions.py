@@ -59,12 +59,12 @@ class TransferResource(GenericCommand):
 class SellResource(GenericCommand):
 	"""The given settlement attempts to sell the given amount of resource to the ship"""
 	def __init__(self, settlement, ship, resource_id, amount):
-		super(SellResource, self).__init__(settlement, 'sell_resource', ship, resource_id, amount)
+		super(SellResource, self).__init__(settlement, 'sell_resource', ship.worldid, resource_id, amount)
 
 class BuyResource(GenericCommand):
 	"""The given settlement attempts to buy the given amount of resource from the ship"""
 	def __init__(self, settlement, ship, resource_id, amount):
-		super(BuyResource, self).__init__(settlement, 'buy_resource', ship, resource_id, amount)
+		super(BuyResource, self).__init__(settlement, 'buy_resource', ship.worldid, resource_id, amount)
 
 class RenameObject(GenericCommand):
 	"""Rename a NamedObject"""

@@ -134,7 +134,7 @@ class ShipRoute(object):
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
-					amount_transferred = settlement.sell_resource(self.ship, res, amount)
+					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
 
 				if amount_transferred < status.remaining_transfers[res] and self.ship.inventory.get_free_space_for(res) > 0:
 					status.settlement_provides_enough_res = False
@@ -151,7 +151,7 @@ class ShipRoute(object):
 
 					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
 				else:
-					amount_transferred = settlement.buy_resource(self.ship, res, amount)
+					amount_transferred = settlement.buy_resource(self.ship.worldid, res, amount)
 
 				if amount_transferred < -status.remaining_transfers[res] and self.ship.inventory[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False
