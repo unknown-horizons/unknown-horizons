@@ -10,11 +10,11 @@
 	<HBox name="param_ai_factions" padding="15">
 		<HBox name="map_param">
 			<CheckBox name="free_trader" min_size="15,15" max_size="15,15" marked="1" />
-			<Label text="Free Trader" />
+			<Label name="lbl_free_trader"  text="Free Trader" />
 		</HBox>
 		<HBox name="map_param">
 			<CheckBox name="pirates" min_size="15,15" max_size="15,15" marked="1" />
-			<Label text="Pirates" />
+			<Label name="lbl_pirates"  text="Pirates" />
 		</HBox>
 		<!--
 		<HBox name="map_param">

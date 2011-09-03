@@ -15,11 +15,11 @@
 		tooltip="Start route" />
 	<VBox position="250,485">
 		<HBox>
-			<Label text="wait at load:"/>
+			<Label name="lbl_wait_at_load" text="Wait at load:" />
 			<CheckBox name="wait_at_load" min_size="15,15" />
 		</HBox>
 		<HBox>
-			<Label text="wait at unload:"/>
+			<Label name="lbl_wait_at_unload"  text="Wait at unload:"/>
 			<CheckBox name="wait_at_unload" min_size="15,15" />
 		</HBox>
 	</VBox>
