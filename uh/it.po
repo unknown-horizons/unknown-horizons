@@ -454,14 +454,12 @@ msgstr "marinai"
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:233
 #: horizons/i18n/guitranslations.py:181
-#, fuzzy
 msgid "Pioneers"
 msgstr "pioniere"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:238
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:328
-#, fuzzy
 msgid "Settlers"
 msgstr "colone"
 
@@ -526,7 +524,6 @@ msgid "none"
 msgstr "nessuno"
 
 #: horizons/i18n/guitranslations.py:42
-#, fuzzy
 msgid "String Previewer Tool for Scenario files"
 msgstr "Stringa Strumento Previewer per i file Scenario"
 
@@ -994,7 +991,6 @@ msgstr "3 residenti"
 # 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
 #: horizons/i18n/guitranslations.py:221
-#, fuzzy
 msgid "residents"
 msgstr "Residenti"
 
@@ -1220,7 +1216,6 @@ msgstr "soldi"
 
 # 80%
 #: horizons/i18n/guitranslations.py:326
-#, fuzzy
 msgid "Name"
 msgstr "Nome:"
 
@@ -1585,7 +1580,6 @@ msgstr "Assicurarsi di sapere cosa si sta facendo."
 
 # 83%
 #: horizons/i18n/guitranslations.py:437
-#, fuzzy
 msgid "Apply"
 msgstr "Applica:"
 
@@ -1677,7 +1671,6 @@ msgstr "Grandezza Mappa"
 
 # 76%
 #: horizons/i18n/guitranslations.py:473
-#, fuzzy
 msgid "Resource density:"
 msgstr "Deposito risorse"
 
@@ -1767,7 +1760,7 @@ msgstr ""
 # 81%
 #: horizons/main.py:367 horizons/savegamemanager.py:405
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Errore: Impossibile trovare la mappa \"%s\"."
 
@@ -1812,7 +1805,7 @@ msgstr "Errore: Impossibile trovare la campagna \"%s\"."
 # 81%
 #: horizons/savegamemanager.py:428
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario \"%s\"."
 msgstr "Errore: Impossibile trovare la partita \"%s\"."
 
@@ -1917,7 +1910,6 @@ msgstr ""
 
 # 92%
 #: run_uh.py:90
-#, fuzzy
 msgid "Starting Unknown Horizons"
 msgstr "Avvio di unknown horizons"
 
@@ -2274,7 +2266,6 @@ msgstr "Un nuovo mondo è stato creato."
 
 # 85%
 #: sqlite/Messages
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
 msgstr "Un colone non ha una piazza del mercato nelle vicinanze."
 
@@ -2342,7 +2333,6 @@ msgstr "argilla"
 
 # 83%
 #: sqlite/Resources
-#, fuzzy
 msgid "clay deposit"
 msgstr "Deposito d'argilla"
 
