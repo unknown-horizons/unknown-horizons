@@ -14,7 +14,7 @@
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 	<HBox position="20,120" max_size="245,300" name="legend">
-		<Label name="legend_label"  text="Legend:" />
+		<Label name="buysell_help_label"  text="Click on slot icon to toggle mode:" />
 		<VBox>
 			<HBox>
 				<Icon image="content/gui/images/tabwidget/buysell_buy.png" />

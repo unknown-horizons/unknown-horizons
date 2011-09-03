@@ -167,6 +167,12 @@ def set_translations():
 			"headline_BB_war1_ship1"      : _("Frigate"),
 			"BB_build_war1_1"             : _("Build this ship!"),
 			},
+		"buysellmenu.xml" : {
+			"buy_label"                   : _("Buy resources"),
+			"buysell_help_label"          : _("Click on slot icon to toggle mode:"),
+			"headline"                    : _("Buy or sell resources"),
+			"sell_label"                  : _("Sell resources"),
+			},
 		"select_trade_resource.xml" : {
 			"headline"                    : _("Select resources:"),
 			},
@@ -322,12 +328,6 @@ def set_translations():
 			"configure_route_label"       : _("Configure trading route:"),
 			"headline"                    : _("Inventory"),
 			"load_unload_label"           : _("Load/Unload:"),
-			},
-		"buysellmenu.xml" : {
-			"buy_label"                   : _("Buy resources"),
-			"headline"                    : _("Buy or sell resources"),
-			"legend_label"                : _("Legend:"),
-			"sell_label"                  : _("Sell resources"),
 			},
 		"overview_productionline.xml" : {
 			"toggle_active_active"        : _("Pause production"),
