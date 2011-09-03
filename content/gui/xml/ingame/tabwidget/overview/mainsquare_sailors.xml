@@ -44,7 +44,7 @@ Shows info about sailors and allows the player to change taxes or deny upgrade r
 		<Icon image="content/gui/images/background/hr.png" position="20,165" />
 
 		<Container size="260,60" position="25,175">
-			<Label name="headline_residents_per_house_label" position="0,0" text="Residents per house" />
+			<Label name="headline_residents_per_house" position="0,0" text="Residents per house" />
 			<Label name="resident_1" position="10,20" text="1 resident"/>
 			<Label position="160,20" name="resident_count_1"/>
 			<Label name="resident_2" position="10,40" text="2 residents"/>
@@ -52,7 +52,7 @@ Shows info about sailors and allows the player to change taxes or deny upgrade r
 		</Container>
 
 		<Container size="260,60" position="25,240">
-			<Label name="headline_residents_total_label" position="0,0" text="Summary" />
+			<Label name="headline_residents_total" position="0,0" text="Summary" />
 			<Label name="houses" position="10,20" text="houses"/>
 			<Label position="160,20" name="house_count"/>
 			<Label name="residents" position="10,40" text="residents"/>
