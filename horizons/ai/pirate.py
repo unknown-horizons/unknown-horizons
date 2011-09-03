@@ -40,6 +40,7 @@ class Pirate(GenericAI):
 	shipStates = Enum.get_extended(GenericAI.shipStates, 'chasing_ship', 'going_home')
 
 	log = logging.getLogger("ai.pirate")
+	regular_player = False
 
 	caught_ship_radius = 5
 	home_radius = 2

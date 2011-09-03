@@ -76,7 +76,6 @@ class AIPlayer(GenericAI):
 	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission')
 
 	log = logging.getLogger("ai.aiplayer")
-	regular_player = True
 	tick_interval = 32
 
 	def __init__(self, session, id, name, color, difficulty_level, **kwargs):

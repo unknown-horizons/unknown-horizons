@@ -45,6 +45,7 @@ class Trader(GenericAI):
 	shipStates = Enum.get_extended(GenericAI.shipStates, 'moving_to_branch', 'reached_branch')
 
 	log = logging.getLogger("ai.trader")
+	regular_player = False
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Trader, self).__init__(session, id, name, color, **kwargs)

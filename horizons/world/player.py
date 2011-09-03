@@ -32,7 +32,7 @@ from horizons.scheduler import Scheduler
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
 
-	regular_player = False # either a human player or a normal AI player (not trader or pirate)
+	regular_player = True # either a human player or a normal AI player (not trader or pirate)
 
 	def __init__(self, session, worldid, name, color, difficulty_level = None, inventory = None):
 		"""
@@ -124,8 +124,6 @@ class Player(StorageHolder, WorldObject):
 
 
 class HumanPlayer(Player):
-	regular_player = True
-
 	"""Class for players that physically sit in front of the machine where the game is run"""
 	def notify_settler_reached_level(self, settler):
 		level_up = super(HumanPlayer, self).notify_settler_reached_level(settler)
