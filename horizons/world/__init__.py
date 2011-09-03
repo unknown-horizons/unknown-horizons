@@ -820,12 +820,11 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			for settlement in island.settlements:
 				entry = {
 					'owner': str(settlement.owner.worldid),
-					'tax_settings':
-str(settlement.tax_settings),
+					'tax_settings': str(settlement.tax_settings),
 					'inhabitants': str(settlement.inhabitants),
 					'cumulative_running_costs': str(settlement.cumulative_running_costs),
 					'cumulative_taxes': str(settlement.cumulative_taxes),
-					'inventory' : str(settlement.inventory._storage),
+					'inventory': str(settlement.inventory._storage),
 				}
 				dict['settlements'].append(entry)
 		return dict
