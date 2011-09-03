@@ -97,6 +97,7 @@ class TradeWidget(object):
 			self.widget.adaptLayout()
 		else:
 			self.widget.hide()
+			self.instance.show_menu()
 
 	def __remove_changelisteners(self):
 		self.instance.remove_change_listener(self.draw_widget)
