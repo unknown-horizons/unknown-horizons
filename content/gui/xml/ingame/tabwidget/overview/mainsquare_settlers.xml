@@ -34,10 +34,10 @@ Shows info about settlers and allows the player to change taxes or deny upgrade 
 		<Container size="260,80" position="25,90">
 			<Label name="upgrades_lbl" position="0,0" text="Allow upgrades:" />
 			<ToggleImageButton name="allow_upgrades" border_size="0" position="0,20"
-				inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
-				up_image="content/gui/icons/templates/production/toggle_active_n.png"
-				down_image="content/gui/icons/templates/production/toggle_active_d.png"
-				hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
+				up_image="content/gui/images/buttons/upgrade/allow.png"
+				down_image="content/gui/images/buttons/upgrade/allow.png"
+				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png"
 				tooltip="Allow upgrades" />
 		</Container>
 
