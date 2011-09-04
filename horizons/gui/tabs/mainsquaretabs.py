@@ -145,11 +145,11 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		self.settlement = instance.settlement
 		self.level = level
 		self.init_values()
-		icon_path = 'content/gui/icons/widgets/cityinfo/inhabitants.png'
-		self.button_up_image = icon_path
-		self.button_active_image = icon_path
-		self.button_down_image = icon_path
-		self.button_hover_image = icon_path
+		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants%s' % self.level + '_%s.png'
+		self.button_up_image = icon_path % 'u'
+		self.button_active_image = icon_path % 'a'
+		self.button_down_image = icon_path % 'd'
+		self.button_hover_image = icon_path % 'h'
 
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.level)
 
