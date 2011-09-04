@@ -334,7 +334,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			if resume:
 				if self.in_ship_map:
 					self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-			raise
+				raise
 
 		if self.in_ship_map:
 			# save current and next position for ship, since it will be between them
