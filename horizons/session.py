@@ -250,8 +250,6 @@ class Session(LivingObject):
 			text = u'0x'
 			up_icon.set_inactive()
 			down_icon.set_inactive()
-		elif tps == GAME_SPEED.TICKS_PER_SECOND: # normal speed, 1x
-			up_icon.set_active() # do not display label '1x'!
 		else:
 			text = unicode("%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND))
 			#%1g: displays 0.5x, but 2x and not 2.0x
