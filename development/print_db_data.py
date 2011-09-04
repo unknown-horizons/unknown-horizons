@@ -204,7 +204,7 @@ def print_increment_data():
 def print_colors():
 	print 'Colors' + '\n' + '%2s: %12s  %3s  %3s  %3s  %3s  #%6s' % ('id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   ')
 	print '=' * 45
-	for id_, name, R, G, B, alpha in db("SELECT id, name, red, blue, green, alpha FROM colors"):
+	for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
 		print '%2s: %12s  %3s  %3s  %3s  %3s  #' % (id_, name, R, G, B, alpha) + 3*'%02x' % (R, G, B)
 
 def print_names():
