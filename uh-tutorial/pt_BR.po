@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 21:21+0200\n"
-"PO-Revision-Date: 2011-09-03 06:10+0200\n"
-"Last-Translator: IvoJr <ivojr@hotmail.com>\n"
+"PO-Revision-Date: 2011-09-04 06:11+0200\n"
+"Last-Translator: Lindo <ivojr@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -19,25 +19,25 @@ msgstr ""
 
 #: po/tutorial.py:1
 msgid "Tutorial"
-msgstr "Roteiro"
+msgstr ""
 
 #: po/tutorial.py:2
 msgid "The UH team"
-msgstr "A equipe UH"
+msgstr ""
 
 #: po/tutorial.py:3
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
-msgstr "firma seu primeiro acordo e aprende como jogar"
+msgstr ""
 
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
-msgstr "Constrói uma filial no litoral"
+msgstr ""
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
-msgstr "Bem-vindo para Horizontes Desconhecidos!"
+msgstr ""
 
 #: po/tutorial.py:6
 msgid ""
@@ -53,24 +53,6 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
-"Este é seu diário de bordo onde as informações mais importantes serão "
-"armazenadas. Uma pequena notificação de cada tarefa será fornecida na canto "
-"esquerdo da tela.\n"
-"\n"
-"Se você estiver interessado em mais detalhes, seu diário de bordo fornecerá "
-"toda a ajuda que você precisa.\n"
-"\n"
-"Após você fechar o diário, ele pode ser reaberto através do ícone `Diário de "
-"bordo do Capitão´ localizado no canto superior direito (abaixo o mini-mapa, "
-"com um  documento fechado e uma pena).\n"
-"\n"
-"Sugestões de palavras, assuntos que você não entendeu ou tenha tido "
-"situações de conflito: Favor nos avisar e nós tentaremos melhorar o roteiro\n"
-"\n"
-"Visite o site www.unknown-horizons.org para obter ajuda e como entrar em "
-"contato com a equipe\n"
-"\n"
-"Agora, vamos começar o jogo."
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
