@@ -10,7 +10,8 @@ description: "Das Einf\xFChrungsspiel:\nErrichtet Eure erste Siedlung und lernt 
 difficulty: "Einf\xFChrung"
 events:
 - actions:
-  - arguments: ["Errichtet ein Kontor an der K\xFCste."]
+  - arguments: ["Errichtet ein Kontor an der K\xFCste. Es sollte f\xFCr Schiffe wie\
+        \ den Freien H\xE4ndler einfach erreichbar sein."]
     type: message
   - arguments: [!!python/unicode 'Willkommen bei Unknown Horizons!', "Dies ist Euer\
         \ Logbuch, in dem alle wichtigen Informationen gespeichert werden. Zu jeder\
@@ -35,55 +36,23 @@ events:
         Klickt einfach auf den gew\xFCnschten Bauplatz, um den Bau abzuschlie\xDF\
         en.\n\nAUFGABE: Errichtet ein Kontor an der K\xFCste.", 2]
     type: logbook
-  - arguments: [tutStepDone, 6]
+  - arguments: [tutStepDone, 16]
     type: set_var
   conditions:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'NEUE AUFGABE: SCHIFF ENTLADEN', "Nachdem Ihr nun\
-        \ \xFCber ein Kontor verf\xFCgt, solltet Ihr einige Waren vom Schiff in dessen\
-        \ Lager verfrachten.\n\nUm dies zu tun, w\xE4hlt das Schiff an und klickt\
-        \ auf den Tab mit Namen 'Schiffsladung', erkennbar am Holzkisten-Icon.\n\n\
-        Hier findet Ihr eine \xDCbersicht des Schiffsladeraums vor. Entladen wird\
-        \ mit dem Button 'Be-/Entladen'.\n\nDieser Button wird aktiv, wenn Euer Schiff\
-        \ in Reichweite eines m\xF6glichen Handelspartners wie einem Kontor ist.\n\
-        \nKlickt auf den Button. Wenn er nicht aktiv ist, muss das Schiff n\xE4her\
-        \ an das Kontor gelangen.\n\nAUFGABE: \xD6ffnet den Handelsdialog."]
-    type: logbook_w
-  - arguments: ['', "Der angezeigte Tab ist aufgeteilt in 'Schiff' und 'Siedlung'\
-        \ als die jeweiligen Handelspartner.n\nUm Waren von einem Lager in das andere\
-        \ zu verfrachten, klickt einfach auf deren Icon.\n\nVersucht zuerst, die Bretter\
-        \ vom Schiff in das Kontor und danach wieder zur\xFCck in das Schiff zu verfrachten.\n\
-        \nDie Menge der verfrachteten Ware pro Klick wird \xFCber die Radio-Buttons\
-        \ in der Mitte geregelt.\n\nHabt Ihr Euch an die Funktionsweise des Handelstabs\
-        \ gew\xF6hnt?\nWohlan denn: Ihr ben\xF6tigt nun etwas Baumaterial in Eurer\
-        \ Siedlung!\n\nAUFGABE: Entladet mindestens 10 Tonnen jeder Ressource auf\
-        \ dem Schiff in Euer Kontor."]
-    type: logbook
-  - arguments: [!!python/unicode 'Entladet mindestens 10 Tonnen jeder Ressource auf
-        dem Schiff in Euer Kontor.']
-    type: message
-  - arguments: [tutStepDone, 16]
-    type: set_var
-  conditions:
-  - arguments: [1, 0]
-    type: building_num_of_type_greater
-  - arguments: [tutStepDone, 5]
-    type: var_gt
-  - arguments: [tutStepDone, 16]
-    type: var_lt
-- actions:
-  - arguments: ["NEUE AUFGABE: HOLZF\xC4LLER BAUEN", "Mit dem neuen Baumaterial im\
-        \ Kontor k\xF6nnt Ihr nun bereits einige elementare Geb\xE4ude errichten.\n\
-        \nLasst uns mit dem Bau eines Holzf\xE4llerlagers beginnen.\n\nDies ist wichtig,\
-        \ da Holz in dieser Stufe das einzige ist, womit Eure Seefahrer ihre Zelte\
-        \ aufschlagen k\xF6nnen.\n\nDer Fischer braucht ebenfalls Bretter, um sein\
-        \ Ruderboot zu bauen.\n\nUm ein Holzf\xE4llerlager zu errichten, ben\xF6tigt\
-        \ Ihr das Baumen\xFC. Klickt dazu auf das gro\xDFe Werkzeug-Symbol unter der\
-        \ Weltkarte oder dr\xFCckt die Taste B.\n\nDas Baumen\xFC ist nach Siedlerstufen\
-        \ sortiert.\nDas bedeutet, dass in der Stufe Seefahrer (mit der Ihr startet)\
-        \ nur grundlegende Geb\xE4ude verf\xFCgbar sind."]
+  - arguments: ["NEUE AUFGABE: HOLZF\xC4LLER BAUEN", "Das Baumaterial auf Eurem Schiff\
+        \ wurde automatisch in Euer Kontor entladen. Somit k\xF6nnt Ihr nun bereits\
+        \ einige elementare Geb\xE4ude errichten.\n\nLasst uns mit dem Bau eines Holzf\xE4\
+        llerlagers beginnen.\n\nDies ist wichtig, da Holz in dieser Stufe das einzige\
+        \ ist, womit Eure Seefahrer ihre Zelte aufschlagen k\xF6nnen.\n\nDer Fischer\
+        \ braucht ebenfalls Bretter, um sein Ruderboot zu bauen.\n\nUm ein Holzf\xE4\
+        llerlager zu errichten, ben\xF6tigt Ihr das Baumen\xFC. Klickt dazu auf das\
+        \ gro\xDFe Werkzeug-Symbol unter der Weltkarte oder dr\xFCckt die Taste B.\n\
+        \nDas Baumen\xFC ist nach Siedlerstufen sortiert.\nDas bedeutet, dass in der\
+        \ Stufe Seefahrer (mit der Ihr startet) nur grundlegende Geb\xE4ude verf\xFC\
+        gbar sind."]
     type: logbook_w
   - arguments: ['', "W\xE4hrend Eure Zivilisation sich weiterentwickelt, wird sie\
         \ St\xFCck f\xFCr St\xFCck immer komplexere Geb\xE4ude erbauen k\xF6nnen.\n\
@@ -236,29 +205,29 @@ events:
     type: var_lt
 - actions:
   - arguments: [!!python/unicode 'NEUE AUFGABE: LEUCHTFEUER BAUEN', "Habt Ihr das\
-        \ Schiff bemerkt, welches von Zeit zu Zeit Eure Insel ansteuert?\n\nDieses\
-        \ Schiff ist ein Freier H\xE4ndler, einer der ersten Siedler in diesem Archipel.\
-        \ Er beliefert Siedlungen mit G\xFCtern, die Ihr momentan noch nicht produzieren\
+        \ Schiff bemerkt, welches von Zeit zu Zeit Eure Insel ansteuert? Es geh\xF6\
+        rt zum Freien H\xE4ndler, einem der ersten Siedler in diesem Archipel.\n\n\
+        Er beliefert Siedlungen mit G\xFCtern, die Ihr momentan noch nicht produzieren\
         \ k\xF6nnt.\n\nAu\xDFerdem wird er Produktions\xFCbersch\xFCsse einkaufen,\
         \ aber im Allgemeinen ist das Verbrauchen (mehr Zelte errichten) eintr\xE4\
         glicher als der Verkauf.\n\nIn der Regel fahren die Schiffe umher und halten\
-        \ Ausschau nach m\xF6glichen Gesch\xE4ften. Neu gegr\xFCndete Siedlungen wie\
-        \ Eure ben\xF6tigen jedoch erst etwas Werbung, sonst werden sie nicht gefunden.\n\
-        \nZu diesem Zweck k\xF6nnt Ihr ein Leuchtfeuer an der K\xFCste in der N\xE4\
-        he des Kontors errichten, um Schiffen den Weg zur Siedlung zu zeigen."]
+        \ Ausschau nach m\xF6glichen Gesch\xE4ften. Diesen Prozess k\xF6nnt Ihr aber\
+        \ ein wenig beschleunigen.\n\nZu diesem Zweck k\xF6nnt Ihr ein Leuchtfeuer\
+        \ an der K\xFCste in der N\xE4he des Kontors errichten. Es wird Schiffen den\
+        \ Weg zur Siedlung zu zeigen.\n\nDas Leuchtfeuer muss das Gebiet abdecken,\
+        \ durch welches die abzufangenden Schiffe navigieren."]
     type: logbook_w
   - arguments: ['', "Nach dieser kleinen Orientierungshilfe wird der H\xE4ndler gern\
         \ ab und an vorbeikommen und Euer Kontor inspizieren.\n\nAngebote werden \xFC\
-        ber den Tab 'Ein-/Verkaufen' vorschlagen. Leider ist der momentan nahezu unbenutzbar,\
-        \ aber wir haben ein Ticket f\xFCr die Umgestaltung ge\xF6ffnet, um daran\
-        \ zu arbeiten. Wenn Ihr eine gute Idee habt, teilt sie uns bitte mit! Wir\
-        \ brauchen dabei jede erdenkliche Hilfe!\n\nIn der Stufe 'Seefahrer' stehen\
-        \ Euch drei Handelsslots zur Verf\xFCgung. Klickt auf das kleine Symbol im\
-        \ Slot, um vom Modus 'Verkaufen' auf 'Kaufen' und umgekehrt zu wechseln.\n\
-        \nUm das Handelsgut auszuw\xE4hlen, klickt in einen Slot. Wir werden das Vorgehen\
-        \ weiter betrachten, wenn Ihr alle Voraussetzungen erf\xFCllt, um Handel zu\
-        \ treiben.\n\nAUFGABE: Errichtet ein Leuchtfeuer an der K\xFCste in der N\xE4\
-        he des Kontors."]
+        ber den Tab 'Ein-/Verkaufen' im Kontor vorschlagen. Leider ist der momentan\
+        \ nahezu unbenutzbar, Wenn Ihr eine gute Idee habt, ihn zu verbessern, teilt\
+        \ sie uns bitte mit! Wir brauchen dabei jede erdenkliche Hilfe!\n\nIn der\
+        \ Stufe 'Seefahrer' stehen Euch drei Handelsslots zur Verf\xFCgung. Klickt\
+        \ auf das kleine Symbol im Slot, um vom Modus 'Verkaufen' auf 'Kaufen' und\
+        \ umgekehrt zu wechseln.\n\nUm das Handelsgut auszuw\xE4hlen, klickt in einen\
+        \ Slot. Wir werden das Vorgehen weiter betrachten, wenn Ihr alle Voraussetzungen\
+        \ erf\xFCllt, um Handel zu treiben.\n\nAUFGABE: Errichtet ein Leuchtfeuer\
+        \ an der K\xFCste in der N\xE4he des Kontors."]
     type: logbook
   - arguments: ["Errichtet ein Leuchtfeuer an der K\xFCste in der N\xE4he des Kontors."]
     type: message
@@ -284,16 +253,14 @@ events:
     type: logbook_w
   - arguments: ['', "Ein Beispiel zum besseren Verst\xE4ndnis:\n\nWenn 5 Tonnen auf\
         \ Lager sind und der Regler auf 9 Tonnen 'Einkauf' gestellt ist, bedeutet\
-        \ es, dass zus\xE4tzlich bis zu 4 Tonnen gekauft werden. Ein Verkaufsposten,\
+        \ dies, dass zus\xE4tzlich bis zu 4 Tonnen gekauft werden. Ein Verkaufsposten,\
         \ bei dem der Schieberegler auf 13 Tonnen gestellt ist, bewirkt bei einem\
         \ Lagerstand von 18 Tonnen, dass noch bis zu 5 Tonnen verkauft werden.\n\n\
         Der Wert einer Ware kann NICHT manuell beeinflusst werden! Er setzt sich zusammen\
         \ aus verschiedenen Faktoren und wird an die Handelssituation der Inselwelt\
-        \ angepasst. Ihr k\xF6nnt die Handelsbilanz im Tab 'Finanzen' einsehen, in\
+        \ angepasst. Ihr k\xF6nnt Eure Handelsbilanz im Tab 'Finanzen' einsehen, in\
         \ dem die Posten Ein- und Verkauf gegen\xFCbergestellt sind.\n\nAUFGABE: Kauft\
-        \ so viel Werkzeuge ein, dass Ihr 30 Einheiten auf Lager habt.\n\nWenn Ihr\
-        \ immer noch Werkzeuge auf Eurem Schiff lagert, w\xE4re nun eine g\xFCnstige\
-        \ Gelegenheit zum Entladen."]
+        \ so lange Werkzeuge ein, bis Ihr 30 Einheiten auf Lager habt."]
     type: logbook
   - arguments: [!!python/unicode 'Erreicht einen Lagerbestand von 30 oder mehr Werkzeugen
         auf Eurer Insel.']
@@ -539,13 +506,13 @@ events:
   - arguments: ["KEINE AUFGABEN \xDCBRIG", "Es gibt jetzt nichts mehr zu tun.\n\n\
         Wenn Ihr Vorschl\xE4ge habt, was wir verbessern, hinzuf\xFCgen oder auslassen\
         \ k\xF6nnten bzw. sollten:\n\nwww.unknown-horizons.org\n\n#unknown-horizons\
-        \ @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nUnsere Foren stehen dir\
+        \ @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nUnsere Foren stehen Euch\
         \ ebenfalls offen!\n\nDie besten Ergebnisse wurden bis jetzt erreicht, wenn\
         \ man unseren IRC Kanal betritt, das solltet Ihr also zuerst probieren (-;\n\
         \nGenauso wie Ihr auch kein Gast in fremder Gesellschaft sein m\xF6chtet,\
         \ der einer Unterhaltung mangels Sprachkenntnis nicht folgen kann, bitten\
-        \ wir dort um Englisch. In dringenden F\xE4llen gibt es immer noch den deutschen\
-        \ Teil im Forum."]
+        \ wir dort um Englisch. In dringenden F\xE4llen k\xF6nnt Ihr auch in gebrochenem\
+        \ Englisch Hilfe suchen und erw\xE4hnen, dass Ihr Deutsch sprecht."]
     type: logbook
   - arguments: [!!python/unicode 'Vielen Dank!', "\n\n\n\n\n\n\nDanke, dass Ihr Euch\
         \ Zeit und M\xFChe genommen habt, diese Einf\xFChrung zu spielen!\n\nDas UH-Team"]

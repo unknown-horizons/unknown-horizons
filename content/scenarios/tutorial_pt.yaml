@@ -9,7 +9,8 @@ description: "O tutorial.\nConstr\xF3i a tua primeira povoa\xE7\xE3o e aprende a
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Edifica uma filial na costa.']
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
   - arguments: [!!python/unicode 'Bemvindo a Unknown Horizons!', "Aqui \xE9 o Di\xE1\
         rio de Bordo on toda a informa\xE7\xE3o importante \xE9 guardada. Uma pequena\
@@ -34,57 +35,35 @@ events:
         \ sombreada de vermelho.\nClique onde deseja edificar a constru\xE7\xE3o.\n\
         \nTAREFA: Construir uma filial na costa.", 2]
     type: logbook
-  - arguments: [tutStepDone, 6]
+  - arguments: [tutStepDone, 16]
     type: set_var
   conditions:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'DESEMBARQUE AS MERCADORIAS', "Agora que construiu\
-        \ uma filial, necessita de transferir alguns dos seus recursos para o armaz\xE9\
-        m.\n\nPara efectuar esta opera\xE7\xE3o, selecione o seu navio e v\xE1 \xE0\
-        \ guia com a caixa de madeira chamada 'Invet\xE1rio do Navio'.\n\nAqui tem\
-        \ um resumo da carga do navio e um bot\xE3o de 'Carregar/Descarregar'.\n\n\
-        Este bot\xE3o fica activo se o seu navio estiver numa dist\xE2ncia em que\
-        \ \xE9 poss\xEDvel efectuar trocas com um parceiro comercial, como por exemplo\
-        \ uma filial.\n\nClique no bot\xE3o. Se n\xE3o estiver activo, mova o seu\
-        \ navio para uma posi\xE7\xE3o mais pr\xF3xima da filial e tente novamente.\n\
-        \nTAREFA: Abrir o di\xE1logo de troca."]
-    type: logbook_w
-  - arguments: ['', "A guia dispon\xEDvel est\xE1 dividida em 'Navio' e 'Povoa\xE7\
-        \xE3o' enquanto parceiros comerciais.\n\nPara transferir mercadorias de um\
-        \ armaz\xE9m para o outro, basta que clique nas mesmas.\n\nPara experimentar,\
-        \ clique nas t\xE1buas actualmente no seu navio e depois movimente-as.\n\n\
-        Poder\xE1 customizar a quantidade movimentada atrav\xE9s dos but\xF5es de\
-        \ r\xE1dio no centro.\n\nAcha que j\xE1 est\xE1 familiarizado com a guia de\
-        \ trocas?\nAgora precisa de alguns materiais de constru\xE7\xE3o na sua povoa\xE7\
-        \xE3o!\n\nTAREFA: Descarregar pelo menos 10 toneladas de cada recurso dispon\xED\
-        vel no navio."]
-    type: logbook
-  - arguments: ["Descarregue pelo menos 10 toneladas de cada recurso dispon\xEDvel\
-        \ no seu navio."]
-    type: message
-  - arguments: [tutStepDone, 16]
-    type: set_var
-  conditions:
-  - arguments: [1, 0]
-    type: building_num_of_type_greater
-  - arguments: [tutStepDone, 5]
-    type: var_gt
-  - arguments: [tutStepDone, 16]
-    type: var_lt
-- actions:
-  - arguments: [!!python/unicode 'CRIE UM LENHADOR', "Com os seus novos materiais\
-        \ de constru\xE7\xE3o na sua filial, poder\xE1 come\xE7ar a construir alguns\
-        \ edif\xEDcios b\xE1sicos.\n\nIremos come\xE7ar criando um lenhador.\n\nIsto\
-        \ \xE9 essencial, pois nesta altura, as t\xE1buas s\xE3o os \xFAnicos materiais\
-        \ dispon\xEDveis para os marinheiros construirem as suas tendas.\n\nOs pescadores\
-        \ tamb\xE9m necessitam de algumas t\xE1buas para constru\xEDrem os seus barcos.\n\
-        \nPara construir lenhadores; abra o menu de constru\xE7\xE3o, atrav\xE9s de\
-        \ um clique no icon por baixo do mapa miniatura ou pressionando a tecla B.\n\
-        \nO menu de constru\xE7\xE3o \xE9 controlado atrav\xE9s de n\xEDveis.\nEst\xE1\
-        \ presentemente no primeiro n\xEDvel (o n\xEDvel dos marinheiros), pelo que\
-        \ s\xF3 estar\xE3o dispon\xEDveis edif\xEDcios b\xE1sicos."]
+  - arguments: [!!python/unicode 'CRIE UM LENHADOR', !!python/unicode 'The construction
+        material on your ship got unloaded automatically. You can now construct some
+        basic buildings.
+
+
+        We will start with building a lumberjack.
+
+
+        This is essential because, at this stage, boards are the only poles your sailors
+        can afford to hang their tents over.
+
+
+        The fisherman needs some boards to build his vessel as well.
+
+
+        In order to construct lumberjacks; open the build menu by either clicking
+        the big icon below the mini map or pressing B key.
+
+
+        The build menu is sorted by increments.
+
+        You are currently in the first increment (the Sailors level) so are offered
+        only the basic buildings.']
     type: logbook_w
   - arguments: ['', "Enquanto a sua civiliza\xE7\xE3o progride, ganhar\xE1 acesso\
         \ a novos edif\xEDcios mais complexos.\n\nPor enquanto, selecione o lenhador\
@@ -235,26 +214,50 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'CONSTRUIR O SINAL DE FOGO', "Viu um navio que passa\
-        \ pr\xF3ximo da sua povoa\xE7\xE3o de tempo a tempo?\n\nEste navio \xE9 o\
-        \ Mercador Livre, um dos primeiros colonos neste arquip\xE9lago.\n\nEste mercador\
-        \ ir\xE1 fornecer \xE0 sua povoa\xE7\xE3o os materiais necess\xE1rios que\
-        \ n\xE3o pode ainda produzir.\n\nPoder\xE1 tamb\xE9m vender supra-numer\xE1\
-        rios da sua produ\xE7\xE3o, mas em geral ser\xE1 melhor investimento utiliz\xE1\
-        -los na constru\xE7\xE3o de novos edif\xEDcios em vez de os vender ao mercador\
-        \ livre.\n\nNormalmente os navios de mercador viajam procurando neg\xF3cios,\
-        \ no entanto pequenas povoa\xE7\xF5es como a sua necessitam primeiro de uma\
-        \ promo\xE7\xE3o, caso contr\xE1rio n\xE3o conseguir\xE3o avistar a sua povoa\xE7\
-        \xE3o.\n\nPara este purp\xF3sito, poder\xE1 construir um Sinal de Fogo na\
-        \ costa pr\xF3ximo da sua prefeitoria para mostrar aos navios o caminho para\
-        \ a sua povoa\xE7\xE3o."]
+  - arguments: [!!python/unicode 'CONSTRUIR O SINAL DE FOGO', !!python/unicode 'Can
+        you see the ship passing your island from time to time? That ship belongs
+        to the Free Trader, one of the first settlers in this archipelago.
+
+
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
+
+
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
+
+
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
+
+
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
     type: logbook_w
-  - arguments: ['', "Depois deste pequeno an\xFAncio, o mercador livre ir\xE1 visit\xE1\
-        -lo de tempo a tempo e procurar pela sua prefeitoria.\n\nPoder\xE1 propor\
-        \ neg\xF3cios atrav\xE9s da guia de 'Comprar/Vender'. (Esta op\xE7\xE3o actualmente\
-        \ est\xE1 a ser melhorada e redesenhada. Se encontrar uma forma de a melhorar,\
-        \ por favor partilhe as suas ideias! Agradecemos as suas ideias!)\n\nTAREFA:\
-        \ Construa um Sinal de Fogo na costa, pr\xF3ximo da sua prefeitoria."]
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
   - arguments: ["Construa uma Fogueira na costa pr\xF3ximo da sua prefeitoria."]
     type: message
@@ -279,19 +282,16 @@ events:
         \ o 'valor alvo' \xE9 o n\xFAmero que manter\xE1 na sua reserva ap\xF3s a\
         \ venda."]
     type: logbook_w
-  - arguments: ['', "Por exemplo: \nSe tiver uma 'Compra' e 5 toneladas em armaz\xE9\
-        m, a barra posicionada nas 9 toneladas vai fazer com que compre 4 toneladas\
-        \ adicionais (5+4=9).\nA venda funciona de forma id\xEAntica. Se um escatel\
-        \ tiver 18 toneladas para venda, e a barra posicionada em venda, ir\xE1 vender\
-        \ 5 toneladas (18-5=13).\n\nNo entanto se o mercador livre so quiser comprar\
-        \ ou vender mercador em valor inferior ao que pretende, tem que viver com\
-        \ isso e esperar que ele volte novamente.\n\nO Unknown Horizons funciona com\
-        \ base em tabelas 'smart pricing', portanto o valor da unidade poder\xE1 oscilar.\n\
-        N\xC2O \xE9 poss\xEDvel mudar os pre\xE7os manualmente!\n\nPoder\xE1 ver o\
-        \ seu balancete de troca na guia de 'Conta', onde tamb\xE9m poder\xE1 comparar\
-        \ os valores e compra e venda.\n\nTAREFA: Compre tantas ferramentas como as\
-        \ que precisar para ter em armaz\xE9m 30 ferramentas!\nSe ainda tiver algumas\
-        \ no invent\xE1rio do seu navio, poder\xE1 ser uma boa altura para as descarregar."]
+  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
+        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
+        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
+        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
+        \ however only wants to buy or sell less than your settings would allow him,\
+        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
+        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
+        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
+        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
+        \ as you need to have 30 tools in stock!"]
     type: logbook
   - arguments: ["Atinja o limite de pelo menos 30 ferramentas no armaz\xE9m da ilha."]
     type: message

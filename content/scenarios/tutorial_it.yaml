@@ -13,7 +13,8 @@ description: !!python/unicode 'Tutorial:
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Costruire una filiale presso la costa.']
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
   - arguments: [!!python/unicode 'Benvenuti a Unknown Horizons!', "Questo \xE8 il\
         \ tuo diario del Capitano dove sono conservate tutte le informazioni importanti.\
@@ -39,54 +40,22 @@ events:
         \ posizionare il primo edificio.\n\nOBIETTIVO: Costruire una filiale presso\
         \ la costa.", 2]
     type: logbook
-  - arguments: [tutStepDone, 6]
+  - arguments: [tutStepDone, 16]
     type: set_var
   conditions:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: SCARICA I TUOI BENI', "Ora che la Filiale\
-        \ \xE8 stata costruita, \xE8 necessario spostare una parte delle risorse nella\
-        \ sua scorta.\n\nPer farlo, seleziona la tua nave e vai nella scheda con l'icona\
-        \ della cassa di legno chiamata 'Inventario Nave'.\n\nQui potete avere una\
-        \ panoramica di come appare questa nave e vedere il pulsante 'Carica/Scarica'.\n\
-        \nQuesto pulsante si attiva se la vostra nave \xE8 nel raggio di possibili\
-        \ compagni commerciali come una filiale.\n\nFare clic sul pulsante. Nel caso\
-        \ in cui non sia attivo, muovi la nave verso la filiale e riprova.\n\nOBIETTIVO:\
-        \ Aprire il men\xF9 commerciale."]
-    type: logbook_w
-  - arguments: ['', "La scheda che vedi \xE8 divisa in 'Nave' e 'Insediamento' come\
-        \ compagni commerciali.\n\nPer muovere beni da una scorta all'altra clicca\
-        \ su essi.\n\nProva prima a cliccare sulle assi attualmente sulla tua nave\
-        \ e poi prova a riportale indietro.\n\nPuoi personalizzare le quantit\xE0\
-        \ spostate usando i bottoni nel centro.\n\nHai familiarizzato con la scheda\
-        \ commerciale?\nOra hai bisogno di materiale da costruzione nel tuo insediamento!\n\
-        \nOBIETTIVO: Scarica almeno 10 tonnellate di ogni risorsa che la tua nave\
-        \ trasporta."]
-    type: logbook
-  - arguments: [!!python/unicode 'Scarica almeno 10 tonnellate di ogni risorsa sulla
-        tua nave.']
-    type: message
-  - arguments: [tutStepDone, 16]
-    type: set_var
-  conditions:
-  - arguments: [1, 0]
-    type: building_num_of_type_greater
-  - arguments: [tutStepDone, 5]
-    type: var_gt
-  - arguments: [tutStepDone, 16]
-    type: var_lt
-- actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: IL TAGLIABOSCHI', "Con il nuovo materiale\
-        \ da costruzione nella filiale puoi cominciare a costruire alcuni edifici\
-        \ di base.\n\nComincia con il tagliaboschi.\n\nQuesto \xE8 essenziale perch\xE9\
-        , a questo punto, le assi sono i soli pali a cui i tuoi marinai potranno agganciare\
-        \ le loro tende.\n\nIl pescatore necessita anch'esso di assi per costruire\
-        \ la sua imbarcazione.\n\nPer costruire il tagliaboschi apri il men\xF9 di\
-        \ costruzione cliccando sulla grossa icona sotto la mini-mappa o premendo\
-        \ il tasto B.\n\nIl men\xF9 di costruzione \xE8 ordinato in livelli.\nAl momento\
-        \ sei al primo livello (il livello Marinaio) quindi avrai solo gli edifici\
-        \ di base."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL TAGLIABOSCHI', "Il materiale di costruzione\
+        \ sulla vostra nave ha scaricato automaticamente. Ora \xE8 possibile costruire\
+        \ alcuni edifici di base.\n\nInizieremo con la costruzione di un boscaiolo.\n\
+        \nCi\xF2 \xE8 essenziale perch\xE9, in questa fase, le tavole sono i poli\
+        \ e solo i naviganti possono permettersi di appendere le tende oltre.\n\n\
+        Il pescatore ha bisogno di tavole per costruire la nave.\n\nPer costruire\
+        \ un boscaiolo, aprire il menu costruire facendo clic sull'icona del grande\
+        \ sotto la mini mappa o premendo il tasto B.\n\nIl menu di costruire \xE8\
+        \ ordinato per incrementi.\nStai nel primo livello (il livello Marinai) in\
+        \ modo tale sono offerti solo gli edifici di base."]
     type: logbook_w
   - arguments: ['', "Quando la civilizzazione avanza, guadagnerai altri edifici pi\xF9\
         \ complessi.\n\nPer adesso, seleziona il tagliaboschi sotto 'Compagnie' e\
@@ -231,27 +200,50 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: IL SEGNALE DI FUOCO', "Riesci a vedere\
-        \ la nave che passa dalla tua isola di tanto in tanto?\n\nE' la nave del Libero\
-        \ Commerciante, uno dei primi coloni dell'arcipelago.\n\nQuesto commerciante\
-        \ fornir\xE0 il tuo insediamento con beni che non puoi ancora produrre.\n\n\
-        Potrai anche vendergli l'eccedenza della tua produzione, ma in generale consumarla\
-        \ (costruendo pi\xF9 tende) invece di venderla porter\xE0 pi\xF9 profitti.\n\
-        \nNormalmente le navi girano in cerca di affari, ma i piccoli insediamenti\
-        \ come il tuo necessitano prima di una promozione, altrimenti non sarai trovato.\n\
-        \nA questo scopo puoi costruire un segnale di fuoco sulla costa vicino alla\
-        \ tua filiale per indicare alle navi la via per la tua colonia."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL SEGNALE DI FUOCO', !!python/unicode 'Can
+        you see the ship passing your island from time to time? That ship belongs
+        to the Free Trader, one of the first settlers in this archipelago.
+
+
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
+
+
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
+
+
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
+
+
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
     type: logbook_w
-  - arguments: ['', "Dopo questo piccolo avvertimento, il commerciante si fermer\xE0\
-        \ di tanto in tanto presso la tua filiale.\n\nPotrai proporre affari tramite\
-        \ la scheda 'Compra/Vendi'. (Questa funzione \xE8 al momento un p\xF2 scomoda\
-        \ da usare, ma una riprogettazione \xE8 in corso. Se trovi un modo migliore\
-        \ per farlo, per cortesia condividilo con noi! Abbiamo bisogno del tuo aiuto\
-        \ qui!)\n\nAl livello 'marinaio' hai a disposizione tre spazi commerciali.\n\
-        \nClicca sull'icona piccola per cambiare gli spazi commerciali da 'Compra'\
-        \ a 'Vendi' e viceversa.\n\nSe vi clicchi sopra, potrai scegliere i beni da\
-        \ commerciare. Lo spiegheremo ulteriormente una volta che sei pronto a commerciare.\n\
-        \nOBIETTIVO: Costruisci un segnale di fuoco sulla riva vicino alla tua filiale."]
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un segnale di fuoco sulla costa vicino
         alla tua filiale.']
@@ -276,18 +268,17 @@ events:
         \ per tenere la 'quantit\xE0 obiettivo' in magazzino.\nQuando vendi la 'quantit\xE0\
         \ obiettivo' \xE8 il numero che mantieni in riserva da non vendere."]
     type: logbook_w
-  - arguments: ['', "Per esempio:\nAvendo uno spazio 'Compra' e 5 tonnellate in magazzino,\
-        \ un selettore impostato a 9 tonnellate comporter\xE0 che comprerai al pi\xF9\
-        \ 4 tonnellate aggiuntive.\nVendendo funzioner\xE0 in modo analogo. Uno spazio\
-        \ 'Vendi' con 18 tonnellate in magazzino ed il selettore impostato a 13 vender\xE0\
-        \ fino a 5 tonnellate.\n\nSe il libero commerciante, comunque, vuole comprare\
-        \ o vendere meno di quanto tu hai impostato dovrai attendere il prossimo suo\
-        \ passaggio.\n\nIl valore di un'unit\xE0 pu\xF2 variare.\nNON \xE8 possibile\
-        \ cambiare manualmente i prezzi!\n\nPuoi vedere il bilancio commerciale nella\
-        \ scheda 'Conto' e confrontare i valori 'Vendita' ed 'Acquisto'.\n\nOBIETTIVO:\
-        \ Compra tutti gli attrezzi di cui hai bisogno per avere 30 attrezzi in magazzino!\n\
-        Se ne hai ancora nelle stive della tua nave, questa \xE8 una buona occasione\
-        \ per scaricarli."]
+  - arguments: ['', "Ad esempio:\nChe presenta una fessura 'Buy' e 5 tonnellate in\
+        \ magazzino, uno slider posizionato a 9 tonnellate ti far\xE0 acquistare ulteriori\
+        \ 4 tonnellate al massimo.\nLa vendita funziona in modo simile. Uno slot 'Vendi'\
+        \ con 18 tonnellate in magazzino e lo slider posizionato a 13 vender\xE0 fino\
+        \ a 5 tonnellate.\n\nSe l'operatore libero ma vuole solo acquistare o vendere\
+        \ a meno di impostazioni lo permettono, si deve vivere con quello e aspettare\
+        \ il suo ritorno.\n\nUnknown Horizons ha caratteristiche determinazione intelligente\
+        \ del prezzo, in modo che il valore di una unit\xE0 pu\xF2 variare.\nNON \xE8\
+        \ possibile cambiare manualmente i prezzi!\n\nPotete vedere il saldo commerciale\
+        \ nella scheda 'Account' a confronto la 'Vendi' e 'Compra' valori l\xEC.\n\
+        \nTASK: Buy  come strumenti di cui hai bisogno di avere 30 utensili in magazzino!"]
     type: logbook
   - arguments: [!!python/unicode 'Raggiungi una scorta per l''isola di almeno 30 attrezzi.']
     type: message
