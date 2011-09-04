@@ -405,7 +405,7 @@ def _load_map(savegame, ai_players, human_ai):
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
-	load_game(ai_players, human_ai, map_file)
+	load_game(savegame=map_file)
 	return True
 
 def _load_last_quicksave():
@@ -418,7 +418,7 @@ def _load_last_quicksave():
 	except KeyError:
 		print _("Error: No quicksave found.")
 		return False
-	load_game(0, False, save)
+	load_game(savegame=save)
 	return True
 
 def _create_db():
