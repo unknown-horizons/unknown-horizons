@@ -158,7 +158,7 @@ def start(command_line_arguments):
 	elif command_line_arguments.stringpreview:
 		startup_worked = _start_map("development_no_trees", 0, False)
 		from development.stringpreviewwidget import StringPreviewWidget
-		StringPreviewWidget().show()
+		StringPreviewWidget(_modules.session).show()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
 		preloading[0].start()
