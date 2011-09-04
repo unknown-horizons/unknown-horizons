@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-27 15:14+0200\n"
+"PO-Revision-Date: 2011-08-27 15:15+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -223,7 +223,7 @@ msgstr "Nie można usunąć zapisanej gry!"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Nie mogę znaleźć pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
