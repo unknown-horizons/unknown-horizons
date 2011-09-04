@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-09-04 12:45+0200\n"
+"PO-Revision-Date: 2011-09-04 13:07+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -479,12 +479,12 @@ msgstr "Podgląd rynku głównego"
 
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:218
 msgid "Ship overview"
-msgstr "Przegląd statku"
+msgstr "Podgląd statku"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:225
 msgid "Unit overview"
-msgstr "Przegląd jednostki"
+msgstr "Podgląd jednostki"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
