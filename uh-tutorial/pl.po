@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 21:21+0200\n"
-"PO-Revision-Date: 2011-05-12 15:21+0200\n"
-"Last-Translator: Natrius <sebastian171191@gmail.com>\n"
+"PO-Revision-Date: 2011-09-04 14:40+0200\n"
+"Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -24,19 +24,20 @@ msgid "Tutorial"
 msgstr "Samouczek"
 
 #: po/tutorial.py:2
-#, fuzzy
 msgid "The UH team"
-msgstr "UH Team"
+msgstr "Zespół UH "
 
 #: po/tutorial.py:3
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
+"Samouczek:\n"
+"Zbuduj swoją pierwszą osadę i naucz się jak grać!\n"
 
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
-msgstr ""
+msgstr "Zbuduj port na wybrzeżu."
 
 #: po/tutorial.py:5
 #, fuzzy
@@ -79,7 +80,7 @@ msgstr ""
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr ""
+msgstr "Nowe zadanie: Osiedl się na wyspie."
 
 #: po/tutorial.py:8
 msgid ""
