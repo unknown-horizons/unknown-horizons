@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-08-18 21:21+0200\n"
-"PO-Revision-Date: 2011-09-04 14:47+0200\n"
+"POT-Creation-Date: 2011-09-04 20:36+0200\n"
+"PO-Revision-Date: 2011-09-04 14:48+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -19,7 +19,6 @@ msgstr ""
 "X-Generator: Pootle 2.1.5\n"
 
 #: po/tutorial.py:1
-#, fuzzy
 msgid "Tutorial"
 msgstr "Samouczek"
 
@@ -36,11 +35,10 @@ msgstr ""
 "Zbuduj swoją pierwszą osadę i naucz się jak grać!\n"
 
 #: po/tutorial.py:4
-msgid "Build a branch office at the coast."
-msgstr "Zbuduj port na wybrzeżu."
+msgid "Build a branch office at the coast, so it is easy accessible for other ships like the Free Trader."
+msgstr ""
 
 #: po/tutorial.py:5
-#, fuzzy
 msgid "Welcome to Unknown Horizons!"
 msgstr "Witaj w Unknown Horizons!"
 
@@ -263,30 +261,29 @@ msgstr ""
 
 #: po/tutorial.py:27
 msgid ""
-"Can you see the ship passing your island from time to time?\n"
+"Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.\n"
 "\n"
-"This is the ship of the Free Trader, one of the first settlers in this archipelago.\n"
+"The trader will supply your settlement with necessary goods which you can't produce yet.\n"
+"You can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling them yields more profit.\n"
 "\n"
-"This trader will supply your settlement with necessary goods which you can't produce yet.\n"
+"Normally the trader ships just sail around and look for deals, but you can speed things up a bit.\n"
 "\n"
-"You can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling to the Free Trader yields more profit.\n"
+"For this purpose, build a signal fire at the coast near your branch office. It will show ships the way to your settlement.\n"
 "\n"
-"Normally the ships just sail around and look for deals, but small settlements like yours first need some promotion, otherwise you won't be found.\n"
-"\n"
-"For this purpose, you can build a signal fire at the coast near your branch office to show ships the way to your settlement."
+"The signal fire has to cover the area which the ships pass through to catch them."
 msgstr ""
 
 #: po/tutorial.py:28
 msgid ""
-"After this little advertisment, the trader will stop by from time to time and look into your branch office.\n"
+"After this little advertisment, the trader will also stop by and look into your branch office if it planned to sail past it.\n"
 "\n"
-"You can propose deals via the tab 'Buy/Sell'. (This feature is currently quite fiddly to use, but a re-design is in the pipeline. If you have found a nice way of doing it, please share your thoughts! We need your help here!)\n"
+"You can propose deals via the branch office tab 'Buy/Sell'. (This feature is currently quite fiddly to use. If you come up with a nice way of improving it, please share your thoughts! We need your help here!)\n"
 "\n"
 "At the 'sailors' increment, you are equipped with three trading slots.\n"
 "\n"
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.\n"
 "\n"
-"If you click in the slot, you can choose the good you want to trade with. We will further explain this once you are ready to trade.\n"
+"Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.\n"
 "\n"
 "TASK: Build a signal fire at the coast close to your branch office."
 msgstr ""
@@ -595,3 +592,6 @@ msgstr ""
 #: po/tutorial.py:64
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
+
+#~ msgid "Build a branch office at the coast."
+#~ msgstr "Zbuduj port na wybrzeżu."
