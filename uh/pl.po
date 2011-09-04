@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-27 15:15+0200\n"
+"PO-Revision-Date: 2011-09-04 12:45+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: horizons/engine.py:497
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Nie udało się zatwierdzić nowych ustawień sieci."
 
 #: horizons/engine.py:498 horizons/gui/modules/multiplayermenu.py:57
 msgid "Networking couldn't be initialised with the current configuration."
@@ -240,6 +240,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Użytkownicy Windowsa: Brak obecnie rozsądnego wsparcia dla systemu Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
@@ -401,7 +402,7 @@ msgstr "Handel"
 
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:175
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Zapasy osady"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
@@ -418,7 +419,7 @@ msgstr "Kup/Sprzedaj:"
 
 #: horizons/gui/tabs/inventorytab.py:120
 msgid "Equip weapon"
-msgstr ""
+msgstr "Uzbrojenie"
 
 #: horizons/gui/tabs/inventorytab.py:123
 msgid "Unequip weapon"
