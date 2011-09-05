@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-04 21:10+0200\n"
-"PO-Revision-Date: 2011-09-05 14:15+0200\n"
+"PO-Revision-Date: 2011-09-05 16:42+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -465,11 +465,11 @@ msgstr ""
 
 #: po/tutorial.py:29
 msgid "Build a signal fire at the coast close to your branch office."
-msgstr ""
+msgstr "Wybuduj latarnie na wybrzeżu w pobliżu swojego portu."
 
 #: po/tutorial.py:30
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "Nowe Zadanie: Naucz się handlować."
 
 #: po/tutorial.py:31
 msgid ""
@@ -502,7 +502,7 @@ msgstr ""
 
 #: po/tutorial.py:33
 msgid "Reach an island stock of at least 30 tools."
-msgstr ""
+msgstr "Zdobądź co najmniej 30 sztuk narzędzi. "
 
 #: po/tutorial.py:34
 msgid "NEW TASK: BUILD A PAVILION"
