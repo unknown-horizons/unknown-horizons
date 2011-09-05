@@ -39,6 +39,7 @@ from horizons.util.gui import LazyWidgetsDict
 from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
+from horizons.gui.tabs.tabinterface import TabInterface
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -338,10 +339,16 @@ class IngameGui(LivingObject):
 
 		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
-		btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
-		         range(0, self.session.world.player.settler_level+1)]
-		tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
-								    active_tab=BuildTab.last_active_build_tab)
+
+		if not any( (settlement.owner == self.session.world.player) for settlement in self.session.world.settlements):
+			# player has not built any settlements yet. Accessing the build menu at such a point
+			# indicates a mistake in the mental model of the user. Display a hint.
+			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
+		else:
+			btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
+				       range(0, self.session.world.player.settler_level+1)]
+			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
+				              active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
 
 	def deselect_all(self):
