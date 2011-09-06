@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-08-28 23:11+0200\n"
+"PO-Revision-Date: 2011-08-28 23:13+0200\n"
 "Last-Translator: tagarista <tagarista@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -221,7 +221,6 @@ msgid "move"
 msgstr "muovi"
 
 # 80%
-#, fuzzy
 msgid "moved"
 msgstr "muovi"
 
@@ -437,7 +436,6 @@ msgid "hold"
 msgstr "tenere"
 
 # 80%
-#, fuzzy
 msgid "hunt"
 msgstr "caccia"
 
@@ -547,7 +545,7 @@ msgstr "giocando"
 msgid "ruin"
 msgstr "rovina"
 
-#, fuzzy
+# In base alla frase.
 msgid "seed"
 msgstr "seme"
 
