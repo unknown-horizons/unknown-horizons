@@ -13,18 +13,18 @@
 	<HBox size="250, 100"  position="23,47"  name="content"  padding="10" />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-	<HBox position="20,120" max_size="245,300" name="legend">
-		<Label name="buysell_help_label"  text="Click on slot icon to toggle mode:" />
-		<VBox>
-			<HBox>
-				<Icon image="content/gui/images/tabwidget/buysell_buy.png" />
-				<Label name="buy_label"  text="Buy resources" />
-			</HBox><HBox>
-				<Icon image="content/gui/images/tabwidget/buysell_sell.png" />
-				<Label name="sell_label"  text="Sell resources" />
-			</HBox>
-		</VBox>
-	</HBox>
+	<VBox position="20,120" max_size="245,300" name="legend">
+
+		<Label name="buysell_help_label"  text="Click on slot icon to toggle mode:"
+			wrap_text="1" max_size="245,40" />
+		<HBox>
+			<Icon image="content/gui/images/tabwidget/buysell_buy.png" />
+			<Label name="buy_label"  text="Buy resources" />
+		</HBox><HBox>
+			<Icon image="content/gui/images/tabwidget/buysell_sell.png" />
+			<Label name="sell_label"  text="Sell resources" />
+		</HBox>
+	</VBox>
 
 </Container>
 
