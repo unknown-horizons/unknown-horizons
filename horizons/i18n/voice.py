@@ -54,16 +54,16 @@ def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 	@param variation_id: variation id of sentence
 	@params random if true variation is random if false we try to find by variation_id
 	@return: Path to Speach file or None if not exist"""
-	cat_id = eval_category_name(category)
-	if cat_id == None: return None
+	category_name = eval_category_name(category)
+	if category_name == None: return None
 	lang = horizons.main.fife.get_locale()
-	path = prepare_path(lang, cat_id, variation_id, speaker_id)
+	path = prepare_path(lang, category_name, variation_id, speaker_id)
 	if path == None:
-		path = prepare_path(DEFAULT_LANG, cat_id, DEFAULT_VARIATION, DEFAULT_SPEAKER)
+		path = prepare_path(DEFAULT_LANG, category_name, DEFAULT_VARIATION, DEFAULT_SPEAKER)
 	return path
 
-def prepare_path(lang, cat_id, var_id, spkr_id):
-	dir_path = get_dir_path(lang, cat_id, spkr_id)
+def prepare_path(lang, category_name, var_id, spkr_id):
+	dir_path = get_dir_path(lang, category_name, spkr_id)
 	if not os.path.isdir(dir_path): return None
 	file_path = get_file_path(dir_path, var_id)
 	if (file_path != None) and os.path.isfile(file_path):
@@ -83,8 +83,8 @@ def get_file_path(dir_name, var_id):
 	else:
 		return None
 
-def get_dir_path(lang, cat_id, spkr_id):
-	return os.path.join(PATHS.VOICE_DIR, lang, str(spkr_id), str(cat_id))
+def get_dir_path(lang, category_name, spkr_id):
+	return os.path.join(PATHS.VOICE_DIR, lang, str(spkr_id), str(category_name))
 
 def count_variations(dir_name):
   return len([file for file in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name,file))])
