@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-08-18 17:35+0200\n"
+"PO-Revision-Date: 2011-09-07 05:49+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -234,10 +234,14 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Пользователи Linux: попробуйте установить pyenet через вашу систему "
+"управления пакетами."
 
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Пользователи Windows: на данный момент Windows, к сожалению, не "
+"поддерживается."
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
@@ -399,7 +403,7 @@ msgstr "Торговля"
 
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:175
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Запасы поселения"
 
 # ???
 #: horizons/gui/tabs/inventorytab.py:64
@@ -413,15 +417,15 @@ msgstr "Погрузить/Разгрузить:"
 
 #: horizons/gui/tabs/inventorytab.py:86
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "Купить/продать:"
 
 #: horizons/gui/tabs/inventorytab.py:120
 msgid "Equip weapon"
-msgstr ""
+msgstr "Экипировать оружие"
 
 #: horizons/gui/tabs/inventorytab.py:123
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Снять оружие"
 
 #: horizons/gui/tabs/mainsquaretabs.py:76 horizons/i18n/guitranslations.py:160
 msgid "Account"
@@ -436,30 +440,28 @@ msgstr "Просмотр поселенца"
 #: horizons/i18n/guitranslations.py:195 horizons/i18n/guitranslations.py:210
 #: horizons/i18n/guitranslations.py:228
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Разрешить развитие"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Запретить развитие"
 
 #: horizons/gui/tabs/mainsquaretabs.py:228
 #: horizons/i18n/guitranslations.py:197
 msgid "Sailors"
-msgstr ""
+msgstr "Моряки"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:233
 #: horizons/i18n/guitranslations.py:181
-#, fuzzy
 msgid "Pioneers"
-msgstr "пионер"
+msgstr "Пионеры"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:238
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:328
-#, fuzzy
 msgid "Settlers"
-msgstr "поселенец"
+msgstr "Первопроходцы"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:393
 #: horizons/i18n/guitranslations.py:267
