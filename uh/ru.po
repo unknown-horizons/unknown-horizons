@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-09-07 05:49+0200\n"
+"PO-Revision-Date: 2011-09-07 05:59+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -474,7 +474,7 @@ msgstr "Обзор конторы"
 
 #: horizons/gui/tabs/overviewtab.py:141
 msgid "Main square overview"
-msgstr ""
+msgstr "Обзор главной площади"
 
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:218
 msgid "Ship overview"
@@ -482,9 +482,8 @@ msgstr "Обзор корабля"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:225
-#, fuzzy
 msgid "Unit overview"
-msgstr "Обзор корабля"
+msgstr "Обзор юнита"
 
 #: horizons/gui/tabs/overviewtab.py:244 horizons/i18n/guitranslations.py:318
 msgid "Production overview"
@@ -496,7 +495,7 @@ msgstr "Уничтожить строение"
 
 #: horizons/gui/tabs/selectmultitab.py:53
 msgid "Selected Units"
-msgstr ""
+msgstr "Выбранные юниты"
 
 #: horizons/gui/widgets/buysellinventory.py:84
 #: horizons/gui/widgets/inventory.py:103
@@ -522,7 +521,7 @@ msgstr "Остановить маршрут"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "нет"
 
 #: horizons/i18n/guitranslations.py:42
 msgid "String Previewer Tool for Scenario files"
@@ -719,15 +718,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:98
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "Вы дожны основать поселение, чтобы строить здания!"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Выберите ваш корабль и нажмите правой кнопкой мыши у берега."
 
 #: horizons/i18n/guitranslations.py:100
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Затем нажмти большую кнопку на вкладке обзора корабля."
 
 #: horizons/i18n/guitranslations.py:103 horizons/i18n/guitranslations.py:232
 msgid "Running costs:"
@@ -752,7 +751,7 @@ msgstr "Меню строительства"
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Diplomacy"
-msgstr ""
+msgstr "Дипломатия"
 
 #: horizons/i18n/guitranslations.py:111
 msgid "Game menu"
@@ -933,15 +932,15 @@ msgstr "Показать ресурсы, произведённые в данн�
 
 #: horizons/i18n/guitranslations.py:169
 msgid "ally"
-msgstr ""
+msgstr "союзник"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "enemy"
-msgstr ""
+msgstr "враг"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "neutral"
-msgstr ""
+msgstr "нейтрал"
 
 #: horizons/i18n/guitranslations.py:173
 msgid "Build fields"
@@ -958,44 +957,41 @@ msgstr "Наиболее необходимые ресурсы:"
 #: horizons/i18n/guitranslations.py:182 horizons/i18n/guitranslations.py:198
 #: horizons/i18n/guitranslations.py:213
 msgid "Residents per house"
-msgstr ""
+msgstr "Жителей на дом"
 
 #: horizons/i18n/guitranslations.py:183 horizons/i18n/guitranslations.py:199
 #: horizons/i18n/guitranslations.py:214
 msgid "Summary"
-msgstr ""
+msgstr "Резюме"
 
 #: horizons/i18n/guitranslations.py:184 horizons/i18n/guitranslations.py:200
 #: horizons/i18n/guitranslations.py:215
 msgid "houses"
-msgstr ""
+msgstr "дома"
 
 #: horizons/i18n/guitranslations.py:185 horizons/i18n/guitranslations.py:201
 #: horizons/i18n/guitranslations.py:216
 msgid "1 resident"
-msgstr ""
+msgstr "1 житель"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:186 horizons/i18n/guitranslations.py:202
 #: horizons/i18n/guitranslations.py:217
-#, fuzzy
 msgid "2 residents"
-msgstr "Жители"
+msgstr "2 жителя"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:187 horizons/i18n/guitranslations.py:218
-#, fuzzy
 msgid "3 residents"
-msgstr "Жители"
+msgstr "3 жителя"
 
 # 88%
 #: horizons/i18n/guitranslations.py:188 horizons/i18n/guitranslations.py:203
 #: horizons/i18n/guitranslations.py:221
-#, fuzzy
 msgid "residents"
-msgstr "Жители"
+msgstr "жители"
 
 #: horizons/i18n/guitranslations.py:189 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:222 horizons/i18n/guitranslations.py:249
@@ -1005,7 +1001,7 @@ msgstr "Налог:"
 #: horizons/i18n/guitranslations.py:190 horizons/i18n/guitranslations.py:205
 #: horizons/i18n/guitranslations.py:223
 msgid "Allow upgrades:"
-msgstr ""
+msgstr "Улучшения разрешены:"
 
 #: horizons/i18n/guitranslations.py:191 horizons/i18n/guitranslations.py:194
 #: horizons/i18n/guitranslations.py:206 horizons/i18n/guitranslations.py:209
@@ -1025,20 +1021,18 @@ msgstr "Налог"
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:219
-#, fuzzy
 msgid "4 residents"
-msgstr "Жители"
+msgstr "4 жителя"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:220
-#, fuzzy
 msgid "5 residents"
-msgstr "Жители"
+msgstr "5 жителей"
 
 #: horizons/i18n/guitranslations.py:230
 msgid "Collector utilisation:"
-msgstr ""
+msgstr "Занятость сборщика:"
 
 #: horizons/i18n/guitranslations.py:231 horizons/i18n/guitranslations.py:237
 #: horizons/i18n/guitranslations.py:268
@@ -1047,7 +1041,7 @@ msgstr "Название:"
 
 #: horizons/i18n/guitranslations.py:235 horizons/i18n/guitranslations.py:273
 msgid "Selling"
-msgstr ""
+msgstr "Продажа"
 
 #: horizons/i18n/guitranslations.py:241
 msgid "capacity utilization"
@@ -1207,7 +1201,7 @@ msgstr "Обновить данные"
 
 #: horizons/i18n/guitranslations.py:322
 msgid "Buildings"
-msgstr ""
+msgstr "Здания"
 
 #: horizons/i18n/guitranslations.py:323
 msgid "Player scores"
