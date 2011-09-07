@@ -72,19 +72,22 @@ def prepare_path(lang, cat_id, var_id, spkr_id):
 def get_file_path(dir_name, var_id):
 	"""If var_id is None we get random variation from directory
 	"""
-	if var_id != None:
+	if var_id is not None:
 		for infile in glob.glob( os.path.join(dir_name, str(var_id) + '.*') ):
 			return infile
 	variation_count = count_variations(dir_name)
-	rand = randrange(0,variation_count)
-	filelist = glob.glob( os.path.join(dir_name, '*.*') )
-	return filelist[rand]
+	if variation_count > 0:
+		rand = randrange(0,variation_count)
+		filelist = glob.glob( os.path.join(dir_name, '*.*') )
+		return filelist[rand]
+	else:
+		return None
 
 def get_dir_path(lang, cat_id, spkr_id):
 	return os.path.join(PATHS.VOICE_DIR, lang, str(spkr_id), str(cat_id))
 
 def count_variations(dir_name):
-  return len([f for f in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name,f))])
+  return len([file for file in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name,file))])
 
 def eval_category_name(category):
 	cat_name = None
