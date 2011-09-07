@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-09-07 07:28+0200\n"
+"PO-Revision-Date: 2011-09-07 07:48+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1640,7 +1640,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:463
 msgid "Climate zone:"
-msgstr ""
+msgstr "Климатическая зона:"
 
 #: horizons/i18n/guitranslations.py:464
 msgid "frosty"
