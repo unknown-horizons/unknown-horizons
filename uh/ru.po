@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-09-07 05:59+0200\n"
+"PO-Revision-Date: 2011-09-07 07:28+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1205,53 +1205,52 @@ msgstr "Здания"
 
 #: horizons/i18n/guitranslations.py:323
 msgid "Player scores"
-msgstr ""
+msgstr "Статистика игрока"
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Land"
-msgstr ""
+msgstr "Территория"
 
 #: horizons/i18n/guitranslations.py:325
 msgid "Money"
-msgstr ""
+msgstr "Деньги"
 
 # 80%
 #: horizons/i18n/guitranslations.py:326
-#, fuzzy
 msgid "Name"
-msgstr "Название:"
+msgstr "Название"
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Resources"
-msgstr ""
+msgstr "Ресурсы"
 
 #: horizons/i18n/guitranslations.py:329
 msgid "Total"
-msgstr ""
+msgstr "Всего"
 
 #: horizons/i18n/guitranslations.py:330
 msgid "Units"
-msgstr ""
+msgstr "Юниты"
 
 #: horizons/i18n/guitranslations.py:331
 msgid "Leave player scores"
-msgstr ""
+msgstr "Покинуть статистику игрока"
 
 #: horizons/i18n/guitranslations.py:333
 msgid "Aggressive"
-msgstr ""
+msgstr "Агрессивный"
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Flee"
-msgstr ""
+msgstr "Бежать"
 
 #: horizons/i18n/guitranslations.py:335
 msgid "Hold ground"
-msgstr ""
+msgstr "Удерживать позицию"
 
 #: horizons/i18n/guitranslations.py:336
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: horizons/i18n/guitranslations.py:338
 msgid "The FIFE and Unknown Horizons development teams"
@@ -1355,7 +1354,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:363
 msgid "{R} = Show player scores"
-msgstr ""
+msgstr "{R} = Показать статистику игрока"
 
 #: horizons/i18n/guitranslations.py:364 horizons/i18n/guitranslations.py:412
 #: horizons/i18n/guitranslations.py:438 horizons/i18n/guitranslations.py:445
