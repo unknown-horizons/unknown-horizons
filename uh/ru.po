@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-09-07 07:48+0200\n"
+"PO-Revision-Date: 2011-09-07 08:26+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -645,7 +645,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:74
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Деревянная баншя: защищает ваше поселение."
 
 #: horizons/i18n/guitranslations.py:75
 msgid "Village school: Provides education."
@@ -714,7 +714,7 @@ msgstr "Изготовитель инструментов: Изготавлив�
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Game start"
-msgstr ""
+msgstr "Начать игру"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "You need to found a settlement before you can construct buildings!"
@@ -1189,7 +1189,7 @@ msgstr "Добавить в список"
 
 #: horizons/i18n/guitranslations.py:316
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #: horizons/i18n/guitranslations.py:319
 msgid "Leave production overview"
@@ -1350,7 +1350,7 @@ msgstr "{L} = Судовой журнал"
 
 #: horizons/i18n/guitranslations.py:362
 msgid "{T} = Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "{T} = Переключить полупрозрачность элементов окружения"
 
 #: horizons/i18n/guitranslations.py:363
 msgid "{R} = Show player scores"
@@ -1636,7 +1636,7 @@ msgstr "Выберите карту для игры:"
 
 #: horizons/i18n/guitranslations.py:461
 msgid "Choose your opponents:"
-msgstr ""
+msgstr "Выберите оппонентов:"
 
 #: horizons/i18n/guitranslations.py:463
 msgid "Climate zone:"
@@ -1644,53 +1644,52 @@ msgstr "Климатическая зона:"
 
 #: horizons/i18n/guitranslations.py:464
 msgid "frosty"
-msgstr ""
+msgstr "морозный"
 
 #: horizons/i18n/guitranslations.py:465
 msgid "torrid"
-msgstr ""
+msgstr "жаркий"
 
 #: horizons/i18n/guitranslations.py:466
 msgid "Map settings:"
-msgstr ""
+msgstr "Настройки карты:"
 
 #: horizons/i18n/guitranslations.py:467
 msgid "Island size:"
-msgstr ""
+msgstr "Размер острова:"
 
 #: horizons/i18n/guitranslations.py:468 horizons/i18n/guitranslations.py:471
 msgid "huge"
-msgstr ""
+msgstr "большой"
 
 #: horizons/i18n/guitranslations.py:469 horizons/i18n/guitranslations.py:472
 msgid "small"
-msgstr ""
+msgstr "маленький"
 
 #: horizons/i18n/guitranslations.py:470
 msgid "Map size:"
-msgstr ""
+msgstr "Размер карты:"
 
 # 76%
 #: horizons/i18n/guitranslations.py:473
-#, fuzzy
 msgid "Resource density:"
-msgstr "Месторождение ресурсов"
+msgstr "Плотность месторождений:"
 
 #: horizons/i18n/guitranslations.py:474
 msgid "dense"
-msgstr ""
+msgstr "много"
 
 #: horizons/i18n/guitranslations.py:475
 msgid "few"
-msgstr ""
+msgstr "мало"
 
 #: horizons/i18n/guitranslations.py:479
 msgid "AI players:"
-msgstr ""
+msgstr "ИИ игроки:"
 
 #: horizons/i18n/guitranslations.py:481
 msgid "Game settings:"
-msgstr ""
+msgstr "Настройки игры:"
 
 #: horizons/i18n/guitranslations.py:483
 msgid "Color:"
@@ -1735,21 +1734,27 @@ msgstr "Ошибка: Найдено несколько совпадений: "
 
 #: horizons/main.py:351
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr ""
+msgstr "Ошибка: имена файлов кампании должны заканчиваться на \".yaml\"."
 
 #: horizons/main.py:359
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory (%s)."
 msgstr ""
+"По техническим причинам, файл кампании был скопирован в директорию кампаний "
+"UH (%s)."
 
 #: horizons/main.py:360
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"Это значит, что изменения в выбранном файле не будут напрямую применяться в "
+"игре."
 
 #: horizons/main.py:361
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file %s."
 msgstr ""
+"Чтобы видеть изменения, либо всегда запускайте UH с текущими аргументами, "
+"либо редактируйте файл %s."
 
 # 81%
 #: horizons/main.py:367 horizons/savegamemanager.py:405
@@ -1931,22 +1936,26 @@ msgstr "Загрузка последнего быстрого сохранен�
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Устанавливает начальное значение, используемое при генерации деревьев, рыбы "
+"и других природных ресурсов."
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "Настройки ИИ"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
 msgstr ""
+"Использовать <ai_players> ИИ игроков (исключая возможный человек-ИИ гибрид; "
+"по-умолчанию 1)."
 
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
-msgstr ""
+msgstr "Делает игрока человек-ИИ гибридом (только для разработки)."
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
-msgstr ""
+msgstr "Показывает планы ИИ (только для разработки)."
 
 #: run_uh.py:120
 msgid "Development options"
@@ -1979,7 +1988,7 @@ msgstr "Включить профилирование (только для ра�
 
 #: run_uh.py:133
 msgid "Run the game for <max_ticks> ticks."
-msgstr ""
+msgstr "Запустить игру на <max_ticks> циклов."
 
 #: run_uh.py:135
 msgid "Enable the string previewer tool for scenario writers"
@@ -2005,15 +2014,20 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Ошибка: невозможно найти необходимые библиотеки"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"К сожалению, библиотека, необходимая для запуска Неизведанных Горизонтов, "
+"отсутствует и должна быть установлена."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Установщики для Windows-пользователей доступны на "
+"\"http://pyyaml.org/wiki/PyYAML\", пользователи Linux должны найти пакет "
+"\"pyyaml\" или \"python-yaml\" в системе управления пакетами."
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
@@ -2077,7 +2091,7 @@ msgstr "Палатка рыбака"
 
 #: sqlite/Building
 msgid "Gravel Path"
-msgstr ""
+msgstr "Гравийная дорога"
 
 #: sqlite/Building
 msgid "Herbary"
@@ -2191,7 +2205,7 @@ msgstr "Палатка ткача"
 
 #: sqlite/Building
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Деревянная башня"
 
 #: sqlite/Colors
 msgid "black"
@@ -2227,7 +2241,7 @@ msgstr "желтый"
 
 #: sqlite/Messages
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} и ${player2} теперь ${status}"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
@@ -2253,7 +2267,7 @@ msgstr "Часть поселенцев только что покинула в�
 
 #: sqlite/Messages
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Вы также можете двигать дороги, удерживая кнопку мыши."
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
@@ -2285,7 +2299,7 @@ msgstr "кирпич"
 
 #: sqlite/Resources
 msgid "cannon"
-msgstr ""
+msgstr "пушки"
 
 #: sqlite/Resources
 msgid "cattle"
@@ -2319,7 +2333,7 @@ msgstr "общество"
 
 #: sqlite/Resources
 msgid "dagger"
-msgstr ""
+msgstr "кинжал"
 
 #: sqlite/Resources
 msgid "deer food A"
@@ -2364,7 +2378,7 @@ msgstr "травы"
 
 #: sqlite/Resources
 msgid "iron deposit"
-msgstr ""
+msgstr "месторождение железа"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -2384,7 +2398,7 @@ msgstr "алкоголь"
 
 #: sqlite/Resources
 msgid "medical herbs"
-msgstr ""
+msgstr "лечебные травы"
 
 #: sqlite/Resources
 msgid "pigs"
@@ -2408,7 +2422,7 @@ msgstr "сахар"
 
 #: sqlite/Resources
 msgid "sugar cane"
-msgstr ""
+msgstr "сахарный тростник"
 
 #: sqlite/Resources
 msgid "textile"
@@ -2416,11 +2430,11 @@ msgstr "ткань"
 
 #: sqlite/Resources
 msgid "tobacco leaves"
-msgstr ""
+msgstr "листья табака"
 
 #: sqlite/Resources
 msgid "tobacco plants"
-msgstr ""
+msgstr "табачные растения"
 
 #: sqlite/Resources
 msgid "tobaccos"
