@@ -32,13 +32,17 @@ Shows info about settlers and allows the player to change taxes or deny upgrade 
 		</Container>
 
 		<Container size="260,80" position="25,90">
-			<Label name="upgrades_lbl" position="0,0" text="Allow upgrades:" />
-			<ToggleImageButton name="allow_upgrades" border_size="0" position="0,20"
+			<Label name="upgrades_lbl" position="0,0" text="Upgrade not possible:" />
+			<!--<Label name="upgrades_lbl" position="0,0" text="Allow upgrades:" />-->
+			<TooltipIcon name="allow_upgrades" border_size="0" position="0,20"
+				image="content/gui/images/buttons/upgrade/disallow.png"
+				tooltip="This is the current maximum increment!" />
+			<!--<ToggleImageButton name="allow_upgrades" border_size="0" position="0,20"
 				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
 				up_image="content/gui/images/buttons/upgrade/allow.png"
 				down_image="content/gui/images/buttons/upgrade/allow.png"
 				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png"
-				tooltip="Allow upgrades" />
+				tooltip="Allow upgrades" />-->
 		</Container>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,165" />
