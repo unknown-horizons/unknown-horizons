@@ -43,6 +43,7 @@ INSERT INTO "storage" VALUES(27,1,3);
 INSERT INTO "storage" VALUES(29,1,3);
 INSERT INTO "storage" VALUES(32,1,3);
 INSERT INTO "storage" VALUES(15,1,19);
+--     "resource"  "size"  "object_id"
 INSERT INTO "storage" VALUES(9,10,18);
 INSERT INTO "storage" VALUES(13,4,9);
 INSERT INTO "storage" VALUES(16,10,21);
@@ -66,6 +67,7 @@ INSERT INTO "storage" VALUES(18,6,26);
 INSERT INTO "storage" VALUES(22,6,26);
 INSERT INTO "storage" VALUES(22,4,32);
 INSERT INTO "storage" VALUES(27,12,32);
+--     "resource"  "size"  "object_id"
 INSERT INTO "storage" VALUES(17,1,22);
 INSERT INTO "storage" VALUES(2,6,20);
 INSERT INTO "storage" VALUES(10,6,20);
@@ -89,6 +91,7 @@ INSERT INTO "storage" VALUES(31,6,20);
 INSERT INTO "storage" VALUES(32,4,37);
 INSERT INTO "storage" VALUES(9,10,38);
 INSERT INTO "storage" VALUES(39,10,39);
+--     "resource"  "size"  "object_id"
 INSERT INTO "storage" VALUES(33,6,20);
 INSERT INTO "storage" VALUES(34,6,20);
 INSERT INTO "storage" VALUES(35,6,20);
@@ -98,8 +101,10 @@ INSERT INTO "storage" VALUES(37,6,20);
 INSERT INTO "storage" VALUES(38,6,20);
 INSERT INTO "storage" VALUES(35,4,41);
 INSERT INTO "storage" VALUES(36,6,41);
-INSERT INTO "storage" VALUES(5,6,41);
+INSERT INTO "storage" VALUES(5,12,41);
 INSERT INTO "storage" VALUES(38,8,42);
+INSERT INTO "storage" VALUES(33,2,38);
+INSERT INTO "storage" VALUES(34,3,39);
 CREATE TABLE `production` (`production_line` INTEGER NOT NULL, `resource` INTEGER NOT NULL, `amount` INTEGER NOT NULL);
 INSERT INTO "production" VALUES(1,8,1);
 INSERT INTO "production" VALUES(2,4,1);
