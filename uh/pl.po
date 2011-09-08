@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-09-04 14:27+0200\n"
+"PO-Revision-Date: 2011-09-04 14:33+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -594,7 +594,6 @@ msgid "Tree"
 msgstr "Drzewo"
 
 #: horizons/i18n/guitranslations.py:62 horizons/i18n/guitranslations.py:80
-#, fuzzy
 msgid "Fields"
 msgstr "Pola"
 
@@ -620,7 +619,6 @@ msgid "Clay pit: Gets clay from deposit."
 msgstr "Kopalnia gliny: Dostarcza gliny ze złóż."
 
 #: horizons/i18n/guitranslations.py:69
-#, fuzzy
 msgid "Distillery: Turns sugar into liquor."
 msgstr "Gorzelnia: Zmienia cukier w alkohol."
 
@@ -679,7 +677,6 @@ msgid "Herbary: Produces herbs. Needs a farm."
 msgstr "Pole z ziołami: Produkuje zioła. Wymagana farma."
 
 #: horizons/i18n/guitranslations.py:88
-#, fuzzy
 msgid "Iron mine: Gets iron ore from deposit."
 msgstr "Kopalnia rudy żelaza: Wydobywa żelazo ze złoża."
 
@@ -761,12 +758,10 @@ msgid "Captain's log"
 msgstr "Dziennik pokładowy"
 
 #: horizons/i18n/guitranslations.py:114
-#, fuzzy
 msgid "Rotate map counterclockwise"
 msgstr "Obróć mapę przeciwnie do ruchu wskazówek zegara"
 
 #: horizons/i18n/guitranslations.py:115
-#, fuzzy
 msgid "Rotate map clockwise"
 msgstr "Obróć mapę zgodnie z ruchem wskazówek zegara"
 
