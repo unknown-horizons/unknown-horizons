@@ -39,6 +39,7 @@ terwarf (Alexander Breidenbroich)
 wentam (Matt Egeler)
 Manthus (Matthias Dittrich)
 inken
+orakeldel
 
 
 == Patchers
@@ -68,7 +69,6 @@ sient (Minimap rectangle)
 hoffi (GUI improvements)
 riidom (Tent and hut variations)
 abeaumont (Two renitent segfaults)
-orakeldel (Building and resource icons)
 mtfk (Voice internationalization)
 
 
