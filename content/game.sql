@@ -323,7 +323,7 @@ INSERT INTO "production_line" VALUES(90.0,0,41,3,0,0);
 INSERT INTO "production_line" VALUES(30.0,0,42,33,1,0);
 INSERT INTO "production_line" VALUES(75.0,0,43,3,0,0);
 INSERT INTO "production_line" VALUES(90.0,0,44,3,0,0);
-INSERT INTO "production_line" VALUES(45.0,0,45,35,1,0);
+INSERT INTO "production_line" VALUES(45.0,1,45,35,1,0);
 INSERT INTO "production_line" VALUES(30.0,1,46,36,1,0);
 INSERT INTO "production_line" VALUES(1.0,1,47,20,1,0);
 INSERT INTO "production_line" VALUES(15.0,1,48,37,1,0);

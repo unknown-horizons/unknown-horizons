@@ -61,10 +61,10 @@ def get_prod_line(id, type):
 
 def print_production_lines():
 	print 'Production Lines:'
-	for (id, object, time, default) in db("SELECT id, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
+	for (id, changes_anim, object, time, default) in db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
 		(consumption,production) = get_prod_line(id, list)
 
-		str = 'ProdLine %2s of %2s:%-16s %5s sec %s\t' % (id, object, get_obj_name(object), time, ('D' if default else ' '))
+		str = 'ProdLine %2s of %2s:%-16s %5s sec %s\t change_anim(%s) ' % (id, object, get_obj_name(object), time, ('D' if default else ' '), changes_anim)
 
 		if len(consumption) > 0:
 			str += 'consumes: '
