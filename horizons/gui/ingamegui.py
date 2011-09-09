@@ -133,10 +133,10 @@ class IngameGui(LivingObject):
 
 		# map button names to build functions calls with the building id
 		self.callbacks_build = {}
-		for id,button_name,settler_level in horizons.main.db.get_building_id_buttonname_settlerlvl():
+		for id_,button_name,settler_level in self.session.db.get_building_id_buttonname_settlerlvl():
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
-			self.callbacks_build[settler_level][button_name] = Callback(self._build, id)
+			self.callbacks_build[settler_level][button_name] = Callback(self._build, id_)
 
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({

@@ -332,7 +332,7 @@ INSERT INTO "production_line" VALUES(60.0,1,50,39,1,0);
 INSERT INTO "production_line" VALUES(1.0,1,51,20,1,0);
 INSERT INTO "production_line" VALUES(1.0,1,52,20,1,0);
 INSERT INTO "production_line" VALUES(30.0,1,53,40,1,0);
-INSERT INTO "production_line" VALUES(1.0,1,54,20,1,0);
+--INSERT INTO "production_line" VALUES(1.0,1,54,20,1,0);
 INSERT INTO "production_line" VALUES(15.0,1,55,41,1,0);
 INSERT INTO "production_line" VALUES(15.0,1,56,41,1,0);
 INSERT INTO "production_line" VALUES(60.0,1,57,42,1,0);

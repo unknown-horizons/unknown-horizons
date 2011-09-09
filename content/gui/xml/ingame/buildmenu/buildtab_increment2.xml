@@ -76,8 +76,8 @@
 		<HBox position="0,30"  padding="2">
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
-			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
-			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" /><!--
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />-->
 		</HBox>
 
 		<TooltipButton name="tobaccofield-1" position="2,32"
@@ -85,17 +85,17 @@
 			hover_image="content/gui/icons/buildmenu/tobaccofield_h.png"
 			down_image="content/gui/icons/buildmenu/tobaccofield_h.png"
 			tooltip="Tobacco field: Produces tobacco. Needs a farm." />
-		<TooltipButton name="herbary-1" position="56,32"
+		<TooltipButton name="herbary-1" position="164,32"/><!--
 			up_image="content/gui/icons/buildmenu/herbary.png"
 			hover_image="content/gui/icons/buildmenu/herbary_h.png"
 			down_image="content/gui/icons/buildmenu/herbary_h.png"
-			tooltip="Herbary: Produces herbs. Needs a farm." />
-		<TooltipButton name="cattlerun-1" position="110,32"
+			tooltip="Herbary: Produces herbs. Needs a farm." />-->
+		<TooltipButton name="cattlerun-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/cattlerun.png"
 			hover_image="content/gui/icons/buildmenu/cattlerun_h.png"
 			down_image="content/gui/icons/buildmenu/cattlerun_h.png"
 			tooltip="Cattle run: Raises cattle. Needs a farm." />
-		<TooltipButton name="pigsty-1" position="164,32"
+		<TooltipButton name="pigsty-1" position="110,32"
 			up_image="content/gui/icons/buildmenu/pigsty.png"
 			hover_image="content/gui/icons/buildmenu/pigsty_h.png"
 			down_image="content/gui/icons/buildmenu/pigsty_h.png"
@@ -107,8 +107,8 @@
 		<Label position="0,11" text="Services" name="services_label" />
 
 		<HBox position="0,30"  padding="2">
-			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
-			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" /><!--
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />-->
 		</HBox>
 
 		<TooltipButton name="tavern-1" position="0,32"
@@ -116,11 +116,11 @@
 			hover_image="content/gui/icons/buildmenu/tavern_h.png"
 			down_image="content/gui/icons/buildmenu/tavern_h.png"
 			tooltip="Tavern: Provides get-together." />
-		<TooltipButton name="doctor-1" position="56,32"
+			<TooltipButton name="doctor-1" position="56,32"/><!--
 			up_image="content/gui/icons/buildmenu/doctor.png"
 			hover_image="content/gui/icons/buildmenu/doctor_h.png"
 			down_image="content/gui/icons/buildmenu/doctor_h.png"
-			tooltip="Doctor: Treats diseases. Consumes herbs." />
+			tooltip="Doctor: Treats diseases. Consumes herbs." />-->
 
 	</Container>
 
