@@ -204,8 +204,8 @@ class GlobalLimitStorage(GenericStorage):
 		db("INSERT INTO storage_global_limit(object, value) VALUES(?, ?)", ownerid, self.limit)
 
 	def load(self, db, ownerid):
-		super(GlobalLimitStorage, self).load(db, ownerid)
 		self.limit = int(db("SELECT value FROM storage_global_limit WHERE object = ?", ownerid)[0][0])
+		super(GlobalLimitStorage, self).load(db, ownerid)
 
 	def adjust_limit(self, amount):
 		"""Adjusts the limit of the storage by amount.

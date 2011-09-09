@@ -1,43 +1,51 @@
 <?xml version="1.0"?>
 <Container name="configure_route" size="1020,580" position="-20,0">
-<Icon image="content/gui/images/background/book.png" position="100,0" />
+	<Icon image="content/gui/images/background/book.png" position="100,0" />
 
 	<!-- left side -->
 
-<VBox name="left_vbox" max_size="350,508" min_size="350,508" position="175,40" padding="5">
-	<Icon image="content/gui/images/background/hr.png" />
-
-
-</VBox>
-<ToggleImageButton name="start_route" border_size="0" position="175,480"
+	<VBox name="left_vbox" max_size="350,508" min_size="350,508" position="175,40" padding="5">
+		<Icon image="content/gui/images/background/hr.png" />
+	</VBox>
+		<ToggleImageButton name="start_route" border_size="0" position="175,480"
 		inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
 		up_image="content/gui/icons/templates/production/toggle_active_n.png"
 		down_image="content/gui/icons/templates/production/toggle_active_d.png"
 		hover_image="content/gui/icons/templates/production/toggle_active_h.png"
 		tooltip="Start route" />
+	<VBox position="250,485">
+		<HBox>
+			<Label text="wait at load:"/>
+			<CheckBox name="wait_at_load" min_size="15,15" />
+		</HBox>
+		<HBox>
+			<Label text="wait at unload:"/>
+			<CheckBox name="wait_at_unload" min_size="15,15" />
+		</HBox>
+	</VBox>
+
 
 
 	<!-- right side -->
 
-<VBox name="right_vbox" max_size="350,508" min_size="350,508" position="520,40" padding="2">
-	<Icon image="content/gui/images/background/hr.png" />
+	<VBox name="right_vbox" max_size="350,508" min_size="350,508" position="520,40" padding="2">
+		<Icon image="content/gui/images/background/hr.png" />
 
-	<ScrollArea max_size="300,200" horizontal_scrollbar="0">
-		<ListBox name="branch_office_list" />
-	</ScrollArea>
-	<TooltipButton name="add_bo" border_size="0"
+		<ScrollArea max_size="300,200" horizontal_scrollbar="0">
+			<ListBox name="branch_office_list" />
+		</ScrollArea>
+		<TooltipButton name="add_bo" border_size="0"
 		up_image="content/gui/images/buttons/parrow_left.png"
 		down_image="content/gui/images/buttons/parrow_left_d.png"
 		hover_image="content/gui/images/buttons/parrow_left_h.png"
 		tooltip="Add to list" />
 
-
-	<Label name="select_res_label" text=""/>
-	<VBox name="resources" size="100,200" />
-	<HBox> <Spacer min_size="275" max_size="275"/>
-		<CancelButton tooltip="Exit" />
-	</HBox>
-</VBox>
+		<Label name="select_res_label" text=""/>
+		<VBox name="resources" size="100,200" />
+		<HBox> <Spacer min_size="275" max_size="275"/>
+			<CancelButton tooltip="Exit" />
+		</HBox>
+	</VBox>
 <!-- Here pickbelts could be added to achieve more space.
 Refer to gui/credits/*.xml for sample implementation. -->
 </Container>

@@ -38,6 +38,10 @@ text_translations = dict()
 def set_translations():
 	global text_translations
 	text_translations = {
+		"stringpreviewwidget.xml" : {
+			"headline"                    : _("String Previewer Tool for Scenario files"),
+			"hintlbl"                     : _("select a scenario and click on load/reload to update the messages in the captain's log"),
+			"load"                        : _("load/reload")},
 		"buildtab_increment0.xml" : {
 			"companies_label"             : _("Companies"),
 			"headline"                    : _("Sailor buildings"),
@@ -67,32 +71,44 @@ def set_translations():
 			"pasture-1"                   : _("Pasture: Raises sheep. Produces wool. Needs a farm."),
 			"potatofield-1"               : _("Potato field: Yields food. Needs a farm."),
 			"sugarfield-1"                : _("Sugarcane field: Used in liquor production. Needs a farm."),
+			"tower-1"                     : _("Wooden tower: Defends your settlement."),
 			"villageschool-1"             : _("Village school: Provides education."),
 			"weaver-1"                    : _("Weaver: Turns lamb wool into cloth.")},
 		"buildtab_increment2.xml" : {
 			"companies_label"             : _("Companies"),
+			"companies_label"             : _("Mining"),
+			"fields_label"                : _("Fields"),
 			"headline"                    : _("Settler buildings"),
 			"services_label"              : _("Services"),
-			"charcoal-burning-1"          : _("Charcoal burning: Burns a lot of boards."),
-			"iron-mine-1"                 : _("Iron mine: Gets iron ore from deposit."),
+			"butchery-1"                  : _("Butchery: Needs pigs or cattle. Produces food."),
+			"cattlerun-1"                 : _("Cattle run: Raises cattle. Needs a farm."),
+			"charcoal-burning-1"          : _("Charcoal burning: Burns a lot of boards to charcoal."),
+			"doctor-1"                    : _("Doctor: Treats diseases. Consumes herbs."),
+			"herbary-1"                   : _("Herbary: Produces herbs. Needs a farm."),
+			"iron-mine-1"                 : _("Mine: Gets ores from deposit."),
+			"pigsty-1"                    : _("Pigsty: Raises pigs. Needs a farm."),
+			"saltponds-1"                 : _("Salt ponds: Evaporates salt. Built on sea coast."),
 			"smeltery-1"                  : _("Smeltery: Refines all kind of ores."),
 			"tavern-1"                    : _("Tavern: Provides get-together."),
+			"tobaccofield-1"              : _("Tobacco field: Produces tobacco. Needs a farm."),
+			"tobacconist-1"               : _("Tobacconist: Produces tobaccos out of tobacco."),
 			"toolmaker-1"                 : _("Toolmaker: Produces tools out of iron.")},
+		"buildtab_no_settlement.xml" : {
+			"headline"                    : _("Game start"),
+			"howto_1_need_bo"             : _("You need to found a settlement before you can construct buildings!"),
+			"howto_2_navigate_ship"       : _("Select your ship and approach the coast via right-click."),
+			"howto_3_build_bo"            : _("Afterwards, press the large button in the ship overview tab.")},
 		"place_building.xml" : {
 			"headline"                    : _("Build"),
 			"running_costs_label"         : _("Running costs:")},
-		"stringpreviewwidget.xml" : {
-			"headline"                    : _("String Previewer Tool for Scenario files"),
-			"hintlbl"                     : _("select a scenario and click on load/reload to update the messages in the captain's log"),
-			"load"                        : _("load/reload")},
 		"city_info.xml" : {
 			"city_info_inhabitants"       : _("Inhabitants"),
 			"city_name"                   : _("Click to change the name of your settlement.")},
 		"menu_panel.xml" : {
-			"destroy_tool"                : _("Destroy"),
 			"build"                       : _("Build menu"),
+			"destroy_tool"                : _("Destroy"),
+			"diplomacyButton"             : _("Diplomacy"),
 			"gameMenuButton"              : _("Game menu"),
-			"helpLink"                    : _("Help"),
 			"logbook"                     : _("Captain's log")},
 		"minimap.xml" : {
 			"rotateLeft"                  : _("Rotate map counterclockwise"),
@@ -116,6 +132,158 @@ def set_translations():
 		"chat.xml" : {
 			"chat_lbl"                    : _("Enter your message:"),
 			"headline"                    : _("Chat")},
+		"boatbuilder.xml" : {
+			"BB_cancel_build_label"       : _("Cancel building:"),
+			"BB_cancel_warning_label"     : _("(lose all resources)"),
+			"BB_current_order"            : _("Currently building:"),
+			"BB_howto_build_lbl"          : _("To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
+			"BB_progress_label"           : _("Construction progress:"),
+			"headline"                    : _("Building overview"),
+			"BB_cancel_button"            : _("Cancel all building progress"),
+			"toggle_active_active"        : _("Pause"),
+			"toggle_active_inactive"      : _("Resume"),
+			"running_costs_label"         : _("Running costs")},
+		"boatbuilder_trade.xml" : {
+			"headline"                    : _("Trade boats"),
+			"headline_BB_trade_ship1"     : _("Huker"),
+			"BB_build_trade_1"            : _("Build this ship!")},
+		"boatbuilder_war1.xml" : {
+			"headline"                    : _("War boats"),
+			"headline_BB_war1_ship1"      : _("Frigate"),
+			"BB_build_war1_1"             : _("Build this ship!")},
+		"select_trade_resource.xml" : {
+			"headline"                    : _("Select resources:")},
+		"tab_account.xml" : {
+			"buy_expenses_label"          : _("Buying"),
+			"headline"                    : _("Account"),
+			"headline_balance_label"      : _("Balance:"),
+			"headline_expenses_label"     : _("Expenses:"),
+			"headline_income_label"       : _("Income:"),
+			"running_costs_label"         : _("Running costs"),
+			"sell_income_label"           : _("Sale"),
+			"taxes_label"                 : _("Taxes"),
+			"show_production_overview"    : _("Show resources produced in this settlement")},
+		"diplomacy.xml" : {
+			"ally_label"                  : _("ally"),
+			"enemy_label"                 : _("enemy"),
+			"neutral_label"               : _("neutral")},
+		"overview_buildrelated.xml" : {
+			"headline"                    : _("Build fields")},
+		"island_inventory.xml" : {
+			"headline"                    : _("Settlement inventory")},
+		"mainsquare_inhabitants.xml" : {
+			"avg_happiness_lbl"           : _("Average happiness:"),
+			"headline"                    : _("Settler overview"),
+			"most_needed_res_lbl"         : _("Most needed resource:")},
+		"mainsquare_pioneers.xml" : {
+			"headline"                    : _("Pioneers"),
+			"headline_residents_per_house_label": _("Residents per house"),
+			"headline_residents_total_label": _("Summary"),
+			"houses"                      : _("houses"),
+			"resident_1"                  : _("1 resident"),
+			"resident_2"                  : _("2 residents"),
+			"resident_3"                  : _("3 residents"),
+			"residents"                   : _("residents"),
+			"tax_label"                   : _("Taxes:"),
+			"upgrades_lbl"                : _("Allow upgrades:"),
+			"paid_taxes_label"            : _("Paid taxes"),
+			"paid_taxes_label"            : _("Tax rate"),
+			"tax_val_label"               : _("Tax rate"),
+			"taxes"                       : _("Paid taxes"),
+			"allow_upgrades"              : _("Allow upgrades")},
+		"mainsquare_sailors.xml" : {
+			"headline"                    : _("Sailors"),
+			"headline_residents_per_house_label": _("Residents per house"),
+			"headline_residents_total_label": _("Summary"),
+			"houses"                      : _("houses"),
+			"resident_1"                  : _("1 resident"),
+			"resident_2"                  : _("2 residents"),
+			"residents"                   : _("residents"),
+			"tax_label"                   : _("Taxes:"),
+			"upgrades_lbl"                : _("Allow upgrades:"),
+			"paid_taxes_label"            : _("Paid taxes"),
+			"paid_taxes_label"            : _("Tax rate"),
+			"tax_val_label"               : _("Tax rate"),
+			"taxes"                       : _("Paid taxes"),
+			"allow_upgrades"              : _("Allow upgrades")},
+		"mainsquare_settlers.xml" : {
+			"headline"                    : _("Settlers"),
+			"headline_residents_per_house_label": _("Residents per house"),
+			"headline_residents_total_label": _("Summary"),
+			"houses"                      : _("houses"),
+			"resident_1"                  : _("1 resident"),
+			"resident_2"                  : _("2 residents"),
+			"resident_3"                  : _("3 residents"),
+			"resident_4"                  : _("4 residents"),
+			"resident_5"                  : _("5 residents"),
+			"residents"                   : _("residents"),
+			"tax_label"                   : _("Taxes:"),
+			"upgrades_lbl"                : _("Allow upgrades:"),
+			"paid_taxes_label"            : _("Paid taxes"),
+			"paid_taxes_label"            : _("Tax rate"),
+			"tax_val_label"               : _("Tax rate"),
+			"taxes"                       : _("Paid taxes"),
+			"allow_upgrades"              : _("Allow upgrades")},
+		"overview_branchoffice.xml" : {
+			"collector_utilisation_label" : _("Collector utilisation:"),
+			"name_label"                  : _("Name:"),
+			"running_costs_label"         : _("Running costs:")},
+		"overview_enemybranchoffice.xml" : {
+			"buying_label"                : _("Buying"),
+			"selling_label"               : _("Selling")},
+		"overview_mainsquare.xml" : {
+			"name_label"                  : _("Name:")},
+		"overview_productionbuilding.xml" : {
+			"headline"                    : _("Building overview"),
+			"running_costs_label"         : _("Running costs"),
+			"capacity_utilisation"        : _("capacity utilization"),
+			"running_costs"               : _("Running costs")},
+		"overview_resourcedeposit.xml" : {
+			"headline"                    : _("Resource deposit"),
+			"res_dep_description_lbl"     : _("This is a resource deposit where you can build a mine to dig up resources."),
+			"res_dep_description_lbl2"    : _("It contains these resources:")},
+		"overview_settler.xml" : {
+			"needed_res_label"            : _("Needed resources:"),
+			"tax_label"                   : _("Taxes:"),
+			"happiness_label"             : _("Happiness"),
+			"paid_taxes_label"            : _("Paid taxes"),
+			"paid_taxes_label"            : _("Tax rate"),
+			"residents_label"             : _("Residents"),
+			"inhabitants"                 : _("Residents"),
+			"tax_val_label"               : _("Tax rate"),
+			"taxes"                       : _("Paid taxes"),
+			"happiness"                   : _("Happiness")},
+		"overview_ship.xml" : {
+			"foundSettlement_label"       : _("Build settlement:"),
+			"name"                        : _("Click to change the name of this ship."),
+			"foundSettlement"             : _("Build settlement")},
+		"overview_signalfire.xml" : {
+			"signal_fire_description_lbl" : _("The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods.")},
+		"overview_tradership.xml" : {
+			"trader_description_lbl"      : _("This is the free trader's ship. It will visit you from time to time to buy or sell goods.")},
+		"overviewtab.xml" : {
+			"headline"                    : _("Overview"),
+			"name_label"                  : _("Name:")},
+		"buy_sell_goods.xml" : {
+			"buying_label"                : _("Buying"),
+			"exchange_label"              : _("Exchange:"),
+			"headline"                    : _("Trade"),
+			"selling_label"               : _("Selling"),
+			"ship_label"                  : _("Ship:"),
+			"trade_with_label"            : _("Trade partner:")},
+		"exchange_goods.xml" : {
+			"exchange_label"              : _("Exchange:"),
+			"headline"                    : _("Trade"),
+			"ship_label"                  : _("Ship:"),
+			"trade_with_label"            : _("Trade partner:")},
+		"fighting_ship_inventory.xml" : {
+			"configure_route_label"       : _("Configure trading route:"),
+			"headline"                    : _("Inventory"),
+			"load_unload_label"           : _("Load/Unload:")},
+		"ship_inventory.xml" : {
+			"configure_route_label"       : _("Configure trading route:"),
+			"headline"                    : _("Inventory"),
+			"load_unload_label"           : _("Load/Unload:")},
 		"buysellmenu.xml" : {
 			"buy_label"                   : _("Buy resources"),
 			"headline"                    : _("Buy or sell resources"),
@@ -124,6 +292,10 @@ def set_translations():
 		"overview_productionline.xml" : {
 			"toggle_active_active"        : _("Pause production"),
 			"toggle_active_inactive"      : _("Start production")},
+		"route_entry.xml" : {
+			"delete_bo"                   : _("Delete entry"),
+			"move_down"                   : _("Move down"),
+			"move_up"                     : _("Move up")},
 		"captains_log.xml" : {
 			"cancelButton"                : _("Leave Captain's log"),
 			"backwardButton"              : _("Read prev. entries"),
@@ -138,14 +310,28 @@ def set_translations():
 			"cancelButton"                : _("Exit"),
 			"add_bo"                      : _("Add to list"),
 			"start_route"                 : _("Start route")},
+		"healthwidget.xml" : {
+			"health_label"                : _("100/100")},
 		"island_production.xml" : {
 			"headline"                    : _("Production overview"),
 			"cancelButton"                : _("Leave production overview"),
 			"refreshButton"               : _("Refresh data")},
-		"route_entry.xml" : {
-			"delete_bo"                   : _("Delete entry"),
-			"move_down"                   : _("Move down"),
-			"move_up"                     : _("Move up")},
+		"players_overview.xml" : {
+			"building_score"              : _("Buildings"),
+			"headline"                    : _("Player scores"),
+			"land_score"                  : _("Land"),
+			"money_score"                 : _("Money"),
+			"player_name"                 : _("Name"),
+			"resource_score"              : _("Resources"),
+			"settler_score"               : _("Settlers"),
+			"total_score"                 : _("Total"),
+			"unit_score"                  : _("Units"),
+			"cancelButton"                : _("Leave player scores")},
+		"stancewidget.xml" : {
+			"aggressive"                  : _("Aggressive"),
+			"flee"                        : _("Flee"),
+			"hold_ground"                 : _("Hold ground"),
+			"none"                        : _("None")},
 		"help.xml" : {
 			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons development teams"),
 			"have_fun_lbl"                : _("Have fun."),
@@ -171,7 +357,9 @@ def set_translations():
 			"set25"                       : _("{SHIFT} = Hold to place multiple buildings"),
 			"set26"                       : _("{C} = Chat"),
 			"set27"                       : _("{L} = Toggle Captain's log"),
-			"okButton"                    : _("Exit to main menu")},
+			"set28"                       : _("{T} = Toggle translucency of ambient buildings"),
+			"set42"                       : _("{R} = Show player scores"),
+			"okButton"                    : _("Return")},
 		"ingamemenu.xml" : {
 			"help"                        : _("Help"),
 			"loadgame"                    : _("Load game"),
@@ -245,7 +433,7 @@ def set_translations():
 			"use_renderer_label"          : _("Used renderer:"),
 			"warning"                     : _("Please make sure that you know what you do."),
 			"okButton"                    : _("Apply"),
-			"cancelButton"                : _("Exit to main menu"),
+			"cancelButton"                : _("Return"),
 			"defaultButton"               : _("Reset to default settings")},
 		"select_savegame.xml" : {
 			"enter_filename_label"        : _("Enter filename:"),
@@ -255,106 +443,28 @@ def set_translations():
 			"cancelButton"                : _("Exit to main menu"),
 			"deleteButton"                : _("Delete selected savegame")},
 		"singleplayermenu.xml" : {
-			"choose_map_lbl"              : _("Choose a map to play:"),
 			"headline"                    : _("New game - Singleplayer"),
 			"main_menu_label"             : _("Main menu:"),
 			"start_game_label"            : _("Start game:"),
-			"showCampaign"                : _("Campaign"),
-			"showMaps"                    : _("Free play"),
-			"showRandom"                  : _("Random map"),
-			"showScenario"                : _("Scenario"),
+			"campaign"                    : _("Campaign"),
+			"free_maps"                   : _("Free play"),
+			"random"                      : _("Random map"),
+			"scenario"                    : _("Scenario"),
 			"okay"                        : _("Start game"),
 			"cancel"                      : _("Exit to main menu")},
+		"sp_campaign.xml" : {
+			"choose_map_lbl"              : _("Choose a map to play:")},
+		"sp_free_maps.xml" : {
+			"headline_choose_map_lbl"     : _("Choose a map to play:")},
+		"sp_random.xml" : {
+			"headline_map_settings_lbl"   : _("Map settings:")},
+		"sp_scenario.xml" : {
+			"choose_map_lbl"              : _("Choose a map to play:")},
+		"aidataselection.xml" : {
+			"ai_players_label"            : _("AI players:")},
+		"game_settings.xml" : {
+			"headline_game_settings_lbl"  : _("Game settings:")},
 		"playerdataselection.xml" : {
 			"color_label"                 : _("Color:"),
 			"player_label"                : _("Player name:")},
-		"boatbuilder.xml" : {
-			"BB_cancel_build_label"       : _("Cancel building:"),
-			"BB_cancel_warning_label"     : _("(lose all resources)"),
-			"BB_current_order"            : _("Currently building:"),
-			"BB_howto_build_lbl"          : _("To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
-			"BB_progress_label"           : _("Construction progress:"),
-			"headline"                    : _("Building overview"),
-			"BB_cancel_button"            : _("Cancel all building progress"),
-			"toggle_active_active"        : _("Pause"),
-			"toggle_active_inactive"      : _("Resume"),
-			"running_costs_label"         : _("Running costs")},
-		"boatbuilder_fisher.xml" : {
-			"headline"                    : _("Fishing boats"),
-			"headline_BB_fisher_ship1"    : _("Fishing boat"),
-			"headline_BB_fisher_ship2"    : _("Cutter"),
-			"headline_BB_fisher_ship3"    : _("Herring fisher"),
-			"headline_BB_fisher_ship4"    : _("Whaler"),
-			"BB_build_fisher_1"           : _("Build this ship!"),
-			"cancelButton"                : _("Not yet implemented!"),
-			"cancelButton"                : _("Not yet implemented!"),
-			"cancelButton"                : _("Not yet implemented!")},
-		"select_trade_resource.xml" : {
-			"headline"                    : _("Select resources:")},
-		"tab_account.xml" : {
-			"buy_expenses_label"          : _("Buying"),
-			"headline"                    : _("Account"),
-			"headline_balance_label"      : _("Balance:"),
-			"headline_expenses_label"     : _("Expenses:"),
-			"headline_income_label"       : _("Income:"),
-			"running_costs_label"         : _("Running costs"),
-			"sell_income_label"           : _("Sale"),
-			"taxes_label"                 : _("Taxes"),
-			"show_production_overview"    : _("Show resources produced in this settlement")},
-		"overview_buildrelated.xml" : {
-			"headline"                    : _("Build fields")},
-		"island_inventory.xml" : {
-			"headline"                    : _("Inventory")},
-		"mainsquare_inhabitants.xml" : {
-			"avg_happiness_lbl"           : _("Average happiness:"),
-			"headline"                    : _("Settler overview"),
-			"most_needed_res_lbl"         : _("Most needed resource:")},
-		"overview_branchoffice.xml" : {
-			"name_label"                  : _("Name:"),
-			"running_costs_label"         : _("Running costs:")},
-		"overview_mainsquare.xml" : {
-			"name_label"                  : _("Name:"),
-			"tax_label"                   : _("Taxes:"),
-			"tax_rate_label"              : _("Tax rate"),
-			"tax_val_label"               : _("Tax rate")},
-		"overview_productionbuilding.xml" : {
-			"headline"                    : _("Building overview"),
-			"running_costs_label"         : _("Running costs"),
-			"capacity_utilisation"        : _("capacity utilization"),
-			"running_costs"               : _("Running costs")},
-		"overview_resourcedeposit.xml" : {
-			"headline"                    : _("Resource deposit"),
-			"res_dep_description_lbl"     : _("This is a resource deposit where you can build a mine to dig up resources."),
-			"res_dep_description_lbl2"    : _("It contains these resources:")},
-		"overview_settler.xml" : {
-			"needed_res_label"            : _("Needed resources:"),
-			"tax_label"                   : _("Taxes:"),
-			"happiness_label"             : _("Happiness"),
-			"paid_taxes_label"            : _("Paid taxes"),
-			"paid_taxes_label"            : _("Tax rate"),
-			"residents_label"             : _("Residents"),
-			"inhabitants"                 : _("Residents"),
-			"tax_val_label"               : _("Tax rate"),
-			"taxes"                       : _("Paid taxes"),
-			"happiness"                   : _("Happiness")},
-		"overview_ship.xml" : {
-			"foundSettlement_label"       : _("Build settlement:"),
-			"name"                        : _("Click to change the name of this ship."),
-			"foundSettlement"             : _("Build settlement")},
-		"overview_signalfire.xml" : {
-			"signal_fire_description_lbl" : _("The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods.")},
-		"overview_tradership.xml" : {
-			"trader_description_lbl"      : _("This is the free trader's ship. It will visit you from time to time to buy or sell goods.")},
-		"overviewtab.xml" : {
-			"headline"                    : _("Overview"),
-			"name_label"                  : _("Name:")},
-		"exchange_goods.xml" : {
-			"exchange_label"              : _("Exchange:"),
-			"headline"                    : _("Trade"),
-			"ship_label"                  : _("Ship:"),
-			"trade_with_label"            : _("Trade partner:")},
-		"ship_inventory.xml" : {
-			"configure_route_label"       : _("Configure trading route:"),
-			"headline"                    : _("Inventory"),
-			"load_unload_label"           : _("Load/Unload:")},
 	}

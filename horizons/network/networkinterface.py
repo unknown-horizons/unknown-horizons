@@ -22,7 +22,7 @@
 import horizons.main
 
 from horizons.util.python.singleton import ManualConstructionSingleton
-from horizons.util import Color, parse_port
+from horizons.util import Color, DifficultySettings, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
@@ -264,7 +264,9 @@ class MPGame(object):
 		ret_players = []
 		id = 1
 		for playername in self.get_players():
-			ret_players.append({ 'id': id, 'name': playername, 'color': Color[id], 'local': self.localname == playername })
+			# TODO: add support for selecting difficulty levels to the GUI
+			ret_players.append({'id': id, 'name': playername, 'color': Color[id], 'local': self.localname == playername, \
+				'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL})
 			id += 1
 		return ret_players
 

@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
-<Container name="black_underlay">
-<Icon name="black_underlay_background" image="content/gui/images/background/black.png" />
-
-<Container name="menu" size="1024,768">
+<Container name="menu" size="1024,768"  position_technique="automatic">
 	<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
 	<Icon image="content/gui/images/background/mainmenu/wheel.png" position="212,44" />
 	<Icon image="content/gui/images/logos/fife.png" position="22,20" />
 	<Icon image="content/gui/images/logos/sdl.png" position="883,20" />
 	<Icon image="content/gui/images/logos/opengl.png" position="880,100" />
-	<Label name="version_label" text="Unknown Horizons Alpha" position="745,735" />
+
+	<Label name="version_label" text="Unknown Horizons" position="735,735" />
 
 	<!-- clockwise, starting at 0 degree -->
 	<Label name="start" text="Singleplayer" position="531,100" />
@@ -75,5 +73,4 @@
 		down_image="content/gui/icons/mainmenu/load.png"
 		hover_image="content/gui/icons/mainmenu/load.png" />
 
-</Container>
 </Container>

@@ -22,10 +22,14 @@
 
 __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
+import bisect
 import weakref
 import random
 import logging
 import copy
+import itertools
+
+from collections import deque
 
 import horizons.main
 from horizons.world.island import Island
@@ -35,9 +39,15 @@ from horizons.util.color import Color
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
+from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
-from horizons.util import decorators
+from horizons.util import decorators, BuildingIndexer
 from horizons.world.buildingowner import BuildingOwner
+from horizons.world.diplomacy import Diplomacy
+from horizons.world.units.bullet import Bullet
+from horizons.world.units.weapon import Weapon
+from horizons.command.building import Build
+from horizons.command.unit import CreateUnit
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -47,12 +57,18 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	   * grounds - a list of all the map's groundtiles
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
-	                 This is important for pathfinding and quick tile fetching.
+	                 This is important for pathfinding and quick tile fetching.z
+	   * full_map - a dictionary that binds tuples of coordinates with a reference to the tile (includes water and ground)
+	   * island_map - a dictionary that binds tuples of coordinates with a reference to the island
 	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
+	   * fish_indexer - a BuildingIndexer for all fish on the map
 	   * session - reference to horizons.session.Session instance of the current game
-	   * water - List of coordinates that are water
+	   * water - Dictionary of coordinates that are water
+	   * water_body - Dictionary of water bodies {coords: area_number, ...}
+	   * sea_number - The water_body number of the sea
 	   * trader - The world's ingame free trader player instance
+	   * pirate - The world's ingame pirate player instance
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")
@@ -70,12 +86,18 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.players = None
 		self.player = None
 		self.ground_map = None
+		self.full_map = None
+		self.island_map = None
 		self.water = None
-		self.ship_map = None
 		self.ships = None
+		self.ship_map = None
+		self.fish_indexer = None
+		self.ground_units = None
 		self.trader = None
 		self.pirate = None
 		self.islands = None
+		self.diplomacy = None
+		self.bullets = None
 		super(World, self).end()
 
 	@decorators.make_constants()
@@ -96,10 +118,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# load player
 		human_players = []
-		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0 and is_pirate = 0"):
+		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0 and is_pirate = 0 ORDER BY rowid"):
 			player = None
 			# check if player is an ai
-			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE id = ?", client_id)
+			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE client_id = ?", client_id)
 			if len(ai_data) > 0:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
@@ -125,6 +147,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			if(len(human_players) == 1):
 				# exactly one player, we can quite safely use this one
 				self.player = human_players[0]
+			elif not human_players and self.players:
+				# the first player should be the human-ai hybrid
+				self.player = self.players[0]
 
 		if self.player is not None:
 			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
@@ -170,12 +195,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
 								self.ground_map[(x+x_offset, y+y_offset)] = ground
 
-
-		# remove parts that are occupied by island
+		# remove parts that are occupied by islands, create the island map and the full map
+		self.island_map = {}
+		self.full_map = copy.copy(self.ground_map)
 		for island in self.islands:
-			for coord in island.ground_map:
-				if coord in self.ground_map:
-					del self.ground_map[coord]
+			for coords in island.ground_map:
+				if coords in self.ground_map:
+					self.full_map[coords] = island.ground_map[coords]
+					del self.ground_map[coords]
+					self.island_map[coords] = island
 
 		# load world buildings (e.g. fish)
 		for (building_worldid, building_typeid) in \
@@ -184,6 +212,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# use a dict because it's directly supported by the pathfinding algo
 		self.water = dict.fromkeys(list(self.ground_map), 1.0)
+		self._init_water_bodies()
+		self.sea_number = self.water_body[(self.min_x, self.min_y)]
 
 		# assemble list of water and coastline for ship, that can drive through shallow water
 		# NOTE: this is rather a temporary fix to make the fisher be able to move
@@ -197,15 +227,21 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
+		self.ground_unit_map = {}
 
 		# create shiplist, which is currently used for saving ships
 		# and having at least one reference to them
 		self.ships = []
+		self.ground_units = []
+
+		# create bullets list, used for saving bullets in ongoing attacks
+		self.bullets = []
 
 		if self.session.is_game_loaded():
-			# for now, we have one trader in every game, so this is safe:
-			trader_id = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
-			self.trader = Trader.load(self.session, savegame_db, trader_id)
+			# there are 0 or 1 trader AIs so this is safe
+			trader_data = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")
+			if trader_data:
+				self.trader = Trader.load(self.session, savegame_db, trader_data[0][0])
 			# there are 0 or 1 pirate AIs so this is safe
 			pirate_data = savegame_db("SELECT rowid FROM player WHERE is_pirate = 1")
 			if pirate_data:
@@ -218,19 +254,89 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		if self.session.is_game_loaded():
 			# let trader command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and trader has to exist before ships are loaded.
-			self.trader.load_ship_states(savegame_db)
+			if self.trader:
+				self.trader.load_ship_states(savegame_db)
+
 			# let pirate command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and pirate has to exist before ships are loaded.
 			if self.pirate:
 				self.pirate.load_ship_states(savegame_db)
+
+			# load the AI players
+			# this has to be done here because otherwise the ships and other objects won't exist
+			AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+			for player in self.players:
+				if not isinstance(player, HumanPlayer):
+					player.finish_loading(savegame_db)
+
+		# load bullets
+		if self.session.is_game_loaded():
+			for (worldid, sx, sy, dx, dy, speed, img) in savegame_db("SELECT worldid, startx, starty, destx, desty, speed, image FROM bullet"):
+				Bullet(img, Point(sx, sy), Point(dx, dy), speed, self.session, False, worldid)
+
+		# load ongoing attacks
+		if self.session.is_game_loaded():
+			Weapon.load_attacks(self.session, savegame_db)
+
+		# load diplomacy
+		self.diplomacy = Diplomacy()
+		if self.session.is_game_loaded():
+			self.diplomacy.load(self, savegame_db)
+
+		# add diplomacy notification listeners
+		def notify_change(caller, change_type, a, b):
+			player1 = a.name
+			player2 = b.name
+
+			#check if status really changed, if so update status string
+			if change_type == 'friend':
+				status = 'friends'
+			elif change_type == 'enemy':
+				status = 'enemies'
+			else:
+				status = 'neutral'
+
+			self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'DIPLOMACY_STATUS_CHANGED',
+				{'player1' : player1, 'player2' : player2, 'status' : status})
+
+		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
 		self.inited = True
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
 
+	def _init_water_bodies(self):
+		""" This function runs the flood fill algorithm on the water to make it easy to recognise different water bodies """
+		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+
+		n = 0
+		self.water_body = dict.fromkeys(self.water)
+		for coords, num in self.water_body.iteritems():
+			if num is not None:
+				continue
+
+			self.water_body[coords] = n
+			queue = deque([coords])
+			while queue:
+				x, y = queue[0]
+				queue.popleft()
+				for dx, dy in moves:
+					coords2 = (x + dx, y + dy)
+					if coords2 in self.water_body and self.water_body[coords2] is None:
+						self.water_body[coords2] = n
+						queue.append(coords2)
+			n += 1
+
+	def init_fish_indexer(self):
+		self.fish_indexer = BuildingIndexer(16, self.full_map)
+		for tile in self.ground_map.itervalues():
+			if tile.object is not None and tile.object.id == BUILDINGS.FISH_DEPOSIT_CLASS:
+				self.fish_indexer.add(tile.object)
+		self.fish_indexer._update()
+
 	@decorators.make_constants()
-	def init_new_world(self, minclay = 2, maxclay = 3, minmountains = 1, maxmountains = 3):
+	def init_new_world(self, trader_enabled, pirate_enabled, natural_resource_multiplier):
 		"""
 		This should be called if a new map is loaded (not a savegame, a fresh
 		map). In other words when it is loaded for the first time.
@@ -240,8 +346,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		      This is necessary because else the commands would be transmitted
 		      over the wire in network games.
 
-		@return: Returs the coordinates of the players first ship
+		@return: the coordinates of the players first ship
 		"""
+
 		# workaround: the creation of all the objects causes a lot of logging output, we don't need
 		#             therefore, reset the levels for now
 		loggers_to_silence = { 'world.production' : None }
@@ -250,68 +357,21 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			loggers_to_silence[logger_name] = logger.getEffectiveLevel()
 			logger.setLevel( logging.WARN )
 
-		from horizons.command.building import Build
-		from horizons.command.unit import CreateUnit
-		# add a random number of environmental objects to the gameworld
-		if int(self.properties.get('RandomTrees', 1)) == 1:
-			Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
-			Clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
-			Fish = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
-			Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
-			for island in self.islands:
-				if maxclay <= minclay:
-					minclay = maxclay-1
-				if maxmountains <= minmountains:
-					minmountains = maxmountains-1
-				max_clay_deposits = self.session.random.randint(minclay, maxclay)
-				max_mountains = self.session.random.randint(minmountains, maxmountains)
-				num_clay_deposits = 0
-				num_mountains = 0
-				# TODO: fix this sorted()-call. its slow but orderness of dict-loop isn't guaranteed
-				for coords, tile in sorted(island.ground_map.iteritems()):
-					# add tree to every nth tile
-					if self.session.random.randint(0, 2) == 0 and \
-					   Tree.check_build(self.session, tile, check_settlement=False):
-						building = Build(Tree, coords[0], coords[1], ownerless=True,island=island)(issuer=None)
-						building.finish_production_now() # make trees big and fill their inventory
-						if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
-							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
-						if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
-							building.inventory.alter(RES.WILDANIMALFOOD_ID, -1)
-					elif num_clay_deposits < max_clay_deposits and \
-					     self.session.random.randint(0, 40) == 0 and \
-					     Clay.check_build(self.session, tile, check_settlement=False):
-						num_clay_deposits += 1
-						Build(Clay, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
-					elif num_mountains < max_mountains and \
-					     self.session.random.randint(0, 40) == 0 and \
-					     Mountain.check_build(self.session, tile, check_settlement=False):
-						num_mountains += 1
-						Build(Mountain, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
-					if 'coastline' in tile.classes and self.session.random.randint(0, 4) == 0:
-						# try to place fish
-						# from the current position, go to random directions 2 times
-						directions = [ (i, j) for i in xrange(-1, 2) for j in xrange(-1, 2) ]
-						for (x_dir, y_dir) in self.session.random.sample(directions, 2):
-							# move a random amount in both directions
-							coord_to_check = (
-							  coords[0] + x_dir * self.session.random.randint(3, 9),
-							  coords[1] + y_dir * self.session.random.randint(3, 9),
-							)
-							# now we have the location, check if we can build here
-							if coord_to_check in self.ground_map:
-								Build(Fish, coord_to_check[0], coord_to_check[1], ownerless=True, \
-								      island=self)(issuer=None)
+		# add a random number of environmental objects
+		self._add_nature_objects(natural_resource_multiplier)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
 			logging.getLogger(logger_name).setLevel(level)
 
 		# add free trader
-		self.trader = Trader(self.session, 99999, u"Free Trader", Color())
+		if trader_enabled:
+			self.trader = Trader(self.session, 99999, u"Free Trader", Color())
+
 		ret_coords = None
 		for player in self.players:
 			# Adding ships for the players
+			# hack to place the ship on the development map
 			point = self.get_random_possible_ship_position()
 			# Execute command directly, not via manager, because else it would be transmitted over the
 			# network to other players. Those however will do the same thing anyways.
@@ -320,15 +380,185 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
 				ship.inventory.alter(res, amount)
 			if player is self.player:
-				ret_coords = (point.x, point.y)
+				ret_coords = point.to_tuple()
+		AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 
 		# add a pirate ship
-		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
+		if pirate_enabled:
+			self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are None. No players loaded?"
 		return ret_coords
+
+	def _add_resource_deposits(self, resource_multiplier):
+		"""
+		Place clay deposits and mountains.
+
+		The algorithm:
+		1. calculate the manhattan distance from each island tile to the sea
+		2. calculate the value of a tile
+		3. calculate the value of an object's location as min(covered tile values)
+		4. for each island place a number of clay deposits and mountains
+		5. place a number of extra clay deposits and mountains without caring about the island
+		* the probability of choosing a resource deposit location is proportional to its value
+
+		@param natural_resource_multiplier: multiply the amount of clay deposits and mountains by this.
+		"""
+
+		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		ClayDeposit = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
+		Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
+		clay_deposit_locations = []
+		mountain_locations = []
+
+		def get_valid_locations(usable_part, island, width, height):
+			"""Return a list of all valid locations for a width times height object in the format [(value, (x, y), island), ...]."""
+			locations = []
+			offsets = list(itertools.product(xrange(width), xrange(height)))
+			for x, y in sorted(usable_part):
+				min_value = None
+				for dx, dy in offsets:
+					coords = (x + dx, y + dy)
+					if coords in usable_part:
+						value = usable_part[coords]
+						min_value = value if min_value is None or min_value > value else min_value
+					else:
+						min_value = None
+						break
+				if min_value:
+					locations.append((1.0 / min_value, (x, y), island))
+			return locations
+
+		def place_objects(locations, max_objects, object_class):
+			"""Place at most max_objects objects of the given class."""
+			if not locations:
+				return
+
+			total_sum = [0]
+			last_sum = 0
+			for value in zip(*locations)[0]:
+				last_sum += value
+				total_sum.append(last_sum)
+
+			for _ in xrange(max_objects):
+				for _ in xrange(7): # try to place the object 7 times
+					object_sum = self.session.random.random() * last_sum
+					pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
+					x, y = locations[pos][1]
+					if object_class.check_build(self.session, Point(x, y), check_settlement = False):
+						Build(object_class, x, y, ownerless = True, island = locations[pos][2])(issuer = None)
+						break
+
+		for island in self.islands:
+			# mark island tiles that are next to the sea
+			queue = deque()
+			distance = {}
+			for (x, y), tile in island.ground_map.iteritems():
+				if len(tile.classes) == 1: # could be a shallow to deep water tile
+					for dx, dy in moves:
+						coords = (x + dx, y + dy)
+						if coords in self.water_body and self.water_body[coords] == self.sea_number:
+							distance[(x, y)] = 1
+							queue.append((x, y, 1))
+							break
+
+			# calculate the manhattan distance to the sea
+			while queue:
+				x, y, dist = queue[0]
+				queue.popleft()
+				for dx, dy in moves:
+					coords = (x + dx, y + dy)
+					if coords in distance:
+						continue
+					if coords in self.water_body and self.water_body[coords] == self.sea_number:
+						continue
+					distance[coords] = dist + 1
+					queue.append((coords[0], coords[1], dist + 1))
+
+			# calculate tiles' values
+			usable_part = {}
+			for coords, dist in distance.iteritems():
+				if coords in island.ground_map and 'constructible' in island.ground_map[coords].classes:
+					usable_part[coords] = (dist + 5) ** 2
+
+			# place the local clay deposits
+			local_clay_deposit_locations = get_valid_locations(usable_part, island, *ClayDeposit.size)
+			clay_deposit_locations.extend(local_clay_deposit_locations)
+			local_clay_deposits_base = 0.3 + len(local_clay_deposit_locations) ** 0.7 / 60.0
+			num_local_clay_deposits = int(max(0, resource_multiplier * min(3, local_clay_deposits_base + abs(self.session.random.gauss(0, 0.7)))))
+			place_objects(local_clay_deposit_locations, num_local_clay_deposits, ClayDeposit)
+
+			# place the local mountains
+			local_mountain_locations = get_valid_locations(usable_part, island, *Mountain.size)
+			mountain_locations.extend(local_mountain_locations)
+			local_mountains_base = 0.1 + len(local_mountain_locations) ** 0.5 / 120.0
+			num_local_mountains = int(max(0, resource_multiplier * min(2, local_mountains_base + abs(self.session.random.gauss(0, 0.8)))))
+			place_objects(local_mountain_locations, num_local_mountains, Mountain)
+
+		# place some extra clay deposits
+		extra_clay_base = len(clay_deposit_locations) ** 0.8 / 400.0
+		num_extra_clay_deposits = int(round(max(1, resource_multiplier * min(7, len(self.islands) * 1.0 + 2, extra_clay_base + abs(self.session.random.gauss(0, 1))))))
+		place_objects(clay_deposit_locations, num_extra_clay_deposits, ClayDeposit)
+
+		# place some extra mountains
+		extra_mountains_base = len(mountain_locations) ** 0.8 / 700.0
+		num_extra_mountains = int(round(max(1, resource_multiplier * min(4, len(self.islands) * 0.5 + 2, extra_mountains_base + abs(self.session.random.gauss(0, 0.7))))))
+		place_objects(mountain_locations, num_extra_mountains, Mountain)
+
+	def _add_nature_objects(self, natural_resource_multiplier):
+		"""
+		Place trees, wild animals, fish deposits, clay deposits, and mountains.
+
+		@param natural_resource_multiplier: multiply the amount of fish deposits, clay deposits, and mountains by this.
+		"""
+
+		if not int(self.properties.get('RandomTrees', 1)):
+			return
+
+		self._add_resource_deposits(natural_resource_multiplier)
+		Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
+		FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
+		fish_directions = [(i, j) for i in xrange(-1, 2) for j in xrange(-1, 2)]
+
+		# add trees, wild animals, and fish
+		for island in self.islands:
+			for (x, y), tile in sorted(island.ground_map.iteritems()):
+				# add tree to every nth tile and an animal to one in every M trees
+				if self.session.random.randint(0, 2) == 0 and \
+				   Tree.check_build(self.session, tile, check_settlement = False):
+					building = Build(Tree, x, y, ownerless = True, island = island)(issuer = None)
+					building.finish_production_now() # make trees big and fill their inventory
+					if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
+						CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
+					if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
+						building.inventory.alter(RES.WILDANIMALFOOD_ID, -1)
+
+				if 'coastline' in tile.classes and self.session.random.random() < natural_resource_multiplier / 4.0:
+					# try to place fish: from the current position go to a random directions twice
+					for (x_dir, y_dir) in self.session.random.sample(fish_directions, 2):
+						# move a random amount in both directions
+						fish_x = x + x_dir * self.session.random.randint(3, 9)
+						fish_y = y + y_dir * self.session.random.randint(3, 9)
+						# now we have the location, check if we can build here
+						if (fish_x, fish_y) in self.ground_map:
+							Build(FishDeposit, fish_x, fish_y, ownerless = True, island = self)(issuer = None)
+
+	@decorators.make_constants()
+	def get_random_possible_ground_unit_position(self):
+		"""Returns a position in water, that is not at the border of the world"""
+		offset = 2
+		while True:
+			x = self.session.random.randint(self.min_x + offset, self.max_x - offset)
+			y = self.session.random.randint(self.min_y + offset, self.max_y - offset)
+
+			if (x, y) in self.ground_unit_map:
+				continue
+
+			for island in self.islands:
+				if (x, y) in island.path_nodes.nodes:
+					return Point(x, y)
 
 	@decorators.make_constants()
 	def get_random_possible_ship_position(self):
@@ -405,19 +635,24 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# don't yield if point is not in map, those points don't exist
 				yield point
 
-	def setup_player(self, id, name, color, local):
+	def setup_player(self, id, name, color, local, is_ai, difficulty_level):
 		"""Sets up a new Player instance and adds him to the active world.
 		Only used for new games. Loading old players is done in _init().
 		@param local: bool, whether the player is the one sitting on front of this machine."""
 		inv = self.session.db.get_player_start_res()
 		player = None
 		if local:
-			player = HumanPlayer(self.session, id, name, color, inventory=inv)
+			if is_ai: # a human controlled AI player
+				player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
+			else:
+				player = HumanPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
 			self.player = player
 			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
 			                                          call_listener_now=True)
+		elif is_ai:
+			player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
 		else:
-			player = Player(self.session, id, name, color, inventory=inv)
+			player = Player(self.session, id, name, color, difficulty_level, inventory=inv)
 		self.players.append(player)
 
 	def get_tile(self, point):
@@ -425,10 +660,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		@param point: coords as Point
 		@return: instance of Ground at x, y
 		"""
-		i = self.get_island(point)
-		if i is not None:
-			return i.get_tile(point)
-		return self.ground_map[(point.x, point.y)]
+		return self.full_map[(point.x, point.y)]
 
 	def get_settlement(self, point):
 		"""Returns settlement on point. Very fast (O(1)).
@@ -459,13 +691,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param point: instance of Point"""
 		tup = point.to_tuple()
-		if tup in self.ground_map:
-			# this optimisation pays of if water tiles are frequently queried
+		if tup not in self.island_map:
 			return None
-		for island in self.islands:
-			if tup in island.ground_map:
-				return island
-		return None
+		return self.island_map[tup]
 
 	def get_islands_in_radius(self, point, radius):
 		"""Returns all islands in a certain radius around a point.
@@ -478,12 +706,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		return islands
 
 	@decorators.make_constants()
-	def get_branch_offices(self, position=None, radius=None, owner=None):
+	def get_branch_offices(self, position=None, radius=None, owner=None, include_friendly=False):
 		"""Returns all branch offices on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
 		@param owner: Player instance, list only branch offices belonging to this player.
+		@param include_friendly also list the branch offices belonging to friends
 		@return: List of branch offices.
 		"""
 		branchoffices = []
@@ -498,7 +727,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				bo = settlement.branch_office
 				if (radius is None or position is None or \
 				    bo.position.distance(position) <= radius) and \
-				   (owner is None or bo.owner == owner):
+				   (owner is None or bo.owner == owner or include_friendly):
 					branchoffices.append(bo)
 		return branchoffices
 
@@ -520,6 +749,45 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			return self.ships
 
+	@decorators.make_constants()
+	def get_ground_units(self, position=None, radius=None):
+		"""@see get_ships"""
+		if position is not None and radius is not None:
+			circle = Circle(position, radius)
+			units = []
+			for unit in self.ground_units:
+				if circle.contains(unit.position):
+					units.append(unit)
+			return units
+		else:
+			return self.ground_units
+
+	@decorators.make_constants()
+	def get_buildings(self, position=None, radius=None):
+		"""@see get_ships"""
+		buildings = []
+		if position is not None and radius is not None:
+			circle = Circle(position, radius)
+			for island in self.islands:
+				for building in island.buildings:
+					if circle.contains(building.position.center()):
+						buildings.append(building)
+		else:
+			for island in self.islands:
+				for building in island.buildings:
+					buildings.append(building)
+		return buildings
+
+	@decorators.make_constants()
+	def get_health_instances(self, position=None, radius=None):
+		"""Returns all instances that have health"""
+		instances = []
+		for instance in self.get_ships(position, radius)+\
+				self.get_ground_units(position, radius):
+			if instance.has_component('health'):
+				instances.append(instance)
+		return instances
+
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
@@ -536,6 +804,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.pirate.save(db)
 		for ship in self.ships:
 			ship.save(db)
+		for ground_unit in self.ground_units:
+			ground_unit.save(db)
+		for bullet in self.bullets:
+			bullet.save(db)
+		self.diplomacy.save(db)
+		Weapon.save_attacks(db)
 
 	def get_checkup_hash(self):
 		dict = {
@@ -546,7 +820,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			for settlement in island.settlements:
 				entry = {
 					'owner': str(settlement.owner.worldid),
-					'tax_settings': str(settlement.tax_setting),
+					'tax_settings':
+str(settlement.tax_settings),
 					'inhabitants': str(settlement.inhabitants),
 					'cumulative_running_costs': str(settlement.cumulative_running_costs),
 					'cumulative_taxes': str(settlement.cumulative_taxes),
@@ -558,8 +833,43 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	def notify_new_settlement(self):
 		"""Called when a new settlement is created"""
 		# make sure there's a trader ship for 2 settlements
-		if len(self.settlements) > self.trader.get_ship_count() * 2:
+		if self.trader and len(self.settlements) > self.trader.get_ship_count() * 2:
 			self.trader.create_ship()
+
+	@decorators.make_constants()
+	def toggle_translucency(self):
+		"""Make certain building types translucent"""
+		if not hasattr(self, "_translucent_buildings"):
+			self._translucent_buildings = set()
+
+		if not self._translucent_buildings: # no translucent buildings saved => enable
+			building_types = self.session.db.get_translucent_buildings()
+			add = self._translucent_buildings.add
+			from weakref import ref as create_weakref
+
+			def get_all_buildings(world):
+				for island in world.islands:
+					for b in island.buildings:
+						yield b
+					for s in island.settlements:
+						for b in s.buildings:
+							yield b
+
+			for b in get_all_buildings(self):
+				if b.id in building_types:
+					fife_instance = b._instance
+					add( create_weakref(fife_instance) )
+					fife_instance.keep_translucency = True
+					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+
+		else: # undo translucency
+			for inst in self._translucent_buildings:
+				try:
+					inst().get2dGfxVisual().setTransparency( 0 )
+					inst().keep_translucency = False
+				except AttributeError:
+					pass # obj has been deleted, inst() returned None
+			self._translucent_buildings.clear()
 
 
 def load_building(session, db, typeid, worldid):

@@ -3,8 +3,9 @@ UNKNOWN HORIZONS
 
 
 
-Our code is published under the terms of the General Public License (see GPL).
-For more information visit http://www.gnu.org/copyleft/gpl.html
+Our code is published under the terms of the  General Public License, version 2 and later.
+The license text is shipped with this program as doc/GPL (from now on: "see GPL").
+For more information visit  http://www.gnu.org/copyleft/gpl.html .
 
 
 
@@ -13,13 +14,13 @@ The file
 /horizons/ext/enum.py  
 
 is licensed under the terms of the  Python 2.4.2 License  by way of derogation from the above.
-Informations can be obtained at  http://www.python.org/download/releases/2.4.2/license/
+Informations can be obtained at  http://www.python.org/download/releases/2.4.2/license/ .
 
 
 /horizons/ext/dummy.py
 
-is licensed by nosklo under the terms of the MIT license. Information can be obtained at
-http://www.opensource.org/licenses/mit-license.php
+is licensed by nosklo under the terms of the  MIT license.  Information can be obtained at
+http://www.opensource.org/licenses/mit-license.php .
 
 
 The files
@@ -36,27 +37,23 @@ http://enet.bespin.org/License.html
 
 
 
-All audio content downloaded from the freesound project is licensed under the
-Creative Commons Sampling Plus 1.0 license.
-More information http://creativecommons.org/licenses/sampling+/1.0/
+Audio content obtained through the Freesound Project: ( http://freesound.org )
 
-Samples used from Freesound.org:
+chop.wav by hazure (used in content/audio/sounds/lumberjack*.ogg)
+timber.wav by hazure (used in content/audio/sounds/lumberjack*.ogg)
 
-chop.wav by hazure (used in content/audio/sounds/lumberjack*.ogg) [*]
-timber.wav by hazure (used in content/audio/sounds/lumberjack*.ogg) [*]
-
-[*]: hazure kindly licensed these files under CC-BY-SA 3.0 as well for us
-     according to the following message. We highly appreciate this favor.
+The author of above tracks, hazure, kindly licensed these files under CC-BY-SA 3.0
+for us according to the following message.  We highly appreciate this favor.
 "You may use those two samples under the CC-BY-SA 3.0 license, and consider this
  message as formal documentation of the permission given." ~ Feb 25, 2011.
 
 
 
-The font Linux Libertine is published under the terms of the 
-General Public License with font exception (see GPL_fontexception) and 
-Open Font License (see OFL) by the Libertine Open Fonts Project.
-For more information visit http://linuxlibertine.sourceforge.net/ 
-and http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+The font Linux Libertine is published under the terms of the
+General Public License with font exception (see GPL_fontexception)  and
+Open Font License (see OFL)  by the Libertine Open Fonts Project.
+For more information visit  http://linuxlibertine.sourceforge.net/
+and  http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 
 
 
@@ -64,25 +61,25 @@ Published under the terms of Public Domain are:
 
 "Sunrise Through Mist" by Fitz Hugh Lane used in the menu background.
 It has been obtained thanks to "The Athenaeum" ( http://the-athenaeum.org/ ).
-More details on the painting can be found at http://the-athenaeum.org/art/detail.php?ID=13984 .
+More details on the painting can be found at  http://the-athenaeum.org/art/detail.php?ID=13984 .
 
 "striking a Bell (15cm large)" by Stephan used in content/audio/sounds/ships_bell.ogg.
-More details can be found at http://www.pdsounds.org/sounds/striking_a_bell_15cm_large .
+More details can be found at  http://www.pdsounds.org/sounds/striking_a_bell_15cm_large .
 
 
 Published under the terms of Creative Commons Attribution Sharealike 3.0 Unported License is:
 
 "Trout School Animation" by Lamoot used in content/gfx/terrain/resources/as_fish0/ .
-More details on the work can be found at http://opengameart.org/content/trout-school-animation .
+More details on the work can be found at  http://opengameart.org/content/trout-school-animation .
 
 
 
 Our own audiovisual media content is published under the terms of the
 Creative Commons Attribution Sharealike 3.0 Unported License (see CC).
-For more information visit http://creativecommons.org/licenses/by-sa/3.0/legalcode .
+For more information visit  http://creativecommons.org/licenses/by-sa/3.0/legalcode .
 
 
 
-For further informations visit http://unknown-horizons.org
-or contact us by sending an email to team@unknown-horizons.org.
+For further informations visit  http://unknown-horizons.org
+or contact us by sending a mail to  team@unknown-horizons.org .
 

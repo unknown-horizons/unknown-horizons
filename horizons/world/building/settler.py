@@ -20,19 +20,20 @@
 # ###################################################
 
 import logging
+import math
 
 from horizons.scheduler import Scheduler
 
 from horizons.gui.tabs import SettlerOverviewTab
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle
-from horizons.constants import RES, BUILDINGS, GAME
+from horizons.constants import RES, BUILDINGS, GAME, SETTLER
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
 from horizons.util import decorators
 from horizons.world.pathfinding.pather import StaticPather
-from horizons.constants import SETTLER
+from horizons.command.production import ToggleActive
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -57,15 +58,15 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		self.__init(self.__get_data("happiness_init_value"))
 		self.run()
-		# give the user a month (about 30 seconds) to build a market place in range
+		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner == self.session.world.player:
-			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks_of_month())
+			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
 
-	def __init(self, happiness = None):
-		self.level_max =  SETTLER.CURRENT_MAX_INCR # for now
+	def __init(self, happiness = None, loading = False):
+		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
 		if happiness is not None:
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
-		self._update_level_data()
+		self._update_level_data(loading = loading)
 		self.last_tax_payed = 0
 
 	def save(self, db):
@@ -81,15 +82,57 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		self.inhabitants = \
 		    db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
 		remaining_ticks = \
-		    db("SELECT ticks from remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
-
-		self.__init()
+		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
+		self.__init(loading = True)
+		self._load_upgrade_data(db)
 		self.owner.notify_settler_reached_level(self)
 		self.run(remaining_ticks)
 
+	def load_production(self, db, worldid):
+		if db.get_production_line_id(worldid) == self.session.db.get_settler_upgrade_material_prodline(self.level + 1):
+			return SingleUseProduction.load(db, worldid)
+		else:
+			return super(Settler, self).load_production(db, worldid)
+
+	def _load_upgrade_data(self, db):
+		"""Load the upgrade production and relevant stored resources"""
+		upgrade_material_production = self._get_upgrade_production()
+		if upgrade_material_production is None:
+			return
+
+		resources = {}
+		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
+			resources[resource] = amount
+
+		for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
+			self.inventory.add_resource_slot(res, abs(amount))
+			if res in resources:
+				self.inventory.alter(res, resources[res])
+
+		upgrade_material_production.add_production_finished_listener(self.level_up)
+		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
+
+	def _get_upgrade_production(self):
+		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
+		if self.has_production_line(upgrade_material_prodline):
+			return self._get_production(upgrade_material_prodline)
+		return None
+
+	@property
+	def upgrade_allowed(self):
+		return self.session.world.get_settlement(self.position.origin).upgrade_permissions[self.level]
+
+	def on_change_upgrade_permissions(self):
+		production = self._get_upgrade_production()
+		if production is not None:
+			if production.is_paused() == self.upgrade_allowed:
+				ToggleActive(self, production).execute(self.session, True)
+
 	@property
 	def happiness(self):
-		return self.inventory[RES.HAPPINESS_ID]
+		difficulty = self.owner.difficulty
+		result = int(round(difficulty.extra_happiness_constant + self.inventory[RES.HAPPINESS_ID] * difficulty.happiness_multiplier))
+		return max(0, min(result, self.inventory.get_limit(RES.HAPPINESS_ID)))
 
 	@property
 	def name(self):
@@ -97,8 +140,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		house_name = self.session.db.get_settler_house_name(self.level)
 		return (_(level_name)+' '+_(house_name)).title()
 
-	def _update_level_data(self):
-		"""Updates all settler-related data because of a level change"""
+	def _update_level_data(self, loading = False):
+		"""Updates all settler-related data because of a level change or because of loading"""
 		# taxes, inhabitants
 		self.tax_base = self.session.db.get_settler_tax_income(self.level)
 		self.inhabitants_max = self.session.db.get_settler_inhabitants_max(self.level)
@@ -108,17 +151,18 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# consumption:
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
-		current_lines = self.get_production_lines()
-		for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
-			if not self.has_production_line(prod_line):
-				self.add_production_by_id(prod_line)
-			# cross out the new lines from the current lines, so only the old ones remain
-			if prod_line in current_lines:
-				current_lines.remove(prod_line)
-		for line in current_lines[:]: # iterate over copy for safe removal
-			# all lines, that were added here but are not used due to the current level
-			# NOTE: this contains the upgrade material production line
-			self.remove_production_by_id(line)
+		if not loading:
+			current_lines = self.get_production_lines()
+			for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
+				if not self.has_production_line(prod_line):
+					self.add_production_by_id(prod_line)
+				# cross out the new lines from the current lines, so only the old ones remain
+				if prod_line in current_lines:
+					current_lines.remove(prod_line)
+			for line in current_lines[:]: # iterate over copy for safe removal
+				# all lines, that were added here but are not used due to the current level
+				# NOTE: this contains the upgrade material production line
+				self.remove_production_by_id(line)
 		# update instance graphics
 		self.update_action_set_level(self.level)
 
@@ -138,18 +182,24 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		"""Pays the tax for this settler"""
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
 		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
-		happiness_tax_modifier = (float(self.happiness)-50)/200 + 1
-		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants * self.settlement.tax_setting
-		taxes = int(round(taxes))
-		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
-		self.last_tax_payed = taxes
 
-		# decrease happiness
-		happiness_decrease = taxes + self.tax_base + ((self.settlement.tax_setting-1)*10)
+		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
+		happiness_tax_modifier = 0.5 + (float(self.happiness)/100.0)
+		inhabitants_tax_modifier = float(self.inhabitants) / self.inhabitants_max
+		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
+		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
+
+		self.settlement.owner.inventory.alter(RES.GOLD_ID, real_taxes)
+		self.last_tax_payed = real_taxes
+
+		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
+		difference = 1.0 - self.settlement.tax_settings[self.level]
+		happiness_decrease = 45 * difference - 15 * abs(difference)
 		happiness_decrease = int(round(happiness_decrease))
-		self.inventory.alter(RES.HAPPINESS_ID, -happiness_decrease)
+		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
+
 		self._changed()
-		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, taxes, \
+		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, real_taxes, \
 									 happiness_decrease, self.happiness)
 
 	def inhabitant_check(self):
@@ -167,9 +217,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
 		if changed:
-			# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Supplying_citizens_with_resources
-			# Disabled because alter_production_time actually works now (avoid change in game behaviour)
-			# self.alter_production_time( 1 + (float(self.inhabitants)/10))
+			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
+			self.alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
 			self._changed()
 
 	def level_check(self):
@@ -177,7 +226,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
 			 self.level < self.level_max:
 			# add a production line that gets the necessary upgrade material.
-			# when the production finished, it calls level_up as callback.
+			# when the production finishes, it calls upgrade_materials_collected.
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
@@ -188,14 +237,16 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 				self.inventory.add_resource_slot(res, abs(amount))
 			self.add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
+			if not self.upgrade_allowed:
+				ToggleActive(self, upgrade_material_production).execute(self.session, True)
 		elif self.happiness < self.__get_data("happiness_level_down_limit"):
 			self.level_down()
 			self._changed()
 
-	def level_up(self, production=None):
-		# NOTE: production, is unused, but get's passed by the production code
+	def level_up(self, production = None):
+		# NOTE: production is unused, but gets passed by the production code
 		self.level += 1
-		self.log.debug("%s: Leveling up to %s", self, self.level)
+		self.log.debug("%s: Levelling up to %s", self, self.level)
 		self._update_level_data()
 		# notify owner about new level
 		self.owner.notify_settler_reached_level(self)
@@ -224,16 +275,16 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 
-	def _check_market_place_in_range(self):
-		"""Notifies the user via a message in case there is no market place in range"""
+	def _check_main_square_in_range(self):
+		"""Notifies the user via a message in case there is no main square in range"""
 		for building in self.get_buildings_in_range():
-			if building.id == BUILDINGS.MARKET_PLACE_CLASS:
+			if building.id == BUILDINGS.MAIN_SQUARE_CLASS:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:
-					# a market place is in range
+					# a main square is in range
 					return
-		# no market place found
+		# no main square found
 		self.session.ingame_gui.message_widget.add(self.position.origin.x, self.position.origin.y, \
-		                                           'NO_MARKET_PLACE_IN_RANGE')
+		                                           'NO_MAIN_SQUARE_IN_RANGE')
 
 	def level_upgrade(self, lvl):
 		"""Settlers only level up by themselves"""
@@ -251,5 +302,5 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		"""Returns constant settler-related data from the db.
 		The values are cached by python, so the underlying data must not change."""
 		return int(
-		  self.session.db("SELECT value from settler.balance_values WHERE name = ?", key)[0][0]
+		  self.session.db("SELECT value FROM balance_values WHERE name = ?", key)[0][0]
 		  )

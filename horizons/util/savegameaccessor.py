@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict, deque
+
 from horizons.util import DbReader
 
 ########################################################################
@@ -41,15 +43,15 @@ class SavegameAccessor(DbReader):
 
 	def _load_building(self):
 		self._building = {}
-		for row in self("SELECT rowid, x, y, health, location, rotation, level FROM building"):
+		for row in self("SELECT rowid, x, y, location, rotation, level FROM building"):
 			self._building[int(row[0])] = row[1:]
 
 	def get_building_row(self, worldid):
-		"""Returns (x, y, health, location, rotation, level)"""
+		"""Returns (x, y, location, rotation, level)"""
 		return self._building[int(worldid)]
 
 	def get_building_location(self, worldid):
-		return self._building[int(worldid)][3]
+		return self._building[int(worldid)][2]
 
 
 	def _load_settlement(self):
@@ -78,7 +80,8 @@ class SavegameAccessor(DbReader):
 	def _load_production(self):
 		self._production = {}
 		self._production_ids = {}
-		for row in self("SELECT rowid, state, owner, prod_line_id, remaining_ticks, _pause_old_state FROM production"):
+		db_data = self("SELECT rowid, state, owner, prod_line_id, remaining_ticks, _pause_old_state, creation_tick FROM production")
+		for row in db_data:
 			rowid = int(row[0])
 			self._production[rowid] = row[1:]
 			owner = int(row[2])
@@ -87,14 +90,25 @@ class SavegameAccessor(DbReader):
 			else:
 				self._production_ids[owner] = [rowid]
 
+		self._production_state_history = defaultdict(lambda: deque())
+		for production_id, tick, state in self("SELECT production, tick, state FROM production_state_history ORDER BY production, tick"):
+			self._production_state_history[int(production_id)].append((tick, state))
+
 	def get_production_row(self, worldid):
-		"""Returns (state, owner, prod_line_id, remaining_ticks, _pause_old_state)"""
+		"""Returns (state, owner, prod_line_id, remaining_ticks, _pause_old_state, creation_tick)"""
 		return self._production[int(worldid)]
 
 	def get_production_ids_by_owner(self, ownerid):
 		"""Returns potentially empty list of worldids referencing productions"""
 		ownerid = int(ownerid)
 		return [] if ownerid not in self._production_ids else self._production_ids[ownerid]
+
+	def get_production_line_id(self, production_worldid):
+		"""Returns the prod_line_id of the given production"""
+		return self._production[int(production_worldid)][2]
+
+	def get_production_state_history(self, worldid):
+		return self._production_state_history[int(worldid)]
 
 
 	def _load_storage(self):
@@ -143,10 +157,17 @@ class SavegameAccessor(DbReader):
 
 	def _load_building_collector(self):
 		self._building_collector = {}
-		for row in self("SELECT rowid, home_building FROM building_collector"):
-			self._building_collector[int(row[0])] = int(row[1]) if row[1] is not None else None
+		for row in self("SELECT rowid, home_building, creation_tick FROM building_collector"):
+			self._building_collector[int(row[0])] = (int(row[1]) if row[1] is not None else None, row[2])
 
-	def get_building_collectors_home(self, worldid):
-		"""Returns the id of the building collector's home or None otherwise"""
+		self._building_collector_job_history = defaultdict(lambda: deque())
+		for collector_id, tick, utilisation in self("SELECT collector, tick, utilisation FROM building_collector_job_history ORDER BY collector, tick"):
+			self._building_collector_job_history[int(collector_id)].append((tick, utilisation))
+
+	def get_building_collectors_data(self, worldid):
+		"""Returns (id of the building collector's home or None otherwise, creation_tick)"""
 		worldid = int(worldid)
 		return None if worldid not in self._building_collector else self._building_collector[worldid]
+
+	def get_building_collector_job_history(self, worldid):
+		return self._building_collector_job_history[int(worldid)]

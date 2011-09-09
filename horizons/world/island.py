@@ -48,6 +48,7 @@ class Island(BuildingOwner, WorldObject):
 	* grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
+	* position - a Rect that borders the island with the smallest possible area
 	* buildings - a list of all Building instances that are present on the island.
 	* settlements - a list of all Settlement instances that are present on the island.
 	* path_nodes - a special dictionary used by the pather to save paths.
@@ -119,11 +120,20 @@ class Island(BuildingOwner, WorldObject):
 			# is blocked in any way.
 			self.ground_map[(ground.x, ground.y)] = ground
 
+		self._init_cache()
+
 		self.settlements = []
 		self.wild_animals = []
 		self.num_trees = 0
 
 		self.path_nodes = IslandPathNodes(self)
+
+		# define the rectangle with the smallest area that contains every island tile its position
+		min_x = min(zip(*self.ground_map.keys())[0])
+		max_x = max(zip(*self.ground_map.keys())[0])
+		min_y = min(zip(*self.ground_map.keys())[1])
+		max_y = max(zip(*self.ground_map.keys())[1])
+		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		# repopulate wild animals every 2 mins if they die out.
 		Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
@@ -251,6 +261,12 @@ class Island(BuildingOwner, WorldObject):
 					tile.settlement = settlement
 					settlement.ground_map[coord] = tile
 					self.session.ingame_gui.minimap.update(coord)
+					self._register_change(coord[0], coord[1])
+
+					# notify all AI players when land ownership changes
+					for player in self.session.world.players:
+						if hasattr(player, 'on_settlement_expansion'):
+							player.on_settlement_expansion(settlement, coord)
 
 				building = tile.object
 				# assign buildings on tiles to settlement
@@ -281,6 +297,7 @@ class Island(BuildingOwner, WorldObject):
 		# Reset the tiles this building was covering
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
+			self._register_change(point.x, point.y)
 
 		# keep track of the number of trees for animal population control
 		if building.id == BUILDINGS.TREE_CLASS:
@@ -301,6 +318,7 @@ class Island(BuildingOwner, WorldObject):
 		# Reset the tiles this building was covering (after building has been completely removed)
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
+			self._register_change(point.x, point.y)
 
 		# keep track of the number of trees for animal population control
 		if building.id == BUILDINGS.TREE_CLASS:
@@ -347,3 +365,39 @@ class Island(BuildingOwner, WorldObject):
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
 		# so do nothing in this case.
 
+	def _init_cache(self):
+		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """ 
+		self.last_change_id = -1
+		self.building_sizes = set()
+		db_result = self.session.db("SELECT DISTINCT size_x, size_y FROM building WHERE button_name IS NOT NULL")
+		for size_x, size_y in db_result:
+			self.building_sizes.add((size_x, size_y))
+			self.building_sizes.add((size_y, size_x))
+
+		self.last_changed = {}
+		for size in self.building_sizes:
+			self.last_changed[size] = {}
+
+		for (x, y) in self.ground_map:
+			for size_x, size_y in self.building_sizes:
+				all_on_island = True
+				for dx in xrange(size_x):
+					for dy in xrange(size_y):
+						if (x + dx, y + dy) not in self.ground_map:
+							all_on_island = False
+							break
+					if not all_on_island:
+						break
+				if all_on_island:
+					self.last_changed[(size_x, size_y)][(x, y)] = self.last_change_id
+
+	def _register_change(self, x, y):
+		""" registers the possible buildability change of a rectangle on this island """ 
+		self.last_change_id += 1
+		for (area_size_x, area_size_y), building_areas in self.last_changed.iteritems():
+			for dx in xrange(area_size_x):
+				for dy in xrange(area_size_y):
+					coords = (x - dx, y - dy)
+					# building area with origin at coords affected
+					if coords in building_areas:
+						building_areas[coords] = self.last_change_id

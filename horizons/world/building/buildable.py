@@ -78,9 +78,9 @@ class Buildable(object):
 		@return instance of _BuildPosition"""
 		# for non-quadratic buildings, we have to switch width and height depending on the rotation
 		if rotation == 45 or rotation == 225:
-			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0]-1, cls.size[1]-1)
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
 		else:
-			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1]-1, cls.size[0]-1)
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])
 
 		buildable = True
 		tearset = []
@@ -89,6 +89,7 @@ class Buildable(object):
 			# TODO: if the rotation changes here for non-quadratic buildings, wrong results will be returned
 			rotation = cls._check_rotation(session, position, rotation)
 			tearset = cls._check_buildings(session, position)
+			cls._check_units(session, position)
 			if check_settlement:
 				cls._check_settlement(session, position, ship=ship, issuer=issuer)
 		except _NotBuildableError:
@@ -187,6 +188,11 @@ class Buildable(object):
 						raise _NotBuildableError()
 		return tearset
 
+	@classmethod
+	def _check_units(cls, session, position):
+		for tup in position.tuple_iter():
+			if tup in session.world.ground_unit_map:
+				raise _NotBuildableError()
 
 class BuildableSingle(Buildable):
 	"""Buildings one can build single. """
@@ -205,9 +211,9 @@ class BuildableSingleEverywhere(BuildableSingle):
 	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
 		# for non-quadratic buildings, we have to switch width and height depending on the rotation
 		if rotation == 45 or rotation == 225:
-			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0]-1, cls.size[1]-1)
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
 		else:
-			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1]-1, cls.size[0]-1)
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])
 
 		buildable = True
 		tearset = []
@@ -345,10 +351,11 @@ class BuildableSingleFromShip(BuildableSingleOnCoast):
 		if ship.position.distance(position) > BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE:
 			raise _NotBuildableError()
 
-		# and the island mustn't be owned by anyone else
-		settlement = session.world.get_settlement(position.center())
-		if settlement is not None:
-			raise _NotBuildableError()
+		for i in position:
+			# and the position mustn't be owned by anyone else
+			settlement = session.world.get_settlement(i)
+			if settlement is not None:
+				raise _NotBuildableError()
 
 		# and player mustn't have a settlement here already
 		island = session.world.get_island(position.center())

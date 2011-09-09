@@ -30,32 +30,35 @@ from horizons.util import Rect, Circle
 from horizons.util.shapes.radiusshape import RadiusShape, RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
-from horizons.constants import BUILDINGS, PRODUCTION, RES
+from horizons.constants import BUILDINGS, PRODUCTION, RES, GAME_SPEED
 from horizons.gui.tabs import ProductionOverviewTab
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
 	tabs = (ProductionOverviewTab,)
-	def _update_capacity_utilisation(self):
-		"""Farm doesn't acctually produce something, so calculate productivity by the number of fields
-		nearby."""
+
+	def _get_providers(self):
 		reach = RadiusRect(self.position, self.radius)
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
-		providers = [ p for p in providers if isinstance(p, Field) ]
+		return [provider for provider in providers if isinstance(provider, Field)]
 
-		self.capacity_utilisation = float(len(providers))/self.max_fields_possible
+	@property
+	def capacity_utilisation(self):
+		"""
+		Farm doesn't actually produce something, so calculate productivity by the number of fields nearby.
+		"""
+
+		result = float(len(self._get_providers())) / self.max_fields_possible
 		# sanity checks for theoretically impossible cases:
-		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
-		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
+		result = min(result, 1.0)
+		result = max(result, 0.0)
+		return result
 
 class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Distillery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Refiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
 class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -70,7 +73,10 @@ class Smeltery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, 
 class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class SaltPond(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+	pass
+
+class CannonBuilder(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
 class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
@@ -106,6 +112,16 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 		while cls._selected_tiles:
 			cls._selected_tiles.pop()
 
+	def get_non_paused_utilisation(self):
+		total = 0
+		productions = self._get_productions()
+		for production in productions:
+			if production.get_age() < PRODUCTION.STATISTICAL_WINDOW * 1.5:
+				return 1
+			state_history = production.get_state_history_times(True)
+			total += state_history[PRODUCTION.STATES.producing.index]
+		return total / float(len(productions))
+
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
 	Also provides collectors for buildings that consume resources (tavern)."""
@@ -123,6 +139,21 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		for res, amount in inventory.iteritems():
 			self.inventory.alter(res, amount)
 
+	@classmethod
+	def get_loading_area(cls, building_id, rotation, pos):
+		if building_id == BUILDINGS.MOUNTAIN_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
+			if rotation == 45:
+				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 1, 3)
+			elif rotation == 135:
+				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 3, 1)
+			elif rotation == 225:
+				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 1, 3)
+			elif rotation == 315:
+				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 3, 1)
+			assert False
+		else:
+			return pos
+
 	def __init(self, deposit_class, mine_empty_msg_shown):
 		self.__deposit_class = deposit_class
 		self._mine_empty_msg_shown = mine_empty_msg_shown
@@ -130,17 +161,7 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		# setup loading area
 		# TODO: for now we assume that a mine building is 5x5 with a 3x1 entry on 1 side
 		#       this needs to be generalised, possibly by defining the loading tiles in the db
-		pos = self.position
-		if self.rotation == 45:
-			self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 0, 2)
-		elif self.rotation == 135:
-			self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 2, 0)
-		elif self.rotation == 225:
-			self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 0, 2)
-		elif self.rotation == 315:
-			self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 2, 0)
-		else:
-			assert False
+		self.loading_area = self.get_loading_area(deposit_class, self.rotation, self.position)
 
 	@classmethod
 	def get_prebuild_data(cls, session, position):
@@ -205,7 +226,7 @@ class AnimalFarm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 		self.animals = []
 
 		# NOTE: animals have to be created before the AnimalCollector
-		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
+		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
 				Entities.units[animal](self)

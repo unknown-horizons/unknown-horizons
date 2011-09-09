@@ -29,7 +29,7 @@
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox> <Label text=""  name="headline" />
 		<VBox  name="box">
-			<Label text="The whole FIFE team (www.fifengine.de)"  name="fife_team_lbl" />
+			<Label text="The whole FIFE team (fifengine.net)" />
 			<Label text="mvBarracuda (Martin Vohland)" />
 			<Label text="lamoot (Matjaz Lamut)" />
 			<Label text="LinuxDonald (Thomas Kowaliczek)" />
@@ -38,7 +38,10 @@
 			<Label text="mattn (Martin Gerhardry)" />
 			<Label text="Reiner Prokein (reinerstileset.4players.de)" />
 			<Label text="Alexia and the Widelands team (widelands.org)" />
+			<Label text="The team of Battle for Wesnoth (wesnoth.org)" />
+			<Label text="Ivanovic (Nils Kneuper)" />
 			<Label text="BartK and www.OpenGameArt.org" />
+			<Label text="www.OpenClipArt.org" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>

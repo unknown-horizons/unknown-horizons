@@ -44,6 +44,8 @@ class Minimap(object):
 
 	MINIMAP_BASE_IMAGE = "content/gfx/misc/minmap_water.png"
 
+	__next_minimap_id = 0
+
 	def __init__(self, rect, session, renderer):
 		"""
 		@param rect: a Rect, where we will draw to
@@ -56,6 +58,9 @@ class Minimap(object):
 
 		self.world = None
 		self.location_center = self.location.center()
+
+		self._id = str(self.__class__.__next_minimap_id) # internal identifier, used for allocating resources
+		self.__class__.__next_minimap_id += 1
 
 		self.minimap_image = _MinimapImage(horizons.main.fife.imagepool, self.MINIMAP_BASE_IMAGE)
 
@@ -80,10 +85,10 @@ class Minimap(object):
 		self.update_cam()
 
 		# reset image
-		self.renderer.removeAll("minimap_a_image");
+		self.renderer.removeAll("minimap_a_image"+self._id);
 		self.minimap_image.reset()
 		node = fife.GenericRendererNode( fife.Point(self.location.center().x, self.location.center().y) )
-		self.renderer.addImage("minimap_a_image", node, self.minimap_image.img_id)
+		self.renderer.addImage("minimap_a_image"+self._id, node, self.minimap_image.img_id)
 
 		self._recalculate()
 		self._timed_update()
@@ -97,7 +102,7 @@ class Minimap(object):
 		"""Redraw camera border."""
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		self.renderer.removeAll("minimap_b_cam_border")
+		self.renderer.removeAll("minimap_b_cam_border"+self._id)
 		# draw rect for current screen
 		displayed_area = self.session.view.get_displayed_area()
 		minimap_corners_as_renderer_node = []
@@ -117,7 +122,7 @@ class Minimap(object):
 			minimap_corners_as_renderer_node.append( fife.GenericRendererNode( \
 			  fife.Point(*minimap_coords) ) )
 		for i in xrange(0, 4):
-			self.renderer.addLine("minimap_b_cam_border", minimap_corners_as_renderer_node[i], \
+			self.renderer.addLine("minimap_b_cam_border"+self._id, minimap_corners_as_renderer_node[i], \
 			                 minimap_corners_as_renderer_node[ (i+1) % 4], *self.colors[self.cam_border])
 
 	def update(self, tup):
@@ -128,8 +133,8 @@ class Minimap(object):
 		minimap_point = self._get_rotated_coords(self._world_coord_to_minimap_coord(tup))
 		world_to_minimap = self._get_world_to_minimap_ratio()
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], \
-		                                       int(round(1/world_to_minimap[0])), \
-		                                       int(round(1/world_to_minimap[1])))
+		                                       int(round(1/world_to_minimap[0])) + 1, \
+		                                       int(round(1/world_to_minimap[1])) + 1)
 		self._recalculate(rect)
 
 	def use_overlay_icon(self, icon):
@@ -226,15 +231,17 @@ class Minimap(object):
 	def _timed_update(self):
 		"""Regular updates for domains we can't or don't want to keep track of."""
 		# update ship dots
-		self.renderer.removeAll("minimap_b_ship")
+		self.renderer.removeAll("minimap_b_ship"+self._id)
 		for ship in self.world.ship_map.itervalues():
+			if not ship():
+				continue
 			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
 			color = ship().owner.color.to_tuple()
-			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 2, 2)
+			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 3, 3)
 			for tup in area_to_color.tuple_iter():
 				try:
 					node = fife.GenericRendererNode(fife.Point(*self._get_rotated_coords(tup)))
-					self.renderer.addPoint("minimap_b_ship", node, *color)
+					self.renderer.addPoint("minimap_b_ship"+self._id, node, *color)
 				except KeyError:
 					# this happens in rare cases, when the ship is at the border of the map,
 					# and since we color an area, that's bigger than a point, it can exceed the

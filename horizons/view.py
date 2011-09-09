@@ -181,7 +181,17 @@ class View(ChangeListener):
 		return self.cam.getZoom()
 
 	def set_zoom(self, zoom):
+		in_icon = self.session.ingame_gui.widgets['minimap'].findChild(name='zoomIn')
+		out_icon = self.session.ingame_gui.widgets['minimap'].findChild(name='zoomOut')
 		self.cam.setZoom(zoom)
+		if zoom == VIEW.ZOOM_MIN:
+			out_icon.set_inactive()
+		else:
+			out_icon.set_active()
+		if zoom == VIEW.ZOOM_MAX:
+			in_icon.set_inactive()
+		else:
+			in_icon.set_active()
 		self._changed()
 
 	def rotate_right(self):
@@ -198,8 +208,8 @@ class View(ChangeListener):
 		"""Returns the coords of what is displayed on the screen as Rect"""
 		coords = self.cam.getLocationRef().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
-		screen_width_as_coords = (horizons.main.fife.engine_settings.getScreenWidth()/cell_dim.x, \
-		                          horizons.main.fife.engine_settings.getScreenHeight()/cell_dim.y)
+		screen_width_as_coords = (horizons.main.fife.engine_settings.getScreenWidth()/cell_dim.x + 1, \
+		                          horizons.main.fife.engine_settings.getScreenHeight()/cell_dim.y + 1)
 		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0]/2), \
 		                                       coords.y - (screen_width_as_coords[1]/2),
 		                                       *screen_width_as_coords)

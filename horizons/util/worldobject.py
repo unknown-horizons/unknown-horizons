@@ -76,6 +76,9 @@ class WorldObject(ChangeListener):
 		super(WorldObject, self).remove()
 		pass # removing is done implicitly by WeakValueDict
 
+	def __lt__(self, other):
+		return self.worldid < other.worldid
+
 	# for testing:
 	@classmethod
 	def get_objs(self): return self.__objects

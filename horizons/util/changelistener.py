@@ -37,6 +37,35 @@ class ChangeListener(object):
 	def __init(self):
 		self.__listeners = WeakMethodList()
 		self.__remove_listeners = WeakMethodList()
+		# number of event calls
+		# if any event is triggered increase the number, after all callbacks are executed decrease it
+		# if it reaches 0 it means that in the current object all event callbacks were executed
+		self.__event_call_number = 0
+		self.__hard_remove = True
+
+	def __remove_listener(self, listener_list, listener):
+		# check if the listener should be hard removed
+		# if so switch it in the list to None
+		if self.__hard_remove:
+			listener_list.remove(listener)
+		else:
+			listener_list[listener_list.index(listener)] = None
+
+	def __call_listeners(self, listener_list):
+		# instead of removing from list, switch the listener in position to None
+		# this way, iteration won't be affected while listeners may modify the list
+		self.__hard_remove = False
+		# increase the event call number
+		self.__event_call_number += 1
+		for listener in listener_list:
+			if listener:
+				listener()
+
+		self.__event_call_number -= 1
+
+		if self.__event_call_number == 0:
+			self.__hard_remove = True
+			listener_list = [ l for l in listener_list if l ]
 
 	## Normal change listener
 	def add_change_listener(self, listener, call_listener_now = False):
@@ -46,7 +75,7 @@ class ChangeListener(object):
 			listener()
 
 	def remove_change_listener(self, listener):
-		self.__listeners.remove(listener)
+		self.__remove_listener(self.__listeners, listener)
 
 	def has_change_listener(self, listener):
 		return (listener in self.__listeners)
@@ -62,8 +91,7 @@ class ChangeListener(object):
 
 	def _changed(self):
 		"""Calls every listener when an object changed"""
-		for listener in self.__listeners:
-			listener()
+		self.__call_listeners(self.__listeners)
 
 	## Removal change listener
 	def add_remove_listener(self, listener):
@@ -72,7 +100,7 @@ class ChangeListener(object):
 		self.__remove_listeners.append(listener)
 
 	def remove_remove_listener(self, listener):
-		self.__remove_listeners.remove(listener)
+		self.__remove_listener(self.__remove_listeners, listener)
 
 	def has_remove_listener(self, listener):
 		return (listener in self.__remove_listeners)
@@ -81,8 +109,7 @@ class ChangeListener(object):
 		self.__init()
 
 	def remove(self):
-		for listener in self.__remove_listeners:
-			listener()
+		self.__call_listeners(self.__remove_listeners)
 		self.end()
 
 	def end(self):
@@ -109,21 +136,40 @@ production_finished listener.
 def metaChangeListenerDecorator(event_name):
 	def decorator(clas):
 		list_name = "__"+event_name+"_listeners"
-		# trivial changelistener operations
+		event_call_number = "__"+event_name+"call_number"
+		hard_remove_event = "__hard_remove"+event_name
+		# trivial changelistener operations
 		def add(self, listener):
 			assert callable(listener)
 			getattr(self, list_name).append(listener)
+
 		def rem(self, listener):
-			getattr(self, list_name).remove(listener)
+			if getattr(self, hard_remove_event):
+				getattr(self, list_name).remove(listener)
+			else:
+				listener_list = getattr(self, list_name)
+				listener_list[listener_list.index(listener)] = None
+
 		def has(self, listener):
 			return listener in getattr(self, list_name)
+
 		def on(self, *args, **kwargs):
+			setattr(self, hard_remove_event, False)
+			call_number = getattr(self, event_call_number) + 1
+			setattr(self, event_call_number, call_number)
 			for f in getattr(self, list_name):
-				# workaround for encapsuled arguments
-				if isinstance(f, Callback):
-					f()
-				else:
-					f(self, *args, **kwargs)
+				if f:
+					# workaround for encapsuled arguments
+					if isinstance(f, Callback):
+						f()
+					else:
+						f(self, *args, **kwargs)
+
+			call_number = getattr(self, event_call_number) - 1
+			setattr(self, event_call_number, call_number)
+			if getattr(self, event_call_number) == 0:
+				setattr(self, hard_remove_event, True)
+				setattr(self, list_name, [ l for l in getattr(self, list_name) if l ])
 
 		# add methods to class
 		setattr(clas, "add_"+event_name+"_listener", add)
@@ -142,6 +188,8 @@ def metaChangeListenerDecorator(event_name):
 			# therefore, this workaround is used:
 			obj = old_new(cls, *args, **kwargs)
 			setattr(obj, list_name, [])
+			setattr(obj, event_call_number, 0)
+			setattr(obj, hard_remove_event, True)
 			return obj
 		clas.__new__ = staticmethod(new)
 		return clas

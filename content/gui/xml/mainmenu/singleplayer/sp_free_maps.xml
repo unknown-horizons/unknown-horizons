@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side">
+	<Label text="Choose a map to play:"  name="headline_choose_map_lbl" />
+	<ScrollArea max_size="290,140"  min_size="290,140"  horizontal_scrollbar="0"  name="map_list_area">
+		<ListBox name="maplist" />
+	</ScrollArea>
+<!--
+	<Label text="Choose your opponents:"  name="headline_choose_opponents_lbl" />
+	<ScrollArea horizontal_scrollbar="1"  vertical_scrollbar="0"  name="opponent_list_area">
+		<HBox name="opponent_list">
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Emma Stonard" />
+			</VBox>
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Arthur Gordon" />
+			</VBox>
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Baron Hill" />
+			</VBox>
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Cristina de Bolsena" />
+			</VBox>
+			<VBox>
+				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Pietro Gonzale" />
+			</VBox>
+		</HBox>
+	</ScrollArea>
+-->
+	<VBox name="game_settings_box" />
+
+<Spacer />
+
+</VBox>

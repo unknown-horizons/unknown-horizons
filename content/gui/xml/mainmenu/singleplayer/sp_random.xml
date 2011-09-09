@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side"  padding="15">
+	<Label name="headline_map_settings_lbl" text="Map settings:" />
+
+	<VBox name="map_settings"  padding="15">
+		<HBox name="map_size">
+			<Label name="map_size_lbl" min_size="150,20" text="" />
+			<StepSlider name="map_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+		</HBox>
+		<HBox name="water_percent">
+			<Label name="water_percent_lbl" min_size="150,20" text="" />
+			<StepSlider name="water_percent_slider" size="125,20" scale_start="0" scale_end="6" step_length="1" marker_length="22" />
+		</HBox>
+		<HBox name="max_island_size">
+			<Label name="max_island_size_lbl" min_size="150,20" text="" />
+			<StepSlider name="max_island_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+		</HBox>
+		<HBox name="preferred_island_size">
+			<Label name="preferred_island_size_lbl" min_size="150,20" text="" />
+			<StepSlider name="preferred_island_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+		</HBox>
+		<HBox name="island_size_deviation">
+			<Label name="island_size_deviation_lbl" min_size="150,20" text="" />
+			<StepSlider name="island_size_deviation_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+		</HBox>
+		<!--<HBox><Label text="TODO: all values below this aren't implemented yet"/></HBox>
+		<HBox name="param_climate">
+			<Label name="climate_lbl" text="Climate zone:" />
+		<Spacer />
+			<Label name="climate_zone_lbl_cold" text="frosty" />
+			<StepSlider name="map_size_slider" size="126,20" scale_start="1" scale_end="3" step_length="1" marker_length="42" />
+			<Label name="climate_zone_lbl_warm" text="torrid" />
+		</HBox>-->
+	</VBox>
+
+	<VBox name="game_settings_box" />
+
+<Spacer />
+</VBox>

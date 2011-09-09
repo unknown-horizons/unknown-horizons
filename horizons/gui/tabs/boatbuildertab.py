@@ -25,8 +25,9 @@ from fife.extensions import pychan
 from horizons.command.production import AddProduction
 from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
-from horizons.util.gui import load_uh_widget
+from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
+from horizons.constants import PRODUCTIONLINES
 
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
@@ -59,8 +60,8 @@ class BoatbuilderTab(OverviewTab):
 			if container_active is None:
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
-			container_active.findChild(name="headline_BB_builtship_label").text = _("Fishing boat")
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher\nStorage: 1 slot of 1t\nSpeed: average\nHealth: 40"
+			container_active.findChild(name="headline_BB_builtship_label").text = _("Huker")
+			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
@@ -112,7 +113,7 @@ class BoatbuilderTab(OverviewTab):
 			for res, amount in still_needed_res.iteritems():
 				assert i <= 3, "Only 3 still needed res for ships are currently supported"
 
-				icon = self.instance.session.db("SELECT icon_small FROM resource WHERE id = ?", res)[0][0]
+				icon = get_res_icon(res)[3]
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i)).image = icon
 				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i)).text = unicode(-1*amount)+u't' # -1 make them positive
 				i += 1
@@ -155,6 +156,7 @@ class BoatbuilderSelectTab(OverviewTab):
 		self.button_active_image = bb_image_path % 'a'
 		self.button_down_image = bb_image_path % 'd'
 		self.button_hover_image = bb_image_path % 'h'
+
 	def start_production(self, prod_line_id):
 		AddProduction(self.instance, prod_line_id).execute(self.instance.session)
 		# show overview tab
@@ -166,20 +168,24 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
 		self.tooltip = _("Fisher boats")
 		# TODO: generalize this hard coded value
-		events = { 'BB_build_fisher_1' : Callback(self.start_production, 15) }
+		events = { 'BB_build_fisher_1' : Callback(self.start_production, PRODUCTIONLINES.FISHING_BOAT) }
 		self.widget.mapEvents(events)
 
 class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderTradeTab, self).__init__(instance, 'trade')
+		events = { 'BB_build_trade_1' : Callback(self.start_production, PRODUCTIONLINES.HUKER) }
 		self.tooltip = _("Trade boats")
+		self.widget.mapEvents(events)
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar1Tab, self).__init__(instance, 'war1')
+		events = { 'BB_build_war1_1' : Callback(self.start_production, PRODUCTIONLINES.FRIGATE) }
 		self.tooltip = _("War boats")
+		self.widget.mapEvents(events)
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 

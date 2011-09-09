@@ -21,9 +21,12 @@
 
 from tabinterface import TabInterface
 from horizons.gui.widgets.tradewidget import TradeWidget
+from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.util import Callback
 from horizons.scheduler import Scheduler
+from horizons.constants import WEAPONS
+from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
 
 class InventoryTab(TabInterface):
 
@@ -36,7 +39,7 @@ class InventoryTab(TabInterface):
 		self.button_active_image = icon_path % 'a'
 		self.button_down_image = icon_path % 'd'
 		self.button_hover_image = icon_path % 'h'
-		self.tooltip = _("Inventory")
+		self.tooltip = _("Settlement inventory")
 		self.widget.child_finder('inventory').init(self.instance.session.db, \
 		                                           self.instance.inventory)
 
@@ -54,12 +57,10 @@ class InventoryTab(TabInterface):
 
 class ShipInventoryTab(InventoryTab):
 
-	def __init__(self, instance = None):
-		super(ShipInventoryTab, self).__init__(
-			widget = 'ship_inventory.xml',
-			icon_path='content/gui/icons/tabwidget/common/inventory_%s.png',
-			instance = instance,
-		)
+	def __init__(self, instance = None, widget = 'ship_inventory.xml',
+			icon_path = 'content/gui/icons/tabwidget/common/inventory_%s.png'):
+		#if no other widget or icon path are passed via inheritance, use default ones
+		super(ShipInventoryTab, self).__init__(instance, widget, icon_path)
 		self.tooltip = _("Ship inventory")
 
 	def configure_route(self):
@@ -69,14 +70,20 @@ class ShipInventoryTab(InventoryTab):
 	def refresh(self):
 		session = self.instance.session
 		branches = session.world.get_branch_offices(self.instance.position, \
-		                                            self.instance.radius, \
-		                                            self.instance.owner)
+			self.instance.radius, self.instance.owner, True)
 		events = {}
 
 		events['configure_route/mouseClicked'] = Callback(self.configure_route)
 
-		if len(branches) > 0:
+		# TODO: use a better way to decide which label should be shown
+		if len(branches) > 0 and branches[0].owner is self.instance.owner:
 			events['trade'] = Callback(session.ingame_gui.show_menu, TradeWidget(self.instance))
+			self.widget.findChild(name='load_unload_label').text = _('Load/Unload:')
+			self.widget.findChild(name='bg_button').set_active()
+			self.widget.findChild(name='trade').set_active()
+		elif len(branches) > 0:
+			events['trade'] = Callback(session.ingame_gui.show_menu, InternationalTradeWidget(self.instance))
+			self.widget.findChild(name='load_unload_label').text = _('Buy/Sell:')
 			self.widget.findChild(name='bg_button').set_active()
 			self.widget.findChild(name='trade').set_active()
 		else:
@@ -96,3 +103,36 @@ class ShipInventoryTab(InventoryTab):
 		if self.instance.has_change_listener(self.refresh):
 			self.instance.remove_change_listener(self.refresh)
 		super(ShipInventoryTab, self).hide()
+
+class FightingShipInventoryTab(ShipInventoryTab):
+
+	def __init__(self, instance = None):
+		widget = 'fighting_ship_inventory.xml'
+		super(FightingShipInventoryTab, self).__init__(instance, widget)
+		#create weapon inventory, needed only in gui for inventory widget
+		self.weapon_inventory = self.instance.get_weapon_storage()
+		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, \
+			self.weapon_inventory)
+
+	def refresh(self):
+		#TODO system for getting equipable weapons
+		def apply_equip(button):
+			button.button.tooltip = _("Equip weapon")
+			button.button.capture(Callback(self.equip_weapon, button.res_id))
+		def apply_unequip(button):
+			button.button.tooltip = _("Unequip weapon")
+			button.button.capture(Callback(self.unequip_weapon, button.res_id))
+		self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip, lambda b: b.res_id == WEAPONS.CANNON)
+		self.widget.findChild(name='inventory').apply_to_buttons(apply_equip, lambda b: b.res_id == WEAPONS.CANNON)
+		super(FightingShipInventoryTab, self).refresh()
+
+	def equip_weapon(self, weapon_id):
+		if EquipWeaponFromInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
+			self.weapon_inventory.alter(weapon_id, 1)
+		self.widget.child_finder('weapon_inventory').update()
+
+	def unequip_weapon(self, weapon_id):
+		if UnequipWeaponToInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
+			self.weapon_inventory.alter(weapon_id, -1)
+		self.widget.child_finder('weapon_inventory').update()
+

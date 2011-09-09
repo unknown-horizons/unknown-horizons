@@ -26,6 +26,7 @@ import unittest
 
 import horizons.main
 from horizons.util.uhdbaccessor import UhDbAccessor
+from horizons.constants import PATHS
 
 
 db = None
@@ -39,22 +40,13 @@ def setup_package():
 	"""
 	global db, temp_dir
 
-	temp_dir = tempfile.mkdtemp()
-
-	# Copy databases, we don't want to modify the existing ones.
-	shutil.copy('content/game.sqlite', temp_dir)
-	shutil.copy('content/settler.sqlite', temp_dir)
-	shutil.copy('content/balance.sqlite', temp_dir)
-
 	db = UhDbAccessor(':memory:')
-	db('ATTACH ? AS data', os.path.join(temp_dir, 'game.sqlite'))
-	db('ATTACH ? AS settler', os.path.join(temp_dir, 'settler.sqlite'))
-	db('ATTACH ? AS balance', os.path.join(temp_dir, 'balance.sqlite'))
+	for i in PATHS.DB_FILES:
+		db.execute_script( open(i, "r").read() )
 
 	# Truncate all tables. We don't want to rely on existing data.
-	for database in ('data', 'settler', 'balance'):
-		for (table_name, ) in db("SELECT name FROM %s.sqlite_master WHERE type = 'table'" % database):
-			db('DELETE FROM %s' % table_name)
+	for (table_name, ) in db("SELECT name FROM sqlite_master WHERE type = 'table'"):
+		db('DELETE FROM %s' % table_name)
 
 
 def teardown_package():
@@ -62,7 +54,6 @@ def teardown_package():
 	Close database and remove the temporary directory.
 	"""
 	db.close()
-	shutil.rmtree(temp_dir)
 
 
 class TestCase(unittest.TestCase):

@@ -22,6 +22,8 @@
 import logging
 import copy
 
+import horizons.main
+
 from horizons.util import LivingObject, ManualConstructionSingleton, decorators
 from horizons.constants import GAME
 
@@ -56,6 +58,11 @@ class Scheduler(LivingObject):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
 		"""
+
+		if GAME.MAX_TICKS is not None and tick_id >= GAME.MAX_TICKS:
+			horizons.main.quit()
+			return
+
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.schedule[self.cur_tick])
@@ -126,9 +133,10 @@ class Scheduler(LivingObject):
 	def rem_all_classinst_calls(self, class_instance):
 		"""Removes all callbacks from the scheduler that belong to the class instance class_inst."""
 		for key in self.schedule:
-			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance is class_instance:
-					self.schedule[key].remove(callback_obj)
+			callback_objects = self.schedule[key]
+			for i in xrange(len(callback_objects) - 1, -1, -1):
+				if callback_objects[i].class_instance is class_instance:
+					del callback_objects[i]
 
 		# filter additional callbacks as well
 		self.additional_cur_tick_schedule = \
@@ -143,9 +151,15 @@ class Scheduler(LivingObject):
 		assert callable(callback)
 		removed_calls = 0
 		for key in self.schedule:
-			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance is instance and callback_obj.callback == callback:
-					self.schedule[key].remove(callback_obj)
+			callback_objects = self.schedule[key]
+			for i in xrange(len(callback_objects) - 1, -1, -1):
+				if callback_objects[i].class_instance is instance and callback_objects[i].callback == callback:
+					del callback_objects[i]
+					removed_calls += 1
+		for i in xrange(len(self.additional_cur_tick_schedule) - 1, -1, -1):
+			if self.additional_cur_tick_schedule[i].class_instance is instance and \
+				self.additional_cur_tick_schedule[i].callback == callback:
+					del callback_objects[i]
 					removed_calls += 1
 		return removed_calls
 
@@ -167,13 +181,17 @@ class Scheduler(LivingObject):
 						calls[callback_obj] = key - self.cur_tick
 		return calls
 
-	def get_remaining_ticks(self, instance, callback):
+	def get_remaining_ticks(self, instance, callback, assert_present=True):
 		"""Returns in how many ticks a callback is executed. You must specify 1 single call.
 		@param *: just like get_classinst_calls
-		@return int."""
+		@param assert_present: assert that there must be sucha call
+		@return int or possbile None if not assert_present"""
 		calls = self.get_classinst_calls(instance, callback)
-		assert len(calls) == 1, 'got %i calls for %s %s' % (len(calls), instance, callback)
-		return calls.values()[0]
+		if assert_present:
+			assert len(calls) == 1, 'got %i calls for %s %s' % (len(calls), instance, callback)
+			return calls.itervalues().next()
+		else:
+			return calls.itervalues().next() if calls else None
 
 	def get_ticks(self, seconds):
 		"""Call propagated to time instance"""

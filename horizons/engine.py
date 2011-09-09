@@ -20,10 +20,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import glob, random
+import glob
+import random
 import gettext
 import os
 import locale
+import platform
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
@@ -39,7 +41,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations
 from horizons.util.gui import load_uh_widget
 from horizons.i18n.utils import find_available_languages
-from horizons.constants import LANGUAGENAMES, PATHS, NETWORK
+from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 
 UH_MODULE="unknownhorizons"
@@ -145,8 +147,7 @@ class Fife(ApplicationBase):
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "language",
 		                                applyfunction=self.update_languages,
-		                                initialdata=[ LANGUAGENAMES[x] for x in sorted(languages_map.keys()) ])
-
+		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages_map.keys())])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
 		                                applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
@@ -154,6 +155,7 @@ class Fife(ApplicationBase):
 
 		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
 		                                applyfunction=self.set_network_port)
+
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
@@ -224,6 +226,8 @@ class Fife(ApplicationBase):
 				trans = gettext.translation('unknown-horizons', position, languages=[name], fallback=fallback)
 				trans.install(unicode=True, names=['ngettext',])
 			else:
+				if platform.system() == "Windows": # win doesn't set the language variable by default
+					os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
 				gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 				name = ''
 
@@ -270,6 +274,7 @@ class Fife(ApplicationBase):
 		self.cursor = self.engine.getCursor()
 		self.default_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor.png')
 		self.tearing_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_tear.png')
+		self.attacking_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_attack.png')
 		self.cursor.set(fife.CURSOR_IMAGE, self.default_cursor_image)
 
 		#init pychan
@@ -277,6 +282,7 @@ class Fife(ApplicationBase):
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 
 		from gui.widgets.inventory import Inventory
+		from gui.widgets.buysellinventory import BuySellInventory
 		from gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
 		from gui.widgets.progressbar import ProgressBar
 		from gui.widgets.toggleimagebutton import ToggleImageButton
@@ -284,10 +290,12 @@ class Fife(ApplicationBase):
 		from gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
 		from gui.widgets.icongroup import TabBG
 		from gui.widgets.stepslider import StepSlider
+		from gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 
 		pychan.widgets.registerWidget(CancelButton)
 		pychan.widgets.registerWidget(DeleteButton)
 		pychan.widgets.registerWidget(Inventory)
+		pychan.widgets.registerWidget(BuySellInventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
 		pychan.widgets.registerWidget(OkButton)
 		pychan.widgets.registerWidget(ProgressBar)
@@ -298,6 +306,9 @@ class Fife(ApplicationBase):
 		pychan.widgets.registerWidget(TooltipLabel)
 		pychan.widgets.registerWidget(TooltipProgressBar)
 		pychan.widgets.registerWidget(StepSlider)
+		pychan.widgets.registerWidget(HealthWidget)
+		pychan.widgets.registerWidget(StanceWidget)
+		pychan.widgets.registerWidget(WeaponStorageWidget)
 
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
@@ -316,12 +327,9 @@ class Fife(ApplicationBase):
 		               'QuicksaveMaxCount' : 'quicksavemaxcount'}
 
 		for x in slider_dict.keys():
-			slider_initial_data[slider_dict[x]+'_value'] = unicode(int( \
-			        self._setting.get(UH_MODULE, x) ))
-		slider_initial_data['volume_music_value'] = unicode(int( \
-		             self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
-		slider_initial_data['volume_effects_value'] = unicode(int( \
-		             self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
+			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
+		slider_initial_data['volume_music_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
+		slider_initial_data['volume_effects_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
 		self.OptionsDlg.distributeInitialData(slider_initial_data)
 
 		for x in slider_dict.values():
@@ -397,7 +405,8 @@ class Fife(ApplicationBase):
 				self.music = self.menu_music
 
 		if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
-			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
+			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and \
+			   self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
 				# last track has finished (TODO: find cleaner way to check for this)
 				skip = 0 if len(self.music) == 1 else random.randint(1, len(self.music)-1)
 				self.music_rand_element = (self.music_rand_element + skip) % len(self.music)
@@ -502,6 +511,7 @@ class Fife(ApplicationBase):
 		self.__setup_screen_resolutions()
 		self.engine.initializePumping()
 		self.loop()
+		self.__kill_engine()
 		self.engine.finalizePumping()
 
 	def loop(self):
@@ -518,8 +528,6 @@ class Fife(ApplicationBase):
 			if self._doBreak:
 				self._doBreak = False
 				return self._doReturn
-
-		self.__kill_engine()
 
 	def __kill_engine(self):
 		"""Called when the engine is quit"""

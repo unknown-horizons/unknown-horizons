@@ -100,10 +100,8 @@ class GroundClass(type):
 		self._object = None
 		self.velocity = {}
 		self._tile_set_id = db.get_random_tile_set(id)[0]
-		for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
-			self.velocity[unit] = (straight, diagonal)
 		self.classes = ['ground[' + str(id) + ']']
-		for (name,) in db("SELECT class FROM data.ground_class WHERE ground = ?", id):
+		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)
 		self._loadObject(db)
 
@@ -129,7 +127,7 @@ class GroundClass(type):
 		fife.ObjectVisual.create(cls._object)
 
 		tile_sets = TileSetLoader.get_sets()
-		for (tile_set_id,) in db("SELECT set_id FROM data.tile_set WHERE ground_id=?", cls.id):
+		for (tile_set_id,) in db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id):
 			for action_id in tile_sets[tile_set_id].iterkeys():
 				print "Adding action: ", action_id, "for tile:", cls.id
 				action = cls._object.createAction(action_id+"_"+str(tile_set_id))

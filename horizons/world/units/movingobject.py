@@ -46,7 +46,6 @@ class MovingObject(ConcretObject):
 	*moving methods:
 	- move
 	- stop
-	- move_back
 	- add_move_callback
 
 	*getters/checkers:
@@ -144,16 +143,6 @@ class MovingObject(ConcretObject):
 			# this assures that a movement takes at least 1 tick, which is sometimes subtly
 			# assumed e.g. in the collector code
 			Scheduler().add_new_object(self._move_tick, self)
-
-	def move_back(self, callback = None, destination_in_building = False, action='move', blocked_callback = None):
-		"""Return to the place where last movement started. Same path is used, but in reverse order.
-		@param callback: same as callback in move()
-		@param destination_in_building: bool, whether target is in a building
-		@param blocked_callback: same as blocked_callback in move()
-		"""
-		self.log.debug("%s: Moving back to %s", self, self.get_move_target())
-		self.path.revert_path(destination_in_building)
-		self.move(None, callback, destination_in_building, action, _path_calculated = True, blocked_callback = blocked_callback)
 
 	def _movement_finished(self):
 		self.log.debug("%s: movement finished. calling callbacks %s", self, self.move_callbacks)
@@ -267,14 +256,31 @@ class MovingObject(ConcretObject):
 		self._conditional_callbacks[condition] = callback
 
 	def get_unit_velocity(self):
-		"""Returns number of ticks that it takes to do a straight (i.e. vertical or horizontal) movement
-		@return: int
+		"""Returns the number of ticks that it takes to do a straight (i.e. vertical or horizontal)
+		or diagonal movement as a tuple in this order.
+		@return: (int, int)
 		"""
 		tile = self.session.world.get_tile(self.position)
 		if self.id in tile.velocity:
 			return tile.velocity[self.id]
 		else:
 			return (12, 17) # standard values
+
+	def get_estimated_travel_time(self, destination):
+		path = self.path.calc_path(destination, check_only = True)
+		if not path and path != []:
+			return None
+
+		path_length = 0 # length in ticks to travel the distance
+		speed = self.get_unit_velocity()
+		for i in xrange(1, len(path)):
+			dx = abs(path[i - 1][0] - path[i][0])
+			dy = abs(path[i - 1][1] - path[i][1])
+			if dx and dy:
+				path_length += speed[1]
+			else:
+				path_length += speed[0]
+		return path_length
 
 	def get_move_target(self):
 		return self.path.get_move_target()
