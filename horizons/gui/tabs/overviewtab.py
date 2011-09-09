@@ -189,8 +189,11 @@ class ShipOverviewTab(OverviewTab):
 		   {},
 		   res_from_ship = True )
 		events['foundSettlement/mouseEntered'] = cb
-		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
-		   None ) # hides the resource status widget
+		cb1 = Callback( self.instance.session.ingame_gui.resourceinfo_set,
+		                None ) # hides the resource status widget
+		cb2 = Callback( self.widget.child_finder('foundSettlement').hide_tooltip)
+		#TODO the tooltip should actually hide on its own. Ticket #1096
+		cb = Callback.ChainedCallbacks(cb1, cb2)
 		events['foundSettlement/mouseExited'] = cb
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()

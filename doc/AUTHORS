@@ -25,7 +25,7 @@ squiddy (Reiner Gerecke)
 dauerflucher (Andreas Lis)
 Andre (Andre Reichelt)
 Kilian] (Kilian K.)
-eoc (Christopher Oelmueller)
+chrisoelmueller (Christopher Oelmueller)
 
 = Sound and Music Artists
 draikon (Sebastian Ahlen)
@@ -39,6 +39,7 @@ terwarf (Alexander Breidenbroich)
 wentam (Matt Egeler)
 Manthus (Matthias Dittrich)
 inken
+orakeldel
 
 
 == Patchers
@@ -68,6 +69,7 @@ sient (Minimap rectangle)
 hoffi (GUI improvements)
 riidom (Tent and hut variations)
 abeaumont (Two renitent segfaults)
+mtfk (Voice internationalization)
 
 
 == Translators

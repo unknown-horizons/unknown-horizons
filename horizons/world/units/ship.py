@@ -134,7 +134,7 @@ class ShipRoute(object):
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
-					amount_transferred = settlement.sell_resource(self.ship, res, amount)
+					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
 
 				if amount_transferred < status.remaining_transfers[res] and self.ship.inventory.get_free_space_for(res) > 0:
 					status.settlement_provides_enough_res = False
@@ -151,7 +151,7 @@ class ShipRoute(object):
 
 					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
 				else:
-					amount_transferred = settlement.buy_resource(self.ship, res, amount)
+					amount_transferred = settlement.buy_resource(self.ship.worldid, res, amount)
 
 				if amount_transferred < -status.remaining_transfers[res] and self.ship.inventory[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False
@@ -260,8 +260,8 @@ class ShipRoute(object):
 	def get_ship_status(self):
 		"""Return the current status of the ship."""
 		if self.ship.is_moving():
-			return _('Trade route: moving to ') + self.ship.get_location_based_status(self.ship.get_move_target())
-		return _('Trade route: waiting at ') + self.ship.get_location_based_status(self.ship.position)
+			return _('Trade route: going to') + (' %s' % self.ship.get_location_based_status(self.ship.get_move_target()))
+		return _('Trade route: waiting at') + (' %s' % self.ship.get_location_based_status(self.ship.position))
 
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
@@ -334,7 +334,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			if resume:
 				if self.in_ship_map:
 					self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-			raise
+				raise
 
 		if self.in_ship_map:
 			# save current and next position for ship, since it will be between them
@@ -456,13 +456,13 @@ class Ship(NamedObject, StorageHolder, Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				return _('Moving to ') + location_based_status
-			return _('Moving to ') + ('%d, %d' % (target.x, target.y))
+				return _('Going to') + (' %s' % location_based_status)
+			return _('Going to') + (' %d, %d' % (target.x, target.y))
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				return _('Idle at ') + location_based_status
-			return _('Idle at ') + ('%d, %d' % (self.position.x, self.position.y))
+				return _('Idle at') + (' %s' % location_based_status)
+			return _('Idle at') + (' %d, %d' % (self.position.x, self.position.y))
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

@@ -97,6 +97,8 @@ class TradeWidget(object):
 			self.widget.adaptLayout()
 		else:
 			self.widget.hide()
+			from horizons.gui.tabs import ShipInventoryTab
+			self.instance.show_menu(jump_to_tabclass=ShipInventoryTab)
 
 	def __remove_changelisteners(self):
 		self.instance.remove_change_listener(self.draw_widget)

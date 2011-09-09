@@ -152,9 +152,17 @@ class QueueProducer(Producer):
 	def __init(self):
 		self.production_queue = []
 
+	def save(self, db):
+		super(QueueProducer, self).save(db)
+		for prod_line_id in self.production_queue:
+			db("INSERT INTO production_queue (rowid, production_line_id) VALUES(?, ?)",
+			   self.worldid, prod_line_id)
+
 	def load(self, db, worldid):
 		super(QueueProducer, self).load(db, worldid)
 		self.__init()
+		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE rowid = ?", worldid):
+			self.production_queue.append(prod_line_id)
 
 	def add_production_by_id(self, production_line_id, production_class = Production):
 		"""Convenience method.

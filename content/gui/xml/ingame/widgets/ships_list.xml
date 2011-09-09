@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<Container name="players_overview" size="1020,580" position="-20,0">
+<Container size="1020,580" position="-20,0">
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 
-	<VBox name="page_vbox" max_size="695,508" min_size="695,508" position="175,40" padding="5">
+	<VBox max_size="695,508" min_size="695,508" position="175,40" padding="5">
 		<HBox>
 			<Label name="headline" text="" min_size="300,20" />
 		</HBox>
@@ -19,7 +19,7 @@
 			</HBox>
 		</VBox>
 
-		<VBox name="ships_vbox" />
+		<VBox name="content_vbox" />
 <!--
 In this VBox a line is added per ship in the following format:
 			<HBox>
@@ -33,7 +33,8 @@ In this VBox a line is added per ship in the following format:
 -->
 
 		<Spacer />
-		<HBox max_size="80,36">
+		<HBox>
+			<Spacer min_size="627" />
 			<CancelButton tooltip="Close" />
 		</HBox>
 	</VBox>

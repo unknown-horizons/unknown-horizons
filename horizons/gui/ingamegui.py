@@ -32,12 +32,14 @@ from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.playersoverview import PlayersOverview
+from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.util.gui import LazyWidgetsDict
 from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
+from horizons.gui.tabs.tabinterface import TabInterface
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -62,6 +64,7 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).__init__()
 		self.session = session
 		self.main_gui = gui
+		self.main_widget = None
 		self.widgets = {}
 		self.tabwidgets = {}
 		self.settlement = None
@@ -75,10 +78,11 @@ class IngameGui(LivingObject):
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
 		cityinfo.position_technique = "center-10:top+5"
 
-		self.logbook = LogBook()
+		self.logbook = LogBook(self.session)
 		self.logbook.add_pause_request_listener(Callback(self.session.speed_pause))
 		self.logbook.add_unpause_request_listener(Callback(self.session.speed_unpause))
 		self.players_overview = PlayersOverview(self.session)
+		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
 		self.scenario_chooser = ScenarioChooser(self.session)
 
@@ -335,10 +339,16 @@ class IngameGui(LivingObject):
 
 		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
-		btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
-		         range(0, self.session.world.player.settler_level+1)]
-		tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
-								    active_tab=BuildTab.last_active_build_tab)
+
+		if not any( (settlement.owner == self.session.world.player) for settlement in self.session.world.settlements):
+			# player has not built any settlements yet. Accessing the build menu at such a point
+			# indicates a mistake in the mental model of the user. Display a hint.
+			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
+		else:
+			btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
+				       range(0, self.session.world.player.settler_level+1)]
+			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
+				              active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
 
 	def deselect_all(self):
@@ -464,11 +474,19 @@ class IngameGui(LivingObject):
 		self._hide_change_name_dialog()
 
 	def on_escape(self):
-		if self.logbook.is_visible():
-			self.logbook.hide()
+		if self.main_widget:
+			self.main_widget.hide()
 		else:
 			return False
 		return True
+
+	def on_switch_main_widget(self, widget):
+		"""The main widget has been switched to the given one (possible None)."""
+		if self.main_widget: # close the old one if it exists
+			old_main_widget = self.main_widget
+			self.main_widget = None
+			old_main_widget.hide()
+		self.main_widget = widget
 
 	def display_game_speed(self, text):
 		"""

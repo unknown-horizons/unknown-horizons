@@ -76,14 +76,15 @@ class ShipInventoryTab(InventoryTab):
 		events['configure_route/mouseClicked'] = Callback(self.configure_route)
 
 		# TODO: use a better way to decide which label should be shown
-		if len(branches) > 0 and branches[0].owner is self.instance.owner:
-			events['trade'] = Callback(session.ingame_gui.show_menu, TradeWidget(self.instance))
-			self.widget.findChild(name='load_unload_label').text = _('Load/Unload:')
-			self.widget.findChild(name='bg_button').set_active()
-			self.widget.findChild(name='trade').set_active()
-		elif len(branches) > 0:
-			events['trade'] = Callback(session.ingame_gui.show_menu, InternationalTradeWidget(self.instance))
-			self.widget.findChild(name='load_unload_label').text = _('Buy/Sell:')
+		if len(branches) > 0:
+			if branches[0].owner is self.instance.owner:
+				wdg = TradeWidget(self.instance)
+				text = _('Load/Unload:')
+			else:
+				wdg = InternationalTradeWidget(self.instance)
+				text = _('Buy/Sell:')
+			events['trade'] = Callback(session.ingame_gui.show_menu, wdg)
+			self.widget.findChild(name='load_unload_label').text = text
 			self.widget.findChild(name='bg_button').set_active()
 			self.widget.findChild(name='trade').set_active()
 		else:

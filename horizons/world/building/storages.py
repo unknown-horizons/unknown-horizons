@@ -77,7 +77,7 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		self.settlement.branch_office = self
 
 class MainSquare(ProducerBuilding, StorageBuilding):
-	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, MainSquareSettlerTabSettlerTab)
+	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.

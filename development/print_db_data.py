@@ -61,10 +61,10 @@ def get_prod_line(id, type):
 
 def print_production_lines():
 	print 'Production Lines:'
-	for (id, object, time, default) in db("SELECT id, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
+	for (id, changes_anim, object, time, default) in db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
 		(consumption,production) = get_prod_line(id, list)
 
-		str = 'ProdLine %2s of %2s:%-16s %5s sec %s\t' % (id, object, get_obj_name(object), time, ('D' if default else ' '))
+		str = 'ProdLine %2s of %2s:%-16s %5s sec %s\t change_anim(%s) ' % (id, object, get_obj_name(object), time, ('D' if default else ' '), changes_anim)
 
 		if len(consumption) > 0:
 			str += 'consumes: '
@@ -201,6 +201,12 @@ def print_increment_data():
 			print str
 		print ''
 
+def print_colors():
+	print 'Colors' + '\n' + '%2s: %12s  %3s  %3s  %3s  %3s  #%6s' % ('id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   ')
+	print '=' * 45
+	for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
+		print '%2s: %12s  %3s  %3s  %3s  %3s  #' % (id_, name, R, G, B, alpha) + 3*'%02x' % (R, G, B)
+
 def print_names():
 	text = ''
 	for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship','player'), ('ship','pirate'), ('ship','fisher'), ('ship','trader')]:
@@ -215,6 +221,7 @@ def print_names():
 functions = {
 		'buildings' : print_building,
 		'building_costs' : print_building_costs,
+		'colors' : print_colors,
 		'collectors' : print_collectors,
 		'collector_restrictions': print_collector_restrictions,
 		'increments' : print_increment_data,
@@ -227,9 +234,10 @@ functions = {
 		}
 abbrevs = {
 		'b' : 'buildings',
-		'building' : 'buildings',
 		'bc': 'building_costs',
+		'building' : 'buildings',
 		'c' : 'collectors',
+		'cl' : 'colors',
 		'cr': 'collector_restrictions',
 		'i' : 'increments',
 		'increment' : 'increments',

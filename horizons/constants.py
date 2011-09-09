@@ -63,7 +63,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 40
+	SAVEGAMEREVISION= 43
 
 	@staticmethod
 	def string():
@@ -335,6 +335,11 @@ class PATHS:
 
 	DB_FILES = tuple(os.path.join("content", i) for i in \
 	                 ("game.sql", "settler.sql", "balance.sql") )
+	#voice paths
+	VOICE_DIR = os.path.join("content", "audio", "voice")
+
+class PLAYER:
+	STATS_UPDATE_FREQUENCY = 42
 
 ## SINGLEPLAYER
 class SINGLEPLAYER:

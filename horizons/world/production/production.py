@@ -50,7 +50,6 @@ class Production(WorldObject):
 	can be observed via ChangeListener interface."""
 	log = logging.getLogger('world.production')
 
-
 	## INIT/DESTRUCT
 	def __init__(self, inventory, prod_line_id, auto_start=True, **kwargs):
 		super(Production, self).__init__(**kwargs)
@@ -78,11 +77,7 @@ class Production(WorldObject):
 	@classmethod
 	def _create_production_line(self, prod_line_id):
 		"""Returns a non-changeable production line instance"""
-		try:
-			return ProductionLine.data[prod_line_id]
-		except KeyError:
-			ProductionLine.load_data(prod_line_id)
-			return ProductionLine.data[prod_line_id]
+		return ProductionLine.get_const_production_line(prod_line_id)
 
 	def save(self, db):
 		self._clean_state_history()
@@ -98,15 +93,15 @@ class Production(WorldObject):
 		if remaining_ticks < 1:
 			remaining_ticks = 1
 		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, creation_tick) VALUES(?, ?, ?, ?, ?, ?)', \
-			self.worldid, self._state.index, self._prod_line.id, remaining_ticks, \
-			None if self._pause_old_state is None else self._pause_old_state.index, translated_creation_tick)
+			 self.worldid, self._state.index, self._prod_line.id, remaining_ticks, \
+			 None if self._pause_old_state is None else self._pause_old_state.index, translated_creation_tick)
 
 		# save state history
 		for tick, state in self._state_history:
-			 # pre-translate the tick number for the loading process
+				# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + 1
 			db("INSERT INTO production_state_history(production, tick, state) VALUES(?, ?, ?)", \
-				self.worldid, translated_tick, state)
+				 self.worldid, translated_tick, state)
 
 	@classmethod
 	def load(cls, db, worldid):
@@ -119,13 +114,13 @@ class Production(WorldObject):
 
 		db_data = db.get_production_row(worldid)
 		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
-			db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
+								db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
 		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION.STATES.producing:
 			Scheduler().add_new_object(self._finished_producing, self, db_data[3])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
-		     self._state == PRODUCTION.STATES.inventory_full:
+				 self._state == PRODUCTION.STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)
 
 		self._state_history = db.get_production_state_history(worldid)
@@ -190,13 +185,13 @@ class Production(WorldObject):
 
 			# apply state
 			if self._state in (PRODUCTION.STATES.waiting_for_res, \
-			                   PRODUCTION.STATES.inventory_full):
+												 PRODUCTION.STATES.inventory_full):
 				# just restore watching
 				self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 			elif self._state == PRODUCTION.STATES.producing:
 				# restore scheduler call
 				Scheduler().add_new_object(self._finished_producing, self, \
-				                           self._pause_remaining_ticks)
+																   self._pause_remaining_ticks)
 			else:
 				assert False, 'Unhandled production state: %s' % self._pause_old_state
 		else: # do pause
@@ -205,7 +200,7 @@ class Production(WorldObject):
 			self._state = PRODUCTION.STATES.paused
 
 			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res, \
-			                   PRODUCTION.STATES.inventory_full):
+												           PRODUCTION.STATES.inventory_full):
 				# just stop watching for new res
 				self.inventory.discard_change_listener(self._check_inventory)
 			elif self._pause_old_state == PRODUCTION.STATES.producing:
@@ -398,6 +393,15 @@ class ChangingProduction(Production):
 	def _create_production_line(self, prod_line_id):
 		"""Returns a changeable production line instance"""
 		return ProductionLine(prod_line_id)
+
+	def save(self, db):
+		super(ChangingProduction, self).save(db)
+		self._prod_line.save(db, self.worldid)
+
+	def _load(self, db, worldid):
+		super(ChangingProduction, self)._load(db, worldid)
+		self._prod_line.load(db, self.worldid)
+
 
 class SettlerProduction(ChangingProduction):
 	"""For settlers, production behaves different:

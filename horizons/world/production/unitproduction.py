@@ -38,12 +38,6 @@ class UnitProduction(ChangingProduction):
 		self._prod_line = copy.deepcopy(self._prod_line)
 		self.progress = progress # float indicating current production progress
 
-	@classmethod
-	def load(cls, db, worldid):
-		self = cls.__new__(cls)
-		self._load(db, worldid)
-		return self
-
 	def _load(self, db, worldid):
 		super(UnitProduction, self)._load(db, worldid)
 		self.__init()
@@ -55,8 +49,10 @@ class UnitProduction(ChangingProduction):
 		super(UnitProduction, self)._give_produced_res()
 
 	def _check_available_res(self):
-		for res in self._prod_line.consumed_res.iterkeys():
-			if self.inventory[res] > 0:
+		for res, amount in self._prod_line.consumed_res.iteritems():
+			# we change the production, so the amount can become 0
+			# in this case, we must no consider this resource, as it has already been fully provided
+			if amount != 0 and self.inventory[res] > 0:
 				return True
 		return False
 

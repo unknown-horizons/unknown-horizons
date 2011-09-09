@@ -38,7 +38,7 @@ elif [ ! -f content/scenarios/$1_en.yaml ]; then
     exit 1
 fi
 
-python << END > po/$1.py
+python2 << END > po/$1.py
 import yaml
 
 def prep(x):
@@ -83,7 +83,7 @@ for path in "$2"/*.po; do
     echo $lang:
     mkdir -p $mo && msgfmt --statistics $path -o $mo/$1.mo
 
-    python << END > content/scenarios/$1_$lang.yaml
+    python2 << END > content/scenarios/$1_$lang.yaml
 import yaml
 import gettext
 
