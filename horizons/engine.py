@@ -113,6 +113,9 @@ class Fife(ApplicationBase):
 		self.emitter['speech'] = None
 
 
+	# existing settings not part of this gui or the fife defaults (required for preserving values when upgrading settings file)
+	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers"] }
+
 	def _setup_settings(self, check_file_version=True):
 		if check_file_version:
 			# check if user settings file is the current one
@@ -133,18 +136,26 @@ class Fife(ApplicationBase):
 				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
 				user_config_parser = SimpleXMLSerializer( _user_config_file )
 
+				def update_value(modulename, entryname):
+					# retrieve values from loaded settings file
+					value = self._setting.get(modulename, entryname)
+					user_config_parser.set(modulename, entryname, value)
+				# update known settings and unreferenced settings
 				for modulename, module in self._setting.entries.iteritems():
 					for entryname in module.iterkeys():
-						# retrieve values from loaded settings file
-						value = self._setting.get(modulename, entryname)
-						user_config_parser.set(modulename, entryname, value)
+						update_value(modulename, entryname)
+				for modulename, entry_list in self.UNREFERENCED_SETTINGS.iteritems():
+					for entryname in entry_list:
+						update_value(modulename, entryname)
+
 				user_config_parser.save()
 
 
-		self._setting = LocalizedSetting(app_name="unknownhorizons",
+		self._setting = LocalizedSetting(app_name=UH_MODULE,
 		                                 settings_file=PATHS.USER_CONFIG_FILE,
 		                                 settings_gui_xml="settings.xml",
-		                                 changes_gui_xml="requirerestart.xml")
+		                                 changes_gui_xml="requirerestart.xml",
+		                                 default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
 
 		# TODO: find a way to apply changing to a running game in a clean fashion
 		#       possibility: use singaling via changelistener
