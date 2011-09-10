@@ -227,10 +227,13 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 				break
 		players.append({'id': num + 2, 'name' : 'AI' + str(num + 1), 'color' : color, 'local' : False, 'ai': True, 'difficulty': difficulty_level[True]})
 
+	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
 		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, natural_resource_multiplier, \
 			is_scenario = is_scenario, campaign = campaign)
-	except:
+	except InvalidScenarioFileFormat, e:
+		raise
+	except Exception, e:
 		import traceback
 		print "Failed to load", map_file
 		traceback.print_exc()
@@ -238,8 +241,8 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 			_modules.session.end()
 		_modules.gui.show_main()
 		headline = _(u"Failed to start/load the game")
-		descr = _(u"The game you selected couldn't be started.") + \
-		      _("The savegame might be broken or has been saved with an earlier version.")
+		descr = _(u"The game you selected couldn't be started.") + u" " +\
+			      _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai)
 

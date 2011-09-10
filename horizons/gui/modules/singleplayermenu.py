@@ -57,7 +57,7 @@ class SingleplayerMenu(object):
 			self.__setup_game_settings_selection()
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
-			
+
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
@@ -253,7 +253,7 @@ class SingleplayerMenu(object):
 		"""Shows a popup complaining about invalid scenario file.
 		@param exception: InvalidScenarioFile exception instance"""
 		print "Error: ", unicode(str(exception))
-		self.show_popup(_("Invalid scenario file"), \
-		                _("The selected file is not a valid scenario file.") + u'\n' + \
-		                _("Error message:") + u' ' + unicode(str(exception)) + u'\n' + \
-		                _("Please report this to the author."))
+		self.show_error_popup(_("Invalid scenario file"), \
+		                description=_("The selected file is not a valid scenario file."),
+		                details=_("Error message:") + u' ' + unicode(str(exception)),
+		                advice=_("Please report this to the author."))
