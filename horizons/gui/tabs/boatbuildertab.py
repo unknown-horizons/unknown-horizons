@@ -113,10 +113,10 @@ class BoatbuilderTab(OverviewTab):
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
 			for i, (res, amount) in enumerate(still_needed_res):
-				if i >= 3:
-					break
 				if amount == 0:
 					continue # Don't show res that are not really needed anymore
+				if i >= 3:
+					break
 
 				icon = get_res_icon(res)[3]
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon
