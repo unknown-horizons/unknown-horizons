@@ -113,7 +113,7 @@ INSERT INTO "building" VALUES(2,2,10,'Doctor','Doctor','prevention',1000,2,3,42,
 INSERT INTO "building" VALUES(1,1,0,'Gravel Path','Path','path',10,0,0,43,NULL,0,NULL);
 INSERT INTO "building" VALUES(2,2,6,'Wooden Tower','Tower','war',1000,1,1,44,'tower-1',1,'Defends your settlement.');
 CREATE TABLE `unit` (`name` TEXT NOT NULL ,`class_package` TEXT NOT NULL ,`class_type` TEXT NOT NULL , `base_velocity` FLOAT DEFAULT '12.0', "radius" INTEGER DEFAULT 5, "id" INTEGER AUTO_INCREMENT);
-INSERT INTO "unit" VALUES('Ship','ship','Ship',5.0,5,1000001);
+INSERT INTO "unit" VALUES('Huker','ship','Ship',5.0,5,1000001);
 INSERT INTO "unit" VALUES('BuildingCollector','collectors','BuildingCollector',12.0,5,1000002);
 INSERT INTO "unit" VALUES('Sheep','animal','FarmAnimal',12.0,3,1000003);
 INSERT INTO "unit" VALUES('Fisher','ship','FisherShip',12.0,5,1000004);
