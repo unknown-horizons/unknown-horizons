@@ -38,6 +38,7 @@
 	<VBox>
 		<Label name="lbl_p" text="{P} = Pause game" />
 		<Label name="lbl_g" text="{G} = Toggle grid on/off" />
+		<Label name="lbl_h" text="{H} = Show coordinate values (Debug)" />
 		<Label name="lbl_t" text="{T} = Toggle translucency of ambient buildings" />
 		<Label name="lbl_x" text="{X} = Enable destruct mode" />
 	</VBox>
