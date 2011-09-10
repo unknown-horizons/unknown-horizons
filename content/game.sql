@@ -774,3 +774,32 @@ CREATE TABLE "weapon" (
 	"bullet_image" TEXT);
 INSERT INTO "weapon" VALUES(40,'ranged',10,5,15,3,4,2,1,'content/gfx/misc/cannonballs/cannonball.png');
 INSERT INTO "weapon" VALUES(41,'melee',3,1,1,3,2,1,0,'');
+CREATE TABLE settler_production_line(level INTEGER, production_line INTEGER);
+INSERT INTO "settler_production_line" VALUES(0,71);
+INSERT INTO "settler_production_line" VALUES(0,72);
+INSERT INTO "settler_production_line" VALUES(1,19);
+INSERT INTO "settler_production_line" VALUES(1,20);
+INSERT INTO "settler_production_line" VALUES(1,21);
+INSERT INTO "settler_production_line" VALUES(1,26);
+INSERT INTO "settler_production_line" VALUES(0,30);
+INSERT INTO "settler_production_line" VALUES(1,30);
+INSERT INTO "settler_production_line" VALUES(2,30);
+INSERT INTO "settler_production_line" VALUES(2,43);
+INSERT INTO "settler_production_line" VALUES(2,20);
+INSERT INTO "settler_production_line" VALUES(2,21);
+INSERT INTO "settler_production_line" VALUES(2,44);
+INSERT INTO "settler_production_line" VALUES(2,41);
+INSERT INTO "settler_production_line" VALUES(2,69);
+INSERT INTO "settler_production_line" VALUES(2,70);
+CREATE TABLE settler_level (
+    "level" INT NOT NULL DEFAULT (''),
+    "name" TEXT NOT NULL DEFAULT (''),
+    "tax_income" INT NOT NULL DEFAULT (''),
+    "inhabitants_max" INT
+, "residential_name" TEXT   DEFAULT (''));
+INSERT INTO "settler_level" VALUES(0,'sailor',2,2,'tent');
+INSERT INTO "settler_level" VALUES(1,'pioneer',3,3,'hut');
+INSERT INTO "settler_level" VALUES(2,'settler',6,5,'house');
+INSERT INTO "settler_level" VALUES(3,'citizen',10,8,'stone house');
+INSERT INTO "settler_level" VALUES(4,'merchant',15,13,'estate');
+INSERT INTO "settler_level" VALUES(5,'aristocrat',25,21,'manor');
