@@ -139,6 +139,7 @@ INSERT INTO "production" VALUES(23,15,-1);
 INSERT INTO "production" VALUES(23,5,1);
 INSERT INTO "production" VALUES(24,4,-2);
 INSERT INTO "production" VALUES(25,16,1);
+-- production_line   resource   amount
 INSERT INTO "production" VALUES(26,16,-1);
 INSERT INTO "production" VALUES(26,14,3);
 INSERT INTO "production" VALUES(27,17,1);
@@ -172,6 +173,7 @@ INSERT INTO "production" VALUES(40,22,-1);
 INSERT INTO "production" VALUES(40,27,4);
 INSERT INTO "production" VALUES(41,27,-1);
 INSERT INTO "production" VALUES(41,14,4);
+-- production_line   resource   amount
 INSERT INTO "production" VALUES(42,28,1);
 INSERT INTO "production" VALUES(11,28,-1);
 INSERT INTO "production" VALUES(43,14,12);
@@ -205,6 +207,7 @@ INSERT INTO "production" VALUES(58,40,-4);
 INSERT INTO "production" VALUES(59,3,-3);
 INSERT INTO "production" VALUES(59,4,-13);
 INSERT INTO "production" VALUES(62,3,-8);
+-- production_line   resource   amount
 INSERT INTO "production" VALUES(62,4,-12);
 INSERT INTO "production" VALUES(65,3,-12);
 INSERT INTO "production" VALUES(65,4,-21);
@@ -226,6 +229,10 @@ INSERT INTO "production" VALUES(69,29,-1);
 INSERT INTO "production" VALUES(69,14,4);
 INSERT INTO "production" VALUES(70,32,-1);
 INSERT INTO "production" VALUES(70,14,5);
+INSERT INTO "production" VALUES(71,14,15);
+INSERT INTO "production" VALUES(71,5,-1);
+INSERT INTO "production" VALUES(72,14,5);
+INSERT INTO "production" VALUES(72,11,-1);
 CREATE TABLE building_costs (building INTEGER, resource INTEGER, amount INTEGER);
 INSERT INTO "building_costs" VALUES(1,1,1000);
 INSERT INTO "building_costs" VALUES(1,4,12);

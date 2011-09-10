@@ -319,6 +319,7 @@ INSERT INTO "production_line" VALUES(30.0,1,37,29,1,1);
 INSERT INTO "production_line" VALUES(15.0,1,38,30,1,1);
 INSERT INTO "production_line" VALUES(20.0,1,39,31,1,1);
 INSERT INTO "production_line" VALUES(16.0,1,40,32,1,1);
+--  time   changes_animation   id   object_id   enabled_by_default   save_statistics
 INSERT INTO "production_line" VALUES(90.0,0,41,3,0,0);
 INSERT INTO "production_line" VALUES(30.0,0,42,33,1,0);
 INSERT INTO "production_line" VALUES(75.0,0,43,3,0,0);
@@ -343,6 +344,8 @@ INSERT INTO "production_line" VALUES(120.0,1,64,12,1,0);
 INSERT INTO "production_line" VALUES(120.0,1,68,12,1,0);
 INSERT INTO "production_line" VALUES(90.0,0,69,3,0,0);
 INSERT INTO "production_line" VALUES(180.0,0,70,3,0,0);
+INSERT INTO "production_line" VALUES(60.0,0,71,3,0,0);
+INSERT INTO "production_line" VALUES(90.0,0,72,3,0,0);
 CREATE TABLE collector_restrictions(collector INTEGER, object INTEGER);
 INSERT INTO "collector_restrictions" VALUES(1000011,4);
 INSERT INTO "collector_restrictions" VALUES(1000011,5);

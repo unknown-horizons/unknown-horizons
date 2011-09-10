@@ -1,6 +1,6 @@
 CREATE TABLE settler_production_line(level INTEGER, production_line INTEGER);
-INSERT INTO "settler_production_line" VALUES(0,19);
-INSERT INTO "settler_production_line" VALUES(0,21);
+INSERT INTO "settler_production_line" VALUES(0,71);
+INSERT INTO "settler_production_line" VALUES(0,72);
 INSERT INTO "settler_production_line" VALUES(1,19);
 INSERT INTO "settler_production_line" VALUES(1,20);
 INSERT INTO "settler_production_line" VALUES(1,21);
