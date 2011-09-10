@@ -59,9 +59,15 @@ class SingleplayerMenu(object):
 			self.current.files, maps_display = SavegameManager.get_maps()
 
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
+			def _update_infos():
+				number_of_players = SavegameManager.get_recommended_number_of_players( self.__get_selected_map() )
+				self.current.findChild(name="recommended_number_of_players_lbl").text = \
+				    _("Recommended number of players: ") + unicode( number_of_players )
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
+				_update_infos()
+			self.current.findChild(name="maplist").capture(_update_infos)
 			show_ai_options = True
 			self.__setup_game_settings_selection()
 		else:

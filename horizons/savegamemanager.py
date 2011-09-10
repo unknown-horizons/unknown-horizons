@@ -118,6 +118,7 @@ class SavegameManager(object):
 	quicksave_dir = savegame_dir+"/quicksave"
 	demo_dir = "content/demo"
 	maps_dir = "content/maps"
+	scenario_maps_dir = "content/scenariomaps"
 	scenarios_dir = "content/scenarios"
 	campaigns_dir = "content/campaign"
 
@@ -227,6 +228,15 @@ class SavegameManager(object):
 		if quicksaves:
 			tmp_del("%s/*.%s" % (cls.quicksave_dir, cls.savegame_extension),
 			        horizons.main.fife.get_uh_setting("QuicksaveMaxCount"))
+
+	@classmethod
+	def get_recommended_number_of_players(cls, savegamefile):
+		dbdata = DbReader(savegamefile)\
+		        ("SELECT `value` FROM `metadata` WHERE `name` = ?", "recommended_number_of_players")
+		if dbdata:
+			return dbdata[0][0]
+		else:
+			return "undefined"
 
 	@classmethod
 	def get_metadata(cls, savegamefile):
