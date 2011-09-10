@@ -51,7 +51,9 @@ class BoatbuilderTab(OverviewTab):
 		progress_container = main_container.findChild(name="BB_progress_container")
 
 		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
-		if self.instance.get_production_lines():
+		production_lines = self.instance.get_production_lines()
+		print production_lines
+		if production_lines:
 			# TODO: fill in actual values here
 
 			# remove other container, but save it
@@ -61,8 +63,11 @@ class BoatbuilderTab(OverviewTab):
 			if container_active is None:
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
-			container_active.findChild(name="headline_BB_builtship_label").text = _("Huker")
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
+				container_active.findChild(name="headline_BB_builtship_label").text = _("Huker")
+				container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
+				produced_unit_id = self.instance._get_production(production_lines[0]).get_produced_units().keys()[0]
+				container_active.findChild(name="BB_cur_ship_icon").image = "content/gui/images/objects/ships/116/%s.png" % (produced_unit_id)
+
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
