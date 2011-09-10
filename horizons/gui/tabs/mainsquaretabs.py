@@ -197,10 +197,10 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		if self.level < SETTLER.CURRENT_MAX_INCR: #max incr => cannot allow upgrades
 			if self.settlement.upgrade_permissions[self.level]:
 				upgrades_button.set_active()
-				upgrades_button.tooltip = _('Allow upgrades')
+				upgrades_button.tooltip = _('Don\'t allow upgrades')
 			else:
 				upgrades_button.set_inactive()
-				upgrades_button.tooltip = _('Don\'t allow upgrades')
+				upgrades_button.tooltip = _('Allow upgrades')
 
 		# refresh residents per house info
 		resident_counts = self._get_resident_counts()
