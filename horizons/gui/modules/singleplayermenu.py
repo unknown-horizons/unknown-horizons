@@ -184,31 +184,31 @@ class SingleplayerMenu(object):
 	def __setup_random_map_selection(self, widget):
 		map_size_slider = widget.findChild(name = 'map_size_slider')
 		def on_map_size_slider_change():
-			widget.findChild(name = 'map_size_lbl').text = _('Map size: ') + \
+			widget.findChild(name = 'map_size_lbl').text = _('Map size:') + u' ' + \
 				unicode(self.map_sizes[int(map_size_slider.getValue())])
 		map_size_slider.capture(on_map_size_slider_change)
 
 		water_percent_slider = widget.findChild(name = 'water_percent_slider')
 		def on_water_percent_slider_change():
-			widget.findChild(name = 'water_percent_lbl').text = _('Water: ') + \
-				unicode(self.water_percents[int(water_percent_slider.getValue())]) + '%'
+			widget.findChild(name = 'water_percent_lbl').text = _('Water:') + u' ' + \
+				unicode(self.water_percents[int(water_percent_slider.getValue())]) + u'%'
 		water_percent_slider.capture(on_water_percent_slider_change)
 
 		max_island_size_slider = widget.findChild(name = 'max_island_size_slider')
 		def on_max_island_size_slider_change():
-			widget.findChild(name = 'max_island_size_lbl').text = _('Max island size: ') + \
+			widget.findChild(name = 'max_island_size_lbl').text = _('Max island size:') + u' ' + \
 				unicode(self.island_sizes[int(max_island_size_slider.getValue())])
 		max_island_size_slider.capture(on_max_island_size_slider_change)
 
 		preferred_island_size_slider = widget.findChild(name = 'preferred_island_size_slider')
 		def on_preferred_island_size_slider_change():
-			widget.findChild(name = 'preferred_island_size_lbl').text = _('Preferred island size: ') + \
+			widget.findChild(name = 'preferred_island_size_lbl').text = _('Preferred island size:') + u' ' + \
 				unicode(self.island_sizes[int(preferred_island_size_slider.getValue())])
 		preferred_island_size_slider.capture(on_preferred_island_size_slider_change)
 
 		island_size_deviation_slider = widget.findChild(name = 'island_size_deviation_slider')
 		def on_island_size_deviation_slider_change():
-			widget.findChild(name = 'island_size_deviation_lbl').text = _('Island size deviation: ') + \
+			widget.findChild(name = 'island_size_deviation_lbl').text = _('Island size deviation:') + u' ' + \
 				unicode(self.island_size_deviations[int(island_size_deviation_slider.getValue())])
 		island_size_deviation_slider.capture(on_island_size_deviation_slider_change)
 
@@ -228,8 +228,8 @@ class SingleplayerMenu(object):
 
 		resource_density_slider = widget.findChild(name = 'resource_density_slider')
 		def on_resource_density_slider_change():
-			widget.findChild(name = 'resource_density_lbl').text = _('Resource density: ') + \
-				unicode(self.resource_densities[int(resource_density_slider.getValue())]) + 'x'
+			widget.findChild(name = 'resource_density_lbl').text = _('Resource density:') + u' ' + \
+				unicode(self.resource_densities[int(resource_density_slider.getValue())]) + u'x'
 		resource_density_slider.capture(on_resource_density_slider_change)
 
 		on_resource_density_slider_change()
@@ -254,5 +254,6 @@ class SingleplayerMenu(object):
 		@param exception: InvalidScenarioFile exception instance"""
 		print "Error: ", unicode(str(exception))
 		self.show_popup(_("Invalid scenario file"), \
-		                _("The selected file is not a valid scenario file.\nError message: ") + \
-		                unicode(str(exception)) + _("\nPlease report this to the author."))
+		                _("The selected file is not a valid scenario file.") + u'\n' + \
+		                _("Error message:") + u' ' + unicode(str(exception)) + u'\n' + \
+		                _("Please report this to the author."))
