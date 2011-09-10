@@ -193,9 +193,18 @@ class ShipRoute(object):
 	def get_location(self):
 		return self.waypoints[self.current_waypoint]
 
+	def can_enable(self):
+		branch_offices = set()
+		for waypoint in self.waypoints:
+			branch_offices.add(waypoint['branch_office'])
+		return len(branch_offices) > 1
+
 	def enable(self):
+		if not self.can_enable():
+			return False
 		self.enabled = True
 		self.move_to_next_route_bo()
+		return True
 
 	def disable(self):
 		self.enabled = False

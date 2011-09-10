@@ -68,10 +68,8 @@ class RouteConfig(object):
 		self._gui.findChild(name='start_route').tooltip = _('Stop route')
 
 	def start_route(self):
-		if len(self.widgets) < self.MIN_ENTRIES:
-			return
-		self.instance.route.enable()
-		self.start_button_set_inactive()
+		if self.instance.route.enable():
+			self.start_button_set_inactive()
 
 	def stop_route(self):
 		self.instance.route.disable()
@@ -105,7 +103,7 @@ class RouteConfig(object):
 		vbox.removeChild(entry)
 		if enabled:
 			self.instance.route.enable()
-		if len(self.widgets) < self.MIN_ENTRIES:
+		elif not self.instance.route.can_enable():
 			self.stop_route()
 		self.hide()
 		self.show()
