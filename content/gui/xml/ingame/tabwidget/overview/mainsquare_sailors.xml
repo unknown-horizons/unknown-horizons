@@ -18,27 +18,26 @@ Shows info about sailors and allows the player to change taxes or deny upgrade r
 		<Container size="260,60" position="25,43">
 			<!-- Taxes -->
 			<Label position="0,0" name="tax_label" text="Taxes:" />
-			<TooltipLabel name='taxes' position="40,0" text=""
+			<TooltipLabel name="taxes" position="40,0" text=""
 				tooltip="Paid taxes" />
-			<TooltipIcon name="paid_taxes_label" position="72,0"
+			<TooltipIcon name="paid_taxes_icon" position="72,0"
 				image="content/gui/icons/resources/running_costs.png"
 				tooltip="Paid taxes" />
-			<TooltipLabel name='tax_val_label' position="160,0" text=""
+			<TooltipLabel name="tax_val_label" position="160,0" text=""
 				tooltip="Tax rate" />
-			<TooltipIcon name="paid_taxes_label" position="185,0"
+			<TooltipIcon name="tax_rate_icon" position="185,0"
 				image="content/gui/icons/resources/running_costs.png"
 				tooltip="Tax rate" />
 			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" />
 		</Container>
 
 		<Container size="260,80" position="25,90">
-			<Label name="upgrades_lbl" position="0,0" text="Allow upgrades:" />
+			<Label name="upgrades_lbl" position="0,0" text="Upgrade permissions:" />
 			<ToggleImageButton name="allow_upgrades" border_size="0" position="0,20"
 				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
 				up_image="content/gui/images/buttons/upgrade/allow.png"
 				down_image="content/gui/images/buttons/upgrade/allow.png"
-				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png"
-				tooltip="Allow upgrades" />
+				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png" />
 		</Container>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,165" />
