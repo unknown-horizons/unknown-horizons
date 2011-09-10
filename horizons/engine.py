@@ -26,11 +26,14 @@ import gettext
 import os
 import locale
 import platform
+import shutil
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
 from fife.extensions import fifelog
 from fife.extensions import pychan
+from fife.extensions.serializers.simplexml import SimpleXMLSerializer
+
 from fife.extensions.fife_settings import Setting, FIFE_MODULE
 
 import horizons.main
@@ -110,7 +113,34 @@ class Fife(ApplicationBase):
 		self.emitter['speech'] = None
 
 
-	def _setup_settings(self):
+	def _setup_settings(self, check_file_version=True):
+		if check_file_version:
+			# check if user settings file is the current one
+
+			# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently (although the doc states otherwise)
+			# therefore translate paths to absolute ones
+			_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
+			user_config_parser = SimpleXMLSerializer( _user_config_file )
+			user_settings_version = user_config_parser.get("meta", "SettingsVersion", -1)
+			_template_config_file = os.path.join( os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE )
+			template_config_parser = SimpleXMLSerializer( _template_config_file )
+			template_settings_version = template_config_parser.get("meta", "SettingsVersion")
+
+			if template_settings_version > user_settings_version: # we have to update the file
+				# create settings so we have a list of all settings
+				self._setup_settings(check_file_version=False)
+				# now, as we have the list, we can overwrite it and fill it with the values
+				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
+				user_config_parser = SimpleXMLSerializer( _user_config_file )
+
+				for modulename, module in self._setting.entries.iteritems():
+					for entryname in module.iterkeys():
+						# retrieve values from loaded settings file
+						value = self._setting.get(modulename, entryname)
+						user_config_parser.set(modulename, entryname, value)
+				user_config_parser.save()
+
+
 		self._setting = LocalizedSetting(app_name="unknownhorizons",
 		                                 settings_file=PATHS.USER_CONFIG_FILE,
 		                                 settings_gui_xml="settings.xml",

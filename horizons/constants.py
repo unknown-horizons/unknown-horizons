@@ -333,6 +333,8 @@ class PATHS:
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 
+	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
+
 	DB_FILES = tuple(os.path.join("content", i) for i in \
 	                 ("game.sql", "settler.sql", "balance.sql") )
 	#voice paths
