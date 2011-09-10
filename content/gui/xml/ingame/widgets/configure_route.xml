@@ -7,11 +7,11 @@
 	<VBox name="left_vbox" max_size="350,508" min_size="350,508" position="175,40" padding="5">
 		<Icon image="content/gui/images/background/hr.png" />
 	</VBox>
-		<ToggleImageButton name="start_route" border_size="0" position="175,480"
-		inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
-		up_image="content/gui/icons/templates/production/toggle_active_n.png"
-		down_image="content/gui/icons/templates/production/toggle_active_d.png"
-		hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+	<ToggleImageButton name="start_route" border_size="0" position="175,480"
+		inactive_image="content/gui/icons/ship/traderoute_disabled.png"
+		up_image="content/gui/icons/ship/traderoute.png"
+		down_image="content/gui/icons/ship/traderoute.png"
+		hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
 		tooltip="Start route" />
 	<VBox position="250,485">
 		<HBox>
