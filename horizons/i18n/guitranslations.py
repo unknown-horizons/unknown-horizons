@@ -378,8 +378,8 @@ def set_translations():
 		"players_settlements.xml" : {
 			"balance"                     : _("Balance"),
 			"inhabitants"                 : _("Inhabitants"),
-			"name"                        : _("Name"),
 			"running_costs"               : _("Running costs"),
+			"settlement_name"             : _("Name"),
 			"taxes"                       : _("Taxes"),
 			"cancelButton"                : _("Close"),
 			},
