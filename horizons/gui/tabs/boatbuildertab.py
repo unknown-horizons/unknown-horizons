@@ -23,7 +23,6 @@ import operator
 
 from fife.extensions import pychan
 
-from horizons.main import db
 from horizons.command.production import AddProduction
 from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
@@ -64,7 +63,7 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
 				produced_unit_id = self.instance._get_production(production_lines[0]).get_produced_units().keys()[0]
-				(name,) = db("select name from unit where id=?", produced_unit_id)[0]
+				(name,) = self.instance.session.db("SELECT name FROM unit WHERE id = ?", produced_unit_id)[0]
 				container_active.findChild(name="headline_BB_builtship_label").text = name
 				container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
 				container_active.findChild(name="BB_cur_ship_icon").image = "content/gui/images/objects/ships/116/%s.png" % (produced_unit_id)
