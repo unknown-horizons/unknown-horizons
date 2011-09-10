@@ -206,7 +206,6 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		self._changed()
 		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, real_taxes, \
 									 happiness_decrease, self.happiness)
-		print "pays %s taxes, -happy: %s new happiness: %s" % (real_taxes, happiness_decrease, self.happiness)
 
 	def inhabitant_check(self):
 		"""Checks whether or not the population of this settler should increase or decrease"""
