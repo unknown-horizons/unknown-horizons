@@ -340,7 +340,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
 		self._selected = True
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1, 64)
 		# add a buoy at the ship's target if the player owns the ship
 		if self.session.world.player == self.owner:
 			self._update_buoy()
