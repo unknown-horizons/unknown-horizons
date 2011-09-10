@@ -323,6 +323,8 @@ else:
 	buf = ctypes.create_string_buffer(300)
 	dll.SHGetSpecialFolderPathA(None, buf, 0x0005, False) # get the My Documents folder
 	my_games = os.path.join(buf.value, 'My Games')
+	if not os.path.exists(my_games):
+		os.makedirs(my_games)
 	_user_dir = os.path.join(my_games, 'unknown-horizons')
 _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 
