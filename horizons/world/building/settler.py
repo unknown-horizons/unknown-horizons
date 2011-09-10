@@ -194,9 +194,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		difference = 1.0 - self.settlement.tax_settings[self.level]
-		happiness_decrease = 20 * difference - 5* abs(difference)
+		happiness_decrease = 12 * difference - 6* abs(difference)
 		happiness_decrease = int(round(happiness_decrease))
-		# NOTE: this forumla was actually designed for a different use case, where the happiness
+		# NOTE: this formula was actually designed for a different use case, where the happiness
 		# is calculated from the number of available goods -/+ a certain tax factor.
 		# to simulate the more dynamic, currently implemented approach (where every event changes
 		# the happiness), we simulate discontent of taxes by this:
