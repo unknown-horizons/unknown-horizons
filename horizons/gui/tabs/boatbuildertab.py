@@ -112,15 +112,17 @@ class BoatbuilderTab(OverviewTab):
 			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
-			for i, (res, amount) in enumerate(still_needed_res):
+			i = 0
+			for res, amount in still_needed_res:
 				if amount == 0:
 					continue # Don't show res that are not really needed anymore
-				if i >= 3:
-					break
 
 				icon = get_res_icon(res)[3]
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon
 				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i+1)).text = unicode(-1*amount)+u't' # -1 make them positive
+				i += 1
+				if i >= 3:
+					break
 
 			# TODO: cancel building button
 	#		print "Cancelbutton search.."
