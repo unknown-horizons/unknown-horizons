@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import math
+import operator
 
 from fife.extensions import pychan
 
@@ -107,16 +108,19 @@ class BoatbuilderTab(OverviewTab):
 			# Update needed resources
 			production = self.instance._get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
-			i = 1
+			# Now sort!
+			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
-			for res, amount in still_needed_res.iteritems():
-				assert i <= 3, "Only 3 still needed res for ships are currently supported"
+			for i, (res, amount) in enumerate(still_needed_res):
+				if i >= 3:
+					break
+				if amount == 0:
+					continue # Don't show res that are not really needed anymore
 
 				icon = get_res_icon(res)[3]
-				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i)).image = icon
-				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i)).text = unicode(-1*amount)+u't' # -1 make them positive
-				i += 1
+				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon
+				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i+1)).text = unicode(-1*amount)+u't' # -1 make them positive
 
 			# TODO: cancel building button
 	#		print "Cancelbutton search.."
