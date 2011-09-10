@@ -32,5 +32,11 @@
 		<Setting name="MinimapRotation" type="bool">False</Setting>
 		<Setting name="EdgeScrolling" type="bool">True</Setting>
 		<Setting name="NetworkPort" type="str">0</Setting>
-	</Module>
+		<Setting name="RandomMapSize" type="float">2.0</Setting>
+		<Setting name="RandomMapWaterPercent" type="float">3.0</Setting>
+		<Setting name="RandomMapMaxIslandSize" type="float">2.0</Setting>
+		<Setting name="RandomMapPreferredIslandSize" type="float">2.0</Setting>
+		<Setting name="RandomMapIslandSizeDeviation" type="float">2.0</Setting>
+		<Setting name="MapResourceDensity" type="float">2.0</Setting>
+</Module>
 </Settings>
