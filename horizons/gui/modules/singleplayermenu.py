@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from math import ceil
+
 import horizons.main
 
 from horizons.util import Callback, random_map
@@ -57,7 +59,7 @@ class SingleplayerMenu(object):
 			self.__setup_game_settings_selection()
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
-			
+
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
@@ -187,30 +189,35 @@ class SingleplayerMenu(object):
 			widget.findChild(name = 'map_size_lbl').text = _('Map size: ') + \
 				unicode(self.map_sizes[int(map_size_slider.getValue())])
 		map_size_slider.capture(on_map_size_slider_change)
+		map_size_slider.setValue(ceil(len(self.map_sizes)/2))
 
 		water_percent_slider = widget.findChild(name = 'water_percent_slider')
 		def on_water_percent_slider_change():
 			widget.findChild(name = 'water_percent_lbl').text = _('Water: ') + \
 				unicode(self.water_percents[int(water_percent_slider.getValue())]) + '%'
 		water_percent_slider.capture(on_water_percent_slider_change)
+		water_percent_slider.setValue(ceil(len(self.water_percents)/2))
 
 		max_island_size_slider = widget.findChild(name = 'max_island_size_slider')
 		def on_max_island_size_slider_change():
 			widget.findChild(name = 'max_island_size_lbl').text = _('Max island size: ') + \
 				unicode(self.island_sizes[int(max_island_size_slider.getValue())])
 		max_island_size_slider.capture(on_max_island_size_slider_change)
+		max_island_size_slider.setValue(ceil(len(self.island_sizes)/2))
 
 		preferred_island_size_slider = widget.findChild(name = 'preferred_island_size_slider')
 		def on_preferred_island_size_slider_change():
 			widget.findChild(name = 'preferred_island_size_lbl').text = _('Preferred island size: ') + \
 				unicode(self.island_sizes[int(preferred_island_size_slider.getValue())])
 		preferred_island_size_slider.capture(on_preferred_island_size_slider_change)
+		preferred_island_size_slider.setValue(ceil(len(self.island_sizes)/2))
 
 		island_size_deviation_slider = widget.findChild(name = 'island_size_deviation_slider')
 		def on_island_size_deviation_slider_change():
 			widget.findChild(name = 'island_size_deviation_lbl').text = _('Island size deviation: ') + \
 				unicode(self.island_size_deviations[int(island_size_deviation_slider.getValue())])
 		island_size_deviation_slider.capture(on_island_size_deviation_slider_change)
+		island_size_deviation_slider.setValue(ceil(len(self.island_size_deviations)/2))
 
 		on_map_size_slider_change()
 		on_water_percent_slider_change()
@@ -231,6 +238,7 @@ class SingleplayerMenu(object):
 			widget.findChild(name = 'resource_density_lbl').text = _('Resource density: ') + \
 				unicode(self.resource_densities[int(resource_density_slider.getValue())]) + 'x'
 		resource_density_slider.capture(on_resource_density_slider_change)
+		resource_density_slider.setValue(ceil(len(self.resource_densities)/2))
 
 		on_resource_density_slider_change()
 

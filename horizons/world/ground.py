@@ -129,7 +129,6 @@ class GroundClass(type):
 		tile_sets = TileSetLoader.get_sets()
 		for (tile_set_id,) in db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id):
 			for action_id in tile_sets[tile_set_id].iterkeys():
-				print "Adding action: ", action_id, "for tile:", cls.id
 				action = cls._object.createAction(action_id+"_"+str(tile_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
