@@ -148,7 +148,17 @@ class UhDbAccessor(DbReader):
 		@return: int settler_level
 		"""
 		sql = "SELECT settler_level FROM building WHERE id = ?"
-		return self.cached_query(sql, building_class_id)[0]
+		return self.cached_query(sql, building_class_id)[0][0]
+
+	def get_building_tooltip(self, building_class_id):
+		"""Returns tooltip text of a building class.
+		ATTENTION: This text is automatically translated when loaded
+		already. DO NOT wrap the return value of this method in _()!
+		@param building_class_id: class of building, int
+		@return: string tooltip_text
+		"""
+		sql = "SELECT tooltip_text FROM building WHERE id = ?"
+		return self.cached_query(sql, building_class_id)[0][0]
 
 
 	def get_building_id_buttonname_settlerlvl(self):
