@@ -142,12 +142,12 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT class_package, class_type FROM building WHERE id = ?"
 		return self.cached_query(sql, building_class_id)[0]
 
-	def get_building_level_name(self, building_class_id):
-		"""Returns settler_level and name of a building class.
+	def get_building_level(self, building_class_id):
+		"""Returns settler_level of a building class.
 		@param building_class_id: class of building, int
-		@return: tuple: (settler_level, name)
+		@return: int settler_level
 		"""
-		sql = "SELECT settler_level, name FROM building WHERE id = ?"
+		sql = "SELECT settler_level FROM building WHERE id = ?"
 		return self.cached_query(sql, building_class_id)[0]
 
 
