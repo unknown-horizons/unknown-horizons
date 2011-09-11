@@ -37,7 +37,7 @@ possible and instead import the proper classes of this file.
 class VERSION:
 	def _set_version():
 		"""Function gets latest revision of the working copy.
-		It only works in git repositories, and is acctually a hack.
+		It only works in git repositories, and is actually a hack.
 		"""
 		try:
 			from run_uh import find_uh_position

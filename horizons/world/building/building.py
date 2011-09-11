@@ -215,7 +215,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		layer_coords = list((x, y, 0))
 
 		# NOTE:
-		# nobody acctually knows how the code below works.
+		# nobody actually knows how the code below works.
 		# it's for adapting the facing location and instance coords in
 		# different rotations, and works with all quadratic buildings (tested up to 4x4)
 		# for the first unquadratic building (2x4), a hack fix was put into it.

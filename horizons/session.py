@@ -107,7 +107,7 @@ class Session(LivingObject):
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 	def start(self):
-		"""Acctually starts the game."""
+		"""Actually starts the game."""
 		self.timer.activate()
 
 	def create_manager(self):

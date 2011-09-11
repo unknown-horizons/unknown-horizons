@@ -295,7 +295,7 @@ class BuildingTool(NavigationTool):
 
 	_last_road_built = []
 	def mouseReleased(self, evt):
-		"""Acctually build."""
+		"""Actually build."""
 		self.log.debug("BuildingTool mouseReleased")
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
@@ -305,7 +305,7 @@ class BuildingTool(NavigationTool):
 			# check if position has changed with this event and update everything
 			self._check_update_preview(point)
 
-			# acctually do the build
+			# actually do the build
 			found_buildable = self.do_build()
 
 			# HACK: users sometimes don't realise that roads can be dragged
@@ -336,12 +336,12 @@ class BuildingTool(NavigationTool):
 
 	@decorators.make_constants()
 	def do_build(self):
-		"""Acctually builds the previews
+		"""Actually builds the previews
 		@return whether it was possible to build anything of the previews."""
 		# used to check if a building was built with this click, later used to play a sound
 		built = False
 
-		# acctually do the build and build preparations
+		# actually do the build and build preparations
 		for building in self.buildings:
 			# remove fife instance, the building will create a new one.
 			# Check if there is a matching fife instance, could be missing

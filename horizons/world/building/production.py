@@ -106,7 +106,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
 		for tile in cls._selected_tiles:
 			remove_colored(tile._instance)
-		# this acctually means SelectableBuilding._selected_tiles = []
+		# this actually means SelectableBuilding._selected_tiles = []
 		# writing self._selected_tiles = [] however creates a new variable in this instance,
 		# which isn't what we want. Therefore this workaround:
 		while cls._selected_tiles:

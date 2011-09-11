@@ -264,7 +264,7 @@ class MultiplayerMenu(object):
 		self.on_escape = event_map['cancel']
 
 	def __create_game(self):
-		"""Acctually create a game, join it and display the lobby"""
+		"""Actually create a game, join it and display the lobby"""
 		# create the game
 		#TODO: possibly some input validation
 		mapindex = self.current.collectData('maplist')
