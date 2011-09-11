@@ -239,7 +239,7 @@ INSERT INTO "building_costs" VALUES(1,4,12);
 INSERT INTO "building_costs" VALUES(2,1,350);
 INSERT INTO "building_costs" VALUES(2,4,4);
 INSERT INTO "building_costs" VALUES(3,1,100);
-INSERT INTO "building_costs" VALUES(3,4,1);
+INSERT INTO "building_costs" VALUES(3,4,2);
 INSERT INTO "building_costs" VALUES(4,1,1000);
 INSERT INTO "building_costs" VALUES(4,4,5);
 INSERT INTO "building_costs" VALUES(5,1,500);
