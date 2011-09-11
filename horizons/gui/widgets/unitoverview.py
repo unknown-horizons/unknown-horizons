@@ -99,12 +99,12 @@ class WeaponStorageWidget(pychan.widgets.HBox):
 			storage = self.instance.get_weapon_storage()
 			for weapon, amount in storage:
 				weapons_added = True
-				icon_name = get_res_icon(weapon)[3]
+				icon_image = get_res_icon(weapon)[2]
 				icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
-				icon = TooltipIcon(image = icon_name, tooltip = icon_tooltip)
+				icon = TooltipIcon(image = icon_image, tooltip = icon_tooltip)
 				self.addChild(icon)
 		if not weapons_added:
-			icon_name = "content/gui/icons/resources/none.png"
-			icon = TooltipIcon(image = icon_name, tooltip = _("none"))
+			icon_image = "content/gui/icons/resources/none.png"
+			icon = TooltipIcon(image = icon_image, tooltip = _("none"))
 			self.addChild(icon)
 
