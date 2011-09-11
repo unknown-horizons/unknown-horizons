@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-08-18 17:19+0200\n"
-"PO-Revision-Date: 2011-09-07 08:26+0200\n"
+"PO-Revision-Date: 2011-09-07 08:28+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -2253,7 +2253,6 @@ msgstr "Новый мир был создан."
 
 # 85%
 #: sqlite/Messages
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
 msgstr "Один из ваших поселенцев не имеет доступа к рынку."
 
@@ -2319,7 +2318,6 @@ msgstr "глина"
 
 # 83%
 #: sqlite/Resources
-#, fuzzy
 msgid "clay deposit"
 msgstr "Месторождение глины"
 
