@@ -121,7 +121,12 @@
 		<Label name="edge_scrolling_label"  text="Enable edge scrolling:" />
 		<CheckBox min_size="21,32"  name="edgescrolling" />
 	</HBox>
-<Spacer min_size="10" />
+	<HBox>
+		<Label name="uninterrupted_building_label"  text="Uninterrupted building:" />
+		<CheckBox min_size="25,32"  name="uninterrupted_building" />
+	</HBox>
+
+<Spacer min_size="2" />
 	<VBox name="language_settings">
 		<Label text="Language" 
 			name="headline_language"  font="libertine_headline" />
@@ -132,7 +137,7 @@
 			</ScrollArea>
 		</HBox>
 	</VBox>
-<Spacer min_size="10" />
+<Spacer min_size="2" />
 	<VBox name="network_settings">
 		<Label text="Network"
 			name="headline_network" font="libertine_headline" />

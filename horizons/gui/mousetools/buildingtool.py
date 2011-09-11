@@ -322,8 +322,9 @@ class BuildingTool(NavigationTool):
 						self.__class__._last_road_built = []
 					self.__class__._last_road_built = self.__class__._last_road_built[-3:]
 
-			# check how to continue: either build again or escapte
-			if evt.isShiftPressed() or not found_buildable or self._class.class_package == 'path':
+			# check how to continue: either build again or escape
+			if evt.isShiftPressed() or horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
+					not found_buildable or self._class.class_package == 'path':
 				self.startPoint = point
 				self.preview_build(point, point)
 			else:
