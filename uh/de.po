@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-12 02:59+0200\n"
+"PO-Revision-Date: 2011-09-12 03:01+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -1312,12 +1312,10 @@ msgid "{F2} = Show player scores"
 msgstr "{F2} = Spiel-Statistiken anzeigen"
 
 #: horizons/i18n/guitranslations.py:406
-#, fuzzy
 msgid "{F3} = Show settlement list"
 msgstr "{F3} = Siedlungsübersicht anzeigen"
 
 #: horizons/i18n/guitranslations.py:407
-#, fuzzy
 msgid "{F4} = Show ship list"
 msgstr "{F4} = Schiffsübersicht anzeigen"
 

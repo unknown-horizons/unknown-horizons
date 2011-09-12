@@ -260,9 +260,11 @@ msgstr ""
 msgid "Network Error"
 msgstr "Tinklo klaida"
 
+# 97%
 #: horizons/gui/modules/multiplayermenu.py:123
+#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Kažkas negerai su tinklu: "
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"

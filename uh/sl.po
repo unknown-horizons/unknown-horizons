@@ -261,9 +261,11 @@ msgstr ""
 msgid "Network Error"
 msgstr "Napaka omrežja"
 
+# 97%
 #: horizons/gui/modules/multiplayermenu.py:123
+#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Nekaj je bilo narobe z omrežjem: "
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"

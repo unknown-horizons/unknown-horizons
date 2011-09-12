@@ -255,9 +255,11 @@ msgstr ""
 msgid "Network Error"
 msgstr "Võrgu viga"
 
+# 97%
 #: horizons/gui/modules/multiplayermenu.py:123
+#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Midagi läks valesti võrguga: "
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
