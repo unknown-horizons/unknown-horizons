@@ -120,8 +120,8 @@ class MultiplayerMenu(object):
 		if self.session is not None:
 			self.session.timer.ticks_per_second = 0
 		self.show_popup( _("Network Error"), \
-								     _("Something went wrong with the network: ") + \
-								     str(exception) )
+		                 _("Something went wrong with the network:") + u' ' + \
+		                 str(exception) )
 		self.quit_session(force=True)
 
 	def __cancel(self):
