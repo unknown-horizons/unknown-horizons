@@ -272,8 +272,8 @@ msgid "Network Error"
 msgstr "Netwerk fout"
 
 #: horizons/gui/modules/multiplayermenu.py:123
-msgid "Something went wrong with the network: "
-msgstr "Er is een netwerk fout opgetreden: "
+msgid "Something went wrong with the network:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
@@ -1896,19 +1896,30 @@ msgid "The savegame file is currently used by another program."
 msgstr "Het savegame bestand in momenteel in gebruik door een ander programma."
 
 #: horizons/world/units/ship.py:272
-msgid "Trade route: going to"
+msgid "Trade route: going to %s"
 msgstr ""
 
 #: horizons/world/units/ship.py:273
-msgid "Trade route: waiting at"
+msgid "Trade route: waiting at %s"
 msgstr ""
 
 #: horizons/world/units/ship.py:468 horizons/world/units/ship.py:469
-msgid "Going to"
+msgid "Going to %s"
 msgstr ""
 
-#: horizons/world/units/ship.py:473 horizons/world/units/ship.py:474
-msgid "Idle at"
+#: horizons/world/units/ship.py:469
+#, python-format
+msgid "Going to %(x)d, %(y)d"
+msgstr ""
+
+#: horizons/world/units/ship.py:473
+#, python-format
+msgid "Idle at %s"
+msgstr ""
+
+#: horizons/world/units/ship.py:474
+#, python-format
+msgid "Idle at %(x)d, %(y)d"
 msgstr ""
 
 #: horizons/world/units/ship.py:494 sqlite/Unit
@@ -2557,6 +2568,9 @@ msgstr "Piraten Schip"
 #: sqlite/Unit
 msgid "Sheep"
 msgstr "Schaap"
+
+#~ msgid "Something went wrong with the network: "
+#~ msgstr "Er is een netwerk fout opgetreden: "
 
 #~ msgid ""
 #~ "The selected file is not a valid scenario file.\n"

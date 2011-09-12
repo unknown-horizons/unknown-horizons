@@ -269,8 +269,8 @@ msgid "Network Error"
 msgstr "Erro de rede"
 
 #: horizons/gui/modules/multiplayermenu.py:123
-msgid "Something went wrong with the network: "
-msgstr "Ocorreu uma falha na rede: "
+msgid "Something went wrong with the network:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
@@ -370,9 +370,13 @@ msgstr ""
 msgid "Error message:"
 msgstr ""
 
+# 97%
 #: horizons/gui/modules/singleplayermenu.py:265
+#, fuzzy
 msgid "Please report this to the author."
 msgstr ""
+"\n"
+"Por favor reporte isto ao autor."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -692,9 +696,11 @@ msgstr ""
 msgid "Cattle run: Raises cattle. Needs a farm."
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:88
+#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Fornalha: Queima molhos de tabúas e transforma-os em carvão."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
@@ -992,14 +998,20 @@ msgstr ""
 msgid "1 resident"
 msgstr ""
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:210 horizons/i18n/guitranslations.py:226
 #: horizons/i18n/guitranslations.py:241
+#, fuzzy
 msgid "2 residents"
-msgstr ""
+msgstr "Residentes"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:211 horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "3 residents"
-msgstr ""
+msgstr "Residentes"
 
 # 88%
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:227
@@ -1033,13 +1045,19 @@ msgstr "Impostos pagos"
 msgid "Tax rate"
 msgstr "taxa de contribuição"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:243
+#, fuzzy
 msgid "4 residents"
-msgstr ""
+msgstr "Residentes"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:244
+#, fuzzy
 msgid "5 residents"
-msgstr ""
+msgstr "Residentes"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Upgrade not possible:"
@@ -1245,9 +1263,11 @@ msgstr ""
 msgid "Units"
 msgstr ""
 
+# 87%
 #: horizons/i18n/guitranslations.py:375
+#, fuzzy
 msgid "Balance"
-msgstr ""
+msgstr "Balanço:"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"
@@ -1359,7 +1379,7 @@ msgstr "{ - } = Diminuir a velocidade de jogo"
 
 #: horizons/i18n/guitranslations.py:417
 msgid "{P} = Pause game"
-msgstr "{P} = Pausar o jogo"
+msgstr "{P} = Pausa"
 
 #: horizons/i18n/guitranslations.py:418
 msgid "{ . } = Rotate building right"
@@ -1537,7 +1557,7 @@ msgstr "Actualizar a lista de jogos activos"
 
 #: horizons/i18n/guitranslations.py:484
 msgid "Autosave interval in minutes:"
-msgstr "Intervalo de minutos para auto-gravação:"
+msgstr "Intervalo em minutos para a auto-gravação:"
 
 #: horizons/i18n/guitranslations.py:485
 msgid "Color depth:"
@@ -1868,19 +1888,30 @@ msgid "The savegame file is currently used by another program."
 msgstr "O ficheiro de progresso de jogo está ser utilizado por outro programa."
 
 #: horizons/world/units/ship.py:272
-msgid "Trade route: going to"
+msgid "Trade route: going to %s"
 msgstr ""
 
 #: horizons/world/units/ship.py:273
-msgid "Trade route: waiting at"
+msgid "Trade route: waiting at %s"
 msgstr ""
 
 #: horizons/world/units/ship.py:468 horizons/world/units/ship.py:469
-msgid "Going to"
+msgid "Going to %s"
 msgstr ""
 
-#: horizons/world/units/ship.py:473 horizons/world/units/ship.py:474
-msgid "Idle at"
+#: horizons/world/units/ship.py:469
+#, python-format
+msgid "Going to %(x)d, %(y)d"
+msgstr ""
+
+#: horizons/world/units/ship.py:473
+#, python-format
+msgid "Idle at %s"
+msgstr ""
+
+#: horizons/world/units/ship.py:474
+#, python-format
+msgid "Idle at %(x)d, %(y)d"
 msgstr ""
 
 #: horizons/world/units/ship.py:494 sqlite/Unit
@@ -1903,8 +1934,8 @@ msgstr "Especifique o caminho para a instalação do FIFE."
 #: run_uh.py:83
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
 msgstr ""
-"Restaurar as definições de referência. Útil caso o Unknown Horizons não "
-"carregue devido a problemas nas configurações."
+"Restaurar as definições de referência. Útil caso existão problemas de "
+"configuração e não consiga iniciar o Unknown Horizons."
 
 #: run_uh.py:85
 msgid "Specify alternative multiplayer master server."
@@ -2529,6 +2560,9 @@ msgstr ""
 #: sqlite/Unit
 msgid "Sheep"
 msgstr ""
+
+#~ msgid "Something went wrong with the network: "
+#~ msgstr "Ocorreu uma falha na rede: "
 
 #~ msgid ""
 #~ "The selected file is not a valid scenario file.\n"

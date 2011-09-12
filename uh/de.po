@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-12 02:47+0200\n"
+"PO-Revision-Date: 2011-09-12 02:59+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -273,8 +273,8 @@ msgid "Network Error"
 msgstr "Netzwerkfehler"
 
 #: horizons/gui/modules/multiplayermenu.py:123
-msgid "Something went wrong with the network: "
-msgstr "Es ist ein Netzwerkfehler aufgetreten: "
+msgid "Something went wrong with the network:"
+msgstr "Es ist ein Netzwerkfehler aufgetreten:"
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
@@ -674,7 +674,7 @@ msgstr "Weber: Verwebt Wolle zu Kleidung."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Mining"
-msgstr ""
+msgstr "Bergbau"
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Settler buildings"
@@ -1878,20 +1878,31 @@ msgstr ""
 "gesperrt."
 
 #: horizons/world/units/ship.py:272
-msgid "Trade route: going to"
-msgstr ""
+msgid "Trade route: going to %s"
+msgstr "Handelsroute: Steuert %s an"
 
 #: horizons/world/units/ship.py:273
-msgid "Trade route: waiting at"
-msgstr ""
+msgid "Trade route: waiting at %s"
+msgstr "Handelsrute: Wartet vor %s"
 
 #: horizons/world/units/ship.py:468 horizons/world/units/ship.py:469
-msgid "Going to"
-msgstr ""
+msgid "Going to %s"
+msgstr "Steuert %s an"
 
-#: horizons/world/units/ship.py:473 horizons/world/units/ship.py:474
-msgid "Idle at"
-msgstr ""
+#: horizons/world/units/ship.py:469
+#, python-format
+msgid "Going to %(x)d, %(y)d"
+msgstr "Steuert %(x)d, %(y)d an"
+
+#: horizons/world/units/ship.py:473
+#, python-format
+msgid "Idle at %s"
+msgstr "Wartet vor %s"
+
+#: horizons/world/units/ship.py:474
+#, python-format
+msgid "Idle at %(x)d, %(y)d"
+msgstr "Wartet bei %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:494 sqlite/Unit
 msgid "Trader"
@@ -1900,7 +1911,7 @@ msgstr "Händler"
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Angriff auf "
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2251,7 +2262,7 @@ msgstr "blau"
 
 #: sqlite/Colors
 msgid "bordeaux"
-msgstr ""
+msgstr "bordeaux"
 
 #: sqlite/Colors
 msgid "cyan"
@@ -2259,7 +2270,7 @@ msgstr "türkis"
 
 #: sqlite/Colors
 msgid "gray"
-msgstr ""
+msgstr "grau"
 
 #: sqlite/Colors
 msgid "green"
@@ -2267,11 +2278,11 @@ msgstr "grün"
 
 #: sqlite/Colors
 msgid "lemon"
-msgstr ""
+msgstr "limone"
 
 #: sqlite/Colors
 msgid "orange"
-msgstr ""
+msgstr "orange"
 
 #: sqlite/Colors
 msgid "pink"
@@ -2279,7 +2290,7 @@ msgstr "rosa"
 
 #: sqlite/Colors
 msgid "purple"
-msgstr ""
+msgstr "violett"
 
 #: sqlite/Colors
 msgid "red"
@@ -2287,7 +2298,7 @@ msgstr "rot"
 
 #: sqlite/Colors
 msgid "teal"
-msgstr ""
+msgstr "türkis"
 
 #: sqlite/Colors
 msgid "white"
@@ -2535,13 +2546,12 @@ msgstr "Siedler"
 
 #: sqlite/Unit
 msgid "Boar"
-msgstr ""
+msgstr "Wildschwein"
 
 # 83%
 #: sqlite/Unit
-#, fuzzy
 msgid "Cattle"
-msgstr "Rinder"
+msgstr "Rind"
 
 #: sqlite/Unit
 msgid "Deer"
@@ -2558,6 +2568,9 @@ msgstr "Piratenschiff"
 #: sqlite/Unit
 msgid "Sheep"
 msgstr "Schaf"
+
+#~ msgid "Something went wrong with the network: "
+#~ msgstr "Es ist ein Netzwerkfehler aufgetreten: "
 
 #~ msgid ""
 #~ "The selected file is not a valid scenario file.\n"

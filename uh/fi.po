@@ -269,8 +269,8 @@ msgid "Network Error"
 msgstr "Verkkovirhe"
 
 #: horizons/gui/modules/multiplayermenu.py:123
-msgid "Something went wrong with the network: "
-msgstr "Jotakin meni pieleen verkon kanssa: "
+msgid "Something went wrong with the network:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
@@ -369,9 +369,13 @@ msgstr ""
 msgid "Error message:"
 msgstr ""
 
+# 97%
 #: horizons/gui/modules/singleplayermenu.py:265
+#, fuzzy
 msgid "Please report this to the author."
 msgstr ""
+"\n"
+"Ole hyvä ja ilmoita tästä tekijälle."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -688,9 +692,11 @@ msgstr ""
 msgid "Cattle run: Raises cattle. Needs a farm."
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:88
+#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Puuhiilen polttopaikka: Polttaa paljon lautoja."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
@@ -983,10 +989,13 @@ msgstr ""
 msgid "houses"
 msgstr ""
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "1 resident"
-msgstr ""
+msgstr "Asukkaat"
 
 # 88%
 # 81%
@@ -1252,9 +1261,11 @@ msgstr ""
 msgid "Units"
 msgstr ""
 
+# 87%
 #: horizons/i18n/guitranslations.py:375
+#, fuzzy
 msgid "Balance"
-msgstr ""
+msgstr "Tasapaino:"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"
@@ -1874,19 +1885,30 @@ msgid "The savegame file is currently used by another program."
 msgstr "Tallennustiedosto on tällä hetkellä toisen ohjelman käytössä."
 
 #: horizons/world/units/ship.py:272
-msgid "Trade route: going to"
+msgid "Trade route: going to %s"
 msgstr ""
 
 #: horizons/world/units/ship.py:273
-msgid "Trade route: waiting at"
+msgid "Trade route: waiting at %s"
 msgstr ""
 
 #: horizons/world/units/ship.py:468 horizons/world/units/ship.py:469
-msgid "Going to"
+msgid "Going to %s"
 msgstr ""
 
-#: horizons/world/units/ship.py:473 horizons/world/units/ship.py:474
-msgid "Idle at"
+#: horizons/world/units/ship.py:469
+#, python-format
+msgid "Going to %(x)d, %(y)d"
+msgstr ""
+
+#: horizons/world/units/ship.py:473
+#, python-format
+msgid "Idle at %s"
+msgstr ""
+
+#: horizons/world/units/ship.py:474
+#, python-format
+msgid "Idle at %(x)d, %(y)d"
 msgstr ""
 
 #: horizons/world/units/ship.py:494 sqlite/Unit
@@ -2540,6 +2562,9 @@ msgstr ""
 #: sqlite/Unit
 msgid "Sheep"
 msgstr ""
+
+#~ msgid "Something went wrong with the network: "
+#~ msgstr "Jotakin meni pieleen verkon kanssa: "
 
 #~ msgid ""
 #~ "The selected file is not a valid scenario file.\n"
