@@ -126,6 +126,11 @@ msgid ""
 "The build menu is sorted by increments.\n"
 "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
 msgstr ""
+"Stavební materiál se z lodi vyloží automaticky. Nyní si můžete postavit "
+"několik základních budov.\n"
+"\n"
+"Začneme se stavbou dřevorubce.\n"
+"\n"
 
 #: po/tutorial.py:11
 msgid ""
