@@ -366,9 +366,13 @@ msgstr ""
 msgid "Error message:"
 msgstr ""
 
+# 97%
 #: horizons/gui/modules/singleplayermenu.py:265
+#, fuzzy
 msgid "Please report this to the author."
 msgstr ""
+"\n"
+"Reporta esto al autor, por favor."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -689,9 +693,11 @@ msgstr ""
 msgid "Cattle run: Raises cattle. Needs a farm."
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:88
+#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Carbón de leña ardiente: Quema una gran cantidad de tablas."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
@@ -986,10 +992,13 @@ msgstr ""
 msgid "houses"
 msgstr ""
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "1 resident"
-msgstr ""
+msgstr "Residentes"
 
 # 88%
 # 81%
@@ -1256,9 +1265,11 @@ msgstr ""
 msgid "Units"
 msgstr ""
 
+# 87%
 #: horizons/i18n/guitranslations.py:375
+#, fuzzy
 msgid "Balance"
-msgstr ""
+msgstr "Saldo:"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"

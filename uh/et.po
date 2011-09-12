@@ -353,9 +353,13 @@ msgstr ""
 msgid "Error message:"
 msgstr ""
 
+# 97%
 #: horizons/gui/modules/singleplayermenu.py:265
+#, fuzzy
 msgid "Please report this to the author."
 msgstr ""
+"\n"
+"Palun teavita sellest autorit."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -968,10 +972,13 @@ msgstr ""
 msgid "houses"
 msgstr ""
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "1 resident"
-msgstr ""
+msgstr "Elanikke"
 
 # 88%
 # 81%
@@ -1239,9 +1246,11 @@ msgstr ""
 msgid "Units"
 msgstr ""
 
+# 87%
 #: horizons/i18n/guitranslations.py:375
+#, fuzzy
 msgid "Balance"
-msgstr ""
+msgstr "Bilanss:"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"

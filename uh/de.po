@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-12 02:38+0200\n"
+"PO-Revision-Date: 2011-09-12 02:47+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -695,7 +695,7 @@ msgstr "Kohlenmeiler: Ein Köhler stellt hier Holzkohle aus Brettern her."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Mine: Baut Erze aus Lagerstätten ab."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Pigsty: Raises pigs. Needs a farm."
@@ -890,7 +890,7 @@ msgstr "Laufende Kosten"
 
 #: horizons/i18n/guitranslations.py:160 sqlite/Unit
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:166
 msgid "Build this ship!"
@@ -898,7 +898,7 @@ msgstr "In Auftrag geben!"
 
 #: horizons/i18n/guitranslations.py:165 sqlite/Unit
 msgid "Frigate"
-msgstr ""
+msgstr "Fregatte"
 
 #: horizons/i18n/guitranslations.py:169
 msgid "Buy resources"
@@ -906,7 +906,7 @@ msgstr "Waren einkaufen"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "Auf Icon klicken, um Slotmodus zu ändern:"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "Buy or sell resources"
@@ -1013,7 +1013,7 @@ msgstr "Steuern:"
 
 #: horizons/i18n/guitranslations.py:214 horizons/i18n/guitranslations.py:229
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Stufenaufstieg verwalten:"
 
 #: horizons/i18n/guitranslations.py:215 horizons/i18n/guitranslations.py:218
 #: horizons/i18n/guitranslations.py:230 horizons/i18n/guitranslations.py:233
@@ -1039,11 +1039,11 @@ msgstr "5 Bewohner"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Stufenaufstieg nicht möglich:"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "Dies ist die momentan höchste spielbare Stufe!"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
@@ -1060,7 +1060,7 @@ msgstr "Verkauf"
 
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:294
 msgid "Weapons:"
-msgstr ""
+msgstr "Bewaffnung:"
 
 #: horizons/i18n/guitranslations.py:272
 msgid "capacity utilization"
@@ -1185,11 +1185,11 @@ msgstr "Dieses Szenario auswählen"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Wait at load:"
-msgstr ""
+msgstr "Warte Laden ab:"
 
 #: horizons/i18n/guitranslations.py:351
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Warte Entladen ab:"
 
 #: horizons/i18n/guitranslations.py:352
 msgid "Exit"
@@ -1206,7 +1206,7 @@ msgstr "100/100"
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:372
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:388
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: horizons/i18n/guitranslations.py:363
 msgid "Buildings"
@@ -1243,25 +1243,24 @@ msgstr "Einheiten"
 
 # 87%
 #: horizons/i18n/guitranslations.py:375
-#, fuzzy
 msgid "Balance"
-msgstr "Bilanz:"
+msgstr "Bilanz"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"
-msgstr ""
+msgstr "Zustand"
 
 #: horizons/i18n/guitranslations.py:385
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: horizons/i18n/guitranslations.py:386
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: horizons/i18n/guitranslations.py:387
 msgid "Weapons"
-msgstr ""
+msgstr "Bewaffnung"
 
 #: horizons/i18n/guitranslations.py:391
 msgid "Aggressive"
@@ -1309,17 +1308,18 @@ msgstr "{F10} = Konsole an-/ausschalten"
 
 # 92%
 #: horizons/i18n/guitranslations.py:405
-#, fuzzy
 msgid "{F2} = Show player scores"
-msgstr "{R} = Spiel-Statistiken anzeigen"
+msgstr "{F2} = Spiel-Statistiken anzeigen"
 
 #: horizons/i18n/guitranslations.py:406
+#, fuzzy
 msgid "{F3} = Show settlement list"
-msgstr ""
+msgstr "{F3} = Siedlungsübersicht anzeigen"
 
 #: horizons/i18n/guitranslations.py:407
+#, fuzzy
 msgid "{F4} = Show ship list"
-msgstr ""
+msgstr "{F4} = Schiffsübersicht anzeigen"
 
 #: horizons/i18n/guitranslations.py:408
 msgid "{F5} = Quicksave"
@@ -1339,7 +1339,7 @@ msgstr "{G} = Gitternetz an-/ausschalten"
 
 #: horizons/i18n/guitranslations.py:412
 msgid "{H} = Show coordinate values (Debug)"
-msgstr ""
+msgstr "{H} = Koordinaten anzeigen (Debug)"
 
 #: horizons/i18n/guitranslations.py:413
 msgid "Have fun."
@@ -1395,7 +1395,7 @@ msgstr "{X} = Abrissmodus aktivieren"
 
 #: horizons/i18n/guitranslations.py:426 horizons/i18n/guitranslations.py:508
 msgid "Return"
-msgstr ""
+msgstr "Zurück"
 
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:443
 msgid "Help"
@@ -1614,7 +1614,7 @@ msgstr "Ton eingeschaltet:"
 
 #: horizons/i18n/guitranslations.py:504
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Ununterbrochenes Bauen:"
 
 #: horizons/i18n/guitranslations.py:505
 msgid "Used renderer:"
@@ -1693,11 +1693,11 @@ msgstr "Spieleinstellungen:"
 
 #: horizons/i18n/guitranslations.py:547
 msgid "Free Trader"
-msgstr ""
+msgstr "Freier Händler"
 
 #: horizons/i18n/guitranslations.py:548
 msgid "Pirates"
-msgstr ""
+msgstr "Piraten"
 
 #: horizons/i18n/guitranslations.py:551
 msgid "Color:"

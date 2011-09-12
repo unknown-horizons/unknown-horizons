@@ -369,9 +369,13 @@ msgstr ""
 msgid "Error message:"
 msgstr ""
 
+# 97%
 #: horizons/gui/modules/singleplayermenu.py:265
+#, fuzzy
 msgid "Please report this to the author."
 msgstr ""
+"\n"
+"Моля докладвайте това на авторът."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -688,9 +692,11 @@ msgstr "Кланица: Нужни са прасета или добитък. П
 msgid "Cattle run: Raises cattle. Needs a farm."
 msgstr "Кравеферма: Отглежда говеда. Нуждае се от ферма."
 
+# 76%
 #: horizons/i18n/guitranslations.py:88
+#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Изгаряне на въглища: Гори много дъски."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
@@ -989,14 +995,20 @@ msgstr ""
 msgid "1 resident"
 msgstr ""
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:210 horizons/i18n/guitranslations.py:226
 #: horizons/i18n/guitranslations.py:241
+#, fuzzy
 msgid "2 residents"
-msgstr ""
+msgstr "Жители"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:211 horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "3 residents"
-msgstr ""
+msgstr "Жители"
 
 # 88%
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:227
@@ -1028,13 +1040,19 @@ msgstr "Платени такси"
 msgid "Tax rate"
 msgstr "Данъчна ставка"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:243
+#, fuzzy
 msgid "4 residents"
-msgstr ""
+msgstr "Жители"
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:244
+#, fuzzy
 msgid "5 residents"
-msgstr ""
+msgstr "Жители"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Upgrade not possible:"
@@ -1240,9 +1258,11 @@ msgstr ""
 msgid "Units"
 msgstr ""
 
+# 87%
 #: horizons/i18n/guitranslations.py:375
+#, fuzzy
 msgid "Balance"
-msgstr ""
+msgstr "Баланс:"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"

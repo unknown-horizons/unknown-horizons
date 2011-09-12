@@ -995,10 +995,13 @@ msgstr ""
 msgid "houses"
 msgstr ""
 
+# 88%
+# 81%
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "1 resident"
-msgstr ""
+msgstr "Inwoners"
 
 # 88%
 # 81%
