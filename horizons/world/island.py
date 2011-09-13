@@ -90,6 +90,13 @@ class Island(BuildingOwner, WorldObject):
 		    db("SELECT rowid, type FROM building WHERE location = ?", islandid):
 			load_building(self.session, db, building_typeid, building_worldid)
 
+	def _get_island_db(self):
+		# check if filename is a random map
+		if random_map.is_random_island_id_string(self.file):
+			# it's a random map id, create this map and load it
+			return random_map.create_random_island(self.file)
+		return DbReader(self.file) # Create a new DbReader instance to load the maps file.
+
 	def __init(self, origin, filename):
 		"""
 		Load the actual island from a file
@@ -98,13 +105,7 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		self.file = filename
 		self.origin = origin
-
-		# check if filename is a random map
-		if random_map.is_random_island_id_string(filename):
-			# it's a random map id, create this map and load it
-			db = random_map.create_random_island(filename)
-		else:
-			db = DbReader(filename) # Create a new DbReader instance to load the maps file.
+		db = self._get_island_db()
 
 		p_x, p_y, width, height = db("SELECT (MIN(x) + ?), (MIN(y) + ?), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground", self.origin.x, self.origin.y)[0]
 
@@ -150,6 +151,15 @@ class Island(BuildingOwner, WorldObject):
 			settlement.save(db, self.worldid)
 		for animal in self.wild_animals:
 			animal.save(db)
+
+	def save_map(self, db):
+		"""Saves the ground into the given database (used for saving maps, not saved games)."""
+		db('CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)')
+		db('CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
+		source_db = self._get_island_db()
+		db('BEGIN')
+		db.execute_many('INSERT INTO ground VALUES(?, ?, ?, ?, ?)', source_db('SELECT x, y, ground_id, action_id, rotation FROM ground'))
+		db('COMMIT')
 
 	def get_coordinates(self):
 		"""Returns list of coordinates, that are on the island."""

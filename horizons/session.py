@@ -39,7 +39,7 @@ from horizons.entities import Entities
 from horizons.util import WorldObject, NamedObject, LivingObject, livingProperty, SavegameAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
-from horizons.constants import GAME_SPEED
+from horizons.constants import GAME_SPEED, PATHS
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
@@ -319,3 +319,9 @@ class Session(LivingObject):
 		@return: True if game is loaded, else False
 		"""
 		return (self.savecounter > 0)
+
+	def save_map(self, prefix):
+		maps_folder = os.path.join(PATHS.USER_DIR, 'maps')
+		if not os.path.exists(maps_folder):
+			os.makedirs(maps_folder)
+		self.world.save_map(maps_folder, prefix)

@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import re
+
 from fife.extensions import pychan
 
 import horizons.main
@@ -53,6 +55,7 @@ class IngameGui(LivingObject):
 	styles = {
 		'city_info' : 'city_info',
 		'change_name' : 'book',
+		'save_map' : 'book',
 		'chat' : 'book',
 		'status'            : 'resource_bar',
 		'status_gold'       : 'resource_bar',
@@ -472,6 +475,35 @@ class IngameGui(LivingObject):
 		if not (len(new_name) == 0 or new_name.isspace()):
 			RenameObject(instance, new_name).execute(self.session)
 		self._hide_change_name_dialog()
+
+	def show_save_map_dialog(self):
+		"""Shows a dialog where the user can set the name of the saved map."""
+		events = {
+			'okButton': self.save_map,
+			'cancelButton': self._hide_save_map_dialog
+		}
+		self.main_gui.on_escape = self._hide_save_map_dialog
+		dialog = self.widgets['save_map']
+		name = dialog.findChild(name = 'map_name')
+		name.text = u''
+		dialog.mapEvents(events)
+		name.capture(Callback(self.save_map))
+		dialog.show()
+		name.requestFocus()
+
+	def _hide_save_map_dialog(self):
+		"""Closes the map saving dialog."""
+		self.main_gui.on_escape = self.main_gui.toggle_pause
+		self.widgets['save_map'].hide()
+
+	def save_map(self):
+		"""Saves the map and hides the dialog."""
+		name = self.widgets['save_map'].collectData('map_name')
+		if re.match('^[a-zA-Z0-9_-]+$', name):
+			self.session.save_map(name)
+			self._hide_save_map_dialog()
+		else:
+			self.session.gui.show_popup(_('Error'), _('Valid map names are in the form') + u' [a-zA-Z0-9_-]+')
 
 	def on_escape(self):
 		if self.main_widget:

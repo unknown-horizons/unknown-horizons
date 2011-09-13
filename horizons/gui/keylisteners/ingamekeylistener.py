@@ -160,6 +160,10 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.quicksave()
 		elif keyval == fife.Key.F9:
 			self.session.quickload()
+		elif keyval == fife.Key.F12 and evt.isShiftPressed():
+			# require shift to make it less likely that an ordinary user stumbles upon this
+			# this is done because the maps aren't usable without moving them to the right places
+			self.session.ingame_gui.show_save_map_dialog()
 		else:
 			return
 		evt.consume()
