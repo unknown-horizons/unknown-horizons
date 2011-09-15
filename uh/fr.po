@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
 "PO-Revision-Date: 2011-09-12 03:06+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -279,7 +279,7 @@ msgstr "Erreur réseau"
 
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Un incident est survenu sur le réseau :"
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
@@ -313,7 +313,7 @@ msgstr "Mauvaise version"
 #: horizons/gui/modules/multiplayermenu.py:255
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Nombre de joueurs recommandé:"
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -347,19 +347,19 @@ msgstr "Taille de la carte:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Eau:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Taille maximale des îles:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Taille préférée des îles:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Divergance de la taille des îles:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
@@ -372,19 +372,16 @@ msgstr "Nom de scénario invalide"
 
 #: horizons/gui/modules/singleplayermenu.py:263
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "Le fichier sélectionné n'est pas un scénario valide."
 
 #: horizons/gui/modules/singleplayermenu.py:264
 msgid "Error message:"
-msgstr ""
+msgstr "Message d'erreur:"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Veuillez rapporter ceci à l'auteur."
+msgstr "Veuillez rapporter ceci à l'auteur."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -556,7 +553,7 @@ msgstr "Il n'y a encore rien dans votre journal de bord !"
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr ""
+msgstr "Colonies de %(player)%"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
