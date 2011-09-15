@@ -264,9 +264,11 @@ msgstr ""
 msgid "Network Error"
 msgstr "Hálózati Hiba"
 
+# 97%
 #: horizons/gui/modules/multiplayermenu.py:123
+#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Valami gubanc van a hálózattal: "
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
