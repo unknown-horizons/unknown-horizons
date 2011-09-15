@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-15 17:45+0200\n"
+"PO-Revision-Date: 2011-09-15 21:50+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -1235,52 +1235,50 @@ msgstr "Punkty gracza"
 
 #: horizons/i18n/guitranslations.py:365
 msgid "Land"
-msgstr ""
+msgstr "Ziemia"
 
 #: horizons/i18n/guitranslations.py:366
 msgid "Money"
-msgstr ""
+msgstr "Pieniądze"
 
 # 80%
 #: horizons/i18n/guitranslations.py:367 horizons/i18n/guitranslations.py:378
 #: horizons/i18n/guitranslations.py:384
-#, fuzzy
 msgid "Name"
-msgstr "Nazwa:"
+msgstr "Nazwa"
 
 #: horizons/i18n/guitranslations.py:368
 msgid "Resources"
-msgstr ""
+msgstr "Zasoby"
 
 #: horizons/i18n/guitranslations.py:370
 msgid "Total"
-msgstr ""
+msgstr "W sumie"
 
 #: horizons/i18n/guitranslations.py:371
 msgid "Units"
-msgstr ""
+msgstr "Jednostki"
 
 # 87%
 #: horizons/i18n/guitranslations.py:375
-#, fuzzy
 msgid "Balance"
-msgstr "Saldo:"
+msgstr "Saldo"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"
-msgstr ""
+msgstr "Zdrowie"
 
 #: horizons/i18n/guitranslations.py:385
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: horizons/i18n/guitranslations.py:386
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: horizons/i18n/guitranslations.py:387
 msgid "Weapons"
-msgstr ""
+msgstr "Broń"
 
 #: horizons/i18n/guitranslations.py:391
 msgid "Aggressive"
@@ -1328,15 +1326,15 @@ msgstr "{F10} = Włącz/Wyłącz konsolę"
 
 #: horizons/i18n/guitranslations.py:405
 msgid "{F2} = Show player scores"
-msgstr ""
+msgstr "{F2} = Pokaż punkty graczy"
 
 #: horizons/i18n/guitranslations.py:406
 msgid "{F3} = Show settlement list"
-msgstr ""
+msgstr "{F3} = Pokaż listę osad"
 
 #: horizons/i18n/guitranslations.py:407
 msgid "{F4} = Show ship list"
-msgstr ""
+msgstr "{F4} = Pokaż listę statków"
 
 #: horizons/i18n/guitranslations.py:408
 msgid "{F5} = Quicksave"
@@ -1348,7 +1346,7 @@ msgstr "{F9} = Szybkie wczytywanie"
 
 #: horizons/i18n/guitranslations.py:410
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "Zespół deweloperów FIFE i Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:411
 msgid "{G} = Toggle grid on/off"
@@ -1356,7 +1354,7 @@ msgstr "{G} = Włącz/Wyłącz siatkę"
 
 #: horizons/i18n/guitranslations.py:412
 msgid "{H} = Show coordinate values (Debug)"
-msgstr ""
+msgstr "{H} = Pokaż współrzędne (Debug)"
 
 #: horizons/i18n/guitranslations.py:413
 msgid "Have fun."
@@ -1364,7 +1362,7 @@ msgstr "Baw się dobrze."
 
 #: horizons/i18n/guitranslations.py:414
 msgid "{L} = Toggle Captain's log"
-msgstr ""
+msgstr "{L} = Włącz/Wyłącz Dziennik kapitański"
 
 #: horizons/i18n/guitranslations.py:415
 msgid "{LEFT} = Scroll left"
@@ -1400,7 +1398,7 @@ msgstr "{SHIFT} = Trzymaj aby postawić kilka budynków"
 
 #: horizons/i18n/guitranslations.py:423
 msgid "{T} = Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "{T} = Włącz/Wyłącz przeźroczystość otoczenia budynków"
 
 #: horizons/i18n/guitranslations.py:424
 msgid "{UP} = Scroll up"
@@ -1412,7 +1410,7 @@ msgstr "{X} = Włącz tryb niszczenia"
 
 #: horizons/i18n/guitranslations.py:426 horizons/i18n/guitranslations.py:508
 msgid "Return"
-msgstr ""
+msgstr "Powrót"
 
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:443
 msgid "Help"
@@ -1437,7 +1435,7 @@ msgstr "Ładowanie..."
 
 #: horizons/i18n/guitranslations.py:441
 msgid "Attention please!"
-msgstr ""
+msgstr "Proszę o uwagę!"
 
 #: horizons/i18n/guitranslations.py:442
 msgid "Credits"
@@ -1579,7 +1577,7 @@ msgstr "Język"
 
 #: horizons/i18n/guitranslations.py:491
 msgid "Network"
-msgstr ""
+msgstr "Sieć"
 
 #: horizons/i18n/guitranslations.py:492
 msgid "Saving"
@@ -1607,7 +1605,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:498
 msgid "Network port:"
-msgstr ""
+msgstr "Port sieciowy:"
 
 #: horizons/i18n/guitranslations.py:499
 msgid "Number of autosaves:"
@@ -1638,9 +1636,8 @@ msgid "Used renderer:"
 msgstr "Silnik graficzny:"
 
 #: horizons/i18n/guitranslations.py:506
-#, fuzzy
 msgid "Please make sure that you know what you do."
-msgstr "Proszę miej pewność, że wiesz co robisz."
+msgstr "Proszę upewnić się czy wiesz co robisz."
 
 # 83%
 #: horizons/i18n/guitranslations.py:507
@@ -1669,7 +1666,7 @@ msgstr "Rozpocznij grę"
 
 #: horizons/i18n/guitranslations.py:517
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Usuń zaznaczone zapisy gry"
 
 #: horizons/i18n/guitranslations.py:520
 msgid "New game - Singleplayer"
@@ -1702,15 +1699,15 @@ msgstr "Wybierz mapę:"
 
 #: horizons/i18n/guitranslations.py:537
 msgid "Map settings:"
-msgstr ""
+msgstr "Ustawienia mapy:"
 
 #: horizons/i18n/guitranslations.py:543
 msgid "AI players:"
-msgstr ""
+msgstr "Komputer:"
 
 #: horizons/i18n/guitranslations.py:546
 msgid "Game settings:"
-msgstr ""
+msgstr "Ustawienia gry:"
 
 #: horizons/i18n/guitranslations.py:547
 msgid "Free Trader"
