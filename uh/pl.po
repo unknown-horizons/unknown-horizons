@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-04 14:33+0200\n"
+"PO-Revision-Date: 2011-09-15 17:45+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -274,9 +274,8 @@ msgstr "Błąd sieci"
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:123
-#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr "Coś poszło nie tak z siecią: "
+msgstr "Wystąpiły problemy z siecią:"
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
@@ -309,7 +308,7 @@ msgstr "Zła wersja"
 #: horizons/gui/modules/multiplayermenu.py:255
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Zalecana ilość graczy: "
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -339,29 +338,28 @@ msgstr "Wprowadziłeś niepoprawną nazwę gracza"
 
 #: horizons/gui/modules/singleplayermenu.py:193
 msgid "Map size:"
-msgstr ""
+msgstr "Rozmiar mapy:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Woda:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Maksymalny rozmiar wyspy:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Preferowany rozmiar wyspy:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Różnica wielkości wysp:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
-msgstr "Złoże zasobu"
+msgstr "Wielkość zasobów:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -369,19 +367,16 @@ msgstr "Niepoprawny plik scenariusza"
 
 #: horizons/gui/modules/singleplayermenu.py:263
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "Wybrany plik nie jest poprawnym plikiem scenariusza."
 
 #: horizons/gui/modules/singleplayermenu.py:264
 msgid "Error message:"
-msgstr ""
+msgstr "Komunikat błędu:"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Proszę zgłosić to autorowi."
+msgstr "Proszę zgłosić to autorowi."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
