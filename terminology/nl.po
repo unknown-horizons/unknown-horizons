@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-05-13 12:36+0200\n"
-"Last-Translator: Jasper <info@opensource-news.com>\n"
+"PO-Revision-Date: 2011-09-15 16:50+0200\n"
+"Last-Translator: angellus <nzwaal@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -633,9 +633,8 @@ msgstr "produceren"
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # (poterminology) uh/unknownhorizons.pot (4)
 # 87%
-#, fuzzy
 msgid "produced"
-msgstr "produceren"
+msgstr "geproduceerd"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -815,13 +814,13 @@ msgid "settler"
 msgstr "kolonist"
 
 msgid "citizen"
-msgstr ""
+msgstr "stedeling"
 
 msgid "merchant"
-msgstr ""
+msgstr "koopman"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocraat"
 
 #
 #
@@ -1209,9 +1208,8 @@ msgstr "houden"
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
 # 80%
-#, fuzzy
 msgid "hunt"
-msgstr "jaagt"
+msgstr "jacht"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1376,16 +1374,16 @@ msgid "red"
 msgstr "rood"
 
 msgid "check"
-msgstr ""
+msgstr "controle"
 
 msgid "connection"
-msgstr ""
+msgstr "verbinding"
 
 msgid "no"
-msgstr ""
+msgstr "nee"
 
 msgid "tax"
-msgstr ""
+msgstr "belasting"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1406,82 +1404,82 @@ msgstr "gehaald"
 msgid "slider"
 msgstr "schuifbalk"
 
+# Vermoedelijk in het spel 'vereiste' ipv 'conditie'.
 msgid "condition"
-msgstr ""
+msgstr "vereiste"
 
 msgid "consume"
-msgstr ""
+msgstr "consumeren"
 
 msgid "contact"
-msgstr ""
+msgstr "contact"
 
 msgid "dialogue"
-msgstr ""
+msgstr "gesprek"
 
 msgid "issues"
-msgstr ""
+msgstr "problemen"
 
 msgid "minimap"
 msgstr "minikaart"
 
 msgid "playing"
-msgstr ""
+msgstr "spelen"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
 # 75%
-#, fuzzy
 msgid "ruin"
-msgstr "rennen"
+msgstr "ruine"
 
 msgid "seed"
-msgstr ""
+msgstr "zaad"
 
 msgid "temporarily"
-msgstr ""
+msgstr "tijdelijk"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "zoutmeren"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tabak"
 
 msgid "cattle"
-msgstr ""
+msgstr "vee"
 
 msgid "pig"
-msgstr ""
+msgstr "varken"
 
 msgid "herbs"
-msgstr ""
+msgstr "kruiden"
 
 msgid "herbary"
-msgstr ""
+msgstr "kruidentuin"
 
 msgid "butchery"
-msgstr ""
+msgstr "slagerij"
 
 msgid "doctor"
-msgstr ""
+msgstr "dokter"
 
 msgid "education"
-msgstr ""
+msgstr "onderwijs"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
 # 75%
 #, fuzzy
 msgid "clay"
-msgstr "spelen"
+msgstr "klei"
 
 msgid "charcoal"
-msgstr ""
+msgstr "houtskool"
 
 msgid "iron"
-msgstr ""
+msgstr "ijzer"
 
 msgid "ore"
-msgstr ""
+msgstr "erts"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
