@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-15 21:50+0200\n"
+"PO-Revision-Date: 2011-09-15 22:21+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -1711,11 +1711,11 @@ msgstr "Ustawienia gry:"
 
 #: horizons/i18n/guitranslations.py:547
 msgid "Free Trader"
-msgstr ""
+msgstr "Wolny kupiec"
 
 #: horizons/i18n/guitranslations.py:548
 msgid "Pirates"
-msgstr ""
+msgstr "Piraci"
 
 #: horizons/i18n/guitranslations.py:551
 msgid "Color:"
@@ -1728,22 +1728,28 @@ msgstr "Nazwa gracza:"
 #: horizons/main.py:83
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Błąd: Niepoprawna składani w parametrze --mp-master. Port musi być liczbą z "
+"zakresu od 1 do 65535."
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Błąd: Niepoprawna składania w parametrze --mp-bind. Por musi być liczbą z "
+"zakresu od 1 do 65535."
 
 #: horizons/main.py:243
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Nie udało się wstartować/wczytać gry."
 
 #: horizons/main.py:244
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "Gra którą wybrałeś nie może zostać uruchomiona."
 
 #: horizons/main.py:245
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
+"Zapis stanu gry może być uszkodzony lub został zapisy pochodzi ze starszej "
+"wersji gry."
 
 #: horizons/main.py:332
 #, python-format
@@ -1756,28 +1762,33 @@ msgstr ""
 
 #: horizons/main.py:357
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr ""
+msgstr "Błąd: plik kampanii musi posiadać rozszerzenie \".yaml\"."
 
 #: horizons/main.py:365
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory (%s)."
 msgstr ""
+"Z powodów technicznych, plik kamapnii zostanie skopiowany do katalogu UH (%"
+"s)."
 
 #: horizons/main.py:366
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"Oznacza to iż wprowadzone przez Ciebie zmiany nie zostaną uwzględnione "
+"bezpośrednio w grze."
 
 #: horizons/main.py:367
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file %s."
 msgstr ""
+"Aby zobaczyć zmiany, uruchom grę z obecnym parametrem lub wedytuj plik %s."
 
 # 81%
 #: horizons/main.py:373 horizons/savegamemanager.py:415
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign \"%s\"."
-msgstr "Błąd: nie można odnaleźć mapy \"%s\"."
+msgstr "Błąd: Nie można odnaleźć kampanii \"%s\"."
 
 #: horizons/main.py:404
 #, python-format
@@ -1791,7 +1802,7 @@ msgstr "Błąd: żaden zapis nie istnieje."
 #: horizons/mpsession.py:50 horizons/mpsession.py:64 horizons/mpsession.py:66
 #: horizons/mpsession.py:68 horizons/mpsession.py:70
 msgid "Not possible"
-msgstr ""
+msgstr "Niemożliwe"
 
 #: horizons/mpsession.py:50
 msgid "You cannot change the speed of a multiplayer game"
@@ -1801,35 +1812,36 @@ msgstr "Nie możesz zmienić prędkości gry w trybie dla wielu graczy"
 #: horizons/mpsession.py:70
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
+"Zapis/Wczytanie gry w trybie wielugraczy jest w tym momencie niemożliwe."
 
 #: horizons/savegamemanager.py:364
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr ""
+msgstr "Błąd: nie wiem jak obsłużyć warunek %(type)"
 
 # 81%
 # 76%
 #: horizons/savegamemanager.py:420
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr "Błąd: nie można odnaleźć mapy \"%s\"."
+msgstr "Błąd: Nie można odnaleź kampani z plikiem \"%s\"."
 
 # 81%
 #: horizons/savegamemanager.py:438
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr "Błąd: nie można odnaleźć zapisu \"%s\"."
+msgstr "Błąd:Nie można znaleźć scenariusza \"%s\"."
 
 # 81%
 # 76%
 # 83%
 #: horizons/savegamemanager.py:443
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr "Błąd: nie można odnaleźć mapy \"%s\"."
+msgstr "Błąd: Nie można znaleźć scenariusza z plikiem \"%s\"."
 
 #: horizons/scenario/actions.py:76 sqlite/Messages
 msgid "You have won!"
@@ -1851,10 +1863,13 @@ msgstr "Nie udało się zapisać gry."
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
 msgstr ""
+"Wystąpił błąd podczas szybkiego zapisu. Twój stan gry nie został zapisany."
 
 #: horizons/spsession.py:124
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"jeżeli ten błąd wystąpi raz jeszcze, prosimy o kontakt z zespołem "
+"developerów:"
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
@@ -1867,23 +1882,25 @@ msgstr "Musisz zapisać rozgrywkę, aby skorzystać z opcji jej przywrócenia."
 #. usually invalid filename
 #: horizons/spsession.py:159
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Błąd podczas tworzenia pliku z zapisem gry"
 
 #: horizons/spsession.py:160
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Wystąpił błąd podczas tworzenia pliku z zapisem stanu gry."
 
 #: horizons/spsession.py:161
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Często oznacza to iż w nazwie zapisu stanu gry znalazły się znaki specjalne "
+"które nie są obsługiwane."
 
 #: horizons/spsession.py:167
 msgid "File used by another process"
-msgstr ""
+msgstr "Plik używany jest w tym momencie przez inny proces."
 
 #: horizons/spsession.py:168
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "Plik z zapisem stanu gry jest obecnie używany przez inny program."
 
 #: horizons/world/units/ship.py:272
 msgid "Trade route: going to %s"
@@ -1932,10 +1949,12 @@ msgstr "Podaj ścieżkę do folderu FIFE."
 #: run_uh.py:83
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
 msgstr ""
+"Przywróć domyślne ustawienia. Często zdaża się iż  Unknown Horizons nie "
+"uruchamia się z powodu błędów w konfiguracji."
 
 #: run_uh.py:85
 msgid "Specify alternative multiplayer master server."
-msgstr ""
+msgstr "Podaj alternatywny serwer dla gry wieloosobowej."
 
 #: run_uh.py:87
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
@@ -2086,9 +2105,8 @@ msgstr "Stoczniowiec"
 
 # Faktoria Handlowa?
 #: sqlite/Building
-#, fuzzy
 msgid "Branch Office"
-msgstr "Ratusz"
+msgstr "Port"
 
 #: sqlite/Building
 msgid "Brickyard"
@@ -2116,9 +2134,8 @@ msgid "Clay Pit"
 msgstr "Kopalnia gliny"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Distillery"
-msgstr "Gorzelnia"
+msgstr "Destylarnia"
 
 # Building
 #: sqlite/Building
@@ -2182,7 +2199,7 @@ msgstr "Kaplica"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Chlew"
 
 # Building
 #: sqlite/Building
@@ -2196,7 +2213,7 @@ msgstr "Mur obronny"
 
 #: sqlite/Building
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Basen solny"
 
 # Building
 #: sqlite/Building
@@ -2205,7 +2222,7 @@ msgstr "Ogień sygnalizacyjny"
 
 #: sqlite/Building
 msgid "Smeltery"
-msgstr ""
+msgstr "Formiarnia"
 
 # Building
 #: sqlite/Building
@@ -2227,22 +2244,20 @@ msgstr "Namiot"
 
 # 77%
 #: sqlite/Building
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Ruiny namiotu"
+msgstr "Pozostałości po namiocie"
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Pole tytoniu"
 
 #: sqlite/Building
 msgid "Tobacconist"
 msgstr ""
 
 #: sqlite/Building
-#, fuzzy
 msgid "Toolmaker"
-msgstr "Narzędziowiec"
+msgstr "Kowal"
 
 #: sqlite/Building
 msgid "Trail"
@@ -2282,7 +2297,7 @@ msgstr "turkusowy"
 
 #: sqlite/Colors
 msgid "gray"
-msgstr ""
+msgstr "szary"
 
 #: sqlite/Colors
 msgid "green"
@@ -2290,11 +2305,11 @@ msgstr "zielony"
 
 #: sqlite/Colors
 msgid "lemon"
-msgstr ""
+msgstr "cytrynowy"
 
 #: sqlite/Colors
 msgid "orange"
-msgstr ""
+msgstr "pomarańczowy"
 
 #: sqlite/Colors
 msgid "pink"
@@ -2302,7 +2317,7 @@ msgstr "różowy"
 
 #: sqlite/Colors
 msgid "purple"
-msgstr ""
+msgstr "fioletowy"
 
 # Colors
 #: sqlite/Colors
@@ -2340,9 +2355,8 @@ msgstr "Nowy świat został utworzony."
 # Messages
 # 85%
 #: sqlite/Messages
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr "Jeden z osadników nie posiada żadnego targu w swoim zasięgu."
+msgstr "Jeden z osadników nie ma dostępu do runku głównego."
 
 # Messages
 #: sqlite/Messages
@@ -2392,7 +2406,7 @@ msgstr "cegły"
 
 #: sqlite/Resources
 msgid "cannon"
-msgstr ""
+msgstr "działa"
 
 #: sqlite/Resources
 msgid "cattle"
@@ -2427,7 +2441,7 @@ msgstr "społeczność"
 
 #: sqlite/Resources
 msgid "dagger"
-msgstr ""
+msgstr "sztylet"
 
 #: sqlite/Resources
 msgid "deer food A"
@@ -2435,7 +2449,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "mięso jelenia"
 
 #: sqlite/Resources
 msgid "education"
@@ -2473,7 +2487,7 @@ msgstr "zioła"
 
 #: sqlite/Resources
 msgid "iron deposit"
-msgstr ""
+msgstr "złoże żelaza"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -2481,7 +2495,7 @@ msgstr "sztaby żelaza"
 
 #: sqlite/Resources
 msgid "iron ore"
-msgstr ""
+msgstr "rudy żelaza"
 
 #: sqlite/Resources
 msgid "lamb wool"
@@ -2493,11 +2507,11 @@ msgstr "alkohol"
 
 #: sqlite/Resources
 msgid "medical herbs"
-msgstr ""
+msgstr "zioła lecznicze"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "świnie"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
@@ -2519,7 +2533,7 @@ msgstr "cukier"
 
 #: sqlite/Resources
 msgid "sugar cane"
-msgstr ""
+msgstr "cukier trzcinowy"
 
 #: sqlite/Resources
 msgid "textile"
@@ -2531,7 +2545,7 @@ msgstr "liście tytoniu"
 
 #: sqlite/Resources
 msgid "tobacco plants"
-msgstr ""
+msgstr "rośliny tytoniu"
 
 #: sqlite/Resources
 msgid "tobaccos"
@@ -2575,7 +2589,7 @@ msgstr "osadnik"
 
 #: sqlite/Unit
 msgid "Boar"
-msgstr ""
+msgstr "Dzik"
 
 #: sqlite/Unit
 msgid "Cattle"
