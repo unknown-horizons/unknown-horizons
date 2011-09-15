@@ -738,7 +738,7 @@ msgstr "Rozpocznij grę"
 
 #: horizons/i18n/guitranslations.py:100
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "Musisz założyć osadę zanim postawisz budynek!"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Select your ship and approach the coast via right-click."
@@ -906,7 +906,7 @@ msgstr "Zbuduj ten statek!"
 
 #: horizons/i18n/guitranslations.py:165 sqlite/Unit
 msgid "Frigate"
-msgstr ""
+msgstr "Fregata"
 
 #: horizons/i18n/guitranslations.py:169
 msgid "Buy resources"
@@ -983,7 +983,7 @@ msgstr "Najbardziej potrzebne zasoby:"
 #: horizons/i18n/guitranslations.py:206 horizons/i18n/guitranslations.py:222
 #: horizons/i18n/guitranslations.py:237
 msgid "Residents per house"
-msgstr ""
+msgstr "Mieszkańców na dom"
 
 #: horizons/i18n/guitranslations.py:207 horizons/i18n/guitranslations.py:223
 #: horizons/i18n/guitranslations.py:238
@@ -999,31 +999,27 @@ msgstr "domy"
 # 81%
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 #: horizons/i18n/guitranslations.py:240
-#, fuzzy
 msgid "1 resident"
-msgstr "Mieszkańcy"
+msgstr "1 mieszkaniec"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:210 horizons/i18n/guitranslations.py:226
 #: horizons/i18n/guitranslations.py:241
-#, fuzzy
 msgid "2 residents"
-msgstr "Mieszkańcy"
+msgstr "2 mieszkańców"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:211 horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "3 residents"
-msgstr "Mieszkańcy"
+msgstr "3 mieszkańców"
 
 # 88%
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:227
 #: horizons/i18n/guitranslations.py:245
-#, fuzzy
 msgid "residents"
-msgstr "Mieszkańcy"
+msgstr "mieszkańcy"
 
 #: horizons/i18n/guitranslations.py:213 horizons/i18n/guitranslations.py:228
 #: horizons/i18n/guitranslations.py:246 horizons/i18n/guitranslations.py:282
@@ -1051,16 +1047,14 @@ msgstr "Wysokość podatku"
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:243
-#, fuzzy
 msgid "4 residents"
-msgstr "Mieszkańcy"
+msgstr "4 mieszkańców"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "5 residents"
-msgstr "Mieszkańcy"
+msgstr "5 mieszkańców"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Upgrade not possible:"
@@ -1068,7 +1062,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:248
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "Osiągnąłęś najwyższy poziom rozwoju!"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
@@ -1085,7 +1079,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:294
 msgid "Weapons:"
-msgstr ""
+msgstr "Broń:"
 
 #: horizons/i18n/guitranslations.py:272
 msgid "capacity utilization"
@@ -1192,19 +1186,19 @@ msgstr "Czytaj nast. wpisy"
 
 #: horizons/i18n/guitranslations.py:343
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Dostępne scenariusze"
 
 #: horizons/i18n/guitranslations.py:344
 msgid "Scenario description"
-msgstr ""
+msgstr "Opis scenariusza"
 
 #: horizons/i18n/guitranslations.py:346
 msgid "Continue playing"
-msgstr ""
+msgstr "Kontynuuj grę"
 
 #: horizons/i18n/guitranslations.py:347
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Wybierz ten scenariusz"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Wait at load:"
@@ -1224,20 +1218,20 @@ msgstr "Dodaj do listy"
 
 #: horizons/i18n/guitranslations.py:357
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:372
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:388
 msgid "Close"
-msgstr ""
+msgstr "Zamknij"
 
 #: horizons/i18n/guitranslations.py:363
 msgid "Buildings"
-msgstr ""
+msgstr "Budynki"
 
 #: horizons/i18n/guitranslations.py:364
 msgid "Player scores"
-msgstr ""
+msgstr "Punkty gracza"
 
 #: horizons/i18n/guitranslations.py:365
 msgid "Land"
