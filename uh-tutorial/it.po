@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-05 22:38+0200\n"
-"PO-Revision-Date: 2011-08-29 11:54+0200\n"
+"PO-Revision-Date: 2011-08-29 12:02+0200\n"
 "Last-Translator: tagarista <tagarista@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -36,6 +36,8 @@ msgstr ""
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast, so it is easy accessible for other ships like the Free Trader."
 msgstr ""
+"Costruire una filiale della costa, quindi è facilmente accessibile per le "
+"altre navi per il commercio libero"
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
