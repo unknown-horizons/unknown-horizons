@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-08-29 13:33+0200\n"
+"PO-Revision-Date: 2011-09-16 23:23+0200\n"
 "Last-Translator: tagarista <tagarista@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -275,9 +275,10 @@ msgstr ""
 msgid "Network Error"
 msgstr "Errore di Rete"
 
+# 97%
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Qualcosa non è andata a buon fine con la connessione di rete: "
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
@@ -311,7 +312,7 @@ msgstr "Versione sbagliata"
 #: horizons/gui/modules/multiplayermenu.py:255
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Numeri di player raccomandati"
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -345,19 +346,19 @@ msgstr "Grandezza Mappa"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Acqua:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Massima dimensione dell'isola:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Dimensione d'isola preferita:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Dimensione deviazione isola:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
@@ -370,19 +371,16 @@ msgstr "File scenario non valido"
 
 #: horizons/gui/modules/singleplayermenu.py:263
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "Il file selezionato non è un file di scenario valido."
 
 #: horizons/gui/modules/singleplayermenu.py:264
 msgid "Error message:"
-msgstr ""
+msgstr "Errore messaggio:"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Prego segnalarlo all'autore."
+msgstr "Prego segnalarlo all'autore."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -543,17 +541,17 @@ msgstr "Non c'è niente di scritto nel tuo diario di bordo ancora!"
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr ""
+msgstr "%(player)s's insediamenti"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr ""
+msgstr "%(player)s's navi"
 
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
 msgid "Production overview of %(settlement)s"
-msgstr ""
+msgstr "Panoramica Produzione %(settlement)s"
 
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:354
 msgid "Start route"
@@ -685,7 +683,7 @@ msgstr "Tessitore: Trasforma la lana di agnelli in abiti."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Mining"
-msgstr ""
+msgstr "Minerario"
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Settler buildings"
@@ -701,13 +699,12 @@ msgstr "Eseguire Bestiame : Aumenta bestiame. Ha bisogno di una fattoria."
 
 # 76%
 #: horizons/i18n/guitranslations.py:88
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Bruciatore di carbone: Brucia le assi."
+msgstr "Carbonai: brucia un sacco di tavole a carbone."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Mine: Ottiene minerali dal deposito."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Pigsty: Raises pigs. Needs a farm."
@@ -903,7 +900,7 @@ msgstr "Costi ricorrenti"
 
 #: horizons/i18n/guitranslations.py:160 sqlite/Unit
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:166
 msgid "Build this ship!"
@@ -911,7 +908,7 @@ msgstr "Costruisci questa nave!"
 
 #: horizons/i18n/guitranslations.py:165 sqlite/Unit
 msgid "Frigate"
-msgstr ""
+msgstr "Fregata"
 
 #: horizons/i18n/guitranslations.py:169
 msgid "Buy resources"
@@ -919,7 +916,7 @@ msgstr "Compra risorse"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "Clicca sull'icona di slot per alternare la modalità:"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "Buy or sell resources"
@@ -1027,7 +1024,7 @@ msgstr "Tasse:"
 
 #: horizons/i18n/guitranslations.py:214 horizons/i18n/guitranslations.py:229
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "L'aggiornamento delle autorizzazioni:"
 
 #: horizons/i18n/guitranslations.py:215 horizons/i18n/guitranslations.py:218
 #: horizons/i18n/guitranslations.py:230 horizons/i18n/guitranslations.py:233
@@ -1053,11 +1050,11 @@ msgstr "5 residenti"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Aggiornamento Impossibile:"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "Questo è l'attuale incremento massimo!"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
@@ -1074,7 +1071,7 @@ msgstr "Vendita"
 
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:294
 msgid "Weapons:"
-msgstr ""
+msgstr "Armi:"
 
 #: horizons/i18n/guitranslations.py:272
 msgid "capacity utilization"
@@ -1197,11 +1194,11 @@ msgstr "Scegli questo scenario"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Wait at load:"
-msgstr ""
+msgstr "Attendi il caricamento:"
 
 #: horizons/i18n/guitranslations.py:351
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Attendere scaricare:"
 
 #: horizons/i18n/guitranslations.py:352
 msgid "Exit"
@@ -1218,7 +1215,7 @@ msgstr "100/100"
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:372
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:388
 msgid "Close"
-msgstr ""
+msgstr "chiudi"
 
 #: horizons/i18n/guitranslations.py:363
 msgid "Buildings"
@@ -1262,19 +1259,19 @@ msgstr "Bilancio:"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"
-msgstr ""
+msgstr "Salute"
 
 #: horizons/i18n/guitranslations.py:385
 msgid "Type"
-msgstr ""
+msgstr "tipo"
 
 #: horizons/i18n/guitranslations.py:386
 msgid "Status"
-msgstr ""
+msgstr "Stato"
 
 #: horizons/i18n/guitranslations.py:387
 msgid "Weapons"
-msgstr ""
+msgstr "Armi"
 
 #: horizons/i18n/guitranslations.py:391
 msgid "Aggressive"
@@ -1328,11 +1325,11 @@ msgstr "{R} = guarda punteggio player"
 
 #: horizons/i18n/guitranslations.py:406
 msgid "{F3} = Show settlement list"
-msgstr ""
+msgstr "{F3} = Mostra lista insediamento"
 
 #: horizons/i18n/guitranslations.py:407
 msgid "{F4} = Show ship list"
-msgstr ""
+msgstr "{F4} = Mostra lista navi"
 
 #: horizons/i18n/guitranslations.py:408
 msgid "{F5} = Quicksave"
@@ -1352,7 +1349,7 @@ msgstr "{G} = Abilita/disabilita griglia"
 
 #: horizons/i18n/guitranslations.py:412
 msgid "{H} = Show coordinate values (Debug)"
-msgstr ""
+msgstr "{H} = Mostra valori coordinate (Debug)"
 
 #: horizons/i18n/guitranslations.py:413
 msgid "Have fun."
@@ -1408,7 +1405,7 @@ msgstr "{X} = Abilita modalità distruzione"
 
 #: horizons/i18n/guitranslations.py:426 horizons/i18n/guitranslations.py:508
 msgid "Return"
-msgstr ""
+msgstr "Ritorna"
 
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:443
 msgid "Help"
@@ -1626,7 +1623,7 @@ msgstr "Abilita suono:"
 
 #: horizons/i18n/guitranslations.py:504
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Costruzione ininterrotta:"
 
 #: horizons/i18n/guitranslations.py:505
 msgid "Used renderer:"
@@ -1705,11 +1702,11 @@ msgstr "Impostazioni di gioco :"
 
 #: horizons/i18n/guitranslations.py:547
 msgid "Free Trader"
-msgstr ""
+msgstr "Commercio Libero"
 
 #: horizons/i18n/guitranslations.py:548
 msgid "Pirates"
-msgstr ""
+msgstr "Pirati"
 
 #: horizons/i18n/guitranslations.py:551
 msgid "Color:"
@@ -1901,30 +1898,30 @@ msgstr "Il file del salvataggio è attualmente usato da un altro programma."
 
 #: horizons/world/units/ship.py:272
 msgid "Trade route: going to %s"
-msgstr ""
+msgstr "Via commerciale: andare a %s"
 
 #: horizons/world/units/ship.py:273
 msgid "Trade route: waiting at %s"
-msgstr ""
+msgstr "Via commerciale: attesa %s"
 
 #: horizons/world/units/ship.py:468 horizons/world/units/ship.py:469
 msgid "Going to %s"
-msgstr ""
+msgstr "Andare a %s"
 
 #: horizons/world/units/ship.py:469
 #, python-format
 msgid "Going to %(x)d, %(y)d"
-msgstr ""
+msgstr "Andare a %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:473
 #, python-format
 msgid "Idle at %s"
-msgstr ""
+msgstr "Idle a %s"
 
 #: horizons/world/units/ship.py:474
 #, python-format
 msgid "Idle at %(x)d, %(y)d"
-msgstr ""
+msgstr "Idle a %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:494 sqlite/Unit
 msgid "Trader"
@@ -1933,7 +1930,7 @@ msgstr "Commerciante"
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Attaccare"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2279,7 +2276,7 @@ msgstr "blu"
 
 #: sqlite/Colors
 msgid "bordeaux"
-msgstr ""
+msgstr "bordò"
 
 #: sqlite/Colors
 msgid "cyan"
@@ -2287,7 +2284,7 @@ msgstr "giallo"
 
 #: sqlite/Colors
 msgid "gray"
-msgstr ""
+msgstr "grigio"
 
 #: sqlite/Colors
 msgid "green"
@@ -2295,11 +2292,11 @@ msgstr "verde"
 
 #: sqlite/Colors
 msgid "lemon"
-msgstr ""
+msgstr "limone"
 
 #: sqlite/Colors
 msgid "orange"
-msgstr ""
+msgstr "arancio"
 
 #: sqlite/Colors
 msgid "pink"
@@ -2307,7 +2304,7 @@ msgstr "rosa"
 
 #: sqlite/Colors
 msgid "purple"
-msgstr ""
+msgstr "porpora"
 
 #: sqlite/Colors
 msgid "red"
@@ -2315,7 +2312,7 @@ msgstr "rosso"
 
 #: sqlite/Colors
 msgid "teal"
-msgstr ""
+msgstr "alzavola"
 
 #: sqlite/Colors
 msgid "white"
@@ -2568,7 +2565,7 @@ msgstr "colone"
 
 #: sqlite/Unit
 msgid "Boar"
-msgstr ""
+msgstr "Cinghiale"
 
 # 83%
 #: sqlite/Unit
@@ -2578,19 +2575,19 @@ msgstr "bestiame"
 
 #: sqlite/Unit
 msgid "Deer"
-msgstr ""
+msgstr "Cervo"
 
 #: sqlite/Unit
 msgid "Fisher"
-msgstr ""
+msgstr "Pesci"
 
 #: sqlite/Unit
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Nave Pirata"
 
 #: sqlite/Unit
 msgid "Sheep"
-msgstr ""
+msgstr "Pecora"
 
 #~ msgid "Something went wrong with the network: "
 #~ msgstr "Qualcosa non è andata bene con la connessione di rete: "
