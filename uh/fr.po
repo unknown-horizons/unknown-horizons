@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-19 22:45+0200\n"
+"PO-Revision-Date: 2011-09-19 23:36+0200\n"
 "Last-Translator: Vincent <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1079,9 +1079,8 @@ msgid "Upgrade not possible:"
 msgstr "Mise à jour impossible :"
 
 #: horizons/i18n/guitranslations.py:248
-#, fuzzy
 msgid "This is the current maximum increment!"
-msgstr "Ceci est actuellement le niveau maximum"
+msgstr "Ceci est actuellement l'échelon maximum"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
@@ -1650,7 +1649,7 @@ msgstr "Activer le son :"
 
 #: horizons/i18n/guitranslations.py:504
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Bâtiment intact :"
 
 #: horizons/i18n/guitranslations.py:505
 msgid "Used renderer:"
@@ -1730,11 +1729,11 @@ msgstr "Réglages de partie:"
 
 #: horizons/i18n/guitranslations.py:547
 msgid "Free Trader"
-msgstr ""
+msgstr "Marchand Indépendant"
 
 #: horizons/i18n/guitranslations.py:548
 msgid "Pirates"
-msgstr ""
+msgstr "Pirates"
 
 #: horizons/i18n/guitranslations.py:551
 msgid "Color:"
@@ -1919,30 +1918,30 @@ msgstr ""
 
 #: horizons/world/units/ship.py:272
 msgid "Trade route: going to %s"
-msgstr ""
+msgstr "Route commerciale : aller vers %s"
 
 #: horizons/world/units/ship.py:273
 msgid "Trade route: waiting at %s"
-msgstr ""
+msgstr "Route commerciale : attendre à %s"
 
 #: horizons/world/units/ship.py:468 horizons/world/units/ship.py:469
 msgid "Going to %s"
-msgstr ""
+msgstr "Aller vers %s"
 
 #: horizons/world/units/ship.py:469
 #, python-format
 msgid "Going to %(x)d, %(y)d"
-msgstr ""
+msgstr "Aller de %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:473
 #, python-format
 msgid "Idle at %s"
-msgstr ""
+msgstr "Attendre à %s"
 
 #: horizons/world/units/ship.py:474
 #, python-format
 msgid "Idle at %(x)d, %(y)d"
-msgstr ""
+msgstr "Attendre à %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:494 sqlite/Unit
 msgid "Trader"
@@ -1951,7 +1950,7 @@ msgstr "Marchand"
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Attaquant "
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2018,20 +2017,28 @@ msgid "Loads the last quicksave."
 msgstr "Charge la dernière sauvegarde rapide."
 
 #: run_uh.py:108
+#, fuzzy
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Définir les germes utilisés pour générer les arbres, poissons et autres "
+"ressources naturelles."
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr "Option d'IA"
+msgstr "Options d'IA"
 
 #: run_uh.py:113
+#, fuzzy
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
 msgstr ""
+"Utilise l'IA des joueurs <ai_players> (exclue la possible hybridation "
+"humain-IA ; défaut à 1)."
 
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
 msgstr ""
+"Transforme le joueur humain en un hybride humain-IA (développement "
+"seulement)."
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
@@ -2298,7 +2305,7 @@ msgstr "bleu"
 
 #: sqlite/Colors
 msgid "bordeaux"
-msgstr ""
+msgstr "bordeaux"
 
 #: sqlite/Colors
 msgid "cyan"
@@ -2306,7 +2313,7 @@ msgstr "cyan"
 
 #: sqlite/Colors
 msgid "gray"
-msgstr ""
+msgstr "gris"
 
 #: sqlite/Colors
 msgid "green"
@@ -2314,11 +2321,11 @@ msgstr "vert"
 
 #: sqlite/Colors
 msgid "lemon"
-msgstr ""
+msgstr "citron"
 
 #: sqlite/Colors
 msgid "orange"
-msgstr ""
+msgstr "orange"
 
 #: sqlite/Colors
 msgid "pink"
@@ -2326,7 +2333,7 @@ msgstr "rose"
 
 #: sqlite/Colors
 msgid "purple"
-msgstr ""
+msgstr "violet"
 
 #: sqlite/Colors
 msgid "red"
@@ -2334,7 +2341,7 @@ msgstr "rouge"
 
 #: sqlite/Colors
 msgid "teal"
-msgstr ""
+msgstr "turquoise"
 
 #: sqlite/Colors
 msgid "white"
