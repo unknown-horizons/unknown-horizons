@@ -699,7 +699,7 @@ msgstr "Tisserand : Transforme la laine en tissu."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Mining"
-msgstr ""
+msgstr "Exploitation minière"
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Settler buildings"
@@ -720,7 +720,7 @@ msgstr "Charbonnier : Produit du charbon de bois à partir de planches."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Mine : Extrait du minerai à partir du gisement"
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Pigsty: Raises pigs. Needs a farm."
@@ -923,7 +923,7 @@ msgstr "Construire ce navire !"
 
 #: horizons/i18n/guitranslations.py:165 sqlite/Unit
 msgid "Frigate"
-msgstr ""
+msgstr "Frégate"
 
 #: horizons/i18n/guitranslations.py:169
 msgid "Buy resources"
@@ -1044,7 +1044,7 @@ msgstr "Impôts :"
 
 #: horizons/i18n/guitranslations.py:214 horizons/i18n/guitranslations.py:229
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Mettre à jour les permissions :"
 
 #: horizons/i18n/guitranslations.py:215 horizons/i18n/guitranslations.py:218
 #: horizons/i18n/guitranslations.py:230 horizons/i18n/guitranslations.py:233
@@ -1075,7 +1075,7 @@ msgstr "5 habitants"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Mise à jour impossible :"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "This is the current maximum increment!"
@@ -1096,7 +1096,7 @@ msgstr "Vente"
 
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:294
 msgid "Weapons:"
-msgstr ""
+msgstr "Armement :"
 
 # le contexte est à vérifier
 #: horizons/i18n/guitranslations.py:272
@@ -1221,11 +1221,11 @@ msgstr "Choisir ce scénario"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Wait at load:"
-msgstr ""
+msgstr "Attente de chargement :"
 
 #: horizons/i18n/guitranslations.py:351
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Attente de déchargement :"
 
 #: horizons/i18n/guitranslations.py:352
 msgid "Exit"
@@ -1242,7 +1242,7 @@ msgstr "100/100"
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:372
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:388
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 #: horizons/i18n/guitranslations.py:363
 msgid "Buildings"
@@ -1280,25 +1280,24 @@ msgstr "Unités"
 
 # 87%
 #: horizons/i18n/guitranslations.py:375
-#, fuzzy
 msgid "Balance"
-msgstr "Bilan :"
+msgstr "Bilan"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"
-msgstr ""
+msgstr "Santé"
 
 #: horizons/i18n/guitranslations.py:385
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: horizons/i18n/guitranslations.py:386
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 #: horizons/i18n/guitranslations.py:387
 msgid "Weapons"
-msgstr ""
+msgstr "Armement"
 
 #: horizons/i18n/guitranslations.py:391
 msgid "Aggressive"
@@ -1346,13 +1345,12 @@ msgstr "{F10} = Activer/Désactiver la console"
 
 # 92%
 #: horizons/i18n/guitranslations.py:405
-#, fuzzy
 msgid "{F2} = Show player scores"
-msgstr "{R} = Afficher les scores "
+msgstr "{F2} = Afficher les scores des joeurs"
 
 #: horizons/i18n/guitranslations.py:406
 msgid "{F3} = Show settlement list"
-msgstr ""
+msgstr "{F3} = Affiche la liste des colonies"
 
 #: horizons/i18n/guitranslations.py:407
 msgid "{F4} = Show ship list"
