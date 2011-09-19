@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-15 19:51+0200\n"
+"PO-Revision-Date: 2011-09-15 19:53+0200\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -563,7 +563,7 @@ msgstr "Bateaux de %(player)%"
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
 msgid "Production overview of %(settlement)s"
-msgstr ""
+msgstr "Sommaire de production de %(settlement)s"
 
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:354
 msgid "Start route"
