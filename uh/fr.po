@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-15 19:53+0200\n"
-"Last-Translator: Hugues <fafardh@hotmail.de>\n"
+"PO-Revision-Date: 2011-09-19 21:55+0200\n"
+"Last-Translator: Vincent <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -913,9 +913,10 @@ msgstr "Reprendre"
 msgid "Running costs"
 msgstr "Coûts de fonctionnement"
 
+# kind of fishing ship from north sea
 #: horizons/i18n/guitranslations.py:160 sqlite/Unit
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:166
 msgid "Build this ship!"
@@ -931,7 +932,7 @@ msgstr "Acheter des ressources"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "Cliquer sur l'icône de l'emplacement pour changer de mode :"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "Buy or sell resources"
@@ -1078,8 +1079,9 @@ msgid "Upgrade not possible:"
 msgstr "Mise à jour impossible :"
 
 #: horizons/i18n/guitranslations.py:248
+#, fuzzy
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "Ceci est actuellement le niveau maximum"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
@@ -1354,7 +1356,7 @@ msgstr "{F3} = Affiche la liste des colonies"
 
 #: horizons/i18n/guitranslations.py:407
 msgid "{F4} = Show ship list"
-msgstr ""
+msgstr "{F4} = Affiche la liste des navires"
 
 #: horizons/i18n/guitranslations.py:408
 msgid "{F5} = Quicksave"
@@ -1374,7 +1376,7 @@ msgstr "{G} = Activer/Désactiver la grille"
 
 #: horizons/i18n/guitranslations.py:412
 msgid "{H} = Show coordinate values (Debug)"
-msgstr ""
+msgstr "{H} = Affiche la valeur des coordonnées (Debug)"
 
 #: horizons/i18n/guitranslations.py:413
 msgid "Have fun."
@@ -1430,7 +1432,7 @@ msgstr "{X} = Activer le mode destruction"
 
 #: horizons/i18n/guitranslations.py:426 horizons/i18n/guitranslations.py:508
 msgid "Return"
-msgstr ""
+msgstr "Retourner"
 
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:443
 msgid "Help"
