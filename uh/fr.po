@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-19 21:55+0200\n"
+"PO-Revision-Date: 2011-09-19 22:45+0200\n"
 "Last-Translator: Vincent <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1223,11 +1223,11 @@ msgstr "Choisir ce scénario"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Wait at load:"
-msgstr "Attente de chargement :"
+msgstr "Attendre le chargement :"
 
 #: horizons/i18n/guitranslations.py:351
 msgid "Wait at unload:"
-msgstr "Attente de déchargement :"
+msgstr "Attendre le déchargement :"
 
 #: horizons/i18n/guitranslations.py:352
 msgid "Exit"
@@ -1457,7 +1457,7 @@ msgstr "Chargement ..."
 
 #: horizons/i18n/guitranslations.py:441
 msgid "Attention please!"
-msgstr "Attention !"
+msgstr "Votre attention !"
 
 #: horizons/i18n/guitranslations.py:442
 msgid "Credits"
@@ -1775,7 +1775,7 @@ msgstr "Erreur: Impossible de trouver la carte \"%s\"."
 
 #: horizons/main.py:335 horizons/main.py:407
 msgid "Error: Found multiple matches: "
-msgstr "Erreur: Plusieurs correspondances trouvées:"
+msgstr "Erreur: Plusieurs correspondances trouvées : "
 
 #: horizons/main.py:357
 msgid "Error: campaign filenames have to end in \".yaml\"."
@@ -2211,7 +2211,7 @@ msgstr "Pré"
 
 #: sqlite/Building
 msgid "Pavilion"
-msgstr "Pavillon"
+msgstr "Bache"
 
 #: sqlite/Building
 msgid "Pigsty"
@@ -2590,13 +2590,12 @@ msgstr "colon"
 
 #: sqlite/Unit
 msgid "Boar"
-msgstr ""
+msgstr "Sanglier"
 
 # 83%
 #: sqlite/Unit
-#, fuzzy
 msgid "Cattle"
-msgstr "bétail"
+msgstr "Bétail"
 
 #: sqlite/Unit
 msgid "Deer"
