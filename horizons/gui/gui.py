@@ -31,7 +31,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
 from horizons.util.gui import LazyWidgetsDict
-from horizons.ambientsound import AmbientSound
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.i18n.utils import N_
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
@@ -180,7 +180,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		Called chime action. Displaying call for help on artists and game design,
 		introduces information for SoC applicants (if valid).
 		"""
-		AmbientSound.play_special("message")
+		AmbientSoundComponent.play_special("message")
 		self.show_dialog(self.widgets['call_for_support'], {'okButton' : True}, onPressEscape = True)
 
 	def show_credits(self, number=0):

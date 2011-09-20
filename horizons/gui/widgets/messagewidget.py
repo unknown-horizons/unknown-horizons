@@ -28,7 +28,7 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from horizons.util import LivingObject, Callback
 from horizons.util.gui import load_uh_widget
-from horizons.ambientsound import AmbientSound
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.i18n.voice import get_speech_file
 
 class MessageWidget(LivingObject):
@@ -90,7 +90,7 @@ class MessageWidget(LivingObject):
 			horizons.main.fife.play_sound('speech', sound)
 		else:
 			# play default msg sound
-			AmbientSound.play_special('message')
+			AmbientSoundComponent.play_special('message')
 
 		self.draw_widget()
 		self.show_text(0)

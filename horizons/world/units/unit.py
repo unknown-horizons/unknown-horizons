@@ -28,10 +28,10 @@ import horizons.main
 from horizons.world.units.movingobject import MovingObject
 from horizons.util import Point, WorldObject, WeakMethod, Circle, decorators
 from horizons.constants import LAYERS
-from horizons.ambientsound import AmbientSound
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
 
-class Unit(AmbientSound, MovingObject):
+class Unit(MovingObject):
 	log = logging.getLogger("world.units")
 	is_unit = True
 	is_ship = False
@@ -61,6 +61,7 @@ class Unit(AmbientSound, MovingObject):
 		self._instance.addActionListener(self.InstanceActionListener)
 
 		self.loading_area = self.position
+		self.add_component(AmbientSoundComponent)
 
 	def remove(self):
 		self.log.debug("Unit.remove for %s started", self)

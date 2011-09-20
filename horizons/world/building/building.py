@@ -29,7 +29,7 @@ from horizons.scheduler import Scheduler
 
 from horizons.world.concreteobject import ConcretObject
 from horizons.world.settlement import Settlement
-from horizons.ambientsound import AmbientSound
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
@@ -37,7 +37,7 @@ from horizons.gui.tabs import EnemyBuildingOverviewTab
 from horizons.command.building import Build
 
 
-class BasicBuilding(AmbientSound, ConcretObject):
+class BasicBuilding(ConcretObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
@@ -67,6 +67,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				owner is not None else None
 
 	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None):
+		self.add_component(AmbientSoundComponent)
 		self.owner = owner
 		if level is None:
 			level = 0 if self.owner is None else self.owner.settler_level
@@ -92,10 +93,11 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
-			if self.soundfiles:
+			if self.soundfiles and self.has_component(AmbientSoundComponent):
 				play_every = 15 + random.randint(0, 15)
 				for soundfile in self.soundfiles:
-					self.play_ambient(soundfile, True, play_every)
+					self.get_component(AmbientSoundComponent).play_ambient(soundfile, True, play_every)
+
 
 	@property
 	def name(self):

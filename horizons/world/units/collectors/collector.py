@@ -31,6 +31,7 @@ from horizons.util.worldobject import WorldObjectNotFound
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 from horizons.constants import COLLECTORS
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
 class Collector(StorageHolder, Unit):
 	"""Base class for every collector. Does not depend on any home building.
@@ -337,8 +338,8 @@ class Collector(StorageHolder, Unit):
 		assert self.job is not None, '%s job is None in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, self.work_duration)
 		# play working sound
-		if self.soundfiles:
-			self.play_ambient(self.soundfiles[0], looping=False)
+		if self.soundfiles and self.has_component(AmbientSoundComponent):
+			self.get_component(AmbientSoundComponent).play_ambient(self.soundfiles[0], looping=False)
 		self.state = self.states.working
 
 	def finish_working(self):
@@ -352,8 +353,8 @@ class Collector(StorageHolder, Unit):
 		# deregister at the target we're at
 		self.job.object.remove_incoming_collector(self)
 		# stop playing ambient sound if any
-		if self.soundfiles:
-			self.stop_sound()
+		if self.soundfiles and self.has_component(AmbientSoundComponent):
+			self.get_component(AmbientSoundComponent).stop_sound()
 
 	def transfer_res_from_target(self):
 		"""Transfers resources from target to collector inventory"""

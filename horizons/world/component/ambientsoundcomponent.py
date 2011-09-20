@@ -20,17 +20,22 @@
 # ###################################################
 
 import horizons.main
+from horizons.world.component import Component
 from fife.extensions.fife_timer import repeatCall
 
-class AmbientSound(object):
+
+class AmbientSoundComponent(Component):
 	"""Support for playing ambient sounds, such as animal noise.
 	It relies on the subclass having an attribute "position", which must be either a Point or Rect.
 	"""
-	def __init__(self, positioning=True, **kwargs):
+
+	NAME = "ambientsound"
+
+	def __init__(self, instance, positioning=True, **kwargs):
 		"""
 		@param positioning: bool, whether sound should play from a certain position.
 		"""
-		super(AmbientSound, self).__init__(**kwargs)
+		super(AmbientSoundComponent, self).__init__(instance)
 		self.__init(positioning)
 
 	def __init(self, positioning):
@@ -38,7 +43,7 @@ class AmbientSound(object):
 		self.__emitter = None
 		self.__timer = None
 
-	def create_emitter(self):
+	def __create_emitter(self):
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			self.__emitter = horizons.main.fife.soundmanager.createEmitter()
 			self.__emitter.setGain(horizons.main.fife.get_uh_setting("VolumeEffects")*10)
@@ -47,7 +52,7 @@ class AmbientSound(object):
 			horizons.main.fife.emitter['ambient'].append(self.__emitter)
 
 	def load(self, db, worldid):
-		super(AmbientSound, self).load(db, worldid)
+		super(AmbientSoundComponent, self).load(db, worldid)
 		# set positioning per default to true, since only special sounds have this
 		# set to false, which are nonrecurring
 		self.__init(positioning=True)
@@ -65,7 +70,7 @@ class AmbientSound(object):
 		"""
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			if self.__emitter is None:
-				self.create_emitter()
+				self.__create_emitter()
 			# set to current position
 			if(hasattr(self, 'position') and self.position != None and self.__positioning):
 				self.__emitter.setPosition(self.position.center().x, self.position.center().y, 1)
@@ -91,9 +96,9 @@ class AmbientSound(object):
 		"""
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			if position is None:
-				a = AmbientSound(positioning=False)
+				a = AmbientSoundComponent(None, positioning=False)
 			else:
-				a = AmbientSound()
+				a = AmbientSoundComponent(None)
 				a.position = position
 			soundfile = horizons.main.db.get_sound_file(sound)
 			a.play_ambient(soundfile, looping = False)
