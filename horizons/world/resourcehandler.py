@@ -138,7 +138,7 @@ class ResourceHandler(StorageHolder):
 		if hasattr(self, "production_class"):
 			production_class = self.production_class
 		owner_inventory = None
-		if hasattr(self, "owner") and self.owner is not None and hasattr(self.owner, "inventory"):
+		if hasattr(self, "owner"):
 			owner_inventory = self.owner.inventory
 		self.add_production(production_class(self.inventory, owner_inventory, production_line_id))
 

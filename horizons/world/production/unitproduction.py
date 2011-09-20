@@ -49,6 +49,9 @@ class UnitProduction(ChangingProduction):
 		super(UnitProduction, self)._give_produced_res()
 
 	def _check_available_res(self):
+<<<<<<< HEAD
+		for res, amount in self._prod_line.consumed_res.iteritems():
+=======
 		# Gold must be available from the beginning
 		if self._prod_line.consumed_res.has_key(RES.GOLD_ID):
 			amount = self._prod_line.consumed_res[RES.GOLD_ID]

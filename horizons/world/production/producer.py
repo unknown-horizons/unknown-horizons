@@ -50,9 +50,7 @@ class Producer(ResourceHandler):
 		if auto_init:
 			for prod_line in self.session.db("SELECT id FROM production_line WHERE object_id = ? \
 			    AND enabled_by_default = 1", self.id):
-				# for abeaumont patch:
-				#self.add_production_by_id(prod_line[0], self.worldid, self.production_class)
-				self.add_production_by_id(prod_line[0], self.production_class)
+				self.add_production_by_id(prod_line[0], self.worldid, self.production_class)
 
 	@property
 	def capacity_utilisation(self):
