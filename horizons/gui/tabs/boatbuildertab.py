@@ -28,7 +28,7 @@ from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
-from horizons.constants import PRODUCTIONLINES, RES
+from horizons.constants import PRODUCTIONLINES
 
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
@@ -118,13 +118,9 @@ class BoatbuilderTab(OverviewTab):
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
 			i = 0
-			for res, amount in still_needed_res.iteritems():
-				if res == RES.GOLD_ID: # Gold is taken at the beginning
-					continue
+			for res, amount in still_needed_res:
 				if amount == 0:
 					continue # Don't show res that are not really needed anymore
-				assert i <= 3, "Only 3 still needed res for ships are currently supported"
-				assert res != RES.GOLD_ID, "gold has to be taken before the production starts"
 
 				icon = get_res_icon(res)[3]
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon
@@ -173,7 +169,7 @@ class BoatbuilderSelectTab(OverviewTab):
 		self.button_hover_image = bb_image_path % 'h'
 
 	def start_production(self, prod_line_id):
-		AddProduction(self.instance, prod_line_id, self.instance.owner).execute(self.instance.session)
+		AddProduction(self.instance, prod_line_id).execute(self.instance.session)
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu()._show_tab(0)
 
@@ -226,7 +222,7 @@ class BoatbuilderConfirmTab(OverviewTab):
 		self.tooltip = _("Confirm order")
 
 	def start_production(self):
-		AddProduction(self.instance, 15, self.instance.owner).execute(self.instance.session)
+		AddProduction(self.instance, 15).execute(self.instance.session)
 
 # this "tab" additionally requests functions for:
 # * get: currently ordered ship: name / image / type (fisher/trade/war)

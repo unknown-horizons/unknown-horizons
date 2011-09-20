@@ -155,7 +155,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			current_lines = self.get_production_lines()
 			for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
 				if not self.has_production_line(prod_line):
-					self.add_production_by_id(prod_line, self.owner)
+					self.add_production_by_id(prod_line)
 				# cross out the new lines from the current lines, so only the old ones remain
 				if prod_line in current_lines:
 					current_lines.remove(prod_line)

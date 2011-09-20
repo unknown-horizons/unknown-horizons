@@ -22,7 +22,7 @@
 import copy
 
 from horizons.world.production.production import ChangingProduction
-from horizons.constants import PRODUCTION, RES
+from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
 
 class UnitProduction(ChangingProduction):
@@ -49,19 +49,7 @@ class UnitProduction(ChangingProduction):
 		super(UnitProduction, self)._give_produced_res()
 
 	def _check_available_res(self):
-<<<<<<< HEAD
 		for res, amount in self._prod_line.consumed_res.iteritems():
-=======
-		# Gold must be available from the beginning
-		if self._prod_line.consumed_res.has_key(RES.GOLD_ID):
-			amount = self._prod_line.consumed_res[RES.GOLD_ID]
-			if self.owner_inventory[RES.GOLD_ID] > (-amount): # consumed res have negative sign
-				return True
-			else:
-				return False
-		for res in self._prod_line.consumed_res.iterkeys():
-			if res is RES.GOLD_ID:
-				continue # Gold already checked
 			# we change the production, so the amount can become 0
 			# in this case, we must no consider this resource, as it has already been fully provided
 			if amount != 0 and self.inventory[res] > 0:
@@ -72,15 +60,9 @@ class UnitProduction(ChangingProduction):
 		"""Takes as many res as there are and returns sum of amount of res taken."""
 		taken = 0
 		for res, amount in self._prod_line.consumed_res.iteritems():
-			if res == RES.GOLD_ID:
-				remnant = self.owner_inventory.alter(res, amount)
-				assert remnant == 0, "Not enough gold, shouldn't happend"
-				self._prod_line.change_amount(res, remnant)
-				taken += amount
-			else:
-				remnant = self.inventory.alter(res, amount) # try to get all
-				self._prod_line.change_amount(res, remnant) # set how much we still need to get
-				taken += abs(remnant) + amount
+			remnant = self.inventory.alter(res, amount) # try to get all
+			self._prod_line.change_amount(res, remnant) # set how much we still need to get
+			taken += abs(remnant) + amount
 		return taken
 
 	def _produce(self):
