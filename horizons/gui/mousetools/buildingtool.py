@@ -57,6 +57,7 @@ class BuildingTool(NavigationTool):
 		self.ship = ship
 		self._class = building
 		self.buildings = [] # list of PossibleBuild objs
+		self.buildings_action_set_ids = [] # list action set ids of list above
 		self.buildings_fife_instances = {} # fife instances of possible builds
 		self.buildings_missing_resources = {} # missing resources for possible builds
 		self.rotation = 45 + random.randint(0, 3)*90
@@ -167,6 +168,9 @@ class BuildingTool(NavigationTool):
 
 		# get new ones
 		self.buildings = new_buildings
+		# resize list of action set ids to new buildings
+		self.buildings_action_set_ids = self.buildings_action_set_ids + ([None] * (len(self.buildings) - len(self.buildings_action_set_ids)))
+		self.buildings_action_set_ids = self.buildings_action_set_ids[ : len(self.buildings) ]
 		# delete old infos
 		self.buildings_fife_instances.clear()
 		self.buildings_missing_resources.clear()
@@ -174,7 +178,9 @@ class BuildingTool(NavigationTool):
 		settlement = None # init here so we can access it below loop
 		neededResources, usableResources = {}, {}
 		# check if the buildings are buildable and color them appropriatly
+		i = -1
 		for building in self.buildings:
+			i += 1
 			# make surrounding transparent
 			self._make_surrounding_transparent(building.position)
 
@@ -188,10 +194,16 @@ class BuildingTool(NavigationTool):
 			if self._class.id == BUILDINGS.TREE_CLASS and not building.buildable:
 				continue # Tree/ironmine that is not buildable, don't preview
 			else:
-				self.buildings_fife_instances[building] = \
-				    self._class.getInstance(self.session, building.position.origin.x, \
-				                            building.position.origin.y, rotation=building.rotation,
-				                            action=building.action, level=level)
+				fife_instance, action_set_id = \
+				             self._class.getInstance(self.session, building.position.origin.x, \
+				                                     building.position.origin.y, rotation=building.rotation,
+				                                     action=building.action, level=level,
+				                                     action_set_id=self.buildings_action_set_ids[i])
+				self.buildings_fife_instances[building] = fife_instance
+				# remember action sets per order of occurence
+				# (this is far from good when building lines, but suffices for our purposes, which is mostly single build)
+				self.buildings_action_set_ids[i] = action_set_id
+
 
 			if self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS:
 				settlement = self.session.world.get_settlement(building.position.center())
@@ -392,6 +404,7 @@ class BuildingTool(NavigationTool):
 			if self.gui is not None:
 				self.gui.hide()
 		self.buildings = []
+		self.buildings_action_set_ids = []
 		return built
 
 	def _check_update_preview(self, endpoint):

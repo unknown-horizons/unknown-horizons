@@ -81,8 +81,8 @@ class BasicBuilding(ConcretObject):
 
 		self.loading_area = self.position # shape where collector get resources
 
-		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation=rotation,\
-		                                  action_set_id=self._action_set_id)
+		self._instance, action_set_id = self.getInstance(self.session, origin.x, origin.y, rotation=rotation,\
+		                                                 action_set_id=self._action_set_id)
 		self._instance.setId(str(self.worldid))
 
 		if self.has_running_costs: # Get payout every 30 seconds
@@ -206,6 +206,7 @@ class BasicBuilding(ConcretObject):
 		@param level: object level. Relevant for choosing an action set
 		@param rotation: rotation of the object. Any of [ 45 + 90*i for i in xrange(0, 4) ]
 		@param action_set_id: can be set if the action set is already known. If set, level isn't considered.
+		@return: tuple (fife_instance, action_set_id)
 		"""
 		assert isinstance(x, int)
 		assert isinstance(y, int)
@@ -281,7 +282,7 @@ class BasicBuilding(ConcretObject):
 				action = action_sets[action_set_id].keys()[0]
 
 		instance.act(action+"_"+str(action_set_id), facing_loc, True)
-		return instance
+		return (instance, action_set_id)
 
 	@classmethod
 	def have_resources(cls, inventory_holders, owner):
