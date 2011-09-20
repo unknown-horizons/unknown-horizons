@@ -312,7 +312,7 @@ class Server(object):
 
 
 	def onstartgame(self, game):
-		logging.debug("[START] %s" % (game.uuid))
+		logging.debug("[START] %s; players: %s" % (game.uuid, [str(i) for i in game.players])
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_startgame())
 

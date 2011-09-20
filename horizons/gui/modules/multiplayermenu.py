@@ -115,6 +115,9 @@ class MultiplayerMenu(object):
 			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
 			return
 		self.__refresh()
+		self.show_error_popup("Bug", "There are reports of problems with this feature.", \
+		                      "Please restart Unknown Horizons now to make sure you won't run into troubles")
+
 
 	def __on_error(self, exception):
 		if self.session is not None:
