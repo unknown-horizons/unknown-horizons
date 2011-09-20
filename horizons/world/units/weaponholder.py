@@ -442,11 +442,11 @@ class WeaponHolder(object):
 class MovingWeaponHolder(WeaponHolder):
 	def __init__(self, **kwargs):
 		super(MovingWeaponHolder, self).__init__(**kwargs)
-		self.add_component('hold_ground', HoldGroundStance)
-		self.add_component('aggressive', AggressiveStance)
-		self.add_component('none', NoneStance)
-		self.add_component('flee', FleeStance)
-		self.stance = 'hold_ground'
+		self.add_component(HoldGroundStance)
+		self.add_component(AggressiveStance)
+		self.add_component(NoneStance)
+		self.add_component(FleeStance)
+		self.stance = HoldGroundStance
 
 	def _stance_tick(self):
 		"""

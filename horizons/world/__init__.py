@@ -48,6 +48,7 @@ from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
+from horizons.world.component.healthcomponent import HealthComponent
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -784,7 +785,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		instances = []
 		for instance in self.get_ships(position, radius)+\
 				self.get_ground_units(position, radius):
-			if instance.has_component('health'):
+			if instance.has_component(HealthComponent):
 				instances.append(instance)
 		return instances
 

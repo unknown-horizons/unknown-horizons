@@ -27,6 +27,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import Callback
 from horizons.util.python import decorators
 from horizons.world.units.fightingship import FightingShip
+from horizons.world.component.healthcomponent import HealthComponent
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""
@@ -83,7 +84,8 @@ class PlayersShips(StatsWidget):
 		weapons.min_size = weapons.max_size = (60, 20)
 
 		health = widgets.Label(name = 'health_%d' % ship.worldid)
-		health.text = unicode('%d/%d' % (ship.get_component('health').health, ship.get_component('health').max_health))
+		health_component = ship.get_component(HealthComponent)
+		health.text = unicode('%d/%d' % (health_component.health, health_component.max_health))
 		health.min_size = health.max_size = (70, 20)
 
 		status = widgets.Label(name = 'status_%d' % ship.worldid)

@@ -27,6 +27,7 @@ from horizons.command.diplomacy import AddEnemyPair
 from horizons.util import WorldObject
 from selectiontool import SelectionTool
 from horizons.constants import LAYERS
+from horizons.world.component.healthcomponent import HealthComponent
 
 class AttackingTool(SelectionTool):
 	"""
@@ -87,7 +88,7 @@ class AttackingTool(SelectionTool):
 				and not evt.isShiftPressed():
 				continue
 			try:
-				if instance.has_component('health'):
+				if instance.has_component(HealthComponent):
 					attackable = True
 					target = instance
 			except AttributeError:

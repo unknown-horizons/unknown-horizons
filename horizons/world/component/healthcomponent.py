@@ -28,6 +28,9 @@ class HealthComponent(Component):
 	Class that handles the health component
 	"""
 
+	# Store the name of this component
+	NAME = 'health'
+
 	def __init__(self, instance):
 		super(HealthComponent, self).__init__(instance)
 		health = self.instance.session.db.cached_query("SELECT max_health FROM health WHERE id = ?", self.instance.id)[0][0]
@@ -48,11 +51,11 @@ class HealthComponent(Component):
 
 	def load(self, db, worldid):
 		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", worldid)[0][0]
-	
+
 	def check_if_alive(self, caller = None):
 		if self.health <= 0:
 			self.instance.remove()
-	
+
 	def redraw_health(self, caller = None):
 		if not self.instance:
 			return

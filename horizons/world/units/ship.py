@@ -307,7 +307,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def __init(self):
 		self._selected = False
 		# register ship in world
-		self.add_component('health', HealthComponent)
+		self.add_component(HealthComponent)
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -488,7 +488,7 @@ class TradeShip(Ship):
 
 	def __init__(self, x, y, **kwargs):
 		super(TradeShip, self).__init__(x, y, **kwargs)
-		self.remove_component('health')
+		self.remove_component(HealthComponent)
 
 	def _possible_names(self):
 		return [ _(u'Trader') ]

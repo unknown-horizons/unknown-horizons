@@ -29,6 +29,7 @@ from horizons.world.units.movingobject import MovingObject
 from horizons.util import Point, WorldObject, WeakMethod, Circle, decorators
 from horizons.constants import LAYERS
 from horizons.ambientsound import AmbientSound
+from horizons.world.component.healthcomponent import HealthComponent
 
 class Unit(AmbientSound, MovingObject):
 	log = logging.getLogger("world.units")
@@ -85,10 +86,11 @@ class Unit(AmbientSound, MovingObject):
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
-		if not self.has_component('health'):
+		if not self.has_component(HealthComponent):
 			return
-		health = self.get_component('health').health
-		max_health = self.get_component('health').max_health
+		health_component = self.get_component(HealthComponent)
+		health = health_component.health
+		max_health = health_component.max_health
 		renderer = self.session.view.renderer['GenericRenderer']
 		renderer.removeAll("health_" + str(self.worldid))
 		zoom = self.session.view.get_zoom()

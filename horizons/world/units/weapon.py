@@ -26,6 +26,7 @@ from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.units.bullet import Bullet
+from horizons.world.component.healthcomponent import HealthComponent
 
 @metaChangeListenerDecorator("attack_ready")
 @metaChangeListenerDecorator("weapon_fired")
@@ -93,7 +94,7 @@ class Weapon(object):
 
 		for unit in units:
 			cls.log.debug("dealing damage to %s", unit)
-			unit.get_component('health').deal_damage(weapon_id, damage)
+			unit.get_component(HealthComponent).deal_damage(weapon_id, damage)
 
 	def make_attack_ready(self):
 		self.attack_ready = True

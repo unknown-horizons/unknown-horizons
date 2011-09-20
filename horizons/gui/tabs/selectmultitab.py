@@ -23,6 +23,8 @@ from tabinterface import TabInterface
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget
 from horizons.scheduler import Scheduler
+from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.stancecomponent import *
 from fife.extensions import pychan
 
 class SelectMultiTab(TabInterface):
@@ -149,10 +151,10 @@ class SelectMultiTab(TabInterface):
 		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
 		self.widget.mapEvents({
-			'aggressive': Callback(self.set_stance, 'aggressive'),
-			'hold_ground': Callback(self.set_stance, 'hold_ground'),
-			'none': Callback(self.set_stance, 'none'),
-			'flee': Callback(self.set_stance, 'flee')
+			'aggressive': Callback(self.set_stance, AggressiveStance),
+			'hold_ground': Callback(self.set_stance, HoldGroundStance),
+			'none': Callback(self.set_stance, NoneStance),
+			'flee': Callback(self.set_stance, FleeStance)
 		})
 
 	def hide_stance_widget(self):
@@ -192,7 +194,7 @@ class UnitEntry(object):
 		for i in instances:
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
 				i.add_remove_listener(Callback(self.on_instance_removed, i))
-			health_component = i.get_component("health")
+			health_component = i.get_component(HealthComponent)
 			if not health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.add_damage_dealt_listener(self.draw_health)
 		self.draw_health()
@@ -208,7 +210,7 @@ class UnitEntry(object):
 		self.instances.remove(instance)
 		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
 			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
-		health_component = instance.get_component("health")
+		health_component = instance.get_component(HealthComponent)
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 
@@ -219,7 +221,7 @@ class UnitEntry(object):
 		health = 0
 		max_health = 0
 		for instance in self.instances:
-			health_component = instance.get_component("health")
+			health_component = instance.get_component(HealthComponent)
 			health += health_component.health
 			max_health += health_component.max_health
 		health_ratio = float(health) / max_health
@@ -234,7 +236,7 @@ class UnitEntry(object):
 		for instance in self.instances:
 			if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
 				instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
-			health_component = instance.get_component("health")
+			health_component = instance.get_component(HealthComponent)
 			if health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.remove_damage_dealt_listener(self.draw_health)
 

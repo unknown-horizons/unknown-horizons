@@ -22,6 +22,8 @@ from fife.extensions import pychan
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
 from horizons.gui.widgets import TooltipIcon
+from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.stancecomponent import *
 
 class StanceWidget(pychan.widgets.Container):
 	"""Widget used for setting up the stance for one instance"""
@@ -34,10 +36,10 @@ class StanceWidget(pychan.widgets.Container):
 		self.instance = instance
 		self.toggle_stance()
 		self.mapEvents({
-			'aggressive': Callback(self.set_stance, 'aggressive'),
-			'hold_ground': Callback(self.set_stance, 'hold_ground'),
-			'none': Callback(self.set_stance, 'none'),
-			'flee': Callback(self.set_stance, 'flee')
+			'aggressive': Callback(self.set_stance, AggressiveStance),
+			'hold_ground': Callback(self.set_stance, HoldGroundStance),
+			'none': Callback(self.set_stance, NoneStance),
+			'flee': Callback(self.set_stance, FleeStance)
 			})
 
 	def remove(self, caller=None):
@@ -66,19 +68,19 @@ class HealthWidget(pychan.widgets.Container):
 	def init(self, instance):
 		self.instance = instance
 		self.draw_health()
-		health_component = self.instance.get_component('health')
+		health_component = self.instance.get_component(HealthComponent)
 		if not health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.add_damage_dealt_listener(self.draw_health)
 
 	def draw_health(self, caller=None):
-		health_component = self.instance.get_component('health')
+		health_component = self.instance.get_component(HealthComponent)
 		max_health = int(health_component.max_health)
 		health = int(health_component.health)
 		self.findChild(name='health_label').text = unicode(str(health)+'/'+str(max_health))
 		self.findChild(name='health_bar').progress = int(health * 100. / max_health)
 
 	def remove(self, caller=None):
-		health_component = self.instance.get_component('health')
+		health_component = self.instance.get_component(HealthComponent)
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 		self.instance = None

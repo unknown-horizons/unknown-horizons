@@ -53,7 +53,7 @@ class ComponentHolder(object):
 				self.worldid, name, self.components[name].__class__.__module__, self.components[name].__class__.__name__)
 			self.components[name].save(db)
 
-	def add_component(self, component_name, component_class):
+	def add_component(self, component_class):
 		"""
 		Adds new component to holder.
 		@param component_name: name identifier of the added component
@@ -62,25 +62,25 @@ class ComponentHolder(object):
 		"""
 		component = component_class(self)
 		assert isinstance(component, Component)
-		self.components[component_name] = component
+		self.components[component.NAME] = component
 
-	def remove_component(self, component_name):
+	def remove_component(self, component_class):
 		"""
 		Removes component from holder.
 		"""
-		if self.has_component(component_name):
-			self.components[component_name].remove()
-			del self.components[component_name]
+		if self.has_component(component_class):
+			self.components[component_class.NAME].remove()
+			del self.components[component_class.NAME]
 
-	def has_component(self, component_name):
+	def has_component(self, component_class):
 		"""
 		Check if holder has component with component name
 		"""
-		return component_name in self.components
-	
-	def get_component(self, component_name):
-		if self.has_component(component_name):
-			return self.components[component_name]
+		return component_class.NAME in self.components
+
+	def get_component(self, component):
+		if self.has_component(component):
+			return self.components[component.NAME]
 		else:
 			return None
 
