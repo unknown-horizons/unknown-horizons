@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-12 07:29+0200\n"
+"PO-Revision-Date: 2011-09-20 07:12+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1623,7 +1623,7 @@ msgstr "Звук включен:"
 
 #: horizons/i18n/guitranslations.py:504
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Непрерывное строительство:"
 
 #: horizons/i18n/guitranslations.py:505
 msgid "Used renderer:"
@@ -1887,30 +1887,30 @@ msgstr "Файл сохранения используется другой пр
 
 #: horizons/world/units/ship.py:272
 msgid "Trade route: going to %s"
-msgstr ""
+msgstr "Торговый маршрут: двигаться в %s"
 
 #: horizons/world/units/ship.py:273
 msgid "Trade route: waiting at %s"
-msgstr ""
+msgstr "Торговый маршрут: ждать в %s"
 
 #: horizons/world/units/ship.py:468 horizons/world/units/ship.py:469
 msgid "Going to %s"
-msgstr ""
+msgstr "Двигаться в %s"
 
 #: horizons/world/units/ship.py:469
 #, python-format
 msgid "Going to %(x)d, %(y)d"
-msgstr ""
+msgstr "Двигаться в %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:473
 #, python-format
 msgid "Idle at %s"
-msgstr ""
+msgstr "Ждать в %s"
 
 #: horizons/world/units/ship.py:474
 #, python-format
 msgid "Idle at %(x)d, %(y)d"
-msgstr ""
+msgstr "Ждать в %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:494 sqlite/Unit
 msgid "Trader"
@@ -1919,7 +1919,7 @@ msgstr "Торговец"
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Атака "
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2262,7 +2262,7 @@ msgstr "синий"
 
 #: sqlite/Colors
 msgid "bordeaux"
-msgstr ""
+msgstr "бордовый"
 
 #: sqlite/Colors
 msgid "cyan"
@@ -2270,7 +2270,7 @@ msgstr "голубой"
 
 #: sqlite/Colors
 msgid "gray"
-msgstr ""
+msgstr "серый"
 
 #: sqlite/Colors
 msgid "green"
@@ -2278,11 +2278,11 @@ msgstr "зеленый"
 
 #: sqlite/Colors
 msgid "lemon"
-msgstr ""
+msgstr "лимонный"
 
 #: sqlite/Colors
 msgid "orange"
-msgstr ""
+msgstr "оранжевый"
 
 #: sqlite/Colors
 msgid "pink"
@@ -2290,7 +2290,7 @@ msgstr "розовый"
 
 #: sqlite/Colors
 msgid "purple"
-msgstr ""
+msgstr "фиолетовый"
 
 #: sqlite/Colors
 msgid "red"
@@ -2298,7 +2298,7 @@ msgstr "красный"
 
 #: sqlite/Colors
 msgid "teal"
-msgstr ""
+msgstr "бирюзовый"
 
 #: sqlite/Colors
 msgid "white"
@@ -2545,13 +2545,12 @@ msgstr "поселенец"
 
 #: sqlite/Unit
 msgid "Boar"
-msgstr ""
+msgstr "Кабан"
 
 # 83%
 #: sqlite/Unit
-#, fuzzy
 msgid "Cattle"
-msgstr "скот"
+msgstr "Скот"
 
 #: sqlite/Unit
 msgid "Deer"
