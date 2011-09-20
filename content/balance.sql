@@ -120,6 +120,7 @@ INSERT INTO "production" VALUES(10,5,3);
 INSERT INTO "production" VALUES(11,5,1);
 INSERT INTO "production" VALUES(12,5,2);
 INSERT INTO "production" VALUES(13,11,1);
+INSERT INTO "production" VALUES(15,1,-550);
 INSERT INTO "production" VALUES(15,4,-8);
 INSERT INTO "production" VALUES(15,3,-3);
 INSERT INTO "production" VALUES(15,6,-1);

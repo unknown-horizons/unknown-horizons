@@ -137,7 +137,10 @@ class ResourceHandler(StorageHolder):
 		"""
 		if hasattr(self, "production_class"):
 			production_class = self.production_class
-		self.add_production(production_class(self.inventory, production_line_id))
+		owner_inventory = None
+		if hasattr(self, "owner"):
+			owner_inventory = self.owner.inventory
+		self.add_production(production_class(self.inventory, owner_inventory, production_line_id))
 
 	def load_production(self, db, production_id):
 		"""Load a saved production and return it. Needs to be implemented when add_production is.

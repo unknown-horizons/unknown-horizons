@@ -36,5 +36,5 @@ class ToggleActive(GenericCommand):
 
 class AddProduction(GenericCommand):
 	"""Add a production to a producer"""
-	def __init__(self, obj, production_line_id):
-		super(AddProduction, self).__init__(obj, "add_production_by_id", production_line_id)
+	def __init__(self, obj, production_line_id, owner):
+		super(AddProduction, self).__init__(obj, "add_production_by_id", production_line_id, owner)
