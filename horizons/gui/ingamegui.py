@@ -444,7 +444,7 @@ class IngameGui(LivingObject):
 		self.minimap.draw() # update minimap to new world
 
 	def show_change_name_dialog(self, instance):
-		"""Shows a dialog where the user can change the name of a NamedObject.
+		"""Shows a dialog where the user can change the name of a NamedComponant.
 		The game gets paused while the dialog is executed."""
 		self.session.speed_pause()
 		events = {

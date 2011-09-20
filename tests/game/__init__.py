@@ -47,9 +47,10 @@ from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import (Color, DbReader, Rect, WorldObject, NamedObject, LivingObject,
+from horizons.util import (Color, DbReader, Rect, WorldObject, LivingObject,
 						   SavegameAccessor, Point, DifficultySettings)
 from horizons.world import World
+from horizons.world.component.namedcomponent import NamedComponent
 
 
 db = None
@@ -117,7 +118,7 @@ class SPTestSession(SPSession):
 		self.is_alive = True
 
 		WorldObject.reset()
-		NamedObject.reset()
+		NamedComponent.reset()
 		AIPlayer.clear_caches()
 
 		# Game

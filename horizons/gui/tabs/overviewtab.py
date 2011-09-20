@@ -27,7 +27,7 @@ from fife.extensions import pychan
 from tabinterface import TabInterface
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, ActionSetLoader, NamedObject
+from horizons.util import Callback, ActionSetLoader
 from horizons.constants import GAME_SPEED, RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton, DeleteButton
 from horizons.gui.widgets.unitoverview import StanceWidget
@@ -37,6 +37,8 @@ from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget, create_resource_icon
 from horizons.entities import Entities
+from horizons.world.component.namedcomponent import NamedComponent
+
 
 class OverviewTab(TabInterface):
 	def __init__(self, instance, widget = 'overviewtab.xml', \
@@ -64,8 +66,8 @@ class OverviewTab(TabInterface):
 		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
 			name_widget = self.widget.child_finder('name')
 			# Named objects can't be translated.
-			if isinstance(self.instance, NamedObject):
-				name_widget.text = self.instance.name
+			if self.instance.has_component(NamedComponent):
+				name_widget.text = self.instance.get_component(NamedComponent).name
 			else:
 				name_widget.text = _(self.instance.name)
 

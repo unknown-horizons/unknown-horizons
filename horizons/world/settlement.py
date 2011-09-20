@@ -24,10 +24,11 @@ import horizons.main
 from horizons.world.tradepost import TradePost
 from horizons.world.storageholder import StorageHolder
 from horizons.world.storage import PositiveSizedSlotStorage
-from horizons.util import WorldObject, WeakList, NamedObject
+from horizons.util import WorldObject, WeakList
 from horizons.constants import BUILDINGS, SETTLER
+from horizons.world.component.namedcomponent import NamedComponent
 
-class Settlement(TradePost, StorageHolder, NamedObject):
+class Settlement(TradePost, StorageHolder):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, session, owner):
@@ -38,6 +39,7 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		super(Settlement, self).__init__()
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
+		self.add_component(NamedComponent)
 		self.session = session
 		self.owner = owner
 		self.buildings = []

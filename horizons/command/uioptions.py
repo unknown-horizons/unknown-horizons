@@ -67,7 +67,7 @@ class BuyResource(GenericCommand):
 		super(BuyResource, self).__init__(settlement, 'buy_resource', ship.worldid, resource_id, amount)
 
 class RenameObject(GenericCommand):
-	"""Rename a NamedObject"""
+	"""Rename a NamedComponant"""
 	def __init__(self, obj, new_name):
 		super(RenameObject, self).__init__(obj, "set_name", new_name)
 

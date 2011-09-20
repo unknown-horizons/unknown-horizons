@@ -31,6 +31,7 @@ from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import PirateShip, TradeShip, FisherShip
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.component.namedcomponent import NamedComponent
 
 
 class Pirate(GenericAI):
@@ -78,7 +79,7 @@ class Pirate(GenericAI):
 		if self.ships[pirate_ship] != self.shipStates.going_home:
 			ship = self.get_nearest_player_ship(pirate_ship)
 			if ship:
-				self.log.debug("Pirate: Scout found ship: %s" % ship.name)
+				self.log.debug("Pirate: Scout found ship: %s" % ship.get_component(NamedComponent).name)
 				self.send_ship(pirate_ship)
 
 	def save(self, db):
@@ -116,13 +117,13 @@ class Pirate(GenericAI):
 			ship.add_move_callback(Callback(self.ship_idle, ship))
 
 	def send_ship(self, pirate_ship):
-		self.log.debug('Pirate %s: send_ship(%s) start transition: %s' % (self.worldid, pirate_ship.name, self.ships[pirate_ship]))
+		self.log.debug('Pirate %s: send_ship(%s) start transition: %s' % (self.worldid, pirate_ship.get_component(NamedComponent).name, self.ships[pirate_ship]))
 		done = False
 
 		#transition the pirate ship state to 'idle' once it is inside home circumference
-		if pirate_ship.position.distance(self.home_point) <= self.home_radius and self.ships[pirate_ship] == self.shipStates.going_home:        
+		if pirate_ship.position.distance(self.home_point) <= self.home_radius and self.ships[pirate_ship] == self.shipStates.going_home:
 			self.ships[pirate_ship] = self.shipStates.idle
-			self.log.debug('Pirate %s: send_ship(%s) reached home' % (self.worldid, pirate_ship.name))
+			self.log.debug('Pirate %s: send_ship(%s) reached home' % (self.worldid, pirate_ship.get_component(NamedComponent).name))
 
 		if self.ships[pirate_ship] != self.shipStates.going_home:
 			if self._chase_closest_ship(pirate_ship):
@@ -135,31 +136,31 @@ class Pirate(GenericAI):
 				# caught the ship, go home
 				try:
 					pirate_ship.move(Circle(self.home_point, self.home_radius), Callback(self.send_ship, pirate_ship))
-					self.log.debug('Pirate %s: send_ship(%s) going home' % (self.worldid, pirate_ship.name))
+					self.log.debug('Pirate %s: send_ship(%s) going home' % (self.worldid, pirate_ship.get_component(NamedComponent).name))
 					self.ships[pirate_ship] = self.shipStates.going_home
 					done = True
 				except MoveNotPossible:
-					self.log.debug('Pirate %s: send_ship(%s) unable to go home' % (self.worldid, pirate_ship.name))
+					self.log.debug('Pirate %s: send_ship(%s) unable to go home' % (self.worldid, pirate_ship.get_component(NamedComponent).name))
 
 		# the ship has no other orders so it should move to a random point
 		if not done and self.ships[pirate_ship] != self.shipStates.going_home:
 			self.send_ship_random(pirate_ship)
-		self.log.debug('Pirate %s: send_ship(%s) new state: %s' % (self.worldid, pirate_ship.name, self.ships[pirate_ship]))
+		self.log.debug('Pirate %s: send_ship(%s) new state: %s' % (self.worldid, pirate_ship.get_component(NamedComponent).name, self.ships[pirate_ship]))
 
 	def _chase_closest_ship(self, pirate_ship):
 		ship = self.get_nearest_player_ship(pirate_ship)
 		if ship:
 			if ship.position.distance(pirate_ship.position) <= self.caught_ship_radius:
 				self.ships[pirate_ship] = self.shipStates.chasing_ship
-				self.log.debug('Pirate %s: _chase_closest_ship(%s) caught %s' % (self.worldid, pirate_ship.name, ship.name))
+				self.log.debug('Pirate %s: _chase_closest_ship(%s) caught %s' % (self.worldid, pirate_ship.get_component(NamedComponent).name, ship.get_component(NamedComponent).name))
 				return False # already caught it
 
 			# move ship there:
 			try:
 				pirate_ship.move(Circle(ship.position, self.caught_ship_radius - 1), Callback(self.send_ship, pirate_ship))
-				self.log.debug('Pirate %s: _chase_closest_ship(%s) chasing %s' % (self.worldid, pirate_ship.name, ship.name))
+				self.log.debug('Pirate %s: _chase_closest_ship(%s) chasing %s' % (self.worldid, pirate_ship.get_component(NamedComponent).name, ship.get_component(NamedComponent).name))
 				self.ships[pirate_ship] = self.shipStates.chasing_ship
 				return True
 			except MoveNotPossible:
-				self.log.debug('Pirate %s: _chase_closest_ship(%s) unable to chase the closest ship %s' % (self.worldid, pirate_ship.name, ship.name))
+				self.log.debug('Pirate %s: _chase_closest_ship(%s) unable to chase the closest ship %s' % (self.worldid, pirate_ship.get_component(NamedComponent).name, ship.get_component(NamedComponent).name))
 		return False

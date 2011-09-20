@@ -29,7 +29,6 @@ from worldobject import WorldObject
 from loaders.actionsetloader import ActionSetLoader
 from loaders.tilesetloader import TileSetLoader
 from pychanchildfinder import PychanChildFinder
-from named_object import NamedObject
 from dbreader import DbReader
 from savegameaccessor import SavegameAccessor
 from sqliteanimationloader import SQLiteAnimationLoader

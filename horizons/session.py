@@ -36,7 +36,8 @@ from horizons.extscheduler import ExtScheduler
 from horizons.view import View
 from horizons.world import World
 from horizons.entities import Entities
-from horizons.util import WorldObject, NamedObject, LivingObject, livingProperty, SavegameAccessor
+from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
+from horizons.world.component.namedcomponent import NamedComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.constants import GAME_SPEED
@@ -83,7 +84,7 @@ class Session(LivingObject):
 		self.is_alive = True
 
 		WorldObject.reset()
-		NamedObject.reset()
+		NamedComponent.reset()
 		AIPlayer.clear_caches()
 
 		#game

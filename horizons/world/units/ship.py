@@ -32,13 +32,14 @@ from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, NamedObject, Circle, WorldObject
+from horizons.util import Point, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.namedcomponent import ShipNameComponent, PirateShipNameComponent
 
 class ShipRoute(object):
 	"""
@@ -272,7 +273,7 @@ class ShipRoute(object):
 			return _('Trade route: going to %s' % self.ship.get_location_based_status(self.ship.get_move_target()))
 		return _('Trade route: waiting at %s' % self.ship.get_location_based_status(self.ship.position))
 
-class Ship(NamedObject, StorageHolder, Unit):
+class Ship(StorageHolder, Unit):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -308,9 +309,13 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self._selected = False
 		# register ship in world
 		self.add_component(HealthComponent)
+		self.add_component(ShipNameComponent)
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+
+	def set_name(self, name):
+		self.get_component(ShipNameComponent).set_name(name)
 
 	def remove(self):
 		super(Ship, self).remove()
@@ -433,12 +438,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 			)
 
-	def _possible_names(self):
-		names = self.session.db("SELECT name FROM shipnames WHERE for_player = 1")
-		# We need unicode strings as the name is displayed on screen.
-		return map(lambda x: unicode(x[0], 'utf-8'), names)
-
-
 	def find_nearby_ships(self, radius=15):
 		# TODO: Replace 15 with a distance dependant on the ship type and any
 		# other conditions.
@@ -476,9 +475,10 @@ class Ship(NamedObject, StorageHolder, Unit):
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()
-	def _possible_names(self):
-		names = self.session.db("SELECT name FROM shipnames WHERE for_pirate = 1")
-		return map(lambda x: unicode(x[0]), names)
+
+	def __init(self):
+		super(PirateShip, self).__init()
+		self.add_component(PirateShipNameComponent) # Because this has the same name as the ShipNameComponent it will override the old ShipnameComponent
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""
