@@ -63,7 +63,7 @@ class OverviewTab(TabInterface):
 
 
 	def refresh(self):
-		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
+		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
 			name_widget = self.widget.child_finder('name')
 			# Named objects can't be translated.
 			if self.instance.has_component(NamedComponent):
@@ -107,7 +107,7 @@ class BranchOfficeOverviewTab(OverviewTab):
 			widget = 'overview_branchoffice.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		self.tooltip = _("Branch office overview")
 		self._refresh_collector_utilisation()
 
@@ -116,7 +116,7 @@ class BranchOfficeOverviewTab(OverviewTab):
 		self.widget.findChild(name="collector_utilisation").text = unicode(str(utilisation) + '%')
 
 	def refresh(self):
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		self._refresh_collector_utilisation()
 		super(BranchOfficeOverviewTab, self).refresh()
 

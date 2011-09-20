@@ -26,9 +26,11 @@ from horizons.world.storageholder import StorageHolder
 from horizons.world.storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList
 from horizons.constants import BUILDINGS, SETTLER
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.componentholder import ComponentHolder
+from horizons.world.component.namedcomponent import SettlementNameComponent
+from horizons.util.changelistener import ChangeListener
 
-class Settlement(TradePost, StorageHolder):
+class Settlement(WorldObject, ChangeListener, ComponentHolder, TradePost, StorageHolder):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, session, owner):
@@ -37,9 +39,9 @@ class Settlement(TradePost, StorageHolder):
 		"""
 		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 		super(Settlement, self).__init__()
+		self.add_component(SettlementNameComponent)
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
-		self.add_component(NamedComponent)
 		self.session = session
 		self.owner = owner
 		self.buildings = []
@@ -75,9 +77,6 @@ class Settlement(TradePost, StorageHolder):
 				if building.level == level:
 					building.on_change_upgrade_permissions()
 
-	def _possible_names(self):
-		names = horizons.main.db("SELECT name FROM citynames WHERE for_player = 1")
-		return map(lambda x: x[0], names)
 
 	@property
 	def inhabitants(self):
@@ -141,6 +140,7 @@ class Settlement(TradePost, StorageHolder):
 
 		# load super here cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)
+		self.add_component(SettlementNameComponent)
 
 		# load all buildings from this settlement
 		# the buildings will expand the area of the settlement by adding everything,

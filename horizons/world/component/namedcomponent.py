@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.world.component import Component
+from horizons.util.changelistener import ChangeListener
 
 
 class NamedComponent(Component):
@@ -41,7 +42,8 @@ class NamedComponent(Component):
 			name = self.get_default_name()
 		self.name = name
 		NamedComponent.names_used.append(self.name)
-		self.instance._changed()
+		if isinstance(self.instance, ChangeListener):
+			self.instance._changed()
 
 	def _possible_names(self):
 		return ['object_%s' % self.instance.worldid]
@@ -82,3 +84,9 @@ class PirateShipNameComponent(NamedComponent):
 	def _possible_names(self):
 		names = self.instance.session.db("SELECT name FROM shipnames WHERE for_pirate = 1")
 		return map(lambda x: unicode(x[0]), names)
+
+class SettlementNameComponent(NamedComponent):
+
+	def _possible_names(self):
+		names = self.instance.session.db("SELECT name FROM citynames WHERE for_player = 1")
+		return map(lambda x: x[0], names)

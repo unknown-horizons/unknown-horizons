@@ -40,6 +40,7 @@ from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.world.component.namedcomponent import SettlementNameComponent
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -275,7 +276,7 @@ class IngameGui(LivingObject):
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
 			})
 		foundlabel = cityinfo.child_finder('city_name')
-		foundlabel._setText(unicode(self.settlement.name))
+		foundlabel._setText(unicode(self.settlement.get_component(SettlementNameComponent).name))
 		foundlabel.resizeToContent()
 		foundlabel = self.widgets['city_info'].child_finder('city_inhabitants')
 		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
