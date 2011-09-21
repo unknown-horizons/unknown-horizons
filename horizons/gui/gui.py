@@ -93,6 +93,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.return_to_game()
 		else:
 			self.__pause_displayed = True
+			# reload the menu because caching creates spacing problems
+			# see http://trac.unknown-horizons.org/t/ticket/1047
+			self.widgets.reload('ingamemenu')
 			self._switch_current_widget('ingamemenu', center=True, show=True, event_map={
 				  # icons
 				'loadgameButton' : horizons.main.load_game,

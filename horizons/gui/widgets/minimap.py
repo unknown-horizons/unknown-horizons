@@ -153,7 +153,7 @@ class Minimap(object):
 		mouse_position = Point(event.getX(), event.getY())
 		abs_mouse_position = icon_pos + mouse_position
 		if not self.location.contains(abs_mouse_position):
-			# mouse click was on icon but not acctually on minimap
+			# mouse click was on icon but not actually on minimap
 			return
 		abs_mouse_position = self._get_from_rotated_coords (abs_mouse_position.to_tuple())
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position)
@@ -250,7 +250,7 @@ class Minimap(object):
 
 	def rotate_right (self):
 		# keep track of rotation at any time, but only apply
-		# if it's acctually used
+		# if it's actually used
 		self.rotation += 1
 		self.rotation %= 4
 		self.update_cam()

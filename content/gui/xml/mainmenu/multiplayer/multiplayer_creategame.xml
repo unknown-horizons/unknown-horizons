@@ -50,19 +50,34 @@
 	-->
 	<VBox name="playerdataselectioncontainer"  position="100,190" />
 
-	<Container size="320,500"  position="420,32"  name="right_side">
+	<VBox size="320,500"  position="420,32"  name="right_side">
+	<Spacer fixed_size="50"/>
+		<!--
 		<Label text="Choose a map:"  name="headline"  position="0,50" />
 		<ScrollArea position="0,80"  name="map_list_area"  min_size="290,250" >
 			<ListBox name="maplist"  min_size="290,330" />
 		</ScrollArea>
+		-->
+		<Label text="Choose a map:"  name="headline"  />
+		<ScrollArea  name="map_list_area"  min_size="290,250" >
+			<ListBox name="maplist"  min_size="290,330" />
+		</ScrollArea>
+		<Label name="recommended_number_of_players_lbl" text="" />
 	<!--
 		<ScrollArea name="map_description_area" position="5,380" />
 	-->
+	</VBox>>
 
+	  <HBox min_size="0,30" position="600, 490">
+			<Spacer/>
+			<!--
 		<Label name="create_game_lbl"  text="Create game:"  position="170,470" />
 		<OkButton position="255,460"  name="create"  tooltip="Create this new game" />
+		-->
+		<Label name="create_game_lbl"  text="Create game:"  />
+		<OkButton  name="create"  tooltip="Create this new game" />
+	</HBox>
 
-	</Container>
 
 </Container>
 </Container>

@@ -54,7 +54,7 @@ class Timer(LivingObject):
 		self.tick_func_call = []
 
 	def activate(self):
-		"""Acctually starts the timer"""
+		"""Actually starts the timer"""
 		horizons.main.fife.pump.append(self.check_tick)
 
 	def end(self):

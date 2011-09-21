@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import math
+import operator
 
 from fife.extensions import pychan
 
@@ -27,7 +28,7 @@ from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
-from horizons.constants import PRODUCTIONLINES
+from horizons.constants import PRODUCTIONLINES, RES
 
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
@@ -50,7 +51,8 @@ class BoatbuilderTab(OverviewTab):
 		progress_container = main_container.findChild(name="BB_progress_container")
 
 		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
-		if self.instance.get_production_lines():
+		production_lines = self.instance.get_production_lines()
+		if production_lines:
 			# TODO: fill in actual values here
 
 			# remove other container, but save it
@@ -60,8 +62,12 @@ class BoatbuilderTab(OverviewTab):
 			if container_active is None:
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
-			container_active.findChild(name="headline_BB_builtship_label").text = _("Huker")
+			produced_unit_id = self.instance._get_production(production_lines[0]).get_produced_units().keys()[0]
+			(name,) = self.instance.session.db("SELECT name FROM unit WHERE id = ?", produced_unit_id)[0]
+			container_active.findChild(name="headline_BB_builtship_label").text = unicode(name)
 			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
+			container_active.findChild(name="BB_cur_ship_icon").image = "content/gui/images/objects/ships/116/%s.png" % (produced_unit_id)
+
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
@@ -107,16 +113,29 @@ class BoatbuilderTab(OverviewTab):
 			# Update needed resources
 			production = self.instance._get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
-			i = 1
+			# Now sort!
+			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
-			for res, amount in still_needed_res.iteritems():
+			i = 0
+			for res, amount in still_needed_res:
+				if res == RES.GOLD_ID: # Gold is taken at the beginning
+					continue
+				if amount == 0:
+					continue # Don't show res that are not really needed anymore
 				assert i <= 3, "Only 3 still needed res for ships are currently supported"
+				assert res != RES.GOLD_ID, "gold has to be taken before the production starts"
 
 				icon = get_res_icon(res)[3]
-				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i)).image = icon
-				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i)).text = unicode(-1*amount)+u't' # -1 make them positive
+				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon
+				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i+1)).text = unicode(-1*amount)+u't' # -1 make them positive
 				i += 1
+				if i >= 3:
+					break
+			for j in xrange(i, 3):
+				# these are not filled by a resource, so we need to make it invisible
+				needed_res_container.findChild(name="BB_needed_res_icon_"+str(j+1)).image = None
+				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(j+1)).text = u""
 
 			# TODO: cancel building button
 	#		print "Cancelbutton search.."

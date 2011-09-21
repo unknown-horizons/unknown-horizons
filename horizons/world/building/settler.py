@@ -155,7 +155,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			current_lines = self.get_production_lines()
 			for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
 				if not self.has_production_line(prod_line):
-					self.add_production_by_id(prod_line)
+					self.add_production_by_id(prod_line, self.owner)
 				# cross out the new lines from the current lines, so only the old ones remain
 				if prod_line in current_lines:
 					current_lines.remove(prod_line)
@@ -194,8 +194,13 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		difference = 1.0 - self.settlement.tax_settings[self.level]
-		happiness_decrease = 45 * difference - 15 * abs(difference)
+		happiness_decrease = 12 * difference - 6* abs(difference)
 		happiness_decrease = int(round(happiness_decrease))
+		# NOTE: this formula was actually designed for a different use case, where the happiness
+		# is calculated from the number of available goods -/+ a certain tax factor.
+		# to simulate the more dynamic, currently implemented approach (where every event changes
+		# the happiness), we simulate discontent of taxes by this:
+		happiness_decrease -= 8
 		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
 
 		self._changed()

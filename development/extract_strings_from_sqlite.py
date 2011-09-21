@@ -19,10 +19,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-"""
-Currently the unit table is not extracted for translation purposes as it is not
-visible ingame. Once that changes, please uncomment lines 109f.
-"""
 
 import sqlalchemy
 import sqlalchemy.orm
@@ -126,8 +122,8 @@ def collect_all():
 	for building in db_session.query(Building):
 		collector.add_to_collection(building.name, 'Building')
 
-#	for unit in db_session.query(Unit):
-#		collector.add_to_collection(unit.name, 'Unit')
+	for unit in db_session.query(Unit):
+		collector.add_to_collection(unit.name, 'Unit')
 
 	for color in db_session.query(Colors):
 		collector.add_to_collection(color.name, 'Colors')

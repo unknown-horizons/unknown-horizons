@@ -11,7 +11,7 @@
 		<VBox max_size="650,20">
 			<HBox>
 				<Label min_size="15,20" name="sequence_number" text="" />
-				<Label min_size="200,20" name="name" text="Name" />
+				<Label min_size="200,20" name="settlement_name" text="Name" />
 				<Label min_size="110,20" name="inhabitants" text="Inhabitants" />
 				<Label min_size="50,20" name="taxes" text="Taxes" />
 				<Label min_size="100,20" name="running_costs" text="Running costs" />

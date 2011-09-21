@@ -44,7 +44,7 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = {}
-		self.branch_office = None # this is set later in the same tick by the bo itself
+		self.branch_office = None # this is set later in the same tick by the bo itself or load() here
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
 
@@ -146,7 +146,9 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		from horizons.world import load_building
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
-			load_building(session, db, building_type, building_id)
+			building = load_building(session, db, building_type, building_id)
+			if building_type == BUILDINGS.BRANCH_OFFICE_CLASS:
+				self.branch_office = building
 
 		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):
 			self.produced_res[res] = amount

@@ -33,7 +33,7 @@ class _BuildPosition(object):
 		@param position: Rect, building position and size
 		@param rotation: int rotation of building
 		@param tearset: list of worldids of buildings to tear for this building to build
-		@param buildable: whether building is acctually buildable there
+		@param buildable: whether building is actually buildable there
 		@param action: action (animation of building)
 		"""
 		self.position = position

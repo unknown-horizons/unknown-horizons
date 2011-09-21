@@ -64,17 +64,17 @@ def print_production_lines():
 	for (id, changes_anim, object, time, default) in db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
 		(consumption,production) = get_prod_line(id, list)
 
-		str = 'ProdLine %2s of %2s:%-16s %5s sec %s\t change_anim(%s) ' % (id, object, get_obj_name(object), time, ('D' if default else ' '), changes_anim)
+		str = 'Line %2s of %2s:%-16s %5s sec %s %s ' % (id, object, get_obj_name(object), time, ('D' if default else ' '), ('C' if changes_anim else ' '))
 
 		if len(consumption) > 0:
-			str += 'consumes: '
+			str += 'uses: '
 			for res, amount in consumption:
-				str += '%s %s(%s), ' % (-amount, get_res_name(res), res)
+				str += '%2s %-16s ' % (-amount, get_res_name(res) + '(%s)' % res)
 
 		if len(production) > 0:
-			str += '\tproduces: '
+			str += '\t=> '
 			for res, amount in production:
-				str +=  '%s %s(%s), ' % (amount, get_res_name(res), res)
+				str +=  '%2s %-16s ' % (amount, get_res_name(res) + '(%s)' % res)
 
 		print str
 

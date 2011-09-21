@@ -86,6 +86,9 @@ class Player():
 	def __getstate__(self):
 		return { 'name': self.name, 'address': self.address, 'peer': None, 'ready': False }
 
+	def __str__(self):
+		return "Player(name="+self.name+";address="+str(self.address)+")"
+
 #-----------------------------------------------------------------------------
 
 class Game():

@@ -61,9 +61,15 @@ class SingleplayerMenu(object):
 			self.current.files, maps_display = SavegameManager.get_maps()
 
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
+			def _update_infos():
+				number_of_players = SavegameManager.get_recommended_number_of_players( self.__get_selected_map() )
+				self.current.findChild(name="recommended_number_of_players_lbl").text = \
+				    _("Recommended number of players: ") + unicode( number_of_players )
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
+				_update_infos()
+			self.current.findChild(name="maplist").capture(_update_infos)
 			show_ai_options = True
 			self.__setup_game_settings_selection()
 		else:
@@ -186,7 +192,7 @@ class SingleplayerMenu(object):
 	def __setup_random_map_selection(self, widget):
 		map_size_slider = widget.findChild(name = 'map_size_slider')
 		def on_map_size_slider_change():
-			widget.findChild(name = 'map_size_lbl').text = _('Map size: ') + \
+			widget.findChild(name = 'map_size_lbl').text = _('Map size:') + u' ' + \
 				unicode(self.map_sizes[int(map_size_slider.getValue())])
 			horizons.main.fife.set_uh_setting("RandomMapSize", map_size_slider.getValue())
 			horizons.main.fife.save_settings()
@@ -196,14 +202,14 @@ class SingleplayerMenu(object):
 		water_percent_slider = widget.findChild(name = 'water_percent_slider')
 		def on_water_percent_slider_change():
 			widget.findChild(name = 'water_percent_lbl').text = _('Water: ') + \
-				unicode(self.water_percents[int(water_percent_slider.getValue())]) + '%'
+				unicode(self.water_percents[int(water_percent_slider.getValue())]) + u'%'
 			horizons.main.fife.set_uh_setting("RandomMapWaterPercent", water_percent_slider.getValue())
 		water_percent_slider.capture(on_water_percent_slider_change)
 		water_percent_slider.setValue(horizons.main.fife.get_uh_setting("RandomMapWaterPercent"))
 
 		max_island_size_slider = widget.findChild(name = 'max_island_size_slider')
 		def on_max_island_size_slider_change():
-			widget.findChild(name = 'max_island_size_lbl').text = _('Max island size: ') + \
+			widget.findChild(name = 'max_island_size_lbl').text = _('Max island size:') + u' ' + \
 				unicode(self.island_sizes[int(max_island_size_slider.getValue())])
 			horizons.main.fife.set_uh_setting("RandomMapMaxIslandSize", max_island_size_slider.getValue())
 		max_island_size_slider.capture(on_max_island_size_slider_change)
@@ -211,7 +217,7 @@ class SingleplayerMenu(object):
 
 		preferred_island_size_slider = widget.findChild(name = 'preferred_island_size_slider')
 		def on_preferred_island_size_slider_change():
-			widget.findChild(name = 'preferred_island_size_lbl').text = _('Preferred island size: ') + \
+			widget.findChild(name = 'preferred_island_size_lbl').text = _('Preferred island size:') + u' ' + \
 				unicode(self.island_sizes[int(preferred_island_size_slider.getValue())])
 			horizons.main.fife.set_uh_setting("RandomMapPreferredIslandSize", preferred_island_size_slider.getValue())
 		preferred_island_size_slider.capture(on_preferred_island_size_slider_change)
@@ -219,7 +225,7 @@ class SingleplayerMenu(object):
 
 		island_size_deviation_slider = widget.findChild(name = 'island_size_deviation_slider')
 		def on_island_size_deviation_slider_change():
-			widget.findChild(name = 'island_size_deviation_lbl').text = _('Island size deviation: ') + \
+			widget.findChild(name = 'island_size_deviation_lbl').text = _('Island size deviation:') + u' ' + \
 				unicode(self.island_size_deviations[int(island_size_deviation_slider.getValue())])
 			horizons.main.fife.set_uh_setting("RandomMapIslandSizeDeviation", island_size_deviation_slider.getValue())
 		island_size_deviation_slider.capture(on_island_size_deviation_slider_change)
@@ -241,9 +247,14 @@ class SingleplayerMenu(object):
 
 		resource_density_slider = widget.findChild(name = 'resource_density_slider')
 		def on_resource_density_slider_change():
+<<<<<<< HEAD
 			widget.findChild(name = 'resource_density_lbl').text = _('Resource density: ') + \
 				unicode(self.resource_densities[int(resource_density_slider.getValue())]) + 'x'
 			horizons.main.fife.set_uh_setting("MapResourceDensity", resource_density_slider.getValue())
+=======
+			widget.findChild(name = 'resource_density_lbl').text = _('Resource density:') + u' ' + \
+				unicode(self.resource_densities[int(resource_density_slider.getValue())]) + u'x'
+>>>>>>> master
 		resource_density_slider.capture(on_resource_density_slider_change)
 		resource_density_slider.setValue(horizons.main.fife.get_uh_setting("MapResourceDensity"))
 
@@ -268,6 +279,7 @@ class SingleplayerMenu(object):
 		"""Shows a popup complaining about invalid scenario file.
 		@param exception: InvalidScenarioFile exception instance"""
 		print "Error: ", unicode(str(exception))
-		self.show_popup(_("Invalid scenario file"), \
-		                _("The selected file is not a valid scenario file.\nError message: ") + \
-		                unicode(str(exception)) + _("\nPlease report this to the author."))
+		self.show_error_popup(_("Invalid scenario file"), \
+		                description=_("The selected file is not a valid scenario file."),
+		                details=_("Error message:") + u' ' + unicode(str(exception)),
+		                advice=_("Please report this to the author."))

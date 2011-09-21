@@ -51,21 +51,22 @@ class Production(WorldObject):
 	log = logging.getLogger('world.production')
 
 	## INIT/DESTRUCT
-	def __init__(self, inventory, prod_line_id, auto_start=True, **kwargs):
+	def __init__(self, inventory, owner_inventory, prod_line_id, auto_start=True, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self._state_history = deque()
-		self.__init(inventory, prod_line_id, PRODUCTION.STATES.none, Scheduler().cur_tick)
+		self.__init(inventory, owner_inventory, prod_line_id, PRODUCTION.STATES.none, Scheduler().cur_tick)
 		if auto_start:
 			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 		else:
 			self.inventory.add_change_listener(self._check_inventory, call_listener_now=False)
 
-	def __init(self, inventory, prod_line_id, state, creation_tick, pause_old_state = None):
+	def __init(self, inventory, owner_inventory, prod_line_id, state, creation_tick, pause_old_state = None):
 		"""
 		@param inventory: inventory of assigned building
 		@param prod_line_id: id of production line.
 		"""
 		self.inventory = inventory
+		self.owner_inventory = owner_inventory
 		self._state = state
 		self._pause_remaining_ticks = None # only used in pause()
 		self._pause_old_state = pause_old_state # only used in pause()
@@ -113,8 +114,10 @@ class Production(WorldObject):
 		super(Production, self).load(db, worldid)
 
 		db_data = db.get_production_row(worldid)
-		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
-								db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
+		obj = WorldObject.get_object_by_id(db_data[1])
+		owner_inventory = obj._get_owner_inventory()
+		self.__init(obj.inventory, owner_inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
+			db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
 		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION.STATES.producing:

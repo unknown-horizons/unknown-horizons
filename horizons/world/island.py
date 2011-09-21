@@ -32,7 +32,6 @@ from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
-from horizons.world.units.animal import WildAnimal
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -77,6 +76,7 @@ class Island(BuildingOwner, WorldObject):
 		self.__init(Point(x, y), filename)
 
 		# create building indexers
+		from horizons.world.units.animal import WildAnimal
 		self.building_indexers = {}
 		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
@@ -376,7 +376,7 @@ class Island(BuildingOwner, WorldObject):
 		# so do nothing in this case.
 
 	def _init_cache(self):
-		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """ 
+		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """
 		self.last_change_id = -1
 		self.building_sizes = set()
 		db_result = self.session.db("SELECT DISTINCT size_x, size_y FROM building WHERE button_name IS NOT NULL")
@@ -402,7 +402,7 @@ class Island(BuildingOwner, WorldObject):
 					self.last_changed[(size_x, size_y)][(x, y)] = self.last_change_id
 
 	def _register_change(self, x, y):
-		""" registers the possible buildability change of a rectangle on this island """ 
+		""" registers the possible buildability change of a rectangle on this island """
 		self.last_change_id += 1
 		for (area_size_x, area_size_y), building_areas in self.last_changed.iteritems():
 			for dx in xrange(area_size_x):

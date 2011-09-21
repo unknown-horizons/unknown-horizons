@@ -45,7 +45,7 @@ class MultiplayerMenu(object):
 			headline = _(u"Unable to find pyenet")
 			descr = _(u"The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system.")
 			advice = _(u"Linux users: Try to install pyenet through your package manager.") + "\n" + \
-			       _(u"Windows users: There is currently no reasonable support for Windows.")
+						 _(u"Windows users: There is currently no reasonable support for Windows.")
 			self.show_error_popup(headline, descr, advice)
 			return
 
@@ -73,7 +73,7 @@ class MultiplayerMenu(object):
 			'join'    : self.__join_game,
 			'create'  : self.__show_create_game,
 			'refresh' : self.__refresh,
-		    'apply_new_nickname' : self.__apply_new_nickname
+			'apply_new_nickname' : self.__apply_new_nickname
 		}
 		self.widgets.reload('multiplayermenu')
 		self._switch_current_widget('multiplayermenu', center=True, event_map=event_map, hide_old=True)
@@ -91,18 +91,18 @@ class MultiplayerMenu(object):
 		self.on_escape = event_map['cancel']
 
 	def __connect_to_server(self):
-			NetworkInterface().register_chat_callback(self.__receive_chat_message)
-			NetworkInterface().register_game_details_changed_callback(self.__update_game_details)
-			NetworkInterface().register_game_starts_callback(self.__start_game)
-			NetworkInterface().register_game_ready_callback(self.__game_ready)
-			NetworkInterface().register_error_callback(self.__on_error)
+		NetworkInterface().register_chat_callback(self.__receive_chat_message)
+		NetworkInterface().register_game_details_changed_callback(self.__update_game_details)
+		NetworkInterface().register_game_starts_callback(self.__start_game)
+		NetworkInterface().register_game_ready_callback(self.__game_ready)
+		NetworkInterface().register_error_callback(self.__on_error)
 
-			try:
-				NetworkInterface().connect()
-			except Exception, err:
-				self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
-				return False
-			return True
+		try:
+			NetworkInterface().connect()
+		except Exception, err:
+			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
+			return False
+		return True
 
 
 	def __apply_new_nickname(self):
@@ -115,12 +115,15 @@ class MultiplayerMenu(object):
 			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
 			return
 		self.__refresh()
+		self.show_error_popup("Bug", "There are reports of problems with this feature.", \
+		                      "Please restart Unknown Horizons now to make sure you won't run into troubles")
+
 
 	def __on_error(self, exception):
 		if self.session is not None:
 			self.session.timer.ticks_per_second = 0
 		self.show_popup( _("Network Error"), \
-		                 _("Something went wrong with the network: ") + \
+		                 _("Something went wrong with the network:") + u' ' + \
 		                 str(exception) )
 		self.quit_session(force=True)
 
@@ -159,7 +162,7 @@ class MultiplayerMenu(object):
 			game = self.__get_selected_game()
 		self.current.findChild(name="game_map").text = _("Map: ") + game.get_map_name()
 		self.current.findChild(name="game_playersnum").text =  _("Players: ") + \
-			unicode(game.get_player_count()) + u"/" + unicode(game.get_player_limit())
+				unicode(game.get_player_count()) + u"/" + unicode(game.get_player_limit())
 		creator_text = self.current.findChild(name="game_creator")
 		creator_text.text = _("Creator: ") + unicode(game.get_creator())
 		creator_text.adaptLayout()
@@ -198,8 +201,8 @@ class MultiplayerMenu(object):
 	def __show_gamelobby(self):
 		"""Shows lobby (gui for waiting until all players have joined). Allows chatting"""
 		event_map = {
-		  'cancel' : self.show_multi,
-		  }
+			'cancel' : self.show_multi,
+		}
 		game = self.__get_selected_game()
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
 		self._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
@@ -237,27 +240,34 @@ class MultiplayerMenu(object):
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""
 		event_map = {
-		  'cancel' : self.show_multi,
-		  'create' : self.__create_game
+			'cancel' : self.show_multi,
+			'create' : self.__create_game
 		}
 		self._switch_current_widget('multiplayer_creategame', center=True, event_map=event_map, hide_old=True)
 
 		self.current.files, self.maps_display = SavegameManager.get_maps()
 		self.current.distributeInitialData({
-		  'maplist' : self.maps_display,
-		  'playerlimit' : range(2, MULTIPLAYER.MAX_PLAYER_COUNT)
+			'maplist' : self.maps_display,
+			'playerlimit' : range(2, MULTIPLAYER.MAX_PLAYER_COUNT)
 		})
+		def _update_infos():
+			mapindex = self.current.collectData('maplist')
+			mapfile = self.current.files[mapindex]
+			number_of_players = SavegameManager.get_recommended_number_of_players( mapfile )
+			self.current.findChild(name="recommended_number_of_players_lbl").text = \
+					_("Recommended number of players: ") + unicode( number_of_players )
 		if len(self.maps_display) > 0: # select first entry
-				self.current.distributeData({
-				  'maplist' : 0,
-				  'playerlimit' : 0
-				 })
+			self.current.distributeData({
+				'maplist' : 0,
+				'playerlimit' : 0
+			})
+			_update_infos()
 		self.current.show()
 
 		self.on_escape = event_map['cancel']
 
 	def __create_game(self):
-		"""Acctually create a game, join it and display the lobby"""
+		"""Actually create a game, join it and display the lobby"""
 		# create the game
 		#TODO: possibly some input validation
 		mapindex = self.current.collectData('maplist')

@@ -35,9 +35,9 @@
 		down_image="content/gui/icons/ship/civil_32_h.png"
 		hover_image="content/gui/icons/ship/civil_32_h.png" />
 	<ToggleImageButton name="configure_route" position="180,210" border_size="0"
-		inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
-		up_image="content/gui/icons/templates/production/toggle_active_n.png"
-		down_image="content/gui/icons/templates/production/toggle_active_d.png"
-		hover_image="content/gui/icons/templates/production/toggle_active_h.png" />
+		inactive_image="content/gui/icons/ship/traderoute_configure_onroute.png"
+		up_image="content/gui/icons/ship/traderoute_configure.png"
+		down_image="content/gui/icons/ship/traderoute_configure_pressed.png"
+		hover_image="content/gui/icons/ship/traderoute_configure_hover.png" />
 </Container>
 </Container>

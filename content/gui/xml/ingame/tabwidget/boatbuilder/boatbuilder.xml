@@ -33,7 +33,7 @@
 		<Label name="headline_BB_builtship_label" position="0,20" text=""/>
 		<TooltipIcon image="content/gfx/dummies/square_120.png" position="0,40"
 			name="BB_cur_ship_bg" />
-		<Icon name="BB_cur_ship_icon" position="2,42" />
+		<TooltipIcon name="BB_cur_ship_icon" position="2,42" />
 		<VBox position="125,50" name="BB_upgrades_box"/> 	<!-- translations? -->
 
 		<!-- one of those button gets removed at runtime -->

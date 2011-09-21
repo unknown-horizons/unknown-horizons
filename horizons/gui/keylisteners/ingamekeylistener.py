@@ -70,7 +70,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.coordinates_tooltip.toggle()
 		elif keystr == 'x':
 			self.session.destroy_tool()
-		elif keystr == '+':
+		elif keystr == '+' or keystr == '=':
 			self.session.speed_up()
 		elif keystr == '-':
 			self.session.speed_down()

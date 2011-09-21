@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import ctypes
 import platform
 import os.path
 import re
@@ -36,7 +37,7 @@ possible and instead import the proper classes of this file.
 class VERSION:
 	def _set_version():
 		"""Function gets latest revision of the working copy.
-		It only works in git repositories, and is acctually a hack.
+		It only works in git repositories, and is actually a hack.
 		"""
 		try:
 			from run_uh import find_uh_position
@@ -313,12 +314,18 @@ class LAYERS:
 	NUM = 4 # number of layers
 
 ## PATHS
-# workaround, so it can be used to create paths withing PATHS
+# workaround, so it can be used to create paths within PATHS
 
 if platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
-	_user_dir = os.path.join(os.environ['APPDATA'], "unknown-horizons")
+	dll = ctypes.windll.shell32
+	buf = ctypes.create_string_buffer(300)
+	dll.SHGetSpecialFolderPathA(None, buf, 0x0005, False) # get the My Documents folder
+	my_games = os.path.join(buf.value, 'My Games')
+	if not os.path.exists(my_games):
+		os.makedirs(my_games)
+	_user_dir = os.path.join(my_games, 'unknown-horizons')
 _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 
 class PATHS:
@@ -333,8 +340,10 @@ class PATHS:
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 
+	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
+
 	DB_FILES = tuple(os.path.join("content", i) for i in \
-	                 ("game.sql", "settler.sql", "balance.sql") )
+	                 ("game.sql", "balance.sql") )
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 
@@ -344,8 +353,6 @@ class PLAYER:
 ## SINGLEPLAYER
 class SINGLEPLAYER:
 	SEED = None
-	DB_FILES = tuple(os.path.join("content", i) for i in \
-	                 ("game.sql", "settler.sql", "balance.sql") )
 
 ## MULTIPLAYER
 class MULTIPLAYER:

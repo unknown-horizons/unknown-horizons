@@ -64,7 +64,7 @@ INSERT INTO "building" VALUES(2,2,10,'Doctor','Doctor','prevention',1000,2,3,42,
 INSERT INTO "building" VALUES(1,1,0,'Gravel Path','Path','path',10,0,0,43,NULL,0,NULL);
 INSERT INTO "building" VALUES(2,2,6,'Wooden Tower','Tower','war',1000,1,1,44,'tower-1',1,'Defends your settlement.');
 CREATE TABLE `unit` (`name` TEXT NOT NULL ,`class_package` TEXT NOT NULL ,`class_type` TEXT NOT NULL , `base_velocity` FLOAT DEFAULT '12.0', "radius" INTEGER DEFAULT 5, "id" INTEGER AUTO_INCREMENT);
-INSERT INTO "unit" VALUES('Ship','ship','Ship',5.0,5,1000001);
+INSERT INTO "unit" VALUES('Huker','ship','Ship',5.0,5,1000001);
 INSERT INTO "unit" VALUES('BuildingCollector','collectors','BuildingCollector',12.0,5,1000002);
 INSERT INTO "unit" VALUES('Sheep','animal','FarmAnimal',12.0,3,1000003);
 INSERT INTO "unit" VALUES('Fisher','ship','FisherShip',12.0,5,1000004);
@@ -270,6 +270,7 @@ INSERT INTO "production_line" VALUES(30.0,1,37,29,1,1);
 INSERT INTO "production_line" VALUES(15.0,1,38,30,1,1);
 INSERT INTO "production_line" VALUES(20.0,1,39,31,1,1);
 INSERT INTO "production_line" VALUES(16.0,1,40,32,1,1);
+--  time   changes_animation   id   object_id   enabled_by_default   save_statistics
 INSERT INTO "production_line" VALUES(90.0,0,41,3,0,0);
 INSERT INTO "production_line" VALUES(30.0,0,42,33,1,0);
 INSERT INTO "production_line" VALUES(75.0,0,43,3,0,0);
@@ -283,7 +284,7 @@ INSERT INTO "production_line" VALUES(60.0,1,50,39,1,0);
 INSERT INTO "production_line" VALUES(1.0,1,51,20,1,0);
 INSERT INTO "production_line" VALUES(1.0,1,52,20,1,0);
 INSERT INTO "production_line" VALUES(30.0,1,53,40,1,0);
-INSERT INTO "production_line" VALUES(1.0,1,54,20,1,0);
+--INSERT INTO "production_line" VALUES(1.0,1,54,20,1,0);
 INSERT INTO "production_line" VALUES(15.0,1,55,41,1,0);
 INSERT INTO "production_line" VALUES(15.0,1,56,41,1,0);
 INSERT INTO "production_line" VALUES(60.0,1,57,42,1,0);
@@ -294,6 +295,8 @@ INSERT INTO "production_line" VALUES(120.0,1,64,12,1,0);
 INSERT INTO "production_line" VALUES(120.0,1,68,12,1,0);
 INSERT INTO "production_line" VALUES(90.0,0,69,3,0,0);
 INSERT INTO "production_line" VALUES(180.0,0,70,3,0,0);
+INSERT INTO "production_line" VALUES(60.0,0,71,3,0,0);
+INSERT INTO "production_line" VALUES(90.0,0,72,3,0,0);
 CREATE TABLE collector_restrictions(collector INTEGER, object INTEGER);
 INSERT INTO "collector_restrictions" VALUES(1000011,4);
 INSERT INTO "collector_restrictions" VALUES(1000011,5);
@@ -722,3 +725,32 @@ CREATE TABLE "weapon" (
 	"bullet_image" TEXT);
 INSERT INTO "weapon" VALUES(40,'ranged',10,5,15,3,4,2,1,'content/gfx/misc/cannonballs/cannonball.png');
 INSERT INTO "weapon" VALUES(41,'melee',3,1,1,3,2,1,0,'');
+CREATE TABLE settler_production_line(level INTEGER, production_line INTEGER);
+INSERT INTO "settler_production_line" VALUES(0,71);
+INSERT INTO "settler_production_line" VALUES(0,72);
+INSERT INTO "settler_production_line" VALUES(1,19);
+INSERT INTO "settler_production_line" VALUES(1,20);
+INSERT INTO "settler_production_line" VALUES(1,21);
+INSERT INTO "settler_production_line" VALUES(1,26);
+INSERT INTO "settler_production_line" VALUES(0,30);
+INSERT INTO "settler_production_line" VALUES(1,30);
+INSERT INTO "settler_production_line" VALUES(2,30);
+INSERT INTO "settler_production_line" VALUES(2,43);
+INSERT INTO "settler_production_line" VALUES(2,20);
+INSERT INTO "settler_production_line" VALUES(2,21);
+INSERT INTO "settler_production_line" VALUES(2,44);
+INSERT INTO "settler_production_line" VALUES(2,41);
+INSERT INTO "settler_production_line" VALUES(2,69);
+INSERT INTO "settler_production_line" VALUES(2,70);
+CREATE TABLE settler_level (
+    "level" INT NOT NULL DEFAULT (''),
+    "name" TEXT NOT NULL DEFAULT (''),
+    "tax_income" INT NOT NULL DEFAULT (''),
+    "inhabitants_max" INT
+, "residential_name" TEXT   DEFAULT (''));
+INSERT INTO "settler_level" VALUES(0,'sailor',2,2,'tent');
+INSERT INTO "settler_level" VALUES(1,'pioneer',3,3,'hut');
+INSERT INTO "settler_level" VALUES(2,'settler',6,5,'house');
+INSERT INTO "settler_level" VALUES(3,'citizen',10,8,'stone house');
+INSERT INTO "settler_level" VALUES(4,'merchant',15,13,'estate');
+INSERT INTO "settler_level" VALUES(5,'aristocrat',25,21,'manor');

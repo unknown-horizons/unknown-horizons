@@ -38,7 +38,7 @@ class PlayersSettlements(StatsWidget):
 
 	def refresh(self):
 		super(PlayersSettlements, self).refresh()
-		self._gui.findChild(name = 'headline').text = self.session.world.player.name + _('\'s settlements')
+		self._gui.findChild(name = 'headline').text = _('%(player)s\'s settlements') % {'player': self.session.world.player.name}
 
 		sequence_number = 0
 		player = self.session.world.player

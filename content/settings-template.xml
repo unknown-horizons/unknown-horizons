@@ -31,6 +31,7 @@
 		<Setting name="Nickname" type="str">Unnamed Traveler</Setting>
 		<Setting name="MinimapRotation" type="bool">False</Setting>
 		<Setting name="EdgeScrolling" type="bool">True</Setting>
+		<Setting name="UninterruptedBuilding" type="bool">False</Setting>
 		<Setting name="NetworkPort" type="str">0</Setting>
 		<Setting name="RandomMapSize" type="float">2.0</Setting>
 		<Setting name="RandomMapWaterPercent" type="float">3.0</Setting>
@@ -38,5 +39,8 @@
 		<Setting name="RandomMapPreferredIslandSize" type="float">2.0</Setting>
 		<Setting name="RandomMapIslandSizeDeviation" type="float">2.0</Setting>
 		<Setting name="MapResourceDensity" type="float">2.0</Setting>
-</Module>
+    </Module>
+	<Module name="meta">
+		<Setting name="SettingsVersion" type="int">3</Setting>
+	</Module>
 </Settings>

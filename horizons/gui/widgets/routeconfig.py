@@ -39,7 +39,7 @@ class RouteConfig(object):
 		self.instance = instance
 
 		offices = instance.session.world.get_branch_offices()
-		self.branch_offices = dict([ (bo.settlement.name, bo) for bo in offices ])
+		self.branch_offices = dict([('%s (%s)' % (bo.settlement.name, bo.owner.name), bo) for bo in offices])
 		if not hasattr(instance, 'route'):
 			instance.create_route()
 
@@ -68,10 +68,8 @@ class RouteConfig(object):
 		self._gui.findChild(name='start_route').tooltip = _('Stop route')
 
 	def start_route(self):
-		if len(self.widgets) < self.MIN_ENTRIES:
-			return
-		self.instance.route.enable()
-		self.start_button_set_inactive()
+		if self.instance.route.enable():
+			self.start_button_set_inactive()
 
 	def stop_route(self):
 		self.instance.route.disable()
@@ -105,7 +103,7 @@ class RouteConfig(object):
 		vbox.removeChild(entry)
 		if enabled:
 			self.instance.route.enable()
-		if len(self.widgets) < self.MIN_ENTRIES:
+		elif not self.instance.route.can_enable():
 			self.stop_route()
 		self.hide()
 		self.show()
@@ -297,8 +295,10 @@ class RouteConfig(object):
 		entry = load_uh_widget("route_entry.xml")
 		self.widgets.append(entry)
 
-		label = entry.findChild(name="bo_name")
-		label.text = unicode(branch_office.settlement.name)
+		settlement_name_label = entry.findChild(name = "bo_name")
+		settlement_name_label.text = unicode(branch_office.settlement.name)
+		player_name_label = entry.findChild(name = "player_name")
+		player_name_label.text = unicode(branch_office.owner.name)
 
 		self.add_trade_slots(entry, self.slots_per_entry)
 

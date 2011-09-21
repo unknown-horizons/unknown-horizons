@@ -41,7 +41,7 @@ class PlayersShips(StatsWidget):
 		super(PlayersShips, self).refresh()
 		player = self.session.world.player
 		self._clear_entries()
-		self._gui.findChild(name = 'headline').text = player.name + _('\'s ships')
+		self._gui.findChild(name = 'headline').text = _('%(player)s\'s ships') % {'player': self.session.world.player.name}
 
 		sequence_number = 0
 		events = {}

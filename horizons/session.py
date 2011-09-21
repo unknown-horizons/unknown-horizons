@@ -107,7 +107,7 @@ class Session(LivingObject):
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 	def start(self):
-		"""Acctually starts the game."""
+		"""Actually starts the game."""
 		self.timer.activate()
 
 	def create_manager(self):
@@ -175,8 +175,11 @@ class Session(LivingObject):
 		if is_scenario:
 			# savegame is a yaml file, that contains reference to actual map file
 			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)
-			savegame = os.path.join(SavegameManager.maps_dir, \
-			                        self.scenario_eventhandler.get_map_file())
+			# scenario maps can be normal maps or scenario maps:
+			map_filename = self.scenario_eventhandler.get_map_file()
+			savegame = os.path.join(SavegameManager.scenario_maps_dir, map_filename)
+			if not os.path.exists(savegame):
+				savegame = os.path.join(SavegameManager.maps_dir, map_filename)
 		self.campaign = {} if not campaign else campaign
 
 		self.log.debug("Session: Loading from %s", savegame)
@@ -226,7 +229,7 @@ class Session(LivingObject):
 
 		# cursor has to be inited last, else player interacts with a not inited world with it.
 		self.cursor = SelectionTool(self)
-        # Set cursor correctly, menus might need to be opened.
+	# Set cursor correctly, menus might need to be opened.
 		# Open menus later, they may need unit data not yet inited
 		self.cursor.apply_select()
 

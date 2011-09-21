@@ -23,19 +23,19 @@
 <!--		<BuildMenuButton icon_path="tent"  name="resident-1"
 				tooltip="Tent: Houses your inhabitants."/>-->
 			<TooltipButton name="resident-1"
-				up_image="content/gui/icons/buildmenu/tent.png"
-				hover_image="content/gui/icons/buildmenu/tent_h.png"
-				down_image="content/gui/icons/buildmenu/tent_h.png"
+				up_image="content/gui/icons/buildmenu/003.png"
+				hover_image="content/gui/icons/buildmenu/003_h.png"
+				down_image="content/gui/icons/buildmenu/003_h.png"
 				tooltip="Tent: Houses your inhabitants."/>
 			<TooltipButton name="store-1"
-				up_image="content/gui/icons/buildmenu/storagetent.png"
-				hover_image="content/gui/icons/buildmenu/storagetent_h.png"
-				down_image="content/gui/icons/buildmenu/storagetent_h.png"
+				up_image="content/gui/icons/buildmenu/002.png"
+				hover_image="content/gui/icons/buildmenu/002_h.png"
+				down_image="content/gui/icons/buildmenu/002_h.png"
 				tooltip="Storage: Extends stock and provides collectors." />
 			<TooltipButton name="street-1"
-				up_image="content/gui/icons/buildmenu/path.png"
-				hover_image="content/gui/icons/buildmenu/path_h.png"
-				down_image="content/gui/icons/buildmenu/path_h.png"
+				up_image="content/gui/icons/buildmenu/015.png"
+				hover_image="content/gui/icons/buildmenu/015_h.png"
+				down_image="content/gui/icons/buildmenu/015_h.png"
 				tooltip="Trail: Needed for collecting goods."/>
 			<!--<TooltipButton name="bridge-1"
 				up_image="content/gui/icons/buildmenu/outdated/bridge.png"
@@ -56,19 +56,19 @@
 
 		<HBox position="2,32" padding="8">
 			<TooltipButton name="main_square-1"
-				up_image="content/gui/icons/buildmenu/mainsquare.png"
-				hover_image="content/gui/icons/buildmenu/mainsquare_h.png"
-				down_image="content/gui/icons/buildmenu/mainsquare_h.png"
+				up_image="content/gui/icons/buildmenu/004.png"
+				hover_image="content/gui/icons/buildmenu/004_h.png"
+				down_image="content/gui/icons/buildmenu/004_h.png"
 				tooltip="Main square: Supplies citizens with goods." />
 			<TooltipButton name="church-1"
-				up_image="content/gui/icons/buildmenu/pavilion.png"
-				hover_image="content/gui/icons/buildmenu/pavilion_h.png"
-				down_image="content/gui/icons/buildmenu/pavilion_h.png"
+				up_image="content/gui/icons/buildmenu/005.png"
+				hover_image="content/gui/icons/buildmenu/005_h.png"
+				down_image="content/gui/icons/buildmenu/005_h.png"
 				tooltip="Pavilion: Fulfills religious needs of sailors." />
 			<TooltipButton name="lighthouse-1"
-				up_image="content/gui/icons/buildmenu/signalfire.png"
-				hover_image="content/gui/icons/buildmenu/signalfire_h.png"
-				down_image="content/gui/icons/buildmenu/signalfire_h.png"
+				up_image="content/gui/icons/buildmenu/006.png"
+				hover_image="content/gui/icons/buildmenu/006_h.png"
+				down_image="content/gui/icons/buildmenu/006_h.png"
 				tooltip="Signal fire: Allows the player to trade with the free trader." />
 		</HBox>
 	</Container>
@@ -85,24 +85,24 @@
 
 		<HBox position="2,32" padding="8">
 			<TooltipButton name="lumberjack-1"
-				up_image="content/gui/icons/buildmenu/lumberjack.png"
- 				hover_image="content/gui/icons/buildmenu/lumberjack_h.png"
-				down_image="content/gui/icons/buildmenu/lumberjack_h.png"
+				up_image="content/gui/icons/buildmenu/008.png"
+ 				hover_image="content/gui/icons/buildmenu/008_h.png"
+				down_image="content/gui/icons/buildmenu/008_h.png"
 				tooltip="Lumberjack: Chops down trees and turns them into boards." />
 			<TooltipButton name="tree-1"
-				up_image="content/gui/icons/buildmenu/tree.png"
-				hover_image="content/gui/icons/buildmenu/tree_h.png"
-				down_image="content/gui/icons/buildmenu/tree_h.png"
+				up_image="content/gui/icons/buildmenu/017.png"
+				hover_image="content/gui/icons/buildmenu/017_h.png"
+				down_image="content/gui/icons/buildmenu/017_h.png"
 				tooltip="Tree" />
 			<TooltipButton name="hunter-1"
-				up_image="content/gui/icons/buildmenu/hunter.png"
-				hover_image="content/gui/icons/buildmenu/hunter_h.png"
-				down_image="content/gui/icons/buildmenu/hunter_h.png"
+				up_image="content/gui/icons/buildmenu/009.png"
+				hover_image="content/gui/icons/buildmenu/009_h.png"
+				down_image="content/gui/icons/buildmenu/009_h.png"
 				tooltip="Hunter: Hunts wild forest animals, produces food." />
 			<TooltipButton name="fisher-1"
-				up_image="content/gui/icons/buildmenu/fisherman.png"
-				hover_image="content/gui/icons/buildmenu/fisherman_h.png"
-				down_image="content/gui/icons/buildmenu/fisherman_h.png"
+				up_image="content/gui/icons/buildmenu/011.png"
+				hover_image="content/gui/icons/buildmenu/011_h.png"
+				down_image="content/gui/icons/buildmenu/011_h.png"
 				tooltip="Fisherman: Fishes the sea, produces food." />
 		</HBox>
 	</Container>
@@ -114,14 +114,14 @@
 
 		<HBox position="2,32" padding="8">
 			<TooltipButton name="tower-1"
-				up_image="content/gui/icons/buildmenu/lookout.png"
-				hover_image="content/gui/icons/buildmenu/lookout_h.png"
-				down_image="content/gui/icons/buildmenu/lookout_h.png"
+				up_image="content/gui/icons/buildmenu/013.png"
+				hover_image="content/gui/icons/buildmenu/013_h.png"
+				down_image="content/gui/icons/buildmenu/013_h.png"
 				tooltip="Lookout: Increases the player's sight." />
 			<TooltipButton name="wall-1"
-				up_image="content/gui/icons/buildmenu/rampart.png"
-				hover_image="content/gui/icons/buildmenu/rampart_h.png"
-				down_image="content/gui/icons/buildmenu/rampart_h.png"
+				up_image="content/gui/icons/buildmenu/014.png"
+				hover_image="content/gui/icons/buildmenu/014_h.png"
+				down_image="content/gui/icons/buildmenu/014_h.png"
 				text="Rampart: Protects your settlement." />
 		</HBox>
 	</Container>-->

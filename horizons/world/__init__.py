@@ -893,4 +893,4 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 def load_building(session, db, typeid, worldid):
 	"""Loads a saved building. Don't load buildings yourself in the game code."""
-	Entities.buildings[typeid].load(session, db, worldid)
+	return Entities.buildings[typeid].load(session, db, worldid)

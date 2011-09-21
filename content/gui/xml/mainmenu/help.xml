@@ -38,6 +38,7 @@
 	<VBox>
 		<Label name="lbl_p" text="{P} = Pause game" />
 		<Label name="lbl_g" text="{G} = Toggle grid on/off" />
+		<Label name="lbl_h" text="{H} = Show coordinate values (Debug)" />
 		<Label name="lbl_t" text="{T} = Toggle translucency of ambient buildings" />
 		<Label name="lbl_x" text="{X} = Enable destruct mode" />
 	</VBox>
@@ -56,7 +57,7 @@
 		<Label name="lbl_have_fun" text="Have fun." />
 	</VBox>
 	<VBox>
-		<Label name="lbl_fife_and_uh_team"  wrap_text="1"  max_size="315,40"
+		<Label name="lbl_fife_and_uh_team"  wrap_text="1"  max_size="290,40"
 			text="The FIFE and Unknown Horizons development teams" />
 		<Label text="http://www.unknown-horizons.org" name="noi18n" />
 		<Label text="http://www.fifengine.de" name="noi18n" />

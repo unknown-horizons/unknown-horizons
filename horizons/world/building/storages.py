@@ -71,10 +71,8 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	def __init__(self, *args, **kwargs):
 		super(BranchOffice, self).__init__(*args, **kwargs)
 		self.settlement.branch_office = self # we never need to unset this since bo's are indestructible
+		# settlement branch office setting is done at the settlement for loading
 
-	def load(self, db, worldid):
-		super(BranchOffice, self).load(db, worldid)
-		self.settlement.branch_office = self
 
 class MainSquare(ProducerBuilding, StorageBuilding):
 	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
