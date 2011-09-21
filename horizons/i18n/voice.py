@@ -31,7 +31,7 @@ Internationalization for speech|voice files
 """
 class Speech:
 	"""Definition of category names, those names are the name of directory where speech should be"""
-	NEW_SETTLEMENT = "new_settlement" 
+	NEW_SETTLEMENT = "new_settlement"
 	NEW_WORLD = "new_world"
 	QUICKSAVE = None
 	SCREENSHOT = None
@@ -42,6 +42,7 @@ class Speech:
 	MINE_EMPTY = None
 	DRAG_ROADS_HINT = None
 	DIPLOMACY_STATUS_CHANGED = None
+	MAX_INCR_REACHED = None
 
 DEFAULT_LANG="en"
 DEFAULT_VARIATION=0
@@ -87,7 +88,7 @@ def get_dir_path(lang, category_name, spkr_id):
 	return os.path.join(PATHS.VOICE_DIR, lang, str(spkr_id), str(category_name))
 
 def count_variations(dir_name):
-  return len([file for file in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name,file))])
+	return len([file for file in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name,file))])
 
 def eval_category_name(category):
 	cat_name = None
@@ -96,4 +97,3 @@ def eval_category_name(category):
 	except:
 		print "Incorect name of speech category"
 	return cat_name
-

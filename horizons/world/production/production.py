@@ -422,8 +422,8 @@ class SingleUseProduction(Production):
 	"""This Production just produces one time, and then finishes.
 	Notification of the finishing is done via production_finished listeners.
 	Use case: Settler getting upgrade material"""
-	def __init__(self, inventory, prod_line_id, **kwargs):
-		super(SingleUseProduction, self).__init__(inventory=inventory, prod_line_id=prod_line_id, **kwargs)
+	def __init__(self, inventory, owner_inventory, prod_line_id, **kwargs):
+		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory, prod_line_id=prod_line_id, **kwargs)
 
 	def _finished_producing(self, **kwargs):
 		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)

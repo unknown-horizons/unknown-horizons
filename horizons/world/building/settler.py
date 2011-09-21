@@ -53,6 +53,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	default_level_on_build = 0
 
+	_max_increment_reached_notification_displayed = False # this could be saved
+
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.default_level_on_build # settlers always start in first level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
@@ -228,14 +230,23 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def level_check(self):
 		"""Checks whether we should level up or down."""
-		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
-			 self.level < self.level_max:
+		if self.happiness > self.__get_data("happiness_level_up_requirement"):
+			if self.level >= self.level_max:
+				# max level reached already, can't allow an update
+				if self.owner == self.session.world.player:
+					if not self.__class__._max_increment_reached_notification_displayed:
+						self.__class__._max_increment_reached_notification_displayed = True
+						self.session.ingame_gui.message_widget.add( \
+							self.position.center().x, self.position.center().y, 'MAX_INCR_REACHED')
+				return
 			# add a production line that gets the necessary upgrade material.
 			# when the production finishes, it calls upgrade_materials_collected.
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
-			upgrade_material_production = SingleUseProduction(self.inventory, upgrade_material_prodline)
+			owner_inventory = self._get_owner_inventory()
+			upgrade_material_production = SingleUseProduction(self.inventory, owner_inventory, \
+			                                                  upgrade_material_prodline)
 			upgrade_material_production.add_production_finished_listener(self.level_up)
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
