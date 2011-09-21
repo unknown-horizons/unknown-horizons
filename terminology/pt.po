@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-03 02:51+0200\n"
-"Last-Translator: bdias <ebrunojdias@gmail.com>\n"
+"PO-Revision-Date: 2011-09-22 00:14+0200\n"
+"Last-Translator: Knitter <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -454,10 +454,8 @@ msgstr "produzir"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # (poterminology) uh/unknownhorizons.pot (4)
-# 87%
-#, fuzzy
 msgid "produced"
-msgstr "produzir"
+msgstr "produzido"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -591,13 +589,13 @@ msgid "settler"
 msgstr "colono"
 
 msgid "citizen"
-msgstr ""
+msgstr "cidadão"
 
 msgid "merchant"
-msgstr ""
+msgstr "mercador"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristrocrata"
 
 #
 #
@@ -640,11 +638,9 @@ msgid "team"
 msgstr "equipa"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "village"
-msgstr "vila"
+msgstr "aldeia"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -705,14 +701,10 @@ msgstr "felicidade"
 msgid "increase"
 msgstr "aumento"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (3)
-#
 msgid "liquor"
-msgstr "licor"
+msgstr "álcool "
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1097,29 +1089,27 @@ msgid "herbary"
 msgstr ""
 
 msgid "butchery"
-msgstr ""
+msgstr "matadouro"
 
 msgid "doctor"
-msgstr ""
+msgstr "doutor"
 
 msgid "education"
-msgstr ""
+msgstr "educação"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
-# 75%
-#, fuzzy
 msgid "clay"
-msgstr "jogar"
+msgstr "barro"
 
 msgid "charcoal"
-msgstr ""
+msgstr "carvão"
 
 msgid "iron"
-msgstr ""
+msgstr "ferro"
 
 msgid "ore"
-msgstr ""
+msgstr "minério"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #

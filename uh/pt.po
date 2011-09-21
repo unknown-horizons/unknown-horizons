@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-21 23:50+0200\n"
+"PO-Revision-Date: 2011-09-22 00:20+0200\n"
 "Last-Translator: Knitter <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -448,7 +448,7 @@ msgstr "Carregar/Descarregar:"
 
 #: horizons/gui/tabs/inventorytab.py:85
 msgid "Buy/Sell:"
-msgstr "Comprar/Vender"
+msgstr "Comprar/Vender:"
 
 #: horizons/gui/tabs/inventorytab.py:121
 msgid "Equip weapon"
@@ -543,7 +543,7 @@ msgstr "O seu diário de bordo ainda está em branco!"
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr "povoações de %(player)s "
+msgstr "povoações de %(player)s"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
@@ -604,7 +604,7 @@ msgstr "Lenhador: Corta árvores e converte-as em tábuas."
 
 #: horizons/i18n/guitranslations.py:56
 msgid "Main square: Supplies citizens with goods."
-msgstr "Praça principal: Fornece cidadãos com mercadorias."
+msgstr "Praça principal: Fornece mercadorias aos cidadãos."
 
 #: horizons/i18n/guitranslations.py:57
 msgid "Tent: Houses your inhabitants."
@@ -614,11 +614,11 @@ msgstr "Tenda: Aloja os seus habitantes."
 msgid "Storage: Extends stock and provides collectors."
 msgstr ""
 "Armazenamento: Extende a capacidade de armazenamento e fornece "
-"colecionadores."
+"transportadores."
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Trail: Needed for collecting goods."
-msgstr "Caminho: Necessário para colecionar mercadorias."
+msgstr "Caminho: Necessário para transportar mercadorias."
 
 #: horizons/i18n/guitranslations.py:60 sqlite/Building
 msgid "Tree"
@@ -630,7 +630,7 @@ msgstr "Campos"
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Pioneer buildings"
-msgstr "Edifícios de pioneiro"
+msgstr "Edifícios de pioneiros"
 
 #: horizons/i18n/guitranslations.py:66
 msgid "Military"
@@ -639,7 +639,7 @@ msgstr "Militar"
 #: horizons/i18n/guitranslations.py:68
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
-"Contrutor de barcos: Contrói barcos e navios pequenos. Construídos na costa."
+"Construtor de barcos: Contrói barcos e navios pequenos. Construido na costa."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Brickyard: Turns clay into bricks."
@@ -655,7 +655,7 @@ msgstr "Destilaria: Converte o açucar em alcoól."
 
 #: horizons/i18n/guitranslations.py:72
 msgid "Farm: Grows field crops and raises livestock."
-msgstr "Quinta: Crescem culturas e cria gado."
+msgstr "Quinta: Produz campos de cultivo e cria gado."
 
 #: horizons/i18n/guitranslations.py:73
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
@@ -673,7 +673,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Torre de madeira: Defende a povoação."
 
 #: horizons/i18n/guitranslations.py:77
 msgid "Village school: Provides education."
@@ -685,33 +685,32 @@ msgstr "Tecelão: Converte a lã em tecido."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Mining"
-msgstr ""
+msgstr "Exploração de minas"
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Settler buildings"
-msgstr "Edífcios do colonizadores"
+msgstr "Edifícios de colonos"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Matadouro: Precisa de porcos ou gado. Produz comida."
 
 #: horizons/i18n/guitranslations.py:87
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Pasto: Cria gado. Precisa de uma quinta."
 
 # 76%
 #: horizons/i18n/guitranslations.py:88
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Fornalha: Queima molhos de tabúas e transforma-os em carvão."
+msgstr "Carvoaria: Queima molhos de tábuas para fazer carvão."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Mina: Extrai minério dos depósitos."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Pocilga: Cria porcos. Precisa de uma quinta."
 
 #: horizons/i18n/guitranslations.py:91
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
@@ -996,32 +995,32 @@ msgstr ""
 msgid "houses"
 msgstr ""
 
+# 88%
+# 81%
+# 81%
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 #: horizons/i18n/guitranslations.py:240
 msgid "1 resident"
-msgstr ""
+msgstr "1 residente"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:210 horizons/i18n/guitranslations.py:226
 #: horizons/i18n/guitranslations.py:241
-#, fuzzy
 msgid "2 residents"
-msgstr "Residentes"
+msgstr "2 residentes"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:211 horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "3 residents"
-msgstr "Residentes"
+msgstr "3 residentes"
 
 # 88%
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:227
 #: horizons/i18n/guitranslations.py:245
-#, fuzzy
 msgid "residents"
-msgstr "Residentes"
+msgstr "residentes"
 
 #: horizons/i18n/guitranslations.py:213 horizons/i18n/guitranslations.py:228
 #: horizons/i18n/guitranslations.py:246 horizons/i18n/guitranslations.py:282
@@ -1044,23 +1043,20 @@ msgstr "Impostos pagos"
 #: horizons/i18n/guitranslations.py:231 horizons/i18n/guitranslations.py:232
 #: horizons/i18n/guitranslations.py:250 horizons/i18n/guitranslations.py:251
 #: horizons/i18n/guitranslations.py:285 horizons/i18n/guitranslations.py:288
-#, fuzzy
 msgid "Tax rate"
-msgstr "taxa de contribuição"
+msgstr "Taxa de impostos"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:243
-#, fuzzy
 msgid "4 residents"
-msgstr "Residentes"
+msgstr "4 residentes"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "5 residents"
-msgstr "Residentes"
+msgstr "5 residentes"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Upgrade not possible:"
@@ -1250,9 +1246,8 @@ msgstr ""
 # 80%
 #: horizons/i18n/guitranslations.py:367 horizons/i18n/guitranslations.py:378
 #: horizons/i18n/guitranslations.py:384
-#, fuzzy
 msgid "Name"
-msgstr "Nome:"
+msgstr "Nome"
 
 #: horizons/i18n/guitranslations.py:368
 msgid "Resources"
@@ -1268,9 +1263,8 @@ msgstr ""
 
 # 87%
 #: horizons/i18n/guitranslations.py:375
-#, fuzzy
 msgid "Balance"
-msgstr "Balanço:"
+msgstr "Balanço"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"
@@ -1459,7 +1453,7 @@ msgstr "Jogo individual"
 
 #: horizons/i18n/guitranslations.py:448
 msgid "Multiplayer"
-msgstr "Jogo em Rede"
+msgstr "Jogo em rede"
 
 #: horizons/i18n/guitranslations.py:452 horizons/i18n/guitranslations.py:470
 msgid "Create game:"
@@ -1683,7 +1677,7 @@ msgstr "Iniciar o jogo:"
 
 #: horizons/i18n/guitranslations.py:523
 msgid "Campaign"
-msgstr "campanha"
+msgstr "Campanha"
 
 #: horizons/i18n/guitranslations.py:524
 msgid "Free play"
@@ -2384,9 +2378,8 @@ msgstr "barro"
 
 # 83%
 #: sqlite/Resources
-#, fuzzy
 msgid "clay deposit"
-msgstr "Depósito de barro"
+msgstr "depósito de barro"
 
 #: sqlite/Resources
 msgid "coins"
