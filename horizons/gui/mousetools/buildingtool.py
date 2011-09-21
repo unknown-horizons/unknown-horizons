@@ -355,7 +355,9 @@ class BuildingTool(NavigationTool):
 		built = False
 
 		# actually do the build and build preparations
+		i = -1
 		for building in self.buildings:
+			i += 1
 			# remove fife instance, the building will create a new one.
 			# Check if there is a matching fife instance, could be missing
 			# in case of trees, which are hidden if not buildable
@@ -387,7 +389,8 @@ class BuildingTool(NavigationTool):
 				            island= island, \
 				            settlement=self.session.world.get_settlement(building.position.origin), \
 				            ship=self.ship, \
-				            tearset=building.tearset \
+				            tearset=building.tearset, \
+										action_set_id=self.buildings_action_set_ids[i], \
 				            )
 				cmd.execute(self.session)
 			else:
