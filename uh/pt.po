@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-08-01 15:44+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-09-21 23:40+0200\n"
+"Last-Translator: Knitter <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: Unit sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Doutor"
 
 #: horizons/engine.py:70
 msgid "Restart required"
@@ -31,15 +31,15 @@ msgstr "Algumas das suas alterações requerem que reinicie Unknown Horizons."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Repor as definições por omissão"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Todas as alterações feitas até ao momento serão removidas."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Deseja continuar?"
 
 #: horizons/engine.py:186
 msgid "System default"
@@ -61,42 +61,42 @@ msgstr ""
 "Use por sua conta e risco!"
 
 #: horizons/engine.py:277
-#, python-format
+#, python-format, fuzzy
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "A línguagem configurada %(lang)s em %(place)s não pode ser carregada"
+msgstr "A língua configurada %(lang)s em %(place)s não pode ser carregada"
 
 #: horizons/engine.py:525
 msgid "Invalid network port"
-msgstr "Porta de rede inválida"
+msgstr "Porto de rede inválido"
 
 #: horizons/engine.py:526
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"A porta que especificou não é válida. A porta deverá estar compreendida "
+"O porto especificado não é válido. O porto deve ser um número compreendido "
 "entre 1 e 65535."
 
 #: horizons/engine.py:527
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
-"Por favor verifique a porta que introduziu e certifique-se que está dentro "
-"do intervalo especificado."
+"Por favor verifique o porto introduzido e certifique-se que está dentro do "
+"intervalo especificado."
 
 #: horizons/engine.py:539
 msgid "Failed to apply new network data."
-msgstr "Falha a validar a informação nova na rede."
+msgstr "Falha a aplicar a nova informação de rede."
 
 #: horizons/engine.py:540 horizons/gui/modules/multiplayermenu.py:57
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr "A rede não pode ser inicializada com a nova configuração."
+msgstr "A rede não pode ser iniciada com a configuração actual."
 
 #: horizons/engine.py:541
 msgid "Check the data you entered in the Network section."
-msgstr "Verifique a informação que introduziu na secção de Rede."
+msgstr "Verifique a informação introduzida na secção de Rede."
 
 #: horizons/engine.py:544
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
-"Por vezes números de porta baixos requerem privilégios de administrador, "
+"Por vezes números baixos de portos requerem privilégios de administrador, "
 "tente uma maior que 1024 ou 0."
 
 #: horizons/gui/gui.py:133
@@ -125,7 +125,7 @@ msgstr "Sair da Sessão"
 
 #: horizons/gui/gui.py:213
 msgid "No saved games"
-msgstr "Não existem jogos gravados"
+msgstr "Sem jogos gravados"
 
 #: horizons/gui/gui.py:213
 msgid "There are no saved games to load"
@@ -147,7 +147,7 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
-"Já existe um jogo salvado com o nome \"%s\". \n"
+"Já existe um jogo gravado com o nome \"%s\". \n"
 "Deseja substituí-lo?"
 
 #: horizons/gui/gui.py:267
@@ -193,7 +193,7 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
-"AVISO: Versão incompatível %(ver)d!\n"
+"AVISO: Versão incompatível. %(ver)d!\n"
 "Requer versão %(need)d!"
 
 #: horizons/gui/gui.py:436
@@ -227,40 +227,48 @@ msgstr "Falha na remoção da gravação!"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Não foi possível encontrar a biblioteca pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"A funcionalidade de multi-jogador necessita da biblioteca \"pyenet\", que não "
+"foi encontrada no sistema."
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Utilizadores de Linux: Tentem instalar a biblioteca pyenet através do gestor "
+"de pacotes."
 
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Utilizadores de Windows: De momento não existe suporte adequado para "
+"Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Não foi possível iniciar a rede."
 
 #: horizons/gui/modules/multiplayermenu.py:58
 msgid "Check the data you entered in the Network section in the settings dialogue."
 msgstr ""
+"Verifique a informação introduzida na secção de Rede na janela de "
+"definições."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
 "Não foi possível ligar ao servidor principal. Por favor, verifique a sua "
-"ligação de Internet. Se não for da sua ligação então o é o nosso servidor "
-"principal que está temporariamente em baixo.\n"
-"Details: %s"
+"ligação de Internet. Se a sua ligação estiver a funcionar significa que o "
+"servidor principal está temporariamente em baixo.\n"
+"Detailhes: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
@@ -268,13 +276,14 @@ msgstr ""
 msgid "Network Error"
 msgstr "Erro de rede"
 
+# 97%
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Ocorreu uma falha na rede:"
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
-msgstr "Versões diferentes!"
+msgstr "As versões diferente!"
 
 #: horizons/gui/modules/multiplayermenu.py:160
 msgid "Map: "
@@ -292,9 +301,9 @@ msgstr "Criador: "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
-"A versão do jogo é difere da sua. Todos os jogadores de um jogo em rede "
-"devem utilizar a mesma versão. Isto pode ser resolvido através de uma "
-"actualização para a última versão disponível. Versão do jogo: %"
+"A versão do jogo difere da sua. Todos os jogadores de um jogo em rede devem "
+"utilizar a mesma versão. Isto pode ser resolvido se todos os jogadores "
+"procederem à actualização para a última versão disponível. Versão do jogo: %"
 "(gameversion)s Versão instalada: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:181
@@ -304,7 +313,7 @@ msgstr "Versão errada"
 #: horizons/gui/modules/multiplayermenu.py:255
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Número recomendado de jogadores:"
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -334,29 +343,28 @@ msgstr "Introduziu um nome de jogador inválido"
 
 #: horizons/gui/modules/singleplayermenu.py:193
 msgid "Map size:"
-msgstr ""
+msgstr "Dimensão do mapa:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Água:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Dimensão máxima das ilhas:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Dimensão preferida das ilhas:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Desvio na dimensão das ilhas:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
-msgstr "Depósito de recursos"
+msgstr "Quantidade de recursos:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -364,19 +372,16 @@ msgstr "Ficheiro de cenário inválido"
 
 #: horizons/gui/modules/singleplayermenu.py:263
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "O ficheiro seleccionado não é um ficheiro de cenário válido."
 
 #: horizons/gui/modules/singleplayermenu.py:264
 msgid "Error message:"
-msgstr ""
+msgstr "Mensagem de erro:"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Por favor reporte isto ao autor."
+msgstr "Por favor, informe o autor desta situação."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -386,7 +391,7 @@ msgstr "Construir"
 
 #: horizons/gui/tabs/boatbuildertab.py:39
 msgid "Boat builder overview"
-msgstr "Resumo contrução de barcos"
+msgstr "Resumo da construção de barcos"
 
 #: horizons/gui/tabs/boatbuildertab.py:119
 msgid "Resources still needed:"
@@ -399,7 +404,7 @@ msgstr "Barcos de pesca"
 #: horizons/gui/tabs/boatbuildertab.py:190
 #: horizons/i18n/guitranslations.py:159
 msgid "Trade boats"
-msgstr "Barcos comerciais"
+msgstr "Barcos de comércio"
 
 #: horizons/gui/tabs/boatbuildertab.py:198
 #: horizons/i18n/guitranslations.py:164
@@ -415,8 +420,9 @@ msgid "Confirm order"
 msgstr "Confirme a ordem"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
+#, fuzzy
 msgid "Build related fields"
-msgstr ""
+msgstr "Construir campos relacionados"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -442,15 +448,15 @@ msgstr "Carregar/Descarregar:"
 
 #: horizons/gui/tabs/inventorytab.py:85
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "Comprar/Vender"
 
 #: horizons/gui/tabs/inventorytab.py:121
 msgid "Equip weapon"
-msgstr ""
+msgstr "Equipar arma"
 
 #: horizons/gui/tabs/inventorytab.py:124
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Desequipar arma"
 
 #: horizons/gui/tabs/mainsquaretabs.py:76 horizons/i18n/guitranslations.py:179
 msgid "Account"
@@ -459,7 +465,7 @@ msgstr "Conta"
 #: horizons/gui/tabs/mainsquaretabs.py:110
 #: horizons/gui/tabs/overviewtab.py:353 horizons/i18n/guitranslations.py:201
 msgid "Settler overview"
-msgstr "Resumo do povoador"
+msgstr "Resumo dos colonos"
 
 #: horizons/gui/tabs/mainsquaretabs.py:200
 msgid "Don't allow upgrades"
