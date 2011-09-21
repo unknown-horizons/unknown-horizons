@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-21 23:40+0200\n"
+"PO-Revision-Date: 2011-09-21 23:50+0200\n"
 "Last-Translator: Knitter <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -469,30 +469,28 @@ msgstr "Resumo dos colonos"
 
 #: horizons/gui/tabs/mainsquaretabs.py:200
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Não permitir melhoramentos"
 
 #: horizons/gui/tabs/mainsquaretabs.py:203
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Permitir melhoramentos"
 
 #: horizons/gui/tabs/mainsquaretabs.py:229
 #: horizons/i18n/guitranslations.py:221
 msgid "Sailors"
-msgstr ""
+msgstr "Marinheiros"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:234
 #: horizons/i18n/guitranslations.py:205
-#, fuzzy
 msgid "Pioneers"
-msgstr "pioneiro"
+msgstr "Pioneiros"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:239
 #: horizons/i18n/guitranslations.py:236 horizons/i18n/guitranslations.py:369
-#, fuzzy
 msgid "Settlers"
-msgstr "colono"
+msgstr "Colonos"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:396
 #: horizons/i18n/guitranslations.py:305
@@ -505,7 +503,7 @@ msgstr "Resumo da filial"
 
 #: horizons/gui/tabs/overviewtab.py:141
 msgid "Main square overview"
-msgstr ""
+msgstr "Resumo da praça principal"
 
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:221
 msgid "Ship overview"
@@ -513,9 +511,8 @@ msgstr "Resumo do navio"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:228
-#, fuzzy
 msgid "Unit overview"
-msgstr "Resumo do navio"
+msgstr "Resumo das unidades"
 
 #: horizons/gui/tabs/overviewtab.py:247
 msgid "Production overview"
@@ -527,7 +524,7 @@ msgstr "Destruir edificio"
 
 #: horizons/gui/tabs/selectmultitab.py:53
 msgid "Selected Units"
-msgstr ""
+msgstr "Unidades Seleccionadas"
 
 #: horizons/gui/widgets/buysellinventory.py:84
 #: horizons/gui/widgets/inventory.py:103
@@ -546,25 +543,25 @@ msgstr "O seu diário de bordo ainda está em branco!"
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr ""
+msgstr "povoações de %(player)s "
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr ""
+msgstr "barcos de %(player)s"
 
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
 msgid "Production overview of %(settlement)s"
-msgstr ""
+msgstr "Resumo da produção em %(settlement)s"
 
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:354
 msgid "Start route"
-msgstr "Iniciar o rumo"
+msgstr "Iniciar rota"
 
 #: horizons/gui/widgets/routeconfig.py:68
 msgid "Stop route"
-msgstr "Parar o rumo"
+msgstr "Parar rota"
 
 #: horizons/i18n/guitranslations.py:47 horizons/i18n/guitranslations.py:63
 #: horizons/i18n/guitranslations.py:81
