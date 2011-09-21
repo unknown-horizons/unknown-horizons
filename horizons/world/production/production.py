@@ -365,7 +365,7 @@ class Production(WorldObject):
 			self.log.debug("produced %s of %s", amount, res)
 
 	def _check_available_res(self):
-		"""Checks if there are enough resources to start production.
+		"""Checks if all required resources are there.
 		@return: bool, true if we can start production
 		"""
 		for res, amount in self._prod_line.consumed_res.iteritems():

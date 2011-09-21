@@ -260,6 +260,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self._changed()
 
 	def level_up(self, production = None):
+		"""Actually level up (usually called when the upgrade material has arrived)"""
 		# NOTE: production is unused, but gets passed by the production code
 		self.level += 1
 		self.log.debug("%s: Levelling up to %s", self, self.level)

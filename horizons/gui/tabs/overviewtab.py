@@ -178,10 +178,13 @@ class ShipOverviewTab(OverviewTab):
 			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettlement').set_active()
+			self.widget.child_finder('foundSettlement').tooltip = _("Build settlement")
 		else:
 			events['foundSettlement'] = None
 			self.widget.child_finder('bg_button').set_inactive()
 			self.widget.child_finder('foundSettlement').set_inactive()
+			self.widget.child_finder('foundSettlement').tooltip = \
+			    _("The ship needs to be close to an island to found a settlement.")
 
 		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
 		   self.instance,
