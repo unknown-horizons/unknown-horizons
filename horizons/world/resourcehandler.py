@@ -137,10 +137,17 @@ class ResourceHandler(StorageHolder):
 		"""
 		if hasattr(self, "production_class"):
 			production_class = self.production_class
-		owner_inventory = None
-		if hasattr(self, "owner") and self.owner is not None and hasattr(self.owner, "inventory"):
-			owner_inventory = self.owner.inventory
+		owner_inventory = self._get_owner_inventory()
 		self.add_production(production_class(self.inventory, owner_inventory, production_line_id))
+
+	def _get_owner_inventory(self):
+		"""Returns the inventory of the owner to be able to retrieve special resources such as gold.
+		The production system should be as decoupled as possible from actual world objects, so only use
+		when there are no other possibilities"""
+		try:
+			return self.owner.inventory
+		except AttributeError, e: # no owner or no inventory, either way, we don't care
+			return None
 
 	def load_production(self, db, production_id):
 		"""Load a saved production and return it. Needs to be implemented when add_production is.

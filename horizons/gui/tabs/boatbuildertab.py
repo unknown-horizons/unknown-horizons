@@ -118,7 +118,7 @@ class BoatbuilderTab(OverviewTab):
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
 			i = 0
-			for res, amount in still_needed_res.iteritems():
+			for res, amount in still_needed_res:
 				if res == RES.GOLD_ID: # Gold is taken at the beginning
 					continue
 				if amount == 0:
@@ -132,6 +132,10 @@ class BoatbuilderTab(OverviewTab):
 				i += 1
 				if i >= 3:
 					break
+			for j in xrange(i, 3):
+				# these are not filled by a resource, so we need to make it invisible
+				needed_res_container.findChild(name="BB_needed_res_icon_"+str(j+1)).image = None
+				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(j+1)).text = u""
 
 			# TODO: cancel building button
 	#		print "Cancelbutton search.."
@@ -173,7 +177,7 @@ class BoatbuilderSelectTab(OverviewTab):
 		self.button_hover_image = bb_image_path % 'h'
 
 	def start_production(self, prod_line_id):
-		AddProduction(self.instance, prod_line_id, self.instance.owner).execute(self.instance.session)
+		AddProduction(self.instance, prod_line_id).execute(self.instance.session)
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu()._show_tab(0)
 
@@ -226,7 +230,7 @@ class BoatbuilderConfirmTab(OverviewTab):
 		self.tooltip = _("Confirm order")
 
 	def start_production(self):
-		AddProduction(self.instance, 15, self.instance.owner).execute(self.instance.session)
+		AddProduction(self.instance, 15).execute(self.instance.session)
 
 # this "tab" additionally requests functions for:
 # * get: currently ordered ship: name / image / type (fisher/trade/war)

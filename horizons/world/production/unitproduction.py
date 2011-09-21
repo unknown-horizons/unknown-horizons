@@ -50,18 +50,17 @@ class UnitProduction(ChangingProduction):
 
 	def _check_available_res(self):
 		# Gold must be available from the beginning
-		if self._prod_line.consumed_res.has_key(RES.GOLD_ID):
+		if self._prod_line.consumed_res.get(RES.GOLD_ID, 0) > 0: # check if gold is needed
 			amount = self._prod_line.consumed_res[RES.GOLD_ID]
-			if self.owner_inventory[RES.GOLD_ID] > (-amount): # consumed res have negative sign
-				return True
-			else:
-				return False
-		for res in self._prod_line.consumed_res.iterkeys():
-			if res is RES.GOLD_ID:
-				continue # Gold already checked
+		for res, amount in self._prod_line.consumed_res.iteritems():
 			# we change the production, so the amount can become 0
 			# in this case, we must no consider this resource, as it has already been fully provided
-			if amount != 0 and self.inventory[res] > 0:
+			if amount == 0:
+				continue # nothing to take here
+			if res == RES.GOLD_ID:
+				if self.owner_inventory[RES.GOLD_ID] > 0:
+					return True
+			elif self.inventory[res] > 0:
 				return True
 		return False
 
@@ -70,14 +69,12 @@ class UnitProduction(ChangingProduction):
 		taken = 0
 		for res, amount in self._prod_line.consumed_res.iteritems():
 			if res == RES.GOLD_ID:
-				remnant = self.owner_inventory.alter(res, amount)
-				assert remnant == 0, "Not enough gold, shouldn't happend"
-				self._prod_line.change_amount(res, remnant)
-				taken += amount
+				inventory = self.owner_inventory
 			else:
-				remnant = self.inventory.alter(res, amount) # try to get all
-				self._prod_line.change_amount(res, remnant) # set how much we still need to get
-				taken += abs(remnant) + amount
+				inventory = self.inventory
+			remnant = inventory.alter(res, amount) # try to get all
+			self._prod_line.change_amount(res, remnant) # set how much we still need to get
+			taken += abs(remnant) + amount
 		return taken
 
 	def _produce(self):

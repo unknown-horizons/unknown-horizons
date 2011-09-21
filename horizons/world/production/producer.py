@@ -152,7 +152,7 @@ class QueueProducer(Producer):
 		self.__init()
 
 	def __init(self):
-		self.production_queue = []
+		self.production_queue = [] # queue of production line ids
 
 	def save(self, db):
 		super(QueueProducer, self).save(db)
@@ -166,7 +166,7 @@ class QueueProducer(Producer):
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE rowid = ?", worldid):
 			self.production_queue.append(prod_line_id)
 
-	def add_production_by_id(self, production_line_id, owner, production_class = Production):
+	def add_production_by_id(self, production_line_id, production_class = Production):
 		"""Convenience method.
 		@param production_line_id: Production line from db
 		@param production_class: Subclass of Production that does the production. If the object
@@ -198,13 +198,12 @@ class QueueProducer(Producer):
 
 	def start_next_production(self):
 		"""Starts the next production that is in the queue, if there is one."""
-		#print "Start next?"
 		if self.check_next_production_startable():
-			#print "yes"
 			self.set_active(active=True)
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
-			prod = self.production_class(inventory=self.inventory, prod_line_id=production_line_id)
+			owner_inventory = self._get_owner_inventory()
+			prod = self.production_class(inventory=self.inventory, owner_inventory=owner_inventory, prod_line_id=production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
 			self.add_production( prod )
 		else:

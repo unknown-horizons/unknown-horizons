@@ -115,9 +115,7 @@ class Production(WorldObject):
 
 		db_data = db.get_production_row(worldid)
 		obj = WorldObject.get_object_by_id(db_data[1])
-		owner_inventory = None
-		if hasattr(obj, "owner") and obj.owner:
-			owner_inventory = obj.owner.inventory
+		owner_inventory = obj._get_owner_inventory()
 		self.__init(obj.inventory, owner_inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
 			db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
 		if self._state == PRODUCTION.STATES.paused:
