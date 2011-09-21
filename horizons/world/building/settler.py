@@ -64,28 +64,28 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
 
-	def __init(self, happiness = None, loading = False):
+	def __init(self, happiness = None, loading = False, last_tax_payed=0):
 		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
 		if happiness is not None:
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data(loading = loading)
-		self.last_tax_payed = 0
+		self.last_tax_payed = last_tax_payed
 
 	def save(self, db):
 		super(Settler, self).save(db)
-		db("INSERT INTO settler(rowid, inhabitants) VALUES (?, ?)", \
-		   self.worldid, self.inhabitants)
+		db("INSERT INTO settler(rowid, inhabitants, last_tax_payed) VALUES (?, ?, ?)", \
+		   self.worldid, self.inhabitants, self.last_tax_payed)
 		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
 		db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES (?, ?)", \
 		   self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
 		super(Settler, self).load(db, worldid)
-		self.inhabitants = \
-		    db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
+		self.inhabitants, last_tax_payed = \
+		    db("SELECT inhabitants, last_tax_payed FROM settler WHERE rowid=?", worldid)[0]
 		remaining_ticks = \
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
-		self.__init(loading = True)
+		self.__init(loading = True, last_tax_payed = last_tax_payed)
 		self._load_upgrade_data(db)
 		self.owner.notify_settler_reached_level(self)
 		self.run(remaining_ticks)
