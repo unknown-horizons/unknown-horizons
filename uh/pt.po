@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 14:17+0200\n"
+"PO-Revision-Date: 2011-09-22 16:26+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -185,7 +185,7 @@ msgstr "Gravado em %s\n"
 #: horizons/gui/gui.py:431
 #, python-format
 msgid "Savegame ver. %d"
-msgstr "Versão da gravaçao %d"
+msgstr "Versão do jogo gravado %d"
 
 #: horizons/gui/gui.py:433
 #, python-format
@@ -206,16 +206,16 @@ msgstr "Nenhum ficheiro selecionado"
 
 #: horizons/gui/gui.py:459
 msgid "You need to select a savegame to delete"
-msgstr "Necessida de selecionar uma gravação de jogo para apagar"
+msgstr "É necessário seleccionar um jogo gravado para apagar"
 
 #: horizons/gui/gui.py:462
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr "Tem a certeza que deseja apagar o gravação \"%s\"?"
+msgstr "Tem a certeza que deseja apagar o jogo gravado \"%s\"?"
 
 #: horizons/gui/gui.py:464
 msgid "Confirm deletion"
-msgstr "Confirme para apagar"
+msgstr "Confirme a remoção"
 
 #: horizons/gui/gui.py:469
 msgid "Error!"
@@ -223,7 +223,7 @@ msgstr "Erro!"
 
 #: horizons/gui/gui.py:469
 msgid "Failed to delete savefile!"
-msgstr "Falha na remoção da gravação!"
+msgstr "Não foi possível apagar o ficheiro de jogo gravado!"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Unable to find pyenet"
@@ -420,9 +420,8 @@ msgid "Confirm order"
 msgstr "Confirme a ordem"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
-#, fuzzy
 msgid "Build related fields"
-msgstr "Construir campos relacionados"
+msgstr "Construir plantações relacionadas"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -435,7 +434,7 @@ msgstr "Troca"
 
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:197
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Inventário da colónia"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
@@ -530,7 +529,7 @@ msgstr "Unidades Seleccionadas"
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: %st per slot"
-msgstr "Limite: %st por escatel"
+msgstr "Limite: %st por compartimento"
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
