@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 00:05+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-09-22 12:50+0200\n"
+"Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -933,7 +933,7 @@ msgstr "Selecione os recursos:"
 
 #: horizons/i18n/guitranslations.py:178 horizons/i18n/guitranslations.py:260
 msgid "Buying"
-msgstr "Comprando"
+msgstr "A comprar"
 
 #: horizons/i18n/guitranslations.py:180
 msgid "Balance:"
@@ -957,23 +957,23 @@ msgstr "Impostos"
 
 #: horizons/i18n/guitranslations.py:186
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Mostrar os recursos produzidos nesta colónia"
 
 #: horizons/i18n/guitranslations.py:189
 msgid "ally"
-msgstr ""
+msgstr "aliado"
 
 #: horizons/i18n/guitranslations.py:190
 msgid "enemy"
-msgstr ""
+msgstr "inimigo"
 
 #: horizons/i18n/guitranslations.py:191
 msgid "neutral"
-msgstr ""
+msgstr "neutro"
 
 #: horizons/i18n/guitranslations.py:194
 msgid "Build fields"
-msgstr ""
+msgstr "Construir campos"
 
 #: horizons/i18n/guitranslations.py:200
 msgid "Average happiness:"
@@ -986,17 +986,17 @@ msgstr "Recurso mais em falta:"
 #: horizons/i18n/guitranslations.py:206 horizons/i18n/guitranslations.py:222
 #: horizons/i18n/guitranslations.py:237
 msgid "Residents per house"
-msgstr ""
+msgstr "Residentes por casa"
 
 #: horizons/i18n/guitranslations.py:207 horizons/i18n/guitranslations.py:223
 #: horizons/i18n/guitranslations.py:238
 msgid "Summary"
-msgstr ""
+msgstr "Sumário"
 
 #: horizons/i18n/guitranslations.py:208 horizons/i18n/guitranslations.py:224
 #: horizons/i18n/guitranslations.py:239
 msgid "houses"
-msgstr ""
+msgstr "casas"
 
 # 88%
 # 81%
