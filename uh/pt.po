@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 17:47+0200\n"
+"PO-Revision-Date: 2011-09-22 18:39+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -105,7 +105,7 @@ msgstr "Erro"
 
 #: horizons/gui/gui.py:133
 msgid "Failed to save."
-msgstr "Falha na gravação."
+msgstr "Não foi possível gravar o jogo"
 
 #: horizons/gui/gui.py:158
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -156,12 +156,12 @@ msgstr "Confirmação para substituir"
 
 #: horizons/gui/gui.py:275
 msgid "Please select a savegame or click on cancel."
-msgstr "Por favor selecione uma gravação ou clique em cancelar."
+msgstr "Por favor, seleccione um jogo gravado ou clique em cancelar."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:275
 msgid "Select a savegame"
-msgstr "Escolha uma gravação"
+msgstr "Escolha um jogo gravado"
 
 #: horizons/gui/gui.py:343 horizons/i18n/guitranslations.py:345
 #: horizons/i18n/guitranslations.py:513
@@ -268,7 +268,7 @@ msgstr ""
 "Não foi possível ligar ao servidor principal. Por favor, verifique a sua "
 "ligação de Internet. Se a sua ligação estiver a funcionar significa que o "
 "servidor principal está temporariamente em baixo.\n"
-"Detailhes: %s"
+"Detalhes: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
@@ -391,7 +391,7 @@ msgstr "Construir"
 
 #: horizons/gui/tabs/boatbuildertab.py:39
 msgid "Boat builder overview"
-msgstr "Resumo da construção de barcos"
+msgstr "Relatório da construção de barcos"
 
 #: horizons/gui/tabs/boatbuildertab.py:119
 msgid "Resources still needed:"
@@ -464,7 +464,7 @@ msgstr "Conta"
 #: horizons/gui/tabs/mainsquaretabs.py:110
 #: horizons/gui/tabs/overviewtab.py:353 horizons/i18n/guitranslations.py:201
 msgid "Settler overview"
-msgstr "Resumo dos colonos"
+msgstr "Relatório dos colonos"
 
 #: horizons/gui/tabs/mainsquaretabs.py:200
 msgid "Don't allow upgrades"
@@ -494,28 +494,28 @@ msgstr "Colonos"
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:396
 #: horizons/i18n/guitranslations.py:305
 msgid "Overview"
-msgstr "Resumo"
+msgstr "Relatórios"
 
 #: horizons/gui/tabs/overviewtab.py:109 horizons/gui/tabs/overviewtab.py:413
 msgid "Branch office overview"
-msgstr "Resumo da filial"
+msgstr "Relatório da feitoria"
 
 #: horizons/gui/tabs/overviewtab.py:141
 msgid "Main square overview"
-msgstr "Resumo da praça principal"
+msgstr "Relatório da praça principal"
 
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:221
 msgid "Ship overview"
-msgstr "Resumo do navio"
+msgstr "Relatório do navio"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:228
 msgid "Unit overview"
-msgstr "Resumo das unidades"
+msgstr "Relatório de unidades"
 
 #: horizons/gui/tabs/overviewtab.py:247
 msgid "Production overview"
-msgstr "Resumo da produção"
+msgstr "Relatório de produção"
 
 #: horizons/gui/tabs/overviewtab.py:250
 msgid "Destroy building"
@@ -542,17 +542,17 @@ msgstr "O seu diário de bordo ainda está em branco!"
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr "povoações de %(player)s"
+msgstr "colónias de %(player)s"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr "barcos de %(player)s"
+msgstr "navios de %(player)s"
 
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
 msgid "Production overview of %(settlement)s"
-msgstr "Resumo da produção em %(settlement)s"
+msgstr "Relatório da produção em %(settlement)s"
 
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:354
 msgid "Start route"
@@ -625,7 +625,7 @@ msgstr "Árvore"
 
 #: horizons/i18n/guitranslations.py:64 horizons/i18n/guitranslations.py:83
 msgid "Fields"
-msgstr "Campos"
+msgstr "Plantações"
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Pioneer buildings"
@@ -642,7 +642,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Brickyard: Turns clay into bricks."
-msgstr "Olaria: Converte barro em tijolos."
+msgstr "Fábrica de tijolo: Converte barro em tijolos."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Clay pit: Gets clay from deposit."
@@ -650,7 +650,7 @@ msgstr "Poço de barro: Extrai barro do depósito."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Distillery: Turns sugar into liquor."
-msgstr "Destilaria: Converte o açucar em alcoól."
+msgstr "Destilaria: Converte o açucar em álcool."
 
 #: horizons/i18n/guitranslations.py:72
 msgid "Farm: Grows field crops and raises livestock."
@@ -662,7 +662,7 @@ msgstr "Pasto: Cria ovelhas. Produz lã. Requer uma quinta."
 
 #: horizons/i18n/guitranslations.py:74
 msgid "Potato field: Yields food. Needs a farm."
-msgstr "Campo de batatas: Fornece comida. Requer uma quinta."
+msgstr "Plantação de batatas: Produz comida. Requer uma quinta."
 
 #: horizons/i18n/guitranslations.py:75
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
@@ -692,7 +692,7 @@ msgstr "Edifícios de colonos"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr "Matadouro: Precisa de porcos ou gado. Produz comida."
+msgstr "Matadouro: Precisa de porcos ou gado vacum. Produz comida."
 
 #: horizons/i18n/guitranslations.py:87
 msgid "Cattle run: Raises cattle. Needs a farm."
@@ -727,7 +727,7 @@ msgstr "Taberna: Oferece um local para reuniões populares."
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr "Campo de tabaco: Produz tabaco. Necessita de uma quinta."
+msgstr "Plantação de tabaco: Produz tabaco. Necessita de uma quinta."
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Tobacconist: Produces tobaccos out of tobacco."
@@ -735,7 +735,7 @@ msgstr "Fábrica de tabaco: Produz produtos à base de tabaco."
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Toolmaker: Produces tools out of iron."
-msgstr "Ferreiro: Produz ferramentas a partir do erro."
+msgstr "Ferreiro: Produz ferramentas a partir do ferro."
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Game start"
@@ -743,16 +743,16 @@ msgstr "Início do jogo"
 
 #: horizons/i18n/guitranslations.py:100
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "É necessário fundar uma povoação entes de construir edifícios!"
+msgstr "É necessário fundar uma colónia antes de construir edifícios!"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Seleccione o seu barco e aproxime-o da costa usando o botão direito do rato."
+"Seleccione o seu navio e aproxime-o da costa usando o botão direito do rato."
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Depois, pressione o botão grande no separador de resumo do barco."
+msgstr "Depois, pressione o botão grande no separador de relatório do navio."
 
 #: horizons/i18n/guitranslations.py:106 horizons/i18n/guitranslations.py:257
 msgid "Running costs:"
@@ -900,7 +900,7 @@ msgstr "Despesas de funcionamento"
 
 #: horizons/i18n/guitranslations.py:160 sqlite/Unit
 msgid "Huker"
-msgstr "Huker"
+msgstr "Brigue"
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:166
 msgid "Build this ship!"
@@ -972,7 +972,7 @@ msgstr "neutro"
 
 #: horizons/i18n/guitranslations.py:194
 msgid "Build fields"
-msgstr "Construir campos"
+msgstr "Construir plantações"
 
 #: horizons/i18n/guitranslations.py:200
 msgid "Average happiness:"
@@ -1118,7 +1118,7 @@ msgstr "Residentes"
 # 94%
 #: horizons/i18n/guitranslations.py:293
 msgid "Build settlement:"
-msgstr "Construir povoação:"
+msgstr "Construir colónia:"
 
 #: horizons/i18n/guitranslations.py:295
 msgid "Click to change the name of this ship."
@@ -1126,7 +1126,7 @@ msgstr "Clique para mudar o nome deste navio."
 
 #: horizons/i18n/guitranslations.py:296
 msgid "Build settlement"
-msgstr "Construir povoação"
+msgstr "Construir colónia"
 
 #: horizons/i18n/guitranslations.py:299
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
@@ -1735,8 +1735,8 @@ msgstr ""
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 msgstr ""
-"Erro: Sintaxe inválida na opção de linha de comandos. O número do porto tem "
-"de estar entre 1 e 65535."
+"Erro: Sintaxe inválida na opção de linha de comandos --mp-bind. O número do "
+"porto tem de estar entre 1 e 65535."
 
 #: horizons/main.py:243
 msgid "Failed to start/load the game"
@@ -1848,7 +1848,7 @@ msgstr "Vitória!"
 
 #: horizons/scenario/actions.py:77
 msgid "You have completed this scenario. "
-msgstr "Terminou com êxito este cenário."
+msgstr "Terminou com êxito este cenário. "
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
@@ -1871,12 +1871,11 @@ msgstr ""
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
-msgstr "Não foram encontradas gravações rápidas"
+msgstr "Não foram encontrados jogos gravados recentemente"
 
 #: horizons/spsession.py:132
 msgid "You need to quicksave before you can quickload."
-msgstr ""
-"Deverá efectuar uma gravação rápida antes de fazer um carregamento rápido."
+msgstr "É necessário um jogo gravado recentemente antes de poder carregar."
 
 #. usually invalid filename
 #: horizons/spsession.py:159
@@ -1969,7 +1968,7 @@ msgstr "A iniciar o Unknown Horizons"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
-msgstr "Inicia <map>. <map> é o nome do mapa."
+msgstr "Inicia o <map>. Onde <map> é o nome do mapa a usar."
 
 #: run_uh.py:94
 msgid "Starts a random map."
@@ -1977,16 +1976,15 @@ msgstr "Inicia um mapa aleatório."
 
 #: run_uh.py:96
 msgid "Starts a random map with seed <seed>."
-msgstr "Inicia um mapa aleatório usando a semente <seed>."
+msgstr "Inicia um mapa aleatório usando a semente com o valor <seed>."
 
 #: run_uh.py:98
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr "Inicia <scenario>. <scenario> é o nome do cenário."
+msgstr "Inicia um <scenario>. Onde <scenario> é o nome do cenário a usar."
 
 #: run_uh.py:100
-#, fuzzy
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr "Inicia a <campaign>. <campaign> é o nome da campanha."
+msgstr "Inicia a <campaign>. Onde <campaign> é o nome da campanha a usar."
 
 #: run_uh.py:102
 msgid "Starts the development map without displaying the main menu."
@@ -1994,11 +1992,11 @@ msgstr "Inicia o mapa de desenvolvimento sem mostrar o menu principal."
 
 #: run_uh.py:104
 msgid "Loads a saved game. <save> is the savegamename."
-msgstr "Carrega um jogo gravado. <save> é o jogo gravado."
+msgstr "Carrega um jogo gravado. Onde <save> é o nome do ficheiro."
 
 #: run_uh.py:106
 msgid "Loads the last quicksave."
-msgstr "Carrega a última gravação rápida."
+msgstr "Carrega a último jogo gravado de forma imediata."
 
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
@@ -2046,7 +2044,9 @@ msgstr ""
 
 #: run_uh.py:127
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr "Escreve o log para <filename> em vez de escrever para a uh-userdir"
+msgstr ""
+"Escreve o log para o <filename> em vez de escrever para a pasta do UH dentro "
+"da directoria do utilizador"
 
 #: run_uh.py:129
 msgid "For internal use only."
@@ -2069,7 +2069,7 @@ msgstr ""
 
 #: run_uh.py:157
 msgid "Unknown Horizons crashed."
-msgstr "Falha em Unknown Horizons."
+msgstr "A execução do Unknown Horizons foi interrompida com erro."
 
 #: run_uh.py:159
 msgid "We are very sorry for this, and want to fix this error."
@@ -2133,9 +2133,8 @@ msgstr "Vacaria"
 
 # Needs correct context
 #: sqlite/Building
-#, fuzzy
 msgid "Charcoal Burning"
-msgstr "Queima de carvão"
+msgstr "Carvoaria"
 
 #: sqlite/Building
 msgid "Clay Deposit"
@@ -2167,9 +2166,8 @@ msgstr "Caminho de Gravilha"
 
 # In PT, herbary is a collection of old plants, needs context.
 #: sqlite/Building
-#, fuzzy
 msgid "Herbary"
-msgstr "Herbário"
+msgstr "Viveiro"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -2352,9 +2350,8 @@ msgstr "Um novo mundo foi criado."
 
 # 85%
 #: sqlite/Messages
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr "Uma das suas povoações não tem uma praça principal."
+msgstr "Falta uma praça principal numa das suas colónias."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
@@ -2362,7 +2359,7 @@ msgstr "Captura de ecrã gravada em ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr "Alguns dos seus colonos abandonaram-no."
+msgstr "Alguns dos seus colonos abandonaram a colónia."
 
 #: sqlite/Messages
 msgid "You can also drag roads."
@@ -2471,9 +2468,8 @@ msgstr "felicidade"
 
 # Herbs? As in grass or cooking herbs? Needs context.
 #: sqlite/Resources
-#, fuzzy
 msgid "herbs"
-msgstr "condimentos"
+msgstr "especiarias"
 
 #: sqlite/Resources
 msgid "iron deposit"
