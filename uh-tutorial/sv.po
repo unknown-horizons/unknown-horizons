@@ -34,8 +34,11 @@ msgstr ""
 "Bygg din första bosättning och lär dig hur man spelar!\n"
 
 #: po/tutorial.py:4
+#, fuzzy
 msgid "Build a branch office at the coast, so it is easy accessible for other ships like the Free Trader."
 msgstr ""
+"Bygg ett handelskontor vid kusten, så det blir lättillgängligt för andra "
+"fartyg exempelvis köpmän."
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
