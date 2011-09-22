@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 16:26+0200\n"
+"PO-Revision-Date: 2011-09-22 16:28+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -776,7 +776,7 @@ msgstr "Destruir"
 
 #: horizons/i18n/guitranslations.py:115
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomacia"
 
 #: horizons/i18n/guitranslations.py:116
 msgid "Game menu"
@@ -852,7 +852,7 @@ msgstr "Introduza a sua mensagem:"
 
 #: horizons/i18n/guitranslations.py:144
 msgid "Chat"
-msgstr "Conversa fiada"
+msgstr "Conversa"
 
 #: horizons/i18n/guitranslations.py:147
 msgid "Cancel building:"
