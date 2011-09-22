@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 00:20+0200\n"
-"Last-Translator: Knitter <knitter.is@gmail.com>\n"
+"PO-Revision-Date: 2011-09-22 00:21+0200\n"
+"Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -714,7 +714,7 @@ msgstr "Pocilga: Cria porcos. Precisa de uma quinta."
 
 #: horizons/i18n/guitranslations.py:91
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Salinas: Água evapora para produzir sal. Construído na costa marítima."
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Smeltery: Refines all kind of ores."

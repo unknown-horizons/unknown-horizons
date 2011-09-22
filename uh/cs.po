@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-05-27 22:08+0200\n"
+"PO-Revision-Date: 2011-09-22 11:48+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: Unit sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Lékař"
 
 #: horizons/engine.py:70
 msgid "Restart required"
@@ -31,15 +31,15 @@ msgstr "Některé změny vyžadují restartování hry."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Obnovit původní nastavení"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Toto smaže všechna nastavení které si doposud provedl."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Chceš pokračovat?"
 
 #: horizons/engine.py:186
 msgid "System default"
