@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 13:43+0200\n"
+"PO-Revision-Date: 2011-09-22 14:17+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -2132,9 +2132,11 @@ msgstr "Matadouro"
 msgid "Cattle Run"
 msgstr "Vacaria"
 
+# Needs correct context
 #: sqlite/Building
+#, fuzzy
 msgid "Charcoal Burning"
-msgstr "Fornalha"
+msgstr "Queima de carvão"
 
 #: sqlite/Building
 msgid "Clay Deposit"
@@ -2162,11 +2164,13 @@ msgstr "Tenda do pescador"
 
 #: sqlite/Building
 msgid "Gravel Path"
-msgstr ""
+msgstr "Caminho de Gravilha"
 
+# In PT, herbary is a collection of old plants, needs context.
 #: sqlite/Building
+#, fuzzy
 msgid "Herbary"
-msgstr ""
+msgstr "Herbário"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
@@ -2206,7 +2210,7 @@ msgstr "Pavilhão"
 
 #: sqlite/Building
 msgid "Pigsty"
-msgstr ""
+msgstr "Pocilga"
 
 #: sqlite/Building
 msgid "Potato Field"
@@ -2218,7 +2222,7 @@ msgstr "Plataforma"
 
 #: sqlite/Building
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Lagoas de Sal"
 
 #: sqlite/Building
 msgid "Signal Fire"
@@ -2234,11 +2238,11 @@ msgstr "Armazém"
 
 #: sqlite/Building
 msgid "Sugar Field"
-msgstr "Campo de açúcar"
+msgstr "Plantação de cana de açúcar"
 
 #: sqlite/Building
 msgid "Tavern"
-msgstr "Taverna"
+msgstr "Taberna"
 
 #: sqlite/Building
 msgid "Tent"
@@ -2252,15 +2256,15 @@ msgstr "Ruínas"
 
 #: sqlite/Building
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Plantação de tabaco"
 
 #: sqlite/Building
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabaqueiro"
 
 #: sqlite/Building
 msgid "Toolmaker"
-msgstr "Ferramenteiro"
+msgstr "Ferreiro"
 
 #: sqlite/Building
 msgid "Trail"
@@ -2268,7 +2272,7 @@ msgstr "Caminho"
 
 #: sqlite/Building
 msgid "Village school"
-msgstr "Escola da aldeia"
+msgstr "Escola"
 
 #: sqlite/Building
 msgid "Weaver's Tent"
@@ -2276,7 +2280,7 @@ msgstr "Tenda do tecelão"
 
 #: sqlite/Building
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Torre de Madeira"
 
 #: sqlite/Colors
 msgid "black"
@@ -2288,15 +2292,16 @@ msgstr "azul"
 
 #: sqlite/Colors
 msgid "bordeaux"
-msgstr ""
+msgstr "cor de vinho"
 
+# Can also be just "água", though that might be confusing since it's not a common use of the word.
 #: sqlite/Colors
 msgid "cyan"
-msgstr "cian"
+msgstr "verde-água"
 
 #: sqlite/Colors
 msgid "gray"
-msgstr ""
+msgstr "cinzento"
 
 #: sqlite/Colors
 msgid "green"
@@ -2304,11 +2309,11 @@ msgstr "verde"
 
 #: sqlite/Colors
 msgid "lemon"
-msgstr ""
+msgstr "verde-limão"
 
 #: sqlite/Colors
 msgid "orange"
-msgstr ""
+msgstr "laranja"
 
 #: sqlite/Colors
 msgid "pink"
@@ -2316,7 +2321,7 @@ msgstr "rosa"
 
 #: sqlite/Colors
 msgid "purple"
-msgstr ""
+msgstr "roxo"
 
 #: sqlite/Colors
 msgid "red"
@@ -2324,7 +2329,7 @@ msgstr "vermelho"
 
 #: sqlite/Colors
 msgid "teal"
-msgstr ""
+msgstr "azul-esverdeado escuro"
 
 #: sqlite/Colors
 msgid "white"
@@ -2336,7 +2341,7 @@ msgstr "amarelo"
 
 #: sqlite/Messages
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} e ${player2} estão agora ${status}"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
@@ -2350,7 +2355,7 @@ msgstr "Um novo mundo foi criado."
 #: sqlite/Messages
 #, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr "Uma das suas povoações não tem um mercado."
+msgstr "Uma das suas povoações não tem uma praça principal."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
@@ -2362,7 +2367,7 @@ msgstr "Alguns dos seus colonos abandonaram-no."
 
 #: sqlite/Messages
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Também pode arrastar estradas."
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
@@ -2378,11 +2383,11 @@ msgstr "A sua mina ficou sem recursos."
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr "Os seus colonizadores chegaram ao nível ${level}."
+msgstr "Os seus colonos chegaram ao nível ${level}."
 
 #: sqlite/Resources
 msgid "acorns"
-msgstr ""
+msgstr "bolotas"
 
 #: sqlite/Resources
 msgid "boards"
@@ -2394,19 +2399,19 @@ msgstr "tijolos"
 
 #: sqlite/Resources
 msgid "cannon"
-msgstr ""
+msgstr "canhão"
 
 #: sqlite/Resources
 msgid "cattle"
-msgstr ""
+msgstr "gado vacum"
 
 #: sqlite/Resources
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "gado para abate"
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr "carvão"
+msgstr "carvão vegetal"
 
 #: sqlite/Resources
 msgid "clay"
@@ -2427,15 +2432,15 @@ msgstr "comunidade"
 
 #: sqlite/Resources
 msgid "dagger"
-msgstr ""
+msgstr "punhal"
 
 #: sqlite/Resources
 msgid "deer food A"
-msgstr ""
+msgstr "comida de veado A"
 
 #: sqlite/Resources
 msgid "deer meat"
-msgstr ""
+msgstr "carne de veado"
 
 #: sqlite/Resources
 msgid "education"
@@ -2465,17 +2470,19 @@ msgstr "relva"
 msgid "happiness"
 msgstr "felicidade"
 
+# Herbs? As in grass or cooking herbs? Needs context.
 #: sqlite/Resources
+#, fuzzy
 msgid "herbs"
-msgstr ""
+msgstr "condimentos"
 
 #: sqlite/Resources
 msgid "iron deposit"
-msgstr ""
+msgstr "deposíto de ferro"
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr "barras de ferro"
+msgstr "ligotes de ferro"
 
 #: sqlite/Resources
 msgid "iron ore"
@@ -2487,19 +2494,19 @@ msgstr "lã de ovelha"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr "alcoól"
+msgstr "álcool"
 
 #: sqlite/Resources
 msgid "medical herbs"
-msgstr ""
+msgstr "ervas medicinais"
 
 #: sqlite/Resources
 msgid "pigs"
-msgstr ""
+msgstr "porcos"
 
 #: sqlite/Resources
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "porcos para abate"
 
 #: sqlite/Resources
 msgid "potatoes"
@@ -2507,15 +2514,15 @@ msgstr "batatas"
 
 #: sqlite/Resources
 msgid "salt"
-msgstr ""
+msgstr "sal"
 
 #: sqlite/Resources
 msgid "sugar"
-msgstr "açucar"
+msgstr "açúcar"
 
 #: sqlite/Resources
 msgid "sugar cane"
-msgstr ""
+msgstr "cana de açúcar"
 
 #: sqlite/Resources
 msgid "textile"
@@ -2523,15 +2530,17 @@ msgstr "têxtil"
 
 #: sqlite/Resources
 msgid "tobacco leaves"
-msgstr ""
+msgstr "folhas de tabaco"
 
 #: sqlite/Resources
 msgid "tobacco plants"
-msgstr ""
+msgstr "planta de tabaco"
 
+# We have nothing for "tabaccos"...
 #: sqlite/Resources
+#, fuzzy
 msgid "tobaccos"
-msgstr ""
+msgstr "produtos de tabaco"
 
 #: sqlite/Resources
 msgid "tools"
@@ -2547,15 +2556,15 @@ msgstr "lã"
 
 #: sqlite/SettlerLevel
 msgid "aristocrat"
-msgstr ""
+msgstr "aristrocrata"
 
 #: sqlite/SettlerLevel
 msgid "citizen"
-msgstr ""
+msgstr "cidadão"
 
 #: sqlite/SettlerLevel
 msgid "merchant"
-msgstr ""
+msgstr "mercador"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
@@ -2571,15 +2580,15 @@ msgstr "colono"
 
 #: sqlite/Unit
 msgid "Boar"
-msgstr ""
+msgstr "Javali"
 
 #: sqlite/Unit
 msgid "Cattle"
-msgstr ""
+msgstr "Gado vacum"
 
 #: sqlite/Unit
 msgid "Deer"
-msgstr ""
+msgstr "Veado"
 
 #: sqlite/Unit
 msgid "Fisher"
@@ -2587,11 +2596,11 @@ msgstr "Pescador"
 
 #: sqlite/Unit
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Barco Pirata"
 
 #: sqlite/Unit
 msgid "Sheep"
-msgstr ""
+msgstr "Ovelha"
 
 #~ msgid "Something went wrong with the network: "
 #~ msgstr "Ocorreu uma falha na rede: "
