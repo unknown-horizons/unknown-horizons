@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 00:21+0200\n"
-"Last-Translator: Sérgio <knitter.is@gmail.com>\n"
+"PO-Revision-Date: 2011-09-22 00:05+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -313,7 +313,7 @@ msgstr "Versão errada"
 #: horizons/gui/modules/multiplayermenu.py:255
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr "Número recomendado de jogadores:"
+msgstr "Número recomendado de jogadores: "
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -718,39 +718,42 @@ msgstr "Salinas: Água evapora para produzir sal. Construído na costa marítima
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Smeltery: Refines all kind of ores."
-msgstr "Fundição: purifica todos os tipos de minério."
+msgstr "Fundição: Refina todos os tipos de minério."
 
+# A tavern is also a place where wine is sold, shouldn't it be mentioned?
 #: horizons/i18n/guitranslations.py:93
+#, fuzzy
 msgid "Tavern: Provides get-together."
-msgstr "Taverna: proporciona reuniões."
+msgstr "Taberna: Oferece um local para reuniões populares."
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Campo de tabaco: Produz tabaco. Necessita de uma quinta."
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Fábrica de tabaco: Produz produtos à base de tabaco."
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Toolmaker: Produces tools out of iron."
-msgstr "Ferramenteiro: fabrica ferramentas a partir do ferro."
+msgstr "Ferreiro: Produz ferramentas a partir do erro."
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Game start"
-msgstr ""
+msgstr "Início do jogo"
 
 #: horizons/i18n/guitranslations.py:100
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "É necessário fundar uma povoação entes de construir edifícios!"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
+"Seleccione o seu barco e aproxime-o da costa usando o botão direito do rato."
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Depois, pressione o botão grande no separador de resumo do barco."
 
 #: horizons/i18n/guitranslations.py:106 horizons/i18n/guitranslations.py:257
 msgid "Running costs:"
@@ -834,7 +837,7 @@ msgstr "Ouro"
 
 #: horizons/i18n/guitranslations.py:138
 msgid "Enter new name:"
-msgstr "Introduzir o novo nome:"
+msgstr "Introduza um nome novo:"
 
 #: horizons/i18n/guitranslations.py:139
 msgid "Change name"
@@ -846,7 +849,7 @@ msgstr "Aplicar o jogo novo"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Enter your message:"
-msgstr "Introduzir a sua mensagem:"
+msgstr "Introduza a sua mensagem:"
 
 #: horizons/i18n/guitranslations.py:144
 msgid "Chat"
@@ -867,8 +870,8 @@ msgstr "Em construção:"
 #: horizons/i18n/guitranslations.py:150
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
-"Para construir um barco, pressione numa das guias de classe, seleccione o "
-"barco desejado e confirme a ordem."
+"Para construir um barco, pressione num dos separadores de classe, seleccione "
+"o barco desejado e confirme a ordem."
 
 #: horizons/i18n/guitranslations.py:151
 msgid "Construction progress:"
@@ -906,7 +909,7 @@ msgstr "Construir este navio!"
 
 #: horizons/i18n/guitranslations.py:165 sqlite/Unit
 msgid "Frigate"
-msgstr ""
+msgstr "Fragata"
 
 #: horizons/i18n/guitranslations.py:169
 msgid "Buy resources"
@@ -2334,7 +2337,7 @@ msgstr "Precisa de mais ${resource} para construir este edifício."
 
 #: sqlite/Messages
 msgid "Your game has been quicksaved."
-msgstr "O seu jogo foi gravado (gravação rápida)."
+msgstr "O seu jogo foi gravado."
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 11:48+0200\n"
+"PO-Revision-Date: 2011-09-22 12:38+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -43,7 +43,7 @@ msgstr "Chceš pokračovat?"
 
 #: horizons/engine.py:186
 msgid "System default"
-msgstr ""
+msgstr "Výchozí nastavení"
 
 #: horizons/engine.py:210
 msgid "Warning"
@@ -55,11 +55,15 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDL vykreslování je určeno pouze jako náhradní řešení a má vážné grafické "
+"chyby. \n"
+"\n"
+"Použití na vlastní riziko!"
 
 #: horizons/engine.py:277
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "Nastavený jazyk %(lang) na %(place) neleze načíst"
 
 #: horizons/engine.py:525
 msgid "Invalid network port"
@@ -72,42 +76,44 @@ msgstr "Vybraný port není platný. Musí být mezi číslem 1 a 65535."
 #: horizons/engine.py:527
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
+"Prosím zkontroluj port který jsi zadal a ujisti se jestli je v určeném "
+"rozsahu."
 
 #: horizons/engine.py:539
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Nepodařilo se načíst nová síťová data."
 
 #: horizons/engine.py:540 horizons/gui/modules/multiplayermenu.py:57
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr ""
+msgstr "Síť nemůže být inicializována s aktuálním nastavením."
 
 #: horizons/engine.py:541
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Zkontroluj informace které jsi zadal v v části o síťi."
 
 #: horizons/engine.py:544
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
-msgstr ""
+msgstr "Nízká čísla portů vyžadují zvláštní práva, zkus větší než 1024 nebo 0."
 
 #: horizons/gui/gui.py:133
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: horizons/gui/gui.py:133
 msgid "Failed to save."
-msgstr ""
+msgstr "Nepodařilo se uložit."
 
 #: horizons/gui/gui.py:158
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Chceš opravdu ukončit Unknown Horizons?"
 
 #: horizons/gui/gui.py:159
 msgid "Quit Game"
-msgstr ""
+msgstr "Ukončit hru"
 
 #: horizons/gui/gui.py:165
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Jsi si jist že chceš přerušit aktuální hru?"
 
 #: horizons/gui/gui.py:167
 msgid "Quit Session"
@@ -115,20 +121,20 @@ msgstr ""
 
 #: horizons/gui/gui.py:213
 msgid "No saved games"
-msgstr ""
+msgstr "Žádné uložené hry"
 
 #: horizons/gui/gui.py:213
 msgid "There are no saved games to load"
-msgstr ""
+msgstr "Nejsou žádné uložené hry k nahrání"
 
 #: horizons/gui/gui.py:220 horizons/i18n/guitranslations.py:430
 #: horizons/i18n/guitranslations.py:444
 msgid "Load game"
-msgstr ""
+msgstr "Nahrát hru"
 
 #: horizons/gui/gui.py:220 horizons/i18n/guitranslations.py:432
 msgid "Save game"
-msgstr ""
+msgstr "Uložit hru"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:266
@@ -137,42 +143,44 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Ukládaná hra s názvem \"%s\" již existuje. \n"
+"Chceš jí přepsat?"
 
 #: horizons/gui/gui.py:267
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Potvrď přepsání"
 
 #: horizons/gui/gui.py:275
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Prosím vyber uloženou hru nebo klikni na zrušit."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:275
 msgid "Select a savegame"
-msgstr ""
+msgstr "Vyber uloženou hru"
 
 #: horizons/gui/gui.py:343 horizons/i18n/guitranslations.py:345
 #: horizons/i18n/guitranslations.py:513
 msgid "Details:"
-msgstr ""
+msgstr "Detaily:"
 
 #: horizons/gui/gui.py:344
 msgid "Error:"
-msgstr ""
+msgstr "Chyba:"
 
 #: horizons/gui/gui.py:417
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Neznáme datum uložení\n"
 
 #: horizons/gui/gui.py:419
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Uloženo v %s\n"
 
 #: horizons/gui/gui.py:431
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "uložená hra verze %d"
 
 #: horizons/gui/gui.py:433
 #, python-format
@@ -180,59 +188,62 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"UPOZORNĚNÍ: Nekompatibilní verze %(ver)d!\n"
+"Potřeba verze %(need)d!"
 
 #: horizons/gui/gui.py:436
 msgid "INCOMPATIBLE VERSION\n"
-msgstr ""
+msgstr "NEKOMPATIBILNÍ VERZE\n"
 
 #: horizons/gui/gui.py:459
 msgid "No file selected"
-msgstr ""
+msgstr "Nevybrán žádný soubor"
 
 #: horizons/gui/gui.py:459
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Potřebuješ vybrat uloženou hru pro smazání"
 
 #: horizons/gui/gui.py:462
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Opravdu chceš smazat uloženou hru \"%s\"?"
 
 #: horizons/gui/gui.py:464
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Potvrď smazání"
 
 #: horizons/gui/gui.py:469
 msgid "Error!"
-msgstr ""
+msgstr "Chyba!"
 
 #: horizons/gui/gui.py:469
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Chyba při smazání uloženého souboru!"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Nelze najít pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"Funkce multiplayeru vyžaduje knihovnou pyenet, která není v tvém systému."
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Uživatelé linuxu: Zkus instalovat pyenet přes správce balíčků."
 
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr ""
+msgstr "Uživatelé Windows:V současné době není dostupna podpora pro Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Nezdařilo se inicializovat síť."
 
 #: horizons/gui/modules/multiplayermenu.py:58
 msgid "Check the data you entered in the Network section in the settings dialogue."
-msgstr ""
+msgstr "Zkontroluj data která jsi zadal v sekci o síti v dialogu nastavení."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
@@ -241,32 +252,35 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Nelze se připojit k hlavnímu serveru. Prosím zkontroluj tvé internetové "
+"připojení. Pokud je v pořádku je náš hlavní server dočasně mimo provoz.\n"
+"Detaikly: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
 #: horizons/gui/modules/multiplayermenu.py:122
 msgid "Network Error"
-msgstr ""
+msgstr "Chyba sítě"
 
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Něco se pokazilo se sítí:"
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
-msgstr ""
+msgstr "Verze se liší!"
 
 #: horizons/gui/modules/multiplayermenu.py:160
 msgid "Map: "
-msgstr ""
+msgstr "Mapa: "
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Players: "
-msgstr ""
+msgstr "Hráči: "
 
 #: horizons/gui/modules/multiplayermenu.py:164
 msgid "Creator: "
-msgstr ""
+msgstr "Tvůrce: "
 
 #: horizons/gui/modules/multiplayermenu.py:181
 #, python-format
@@ -2446,15 +2460,15 @@ msgstr ""
 
 #: sqlite/Unit
 msgid "Fisher"
-msgstr ""
+msgstr "Rybář"
 
 #: sqlite/Unit
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Pirátská loď"
 
 #: sqlite/Unit
 msgid "Sheep"
-msgstr ""
+msgstr "Ovce"
 
 #, python-format
 #~ msgid "Unknown Horizons Version %s"
