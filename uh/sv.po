@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 00:40+0200\n"
+"PO-Revision-Date: 2011-09-23 00:42+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -532,21 +532,21 @@ msgstr "Det finns inget skrivet i din loggbok ännu!"
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr ""
+msgstr "%(player)s's bosättning"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr ""
+msgstr "%(player)s's fartyg"
 
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
 msgid "Production overview of %(settlement)s"
-msgstr ""
+msgstr "Produktionsöversikt av %(settlement)s"
 
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:354
 msgid "Start route"
-msgstr ""
+msgstr "Start rutt"
 
 #: horizons/gui/widgets/routeconfig.py:68
 msgid "Stop route"
@@ -559,7 +559,7 @@ msgstr "Företag"
 
 #: horizons/i18n/guitranslations.py:48
 msgid "Sailor buildings"
-msgstr ""
+msgstr "Sjömansbyggnader"
 
 #: horizons/i18n/guitranslations.py:49
 msgid "Residents and infrastructure"
@@ -671,11 +671,13 @@ msgstr "Vävare: Väver fårull till tyg."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Mining"
-msgstr ""
+msgstr "Gruvarbete"
 
+# Korrekt översatt men ser väldigt dumt ut. Några andra förslag?
 #: horizons/i18n/guitranslations.py:84
+#, fuzzy
 msgid "Settler buildings"
-msgstr ""
+msgstr "Nybyggarbyggnader"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Butchery: Needs pigs or cattle. Produces food."
@@ -734,7 +736,7 @@ msgstr "Du måste grunda en bosättning innan du kan uppföra byggnader!"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Välj ditt fartyg och närma dig kusten genom att högerklicka."
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Afterwards, press the large button in the ship overview tab."
