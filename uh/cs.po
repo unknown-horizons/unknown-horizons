@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 12:50+0200\n"
+"PO-Revision-Date: 2011-09-22 12:57+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -2228,39 +2228,39 @@ msgstr ""
 
 #: sqlite/Messages
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "Jeden z tvých osadníků nemá v dosahu náměstí."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
-msgstr ""
+msgstr "Snímek obrazovky je uložen do ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Někteří osadníci se odstěhovali."
 
 #: sqlite/Messages
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Můžeš také položit silnice."
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
-msgstr ""
+msgstr "Potřebuješ více ${resource} k postavení budovy."
 
 #: sqlite/Messages
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Hra byla rychle uložena."
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Tvému dolu došli zásoby."
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr ""
+msgstr "Tvůj osadník dosáhl úrovně ${level}."
 
 #: sqlite/Resources
 msgid "acorns"
-msgstr ""
+msgstr "žaludy"
 
 #: sqlite/Resources
 msgid "boards"
@@ -2272,7 +2272,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "cannon"
-msgstr ""
+msgstr "dělo"
 
 #: sqlite/Resources
 msgid "cattle"
@@ -2436,27 +2436,27 @@ msgstr "obchodník"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr "pruzkumník"
+msgstr "průzkumník"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "námořník"
 
 #: sqlite/SettlerLevel
 msgid "settler"
-msgstr ""
+msgstr "osadník"
 
 #: sqlite/Unit
 msgid "Boar"
-msgstr ""
+msgstr "Kanec"
 
 #: sqlite/Unit
 msgid "Cattle"
-msgstr ""
+msgstr "Dobytek"
 
 #: sqlite/Unit
 msgid "Deer"
-msgstr ""
+msgstr "Jelen"
 
 #: sqlite/Unit
 msgid "Fisher"
