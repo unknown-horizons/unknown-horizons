@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 18:39+0200\n"
+"PO-Revision-Date: 2011-09-22 18:46+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -1338,7 +1338,7 @@ msgstr "{F3} = Mostrar lista de colónias"
 
 #: horizons/i18n/guitranslations.py:407
 msgid "{F4} = Show ship list"
-msgstr "{F4} = Mostrar lista de barcos"
+msgstr "{F4} = Mostrar lista de navios"
 
 #: horizons/i18n/guitranslations.py:408
 msgid "{F5} = Quicksave"
@@ -1366,7 +1366,7 @@ msgstr "Divirta-se."
 
 #: horizons/i18n/guitranslations.py:414
 msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Ligar/desligar Diário do Capitão"
+msgstr "{L} = Ligar/desligar Diário de bordo"
 
 #: horizons/i18n/guitranslations.py:415
 msgid "{LEFT} = Scroll left"
@@ -2117,7 +2117,7 @@ msgstr "Constructor de Barcos"
 
 #: sqlite/Building
 msgid "Branch Office"
-msgstr "Filial"
+msgstr "Feitoria"
 
 #: sqlite/Building
 msgid "Brickyard"
@@ -2129,7 +2129,7 @@ msgstr "Matadouro"
 
 #: sqlite/Building
 msgid "Cattle Run"
-msgstr "Vacaria"
+msgstr "Pasto"
 
 # Needs correct context
 #: sqlite/Building
@@ -2171,7 +2171,7 @@ msgstr "Viveiro"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
-msgstr "Tenda do caçador"
+msgstr "Tenda de caçador"
 
 #: sqlite/Building
 msgid "Iron Mine"
@@ -2211,7 +2211,7 @@ msgstr "Pocilga"
 
 #: sqlite/Building
 msgid "Potato Field"
-msgstr "Campo de batatas"
+msgstr "Plantação de batatas"
 
 #: sqlite/Building
 msgid "Rampart"
@@ -2273,7 +2273,7 @@ msgstr "Escola"
 
 #: sqlite/Building
 msgid "Weaver's Tent"
-msgstr "Tenda do tecelão"
+msgstr "Tenda de tecelão"
 
 #: sqlite/Building
 msgid "Wooden Tower"
