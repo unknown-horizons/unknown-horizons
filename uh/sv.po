@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-16 17:29+0200\n"
-"Last-Translator: pilen <gaistn@gmail.com>\n"
+"PO-Revision-Date: 2011-09-23 00:40+0200\n"
+"Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -34,11 +34,8 @@ msgid "Restore default settings"
 msgstr "Återställ standard inställningar"
 
 #: horizons/engine.py:76
-#, fuzzy
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
-"Det här kommer att radera alla ändringar på inställningarna du har gjort "
-"hittills."
+msgstr "Det här kommer att radera alla inställningar du har gjort hittills."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
@@ -54,11 +51,16 @@ msgid "Warning"
 msgstr "Varning"
 
 #: horizons/engine.py:211
+#, fuzzy
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDL renderaren är endast tänkt som en reservlösning och har allvarliga "
+"grafiska buggar. \n"
+"\n"
+"Använd på egen risk!"
 
 #: horizons/engine.py:277
 #, python-format
@@ -76,20 +78,24 @@ msgstr ""
 "65535."
 
 #: horizons/engine.py:527
+#, fuzzy
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
+"Vänligen kontrollera porten du angav och säkerställ att den är inom det "
+"specificerade intervallet. "
 
 #: horizons/engine.py:539
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Misslyckades med att applicera ny nätverks data."
 
 #: horizons/engine.py:540 horizons/gui/modules/multiplayermenu.py:57
 msgid "Networking couldn't be initialised with the current configuration."
 msgstr ""
 
 #: horizons/engine.py:541
+#, fuzzy
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Kontrollera datan du skrev in under Nätverk."
 
 #: horizons/engine.py:544
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
@@ -97,7 +103,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:133
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
 #: horizons/gui/gui.py:133
 msgid "Failed to save."
@@ -148,7 +154,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:267
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Bekräftelse för att skriva över"
 
 #: horizons/gui/gui.py:275
 msgid "Please select a savegame or click on cancel."
@@ -166,16 +172,16 @@ msgstr "Detaljer:"
 
 #: horizons/gui/gui.py:344
 msgid "Error:"
-msgstr ""
+msgstr "Fel:"
 
 #: horizons/gui/gui.py:417
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Okänt spardatum\n"
 
 #: horizons/gui/gui.py:419
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Sparad den %s\n"
 
 #: horizons/gui/gui.py:431
 #, python-format
@@ -195,11 +201,11 @@ msgstr ""
 
 #: horizons/gui/gui.py:459
 msgid "No file selected"
-msgstr ""
+msgstr "Ingen fil vald"
 
 #: horizons/gui/gui.py:459
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Du behöver välja ett sparat spel att ta bort"
 
 #: horizons/gui/gui.py:462
 #, python-format
@@ -208,11 +214,11 @@ msgstr "Vill du verkligen radera det sparade spelet \"%s\"?"
 
 #: horizons/gui/gui.py:464
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Bekräfta borttagningen"
 
 #: horizons/gui/gui.py:469
 msgid "Error!"
-msgstr ""
+msgstr "Fel!"
 
 #: horizons/gui/gui.py:469
 msgid "Failed to delete savefile!"
@@ -220,15 +226,17 @@ msgstr "Misslyckades att radera sparat spel!"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Kunde inte hitta pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"Flerspelarfunktionen  kräver biblioteket \"pyenet\", vilket inte kunde hittas "
+"på ditt system."
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Linux användare: Försök installera pyenet genom din paket hanterare."
 
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
@@ -236,7 +244,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Misslyckades med att initiera nätverk."
 
 #: horizons/gui/modules/multiplayermenu.py:58
 msgid "Check the data you entered in the Network section in the settings dialogue."
@@ -254,11 +262,11 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:115
 #: horizons/gui/modules/multiplayermenu.py:122
 msgid "Network Error"
-msgstr ""
+msgstr "Nätverksfel"
 
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Något gick fel med nätverket:"
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Version differs!"
@@ -333,14 +341,14 @@ msgid "Preferred island size:"
 msgstr "Föredragen storlek på öar:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
+#, fuzzy
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Avvikelse på ö storlek: "
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
-msgstr "Råvarufyndighet"
+msgstr "Råvarudensitet:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -374,9 +382,8 @@ msgstr ""
 
 # 76%
 #: horizons/gui/tabs/boatbuildertab.py:180
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Fiskefartyg"
+msgstr "Fiskebåtar"
 
 #: horizons/gui/tabs/boatbuildertab.py:190
 #: horizons/i18n/guitranslations.py:159
@@ -399,7 +406,7 @@ msgstr "Verkställ order"
 #: horizons/gui/tabs/buildrelatedtab.py:46
 #, fuzzy
 msgid "Build related fields"
-msgstr "Bygg nya fält"
+msgstr "Bygg besläktade fält"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -447,30 +454,28 @@ msgstr "Nybyggaröversikt"
 
 #: horizons/gui/tabs/mainsquaretabs.py:200
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Tillåt inte uppgraderingar"
 
 #: horizons/gui/tabs/mainsquaretabs.py:203
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Tillåt uppgraderingar"
 
 #: horizons/gui/tabs/mainsquaretabs.py:229
 #: horizons/i18n/guitranslations.py:221
 msgid "Sailors"
-msgstr ""
+msgstr "Sjömän"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:234
 #: horizons/i18n/guitranslations.py:205
-#, fuzzy
 msgid "Pioneers"
-msgstr "pionjär"
+msgstr "Pionjärer"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:239
 #: horizons/i18n/guitranslations.py:236 horizons/i18n/guitranslations.py:369
-#, fuzzy
 msgid "Settlers"
-msgstr "nybyggare"
+msgstr "Nybyggare"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:396
 #: horizons/i18n/guitranslations.py:305
@@ -492,9 +497,8 @@ msgstr "Fartygsöversikt"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:228
-#, fuzzy
 msgid "Unit overview"
-msgstr "Fartygsöversikt"
+msgstr "Enhetsöversikt"
 
 # Mellanslag, bindesstreck eller utan genitiv?
 #: horizons/gui/tabs/overviewtab.py:247
@@ -507,19 +511,19 @@ msgstr "Förstör byggnad"
 
 #: horizons/gui/tabs/selectmultitab.py:53
 msgid "Selected Units"
-msgstr ""
+msgstr "Valda Enheter"
 
 #: horizons/gui/widgets/buysellinventory.py:84
 #: horizons/gui/widgets/inventory.py:103
-#, python-format
+#, python-format, fuzzy
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Begränsa: %st per plats"
 
 # Rubriken när loggboken är tom. Något bättre alternativ?
 #: horizons/gui/widgets/logbook.py:156
 #, fuzzy
 msgid "Emptiness"
-msgstr "Tomt"
+msgstr "Tomhet"
 
 #: horizons/gui/widgets/logbook.py:157
 msgid "There is nothing written in your logbook yet!"

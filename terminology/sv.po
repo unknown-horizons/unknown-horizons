@@ -82,7 +82,7 @@ msgid "food"
 msgstr "föda"
 
 msgid "increment"
-msgstr "tillväxt"
+msgstr "tillväxtgrad"
 
 msgid "select"
 msgstr "välja"

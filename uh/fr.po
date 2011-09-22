@@ -2074,7 +2074,7 @@ msgstr "Active le profilage (pour le développement seulement)."
 
 #: run_uh.py:133
 msgid "Run the game for <max_ticks> ticks."
-msgstr ""
+msgstr "Lancer le jeu pour <max_ticks> tours."
 
 #: run_uh.py:135
 msgid "Enable the string previewer tool for scenario writers"
