@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 00:42+0200\n"
+"PO-Revision-Date: 2011-09-23 01:18+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -924,9 +924,8 @@ msgstr "Sälj varor"
 
 # 76%
 #: horizons/i18n/guitranslations.py:175
-#, fuzzy
 msgid "Select resources:"
-msgstr "Sälj varor"
+msgstr "Välj varor:"
 
 #: horizons/i18n/guitranslations.py:178 horizons/i18n/guitranslations.py:260
 msgid "Buying"
@@ -954,7 +953,7 @@ msgstr "Skatter"
 
 #: horizons/i18n/guitranslations.py:186
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Visa varor producerade i denna bosättningen"
 
 #: horizons/i18n/guitranslations.py:189
 msgid "ally"
@@ -986,12 +985,12 @@ msgstr "Mest behövda vara:"
 #: horizons/i18n/guitranslations.py:206 horizons/i18n/guitranslations.py:222
 #: horizons/i18n/guitranslations.py:237
 msgid "Residents per house"
-msgstr ""
+msgstr "Invånare per hus"
 
 #: horizons/i18n/guitranslations.py:207 horizons/i18n/guitranslations.py:223
 #: horizons/i18n/guitranslations.py:238
 msgid "Summary"
-msgstr ""
+msgstr "Sammanfattning"
 
 #: horizons/i18n/guitranslations.py:208 horizons/i18n/guitranslations.py:224
 #: horizons/i18n/guitranslations.py:239
@@ -1002,31 +1001,27 @@ msgstr "hus"
 # 81%
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 #: horizons/i18n/guitranslations.py:240
-#, fuzzy
 msgid "1 resident"
-msgstr "Inneboende"
+msgstr "1 invånare"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:210 horizons/i18n/guitranslations.py:226
 #: horizons/i18n/guitranslations.py:241
-#, fuzzy
 msgid "2 residents"
-msgstr "Inneboende"
+msgstr "2 invånare"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:211 horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "3 residents"
-msgstr "Inneboende"
+msgstr "3 invånare"
 
 # 88%
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:227
 #: horizons/i18n/guitranslations.py:245
-#, fuzzy
 msgid "residents"
-msgstr "Inneboende"
+msgstr "invånare"
 
 #: horizons/i18n/guitranslations.py:213 horizons/i18n/guitranslations.py:228
 #: horizons/i18n/guitranslations.py:246 horizons/i18n/guitranslations.py:282
@@ -1056,24 +1051,22 @@ msgstr "Skattesats"
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:243
-#, fuzzy
 msgid "4 residents"
-msgstr "Inneboende"
+msgstr "4 invånare"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "5 residents"
-msgstr "Inneboende"
+msgstr "5 invånare"
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Uppgradering inte möjlig:"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "Detta är den för tillfället högsta tillväxtgraden!"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
@@ -1086,7 +1079,7 @@ msgstr "Namn:"
 
 #: horizons/i18n/guitranslations.py:261
 msgid "Selling"
-msgstr ""
+msgstr "Säljer"
 
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:294
 msgid "Weapons:"
@@ -1126,7 +1119,7 @@ msgstr "Lycka"
 
 #: horizons/i18n/guitranslations.py:286 horizons/i18n/guitranslations.py:287
 msgid "Residents"
-msgstr "Inneboende"
+msgstr "Invånare"
 
 # bosättning eller kanske koloni?
 #: horizons/i18n/guitranslations.py:293
@@ -1158,7 +1151,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:311 horizons/i18n/guitranslations.py:316
 msgid "Ship:"
-msgstr ""
+msgstr "Fartyg:"
 
 #: horizons/i18n/guitranslations.py:319 horizons/i18n/guitranslations.py:324
 msgid "Configure trading route:"
@@ -1182,11 +1175,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Move down"
-msgstr ""
+msgstr "Flytta ner"
 
 #: horizons/i18n/guitranslations.py:335
 msgid "Move up"
-msgstr ""
+msgstr "Flytta upp"
 
 #: horizons/i18n/guitranslations.py:338
 msgid "Leave Captain's log"
@@ -1219,15 +1212,15 @@ msgstr "Välj det här scenariot"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Wait at load:"
-msgstr ""
+msgstr "Vänta vid lastning:"
 
 #: horizons/i18n/guitranslations.py:351
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Vänta vid avlastning:"
 
 #: horizons/i18n/guitranslations.py:352
 msgid "Exit"
-msgstr ""
+msgstr "Avsluta"
 
 # Lista eller bestämd form listan?
 #: horizons/i18n/guitranslations.py:353
@@ -1237,20 +1230,20 @@ msgstr "Lägg till i lista"
 
 #: horizons/i18n/guitranslations.py:357
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:372
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:388
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: horizons/i18n/guitranslations.py:363
 msgid "Buildings"
-msgstr ""
+msgstr "Byggnader"
 
 #: horizons/i18n/guitranslations.py:364
 msgid "Player scores"
-msgstr ""
+msgstr "Spelar poäng"
 
 #: horizons/i18n/guitranslations.py:365
 msgid "Land"
@@ -1258,14 +1251,13 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:366
 msgid "Money"
-msgstr ""
+msgstr "Pengar"
 
 # 80%
 #: horizons/i18n/guitranslations.py:367 horizons/i18n/guitranslations.py:378
 #: horizons/i18n/guitranslations.py:384
-#, fuzzy
 msgid "Name"
-msgstr "Namn:"
+msgstr "Namn"
 
 #: horizons/i18n/guitranslations.py:368
 msgid "Resources"
@@ -1277,7 +1269,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:371
 msgid "Units"
-msgstr ""
+msgstr "Enheter"
 
 # 87%
 #: horizons/i18n/guitranslations.py:375
@@ -1299,7 +1291,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:387
 msgid "Weapons"
-msgstr ""
+msgstr "Vapen"
 
 #: horizons/i18n/guitranslations.py:391
 msgid "Aggressive"
@@ -1349,15 +1341,15 @@ msgstr "{F10} = Visa konsoll av/på"
 
 #: horizons/i18n/guitranslations.py:405
 msgid "{F2} = Show player scores"
-msgstr ""
+msgstr "{F2} = Visa spelarpoäng"
 
 #: horizons/i18n/guitranslations.py:406
 msgid "{F3} = Show settlement list"
-msgstr ""
+msgstr "{F3} = Visa bosättningslista"
 
 #: horizons/i18n/guitranslations.py:407
 msgid "{F4} = Show ship list"
-msgstr ""
+msgstr "{F4} = Visa fartygslista"
 
 #: horizons/i18n/guitranslations.py:408
 msgid "{F5} = Quicksave"
@@ -1375,7 +1367,7 @@ msgstr "FIFE och Unknown Horizons utvecklingslag"
 
 #: horizons/i18n/guitranslations.py:411
 msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Visa rutnät av/på"
+msgstr "{G} = Visa rutnät på/av"
 
 #: horizons/i18n/guitranslations.py:412
 msgid "{H} = Show coordinate values (Debug)"
@@ -1383,7 +1375,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:413
 msgid "Have fun."
-msgstr "Ha så roligt."
+msgstr "Ha roligt."
 
 #: horizons/i18n/guitranslations.py:414
 msgid "{L} = Toggle Captain's log"
@@ -1571,8 +1563,9 @@ msgstr "Gå med i det valda spelet"
 
 #: horizons/i18n/guitranslations.py:480 horizons/i18n/guitranslations.py:516
 #: horizons/i18n/guitranslations.py:528
+#, fuzzy
 msgid "Exit to main menu"
-msgstr ""
+msgstr "Avsluta till huvudmenyn"
 
 #: horizons/i18n/guitranslations.py:481
 msgid "Refresh list of active games"
@@ -1733,7 +1726,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:543
 msgid "AI players:"
-msgstr ""
+msgstr "AI spelare:"
 
 #: horizons/i18n/guitranslations.py:546
 msgid "Game settings:"
@@ -1745,7 +1738,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:548
 msgid "Pirates"
-msgstr ""
+msgstr "Pirater"
 
 #: horizons/i18n/guitranslations.py:551
 msgid "Color:"
@@ -1765,11 +1758,11 @@ msgstr ""
 
 #: horizons/main.py:243
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Misslyckades med att starta/ladda spelet"
 
 #: horizons/main.py:244
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "Det valda spelet kunde inte startas."
 
 #: horizons/main.py:245
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -1778,7 +1771,7 @@ msgstr ""
 #: horizons/main.py:332
 #, python-format
 msgid "Error: Cannot find map \"%s\"."
-msgstr ""
+msgstr "Fel: Kan inte hitta karta \"%s\"."
 
 #: horizons/main.py:335 horizons/main.py:407
 msgid "Error: Found multiple matches: "
@@ -1819,7 +1812,7 @@ msgstr ""
 #: horizons/mpsession.py:50 horizons/mpsession.py:64 horizons/mpsession.py:66
 #: horizons/mpsession.py:68 horizons/mpsession.py:70
 msgid "Not possible"
-msgstr ""
+msgstr "Inte möjligt"
 
 #: horizons/mpsession.py:50
 msgid "You cannot change the speed of a multiplayer game"
@@ -1850,9 +1843,11 @@ msgstr ""
 msgid "Error: Cannot find scenario with file \"%s\"."
 msgstr ""
 
+# eller segrat?
 #: horizons/scenario/actions.py:76 sqlite/Messages
+#, fuzzy
 msgid "You have won!"
-msgstr ""
+msgstr "Du har vunnit!"
 
 #: horizons/scenario/actions.py:77
 msgid "You have completed this scenario. "
@@ -1861,7 +1856,7 @@ msgstr ""
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
 msgid "unknown"
-msgstr ""
+msgstr "okänd"
 
 # 75%
 #: horizons/spsession.py:122
@@ -1900,7 +1895,7 @@ msgstr ""
 
 #: horizons/spsession.py:167
 msgid "File used by another process"
-msgstr ""
+msgstr "Filen används av en annan process"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is currently used by another program."
