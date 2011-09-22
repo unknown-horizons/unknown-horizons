@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 18:46+0200\n"
+"PO-Revision-Date: 2011-09-22 23:04+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -542,7 +542,7 @@ msgstr "O seu diário de bordo ainda está em branco!"
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr "colónias de %(player)s"
+msgstr "povoações de %(player)s"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
@@ -743,7 +743,7 @@ msgstr "Início do jogo"
 
 #: horizons/i18n/guitranslations.py:100
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "É necessário fundar uma colónia antes de construir edifícios!"
+msgstr "É necessário fundar uma povoação antes de construir edifícios!"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Select your ship and approach the coast via right-click."
@@ -764,7 +764,7 @@ msgstr "Habitantes"
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Click to change the name of your settlement."
-msgstr "Pressione para alterar o nome da sua colónia."
+msgstr "Pressione para alterar o nome da sua povoação."
 
 #: horizons/i18n/guitranslations.py:113
 msgid "Build menu"
@@ -956,7 +956,7 @@ msgstr "Impostos"
 
 #: horizons/i18n/guitranslations.py:186
 msgid "Show resources produced in this settlement"
-msgstr "Mostrar os recursos produzidos nesta colónia"
+msgstr "Mostrar os recursos produzidos nesta povoação"
 
 #: horizons/i18n/guitranslations.py:189
 msgid "ally"
@@ -1118,7 +1118,7 @@ msgstr "Residentes"
 # 94%
 #: horizons/i18n/guitranslations.py:293
 msgid "Build settlement:"
-msgstr "Construir colónia:"
+msgstr "Construir povoação:"
 
 #: horizons/i18n/guitranslations.py:295
 msgid "Click to change the name of this ship."
@@ -1126,7 +1126,7 @@ msgstr "Clique para mudar o nome deste navio."
 
 #: horizons/i18n/guitranslations.py:296
 msgid "Build settlement"
-msgstr "Construir colónia"
+msgstr "Construir povoação"
 
 #: horizons/i18n/guitranslations.py:299
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
@@ -1334,7 +1334,7 @@ msgstr "{F2} = Mostrar pontuação"
 
 #: horizons/i18n/guitranslations.py:406
 msgid "{F3} = Show settlement list"
-msgstr "{F3} = Mostrar lista de colónias"
+msgstr "{F3} = Mostrar lista de povoações"
 
 #: horizons/i18n/guitranslations.py:407
 msgid "{F4} = Show ship list"
@@ -2351,7 +2351,7 @@ msgstr "Um novo mundo foi criado."
 # 85%
 #: sqlite/Messages
 msgid "One of your settler has no main square in it's range."
-msgstr "Falta uma praça principal numa das suas colónias."
+msgstr "Falta uma praça principal numa das suas povoações."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
@@ -2359,7 +2359,7 @@ msgstr "Captura de ecrã gravada em ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr "Alguns dos seus colonos abandonaram a colónia."
+msgstr "Alguns dos seus colonos abandonaram a povoação."
 
 #: sqlite/Messages
 msgid "You can also drag roads."

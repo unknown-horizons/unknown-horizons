@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-09-22 17:22+0200\n"
+"PO-Revision-Date: 2011-09-22 17:24+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -83,7 +83,7 @@ msgstr "principal"
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # (poterminology) uh/unknownhorizons.pot (5)
 msgid "settlement"
-msgstr "colónia"
+msgstr "povoação"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1005,7 +1005,7 @@ msgid "temporarily"
 msgstr "temporariamente"
 
 msgid "salt ponds"
-msgstr "lagoas de sal"
+msgstr "salinas"
 
 msgid "tobacco"
 msgstr "tabaco"
