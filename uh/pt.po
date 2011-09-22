@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 16:28+0200\n"
+"PO-Revision-Date: 2011-09-22 17:47+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -900,7 +900,7 @@ msgstr "Despesas de funcionamento"
 
 #: horizons/i18n/guitranslations.py:160 sqlite/Unit
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:166
 msgid "Build this ship!"
@@ -916,7 +916,7 @@ msgstr "Comprar recursos"
 
 #: horizons/i18n/guitranslations.py:170
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "Clique no ícone de compartimento para activar/desactivar o modo:"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "Buy or sell resources"
@@ -1070,7 +1070,7 @@ msgstr "Este é o incremento máximo possível!"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
-msgstr ""
+msgstr "Transportadores utilizados:"
 
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:267
 #: horizons/i18n/guitranslations.py:306
@@ -1186,7 +1186,7 @@ msgstr "Ler entradas anteriores"
 
 #: horizons/i18n/guitranslations.py:340
 msgid "Read next entries"
-msgstr "Ler entradas posteriores"
+msgstr "Ler entradas seguintes"
 
 #: horizons/i18n/guitranslations.py:343
 msgid "Available Scenarios"
@@ -1342,11 +1342,11 @@ msgstr "{F4} = Mostrar lista de barcos"
 
 #: horizons/i18n/guitranslations.py:408
 msgid "{F5} = Quicksave"
-msgstr "{F5} = Gravação rápida"
+msgstr "{F5} = Gravar jogo imediatamente"
 
 #: horizons/i18n/guitranslations.py:409
 msgid "{F9} = Quickload"
-msgstr "{F9} = Carregar gravação rápida"
+msgstr "{F9} = Carregar último jogo gravado"
 
 #: horizons/i18n/guitranslations.py:410
 msgid "The FIFE and Unknown Horizons development teams"
@@ -1795,11 +1795,11 @@ msgstr "Erro: Não foi possível encontrar o campanha \"%s\"."
 #: horizons/main.py:404
 #, python-format
 msgid "Error: Cannot find savegame \"%s\"."
-msgstr "Erro: Não foi possível encontrar a gravação \"%s\"."
+msgstr "Erro: Não foi possível encontrar o jogo gravado \"%s\"."
 
 #: horizons/main.py:422
 msgid "Error: No quicksave found."
-msgstr "Erro: Nenhuma gravação rápida encontrada."
+msgstr "Erro: Não foi encontrado um jogo gravado recentemente."
 
 #: horizons/mpsession.py:50 horizons/mpsession.py:64 horizons/mpsession.py:66
 #: horizons/mpsession.py:68 horizons/mpsession.py:70
