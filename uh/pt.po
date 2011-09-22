@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 13:40+0200\n"
+"PO-Revision-Date: 2011-09-22 13:43+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -2126,11 +2126,11 @@ msgstr "Fábrica de tijolos"
 
 #: sqlite/Building
 msgid "Butchery"
-msgstr ""
+msgstr "Matadouro"
 
 #: sqlite/Building
 msgid "Cattle Run"
-msgstr ""
+msgstr "Vacaria"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
