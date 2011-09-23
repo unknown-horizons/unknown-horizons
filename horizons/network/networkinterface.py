@@ -48,8 +48,9 @@ class NetworkInterface(object):
 		self.cbs_game_prepare = []
 		self.cbs_game_starts = []
 		self.cbs_error = [] # cbs with 1 parameter which is an Exception instance
-		self._client.register_callback("lobbygame_join", self._cb_game_details_changed)
-		self._client.register_callback("lobbygame_leave", self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_join",       self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_leave",      self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
 		self._client.register_callback("game_starts", self._cb_game_starts)
 		self._client.register_callback("game_data", self._cb_game_data)
@@ -155,6 +156,15 @@ class NetworkInterface(object):
 
 	def register_chat_callback(self, function):
 		self._client.register_callback("lobbygame_chat", function)
+
+	def register_player_joined_callback(self, function):
+		self._client.register_callback("lobbygame_join", function)
+
+	def register_player_left_callback(self, function):
+		self._client.register_callback("lobbygame_leave", function)
+
+	def register_player_changed_name_callback(self, function):
+		self._client.register_callback("lobbygame_changename", function)
 
 	def register_game_details_changed_callback(self, function, unique = True):
 		if unique and function in self.cbs_game_details_changed:

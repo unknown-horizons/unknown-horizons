@@ -272,25 +272,26 @@ class Client(object):
 				return True
 			self.call_callbacks("lobbygame_state", self.game, packet[1].game)
 
+			oldplayers = list(self.game.players)
+			self.game = packet[1].game
+
 			# calculate changeset
-			newplayers = list(packet[1].game.players)
-			for p1 in self.game.players:
+			for pnew in self.game.players:
 				found = None
-				for p2 in newplayers:
-					if p1.sid == p2.sid:
-						found = p2
-						if p1.name != p2.name:
-							self.call_callbacks("lobbygame_changename", self.game, p1, p2)
-						#if p1.color is not p2.color:
-						#	self.call_callbacks("lobbygame_changecolor", self.game, p1, p2)
+				for pold in oldplayers:
+					if pnew.sid == pold.sid:
+						found = pold
+						if pnew.name != pold.name:
+							self.call_callbacks("lobbygame_changename", self.game, pold, pnew)
+						#if pnew.color != pold.color:
+						#	self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew)
 						break
 				if found is None:
-					self.call_callbacks("lobbygame_leave", self.game, p1)
+					self.call_callbacks("lobbygame_join", self.game, pnew)
 				else:
-					newplayers.remove(found)
-			for p in newplayers:
-				self.call_callbacks("lobbygame_join", self.game, p)
-			self.game = packet[1].game
+					oldplayers.remove(found)
+			for pold in oldplayers:
+				self.call_callbacks("lobbygame_leave", self.game, pold)
 			return True
 		elif isinstance(packet[1], packets.server.cmd_preparegame):
 			# ignore packet if we are not a game lobby

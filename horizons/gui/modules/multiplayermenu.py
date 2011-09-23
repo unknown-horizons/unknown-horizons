@@ -96,6 +96,9 @@ class MultiplayerMenu(object):
 		NetworkInterface().register_game_prepare_callback(self.__prepare_game)
 		NetworkInterface().register_game_starts_callback(self.__start_game)
 		NetworkInterface().register_error_callback(self.__on_error)
+		NetworkInterface().register_player_joined_callback(self.__player_joined)
+		NetworkInterface().register_player_left_callback(self.__player_left)
+		NetworkInterface().register_player_changed_name_callback(self.__player_changed_name)
 
 		try:
 			NetworkInterface().connect()
@@ -224,8 +227,9 @@ class MultiplayerMenu(object):
 	def __send_chat_message(self):
 		"""Sends a chat message. Called when user presses enter in the input field"""
 		msg = self.current.findChild(name="chatTextField").text
-		self.current.findChild(name="chatTextField").text = u""
-		NetworkInterface().chat(msg)
+		if len(msg):
+			self.current.findChild(name="chatTextField").text = u""
+			NetworkInterface().chat(msg)
 
 	def __receive_chat_message(self, game, player, msg):
 		"""Receive a chat message from the network. Only possible in lobby state"""
@@ -236,6 +240,24 @@ class MultiplayerMenu(object):
 		for line in lines:
 			chatbox.items.append(line)
 		chatbox.selected = len(chatbox.items) - 1
+
+	def __print_event_message(self, msg):
+		line_max_length = 40
+		chatbox = self.current.findChild(name="chatbox")
+		full_msg = u"* " + msg + " *"
+		lines = textwrap.wrap(full_msg, line_max_length)
+		for line in lines:
+			chatbox.items.append(line)
+		chatbox.selected = len(chatbox.items) - 1
+
+	def __player_joined(self, game, player):
+		self.__print_event_message("%s has joined the game" % (player.name))
+
+	def __player_left(self, game, player):
+		self.__print_event_message("%s has left the game" % (player.name))
+
+	def __player_changed_name(self, game, plold, plnew):
+		self.__print_event_message("%s is now known as %s" % (plold.name, plnew.name))
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""
