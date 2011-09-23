@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-09-23 00:10+0200\n"
+"PO-Revision-Date: 2011-09-23 10:40+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -26,7 +26,7 @@ msgid "tent"
 msgstr "tält"
 
 msgid "resource"
-msgstr "vara"
+msgstr "resurs"
 
 # Otydlig. Ursprungliga översättning från tyskans "kontor".
 msgid "branch office"
@@ -36,7 +36,7 @@ msgid "your"
 msgstr "din"
 
 msgid "farm"
-msgstr "gård"
+msgstr "bondgård"
 
 msgid "field"
 msgstr "fält"
@@ -51,10 +51,10 @@ msgid "main"
 msgstr "huvudsakliga"
 
 msgid "settlement"
-msgstr "bosättning / nybygge / koloni"
+msgstr "bosättning"
 
 msgid "start"
-msgstr "start"
+msgstr "starta"
 
 msgid "click"
 msgstr "klicka"
@@ -79,13 +79,13 @@ msgid "unknown"
 msgstr "okänd"
 
 msgid "food"
-msgstr "föda"
+msgstr "mat"
 
 msgid "increment"
 msgstr "tillväxtgrad"
 
 msgid "select"
-msgstr "välja"
+msgstr "välj"
 
 msgid "setting"
 msgstr "inställning"
@@ -100,22 +100,22 @@ msgid "change"
 msgstr "förändring"
 
 msgid "main square"
-msgstr "marknadsplats"
+msgstr "torg"
 
 msgid "trail"
-msgstr "gångstig"
+msgstr "stig"
 
 msgid "boards"
-msgstr "trä"
+msgstr "brädor"
 
 msgid "buy"
-msgstr "köpa"
+msgstr "köp"
 
 msgid "coast"
 msgstr "kust"
 
 msgid "connect"
-msgstr "ansluta"
+msgstr "anslut"
 
 msgid "cost"
 msgstr "kostnad"
@@ -128,10 +128,10 @@ msgstr "logg"
 
 # lumberjack och lumberjacks camp syftar till samma byggnad/yrke
 msgid "lumberjack"
-msgstr "Skogshuggare"
+msgstr "skogshuggare"
 
 msgid "sell"
-msgstr "sälja"
+msgstr "sälj"
 
 msgid "storage"
 msgstr "lager"
@@ -149,13 +149,14 @@ msgid "companies"
 msgstr "företag"
 
 msgid "fire"
-msgstr "brand"
+msgstr "eld / brand"
 
 msgid "left"
 msgstr "över / vänster"
 
+# Beroende på om det syftar till verb eller substantiv
 msgid "reach"
-msgstr "nå"
+msgstr "nå / räckhåll"
 
 msgid "signal"
 msgstr "signal"
