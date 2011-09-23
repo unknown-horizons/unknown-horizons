@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 14:49+0200\n"
+"PO-Revision-Date: 2011-09-23 14:56+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -1810,6 +1810,8 @@ msgstr ""
 #: horizons/main.py:366
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"Detta betyder att ändringar i filen du angav inte kommer att verkställas i "
+"spelet direkt."
 
 #: horizons/main.py:367
 #, python-format
@@ -1824,11 +1826,11 @@ msgstr ""
 #: horizons/main.py:404
 #, python-format
 msgid "Error: Cannot find savegame \"%s\"."
-msgstr ""
+msgstr "Fel: Kan inte hitta sparat spel \"%s\"."
 
 #: horizons/main.py:422
 msgid "Error: No quicksave found."
-msgstr ""
+msgstr "Fel: Inga snabbsparade spel hittades."
 
 #: horizons/mpsession.py:50 horizons/mpsession.py:64 horizons/mpsession.py:66
 #: horizons/mpsession.py:68 horizons/mpsession.py:70
@@ -1836,13 +1838,15 @@ msgid "Not possible"
 msgstr "Inte möjligt"
 
 #: horizons/mpsession.py:50
+#, fuzzy
 msgid "You cannot change the speed of a multiplayer game"
-msgstr ""
+msgstr "Du kan inte ändra hastighet i ett flespelar spel."
 
 #: horizons/mpsession.py:64 horizons/mpsession.py:66 horizons/mpsession.py:68
 #: horizons/mpsession.py:70
+#, fuzzy
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "Spara/ladda är ännu inte möjligt för flerspelar spel"
 
 #: horizons/savegamemanager.py:364
 #, python-format
@@ -1857,12 +1861,12 @@ msgstr ""
 #: horizons/savegamemanager.py:438
 #, python-format
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr ""
+msgstr "Fel: Kan inte hitta scenario \"%s\"."
 
 #: horizons/savegamemanager.py:443
 #, python-format
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr ""
+msgstr "Fel: Kan inte hitta scenario med fil \"%s\"."
 
 # eller segrat?
 #: horizons/scenario/actions.py:76 sqlite/Messages
@@ -1872,7 +1876,7 @@ msgstr "Du har vunnit!"
 
 #: horizons/scenario/actions.py:77
 msgid "You have completed this scenario. "
-msgstr ""
+msgstr "Du har klarat det här scenariot."
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
@@ -1881,13 +1885,12 @@ msgstr "okänd"
 
 # 75%
 #: horizons/spsession.py:122
-#, fuzzy
 msgid "Failed to quicksave."
-msgstr "Misslyckades att spara."
+msgstr "Misslyckades med att snabbspara."
 
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
-msgstr ""
+msgstr "Ett fel inträffade under snabbsparningen. Ditt spel har inte sparats."
 
 #: horizons/spsession.py:124
 msgid "If this error happens again, please contact the development team:"
@@ -1895,11 +1898,11 @@ msgstr ""
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
-msgstr ""
+msgstr "Inga snabbsparade spel hittade."
 
 #: horizons/spsession.py:132
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "Du behöver snabbspara innan du kan snabbladda."
 
 #. usually invalid filename
 #: horizons/spsession.py:159
