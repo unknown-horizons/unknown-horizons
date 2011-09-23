@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 11:36+0200\n"
+"PO-Revision-Date: 2011-09-23 11:41+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -263,6 +263,10 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Kunde inte koppla upp till huvudservern. Vänligen kontrollera din "
+"internetanslutning. Fungerar den betyder det att vår huvudservern "
+"tillfälligt är nere.\n"
+"Detaljer: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115
@@ -294,6 +298,10 @@ msgstr "Skapare: "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Spelets version skiljer sig från din version. Alla spelare i ett "
+"flerspelarspel måste använda samma version. Detta kan lösas genom att alla "
+"spelare uppdaterar till den senaste versionen. Spel version: %(gameversion) "
+"Din version: %(ownversion)"
 
 #: horizons/gui/modules/multiplayermenu.py:181
 msgid "Wrong version"
