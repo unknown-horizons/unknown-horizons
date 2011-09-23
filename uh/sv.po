@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 01:18+0200\n"
+"PO-Revision-Date: 2011-09-23 11:36+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -62,10 +62,11 @@ msgstr ""
 "\n"
 "Använd på egen risk!"
 
+# Fritt översatt. 
 #: horizons/engine.py:277
-#, python-format
+#, python-format, fuzzy
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "Inställt språk %(lang) vid %(place) kunde inte laddas"
 
 #: horizons/engine.py:525
 msgid "Invalid network port"
@@ -78,11 +79,10 @@ msgstr ""
 "65535."
 
 #: horizons/engine.py:527
-#, fuzzy
 msgid "Please check the port you entered and make sure it's in the specified range."
 msgstr ""
-"Vänligen kontrollera porten du angav och säkerställ att den är inom det "
-"specificerade intervallet. "
+"Vänligen kontrollera porten du angav och säkerställ att den är inom den "
+"specificerade räckvidden. "
 
 #: horizons/engine.py:539
 msgid "Failed to apply new network data."
@@ -90,7 +90,7 @@ msgstr "Misslyckades med att applicera ny nätverks data."
 
 #: horizons/engine.py:540 horizons/gui/modules/multiplayermenu.py:57
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr ""
+msgstr "Nätverk kunde inte initieras med den aktuella konfigurationen."
 
 #: horizons/engine.py:541
 #, fuzzy
@@ -100,6 +100,8 @@ msgstr "Kontrollera datan du skrev in under Nätverk."
 #: horizons/engine.py:544
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Låga portnummer kräver ibland särskilda privilegier, prova med en högre 1024 "
+"eller 0."
 
 #: horizons/gui/gui.py:133
 msgid "Error"
@@ -107,7 +109,7 @@ msgstr "Fel"
 
 #: horizons/gui/gui.py:133
 msgid "Failed to save."
-msgstr "Misslyckades att spara."
+msgstr "Misslyckades med att spara."
 
 #: horizons/gui/gui.py:158
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -186,7 +188,7 @@ msgstr "Sparad den %s\n"
 #: horizons/gui/gui.py:431
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "Sparat spel ver. %d"
 
 #: horizons/gui/gui.py:433
 #, python-format
@@ -194,10 +196,12 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"VARNING: Inkompatibel ver. %(ver)d!\n"
+"Behöver ver. %(need)d!"
 
 #: horizons/gui/gui.py:436
 msgid "INCOMPATIBLE VERSION\n"
-msgstr ""
+msgstr "INKOMPATIBEL VERSION\n"
 
 #: horizons/gui/gui.py:459
 msgid "No file selected"
@@ -231,7 +235,7 @@ msgstr "Kunde inte hitta pyenet"
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
-"Flerspelarfunktionen  kräver biblioteket \"pyenet\", vilket inte kunde hittas "
+"Flerspelarfunktionen kräver biblioteket \"pyenet\", vilket inte kunde hittas "
 "på ditt system."
 
 #: horizons/gui/modules/multiplayermenu.py:47
@@ -241,14 +245,16 @@ msgstr "Linux användare: Försök installera pyenet genom din paket hanterare."
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Windows användare: Det finns för tillfället inget rimligt stöd för Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Failed to initialize networking."
 msgstr "Misslyckades med att initiera nätverk."
 
 #: horizons/gui/modules/multiplayermenu.py:58
+#, fuzzy
 msgid "Check the data you entered in the Network section in the settings dialogue."
-msgstr ""
+msgstr "Kontrollera datan du angav under Nätverk i inställnings dialogen."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:115

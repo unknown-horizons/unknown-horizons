@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-09-23 10:50+0200\n"
+"PO-Revision-Date: 2011-09-23 11:19+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -271,8 +271,9 @@ msgstr "fortsätt / fortsätta"
 msgid "decrease"
 msgstr "minska"
 
+# syftar i spelet på fartyget som man kan köpa/sälja av.
 msgid "free trader"
-msgstr "köpman / köpmän"
+msgstr "fria handelsfaryget"
 
 msgid "hunter"
 msgstr "jägare"
@@ -285,7 +286,7 @@ msgid "market"
 msgstr "marknad"
 
 msgid "partner"
-msgstr "partner"
+msgstr "partner / delägare"
 
 msgid "sailor"
 msgstr "sjöman"
@@ -301,7 +302,7 @@ msgstr "medborgare"
 
 # merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att lösa detta.
 msgid "merchant"
-msgstr "borgare"
+msgstr "handelsman"
 
 msgid "aristocrat"
 msgstr "aristokrat"
@@ -310,14 +311,14 @@ msgid "refresh"
 msgstr "uppdatera / förnya"
 
 msgid "residents"
-msgstr "invånare"
+msgstr "boende"
 
 #
 msgid "run"
 msgstr "kör / springa"
 
 msgid "slot"
-msgstr "kortplats / lucka / spår"
+msgstr "plats"
 
 msgid "stop"
 msgstr "stopp / stoppa"
@@ -332,15 +333,15 @@ msgid "account"
 msgstr "konto"
 
 msgid "back"
-msgstr "tillbaka"
+msgstr "tillbaka / bakåt"
 
 #
 msgid "build settlement"
-msgstr "bygg bosättning / nybygge / koloni"
+msgstr "bygg bosättning"
 
 #
 msgid "Captain's log"
-msgstr "loggbok"
+msgstr "Kaptenens loggbok"
 
 msgid "cloth"
 msgstr "tyg"
@@ -350,7 +351,7 @@ msgid "description"
 msgstr "beskrivning"
 
 msgid "happiness"
-msgstr "lycka / glädje"
+msgstr "lycka"
 
 # 75%
 msgid "increase"
@@ -365,7 +366,7 @@ msgid "mode"
 msgstr "läge"
 
 msgid "multiple"
-msgstr "flera / flerdubbel"
+msgstr "flera"
 
 msgid "output"
 msgstr "utgång / effekt / produktion"
@@ -375,7 +376,7 @@ msgstr "spela"
 
 # 75%
 msgid "sale"
-msgstr "försäljning"
+msgstr "försäljning / rea"
 
 #
 msgid "save"
@@ -397,7 +398,7 @@ msgid "sound"
 msgstr "ljud"
 
 msgid "from time to time"
-msgstr "från tid till annan / då och då"
+msgstr "då och då"
 
 msgid "trading"
 msgstr "handel"
@@ -427,17 +428,17 @@ msgstr "forum"
 
 #
 msgid "fulfill"
-msgstr "fullfölja / fullgöra"
+msgstr "uppfylla"
 
 #
 msgid "graphics"
 msgstr "grafik"
 
 msgid "grow"
-msgstr "växa / öka / gro / stiga / odla"
+msgstr "växa / öka / odla"
 
 msgid "hold"
-msgstr "hålla / hejda"
+msgstr "håll / hålla"
 
 msgid "hunt"
 msgstr "jaga / jakt / jakten"
@@ -452,7 +453,7 @@ msgstr "information"
 # (keyboard)
 #
 msgid "key"
-msgstr "nyckel"
+msgstr "nyckel / tangent"
 
 #
 msgid "lamb wool"
@@ -460,14 +461,14 @@ msgstr "lammull"
 
 #
 msgid "load/unload"
-msgstr "lasta/avlasta"
+msgstr "lasta/lasta av"
 
 msgid "return"
 msgstr "tillbaka / återgå / återlämna"
 
 #
 msgid "service"
-msgstr "service"
+msgstr "service / tjänst"
 
 #
 msgid "sheep"
@@ -475,10 +476,10 @@ msgstr "får"
 
 #
 msgid "ship inventory"
-msgstr "farygslast"
+msgstr "fartygs inventarie"
 
 msgid "starting"
-msgstr "start / startande"
+msgstr "startar"
 
 #
 msgid "trade partner"
@@ -499,7 +500,7 @@ msgid "red"
 msgstr "röd"
 
 msgid "check"
-msgstr "kolla / kontrollera"
+msgstr "kontrollera / bocka av"
 
 msgid "connection"
 msgstr "anslutning"
@@ -514,7 +515,7 @@ msgid "feature"
 msgstr "funktion / kännetecken"
 
 msgid "reached"
-msgstr "uppnått / nådd / nått"
+msgstr "uppnått / /uppnådd / nått / nådd"
 
 msgid "slider"
 msgstr "reglage"
@@ -532,7 +533,7 @@ msgid "dialogue"
 msgstr "dialog"
 
 msgid "issues"
-msgstr "problem"
+msgstr "problem / frågor"
 
 msgid "minimap"
 msgstr "världskarta"
@@ -544,21 +545,20 @@ msgstr "spelar"
 msgid "ruin"
 msgstr "ruin / ruinera / förstöra / ödelägga"
 
-#, fuzzy
 msgid "seed"
-msgstr "seeder / distributör?"
+msgstr "frö / säd"
 
 msgid "temporarily"
 msgstr "tillfälligt"
 
 msgid "salt ponds"
-msgstr "saliner"
+msgstr "salin"
 
 msgid "tobacco"
 msgstr "tobak"
 
 msgid "cattle"
-msgstr "nötkreatur"
+msgstr "boskap / nötkreatur"
 
 msgid "pig"
 msgstr "gris"
@@ -573,7 +573,7 @@ msgid "butchery"
 msgstr "slakteri"
 
 msgid "doctor"
-msgstr "doktor / läkare"
+msgstr "läkare"
 
 msgid "education"
 msgstr "utbildning"
