@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 11:41+0200\n"
+"PO-Revision-Date: 2011-09-23 12:38+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -322,7 +322,7 @@ msgstr "Svårighetsgrad: "
 #: horizons/gui/modules/singleplayermenu.py:115
 #: horizons/gui/widgets/choose_next_scenario.py:46
 msgid "Author: "
-msgstr ""
+msgstr "Upphovsman: "
 
 #: horizons/gui/modules/singleplayermenu.py:104
 #: horizons/gui/modules/singleplayermenu.py:116
@@ -355,14 +355,13 @@ msgid "Preferred island size:"
 msgstr "Föredragen storlek på öar:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
-#, fuzzy
 msgid "Island size deviation:"
-msgstr "Avvikelse på ö storlek: "
+msgstr "Avvikelse på östorlek:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
 msgid "Resource density:"
-msgstr "Råvarudensitet:"
+msgstr "Resursdensitet:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -378,7 +377,7 @@ msgstr "Felmeddelande:"
 
 #: horizons/gui/modules/singleplayermenu.py:265
 msgid "Please report this to the author."
-msgstr ""
+msgstr "Vänligen rapportera detta till upphovsmannen."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
@@ -388,11 +387,11 @@ msgstr "Bygg"
 
 #: horizons/gui/tabs/boatbuildertab.py:39
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Båtbyggnadsöversikt"
 
 #: horizons/gui/tabs/boatbuildertab.py:119
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Resurser som fortfarande behövs:"
 
 # 76%
 #: horizons/gui/tabs/boatbuildertab.py:180
@@ -402,7 +401,7 @@ msgstr "Fiskebåtar"
 #: horizons/gui/tabs/boatbuildertab.py:190
 #: horizons/i18n/guitranslations.py:159
 msgid "Trade boats"
-msgstr "Handelsfartyg"
+msgstr "Handelsbåtar"
 
 #: horizons/gui/tabs/boatbuildertab.py:198
 #: horizons/i18n/guitranslations.py:164
@@ -424,7 +423,7 @@ msgstr "Bygg besläktade fält"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr "Steg"
+msgstr "Tillväxtgrad"
 
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:310
 #: horizons/i18n/guitranslations.py:315
@@ -433,28 +432,30 @@ msgstr "Handel"
 
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:197
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Bosättningsinventarie"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
-msgstr "Fartygslast"
+msgstr "Fartygsinventarie"
 
 #: horizons/gui/tabs/inventorytab.py:82 horizons/i18n/guitranslations.py:321
 #: horizons/i18n/guitranslations.py:326
 msgid "Load/Unload:"
-msgstr "Lasta/Avlasta:"
+msgstr "Lasta/Lasta av:"
 
 #: horizons/gui/tabs/inventorytab.py:85
 msgid "Buy/Sell:"
 msgstr "Köp/Sälj:"
 
 #: horizons/gui/tabs/inventorytab.py:121
+#, fuzzy
 msgid "Equip weapon"
-msgstr ""
+msgstr "Bestycka vapen"
 
 #: horizons/gui/tabs/inventorytab.py:124
+#, fuzzy
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Avbestycka vapen"
 
 #: horizons/gui/tabs/mainsquaretabs.py:76 horizons/i18n/guitranslations.py:179
 msgid "Account"
@@ -503,7 +504,7 @@ msgstr "Handelskontorsöversikt"
 
 #: horizons/gui/tabs/overviewtab.py:141
 msgid "Main square overview"
-msgstr "Marknadsplatsöversikt"
+msgstr "Torgöversikt"
 
 #: horizons/gui/tabs/overviewtab.py:152 horizons/gui/tabs/overviewtab.py:221
 msgid "Ship overview"
@@ -560,11 +561,11 @@ msgstr "Produktionsöversikt av %(settlement)s"
 
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:354
 msgid "Start route"
-msgstr "Start rutt"
+msgstr "Starta rutt"
 
 #: horizons/gui/widgets/routeconfig.py:68
 msgid "Stop route"
-msgstr ""
+msgstr "Stoppa rutt"
 
 #: horizons/i18n/guitranslations.py:47 horizons/i18n/guitranslations.py:63
 #: horizons/i18n/guitranslations.py:81
@@ -586,7 +587,7 @@ msgstr "Tjänster"
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr "Paviljong: Erbjuder befolkningens religiösa behov."
+msgstr "Kapell: Uppfyller befolkningens religiösa behov."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Fisherman: Fishes the sea, produces food."
@@ -599,16 +600,16 @@ msgstr "Jägare: Jagar vilda djur i skogen. Producerar föda."
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr "Signalbrand: Tillåter spelaren handel med fria köpmän."
+msgstr "Signaleld: Tillåter spelaren att handla med det fria handelsfartyget."
 
 # lumberjack och lumberjacks camp syftar till samma byggnad/yrke. Allt heter Skogshuggare
 #: horizons/i18n/guitranslations.py:55
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr "Skogshuggare: Avverkar träd för att få fram trä."
+msgstr "Skogshuggare: Hugger ner träd och gör dem till brädor."
 
 #: horizons/i18n/guitranslations.py:56
 msgid "Main square: Supplies citizens with goods."
-msgstr "Marknadsplats: Levererar varor till invånarna."
+msgstr "Torg: Levererar varor till invånarna."
 
 #: horizons/i18n/guitranslations.py:57
 msgid "Tent: Houses your inhabitants."
@@ -616,11 +617,11 @@ msgstr "Tält: Bostad för dina invånare."
 
 #: horizons/i18n/guitranslations.py:58
 msgid "Storage: Extends stock and provides collectors."
-msgstr "Förvaringstält: Utökar förvaringskapaciteten och ger varuinsamlare."
+msgstr "Förvaringstält: Utökar lagerkapaciteten och tillhandahåller insamlare."
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Trail: Needed for collecting goods."
-msgstr "Gångstig: Behövs för att samla in varor."
+msgstr "Stig: Behövs för att samla in varor."
 
 #: horizons/i18n/guitranslations.py:60 sqlite/Building
 msgid "Tree"
@@ -640,7 +641,7 @@ msgstr "Militära"
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Boat builder: Builds boats and small ships. Built on coast."
-msgstr "Skeppsvarv: Bygger fartyg och skepp. Placeras vid kusten."
+msgstr "Skeppsvarv: Bygger båtar och små fartyg. Placeras vid kusten."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Brickyard: Turns clay into bricks."
@@ -653,7 +654,7 @@ msgstr "Lertäkt: Gräver upp lera från fyndighet."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Distillery: Turns sugar into liquor."
-msgstr "Bränneri: Bränner sprit. Behöver socker."
+msgstr "Bränneri: Omvandlar socker till sprit."
 
 #: horizons/i18n/guitranslations.py:72
 msgid "Farm: Grows field crops and raises livestock."
@@ -681,7 +682,7 @@ msgstr "Byskola: Ger utbildning."
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr "Vävare: Väver fårull till tyg."
+msgstr "Vävare: Väver lammull till tyg."
 
 #: horizons/i18n/guitranslations.py:82
 msgid "Mining"
@@ -699,26 +700,24 @@ msgstr "Slaktare: Behöver grisar eller nötkreatur. Producerar föda."
 
 #: horizons/i18n/guitranslations.py:87
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Hage: Föder upp nötkreatur. Behöver en gård."
 
 # 76%
 #: horizons/i18n/guitranslations.py:88
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Kolmila: Bränner trä till träkol."
+msgstr "Kolmila: Bränner brädor till träkol."
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Mine: Gets ores from deposit."
-msgstr "Gruva: Tar fram malm från fyndighet."
+msgstr "Gruva: Bryter malm från fyndighet."
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Pigsty: Raises pigs. Needs a farm."
 msgstr "Svinstia: Föder upp grisar. Behöver en gård."
 
 #: horizons/i18n/guitranslations.py:91
-#, fuzzy
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr "Saliner: Saltavdunstning. Byggs längsmed kusten."
+msgstr "Salin: Saltavdunstning. Byggs utmed kusten."
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Smeltery: Refines all kind of ores."
@@ -742,7 +741,7 @@ msgstr "Verktygsmakare: Producerar verktyg av järn."
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Game start"
-msgstr ""
+msgstr "Starta spel"
 
 #: horizons/i18n/guitranslations.py:100
 msgid "You need to found a settlement before you can construct buildings!"
@@ -754,7 +753,7 @@ msgstr "Välj ditt fartyg och närma dig kusten genom att högerklicka."
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Efteråt, tryck på den stora knappen i fartygsöversiktsfliken."
 
 #: horizons/i18n/guitranslations.py:106 horizons/i18n/guitranslations.py:257
 msgid "Running costs:"
@@ -774,7 +773,7 @@ msgstr "Byggmenyn"
 
 #: horizons/i18n/guitranslations.py:114
 msgid "Destroy"
-msgstr "Riva"
+msgstr "Förstör"
 
 #: horizons/i18n/guitranslations.py:115
 msgid "Diplomacy"
@@ -786,7 +785,7 @@ msgstr "Spelmenyn"
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Captain's log"
-msgstr "Loggbok"
+msgstr "Kaptenens loggbok"
 
 #: horizons/i18n/guitranslations.py:120
 msgid "Rotate map counterclockwise"
@@ -814,7 +813,7 @@ msgstr "Zooma ut"
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Boards"
-msgstr "Trä"
+msgstr "Brädor"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Bricks"
@@ -858,17 +857,17 @@ msgstr "Chatt"
 
 #: horizons/i18n/guitranslations.py:147
 msgid "Cancel building:"
-msgstr ""
+msgstr "Avbryt byggnation:"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "(lose all resources)"
-msgstr ""
+msgstr "(förlora alla resurser)"
 
 # Vagt?
 #: horizons/i18n/guitranslations.py:149
 #, fuzzy
 msgid "Currently building:"
-msgstr "Nybyggnationer:"
+msgstr "Nuvarande byggnation:"
 
 # Fritt översatt?
 #: horizons/i18n/guitranslations.py:150
@@ -908,9 +907,10 @@ msgstr "Återuppta"
 msgid "Running costs"
 msgstr "Driftskostnader"
 
+# Översatt från tyska
 #: horizons/i18n/guitranslations.py:160 sqlite/Unit
 msgid "Huker"
-msgstr ""
+msgstr "Fiskebåt"
 
 #: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:166
 msgid "Build this ship!"

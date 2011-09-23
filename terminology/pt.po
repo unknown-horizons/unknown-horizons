@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-09-22 17:24+0200\n"
+"PO-Revision-Date: 2011-09-22 23:01+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -144,7 +144,7 @@ msgstr "comida"
 # which one is better than the other ?
 #
 msgid "increment"
-msgstr "incremento"
+msgstr "nível"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (4)

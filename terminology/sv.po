@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-09-23 11:19+0200\n"
+"PO-Revision-Date: 2011-09-23 12:21+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -36,7 +36,7 @@ msgid "your"
 msgstr "din"
 
 msgid "farm"
-msgstr "bondgård"
+msgstr "gård"
 
 msgid "field"
 msgstr "fält"
@@ -79,7 +79,7 @@ msgid "unknown"
 msgstr "okänd"
 
 msgid "food"
-msgstr "mat"
+msgstr "föda"
 
 msgid "increment"
 msgstr "tillväxtgrad"
@@ -231,11 +231,11 @@ msgid "moved"
 msgstr "flyttad / flyttat"
 
 msgid "produce"
-msgstr "tillverka"
+msgstr "tillverka / producera"
 
 # 87%
 msgid "produced"
-msgstr "tillverkad"
+msgstr "tillverkad / producerad"
 
 msgid "pasture"
 msgstr "betesmark"

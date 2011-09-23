@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 23:06+0200\n"
+"PO-Revision-Date: 2011-09-23 12:24+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -425,7 +425,7 @@ msgstr "Construir plantações relacionadas"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr "Incremento"
+msgstr "Nível"
 
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:310
 #: horizons/i18n/guitranslations.py:315
@@ -1065,7 +1065,7 @@ msgstr "Não foi possível melhorar:"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "This is the current maximum increment!"
-msgstr "Este é o incremento máximo possível!"
+msgstr "Este é o nível máximo possível!"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
