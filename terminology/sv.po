@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-09-23 12:21+0200\n"
+"PO-Revision-Date: 2011-09-23 11:09+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -26,7 +26,7 @@ msgid "tent"
 msgstr "tält"
 
 msgid "resource"
-msgstr "resurs"
+msgstr "vara / råvara / resurs"
 
 # Otydlig. Ursprungliga översättning från tyskans "kontor".
 msgid "branch office"
@@ -82,7 +82,7 @@ msgid "food"
 msgstr "föda"
 
 msgid "increment"
-msgstr "tillväxtgrad"
+msgstr "tillväxtsteg / tillväxtgrad"
 
 msgid "select"
 msgstr "välj"
@@ -311,7 +311,7 @@ msgid "refresh"
 msgstr "uppdatera / förnya"
 
 msgid "residents"
-msgstr "boende"
+msgstr "boende / invånare"
 
 #
 msgid "run"

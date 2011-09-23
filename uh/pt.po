@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 12:24+0200\n"
+"PO-Revision-Date: 2011-09-23 13:54+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -464,7 +464,7 @@ msgstr "Conta"
 #: horizons/gui/tabs/mainsquaretabs.py:110
 #: horizons/gui/tabs/overviewtab.py:353 horizons/i18n/guitranslations.py:201
 msgid "Settler overview"
-msgstr "Relatório dos colonos"
+msgstr "Relatório dos povoadores"
 
 #: horizons/gui/tabs/mainsquaretabs.py:200
 msgid "Don't allow upgrades"
@@ -489,7 +489,7 @@ msgstr "Pioneiros"
 #: horizons/gui/tabs/mainsquaretabs.py:239
 #: horizons/i18n/guitranslations.py:236 horizons/i18n/guitranslations.py:369
 msgid "Settlers"
-msgstr "Colonos"
+msgstr "Povoadores"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:396
 #: horizons/i18n/guitranslations.py:305
@@ -688,7 +688,7 @@ msgstr "Exploração de minas"
 
 #: horizons/i18n/guitranslations.py:84
 msgid "Settler buildings"
-msgstr "Edifícios de colonos"
+msgstr "Edifícios de povoadores"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Butchery: Needs pigs or cattle. Produces food."
@@ -2355,7 +2355,7 @@ msgstr "Captura de ecrã gravada em ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr "Alguns dos seus colonos abandonaram a povoação."
+msgstr "Alguns dos seus povoadores abandonaram a povoação."
 
 #: sqlite/Messages
 msgid "You can also drag roads."
@@ -2375,7 +2375,7 @@ msgstr "A sua mina ficou sem recursos."
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr "Os seus colonos chegaram ao nível ${level}."
+msgstr "Os seus povoadores chegaram ao nível ${level}."
 
 #: sqlite/Resources
 msgid "acorns"

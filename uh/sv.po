@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 12:38+0200\n"
+"PO-Revision-Date: 2011-09-23 14:34+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -361,7 +361,7 @@ msgstr "Avvikelse på östorlek:"
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
 msgid "Resource density:"
-msgstr "Resursdensitet:"
+msgstr "Råvarutäthet:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -423,7 +423,7 @@ msgstr "Bygg besläktade fält"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr "Tillväxtgrad"
+msgstr "Tillväxtsteg"
 
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:310
 #: horizons/i18n/guitranslations.py:315
@@ -609,7 +609,7 @@ msgstr "Skogshuggare: Hugger ner träd och gör dem till brädor."
 
 #: horizons/i18n/guitranslations.py:56
 msgid "Main square: Supplies citizens with goods."
-msgstr "Torg: Levererar varor till invånarna."
+msgstr "Torg: Levererar varor till medborgarna."
 
 #: horizons/i18n/guitranslations.py:57
 msgid "Tent: Houses your inhabitants."
@@ -925,12 +925,13 @@ msgid "Buy resources"
 msgstr "Köp varor"
 
 #: horizons/i18n/guitranslations.py:170
+#, fuzzy
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "Klicka på en platsikon för att växla läge:"
 
 #: horizons/i18n/guitranslations.py:171
 msgid "Buy or sell resources"
-msgstr "Köpa/sälja varor"
+msgstr "Köp eller sälj varor"
 
 #: horizons/i18n/guitranslations.py:172
 msgid "Sell resources"
@@ -1080,11 +1081,11 @@ msgstr "Uppgradering inte möjlig:"
 
 #: horizons/i18n/guitranslations.py:248
 msgid "This is the current maximum increment!"
-msgstr "Detta är den för tillfället högsta tillväxtgraden!"
+msgstr "Detta är det för tillfället högsta tillväxtsteget!"
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Collector utilisation:"
-msgstr ""
+msgstr "Insamlar användning:"
 
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:267
 #: horizons/i18n/guitranslations.py:306
@@ -1123,7 +1124,7 @@ msgstr "Innehåller dessa resurser:"
 
 #: horizons/i18n/guitranslations.py:281
 msgid "Needed resources:"
-msgstr ""
+msgstr "Varor som behövs:"
 
 # Lycka rätt form av mätning?
 #: horizons/i18n/guitranslations.py:283 horizons/i18n/guitranslations.py:290
@@ -1154,14 +1155,18 @@ msgstr "Bygg bosättning"
 #: horizons/i18n/guitranslations.py:299
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
+"Signalelden visar det fria handelsfartyget hur det ska nå din bosättning "
+"ifall du vill köpa eller sälja varor."
 
 #: horizons/i18n/guitranslations.py:302
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
+"Det här är det fria handelsfartyget. Det kommer att besöka dig då och då för "
+"att köpa eller sälja varor."
 
 #: horizons/i18n/guitranslations.py:309 horizons/i18n/guitranslations.py:314
 msgid "Exchange:"
-msgstr ""
+msgstr "Utbyte:"
 
 #: horizons/i18n/guitranslations.py:311 horizons/i18n/guitranslations.py:316
 msgid "Ship:"
@@ -1169,7 +1174,7 @@ msgstr "Fartyg:"
 
 #: horizons/i18n/guitranslations.py:319 horizons/i18n/guitranslations.py:324
 msgid "Configure trading route:"
-msgstr ""
+msgstr "Konfigurera handels rutt:"
 
 #: horizons/i18n/guitranslations.py:320 horizons/i18n/guitranslations.py:325
 msgid "Inventory"
@@ -1185,7 +1190,7 @@ msgstr "Återuppta produktion"
 
 #: horizons/i18n/guitranslations.py:333
 msgid "Delete entry"
-msgstr ""
+msgstr "Ta bort inmatning"
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Move down"
@@ -1197,19 +1202,19 @@ msgstr "Flytta upp"
 
 #: horizons/i18n/guitranslations.py:338
 msgid "Leave Captain's log"
-msgstr "Stäng loggboken"
+msgstr "Lämna Kaptenens loggbok"
 
 #: horizons/i18n/guitranslations.py:339
 msgid "Read prev. entries"
-msgstr "Tidigare poster"
+msgstr "Läs tidigare post"
 
 #: horizons/i18n/guitranslations.py:340
 msgid "Read next entries"
-msgstr "Senare poster"
+msgstr "Läs nästa post"
 
 #: horizons/i18n/guitranslations.py:343
 msgid "Available Scenarios"
-msgstr "Tillgängliga Scenarion:"
+msgstr "Tillgängliga Scenarion"
 
 #: horizons/i18n/guitranslations.py:344
 msgid "Scenario description"
@@ -1257,11 +1262,11 @@ msgstr "Byggnader"
 
 #: horizons/i18n/guitranslations.py:364
 msgid "Player scores"
-msgstr "Spelar poäng"
+msgstr "Spelarpoäng"
 
 #: horizons/i18n/guitranslations.py:365
 msgid "Land"
-msgstr ""
+msgstr "Land"
 
 #: horizons/i18n/guitranslations.py:366
 msgid "Money"
@@ -1275,11 +1280,11 @@ msgstr "Namn"
 
 #: horizons/i18n/guitranslations.py:368
 msgid "Resources"
-msgstr ""
+msgstr "Varor"
 
 #: horizons/i18n/guitranslations.py:370
 msgid "Total"
-msgstr ""
+msgstr "Totalt"
 
 #: horizons/i18n/guitranslations.py:371
 msgid "Units"
@@ -1287,21 +1292,20 @@ msgstr "Enheter"
 
 # 87%
 #: horizons/i18n/guitranslations.py:375
-#, fuzzy
 msgid "Balance"
-msgstr "Saldo:"
+msgstr "Balans"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Health"
-msgstr ""
+msgstr "Hälsa"
 
 #: horizons/i18n/guitranslations.py:385
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: horizons/i18n/guitranslations.py:386
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: horizons/i18n/guitranslations.py:387
 msgid "Weapons"
@@ -1309,11 +1313,11 @@ msgstr "Vapen"
 
 #: horizons/i18n/guitranslations.py:391
 msgid "Aggressive"
-msgstr ""
+msgstr "Aggressiv"
 
 #: horizons/i18n/guitranslations.py:392
 msgid "Flee"
-msgstr ""
+msgstr "Fly"
 
 #: horizons/i18n/guitranslations.py:393
 msgid "Hold ground"
@@ -1351,7 +1355,7 @@ msgstr "{F1} = Visa hjälp"
 
 #: horizons/i18n/guitranslations.py:404
 msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Visa konsoll av/på"
+msgstr "{F10} = Visa konsoll på/av"
 
 #: horizons/i18n/guitranslations.py:405
 msgid "{F2} = Show player scores"
@@ -1393,7 +1397,7 @@ msgstr "Ha roligt."
 
 #: horizons/i18n/guitranslations.py:414
 msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Visa loggboken"
+msgstr "{L} = Visa Kaptenens loggbok"
 
 #: horizons/i18n/guitranslations.py:415
 msgid "{LEFT} = Scroll left"
@@ -1467,7 +1471,7 @@ msgstr "Laddar ..."
 
 #: horizons/i18n/guitranslations.py:441
 msgid "Attention please!"
-msgstr ""
+msgstr "Vänligen uppmärksamma!"
 
 #: horizons/i18n/guitranslations.py:442
 msgid "Credits"
@@ -1475,15 +1479,15 @@ msgstr "Medverkande"
 
 #: horizons/i18n/guitranslations.py:445
 msgid "Quit"
-msgstr "Avsluta spelet"
+msgstr "Avsluta"
 
 #: horizons/i18n/guitranslations.py:447
 msgid "Singleplayer"
-msgstr ""
+msgstr "En spelare"
 
 #: horizons/i18n/guitranslations.py:448
 msgid "Multiplayer"
-msgstr ""
+msgstr "Flera spelare"
 
 #: horizons/i18n/guitranslations.py:452 horizons/i18n/guitranslations.py:470
 msgid "Create game:"
@@ -1499,11 +1503,11 @@ msgstr "Välj en bana:"
 
 #: horizons/i18n/guitranslations.py:455
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Skapa spel - Flera spelare"
 
 #: horizons/i18n/guitranslations.py:456
 msgid "Player limit:"
-msgstr ""
+msgstr "Spelargräns:"
 
 #: horizons/i18n/guitranslations.py:457
 msgid "Create this new game"
@@ -1511,7 +1515,7 @@ msgstr "Skapa det nya spelet"
 
 #: horizons/i18n/guitranslations.py:458
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "Avsluta till flerspelarmenyn"
 
 #: horizons/i18n/guitranslations.py:461
 msgid "Leave:"
@@ -1519,7 +1523,7 @@ msgstr "Lämna:"
 
 #: horizons/i18n/guitranslations.py:462
 msgid "The game will start as soon as enough players have joined."
-msgstr ""
+msgstr "Spelet kommer börja då tillräckligt många spelare har anslutit."
 
 #: horizons/i18n/guitranslations.py:463
 msgid "Chat:"
@@ -1527,15 +1531,15 @@ msgstr "Chatt:"
 
 #: horizons/i18n/guitranslations.py:464
 msgid "Gamelobby"
-msgstr ""
+msgstr "Spellobby"
 
 #: horizons/i18n/guitranslations.py:465
 msgid "Game details:"
-msgstr "Detaljer:"
+msgstr "Speldetaljer:"
 
 #: horizons/i18n/guitranslations.py:466
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "Avsluta spellobby"
 
 #: horizons/i18n/guitranslations.py:469
 msgid "Active games:"
