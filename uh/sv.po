@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-23 14:34+0200\n"
+"PO-Revision-Date: 2011-09-23 14:49+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -1555,7 +1555,7 @@ msgstr "Visa endast spel med samma version:"
 
 #: horizons/i18n/guitranslations.py:473
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "Nytt spel - Flera spelare"
 
 #: horizons/i18n/guitranslations.py:474
 msgid "Join game"
@@ -1591,7 +1591,7 @@ msgstr "Uppdatera listan över aktiva spel"
 
 #: horizons/i18n/guitranslations.py:484
 msgid "Autosave interval in minutes:"
-msgstr "Intervall mellan varje autosparande i minuter:"
+msgstr "Intervall för autosparande i minuter:"
 
 #: horizons/i18n/guitranslations.py:485
 msgid "Color depth:"
@@ -1633,7 +1633,7 @@ msgstr "Välj språk:"
 
 #: horizons/i18n/guitranslations.py:495
 msgid "Enable minimap rotation:"
-msgstr ""
+msgstr "Möjliggör rotation av världskartan:"
 
 # volym för musik?
 #: horizons/i18n/guitranslations.py:496
@@ -1643,7 +1643,7 @@ msgstr "Musikvolym:"
 
 #: horizons/i18n/guitranslations.py:497
 msgid "(0 means default)"
-msgstr ""
+msgstr "(0 betyder standard)"
 
 #: horizons/i18n/guitranslations.py:498
 msgid "Network port:"
@@ -1709,7 +1709,7 @@ msgstr "Radera sparat spel"
 
 #: horizons/i18n/guitranslations.py:520
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Nytt spel - En spelare"
 
 #: horizons/i18n/guitranslations.py:522
 msgid "Start game:"
@@ -1722,8 +1722,9 @@ msgid "Campaign"
 msgstr "Kampanj"
 
 #: horizons/i18n/guitranslations.py:524
+#, fuzzy
 msgid "Free play"
-msgstr ""
+msgstr "Fritt spel"
 
 #: horizons/i18n/guitranslations.py:525
 msgid "Random map"
@@ -1736,11 +1737,11 @@ msgstr "Scenario"
 #: horizons/i18n/guitranslations.py:531 horizons/i18n/guitranslations.py:534
 #: horizons/i18n/guitranslations.py:540
 msgid "Choose a map to play:"
-msgstr "Välj en bana att spela:"
+msgstr "Välj en karta att spela:"
 
 #: horizons/i18n/guitranslations.py:537
 msgid "Map settings:"
-msgstr ""
+msgstr "Inställningar för karta:"
 
 #: horizons/i18n/guitranslations.py:543
 msgid "AI players:"
@@ -1748,11 +1749,11 @@ msgstr "AI spelare:"
 
 #: horizons/i18n/guitranslations.py:546
 msgid "Game settings:"
-msgstr ""
+msgstr "Spelinställningar:"
 
 #: horizons/i18n/guitranslations.py:547
 msgid "Free Trader"
-msgstr ""
+msgstr "Fria Handelsfartyget"
 
 #: horizons/i18n/guitranslations.py:548
 msgid "Pirates"
@@ -1785,6 +1786,8 @@ msgstr "Det valda spelet kunde inte startas."
 #: horizons/main.py:245
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
+"Det sparade spelet kan vara trasigt eller blivit sparat av en tidigare "
+"version."
 
 #: horizons/main.py:332
 #, python-format
