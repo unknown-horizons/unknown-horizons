@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-22 23:04+0200\n"
+"PO-Revision-Date: 2011-09-22 23:06+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -61,7 +61,7 @@ msgstr ""
 "Use por sua conta e risco!"
 
 #: horizons/engine.py:277
-#, python-format, fuzzy
+#, python-format, 
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
 msgstr "A língua configurada %(lang)s em %(place)s não pode ser carregada"
 
@@ -721,7 +721,6 @@ msgstr "Fundição: Refina todos os tipos de minério."
 
 # A tavern is also a place where wine is sold, shouldn't it be mentioned?
 #: horizons/i18n/guitranslations.py:93
-#, fuzzy
 msgid "Tavern: Provides get-together."
 msgstr "Taberna: Oferece um local para reuniões populares."
 
@@ -2009,7 +2008,6 @@ msgid "AI options"
 msgstr "Opções de IA"
 
 #: run_uh.py:113
-#, fuzzy
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
 msgstr ""
 "Usa <ai_players> jogadores IA (excluí a possibilidade do híbrido humano-IA; "
@@ -2057,7 +2055,6 @@ msgid "Enable profiling (for developing only)."
 msgstr "Activar análise da execução (apenas para efeitos de desenvolvimento)."
 
 #: run_uh.py:133
-#, fuzzy
 msgid "Run the game for <max_ticks> ticks."
 msgstr "Executar o jogo até um máximo de <max_ticks> iterações."
 
@@ -2247,7 +2244,6 @@ msgstr "Tenda"
 
 # 77%
 #: sqlite/Building
-#, fuzzy
 msgid "Tent Ruin"
 msgstr "Ruínas"
 
@@ -2533,7 +2529,6 @@ msgstr "planta de tabaco"
 
 # We have nothing for "tabaccos"...
 #: sqlite/Resources
-#, fuzzy
 msgid "tobaccos"
 msgstr "produtos de tabaco"
 
