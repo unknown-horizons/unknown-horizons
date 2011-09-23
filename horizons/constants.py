@@ -360,7 +360,7 @@ class MULTIPLAYER:
 
 class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
-	SERVER_PORT = 2001
+	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
 
 ## TRANSLATIONS

@@ -45,14 +45,14 @@ class NetworkInterface(object):
 		self.__setup_client()
 		# cbs means callbacks
 		self.cbs_game_details_changed = []
+		self.cbs_game_prepare = []
 		self.cbs_game_starts = []
-		self.cbs_p2p_ready = []
 		self.cbs_error = [] # cbs with 1 parameter which is an Exception instance
 		self._client.register_callback("lobbygame_join", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_leave", self._cb_game_details_changed)
-		self._client.register_callback("lobbygame_starts", self._cb_game_starts)
-		self._client.register_callback("p2p_ready", self._cb_p2p_ready)
-		self._client.register_callback("p2p_data", self._cb_p2p_data)
+		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
+		self._client.register_callback("game_starts", self._cb_game_starts)
+		self._client.register_callback("game_data", self._cb_game_data)
 		self.received_packets = []
 
 		ExtScheduler().add_new_object(self.ping, self, self.PING_INTERVAL, -1)
@@ -165,25 +165,25 @@ class NetworkInterface(object):
 		for callback in self.cbs_game_details_changed:
 			callback()
 
+	def register_game_prepare_callback(self, function, unique = True):
+		if unique and function in self.cbs_game_prepare:
+			return
+		self.cbs_game_prepare.append(function)
+
+	def _cb_game_prepare(self, game):
+		for callback in self.cbs_game_prepare:
+			callback(self.get_game())
+
 	def register_game_starts_callback(self, function, unique = True):
 		if unique and function in self.cbs_game_starts:
 			return
 		self.cbs_game_starts.append(function)
 
-	def _cb_game_starts(self,game):
+	def _cb_game_starts(self, game):
 		for callback in self.cbs_game_starts:
 			callback(self.get_game())
 
-	def register_game_ready_callback(self, function, unique = True):
-		if unique and function in self.cbs_p2p_ready:
-			return
-		self.cbs_p2p_ready.append(function)
-
-	def _cb_p2p_ready(self):
-		for callback in self.cbs_p2p_ready:
-			callback(self.get_game())
-
-	def _cb_p2p_data(self, address, data):
+	def _cb_game_data(self, data):
 		self.received_packets.append(data)
 
 	def register_error_callback(self, function, unique = True):
@@ -277,4 +277,4 @@ class MPGame(object):
 		return self.version
 
 	def __str__(self):
-		return self.get_map_name() + " (" + self.get_player_count() + "/" + self.get_player_limit() + ")"
+		return "%s (%d/%d)" % (self.get_map_name(), self.get_player_count(), self.get_player_limit())

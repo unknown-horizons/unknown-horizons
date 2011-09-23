@@ -93,8 +93,8 @@ class MultiplayerMenu(object):
 	def __connect_to_server(self):
 		NetworkInterface().register_chat_callback(self.__receive_chat_message)
 		NetworkInterface().register_game_details_changed_callback(self.__update_game_details)
+		NetworkInterface().register_game_prepare_callback(self.__prepare_game)
 		NetworkInterface().register_game_starts_callback(self.__start_game)
-		NetworkInterface().register_game_ready_callback(self.__game_ready)
 		NetworkInterface().register_error_callback(self.__on_error)
 
 		try:
@@ -189,12 +189,12 @@ class MultiplayerMenu(object):
 			return
 		self.__show_gamelobby()
 
-	def __start_game(self, game):
+	def __prepare_game(self, game):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
 		import horizons.main
 		horizons.main.prepare_multiplayer(game)
 
-	def __game_ready(self, game):
+	def __start_game(self, game):
 		import horizons.main
 		horizons.main.start_multiplayer(game)
 

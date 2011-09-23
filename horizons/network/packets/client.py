@@ -71,9 +71,25 @@ packetlist.append(cmd_chatmsg)
 
 #-------------------------------------------------------------------------------
 
-class cmd_holepunchingok(packet):
-	def __init__(self):
-		"""hole punching done"""
+class cmd_changename(packet):
+	def __init__(self, playername):
+		self.playername = playername
 
-packetlist.append(cmd_holepunchingok)
+packetlist.append(cmd_changename)
+
+#-------------------------------------------------------------------------------
+
+class cmd_preparedgame(packet):
+	def __init__(self):
+		"""ctor"""
+
+packetlist.append(cmd_preparedgame)
+
+#-------------------------------------------------------------------------------
+
+class game_data(packet):
+	def __init__(self, data):
+		self.data = data
+
+packetlist.append(game_data)
 

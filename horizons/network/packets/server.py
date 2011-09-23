@@ -23,6 +23,14 @@ from horizons.network.packets import *
 
 import copy
 
+class cmd_session(packet):
+	def __init__(self, sid):
+		self.sid = sid
+
+packetlist.append(cmd_session)
+
+#-------------------------------------------------------------------------------
+
 class data_gameslist(packet):
 	def __init__(self):
 		self.games = []
@@ -38,7 +46,7 @@ packetlist.append(data_gameslist)
 
 class data_gamestate(packet):
 	def __init__(self, game):
-		self.game = game;
+		self.game = game
 
 packetlist.append(data_gamestate)
 
@@ -53,11 +61,11 @@ packetlist.append(cmd_chatmsg)
 
 #-------------------------------------------------------------------------------
 
-class cmd_holepunching(packet):
+class cmd_preparegame(packet):
 	def __init__(self):
-		"""start hole punching"""
+		"""prepare game packet"""
 
-packetlist.append(cmd_holepunching)
+packetlist.append(cmd_preparegame)
 
 #-------------------------------------------------------------------------------
 

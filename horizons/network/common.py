@@ -59,53 +59,78 @@ class Address():
 #-----------------------------------------------------------------------------
 
 class Player():
-	def __init__(self, name, peer = None):
-		self.ready = False
-		self.name  = name
+	def __init__(self, peer, sid):
 		self.peer  = peer
-		# we can't pickle self.peer (it's c code)
-		# so we need to copy the unique address
-		self.address = None
-		if isinstance(self.peer, enet.Peer):
-			self.address = Address(self.peer.address)
+		assert(isinstance(self.peer, enet.Peer))
+		self.address = Address(self.peer.address)
+		self.sid   = sid
+		self.name  = None
+		self.game  = None
+		self.ready = False
 
 	def __hash__(self):
-		return hash((self.address, self.name))
+		return hash((self.address))
 
 	def __eq__(self, other):
 		if not isinstance(other, Player):
 			return NotImplemented
-		return (self.address == other.address and self.name == other.name)
+		# server only cares about address
+		if self.address is not None or other.address is not None:
+			return (self.address == other.address)
+		else:
+			return (self.sid == other.sid)
 
 	def __ne__(self, other):
 		if not isinstance(other, Player):
 			return NotImplemented
 		return not self.__eq__(other)
 
-	# omit self.peer during pickling
+	# return only relevant data to the player
 	def __getstate__(self):
-		return { 'name': self.name, 'address': self.address, 'peer': None, 'ready': False }
+		return { 'sid': self.sid, 'address': None, 'name': self.name }
 
 	def __str__(self):
-		return "Player(name="+self.name+";address="+str(self.address)+")"
+		return "Player(name=%s;address=%s)" % (self.name, self.address)
 
 #-----------------------------------------------------------------------------
 
 class Game():
-	def __init__(self, packet, creator_peer):
+	class State():
+		Open = 0
+		Prepare = 1
+		Running = 2
+
+	def __init__(self, packet, creator):
 		assert(isinstance(packet, packets.client.cmd_creategame))
 		self.uuid          = UUID()
 		self.clientversion = packet.clientversion
 		self.mapname       = packet.mapname
 		self.maxplayers    = packet.maxplayers
-		self.creator       = packet.playername
+		self.creator       = creator.name
 		self.players       = []
-		self.playercnt     = 1
-		self.gamestarts    = False
-		self.addplayer(Player(packet.playername, creator_peer))
+		self.playercnt     = 0
+		self.state         = Game.State.Open
+		self.add_player(creator)
 
-	def addplayer(self, player):
+	def add_player(self, player):
+		player.game = self
 		self.players.append(player)
+		self.playercnt += 1
+		return player
+
+	def remove_player(self, player):
+		if player not in self.players:
+			return None
+		self.players.remove(player)
+		self.playercnt -= 1
+		player.game = None
+		return player
+
+	def clear(self):
+		for player in self.players:
+			player.game = None
+		del self.players[:]
+		self.playercnt = 0
 
 #-----------------------------------------------------------------------------
 

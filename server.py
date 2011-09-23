@@ -30,7 +30,7 @@ def usage():
 	print "Usage: %s -h host [-p port]" % (sys.argv[0])
 
 host = None
-port = 2001
+port = 2002
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:], 'h:p:')
