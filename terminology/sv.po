@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-09-23 10:40+0200\n"
+"PO-Revision-Date: 2011-09-23 10:50+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -161,9 +161,9 @@ msgstr "nå / räckhåll"
 msgid "signal"
 msgstr "signal"
 
-# Signaleld eller fyr är en bettydligt bättre översättning än signalbrand.
+# Signaleld är en bettydligt bättre översättning än signalbrand då det i spelet syftar på byggnaden.
 msgid "signal fire"
-msgstr "signaleld / fyr"
+msgstr "signaleld"
 
 msgid "stock"
 msgstr "lager"
@@ -184,11 +184,11 @@ msgid "fisher"
 msgstr "fiskare"
 
 msgid "found"
-msgstr "funnen"
+msgstr "hittade"
 
 # för kyrkobyggnad
 msgid "pavilion"
-msgstr "paviljong"
+msgstr "kapell"
 
 msgid "potato"
 msgstr "potatis"
@@ -206,8 +206,9 @@ msgstr "kör / springer"
 msgid "running costs"
 msgstr "driftskostnader"
 
+# syftar i spelet på de som hämtar saker från företagen
 msgid "collector"
-msgstr "samlare / insamlare"
+msgstr "insamlare"
 
 msgid "help"
 msgstr "hjälp"
@@ -230,11 +231,11 @@ msgid "moved"
 msgstr "flyttad / flyttat"
 
 msgid "produce"
-msgstr "producera"
+msgstr "tillverka"
 
 # 87%
 msgid "produced"
-msgstr "producerad / producerat"
+msgstr "tillverkad"
 
 msgid "pasture"
 msgstr "betesmark"
@@ -252,7 +253,7 @@ msgid "active"
 msgstr "aktiv / verksam"
 
 msgid "add"
-msgstr "addera / lägga till"
+msgstr "lägga till"
 
 msgid "build menu"
 msgstr "byggmenyn"
@@ -261,7 +262,7 @@ msgid "built"
 msgstr "byggd / byggt"
 
 msgid "construction"
-msgstr "konstruktion / byggnad / bygge"
+msgstr "byggnad"
 
 #
 msgid "continue"
