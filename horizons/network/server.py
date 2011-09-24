@@ -77,7 +77,7 @@ class Server(object):
 
 	# uuid4() uses /dev/urandom when possible
 	def generate_session_id(self):
-		return uuid.uuid4()
+		return uuid.uuid4().hex
 
 
 	def register_callback(self, type, callback, prepend = False):
@@ -128,7 +128,7 @@ class Server(object):
 	def _send(self, peer, data, channelid = 0):
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
-		packets.packet._send(peer, data, None, channelid)
+		packets.packet._send(peer, data, channelid)
 		self.host.flush()
 
 
@@ -155,8 +155,8 @@ class Server(object):
 		player = Player(event.peer, self.generate_session_id())
 		# store session id inside enet.peer.data
 		# note: copying bytes or int doesn't work here
-		event.peer.data = player.sid.hex
-		self.players[player.sid.hex] = player
+		event.peer.data = player.sid
+		self.players[player.sid] = player
 		self.send(event.peer, packets.server.cmd_session(player.sid))
 
 
@@ -197,8 +197,8 @@ class Server(object):
 			return
 
 		# session id check
-		if packet.sid != player.sid.hex:
-			logging.warning("Invalid session id for player %s (%s vs %s)!" % (peer.address, packet.sid, player.sid.hex))
+		if packet.sid != player.sid:
+			logging.warning("Invalid session id for player %s (%s vs %s)!" % (peer.address, packet.sid, player.sid))
 			self.send(event.peer, packets.cmd_fatalerror("Invalid/Unknown session"))
 			self.disconnect(event.peer, True) # this will trigger ondisconnect() for cleanup
 			return
@@ -363,6 +363,7 @@ class Server(object):
 
 
 	def onchangename(self, peer, packet):
+		# NOTE: that event _only_ happens inside _if_ player is inside a lobby
 		player = self.players[peer.data]
 		if player.game is None:
 			# just ignore if not inside a game
@@ -373,9 +374,8 @@ class Server(object):
 		if game.state is not Game.State.Open:
 			return
 		logging.debug("[CHANGENAME] [%s] %s -> %s" % (game.uuid, player.name, packet.playername))
-		oldname = player.name
 		player.name = packet.playername
-		if game.creator == oldname:
+		if game.creator_sid == player.sid:
 			game.creator = player.name
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))

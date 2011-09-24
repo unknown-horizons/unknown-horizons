@@ -44,11 +44,11 @@ class packet:
 
 	def send(self, peer, sid = None, channelid = 0):
 		if sid is not None:
-			self.sid = sid.hex
-		self._send(peer, self.serialize(), sid, channelid)
+			self.sid = sid
+		self._send(peer, self.serialize(), channelid)
 
 	@staticmethod
-	def _send(peer, data, sid = None, channelid = 0):
+	def _send(peer, data, channelid = 0):
 		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
 		peer.send(channelid, packet)
 

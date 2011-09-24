@@ -107,6 +107,7 @@ class Game():
 		self.mapname       = packet.mapname
 		self.maxplayers    = packet.maxplayers
 		self.creator       = creator.name
+		self.creator_sid   = creator.sid
 		self.players       = []
 		self.playercnt     = 0
 		self.state         = Game.State.Open
