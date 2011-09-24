@@ -404,12 +404,13 @@ class Client(object):
 	#-----------------------------------------------------------------------------
 
 	def changename(self, name):
-		if self.mode is None:
-			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
+		self.name = name
+		if self.mode is None:
+			return True
 		if self.game is None:
-			raise network.NotInGameLobby("We are not in a game lobby")
+			return True
 		self.log.debug("[CHANGENAME] %s" % (name))
 		self.send(packets.client.cmd_changename(name))
 		return True

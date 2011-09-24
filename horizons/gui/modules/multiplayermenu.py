@@ -110,16 +110,11 @@ class MultiplayerMenu(object):
 
 	def __apply_new_nickname(self):
 		new_nick = self.current.playerdata.get_player_name()
-		horizons.main.fife.set_uh_setting("Nickname", new_nick)
-		horizons.main.fife.save_settings()
 		try:
-			NetworkInterface().network_data_changed(connect=True)
+			NetworkInterface().change_name(new_nick)
 		except Exception, err:
 			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
 			return
-		self.__refresh()
-		self.show_error_popup("Bug", "There are reports of problems with this feature.", \
-		                      "Please restart Unknown Horizons now to make sure you won't run into troubles")
 
 
 	def __on_error(self, exception):

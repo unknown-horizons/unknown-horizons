@@ -69,7 +69,7 @@ class NetworkInterface(object):
 		return self._client.game is not None
 
 	def network_data_changed(self, connect=False):
-		"""Call in case constants like nickname, client address or client port changed.
+		"""Call in case constants like client address or client port changed.
 		@param connect: whether to connect after the data updated
 		@throws RuntimeError in case of invalid data or an NetworkException forwarded from connect"""
 		if self.isconnected():
@@ -149,6 +149,16 @@ class NetworkInterface(object):
 	def chat(self, message):
 		try:
 			self._client.chat(message)
+		except NetworkException, e:
+			self._cb_error(e)
+			return False
+		return True
+
+	def change_name(self, new_nick):
+		horizons.main.fife.set_uh_setting("Nickname", new_nick)
+		horizons.main.fife.save_settings()
+		try:
+			self._client.changename(new_nick)
 		except NetworkException, e:
 			self._cb_error(e)
 			return False
