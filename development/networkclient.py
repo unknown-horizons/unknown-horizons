@@ -110,8 +110,12 @@ def cb_onjoin(game, player):
 def cb_onleave(game, player):
   print "[ONLEAVE] [%s] %s leaves" % (game.uuid, player)
 
-def cb_onchangename(game, oldplayer, newplayer):
+def cb_onchangename(game, oldplayer, newplayer, myself):
+  global name
   print "[ONCHANGENAME] [%s] %s changed name to %s" % (game.uuid, oldplayer.name, newplayer.name)
+  if myself:
+    name = newplayer.name
+    print "[NAME] My new name is %s" % (name)
 
 def cb_ongameprepare(game):
   print "[ONGAMEPREPARE]"
@@ -155,9 +159,10 @@ def ongamedata(*args):
 def onname(*args):
   global name, client
   if len(args) == 1:
+    # see documentation for client.changename() why this code is like that
+    if not client.changename(args[0]):
+      return
     name = args[0]
-    if client.isconnected():
-      client.changename(name)
   print "[NAME] My name is %s" % (name)
 
 def onstatus(*args):
@@ -229,6 +234,7 @@ logging.config.fileConfig( os.path.join('content', 'logging.conf'))
 logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
 logging.getLogger("network").setLevel(logging.DEBUG)
 
+client = None
 version = "0.512a"
 name = "client-%u" % (os.getpid())
 onname()

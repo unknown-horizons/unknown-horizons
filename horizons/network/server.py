@@ -221,6 +221,9 @@ class Server(object):
 
 
 	def oncreategame(self, peer, packet):
+		if not len(packet.playername):
+			self.send(peer, packets.cmd_error("You must have a non empty name"))
+			return
 		player = self.players[peer.data]
 		if player.game is not None:
 			self.send(peer, packets.cmd_error("You can't create a game while in another game"))
@@ -260,6 +263,9 @@ class Server(object):
 
 	def onjoingame(self, peer, packet):
 		logging.debug("[JOIN] name=%s, uuid=%s" % (packet.playername, packet.uuid))
+		if not len(packet.playername):
+			self.send(peer, packets.cmd_error("You must have a non empty name"))
+			return
 		player = self.players[peer.data]
 		if player.game is not None:
 			self.send(peer, packets.cmd_error("You can't join a game while in another game"))
@@ -349,6 +355,9 @@ class Server(object):
 
 
 	def onchat(self, peer, packet):
+		if not len(packet.chatmsg):
+			self.send(peer, packets.cmd_error("Chat message cannot be empty"))
+			return
 		player = self.players[peer.data]
 		if player.game is None:
 			self.send(peer, packets.cmd_error("Chatting is only allowed inside the lobby of a game"))
@@ -364,6 +373,9 @@ class Server(object):
 
 	def onchangename(self, peer, packet):
 		# NOTE: that event _only_ happens inside _if_ player is inside a lobby
+		if not len(packet.playername):
+			self.send(peer, packets.cmd_error("You must have a non empty name"))
+			return
 		player = self.players[peer.data]
 		if player.game is None:
 			# just ignore if not inside a game
@@ -373,6 +385,21 @@ class Server(object):
 		# don't send packets to already started games
 		if game.state is not Game.State.Open:
 			return
+
+		# ignore change to existing name
+		if player.name == packet.playername:
+			return
+
+		# make sure player names are unique
+		unique = True
+		for _player in game.players:
+			if _player.name == packet.playername:
+				unique = False
+				break
+		if not unique:
+			self.send(peer, packets.cmd_error("There's already a player with your name inside this game. Unable to change your name"))
+			return
+
 		logging.debug("[CHANGENAME] [%s] %s -> %s" % (game.uuid, player.name, packet.playername))
 		player.name = packet.playername
 		if game.creator_sid == player.sid:

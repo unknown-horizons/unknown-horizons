@@ -62,15 +62,18 @@ class Client(object):
 		self.game          = None
 		self.packetqueue   = []
 		self.callbacks     = {
-			'lobbygame_chat':       [],
-			'lobbygame_join':       [],
-			'lobbygame_leave':      [],
-			'lobbygame_changename': [],
-			'lobbygame_state':      [],
-			'lobbygame_starts':     [],
+			'lobbygame_chat':        [],
+			'lobbygame_join':        [],
+			'lobbygame_leave':       [],
+			'lobbygame_changename':  [],
+			#'lobbygame_changecolor': [],
+			'lobbygame_state':       [],
+			'lobbygame_starts':      [],
 			'game_starts':    [],
 			'game_data':      [],
 		}
+		self.register_callback('lobbygame_changename', self.onchangename, True)
+		#self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
 		pass
 
 	def register_callback(self, type, callback, prepend = False, unique = True):
@@ -281,10 +284,11 @@ class Client(object):
 				for pold in oldplayers:
 					if pnew.sid == pold.sid:
 						found = pold
+						myself = True if pnew.sid == self.sid else False
 						if pnew.name != pold.name:
-							self.call_callbacks("lobbygame_changename", self.game, pold, pnew)
+							self.call_callbacks("lobbygame_changename", self.game, pold, pnew, myself)
 						#if pnew.color != pold.color:
-						#	self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew)
+						#	self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew, myself)
 						break
 				if found is None:
 					self.call_callbacks("lobbygame_join", self.game, pnew)
@@ -404,16 +408,35 @@ class Client(object):
 	#-----------------------------------------------------------------------------
 
 	def changename(self, name):
-		if self.mode is not ClientMode.Server:
-			raise network.NotInServerMode("We are not in server mode")
-		self.name = name
-		if self.mode is None:
-			return True
-		if self.game is None:
+		""" NOTE: this returns False if the name must be validated by
+		the server. In that case this will trigger a lobbygame_changename-
+		event with parameter myself=True. if this functions returns true
+		your name has been changed but there was no need to sent it to
+		the server."""
+		if self.name == name:
 			return True
 		self.log.debug("[CHANGENAME] %s" % (name))
+		if self.mode is None or self.game is None:
+			self.name = name
+			return True
 		self.send(packets.client.cmd_changename(name))
+		return False
+
+	#-----------------------------------------------------------------------------
+
+	def onchangename(self, game, plold, plnew, myself):
+		self.log.debug("[ONCHANGENAME] %s -> %s" % (plold.name, plnew.name))
+		if myself:
+			self.name = plnew.name
 		return True
+
+	#-----------------------------------------------------------------------------
+
+	#def onchangecolor(self, game, plold, plnew, myself):
+	#	self.log.debug("[ONCHANGECOLOR] %s: %s -> %s" % (plnew.name, plold.color, plnew.color))
+	#	if myself:
+	#		self.color = plnew.color
+	#	return True
 
 	#-----------------------------------------------------------------------------
 

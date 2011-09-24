@@ -51,6 +51,7 @@ class NetworkInterface(object):
 		self._client.register_callback("lobbygame_join",       self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_leave",      self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
+		#self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
 		self._client.register_callback("game_starts", self._cb_game_starts)
 		self._client.register_callback("game_data", self._cb_game_data)
@@ -175,6 +176,9 @@ class NetworkInterface(object):
 
 	def register_player_changed_name_callback(self, function):
 		self._client.register_callback("lobbygame_changename", function)
+
+	#def register_player_changed_color_callback(self, function):
+	#	self._client.register_callback("lobbygame_changecolor", function)
 
 	def register_game_details_changed_callback(self, function, unique = True):
 		if unique and function in self.cbs_game_details_changed:
