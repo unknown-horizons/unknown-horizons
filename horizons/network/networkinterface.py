@@ -156,14 +156,14 @@ class NetworkInterface(object):
 		return True
 
 	def change_name(self, new_nick):
+		""" see network/client.py -> changename() for _important_ return values"""
 		horizons.main.fife.set_uh_setting("Nickname", new_nick)
 		horizons.main.fife.save_settings()
 		try:
-			self._client.changename(new_nick)
+			return self._client.changename(new_nick)
 		except NetworkException, e:
 			self._cb_error(e)
 			return False
-		return True
 
 	def register_chat_callback(self, function):
 		self._client.register_callback("lobbygame_chat", function)
