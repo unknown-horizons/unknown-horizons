@@ -108,8 +108,6 @@ class BoatbuilderTab(OverviewTab):
 # no upgrades in 2010.1 release ---^
 			upgrades_box.stylize('menu_black')
 
-				# TODO: make this button do sth
-
 			# Update needed resources
 			production = self.instance._get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
@@ -119,12 +117,9 @@ class BoatbuilderTab(OverviewTab):
 			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
 			i = 0
 			for res, amount in still_needed_res:
-				if res == RES.GOLD_ID: # Gold is taken at the beginning
-					continue
 				if amount == 0:
 					continue # Don't show res that are not really needed anymore
 				assert i <= 3, "Only 3 still needed res for ships are currently supported"
-				assert res != RES.GOLD_ID, "gold has to be taken before the production starts"
 
 				icon = get_res_icon(res)[3]
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon
