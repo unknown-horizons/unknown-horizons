@@ -153,11 +153,16 @@ class ShipOverviewTab(OverviewTab):
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
-		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
-		weapon_storage_widget.init(self.instance)
-		self.add_remove_listener(weapon_storage_widget.remove)
+		self._init_combat()
+
+	def _init_combat(self): # no combat
+		weapons_wdg = self.widget.child_finder('weapon_storage')
+		weapons_wdg.parent.removeChild(weapons_wdg)
+		weapons_wdg = self.widget.child_finder('lbl_weapon_storage').text = \
+		            _("Trade ship")
 
 	def refresh(self):
+		# no weapons:
 		# show rename when you click on name
 		events = {
 			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance)
@@ -209,6 +214,11 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		stance_widget.init(self.instance)
 		self.add_remove_listener(stance_widget.remove)
 		self.widget.findChild(name='stance').addChild(stance_widget)
+
+	def _init_combat(self): # no combat
+		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
+		weapon_storage_widget.init(self.instance)
+		self.add_remove_listener(weapon_storage_widget.remove)
 
 	def show(self):
 		self.widget.findChild(name='weapon_storage').update()
