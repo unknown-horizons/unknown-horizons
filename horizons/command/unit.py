@@ -51,6 +51,10 @@ class Attack(GenericUnitCommand):
 
 class CreateUnit(Command):
 	"""Command class that creates a unit.
+	TODO: remove this command and put the code in a method in e.g. world.
+	Commands are there for user interactions, and there is no user interaction, that creates a unit
+	You always only add a production that creates then units, but that is simulated on every machine
+
 	"""
 	def __init__(self, owner_id, unit_id, x, y, **kwargs):
 		"""

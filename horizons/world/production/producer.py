@@ -263,7 +263,8 @@ class UnitProducerBuilding(QueueProducer, ProducerBuilding):
 							if self.island.get_tile(point) is None:
 								tile = self.session.world.get_tile(point)
 								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
-									CreateUnit(self.owner.worldid, unit, point.x, point.y).execute(self.session)
+									# execute bypassing the manager, it's simulated on every machine
+									CreateUnit(self.owner.worldid, unit, point.x, point.y)(issuer=self.owner)
 									found_tile = True
 									break
 						radius += 1
