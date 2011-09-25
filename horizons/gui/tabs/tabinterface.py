@@ -77,6 +77,12 @@ class TabInterface(object):
 		"""This function is called by the TabWidget to redraw the widget."""
 		pass
 
+	@classmethod
+	def shown_for(self, instance):
+		"""Method for fine-grained control of which tabs to show.
+		@return: whether this tab should really be shown for this instance"""
+		return True
+
 	def _get_x(self):
 		"""Returs the widget's x position"""
 		return self.widget.position[0]

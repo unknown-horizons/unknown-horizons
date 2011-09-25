@@ -110,7 +110,7 @@ class ConcretObject(ComponentHolder, WorldObject):
 			tablist = self.__class__.enemy_tabs
 
 		if tablist:
-			tabs = [ tabclass(self) for tabclass in tablist ]
+			tabs = [ tabclass(self) for tabclass in tablist if tabclass.shown_for(self) ]
 			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs)
 
 			if jump_to_tabclass:
