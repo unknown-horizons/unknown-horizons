@@ -94,7 +94,7 @@ class Fife(ApplicationBase):
 
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
-		
+
 		logToPrompt, logToFile, debugPychan = True, True, False
 		self._log = fifelog.LogManager(self.engine, 1 if logToPrompt else 0, 1 if logToFile else 0)
 
@@ -173,22 +173,30 @@ class Fife(ApplicationBase):
 			horizons.main._modules.gui.show_popup(headline, message)
 
 	def __setup_screen_resolutions(self):
-		# Note: This call only works if the engine is inited (self.run())
-		# Note: Seems that getPossibleResolutions() needs Fullscreen set ##HACK##
-		possible_resolutions = ["1024x768", "1280x800", "1280x960", "1280x1024",
-		                        "1366x768", "1440x900", "1600x900", "1600x1200",
-		                        "1680x1050","1920x1080","1920x1200",] # Add more supported resolutions here.
-		current_state = self.engine_settings.isFullScreen()
-		self.engine_settings.setFullScreen(1)
-		modes = self.engine.getDeviceCaps().getSupportedScreenModes()
-		for mode in modes:
-			if mode.isFullScreen():
-				x = mode.getWidth
-				y = mode.getHeight()
-				txt = str(x) + "x" + str(y)
-				if x >= 1024 and y >= 768 and txt not in possible_resolutions:
-					possible_resolutions.append(txt)
-		self.engine_settings.setFullScreen(current_state)
+		""" create an instance of fife.DeviceCaps and compile a list of possible resolutions
+
+			NOTE:
+				- This call only works if the engine is inited (self.run())
+		"""
+		possible_resolutions = []
+
+		_MIN_X = 1024
+		_MIN_Y = 768
+
+		devicecaps = fife.DeviceCaps()
+		devicecaps.fillDeviceCaps()
+
+		for screenmode in devicecaps.getSupportedScreenModes():
+			x = screenmode.getWidth()
+			y = screenmode.getHeight()
+			if x < _MIN_X or y < _MIN_Y:
+				continue
+			res = str(x) + 'x' + str(y)
+			if res not in possible_resolutions:
+				possible_resolutions.append(res)
+
+		possible_resolutions.sort()
+
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = possible_resolutions
 
 	def update_languages(self, data=None):
