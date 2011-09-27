@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-26 22:39+0200\n"
+"PO-Revision-Date: 2011-09-27 23:07+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -299,26 +299,30 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:255
 #: horizons/gui/modules/singleplayermenu.py:65
+#, fuzzy
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "(remove spacing) ~chris"
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
 #: horizons/gui/widgets/choose_next_scenario.py:45
+#, fuzzy
 msgid "Difficulty: "
-msgstr ""
+msgstr "(remove spacing) ~chris"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:115
 #: horizons/gui/widgets/choose_next_scenario.py:46
+#, fuzzy
 msgid "Author: "
-msgstr ""
+msgstr "(remove spacing) ~chris"
 
 #: horizons/gui/modules/singleplayermenu.py:104
 #: horizons/gui/modules/singleplayermenu.py:116
 #: horizons/gui/widgets/choose_next_scenario.py:47
+#, fuzzy
 msgid "Description: "
-msgstr ""
+msgstr "(remove spacing) ~chris"
 
 #: horizons/gui/modules/singleplayermenu.py:135
 msgid "Invalid player name"
@@ -1171,8 +1175,9 @@ msgid "Add to list"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:357
+#, fuzzy
 msgid "100/100"
-msgstr ""
+msgstr "remove this from our gui"
 
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:372
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:388
