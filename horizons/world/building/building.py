@@ -370,7 +370,6 @@ class SelectableBuilding(object):
 	@classmethod
 	@decorators.make_constants()
 	def _do_select(cls, renderer, position, world, settlement):
-		selected_tiles_add = cls._selected_tiles.append
 		if cls.range_applies_only_on_island:
 			island = world.get_island(position.origin)
 			if island is None:

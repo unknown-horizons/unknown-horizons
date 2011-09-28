@@ -23,7 +23,7 @@
 from fife import fife
 import horizons.main
 
-from cursortool import CursorTool
+from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.util import Point, WorldObject
 from horizons.gui.widgets.tooltip import TooltipIcon
 from horizons.constants import LAYERS

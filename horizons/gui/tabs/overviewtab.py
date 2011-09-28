@@ -22,14 +22,12 @@
 
 import weakref
 
-from fife.extensions import pychan
-
-from tabinterface import TabInterface
+from horizons.gui.tabs.tabinterface import TabInterface
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, ActionSetLoader, NamedObject
-from horizons.constants import GAME_SPEED, RES, SETTLER, BUILDINGS
-from horizons.gui.widgets  import TooltipButton, DeleteButton
+from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS
+from horizons.gui.widgets  import DeleteButton
 from horizons.gui.widgets.unitoverview import StanceWidget
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear

@@ -23,7 +23,6 @@ from tabinterface import TabInterface
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget
 from horizons.scheduler import Scheduler
-from fife.extensions import pychan
 
 class SelectMultiTab(TabInterface):
 	"""

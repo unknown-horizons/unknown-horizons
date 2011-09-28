@@ -21,14 +21,11 @@
 import math
 import operator
 
-from fife.extensions import pychan
-
 from horizons.command.production import AddProduction
-from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
-from horizons.util.gui import load_uh_widget, get_res_icon
+from horizons.util.gui import get_res_icon
 from horizons.util import Callback
-from horizons.constants import PRODUCTIONLINES, RES
+from horizons.constants import PRODUCTIONLINES
 
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):

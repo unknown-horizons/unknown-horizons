@@ -21,7 +21,6 @@
 
 import logging
 
-from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler

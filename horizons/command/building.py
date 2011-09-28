@@ -21,7 +21,6 @@
 
 import logging
 
-import horizons.main
 from horizons.entities import Entities
 from horizons.command import Command
 from horizons.command.uioptions import TransferResource

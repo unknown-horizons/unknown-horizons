@@ -24,8 +24,6 @@ import logging
 
 from changelistener import ChangeListener
 
-from horizons.util.python import decorators
-
 class WorldObjectNotFound(KeyError):
 	pass
 

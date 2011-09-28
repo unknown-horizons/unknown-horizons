@@ -41,7 +41,6 @@ class PlayersSettlements(StatsWidget):
 		self._gui.findChild(name = 'headline').text = _('%(player)s\'s settlements') % {'player': self.session.world.player.name}
 
 		sequence_number = 0
-		player = self.session.world.player
 		events = {}
 		for settlement in self.session.world.settlements:
 			if settlement.owner is self.session.world.player:

@@ -61,8 +61,6 @@ class Server(object):
 		self.games = [] # list of games
 		self.players = {} # sessionid => Player() dict
 		self.check_urandom()
-		pass
-
 
 	def check_urandom(self):
 		try:

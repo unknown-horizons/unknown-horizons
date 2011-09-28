@@ -21,9 +21,8 @@
 
 from random import randint
 
-from dbreader import DbReader
-
 from horizons.util import decorators
+from horizons.util.dbreader import DbReader
 from horizons.util.gui import get_res_icon
 
 ########################################################################
@@ -244,7 +243,7 @@ class UhDbAccessor(DbReader):
 	def get_storage_building_capacity(self, storage_type):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
-	
+
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check

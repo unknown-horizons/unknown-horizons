@@ -21,15 +21,11 @@
 
 import logging
 import datetime
-import time
-
 
 from horizons.network import packets
 from horizons import network
 from horizons.network.common import *
-from horizons.constants import MULTIPLAYER
 from horizons.network import find_enet_module
-import socket # needed for socket.fromfd
 
 enet = find_enet_module()
 # during pyenets move to cpython they renamed a few constants...

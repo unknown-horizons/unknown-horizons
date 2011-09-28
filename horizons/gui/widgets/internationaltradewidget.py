@@ -21,12 +21,7 @@
 
 import logging
 
-from fife.extensions import pychan
-
-import horizons.main
-
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.gui.widgets.buysellinventory import BuySellInventory
 from horizons.util.gui import load_uh_widget
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.util import Callback

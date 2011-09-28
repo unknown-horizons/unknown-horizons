@@ -62,7 +62,7 @@ class Mission(WorldObject):
 
 	def __str__(self):
 		return '%s %s(%d)' % (self.owner if hasattr(self, 'owner') else 'unknown player', \
-			self.__class__.__name__, self.worldid)
+				              self.__class__.__name__, self.worldid)
 
 class ShipMission(Mission):
 	def __init__(self, success_callback, failure_callback, ship):
@@ -102,8 +102,8 @@ class ShipMission(Mission):
 			settlement.inventory.alter(resource_id, overflow)
 
 	def _unload_all_resources(self, settlement):
-		 # copy the inventory because otherwise we would be modifying it while iterating
-		 for res, amount in [item for item in self.ship.inventory]:
+		# copy the inventory because otherwise we would be modifying it while iterating
+		for res, amount in [item for item in self.ship.inventory]:
 			self.move_resource(self.ship, settlement, res, amount)
 
 	def _move_to_branch_office_area(self, bo_position, success_callback, blocked_callback, failure_msg):

@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
-
 from horizons.entities import Entities
 from horizons.util import WorldObject
 from horizons.command import GenericCommand, Command

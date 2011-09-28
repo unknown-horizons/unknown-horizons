@@ -24,64 +24,64 @@ import platform
 import os
 
 def find_enet_module():
-  # Try to find installed version first
-  try:
-    import enet
-    return enet
-  except ImportError:
-    pass
+	# Try to find installed version first
+	try:
+		import enet
+		return enet
+	except ImportError:
+		pass
 
 
-  type = platform.system().lower()
+	type = platform.system().lower()
 
-  arch = platform.architecture()[0]
-  if arch == '32bit':
-    arch = '86'
-  elif arch == '64bit':
-    arch = '64'
-  else:
-    assert False, "Failed to detect system architecture!"
-  version = platform.python_version_tuple()
-  dir = "%s-x%s" % (type, arch)
+	arch = platform.architecture()[0]
+	if arch == '32bit':
+		arch = '86'
+	elif arch == '64bit':
+		arch = '64'
+	else:
+		assert False, "Failed to detect system architecture!"
+	version = platform.python_version_tuple()
+	dir = "%s-x%s" % (type, arch)
 
-  dirpy = "%s-%s%s" % (dir, version[0], version[1])
-  if os.path.exists(os.path.join(os.path.dirname(__file__), dirpy)):
-    dir = dirpy
+	dirpy = "%s-%s%s" % (dir, version[0], version[1])
+	if os.path.exists(os.path.join(os.path.dirname(__file__), dirpy)):
+		dir = dirpy
 
-  try:
-    arch_module = __import__(dir, globals(), locals(), fromlist=["enet"])
-    return arch_module.enet
-  except ImportError:
-    pass
+	try:
+		arch_module = __import__(dir, globals(), locals(), fromlist=["enet"])
+		return arch_module.enet
+	except ImportError:
+		pass
 
-  # we can't raise an ImportError here, because the game should work even when
-  # there's no enet.
-  return None
+	# we can't raise an ImportError here, because the game should work even when
+	# there's no enet.
+	return None
 
 class NetworkException(Exception):
-  pass
+	pass
 
 class NotConnected(NetworkException):
-  def __str__(self):
-    return "Client is not connected"
+	def __str__(self):
+		return "Client is not connected"
 
 class ClientException(NetworkException):
-  pass
+	pass
 
 class AlreadyConnected(ClientException):
-  pass
+	pass
 
 class NotInGameLobby(ClientException):
-  pass
+	pass
 
 class NotInServerMode(ClientException):
-  pass
+	pass
 
 class UnableToConnect(ClientException):
-  pass
+	pass
 
 class CommandError(ClientException):
-  pass
+	pass
 
 class FatalError(ClientException):
-  pass
+	pass

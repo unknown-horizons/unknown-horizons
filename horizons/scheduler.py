@@ -20,11 +20,10 @@
 # ###################################################
 
 import logging
-import copy
 
 import horizons.main
 
-from horizons.util import LivingObject, ManualConstructionSingleton, decorators
+from horizons.util import LivingObject, ManualConstructionSingleton
 from horizons.constants import GAME
 
 class Scheduler(LivingObject):

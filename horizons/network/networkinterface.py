@@ -31,7 +31,6 @@ from horizons.network import CommandError, NetworkException
 
 import getpass
 import logging
-import os
 
 class NetworkInterface(object):
 	"""Interface for low level networking"""

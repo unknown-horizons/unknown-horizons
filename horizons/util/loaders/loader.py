@@ -23,8 +23,6 @@ import os
 import glob
 import logging
 
-from horizons.constants import PATHS
-
 class GeneralLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
 	begin with 'as_' to tell tell the loader that they are an action set. directory
@@ -65,7 +63,7 @@ class GeneralLoader(object):
 		rotations = {}
 		time = 500
 		dirs = os.listdir(dir)
-		try: 
+		try:
 			dirs.remove('.svn')
 			dirs.remove('.DS_Store')
 		except ValueError: pass
@@ -95,7 +93,7 @@ class GeneralLoader(object):
 		"""
 		actions = {}
 		dirs = os.listdir(dir)
-		try: 
+		try:
 			dirs.remove('.svn')
 			dirs.remove('.DS_Store')
 		except ValueError: pass

@@ -18,7 +18,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import math
 
 from horizons.util import Point, Rect, decorators
 from horizons.world.pathfinding.pather import StaticPather

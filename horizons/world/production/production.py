@@ -20,7 +20,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
 import copy
 
@@ -28,7 +27,7 @@ from collections import defaultdict, deque
 
 from horizons.util import WorldObject
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.constants import PRODUCTION, GAME_SPEED
+from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLine
 
 from horizons.scheduler import Scheduler

@@ -23,8 +23,8 @@ from fife import fife
 
 import horizons.main
 
-from navigationtool import NavigationTool
-from selectiontool import SelectionTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.building import Tear
 from horizons.util import Point
 

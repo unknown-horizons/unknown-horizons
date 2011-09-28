@@ -190,7 +190,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 	preload_game_join(preloading)
 
 	if playercolor is None: # this can't be a default parameter because of circular imports
-			playercolor = Color[1]
+		playercolor = Color[1]
 
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)

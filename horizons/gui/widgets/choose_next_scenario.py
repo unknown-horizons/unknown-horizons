@@ -2,7 +2,6 @@ from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
-from horizons.util.changelistener import metaChangeListenerDecorator
 
 class ScenarioChooser(object):
 	"""An UI to choose next scenario in a campaign after
@@ -32,7 +31,6 @@ class ScenarioChooser(object):
 
 	def show(self):
 		# Campaign and scenarios data
-		scenario_list = self._gui.findChild(name="scenario_list")
 		campaign_info = SavegameManager.get_campaign_info(name = self.session.campaign['campaign_name'])
 		available_scenarios = SavegameManager.get_available_scenarios()[1] # [0] is the list of xml files, we don't need it
 		scenarios = [s for s in campaign_info.get('scenario_names', []) if s in available_scenarios]

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tabinterface import TabInterface
+from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.widgets.tradewidget import TradeWidget
 from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig

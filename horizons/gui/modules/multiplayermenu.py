@@ -19,11 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from time import strftime
 import logging
 import textwrap
-
-import horizons.main
 
 from horizons.gui.modules import PlayerDataSelection
 from horizons.savegamemanager import SavegameManager
@@ -31,8 +28,6 @@ from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
-from horizons.util import Callback
-from horizons.network import CommandError
 
 enet = find_enet_module()
 

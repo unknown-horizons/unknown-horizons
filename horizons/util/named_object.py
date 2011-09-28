@@ -28,11 +28,12 @@ class NamedObject(WorldObject):
 
 	def __init__(self, name=None, **kwargs):
 		super(NamedObject, self).__init__(**kwargs)
+		self.name = None
 		self.set_name(name)
 
 	def set_name(self, name=None):
 		"""Actually sets the name."""
-		if hasattr(self, 'name'):
+		if self.name is not None:
 			NamedObject.names_used.remove(self.name)
 		if name is None:
 			name = self.get_default_name()

@@ -85,7 +85,7 @@ class Minimap(object):
 		self.update_cam()
 
 		# reset image
-		self.renderer.removeAll("minimap_a_image"+self._id);
+		self.renderer.removeAll("minimap_a_image"+self._id)
 		self.minimap_image.reset()
 		node = fife.GenericRendererNode( fife.Point(self.location.center().x, self.location.center().y) )
 		self.renderer.addImage("minimap_a_image"+self._id, node, self.minimap_image.img_id)

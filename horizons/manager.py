@@ -22,8 +22,6 @@
 import operator
 import logging
 
-import horizons.main
-
 from horizons.timer import Timer
 from horizons.util import WorldObject
 from horizons.util.living import LivingObject
@@ -37,7 +35,6 @@ class SPManager(LivingObject):
 	def __init__(self, session):
 		super(SPManager, self).__init__()
 		self.session = session
-		self.recording = False
 		self.commands = []
 
 	def execute(self, command, local = False):
@@ -48,22 +45,12 @@ class SPManager(LivingObject):
 		# if we are in demo playback mode, every incoming command has to be thrown away.
 		if len(self.commands) > 0:
 			return
-		if self.recording:
-			horizons.main.db("INSERT INTO demo.command (tick, issuer, data) VALUES (?, ?, ?)", \
-					self.session.timer.tick_next_id, self.session.world.player.worldid, \
-					horizons.util.encode(command))
 		ret = command(issuer = self.session.world.player) # actually execute the command
 		# some commands might have a return value, so forward it
 		return ret
 
 	def load(self, db):
-		self.commands = []
-
-		# NOTE: disabled until recording is really implemented
-		#for tick, issuer, data in db("SELECT tick, issuer, data FROM command"):
-			#self.commands.append((int(tick), WorldObject.get_object_by_id(issuer), decode(data)))
-		if len(self.commands) > 0:
-			self.session.timer.add_call(self.tick)
+		pass
 
 	def tick(self, tick):
 		remove = []

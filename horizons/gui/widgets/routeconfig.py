@@ -152,7 +152,6 @@ class RouteConfig(object):
 
 	def toggle_load_unload(self, slot, entry):
 		position = self.widgets.index(entry)
-		button = slot.findChild(name="buysell")
 		res_button = slot.findChild(name="button")
 		res = self.resource_for_icon[res_button.up_image.source]
 

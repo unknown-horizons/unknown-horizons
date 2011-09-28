@@ -150,8 +150,8 @@ class LogBook(object):
 			texts[0] = self._messages[self._cur_entry]
 			heads[0] = self._headings[self._cur_entry]
 			if self._cur_entry+1 < len(self._messages): # maybe also one for the right side?
-					texts[1] = self._messages[self._cur_entry+1]
-					heads[1] = self._headings[self._cur_entry+1]
+				texts[1] = self._messages[self._cur_entry+1]
+				heads[1] = self._headings[self._cur_entry+1]
 		else:
 			heads[0] = _('Emptiness')
 			texts[0] = "\n\n" + _('There is nothing written in your logbook yet!')
