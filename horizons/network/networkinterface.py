@@ -26,7 +26,7 @@ from horizons.util import Color, DifficultySettings, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
-from horizons.network import CommandError, NetworkException
+from horizons.network import CommandError, NetworkException, NotConnected
 
 
 import getpass
@@ -100,7 +100,10 @@ class NetworkInterface(object):
 		"""
 		@throws: NetworkError
 		"""
-		self._client.disconnect()
+		try:
+			self._client.disconnect()
+		except NotConnected:
+			pass
 
 	def ping(self):
 		"""calls _client.ping until all packets are received"""

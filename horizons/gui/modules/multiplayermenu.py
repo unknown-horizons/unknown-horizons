@@ -121,7 +121,8 @@ class MultiplayerMenu(object):
 		self.quit_session(force=True)
 
 	def __cancel(self):
-		NetworkInterface().disconnect()
+		if NetworkInterface().isconnected():
+			NetworkInterface().disconnect()
 		self.show_main()
 
 	def __refresh(self):
