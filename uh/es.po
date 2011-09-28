@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-07-12 11:59+0200\n"
+"PO-Revision-Date: 2011-09-28 11:52+0200\n"
 "Last-Translator: MicMic <michael.aloys@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -475,16 +475,14 @@ msgstr ""
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:234
 #: horizons/i18n/guitranslations.py:205
-#, fuzzy
 msgid "Pioneers"
-msgstr "pionero"
+msgstr "Pioneros"
 
 # 75%
 #: horizons/gui/tabs/mainsquaretabs.py:239
 #: horizons/i18n/guitranslations.py:236 horizons/i18n/guitranslations.py:369
-#, fuzzy
 msgid "Settlers"
-msgstr "colono"
+msgstr "Colonos"
 
 #: horizons/gui/tabs/overviewtab.py:51 horizons/gui/tabs/overviewtab.py:396
 #: horizons/i18n/guitranslations.py:305
@@ -998,24 +996,21 @@ msgstr ""
 # 81%
 #: horizons/i18n/guitranslations.py:209 horizons/i18n/guitranslations.py:225
 #: horizons/i18n/guitranslations.py:240
-#, fuzzy
 msgid "1 resident"
-msgstr "Residentes"
+msgstr "1 habitante"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:210 horizons/i18n/guitranslations.py:226
 #: horizons/i18n/guitranslations.py:241
-#, fuzzy
 msgid "2 residents"
-msgstr "Residentes"
+msgstr "2 habitantes"
 
 # 88%
 # 81%
 #: horizons/i18n/guitranslations.py:211 horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "3 residents"
-msgstr "Residentes"
+msgstr "3 habitantes"
 
 # 88%
 #: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:227
