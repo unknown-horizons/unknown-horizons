@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 from fife import fife
 import logging
 import random
@@ -27,13 +26,13 @@ import weakref
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Point, decorators, Callback, WorldObject
-from horizons.command.building import Build, Tear
+from horizons.util import ActionSetLoader, Point, decorators, Callback
+from horizons.command.building import Build
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
 from horizons.util.gui import load_uh_widget
-from horizons.constants import RES, BUILDINGS
+from horizons.constants import BUILDINGS
 from horizons.extscheduler import ExtScheduler
 
 class BuildingTool(NavigationTool):
@@ -355,7 +354,9 @@ class BuildingTool(NavigationTool):
 		built = False
 
 		# actually do the build and build preparations
+		i = -1
 		for building in self.buildings:
+			i += 1
 			# remove fife instance, the building will create a new one.
 			# Check if there is a matching fife instance, could be missing
 			# in case of trees, which are hidden if not buildable
@@ -387,7 +388,8 @@ class BuildingTool(NavigationTool):
 				            island= island, \
 				            settlement=self.session.world.get_settlement(building.position.origin), \
 				            ship=self.ship, \
-				            tearset=building.tearset \
+				            tearset=building.tearset, \
+										action_set_id=self.buildings_action_set_ids[i], \
 				            )
 				cmd.execute(self.session)
 			else:
@@ -527,7 +529,6 @@ class SettlementBuildingToolLogic(object):
 		is_tile_buildable = building_tool._class.is_tile_buildable
 		session = building_tool.session
 		player = session.world.player
-		buildable_tiles_add = building_tool._buildable_tiles.add
 
 		if tiles_to_check is not None: # only check these tiles
 			for tile in tiles_to_check:

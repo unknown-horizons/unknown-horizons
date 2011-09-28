@@ -76,7 +76,7 @@ def oncreate(*args):
     game = client.creategame(args[0], maxplayers)
     print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
     for player in game.players:
-      print "  Player: %s (%s)" % (player.name, player.address)
+      print "  Player: %s (%s)" % (player.name, player.sid)
   except ValueError, IndexError:
     print "Maxplayers must be an integer"
 
@@ -89,7 +89,7 @@ def onjoin(*args):
     game = client.joingame(args[0])
     print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
     for player in game.players:
-      print "  Player: %s (%s)" % (player.name, player.address)
+      print "  Player: %s (%s)" % (player.name, player.sid)
   except ValueError:
     print "Invalid UUID"
 
@@ -102,24 +102,29 @@ def onchat(*args):
   client.chat(' '.join(args))
 
 def cb_onchat(game, player, msg):
-  global client
-  print "[CHAT] [%s] %s: %s" % (game.uuid, player, msg)
+  print "[ONCHAT] [%s] %s: %s" % (game.uuid, player, msg)
 
 def cb_onjoin(game, player):
-  global client
-  print "[JOIN] [%s] %s joins" % (game.uuid, player)
+  print "[ONJOIN] [%s] %s joins" % (game.uuid, player)
 
 def cb_onleave(game, player):
-  global client
-  print "[LEAVE] [%s] %s leaves" % (game.uuid, player)
+  print "[ONLEAVE] [%s] %s leaves" % (game.uuid, player)
 
-def cb_onp2pdata(address, data):
-  global client
-  print "[P2P DATA] %s: %s" % (address, data)
+def cb_onchangename(game, oldplayer, newplayer, myself):
+  global name
+  print "[ONCHANGENAME] [%s] %s changed name to %s" % (game.uuid, oldplayer.name, newplayer.name)
+  if myself:
+    name = newplayer.name
+    print "[NAME] My new name is %s" % (name)
 
-def cb_ongamestart(game):
-  global client
-  print "[GAMESTART]"
+def cb_ongameprepare(game):
+  print "[ONGAMEPREPARE]"
+
+def cb_ongamestarts(game):
+  print "[ONGAMESTART]"
+
+def cb_ongamedata(data):
+  print "[ONGAMEDATA]: %s" % (data)
 
 def onauto(*args):
   global client
@@ -141,33 +146,38 @@ def onauto(*args):
     game = client.creategame(mapname, maxplayers)
   print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
   for player in game.players:
-    print "  Player: %s (%s)" % (player.name, player.address)
+    print "  Player: %s" % (player.name)
   client.chat("I am here guys. Game can start")
 
-def onp2psend(*args):
+def ongamedata(*args):
   global client
-  if client.mode is not ClientMode.Peer2Peer:
-    print "[ERROR] Client not in peer 2 peer mode"
+  if client.mode is not ClientMode.Game:
+    print "[ERROR] Client not in game mode"
     return
   client.send(' '.join(args))
 
 def onname(*args):
-  global name
+  global name, client
+  if len(args) == 1:
+    # see documentation for client.changename() why this code is like that
+    if not client.changename(args[0]):
+      return
+    name = args[0]
   print "[NAME] My name is %s" % (name)
 
 def onstatus(*args):
   global name, client
   statusstr = "[STATUS]"
   statusstr += " name=%s" % (name)
-  statusstr += " mode=%s" % ("P2P" if client.mode is ClientMode.Peer2Peer else "Server")
+  statusstr += " mode=%s" % ("GAME" if client.mode is ClientMode.Game else "Server")
   statusstr += " connected=%s" % ("yes" if client.isconnected() else "no")
-  statusstr += " server=%s" % (client.serveraddress if client.mode is ClientMode.Server else "N/A")
+  statusstr += " server=%s" % (client.serveraddress)
   print statusstr
   if client.isconnected():
     if client.game is not None:
       print "[STATUS] game: uuid=%s mapname=%s maxplayers=%d playercnt=%d" % (client.game.uuid, client.game.mapname, client.game.maxplayers, client.game.playercnt)
       for player in client.game.players:
-        print "[STATUS]  Player: %s (%s)" % (player.name, player.address)
+        print "[STATUS]  Player: %s" % (player.name)
 
 def onhelp(*args):
   global commands, prompt
@@ -190,7 +200,7 @@ commands = {
   'chat':       onchat,
   'quit':       onquit,
   'auto':       onauto,
-  'p2p':        onp2psend,
+  'gamedata':   ongamedata,
   'name':       onname,
   'status':     onstatus,
 }
@@ -224,15 +234,18 @@ logging.config.fileConfig( os.path.join('content', 'logging.conf'))
 logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
 logging.getLogger("network").setLevel(logging.DEBUG)
 
+client = None
 version = "0.512a"
 name = "client-%u" % (os.getpid())
-onname(name)
+onname()
 client = Client(name, version, [host, port], None)
 client.register_callback("lobbygame_chat", cb_onchat)
 client.register_callback("lobbygame_join", cb_onjoin)
 client.register_callback("lobbygame_leave", cb_onleave)
-client.register_callback("lobbygame_starts", cb_ongamestart)
-client.register_callback("p2p_data", cb_onp2pdata)
+client.register_callback("lobbygame_changename", cb_onchangename)
+client.register_callback("lobbygame_starts", cb_ongameprepare)
+client.register_callback("game_starts", cb_ongamestarts)
+client.register_callback("game_data", cb_ongamedata)
 
 print prompt,
 while True:

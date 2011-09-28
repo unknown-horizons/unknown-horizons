@@ -10,13 +10,13 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the
 # Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
 import cPickle
@@ -27,8 +27,8 @@ enet = find_enet_module()
 
 __version__ = '0.1'
 __all__ = [
-  'packet',
-  'packetlist'
+	'packet',
+	'packetlist'
 ]
 
 PICKLE_PROTOCOL = 2
@@ -36,52 +36,60 @@ PICKLE_PROTOCOL = 2
 packetlist = []
 
 class packet:
-  def serialize(self):
-    return cPickle.dumps(self, PICKLE_PROTOCOL)
+	def __init__(self):
+		self.sid = None
 
-  def send(self, peer, channelid = 0):
-    packet = enet.Packet(self.serialize(), enet.PACKET_FLAG_RELIABLE)
-    peer.send(channelid, packet)
+	def serialize(self):
+		return cPickle.dumps(self, PICKLE_PROTOCOL)
+
+	def send(self, peer, sid = None, channelid = 0):
+		if sid is not None:
+			self.sid = sid
+		self._send(peer, self.serialize(), channelid)
+
+	@staticmethod
+	def _send(peer, data, channelid = 0):
+		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
+		peer.send(channelid, packet)
 
 #-------------------------------------------------------------------------------
 
 class cmd_ok(packet):
-  """simple ok message"""
+	"""simple ok message"""
 
 packetlist.append(cmd_ok)
 
 #-------------------------------------------------------------------------------
 
 class cmd_error(packet):
-  def __init__(self, errorstr):
-    self.errorstr = errorstr
+	def __init__(self, errorstr):
+		self.errorstr = errorstr
 
 packetlist.append(cmd_error)
 
 #-------------------------------------------------------------------------------
 
 class cmd_fatalerror(packet):
-  def __init__(self, errorstr):
-    self.errorstr = errorstr
+	def __init__(self, errorstr):
+		self.errorstr = errorstr
 
 packetlist.append(cmd_fatalerror)
 
 #-------------------------------------------------------------------------------
 
 def unserialize(data):
-  try:
-    packet = cPickle.loads(data)
-  except Exception:
-    return None
+	try:
+		packet = cPickle.loads(data)
+	except Exception:
+		return None
 
-  for packetclass in packetlist:
-    if (isinstance(packet, packetclass)):
-      return packet
-  return None
+	for packetclass in packetlist:
+		if (isinstance(packet, packetclass)):
+			return packet
+	return None
 
 #-------------------------------------------------------------------------------
 
 import horizons.network.packets.server
 import horizons.network.packets.client
-import horizons.network.packets.p2p
 

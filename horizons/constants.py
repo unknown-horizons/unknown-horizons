@@ -26,7 +26,7 @@ import os.path
 import re
 import locale
 
-from ext.enum import Enum
+from horizons.ext.enum import Enum
 
 """This file keeps track of the constants that are used in Unknown Horizons.
 NOTE: Using magic constants in code is generally a bad style, so avoid where
@@ -360,7 +360,7 @@ class MULTIPLAYER:
 
 class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
-	SERVER_PORT = 2001
+	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
 
 ## TRANSLATIONS

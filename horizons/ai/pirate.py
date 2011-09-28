@@ -21,15 +21,13 @@
 
 import logging
 
-import horizons.main
-
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
-from horizons.constants import RES, UNITS
+from horizons.constants import UNITS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
-from horizons.world.units.ship import PirateShip, TradeShip, FisherShip
+from horizons.world.units.ship import PirateShip, TradeShip
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.component.namedcomponent import NamedComponent
 

@@ -23,7 +23,6 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
-from horizons.constants import BUILDINGS
 
 class DepositCoverageGoal(SettlementGoal):
 	"""Build storage tents to get a resource deposit inside the settlement."""

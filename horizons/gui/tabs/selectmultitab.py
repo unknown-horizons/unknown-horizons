@@ -25,7 +25,6 @@ from horizons.util.gui import load_uh_widget
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.stancecomponent import *
-from fife.extensions import pychan
 
 class SelectMultiTab(TabInterface):
 	"""

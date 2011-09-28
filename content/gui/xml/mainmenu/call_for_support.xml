@@ -15,7 +15,7 @@
 		<Label name="text" text="Visit our IRC channel #unknown-horizons on FreeNode to get in touch with the developers and we will be happy to answer all your questions!"
 			   wrap_text="1"  max_size="280,80" />
 		<Label name="text" text="You find information on how to get started at" />
-		<Label name="text" text="http://wiki.unknown-horizons.org/w/Getting_started" />
+		<Label name="text" text="http://tinyurl.com/UH-get-started" />
 		<Label name="text" text="Most developers are from Europe, so make sure to show a little patience. We read our channel logs and will always come back to you."
 			   wrap_text="1"  max_size="280,80" />
 	</VBox>
@@ -35,38 +35,35 @@
 	<Label text="Current information" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox padding="5">
-		<Label name="text" text="We are accepted as mentoring organization for this year's Google Summer of Code."
-			   wrap_text="1"  max_size="300,40" />
-		<Label name="text" text="This means that Google grants three students stipends to work on improving Unknown Horizons and FIFE together with us!"
-			   wrap_text="1"  max_size="300,120" />
-		<Label name="text" text="So what do we further ask for?"
-			   wrap_text="1"  max_size="300,40" />
-		<Label name="text" text="There will be awesome progress, but we also need graphical content to reflect how far we got."
+		<Label name="text" text="We were accepted as mentoring organization for this year's Google Summer of Code and had awesome progress this summer."
 			   wrap_text="1"  max_size="300,80" />
-		<Label name="text" text="We currently miss building graphics for:"
+		<Label name="text" text="So what do we need now?"
+			   wrap_text="1"  max_size="300,40" />
+		<Label name="text" text="The coding department saw a lot of progress, but we also need graphical content to reflect how far we got."
+			   wrap_text="1"  max_size="300,80" />
+		<Label name="text" text="We currently miss models for:"
 			   wrap_text="1"  max_size="300,20" />
 		<HBox  size="280,80" padding="15">
 		<VBox>
-			<Label name="text" text="• animated herbary field" />
-			<Label name="text" text="• animated tobacco field" />
+			<Label name="text" text="  ~ buildings ~ " />
+			<Label name="text" text="• animated herbs field" />
 			<Label name="text" text="• boar forest field" />
-			<Label name="text" text="• salt evaporation ponds" />
+			<Label name="text" text="• a doctor (hospital)" />
 		</VBox>
 		<VBox>
-			<Label name="text" text="• a doctor" />
-			<Label name="text" text="• a tobacconist" />
-			<Label name="text" text="• a butchery" />
+			<Label name="text" text="  ~ units ~ " />
+			<Label name="text" text="• more ships" />
+			<Label name="text" text="• inhabitants" />
+			<Label name="text" text="• collectors" />
 		</VBox>
 		</HBox>
 		<Label name="text" text="Please help with creating great content!"
-			   wrap_text="1"  max_size="300,40" />
+			wrap_text="1"  max_size="300,40" />
+		<Spacer fixed_size="10" />
 		<Label name="text" text="You can also contribute by translating UH into your language or improving existing translations. Our pootle server is found here:"
 			   wrap_text="1"  max_size="300,100" />
 		<Label name="text" text="http://pootle.unknown-horizons.org" />
 		<Label name="text" text="Ask us on IRC when starting a new translation." />
-		<Spacer size="5"/>
-		<Label name="text04" text="We look forward to achieving a lot this summer!"
-			   wrap_text="1"  max_size="180,60" />
 	</VBox>
 </VBox>
 

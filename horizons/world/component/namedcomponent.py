@@ -32,12 +32,13 @@ class NamedComponent(Component):
 
 	def __init__(self, instance, name=None):
 		super(NamedComponent, self).__init__(instance)
+		self.name = None
 		self.set_name(name)
 
 	def set_name(self, name=None):
 		"""Actually sets the name."""
-		if hasattr(self, 'name'):
-			NamedComponent.names_used.remove(self.name)
+		if self.name is not None:
+			NamedObject.names_used.remove(self.name)
 		if name is None:
 			name = self.get_default_name()
 		self.name = name

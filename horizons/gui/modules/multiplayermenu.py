@@ -19,11 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from time import strftime
 import logging
 import textwrap
-
-import horizons.main
 
 from horizons.gui.modules import PlayerDataSelection
 from horizons.savegamemanager import SavegameManager
@@ -31,8 +28,6 @@ from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
-from horizons.util import Callback
-from horizons.network import CommandError
 
 enet = find_enet_module()
 
@@ -93,9 +88,12 @@ class MultiplayerMenu(object):
 	def __connect_to_server(self):
 		NetworkInterface().register_chat_callback(self.__receive_chat_message)
 		NetworkInterface().register_game_details_changed_callback(self.__update_game_details)
+		NetworkInterface().register_game_prepare_callback(self.__prepare_game)
 		NetworkInterface().register_game_starts_callback(self.__start_game)
-		NetworkInterface().register_game_ready_callback(self.__game_ready)
 		NetworkInterface().register_error_callback(self.__on_error)
+		NetworkInterface().register_player_joined_callback(self.__player_joined)
+		NetworkInterface().register_player_left_callback(self.__player_left)
+		NetworkInterface().register_player_changed_name_callback(self.__player_changed_name)
 
 		try:
 			NetworkInterface().connect()
@@ -107,16 +105,11 @@ class MultiplayerMenu(object):
 
 	def __apply_new_nickname(self):
 		new_nick = self.current.playerdata.get_player_name()
-		horizons.main.fife.set_uh_setting("Nickname", new_nick)
-		horizons.main.fife.save_settings()
 		try:
-			NetworkInterface().network_data_changed(connect=True)
+			NetworkInterface().change_name(new_nick)
 		except Exception, err:
 			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
 			return
-		self.__refresh()
-		self.show_error_popup("Bug", "There are reports of problems with this feature.", \
-		                      "Please restart Unknown Horizons now to make sure you won't run into troubles")
 
 
 	def __on_error(self, exception):
@@ -189,12 +182,12 @@ class MultiplayerMenu(object):
 			return
 		self.__show_gamelobby()
 
-	def __start_game(self, game):
+	def __prepare_game(self, game):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
 		import horizons.main
 		horizons.main.prepare_multiplayer(game)
 
-	def __game_ready(self, game):
+	def __start_game(self, game):
 		import horizons.main
 		horizons.main.start_multiplayer(game)
 
@@ -224,8 +217,9 @@ class MultiplayerMenu(object):
 	def __send_chat_message(self):
 		"""Sends a chat message. Called when user presses enter in the input field"""
 		msg = self.current.findChild(name="chatTextField").text
-		self.current.findChild(name="chatTextField").text = u""
-		NetworkInterface().chat(msg)
+		if len(msg):
+			self.current.findChild(name="chatTextField").text = u""
+			NetworkInterface().chat(msg)
 
 	def __receive_chat_message(self, game, player, msg):
 		"""Receive a chat message from the network. Only possible in lobby state"""
@@ -236,6 +230,27 @@ class MultiplayerMenu(object):
 		for line in lines:
 			chatbox.items.append(line)
 		chatbox.selected = len(chatbox.items) - 1
+
+	def __print_event_message(self, msg):
+		line_max_length = 40
+		chatbox = self.current.findChild(name="chatbox")
+		full_msg = u"* " + msg + " *"
+		lines = textwrap.wrap(full_msg, line_max_length)
+		for line in lines:
+			chatbox.items.append(line)
+		chatbox.selected = len(chatbox.items) - 1
+
+	def __player_joined(self, game, player):
+		self.__print_event_message("%s has joined the game" % (player.name))
+
+	def __player_left(self, game, player):
+		self.__print_event_message("%s has left the game" % (player.name))
+
+	def __player_changed_name(self, game, plold, plnew, myself):
+		if myself:
+			self.__print_event_message("You are now known as %s" % (plnew.name))
+		else:
+			self.__print_event_message("%s is now known as %s" % (plold.name, plnew.name))
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""

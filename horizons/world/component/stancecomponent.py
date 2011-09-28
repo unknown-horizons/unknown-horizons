@@ -174,7 +174,7 @@ class LimitedMoveStance(StanceComponent):
 		Check if target still exists or if unit exited the hold ground area
 		"""
 		if not Circle(self.return_position, self.move_range).contains(self.instance.position.center()) or \
-		   not self.instance.is_attacking():
+			not self.instance.is_attacking():
 			from horizons.world.units.movingobject import MoveNotPossible
 			try:
 				self.instance.move(self.return_position)

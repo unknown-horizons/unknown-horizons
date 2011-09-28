@@ -22,13 +22,11 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MainSquareOverviewTab, AccountTab, MainSquareSettlerTabSettlerTab, \
+		 MainSquareOverviewTab, AccountTab, \
 		 MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
 		 EnemyBranchOfficeOverviewTab
-from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
-from horizons.constants import STORAGE
 from horizons.world.production.producer import ProducerBuilding
 
 class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandler, \
@@ -50,6 +48,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	def remove(self):
 		# this shouldn't be absolutely necessary since the changelistener uses weak references
 		self.inventory.remove_change_listener(self._changed)
+		self.owner_inventory.discard_change_listener(self._changed)
 
 		self.inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()

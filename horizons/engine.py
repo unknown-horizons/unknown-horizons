@@ -138,7 +138,10 @@ class Fife(ApplicationBase):
 
 				def update_value(modulename, entryname):
 					# retrieve values from loaded settings file
-					value = self._setting.get(modulename, entryname)
+					try:
+						value = self._setting.get(modulename, entryname)
+					except UnicodeEncodeError: # this can happen when unicode data is saved as str
+						value = "default"
 					user_config_parser.set(modulename, entryname, value)
 				# update known settings and unreferenced settings
 				for modulename, module in self._setting.entries.iteritems():
@@ -323,16 +326,16 @@ class Fife(ApplicationBase):
 		self.pychan.init(self.engine, debugPychan)
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 
-		from gui.widgets.inventory import Inventory
-		from gui.widgets.buysellinventory import BuySellInventory
-		from gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
-		from gui.widgets.progressbar import ProgressBar
-		from gui.widgets.toggleimagebutton import ToggleImageButton
-		from gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
-		from gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
-		from gui.widgets.icongroup import TabBG
-		from gui.widgets.stepslider import StepSlider
-		from gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
+		from horizons.gui.widgets.inventory import Inventory
+		from horizons.gui.widgets.buysellinventory import BuySellInventory
+		from horizons.gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
+		from horizons.gui.widgets.progressbar import ProgressBar
+		from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
+		from horizons.gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
+		from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
+		from horizons.gui.widgets.icongroup import TabBG
+		from horizons.gui.widgets.stepslider import StepSlider
+		from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 
 		pychan.widgets.registerWidget(CancelButton)
 		pychan.widgets.registerWidget(DeleteButton)

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tabinterface import TabInterface
+from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.util.python.roman_numerals import int_to_roman
 
 class BuildTab(TabInterface):

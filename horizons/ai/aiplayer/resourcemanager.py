@@ -75,7 +75,7 @@ class ResourceManager(WorldObject):
 			for resource_id, amount in reserved_storage.iteritems():
 				if amount > 1e-9:
 					db("INSERT INTO ai_resource_manager_trade_storage(resource_manager, settlement_manager, resource, amount) VALUES(?, ?, ?, ?)", \
-						self.worldid, settlement_manager_id, resource_id, amount)
+					   self.worldid, settlement_manager_id, resource_id, amount)
 		for resource_id, amount in self.resource_requirements.iteritems():
 			db("INSERT INTO ai_resource_manager_requirement(resource_manager, resource, amount) VALUES(?, ?, ?)", self.worldid, resource_id, amount)
 
@@ -208,7 +208,7 @@ class ResourceManager(WorldObject):
 		if resource_id in [RES.TOOLS_ID, RES.BOARDS_ID]:
 			return self.personality.default_resource_requirement
 		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS_ID:
-				return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.settler_level > 0 else 0
+			return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.settler_level > 0 else 0
 		elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD_ID:
 			return self.personality.default_food_requirement
 		return 0
@@ -331,14 +331,14 @@ class SingleResourceManager(WorldObject):
 	def save(self, db, resource_manager_id):
 		super(SingleResourceManager, self).save(db)
 		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, low_priority, available, total) VALUES(?, ?, ?, ?, ?, ?, ?)", \
-			self.worldid, resource_manager_id, self.resource_id, self.building_id, self.low_priority, self.available, self.total)
+		   self.worldid, resource_manager_id, self.resource_id, self.building_id, self.low_priority, self.available, self.total)
 		for identifier, (quota, priority) in self.quotas.iteritems():
 			db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager, identifier, quota, priority) VALUES(?, ?, ?, ?)", self.worldid, identifier, quota, priority)
 
 	def _load(self, db, settlement_manager, worldid):
 		super(SingleResourceManager, self).load(db, worldid)
 		(resource_id, building_id, self.low_priority, self.available, self.total) = \
-			db("SELECT resource_id, building_id, low_priority, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
+		    db("SELECT resource_id, building_id, low_priority, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
 		self.__init(settlement_manager, resource_id, building_id)
 
 		for (identifier, quota, priority) in db("SELECT identifier, quota, priority FROM ai_single_resource_manager_quota WHERE single_resource_manager = ?", worldid):

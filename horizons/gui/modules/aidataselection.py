@@ -21,7 +21,7 @@
 
 import horizons.main
 
-from horizons.constants import AI, MULTIPLAYER
+from horizons.constants import MULTIPLAYER
 
 class AIDataSelection(object):
 	"""Subwidget for selecting AI settings."""

@@ -55,24 +55,28 @@ class BasicBuilding(ConcretObject):
 
 	"""
 	@param x, y: int position of the building.
+	@param rotation: value passed to getInstance
 	@param owner: Player that owns the building.
+	@param level: start in this increment
+	@param action_set_id: use this action set id. None means choose one at random
 	"""
-	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
+	def __init__(self, x, y, rotation, owner, island, level=None, action_set_id=None, **kwargs):
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 								                        island=island, **kwargs)
-		self.__init(Point(x, y), rotation, owner, level)
+		self.__init(Point(x, y), rotation, owner, level, action_set_id=action_set_id)
 		self.island = island
 		self.settlement = self.island.get_settlement(Point(x, y)) or \
 				self.island.add_settlement(self.position, self.radius, owner) if \
 				owner is not None else None
 
-	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None):
+	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None, action_set_id=None):
 		self.add_component(AmbientSoundComponent)
 		self.owner = owner
 		if level is None:
 			level = 0 if self.owner is None else self.owner.settler_level
 		self.level = level
-		self._action_set_id = self.session.db.get_random_action_set(self.id, self.level)[0]
+		self._action_set_id = action_set_id if action_set_id is not None else \
+		    self.session.db.get_random_action_set(self.id, self.level)[0]
 		self.rotation = rotation
 		if self.rotation in (135, 315): # Rotate the rect correctly
 			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
@@ -368,7 +372,6 @@ class SelectableBuilding(object):
 	@classmethod
 	@decorators.make_constants()
 	def _do_select(cls, renderer, position, world, settlement):
-		selected_tiles_add = cls._selected_tiles.append
 		if cls.range_applies_only_on_island:
 			island = world.get_island(position.origin)
 			if island is None:

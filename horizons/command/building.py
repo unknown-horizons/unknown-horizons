@@ -21,7 +21,6 @@
 
 import logging
 
-import horizons.main
 from horizons.entities import Entities
 from horizons.command import Command
 from horizons.command.uioptions import TransferResource
@@ -35,7 +34,7 @@ class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building, x, y, island, rotation = 45, \
-	             ship = None, ownerless=False, settlement=None, tearset=None, data=None):
+	             ship = None, ownerless=False, settlement=None, tearset=None, data=None, action_set_id=None):
 		"""Create the command
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
@@ -44,6 +43,7 @@ class Build(Command):
 		@param settlement: settlement worldid or None
 		@param tearset: set of worldids of objs to tear before building
 		@param data: data required for building construction
+		@param action_set_id: use this particular action set, don't choose at random
 		"""
 		if hasattr(building, 'id'):
 			self.building_class = building.id
@@ -59,6 +59,7 @@ class Build(Command):
 		self.settlement = settlement.worldid if settlement is not None else None
 		self.tearset = set() if not tearset else tearset
 		self.data = {} if not data else data
+		self.action_set_id = action_set_id
 
 	def __call__(self, issuer=None):
 		"""Execute the command
@@ -109,6 +110,7 @@ class Build(Command):
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \
 			instance=None, \
+		  action_set_id=self.action_set_id, \
 		  **self.data
 		)
 

@@ -31,7 +31,6 @@ from horizons.network import CommandError, NetworkException
 
 import getpass
 import logging
-import os
 
 class NetworkInterface(object):
 	"""Interface for low level networking"""
@@ -45,14 +44,16 @@ class NetworkInterface(object):
 		self.__setup_client()
 		# cbs means callbacks
 		self.cbs_game_details_changed = []
+		self.cbs_game_prepare = []
 		self.cbs_game_starts = []
-		self.cbs_p2p_ready = []
 		self.cbs_error = [] # cbs with 1 parameter which is an Exception instance
-		self._client.register_callback("lobbygame_join", self._cb_game_details_changed)
-		self._client.register_callback("lobbygame_leave", self._cb_game_details_changed)
-		self._client.register_callback("lobbygame_starts", self._cb_game_starts)
-		self._client.register_callback("p2p_ready", self._cb_p2p_ready)
-		self._client.register_callback("p2p_data", self._cb_p2p_data)
+		self._client.register_callback("lobbygame_join",       self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_leave",      self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
+		#self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
+		self._client.register_callback("game_starts", self._cb_game_starts)
+		self._client.register_callback("game_data", self._cb_game_data)
 		self.received_packets = []
 
 		ExtScheduler().add_new_object(self.ping, self, self.PING_INTERVAL, -1)
@@ -68,7 +69,7 @@ class NetworkInterface(object):
 		return self._client.game is not None
 
 	def network_data_changed(self, connect=False):
-		"""Call in case constants like nickname, client address or client port changed.
+		"""Call in case constants like client address or client port changed.
 		@param connect: whether to connect after the data updated
 		@throws RuntimeError in case of invalid data or an NetworkException forwarded from connect"""
 		if self.isconnected():
@@ -153,8 +154,30 @@ class NetworkInterface(object):
 			return False
 		return True
 
+	def change_name(self, new_nick):
+		""" see network/client.py -> changename() for _important_ return values"""
+		horizons.main.fife.set_uh_setting("Nickname", new_nick)
+		horizons.main.fife.save_settings()
+		try:
+			return self._client.changename(new_nick)
+		except NetworkException, e:
+			self._cb_error(e)
+			return False
+
 	def register_chat_callback(self, function):
 		self._client.register_callback("lobbygame_chat", function)
+
+	def register_player_joined_callback(self, function):
+		self._client.register_callback("lobbygame_join", function)
+
+	def register_player_left_callback(self, function):
+		self._client.register_callback("lobbygame_leave", function)
+
+	def register_player_changed_name_callback(self, function):
+		self._client.register_callback("lobbygame_changename", function)
+
+	#def register_player_changed_color_callback(self, function):
+	#	self._client.register_callback("lobbygame_changecolor", function)
 
 	def register_game_details_changed_callback(self, function, unique = True):
 		if unique and function in self.cbs_game_details_changed:
@@ -165,25 +188,25 @@ class NetworkInterface(object):
 		for callback in self.cbs_game_details_changed:
 			callback()
 
+	def register_game_prepare_callback(self, function, unique = True):
+		if unique and function in self.cbs_game_prepare:
+			return
+		self.cbs_game_prepare.append(function)
+
+	def _cb_game_prepare(self, game):
+		for callback in self.cbs_game_prepare:
+			callback(self.get_game())
+
 	def register_game_starts_callback(self, function, unique = True):
 		if unique and function in self.cbs_game_starts:
 			return
 		self.cbs_game_starts.append(function)
 
-	def _cb_game_starts(self,game):
+	def _cb_game_starts(self, game):
 		for callback in self.cbs_game_starts:
 			callback(self.get_game())
 
-	def register_game_ready_callback(self, function, unique = True):
-		if unique and function in self.cbs_p2p_ready:
-			return
-		self.cbs_p2p_ready.append(function)
-
-	def _cb_p2p_ready(self):
-		for callback in self.cbs_p2p_ready:
-			callback(self.get_game())
-
-	def _cb_p2p_data(self, address, data):
+	def _cb_game_data(self, data):
 		self.received_packets.append(data)
 
 	def register_error_callback(self, function, unique = True):
@@ -277,4 +300,4 @@ class MPGame(object):
 		return self.version
 
 	def __str__(self):
-		return self.get_map_name() + " (" + self.get_player_count() + "/" + self.get_player_limit() + ")"
+		return "%s (%d/%d)" % (self.get_map_name(), self.get_player_count(), self.get_player_limit())

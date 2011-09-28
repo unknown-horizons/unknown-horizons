@@ -21,14 +21,11 @@
 
 import logging
 
-import horizons.main
-
 from horizons.scheduler import Scheduler
-from horizons.util import Point, Callback, WorldObject, Circle
-from horizons.constants import RES, UNITS, BUILDINGS, TRADER
+from horizons.util import Callback, WorldObject, Circle
+from horizons.constants import UNITS, BUILDINGS, TRADER
 from horizons.ai.generic import GenericAI
 from horizons.ext.enum import Enum
-from horizons.world.storageholder import StorageHolder
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
 

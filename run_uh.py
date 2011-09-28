@@ -270,8 +270,11 @@ def parse_args():
 				logfile.write(line)
 		sys.stdout = StdOutDuplicator()
 
-		if not options.debug_log_only:
-			# add a handler to stderr too
+		# add a handler to stderr too _but_ only if logfile isn't already a tty
+		# this allows --debug-module=<module> --logfile=/dev/stdout
+		# without getting logs twice + without enabling debug log for everything
+		# (see first if-clause inside that method)
+		if not options.debug_log_only and not logfile.isatty():
 			logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
 
 		log_sys_info()

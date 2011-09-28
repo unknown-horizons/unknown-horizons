@@ -20,17 +20,14 @@
 # ###################################################
 
 import weakref
-from fife import fife
 
-import horizons.main
 
 from horizons.world.pathfinding.pather import SoldierPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle
 from unit import Unit
-from horizons.constants import LAYERS, GAME_SPEED, WEAPONS
-from horizons.scheduler import Scheduler
+from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.gui.tabs import GroundUnitOverviewTab, EnemyShipOverviewTab
