@@ -131,7 +131,6 @@ class MultiplayerMenu(object):
 		@return bool, whether refresh worked"""
 		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
 		if self.games is None:
-			print 'games none, false'
 			return False
 		self.current.distributeInitialData({'gamelist' : map(lambda x: "%s (%u, %u)%s"%(x.get_map_name(), x.get_player_count(), x.get_player_limit(), " " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else ""), self.games)})
 		self.current.distributeData({'gamelist' : 0}) # select first map
