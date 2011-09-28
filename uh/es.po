@@ -19,7 +19,7 @@ msgstr ""
 
 #: Unit sqlite/Building
 msgid "Doctor"
-msgstr ""
+msgstr "Doctor"
 
 #: horizons/engine.py:70
 msgid "Restart required"
