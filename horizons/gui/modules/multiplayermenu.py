@@ -102,7 +102,6 @@ class MultiplayerMenu(object):
 			return False
 		return True
 
-
 	def __apply_new_nickname(self):
 		new_nick = self.current.playerdata.get_player_name()
 		try:
@@ -111,14 +110,15 @@ class MultiplayerMenu(object):
 			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
 			return
 
-
-	def __on_error(self, exception):
-		if self.session is not None:
+	def __on_error(self, exception, fatal=True):
+		"""Error callback"""
+		if fatal and self.session is not None:
 			self.session.timer.ticks_per_second = 0
-		self.show_popup( _("Network Error"), \
-		                 _("Something went wrong with the network:") + u' ' + \
-		                 str(exception) )
-		self.quit_session(force=True)
+		self.show_popup( _("Network Error") if not fatal else _("Fatal Network Error"), \
+		                 _("Something went wrong with the network:") + u'\n' + \
+		                 unicode(exception) )
+		if fatal:
+			self.quit_session(force=True)
 
 	def __cancel(self):
 		if NetworkInterface().isconnected():
@@ -131,6 +131,7 @@ class MultiplayerMenu(object):
 		@return bool, whether refresh worked"""
 		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
 		if self.games is None:
+			print 'games none, false'
 			return False
 		self.current.distributeInitialData({'gamelist' : map(lambda x: "%s (%u, %u)%s"%(x.get_map_name(), x.get_player_count(), x.get_player_limit(), " " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else ""), self.games)})
 		self.current.distributeData({'gamelist' : 0}) # select first map

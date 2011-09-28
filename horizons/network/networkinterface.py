@@ -26,7 +26,7 @@ from horizons.util import Color, DifficultySettings, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
-from horizons.network import CommandError, NetworkException, NotConnected
+from horizons.network import CommandError, NetworkException, NotConnected, FatalError
 
 
 import getpass
@@ -46,7 +46,7 @@ class NetworkInterface(object):
 		self.cbs_game_details_changed = []
 		self.cbs_game_prepare = []
 		self.cbs_game_starts = []
-		self.cbs_error = [] # cbs with 1 parameter which is an Exception instance
+		self.cbs_error = [] # callbacks on error that looks like this: error(exception, fatal=True)
 		self._client.register_callback("lobbygame_join",       self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_leave",      self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
@@ -72,6 +72,7 @@ class NetworkInterface(object):
 		"""Call in case constants like client address or client port changed.
 		@param connect: whether to connect after the data updated
 		@throws RuntimeError in case of invalid data or an NetworkException forwarded from connect"""
+
 		if self.isconnected():
 			self.disconnect()
 		self.__setup_client()
@@ -79,7 +80,7 @@ class NetworkInterface(object):
 			self.connect()
 
 	def __setup_client(self):
-		name = horizons.main.fife.get_uh_setting("Nickname")
+		name = self.__get_player_name()
 		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
 		clientaddress = None
 		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"), allow_zero=True)
@@ -89,6 +90,9 @@ class NetworkInterface(object):
 			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress)
 		except NetworkException, e:
 			raise RuntimeError(e)
+
+	def __get_player_name(self):
+		return horizons.main.fife.get_uh_setting("Nickname")
 
 	def connect(self):
 		"""
@@ -119,34 +123,34 @@ class NetworkInterface(object):
 		try:
 			game = self._client.creategame(mapname, maxplayers)
 		except NetworkException, e:
-			self._cb_error(e)
+			fatal = self._handle_exception(e)
 			return None
 		return self.game2mpgame(game)
 
 	def joingame(self, uuid):
+		"""Join a game with a certain uuid"""
 		i = 2
 		try:
-			while i < 10:
+			while i < 10: # try 10 different names
 				try:
 					self._client.joingame(uuid)
 					return True
 				except CommandError:
 					self.log.debug("NetworkInterface: failed to join")
-				self._client.disconnect()
-				self._client.name = getpass.getuser() + str(i)
-				self._client.connect()
-				i = i + 1
+				self.change_name( self.__get_player_name() + unicode(i), save=False )
+				i += 1
 			self._client.joingame(uuid)
 		except NetworkException, e:
-			self._cb_error(e)
+			self._handle_exception(e)
 		return False
 
 	def leavegame(self):
 		try:
 			self._client.leavegame()
 		except NetworkException, e:
-			self._cb_error(e)
-			return False
+			fatal = self._handle_exception(e)
+			if fatal:
+				return False
 		return True
 
 	def chat(self, message):
@@ -157,10 +161,11 @@ class NetworkInterface(object):
 			return False
 		return True
 
-	def change_name(self, new_nick):
+	def change_name(self, new_nick, save=True):
 		""" see network/client.py -> changename() for _important_ return values"""
-		horizons.main.fife.set_uh_setting("Nickname", new_nick)
-		horizons.main.fife.save_settings()
+		if save:
+			horizons.main.fife.set_uh_setting("Nickname", new_nick)
+			horizons.main.fife.save_settings()
 		try:
 			return self._client.changename(new_nick)
 		except NetworkException, e:
@@ -217,17 +222,18 @@ class NetworkInterface(object):
 			return
 		self.cbs_error.append(function)
 
-	def _cb_error(self, exception=u""):
+	def _cb_error(self, exception=u"", fatal=True):
 		for callback in self.cbs_error:
-			callback(exception)
+			callback(exception, fatal)
 
 	def get_active_games(self, only_this_version_allowed = False):
+		"""Returns a list of active games or None on fatal error"""
 		ret_mp_games = []
 		try:
 			games = self._client.listgames(onlyThisVersion=only_this_version_allowed)
 		except NetworkException, e:
-			self._cb_error(e)
-			return None
+			fatal = self._handle_exception(e)
+			return [] if not fatal else None
 		for game in games:
 			ret_mp_games.append(self.game2mpgame(game))
 			self.log.debug("NetworkInterface: found active game %s", game.mapname)
@@ -259,6 +265,18 @@ class NetworkInterface(object):
 
 	def get_clientversion(self):
 		return self._client.version
+
+
+	def _handle_exception(self, e):
+		try:
+			raise e
+		except FatalError, e:
+			self._cb_error(e, fatal=True)
+			return True
+		except NetworkException, e:
+			self._cb_error(e, fatal=False)
+			return False
+
 
 class MPGame(object):
 	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version):

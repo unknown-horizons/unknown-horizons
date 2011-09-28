@@ -242,11 +242,9 @@ class Server(object):
 		if game.playercnt == game.maxplayers:
 			self.call_callbacks("preparegame", game)
 
-
 	def deletegame(self, game):
 		logging.debug("[REMOVE] [%s] %s removed" % (game.uuid, game))
 		self.games.remove(game)
-
 
 	def onlistgames(self, peer, packet):
 		logging.debug("[LIST]")
