@@ -98,7 +98,11 @@ class NetworkInterface(object):
 		"""
 		@throws: NetworkError
 		"""
-		self._client.connect()
+		try:
+			self._client.connect()
+		except NetworkException, e:
+			self.disconnect()
+			raise e
 
 	def disconnect(self):
 		"""
@@ -116,7 +120,7 @@ class NetworkInterface(object):
 				while self._client.ping(): # ping receives packets
 					pass
 			except NetworkException, e:
-				self._cb_error(e)
+				self._handle_exception(e)
 
 	def creategame(self, mapname, maxplayers):
 		self.log.debug("[CREATEGAME] %s, %s", mapname, maxplayers)
@@ -157,7 +161,7 @@ class NetworkInterface(object):
 		try:
 			self._client.chat(message)
 		except NetworkException, e:
-			self._cb_error(e)
+			self._handle_exception(e)
 			return False
 		return True
 
@@ -169,7 +173,7 @@ class NetworkInterface(object):
 		try:
 			return self._client.changename(new_nick)
 		except NetworkException, e:
-			self._cb_error(e)
+			self._handle_exception(e)
 			return False
 
 	def register_chat_callback(self, function):
@@ -254,8 +258,8 @@ class NetworkInterface(object):
 			while self._client.ping(): # ping receives packets
 				pass
 		except NetworkException, e:
-			self._cb_error(e)
-			raise
+			self._handle_exception(e)
+			raise CommandError(e)
 		ret_list = self.received_packets
 		self.received_packets = []
 		return ret_list
@@ -272,6 +276,7 @@ class NetworkInterface(object):
 			raise e
 		except FatalError, e:
 			self._cb_error(e, fatal=True)
+			self.disconnect()
 			return True
 		except NetworkException, e:
 			self._cb_error(e, fatal=False)

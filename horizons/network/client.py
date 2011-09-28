@@ -107,7 +107,7 @@ class Client(object):
 		# wait for session id
 		packet = self.recv_packet([packets.cmd_error, packets.server.cmd_session])
 		if packet is None:
-			raise network.CommandError("No reply from server")
+			raise network.FatalError("No reply from server")
 		elif isinstance(packet[1], packets.cmd_error):
 			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.server.cmd_session):
@@ -118,9 +118,10 @@ class Client(object):
 	#-----------------------------------------------------------------------------
 
 	def disconnect(self, later = False):
+		""" disconnect should _never_ throw an exception """
 		self.mode = None
 		if self.serverpeer is None:
-			raise network.NotConnected()
+			return
 
 		if self.serverpeer.state == enet.PEER_STATE_DISCONNECTED:
 			self.serverpeer = None
@@ -139,7 +140,6 @@ class Client(object):
 					raise IOError("No packet from server")
 		except IOError:
 			self.log.debug("Error while disconnecting from server. Maybe server isn't answering any more")
-			self.reset()
 		self.reset()
 		self.log.debug("[DISCONNECT] done")
 
@@ -320,7 +320,7 @@ class Client(object):
 		self.send(packets.client.cmd_listgames(self.version if onlyThisVersion else -1, mapname, maxplayers))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gameslist])
 		if packet is None:
-			raise network.CommandError("No reply from server")
+			raise network.FatalError("No reply from server")
 		elif isinstance(packet[1], packets.cmd_error):
 			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.server.data_gameslist):
@@ -338,7 +338,7 @@ class Client(object):
 		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
-			raise network.CommandError("No reply from server")
+			raise network.FatalError("No reply from server")
 		elif isinstance(packet[1], packets.cmd_error):
 			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.server.data_gamestate):
@@ -359,7 +359,7 @@ class Client(object):
 		self.send(packets.client.cmd_joingame(uuid, self.version, self.name))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
-			raise network.CommandError("No reply from server")
+			raise network.FatalError("No reply from server")
 		elif isinstance(packet[1], packets.cmd_error):
 			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.server.data_gamestate):
@@ -380,7 +380,7 @@ class Client(object):
 		self.send(packets.client.cmd_leavegame())
 		packet = self.recv_packet([packets.cmd_error, packets.cmd_ok])
 		if packet is None:
-			raise network.CommandError("No reply from server")
+			raise network.FatalError("No reply from server")
 		elif isinstance(packet[1], packets.cmd_error):
 			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.cmd_ok):
