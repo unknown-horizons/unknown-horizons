@@ -1253,7 +1253,6 @@ msgstr "Unità"
 
 # 87%
 #: horizons/i18n/guitranslations.py:375
-#, fuzzy
 msgid "Balance"
 msgstr "Bilancio:"
 
@@ -1319,7 +1318,6 @@ msgstr "{F10} = Abilita/disabilita console"
 
 # 92%
 #: horizons/i18n/guitranslations.py:405
-#, fuzzy
 msgid "{F2} = Show player scores"
 msgstr "{R} = guarda punteggio player"
 
@@ -2569,7 +2567,6 @@ msgstr "Cinghiale"
 
 # 83%
 #: sqlite/Unit
-#, fuzzy
 msgid "Cattle"
 msgstr "bestiame"
 
