@@ -117,29 +117,40 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def disconnect(self, later = False):
+	def disconnect(self, server_may_disconnect = False, later = False):
 		""" disconnect should _never_ throw an exception """
 		self.mode = None
 		if self.serverpeer is None:
 			return
 
 		if self.serverpeer.state == enet.PEER_STATE_DISCONNECTED:
-			self.serverpeer = None
+			self.reset()
 			return
 
 		try:
-			if later:
-				self.serverpeer.disconnect_later()
-			else:
-				self.serverpeer.disconnect()
-			while True:
-				event = self.host.service(SERVER_TIMEOUT)
-				if event.type == enet.EVENT_TYPE_DISCONNECT:
-					break
-				elif event.type == enet.EVENT_TYPE_NONE:
-					raise IOError("No packet from server")
+			# wait for a disconnect event or empty event
+			if server_may_disconnect:
+				while True:
+					event = self.host.service(SERVER_TIMEOUT)
+					if event.type == enet.EVENT_TYPE_DISCONNECT:
+						break
+					elif event.type == enet.EVENT_TYPE_NONE:
+						break
+
+			# disconnect from server if we're still connected
+			if self.serverpeer.state != enet.PEER_STATE_DISCONNECTED:
+				if later:
+					self.serverpeer.disconnect_later()
+				else:
+					self.serverpeer.disconnect()
+				while True:
+					event = self.host.service(SERVER_TIMEOUT)
+					if event.type == enet.EVENT_TYPE_DISCONNECT:
+						break
+					elif event.type == enet.EVENT_TYPE_NONE:
+						raise IOError("No packet from server")
 		except IOError:
-			self.log.debug("Error while disconnecting from server. Maybe server isn't answering any more")
+			self.log.debug("[DISCONNECT] Error while disconnecting from server. Maybe server isn't answering any more")
 		self.reset()
 		self.log.debug("[DISCONNECT] done")
 
@@ -223,7 +234,7 @@ class Client(object):
 				raise network.CommandError(packet.errorstr)
 			elif isinstance(packet, packets.cmd_fatalerror):
 				self.log.error("[FATAL] Network message: %s" % (packet.errorstr))
-				self.disconnect()
+				self.disconnect(True)
 				raise network.FatalError(packet.errorstr)
 			return [event.peer, packet]
 

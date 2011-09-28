@@ -105,13 +105,7 @@ class NetworkInterface(object):
 			raise e
 
 	def disconnect(self):
-		"""
-		@throws: NetworkError
-		"""
-		try:
-			self._client.disconnect()
-		except NotConnected:
-			pass
+		self._client.disconnect()
 
 	def ping(self):
 		"""calls _client.ping until all packets are received"""
