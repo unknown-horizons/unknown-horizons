@@ -138,7 +138,10 @@ class Fife(ApplicationBase):
 
 				def update_value(modulename, entryname):
 					# retrieve values from loaded settings file
-					value = self._setting.get(modulename, entryname)
+					try:
+						value = self._setting.get(modulename, entryname)
+					except UnicodeEncodeError: # this can happen when unicode data is saved as str
+						value = "default"
 					user_config_parser.set(modulename, entryname, value)
 				# update known settings and unreferenced settings
 				for modulename, module in self._setting.entries.iteritems():

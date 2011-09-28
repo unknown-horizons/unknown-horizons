@@ -228,7 +228,7 @@ class Server(object):
 		if player.game is not None:
 			self.send(peer, packets.cmd_error("You can't create a game while in another game"))
 			return
-		player.name = packet.playername
+		player.name = unicode(packet.playername)
 		game = Game(packet, player)
 		logging.debug("[CREATE] uuid=%s, maxplayers=%d" % (game.uuid, game.maxplayers))
 		self.games.append(game)
@@ -341,14 +341,14 @@ class Server(object):
 
 
 	def preparegame(self, game):
-		logging.debug("[PREPARE] %s; players: %s" % (game.uuid, [str(i) for i in game.players]))
+		logging.debug("[PREPARE] %s; players: %s" % (game.uuid, [unicode(i) for i in game.players]))
 		game.state = Game.State.Prepare
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_preparegame())
 
 
 	def startgame(self, game):
-		logging.debug("[START] %s; players: %s" % (game.uuid, [str(i) for i in game.players]))
+		logging.debug("[START] %s; players: %s" % (game.uuid, [unicode(i) for i in game.players]))
 		game.state = Game.State.Running
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_startgame())
