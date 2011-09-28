@@ -130,7 +130,7 @@ class Server(object):
 		self.host.flush()
 
 
-	def disconnect(self, peer, later = False):
+	def disconnect(self, peer, later = True):
 		logging.debug("Disconnecting client %s" % (peer.address))
 		try:
 			if later:
@@ -141,14 +141,22 @@ class Server(object):
 			peer.reset()
 
 
+	def error(self, peer, message):
+		self.send(peer, packets.cmd_error(message))
+
+
+	def fatalerror(self, peer, message, later = True):
+		self.send(peer, packets.cmd_fatalerror(message))
+		self.disconnect(peer, later)
+
+
 	def onconnect(self, event):
 		peer = event.peer
 		logging.debug("[CONNECT] New Client from %s" % (peer.address))
 		# disable that check as peer.data may be uninitialized which segfaults then
 		#if self.players.has_key(peer.data):
 		#	logging.warning("Already known player %s!" % (peer.address))
-		#	self.send(event.peer, packets.cmd_fatalerror("You can't connect more than once"))
-		#	self.disconnect(event.peer, True)
+		#	self.fatalerror(event.peer, "You can't connect more than once")
 		#	return
 		player = Player(event.peer, self.generate_session_id())
 		# store session id inside enet.peer.data
@@ -176,8 +184,7 @@ class Server(object):
 		# check player is known by server
 		if not self.players.has_key(peer.data):
 			logging.warning("Packet from unknown player %s!" % (peer.address))
-			self.send(event.peer, packets.cmd_fatalerror("I don't know you"))
-			self.disconnect(event.peer, True)
+			self.fatalerror(event.peer, "I don't know you")
 			return
 
 		player = self.players[peer.data]
@@ -190,15 +197,13 @@ class Server(object):
 		packet = packets.unserialize(event.packet.data)
 		if packet is None:
 			logging.warning("Unknown packet from %s!" % (peer.address))
-			self.send(event.peer, packets.cmd_fatalerror("Unknown packet. Maybe old client?"))
-			self.disconnect(event.peer, True)
+			self.fatalerror(event.peer, "Unknown packet. Maybe old client?")
 			return
 
 		# session id check
 		if packet.sid != player.sid:
 			logging.warning("Invalid session id for player %s (%s vs %s)!" % (peer.address, packet.sid, player.sid))
-			self.send(event.peer, packets.cmd_fatalerror("Invalid/Unknown session"))
-			self.disconnect(event.peer, True) # this will trigger ondisconnect() for cleanup
+			self.fatalerror(event.peer, "Invalid/Unknown session") # this will trigger ondisconnect() for cleanup
 			return
 
 		if not self.callbacks.has_key(packet.__class__):
@@ -214,21 +219,23 @@ class Server(object):
 
 
 	def onfatalerror(self, peer, packet):
+		# we shouldn't receive any fatala errors from client
+		# so just disconnect them
 		logging.debug("[FATAL] Client Message: %s" % (packet.errorstr))
-		self.disconnect(peer, True)
+		self.disconnect(peer)
 
 
 	def oncreategame(self, peer, packet):
 		if not len(packet.playername):
-			self.send(peer, packets.cmd_error("You must have a non empty name"))
+			self.error(peer, "You must have a non empty name")
 			return
 		player = self.players[peer.data]
 		if player.game is not None:
-			self.send(peer, packets.cmd_error("You can't create a game while in another game"))
+			self.error(peer, "You can't create a game while in another game")
 			return
 		player.name = unicode(packet.playername)
 		game = Game(packet, player)
-		logging.debug("[CREATE] uuid=%s, maxplayers=%d" % (game.uuid, game.maxplayers))
+		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
 		self.games.append(game)
 		self.send(peer, packets.server.data_gamestate(game))
 
@@ -237,7 +244,7 @@ class Server(object):
 
 
 	def deletegame(self, game):
-		logging.debug("[REMOVE] Game %s removed" % (game.uuid))
+		logging.debug("[REMOVE] [%s] %s removed" % (game.uuid, game))
 		self.games.remove(game)
 
 
@@ -260,13 +267,12 @@ class Server(object):
 
 
 	def onjoingame(self, peer, packet):
-		logging.debug("[JOIN] name=%s, uuid=%s" % (packet.playername, packet.uuid))
 		if not len(packet.playername):
-			self.send(peer, packets.cmd_error("You must have a non empty name"))
+			self.error(peer, "You must have a non empty name")
 			return
 		player = self.players[peer.data]
 		if player.game is not None:
-			self.send(peer, packets.cmd_error("You can't join a game while in another game"))
+			self.error(peer, "You can't join a game while in another game")
 			return
 
 		game = None
@@ -278,13 +284,13 @@ class Server(object):
 			game = _game
 			break
 		if game is None:
-			self.send(peer, packets.cmd_error("Unknown game"))
+			self.error(peer, "Unknown game")
 			return
 		if game.state is not Game.State.Open:
-			self.send(peer, packets.cmd_error("Game has already started. No more joining"))
+			self.error(peer, "Game has already started. No more joining")
 			return
 		elif game.maxplayers == len(game.players):
-			self.send(peer, packets.cmd_error("Game is full"))
+			self.error(peer, "Game is full")
 			return
 
 		# make sure player names are unique
@@ -294,9 +300,10 @@ class Server(object):
 				unique = False
 				break
 		if not unique:
-			self.send(peer, packets.cmd_error("There's already a player with your name inside this game. Change your name"))
+			self.error(peer, "There's already a player with your name inside this game. Change your name")
 			return
 
+		logging.debug("[JOIN] [%s] %s joined %s" % (game.uuid, player, game))
 		player.name = packet.playername
 		game.add_player(player)
 		for _player in game.players:
@@ -310,7 +317,7 @@ class Server(object):
 	def onleavegame(self, peer, packet):
 		player = self.players[peer.data]
 		if player.game is None:
-			self.send(peer, packets.cmd_error("You are not inside a game"))
+			self.error(peer, "You are not inside a game")
 			return
 		self.call_callbacks("leavegame", player.game, player)
 		self.send(peer, packets.cmd_ok())
@@ -320,7 +327,7 @@ class Server(object):
 		if game.state is not Game.State.Open:
 			self.call_callbacks('terminategame', game, player)
 			return
-		logging.debug("[LEAVE] Player %s leaves game %s" % (player.name, game.uuid))
+		logging.debug("[LEAVE] [%s] %s left %s" % (game.uuid, player, game))
 		game.remove_player(player)
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
@@ -329,24 +336,23 @@ class Server(object):
 
 
 	def terminategame(self, game, player = None):
-		logging.debug("[TERMINATE] %s (by %s)" % (game.uuid, player.name if player is not None else None))
+		logging.debug("[TERMINATE] [%s] (by %s)" % (game.uuid, player if player is not None else None))
 		for _player in game.players:
 			if _player.peer.state == enet.PEER_STATE_CONNECTED:
-				self.send(_player.peer, packets.cmd_error("I feel like a bad bunny but one player has terminated his game and this game is programmed to terminate the whole game now. Sorry :*("))
-				self.disconnect(_player.peer, True)
+				self.fatalerror(_player.peer, "I feel like a bad bunny but one player has terminated his game and this game is programmed to terminate the whole game now. Sorry :*(")
 		game.clear()
 		self.call_callbacks('deletegame', game)
 
 
 	def preparegame(self, game):
-		logging.debug("[PREPARE] %s; players: %s" % (game.uuid, [unicode(i) for i in game.players]))
+		logging.debug("[PREPARE] [%s] Players: %s" % (game.uuid, [unicode(i) for i in game.players]))
 		game.state = Game.State.Prepare
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_preparegame())
 
 
 	def startgame(self, game):
-		logging.debug("[START] %s; players: %s" % (game.uuid, [unicode(i) for i in game.players]))
+		logging.debug("[START] [%s] Players: %s" % (game.uuid, [unicode(i) for i in game.players]))
 		game.state = Game.State.Running
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_startgame())
@@ -354,14 +360,14 @@ class Server(object):
 
 	def onchat(self, peer, packet):
 		if not len(packet.chatmsg):
-			self.send(peer, packets.cmd_error("Chat message cannot be empty"))
+			self.error(peer, "Chat message cannot be empty")
 			return
 		player = self.players[peer.data]
 		if player.game is None:
-			self.send(peer, packets.cmd_error("Chatting is only allowed inside the lobby of a game"))
+			self.error(peer, "Chatting is only allowed inside the lobby of a game")
 			return
 		game = player.game
-		logging.debug("[CHAT] [%s] %s: %s" % (game.uuid, player.name, packet.chatmsg))
+		logging.debug("[CHAT] [%s] %s: %s" % (game.uuid, player, packet.chatmsg))
 		# don't send packets to already started games
 		if game.state is not Game.State.Open:
 			return
@@ -370,9 +376,9 @@ class Server(object):
 
 
 	def onchangename(self, peer, packet):
-		# NOTE: that event _only_ happens inside _if_ player is inside a lobby
+		# NOTE: that event _only_ happens inside a lobby
 		if not len(packet.playername):
-			self.send(peer, packets.cmd_error("You must have a non empty name"))
+			self.error(peer, "You must have a non empty name")
 			return
 		player = self.players[peer.data]
 		if player.game is None:
@@ -395,7 +401,7 @@ class Server(object):
 				unique = False
 				break
 		if not unique:
-			self.send(peer, packets.cmd_error("There's already a player with your name inside this game. Unable to change your name"))
+			self.error(peer, "There's already a player with your name inside this game. Unable to change your name")
 			return
 
 		logging.debug("[CHANGENAME] [%s] %s -> %s" % (game.uuid, player.name, packet.playername))
@@ -409,7 +415,7 @@ class Server(object):
 	def gamedata(self, peer, data):
 		player = self.players[peer.data]
 		game = player.game
-		#logging.debug("[GAMEDATA] [%s] %s" % (game.uuid, player.name))
+		#logging.debug("[GAMEDATA] [%s] %s" % (game.uuid, player))
 		for _player in game.players:
 			if _player is player:
 				continue
@@ -421,7 +427,7 @@ class Server(object):
 		game = player.game
 		if game is None:
 			return
-		logging.debug("[PREPARED] %s" % (player.name))
+		logging.debug("[PREPARED] [%s] %s" % (game.uuid, player))
 		player.ready = True
 		readycount = 0
 		for _player in game.players:

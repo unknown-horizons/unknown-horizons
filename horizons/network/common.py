@@ -85,7 +85,7 @@ class Player():
 			return NotImplemented
 		return not self.__eq__(other)
 
-	# return only relevant data to the player
+	# for pickle: return only relevant data to the player
 	def __getstate__(self):
 		return { 'sid': self.sid, 'address': None, 'name': self.name }
 
@@ -99,6 +99,13 @@ class Game():
 		Open = 0
 		Prepare = 1
 		Running = 2
+
+		def __init__(self, state = Open):
+			self.state = state
+
+		def __str__(self):
+			strvals = [ "Open", "Prepare", "Running" ]
+			return "%s" % (strvals[self.state])
 
 	def __init__(self, packet, creator):
 		assert(isinstance(packet, packets.client.cmd_creategame))
@@ -132,6 +139,9 @@ class Game():
 			player.game = None
 		del self.players[:]
 		self.playercnt = 0
+
+	def __str__(self):
+		return "Game(uuid=%s;maxplayers=%d;playercnt=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, Game.State(self.state))
 
 #-----------------------------------------------------------------------------
 
