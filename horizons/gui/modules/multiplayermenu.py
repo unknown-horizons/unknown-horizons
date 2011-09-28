@@ -114,10 +114,12 @@ class MultiplayerMenu(object):
 		"""Error callback"""
 		if fatal and self.session is not None:
 			self.session.timer.ticks_per_second = 0
-		self.show_popup( _("Network Error") if not fatal else _("Fatal Network Error"), \
+		if not fatal:
+			self.show_popup(_("Error"), unicode(exception))
+		else:
+			self.show_popup(_("Fatal Network Error"), \
 		                 _("Something went wrong with the network:") + u'\n' + \
 		                 unicode(exception) )
-		if fatal:
 			self.quit_session(force=True)
 
 	def __cancel(self):
