@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-12 02:26+0200\n"
-"PO-Revision-Date: 2011-09-27 23:07+0200\n"
+"PO-Revision-Date: 2011-09-27 23:08+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -147,7 +147,7 @@ msgstr ""
 
 #. savegamename already exists
 #: horizons/gui/gui.py:266
-#, python-format
+#, python-format, fuzzy
 msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
@@ -199,6 +199,7 @@ msgid ""
 msgstr "(finally use 'version' here. also split in two) ~chris"
 
 #: horizons/gui/gui.py:436
+#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
 msgstr ""
 "(discard caps, instead use headline style, remove \n"
@@ -276,10 +277,12 @@ msgid "Version differs!"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:160
+#, fuzzy
 msgid "Map: "
 msgstr "(remove spacing) ~chris"
 
 #: horizons/gui/modules/multiplayermenu.py:161
+#, fuzzy
 msgid "Players: "
 msgstr "(remove spacing) ~chris"
 
