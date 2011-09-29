@@ -26,7 +26,7 @@ from horizons.network.common import *
 from horizons import network
 from horizons.network import packets, find_enet_module
 
-enet = find_enet_module()
+enet = find_enet_module(client = False)
 
 MAX_PEERS = 4095
 CONNECTION_TIMEOUT = 500

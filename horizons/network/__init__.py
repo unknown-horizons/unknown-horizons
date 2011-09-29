@@ -23,7 +23,7 @@
 import platform
 import os
 
-def find_enet_module():
+def find_enet_module(client = True):
 	# Try to find installed version first
 	try:
 		import enet
@@ -52,7 +52,11 @@ def find_enet_module():
 		arch_module = __import__(dir, globals(), locals(), fromlist=["enet"])
 		return arch_module.enet
 	except ImportError:
-		pass
+		# ternary operator doesn't work
+		if client:
+			pass
+		else:
+			raise
 
 	# we can't raise an ImportError here, because the game should work even when
 	# there's no enet.
