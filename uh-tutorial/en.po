@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-05 22:38+0200\n"
 "PO-Revision-Date: 2011-09-26 22:35+0200\n"
-"Last-Translator: Anonymous Pootle User\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.1.5\n"
 
+# Hello! This language project does not require you to translate strings. In fact, it will be considered bad to have translated strings in here.
+# 
+# Please use this project as a way to suggest how our source code strings could be improved. Remember to leave your name somewhere in that translation, too, so that we might contact you.
+# 
+# We will try to review things that happen in this project on a regular basis. If you think there is an urgent need for improvement, please contact us on IRC, our forums or per mail!
 #: po/tutorial.py:1
 #, fuzzy
 msgid "Tutorial"
