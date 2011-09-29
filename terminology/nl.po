@@ -1468,7 +1468,6 @@ msgstr "onderwijs"
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
 # 75%
-#, fuzzy
 msgid "clay"
 msgstr "klei"
 
