@@ -42,7 +42,6 @@ msgid "Do you want to continue?"
 msgstr "Vill du fortsätta?"
 
 #: horizons/engine.py:186
-#, fuzzy
 msgid "System default"
 msgstr "Systemstandard"
 
@@ -51,7 +50,6 @@ msgid "Warning"
 msgstr "Varning"
 
 #: horizons/engine.py:211
-#, fuzzy
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
@@ -93,7 +91,6 @@ msgid "Networking couldn't be initialised with the current configuration."
 msgstr "Nätverk kunde inte initieras med den aktuella konfigurationen."
 
 #: horizons/engine.py:541
-#, fuzzy
 msgid "Check the data you entered in the Network section."
 msgstr "Kontrollera datan du skrev in under Nätverk."
 
@@ -417,7 +414,6 @@ msgid "Confirm order"
 msgstr "Verkställ order"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
-#, fuzzy
 msgid "Build related fields"
 msgstr "Bygg besläktade fält"
 
@@ -463,7 +459,6 @@ msgstr "Konto"
 
 #: horizons/gui/tabs/mainsquaretabs.py:110
 #: horizons/gui/tabs/overviewtab.py:353 horizons/i18n/guitranslations.py:201
-#, fuzzy
 msgid "Settler overview"
 msgstr "Nybyggaröversikt"
 
@@ -530,7 +525,7 @@ msgstr "Valda Enheter"
 
 #: horizons/gui/widgets/buysellinventory.py:84
 #: horizons/gui/widgets/inventory.py:103
-#, python-format, fuzzy
+#, python-format, 
 msgid "Limit: %st per slot"
 msgstr "Begränsa: %st per plats"
 
@@ -897,7 +892,6 @@ msgid "Pause"
 msgstr "Pausa"
 
 #: horizons/i18n/guitranslations.py:155
-#, fuzzy
 msgid "Resume"
 msgstr "Återuppta"
 
@@ -987,7 +981,6 @@ msgid "Build fields"
 msgstr "Bygg fält"
 
 #: horizons/i18n/guitranslations.py:200
-#, fuzzy
 msgid "Average happiness:"
 msgstr "Genomsnittlig lycka:"
 
@@ -1059,7 +1052,6 @@ msgstr "Betalda skatter"
 #: horizons/i18n/guitranslations.py:231 horizons/i18n/guitranslations.py:232
 #: horizons/i18n/guitranslations.py:250 horizons/i18n/guitranslations.py:251
 #: horizons/i18n/guitranslations.py:285 horizons/i18n/guitranslations.py:288
-#, fuzzy
 msgid "Tax rate"
 msgstr "Skattesats"
 
@@ -1138,7 +1130,6 @@ msgstr "Invånare"
 
 # bosättning eller kanske koloni?
 #: horizons/i18n/guitranslations.py:293
-#, fuzzy
 msgid "Build settlement:"
 msgstr "Bygg bosättning:"
 
@@ -1148,7 +1139,6 @@ msgstr "Tryck för att ändra namnet på fartyget."
 
 # eller koloni? se 313.
 #: horizons/i18n/guitranslations.py:296
-#, fuzzy
 msgid "Build settlement"
 msgstr "Bygg bosättning"
 
@@ -1225,7 +1215,6 @@ msgid "Continue playing"
 msgstr "Fortsätt spela"
 
 #: horizons/i18n/guitranslations.py:347
-#, fuzzy
 msgid "Choose this scenario"
 msgstr "Välj det här scenariot"
 
@@ -1581,7 +1570,6 @@ msgstr "Gå med i det valda spelet"
 
 #: horizons/i18n/guitranslations.py:480 horizons/i18n/guitranslations.py:516
 #: horizons/i18n/guitranslations.py:528
-#, fuzzy
 msgid "Exit to main menu"
 msgstr "Avsluta till huvudmenyn"
 
