@@ -35,6 +35,7 @@ from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
 from horizons.gui.tabs import EnemyBuildingOverviewTab
 from horizons.command.building import Build
+from horizons.world.component.storagecomponent import StorageComponent
 
 
 class BasicBuilding(ConcretObject):
@@ -116,7 +117,7 @@ class BasicBuilding(ConcretObject):
 
 	def get_payout(self):
 		"""gets the payout from the settlement in form of it's running costs"""
-		self.owner.inventory.alter(RES.GOLD_ID, -self.running_costs)
+		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -self.running_costs)
 
 	def remove(self):
 		"""Removes the building"""

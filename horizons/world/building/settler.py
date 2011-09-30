@@ -34,6 +34,7 @@ from horizons.command.building import Build
 from horizons.util import decorators
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
+from horizons.world.component.storagecomponent import StorageComponent
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -67,7 +68,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def __init(self, happiness = None, loading = False, last_tax_payed=0):
 		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
 		if happiness is not None:
-			self.inventory.alter(RES.HAPPINESS_ID, happiness)
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data(loading = loading)
 		self.last_tax_payed = last_tax_payed
 
@@ -107,9 +108,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			resources[resource] = amount
 
 		for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
-			self.inventory.add_resource_slot(res, abs(amount))
+			self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 			if res in resources:
-				self.inventory.alter(res, resources[res])
+				self.get_component(StorageComponent).inventory.alter(res, resources[res])
 
 		upgrade_material_production.add_production_finished_listener(self.level_up)
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
@@ -133,8 +134,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	@property
 	def happiness(self):
 		difficulty = self.owner.difficulty
-		result = int(round(difficulty.extra_happiness_constant + self.inventory[RES.HAPPINESS_ID] * difficulty.happiness_multiplier))
-		return max(0, min(result, self.inventory.get_limit(RES.HAPPINESS_ID)))
+		result = int(round(difficulty.extra_happiness_constant + self.get_component(StorageComponent).inventory[RES.HAPPINESS_ID] * difficulty.happiness_multiplier))
+		return max(0, min(result, self.get_component(StorageComponent).inventory.get_limit(RES.HAPPINESS_ID)))
 
 	@property
 	def name(self):
@@ -191,7 +192,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
 		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
 
-		self.settlement.owner.inventory.alter(RES.GOLD_ID, real_taxes)
+		self.settlement.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, real_taxes)
 		self.last_tax_payed = real_taxes
 
 		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
@@ -203,7 +204,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# to simulate the more dynamic, currently implemented approach (where every event changes
 		# the happiness), we simulate discontent of taxes by this:
 		happiness_decrease -= 8
-		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
+		self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
 
 		self._changed()
 		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, real_taxes, \
@@ -245,12 +246,12 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
 			owner_inventory = self._get_owner_inventory()
-			upgrade_material_production = SingleUseProduction(self.inventory, owner_inventory, \
+			upgrade_material_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \
 			                                                  upgrade_material_prodline)
 			upgrade_material_production.add_production_finished_listener(self.level_up)
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
-				self.inventory.add_resource_slot(res, abs(amount))
+				self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 			self.add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 			if not self.upgrade_allowed:
@@ -268,7 +269,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# notify owner about new level
 		self.owner.notify_settler_reached_level(self)
 		# reset happiness value for new level
-		self.inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
+		self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 		self._changed()
 
 	def level_down(self):
@@ -288,7 +289,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.level -= 1
 			self._update_level_data()
 			# reset happiness value for new level
-			self.inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 

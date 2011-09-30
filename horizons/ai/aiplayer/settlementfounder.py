@@ -28,6 +28,7 @@ from horizons.ai.aiplayer.mission.preparefoundationship import PrepareFoundation
 from horizons.ai.aiplayer.landmanager import LandManager
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
+from horizons.world.component.storagecomponent import StorageComponent
 
 class SettlementFounder(object):
 	"""This class handles the settlement founding activities of an AI player."""
@@ -60,7 +61,7 @@ class SettlementFounder(object):
 							usable = False
 							break
 					if usable:
-						for resource_id, amount in object.inventory:
+						for resource_id, amount in object.get_component(StorageComponent).inventory:
 							resources[resource_id] += amount
 				continue
 			if tile.settlement is not None:
@@ -121,15 +122,15 @@ class SettlementFounder(object):
 
 	def _have_settlement_starting_resources(self, ship, settlement, min_money, min_resources):
 		"""Returns a boolean showing whether we have enough resources to found a new settlement."""
-		if self.owner.inventory[RES.GOLD_ID] < min_money:
+		if self.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] < min_money:
 			return False
 
-		for res, amount in ship.inventory:
+		for res, amount in ship.get_component(StorageComponent).inventory:
 			if res in min_resources and min_resources[res] > 0:
 				min_resources[res] = max(0, min_resources[res] - amount)
 
 		if settlement:
-			for res, amount in settlement.inventory:
+			for res, amount in settlement.get_component(StorageComponent).inventory:
 				if res in min_resources and min_resources[res] > 0:
 					min_resources[res] = max(0, min_resources[res] - amount)
 

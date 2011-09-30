@@ -23,13 +23,13 @@ import horizons.main
 
 from horizons.constants import PLAYER
 from horizons.world.playerstats import PlayerStats
-from horizons.world.storageholder import StorageHolder
-from horizons.world.storage import PositiveStorage
 from horizons.util import WorldObject, Callback, Color, DifficultySettings
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
+from horizons.world.componentholder import ComponentHolder
+from horizons.world.component.storagecomponent import PositiveStorageComponent
 
-class Player(StorageHolder, WorldObject):
+class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
@@ -44,11 +44,12 @@ class Player(StorageHolder, WorldObject):
 		"""
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
+		self.add_component(PositiveStorageComponent)
 		self.__init(name, color, difficulty_level)
 
 		if inventory:
 			for res, value in inventory.iteritems():
-				self.inventory.alter(res, value)
+				self.get_component(PositiveStorageComponent).inventory.alter(res, value)
 
 	def __init(self, name, color, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
@@ -74,9 +75,6 @@ class Player(StorageHolder, WorldObject):
 		"""Calculate settlements dynamically to save having a redundant list here"""
 		return [ settlement for settlement in self.session.world.settlements if \
 		         settlement.owner == self ]
-
-	def create_inventory(self):
-		self.inventory = PositiveStorage()
 
 	def save(self, db):
 		super(Player, self).save(db)

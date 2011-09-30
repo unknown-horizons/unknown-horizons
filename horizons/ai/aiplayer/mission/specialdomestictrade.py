@@ -23,6 +23,7 @@ from horizons.ai.aiplayer.mission import ShipMission
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.ext.enum import Enum
+from horizons.world.component.storagecomponent import StorageComponent
 
 class SpecialDomesticTrade(ShipMission):
 	"""
@@ -78,9 +79,9 @@ class SpecialDomesticTrade(ShipMission):
 
 	def _load_resources(self):
 		source_resource_manager = self.source_settlement_manager.resource_manager
-		source_inventory = self.source_settlement_manager.settlement.inventory
+		source_inventory = self.source_settlement_manager.settlement.get_component(StorageComponent).inventory
 		destination_resource_manager = self.destination_settlement_manager.resource_manager
-		destination_inventory = self.destination_settlement_manager.settlement.inventory
+		destination_inventory = self.destination_settlement_manager.settlement.get_component(StorageComponent).inventory
 
 		options = []
 		for resource_id, limit in destination_resource_manager.resource_requirements.iteritems():
@@ -90,7 +91,7 @@ class SpecialDomesticTrade(ShipMission):
 				continue # the source settlement doesn't have a surplus of the resource
 
 			price = self.owner.session.db.get_res_value(resource_id)
-			tradable_amount = min(self.ship.inventory.get_limit(resource_id), limit - destination_inventory[resource_id], \
+			tradable_amount = min(self.ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id], \
 				source_inventory[resource_id] - source_resource_manager.resource_requirements[resource_id])
 			options.append((tradable_amount * price, tradable_amount, resource_id))
 

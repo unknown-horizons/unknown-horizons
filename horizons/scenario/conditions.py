@@ -25,6 +25,7 @@ from horizons.constants import BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.util.worldobject import WorldObject
+from horizons.world.component.storagecomponent import StorageComponent
 
 
 # event conditions to specify at check_events()
@@ -78,11 +79,11 @@ def settler_level_greater(session, limit):
 
 def player_gold_greater(session, limit):
 	"""Returns whether the player has more gold then limit"""
-	return (session.world.player.inventory[RES.GOLD_ID] > limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] > limit)
 
 def player_gold_less(session, limit):
 	"""Returns whether the player has less gold then limit"""
-	return (session.world.player.inventory[RES.GOLD_ID] < limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] < limit)
 
 def settlement_balance_greater(session, limit):
 	"""Returns whether at least one settlement of player has a balance > limit"""
@@ -112,16 +113,16 @@ def building_num_of_type_greater(session, building_class, limit):
 
 def player_res_stored_greater(session, res, limit):
 	"""Returns whether all settlements of player combined have more than limit of res"""
-	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) > limit)
+	return (sum(settlement.get_component(StorageComponent).inventory[res] for settlement in _get_player_settlements(session)) > limit)
 
 def player_res_stored_less(session, res, limit):
 	"""Returns whether all settlements of player combined have less than limit of res"""
-	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) < limit)
+	return (sum(settlement.get_component(StorageComponent).inventory[res] for settlement in _get_player_settlements(session)) < limit)
 
 def settlement_res_stored_greater(session, res, limit):
 	"""Returs whether at least one settlement of player has more than limit of res"""
 	return any(settlement for settlement in _get_player_settlements(session) if \
-	           settlement.inventory[res] > limit)
+	           settlement.get_component(StorageComponent).inventory[res] > limit)
 
 def player_total_earnings_greater(session, total):
 	"""Returns whether the player has earned more then 'total' money with trading

@@ -22,18 +22,19 @@
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.util.python import decorators
 from horizons.constants import RES
+from horizons.world.component.storagecomponent import StorageComponent
 
 class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 	def get_personality_name(self):
 		return 'StorageSpaceGoal'
 
 	def _need_more_storage(self):
-		limit = self.settlement.inventory.get_limit(RES.FOOD_ID)
+		limit = self.settlement.get_component(StorageComponent).inventory.get_limit(RES.FOOD_ID)
 		if limit >= self.personality.max_required_storage_space:
 			return False
 		important_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
 		for resource_id in important_resources:
-			if self.settlement.inventory[resource_id] + self.personality.full_storage_threshold >= limit:
+			if self.settlement.get_component(StorageComponent).inventory[resource_id] + self.personality.full_storage_threshold >= limit:
 				return True
 		return False
 

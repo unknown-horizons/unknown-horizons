@@ -28,6 +28,7 @@ from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab,
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.production.producer import ProducerBuilding
+from horizons.world.component.storagecomponent import StorageComponent
 
 class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
@@ -39,18 +40,16 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
-		self.inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
-
-	def create_inventory(self):
-		self.inventory = self.settlement.inventory
-		self.inventory.add_change_listener(self._changed)
+		self.get_component(StorageComponent).inventory = self.settlement.get_component(StorageComponent).inventory
+		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
+		self.get_component(StorageComponent).inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 
 	def remove(self):
 		# this shouldn't be absolutely necessary since the changelistener uses weak references
-		self.inventory.remove_change_listener(self._changed)
+		self.get_component(StorageComponent).inventory.remove_change_listener(self._changed)
 		self.owner_inventory.discard_change_listener(self._changed)
 
-		self.inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
+		self.get_component(StorageComponent).inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()
 
 

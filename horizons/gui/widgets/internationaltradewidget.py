@@ -25,6 +25,7 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.util import Callback
+from horizons.world.component.storagecomponent import StorageComponent
 
 class InternationalTradeWidget(object):
 	log = logging.getLogger("gui.internationaltradewidget")
@@ -89,7 +90,7 @@ class InternationalTradeWidget(object):
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
 
 			inv = self.widget.findChild(name='inventory_ship')
-			inv.init(self.instance.session.db, self.instance.inventory)
+			inv.init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
 			self.widget.adaptLayout()

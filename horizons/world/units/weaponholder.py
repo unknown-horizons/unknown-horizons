@@ -31,6 +31,7 @@ from horizons.world.component.stancecomponent import HoldGroundStance, Aggressiv
 	NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
+from horizons.world.component.storagecomponent import StorageComponent
 
 import gc
 
@@ -167,11 +168,11 @@ class WeaponHolder(object):
 		returns the number of weapons that were not equipped
 		"""
 		while number:
-			if self.inventory.alter(weapon_id, -1) == 0:
+			if self.get_component(StorageComponent).inventory.alter(weapon_id, -1) == 0:
 				# try to decrease number from inventory
 				if not self.add_weapon_to_storage(weapon_id):
 					# if not added, put back in inventory and break
-					self.inventory.alter(weapon_id, 1)
+					self.get_component(StorageComponent).inventory.alter(weapon_id, 1)
 					break
 			else:
 				break
@@ -187,7 +188,7 @@ class WeaponHolder(object):
 		while number:
 			if self.remove_weapon_from_storage(weapon_id):
 				# try to remove from weapon storage
-				if self.inventory.alter(weapon_id, 1) == 1:
+				if self.get_component(StorageComponent).inventory.alter(weapon_id, 1) == 1:
 					# if not added to holder inventory move back to storage and break
 					self.add_weapon_to_storage(weapon_id)
 					break

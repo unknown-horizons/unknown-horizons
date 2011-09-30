@@ -22,6 +22,7 @@
 from horizons.util import WorldObject
 from horizons.constants import RES, TRADER
 from horizons.scheduler import Scheduler
+from horizons.world.component.storagecomponent import StorageComponent
 
 class TradePost(object):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
@@ -91,15 +92,15 @@ class TradePost(object):
 		@return bool, whether we did buy it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.buy_list or \
-		   self.owner.inventory[RES.GOLD_ID] < price or \
-		   self.inventory.get_free_space_for(res) < amount or \
-		   amount + self.inventory[res] > self.buy_list[res]:
+		   self.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] < price or \
+		   self.get_component(StorageComponent).inventory.get_free_space_for(res) < amount or \
+		   amount + self.get_component(StorageComponent).inventory[res] > self.buy_list[res]:
 			return False
 
 		else:
-			remnant = self.owner.inventory.alter(RES.GOLD_ID, -price)
+			remnant = self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -price)
 			assert remnant == 0
-			remnant = self.inventory.alter(res, amount)
+			remnant = self.get_component(StorageComponent).inventory.alter(res, amount)
 			assert remnant == 0
 			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
 			self.total_expenses += amount*price
@@ -114,14 +115,14 @@ class TradePost(object):
 		@return bool, whether we did sell it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.sell_list or \
-			 self.inventory[res] < amount or \
-			 self.inventory[res] - amount < self.sell_list[res]:
+			 self.get_component(StorageComponent).inventory[res] < amount or \
+			 self.get_component(StorageComponent).inventory[res] - amount < self.sell_list[res]:
 			return False
 
 		else:
-			remnant = self.owner.inventory.alter(RES.GOLD_ID, price)
+			remnant = self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, price)
 			assert remnant == 0
-			remnant = self.inventory.alter(res, -amount)
+			remnant = self.get_component(StorageComponent).inventory.alter(res, -amount)
 			assert remnant == 0
 			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
 			self.total_income += amount*price
@@ -138,21 +139,21 @@ class TradePost(object):
 		assert price > 0
 
 		# can't sell more than what we have
-		amount = min(amount, self.inventory[resource_id])
+		amount = min(amount, self.get_component(StorageComponent).inventory[resource_id])
 		# can't sell more than the ship can fit in its inventory
-		amount = min(amount, ship.inventory.get_free_space_for(resource_id))
+		amount = min(amount, ship.get_component(StorageComponent).inventory.get_free_space_for(resource_id))
 		# can't sell more than the ship's owner can afford
-		amount = min(amount, ship.owner.inventory[RES.GOLD_ID] // price)
+		amount = min(amount, ship.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price)
 		# can't sell more than we are trying to sell according to the settings
-		amount = min(amount, self.inventory[resource_id] - self.sell_list[resource_id])
+		amount = min(amount, self.get_component(StorageComponent).inventory[resource_id] - self.sell_list[resource_id])
 		if amount <= 0:
 			return 0
 
 		total_price = price * amount
-		assert self.owner.inventory.alter(RES.GOLD_ID, total_price) == 0
-		assert ship.owner.inventory.alter(RES.GOLD_ID, -total_price) == 0
-		assert self.inventory.alter(resource_id, -amount) == 0
-		assert ship.inventory.alter(resource_id, amount) == 0
+		assert self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, total_price) == 0
+		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -total_price) == 0
+		assert self.get_component(StorageComponent).inventory.alter(resource_id, -amount) == 0
+		assert ship.get_component(StorageComponent).inventory.alter(resource_id, amount) == 0
 		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_income += total_price
 		return amount
@@ -167,21 +168,21 @@ class TradePost(object):
 		assert price > 0
 
 		# can't buy more than the ship has
-		amount = min(amount, ship.inventory[resource_id])
+		amount = min(amount, ship.get_component(StorageComponent).inventory[resource_id])
 		# can't buy more than we can fit in the inventory
-		amount = min(amount, self.inventory.get_free_space_for(resource_id))
+		amount = min(amount, self.get_component(StorageComponent).inventory.get_free_space_for(resource_id))
 		# can't buy more than we can afford
-		amount = min(amount, self.owner.inventory[RES.GOLD_ID] // price)
+		amount = min(amount, self.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price)
 		# can't buy more than we are trying to buy according to the settings
-		amount = min(amount, self.buy_list[resource_id] - self.inventory[resource_id])
+		amount = min(amount, self.buy_list[resource_id] - self.get_component(StorageComponent).inventory[resource_id])
 		if amount <= 0:
 			return 0
 
 		total_price = price * amount
-		assert self.owner.inventory.alter(RES.GOLD_ID, -total_price) == 0
-		assert ship.owner.inventory.alter(RES.GOLD_ID, total_price) == 0
-		assert self.inventory.alter(resource_id, amount) == 0
-		assert ship.inventory.alter(resource_id, -amount) == 0
+		assert self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -total_price) == 0
+		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, total_price) == 0
+		assert self.get_component(StorageComponent).inventory.alter(resource_id, amount) == 0
+		assert ship.get_component(StorageComponent).inventory.alter(resource_id, -amount) == 0
 		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_expenses += total_price
 		return amount

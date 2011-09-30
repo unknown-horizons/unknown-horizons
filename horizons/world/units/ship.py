@@ -28,7 +28,6 @@ import horizons.main
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
 	TraderShipOverviewTab, EnemyShipOverviewTab
 from horizons.world.storage import PositiveTotalNumSlotsStorage
-from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
@@ -40,6 +39,7 @@ from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.namedcomponent import ShipNameComponent, PirateShipNameComponent
+from horizons.world.component.storagecomponent import ShipStorageComponent, StorageComponent
 
 class ShipRoute(object):
 	"""
@@ -129,32 +129,32 @@ class ShipRoute(object):
 			if amount > 0:
 				# load from settlement onto ship
 				if settlement.owner is self.ship.owner:
-					if settlement.inventory[res] < amount: # not enough res
-						amount = settlement.inventory[res]
+					if settlement.get_component(StorageComponent).inventory[res] < amount: # not enough res
+						amount = settlement.get_component(StorageComponent).inventory[res]
 
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
 					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
 
-				if amount_transferred < status.remaining_transfers[res] and self.ship.inventory.get_free_space_for(res) > 0:
+				if amount_transferred < status.remaining_transfers[res] and self.ship.get_component(StorageComponent).inventory.get_free_space_for(res) > 0:
 					status.settlement_provides_enough_res = False
 				status.remaining_transfers[res] -= amount_transferred
 			else:
 				# load from ship onto settlement
 				amount = -amount # use positive below
 				if settlement.owner is self.ship.owner:
-					if self.ship.inventory[res] < amount: # check if ship has as much as planned
-						amount = self.ship.inventory[res]
+					if self.ship.get_component(StorageComponent).inventory[res] < amount: # check if ship has as much as planned
+						amount = self.ship.get_component(StorageComponent).inventory[res]
 
-					if settlement.inventory.get_free_space_for(res) < amount: # too little space
-						amount = settlement.inventory.get_free_space_for(res)
+					if settlement.get_component(StorageComponent).inventory.get_free_space_for(res) < amount: # too little space
+						amount = settlement.get_component(StorageComponent).inventory.get_free_space_for(res)
 
 					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
 				else:
 					amount_transferred = settlement.buy_resource(self.ship.worldid, res, amount)
 
-				if amount_transferred < -status.remaining_transfers[res] and self.ship.inventory[res] > 0:
+				if amount_transferred < -status.remaining_transfers[res] and self.ship.get_component(StorageComponent).inventory[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False
 				status.remaining_transfers[res] += amount_transferred
 		return status
@@ -273,7 +273,7 @@ class ShipRoute(object):
 			return _('Trade route: going to %s' % self.ship.get_location_based_status(self.ship.get_move_target()))
 		return _('Trade route: waiting at %s' % self.ship.get_location_based_status(self.ship.position))
 
-class Ship(StorageHolder, Unit):
+class Ship(Unit):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -289,6 +289,7 @@ class Ship(StorageHolder, Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
+		self.add_component(ShipStorageComponent)
 		self.__init()
 
 	def save(self, db):
@@ -329,9 +330,6 @@ class Ship(StorageHolder, Unit):
 			self.deselect()
 			if self in self.session.selected_instances:
 				self.session.selected_instances.remove(self)
-
-	def create_inventory(self):
-		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
 
 	def create_route(self):
 		self.route = ShipRoute(self)

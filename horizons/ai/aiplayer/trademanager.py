@@ -31,6 +31,7 @@ from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.util.python import decorators
 from horizons.constants import RES
+from horizons.world.component.storagecomponent import StorageComponent
 
 class TradeManager(WorldObject):
 	"""
@@ -134,23 +135,23 @@ class TradeManager(WorldObject):
 		total_amount = defaultdict(lambda: 0)
 		resource_manager = self.settlement_manager.resource_manager
 		for resource_id, amount in resource_manager.trade_storage[destination_settlement_manager.worldid].iteritems():
-			available_amount = int(min(math.floor(amount), self.settlement_manager.settlement.inventory[resource_id]))
+			available_amount = int(min(math.floor(amount), self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]))
 			if available_amount > 0:
 				total_amount[resource_id] += available_amount
 
-		destination_inventory = destination_settlement_manager.settlement.inventory
+		destination_inventory = destination_settlement_manager.settlement.get_component(StorageComponent).inventory
 		any_transferred = False
 		for resource_id, amount in total_amount.iteritems():
-			actual_amount = amount - ship.inventory[resource_id]
+			actual_amount = amount - ship.get_component(StorageComponent).inventory[resource_id]
 			actual_amount = min(actual_amount, destination_inventory.get_limit(resource_id) - destination_inventory[resource_id])
 			if actual_amount <= 0:
 				continue # TODO: consider unloading the resources if there is more than needed
 			any_transferred = True
 			self.log.info('Transfer %d of %d to %s for a journey from %s to %s, total amount %d', actual_amount, \
 				resource_id, ship, self.settlement_manager.settlement.name, destination_settlement_manager.settlement.name, amount)
-			old_amount = self.settlement_manager.settlement.inventory[resource_id]
+			old_amount = self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]
 			mission.move_resource(ship, self.settlement_manager.settlement, resource_id, -actual_amount)
-			actually_transferred = old_amount - self.settlement_manager.settlement.inventory[resource_id]
+			actually_transferred = old_amount - self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]
 			resource_manager.trade_storage[destination_settlement_manager.worldid][resource_id] -= actually_transferred
 
 		destination_settlement_manager.trade_manager.ships_sent[self.settlement_manager.worldid] -= 1
@@ -170,7 +171,7 @@ class TradeManager(WorldObject):
 			num_resources = 0
 			total_amount = 0
 			for resource_id, amount in resource_manager.trade_storage[self.settlement_manager.worldid].iteritems():
-				available_amount = int(min(math.floor(amount), settlement_manager.settlement.inventory[resource_id]))
+				available_amount = int(min(math.floor(amount), settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]))
 				if available_amount > 0:
 					num_resources += 1
 					total_amount += available_amount

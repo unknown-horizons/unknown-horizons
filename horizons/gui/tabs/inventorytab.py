@@ -27,6 +27,7 @@ from horizons.util import Callback
 from horizons.scheduler import Scheduler
 from horizons.constants import WEAPONS
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
+from horizons.world.component.storagecomponent import StorageComponent
 
 class InventoryTab(TabInterface):
 
@@ -41,7 +42,7 @@ class InventoryTab(TabInterface):
 		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Settlement inventory")
 		self.widget.child_finder('inventory').init(self.instance.session.db, \
-		                                           self.instance.inventory)
+		                                           self.instance.get_component(StorageComponent).inventory)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""

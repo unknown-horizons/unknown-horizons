@@ -27,6 +27,7 @@ from horizons.util import WorldObject
 from horizons.entities import Entities
 from horizons.constants import SETTLER, BUILDINGS, PRODUCTION, RES, UNITS
 from horizons.util.python import decorators
+from horizons.world.component.storagecomponent import StorageComponent
 
 class PlayerStats(WorldObject):
 	def __init__(self, player):
@@ -66,17 +67,17 @@ class PlayerStats(WorldObject):
 
 				# resources held in buildings
 				if hasattr(building, 'inventory') and building.id not in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS, BUILDINGS.MAIN_SQUARE_CLASS]:
-					for resource_id, amount in building.inventory:
+					for resource_id, amount in building.get_component(StorageComponent).inventory:
 						total_resources[resource_id] += amount
 
 				# resource held by collectors
 				if hasattr(building, 'get_local_collectors'):
 					for collector in building.get_local_collectors():
-						for resource_id, amount in collector.inventory:
+						for resource_id, amount in collector.get_component(StorageComponent).inventory:
 							total_resources[resource_id] += amount
 
 			# resources in settlement inventories
-			for resource_id, amount in settlement.inventory:
+			for resource_id, amount in settlement.get_component(StorageComponent).inventory:
 				available_resources[resource_id] += amount
 
 			# land that could be built on (the building on it may need to be destroyed first)
@@ -93,7 +94,7 @@ class PlayerStats(WorldObject):
 			if ship.owner is self.player:
 				ships[ship.id] += 1
 				if ship.is_selectable:
-					for resource_id, amount in ship.inventory:
+					for resource_id, amount in ship.get_component(StorageComponent).inventory:
 						available_resources[resource_id] += amount
 
 		for resource_id, amount in available_resources.iteritems():
@@ -104,7 +105,7 @@ class PlayerStats(WorldObject):
 		self._calculate_resource_score(available_resources, total_resources)
 		self._calculate_unit_score(ships)
 		self._calculate_land_score(usable_land, settlements)
-		self._calculate_money_score(running_costs, taxes, self.player.inventory[RES.GOLD_ID])
+		self._calculate_money_score(running_costs, taxes, self.player.get_component(StorageComponent).inventory[RES.GOLD_ID])
 		self._calculate_total_score()
 
 	settler_values = {SETTLER.SAILOR_LEVEL: 2, SETTLER.PIONEER_LEVEL: 3, SETTLER.SETTLER_LEVEL: 7}

@@ -28,6 +28,7 @@ from horizons.util import WorldObject
 from horizons.util.python import decorators
 from horizons.constants import RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
+from horizons.world.component.storagecomponent import StorageComponent
 
 class ResourceManager(WorldObject):
 	"""
@@ -238,9 +239,9 @@ class ResourceManager(WorldObject):
 		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
 		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
 		settlement = self.settlement_manager.settlement
-		inventory = settlement.inventory
+		inventory = settlement.get_component(StorageComponent).inventory
 		session = self.settlement_manager.session
-		gold = self.settlement_manager.owner.inventory[RES.GOLD_ID]
+		gold = self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD_ID]
 
 		buy_sell_list = [] # [(importance (lower is better), resource_id, limit, sell), ...]
 		for resource_id in managed_resources:

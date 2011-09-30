@@ -26,6 +26,7 @@ from horizons.gui.tabs import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderT
 			     BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from horizons.world.production.producer import UnitProducerBuilding
 from collectingbuilding import CollectingBuilding
+from horizons.world.component.storagecomponent import StorageComponent
 
 class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 	tabs = (BoatbuilderTab, BoatbuilderFisherTab)
@@ -35,4 +36,4 @@ class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, 
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)
-		self.inventory.limit = 10
+		self.get_component(StorageComponent).inventory.limit = 10

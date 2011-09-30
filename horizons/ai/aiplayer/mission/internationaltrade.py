@@ -25,6 +25,7 @@ from horizons.util.python import decorators
 from horizons.constants import RES, TRADER
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.ext.enum import Enum
+from horizons.world.component.storagecomponent import StorageComponent
 
 class InternationalTrade(ShipMission):
 	"""
@@ -93,17 +94,17 @@ class InternationalTrade(ShipMission):
 	def _get_max_sellable_amount(self, available_amount):
 		if self.sold_resource not in self.settlement.buy_list:
 			return 0
-		if self.settlement.buy_list[self.sold_resource] >= self.settlement.inventory[self.sold_resource]:
+		if self.settlement.buy_list[self.sold_resource] >= self.settlement.get_component(StorageComponent).inventory[self.sold_resource]:
 			return 0
 		if available_amount <= 0:
 			return 0
 		price = int(self.owner.session.db.get_res_value(self.sold_resource) * TRADER.PRICE_MODIFIER_SELL)
-		return min(self.settlement.inventory[self.sold_resource] - self.settlement.buy_list[self.sold_resource],
-			self.settlement.owner.inventory[RES.GOLD_ID] // price, available_amount)
+		return min(self.settlement.get_component(StorageComponent).inventory[self.sold_resource] - self.settlement.buy_list[self.sold_resource],
+			self.settlement.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price, available_amount)
 
 	def _reached_my_settlement(self):
 		self.log.info('%s reached my branch office area (%s)', self, self.settlement_manager.settlement.name)
-		available_amount = max(0, self.settlement_manager.settlement.inventory[self.sold_resource] - self.settlement_manager.resource_manager.resource_requirements[self.sold_resource])
+		available_amount = max(0, self.settlement_manager.settlement.get_component(StorageComponent).inventory[self.sold_resource] - self.settlement_manager.resource_manager.resource_requirements[self.sold_resource])
 		sellable_amount = self._get_max_sellable_amount(available_amount)
 		if sellable_amount <= 0:
 			self.log.info('%s no resources can be sold', self)
@@ -125,20 +126,20 @@ class InternationalTrade(ShipMission):
 			return 0
 		if self.bought_resource not in self.settlement.sell_list:
 			return 0
-		if self.settlement.sell_list[self.bought_resource] >= self.settlement.inventory[self.bought_resource]:
+		if self.settlement.sell_list[self.bought_resource] >= self.settlement.get_component(StorageComponent).inventory[self.bought_resource]:
 			return 0
 		needed_amount = self.settlement_manager.resource_manager.resource_requirements[self.bought_resource] - \
-			self.settlement_manager.settlement.inventory[self.bought_resource]
+			self.settlement_manager.settlement.get_component(StorageComponent).inventory[self.bought_resource]
 		if needed_amount <= 0:
 			return 0
 		price = int(self.owner.session.db.get_res_value(self.bought_resource) * TRADER.PRICE_MODIFIER_BUY)
-		return min(self.settlement.inventory[self.bought_resource] - self.settlement.sell_list[self.bought_resource],
-			self.settlement_manager.owner.inventory[RES.GOLD_ID] // price, needed_amount)
+		return min(self.settlement.get_component(StorageComponent).inventory[self.bought_resource] - self.settlement.sell_list[self.bought_resource],
+			self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price, needed_amount)
 
 	def _reached_other_settlement(self):
 		self.log.info('%s reached the other branch office area (%s)', self, self.settlement.name)
 		if self.sold_resource is not None:
-			sellable_amount = self._get_max_sellable_amount(self.ship.inventory[self.sold_resource])
+			sellable_amount = self._get_max_sellable_amount(self.ship.get_component(StorageComponent).inventory[self.sold_resource])
 			if sellable_amount > 0:
 				BuyResource(self.settlement, self.ship, self.sold_resource, sellable_amount).execute(self.owner.session)
 				if self.bought_resource is None:

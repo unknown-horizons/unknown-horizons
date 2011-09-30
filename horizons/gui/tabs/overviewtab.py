@@ -36,6 +36,7 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget, create_resource_icon
 from horizons.entities import Entities
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
 
 class OverviewTab(TabInterface):
@@ -291,24 +292,24 @@ class ProductionOverviewTab(OverviewTab):
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
 			for in_res in production.get_consumed_resources():
-				filled = float(self.instance.inventory[in_res]) * 100 / \
-				       self.instance.inventory.get_limit(in_res)
+				filled = float(self.instance.get_component(StorageComponent).inventory[in_res]) * 100 / \
+				       self.instance.get_component(StorageComponent).inventory.get_limit(in_res)
 				in_res_container.addChild( \
 				  ImageFillStatusButton.init_for_res(self.instance.session.db,\
 				                                     in_res, \
-				                                     self.instance.inventory[in_res], \
+				                                     self.instance.get_component(StorageComponent).inventory[in_res], \
 				                                     filled, \
 				                                     use_inactive_icon=False, \
 				                                     uncached=True) \
 				)
 			out_res_container = container.findChild(name="output_res")
 			for out_res in production.get_produced_res():
-				filled = float(self.instance.inventory[out_res]) * 100 /  \
-				       self.instance.inventory.get_limit(out_res)
+				filled = float(self.instance.get_component(StorageComponent).inventory[out_res]) * 100 /  \
+				       self.instance.get_component(StorageComponent).inventory.get_limit(out_res)
 				out_res_container.addChild( \
 				  ImageFillStatusButton.init_for_res(self.instance.session.db, \
 				                                     out_res, \
-				                                     self.instance.inventory[out_res], \
+				                                     self.instance.get_component(StorageComponent).inventory[out_res], \
 				                                     filled, \
 				                                     use_inactive_icon=False, \
 				                                     uncached=True) \
@@ -429,10 +430,10 @@ class EnemyBranchOfficeOverviewTab(OverviewTab):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 
 		selling_inventory = self.widget.findChild(name='selling_inventory')
-		selling_inventory.init(self.instance.session.db, self.instance.settlement.inventory, self.instance.settlement.sell_list, True)
+		selling_inventory.init(self.instance.session.db, self.instance.settlement.get_component(StorageComponent).inventory, self.instance.settlement.sell_list, True)
 
 		buying_inventory = self.widget.findChild(name='buying_inventory')
-		buying_inventory.init(self.instance.session.db, self.instance.settlement.inventory, self.instance.settlement.buy_list, False)
+		buying_inventory.init(self.instance.session.db, self.instance.settlement.get_component(StorageComponent).inventory, self.instance.settlement.buy_list, False)
 
 		super(EnemyBranchOfficeOverviewTab, self).refresh()
 
@@ -452,7 +453,7 @@ class ResourceDepositOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.widget.child_finder("inventory").init(self.instance.session.db, \
-		                                           self.instance.inventory)
+		                                           self.instance.get_component(StorageComponent).inventory)
 
 	def refresh(self):
 		super(ResourceDepositOverviewTab, self).refresh()

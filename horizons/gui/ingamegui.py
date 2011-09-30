@@ -39,6 +39,7 @@ from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -162,7 +163,7 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).end()
 
 	def update_gold(self):
-		first = str(self.session.world.player.inventory[RES.GOLD_ID])
+		first = str(self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID])
 		lines = []
 		show = False
 		if self.resource_source is not None and self.resources_needed.get(RES.GOLD_ID, 0) != 0:
@@ -285,7 +286,7 @@ class IngameGui(LivingObject):
 		"""Sets the values for resource status bar as well as the building costs"""
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
-			first = str(self.resource_source.inventory[res_id])
+			first = str(self.resource_source.get_component(StorageComponent).inventory[res_id])
 			lines = []
 			show = False
 			if self.resources_needed.get(res_id, 0) != 0:

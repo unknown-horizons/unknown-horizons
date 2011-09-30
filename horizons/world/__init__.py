@@ -49,6 +49,7 @@ from horizons.world.units.weapon import Weapon
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -153,7 +154,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				self.player = self.players[0]
 
 		if self.player is not None:
-			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
+			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
 			                                          call_listener_now=True)
 
 		if self.player is None and self.session.is_game_loaded():
@@ -379,7 +380,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
 			# give ship basic resources
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
-				ship.inventory.alter(res, amount)
+				ship.get_component(StorageComponent).inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = point.to_tuple()
 		AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
@@ -534,7 +535,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
 					if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
-						building.inventory.alter(RES.WILDANIMALFOOD_ID, -1)
+						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD_ID, -1)
 
 				if 'coastline' in tile.classes and self.session.random.random() < natural_resource_multiplier / 4.0:
 					# try to place fish: from the current position go to a random directions twice
@@ -648,7 +649,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			else:
 				player = HumanPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
 			self.player = player
-			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
+			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
 			                                          call_listener_now=True)
 		elif is_ai:
 			player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
@@ -825,7 +826,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					'inhabitants': str(settlement.inhabitants),
 					'cumulative_running_costs': str(settlement.cumulative_running_costs),
 					'cumulative_taxes': str(settlement.cumulative_taxes),
-					'inventory': str(settlement.inventory._storage),
+					'inventory': str(settlement.get_component(StorageComponent).inventory._storage),
 				}
 				dict['settlements'].append(entry)
 		return dict

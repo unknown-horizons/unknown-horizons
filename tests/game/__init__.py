@@ -51,6 +51,7 @@ from horizons.util import (Color, DbReader, Rect, WorldObject, LivingObject,
 						   SavegameAccessor, Point, DifficultySettings)
 from horizons.world import World
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
 
 db = None
@@ -215,7 +216,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai
 			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=player)
 			# give ship basic resources
 			for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-				ship.inventory.alter(res, amount)
+				ship.get_component(StorageComponent).inventory.alter(res, amount)
 		AIPlayer.load_abstract_buildings(session.db)
 
 	return session, session.world.player
@@ -232,7 +233,7 @@ def new_settlement(session, pos=Point(30, 20)):
 
 	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, pos.x, pos.y)(player)
 	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-		ship.inventory.alter(res, amount)
+		ship.get_component(StorageComponent).inventory.alter(res, amount)
 
 	building = Build(BUILDINGS.BRANCH_OFFICE_CLASS, pos.x, pos.y, island, ship=ship)(player)
 	assert building, "Could not build branch office at %s" % pos
@@ -305,10 +306,10 @@ def settle(s):
 	Create a new settlement, start with some resources.
 	"""
 	settlement, island = new_settlement(s)
-	settlement.inventory.alter(RES.GOLD_ID, 5000)
-	settlement.inventory.alter(RES.BOARDS_ID, 50)
-	settlement.inventory.alter(RES.TOOLS_ID, 50)
-	settlement.inventory.alter(RES.BRICKS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, 5000)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS_ID, 50)
 	return settlement, island
 
 

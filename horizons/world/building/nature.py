@@ -25,9 +25,9 @@ from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.production.producer import ProducerBuilding
 from horizons.entities import Entities
 from horizons.constants import LAYERS
-from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import ResourceDepositOverviewTab
 from horizons.world.building.building import SelectableBuilding
+from horizons.world.component.storagecomponent import StorageComponent
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -74,7 +74,7 @@ class Tree(ProducerNatureBuilding):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
-class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
+class ResourceDeposit(SelectableBuilding, NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS
@@ -84,14 +84,15 @@ class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 
 	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
+		self.add_component(StorageComponent)
 		if inventory is None: # a new deposit
 			for resource, min_amount, max_amount in \
 			    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
 			                    self.id):
-				self.inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
+				self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
 		else: # deposit was removed for mine, now build back
 			for res, amount in inventory.iteritems():
-				self.inventory.alter(res, amount)
+				self.get_component(StorageComponent).inventory.alter(res, amount)
 
 class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
 	pass

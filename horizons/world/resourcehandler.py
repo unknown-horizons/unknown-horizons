@@ -19,13 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
 from horizons.constants import PRODUCTION
+from horizons.world.componentholder import ComponentHolder
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.worldobject import WorldObject
 
 
-class ResourceHandler(StorageHolder):
+class ResourceHandler(ComponentHolder):
 	"""The ResourceHandler class acts as a basic class for describing objects
 	that handle resources. This means the objects can provide resources for
 	Collectors and have multiple productions. This is a base class, meaning
@@ -43,6 +45,7 @@ class ResourceHandler(StorageHolder):
 	## INIT/DESTRUCT
 	def __init__(self, **kwargs):
 		super(ResourceHandler, self).__init__(**kwargs)
+		self.add_component(StorageComponent)
 		self.__init()
 
 	def __init(self):
@@ -91,7 +94,7 @@ class ResourceHandler(StorageHolder):
 
 	def get_stocked_provided_resources(self):
 		"""Returns provided resources, where at least 1 ton is available"""
-		return [res for res in self.provided_resources if self.inventory[res] > 0]
+		return [res for res in self.provided_resources if self.get_component(StorageComponent).inventory[res] > 0]
 
 	def get_currently_consumed_resources(self):
 		"""Returns a list of resources, that are currently consumed in a production."""
@@ -112,7 +115,7 @@ class ResourceHandler(StorageHolder):
 	def get_needed_resources(self):
 		"""Returns list of resources, where free space in the inventory exists."""
 		return [res for res in self.get_consumed_resources() if \
-						self.inventory.get_free_space_for(res) > 0]
+						self.get_component(StorageComponent).inventory.get_free_space_for(res) > 0]
 
 	def add_incoming_collector(self, collector):
 		assert collector not in self.__incoming_collectors
@@ -137,14 +140,14 @@ class ResourceHandler(StorageHolder):
 		if hasattr(self, "production_class"):
 			production_class = self.production_class
 		owner_inventory = self._get_owner_inventory()
-		self.add_production(production_class(self.inventory, owner_inventory, production_line_id))
+		self.add_production(production_class(self.get_component(StorageComponent).inventory, owner_inventory, production_line_id))
 
 	def _get_owner_inventory(self):
 		"""Returns the inventory of the owner to be able to retrieve special resources such as gold.
 		The production system should be as decoupled as possible from actual world objects, so only use
 		when there are no other possibilities"""
 		try:
-			return self.owner.inventory
+			return self.owner.get_component(StorageComponent).inventory
 		except AttributeError, e: # no owner or no inventory, either way, we don't care
 			return None
 
@@ -194,7 +197,7 @@ class ResourceHandler(StorageHolder):
 		assert picked_up >= 0
 		if picked_up > amount:
 			picked_up = amount
-		remnant = self.inventory.alter(res, -picked_up)
+		remnant = self.get_component(StorageComponent).inventory.alter(res, -picked_up)
 		assert remnant == 0
 		return picked_up
 
@@ -206,7 +209,7 @@ class ResourceHandler(StorageHolder):
 		else:
 			amount_from_collectors = sum([c.job.amount for c in self.__incoming_collectors if \
 			                              c != collector and c.job.res == res])
-			amount = self.inventory[res] - amount_from_collectors
+			amount = self.get_component(StorageComponent).inventory[res] - amount_from_collectors
 			# the user can take away res, even if a collector registered for them
 			# if this happens, a negative number would be returned. Use 0 instead.
 			return max(amount, 0)
@@ -277,6 +280,25 @@ class ResourceHandler(StorageHolder):
 		This is outsourced from initiation to a method for the possiblity of overwriting it.
 		Do not alter the returned list; if you need to do so, then copy it."""
 		return self.session.db.get_provided_resources(self.id)
+
+	def transfer_to_storageholder(self, amount, res_id, transfer_to):
+		"""Transfers amount of res_id to transfer_to.
+		@param transfer_to: worldid or object reference
+		@return: amount that was actually transfered (NOTE: this is different from the
+						 return value of inventory.alter, since here are 2 storages involved)
+		"""
+		try:
+			transfer_to = WorldObject.get_object_by_id( int(transfer_to) )
+		except TypeError: # transfer_to not an int, assume already obj
+			pass
+		# take res from self
+		ret = self.get_component(StorageComponent).inventory.alter(res_id, -amount)
+		# check if we were able to get the planed amount
+		ret = amount if amount < abs(ret) else abs(ret)
+		# put res to transfer_to
+		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
+		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
+		return amount-ret
 
 class StorageResourceHandler(ResourceHandler):
 	"""Same as ResourceHandler, but for storage buildings such as branch offices.

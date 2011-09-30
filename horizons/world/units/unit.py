@@ -30,6 +30,7 @@ from horizons.util import Point, WorldObject, WeakMethod, Circle, decorators
 from horizons.constants import LAYERS
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
 class Unit(MovingObject):
 	log = logging.getLogger("world.units")
@@ -149,6 +150,25 @@ class Unit(MovingObject):
 		self.__init(x, y, owner)
 
 		return self
+
+	def transfer_to_storageholder(self, amount, res_id, transfer_to):
+		"""Transfers amount of res_id to transfer_to.
+		@param transfer_to: worldid or object reference
+		@return: amount that was actually transfered (NOTE: this is different from the
+						 return value of inventory.alter, since here are 2 storages involved)
+		"""
+		try:
+			transfer_to = WorldObject.get_object_by_id( int(transfer_to) )
+		except TypeError: # transfer_to not an int, assume already obj
+			pass
+		# take res from self
+		ret = self.get_component(StorageComponent).inventory.alter(res_id, -amount)
+		# check if we were able to get the planed amount
+		ret = amount if amount < abs(ret) else abs(ret)
+		# put res to transfer_to
+		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
+		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
+		return amount-ret
 
 	def get_random_location(self, in_range):
 		"""Returns a random location in walking_range, that we can find a path to

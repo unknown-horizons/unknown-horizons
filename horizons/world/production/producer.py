@@ -32,6 +32,7 @@ from horizons.scheduler import Scheduler
 from horizons.gui.tabs import ProductionOverviewTab
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
+from horizons.world.component.storagecomponent import StorageComponent
 
 class Producer(ResourceHandler):
 	"""Class for objects, that produce something.
@@ -202,7 +203,7 @@ class QueueProducer(Producer):
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
 			owner_inventory = self._get_owner_inventory()
-			prod = self.production_class(inventory=self.inventory, owner_inventory=owner_inventory, prod_line_id=production_line_id)
+			prod = self.production_class(inventory=self.get_component(StorageComponent).inventory, owner_inventory=owner_inventory, prod_line_id=production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
 			self.add_production( prod )
 		else:

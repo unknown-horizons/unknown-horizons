@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.command.building import Build, Tear
+from horizons.world.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
 
 from tests.game import settle, game_test
@@ -39,9 +40,9 @@ def test_ticket_979(s, p):
 	assert farm.inventory[RES.FOOD_ID]
 
 	# The settlement inventory is already full of food (from the ship): dispose of it
-	assert settlement.inventory[RES.FOOD_ID] > 0
-	settlement.inventory.alter(RES.FOOD_ID, -settlement.inventory[RES.FOOD_ID])
-	assert settlement.inventory[RES.FOOD_ID] == 0
+	assert settlement.get_component(StorageComponent).inventory[RES.FOOD_ID] > 0
+	settlement.get_component(StorageComponent).inventory.alter(RES.FOOD_ID, -settlement.get_component(StorageComponent).inventory[RES.FOOD_ID])
+	assert settlement.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
 
 	# Build a road, connecting farm and branch office
 	for y in range(23, 30):

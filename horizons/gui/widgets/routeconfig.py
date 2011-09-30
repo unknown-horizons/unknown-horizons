@@ -23,6 +23,7 @@ from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from fife.extensions.pychan import widgets
 from horizons.gui.widgets.tooltip import TooltipButton
+from horizons.world.component.storagecomponent import StorageComponent
 
 import horizons.main
 
@@ -270,7 +271,7 @@ class RouteConfig(object):
 
 			slider = slot.findChild(name="slider")
 			slider.setScaleStart(0.0)
-			slider.setScaleEnd(float(self.instance.inventory.limit))
+			slider.setScaleEnd(float(self.instance.get_component(StorageComponent).inventory.limit))
 
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 

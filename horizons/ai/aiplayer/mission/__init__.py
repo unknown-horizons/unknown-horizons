@@ -25,6 +25,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle, WorldObject
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
+from horizons.world.component.storagecomponent import StorageComponent
 
 class Mission(WorldObject):
 	"""
@@ -93,17 +94,17 @@ class ShipMission(Mission):
 	def move_resource(cls, ship, settlement, resource_id, amount):
 		"""Move up to amount tons of resource_id from the ship to the settlement."""
 		if amount > 0:
-			missing = ship.inventory.alter(resource_id, -amount)
-			overflow = settlement.inventory.alter(resource_id, amount - missing)
-			ship.inventory.alter(resource_id, overflow)
+			missing = ship.get_component(StorageComponent).inventory.alter(resource_id, -amount)
+			overflow = settlement.get_component(StorageComponent).inventory.alter(resource_id, amount - missing)
+			ship.get_component(StorageComponent).inventory.alter(resource_id, overflow)
 		elif amount < 0:
-			missing = settlement.inventory.alter(resource_id, amount)
-			overflow = ship.inventory.alter(resource_id, missing - amount)
-			settlement.inventory.alter(resource_id, overflow)
+			missing = settlement.get_component(StorageComponent).inventory.alter(resource_id, amount)
+			overflow = ship.get_component(StorageComponent).inventory.alter(resource_id, missing - amount)
+			settlement.get_component(StorageComponent).inventory.alter(resource_id, overflow)
 
 	def _unload_all_resources(self, settlement):
 		# copy the inventory because otherwise we would be modifying it while iterating
-		for res, amount in [item for item in self.ship.inventory]:
+		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory]:
 			self.move_resource(self.ship, settlement, res, amount)
 
 	def _move_to_branch_office_area(self, bo_position, success_callback, blocked_callback, failure_msg):

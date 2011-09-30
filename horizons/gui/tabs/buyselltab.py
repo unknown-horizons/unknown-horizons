@@ -28,6 +28,7 @@ from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBu
 from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget, get_res_icon
+from horizons.world.component.storagecomponent import StorageComponent
 
 class BuySellTab(TabInterface):
 	"""
@@ -112,7 +113,7 @@ class BuySellTab(TabInterface):
 			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
 			slider.setScaleStart(0.0)
-			slider.setScaleEnd(float(self.settlement.inventory.limit))
+			slider.setScaleEnd(float(self.settlement.get_component(StorageComponent).inventory.limit))
 			# Set scale according to the settlement inventory size
 			slot.findChild(name="buysell").capture(Callback(self.toggle_buysell, num))
 			fillbar = slot.findChild(name="fillbar")
@@ -182,7 +183,7 @@ class BuySellTab(TabInterface):
 			slider.capture(Callback(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"
 			icon = slot.findChild(name="icon")
-			inventory = self.settlement.inventory
+			inventory = self.settlement.get_component(StorageComponent).inventory
 			filled = float(inventory[res_id]) / inventory.get_limit(res_id)
 			fillbar.position = (icon.width - fillbar.width - 1,
 			                    icon.height - int(icon.height*filled))
