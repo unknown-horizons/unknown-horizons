@@ -236,6 +236,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Линукс потребител: Опитай да инсталираш pyenet чрез твоя мениджър на пакети."
 
 #: horizons/gui/modules/multiplayermenu.py:48
 msgid "Windows users: There is currently no reasonable support for Windows."
