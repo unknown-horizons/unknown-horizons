@@ -268,7 +268,8 @@ def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natu
 	# start new session
 	from mpsession import MPSession
 	# get random seed for game
-	random = sum(game.get_uuid().uuid)
+	uuid = game.get_uuid()
+	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
 	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
 	_modules.session.load("content/maps/" + game.get_map_name() + ".sqlite", \

@@ -364,8 +364,6 @@ class Client(object):
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
-		if not isinstance(uuid, UUID):
-			uuid = UUID(uuid)
 		self.log.debug("[JOIN] %s" % (uuid))
 		self.send(packets.client.cmd_joingame(uuid, self.version, self.name))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])

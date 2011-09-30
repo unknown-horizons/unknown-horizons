@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.network import util, packets, find_enet_module
+import uuid
+from horizons.network import packets, find_enet_module
 enet = find_enet_module()
 
 __all__ = [
   'Address',
   'Player',
   'Game',
-  'UUID'
 ]
 
 class Address():
@@ -109,7 +109,7 @@ class Game():
 
 	def __init__(self, packet, creator):
 		assert(isinstance(packet, packets.client.cmd_creategame))
-		self.uuid          = UUID()
+		self.uuid          = uuid.uuid1().hex
 		self.clientversion = packet.clientversion
 		self.mapname       = packet.mapname
 		self.maxplayers    = packet.maxplayers
@@ -142,26 +142,3 @@ class Game():
 
 	def __str__(self):
 		return "Game(uuid=%s;maxplayers=%d;playercnt=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, Game.State(self.state))
-
-#-----------------------------------------------------------------------------
-
-class UUID():
-	def __init__(self, uuid = None):
-		if uuid is None:
-			self.uuid = util.randomUUID()
-		elif isinstance(uuid, UUID):
-			self.uuid = uuid.uuid
-		else:
-			self.uuid = util.uuidFromString(uuid)
-
-	def __str__(self):
-		return util.uuidToString(self.uuid)
-
-	def __eq__(self, other):
-		if isinstance(other, UUID):
-			return (self.uuid == other.uuid)
-		return NotImplemented
-
-	def __ne__(self, other):
-		return not self.__eq__(other)
-

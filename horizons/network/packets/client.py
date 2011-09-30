@@ -44,10 +44,7 @@ packetlist.append(cmd_listgames)
 
 class cmd_joingame(packet):
 	def __init__(self, uuid, clientver, playername):
-		if type(uuid) == str:
-			self.uuid = UUID(uuid)
-		else:
-			self.uuid = uuid
+		self.uuid = uuid
 		self.clientversion = clientver
 		self.playername    = playername
 
