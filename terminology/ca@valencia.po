@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-05-13 19:24+0200\n"
-"Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
+"PO-Revision-Date: 2011-10-01 21:40+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
@@ -139,9 +139,8 @@ msgid "taxes"
 msgstr "impostos"
 
 # 83%
-#, fuzzy
 msgid "trader"
-msgstr "comerç"
+msgstr "comerciant"
 
 msgid "version"
 msgstr "versió"
@@ -228,9 +227,8 @@ msgid "produce"
 msgstr "produir"
 
 # 87%
-#, fuzzy
 msgid "produced"
-msgstr "produir"
+msgstr "produÏt"
 
 msgid "pasture"
 msgstr ""
@@ -244,7 +242,7 @@ msgstr ""
 # 75%
 #, fuzzy
 msgid "tree"
-msgstr "lliure"
+msgstr "arbre"
 
 msgid "active"
 msgstr ""
@@ -256,9 +254,8 @@ msgid "build menu"
 msgstr ""
 
 # 80%
-#, fuzzy
 msgid "built"
-msgstr "construir"
+msgstr "construït"
 
 msgid "construction"
 msgstr ""
@@ -288,20 +285,20 @@ msgid "sailor"
 msgstr "mariner"
 
 msgid "pioneer"
-msgstr ""
+msgstr "pioner"
 
 #, fuzzy
 msgid "settler"
 msgstr "colon"
 
 msgid "citizen"
-msgstr ""
+msgstr "ciutadà"
 
 msgid "merchant"
 msgstr ""
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristòcrata"
 
 msgid "refresh"
 msgstr ""
