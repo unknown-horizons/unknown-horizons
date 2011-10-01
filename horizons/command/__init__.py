@@ -28,6 +28,11 @@ class Command(object):
 	"""Base class for every Command."""
 	@classmethod
 	def allow_network(self, klass):
+		"""
+		NOTE: this is a security related method and lead to execution of
+		arbritary code if used in a wrong way
+		see documentation inside horizons.network.packets.SafeUnpickler
+		"""
 		SafeUnpickler.add('server', klass)
 
 	def execute(self, session, local = False):

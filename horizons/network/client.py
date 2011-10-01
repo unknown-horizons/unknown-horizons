@@ -34,7 +34,12 @@ if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(enet, 'PEER_STATE_DI
 
 # maximal peers enet should handle
 MAX_PEERS = 1
+# time in ms the client will wait for a packet
+# on error client may wait twice that time
 SERVER_TIMEOUT = 5000
+# current server/client protocol the client understands
+# increment that after incompatible protocol changes
+SERVER_PROTOCOL = 0
 
 class ClientMode:
 	Server = 0
@@ -96,7 +101,7 @@ class Client(object):
 			raise network.AlreadyConnected("We are already connected to a server")
 		self.log.debug("[CONNECT] to server %s" % (self.serveraddress))
 		try:
-			self.serverpeer = self.host.connect(enet.Address(self.serveraddress.host, self.serveraddress.port), 1, 0)
+			self.serverpeer = self.host.connect(enet.Address(self.serveraddress.host, self.serveraddress.port), 1, SERVER_PROTOCOL)
 		except (IOError, MemoryError):
 			raise network.NetworkException("Unable to connect to server. Maybe invalid or irresolvable server address.")
 		self.mode = ClientMode.Server

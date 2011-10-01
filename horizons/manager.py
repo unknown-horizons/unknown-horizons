@@ -282,6 +282,11 @@ class MPPacket(object):
 
 	@classmethod
 	def allow_network(self, klass):
+		"""
+		NOTE: this is a security related method and lead to execution of
+		arbritary code if used in a wrong way
+		see documentation inside horizons.network.packets.SafeUnpickler
+		"""
 		packets.SafeUnpickler.add('server', klass)
 
 	def __str__(self):

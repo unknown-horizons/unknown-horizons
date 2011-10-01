@@ -46,11 +46,32 @@ PICKLE_SAFE = {
 log = logging.getLogger("network")
 
 class SafeUnpickler(object):
+	"""
+	NOTE: this is a security related method and lead to execution of
+	arbritary code if used in a wrong way
+
+	pickle encodes modules and classes using their name. during "unpickling"
+	pickle imports the modules and creates instances of these classes again.
+	knowing this an attacker could easily create a paket "tricking" pickle
+	to load and execute an instance of dangerous classes/methods/commands.
+	this is not an exploit but by design!
+	e.g. python -c 'import pickle; pickle.loads("cos\nsystem\n(S\"ls ~\"\ntR.")'
+
+	In order to make pickle safer we build a whitelist of modules and classes
+	which pickle will check during "unpickling". Please note that we aren't
+	100% sure if there is still a way to execute arbitrary code.
+
+	References:
+	- http://docs.python.org/library/pickle.html
+	- http://nadiana.com/python-pickle-insecure
+	"""
 	@classmethod
 	def add(self, origin, klass):
 		global PICKLE_SAFE
 		module = klass.__module__
 		name  = klass.__name__
+		if (module == self.__module__ and name == self.__name__):
+			raise RuntimeError("Adding SafeUnpickler to the pickle whitelist is not allowed")
 		types = ['client', 'server'] if origin == 'common' else [origin]
 		for origin in types:
 			if module not in PICKLE_SAFE[origin]:
