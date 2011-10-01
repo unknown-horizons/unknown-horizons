@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-09-05 22:38+0200\n"
-"PO-Revision-Date: 2011-09-05 17:38+0200\n"
-"Last-Translator: mtfk <mitfik@gmail.com>\n"
+"PO-Revision-Date: 2011-10-01 03:58+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,7 @@ msgstr ""
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "Nowe zadanie: Osiedl się na wyspie."
+msgstr "Nowe zadanie: Osiedl się na wyspie"
 
 #: po/tutorial.py:8
 msgid ""
@@ -115,7 +115,7 @@ msgstr ""
 
 #: po/tutorial.py:9
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "Nowe zadanie: Wybuduj chatę drwala."
+msgstr "Nowe zadanie: Wybuduj chatę drwala"
 
 #: po/tutorial.py:10
 msgid ""
@@ -257,7 +257,7 @@ msgstr "Wybuduj chatę myśliwego i rybaka. Połącz je drogą z portem."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "Now Zadanie: Rynek główny."
+msgstr "Now Zadanie: Rynek główny"
 
 #: po/tutorial.py:18
 msgid ""
@@ -387,7 +387,7 @@ msgstr ""
 
 #: po/tutorial.py:26
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "Nowe Zadanie: Wybuduj sygnał świetlny."
+msgstr "Nowe Zadanie: Wybuduj sygnał świetlny"
 
 #: po/tutorial.py:27
 msgid ""
@@ -442,7 +442,7 @@ msgstr "Wybuduj latarnie na wybrzeżu w pobliżu swojego portu."
 
 #: po/tutorial.py:30
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "Nowe Zadanie: Naucz się handlować."
+msgstr "Nowe Zadanie: Naucz się handlować"
 
 #: po/tutorial.py:31
 msgid ""

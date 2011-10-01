@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-08-28 23:13+0200\n"
-"Last-Translator: tagarista <tagarista@gmail.com>\n"
+"PO-Revision-Date: 2011-10-01 04:07+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -547,7 +547,7 @@ msgstr "rovina"
 
 # In base alla frase.
 msgid "seed"
-msgstr "seme"
+msgstr "seme / seminare"
 
 msgid "temporarily"
 msgstr "temporaneamente"
@@ -577,7 +577,7 @@ msgid "doctor"
 msgstr "dottore"
 
 msgid "education"
-msgstr "educare"
+msgstr "educazione"
 
 # 75%
 msgid "clay"
