@@ -26,7 +26,7 @@ from horizons.timer import Timer
 from horizons.util import WorldObject
 from horizons.util.living import LivingObject
 from horizons.command.building import Build
-from horizons.network import CommandError
+from horizons.network import CommandError, packets
 
 class SPManager(LivingObject):
 	"""The manager class takes care of command issuing to the timermanager, sends tick-packets
@@ -280,6 +280,10 @@ class MPPacket(object):
 		self.tick = tick
 		self.player_id = player_id
 
+	@classmethod
+	def allow_network(self, klass):
+		packets.SafeUnpickler.add('server', klass)
+
 	def __str__(self):
 		return "packet " + str(self.__class__)  + " from player " + str(WorldObject.get_object_by_id(self.player_id)) + " for tick " + str(self.tick)
 
@@ -291,7 +295,11 @@ class CommandPacket(MPPacket):
 		super(CommandPacket, self).__init__(tick, player_id)
 		self.commandlist = commandlist
 
+MPPacket.allow_network(CommandPacket)
+
 class CheckupHashPacket(MPPacket):
 	def __init__(self, tick, player_id, checkup_hash):
 		super(CheckupHashPacket, self).__init__(tick, player_id)
 		self.checkup_hash = checkup_hash
+
+MPPacket.allow_network(CheckupHashPacket)

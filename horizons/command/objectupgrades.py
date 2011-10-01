@@ -38,7 +38,7 @@ class ObjectUpgrade(Command):
 		# TODO
 		pass
 
-
+Command.allow_network(ObjectUpgrade)
 
 def upgrade_production_time(obj, factor):
 	"""

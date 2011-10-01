@@ -225,12 +225,18 @@ class Client(object):
 		if event is None:
 			return None
 		elif event.type == enet.EVENT_TYPE_RECEIVE:
-			packet = packets.unserialize(event.packet.data)
-			if packet is None:
+			packet = None
+			try:
+				packet = packets.unserialize(event.packet.data)
+			except Exception, e:
 				self.log.error("Unknown packet from %s!" % (event.peer.address))
+				errstr = "Pickle/Security: %s" % (e)
+				print "[FATAL] %s" % (errstr) # print that even when no logger is enabled!
+				self.log.error("[FATAL] %s" % (errstr))
 				self.disconnect()
-				return None
-			elif isinstance(packet, packets.cmd_error):
+				raise network.FatalError(errstr)
+
+			if isinstance(packet, packets.cmd_error):
 				raise network.CommandError(packet.errorstr)
 			elif isinstance(packet, packets.cmd_fatalerror):
 				self.log.error("[FATAL] Network message: %s" % (packet.errorstr))

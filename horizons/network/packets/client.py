@@ -28,7 +28,7 @@ class cmd_creategame(packet):
 		self.maxplayers    = maxplayers
 		self.playername    = playername
 
-packetlist.append(cmd_creategame)
+SafeUnpickler.add('client', cmd_creategame)
 
 #-------------------------------------------------------------------------------
 
@@ -38,7 +38,7 @@ class cmd_listgames(packet):
 		self.mapname       = mapname
 		self.maxplayers    = maxplayers
 
-packetlist.append(cmd_listgames)
+SafeUnpickler.add('client', cmd_listgames)
 
 #-------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ class cmd_joingame(packet):
 		self.clientversion = clientver
 		self.playername    = playername
 
-packetlist.append(cmd_joingame)
+SafeUnpickler.add('client', cmd_joingame)
 
 #-------------------------------------------------------------------------------
 
@@ -56,7 +56,7 @@ class cmd_leavegame(packet):
 	def __init__(self):
 		"""ctor"""
 
-packetlist.append(cmd_leavegame)
+SafeUnpickler.add('client', cmd_leavegame)
 
 #-------------------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ class cmd_chatmsg(packet):
 	def __init__(self, msg):
 		self.chatmsg = msg
 
-packetlist.append(cmd_chatmsg)
+SafeUnpickler.add('client', cmd_chatmsg)
 
 #-------------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ class cmd_changename(packet):
 	def __init__(self, playername):
 		self.playername = playername
 
-packetlist.append(cmd_changename)
+SafeUnpickler.add('client', cmd_changename)
 
 #-------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ class cmd_preparedgame(packet):
 	def __init__(self):
 		"""ctor"""
 
-packetlist.append(cmd_preparedgame)
+SafeUnpickler.add('client', cmd_preparedgame)
 
 #-------------------------------------------------------------------------------
 
@@ -88,5 +88,6 @@ class game_data(packet):
 	def __init__(self, data):
 		self.data = data
 
-packetlist.append(game_data)
+# origin is 'server' as clients will send AND receive them
+SafeUnpickler.add('server', game_data)
 

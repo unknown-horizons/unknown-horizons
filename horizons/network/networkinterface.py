@@ -241,7 +241,11 @@ class NetworkInterface(object):
 		"""
 		Sends packet to all players, that are part of the game
 		"""
-		self._client.send(packet)
+		if self._client.isconnected():
+			try:
+				self._client.send(packet)
+			except NetworkException, e:
+				self._handle_exception(e)
 
 	def receive_all(self):
 		"""

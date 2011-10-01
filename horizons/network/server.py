@@ -35,6 +35,7 @@ logging.basicConfig(level = logging.DEBUG)
 
 class Server(object):
 	def __init__(self, hostname, port):
+		packets.SafeUnpickler.set_mode(client = False)
 		self.host = None
 		self.hostname = hostname
 		self.port = port
@@ -79,7 +80,7 @@ class Server(object):
 
 
 	def register_callback(self, type, callback, prepend = False):
-		if self.callbacks.has_key(type):
+		if type in self.callbacks:
 			if prepend:
 				self.callbacks[type].insert(0, callback)
 			else:
@@ -89,7 +90,7 @@ class Server(object):
 
 
 	def call_callbacks(self, type, *args):
-		if not self.callbacks.has_key(type):
+		if type not in self.callbacks:
 			return
 		for callback in self.callbacks[type]:
 			callback(*args)
@@ -154,7 +155,7 @@ class Server(object):
 		peer = event.peer
 		logging.debug("[CONNECT] New Client from %s" % (peer.address))
 		# disable that check as peer.data may be uninitialized which segfaults then
-		#if self.players.has_key(peer.data):
+		#if peer.data in self.players:
 		#	logging.warning("Already known player %s!" % (peer.address))
 		#	self.fatalerror(event.peer, "You can't connect more than once")
 		#	return
@@ -170,7 +171,7 @@ class Server(object):
 		peer = event.peer
 		logging.debug("[DISCONNECT] Client %s disconnected" % (peer.address))
 		# disable that check. shouldn't happen anyway
-		#if not self.players.has_key(peer.data):
+		#if peer.data not in self.players:
 		#	return
 		player = self.players[peer.data]
 		if player.game is not None:
@@ -182,7 +183,7 @@ class Server(object):
 		peer = event.peer
 		#logging.debug("[RECEIVE] Got data from %s" % (peer.address))
 		# check player is known by server
-		if not self.players.has_key(peer.data):
+		if peer.data not in self.players:
 			logging.warning("Packet from unknown player %s!" % (peer.address))
 			self.fatalerror(event.peer, "I don't know you")
 			return
@@ -194,11 +195,12 @@ class Server(object):
 			self.call_callbacks('gamedata', event.peer, event.packet.data)
 			return
 
-		packet = packets.unserialize(event.packet.data)
-		if packet is None:
+		packet = None
+		try:
+			packet = packets.unserialize(event.packet.data)
+		except Exception, e:
 			logging.warning("Unknown packet from %s!" % (peer.address))
 			self.fatalerror(event.peer, "Unknown packet. Maybe old client?")
-			return
 
 		# session id check
 		if packet.sid != player.sid:
@@ -206,8 +208,8 @@ class Server(object):
 			self.fatalerror(event.peer, "Invalid/Unknown session") # this will trigger ondisconnect() for cleanup
 			return
 
-		if not self.callbacks.has_key(packet.__class__):
-			logging.warning("Unhandled network packet from %s!" % (peer.address))
+		if packet.__class__ not in self.callbacks:
+			logging.warning("Unhandled network packet from %s - Ignoring!" % (peer.address))
 			return
 		self.call_callbacks(packet.__class__, event.peer, packet)
 

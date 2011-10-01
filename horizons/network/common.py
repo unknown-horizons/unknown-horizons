@@ -92,6 +92,8 @@ class Player():
 	def __str__(self):
 		return "Player(name=%s;address=%s)" % (self.name, self.address)
 
+packets.SafeUnpickler.add('server', Player)
+
 #-----------------------------------------------------------------------------
 
 class Game():
@@ -142,3 +144,5 @@ class Game():
 
 	def __str__(self):
 		return "Game(uuid=%s;maxplayers=%d;playercnt=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, Game.State(self.state))
+
+packets.SafeUnpickler.add('server', Game)
