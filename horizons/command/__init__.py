@@ -29,8 +29,8 @@ class Command(object):
 	@classmethod
 	def allow_network(self, klass):
 		"""
-		NOTE: this is a security related method and lead to execution of
-		arbritary code if used in a wrong way
+		NOTE: this is a security related method and may lead to
+		execution of arbritary code if used in a wrong way
 		see documentation inside horizons.network.packets.SafeUnpickler
 		"""
 		SafeUnpickler.add('server', klass)

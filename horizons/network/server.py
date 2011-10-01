@@ -132,7 +132,7 @@ class Server(object):
 
 
 	def disconnect(self, peer, later = True):
-		logging.debug("Disconnecting client %s" % (peer.address))
+		logging.debug("[DISCONNECT] Disconnecting client %s" % (peer.address))
 		try:
 			if later:
 				peer.disconnect_later()
@@ -153,27 +153,35 @@ class Server(object):
 
 	def onconnect(self, event):
 		peer = event.peer
-		logging.debug("[CONNECT] New Client from %s" % (peer.address))
 		# disable that check as peer.data may be uninitialized which segfaults then
 		#if peer.data in self.players:
 		#	logging.warning("Already known player %s!" % (peer.address))
 		#	self.fatalerror(event.peer, "You can't connect more than once")
 		#	return
-		player = Player(event.peer, self.generate_session_id())
+		player = Player(event.peer, self.generate_session_id(), event.data)
+		logging.debug("[CONNECT] New Client: %s" % (player))
+
 		# store session id inside enet.peer.data
-		# note: copying bytes or int doesn't work here
+		# NOTE: ALWAYS initialize peer.data
 		event.peer.data = player.sid
+
+		if (player.protocol > 0):
+			logging.warning("[CONNECT] %s runs old or unsupported protocol" % (player))
+			self.fatalerror(event.peer, "Old or unsupported multiplayer protocol. Please check your game version")
+			return
+
+		# note: copying bytes or int doesn't work here
 		self.players[player.sid] = player
 		self.send(event.peer, packets.server.cmd_session(player.sid))
 
 
 	def ondisconnect(self, event):
 		peer = event.peer
-		logging.debug("[DISCONNECT] Client %s disconnected" % (peer.address))
-		# disable that check. shouldn't happen anyway
-		#if peer.data not in self.players:
-		#	return
+		# check need for early disconnects (e.g. old protocol)
+		if peer.data not in self.players:
+			return
 		player = self.players[peer.data]
+		logging.debug("[DISCONNECT] %s disconnected" % (player))
 		if player.game is not None:
 			self.call_callbacks("leavegame", player.game, player)
 		del self.players[peer.data]

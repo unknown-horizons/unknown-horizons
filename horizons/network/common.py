@@ -29,7 +29,7 @@ __all__ = [
   'Game',
 ]
 
-class Address():
+class Address(object):
 	def __init__(self, address, port = None):
 		if isinstance(address, enet.Address):
 			self.host = address.host
@@ -58,15 +58,16 @@ class Address():
 
 #-----------------------------------------------------------------------------
 
-class Player():
-	def __init__(self, peer, sid):
-		self.peer  = peer
+class Player(object):
+	def __init__(self, peer, sid, protocol = 0):
+		self.peer     = peer
 		assert(isinstance(self.peer, enet.Peer))
-		self.address = Address(self.peer.address)
-		self.sid   = sid
-		self.name  = None
-		self.game  = None
-		self.ready = False
+		self.address  = Address(self.peer.address)
+		self.sid      = sid
+		self.protocol = protocol
+		self.name     = None
+		self.game     = None
+		self.ready    = False
 
 	def __hash__(self):
 		return hash((self.address))
@@ -90,14 +91,17 @@ class Player():
 		return { 'sid': self.sid, 'address': None, 'name': self.name }
 
 	def __str__(self):
-		return "Player(name=%s;address=%s)" % (self.name, self.address)
+		if self.name:
+			return "Player(addr=%s;proto=%d;name=%s)" % (self.address, self.protocol, self.name)
+		else:
+			return "Player(addr=%s;proto=%d)" % (self.address, self.protocol)
 
 packets.SafeUnpickler.add('server', Player)
 
 #-----------------------------------------------------------------------------
 
-class Game():
-	class State():
+class Game(object):
+	class State(object):
 		Open = 0
 		Prepare = 1
 		Running = 2
@@ -143,6 +147,6 @@ class Game():
 		self.playercnt = 0
 
 	def __str__(self):
-		return "Game(uuid=%s;maxplayers=%d;playercnt=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, Game.State(self.state))
+		return "Game(uuid=%s;maxpl=%d;plcnt=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, Game.State(self.state))
 
 packets.SafeUnpickler.add('server', Game)

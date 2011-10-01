@@ -41,7 +41,7 @@ SERVER_TIMEOUT = 5000
 # increment that after incompatible protocol changes
 SERVER_PROTOCOL = 0
 
-class ClientMode:
+class ClientMode(object):
 	Server = 0
 	Game = 1
 

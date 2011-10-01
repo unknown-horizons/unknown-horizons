@@ -47,8 +47,8 @@ log = logging.getLogger("network")
 
 class SafeUnpickler(object):
 	"""
-	NOTE: this is a security related method and lead to execution of
-	arbritary code if used in a wrong way
+	NOTE: this is a security related method and may lead to
+	execution of arbritary code if used in a wrong way
 
 	pickle encodes modules and classes using their name. during "unpickling"
 	pickle imports the modules and creates instances of these classes again.
@@ -108,7 +108,7 @@ class SafeUnpickler(object):
 
 #-------------------------------------------------------------------------------
 
-class packet:
+class packet(object):
 	def __init__(self):
 		self.sid = None
 
