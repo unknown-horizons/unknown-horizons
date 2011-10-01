@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-10-01 21:40+0200\n"
+"PO-Revision-Date: 2011-10-01 21:43+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ca@valencia\n"
@@ -228,7 +228,7 @@ msgstr "produir"
 
 # 87%
 msgid "produced"
-msgstr "produÏt"
+msgstr "produït"
 
 msgid "pasture"
 msgstr ""
@@ -295,16 +295,16 @@ msgid "citizen"
 msgstr "ciutadà"
 
 msgid "merchant"
-msgstr ""
+msgstr "comerciant"
 
 msgid "aristocrat"
 msgstr "aristòcrata"
 
 msgid "refresh"
-msgstr ""
+msgstr "actualitzar"
 
 msgid "residents"
-msgstr ""
+msgstr "residents"
 
 msgid "run"
 msgstr ""
