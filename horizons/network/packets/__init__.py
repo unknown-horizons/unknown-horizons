@@ -26,7 +26,6 @@ try:
 except ImportError:
 	from StringIO import StringIO
 
-import logging
 from horizons.network import find_enet_module
 enet = find_enet_module()
 
@@ -42,8 +41,6 @@ PICKLE_SAFE = {
 	'client' : {},
 	'server' : {},
 }
-
-log = logging.getLogger("network")
 
 class SafeUnpickler(object):
 	"""
