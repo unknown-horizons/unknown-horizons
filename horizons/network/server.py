@@ -31,7 +31,8 @@ enet = find_enet_module(client = False)
 MAX_PEERS = 4095
 CONNECTION_TIMEOUT = 500
 
-logging.basicConfig(level = logging.DEBUG)
+logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
+		level = logging.DEBUG)
 
 class Server(object):
 	def __init__(self, hostname, port):
@@ -71,7 +72,7 @@ class Server(object):
 			import random
 			import time
 			random.seed(uuid.getnode() + int(time.time() * 1e3))
-			logging.warning("Your system doesn't support /dev/urandom")
+			logging.warning("[INIT] Your system doesn't support /dev/urandom")
 
 
 	# uuid4() uses /dev/urandom when possible
@@ -155,7 +156,7 @@ class Server(object):
 		peer = event.peer
 		# disable that check as peer.data may be uninitialized which segfaults then
 		#if peer.data in self.players:
-		#	logging.warning("Already known player %s!" % (peer.address))
+		#	logging.warning("[CONNECT] Already known player %s!" % (peer.address))
 		#	self.fatalerror(event.peer, "You can't connect more than once")
 		#	return
 		player = Player(event.peer, self.generate_session_id(), event.data)
@@ -192,7 +193,7 @@ class Server(object):
 		#logging.debug("[RECEIVE] Got data from %s" % (peer.address))
 		# check player is known by server
 		if peer.data not in self.players:
-			logging.warning("Packet from unknown player %s!" % (peer.address))
+			logging.warning("[RECEIVE] Packet from unknown player %s!" % (peer.address))
 			self.fatalerror(event.peer, "I don't know you")
 			return
 
@@ -207,17 +208,18 @@ class Server(object):
 		try:
 			packet = packets.unserialize(event.packet.data)
 		except Exception, e:
-			logging.warning("Unknown packet from %s!" % (peer.address))
-			self.fatalerror(event.peer, "Unknown packet. Maybe old client?")
+			logging.warning("[RECEIVE] Unknown packet from %s!" % (peer.address))
+			self.fatalerror(event.peer, "Unknown packet. Please check your game version")
+			return
 
 		# session id check
 		if packet.sid != player.sid:
-			logging.warning("Invalid session id for player %s (%s vs %s)!" % (peer.address, packet.sid, player.sid))
+			logging.warning("[RECEIVE] Invalid session id for player %s (%s vs %s)!" % (peer.address, packet.sid, player.sid))
 			self.fatalerror(event.peer, "Invalid/Unknown session") # this will trigger ondisconnect() for cleanup
 			return
 
 		if packet.__class__ not in self.callbacks:
-			logging.warning("Unhandled network packet from %s - Ignoring!" % (peer.address))
+			logging.warning("[RECEIVE] Unhandled network packet from %s - Ignoring!" % (peer.address))
 			return
 		self.call_callbacks(packet.__class__, event.peer, packet)
 
