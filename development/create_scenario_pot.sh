@@ -38,35 +38,55 @@ elif [ ! -f content/scenarios/$1_en.yaml ]; then
     exit 1
 fi
 
+VERSION=$(python2 -c 'from horizons.constants import VERSION
+print "%s" % VERSION.RELEASE_VERSION')
+
 python2 << END > po/$1.py
 import yaml
 
+COMMENT_MESSAGEWIDGET = 'This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!'
+COMMENT_HEADING       = 'This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).'
+COMMENT_TEXT          = 'This is the text body of a logbook page.'
+
 def prep(x):
 	return x.replace("\n", r'\n').replace('"', r'\"')
-def write(x):
-	print ('_("%s")' % x).encode('utf-8')
+def write(comment, string):
+	retval = '#%s\n' % comment + '_("%s")' % (string)
+	print retval.encode('utf-8')
 
 scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
-write(prep(scenario['difficulty']))
-write(prep(scenario['author']))
-write(prep(scenario['description']))
+write('scenario difficulty', prep(scenario['difficulty']))
+write('scenario author', prep(scenario['author']))
+write('scenario description', prep(scenario['description']))
 
 for event in scenario['events']:
 	for action in event['actions']:
-		if action['type'] not in ('message', 'logbook', 'logbook_w'):
+		at = action['type']
+		if at not in ('message', 'logbook', 'logbook_w'):
 			continue
+		elif at == 'message':
+			comment = COMMENT_MESSAGEWIDGET
+		elif at[0:7] == 'logbook':
+			comment = COMMENT_HEADING
 		for argument in action['arguments']:
 			if isinstance(argument, int):
 				continue
-			argument = argument.replace("\n", r'\n').replace('"', r'\"')
+			argument = prep(argument)
 			if not argument:
+				comment = COMMENT_TEXT
+				#HACK the first arg (headline) is empty, do not write the headline comment afterwards
 				continue
-			write(argument)
+			write(comment, argument)
+			#HACK the first arg is a headline and written, now do not write the headline comment for the main text
+			comment = COMMENT_TEXT
 END
 
 xgettext --output-dir=po --output=$1.pot \
-         --from-code=UTF-8 --add-comments --no-wrap --sort-by-file \
+         --from-code=UTF-8 --add-comments \
+         --no-wrap --sort-by-file  \
          --copyright-holder='The Unknown Horizons Team' \
+         --package-name='Unknown Horizons' \
+         --package-version=$VERSION \
          --msgid-bugs-address=team@unknown-horizons.org \
          po/$1.py
 rm po/$1.py
