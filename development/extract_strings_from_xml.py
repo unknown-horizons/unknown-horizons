@@ -42,17 +42,18 @@ header = '''# ###################################################
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# ###################################################
-# WARNING: This file is generated automagically. If
-#          you need to update it follow the procedure
-#          outlined below.
-#
-# * Generate a bare version using
-#     python development/extract_strings_from_xml.py \\
-#       horizons/i18n/guitranslations.py
-# * Do the manual postprocessing needed, a diff between
-#   the versions help figuring out what is needed.
-# ###################################################
+# ###################################################################
+# WARNING: This file is generated automagically.
+#          You need to update it to see changes to strings in-game.
+#          DO NOT MANUALLY UPDATE THIS FILE (by editing strings).
+#          The script to generate .pot templates calls the following:
+# ./development/extract_strings_from_xml.py  horizons/i18n/guitranslations.py
+#          If you changed strings in code, you might just run this
+#          command as well.
+# NOTE: In string-freeze mode (shortly before releases, usually
+#       announced in a meeting), updates to this file must not happen
+#       without permission of the responsible translation admin!
+# ###################################################################
 
 from horizons.constants import VERSION
 
@@ -113,14 +114,14 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 
 		if len(element.getAttribute(text_name)) and len(element.getAttribute('name')):
 			name = element.getAttribute('name')
-			value = element.getAttribute(text_name)
+			text = element.getAttribute(text_name)
 			if name[0:6] == 'noi18n': #prepend 'noi18n' to labels without translation
 				break
 			if name == 'version_label':
-				value = 'VERSION.string()'
+				text = 'VERSION.string()'
 			else:
-				value = '_("%s")' % value
-			element_strings.append('%s: %s' % (('"%s"' % name).ljust(30), value))
+				text = '_("%s")' % text
+			element_strings.append('%-30s: (%-10s, %s)' % (('"%s"' % name), ('"%s"') % text_name, text))
 
 	return sorted(element_strings)
 
@@ -138,6 +139,7 @@ def content_from_file(filename):
 		content_from_element('DeleteButton', parsed, 'tooltip') + \
 		content_from_element('TooltipButton', parsed, 'tooltip') + \
 		content_from_element('TooltipIcon', parsed, 'tooltip') + \
+		content_from_element('TooltipLabel', parsed, 'text') + \
 		content_from_element('TooltipLabel', parsed, 'tooltip') + \
 		content_from_element('TooltipProgressBar', parsed, 'tooltip') + \
 		content_from_element('ToggleImageButton', parsed, 'tooltip')
@@ -146,7 +148,7 @@ def content_from_file(filename):
 		printname = filename.rsplit("/",1)[1]
 		#HACK! we strip the string until no "/" occurs and then use the remaining part
 		# this is necessary because of our dynamic widget loading (by unique file names)
-		return '\t\t"%s" : {\n\t\t\t%s,\n\t\t\t},' % (printname, ',\n\t\t\t'.join(strings))
+		return '\t"%s" : {\n\t\t\t%s,\n\t\t\t},' % (printname, ',\n\t\t\t'.join(strings))
 	else:
 		return ''
 
