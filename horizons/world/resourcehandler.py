@@ -45,7 +45,7 @@ class ResourceHandler(ComponentHolder):
 	## INIT/DESTRUCT
 	def __init__(self, **kwargs):
 		super(ResourceHandler, self).__init__(**kwargs)
-		self.add_component(StorageComponent)
+		self.add_component(StorageComponent())
 		self.__init()
 
 	def __init(self):

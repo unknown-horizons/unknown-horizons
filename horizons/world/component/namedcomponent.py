@@ -30,14 +30,16 @@ class NamedComponent(Component):
 
 	names_used = []
 
-	def __init__(self, instance, name=None):
-		super(NamedComponent, self).__init__(instance)
-		self.name = None
-		self.set_name(name)
+	def __init__(self, name=None):
+		super(NamedComponent, self).__init__()
+		self.name = name
+
+	def initialize(self):
+		self.set_name(self.name)
 
 	def set_name(self, name=None):
 		"""Actually sets the name."""
-		if self.name is not None:
+		if self.name is not None and self.name in NamedComponent.names_used:
 			NamedObject.names_used.remove(self.name)
 		if name is None:
 			name = self.get_default_name()

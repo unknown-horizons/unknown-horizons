@@ -31,11 +31,11 @@ class AmbientSoundComponent(Component):
 
 	NAME = "ambientsound"
 
-	def __init__(self, instance, positioning=True, **kwargs):
+	def __init__(self, positioning=True, **kwargs):
 		"""
 		@param positioning: bool, whether sound should play from a certain position.
 		"""
-		super(AmbientSoundComponent, self).__init__(instance)
+		super(AmbientSoundComponent, self).__init__()
 		self.__init(positioning)
 
 	def __init(self, positioning):
@@ -96,9 +96,9 @@ class AmbientSoundComponent(Component):
 		"""
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			if position is None:
-				a = AmbientSoundComponent(None, positioning=False)
+				a = AmbientSoundComponent(positioning=False)
 			else:
-				a = AmbientSoundComponent(None)
+				a = AmbientSoundComponent()
 				a.position = position
 			soundfile = horizons.main.db.get_sound_file(sound)
 			a.play_ambient(soundfile, looping = False)

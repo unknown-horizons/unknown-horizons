@@ -84,7 +84,7 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 
 	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
-		self.add_component(StorageComponent)
+		self.add_component(StorageComponent())
 		if inventory is None: # a new deposit
 			for resource, min_amount, max_amount in \
 			    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \

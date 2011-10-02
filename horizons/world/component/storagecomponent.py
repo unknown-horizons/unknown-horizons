@@ -2,9 +2,7 @@ import horizons.main
 
 from horizons.world import storage
 from horizons import constants
-from horizons.util import worldobject
 from horizons.world.component import Component
-from horizons.constants import STORAGE
 
 class StorageComponent(Component):
 	"""The StorageComponent class is used as as a parent class for everything that
@@ -18,16 +16,17 @@ class StorageComponent(Component):
 	Continue to horizons/world/provider.py for further digging.
 	"""
 
-	NAME='storagecomponent'
+	NAME = 'storagecomponent'
 
 	has_own_inventory = True # some objs share inventory, which requires different handling here.
 
-	def __init__(self, instance):
-		super(StorageComponent, self).__init__(instance)
-		self.__init()
+	def __init__(self, inventory=None):
+		super(StorageComponent, self).__init__()
+		self.inventory = inventory
 
-	def __init(self):
-		self.create_inventory()
+	def initialize(self):
+		if self.inventory is None:
+			self.create_inventory()
 		if self.has_own_inventory:
 			self.inventory.add_change_listener(self.instance._changed)
 
@@ -61,24 +60,6 @@ class StorageComponent(Component):
 
 	def load(self, db, worldid):
 		super(StorageComponent, self).load(db, worldid)
-		self.__init()
+		self.initialize()
 		if self.has_own_inventory:
 			self.inventory.load(db, worldid)
-
-
-class PositiveStorageComponent(StorageComponent):
-	"""StorageComponent that is to be used if a PositiveStorage is wanted"""
-
-	def create_inventory(self):
-		self.inventory = storage.PositiveStorage()
-
-class PositiveSizedSlotStorageComponent(StorageComponent):
-	"""StorageComponent that is to be used if a PositiveSizedSlots wanted"""
-
-	def create_inventory(self):
-		self.inventory = storage.PositiveSizedSlotStorage(0)
-
-class ShipStorageComponent(StorageComponent):
-	"""StorageComponent that is to be used for ships"""
-	def create_inventory(self):
-		self.inventory = storage.PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)

@@ -53,15 +53,15 @@ class ComponentHolder(object):
 				self.worldid, name, self.components[name].__class__.__module__, self.components[name].__class__.__name__)
 			self.components[name].save(db)
 
-	def add_component(self, component_class):
+	def add_component(self, component):
 		"""
-		Adds new component to holder.
-		@param component_name: name identifier of the added component
-		@param component_class: class of the component that will be initialized
+		Adds new component to holder and sets the instance attribute on the component
+		@param component: a component instance that is to be added
 			all components will have the init only with instance attribute
 		"""
-		component = component_class(self)
 		assert isinstance(component, Component)
+		component.instance = self
+		component.initialize()
 		self.components[component.NAME] = component
 
 	def remove_component(self, component_class):

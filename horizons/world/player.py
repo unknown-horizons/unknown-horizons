@@ -27,7 +27,8 @@ from horizons.util import WorldObject, Callback, Color, DifficultySettings
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.world.componentholder import ComponentHolder
-from horizons.world.component.storagecomponent import PositiveStorageComponent
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.storage import PositiveStorage
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
@@ -44,12 +45,12 @@ class Player(ComponentHolder, WorldObject):
 		"""
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
-		self.add_component(PositiveStorageComponent)
+		self.add_component(StorageComponent(inventory = PositiveStorage()))
 		self.__init(name, color, difficulty_level)
 
 		if inventory:
 			for res, value in inventory.iteritems():
-				self.get_component(PositiveStorageComponent).inventory.alter(res, value)
+				self.get_component(StorageComponent).inventory.alter(res, value)
 
 	def __init(self, name, color, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
@@ -104,7 +105,6 @@ class Player(ComponentHolder, WorldObject):
 		      a signaling concept for such events is planned.
 		"""
 		self.log.warning("ERROR: UNIT %s CANNOT MOVE ANY FURTHER!", unit)
-		pass
 
 	def notify_settler_reached_level(self, settler):
 		"""Settler calls this to notify the player

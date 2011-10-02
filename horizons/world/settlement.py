@@ -27,7 +27,7 @@ from horizons.util import WorldObject, WeakList
 from horizons.constants import BUILDINGS, SETTLER
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.namedcomponent import SettlementNameComponent
-from horizons.world.component.storagecomponent import PositiveSizedSlotStorageComponent
+from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.changelistener import ChangeListener
 
 class Settlement(WorldObject, ChangeListener, ComponentHolder, TradePost):
@@ -39,8 +39,8 @@ class Settlement(WorldObject, ChangeListener, ComponentHolder, TradePost):
 		"""
 		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 		super(Settlement, self).__init__()
-		self.add_component(SettlementNameComponent)
-		self.add_component(PositiveSizedSlotStorageComponent)
+		self.add_component(SettlementNameComponent())
+		self.add_component(StorageComponent(inventory = PositiveSizedSlotStorage(0)))
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
 		self.session = session
@@ -138,7 +138,7 @@ class Settlement(WorldObject, ChangeListener, ComponentHolder, TradePost):
 
 		# load super here cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)
-		self.add_component(SettlementNameComponent)
+		self.add_component(SettlementNameComponent())
 
 		# load all buildings from this settlement
 		# the buildings will expand the area of the settlement by adding everything,

@@ -81,7 +81,7 @@ class Collector(Unit):
 		                                y = y, \
 		                                **kwargs)
 
-		self.add_component(StorageComponent)
+		self.add_component(StorageComponent())
 		self.get_component(StorageComponent).inventory.limit = size
 		# TODO: use different storage to support multiple slots. see StorageHolder
 

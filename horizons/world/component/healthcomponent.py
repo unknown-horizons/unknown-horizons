@@ -31,8 +31,10 @@ class HealthComponent(Component):
 	# Store the name of this component
 	NAME = 'health'
 
-	def __init__(self, instance):
-		super(HealthComponent, self).__init__(instance)
+	def __init__(self):
+		super(HealthComponent, self).__init__()
+
+	def initialize(self):
 		health = self.instance.session.db.cached_query("SELECT max_health FROM health WHERE id = ?", self.instance.id)[0][0]
 		self.health = float(health)
 		self.max_health = float(health)

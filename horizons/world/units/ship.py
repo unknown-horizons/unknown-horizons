@@ -39,7 +39,7 @@ from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.namedcomponent import ShipNameComponent, PirateShipNameComponent
-from horizons.world.component.storagecomponent import ShipStorageComponent, StorageComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
 class ShipRoute(object):
 	"""
@@ -289,7 +289,7 @@ class Ship(Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
-		self.add_component(ShipStorageComponent)
+		self.add_component(StorageComponent(inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)))
 		self.__init()
 
 	def save(self, db):
@@ -309,8 +309,8 @@ class Ship(Unit):
 	def __init(self):
 		self._selected = False
 		# register ship in world
-		self.add_component(HealthComponent)
-		self.add_component(ShipNameComponent)
+		self.add_component(HealthComponent())
+		self.add_component(ShipNameComponent())
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -476,7 +476,7 @@ class PirateShip(Ship):
 
 	def __init(self):
 		super(PirateShip, self).__init()
-		self.add_component(PirateShipNameComponent) # Because this has the same name as the ShipNameComponent it will override the old ShipnameComponent
+		self.add_component(PirateShipNameComponent()) # Because this has the same name as the ShipNameComponent it will override the old ShipnameComponent
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""

@@ -24,11 +24,18 @@ class Component(object):
 	#  Store the name of this component. This has to be overwritten in subclasses
 	NAME = None
 
-	def __init__(self, instance):
+	def __init__(self):
 		"""
 		@param instance: instance that has the component
 		"""
-		self.instance = instance
+		self.instance = None # Has to be set by the componentholder
+
+	def initialize(self):
+		"""
+		This is called by the ComponentHolder it set the instance. Use this to
+		initialize any needed infrastructure
+		"""
+		pass
 
 	def remove(self):
 		"""

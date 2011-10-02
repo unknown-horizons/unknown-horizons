@@ -35,8 +35,8 @@ class StanceComponent(Component):
 	# Store the name of this component
 	NAME = 'stance'
 
-	def __init__(self, instance):
-		super(StanceComponent, self).__init__(instance)
+	def __init__(self):
+		super(StanceComponent, self).__init__()
 		self.state = 'idle'
 		self.action = {
 		    'idle' : self.act_idle,
@@ -46,6 +46,8 @@ class StanceComponent(Component):
 		    'auto_attack' : self.act_auto_attack,
 		    'flee' : self.act_flee,
 		}
+
+	def initialize(self):
 		# change state to 'user_attack' when the user issues attack via right click
 		self.instance.add_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
 		# change state to 'user_move' when the user issues movement via right click
@@ -121,8 +123,8 @@ class LimitedMoveStance(StanceComponent):
 	It also keeps track of the return position in which the unit should return when stopped attacking
 	"""
 
-	def __init__(self, instance):
-		super(LimitedMoveStance, self).__init__(instance)
+	def __init__(self):
+		super(LimitedMoveStance, self).__init__()
 		#TODO get range from db
 		self.stance_radius = 0
 		self.move_range = 0
@@ -201,8 +203,8 @@ class AggressiveStance(LimitedMoveStance):
 
 	NAME = 'aggressive'
 
-	def __init__(self, instance):
-		super(AggressiveStance, self).__init__(instance)
+	def __init__(self):
+		super(AggressiveStance, self).__init__()
 		#TODO get range from db
 		self.stance_radius = 15
 		self.move_range = 25
@@ -229,8 +231,8 @@ class HoldGroundStance(LimitedMoveStance):
 
 	NAME = 'hold_ground'
 
-	def __init__(self, instance):
-		super(HoldGroundStance, self).__init__(instance)
+	def __init__(self):
+		super(HoldGroundStance, self).__init__()
 		self.stance_radius = 5
 		self.move_range = 15
 
@@ -247,8 +249,8 @@ class FleeStance(StanceComponent):
 
 	NAME = 'flee'
 
-	def __init__(self, instance):
-		super(FleeStance, self).__init__(instance)
+	def __init__(self):
+		super(FleeStance, self).__init__()
 		self.lookout_distance = 20
 
 	def act_idle(self):
