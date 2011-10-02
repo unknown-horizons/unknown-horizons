@@ -57,7 +57,6 @@ class Scheduler(LivingObject):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
 		"""
-
 		if GAME.MAX_TICKS is not None and tick_id >= GAME.MAX_TICKS:
 			horizons.main.quit()
 			return
