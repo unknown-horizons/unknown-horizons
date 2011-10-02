@@ -40,13 +40,17 @@ class BoatbuilderTab(OverviewTab):
 		super(BoatbuilderTab, self).refresh()
 
 		main_container = self.widget.findChild(name="BB_main_tab")
-		container_active = self.widget.findChild(name="container_active")
-		container_inactive = self.widget.findChild(name="container_inactive")
+		container_active = main_container.findChild(name="container_active")
+		container_inactive = main_container.findChild(name="container_inactive")
 		progress_container = main_container.findChild(name="BB_progress_container")
+		cancel_container = main_container.findChild(name="BB_cancel_container")
 
 		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
 		production_lines = self.instance.get_production_lines()
 		if production_lines:
+
+			if cancel_container is None:
+				main_container.addChild(main_container.cancel_container)
 
 			# Set progress
 			if progress_container is None:
@@ -156,6 +160,9 @@ class BoatbuilderTab(OverviewTab):
 			if progress_container is not None:
 				main_container.progress_container = progress_container
 				main_container.removeChild(progress_container)
+			if cancel_container is not None:
+				main_container.cancel_container = cancel_container
+				main_container.removeChild(cancel_container)
 
 
 		self.widget.adaptLayout()
