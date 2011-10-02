@@ -38,9 +38,6 @@ class BoatbuilderTab(OverviewTab):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		super(BoatbuilderTab, self).refresh()
-		progress = self.instance.get_production_progress()
-		self.widget.findChild(name='progress').progress = progress*100
-		self.widget.findChild(name='BB_progress_perc').text = unicode(math.floor(progress*100))+u"%"
 
 		main_container = self.widget.findChild(name="BB_main_tab")
 		container_active = self.widget.findChild(name="container_active")
@@ -50,7 +47,15 @@ class BoatbuilderTab(OverviewTab):
 		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
 		production_lines = self.instance.get_production_lines()
 		if production_lines:
-			# TODO: fill in actual values here
+
+			# Set progress
+			if progress_container is None:
+				main_container.insertChildBefore( main_container.progress_container, self.widget.findChild(name="BB_needed_resources_container"))
+				progress_container = main_container.progress_container
+
+			progress = self.instance.get_production_progress()
+			self.widget.findChild(name='progress').progress = progress*100
+			self.widget.findChild(name='BB_progress_perc').text = unicode(math.floor(progress*100))+u"%"
 
 			# remove other container, but save it
 			if container_inactive is not None:
@@ -59,6 +64,9 @@ class BoatbuilderTab(OverviewTab):
 			if container_active is None:
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
+
+
+
 			produced_unit_id = self.instance._get_production(production_lines[0]).get_produced_units().keys()[0]
 			(name,) = self.instance.session.db("SELECT name FROM unit WHERE id = ?", produced_unit_id)[0]
 			container_active.findChild(name="headline_BB_builtship_label").text = unicode(name)
@@ -144,6 +152,10 @@ class BoatbuilderTab(OverviewTab):
 			if container_inactive is None:
 				main_container.insertChildBefore( main_container.container_inactive, progress_container)
 				container_inactive = main_container.container_inactive
+
+			if progress_container is not None:
+				main_container.progress_container = progress_container
+				main_container.removeChild(progress_container)
 
 
 		self.widget.adaptLayout()
