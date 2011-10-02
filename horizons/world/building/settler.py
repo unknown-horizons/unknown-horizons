@@ -202,7 +202,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# is calculated from the number of available goods -/+ a certain tax factor.
 		# to simulate the more dynamic, currently implemented approach (where every event changes
 		# the happiness), we simulate discontent of taxes by this:
-		happiness_decrease -= 7
+		happiness_decrease -= 6
 		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
 
 		self._changed()
