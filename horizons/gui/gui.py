@@ -90,7 +90,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		if self.__pause_displayed:
 			self.__pause_displayed = False
-
 			self.hide()
 			self.current = None
 			self.session.speed_unpause()

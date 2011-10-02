@@ -56,7 +56,7 @@ class IngameGui(LivingObject):
 		'status_gold'       : 'resource_bar',
 		'status_extra'      : 'resource_bar',
 		'status_extra_gold' : 'resource_bar',
-	  }
+	}
 
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
@@ -94,7 +94,7 @@ class IngameGui(LivingObject):
 		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0] + 77, 52, 121, 118)
 
 		self.minimap = Minimap(minimap_rect, self.session, \
-		                       self.session.view.renderer['GenericRenderer'])
+								           self.session.view.renderer['GenericRenderer'])
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
@@ -124,7 +124,7 @@ class IngameGui(LivingObject):
 		self.widgets['status_extra'].child_finder = PychanChildFinder(self.widgets['status_extra'])
 
 		self.message_widget = MessageWidget(self.session, \
-		                                    cityinfo.position[0] + cityinfo.size[0], 5)
+								                        cityinfo.position[0] + cityinfo.size[0], 5)
 		self.widgets['status_gold'].show()
 		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
@@ -199,7 +199,7 @@ class IngameGui(LivingObject):
 			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
 			self.bgs_shown = {}
 		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if label == 'gold' else bg_icon_res, \
-		                              position=self.bg_icon_pos[label], name='bg_icon_' + label)
+								                  position=self.bg_icon_pos[label], name='bg_icon_' + label)
 
 		if not value:
 			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
@@ -271,7 +271,7 @@ class IngameGui(LivingObject):
 		cityinfo = self.widgets['city_info']
 		cityinfo.mapEvents({
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
-			})
+		})
 		foundlabel = cityinfo.child_finder('city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
@@ -311,12 +311,13 @@ class IngameGui(LivingObject):
 		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "diplomacy_widget":
 			self.hide_menu()
 			return
-		players = self.session.world.players
-		local_player = self.session.world.player
+		players = set(self.session.world.players)
+		players.add(self.session.world.pirate)
+		players.discard(self.session.world.player)
+		players.discard(None) # e.g. when the pirate is disabled
 		dtabs = []
-		for player in players + [self.session.world.pirate]:
-			if player is not local_player:
-				dtabs.append(DiplomacyTab(player))
+		for player in players:
+			dtabs.append(DiplomacyTab(player))
 		tab = TabWidget(self, tabs=dtabs, name="diplomacy_widget")
 		self.show_menu(tab)
 
@@ -344,9 +345,9 @@ class IngameGui(LivingObject):
 			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
 		else:
 			btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
-				       range(0, self.session.world.player.settler_level+1)]
+							 range(0, self.session.world.player.settler_level+1)]
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
-				              active_tab=BuildTab.last_active_build_tab)
+											active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
 
 	def deselect_all(self):
