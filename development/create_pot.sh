@@ -17,7 +17,7 @@ SQL_POT_FILE=po/sqlite_strings.pot
 
 if [ ! "x$1" = "x-keep" ]; then
 	if [ ! "x$1" = "x-keepxml" ]; then
-		python2 development/extract_strings_from_xml.py > $XML_PY_FILE
+		python2 development/extract_strings_from_xml.py $XML_PY_FILE
 		echo "   * Regenerated xml translation file at $XML_PY_FILE."
 	fi
 	if [ ! "x$1" = "x-keepsql" ]; then
