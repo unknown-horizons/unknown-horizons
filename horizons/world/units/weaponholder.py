@@ -30,6 +30,7 @@ from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.component.stancecomponent import HoldGroundStance, AggressiveStance, \
 	NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
+from horizons.world.units.ship import Ship
 
 import gc
 
@@ -427,6 +428,15 @@ class WeaponHolder(object):
 		self.on_storage_modified()
 		# load target after all objects have been loaded
 		Scheduler().add_new_object(Callback(self.load_target, db), self, run_in = 0)
+
+	def get_status(self):
+		"""Return the current status of the ship."""
+		if self.is_attacking():
+			target = self.get_attack_target()
+			if isinstance(target, Ship):
+				return _('Attacking ') + target.classname.lower() + ' ' + target.name + ' (' + target.owner.name + ')'
+			return _('Attacking ') + target.owner.name
+		return super(WeaponHolder, self).get_status()
 
 @metaChangeListenerDecorator("user_move_issued")
 class MovingWeaponHolder(WeaponHolder):

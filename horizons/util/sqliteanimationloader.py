@@ -44,12 +44,12 @@ class SQLiteAnimationLoader(object):
 		#TODO: complete documentation
 		"""
 		commands = location.split(':')
-		id = commands.pop(0)
-		actionset, action, rotation = id.split('-')
+		ident = commands.pop(0)
+		actionset, action, rotation = ident.split('-')
 		commands = zip(commands[0::2], commands[1::2])
 
 		ani = fife.Animation.createAnimation()
-		
+
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
 			frame_end = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]

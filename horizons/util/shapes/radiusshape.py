@@ -26,7 +26,7 @@ class RadiusShape(object):
 	The shape includes everything, that the center contains plus every point,
 	for which this holds: distance(point, center) <= radius
 	The center can by any other shape.
-	If the center is a point, it's acctually a circle.
+	If the center is a point, it's actually a circle.
 	"""
 	def __init__(self, center, radius):
 		self.center = center

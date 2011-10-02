@@ -24,7 +24,7 @@ from default import DefaultPersonality
 class OtherPersonality(DefaultPersonality):
 	""" this personality is just for testing """
 
-	class AIPlayer(DefaultPersonality.AIPlayer):
+	class SettlementFounder(DefaultPersonality.SettlementFounder):
 		# found a settlement on a random island that is at least as large as the first element; if it is impossible then try the next size
 		island_size_sequence = [1000, 300, 150]
 

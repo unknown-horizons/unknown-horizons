@@ -9,7 +9,8 @@ description: "Tutoriaali:\nRakenna ensimm\xE4inen asutuskeskuksesi ja opi kuinka
 difficulty: !!python/unicode 'Tutoriaali'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Rakenna sivutoimisto rannikolle.']
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
   - arguments: [!!python/unicode 'Tervetuloa peliin Unknown Horizons!', "T\xE4m\xE4\
         \ on kapteenin lokikirja, johon kaikki t\xE4rke\xE4 tieto kirjataan. Lyhyt\
@@ -36,53 +37,35 @@ events:
         \ ensimm\xE4isen rakennuksesi.\n\nTEHT\xC4V\xC4: Rakenna sivutoimisto rannikolle.",
       2]
     type: logbook
-  - arguments: [tutStepDone, 6]
+  - arguments: [tutStepDone, 16]
     type: set_var
   conditions:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'PURA LAIVASI LASTI', "Nyt kun olet rakentanut Sivutoimiston,\
-        \ sinun tarvitsee siirt\xE4\xE4 sinne raaka-aineitasi.\n\nTehd\xE4ksesi niin,\
-        \ valitse aluksesi ja mene v\xE4lilehdelle puisesta laatikosta nimelt\xE4\
-        \ 'Laivan tavaran\xE4kym\xE4'.\n\nT\xE4ss\xE4 saat yleiskatsauksen laivasi\
-        \ lastin ulkon\xE4\xF6st\xE4 ja n\xE4et n\xE4pp\xE4imen 'Ota kyytiin/pois'.\n\
-        \nT\xE4m\xE4 n\xE4pp\xE4in tulee aktiiviseksi, jos aluksesi on mahdollisen\
-        \ kauppakumppanin kantamassa kuten esimerkiksi sivutoimisto.\n\nPaina t\xE4\
-        t\xE4 n\xE4pp\xE4int\xE4. Jos sit\xE4 ei voi painaa, siirr\xE4 alustasi kohti\
-        \ sivutoimistoa ja yrit\xE4 uudestaan.\n\nTEHT\xC4V\xC4: Avaa kaupusteluikkuna."]
-    type: logbook_w
-  - arguments: ['', "N\xE4kem\xE4si v\xE4lilehti jakautuu kaupank\xE4yjiin 'Alus'\
-        \ ja 'Asutuskeskus'.\n\nSiirt\xE4\xE4ksesi tavaroita varastosta toiseen paina\
-        \ kyseist\xE4 tavaraa.\n\nKoita ensin painaa laivassasi olevia lautoja ja\
-        \ sitten yrit\xE4 siirt\xE4\xE4 ne takaisin.\n\nVoit vaihtaa liikutettavien\
-        \ m\xE4\xE4r\xE4n k\xE4ytt\xE4m\xE4ll\xE4 itsens\xE4selitt\xE4vi\xE4 valintanappeja\
-        \ keskell\xE4.\n\nTotuitko kaupank\xE4yntiv\xE4lilehteen?\nTarvitset nyt rakennustarvikkeita\
-        \ asutuskeskukseesi!\n\nTEHT\xC4V\xC4: Pura laivasi lastista v\xE4hint\xE4\
-        \xE4n 10 tonnia kutakin laivasi mukana purjehtinutta tarviketta."]
-    type: logbook
-  - arguments: ["Pura v\xE4hint\xE4\xE4n 10 tonnia kutakin tavaraa laivastasi."]
-    type: message
-  - arguments: [tutStepDone, 16]
-    type: set_var
-  conditions:
-  - arguments: [1, 0]
-    type: building_num_of_type_greater
-  - arguments: [tutStepDone, 5]
-    type: var_gt
-  - arguments: [tutStepDone, 16]
-    type: var_lt
-- actions:
-  - arguments: [!!python/unicode 'RAKENNA PUUNHAKKAAJA', "Uudet rakennustarvikkeesi\
-        \ sivustoimistossa, voit aloittaa rakentamaan muutamia perusrakennuksia.\n\
-        \nAloittakaamme puunhakkaajalla.\n\nT\xE4m\xE4 on olennaista, koska t\xE4\
-        ss\xE4 vaiheessa laudat ovat ainoat palkit, joille merenk\xE4vij\xF6ill\xE4\
-        si on varaa ripustaa telttansa.\n\nKalastaja tarvitsee lautoja my\xF6s rakentaakseen\
-        \ veneens\xE4.\n\nRakentaaksesi puunhakkaajan; avaa rakennusvalikko joko painamalla\
-        \ isoa kuvaketta minimapin alapuolella tai B-n\xE4pp\xE4int\xE4.\n\nRakennusvalikko\
-        \ on j\xE4rjestetty korotusten perusteella.\nSin\xE4 olet t\xE4ss\xE4 vaiheessa\
-        \ peli\xE4 ensimm\xE4isess\xE4 korotuksessa (Merenk\xE4vij\xE4-taso), joten\
-        \ sinulle tarjotaan vain perusrakennuksia."]
+  - arguments: [!!python/unicode 'RAKENNA PUUNHAKKAAJA', !!python/unicode 'The construction
+        material on your ship got unloaded automatically. You can now construct some
+        basic buildings.
+
+
+        We will start with building a lumberjack.
+
+
+        This is essential because, at this stage, boards are the only poles your sailors
+        can afford to hang their tents over.
+
+
+        The fisherman needs some boards to build his vessel as well.
+
+
+        In order to construct lumberjacks; open the build menu by either clicking
+        the big icon below the mini map or pressing B key.
+
+
+        The build menu is sorted by increments.
+
+        You are currently in the first increment (the Sailors level) so are offered
+        only the basic buildings.']
     type: logbook_w
   - arguments: ['', "Kun yhteiskuntasi kehittyy, saat k\xE4ytt\xF6\xF6si yh\xE4 monimutkaisempia\
         \ rakennuksia.\n\nNyt riitt\xE4\xE4, ett\xE4 valitset puunhakkaajan kohdasta\
@@ -155,14 +138,23 @@ events:
         \ koska telttojen rakentaminen raivaa puut, joita puunhakkaajasi tarvitsee\
         \ rakentaakseen lautoja.\n\nTEHT\xC4V\xC4: Rakenna keskustori."]
     type: logbook_w
-  - arguments: ['', "Katsotaanpa tarkemmin keskustoria.\n\nYleiskatsaus-v\xE4lilehdell\xE4\
-        \ voit nopeasti s\xE4\xE4t\xE4\xE4 veroja.\n\nSeuraavalla eli 'Tili'-v\xE4\
-        lilehdell\xE4 saat saaren tasapainolaskelman, jossa n\xE4kyy kaikki maksamasi\
-        \ kustannukset ja tienaamasi verot.\n\nKohdat 'Myynti' ja 'Osto' viittaavat\
-        \ kaupank\xE4yntitasapainoosi ja ne tullaan selitt\xE4m\xE4\xE4n my\xF6hemmin.\n\
-        \nJos tasapainosi on positiivisella, bisneksesi kokonaisuutena tekee voittoa.\n\
-        \n'Uudisasukas'-v\xE4lilehdess\xE4 n\xE4et, kuinka onnellisia asukkaasi ovat\
-        \ ja mit\xE4 tarviketta suurin osa heist\xE4 haluaisi."]
+  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
+
+
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
+
+
+        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
+        later on.
+
+
+        If your balance is positive, you all-in-all make a profit.
+
+
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
     type: logbook
   - arguments: [!!python/unicode 'Rakenna keskustori. Valitse alue, jolla ei ole liian
         montaa tuotantorakennusta.']
@@ -229,30 +221,50 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'RAKENNA MERKKITULI', "N\xE4etk\xF6 aluksen ohittavan\
-        \ saaresi ajasta aikaan?\n\nKyseess\xE4 on vapaakauppiaan alus, yksi ensimm\xE4\
-        isist\xE4 uudisasukkaista t\xE4ll\xE4 saarirykelm\xE4ll\xE4.\n\nT\xE4m\xE4\
-        \ kauppias tarjoaa asutuskeskuksellesi tarpeellisia tarvikkeita, joita et\
-        \ viel\xE4 pysty tuottamaan.\n\nVoit my\xF6s myyd\xE4 ylij\xE4\xE4m\xE4\xE4\
-        \ tuotannostasi, mutta yleens\xE4 niiden kuluttaminen (lis\xE4\xE4m\xE4ll\xE4\
-        \ telttoja) on tuottoisampaa kuin niiden myyminen vapaakauppiaalle.\n\nTavallisesti\
-        \ alukset vain purjehtivat ymp\xE4riins\xE4 etsien hyvi\xE4 kauppoja, mutta\
-        \ hallinnoimasi kaltaiset pienet uudisasutuskeskukset tarvitsevat edustusta,\
-        \ muuten niit\xE4 ei l\xF6ydet\xE4.\n\nT\xE4t\xE4 varten voit rakentaa merkkitulen\
-        \ rannikolle sivutoimistosi l\xE4helle n\xE4ytt\xE4\xE4ksesi aluksille tiet\xE4\
-        \ asutuskeskukseesi."]
+  - arguments: [!!python/unicode 'RAKENNA MERKKITULI', !!python/unicode 'Can you see
+        the ship passing your island from time to time? That ship belongs to the Free
+        Trader, one of the first settlers in this archipelago.
+
+
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
+
+
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
+
+
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
+
+
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
     type: logbook_w
-  - arguments: ['', "T\xE4m\xE4n pienen mainostuksen j\xE4lkeen vapaakauppias pys\xE4\
-        htyy ajasta aikaan katsomaan sivutoimistoasi.\n\nVoit ehdottaa kauppoja v\xE4\
-        lilehdest\xE4 'Osta/Myy'. (T\xE4m\xE4 ominaisuus on t\xE4ll\xE4 hetkell\xE4\
-        \ varsin hankalak\xE4ytt\xF6inen, mutta uudelleensuunnittelu on tuotantolinjalla.\
-        \ Jos olet keksinyt hyv\xE4n tavan hoitaa t\xE4m\xE4n, pyyd\xE4mme jakamaan\
-        \ ajatuksesi! Tarvitsemme apuanne t\xE4ss\xE4!)\n\n'Merenk\xE4vij\xE4t'-tasolla\
-        \ sinulla on kolme kaupusteluruutua.\n\nVoit painaa pient\xE4 kuvaketta vaihtaaksesi\
-        \ ruudun tyypin Ostamisesta Myymiseksi ja p\xE4in vastoin.\n\nJos painat ruutua,\
-        \ voit valita tavaran, jolla haluat k\xE4yd\xE4 kauppaa. Selostamme t\xE4\
-        m\xE4n tarkemmin, kun oleta valmis kaupank\xE4ynnin aloittamiseen.\n\nTEHT\xC4\
-        V\xC4: Rakenna merkkituli rannikolle l\xE4helle sivutoimistoasi."]
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
   - arguments: ["Rakenna merkkituli rannikolle sivutoimistosi l\xE4hettyville."]
     type: message
@@ -276,19 +288,16 @@ events:
         \ 'tavoitellun arvon' varastossasi.\nMyydess\xE4 'tavoiteltu arvo' on lukum\xE4\
         \xE4r\xE4, jonka haluat s\xE4ilytt\xE4\xE4 myym\xE4tt\xF6m\xE4n\xE4"]
     type: logbook_w
-  - arguments: ['', "Esimerkiksi: \nPit\xE4m\xE4ll\xE4 ruudun 'Osto'-tilassa ja 5\
-        \ tonnia varastossa, vieritin sijoitettuna 9 tonniin laittaa sinut ostamaan\
-        \ enint\xE4\xE4n 4 tonnia lis\xE4\xE4.\nMyyminen toimii samankaltaisesti.\
-        \ 'Myy'-ruutu 18 tonnia varastossa ja vieritin sijoitettuna 13 tonniin myy\
-        \ enint\xE4\xE4n 5 tonnia.\n\nJos vapaakauppias kuitenkin haluaa ostaa tai\
-        \ myyd\xE4 v\xE4hemm\xE4n kuin asetuksesi sallivat, sinun tulee el\xE4\xE4\
-        \ sen kanssa ja odottaa vapaakauppiaan takaisinpaluuta.\n\nUnknown Horizons\
-        \ osaa \xE4lykk\xE4\xE4n hinnoittelun, joten yksik\xF6n hinta voi vaihdella.\n\
-        Hintojen k\xE4sin muuttaminen EI ole mahdollista!\n\nVoit n\xE4hd\xE4 kaupank\xE4\
-        yntisi tuloksen 'Tili'-v\xE4lilehdess\xE4 vertaamalla 'Myynti' ja 'Osto'-arvoja.\n\
-        \nTEHT\xC4V\xC4: Osta niin monta ty\xF6kalua kuin tarvitset, jotta varastossasi\
-        \ olisi 30!\nJos aluksessasi on viel\xE4 lastia, niin nyt on hyv\xE4 kohta\
-        \ purkaa ne maihin."]
+  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
+        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
+        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
+        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
+        \ however only wants to buy or sell less than your settings would allow him,\
+        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
+        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
+        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
+        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
+        \ as you need to have 30 tools in stock!"]
     type: logbook
   - arguments: ["Varastoi saarellesi v\xE4hint\xE4\xE4n 30 ty\xF6kalua."]
     type: message
@@ -313,15 +322,26 @@ events:
         \ niihin.\n\nMy\xF6hemmill\xE4 tasoilla, p\xE4ivitettyj\xE4 versioita rakennuksista\
         \ saattaa tulla tarjolle."]
     type: logbook_w
-  - arguments: ['', "Siin\xE4 tapauksessa 'pient\xE4' versiota ei tarvita en\xE4\xE4\
-        , sill\xE4 'iso' tulee my\xF6s tarjoamaan, mit\xE4 asukkaasi tarvitsevat ensimm\xE4\
-        isill\xE4 tasoilla.\n\nOle huolellinen suunnitellessasi kaupunkiasi, sill\xE4\
-        \ suurin osa sellaisista kehittyneist\xE4 rakennuksista on isompia kuin tavalliset.\n\
-        \nHuomioi, ett\xE4 uskoa kohdellaan kuin fyysist\xE4 resurssia, joten yksik\xF6\
-        iden t\xE4ytyy rentoutua siell\xE4 jonkin ajan kuluttua.\n\nT\xE4rke\xE4\xE4\
-        :\nEI riit\xE4, ett\xE4 rakennus on vain jossakin telttojen kantamassa.\n\n\
-        TEHT\xC4V\xC4: Rakenna kokoontumisteltta polkuineen telttoihin t\xE4ytt\xE4\
-        \xE4ksesi merenk\xE4vij\xF6idesi vaatimukset uskonnollisuudelle."]
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
+
+
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
+
+
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
+
+
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
     type: logbook
   - arguments: ["Rakenna kokoontumisteltta yhteydell\xE4 telttoihin."]
     type: message

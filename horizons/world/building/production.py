@@ -19,18 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
 
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.producer import ProducerBuilding
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
-from horizons.util import Rect, Circle
+from horizons.util import Rect
 from horizons.util.shapes.radiusshape import RadiusShape, RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
-from horizons.constants import BUILDINGS, PRODUCTION, RES, GAME_SPEED
+from horizons.constants import BUILDINGS, PRODUCTION, RES
 from horizons.gui.tabs import ProductionOverviewTab
 
 
@@ -85,7 +84,6 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 	def _do_select(cls, renderer, position, world, settlement):
 		# Don't call super here, because we don't want to highlight the island
 		# only fish deposits
-		island = world.get_island(position.center())
 		for building in world.get_providers_in_range(RadiusShape(position, cls.radius), res=RES.FISH_ID):
 			renderer.addColored(building._instance, *cls.selection_color)
 			cls._selected_tiles.append(building)
@@ -106,7 +104,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
 		for tile in cls._selected_tiles:
 			remove_colored(tile._instance)
-		# this acctually means SelectableBuilding._selected_tiles = []
+		# this actually means SelectableBuilding._selected_tiles = []
 		# writing self._selected_tiles = [] however creates a new variable in this instance,
 		# which isn't what we want. Therefore this workaround:
 		while cls._selected_tiles:
@@ -143,13 +141,13 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 	def get_loading_area(cls, building_id, rotation, pos):
 		if building_id == BUILDINGS.MOUNTAIN_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
 			if rotation == 45:
-				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 0, 2)
+				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 1, 3)
 			elif rotation == 135:
-				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 2, 0)
+				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 3, 1)
 			elif rotation == 225:
-				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 0, 2)
+				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 1, 3)
 			elif rotation == 315:
-				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 2, 0)
+				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 3, 1)
 			assert False
 		else:
 			return pos
@@ -193,7 +191,7 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		self.__init(deposit_class, mine_empty_msg_shown)
 
 	def _on_production_change(self):
-		super(ProducerBuilding, self)._on_production_change()
+		super(Mine, self)._on_production_change()
 		if self._get_current_state() == PRODUCTION.STATES.waiting_for_res and \
 		   (hasattr(self, "_mine_empty_msg_shown") and \
 		    not self._mine_empty_msg_shown):

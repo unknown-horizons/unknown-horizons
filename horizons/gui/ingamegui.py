@@ -21,10 +21,8 @@
 
 from fife.extensions import pychan
 
-import horizons.main
 from horizons.entities import Entities
-
-from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
+from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
@@ -32,11 +30,14 @@ from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.playersoverview import PlayersOverview
+from horizons.gui.widgets.playerssettlements import PlayersSettlements
+from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.util.gui import LazyWidgetsDict
 from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
+from horizons.gui.tabs.tabinterface import TabInterface
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -55,12 +56,13 @@ class IngameGui(LivingObject):
 		'status_gold'       : 'resource_bar',
 		'status_extra'      : 'resource_bar',
 		'status_extra_gold' : 'resource_bar',
-	  }
+	}
 
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
 		self.session = session
 		self.main_gui = gui
+		self.main_widget = None
 		self.widgets = {}
 		self.tabwidgets = {}
 		self.settlement = None
@@ -74,10 +76,12 @@ class IngameGui(LivingObject):
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
 		cityinfo.position_technique = "center-10:top+5"
 
-		self.logbook = LogBook()
+		self.logbook = LogBook(self.session)
 		self.logbook.add_pause_request_listener(Callback(self.session.speed_pause))
 		self.logbook.add_unpause_request_listener(Callback(self.session.speed_unpause))
 		self.players_overview = PlayersOverview(self.session)
+		self.players_settlements = PlayersSettlements(self.session)
+		self.players_ships = PlayersShips(self.session)
 		self.scenario_chooser = ScenarioChooser(self.session)
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
@@ -87,7 +91,7 @@ class IngameGui(LivingObject):
 		minimap.position_technique = "right-20:top+4"
 		minimap.show()
 
-		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 52, 120, 117)
+		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0] + 77, 52, 121, 118)
 
 		self.minimap = Minimap(minimap_rect, self.session, \
 		                       self.session.view.renderer['GenericRenderer'],
@@ -121,17 +125,17 @@ class IngameGui(LivingObject):
 		self.widgets['status_extra'].child_finder = PychanChildFinder(self.widgets['status_extra'])
 
 		self.message_widget = MessageWidget(self.session, \
-		                                    cityinfo.position[0] + cityinfo.size[0], 5)
+								                        cityinfo.position[0] + cityinfo.size[0], 5)
 		self.widgets['status_gold'].show()
 		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
 
 		# map button names to build functions calls with the building id
 		self.callbacks_build = {}
-		for id,button_name,settler_level in horizons.main.db.get_building_id_buttonname_settlerlvl():
+		for id_,button_name,settler_level in self.session.db.get_building_id_buttonname_settlerlvl():
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
-			self.callbacks_build[settler_level][button_name] = Callback(self._build, id)
+			self.callbacks_build[settler_level][button_name] = Callback(self._build, id_)
 
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
@@ -196,7 +200,7 @@ class IngameGui(LivingObject):
 			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
 			self.bgs_shown = {}
 		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if label == 'gold' else bg_icon_res, \
-		                              position=self.bg_icon_pos[label], name='bg_icon_' + label)
+								                  position=self.bg_icon_pos[label], name='bg_icon_' + label)
 
 		if not value:
 			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
@@ -268,7 +272,7 @@ class IngameGui(LivingObject):
 		cityinfo = self.widgets['city_info']
 		cityinfo.mapEvents({
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
-			})
+		})
 		foundlabel = cityinfo.child_finder('city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
@@ -308,12 +312,13 @@ class IngameGui(LivingObject):
 		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "diplomacy_widget":
 			self.hide_menu()
 			return
-		players = self.session.world.players
-		local_player = self.session.world.player
+		players = set(self.session.world.players)
+		players.add(self.session.world.pirate)
+		players.discard(self.session.world.player)
+		players.discard(None) # e.g. when the pirate is disabled
 		dtabs = []
-		for player in players + [self.session.world.pirate]:
-			if player is not local_player:
-				dtabs.append(DiplomacyTab(player))
+		for player in players:
+			dtabs.append(DiplomacyTab(player))
 		tab = TabWidget(self, tabs=dtabs, name="diplomacy_widget")
 		self.show_menu(tab)
 
@@ -334,10 +339,16 @@ class IngameGui(LivingObject):
 
 		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
-		btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
-		         range(0, self.session.world.player.settler_level+1)]
-		tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
-								    active_tab=BuildTab.last_active_build_tab)
+
+		if not any( (settlement.owner == self.session.world.player) for settlement in self.session.world.settlements):
+			# player has not built any settlements yet. Accessing the build menu at such a point
+			# indicates a mistake in the mental model of the user. Display a hint.
+			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
+		else:
+			btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
+							 range(0, self.session.world.player.settler_level+1)]
+			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
+											active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
 
 	def deselect_all(self):
@@ -463,11 +474,19 @@ class IngameGui(LivingObject):
 		self._hide_change_name_dialog()
 
 	def on_escape(self):
-		if self.logbook.is_visible():
-			self.logbook.hide()
+		if self.main_widget:
+			self.main_widget.hide()
 		else:
 			return False
 		return True
+
+	def on_switch_main_widget(self, widget):
+		"""The main widget has been switched to the given one (possible None)."""
+		if self.main_widget: # close the old one if it exists
+			old_main_widget = self.main_widget
+			self.main_widget = None
+			old_main_widget.hide()
+		self.main_widget = widget
 
 	def display_game_speed(self, text):
 		"""

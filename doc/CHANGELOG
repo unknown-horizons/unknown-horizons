@@ -4,25 +4,38 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-??-??: Milestone 2011.3
-changelog date: AUG 09; rev: 88c9e112020b61d6a45dda4e15a878513b288fba
+changelog date: SEP 06; rev: 508268b13f31bca06e12d143fd270e917d5cf0d6
 
 Gameplay and Balancing
 * New features
    + trade routes can wait for load and unload
+   + support for international trade routes
    + new in-game pause menu, replaces pause popup and in-game menu
    + hotkey "T" toggles translucency of trees and mountains
-   + 
+   + player score widget, accessed through F2
+   + player settlement overview, accessed through F3
+   + player ship list, accessed through F4
+   + allow/deny inhabitant upgrades 
+   + show hint when user tries to build something without a settlement
+
 * Modifications and changes
+   # unload all resources in ship inventory when a new settlement gets founded
    # rename market place to main square
    # modified ALL resource values, refer to development/print_db_data.py res
      for the new values. Drastically lowered the price of most resources.
    # settler consumption formula now properly considers number of inhabitants
    # settler tax and happiness formula
+   # game speed array now is [0.5x 1x 2x 3x 4x 6x 8x 11x]
    # 'raw' resources now have reasonable names (sugar cane, tobacco plants).
      Also renamed raw iron and raw clay to iron and clay deposit, respectively.
+   # better distribution of resource deposits
+   # player starts with 12 cannons
+   # fisher boats cannot be built as of now
+   # boat builder allows construction of huker and frigate
+   # open ship inventory tab after trade became impossible (ship left BO range)
    # 
 * Fixed bugs and problems
-   ~ mutable default arguments caused resource deposits to be empty 
+   ~ mutable default arguments caused resource deposits to be empty
    ~ check full area of branch office for other settlements before building
    ~ 
 
@@ -32,15 +45,23 @@ Media Content
    + building: wooden storage hut
    + icon: diplomacy in minimap panel
    + icon: trade route slot modes (load ship, unload ship)
+   + icon: combat stances aggressive, hold ground, none, flee
+   + icon: allow/deny inhabitant upgrade
+   + icon: several build menu and resource icons
+   + voice: french map_creation by seblabel
+   + colors: purple, orange, teal, lemon, bordeaux, gray
    + 
 * Brush-ups and modifications
+   # icon: all minimap panel icons
+   # icon: all player emblems (also added new ones)
    # 
 
 User Interface
 * Additions and new features
+   + random map parameters: island size (max, mean, sd), map size, water ratio
+   + map parameters in UI: AI players, resource density, free trader and pirate
    + display error message when yaml can't be found
    + build menu now updates when inhabitants upgrade
-   + random map parameters map size and island size can be set via UI
    + buoys now also displayed for user interactions like trade routes
    + 
 * Repositioning and modifications
@@ -48,8 +69,8 @@ User Interface
    # use templates for different boxes in singleplayer menu
    # removed need for adjust_black_background
    # slim minimap images, icon positioning in minimap panel
-   # disable game speed buttons when min / max is reached or the game is paused
-   # 
+   # remove the main square overview tab
+   #
 * Fixed bugs and usability problems
    ~ boxes in settings expanded for some languages, buttons were unreachable
    ~ in-game ui appeared around the main menu under certain conditions
@@ -59,6 +80,8 @@ User Interface
    ~ cancelling a build action issued through 'Build related' opened build menu
    ~ removed problems with highlight cache (TearingTool cleanup)
    ~ display needed resources if hovering 'Found settlement' in ship overview
+   ~ disable game speed buttons when min / max is reached or the game is paused
+   ~ disable speed buttons in MP session
    ~ 
 
 Codebase
@@ -66,7 +89,13 @@ Codebase
    + support explicit paths to files for --start-map --load-map --start-scenario
      and --start-campaign
    + save and load the rng state
-   + 
+   + scenario action for spawning ships
+   + dev script to generate a gfx overview website
+   + unified statistics widget
+   + 'noi18n' name for widgets that are not planned to be translated
+   + speech implementation
+   +
+
 * Modified structures
    # deselect instances before removal
    # use %APPDATA%\unknown-horizons as user dir on windows
@@ -75,6 +104,9 @@ Codebase
    # use plain text sql statements instead of binary sqlite databases
    # removed some outdated sql tables
    # obsolete and misleading FarmerCollector replaced by BuildingCollector
+   # modified size of rect created by Rect.init_from_topleft_and_size
+   # max player value also limits amount of AI players
+   # captain's log now also uses StatsWidget
    # 
 * Fixed crashes and inconsistencies
    ~ most tests crashed on windows (open file handle)
@@ -85,23 +117,26 @@ Codebase
    ~ several crashes related to removing units and buildings
    ~ upgrading python to a version not supporting bsddb anymore caused crash
    ~ loading games could fail on mac due to .DS_Store files in content/
+   ~ two segfaults related to quitting the game
+   ~ collectors now teleport home if they cannot find a way home
    ~ 
 
 User-Contributed Content
 * Translations
    + new translations: sv
    + new terminology translations: sv
-   + new tutorial translations: 
+   + new tutorial translations: sv
    # updates to translations: bg, ca, cs, de, es, et, fi, fr, hu, it, lt, nb,
                               nl, pl, pt, pt_BR, ru, sl
-   # updates to tutorial translations: 
+   # updates to tutorial translations: de, fi, fr, it, nl, pt, ru
 * Campaigns and scenarios
+   + new scenario 'combat1' by mihaibivol
 * Media Content
 * New team members with this release, Annotations
    + Push access was granted to:
      wentam
    + We accepted pull requests or patches by:
-     hoffi
+     hoffi, abeaumont, orakeldel, mtfk
    + Translators that joined our teams and contributed several strings:
      Please refer to the credits!
 

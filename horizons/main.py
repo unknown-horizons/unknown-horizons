@@ -46,7 +46,7 @@ from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER
+from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER
 from horizons.network.networkinterface import NetworkInterface
 
 # private module pointers of this module
@@ -158,7 +158,7 @@ def start(command_line_arguments):
 	elif command_line_arguments.stringpreview:
 		startup_worked = _start_map("development_no_trees", 0, False)
 		from development.stringpreviewwidget import StringPreviewWidget
-		StringPreviewWidget().show()
+		StringPreviewWidget(_modules.session).show()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
 		preloading[0].start()
@@ -178,7 +178,9 @@ def quit():
 	ExtScheduler.destroy_instance()
 	fife.quit()
 
-def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False, campaign=None, ai_players=0, human_ai=False):
+def start_singleplayer(map_file, playername = "Player", playercolor = None, is_scenario = False, \
+		campaign = None, ai_players = 0, human_ai = False, trader_enabled = True, pirate_enabled = True, \
+		natural_resource_multiplier = 1):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
 	@param ai_players: number of AI players to start (excludes possible human AI)
@@ -188,7 +190,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	preload_game_join(preloading)
 
 	if playercolor is None: # this can't be a default parameter because of circular imports
-			playercolor = Color[1]
+		playercolor = Color[1]
 
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
@@ -211,9 +213,9 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 
 	# add AI players with a distinct color; if none can be found then use black
 	for num in xrange(ai_players):
-		color = Color[7] # if none can be found then be black
+		color = Color[COLORS.BLACK] # if none can be found then be black
 		for possible_color in Color:
-			if possible_color == Color[7]:
+			if possible_color == Color[COLORS.BLACK]:
 				continue # black is used by the trader and the pirate
 			available = True
 			for player in players:
@@ -225,9 +227,13 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 				break
 		players.append({'id': num + 2, 'name' : 'AI' + str(num + 1), 'color' : color, 'local' : False, 'ai': True, 'difficulty': difficulty_level[True]})
 
+	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
-		_modules.session.load(map_file, players, is_scenario=is_scenario, campaign = campaign)
-	except:
+		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, natural_resource_multiplier, \
+			is_scenario = is_scenario, campaign = campaign)
+	except InvalidScenarioFileFormat, e:
+		raise
+	except Exception, e:
 		import traceback
 		print "Failed to load", map_file
 		traceback.print_exc()
@@ -235,12 +241,12 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 			_modules.session.end()
 		_modules.gui.show_main()
 		headline = _(u"Failed to start/load the game")
-		descr = _(u"The game you selected couldn't be started.") + \
-		      _("The savegame might be broken or has been saved with an earlier version.")
+		descr = _(u"The game you selected couldn't be started.") + u" " +\
+			      _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai)
 
-def prepare_multiplayer(game):
+def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natural_resource_multiplier = 1):
 	"""Starts a multiplayer game server
 	TODO: acctual game data parameter passing
 	"""
@@ -262,11 +268,12 @@ def prepare_multiplayer(game):
 	# start new session
 	from mpsession import MPSession
 	# get random seed for game
-	random = sum(game.get_uuid().uuid)
+	uuid = game.get_uuid()
+	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
 	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
 	_modules.session.load("content/maps/" + game.get_map_name() + ".sqlite", \
-	                      game.get_player_list())
+	                      game.get_player_list(), trader_enabled, pirate_enabled, natural_resource_multiplier)
 
 def start_multiplayer(game):
 	_modules.session.start()
@@ -335,7 +342,7 @@ def _start_map(map_name, ai_players, human_ai, is_scenario = False, campaign = N
 
 def _start_random_map(ai_players, human_ai, seed = None):
 	from horizons.util import random_map
-	start_singleplayer(random_map.generate_map(seed), ai_players=ai_players, human_ai=human_ai)
+	start_singleplayer(random_map.generate_map_from_seed(seed), ai_players=ai_players, human_ai=human_ai)
 	return True
 
 def _start_campaign(campaign_name):
@@ -402,7 +409,7 @@ def _load_map(savegame, ai_players, human_ai):
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
-	load_game(ai_players, human_ai, map_file)
+	load_game(savegame=map_file)
 	return True
 
 def _load_last_quicksave():
@@ -415,7 +422,7 @@ def _load_last_quicksave():
 	except KeyError:
 		print _("Error: No quicksave found.")
 		return False
-	load_game(0, False, save)
+	load_game(savegame=save)
 	return True
 
 def _create_db():

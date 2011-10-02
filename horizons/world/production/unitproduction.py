@@ -22,11 +22,12 @@
 import copy
 
 from horizons.world.production.production import ChangingProduction
-from horizons.constants import PRODUCTION
+from horizons.constants import PRODUCTION, RES
 from horizons.scheduler import Scheduler
 
 class UnitProduction(ChangingProduction):
 	"""Production, that produces units."""
+	USES_GOLD = True
 	def __init__(self, **kwargs):
 		super(UnitProduction, self).__init__(auto_start=False, **kwargs)
 		self.__init()
@@ -37,12 +38,6 @@ class UnitProduction(ChangingProduction):
 		self.original_prod_line = self._prod_line
 		self._prod_line = copy.deepcopy(self._prod_line)
 		self.progress = progress # float indicating current production progress
-
-	@classmethod
-	def load(cls, db, worldid):
-		self = cls.__new__(cls)
-		self._load(db, worldid)
-		return self
 
 	def _load(self, db, worldid):
 		super(UnitProduction, self)._load(db, worldid)
@@ -55,19 +50,40 @@ class UnitProduction(ChangingProduction):
 		super(UnitProduction, self)._give_produced_res()
 
 	def _check_available_res(self):
-		for res in self._prod_line.consumed_res.iterkeys():
-			if self.inventory[res] > 0:
+		# Gold must be available from the beginning
+		if self._prod_line.consumed_res.get(RES.GOLD_ID, 0) > 0: # check if gold is needed
+			amount = self._prod_line.consumed_res[RES.GOLD_ID]
+		for res, amount in self._prod_line.consumed_res.iteritems():
+			# we change the production, so the amount can become 0
+			# in this case, we must no consider this resource, as it has already been fully provided
+			if amount == 0:
+				continue # nothing to take here
+			if res == RES.GOLD_ID:
+				if self.owner_inventory[RES.GOLD_ID] > 0:
+					return True
+			elif self.inventory[res] > 0:
 				return True
 		return False
 
-	def _remove_res_to_expend(self):
-		"""Takes as many res as there are and returns sum of amount of res taken."""
+	def _remove_res_to_expend(self, return_without_gold=False):
+		"""Takes as many res as there are and returns sum of amount of res taken.
+		@param return_without_gold: return not an integer but a tuple, where the second value is without gold"""
 		taken = 0
+		taken_without_gold = 0
 		for res, amount in self._prod_line.consumed_res.iteritems():
-			remnant = self.inventory.alter(res, amount) # try to get all
+			if res == RES.GOLD_ID:
+				inventory = self.owner_inventory
+			else:
+				inventory = self.inventory
+			remnant = inventory.alter(res, amount) # try to get all
 			self._prod_line.change_amount(res, remnant) # set how much we still need to get
+			if return_without_gold and res != RES.GOLD_ID:
+				taken_without_gold += abs(remnant) + amount
 			taken += abs(remnant) + amount
-		return taken
+		if return_without_gold:
+			return (taken, taken_without_gold)
+		else:
+			return taken
 
 	def _produce(self):
 		# check if we're done
@@ -76,19 +92,21 @@ class UnitProduction(ChangingProduction):
 			self._finished_producing()
 			return
 
-		removed_res = self._remove_res_to_expend()
+		removed_res, removed_res_without_gold = self._remove_res_to_expend(return_without_gold=True)
 		# check if there were res
 		if removed_res == 0:
 			# watch inventory for new res
 			self.inventory.add_change_listener(self._check_inventory)
+			if self.__class__.USES_GOLD:
+				self.owner_inventory.add_change_listener(self._check_inventory)
 			self._state = PRODUCTION.STATES.waiting_for_res
 			self._changed()
 			return
 
 		# calculate how much of the whole production process we can produce now
 		# and set the scheduler waiting time accordingly (e.g. half of res => wait half of prod time)
-		all_needed_res = sum(self.original_prod_line.consumed_res.itervalues())
-		part_of_whole_production = float(removed_res) / all_needed_res
+		all_needed_res = sum( i[1] for i in self.original_prod_line.consumed_res.iteritems() if i[0] != RES.GOLD_ID )
+		part_of_whole_production = float(removed_res_without_gold) / all_needed_res
 		prod_time = Scheduler().get_ticks( part_of_whole_production * self._prod_line.time )
 		prod_time = min(prod_time, 1) # wait at least 1 tick
 		# do part of production and call this again when done

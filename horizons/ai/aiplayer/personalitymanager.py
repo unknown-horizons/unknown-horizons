@@ -21,11 +21,12 @@
 
 import logging
 
-from personality import DefaultPersonality, OtherPersonality
-
+from horizons.ai.aiplayer.personality import DefaultPersonality, OtherPersonality
 from horizons.util.python import decorators
 
 class PersonalityManager(object):
+	"""This class handles the loading of personality data for the AI players."""
+
 	log = logging.getLogger("ai.aiplayer.personality_manager")
 
 	def __init__(self, player):
@@ -55,9 +56,10 @@ class PersonalityManager(object):
 		return self
 
 	def get(self, name):
+		"""Return a class that contains the relevant personality constants."""
 		return getattr(self._personality, name)
 
-	available_personalities = [] # class name: a personality class
+	available_personalities = [] # [personality class, ...]
 
 	@classmethod
 	def prepare_personalities_list(cls):

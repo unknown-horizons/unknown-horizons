@@ -177,10 +177,12 @@ class Unit(AmbientSound, MovingObject):
 				return (possible_target, path)
 		return (None, None)
 
+	@property
+	def classname(self):
+		return horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
+
 	def __str__(self): # debug
-		classname = horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
-		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
-																		 self.worldid)
+		return '%s(id=%s;worldid=%s)' % (self.classname, self.id, self.worldid)
 
 
 decorators.bind_all(Unit)

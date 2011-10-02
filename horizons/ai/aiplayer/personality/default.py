@@ -22,12 +22,27 @@
 from horizons.constants import SETTLER
 
 class DefaultPersonality:
-	class AIPlayer:
+	class SettlementFounder:
 		min_feeder_island_area = 400 # minimum amount of usable free land on an island to consider turning it into a feeder island
-		feeder_island_requirement_cutoff = 30 # if there are less than this many free 3x3 squares in a settlement then a feeder island is needed
 
 		# found a settlement on a random island that is at least as large as the first element; if it is impossible then try the next size
 		island_size_sequence = [500, 300, 150]
+
+		enemy_settlement_penalty = 200 # penalty for every enemy settlement on the island
+		compact_empire_importance = 100 # importance of keeping our islands close together
+		extra_branch_office_distance = 1 # extra distance to add to the usual branch office to island distance when choosing an island
+		nearby_enemy_penalty = 100 # importance of keeping our islands away from other players' islands
+		extra_enemy_island_distance = 1 # extra distance to add to the usual island to other player's island distance when choosing an island
+
+		min_raw_clay = 100 # if the island has less than this much then apply the penalty
+		max_raw_clay = 300 # no more than this much will count for the bonus value
+		raw_clay_importance = 0.3 # how important is the available resource amount
+		no_raw_clay_penalty = 100 # penalty for having less than this much of the resource on the island
+
+		min_raw_iron = 100 # if the island has less than this much then apply the penalty
+		max_raw_iron = 300 # no more than this much will count for the bonus value
+		raw_iron_importance = 0.05 # how important is the available resource amount
+		no_raw_iron_penalty = 30 # penalty for having less than this much of the resource on the island
 
 		# minimum amount of a resource required to found a new settlement
 		min_new_island_gold = 8000
@@ -67,22 +82,7 @@ class DefaultPersonality:
 		path_unreachable_boundary_penalty = 0.1
 
 	class ProductionBuilder(AreaBuilder):
-		collector_area_enlargement_alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
-		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
-		max_collector_area_unreachable = 10 # maximum collector area (of 3x3 squares) that doesn't have to be reachable when considering whether to enlarge the area
-
-		deposit_coverage_alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
-
-		min_bad_collector_coverage = 0.5 # collector coverage should be improved when a production building is stopped for more than this amount of time
-		min_free_space = 20 # if there is less than this much free space for a resource then it doesn't matter that the building in badly covered
-		max_good_collector_utilisation = 0.7 # if the collector building is used more than this then don't attempt to improve coverage by connecting more production buildings
-
-		max_reasonably_served_buildings = 3 # maximum number of buildings a storage can reasonably serve (not a hard limit)
-		collector_extra_distance = 6.0 # constant distance on top of the actual distance a collector has to move (accounts for breaks)
-		improved_collector_coverage_alignment_coefficient = 0.001 # the importance of alignment when choosing a location for a storage to improve collector coverage
-
-		collector_improvement_road_expires = 1500 # minimum number of ticks between collector improvement road connections
-		collector_improvement_storage_expires = 4000 # minimum number of ticks between collector improvement extra storages
+		pass
 
 	class VillageBuilder(AreaBuilder):
 		max_village_section_size = 22 # maximum side length of a village section
@@ -102,6 +102,7 @@ class DefaultPersonality:
 		village_area_50 = 0.32 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
 		village_area_60 = 0.35 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
 		min_village_size = 81 # minimum possible village size in tiles
+		min_village_proportion = 0.95 # the proportion of the chosen village area size that must be present
 
 	class ResourceManager:
 		default_resource_requirement = 30 # try to always have this much tools and boards in settlement inventory
@@ -126,9 +127,6 @@ class DefaultPersonality:
 		dummy_bricks_requirement = 0.001
 		dummy_boards_requirement = 0.01
 		dummy_tools_requirement = 0.001
-
-		max_required_storage_space = 60 # maximum storage capacity to go for when the inventory starts to get full
-		full_storage_threshold = 5 # when there is less than this amount of free space for a resource then we might need more space
 
 		# tax rates and upgrade rights in new settlements
 		initial_sailor_taxes = 0.5
@@ -188,6 +186,8 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = SETTLER.PIONEER_LEVEL
 
+		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
+
 	class DoNothingGoal:
 		enabled = True
 		default_priority = 1500 # mean priority; changing this will influence which goals are more important than doing nothing
@@ -201,11 +201,18 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = SETTLER.SAILOR_LEVEL
 
+		alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
+		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
+		max_collector_area_unreachable = 10 # maximum collector area (of 3x3 squares) that doesn't have to be reachable when considering whether to enlarge the area
+
 	class FoundFeederIslandGoal:
 		enabled = True
 		default_priority = 650
 		residences_required = 16
 		min_settler_level = SETTLER.SAILOR_LEVEL
+
+		feeder_island_requirement_cutoff = 30 # if there are less than this many free 3x3 squares in a settlement then a feeder island is needed
+		usable_feeder_island_cutoff = 30 # if there are less than this many free 3x3 on a feeder island then another feeder island may be needed
 
 	class ImproveCollectorCoverageGoal:
 		enabled = True
@@ -213,11 +220,24 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = SETTLER.SAILOR_LEVEL
 
+		min_bad_collector_coverage = 0.5 # collector coverage should be improved when a production building is stopped for more than this amount of time
+		min_free_space = 20 # if there is less than this much free space for a resource then it doesn't matter that the building in badly covered
+		max_good_collector_utilisation = 0.7 # if the collector building is used more than this then don't attempt to improve coverage by connecting more production buildings
+
+		max_reasonably_served_buildings = 3 # maximum number of buildings a storage can reasonably serve (not a hard limit)
+		collector_extra_distance = 6.0 # constant distance on top of the actual distance a collector has to move (accounts for breaks)
+		alignment_coefficient = 0.001 # the importance of alignment when choosing a location for a storage to improve collector coverage
+
+		collector_improvement_road_expires = 1500 # minimum number of ticks between collector improvement road connections
+		collector_improvement_storage_expires = 4000 # minimum number of ticks between collector improvement extra storages
+
 	class MountainCoverageGoal:
 		enabled = True
 		default_priority = 200
 		residences_required = 0
 		min_settler_level = SETTLER.SETTLER_LEVEL
+
+		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 
 	class SignalFireGoal:
 		enabled = True
@@ -225,11 +245,14 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = SETTLER.SAILOR_LEVEL
 
-	class StorageSpaceGoal:
+	class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 		enabled = True
 		default_priority = 825
 		residences_required = 0
 		min_settler_level = SETTLER.SAILOR_LEVEL
+
+		max_required_storage_space = 60 # maximum storage capacity to go for when the inventory starts to get full
+		full_storage_threshold = 5 # when there is less than this amount of free space for a resource then we might need more space
 
 	class TentGoal:
 		enabled = True
@@ -320,15 +343,18 @@ class DefaultPersonality:
 	class BrickyardEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		collector_distance_importance = 0.1 # importance of the distance to the nearest collector in the range [0, 1]
+		distance_penalty = 2 # when no clay pit is in reach then apply a penalty of this times the radius
 
 	class CharcoalBurnerEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		lumberjack_distance_importance = 0.05 # importance of the distance to the nearest lumberjack in the range [0, 1]
 		iron_mine_distance_importance = 0.1 # importance of the distance to the nearest iron mine in the range [0, 1]
+		distance_penalty = 2 # when no lumberjack or iron mine is in reach then apply a penalty of this times the radius
 
 	class DistilleryEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
+		distance_penalty = 2 # when no relevant farm is in reach then apply a penalty of this times the radius
 
 	class FarmEvaluator:
 		alignment_importance = 0.001 # the larger this value, the larger the effect of alignment on the placement
@@ -353,16 +379,19 @@ class DefaultPersonality:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		collector_distance_importance = 0.4 # importance of the distance to the nearest collector in the range [0, 1]
 		charcoal_burner_distance_importance = 0.1 # importance of the distance to the nearest charcoal burner in the range [0, 1]
+		distance_penalty = 2 # when no collector or charcoal burner is in reach then apply a penalty of this times the radius
 
 	class ToolmakerEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		smeltery_distance_importance = 0.4 # importance of the distance to the nearest smeltery in the range [0, 1]
 		lumberjack_distance_importance = 0.1 # importance of the distance to the nearest lumberjack in the range [0, 1]
 		charcoal_burner_distance_importance = 0.4 # importance of the distance to the nearest charcoal burner in the range [0, 1]
+		distance_penalty = 2 # when no smeltery, lumberjack, or charcoal burner is in reach then apply a penalty of this times the radius
 
 	class WeaverEvaluator:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
+		distance_penalty = 2 # when no relevant farm is in reach then apply a penalty of this times the radius
 
 	class ModifiedFieldEvaluator:
 		add_potato_field_value = 1.5 # the value of adding a potato field

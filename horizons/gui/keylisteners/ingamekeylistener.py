@@ -70,14 +70,18 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.coordinates_tooltip.toggle()
 		elif keystr == 'x':
 			self.session.destroy_tool()
-		elif keystr == '+':
+		elif keystr == '+' or keystr == '=':
 			self.session.speed_up()
 		elif keystr == '-':
 			self.session.speed_down()
 		elif keystr == 'p':
 			self.session.gui.toggle_pause()
-		elif keystr == 'r':
+		elif keyval == fife.Key.F2:
 			self.session.ingame_gui.players_overview.toggle_visibility()
+		elif keyval == fife.Key.F3:
+			self.session.ingame_gui.players_settlements.toggle_visibility()
+		elif keyval == fife.Key.F4:
+			self.session.ingame_gui.players_ships.toggle_visibility()
 		elif keystr == 'l':
 			self.session.ingame_gui.logbook.toggle_visibility()
 		elif keystr == 'd':

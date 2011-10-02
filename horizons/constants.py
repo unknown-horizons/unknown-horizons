@@ -20,12 +20,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import ctypes
 import platform
 import os.path
 import re
 import locale
 
-from ext.enum import Enum
+from horizons.ext.enum import Enum
 
 """This file keeps track of the constants that are used in Unknown Horizons.
 NOTE: Using magic constants in code is generally a bad style, so avoid where
@@ -36,7 +37,7 @@ possible and instead import the proper classes of this file.
 class VERSION:
 	def _set_version():
 		"""Function gets latest revision of the working copy.
-		It only works in git repositories, and is acctually a hack.
+		It only works in git repositories, and is actually a hack.
 		"""
 		try:
 			from run_uh import find_uh_position
@@ -58,12 +59,12 @@ class VERSION:
 	RELEASE_NAME    = "Unknown Horizons Version %s"
 	RELEASE_VERSION = _set_version()
 
-	# change to sth like this for release
-	# RELEASE_NAME = _("Unknown Horizons Alpha %s")
-	# RELEASE_VERSION = u'2011.2'
+	# change to sth like this for release, please don't add %s to the first string
+	#RELEASE_NAME = _("Unknown Horizons") + unicode(" %s")
+	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 39
+	SAVEGAMEREVISION= 43
 
 	@staticmethod
 	def string():
@@ -213,7 +214,10 @@ class GROUND:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176]
+	TICK_RATES = [8, 16, 32, 48, 64, 96, 128, 176] #starting at 0.5x with max of 11x
+
+class COLORS:
+	BLACK = 9
 
 class VIEW:
 	ZOOM_MAX = 1
@@ -234,7 +238,9 @@ class PRODUCTION:
 	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for keeping track of how busy a production is
 
 class PRODUCTIONLINES:
-	FISHING_BOAT = 15
+	HUKER = 15
+	FISHING_BOAT = None # will get added later
+	FRIGATE = 58
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
@@ -250,11 +256,11 @@ class MESSAGES:
 	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
 	LOGBOOK_DEFAULT_DELAY = 4 # delay between condition fulfilled and logbook popping up
 
-# AI
+# AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:
-	HIGHLIGHT_PLANS = False
-	AI_PLAYERS = 1
-	HUMAN_AI = False
+	HIGHLIGHT_PLANS = False # whether to show the AI players' plans on the map
+	AI_PLAYERS = 1 # number of AI players in a game started from the command line
+	HUMAN_AI = False # whether the human player is controlled by the AI
 
 class TRADER: # check resource values: ./development/print_db_data.py res
 	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
@@ -308,12 +314,18 @@ class LAYERS:
 	NUM = 4 # number of layers
 
 ## PATHS
-# workaround, so it can be used to create paths withing PATHS
+# workaround, so it can be used to create paths within PATHS
 
 if platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
-	_user_dir = os.path.join(os.environ['APPDATA'], "unknown-horizons")
+	dll = ctypes.windll.shell32
+	buf = ctypes.create_string_buffer(300)
+	dll.SHGetSpecialFolderPathA(None, buf, 0x0005, False) # get the My Documents folder
+	my_games = os.path.join(buf.value, 'My Games')
+	if not os.path.exists(my_games):
+		os.makedirs(my_games)
+	_user_dir = os.path.join(my_games, 'unknown-horizons')
 _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 
 class PATHS:
@@ -329,14 +341,19 @@ class PATHS:
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 
+	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
+
 	DB_FILES = tuple(os.path.join("content", i) for i in \
-	                 ("game.sql", "settler.sql", "balance.sql", "atlas.sql") )
+	                 ("game.sql", "balance.sql") )
+	#voice paths
+	VOICE_DIR = os.path.join("content", "audio", "voice")
+
+class PLAYER:
+	STATS_UPDATE_FREQUENCY = 42
 
 ## SINGLEPLAYER
 class SINGLEPLAYER:
 	SEED = None
-	DB_FILES = tuple(os.path.join("content", i) for i in \
-	                 ("game.sql", "settler.sql", "balance.sql") )
 
 ## MULTIPLAYER
 class MULTIPLAYER:
@@ -344,7 +361,7 @@ class MULTIPLAYER:
 
 class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
-	SERVER_PORT = 2001
+	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
 
 ## TRANSLATIONS

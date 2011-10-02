@@ -25,8 +25,9 @@ from horizons.util import WorldObject, RadiusRect, Callback, decorators
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.constants import COLLECTORS
 from horizons.scheduler import Scheduler
+from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.collectors.collector import Collector, JobList
 
-from collector import Collector, JobList
 
 
 class BuildingCollector(Collector):
@@ -62,14 +63,14 @@ class BuildingCollector(Collector):
 		# save home_building and creation tick
 		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
 		db("INSERT INTO building_collector(rowid, home_building, creation_tick) VALUES(?, ?, ?)", \
-			self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
+			 self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
 
 		# save job history
 		for tick, utilisation in self._job_history:
-			 # pre-translate the tick number for the loading process
+				# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + 1
 			db("INSERT INTO building_collector_job_history(collector, tick, utilisation) VALUES(?, ?, ?)", \
-				self.worldid, translated_tick, utilisation)
+				 self.worldid, translated_tick, utilisation)
 
 	def load(self, db, worldid):
 		# we have to call __init here before super().load, because a superclass uses a method,
@@ -224,13 +225,13 @@ class BuildingCollector(Collector):
 		@param res: optional, only search for buildings that provide res"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.home_building.island.get_providers_in_range(reach, reslist=reslist, \
-		                                                        player=self.owner)
+								                                            player=self.owner)
 
 	def handle_path_home_blocked(self):
 		"""Called when we get blocked while trying to move to the job location.
 		The default action is to resume movement in a few seconds."""
 		self.log.debug("%s: got blocked while moving home, trying again in %s ticks.", \
-			self, COLLECTORS.DEFAULT_WAIT_TICKS)
+								   self, COLLECTORS.DEFAULT_WAIT_TICKS)
 		Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
 
 	def move_home(self, callback=None, action='move_full'):
@@ -242,9 +243,15 @@ class BuildingCollector(Collector):
 			Scheduler().add_new_object(callback, self, run_in=0)
 		else:
 			# actually move home
-			self.move(self.home_building, callback=callback, destination_in_building=True, action=action, \
-			          blocked_callback=self.handle_path_home_blocked)
-			self.state = self.states.moving_home
+			try:
+				self.move(self.home_building, callback=callback, destination_in_building=True, action=action, \
+				          blocked_callback=self.handle_path_home_blocked)
+				self.state = self.states.moving_home
+			except MoveNotPossible:
+				# we are in trouble.
+				# the collector went somewhere, now there is no way for them to move home.
+				# this is an unsolved problem also in reality, so we are forced to use an unconventional solution.
+				self.teleport(self.home_building, callback=callback, destination_in_building=True)
 
 	def cancel(self, continue_action = None):
 		"""Cancels current job and moves back home"""

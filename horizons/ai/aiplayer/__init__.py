@@ -19,10 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import copy
 import logging
 
-from collections import deque, defaultdict
+from collections import defaultdict
 
 from mission.foundsettlement import FoundSettlement
 from mission.preparefoundationship import PrepareFoundationShip
@@ -32,13 +31,13 @@ from mission.internationaltrade import InternationalTrade
 
 from personalitymanager import PersonalityManager
 from landmanager import LandManager
-from completeinventory import CompleteInventory
 from settlementmanager import SettlementManager
 from unitbuilder import UnitBuilder
-from constants import BUILDING_PURPOSE, GOAL_RESULT
+from constants import GOAL_RESULT
 from builder import Builder
 from specialdomestictrademanager import SpecialDomesticTradeManager
 from internationaltrademanager import InternationalTradeManager
+from settlementfounder import SettlementFounder
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
 from building import AbstractBuilding
@@ -67,7 +66,6 @@ from goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject
-from horizons.constants import RES, BUILDINGS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.util.python import decorators
@@ -78,62 +76,36 @@ class AIPlayer(GenericAI):
 	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission')
 
 	log = logging.getLogger("ai.aiplayer")
-	regular_player = True
 	tick_interval = 32
 
 	def __init__(self, session, id, name, color, difficulty_level, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, difficulty_level, **kwargs)
 		self.need_more_ships = False
-		self._need_feeder_island = False
+		self.need_feeder_island = False
 		self.personality_manager = PersonalityManager(self)
 		self.__init()
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = 2)
 
-	def get_available_islands(self, min_land):
-		options = []
-		for island in self.session.world.islands:
-			if island.worldid in self.islands:
-				continue
-
-			if island.worldid not in self.__island_value_cache or self.__island_value_cache[island.worldid][0] != island.last_change_id:
-				flat_land = 0
-				for tile in island.ground_map.itervalues():
-					if 'constructible' not in tile.classes:
-						continue
-					if tile.object is not None and not tile.object.buildable_upon:
-						continue
-					if tile.settlement is not None:
-						continue
-					flat_land += 1
-				self.__island_value_cache[island.worldid] = (island.last_change_id, (flat_land, island))
-
-			if self.__island_value_cache[island.worldid][1][0] >= min_land:
-				options.append(self.__island_value_cache[island.worldid][1])
-		return options
-
-	def choose_island(self, min_land):
-		options = self.get_available_islands(min_land)
-		if not options:
-			return None
-		total_land = sum(zip(*options)[0])
-
-		# choose a random big enough island with probability proportional to the available land
-		choice = self.session.random.randint(0, total_land - 1)
-		for (land, island) in options:
-			if choice <= land:
-				return island
-			choice -= land
-		return None
+	def start(self):
+		""" Start the AI tick process. Try to space out their ticks evenly. """
+		ai_players = 0
+		position = None
+		for i in xrange(len(self.world.players)):
+			player = self.world.players[i]
+			if isinstance(player, AIPlayer):
+				if player is self:
+					position = ai_players
+				ai_players += 1
+		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval * position / ai_players + 1)
 
 	def finish_init(self):
-		for ship in self.session.world.ships:
-			if ship.owner == self and ship.is_selectable:
-				self.ships[ship] = self.shipStates.idle
+		# initialise the things that couldn't be initialised before because of the loading order
+		self.refresh_ships()
+		self.start()
 
 	def refresh_ships(self):
 		""" called when a new ship is added to the fleet """
-		for ship in self.session.world.ships:
+		for ship in self.world.ships:
 			if ship.owner == self and ship.is_selectable and ship not in self.ships:
 				self.log.info('%s Added %s to the fleet', self, ship)
 				self.ships[ship] = self.shipStates.idle
@@ -146,15 +118,17 @@ class AIPlayer(GenericAI):
 		self._settlement_manager_by_settlement_id = {}
 		self.missions = set()
 		self.fishers = []
-		self.personality = self.personality_manager.get('AIPlayer')
-		self.complete_inventory = CompleteInventory(self)
+		self.settlement_founder = SettlementFounder(self)
 		self.unit_builder = UnitBuilder(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
 		self.goals = [DoNothingGoal(self)]
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
 		self.international_trade_manager = InternationalTradeManager(self)
 
-		self.__island_value_cache = {} # cache island values
+	def start_mission(self, mission):
+		self.ships[mission.ship] = self.shipStates.on_a_mission
+		self.missions.add(mission)
+		mission.start()
 
 	def report_success(self, mission, msg):
 		self.missions.remove(mission)
@@ -166,9 +140,9 @@ class AIPlayer(GenericAI):
 			self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
 			self.add_building(settlement_manager.settlement.branch_office)
 			if settlement_manager.feeder_island:
-				self._need_feeder_island = False
+				self.need_feeder_island = False
 		elif isinstance(mission, PrepareFoundationShip):
-			self._found_settlements()
+			self.settlement_founder.tick()
 
 	def report_failure(self, mission, msg):
 		self.missions.remove(mission)
@@ -187,7 +161,7 @@ class AIPlayer(GenericAI):
 		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
 		remaining_ticks = max(calls.values()[0], 1)
 		db("INSERT INTO ai_player(rowid, need_more_ships, need_feeder_island, remaining_ticks) VALUES(?, ?, ?, ?)", \
-			self.worldid, self.need_more_ships, self._need_feeder_island, remaining_ticks)
+			self.worldid, self.need_more_ships, self.need_feeder_island, remaining_ticks)
 
 		# save the ships
 		for ship, state in self.ships.iteritems():
@@ -213,7 +187,7 @@ class AIPlayer(GenericAI):
 		self.personality_manager = PersonalityManager.load(db, self)
 		self.__init()
 
-		self.need_more_ships, self._need_feeder_island, remaining_ticks = \
+		self.need_more_ships, self.need_feeder_island, remaining_ticks = \
 			db("SELECT need_more_ships, need_feeder_island, remaining_ticks FROM ai_player WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
 
@@ -263,103 +237,19 @@ class AIPlayer(GenericAI):
 			for (mission_id,) in db_result:
 				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success, self.report_failure))
 
-	def found_settlement(self, island, ship, feeder_island):
-		self.ships[ship] = self.shipStates.on_a_mission
-		land_manager = LandManager(island, self, feeder_island)
-		land_manager.display()
-		self.islands[island.worldid] = land_manager
-
-		found_settlement = FoundSettlement.create(ship, land_manager, self.report_success, self.report_failure)
-		self.missions.add(found_settlement)
-		found_settlement.start()
-
-	def _have_settlement_starting_resources(self, ship, settlement, min_money, min_resources):
-		if self.complete_inventory.money < min_money:
-			return False
-
-		for res, amount in ship.inventory:
-			if res in min_resources and min_resources[res] > 0:
-				min_resources[res] = max(0, min_resources[res] - amount)
-
-		if settlement:
-			for res, amount in settlement.inventory:
-				if res in min_resources and min_resources[res] > 0:
-					min_resources[res] = max(0, min_resources[res] - amount)
-
-		for missing in min_resources.itervalues():
-			if missing > 0:
-				return False
-		return True
-
-	def have_starting_resources(self, ship, settlement):
-		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_island_gold, \
-			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.FOOD_ID: self.personality.min_new_island_food, RES.TOOLS_ID: self.personality.min_new_island_tools})
-
-	def have_feeder_island_starting_resources(self, ship, settlement):
-		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_feeder_island_gold, \
-			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.TOOLS_ID: self.personality.min_new_island_tools})
-
-	def prepare_foundation_ship(self, settlement_manager, ship, feeder_island):
-		self.ships[ship] = self.shipStates.on_a_mission
-		mission = PrepareFoundationShip(settlement_manager, ship, feeder_island, self.report_success, self.report_failure)
-		self.missions.add(mission)
-		mission.start()
-
 	def tick(self):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval)
-		self._found_settlements()
+		self.settlement_founder.tick()
 		self.handle_enemy_expansions()
 		self.handle_settlements()
 		self.special_domestic_trade_manager.tick()
 		self.international_trade_manager.tick()
 
-	def _found_settlements(self):
-		ship = None
-		for possible_ship, state in self.ships.iteritems():
-			if state is self.shipStates.idle:
-				ship = possible_ship
-				break
-		if not ship:
-			#self.log.info('%s.tick: no available ships', self)
-			return
-
-		island = None
-		for min_size in self.personality.island_size_sequence:
-			island = self.choose_island(min_size)
-			if island is not None:
-				break
-		if island is None:
-			#self.log.info('%s.tick: no good enough islands', self)
-			return
-
-		if self._need_feeder_island:
-			if self.have_feeder_island_starting_resources(ship, None):
-				self.log.info('%s.tick: send %s on a mission to found a feeder settlement', self, ship)
-				self.found_settlement(island, ship, True)
-			else:
-				for settlement_manager in self.settlement_managers:
-					if self.have_feeder_island_starting_resources(ship, settlement_manager.land_manager.settlement):
-						self.log.info('%s.tick: send ship %s on a mission to get resources for a new feeder settlement', self, ship)
-						self.prepare_foundation_ship(settlement_manager, ship, True)
-						return
-		elif self.want_another_village():
-			if self.have_starting_resources(ship, None):
-				self.log.info('%s.tick: send ship %s on a mission to found a settlement', self, ship)
-				self.found_settlement(island, ship, False)
-			else:
-				for settlement_manager in self.settlement_managers:
-					if not settlement_manager.can_provide_resources():
-						continue
-					if self.have_starting_resources(ship, settlement_manager.land_manager.settlement):
-						self.log.info('%s.tick: send ship %s on a mission to get resources for a new settlement', self, ship)
-						self.prepare_foundation_ship(settlement_manager, ship, False)
-						return
-
 	def handle_settlements(self):
 		goals = []
 		for goal in self.goals:
-			goal.update()
 			if goal.can_be_activated:
+				goal.update()
 				goals.append(goal)
 		for settlement_manager in self.settlement_managers:
 			settlement_manager.tick(goals)
@@ -386,30 +276,6 @@ class AIPlayer(GenericAI):
 			if goal.active:
 				self.log.info('%s %s', self, goal)
 
-	def want_another_village(self):
-		""" Avoid having more than one developing island with a village at a time """
-		for settlement_manager in self.settlement_managers:
-			if not settlement_manager.feeder_island and not settlement_manager.can_provide_resources():
-				return False
-		return True
-
-	def need_feeder_island(self, settlement_manager):
-		return settlement_manager.production_builder.count_available_squares(3, self.personality.feeder_island_requirement_cutoff)[1] < self.personality.feeder_island_requirement_cutoff
-
-	def have_feeder_island(self):
-		for settlement_manager in self.settlement_managers:
-			if not self.need_feeder_island(settlement_manager):
-				return True
-		return False
-
-	def can_found_feeder_island(self):
-		islands = self.get_available_islands(self.personality.min_feeder_island_area)
-		return len(islands) > 0
-
-	def found_feeder_island(self):
-		if self.can_found_feeder_island():
-			self._need_feeder_island = True
-
 	def request_ship(self):
 		self.log.info('%s received request for more ships', self)
 		self.need_more_ships = True
@@ -427,7 +293,7 @@ class AIPlayer(GenericAI):
 			del self.ships[unit]
 
 	def count_buildings(self, building_id):
-		return sum(settlement_manager.count_buildings(building_id) for settlement_manager in self.settlement_managers)
+		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s ship blocked (%s)", self, unit)
@@ -481,7 +347,7 @@ class AIPlayer(GenericAI):
 				break
 		assert mission
 		mission.cancel()
-		self._found_settlements()
+		self.settlement_founder.tick()
 
 	@classmethod
 	def load_abstract_buildings(cls, db):

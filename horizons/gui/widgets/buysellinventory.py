@@ -24,8 +24,6 @@ from fife.extensions import pychan
 from fife.extensions.pychan.widgets.common import BoolAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.gui.widgets import ProgressBar
-from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage
 
 class BuySellInventory(pychan.widgets.Container):
 	"""The buy/sell inventory widget is used to display a stock of items where the available resources are restricted.

@@ -24,6 +24,8 @@ from horizons.ai.aiplayer.constants import GOAL_RESULT
 from horizons.util.python import decorators
 
 class DoNothingGoal(Goal):
+	"""This goal makes the AI not do anything during a tick."""
+
 	def get_personality_name(self):
 		return 'DoNothingGoal'
 

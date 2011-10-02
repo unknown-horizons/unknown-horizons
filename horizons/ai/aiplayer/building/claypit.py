@@ -20,7 +20,8 @@
 # ###################################################
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.ai.aiplayer.buildingevaluator.claypitevaluator import ClayPitEvaluator
+from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
+from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
@@ -36,8 +37,24 @@ class AbstractClayPit(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.CLAY_PIT_CLASS] = cls
+		cls._available_buildings[BUILDINGS.CLAY_PIT_CLASS] = cls
+
+class ClayPitEvaluator(BuildingEvaluator):
+	@classmethod
+	def create(cls, area_builder, x, y, orientation):
+		builder = area_builder.make_builder(BUILDINGS.CLAY_PIT_CLASS, x, y, True, orientation)
+		if not builder:
+			return None
+
+		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder, False)
+		value = 1.0 / (distance_to_collector + 1)
+		return ClayPitEvaluator(area_builder, builder, value)
+
+	@property
+	def purpose(self):
+		return BUILDING_PURPOSE.CLAY_PIT
 
 AbstractClayPit.register_buildings()
 
 decorators.bind_all(AbstractClayPit)
+decorators.bind_all(ClayPitEvaluator)

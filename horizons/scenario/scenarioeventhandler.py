@@ -242,14 +242,25 @@ from horizons.scenario.actions import *
 ###
 # Simple utility classes
 
+def _should_be_list(d, where):
+	if not isinstance(d, list):
+		raise InvalidScenarioFileFormat(msg = where + " should be a list, but is: " + str(d))
+
+def _should_be_dict(d, where):
+	if not isinstance(d, dict):
+		raise InvalidScenarioFileFormat(msg = where + " should be a dictionary, but is: " + str(d))
+
+
 class _Event(object):
 	"""Internal data structure representing an event."""
 	def __init__(self, session, event_dict):
 		self.session = session
 		self.actions = []
 		self.conditions = []
+		_should_be_list(event_dict['actions'], "actions")
 		for action_dict in event_dict['actions']:
 			self.actions.append( _Action(action_dict) )
+		_should_be_list(event_dict['conditions'], "conditions")
 		for cond_dict in event_dict['conditions']:
 			self.conditions.append( _Condition(session, cond_dict) )
 
@@ -284,6 +295,7 @@ class _Action(object):
 	}
 
 	def __init__(self, action_dict):
+		_should_be_dict(action_dict, "action specification")
 		try:
 			self._action_type_str = action_dict['type']
 		except KeyError:
@@ -312,6 +324,7 @@ class _Condition(object):
 	condition_types = { }
 	def __init__(self, session, cond_dict):
 		self.session = session
+		_should_be_dict(cond_dict, "condition specification")
 		if not 'type' in cond_dict:
 			raise InvalidScenarioFileFormat("Encountered condition without type")
 		try:

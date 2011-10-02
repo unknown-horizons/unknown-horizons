@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
@@ -32,8 +33,8 @@ class BoatBuilderGoal(SettlementGoal):
 		return super(BoatBuilderGoal, self).active and not self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS)
 
 	def execute(self):
-		result = self.settlement_manager.production_builder.build_boat_builder()
-		self.settlement_manager.log_generic_build_result(result, 'boat builder')
+		result = AbstractBuilding.buildings[BUILDINGS.BOATBUILDER_CLASS].build(self.settlement_manager, None)[0]
+		self._log_generic_build_result(result, 'boat builder')
 		return self._translate_build_result(result)
 
 decorators.bind_all(BoatBuilderGoal)

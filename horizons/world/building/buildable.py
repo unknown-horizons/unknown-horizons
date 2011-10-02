@@ -18,7 +18,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import math
 
 from horizons.util import Point, Rect, decorators
 from horizons.world.pathfinding.pather import StaticPather
@@ -33,7 +32,7 @@ class _BuildPosition(object):
 		@param position: Rect, building position and size
 		@param rotation: int rotation of building
 		@param tearset: list of worldids of buildings to tear for this building to build
-		@param buildable: whether building is acctually buildable there
+		@param buildable: whether building is actually buildable there
 		@param action: action (animation of building)
 		"""
 		self.position = position
@@ -78,9 +77,9 @@ class Buildable(object):
 		@return instance of _BuildPosition"""
 		# for non-quadratic buildings, we have to switch width and height depending on the rotation
 		if rotation == 45 or rotation == 225:
-			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0]-1, cls.size[1]-1)
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
 		else:
-			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1]-1, cls.size[0]-1)
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])
 
 		buildable = True
 		tearset = []
@@ -211,9 +210,9 @@ class BuildableSingleEverywhere(BuildableSingle):
 	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
 		# for non-quadratic buildings, we have to switch width and height depending on the rotation
 		if rotation == 45 or rotation == 225:
-			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0]-1, cls.size[1]-1)
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
 		else:
-			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1]-1, cls.size[0]-1)
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])
 
 		buildable = True
 		tearset = []

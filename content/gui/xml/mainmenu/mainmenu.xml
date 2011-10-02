@@ -6,7 +6,7 @@
 	<Icon image="content/gui/images/logos/sdl.png" position="883,20" />
 	<Icon image="content/gui/images/logos/opengl.png" position="880,100" />
 
-	<Label name="version_label" text="Unknown Horizons Alpha" position="735,735" />
+	<Label name="version_label" text="Unknown Horizons" position="735,735" />
 
 	<!-- clockwise, starting at 0 degree -->
 	<Label name="start" text="Singleplayer" position="531,100" />

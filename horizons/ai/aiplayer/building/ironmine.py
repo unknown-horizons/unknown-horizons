@@ -20,7 +20,8 @@
 # ###################################################
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.ai.aiplayer.buildingevaluator.ironmineevaluator import IronMineEvaluator
+from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
+from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
@@ -37,8 +38,21 @@ class AbstractIronMine(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.IRON_MINE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.IRON_MINE_CLASS] = cls
+
+class IronMineEvaluator(BuildingEvaluator):
+	@classmethod
+	def create(cls, area_builder, x, y, orientation):
+		builder = area_builder.make_builder(BUILDINGS.IRON_MINE_CLASS, x, y, True, orientation)
+		if not builder:
+			return None
+		return IronMineEvaluator(area_builder, builder, 0)
+
+	@property
+	def purpose(self):
+		return BUILDING_PURPOSE.IRON_MINE
 
 AbstractIronMine.register_buildings()
 
 decorators.bind_all(AbstractIronMine)
+decorators.bind_all(IronMineEvaluator)

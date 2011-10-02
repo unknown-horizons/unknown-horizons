@@ -24,7 +24,6 @@ from fife.extensions import pychan
 from fife.extensions.pychan.widgets.common import BoolAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.gui.widgets import ProgressBar
 from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage
 
 class Inventory(pychan.widgets.Container):

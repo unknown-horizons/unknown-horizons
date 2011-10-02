@@ -53,6 +53,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	default_level_on_build = 0
 
+	_max_increment_reached_notification_displayed = False # this could be saved
+
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.default_level_on_build # settlers always start in first level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
@@ -62,28 +64,28 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
 
-	def __init(self, happiness = None, loading = False):
+	def __init(self, happiness = None, loading = False, last_tax_payed=0):
 		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
 		if happiness is not None:
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data(loading = loading)
-		self.last_tax_payed = 0
+		self.last_tax_payed = last_tax_payed
 
 	def save(self, db):
 		super(Settler, self).save(db)
-		db("INSERT INTO settler(rowid, inhabitants) VALUES (?, ?)", \
-		   self.worldid, self.inhabitants)
+		db("INSERT INTO settler(rowid, inhabitants, last_tax_payed) VALUES (?, ?, ?)", \
+		   self.worldid, self.inhabitants, self.last_tax_payed)
 		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
 		db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES (?, ?)", \
 		   self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
 		super(Settler, self).load(db, worldid)
-		self.inhabitants = \
-		    db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
+		self.inhabitants, last_tax_payed = \
+		    db("SELECT inhabitants, last_tax_payed FROM settler WHERE rowid=?", worldid)[0]
 		remaining_ticks = \
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
-		self.__init(loading = True)
+		self.__init(loading = True, last_tax_payed = last_tax_payed)
 		self._load_upgrade_data(db)
 		self.owner.notify_settler_reached_level(self)
 		self.run(remaining_ticks)
@@ -155,7 +157,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			current_lines = self.get_production_lines()
 			for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
 				if not self.has_production_line(prod_line):
-					self.add_production_by_id(prod_line)
+					self.add_production_by_id(prod_line, self.owner)
 				# cross out the new lines from the current lines, so only the old ones remain
 				if prod_line in current_lines:
 					current_lines.remove(prod_line)
@@ -184,7 +186,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
 
 		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
-		happiness_tax_modifier = 0.5 + (float(self.happiness)/100.0)
+		happiness_tax_modifier = 0.5 + (float(self.happiness)/70.0)
 		inhabitants_tax_modifier = float(self.inhabitants) / self.inhabitants_max
 		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
 		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
@@ -194,8 +196,13 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		difference = 1.0 - self.settlement.tax_settings[self.level]
-		happiness_decrease = 45 * difference - 15 * abs(difference)
+		happiness_decrease = 10 * difference - 6* abs(difference)
 		happiness_decrease = int(round(happiness_decrease))
+		# NOTE: this formula was actually designed for a different use case, where the happiness
+		# is calculated from the number of available goods -/+ a certain tax factor.
+		# to simulate the more dynamic, currently implemented approach (where every event changes
+		# the happiness), we simulate discontent of taxes by this:
+		happiness_decrease -= 6
 		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
 
 		self._changed()
@@ -223,14 +230,23 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def level_check(self):
 		"""Checks whether we should level up or down."""
-		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
-			 self.level < self.level_max:
+		if self.happiness > self.__get_data("happiness_level_up_requirement"):
+			if self.level >= self.level_max:
+				# max level reached already, can't allow an update
+				if self.owner == self.session.world.player:
+					if not self.__class__._max_increment_reached_notification_displayed:
+						self.__class__._max_increment_reached_notification_displayed = True
+						self.session.ingame_gui.message_widget.add( \
+							self.position.center().x, self.position.center().y, 'MAX_INCR_REACHED')
+				return
 			# add a production line that gets the necessary upgrade material.
 			# when the production finishes, it calls upgrade_materials_collected.
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
-			upgrade_material_production = SingleUseProduction(self.inventory, upgrade_material_prodline)
+			owner_inventory = self._get_owner_inventory()
+			upgrade_material_production = SingleUseProduction(self.inventory, owner_inventory, \
+			                                                  upgrade_material_prodline)
 			upgrade_material_production.add_production_finished_listener(self.level_up)
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
@@ -244,6 +260,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self._changed()
 
 	def level_up(self, production = None):
+		"""Actually level up (usually called when the upgrade material has arrived)"""
 		# NOTE: production is unused, but gets passed by the production code
 		self.level += 1
 		self.log.debug("%s: Levelling up to %s", self, self.level)

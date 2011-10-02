@@ -61,20 +61,20 @@ def get_prod_line(id, type):
 
 def print_production_lines():
 	print 'Production Lines:'
-	for (id, object, time, default) in db("SELECT id, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
+	for (id, changes_anim, object, time, default) in db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
 		(consumption,production) = get_prod_line(id, list)
 
-		str = 'ProdLine %2s of %2s:%-16s %5s sec %s\t' % (id, object, get_obj_name(object), time, ('D' if default else ' '))
+		str = 'Line %2s of %2s:%-16s %5s sec %s %s ' % (id, object, get_obj_name(object), time, ('D' if default else ' '), ('C' if changes_anim else ' '))
 
 		if len(consumption) > 0:
-			str += 'consumes: '
+			str += 'uses: '
 			for res, amount in consumption:
-				str += '%s %s(%s), ' % (-amount, get_res_name(res), res)
+				str += '%2s %-16s ' % (-amount, get_res_name(res) + '(%s)' % res)
 
 		if len(production) > 0:
-			str += '\tproduces: '
+			str += '\t=> '
 			for res, amount in production:
-				str +=  '%s %s(%s), ' % (amount, get_res_name(res), res)
+				str +=  '%2s %-16s ' % (amount, get_res_name(res) + '(%s)' % res)
 
 		print str
 
@@ -112,9 +112,9 @@ def strw(s, width=0):
 
 def print_res():
 	print 'Resources' + '\n' + '%2s: %-15s %5s %10s %19s' % ('id', 'resource', 'value', 'tradeable', 'shown_in_inventory')
-	print '=' * 54
+	print '=' * 56
 	for id, name, value, trade, inventory in db("SELECT id, name, value, tradeable, shown_in_inventory FROM resource"):
-		print "%2s: %-16s %3s %7s %13s " % (id, name[0:16], value or '-', trade or '-', inventory or '-')
+		print "%2s: %-16s %4s %6s %13s " % (id, name[0:16], value or '-', trade or '-', inventory or '-')
 
 def print_building():
 	print 'Buildings' + '\n' + '%2s: %-14s %11s %4s %6s %s' % ('id', 'name', 'running_costs', 'size', 'radius', 'from_class')
@@ -201,6 +201,12 @@ def print_increment_data():
 			print str
 		print ''
 
+def print_colors():
+	print 'Colors' + '\n' + '%2s: %12s  %3s  %3s  %3s  %3s  #%6s' % ('id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   ')
+	print '=' * 45
+	for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
+		print '%2s: %12s  %3s  %3s  %3s  %3s  #' % (id_, name, R, G, B, alpha) + 3*'%02x' % (R, G, B)
+
 def print_names():
 	text = ''
 	for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship','player'), ('ship','pirate'), ('ship','fisher'), ('ship','trader')]:
@@ -215,6 +221,7 @@ def print_names():
 functions = {
 		'buildings' : print_building,
 		'building_costs' : print_building_costs,
+		'colors' : print_colors,
 		'collectors' : print_collectors,
 		'collector_restrictions': print_collector_restrictions,
 		'increments' : print_increment_data,
@@ -227,9 +234,10 @@ functions = {
 		}
 abbrevs = {
 		'b' : 'buildings',
-		'building' : 'buildings',
 		'bc': 'building_costs',
+		'building' : 'buildings',
 		'c' : 'collectors',
+		'cl' : 'colors',
 		'cr': 'collector_restrictions',
 		'i' : 'increments',
 		'increment' : 'increments',

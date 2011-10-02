@@ -3,11 +3,11 @@
 <TabBG amount="6"/>
 	<Icon name="player_emblem" position="25,50"/>
 
-<Container position="0,70" size="245,320" >
+<Container position="0,70" size="245,320">
 	<!-- Name of Ship -->
-	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<HBox position="22,7"  min_size="170,20"  size="230,20">
 	<Spacer min_size="0"  max_size="50" />
-		<TooltipLabel name='name'  border_size="0"  tooltip="Click to change the name of this ship."/>
+		<TooltipLabel name='name'  border_size="0"  tooltip="Click to change the name of this ship." />
 	</HBox>
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -16,11 +16,12 @@
 	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,20" />
 	<Container name="weapon_storage_container" size="245,50" position = "20,170">
 		<HBox>
-			<Label text="Weapons:"/>
-			<WeaponStorageWidget name="weapon_storage"/>
+			<!-- this label is reset to "trade ship" to tell the user that there can't be weapons -->
+			<Label name="lbl_weapon_storage"  text="Weapons:" />
+			<WeaponStorageWidget name="weapon_storage" />
 		</HBox>
 	</Container>
-	<HealthWidget name="health" position="180,165"/>
+	<HealthWidget name="health" position="180,165" />
 
 	<Icon image="content/gui/images/background/hr.png" position="20,190" />
 
@@ -41,7 +42,7 @@
 			hover_image="content/gui/icons/ship/anchor_h.png" />
 	</HBox>
 
-	<Container position="0,270" size="600,100" name="stance"/>
+	<Container position="0,270" size="600,100" name="stance" />
 
 </Container>
 </Container>

@@ -2,21 +2,28 @@
 <VBox name="game_settings">
 	<Label name="headline_game_settings_lbl" text="Game settings:" />
 
+	<HBox name="resource_density">
+		<Label name="resource_density_lbl" min_size="150,20" text="" />
+		<StepSlider name="resource_density_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+	</HBox>
+
 	<HBox name="param_ai_factions" padding="15">
 		<HBox name="map_param">
-			<CheckBox name="free_trader" min_size="15,15" marked="1" />
-			<Label text="Free Trader" />
+			<CheckBox name="free_trader" min_size="15,15" max_size="15,15" marked="1" />
+			<Label name="lbl_free_trader"  text="Free Trader" />
 		</HBox>
 		<HBox name="map_param">
-			<CheckBox name="pirates" min_size="15,15"  marked="1" />
-			<Label text="Pirates" />
+			<CheckBox name="pirates" min_size="15,15" max_size="15,15" marked="1" />
+			<Label name="lbl_pirates"  text="Pirates" />
 		</HBox>
+		<!--
 		<HBox name="map_param">
 			<CheckBox name="peoples" min_size="15,15" />
 			<Label text="Peoples" />
 		</HBox>
+		-->
 	</HBox>
-
+	<!--
 	<HBox name="param_catastrophes" padding="15">
 		<HBox name="map_param">
 			<CheckBox name="fire" min_size="15,15"  marked="1" />
@@ -31,5 +38,6 @@
 			<Label text="Rat Plague" />
 		</HBox>
 	</HBox>
+	-->
 
 </VBox>

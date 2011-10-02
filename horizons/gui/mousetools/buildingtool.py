@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 from fife import fife
 import logging
 import random
@@ -27,13 +26,13 @@ import weakref
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Point, decorators, Callback, WorldObject
-from horizons.command.building import Build, Tear
+from horizons.util import ActionSetLoader, Point, decorators, Callback
+from horizons.command.building import Build
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
 from horizons.util.gui import load_uh_widget
-from horizons.constants import RES, BUILDINGS
+from horizons.constants import BUILDINGS
 from horizons.extscheduler import ExtScheduler
 
 class BuildingTool(NavigationTool):
@@ -57,6 +56,7 @@ class BuildingTool(NavigationTool):
 		self.ship = ship
 		self._class = building
 		self.buildings = [] # list of PossibleBuild objs
+		self.buildings_action_set_ids = [] # list action set ids of list above
 		self.buildings_fife_instances = {} # fife instances of possible builds
 		self.buildings_missing_resources = {} # missing resources for possible builds
 		self.rotation = 45 + random.randint(0, 3)*90
@@ -167,6 +167,9 @@ class BuildingTool(NavigationTool):
 
 		# get new ones
 		self.buildings = new_buildings
+		# resize list of action set ids to new buildings
+		self.buildings_action_set_ids = self.buildings_action_set_ids + ([None] * (len(self.buildings) - len(self.buildings_action_set_ids)))
+		self.buildings_action_set_ids = self.buildings_action_set_ids[ : len(self.buildings) ]
 		# delete old infos
 		self.buildings_fife_instances.clear()
 		self.buildings_missing_resources.clear()
@@ -174,7 +177,9 @@ class BuildingTool(NavigationTool):
 		settlement = None # init here so we can access it below loop
 		neededResources, usableResources = {}, {}
 		# check if the buildings are buildable and color them appropriatly
+		i = -1
 		for building in self.buildings:
+			i += 1
 			# make surrounding transparent
 			self._make_surrounding_transparent(building.position)
 
@@ -188,10 +193,16 @@ class BuildingTool(NavigationTool):
 			if self._class.id == BUILDINGS.TREE_CLASS and not building.buildable:
 				continue # Tree/ironmine that is not buildable, don't preview
 			else:
-				self.buildings_fife_instances[building] = \
-				    self._class.getInstance(self.session, building.position.origin.x, \
-				                            building.position.origin.y, rotation=building.rotation,
-				                            action=building.action, level=level)
+				fife_instance, action_set_id = \
+				             self._class.getInstance(self.session, building.position.origin.x, \
+				                                     building.position.origin.y, rotation=building.rotation,
+				                                     action=building.action, level=level,
+				                                     action_set_id=self.buildings_action_set_ids[i])
+				self.buildings_fife_instances[building] = fife_instance
+				# remember action sets per order of occurence
+				# (this is far from good when building lines, but suffices for our purposes, which is mostly single build)
+				self.buildings_action_set_ids[i] = action_set_id
+
 
 			if self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS:
 				settlement = self.session.world.get_settlement(building.position.center())
@@ -295,7 +306,7 @@ class BuildingTool(NavigationTool):
 
 	_last_road_built = []
 	def mouseReleased(self, evt):
-		"""Acctually build."""
+		"""Actually build."""
 		self.log.debug("BuildingTool mouseReleased")
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
@@ -305,7 +316,7 @@ class BuildingTool(NavigationTool):
 			# check if position has changed with this event and update everything
 			self._check_update_preview(point)
 
-			# acctually do the build
+			# actually do the build
 			found_buildable = self.do_build()
 
 			# HACK: users sometimes don't realise that roads can be dragged
@@ -322,8 +333,10 @@ class BuildingTool(NavigationTool):
 						self.__class__._last_road_built = []
 					self.__class__._last_road_built = self.__class__._last_road_built[-3:]
 
-			# check how to continue: either build again or escapte
-			if evt.isShiftPressed() or not found_buildable or self._class.class_package == 'path':
+			# check how to continue: either build again or escape
+			if not self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS and (evt.isShiftPressed() or \
+					horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
+					not found_buildable or self._class.class_package == 'path'):
 				self.startPoint = point
 				self.preview_build(point, point)
 			else:
@@ -335,13 +348,15 @@ class BuildingTool(NavigationTool):
 
 	@decorators.make_constants()
 	def do_build(self):
-		"""Acctually builds the previews
+		"""Actually builds the previews
 		@return whether it was possible to build anything of the previews."""
 		# used to check if a building was built with this click, later used to play a sound
 		built = False
 
-		# acctually do the build and build preparations
+		# actually do the build and build preparations
+		i = -1
 		for building in self.buildings:
+			i += 1
 			# remove fife instance, the building will create a new one.
 			# Check if there is a matching fife instance, could be missing
 			# in case of trees, which are hidden if not buildable
@@ -373,7 +388,8 @@ class BuildingTool(NavigationTool):
 				            island= island, \
 				            settlement=self.session.world.get_settlement(building.position.origin), \
 				            ship=self.ship, \
-				            tearset=building.tearset \
+				            tearset=building.tearset, \
+										action_set_id=self.buildings_action_set_ids[i], \
 				            )
 				cmd.execute(self.session)
 			else:
@@ -390,6 +406,7 @@ class BuildingTool(NavigationTool):
 			if self.gui is not None:
 				self.gui.hide()
 		self.buildings = []
+		self.buildings_action_set_ids = []
 		return built
 
 	def _check_update_preview(self, endpoint):
@@ -512,7 +529,6 @@ class SettlementBuildingToolLogic(object):
 		is_tile_buildable = building_tool._class.is_tile_buildable
 		session = building_tool.session
 		player = session.world.player
-		buildable_tiles_add = building_tool._buildable_tiles.add
 
 		if tiles_to_check is not None: # only check these tiles
 			for tile in tiles_to_check:

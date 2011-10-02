@@ -32,7 +32,6 @@ from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
-from horizons.world.units.animal import WildAnimal
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -48,6 +47,7 @@ class Island(BuildingOwner, WorldObject):
 	* grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
+	* position - a Rect that borders the island with the smallest possible area
 	* buildings - a list of all Building instances that are present on the island.
 	* settlements - a list of all Settlement instances that are present on the island.
 	* path_nodes - a special dictionary used by the pather to save paths.
@@ -76,6 +76,7 @@ class Island(BuildingOwner, WorldObject):
 		self.__init(Point(x, y), filename)
 
 		# create building indexers
+		from horizons.world.units.animal import WildAnimal
 		self.building_indexers = {}
 		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
@@ -125,6 +126,13 @@ class Island(BuildingOwner, WorldObject):
 		self.num_trees = 0
 
 		self.path_nodes = IslandPathNodes(self)
+
+		# define the rectangle with the smallest area that contains every island tile its position
+		min_x = min(zip(*self.ground_map.keys())[0])
+		max_x = max(zip(*self.ground_map.keys())[0])
+		min_y = min(zip(*self.ground_map.keys())[1])
+		max_y = max(zip(*self.ground_map.keys())[1])
+		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		# repopulate wild animals every 2 mins if they die out.
 		Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
@@ -357,7 +365,7 @@ class Island(BuildingOwner, WorldObject):
 		# so do nothing in this case.
 
 	def _init_cache(self):
-		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """ 
+		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """
 		self.last_change_id = -1
 		self.building_sizes = set()
 		db_result = self.session.db("SELECT DISTINCT size_x, size_y FROM building WHERE button_name IS NOT NULL")
@@ -383,7 +391,7 @@ class Island(BuildingOwner, WorldObject):
 					self.last_changed[(size_x, size_y)][(x, y)] = self.last_change_id
 
 	def _register_change(self, x, y):
-		""" registers the possible buildability change of a rectangle on this island """ 
+		""" registers the possible buildability change of a rectangle on this island """
 		self.last_change_id += 1
 		for (area_size_x, area_size_y), building_areas in self.last_changed.iteritems():
 			for dx in xrange(area_size_x):

@@ -32,7 +32,7 @@ class TentGoal(SettlementGoal):
 
 	def execute(self):
 		result = self.settlement_manager.village_builder.build_tent()
-		self.settlement_manager.log_generic_build_result(result, 'tent')
+		self._log_generic_build_result(result, 'tent')
 		return self._translate_build_result(result)
 
 decorators.bind_all(TentGoal)

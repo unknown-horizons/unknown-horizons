@@ -21,9 +21,9 @@
 
 import logging
 
-import horizons.main
 from horizons.entities import Entities
 from horizons.command import Command
+from horizons.command.uioptions import TransferResource
 from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.scenario import CONDITIONS
@@ -34,7 +34,7 @@ class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building, x, y, island, rotation = 45, \
-	             ship = None, ownerless=False, settlement=None, tearset=None, data=None):
+	             ship = None, ownerless=False, settlement=None, tearset=None, data=None, action_set_id=None):
 		"""Create the command
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
@@ -43,6 +43,7 @@ class Build(Command):
 		@param settlement: settlement worldid or None
 		@param tearset: set of worldids of objs to tear before building
 		@param data: data required for building construction
+		@param action_set_id: use this particular action set, don't choose at random
 		"""
 		if hasattr(building, 'id'):
 			self.building_class = building.id
@@ -58,6 +59,7 @@ class Build(Command):
 		self.settlement = settlement.worldid if settlement is not None else None
 		self.tearset = set() if not tearset else tearset
 		self.data = {} if not data else data
+		self.action_set_id = action_set_id
 
 	def __call__(self, issuer=None):
 		"""Execute the command
@@ -108,6 +110,7 @@ class Build(Command):
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \
 			instance=None, \
+		  action_set_id=self.action_set_id, \
 		  **self.data
 		)
 
@@ -138,8 +141,7 @@ class Build(Command):
 			ship = WorldObject.get_object_by_id(self.ship)
 			for res, amount in [(res, amount) for res, amount in ship.inventory]: # copy the inventory first because otherwise we would modify it while iterating
 				amount = min(amount, building.settlement.inventory.get_free_space_for(res))
-				building.settlement.inventory.alter(res, amount)
-				ship.inventory.alter(res, -amount)
+				TransferResource(amount, res, ship, building.settlement).execute(session)
 
 		# NOTE: conditions are not MP-safe! no problem as long as there are no MP-scenarios
 		session.scenario_eventhandler.schedule_check(CONDITIONS.building_num_of_type_greater)
@@ -170,6 +172,9 @@ class Build(Command):
 				return (False, resource)
 		return (True, None)
 
+Command.allow_network(Build)
+Command.allow_network(set)
+
 class Tear(Command):
 	"""Command class that tears an object."""
 	log = logging.getLogger("command")
@@ -189,3 +194,5 @@ class Tear(Command):
 		else:
 			self.log.debug("Tear: tearing down %s", building)
 			building.remove()
+
+Command.allow_network(Tear)

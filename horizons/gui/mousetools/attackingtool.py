@@ -24,9 +24,7 @@ from fife import fife
 import horizons.main
 from horizons.command.unit import Act, Attack
 from horizons.command.diplomacy import AddEnemyPair
-from horizons.util import WorldObject
-from selectiontool import SelectionTool
-from horizons.constants import LAYERS
+from horizons.gui.mousetools.selectiontool import SelectionTool
 
 class AttackingTool(SelectionTool):
 	"""
@@ -73,7 +71,6 @@ class AttackingTool(SelectionTool):
 		instances = self.get_hover_instances(evt)
 
 		target = None
-		attackable = False
 		local_player = self.session.world.player
 		for instance in instances:
 			if not instance.owner:
@@ -88,7 +85,6 @@ class AttackingTool(SelectionTool):
 				continue
 			try:
 				if instance.has_component('health'):
-					attackable = True
 					target = instance
 			except AttributeError:
 				pass

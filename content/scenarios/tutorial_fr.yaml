@@ -10,7 +10,8 @@ description: "Didacticiel:\n\xC9tablissez votre premi\xE8re colonie et apprenez 
 difficulty: !!python/unicode 'Didacticiel'
 events:
 - actions:
-  - arguments: ["\xC9tablissez un comptoir sur la c\xF4te."]
+  - arguments: ["Construire un comptoir sur la c\xF4te, ainsi il sera facilement accessible\
+        \ aux autres navires comme ceux du Marchant Ind\xE9pendant."]
     type: message
   - arguments: [!!python/unicode 'Bienvenue dans Unknown Horizons !', "Voici votre\
         \ journal de bord o\xF9 sont enregistr\xE9es toutes les informations importantes.\
@@ -36,58 +37,23 @@ events:
         \ l'endroit o\xF9 vous voulez placer votre premi\xE8re construction.\n\nMISSION:\
         \ Construire un comptoir sur la c\xF4te.", 2]
     type: logbook
-  - arguments: [tutStepDone, 6]
+  - arguments: [tutStepDone, 16]
     type: set_var
   conditions:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: ["MISSION : D\xC9CHARGEZ VOS MARCHANDISES", "Maintenant que vous avez\
-        \ \xE9tabli un comptoir, vous devez alimenter son stock.\n\nPour ce faire,\
-        \ s\xE9lectionnez votre navire et rendez-vous dans le panneau signal\xE9 par\
-        \ une caisse en bois appel\xE9 \xABCargaison du navire\xBB.\n\nVous avez ici\
-        \ un aper\xE7u de la cargaison de votre navire et vous y trouverez le bouton\
-        \ \xABChargez/D\xE9chargez\xBB.\n\nCe bouton devient actif lorsque votre vaisseau\
-        \ se trouve \xE0 port\xE9e d'un partenaire commercial potentiel, comme par\
-        \ exemple un comptoir.\n\nCliquez sur le bouton. S'il n'est pas actif, d\xE9\
-        placez votre vaisseau \xE0 proximit\xE9 du comptoir, et r\xE9essayez.\n\n\
-        MISSION : D\xE9butez les \xE9changes commerciaux."]
-    type: logbook_w
-  - arguments: ['', "Le panneau que vous avez sous les yeux est scind\xE9 entre les\
-        \ partenaires commerciaux \xABVaisseau\xBB et \xABComptoir\xBB.\n\nPour d\xE9\
-        placer les marchandises d'un stock \xE0 l'autre, cliquez simplement dessus.\n\
-        \nEssayez de cliquer sur les planches de votre navire pour les d\xE9charger,\
-        \ puis rechargez-les \xE0 bord.\n\nVous pouvez choisir la quantit\xE9 \xE0\
-        \ d\xE9placer en utilisant les boutons pr\xE9vus \xE0 cet effet.\n\nMaitrisez-vous\
-        \ le panneau des \xE9changes commerciaux?\nVous avez maintenant besoin de\
-        \ mat\xE9riaux de construction pour votre comptoir!\n\nMISSION : D\xE9chargez\
-        \ au moins 10 tonnes de chaque ressource disponible \xE0 bord de votre navire\
-        \ dans votre comptoir."]
-    type: logbook
-  - arguments: ["D\xE9chargez au moins 10 tonnes de chaque ressource pr\xE9sente sur\
-        \ votre vaisseau."]
-    type: message
-  - arguments: [tutStepDone, 16]
-    type: set_var
-  conditions:
-  - arguments: [1, 0]
-    type: building_num_of_type_greater
-  - arguments: [tutStepDone, 5]
-    type: var_gt
-  - arguments: [tutStepDone, 16]
-    type: var_lt
-- actions:
-  - arguments: ["MISSION : LE B\xDBCHERON", "Avec ces nouveaux mat\xE9riaux disponibles\
-        \ dans votre comptoir, vous pouvez commencer \xE0 construire quelques b\xE2\
-        timents de base.\n\nCommen\xE7ons par \xE9tablir un b\xFBcheron.\n\nC'est\
-        \ essentiel parce que, \xE0 ce niveau, le bois est la seule mati\xE8re que\
-        \ les marins peuvent s'offrir pour monter leurs tentes.\n\nLe p\xEAcheur a\
-        \ \xE9galement besoin de planches pour construire son bateau.\n\nPour construire\
-        \ une cabane de b\xFBcheron, ouvrez le menu construction en cliquant sur le\
-        \ grand ic\xF4ne sous la mini-carte, ou en pressant la touche B.\n\nLe menu\
-        \ construction est class\xE9 par niveaux.\nCela signifie que seuls les b\xE2\
-        timents de base sont accessibles quand on est au premier niveau (celui des\
-        \ marins)."]
+  - arguments: ["MISSION : LE B\xDBCHERON", "Les mat\xE9riaux de construction de votre\
+        \ navire ont \xE9t\xE9 d\xE9charg\xE9s automatiquement. Vous pouvez maintenant\
+        \ construire quelques b\xE2timents de base.\n\nNous commencerons avec un campement\
+        \ de b\xFBcheron.\n\nC'est essentiel car, \xE0 ce stade, le bois est le seul\
+        \ mat\xE9riel que vos marins peuvent s'offrir pour monter leurs tentes.\n\n\
+        Le p\xEAcheur a aussi besoin de planches pour construire son bateau.\n\nPour\
+        \ construire votre campement de b\xFBcheron; ouvrez le menu construction soit\
+        \ en cliquant l\u2019ic\xF4ne sous la mini-carte, soit en pressant la touche\
+        \ B.\n\nLe menu construction est divis\xE9 en niveau.\nVous \xEAtes actuellement\
+        \ au premier niveau (niveau des marins) et ne sont donc propos\xE9s que les\
+        \ b\xE2timents de base."]
     type: logbook_w
   - arguments: ['', "Plus votre civilisation avancera et plus vous pourrez construire\
         \ de b\xE2timents complexes.\n\nMaintenant construisez un camp de bucheron\
@@ -161,14 +127,23 @@ events:
         \ de ne pas placer vos tentes trop pr\xE8s de vos bucherons, cela d\xE9truirais\
         \ leurs pr\xE9cieux arbres.\n\nMISSION: Construire une place centrale."]
     type: logbook_w
-  - arguments: ['', "A pr\xE9sent, regardons la place centrale de plus pr\xE8s.\n\n\
-        Dans sa fen\xEAtre, vous pouvez rapidement ajuster les taxes.\n\nDans le second\
-        \ onglet \xABCompte\xBB, vous voyez votre bilan financier comprenant vos achats\
-        \ et les taxes que vous pr\xE9levez.\n\nLes parties \xABVente\xBB et \xAB\
-        Achat\xBB renvoient \xE0 votre balance commerciale et seront expliqu\xE9es\
-        \ plus tard.\n\nSi votre bilan est positif, vous faites du profit.\n\nDans\
-        \ l'onglet \xABColons\xBB vous pouvez voir le niveau de satisfaction des habitants\
-        \ et les ressources qui manquent \xE0 la majorit\xE9 d'entre eux."]
+  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
+
+
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
+
+
+        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
+        later on.
+
+
+        If your balance is positive, you all-in-all make a profit.
+
+
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
     type: logbook
   - arguments: ["Construisez une place centrale. Choisissez un endroit peu charg\xE9\
         \ en b\xE2timents \xE9conomiques."]
@@ -235,28 +210,50 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION : LA SIGNALISATION', "Voyez-vous le navire\
-        \ passer devant vos c\xF4tes de temps en temps ?\n\nC'est celui du Marchand\
-        \ Libre, l'un des premiers colons de l'archipel.\n\nCe marchand vous fournira\
-        \ en biens n\xE9cessaires que vous ne pouvez produire pour l'instant.\n\n\
-        Vous pouvez aussi lui vendre le surplus de votre production, mais en g\xE9\
-        n\xE9ral le consommer (en construisant des tentes) est plus profitable.\n\n\
-        Habituellement les bateaux naviguent de ports en ports en cherchant \xE0 faire\
-        \ affaire, mais un petit comptoir comme le votre \xE0 besoin d'attirer l'attention\
-        \ o\xF9 l'on ne vous trouvera pas.\n\nPour cela, vous pouvez construire un\
-        \ feu de signalisation sur la cote, pr\xE8s de votre comptoir, il montrera\
-        \ la voie aux bateaux."]
+  - arguments: [!!python/unicode 'MISSION : LA SIGNALISATION', !!python/unicode 'Can
+        you see the ship passing your island from time to time? That ship belongs
+        to the Free Trader, one of the first settlers in this archipelago.
+
+
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
+
+
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
+
+
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
+
+
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
     type: logbook_w
-  - arguments: ['', "Avec cette petite aide, le bateau-marchand passera de temps en\
-        \ temps \xE0 votre comptoir.\n\nVous pouvez proposer des offres via l'onglet\
-        \ \xABAchat/Vente\xBB. (qui est encore un peu difficile \xE0 utiliser, si\
-        \ vous avez une id\xE9e d'am\xE9lioration, n'h\xE9sitez pas, nous avons besoin\
-        \ d'aide!)\n\nAu niveau \xABmarin\xBB, vous disposez de trois emplacements\
-        \ commerciaux.\n\nCliquez sur la petite ic\xF4ne pour changer le mode de l'emplacement\
-        \ en \xABAchat\xBB ou \xABVente\xBB et vice versa.\n\nSi vous cliquez dans\
-        \ l'emplacement, vous pouvez choisir le bien dont vous voulez faire le commerce.\
-        \ Nous expliquerons cela d\xE8s que vous serez pr\xEAt.\n\nMISSION: Construisez\
-        \ un feu de signalisation pr\xE8s de votre comptoir."]
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
   - arguments: ["Construisez un feu de signalisation sur la c\xF4te proche du comptoir."]
     type: message
@@ -281,17 +278,17 @@ events:
         \ de stock.\nQuand vous vendez, la \xABvaleur cible\xBB est la quantit\xE9\
         \ de produit que vous voulez garder en r\xE9serve et ne pas vendre"]
     type: logbook_w
-  - arguments: ['', "Voici un exemple :\nUn emplacement \xABachat\xBB avec 5 tonnes\
-        \ en stock et un curseur \xE0 9 ach\xE8tera jusqu'\xE0 4 tonnes.\nUn emplacement\
-        \ \xABvente\xBB avec 18 tonnes en stock et un curseur \xE0 13 vendra jusqu'\xE0\
-        \ 5 tonnes.\n\nCependant si le bateau-marchand n'en veut pas ou n'en a pas\
-        \ autant, vous devrez \xEAtre patient et attendre son prochain passage\n\n\
-        Unknown Horizons propose un syst\xE8me de prix intelligent, la valeur d'une\
-        \ unit\xE9 peut donc varier.\nIl n'est pas possible de changer les prix!\n\
-        \nVous pouvez voir votre balance commerciale dans l'onglet \xABCompte\xBB\
-        \ mettant en relief \xABVente\xBB et \xABAchat\xBB.\n\nMISSION: Achetez autant\
-        \ d'outils que n\xE9cessaire pour en avoir 30 en stock!\nSi vous en avez encore\
-        \ dans votre vaisseau, ce serait le bon moment pour les d\xE9charger."]
+  - arguments: ['', "Par exemple :\nUn emplacement \xABachat\xBB avec 5 tonnes en\
+        \ stock et un curseur \xE0 9 provoquera l'achat de 4 tonnes suppl\xE9mentaires.\n\
+        Un emplacement \xABvente\xBB avec 18 tonnes en stock et un curseur \xE0 13\
+        \ vendra jusqu'\xE0 5 tonnes.\n\nCependant si le bateau-marchand veut juste\
+        \ acheter ou vendre moins que ce que vos r\xE9glages permettent, vous devrez\
+        \ \xEAtre patient et attendre son retour.\n\nUnknown Horizons propose un syst\xE8\
+        me de prix intelligent, la valeur d'une unit\xE9 peut donc varier.\nIl n'est\
+        \ PAS possible de changer les prix!\n\nVous pouvez voir votre balance commerciale\
+        \ dans l'onglet \xABCompte\xBB mettant en relief \xABVente\xBB et \xABAchat\xBB\
+        .\n\nMISSION: Achetez autant d'outils que n\xE9cessaire pour en avoir 30 en\
+        \ stock!"]
     type: logbook
   - arguments: [!!python/unicode 'Atteignez un stock d''au moins 30 outils.']
     type: message
@@ -317,15 +314,26 @@ events:
         \ atteindre.\n\nDans les niveaux suivants, des versions am\xE9lior\xE9es des\
         \ b\xE2timents seront disponibles."]
     type: logbook_w
-  - arguments: ['', "Dans ce cas la \xABpetite\xBB version n'est plus n\xE9cessaire\
-        \ puisque la \xABgrande\xBB fournira aussi ce que vos habitants recherchent\
-        \ dans les niveaux pr\xE9c\xE9dents.\n\nFaites attention en construisant votre\
-        \ ville parce que la plupart des b\xE2timents avanc\xE9s sont plus grands\
-        \ que les b\xE2timents de base.\n\nNotez que la foi est trait\xE9e comme une\
-        \ ressource physique, donc vos habitants auront besoin de revenir l\xE0 apr\xE8\
-        s quelque temps.\n\nImportant:\nIl n'est pas suffisant que le b\xE2timent\
-        \ soit dans un p\xE9rim\xE8tre proche.\n\nMISSION: Construire un pavillon\
-        \ connect\xE9 aux tentes pour assouvir la demande religieuse de vos marins."]
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
+
+
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
+
+
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
+
+
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
     type: logbook
   - arguments: ["Construisez un pavillon connect\xE9 aux tentes."]
     type: message

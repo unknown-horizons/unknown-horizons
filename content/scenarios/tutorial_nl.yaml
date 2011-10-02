@@ -13,7 +13,8 @@ description: !!python/unicode 'De tutorial:
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Plaats een kantoor aan de kust.']
+  - arguments: [!!python/unicode 'Bouw een hoofdkantoor aan de kust, zodat deze makkelijk
+        bereikbaar is voor andere schepen als die van de vrije handelaar.']
     type: message
   - arguments: [!!python/unicode 'Welkom bij Unknown Horizons!', "Dit is uw logboek\
         \ waar alle belangrijke informatie staat opgeslagen. Een korte notificatie\
@@ -51,92 +52,35 @@ events:
 
         OPDRACHT: Plaats een kantoor aan de kust.', 2]
     type: logbook
-  - arguments: [tutStepDone, 6]
+  - arguments: [tutStepDone, 16]
     type: set_var
   conditions:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: LAAD DE GOEDEREN UIT', !!python/unicode 'Nu
-        het hoofdkantoor geplaatst is, moeten grondstoffen worden verplaatst naar
-        de opslag.
+  - arguments: [!!python/unicode 'OPDRACHT: BOUW EEN HOUTHAKKER', !!python/unicode 'Het
+        bouwmateriaal is automatisch van je schip gelost. U kunt nu met de bouw van
+        een aantal basisgebouwen beginnen.
 
 
-        Selecteer het schip en open het scherm ''Scheepsinventaris'' door op de knop
-        met het houten krat te klikken.
+        We zullen starten met het bouwen van een houthakker.
 
 
-        Hier is een overzicht van de inventaris van het schip en een knop ''Laden/Uitladen''.
+        Dit is essentieel omdat, in dit stadium, planken het enige betaalbare zijn
+        waar je bemanning hun tenten over kunnen hangen.
 
 
-        Deze knop wordt actief zodra uw schip in de buurt is van een mogelijke handelspartner,
-        zoals het hoofdkantoor
+        De visser zal ook een aantal planken nodig hebben om zijn boot te bouwen.
 
 
-        Klik op de knop. Verplaats uw schip dichterbij het hoofdkantoor als de knop
-        niet actief is en probeer opnieuw.
+        Om houthakkers te bouwen open je het menu door te drukken op het grote icoon
+        onder de minimap, of door op de B te drukken op het toetsenbord.
 
 
-        OPDRACHT: Open het handelsscherm.']
-    type: logbook_w
-  - arguments: ['', !!python/unicode 'Het scherm wat u ziet is verdeeld in ''Schip''
-        en ''Kolonie'' als handelspartners.
+        Het bouwmenu is opgesteld in reeksen.
 
-
-        Om goederen van een voorraad naar de andere voorraad te verplaatsen, kunt
-        u er simpelweg op klikken.
-
-
-        Probeer eerst op de planken op het schip te klikken en probeer vervolgens
-        deze terug te plaatsen.
-
-
-        U kunt de verplaatste hoeveelheid aanpassen met de knoppen in het midden.
-
-
-        Heeft u zichzelf bekend gemaakt met het handelsscherm?
-
-        U heeft nu constructie materiaal nodig in uw kolonie!
-
-
-        OPDRACHT: Laad tenminste 10 ton van iedere grondstof op het schip uit.']
-    type: logbook
-  - arguments: [!!python/unicode 'Laad tenminste 10 ton van iedere grondstof op het
-        schip uit.']
-    type: message
-  - arguments: [tutStepDone, 16]
-    type: set_var
-  conditions:
-  - arguments: [1, 0]
-    type: building_num_of_type_greater
-  - arguments: [tutStepDone, 5]
-    type: var_gt
-  - arguments: [tutStepDone, 16]
-    type: var_lt
-- actions:
-  - arguments: [!!python/unicode 'OPDRACHT: BOUW EEN HOUTHAKKER', !!python/unicode 'Met
-        het nieuwe constructie materiaal in het kantoor kunnen de eerste gebouwen
-        geplaatst worden.
-
-
-        We zullen starten met het plaatsen van een houthakker.
-
-
-        De houthakker is belangrijk aangezien planken in deze fase de enige middelen
-        zijn die de zeelui kunnen gebruiken voor hun tenten.
-
-
-        De visser heeft ook hout nodig om zijn schip te maken.
-
-
-        Om een houthakker te plaatsen, ga naar het constructie menu door op de grote
-        knop onder de kleine kaart te klikken of druk de B toets.
-
-
-        Het constructie menu is gesorteerd op niveau''s.
-
-        Dat betekent dat alleen standaard gebouwen beschikbaar zijn op het zeelui
-        niveau (waarop u zich nu bevindt).']
+        Momenteel zit u in de basisreeks (de zeemansreeks), u kunt hierdoor alleen
+        de basisgebouwen bouwen.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'Met het uitbreiden van uw kolonie kunnen ook
         complexere gebouwen geplaatst worden.
@@ -254,25 +198,23 @@ events:
 
         OPDRACHT: Plaats een plein.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Laten we het plein nader bekijken.
+  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
 
 
-        In het overzicht scherm kunt u belastingen eenvoudig aanpassen.
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
 
 
-        Het tweede scherm ''Rekening'' toont een balans, hierop staan alle kosten
-        die u betaald heeft en alle belastingen die u ontvangen heeft.
+        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
+        later on.
 
 
-        De opties ''Verkoop'' en ''Inkoop'' verwijzen naar de handels balans en zal
-        later uitgelegd worden.
+        If your balance is positive, you all-in-all make a profit.
 
 
-        Als de balans positief is betekent dit dat u winst maakt.
-
-
-        In het scherm ''Kolonisten'' kunt u zien hoe blij de inwoners zijn en welke
-        goederen ze het meest nodig hebben.']
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een plein. Kies een gebied zonder economische
         gebouwen.']
@@ -344,52 +286,50 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: SIGNAALVUUR', !!python/unicode 'Heeft
-        u het schip gezien wat van tijd tot tijd bij uw eiland langsgaat?
+  - arguments: [!!python/unicode 'OPDRACHT: SIGNAALVUUR', !!python/unicode 'Can you
+        see the ship passing your island from time to time? That ship belongs to the
+        Free Trader, one of the first settlers in this archipelago.
 
 
-        Dit is het schip van de vrije handelaar, een van de eerste kolonisten in de
-        archipel.
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
 
 
-        Deze handelaar zal uw kolonie bevoorraden met goederen die u zelf nog niet
-        kan produceren.
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
 
 
-        U kan ook goederen verkopen waarvan u teveel heeft, maar over het algemeen
-        kunt u deze het beste laten consumeren door uw inwoners (door middel van het
-        bouwen van extra tenten), dat levert vaak meer op dan het verkopen aan de
-        vrije handelaar.
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
 
 
-        Normaal zeilt het schip rond zoekend naar goede handel, maar kleine kolonies
-        als die van u hebben wat meer aandacht nodig, anders worden ze nooit gevonden.
-
-
-        Hiervoor kan u een signaalvuur bouwen aan de kust bij uw hoofdkantoor om de
-        schepen de weg naar uw kolonie te wijzen.']
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Na dit beetje hulp, zal de vrije handelaar van
-        tijd tot tijd even bij uw kolonie langskomen.
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
 
 
-        U kan handel voorstellen via de tab ''Koop/Verkoop''. (Deze optie is momenteel
-        nog wat lastig te bedienen, maar er wordt aan gewerkt. Mocht je nog ideen
-        hierover hebben, laat ons dat dan weten)
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
 
 
-        Bij de ''zeelui'' optie staan drie handelslots tot je beschikking.
+        At the ''sailors'' increment, you are equipped with three trading slots.
 
 
-        Klik op de het kleine icoontje om de modus van ''Koop'' naar ''Verkoop'' en
-        andersom te wijzigen.
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
 
 
-        Als je op het slot zelf klikt, dan kun je kiezen met welk goed je zou willen
-        handelen. We zullen dit verder uitleggen als je klaar bent om te handelen.
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
 
 
-        OPDRACHT: Bouw een signaalvuur bij de kust in de buurt van uw hoofdkantoor.']
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een signaal vuur bij de kust nabij het kantoor.']
     type: message
@@ -413,18 +353,16 @@ events:
         \ maar je 'streefwaarde' in voorraad houden. \nBij verkoop is de 'streefwaarde'\
         \ het aantal dat je reserve houdt en niet verkoopt"]
     type: logbook_w
-  - arguments: ['', !!python/unicode "Als voorbeeld: \nWanneer uw slot op 'kopen'\
-        \ staat en u 5 ton in voorraad hebt en u de schuifbalk op 9 ton heeft staan.\
-        \ Dat zorgt ervoor dat u maximaal 4 ton extra zal inkopen. Verkopen werkt\
-        \ ongeveer hetzelfde. Een 'verkoop' slot met 18 ton in voorraad en de schuifbalk\
-        \ op 13 zal maximaal 5 ton verkopen.\n\nAls de handelaar minder dan u hebt\
-        \ aangegeven wil kopen of verkopen, dan zult u gewoon moeten wachten tot tot\
-        \ hij terug is.\n\nUH werkt met slimme prijzen, dus de waarde van een eenheid\
-        \ kan verschillen. Dit kan NIET handmatig worden aangepast.\n\nU kunt uw handels\
-        \ balans nakijkenbij de tab 'Account', waar je de 'koop' en 'verkoop' waardes\
-        \ kan bekijken.\n\nOPDRACHT: Koop zoveel werktuigen als nodig om er 30 op\
-        \ voorraad te hebben!\nAls u er nog een aantal in de scheeps inventaris heeft,\
-        \ dan is dit een prima tijd om die ook nog uit te laden."]
+  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
+        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
+        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
+        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
+        \ however only wants to buy or sell less than your settings would allow him,\
+        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
+        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
+        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
+        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
+        \ as you need to have 30 tools in stock!"]
     type: logbook
   - arguments: [!!python/unicode 'Bereik een voorraad van tenminste 30 stuks gereedschap
         op het eiland.']
@@ -461,26 +399,26 @@ events:
 
         Veel later in het spel zullen er ook upgrades voor de gebouwen komen.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'In het geval dat de ''kleine'' versie niet meer
-        nodig is omdat de ''grote'' ook biedt wat uw inwoners kleine versie zoeken.
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
 
 
-        Probeer rekening te houden bij het ontwikkelen van uw stad dat de geavanceerde
-        gebouwen groter zijn dan de basis gebouwen.
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
 
 
-        Let erop dat geloof wordt behandeld als een fysieke grondstof, eenheden moeten
-        zich na bepaalde tijd verfrissen.
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
 
 
-        Belangrijk:
-
-        Het is NIET voldoende dat het gebouw alleen maar binnen een bepaalde afstand
-        van de tent staat.
-
-
-        OPDRACHT: Plaats een paviljoen met een pad naar de tenten om te voldoen aan
-        de vraag naar geloof van de zeelui.']
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een paviljoen met verbinding naar de tenten.']
     type: message

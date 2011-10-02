@@ -1,0 +1,650 @@
+
+# DON'T EDIT THIS FILE.
+
+# It was automatically generated with development/create_scenario_pot.sh using
+# translation files from pootle.
+
+author: !!python/unicode 'The UH team'
+description: "Introduktionen:\nBygg din f\xF6rsta bos\xE4ttning och l\xE4r dig hur\
+  \ man spelar!\n"
+difficulty: !!python/unicode 'Introduktion'
+events:
+- actions:
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
+    type: message
+  - arguments: ["V\xE4lkommen till Unknown Horizons!", "Det h\xE4r \xE4r din loggbok\
+        \ d\xE4r all viktig information lagras. En kort underr\xE4ttelse av varje\
+        \ uppgift kommer att finnas tillg\xE4nglig p\xE5 v\xE4nstra sidan av sk\xE4\
+        rmen.\n\nOm du \xE4r intresserad av l\xE4ngre f\xF6rklaringar s\xE5 kommer\
+        \ loggboken f\xF6rhoppningsvis att ge dig den hj\xE4lp du beh\xF6ver.\n\n\
+        Efter att du har st\xE4ngt loggboken kan du \xF6ppna den igen genom att trycka\
+        \ p\xE5 ikonen \"Loggboken\" i det \xF6vre h\xF6gra h\xF6rnet(under v\xE4\
+        rldskartan med ett f\xF6rseglat dokument och en fj\xE4der)\n\nOm du har n\xE5\
+        gra f\xF6rslag p\xE5 b\xE4ttre f\xF6rklaringar, \xE4mnen som kunde ha beskrivits\
+        \ eller buggighet s\xE5 tala g\xE4rna om det f\xF6r oss s\xE5 ska vi g\xF6\
+        ra vad vi kan f\xF6r att f\xF6rb\xE4ttra introduktionen!\n\nBes\xF6k www.unknown-horizons.org\
+        \ f\xF6r hj\xE4lp om hur du tar kontakt med teamet!\n\nDags att b\xF6rja spela!"]
+    type: logbook_w
+  - arguments: ["NY UPPGIFT: BOS\xC4TTA SIG P\xC5 EN NY \xD6", "F\xF6r att flytta\
+        \ ditt fartyg, tryck p\xE5 fartyget med v\xE4nsterknappen och sedan med h\xF6\
+        gerknappen d\xE4r du vill att den ska \xE5ka.\n\nN\xE4r du kommit n\xE4ra\
+        \ kusten s\xE5 aktiveras den ankar-liknande knappen i \xF6versiktsfliken.\n\
+        \nDet betyder att du nu kan bygga ett handelskontor genom att trycka p\xE5\
+        \ knappen(kallad 'Bygg Bos\xE4ttning').\n\nEn f\xF6rhandsvisning av din byggnad\
+        \ g\xE5r att se n\xE4r du flyttar runt med pekaren.\n\nDu kan bygga p\xE5\
+        \ alla platser d\xE4r f\xF6rhandsvisningen inte \xE4r f\xE4rgad r\xF6d.\n\
+        Tryck d\xE4r du vill placera din byggnad.\n\nUPPGIFT: Bygg ett handelskontor\
+        \ vid kusten.", 2]
+    type: logbook
+  - arguments: [tutStepDone, 16]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: time_passed
+- actions:
+  - arguments: [!!python/unicode 'NY UPPGIFT: BYGG EN SKOGSHUGGARE', "Byggnadsmaterialet\
+        \ p\xE5 ditt fartyg lastades av automatiskt. Du kan nu bygga n\xE5gra grundl\xE4\
+        ggande byggnader.\n\nVi b\xF6rjar med att bygga en skogshuggare.\n\nDetta\
+        \ \xE4r viktigt, f\xF6r i detta skede \xE4r plankor de enda p\xE5lar dina\
+        \ sj\xF6m\xE4n har r\xE5d att h\xE4nga sina t\xE4lt \xF6ver.\n\nFiskaren beh\xF6\
+        ver ocks\xE5 n\xE5gra plankor f\xF6r att bygga sin b\xE5t.\n\nF\xF6r att bygga\
+        \ skogshuggare; \xF6ppna byggmenyn genom att klicka p\xE5 den stora ikonen\
+        \ under den lilla kartan eller tryck B p\xE5 tangentbordet.\n\nByggnadsmenyn\
+        \ \xE4r indelad i tillv\xE4xtgrader.\nDu befinner dig f\xF6r nuvarande p\xE5\
+        \ den f\xF6rsta tillv\xE4xtgraden (Sj\xF6mans niv\xE5) och erbjuds d\xE4rf\xF6\
+        r bara grundl\xE4ggande byggnader."]
+    type: logbook_w
+  - arguments: ['', "Under tiden som din civilisation utvecklas kommer du f\xE5 tillg\xE5\
+        ng till mer avancerade byggnader.\n\nTills vidare, tryck p\xE5 skogshuggare\
+        \ under 'F\xF6retag' och bygg den i n\xE4rheten av tr\xE4d.\n\nDu kan ocks\xE5\
+        \ plantera tr\xE4d - men det kostar pengar. F\xF6rs\xF6k anv\xE4nda vad naturen\
+        \ erbjuder!\n\nEtt f\xF6retag beh\xF6ver alltid en g\xE5ngstig ansluten till\
+        \ ett f\xF6rvaringst\xE4lt eller handelskontor, annars kommer varorna inte\
+        \ att samlas in f\xF6r anv\xE4ndning.\n\nDet betyder att du m\xE5ste bygga\
+        \ en g\xE5ngstig mellan handelskontoret(eller ett f\xF6rvaringst\xE4lt) och\
+        \ skogshuggaren.\n\nUPPGIFT: Bygg en skogshuggare i ett skogst\xE4tt omr\xE5\
+        de och anslut den till en g\xE5ngstig.\n\nV\xE4nta och se nu hur en samlare\
+        \ h\xE4mtar din f\xF6rsta sj\xE4lvproducerade vara - tr\xE4."]
+    type: logbook
+  - arguments: ["Bygg en skogshuggare och anslut den till handelskontoret med en g\xE5\
+        ngstig."]
+    type: message
+  - arguments: [tutStepDone, 19]
+    type: set_var
+  conditions:
+  - arguments: [4, 9]
+    type: settlement_res_stored_greater
+  - arguments: [5, 9]
+    type: settlement_res_stored_greater
+  - arguments: [6, 9]
+    type: settlement_res_stored_greater
+  - arguments: [tutStepDone, 15]
+    type: var_gt
+  - arguments: [tutStepDone, 19]
+    type: var_lt
+- actions:
+  - arguments: ["NY UPPGIFT: SAMLA F\xD6DA", "Du kommer att beh\xF6va ett f\xF6retag\
+        \ som producerar f\xF6da, eftersom m\xE4nniskor i allm\xE4nhet(och sj\xF6\
+        m\xE4n i synnerhet) \xE4r v\xE4ldigt hungriga.\n\nTillg\xE4ngliga f\xF6retag\
+        \ i steg ett \xE4r J\xE4gare och Fiskare.\n\nJ\xE4garen, f\xF6rv\xE5nansv\xE4\
+        rt nog, jagar djur i skogen och beh\xF6ver tr\xE4d runtomkring sig.\n\nNotera\
+        \ att du kan placera en J\xE4gare i n\xE4rheten av skogshuggarens skog.\n\n\
+        Det kan h\xE4nda att djuren inte f\xF6r\xF6kar sig tillr\xE4ckligt snabbt\
+        \ eller g\xF6mmer sig v\xE4l.\n\nSlutsats: j\xE4garen \xE4r inte tillf\xF6\
+        rlitlig f\xF6r en stabil och kontinuerlig tillg\xE5ng av f\xF6da."]
+    type: logbook_w
+  - arguments: ['', "Fiskarens byggnad placeras vid kusten precis som handelskontoret\
+        \ och beh\xF6ver fisk inom dess r\xE4ckvidd.\n\nFiskaren bygger ett litet\
+        \ fartyg f\xF6r att f\xE5nga fisk.\n\nFiskaren ger en kontinuerlig tillg\xE5\
+        ng av f\xF6da men till priset att produktionen \xE4r l\xE5ngsammare.\n\nEn\
+        \ liten bos\xE4ttning som din kan anv\xE4nda b\xE5da f\xF6retagen, och du\
+        \ f\xE5r sj\xE4lv balansera effekten av b\xE5das f\xF6r och nackdelar.\n\n\
+        UPPGIFT: Bygg en j\xE4gare och en fiskare.\n\nGl\xF6m inte att ansluta dem\
+        \ till ditt handelskontor med en g\xE5ngstig!"]
+    type: logbook
+  - arguments: ["Bygg en j\xE4gare och en fiskare. Anslut dem till ditt handelskontor."]
+    type: message
+  - arguments: [tutStepDone, 22]
+    type: set_var
+  conditions:
+  - arguments: [8, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [tutStepDone, 18]
+    type: var_gt
+  - arguments: [tutStepDone, 22]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NY UPPGIFT: MARKNADSPLATS', "Dina inv\xE5nare beh\xF6\
+        ver en marknadsplats d\xE4r de kan h\xE4mta varor som de beh\xF6ver.\n\nDet\
+        \ betyder att de beh\xF6ver en g\xE5ngstig ansluten fr\xE5n deras bostad till\
+        \ marknadsplatsen.\n\nAlla varor i ditt handelskontor \xE4r tillg\xE4ngliga\
+        \ i marknadsplatsen, s\xE5 att dina inv\xE5nare in beh\xF6ver g\xE5 till fiskaren\
+        \ eller handelskontoret f\xF6r att h\xE4mta h\xE4mta f\xF6da.\n\nDu borde\
+        \ fundera p\xE5 att planera dina bost\xE4ders bos\xE4ttning s\xE5 att omr\xE5\
+        det l\xE4ttare kan expandera och anslutas med g\xE5ngstigar.\n\nDu borde undvika\
+        \ att placera dina bost\xE4der f\xF6r n\xE4ra timmerstugan eftersom bost\xE4\
+        derna kommer att ta bort tr\xE4d som timmerstugan beh\xF6ver f\xF6r att producera\
+        \ tr\xE4.\n\nUPPGIFT: Bygg en marknadsplats."]
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
+
+
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
+
+
+        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
+        later on.
+
+
+        If your balance is positive, you all-in-all make a profit.
+
+
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
+    type: logbook
+  - arguments: ["Bygg en marknadsplats. V\xE4lj en plats d\xE4r du l\xE4ttare kan\
+        \ bygga ut ditt bostadsomr\xE5de."]
+    type: message
+  - arguments: [tutStepDone, 25]
+    type: set_var
+  conditions:
+  - arguments: [9, 0]
+    type: building_num_of_type_greater
+  - arguments: [11, 0]
+    type: building_num_of_type_greater
+  - arguments: [9, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [11, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [tutStepDone, 21]
+    type: var_gt
+  - arguments: [tutStepDone, 25]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NY UPPGIFT: BOSTADSBYGGNADER', "Nybyggare vill ha\
+        \ tak \xF6ver huvudet, annars kommer de inte att flytta in i din bos\xE4ttning!\
+        \ Du m\xE5ste ge dem t\xE4lt att bo i.\n\nT\xE4lt \xE4r den enklaste typen\
+        \ av bostad. Dina inv\xE5nare kommer att vilja uppgradera sina bost\xE4der\
+        \ n\xE4r nya steg finns tillg\xE4ngliga.\n\nNybyggare kan tyckas on\xF6diga\
+        \ eftersom de konsumerar dina varor - \xE5 andra sidan betalar de skatt, och\
+        \ \xE4r den enda inkomstk\xE4llan du har f\xF6r tillf\xE4llet.\n\nUPPGIFT:\
+        \ Bygg ett t\xE4lt och anslut den till marknadsplatsen."]
+    type: logbook
+  - arguments: ["Bygg ett t\xE4lt och anslut den till marknadsplatsen."]
+    type: message
+  - arguments: [tutStepDone, 28]
+    type: set_var
+  conditions:
+  - arguments: [4, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 24]
+    type: var_gt
+  - arguments: [tutStepDone, 28]
+    type: var_lt
+- actions:
+  - arguments: ['', "L\xE5t oss ta en titt p\xE5 t\xE4ltets \xF6versiktsflik.\nDu\
+        \ kan se:\n* Hur lyckliga de inneboende \xE4r.\n* Skatterna de betalar.\n\
+        * och de varor som de kr\xE4ver.\n\nOm deras krav p\xE5 varor \xE4r m\xE4\
+        ttade, \xF6kar deras lycka som i sin tur \xF6kar dina skatteint\xE4kter.\n\
+        \nOm inte s\xE5 minkar lycka och skatteint\xE4kter. Om du struntar fullst\xE4\
+        ndigt i deras behov kan det h\xE4nda att de l\xE4mnar din bos\xE4ttning och\
+        \ minnena av dem \xE4r ett f\xF6rfallet t\xE4lt.\n\nNotera att du \xE4ven\
+        \ kan justera den globala skatteint\xE4kten \xE4ven h\xE4r.\n\nUPPGIFT: Bygg\
+        \ minst tre t\xE4lt till.\n\nTIPS: Att h\xE5lla ner SHIFT g\xF6r att du kan\
+        \ placera flera av samma byggnad."]
+    type: logbook
+  - arguments: ["Bygg minst tre t\xE4lt till och anslut dem till marknadsplatsen."]
+    type: message
+  - arguments: [tutStepDone, 31]
+    type: set_var
+  conditions:
+  - arguments: [3, 4, 0]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 27]
+    type: var_gt
+  - arguments: [tutStepDone, 31]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NY UPPGIFT: BYGG EN SIGNALBRAND', !!python/unicode 'Can
+        you see the ship passing your island from time to time? That ship belongs
+        to the Free Trader, one of the first settlers in this archipelago.
+
+
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
+
+
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
+
+
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
+
+
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
+    type: logbook
+  - arguments: ["Bygg en signalbrand vid kusten och i n\xE4rheten av handelskontoret."]
+    type: message
+  - arguments: [tutStepDone, 34]
+    type: set_var
+  conditions:
+  - arguments: [3, 4, 3]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 30]
+    type: var_gt
+  - arguments: [tutStepDone, 34]
+    type: var_lt
+- actions:
+  - arguments: ["NY UPPGIFT: L\xC4R DIG HANDEL", "Utm\xE4rkt! Nu kommer k\xF6pm\xE4\
+        nnen att stanna vid ditt handelskontor d\xE5 och d\xE5.\n\nNu vidare till\
+        \ hur du utf\xF6r handel.\n\nEfter att ha valt en viss typ av vara kommer\
+        \ den gr\xF6na stapeln att visa(om den syns) hur mycket av den varan som finns\
+        \ i ditt lager.\n\nReglaget till h\xF6ger om stapeln best\xE4mmer hur stora\
+        \ eller sm\xE5 m\xE4ngder du vill k\xF6pa eller s\xE4lja.\nOm du vill k\xF6\
+        pa en vara best\xE4mmer du hur mycket du vill ska finnas i lagret.\nOm du\
+        \ s\xE4ljer en vara best\xE4mmer du hur mycket du vill ha kvar i lagret."]
+    type: logbook_w
+  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
+        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
+        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
+        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
+        \ however only wants to buy or sell less than your settings would allow him,\
+        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
+        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
+        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
+        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
+        \ as you need to have 30 tools in stock!"]
+    type: logbook
+  - arguments: [!!python/unicode 'Se till att du har 30 ton verktyg i lager.']
+    type: message
+  - arguments: [tutStepDone, 37]
+    type: set_var
+  conditions:
+  - arguments: [6, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 33]
+    type: var_gt
+  - arguments: [tutStepDone, 37]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NY UPPGIFT: BYGG EN PAVILJONG', "Det borde r\xE4\
+        cka med verktyg f\xF6r nuvarande. Bra jobbat!\n\nJust nu tillgodoser du dina\
+        \ inv\xE5nare med bostad, marknadsplats och f\xF6da.\n\nMen det finns fortfarande\
+        \ ett till behov vi inte har tillgodosett, s\xE5 kolla i marknadsplatsen eller\
+        \ bostadsfliken - Dina sj\xF6m\xE4n vill ha en byggnad d\xE4r de kan be.\n\
+        \nF\xF6r att l\xF6sa detta behov snabbt byggs en paviljong d\xE4r pr\xE4sten\
+        \ kan vara i skydd mot solen.\n\nServicebyggnader som denna beh\xF6ver ocks\xE5\
+        \ en g\xE5ngstig, annars hittar inte dina inv\xE5nare dit.\n\nI senare steg\
+        \ kan uppgraderade versioner av byggnaderna komma att bli tillg\xE4ngliga."]
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
+
+
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
+
+
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
+
+
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
+    type: logbook
+  - arguments: ["Bygg en paviljong med anslutning till bost\xE4derna."]
+    type: message
+  - arguments: [tutStepDone, 40]
+    type: set_var
+  conditions:
+  - arguments: [6, 29]
+    type: settlement_res_stored_greater
+  - arguments: [tutStepDone, 36]
+    type: var_gt
+  - arguments: [tutStepDone, 40]
+    type: var_lt
+- actions:
+  - arguments: ["NY UPPGIFT: N\xC4STA STEG", "Alla behov \xE4r tillgodosedda om dina\
+        \ inv\xE5nare regelbundet kan bes\xF6ka marknadsplatsen och paviljongen och\
+        \ f\xF6dan r\xE4cker till alla.\n\nOm sj\xF6m\xE4nnen \xE4r tillr\xE4ckligt\
+        \ lyckliga s\xE5 vill de avancera till n\xE4sta steg som kallas Pionj\xE4\
+        rer.\n\nF\xF6r att g\xF6ra dem lyckliga finns det inte s\xE5 mycket kvar att\
+        \ g\xF6ra utom att s\xE4nka skatten eftersom alla behov redan \xE4r tillgodosedda.\n\
+        \nUndvik att st\xE4ndigt h\xE5lla skatterna l\xE5ga eftersom det kan leda\
+        \ till att du g\xE5r bankrutt. Men under kortare perioder kan det vara n\xF6\
+        dv\xE4ndigt, om du vet vad du g\xF6r.\n\nEfter en stund kommer den f\xF6rsta\
+        \ inv\xE5naren att knata bort till marknadsplatsen, kolla efter nya byggmaterial\
+        \ f\xF6r att bygga en timmerstuga som ers\xE4tter det gamla t\xE4ltet."]
+    type: logbook_w
+  - arguments: ['', "Uppgraderingar av bost\xE4der kostar varor(som tr\xE4) och kan\
+        \ inte styras av dig(f\xF6rutom att tillgodose behov och s\xE4nka skatter).\n\
+        \nDet finns manuella uppgraderingar av andra byggnader f\xF6r att bygga en\
+        \ b\xE4ttre version av byggnaden, och dessutom finns det uppgraderingar utan\
+        \ kostnad, till exempel skogshuggarens byggnad(I detta fall \xE4ndras endast\
+        \ grafiken).\n\nUppgraderade bost\xE4der rymmer fler inneboende och dessutom\
+        \ betalar poinj\xE4rerna mer skatt \xE4n sj\xF6m\xE4nnen.\n\nNackdelen med\
+        \ uppgraderingar \xE4r att pionj\xE4rerna kr\xE4ver mer varor \xE4n vad sj\xF6\
+        m\xE4nnen g\xF6r - s\xE5 de extra pengar du tj\xE4nar in kanske m\xE5ste spenderas\
+        \ p\xE5 att g\xF6ra dem lyckliga.\n\nUPPGIFT: S\xE4nk skatten och v\xE4nta\
+        \ p\xE5 att sj\xF6m\xE4nnen ska uppgradera."]
+    type: logbook
+  - arguments: ["S\xE4nk skatten och v\xE4nta p\xE5 att sj\xF6m\xE4nnen ska uppgradera."]
+    type: message
+  - arguments: [tutStepDone, 43]
+    type: set_var
+  conditions:
+  - arguments: [3, 5, 3]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 39]
+    type: var_gt
+  - arguments: [tutStepDone, 43]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A FARM', !!python/unicode 'Congratulations!
+        Some of your inhabitants have reached increment II!
+
+
+        Now you have access to new buildings, take a look at the Build menu again.
+
+
+        A shiny new tab appeared there.
+
+
+        Pioneers will demand cloth, so you need to set up a production line for cloth
+        starting with lambs wool (which is one of the goods produced at the farm).
+
+
+        The farm is a very special production building since it can produce not only
+        one, but very many (and different) goods if you choose.
+
+
+        The output of farms depends on what kind of fields you build around it.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
+
+
+        Farms, like all companies producing raw materials, do not necessarily need
+        to be connected to storage or a Branch Office.
+
+
+        As long as units of the final production company can reach the farm, and collectors
+        from the branch office or storage tent can reach the final company everything''s
+        fine.
+
+
+        If you, however, plan to do some processing on different parts of the island
+        (which can make sense) or even on different islands, you will need a connection
+        to collectors.
+
+
+        Try to build the farm not too close to the coast or your existing buildings
+        since it will need some space around it to work well.
+
+
+        TASK: Build a farm.']
+    type: logbook
+  - arguments: [!!python/unicode 'Build a farm and keep some empty space around it.']
+    type: message
+  - arguments: [tutStepDone, 46]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: settler_level_greater
+  - arguments: [tutStepDone, 42]
+    type: var_gt
+  - arguments: [tutStepDone, 46]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD FIELDS', !!python/unicode 'The farm
+        itself is not going to produce anything without some fields.
+
+
+        You currently have the choice between pastures, potato and sugar fields.
+
+
+        Let''s have a short overview:
+
+        * Pasture: Sheep live here, producing lamb wool.
+
+        * Potato field: Grows potatoes which are currently treated as food.
+
+        * Sugar field: Grows sugar which is used to distill liquor and (later) produce
+        confectionery.
+
+
+        We now only need pastures, but in case your food supply chain is too small
+        (maybe many residential buildings) you can also produce some potatoes.
+
+
+        Note that for potatoes you will need a road connection to the farm (not to
+        the field!) as it will be the only company to work on the goods.']
+    type: logbook_w
+  - arguments: ['', "Make sure that all fields you build are in the area covered by\
+        \ the farm.\n\nYou can have combined production - one pasture will not lead\
+        \ to 100 percent efficiency of the farm - but you need to check how many fields\
+        \ one farm can serve.\n\nDifferent classes of fields require the farm units\
+        \ to spend more or less time there (to seed, harvest, herd, etc\u2026) and\
+        \ because of that, the farm may be unable to serve all of the fields you built\
+        \ for it in time.\n\nFor now, you do not need to care about these issues a\
+        \ lot since you haven't built any fields. Let's change that!\n\nTASK: Build\
+        \ at least one pasture in the farm's range and add potato fields if you like."]
+    type: logbook
+  - arguments: [!!python/unicode 'Build at least one pasture and add potato fields
+        if you like.']
+    type: message
+  - arguments: [tutStepDone, 49]
+    type: set_var
+  conditions:
+  - arguments: [20, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 45]
+    type: var_gt
+  - arguments: [tutStepDone, 49]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD STORAGE', !!python/unicode 'Did
+        you watch your lumberjack recently?
+
+
+        Since your branch office does not have unlimited space to store goods, collectors
+        will stop fetching goods from companies when stock is full.
+
+        So if no sailor recently wanted to upgrade his tent, you probably have a lot
+        of boards and in that case, the lumberjack may idle.
+
+        We can improve this situation with two different approaches, and below we
+        will have a look at both of them.
+
+
+        All companies offer the possibility of doing no work at all.
+
+        This may sound strange, but try to click on the gear wheel you see in, for
+        example, a lumberjack''s overview.
+
+
+        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
+        costs you pay for the building will decrease. They won''t be zero, but still
+        lower than if you keep the company producing.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode "This means that you can save money when you\
+        \ temporarily do not need a company and do not want to tear it down, either.\n\
+        \nAnother solution is to build the last increment-I building which has not\
+        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
+        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
+        \ to fetch goods, just like the branch office does.\n\nNote that companies\
+        \ can also be connected to a storage in order to get their products collected,\
+        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
+        \ where you need collectors."]
+    type: logbook
+  - arguments: [!!python/unicode 'Build a storage tent (increment I tab) where it
+        makes sense.']
+    type: message
+  - arguments: [tutStepDone, 52]
+    type: set_var
+  conditions:
+  - arguments: [18, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 48]
+    type: var_gt
+  - arguments: [tutStepDone, 52]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A WEAVER', !!python/unicode 'Now
+        the wool production is set up, you still need a weaver to produce cloth out
+        of this wool.
+
+
+        There are two spots where you can build it - either close to the farm or close
+        to a Storage Tent (or the Branch Office).
+
+
+        In both cases you should ensure the connection to a trail as well.
+
+
+        You can place the weaver close to the farm and tear down any trail to the
+        farm to see that it will still fetch the wool and produce.
+
+
+        TASK: Build a weaver positioned so it can get wool.']
+    type: logbook
+  - arguments: [!!python/unicode 'Build a weaver that can somehow reach the wool of
+        your farm.']
+    type: message
+  - arguments: [tutStepDone, 55]
+    type: set_var
+  conditions:
+  - arguments: [2, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 51]
+    type: var_gt
+  - arguments: [tutStepDone, 55]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
+        city to complete the tutorial. You need a positive balance.']
+    type: message
+  - arguments: [!!python/unicode 'NEW TASK: COMPLETE TUTORIAL', !!python/unicode 'Try
+        to house a total of 50 or more inhabitants in your city by providing more
+        residential buildings.
+
+
+        Once you are able to keep an economy running which can satisfy this amount
+        of consumers, you are ready to discover new Unknown Horizons!
+
+
+        TASK: Reach a total number of 50 inhabitants and a positive balance to complete
+        this tutorial.']
+    type: logbook
+  - arguments: [tutStepDone, 58]
+    type: set_var
+  conditions:
+  - arguments: [3, 0]
+    type: settlement_res_stored_greater
+  - arguments: [7, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 54]
+    type: var_gt
+  - arguments: [tutStepDone, 58]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NO TASKS LEFT', !!python/unicode 'There is nothing
+        left to do now.
+
+
+        If you have any suggestions on what we could or should improve, add or leave
+        out:
+
+
+        www.unknown-horizons.org
+
+
+        #unknown-horizons @ irc.freenode.net
+
+
+        team@unknown-horizons.org
+
+
+        Our forums are open to you as well!
+
+
+        The best results until now were achieved by joining our IRC channel, so you
+        could try that out first (-;']
+    type: logbook
+  - arguments: [!!python/unicode 'Thanks!', !!python/unicode '
+
+
+
+
+
+
+
+        Thanks for playing the tutorial!
+
+
+        Your UH-Team']
+    type: logbook
+  - arguments: [tutStepDone, 61]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: settlements_num_greater
+  - arguments: [50]
+    type: settlement_inhabitants_greater
+  - arguments: [3, 3]
+    type: building_num_of_type_greater
+  - arguments: [0]
+    type: settler_level_greater
+  - arguments: [0]
+    type: player_balance_greater
+  - arguments: [tutStepDone, 57]
+    type: var_gt
+  - arguments: [tutStepDone, 61]
+    type: var_lt
+- actions:
+  - {type: win}
+  - arguments: [!!python/unicode 'Congratulations! You have reached the end of this
+        tutorial and are ready to meet new challenges!']
+    type: message
+  conditions:
+  - arguments: [tutStepDone, 60]
+    type: var_gt
+locale: sv
+mapfile: development.sqlite
+

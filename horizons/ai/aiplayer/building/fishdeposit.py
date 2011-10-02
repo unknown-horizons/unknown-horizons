@@ -39,7 +39,7 @@ class AbstractFishDeposit(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.FISH_DEPOSIT_CLASS] = cls
+		cls._available_buildings[BUILDINGS.FISH_DEPOSIT_CLASS] = cls
 
 AbstractFishDeposit.register_buildings()
 

@@ -21,7 +21,7 @@
 
 import horizons.main
 
-from horizons.constants import AI
+from horizons.constants import MULTIPLAYER
 
 class AIDataSelection(object):
 	"""Subwidget for selecting AI settings."""
@@ -35,7 +35,7 @@ class AIDataSelection(object):
 		widgets.reload('aidataselection')
 		self.gui = widgets['aidataselection']
 
-		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(0, 7)]})
+		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(0, MULTIPLAYER.MAX_PLAYER_COUNT + 1)]})
 		self.gui.distributeData({
 			'ai_players': int(horizons.main.fife.get_uh_setting("AIPlayers")) if horizons.main.fife.get_uh_setting("AIPlayers") else 1
 		})

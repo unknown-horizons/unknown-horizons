@@ -25,7 +25,7 @@ import horizons.main
 from horizons.command.unit import Act
 from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
-from navigationtool import NavigationTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):

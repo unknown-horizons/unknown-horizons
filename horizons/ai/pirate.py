@@ -21,15 +21,13 @@
 
 import logging
 
-import horizons.main
-
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
-from horizons.constants import RES, UNITS
+from horizons.constants import UNITS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
-from horizons.world.units.ship import PirateShip, TradeShip, FisherShip
+from horizons.world.units.ship import PirateShip, TradeShip
 from horizons.world.units.movingobject import MoveNotPossible
 
 
@@ -40,6 +38,7 @@ class Pirate(GenericAI):
 	shipStates = Enum.get_extended(GenericAI.shipStates, 'chasing_ship', 'going_home')
 
 	log = logging.getLogger("ai.pirate")
+	regular_player = False
 
 	caught_ship_radius = 5
 	home_radius = 2
@@ -119,7 +118,7 @@ class Pirate(GenericAI):
 		done = False
 
 		#transition the pirate ship state to 'idle' once it is inside home circumference
-		if pirate_ship.position.distance(self.home_point) <= self.home_radius and self.ships[pirate_ship] == self.shipStates.going_home:        
+		if pirate_ship.position.distance(self.home_point) <= self.home_radius and self.ships[pirate_ship] == self.shipStates.going_home:
 			self.ships[pirate_ship] = self.shipStates.idle
 			self.log.debug('Pirate %s: send_ship(%s) reached home' % (self.worldid, pirate_ship.name))
 

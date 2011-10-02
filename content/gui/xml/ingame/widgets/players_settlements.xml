@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Container size="1020,580" position="-20,0">
+	<Icon image="content/gui/images/background/book.png" position="100,0" />
+
+	<VBox max_size="695,508" min_size="695,508" position="175,40" padding="5">
+		<HBox>
+			<Label name="headline" text="" min_size="300,20" />
+		</HBox>
+		<Icon image="content/gui/images/background/hr.png" />
+
+		<VBox max_size="650,20">
+			<HBox>
+				<Label min_size="15,20" name="sequence_number" text="" />
+				<Label min_size="200,20" name="settlement_name" text="Name" />
+				<Label min_size="110,20" name="inhabitants" text="Inhabitants" />
+				<Label min_size="50,20" name="taxes" text="Taxes" />
+				<Label min_size="100,20" name="running_costs" text="Running costs" />
+				<Label min_size="60,20" name="balance" text="Balance" />
+			</HBox>
+		</VBox>
+
+		<VBox name="content_vbox" />
+<!--
+In this VBox a line is added per settlement in the following format:
+			<HBox>
+				<Label min_size="15,20" name="sequence_number_n" text="1" />
+				<Label min_size="200,20" name="name_n" text="St. Elmo" />
+				<Label min_size="110,20" name="inhabitants_n" text="110" />
+				<Label min_size="50,20" name="taxes_n" text="152" />
+				<Label min_size="100,20" name="running_costs_n" text="110" />
+				<Label min_size="60,20" name="balance_n" text="42" />
+			</HBox>
+-->
+
+		<Spacer />
+		<HBox>
+			<Spacer min_size="627" />
+			<CancelButton tooltip="Close" />
+		</HBox>
+	</VBox>
+</Container>

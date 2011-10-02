@@ -91,7 +91,6 @@ class TestProductionLine(TestBase):
 
 	def test_init_unknown_identifier(self):
 		self.assertRaises(IndexError, ProductionLine, 1)
-		self.assertRaises(IndexError, ProductionLine.load_data, 1)
 
 	def test_alter_production_time(self):
 		self.add_line(1, 10, 0)
@@ -133,10 +132,10 @@ class TestProductionLine(TestBase):
 
 	def test_reset(self):
 		self.add_line(1, 10, 0)
-		self.assertFalse(ProductionLine.data)
+		self.assertFalse(ProductionLine._data)
 
-		ProductionLine.load_data(1)
-		self.assertTrue(ProductionLine.data)
+		ProductionLine.get_const_production_line(1)
+		self.assertTrue(ProductionLine._data)
 
 		ProductionLine.reset()
-		self.assertFalse(ProductionLine.data)
+		self.assertFalse(ProductionLine._data)

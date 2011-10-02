@@ -20,13 +20,15 @@
 # ###################################################
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.ai.aiplayer.buildingevaluator.signalfireevaluator import SignalFireEvaluator
+from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
+from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
+from horizons.entities import Entities
 
 class AbstractSignalFire(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
-		for (x, y) in settlement_manager.branch_office.position.get_radius_coordinates(self.radius):
+		for (x, y) in settlement_manager.settlement.branch_office.position.get_radius_coordinates(self.radius):
 			if (x, y) in settlement_manager.production_builder.plan:
 				if (x, y) in settlement_manager.island.last_changed[self.size]:
 					yield (x, y, 0)
@@ -42,8 +44,32 @@ class AbstractSignalFire(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.SIGNAL_FIRE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.SIGNAL_FIRE_CLASS] = cls
+
+class SignalFireEvaluator(BuildingEvaluator):
+	need_collector_connection = False
+
+	@classmethod
+	def create(cls, area_builder, x, y, orientation):
+		builder = area_builder.make_builder(BUILDINGS.SIGNAL_FIRE_CLASS, x, y, cls.need_collector_connection, orientation)
+		if not builder:
+			return None
+
+		sea_area = 0
+		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.SIGNAL_FIRE_CLASS].radius):
+			if coords in area_builder.session.world.water:
+				sea_area += 1
+
+		personality = area_builder.owner.personality_manager.get('SignalFireEvaluator')
+		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
+		value = sea_area + alignment * personality.alignment_importance
+		return SignalFireEvaluator(area_builder, builder, value)
+
+	@property
+	def purpose(self):
+		return BUILDING_PURPOSE.SIGNAL_FIRE
 
 AbstractSignalFire.register_buildings()
 
 decorators.bind_all(AbstractSignalFire)
+decorators.bind_all(SignalFireEvaluator)

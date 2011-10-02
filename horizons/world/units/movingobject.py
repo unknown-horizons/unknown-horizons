@@ -22,7 +22,6 @@
 import logging
 from fife import fife
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.pathfinding import PathBlockedError
@@ -237,6 +236,14 @@ class MovingObject(ConcretObject):
 				# start callback when this function is done
 				Scheduler().add_new_object(self._conditional_callbacks[cond], self)
 				del self._conditional_callbacks[cond]
+
+	def teleport(self, destination, callback = None, destination_in_building = False):
+		"""Like move, but nearly instantaneous"""
+		if hasattr(destination, "position"):
+			destination_coord = destination.position.center().to_tuple()
+		else:
+			destination_coord = destination
+		self.move(destination, callback=callback, destination_in_building=destination_in_building, path=[destination_coord])
 
 	def add_move_callback(self, callback):
 		"""Registers callback to be executed when movement of unit finishes.

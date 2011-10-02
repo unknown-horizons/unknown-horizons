@@ -29,20 +29,20 @@ class StringPreviewWidget(object):
 	"""Widget for testing Logbook strings.
 	It provides a list of scenarios, of which the user can select one and display
 	its strings in a logbook"""
-	def __init__(self):
-		self._init_gui()
+	def __init__(self, session):
+		self._init_gui(session)
 
 	def show(self):
 		self._gui.show()
 
-	def _init_gui(self):
+	def _init_gui(self, session):
 		self._gui = load_uh_widget("stringpreviewwidget.xml")
 		self._gui.mapEvents({ 'load' : self.load })
 		self.scenarios = SavegameManager.get_scenarios()
 		self.listbox = self._gui.findChild(name="scenario_list")
 		self.listbox.items = self.scenarios[1]
 
-		self.logbook = LogBook()
+		self.logbook = LogBook(session)
 
 	def load(self):
 		"""Load selected scenario and show strings"""

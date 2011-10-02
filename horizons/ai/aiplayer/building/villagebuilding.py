@@ -44,7 +44,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 		return True
 
 	def _need_producer(self, settlement_manager, coords, resource_id):
-		if not settlement_manager.count_buildings(BUILDING_PURPOSE.get_building(self.get_purpose(resource_id))):
+		if not settlement_manager.settlement.count_buildings(BUILDING_PURPOSE.get_building(self.get_purpose(resource_id))):
 			return True # if none exist and we need the resource then build it
 		assigned_residences = settlement_manager.village_builder.producer_assignment[self.get_purpose(resource_id)][coords]
 		total = len(assigned_residences)
@@ -111,10 +111,10 @@ class AbstractVillageBuilding(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.MAIN_SQUARE_CLASS] = cls
-		cls.available_buildings[BUILDINGS.PAVILION_CLASS] = cls
-		cls.available_buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS] = cls
-		cls.available_buildings[BUILDINGS.TAVERN_CLASS] = cls
+		cls._available_buildings[BUILDINGS.MAIN_SQUARE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.PAVILION_CLASS] = cls
+		cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS] = cls
+		cls._available_buildings[BUILDINGS.TAVERN_CLASS] = cls
 
 AbstractVillageBuilding.register_buildings()
 

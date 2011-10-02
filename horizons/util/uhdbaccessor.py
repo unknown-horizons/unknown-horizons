@@ -21,9 +21,8 @@
 
 from random import randint
 
-from dbreader import DbReader
-
 from horizons.util import decorators
+from horizons.util.dbreader import DbReader
 from horizons.util.gui import get_res_icon
 
 ########################################################################
@@ -142,13 +141,23 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT class_package, class_type FROM building WHERE id = ?"
 		return self.cached_query(sql, building_class_id)[0]
 
-	def get_building_level_name(self, building_class_id):
-		"""Returns settler_level and name of a building class.
+	def get_building_level(self, building_class_id):
+		"""Returns settler_level of a building class.
 		@param building_class_id: class of building, int
-		@return: tuple: (settler_level, name)
+		@return: int settler_level
 		"""
-		sql = "SELECT settler_level, name FROM building WHERE id = ?"
-		return self.cached_query(sql, building_class_id)[0]
+		sql = "SELECT settler_level FROM building WHERE id = ?"
+		return self.cached_query(sql, building_class_id)[0][0]
+
+	def get_building_tooltip(self, building_class_id):
+		"""Returns tooltip text of a building class.
+		ATTENTION: This text is automatically translated when loaded
+		already. DO NOT wrap the return value of this method in _()!
+		@param building_class_id: class of building, int
+		@return: string tooltip_text
+		"""
+		sql = "SELECT tooltip_text FROM building WHERE id = ?"
+		return self.cached_query(sql, building_class_id)[0][0]
 
 
 	def get_building_id_buttonname_settlerlvl(self):
@@ -234,7 +243,7 @@ class UhDbAccessor(DbReader):
 	def get_storage_building_capacity(self, storage_type):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
-	
+
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check

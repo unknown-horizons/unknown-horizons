@@ -38,7 +38,7 @@
 	</Container>
 
 	<!--
-	this should acctually be a Container, that contains subcontainers, but with Container,
+	this should actually be a Container, that contains subcontainers, but with Container,
 	the content doesn't show up. Pychan wasn't designed for Containers within Containers, 
 	which might be the source of this bug
 	-->

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Container size="1020,580" position="-20,0">
+	<Icon image="content/gui/images/background/book.png" position="100,0" />
+
+	<VBox max_size="695,508" min_size="695,508" position="175,40" padding="5">
+		<HBox>
+			<Label name="headline" text="" min_size="300,20" />
+		</HBox>
+		<Icon image="content/gui/images/background/hr.png" />
+
+		<VBox max_size="650,20">
+			<HBox>
+				<Label min_size="15,20" name="sequence_number" text="" />
+				<Label min_size="110,20" name="ship_name" text="Name" />
+				<Label min_size="60,20" name="ship_type" text="Type" />
+				<Label min_size="60,20" name="weapons" text="Weapons" />
+				<Label min_size="70,20" name="health" text="Health" />
+				<Label min_size="320,20" name="status" text="Status" />
+			</HBox>
+		</VBox>
+
+		<VBox name="content_vbox" />
+<!--
+In this VBox a line is added per ship in the following format:
+			<HBox>
+				<Label min_size="15,20" name="sequence_number_n" text="42" />
+				<Label min_size="110,20" name="ship_name_n" text="Millennium Falcon" />
+				<Label min_size="60,20" name="ship_type_n" text="Light freighter" />
+				<Label min_size="60,20" name="weapons_n" text="42 quad laser cannon" />
+				<Label min_size="70,20" name="health_n" text="100/100" />
+				<Label min_size="320,20" name="status_n" text="Attacking AI42" />
+			</HBox>
+-->
+
+		<Spacer />
+		<HBox>
+			<Spacer min_size="627" />
+			<CancelButton tooltip="Close" />
+		</HBox>
+	</VBox>
+</Container>

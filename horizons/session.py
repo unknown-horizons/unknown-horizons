@@ -107,7 +107,7 @@ class Session(LivingObject):
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 	def start(self):
-		"""Acctually starts the game."""
+		"""Actually starts the game."""
 		self.timer.activate()
 
 	def create_manager(self):
@@ -166,17 +166,20 @@ class Session(LivingObject):
 	def save(self, savegame=None):
 		raise NotImplementedError
 
-	def load(self, savegame, players, is_scenario=False, campaign=None):
+	def load(self, savegame, players, trader_enabled, pirate_enabled, natural_resource_multiplier, is_scenario=False, campaign=None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
-		@param players: iterable of dictionaries containing id, name, color and local
+		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
 		@param is_scenario: Bool whether the loaded map is a scenario or not
 		"""
 		if is_scenario:
 			# savegame is a yaml file, that contains reference to actual map file
 			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)
-			savegame = os.path.join(SavegameManager.maps_dir, \
-			                        self.scenario_eventhandler.get_map_file())
+			# scenario maps can be normal maps or scenario maps:
+			map_filename = self.scenario_eventhandler.get_map_file()
+			savegame = os.path.join(SavegameManager.scenario_maps_dir, map_filename)
+			if not os.path.exists(savegame):
+				savegame = os.path.join(SavegameManager.maps_dir, map_filename)
 		self.campaign = {} if not campaign else campaign
 
 		self.log.debug("Session: Loading from %s", savegame)
@@ -205,9 +208,9 @@ class Session(LivingObject):
 		if not self.is_game_loaded():
 			# NOTE: this must be sorted before iteration, cause there is no defined order for
 			#       iterating a dict, and it must happen in the same order for mp games.
-			for i in sorted(players):
+			for i in sorted(players, lambda p1, p2: cmp(p1['id'], p2['id'])):
 				self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['ai'], i['difficulty'])
-			center = self.world.init_new_world()
+			center = self.world.init_new_world(trader_enabled, pirate_enabled, natural_resource_multiplier)
 			self.view.center(center[0], center[1])
 		else:
 			# try to load scenario data
@@ -226,7 +229,7 @@ class Session(LivingObject):
 
 		# cursor has to be inited last, else player interacts with a not inited world with it.
 		self.cursor = SelectionTool(self)
-        # Set cursor correctly, menus might need to be opened.
+	# Set cursor correctly, menus might need to be opened.
 		# Open menus later, they may need unit data not yet inited
 		self.cursor.apply_select()
 
@@ -250,18 +253,19 @@ class Session(LivingObject):
 			text = u'0x'
 			up_icon.set_inactive()
 			down_icon.set_inactive()
-		elif tps == GAME_SPEED.TICKS_PER_SECOND: # normal speed, 1x
-			up_icon.set_active()
-			down_icon.set_inactive() # do not display label '1x'!
 		else:
-			text = unicode(tps/GAME_SPEED.TICKS_PER_SECOND) + u'x' # 2x, 4x, ...
-			#FIXME Yes, this is just fugly harcoded stuff. Sorry. Please improve
-			# by introducing a query for whether we are at max speed currently.
-			if text == u'4x':
+			if tps != GAME_SPEED.TICKS_PER_SECOND:
+				text = unicode("%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND))
+				#%1g: displays 0.5x, but 2x instead of 2.0x
+			index = GAME_SPEED.TICK_RATES.index(tps)
+			if index + 1 >= len(GAME_SPEED.TICK_RATES):
 				up_icon.set_inactive()
 			else:
 				up_icon.set_active()
-			down_icon.set_active()
+			if index > 0:
+				down_icon.set_active()
+			else:
+				down_icon.set_inactive()
 		self.ingame_gui.display_game_speed(text)
 
 

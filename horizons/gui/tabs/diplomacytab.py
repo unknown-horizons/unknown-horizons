@@ -20,15 +20,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
-from tabinterface import TabInterface
+from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.util import Callback
 from horizons.command.diplomacy import AddAllyPair, AddNeutralPair, AddEnemyPair
 
 class DiplomacyTab(TabInterface):
 	"""
 	Diplomacy tab set per player.
-	It displays the menu for selecting the status between the local player and the tab's player 
+	It displays the menu for selecting the status between the local player and the tab's player
 	"""
 	def __init__(self, player, widget = 'diplomacy.xml', \
 	             icon_path='content/gui/images/tabwidget/emblems/emblem_%s.png'):
@@ -53,7 +52,7 @@ class DiplomacyTab(TabInterface):
 		self.button_down_image = icon_path % color
 		self.button_hover_image = icon_path % color
 		self.tooltip = player.name
-	
+
 	def show(self):
 		super(DiplomacyTab, self).show()
 		# if diplomacy is changed by any player, change the checkbox

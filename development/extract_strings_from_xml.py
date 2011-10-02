@@ -81,10 +81,7 @@ import sys
 
 def print_n_no_name(n, text):
 	print '\tWarning: ',
-	print '%s without name found, please consider adding an unique name, text=("%s")' % (n, text)
-
-print_label_no_name = lambda x: print_n_no_name('Label', x)
-print_window_no_name = lambda x: print_n_no_name('Window', x)
+	print '%s without name. Add unique name if desired: text="%s"' % (n, text)
 
 def list_all_files():
 	result = []
@@ -102,9 +99,11 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 
 	defaults = {'OkButton' : 'okButton',
 	            'CancelButton' : 'cancelButton',
-	            'DeleteButton' : 'deleteButton'}
-
+	            'DeleteButton' : 'deleteButton',
+	           }
+	element_strings = []
 	element_list = parse_tree.getElementsByTagName(element_name)
+
 	for element in element_list:
 		if not len(element.getAttribute('name')):
 			if defaults.has_key(element_name):
@@ -112,11 +111,11 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 			else:
 				print_n_no_name(element_name, element.getAttribute(text_name))
 
-	element_strings = []
-	for element in element_list:
 		if len(element.getAttribute(text_name)) and len(element.getAttribute('name')):
 			name = element.getAttribute('name')
 			value = element.getAttribute(text_name)
+			if name[0:6] == 'noi18n': #prepend 'noi18n' to labels without translation
+				break
 			if name == 'version_label':
 				value = 'VERSION.string()'
 			else:
@@ -147,7 +146,7 @@ def content_from_file(filename):
 		printname = filename.rsplit("/",1)[1]
 		#HACK! we strip the string until no "/" occurs and then use the remaining part
 		# this is necessary because of our dynamic widget loading (by unique file names)
-		return '\t\t"%s" : {\n\t\t\t%s},' % (printname, ',\n\t\t\t'.join(strings))
+		return '\t\t"%s" : {\n\t\t\t%s,\n\t\t\t},' % (printname, ',\n\t\t\t'.join(strings))
 	else:
 		return ''
 

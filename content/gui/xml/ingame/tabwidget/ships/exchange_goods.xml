@@ -38,31 +38,31 @@
 			up_image="content/gui/icons/ship/smallbutton.png"
 			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
-		<Label position="13, 58" text="1t" />
+		<Label position="13, 58" text="1t" name="noi18n" />
 
 		<ImageButton name="size_2" text="" size="32,32" position="47, 25"
 			up_image="content/gui/icons/ship/smallbutton.png"
 			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
-		<Label position="55, 58" text="5t" />
+		<Label position="55, 58" text="5t" name="noi18n" />
 
 		<ImageButton name="size_3" text="" size="32,32" position="90, 25"
 			up_image="content/gui/icons/ship/smallbutton.png"
 			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
-		<Label position="95, 58" text="10t" />
+		<Label position="95, 58" text="10t" name="noi18n" />
 
 		<ImageButton name="size_4" text="" size="32,32" position="132, 25"
 			up_image="content/gui/icons/ship/smallbutton.png"
 			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
-		<Label position="137, 58" text="20t" />
+		<Label position="137, 58" text="20t" name="noi18n" />
 
 		<ImageButton name="size_5" text="" size="32,32" position="174, 25"
 			up_image="content/gui/icons/ship/smallbutton.png"
 			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
-		<Label position="179, 58" text="50t" />
+		<Label position="179, 58" text="50t" name="noi18n" />
 
 </Container>
 

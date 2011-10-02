@@ -29,6 +29,7 @@ from collectingbuilding import CollectingBuilding
 
 class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 	tabs = (BoatbuilderTab, BoatbuilderFisherTab)
+	tabs = (BoatbuilderTab, BoatbuilderTradeTab, BoatbuilderWar1Tab)
 # , BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)
 # not visible in release 2010.1
 

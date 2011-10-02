@@ -26,11 +26,14 @@ import gettext
 import os
 import locale
 import platform
+import shutil
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
 from fife.extensions import fifelog
 from fife.extensions import pychan
+from fife.extensions.serializers.simplexml import SimpleXMLSerializer
+
 from fife.extensions.fife_settings import Setting, FIFE_MODULE
 
 import horizons.main
@@ -113,11 +116,52 @@ class Fife(ApplicationBase):
 		self.emitter['speech'] = None
 
 
-	def _setup_settings(self):
-		self._setting = LocalizedSetting(app_name="unknownhorizons",
+	# existing settings not part of this gui or the fife defaults (required for preserving values when upgrading settings file)
+	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers"] }
+
+	def _setup_settings(self, check_file_version=True):
+		if check_file_version:
+			# check if user settings file is the current one
+
+			# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently (although the doc states otherwise)
+			# therefore translate paths to absolute ones
+			_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
+			user_config_parser = SimpleXMLSerializer( _user_config_file )
+			user_settings_version = user_config_parser.get("meta", "SettingsVersion", -1)
+			_template_config_file = os.path.join( os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE )
+			template_config_parser = SimpleXMLSerializer( _template_config_file )
+			template_settings_version = template_config_parser.get("meta", "SettingsVersion")
+
+			if template_settings_version > user_settings_version: # we have to update the file
+				# create settings so we have a list of all settings
+				self._setup_settings(check_file_version=False)
+				# now, as we have the list, we can overwrite it and fill it with the values
+				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
+				user_config_parser = SimpleXMLSerializer( _user_config_file )
+
+				def update_value(modulename, entryname):
+					# retrieve values from loaded settings file
+					try:
+						value = self._setting.get(modulename, entryname)
+					except UnicodeEncodeError: # this can happen when unicode data is saved as str
+						value = "default"
+					user_config_parser.set(modulename, entryname, value)
+				# update known settings and unreferenced settings
+				for modulename, module in self._setting.entries.iteritems():
+					for entryname in module.iterkeys():
+						update_value(modulename, entryname)
+				for modulename, entry_list in self.UNREFERENCED_SETTINGS.iteritems():
+					for entryname in entry_list:
+						update_value(modulename, entryname)
+
+				user_config_parser.save()
+
+
+		self._setting = LocalizedSetting(app_name=UH_MODULE,
 		                                 settings_file=PATHS.USER_CONFIG_FILE,
 		                                 settings_gui_xml="settings.xml",
-		                                 changes_gui_xml="requirerestart.xml")
+		                                 changes_gui_xml="requirerestart.xml",
+		                                 default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
 
 		# TODO: find a way to apply changing to a running game in a clean fashion
 		#       possibility: use singaling via changelistener
@@ -136,6 +180,7 @@ class Fife(ApplicationBase):
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
+		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
 
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation", \
 		                                applyfunction=update_minimap)
@@ -297,16 +342,16 @@ class Fife(ApplicationBase):
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
-		from gui.widgets.inventory import Inventory
-		from gui.widgets.buysellinventory import BuySellInventory
-		from gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
-		from gui.widgets.progressbar import ProgressBar
-		from gui.widgets.toggleimagebutton import ToggleImageButton
-		from gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
-		from gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
-		from gui.widgets.icongroup import TabBG
-		from gui.widgets.stepslider import StepSlider
-		from gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
+		from horizons.gui.widgets.inventory import Inventory
+		from horizons.gui.widgets.buysellinventory import BuySellInventory
+		from horizons.gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
+		from horizons.gui.widgets.progressbar import ProgressBar
+		from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
+		from horizons.gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
+		from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
+		from horizons.gui.widgets.icongroup import TabBG
+		from horizons.gui.widgets.stepslider import StepSlider
+		from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 
 		pychan.widgets.registerWidget(CancelButton)
 		pychan.widgets.registerWidget(DeleteButton)

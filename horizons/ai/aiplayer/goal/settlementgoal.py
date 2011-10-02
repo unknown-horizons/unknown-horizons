@@ -20,7 +20,9 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal import Goal
+from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.util.python import decorators
+from horizons.constants import BUILDINGS
 
 class SettlementGoal(Goal):
 	"""
@@ -29,16 +31,27 @@ class SettlementGoal(Goal):
 
 	def __init__(self, settlement_manager):
 		super(SettlementGoal, self).__init__(settlement_manager.owner)
-		self.__init(settlement_manager)
-
-	def __init(self, settlement_manager):
 		self.settlement_manager = settlement_manager
+		self.land_manager = settlement_manager.land_manager
+		self.production_builder = settlement_manager.production_builder
+		self.village_builder = settlement_manager.village_builder
+		self.settlement = settlement_manager.settlement
 
 	@property
 	def can_be_activated(self):
-		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement_manager.tents
+		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement.count_buildings(BUILDINGS.RESIDENTIAL_CLASS)
 
 	def __str__(self):
 		return super(SettlementGoal, self).__str__() + ', ' + self.settlement_manager.settlement.name
+
+	def _log_generic_build_result(self, result, name):
+		if result == BUILD_RESULT.OK:
+			self.log.info('%s built a %s', self, name)
+		elif result == BUILD_RESULT.NEED_RESOURCES:
+			self.log.info('%s not enough materials to build a %s', self, name)
+		elif result == BUILD_RESULT.SKIP:
+			self.log.info('%s skipped building a %s', self, name)
+		else:
+			self.log.info('%s failed to build a %s (%d)', self, name, result)
 
 decorators.bind_all(SettlementGoal)

@@ -22,14 +22,12 @@
 
 import weakref
 
-from fife.extensions import pychan
-
-from tabinterface import TabInterface
+from horizons.gui.tabs.tabinterface import TabInterface
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, ActionSetLoader, NamedObject
-from horizons.constants import GAME_SPEED, RES, SETTLER, BUILDINGS
-from horizons.gui.widgets  import TooltipButton, DeleteButton
+from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS
+from horizons.gui.widgets  import DeleteButton
 from horizons.gui.widgets.unitoverview import StanceWidget
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
@@ -153,11 +151,16 @@ class ShipOverviewTab(OverviewTab):
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
-		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
-		weapon_storage_widget.init(self.instance)
-		self.add_remove_listener(weapon_storage_widget.remove)
+		self._init_combat()
+
+	def _init_combat(self): # no combat
+		weapons_wdg = self.widget.child_finder('weapon_storage')
+		weapons_wdg.parent.removeChild(weapons_wdg)
+		weapons_wdg = self.widget.child_finder('lbl_weapon_storage').text = \
+		            _("Trade ship")
 
 	def refresh(self):
+		# no weapons:
 		# show rename when you click on name
 		events = {
 			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance)
@@ -178,10 +181,13 @@ class ShipOverviewTab(OverviewTab):
 			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettlement').set_active()
+			self.widget.child_finder('foundSettlement').tooltip = _("Build settlement")
 		else:
 			events['foundSettlement'] = None
 			self.widget.child_finder('bg_button').set_inactive()
 			self.widget.child_finder('foundSettlement').set_inactive()
+			self.widget.child_finder('foundSettlement').tooltip = \
+			    _("The ship needs to be close to an island to found a settlement.")
 
 		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
 		   self.instance,
@@ -189,8 +195,11 @@ class ShipOverviewTab(OverviewTab):
 		   {},
 		   res_from_ship = True )
 		events['foundSettlement/mouseEntered'] = cb
-		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
-		   None ) # hides the resource status widget
+		cb1 = Callback( self.instance.session.ingame_gui.resourceinfo_set,
+		                None ) # hides the resource status widget
+		cb2 = Callback( self.widget.child_finder('foundSettlement').hide_tooltip)
+		#TODO the tooltip should actually hide on its own. Ticket #1096
+		cb = Callback.ChainedCallbacks(cb1, cb2)
 		events['foundSettlement/mouseExited'] = cb
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
@@ -203,6 +212,11 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		stance_widget.init(self.instance)
 		self.add_remove_listener(stance_widget.remove)
 		self.widget.findChild(name='stance').addChild(stance_widget)
+
+	def _init_combat(self): # no combat
+		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
+		weapon_storage_widget.init(self.instance)
+		self.add_remove_listener(weapon_storage_widget.remove)
 
 	def show(self):
 		self.widget.findChild(name='weapon_storage').update()

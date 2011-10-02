@@ -25,9 +25,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, GOAL_RESULT
 from horizons.util.python import decorators
 
 class Goal(object):
-	"""
-	An object of this class describes a goal that an AI player attempts to fulfil.
-	"""
+	"""An object of this class describes a goal that an AI player attempts to fulfil."""
 
 	log = logging.getLogger("ai.aiplayer.goal")
 
@@ -42,6 +40,7 @@ class Goal(object):
 		Goal._next_id += 1
 
 	def get_personality_name(self):
+		"""Return the name of the goal's personality module."""
 		raise NotImplementedError, 'This function has to be overridden.'
 
 	@property
@@ -50,21 +49,25 @@ class Goal(object):
 
 	@property
 	def active(self):
+		"""Return true if and only if it is ok to execute this goal."""
 		return self.can_be_activated
 
 	@property
 	def can_be_activated(self):
+		"""Return true if and only if it is ok to update this goal."""
 		return self.personality.enabled and self.owner.settler_level >= self.personality.min_settler_level
 
 	def execute(self):
+		"""Do whatever is best to get closer to fulfilling the goal (usually involves building a building)."""
 		raise NotImplementedError, "This function has to be overridden."
 
 	def update(self):
-		"""All goals are updated before checking whether they are active"""
+		"""Update the goal to find out whether it is currently active and what its current priority is."""
 		pass
 
 	@classmethod
 	def _translate_build_result(cls, result):
+		"""Returns the goal execution state that corresponds to the given BUILD_RESULT constant."""
 		if result == BUILD_RESULT.OK:
 			return GOAL_RESULT.BLOCK_ALL_BUILDING_ACTIONS
 		elif result == BUILD_RESULT.NEED_RESOURCES:

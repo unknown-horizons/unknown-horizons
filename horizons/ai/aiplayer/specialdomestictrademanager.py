@@ -28,8 +28,14 @@ from horizons.util.python import decorators
 
 class SpecialDomesticTradeManager(object):
 	"""
-	Manages the special domestic trade which happens when one settlement needs a resource and another one has more than it needs.
-	This is different from the usual (continuous) trade because in that case one settlement is specifically producing for another one.
+	An object of this class manages the special domestic trade routes of one AI player.
+
+	These are called the special routes because they transport existing resources while
+	the regular routes transport resources that have been produced for other settlements.
+
+	The current implementation is limited to one active route between each (directed)
+	pair of settlements. The routes are automatically removed when they have
+	been used once or when the ship gets destroyed.
 	"""
 
 	log = logging.getLogger("ai.aiplayer.specialdomestictrade")
@@ -48,7 +54,16 @@ class SpecialDomesticTradeManager(object):
 				return True
 		return False
 
-	def add_route(self):
+	def _add_route(self):
+		"""
+		Add a new special domestic trade route if possible.
+
+		The route is created between the two settlements that need resources with most
+		value transported between them but the actual mission will be unaware of the
+		initial reasons for creating it and pick up whatever resources need to be
+		transported when it gets to the source branch office.
+		"""
+
 		ship = None
 		for possible_ship, state in self.owner.ships.iteritems():
 			if state is self.owner.shipStates.idle:
@@ -96,13 +111,10 @@ class SpecialDomesticTradeManager(object):
 			final_options.append((total_value, source_settlement_manager, destination_settlement_manager))
 
 		source_settlement_manager, destination_settlement_manager = max(final_options)[1:]
-		mission = SpecialDomesticTrade(source_settlement_manager, destination_settlement_manager, ship, self.owner.report_success, self.owner.report_failure)
-		self.owner.ships[ship] = self.owner.shipStates.on_a_mission
-		self.owner.missions.add(mission)
-		mission.start()
+		self.owner.start_mission(SpecialDomesticTrade(source_settlement_manager, destination_settlement_manager, ship, self.owner.report_success, self.owner.report_failure))
 
 	def tick(self):
-		self.add_route()
+		self._add_route()
 
 	def __str__(self):
 		return '%s.SpecialDomesticTradeManager' % self.owner

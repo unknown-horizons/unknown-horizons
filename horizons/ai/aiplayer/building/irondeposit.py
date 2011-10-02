@@ -30,7 +30,7 @@ class AbstractIronDeposit(AbstractFakeResourceDeposit):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.MOUNTAIN_CLASS] = cls
+		cls._available_buildings[BUILDINGS.MOUNTAIN_CLASS] = cls
 
 AbstractIronDeposit.register_buildings()
 

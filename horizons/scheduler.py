@@ -20,11 +20,10 @@
 # ###################################################
 
 import logging
-import copy
 
 import horizons.main
 
-from horizons.util import LivingObject, ManualConstructionSingleton, decorators
+from horizons.util import LivingObject, ManualConstructionSingleton
 from horizons.constants import GAME
 
 class Scheduler(LivingObject):
@@ -58,7 +57,6 @@ class Scheduler(LivingObject):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
 		"""
-
 		if GAME.MAX_TICKS is not None and tick_id >= GAME.MAX_TICKS:
 			horizons.main.quit()
 			return

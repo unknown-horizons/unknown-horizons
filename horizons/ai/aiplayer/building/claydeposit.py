@@ -30,7 +30,7 @@ class AbstractClayDeposit(AbstractFakeResourceDeposit):
 
 	@classmethod
 	def register_buildings(cls):
-		cls.available_buildings[BUILDINGS.CLAY_DEPOSIT_CLASS] = cls
+		cls._available_buildings[BUILDINGS.CLAY_DEPOSIT_CLASS] = cls
 
 AbstractClayDeposit.register_buildings()
 

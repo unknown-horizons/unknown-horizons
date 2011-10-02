@@ -87,7 +87,7 @@ class Minimap(object):
 		self.update_cam()
 
 		# reset image
-		self.renderer.removeAll("minimap_a_image"+self._id);
+		self.renderer.removeAll("minimap_a_image"+self._id)
 		self.minimap_image.reset()
 		node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
 		self.renderer.addImage("minimap_a_image"+self._id, node, self.minimap_image.image, False)
@@ -135,8 +135,8 @@ class Minimap(object):
 		minimap_point = self._get_rotated_coords(self._world_coord_to_minimap_coord(tup))
 		world_to_minimap = self._get_world_to_minimap_ratio()
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], \
-		                                       int(round(1/world_to_minimap[0])), \
-		                                       int(round(1/world_to_minimap[1])))
+		                                       int(round(1/world_to_minimap[0])) + 1, \
+		                                       int(round(1/world_to_minimap[1])) + 1)
 		self._recalculate(rect)
 
 	def use_overlay_icon(self, icon):
@@ -155,7 +155,7 @@ class Minimap(object):
 		mouse_position = Point(event.getX(), event.getY())
 		abs_mouse_position = icon_pos + mouse_position
 		if not self.location.contains(abs_mouse_position):
-			# mouse click was on icon but not acctually on minimap
+			# mouse click was on icon but not actually on minimap
 			return
 		abs_mouse_position = self._get_from_rotated_coords (abs_mouse_position.to_tuple())
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position)
@@ -242,7 +242,7 @@ class Minimap(object):
 				continue
 			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
 			color = ship().owner.color.to_tuple()
-			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 2, 2)
+			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 3, 3)
 			for tup in area_to_color.tuple_iter():
 				try:
 					node = fife.RendererNode(fife.Point(*self._get_rotated_coords(tup)))
@@ -255,7 +255,7 @@ class Minimap(object):
 
 	def rotate_right (self):
 		# keep track of rotation at any time, but only apply
-		# if it's acctually used
+		# if it's actually used
 		self.rotation += 1
 		self.rotation %= 4
 		self.update_cam()

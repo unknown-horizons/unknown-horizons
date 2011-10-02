@@ -21,11 +21,9 @@
 
 from fife import fife
 
-import horizons.main
-
-from building import BasicBuilding
-from buildable import BuildableLine, BuildableSingle
 from horizons.constants import LAYERS, BUILDINGS
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildable import BuildableLine, BuildableSingle
 
 class Path(BasicBuilding, BuildableLine):
 	walkable = True

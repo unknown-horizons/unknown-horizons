@@ -19,20 +19,36 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
+from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.util.python import decorators
+from horizons.constants import RES
 
-class StorageSpaceGoal(SettlementGoal):
+class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 	def get_personality_name(self):
 		return 'StorageSpaceGoal'
 
-	@property
-	def active(self):
-		return super(StorageSpaceGoal, self).active and self.settlement_manager.need_more_storage()
+	def _need_more_storage(self):
+		limit = self.settlement.inventory.get_limit(RES.FOOD_ID)
+		if limit >= self.personality.max_required_storage_space:
+			return False
+		important_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
+		for resource_id in important_resources:
+			if self.settlement.inventory[resource_id] + self.personality.full_storage_threshold >= limit:
+				return True
+		return False
+
+	def update(self):
+		if self._need_more_storage():
+			super(StorageSpaceGoal, self).update()
+			if not self._is_active:
+				self._is_active = True
+				self._problematic_buildings = self.production_builder.production_buildings
+		else:
+			self._is_active = False
 
 	def execute(self):
-		result = self.settlement_manager.production_builder.improve_collector_coverage()
-		self.settlement_manager.log_generic_build_result(result, 'storage space provider')
+		result = self._build_extra_storage()
+		self._log_generic_build_result(result, 'storage space provider')
 		return self._translate_build_result(result)
 
 decorators.bind_all(StorageSpaceGoal)

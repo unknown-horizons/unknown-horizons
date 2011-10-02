@@ -24,8 +24,6 @@ import logging
 
 from changelistener import ChangeListener
 
-from horizons.util.python import decorators
-
 class WorldObjectNotFound(KeyError):
 	pass
 
@@ -75,6 +73,9 @@ class WorldObject(ChangeListener):
 	def remove(self):
 		super(WorldObject, self).remove()
 		pass # removing is done implicitly by WeakValueDict
+
+	def __lt__(self, other):
+		return self.worldid < other.worldid
 
 	# for testing:
 	@classmethod

@@ -55,23 +55,27 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	"""
 	@param x, y: int position of the building.
+	@param rotation: value passed to getInstance
 	@param owner: Player that owns the building.
+	@param level: start in this increment
+	@param action_set_id: use this action set id. None means choose one at random
 	"""
-	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
+	def __init__(self, x, y, rotation, owner, island, level=None, action_set_id=None, **kwargs):
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 								                        island=island, **kwargs)
-		self.__init(Point(x, y), rotation, owner, level)
+		self.__init(Point(x, y), rotation, owner, level, action_set_id=action_set_id)
 		self.island = island
 		self.settlement = self.island.get_settlement(Point(x, y)) or \
 				self.island.add_settlement(self.position, self.radius, owner) if \
 				owner is not None else None
 
-	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None):
+	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None, action_set_id=None):
 		self.owner = owner
 		if level is None:
 			level = 0 if self.owner is None else self.owner.settler_level
 		self.level = level
-		self._action_set_id = self.session.db.get_random_action_set(self.id, self.level)[0]
+		self._action_set_id = action_set_id if action_set_id is not None else \
+		    self.session.db.get_random_action_set(self.id, self.level)[0]
 		self.rotation = rotation
 		if self.rotation in (135, 315): # Rotate the rect correctly
 			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
@@ -80,8 +84,8 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		self.loading_area = self.position # shape where collector get resources
 
-		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation=rotation,\
-		                                  action_set_id=self._action_set_id)
+		self._instance, action_set_id = self.getInstance(self.session, origin.x, origin.y, rotation=rotation,\
+		                                                 action_set_id=self._action_set_id)
 		self._instance.setId(str(self.worldid))
 
 		if self.has_running_costs: # Get payout every 30 seconds
@@ -89,7 +93,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			run_in = remaining_ticks_of_month if remaining_ticks_of_month is not None else interval
 			Scheduler().add_new_object(self.get_payout, self, \
 			                           run_in=run_in, loops=-1, loop_interval=interval)
-		
+
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
 			if self.soundfiles:
@@ -106,6 +110,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				self.running_costs_inactive, self.running_costs
 
 	def running_costs_active(self):
+		"""Returns whether the building currently payes the running costs for status 'active'"""
 		return (self.running_costs > self.running_costs_inactive)
 
 	def get_payout(self):
@@ -204,6 +209,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		@param level: object level. Relevant for choosing an action set
 		@param rotation: rotation of the object. Any of [ 45 + 90*i for i in xrange(0, 4) ]
 		@param action_set_id: can be set if the action set is already known. If set, level isn't considered.
+		@return: tuple (fife_instance, action_set_id)
 		"""
 		assert isinstance(x, int)
 		assert isinstance(y, int)
@@ -215,7 +221,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		layer_coords = list((x, y, 0))
 
 		# NOTE:
-		# nobody acctually knows how the code below works.
+		# nobody actually knows how the code below works.
 		# it's for adapting the facing location and instance coords in
 		# different rotations, and works with all quadratic buildings (tested up to 4x4)
 		# for the first unquadratic building (2x4), a hack fix was put into it.
@@ -279,7 +285,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				action = action_sets[action_set_id].keys()[0]
 
 		instance.act(action+"_"+str(action_set_id), facing_loc, True)
-		return instance
+		return (instance, action_set_id)
 
 	@classmethod
 	def have_resources(cls, inventory_holders, owner):
@@ -365,7 +371,6 @@ class SelectableBuilding(object):
 	@classmethod
 	@decorators.make_constants()
 	def _do_select(cls, renderer, position, world, settlement):
-		selected_tiles_add = cls._selected_tiles.append
 		if cls.range_applies_only_on_island:
 			island = world.get_island(position.origin)
 			if island is None:

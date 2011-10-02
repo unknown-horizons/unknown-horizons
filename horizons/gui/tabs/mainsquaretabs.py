@@ -140,21 +140,25 @@ class MainSquareSettlerTabSettlerTab(MainSquareTab):
 		container.adaptLayout()
 
 class MainSquareSettlerLevelTab(MainSquareTab):
-	def __init__(self, instance, widget, level):
+	LEVEL = None # overwrite in subclass
+	def __init__(self, instance, widget):
 		super(MainSquareSettlerLevelTab, self).__init__(widget = widget)
 		self.settlement = instance.settlement
-		self.level = level
 		self.init_values()
-		icon_path = 'content/gui/icons/widgets/cityinfo/inhabitants.png'
-		self.button_up_image = icon_path
-		self.button_active_image = icon_path
-		self.button_down_image = icon_path
-		self.button_hover_image = icon_path
+		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants%s' % self.__class__.LEVEL + '_%s.png'
+		self.button_up_image = icon_path % 'u'
+		self.button_active_image = icon_path % 'a'
+		self.button_down_image = icon_path % 'd'
+		self.button_hover_image = icon_path % 'h'
 
-		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.level)
+		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
 
 		self._setup_tax_slider()
-		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.level])
+		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
+
+	@classmethod
+	def shown_for(cls, instance):
+		return instance.owner.settler_level >= cls.LEVEL
 
 	def _setup_tax_slider(self):
 		"""Set up a slider to work as tax slider"""
@@ -163,22 +167,22 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		slider.setScaleStart(SETTLER.TAX_SETTINGS_MIN)
 		slider.setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
 		slider.setStepLength(SETTLER.TAX_SETTINGS_STEP)
-		slider.setValue(self.settlement.tax_settings[self.level])
+		slider.setValue(self.settlement.tax_settings[self.__class__.LEVEL])
 		slider.stylize('book')
 		def on_slider_change():
 			val_label.text = unicode(slider.getValue())
-			if(self.settlement.tax_settings[self.level] != slider.getValue()):
-				SetTaxSetting(self.settlement, self.level, slider.getValue()).execute(self.settlement.session)
+			if(self.settlement.tax_settings[self.__class__.LEVEL] != slider.getValue()):
+				SetTaxSetting(self.settlement, self.__class__.LEVEL, slider.getValue()).execute(self.settlement.session)
 		slider.capture(on_slider_change)
 
 	def _get_last_tax_paid(self):
 		return sum([building.last_tax_payed for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS) if \
-			building.level == self.level])
+			building.level == self.__class__.LEVEL])
 
 	def _get_resident_counts(self):
 		result = {}
 		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
-			if building.level == self.level:
+			if building.level == self.__class__.LEVEL:
 				if building.inhabitants not in result:
 					result[building.inhabitants] = 0
 				result[building.inhabitants] += 1
@@ -194,12 +198,13 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		# refresh upgrade permissions
 		upgrades_button = self.widget.child_finder('allow_upgrades')
-		if self.settlement.upgrade_permissions[self.level]:
-			upgrades_button.set_active()
-			upgrades_button.tooltip = _('Allow upgrades')
-		else:
-			upgrades_button.set_inactive()
-			upgrades_button.tooltip = _('Don\'t allow upgrades')
+		if self.__class__.LEVEL < SETTLER.CURRENT_MAX_INCR: #max incr => cannot allow upgrades
+			if self.settlement.upgrade_permissions[self.__class__.LEVEL]:
+				upgrades_button.set_active()
+				upgrades_button.tooltip = _('Don\'t allow upgrades')
+			else:
+				upgrades_button.set_inactive()
+				upgrades_button.tooltip = _('Allow upgrades')
 
 		# refresh residents per house info
 		resident_counts = self._get_resident_counts()
@@ -219,20 +224,23 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		super(MainSquareSettlerLevelTab, self).refresh()
 
 	def toggle_upgrades(self):
-		SetSettlementUpgradePermissions(self.settlement, self.level, not self.settlement.upgrade_permissions[self.level]).execute(self.settlement.session)
+		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL, not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)
 		self.refresh()
 
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
+	LEVEL = SETTLER.SAILOR_LEVEL
 	def __init__(self, instance):
-		super(MainSquareSailorsTab, self).__init__(instance, 'mainsquare_sailors.xml', SETTLER.SAILOR_LEVEL)
+		super(MainSquareSailorsTab, self).__init__(instance, 'mainsquare_sailors.xml')
 		self.tooltip = _("Sailors")
 
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
+	LEVEL = SETTLER.PIONEER_LEVEL
 	def __init__(self, instance):
-		super(MainSquarePioneersTab, self).__init__(instance, 'mainsquare_pioneers.xml', SETTLER.PIONEER_LEVEL)
+		super(MainSquarePioneersTab, self).__init__(instance, 'mainsquare_pioneers.xml')
 		self.tooltip = _("Pioneers")
 
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
+	LEVEL = SETTLER.SETTLER_LEVEL
 	def __init__(self, instance):
-		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml', SETTLER.SETTLER_LEVEL)
+		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml')
 		self.tooltip = _("Settlers")

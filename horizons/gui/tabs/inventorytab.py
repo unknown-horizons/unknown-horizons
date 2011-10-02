@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tabinterface import TabInterface
+from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.widgets.tradewidget import TradeWidget
 from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
@@ -76,14 +76,15 @@ class ShipInventoryTab(InventoryTab):
 		events['configure_route/mouseClicked'] = Callback(self.configure_route)
 
 		# TODO: use a better way to decide which label should be shown
-		if len(branches) > 0 and branches[0].owner is self.instance.owner:
-			events['trade'] = Callback(session.ingame_gui.show_menu, TradeWidget(self.instance))
-			self.widget.findChild(name='load_unload_label').text = _('Load/Unload:')
-			self.widget.findChild(name='bg_button').set_active()
-			self.widget.findChild(name='trade').set_active()
-		elif len(branches) > 0:
-			events['trade'] = Callback(session.ingame_gui.show_menu, InternationalTradeWidget(self.instance))
-			self.widget.findChild(name='load_unload_label').text = _('Buy/Sell:')
+		if len(branches) > 0:
+			if branches[0].owner is self.instance.owner:
+				wdg = TradeWidget(self.instance)
+				text = _('Load/Unload:')
+			else:
+				wdg = InternationalTradeWidget(self.instance)
+				text = _('Buy/Sell:')
+			events['trade'] = Callback(session.ingame_gui.show_menu, wdg)
+			self.widget.findChild(name='load_unload_label').text = text
 			self.widget.findChild(name='bg_button').set_active()
 			self.widget.findChild(name='trade').set_active()
 		else:
@@ -91,8 +92,20 @@ class ShipInventoryTab(InventoryTab):
 			self.widget.findChild(name='bg_button').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
 
+		self._refresh_combat()
+
 		self.widget.mapEvents(events)
 		super(ShipInventoryTab, self).refresh()
+
+	def _refresh_combat(self): # no combat
+		def click_on_cannons(button):
+			button.button.capture(Callback(
+			  self.instance.session.gui.show_popup,
+			  _("Can't equip trade ship with weapons"),
+			  _("It is not possible to equip a trade ship with weapons")
+			))
+		self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons, lambda b: b.res_id == WEAPONS.CANNON)
+
 
 	def show(self):
 		if not self.instance.has_change_listener(self.refresh):
@@ -114,7 +127,7 @@ class FightingShipInventoryTab(ShipInventoryTab):
 		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, \
 			self.weapon_inventory)
 
-	def refresh(self):
+	def _refresh_combat(self):
 		#TODO system for getting equipable weapons
 		def apply_equip(button):
 			button.button.tooltip = _("Equip weapon")
@@ -124,7 +137,6 @@ class FightingShipInventoryTab(ShipInventoryTab):
 			button.button.capture(Callback(self.unequip_weapon, button.res_id))
 		self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip, lambda b: b.res_id == WEAPONS.CANNON)
 		self.widget.findChild(name='inventory').apply_to_buttons(apply_equip, lambda b: b.res_id == WEAPONS.CANNON)
-		super(FightingShipInventoryTab, self).refresh()
 
 	def equip_weapon(self, weapon_id):
 		if EquipWeaponFromInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:

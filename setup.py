@@ -4,12 +4,10 @@ from __future__ import with_statement
 from distutils.core import setup
 from distutils.command.build import build
 from distutils.spawn import spawn, find_executable
-from DistUtilsExtra.command import *
+from DistUtilsExtra.command import build_i18n, build_extra
 import os
 import platform
-from glob import glob
-from commands import getoutput
-from shutil import move, rmtree, copytree
+from shutil import rmtree, copytree
 from horizons.constants import VERSION
 
 # Ensure we are in the correct directory
@@ -23,7 +21,7 @@ else:
 data = [
         (executable_path, ('unknown-horizons', )),
         ('share/pixmaps', ('content/unknown-horizons.xpm', )),
-        ('share/unknown-horizons', ('settings-dist.xml', ))
+        ('share/unknown-horizons', ('content/settings-template.xml', ))
        ]
 
 for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):

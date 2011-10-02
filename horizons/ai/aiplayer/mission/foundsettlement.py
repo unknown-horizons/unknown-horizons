@@ -19,15 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.mission import Mission
+from horizons.ai.aiplayer.mission import ShipMission
 from horizons.ai.aiplayer.builder import Builder
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.constants import GROUND, BUILDINGS
+from horizons.constants import BUILDINGS
 from horizons.util import Point, Circle, Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.ext.enum import Enum
 
-class FoundSettlement(Mission):
+class FoundSettlement(ShipMission):
 	"""
 	Given a ship with the required resources and a bo_location the ship is taken near
 	the location and a branch office is built.
@@ -35,14 +34,12 @@ class FoundSettlement(Mission):
 
 	missionStates = Enum('created', 'moving')
 
-	def __init__(self, success_callback, failure_callback, land_manager, ship, bo_location, **kwargs):
-		super(FoundSettlement, self).__init__(success_callback, failure_callback, land_manager.island.session, **kwargs)
+	def __init__(self, success_callback, failure_callback, land_manager, ship, bo_location):
+		super(FoundSettlement, self).__init__(success_callback, failure_callback, ship)
 		self.land_manager = land_manager
-		self.ship = ship
 		self.bo_location = bo_location
 		self.branch_office = None
 		self.state = self.missionStates.created
-		self.ship.add_remove_listener(self.cancel)
 
 	def save(self, db):
 		super(FoundSettlement, self).save(db)
@@ -60,25 +57,16 @@ class FoundSettlement(Mission):
 	def _load(self, db, worldid, success_callback, failure_callback):
 		db_result = db("SELECT land_manager, ship, bo_builder, state FROM ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
 		self.land_manager = WorldObject.get_object_by_id(db_result[0])
-		self.ship = WorldObject.get_object_by_id(db_result[1])
 		self.bo_location = Builder.load(db, db_result[2], self.land_manager)
 		self.branch_office = None
 		self.state = self.missionStates[db_result[3]]
-		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, self.land_manager.island.session)
+		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
 			self.ship.add_move_callback(Callback(self._reached_bo_area))
 			self.ship.add_blocked_callback(Callback(self._move_to_bo_area))
-
-		self.ship.add_remove_listener(self.cancel)
-
-	def report_success(self, msg):
-		self.ship.remove_remove_listener(self.cancel)
-		super(FoundSettlement, self).report_success(msg)
-
-	def report_failure(self, msg):
-		self.ship.remove_remove_listener(self.cancel)
-		super(FoundSettlement, self).report_failure(msg)
+		else:
+			assert False, 'invalid state'
 
 	def start(self):
 		self.state = self.missionStates.moving
@@ -89,15 +77,11 @@ class FoundSettlement(Mission):
 			self.report_failure('No possible branch office location')
 			return
 
-		(x, y) = self.bo_location.position.get_coordinates()[4]
-		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
-		try:
-			self.ship.move(area, Callback(self._reached_bo_area), blocked_callback = Callback(self._move_to_bo_area))
-		except MoveNotPossible:
-			self.report_failure('Move not possible')
+		self._move_to_branch_office_area(self.bo_location.position, Callback(self._reached_bo_area), \
+			Callback(self._move_to_bo_area), 'Move not possible')
 
 	def _reached_bo_area(self):
-		self.log.info('Reached BO area')
+		self.log.info('%s reached BO area', self)
 
 		self.branch_office = self.bo_location.execute()
 		if not self.branch_office:
@@ -106,14 +90,10 @@ class FoundSettlement(Mission):
 
 		island = self.bo_location.land_manager.island
 		self.land_manager.settlement = island.get_settlement(self.bo_location.point)
-		self.log.info('Built the branch office')
+		self.log.info('%s built the branch office', self)
 
-		self.ship.owner.complete_inventory.unload_all(self.ship, self.land_manager.settlement)
+		self._unload_all_resources(self.land_manager.settlement)
 		self.report_success('Built the branch office, transferred resources')
-
-	def cancel(self):
-		self.ship.stop()
-		super(FoundSettlement, self).cancel()
 
 	@classmethod
 	def find_bo_location(cls, ship, land_manager):
@@ -154,7 +134,7 @@ class FoundSettlement(Mission):
 					cost += distance
 
 			for settlement_manager in land_manager.owner.settlement_managers:
-				cost += branch_office.position.distance(settlement_manager.branch_office.position) * personality.linear_branch_office_penalty
+				cost += branch_office.position.distance(settlement_manager.settlement.branch_office.position) * personality.linear_branch_office_penalty
 
 			options.append((cost, branch_office))
 

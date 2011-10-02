@@ -18,33 +18,36 @@ Shows info about settlers and allows the player to change taxes or deny upgrade 
 		<Container size="260,60" position="25,43">
 			<!-- Taxes -->
 			<Label position="0,0" name="tax_label" text="Taxes:" />
-			<TooltipLabel name='taxes' position="40,0" text=""
+			<TooltipLabel name="taxes" position="40,0" text=""
 				tooltip="Paid taxes" />
-			<TooltipIcon name="paid_taxes_label" position="72,0"
+			<TooltipIcon name="paid_taxes_icon" position="72,0"
 				image="content/gui/icons/resources/running_costs.png"
 				tooltip="Paid taxes" />
-			<TooltipLabel name='tax_val_label' position="160,0" text=""
+			<TooltipLabel name="tax_val_label" position="160,0" text=""
 				tooltip="Tax rate" />
-			<TooltipIcon name="paid_taxes_label" position="185,0"
+			<TooltipIcon name="tax_rate_icon" position="185,0"
 				image="content/gui/icons/resources/running_costs.png"
 				tooltip="Tax rate" />
 			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" />
 		</Container>
 
 		<Container size="260,80" position="25,90">
-			<Label name="upgrades_lbl" position="0,0" text="Allow upgrades:" />
-			<ToggleImageButton name="allow_upgrades" border_size="0" position="0,20"
-				inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
-				up_image="content/gui/icons/templates/production/toggle_active_n.png"
-				down_image="content/gui/icons/templates/production/toggle_active_d.png"
-				hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-				tooltip="Allow upgrades" />
+			<Label name="upgrades_lbl" position="0,0" text="Upgrade not possible:" />
+			<!--<Label name="upgrades_lbl" position="0,0" text="Upgrade permissions:" />-->
+			<TooltipIcon name="allow_upgrades" border_size="0" position="0,20"
+				image="content/gui/images/buttons/upgrade/disallow.png"
+				tooltip="This is the current maximum increment!" />
+			<!--<ToggleImageButton name="allow_upgrades" border_size="0" position="0,20"
+				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
+				up_image="content/gui/images/buttons/upgrade/allow.png"
+				down_image="content/gui/images/buttons/upgrade/allow.png"
+				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png" />-->
 		</Container>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,165" />
 
 		<Container size="260,120" position="25,175">
-			<Label name="headline_residents_per_house_label" position="0,0" text="Residents per house" />
+			<Label name="headline_residents_per_house" position="0,0" text="Residents per house" />
 			<Label name="resident_1" position="10,20" text="1 resident"/>
 			<Label position="160,20" name="resident_count_1"/>
 			<Label name="resident_2" position="10,40" text="2 residents"/>
@@ -58,7 +61,7 @@ Shows info about settlers and allows the player to change taxes or deny upgrade 
 		</Container>
 
 		<Container size="260,60" position="25,300">
-			<Label name="headline_residents_total_label" position="0,0" text="Summary" />
+			<Label name="headline_residents_total" position="0,0" text="Summary" />
 			<Label name="houses" position="10,20" text="houses"/>
 			<Label position="160,20" name="house_count"/>
 			<Label name="residents" position="10,40" text="residents"/>

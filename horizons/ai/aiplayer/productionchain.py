@@ -21,16 +21,31 @@
 
 import logging
 
-from building import AbstractBuilding
-from constants import BUILD_RESULT
-
-from horizons.entities import Entities
-from horizons.constants import BUILDINGS, RES
-from horizons.command.building import Build
+from horizons.ai.aiplayer.building import AbstractBuilding
+from horizons.ai.aiplayer.constants import BUILD_RESULT
+from horizons.constants import RES
 from horizons.util.python import decorators
-from horizons.util import Point, Rect, WorldObject
 
 class ProductionChain(object):
+	"""
+	A production chain handles the building of buildings required to produce a resource.
+
+	Production chains use the list of production lines and the available AbstractBuilding
+	subclasses to figure out all ways of producing a certain resource and finding the 
+	right ratio of them to produce just enough of the resource. The result is a tree
+	that can be used to produce the required resource.
+
+	Each subtree reserves a portion of the total capacity of the buildings of the relevant
+	type. This is a logical classification and doesn't affect the actual buildings in any way.
+	Some subtrees can import the required resource from other islands using a mechanism
+	similar to the previous one but in that case it acts as if the resource was produced
+	without any subtrees. The imported amounts are added up over time and saved as an owed
+	resource in the exporting settlement's resource manager (these restrictions are again
+	just logical without affecting the way the settlements work in any way). That storage
+	is realised by organising DomesticTrade missions that transfer the resources to the
+	right settlements.
+	"""
+
 	log = logging.getLogger("ai.aiplayer.productionchain")
 
 	def __init__(self, settlement_manager, resource_id, resource_producer):
@@ -41,7 +56,7 @@ class ProductionChain(object):
 		self.chain.assign_identifier('/%d,%d' % (self.settlement_manager.worldid, self.resource_id))
 
 	def _get_chain(self, resource_id, resource_producer, production_ratio):
-		""" Returns None or ProductionChainSubtreeChoice depending on the number of options """
+		"""Return a ProductionChainSubtreeChoice if it is possible to produce the resource, None otherwise."""
 		options = []
 		if resource_id in resource_producer:
 			for production_line, abstract_building in resource_producer[resource_id]:
@@ -62,7 +77,7 @@ class ProductionChain(object):
 
 	@classmethod
 	def create(cls, settlement_manager, resource_id):
-		"""Creates a production chain that can produce the given resource"""
+		"""Create a production chain that can produce the given resource."""
 		resource_producer = {}
 		for abstract_building in AbstractBuilding.buildings.itervalues():
 			for resource, production_line in abstract_building.lines.iteritems():
@@ -75,36 +90,42 @@ class ProductionChain(object):
 		return 'ProductionChain(%d): %.5f\n%s' % (self.resource_id, self.get_final_production_level(), self.chain)
 
 	def build(self, amount):
-		"""Builds a building that gets it closer to producing at least amount of resource per tick."""
+		"""Build a building that gets it closer to producing at least the given amount of resource per tick."""
 		return self.chain.build(amount)
 
 	def reserve(self, amount, may_import):
-		"""Reserves currently available production and imports from other islands if allowed"""
+		"""Reserve currently available production capacity and import from other islands if allowed."""
 		return self.chain.reserve(amount, may_import)
 
 	def need_to_build_more_buildings(self, amount):
+		"""Return a boolean showing whether more buildings need to be built in order to produce at least amount of resource per tick."""
 		return self.chain.need_to_build_more_buildings(amount)
 
 	def get_final_production_level(self):
-		""" returns the production level at the bottleneck """
+		"""Return the production level per tick at the bottleneck."""
 		return self.chain.get_final_production_level()
 
 	def get_ratio(self, resource_id):
+		"""Return the ratio of the given resource needed given that 1 unit of the root resource is required."""
 		return self.chain.get_ratio(resource_id)
 
 class ProductionChainSubtreeChoice(object):
+	"""An object of this class represents a choice between N >= 1 ways of producing the required resource."""
+
 	log = logging.getLogger("ai.aiplayer.productionchain")
 	coverage_resources = set([RES.COMMUNITY_ID, RES.FAITH_ID, RES.EDUCATION_ID, RES.GET_TOGETHER_ID])
 
 	def __init__(self, options):
-		self.options = options
-		self.resource_id = options[0].resource_id
-		self.production_ratio = options[0].production_ratio
-		self.ignore_production = options[0].ignore_production
-		self.trade_manager = options[0].trade_manager
-		self.settlement_manager = options[0].settlement_manager
+		super(ProductionChainSubtreeChoice, self).__init__()
+		self.options = options # [ProductionChainSubtree, ...]
+		self.resource_id = options[0].resource_id # the required resource
+		self.production_ratio = options[0].production_ratio # given that 1 unit has to be produced at the root of the tree, how much has to be produced here?
+		self.ignore_production = options[0].ignore_production # whether to try to build more buildings even when the required production capacity has been reached
+		self.trade_manager = options[0].trade_manager # TradeManager instance
+		self.settlement_manager = options[0].settlement_manager # SettlementManager instance
 
 	def assign_identifier(self, prefix):
+		"""Recursively assign an identifier to this subtree to know which subtree owns which resource quota."""
 		self.identifier = prefix + ('/choice' if len(self.options) > 1 else '')
 		for option in self.options:
 			option.assign_identifier(self.identifier)
@@ -117,20 +138,20 @@ class ProductionChainSubtreeChoice(object):
 			result += '\n%sImport %.5f' % ('  ' * (level + 1), self.get_root_import_level())
 		return result
 
-	def get_root_production_level(self):
-		return sum(option.get_root_production_level() for option in self.options)
-
 	def get_root_import_level(self):
+		"""Return the amount of the resource imported per tick."""
 		return self.trade_manager.get_quota(self.identifier, self.resource_id) / self.production_ratio
 
 	def get_final_production_level(self):
-		""" returns the production level at the bottleneck """
+		"""Return the total reserved production capacity of the resource per tick (includes import)."""
 		return sum(option.get_final_production_level() for option in self.options) + self.get_root_import_level()
 
 	def get_expected_cost(self, amount):
+		"""Return the expected utility cost of building enough buildings to produce a total of the given amount of the resource per tick."""
 		return min(option.get_expected_cost(amount) for option in self.options)
 
 	def _get_available_options(self):
+		"""Return a list of the currently available options to produce the resource."""
 		available_options = []
 		for option in self.options:
 			if option.available:
@@ -138,7 +159,7 @@ class ProductionChainSubtreeChoice(object):
 		return available_options
 
 	def build(self, amount):
-		""" Builds the subtree that is currently the cheapest """
+		"""Try to build a building in the subtree that is currently the cheapest. Return a BUILD_RESULT constant."""
 		current_production = self.get_final_production_level()
 		if amount < current_production + 1e-7 and self.resource_id not in self.coverage_resources:
 			# we are already producing enough
@@ -170,10 +191,7 @@ class ProductionChainSubtreeChoice(object):
 			return BUILD_RESULT.IMPOSSIBLE
 
 	def reserve(self, amount, may_import):
-		"""
-		Reserves currently available production and imports from other islands if allowed
-		Returns the total amount it can reserve or import
-		"""
+		"""Reserve currently available production capacity and import from other islands if allowed. Returns the total amount it can reserve or import."""
 		total_reserved = 0.0
 		for option in self._get_available_options():
 			total_reserved += option.reserve(max(0.0, amount - total_reserved), may_import)
@@ -187,6 +205,7 @@ class ProductionChainSubtreeChoice(object):
 		return total_reserved
 
 	def need_to_build_more_buildings(self, amount):
+		"""Return a boolean showing whether more buildings need to be built in order to produce at least the given amount of resource per tick."""
 		current_production = self.get_final_production_level()
 		if self.resource_id not in self.coverage_resources:
 			return current_production + 1e-7 <= amount
@@ -196,27 +215,33 @@ class ProductionChainSubtreeChoice(object):
 		return False
 
 	def get_ratio(self, resource_id):
+		"""Return the ratio of the given resource needed given that 1 unit of the root resource is required."""
 		return sum(option.get_ratio(resource_id) for option in self.options)
 
-class ProductionChainSubtree:
+class ProductionChainSubtree(object):
+	"""An object of this type represents a subtree of buildings that need to be built in order to produce the given resource."""
+
 	def __init__(self, settlement_manager, resource_id, production_line, abstract_building, children, production_ratio):
-		self.settlement_manager = settlement_manager
-		self.resource_manager = settlement_manager.resource_manager
-		self.trade_manager = settlement_manager.trade_manager
-		self.resource_id = resource_id
-		self.production_line = production_line
-		self.abstract_building = abstract_building
-		self.children = children
-		self.production_ratio = production_ratio
-		self.ignore_production = abstract_building.ignore_production
+		super(ProductionChainSubtree, self).__init__()
+		self.settlement_manager = settlement_manager # SettlementManager instance
+		self.resource_manager = settlement_manager.resource_manager # ResourceManager instance
+		self.trade_manager = settlement_manager.trade_manager # TradeManager instance
+		self.resource_id = resource_id # the required resource
+		self.production_line = production_line # ProductionLine instance
+		self.abstract_building = abstract_building # AbstractBuilding instance
+		self.children = children # [ProductionChainSubtreeChoice, ...]
+		self.production_ratio = production_ratio # given that 1 unit has to be produced at the root of the tree, how much has to be produced here?
+		self.ignore_production = abstract_building.ignore_production # whether to try to build more buildings even when the required production capacity has been reached
 
 	def assign_identifier(self, prefix):
+		"""Recursively assign an identifier to this subtree to know which subtree owns which resource quota."""
 		self.identifier = '%s/%d,%d' % (prefix, self.resource_id, self.abstract_building.id)
 		for child in self.children:
 			child.assign_identifier(self.identifier)
 
 	@property
 	def available(self):
+		"""Return a boolean showing whether this subtree is currently available."""
 		return self.settlement_manager.owner.settler_level >= self.abstract_building.settler_level
 
 	def __str__(self, level = 0):
@@ -227,6 +252,7 @@ class ProductionChainSubtree:
 		return result
 
 	def get_expected_children_cost(self, amount):
+		"""Return the expected utility cost of building enough buildings in the subtrees to produce a total of the given amount of the resource per tick."""
 		total = 0
 		for child in self.children:
 			cost = child.get_expected_cost(amount)
@@ -236,6 +262,7 @@ class ProductionChainSubtree:
 		return total
 
 	def get_expected_cost(self, amount):
+		"""Return the expected utility cost of building enough buildings to produce a total of the given amount of the resource per tick."""
 		children_cost = self.get_expected_children_cost(amount)
 		if children_cost is None:
 			return None
@@ -247,11 +274,11 @@ class ProductionChainSubtree:
 		return children_cost + root_cost
 
 	def get_root_production_level(self):
-		""" returns the production level currently available to this subtree """
+		"""Return the currently reserved production capacity of this subtree at the root."""
 		return self.resource_manager.get_quota(self.identifier, self.resource_id, self.abstract_building.id) / self.production_ratio
 
 	def get_final_production_level(self):
-		""" returns the production level at the bottleneck """
+		"""Return the currently reserved production capacity at the bottleneck."""
 		min_child_production = None
 		for child in self.children:
 			if child.ignore_production:
@@ -267,6 +294,7 @@ class ProductionChainSubtree:
 			return min(min_child_production, self.get_root_production_level())
 
 	def need_more_buildings(self, amount):
+		"""Return a boolean showing whether more buildings of this specific type need to be built in order to produce at least the given amount of resource per tick."""
 		if not self.abstract_building.directly_buildable:
 			return False # building must be triggered by children instead
 		if self.abstract_building.coverage_building:
@@ -274,7 +302,8 @@ class ProductionChainSubtree:
 		return amount > self.get_root_production_level() + 1e-7
 
 	def build(self, amount):
-		# try to build one of the lower level buildings
+		"""Build a building in order to get closer to the goal of producing at least the given amount of resource per tick at the bottleneck."""
+		# try to build one of the lower level buildings (results in a depth first order)
 		result = None
 		for child in self.children:
 			result = child.build(amount)
@@ -298,10 +327,7 @@ class ProductionChainSubtree:
 		return BUILD_RESULT.ALL_BUILT
 
 	def reserve(self, amount, may_import):
-		"""
-		Reserves currently available production and imports from other islands if allowed
-		Returns the total amount it can reserve or import
-		"""
+		"""Reserve currently available production capacity and import from other islands if allowed. Returns the total amount it can reserve or import."""
 		total_reserved = amount
 		for child in self.children:
 			total_reserved = min(total_reserved, child.reserve(amount, may_import))
@@ -311,6 +337,7 @@ class ProductionChainSubtree:
 		return total_reserved
 
 	def need_to_build_more_buildings(self, amount):
+		"""Return a boolean showing whether more buildings in this subtree need to be built in order to produce at least the given amount of resource per tick."""
 		for child in self.children:
 			if child.need_to_build_more_buildings(amount):
 				return True
@@ -319,6 +346,7 @@ class ProductionChainSubtree:
 		return self.abstract_building.need_to_build_more_buildings(self.settlement_manager, self.resource_id)
 
 	def get_ratio(self, resource_id):
+		"""Return the ratio of the given resource needed given that 1 unit of the root resource is required."""
 		result = self.production_ratio if self.resource_id == resource_id else 0
 		return result + sum(child.get_ratio(resource_id) for child in self.children)
 
