@@ -44,6 +44,7 @@ class BoatbuilderTab(OverviewTab):
 		container_inactive = main_container.findChild(name="container_inactive")
 		progress_container = main_container.findChild(name="BB_progress_container")
 		cancel_container = main_container.findChild(name="BB_cancel_container")
+		needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 
 		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
 		production_lines = self.instance.get_production_lines()
@@ -51,6 +52,11 @@ class BoatbuilderTab(OverviewTab):
 
 			if cancel_container is None:
 				main_container.addChild(main_container.cancel_container)
+				cancel_container = main_container.cancel_container
+
+			if needed_res_container is None:
+				main_container.insertChildBefore(main_container.needed_res_container, cancel_container)
+				needed_res_container = main_container.needed_res_container
 
 			# Set progress
 			if progress_container is None:
@@ -122,7 +128,6 @@ class BoatbuilderTab(OverviewTab):
 			still_needed_res = production.get_consumed_resources()
 			# Now sort!
 			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))
-			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
 			i = 0
 			for res, amount in still_needed_res:
@@ -160,6 +165,11 @@ class BoatbuilderTab(OverviewTab):
 			if progress_container is not None:
 				main_container.progress_container = progress_container
 				main_container.removeChild(progress_container)
+
+			if needed_res_container is not None:
+				main_container.needed_res_container = needed_res_container
+				main_container.removeChild(needed_res_container)
+
 			if cancel_container is not None:
 				main_container.cancel_container = cancel_container
 				main_container.removeChild(cancel_container)
