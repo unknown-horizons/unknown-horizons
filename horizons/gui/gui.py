@@ -90,9 +90,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		if self.__pause_displayed:
 			self.__pause_displayed = False
-			self.current.additional_widget.hide()
-			del self.current.additional_widget
-
 			self.hide()
 			self.current = None
 			self.session.speed_unpause()
@@ -171,7 +168,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		   self.show_popup(_("Quit Session"), message, show_cancel_button = True):
 			if self.current is not None:
 				# this can be None if not called from gui (e.g. scenario finished)
-				self.current.hide()
+				self.hide()
 				self.current = None
 			if self.session is not None:
 				self.session.end()
@@ -296,6 +293,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.log.debug("Gui: hiding current: %s", self.current)
 		if self.current is not None:
 			self.current.hide()
+			try:
+				self.current.additional_widget.hide()
+				del self.current.additional_widget
+			except AttributeError, e:
+				pass # only used for some widgets, e.g. pause
+
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
@@ -386,7 +389,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		old = self.current
 		if (show or hide_old) and old is not None:
 			self.log.debug("Gui: hiding %s", old)
-			old.hide()
+			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
 		if center:
