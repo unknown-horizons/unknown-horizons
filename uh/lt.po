@@ -808,14 +808,17 @@ msgstr "Išsamiau:"
 msgid "Error:"
 msgstr "Klaida:"
 
+# 94%
 #: horizons/gui/gui.py:426
+#, fuzzy
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Nežinomi įrašo duomenys\n"
 
+# 91%
 #: horizons/gui/gui.py:428
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at %s"
-msgstr ""
+msgstr "Įrašyta į %s\n"
 
 #: horizons/gui/gui.py:432
 #, python-format
