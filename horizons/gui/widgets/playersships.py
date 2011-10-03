@@ -77,6 +77,7 @@ class PlayersShips(StatsWidget):
 			if weapon_list:
 				weapons.text = unicode(', '.join(weapon_list))
 			else:
+				#i18n There are no weapons equipped at the moment.
 				weapons.text = _('None')
 		else:
 			weapons.text = _('N/A')
