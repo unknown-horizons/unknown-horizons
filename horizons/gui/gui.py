@@ -65,6 +65,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.session = None
 		self.current_dialog = None
 
+		self.dialog_executed = False
+
 		self.__pause_displayed = False
 
 # basic menu widgets
@@ -317,7 +319,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 					dlg.hide()
 			dlg.capture(_escape, event_name="keyPressed")
+		self.dialog_executed = True
 		ret = dlg.execute(actions)
+		self.dialog_executed = False
 		return ret
 
 	def show_popup(self, windowtitle, message, show_cancel_button = False):

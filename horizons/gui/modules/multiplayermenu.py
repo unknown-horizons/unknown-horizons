@@ -110,6 +110,10 @@ class MultiplayerMenu(object):
 		"""Error callback"""
 		if fatal and self.session is not None:
 			self.session.timer.ticks_per_second = 0
+		if self.dialog_executed:
+			# another message dialog is being executed, and we were called by that action.
+			# if we now trigger another message dialog, we will probably loop.
+			return
 		if not fatal:
 			self.show_popup(_("Error"), unicode(exception))
 		else:
