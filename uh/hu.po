@@ -808,14 +808,17 @@ msgstr "Részletek:"
 msgid "Error:"
 msgstr "Hiba:"
 
+# 94%
 #: horizons/gui/gui.py:426
+#, fuzzy
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Ismeretlen mentési idő\n"
 
+# 91%
 #: horizons/gui/gui.py:428
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at %s"
-msgstr ""
+msgstr "Mentve ekkor %s\n"
 
 #: horizons/gui/gui.py:432
 #, python-format
