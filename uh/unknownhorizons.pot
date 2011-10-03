@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 787ffd8\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 02:39+0200\n"
+"POT-Creation-Date: 2011-10-03 03:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Herbary"
 msgstr ""
 
-#. (text of widget: headline_BB_trade_ship1)
+#. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:267 sql
 msgid "Huker"
@@ -753,6 +753,7 @@ msgid "There are no saved games to load"
 msgstr ""
 
 #. (text of widget: loadgame)
+#. (text of widget: loadgame) Open a widget to select which game to load
 #: horizons/gui/gui.py:222 horizons/i18n/guitranslations.py:763
 #: horizons/i18n/guitranslations.py:789
 msgid "Load game"
@@ -784,8 +785,8 @@ msgstr ""
 msgid "Select a savegame"
 msgstr ""
 
-#. (text of widget: scenario_details)
-#. (text of widget: headline_details_label)
+#. (text of widget: scenario_details) More text describing the scenario
+#. (text of widget: headline_details_label) More text describing the savegame
 #: horizons/gui/gui.py:351 horizons/i18n/guitranslations.py:607
 #: horizons/i18n/guitranslations.py:922
 msgid "Details:"
@@ -1589,7 +1590,7 @@ msgstr ""
 msgid "(lose all resources)"
 msgstr ""
 
-#. (text of widget: BB_current_order)
+#. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py:246
 msgid "Currently building:"
 msgstr ""
@@ -1599,7 +1600,7 @@ msgstr ""
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
 
-#. (text of widget: BB_progress_label)
+#. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
 #: horizons/i18n/guitranslations.py:250
 msgid "Construction progress:"
 msgstr ""
@@ -1703,17 +1704,17 @@ msgstr ""
 msgid "Show resources produced in this settlement"
 msgstr ""
 
-#. (text of widget: ally_label)
+#. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:320
 msgid "ally"
 msgstr ""
 
-#. (text of widget: enemy_label)
+#. (text of widget: enemy_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:322
 msgid "enemy"
 msgstr ""
 
-#. (text of widget: neutral_label)
+#. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:324
 msgid "neutral"
 msgstr ""
@@ -1835,7 +1836,7 @@ msgstr ""
 msgid "This is the current maximum increment!"
 msgstr ""
 
-#. (text of widget: collector_utilisation_label)
+#. (text of widget: collector_utilisation_label) Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)
 #: horizons/i18n/guitranslations.py:445
 msgid "Collector utilisation:"
 msgstr ""
@@ -1871,7 +1872,7 @@ msgstr ""
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 
-#. (text of widget: res_dep_description_lbl2)
+#. (text of widget: res_dep_description_lbl2) It == The resource deposit
 #: horizons/i18n/guitranslations.py:486
 msgid "It contains these resources:"
 msgstr ""
@@ -1943,32 +1944,32 @@ msgstr ""
 msgid "Start production"
 msgstr ""
 
-#. (tooltip of widget: delete_bo)
+#. (tooltip of widget: delete_bo) Trade route entry
 #: horizons/i18n/guitranslations.py:585
 msgid "Delete entry"
 msgstr ""
 
-#. (tooltip of widget: move_down)
+#. (tooltip of widget: move_down) Trade route entry
 #: horizons/i18n/guitranslations.py:587
 msgid "Move down"
 msgstr ""
 
-#. (tooltip of widget: move_up)
+#. (tooltip of widget: move_up) Trade route entry
 #: horizons/i18n/guitranslations.py:589
 msgid "Move up"
 msgstr ""
 
-#. (tooltip of widget: cancelButton)
+#. (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
 #: horizons/i18n/guitranslations.py:594
 msgid "Leave Captain's log"
 msgstr ""
 
-#. (tooltip of widget: backwardButton)
+#. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:596
 msgid "Read prev. entries"
 msgstr ""
 
-#. (tooltip of widget: forwardButton)
+#. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:598
 msgid "Read next entries"
 msgstr ""
@@ -1983,12 +1984,12 @@ msgstr ""
 msgid "Scenario description"
 msgstr ""
 
-#. (tooltip of widget: cancelButton)
+#. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:609
 msgid "Continue playing"
 msgstr ""
 
-#. (tooltip of widget: choose_scenario)
+#. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:611
 msgid "Choose this scenario"
 msgstr ""
@@ -2259,6 +2260,7 @@ msgid "Return"
 msgstr ""
 
 #. (text of widget: help)
+#. (text of widget: help) Main / in-game menu entry
 #: horizons/i18n/guitranslations.py:761 horizons/i18n/guitranslations.py:787
 msgid "Help"
 msgstr ""
@@ -2269,6 +2271,7 @@ msgid "Cancel game"
 msgstr ""
 
 #. (text of widget: settings)
+#. (text of widget: settings) Main / in-game menu entry
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:769 horizons/i18n/guitranslations.py:793
 #: horizons/i18n/guitranslations.py:873
@@ -2295,17 +2298,17 @@ msgstr ""
 msgid "Credits"
 msgstr ""
 
-#. (text of widget: quit)
+#. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py:791
 msgid "Quit"
 msgstr ""
 
-#. (text of widget: start)
+#. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
 #: horizons/i18n/guitranslations.py:795
 msgid "Singleplayer"
 msgstr ""
 
-#. (text of widget: start_multi)
+#. (text of widget: start_multi) Opens widget to join or create multiplayer games
 #: horizons/i18n/guitranslations.py:797
 msgid "Multiplayer"
 msgstr ""
@@ -2422,10 +2425,7 @@ msgid "Join the selected game"
 msgstr ""
 
 #. (tooltip of widget: cancel)
-#. (tooltip of widget: cancelButton)
-#. (tooltip of widget: cancel)
-#: horizons/i18n/guitranslations.py:858 horizons/i18n/guitranslations.py:928
-#: horizons/i18n/guitranslations.py:951
+#: horizons/i18n/guitranslations.py:858 horizons/i18n/guitranslations.py:951
 msgid "Exit to main menu"
 msgstr ""
 
@@ -2568,6 +2568,11 @@ msgstr ""
 #. (tooltip of widget: okay)
 #: horizons/i18n/guitranslations.py:926 horizons/i18n/guitranslations.py:949
 msgid "Start game"
+msgstr ""
+
+#. (tooltip of widget: cancelButton)
+#: horizons/i18n/guitranslations.py:928
+msgid "Cancel"
 msgstr ""
 
 #. (tooltip of widget: deleteButton)
