@@ -153,6 +153,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		success = self.session.save()
 		if not success:
+			# There was a problem during the 'save game' procedure.
 			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def show_settings(self):
@@ -432,6 +433,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""Creates a function that displays details of a savegame in gui"""
 		def tmp_show_details():
 			"""Fetches details of selected savegame and displays it"""
+			# N_ takes care of plural forms for different languages
 			box = gui.findChild(name="savegamedetails_box")
 			old_label = box.findChild(name="savegamedetails_lbl")
 			if old_label is not None:
@@ -448,26 +450,27 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
-				details_label.text += _("Unknown savedate\n")
+				details_label.text += _("Unknown savedate")
 			else:
-				details_label.text += _("Saved at %s\n") % \
-										time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
+				details_label.text += _("Saved at %(time)s") % \
+				                       {'time': time.strftime("%H:%M, %A, %B %d",
+				                         time.localtime(savegame_info['timestamp']))}
 			counter = savegame_info['savecounter']
-			# N_ takes care of plural forms for different languages
-			details_label.text += N_("Saved %(counter)d time\n", \
-			                         "Saved %(counter)d times\n", \
-			                         counter) % {'counter':counter}
+			details_label.text += N_("Saved %(amount)d time",
+			                         "Saved %(amount)d times",
+			                         counter) % {'amount': counter}
+			details_label += u'\n'
 			details_label.stylize('book_t')
 
 			from horizons.constants import VERSION
 			try:
 				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
-					details_label.text += _("Savegame ver. %d") % ( savegame_info['savegamerev'] )
+					details_label.text += _("Savegame version %d") % ( savegame_info['savegamerev'] )
 				else:
-					details_label.text += _("WARNING: Incompatible ver. %(ver)d!\nNeed ver. %(need)d!") \
-					             % {'ver' : savegame_info['savegamerev'], 'need' : VERSION.SAVEGAMEREVISION}
+					details_label.text += _("WARNING: Incompatible version %(version)d!\nNeed version %(need)d!") \
+					                % {'version' : savegame_info['savegamerev'], 'need' : VERSION.SAVEGAMEREVISION}
 			except KeyError:
-				details_label.text += _("INCOMPATIBLE VERSION\n")
+				details_label.text += _("Incompatible version")
 
 
 			box.addChild( details_label )
