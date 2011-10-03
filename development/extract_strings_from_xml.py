@@ -64,7 +64,8 @@ def set_translations():
 \ttext_translations = {
 '''
 
-footer = '''\n\t}\n'''
+FOOTER = '''\n\t}\n'''
+ROWINDENT = '\n\t\t'
 
 files_to_skip = {
 	'call_for_support.xml',
@@ -121,7 +122,8 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 				text = 'VERSION.string()'
 			else:
 				text = '_("%s")' % text
-			element_strings.append('%-30s: (%-10s, %s)' % (('"%s"' % name), ('"%s"') % text_name, text))
+			comment = '(%s of widget: %s)' % (text_name, name) + ' %s' % (element.getAttribute('i18n'))
+			element_strings.append('# %s' %comment + ROWINDENT + '%-30s: (%-10s, %s)' % (('"%s"' % name), ('"%s"') % text_name, text))
 
 	return sorted(element_strings)
 
@@ -148,14 +150,14 @@ def content_from_file(filename):
 		printname = filename.rsplit("/",1)[1]
 		#HACK! we strip the string until no "/" occurs and then use the remaining part
 		# this is necessary because of our dynamic widget loading (by unique file names)
-		return '\t"%s" : {\n\t\t\t%s,\n\t\t\t},' % (printname, ',\n\t\t\t'.join(strings))
+		return ('\n\t"%s" : {' % printname) + (ROWINDENT + '%s,' % (','+ROWINDENT).join(strings)) + ROWINDENT + '},'
 	else:
 		return ''
 
 filesnippets = (content_from_file(filename) for filename in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')
 
-output = '%s%s%s' % (header, '\n'.join(filesnippets), footer)
+output = '%s%s%s' % (header, '\n'.join(filesnippets), FOOTER)
 
 if len(sys.argv) > 1:
 	file(sys.argv[1], 'w').write(output)
