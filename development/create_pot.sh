@@ -27,17 +27,18 @@ if [ ! "x$1" = "x-keep" ]; then
 fi
 
 # Get all files to translate.
-(
-    for python in *.py; do echo $python; done
+(for python in *.py; do echo $python; done
     find editor   -name \*.py
     find horizons -name \*.py
     echo $SQL_POT_FILE
-) | xgettext --files-from=- --output-dir=po --output=RESULT_FILE \
+) | xgettext --files-from=- --output-dir=po --output=$RESULT_FILE \
              --from-code=UTF-8 --add-comments \
              --no-wrap --sort-by-file \
              --copyright-holder='The Unknown Horizons Team' \
              --package-name='Unknown Horizons' \
-             --package-version=$VERSION \
-             --msgid-bugs-address=team@unknown-horizons.org
+             --package-version="$VERSION" \
+             --msgid-bugs-address='team@unknown-horizons.org' \
+             --keyword=N_:1,2
+#this also catches N_() plural-aware calls
 
 echo "=> Created gettext pot template file at po/$RESULT_FILE."
