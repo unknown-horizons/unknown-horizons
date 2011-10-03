@@ -34,7 +34,8 @@
 
 	<Container position="110,110" size="260,87" >
 		<!-- Ship 1 information -->
-		<Label name="headline_BB_trade_ship1"  position="0,3" text="Huker" />
+		<Label name="headline_BB_trade_ship1"  position="0,3" text="Huker"
+			i18n="The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker." />
 
 		<TooltipIcon image="content/gui/icons/resources/16/004.png" position="13,25" tooltip="Boards" />
 		<Label position="35,25" text="08t"  name="noi18n" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->

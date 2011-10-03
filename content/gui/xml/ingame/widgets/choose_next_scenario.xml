@@ -14,7 +14,8 @@
 	</ScrollArea>
 
 	<Spacer />
-	<CancelButton tooltip="Continue playing" />
+	<CancelButton tooltip="Continue playing"
+		i18n="Players either select the next scenario they want to play or press this button" />
 
 </VBox>
 
@@ -26,7 +27,7 @@
 	       wrap_text="0" max_size="320, 25" min_size="320, 25"
 	       text="Scenario description" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<Label name="scenario_details" text="Details:" />
+	<Label name="scenario_details"  text="Details:"  i18n="More text describing the scenario" />
 
 	<Spacer />
 
@@ -36,7 +37,7 @@
 		up_image="content/gui/icons/templates/production/toggle_active_n.png"
 		down_image="content/gui/icons/templates/production/toggle_active_d.png"
 		hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-		tooltip="Choose this scenario" />
+		tooltip="Choose this scenario"  i18n="Select which scenario to play" />
 	</HBox>
 </VBox>
 </Container>

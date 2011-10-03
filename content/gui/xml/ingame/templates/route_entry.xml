@@ -6,16 +6,16 @@
 		up_image="content/gui/images/buttons/delete_small.png"
 		down_image="content/gui/images/buttons/delete_small.png"
 		hover_image="content/gui/images/buttons/delete_small_h.png"
-		tooltip="Delete entry" />
+		tooltip="Delete entry"  i18n="Trade route entry" />
 
 	<TooltipButton name="move_up" position="290,0" border_size="0"
 		up_image="content/gui/images/buttons/up_15.png"
 		down_image="content/gui/images/buttons/up_15.png"
 		hover_image="content/gui/images/buttons/up_15_h.png"
-		tooltip="Move up" />
+		tooltip="Move up"  i18n="Trade route entry" />
 	<TooltipButton name="move_down" position="290,34" border_size="0"
 		up_image="content/gui/images/buttons/down_15.png"
 		down_image="content/gui/images/buttons/down_15.png"
 		hover_image="content/gui/images/buttons/down_15_h.png"
-		tooltip="Move down" />
+		tooltip="Move down"  i18n="Trade route entry" />
 </Container>

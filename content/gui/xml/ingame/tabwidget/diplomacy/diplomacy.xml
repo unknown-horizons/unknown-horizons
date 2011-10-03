@@ -11,11 +11,11 @@
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	
 	<VBox position="50, 50" size="70,70">
-			<Label name="ally_label" text="ally" />
+			<Label name="ally_label" text="ally" i18n="Diplomacy state of player" />
 			<CheckBox name="ally_check_box" min_size="10,10" />
-			<Label name="neutral_label" text="neutral" />
+			<Label name="neutral_label" text="neutral" i18n="Diplomacy state of player" />
 			<CheckBox name="neutral_check_box" min_size="10,10"/>
-			<Label name="enemy_label" text="enemy" />
+			<Label name="enemy_label" text="enemy" i18n="Diplomacy state of player" />
 			<CheckBox name="enemy_check_box" min_size="10,10"/>
 	</VBox>
 

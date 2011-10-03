@@ -10,11 +10,11 @@
 	<HBox name="param_ai_factions" padding="15">
 		<HBox name="map_param">
 			<CheckBox name="free_trader" min_size="15,15" max_size="15,15" marked="1" />
-			<Label name="lbl_free_trader"  text="Free Trader" />
+			<Label name="lbl_free_trader"  text="Free Trader" i18n="Whether to create this kind of player in the game." />
 		</HBox>
 		<HBox name="map_param">
 			<CheckBox name="pirates" min_size="15,15" max_size="15,15" marked="1" />
-			<Label name="lbl_pirates"  text="Pirates" />
+			<Label name="lbl_pirates"  text="Pirates" i18n="Whether to create this kind of player in the game." />
 		</HBox>
 		<!--
 		<HBox name="map_param">
@@ -27,15 +27,15 @@
 	<HBox name="param_catastrophes" padding="15">
 		<HBox name="map_param">
 			<CheckBox name="fire" min_size="15,15"  marked="1" />
-			<Label text="Fire" />
+			<Label text="Fire" i18n="Whether to enable this kind of catastrophe in the game." />
 		</HBox>
 		<HBox name="map_param">
 			<CheckBox name="black_death" min_size="15,15" />
-			<Label text="Black Death" />
+			<Label text="Black Death" i18n="Whether to enable this kind of catastrophe in the game." />
 		</HBox>
 		<HBox name="map_param">
 			<CheckBox name="rat_plague" min_size="15,15" />
-			<Label text="Rat Plague" />
+			<Label text="Rat Plague" i18n="Whether to enable this kind of catastrophe in the game." />
 		</HBox>
 	</HBox>
 	-->

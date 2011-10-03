@@ -17,11 +17,13 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 
 	<HBox max_size="80,36">
 		<ToggleImageButton name="backwardButton" tooltip="Read prev. entries"
+			i18n="Entry of Captain's Log (logbook/diary used in scenarios)"
 			inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
 			up_image="content/gui/images/buttons/parrow_left.png"
 			hover_image="content/gui/images/buttons/parrow_left_h.png"
 			down_image="content/gui/images/buttons/parrow_left_d.png" />
 		<ToggleImageButton name="forwardButton" tooltip="Read next entries"
+			i18n="Entry of Captain's Log (logbook/diary used in scenarios)"
 			inactive_image ="content/gui/images/buttons/parrow_right_bw.png"
 			up_image="content/gui/images/buttons/parrow_right.png"
 			hover_image="content/gui/images/buttons/parrow_right_h.png"
@@ -42,7 +44,8 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 	<Spacer />
 
 	<HBox> <Spacer min_size="275"/>
-		<CancelButton tooltip="Leave Captain's log" />
+		<CancelButton tooltip="Leave Captain's log"
+			i18n="Captain's Log: logbook/diary used in scenarios" />
 	</HBox>
 	<!-- Yes, this button will not be placed on the very right without min_size.
 	No, we don't know why the engine does this.
