@@ -161,3 +161,9 @@ class Pirate(GenericAI):
 			except MoveNotPossible:
 				self.log.debug('Pirate %s: _chase_closest_ship(%s) unable to chase the closest ship %s' % (self.worldid, pirate_ship.name, ship.name))
 		return False
+
+
+	def remove_unit(self, unit):
+		"""Called when a ship which is owned by the pirate is removed or killed."""
+		del self.ships[unit]
+		Scheduler().rem_call(self, Callback(self.lookout, unit))

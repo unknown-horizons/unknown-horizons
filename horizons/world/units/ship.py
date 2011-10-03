@@ -319,6 +319,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
+			if self._next_target.to_tuple() in self.session.world.ship_map:
+				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
 		if self._selected:
 			self.deselect()
