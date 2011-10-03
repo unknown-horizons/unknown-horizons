@@ -88,7 +88,6 @@ class LogBook(object):
 		#if len(self._messages) == 0:
 		#	return
 		self._gui.show()
-		self.on_pause_request()
 		self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
@@ -96,7 +95,6 @@ class LogBook(object):
 			self._hiding_widget = True
 			self.session.ingame_gui.on_switch_main_widget(None)
 			self._gui.hide()
-			self.on_unpause_request()
 			self._hiding_widget = False
 
 	def is_visible(self):

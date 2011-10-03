@@ -77,8 +77,6 @@ class IngameGui(LivingObject):
 		cityinfo.position_technique = "center-10:top+5"
 
 		self.logbook = LogBook(self.session)
-		self.logbook.add_pause_request_listener(Callback(self.session.speed_pause))
-		self.logbook.add_unpause_request_listener(Callback(self.session.speed_unpause))
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
