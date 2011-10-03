@@ -48,7 +48,6 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	def remove(self):
 		# this shouldn't be absolutely necessary since the changelistener uses weak references
 		self.inventory.remove_change_listener(self._changed)
-		self.owner_inventory.discard_change_listener(self._changed)
 
 		self.inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()
