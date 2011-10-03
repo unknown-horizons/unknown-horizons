@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 01:23+0200\n"
-"PO-Revision-Date: 2011-10-03 01:25+0200\n"
+"PO-Revision-Date: 2011-10-03 01:52+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -323,6 +323,8 @@ msgstr "Ihr könnt Straßen auch bei gedrückter Maustaste aufziehen."
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Eure Einwohner haben die momentan höchstmögliche Stufe erreicht und werden "
+"sich nicht mehr weiterentwickeln."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -826,8 +828,8 @@ msgstr ""
 #, python-format
 msgid "Saved %(amount)d time"
 msgid_plural "Saved %(amount)d times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(amount)d-mal gespeichert"
+msgstr[1] "%(amount)d-mal gespeichert"
 
 #: horizons/gui/gui.py:441
 #, python-format
@@ -916,7 +918,7 @@ msgstr "Netzwerkfehler"
 
 #: horizons/gui/modules/multiplayermenu.py:116
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Schwerer Netzwerkfehler"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 msgid "Something went wrong with the network:"
@@ -1091,11 +1093,11 @@ msgstr "Handel treiben:"
 
 #: horizons/gui/tabs/inventorytab.py:104
 msgid "Can't equip trade ship with weapons"
-msgstr ""
+msgstr "Handelsschiffe können nicht bewaffnet werden"
 
 #: horizons/gui/tabs/inventorytab.py:105
 msgid "It is not possible to equip a trade ship with weapons"
-msgstr ""
+msgstr "Ihr könnt Handelsschiffe nicht mit Waffen ausrüsten"
 
 #: horizons/gui/tabs/inventorytab.py:133
 msgid "Equip weapon"
@@ -1156,7 +1158,7 @@ msgstr "Schiffsübersicht"
 
 #: horizons/gui/tabs/overviewtab.py:160
 msgid "Trade ship"
-msgstr ""
+msgstr "Handelsschiff"
 
 #: horizons/gui/tabs/overviewtab.py:184 horizons/i18n/guitranslations.py:297
 msgid "Build settlement"
