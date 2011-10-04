@@ -817,14 +817,17 @@ msgstr "Yksityiskohdat:"
 msgid "Error:"
 msgstr "Virhe:"
 
+# 94%
 #: horizons/gui/gui.py:426
+#, fuzzy
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Tuntematon tallennuspäivä\n"
 
+# 91%
 #: horizons/gui/gui.py:428
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at %s"
-msgstr ""
+msgstr "Tallennettu %s\n"
 
 #: horizons/gui/gui.py:432
 #, python-format
