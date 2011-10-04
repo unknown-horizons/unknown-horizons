@@ -398,7 +398,7 @@ class Collector(StorageHolder, Unit):
 		NOTE: Subclasses set this to a proper action that makes the collector continue to work.
 		      If the collector is supposed to be remove, use a noop.
 		"""
-		self.log.debug("%s was cancel, continue action is %s", self, continue_action)
+		self.log.debug("%s was canceled, continue action is %s", self, continue_action)
 		if self.job is not None:
 			# remove us as incoming collector at target
 			if self.state != self.states.moving_home:
@@ -411,6 +411,12 @@ class Collector(StorageHolder, Unit):
 				assert removed_calls == 1, 'removed %s calls instead of one' % removed_calls
 			self.job = None
 			self.state = self.states.idle
+		# NOTE:
+		# Some blocked movement callbacks use this callback. All blocked movement callbacks have to
+		# be canceled here, else the unit will try to continue the movement later when its state has already changed.
+		# This line should fix it sufficiently for now and the problem could be deprecated when the
+		# switch to a component-based system is accomplished.
+		Scheduler().rem_call(self, self.resume_movement)
 		continue_action()
 
 	def __str__(self):
