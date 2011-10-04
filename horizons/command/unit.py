@@ -39,13 +39,17 @@ class Act(GenericUnitCommand):
 	def __init__(self, unit, x, y):
 		super(Act, self).__init__(unit, "go", x, y)
 
+GenericCommand.allow_network(Act)
+
 class Attack(GenericUnitCommand):
 	"""Command class that triggers attack
 	@param unit: Instance of Unit
 	@param target: Instance of Target
 	"""
 	def __init__(self, unit, target):
-		super(Attack, self).__init__(unit, "user_attack", target)
+		super(Attack, self).__init__(unit, "user_attack", target.worldid)
+
+GenericCommand.allow_network(Attack)
 
 class CreateUnit(Command):
 	"""Command class that creates a unit.
@@ -74,3 +78,5 @@ class CreateUnit(Command):
 		owner = WorldObject.get_object_by_id(self.owner_id)
 		return Entities.units[self.unit_id](session=owner.session, owner=owner, \
 		                                    x=self.x, y=self.y, **self.kwargs)
+
+GenericCommand.allow_network(CreateUnit)

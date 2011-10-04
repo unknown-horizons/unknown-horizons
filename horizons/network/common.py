@@ -19,17 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.network import util, packets, find_enet_module
+import uuid
+from horizons.network import packets, find_enet_module
 enet = find_enet_module()
 
 __all__ = [
   'Address',
   'Player',
   'Game',
-  'UUID'
 ]
 
-class Address():
+class Address(object):
 	def __init__(self, address, port = None):
 		if isinstance(address, enet.Address):
 			self.host = address.host
@@ -58,15 +58,16 @@ class Address():
 
 #-----------------------------------------------------------------------------
 
-class Player():
-	def __init__(self, peer, sid):
-		self.peer  = peer
+class Player(object):
+	def __init__(self, peer, sid, protocol = 0):
+		self.peer     = peer
 		assert(isinstance(self.peer, enet.Peer))
-		self.address = Address(self.peer.address)
-		self.sid   = sid
-		self.name  = None
-		self.game  = None
-		self.ready = False
+		self.address  = Address(self.peer.address)
+		self.sid      = sid
+		self.protocol = protocol
+		self.name     = None
+		self.game     = None
+		self.ready    = False
 
 	def __hash__(self):
 		return hash((self.address))
@@ -85,24 +86,36 @@ class Player():
 			return NotImplemented
 		return not self.__eq__(other)
 
-	# return only relevant data to the player
+	# for pickle: return only relevant data to the player
 	def __getstate__(self):
 		return { 'sid': self.sid, 'address': None, 'name': self.name }
 
 	def __str__(self):
-		return "Player(name=%s;address=%s)" % (self.name, self.address)
+		if self.name:
+			return "Player(addr=%s;proto=%d;name=%s)" % (self.address, self.protocol, self.name)
+		else:
+			return "Player(addr=%s;proto=%d)" % (self.address, self.protocol)
+
+packets.SafeUnpickler.add('server', Player)
 
 #-----------------------------------------------------------------------------
 
-class Game():
-	class State():
+class Game(object):
+	class State(object):
 		Open = 0
 		Prepare = 1
 		Running = 2
 
+		def __init__(self, state = Open):
+			self.state = state
+
+		def __str__(self):
+			strvals = [ "Open", "Prepare", "Running" ]
+			return "%s" % (strvals[self.state])
+
 	def __init__(self, packet, creator):
 		assert(isinstance(packet, packets.client.cmd_creategame))
-		self.uuid          = UUID()
+		self.uuid          = uuid.uuid1().hex
 		self.clientversion = packet.clientversion
 		self.mapname       = packet.mapname
 		self.maxplayers    = packet.maxplayers
@@ -133,25 +146,7 @@ class Game():
 		del self.players[:]
 		self.playercnt = 0
 
-#-----------------------------------------------------------------------------
-
-class UUID():
-	def __init__(self, uuid = None):
-		if uuid is None:
-			self.uuid = util.randomUUID()
-		elif isinstance(uuid, UUID):
-			self.uuid = uuid.uuid
-		else:
-			self.uuid = util.uuidFromString(uuid)
-
 	def __str__(self):
-		return util.uuidToString(self.uuid)
+		return "Game(uuid=%s;maxpl=%d;plcnt=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, Game.State(self.state))
 
-	def __eq__(self, other):
-		if isinstance(other, UUID):
-			return (self.uuid == other.uuid)
-		return NotImplemented
-
-	def __ne__(self, other):
-		return not self.__eq__(other)
-
+packets.SafeUnpickler.add('server', Game)

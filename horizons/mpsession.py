@@ -46,7 +46,10 @@ class MPSession(Session):
 	def create_timer(self):
 		return Timer(freeze_protection=False)
 
-	def speed_set(self, ticks):
+	def speed_set(self, ticks, suggestion=False):
+		if suggestion:
+			# ignore suggested speed changes in multiplayer
+			return
 		self.gui.show_popup(_("Not possible"), _("You cannot change the speed of a multiplayer game"))
 
 	def disable_speed_buttons(self):

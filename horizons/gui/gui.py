@@ -66,6 +66,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.session = None
 		self.current_dialog = None
 
+		self.dialog_executed = False
+
 		self.__pause_displayed = False
 
 # basic menu widgets
@@ -89,14 +91,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		Show Pause menu
 		"""
+		# import here because we get a weird cycle otherwise
 		if self.__pause_displayed:
 			self.__pause_displayed = False
-			self.current.additional_widget.hide()
-			del self.current.additional_widget
-
 			self.hide()
 			self.current = None
-			self.session.speed_unpause()
+			self.session.speed_unpause(True)
 			self.on_escape = self.toggle_pause
 
 		else:
@@ -125,7 +125,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.current.additional_widget.show()
 			self.current.show()
 
-			self.session.speed_pause()
+			self.session.speed_pause(True)
 			self.on_escape = self.toggle_pause
 
 # what happens on button clicks
@@ -172,7 +172,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		   self.show_popup(_("Quit Session"), message, show_cancel_button = True):
 			if self.current is not None:
 				# this can be None if not called from gui (e.g. scenario finished)
-				self.current.hide()
+				self.hide()
 				self.current = None
 			if self.session is not None:
 				self.session.end()
@@ -297,6 +297,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.log.debug("Gui: hiding current: %s", self.current)
 		if self.current is not None:
 			self.current.hide()
+			try:
+				self.current.additional_widget.hide()
+				del self.current.additional_widget
+			except AttributeError, e:
+				pass # only used for some widgets, e.g. pause
+
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
@@ -314,7 +320,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 					dlg.hide()
 			dlg.capture(_escape, event_name="keyPressed")
+		self.dialog_executed = True
 		ret = dlg.execute(actions)
+		self.dialog_executed = False
 		return ret
 
 	def show_popup(self, windowtitle, message, show_cancel_button = False):
@@ -387,7 +395,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		old = self.current
 		if (show or hide_old) and old is not None:
 			self.log.debug("Gui: hiding %s", old)
-			old.hide()
+			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
 		if center:

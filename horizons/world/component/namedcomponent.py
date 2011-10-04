@@ -65,6 +65,7 @@ class NamedComponent(Component):
 
 	def load(self, db, worldid):
 		super(NamedComponent, self).load(db, worldid)
+		self.name = None
 		name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 		# We need unicode strings as the name is displayed on screen.
 		self.set_name(unicode(name, 'utf-8'))

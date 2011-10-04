@@ -32,10 +32,10 @@
 		<Setting name="MinimapRotation" type="bool">False</Setting>
 		<Setting name="EdgeScrolling" type="bool">True</Setting>
 		<Setting name="UninterruptedBuilding" type="bool">False</Setting>
-		<Setting name="NetworkPort" type="str">0</Setting>
+		<Setting name="NetworkPort" type="unicode">0</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">4</Setting>
+		<Setting name="SettingsVersion" type="int">5</Setting>
 	</Module>
 
 </Settings>

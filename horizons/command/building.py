@@ -173,6 +173,9 @@ class Build(Command):
 				return (False, resource)
 		return (True, None)
 
+Command.allow_network(Build)
+Command.allow_network(set)
+
 class Tear(Command):
 	"""Command class that tears an object."""
 	log = logging.getLogger("command")
@@ -192,3 +195,5 @@ class Tear(Command):
 		else:
 			self.log.debug("Tear: tearing down %s", building)
 			building.remove()
+
+Command.allow_network(Tear)

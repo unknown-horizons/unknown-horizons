@@ -32,6 +32,7 @@ from horizons.world.component.stancecomponent import HoldGroundStance, Aggressiv
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.worldobject import WorldObject
 
 import gc
 
@@ -283,11 +284,12 @@ class WeaponHolder(object):
 
 		self.try_attack_target()
 
-	def user_attack(self, target):
+	def user_attack(self, targetid):
 		"""
 		Called when the user triggeres the attack, executes the user_attack_issued callbacks
+		@param targetid: world id of the unit that is to be attacked
 		"""
-		self.attack(target)
+		self.attack(WorldObject.get_object_by_id(targetid))
 		self.on_user_attack_issued()
 
 	def is_attacking(self):

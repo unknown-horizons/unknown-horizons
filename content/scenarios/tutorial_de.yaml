@@ -130,14 +130,14 @@ events:
         \ werden.\n\nAUFGABE: Errichtet einen Marktplatz."]
     type: logbook_w
   - arguments: ['', "Lasst uns nun einen genaueren Blick auf den Marktplatz werfen.\n\
-        \nIm Tab '\xDCbersicht' k\xF6nnen die Steuern schnell angepasst werden.\n\n\
-        Im zweiten Tab 'Finanzen' erhaltet Ihr eine \xDCbersicht der Bilanz dieser\
-        \ Insel. Sie enth\xE4lt alle Betriebskosten, die Ihr zahlt, und alle eingenommenen\
+        \nIm Tab 'Finanzen' erhaltet Ihr eine \xDCbersicht der Bilanz dieser Insel.\
+        \ Sie enth\xE4lt alle Betriebskosten, die Ihr zahlt, und alle eingenommenen\
         \ Steuern.\n\nDie Posten 'Verkaufen' und 'Einkaufen' beziehen sich auf Eure\
         \ Handelsbilanz und werden sp\xE4ter ausf\xFChrlich erkl\xE4rt.\n\nF\xE4llt\
         \ die Bilanz positiv aus, macht Ihr auf dieser Insel Gewinn.\n\nIm 'Siedler'-Tab\
-        \ seht Ihr die Zufriedenheit Eurer Einwohner und auch, nach welchen Waren\
-        \ die meisten von ihnen gerade verlangen."]
+        \ seht Ihr Statistiken bez\xFCglich Eurer Einwohner. Der globale Steuersatz\
+        \ f\xFCr diese Siedlerstufe kann eingestellt werden, ebenso k\xF6nnt Ihr Euren\
+        \ Einwohnern erlauben oder verbieten, in die n\xE4chsth\xF6here Stufe auszusteigen."]
     type: logbook
   - arguments: ["Errichtet einen Marktplatz. W\xE4hlt eine Gegend ohne viele Wirtschaftsgeb\xE4\
         ude."]
@@ -288,14 +288,15 @@ events:
         tigt, da die 'gro\xDFe' Version auch die Bed\xFCrfnisse der Einwohner niedrigerer\
         \ Stufen befriedigt."]
     type: logbook_w
-  - arguments: ['', "Vorsicht bei der Stadtplanung! Die meisten dieser verbesserten\
-        \ Geb\xE4ude ben\xF6tigen mehr Platz als die Grundversion.\n\nBeachtet, dass\
-        \ die Religion wie ein Konsumgut behandelt wird. Eure Einwohner m\xFCssen\
-        \ also regelm\xE4\xDFig ihren Vorrat davon auff\xFCllen.\n\nEs ist insbesondere\
-        \ NICHT ausreichend, dass das Geb\xE4ude nur in einem gewissen Einzugsgebiet\
-        \ liegt. Auch ein Wege dorthin muss vom Zelt aus erreichbar sein.\n\nAUFGABE:\
-        \ Baut einen Pavillon mit einer Verbindung zu den Zelten, um Euren Einwohnern\
-        \ den Zugang zum Glauben zu erm\xF6glichen."]
+  - arguments: ['', "Beachtet, dass die Religion wie ein Konsumgut behandelt wird.\
+        \ Eure Einwohner m\xFCssen also regelm\xE4\xDFig ihren Vorrat davon auff\xFC\
+        llen.\n\nDazu ben\xF6tigen sie Zugang zu einem Geb\xE4ude, das Religion produziert\
+        \ (dem Pavillon) und werden dann regelm\xE4\xDFig Religion dort abholen und\
+        \ zuhause verbrauchen.\n\nEs ist insbesondere NICHT ausreichend, dass das\
+        \ Geb\xE4ude nur in einem gewissen Einzugsgebiet liegt. Auch ein Weg dorthin\
+        \ muss vom Zelt aus erreichbar sein.\n\nAUFGABE: Baut einen Pavillon mit einer\
+        \ Verbindung zu den Zelten, um Euren Einwohnern den Zugang zum Glauben zu\
+        \ erm\xF6glichen."]
     type: logbook
   - arguments: [!!python/unicode 'Errichtet einen Pavillon mit einer Verbindung zu
         Euren Zelten.']

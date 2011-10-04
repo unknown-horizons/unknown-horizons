@@ -138,14 +138,23 @@ events:
         \ koska telttojen rakentaminen raivaa puut, joita puunhakkaajasi tarvitsee\
         \ rakentaakseen lautoja.\n\nTEHT\xC4V\xC4: Rakenna keskustori."]
     type: logbook_w
-  - arguments: ['', "Katsotaanpa tarkemmin keskustoria.\n\nYleiskatsaus-v\xE4lilehdell\xE4\
-        \ voit nopeasti s\xE4\xE4t\xE4\xE4 veroja.\n\nSeuraavalla eli 'Tili'-v\xE4\
-        lilehdell\xE4 saat saaren tasapainolaskelman, jossa n\xE4kyy kaikki maksamasi\
-        \ kustannukset ja tienaamasi verot.\n\nKohdat 'Myynti' ja 'Osto' viittaavat\
-        \ kaupank\xE4yntitasapainoosi ja ne tullaan selitt\xE4m\xE4\xE4n my\xF6hemmin.\n\
-        \nJos tasapainosi on positiivisella, bisneksesi kokonaisuutena tekee voittoa.\n\
-        \n'Uudisasukas'-v\xE4lilehdess\xE4 n\xE4et, kuinka onnellisia asukkaasi ovat\
-        \ ja mit\xE4 tarviketta suurin osa heist\xE4 haluaisi."]
+  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
+
+
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
+
+
+        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
+        later on.
+
+
+        If your balance is positive, you all-in-all make a profit.
+
+
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
     type: logbook
   - arguments: [!!python/unicode 'Rakenna keskustori. Valitse alue, jolla ei ole liian
         montaa tuotantorakennusta.']
@@ -313,15 +322,26 @@ events:
         \ niihin.\n\nMy\xF6hemmill\xE4 tasoilla, p\xE4ivitettyj\xE4 versioita rakennuksista\
         \ saattaa tulla tarjolle."]
     type: logbook_w
-  - arguments: ['', "Siin\xE4 tapauksessa 'pient\xE4' versiota ei tarvita en\xE4\xE4\
-        , sill\xE4 'iso' tulee my\xF6s tarjoamaan, mit\xE4 asukkaasi tarvitsevat ensimm\xE4\
-        isill\xE4 tasoilla.\n\nOle huolellinen suunnitellessasi kaupunkiasi, sill\xE4\
-        \ suurin osa sellaisista kehittyneist\xE4 rakennuksista on isompia kuin tavalliset.\n\
-        \nHuomioi, ett\xE4 uskoa kohdellaan kuin fyysist\xE4 resurssia, joten yksik\xF6\
-        iden t\xE4ytyy rentoutua siell\xE4 jonkin ajan kuluttua.\n\nT\xE4rke\xE4\xE4\
-        :\nEI riit\xE4, ett\xE4 rakennus on vain jossakin telttojen kantamassa.\n\n\
-        TEHT\xC4V\xC4: Rakenna kokoontumisteltta polkuineen telttoihin t\xE4ytt\xE4\
-        \xE4ksesi merenk\xE4vij\xF6idesi vaatimukset uskonnollisuudelle."]
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
+
+
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
+
+
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
+
+
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
     type: logbook
   - arguments: ["Rakenna kokoontumisteltta yhteydell\xE4 telttoihin."]
     type: message

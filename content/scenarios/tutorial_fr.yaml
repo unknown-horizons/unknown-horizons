@@ -10,8 +10,8 @@ description: "Didacticiel:\n\xC9tablissez votre premi\xE8re colonie et apprenez 
 difficulty: !!python/unicode 'Didacticiel'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: ["Construire un comptoir sur la c\xF4te, ainsi il sera facilement accessible\
+        \ aux autres navires comme ceux du Marchant Ind\xE9pendant."]
     type: message
   - arguments: [!!python/unicode 'Bienvenue dans Unknown Horizons !', "Voici votre\
         \ journal de bord o\xF9 sont enregistr\xE9es toutes les informations importantes.\
@@ -127,14 +127,23 @@ events:
         \ de ne pas placer vos tentes trop pr\xE8s de vos bucherons, cela d\xE9truirais\
         \ leurs pr\xE9cieux arbres.\n\nMISSION: Construire une place centrale."]
     type: logbook_w
-  - arguments: ['', "A pr\xE9sent, regardons la place centrale de plus pr\xE8s.\n\n\
-        Dans sa fen\xEAtre, vous pouvez rapidement ajuster les taxes.\n\nDans le second\
-        \ onglet \xABCompte\xBB, vous voyez votre bilan financier comprenant vos achats\
-        \ et les taxes que vous pr\xE9levez.\n\nLes parties \xABVente\xBB et \xAB\
-        Achat\xBB renvoient \xE0 votre balance commerciale et seront expliqu\xE9es\
-        \ plus tard.\n\nSi votre bilan est positif, vous faites du profit.\n\nDans\
-        \ l'onglet \xABColons\xBB vous pouvez voir le niveau de satisfaction des habitants\
-        \ et les ressources qui manquent \xE0 la majorit\xE9 d'entre eux."]
+  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
+
+
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
+
+
+        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
+        later on.
+
+
+        If your balance is positive, you all-in-all make a profit.
+
+
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
     type: logbook
   - arguments: ["Construisez une place centrale. Choisissez un endroit peu charg\xE9\
         \ en b\xE2timents \xE9conomiques."]
@@ -305,15 +314,26 @@ events:
         \ atteindre.\n\nDans les niveaux suivants, des versions am\xE9lior\xE9es des\
         \ b\xE2timents seront disponibles."]
     type: logbook_w
-  - arguments: ['', "Dans ce cas la \xABpetite\xBB version n'est plus n\xE9cessaire\
-        \ puisque la \xABgrande\xBB fournira aussi ce que vos habitants recherchent\
-        \ dans les niveaux pr\xE9c\xE9dents.\n\nFaites attention en construisant votre\
-        \ ville parce que la plupart des b\xE2timents avanc\xE9s sont plus grands\
-        \ que les b\xE2timents de base.\n\nNotez que la foi est trait\xE9e comme une\
-        \ ressource physique, donc vos habitants auront besoin de revenir l\xE0 apr\xE8\
-        s quelque temps.\n\nImportant:\nIl n'est pas suffisant que le b\xE2timent\
-        \ soit dans un p\xE9rim\xE8tre proche.\n\nMISSION: Construire un pavillon\
-        \ connect\xE9 aux tentes pour assouvir la demande religieuse de vos marins."]
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
+
+
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
+
+
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
+
+
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
     type: logbook
   - arguments: ["Construisez un pavillon connect\xE9 aux tentes."]
     type: message

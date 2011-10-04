@@ -42,3 +42,5 @@ class PlaySound(Command):
 			AmbientSoundComponent.play_special(self.sound)
 		else:
 			AmbientSoundComponent.play_special(self.sound, Point(self.position[0], self.position[1]))
+
+Command.allow_network(PlaySound)

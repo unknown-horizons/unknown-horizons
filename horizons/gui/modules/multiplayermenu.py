@@ -102,26 +102,29 @@ class MultiplayerMenu(object):
 			return False
 		return True
 
-
 	def __apply_new_nickname(self):
 		new_nick = self.current.playerdata.get_player_name()
-		try:
-			NetworkInterface().change_name(new_nick)
-		except Exception, err:
-			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
-			return
+		NetworkInterface().change_name(new_nick)
 
-
-	def __on_error(self, exception):
-		if self.session is not None:
+	def __on_error(self, exception, fatal=True):
+		"""Error callback"""
+		if fatal and self.session is not None:
 			self.session.timer.ticks_per_second = 0
-		self.show_popup( _("Network Error"), \
-		                 _("Something went wrong with the network:") + u' ' + \
-		                 str(exception) )
-		self.quit_session(force=True)
+		if self.dialog_executed:
+			# another message dialog is being executed, and we were called by that action.
+			# if we now trigger another message dialog, we will probably loop.
+			return
+		if not fatal:
+			self.show_popup(_("Error"), unicode(exception))
+		else:
+			self.show_popup(_("Fatal Network Error"), \
+		                 _("Something went wrong with the network:") + u'\n' + \
+		                 unicode(exception) )
+			self.quit_session(force=True)
 
 	def __cancel(self):
-		NetworkInterface().disconnect()
+		if NetworkInterface().isconnected():
+			NetworkInterface().disconnect()
 		self.show_main()
 
 	def __refresh(self):

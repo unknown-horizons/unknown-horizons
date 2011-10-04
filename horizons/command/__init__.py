@@ -22,9 +22,19 @@
 __all__ = ['building', 'unit', 'sounds']
 
 from horizons.util import WorldObject
+from horizons.network.packets import SafeUnpickler
 
 class Command(object):
 	"""Base class for every Command."""
+	@classmethod
+	def allow_network(self, klass):
+		"""
+		NOTE: this is a security related method and may lead to
+		execution of arbritary code if used in a wrong way
+		see documentation inside horizons.network.packets.SafeUnpickler
+		"""
+		SafeUnpickler.add('server', klass)
+
 	def execute(self, session, local = False):
 		"""Execute command.
 		@param session: Execute command on this session's manager.

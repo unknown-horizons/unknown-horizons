@@ -113,6 +113,7 @@ class BasicBuilding(ConcretObject):
 				self.running_costs_inactive, self.running_costs
 
 	def running_costs_active(self):
+		"""Returns whether the building currently payes the running costs for status 'active'"""
 		return (self.running_costs > self.running_costs_inactive)
 
 	def get_payout(self):

@@ -27,7 +27,7 @@ class cmd_session(packet):
 	def __init__(self, sid):
 		self.sid = sid
 
-packetlist.append(cmd_session)
+SafeUnpickler.add('server', cmd_session)
 
 #-------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ class data_gameslist(packet):
 		newgame.players = []
 		self.games.append(newgame)
 
-packetlist.append(data_gameslist)
+SafeUnpickler.add('server', data_gameslist)
 
 #-------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ class data_gamestate(packet):
 	def __init__(self, game):
 		self.game = game
 
-packetlist.append(data_gamestate)
+SafeUnpickler.add('server', data_gamestate)
 
 #-------------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ class cmd_chatmsg(packet):
 		self.playername = playername
 		self.chatmsg    = msg
 
-packetlist.append(cmd_chatmsg)
+SafeUnpickler.add('server', cmd_chatmsg)
 
 #-------------------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ class cmd_preparegame(packet):
 	def __init__(self):
 		"""prepare game packet"""
 
-packetlist.append(cmd_preparegame)
+SafeUnpickler.add('server', cmd_preparegame)
 
 #-------------------------------------------------------------------------------
 
@@ -73,5 +73,5 @@ class cmd_startgame(packet):
 	def __init__(self):
 		"""start game packet"""
 
-packetlist.append(cmd_startgame)
+SafeUnpickler.add('server', cmd_startgame)
 
