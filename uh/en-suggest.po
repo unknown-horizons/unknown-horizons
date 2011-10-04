@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-02 02:17+0200\n"
-"Last-Translator: Anonymous Pootle User\n"
+"PO-Revision-Date: 2011-10-04 03:04+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en-suggest\n"
 "MIME-Version: 1.0\n"
@@ -176,8 +176,9 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "One of your settler has no main square in its range."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -900,16 +901,19 @@ msgid "Version differs!"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:155
+#, fuzzy
 msgid "Map: "
-msgstr ""
+msgstr "Map:"
 
 #: horizons/gui/modules/multiplayermenu.py:156
+#, fuzzy
 msgid "Players: "
-msgstr ""
+msgstr "Players:"
 
 #: horizons/gui/modules/multiplayermenu.py:159
+#, fuzzy
 msgid "Creator: "
-msgstr ""
+msgstr "Creator:"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 #, python-format
@@ -922,26 +926,30 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
+#, fuzzy
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Recommended number of players:"
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
 #: horizons/gui/widgets/choose_next_scenario.py:43
+#, fuzzy
 msgid "Difficulty: "
-msgstr ""
+msgstr "Difficulty:"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:115
 #: horizons/gui/widgets/choose_next_scenario.py:44
+#, fuzzy
 msgid "Author: "
-msgstr ""
+msgstr "Author:"
 
 #: horizons/gui/modules/singleplayermenu.py:104
 #: horizons/gui/modules/singleplayermenu.py:116
 #: horizons/gui/widgets/choose_next_scenario.py:45
+#, fuzzy
 msgid "Description: "
-msgstr ""
+msgstr "Description:"
 
 #: horizons/gui/modules/singleplayermenu.py:135
 msgid "Invalid player name"
@@ -1068,8 +1076,9 @@ msgid "Can't equip trade ship with weapons"
 msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:105
+#, fuzzy
 msgid "It is not possible to equip a trade ship with weapons"
-msgstr ""
+msgstr "It is not possible to equip a trade ship with weapons."
 
 #: horizons/gui/tabs/inventorytab.py:133
 msgid "Equip weapon"
@@ -1166,9 +1175,9 @@ msgstr ""
 
 #: horizons/gui/widgets/buysellinventory.py:82
 #: horizons/gui/widgets/inventory.py:102
-#, python-format
+#, python-format, fuzzy
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Limit: %(amount)st per slot"
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
@@ -1858,8 +1867,9 @@ msgstr ""
 
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:475
+#, fuzzy
 msgid "capacity utilization"
-msgstr ""
+msgstr "Capacity utilization"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:482
@@ -1965,8 +1975,9 @@ msgstr ""
 
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:596
+#, fuzzy
 msgid "Read prev. entries"
-msgstr ""
+msgstr "Read previous entries"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:598
@@ -2390,8 +2401,9 @@ msgstr ""
 
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:842
+#, fuzzy
 msgid "Show only games with the same version:"
-msgstr ""
+msgstr "Only show games with the same version:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:844
