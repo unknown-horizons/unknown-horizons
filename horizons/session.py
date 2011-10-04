@@ -240,7 +240,7 @@ class Session(LivingObject):
 		(horizons/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
 		"""
 
-	def speed_set(self, ticks):
+	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""
 		raise NotImplementedError
 
@@ -294,25 +294,25 @@ class Session(LivingObject):
 	_pause_stack = 0 # this saves the level of pausing
 	# e.g. if two dialogs are displayed, that pause the game,
 	# unpause needs to be called twice to unpause the game. cf. #876
-	def speed_pause(self):
+	def speed_pause(self, suggestion=False):
 		self.log.debug("Session: Pausing")
 		self._pause_stack += 1
 		if not self.speed_is_paused():
 			self.paused_ticks_per_second = self.timer.ticks_per_second
-			self.speed_set(0)
+			self.speed_set(0, suggestion)
 
-	def speed_unpause(self):
+	def speed_unpause(self, suggestion=False):
 		self.log.debug("Session: Unpausing")
 		if self.speed_is_paused():
 			self._pause_stack -= 1
 			if self._pause_stack == 0:
 				self.speed_set(self.paused_ticks_per_second)
 
-	def speed_toggle_pause(self):
+	def speed_toggle_pause(self, suggestion=False):
 		if self.speed_is_paused():
-			self.speed_unpause()
+			self.speed_unpause(suggestion)
 		else:
-			self.speed_pause()
+			self.speed_pause(suggestion)
 
 	def speed_is_paused(self):
 		return (self.timer.ticks_per_second == 0)

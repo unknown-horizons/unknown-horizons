@@ -69,7 +69,7 @@
 			-->
 			<HBox>
 				<Label name="game_showonlyownversion"  text="Show only games with the same version:" />
-				<CheckBox min_size="32,32"  name="showonlyownversion" />
+				<CheckBox min_size="32,32"  name="showonlyownversion" marked="1" />
 			</HBox>
 		</VBox>
 		

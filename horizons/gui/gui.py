@@ -65,6 +65,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.session = None
 		self.current_dialog = None
 
+		self.dialog_executed = False
+
 		self.__pause_displayed = False
 
 # basic menu widgets
@@ -88,11 +90,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		Show Pause menu
 		"""
+		# import here because we get a weird cycle otherwise
 		if self.__pause_displayed:
 			self.__pause_displayed = False
 			self.hide()
 			self.current = None
-			self.session.speed_unpause()
+			self.session.speed_unpause(True)
 			self.on_escape = self.toggle_pause
 
 		else:
@@ -121,7 +124,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.current.additional_widget.show()
 			self.current.show()
 
-			self.session.speed_pause()
+			self.session.speed_pause(True)
 			self.on_escape = self.toggle_pause
 
 # what happens on button clicks
@@ -316,7 +319,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 					dlg.hide()
 			dlg.capture(_escape, event_name="keyPressed")
+		self.dialog_executed = True
 		ret = dlg.execute(actions)
+		self.dialog_executed = False
 		return ret
 
 	def show_popup(self, windowtitle, message, show_cancel_button = False):

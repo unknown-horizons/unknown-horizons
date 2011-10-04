@@ -47,7 +47,7 @@ class Attack(GenericUnitCommand):
 	@param target: Instance of Target
 	"""
 	def __init__(self, unit, target):
-		super(Attack, self).__init__(unit, "user_attack", target)
+		super(Attack, self).__init__(unit, "user_attack", target.worldid)
 
 GenericCommand.allow_network(Attack)
 

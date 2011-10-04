@@ -256,6 +256,7 @@ class NetworkInterface(object):
 			while self._client.ping(): # ping receives packets
 				pass
 		except NetworkException, e:
+			self.log.debug("ping in receive_all failed: "+str(e))
 			self._handle_exception(e)
 			raise CommandError(e)
 		ret_list = self.received_packets

@@ -77,8 +77,6 @@ class IngameGui(LivingObject):
 		cityinfo.position_technique = "center-10:top+5"
 
 		self.logbook = LogBook(self.session)
-		self.logbook.add_pause_request_listener(Callback(self.session.speed_pause))
-		self.logbook.add_unpause_request_listener(Callback(self.session.speed_unpause))
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
@@ -446,7 +444,6 @@ class IngameGui(LivingObject):
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of a NamedObject.
 		The game gets paused while the dialog is executed."""
-		self.session.speed_pause()
 		events = {
 			'okButton': Callback(self.change_name, instance),
 			'cancelButton': self._hide_change_name_dialog
@@ -461,7 +458,6 @@ class IngameGui(LivingObject):
 
 	def _hide_change_name_dialog(self):
 		"""Escapes the change_name dialog"""
-		self.session.speed_unpause()
 		self.main_gui.on_escape = self.main_gui.toggle_pause
 		self.widgets['change_name'].hide()
 
