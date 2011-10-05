@@ -124,9 +124,10 @@ class SettlementFounder(object):
 		if self.owner.inventory[RES.GOLD_ID] < min_money:
 			return False
 
-		for res, amount in ship.inventory:
-			if res in min_resources and min_resources[res] > 0:
-				min_resources[res] = max(0, min_resources[res] - amount)
+		if ship is not None:
+			for res, amount in ship.inventory:
+				if res in min_resources and min_resources[res] > 0:
+					min_resources[res] = max(0, min_resources[res] - amount)
 
 		if settlement:
 			for res, amount in settlement.inventory:
@@ -165,10 +166,11 @@ class SettlementFounder(object):
 		ship = None
 		for possible_ship, state in self.owner.ships.iteritems():
 			if state is self.owner.shipStates.idle:
+				# TODO: make sure the ship is actually usable for founding a settlement
 				ship = possible_ship
 				break
-		if not ship:
-			#self.log.info('%s.tick: no available ships', self)
+		if ship is None and self.owner.ships:
+			#self.log.info('%s.tick: all ships are in use', self)
 			return
 
 		island = None
@@ -182,25 +184,37 @@ class SettlementFounder(object):
 
 		if self.owner.need_feeder_island:
 			if self.have_feeder_island_starting_resources(ship, None):
-				self.log.info('%s.tick: send %s on a mission to found a feeder settlement', self, ship)
-				self._found_settlement(island, ship, True)
+				if ship is None:
+					self.owner.request_ship()
+				else:
+					self.log.info('%s.tick: send %s on a mission to found a feeder settlement', self, ship)
+					self._found_settlement(island, ship, True)
 			else:
 				for settlement_manager in self.owner.settlement_managers:
 					if self.have_feeder_island_starting_resources(ship, settlement_manager.land_manager.settlement):
-						self.log.info('%s.tick: send ship %s on a mission to get resources for a new feeder settlement', self, ship)
-						self._prepare_foundation_ship(settlement_manager, ship, True)
+						if ship is None:
+							self.owner.request_ship()
+						else:
+							self.log.info('%s.tick: send ship %s on a mission to get resources for a new feeder settlement', self, ship)
+							self._prepare_foundation_ship(settlement_manager, ship, True)
 						return
 		elif self._want_another_village():
 			if self.have_starting_resources(ship, None):
-				self.log.info('%s.tick: send ship %s on a mission to found a settlement', self, ship)
-				self._found_settlement(island, ship, False)
+				if ship is None:
+					self.owner.request_ship()
+				else:
+					self.log.info('%s.tick: send ship %s on a mission to found a settlement', self, ship)
+					self._found_settlement(island, ship, False)
 			else:
 				for settlement_manager in self.owner.settlement_managers:
 					if not settlement_manager.can_provide_resources():
 						continue
 					if self.have_starting_resources(ship, settlement_manager.land_manager.settlement):
-						self.log.info('%s.tick: send ship %s on a mission to get resources for a new settlement', self, ship)
-						self._prepare_foundation_ship(settlement_manager, ship, False)
+						if ship is None:
+							self.owner.request_ship()
+						else:
+							self.log.info('%s.tick: send ship %s on a mission to get resources for a new settlement', self, ship)
+							self._prepare_foundation_ship(settlement_manager, ship, False)
 						return
 
 	def can_found_feeder_island(self):
