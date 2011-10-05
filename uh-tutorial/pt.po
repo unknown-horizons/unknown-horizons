@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-02 16:57+0200\n"
-"PO-Revision-Date: 2011-09-23 19:24+0200\n"
-"Last-Translator: Sérgio <knitter.is@gmail.com>\n"
+"PO-Revision-Date: 2011-10-05 14:20+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:14
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "NOVA TAREFA: ESTABELECER UMA POVOAÇÃO NUMA ILHA"
+msgstr "ESTABELECER UMA POVOAÇÃO"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -123,7 +123,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:18
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "NOVA TAREFA: ADICIONAR UM LENHADOR"
+msgstr "ADICIONAR UM LENHADOR"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
@@ -208,7 +208,7 @@ msgstr "Adiciona um lenhador e ligue-o à feitoria utilizando um caminho."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:26
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NOVA TAREFA: FORNECIMENTO DE COMIDA"
+msgstr "FORNECIMENTO DE COMIDA"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:28
@@ -341,9 +341,10 @@ msgstr ""
 "Se o saldo é positivo, no geral estás a ter lucro.\n"
 "\n"
 "Nos vários separadores de relatórios é possível ver estatísticas sobre os "
-"habitantes. É também o local onde se pode definir o valor dos impostos para "
-"determinado nível e permitir ou proibir o melhoramento dos habitantes para o "
-"nível seguinte."
+"habitantes.\n"
+"É também o local onde se pode definir o valor dos impostos para determinado "
+"nível e permitir ou proibir o melhoramento dos habitantes para o nível "
+"seguinte."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:40
@@ -416,7 +417,6 @@ msgstr ""
 "Caso contrário, a felicidade e as receitas diminuem. Passado algum tempo os "
 "residentes podem ficar muito desapontados e simplesmente abandonar a aldeia "
 "deixando para trás um conjunto de ruínas em decadência.\n"
-"\n"
 "Nota que é também aqui que podes mudar as definições globais dos impostos.\n"
 "\n"
 "TAREFA: Constrói, pelo menos, três tendas adicionais.\n"
@@ -433,7 +433,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:52
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "NOVA TAREFA: CONSTRUIR O SINAL DE FOGO"
+msgstr "NOVA TAREFA: O SINAL DE FOGO"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -508,7 +508,7 @@ msgstr "Constrói um sinal de fogo na costa próximo da feitoria."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:60
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "NOVA TAREFA: APRENDE A EFECTUAR TROCAS COMERCIAS"
+msgstr "APRENDE A EFECTUAR TROCAS COMERCIAS"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
@@ -570,10 +570,8 @@ msgstr ""
 "O Unknown Horizons possui uma funcionalidade de ajude inteligente de preços, "
 "dessa forma o valor unitário de uma mercadoria pode variar.\n"
 "Não é possível definir o preço manualmente!\n"
-"\n"
 "Podes ver um saldo das tuas trocas comerciais no separador 'Conta' "
 "comparando os valores nas secções de 'Comprar' e 'Vender'.\n"
-"\n"
 "TAREFA: Compra quantas ferramentas forem necessárias para teres em stock 30 "
 "ferramentas!"
 
@@ -585,7 +583,7 @@ msgstr "Atinge o limite de, pelo menos, 30 ferramentas em stock na ilha."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:68
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "NOVA TAREFA: CONSTRÓI UM PAVILHÃO"
+msgstr "CONSTRÓI UM PAVILHÃO"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:70
@@ -880,7 +878,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:100
 msgid "NEW TASK: BUILD STORAGE"
-msgstr "NOVA TAREFA: CONSTRÓI UM ARMAZÉM"
+msgstr "NOVA TAREFA: UM ARMAZÉM"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:102
