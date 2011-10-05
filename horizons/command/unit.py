@@ -22,12 +22,18 @@
 from horizons.entities import Entities
 from horizons.util import WorldObject
 from horizons.command import GenericCommand, Command
+from horizons.util.worldobject import WorldObjectNotFound
 
 class GenericUnitCommand(GenericCommand):
 	"""Same as GenericCommand, but checks if issuer == owner in __call__"""
 	def __call__(self, issuer):
-		if self._get_object().owner.worldid != issuer.worldid:
+		try:
+			unit = self._get_object()
+		except WorldObjectNotFound, e:
+			self.log.warn("Tried to call a unit command on an inexistent unit. It could have been killed: "+e)
 			return
+		if unit.owner.worldid != issuer.worldid:
+			return # don't move enemy units
 		else:
 			return super(GenericUnitCommand, self).__call__(issuer)
 

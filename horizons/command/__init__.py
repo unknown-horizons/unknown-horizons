@@ -21,11 +21,14 @@
 
 __all__ = ['building', 'unit', 'sounds']
 
+import logging
+
 from horizons.util import WorldObject
 from horizons.network.packets import SafeUnpickler
 
 class Command(object):
 	"""Base class for every Command."""
+	log = logging.getLogger("command")
 	@classmethod
 	def allow_network(self, klass):
 		"""
