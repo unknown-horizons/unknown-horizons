@@ -55,6 +55,10 @@ class Modules(object):
 	session = None
 _modules = Modules()
 
+# used to save a reference to the string previewer to ensure it is not removed by
+# garbage collection
+__string_previewer = None
+
 def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
@@ -158,7 +162,8 @@ def start(command_line_arguments):
 	elif command_line_arguments.stringpreview:
 		startup_worked = _start_map("development_no_trees", 0, False)
 		from development.stringpreviewwidget import StringPreviewWidget
-		StringPreviewWidget(_modules.session).show()
+		__string_previewer = StringPreviewWidget(_modules.session)
+		__string_previewer.show()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
 		preloading[0].start()
