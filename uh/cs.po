@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-09-22 12:57+0200\n"
+"PO-Revision-Date: 2011-09-22 12:58+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -385,10 +385,12 @@ msgstr ""
 msgid "cannon"
 msgstr "dělo"
 
+# 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "cattle"
-msgstr ""
+msgstr "Dobytek"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -803,14 +805,17 @@ msgstr "Detaily:"
 msgid "Error:"
 msgstr "Chyba:"
 
+# 94%
 #: horizons/gui/gui.py:426
+#, fuzzy
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Neznáme datum uložení\n"
 
+# 91%
 #: horizons/gui/gui.py:428
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at %s"
-msgstr ""
+msgstr "Uloženo v %s\n"
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -1119,18 +1124,22 @@ msgstr ""
 msgid "Sailors"
 msgstr ""
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:240
 #: horizons/i18n/guitranslations.py:348
+#, fuzzy
 msgid "Pioneers"
-msgstr ""
+msgstr "průzkumník"
 
+# 75%
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:408 horizons/i18n/guitranslations.py:646
+#, fuzzy
 msgid "Settlers"
-msgstr ""
+msgstr "osadník"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:49 horizons/gui/tabs/overviewtab.py:407
@@ -2563,20 +2572,24 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
+# 84%
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:915
+#, fuzzy
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Obnovit původní nastavení"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:920
 msgid "Enter filename:"
 msgstr ""
 
+# 76%
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:924
+#, fuzzy
 msgid "Your saved games:"
-msgstr ""
+msgstr "Žádné uložené hry"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: okay)
@@ -2771,9 +2784,11 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
+# 75%
 #: horizons/spsession.py:122
+#, fuzzy
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Nepodařilo se uložit."
 
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
