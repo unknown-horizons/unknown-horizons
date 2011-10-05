@@ -31,6 +31,7 @@ class StringPreviewWidget(object):
 	its strings in a logbook"""
 	def __init__(self, session):
 		self._init_gui(session)
+		session.speed_pause()
 
 	def show(self):
 		self._gui.show()

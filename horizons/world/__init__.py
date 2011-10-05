@@ -166,7 +166,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.islands.append(island)
 
 		#calculate map dimensions
-		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
+		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
 		for i in self.islands:
 			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
 			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
