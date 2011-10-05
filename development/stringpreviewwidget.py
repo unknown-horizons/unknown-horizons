@@ -68,7 +68,10 @@ class StringPreviewWidget(object):
 						msg = action['arguments'][1]
 						self.logbook.add_entry(unicode(head), unicode(msg), show_logbook=False)
 
-			self.logbook.set_cur_entry(cur_entry)
+			try:
+				self.logbook.set_cur_entry(cur_entry)
+			except ValueError:
+				pass # no entries
 			self.logbook._redraw()
 			self.logbook.show()
 
