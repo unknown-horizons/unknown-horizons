@@ -67,6 +67,7 @@ class Unit(AmbientSound, MovingObject):
 			self.owner.remove_unit(self)
 		self._instance.removeActionListener(self.InstanceActionListener)
 		super(Unit, self).remove()
+		self.log.debug("Unit.remove finished")
 
 	def onInstanceActionFinished(self, instance, action):
 		"""

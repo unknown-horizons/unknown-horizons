@@ -55,6 +55,10 @@ class Modules(object):
 	session = None
 _modules = Modules()
 
+# used to save a reference to the string previewer to ensure it is not removed by
+# garbage collection
+__string_previewer = None
+
 def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
@@ -156,9 +160,10 @@ def start(command_line_arguments):
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
 	elif command_line_arguments.stringpreview:
-		startup_worked = _start_map("development_no_trees", 0, False)
+		startup_worked = _start_map(PATHS.SAVEGAME_TEMPLATE, ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False)
 		from development.stringpreviewwidget import StringPreviewWidget
-		StringPreviewWidget(_modules.session).show()
+		__string_previewer = StringPreviewWidget(_modules.session)
+		__string_previewer.show()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
 		preloading[0].start()
@@ -278,7 +283,8 @@ def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natu
 def start_multiplayer(game):
 	_modules.session.start()
 
-def load_game(ai_players=0, human_ai=False, savegame = None, is_scenario = False, campaign = None):
+def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, campaign=None,
+              pirate_enabled=True, trader_enabled=True):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
@@ -287,7 +293,7 @@ def load_game(ai_players=0, human_ai=False, savegame = None, is_scenario = False
 	_modules.gui.show_loading_screen()
 #TODO
 	start_singleplayer(savegame, is_scenario = is_scenario, campaign = campaign, \
-		ai_players=ai_players, human_ai=human_ai)
+		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled, trader_enabled=trader_enabled)
 
 
 def _init_gettext(fife):
@@ -306,7 +312,7 @@ def _start_dev_map(ai_players, human_ai):
 	load_game(ai_players, human_ai, first_map)
 	return True
 
-def _start_map(map_name, ai_players, human_ai, is_scenario = False, campaign = None):
+def _start_map(map_name, ai_players, human_ai, is_scenario=False, campaign=None, pirate_enabled=True, trader_enabled=True):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
@@ -337,7 +343,8 @@ def _start_map(map_name, ai_players, human_ai, is_scenario = False, campaign = N
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
-	load_game(ai_players, human_ai, map_file, is_scenario, campaign = campaign)
+	load_game(ai_players, human_ai, map_file, is_scenario, campaign=campaign,
+	          trader_enabled=trader_enabled, pirate_enabled=pirate_enabled)
 	return True
 
 def _start_random_map(ai_players, human_ai, seed = None):

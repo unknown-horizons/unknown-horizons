@@ -56,7 +56,7 @@ class PrepareFoundationShip(ShipMission):
 		self.settlement_manager = WorldObject.get_object_by_id(db_result[0])
 		self.branch_office = self.settlement_manager.settlement.branch_office
 		self.feeder_island = db_result[2]
-		self.state = self.missionStates[db_result[2]]
+		self.state = self.missionStates[db_result[3]]
 		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback, \
 			WorldObject.get_object_by_id(db_result[1]))
 
