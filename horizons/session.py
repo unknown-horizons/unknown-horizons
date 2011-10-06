@@ -34,6 +34,7 @@ from horizons.gui.mousetools import TearingTool
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.view import View
+from horizons.gui import Gui
 from horizons.world import World
 from horizons.entities import Entities
 from horizons.util import WorldObject, NamedObject, LivingObject, livingProperty, SavegameAccessor
@@ -75,6 +76,7 @@ class Session(LivingObject):
 
 	def __init__(self, gui, db, rng_seed=None):
 		super(Session, self).__init__()
+		assert isinstance(gui, Gui)
 		self.log.debug("Initing session")
 		self.gui = gui # main gui, not ingame gui
 		self.db = db # main db for game data (game.sqlite)

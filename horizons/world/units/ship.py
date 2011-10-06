@@ -284,6 +284,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 	is_ship = True
 	is_selectable = True
 
+	has_health = True
+
 	in_ship_map = True # (#1023)
 
 	def __init__(self, x, y, **kwargs):
@@ -307,7 +309,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def __init(self):
 		self._selected = False
 		# register ship in world
-		self.add_component('health', HealthComponent)
+		if self.__class__.has_health:
+			self.add_component('health', HealthComponent)
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -487,10 +490,10 @@ class TradeShip(Ship):
 	tabs = ()
 	enemy_tabs = (TraderShipOverviewTab, )
 	health_bar_y = -220
+	has_health = False
 
 	def __init__(self, x, y, **kwargs):
 		super(TradeShip, self).__init__(x, y, **kwargs)
-		self.remove_component('health')
 
 	def _possible_names(self):
 		return [ _(u'Trader') ]
@@ -501,6 +504,8 @@ class FisherShip(FisherShipCollector, Ship):
 	pather_class = FisherShipPather
 	health_bar_y = -50
 	is_selectable = False
+
+	has_health = False
 
 	in_ship_map = False # (#1023)
 

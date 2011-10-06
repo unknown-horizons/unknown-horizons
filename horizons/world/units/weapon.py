@@ -92,7 +92,6 @@ class Weapon(object):
 		units = session.world.get_health_instances(position, attack_radius)
 
 		for unit in units:
-			cls.log.debug("dealing damage to %s", unit)
 			unit.get_component('health').deal_damage(weapon_id, damage)
 
 	def make_attack_ready(self):
@@ -128,7 +127,7 @@ class Weapon(object):
 				Callback(Bullet, self.bullet_image, position, destination, impact_ticks - bullet_delay, self.session),
 				self,
 				run_in = bullet_delay)
-		self.log.debug("fired %s", self)
+		self.log.debug("fired %s at %s, impact in %s", self, destination, impact_ticks - bullet_delay)
 
 		self.attack_ready = False
 		self.on_weapon_fired()

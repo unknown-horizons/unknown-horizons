@@ -63,7 +63,7 @@ class Scheduler(LivingObject):
 
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
-			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.schedule[self.cur_tick])
+			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, [unicode(i) for i in  self.schedule[self.cur_tick]])
 
 			# use iteration method that works in case the list is altered during iteration
 			# this can happen for e.g. rem_all_classinst_calls
@@ -223,4 +223,4 @@ class CallbackObject(object):
 		self.class_instance = class_instance
 
 	def __str__(self):
-		return "Callback(%s on %s)" % (self.callback, self.class_instance)
+		return "SchedCallback(%s on %s)" % (self.callback, self.class_instance)

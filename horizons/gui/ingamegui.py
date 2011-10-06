@@ -63,7 +63,6 @@ class IngameGui(LivingObject):
 		self.session = session
 		self.main_gui = gui
 		self.main_widget = None
-		self.widgets = {}
 		self.tabwidgets = {}
 		self.settlement = None
 		self.resource_source = None

@@ -337,6 +337,8 @@ class SingleResourceTradeManager(WorldObject):
 			self.quotas[quota_holder] += change
 
 	def __str__(self):
+		if not hasattr(self, "resource_id"):
+			return "UninitializedSingleResourceTradeManager"
 		result = 'Resource %d import %.5f/%.5f' % (self.resource_id, self.available, self.total)
 		for quota_holder, quota in self.quotas.iteritems():
 			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)
