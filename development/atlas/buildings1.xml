@@ -1,0 +1,48 @@
+<?fife type="atlas"?>
+<atlas name="buildings1.png" namespace="buildings1" width="1016" height="968">
+	<image source="content/gfx/buildings/settlers/salt_ponds/as_saltponds0/idle/135/0.png" xpos="0" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/settlers/salt_ponds/as_saltponds0/idle/225/0.png" xpos="192" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/settlers/salt_ponds/as_saltponds0/idle/315/0.png" xpos="384" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/settlers/salt_ponds/as_saltponds0/idle/45/0.png" xpos="576" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle/135/0.png" xpos="768" ypos="0" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle/225/0.png" xpos="768" ypos="108" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle/315/0.png" xpos="0" ypos="192" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle/45/0.png" xpos="158" ypos="192" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle_full/135/0.png" xpos="316" ypos="192" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle_full/225/0.png" xpos="474" ypos="192" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle_full/315/0.png" xpos="632" ypos="216" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle_full/45/0.png" xpos="790" ypos="216" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/135/0.png" xpos="0" ypos="300" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/135/1.png" xpos="158" ypos="300" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/135/2.png" xpos="316" ypos="300" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/135/3.png" xpos="474" ypos="300" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/135/4.png" xpos="632" ypos="324" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/135/5.png" xpos="790" ypos="324" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/135/6.png" xpos="0" ypos="408" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/225/0.png" xpos="158" ypos="408" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/225/1.png" xpos="316" ypos="408" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/225/2.png" xpos="474" ypos="408" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/225/3.png" xpos="632" ypos="432" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/225/4.png" xpos="790" ypos="432" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/225/5.png" xpos="0" ypos="516" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/225/6.png" xpos="158" ypos="516" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/315/0.png" xpos="316" ypos="516" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/315/1.png" xpos="474" ypos="516" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/315/2.png" xpos="632" ypos="540" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/315/3.png" xpos="790" ypos="540" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/315/4.png" xpos="0" ypos="624" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/315/5.png" xpos="158" ypos="624" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/315/6.png" xpos="316" ypos="624" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/45/0.png" xpos="474" ypos="624" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/45/1.png" xpos="632" ypos="648" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/45/2.png" xpos="790" ypos="648" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/45/3.png" xpos="0" ypos="732" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/45/4.png" xpos="158" ypos="732" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/45/5.png" xpos="316" ypos="732" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/work/45/6.png" xpos="474" ypos="732" width="158" height="108"/>
+	<image source="content/gfx/buildings/settlers/butchery/as_butchery0/idle/135/0.png" xpos="632" ypos="756" width="128" height="128"/>
+	<image source="content/gfx/buildings/settlers/butchery/as_butchery0/idle/225/0.png" xpos="760" ypos="756" width="128" height="128"/>
+	<image source="content/gfx/buildings/settlers/butchery/as_butchery0/idle/315/0.png" xpos="888" ypos="756" width="128" height="128"/>
+	<image source="content/gfx/buildings/settlers/butchery/as_butchery0/idle/45/0.png" xpos="0" ypos="840" width="128" height="128"/>
+</atlas>
+

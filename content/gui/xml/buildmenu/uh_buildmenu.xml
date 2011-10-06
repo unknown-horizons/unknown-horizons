@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Container size="250,500" opaque="0" position="200,200">
+<Icon image="gui/backgrounds/main_bg_top.png" position="0,0" />
+<Icon image="gui/backgrounds/main_bg_fill.png" position="0,50" />
+<Icon image="gui/backgrounds/main_bg_fill.png" position="0,100" />
+<Icon image="gui/backgrounds/main_bg_fill.png" position="0,150" />
+<Icon image="gui/backgrounds/main_bg_fill.png" position="0,200" />
+<Icon image="gui/backgrounds/main_bg_fill.png" position="0,250" />
+<Icon image="gui/backgrounds/main_bg_fill.png" position="0,300" />
+<Icon image="gui/backgrounds/main_bg_fill.png" position="0,350" />
+<Icon image="gui/backgrounds/main_bg_bottom.png" position="0,400" />
+
+	<!-- 5px padding -->
+	<Container name="build_view" size="240,490" position="5,5" opaque="0">
+		<VBox position="15,60" opaque="0" background_color="0,0,0,0">
+			<Label name="groupname" />
+			<Icon image="gui/icons/hr.png" />
+			<ScrollArea
+				position="0,0"
+				size="220,410"
+				min_size="220,410"
+				max_size="220,410"
+				border_size="0"
+				vertical_scrollbar="1"
+				horizontal_scrollbar="0"
+				background_color="0,0,0,0"		
+			>
+				<VBox name="wrapper" padding="4" opaque="0">
+				
+				</VBox>		
+			</ScrollArea>
+		</VBox>			
+
+		<Button name="closeButton" text="Close"/>
+	</Container>
+
+
+</Container>
