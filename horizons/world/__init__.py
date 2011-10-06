@@ -815,6 +815,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		dict = {
 			'rngvalue': self.session.random.random(),
 			'settlements': [],
+			'ships': [],
 		}
 		for island in self.islands:
 			for settlement in island.settlements:
@@ -827,6 +828,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					'inventory': str(settlement.inventory._storage),
 				}
 				dict['settlements'].append(entry)
+		for ship in self.ships:
+			entry = {
+				'owner': str(ship.owner.worldid),
+				'position': ship.position.to_tuple(),
+			}
+			dict['ships'].append(entry)
 		return dict
 
 	def notify_new_settlement(self):
