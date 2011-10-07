@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-08-01 15:56+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-10-07 17:35+0200\n"
+"Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} in ${player2} sta zdaj ${status}"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -36,7 +36,7 @@ msgstr "Ustvarjen je bil nov svet."
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr ""
+msgstr "Divja svinja"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -56,17 +56,17 @@ msgstr "Opekarna"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "Klavnica"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Cattle"
-msgstr ""
+msgstr "Živina"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Cattle Run"
-msgstr ""
+msgstr "Ograda za živino"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -96,7 +96,7 @@ msgstr "Destilarna"
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "Zdravnik"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -122,23 +122,23 @@ msgstr "Ribičev šotor"
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr ""
+msgstr "Fregata"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Gravel Path"
-msgstr ""
+msgstr "Kamnita pot"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Herbary"
-msgstr ""
+msgstr "Zeliščnica"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:267 sql
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -178,9 +178,8 @@ msgstr "Gora"
 # 85%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr "Eden od vaših naseljencev v svojem dosegu nima tržnice."
+msgstr "Eden od vaših naseljencev v svojem dosegu nima glavnega trga."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -195,7 +194,7 @@ msgstr "Paviljon"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr ""
+msgstr "Svinjak"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -215,7 +214,7 @@ msgstr "Obzidje"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Soline"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -265,19 +264,18 @@ msgstr "Šotor"
 # 77%
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Razviline_šotora"
+msgstr "Razviline šotora"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Polje tobaka"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr ""
+msgstr "Pridelovalec tobaka"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -313,17 +311,17 @@ msgstr "Predilčev šotor"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Lesen stolp"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Povlečete lahko tudi poti."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
+msgstr "Dosegli ste zadnjo stopnjo. Vaši naseljenci se ne bodo več nadgradili."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -353,12 +351,12 @@ msgstr "Vaši naseljenci so dosegli nivo ${level}."
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr ""
+msgstr "želodi"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokrat"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -378,7 +376,7 @@ msgstr "deske"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr ""
+msgstr "bordo"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -388,17 +386,17 @@ msgstr "opeke"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "top"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "živina"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "živina za zakol"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -408,7 +406,7 @@ msgstr "oglje"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr ""
+msgstr "državljan"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -418,9 +416,8 @@ msgstr "glina"
 # 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "clay deposit"
-msgstr "Nahajališče gline"
+msgstr "nahajališče gline"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -440,17 +437,17 @@ msgstr "sinja"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "bodalo"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr ""
+msgstr "hrana za srne A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "srnino meso"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -485,7 +482,7 @@ msgstr "trava"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "siva"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -500,12 +497,12 @@ msgstr "zadovoljstvo"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "zelišča"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "nahajališče železa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -525,7 +522,7 @@ msgstr "ovčja volna"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "limona"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -535,27 +532,27 @@ msgstr "žganje"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "zdravilna zelišča"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "merchant"
-msgstr ""
+msgstr "trgovec"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "oranžna"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "prašiči"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "prašiči za zakol"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -575,7 +572,7 @@ msgstr "krompirji"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr ""
+msgstr "vijolična"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -590,7 +587,7 @@ msgstr "mornar"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "sol"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -605,12 +602,12 @@ msgstr "sladkor"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "sladkorna palica"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr ""
+msgstr "modro zelena"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -620,17 +617,17 @@ msgstr "blago"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "listi tobaka"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "rastline tobaka"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "tobaki"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -667,15 +664,15 @@ msgstr "Nekatere od vaših sprememb zahtevajo ponoven zagon Unknown Horizons."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Obnovi privzete nastavitve"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "To bo izbrisalo vse spremembe, ki ste jih naredili do sedaj."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Ali želite nadaljevati?"
 
 #: horizons/engine.py:189
 msgid "System default"
@@ -812,23 +809,25 @@ msgstr "Podrobnosti:"
 msgid "Error:"
 msgstr "Napaka:"
 
+# 94%
 #: horizons/gui/gui.py:426
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Neznani shranjeni podatki"
 
+# 91%
 #: horizons/gui/gui.py:428
 #, python-format
 msgid "Saved at %s"
-msgstr ""
+msgstr "Shranjeno v %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
 msgid "Saved %(amount)d time"
 msgid_plural "Saved %(amount)d times"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Shranjeno %(amount)d krat"
+msgstr[1] "Shranjeno %(amount)d krat"
+msgstr[2] "Shranjeno %(amount)d krat"
+msgstr[3] "Shranjeno %(amount)d krat"
 
 #: horizons/gui/gui.py:441
 #, python-format
@@ -875,7 +874,7 @@ msgstr "Izbris shranjene igre je spodletel!"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Ni mogoče najti pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
