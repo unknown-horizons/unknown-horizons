@@ -96,7 +96,7 @@ class Build(Command):
 			  Entities.buildings[self.building_class].get_prebuild_data(session, Point(self.x, self.y)) \
 			  )
 
-		for worldid in self.tearset:
+		for worldid in sorted(self.tearset): # make sure iteration is the same order everywhere
 			try:
 				obj = WorldObject.get_object_by_id(worldid)
 				Tear(obj)(issuer=None) # execute right now, not via manager
