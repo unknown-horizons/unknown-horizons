@@ -320,7 +320,7 @@ class SelectableBuilding(object):
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
 								         self.selection_color[2], 1)
 		if reset_cam:
-			self.session.view.set_location(self.position.origin.to_tuple())
+			self.session.view.center(*self.position.origin.to_tuple())
 		self._do_select(renderer, self.position, self.session.world, self.settlement)
 
 	def deselect(self):

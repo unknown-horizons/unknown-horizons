@@ -365,7 +365,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 		self.draw_health()
 		if reset_cam:
-			self.session.view.set_location(self.position.to_tuple())
+			self.session.view.center(*self.position.to_tuple())
 		self.session.view.add_change_listener(self.draw_health)
 
 	def deselect(self):
