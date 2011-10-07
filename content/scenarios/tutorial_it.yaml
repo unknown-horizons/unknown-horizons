@@ -128,16 +128,15 @@ events:
         \ perch\xE9 la costruzione di tende rimuover\xE0 gli alberi di cui il taglialegna\
         \ necessita per costruire le assi.\n\nOBIETTIVO: Costruisci una piazza principale."]
     type: logbook_w
-  - arguments: ['', "Diamo ora uno sguardo pi\xF9 da vicino la piazza principale.\
-        \ \\ N\\ nNella scheda 'Account' si ottiene un bilancio di questa isola, con\
-        \ tutte le spese pagate e tutte le tasse che guadagni. \\ N\\ ngli elementi\
-        \ 'vendit\xE0' e 'Compra' consulta il saldo commerciale e sar\xE0 spiegato\
-        \ pi\xF9 avanti. \\ N\\ nSe il saldo \xE8 positivo, \xE8 tutti-in-tutti di\
-        \ realizzare un profitto. \\ N\\ nIn diverse schede  panoramica d'incremento\
-        \ \xE8 possibile visualizzare le statistiche sulla tua abitanti. \xC8 inoltre\
-        \ possibile impostare l'incremento di una specificha tassa globale e consentire\
-        \ o negare abitanti di questo incremento di passare a quella immediatamente\
-        \ superiore."]
+  - arguments: ['', "Diamo ora uno sguardo pi\xF9 da vicino la piazza principale.\n\
+        \nNella scheda 'Account' si ottiene un bilancio di questa isola, con tutte\
+        \ le spese pagate e tutte le tasse che guadagni.\n\ngli elementi 'vendit\xE0\
+        ' e 'Compra' consulta il saldo commerciale e sar\xE0 spiegato pi\xF9 avanti.\n\
+        \nSe il saldo \xE8 positivo, \xE8 tutti-in-tutti di realizzare un profitto.\n\
+        \nIn diverse schede  panoramica d'incremento \xE8 possibile visualizzare le\
+        \ statistiche sulla tua abitanti. \xC8 inoltre possibile impostare l'incremento\
+        \ di una specificha tassa globale e consentire o negare abitanti di questo\
+        \ incremento di passare a quella immediatamente superiore."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci una piazza principale. Scegli un''area
         senza troppi edifici commerciali.']
@@ -204,29 +203,28 @@ events:
 - actions:
   - arguments: [!!python/unicode 'OBIETTIVO: IL SEGNALE DI FUOCO', "Riesci a vedere\
         \ la nave di passaggio la tua isola di tanto in tanto? Quella nave appartiene\
-        \ alla Trader Libera, uno dei primi coloni in questo arcipelago. \\ N\\ nL'operatore\
+        \ alla Trader Libera, uno dei primi coloni in questo arcipelago.\n\nL'operatore\
         \ fornir\xE0 il vostro accordo con beni di prima necessit\xE0 che non si riesce\
-        \ a produrre ancora. \\ N\xC8 possibile anche vendere le eccedenze della vostra\
+        \ a produrre ancora.\n\xC8 possibile anche vendere le eccedenze della vostra\
         \ produzione, ma in generale consumano pi\xF9 loro (con la costruzione di\
-        \ pi\xF9 tende) anzich\xE9 che venderle e produrr\xE8 profitto. \\ N\\ nNormalmente\
+        \ pi\xF9 tende) anzich\xE9 che venderle e produrr\xE8 profitto.\n\nNormalmente\
         \ le navi commerciante solo navigare intorno e cercare occasioni, ma \xE8\
-        \ possibile accelerare le cose un po '. \\ N\\ nA tale scopo, creare un incendio\
+        \ possibile accelerare le cose un po '.\n\nA tale scopo, creare un incendio\
         \ segnale sulla costa vicino alla tua filiale. Mostrer\xE0 le navi la strada\
-        \ per il vostro insediamento. \\ N\\ nIl fuoco segnale deve coprire l'area\
-        \ che le navi passano per catturarli."]
+        \ per il vostro insediamento.\n\nIl fuoco segnale deve coprire l'area che\
+        \ le navi passano per catturarli."]
     type: logbook_w
   - arguments: ['', "Dopo questo annuncio poco, il commerciante sar\xE0 fermato a\
-        \ guardare la tua filiale se si prevede di navigare di passaggio. \\ N\\ nSi\
-        \ pu\xF2 proporre occasioni tramite 'Acquisto / Vendita' la scheda filiale.\
-        \ (Questa funzione \xE8 attualmente poco pratica da usare. Se si arriva con\
-        \ una bella soluzione di migliorarlo, vi preghiamo di condividere i tuoi pensieri!\
-        \ Abbiamo bisogno del vostro aiuto qui!) \\ N\\ nA incrementare il 'marinai',\
-        \ si sono dotate di tre slot trading. \\ N\\ nCliccare sulla piccola icona\
-        \ per cambiare la modalit\xE0 di slot da 'Buy' a 'Sell' e viceversa. \\ N\\\
-        \ nClicca nello slot di scegliere il bene che vogliono commerciare con. Ci\
-        \ illustrer\xE0 pi\xF9 dettagliatamente questa volta si \xE8 pronti al commercio.\
-        \ \\ N\\ nTASK: Costruire un incendio segnale sulla costa vicino al vostro\
-        \ filiale."]
+        \ guardare la tua filiale se si prevede di navigare di passaggio.\n\nSi pu\xF2\
+        \ proporre occasioni tramite 'Acquisto / Vendita' la scheda filiale. (Questa\
+        \ funzione \xE8 attualmente poco pratica da usare. Se si arriva con una bella\
+        \ soluzione di migliorarlo, vi preghiamo di condividere i tuoi pensieri! Abbiamo\
+        \ bisogno del vostro aiuto qui!)\n\nA incrementare il 'marinai', si sono dotate\
+        \ di tre slot trading.\n\nCliccare sulla piccola icona per cambiare la modalit\xE0\
+        \ di slot da 'Buy' a 'Sell' e viceversa.\n\nClicca nello slot di scegliere\
+        \ il bene che vogliono commerciare con. Ci illustrer\xE0 pi\xF9 dettagliatamente\
+        \ questa volta si \xE8 pronti al commercio.\n\nTASK: Costruire un incendio\
+        \ segnale sulla costa vicino al vostro filiale."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un segnale di fuoco sulla costa vicino
         alla tua filiale.']
@@ -261,7 +259,7 @@ events:
         \ del prezzo, in modo che il valore di una unit\xE0 pu\xF2 variare.\nNON \xE8\
         \ possibile cambiare manualmente i prezzi!\n\nPotete vedere il saldo commerciale\
         \ nella scheda 'Account' a confronto la 'Vendi' e 'Compra' valori l\xEC.\n\
-        \nTASK: Buy  come strumenti di cui hai bisogno di avere 30 utensili in magazzino!"]
+        \nTASK: Buy come strumenti di cui hai bisogno di avere 30 utensili in magazzino!"]
     type: logbook
   - arguments: [!!python/unicode 'Raggiungi una scorta per l''isola di almeno 30 attrezzi.']
     type: message

@@ -286,7 +286,7 @@ events:
         \ puolella valitaan 'tavoiteltu arvo', jolla on eri merkitys 'Ostossa' ja\
         \ 'Myynniss\xE4'.\nOstaessa, ostat riitt\xE4v\xE4sti s\xE4ilytt\xE4\xE4ksesi\
         \ 'tavoitellun arvon' varastossasi.\nMyydess\xE4 'tavoiteltu arvo' on lukum\xE4\
-        \xE4r\xE4, jonka haluat s\xE4ilytt\xE4\xE4 myym\xE4tt\xF6m\xE4n\xE4"]
+        \xE4r\xE4, jonka haluat s\xE4ilytt\xE4\xE4 myym\xE4tt\xF6m\xE4n\xE4."]
     type: logbook_w
   - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
         \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
