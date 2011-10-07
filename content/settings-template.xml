@@ -11,7 +11,7 @@
 		<Setting name="GLCompressImages" type="bool"> False </Setting>
 		<Setting name="WindowTitle" type="str"> Unknown Horizons Alpha </Setting>
 		<Setting name="WindowIcon" type="str">content/gui/images/logos/uh_32.png</Setting>
-		<Setting name="Font" type="str"> content/fonts/LinLibertine_Re-4.4.1.ttf </Setting>
+		<Setting name="Font" type="str"> content/fonts/LinLibertine.ttf </Setting>
 		<Setting name="FontGlyphs" strip="0" type="str"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`'*#=[]\"</Setting>
 		<Setting name="DefaultFontSize" type="int"> 15 </Setting>
 		<Setting name="LogModules" type="list"> controller ; audio ; vfs ; script ; loaders ; pool ; view ; video ; model ; metamodel ; event_channel ; xml </Setting>
