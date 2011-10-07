@@ -47,6 +47,7 @@ def log():
 	return logging.getLogger("run_uh")
 
 logfilename = None
+logfile = None
 
 def find_uh_position():
 	"""Returns path, where uh is located"""
@@ -153,7 +154,8 @@ def excepthook_creator(outfilename):
 	global logfile
 	global logfilename
 	def excepthook(exception_type, value, tb):
-		traceback.print_exception(exception_type, value, tb, file=logfile)
+		if logfile:
+			traceback.print_exception(exception_type, value, tb, file=logfile)
 		traceback.print_exception(exception_type, value, tb)
 		print
 		print _('Unknown Horizons crashed.')
@@ -162,7 +164,8 @@ def excepthook_creator(outfilename):
 		print _('In order to do this, we need the information from the logfile:')
 		print logfilename
 		print _('Please give it to us via IRC or our forum, for both see unknown-horizons.org .')
-		logfile.close()
+		if logfile:
+			logfile.close()
 	return excepthook
 
 def exithandler(signum, frame):
@@ -178,7 +181,8 @@ def exithandler(signum, frame):
 	print
 	print 'Oh my god! They killed UH.'
 	print 'You bastards!'
-	logfile.close()
+	if logfile:
+		logfile.close()
 	sys.exit(1)
 
 def main():
@@ -229,7 +233,8 @@ def main():
 								   outfilename)
 		print 'Program ended. Profiling output:', outfilename
 
-	logfile.close()
+	if logfile:
+		logfile.close()
 	if ret:
 		print _('Thank you for using Unknown Horizons!')
 
