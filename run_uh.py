@@ -40,6 +40,7 @@ import optparse
 import signal
 import traceback
 import platform
+import gzip
 
 def log():
 	"""Returns Logger"""
@@ -149,21 +150,24 @@ def excepthook_creator(outfilename):
 	The returned function does the same as the default, except it also prints the traceback
 	to a file.
 	@param outfilename: a filename to append traceback to"""
+	global logfile
+	global logfilename
 	def excepthook(exception_type, value, tb):
-		f = open(outfilename, 'a')
-		traceback.print_exception(exception_type, value, tb, file=f)
+		traceback.print_exception(exception_type, value, tb, file=logfile)
 		traceback.print_exception(exception_type, value, tb)
 		print
 		print _('Unknown Horizons crashed.')
 		print
 		print _('We are very sorry for this, and want to fix this error.')
 		print _('In order to do this, we need the information from the logfile:')
-		print outfilename
+		print logfilename
 		print _('Please give it to us via IRC or our forum, for both see unknown-horizons.org .')
+		logfile.close()
 	return excepthook
 
 def exithandler(signum, frame):
 	"""Handles a kill quietly"""
+	global logfile
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
 	try:
@@ -174,9 +178,11 @@ def exithandler(signum, frame):
 	print
 	print 'Oh my god! They killed UH.'
 	print 'You bastards!'
+	logfile.close()
 	sys.exit(1)
 
 def main():
+	global logfile
 	# abort silently on signal
 	signal.signal(signal.SIGINT, exithandler)
 	signal.signal(signal.SIGTERM, exithandler)
@@ -223,6 +229,7 @@ def main():
 								   outfilename)
 		print 'Program ended. Profiling output:', outfilename
 
+	logfile.close()
 	if ret:
 		print _('Thank you for using Unknown Horizons!')
 
@@ -232,6 +239,7 @@ def parse_args():
 	@returns option object from Parser
 	"""
 	global logfilename
+	global logfile
 	options = get_option_parser().parse_args()[0]
 
 	# apply options
@@ -250,14 +258,14 @@ def parse_args():
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log.gz" % \
 												         time.strftime("%y-%m-%d_%H-%M-%S"))
 		print 'Logging to %s' % logfilename
 		# create logfile
-		logfile = open(logfilename, 'w')
+		logfile = gzip.GzipFile(logfilename, 'w')
 		# log there
-		file_handler = logging.FileHandler(logfilename, 'a')
-		logging.getLogger().addHandler(file_handler)
+		file_handler = logging.StreamHandler( logfile )
+		logging.getLogger().addHandler( file_handler )
 		# log exceptions
 		sys.excepthook = excepthook_creator(logfilename)
 		# log any other stdout output there (this happens, when FIFE c++ code launches some
