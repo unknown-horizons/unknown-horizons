@@ -166,7 +166,8 @@ def start(command_line_arguments):
 		__string_previewer.show()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
-		preloading[0].start()
+		if not command_line_arguments.nopreload:
+			preloading[0].start()
 
 	if not startup_worked:
 		# don't start main loop if startup failed

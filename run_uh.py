@@ -135,6 +135,8 @@ def get_option_parser():
 				               help=_("Run the game for <max_ticks> ticks."))
 	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true", \
 				               default=False, help=_("Enable the string previewer tool for scenario writers"))
+	dev_group.add_option("--no-preload", dest="nopreload", action="store_true", \
+				               default=False, help=_("Disable preloading while in main menu"))
 	p.add_option_group(dev_group)
 
 	return p
