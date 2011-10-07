@@ -84,6 +84,7 @@ class AccountTab(MainSquareTab):
 		self.prod_overview.toggle_visibility()
 
 	def refresh(self):
+		super(AccountTab, self).refresh()
 		taxes = self.settlement.cumulative_taxes
 		running_costs = self.settlement.cumulative_running_costs
 		buy_expenses = self.settlement.buy_expenses
