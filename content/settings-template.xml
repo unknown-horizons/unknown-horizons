@@ -42,6 +42,6 @@
 		<Setting name="MapResourceDensity" type="float">2.0</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">5</Setting>
+		<Setting name="SettingsVersion" type="int">6</Setting>
 	</Module>
 </Settings>
