@@ -1259,7 +1259,7 @@ msgstr "brez"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:45
 msgid "String Previewer Tool for Scenario files"
-msgstr ""
+msgstr "Orodje predogleda nizov za datoteke scenarijev"
 
 #. (text of widget: hintlbl)
 #: horizons/i18n/guitranslations.py:47
