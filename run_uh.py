@@ -118,8 +118,6 @@ def get_option_parser():
 	p.add_option_group(ai_group)
 
 	dev_group = optparse.OptionGroup(p, _("Development options"))
-	dev_group.add_option("--compress-logs", action="store_true", dest="compress_logs", \
-				               metavar="<log>", default=False, help=_("Compress all log files and exit."))
 	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true", \
 				               default=False, help=_("Write debug output only to logfile, not to console. Implies -d."))
 	dev_group.add_option("--debug-module", action="append", dest="debug_module", \
@@ -192,10 +190,6 @@ def main():
 	create_user_dirs()
 
 	options = parse_args()
-
-	if options.compress_logs:
-		compress_logs()
-		sys.exit(0)
 
 	# NOTE: this might cause a program restart
 	init_environment()
@@ -483,21 +477,7 @@ def standalone_error_popup(headline, msg):
 		e.pump()
 	e.finalizePumping()
 
-def compress_logs():
-	import bz2
-	from horizons.constants import PATHS
-	for filename in sorted(os.listdir( PATHS.LOG_DIR )):
-		if filename.endswith(".bzip2"):
-			continue
-		filename = os.path.join( PATHS.LOG_DIR, filename )
-		filename_compressed = filename + ".bzip2"
-		if os.path.exists(filename_compressed):
-			print "skipping " + filename + " (already compressed)"
-			continue
-		print "compressing " + filename + " to " + filename_compressed
-		in_file = open(filename, "r")
-		out_file = open(filename_compressed, "w")
-		out_file.write( bz2.compress( in_file.read() ) )
+
 
 if __name__ == '__main__':
 	main()
