@@ -135,17 +135,17 @@ class Fife(ApplicationBase):
 			if template_settings_version > user_settings_version: # we have to update the file
 				# create settings so we have a list of all settings
 				self._setup_settings(check_file_version=False)
-				# now, as we have the list, we can overwrite it and fill it with the values
-				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
-				user_config_parser = SimpleXMLSerializer( _user_config_file )
 
+				# save settings here
+				entries = []
 				def update_value(modulename, entryname):
 					# retrieve values from loaded settings file
 					try:
 						value = self._setting.get(modulename, entryname)
 					except UnicodeEncodeError: # this can happen when unicode data is saved as str
 						value = "default"
-					user_config_parser.set(modulename, entryname, value)
+					entries.append( (modulename, entryname, value ) )
+
 				# update known settings and unreferenced settings
 				for modulename, module in self._setting.entries.iteritems():
 					for entryname in module.iterkeys():
@@ -154,8 +154,12 @@ class Fife(ApplicationBase):
 					for entryname in entry_list:
 						update_value(modulename, entryname)
 
+				# write actual new file
+				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
+				user_config_parser = SimpleXMLSerializer( _user_config_file )
+				for modulename, entryname, value in entries:
+					user_config_parser.set(modulename, entryname, value)
 				user_config_parser.save()
-
 
 		self._setting = LocalizedSetting(app_name=UH_MODULE,
 		                                 settings_file=PATHS.USER_CONFIG_FILE,
