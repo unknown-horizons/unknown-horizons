@@ -267,7 +267,9 @@ def parse_args():
 												         time.strftime("%y-%m-%d_%H-%M-%S"))
 		print 'Logging to %s' % logfilename
 		# create logfile
-		logfile = gzip.GzipFile(logfilename, 'w')
+		logfile = open(logfilename, 'w')
+		if not logfile.isatty():
+			logfile = gzip.GzipFile(fileobj=logfile)
 		# log there
 		file_handler = logging.StreamHandler( logfile )
 		logging.getLogger().addHandler( file_handler )
