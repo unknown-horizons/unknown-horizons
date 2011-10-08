@@ -24,6 +24,7 @@ import yaml
 from horizons.util.gui import load_uh_widget
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.widgets.logbook import LogBook
+from horizons.scheduler import Scheduler
 
 class StringPreviewWidget(object):
 	"""Widget for testing Logbook strings.
@@ -31,7 +32,8 @@ class StringPreviewWidget(object):
 	its strings in a logbook"""
 	def __init__(self, session):
 		self._init_gui(session)
-		session.speed_pause()
+		# allow for misc delayed initialisation to finish before pausing
+		Scheduler().add_new_object(session.speed_pause, self, 2)
 
 	def show(self):
 		self._gui.show()
