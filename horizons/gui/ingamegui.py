@@ -314,6 +314,11 @@ class IngameGui(LivingObject):
 		players.add(self.session.world.pirate)
 		players.discard(self.session.world.player)
 		players.discard(None) # e.g. when the pirate is disabled
+		if len(players) == 0: # this dialog is pretty useless in this case
+			self.main_gui.show_popup(_("No diplomacy possible"), \
+			                         _("Cannot do diplomacy as there are no other players."))
+			return
+
 		dtabs = []
 		for player in players:
 			dtabs.append(DiplomacyTab(player))
