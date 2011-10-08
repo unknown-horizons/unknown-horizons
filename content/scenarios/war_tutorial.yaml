@@ -5,7 +5,7 @@
 events:
 - # Show a message after starting the game (how to move)
   actions:
-   - {type: message, arguments: ["Kill all enemy ships"]}
+   - {type: message, arguments: ["Sink all enemy ships."]}
   conditions:
    - type: time_passed
      arguments: [0]
@@ -13,7 +13,7 @@ events:
 - # Winning conditions
   actions:
    - {type: win}
-   - {type: message, arguments: ["You have defeated your enemy, you can start a new settlement!"]}
+   - {type: message, arguments: ["You have defeated your enemy!"]}
   conditions:
    - {type: player_number_of_ships_lt, arguments: [2, 1]}
 
@@ -27,5 +27,5 @@ mapfile: combat_scenario.sqlite
 difficulty: Tutorial
 author: Mihai Bivol
 description: |
-    Sink your first ships in Unknown Horizons
+    Sink your first ships in Unknown Horizons to test our combat system!
 locale: en
