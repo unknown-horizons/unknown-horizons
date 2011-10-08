@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-07 19:08+0200\n"
+"PO-Revision-Date: 2011-10-08 07:41+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -1265,11 +1265,13 @@ msgstr "Orodje predogleda nizov za datoteke scenarijev"
 #: horizons/i18n/guitranslations.py:47
 msgid "select a scenario and click on load/reload to update the messages in the captain's log"
 msgstr ""
+"izberite scenarij in kliknite na naloži/ponovno naloži za posodobitev "
+"sporočil v kapitanovem dnevniku"
 
 #. (text of widget: load)
 #: horizons/i18n/guitranslations.py:49
 msgid "load/reload"
-msgstr ""
+msgstr "naloži/ponovno naloži"
 
 #. (text of widget: companies_label)
 #: horizons/i18n/guitranslations.py:54 horizons/i18n/guitranslations.py:85
@@ -1398,7 +1400,7 @@ msgstr ""
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:111
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Lesen stolp: brani vašo naselbino."
 
 #. (tooltip of widget: villageschool-1)
 #: horizons/i18n/guitranslations.py:113
@@ -1413,7 +1415,7 @@ msgstr "Tkalec: ovčjo volno pretvori v blago."
 #. (text of widget: companies_label)
 #: horizons/i18n/guitranslations.py:122
 msgid "Mining"
-msgstr ""
+msgstr "Rudarjenje"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:126
@@ -1423,34 +1425,33 @@ msgstr "Zgradbe naseljencev"
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:130
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Klavnica: potrebuje prašiče ali živino. Proizvaja hrano."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:132
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Ograda za živino: vzreja živino. Potrebuje farmo."
 
 # 76%
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:134
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Žganje oglja: zažge veliko desk."
+msgstr "Žganje oglja: zažge veliko desk v oglje"
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:136
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Rudnik: pridobi rudo iz nahajališč"
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:138
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Svinjak: vzgaja prašiče. Potrebuje farmo."
 
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:140
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Soline: pridobiva sol. Izgraditi jih je mogoče le na obali."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:142
@@ -1465,12 +1466,12 @@ msgstr "Gostilna: zagotavlja srečanja."
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:146
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Polje tobaka: proizvaja tobak. Potrebuje farmo."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:148
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Proizvajalec tobaka: proizvaja tobak iz rastlin tobakovca."
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:150
@@ -1480,12 +1481,12 @@ msgstr "Izdelovalec orodij: proizvaja orodja iz železa."
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:155
 msgid "Game start"
-msgstr ""
+msgstr "Začetek igre"
 
 #. (text of widget: howto_1_need_bo)
 #: horizons/i18n/guitranslations.py:157
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "Preden lahko izgradite zgradbe morate ustanoviti naselbino!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:159
