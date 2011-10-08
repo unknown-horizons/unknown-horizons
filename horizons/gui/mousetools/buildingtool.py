@@ -244,6 +244,8 @@ class BuildingTool(NavigationTool):
 					ExtScheduler().add_new_object(callback, self, delay)
 
 			else: # not buildable
+				# must remove other highlight, fife does not support both
+				self.renderer.removeOutlined(self.buildings_fife_instances[building])
 				self.renderer.addColored(self.buildings_fife_instances[building], \
 				                         *self.not_buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
