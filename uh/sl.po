@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-08 07:41+0200\n"
+"PO-Revision-Date: 2011-10-08 07:42+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -1491,12 +1491,12 @@ msgstr "Preden lahko izgradite zgradbe morate ustanoviti naselbino!"
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:159
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Izberite ladjo in se približajte obali z desnim klikom."
 
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:161
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Nato pritisnite velik gumb v zavihku pregleda ladje."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:449
@@ -1527,7 +1527,7 @@ msgstr "Uniči"
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:184
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomacija"
 
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:186
@@ -1697,7 +1697,7 @@ msgstr "Kupi vire"
 #. (text of widget: buysell_help_label)
 #: horizons/i18n/guitranslations.py:285
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "Kliknite na ikono mesta za preklop načina:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:287
