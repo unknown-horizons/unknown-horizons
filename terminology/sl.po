@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-07-05 09:08+0200\n"
+"PO-Revision-Date: 2011-10-08 12:17+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -222,17 +222,15 @@ msgid "move"
 msgstr "premakni"
 
 # 80%
-#, fuzzy
 msgid "moved"
-msgstr "premakni"
+msgstr "premaknjeno"
 
 msgid "produce"
 msgstr "proizvedi"
 
 # 87%
-#, fuzzy
 msgid "produced"
-msgstr "proizvedi"
+msgstr "proizvedeno"
 
 msgid "pasture"
 msgstr "pašnik"
@@ -295,13 +293,13 @@ msgid "settler"
 msgstr "naseljenec"
 
 msgid "citizen"
-msgstr ""
+msgstr "državljan"
 
 msgid "merchant"
-msgstr ""
+msgstr "trgovec"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokrat"
 
 #
 msgid "refresh"
@@ -439,9 +437,8 @@ msgid "hold"
 msgstr "držati"
 
 # 80%
-#, fuzzy
 msgid "hunt"
-msgstr "lovi"
+msgstr "lov"
 
 msgid "income"
 msgstr "prihodek"
@@ -503,89 +500,87 @@ msgid "red"
 msgstr "rdeče"
 
 msgid "check"
-msgstr ""
+msgstr "preveri"
 
 msgid "connection"
-msgstr ""
+msgstr "povezava"
 
 msgid "no"
-msgstr ""
+msgstr "ne"
 
 msgid "tax"
-msgstr ""
+msgstr "davek"
 
 msgid "feature"
 msgstr "zmožnost"
 
 msgid "reached"
-msgstr ""
+msgstr "doseženo"
 
 msgid "slider"
 msgstr "drsnik"
 
 msgid "condition"
-msgstr ""
+msgstr "pogoj"
 
 msgid "consume"
-msgstr ""
+msgstr "porabi"
 
 msgid "contact"
-msgstr ""
+msgstr "stik"
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialog"
 
 msgid "issues"
-msgstr ""
+msgstr "težave"
 
 msgid "minimap"
 msgstr "mini zemljevid"
 
 msgid "playing"
-msgstr ""
+msgstr "igranje"
 
 # 75%
-#, fuzzy
 msgid "ruin"
-msgstr "poženi"
+msgstr "ruševine"
 
 msgid "seed"
-msgstr ""
+msgstr "seme"
 
 msgid "temporarily"
-msgstr ""
+msgstr "začasno"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "soline"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tobak"
 
 msgid "cattle"
-msgstr ""
+msgstr "živina"
 
 msgid "pig"
-msgstr ""
+msgstr "prašič"
 
 msgid "herbs"
-msgstr ""
+msgstr "zelišča"
 
 msgid "herbary"
-msgstr ""
+msgstr "zbirka zelišč"
 
 msgid "butchery"
-msgstr ""
+msgstr "klavnica"
 
 msgid "doctor"
-msgstr ""
+msgstr "zdravnik"
 
 msgid "education"
-msgstr ""
+msgstr "izobraževanje"
 
 # 75%
-#, fuzzy
 msgid "clay"
-msgstr "igraj"
+msgstr "glina"
 
 msgid "charcoal"
 msgstr ""

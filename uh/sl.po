@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-08 11:50+0200\n"
+"PO-Revision-Date: 2011-10-08 12:13+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -1868,38 +1868,36 @@ msgstr "Plačani davki"
 #: horizons/i18n/guitranslations.py:436 horizons/i18n/guitranslations.py:438
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:505
 msgid "Tax rate"
-msgstr ""
+msgstr "Obdavčitev:"
 
 # 88%
 # 81%
 #. (text of widget: resident_4)
 #: horizons/i18n/guitranslations.py:422
-#, fuzzy
 msgid "4 residents"
-msgstr "Prebivalci"
+msgstr "4 prebivalci"
 
 # 88%
 # 81%
 #. (text of widget: resident_5)
 #: horizons/i18n/guitranslations.py:424
-#, fuzzy
 msgid "5 residents"
-msgstr "Prebivalci"
+msgstr "5 prebivalcev"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:430
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Nadgradnja ni mogoča:"
 
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:432
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "To je trenutno najvišja stopnja!"
 
 #. (text of widget: collector_utilisation_label) Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)
 #: horizons/i18n/guitranslations.py:445
 msgid "Collector utilisation:"
-msgstr ""
+msgstr "Učinkovitost zbiralcev:"
 
 #. (text of widget: name_label)
 #: horizons/i18n/guitranslations.py:447 horizons/i18n/guitranslations.py:466
@@ -1910,12 +1908,12 @@ msgstr "Ime:"
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:456
 msgid "Selling"
-msgstr ""
+msgstr "Prodaja"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:461 horizons/i18n/guitranslations.py:516
 msgid "Weapons:"
-msgstr ""
+msgstr "Orožja:"
 
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:475
@@ -2013,17 +2011,17 @@ msgstr "Začni proizvodnjo"
 #. (tooltip of widget: delete_bo) Trade route entry
 #: horizons/i18n/guitranslations.py:585
 msgid "Delete entry"
-msgstr ""
+msgstr "Izbriši vnos"
 
 #. (tooltip of widget: move_down) Trade route entry
 #: horizons/i18n/guitranslations.py:587
 msgid "Move down"
-msgstr ""
+msgstr "Premakni navzdol"
 
 #. (tooltip of widget: move_up) Trade route entry
 #: horizons/i18n/guitranslations.py:589
 msgid "Move up"
-msgstr ""
+msgstr "Premakni navzgor"
 
 #. (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
 #: horizons/i18n/guitranslations.py:594
@@ -2043,32 +2041,32 @@ msgstr "Beri nasl. vnose"
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:603
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Razpoložljivi scenariji"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py:605
 msgid "Scenario description"
-msgstr ""
+msgstr "Opis scenarija"
 
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:609
 msgid "Continue playing"
-msgstr ""
+msgstr "Nadaljuj z igranjem"
 
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:611
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Izberi ta scenarij"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:616
 msgid "Wait at load:"
-msgstr ""
+msgstr "Počakaj ob nalaganju:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:618
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Počakaj ob razlaganju:"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:620
@@ -2084,27 +2082,27 @@ msgstr "Dodaj na seznam"
 #: horizons/i18n/guitranslations.py:629 horizons/i18n/guitranslations.py:652
 #: horizons/i18n/guitranslations.py:667 horizons/i18n/guitranslations.py:682
 msgid "Close"
-msgstr ""
+msgstr "Zapri"
 
 #. (text of widget: building_score)
 #: horizons/i18n/guitranslations.py:634
 msgid "Buildings"
-msgstr ""
+msgstr "Zgradbe"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:636
 msgid "Player scores"
-msgstr ""
+msgstr "Točke igralcev"
 
 #. (text of widget: land_score)
 #: horizons/i18n/guitranslations.py:638
 msgid "Land"
-msgstr ""
+msgstr "Zemlja"
 
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py:640
 msgid "Money"
-msgstr ""
+msgstr "Denar"
 
 # 80%
 #. (text of widget: player_name)
@@ -2112,71 +2110,69 @@ msgstr ""
 #. (text of widget: ship_name)
 #: horizons/i18n/guitranslations.py:642 horizons/i18n/guitranslations.py:663
 #: horizons/i18n/guitranslations.py:674
-#, fuzzy
 msgid "Name"
-msgstr "Ime:"
+msgstr "Ime"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:644
 msgid "Resources"
-msgstr ""
+msgstr "Sredstva"
 
 #. (text of widget: total_score)
 #: horizons/i18n/guitranslations.py:648
 msgid "Total"
-msgstr ""
+msgstr "Skupaj"
 
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:650
 msgid "Units"
-msgstr ""
+msgstr "Enote"
 
 # 87%
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:657
-#, fuzzy
 msgid "Balance"
-msgstr "Skupaj:"
+msgstr "Skupaj"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:672
 msgid "Health"
-msgstr ""
+msgstr "Zdravje"
 
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:676
 msgid "Type"
-msgstr ""
+msgstr "Vrsta"
 
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:678
 msgid "Status"
-msgstr ""
+msgstr "Stanje"
 
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:680
 msgid "Weapons"
-msgstr ""
+msgstr "Orožja"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:687
 msgid "Aggressive"
-msgstr ""
+msgstr "Agresivno"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:689
 msgid "Flee"
-msgstr ""
+msgstr "Pobegni"
 
 #. (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:691
 msgid "Hold ground"
-msgstr ""
+msgstr "Drži položaj"
 
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:693
 msgid "Passive"
-msgstr ""
+msgstr "Pasivno"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:698
@@ -2221,17 +2217,17 @@ msgstr "{ F10 } = Preklopi vklop/izklop konzole"
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:714
 msgid "{F2} = Show player scores"
-msgstr ""
+msgstr "{F2} = Pokaži rezultate igralcev"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:716
 msgid "{F3} = Show settlement list"
-msgstr ""
+msgstr "{F3} = Pokaži seznam naselbin"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:718
 msgid "{F4} = Show ship list"
-msgstr ""
+msgstr "{F4} = Pokaži seznam ladij"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:720
@@ -2246,7 +2242,7 @@ msgstr "{ F9 } = Hitro naloži"
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:724
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "Razvojni ekipi FIFE in Unknown Horizons"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:726
@@ -2256,7 +2252,7 @@ msgstr "{ G } = Vklopi/izklopi mrežo"
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:728
 msgid "{H} = Show coordinate values (Debug)"
-msgstr ""
+msgstr "{H} = Pokaži vrednosti koordinat (razhroščevanje)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:730
@@ -2311,7 +2307,7 @@ msgstr "{ SHIFT } = Držite za postavljanje več zgradb"
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:750
 msgid "{T} = Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "{T} = Preklopi prozornost zgradb okolice"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:752
@@ -2327,7 +2323,7 @@ msgstr "{ X } = Omogoči način uničenja"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:756 horizons/i18n/guitranslations.py:913
 msgid "Return"
-msgstr ""
+msgstr "Vrni se"
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -2537,7 +2533,7 @@ msgstr "Jezik"
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:879
 msgid "Network"
-msgstr ""
+msgstr "Omrežje"
 
 #. (text of widget: headline_saving)
 #: horizons/i18n/guitranslations.py:881
@@ -2567,12 +2563,12 @@ msgstr "Glasnost glasbe:"
 #. (text of widget: network_port_hint_lbl)
 #: horizons/i18n/guitranslations.py:891
 msgid "(0 means default)"
-msgstr ""
+msgstr "(0 pomeni privzeto)"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:893
 msgid "Network port:"
-msgstr ""
+msgstr "Omrežna vrata:"
 
 #. (text of widget: number_of_autosaves_label)
 #: horizons/i18n/guitranslations.py:895
@@ -2602,7 +2598,7 @@ msgstr "Omogoči zvok:"
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:905
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Neprekinjena zgradba:"
 
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:907
@@ -2623,7 +2619,7 @@ msgstr "Uveljavi"
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:915
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Ponastavi na privzete nastavitve"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:920
@@ -2645,12 +2641,12 @@ msgstr "Začni igro"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:928
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:930
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Izbriši izbrano shranjeno igro"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:935
@@ -2693,27 +2689,27 @@ msgstr "Izberite zemljevid za igranje:"
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:966
 msgid "Map settings:"
-msgstr ""
+msgstr "Nastavitve zemljevida:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:976
 msgid "AI players:"
-msgstr ""
+msgstr "Računalniški igralci:"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:981
 msgid "Game settings:"
-msgstr ""
+msgstr "Nastavitve igre:"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:983
 msgid "Free Trader"
-msgstr ""
+msgstr "Prosti trgovec"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:985
 msgid "Pirates"
-msgstr ""
+msgstr "Pirati"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:990
@@ -2728,22 +2724,28 @@ msgstr "Ime igralca:"
 #: horizons/main.py:83
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Napaka: neveljavna skladnja v možnosti ukazne vrstice --mp-master. Vrata "
+"morajo biti število med 1 in 65535."
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 msgstr ""
+"Napaka: neveljavna skladnja v možnosti ukazne vrstice --mp-bind. Vrata "
+"morajo biti število med 1 in 65535."
 
 #: horizons/main.py:243
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Začenjanje/nalaganje igre je spodletelo"
 
 #: horizons/main.py:244
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "Izbrane igre ni bilo mogoče začeti."
 
 #: horizons/main.py:245
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
+"Shranjena igra je morda pokvarjena ali pa je bila shranjena s prejšnjo "
+"različico."
 
 #: horizons/main.py:333
 #, python-format
@@ -2756,28 +2758,34 @@ msgstr "Napaka: Najdenih je bilo več ujemanj: "
 
 #: horizons/main.py:358
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr ""
+msgstr "Napaka: datoteke imen kampanj se morajo končati z \".yaml\"."
 
 #: horizons/main.py:366
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory (%s)."
 msgstr ""
+"Zaradi tehničnih vzrokov bo datoteka kampanje kopirana v mapo kampanj UH (%"
+"s)."
 
 #: horizons/main.py:367
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"To pomeni, da spremembe v datoteki, ki ste jo navedli, ne bodo uveljavljene "
+"neposredno a igro."
 
 #: horizons/main.py:368
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file %s."
 msgstr ""
+"Za ogled sprememb vedno začnite UH s trenutnimi argumenti ali uredite "
+"datoteko %s."
 
 # 81%
 #: horizons/main.py:374 horizons/savegamemanager.py:415
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign \"%s\"."
-msgstr "Napaka: Ni mogoče najti zemljevida \"%s\"."
+msgstr "Napaka: Ni mogoče najti kampanje \"%s\"."
 
 #: horizons/main.py:405
 #, python-format
@@ -2805,31 +2813,31 @@ msgstr "Shranjevanje/nalaganje za večigralske igre še ni mogoče"
 #: horizons/savegamemanager.py:364
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr ""
+msgstr "Napaka: program ne ve kako upravljati z vrsto pogoja %(type)s"
 
 # 81%
 # 76%
 #: horizons/savegamemanager.py:420
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign with file \"%s\"."
-msgstr "Napaka: Ni mogoče najti zemljevida \"%s\"."
+msgstr "Napaka: Ni mogoče najti kampanje z datoteko \"%s\"."
 
 # 81%
 #: horizons/savegamemanager.py:438
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr "Napaka: Ni mogoče najti shranjene igre \"%s\"."
+msgstr "Napaka: Ni mogoče najti scenarija \"%s\"."
 
 # 81%
 # 76%
 # 83%
 #: horizons/savegamemanager.py:443
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr "Napaka: Ni mogoče najti zemljevida \"%s\"."
+msgstr "Napaka: Ni mogoče najti scenarija z datoteko \"%s\"."
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario. "
@@ -2847,10 +2855,11 @@ msgstr "Hitro shranjevanje je spodletelo."
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
 msgstr ""
+"Med hitrim shranjevanjem je prišlo do napake. Vaša igra ni bila shranjena."
 
 #: horizons/spsession.py:124
 msgid "If this error happens again, please contact the development team:"
-msgstr ""
+msgstr "Če se ta napaka ponovi, stopite v stik z ekipo razvijalcev:"
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
@@ -2863,58 +2872,59 @@ msgstr "Pred hitrim nalaganjem morate hitro shraniti."
 #. usually invalid filename
 #: horizons/spsession.py:159
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Ustvarjanje datoteke shranjene igre je spodletelo"
 
 #: horizons/spsession.py:160
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Prišlo je do napake med ustvarjanjem datoteke shranjene igre."
 
 #: horizons/spsession.py:161
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"To običajno pomeni, da ime shranjene igre vsebuje nepodprte posebne znake."
 
 #: horizons/spsession.py:167
 msgid "File used by another process"
-msgstr ""
+msgstr "Datoteko uporablja drugo opravilo"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "Datoteko shranjene igre trenutno uporablja drug program."
 
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to %s"
-msgstr ""
+msgstr "Trgovska pot: potovanje v %s"
 
 #: horizons/world/units/ship.py:273
 #, python-format
 msgid "Trade route: waiting at %s"
-msgstr ""
+msgstr "Trgovska pot: čakanje na %s"
 
 #: horizons/world/units/ship.py:468
 #, python-format
 msgid "Going to %s"
-msgstr ""
+msgstr "Potovanje v %s"
 
 #: horizons/world/units/ship.py:469
 #, python-format
 msgid "Going to %(x)d, %(y)d"
-msgstr ""
+msgstr "Potovanje na %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:473
 #, python-format
 msgid "Idle at %s"
-msgstr ""
+msgstr "Čaka v %s"
 
 #: horizons/world/units/ship.py:474
 #, python-format
 msgid "Idle at %(x)d, %(y)d"
-msgstr ""
+msgstr "Čaka na %(x)d, %(y)d"
 
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Napada"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2943,9 +2953,8 @@ msgstr ""
 
 # 92%
 #: run_uh.py:90
-#, fuzzy
 msgid "Starting Unknown Horizons"
-msgstr "Začenjanje unknown horizons"
+msgstr "Začenjanje igre Unknown Horizons"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
@@ -2957,7 +2966,7 @@ msgstr "Začne naključni zemljevid."
 
 #: run_uh.py:96
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "Začne naključno igro s semenom <seed>."
 
 #: run_uh.py:98
 msgid "Starts <scenario>. <scenario> is the scenarioname."
@@ -2965,7 +2974,7 @@ msgstr "Začne <scenario>. <scenario> je ime scenarija."
 
 #: run_uh.py:100
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr ""
+msgstr "Začne <campaign>. <campaign> je ime kampanje."
 
 #: run_uh.py:102
 msgid "Starts the development map without displaying the main menu."
@@ -2982,22 +2991,26 @@ msgstr "Naloži zadnjo hitro shranjeno igro."
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Nastavi seme, ki se uporablja za ustvarjanje dreves, rib in drugih naravnih "
+"virov."
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "Možnosti računalniških igralcev"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
 msgstr ""
+"Uporablja <ai_players> računalniških igralcev (izključuje mogoč hibrid "
+"človek-računalnik, privzeto 1)."
 
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
-msgstr ""
+msgstr "Naredi človeškega igralca za hibrid človek-računalnik (le za razvoj)."
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
-msgstr ""
+msgstr "Pokaže načrte računalniškega igralca kot osvetlitev (le za razvoj)."
 
 #: run_uh.py:120
 msgid "Development options"
@@ -3027,11 +3040,11 @@ msgstr "Omogoči profiliranje (le za razvijalce)."
 
 #: run_uh.py:133
 msgid "Run the game for <max_ticks> ticks."
-msgstr ""
+msgstr "Poženi igro za <max_ticks> udarcev."
 
 #: run_uh.py:135
 msgid "Enable the string previewer tool for scenario writers"
-msgstr ""
+msgstr "Omogoči orodje predogleda nizov za pisce scenarijev."
 
 #: run_uh.py:157
 msgid "Unknown Horizons crashed."
@@ -3053,15 +3066,20 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Napaka: zahtevanih knjižnic ni mogoče najti"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Žal vas moramo obvestiti, da knjižnica, ki jo igra Unknown Horizons "
+"potrebuje, manjka in jo je treba namestiti."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Namestilniki za uporabnike Windows so na voljo na "
+"\"http://pyyaml.org/wiki/PyYAML\". Uporabniki Linuxa bi jih morali najti v "
+"sistemu za upravljanje paketov pod imenom \"pyyaml\" ali \"python-yaml\"."
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
