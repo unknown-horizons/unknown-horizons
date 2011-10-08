@@ -29,6 +29,8 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
+	_SELECTION_RECTANGLE_NAME = "_select" # GenericRenderer objects are sorted by name, so first char is important
+
 	def __init__(self, session):
 		super(SelectionTool, self).__init__(session)
 		self.session.gui.on_escape = self.session.gui.toggle_pause
@@ -39,8 +41,9 @@ class SelectionTool(NavigationTool):
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
-			self.session.view.renderer['GenericRenderer'].removeAll("select")
+			self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
 			if do_multi:
+				# draw a rectangle
 				a = fife.Point(min(self.select_begin[0], evt.getX()), \
 											 min(self.select_begin[1], evt.getY()))
 				b = fife.Point(max(self.select_begin[0], evt.getX()), \
@@ -49,15 +52,16 @@ class SelectionTool(NavigationTool):
 											 max(self.select_begin[1], evt.getY()))
 				d = fife.Point(min(self.select_begin[0], evt.getX()), \
 											 max(self.select_begin[1], evt.getY()))
-				self.session.view.renderer['GenericRenderer'].addLine("select", \
+				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME, \
 				                                                      fife.RendererNode(a), fife.RendererNode(b), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine("select", \
+				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME, \
 				                                                      fife.RendererNode(b), fife.RendererNode(c), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine("select", \
+				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME, \
 				                                                      fife.RendererNode(d), fife.RendererNode(c), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine("select", \
+				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME, \
 				                                                      fife.RendererNode(a), fife.RendererNode(d), 200, 200, 200)
 			selectable = []
+
 			instances = self.session.view.cam.getMatchingInstances(\
 				fife.Rect(min(self.select_begin[0], evt.getX()), \
 									min(self.select_begin[1], evt.getY()), \
@@ -115,7 +119,7 @@ class SelectionTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			self.apply_select()
 			del self.select_begin, self.select_old
-			self.session.view.renderer['GenericRenderer'].removeAll("select")
+			self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:
