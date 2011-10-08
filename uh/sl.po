@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-08 07:42+0200\n"
+"PO-Revision-Date: 2011-10-08 11:50+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -1749,27 +1749,27 @@ msgstr "Davki"
 #. (tooltip of widget: show_production_overview)
 #: horizons/i18n/guitranslations.py:315
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Pokaži sredstva proizvedena v naselbini"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:320
 msgid "ally"
-msgstr ""
+msgstr "zaveznik"
 
 #. (text of widget: enemy_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:322
 msgid "enemy"
-msgstr ""
+msgstr "sovražnik"
 
 #. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:324
 msgid "neutral"
-msgstr ""
+msgstr "nevtralen"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:329
 msgid "Build fields"
-msgstr ""
+msgstr "Izgradi polja"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:339
@@ -1785,53 +1785,49 @@ msgstr "Najbolj potrebovano sredstvo:"
 #: horizons/i18n/guitranslations.py:350 horizons/i18n/guitranslations.py:381
 #: horizons/i18n/guitranslations.py:410
 msgid "Residents per house"
-msgstr ""
+msgstr "Število stanovalcev na hišo"
 
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py:352 horizons/i18n/guitranslations.py:383
 #: horizons/i18n/guitranslations.py:412
 msgid "Summary"
-msgstr ""
+msgstr "Povzetek"
 
 #. (text of widget: houses)
 #: horizons/i18n/guitranslations.py:354 horizons/i18n/guitranslations.py:385
 #: horizons/i18n/guitranslations.py:414
 msgid "houses"
-msgstr ""
+msgstr "hiše"
 
 # 88%
 # 81%
 #. (text of widget: resident_1)
 #: horizons/i18n/guitranslations.py:356 horizons/i18n/guitranslations.py:387
 #: horizons/i18n/guitranslations.py:416
-#, fuzzy
 msgid "1 resident"
-msgstr "Prebivalci"
+msgstr "1 prebivalec"
 
 # 88%
 # 81%
 #. (text of widget: resident_2)
 #: horizons/i18n/guitranslations.py:358 horizons/i18n/guitranslations.py:389
 #: horizons/i18n/guitranslations.py:418
-#, fuzzy
 msgid "2 residents"
-msgstr "Prebivalci"
+msgstr "2 prebivalca"
 
 # 88%
 # 81%
 #. (text of widget: resident_3)
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:420
-#, fuzzy
 msgid "3 residents"
-msgstr "Prebivalci"
+msgstr "3 prebivalci"
 
 # 88%
 #. (text of widget: residents)
 #: horizons/i18n/guitranslations.py:362 horizons/i18n/guitranslations.py:391
 #: horizons/i18n/guitranslations.py:426
-#, fuzzy
 msgid "residents"
-msgstr "Prebivalci"
+msgstr "prebivalci"
 
 #. (text of widget: tax_label)
 #: horizons/i18n/guitranslations.py:364 horizons/i18n/guitranslations.py:393
@@ -1842,7 +1838,7 @@ msgstr "Davki:"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:366 horizons/i18n/guitranslations.py:395
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Dovoljenja za nadgradnjo:"
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
