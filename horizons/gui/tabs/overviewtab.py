@@ -168,12 +168,15 @@ class ShipOverviewTab(OverviewTab):
 
 		# check if an island is in range and it doesn't contain a player's settlement
 		island_without_player_settlement_found = False
+		tooltip = _("The ship needs to be close to an island to found a settlement.")
 		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, \
 		                                                                self.instance.radius):
 			player_settlements = [ settlement for settlement in island.settlements if \
 			                       settlement.owner is self.instance.session.world.player ]
 			if len(player_settlements) == 0:
 				island_without_player_settlement_found = True
+			else:
+				tooltip = _("You already have a settlement on this island.")
 
 		if island_without_player_settlement_found:
 			events['foundSettlement'] = Callback(self.instance.session.ingame_gui._build, \
@@ -186,8 +189,7 @@ class ShipOverviewTab(OverviewTab):
 			events['foundSettlement'] = None
 			self.widget.child_finder('bg_button').set_inactive()
 			self.widget.child_finder('foundSettlement').set_inactive()
-			self.widget.child_finder('foundSettlement').tooltip = \
-			    _("The ship needs to be close to an island to found a settlement.")
+			self.widget.child_finder('foundSettlement').tooltip = tooltip
 
 		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
 		   self.instance,
