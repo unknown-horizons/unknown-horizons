@@ -120,12 +120,14 @@ class Fife(ApplicationBase):
 	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers"] }
 
 	def _setup_settings(self, check_file_version=True):
+		_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
+		if not os.path.exists(_user_config_file):
+			check_file_version = False
 		if check_file_version:
 			# check if user settings file is the current one
 
 			# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently (although the doc states otherwise)
 			# therefore translate paths to absolute ones
-			_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
 			user_config_parser = SimpleXMLSerializer( _user_config_file )
 			user_settings_version = user_config_parser.get("meta", "SettingsVersion", -1)
 			_template_config_file = os.path.join( os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE )
