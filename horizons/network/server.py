@@ -35,11 +35,16 @@ logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
 		level = logging.DEBUG)
 
 class Server(object):
-	def __init__(self, hostname, port):
+	def __init__(self, hostname, port, statistic_file = None):
 		packets.SafeUnpickler.set_mode(client = False)
 		self.host = None
 		self.hostname = hostname
 		self.port = port
+		self.statistic = {
+			'file': statistic_file,
+			'timestamp': 0,
+			'interval': 5 * 60 * 1000,
+		}
 		self.callbacks = {
 			'onconnect':    [ self.onconnect ],
 			'ondisconnect': [ self.ondisconnect ],
@@ -106,6 +111,13 @@ class Server(object):
 
 		logging.debug("Entering the main loop...")
 		while True:
+			if self.statistic['file'] is not None:
+				if self.statistic['timestamp'] <= 0:
+					self.print_statistic(self.statistic['file'])
+					self.statistic['timestamp'] = self.statistic['interval']
+				else:
+					self.statistic['timestamp'] -= CONNECTION_TIMEOUT
+
 			event = self.host.service(CONNECTION_TIMEOUT)
 			if event.type == enet.EVENT_TYPE_NONE:
 				continue
@@ -207,7 +219,7 @@ class Server(object):
 		packet = None
 		try:
 			packet = packets.unserialize(event.packet.data)
-		except Exception, e:
+		except Exception:
 			logging.warning("[RECEIVE] Unknown packet from %s!" % (peer.address))
 			self.fatalerror(event.peer, "Unknown packet. Please check your game version")
 			return
@@ -446,4 +458,34 @@ class Server(object):
 		if readycount != game.playercnt:
 			return
 		self.call_callbacks('startgame', game)
+
+
+	def print_statistic(self, file):
+		try:
+			fd = open(file, "w")
+
+			fd.write("Games.Total: %d\n" % (len(self.games)))
+			games_playing = 0
+			for game in self.games:
+				if game.state is Game.State.Running:
+					games_playing += 1
+			fd.write("Games.Playing: %d\n" % (games_playing))
+
+			fd.write("Players.Total: %d\n" % (len(self.players)))
+			players_inlobby = 0
+			players_playing = 0
+			for player in self.players.values():
+				if player.game is None:
+					continue
+				if player.game.state is Game.State.Running:
+					players_playing += 1
+				else:
+					players_inlobby += 1
+			fd.write("Players.Lobby: %d\n" % (players_inlobby))
+			fd.write("Players.Playing: %d\n" % (players_playing))
+
+			fd.close()
+		except IOError, e:
+			logging.error("[STATISTIC] Unable to open statistic file: %s" % (e))
+		return
 
