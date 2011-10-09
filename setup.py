@@ -41,7 +41,7 @@ package_data = { dir: ['*.so'] }
 
 class _build_i18n(distutils.cmd.Command):
 	"""
-	Derived from http://hotwire-shell.googlecode.com/svn/trunk/DistUtilsExtra/command/build_i18n.py
+	Derived from https://launchpad.net/python-distutils-extra
 	to avoid an additional dependency
 	"""
 	description = "integrate the gettext framework"
