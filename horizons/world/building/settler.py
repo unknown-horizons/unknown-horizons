@@ -31,7 +31,7 @@ from horizons.constants import RES, BUILDINGS, GAME, SETTLER
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
-from horizons.util import decorators
+from horizons.util import decorators, Callback
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 
@@ -273,12 +273,13 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def level_down(self):
 		if self.level == 0: # can't level down any more
-			# remove when this function is done
-			Scheduler().add_new_object(self.remove, self, run_in=0)
 			# replace this building with a ruin
 			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
-			Scheduler().add_new_object(command, command, run_in=0)
+
+			Scheduler().add_new_object(
+			  Callback.ChainedCallbacks(self.remove, command), # remove, then build new
+			  self, run_in=0)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner == self.session.world.player:
