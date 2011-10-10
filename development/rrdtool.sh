@@ -161,20 +161,22 @@ function graph_games_players()
     --title="Unknown Horizons - Master Server Games & Players"
     --base=1000
     DEF:games=uh.rrd:games_total:AVERAGE
+    CDEF:games_f=games,FLOOR
     DEF:players=uh.rrd:players_total:AVERAGE
+    CDEF:players_f=players,FLOOR
     AREA:players#2CADEF35:""
     LINE1:players#2CADEFFF:"Players"
     LINE1:games#E16000FF:"Games"
     COMMENT:" \\c"
     COMMENT:"-----------------------------------------------------------------------  \\r"
     COMMENT:"Players  "
-    GPRINT:players:LAST:"Current\:%9.0lf  "
+    GPRINT:players_f:LAST:"Current\:%9.2lf  "
     GPRINT:players:AVERAGE:"Average\:%9.2lf  "
-    GPRINT:players:MAX:"Maximum\:%9.0lf  \\r"
+    GPRINT:players_f:MAX:"Maximum\:%9.2lf  \\r"
     COMMENT:"Games    "
-    GPRINT:games:LAST:"Current\:%9.0lf  "
+    GPRINT:games_f:LAST:"Current\:%9.2lf  "
     GPRINT:games:AVERAGE:"Average\:%9.2lf  "
-    GPRINT:games:MAX:"Maximum\:%9.0lf  \\r"
+    GPRINT:games_f:MAX:"Maximum\:%9.2lf  \\r"
     COMMENT:"-----------------------------------------------------------------------  \\r"
     COMMENT:"$gtype @ $datestr\\r"
   )
@@ -190,20 +192,22 @@ function graph_games()
     --title="Unknown Horizons - Master Server Games"
     --base=1000
     DEF:total=uh.rrd:games_total:AVERAGE
+    CDEF:total_f=total,FLOOR
     DEF:playing=uh.rrd:games_playing:AVERAGE
+    CDEF:playing_f=playing,FLOOR
     AREA:total#2CADEF35:""
     LINE1:total#2CADEFFF:"Total"
     LINE1:playing#E16000FF:"Running"
     COMMENT:" \\c"
     COMMENT:"-----------------------------------------------------------------------  \\r"
     COMMENT:"Total    "
-    GPRINT:total:LAST:"Current\:%9.0lf  "
+    GPRINT:total_f:LAST:"Current\:%9.2lf  "
     GPRINT:total:AVERAGE:"Average\:%9.2lf  "
-    GPRINT:total:MAX:"Maximum\:%9.0lf  \\r"
+    GPRINT:total_f:MAX:"Maximum\:%9.2lf  \\r"
     COMMENT:"Running  "
-    GPRINT:playing:LAST:"Current\:%9.0lf  "
+    GPRINT:playing_f:LAST:"Current\:%9.2lf  "
     GPRINT:playing:AVERAGE:"Average\:%9.2lf  "
-    GPRINT:playing:MAX:"Maximum\:%9.0lf  \\r"
+    GPRINT:playing_f:MAX:"Maximum\:%9.2lf  \\r"
     COMMENT:"-----------------------------------------------------------------------  \\r"
     COMMENT:"$gtype @ $datestr\\r"
   )
@@ -218,8 +222,11 @@ function graph_players()
     --title="Unknown Horizons - Master Server Players"
     --base=1000
     DEF:total=uh.rrd:players_total:AVERAGE
+    CDEF:total_f=total,FLOOR
     DEF:playing=uh.rrd:players_playing:AVERAGE
+    CDEF:playing_f=playing,FLOOR
     DEF:lobby=uh.rrd:players_lobby:AVERAGE
+    CDEF:lobby_f=lobby,FLOOR
     AREA:total#2CADEF35:""
     LINE1:total#2CADEFFF:"Total"
     LINE1:playing#E16000FF:"Playing"
@@ -227,17 +234,17 @@ function graph_players()
     COMMENT:" \\c"
     COMMENT:"-----------------------------------------------------------------------  \\r"
     COMMENT:"Total    "
-    GPRINT:total:LAST:"Current\:%9.0lf  "
+    GPRINT:total_f:LAST:"Current\:%9.2lf  "
     GPRINT:total:AVERAGE:"Average\:%9.2lf  "
-    GPRINT:total:MAX:"Maximum\:%9.0lf  \\r"
+    GPRINT:total_f:MAX:"Maximum\:%9.2lf  \\r"
     COMMENT:"Playing  "
-    GPRINT:playing:LAST:"Current\:%9.0lf  "
+    GPRINT:playing_f:LAST:"Current\:%9.2lf  "
     GPRINT:playing:AVERAGE:"Average\:%9.2lf  "
-    GPRINT:playing:MAX:"Maximum\:%9.0lf  \\r"
+    GPRINT:playing_f:MAX:"Maximum\:%9.2lf  \\r"
     COMMENT:"In Lobby "
-    GPRINT:lobby:LAST:"Current\:%9.0lf  "
+    GPRINT:lobby_f:LAST:"Current\:%9.2lf  "
     GPRINT:lobby:AVERAGE:"Average\:%9.2lf  "
-    GPRINT:lobby:MAX:"Maximum\:%9.0lf  \\r"
+    GPRINT:lobby_f:MAX:"Maximum\:%9.2lf  \\r"
     COMMENT:"-----------------------------------------------------------------------  \\r"
     COMMENT:"$gtype @ $datestr\\r"
   )
