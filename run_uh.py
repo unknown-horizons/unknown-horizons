@@ -267,7 +267,7 @@ def parse_args():
 		else:
 			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log.gz" % \
 												         time.strftime("%y-%m-%d_%H-%M-%S"))
-		print 'Logging to %s' % logfilename
+		print 'Logging to %s' % logfilename.encode('utf-8', 'replace')
 		# create logfile
 		logfile = open(logfilename, 'w')
 		if not logfile.isatty():
