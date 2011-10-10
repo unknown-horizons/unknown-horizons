@@ -43,7 +43,7 @@ class Server(object):
 		self.statistic = {
 			'file': statistic_file,
 			'timestamp': 0,
-			'interval': 5 * 60 * 1000,
+			'interval': 1 * 60 * 1000,
 		}
 		self.callbacks = {
 			'onconnect':    [ self.onconnect ],
