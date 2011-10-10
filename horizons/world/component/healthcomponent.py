@@ -44,7 +44,7 @@ class HealthComponent(Component):
 		#scaling factor multiplies the damage taken by the unit
 		scaling_factor = 1
 		self.health -= scaling_factor * damage
-		self.log.debug("dealing damage %s to %s; new health: ", scaling_factor*damage, self.instance, self.health)
+		self.log.debug("dealing damage %s to %s; new health: %s", scaling_factor*damage, self.instance, self.health)
 		self.on_damage_dealt()
 
 	def save(self, db):
