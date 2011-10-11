@@ -40,7 +40,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Boat Builder"
-msgstr ""
+msgstr "Construtor de Barcos"
 
 #. This is a database entry: the name of a building.
 #: database files sql
