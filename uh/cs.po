@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-09-22 12:58+0200\n"
+"PO-Revision-Date: 2011-10-11 16:50+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -25,12 +25,12 @@ msgstr "${player1} a ${player2} jsou teď ${status}"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement has been created by ${player}."
-msgstr ""
+msgstr "Byla vytvořena nová osada od ${player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr ""
+msgstr "Byl vytvořen nov svět"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -202,7 +202,7 @@ msgstr "Pirátská loď"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Potato Field"
-msgstr ""
+msgstr "Bramborové pole"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -227,7 +227,7 @@ msgstr "Ovce"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Signal Fire"
-msgstr ""
+msgstr "Signální oheň"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -247,7 +247,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Sugar Field"
-msgstr ""
+msgstr "Cukrové pole"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -267,12 +267,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Tabákové pole"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr ""
+msgstr "Trafikant"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -282,38 +282,38 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
 msgid "Trader"
-msgstr ""
+msgstr "Obchodník"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Trail"
-msgstr ""
+msgstr "Stezka"
 
 #. (tooltip of widget: tree-1)
 #. This is a database entry: the name of a building.
 #: database files horizons/i18n/guitranslations.py:80 sql
 msgid "Tree"
-msgstr ""
+msgstr "Stron"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Village school"
-msgstr ""
+msgstr "Vesnická škola"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Tkalcovský stan"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Dřevěná věž"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "Můžeš také položit silnice."
+msgstr "Můžeš také položit cesty."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -323,7 +323,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
 msgid "You have won!"
-msgstr ""
+msgstr "Vyhrál jsi!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -358,17 +358,17 @@ msgstr "šlechtic"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "black"
-msgstr ""
+msgstr "černý"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "blue"
-msgstr ""
+msgstr "modrý"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr ""
+msgstr "prkna"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -410,17 +410,17 @@ msgstr "občan"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr ""
+msgstr "jíl"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay deposit"
-msgstr ""
+msgstr "naleziště jílu"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr ""
+msgstr "mince"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -435,7 +435,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "dýka"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -460,12 +460,12 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "ryba"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "jídlo"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -475,32 +475,32 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr ""
+msgstr "tráva"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "šedý"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "green"
-msgstr ""
+msgstr "zelený"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr ""
+msgstr "štěstí"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "bylinky"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "naleziště železa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
