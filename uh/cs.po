@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-11 16:50+0200\n"
+"PO-Revision-Date: 2011-10-11 17:03+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -505,32 +505,32 @@ msgstr "naleziště železa"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ingots"
-msgstr ""
+msgstr "železné ingoty"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ore"
-msgstr ""
+msgstr "železný důl"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "lamb wool"
-msgstr ""
+msgstr "ovčí vlna"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "citrón"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr ""
+msgstr "kořalka"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "léčivé bylinky"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -540,12 +540,12 @@ msgstr "obchodník"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "oranžový"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "prasata"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -575,7 +575,7 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "red"
-msgstr ""
+msgstr "červený"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -585,7 +585,7 @@ msgstr "námořník"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "salt"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
