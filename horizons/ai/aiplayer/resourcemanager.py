@@ -450,6 +450,8 @@ class SingleResourceManager(WorldObject):
 		return self.low_priority
 
 	def __str__(self):
+		if not hasattr(self, "resource_id"):
+			return 'UninitialisedSingleResourceManager'
 		result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (self.resource_id, self.available, self.total, self.low_priority)
 		for quota_holder, (quota, priority) in self.quotas.iteritems():
 			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)

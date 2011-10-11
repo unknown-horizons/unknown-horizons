@@ -398,6 +398,7 @@ class Collector(StorageHolder, Unit):
 		NOTE: Subclasses set this to a proper action that makes the collector continue to work.
 		      If the collector is supposed to be remove, use a noop.
 		"""
+		self.stop()
 		self.log.debug("%s was canceled, continue action is %s", self, continue_action)
 		if self.job is not None:
 			# remove us as incoming collector at target
