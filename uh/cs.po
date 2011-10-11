@@ -20,7 +20,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} a ${player2} jsou teď ${status}"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
