@@ -9,7 +9,7 @@
 		<Setting name="InitialVolume" type="float"> 5.0 </Setting>
 		<Setting name="SDLRemoveFakeAlpha" type="int"> 1 </Setting>
 		<Setting name="GLCompressImages" type="bool"> False </Setting>
-		<Setting name="WindowTitle" type="str"> Unknown Horizons Alpha </Setting>
+		<Setting name="WindowTitle" type="str">Unknown Horizons</Setting>
 		<Setting name="WindowIcon" type="str">content/gui/images/logos/uh_32.png</Setting>
 		<Setting name="Font" type="str"> content/fonts/LinLibertine.ttf </Setting>
 		<Setting name="FontGlyphs" strip="0" type="str"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`'*#=[]\"</Setting>
@@ -42,6 +42,6 @@
 		<Setting name="MapResourceDensity" type="float">2.0</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">7</Setting>
+		<Setting name="SettingsVersion" type="int">8</Setting>
 	</Module>
 </Settings>
