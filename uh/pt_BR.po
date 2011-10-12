@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-12 15:48+0200\n"
+"PO-Revision-Date: 2011-10-12 16:40+0200\n"
 "Last-Translator: paulodealmeida <paulodealmeida@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -176,58 +176,68 @@ msgstr "Vigia"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Acampamento de lenhadores"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Main Square"
-msgstr ""
+msgstr "Praça Principal"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Mountain"
-msgstr ""
+msgstr "Montanha"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "Falta uma praça principal numa das suas povoações."
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Pasture"
-msgstr ""
+msgstr "Pastagem"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Pavilion"
-msgstr ""
+msgstr "Pavilhão"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Pigsty"
-msgstr ""
+msgstr "Pocilga"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+#, fuzzy
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Barco pirata"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Potato Field"
-msgstr ""
+msgstr "Plantação de batatas"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Rampart"
-msgstr ""
+msgstr "Plataforma"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Lagoas de sal"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -237,62 +247,70 @@ msgstr "Captura de tela gravada em ${file}."
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Sheep"
-msgstr ""
+msgstr "Ovelha"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Signal Fire"
-msgstr ""
+msgstr "Sinal de Fogo"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Smeltery"
-msgstr ""
+msgstr "Fundição"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Alguns dos seus povoadores abandonaram a povoação."
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Storage Tent"
-msgstr ""
+msgstr "Armazém"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Sugar Field"
-msgstr ""
+msgstr "Plantação de cana de açúcar"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tavern"
-msgstr ""
+msgstr "Taberna"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent"
-msgstr ""
+msgstr "Tenda"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Ruínas"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Plantação de tabaco"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabaqueiro"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Toolmaker"
-msgstr ""
+msgstr "Ferreiro"
 
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
@@ -301,8 +319,9 @@ msgstr "Comerciante"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Trail"
-msgstr ""
+msgstr "Trilha"
 
 #. (tooltip of widget: tree-1)
 #. This is a database entry: the name of a building.
@@ -312,28 +331,33 @@ msgstr "Árvore"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Village school"
-msgstr ""
+msgstr "Escola"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Tenda de tecelão"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Torre de Madeira"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Também pode arrastar estradas."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Você alcançou o máximo incremento corrente. Seus habitantes não vão melhorar "
+"mais."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -349,7 +373,7 @@ msgstr "Precisa de mais ${resource} para construir este edifício."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "O seu jogo foi salvo."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -365,213 +389,225 @@ msgstr "Os seus povoadores chegaram ao nível ${level}."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "acorns"
-msgstr ""
+msgstr "bolotas"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocrata"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "black"
-msgstr ""
+msgstr "preto"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "blue"
-msgstr ""
+msgstr "azul"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr ""
+msgstr "tábuas"
 
 #. This is a database entry: the name of a color.
 #: database files sql
+#, fuzzy
 msgid "bordeaux"
-msgstr ""
+msgstr "vinho"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr ""
+msgstr "tijolos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "canhão"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "gado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "gado para abate"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "charcoal"
-msgstr ""
+msgstr "carvão vegetal"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr ""
+msgstr "cidadão"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr ""
+msgstr "barro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay deposit"
-msgstr ""
+msgstr "depósito de barro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr ""
+msgstr "moedas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "comunidade"
 
 #. This is a database entry: the name of a color.
 #: database files sql
+#, fuzzy
 msgid "cyan"
-msgstr ""
+msgstr "verde-água"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "punhal"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "deer food A"
-msgstr ""
+msgstr "comida de veado A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "carne de veado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr ""
+msgstr "educação"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "faith"
-msgstr ""
+msgstr "fé"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "peixe"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "comida"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "get-together"
-msgstr ""
+msgstr "reunião"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr ""
+msgstr "grama"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "cinza"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "green"
-msgstr ""
+msgstr "verde"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr ""
+msgstr "felicidade"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "ervas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "depósito de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "iron ingots"
-msgstr ""
+msgstr "ligotes de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "iron ore"
-msgstr ""
+msgstr "minério de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "lamb wool"
-msgstr ""
+msgstr "lã de ovelha"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "limão"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "liquor"
-msgstr ""
+msgstr "álcool"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "ervas medicinais"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "merchant"
-msgstr ""
+msgstr "mercador"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "laranja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "porcos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "porcos para abate"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "pink"
-msgstr ""
+msgstr "rosa"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
