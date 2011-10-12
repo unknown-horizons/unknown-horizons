@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-09-23 00:10+0200\n"
-"Last-Translator: Marc <marc.moussa@gmail.com>\n"
+"PO-Revision-Date: 2011-10-12 09:50+0200\n"
+"Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -326,6 +326,8 @@ msgstr "Vous pouvez cliquer-glisser des routes."
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Vos habitants ont atteint le niveau maximum. Ils ne continueront donc pas à "
+"se développer."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -828,21 +830,23 @@ msgstr "Détails :"
 msgid "Error:"
 msgstr "Erreur :"
 
+# 94%
 #: horizons/gui/gui.py:426
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Date de sauvegarde inconnue"
 
+# 91%
 #: horizons/gui/gui.py:428
 #, python-format
 msgid "Saved at %s"
-msgstr ""
+msgstr "Sauvegardé le %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
 msgid "Saved %(amount)d time"
 msgid_plural "Saved %(amount)d times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Sauvegardé %(amount) fois"
+msgstr[1] "Sauvegardé %(amount) fois"
 
 #: horizons/gui/gui.py:441
 #, python-format
@@ -936,7 +940,7 @@ msgstr "Erreur réseau"
 
 #: horizons/gui/modules/multiplayermenu.py:116
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Erreur fatale du réseau"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 msgid "Something went wrong with the network:"
@@ -1119,11 +1123,11 @@ msgstr "Achat/Vente:"
 
 #: horizons/gui/tabs/inventorytab.py:104
 msgid "Can't equip trade ship with weapons"
-msgstr ""
+msgstr "Les navires de commerce ne peuvent pas être armés"
 
 #: horizons/gui/tabs/inventorytab.py:105
 msgid "It is not possible to equip a trade ship with weapons"
-msgstr ""
+msgstr "Il est impossible d'équipper un navire de commerce avec der armes"
 
 #: horizons/gui/tabs/inventorytab.py:133
 msgid "Equip weapon"
@@ -1201,7 +1205,7 @@ msgstr "Sommaire du navire"
 
 #: horizons/gui/tabs/overviewtab.py:160
 msgid "Trade ship"
-msgstr ""
+msgstr "Navire de commerce"
 
 #. (tooltip of widget: foundSettlement)
 #: horizons/gui/tabs/overviewtab.py:184 horizons/i18n/guitranslations.py:520
