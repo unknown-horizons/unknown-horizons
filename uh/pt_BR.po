@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-12 16:40+0200\n"
+"PO-Revision-Date: 2011-10-12 16:50+0200\n"
 "Last-Translator: paulodealmeida <paulodealmeida@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -612,47 +612,48 @@ msgstr "rosa"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "pioneer"
-msgstr ""
+msgstr "pioneiro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr ""
+msgstr "batatas"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr ""
+msgstr "roxo"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "red"
-msgstr ""
+msgstr "vermelho"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "sailor"
-msgstr ""
+msgstr "marinheiro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "sal"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "settler"
-msgstr ""
+msgstr "colono"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr ""
+msgstr "açúcar"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "sugar cane"
-msgstr ""
+msgstr "cana de açúcar"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -662,51 +663,54 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "textile"
-msgstr ""
+msgstr "têxtil"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "tobacco leaves"
-msgstr ""
+msgstr "folhas de tabaco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "tobacco plants"
-msgstr ""
+msgstr "planta de tabaco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "tobaccos"
-msgstr ""
+msgstr "produtos de tabaco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tools"
-msgstr ""
+msgstr "ferramentas"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "white"
-msgstr ""
+msgstr "branco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wood"
-msgstr ""
+msgstr "madeira"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr ""
+msgstr "lã"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "yellow"
-msgstr ""
+msgstr "amarelo"
 
 #: horizons/engine.py:70
 msgid "Restart required"
-msgstr "Requer reinício"
+msgstr "É necessário reiniciar"
 
 #: horizons/engine.py:71
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -714,15 +718,15 @@ msgstr "As mudanças solicitadas requerem o reinício do Unknown Horizons."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Restaurar as configurações padrão"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Todas as alterações feitas até ao momento serão removidas."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Deseja continuar?"
 
 #: horizons/engine.py:189
 msgid "System default"
