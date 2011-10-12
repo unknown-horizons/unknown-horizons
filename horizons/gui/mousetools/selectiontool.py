@@ -132,16 +132,17 @@ class SelectionTool(NavigationTool):
 		Called when selected instances changes. (Shows their menu)
 		If one of the selected instances can attack, switch mousetool to AttackingTool
 		"""
-		if len(self.session.selected_instances) > 1:
+		selected = self.session.selected_instances
+		if len(selected) > 1 and all( i.is_unit for i in selected ):
 			self.session.ingame_gui.show_multi_select_tab()
-		elif len(self.session.selected_instances) == 1:
-			for i in self.session.selected_instances:
+		elif len(selected) == 1:
+			for i in selected:
 				i.show_menu()
 
 		#change session cursor to attacking tool if selected instances can attack
 		from attackingtool import AttackingTool
 		attacking_unit_found = False
-		for i in self.session.selected_instances:
+		for i in selected:
 			if hasattr(i, 'attack') and i.owner == self.session.world.player:
 				attacking_unit_found = True
 				break
