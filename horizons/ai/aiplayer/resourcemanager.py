@@ -300,6 +300,8 @@ class ResourceManager(WorldObject):
 		self._low_priority_requests.clear()
 
 	def __str__(self):
+		if not hasattr(self, "settlement_manager"):
+			return 'UninitialisedResourceManager'
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
 		for resource_manager in self._data.itervalues():
 			res = resource_manager.resource_id
