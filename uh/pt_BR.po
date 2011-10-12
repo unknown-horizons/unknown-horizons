@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-12 16:50+0200\n"
+"PO-Revision-Date: 2011-10-12 17:32+0200\n"
 "Last-Translator: paulodealmeida <paulodealmeida@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -847,12 +847,13 @@ msgstr "Confirmação para sobrescrever"
 
 #: horizons/gui/gui.py:277
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Por favor, selecione um jogo salvo ou clique em cancelar."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:277
+#, fuzzy
 msgid "Select a savegame"
-msgstr ""
+msgstr "Escolha um jogo salvo"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
@@ -935,6 +936,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"A funcionalidade de multi-jogador necessita da biblioteca \"pyenet\", que não "
+"foi encontrada no sistema."
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -943,10 +946,12 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Utilizadores de Windows: No momento não existe suporte adequado para "
+"Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Não foi possível iniciar a rede."
 
 #: horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the data you entered in the Network section in the settings dialogue."
@@ -1005,7 +1010,7 @@ msgstr "Versão errada"
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Número recomendado de jogadores: "
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -1035,29 +1040,28 @@ msgstr "Você informou um nome de jogador inválido"
 
 #: horizons/gui/modules/singleplayermenu.py:193
 msgid "Map size:"
-msgstr ""
+msgstr "Dimensão do mapa:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Água:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Dimensão máxima das ilhas:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Dimensão preferida das ilhas:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Desvio na dimensão das ilhas:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
-msgstr "Depósito de recursos"
+msgstr "Quantidade de recursos:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
