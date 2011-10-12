@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-12 09:50+0200\n"
+"PO-Revision-Date: 2011-10-12 09:53+0200\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1214,7 +1214,7 @@ msgstr "Établir une colonie"
 
 #: horizons/gui/tabs/overviewtab.py:190
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "Le navire doit se trouver près d'une île pour fonder une colonie."
 
 # An "apercu" is more a preview than an overview.
 # 76%
@@ -1266,7 +1266,7 @@ msgstr "Aucun"
 
 #: horizons/gui/widgets/playersships.py:83
 msgid "N/A"
-msgstr ""
+msgstr "Indisponible"
 
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
@@ -2216,7 +2216,7 @@ msgstr "Tenir la position"
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:693
 msgid "Passive"
-msgstr ""
+msgstr "Passif"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:698
@@ -2687,7 +2687,7 @@ msgstr "Commencer la partie"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:928
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:930
@@ -3047,11 +3047,10 @@ msgid "AI options"
 msgstr "Options d'IA"
 
 #: run_uh.py:113
-#, fuzzy
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
 msgstr ""
-"Utilise l'IA des joueurs <ai_players> (exclue la possible hybridation "
-"humain-IA ; défaut à 1)."
+"Utilise <ai_players> IA comme jouers (exclue la possibilité d'hybrides "
+"humain-IA; par défaut à 1)."
 
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."

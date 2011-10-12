@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-02 16:57+0200\n"
-"PO-Revision-Date: 2011-09-19 23:55+0200\n"
-"Last-Translator: Vincent <vherilier@gmail.com>\n"
+"PO-Revision-Date: 2011-09-24 12:38+0200\n"
+"Last-Translator: Marc <marc.moussa@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -319,7 +319,6 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
-#, fuzzy
 msgid ""
 "Now let's have a closer look at the main square.\n"
 "\n"
@@ -336,15 +335,15 @@ msgstr ""
 "Dans l'onglet «Compte» vous obtenez un bilan de cette île, avec tous les "
 "frais que vous payez ainsi que tous les impôts que vous gagnez.\n"
 "\n"
-"Les items 'Vendre'  et 'Acheter' font référence à votre balance commerciale "
+"Les points 'Vendre'  et 'Acheter' font référence à votre balance commerciale "
 "et seront expliqués plus tard.\n"
 "\n"
-"Si votre solde est positif, vous êtes tout-en-tous bénéficiaire.\n"
+"Si votre solde est positif, tout compte tenu vous faites un profit.\n"
 "\n"
 "Dans les différents onglets de sélection de niveaux vous pouvez voir des "
 "statistiques sur vos habitants. Vous pouvez également définir le niveau "
-"global de taxe spécifique et autoriser ou refuser aux habitants cette "
-"augmentation pour  passer au niveau suivant."
+"global de taxe spécifique et autoriser ou refuser aux habitants de ce niveau "
+"de passer au niveau suivant."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:40
