@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-12 15:41+0200\n"
+"PO-Revision-Date: 2011-10-12 15:48+0200\n"
 "Last-Translator: paulodealmeida <paulodealmeida@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -98,13 +98,14 @@ msgstr "Veado"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Distillery"
-msgstr ""
+msgstr "Destilaria"
 
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "Doutor"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -113,24 +114,26 @@ msgstr "Fazenda"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Depósito de peixe"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Fisher"
-msgstr ""
+msgstr "Pescador"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Tenda do pescador"
 
 #. (text of widget: headline_BB_war1_ship1)
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr ""
+msgstr "Fragata"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -150,23 +153,26 @@ msgstr "Huker"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Tenda de caçador"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
-msgstr ""
+msgstr "Mina de ferro"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Log"
-msgstr ""
+msgstr "Tronco"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Lookout"
-msgstr ""
+msgstr "Vigia"
 
 #. This is a database entry: the name of a building.
 #: database files sql
