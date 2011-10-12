@@ -235,7 +235,7 @@ class SettlementManager(WorldObject):
 						production_line = production._prod_line
 						if resource_id in production_line.consumed_res:
 							# subtract because the amount will be negative
-							total -= production_line.consumed_res[resource_id] / production_line.time / GAME_SPEED.TICKS_PER_SECOND
+							total -= float(production_line.consumed_res[resource_id]) / production_line.time / GAME_SPEED.TICKS_PER_SECOND
 
 			self.__resident_resource_usage_cache[resource_id] = (Scheduler().cur_tick, total)
 		return self.__resident_resource_usage_cache[resource_id][1]
