@@ -25,12 +25,11 @@ import horizons.main
 
 from horizons.util import ActionSetLoader
 
-class SQLiteAnimationLoader(fife.ResourceLoader):
+class SQLiteAnimationLoader(object):
 	"""Loads animations from a SQLite database.
 	"""
 	def __init__(self):
-		super(SQLiteAnimationLoader, self).__init__()
-		self.thisown = 0
+		pass
 
 	def loadResource(self, location):
 		"""
@@ -44,17 +43,17 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		- cut:
 		#TODO: complete documentation
 		"""
-		commands = location.getFilename().split(':')
+		commands = location.split(':')
 		ident = commands.pop(0)
 		actionset, action, rotation = ident.split('-')
 		commands = zip(commands[0::2], commands[1::2])
 
-		ani = fife.Animation()
+		ani = fife.Animation.createAnimation()
+
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
 			frame_end = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]
-			idx = horizons.main.fife.imagepool.addResourceFromFile(file)
-			img = horizons.main.fife.imagepool.getImage(idx)
+			img = horizons.main.fife.imagemanager.load(file)
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')
@@ -78,58 +77,10 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 
 					img.setXShift(x)
 					img.setYShift(y)
-				elif command == 'cut':
-					loc = fife.ImageLocation('asdf')
-					loc.setParentSource(img)
-					x, y, w, h = arg.split(',')
 
-					if x.startswith('left'):
-						x = int(x[4:])
-					elif x.startswith('right'):
-						x = int(x[5:]) + img.getWidth()
-					elif x.startswith(('center', 'middle')):
-						x = int(x[6:]) + int(img.getWidth() / 2)
-					else:
-						x = int(x)
-
-					if y.startswith('top'):
-						y = int(y[3:])
-					elif y.startswith('bottom'):
-						y = int(y[6:]) - img.getHeight()
-					elif y.startswith(('center', 'middle')):
-						y = int(y[6:]) + int(img.getHeight() / 2)
-					else:
-						y = int(y)
-
-					if w.startswith('left'):
-						w = int(w[4:]) - x
-					elif w.startswith('right'):
-						w = int(w[5:]) + img.getWidth() - x
-					elif w.startswith(('center', 'middle')):
-						w = int(w[6:]) + int(img.getWidth() / 2) - x
-					else:
-						w = int(w)
-
-					if h.startswith('top'):
-						h = int(h[3:]) - y
-					elif h.startswith('bottom'):
-						h = int(h[6:]) + img.getHeight() - y
-					elif h.startswith(('center', 'middle')):
-						h = int(h[6:]) + int(img.getHeight() / 2) - y
-					else:
-						h = int(h)
-
-					loc.setXShift(x)
-					loc.setYShift(y)
-					loc.setWidth(w)
-					loc.setHeight(h)
-
-					idx = horizons.main.fife.imagepool.addResourceFromLocation(loc)
-					#img = horizons.main.fife.imagepool.getImage(idx)
-			ani.addFrame(fife.ResourcePtr(horizons.main.fife.imagepool, idx), max(1, int((float(frame_end) - frame_start)*1000)))
+			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
-		ani.thisown = 0
 		return ani
 
 

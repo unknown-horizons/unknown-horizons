@@ -339,6 +339,7 @@ class PATHS:
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
+	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 

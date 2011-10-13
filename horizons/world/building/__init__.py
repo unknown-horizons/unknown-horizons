@@ -137,6 +137,6 @@ class BuildingClass(type):
 					else:
 						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
 							   { 'id':action_set_id, 'rotation': rotation, 'action_id': action_id }
-					anim_id = horizons.main.fife.animationpool.addResourceFromFile(str(action_set_id)+"-"+str(action_id)+"-"+str(rotation) + ':shift:' + command)
-					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
-					action.setDuration(horizons.main.fife.animationpool.getAnimation(anim_id).getDuration())
+					anim = horizons.main.fife.animationloader.loadResource(str(action_set_id)+"-"+str(action_id)+"-"+str(rotation) + ':shift:' + command)
+					action.get2dGfxVisual().addAnimation(int(rotation), anim)
+					action.setDuration(anim.getDuration())

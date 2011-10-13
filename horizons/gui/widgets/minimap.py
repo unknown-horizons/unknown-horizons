@@ -45,11 +45,12 @@ class Minimap(object):
 	MINIMAP_BASE_IMAGE = "content/gfx/misc/minmap_water.png"
 
 	__next_minimap_id = 0
-
-	def __init__(self, rect, session, renderer):
+	
+	def __init__(self, rect, session, renderer, targetrenderer):
 		"""
 		@param rect: a Rect, where we will draw to
 		@param renderer: renderer to be used. Only fife.GenericRenderer is explicitly supported.
+		@param targetrenderer: target renderer to be used to draw directly into an image
 		"""
 		self.location = rect
 		self.renderer = renderer
@@ -62,7 +63,8 @@ class Minimap(object):
 		self._id = str(self.__class__.__next_minimap_id) # internal identifier, used for allocating resources
 		self.__class__.__next_minimap_id += 1
 
-		self.minimap_image = _MinimapImage(horizons.main.fife.imagepool, self.MINIMAP_BASE_IMAGE)
+		self.minimap_image = _MinimapImage( targetrenderer, horizons.main.fife.imagemanager, \
+											self.MINIMAP_BASE_IMAGE )
 
 
 	def end(self):
@@ -87,8 +89,8 @@ class Minimap(object):
 		# reset image
 		self.renderer.removeAll("minimap_a_image"+self._id)
 		self.minimap_image.reset()
-		node = fife.GenericRendererNode( fife.Point(self.location.center().x, self.location.center().y) )
-		self.renderer.addImage("minimap_a_image"+self._id, node, self.minimap_image.img_id)
+		node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
+		self.renderer.addImage("minimap_a_image"+self._id, node, self.minimap_image.image, False)
 
 		self._recalculate()
 		self._timed_update()
@@ -119,7 +121,7 @@ class Minimap(object):
 				corner[1] = self.world.min_y
 			corner = tuple(corner)
 			minimap_coords = self._get_rotated_coords( self._world_coord_to_minimap_coord(corner))
-			minimap_corners_as_renderer_node.append( fife.GenericRendererNode( \
+			minimap_corners_as_renderer_node.append( fife.RendererNode( \
 			  fife.Point(*minimap_coords) ) )
 		for i in xrange(0, 4):
 			self.renderer.addLine("minimap_b_cam_border"+self._id, minimap_corners_as_renderer_node[i], \
@@ -164,6 +166,7 @@ class Minimap(object):
 		@param where: Rect of minimap coords. Defaults to self.location"""
 		if where is None:
 			where = self.location
+			self.minimap_image.rendertarget.removeAll("minimap")
 
 		# calculate which area of the real map is mapped to which pixel on the minimap
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
@@ -179,7 +182,9 @@ class Minimap(object):
 		island_col = self.colors[self.island_id]
 		location_left = self.location.left
 		location_top = self.location.top
-		img = self.minimap_image.image
+		
+		rt = self.minimap_image.rendertarget
+		self.minimap_image.set_drawing_enabled()
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this faciliates calculating the real world coords
@@ -225,7 +230,7 @@ class Minimap(object):
 
 				# _get_rotated_coords has been inlined here
 				rot_x, rot_y = self._rotate( (location_left + x, location_top + y), self._rotations)
-				img.putPixel(rot_x - location_left, rot_y - location_top, *color)
+				rt.addPoint("minimap", fife.Point(rot_x - location_left, rot_y - location_top) , *color)
 
 
 	def _timed_update(self):
@@ -240,7 +245,7 @@ class Minimap(object):
 			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 3, 3)
 			for tup in area_to_color.tuple_iter():
 				try:
-					node = fife.GenericRendererNode(fife.Point(*self._get_rotated_coords(tup)))
+					node = fife.RendererNode(fife.Point(*self._get_rotated_coords(tup)))
 					self.renderer.addPoint("minimap_b_ship"+self._id, node, *color)
 				except KeyError:
 					# this happens in rare cases, when the ship is at the border of the map,
@@ -337,26 +342,23 @@ class Minimap(object):
 class _MinimapImage(object):
 	"""Encapsulates handling of fife Image.
 	Provides:
-	- self.img_id: fife resource id of image
-	-	self.image: instance of fife.Image
+	- self.image: instance of fife.Image
+	- self.rendertarget: instance of fife.RenderTarget
 	"""
-	def __init__(self, imagepool, image_file_path):
-		self.imagepool = imagepool
+	def __init__(self, targetrenderer, imagemanager, image_file_path):
+		self.imagemanager = imagemanager
+		self.targetrenderer = targetrenderer
 		self.image_file_path = image_file_path
-		self.img_id = None # fife resource id of image
-		self.image = None # instance of fife.Image
-		self._load_img()
-
-	def _load_img(self):
-		self.img_id = self.imagepool.addResourceFromFile( self.image_file_path )
-		self.image = self.imagepool.getImage( self.img_id )
+		self.image = self.imagemanager.load( self.image_file_path )
+		self.rendertarget = targetrenderer.createRenderTarget( self.image )
 
 	def reset(self):
 		"""Reset image to original image"""
-		# release
-		# NOTE: the refcount of the image is for some reason 0 here, so we must not decrease it.
-		self.imagepool.release( self.img_id, False )
-		# load
-		self._load_img()
+		# reload
+		self.imagemanager.reload( self.image_file_path )
+		self.image = self.imagemanager.get( self.image_file_path )
+		
+	def set_drawing_enabled(self):
+		self.targetrenderer.setRenderTarget( self.image_file_path, False, 0 )
 
 bind_all(Minimap)

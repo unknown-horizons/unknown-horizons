@@ -42,6 +42,7 @@
 	<VBox> <Label text="Czech"  name="headline" />
 		<VBox  name="box">
 			<Label text="Kristian Hynek (Kris_CZ)" />
+			<Label text="Petr Palička (peca)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="German"  name="headline" />
@@ -55,6 +56,7 @@
 			<Label text="William Cabrera (willicab)" />
 			<Label text="Álex Plaza" />
 			<Label text="Fabio Fernández (Catharsius)" />
+			<Label text="MicMic" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Estonian"  name="headline" />
@@ -68,17 +70,25 @@
 			<Label text="Vincent Herilier (LiveWire)" />
 			<Label text="Sebastien Charpentier (seblabel)" />
 			<Label text="Hugues Fafard (Antagonym)" />
+			<Label text="Quentin (LawNasK)" />
+			<Label text="tintou" />
 		</VBox>
 	</VBox>
-	<VBox> <Label text="Lithuanian"  name="headline" />
+	<VBox> <Label text="Hungarian"  name="headline" />
 		<VBox  name="box">
-			<Label text="Mantas Kondrotas (Anielus)" />
+			<Label text="Szontágh Ferenc (ghostarthour)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Italian"  name="headline" />
 		<VBox  name="box">
 			<Label text="Fabio Pedretti" />
 			<Label text="sioux83" />
+			<Label text="tagarista" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Lithuanian"  name="headline" />
+		<VBox  name="box">
+			<Label text="Mantas Kondrotas (Anielus)" />
 		</VBox>
 	</VBox>
 </VBox>
@@ -101,6 +111,7 @@
 		<VBox  name="box">
 			<Label text="Luth" />
 			<Label text="Jasper Tepper (Shadow23)" />
+			<Label text="angellus" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Polish"  name="headline" />
@@ -109,18 +120,22 @@
 			<Label text="Stanislaw Gackowski (soeb)" />
 			<Label text="Mateusz Bartkowski (Eugen)" />
 			<Label text="Natrius" />
+			<Label text="mtfk" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Portuguese"  name="headline" />
 		<VBox  name="box">
 			<Label text="Nuno Alves (MadMonk)" />
 			<Label text="Nelson Marques (nmarques)" />
+			<Label text="Sérgio Lopes (Knitter)" />
+			<Label text="bdias" />
 
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Brazilian Portuguese"  name="headline" />
 		<VBox  name="box">
 			<Label text="Henrique Poyatos (hpoyatos)" />
+			<Label text="claudinei" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Russian"  name="headline" />
@@ -132,7 +147,13 @@
 	</VBox>
 	<VBox> <Label text="Slovenian"  name="headline" />
 		<VBox  name="box">
-			<Label text="Andrej Žnidaršič" />
+			<Label text="Andrej Žnidaršič (andrejz)" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Swedish"  name="headline" />
+		<VBox  name="box">
+			<Label text="pilen" />
+			<Label text="Nagrim" />
 		</VBox>
 	</VBox>
 </VBox>

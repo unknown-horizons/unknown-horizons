@@ -117,12 +117,22 @@ class GroundClass(type):
 		#			action.setDuration(horizons.main.fife.animationpool.getAnimation(anim_id).getDuration())
 
 		animation_45, animation_135, animation_225, animation_315 = \
-		     db("SELECT \
+			 db("SELECT \
 		     (SELECT file FROM animation WHERE animation_id = animation_45 LIMIT 1), \
 		     (SELECT file FROM animation WHERE animation_id = animation_135 LIMIT 1), \
 		     (SELECT file FROM animation WHERE animation_id = animation_225 LIMIT 1), \
 		     (SELECT file FROM animation WHERE animation_id = animation_315 LIMIT 1) \
 		     FROM ground WHERE id = ?", self.id)[0]
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
-			img = horizons.main.fife.imagepool.addResourceFromFile(file)
-			visual.addStaticImage(int(rotation), img)
+			if not horizons.main.fife.use_atlases:
+				img = horizons.main.fife.imagemanager.load(file)
+			else:
+				if horizons.main.fife.imagemanager.exists(file):
+					img = horizons.main.fife.imagemanager.get(file)
+				else:
+					img = horizons.main.fife.imagemanager.create(file)
+					atlas_id, xpos, ypos, width, height = db("SELECT atlas_id, xpos, ypos, width, height FROM tile_sets_atlas where file = ?", file)[0]
+					region = fife.Rect(xpos, ypos, width, height)
+					img.useSharedImage(horizons.main.fife.animationloader.atlaslib[atlas_id], region)				
+				
+			visual.addStaticImage(int(rotation), img.getHandle())

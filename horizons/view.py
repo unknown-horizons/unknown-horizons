@@ -31,10 +31,9 @@ from horizons.constants import LAYERS, VIEW, GAME_SPEED
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
-	def __init__(self, session, center = (0, 0)):
+	def __init__(self, session):
 		"""
 		@param session: Session instance
-		@param center: center position for the main camera
 		"""
 		super(View, self).__init__()
 		self.session = session
@@ -96,6 +95,7 @@ class View(ChangeListener):
 		pos.x = x
 		pos.y = y
 		self.cam.setLocation(loc)
+		self.cam.refresh()
 		self._changed()
 
 	def autoscroll(self, x, y):
@@ -155,14 +155,6 @@ class View(ChangeListener):
 
 		self.cam.setLocation(loc)
 		horizons.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
-		self._changed()
-
-	def set_location(self, location):
-		loc = self.cam.getLocation()
-		pos = loc.getExactLayerCoordinatesRef()
-		pos.x, pos.y = location[0], location[1]
-		self.cam.setLocation(loc)
-		self.cam.refresh()
 		self._changed()
 
 	def zoom_out(self):
@@ -228,4 +220,4 @@ class View(ChangeListener):
 		zoom, rotation, loc_x, loc_y = res[0]
 		self.set_zoom(zoom)
 		self.set_rotation(rotation)
-		self.set_location((loc_x, loc_y))
+		self.center(loc_x, loc_y)

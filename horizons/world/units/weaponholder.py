@@ -463,7 +463,7 @@ class MovingWeaponHolder(WeaponHolder):
 		Used when shooting in specialized unit code.
 		"""
 		if Scheduler().rem_call(self, self._move_tick):
-			Scheduler().add_new_object(Callback(self._move_tick, True), self, ticks)
+			Scheduler().add_new_object(Callback(self._move_tick, resume=False), self, ticks)
 
 	def _move_and_attack(self, destination, not_possible_action = None, in_range_callback = None):
 		"""

@@ -112,7 +112,7 @@ class MPManager(LivingObject):
 				self.log.debug("Got command packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
 				self.commandsmanager.add_packet(packet)
 			elif isinstance(packet, CheckupHashPacket):
-				self.log.debug("Got checkhash packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
+				self.log.debug("Got checkuphash packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
 				self.checkuphashmanager.add_packet(packet)
 			else:
 				self.log.warn("invalid packet: "+str(packet))

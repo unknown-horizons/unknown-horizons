@@ -39,7 +39,7 @@ from fife.extensions.fife_settings import Setting, FIFE_MODULE
 import horizons.main
 
 import horizons.gui.style
-from horizons.util import SQLiteAnimationLoader, Callback, parse_port
+from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader, Callback, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations
 from horizons.util.gui import load_uh_widget
@@ -98,6 +98,9 @@ class Fife(ApplicationBase):
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
 
+		logToPrompt, logToFile, debugPychan = True, True, False
+		self._log = fifelog.LogManager(self.engine, 1 if logToPrompt else 0, 1 if logToFile else 0)
+
 		self.loadSettings()
 
 		self.pychan = pychan
@@ -117,12 +120,14 @@ class Fife(ApplicationBase):
 	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers"] }
 
 	def _setup_settings(self, check_file_version=True):
+		_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
+		if not os.path.exists(_user_config_file):
+			check_file_version = False
 		if check_file_version:
 			# check if user settings file is the current one
 
 			# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently (although the doc states otherwise)
 			# therefore translate paths to absolute ones
-			_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
 			user_config_parser = SimpleXMLSerializer( _user_config_file )
 			user_settings_version = user_config_parser.get("meta", "SettingsVersion", -1)
 			_template_config_file = os.path.join( os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE )
@@ -132,17 +137,17 @@ class Fife(ApplicationBase):
 			if template_settings_version > user_settings_version: # we have to update the file
 				# create settings so we have a list of all settings
 				self._setup_settings(check_file_version=False)
-				# now, as we have the list, we can overwrite it and fill it with the values
-				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
-				user_config_parser = SimpleXMLSerializer( _user_config_file )
 
+				# save settings here
+				entries = []
 				def update_value(modulename, entryname):
 					# retrieve values from loaded settings file
 					try:
 						value = self._setting.get(modulename, entryname)
 					except UnicodeEncodeError: # this can happen when unicode data is saved as str
 						value = "default"
-					user_config_parser.set(modulename, entryname, value)
+					entries.append( (modulename, entryname, value ) )
+
 				# update known settings and unreferenced settings
 				for modulename, module in self._setting.entries.iteritems():
 					for entryname in module.iterkeys():
@@ -151,8 +156,12 @@ class Fife(ApplicationBase):
 					for entryname in entry_list:
 						update_value(modulename, entryname)
 
+				# write actual new file
+				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
+				user_config_parser = SimpleXMLSerializer( _user_config_file )
+				for modulename, entryname, value in entries:
+					user_config_parser.set(modulename, entryname, value)
 				user_config_parser.save()
-
 
 		self._setting = LocalizedSetting(app_name=UH_MODULE,
 		                                 settings_file=PATHS.USER_CONFIG_FILE,
@@ -215,17 +224,30 @@ class Fife(ApplicationBase):
 			horizons.main._modules.gui.show_popup(headline, message)
 
 	def __setup_screen_resolutions(self):
-		# Note: This call only works if the engine is inited (self.run())
-		# Note: Seems that getPossibleResolutions() needs Fullscreen set ##HACK##
-		possible_resolutions = ["1024x768", "1280x800", "1280x960", "1280x1024",
-		                        "1366x768", "1440x900", "1600x900", "1600x1200",
-		                        "1680x1050","1920x1080","1920x1200",] # Add more supported resolutions here.
-		current_state = self.engine_settings.isFullScreen()
-		self.engine_settings.setFullScreen(1)
-		for x,y in self.engine_settings.getPossibleResolutions():
-			if x >= 1024 and y >= 768 and str(x) + "x" + str(y) not in possible_resolutions:
-				possible_resolutions.append(str(x) + "x" + str(y))
-		self.engine_settings.setFullScreen(current_state)
+		""" create an instance of fife.DeviceCaps and compile a list of possible resolutions
+
+			NOTE:
+				- This call only works if the engine is inited (self.run())
+		"""
+		possible_resolutions = []
+
+		_MIN_X = 1024
+		_MIN_Y = 768
+
+		devicecaps = fife.DeviceCaps()
+		devicecaps.fillDeviceCaps()
+
+		for screenmode in devicecaps.getSupportedScreenModes():
+			x = screenmode.getWidth()
+			y = screenmode.getHeight()
+			if x < _MIN_X or y < _MIN_Y:
+				continue
+			res = str(x) + 'x' + str(y)
+			if res not in possible_resolutions:
+				possible_resolutions.append(res)
+
+		possible_resolutions.sort()
+
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = possible_resolutions
 
 	def update_languages(self, data=None):
@@ -305,26 +327,26 @@ class Fife(ApplicationBase):
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
 		#self.eventmanager.setNonConsumableKeys([fife.Key.ESCAPE, fife.Key.F10])
-		self.guimanager = self.engine.getGuiManager()
-		self.console = self.guimanager.getConsole()
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
 		self.setup_sound()
-		self.imagepool = self.engine.getImagePool()
-		self.animationpool = self.engine.getAnimationPool()
-		self.animationloader = SQLiteAnimationLoader()
-		self.animationpool.addResourceLoader(self.animationloader)
+		self.imagemanager = self.engine.getImageManager()
+		self.targetrenderer = self.engine.getTargetRenderer()
+		self.use_atlases = False
+		if self.use_atlases: self.animationloader = SQLiteAtlasLoader()
+		else: self.animationloader =  SQLiteAnimationLoader()
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
-		self.default_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor.png')
-		self.tearing_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_tear.png')
-		self.attacking_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_attack.png')
-		self.cursor.set(fife.CURSOR_IMAGE, self.default_cursor_image)
+		self.default_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor.png')
+		self.tearing_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor_tear.png')
+		self.attacking_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor_attack.png')
+		self.cursor.set(self.default_cursor_image)
 
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
+		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
 		from horizons.gui.widgets.inventory import Inventory
 		from horizons.gui.widgets.buysellinventory import BuySellInventory
@@ -410,7 +432,7 @@ class Fife(ApplicationBase):
 	def enable_sound(self):
 		"""Enable all sound and start playing music."""
 		if self._setting.get(FIFE_MODULE, "PlaySounds"): # Set up sound if it is enabled
-			self.soundclippool = self.engine.getSoundClipPool()
+			self.soundclipmanager = self.engine.getSoundClipManager()
 			self.emitter['bgsound'] = self.soundmanager.createEmitter()
 			self.emitter['bgsound'].setGain(self._setting.get(UH_MODULE, "VolumeMusic"))
 			self.emitter['bgsound'].setLooping(False)
@@ -472,7 +494,7 @@ class Fife(ApplicationBase):
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
-			emitter.setSoundClip(horizons.main.fife.soundclippool.addResourceFromFile(soundfile))
+			emitter.setSoundClip(horizons.main.fife.soundclipmanager.load(soundfile))
 			emitter.play()
 
 	def set_volume(self, emitter_name, value):

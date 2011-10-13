@@ -414,7 +414,10 @@ class Production(WorldObject):
 		return True
 
 	def __str__(self): # debug
-		return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
+		if hasattr(self, "_state"):
+			return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
+		else:
+			return "UninitializedProduction()"
 
 
 class ChangingProduction(Production):

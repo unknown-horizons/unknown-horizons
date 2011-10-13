@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
 from fife.extensions import pychan
 
 from horizons.entities import Entities
@@ -65,7 +66,6 @@ class IngameGui(LivingObject):
 		self.session = session
 		self.main_gui = gui
 		self.main_widget = None
-		self.widgets = {}
 		self.tabwidgets = {}
 		self.settlement = None
 		self.resource_source = None
@@ -94,7 +94,8 @@ class IngameGui(LivingObject):
 		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0] + 77, 52, 121, 118)
 
 		self.minimap = Minimap(minimap_rect, self.session, \
-								           self.session.view.renderer['GenericRenderer'])
+		                       self.session.view.renderer['GenericRenderer'],
+							   horizons.main.fife.targetrenderer)
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
@@ -315,6 +316,11 @@ class IngameGui(LivingObject):
 		players.add(self.session.world.pirate)
 		players.discard(self.session.world.player)
 		players.discard(None) # e.g. when the pirate is disabled
+		if len(players) == 0: # this dialog is pretty useless in this case
+			self.main_gui.show_popup(_("No diplomacy possible"), \
+			                         _("Cannot do diplomacy as there are no other players."))
+			return
+
 		dtabs = []
 		for player in players:
 			dtabs.append(DiplomacyTab(player))

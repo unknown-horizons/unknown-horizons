@@ -129,7 +129,7 @@ class Weapon(object):
 				Callback(Bullet, self.bullet_image, position, destination, impact_ticks - bullet_delay, self.session),
 				self,
 				run_in = bullet_delay)
-		self.log.debug("fired %s", self)
+		self.log.debug("fired %s at %s, impact in %s", self, destination, impact_ticks - bullet_delay)
 
 		self.attack_ready = False
 		self.on_weapon_fired()

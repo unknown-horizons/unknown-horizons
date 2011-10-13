@@ -24,17 +24,17 @@ events:
         \ o tutorial!\n\nPara ajuda sobre como contactar a equipa, visita o ender\xE7\
         o www.unknown-horizons.org!\n\nE agora, vamos iniciar o jgoo."]
     type: logbook_w
-  - arguments: ["NOVA TAREFA: ESTABELECER UMA POVOA\xC7\xC3O NUMA ILHA", "Para mover\
-        \ o teu navio, selecciona-o com o bot\xE3o esquerdo do rato e clica com o\
-        \ bot\xE3o direito do rato no local para onde queres que o navio v\xE1.\n\n\
-        Uma vez perto da costa, o bot\xE3o com a \xE2ncora que est\xE1 no separador\
-        \ de relat\xF3rio ficar\xE1 activo.\n\nIsto indica que podes criar uma feitoria\
-        \ na costa pressionando esse bot\xE3o (chamado 'Construir povoa\xE7\xE3o').\n\
-        \nUma pr\xE9-visualiza\xE7\xE3o do edif\xEDcio ficar\xE1 dispon\xEDvel quando\
-        \ moveres o cursor do rato.\n\nPoder\xE1s construir em qualquer local em que\
-        \ a pr\xE9-visualiza\xE7\xE3o n\xE3o tenha a cor vermelha.\nClica no local\
-        \ onde desejas iniciar a constru\xE7\xE3o do teu primeiro edif\xEDcio.\n\n\
-        TAREFA: Construir uma feitoria na costa.", 2]
+  - arguments: ["ESTABELECER UMA POVOA\xC7\xC3O", "Para mover o teu navio, selecciona-o\
+        \ com o bot\xE3o esquerdo do rato e clica com o bot\xE3o direito do rato no\
+        \ local para onde queres que o navio v\xE1.\n\nUma vez perto da costa, o bot\xE3\
+        o com a \xE2ncora que est\xE1 no separador de relat\xF3rio ficar\xE1 activo.\n\
+        \nIsto indica que podes criar uma feitoria na costa pressionando esse bot\xE3\
+        o (chamado 'Construir povoa\xE7\xE3o').\n\nUma pr\xE9-visualiza\xE7\xE3o do\
+        \ edif\xEDcio ficar\xE1 dispon\xEDvel quando moveres o cursor do rato.\n\n\
+        Poder\xE1s construir em qualquer local em que a pr\xE9-visualiza\xE7\xE3o\
+        \ n\xE3o tenha a cor vermelha.\nClica no local onde desejas iniciar a constru\xE7\
+        \xE3o do teu primeiro edif\xEDcio.\n\nTAREFA: Construir uma feitoria na costa.",
+      2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -42,18 +42,18 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: ADICIONAR UM LENHADOR', "O material\
-        \ de constru\xE7\xE3o que estava no navio foi descarregado automaticamente.\
-        \ Podes agora iniciar a constru\xE7\xE3o de alguns edif\xEDcios simples.\n\
-        \nIremos come\xE7ar por adicionar um lenhador.\n\nEste passo \xE9 fundamental\
-        \ uma vez que, nesta fase, pranchas de madeira s\xE3o os \xFAnicos pilares\
-        \ que podem ser usados pelos marinheiros para suportar as tendas.\n\nAl\xE9\
-        m disso, o pescador precisa de algumas pranchas de madeira para criar a sua\
-        \ embarca\xE7\xE3o.\n\nDe modo a adicionar lenhadores abre o menu de constru\xE7\
-        \xE3o clicando no \xEDcone debaixo da miniatura do mapa ou pressionado a tecla\
-        \ B.\n\nO menu de constru\xE7\xE3o \xE9 ordenado por n\xEDveis.\nEncontras-te\
-        \ no primeiro n\xEDvel (o n\xEDvel de Marinheiros) e por isso apenas est\xE3\
-        o dispon\xEDveis os edif\xEDcios mais simples."]
+  - arguments: [!!python/unicode 'ADICIONAR UM LENHADOR', "O material de constru\xE7\
+        \xE3o que estava no navio foi descarregado automaticamente. Podes agora iniciar\
+        \ a constru\xE7\xE3o de alguns edif\xEDcios simples.\n\nIremos come\xE7ar\
+        \ por adicionar um lenhador.\n\nEste passo \xE9 fundamental uma vez que, nesta\
+        \ fase, pranchas de madeira s\xE3o os \xFAnicos pilares que podem ser usados\
+        \ pelos marinheiros para suportar as tendas.\n\nAl\xE9m disso, o pescador\
+        \ precisa de algumas pranchas de madeira para criar a sua embarca\xE7\xE3\
+        o.\n\nDe modo a adicionar lenhadores abre o menu de constru\xE7\xE3o clicando\
+        \ no \xEDcone debaixo da miniatura do mapa ou pressionado a tecla B.\n\nO\
+        \ menu de constru\xE7\xE3o \xE9 ordenado por n\xEDveis.\nEncontras-te no primeiro\
+        \ n\xEDvel (o n\xEDvel de Marinheiros) e por isso apenas est\xE3o dispon\xED\
+        veis os edif\xEDcios mais simples."]
     type: logbook_w
   - arguments: ['', "\xC0 media que a tua civiliza\xE7\xE3o progride ter\xE1s acesso\
         \ a novos edif\xEDcios, cada vez mais complexos.\n\nPor enquanto, selecciona\
@@ -84,16 +84,16 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: FORNECIMENTO DE COMIDA', "Vais tamb\xE9\
-        m precisar de empresa para produzir comida, isto porque a popula\xE7\xE3o\
-        \ em geral (e especialmente os marinheiros) andam sempre esfomeados.\n\nNo\
-        \ primeiro n\xEDvel, as unidades dispon\xEDveis que produzem comida s\xE3\
-        o o ca\xE7ador e o pescador.\n\nO ca\xE7ador, surpreendentemente, ca\xE7a\
-        \ animais nas florestas, portanto necessita de \xE1rvores por perto.\n\nPoder\xE1\
-        s at\xE9 colocar os seus ca\xE7adores junto das florestas dos lenhadores.\n\
-        \nPode acontecer que os animais n\xE3o se reproduzam suficientemente r\xE1\
-        pido ou que simplesmente sejam bons a esconderem-se dos ca\xE7adores.\n\n\
-        Conclus\xE3o: os ca\xE7adores n\xE3o ser muito fi\xE1veis, sobretudo se necessitares\
+  - arguments: [!!python/unicode 'FORNECIMENTO DE COMIDA', "Vais tamb\xE9m precisar\
+        \ de empresa para produzir comida, isto porque a popula\xE7\xE3o em geral\
+        \ (e especialmente os marinheiros) andam sempre esfomeados.\n\nNo primeiro\
+        \ n\xEDvel, as unidades dispon\xEDveis que produzem comida s\xE3o o ca\xE7\
+        ador e o pescador.\n\nO ca\xE7ador, surpreendentemente, ca\xE7a animais nas\
+        \ florestas, portanto necessita de \xE1rvores por perto.\n\nPoder\xE1s at\xE9\
+        \ colocar os seus ca\xE7adores junto das florestas dos lenhadores.\n\nPode\
+        \ acontecer que os animais n\xE3o se reproduzam suficientemente r\xE1pido\
+        \ ou que simplesmente sejam bons a esconderem-se dos ca\xE7adores.\n\nConclus\xE3\
+        o: os ca\xE7adores n\xE3o ser muito fi\xE1veis, sobretudo se necessitares\
         \ de uma oferta cont\xEDnua de comida."]
     type: logbook_w
   - arguments: ['', "O pescador necessita de um edificio na costa como a feitoria\
@@ -136,7 +136,7 @@ events:
         Os \xEDtems na sec\xE7\xE3o 'Venda' e 'Compra' referem-se ao saldo das trocas\
         \ comerciasi e ser\xE3o explicados mais tarde.\n\nSe o saldo \xE9 positivo,\
         \ no geral est\xE1s a ter lucro.\n\nNos v\xE1rios separadores de relat\xF3\
-        rios \xE9 poss\xEDvel ver estat\xEDsticas sobre os habitantes. \xC9 tamb\xE9\
+        rios \xE9 poss\xEDvel ver estat\xEDsticas sobre os habitantes.\n\xC9 tamb\xE9\
         m o local onde se pode definir o valor dos impostos para determinado n\xED\
         vel e permitir ou proibir o melhoramento dos habitantes para o n\xEDvel seguinte."]
     type: logbook
@@ -188,10 +188,10 @@ events:
         \ ir\xE3o aumentar.\n\nCaso contr\xE1rio, a felicidade e as receitas diminuem.\
         \ Passado algum tempo os residentes podem ficar muito desapontados e simplesmente\
         \ abandonar a aldeia deixando para tr\xE1s um conjunto de ru\xEDnas em decad\xEA\
-        ncia.\n\nNota que \xE9 tamb\xE9m aqui que podes mudar as defini\xE7\xF5es\
-        \ globais dos impostos.\n\nTAREFA: Constr\xF3i, pelo menos, tr\xEAs tendas\
-        \ adicionais.\n\nDICA: Mantendo pressionada a tecla SHIFT permite construir\
-        \ v\xE1rios edif\xEDcios do mesmo tipo de uma s\xF3 vez."]
+        ncia.\nNota que \xE9 tamb\xE9m aqui que podes mudar as defini\xE7\xF5es globais\
+        \ dos impostos.\n\nTAREFA: Constr\xF3i, pelo menos, tr\xEAs tendas adicionais.\n\
+        \nDICA: Mantendo pressionada a tecla SHIFT permite construir v\xE1rios edif\xED\
+        cios do mesmo tipo de uma s\xF3 vez."]
     type: logbook
   - arguments: ["Constr\xF3i, pelo menos, tr\xEAs tendas adicionais e ligua-as \xE0\
         \ pra\xE7a principal."]
@@ -206,18 +206,18 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: CONSTRUIR O SINAL DE FOGO', "V\xEA\
-        s o navio que passa pela tua ilha de tempos a tempos? Esse navio pertence\
-        \ ao Mercador Livre, um dos primeiros povoadores deste arquip\xE9lago.\n\n\
-        O mercador pode fornecer \xE0 tua povoa\xE7\xE3o os bens que esta ainda n\xE3\
-        o consegue produzir.\nPodes tamb\xE9m vender o excesso da produ\xE7\xE3o mas,\
-        \ regra geral, consumir esse excesso (criando novas tendas) em vez de o vender\
-        \ resulta num lucro maior.\n\nNormalmente os navios do mercador navegam pelo\
-        \ mar \xE0 procura de neg\xF3cios, mas \xE9 poss\xEDvel acelerar as coisas\
-        \ um pouco.\n\nPara isso, constr\xF3i um sinal de fogo na costa perto da feitoria.\
-        \ O sinal de fogo ir\xE1 indicar aos navios que passam onde fica a tua povoa\xE7\
-        \xE3o.\n\nO sinal de fogo tem de cobrir a \xE1rea em que os navios passam\
-        \ para ser eficaz."]
+  - arguments: [!!python/unicode 'NOVA TAREFA: O SINAL DE FOGO', "V\xEAs o navio que\
+        \ passa pela tua ilha de tempos a tempos? Esse navio pertence ao Mercador\
+        \ Livre, um dos primeiros povoadores deste arquip\xE9lago.\n\nO mercador pode\
+        \ fornecer \xE0 tua povoa\xE7\xE3o os bens que esta ainda n\xE3o consegue\
+        \ produzir.\nPodes tamb\xE9m vender o excesso da produ\xE7\xE3o mas, regra\
+        \ geral, consumir esse excesso (criando novas tendas) em vez de o vender resulta\
+        \ num lucro maior.\n\nNormalmente os navios do mercador navegam pelo mar \xE0\
+        \ procura de neg\xF3cios, mas \xE9 poss\xEDvel acelerar as coisas um pouco.\n\
+        \nPara isso, constr\xF3i um sinal de fogo na costa perto da feitoria. O sinal\
+        \ de fogo ir\xE1 indicar aos navios que passam onde fica a tua povoa\xE7\xE3\
+        o.\n\nO sinal de fogo tem de cobrir a \xE1rea em que os navios passam para\
+        \ ser eficaz."]
     type: logbook_w
   - arguments: ['', "Depois deste pequeno an\xFAncio, o mercador ir\xE1 parar na feitoria\
         \ mesmo que tenha inicialmente pensado em passar sem parar.\n\nPodes propor\
@@ -243,12 +243,12 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NOVA TAREFA: APRENDE A EFECTUAR TROCAS COMERCIAS',
-      "Excelente! O Mercador Livre ir\xE1 agora parar, periodicamente, na feitoria.\n\
-        \nVamos continuar o tutorial sobre como efectuar trocas comerciais.\n\nAp\xF3\
-        s seleccionar um tipo de mercadoria, a barra verde no fundo do compartimento\
-        \ (se vis\xEDvel) mostra a quantidade dispon\xEDvel em armaz\xE9m para o tipo\
-        \ de mercadoria escolhido.\n\nArrastando a barra para a direita, em cada compartimento,\
+  - arguments: [!!python/unicode 'APRENDE A EFECTUAR TROCAS COMERCIAS', "Excelente!\
+        \ O Mercador Livre ir\xE1 agora parar, periodicamente, na feitoria.\n\nVamos\
+        \ continuar o tutorial sobre como efectuar trocas comerciais.\n\nAp\xF3s seleccionar\
+        \ um tipo de mercadoria, a barra verde no fundo do compartimento (se vis\xED\
+        vel) mostra a quantidade dispon\xEDvel em armaz\xE9m para o tipo de mercadoria\
+        \ escolhido.\n\nArrastando a barra para a direita, em cada compartimento,\
         \ estar\xE1s a definir um 'valor a atingir', valor este que tem significados\
         \ diferentes consoante estejas a 'Comprar' ou a 'Vender'.\nQuando est\xE1\
         s a comprar \xE9 preciso que tenhas espa\xE7o em armaz\xE9m para o valor que\
@@ -264,9 +264,9 @@ events:
         \ ao objectivo que definiste ter\xE1s de esperar que ele volte novamente.\n\
         \nO Unknown Horizons possui uma funcionalidade de ajude inteligente de pre\xE7\
         os, dessa forma o valor unit\xE1rio de uma mercadoria pode variar.\nN\xE3\
-        o \xE9 poss\xEDvel definir o pre\xE7o manualmente!\n\nPodes ver um saldo das\
+        o \xE9 poss\xEDvel definir o pre\xE7o manualmente!\nPodes ver um saldo das\
         \ tuas trocas comerciais no separador 'Conta' comparando os valores nas sec\xE7\
-        \xF5es de 'Comprar' e 'Vender'.\n\nTAREFA: Compra quantas ferramentas forem\
+        \xF5es de 'Comprar' e 'Vender'.\nTAREFA: Compra quantas ferramentas forem\
         \ necess\xE1rias para teres em stock 30 ferramentas!"]
     type: logbook
   - arguments: [!!python/unicode 'Atinge o limite de, pelo menos, 30 ferramentas em
@@ -282,9 +282,9 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: ["NOVA TAREFA: CONSTR\xD3I UM PAVILH\xC3O", "Estas ferramentas ser\xE3\
-        o suficientes por agora. Bom trabalho!\n\nChegou o momento de fornecer alojamento,\
-        \ uma pra\xE7a principal e alimenta\xE7\xE3o aos teus habitantes.\n\nNo entanto\
+  - arguments: ["CONSTR\xD3I UM PAVILH\xC3O", "Estas ferramentas ser\xE3o suficientes\
+        \ por agora. Bom trabalho!\n\nChegou o momento de fornecer alojamento, uma\
+        \ pra\xE7a principal e alimenta\xE7\xE3o aos teus habitantes.\n\nNo entanto\
         \ existe ainda outra exig\xEAncia a cumprir, poder\xE1s verificar que no mercado\
         \ ou no separador das tendas - os teus marinheiros querem um edif\xEDcio b\xE1\
         sico onde possam orar.\n\nA solu\xE7\xE3o \xE9 construir um pavilh\xE3o, que\
@@ -428,18 +428,18 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: ["NOVA TAREFA: CONSTR\xD3I UM ARMAZ\xC9M", "Tens observado a lenhador\
-        \ recentemente?\n\nUma vez que a feitoria n\xE3o tem espa\xE7o ilimitado para\
-        \ armazenar mercadorias, os transportadores param de as recolher quando o\
-        \ armaz\xE9m est\xE1 cheio.\nSe nenhum marinheiro quis recentemente remodelar\
-        \ a sua tenda, possivelmente ter\xE1s muitas t\xE1buas, e nesse caso o lenhador\
-        \ poder\xE1 estar parado.\nPodemos rectificar esta situa\xE7\xE3o de duas\
-        \ formas que iremos ver de seguida.\n\nTodas as unidades oferecem a possibilidade\
-        \ de pararem a sua actividade.\nIsto pode parecer estranho mas clica na roda\
-        \ dentada que podes ver, por exemplo, no relat\xF3rio do lenhador.\n\nSe este\
-        \ modo for ligado (chamamos-lhe 'Desactivado'), a produ\xE7\xE3o p\xE1ra e\
-        \ pagar\xE1s menos custos de manuten\xE7\xE3o. N\xE3o ser\xE3o nulos, mas\
-        \ ser\xE3o inferiores aos custos apresentados caso a unidade esteja a produzir."]
+  - arguments: ["NOVA TAREFA: UM ARMAZ\xC9M", "Tens observado a lenhador recentemente?\n\
+        \nUma vez que a feitoria n\xE3o tem espa\xE7o ilimitado para armazenar mercadorias,\
+        \ os transportadores param de as recolher quando o armaz\xE9m est\xE1 cheio.\n\
+        Se nenhum marinheiro quis recentemente remodelar a sua tenda, possivelmente\
+        \ ter\xE1s muitas t\xE1buas, e nesse caso o lenhador poder\xE1 estar parado.\n\
+        Podemos rectificar esta situa\xE7\xE3o de duas formas que iremos ver de seguida.\n\
+        \nTodas as unidades oferecem a possibilidade de pararem a sua actividade.\n\
+        Isto pode parecer estranho mas clica na roda dentada que podes ver, por exemplo,\
+        \ no relat\xF3rio do lenhador.\n\nSe este modo for ligado (chamamos-lhe 'Desactivado'),\
+        \ a produ\xE7\xE3o p\xE1ra e pagar\xE1s menos custos de manuten\xE7\xE3o.\
+        \ N\xE3o ser\xE3o nulos, mas ser\xE3o inferiores aos custos apresentados caso\
+        \ a unidade esteja a produzir."]
     type: logbook_w
   - arguments: ['', "Isto significa que podes poupar dinheiro quando n\xE3o necessitas\
         \ que uma unidade produza recursos durante um per\xEDodo de tempo mas n\xE3\

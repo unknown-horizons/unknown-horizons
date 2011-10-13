@@ -323,11 +323,16 @@ class SelectableBuilding(object):
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
 								         self.selection_color[2], 1)
 		if reset_cam:
-			self.session.view.set_location(self.position.origin.to_tuple())
+			self.session.view.center(*self.position.origin.to_tuple())
 		self._do_select(renderer, self.position, self.session.world, self.settlement)
+		self._is_selected = True
 
 	def deselect(self):
-		"""Runs neccassary steps to deselect the building."""
+		"""Runs neccassary steps to deselect the building.
+		Only deselects if this building has been selected."""
+		if not hasattr(self, "_is_selected") or not self._is_selected:
+			return # only deselect selected buildings (simplifies other code)
+		self._is_selected = False
 		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self._instance)
 		renderer.removeAllColored()

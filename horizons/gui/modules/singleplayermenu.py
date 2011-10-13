@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from math import ceil
+
 import horizons.main
 
 from horizons.util import Callback, random_map
@@ -192,31 +194,42 @@ class SingleplayerMenu(object):
 		def on_map_size_slider_change():
 			widget.findChild(name = 'map_size_lbl').text = _('Map size:') + u' ' + \
 				unicode(self.map_sizes[int(map_size_slider.getValue())])
+			horizons.main.fife.set_uh_setting("RandomMapSize", map_size_slider.getValue())
+			horizons.main.fife.save_settings()
 		map_size_slider.capture(on_map_size_slider_change)
+		map_size_slider.setValue(horizons.main.fife.get_uh_setting("RandomMapSize"))
 
 		water_percent_slider = widget.findChild(name = 'water_percent_slider')
 		def on_water_percent_slider_change():
-			widget.findChild(name = 'water_percent_lbl').text = _('Water:') + u' ' + \
+			widget.findChild(name = 'water_percent_lbl').text = _('Water: ') + u' ' + \
 				unicode(self.water_percents[int(water_percent_slider.getValue())]) + u'%'
+			horizons.main.fife.set_uh_setting("RandomMapWaterPercent", water_percent_slider.getValue())
 		water_percent_slider.capture(on_water_percent_slider_change)
+		water_percent_slider.setValue(horizons.main.fife.get_uh_setting("RandomMapWaterPercent"))
 
 		max_island_size_slider = widget.findChild(name = 'max_island_size_slider')
 		def on_max_island_size_slider_change():
 			widget.findChild(name = 'max_island_size_lbl').text = _('Max island size:') + u' ' + \
 				unicode(self.island_sizes[int(max_island_size_slider.getValue())])
+			horizons.main.fife.set_uh_setting("RandomMapMaxIslandSize", max_island_size_slider.getValue())
 		max_island_size_slider.capture(on_max_island_size_slider_change)
+		max_island_size_slider.setValue(horizons.main.fife.get_uh_setting("RandomMapMaxIslandSize"))
 
 		preferred_island_size_slider = widget.findChild(name = 'preferred_island_size_slider')
 		def on_preferred_island_size_slider_change():
 			widget.findChild(name = 'preferred_island_size_lbl').text = _('Preferred island size:') + u' ' + \
 				unicode(self.island_sizes[int(preferred_island_size_slider.getValue())])
+			horizons.main.fife.set_uh_setting("RandomMapPreferredIslandSize", preferred_island_size_slider.getValue())
 		preferred_island_size_slider.capture(on_preferred_island_size_slider_change)
+		preferred_island_size_slider.setValue(horizons.main.fife.get_uh_setting("RandomMapPreferredIslandSize"))
 
 		island_size_deviation_slider = widget.findChild(name = 'island_size_deviation_slider')
 		def on_island_size_deviation_slider_change():
 			widget.findChild(name = 'island_size_deviation_lbl').text = _('Island size deviation:') + u' ' + \
 				unicode(self.island_size_deviations[int(island_size_deviation_slider.getValue())])
+			horizons.main.fife.set_uh_setting("RandomMapIslandSizeDeviation", island_size_deviation_slider.getValue())
 		island_size_deviation_slider.capture(on_island_size_deviation_slider_change)
+		island_size_deviation_slider.setValue(horizons.main.fife.get_uh_setting("RandomMapIslandSizeDeviation"))
 
 		on_map_size_slider_change()
 		on_water_percent_slider_change()
@@ -234,9 +247,11 @@ class SingleplayerMenu(object):
 
 		resource_density_slider = widget.findChild(name = 'resource_density_slider')
 		def on_resource_density_slider_change():
-			widget.findChild(name = 'resource_density_lbl').text = _('Resource density:') + u' ' + \
+			widget.findChild(name = 'resource_density_lbl').text = _('Resource density: ') + u' ' + \
 				unicode(self.resource_densities[int(resource_density_slider.getValue())]) + u'x'
+			horizons.main.fife.set_uh_setting("MapResourceDensity", resource_density_slider.getValue())
 		resource_density_slider.capture(on_resource_density_slider_change)
+		resource_density_slider.setValue(horizons.main.fife.get_uh_setting("MapResourceDensity"))
 
 		on_resource_density_slider_change()
 

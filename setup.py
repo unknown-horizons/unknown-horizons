@@ -4,8 +4,9 @@ from __future__ import with_statement
 from distutils.core import setup
 from distutils.command.build import build
 from distutils.spawn import spawn, find_executable
-from DistUtilsExtra.command import build_i18n, build_extra
+import distutils.cmd
 import os
+import glob
 import platform
 from shutil import rmtree, copytree
 from horizons.constants import VERSION
@@ -38,19 +39,117 @@ arch = platform.machine()
 dir = "horizons/network/%s-x%s" % (type, arch[-2:])
 package_data = { dir: ['*.so'] }
 
-class _build_i18n(build_i18n.build_i18n):
+class _build_i18n(distutils.cmd.Command):
+	"""
+	Derived from https://launchpad.net/python-distutils-extra
+	to avoid an additional dependency
+	"""
+	description = "integrate the gettext framework"
+	user_options = [('desktop-files=', None, '.desktop.in files that should be merged'),
+			('domain=', 'd', 'gettext domain'),
+			('po-dir=', 'p', 'directory that holds the i18n files'),
+			('bug-contact=', None, 'contact address for msgid bugs')]
+
+	def initialize_options(self):
+		self.desktop_files = []
+		self.domain = None
+		self.bug_contact = None
+		self.po_dir = None
+
+	def finalize_options(self):
+		if self.domain is None:
+			self.domain = self.distribution.metadata.name
+		if self.po_dir is None:
+			self.po_dir = "po"
+
 	def run(self):
 		"""
-		Check for more information:
-		http://hotwire-shell.googlecode.com/svn/trunk/DistUtilsExtra/command/build_i18n.py
-		Since specifying a .mofile dir is not supported, we manually move build/mo/
-		to a place more appropriate in our opinion, currently content/lang/.
+		Update the language files, generate mo files and add them
+		to the to be installed files
 		"""
-		build_i18n.build_i18n.run(self)
+		if not os.path.isdir(self.po_dir):
+			return
+		po_files = glob.glob("%s/*.po" % self.po_dir)
+		if len(po_files) and not find_executable('msgfmt'):
+			self.warn("Can't generate language files, needs msgfmt. Only native language (english) will be available")
+			return
+		if len(self.desktop_files) and not find_executable('intltool-merge'):
+			self.warn("Can't generate desktop files, needs intltool-merge")
+			return
+
+		data_files = self.distribution.data_files
+		if data_files is None:
+			# in case not data_files are defined in setup.py
+			self.distribution.data_files = data_files = []
+
+		if self.bug_contact is not None:
+			os.environ["XGETTEXT_ARGS"] = "--msgid-bugs-address=%s " % self.bug_contact
+
+		# If there is a po/LINGUAS file, or the LINGUAS environment variable
+		# is set, only compile the languages listed there.
+		selected_languages = None
+		linguas_file = os.path.join(self.po_dir, "LINGUAS")
+		if os.path.isfile(linguas_file):
+			selected_languages = open(linguas_file).read().split()
+		if "LINGUAS" in os.environ:
+			selected_languages = os.environ["LINGUAS"].split()
+
+		max_po_mtime = 0
+		for po_file in po_files:
+			lang = os.path.basename(po_file[:-3])
+			if selected_languages and not lang in selected_languages:
+				continue
+			mo_dir = os.path.join("build", "mo", lang, "LC_MESSAGES")
+			mo_file = os.path.join(mo_dir, "%s.mo" % self.domain)
+			if not os.path.exists(mo_dir):
+				os.makedirs(mo_dir)
+			cmd = ["msgfmt", po_file, "-o", mo_file]
+			po_mtime = os.path.getmtime(po_file)
+			mo_mtime = os.path.exists(mo_file) and \
+					os.path.getmtime(mo_file) or 0
+			if po_mtime > max_po_mtime:
+				max_po_mtime = po_mtime
+			if po_mtime > mo_mtime:
+				self.spawn(cmd)
+
+			targetpath = os.path.join("share/locale", lang, "LC_MESSAGES")
+			data_files.append((targetpath, (mo_file,)))
+
+		# merge .in with translation
+		for (option, switch) in ((self.desktop_files, "-d"),):
+			try:
+				file_set = eval(option)
+			except:
+				continue
+			for (target, files) in file_set:
+				build_target = os.path.join("build", target)
+				if not os.path.exists(build_target):
+					os.makedirs(build_target)
+				files_merged = []
+				for file in files:
+					if file.endswith(".in"):
+						file_merged = os.path.basename(file[:-3])
+					else:
+						file_merged = os.path.basename(file)
+					file_merged = os.path.join(build_target, file_merged)
+					cmd = ["intltool-merge", switch, self.po_dir, file, file_merged]
+					mtime_merged = os.path.exists(file_merged) and \
+							os.path.getmtime(file_merged) or 0
+					mtime_file = os.path.getmtime(file)
+					if mtime_merged < max_po_mtime or mtime_merged < mtime_file:
+						 # Only build if output is older than input (.po,.in)
+						self.spawn(cmd)
+					files_merged.append(file_merged)
+				data_files.append((target, files_merged))
+
+		# Since specifying a .mofile dir is not supported, we manually move build/mo/
+		# to a place more appropriate in our opinion, currently content/lang/.
 		if os.path.exists(os.path.join("content", "lang")):
 			rmtree(os.path.join("content", "lang"))
 		copytree(os.path.join("build", "mo"), \
-		     os.path.join("content", "lang"))
+			os.path.join("content", "lang"))
+
+build.sub_commands.append(('build_i18n', None))
 
 class _build_man(build):
 	description = "build the Manpage"
@@ -69,7 +168,6 @@ class _build_man(build):
 build.sub_commands.append(('build_man', None))
 
 cmdclass = {
-	'build': build_extra.build_extra,
 	'build_man': _build_man,
 	'build_i18n': _build_i18n,
 }
