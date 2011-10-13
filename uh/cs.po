@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-13 17:47+0200\n"
+"PO-Revision-Date: 2011-10-13 18:15+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -131,7 +131,7 @@ msgstr "Štěrková cesta"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Herbary"
-msgstr ""
+msgstr "Bylinkářství"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #. This is a database entry: the name of a unit.
@@ -142,12 +142,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Lovecký stan"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
-msgstr ""
+msgstr "Železný důl"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -157,17 +157,17 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lookout"
-msgstr ""
+msgstr "Rozhledna"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Dřevorubecký tábor"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Main Square"
-msgstr ""
+msgstr "Náměstí"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -182,7 +182,7 @@ msgstr "Jeden z tvých osadníků nemá v dosahu náměstí."
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pasture"
-msgstr ""
+msgstr "Pastýř"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -192,7 +192,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr ""
+msgstr "Prasečí chlívek"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -207,12 +207,12 @@ msgstr "Bramborové pole"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Rampart"
-msgstr ""
+msgstr "Val"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Solná jezera"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -232,7 +232,7 @@ msgstr "Signální oheň"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Smeltery"
-msgstr ""
+msgstr "Tavírna"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -242,7 +242,7 @@ msgstr "Někteří osadníci se odstěhovali."
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Storage Tent"
-msgstr ""
+msgstr "Skladovací stan"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -252,17 +252,17 @@ msgstr "Cukrové pole"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tavern"
-msgstr ""
+msgstr "Krčma"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent"
-msgstr ""
+msgstr "Stan"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Ruiny stanu"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -277,7 +277,7 @@ msgstr "Trafikant"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Toolmaker"
-msgstr ""
+msgstr "Nástrojař"
 
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
@@ -373,12 +373,12 @@ msgstr "prkna"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr ""
+msgstr "bordó"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr ""
+msgstr "cihly"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -400,7 +400,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "charcoal"
-msgstr ""
+msgstr "dřevěné uhlí"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -440,12 +440,12 @@ msgstr "dýka"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr ""
+msgstr "krmení pro jeleny"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "jelení maso"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -555,7 +555,7 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "pink"
-msgstr ""
+msgstr "rúžový"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -565,12 +565,12 @@ msgstr "průzkumník"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr ""
+msgstr "brambory"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr ""
+msgstr "růžový"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -595,62 +595,62 @@ msgstr "osadník"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr ""
+msgstr "curk"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "cukrová třtina"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr ""
+msgstr "mordozelený"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "textile"
-msgstr ""
+msgstr "tkanina"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "tabákové listy"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "tabáková plantáž"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "tabák"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tools"
-msgstr ""
+msgstr "nářadí"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "white"
-msgstr ""
+msgstr "bílý"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wood"
-msgstr ""
+msgstr "dřevo"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr ""
+msgstr "vlna"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "yellow"
-msgstr ""
+msgstr "žlutý"
 
 #: horizons/engine.py:70
 msgid "Restart required"
@@ -748,8 +748,9 @@ msgid "Are you sure you want to abort the running session?"
 msgstr "Jsi si jist že chceš přerušit aktuální hru?"
 
 #: horizons/gui/gui.py:169
+#, fuzzy
 msgid "Quit Session"
-msgstr ""
+msgstr "Ukončit relaci"
 
 #: horizons/gui/gui.py:215
 msgid "No saved games"
@@ -909,7 +910,7 @@ msgstr "Chyba sítě"
 
 #: horizons/gui/modules/multiplayermenu.py:116
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Fatální chyba sítě"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 msgid "Something went wrong with the network:"
@@ -935,57 +936,60 @@ msgstr "Tvůrce: "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Síťová verze hry se liší od tvé verze. Každý hráč při síťové hře musí "
+"používat stejnou verzi. Lze opravit nainstalováním nejnovější verze  Verze "
+"síťové hry: %(gameversion) Tvoje verze: %(ownversion)"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Wrong version"
-msgstr ""
+msgstr "Špatná verze"
 
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Doporučený počet hráčů: "
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
 #: horizons/gui/widgets/choose_next_scenario.py:43
 msgid "Difficulty: "
-msgstr ""
+msgstr "Obtížnost: "
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:115
 #: horizons/gui/widgets/choose_next_scenario.py:44
 msgid "Author: "
-msgstr ""
+msgstr "Autor: "
 
 #: horizons/gui/modules/singleplayermenu.py:104
 #: horizons/gui/modules/singleplayermenu.py:116
 #: horizons/gui/widgets/choose_next_scenario.py:45
 msgid "Description: "
-msgstr ""
+msgstr "Popis: "
 
 #: horizons/gui/modules/singleplayermenu.py:135
 msgid "Invalid player name"
-msgstr ""
+msgstr "Neplatné jméno hráče"
 
 #: horizons/gui/modules/singleplayermenu.py:135
 msgid "You entered an invalid playername"
-msgstr ""
+msgstr "Zadal jsi neplatné jméno hráče"
 
 #: horizons/gui/modules/singleplayermenu.py:193
 msgid "Map size:"
-msgstr ""
+msgstr "Velikost mapy:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Voda:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Maximální velikost ostrova:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Doporučená velikost ostrova:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
