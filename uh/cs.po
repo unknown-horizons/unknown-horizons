@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-13 17:41+0200\n"
+"PO-Revision-Date: 2011-10-13 17:47+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -65,22 +65,22 @@ msgstr "Dobytek"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Cattle Run"
-msgstr ""
+msgstr "Výběh pro dobytek"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Uhlíř"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Clay Deposit"
-msgstr ""
+msgstr "Naleziště hlíny"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Clay Pit"
-msgstr ""
+msgstr "Hliněný důl"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -90,7 +90,7 @@ msgstr "Jelen"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Distillery"
-msgstr ""
+msgstr "Lihovar"
 
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
@@ -100,12 +100,12 @@ msgstr "Lékař"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Farm"
-msgstr ""
+msgstr "Farma"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Naleziště ryb"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -115,18 +115,18 @@ msgstr "Rybář"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Rybářský stan"
 
 #. (text of widget: headline_BB_war1_ship1)
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr ""
+msgstr "Fregata"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Gravel Path"
-msgstr ""
+msgstr "Štěrková cesta"
 
 #. This is a database entry: the name of a building.
 #: database files sql
