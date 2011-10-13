@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-11 17:03+0200\n"
+"PO-Revision-Date: 2011-10-13 17:41+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -40,7 +40,7 @@ msgstr "Kanec"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Boat Builder"
-msgstr ""
+msgstr "Stavitel lodí"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -50,12 +50,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Brickyard"
-msgstr ""
+msgstr "Cihelna"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "Řeznictví"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
