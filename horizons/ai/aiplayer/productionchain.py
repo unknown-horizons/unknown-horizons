@@ -315,10 +315,6 @@ class ProductionChainSubtree(object):
 				return result # an error or successful building
 
 		if result == BUILD_RESULT.NEED_PARENT_FIRST or self.need_more_buildings(amount):
-			if not self.settlement_manager.feeder_island and len(self.settlement_manager.owner.settlement_managers) > 1:
-				if self.resource_id == RES.FOOD_ID:
-					return BUILD_RESULT.ALL_BUILT # hack to force some resources to be produced on a feeder island
-
 			# build a building
 			(result, building) = self.abstract_building.build(self.settlement_manager, self.resource_id)
 			if result == BUILD_RESULT.OUT_OF_SETTLEMENT:
