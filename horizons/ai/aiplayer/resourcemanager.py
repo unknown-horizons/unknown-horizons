@@ -26,7 +26,7 @@ from collections import defaultdict
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.util import WorldObject
 from horizons.util.python import decorators
-from horizons.constants import RES, TRADER
+from horizons.constants import BUILDINGS, RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
 
 class ResourceManager(WorldObject):
@@ -217,7 +217,21 @@ class ResourceManager(WorldObject):
 		return 0 # TODO: take into account all the resources that are needed to build units
 
 	def get_required_upgrade_resources(self, resource_id, upgrade_limit):
-		return 0 # TODO
+		"""Return the amount of resource still needed to upgrade at most upgrade_limit residences."""
+		limit_left = upgrade_limit
+		needed = 0
+		for residence in self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+			if limit_left <= 0:
+				break
+			production = residence._get_upgrade_production()
+			if production is None or production.is_paused():
+				continue
+			for res, amount in production.get_consumed_resources().iteritems():
+				if res == resource_id and residence.inventory[resource_id] < abs(amount):
+					# TODO: take into account the residence's collector
+					needed += abs(amount) - residence.inventory[resource_id]
+					limit_left -= 1
+		return needed
 
 	def get_required_building_resources(self, resource_id):
 		return 0 # TODO
