@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-10-14 17:49+0200\n"
+"PO-Revision-Date: 2011-10-14 17:50+0200\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -801,19 +801,12 @@ msgid "build menu"
 msgstr "menu de construction"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (43)
-#
 # (poterminology) uh/unknownhorizons.pot (10)
 # 80%
 msgid "built"
-msgstr "construit / érigé"
+msgstr "construit / érigé / édifié"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -959,17 +952,9 @@ msgid "refresh"
 msgstr "actualiser / rafraîchir"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
 msgid "residents"
-msgstr "habitants"
+msgstr "résidents / habitants"
 
 #
 #
@@ -1051,20 +1036,10 @@ msgstr "compte / fincances / bilan"
 msgid "back"
 msgstr "retour"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
 msgid "build settlement"
-msgstr "ériger une colonie"
+msgstr "ériger ~ / fonder une colonie"
 
 #
 #
