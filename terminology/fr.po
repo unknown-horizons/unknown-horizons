@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-08-03 12:59+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2011-10-14 17:49+0200\n"
+"Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 # (poterminology) uh/unknownhorizons.pot (10)
 # I added 'installer' cause in my opinion, you cannot build a weaver...french will understand that
 msgid "build"
-msgstr "Construire/Installer"
+msgstr "Construire / Ériger / Édifier"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -41,11 +41,9 @@ msgid "tent"
 msgstr "tente"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
-#
 # (poterminology) uh/unknownhorizons.pot (14)
-#
 msgid "resource"
-msgstr "resources"
+msgstr "resource / matériel / bien / marchandise"
 
 # (poterminology) uh-tutorial/tutorial.pot (21)
 #
@@ -277,11 +275,9 @@ msgid "time"
 msgstr "temps"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
-#
 # (poterminology) uh/unknownhorizons.pot (4)
-#
 msgid "trade"
-msgstr "commerce"
+msgstr "commerce / commercer"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -362,17 +358,9 @@ msgid "cost"
 msgstr "coût"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
-#
 # (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-#
-#
-#
-#
 msgid "free"
-msgstr "libre"
+msgstr "libre / indépendent"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -495,7 +483,7 @@ msgid "signal"
 msgstr "signaler / le signal"
 
 msgid "signal fire"
-msgstr "feu de signalisation"
+msgstr "feu de signalisation / phare"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 #
@@ -570,17 +558,9 @@ msgid "fisher"
 msgstr "pêcheur"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-#
-#
-#
-#
 msgid "found"
-msgstr "trouvé"
+msgstr "trouvé / fonder"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -601,15 +581,7 @@ msgid "potato"
 msgstr "pomme de terre"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
 msgid "range"
 msgstr "rayon d'action"
 
