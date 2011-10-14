@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-13 18:15+0200\n"
-"Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
+"PO-Revision-Date: 2011-10-14 21:32+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Byla vytvořena nová osada od ${player}."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr "Byl vytvořen nov svět"
+msgstr "Byl vytvořen nov svět."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -694,7 +694,7 @@ msgstr ""
 #: horizons/engine.py:280
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Nastavený jazyk %(lang) na %(place) neleze načíst"
+msgstr "Nastavený jazyk %(lang)s na %(place)s neleze načíst"
 
 #: horizons/engine.py:528
 msgid "Invalid network port"
@@ -808,15 +808,14 @@ msgstr "Chyba:"
 
 # 94%
 #: horizons/gui/gui.py:426
-#, fuzzy
 msgid "Unknown savedate"
-msgstr "Neznáme datum uložení\n"
+msgstr "Neznáme datum uložení"
 
 # 91%
 #: horizons/gui/gui.py:428
-#, python-format, fuzzy
+#, python-format, 
 msgid "Saved at %s"
-msgstr "Uloženo v %s\n"
+msgstr "Uloženo v %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -884,7 +883,7 @@ msgstr "Uživatelé linuxu: Zkus instalovat pyenet přes správce balíčků."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr "Uživatelé Windows:V současné době není dostupna podpora pro Windows."
+msgstr "Uživatelé Windows: V současné době není dostupna podpora pro Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
@@ -938,7 +937,7 @@ msgid "The game's version differs from your version. Every player in a multiplay
 msgstr ""
 "Síťová verze hry se liší od tvé verze. Každý hráč při síťové hře musí "
 "používat stejnou verzi. Lze opravit nainstalováním nejnovější verze  Verze "
-"síťové hry: %(gameversion) Tvoje verze: %(ownversion)"
+"síťové hry: %(gameversion)s Tvoje verze: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Wrong version"
@@ -2593,7 +2592,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:924
 #, fuzzy
 msgid "Your saved games:"
-msgstr "Žádné uložené hry"
+msgstr "Žádné uložené hry:"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: okay)

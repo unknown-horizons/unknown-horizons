@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-08-01 15:39+0200\n"
+"PO-Revision-Date: 2011-10-14 21:28+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -264,9 +264,8 @@ msgstr "Telk"
 # 77%
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Telgi_varemed"
+msgstr "Telgi varemed"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -809,12 +808,12 @@ msgstr "Viga:"
 
 #: horizons/gui/gui.py:426
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Salvestuskuupäev teadmata"
 
 #: horizons/gui/gui.py:428
 #, python-format
 msgid "Saved at %s"
-msgstr ""
+msgstr "Salvestatud %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -907,9 +906,8 @@ msgstr ""
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:117
-#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr "Midagi läks valesti võrguga: "
+msgstr "Midagi läks valesti võrguga:"
 
 #: horizons/gui/modules/multiplayermenu.py:133
 msgid "Version differs!"
@@ -991,7 +989,7 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:237
 #, fuzzy
 msgid "Resource density:"
-msgstr "Ressursi lasund"
+msgstr "Ressursi lasund:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -1007,11 +1005,8 @@ msgstr ""
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Palun teavita sellest autorit."
+msgstr "Palun teavita sellest autorit."
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -2106,9 +2101,8 @@ msgstr ""
 #. (text of widget: ship_name)
 #: horizons/i18n/guitranslations.py:642 horizons/i18n/guitranslations.py:663
 #: horizons/i18n/guitranslations.py:674
-#, fuzzy
 msgid "Name"
-msgstr "Nimi:"
+msgstr "Nimi"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:644
@@ -2128,9 +2122,8 @@ msgstr ""
 # 87%
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:657
-#, fuzzy
 msgid "Balance"
-msgstr "Bilanss:"
+msgstr "Bilanss"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:672

@@ -1436,12 +1436,12 @@ msgstr "Ograda za živino: vzreja živino. Potrebuje farmo."
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:134
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Žganje oglja: zažge veliko desk v oglje"
+msgstr "Žganje oglja: zažge veliko desk v oglje."
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:136
 msgid "Mine: Gets ores from deposit."
-msgstr "Rudnik: pridobi rudo iz nahajališč"
+msgstr "Rudnik: pridobi rudo iz nahajališč."
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:138
@@ -1868,7 +1868,7 @@ msgstr "Plačani davki"
 #: horizons/i18n/guitranslations.py:436 horizons/i18n/guitranslations.py:438
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:505
 msgid "Tax rate"
-msgstr "Obdavčitev:"
+msgstr "Obdavčitev"
 
 # 88%
 # 81%
@@ -3044,7 +3044,7 @@ msgstr "Poženi igro za <max_ticks> udarcev."
 
 #: run_uh.py:135
 msgid "Enable the string previewer tool for scenario writers"
-msgstr "Omogoči orodje predogleda nizov za pisce scenarijev."
+msgstr "Omogoči orodje predogleda nizov za pisce scenarijev"
 
 #: run_uh.py:157
 msgid "Unknown Horizons crashed."
