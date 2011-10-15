@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-06-22 02:28+0200\n"
-"Last-Translator: abner <abner.silva@gmail.com>\n"
+"PO-Revision-Date: 2011-10-15 04:10+0200\n"
+"Last-Translator: paulodealmeida <paulodealmeida@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -20,22 +20,25 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} e ${player2} estão agora ${status}"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new settlement has been created by ${player}."
-msgstr ""
+msgstr "Uma nova povoação foi criada por ${player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new world has been created."
-msgstr ""
+msgstr "Um novo mundo foi criado."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+#, fuzzy
 msgid "Boar"
-msgstr ""
+msgstr "Javali"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -44,240 +47,270 @@ msgstr "Construtor de Barcos"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Branch Office"
-msgstr ""
+msgstr "Feitoria"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Brickyard"
-msgstr ""
+msgstr "Fábrica de tijolos"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Butchery"
-msgstr ""
+msgstr "Matadouro"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+#, fuzzy
 msgid "Cattle"
-msgstr ""
+msgstr "Gado"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Cattle Run"
-msgstr ""
+msgstr "Pasto"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Carvoaria"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Clay Deposit"
-msgstr ""
+msgstr "Depósito de barro"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Clay Pit"
-msgstr ""
+msgstr "Poço de barro"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+#, fuzzy
 msgid "Deer"
-msgstr ""
+msgstr "Veado"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Distillery"
-msgstr ""
+msgstr "Destilaria"
 
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "Doutor"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Farm"
-msgstr ""
+msgstr "Fazenda"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Depósito de peixe"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Fisher"
-msgstr ""
+msgstr "Pescador"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Tenda do pescador"
 
 #. (text of widget: headline_BB_war1_ship1)
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr ""
+msgstr "Fragata"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Gravel Path"
-msgstr ""
+msgstr "Caminho de cascalho"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Herbary"
-msgstr ""
+msgstr "Herbário"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:267 sql
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Tenda de caçador"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
-msgstr ""
+msgstr "Mina de ferro"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Log"
-msgstr ""
+msgstr "Tronco"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Lookout"
-msgstr ""
+msgstr "Vigia"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Acampamento de lenhadores"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Main Square"
-msgstr ""
+msgstr "Praça Principal"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Mountain"
-msgstr ""
+msgstr "Montanha"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "Falta uma praça principal numa das suas povoações."
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Pasture"
-msgstr ""
+msgstr "Pastagem"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Pavilion"
-msgstr ""
+msgstr "Pavilhão"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Pigsty"
-msgstr ""
+msgstr "Pocilga"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+#, fuzzy
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Barco pirata"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Potato Field"
-msgstr ""
+msgstr "Plantação de batatas"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Rampart"
-msgstr ""
+msgstr "Plataforma"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Lagoas de sal"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to ${file}."
-msgstr ""
+msgstr "Captura de tela gravada em ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Sheep"
-msgstr ""
+msgstr "Ovelha"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Signal Fire"
-msgstr ""
+msgstr "Sinal de Fogo"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Smeltery"
-msgstr ""
+msgstr "Fundição"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Alguns dos seus povoadores abandonaram a povoação."
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Storage Tent"
-msgstr ""
+msgstr "Armazém"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Sugar Field"
-msgstr ""
+msgstr "Plantação de cana de açúcar"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tavern"
-msgstr ""
+msgstr "Taberna"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent"
-msgstr ""
+msgstr "Tenda"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Tent Ruin"
-msgstr ""
+msgstr "Ruínas"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Plantação de tabaco"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabaqueiro"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Toolmaker"
-msgstr ""
+msgstr "Ferreiro"
 
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
@@ -286,8 +319,9 @@ msgstr "Comerciante"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Trail"
-msgstr ""
+msgstr "Trilha"
 
 #. (tooltip of widget: tree-1)
 #. This is a database entry: the name of a building.
@@ -297,28 +331,33 @@ msgstr "Árvore"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Village school"
-msgstr ""
+msgstr "Escola"
 
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Tenda de tecelão"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Torre de Madeira"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Também pode arrastar estradas."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Você alcançou o máximo incremento corrente. Seus habitantes não vão melhorar "
+"mais."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -327,278 +366,294 @@ msgstr "Você venceu!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You need more ${resource} to build this building."
-msgstr ""
+msgstr "Precisa de mais ${resource} para construir este edifício."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "O seu jogo foi salvo."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "A sua mina ficou sem recursos."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your settlers reached level ${level}."
-msgstr ""
+msgstr "Os seus povoadores chegaram ao nível ${level}."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "acorns"
-msgstr ""
+msgstr "bolotas"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocrata"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "black"
-msgstr ""
+msgstr "preto"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "blue"
-msgstr ""
+msgstr "azul"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr ""
+msgstr "tábuas"
 
 #. This is a database entry: the name of a color.
 #: database files sql
+#, fuzzy
 msgid "bordeaux"
-msgstr ""
+msgstr "vinho"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr ""
+msgstr "tijolos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "canhão"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "gado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "gado para abate"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "charcoal"
-msgstr ""
+msgstr "carvão vegetal"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr ""
+msgstr "cidadão"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr ""
+msgstr "barro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay deposit"
-msgstr ""
+msgstr "depósito de barro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr ""
+msgstr "moedas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "comunidade"
 
 #. This is a database entry: the name of a color.
 #: database files sql
+#, fuzzy
 msgid "cyan"
-msgstr ""
+msgstr "verde-água"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "punhal"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "deer food A"
-msgstr ""
+msgstr "comida de veado A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "carne de veado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr ""
+msgstr "educação"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "faith"
-msgstr ""
+msgstr "fé"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "peixe"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "comida"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "get-together"
-msgstr ""
+msgstr "reunião"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr ""
+msgstr "grama"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "cinza"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "green"
-msgstr ""
+msgstr "verde"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr ""
+msgstr "felicidade"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "ervas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "depósito de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "iron ingots"
-msgstr ""
+msgstr "ligotes de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "iron ore"
-msgstr ""
+msgstr "minério de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "lamb wool"
-msgstr ""
+msgstr "lã de ovelha"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "limão"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "liquor"
-msgstr ""
+msgstr "álcool"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "ervas medicinais"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "merchant"
-msgstr ""
+msgstr "mercador"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "laranja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "porcos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "porcos para abate"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "pink"
-msgstr ""
+msgstr "rosa"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "pioneer"
-msgstr ""
+msgstr "pioneiro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr ""
+msgstr "batatas"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr ""
+msgstr "roxo"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "red"
-msgstr ""
+msgstr "vermelho"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "sailor"
-msgstr ""
+msgstr "marinheiro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "sal"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "settler"
-msgstr ""
+msgstr "colono"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr ""
+msgstr "açúcar"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "sugar cane"
-msgstr ""
+msgstr "cana de açúcar"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -608,51 +663,54 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "textile"
-msgstr ""
+msgstr "têxtil"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "tobacco leaves"
-msgstr ""
+msgstr "folhas de tabaco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "tobacco plants"
-msgstr ""
+msgstr "planta de tabaco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "tobaccos"
-msgstr ""
+msgstr "produtos de tabaco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tools"
-msgstr ""
+msgstr "ferramentas"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "white"
-msgstr ""
+msgstr "branco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wood"
-msgstr ""
+msgstr "madeira"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr ""
+msgstr "lã"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "yellow"
-msgstr ""
+msgstr "amarelo"
 
 #: horizons/engine.py:70
 msgid "Restart required"
-msgstr "Requer reinício"
+msgstr "É necessário reiniciar"
 
 #: horizons/engine.py:71
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -660,15 +718,15 @@ msgstr "As mudanças solicitadas requerem o reinício do Unknown Horizons."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Restaurar as configurações padrão"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Todas as alterações feitas até ao momento serão removidas."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Deseja continuar?"
 
 #: horizons/engine.py:189
 msgid "System default"
@@ -789,12 +847,13 @@ msgstr "Confirmação para sobrescrever"
 
 #: horizons/gui/gui.py:277
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Por favor, selecione um jogo salvo ou clique em cancelar."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:277
+#, fuzzy
 msgid "Select a savegame"
-msgstr ""
+msgstr "Escolha um jogo salvo"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
@@ -810,15 +869,14 @@ msgstr "Erro:"
 
 # 94%
 #: horizons/gui/gui.py:426
-#, fuzzy
 msgid "Unknown savedate"
-msgstr "Data de salvamento desconhecida\n"
+msgstr "Data de salvamento desconhecida"
 
 # 91%
 #: horizons/gui/gui.py:428
-#, python-format, fuzzy
+#, python-format, 
 msgid "Saved at %s"
-msgstr "Salvo em %s\n"
+msgstr "Salvo em %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -877,6 +935,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"A funcionalidade de multi-jogador necessita da biblioteca \"pyenet\", que não "
+"foi encontrada no sistema."
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -885,10 +945,12 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Utilizadores de Windows: No momento não existe suporte adequado para "
+"Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Não foi possível iniciar a rede."
 
 #: horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the data you entered in the Network section in the settings dialogue."
@@ -947,7 +1009,7 @@ msgstr "Versão errada"
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Número recomendado de jogadores: "
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -977,29 +1039,28 @@ msgstr "Você informou um nome de jogador inválido"
 
 #: horizons/gui/modules/singleplayermenu.py:193
 msgid "Map size:"
-msgstr ""
+msgstr "Dimensão do mapa:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Água:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Dimensão máxima das ilhas:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Dimensão preferida das ilhas:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Desvio na dimensão das ilhas:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
-msgstr "Depósito de recursos"
+msgstr "Quantidade de recursos:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -1015,11 +1076,8 @@ msgstr ""
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Favor reporte isto ao autor."
+msgstr "Favor reporte isto ao autor."
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -2741,7 +2799,7 @@ msgstr "Erro: Foram encontradas múltiplas ocorrências: "
 
 #: horizons/main.py:358
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr ""
+msgstr "Erro: os nomes dos arquivos de campanha têm de terminar com \".yaml\"."
 
 #: horizons/main.py:366
 #, python-format
@@ -2790,7 +2848,7 @@ msgstr "Salvar/carregar jogos de múltiplos usuários não é possível no momen
 #: horizons/savegamemanager.py:364
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr ""
+msgstr "Erro: não sei como lidar com condições do tipo %(type)s"
 
 #: horizons/savegamemanager.py:420
 #, python-format
@@ -2802,14 +2860,14 @@ msgstr "Erro: Impossível localizar campanha do arquivo \"%s\"."
 #, python-format
 #, python-format, fuzzy
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr "Erro: Impossível localizar o jogo salvo \"%s\"."
+msgstr "Erro: Não foi possível encontrar o cenário \"%s\"."
 
 # 83%
 #: horizons/savegamemanager.py:443
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr "Erro: Impossível localizar campanha do arquivo \"%s\"."
+msgstr "Erro: Não foi possível encontrar o cenário para o arquivo \"%s\"."
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario. "
@@ -2826,11 +2884,13 @@ msgstr "Salvamento rápido falhou."
 
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
-msgstr ""
+msgstr "Ocorreu um erro durante o salvamento rápido. O seu jogo não foi salvo."
 
 #: horizons/spsession.py:124
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"Se este erro ocorrer novamente, por favor, contate a equipe de "
+"desenvolvimento:"
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
@@ -2844,58 +2904,60 @@ msgstr ""
 #. usually invalid filename
 #: horizons/spsession.py:159
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Não foi possível criar o arquivo para salvar o jogo"
 
 #: horizons/spsession.py:160
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Ocorreu um erro ao criar o arquivo para salvar o jogo."
 
 #: horizons/spsession.py:161
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Isso geralmente significa que o nome do jogo salvo contém caracteres "
+"especiais não suportados."
 
 #: horizons/spsession.py:167
 msgid "File used by another process"
-msgstr ""
+msgstr "Arquivo usado por outro processo"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "O arquivo do jogo salvo está sendo usando por outro programa."
 
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to %s"
-msgstr ""
+msgstr "Rota de comércio: indo para %s"
 
 #: horizons/world/units/ship.py:273
 #, python-format
 msgid "Trade route: waiting at %s"
-msgstr ""
+msgstr "Rota de comércio: esperando em %s"
 
 #: horizons/world/units/ship.py:468
 #, python-format
 msgid "Going to %s"
-msgstr ""
+msgstr "Indo para %s"
 
 #: horizons/world/units/ship.py:469
-#, python-format
+#, python-format, fuzzy
 msgid "Going to %(x)d, %(y)d"
-msgstr ""
+msgstr "Indo para %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:473
 #, python-format
 msgid "Idle at %s"
-msgstr ""
+msgstr "Ocioso em %s"
 
 #: horizons/world/units/ship.py:474
-#, python-format
+#, python-format, fuzzy
 msgid "Idle at %(x)d, %(y)d"
-msgstr ""
+msgstr "Ocioso em %(x)d, %(y)d"
 
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Atacando "
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2936,16 +2998,17 @@ msgid "Starts a random map."
 msgstr "Inicia um mapa randômico."
 
 #: run_uh.py:96
+#, fuzzy
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "Inicia um mapa aleatório usando a semente com o valor <seed>."
 
 #: run_uh.py:98
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr ""
+msgstr "Inicia um <scenario>. Onde <scenario> é o nome do cenário a usar."
 
 #: run_uh.py:100
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr ""
+msgstr "Inicia a <campaign>. Onde <campaign> é o nome da campanha."
 
 #: run_uh.py:102
 msgid "Starts the development map without displaying the main menu."
@@ -2962,10 +3025,12 @@ msgstr "Carrega o último salvamento rápido."
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Define o valor da semente usada para gerar árvores, peixes e outros recursos "
+"naturais."
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "Opções de inteligência artificial"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
@@ -2974,10 +3039,14 @@ msgstr ""
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
 msgstr ""
+"Torna o jogador humano num híbrido humano-inteligência artificial (apenas "
+"para efeitos de desenvolvimento)."
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
 msgstr ""
+"Mostra os planos de inteligência artificial de forma destacada (apenas para "
+"efeitos de desenvolvimento)."
 
 #: run_uh.py:120
 msgid "Development options"
@@ -3033,12 +3102,15 @@ msgstr ""
 "horizons.org ."
 
 #: run_uh.py:201
+#, fuzzy
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Erro: Não foi possível encontrar as bibliotecas necessárias"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Infelizmente uma das bibliotecas necessárias ao Unknown Horizons está "
+"faltando e precisa ser instalada."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
