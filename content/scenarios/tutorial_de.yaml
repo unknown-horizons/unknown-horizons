@@ -13,17 +13,28 @@ events:
   - arguments: ["Errichtet ein Kontor an der K\xFCste. Es sollte f\xFCr Schiffe wie\
         \ den Freien H\xE4ndler einfach erreichbar sein."]
     type: message
-  - arguments: [!!python/unicode 'Willkommen bei Unknown Horizons!', "Dies ist Euer\
-        \ Logbuch, in dem alle wichtigen Informationen gespeichert werden. Zu jeder\
-        \ Aufgabe gibt es auch kurze Mitteilungen.\n\nFalls Ihr das Logbuch geschlossen\
-        \ habt, k\xF6nnt Ihr es per Taste L oder \xFCber das Logbuchsymbol in der\
-        \ Ecke oben rechts (unter der Weltkarte mit einem versiegelten Dokument und\
-        \ einer Feder) wieder \xF6ffnen.\n\nSolltet Ihr Verbesserungsvorschl\xE4ge\
-        \ f\xFCr Erkl\xE4rungen in der Anleitung haben, m\xF6chtet bestimmte Bereiche\
-        \ n\xE4her erkl\xE4rt haben oder Ihr habt einen Fehler gefunden: Teilt das\
-        \ dem Team mit! Nur so k\xF6nnen wir diese Anleitung verbessern.\nUnter www.unknown-horizons.org\
-        \ k\xF6nnt Ihr das Team kontaktieren oder Hilfe erhalten.\n\nUnd nun lasst\
-        \ uns das eigentliche Spiel beginnen."]
+  - arguments: [!!python/unicode 'Willkommen bei Unknown Horizons!', !!python/unicode 'This
+        is your Captain''s log where all important information is stored. A short
+        notification of each task will be provided on the left of the screen.
+
+
+        If you are interested in longer descriptions, your log will hopefully provide
+        all the help you need.
+
+
+        After you close this log, it can be re-opened with the ''Captain''s Log''
+        icon in the top-right corner (below the mini-map, with a sealed document and
+        a feather).
+
+
+        For any suggestions on better wording, topics you would like to have explained
+        or even buggy conditions: Please tell us and we will try to improve the tutorial!
+
+
+        Visit www.unknown-horizons.org for help on how to contact the team!
+
+
+        And now, let''s start the actual game.']
     type: logbook_w
   - arguments: [!!python/unicode 'NEUE AUFGABE: INSEL BESIEDELN', "Um Euer Schiff\
         \ zu bewegen, w\xE4hlt es mit einem Linksklick an. Ein Rechtsklick bewegt\

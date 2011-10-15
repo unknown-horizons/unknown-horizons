@@ -6,7 +6,7 @@
 
 author: "L'\xE9quipe UH"
 description: "Didacticiel:\n\xC9tablissez votre premi\xE8re colonie et apprenez \xE0\
-  \ jouer!\n"
+  \ jouer !\n"
 difficulty: !!python/unicode 'Didacticiel'
 events:
 - actions:
@@ -127,23 +127,15 @@ events:
         \ de ne pas placer vos tentes trop pr\xE8s de vos bucherons, cela d\xE9truirais\
         \ leurs pr\xE9cieux arbres.\n\nMISSION: Construire une place centrale."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
-
-
-        In the ''Account'' tab you get a balance sheet of this island, featuring all
-        costs you pay and all taxes you earn.
-
-
-        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
-        later on.
-
-
-        If your balance is positive, you all-in-all make a profit.
-
-
-        In the different increment overview tabs you can see statistics about your
-        inhabitants. You also set the increment-specific global tax here and allow
-        or deny inhabitants of this increment to upgrade to the next higher one.']
+  - arguments: ['', "Maintenant, nous allons regarder de plus pr\xE8s la place centrale.\n\
+        \nDans l'onglet \xABCompte\xBB vous obtenez un bilan de cette \xEEle, avec\
+        \ tous les frais que vous payez ainsi que tous les imp\xF4ts que vous gagnez.\n\
+        \nLes points 'Vendre' et 'Acheter' font r\xE9f\xE9rence \xE0 votre balance\
+        \ commerciale et seront expliqu\xE9s plus tard.\n\nSi votre solde est positif,\
+        \ tout compte tenu vous faites un profit.\n\nDans les diff\xE9rents onglets\
+        \ de s\xE9lection de niveaux vous pouvez voir des statistiques sur vos habitants.\
+        \ Vous pouvez \xE9galement d\xE9finir le niveau global de taxe sp\xE9cifique\
+        \ et autoriser ou refuser aux habitants de ce niveau de passer au niveau suivant."]
     type: logbook
   - arguments: ["Construisez une place centrale. Choisissez un endroit peu charg\xE9\
         \ en b\xE2timents \xE9conomiques."]
@@ -210,50 +202,31 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION : LA SIGNALISATION', !!python/unicode 'Can
-        you see the ship passing your island from time to time? That ship belongs
-        to the Free Trader, one of the first settlers in this archipelago.
-
-
-        The trader will supply your settlement with necessary goods which you can''t
-        produce yet.
-
-        You can also sell surpluses of your production, but in general consuming them
-        (by building more tents) instead of selling them yields more profit.
-
-
-        Normally the trader ships just sail around and look for deals, but you can
-        speed things up a bit.
-
-
-        For this purpose, build a signal fire at the coast near your branch office.
-        It will show ships the way to your settlement.
-
-
-        The signal fire has to cover the area which the ships pass through to catch
-        them.']
+  - arguments: [!!python/unicode 'MISSION : LA SIGNALISATION', "Avez-vous remarqu\xE9\
+        \ le navire qui passe de temps en temps devant votre \xEEle? C'est le navire\
+        \ du marchand ind\xE9pendant, l'un des premiers colons de cet archipel.\n\n\
+        Il approvisionne votre colonie en marchandises que vous ne pouvez pas encore\
+        \ produire.\nVous pouvez \xE9galement vendre vos surplus de production, mais\
+        \ en g\xE9n\xE9ral il est plus profitable de les consommer (en constiusant\
+        \ plus de tentes).\n\nNormalement les navire marchands ne font que chercher\
+        \ des marchers \xE0 conclure, mais vous pouvez acc\xE9l\xE9rer les choses\
+        \ und peu.\n\n\xC0 cette fin construisez un phare sur la c\xF4te pr\xE8s de\
+        \ votre comptoir. Il motrera aux navires le chemin vers votre colonie.\n\n\
+        Le phare doit couvrir le territoir \xE0 travers lequel les navires passent\
+        \ pour les guider."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
-
-
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
-        it, please share your thoughts! We need your help here!)
-
-
-        At the ''sailors'' increment, you are equipped with three trading slots.
-
-
-        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
-        vice versa.
-
-
-        Click in the slot to choose the good you want to trade with. We will further
-        explain this once you are ready to trade.
-
-
-        TASK: Build a signal fire at the coast close to your branch office.']
+  - arguments: ['', "Apr\xE8s cette annonce le marchand fera une escale chez vous\
+        \ pour regarder votre comptoir m\xEAme s'il avait pr\xE9vu de passer tout\
+        \ droit.\n\nVous pouvez faire des offres dans l'onglet \"Achat/Vente\" de\
+        \ votre comptoir. (Cette fonction est malheureusement un peu difficile \xE0\
+        \ utiliser pour le moment. Si vous avez une bonne id\xE9e pour l'am\xE9riorer\
+        \ partagez la avec nous! Nous avons besion de votre aide!)\n\nAu niveau \"\
+        marins\" vous avez trois emplacements de commerce \xE0 votre disposition.\n\
+        \nCliquez sur le petit symbole pour changer le mode der \"Achat\" \xE0 \"\
+        Vente\" et vice versa.\n\nCliquez sur l'emplacement de commerce pour choisir\
+        \ la marchandise que vous voulez vendre ou acheter. Nous expliquerons ce proc\xE9\
+        d\xE9 plus pr\xE9cis\xE9ment lorsque vous serez pr\xE8t \xE0 faire affaire.\n\
+        \nMISSION: \xC9rigez un phare sur la c\xF4te pr\xE8s de votre comptoir."]
     type: logbook
   - arguments: ["Construisez un feu de signalisation sur la c\xF4te proche du comptoir."]
     type: message
@@ -314,26 +287,13 @@ events:
         \ atteindre.\n\nDans les niveaux suivants, des versions am\xE9lior\xE9es des\
         \ b\xE2timents seront disponibles."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
-
-
-        This means that your inhabitants need a road connection to the producer (pavilion)
-        to pick up faith there.
-
-        After some time, they will have consumed it and then again look for a producer
-        to collect more faith.
-
-
-        Important:
-
-        It is NOT enough that the building is merely within a certain range of the
-        tents.
-
-        The road connection is required as well.
-
-
-        TASK: Build a pavilion with a trail to the tents in order to fulfill your
-        sailors'' demand for faith.']
+  - arguments: ['', "Notez que la foi est trait\xE9 comme un bien physique!\n\nCela\
+        \ implique que vos habitants auront besoin d'une connexion routi\xE8re vers\
+        \ le producteur (le pavillon) pour aller y checher de la foi.\n\nAttention:\n\
+        Il n'est PAS suffisant que le b\xE2timent soit simplement dans un certain\
+        \ rayon des tentes.\nLa connexion routi\xE8re est \xE9galement requise.\n\n\
+        MISSION: \xC9difiez un pavillon avec un sentier vers les tentes pour qu'il\
+        \ puisse combler la demande en foi des marins."]
     type: logbook
   - arguments: ["Construisez un pavillon connect\xE9 aux tentes."]
     type: message
