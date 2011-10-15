@@ -147,7 +147,7 @@ class NavigationTool(CursorTool):
 		Utility method, returns the instances under the cursor
 		"""
 		instances = self.session.view.cam.getMatchingInstances(\
-			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS], False) # False for accurate
 
 		layer_instances = [i.this for i in self.session.view.layers[LAYERS.OBJECTS].getInstances()]
 		instances = [i for i in instances if i.this in layer_instances]

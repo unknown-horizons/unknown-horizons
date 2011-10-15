@@ -66,8 +66,11 @@ class SelectionTool(NavigationTool):
 				fife.Rect(min(self.select_begin[0], evt.getX()), \
 									min(self.select_begin[1], evt.getY()), \
 									abs(evt.getX() - self.select_begin[0]), \
-									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()),
+			  self.session.view.layers[LAYERS.OBJECTS],
+			  False) # False for accurate
 			layer_instances = [i.this for i in self.session.view.layers[LAYERS.OBJECTS].getInstances()]
+
 			instances = [i for i in instances if i.this in layer_instances]
 			# Only one unit, select anyway
 			if len(instances) == 1:
