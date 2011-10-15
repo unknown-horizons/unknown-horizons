@@ -228,7 +228,7 @@ class IngameGui(LivingObject):
 			self.widgets['status_extra'].resizeToContent()
 
 	def cityinfo_set(self, settlement):
-		"""Sets the city name at top center
+		"""Sets the city name at top center of screen.
 
 		Show/Hide is handled automatically
 		To hide cityname, set name to ''
@@ -270,14 +270,17 @@ class IngameGui(LivingObject):
 		cityinfo = self.widgets['city_info']
 		cityinfo.mapEvents({
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
-		})
+			})
+		foundlabel = cityinfo.child_finder('owner_emblem')
+		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)
+		foundlabel.tooltip = unicode(self.settlement.owner.name)
 		foundlabel = cityinfo.child_finder('city_name')
-		foundlabel._setText(unicode(self.settlement.name))
+		foundlabel.text = unicode(self.settlement.name)
 		foundlabel.resizeToContent()
-		foundlabel = self.widgets['city_info'].child_finder('city_inhabitants')
-		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
+		foundlabel = cityinfo.child_finder('city_inhabitants')
+		foundlabel.text = unicode(' %s' % (self.settlement.inhabitants))
 		foundlabel.resizeToContent()
-		self.widgets['city_info'].resizeToContent()
+		cityinfo.adaptLayout()
 
 	def update_resource_source(self):
 		"""Sets the values for resource status bar as well as the building costs"""
