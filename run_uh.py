@@ -468,7 +468,7 @@ def standalone_error_popup(headline, msg):
 	from fife import fife
 
 	e = fife.Engine()
-	e.getSettings().setDefaultFontPath("content/fonts/LinLibertine_Re-4.4.1.ttf")
+	e.getSettings().setDefaultFontPath("content/fonts/LinLibertine.ttf")
 	e.init()
 
 	pychan.init(e)
