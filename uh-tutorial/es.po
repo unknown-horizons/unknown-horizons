@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-02 16:57+0200\n"
-"PO-Revision-Date: 2011-06-29 18:02+0200\n"
-"Last-Translator: MicMic <michael.aloys@gmail.com>\n"
+"PO-Revision-Date: 2011-10-15 19:27+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -186,7 +186,7 @@ msgstr "Construya un aserradero y conéctelo al asentamiento usando un sendero."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:26
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NUEVO OBJETIVO: SUMINISTRO DE ALIMENTOS"
+msgstr "SUMINISTRO DE ALIMENTOS"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:28
@@ -334,7 +334,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:52
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "NUEVO OBJETIVO: CONSTRUIR UNA SEÑAL DE FUEGO"
+msgstr "CONSTRUIR UNA SEÑAL DE FUEGO"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -648,7 +648,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:116
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "NUEVO OBJETIVO: COMPLETA EL TUTORIAL"
+msgstr "COMPLETA EL TUTORIAL"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:118
