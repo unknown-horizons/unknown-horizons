@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-15 03:49+0200\n"
+"PO-Revision-Date: 2011-10-15 04:10+0200\n"
 "Last-Translator: paulodealmeida <paulodealmeida@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -2799,7 +2799,7 @@ msgstr "Erro: Foram encontradas múltiplas ocorrências: "
 
 #: horizons/main.py:358
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr ""
+msgstr "Erro: os nomes dos arquivos de campanha têm de terminar com \".yaml\"."
 
 #: horizons/main.py:366
 #, python-format
@@ -2848,7 +2848,7 @@ msgstr "Salvar/carregar jogos de múltiplos usuários não é possível no momen
 #: horizons/savegamemanager.py:364
 #, python-format
 msgid "Error: don't know how to handle %(type)s condition type"
-msgstr ""
+msgstr "Erro: não sei como lidar com condições do tipo %(type)s"
 
 #: horizons/savegamemanager.py:420
 #, python-format
@@ -2860,14 +2860,14 @@ msgstr "Erro: Impossível localizar campanha do arquivo \"%s\"."
 #, python-format
 #, python-format, fuzzy
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr "Erro: Impossível localizar o jogo salvo \"%s\"."
+msgstr "Erro: Não foi possível encontrar o cenário \"%s\"."
 
 # 83%
 #: horizons/savegamemanager.py:443
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario with file \"%s\"."
-msgstr "Erro: Impossível localizar campanha do arquivo \"%s\"."
+msgstr "Erro: Não foi possível encontrar o cenário para o arquivo \"%s\"."
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario. "
@@ -2884,11 +2884,13 @@ msgstr "Salvamento rápido falhou."
 
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
-msgstr ""
+msgstr "Ocorreu um erro durante o salvamento rápido. O seu jogo não foi salvo."
 
 #: horizons/spsession.py:124
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"Se este erro ocorrer novamente, por favor, contate a equipe de "
+"desenvolvimento:"
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
@@ -2902,58 +2904,60 @@ msgstr ""
 #. usually invalid filename
 #: horizons/spsession.py:159
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Não foi possível criar o arquivo para salvar o jogo"
 
 #: horizons/spsession.py:160
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Ocorreu um erro ao criar o arquivo para salvar o jogo."
 
 #: horizons/spsession.py:161
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Isso geralmente significa que o nome do jogo salvo contém caracteres "
+"especiais não suportados."
 
 #: horizons/spsession.py:167
 msgid "File used by another process"
-msgstr ""
+msgstr "Arquivo usado por outro processo"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "O arquivo do jogo salvo está sendo usando por outro programa."
 
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to %s"
-msgstr ""
+msgstr "Rota de comércio: indo para %s"
 
 #: horizons/world/units/ship.py:273
 #, python-format
 msgid "Trade route: waiting at %s"
-msgstr ""
+msgstr "Rota de comércio: esperando em %s"
 
 #: horizons/world/units/ship.py:468
 #, python-format
 msgid "Going to %s"
-msgstr ""
+msgstr "Indo para %s"
 
 #: horizons/world/units/ship.py:469
-#, python-format
+#, python-format, fuzzy
 msgid "Going to %(x)d, %(y)d"
-msgstr ""
+msgstr "Indo para %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:473
 #, python-format
 msgid "Idle at %s"
-msgstr ""
+msgstr "Ocioso em %s"
 
 #: horizons/world/units/ship.py:474
-#, python-format
+#, python-format, fuzzy
 msgid "Idle at %(x)d, %(y)d"
-msgstr ""
+msgstr "Ocioso em %(x)d, %(y)d"
 
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Atacando "
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2994,16 +2998,17 @@ msgid "Starts a random map."
 msgstr "Inicia um mapa randômico."
 
 #: run_uh.py:96
+#, fuzzy
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "Inicia um mapa aleatório usando a semente com o valor <seed>."
 
 #: run_uh.py:98
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr ""
+msgstr "Inicia um <scenario>. Onde <scenario> é o nome do cenário a usar."
 
 #: run_uh.py:100
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr ""
+msgstr "Inicia a <campaign>. Onde <campaign> é o nome da campanha."
 
 #: run_uh.py:102
 msgid "Starts the development map without displaying the main menu."
@@ -3020,10 +3025,12 @@ msgstr "Carrega o último salvamento rápido."
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Define o valor da semente usada para gerar árvores, peixes e outros recursos "
+"naturais."
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr "Opções de IA"
+msgstr "Opções de inteligência artificial"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
@@ -3032,10 +3039,14 @@ msgstr ""
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
 msgstr ""
+"Torna o jogador humano num híbrido humano-inteligência artificial (apenas "
+"para efeitos de desenvolvimento)."
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
 msgstr ""
+"Mostra os planos de inteligência artificial de forma destacada (apenas para "
+"efeitos de desenvolvimento)."
 
 #: run_uh.py:120
 msgid "Development options"
