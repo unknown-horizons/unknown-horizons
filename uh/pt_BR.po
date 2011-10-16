@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-16 22:11+0200\n"
+"PO-Revision-Date: 2011-10-16 22:45+0200\n"
 "Last-Translator: paulodealmeida <paulodealmeida@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -251,9 +251,8 @@ msgstr "Ovelha"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Signal Fire"
-msgstr "Sinal de Fogo"
+msgstr "Sinal de fogo"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -271,7 +270,7 @@ msgstr "Alguns dos seus povoadores abandonaram a povoação."
 #: database files sql
 #, fuzzy
 msgid "Storage Tent"
-msgstr "Armazém"
+msgstr "Tenda de armazenagem"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -383,9 +382,8 @@ msgstr "A sua mina ficou sem recursos."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your settlers reached level ${level}."
-msgstr "Os seus povoadores chegaram ao nível ${level}."
+msgstr "Os seus habitantes chegaram ao nível ${level}."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
