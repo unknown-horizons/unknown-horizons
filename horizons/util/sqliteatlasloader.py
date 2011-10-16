@@ -64,11 +64,9 @@ class SQLiteAtlasLoader(object):
 
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
-			print file
 			entry = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]
 			# we don't need to load images at this point to query for its parameters
 			# such as width and height because we can get those from json file
-			print entry
 			xpos, ypos, width, height = entry[2:]
 
 			if horizons.main.fife.imagemanager.exists(file):
