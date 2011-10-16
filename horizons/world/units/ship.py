@@ -26,7 +26,7 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-	TraderShipOverviewTab, EnemyShipOverviewTab
+     TraderShipOverviewTab, EnemyShipOverviewTab
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
@@ -64,8 +64,8 @@ class ShipRoute(object):
 
 	def append(self, branch_office):
 		self.waypoints.append({
-		  'branch_office' : branch_office,
-		  'resource_list' : {}
+			'branch_office' : branch_office,
+			'resource_list' : {}
 		})
 
 	def move_waypoint(self, position, direction):
@@ -94,7 +94,7 @@ class ShipRoute(object):
 			for res in copy.copy(self.current_transfer):
 				# make sure we don't keep trying to (un)load something when the decision about that resource has changed
 				if self.current_transfer[res] == 0 or res not in self.get_location()['resource_list'] or \
-						cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
+				   cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
 					del self.current_transfer[res]
 
 		settlement = branch_office.settlement
@@ -175,7 +175,7 @@ class ShipRoute(object):
 
 		try:
 			self.ship.move(Circle(branch_office.position.center(), self.ship.radius), self.on_route_bo_reached,
-				blocked_callback = self.on_ship_blocked)
+						   blocked_callback = self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds
 			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)
@@ -222,8 +222,8 @@ class ShipRoute(object):
 
 	def load(self, db):
 		enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload = \
-		       db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload " + \
-		          "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
+			db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload " + \
+			   "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
 
 		query = "SELECT branch_office_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
 		offices_id = db(query, self.ship.worldid)
@@ -234,8 +234,8 @@ class ShipRoute(object):
 			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
 
 			self.waypoints.append({
-			  'branch_office' : branch_office,
-			  'resource_list' : resource_list
+				'branch_office' : branch_office,
+				'resource_list' : resource_list
 			})
 
 		waiting = False
@@ -292,10 +292,10 @@ class Ship(Unit):
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		self.add_component(StorageComponent(
-		    inventory = PositiveTotalNumSlotsStorage(
-		        STORAGE.SHIP_TOTAL_STORAGE,
-		        STORAGE.SHIP_TOTAL_SLOTS_NUMBER))
-		)
+			inventory = PositiveTotalNumSlotsStorage(
+				STORAGE.SHIP_TOTAL_STORAGE,
+				STORAGE.SHIP_TOTAL_SLOTS_NUMBER))
+				           )
 		self.add_component(ShipNameComponent())
 		self.__init()
 
@@ -317,7 +317,7 @@ class Ship(Unit):
 		self._selected = False
 		# register ship in world
 		if self.__class__.has_health:
-            self.add_component(HealthComponent())
+		self.add_component(HealthComponent())
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
