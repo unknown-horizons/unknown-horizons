@@ -317,7 +317,7 @@ class Ship(Unit):
 		self._selected = False
 		# register ship in world
 		if self.__class__.has_health:
-		self.add_component(HealthComponent())
+			self.add_component(HealthComponent())
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
