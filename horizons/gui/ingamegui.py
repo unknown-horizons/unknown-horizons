@@ -84,7 +84,6 @@ class IngameGui(LivingObject):
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
-
 		minimap = self.widgets['minimap']
 		minimap.position_technique = "right-20:top+4"
 		minimap.show()
@@ -93,7 +92,7 @@ class IngameGui(LivingObject):
 
 		self.minimap = Minimap(minimap_rect, self.session, \
 		                       self.session.view.renderer['GenericRenderer'],
-							   horizons.main.fife.targetrenderer)
+		                       horizons.main.fife.targetrenderer)
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
@@ -123,7 +122,7 @@ class IngameGui(LivingObject):
 		self.widgets['status_extra'].child_finder = PychanChildFinder(self.widgets['status_extra'])
 
 		self.message_widget = MessageWidget(self.session, \
-								                        cityinfo.position[0] + cityinfo.size[0], 5)
+		                                    cityinfo.position[0] + cityinfo.size[0], 5)
 		self.widgets['status_gold'].show()
 		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
