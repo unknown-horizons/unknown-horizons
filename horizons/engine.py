@@ -47,7 +47,7 @@ from horizons.i18n.utils import find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 
-UH_MODULE="unknownhorizons"
+UH_MODULE = "unknownhorizons"
 
 class LocalizedSetting(Setting):
 	"""
@@ -220,6 +220,7 @@ class Fife(ApplicationBase):
 		backend = self.get_fife_setting("RenderBackend")
 		if backend == 'SDL':
 			headline = _("Warning")
+			#i18n Warning popup shown in settings when SDL is selected as renderer.
 			message = _("The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n\nUse at own risk!")
 			horizons.main._modules.gui.show_popup(headline, message)
 
