@@ -80,12 +80,12 @@ class ActionSetLoader(object):
 							except ValueError:
 								k = k.encode('utf-8')
 						if isinstance(v, unicode):
-							 v = v.encode('utf-8')
+							v = v.encode('utf-8')
 						elif isinstance(v, list):
 							v = _decode_list(v)
 						newdict[k] = v
 					return newdict
-					
+
 				with open(PATHS.ACTION_SETS_JSON_FILE, "rb") as f:
 					cls.action_sets = json.load(f, encoding="ascii", object_hook=_decode_dict)
 			cls.log.debug("Done!")
