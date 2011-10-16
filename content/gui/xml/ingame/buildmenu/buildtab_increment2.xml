@@ -18,7 +18,7 @@
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
-		<Label position="0,11" text="Mining" name="companies_label" />
+		<Label position="0,11" text="Mining" name="mining_label" />
 
 		<TooltipButton name="iron-mine-1" position="2,32"
 			up_image="content/gui/icons/buildmenu/028.png"

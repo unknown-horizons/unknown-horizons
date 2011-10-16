@@ -79,9 +79,9 @@ def set_translations():
 			},
 		"buildtab_increment2.xml" : {
 			"companies_label"             : _("Companies"),
-			"companies_label"             : _("Mining"),
 			"fields_label"                : _("Fields"),
 			"headline"                    : _("Settler buildings"),
+			"mining_label"                : _("Mining"),
 			"services_label"              : _("Services"),
 			"butchery-1"                  : _("Butchery: Needs pigs or cattle. Produces food."),
 			"cattlerun-1"                 : _("Cattle run: Raises cattle. Needs a farm."),
