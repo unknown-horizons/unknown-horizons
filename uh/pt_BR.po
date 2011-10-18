@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-18 14:50+0200\n"
+"PO-Revision-Date: 2011-10-18 14:53+0200\n"
 "Last-Translator: luisdknob <luisdknob@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -1064,8 +1064,9 @@ msgid "The selected file is not a valid scenario file."
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:264
+#, fuzzy
 msgid "Error message:"
-msgstr ""
+msgstr "Mensagem de erro:"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
@@ -1128,8 +1129,9 @@ msgstr "Comércio"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:334
+#, fuzzy
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Inventário da colônia"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
@@ -1142,8 +1144,9 @@ msgid "Load/Unload:"
 msgstr "Carregar/Descarregar:"
 
 #: horizons/gui/tabs/inventorytab.py:85
+#, fuzzy
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "Comprar/Vender:"
 
 #: horizons/gui/tabs/inventorytab.py:104
 msgid "Can't equip trade ship with weapons"
@@ -1151,15 +1154,17 @@ msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:105
 msgid "It is not possible to equip a trade ship with weapons"
-msgstr ""
+msgstr "Não é possível equipar um navio mercante com armas"
 
 #: horizons/gui/tabs/inventorytab.py:133
+#, fuzzy
 msgid "Equip weapon"
-msgstr ""
+msgstr "Equipar arma"
 
 #: horizons/gui/tabs/inventorytab.py:136
+#, fuzzy
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Desequipar arma"
 
 # #  okay, here we go again.
 # #  the following is rather stable content ;-)
@@ -1177,30 +1182,30 @@ msgstr "Resumo do colono"
 
 #: horizons/gui/tabs/mainsquaretabs.py:204
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Não permitir melhoramentos"
 
 #: horizons/gui/tabs/mainsquaretabs.py:207
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Permitir melhoramentos"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:234
 #: horizons/i18n/guitranslations.py:379
 msgid "Sailors"
-msgstr ""
+msgstr "Marinheiros"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:240
 #: horizons/i18n/guitranslations.py:348
 msgid "Pioneers"
-msgstr ""
+msgstr "Pioneiros"
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:408 horizons/i18n/guitranslations.py:646
 msgid "Settlers"
-msgstr ""
+msgstr "Colonos"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:49 horizons/gui/tabs/overviewtab.py:407
@@ -1222,7 +1227,7 @@ msgstr "Resumo do navio"
 
 #: horizons/gui/tabs/overviewtab.py:160
 msgid "Trade ship"
-msgstr ""
+msgstr "Navio mercante"
 
 #. (tooltip of widget: foundSettlement)
 #: horizons/gui/tabs/overviewtab.py:184 horizons/i18n/guitranslations.py:520
@@ -1293,16 +1298,18 @@ msgstr ""
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:624
+#, fuzzy
 msgid "Start route"
-msgstr ""
+msgstr "Iniciar rota"
 
 #: horizons/gui/widgets/routeconfig.py:68
+#, fuzzy
 msgid "Stop route"
-msgstr ""
+msgstr "Parar rota"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "nenhum"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:45
@@ -1316,14 +1323,15 @@ msgstr ""
 
 #. (text of widget: load)
 #: horizons/i18n/guitranslations.py:49
+#, fuzzy
 msgid "load/reload"
-msgstr ""
+msgstr "carregar/descarregar"
 
 #. (text of widget: companies_label)
 #: horizons/i18n/guitranslations.py:54 horizons/i18n/guitranslations.py:85
 #: horizons/i18n/guitranslations.py:120
 msgid "Companies"
-msgstr "Companias"
+msgstr "Companhias"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:56
