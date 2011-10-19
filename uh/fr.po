@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-19 13:34+0200\n"
+"PO-Revision-Date: 2011-10-19 17:24+0200\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -933,7 +933,7 @@ msgstr ""
 "Impossible de se connecter au serveur principal. Veuillez vérifier que vous "
 "êtes connectés à Internet. Si malgré cela, la connexion reste impossible, il "
 "se peut que notre serveur soit temporairement indisponible.\n"
-"Descriptions: %s"
+"Détails: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:101
 msgid "Network Error"
@@ -1101,7 +1101,7 @@ msgstr "Niveau"
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:544
 #: horizons/i18n/guitranslations.py:553
 msgid "Trade"
-msgstr "Commercer"
+msgstr "Commerce"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:334
@@ -1141,7 +1141,7 @@ msgstr "Désarmer"
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:76 horizons/i18n/guitranslations.py:301
 msgid "Account"
-msgstr "Compte"
+msgstr "Bilan"
 
 # An "apercu" is more a preview than an overview.
 #. (text of widget: headline)
@@ -1197,7 +1197,7 @@ msgstr "Sommaire du comptoir"
 
 #: horizons/gui/tabs/overviewtab.py:139
 msgid "Main square overview"
-msgstr "Fenêtre Place principale"
+msgstr "Sommaire de la place principale"
 
 # An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:150 horizons/gui/tabs/overviewtab.py:232
@@ -1277,11 +1277,11 @@ msgstr "Sommaire de production de %(settlement)s"
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:624
 msgid "Start route"
-msgstr "Début route"
+msgstr "Débuter la route"
 
 #: horizons/gui/widgets/routeconfig.py:68
 msgid "Stop route"
-msgstr "Arrêt route"
+msgstr "Arrêter la route"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -1345,9 +1345,7 @@ msgstr "Chasseur : Chasse des animaux sauvages et fournit de la nourriture."
 #. (tooltip of widget: lighthouse-1)
 #: horizons/i18n/guitranslations.py:68
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
-"Feu de signalisation : Permet au joueur de commercer avec le marchand "
-"indépendant."
+msgstr "Phare : Permet au joueur de commercer avec le marchand indépendant."
 
 #. (tooltip of widget: lumberjack-1)
 #: horizons/i18n/guitranslations.py:70
@@ -1367,7 +1365,7 @@ msgstr "Tente : Abrite vos habitants."
 #. (tooltip of widget: store-1)
 #: horizons/i18n/guitranslations.py:76
 msgid "Storage: Extends stock and provides collectors."
-msgstr "Entrepôt : Agrandit les stocks et fournit des livreurs."
+msgstr "Entrepôt : Agrandit la capacité de stockage et fournit des livreurs."
 
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:78
@@ -1464,7 +1462,8 @@ msgstr "Bâtiments des colons"
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:130
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr "Boucherie : Besoin de cochons ou de bovins. Produit de la nourriture."
+msgstr ""
+"Boucherie : Nécéssite des cochons ou des bovins. Produit de la nourriture."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:132
@@ -1516,7 +1515,7 @@ msgstr "Fabrique de cigares: Produit des cigares à partir de tabac."
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:150
 msgid "Toolmaker: Produces tools out of iron."
-msgstr "Forgeron : Forge des outils."
+msgstr "Forgeron : Forge des outils á partir de fer."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:155
@@ -1537,7 +1536,7 @@ msgstr "Sélectionnez votre navire et approchez de la côte par un clic droit."
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:161
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Ensuite, pressez le grand bouton dans la fenêtre du navire."
+msgstr "Ensuite, cliquez sur le grand bouton dans la fenêtre du navire."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:449
