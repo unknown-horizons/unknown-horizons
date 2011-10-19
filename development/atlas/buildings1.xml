@@ -1,9 +1,5 @@
 <?fife type="atlas"?>
 <atlas name="buildings1.png" namespace="buildings1" width="1016" height="968">
-	<image source="content/gfx/buildings/settlers/salt_ponds/as_saltponds0/idle/135/0.png" xpos="0" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/settlers/salt_ponds/as_saltponds0/idle/225/0.png" xpos="192" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/settlers/salt_ponds/as_saltponds0/idle/315/0.png" xpos="384" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/settlers/salt_ponds/as_saltponds0/idle/45/0.png" xpos="576" ypos="0" width="192" height="192"/>
 	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle/135/0.png" xpos="768" ypos="0" width="158" height="108"/>
 	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle/225/0.png" xpos="768" ypos="108" width="158" height="108"/>
 	<image source="content/gfx/buildings/settlers/charcoal_burning/as_charcoal_burning0/idle/315/0.png" xpos="0" ypos="192" width="158" height="108"/>
