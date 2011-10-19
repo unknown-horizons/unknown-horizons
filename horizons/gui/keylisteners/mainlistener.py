@@ -36,6 +36,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 
 	def __init__(self, gui):
 		super(MainListener, self).__init__()
+		sys.displayhook = self # see __call__ for detailed info
 		self.gui = gui
 		fife.IKeyListener.__init__(self)
 		fife.ConsoleExecuter.__init__(self)
@@ -49,6 +50,19 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		self.cmdlist.onCommand = self.onCommand
 
 		self.commandbuffer = ''
+
+	def __call__(self, cmd):
+		"""
+		The default displayhook method would save computation results
+		in a temp variable called _.  This is rather unfortunate because
+		our gettext functionality also is globally imported under that name.
+		To solve, we have to set a custom Executer not storing anything in _.
+		Cf. FIFE ticket: http://fife.trac.cvsdude.com/engine/ticket/560
+
+		Right now does nothing besides printing to interactive and user shell.
+		#TODO Feel free to implement ;-)
+		"""
+		print "calling %s" % cmd
 
 	def end(self):
 		horizons.main.fife.eventmanager.removeKeyListener(self)
@@ -130,4 +144,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		return ''
 
 	def onToolsClick(self):
+		"""
+		Define what happens if we click on the Tools button in FIFE console
+		"""
 		self.onConsoleCommand('import debug')
