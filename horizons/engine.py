@@ -116,7 +116,8 @@ class Fife(ApplicationBase):
 		self.emitter['speech'] = None
 
 
-	# existing settings not part of this gui or the fife defaults (required for preserving values when upgrading settings file)
+	# existing settings not part of this gui or the fife defaults
+	# (required for preserving values when upgrading settings file)
 	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers"] }
 
 	def _setup_settings(self, check_file_version=True):
@@ -126,8 +127,8 @@ class Fife(ApplicationBase):
 		if check_file_version:
 			# check if user settings file is the current one
 
-			# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently (although the doc states otherwise)
-			# therefore translate paths to absolute ones
+			# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently
+			# (although the doc states otherwise) - thus translate paths to absolute ones
 			user_config_parser = SimpleXMLSerializer( _user_config_file )
 			user_settings_version = user_config_parser.get("meta", "SettingsVersion", -1)
 			_template_config_file = os.path.join( os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE )
@@ -360,23 +361,12 @@ class Fife(ApplicationBase):
 		from horizons.gui.widgets.stepslider import StepSlider
 		from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 
-		pychan.widgets.registerWidget(CancelButton)
-		pychan.widgets.registerWidget(DeleteButton)
-		pychan.widgets.registerWidget(Inventory)
-		pychan.widgets.registerWidget(BuySellInventory)
-		pychan.widgets.registerWidget(ImageFillStatusButton)
-		pychan.widgets.registerWidget(OkButton)
-		pychan.widgets.registerWidget(ProgressBar)
-		pychan.widgets.registerWidget(TabBG)
-		pychan.widgets.registerWidget(ToggleImageButton)
-		pychan.widgets.registerWidget(TooltipIcon)
-		pychan.widgets.registerWidget(TooltipButton)
-		pychan.widgets.registerWidget(TooltipLabel)
-		pychan.widgets.registerWidget(TooltipProgressBar)
-		pychan.widgets.registerWidget(StepSlider)
-		pychan.widgets.registerWidget(HealthWidget)
-		pychan.widgets.registerWidget(StanceWidget)
-		pychan.widgets.registerWidget(WeaponStorageWidget)
+		widgets = [OkButton, CancelButton, DeleteButton,
+		           Inventory, BuySellInventory, ImageFillStatusButton,
+		           ProgressBar, StepSlider, TabBG, ToggleImageButton,
+		           TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
+		           HealthWidget, StanceWidget, WeaponStorageWidget]
+		map(lambda x: pychan.widgets.registerWidget(x), widgets)
 
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
@@ -406,10 +396,9 @@ class Fife(ApplicationBase):
 		slider_event_map['volume_effects'] = self.set_volume_effects
 		self.OptionsDlg.mapEvents(slider_event_map)
 
-	def update_slider_values(self, slider, factor = 1, percent = False):
+	def update_slider_values(self, slider, factor = 1, unit = ''):
 		self.OptionsDlg.findChild(name=slider+'_value').text = \
-		     unicode(int(self.OptionsDlg.findChild(name=slider).getValue() * factor)) \
-		     + ('%' if percent else '')
+		     u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).getValue() * factor), unit)
 
 	def setup_sound(self):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
@@ -514,7 +503,7 @@ class Fife(ApplicationBase):
 			value = self.OptionsDlg.findChild(name="volume_music").getValue()
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['bgsound'].setGain(value)
-		self.update_slider_values('volume_music', factor = 500, percent = True)
+		self.update_slider_values('volume_music', factor = 500, unit = '%')
 
 	def set_volume_effects(self, value=None):
 		"""Sets the volume of effects, speech and ambient emitters.
@@ -527,7 +516,7 @@ class Fife(ApplicationBase):
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:
 				e.setGain(value*2)
-		self.update_slider_values('volume_effects', factor = 200, percent = True)
+		self.update_slider_values('volume_effects', factor = 200, unit = '%')
 
 	def get_locale(self):
 		for locale_code, langname in LANGUAGENAMES.items():
@@ -566,6 +555,7 @@ class Fife(ApplicationBase):
 				descr = _(u"Networking couldn't be initialised with the current configuration.")
 				advice = _(u"Check the data you entered in the Network section.")
 				if 0 < parse_port(port, allow_zero=True) < 1024:
+					#i18n This is advice for players seeing a network error with the current config
 					advice += u" " + \
 					       _("Low port numbers sometimes require special privileges, try one greater than 1024 or 0.")
 				details = unicode(e)
