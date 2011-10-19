@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-10-14 17:50+0200\n"
+"PO-Revision-Date: 2011-10-19 13:05+0200\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1383,11 +1383,10 @@ msgid "graphics"
 msgstr "graphiques"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
 # 80%
 msgid "grow"
-msgstr "croitre"
+msgstr "croitre / grandir / pousser / prospérer"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1453,20 +1452,10 @@ msgstr "clé / touche"
 msgid "lamb wool"
 msgstr "laine de mouton"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
 msgid "load/unload"
-msgstr "charger/décharger"
+msgstr "charger / décharger"
 
 #
 #
@@ -1513,20 +1502,10 @@ msgstr "service"
 msgid "sheep"
 msgstr "mouton"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
 msgid "ship inventory"
-msgstr "inventaire/cargaison du navire"
+msgstr "inventaire du navire / cargaison du navire"
 
 #
 #
@@ -1608,7 +1587,7 @@ msgid "red"
 msgstr "rouge"
 
 msgid "check"
-msgstr "Vérifier"
+msgstr "vérifier"
 
 msgid "connection"
 msgstr "connexion"
@@ -1681,7 +1660,7 @@ msgid "temporarily"
 msgstr "temporairement"
 
 msgid "salt ponds"
-msgstr "marais salants"
+msgstr "marais salants / salines"
 
 msgid "tobacco"
 msgstr "tabac"
