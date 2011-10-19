@@ -31,9 +31,12 @@ class SQLiteAtlasLoader(object):
 	def __init__(self):
 		self.atlaslib = []
 
-		f = open('content/atlas.sql', "r")
-		sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
-		horizons.main.db.execute_script(sql)
+		# TODO: There's something wrong with ground entities if atlas.sql
+		# is loaded only here, for now it's added to DB_FILES (empty file if no atlases are used)
+		
+		#f = open('content/atlas.sql', "r")
+		#sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
+		#horizons.main.db.execute_script(sql)
 
 		self.atlases = horizons.main.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
 

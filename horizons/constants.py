@@ -344,7 +344,7 @@ class PATHS:
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
 	DB_FILES = tuple(os.path.join("content", i) for i in \
-	                 ("game.sql", "balance.sql") )
+	                 ("game.sql", "balance.sql", "atlas.sql") )
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 
