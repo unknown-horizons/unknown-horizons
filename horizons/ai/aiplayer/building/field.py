@@ -62,6 +62,8 @@ class AbstractField(AbstractBuilding):
 			return BUILDING_PURPOSE.PASTURE
 		elif resource_id == RES.RAW_SUGAR_ID:
 			return BUILDING_PURPOSE.SUGARCANE_FIELD
+		elif resource_id == RES.TOBACCO_PLANTS_ID:
+			return BUILDING_PURPOSE.TOBACCO_FIELD
 		return None
 
 	@classmethod
@@ -72,6 +74,8 @@ class AbstractField(AbstractBuilding):
 			return RES.WOOL_ID
 		elif resource_id == RES.RAW_SUGAR_ID:
 			return RES.SUGAR_ID
+		elif resource_id == RES.TOBACCO_PLANTS_ID:
+			return RES.TOBACCO_LEAVES_ID
 		return None
 
 	def build(self, settlement_manager, resource_id):
@@ -97,6 +101,7 @@ class AbstractField(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.POTATO_FIELD_CLASS] = cls
 		cls._available_buildings[BUILDINGS.PASTURE_CLASS] = cls
 		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD_CLASS] = cls
+		cls._available_buildings[BUILDINGS.TOBACCO_FIELD_CLASS] = cls
 
 AbstractField.register_buildings()
 

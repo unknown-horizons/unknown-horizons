@@ -195,6 +195,7 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.POTATO_FIELD: deque(),
 			BUILDING_PURPOSE.PASTURE: deque(),
 			BUILDING_PURPOSE.SUGARCANE_FIELD: deque(),
+			BUILDING_PURPOSE.TOBACCO_FIELD: deque(),
 		}
 
 		for coords, (purpose, _) in sorted(self.plan.iteritems()):
@@ -225,6 +226,8 @@ class ProductionBuilder(AreaBuilder):
 		weaver_colour = (0, 64, 64)
 		sugarcane_field_colour = (192, 192, 0)
 		distillery_colour = (255, 128, 40)
+		tobacco_field_colour = (64, 64, 0)
+		tobacconist_colour = (128, 64, 40)
 		clay_pit_colour = (0, 64, 0)
 		brickyard_colour = (0, 32, 0)
 		boatbuilder_colour = (163, 73, 164)
@@ -252,6 +255,10 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *sugarcane_field_colour)
 			elif purpose == BUILDING_PURPOSE.DISTILLERY:
 				renderer.addColored(tile._instance, *distillery_colour)
+			elif purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
+				renderer.addColored(tile._instance, *tobacco_field_colour)
+			elif purpose == BUILDING_PURPOSE.TOBACCONIST:
+				renderer.addColored(tile._instance, *tobacconist_colour)
 			elif purpose == BUILDING_PURPOSE.CLAY_PIT:
 				renderer.addColored(tile._instance, *clay_pit_colour)
 			elif purpose == BUILDING_PURPOSE.BRICKYARD:
@@ -363,7 +370,7 @@ class ProductionBuilder(AreaBuilder):
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].size
 		removed_list = []
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD]:
+			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD]:
 				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 				for field_coords in rect.tuple_iter():
 					if field_coords not in self.land_manager.production:
@@ -384,10 +391,10 @@ class ProductionBuilder(AreaBuilder):
 				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
 
 	collector_building_classes = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]
-	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS]
+	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS, BUILDINGS.TOBACCO_FIELD_CLASS]
 	production_building_classes = set([BUILDINGS.FISHERMAN_CLASS, BUILDINGS.LUMBERJACK_CLASS, BUILDINGS.FARM_CLASS, BUILDINGS.CLAY_PIT_CLASS,
 		BUILDINGS.BRICKYARD_CLASS, BUILDINGS.WEAVER_CLASS, BUILDINGS.DISTILLERY_CLASS, BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SMELTERY_CLASS,
-		BUILDINGS.TOOLMAKER_CLASS, BUILDINGS.CHARCOAL_BURNER_CLASS])
+		BUILDINGS.TOOLMAKER_CLASS, BUILDINGS.CHARCOAL_BURNER_CLASS, BUILDINGS.TOBACCONIST_CLASS])
 
 	def add_building(self, building):
 		"""Called when a new building is added in the area (the building already exists during the call)."""
