@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-08-01 15:39+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-10-21 18:29+0200\n"
+"Last-Translator: SanderOnline <sander@hasenpflug.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Een nieuwe wereld is aangemaakt"
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr ""
+msgstr "Zwijn"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -55,12 +55,12 @@ msgstr "Bakstenenfabriek"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "Slagerij"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Cattle"
-msgstr ""
+msgstr "Vee"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -95,7 +95,7 @@ msgstr "Distillerij"
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "Dokter"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -126,7 +126,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Gravel Path"
-msgstr ""
+msgstr "Grindpad"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -194,7 +194,7 @@ msgstr "Pavilioen"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr ""
+msgstr "Varkensstal"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -264,19 +264,18 @@ msgstr "Tent"
 # 77%
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Verlaten tent"
+msgstr "Tent ruïne"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Tabak veld"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabaksverkoper"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -312,17 +311,19 @@ msgstr "Wevers Tent"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Houten Toren"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Het is tevens mogelijk om wegen te slepen"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"De maximale toename is bereikt, uw inwoners zullen zich niet verder "
+"ontwikkelen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -377,7 +378,7 @@ msgstr "planken"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr ""
+msgstr "bordeaux"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -387,7 +388,7 @@ msgstr "bakstenen"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "Kanon"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -2149,7 +2150,7 @@ msgstr ""
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:650
 msgid "Units"
-msgstr ""
+msgstr "Eenheden"
 
 # 87%
 #. (text of widget: balance)
@@ -2166,22 +2167,22 @@ msgstr ""
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:676
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:678
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:680
 msgid "Weapons"
-msgstr ""
+msgstr "Wapens"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:687
 msgid "Aggressive"
-msgstr ""
+msgstr "Agressief"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:689
@@ -2191,12 +2192,12 @@ msgstr ""
 #. (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:691
 msgid "Hold ground"
-msgstr ""
+msgstr "Stand houden"
 
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:693
 msgid "Passive"
-msgstr ""
+msgstr "Passief"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:698
@@ -2666,7 +2667,7 @@ msgstr "Start spel"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:928
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleer"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:930
@@ -2714,17 +2715,17 @@ msgstr "Kies een kaart om te spelen:"
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:966
 msgid "Map settings:"
-msgstr ""
+msgstr "Kaart instellingen"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:976
 msgid "AI players:"
-msgstr ""
+msgstr "Computer (A.I.)  spelers"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:981
 msgid "Game settings:"
-msgstr ""
+msgstr "Spel instellingen: "
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:983
@@ -2734,7 +2735,7 @@ msgstr ""
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:985
 msgid "Pirates"
-msgstr ""
+msgstr "Piraten"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:990
@@ -2783,6 +2784,8 @@ msgstr "Fout: Meerdere resultaten gevonden: "
 #: horizons/main.py:358
 msgid "Error: campaign filenames have to end in \".yaml\"."
 msgstr ""
+"Fout: bestandsnamen van campagnes dienen te eindigen met de extentie "
+"\".yaml\". "
 
 #: horizons/main.py:366
 #, python-format
@@ -3008,7 +3011,7 @@ msgstr ""
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "AI instellingen"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
