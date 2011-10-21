@@ -294,6 +294,7 @@ class WILD_ANIMAL:
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
 	DEFAULT_WAIT_TICKS = 32 # how long collectors wait before again looking for a job
+	DEFAULT_STORAGE_SIZE = 8
 	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for calculating how busy a collector is
 
 class STORAGE:

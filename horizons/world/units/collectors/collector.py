@@ -73,7 +73,7 @@ class Collector(StorageHolder, Unit):
 
 	# INIT/DESTRUCT
 
-	def __init__(self, x, y, slots = 1, size = 4, start_hidden=True, **kwargs):
+	def __init__(self, x, y, slots = 1, size = COLLECTORS.DEFAULT_STORAGE_SIZE, start_hidden=True, **kwargs):
 		super(Collector, self).__init__(slots = slots, \
 		                                size = size, \
 		                                x = x, \
