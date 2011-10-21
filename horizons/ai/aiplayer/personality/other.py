@@ -22,14 +22,10 @@
 from default import DefaultPersonality
 
 class OtherPersonality(DefaultPersonality):
-	""" this personality is just for testing """
+	"""This personality makes the AI build larger settlements."""
 
-	class SettlementFounder(DefaultPersonality.SettlementFounder):
-		# found a settlement on a random island that is at least as large as the first element; if it is impossible then try the next size
-		island_size_sequence = [1000, 300, 150]
-
-	class AreaBuilder(DefaultPersonality.AreaBuilder):
-		pass
-
-	class ProductionBuilder(DefaultPersonality.ProductionBuilder, AreaBuilder):
-		pass
+	class LandManager(DefaultPersonality.LandManager):
+		village_area_small = DefaultPersonality.LandManager.village_area_small * 2 # use this fraction of the area for the village if <= 1600 tiles are available for the settlement
+		village_area_40 = DefaultPersonality.LandManager.village_area_40 * 2 # use this fraction of the area for the village if <= 2500 tiles are available for the settlement
+		village_area_50 = DefaultPersonality.LandManager.village_area_50 * 2 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
+		village_area_60 = DefaultPersonality.LandManager.village_area_60 * 2 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
