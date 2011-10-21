@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-18 14:53+0200\n"
+"PO-Revision-Date: 2011-10-18 14:54+0200\n"
 "Last-Translator: luisdknob <luisdknob@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -29,13 +29,11 @@ msgstr "Uma nova colônia foi criada por ${player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new world has been created."
 msgstr "Um novo mundo foi criado."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
-#, fuzzy
 msgid "Boar"
 msgstr "Javali"
 
@@ -52,19 +50,16 @@ msgstr "Feitoria"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Brickyard"
 msgstr "Fábrica de tijolos"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Butchery"
 msgstr "Matadouro"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
-#, fuzzy
 msgid "Cattle"
 msgstr "Gado"
 
@@ -85,19 +80,16 @@ msgstr "Depósito de barro"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Clay Pit"
 msgstr "Poço de barro"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
-#, fuzzy
 msgid "Deer"
 msgstr "Veado"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Distillery"
 msgstr "Destilaria"
 
@@ -113,7 +105,6 @@ msgstr "Fazenda"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Fish Deposit"
 msgstr "Depósito de peixe"
 
@@ -163,25 +154,21 @@ msgstr "Mina de ferro"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Log"
 msgstr "Tronco"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Lookout"
 msgstr "Vigia"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Lumberjack Camp"
 msgstr "Acampamento de lenhadores"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Main Square"
 msgstr "Praça Principal"
 
@@ -197,37 +184,31 @@ msgstr "Falta uma praça principal em uma das suas colônias."
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Pasture"
 msgstr "Pastagem"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Pavilion"
 msgstr "Pavilhão"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Pigsty"
 msgstr "Pocilga"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
-#, fuzzy
 msgid "Pirate Ship"
 msgstr "Barco pirata"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Potato Field"
 msgstr "Plantação de batatas"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Rampart"
 msgstr "Plataforma"
 
@@ -254,7 +235,6 @@ msgstr "Sinal de fogo"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Smeltery"
 msgstr "Fundição"
 
@@ -286,7 +266,6 @@ msgstr "Tenda"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
 msgstr "Ruínas"
 
@@ -302,7 +281,6 @@ msgstr "Tabacaria"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Toolmaker"
 msgstr "Ferreiro"
 
@@ -313,7 +291,6 @@ msgstr "Comerciante"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Trail"
 msgstr "Trilha"
 
@@ -325,7 +302,6 @@ msgstr "Árvore"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Village school"
 msgstr "Escola"
 
@@ -360,7 +336,6 @@ msgstr "Você venceu!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "You need more ${resource} to build this building."
 msgstr "Precisa de mais ${resource} para construir este edifício."
 
@@ -371,7 +346,6 @@ msgstr "O seu jogo foi salvo."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your mine has run out of resources."
 msgstr "A sua mina ficou sem recursos."
 
@@ -429,13 +403,11 @@ msgstr "gado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "cattle for slaughter"
 msgstr "gado para abate"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "charcoal"
 msgstr "carvão vegetal"
 
@@ -508,7 +480,6 @@ msgstr "comida"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "get-together"
 msgstr "reunião"
 
@@ -544,19 +515,16 @@ msgstr "depósito de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "iron ingots"
 msgstr "ligotes de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "iron ore"
 msgstr "minério de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "lamb wool"
 msgstr "lã de ovelha"
 
@@ -593,7 +561,6 @@ msgstr "porcos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "pigs for slaughter"
 msgstr "porcos para abate"
 
@@ -844,7 +811,6 @@ msgstr "Por favor, selecione um jogo salvo ou clique em cancelar."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:277
-#, fuzzy
 msgid "Select a savegame"
 msgstr "Escolha um jogo salvo"
 
@@ -1231,6 +1197,7 @@ msgstr "Navio mercante"
 
 #. (tooltip of widget: foundSettlement)
 #: horizons/gui/tabs/overviewtab.py:184 horizons/i18n/guitranslations.py:520
+#, fuzzy
 msgid "Build settlement"
 msgstr "Construir colônia"
 
@@ -1609,37 +1576,31 @@ msgstr "Diário do capitão"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:193
-#, fuzzy
 msgid "Rotate map counterclockwise"
 msgstr "Rotacionar o mapa no sentido anti-horário"
 
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:195
-#, fuzzy
 msgid "Rotate map clockwise"
 msgstr "Rotacionar o mapa no sentido do horário"
 
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:197
-#, fuzzy
 msgid "Decrease game speed"
 msgstr "Diminuir a velocidade de jogo"
 
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:199
-#, fuzzy
 msgid "Increase game speed"
 msgstr "Aumentar a velocidade de jogo"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:201
-#, fuzzy
 msgid "Zoom in"
 msgstr "Ampliar"
 
 #. (tooltip of widget: zoomOut)
 #: horizons/i18n/guitranslations.py:203
-#, fuzzy
 msgid "Zoom out"
 msgstr "Reduzir"
 
@@ -1650,13 +1611,11 @@ msgstr "Tábuas"
 
 #. (tooltip of widget: bricks_icon)
 #: horizons/i18n/guitranslations.py:210
-#, fuzzy
 msgid "Bricks"
 msgstr "Tijolos"
 
 #. (tooltip of widget: food_icon)
 #: horizons/i18n/guitranslations.py:212
-#, fuzzy
 msgid "Food"
 msgstr "Comida"
 
@@ -1667,13 +1626,11 @@ msgstr "Tecidos"
 
 #. (tooltip of widget: tools_icon)
 #: horizons/i18n/guitranslations.py:216
-#, fuzzy
 msgid "Tools"
 msgstr "Ferramentas"
 
 #. (tooltip of widget: gold_icon)
 #: horizons/i18n/guitranslations.py:221
-#, fuzzy
 msgid "Gold"
 msgstr "Ouro"
 
@@ -1874,7 +1831,6 @@ msgstr "Moradores por casa"
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py:352 horizons/i18n/guitranslations.py:383
 #: horizons/i18n/guitranslations.py:412
-#, fuzzy
 msgid "Summary"
 msgstr "Sumário"
 
@@ -1910,7 +1866,6 @@ msgstr "moradores"
 #. (text of widget: tax_label)
 #: horizons/i18n/guitranslations.py:364 horizons/i18n/guitranslations.py:393
 #: horizons/i18n/guitranslations.py:428 horizons/i18n/guitranslations.py:493
-#, fuzzy
 msgid "Taxes:"
 msgstr "Impostos:"
 
@@ -1932,7 +1887,6 @@ msgstr "Melhorar as permissões:"
 #: horizons/i18n/guitranslations.py:397 horizons/i18n/guitranslations.py:403
 #: horizons/i18n/guitranslations.py:434 horizons/i18n/guitranslations.py:440
 #: horizons/i18n/guitranslations.py:497 horizons/i18n/guitranslations.py:507
-#, fuzzy
 msgid "Paid taxes"
 msgstr "Impostos pagos"
 
@@ -1991,7 +1945,6 @@ msgstr "Vendendo"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:461 horizons/i18n/guitranslations.py:516
-#, fuzzy
 msgid "Weapons:"
 msgstr "Armas:"
 
@@ -2025,14 +1978,12 @@ msgstr "Recursos necessários:"
 #. (tooltip of widget: happiness_label)
 #. (tooltip of widget: happiness)
 #: horizons/i18n/guitranslations.py:495 horizons/i18n/guitranslations.py:509
-#, fuzzy
 msgid "Happiness"
 msgstr "Felicidade"
 
 #. (tooltip of widget: residents_label)
 #. (tooltip of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:501 horizons/i18n/guitranslations.py:503
-#, fuzzy
 msgid "Residents"
 msgstr "Residentes"
 
@@ -2098,13 +2049,11 @@ msgstr "Apagar entrada"
 
 #. (tooltip of widget: move_down) Trade route entry
 #: horizons/i18n/guitranslations.py:587
-#, fuzzy
 msgid "Move down"
 msgstr "Mover para baixo"
 
 #. (tooltip of widget: move_up) Trade route entry
 #: horizons/i18n/guitranslations.py:589
-#, fuzzy
 msgid "Move up"
 msgstr "Mover para cima"
 
@@ -2158,20 +2107,17 @@ msgstr ""
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:620
-#, fuzzy
 msgid "Exit"
 msgstr "Sair"
 
 #. (tooltip of widget: add_bo) List of harbors in trade route
 #: horizons/i18n/guitranslations.py:622
-#, fuzzy
 msgid "Add to list"
 msgstr "Adicionar à lista"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:629 horizons/i18n/guitranslations.py:652
 #: horizons/i18n/guitranslations.py:667 horizons/i18n/guitranslations.py:682
-#, fuzzy
 msgid "Close"
 msgstr "Fechar"
 
@@ -2182,7 +2128,6 @@ msgstr "Construções"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:636
-#, fuzzy
 msgid "Player scores"
 msgstr "Pontuação"
 
@@ -2193,7 +2138,6 @@ msgstr "Terra"
 
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py:640
-#, fuzzy
 msgid "Money"
 msgstr "Dinheiro"
 
@@ -2213,13 +2157,11 @@ msgstr "Recursos"
 
 #. (text of widget: total_score)
 #: horizons/i18n/guitranslations.py:648
-#, fuzzy
 msgid "Total"
 msgstr "Total"
 
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:650
-#, fuzzy
 msgid "Units"
 msgstr "Unidades"
 
@@ -2232,13 +2174,11 @@ msgstr "Balanço:"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:672
-#, fuzzy
 msgid "Health"
 msgstr "Saúde"
 
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:676
-#, fuzzy
 msgid "Type"
 msgstr "Tipo"
 
@@ -2249,13 +2189,11 @@ msgstr "Status"
 
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:680
-#, fuzzy
 msgid "Weapons"
 msgstr "Armas"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:687
-#, fuzzy
 msgid "Aggressive"
 msgstr "Agressivo"
 
@@ -2266,7 +2204,6 @@ msgstr "Fugir"
 
 #. (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:691
-#, fuzzy
 msgid "Hold ground"
 msgstr "Manter posição"
 
@@ -2765,6 +2702,7 @@ msgstr "Novo jogo - Singleplayer"
 
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py:939
+#, fuzzy
 msgid "Start game:"
 msgstr "Início do jogo:"
 
@@ -2932,7 +2870,7 @@ msgstr "Erro: Impossível localizar campanha do arquivo \"%s\"."
 # 81%
 #: horizons/savegamemanager.py:438
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario \"%s\"."
 msgstr "Erro: Não foi possível encontrar o cenário \"%s\"."
 
@@ -3014,7 +2952,7 @@ msgid "Going to %s"
 msgstr "Indo para %s"
 
 #: horizons/world/units/ship.py:469
-#, python-format, fuzzy
+#, python-format, 
 msgid "Going to %(x)d, %(y)d"
 msgstr "Indo para %(x)d, %(y)d"
 
@@ -3024,7 +2962,7 @@ msgid "Idle at %s"
 msgstr "Ocioso em %s"
 
 #: horizons/world/units/ship.py:474
-#, python-format, fuzzy
+#, python-format, 
 msgid "Idle at %(x)d, %(y)d"
 msgstr "Ocioso em %(x)d, %(y)d"
 
@@ -3176,7 +3114,6 @@ msgstr ""
 "horizons.org ."
 
 #: run_uh.py:201
-#, fuzzy
 msgid "Error: Unable to find required libraries"
 msgstr "Erro: Não foi possível encontrar as bibliotecas necessárias"
 
