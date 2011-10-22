@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-22 17:36+0200\n"
+"PO-Revision-Date: 2011-10-22 17:18+0200\n"
 "Last-Translator: MrRuudJ <ruudjejacobs@live.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1236,21 +1236,21 @@ msgstr "%(player)s's nederzettingen"
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr ""
+msgstr "%(plsyer)s's schepen"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:81
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: horizons/gui/widgets/playersships.py:83
 msgid "N/A"
-msgstr ""
+msgstr "n.b."
 
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
 msgid "Production overview of %(settlement)s"
-msgstr ""
+msgstr "Productie overzicht van %(settlement)s"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:624
@@ -1263,7 +1263,7 @@ msgstr "Handelsroute stoppen"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "geen"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:45
