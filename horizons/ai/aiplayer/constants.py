@@ -67,6 +67,7 @@ class BUILDING_PURPOSE:
 	SIGNAL_FIRE = 27
 	TOBACCO_FIELD = 28
 	TOBACCONIST = 29
+	SALT_PONDS = 30
 
 	purpose_to_building = {}
 	building_to_purpose = {}
@@ -100,6 +101,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.SIGNAL_FIRE] = BUILDINGS.SIGNAL_FIRE_CLASS
 		cls.purpose_to_building[cls.TOBACCO_FIELD] = BUILDINGS.TOBACCO_FIELD_CLASS
 		cls.purpose_to_building[cls.TOBACCONIST] = BUILDINGS.TOBACCONIST_CLASS
+		cls.purpose_to_building[cls.SALT_PONDS] = BUILDINGS.SALT_PONDS_CLASS
 
 		for purpose, building_id in cls.purpose_to_building.iteritems():
 			cls.building_to_purpose[building_id] = purpose

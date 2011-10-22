@@ -159,7 +159,7 @@ class DefaultPersonality:
 		# tax rates and upgrade rights in settlements with a school and none of the above problems
 		final_sailor_taxes = 0.9
 		final_pioneer_taxes = 1.0
-		final_settler_taxes = 0.8
+		final_settler_taxes = 1.0
 		final_sailor_upgrades = True
 		final_pioneer_upgrades = True
 
@@ -324,6 +324,18 @@ class DefaultPersonality:
 		# this goal is only used on feeder islands
 		enabled = True
 		default_priority = 250
+		residences_required = 0
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class SaltGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 10
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class FeederSaltGoal:
+		enabled = True
+		default_priority = 230
 		residences_required = 0
 		min_settler_level = SETTLER.SETTLER_LEVEL
 

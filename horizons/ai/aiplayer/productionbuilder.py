@@ -51,6 +51,8 @@ class ProductionBuilder(AreaBuilder):
 	* last_collector_improvement_road: the last tick when a new road connection was built to improve collector coverage
 	"""
 
+	coastal_building_classes = [BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, BUILDINGS.SALT_PONDS_CLASS]
+
 	def __init__(self, settlement_manager):
 		super(ProductionBuilder, self).__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
@@ -231,6 +233,7 @@ class ProductionBuilder(AreaBuilder):
 		clay_pit_colour = (0, 64, 0)
 		brickyard_colour = (0, 32, 0)
 		boatbuilder_colour = (163, 73, 164)
+		salt_ponds_colour = (153, 217, 234)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, (purpose, _) in self.plan.iteritems():
@@ -265,6 +268,8 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *brickyard_colour)
 			elif purpose == BUILDING_PURPOSE.BOAT_BUILDER:
 				renderer.addColored(tile._instance, *boatbuilder_colour)
+			elif purpose == BUILDING_PURPOSE.SALT_PONDS:
+				renderer.addColored(tile._instance, *salt_ponds_colour)
 			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:
@@ -277,13 +282,16 @@ class ProductionBuilder(AreaBuilder):
 			# clay deposits and mountains are outside the production plan until they are constructed
 			if coords in self.plan or coords not in self.settlement.ground_map:
 				return None
+		elif building_id in self.coastal_building_classes:
+			if (coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE) or coords not in self.settlement.ground_map:
+				return None
 		else:
 			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.settlement.ground_map:
 				return None
 		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
 		if not builder or not self.land_manager.legal_for_production(builder.position):
 			return None
-		if building_id == BUILDINGS.FISHERMAN_CLASS or building_id == BUILDINGS.BOATBUILDER_CLASS:
+		if building_id in self.coastal_building_classes:
 			for coords in builder.position.tuple_iter():
 				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
@@ -304,6 +312,10 @@ class ProductionBuilder(AreaBuilder):
 		if orientation == 1 or orientation == 3:
 			size = (size[1], size[0])
 		if coords not in self.island.last_changed[size]:
+			# positions with the origin on coast aren't cached, only salt ponds are currently handled at all
+			# TODO: add caching for coastal buildings
+			if building_id in self.coastal_building_classes:
+				return self.__make_new_builder(building_id, x, y, needs_collector, orientation)
 			return None
 
 		island_changed = self.island.last_changed[size][coords]
@@ -394,7 +406,7 @@ class ProductionBuilder(AreaBuilder):
 	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS, BUILDINGS.TOBACCO_FIELD_CLASS]
 	production_building_classes = set([BUILDINGS.FISHERMAN_CLASS, BUILDINGS.LUMBERJACK_CLASS, BUILDINGS.FARM_CLASS, BUILDINGS.CLAY_PIT_CLASS,
 		BUILDINGS.BRICKYARD_CLASS, BUILDINGS.WEAVER_CLASS, BUILDINGS.DISTILLERY_CLASS, BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SMELTERY_CLASS,
-		BUILDINGS.TOOLMAKER_CLASS, BUILDINGS.CHARCOAL_BURNER_CLASS, BUILDINGS.TOBACCONIST_CLASS])
+		BUILDINGS.TOOLMAKER_CLASS, BUILDINGS.CHARCOAL_BURNER_CLASS, BUILDINGS.TOBACCONIST_CLASS, BUILDINGS.SALT_PONDS_CLASS])
 
 	def add_building(self, building):
 		"""Called when a new building is added in the area (the building already exists during the call)."""

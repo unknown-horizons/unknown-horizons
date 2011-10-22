@@ -36,7 +36,8 @@ class Builder(WorldObject):
 
 	rotations = [45, 135, 225, 315]
 	# don't change the orientation of the following building types
-	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, BUILDINGS.IRON_MINE_CLASS]
+	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, \
+		BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SALT_PONDS_CLASS]
 
 	def __init__(self, building_id, land_manager, point, orientation = 0, ship = None, worldid = None):
 		"""
@@ -138,6 +139,11 @@ class Builder(WorldObject):
 		size = Entities.buildings[building_id].size
 		if orientation == 1 or orientation == 3:
 			size = (size[1], size[0])
+
+		if coords not in land_manager.island.last_changed[size]:
+			# a position on the coastline that is not being cached
+			return Builder(building_id, land_manager, point, orientation, ship, worldid=worldid)
+
 		last_changed = land_manager.island.last_changed[size][coords]
 		if key in cls.cache and last_changed != cls.cache[key][0]:
 			del cls.cache[key]

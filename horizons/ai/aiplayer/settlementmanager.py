@@ -31,11 +31,12 @@ from horizons.ai.aiplayer.goal.boatbuilder import BoatBuilderGoal
 from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, MountainCoverageGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
-	FeederTobaccoProductsGoal
+	FeederTobaccoProductsGoal, FeederSaltGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
-	EducationGoal, GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal, TobaccoProductsGoal
+	EducationGoal, GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal, TobaccoProductsGoal, \
+	SaltGoal
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
 from horizons.ai.aiplayer.goal.tent import TentGoal
@@ -98,7 +99,7 @@ class SettlementManager(WorldObject):
 		self.production_chain = {}
 		for resource_id in [RES.COMMUNITY_ID, RES.BOARDS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.FAITH_ID, \
 						RES.EDUCATION_ID, RES.GET_TOGETHER_ID, RES.BRICKS_ID, RES.TOOLS_ID, RES.LIQUOR_ID, \
-						RES.TOBACCO_PRODUCTS_ID]:
+						RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialise caches
@@ -117,6 +118,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(FeederFoodGoal(self))
 			self._goals.append(FeederTextileGoal(self))
 			self._goals.append(FeederLiquorGoal(self))
+			self._goals.append(FeederSaltGoal(self))
 			self._goals.append(FeederTobaccoProductsGoal(self))
 		else:
 			self._goals.append(BoatBuilderGoal(self))
@@ -129,6 +131,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(TextileGoal(self))
 			self._goals.append(EducationGoal(self))
 			self._goals.append(GetTogetherGoal(self))
+			self._goals.append(SaltGoal(self))
 			self._goals.append(TobaccoProductsGoal(self))
 			self._goals.append(ToolsGoal(self))
 			self._goals.append(TentGoal(self))
@@ -298,6 +301,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s food requirement %.5f', self, self.get_ideal_production_level(RES.FOOD_ID))
 		self.log.info('%s textile requirement %.5f', self, self.get_ideal_production_level(RES.TEXTILE_ID))
 		self.log.info('%s liquor requirement %.5f', self, self.get_ideal_production_level(RES.LIQUOR_ID))
+		self.log.info('%s salt requirement %.5f', self, self.get_ideal_production_level(RES.SALT_ID))
 		self.log.info('%s tobacco products requirement %.5f', self, self.get_ideal_production_level(RES.TOBACCO_PRODUCTS_ID))
 		self.production_builder.manage_production()
 		self.resource_manager.refresh()
@@ -315,6 +319,8 @@ class SettlementManager(WorldObject):
 			self.get_resource_production_requirement(RES.TEXTILE_ID))
 		self.log.info('%s get-together production     %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER_ID), \
 			self.get_resource_production_requirement(RES.GET_TOGETHER_ID))
+		self.log.info('%s salt production             %.5f / %.5f', self, self.get_resource_production(RES.SALT_ID), \
+			self.get_resource_production_requirement(RES.SALT_ID))
 		self.log.info('%s tobacco products production %.5f / %.5f', self, self.get_resource_production(RES.TOBACCO_PRODUCTS_ID), \
 			self.get_resource_production_requirement(RES.TOBACCO_PRODUCTS_ID))
 		self.production_builder.manage_production()

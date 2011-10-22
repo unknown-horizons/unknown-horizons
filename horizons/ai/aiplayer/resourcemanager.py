@@ -250,7 +250,7 @@ class ResourceManager(WorldObject):
 
 	def manager_buysell(self):
 		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
-		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.TOBACCO_PRODUCTS_ID]
+		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]
 		settlement = self.settlement_manager.settlement
 		inventory = settlement.inventory
 		session = self.settlement_manager.session
