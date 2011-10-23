@@ -177,7 +177,6 @@ msgstr "Berg"
 # 85%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
 msgstr "Een van uw kolonisten heeft geen marktplaats binnen bereik."
 
