@@ -47,6 +47,9 @@ class BuildingTool(NavigationTool):
 	not_buildable_color = (255, 0, 0)
 	nearby_objects_radius = 3
 
+	# archive the last roads built, for possible user notification
+	_last_road_built = []
+
 	gui = None # share gui between instances
 
 	def __init__(self, session, building, ship=None, build_related=None):
@@ -89,7 +92,7 @@ class BuildingTool(NavigationTool):
 
 	@decorators.make_constants()
 	def _color_buildable_tile(self, tile):
-		self._buildable_tiles.add(tile) # it's a set, so dupicates are handled
+		self._buildable_tiles.add(tile) # it's a set, so duplicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 
 	def end(self):
@@ -216,7 +219,7 @@ class BuildingTool(NavigationTool):
 			if building.buildable:
 				# building seems to buildable, check res too now
 				(enough_res, missing_res) = Build.check_resources(neededResources, self._class.costs,
-								                                  self.session.world.player, [settlement, self.ship])
+				                                    self.session.world.player, [settlement, self.ship])
 				if not enough_res:
 					# make building red
 					self.renderer.addColored(self.buildings_fife_instances[building],
@@ -235,7 +238,8 @@ class BuildingTool(NavigationTool):
 				self.renderer.addOutlined(self.buildings_fife_instances[building], \
 				                          self.buildable_color[0], self.buildable_color[1],\
 				                          self.buildable_color[2], 1)
-				self._class.select_building(self.session, building.position, settlement)
+				if hasattr(self._class, "select_building"):
+					self._class.select_building(self.session, building.position, settlement)
 			else: # not buildable
 				# must remove other highlight, fife does not support both
 				self.renderer.removeOutlined(self.buildings_fife_instances[building])
@@ -299,7 +303,6 @@ class BuildingTool(NavigationTool):
 			self._check_update_preview(point)
 		evt.consume()
 
-	_last_road_built = []
 	def mouseReleased(self, evt):
 		"""Actually build."""
 		self.log.debug("BuildingTool mouseReleased")
@@ -320,13 +323,13 @@ class BuildingTool(NavigationTool):
 			if self._class.class_package == 'path':
 				import time
 				now = time.time()
-				self._last_road_built.append(now)
-				if len(self._last_road_built) > 2:
-					if (now - self._last_road_built[-3]) < 1.2:
+				BuildingTool._last_road_built.append(now)
+				if len(BuildingTool._last_road_built) > 2:
+					if (now - BuildingTool._last_road_built[-3]) < 1.2:
 						self.session.ingame_gui.message_widget.add(None, None, "DRAG_ROADS_HINT")
 						# don't display hint multiple times at the same build situation
-						self.__class__._last_road_built = []
-					self.__class__._last_road_built = self.__class__._last_road_built[-3:]
+						BuildingTool._last_road_built = []
+					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
 
 			# check how to continue: either build again or escape
 			if not self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS and (evt.isShiftPressed() or \
@@ -495,12 +498,14 @@ class ShipBuildingToolLogic(object):
 				if is_tile_buildable(session, tile, self.ship):
 					building_tool._color_buildable_tile(tile)
 		else: # build from ship
+			building_tool.renderer.removeAllColored()
 			for island in session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
 				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
-					buildable_tiles_add(tile)
-					# check that there is no other player's settlement
-					if tile.settlement is None or tile.settlement.owner == player:
-						building_tool._color_buildable_tile(tile)
+					if is_tile_buildable(session, tile, self.ship):
+						buildable_tiles_add(tile)
+						# check that there is no other player's settlement
+						if tile.settlement is None or tile.settlement.owner == player:
+							building_tool._color_buildable_tile(tile)
 
 	def on_escape(self, session):
 		session.selected_instances = set([self.ship])
