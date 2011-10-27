@@ -643,10 +643,11 @@ class VillageBuilder(AreaBuilder):
 
 		# form the sorted tent queue
 		result = defaultdict(lambda: None)
-		for block in zip(*sorted(block_distances))[1]:
-			for coords in sorted(block):
-				result[coords] = len(self.tent_queue)
-				self.tent_queue.append(coords)
+		if block_distances:
+			for block in zip(*sorted(block_distances))[1]:
+				for coords in sorted(block):
+					result[coords] = len(self.tent_queue)
+					self.tent_queue.append(coords)
 		return result
 
 	def _recreate_tent_queue(self, removal_location = None):
