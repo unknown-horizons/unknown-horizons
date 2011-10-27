@@ -144,7 +144,7 @@ class Minimap(object):
 		The current gui requires, that the minimap is drawn behind an icon."""
 		self.overlay_icon = icon
 		icon.mapEvents({ \
-		  icon.name + '/mouseClicked' : self.on_click, \
+		  icon.name + '/mousePressed' : self.on_click, \
 		  icon.name + '/mouseDragged' : self.on_click \
 		})
 
