@@ -94,15 +94,15 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUEVO OBJETIVO: SUMINISTRO DE ALIMENTOS', "Tambi\xE9\
-        n necesitaran negocios que fabriquen comida porque la gente normalmente es\
-        \ bastante hambrienta (y especialmente los marineros).\n\nEn el primer nivel\
-        \ son disponibles el cazador y el pescador.\n\nComo ya sabr\xE1s, el cazador\
-        \ caza animales en el bosque, as\xED que necesita arboles a su alrededor.\n\
-        \nTenga en cuenta que puede colocar el cazador cerca del bosque del le\xF1\
-        ador.\n\nPuede pasar que los animales no se reproduzcan bastante r\xE1pidos\
-        \ o que simplemente se escondan muy bien.\n\nConclusi\xF3n: El cazador no\
-        \ es muy fiable si necesita un suministro continuo."]
+  - arguments: [!!python/unicode 'SUMINISTRO DE ALIMENTOS', "Tambi\xE9n necesitaran\
+        \ negocios que fabriquen comida porque la gente normalmente es bastante hambrienta\
+        \ (y especialmente los marineros).\n\nEn el primer nivel son disponibles el\
+        \ cazador y el pescador.\n\nComo ya sabr\xE1s, el cazador caza animales en\
+        \ el bosque, as\xED que necesita arboles a su alrededor.\n\nTenga en cuenta\
+        \ que puede colocar el cazador cerca del bosque del le\xF1ador.\n\nPuede pasar\
+        \ que los animales no se reproduzcan bastante r\xE1pidos o que simplemente\
+        \ se escondan muy bien.\n\nConclusi\xF3n: El cazador no es muy fiable si necesita\
+        \ un suministro continuo."]
     type: logbook_w
   - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
         the branch office and a fish school in range.
@@ -264,9 +264,9 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: ["NUEVO OBJETIVO: CONSTRUIR UNA SE\xD1AL DE FUEGO", !!python/unicode 'Can
-        you see the ship passing your island from time to time? That ship belongs
-        to the Free Trader, one of the first settlers in this archipelago.
+  - arguments: ["CONSTRUIR UNA SE\xD1AL DE FUEGO", !!python/unicode 'Can you see the
+        ship passing your island from time to time? That ship belongs to the Free
+        Trader, one of the first settlers in this archipelago.
 
 
         The trader will supply your settlement with necessary goods which you can''t
@@ -649,9 +649,9 @@ events:
   - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
         city to complete the tutorial. You need a positive balance.']
     type: message
-  - arguments: [!!python/unicode 'NUEVO OBJETIVO: COMPLETA EL TUTORIAL', !!python/unicode 'Try
-        to house a total of 50 or more inhabitants in your city by providing more
-        residential buildings.
+  - arguments: [!!python/unicode 'COMPLETA EL TUTORIAL', !!python/unicode 'Try to
+        house a total of 50 or more inhabitants in your city by providing more residential
+        buildings.
 
 
         Once you are able to keep an economy running which can satisfy this amount
