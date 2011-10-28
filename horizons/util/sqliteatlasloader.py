@@ -30,13 +30,21 @@ class SQLiteAtlasLoader(object):
 	"""
 	def __init__(self):
 		self.atlaslib = []
-		self.atlases = horizons.main.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
+
+		# TODO: There's something wrong with ground entities if atlas.sql
+		# is loaded only here, for now it's added to DB_FILES (empty file if no atlases are used)
 		
+		#f = open('content/atlas.sql', "r")
+		#sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
+		#horizons.main.db.execute_script(sql)
+
+		self.atlases = horizons.main.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
+
 		for (atlas,) in self.atlases:
 			# print 'creating', atlas
 			img = horizons.main.fife.imagemanager.create(atlas)
 			self.atlaslib.append(img)
-			
+
 
 	def loadResource(self, location):
 		"""
@@ -56,21 +64,21 @@ class SQLiteAtlasLoader(object):
 		commands = zip(commands[0::2], commands[1::2])
 
 		ani = fife.Animation.createAnimation()
-		
+
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
 			entry = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]
 			# we don't need to load images at this point to query for its parameters
 			# such as width and height because we can get those from json file
 			xpos, ypos, width, height = entry[2:]
-			
+
 			if horizons.main.fife.imagemanager.exists(file):
 				img = horizons.main.fife.imagemanager.get(file)
 			else:
 				img = horizons.main.fife.imagemanager.create(file)
 				region = fife.Rect(xpos, ypos, width, height)
-				img.useSharedImage(self.atlaslib[entry[1]], region)	
-				
+				img.useSharedImage(self.atlaslib[entry[1]], region)
+
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')

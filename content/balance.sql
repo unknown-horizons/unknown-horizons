@@ -344,7 +344,7 @@ INSERT INTO "building_running_costs" VALUES(24,15,5);
 INSERT INTO "building_running_costs" VALUES(25,15,5);
 INSERT INTO "building_running_costs" VALUES(26,10,5);
 INSERT INTO "building_running_costs" VALUES(28,15,5);
-INSERT INTO "building_running_costs" VALUES(29,50,20);
+INSERT INTO "building_running_costs" VALUES(29,50,15);
 INSERT INTO "building_running_costs" VALUES(30,10,0);
 INSERT INTO "building_running_costs" VALUES(31,10,5);
 INSERT INTO "building_running_costs" VALUES(32,5,0);

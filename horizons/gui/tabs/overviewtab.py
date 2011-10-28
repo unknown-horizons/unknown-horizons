@@ -262,12 +262,6 @@ class ProductionOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Production overview")
 
-		self.destruct_button = DeleteButton(name="destruct_button", \
-		                                    tooltip=_("Destroy building"), \
-		                                    position=(190,330) )
-		self.widget.addChild(self.destruct_button)
-		self.widget.mapEvents( { 'destruct_button' : self.destruct_building } )
-
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		self._refresh_utilisation()
@@ -338,8 +332,6 @@ class ProductionOverviewTab(OverviewTab):
 
 	def destruct_building(self):
 		self.instance.session.ingame_gui.hide_menu()
-		if self.destruct_button.gui.isVisible():
-			self.destruct_button.hide_tooltip()
 		Tear(self.instance).execute(self.instance.session)
 
 	def _refresh_utilisation(self):
@@ -378,8 +370,9 @@ class SettlerOverviewTab(OverviewTab):
 
 	def refresh(self):
 		self.widget.child_finder('happiness').progress = self.instance.happiness
-		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
-			self.instance.inhabitants, self.instance.inhabitants_max ) )
+		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
+		                                               self.instance.inhabitants,
+		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)

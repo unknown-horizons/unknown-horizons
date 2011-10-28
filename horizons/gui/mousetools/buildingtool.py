@@ -47,6 +47,9 @@ class BuildingTool(NavigationTool):
 	not_buildable_color = (255, 0, 0)
 	nearby_objects_radius = 3
 
+	# archive the last roads built, for possible user notification
+	_last_road_built = []
+
 	gui = None # share gui between instances
 
 	def __init__(self, session, building, ship=None, build_related=None):
@@ -89,7 +92,7 @@ class BuildingTool(NavigationTool):
 
 	@decorators.make_constants()
 	def _color_buildable_tile(self, tile):
-		self._buildable_tiles.add(tile) # it's a set, so dupicates are handled
+		self._buildable_tiles.add(tile) # it's a set, so duplicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 
 	def end(self):
@@ -112,16 +115,16 @@ class BuildingTool(NavigationTool):
 			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 			self.gui.position_technique = "right-14:top+157"
 		self.gui.mapEvents( { "rotate_left" : self.rotate_left,
-		                      "rotate_right": self.rotate_right } )
+				              "rotate_right": self.rotate_right } )
 		# set translated building name in gui
 		self.gui.findChild(name='headline').text = _('Build') + u' ' + _(self._class._name)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content
 		head_box.position = ( # calculate and set new center (we cause pychan to not support it)
-		  max( self.gui.size[0]/2 - head_box.size[0]/2, 25),
-		  head_box.position[1]
-		  )
+				              max( self.gui.size[0]/2 - head_box.size[0]/2, 25),
+				              head_box.position[1]
+				              )
 		head_box.adaptLayout()
 		self.draw_gui()
 		self.session.view.add_change_listener(self.draw_gui)
@@ -129,8 +132,8 @@ class BuildingTool(NavigationTool):
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
 			level = self.session.world.player.settler_level if \
-			      not hasattr(self._class, "default_level_on_build") else \
-			      self._class.default_level_on_build
+				not hasattr(self._class, "default_level_on_build") else \
+				self._class.default_level_on_build
 			self.action_set = self.session.db.get_random_action_set(self._class.id, level)
 		action_set, preview_action_set = self.action_set
 		action_sets = ActionSetLoader.get_action_sets()
@@ -155,7 +158,7 @@ class BuildingTool(NavigationTool):
 		#self.session.view.renderer['InstanceRenderer'].removeAllColored()
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
 		new_buildings = self._class.check_build_line(self.session, point1, point2,
-		                                             rotation = self.rotation, ship=self.ship)
+				                                     rotation = self.rotation, ship=self.ship)
 		# optimisation: If only one building is in the preview and the position hasn't changed
 		# => don't preview. Otherwise the preview is redrawn on every mouse move
 		if not force and len(new_buildings) == len(self.buildings) == 1 and \
@@ -187,17 +190,17 @@ class BuildingTool(NavigationTool):
 			# workaround for buildings like settler, that don't use the current level of
 			# the player, but always start at a certain lvl
 			level = self.session.world.player.settler_level if \
-			      not hasattr(self._class, "default_level_on_build") else \
-			      self._class.default_level_on_build
+				not hasattr(self._class, "default_level_on_build") else \
+				self._class.default_level_on_build
 
 			if self._class.id == BUILDINGS.TREE_CLASS and not building.buildable:
 				continue # Tree/ironmine that is not buildable, don't preview
 			else:
 				fife_instance, action_set_id = \
-				             self._class.getInstance(self.session, building.position.origin.x, \
-				                                     building.position.origin.y, rotation=building.rotation,
-				                                     action=building.action, level=level,
-				                                     action_set_id=self.buildings_action_set_ids[i])
+					self._class.getInstance(self.session, building.position.origin.x, \
+								            building.position.origin.y, rotation=building.rotation,
+								            action=building.action, level=level,
+								            action_set_id=self.buildings_action_set_ids[i])
 				self.buildings_fife_instances[building] = fife_instance
 				# remember action sets per order of occurence
 				# (this is far from good when building lines, but suffices for our purposes, which is mostly single build)
@@ -216,18 +219,18 @@ class BuildingTool(NavigationTool):
 			if building.buildable:
 				# building seems to buildable, check res too now
 				(enough_res, missing_res) = Build.check_resources(neededResources, self._class.costs,
-				                                                  self.session.world.player, [settlement, self.ship])
+				                                    self.session.world.player, [settlement, self.ship])
 				if not enough_res:
 					# make building red
 					self.renderer.addColored(self.buildings_fife_instances[building],
-					                         *self.not_buildable_color)
+										     *self.not_buildable_color)
 					building.buildable = False
 					# set missing info for gui
 					self.buildings_missing_resources[building] = missing_res
 					# building isn't buildable after all, assemble strange dict values for gui
 					for resource in self._class.costs:
 						usableResources[resource] = usableResources.get(resource, 0) + \
-						               self._class.costs[resource]
+							self._class.costs[resource]
 
 			if building.buildable:
 				# Tile might still have not buildable color -> remove it
@@ -235,22 +238,16 @@ class BuildingTool(NavigationTool):
 				self.renderer.addOutlined(self.buildings_fife_instances[building], \
 				                          self.buildable_color[0], self.buildable_color[1],\
 				                          self.buildable_color[2], 1)
-				# draw radius in a moment, and not always immediately, since it's expensive
 				if hasattr(self._class, "select_building"):
-					callback = Callback(self._class.select_building, self.session, \
-					                    building.position, settlement)
-					ExtScheduler().rem_all_classinst_calls(self)
-					delay = 0.10 # Wait delay seconds
-					ExtScheduler().add_new_object(callback, self, delay)
-
+					self._class.select_building(self.session, building.position, settlement)
 			else: # not buildable
 				# must remove other highlight, fife does not support both
 				self.renderer.removeOutlined(self.buildings_fife_instances[building])
 				self.renderer.addColored(self.buildings_fife_instances[building], \
 				                         *self.not_buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
-		   self.ship if self.ship is not None else settlement, neededResources, usableResources, \
-		   res_from_ship = bool(self.ship))
+			self.ship if self.ship is not None else settlement, neededResources, usableResources, \
+			res_from_ship = bool(self.ship))
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	@decorators.make_constants()
@@ -306,7 +303,6 @@ class BuildingTool(NavigationTool):
 			self._check_update_preview(point)
 		evt.consume()
 
-	_last_road_built = []
 	def mouseReleased(self, evt):
 		"""Actually build."""
 		self.log.debug("BuildingTool mouseReleased")
@@ -327,18 +323,18 @@ class BuildingTool(NavigationTool):
 			if self._class.class_package == 'path':
 				import time
 				now = time.time()
-				self._last_road_built.append(now)
-				if len(self._last_road_built) > 2:
-					if (now - self._last_road_built[-3]) < 1.2:
+				BuildingTool._last_road_built.append(now)
+				if len(BuildingTool._last_road_built) > 2:
+					if (now - BuildingTool._last_road_built[-3]) < 1.2:
 						self.session.ingame_gui.message_widget.add(None, None, "DRAG_ROADS_HINT")
 						# don't display hint multiple times at the same build situation
-						self.__class__._last_road_built = []
-					self.__class__._last_road_built = self.__class__._last_road_built[-3:]
+						BuildingTool._last_road_built = []
+					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
 
 			# check how to continue: either build again or escape
 			if not self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS and (evt.isShiftPressed() or \
-					horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
-					not found_buildable or self._class.class_package == 'path'):
+						                                                horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
+						                                                not found_buildable or self._class.class_package == 'path'):
 				self.startPoint = point
 				self.preview_build(point, point)
 			else:
@@ -384,15 +380,15 @@ class BuildingTool(NavigationTool):
 				self._remove_listeners() # Remove changelisteners for update_preview
 				# create the command and execute it
 				cmd = Build(building=self._class, \
-				            x=building.position.origin.x, \
-				            y=building.position.origin.y, \
-				            rotation=building.rotation, \
-				            island= island, \
-				            settlement=self.session.world.get_settlement(building.position.origin), \
-				            ship=self.ship, \
-				            tearset=building.tearset, \
-										action_set_id=self.buildings_action_set_ids[i], \
-				            )
+							x=building.position.origin.x, \
+							y=building.position.origin.y, \
+							rotation=building.rotation, \
+							island= island, \
+							settlement=self.session.world.get_settlement(building.position.origin), \
+							ship=self.ship, \
+							tearset=building.tearset, \
+							action_set_id=self.buildings_action_set_ids[i], \
+							)
 				cmd.execute(self.session)
 			else:
 				# check whether to issue a missing res notification
@@ -400,8 +396,8 @@ class BuildingTool(NavigationTool):
 				if building in self.buildings_missing_resources:
 					res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
 					self.session.ingame_gui.message_widget.add(building.position.origin.x, \
-					                                           building.position.origin.y, \
-					                                           'NEED_MORE_RES', {'resource' : _(res_name)})
+										                       building.position.origin.y, \
+										                       'NEED_MORE_RES', {'resource' : _(res_name)})
 
 		if built:
 			PlaySound("build").execute(self.session, True)
@@ -442,7 +438,7 @@ class BuildingTool(NavigationTool):
 		"""Used as callback method"""
 		if self.startPoint is not None:
 			self.preview_build(self.startPoint,
-			                   self.startPoint if self.endPoint is None else self.endPoint, force=force)
+						       self.startPoint if self.endPoint is None else self.endPoint, force=force)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
@@ -502,12 +498,14 @@ class ShipBuildingToolLogic(object):
 				if is_tile_buildable(session, tile, self.ship):
 					building_tool._color_buildable_tile(tile)
 		else: # build from ship
+			building_tool.renderer.removeAllColored()
 			for island in session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
 				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
-					buildable_tiles_add(tile)
-					# check that there is no other player's settlement
-					if tile.settlement is None or tile.settlement.owner == player:
-						building_tool._color_buildable_tile(tile)
+					if is_tile_buildable(session, tile, self.ship):
+						buildable_tiles_add(tile)
+						# check that there is no other player's settlement
+						if tile.settlement is None or tile.settlement.owner == player:
+							building_tool._color_buildable_tile(tile)
 
 	def on_escape(self, session):
 		session.selected_instances = set([self.ship])
@@ -561,5 +559,4 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 	def on_escape(self, session):
 		from horizons.gui.tabs import BuildRelatedTab
 		self.instance().show_menu(jump_to_tabclass=BuildRelatedTab)
-
 

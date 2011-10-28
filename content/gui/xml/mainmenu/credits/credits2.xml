@@ -112,6 +112,8 @@
 			<Label text="Luth" />
 			<Label text="Jasper Tepper (Shadow23)" />
 			<Label text="angellus" />
+			<Label text="SanderOnline" />
+			<Label text="MrRuudJ" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Polish"  name="headline" />
@@ -136,6 +138,8 @@
 		<VBox  name="box">
 			<Label text="Henrique Poyatos (hpoyatos)" />
 			<Label text="claudinei" />
+			<Label text="luisdknob" />
+			<Label text="paulodealmeida" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Russian"  name="headline" />

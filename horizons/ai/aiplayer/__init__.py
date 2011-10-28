@@ -60,6 +60,8 @@ from building.smeltery import AbstractSmeltery
 from building.toolmaker import AbstractToolmaker
 from building.boatbuilder import AbstractBoatBuilder
 from building.signalfire import AbstractSignalFire
+from building.tobacconist import AbstractTobacconist
+from building.saltponds import AbstractSaltPonds
 
 from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal

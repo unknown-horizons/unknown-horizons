@@ -97,10 +97,10 @@ class DefaultPersonality:
 	class LandManager:
 		max_section_side = 22 # minimise the number of village sections by considering this to be its maximum side length
 
-		village_area_small = 0.28 # use this fraction of the area for the village if <= 1600 tiles are available for the settlement
-		village_area_40 = 0.3 # use this fraction of the area for the village if <= 2500 tiles are available for the settlement
-		village_area_50 = 0.32 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
-		village_area_60 = 0.35 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
+		village_area_small = 0.25 # use this fraction of the area for the village if <= 1600 tiles are available for the settlement
+		village_area_40 = 0.28 # use this fraction of the area for the village if <= 2500 tiles are available for the settlement
+		village_area_50 = 0.30 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
+		village_area_60 = 0.33 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
 		min_village_size = 81 # minimum possible village size in tiles
 		min_village_proportion = 0.95 # the proportion of the chosen village area size that must be present
 
@@ -159,7 +159,7 @@ class DefaultPersonality:
 		# tax rates and upgrade rights in settlements with a school and none of the above problems
 		final_sailor_taxes = 0.9
 		final_pioneer_taxes = 1.0
-		final_settler_taxes = 0.8
+		final_settler_taxes = 1.0
 		final_sailor_upgrades = True
 		final_pioneer_upgrades = True
 
@@ -327,6 +327,30 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = SETTLER.SETTLER_LEVEL
 
+	class SaltGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 10
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class FeederSaltGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class TobaccoProductsGoal:
+		enabled = True
+		default_priority = 220
+		residences_required = 13
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
+	class FeederTobaccoProductsGoal:
+		enabled = True
+		default_priority = 220
+		residences_required = 0
+		min_settler_level = SETTLER.SETTLER_LEVEL
+
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
 
@@ -393,10 +417,17 @@ class DefaultPersonality:
 		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
 		distance_penalty = 2 # when no relevant farm is in reach then apply a penalty of this times the radius
 
+	class TobacconistEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
+		distance_penalty = 2 # when no relevant farm is in reach then apply a penalty of this times the radius
+
 	class ModifiedFieldEvaluator:
 		add_potato_field_value = 1.5 # the value of adding a potato field
 		add_pasture_value = 2.5 # the value of adding a pasture
 		add_sugarcane_field_value = 3.5 # the value of adding a sugarcane field
+		add_tobacco_field_value = 3.5 # the value of adding a tobacco field
 		remove_unused_potato_field_penalty = 0 # the penalty for removing an unused potato field
-		remove_unused_pasture_penalty = 1 # the penalty for removing an unused potato field
-		remove_unused_sugarcane_field_penalty = 1.5 # the penalty for removing an unused potato field
+		remove_unused_pasture_penalty = 1 # the penalty for removing an unused pasture
+		remove_unused_sugarcane_field_penalty = 1.5 # the penalty for removing an unused sugarcane field
+		remove_unused_tobacco_field_penalty = 1.5 # the penalty for removing an unused tobacco field

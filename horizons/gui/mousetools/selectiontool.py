@@ -66,8 +66,11 @@ class SelectionTool(NavigationTool):
 				fife.Rect(min(self.select_begin[0], evt.getX()), \
 									min(self.select_begin[1], evt.getY()), \
 									abs(evt.getX() - self.select_begin[0]), \
-									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
+									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()),
+			  self.session.view.layers[LAYERS.OBJECTS],
+			  False) # False for accurate
 			layer_instances = [i.this for i in self.session.view.layers[LAYERS.OBJECTS].getInstances()]
+
 			instances = [i for i in instances if i.this in layer_instances]
 			# Only one unit, select anyway
 			if len(instances) == 1:
@@ -132,16 +135,17 @@ class SelectionTool(NavigationTool):
 		Called when selected instances changes. (Shows their menu)
 		If one of the selected instances can attack, switch mousetool to AttackingTool
 		"""
-		if len(self.session.selected_instances) > 1:
+		selected = self.session.selected_instances
+		if len(selected) > 1 and all( i.is_unit for i in selected ):
 			self.session.ingame_gui.show_multi_select_tab()
-		elif len(self.session.selected_instances) == 1:
-			for i in self.session.selected_instances:
+		elif len(selected) == 1:
+			for i in selected:
 				i.show_menu()
 
 		#change session cursor to attacking tool if selected instances can attack
 		from attackingtool import AttackingTool
 		attacking_unit_found = False
-		for i in self.session.selected_instances:
+		for i in selected:
 			if hasattr(i, 'attack') and i.owner == self.session.world.player:
 				attacking_unit_found = True
 				break

@@ -86,7 +86,6 @@ class IngameGui(LivingObject):
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
-
 		minimap = self.widgets['minimap']
 		minimap.position_technique = "right-20:top+4"
 		minimap.show()
@@ -95,7 +94,7 @@ class IngameGui(LivingObject):
 
 		self.minimap = Minimap(minimap_rect, self.session, \
 		                       self.session.view.renderer['GenericRenderer'],
-							   horizons.main.fife.targetrenderer)
+		                       horizons.main.fife.targetrenderer)
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
@@ -125,7 +124,7 @@ class IngameGui(LivingObject):
 		self.widgets['status_extra'].child_finder = PychanChildFinder(self.widgets['status_extra'])
 
 		self.message_widget = MessageWidget(self.session, \
-								                        cityinfo.position[0] + cityinfo.size[0], 5)
+		                                    cityinfo.position[0] + cityinfo.size[0], 5)
 		self.widgets['status_gold'].show()
 		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
@@ -230,7 +229,7 @@ class IngameGui(LivingObject):
 			self.widgets['status_extra'].resizeToContent()
 
 	def cityinfo_set(self, settlement):
-		"""Sets the city name at top center
+		"""Sets the city name at top center of screen.
 
 		Show/Hide is handled automatically
 		To hide cityname, set name to ''
@@ -272,14 +271,17 @@ class IngameGui(LivingObject):
 		cityinfo = self.widgets['city_info']
 		cityinfo.mapEvents({
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
-		})
+			})
+		foundlabel = cityinfo.child_finder('owner_emblem')
+		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)
+		foundlabel.tooltip = unicode(self.settlement.owner.name)
 		foundlabel = cityinfo.child_finder('city_name')
-		foundlabel._setText(unicode(self.settlement.get_component(SettlementNameComponent).name))
+		foundlabel.text = unicode(self.settlement.get_component(SettlementNameComponent).name)
 		foundlabel.resizeToContent()
-		foundlabel = self.widgets['city_info'].child_finder('city_inhabitants')
-		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
+		foundlabel = cityinfo.child_finder('city_inhabitants')
+		foundlabel.text = unicode(' %s' % (self.settlement.inhabitants))
 		foundlabel.resizeToContent()
-		self.widgets['city_info'].resizeToContent()
+		cityinfo.adaptLayout()
 
 	def update_resource_source(self):
 		"""Sets the values for resource status bar as well as the building costs"""

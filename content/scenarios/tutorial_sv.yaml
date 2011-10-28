@@ -10,8 +10,8 @@ description: "Introduktionen:\nBygg din f\xF6rsta bos\xE4ttning och l\xE4r dig h
 difficulty: !!python/unicode 'Introduktion'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: ["Bygg ett handelskontor vid kusten, s\xE5 det blir l\xE4ttillg\xE4\
+        ngligt f\xF6r andra fartyg exempelvis k\xF6pm\xE4n."]
     type: message
   - arguments: ["V\xE4lkommen till Unknown Horizons!", "Det h\xE4r \xE4r din loggbok\
         \ d\xE4r all viktig information lagras. En kort underr\xE4ttelse av varje\

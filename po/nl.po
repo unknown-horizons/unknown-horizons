@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-08-01 15:39+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-10-22 18:02+0200\n"
+"Last-Translator: MrRuudJ <ruudjejacobs@live.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} and ${player2} zijn nu ${status}"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -35,7 +35,7 @@ msgstr "Een nieuwe wereld is aangemaakt"
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr ""
+msgstr "Zwijn"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -55,17 +55,17 @@ msgstr "Bakstenenfabriek"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "Slagerij"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Cattle"
-msgstr ""
+msgstr "Vee"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Cattle Run"
-msgstr ""
+msgstr "vee"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -95,7 +95,7 @@ msgstr "Distillerij"
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "Dokter"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -121,17 +121,17 @@ msgstr "Vissers Tent"
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr ""
+msgstr "Frigaat"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Gravel Path"
-msgstr ""
+msgstr "Grindpad"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Herbary"
-msgstr ""
+msgstr "Kruidentuin"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #. This is a database entry: the name of a unit.
@@ -177,7 +177,6 @@ msgstr "Berg"
 # 85%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
 msgstr "Een van uw kolonisten heeft geen marktplaats binnen bereik."
 
@@ -194,7 +193,7 @@ msgstr "Pavilioen"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr ""
+msgstr "Varkensstal"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -214,7 +213,7 @@ msgstr "Kade"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Zout Meren"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -264,19 +263,18 @@ msgstr "Tent"
 # 77%
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Verlaten tent"
+msgstr "Tent ruïne"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Tabak veld"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabaksverkoper"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -312,17 +310,19 @@ msgstr "Wevers Tent"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Houten Toren"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Het is tevens mogelijk om wegen te slepen"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"De maximale toename is bereikt, uw inwoners zullen zich niet verder "
+"ontwikkelen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -352,12 +352,12 @@ msgstr "Uw kolonisten hebben niveau ${level} bereikt."
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr ""
+msgstr "Eikeltjes"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocraat"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -377,7 +377,7 @@ msgstr "planken"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr ""
+msgstr "bordeaux"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -387,17 +387,17 @@ msgstr "bakstenen"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "Kanon"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "vee"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "vee voor de slacht"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -407,7 +407,7 @@ msgstr "kolen"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr ""
+msgstr "burger"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -417,9 +417,8 @@ msgstr "klei"
 # 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "clay deposit"
-msgstr "Klei Afzetting"
+msgstr "klei afzetting"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -439,17 +438,17 @@ msgstr "paars"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "dolk"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr ""
+msgstr "herten voedsel A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "herten voedsel"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -484,7 +483,7 @@ msgstr "gras"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "grijs"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -499,12 +498,12 @@ msgstr "vreugde"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "kruiden"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "ijzer afzetting"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -524,7 +523,7 @@ msgstr "wol"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "citroen"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -534,27 +533,27 @@ msgstr "drank"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "medische kruiden"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "merchant"
-msgstr ""
+msgstr "koopman"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "oranje"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "varkens"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "varkens voor de slacht"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -574,7 +573,7 @@ msgstr "aardappels"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr ""
+msgstr "paars"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -589,7 +588,7 @@ msgstr "zeeman"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "zout"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -604,12 +603,12 @@ msgstr "suiker"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "suiker riet"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr ""
+msgstr "taling blauw"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -619,17 +618,17 @@ msgstr "textiel"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "tabakplanten"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "tabakplanten"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "tabak"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -666,15 +665,15 @@ msgstr "Enkele van Uw veranderingen vereisen een herstart van Unknown Horizons."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Hertel standaard instellingen"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Dit zal alle zover gemaakte instellingen terug zetten."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Wil je verdergaan?"
 
 #: horizons/engine.py:189
 msgid "System default"
@@ -817,21 +816,23 @@ msgstr "Eigenschappen:"
 msgid "Error:"
 msgstr "Fout:"
 
+# 94%
 #: horizons/gui/gui.py:426
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Datum van opslaan onbekend"
 
+# 91%
 #: horizons/gui/gui.py:428
-#, python-format
+#, python-format, 
 msgid "Saved at %s"
-msgstr ""
+msgstr "Opgeslagen op %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
 msgid "Saved %(amount)d time"
 msgid_plural "Saved %(amount)d times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(amount)d keer opgeslagen"
+msgstr[1] "%(amount)d keren opgeslagen"
 
 #: horizons/gui/gui.py:441
 #, python-format
@@ -878,19 +879,25 @@ msgstr "Verwijderen opgeslagen spel mislukt!"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Kan pyenet niet vinden"
 
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"De multiplayer functie heeft \"pyenet\" nodig, die niet kan worden gevonden op "
+"uw systeem."
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Linux gebruikers: Probeer pyenet te installeren door middel van de "
+"pakketmanager."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Windows gebruikers: Er is op dit moment geen goede ondersteuning voor "
+"Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
@@ -918,13 +925,12 @@ msgstr "Netwerk fout"
 
 #: horizons/gui/modules/multiplayermenu.py:116
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Fatale Netwerk Fout"
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:117
-#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr "Er is een netwerk fout opgetreden: "
+msgstr "Er is een netwerk fout opgetreden:"
 
 #: horizons/gui/modules/multiplayermenu.py:133
 msgid "Version differs!"
@@ -957,7 +963,7 @@ msgstr "Verkeerde versie"
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Aanbevolen nummer spelers:"
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -987,29 +993,28 @@ msgstr "U heeft een ongeldige spelersnaam ingevoerd"
 
 #: horizons/gui/modules/singleplayermenu.py:193
 msgid "Map size:"
-msgstr ""
+msgstr "Kaart grootte:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Water:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Max. eiland grootte:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Voorkeurs eiland grootte:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Eiland grootte afwijking:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
-msgstr "Grondstoffen afzetting"
+msgstr "Grondstoffen afzetting:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -1017,19 +1022,16 @@ msgstr "Ongeldig scenario bestand"
 
 #: horizons/gui/modules/singleplayermenu.py:263
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "Het geselecteerde bestand is geen geldig scenatio bestand."
 
 #: horizons/gui/modules/singleplayermenu.py:264
 msgid "Error message:"
-msgstr ""
+msgstr "Foutmelding:"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Meld dit alstublieft aan de auteur."
+msgstr "Meld dit alstublieft aan de auteur."
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -1074,7 +1076,7 @@ msgstr "Opdracht bevestigen"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Bouw velden"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -1089,7 +1091,7 @@ msgstr "Handel"
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:334
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Inventaris nederzetting"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
@@ -1103,15 +1105,15 @@ msgstr "Laden/Uitladen:"
 
 #: horizons/gui/tabs/inventorytab.py:85
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "Koop/Verkoop:"
 
 #: horizons/gui/tabs/inventorytab.py:104
 msgid "Can't equip trade ship with weapons"
-msgstr ""
+msgstr "Kan schip niet uitrusten met wapens"
 
 #: horizons/gui/tabs/inventorytab.py:105
 msgid "It is not possible to equip a trade ship with weapons"
-msgstr ""
+msgstr "Het is niet mogelijk een schip met wapens uit te rusten"
 
 #: horizons/gui/tabs/inventorytab.py:133
 msgid "Equip weapon"
@@ -1134,34 +1136,32 @@ msgstr "Kolonisten overzicht"
 
 #: horizons/gui/tabs/mainsquaretabs.py:204
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Upgrades niet toestaan"
 
 #: horizons/gui/tabs/mainsquaretabs.py:207
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Upgrades toestaan"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:234
 #: horizons/i18n/guitranslations.py:379
 msgid "Sailors"
-msgstr ""
+msgstr "Zeilers"
 
 # 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:240
 #: horizons/i18n/guitranslations.py:348
-#, fuzzy
 msgid "Pioneers"
-msgstr "pionier"
+msgstr "Pionier"
 
 # 75%
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:408 horizons/i18n/guitranslations.py:646
-#, fuzzy
 msgid "Settlers"
-msgstr "kolonist"
+msgstr "Kolonisten"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:49 horizons/gui/tabs/overviewtab.py:407
@@ -1175,7 +1175,7 @@ msgstr "Kantoor overzicht"
 
 #: horizons/gui/tabs/overviewtab.py:139
 msgid "Main square overview"
-msgstr ""
+msgstr "Markplaats overzicht"
 
 #: horizons/gui/tabs/overviewtab.py:150 horizons/gui/tabs/overviewtab.py:232
 msgid "Ship overview"
@@ -1183,7 +1183,7 @@ msgstr "Schip overzicht"
 
 #: horizons/gui/tabs/overviewtab.py:160
 msgid "Trade ship"
-msgstr ""
+msgstr "Handelsschip"
 
 #. (tooltip of widget: foundSettlement)
 #: horizons/gui/tabs/overviewtab.py:184 horizons/i18n/guitranslations.py:520
@@ -1193,6 +1193,7 @@ msgstr "Plaats nederzetting"
 #: horizons/gui/tabs/overviewtab.py:190
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr ""
+"Dit schip moet dichter bij een eiland zijn om een nederzetting te vestigen."
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:239
@@ -1210,7 +1211,7 @@ msgstr "Vernietig gebouw"
 
 #: horizons/gui/tabs/selectmultitab.py:52
 msgid "Selected Units"
-msgstr ""
+msgstr "Geselcteerde Eenheden"
 
 #: horizons/gui/widgets/buysellinventory.py:82
 #: horizons/gui/widgets/inventory.py:102
@@ -1229,26 +1230,26 @@ msgstr "Er staat nog niks in je logboek!"
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr ""
+msgstr "%(player)s's nederzettingen"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr ""
+msgstr "%(plsyer)s's schepen"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:81
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: horizons/gui/widgets/playersships.py:83
 msgid "N/A"
-msgstr ""
+msgstr "n.b."
 
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
 msgid "Production overview of %(settlement)s"
-msgstr ""
+msgstr "Productie overzicht van %(settlement)s"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:624
@@ -1261,7 +1262,7 @@ msgstr "Handelsroute stoppen"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "geen"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:45
@@ -1409,7 +1410,7 @@ msgstr ""
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:111
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Houten toren: Verdedig je nederzetting."
 
 #. (tooltip of widget: villageschool-1)
 #: horizons/i18n/guitranslations.py:113
@@ -1424,7 +1425,7 @@ msgstr "Wever: Maakt kleren van wol."
 #. (text of widget: companies_label)
 #: horizons/i18n/guitranslations.py:122
 msgid "Mining"
-msgstr ""
+msgstr "Mijnbouw"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:126
@@ -1434,7 +1435,7 @@ msgstr "Kolonisten gebouwen"
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:130
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Slager: Varkens of vee benodigd. Produceert voedsel."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:132
@@ -1444,24 +1445,23 @@ msgstr ""
 # 76%
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:134
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Houtskool brander: Verbrand een boel planken."
+msgstr "Houtskool brander: Verbrand een boel planken naar houtskool."
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:136
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Mijn: krijg ertsen van afzetting."
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:138
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Zwijnenstal: Brengt varkens groot. Boerderij benodigd."
 
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:140
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Zout meren: Verdampt zout. Gebouwd op de zee kust."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:142
@@ -1476,7 +1476,7 @@ msgstr "Herberg: Gezellige plek om bij elkaar te komen."
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:146
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Tabak akker: Produceert tabak. Boerderij benodigd."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:148
@@ -1491,22 +1491,22 @@ msgstr "Werktuigmaker: Maakt werktuigen uit ijzer."
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:155
 msgid "Game start"
-msgstr ""
+msgstr "Spel start"
 
 #. (text of widget: howto_1_need_bo)
 #: horizons/i18n/guitranslations.py:157
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "Je hebt een nederzetting nodig voordat je gebouwen kunt bouwen!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:159
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Selecteer je schip en benader de kust met de rechtermuisknop."
 
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:161
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Daarna klik je op de grote knop in het schip overzicht."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:449
@@ -1537,7 +1537,7 @@ msgstr "Vernietig"
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:184
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomatie"
 
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:186
@@ -1759,7 +1759,7 @@ msgstr "Belastingen"
 #. (tooltip of widget: show_production_overview)
 #: horizons/i18n/guitranslations.py:315
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Laat middelen geproduceerd in deze nederzetting zien"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:320
@@ -2146,7 +2146,7 @@ msgstr ""
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:650
 msgid "Units"
-msgstr ""
+msgstr "Eenheden"
 
 # 87%
 #. (text of widget: balance)
@@ -2163,22 +2163,22 @@ msgstr ""
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:676
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:678
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:680
 msgid "Weapons"
-msgstr ""
+msgstr "Wapens"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:687
 msgid "Aggressive"
-msgstr ""
+msgstr "Agressief"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:689
@@ -2188,12 +2188,12 @@ msgstr ""
 #. (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:691
 msgid "Hold ground"
-msgstr ""
+msgstr "Stand houden"
 
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:693
 msgid "Passive"
-msgstr ""
+msgstr "Passief"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:698
@@ -2663,7 +2663,7 @@ msgstr "Start spel"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:928
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleer"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:930
@@ -2711,17 +2711,17 @@ msgstr "Kies een kaart om te spelen:"
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:966
 msgid "Map settings:"
-msgstr ""
+msgstr "Kaart instellingen"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:976
 msgid "AI players:"
-msgstr ""
+msgstr "Computer (A.I.)  spelers"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:981
 msgid "Game settings:"
-msgstr ""
+msgstr "Spel instellingen: "
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:983
@@ -2731,7 +2731,7 @@ msgstr ""
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:985
 msgid "Pirates"
-msgstr ""
+msgstr "Piraten"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:990
@@ -2780,6 +2780,8 @@ msgstr "Fout: Meerdere resultaten gevonden: "
 #: horizons/main.py:358
 msgid "Error: campaign filenames have to end in \".yaml\"."
 msgstr ""
+"Fout: bestandsnamen van campagnes dienen te eindigen met de extentie "
+"\".yaml\". "
 
 #: horizons/main.py:366
 #, python-format
@@ -3005,7 +3007,7 @@ msgstr ""
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "AI instellingen"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."

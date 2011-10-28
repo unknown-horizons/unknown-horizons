@@ -49,6 +49,7 @@ class Unit(MovingObject):
 		self.InstanceActionListener = Tmp()
 		self.InstanceActionListener.onInstanceActionFinished = \
 				WeakMethod(self.onInstanceActionFinished)
+		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
 		if self._object is None:
 			self.__class__._loadObject()
@@ -113,15 +114,15 @@ class Unit(MovingObject):
 			renderer.addQuad("health_" + str(self.worldid), \
 			                fife.RendererNode(self._instance, \
 			                                         fife.Point(-width/2, y_pos-height)), \
-			                mid_node_up, \
-			                mid_node_down, \
 			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)), \
+			                mid_node_down, \
+			                mid_node_up, \
 			                0, 255, 0)
 		if health != max_health:
-			renderer.addQuad("health_" + str(self.worldid), mid_node_up, \
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
+			renderer.addQuad("health_" + str(self.worldid), fife.RendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
 			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)), \
-			                 mid_node_down, 255, 0, 0)
+			                 mid_node_down, \
+			                 mid_node_up, 255, 0, 0)
 
 	def hide(self):
 		"""Hides the unit."""

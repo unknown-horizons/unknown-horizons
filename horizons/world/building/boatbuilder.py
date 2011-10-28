@@ -21,14 +21,14 @@
 
 
 from building import BasicBuilding, SelectableBuilding
-from buildable import BuildableSingleOnCoast
+from buildable import BuildableSingleOnOcean
 from horizons.gui.tabs import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
 			     BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from horizons.world.production.producer import UnitProducerBuilding
 from collectingbuilding import CollectingBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 
-class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnOcean, BasicBuilding):
 	tabs = (BoatbuilderTab, BoatbuilderFisherTab)
 	tabs = (BoatbuilderTab, BoatbuilderTradeTab, BoatbuilderWar1Tab)
 # , BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)

@@ -23,6 +23,8 @@ from horizons.util import Point, Rect, decorators
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
+from horizons.util.shapes.circle import Circle
+
 
 class _BuildPosition(object):
 	"""A possible build position in form of a data structure.
@@ -340,8 +342,30 @@ class BuildableSingleOnCoast(BuildableSingle):
 				rotation = rot
 		return rotation
 
+class BuildableSingleOnOcean(BuildableSingleOnCoast):
 
-class BuildableSingleFromShip(BuildableSingleOnCoast):
+	@classmethod
+	def _check_island(cls, session, position, island=None):
+		try:
+			super(BuildableSingleOnOcean, cls)._check_island(session, position, island)
+		except:
+			raise _NotBuildableError()
+		if island is None:
+			island = session.world.get_island(position.center())
+			if island is None:
+				raise _NotBuildableError()
+		posis = position.get_coordinates()
+		water = session.world.water.iterkeys()
+		for tile in posis:
+			for rad in Circle(Point(*tile), 2):
+				if island.get_tile(rad) is None:
+					# Tile not on island -> deep water
+					return True
+		raise _NotBuildableError()
+
+
+
+class BuildableSingleFromShip(BuildableSingleOnOcean):
 	"""Buildings that can be build from a ship. Currently only Branch Office."""
 	@classmethod
 	def _check_settlement(cls, session, position, ship, issuer=None):
