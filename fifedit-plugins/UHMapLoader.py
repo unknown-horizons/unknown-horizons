@@ -25,23 +25,34 @@ from horizons.util.dbreader import DBReader
 import scripts.editor
 
 class UHMapLoader:
+
+    GRID_TYPE = "square"
+    GROUND_LAYER_NAME = "ground"
+
     def __init__(self, engine, callback, debug, extensions):
         """ Initialize the map loader """
+        self._engine = engine
         self._callback = callback
         self._debug = debug
 
     def loadResource(self, path):
         """ Loads the map from the given sqlite file """
-        map_db = DBReader(path)
+        model = self._engine.getModel()
+        map = model.createMap("name") # TODO: get the model name from the db
+        grid = map.getCellGrid(GRID_TYPE)
 
+        # add layers
+        ground_layer = map.createLayer(GROUND_LAYER_NAME, grid)
+
+        map_db = DBReader(path)
         # TODO: check the map version number
 
         # load all islands
         islands = map_db("SELECT x, y, file FROM islands")
         for island in islands:
-            self._loadIsland(*island)
+            self._loadIsland(ground_layer, *island)
 
-    def _loadIsland(self, x, y, file)
+    def _loadIsland(self, ground_layer, x, y, file)
         """ Loads an island from the given file """
         island_db = DBReader(file)
 
