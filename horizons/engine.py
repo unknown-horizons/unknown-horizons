@@ -366,7 +366,7 @@ class Fife(ApplicationBase):
 		           ProgressBar, StepSlider, TabBG, ToggleImageButton,
 		           TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
 		           HealthWidget, StanceWidget, WeaponStorageWidget]
-		map(lambda x: pychan.widgets.registerWidget(x), widgets)
+		map(pychan.widgets.registerWidget, widgets)
 
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
