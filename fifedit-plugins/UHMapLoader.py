@@ -34,6 +34,23 @@ class UHMapLoader:
         """ Loads the map from the given sqlite file """
         map_db = DBReader(path)
 
+        # TODO: check the map version number
+
+        # load all islands
+        islands = map_db("SELECT x, y, file FROM islands")
+        for island in islands:
+            self._loadIsland(*island)
+
+    def _loadIsland(self, x, y, file)
+        """ Loads an island from the given file """
+        island_db = DBReader(file)
+
+        # load ground tiles
+        ground = island_db("SELECT x, y FROM ground")
+        for (x, y) in ground:
+            # TODO: place ground tile
+
+
 class UHMapLoaderPlugin(plugin.Plugin):
 	""" The B{UHMapLoader} allows to load the UH map format in FIFEdit
 	"""
