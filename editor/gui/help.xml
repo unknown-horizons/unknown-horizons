@@ -1,6 +1,0 @@
-<Panel title="Help">
-	<ScrollArea min_size="300,400">
-		<TextBox name="helpText"/>
-	</ScrollArea>
-	<Button name="closeButton" text="Close"/>
-</Panel>
