@@ -30,12 +30,12 @@ from horizons.util.shapes.radiusshape import RadiusShape, RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
-from horizons.gui.tabs import ProductionOverviewTab
+from horizons.gui.tabs import FarmProductionOverviewTabHack
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
-	tabs = (ProductionOverviewTab,)
+	tabs = (FarmProductionOverviewTabHack,)
 
 	def _get_providers(self):
 		reach = RadiusRect(self.position, self.radius)
