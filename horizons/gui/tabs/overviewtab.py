@@ -367,8 +367,9 @@ class SettlerOverviewTab(OverviewTab):
 
 	def refresh(self):
 		self.widget.child_finder('happiness').progress = self.instance.happiness
-		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
-			self.instance.inhabitants, self.instance.inhabitants_max ) )
+		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
+		                                               self.instance.inhabitants,
+		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)

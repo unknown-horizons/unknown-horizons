@@ -140,7 +140,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def name(self):
 		level_name = self.session.db.get_settler_name(self.level)
 		house_name = self.session.db.get_settler_house_name(self.level)
-		return (_(level_name)+' '+_(house_name)).title()
+		return (_(house_name)).title()
 
 	def _update_level_data(self, loading = False):
 		"""Updates all settler-related data because of a level change or because of loading"""
