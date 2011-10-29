@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-22 18:02+0200\n"
-"Last-Translator: MrRuudJ <ruudjejacobs@live.nl>\n"
+"PO-Revision-Date: 2011-10-29 17:24+0200\n"
+"Last-Translator: Ruud <ruudjejacobs@live.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,7 @@ msgstr "Kruidentuin"
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:267 sql
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -1440,7 +1440,7 @@ msgstr "Slager: Varkens of vee benodigd. Produceert voedsel."
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:132
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Vee weide: Brengt vee groot. Boerderij benodigd. "
 
 # 76%
 #. (tooltip of widget: charcoal-burning-1)
@@ -1481,7 +1481,7 @@ msgstr "Tabak akker: Produceert tabak. Boerderij benodigd."
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:148
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Sigarenhandelaar: Produceert sigaren uit tabak."
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:150
@@ -1764,22 +1764,22 @@ msgstr "Laat middelen geproduceerd in deze nederzetting zien"
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:320
 msgid "ally"
-msgstr ""
+msgstr "bondgenoot"
 
 #. (text of widget: enemy_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:322
 msgid "enemy"
-msgstr ""
+msgstr "vijand"
 
 #. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:324
 msgid "neutral"
-msgstr ""
+msgstr "neutraal"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:329
 msgid "Build fields"
-msgstr ""
+msgstr "Bouw velden"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:339
@@ -1795,53 +1795,49 @@ msgstr "Meest benodigde grondstof:"
 #: horizons/i18n/guitranslations.py:350 horizons/i18n/guitranslations.py:381
 #: horizons/i18n/guitranslations.py:410
 msgid "Residents per house"
-msgstr ""
+msgstr "Bewoners per huis"
 
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py:352 horizons/i18n/guitranslations.py:383
 #: horizons/i18n/guitranslations.py:412
 msgid "Summary"
-msgstr ""
+msgstr "Overzicht"
 
 #. (text of widget: houses)
 #: horizons/i18n/guitranslations.py:354 horizons/i18n/guitranslations.py:385
 #: horizons/i18n/guitranslations.py:414
 msgid "houses"
-msgstr ""
+msgstr "huizen"
 
 # 88%
 # 81%
 #. (text of widget: resident_1)
 #: horizons/i18n/guitranslations.py:356 horizons/i18n/guitranslations.py:387
 #: horizons/i18n/guitranslations.py:416
-#, fuzzy
 msgid "1 resident"
-msgstr "Inwoners"
+msgstr "1 bewoner"
 
 # 88%
 # 81%
 #. (text of widget: resident_2)
 #: horizons/i18n/guitranslations.py:358 horizons/i18n/guitranslations.py:389
 #: horizons/i18n/guitranslations.py:418
-#, fuzzy
 msgid "2 residents"
-msgstr "Inwoners"
+msgstr "2 bewoners"
 
 # 88%
 # 81%
 #. (text of widget: resident_3)
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:420
-#, fuzzy
 msgid "3 residents"
-msgstr "Inwoners"
+msgstr "3 bewoners"
 
 # 88%
 #. (text of widget: residents)
 #: horizons/i18n/guitranslations.py:362 horizons/i18n/guitranslations.py:391
 #: horizons/i18n/guitranslations.py:426
-#, fuzzy
 msgid "residents"
-msgstr "Inwoners"
+msgstr "inwoners"
 
 #. (text of widget: tax_label)
 #: horizons/i18n/guitranslations.py:364 horizons/i18n/guitranslations.py:393
@@ -1852,7 +1848,7 @@ msgstr "Belastingen:"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:366 horizons/i18n/guitranslations.py:395
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Upgrade toestemmingen:"
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
@@ -1882,40 +1878,37 @@ msgstr "Betaalde belastingen"
 #: horizons/i18n/guitranslations.py:399 horizons/i18n/guitranslations.py:401
 #: horizons/i18n/guitranslations.py:436 horizons/i18n/guitranslations.py:438
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:505
-#, fuzzy
 msgid "Tax rate"
-msgstr "Belasting"
+msgstr "Belasting tarief"
 
 # 88%
 # 81%
 #. (text of widget: resident_4)
 #: horizons/i18n/guitranslations.py:422
-#, fuzzy
 msgid "4 residents"
-msgstr "Inwoners"
+msgstr "4 bewoners"
 
 # 88%
 # 81%
 #. (text of widget: resident_5)
 #: horizons/i18n/guitranslations.py:424
-#, fuzzy
 msgid "5 residents"
-msgstr "Inwoners"
+msgstr "5 bewoners"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:430
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Upgrade niet mogelijk:"
 
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:432
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "Dit is het maximum aantal!"
 
 #. (text of widget: collector_utilisation_label) Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)
 #: horizons/i18n/guitranslations.py:445
 msgid "Collector utilisation:"
-msgstr ""
+msgstr "Verzamler benutting:"
 
 #. (text of widget: name_label)
 #: horizons/i18n/guitranslations.py:447 horizons/i18n/guitranslations.py:466
@@ -1926,12 +1919,12 @@ msgstr "Naam:"
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:456
 msgid "Selling"
-msgstr ""
+msgstr "Verkopen"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:461 horizons/i18n/guitranslations.py:516
 msgid "Weapons:"
-msgstr ""
+msgstr "Wapens:"
 
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:475
@@ -2060,12 +2053,12 @@ msgstr "Lees volgende berichten"
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:603
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Beschikbare Scenarios"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py:605
 msgid "Scenario description"
-msgstr ""
+msgstr "Scenario beschrijving"
 
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:609
