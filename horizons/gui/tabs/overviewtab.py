@@ -349,8 +349,8 @@ class ProductionOverviewTab(OverviewTab):
 		Scheduler().rem_all_classinst_calls(self)
 		super(ProductionOverviewTab, self).on_instance_removed()
 
-class FarmProductionOverviewTabHack(ProductionOverviewTab):
-	production_line_gui_xml = "overview_productionline.xml"
+class FarmProductionOverviewTab(ProductionOverviewTab):
+	production_line_gui_xml = "overview_farmproductionline.xml"
 
 	def  __init__(self, instance):
 		super(ProductionOverviewTab, self).__init__(
