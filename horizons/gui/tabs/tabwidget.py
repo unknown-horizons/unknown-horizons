@@ -96,7 +96,7 @@ class TabWidget(object):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
-		if not number in self._tabs:
+		if not number in range(len(self._tabs)):
 			# this usually indicates a non-critical error, therefore we can handle it without crashing
 			import traceback
 			traceback.print_stack()
