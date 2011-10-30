@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-09-23 14:56+0200\n"
-"Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
+"PO-Revision-Date: 2011-10-30 04:15+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -60,9 +60,8 @@ msgstr "Slakteri"
 # 83%
 #. This is a database entry: the name of a unit.
 #: database files sql
-#, fuzzy
 msgid "Cattle"
-msgstr "nötkreatur"
+msgstr "Nötkreatur"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -183,9 +182,8 @@ msgstr "Berg"
 # 85%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr "En av dina nybyggare har ingen marknadsplats inom sin räckvidd."
+msgstr "En av dina nybyggare har ingen torg inom sin räckvidd."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -291,9 +289,8 @@ msgstr "Verktygsmakare"
 # 83%
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
-#, fuzzy
 msgid "Trader"
-msgstr "Handel"
+msgstr "Köpman"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -485,11 +482,11 @@ msgstr "fisk"
 msgid "food"
 msgstr "föda"
 
+# resource: feeling of coziness
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "get-together"
-msgstr "träffpunkt / samlingspunkt / samlingsplats"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -716,9 +713,9 @@ msgstr ""
 # Fritt översatt.
 #: horizons/engine.py:280
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Inställt språk %(lang) vid %(place) kunde inte laddas"
+msgstr "Inställt språk %(lang)s vid %(place)s kunde inte laddas"
 
 #: horizons/engine.py:528
 msgid "Invalid network port"
@@ -835,15 +832,14 @@ msgstr "Fel:"
 
 # 94%
 #: horizons/gui/gui.py:426
-#, fuzzy
 msgid "Unknown savedate"
-msgstr "Okänt spardatum\n"
+msgstr "Okänt spardatum"
 
 # 91%
 #: horizons/gui/gui.py:428
-#, python-format, fuzzy
+#, python-format, 
 msgid "Saved at %s"
-msgstr "Sparad den %s\n"
+msgstr "Sparad den %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -968,8 +964,8 @@ msgid "The game's version differs from your version. Every player in a multiplay
 msgstr ""
 "Spelets version skiljer sig från din version. Alla spelare i ett "
 "flerspelarspel måste använda samma version. Detta kan lösas genom att alla "
-"spelare uppdaterar till den senaste versionen. Spel version: %(gameversion) "
-"Din version: %(ownversion)"
+"spelare uppdaterar till den senaste versionen. Spel version: %(gameversion)s "
+"Din version: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Wrong version"

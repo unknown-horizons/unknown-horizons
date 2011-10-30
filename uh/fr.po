@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-19 17:24+0200\n"
-"Last-Translator: Hugues <fafardh@hotmail.de>\n"
+"PO-Revision-Date: 2011-10-30 04:12+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -278,7 +278,7 @@ msgstr "Champ de tabac"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr "Marchand de tabac"
+msgstr "Buraliste"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -685,7 +685,7 @@ msgstr "Restaurer les paramètres par défaut"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr "Ceci effacera tous les réglages effectués jusque là."
+msgstr "Ceci effacera tous les changements de paramètre effectués jusque là."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
@@ -1489,7 +1489,7 @@ msgstr "Porcherie : Élève des porcs. Nécessite une ferme."
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:140
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr "Salines: Produit du sel. Construit en bord de mer."
+msgstr "Salines : Produit du sel. Construire en bord de mer."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:142
@@ -1510,7 +1510,7 @@ msgstr "Champ de tabac : Produit du tabac. Nécessite une ferme."
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:148
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr "Fabrique de cigares: Produit des cigares à partir de tabac."
+msgstr "Fabrique de cigares : Produit des cigares à partir de tabac."
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:150

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-29 17:24+0200\n"
-"Last-Translator: Ruud <ruudjejacobs@live.nl>\n"
+"PO-Revision-Date: 2011-10-30 03:59+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -315,7 +315,7 @@ msgstr "Houten Toren"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "Het is tevens mogelijk om wegen te slepen"
+msgstr "Het is tevens mogelijk om wegen te slepen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1235,7 +1235,7 @@ msgstr "%(player)s's nederzettingen"
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr "%(plsyer)s's schepen"
+msgstr "%(player)s's schepen"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:81
@@ -2122,9 +2122,8 @@ msgstr ""
 #. (text of widget: ship_name)
 #: horizons/i18n/guitranslations.py:642 horizons/i18n/guitranslations.py:663
 #: horizons/i18n/guitranslations.py:674
-#, fuzzy
 msgid "Name"
-msgstr "Naam:"
+msgstr "Naam"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:644
@@ -2144,9 +2143,8 @@ msgstr "Eenheden"
 # 87%
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:657
-#, fuzzy
 msgid "Balance"
-msgstr "Balans:"
+msgstr "Balans"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:672
@@ -2704,12 +2702,12 @@ msgstr "Kies een kaart om te spelen:"
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:966
 msgid "Map settings:"
-msgstr "Kaart instellingen"
+msgstr "Kaart instellingen:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:976
 msgid "AI players:"
-msgstr "Computer (A.I.)  spelers"
+msgstr "Computer spelers:"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:981
