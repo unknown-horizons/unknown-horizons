@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-30 04:15+0200\n"
+"PO-Revision-Date: 2011-10-30 04:17+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -2289,9 +2289,8 @@ msgstr "{F9} = Snabbladda"
 # utvecklingsteam?
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:724
-#, fuzzy
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr "FIFE och Unknown Horizons utvecklingslag"
+msgstr "FIFE och Unknown Horizons utvecklingsteam"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:726
