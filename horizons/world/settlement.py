@@ -30,21 +30,21 @@ from horizons.world.component.namedcomponent import SettlementNameComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.changelistener import ChangeListener
 
-class Settlement(WorldObject, ChangeListener, ComponentHolder, TradePost):
+class Settlement(WorldObject, ComponentHolder, ChangeListener, TradePost):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, session, owner):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
-		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 		super(Settlement, self).__init__()
-		self.add_component(SettlementNameComponent())
-		self.add_component(StorageComponent(inventory = PositiveSizedSlotStorage(0)))
+		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
 		self.session = session
 		self.owner = owner
+		self.add_component(SettlementNameComponent())
+		self.add_component(StorageComponent(inventory = PositiveSizedSlotStorage(0)))
 		self.buildings = []
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
@@ -127,6 +127,7 @@ class Settlement(WorldObject, ChangeListener, ComponentHolder, TradePost):
 	@classmethod
 	def load(cls, db, worldid, session):
 		self = cls.__new__(cls)
+		super(Settlement, self).load(db, worldid)
 
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		upgrade_permissions = {}
@@ -137,8 +138,6 @@ class Settlement(WorldObject, ChangeListener, ComponentHolder, TradePost):
 		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
 		# load super here cause basic stuff is just set up now
-		super(Settlement, self).load(db, worldid)
-		self.add_component(SettlementNameComponent())
 
 		# load all buildings from this settlement
 		# the buildings will expand the area of the settlement by adding everything,

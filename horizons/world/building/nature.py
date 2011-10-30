@@ -84,6 +84,9 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 
 	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
+		self.__init(inventory)
+
+	def __init(self, inventory=None):
 		self.add_component(StorageComponent())
 		if inventory is None: # a new deposit
 			for resource, min_amount, max_amount in \
@@ -93,6 +96,10 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 		else: # deposit was removed for mine, now build back
 			for res, amount in inventory.iteritems():
 				self.get_component(StorageComponent).inventory.alter(res, amount)
+
+	def load(self, db, worldid):
+		super(ResourceDeposit, self).load(db, worldid)
+		self.__init()
 
 class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
 	pass

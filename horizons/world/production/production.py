@@ -29,6 +29,7 @@ from horizons.util import WorldObject
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLine
+from horizons.world.component.storagecomponent import StorageComponent
 
 from horizons.scheduler import Scheduler
 
@@ -125,7 +126,7 @@ class Production(WorldObject):
 		db_data = db.get_production_row(worldid)
 		obj = WorldObject.get_object_by_id(db_data[1])
 		owner_inventory = obj._get_owner_inventory()
-		self.__init(obj.inventory, owner_inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
+		self.__init(obj.get_component(StorageComponent).inventory, owner_inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
 			db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
 		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]

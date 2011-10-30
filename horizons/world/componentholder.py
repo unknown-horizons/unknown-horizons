@@ -39,18 +39,12 @@ class ComponentHolder(object):
 	def load(self, db, worldid):
 		super(ComponentHolder, self).load(db, worldid)
 		self.components = {}
-		for name, module_name, class_name in db('SELECT name, module, class FROM component WHERE worldid = ?', worldid):
-			# get the class object from module and call init on it
-			module = __import__(module_name)
-			module = sys.modules[module_name]
-			self.components[name] = getattr(module, class_name)(self)
+		for name in self.components:
 			self.components[name].load(db, worldid)
 
 	def save(self, db):
 		super(ComponentHolder, self).save(db)
 		for name in self.components:
-			db('INSERT INTO component(worldid, name, module, class) VALUES(?, ?, ?, ?)', \
-				self.worldid, name, self.components[name].__class__.__module__, self.components[name].__class__.__name__)
 			self.components[name].save(db)
 
 	def add_component(self, component):

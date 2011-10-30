@@ -45,10 +45,10 @@ class ResourceHandler(ComponentHolder):
 	## INIT/DESTRUCT
 	def __init__(self, **kwargs):
 		super(ResourceHandler, self).__init__(**kwargs)
-		self.add_component(StorageComponent())
 		self.__init()
 
 	def __init(self):
+		self.add_component(StorageComponent())
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
 		# the inactive ones won't get considered for needed_resources and such.
 		# the production_line id is the key in the dict (=> a building must not have two identical

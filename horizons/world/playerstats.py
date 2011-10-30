@@ -66,7 +66,7 @@ class PlayerStats(WorldObject):
 								settler_resources_provided[resource_id] += happiness / production.get_production_time()
 
 				# resources held in buildings
-				if hasattr(building, 'inventory') and building.id not in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS, BUILDINGS.MAIN_SQUARE_CLASS]:
+				if building.has_component(StorageComponent) and building.id not in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS, BUILDINGS.MAIN_SQUARE_CLASS]:
 					for resource_id, amount in building.get_component(StorageComponent).inventory:
 						total_resources[resource_id] += amount
 

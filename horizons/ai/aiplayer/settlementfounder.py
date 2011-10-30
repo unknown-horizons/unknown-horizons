@@ -61,6 +61,7 @@ class SettlementFounder(object):
 							usable = False
 							break
 					if usable:
+						print object.__class__
 						for resource_id, amount in object.get_component(StorageComponent).inventory:
 							resources[resource_id] += amount
 				continue
@@ -126,7 +127,7 @@ class SettlementFounder(object):
 			return False
 
 		if ship is not None:
-		    for res, amount in ship.get_component(StorageComponent).inventory:
+			for res, amount in ship.get_component(StorageComponent).inventory:
 				if res in min_resources and min_resources[res] > 0:
 					min_resources[res] = max(0, min_resources[res] - amount)
 
@@ -143,12 +144,12 @@ class SettlementFounder(object):
 	def have_starting_resources(self, ship, settlement):
 		"""Returns a boolean showing whether we have enough resources to found a new normal settlement."""
 		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_island_gold, \
-			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.FOOD_ID: self.personality.min_new_island_food, RES.TOOLS_ID: self.personality.min_new_island_tools})
+				                                        {RES.BOARDS_ID: self.personality.min_new_island_boards, RES.FOOD_ID: self.personality.min_new_island_food, RES.TOOLS_ID: self.personality.min_new_island_tools})
 
 	def have_feeder_island_starting_resources(self, ship, settlement):
 		"""Returns a boolean showing whether we have enough resources to found a new feeder island."""
 		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_feeder_island_gold, \
-			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.TOOLS_ID: self.personality.min_new_island_tools})
+				                                        {RES.BOARDS_ID: self.personality.min_new_island_boards, RES.TOOLS_ID: self.personality.min_new_island_tools})
 
 	def _prepare_foundation_ship(self, settlement_manager, ship, feeder_island):
 		"""Start a mission to load the settlement foundation resources on the given ship from the specified settlement."""

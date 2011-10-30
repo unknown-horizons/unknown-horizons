@@ -74,23 +74,23 @@ class Collector(Unit):
 
 	# INIT/DESTRUCT
 
-	def __init__(self, x, y, slots = 1, size = COLLECTORS.DEFAULT_STORAGE_SIZE, start_hidden=True, **kwargs):
+	def __init__(self, x, y, slots = 1, start_hidden=True, **kwargs):
 		super(Collector, self).__init__(slots = slots, \
 		                                size = size, \
 		                                x = x, \
 		                                y = y, \
 		                                **kwargs)
 
-		self.add_component(StorageComponent())
-		self.get_component(StorageComponent).inventory.limit = size
-		# TODO: use different storage to support multiple slots. see StorageHolder
 
-		self.__init(self.states.idle, start_hidden)
+		self.__init(self.states.idle, start_hidden, size)
 
 		# start searching jobs just when construction (of subclass) is completed
 		Scheduler().add_new_object(self.search_job, self, 1)
 
 	def __init(self, state, start_hidden):
+		self.add_component(StorageComponent())
+		# TODO: use different storage to support multiple slots. see StorageHolder
+		self.get_component(StorageComponent).inventory.limit = COLLECTORS.DEFAULT_STORAGE_SIZE
 		self.state = state
 		self.start_hidden = start_hidden
 		if self.start_hidden:

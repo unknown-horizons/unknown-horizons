@@ -45,7 +45,6 @@ class Player(ComponentHolder, WorldObject):
 		"""
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
-		self.add_component(StorageComponent(inventory = PositiveStorage()))
 		self.__init(name, color, difficulty_level)
 
 		if inventory:
@@ -55,6 +54,7 @@ class Player(ComponentHolder, WorldObject):
 	def __init(self, name, color, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
 		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
+		self.add_component(StorageComponent(inventory = PositiveStorage()))
 		self.name = name
 		self.color = color
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)

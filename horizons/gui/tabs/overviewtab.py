@@ -138,11 +138,11 @@ class MainSquareOverviewTab(OverviewTab):
 			widget = 'overview_mainsquare.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		self.tooltip = _("Main square overview")
 
 	def refresh(self):
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		super(MainSquareOverviewTab, self).refresh()
 
 

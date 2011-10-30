@@ -56,7 +56,7 @@ class StorageComponent(Component):
 	def save(self, db):
 		super(StorageComponent, self).save(db)
 		if self.has_own_inventory:
-			self.inventory.save(db, self.worldid)
+			self.inventory.save(db, self.instance.worldid)
 
 	def load(self, db, worldid):
 		super(StorageComponent, self).load(db, worldid)
