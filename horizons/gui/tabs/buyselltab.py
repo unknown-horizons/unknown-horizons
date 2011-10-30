@@ -140,7 +140,7 @@ class BuySellTab(TabInterface):
 		if value is None: # use current slider value if player provided no input
 			value = int(slider.getValue())
 		else: # set slider to value entered by the player
-			slider.setValue(float(value))
+			slider.value = float(value)
 
 		if slot.action is "sell":
 			if slot.res is not None: # slot has been in use before, delete old value
