@@ -126,12 +126,22 @@ class AbstractBuilding(object):
 			for x, y in settlement_manager.production_builder.plan:
 				if (x, y) in settlement_manager.island.last_changed[self.size]:
 					yield (x, y, 0)
+			if self.id in settlement_manager.production_builder.coastal_building_classes:
+				for x, y in settlement_manager.land_manager.coastline:
+					if (x, y) in settlement_manager.island.last_changed[self.size]:
+						yield (x, y, 0)
 		else:
 			for x, y in settlement_manager.production_builder.plan:
 				if (x, y) in settlement_manager.island.last_changed[self.size]:
 					yield (x, y, 0)
 				if (x, y) in settlement_manager.island.last_changed[(self.size[1], self.size[0])]:
 					yield (x, y, 1)
+			if self.id in settlement_manager.production_builder.coastal_building_classes:
+				for x, y in settlement_manager.land_manager.coastline:
+					if (x, y) in settlement_manager.island.last_changed[self.size]:
+						yield (x, y, 0)
+					if (x, y) in settlement_manager.island.last_changed[(self.size[1], self.size[0])]:
+						yield (x, y, 1)
 
 	@property
 	def evaluator_class(self):

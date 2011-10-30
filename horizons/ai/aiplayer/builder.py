@@ -140,10 +140,6 @@ class Builder(WorldObject):
 		if orientation == 1 or orientation == 3:
 			size = (size[1], size[0])
 
-		if coords not in land_manager.island.last_changed[size]:
-			# a position on the coastline that is not being cached
-			return Builder(building_id, land_manager, point, orientation, ship, worldid=worldid)
-
 		last_changed = land_manager.island.last_changed[size][coords]
 		if key in cls.cache and last_changed != cls.cache[key][0]:
 			del cls.cache[key]
