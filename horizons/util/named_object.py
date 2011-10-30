@@ -48,7 +48,7 @@ class NamedObject(WorldObject):
 		newname = newnametmp = self.session.random.choice(self._possible_names())
 		index = 2
 		while newname in NamedObject.names_used:
-			newname = newnametmp + ' ' + `index`
+			newname = "%s %s" % (newnametmp, index)
 			index += 1
 		return newname
 
