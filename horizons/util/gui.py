@@ -80,19 +80,21 @@ def get_res_icon(res):
 
 
 def create_resource_icon(res_id, db, size=50):
-	"""Creates a pychan icon for a resource.
+	"""Creates a pychan TooltipIcon for a resource.
+	Returns None if size parameter is invalid (not in 16,24,50).
 	@param res_id:
-	@param db: dbreader for main db"""
+	@param db: dbreader for main db
+	@param size: Size of icon in px. Valid: 16, 24, 50."""
 	from horizons.gui.widgets.tooltip import TooltipIcon
 	if size == 50:
-		return TooltipIcon(tooltip=db.get_res_name(res_id), \
-								       image=get_res_icon(res_id)[0])
+		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		                   image=get_res_icon(res_id)[0])
 	elif size == 24:
-		return TooltipIcon(tooltip=db.get_res_name(res_id), \
-								       image=get_res_icon(res_id)[2])
+		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		                   image=get_res_icon(res_id)[2])
 	elif size == 16:
-		return TooltipIcon(tooltip=db.get_res_name(res_id), \
-								       image=get_res_icon(res_id)[3])
+		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		                   image=get_res_icon(res_id)[3])
 	else:
 		return None
 
