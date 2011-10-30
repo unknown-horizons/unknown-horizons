@@ -278,28 +278,39 @@ class ProductionBuilder(AreaBuilder):
 	def __make_new_builder(self, building_id, x, y, needs_collector, orientation):
 		"""Return a Builder object if it is allowed to be built at the location, otherwise return None (not cached)."""
 		coords = (x, y)
+		# quick check to see whether the origin square is allowed to be in the requested place
 		if building_id == BUILDINGS.CLAY_PIT_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
 			# clay deposits and mountains are outside the production plan until they are constructed
 			if coords in self.plan or coords not in self.settlement.ground_map:
 				return None
 		elif building_id in self.coastal_building_classes:
+			# coastal buildings can use coastal tiles
 			if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 				return None
 		else:
 			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.settlement.ground_map:
 				return None
+
+		# create the builder, make sure that it is allowed according to the game logic
 		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
 		if not builder or not self.land_manager.legal_for_production(builder.position):
 			return None
+
+		# make sure that the position of the building is allowed according to the plan
 		if building_id in self.coastal_building_classes:
+			# coastal buildings can use coastal tiles
 			for coords in builder.position.tuple_iter():
-				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
-		elif building_id != BUILDINGS.CLAY_PIT_CLASS and building_id != BUILDINGS.IRON_MINE_CLASS:
-			# clay deposits and mountains are outside the production plan until they are constructed
+		elif building_id in [BUILDINGS.CLAY_PIT_CLASS, BUILDINGS.IRON_MINE_CLASS]:
+			# clay deposits and mountains can't be in areas restricted by the plan
+			pass
+		else:
 			for coords in builder.position.tuple_iter():
 				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
+
+		# make sure the building is close enough to a collector if it produces any resources that have to be collected
 		if needs_collector and not any(True for building in self.collector_buildings if building.position.distance(builder.position) <= building.radius):
 			return None
 		return builder
