@@ -38,14 +38,19 @@ class Minimap(object):
 	island_id, cam_border = range(0, 2)
 	# the color of the water is determined by the MINIMAP_BASE_IMAGE
 	colors = { 0: (137, 117,  87),
-	           1: (  1,   1,   1) }
+				     1: (  1,   1,   1) }
 
 	SHIP_DOT_UPDATE_INTERVAL = 0.5 # seconds
 
-	MINIMAP_BASE_IMAGE = "content/gfx/misc/minmap_water.png"
+	RENDER_NAMES = { # alpha-ordering determines the order
+	  "background" : "a",
+	  "base" : "b", # islands, etc.
+	  "ship" : "c",
+	  "cam" : "d"
+	  }
 
 	__next_minimap_id = 0
-	
+
 	def __init__(self, rect, session, renderer, targetrenderer):
 		"""
 		@param rect: a Rect, where we will draw to
@@ -63,8 +68,7 @@ class Minimap(object):
 		self._id = str(self.__class__.__next_minimap_id) # internal identifier, used for allocating resources
 		self.__class__.__next_minimap_id += 1
 
-		self.minimap_image = _MinimapImage( targetrenderer, horizons.main.fife.imagemanager, \
-											self.MINIMAP_BASE_IMAGE )
+		self.minimap_image = _MinimapImage( targetrenderer, horizons.main.fife.imagemanager )
 
 
 	def end(self):
@@ -97,17 +101,23 @@ class Minimap(object):
 
 		Scheduler().rem_all_classinst_calls(self)
 		Scheduler().add_new_object(self._timed_update, self, \
-		                           Scheduler().get_ticks(self.SHIP_DOT_UPDATE_INTERVAL), -1)
+								               Scheduler().get_ticks(self.SHIP_DOT_UPDATE_INTERVAL), -1)
 
+	def _get_render_name(self, key):
+		return self.RENDER_NAMES[key] + self._id
 
 	def update_cam(self):
 		"""Redraw camera border."""
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		self.renderer.removeAll("minimap_b_cam_border"+self._id)
+		#self.renderer.removeAll(self._get_render_name("cam"))
+		self.minimap_image.set_drawing_enabled()
+		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
+		#self.minimap_image.rendertarget.removeAll()
 		# draw rect for current screen
 		displayed_area = self.session.view.get_displayed_area()
 		minimap_corners_as_renderer_node = []
+		minimap_corners_as_point = []
 		for corner in displayed_area.get_corners():
 			# check if the corners are outside of the screen
 			corner = list(corner)
@@ -121,11 +131,20 @@ class Minimap(object):
 				corner[1] = self.world.min_y
 			corner = tuple(corner)
 			minimap_coords = self._get_rotated_coords( self._world_coord_to_minimap_coord(corner))
-			minimap_corners_as_renderer_node.append( fife.RendererNode( \
-			  fife.Point(*minimap_coords) ) )
+			minimap_corners_as_renderer_node.append( fife.RendererNode (
+				fife.Point(*minimap_coords) ) )
+			minimap_corners_as_point.append( fife.Point(
+			  minimap_coords[0] - self.location.left,
+			  minimap_coords[1] - self.location.top
+			  ) )
+
 		for i in xrange(0, 4):
+			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"), minimap_corners_as_point[i], \
+												                      minimap_corners_as_point[ (i+1) % 4], *self.colors[self.cam_border])
+			"""
 			self.renderer.addLine("minimap_b_cam_border"+self._id, minimap_corners_as_renderer_node[i], \
 			                 minimap_corners_as_renderer_node[ (i+1) % 4], *self.colors[self.cam_border])
+			"""
 
 	def update(self, tup):
 		"""Recalculate and redraw minimap for real world coord tup
@@ -135,8 +154,8 @@ class Minimap(object):
 		minimap_point = self._get_rotated_coords(self._world_coord_to_minimap_coord(tup))
 		world_to_minimap = self._get_world_to_minimap_ratio()
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], \
-		                                       int(round(1/world_to_minimap[0])) + 1, \
-		                                       int(round(1/world_to_minimap[1])) + 1)
+								                           int(round(1/world_to_minimap[0])) + 1, \
+								                           int(round(1/world_to_minimap[1])) + 1)
 		self._recalculate(rect)
 
 	def use_overlay_icon(self, icon):
@@ -144,8 +163,8 @@ class Minimap(object):
 		The current gui requires, that the minimap is drawn behind an icon."""
 		self.overlay_icon = icon
 		icon.mapEvents({ \
-		  icon.name + '/mousePressed' : self.on_click, \
-		  icon.name + '/mouseDragged' : self.on_click \
+			icon.name + '/mousePressed' : self.on_click, \
+			icon.name + '/mouseDragged' : self.on_click \
 		})
 
 	def on_click(self, event):
@@ -164,9 +183,14 @@ class Minimap(object):
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it
 		@param where: Rect of minimap coords. Defaults to self.location"""
+		self.minimap_image.set_drawing_enabled()
+
+		rt = self.minimap_image.rendertarget
+		render_name = self._get_render_name("base")
+
 		if where is None:
 			where = self.location
-			self.minimap_image.rendertarget.removeAll("minimap")
+			rt.removeAll(render_name)
 
 		# calculate which area of the real map is mapped to which pixel on the minimap
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
@@ -182,9 +206,6 @@ class Minimap(object):
 		island_col = self.colors[self.island_id]
 		location_left = self.location.left
 		location_top = self.location.top
-		
-		rt = self.minimap_image.rendertarget
-		self.minimap_image.set_drawing_enabled()
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this faciliates calculating the real world coords
@@ -205,9 +226,9 @@ class Minimap(object):
 				"""
 				# use center of the rect that the pixel covers
 				real_map_point.x = int(x*pixel_per_coord_x)+world_min_x + \
-				                            pixel_per_coord_x_half_as_int
+											pixel_per_coord_x_half_as_int
 				real_map_point.y = int(y*pixel_per_coord_y)+world_min_y + \
-				                            pixel_per_coord_y_half_as_int
+											pixel_per_coord_y_half_as_int
 				real_map_point_tuple = (real_map_point.x, real_map_point.y)
 
 				# check what's at the covered_area
@@ -230,7 +251,7 @@ class Minimap(object):
 
 				# _get_rotated_coords has been inlined here
 				rot_x, rot_y = self._rotate( (location_left + x, location_top + y), self._rotations)
-				rt.addPoint("minimap", fife.Point(rot_x - location_left, rot_y - location_top) , *color)
+				rt.addPoint(render_name, fife.Point(rot_x - location_left, rot_y - location_top) , *color)
 
 
 	def _timed_update(self):
@@ -273,18 +294,18 @@ class Minimap(object):
 	## CALC UTILITY
 
 	_rotations = { 0 : 0,
-	               1 : 3 * math.pi / 2,
-	               2 : math.pi,
-	               3 : math.pi / 2
-	               }
+				         1 : 3 * math.pi / 2,
+				         2 : math.pi,
+				         3 : math.pi / 2
+				         }
 	def _get_rotated_coords (self, tup):
 		return self._rotate(tup, self._rotations)
 
 	_from_rotations = { 0 : 0,
-	                    1 : math.pi / 2,
-	                    2 : math.pi,
-	                    3 : 3 * math.pi / 2
-	                    }
+				              1 : math.pi / 2,
+				              2 : math.pi,
+				              3 : 3 * math.pi / 2
+				              }
 	def _get_from_rotated_coords (self, tup):
 		return self._rotate (tup, self._from_rotations)
 
@@ -327,16 +348,16 @@ class Minimap(object):
 		@return tuple"""
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
 		return ( \
-		  int(round(float(tup[0] - self.world.min_x)/pixel_per_coord_x))+self.location.left, \
-		  int(round(float(tup[1] - self.world.min_y)/pixel_per_coord_y))+self.location.top \
+			int(round(float(tup[0] - self.world.min_x)/pixel_per_coord_x))+self.location.left, \
+			int(round(float(tup[1] - self.world.min_y)/pixel_per_coord_y))+self.location.top \
 		)
 
 	def _minimap_coord_to_world_coord(self, tup):
 		"""Inverse to _world_coord_to_minimap_coord"""
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
 		return ( \
-		  int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x, \
-		  int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y \
+			int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x, \
+			int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y \
 		)
 
 class _MinimapImage(object):
@@ -345,20 +366,23 @@ class _MinimapImage(object):
 	- self.image: instance of fife.Image
 	- self.rendertarget: instance of fife.RenderTarget
 	"""
-	def __init__(self, targetrenderer, imagemanager, image_file_path):
+	def __init__(self, targetrenderer, imagemanager):
 		self.imagemanager = imagemanager
 		self.targetrenderer = targetrenderer
-		self.image_file_path = image_file_path
-		self.image = self.imagemanager.load( self.image_file_path )
+		self.reset()
 		self.rendertarget = targetrenderer.createRenderTarget( self.image )
+		self.set_drawing_enabled()
+		# TODO: nothing is drawn here, seems like a fife bug
+		self.rendertarget.addQuad( "a", fife.Point(0,0), fife.Point(0, 120), fife.Point(120, 120), fife.Point(120, 0),  255, 0, 0 )
+		# TODO: use parameters from Minimap class constants
 
 	def reset(self):
 		"""Reset image to original image"""
 		# reload
-		self.imagemanager.reload( self.image_file_path )
-		self.image = self.imagemanager.get( self.image_file_path )
-		
+		self.image = self.imagemanager.loadBlank(120, 120)
+
 	def set_drawing_enabled(self):
-		self.targetrenderer.setRenderTarget( self.image_file_path, False, 0 )
+		"""Always call this."""
+		self.targetrenderer.setRenderTarget( self.rendertarget.getTarget().getName(), False, 0 )
 
 bind_all(Minimap)
