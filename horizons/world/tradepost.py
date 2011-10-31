@@ -135,7 +135,7 @@ class TradePost(object):
 		if resource_id not in self.sell_list:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("This resource is not sold here any more."))
+				                                                  _("The trade partner does not sell this."))
 			return 0
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
@@ -146,14 +146,14 @@ class TradePost(object):
 		if amount <= 0:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("There is no space for this resource in our ship."))
+				                                                  _("You can not store this."))
 			return 0
 		# can't sell more than the ship's owner can afford
 		amount = min(amount, ship.owner.inventory[RES.GOLD_ID] // price)
 		if amount <= 0:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("You cannot afford to buy this resource."))
+				                                                  _("You can not afford to buy this."))
 			return 0
 		# can't sell more than what we have
 		amount = min(amount, self.inventory[resource_id])
@@ -162,7 +162,7 @@ class TradePost(object):
 		if amount <= 0:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner doesn't have enough of this resource."))
+				                                                  _("The trade partner does not sell more of this."))
 			return 0
 
 		total_price = price * amount
@@ -181,7 +181,7 @@ class TradePost(object):
 		if resource_id not in self.buy_list:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("This resource is not bought here."))
+				                                                  _("The trade partner does not buy this."))
 			return 0
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
@@ -192,7 +192,7 @@ class TradePost(object):
 		if amount <= 0:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The ship does not contain this resource any more"))
+				                                                  _("You do not possess this."))
 			return 0
 		# can't buy more than we can afford
 		# can't buy more than we can fit in the inventory
@@ -200,21 +200,21 @@ class TradePost(object):
 		if amount <= 0:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner has no free space for this resource"))
+				                                                  _("The trade partner can not store more of this."))
 			return 0
 		# can't buy more than we can afford
 		amount = min(amount, self.owner.inventory[RES.GOLD_ID] // price)
 		if amount <= 0:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner cannot afford to buy this."))
+				                                                  _("The trade partner can not afford to buy this."))
 			return 0
 		# can't buy more than we are trying to buy according to the settings
 		amount = min(amount, self.buy_list[resource_id] - self.inventory[resource_id])
 		if amount <= 0:
 			if ship.owner == self.session.world.player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner does not wish to buy more of this resource."))
+				                                                  _("The trade partner does not buy more of this."))
 			return 0
 
 		total_price = price * amount
