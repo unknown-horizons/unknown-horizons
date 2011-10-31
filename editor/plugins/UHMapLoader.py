@@ -20,11 +20,12 @@
 # ###################################################
 
 import fife.extensions.loaders as mapLoaders
-from horizons.util.dbreader import DBReader
+#from horizons.util.dbreader import DBReader
 
 import scripts.editor
+import scripts.plugin
 
-class UHMapLoader:
+class MapLoader:
 
     GRID_TYPE = "square"
     GROUND_LAYER_NAME = "ground"
@@ -47,60 +48,66 @@ class UHMapLoader:
         map_db = DBReader(path)
         # TODO: check the map version number
 
+        # load objects catalogue
+        self._loadObjects(map_db, model)
+
         # load all islands
         islands = map_db("SELECT x, y, file FROM islands")
         for island in islands:
             self._loadIsland(ground_layer, *island)
 
-    def _loadIsland(self, ground_layer, x, y, file)
+    def _loadObjects(self, map_db, model):
+        pass
+
+    def _loadIsland(self, ground_layer, x, y, file):
         """ Loads an island from the given file """
         island_db = DBReader(file)
 
         # load ground tiles
         ground = island_db("SELECT x, y FROM ground")
         for (x, y) in ground:
-            # TODO: place ground tile
+            pass # TODO: place ground tile
+
+class UHMapLoader(scripts.plugin.Plugin):
+    """ The B{UHMapLoader} allows to load the UH map format in FIFEdit
+    """
+
+    def __init__(self):
+        # Editor instance
+        self._editor = None
+
+        # Plugin variables
+        self._enabled = False
+
+        # Current mapview
+        self._mapview = None
 
 
-class UHMapLoaderPlugin(plugin.Plugin):
-	""" The B{UHMapLoader} allows to load the UH map format in FIFEdit
-	"""
+    #--- Plugin functions ---#
+    def enable(self):
+        """ Enable plugin """
+        if self._enabled is True:
+            return
 
-	def __init__(self):
-		# Editor instance
-		self._editor = None
+        # Fifedit plugin data
+        self._editor = scripts.editor.getEditor()
 
-		# Plugin variables
-		self._enabled = False
+        mapLoaders.addMapLoader('sqlite', MapLoader)
 
-		# Current mapview
-		self._mapview = None
+    def disable(self):
+        """ Disable plugin """
+        if self._enabled is False:
+            return
 
+    def isEnabled(self):
+        """ Returns True if plugin is enabled """
+        return self._enabled;
 
-	#--- Plugin functions ---#
-	def enable(self):
-		""" Enable plugin """
-		if self._enabled is True:
-			return
+    def getName(self):
+        print("name")
+        """ Return plugin name """
+        return u"UHMapLoader"
 
-		# Fifedit plugin data
-		self._editor = scripts.editor.getEditor()
-
-        mapLoaders.addMapLoader('sqlite', UHMapLoader)
-
-	def disable(self):
-		""" Disable plugin """
-		if self._enabled is False:
-			return
-
-	def isEnabled(self):
-		""" Returns True if plugin is enabled """
-		return self._enabled;
-
-	def getName(self):
-		""" Return plugin name """
-		return u"UHMapLoader"
-
-	#--- End plugin functions ---#
+    #--- End plugin functions ---#
 
 
