@@ -138,7 +138,7 @@ class BuySellTab(TabInterface):
 		slot = self.slots[slot_id]
 		slider = slot.findChild(name="slider")
 		if value is None: # use current slider value if player provided no input
-			value = int(slider.getValue())
+			value = int(slider.value)
 		else: # set slider to value entered by the player
 			slider.value = float(value)
 
@@ -194,7 +194,7 @@ class BuySellTab(TabInterface):
 		"""
 		slot = self.slots[slot]
 		button = slot.findChild(name="buysell")
-		limit = int(slot.findChild(name="slider").getValue())
+		limit = int(slot.findChild(name="slider").value)
 		if slot.action is "buy":
 			# setting to sell
 			button.up_image = self.sell_button_path
@@ -263,10 +263,10 @@ class BuySellTab(TabInterface):
 		"""
 		slider = self.slots[slot].findChild(name="slider")
 		if self.slots[slot].action is "buy":
-			self.add_buy_to_settlement(res_id, int(slider.getValue()), slot)
+			self.add_buy_to_settlement(res_id, int(slider.value), slot)
 		elif self.slots[slot].action is "sell":
-			self.add_sell_to_settlement(res_id, int(slider.getValue()), slot)
-		self.slots[slot].findChild(name="amount").text = unicode(int(slider.getValue()))+'t'
+			self.add_sell_to_settlement(res_id, int(slider.value), slot)
+		self.slots[slot].findChild(name="amount").text = unicode(int(slider.value))+'t'
 		self.slots[slot].adaptLayout()
 
 
