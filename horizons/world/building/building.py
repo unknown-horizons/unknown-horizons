@@ -66,9 +66,14 @@ class BasicBuilding(ConcretObject):
 								                        island=island, **kwargs)
 		self.__init(Point(x, y), rotation, owner, level, action_set_id=action_set_id)
 		self.island = island
-		self.settlement = self.island.get_settlement(Point(x, y)) or \
-				self.island.add_settlement(self.position, self.radius, owner) if \
-				owner is not None else None
+
+		settlements = self.island.get_settlements(self.position, owner)
+		if settlements:
+			self.settlement = settlements[0]
+		else:
+			# create one if we have an owner
+			self.settlement = self.island.add_settlement(self.position, self.radius, owner) if \
+			    owner is not None else None
 
 	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None, action_set_id=None):
 		self.add_component(AmbientSoundComponent())
