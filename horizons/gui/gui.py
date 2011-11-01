@@ -91,7 +91,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		Show Pause menu
 		"""
-		# import here because we get a weird cycle otherwise
+		# TODO: logically, this now belongs to the ingame_gui (it used to be different)
+		#       this manifests itself by the need for the __pause_displayed hack below
+		#       in the long run, this should be moved, therefore eliminating the hack, and
+		#       ensuring correct setup/teardown.
 		if self.__pause_displayed:
 			self.__pause_displayed = False
 			self.hide()
@@ -104,21 +107,37 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			# reload the menu because caching creates spacing problems
 			# see http://trac.unknown-horizons.org/t/ticket/1047
 			self.widgets.reload('ingamemenu')
+			def do_load():
+				did_load = horizons.main.load_game()
+				if did_load:
+					self.__pause_displayed = False
+			def do_quit():
+				did_quit = self.quit_session()
+				if did_quit:
+					self.__pause_displayed = False
+			events = { # needed twice, save only once here
+			  'e_load' : do_load,
+				'e_save' : self.save_game,
+				'e_sett' : self.show_settings,
+				'e_help' : self.on_help,
+				'e_start': self.toggle_pause,
+				'e_quit' : do_quit,
+			}
 			self._switch_current_widget('ingamemenu', center=True, show=False, event_map={
 				  # icons
-				'loadgameButton' : horizons.main.load_game,
-				'savegameButton' : self.save_game,
-				'settingsLink'   : self.show_settings,
-				'helpLink'       : self.on_help,
-				'startGame'      : self.toggle_pause,
-				'closeButton'    : self.quit_session,
+				'loadgameButton' : events['e_load'],
+				'savegameButton' : events['e_save'],
+				'settingsLink'   : events['e_sett'],
+				'helpLink'       : events['e_help'],
+				'startGame'      : events['e_start'],
+				'closeButton'    : events['e_quit'],
 				# labels
-				'loadgame' : horizons.main.load_game,
-				'savegame' : self.save_game,
-				'settings' : self.show_settings,
-				'help'     : self.on_help,
-				'start'    : self.toggle_pause,
-				'quit'     : self.quit_session,
+				'loadgame' : events['e_load'],
+				'savegame' : events['e_save'],
+				'settings' : events['e_sett'],
+				'help'     : events['e_help'],
+				'start'    : events['e_start'],
+				'quit'     : events['e_quit'],
 			})
 			self.current.additional_widget = pychan.Icon(image="content/gui/images/background/transparent.png")
 			self.current.additional_widget.position = (0, 0)
@@ -168,8 +187,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""Quits the current session.
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
-		if force or \
-		   self.show_popup(_("Quit Session"), message, show_cancel_button = True):
+
+		if force or self.show_popup(_("Quit Session"), message, show_cancel_button = True):
 			if self.current is not None:
 				# this can be None if not called from gui (e.g. scenario finished)
 				self.hide()
@@ -179,6 +198,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				self.session = None
 
 			self.show_main()
+			return True
+		else:
+			return False
 
 	def on_chime(self):
 		"""
