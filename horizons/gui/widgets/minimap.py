@@ -45,7 +45,7 @@ class Minimap(object):
 	MINIMAP_BASE_IMAGE = "content/gfx/misc/minmap_water.png"
 
 	__next_minimap_id = 0
-	
+
 	def __init__(self, rect, session, renderer, targetrenderer):
 		"""
 		@param rect: a Rect, where we will draw to
@@ -105,6 +105,7 @@ class Minimap(object):
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
 		self.renderer.removeAll("minimap_b_cam_border"+self._id)
+		use_rotation = self._get_rotation_setting()
 		# draw rect for current screen
 		displayed_area = self.session.view.get_displayed_area()
 		minimap_corners_as_renderer_node = []
@@ -120,7 +121,9 @@ class Minimap(object):
 			if corner[1] < self.world.min_y:
 				corner[1] = self.world.min_y
 			corner = tuple(corner)
-			minimap_coords = self._get_rotated_coords( self._world_coord_to_minimap_coord(corner))
+			minimap_coords = self._world_coord_to_minimap_coord(corner)
+			if use_rotation:
+				minimap_coords = self._get_rotated_coords( minimap_coords )
 			minimap_corners_as_renderer_node.append( fife.RendererNode( \
 			  fife.Point(*minimap_coords) ) )
 		for i in xrange(0, 4):
@@ -132,7 +135,9 @@ class Minimap(object):
 		@param tup: (x, y)"""
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		minimap_point = self._get_rotated_coords(self._world_coord_to_minimap_coord(tup))
+		minimap_point = self._world_coord_to_minimap_coord(tup)
+		if self._get_rotation_setting():
+			minimap_point = self._get_rotated_coords( minimap_point )
 		world_to_minimap = self._get_world_to_minimap_ratio()
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], \
 		                                       int(round(1/world_to_minimap[0])) + 1, \
@@ -157,7 +162,9 @@ class Minimap(object):
 		if not self.location.contains(abs_mouse_position):
 			# mouse click was on icon but not actually on minimap
 			return
-		abs_mouse_position = self._get_from_rotated_coords (abs_mouse_position.to_tuple())
+		abs_mouse_position = abs_mouse_position.to_tuple()
+		if self._get_rotation_setting():
+			abs_mouse_position = self._get_from_rotated_coords(abs_mouse_position)
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position)
 		self.session.view.center(*map_coord)
 
@@ -182,9 +189,11 @@ class Minimap(object):
 		island_col = self.colors[self.island_id]
 		location_left = self.location.left
 		location_top = self.location.top
-		
+
 		rt = self.minimap_image.rendertarget
 		self.minimap_image.set_drawing_enabled()
+
+		use_rotation = self._get_rotation_setting()
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this faciliates calculating the real world coords
@@ -229,14 +238,19 @@ class Minimap(object):
 					continue
 
 				# _get_rotated_coords has been inlined here
-				rot_x, rot_y = self._rotate( (location_left + x, location_top + y), self._rotations)
+				if use_rotation:
+					rot_x, rot_y = self._rotate( (location_left + x, location_top + y), self._rotations)
+				else:
+					rot_x, rot_y = (location_left + x, location_top + y)
 				rt.addPoint("minimap", fife.Point(rot_x - location_left, rot_y - location_top) , *color)
 
 
 	def _timed_update(self):
 		"""Regular updates for domains we can't or don't want to keep track of."""
 		# update ship dots
+		# OPTIMISATION NOTE: there can be pretty many ships, don't rely on the inner loop being rarely executed
 		self.renderer.removeAll("minimap_b_ship"+self._id)
+		use_rotation = self._get_rotation_setting()
 		for ship in self.world.ship_map.itervalues():
 			if not ship():
 				continue
@@ -245,7 +259,9 @@ class Minimap(object):
 			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 3, 3)
 			for tup in area_to_color.tuple_iter():
 				try:
-					node = fife.RendererNode(fife.Point(*self._get_rotated_coords(tup)))
+					if use_rotation:
+						tup = self._get_rotated_coords(tup)
+					node = fife.RendererNode(fife.Point(*tup))
 					self.renderer.addPoint("minimap_b_ship"+self._id, node, *color)
 				except KeyError:
 					# this happens in rare cases, when the ship is at the border of the map,
@@ -259,7 +275,7 @@ class Minimap(object):
 		self.rotation += 1
 		self.rotation %= 4
 		self.update_cam()
-		if horizons.main.fife.get_uh_setting("MinimapRotation"):
+		if self._get_rotation_setting():
 			self.draw()
 
 	def rotate_left (self):
@@ -267,10 +283,13 @@ class Minimap(object):
 		self.rotation -= 1
 		self.rotation %= 4
 		self.update_cam()
-		if horizons.main.fife.get_uh_setting("MinimapRotation"):
+		if self._get_rotation_setting():
 			self.draw()
 
 	## CALC UTILITY
+
+	def _get_rotation_setting(self):
+		return horizons.main.fife.get_uh_setting("MinimapRotation")
 
 	_rotations = { 0 : 0,
 	               1 : 3 * math.pi / 2,
@@ -289,28 +308,25 @@ class Minimap(object):
 		return self._rotate (tup, self._from_rotations)
 
 	def _rotate (self, tup, rotations):
-		if not horizons.main.fife.get_uh_setting("MinimapRotation"):
-			return tup
-		else:
-			rotation = rotations[ self.rotation ]
+		rotation = rotations[ self.rotation ]
 
-			x = tup[0]
-			y = tup[1]
-			x -= self.location_center.x
-			y -= self.location_center.y
+		x = tup[0]
+		y = tup[1]
+		x -= self.location_center.x
+		y -= self.location_center.y
 
-			new_x = x * cos(rotation) - y * sin(rotation)
-			new_y = x * sin(rotation) + y * cos(rotation)
+		new_x = x * cos(rotation) - y * sin(rotation)
+		new_y = x * sin(rotation) + y * cos(rotation)
 
-			new_x += self.location_center.x
-			new_y += self.location_center.y
-			#some points may get out of range
-			new_x = max (self.location.left, new_x)
-			new_x = min (self.location.right, new_x)
-			new_y = max (self.location.top, new_y)
-			new_y = min (self.location.bottom, new_y)
-			tup = int(new_x), int(new_y)
-			return tup
+		new_x += self.location_center.x
+		new_y += self.location_center.y
+		#some points may get out of range
+		new_x = max (self.location.left, new_x)
+		new_x = min (self.location.right, new_x)
+		new_y = max (self.location.top, new_y)
+		new_y = min (self.location.bottom, new_y)
+		tup = int(new_x), int(new_y)
+		return tup
 
 	def _get_world_to_minimap_ratio(self):
 		world_height = self.world.map_dimensions.height
@@ -357,7 +373,7 @@ class _MinimapImage(object):
 		# reload
 		self.imagemanager.reload( self.image_file_path )
 		self.image = self.imagemanager.get( self.image_file_path )
-		
+
 	def set_drawing_enabled(self):
 		self.targetrenderer.setRenderTarget( self.image_file_path, False, 0 )
 
