@@ -74,7 +74,18 @@ class IngameGui(LivingObject):
 
 		cityinfo = self.widgets['city_info']
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
-		cityinfo.position_technique = "center-10:top+5"
+		width = horizons.main.fife.engine_settings.getScreenWidth()
+		x = 'center'
+		y = 'top'
+		x_offset = -10
+		y_offset = +4
+		if width < 800:
+			x = 'left'
+			x_offset = 10
+			y_offset = +66
+		elif width < 1020:
+			x_offset = (1000 - width) / 2
+		cityinfo.position_technique = "%s%+d:%s%+d" % (x, x_offset, y, y_offset) # usually "center-10:top+4"
 
 		self.logbook = LogBook(self.session)
 		self.players_overview = PlayersOverview(self.session)
