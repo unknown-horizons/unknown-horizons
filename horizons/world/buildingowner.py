@@ -21,7 +21,7 @@
 
 
 from horizons.world.providerhandler import ProviderHandler
-from horizons.util import decorators
+from horizons.util import decorators, Point
 from horizons.util.shapes.radiusshape import RadiusShape
 
 """
@@ -64,6 +64,45 @@ class BuildingOwner(object):
 		self.buildings.remove(building)
 		assert building not in self.buildings
 
+	def get_settlements(self, rect, player = None):
+		"""Returns the list of settlements for the coordinates describing a rect.
+		@param rect: Area to search for settlements
+		@return: list of Settlement instances at that position."""
+		settlements = set()
+		for point in rect:
+			try:
+				if player is None or self.get_tile(point).settlement.owner == player:
+					settlements.add( self.get_tile(point).settlement )
+			except AttributeError:
+				# some tiles don't have settlements, we don't explicitly check for them cause
+				# its faster this way.
+				pass
+		settlements.discard(None) # None values might have been added, we don't want them
+		return list(settlements)
+
+	def get_building(self, point):
+		"""Returns the building at the point
+		@param point: position of the tile to look on
+		@return: Building class instance or None if none is found.
+		"""
+		try:
+			return self.get_tile(point).object
+		except AttributeError:
+			return None
+
+	def get_settlement(self, point):
+		"""Look for a settlement at a specific coordinate
+		@return: Settlement at point, or None"""
+		try:
+			return self.get_tile(point).settlement
+			# some tiles might be none, so we have to catch that error here
+		except AttributeError:
+			return None
+
+	def get_tile(self, point):
+		"""Returns the tile at Point or None"""
+		assert isinstance(point, Point)
+		raise NotImplementedError
 
 	@decorators.make_constants()
 	def get_providers_in_range(self, radiusshape, res=None, reslist=None, player=None):
