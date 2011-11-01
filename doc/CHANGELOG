@@ -4,7 +4,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-??-??: Milestone 2011.3
-changelog date: SEP 04; rev: 7fe337c27cd3411ef90ddb2136f364c4d5fc199d
+changelog date: SEP 06; rev: 508268b13f31bca06e12d143fd270e917d5cf0d6
 
 Gameplay and Balancing
 * New features
@@ -15,7 +15,9 @@ Gameplay and Balancing
    + player score widget, accessed through F2
    + player settlement overview, accessed through F3
    + player ship list, accessed through F4
-   + 
+   + allow/deny inhabitant upgrades 
+   + show hint when user tries to build something without a settlement
+
 * Modifications and changes
    # unload all resources in ship inventory when a new settlement gets founded
    # rename market place to main square
@@ -67,7 +69,8 @@ User Interface
    # use templates for different boxes in singleplayer menu
    # removed need for adjust_black_background
    # slim minimap images, icon positioning in minimap panel
-   # 
+   # remove the main square overview tab
+   #
 * Fixed bugs and usability problems
    ~ boxes in settings expanded for some languages, buttons were unreachable
    ~ in-game ui appeared around the main menu under certain conditions
@@ -90,7 +93,9 @@ Codebase
    + dev script to generate a gfx overview website
    + unified statistics widget
    + 'noi18n' name for widgets that are not planned to be translated
-   + 
+   + speech implementation
+   +
+
 * Modified structures
    # deselect instances before removal
    # use %APPDATA%\unknown-horizons as user dir on windows

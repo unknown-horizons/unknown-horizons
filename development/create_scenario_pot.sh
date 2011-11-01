@@ -77,11 +77,13 @@ if [ "x$2" = x ]; then
 fi
 
 # Create .mo files and extract the translations using gettext.
+echo
+echo "Compiling these translations for $1:"
 for path in "$2"/*.po; do
     lang=`basename "$path" | sed "s,$1-,,;s,.po,,"`
     mo=po/mo/$lang/LC_MESSAGES
-    echo $lang:
-    mkdir -p $mo && msgfmt --statistics $path -o $mo/$1.mo
+    R='s,:,,g;s,.po,,g;s,alencia,,g;s,(po_temp_tutorial//|messages|translations),\t,g;s/[.,]//g'
+    mkdir -p $mo && msgfmt --statistics $path -o $mo/$1.mo --check-format -v 2>&1 |perl -npe "$R"
 
     python2 << END > content/scenarios/$1_$lang.yaml
 import yaml

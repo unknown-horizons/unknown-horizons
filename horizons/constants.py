@@ -26,7 +26,7 @@ import os.path
 import re
 import locale
 
-from ext.enum import Enum
+from horizons.ext.enum import Enum
 
 """This file keeps track of the constants that are used in Unknown Horizons.
 NOTE: Using magic constants in code is generally a bad style, so avoid where
@@ -120,6 +120,9 @@ class BUILDINGS:
 	TAVERN_CLASS = 32
 	FISH_DEPOSIT_CLASS = 33
 	MOUNTAIN_CLASS = 34
+	SALT_PONDS_CLASS = 35
+	TOBACCO_FIELD_CLASS = 36
+	TOBACCONIST_CLASS = 37
 
 	TRANSPARENCY_VALUE = 180
 
@@ -163,6 +166,10 @@ class RES:
 	RAW_IRON_ID = 24
 	GET_TOGETHER_ID = 27
 	FISH_ID = 28
+	SALT_ID = 29
+	TOBACCO_PLANTS_ID = 30
+	TOBACCO_LEAVES_ID = 31
+	TOBACCO_PRODUCTS_ID = 32
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
@@ -294,6 +301,7 @@ class WILD_ANIMAL:
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
 	DEFAULT_WAIT_TICKS = 32 # how long collectors wait before again looking for a job
+	DEFAULT_STORAGE_SIZE = 8
 	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for calculating how busy a collector is
 
 class STORAGE:
@@ -339,11 +347,12 @@ class PATHS:
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
+	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
 	DB_FILES = tuple(os.path.join("content", i) for i in \
-	                 ("game.sql", "balance.sql") )
+	                 ("game.sql", "balance.sql", "atlas.sql") )
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 
@@ -360,7 +369,7 @@ class MULTIPLAYER:
 
 class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
-	SERVER_PORT = 2001
+	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
 
 ## TRANSLATIONS

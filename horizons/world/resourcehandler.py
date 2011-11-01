@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import WeakList
 from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production

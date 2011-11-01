@@ -20,17 +20,14 @@
 # ###################################################
 
 import weakref
-from fife import fife
 
-import horizons.main
 
 from horizons.world.pathfinding.pather import SoldierPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle
 from unit import Unit
-from horizons.constants import LAYERS, GAME_SPEED, WEAPONS
-from horizons.scheduler import Scheduler
+from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.gui.tabs import GroundUnitOverviewTab, EnemyShipOverviewTab
@@ -80,7 +77,7 @@ class GroundUnit(Unit):
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		self.draw_health()
 		if reset_cam:
-			self.session.view.set_location(self.position.to_tuple())
+			self.session.view.center(*self.position.to_tuple())
 		self.session.view.add_change_listener(self.draw_health)
 
 	def deselect(self):

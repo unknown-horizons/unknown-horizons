@@ -28,3 +28,5 @@ class Chat(Command):
 	def __call__(self, issuer):
 		msg = unicode(issuer.name) + u": " + self.message
 		issuer.session.ingame_gui.message_widget.add_custom(None, None, msg)
+
+Command.allow_network(Chat)

@@ -47,6 +47,7 @@ class Unit(AmbientSound, MovingObject):
 		self.InstanceActionListener = Tmp()
 		self.InstanceActionListener.onInstanceActionFinished = \
 				WeakMethod(self.onInstanceActionFinished)
+		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
 		if self._object is None:
 			self.__class__._loadObject()
@@ -67,6 +68,7 @@ class Unit(AmbientSound, MovingObject):
 			self.owner.remove_unit(self)
 		self._instance.removeActionListener(self.InstanceActionListener)
 		super(Unit, self).remove()
+		self.log.debug("Unit.remove finished")
 
 	def onInstanceActionFinished(self, instance, action):
 		"""
@@ -95,28 +97,28 @@ class Unit(AmbientSound, MovingObject):
 		height = int(5 * zoom)
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
-		mid_node_up = fife.GenericRendererNode(self._instance, \
+		mid_node_up = fife.RendererNode(self._instance, \
 									fife.Point(-width/2+int(((health/max_health)*width)),\
 		                                       y_pos-height)
 		                            )
-		mid_node_down = fife.GenericRendererNode(self._instance, \
+		mid_node_down = fife.RendererNode(self._instance, \
 		                                         fife.Point(
 		                                             -width/2+int(((health/max_health)*width))
 		                                             ,y_pos)
 		                                         )
 		if health != 0:
 			renderer.addQuad("health_" + str(self.worldid), \
-			                fife.GenericRendererNode(self._instance, \
+			                fife.RendererNode(self._instance, \
 			                                         fife.Point(-width/2, y_pos-height)), \
-			                mid_node_up, \
+			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)), \
 			                mid_node_down, \
-			                fife.GenericRendererNode(self._instance, fife.Point(-width/2, y_pos)), \
+			                mid_node_up, \
 			                0, 255, 0)
 		if health != max_health:
-			renderer.addQuad("health_" + str(self.worldid), mid_node_up, \
-			                 fife.GenericRendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
-			                 fife.GenericRendererNode(self._instance, fife.Point(width/2, y_pos)), \
-			                 mid_node_down, 255, 0, 0)
+			renderer.addQuad("health_" + str(self.worldid), fife.RendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
+			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)), \
+			                 mid_node_down, \
+			                 mid_node_up, 255, 0, 0)
 
 	def hide(self):
 		"""Hides the unit."""

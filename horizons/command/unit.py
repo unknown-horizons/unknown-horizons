@@ -19,17 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
-
 from horizons.entities import Entities
 from horizons.util import WorldObject
 from horizons.command import GenericCommand, Command
+from horizons.util.worldobject import WorldObjectNotFound
 
 class GenericUnitCommand(GenericCommand):
 	"""Same as GenericCommand, but checks if issuer == owner in __call__"""
 	def __call__(self, issuer):
-		if self._get_object().owner.worldid != issuer.worldid:
+		try:
+			unit = self._get_object()
+		except WorldObjectNotFound, e:
+			self.log.warn("Tried to call a unit command on an inexistent unit. It could have been killed: %s", e)
 			return
+		if unit.owner.worldid != issuer.worldid:
+			return # don't move enemy units
 		else:
 			return super(GenericUnitCommand, self).__call__(issuer)
 
@@ -41,16 +45,24 @@ class Act(GenericUnitCommand):
 	def __init__(self, unit, x, y):
 		super(Act, self).__init__(unit, "go", x, y)
 
+GenericCommand.allow_network(Act)
+
 class Attack(GenericUnitCommand):
 	"""Command class that triggers attack
 	@param unit: Instance of Unit
 	@param target: Instance of Target
 	"""
 	def __init__(self, unit, target):
-		super(Attack, self).__init__(unit, "user_attack", target)
+		super(Attack, self).__init__(unit, "user_attack", target.worldid)
+
+GenericCommand.allow_network(Attack)
 
 class CreateUnit(Command):
 	"""Command class that creates a unit.
+	TODO: remove this command and put the code in a method in e.g. world.
+	Commands are there for user interactions, and there is no user interaction, that creates a unit
+	You always only add a production that creates then units, but that is simulated on every machine
+
 	"""
 	def __init__(self, owner_id, unit_id, x, y, **kwargs):
 		"""
@@ -72,3 +84,5 @@ class CreateUnit(Command):
 		owner = WorldObject.get_object_by_id(self.owner_id)
 		return Entities.units[self.unit_id](session=owner.session, owner=owner, \
 		                                    x=self.x, y=self.y, **self.kwargs)
+
+GenericCommand.allow_network(CreateUnit)

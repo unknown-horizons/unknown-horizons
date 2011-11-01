@@ -117,5 +117,6 @@ class SpecialDomesticTrade(ShipMission):
 	def _reached_destination_settlement(self):
 		self._unload_all_resources(self.destination_settlement_manager.settlement)
 		self.log.info('%s reached the destination branch office area (%s)', self, self.destination_settlement_manager.settlement.name)
+		self.report_success('Unloaded resources')
 
 decorators.bind_all(SpecialDomesticTrade)

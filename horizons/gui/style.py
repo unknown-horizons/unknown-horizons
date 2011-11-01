@@ -76,10 +76,6 @@ STYLES= {
 			'background_color' : fife.Color(40, 40, 40, 0),
 			'font' : 'libertine_14_black',
 		},
-		'ClickLabel' : {
-			'border_size': 0,
-			'font' : 'libertine_small_black',
-		},
 		'Window' : {
 			'border_size': 1,
 			'margins': (10, 10),

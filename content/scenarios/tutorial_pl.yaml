@@ -1,0 +1,675 @@
+
+# DON'T EDIT THIS FILE.
+
+# It was automatically generated with development/create_scenario_pot.sh using
+# translation files from pootle.
+
+author: "Zesp\xF3\u0142 UH "
+description: "Samouczek:\nZbuduj swoj\u0105 pierwsz\u0105 osad\u0119 i naucz si\u0119\
+  \ jak gra\u0107!\n"
+difficulty: !!python/unicode 'Samouczek'
+events:
+- actions:
+  - arguments: ["Wybuduj port na wybrze\u017Cu, tak aby inne statki mia\u0142y do\
+        \ niego dost\u0119p, np. Kupcy."]
+    type: message
+  - arguments: [!!python/unicode 'Witaj w Unknown Horizons!', "To tw\xF3j Dziennik\
+        \ Pok\u0142adowy, gdzie przechowywane s\u0105 wszystkie wa\u017Cne informacje.\
+        \ Informacja o ka\u017Cdym nowym zadaniu b\u0119dzie pojawia\u0107 si\u0119\
+        \ po lewej stronie ekranu.\n\nJe\u015Bli jeste\u015B zainteresowany d\u0142\
+        u\u017Cszymi opisami, tw\xF3j Dziennik Pok\u0142adowy Ci w tym pomo\u017C\
+        e.\n\nPo zamkni\u0119ciu Dziennika Pok\u0142adowego, mo\u017Cna go ponownie\
+        \ otworzy\u0107 przy pomocy ikony 'Dziennik Pok\u0142adowy' w prawym g\xF3\
+        rnym rogu (pod mini-map\u0105, z zapiecz\u0119towanym dokumentem i pi\xF3\
+        rem).\n\nJe\u015Bli masz jakie\u015B sugestie na temat lepszych sformu\u0142\
+        owa\u0144, niewyja\u015Bnionych kwestii lub nawet problem\xF3w z gr\u0105\
+        : Prosimy, powiedz nam o tym, a my postaramy si\u0119 ulepszy\u0107 Samouczek!\n\
+        \nOdwied\u017A www.unknown-horizons.org by uzyska\u0107 pomoc oraz by skontaktowa\u0107\
+        \ si\u0119 z zespo\u0142em!\n\nTeraz przejd\u017Amy do w\u0142a\u015Bciwej\
+        \ gry."]
+    type: logbook_w
+  - arguments: ["Nowe zadanie: Osiedl si\u0119 na wyspie", "Aby poruszy\u0107 si\u0119\
+        \ swoim statkiem, kliknij na niego lewym przyciskiem myszy a nast\u0119pnie\
+        \ prawym przyciskiem myszy wybierz miejsce docelowe.\n\nJak tylko zbli\u017C\
+        ysz si\u0119 do wybrze\u017Ca, przycisk 'Buduj port' zostanie automatycznie\
+        \ aktywowany.\n\nZa pomoc\u0105 niego b\u0119dziesz m\xF3g\u0142 wybudowa\u0107\
+        \ sw\xF3j port.na danej wyspie.\n\nAby wybra\u0107 miejsce dla portu kliknij\
+        \ przycisk 'Buduj port' z zak\u0142adki pogl\u0105du statku a nast\u0119pnie\
+        \ wybierz miejsce gdzie chcia\u0142by\u015B go zlokalizow\u0105\u0107.\n\n\
+        Mo\u017Cesz wybra\u0107 dowolne miejsce na kt\xF3rym podgl\u0105d budynku\
+        \ nie jest pod\u015Bwietlony na czerwono.Kliknij aby go postawi\u0107.\n\n\
+        Zadanie: Wybuduj port na wybrze\u017Cu.", 2]
+    type: logbook
+  - arguments: [tutStepDone, 16]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: time_passed
+- actions:
+  - arguments: ["Nowe zadanie: Wybuduj chat\u0119 drwala", "Materia\u0142y budowlane\
+        \ z pok\u0142adu twojego statku zosta\u0142y automatycznie roz\u0142adowane.\
+        \ Mo\u017Cesz teraz wybudowa\u0107 podstawowe budynki.\n\nRozpoczenimy budow\u0119\
+        \ od chaty drwala.\n\nNa tym etapie gry jest to bardzo wa\u017Cne z racji\
+        \ tego i\u017C deski produkowane przez drwala s\u0105 niezb\u0119dne twoim\
+        \ \u017Ceglarz\u0105 do postawienia namiot\xF3w.\n\nTak\u017Ce rybacy potrzebuj\u0105\
+        \ deski aby wybudowa\u0107 \u0142odzie rybackie i pozyska\u0107 \u017Cywno\u015B\
+        \u0107 dla osadnik\xF3w.\n\nAby wybudowa\u0107 chat\u0119 drwala: otw\xF3\
+        rz menu budowania, poprzez klikni\u0119cie du\u017Cej ikony pod mini map\u0105\
+        \ lub wci\u015Bnij klawisz 'B'.\n\nWszystkie konstrukcje s\u0105 posortowane\
+        \ wed\u0142ug etap\xF3w rozwoju twoich osadnik\xF3w.\nW tym momencie jeste\u015B\
+        \ na pierwszy z etap\xF3w (poziom \u017Beglarzy) dlatego masz dost\u0119p\
+        \ tylko do podstawowych budynk\xF3w."]
+    type: logbook_w
+  - arguments: ['', "Wraz z rozwojem cywilizacji, zdob\u0119dziesz dost\u0119p do\
+        \ coraz to bardziej zaawansowanych budowli.\n\nNarazie zaznacz chat\u0119\
+        \ drwala z kategori 'Przemys\u0142 i rolnictwo' i wybuduj j\u0105 w rejonie\
+        \ drzew.\n\nMasz mo\u017Cliwo\u015B\u0107 tak\u017Ce sadzenia drzew - ale\
+        \ to kosztuje, narazie skorzysta\u0107 z tego co nautra daje!\n\nAby wykorzysta\u0107\
+        \ wszystkie dobra kt\xF3re zosta\u0142y zebrane/wyprodukowane w danym miejscu\
+        \ musisz po\u0142\u0105czy\u0107 je drog\u0105 z reszta infrastruktury w twoiej\
+        \ osadzie. Inaczej nie b\u0119d\u0105 brane pod uwag\u0119.\nOznacza to i\u017C\
+        \ musisz postawi\u0107 drog\u0119 pomi\u0119dzy portem (lub magazynem) i chat\u0105\
+        \ drwala.\n\nZadanie: Wybuduj chat\u0119 drwala w lesie i po\u0142\u0105cz\
+        \ j\u0105 z drog\u0105.\n\nObserwuj jak pomocnik odbiera od drwala Twoje pierwsze\
+        \ wyprodukowane deski."]
+    type: logbook
+  - arguments: ["Wybuduj chat\u0119 drwala i po\u0142\u0105cz j\u0105 drog\u0105 z\
+        \ portem."]
+    type: message
+  - arguments: [tutStepDone, 19]
+    type: set_var
+  conditions:
+  - arguments: [4, 9]
+    type: settlement_res_stored_greater
+  - arguments: [5, 9]
+    type: settlement_res_stored_greater
+  - arguments: [6, 9]
+    type: settlement_res_stored_greater
+  - arguments: [tutStepDone, 15]
+    type: var_gt
+  - arguments: [tutStepDone, 19]
+    type: var_lt
+- actions:
+  - arguments: ["Nowe Zadanie: Zaopatrzenie w \u017Cywno\u015B\u0107", "Przysz\u0142\
+        a kolej na \u017Cywno\u015B\u0107, aby ludzie (a wszczeg\xF3lno\u015Bci \u017C\
+        eglarze) nie chodzili g\u0142odni.\n\nNa pierwszym etapie rozwoju dost\u0119\
+        pn\u0119 s\u0105 dwa rodzaje budynk\xF3w kt\xF3re produkuj\u0105 \u017Cywno\u015B\
+        \u0107: Rybak i My\u015Bliwy.\n\nMy\u015Bliwy, poluje na le\u015Bne zwierz\u0119\
+        ta dlatego najlepiej zlokalizowa\u0107 go w pobli\u017Cu lasu.\n\nZauwa\u017C\
+        \ \u017Ce mo\u017Cesz my\u015Bliwego zlokalizowa\u0107 blisko chaty drwala\
+        \ gdzie b\u0119dziesz mia\u0142 pewno\u015B\u0107 \u017Ce oboje b\u0119d\u0105\
+        \ mieli dost\u0119p do lasu.\n\nMo\u017Ce si\u0119 tak zda\u017Cy\u0107 \u017C\
+        e le\u015Bne zwierz\u0119ta nie b\u0119d\u0105 si\u0119 tak szybko rozmna\u017C\
+        a\u0107 albo b\u0119d\u0105 bardzo dobrze si\u0119 chowa\u0142y.\n\nWniosek:\
+        \ Aby zapewni\u0107 sta\u0142y dost\u0119p do \u017Cywno\u015Bci nie mo\u017C\
+        esz oprze\u0107 si\u0119 tylko na my\u015Bliwym."]
+    type: logbook_w
+  - arguments: ['', "Rybak wymaga dost\u0119pu do otwartych w\xF3d a tak\u017C\u0119\
+        \ do \u0142awicy ryb w zasi\u0119gu.\n\nPo usytuowaniu chatki rybaka na wyb\u017C\
+        erzu wybuduje on sobie \u0142\xF3d\u017A ryback\u0105 i zacznie \u0142owi\u0107\
+        \ ryby.\n\nJest to bardzo dobre \u017Ar\xF3d\u0142o \u017Cywno\u015Bci kt\xF3\
+        re wystarcza na bardzo d\u0142ugo.\n\nTaka ma\u0142a osada jak twoja mo\u017C\
+        e wykorzysta\u0107 oba sposoby pozyskiwania \u017Cywno\u015Bci i zbalansowa\u0107\
+        \ je odpowiednio zgodnie z ich wadami i zaletami.\n\nNie zapomnij po\u0142\
+        \u0105czy\u0107 ich drog\u0105 ze swoim portem!"]
+    type: logbook
+  - arguments: ["Wybuduj chat\u0119 my\u015Bliwego i rybaka. Po\u0142\u0105cz je drog\u0105\
+        \ z portem."]
+    type: message
+  - arguments: [tutStepDone, 22]
+    type: set_var
+  conditions:
+  - arguments: [8, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [tutStepDone, 18]
+    type: var_gt
+  - arguments: [tutStepDone, 22]
+    type: var_lt
+- actions:
+  - arguments: ["Now Zadanie: Rynek g\u0142\xF3wny", "Twoi osadnicy potrzebuj\u0105\
+        \ rynku g\u0142\xF3wnego na kt\xF3rym b\u0119d\u0105 mogli dosta\u0107 wszystkie\
+        \ niezb\u0119dne im towary.\n\nOznacza to i\u017C potrzebuj\u0105 oni bezpo\u015B\
+        redniego po\u0142\u0105czenia z domu na rynek g\u0142\xF3wny.\n\nWszystkie\
+        \ dobra kt\xF3re posiadasz b\u0119d\u0105 dost\u0119pne na rynku, dzi\u0119\
+        ki temu twoi osadnicy nie s\u0105 zmuszeni chodzi\u0107 bezpo\u015Brednio\
+        \ do rybaka czy do portu.\n\nMusisz odpowiednio rozplanowa\u0107 rozlo\u017C\
+        enie poszczeg\xF3lnych dom\xF3w osadnik\xF3w na terenie kt\xF3ry w p\xF3\u017A\
+        niejszym czasie b\u0119dziesz m\xF3g\u0142 rozbudowywa\u0107 i zapewni\u0107\
+        \ odpowiednie doj\u015Bcie drog\u0105.\n\nPowiniene\u015B przestrzec si\u0119\
+        \ od stawiania budynk\xF3w w pobli\u017Cu chaty drwala i my\u015Bliwego z\
+        \ racji tego i\u017C stawiaj\u0105c budynek niszczysz las co za tym idzie\
+        \ odbierasz schornienie zwierz\u0119t\u0105 i materia\u0142 dla drwala.\n\n\
+        Zadanie: Wybuduj rynek g\u0142\xF3wny."]
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
+
+
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
+
+
+        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
+        later on.
+
+
+        If your balance is positive, you all-in-all make a profit.
+
+
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
+    type: logbook
+  - arguments: ["Wybuduj rynek gl\xF3wny. Wybierz obszar bez du\u017Cej ilo\u015B\
+        ci budynk\xF3w produkcyjnych."]
+    type: message
+  - arguments: [tutStepDone, 25]
+    type: set_var
+  conditions:
+  - arguments: [9, 0]
+    type: building_num_of_type_greater
+  - arguments: [11, 0]
+    type: building_num_of_type_greater
+  - arguments: [9, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [11, 0]
+    type: buildings_connected_to_branch_gt
+  - arguments: [tutStepDone, 21]
+    type: var_gt
+  - arguments: [tutStepDone, 25]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'Nowe Zadanie: Budynki mieszkalne', "Osadnicy potrzebuj\u0105\
+        \ dachu nad g\u0142ow\u0105, w przeciwnym razie nie b\u0119d\u0105 nawet my\u015B\
+        le\u0107 o tym aby si\u0119 osiedli\u0107 w twoim mie\u015Bcie. Musisz im\
+        \ je dostarczy\u0107.\n\nNamioty s\u0105 podstawow\u0105 wersj\u0119 budynku\
+        \ mieszkalnego. Mieszka\u0144cy unowocze\u015Bni\u0105 je jak tylko osi\u0105\
+        gn\u0105 wy\u017Cszy poziom rozwoju.\n\nOsadnicy mog\u0105 nie by\u0107 zbytnio\
+        \ pomocni w tym momencie poniewa\u017C wi\u0119kszo\u015Bc swojego czasu po\u015B\
+        wi\u0119caj\u0105 na konsumpcji d\xF3br kt\xF3re wyprodukujesz, jednocze\u015B\
+        nie p\u0142ac\u0105 podatki a to narazie jedyny spos\xF3b aby zarobi\u0107\
+        \ pieni\u0105dze.\n\nZadanie: Postaw namioty i po\u0142\u0105cz je drogami\
+        \ z rynkiem."]
+    type: logbook
+  - arguments: ["Postaw namioty i po\u0142\u0105cz je drog\u0105 z rynkiem g\u0142\
+        \xF3wnym."]
+    type: message
+  - arguments: [tutStepDone, 28]
+    type: set_var
+  conditions:
+  - arguments: [4, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 24]
+    type: var_gt
+  - arguments: [tutStepDone, 28]
+    type: var_lt
+- actions:
+  - arguments: ['', "Sp\xF3jrzmy teraz na zak\u0142adk\u0119 podgl\u0105du namiotu.\n\
+        Dost\u0119pne s\u0105:\n* zadowolenie mieszka\u0144c\xF3w\n* wysoko\u015B\u0107\
+        \ p\u0142aconych podatk\xF3w* potrzebne zasoby\n\nJe\u017Celi ich potrzeby\
+        \ s\u0105 zaspokojone, poziom zadowolenia oraz wp\u0142ywy z podatk\xF3w rosn\u0105\
+        .\n\nJe\u017Celi nie, poziom zadowolenia oraz wp\u0142ywy z podatk\xF3w spadaj\u0105\
+        . Je\u017Celi poziom zadowolenia spadnie zbyt nisko, mieszka\u0144cy mog\u0105\
+        \ naprawd\u0119 si\u0119 wkurzy\u0107 i poprostu op\xF3\u015Bci\u0107 twoj\u0105\
+        \ osad\u0119, zabieraj\u0105\u0107 ze sob\u0105 ca\u0142y sw\xF3j dorobek\
+        \ i pozostawiaj\u0105c na miejscu mieszkania ruiny.\n\nZauwa\u017C \u017C\
+        e mo\u017Cesz na tym widoku zmienia\u0107 wysoko\u015B\u0107 globalnej stawki\
+        \ podatku.\n\nZadanie: Postaw conajmniej trzy dodatkowe namioty.\n\nWskaz\xF3\
+        wka: Przytrzymuj\u0105c klawisz SHIFT \u0142atwiej postawi\u0107 kilka kontrukcji\
+        \ tego samego typu."]
+    type: logbook
+  - arguments: ["Postaw conajmniej trzy dodatkowe namioty i po\u0142\u0105cz je drog\u0105\
+        \ z rynkiem g\u0142\xF3wnyn."]
+    type: message
+  - arguments: [tutStepDone, 31]
+    type: set_var
+  conditions:
+  - arguments: [3, 4, 0]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 27]
+    type: var_gt
+  - arguments: [tutStepDone, 31]
+    type: var_lt
+- actions:
+  - arguments: ["Nowe Zadanie: Wybuduj sygna\u0142 \u015Bwietlny", "Jak pewnie zauwa\u017C\
+        y\u0142e\u015B, od czasu do czasu Twoj\u0105 ko\u0142o Twojego portu przep\u0142\
+        ywaj\u0105 r\xF3\u017Cne statki. Te statki to kupcy, Jedni z pierwszych \u017C\
+        eglarzy na tym archipelagu.\n\nKupcy s\u0105 wstanie dostarczy\u0107 r\xF3\
+        \u017Cnego rodzaju dobra kt\xF3rych nie jeste\u015B w stanie wyprodukowa\u0107\
+        .\nMo\u017Cesz tak\u017Ce sprzeda\u0107 im nadmiar swoich zasob\xF3w w celu\
+        \ zarobkowym, jednak nadmiarowe dobra lepiej skonsumowa\u0107 ( poprzez postawienie\
+        \ wi\u0119kszej ilo\u015Bci namiot\xF3w ) i czerpa\u0107 wi\u0119ksze korzy\u015B\
+        ci z podatk\xF3w.\n\nNormalnie kupcy p\u0142ywaj\u0105 i poszukuj\u0119 mo\u017C\
+        liwo\u015Bci handlu, jednak mo\u017Cesz sprawi\u0107 aby szybciej do Ciebie\
+        \ trafili.\n\nW tym celu postaw sygna\u0142 \u015Bwietlny w postaci du\u017C\
+        ego ogniaska przy swoim porcie. Pozwoli to wskaza\u0107 przep\u0142ywaj\u0105\
+        cym drog\u0119 do Twojej osady.\n\nSygna\u0142 \u015Bwietlny musi pokry\u0107\
+        \ obszar kt\xF3rym przep\u0142ywaj\u0105 statki aby nakierowa\u0107 ich na\
+        \ Twoj\u0105 osad\u0119."]
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
+    type: logbook
+  - arguments: ["Wybuduj latarnie na wybrze\u017Cu w pobli\u017Cu swojego portu."]
+    type: message
+  - arguments: [tutStepDone, 34]
+    type: set_var
+  conditions:
+  - arguments: [3, 4, 3]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 30]
+    type: var_gt
+  - arguments: [tutStepDone, 34]
+    type: var_lt
+- actions:
+  - arguments: ["Nowe Zadanie: Naucz si\u0119 handlowa\u0107", !!python/unicode "Excellent!\
+        \ The Free Trader will now stop by at your branch office from time to time.\n\
+        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
+        \ type of good, the green bar across the bottom of the slot (if visible) shows\
+        \ you how much you have in stock of this good.\n\nDragging the slider on the\
+        \ right of each slot determines your 'target value' which has a different\
+        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
+        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
+        \ which you hold in reserve to not sell"]
+    type: logbook_w
+  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
+        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
+        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
+        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
+        \ however only wants to buy or sell less than your settings would allow him,\
+        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
+        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
+        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
+        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
+        \ as you need to have 30 tools in stock!"]
+    type: logbook
+  - arguments: ["Zdob\u0105d\u017A co najmniej 30 sztuk narz\u0119dzi. "]
+    type: message
+  - arguments: [tutStepDone, 37]
+    type: set_var
+  conditions:
+  - arguments: [6, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 33]
+    type: var_gt
+  - arguments: [tutStepDone, 37]
+    type: var_lt
+- actions:
+  - arguments: ["Nowe Zadanie: Wybuduj kaplic\u0119", "Obecna ilo\u015B\u0107 narz\u0119\
+        dzi b\u0119dzie wystarczaj\u0105ca na t\u0105 chwil\u0119. Bardzo dobrze!\n\
+        \nObecnie dostarczy\u0142e\u015B dach nad g\u0142ow\u0105, rynek g\u0142\xF3\
+        wny, a tak\u017Ce wy\u017Cywienie dla swoich mieszka\u0144c\xF3w.\n\nJednak\
+        \ wszystkie te rzeczy nie wype\u0142niaj\u0105 w pe\u0142ni potrzeb mieszka\u0144\
+        c\xF3w, mo\u017Cesz sprawdzi\u0107 czego jeszcze potrzebuj\u0105 w zak\u0142\
+        adce 'Podgl\u0105d Osadnika' lub bezpo\u015Bredni poprzez podejrzenie jakiego\u015B\
+        \ namiotu - Twoi \u017Ceglarze chc\u0105 budynku w kt\xF3rym mogli by si\u0119\
+        \ modli\u0107.\n\nRozwi\u0105zaniem tego problemu jest postawienie kaplicy\
+        \ w kt\xF3rej osadnicy mogli by si\u0119 schroni\u0107 i pomodli\u0107. \n\
+        \nJak ka\u017Cdy budynek musi zosta\u0107 on po\u0142\u0105czony drog\u0105\
+        \ z namiotami osadnik\xF3w tak aby mieli oni do niego bezproblemowy dost\u0119\
+        p.\n\nNa nast\u0119pnych poziomach rozwoju b\u0119dziesz mia\u0142 mo\u017C\
+        liwo\u015B\u0107 postawienia wi\u0119kszych i lepszych bydnk\xF3w spe\u0142\
+        niaj\u0105cych te same funkcj\u0119."]
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
+
+
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
+
+
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
+
+
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
+    type: logbook
+  - arguments: ["Wybuduj kaplic\u0119 i po\u0142\u0105cz j\u0105 drog\u0105 z namiotami."]
+    type: message
+  - arguments: [tutStepDone, 40]
+    type: set_var
+  conditions:
+  - arguments: [6, 29]
+    type: settlement_res_stored_greater
+  - arguments: [tutStepDone, 36]
+    type: var_gt
+  - arguments: [tutStepDone, 40]
+    type: var_lt
+- actions:
+  - arguments: ["Nowe Zadanie: Nast\u0119pny poziom", "Wszystkie potrzeby mieszka\u0144\
+        c\xF3w zosta\u0142y zaspokojone. Obecnie maj\u0105 oni mo\u017Cliwo\u015B\u0107\
+        \ odwiedzania rynku g\u0142\xF3wnego, kaplicy a tak\u017Ce zapas \u017Cywno\u015B\
+        ci jest wystarczaj\u0105cy."]
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'Such residential upgrades are the only ones
+        which cost resources and can not be restricted by you.
+
+
+        There are manual upgrades to some buildings where you use resources to construct
+        a better version on the same spot, and there are upgrades without costs for
+        example as you will see with the lumberjack (In this case, only the graphics
+        change).
+
+
+        Upgraded housing accomodates more inhabitants, and pioneers pay more taxes
+        than sailors, too.
+
+
+        As you may have figured out already, the downside is that pioneers demand
+        additional goods which sailors do not need - so you will need to spend this
+        extra money to make them happy as well.
+
+
+        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+    type: logbook
+  - arguments: [!!python/unicode 'Set the tax level to Low (left end) and wait for
+        your sailors to upgrade.']
+    type: message
+  - arguments: [tutStepDone, 43]
+    type: set_var
+  conditions:
+  - arguments: [3, 5, 3]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutStepDone, 39]
+    type: var_gt
+  - arguments: [tutStepDone, 43]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A FARM', !!python/unicode 'Congratulations!
+        Some of your inhabitants have reached increment II!
+
+
+        Now you have access to new buildings, take a look at the Build menu again.
+
+
+        A shiny new tab appeared there.
+
+
+        Pioneers will demand cloth, so you need to set up a production line for cloth
+        starting with lambs wool (which is one of the goods produced at the farm).
+
+
+        The farm is a very special production building since it can produce not only
+        one, but very many (and different) goods if you choose.
+
+
+        The output of farms depends on what kind of fields you build around it.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
+
+
+        Farms, like all companies producing raw materials, do not necessarily need
+        to be connected to storage or a Branch Office.
+
+
+        As long as units of the final production company can reach the farm, and collectors
+        from the branch office or storage tent can reach the final company everything''s
+        fine.
+
+
+        If you, however, plan to do some processing on different parts of the island
+        (which can make sense) or even on different islands, you will need a connection
+        to collectors.
+
+
+        Try to build the farm not too close to the coast or your existing buildings
+        since it will need some space around it to work well.
+
+
+        TASK: Build a farm.']
+    type: logbook
+  - arguments: [!!python/unicode 'Build a farm and keep some empty space around it.']
+    type: message
+  - arguments: [tutStepDone, 46]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: settler_level_greater
+  - arguments: [tutStepDone, 42]
+    type: var_gt
+  - arguments: [tutStepDone, 46]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD FIELDS', !!python/unicode 'The farm
+        itself is not going to produce anything without some fields.
+
+
+        You currently have the choice between pastures, potato and sugar fields.
+
+
+        Let''s have a short overview:
+
+        * Pasture: Sheep live here, producing lamb wool.
+
+        * Potato field: Grows potatoes which are currently treated as food.
+
+        * Sugar field: Grows sugar which is used to distill liquor and (later) produce
+        confectionery.
+
+
+        We now only need pastures, but in case your food supply chain is too small
+        (maybe many residential buildings) you can also produce some potatoes.
+
+
+        Note that for potatoes you will need a road connection to the farm (not to
+        the field!) as it will be the only company to work on the goods.']
+    type: logbook_w
+  - arguments: ['', "Make sure that all fields you build are in the area covered by\
+        \ the farm.\n\nYou can have combined production - one pasture will not lead\
+        \ to 100 percent efficiency of the farm - but you need to check how many fields\
+        \ one farm can serve.\n\nDifferent classes of fields require the farm units\
+        \ to spend more or less time there (to seed, harvest, herd, etc\u2026) and\
+        \ because of that, the farm may be unable to serve all of the fields you built\
+        \ for it in time.\n\nFor now, you do not need to care about these issues a\
+        \ lot since you haven't built any fields. Let's change that!\n\nTASK: Build\
+        \ at least one pasture in the farm's range and add potato fields if you like."]
+    type: logbook
+  - arguments: [!!python/unicode 'Build at least one pasture and add potato fields
+        if you like.']
+    type: message
+  - arguments: [tutStepDone, 49]
+    type: set_var
+  conditions:
+  - arguments: [20, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 45]
+    type: var_gt
+  - arguments: [tutStepDone, 49]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD STORAGE', !!python/unicode 'Did
+        you watch your lumberjack recently?
+
+
+        Since your branch office does not have unlimited space to store goods, collectors
+        will stop fetching goods from companies when stock is full.
+
+        So if no sailor recently wanted to upgrade his tent, you probably have a lot
+        of boards and in that case, the lumberjack may idle.
+
+        We can improve this situation with two different approaches, and below we
+        will have a look at both of them.
+
+
+        All companies offer the possibility of doing no work at all.
+
+        This may sound strange, but try to click on the gear wheel you see in, for
+        example, a lumberjack''s overview.
+
+
+        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
+        costs you pay for the building will decrease. They won''t be zero, but still
+        lower than if you keep the company producing.']
+    type: logbook_w
+  - arguments: ['', !!python/unicode "This means that you can save money when you\
+        \ temporarily do not need a company and do not want to tear it down, either.\n\
+        \nAnother solution is to build the last increment-I building which has not\
+        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
+        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
+        \ to fetch goods, just like the branch office does.\n\nNote that companies\
+        \ can also be connected to a storage in order to get their products collected,\
+        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
+        \ where you need collectors."]
+    type: logbook
+  - arguments: [!!python/unicode 'Build a storage tent (increment I tab) where it
+        makes sense.']
+    type: message
+  - arguments: [tutStepDone, 52]
+    type: set_var
+  conditions:
+  - arguments: [18, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 48]
+    type: var_gt
+  - arguments: [tutStepDone, 52]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A WEAVER', !!python/unicode 'Now
+        the wool production is set up, you still need a weaver to produce cloth out
+        of this wool.
+
+
+        There are two spots where you can build it - either close to the farm or close
+        to a Storage Tent (or the Branch Office).
+
+
+        In both cases you should ensure the connection to a trail as well.
+
+
+        You can place the weaver close to the farm and tear down any trail to the
+        farm to see that it will still fetch the wool and produce.
+
+
+        TASK: Build a weaver positioned so it can get wool.']
+    type: logbook
+  - arguments: [!!python/unicode 'Build a weaver that can somehow reach the wool of
+        your farm.']
+    type: message
+  - arguments: [tutStepDone, 55]
+    type: set_var
+  conditions:
+  - arguments: [2, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 51]
+    type: var_gt
+  - arguments: [tutStepDone, 55]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
+        city to complete the tutorial. You need a positive balance.']
+    type: message
+  - arguments: [!!python/unicode 'NEW TASK: COMPLETE TUTORIAL', !!python/unicode 'Try
+        to house a total of 50 or more inhabitants in your city by providing more
+        residential buildings.
+
+
+        Once you are able to keep an economy running which can satisfy this amount
+        of consumers, you are ready to discover new Unknown Horizons!
+
+
+        TASK: Reach a total number of 50 inhabitants and a positive balance to complete
+        this tutorial.']
+    type: logbook
+  - arguments: [tutStepDone, 58]
+    type: set_var
+  conditions:
+  - arguments: [3, 0]
+    type: settlement_res_stored_greater
+  - arguments: [7, 0]
+    type: building_num_of_type_greater
+  - arguments: [tutStepDone, 54]
+    type: var_gt
+  - arguments: [tutStepDone, 58]
+    type: var_lt
+- actions:
+  - arguments: [!!python/unicode 'NO TASKS LEFT', !!python/unicode 'There is nothing
+        left to do now.
+
+
+        If you have any suggestions on what we could or should improve, add or leave
+        out:
+
+
+        www.unknown-horizons.org
+
+
+        #unknown-horizons @ irc.freenode.net
+
+
+        team@unknown-horizons.org
+
+
+        Our forums are open to you as well!
+
+
+        The best results until now were achieved by joining our IRC channel, so you
+        could try that out first (-;']
+    type: logbook
+  - arguments: [!!python/unicode 'Thanks!', !!python/unicode '
+
+
+
+
+
+
+
+        Thanks for playing the tutorial!
+
+
+        Your UH-Team']
+    type: logbook
+  - arguments: [tutStepDone, 61]
+    type: set_var
+  conditions:
+  - arguments: [0]
+    type: settlements_num_greater
+  - arguments: [50]
+    type: settlement_inhabitants_greater
+  - arguments: [3, 3]
+    type: building_num_of_type_greater
+  - arguments: [0]
+    type: settler_level_greater
+  - arguments: [0]
+    type: player_balance_greater
+  - arguments: [tutStepDone, 57]
+    type: var_gt
+  - arguments: [tutStepDone, 61]
+    type: var_lt
+- actions:
+  - {type: win}
+  - arguments: [!!python/unicode 'Congratulations! You have reached the end of this
+        tutorial and are ready to meet new challenges!']
+    type: message
+  conditions:
+  - arguments: [tutStepDone, 60]
+    type: var_gt
+locale: pl
+mapfile: development.sqlite
+

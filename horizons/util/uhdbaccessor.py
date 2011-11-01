@@ -21,9 +21,8 @@
 
 from random import randint
 
-from dbreader import DbReader
-
 from horizons.util import decorators
+from horizons.util.dbreader import DbReader
 from horizons.util.gui import get_res_icon
 
 ########################################################################

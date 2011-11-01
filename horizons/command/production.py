@@ -33,8 +33,11 @@ class ToggleActive(GenericCommand):
 		getattr(self._get_object(), self.method)( None if self._production is None else \
 		                                          WorldObject.get_object_by_id(self._production) )
 
+GenericCommand.allow_network(ToggleActive)
 
 class AddProduction(GenericCommand):
 	"""Add a production to a producer"""
 	def __init__(self, obj, production_line_id):
 		super(AddProduction, self).__init__(obj, "add_production_by_id", production_line_id)
+
+GenericCommand.allow_network(AddProduction)

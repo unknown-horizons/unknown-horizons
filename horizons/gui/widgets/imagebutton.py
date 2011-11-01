@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
-
 from horizons.gui.widgets.tooltip import TooltipButton
 
 class OkButton(TooltipButton):

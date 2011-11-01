@@ -41,6 +41,7 @@ class BuildingResourceHandler(ResourceHandler):
 		location = self.load_location(db, worldid)
 		island = location[0]
 		self.__init(island)
+		self._set_running_costs_to_status()
 
 	def remove(self):
 		super(BuildingResourceHandler, self).remove()
@@ -49,6 +50,9 @@ class BuildingResourceHandler(ResourceHandler):
 	def set_active(self, production=None, active=True):
 		super(BuildingResourceHandler, self).set_active(production, active)
 		# set running costs, if activity status has changed.
+		self._set_running_costs_to_status()
+
+	def _set_running_costs_to_status(self):
 		if self.running_costs_active():
 			if not self.is_active():
 				self.toggle_costs()

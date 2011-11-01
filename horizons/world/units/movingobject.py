@@ -22,7 +22,6 @@
 import logging
 from fife import fife
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.pathfinding import PathBlockedError

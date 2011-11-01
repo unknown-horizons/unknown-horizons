@@ -10,8 +10,8 @@ description: "Introduktionen:\nBygg din f\xF6rsta bos\xE4ttning och l\xE4r dig h
 difficulty: !!python/unicode 'Introduktion'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: ["Bygg ett handelskontor vid kusten, s\xE5 det blir l\xE4ttillg\xE4\
+        ngligt f\xF6r andra fartyg exempelvis k\xF6pm\xE4n."]
     type: message
   - arguments: ["V\xE4lkommen till Unknown Horizons!", "Det h\xE4r \xE4r din loggbok\
         \ d\xE4r all viktig information lagras. En kort underr\xE4ttelse av varje\
@@ -43,29 +43,17 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'NY UPPGIFT: BYGG EN SKOGSHUGGARE', !!python/unicode 'The
-        construction material on your ship got unloaded automatically. You can now
-        construct some basic buildings.
-
-
-        We will start with building a lumberjack.
-
-
-        This is essential because, at this stage, boards are the only poles your sailors
-        can afford to hang their tents over.
-
-
-        The fisherman needs some boards to build his vessel as well.
-
-
-        In order to construct lumberjacks; open the build menu by either clicking
-        the big icon below the mini map or pressing B key.
-
-
-        The build menu is sorted by increments.
-
-        You are currently in the first increment (the Sailors level) so are offered
-        only the basic buildings.']
+  - arguments: [!!python/unicode 'NY UPPGIFT: BYGG EN SKOGSHUGGARE', "Byggnadsmaterialet\
+        \ p\xE5 ditt fartyg lastades av automatiskt. Du kan nu bygga n\xE5gra grundl\xE4\
+        ggande byggnader.\n\nVi b\xF6rjar med att bygga en skogshuggare.\n\nDetta\
+        \ \xE4r viktigt, f\xF6r i detta skede \xE4r plankor de enda p\xE5lar dina\
+        \ sj\xF6m\xE4n har r\xE5d att h\xE4nga sina t\xE4lt \xF6ver.\n\nFiskaren beh\xF6\
+        ver ocks\xE5 n\xE5gra plankor f\xF6r att bygga sin b\xE5t.\n\nF\xF6r att bygga\
+        \ skogshuggare; \xF6ppna byggmenyn genom att klicka p\xE5 den stora ikonen\
+        \ under den lilla kartan eller tryck B p\xE5 tangentbordet.\n\nByggnadsmenyn\
+        \ \xE4r indelad i tillv\xE4xtgrader.\nDu befinner dig f\xF6r nuvarande p\xE5\
+        \ den f\xF6rsta tillv\xE4xtgraden (Sj\xF6mans niv\xE5) och erbjuds d\xE4rf\xF6\
+        r bara grundl\xE4ggande byggnader."]
     type: logbook_w
   - arguments: ['', "Under tiden som din civilisation utvecklas kommer du f\xE5 tillg\xE5\
         ng till mer avancerade byggnader.\n\nTills vidare, tryck p\xE5 skogshuggare\
@@ -142,11 +130,8 @@ events:
   - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
 
 
-        In the overview tab you can quickly adjust taxes.
-
-
-        In the second tab ''Account'' you get a balance sheet of this island, featuring
-        all costs you pay and all taxes you earn.
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
 
 
         The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
@@ -156,8 +141,9 @@ events:
         If your balance is positive, you all-in-all make a profit.
 
 
-        In the ''Settler'' tab you can see how happy your inhabitants are and what
-        resource most of them want to be supplied with.']
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
     type: logbook
   - arguments: ["Bygg en marknadsplats. V\xE4lj en plats d\xE4r du l\xE4ttare kan\
         \ bygga ut ditt bostadsomr\xE5de."]
@@ -321,15 +307,26 @@ events:
         \ en g\xE5ngstig, annars hittar inte dina inv\xE5nare dit.\n\nI senare steg\
         \ kan uppgraderade versioner av byggnaderna komma att bli tillg\xE4ngliga."]
     type: logbook_w
-  - arguments: ['', "I ett s\xE5dant l\xE4ge \xE4r den 'lilla' versionen inte n\xF6\
-        dv\xE4ndig eftersom den 'stora' kommer att tillgodose dina inv\xE5nares behov\
-        \ \xE4ven om de tillh\xF6r l\xE4gre steg.\n\nPlanera din stad noga eftersome\
-        \ de mer avancerade byggnaderna \xE4r st\xF6rre \xE4n de enklare.\n\nNotera\
-        \ att religion hanteras som en fysisk vara, s\xE5 enheter m\xE5ste fyllas\
-        \ p\xE5 efter hand.\n\nViktigt:\nDet \xE4r INTE tillr\xE4ckligt att endast\
-        \ ha byggnaden i bost\xE4dernas r\xE4ckvidd.\n\nUPPGIFT: Bygg en paviljong\
-        \ med en g\xE5ngstig till bost\xE4derna f\xF6r att tillgodose sj\xF6m\xE4\
-        nnen med religion."]
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
+
+
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
+
+
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
+
+
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
     type: logbook
   - arguments: ["Bygg en paviljong med anslutning till bost\xE4derna."]
     type: message

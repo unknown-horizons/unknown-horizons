@@ -17,6 +17,12 @@ is licensed under the terms of the  Python 2.4.2 License  by way of derogation f
 Informations can be obtained at  http://www.python.org/download/releases/2.4.2/license/ .
 
 
+/setup.py
+
+is derived from https://launchpad.net/python-distutils-extra
+which is licensed under the GNU GPL v2 .
+
+
 /horizons/ext/dummy.py
 
 is licensed by nosklo under the terms of the  MIT license.  Information can be obtained at

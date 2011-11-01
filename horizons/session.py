@@ -34,6 +34,7 @@ from horizons.gui.mousetools import TearingTool
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.view import View
+from horizons.gui import Gui
 from horizons.world import World
 from horizons.entities import Entities
 from horizons.util import WorldObject, NamedObject, LivingObject, livingProperty, SavegameAccessor
@@ -75,6 +76,7 @@ class Session(LivingObject):
 
 	def __init__(self, gui, db, rng_seed=None):
 		super(Session, self).__init__()
+		assert isinstance(gui, Gui)
 		self.log.debug("Initing session")
 		self.gui = gui # main gui, not ingame gui
 		self.db = db # main db for game data (game.sqlite)
@@ -91,7 +93,7 @@ class Session(LivingObject):
 		self.timer = self.create_timer()
 		Scheduler.create_instance(self.timer)
 		self.manager = self.create_manager()
-		self.view = View(self, (15, 15))
+		self.view = View(self)
 		Entities.load(self.db)
 		self.scenario_eventhandler = ScenarioEventHandler(self) # dummy handler with no events
 		self.campaign = {}
@@ -229,7 +231,7 @@ class Session(LivingObject):
 
 		# cursor has to be inited last, else player interacts with a not inited world with it.
 		self.cursor = SelectionTool(self)
-	# Set cursor correctly, menus might need to be opened.
+		# Set cursor correctly, menus might need to be opened.
 		# Open menus later, they may need unit data not yet inited
 		self.cursor.apply_select()
 
@@ -240,7 +242,7 @@ class Session(LivingObject):
 		(horizons/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
 		"""
 
-	def speed_set(self, ticks):
+	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""
 		raise NotImplementedError
 
@@ -294,25 +296,25 @@ class Session(LivingObject):
 	_pause_stack = 0 # this saves the level of pausing
 	# e.g. if two dialogs are displayed, that pause the game,
 	# unpause needs to be called twice to unpause the game. cf. #876
-	def speed_pause(self):
+	def speed_pause(self, suggestion=False):
 		self.log.debug("Session: Pausing")
 		self._pause_stack += 1
 		if not self.speed_is_paused():
 			self.paused_ticks_per_second = self.timer.ticks_per_second
-			self.speed_set(0)
+			self.speed_set(0, suggestion)
 
-	def speed_unpause(self):
+	def speed_unpause(self, suggestion=False):
 		self.log.debug("Session: Unpausing")
 		if self.speed_is_paused():
 			self._pause_stack -= 1
 			if self._pause_stack == 0:
 				self.speed_set(self.paused_ticks_per_second)
 
-	def speed_toggle_pause(self):
+	def speed_toggle_pause(self, suggestion=False):
 		if self.speed_is_paused():
-			self.speed_unpause()
+			self.speed_unpause(suggestion)
 		else:
-			self.speed_pause()
+			self.speed_pause(suggestion)
 
 	def speed_is_paused(self):
 		return (self.timer.ticks_per_second == 0)

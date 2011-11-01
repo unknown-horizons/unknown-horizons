@@ -65,6 +65,7 @@ class LandManager(WorldObject):
 		self.production = {}
 		self.village = {}
 		self.roads = set() # set((x, y), ...) of coordinates where road can be built independent of the area purpose
+		self.coastline = self._get_coastline() # set((x, y), ...) of coordinates which coastal buildings could use in the production area
 		self.personality = self.owner.personality_manager.get('LandManager')
 
 		self.resource_deposits = {} # {building_id: [building, ...]} all resource deposits of a type on the island
@@ -99,6 +100,19 @@ class LandManager(WorldObject):
 				self.production[coords] = self.island.ground_map[coords]
 			elif purpose == self.purpose.village:
 				self.village[coords] = self.island.ground_map[coords]
+
+	def _get_coastline(self):
+		result = set()
+		for coords in self.island.ground_map:
+			tile = self.island.ground_map[coords]
+			if 'coastline' not in tile.classes:
+				continue
+			if tile.object is not None and not tile.object.buildable_upon:
+				continue
+			if tile.settlement is not None and tile.settlement.owner is not self.owner:
+				continue
+			result.add(coords)
+		return result
 
 	def _divide_island(self):
 		"""Divide the whole island between the purposes. The proportions depend on the personality."""
@@ -271,13 +285,14 @@ class LandManager(WorldObject):
 
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""
-		# reduce the areas for the village, production, and roads
+		# reduce the areas for the village, production, roads, and coastline
 		for coords in coords_list:
 			if coords in self.village:
 				del self.village[coords]
 			elif coords in self.production:
 				del self.production[coords]
 			self.roads.discard(coords)
+			self.coastline.discard(coords)
 
 	def display(self):
 		"""Show the plan on the map unless it is disabled in the settings."""
@@ -286,6 +301,7 @@ class LandManager(WorldObject):
 
 		village_colour = (255, 255, 255)
 		production_colour = (255, 255, 0)
+		coastline_colour = (0, 0, 255)
 		renderer = self.island.session.view.renderer['InstanceRenderer']
 
 		for tile in self.production.itervalues():
@@ -293,6 +309,9 @@ class LandManager(WorldObject):
 
 		for tile in self.village.itervalues():
 			renderer.addColored(tile._instance, *village_colour)
+
+		for coords in self.coastline:
+			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_colour)
 
 	def __str__(self):
 		return '%s LandManager(%d)' % (self.owner if hasattr(self, 'owner') else 'unknown player', self.worldid)

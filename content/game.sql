@@ -275,18 +275,18 @@ INSERT INTO "production_line" VALUES(90.0,0,41,3,0,0);
 INSERT INTO "production_line" VALUES(30.0,0,42,33,1,0);
 INSERT INTO "production_line" VALUES(75.0,0,43,3,0,0);
 INSERT INTO "production_line" VALUES(90.0,0,44,3,0,0);
-INSERT INTO "production_line" VALUES(45.0,1,45,35,1,0);
+INSERT INTO "production_line" VALUES(45.0,1,45,35,1,1);
 INSERT INTO "production_line" VALUES(30.0,1,46,36,1,0);
 INSERT INTO "production_line" VALUES(1.0,1,47,20,1,0);
-INSERT INTO "production_line" VALUES(15.0,1,48,37,1,0);
+INSERT INTO "production_line" VALUES(15.0,1,48,37,1,1);
 INSERT INTO "production_line" VALUES(40.0,1,49,38,1,0);
 INSERT INTO "production_line" VALUES(60.0,1,50,39,1,0);
 INSERT INTO "production_line" VALUES(1.0,1,51,20,1,0);
 INSERT INTO "production_line" VALUES(1.0,1,52,20,1,0);
-INSERT INTO "production_line" VALUES(30.0,1,53,40,1,0);
+INSERT INTO "production_line" VALUES(30.0,1,53,40,1,1);
 --INSERT INTO "production_line" VALUES(1.0,1,54,20,1,0);
-INSERT INTO "production_line" VALUES(15.0,1,55,41,1,0);
-INSERT INTO "production_line" VALUES(15.0,1,56,41,1,0);
+INSERT INTO "production_line" VALUES(15.0,1,55,41,1,1);
+INSERT INTO "production_line" VALUES(15.0,1,56,41,1,1);
 INSERT INTO "production_line" VALUES(60.0,1,57,42,1,0);
 INSERT INTO "production_line" VALUES(120.0,1,58,12,1,0);
 INSERT INTO "production_line" VALUES(120.0,1,62,12,1,0);
@@ -315,6 +315,7 @@ INSERT INTO "message" VALUES('You have won!',1,60.0,NULL,'YOU_HAVE_WON');
 INSERT INTO "message" VALUES('Your mine has run out of resources.',1,15.0,NULL,'MINE_EMPTY');
 INSERT INTO "message" VALUES('You can also drag roads.',1,20.0,NULL,'DRAG_ROADS_HINT');
 INSERT INTO "message" VALUES('${player1} and ${player2} are now ${status}',1,10.0,NULL,'DIPLOMACY_STATUS_CHANGED');
+INSERT INTO "message" VALUES('You have reached the current maximum increment. Your inhabitants will not upgrade further.',1,10.0,NULL,'MAX_INCR_REACHED');
 CREATE TABLE ai (client_id TEXT NOT NULL, class_package TEXT NOT NULL, class_name TEXT NOT NULL);
 INSERT INTO "ai" VALUES('AIPlayer','aiplayer','AIPlayer');
 CREATE TABLE "object_sounds" (object  INTEGER PRIMARY KEY  NOT NULL  DEFAULT '' , "sound" INTEGER NOT NULL  DEFAULT '');
@@ -329,6 +330,9 @@ INSERT INTO "related_buildings" VALUES(8,17);
 INSERT INTO "related_buildings" VALUES(20,18);
 INSERT INTO "related_buildings" VALUES(20,19);
 INSERT INTO "related_buildings" VALUES(20,22);
+INSERT INTO "related_buildings" VALUES(20,36);
+INSERT INTO "related_buildings" VALUES(20,38);
+INSERT INTO "related_buildings" VALUES(20,39);
 CREATE TABLE mine(mine INTEGER NOT NULL, deposit NOT NULL);
 INSERT INTO "mine" VALUES(25,23);
 INSERT INTO "mine" VALUES(28,34);
@@ -723,7 +727,7 @@ CREATE TABLE "weapon" (
 	"attack_radius" INT,
 	"stackable" BOOLEAN,
 	"bullet_image" TEXT);
-INSERT INTO "weapon" VALUES(40,'ranged',10,5,15,3,4,2,1,'content/gfx/misc/cannonballs/cannonball.png');
+INSERT INTO "weapon" VALUES(40,'ranged',7,5,15,3,4,2,1,'content/gfx/misc/cannonballs/cannonball.png');
 INSERT INTO "weapon" VALUES(41,'melee',3,1,1,3,2,1,0,'');
 CREATE TABLE settler_production_line(level INTEGER, production_line INTEGER);
 INSERT INTO "settler_production_line" VALUES(0,71);
@@ -748,9 +752,9 @@ CREATE TABLE settler_level (
     "tax_income" INT NOT NULL DEFAULT (''),
     "inhabitants_max" INT
 , "residential_name" TEXT   DEFAULT (''));
-INSERT INTO "settler_level" VALUES(0,'sailor',2,2,'tent');
-INSERT INTO "settler_level" VALUES(1,'pioneer',3,3,'hut');
-INSERT INTO "settler_level" VALUES(2,'settler',6,5,'house');
-INSERT INTO "settler_level" VALUES(3,'citizen',10,8,'stone house');
-INSERT INTO "settler_level" VALUES(4,'merchant',15,13,'estate');
-INSERT INTO "settler_level" VALUES(5,'aristocrat',25,21,'manor');
+INSERT INTO "settler_level" VALUES(0,'sailor',3,2,'tent');
+INSERT INTO "settler_level" VALUES(1,'pioneer',6,3,'hut');
+INSERT INTO "settler_level" VALUES(2,'settler',10,5,'house');
+INSERT INTO "settler_level" VALUES(3,'citizen',15,8,'stone house');
+INSERT INTO "settler_level" VALUES(4,'merchant',21,13,'estate');
+INSERT INTO "settler_level" VALUES(5,'aristocrat',28,21,'manor');

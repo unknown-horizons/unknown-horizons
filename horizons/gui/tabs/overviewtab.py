@@ -22,14 +22,12 @@
 
 import weakref
 
-from fife.extensions import pychan
-
-from tabinterface import TabInterface
+from horizons.gui.tabs.tabinterface import TabInterface
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, ActionSetLoader, NamedObject
-from horizons.constants import GAME_SPEED, RES, SETTLER, BUILDINGS
-from horizons.gui.widgets  import TooltipButton, DeleteButton
+from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS
+from horizons.gui.widgets  import DeleteButton
 from horizons.gui.widgets.unitoverview import StanceWidget
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
@@ -153,11 +151,16 @@ class ShipOverviewTab(OverviewTab):
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
-		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
-		weapon_storage_widget.init(self.instance)
-		self.add_remove_listener(weapon_storage_widget.remove)
+		self._init_combat()
+
+	def _init_combat(self): # no combat
+		weapons_wdg = self.widget.child_finder('weapon_storage')
+		weapons_wdg.parent.removeChild(weapons_wdg)
+		weapons_wdg = self.widget.child_finder('lbl_weapon_storage').text = \
+		            _("Trade ship")
 
 	def refresh(self):
+		# no weapons:
 		# show rename when you click on name
 		events = {
 			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance)
@@ -165,12 +168,15 @@ class ShipOverviewTab(OverviewTab):
 
 		# check if an island is in range and it doesn't contain a player's settlement
 		island_without_player_settlement_found = False
+		tooltip = _("The ship needs to be close to an island to found a settlement.")
 		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, \
 		                                                                self.instance.radius):
 			player_settlements = [ settlement for settlement in island.settlements if \
 			                       settlement.owner is self.instance.session.world.player ]
 			if len(player_settlements) == 0:
 				island_without_player_settlement_found = True
+			else:
+				tooltip = _("You already have a settlement on this island.")
 
 		if island_without_player_settlement_found:
 			events['foundSettlement'] = Callback(self.instance.session.ingame_gui._build, \
@@ -178,10 +184,12 @@ class ShipOverviewTab(OverviewTab):
 			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettlement').set_active()
+			self.widget.child_finder('foundSettlement').tooltip = _("Build settlement")
 		else:
 			events['foundSettlement'] = None
 			self.widget.child_finder('bg_button').set_inactive()
 			self.widget.child_finder('foundSettlement').set_inactive()
+			self.widget.child_finder('foundSettlement').tooltip = tooltip
 
 		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
 		   self.instance,
@@ -206,6 +214,11 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		stance_widget.init(self.instance)
 		self.add_remove_listener(stance_widget.remove)
 		self.widget.findChild(name='stance').addChild(stance_widget)
+
+	def _init_combat(self): # no combat
+		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
+		weapon_storage_widget.init(self.instance)
+		self.add_remove_listener(weapon_storage_widget.remove)
 
 	def show(self):
 		self.widget.findChild(name='weapon_storage').update()
@@ -245,12 +258,6 @@ class ProductionOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = _("Production overview")
-
-		self.destruct_button = DeleteButton(name="destruct_button", \
-		                                    tooltip=_("Destroy building"), \
-		                                    position=(190,330) )
-		self.widget.addChild(self.destruct_button)
-		self.widget.mapEvents( { 'destruct_button' : self.destruct_building } )
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -322,8 +329,6 @@ class ProductionOverviewTab(OverviewTab):
 
 	def destruct_building(self):
 		self.instance.session.ingame_gui.hide_menu()
-		if self.destruct_button.gui.isVisible():
-			self.destruct_button.hide_tooltip()
 		Tear(self.instance).execute(self.instance.session)
 
 	def _refresh_utilisation(self):
@@ -344,6 +349,16 @@ class ProductionOverviewTab(OverviewTab):
 		Scheduler().rem_all_classinst_calls(self)
 		super(ProductionOverviewTab, self).on_instance_removed()
 
+class FarmProductionOverviewTab(ProductionOverviewTab):
+	production_line_gui_xml = "overview_farmproductionline.xml"
+
+	def  __init__(self, instance):
+		super(ProductionOverviewTab, self).__init__(
+			widget = 'overview_farm.xml',
+			instance = instance
+		)
+		self.tooltip = _("Production overview")
+
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(SettlerOverviewTab, self).__init__(
@@ -362,8 +377,9 @@ class SettlerOverviewTab(OverviewTab):
 
 	def refresh(self):
 		self.widget.child_finder('happiness').progress = self.instance.happiness
-		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
-			self.instance.inhabitants, self.instance.inhabitants_max ) )
+		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
+		                                               self.instance.inhabitants,
+		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)

@@ -148,10 +148,10 @@ class FindPath(object):
 		# if one of the dest_coords has been processed
 		# (i.e. is in checked), a good path is found
 		dest_coords = self.destination.get_coordinates()
-		if len(dest_coords) > 5:
-			dest_coords = set(dest_coords)
-			if not self.make_target_walkable:
-				dest_coords = dest_coords.intersection(self.path_nodes)
+		dest_coords = set(dest_coords)
+		if not self.make_target_walkable:
+			# restrict destination coords to walkable tiles, by default they are counted as walkable
+			dest_coords = dest_coords.intersection(self.path_nodes)
 
 		from heapq import heappush, heappop
 		heap = []

@@ -26,7 +26,7 @@ from collections import defaultdict
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.util import WorldObject
 from horizons.util.python import decorators
-from horizons.constants import RES, TRADER
+from horizons.constants import BUILDINGS, RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
 
 class ResourceManager(WorldObject):
@@ -75,7 +75,7 @@ class ResourceManager(WorldObject):
 			for resource_id, amount in reserved_storage.iteritems():
 				if amount > 1e-9:
 					db("INSERT INTO ai_resource_manager_trade_storage(resource_manager, settlement_manager, resource, amount) VALUES(?, ?, ?, ?)", \
-						self.worldid, settlement_manager_id, resource_id, amount)
+					   self.worldid, settlement_manager_id, resource_id, amount)
 		for resource_id, amount in self.resource_requirements.iteritems():
 			db("INSERT INTO ai_resource_manager_requirement(resource_manager, resource, amount) VALUES(?, ?, ?)", self.worldid, resource_id, amount)
 
@@ -208,7 +208,7 @@ class ResourceManager(WorldObject):
 		if resource_id in [RES.TOOLS_ID, RES.BOARDS_ID]:
 			return self.personality.default_resource_requirement
 		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS_ID:
-				return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.settler_level > 0 else 0
+			return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.settler_level > 0 else 0
 		elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD_ID:
 			return self.personality.default_food_requirement
 		return 0
@@ -217,7 +217,21 @@ class ResourceManager(WorldObject):
 		return 0 # TODO: take into account all the resources that are needed to build units
 
 	def get_required_upgrade_resources(self, resource_id, upgrade_limit):
-		return 0 # TODO
+		"""Return the amount of resource still needed to upgrade at most upgrade_limit residences."""
+		limit_left = upgrade_limit
+		needed = 0
+		for residence in self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+			if limit_left <= 0:
+				break
+			production = residence._get_upgrade_production()
+			if production is None or production.is_paused():
+				continue
+			for res, amount in production.get_consumed_resources().iteritems():
+				if res == resource_id and residence.inventory[resource_id] < abs(amount):
+					# TODO: take into account the residence's collector
+					needed += abs(amount) - residence.inventory[resource_id]
+					limit_left -= 1
+		return needed
 
 	def get_required_building_resources(self, resource_id):
 		return 0 # TODO
@@ -236,7 +250,7 @@ class ResourceManager(WorldObject):
 
 	def manager_buysell(self):
 		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
-		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID]
+		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]
 		settlement = self.settlement_manager.settlement
 		inventory = settlement.inventory
 		session = self.settlement_manager.session
@@ -300,6 +314,8 @@ class ResourceManager(WorldObject):
 		self._low_priority_requests.clear()
 
 	def __str__(self):
+		if not hasattr(self, "settlement_manager"):
+			return 'UninitialisedResourceManager'
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
 		for resource_manager in self._data.itervalues():
 			res = resource_manager.resource_id
@@ -331,14 +347,14 @@ class SingleResourceManager(WorldObject):
 	def save(self, db, resource_manager_id):
 		super(SingleResourceManager, self).save(db)
 		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, low_priority, available, total) VALUES(?, ?, ?, ?, ?, ?, ?)", \
-			self.worldid, resource_manager_id, self.resource_id, self.building_id, self.low_priority, self.available, self.total)
+		   self.worldid, resource_manager_id, self.resource_id, self.building_id, self.low_priority, self.available, self.total)
 		for identifier, (quota, priority) in self.quotas.iteritems():
 			db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager, identifier, quota, priority) VALUES(?, ?, ?, ?)", self.worldid, identifier, quota, priority)
 
 	def _load(self, db, settlement_manager, worldid):
 		super(SingleResourceManager, self).load(db, worldid)
 		(resource_id, building_id, self.low_priority, self.available, self.total) = \
-			db("SELECT resource_id, building_id, low_priority, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
+		    db("SELECT resource_id, building_id, low_priority, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
 		self.__init(settlement_manager, resource_id, building_id)
 
 		for (identifier, quota, priority) in db("SELECT identifier, quota, priority FROM ai_single_resource_manager_quota WHERE single_resource_manager = ?", worldid):
@@ -450,6 +466,8 @@ class SingleResourceManager(WorldObject):
 		return self.low_priority
 
 	def __str__(self):
+		if not hasattr(self, "resource_id"):
+			return 'UninitialisedSingleResourceManager'
 		result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (self.resource_id, self.available, self.total, self.low_priority)
 		for quota_holder, (quota, priority) in self.quotas.iteritems():
 			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)

@@ -22,13 +22,11 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MainSquareOverviewTab, AccountTab, MainSquareSettlerTabSettlerTab, \
+		 MainSquareOverviewTab, AccountTab, \
 		 MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
 		 EnemyBranchOfficeOverviewTab
-from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
-from horizons.constants import STORAGE
 from horizons.world.production.producer import ProducerBuilding
 
 class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandler, \

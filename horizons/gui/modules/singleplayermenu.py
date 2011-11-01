@@ -201,7 +201,7 @@ class SingleplayerMenu(object):
 
 		water_percent_slider = widget.findChild(name = 'water_percent_slider')
 		def on_water_percent_slider_change():
-			widget.findChild(name = 'water_percent_lbl').text = _('Water: ') + \
+			widget.findChild(name = 'water_percent_lbl').text = _('Water: ') + u' ' + \
 				unicode(self.water_percents[int(water_percent_slider.getValue())]) + u'%'
 			horizons.main.fife.set_uh_setting("RandomMapWaterPercent", water_percent_slider.getValue())
 		water_percent_slider.capture(on_water_percent_slider_change)
@@ -247,7 +247,7 @@ class SingleplayerMenu(object):
 
 		resource_density_slider = widget.findChild(name = 'resource_density_slider')
 		def on_resource_density_slider_change():
-			widget.findChild(name = 'resource_density_lbl').text = _('Resource density:') + u' ' + \
+			widget.findChild(name = 'resource_density_lbl').text = _('Resource density: ') + u' ' + \
 				unicode(self.resource_densities[int(resource_density_slider.getValue())]) + u'x'
 			horizons.main.fife.set_uh_setting("MapResourceDensity", resource_density_slider.getValue())
 		resource_density_slider.capture(on_resource_density_slider_change)

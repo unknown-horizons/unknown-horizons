@@ -169,7 +169,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.islands.append(island)
 
 		#calculate map dimensions
-		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
+		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
 		for i in self.islands:
 			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
 			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
@@ -288,19 +288,21 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# add diplomacy notification listeners
 		def notify_change(caller, change_type, a, b):
-			player1 = a.name
-			player2 = b.name
+			player1 = u"%s" % a.name
+			player2 = u"%s" % b.name
 
 			#check if status really changed, if so update status string
 			if change_type == 'friend':
-				status = 'friends'
+				status = _('ally')
 			elif change_type == 'enemy':
-				status = 'enemies'
+				status = _('enemy')
 			else:
-				status = 'neutral'
+				status = _('neutral')
 
-			self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'DIPLOMACY_STATUS_CHANGED',
-				{'player1' : player1, 'player2' : player2, 'status' : status})
+			data = {'player1' : player1, 'player2' : player2, 'status' : status}
+
+			self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2,
+			                                           'DIPLOMACY_STATUS_CHANGED', data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
@@ -835,6 +837,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		dict = {
 			'rngvalue': self.session.random.random(),
 			'settlements': [],
+			'ships': [],
 		}
 		for island in self.islands:
 			for settlement in island.settlements:
@@ -847,6 +850,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					'inventory': str(settlement.inventory._storage),
 				}
 				dict['settlements'].append(entry)
+		for ship in self.ships:
+			entry = {
+				'owner': str(ship.owner.worldid),
+				'position': ship.position.to_tuple(),
+			}
+			dict['ships'].append(entry)
 		return dict
 
 	def notify_new_settlement(self):

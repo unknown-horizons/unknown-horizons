@@ -60,7 +60,7 @@ class Player(StorageHolder, WorldObject):
 		assert self.color.is_default_color, "Player color has to be a default color"
 
 		if self.regular_player:
-			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 1)
+			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)
 
 	def update_stats(self):
 		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY)

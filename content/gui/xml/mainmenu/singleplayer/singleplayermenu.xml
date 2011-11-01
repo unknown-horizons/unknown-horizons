@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container name="menu"  size="1024,768"  position_technique="automatic">
-	<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
+	<Icon image="content/gui/images/background/mainmenu_bg.png" />
 	<Icon image="content/gui/images/background/book.png"  position="100,100" />
 
 	<Container size="320,510"  position="175,132">

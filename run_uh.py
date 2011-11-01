@@ -40,12 +40,14 @@ import optparse
 import signal
 import traceback
 import platform
+import gzip
 
 def log():
 	"""Returns Logger"""
 	return logging.getLogger("run_uh")
 
 logfilename = None
+logfile = None
 
 def find_uh_position():
 	"""Returns path, where uh is located"""
@@ -133,6 +135,8 @@ def get_option_parser():
 				               help=_("Run the game for <max_ticks> ticks."))
 	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true", \
 				               default=False, help=_("Enable the string previewer tool for scenario writers"))
+	dev_group.add_option("--no-preload", dest="nopreload", action="store_true", \
+				               default=False, help=_("Disable preloading while in main menu"))
 	p.add_option_group(dev_group)
 
 	return p
@@ -149,21 +153,26 @@ def excepthook_creator(outfilename):
 	The returned function does the same as the default, except it also prints the traceback
 	to a file.
 	@param outfilename: a filename to append traceback to"""
+	global logfile
+	global logfilename
 	def excepthook(exception_type, value, tb):
-		f = open(outfilename, 'a')
-		traceback.print_exception(exception_type, value, tb, file=f)
+		if logfile:
+			traceback.print_exception(exception_type, value, tb, file=logfile)
 		traceback.print_exception(exception_type, value, tb)
 		print
 		print _('Unknown Horizons crashed.')
 		print
 		print _('We are very sorry for this, and want to fix this error.')
 		print _('In order to do this, we need the information from the logfile:')
-		print outfilename
+		print logfilename
 		print _('Please give it to us via IRC or our forum, for both see unknown-horizons.org .')
+		if logfile:
+			logfile.close()
 	return excepthook
 
 def exithandler(signum, frame):
 	"""Handles a kill quietly"""
+	global logfile
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
 	try:
@@ -174,9 +183,12 @@ def exithandler(signum, frame):
 	print
 	print 'Oh my god! They killed UH.'
 	print 'You bastards!'
+	if logfile:
+		logfile.close()
 	sys.exit(1)
 
 def main():
+	global logfile
 	# abort silently on signal
 	signal.signal(signal.SIGINT, exithandler)
 	signal.signal(signal.SIGTERM, exithandler)
@@ -223,6 +235,8 @@ def main():
 								   outfilename)
 		print 'Program ended. Profiling output:', outfilename
 
+	if logfile:
+		logfile.close()
 	if ret:
 		print _('Thank you for using Unknown Horizons!')
 
@@ -232,6 +246,7 @@ def parse_args():
 	@returns option object from Parser
 	"""
 	global logfilename
+	global logfile
 	options = get_option_parser().parse_args()[0]
 
 	# apply options
@@ -250,14 +265,16 @@ def parse_args():
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log.gz" % \
 												         time.strftime("%y-%m-%d_%H-%M-%S"))
-		print 'Logging to %s' % logfilename
+		print 'Logging to %s' % logfilename.encode('utf-8', 'replace')
 		# create logfile
 		logfile = open(logfilename, 'w')
+		if not logfile.isatty():
+			logfile = gzip.GzipFile(fileobj=logfile)
 		# log there
-		file_handler = logging.FileHandler(logfilename, 'a')
-		logging.getLogger().addHandler(file_handler)
+		file_handler = logging.StreamHandler( logfile )
+		logging.getLogger().addHandler( file_handler )
 		# log exceptions
 		sys.excepthook = excepthook_creator(logfilename)
 		# log any other stdout output there (this happens, when FIFE c++ code launches some
@@ -270,8 +287,11 @@ def parse_args():
 				logfile.write(line)
 		sys.stdout = StdOutDuplicator()
 
-		if not options.debug_log_only:
-			# add a handler to stderr too
+		# add a handler to stderr too _but_ only if logfile isn't already a tty
+		# this allows --debug-module=<module> --logfile=/dev/stdout
+		# without getting logs twice + without enabling debug log for everything
+		# (see first if-clause inside that method)
+		if not options.debug_log_only and not logfile.isatty():
 			logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
 
 		log_sys_info()
@@ -448,7 +468,7 @@ def standalone_error_popup(headline, msg):
 	from fife import fife
 
 	e = fife.Engine()
-	e.getSettings().setDefaultFontPath("content/fonts/LinLibertine_Re-4.4.1.ttf")
+	e.getSettings().setDefaultFontPath("content/fonts/LinLibertine.ttf")
 	e.init()
 
 	pychan.init(e)

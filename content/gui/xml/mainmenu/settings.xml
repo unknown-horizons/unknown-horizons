@@ -42,7 +42,7 @@
 	<Spacer min_size="10" />
 		<HBox>
 			<Label name="screen_fullscreen_text"  text="Full screen:" />
-			<CheckBox min_size="160,32"  name="enable_fullscreen" />
+			<CheckBox min_size="24,24"  name="enable_fullscreen" />
 		</HBox>
 	</VBox>
 
@@ -63,17 +63,17 @@
 			<HBox >
 				<Label text="Effects volume:" 
 					name="effect_volume_label" 
-					wrap_text="1"  min_size="250,20"  max_size="250,40"/>
+					wrap_text="1"  min_size="250,20"  max_size="250,40" />
 				<Label text="" 
 					name="volume_effects_value" />
-			</HBox >
+			</HBox>
 			<Slider size="300,20" name="volume_effects"
 				orientation="0" scale_start="0.0" scale_end="0.5" />
 		</VBox>
 	<Spacer min_size="10" />
 		<HBox>
 			<Label name="sound_enable_opt_text" text="Enable sound:" />
-			<CheckBox min_size="32,32" name="enable_sound" />
+			<CheckBox min_size="24,24" name="enable_sound" />
 		</HBox>
 	<Spacer />
 	<HBox max_size="34,40">
@@ -115,15 +115,15 @@
 
 	<HBox>
 		<Label name="minimap_rotation_label"  text="Enable minimap rotation:" />
-		<CheckBox min_size="32,32"  name="minimaprotation" />
+		<CheckBox min_size="24,24"  name="minimaprotation" />
 	</HBox>
 	<HBox>
 		<Label name="edge_scrolling_label"  text="Enable edge scrolling:" />
-		<CheckBox min_size="21,32"  name="edgescrolling" />
+		<CheckBox min_size="24,24"  name="edgescrolling" />
 	</HBox>
 	<HBox>
 		<Label name="uninterrupted_building_label"  text="Uninterrupted building:" />
-		<CheckBox min_size="25,32"  name="uninterrupted_building" />
+		<CheckBox min_size="24,24"  name="uninterrupted_building" />
 	</HBox>
 
 <Spacer min_size="2" />

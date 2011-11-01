@@ -29,6 +29,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 	def __init__(self, session):
 		super(IngameKeyListener, self).__init__()
+		from horizons.session import Session
+		assert isinstance(session, Session)
 		self.session = session
 		horizons.main.fife.eventmanager.addKeyListenerFront(self)
 		self.keysPressed = []
@@ -181,4 +183,3 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		   keyval == fife.Key.DOWN:
 			self.key_scroll[1] = 0
 		self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
-

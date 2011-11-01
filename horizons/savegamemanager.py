@@ -73,7 +73,14 @@ class YamlCache(object):
 
 	@classmethod
 	def _write_bin_file(cls):
-		s = shelve.open(cls.yaml_cache)
+		try:
+			s = shelve.open(cls.yaml_cache)
+		except UnicodeError:
+			# this can happen with unicode characters in the name, because the bdb module on win
+			# converts it internally to ascii and fails to open the file. Since this is just a cache,
+			# we don't require it for the game to function, there is just a slight speed penality
+			# on every startup
+			return
 		for key, value in cls.cache.iteritems():
 			# TODO : manage unicode problems (paths with accents ?)
 			s[str(key)] = value # We have to decode it because _user_dir is encoded in constants
@@ -91,6 +98,8 @@ class YamlCache(object):
 			# Since this may also be caused by a different error, we just try again once.
 			os.remove(cls.yaml_cache)
 			s = shelve.open(cls.yaml_cache)
+		except UnicodeError:
+			return # see _write_bin_file
 
 		for key, value in s.iteritems():
 			cls.cache[key] = value

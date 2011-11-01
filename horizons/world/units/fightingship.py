@@ -43,6 +43,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
+		self.add_weapon_to_storage(WEAPONS.CANNON)
 
 	def go(self, x, y):
 		super(FightingShip, self).go(x, y)
