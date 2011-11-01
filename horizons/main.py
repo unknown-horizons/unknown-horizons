@@ -290,11 +290,12 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
 		if savegame is None:
-			return # user aborted dialog
+			return False # user aborted dialog
 	_modules.gui.show_loading_screen()
 #TODO
 	start_singleplayer(savegame, is_scenario = is_scenario, campaign = campaign, \
 		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled, trader_enabled=trader_enabled)
+	return True
 
 
 def _init_gettext(fife):
