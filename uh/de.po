@@ -715,8 +715,8 @@ msgstr "Ungültiger Port"
 #: horizons/engine.py:529
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Der angegebene Port ist ungültig. Er muss eine Nummer zwischen 1 und 65535 "
-"besitzen."
+"Der angegebene Port ist ungültig. Seine Nummer muss im Bereich zwischen 1 "
+"und 65535 liegen."
 
 #: horizons/engine.py:530
 msgid "Please check the port you entered and make sure it's in the specified range."
@@ -1347,7 +1347,7 @@ msgstr "Lagerzelt: Erweitert die Lagerkapazität und stellt Träger bereit."
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:78
 msgid "Trail: Needed for collecting goods."
-msgstr "Pfad: Wird benötigt zum Transport von Gütern."
+msgstr "Pfad: Wird zum Transport von Gütern benötigt."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:87 horizons/i18n/guitranslations.py:124
@@ -1461,8 +1461,8 @@ msgstr "Schweinestall: Zieht Schweine auf. Benötigt eine Farm."
 #: horizons/i18n/guitranslations.py:140
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
 msgstr ""
-"Salzgarten: Verdunstet Meerwasser zu Salz. Muss an der Küste errichtet "
-"werden."
+"Salzgarten: Verdunstet Meerwasser zur Salzgewinnung. Muss an der Küste "
+"errichtet werden."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:142
