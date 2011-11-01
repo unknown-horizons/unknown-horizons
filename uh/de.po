@@ -741,7 +741,7 @@ msgstr "Überprüft die Einstellungen im Abschnitt Netzwerk."
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
 "Niedrige Portnummern benötigen manchmal Sonderrechte, versucht es mit 0 oder "
-"eine Zahl größer als 1024."
+"einer Zahl größer als 1024."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:135 horizons/gui/modules/multiplayermenu.py:114
