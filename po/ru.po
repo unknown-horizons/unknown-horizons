@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-09-20 07:12+0200\n"
+"PO-Revision-Date: 2011-09-20 07:13+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -814,14 +814,17 @@ msgstr "Подробности:"
 msgid "Error:"
 msgstr "Ошибка:"
 
+# 94%
 #: horizons/gui/gui.py:426
+#, fuzzy
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Неизвестная дата сохранения\n"
 
+# 91%
 #: horizons/gui/gui.py:428
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at %s"
-msgstr ""
+msgstr "Сохранено в %s\n"
 
 #: horizons/gui/gui.py:432
 #, python-format

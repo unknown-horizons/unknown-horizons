@@ -279,6 +279,12 @@ class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
 			del self._storage[res]
 		return ret
 
+	def get_free_space_for(self, res):
+		if not res in self._storage and len(self._storage) >= self.slotnum:
+			return 0
+		else:
+			return super(PositiveTotalNumSlotsStorage, self).get_free_space_for(res)
+
 class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 	"""A storage consisting of a slot for each resource, all slots have the same size 'limit'
 	Used by the branch office for example. So with a limit of 30 you could have a max of
@@ -311,3 +317,9 @@ class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 			return amount
 		result = super(PositiveSizedNumSlotStorage, self).alter(res, amount)
 		return result
+
+	def get_free_space_for(self, res):
+		if not res in self._storage and len(self._storage) >= self.slotnum:
+			return 0
+		else:
+			return super(PositiveSizedNumSlotStorage, self).get_free_space_for(res)

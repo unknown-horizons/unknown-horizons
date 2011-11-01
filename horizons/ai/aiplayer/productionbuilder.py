@@ -278,28 +278,39 @@ class ProductionBuilder(AreaBuilder):
 	def __make_new_builder(self, building_id, x, y, needs_collector, orientation):
 		"""Return a Builder object if it is allowed to be built at the location, otherwise return None (not cached)."""
 		coords = (x, y)
+		# quick check to see whether the origin square is allowed to be in the requested place
 		if building_id == BUILDINGS.CLAY_PIT_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
 			# clay deposits and mountains are outside the production plan until they are constructed
 			if coords in self.plan or coords not in self.settlement.ground_map:
 				return None
 		elif building_id in self.coastal_building_classes:
-			if (coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE) or coords not in self.settlement.ground_map:
+			# coastal buildings can use coastal tiles
+			if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 				return None
 		else:
 			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.settlement.ground_map:
 				return None
+
+		# create the builder, make sure that it is allowed according to the game logic
 		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
 		if not builder or not self.land_manager.legal_for_production(builder.position):
 			return None
+
+		# make sure that the position of the building is allowed according to the plan
 		if building_id in self.coastal_building_classes:
+			# coastal buildings can use coastal tiles
 			for coords in builder.position.tuple_iter():
-				if coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
-		elif building_id != BUILDINGS.CLAY_PIT_CLASS and building_id != BUILDINGS.IRON_MINE_CLASS:
-			# clay deposits and mountains are outside the production plan until they are constructed
+		elif building_id in [BUILDINGS.CLAY_PIT_CLASS, BUILDINGS.IRON_MINE_CLASS]:
+			# clay deposits and mountains can't be in areas restricted by the plan
+			pass
+		else:
 			for coords in builder.position.tuple_iter():
 				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
+
+		# make sure the building is close enough to a collector if it produces any resources that have to be collected
 		if needs_collector and not any(True for building in self.collector_buildings if building.position.distance(builder.position) <= building.radius):
 			return None
 		return builder
@@ -312,10 +323,6 @@ class ProductionBuilder(AreaBuilder):
 		if orientation == 1 or orientation == 3:
 			size = (size[1], size[0])
 		if coords not in self.island.last_changed[size]:
-			# positions with the origin on coast aren't cached, only salt ponds are currently handled at all
-			# TODO: add caching for coastal buildings
-			if building_id in self.coastal_building_classes:
-				return self.__make_new_builder(building_id, x, y, needs_collector, orientation)
 			return None
 
 		island_changed = self.island.last_changed[size][coords]
@@ -333,31 +340,6 @@ class ProductionBuilder(AreaBuilder):
 	def _init_cache(self):
 		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area.""" 
 		super(ProductionBuilder, self)._init_cache()
-
-		building_sizes = set()
-		db_result = self.session.db("SELECT DISTINCT size_x, size_y FROM building WHERE button_name IS NOT NULL")
-		for size_x, size_y in db_result:
-			building_sizes.add((size_x, size_y))
-			building_sizes.add((size_y, size_x))
-
-		self.last_changed = {}
-		for size in building_sizes:
-			self.last_changed[size] = {}
-
-		for x, y in self.plan:
-			for size_x, size_y in building_sizes:
-				all_legal = True
-				for dx in xrange(size_x):
-					for dy in xrange(size_y):
-						if (x + dx, y + dy) in self.land_manager.village:
-							all_legal = False
-							break
-					if not all_legal:
-						break
-				if all_legal:
-					self.last_changed[(size_x, size_y)][(x, y)] = self.last_change_id
-
-		# initialise other caches
 		self.__collector_area_cache = None
 		self.__available_squares_cache = {}
 
@@ -365,16 +347,9 @@ class ProductionBuilder(AreaBuilder):
 		"""Register the possible buildability change of a rectangle on this island."""
 		super(ProductionBuilder, self).register_change(x, y, purpose, data)
 		coords = (x, y)
-		if coords in self.land_manager.village or coords not in self.plan:
+		if coords in self.land_manager.village or (coords not in self.plan and coords not in self.land_manager.coastline):
 			return
 		self.last_change_id += 1
-		for (area_size_x, area_size_y), building_areas in self.last_changed.iteritems():
-			for dx in xrange(area_size_x):
-				for dy in xrange(area_size_y):
-					coords = (x - dx, y - dy)
-					# building area with origin at coords affected
-					if coords in building_areas:
-						building_areas[coords] = self.last_change_id
 
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""

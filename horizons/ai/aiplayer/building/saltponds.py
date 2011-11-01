@@ -31,16 +31,6 @@ class AbstractSaltPonds(AbstractBuilding):
 	def evaluator_class(self):
 		return SaltPondsEvaluator
 
-	def iter_potential_locations(self, settlement_manager):
-		"""Iterate over possible locations of the building in the given settlement in the form of (x, y, orientation)."""
-		# yield the usual candidates
-		for pos in super(AbstractSaltPonds, self).iter_potential_locations(settlement_manager):
-			yield pos
-		# yield the extra candidates where the origin tile isn't in the plan
-		for (x, y), tile in settlement_manager.settlement.ground_map.iteritems():
-			if 'coastline' in tile.classes:
-				yield (x, y, 0)
-
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.SALT_PONDS_CLASS] = cls

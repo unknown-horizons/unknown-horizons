@@ -25,11 +25,12 @@ from fife.extensions import pychan
 
 from horizons.i18n import translate_widget
 from horizons.util.python import decorators
-import horizons.main
 
 @decorators.cachedfunction
 def get_gui_files_map():
-	"""Returns a dictionary { basename : full_path } for all xml gui files in content/gui"""
+	"""Returns a dictionary { basename : full_path }
+	for all xml gui files in content/gui
+	"""
 	xml_files = {}
 	for root, dirs, files in os.walk('content/gui'):
 		files = filter(lambda s : s.endswith(".xml"), files)
@@ -48,8 +49,8 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	# load widget
 	try:
 		widget = pychan.loadXML(get_gui_files_map()[filename])
-	except (IOError, ValueError), e:
-		print 'PLEASE REPORT: invalid path', filename , 'in translation!', e
+	except (IOError, ValueError), error:
+		print 'PLEASE REPORT: invalid path %s in translation! %s' % (filename, error)
 		raise
 
 	# translate
@@ -59,8 +60,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 		widget.stylize(style)
 	# format headline
 	for w in widget.findChildren():
-		if w.name.startswith("headline") or \
-			 w.name == "name":
+		if w.name.startswith("headline") or w.name == "name":
 			w.stylize('headline')
 	if center_widget:
 		widget.position_technique = "automatic" # "center:center"
@@ -70,7 +70,8 @@ def load_uh_widget(filename, style=None, center_widget=False):
 def get_res_icon(res):
 	"""Returns icons of a resource
 	@param res: resource id
-	@return: tuple: (icon_50_path, icon_disabled_path, icon_24_path, icon_16_path)"""
+	@return: tuple: (icon_50_path, icon_disabled_path, icon_24_path, icon_16_path)
+	"""
 	ICON_PATH = 'content/gui/icons/resources/'
 	icon_50 = ICON_PATH + '50/%03d.png' % res
 	icon_disabled = ICON_PATH + '50/greyscale/%03d.png' % res
@@ -80,35 +81,23 @@ def get_res_icon(res):
 
 
 def create_resource_icon(res_id, db, size=50):
-	"""Creates a pychan icon for a resource.
+	"""Creates a pychan TooltipIcon for a resource.
+	Returns None if size parameter is invalid (not in 16,24,50).
 	@param res_id:
-	@param db: dbreader for main db"""
+	@param db: dbreader for main db
+	@param size: Size of icon in px. Valid: 16, 24, 50."""
 	from horizons.gui.widgets.tooltip import TooltipIcon
 	if size == 50:
-		return TooltipIcon(tooltip=db.get_res_name(res_id), \
-								       image=get_res_icon(res_id)[0])
+		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		                   image=get_res_icon(res_id)[0])
 	elif size == 24:
-		return TooltipIcon(tooltip=db.get_res_name(res_id), \
-								       image=get_res_icon(res_id)[2])
+		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		                   image=get_res_icon(res_id)[2])
 	elif size == 16:
-		return TooltipIcon(tooltip=db.get_res_name(res_id), \
-								       image=get_res_icon(res_id)[3])
+		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		                   image=get_res_icon(res_id)[3])
 	else:
 		return None
-
-def adjust_widget_black_background(widget):
-	"""Resizes the black background container and centers the menu
-	@param widget: Widget with black_underlay and menu containers
-	"""
-	black_underlay = widget.findChild(name='black_underlay')
-	black_underlay.position = (0, 0)
-	black_underlay.size = (horizons.main.fife.engine_settings.getScreenWidth(), horizons.main.fife.engine_settings.getScreenHeight())
-
-	black_underlay_background = widget.findChild(name='black_underlay_background')
-	black_underlay_background.size = (horizons.main.fife.engine_settings.getScreenWidth(), horizons.main.fife.engine_settings.getScreenHeight())
-
-	menu = widget.findChild(name='menu')
-	menu.position_technique = "automatic" # "center:center"
 
 class LazyWidgetsDict(dict):
 	"""Dictionary for UH widgets. Loads widget on first access."""
@@ -134,8 +123,8 @@ class LazyWidgetsDict(dict):
 		If you want your headlines to not be styled, rename them.
 		"""
 		self[widgetname] = load_uh_widget(widgetname+'.xml', \
-								                      style=self.styles.get(widgetname),\
-								                      center_widget=self.center_widgets)
+		                                  style=self.styles.get(widgetname),\
+		                                  center_widget=self.center_widgets)
 
 	def reload(self, widgetname):
 		"""Reloads a widget"""

@@ -30,8 +30,8 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
-from horizons.util.gui import LazyWidgetsDict, adjust_widget_black_background
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.util.gui import LazyWidgetsDict
 from horizons.ambientsound import AmbientSound
 from horizons.i18n.utils import N_
 
@@ -121,7 +121,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				'quit'     : self.quit_session,
 			})
 			self.current.additional_widget = pychan.Icon(image="content/gui/images/background/transparent.png")
-			self.current.additional_widget.position = (0,0)
+			self.current.additional_widget.position = (0, 0)
 			self.current.additional_widget.show()
 			self.current.show()
 
@@ -161,7 +161,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_quit(self):
 		"""Shows the quit dialog """
 		message = _("Are you sure you want to quit Unknown Horizons?")
-		if self.show_popup(_("Quit Game"),message,show_cancel_button = True):
+		if self.show_popup(_("Quit Game"), message, show_cancel_button = True):
 			horizons.main.quit()
 
 	def quit_session(self, force=False):
@@ -191,13 +191,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
 		for box in self.widgets['credits'+str(number)].findChildren(name='box'):
-			box.margins = (30,0) # to get some indentation
+			box.margins = (30, 0) # to get some indentation
 			if number == 2: # #TODO fix this hardcoded translators page ref
 				box.padding = 1 # further decrease if more entries
 				box.parent.padding = 3 # see above
 		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl") \
 		              for section in ('team','patchers','translators','special_thanks')]
-		for i in xrange (0,4):
+		for i in xrange(4):
 			if label[i]: # add callbacks to each pickbelt that is displayed
 				label[i].capture(Callback(self.show_credits, i),
 				                 event_name="mouseClicked")
@@ -269,7 +269,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame in map_file_display: # savegamename already exists
 				message = _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % selected_savegame
-				if not self.show_popup(_("Confirmation for overwriting"),message,show_cancel_button = True):
+				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
 					self.current = old_current
 					return self.show_select_savegame(mode=mode) # reshow dialog
 		else: # return selected item from list
@@ -277,7 +277,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
 			if selected_savegame is None:
 				# ok button has been pressed, but no savegame was selected
-				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."));
+				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."))
 				self.current = old_current
 				return self.show_select_savegame(mode=mode) # reshow dialog
 		self.current = old_current # reuse old widget
@@ -399,7 +399,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
 		if center:
-			self.current.position_technique="automatic" # "center:center"
+			self.current.position_technique = "automatic" # "center:center"
 		if event_map:
 			self.current.mapEvents(event_map)
 		if show:

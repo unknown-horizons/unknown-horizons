@@ -18,6 +18,9 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+import logging
+
 from fife.extensions import pychan
 from horizons.gui.widgets.tooltip import TooltipButton
 
@@ -29,6 +32,7 @@ class TabWidget(object):
 	"""The TabWidget class handles widgets which consist of many
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""
+	log = logging.getLogger("gui.tabs.tabwidget")
 
 	def __init__(self, ingame_gui, tabs=None, position=None, name=None, active_tab=None):
 		"""
@@ -92,6 +96,12 @@ class TabWidget(object):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
+		if not number in range(len(self._tabs)):
+			# this usually indicates a non-critical error, therefore we can handle it without crashing
+			import traceback
+			traceback.print_stack()
+			self.log.warn("Invalid tab number %s, available tabs: %s", number, self._tabs)
+			return
 		self.current_tab.hide()
 		new_tab = self._tabs[number]
 		old_bg = self.content.findChild(name = "bg_%s" % self._tabs.index(self.current_tab))

@@ -50,7 +50,7 @@ class BuySellInventory(pychan.widgets.Container):
 		self._inventory = inventory
 		self._limits = limits
 		self._selling = selling
-		self.__icon = pychan.widgets.Icon("content/gui/icons/ship/civil_16.png")
+		self.__icon = pychan.widgets.Icon(image="content/gui/icons/ship/civil_16.png")
 		self.update()
 
 	def update(self):

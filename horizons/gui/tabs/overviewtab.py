@@ -352,6 +352,16 @@ class ProductionOverviewTab(OverviewTab):
 		Scheduler().rem_all_classinst_calls(self)
 		super(ProductionOverviewTab, self).on_instance_removed()
 
+class FarmProductionOverviewTab(ProductionOverviewTab):
+	production_line_gui_xml = "overview_farmproductionline.xml"
+
+	def  __init__(self, instance):
+		super(ProductionOverviewTab, self).__init__(
+			widget = 'overview_farm.xml',
+			instance = instance
+		)
+		self.tooltip = _("Production overview")
+
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(SettlerOverviewTab, self).__init__(

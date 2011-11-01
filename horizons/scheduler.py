@@ -63,7 +63,7 @@ class Scheduler(LivingObject):
 
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
-			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, [unicode(i) for i in  self.schedule[self.cur_tick]])
+			self.log.debug("Scheduler: tick %s, cbs: %s", self.cur_tick, len(self.schedule[self.cur_tick]))
 
 			# use iteration method that works in case the list is altered during iteration
 			# this can happen for e.g. rem_all_classinst_calls
@@ -74,7 +74,7 @@ class Scheduler(LivingObject):
 				#       (i.e. if e.g. pop() was used here). This is an indication of invalid assumptions
 				#       in the program and should be fixed.
 
-				self.log.debug("Scheduler(t:%s) calling %s", tick_id, callback)
+				self.log.debug("S(t:%s): %s", tick_id, callback)
 				callback.callback()
 				assert callback.loops >= -1
 				if callback.loops != 0:
@@ -223,4 +223,8 @@ class CallbackObject(object):
 		self.class_instance = class_instance
 
 	def __str__(self):
-		return "SchedCallback(%s on %s)" % (self.callback, self.class_instance)
+		cb = str(self.callback)
+		if "_move_tick" in cb: # very crude measure to reduce log noise
+			return "(_move_tick,%s)" %  self.class_instance.worldid
+
+		return "SchedCb(%s on %s)" % (cb, self.class_instance)
