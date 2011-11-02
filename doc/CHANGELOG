@@ -3,28 +3,31 @@ Unknown Horizons
 
 -----------------------------------------------------
 
-2011-??-??: Milestone 2011.3
-changelog date: SEP 06; rev: 508268b13f31bca06e12d143fd270e917d5cf0d6
+2011-11-0?: Milestone 2011.3
+changelog date: NOV 02; rev: 233cae93d2963a3637203d9ae6e6352ded25a2de
 
 Gameplay and Balancing
 * New features
    + trade routes can wait for load and unload
-   + support for international trade routes
+   + support for international trade routes: player<->player trade
    + new in-game pause menu, replaces pause popup and in-game menu
    + hotkey "T" toggles translucency of trees and mountains
    + player score widget, accessed through F2
    + player settlement overview, accessed through F3
    + player ship list, accessed through F4
-   + allow/deny inhabitant upgrades 
+   + allow/deny inhabitant upgrades
    + show hint when user tries to build something without a settlement
+   + option to build uninterrupted (was: need to hold SHIFT)
 
 * Modifications and changes
    # unload all resources in ship inventory when a new settlement gets founded
+   # allow lower resolutions until 800x600
    # rename market place to main square
    # modified ALL resource values, refer to development/print_db_data.py res
      for the new values. Drastically lowered the price of most resources.
    # settler consumption formula now properly considers number of inhabitants
    # settler tax and happiness formula
+   # increase base taxes paid by one settler level. Now 3/6/10 (was: 2/3/6)
    # game speed array now is [0.5x 1x 2x 3x 4x 6x 8x 11x]
    # 'raw' resources now have reasonable names (sugar cane, tobacco plants).
      Also renamed raw iron and raw clay to iron and clay deposit, respectively.
@@ -33,11 +36,14 @@ Gameplay and Balancing
    # fisher boats cannot be built as of now
    # boat builder allows construction of huker and frigate
    # open ship inventory tab after trade became impossible (ship left BO range)
-   # 
+   # free trader and fisher boats are invincible
+   # boat builder and branch office build restrictions: need deep sea water now
+
 * Fixed bugs and problems
    ~ mutable default arguments caused resource deposits to be empty
    ~ check full area of branch office for other settlements before building
-   ~ 
+   ~ loading caused decommissioned buildings to have active production costs
+
 
 Media Content
 * New files and features
@@ -45,32 +51,42 @@ Media Content
    + building: wooden storage hut
    + icon: diplomacy in minimap panel
    + icon: trade route slot modes (load ship, unload ship)
+   + icon: trade route access buttons
    + icon: combat stances aggressive, hold ground, none, flee
    + icon: allow/deny inhabitant upgrade
    + icon: several build menu and resource icons
    + voice: french map_creation by seblabel
    + colors: purple, orange, teal, lemon, bordeaux, gray
-   + 
+
 * Brush-ups and modifications
    # icon: all minimap panel icons
    # icon: all player emblems (also added new ones)
-   # 
+   # font: update Linux Libertine to version 5
+   # image: more saturation for main menu background
 
 User Interface
 * Additions and new features
    + random map parameters: island size (max, mean, sd), map size, water ratio
    + map parameters in UI: AI players, resource density, free trader and pirate
+   + save random map parameters to settings file
    + display error message when yaml can't be found
    + build menu now updates when inhabitants upgrade
    + buoys now also displayed for user interactions like trade routes
-   + 
+   + show hint when user tries to build something without a settlement
+   + recommended players per map displayed in map selection widget
+   + notification messages about why trade actions were invalid
+
 * Repositioning and modifications
    # use unicode strings for all ship names
    # use templates for different boxes in singleplayer menu
    # removed need for adjust_black_background
    # slim minimap images, icon positioning in minimap panel
    # remove the main square overview tab
-   #
+   # reposition city_info on low resolutions to not overlap HUD
+   # = key now also increases game speed (was: + only)
+   # pausing the game disables all game interactions
+   # city_info now displays player emblem
+
 * Fixed bugs and usability problems
    ~ boxes in settings expanded for some languages, buttons were unreachable
    ~ in-game ui appeared around the main menu under certain conditions
@@ -82,7 +98,11 @@ User Interface
    ~ display needed resources if hovering 'Found settlement' in ship overview
    ~ disable game speed buttons when min / max is reached or the game is paused
    ~ disable speed buttons in MP session
-   ~ 
+   ~ clearly indicate that increment 3 is the current maximum
+   ~ remove building-specific Destroy Building button. Use Destroy tool (X key)
+   ~ instantly redraw building range (was: delayed for at least 0.1 seconds)
+   ~ immediately update cam after click
+
 
 Codebase
 * New functionalities
@@ -94,7 +114,9 @@ Codebase
    + unified statistics widget
    + 'noi18n' name for widgets that are not planned to be translated
    + speech implementation
-   +
+   + gzip logfile compression
+   + dev cmdline option --no-preload to never start preloading
+   + tool to generate statistic for MP server using rrdtool
 
 * Modified structures
    # deselect instances before removal
@@ -107,7 +129,13 @@ Codebase
    # modified size of rect created by Rect.init_from_topleft_and_size
    # max player value also limits amount of AI players
    # captain's log now also uses StatsWidget
-   # 
+   # rename build menu icons to use building ID (was: ambiguous building name)
+   # temporarily remove settler.sql
+   # game data on windows now stored in My Games
+   # multiplayer code refactoring. Includes command whitelisting for safety
+   # DistUtilsExtra no longer is dependency for building i18n files
+   # removed adjust_widget_black_background
+
 * Fixed crashes and inconsistencies
    ~ most tests crashed on windows (open file handle)
    ~ scheduler removes callbacks of current tick as well now
@@ -119,19 +147,27 @@ Codebase
    ~ loading games could fail on mac due to .DS_Store files in content/
    ~ two segfaults related to quitting the game
    ~ collectors now teleport home if they cannot find a way home
-   ~ 
+   ~ crashes related to ship removal and AttackCommand
+   ~ animal pathfinding crashes: blocked path while being built on
+   ~ problem with utf-8 in filenames on the windows console
+   ~ no yaml cache if utf8 characters in windows username (bsddb bug in python)
+   ~ crash related to FIFE console evaluations overwriting gettext _
+
 
 User-Contributed Content
 * Translations
    + new translations: sv
    + new terminology translations: sv
-   + new tutorial translations: sv
+   + new tutorial translations: cs, es, pl, pt_BR, sv
    # updates to translations: bg, ca, cs, de, es, et, fi, fr, hu, it, lt, nb,
                               nl, pl, pt, pt_BR, ru, sl
    # updates to tutorial translations: de, fi, fr, it, nl, pt, ru
+
 * Campaigns and scenarios
-   + new scenario 'combat1' by mihaibivol
+   + new scenario 'war_tutorial' by mihaibivol
+
 * Media Content
+
 * New team members with this release, Annotations
    + Push access was granted to:
      wentam
