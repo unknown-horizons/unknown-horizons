@@ -3036,7 +3036,6 @@ msgid "Loads the last quicksave."
 msgstr "Charge la dernière sauvegarde rapide."
 
 #: run_uh.py:108
-#, fuzzy
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
 "Définir les germes utilisés pour générer les arbres, poissons et autres "

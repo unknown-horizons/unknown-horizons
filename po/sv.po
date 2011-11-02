@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-30 04:17+0200\n"
+"PO-Revision-Date: 2011-10-30 05:20+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -242,7 +242,6 @@ msgstr "Smältverk"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Some of your settlers just moved out."
 msgstr "Några av din nybyggare har flyttat ut."
 
@@ -306,14 +305,12 @@ msgstr "Träd"
 # Kallas endast skola?
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Village school"
 msgstr "Byskola"
 
 # Eg. Vävaretält. jämför weaver description. Byggnaden är inte ens ett tält, snarare en hydda.
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Weaver's Tent"
 msgstr "Vävare"
 
@@ -335,13 +332,11 @@ msgstr ""
 # eller segrat?
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
-#, fuzzy
 msgid "You have won!"
 msgstr "Du har vunnit!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "You need more ${resource} to build this building."
 msgstr "Du behöver mer ${resource} för att bygga den här byggnaden."
 
@@ -642,7 +637,6 @@ msgstr ""
 # 87%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "tobaccos"
 msgstr "tobak"
 
@@ -915,7 +909,6 @@ msgid "Failed to initialize networking."
 msgstr "Misslyckades med att initiera nätverk."
 
 #: horizons/gui/modules/multiplayermenu.py:53
-#, fuzzy
 msgid "Check the data you entered in the Network section in the settings dialogue."
 msgstr "Kontrollera datan du angav under Nätverk i inställnings dialogen."
 
@@ -1125,12 +1118,10 @@ msgid "It is not possible to equip a trade ship with weapons"
 msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:133
-#, fuzzy
 msgid "Equip weapon"
 msgstr "Bestycka vapen"
 
 #: horizons/gui/tabs/inventorytab.py:136
-#, fuzzy
 msgid "Unequip weapon"
 msgstr "Avbestycka vapen"
 
@@ -1234,7 +1225,6 @@ msgstr "Begränsa: %st per plats"
 
 # Rubriken när loggboken är tom. Något bättre alternativ?
 #: horizons/gui/widgets/logbook.py:156
-#, fuzzy
 msgid "Emptiness"
 msgstr "Tomhet"
 
@@ -1442,7 +1432,6 @@ msgstr "Gruvarbete"
 # Korrekt översatt men ser väldigt dumt ut. Några andra förslag?
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:126
-#, fuzzy
 msgid "Settler buildings"
 msgstr "Nybyggarbyggnader"
 
@@ -1662,14 +1651,12 @@ msgstr "(förlora alla resurser)"
 # Vagt?
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py:246
-#, fuzzy
 msgid "Currently building:"
 msgstr "Nuvarande byggnation:"
 
 # Fritt översatt?
 #. (text of widget: BB_howto_build_lbl)
 #: horizons/i18n/guitranslations.py:248
-#, fuzzy
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
 "För att bygga ett fartyg, klicka på en av flikarna, välj önskat fartyg och "
@@ -1678,7 +1665,6 @@ msgstr ""
 # procent färdigt?
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
 #: horizons/i18n/guitranslations.py:250
-#, fuzzy
 msgid "Construction progress:"
 msgstr "Framsteg i byggnationen:"
 
@@ -1689,7 +1675,6 @@ msgstr "Byggnadsöversikt"
 
 #. (tooltip of widget: BB_cancel_button) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:254
-#, fuzzy
 msgid "Cancel all building progress"
 msgstr "Avbryt all byggnation"
 
@@ -1727,7 +1712,6 @@ msgstr "Köp varor"
 
 #. (text of widget: buysell_help_label)
 #: horizons/i18n/guitranslations.py:285
-#, fuzzy
 msgid "Click on slot icon to toggle mode:"
 msgstr "Klicka på en platsikon för att växla läge:"
 
@@ -1812,7 +1796,6 @@ msgstr "Genomsnittlig lycka:"
 # mest behövda resurs? Krockar med vara som används i andra delar av översättningen.
 #. (text of widget: most_needed_res_lbl)
 #: horizons/i18n/guitranslations.py:343
-#, fuzzy
 msgid "Most needed resource:"
 msgstr "Mest behövda vara:"
 
@@ -1954,7 +1937,6 @@ msgstr "Vapen:"
 # Låter uppåt väggarna märkligt, men kan stämma.
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:475
-#, fuzzy
 msgid "capacity utilization"
 msgstr "kapacitetsutnyttjande"
 
@@ -1973,7 +1955,6 @@ msgstr ""
 # resurser, varor eller råvaror.
 #. (text of widget: res_dep_description_lbl2) It == The resource deposit
 #: horizons/i18n/guitranslations.py:486
-#, fuzzy
 msgid "It contains these resources:"
 msgstr "Innehåller dessa resurser:"
 
@@ -1986,7 +1967,6 @@ msgstr "Varor som behövs:"
 #. (tooltip of widget: happiness_label)
 #. (tooltip of widget: happiness)
 #: horizons/i18n/guitranslations.py:495 horizons/i18n/guitranslations.py:509
-#, fuzzy
 msgid "Happiness"
 msgstr "Lycka"
 
@@ -2119,7 +2099,6 @@ msgstr "Avsluta"
 # Lista eller bestämd form listan?
 #. (tooltip of widget: add_bo) List of harbors in trade route
 #: horizons/i18n/guitranslations.py:622
-#, fuzzy
 msgid "Add to list"
 msgstr "Lägg till i lista"
 
@@ -2569,7 +2548,6 @@ msgstr ""
 # volym för effekter?
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py:871
-#, fuzzy
 msgid "Effects volume:"
 msgstr "Effektvolym:"
 
@@ -2611,7 +2589,6 @@ msgstr "Möjliggör rotation av världskartan:"
 # volym för musik?
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:889
-#, fuzzy
 msgid "Music volume:"
 msgstr "Musikvolym:"
 
@@ -2662,7 +2639,6 @@ msgstr "Rendering:"
 
 #. (text of widget: warning)
 #: horizons/i18n/guitranslations.py:909
-#, fuzzy
 msgid "Please make sure that you know what you do."
 msgstr "Var säker på att du vet vad du gör."
 
