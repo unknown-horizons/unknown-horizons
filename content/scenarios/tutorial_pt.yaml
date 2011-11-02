@@ -270,7 +270,7 @@ events:
         \ necess\xE1rias para teres em stock 30 ferramentas!"]
     type: logbook
   - arguments: [!!python/unicode 'Atinge o limite de, pelo menos, 30 ferramentas em
-        stock na ilha.']
+        stock na ilha.', !!python/unicode 'Note that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var

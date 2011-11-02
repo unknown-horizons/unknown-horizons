@@ -299,7 +299,8 @@ events:
         \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
         \ as you need to have 30 tools in stock!"]
     type: logbook
-  - arguments: ["Varastoi saarellesi v\xE4hint\xE4\xE4n 30 ty\xF6kalua."]
+  - arguments: ["Varastoi saarellesi v\xE4hint\xE4\xE4n 30 ty\xF6kalua.", !!python/unicode 'Note
+        that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
