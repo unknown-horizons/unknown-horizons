@@ -664,15 +664,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		@param point: coords as Point
 		@return: instance of Ground at x, y
 		"""
-		return self.full_map[(point.x, point.y)]
-
-	def get_settlement(self, point):
-		"""Returns settlement on point. Very fast (O(1)).
-		Returns None if point isn't on world.
-		@param point: instance of Point
-		@return: instance of Settlement or None"""
 		try:
-			return self.get_tile(point).settlement
+			return self.full_map[(point.x, point.y)]
 		except KeyError:
 			return None
 
@@ -683,13 +676,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		for i in self.islands:
 			settlements.extend(i.settlements)
 		return settlements
-
-	def get_building(self, point):
-		"""Returns the building at the position x, y.
-		@param point: Point instance
-		@return: Building class instance if a building is found, else None."""
-		i = self.get_island(point)
-		return None if i is None else i.get_building(point)
 
 	def get_island(self, point):
 		"""Returns the island for that coordinate, if none is found, returns None.

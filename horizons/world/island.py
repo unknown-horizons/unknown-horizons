@@ -178,43 +178,6 @@ class Island(BuildingOwner, WorldObject):
 			if tup in self.ground_map:
 				yield self.ground_map[tup]
 
-	def get_building(self, point):
-		"""Returns the building at the point
-		@param point: position of the tile to look on
-		@return: Building class instance or None if none is found.
-		"""
-		try:
-			return self.ground_map[point.to_tuple()].object
-		except KeyError:
-			return None
-
-	def get_settlement(self, point):
-		"""Look for a settlement on a specific tile
-		@param point: Point to look on
-		@return: Settlement at point, or None"""
-		try:
-			return self.get_tile(point).settlement
-			# some tiles might be none, so we have to catch that error here
-		except AttributeError:
-			return None
-
-	def get_settlements(self, rect, player = None):
-		"""Returns the list of settlements for the coordinates describing a rect.
-		@param rect: Area to search for settlements
-		@return: list of Settlement instances at that position."""
-		settlements = set()
-		if self.rect.intersects(rect):
-			for point in rect:
-				try:
-					if player is None or self.get_tile(point).settlement.owner == player:
-						settlements.add( self.get_tile(point).settlement )
-				except AttributeError:
-					# some tiles don't have settlements, we don't explicitly check for them cause
-					# its faster this way.
-					pass
-			settlements.discard(None) # None values might have been added, we don't want them
-		return list(settlements)
-
 	def add_settlement(self, position, radius, player):
 		"""Adds a settlement to the island at the position x, y with radius as area of influence.
 		@param position: Rect describing the position of the new branch office
