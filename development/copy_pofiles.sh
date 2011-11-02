@@ -67,7 +67,7 @@ for tutfile in $(ls $TL_SOURCE/uh-tutorial/*.po |$TL_TUT_UNGREP); do
 	#fi
 done;
 
-INCOMPLETE=( bg  ca@valencia  cs  da  et  hu  lt  nb  pt_BR  sl)
+INCOMPLETE=( bg  ca@valencia  da  et  hu  lt  nb  sl)
 echo 'Removing these tutorial translations:'
 for file in ${INCOMPLETE[@]}; do
 	tl_tut_check "$TL_TUT_TEMPDIR/$file.po" | perl -npe 's,(po_temp_tutorial//|messages|translations),\t,g'

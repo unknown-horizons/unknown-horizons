@@ -202,6 +202,9 @@ class View(ChangeListener):
 		cell_dim = self.cam.getCellImageDimensions()
 		screen_width_as_coords = (horizons.main.fife.engine_settings.getScreenWidth()/cell_dim.x + 1, \
 		                          horizons.main.fife.engine_settings.getScreenHeight()/cell_dim.y + 1)
+		zoom = self.get_zoom()
+		screen_width_as_coords = (int(screen_width_as_coords[0] / zoom) ,
+		                          int(screen_width_as_coords[1] / zoom))
 		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0]/2), \
 		                                       coords.y - (screen_width_as_coords[1]/2),
 		                                       *screen_width_as_coords)

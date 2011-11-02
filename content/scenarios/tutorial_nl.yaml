@@ -365,7 +365,7 @@ events:
         \ as you need to have 30 tools in stock!"]
     type: logbook
   - arguments: [!!python/unicode 'Bereik een voorraad van tenminste 30 stuks gereedschap
-        op het eiland.']
+        op het eiland.', !!python/unicode 'Note that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var

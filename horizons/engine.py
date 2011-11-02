@@ -233,8 +233,8 @@ class Fife(ApplicationBase):
 		"""
 		possible_resolutions = []
 
-		_MIN_X = 1024
-		_MIN_Y = 768
+		_MIN_X = 800
+		_MIN_Y = 600
 
 		devicecaps = fife.DeviceCaps()
 		devicecaps.fillDeviceCaps()
