@@ -23,16 +23,16 @@ from horizons.util import WorldObject
 from horizons.constants import RES, TRADER
 from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component import Component
 
-class TradePost(object):
+class TradePostComponent(Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
 	"""
 	def __init__(self):
-		super(TradePost, self).__init__()
-		self.__init()
+		super(TradePostComponent, self).__init__()
 
-	def __init(self):
+	def initialize(self):
 		self.buy_list = {} # dict of resources that are to be bought. { res_id: limit, .. }
 		self.sell_list = {} # dict of resources that are to be sold.  { res_id: limit, .. }
 		self.buy_history = {} # { tick_id: (res, amount, price) }
@@ -55,25 +55,25 @@ class TradePost(object):
 			del self.sell_list[res_id]
 
 	def save(self, db):
-		super(TradePost, self).save(db)
+		super(TradePostComponent, self).save(db)
 
 		for resource, limit in self.buy_list.iteritems():
 			assert limit is not None, "limit must not be none"
 			db("INSERT INTO trade_buy(object, resource, trade_limit) VALUES(?, ?, ?)",
-				 self.worldid, resource, limit)
+				 self.instance.worldid, resource, limit)
 
 		for resource, limit in self.sell_list.iteritems():
 			assert limit is not None, "limit must not be none"
 			db("INSERT INTO trade_sell(object, resource, trade_limit) VALUES(?, ?, ?)",
-				 self.worldid, resource, limit)
+				 self.instance.worldid, resource, limit)
 
 		db("INSERT INTO trade_values(object, total_income, total_expenses) VALUES (?, ?, ?)",
-		   self.worldid, self.total_income, self.total_expenses)
+		   self.instance.worldid, self.total_income, self.total_expenses)
 
 	def load(self, db, worldid):
-		super(TradePost, self).load(db, worldid)
+		super(TradePostComponent, self).load(db, worldid)
 
-		self.__init()
+		self.initialize()
 
 		for (res, limit) in db("SELECT resource, trade_limit FROM trade_buy WHERE object = ?", worldid):
 			self.buy_list[res] = limit

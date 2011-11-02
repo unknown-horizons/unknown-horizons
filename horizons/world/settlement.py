@@ -21,7 +21,7 @@
 
 import horizons.main
 
-from horizons.world.tradepost import TradePost
+from horizons.world.tradepost import TradePostComponent
 from horizons.world.storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList
 from horizons.constants import BUILDINGS, SETTLER
@@ -30,7 +30,7 @@ from horizons.world.component.namedcomponent import SettlementNameComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.changelistener import ChangeListener
 
-class Settlement(WorldObject, ComponentHolder, ChangeListener, TradePost):
+class Settlement(WorldObject, ComponentHolder, ChangeListener):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, session, owner):
@@ -44,6 +44,7 @@ class Settlement(WorldObject, ComponentHolder, ChangeListener, TradePost):
 		self.session = session
 		self.owner = owner
 		self.add_component(SettlementNameComponent())
+		self.add_component(TradePostComponent())
 		self.add_component(StorageComponent(inventory = PositiveSizedSlotStorage(0)))
 		self.buildings = []
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too

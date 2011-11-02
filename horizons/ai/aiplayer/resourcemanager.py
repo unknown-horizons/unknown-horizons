@@ -29,6 +29,8 @@ from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.tradepost import TradePostComponent
+from horizons.world.settlement import Settlement
 
 class ResourceManager(WorldObject):
 	"""
@@ -253,6 +255,7 @@ class ResourceManager(WorldObject):
 		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
 		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]
 		settlement = self.settlement_manager.settlement
+		assert isinstance(settlement, Settlement)
 		inventory = settlement.get_component(StorageComponent).inventory
 		session = self.settlement_manager.session
 		gold = self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD_ID]
@@ -293,21 +296,23 @@ class ResourceManager(WorldObject):
 		buy_sell_list = sorted(buy_sell_list)[:3]
 		bought_sold_resources = zip(*buy_sell_list)[1]
 		# make sure the right resources are sold and bought with the right limits
+		sell_list = settlement.get_component(TradePostComponent).sell_list
+		buy_list = settlement.get_component(TradePostComponent).buy_list
 		for resource_id in managed_resources:
 			if resource_id in bought_sold_resources:
 				limit, sell = buy_sell_list[bought_sold_resources.index(resource_id)][2:]
-				if sell and resource_id in settlement.buy_list:
+				if sell and resource_id in buy_list:
 					RemoveFromBuyList(settlement, resource_id).execute(session)
-				elif not sell and resource_id in settlement.sell_list:
+				elif not sell and resource_id in sell_list:
 					RemoveFromSellList(settlement, resource_id).execute(session)
-				if sell and (resource_id not in settlement.sell_list or settlement.sell_list[resource_id] != limit):
+				if sell and (resource_id not in sell_list or sell_list[resource_id] != limit):
 					AddToSellList(settlement, resource_id, limit).execute(session)
-				elif not sell and (resource_id not in settlement.buy_list or settlement.buy_list[resource_id] != limit):
+				elif not sell and (resource_id not in buy_list or buy_list[resource_id] != limit):
 					AddToBuyList(settlement, resource_id, limit).execute(session)
 			else:
-				if resource_id in settlement.buy_list:
+				if resource_id in buy_list:
 					RemoveFromBuyList(settlement, resource_id).execute(session)
-				elif resource_id in settlement.sell_list:
+				elif resource_id in sell_list:
 					RemoveFromSellList(settlement, resource_id).execute(session)
 
 	def finish_tick(self):

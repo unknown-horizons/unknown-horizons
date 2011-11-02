@@ -35,12 +35,6 @@ proj.directory-list = [{'dirloc': loc('development'),
                         'filter': 'All Source Files',
                         'include_hidden': False,
                         'recursive': True,
-                        'watch_for_changes': True},
-                       {'dirloc': loc('editor'),
-                        'excludes': (),
-                        'filter': '*',
-                        'include_hidden': False,
-                        'recursive': True,
                         'watch_for_changes': True}]
 proj.file-type = 'shared'
 proj.main-file = loc('run_uh.py')
