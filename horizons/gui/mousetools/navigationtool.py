@@ -42,6 +42,15 @@ class NavigationTool(CursorTool):
 		self.cmdlist.onCommand = self.onCommand
 
 		class CoordsTooltip(TooltipIcon):
+			@classmethod
+			def get_instance(cls, cursor_tool):
+				if cursor_tool.session.coordinates_tooltip is not None:
+					inst = cursor_tool.session.coordinates_tooltip
+					inst.cursor_tool = cursor_tool
+					return inst
+				else:
+					return CoordsTooltip(cursor_tool)
+
 			def __init__(self, cursor_tool, **kwargs):
 				super(CoordsTooltip, self).__init__(**kwargs)
 				cursor_tool.session.coordinates_tooltip = self
@@ -56,11 +65,11 @@ class NavigationTool(CursorTool):
 			def show_evt(self, evt):
 				if self.enabled:
 					x, y = self.cursor_tool._get_world_location_from_event(evt).to_tuple()
-					self.tooltip = str(x) + ', ' + str(y)
+					self.tooltip = str(x) + ', ' + str(y) + " "+_("Press H to remove this hint)"
 					self.position_tooltip(evt)
 					self.show_tooltip()
 
-		self.tooltip = CoordsTooltip(self)
+		self.tooltip = CoordsTooltip.get_instance(self)
 
 	def end(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
