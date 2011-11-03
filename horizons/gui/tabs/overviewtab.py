@@ -151,13 +151,15 @@ class ShipOverviewTab(OverviewTab):
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
+		unit_image = self.widget.child_finder('shipImage')
+		unit_image.image = 'content/gui/images/objects/ships/116/%s.png' % self.instance.id
 		self._init_combat()
 
 	def _init_combat(self): # no combat
 		weapons_wdg = self.widget.child_finder('weapon_storage')
 		weapons_wdg.parent.removeChild(weapons_wdg)
 		weapons_wdg = self.widget.child_finder('lbl_weapon_storage').text = \
-		            _("Trade ship")
+		            _("Trade ship") # no weapons, as opposed to displaying the weapons
 
 	def refresh(self):
 		# no weapons:
