@@ -85,7 +85,7 @@ INSERT INTO "building" VALUES(1,1,10,'Lookout','Housing','housing',1000,1,1,13,N
 INSERT INTO "building" VALUES(1,2,10,'Rampart','Housing','housing',1000,0,0,14,NULL,0,'Protects your settlement.');
 INSERT INTO "building" VALUES(1,1,0,'Trail','Path','path',10,0,0,15,'street-1',0,'Needed for collecting goods.');
 INSERT INTO "building" VALUES(1,1,10,'Log','Bridge','path',10,0,0,16,NULL,0,'Road across a river.');
-INSERT INTO "building" VALUES(1,1,0,'Tree','Tree','nature',10,0,0,17,'tree-1',0, NULL);
+INSERT INTO "building" VALUES(1,1,0,'Tree','Tree','nature',10,0,0,17,'tree-1',0, 'Plant Trees');
 INSERT INTO "building" VALUES(3,3,0,'Pasture','Field','nature',10,0,0,18,'pasture-1',1,'Raises sheep. Produces wool. Needs a farm.');
 INSERT INTO "building" VALUES(3,3,0,'Potato Field','Field','nature',10,0,0,19,'potatofield-1',1,'Yields food. Needs a farm.');
 INSERT INTO "building" VALUES(3,3,3,'Farm','Farm','production',1000,2,2,20,'herder-1',1,'Grows field crops and raises livestock.');
