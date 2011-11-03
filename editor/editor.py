@@ -24,6 +24,13 @@
 import os
 import sys
 
+class DictObj:
+    def __init__(self, d):
+        self.d = d
+
+    def __getattr__(self, m):
+        return self.d.get(m)
+
 if __name__ == '__main__':
     import gettext
     gettext.install('', unicode=True) # necessary for init_environment
@@ -36,15 +43,16 @@ if __name__ == '__main__':
     from run_uh import init_environment, get_fife_path
     init_environment()
 
-    # init editor
-    params = None
-    if len(sys.argv) > 1:
-        params = sys.argv[1]
     editor_path = get_fife_path() + '/tools/editor'
     os.chdir(editor_path)
     sys.path.append(editor_path)
 
     # Start editor
+    options = {'plugin_dir': uh_path + '/editor/plugins'}
+    options = DictObj(options)
+    mapfile = None
+    if len(sys.argv) > 1:
+        mapfile = sys.argv[1]
     from scripts.editor import Editor
-    app = Editor(params)
+    app = Editor(options, mapfile)
     app.run()
