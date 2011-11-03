@@ -331,6 +331,10 @@ def set_translations():
 			"headline"                    : _("Inventory"),
 			"load_unload_label"           : _("Load/Unload:"),
 			},
+		"overview_farmproductionline.xml" : {
+			"toggle_active_active"        : _("Pause production"),
+			"toggle_active_inactive"      : _("Start production"),
+			},
 		"overview_productionline.xml" : {
 			"toggle_active_active"        : _("Pause production"),
 			"toggle_active_inactive"      : _("Start production"),
