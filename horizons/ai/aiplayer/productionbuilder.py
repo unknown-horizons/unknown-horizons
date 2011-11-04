@@ -494,6 +494,9 @@ class ProductionBuilder(AreaBuilder):
 						ToggleActive(building, production).execute(self.land_manager.session)
 						self.log.info('%s resumed a production at %s/%d', self, building.name, building.worldid)
 
+	def handle_mine_empty(self, mine):
+		Tear(mine).execute(self.session)
+
 	def __str__(self):
 		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
 

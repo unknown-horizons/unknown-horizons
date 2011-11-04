@@ -196,11 +196,10 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		   (hasattr(self, "_mine_empty_msg_shown") and \
 		    not self._mine_empty_msg_shown):
 			# all resources are gone from the mine.
-			self.session.ingame_gui.message_widget.add(self.position.center().x, \
-			                                           self.position.center().y, 'MINE_EMPTY')
 			self._mine_empty_msg_shown = True
 			if self.is_active():
 				self.set_active(active=False)
+			self.owner.notify_mine_empty(self)
 
 	def set_active(self, production=None, active=True):
 		super(Mine, self).set_active(production, active)
