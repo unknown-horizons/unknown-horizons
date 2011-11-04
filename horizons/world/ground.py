@@ -61,6 +61,16 @@ class Water(SurfaceTile):
 	is_water = True
 	layer = LAYERS.WATER
 
+class WaterDummy(Water):
+	def __init__(self, session, x, y):
+		# no super call, we don't have an instance
+		self.x = x
+		self.y = y
+
+		self.settlement = None
+		self.blocked = False
+		self.object = None
+
 
 class GroundClass(type):
 	"""
@@ -80,7 +90,8 @@ class GroundClass(type):
 		self.classes = ['ground[' + str(id) + ']']
 		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)
-		self._loadObject(db)
+		if id != -1	:
+			self._loadObject(db)
 
 	def __new__(self, db, id):
 		"""
@@ -88,6 +99,8 @@ class GroundClass(type):
 		"""
 		if id == GROUND.WATER:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Water,), {})
+		elif id == -1:
+			return type.__new__(self, 'Ground[' + str(id) + ']', (WaterDummy,), {})
 		else:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
 
@@ -133,6 +146,6 @@ class GroundClass(type):
 					img = horizons.main.fife.imagemanager.create(file)
 					atlas_id, xpos, ypos, width, height = db("SELECT atlas_id, xpos, ypos, width, height FROM tile_sets_atlas where file = ?", file)[0]
 					region = fife.Rect(xpos, ypos, width, height)
-					img.useSharedImage(horizons.main.fife.animationloader.atlaslib[atlas_id], region)				
-				
+					img.useSharedImage(horizons.main.fife.animationloader.atlaslib[atlas_id], region)
+
 			visual.addStaticImage(int(rotation), img.getHandle())
