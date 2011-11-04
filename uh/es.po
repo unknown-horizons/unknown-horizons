@@ -814,14 +814,17 @@ msgstr "Detalles:"
 msgid "Error:"
 msgstr "Error:"
 
+# 94%
 #: horizons/gui/gui.py:426
+#, fuzzy
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Fecha desconocida\n"
 
+# 91%
 #: horizons/gui/gui.py:428
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at %s"
-msgstr ""
+msgstr "Guardado en %s\n"
 
 #: horizons/gui/gui.py:432
 #, python-format
