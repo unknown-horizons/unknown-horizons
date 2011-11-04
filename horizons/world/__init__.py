@@ -187,9 +187,16 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
-		for x in xrange(self.min_x-border, self.max_x+border, 1):
-			for y in xrange(self.min_y-border, self.max_y+border, 1):
+		for x in xrange(self.min_x, self.max_x, 1):
+			for y in xrange(self.min_y, self.max_y, 1):
 				self.ground_map[(x, y)] = default_grounds(self.session, x, y)
+		default_grounds = Entities.grounds[4]
+		for x in xrange(self.min_x-border, self.max_x+border, 10):
+			for y in xrange(self.min_y-border, self.max_y+border, 10):
+				ground = default_grounds(self.session, x, y)
+				if self.min_x < x < self.max_x or self.min_y < y < self.max_y:
+					continue
+				self.ground_map[(x, y)] = ground
 		"""
 		for x in xrange(self.min_x-border, self.max_x+border, 10):
 			for y in xrange(self.min_y-border, self.max_y+border, 10):
