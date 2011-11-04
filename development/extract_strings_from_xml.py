@@ -122,7 +122,7 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 				text = 'VERSION.string()'
 			else:
 				text = '_("%s")' % text
-			i18n = element.getAttribute('i18n')
+			i18n = element.getAttribute('comment') # translator comment about widget context
 			comment = '(%s of widget: %s)' % (text_name, name) + (' %s' % (i18n) if i18n else '')
 			element_strings.append('# %s' %comment + ROWINDENT + '%-30s: (%-10s, %s)' % (('"%s"' % name), ('"%s"') % text_name, text))
 
