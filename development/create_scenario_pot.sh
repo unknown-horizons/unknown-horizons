@@ -48,8 +48,13 @@ COMMENT_MESSAGEWIDGET = 'This message is displayed in the widget on the left scr
 COMMENT_HEADING       = 'This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).'
 COMMENT_TEXT          = 'This is the text body of a logbook page.'
 
-def prep(x):
-	return x.replace("\n", r'\n').replace('"', r'\"')
+def prep(string):
+	retval = string.replace("\n",    r'\n')
+	retval = retval.replace('"',     r'\"')
+	retval = retval.replace(' [br]', r'[br]')
+	###############.replace('[br] ', r'[br]')
+	return retval
+
 def write(comment, string):
 	retval = '#%s\n' % comment + '_("%s")' % (string)
 	print retval.encode('utf-8')
@@ -82,12 +87,15 @@ for event in scenario['events']:
 END
 
 xgettext --output-dir=po --output=$1.pot \
-         --from-code=UTF-8 --add-comments \
-         --no-wrap --sort-by-file  \
+         --from-code=UTF-8 \
+	    --add-comments \
+	    --add-location \
+         --width=80 \
+	    --sort-by-file  \
          --copyright-holder='The Unknown Horizons Team' \
          --package-name='Unknown Horizons' \
          --package-version=$VERSION \
-         --msgid-bugs-address=team@unknown-horizons.org \
+         --msgid-bugs-address=translate-uh@lists.unknown-horizons.org \
          po/$1.py
 rm po/$1.py
 
@@ -112,10 +120,14 @@ import gettext
 translation = gettext.translation('$1', 'po/mo', ['$lang'])
 translation.install(unicode=True)
 
-def translate(x):
-	if isinstance(x, int) or not x:
-		return x
-	return _(x)
+def unprep(trans):
+	return trans.replace(' [br]', '[br]')
+	#########trans = trans.replace('[br] ', '[br]')
+
+def translate(arg):
+	if isinstance(arg, int) or not arg:
+		return arg
+	return (_(unprep(arg))).replace('[br] ', '[br]')
 
 scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
 
