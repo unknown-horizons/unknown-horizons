@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-14 21:29+0200\n"
+"PO-Revision-Date: 2011-11-05 04:11+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -1128,18 +1128,16 @@ msgstr ""
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:240
 #: horizons/i18n/guitranslations.py:348
-#, fuzzy
 msgid "Pioneers"
-msgstr "pioneeri"
+msgstr "Pioneeri"
 
 # 75%
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:408 horizons/i18n/guitranslations.py:646
-#, fuzzy
 msgid "Settlers"
-msgstr "asunik"
+msgstr "Asunik"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:49 horizons/gui/tabs/overviewtab.py:407
@@ -1784,34 +1782,30 @@ msgstr ""
 #. (text of widget: resident_1)
 #: horizons/i18n/guitranslations.py:356 horizons/i18n/guitranslations.py:387
 #: horizons/i18n/guitranslations.py:416
-#, fuzzy
 msgid "1 resident"
-msgstr "Elanikke"
+msgstr "1 elanik"
 
 # 88%
 # 81%
 #. (text of widget: resident_2)
 #: horizons/i18n/guitranslations.py:358 horizons/i18n/guitranslations.py:389
 #: horizons/i18n/guitranslations.py:418
-#, fuzzy
 msgid "2 residents"
-msgstr "Elanikke"
+msgstr "2 Elanikke"
 
 # 88%
 # 81%
 #. (text of widget: resident_3)
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:420
-#, fuzzy
 msgid "3 residents"
-msgstr "Elanikke"
+msgstr "3 Elanikke"
 
 # 88%
 #. (text of widget: residents)
 #: horizons/i18n/guitranslations.py:362 horizons/i18n/guitranslations.py:391
 #: horizons/i18n/guitranslations.py:426
-#, fuzzy
 msgid "residents"
-msgstr "Elanikke"
+msgstr "elanikke"
 
 #. (text of widget: tax_label)
 #: horizons/i18n/guitranslations.py:364 horizons/i18n/guitranslations.py:393
@@ -1858,17 +1852,15 @@ msgstr ""
 # 81%
 #. (text of widget: resident_4)
 #: horizons/i18n/guitranslations.py:422
-#, fuzzy
 msgid "4 residents"
-msgstr "Elanikke"
+msgstr "4 Elanikke"
 
 # 88%
 # 81%
 #. (text of widget: resident_5)
 #: horizons/i18n/guitranslations.py:424
-#, fuzzy
 msgid "5 residents"
-msgstr "Elanikke"
+msgstr "5 Elanikke"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:430
