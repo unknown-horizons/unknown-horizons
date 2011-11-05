@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-05 04:11+0200\n"
+"PO-Revision-Date: 2011-11-05 04:48+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -415,9 +415,8 @@ msgstr "savi"
 # 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "clay deposit"
-msgstr "Savi Lasund"
+msgstr "savi lasund"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1791,14 +1790,14 @@ msgstr "1 elanik"
 #: horizons/i18n/guitranslations.py:358 horizons/i18n/guitranslations.py:389
 #: horizons/i18n/guitranslations.py:418
 msgid "2 residents"
-msgstr "2 Elanikke"
+msgstr "2 elanikke"
 
 # 88%
 # 81%
 #. (text of widget: resident_3)
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:420
 msgid "3 residents"
-msgstr "3 Elanikke"
+msgstr "3 elanikke"
 
 # 88%
 #. (text of widget: residents)
@@ -1853,14 +1852,14 @@ msgstr ""
 #. (text of widget: resident_4)
 #: horizons/i18n/guitranslations.py:422
 msgid "4 residents"
-msgstr "4 Elanikke"
+msgstr "4 elanikke"
 
 # 88%
 # 81%
 #. (text of widget: resident_5)
 #: horizons/i18n/guitranslations.py:424
 msgid "5 residents"
-msgstr "5 Elanikke"
+msgstr "5 elanikke"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:430
