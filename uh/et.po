@@ -985,7 +985,6 @@ msgstr ""
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
 msgstr "Ressursi lasund:"
 
