@@ -300,6 +300,10 @@ class AIPlayer(GenericAI):
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s ship blocked (%s)", self, unit)
 
+	def notify_mine_empty(self, mine):
+		"""The Mine calls this function to let the player know that the mine is empty."""
+		self._settlement_manager_by_settlement_id[mine.settlement.worldid].production_builder.handle_mine_empty(mine)
+
 	def on_settlement_expansion(self, settlement, coords):
 		""" stores the ownership change in a list for later processing """
 		if settlement.owner is not self:

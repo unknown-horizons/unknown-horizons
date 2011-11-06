@@ -97,6 +97,7 @@ class Unit(AmbientSound, MovingObject):
 		height = int(5 * zoom)
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
+		# coord separating health (green) from damaged (red)
 		mid_node_up = fife.RendererNode(self._instance, \
 									fife.Point(-width/2+int(((health/max_health)*width)),\
 		                                       y_pos-height)
@@ -106,19 +107,20 @@ class Unit(AmbientSound, MovingObject):
 		                                             -width/2+int(((health/max_health)*width))
 		                                             ,y_pos)
 		                                         )
-		if health != 0:
+		if health != 0: # draw healthy part of health bar
 			renderer.addQuad("health_" + str(self.worldid), \
-			                fife.RendererNode(self._instance, \
-			                                         fife.Point(-width/2, y_pos-height)), \
+			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos-height)), \
 			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)), \
 			                mid_node_down, \
 			                mid_node_up, \
 			                0, 255, 0)
-		if health != max_health:
-			renderer.addQuad("health_" + str(self.worldid), fife.RendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)), \
+		if health != max_health: # draw damaged part
+			renderer.addQuad("health_" + str(self.worldid),
+			                 mid_node_up, \
 			                 mid_node_down, \
-			                 mid_node_up, 255, 0, 0)
+			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)), \
+			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
+			                 255, 0, 0)
 
 	def hide(self):
 		"""Hides the unit."""

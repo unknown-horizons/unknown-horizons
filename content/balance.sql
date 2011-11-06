@@ -188,7 +188,7 @@ INSERT INTO "production" VALUES(47,31,1);
 INSERT INTO "production" VALUES(48,31,-2);
 INSERT INTO "production" VALUES(48,32,1);
 INSERT INTO "production" VALUES(49,33,2);
-INSERT INTO "production" VALUES(50,34,3);
+INSERT INTO "production" VALUES(50,34,4);
 INSERT INTO "production" VALUES(51,33,-1);
 INSERT INTO "production" VALUES(51,35,1);
 INSERT INTO "production" VALUES(52,34,-1);
