@@ -53,6 +53,7 @@ class AttackingTool(SelectionTool):
 						Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
 			evt.consume()
 		else:
+			self.deselect_at_end = False
 			super(AttackingTool, self).mousePressed(evt)
 
 	def mouseMoved(self, evt):
