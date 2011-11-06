@@ -13,8 +13,8 @@ description: !!python/unicode 'De tutorial:
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: [!!python/unicode 'Bouw een hoofdkantoor aan de kust, zodat deze makkelijk
+        bereikbaar is voor andere schepen als die van de vrije handelaar.']
     type: message
   - arguments: [!!python/unicode 'Welkom bij Unknown Horizons!', "Dit is uw logboek\
         \ waar alle belangrijke informatie staat opgeslagen. Een korte notificatie\
@@ -58,29 +58,29 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: BOUW EEN HOUTHAKKER', !!python/unicode 'The
-        construction material on your ship got unloaded automatically. You can now
-        construct some basic buildings.
+  - arguments: [!!python/unicode 'OPDRACHT: BOUW EEN HOUTHAKKER', !!python/unicode 'Het
+        bouwmateriaal is automatisch van je schip gelost. U kunt nu met de bouw van
+        een aantal basisgebouwen beginnen.
 
 
-        We will start with building a lumberjack.
+        We zullen starten met het bouwen van een houthakker.
 
 
-        This is essential because, at this stage, boards are the only poles your sailors
-        can afford to hang their tents over.
+        Dit is essentieel omdat, in dit stadium, planken het enige betaalbare zijn
+        waar je bemanning hun tenten over kunnen hangen.
 
 
-        The fisherman needs some boards to build his vessel as well.
+        De visser zal ook een aantal planken nodig hebben om zijn boot te bouwen.
 
 
-        In order to construct lumberjacks; open the build menu by either clicking
-        the big icon below the mini map or pressing B key.
+        Om houthakkers te bouwen open je het menu door te drukken op het grote icoon
+        onder de minimap, of door op de B te drukken op het toetsenbord.
 
 
-        The build menu is sorted by increments.
+        Het bouwmenu is opgesteld in reeksen.
 
-        You are currently in the first increment (the Sailors level) so are offered
-        only the basic buildings.']
+        Momenteel zit u in de basisreeks (de zeemansreeks), u kunt hierdoor alleen
+        de basisgebouwen bouwen.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'Met het uitbreiden van uw kolonie kunnen ook
         complexere gebouwen geplaatst worden.
@@ -198,25 +198,23 @@ events:
 
         OPDRACHT: Plaats een plein.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Laten we het plein nader bekijken.
+  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
 
 
-        In het overzicht scherm kunt u belastingen eenvoudig aanpassen.
+        In the ''Account'' tab you get a balance sheet of this island, featuring all
+        costs you pay and all taxes you earn.
 
 
-        Het tweede scherm ''Rekening'' toont een balans, hierop staan alle kosten
-        die u betaald heeft en alle belastingen die u ontvangen heeft.
+        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
+        later on.
 
 
-        De opties ''Verkoop'' en ''Inkoop'' verwijzen naar de handels balans en zal
-        later uitgelegd worden.
+        If your balance is positive, you all-in-all make a profit.
 
 
-        Als de balans positief is betekent dit dat u winst maakt.
-
-
-        In het scherm ''Kolonisten'' kunt u zien hoe blij de inwoners zijn en welke
-        goederen ze het meest nodig hebben.']
+        In the different increment overview tabs you can see statistics about your
+        inhabitants. You also set the increment-specific global tax here and allow
+        or deny inhabitants of this increment to upgrade to the next higher one.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een plein. Kies een gebied zonder economische
         gebouwen.']
@@ -367,7 +365,7 @@ events:
         \ as you need to have 30 tools in stock!"]
     type: logbook
   - arguments: [!!python/unicode 'Bereik een voorraad van tenminste 30 stuks gereedschap
-        op het eiland.']
+        op het eiland.', !!python/unicode 'Note that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -401,26 +399,26 @@ events:
 
         Veel later in het spel zullen er ook upgrades voor de gebouwen komen.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'In het geval dat de ''kleine'' versie niet meer
-        nodig is omdat de ''grote'' ook biedt wat uw inwoners kleine versie zoeken.
+  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
 
 
-        Probeer rekening te houden bij het ontwikkelen van uw stad dat de geavanceerde
-        gebouwen groter zijn dan de basis gebouwen.
+        This means that your inhabitants need a road connection to the producer (pavilion)
+        to pick up faith there.
+
+        After some time, they will have consumed it and then again look for a producer
+        to collect more faith.
 
 
-        Let erop dat geloof wordt behandeld als een fysieke grondstof, eenheden moeten
-        zich na bepaalde tijd verfrissen.
+        Important:
+
+        It is NOT enough that the building is merely within a certain range of the
+        tents.
+
+        The road connection is required as well.
 
 
-        Belangrijk:
-
-        Het is NIET voldoende dat het gebouw alleen maar binnen een bepaalde afstand
-        van de tent staat.
-
-
-        OPDRACHT: Plaats een paviljoen met een pad naar de tenten om te voldoen aan
-        de vraag naar geloof van de zeelui.']
+        TASK: Build a pavilion with a trail to the tents in order to fulfill your
+        sailors'' demand for faith.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een paviljoen met verbinding naar de tenten.']
     type: message

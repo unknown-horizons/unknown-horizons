@@ -61,7 +61,7 @@ class TradeManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer.trademanager")
 
 	# resources that can be produced on another island and transported to where they are needed
-	legal_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.BRICKS_ID]
+	legal_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.BRICKS_ID, RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]
 
 	def __init__(self, settlement_manager):
 		super(TradeManager, self).__init__()
@@ -337,6 +337,8 @@ class SingleResourceTradeManager(WorldObject):
 			self.quotas[quota_holder] += change
 
 	def __str__(self):
+		if not hasattr(self, "resource_id"):
+			return "UninitializedSingleResourceTradeManager"
 		result = 'Resource %d import %.5f/%.5f' % (self.resource_id, self.available, self.total)
 		for quota_holder, quota in self.quotas.iteritems():
 			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)

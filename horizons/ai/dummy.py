@@ -20,13 +20,7 @@
 # ###################################################
 import horizons.main
 
-from horizons.entities import Entities
-from horizons.scheduler import Scheduler
-from horizons.util import Point, Callback, WorldObject
-from horizons.constants import RES, UNITS
-from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
-from horizons.world.units.movingobject import MoveNotPossible
 
 
 class DummyAI(GenericAI):

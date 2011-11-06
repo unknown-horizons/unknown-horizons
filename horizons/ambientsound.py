@@ -69,7 +69,7 @@ class AmbientSound(object):
 			# set to current position
 			if(hasattr(self, 'position') and self.position != None and self.__positioning):
 				self.__emitter.setPosition(self.position.center().x, self.position.center().y, 1)
-			self.__emitter.setSoundClip(horizons.main.fife.soundclippool.addResourceFromFile(soundfile))
+			self.__emitter.setSoundClip(horizons.main.fife.soundclipmanager.load(soundfile))
 			if play_every is None:
 				self.__emitter.setLooping(looping)
 			elif looping and play_every is not None:

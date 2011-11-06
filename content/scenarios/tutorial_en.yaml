@@ -116,7 +116,8 @@ events:
 "Excellent! The Free Trader will now stop by at your branch office from time to time.\n\nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.\n\nDragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold your 'target value' in stock. \nWhen selling the 'target value' is the number which you hold in reserve to not sell"]}
    - {type: logbook, arguments: ["",
 "For example: \nHaving a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.\n\nUnknown Horizons features smart pricing, so the value of one unit can vary.\nIt is NOT possible to change prices manually!\n\nYou can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools as you need to have 30 tools in stock!"]}
-   - {type: message, arguments: ["Reach an island stock of at least 30 tools."]}
+   - {type: message, arguments: ["Reach an island stock of at least 30 tools.", "Note that this might take a while."]}
+     # Multiple messages: Each gets shown after a certain delay (usually horizons.constants.CUSTOM_MSG_SHOW_DELAY)
    - {type: set_var, arguments: ["tutStepDone", 37]}
   conditions:
    - type: building_num_of_type_greater

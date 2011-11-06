@@ -23,8 +23,8 @@ from fife import fife
 
 import horizons.main
 
-from navigationtool import NavigationTool
-from selectiontool import SelectionTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.building import Tear
 from horizons.util import Point
 
@@ -42,12 +42,12 @@ class TearingTool(NavigationTool):
 		self.oldedges = None
 		self.tear_tool_active = True
 		self.session.gui.on_escape = self.on_escape
-		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.tearing_cursor_image)
+		horizons.main.fife.cursor.set(horizons.main.fife.tearing_cursor_image)
 
 	def end(self):
 		self._mark()
 		self.tear_tool_active = False
-		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
+		horizons.main.fife.cursor.set(horizons.main.fife.default_cursor_image)
 		super(TearingTool, self).end()
 
 	def mouseDragged(self, evt):

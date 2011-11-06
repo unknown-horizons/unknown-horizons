@@ -172,11 +172,11 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		if not Circle(self.return_position, self.move_range).contains(self.instance.position.center()) or \
 			not self.instance.is_attacking():
-				try:
-					self.instance.move(self.return_position)
-				except MoveNotPossible:
-					self.instance.move(Circle(self.return_position, self.stance_radius))
-				self.state = 'move_back'
+			try:
+				self.instance.move(self.return_position)
+			except MoveNotPossible:
+				self.instance.move(Circle(self.return_position, self.stance_radius))
+			self.state = 'move_back'
 
 	def get_target(self, radius):
 		"""

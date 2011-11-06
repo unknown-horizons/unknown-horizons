@@ -46,7 +46,7 @@ events:
         \ wurde automatisch in Euer Kontor entladen. Somit k\xF6nnt Ihr nun bereits\
         \ einige elementare Geb\xE4ude errichten.\n\nLasst uns mit dem Bau eines Holzf\xE4\
         llerlagers beginnen.\n\nDies ist wichtig, da Holz in dieser Stufe das einzige\
-        \ ist, womit Eure Seefahrer ihre Zelte aufschlagen k\xF6nnen.\n\nDer Fischer\
+        \ ist, womit Eure Seefahrer ihre Zelte aufschlagen k\xF6nnen.\nDer Fischer\
         \ braucht ebenfalls Bretter, um sein Ruderboot zu bauen.\n\nUm ein Holzf\xE4\
         llerlager zu errichten, ben\xF6tigt Ihr das Baumen\xFC. Klickt dazu auf das\
         \ gro\xDFe Werkzeug-Symbol unter der Weltkarte oder dr\xFCckt die Taste B.\n\
@@ -84,9 +84,9 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEUE AUFGABE: NAHRUNGSVERSORGUNG', "Ihr werdet auch\
-        \ einige Betriebe f\xFCr die Nahrungsproduktion ben\xF6tigen, denn Menschen\
-        \ (und besonders Seeleute) sind f\xFCr gew\xF6hnlich sehr hungrig.\n\nVerf\xFC\
+  - arguments: [!!python/unicode 'NEUE AUFGABE: NAHRUNG', "Ihr werdet auch einige\
+        \ Betriebe f\xFCr die Nahrungsproduktion ben\xF6tigen, denn Menschen (und\
+        \ besonders Seeleute) sind f\xFCr gew\xF6hnlich sehr hungrig.\n\nVerf\xFC\
         gbare Betriebe in der ersten Stufe sind J\xE4ger und Fischer.\n\nDer J\xE4\
         ger jagt (\xFCberraschenderweise) Tiere im Wald. Daher ben\xF6tigt er B\xE4\
         ume in seinem Einzugsgebiet.\n\nBeachtet, dass er in der N\xE4he des Holzf\xE4\
@@ -130,14 +130,14 @@ events:
         \ werden.\n\nAUFGABE: Errichtet einen Marktplatz."]
     type: logbook_w
   - arguments: ['', "Lasst uns nun einen genaueren Blick auf den Marktplatz werfen.\n\
-        \nIm Tab '\xDCbersicht' k\xF6nnen die Steuern schnell angepasst werden.\n\n\
-        Im zweiten Tab 'Finanzen' erhaltet Ihr eine \xDCbersicht der Bilanz dieser\
-        \ Insel. Sie enth\xE4lt alle Betriebskosten, die Ihr zahlt, und alle eingenommenen\
+        \nIm Tab 'Finanzen' erhaltet Ihr eine \xDCbersicht der Bilanz dieser Insel.\
+        \ Sie enth\xE4lt alle Betriebskosten, die Ihr zahlt, und alle eingenommenen\
         \ Steuern.\n\nDie Posten 'Verkaufen' und 'Einkaufen' beziehen sich auf Eure\
         \ Handelsbilanz und werden sp\xE4ter ausf\xFChrlich erkl\xE4rt.\n\nF\xE4llt\
         \ die Bilanz positiv aus, macht Ihr auf dieser Insel Gewinn.\n\nIm 'Siedler'-Tab\
-        \ seht Ihr die Zufriedenheit Eurer Einwohner und auch, nach welchen Waren\
-        \ die meisten von ihnen gerade verlangen."]
+        \ seht Ihr Statistiken bez\xFCglich Eurer Einwohner. Der globale Steuersatz\
+        \ f\xFCr diese Siedlerstufe kann eingestellt werden, ebenso k\xF6nnt Ihr Euren\
+        \ Einwohnern erlauben oder verbieten, in die n\xE4chsth\xF6here Stufe auszusteigen."]
     type: logbook
   - arguments: ["Errichtet einen Marktplatz. W\xE4hlt eine Gegend ohne viele Wirtschaftsgeb\xE4\
         ude."]
@@ -182,13 +182,13 @@ events:
 - actions:
   - arguments: ['', "Wir sollten uns nun den \xDCbersichts-Tab eines Zelts ansehen.\n\
         Es wird angezeigt:\n* die Zufriedenheit dieser Bewohner,\n* die H\xF6he der\
-        \ Steuern, die sie zahlen und\n* die Waren, nach denen sie verlangen\n\nWenn\
-        \ ihr Bedarf gedeckt ist, werden ihre Zufriedenheit und damit Eure Steuereinnahmen\
-        \ steigen.\n\nSind sie es nicht, sinkt beides. Ab einem gewissen Punkt werden\
+        \ Steuern, die sie zahlen und\n* die Waren, nach denen sie verlangen.\n\n\
+        Ist dieser Bedarf gedeckt, werden Zufriedenheit und damit Eure Steuereinnahmen\
+        \ steigen. Ist er es nicht, sinkt beides.\nAb einem gewissen Punkt werden\
         \ die Einwohner wirklich sauer, sodass sie ihre Koffer packen, aus der Stadt\
         \ verschwinden und nur noch eine unbewohnbare Ruine zur\xFCcklassen.\n\nBeachtet,\
         \ dass Ihr auch in diesem Tab an der Steuerschraube drehen k\xF6nnt.\n\nAUFGABE:\
-        \ Erbaut noch drei weitere Zelte.\n\nTIPP: Mit gedr\xFCckter SHIFT-Taste wird\
+        \ Erbaut noch drei weitere Zelte.\nTIPP: Mit gedr\xFCckter SHIFT-Taste wird\
         \ das Bauen von mehreren Geb\xE4uden des selben Typs erleichtert."]
     type: logbook
   - arguments: ["Errichtet mindestens drei zus\xE4tzliche Zelte und verbindet sie\
@@ -263,7 +263,8 @@ events:
         \ so lange Werkzeuge ein, bis Ihr 30 Einheiten auf Lager habt."]
     type: logbook
   - arguments: [!!python/unicode 'Erreicht einen Lagerbestand von 30 oder mehr Werkzeugen
-        auf Eurer Insel.']
+        auf Eurer Insel.', !!python/unicode 'Beachtet, dass dies eine Weile dauern
+        kann.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -288,14 +289,15 @@ events:
         tigt, da die 'gro\xDFe' Version auch die Bed\xFCrfnisse der Einwohner niedrigerer\
         \ Stufen befriedigt."]
     type: logbook_w
-  - arguments: ['', "Vorsicht bei der Stadtplanung! Die meisten dieser verbesserten\
-        \ Geb\xE4ude ben\xF6tigen mehr Platz als die Grundversion.\n\nBeachtet, dass\
-        \ die Religion wie ein Konsumgut behandelt wird. Eure Einwohner m\xFCssen\
-        \ also regelm\xE4\xDFig ihren Vorrat davon auff\xFCllen.\n\nEs ist insbesondere\
-        \ NICHT ausreichend, dass das Geb\xE4ude nur in einem gewissen Einzugsgebiet\
-        \ liegt. Auch ein Wege dorthin muss vom Zelt aus erreichbar sein.\n\nAUFGABE:\
-        \ Baut einen Pavillon mit einer Verbindung zu den Zelten, um Euren Einwohnern\
-        \ den Zugang zum Glauben zu erm\xF6glichen."]
+  - arguments: ['', "Beachtet, dass die Religion wie ein Konsumgut behandelt wird.\
+        \ Eure Einwohner m\xFCssen also regelm\xE4\xDFig ihren Vorrat davon auff\xFC\
+        llen.\n\nDazu ben\xF6tigen sie Zugang zu einem Geb\xE4ude, das Religion produziert\
+        \ (dem Pavillon) und werden dann regelm\xE4\xDFig Religion dort abholen und\
+        \ zuhause verbrauchen.\n\nEs ist insbesondere NICHT ausreichend, dass das\
+        \ Geb\xE4ude nur in einem gewissen Einzugsgebiet liegt. Auch ein Weg dorthin\
+        \ muss vom Zelt aus erreichbar sein.\n\nAUFGABE: Baut einen Pavillon mit einer\
+        \ Verbindung zu den Zelten, um Euren Einwohnern den Zugang zum Glauben zu\
+        \ erm\xF6glichen."]
     type: logbook
   - arguments: [!!python/unicode 'Errichtet einen Pavillon mit einer Verbindung zu
         Euren Zelten.']
@@ -426,12 +428,12 @@ events:
         \ Siedler vor kurzem sein Zelt ausbauen wollte, befindet sich wahrscheinlich\
         \ eine Menge Bretter im Lager und Euer Holzf\xE4llerlager liegt brach.\nDiese\
         \ Situation kann mit zwei Ma\xDFnahmen verbessern, die wir uns nun anschauen\
-        \ wollen.\nAlle Betriebe bieten die M\xF6glichkeit, gar nicht zu arbeiten.\n\
-        Das h\xF6rt sich vielleicht merkw\xFCrdig an, aber klickt einmal auf das Zahnrad,\
-        \ welches sich zum Beispiel in der \xDCbersicht des Holzf\xE4llerlagers findet.\n\
-        Wenn dieser 'Stillgelegt'-Modus aktiviert ist, werden die laufenden Kosten\
-        \ f\xFCr dieses Geb\xE4ude sinken. Sie werden vielleicht nicht immer auf null\
-        \ sinken, aber sie sind dennoch geringer, als wenn der Betrieb weiterarbeitete."]
+        \ wollen.\n\nAlle Betriebe bieten die M\xF6glichkeit, gar nicht zu arbeiten.\
+        \ Das h\xF6rt sich vielleicht merkw\xFCrdig an, aber klickt einmal auf das\
+        \ Zahnrad, welches sich zum Beispiel in der \xDCbersicht des Holzf\xE4llerlagers\
+        \ findet.\nWenn dieser 'Stillgelegt'-Modus aktiviert ist, werden die laufenden\
+        \ Kosten f\xFCr dieses Geb\xE4ude sinken. Sie werden vielleicht nicht immer\
+        \ auf null sinken, aber sie sind dennoch geringer, als wenn der Betrieb weiterarbeitete."]
     type: logbook_w
   - arguments: ['', "Ihr k\xF6nnt somit Geld sparen, wenn Ihr einen Betrieb vor\xFC\
         bergehend nicht ben\xF6tigt, ihn aber auch nicht abrei\xDFen m\xF6chtet.\n\

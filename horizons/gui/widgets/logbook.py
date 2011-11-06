@@ -88,16 +88,16 @@ class LogBook(object):
 		#if len(self._messages) == 0:
 		#	return
 		self._gui.show()
-		self.on_pause_request()
 		self.session.ingame_gui.on_switch_main_widget(self)
+		self.session.speed_pause(True)
 
 	def hide(self):
 		if not self._hiding_widget:
 			self._hiding_widget = True
 			self.session.ingame_gui.on_switch_main_widget(None)
 			self._gui.hide()
-			self.on_unpause_request()
 			self._hiding_widget = False
+			self.session.speed_unpause(True)
 
 	def is_visible(self):
 		return self._gui.isVisible()
@@ -150,8 +150,8 @@ class LogBook(object):
 			texts[0] = self._messages[self._cur_entry]
 			heads[0] = self._headings[self._cur_entry]
 			if self._cur_entry+1 < len(self._messages): # maybe also one for the right side?
-					texts[1] = self._messages[self._cur_entry+1]
-					heads[1] = self._headings[self._cur_entry+1]
+				texts[1] = self._messages[self._cur_entry+1]
+				heads[1] = self._headings[self._cur_entry+1]
 		else:
 			heads[0] = _('Emptiness')
 			texts[0] = "\n\n" + _('There is nothing written in your logbook yet!')

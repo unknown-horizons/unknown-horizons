@@ -13,8 +13,8 @@ description: !!python/unicode 'Tutorial:
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: ["Costruire una filiale della costa, quindi \xE8 facilmente accessibile\
+        \ per le altre navi per il commercio libero"]
     type: message
   - arguments: [!!python/unicode 'Benvenuti a Unknown Horizons!', "Questo \xE8 il\
         \ tuo diario del Capitano dove sono conservate tutte le informazioni importanti.\
@@ -128,14 +128,15 @@ events:
         \ perch\xE9 la costruzione di tende rimuover\xE0 gli alberi di cui il taglialegna\
         \ necessita per costruire le assi.\n\nOBIETTIVO: Costruisci una piazza principale."]
     type: logbook_w
-  - arguments: ['', "Ora diamo un'occhiata alla piazza principale.\n\nNella scheda\
-        \ panoramica potrai facilmente modificare la tassazione.\n\nNella seconda\
-        \ scheda 'Conto' vedrai una tabella bilancio dell'isola, mostrando tutti i\
-        \ costi che paghi e le tasse che guadagni.\n\nGli articoli 'Vendita' e 'Acquisto'\
-        \ si riferiscono al bilancio commerciale e saranno spiegati successivamente.\n\
-        \nSe il tuo bilancio \xE8 positivo otterrai dei profitti.\n\nNella scheda\
-        \ 'Panoramica Insediamento' potrai vedere quanto felici sono i tuoi abitanti\
-        \ e di quali risorse hanno pi\xF9 bisogno."]
+  - arguments: ['', "Diamo ora uno sguardo pi\xF9 da vicino la piazza principale.\n\
+        \nNella scheda 'Account' si ottiene un bilancio di questa isola, con tutte\
+        \ le spese pagate e tutte le tasse che guadagni.\n\ngli elementi 'vendit\xE0\
+        ' e 'Compra' consulta il saldo commerciale e sar\xE0 spiegato pi\xF9 avanti.\n\
+        \nSe il saldo \xE8 positivo, \xE8 tutti-in-tutti di realizzare un profitto.\n\
+        \nIn diverse schede  panoramica d'incremento \xE8 possibile visualizzare le\
+        \ statistiche sulla tua abitanti. \xC8 inoltre possibile impostare l'incremento\
+        \ di una specificha tassa globale e consentire o negare abitanti di questo\
+        \ incremento di passare a quella immediatamente superiore."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci una piazza principale. Scegli un''area
         senza troppi edifici commerciali.']
@@ -200,50 +201,30 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: IL SEGNALE DI FUOCO', !!python/unicode 'Can
-        you see the ship passing your island from time to time? That ship belongs
-        to the Free Trader, one of the first settlers in this archipelago.
-
-
-        The trader will supply your settlement with necessary goods which you can''t
-        produce yet.
-
-        You can also sell surpluses of your production, but in general consuming them
-        (by building more tents) instead of selling them yields more profit.
-
-
-        Normally the trader ships just sail around and look for deals, but you can
-        speed things up a bit.
-
-
-        For this purpose, build a signal fire at the coast near your branch office.
-        It will show ships the way to your settlement.
-
-
-        The signal fire has to cover the area which the ships pass through to catch
-        them.']
+  - arguments: [!!python/unicode 'OBIETTIVO: IL SEGNALE DI FUOCO', "Riesci a vedere\
+        \ la nave di passaggio la tua isola di tanto in tanto? Quella nave appartiene\
+        \ alla Trader Libera, uno dei primi coloni in questo arcipelago.\n\nL'operatore\
+        \ fornir\xE0 il vostro accordo con beni di prima necessit\xE0 che non si riesce\
+        \ a produrre ancora.\n\xC8 possibile anche vendere le eccedenze della vostra\
+        \ produzione, ma in generale consumano pi\xF9 loro (con la costruzione di\
+        \ pi\xF9 tende) anzich\xE9 che venderle e produrr\xE8 profitto.\n\nNormalmente\
+        \ le navi commerciante solo navigare intorno e cercare occasioni, ma \xE8\
+        \ possibile accelerare le cose un po '.\n\nA tale scopo, creare un incendio\
+        \ segnale sulla costa vicino alla tua filiale. Mostrer\xE0 le navi la strada\
+        \ per il vostro insediamento.\n\nIl fuoco segnale deve coprire l'area che\
+        \ le navi passano per catturarli."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
-
-
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
-        it, please share your thoughts! We need your help here!)
-
-
-        At the ''sailors'' increment, you are equipped with three trading slots.
-
-
-        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
-        vice versa.
-
-
-        Click in the slot to choose the good you want to trade with. We will further
-        explain this once you are ready to trade.
-
-
-        TASK: Build a signal fire at the coast close to your branch office.']
+  - arguments: ['', "Dopo questo annuncio poco, il commerciante sar\xE0 fermato a\
+        \ guardare la tua filiale se si prevede di navigare di passaggio.\n\nSi pu\xF2\
+        \ proporre occasioni tramite 'Acquisto / Vendita' la scheda filiale. (Questa\
+        \ funzione \xE8 attualmente poco pratica da usare. Se si arriva con una bella\
+        \ soluzione di migliorarlo, vi preghiamo di condividere i tuoi pensieri! Abbiamo\
+        \ bisogno del vostro aiuto qui!)\n\nA incrementare il 'marinai', si sono dotate\
+        \ di tre slot trading.\n\nCliccare sulla piccola icona per cambiare la modalit\xE0\
+        \ di slot da 'Buy' a 'Sell' e viceversa.\n\nClicca nello slot di scegliere\
+        \ il bene che vogliono commerciare con. Ci illustrer\xE0 pi\xF9 dettagliatamente\
+        \ questa volta si \xE8 pronti al commercio.\n\nTASK: Costruire un incendio\
+        \ segnale sulla costa vicino al vostro filiale."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un segnale di fuoco sulla costa vicino
         alla tua filiale.']
@@ -278,9 +259,10 @@ events:
         \ del prezzo, in modo che il valore di una unit\xE0 pu\xF2 variare.\nNON \xE8\
         \ possibile cambiare manualmente i prezzi!\n\nPotete vedere il saldo commerciale\
         \ nella scheda 'Account' a confronto la 'Vendi' e 'Compra' valori l\xEC.\n\
-        \nTASK: Buy  come strumenti di cui hai bisogno di avere 30 utensili in magazzino!"]
+        \nTASK: Buy come strumenti di cui hai bisogno di avere 30 utensili in magazzino!"]
     type: logbook
-  - arguments: [!!python/unicode 'Raggiungi una scorta per l''isola di almeno 30 attrezzi.']
+  - arguments: [!!python/unicode 'Raggiungi una scorta per l''isola di almeno 30 attrezzi.',
+      !!python/unicode 'Note that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -303,15 +285,14 @@ events:
         \ altrimenti i residenti non potranno raggiungerli.\n\nNei livelli successivi\
         \ verranno resi disponibili aggiornamenti agli edifici."]
     type: logbook_w
-  - arguments: ['', "In quel caso la versione 'piccola' non sar\xE0 pi\xF9 necessaria\
-        \ dato che quella 'grande' fornir\xE0 egualmente quello che i residenti necessitano\
-        \ sin dai primi livelli.\n\nAbbi cura quando pianifichi la tua citt\xE0 dato\
-        \ che la maggior parte di questi edifici migliorati sono pi\xF9 grandi dei\
-        \ modelli base.\n\nNota che la fede \xE8 trattata come una risorsa fisica,\
-        \ quindi le unit\xE0 dovranno passare da qui ogni tanto.\n\nImportante:\n\
-        NON \xE8 abbastanza che l'edificio sia semplicemente in un certo raggio dalle\
-        \ tende.\n\nOBIETTIVO: Costruisci un padiglione con un sentiero verso le tende\
-        \ in modo da soddisfare le esigenze spirituali dei marinai."]
+  - arguments: ['', "Si noti che la fede \xE8 trattato come una risorsa fisica! \n\
+        \nQuesto significa che i tuoi abitanti hanno bisogno di un collegamento stradale\
+        \ al produttore (padiglione) per prendere la fede l\xE0. \nDopo qualche tempo,\
+        \ essi hanno consumato e poi ancora cercare un produttore per raccogliere\
+        \ pi\xF9 fede. \n\nImportante: \nNon \xE8 sufficiente che l'edificio \xE8\
+        \ solo all'interno di una determinata gamma di tende. \nIl collegamento stradale\
+        \ \xE8 inoltre richiesta. \n\nTASK: costruire un padiglione con un sentiero\
+        \ per le tende in modo da soddisfare la domanda tuoi marinai 'per fede."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un padiglione con connessioni alle tende.']
     type: message

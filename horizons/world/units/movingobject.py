@@ -22,7 +22,6 @@
 import logging
 from fife import fife
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.pathfinding import PathBlockedError
@@ -184,7 +183,7 @@ class MovingObject(ConcretObject):
 				self.__is_moving = False
 				self._next_target = self.position
 				if self.blocked_callbacks:
-					self.log.warning('PATH FOR UNIT %s is blocked. Calling blocked_callback', self)
+					self.log.debug('PATH FOR UNIT %s is blocked. Calling blocked_callback', self)
 					self.blocked_callbacks.execute()
 					"""
 					# TODO: This is supposed to delegate control over the behaviour of the unit to the owner.
@@ -194,12 +193,12 @@ class MovingObject(ConcretObject):
 					#       generic solution. Only uncomment this code if this problem is fixed, else
 					#       collectors will get stuck.
 				elif self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
-					self.log.warning('PATH FOR UNIT %s is blocked. Delegating to owner %s', self, self.owner)
+					self.log.debug('PATH FOR UNIT %s is blocked. Delegating to owner %s', self, self.owner)
 					self.owner.notify_unit_path_blocked(self)
 					"""
 				else:
 					# generic solution: retry in 2 secs
-					self.log.warning('PATH FOR UNIT %s is blocked. Retry in 2 secs', self)
+					self.log.debug('PATH FOR UNIT %s is blocked. Retry in 2 secs', self)
 					# technically, the ship doesn't move, but it is in the process of moving,
 					# as it will continue soon in general. Needed in border cases for add_move_callback
 					self.__is_moving = True

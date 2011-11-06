@@ -41,7 +41,7 @@ class MessageWidget(LivingObject):
 	MAX_MESSAGES = 5
 
 	def __init__(self, session, x, y):
-		super(LivingObject, self).__init__()
+		super(MessageWidget, self).__init__()
 		self.session = session
 		self.x_pos, self.y_pos = x, y
 		self.active_messages = [] # for displayed messages

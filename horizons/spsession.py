@@ -54,7 +54,7 @@ class SPSession(Session):
 		# single player games start right away
 		self.start()
 
-	def speed_set(self, ticks):
+	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""
 		old = self.timer.ticks_per_second
 		self.timer.ticks_per_second = ticks

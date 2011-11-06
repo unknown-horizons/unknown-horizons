@@ -22,7 +22,6 @@
 import horizons.main
 
 from horizons.scheduler import Scheduler
-from horizons.extscheduler import ExtScheduler
 from horizons.util import Callback, WorldObject, Point, Circle
 from horizons.command.unit import CreateUnit
 from horizons.scenario import CONDITIONS
@@ -128,7 +127,7 @@ def spawn_ships(session, owner, id, number, *position):
 		for point in Circle(center, radius):
 			if (point.x, point.y) in session.world.ship_map \
 				or session.world.get_island(point) is not None:
-					continue
+				continue
 			CreateUnit(owner, id, point.x, point.y)(issuer=player)
 			number -= 1
 			if number == 0:

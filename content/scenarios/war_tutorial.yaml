@@ -1,0 +1,31 @@
+# logbook_w writes an entry without showing the book
+# logbook[head,msg] shows an entry with 8 sec delay
+# logbook[head,msg,time] shows an entry after time sec delay
+
+events:
+- # Show a message after starting the game (how to move)
+  actions:
+   - {type: message, arguments: ["Sink all enemy ships."]}
+  conditions:
+   - type: time_passed
+     arguments: [0]
+
+- # Winning conditions
+  actions:
+   - {type: win}
+   - {type: message, arguments: ["You have defeated your enemy!"]}
+  conditions:
+   - {type: player_number_of_ships_lt, arguments: [2, 1]}
+
+- # Losing conditions
+  actions:
+   - {type: lose}
+  conditions:
+   - {type: player_number_of_ships_lt, arguments: [1, 1]}
+
+mapfile: combat_scenario.sqlite
+difficulty: Tutorial
+author: Mihai Bivol
+description: |
+    Sink your first ships in Unknown Horizons to test our combat system!
+locale: en

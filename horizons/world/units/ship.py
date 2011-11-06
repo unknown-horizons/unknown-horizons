@@ -284,6 +284,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 	is_ship = True
 	is_selectable = True
 
+	has_health = True
+
 	in_ship_map = True # (#1023)
 
 	def __init__(self, x, y, **kwargs):
@@ -307,7 +309,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def __init(self):
 		self._selected = False
 		# register ship in world
-		self.add_component('health', HealthComponent)
+		if self.__class__.has_health:
+			self.add_component('health', HealthComponent)
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -319,6 +322,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
+			if self._next_target.to_tuple() in self.session.world.ship_map:
+				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
 		if self._selected:
 			self.deselect()
@@ -353,13 +358,14 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
 		self._selected = True
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1, 64)
 		# add a buoy at the ship's target if the player owns the ship
 		if self.session.world.player == self.owner:
 			self._update_buoy()
+
 		self.draw_health()
 		if reset_cam:
-			self.session.view.set_location(self.position.to_tuple())
+			self.session.view.center(*self.position.to_tuple())
 		self.session.view.add_change_listener(self.draw_health)
 
 	def deselect(self):
@@ -429,8 +435,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 			coords.thisown = 1 # thisown = 1 because setLayerCoordinates will create a copy
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
-				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
-				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0+idle+45")
+				"buoy_" + str(self.worldid), fife.RendererNode(loc),
+				horizons.main.fife.animationloader.loadResource("as_buoy0+idle+45")
 			)
 
 	def _possible_names(self):
@@ -485,10 +491,10 @@ class TradeShip(Ship):
 	tabs = ()
 	enemy_tabs = (TraderShipOverviewTab, )
 	health_bar_y = -220
+	has_health = False
 
 	def __init__(self, x, y, **kwargs):
 		super(TradeShip, self).__init__(x, y, **kwargs)
-		self.remove_component('health')
 
 	def _possible_names(self):
 		return [ _(u'Trader') ]
@@ -499,6 +505,8 @@ class FisherShip(FisherShipCollector, Ship):
 	pather_class = FisherShipPather
 	health_bar_y = -50
 	is_selectable = False
+
+	has_health = False
 
 	in_ship_map = False # (#1023)
 

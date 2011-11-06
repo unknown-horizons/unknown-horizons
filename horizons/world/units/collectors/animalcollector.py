@@ -19,11 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
-from horizons.world.storageholder import StorageHolder
-from horizons.util import Point, RadiusRect, decorators
+from horizons.util import RadiusRect, decorators
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GAME_SPEED
 from horizons.world.units.collectors.buildingcollector import BuildingCollector

@@ -130,6 +130,20 @@ class CommunityGoal(ProductionChainGoal):
 	def get_personality_name(self):
 		return 'CommunityGoal'
 
+class TobaccoProductsGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(TobaccoProductsGoal, self).__init__(settlement_manager, RES.TOBACCO_PRODUCTS_ID, 'tobacco products producer')
+
+	def get_personality_name(self):
+		return 'TobaccoProductsGoal'
+
+class SaltGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(SaltGoal, self).__init__(settlement_manager, RES.SALT_ID, 'salt producer')
+
+	def get_personality_name(self):
+		return 'SaltGoal'
+
 decorators.bind_all(ProductionChainGoal)
 decorators.bind_all(FaithGoal)
 decorators.bind_all(TextileGoal)
@@ -140,3 +154,5 @@ decorators.bind_all(ToolsGoal)
 decorators.bind_all(BoardsGoal)
 decorators.bind_all(FoodGoal)
 decorators.bind_all(CommunityGoal)
+decorators.bind_all(TobaccoProductsGoal)
+decorators.bind_all(SaltGoal)

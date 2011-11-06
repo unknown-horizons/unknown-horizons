@@ -24,7 +24,6 @@ from fife.extensions import pychan
 from fife.extensions.pychan.widgets.common import BoolAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.gui.widgets import ProgressBar
 from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage
 
 class Inventory(pychan.widgets.Container):
@@ -50,7 +49,7 @@ class Inventory(pychan.widgets.Container):
 		self.__inited = True
 		self.db = db
 		self._inventory = inventory
-		self.__icon = pychan.widgets.Icon("content/gui/icons/ship/civil_16.png")
+		self.__icon = pychan.widgets.Icon(image="content/gui/icons/ship/civil_16.png")
 		self.update()
 
 	def update(self):

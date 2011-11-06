@@ -26,8 +26,8 @@ from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPathe
 from horizons.constants import COLLECTORS
 from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.collectors.collector import Collector, JobList
 
-from collector import Collector, JobList
 
 
 class BuildingCollector(Collector):

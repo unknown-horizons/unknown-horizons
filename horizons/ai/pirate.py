@@ -21,15 +21,13 @@
 
 import logging
 
-import horizons.main
-
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
-from horizons.constants import RES, UNITS
+from horizons.constants import UNITS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
-from horizons.world.units.ship import PirateShip, TradeShip, FisherShip
+from horizons.world.units.ship import PirateShip, TradeShip
 from horizons.world.units.movingobject import MoveNotPossible
 
 
@@ -120,7 +118,7 @@ class Pirate(GenericAI):
 		done = False
 
 		#transition the pirate ship state to 'idle' once it is inside home circumference
-		if pirate_ship.position.distance(self.home_point) <= self.home_radius and self.ships[pirate_ship] == self.shipStates.going_home:        
+		if pirate_ship.position.distance(self.home_point) <= self.home_radius and self.ships[pirate_ship] == self.shipStates.going_home:
 			self.ships[pirate_ship] = self.shipStates.idle
 			self.log.debug('Pirate %s: send_ship(%s) reached home' % (self.worldid, pirate_ship.name))
 
@@ -163,3 +161,9 @@ class Pirate(GenericAI):
 			except MoveNotPossible:
 				self.log.debug('Pirate %s: _chase_closest_ship(%s) unable to chase the closest ship %s' % (self.worldid, pirate_ship.name, ship.name))
 		return False
+
+
+	def remove_unit(self, unit):
+		"""Called when a ship which is owned by the pirate is removed or killed."""
+		del self.ships[unit]
+		Scheduler().rem_call(self, Callback(self.lookout, unit))

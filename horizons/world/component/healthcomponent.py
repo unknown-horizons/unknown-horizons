@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.component import Component
 
@@ -27,6 +29,7 @@ class HealthComponent(Component):
 	"""
 	Class that handles the health component
 	"""
+	log = logging.getLogger("component.health")
 
 	def __init__(self, instance):
 		super(HealthComponent, self).__init__(instance)
@@ -41,6 +44,7 @@ class HealthComponent(Component):
 		#scaling factor multiplies the damage taken by the unit
 		scaling_factor = 1
 		self.health -= scaling_factor * damage
+		self.log.debug("dealing damage %s to %s; new health: %s", scaling_factor*damage, self.instance, self.health)
 		self.on_damage_dealt()
 
 	def save(self, db):
@@ -48,11 +52,12 @@ class HealthComponent(Component):
 
 	def load(self, db, worldid):
 		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", worldid)[0][0]
-	
+
 	def check_if_alive(self, caller = None):
 		if self.health <= 0:
+			self.log.debug("Unit %s dies, health: %s", self.instance, self.health)
 			self.instance.remove()
-	
+
 	def redraw_health(self, caller = None):
 		if not self.instance:
 			return

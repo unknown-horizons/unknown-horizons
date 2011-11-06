@@ -79,9 +79,9 @@ def set_translations():
 			},
 		"buildtab_increment2.xml" : {
 			"companies_label"             : _("Companies"),
-			"companies_label"             : _("Mining"),
 			"fields_label"                : _("Fields"),
 			"headline"                    : _("Settler buildings"),
+			"mining_label"                : _("Mining"),
 			"services_label"              : _("Services"),
 			"butchery-1"                  : _("Butchery: Needs pigs or cattle. Produces food."),
 			"cattlerun-1"                 : _("Cattle run: Raises cattle. Needs a farm."),
@@ -192,6 +192,12 @@ def set_translations():
 			},
 		"overview_buildrelated.xml" : {
 			"headline"                    : _("Build fields"),
+			},
+		"overview_farm.xml" : {
+			"headline"                    : _("Building overview"),
+			"running_costs_label"         : _("Running costs"),
+			"capacity_utilisation"        : _("capacity utilization"),
+			"running_costs"               : _("Running costs"),
 			},
 		"island_inventory.xml" : {
 			"headline"                    : _("Settlement inventory"),

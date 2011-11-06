@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.world.production.productionline import ProductionLine
-from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 
 class AbstractFakeResourceDeposit(AbstractBuilding):

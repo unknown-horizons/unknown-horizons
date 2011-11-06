@@ -16,6 +16,7 @@
 	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,20" />
 	<Container name="weapon_storage_container" size="245,50" position = "20,170">
 		<HBox>
+			<!-- this label is reset to "trade ship" to tell the user that there can't be weapons -->
 			<Label name="lbl_weapon_storage"  text="Weapons:" />
 			<WeaponStorageWidget name="weapon_storage" />
 		</HBox>

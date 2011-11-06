@@ -65,6 +65,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.session = None
 		self.current_dialog = None
 
+		self.dialog_executed = False
+
 		self.__pause_displayed = False
 
 # basic menu widgets
@@ -88,42 +90,63 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		Show Pause menu
 		"""
+		# TODO: logically, this now belongs to the ingame_gui (it used to be different)
+		#       this manifests itself by the need for the __pause_displayed hack below
+		#       in the long run, this should be moved, therefore eliminating the hack, and
+		#       ensuring correct setup/teardown.
 		if self.__pause_displayed:
 			self.__pause_displayed = False
-			self.return_to_game()
+			self.hide()
+			self.current = None
+			self.session.speed_unpause(True)
+			self.on_escape = self.toggle_pause
+
 		else:
 			self.__pause_displayed = True
 			# reload the menu because caching creates spacing problems
 			# see http://trac.unknown-horizons.org/t/ticket/1047
 			self.widgets.reload('ingamemenu')
-			self._switch_current_widget('ingamemenu', center=True, show=True, event_map={
+			def do_load():
+				did_load = horizons.main.load_game()
+				if did_load:
+					self.__pause_displayed = False
+			def do_quit():
+				did_quit = self.quit_session()
+				if did_quit:
+					self.__pause_displayed = False
+			events = { # needed twice, save only once here
+			  'e_load' : do_load,
+				'e_save' : self.save_game,
+				'e_sett' : self.show_settings,
+				'e_help' : self.on_help,
+				'e_start': self.toggle_pause,
+				'e_quit' : do_quit,
+			}
+			self._switch_current_widget('ingamemenu', center=True, show=False, event_map={
 				  # icons
-				'loadgameButton' : horizons.main.load_game,
-				'savegameButton' : self.save_game,
-				'settingsLink'   : self.show_settings,
-				'helpLink'       : self.on_help,
-				'startGame'      : self.return_to_game,
-				'closeButton'    : self.quit_session,
+				'loadgameButton' : events['e_load'],
+				'savegameButton' : events['e_save'],
+				'settingsLink'   : events['e_sett'],
+				'helpLink'       : events['e_help'],
+				'startGame'      : events['e_start'],
+				'closeButton'    : events['e_quit'],
 				# labels
-				'loadgame' : horizons.main.load_game,
-				'savegame' : self.save_game,
-				'settings' : self.show_settings,
-				'help'     : self.on_help,
-				'start'    : self.return_to_game,
-				'quit'     : self.quit_session,
+				'loadgame' : events['e_load'],
+				'savegame' : events['e_save'],
+				'settings' : events['e_sett'],
+				'help'     : events['e_help'],
+				'start'    : events['e_start'],
+				'quit'     : events['e_quit'],
 			})
+			self.current.additional_widget = pychan.Icon(image="content/gui/images/background/transparent.png")
+			self.current.additional_widget.position = (0, 0)
+			self.current.additional_widget.show()
+			self.current.show()
 
-			self.session.speed_pause()
+			self.session.speed_pause(True)
 			self.on_escape = self.toggle_pause
 
 # what happens on button clicks
-
-	def return_to_game(self):
-		"""Return to the horizons."""
-		self.hide() # Hide old gui
-		self.current = None
-		self.session.speed_unpause()
-		self.on_escape = self.toggle_pause
 
 	def save_game(self):
 		"""Wrapper for saving for separating gui messages from save logic
@@ -156,24 +179,27 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_quit(self):
 		"""Shows the quit dialog """
 		message = _("Are you sure you want to quit Unknown Horizons?")
-		if self.show_popup(_("Quit Game"),message,show_cancel_button = True):
+		if self.show_popup(_("Quit Game"), message, show_cancel_button = True):
 			horizons.main.quit()
 
 	def quit_session(self, force=False):
 		"""Quits the current session.
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
-		if force or \
-		   self.show_popup(_("Quit Session"), message, show_cancel_button = True):
+
+		if force or self.show_popup(_("Quit Session"), message, show_cancel_button = True):
 			if self.current is not None:
 				# this can be None if not called from gui (e.g. scenario finished)
-				self.current.hide()
+				self.hide()
 				self.current = None
 			if self.session is not None:
 				self.session.end()
 				self.session = None
 
 			self.show_main()
+			return True
+		else:
+			return False
 
 	def on_chime(self):
 		"""
@@ -186,13 +212,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
 		for box in self.widgets['credits'+str(number)].findChildren(name='box'):
-			box.margins = (30,0) # to get some indentation
+			box.margins = (30, 0) # to get some indentation
 			if number == 2: # #TODO fix this hardcoded translators page ref
 				box.padding = 1 # further decrease if more entries
 				box.parent.padding = 3 # see above
 		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl") \
 		              for section in ('team','patchers','translators','special_thanks')]
-		for i in xrange (0,4):
+		for i in xrange(4):
 			if label[i]: # add callbacks to each pickbelt that is displayed
 				label[i].capture(Callback(self.show_credits, i),
 				                 event_name="mouseClicked")
@@ -264,7 +290,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame in map_file_display: # savegamename already exists
 				message = _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % selected_savegame
-				if not self.show_popup(_("Confirmation for overwriting"),message,show_cancel_button = True):
+				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
 					self.current = old_current
 					return self.show_select_savegame(mode=mode) # reshow dialog
 		else: # return selected item from list
@@ -272,7 +298,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
 			if selected_savegame is None:
 				# ok button has been pressed, but no savegame was selected
-				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."));
+				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."))
 				self.current = old_current
 				return self.show_select_savegame(mode=mode) # reshow dialog
 		self.current = old_current # reuse old widget
@@ -292,6 +318,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.log.debug("Gui: hiding current: %s", self.current)
 		if self.current is not None:
 			self.current.hide()
+			try:
+				self.current.additional_widget.hide()
+				del self.current.additional_widget
+			except AttributeError, e:
+				pass # only used for some widgets, e.g. pause
+
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
@@ -309,7 +341,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 					dlg.hide()
 			dlg.capture(_escape, event_name="keyPressed")
+		self.dialog_executed = True
 		ret = dlg.execute(actions)
+		self.dialog_executed = False
 		return ret
 
 	def show_popup(self, windowtitle, message, show_cancel_button = False):
@@ -382,11 +416,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		old = self.current
 		if (show or hide_old) and old is not None:
 			self.log.debug("Gui: hiding %s", old)
-			old.hide()
+			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
 		if center:
-			self.current.position_technique="automatic" # "center:center"
+			self.current.position_technique = "automatic" # "center:center"
 		if event_map:
 			self.current.mapEvents(event_map)
 		if show:

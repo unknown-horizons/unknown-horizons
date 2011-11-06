@@ -28,11 +28,12 @@ class NamedObject(WorldObject):
 
 	def __init__(self, name=None, **kwargs):
 		super(NamedObject, self).__init__(**kwargs)
+		self.name = None
 		self.set_name(name)
 
 	def set_name(self, name=None):
 		"""Actually sets the name."""
-		if hasattr(self, 'name'):
+		if self.name is not None:
 			NamedObject.names_used.remove(self.name)
 		if name is None:
 			name = self.get_default_name()
@@ -47,7 +48,7 @@ class NamedObject(WorldObject):
 		newname = newnametmp = self.session.random.choice(self._possible_names())
 		index = 2
 		while newname in NamedObject.names_used:
-			newname = newnametmp + ' ' + `index`
+			newname = "%s %s" % (newnametmp, index)
 			index += 1
 		return newname
 
@@ -57,6 +58,7 @@ class NamedObject(WorldObject):
 
 	def load(self, db, worldid):
 		super(NamedObject, self).load(db, worldid)
+		self.name = None
 		name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 		# We need unicode strings as the name is displayed on screen.
 		self.set_name(unicode(name, 'utf-8'))
