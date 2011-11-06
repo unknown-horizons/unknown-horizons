@@ -104,7 +104,7 @@ INSERT INTO "storage" VALUES(36,6,41);
 INSERT INTO "storage" VALUES(5,12,41);
 INSERT INTO "storage" VALUES(38,8,42);
 INSERT INTO "storage" VALUES(33,2,38);
-INSERT INTO "storage" VALUES(34,3,39);
+INSERT INTO "storage" VALUES(34,4,39);
 CREATE TABLE `production` (`production_line` INTEGER NOT NULL, `resource` INTEGER NOT NULL, `amount` INTEGER NOT NULL);
 INSERT INTO "production" VALUES(1,8,1);
 INSERT INTO "production" VALUES(2,4,1);
