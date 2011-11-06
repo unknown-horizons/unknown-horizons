@@ -12,8 +12,9 @@
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Label name='name' position="25,40" text="" />
-		<TooltipIcon name="running_costs_label" image="content/gui/icons/resources/running_costs.png" position="180,40" tooltip="Running costs" />
-		<Label name="running_costs" position="200,40" text="" />
+		<TooltipIcon name="running_costs_label"	position="180,62" tooltip="Running costs"
+			image="content/gui/icons/resources/running_costs.png" />
+		<Label name="running_costs" position="200,62" text="" />
 		<!--<Label position="," name="health_label" text="Health:" />
 		<Label name='health' position="," text="" />-->
 
