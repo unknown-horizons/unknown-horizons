@@ -111,8 +111,8 @@ class BuySellTab(TabInterface):
 			slot.findChild(name='button').hover_image = self.dummy_icon_path
 			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
-			slider.setScaleStart(0.0)
-			slider.setScaleEnd(float(self.settlement.inventory.limit))
+			slider.scale_start = 0.0
+			slider.scale_end = float(self.settlement.inventory.limit)
 			# Set scale according to the settlement inventory size
 			slot.findChild(name="buysell").capture(Callback(self.toggle_buysell, num))
 			fillbar = slot.findChild(name="fillbar")
