@@ -5,7 +5,7 @@
 
 <Container position="0,70" size="250,400" >
 
-	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<HBox position="22,7"  min_size="170,20"  size="230,20">
 	<Spacer min_size="0"  max_size="50" />
 		<Label name="headline"  text="Building overview" />
 	</HBox>
@@ -20,10 +20,7 @@
 			image="content/gui/icons/resources/running_costs.png" />
 		<TooltipLabel name="running_costs" text=""
 			tooltip="Running costs" />
-		<Spacer max_size="50" />
-		<!--
-		Health display.
-		<Label name="health_label" text="Health:" /><Label name="health" text="" />-->
+	<Spacer max_size="50" />
 		<TooltipIcon name="capacity_utilisation_label"  tooltip="capacity utilization"
 			image="content/gui/icons/resources/cap_util.png" />
 		<TooltipLabel name="capacity_utilisation" text=""
