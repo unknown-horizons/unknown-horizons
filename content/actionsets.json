@@ -12729,30 +12729,30 @@
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/225/0.png": [
      0.5, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     128, 
+     411, 
+     128, 
+     98
     ]
    }, 
    "315": {
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/315/0.png": [
      0.5, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     256, 
+     411, 
+     128, 
+     98
     ]
    }, 
    "45": {
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/45/0.png": [
      0.5, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     384, 
+     411, 
+     128, 
+     98
     ]
    }, 
    "135": {
@@ -12760,7 +12760,7 @@
      0.5, 
      8, 
      0, 
-     0, 
+     411, 
      128, 
      98
     ]
@@ -12771,168 +12771,168 @@
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0036.png": [
      1.4, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     640, 
+     509, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0031.png": [
      1.1199999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     512, 
+     509, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0026.png": [
      0.8399999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     384, 
+     509, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0021.png": [
      0.5599999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     256, 
+     509, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0016.png": [
      0.27999999999999997, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     128, 
+     509, 
+     128, 
+     98
     ]
    }, 
    "315": {
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0021.png": [
      0.5599999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     896, 
+     509, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0036.png": [
      1.4, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     256, 
+     607, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0016.png": [
      0.27999999999999997, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     768, 
+     509, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0031.png": [
      1.1199999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     128, 
+     607, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0026.png": [
      0.8399999999999999, 
      8, 
      0, 
-     0, 
-     0, 
-     0
+     607, 
+     128, 
+     98
     ]
    }, 
    "45": {
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0016.png": [
      0.27999999999999997, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     384, 
+     607, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0031.png": [
      1.1199999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     768, 
+     607, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0021.png": [
      0.5599999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     512, 
+     607, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0026.png": [
      0.8399999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     640, 
+     607, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0036.png": [
      1.4, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     896, 
+     607, 
+     128, 
+     98
     ]
    }, 
    "135": {
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0021.png": [
      0.5599999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     640, 
+     411, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0036.png": [
      1.4, 
      8, 
      0, 
-     0, 
-     0, 
-     0
+     509, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0016.png": [
      0.27999999999999997, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     512, 
+     411, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0031.png": [
      1.1199999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     896, 
+     411, 
+     128, 
+     98
     ], 
     "content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0026.png": [
      0.8399999999999999, 
      8, 
-     0, 
-     0, 
-     0, 
-     0
+     768, 
+     411, 
+     128, 
+     98
     ]
    }
   }

@@ -20,29 +20,29 @@
 	<image source="content/gfx/buildings/settlers/tobacconist/as_tobacconist0/idle/225/0.png" xpos="640" ypos="283" width="128" height="128"/>
 	<image source="content/gfx/buildings/settlers/tobacconist/as_tobacconist0/idle/315/0.png" xpos="768" ypos="283" width="128" height="128"/>
 	<image source="content/gfx/buildings/settlers/tobacconist/as_tobacconist0/idle/45/0.png" xpos="896" ypos="283" width="128" height="128"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/135/0.png" xpos="0" ypos="0" width="128" height="98"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/225/0.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/315/0.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/45/0.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0016.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0021.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0026.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0031.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0036.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0016.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0021.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0026.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0031.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0036.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0016.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0021.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0026.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0031.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0036.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0016.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0021.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0026.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0031.png" xpos="0" ypos="0" width="0" height="0"/>
-	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0036.png" xpos="0" ypos="0" width="0" height="0"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/135/0.png" xpos="0" ypos="411" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/225/0.png" xpos="128" ypos="411" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/315/0.png" xpos="256" ypos="411" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/idle/45/0.png" xpos="384" ypos="411" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0016.png" xpos="512" ypos="411" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0021.png" xpos="640" ypos="411" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0026.png" xpos="768" ypos="411" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0031.png" xpos="896" ypos="411" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/135/0036.png" xpos="0" ypos="509" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0016.png" xpos="128" ypos="509" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0021.png" xpos="256" ypos="509" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0026.png" xpos="384" ypos="509" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0031.png" xpos="512" ypos="509" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/225/0036.png" xpos="640" ypos="509" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0016.png" xpos="768" ypos="509" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0021.png" xpos="896" ypos="509" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0026.png" xpos="0" ypos="607" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0031.png" xpos="128" ypos="607" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/315/0036.png" xpos="256" ypos="607" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0016.png" xpos="384" ypos="607" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0021.png" xpos="512" ypos="607" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0026.png" xpos="640" ypos="607" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0031.png" xpos="768" ypos="607" width="128" height="98"/>
+	<image source="content/gfx/buildings/settlers/toolmaker/as_toolmaker0/work/45/0036.png" xpos="896" ypos="607" width="128" height="98"/>
 </atlas>
 
