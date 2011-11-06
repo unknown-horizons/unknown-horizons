@@ -43,6 +43,10 @@ if __name__ == '__main__':
 	from run_uh import init_environment, get_fife_path
 	init_environment()
 
+	# append again in case init_environment() restarts
+	uh_path = up(up(os.path.realpath(sys.argv[0])))
+	sys.path.append(uh_path)
+
 	editor_path = get_fife_path() + '/tools/editor'
 	os.chdir(editor_path)
 	sys.path.append(editor_path)

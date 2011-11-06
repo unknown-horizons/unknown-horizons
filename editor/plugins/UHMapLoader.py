@@ -20,7 +20,8 @@
 # ###################################################
 
 import fife.extensions.loaders as mapLoaders
-#from horizons.util.dbreader import DBReader
+import horizons.main # necessary so the correct load order of all modules is guaranteed
+from horizons.util.dbreader import DbReader
 
 import scripts.editor
 import scripts.plugin
