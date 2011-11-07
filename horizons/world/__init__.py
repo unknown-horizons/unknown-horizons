@@ -46,6 +46,7 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
+from horizons.world.ground import WaterDummy
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 
@@ -187,19 +188,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
-		"""
-		for x in xrange(self.min_x, self.max_x, 1):
-			for y in xrange(self.min_y, self.max_y, 1):
-				self.ground_map[(x, y)] = default_grounds(self.session, x, y)
-		default_grounds = Entities.grounds[4]
-		for x in xrange(self.min_x-border, self.max_x+border, 10):
-			for y in xrange(self.min_y-border, self.max_y+border, 10):
-				if self.min_x < x < self.max_x or self.min_y < y < self.max_y:
-					continue
-				ground = default_grounds(self.session, x, y)
-				self.ground_map[(x, y)] = ground
-		"""
-		from horizons.world.ground import WaterDummy
 		for x in xrange(self.min_x-border, self.max_x+border, 10):
 			for y in xrange(self.min_y-border, self.max_y+border, 10):
 				ground = default_grounds(self.session, x, y)
@@ -207,11 +195,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
 						for y_offset in xrange(0,10):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
-								#self.ground_map[(x+x_offset, y+y_offset)] = ground
-								#self.ground_map[(x+x_offset, y+y_offset)] = default_grounds(self.session, x + x_offset, y+y_offset)
 								self.ground_map[(x+x_offset, y+y_offset)] = Entities.grounds[-1](self.session, x, y)
-								#Wate(self.session, x + x_offset, y+y_offset)
-		#"""
 
 		# remove parts that are occupied by islands, create the island map and the full map
 		self.island_map = {}
