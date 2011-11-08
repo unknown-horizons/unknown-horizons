@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-05 04:11+0200\n"
+"PO-Revision-Date: 2011-11-05 04:28+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -115,7 +115,6 @@ msgstr "Pescador"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Fisherman's Tent"
 msgstr "Tenda do pescador"
 
@@ -143,7 +142,6 @@ msgstr "Huker"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Hunter's Tent"
 msgstr "Tenda de caçador"
 
@@ -214,7 +212,6 @@ msgstr "Plataforma"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Salt Ponds"
 msgstr "Lagoas de sal"
 
@@ -250,7 +247,6 @@ msgstr "Armazém"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Sugar Field"
 msgstr "Plantação de cana de açúcar"
 
@@ -307,7 +303,6 @@ msgstr "Escola"
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Weaver's Tent"
 msgstr "Tenda de tecelão"
 
@@ -318,7 +313,6 @@ msgstr "Torre de Madeira"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "You can also drag roads."
 msgstr "Também pode arrastar estradas."
 
@@ -382,7 +376,6 @@ msgstr "tábuas"
 
 #. This is a database entry: the name of a color.
 #: database files sql
-#, fuzzy
 msgid "bordeaux"
 msgstr "vinho"
 
@@ -449,7 +442,6 @@ msgstr "punhal"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "deer food A"
 msgstr "comida de veado A"
 
@@ -535,7 +527,6 @@ msgstr "limão"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "liquor"
 msgstr "álcool"
 
@@ -611,7 +602,6 @@ msgstr "açúcar"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "sugar cane"
 msgstr "cana de açúcar"
 
@@ -627,19 +617,16 @@ msgstr "têxtil"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "tobacco leaves"
 msgstr "folhas de tabaco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "tobacco plants"
 msgstr "planta de tabaco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "tobaccos"
 msgstr "produtos de tabaco"
 
@@ -1029,7 +1016,6 @@ msgid "The selected file is not a valid scenario file."
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:264
-#, fuzzy
 msgid "Error message:"
 msgstr "Mensagem de erro:"
 
@@ -1094,7 +1080,6 @@ msgstr "Comércio"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:334
-#, fuzzy
 msgid "Settlement inventory"
 msgstr "Inventário da colônia"
 
@@ -1109,7 +1094,6 @@ msgid "Load/Unload:"
 msgstr "Carregar/Descarregar:"
 
 #: horizons/gui/tabs/inventorytab.py:85
-#, fuzzy
 msgid "Buy/Sell:"
 msgstr "Comprar/Vender:"
 
@@ -1122,12 +1106,10 @@ msgid "It is not possible to equip a trade ship with weapons"
 msgstr "Não é possível equipar um navio mercante com armas"
 
 #: horizons/gui/tabs/inventorytab.py:133
-#, fuzzy
 msgid "Equip weapon"
 msgstr "Equipar arma"
 
 #: horizons/gui/tabs/inventorytab.py:136
-#, fuzzy
 msgid "Unequip weapon"
 msgstr "Desequipar arma"
 
@@ -1196,7 +1178,6 @@ msgstr "Navio mercante"
 
 #. (tooltip of widget: foundSettlement)
 #: horizons/gui/tabs/overviewtab.py:184 horizons/i18n/guitranslations.py:520
-#, fuzzy
 msgid "Build settlement"
 msgstr "Construir colônia"
 
@@ -1228,7 +1209,6 @@ msgid "Limit: %st per slot"
 msgstr "Limite: %st por slot"
 
 #: horizons/gui/widgets/logbook.py:156
-#, fuzzy
 msgid "Emptiness"
 msgstr "Vazio"
 
@@ -1252,7 +1232,6 @@ msgid "None"
 msgstr "Nenhum"
 
 #: horizons/gui/widgets/playersships.py:83
-#, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
@@ -1263,12 +1242,10 @@ msgstr ""
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:624
-#, fuzzy
 msgid "Start route"
 msgstr "Iniciar rota"
 
 #: horizons/gui/widgets/routeconfig.py:68
-#, fuzzy
 msgid "Stop route"
 msgstr "Parar rota"
 
@@ -1288,7 +1265,6 @@ msgstr ""
 
 #. (text of widget: load)
 #: horizons/i18n/guitranslations.py:49
-#, fuzzy
 msgid "load/reload"
 msgstr "carregar/descarregar"
 
@@ -1415,7 +1391,6 @@ msgstr "Campo de batatas: Entrega alimento. Requer fazenda."
 
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:109
-#, fuzzy
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
 "Plantação de cana de açúcar: Utilizado na produção de álcool. Requer uma "
@@ -1448,19 +1423,16 @@ msgstr "Estruturas Colonizadores"
 
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:130
-#, fuzzy
 msgid "Butchery: Needs pigs or cattle. Produces food."
 msgstr "Matadouro: Precisa de porcos ou gado. Produz comida."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:132
-#, fuzzy
 msgid "Cattle run: Raises cattle. Needs a farm."
 msgstr "Pasto: Cria gado. Precisa de uma fazenda."
 
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:134
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
 msgstr "Carvoaria: Queima tábuas para fazer carvão."
 
@@ -1486,7 +1458,6 @@ msgstr "Fundição: Refina todos os tipos de minério."
 
 #. (tooltip of widget: tavern-1)
 #: horizons/i18n/guitranslations.py:144
-#, fuzzy
 msgid "Tavern: Provides get-together."
 msgstr "Taberna: Oferece um local para reuniões populares."
 
@@ -1507,19 +1478,16 @@ msgstr "Ferreiro: Produz ferramentas a partir do ferro."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:155
-#, fuzzy
 msgid "Game start"
 msgstr "Início do jogo"
 
 #. (text of widget: howto_1_need_bo)
 #: horizons/i18n/guitranslations.py:157
-#, fuzzy
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr "É necessário fundar uma povoação antes de construir edifícios!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:159
-#, fuzzy
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
 "Selecione o seu navio e aproxime-o da costa usando o botão direito do mouse."
@@ -1731,7 +1699,6 @@ msgstr "Comprar recursos"
 
 #. (text of widget: buysell_help_label)
 #: horizons/i18n/guitranslations.py:285
-#, fuzzy
 msgid "Click on slot icon to toggle mode:"
 msgstr "Clique no ícone de compartimento para ativar/desativar o modo:"
 
@@ -1866,7 +1833,6 @@ msgstr "Impostos:"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:366 horizons/i18n/guitranslations.py:395
-#, fuzzy
 msgid "Upgrade permissions:"
 msgstr "Melhorar as permissões:"
 
@@ -1897,7 +1863,6 @@ msgstr "Impostos pagos"
 #: horizons/i18n/guitranslations.py:399 horizons/i18n/guitranslations.py:401
 #: horizons/i18n/guitranslations.py:436 horizons/i18n/guitranslations.py:438
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:505
-#, fuzzy
 msgid "Tax rate"
 msgstr "Taxa de impostos"
 
@@ -2058,13 +2023,11 @@ msgstr "Diário do Capitão"
 
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:596
-#, fuzzy
 msgid "Read prev. entries"
 msgstr "Ler entradas anteriores"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:598
-#, fuzzy
 msgid "Read next entries"
 msgstr "Ler entradas seguintes"
 
@@ -2080,7 +2043,6 @@ msgstr "Descrição do cenário"
 
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:609
-#, fuzzy
 msgid "Continue playing"
 msgstr "Continuar jogando"
 
@@ -2387,7 +2349,6 @@ msgstr "Carregando ..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:783
-#, fuzzy
 msgid "Attention please!"
 msgstr "Atenção!"
 
@@ -2398,7 +2359,6 @@ msgstr "Créditos"
 
 #. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py:791
-#, fuzzy
 msgid "Quit"
 msgstr "Sair"
 
@@ -2490,7 +2450,6 @@ msgstr "Menu principal:"
 
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:842
-#, fuzzy
 msgid "Show only games with the same version:"
 msgstr "Mostrar apenas jogos com a mesma versão:"
 
@@ -2506,7 +2465,6 @@ msgstr "Participar do jogo"
 
 #. (text of widget: name_lbl)
 #: horizons/i18n/guitranslations.py:848
-#, fuzzy
 msgid "Apply:"
 msgstr "Aplicar:"
 
@@ -2537,7 +2495,6 @@ msgstr "Atualizar a lista dos jogos ativos"
 
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:865
-#, fuzzy
 msgid "Autosave interval in minutes:"
 msgstr "Intervalo em minutos para salvamento automático:"
 
@@ -2558,7 +2515,6 @@ msgstr "Volume dos efeitos sonoros:"
 
 #. (text of widget: headline_graphics)
 #: horizons/i18n/guitranslations.py:875
-#, fuzzy
 msgid "Graphics"
 msgstr "Gráficos"
 
@@ -2569,7 +2525,6 @@ msgstr "Idioma"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:879
-#, fuzzy
 msgid "Network"
 msgstr "Rede"
 
@@ -2605,7 +2560,6 @@ msgstr ""
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:893
-#, fuzzy
 msgid "Network port:"
 msgstr "Porta de rede:"
 
@@ -2636,7 +2590,6 @@ msgstr "Habilitar som:"
 
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:905
-#, fuzzy
 msgid "Uninterrupted building:"
 msgstr "Construção sem interrupções:"
 
@@ -2689,13 +2642,11 @@ msgstr "Remover o jogo selecionado"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:935
-#, fuzzy
 msgid "New game - Singleplayer"
 msgstr "Novo jogo - Singleplayer"
 
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py:939
-#, fuzzy
 msgid "Start game:"
 msgstr "Início do jogo:"
 
@@ -2744,7 +2695,6 @@ msgstr "Configurações de jogo:"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:983
-#, fuzzy
 msgid "Free Trader"
 msgstr "Comerciante livre"
 
@@ -2764,14 +2714,12 @@ msgid "Player name:"
 msgstr "Nome do jogador:"
 
 #: horizons/main.py:83
-#, fuzzy
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 msgstr ""
 "Erro: Sintaxe inválida na opção de linha de comando --mp-master. A porta "
 "deve ser numerada entre 1 e 65535."
 
 #: horizons/main.py:95
-#, fuzzy
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 msgstr ""
 "Erro: Sintaxe inválida na opção de linha de comando --mp-bind. A porta deve "
@@ -2786,7 +2734,6 @@ msgid "The game you selected couldn't be started."
 msgstr "O jogo que você selecionou não pôde ser iniciado."
 
 #: horizons/main.py:245
-#, fuzzy
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr "O jogo salvo pode estar corropido ou foi salvo numa versão anterior."
 
@@ -2809,7 +2756,6 @@ msgid "Due to technical reasons, the campaign file will be copied to the UH camp
 msgstr ""
 
 #: horizons/main.py:367
-#, fuzzy
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
 "Isso significa que mudanças no arquivo que você especificou não será "
@@ -3003,7 +2949,6 @@ msgid "Starts a random map."
 msgstr "Inicia um mapa randômico."
 
 #: run_uh.py:96
-#, fuzzy
 msgid "Starts a random map with seed <seed>."
 msgstr "Inicia um mapa aleatório usando a semente com o valor <seed>."
 
