@@ -21,28 +21,25 @@
 
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 
 class DepositCoverageGoal(SettlementGoal):
 	"""Build storage tents to get a resource deposit inside the settlement."""
 
-	@property
-	def deposit_class(self):
-		"""Return the building class id of the deposit."""
-		raise NotImplementedError, 'This function has to be overridden.'
+	_deposit_resource_id = None # the resource that has to be in the resource deposit
 
-	def _have_reachable_deposit(self, building_id):
+	def _have_reachable_deposit(self, resource_id):
 		"""Returns true if there is a resource deposit outside the settlement that is not owned by another player."""
-		for building in self.land_manager.resource_deposits[building_id]:
-			if building.settlement is None:
+		for tile in self.land_manager.resource_deposits[resource_id]:
+			if tile.object.settlement is None:
 				return True
 		return False
 
 	@property
 	def active(self):
-		return super(DepositCoverageGoal, self).active and not self.production_builder.have_deposit(self.deposit_class) and \
-			self._have_reachable_deposit(self.deposit_class)
+		return super(DepositCoverageGoal, self).active and not self.production_builder.have_deposit(self._deposit_resource_id) and \
+			self._have_reachable_deposit(self._deposit_resource_id)
 
 	def _improve_deposit_coverage(self):
 		"""Get closer to having a resource deposit in the settlement."""
@@ -50,9 +47,9 @@ class DepositCoverageGoal(SettlementGoal):
 			return BUILD_RESULT.NEED_RESOURCES
 
 		available_deposits = []
-		for building in self.land_manager.resource_deposits[self.deposit_class]:
-			if building.settlement is None:
-				available_deposits.append(building)
+		for tile in self.land_manager.resource_deposits[self._deposit_resource_id]:
+			if tile.object.settlement is None:
+				available_deposits.append(tile.object)
 		if not available_deposits:
 			return BUILD_RESULT.IMPOSSIBLE
 
@@ -87,20 +84,16 @@ class DepositCoverageGoal(SettlementGoal):
 		return self._translate_build_result(result)
 
 class ClayDepositCoverageGoal(DepositCoverageGoal):
+	_deposit_resource_id = RES.RAW_CLAY_ID
+
 	def get_personality_name(self):
 		return 'ClayDepositCoverageGoal'
 
-	@property
-	def deposit_class(self):
-		return BUILDINGS.CLAY_DEPOSIT_CLASS
-
 class MountainCoverageGoal(DepositCoverageGoal):
+	_deposit_resource_id = RES.RAW_IRON_ID
+
 	def get_personality_name(self):
 		return 'MountainCoverageGoal'
-
-	@property
-	def deposit_class(self):
-		return BUILDINGS.MOUNTAIN_CLASS
 
 decorators.bind_all(DepositCoverageGoal)
 decorators.bind_all(ClayDepositCoverageGoal)

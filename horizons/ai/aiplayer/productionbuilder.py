@@ -93,12 +93,12 @@ class ProductionBuilder(AreaBuilder):
 				self.land_manager.roads.add((x, y))
 		self._refresh_unused_fields()
 
-	def have_deposit(self, building_id):
+	def have_deposit(self, resource_id):
 		"""Returns true if there is a resource deposit of the relevant type inside the settlement."""
-		for building in self.land_manager.resource_deposits[building_id]:
-			if building.settlement is None:
+		for tile in self.land_manager.resource_deposits[resource_id]:
+			if tile.object.settlement is None:
 				continue
-			coords = building.position.origin.to_tuple()
+			coords = tile.object.position.origin.to_tuple()
 			if coords in self.settlement.ground_map:
 				return True
 		return False
@@ -496,6 +496,7 @@ class ProductionBuilder(AreaBuilder):
 
 	def handle_mine_empty(self, mine):
 		Tear(mine).execute(self.session)
+		self.land_manager.refresh_resource_deposits()
 
 	def __str__(self):
 		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
