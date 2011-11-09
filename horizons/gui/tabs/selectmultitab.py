@@ -71,6 +71,13 @@ class SelectMultiTab(TabInterface):
 		if self.column_number > self.max_column_entry_number - 1:
 			self.column_number = 0
 			self.row_number += 1
+		if self.row_number >= 3:
+			# TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+			# This crashes when more than 2 rows are needed.
+			# There just aren't any hboxes in the xml.
+			# TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+			self.row_number = 2
+			return
 		self.column_number += 1
 		self.widget.findChild(name="hbox_%s" % self.row_number).addChild(entry.widget)
 		self.entries.append(entry)
