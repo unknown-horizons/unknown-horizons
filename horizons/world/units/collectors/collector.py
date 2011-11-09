@@ -347,10 +347,11 @@ class Collector(StorageHolder, Unit):
 		Should be overridden to specify what the collector should do after this."""
 		self.log.debug("%s finished working", self)
 		self.act("idle", self._instance.getFacingLocation(), True)
-		# transfer res
-		self.transfer_res_from_target()
 		# deregister at the target we're at
 		self.job.object.remove_incoming_collector(self)
+		# transfer res (this must be the last step, it will trigger consecutive actions through the
+		#               target inventory changelistener, and the collector must be in a consistent state then.
+		self.transfer_res_from_target()
 		# stop playing ambient sound if any
 		if self.soundfiles:
 			self.stop_sound()

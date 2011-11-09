@@ -247,7 +247,7 @@ class SingleplayerMenu(object):
 
 		resource_density_slider = widget.findChild(name = 'resource_density_slider')
 		def on_resource_density_slider_change():
-			widget.findChild(name = 'resource_density_lbl').text = _('Resource density: ') + u' ' + \
+			widget.findChild(name = 'resource_density_lbl').text = _('Resource density:') + u' ' + \
 				unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
 			horizons.main.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
 		resource_density_slider.capture(on_resource_density_slider_change)

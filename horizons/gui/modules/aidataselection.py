@@ -35,7 +35,7 @@ class AIDataSelection(object):
 		widgets.reload('aidataselection')
 		self.gui = widgets['aidataselection']
 
-		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(0, MULTIPLAYER.MAX_PLAYER_COUNT + 1)]})
+		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(MULTIPLAYER.MAX_PLAYER_COUNT)]})
 		self.gui.distributeData({
 			'ai_players': int(horizons.main.fife.get_uh_setting("AIPlayers"))
 		})

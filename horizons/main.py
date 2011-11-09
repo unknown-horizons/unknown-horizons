@@ -454,7 +454,7 @@ def preload_game_data(lock):
 		log = logging.getLogger("preload")
 		mydb = _create_db() # create own db reader instance, since it's not thread-safe
 		preload_functions = [ ActionSetLoader.load, \
-		                      TileSetLoader.load,
+		                      #TileSetLoader.load, -- this is not needed now, but will be for the new tile system
 		                      Callback(Entities.load_grounds, mydb), \
 		                      Callback(Entities.load_buildings, mydb), \
 		                      Callback(Entities.load_units, mydb) ]
