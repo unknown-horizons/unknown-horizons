@@ -98,7 +98,7 @@ class Production(WorldObject):
 		if self._state == PRODUCTION.STATES.paused:
 			remaining_ticks = self._pause_remaining_ticks
 		elif self._state == PRODUCTION.STATES.producing:
-			remaining_ticks = Scheduler().get_remaining_ticks(self, self._finished_producing)
+			remaining_ticks = Scheduler().get_remaining_ticks(self, self._get_producing_callback())
 		# use a number > 0 for ticks
 		if remaining_ticks < 1:
 			remaining_ticks = 1
@@ -130,7 +130,7 @@ class Production(WorldObject):
 		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION.STATES.producing:
-			Scheduler().add_new_object(self._finished_producing, self, db_data[3])
+			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[3])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
 				 self._state == PRODUCTION.STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)
@@ -211,7 +211,7 @@ class Production(WorldObject):
 
 			elif self._state == PRODUCTION.STATES.producing:
 				# restore scheduler call
-				Scheduler().add_new_object(self._finished_producing, self, \
+				Scheduler().add_new_object(self._get_producing_callback(), self, \
 																   self._pause_remaining_ticks)
 			else:
 				assert False, 'Unhandled production state: %s' % self._pause_old_state
@@ -229,8 +229,8 @@ class Production(WorldObject):
 			elif self._pause_old_state == PRODUCTION.STATES.producing:
 				# save when production finishes and remove that call
 				self._pause_remaining_ticks = \
-						Scheduler().get_remaining_ticks(self, self._finished_producing)
-				Scheduler().rem_call(self, self._finished_producing)
+						Scheduler().get_remaining_ticks(self, self._get_producing_callback())
+				Scheduler().rem_call(self, self._get_producing_callback())
 			else:
 				assert False, 'Unhandled production state: %s' % self._state
 
@@ -240,7 +240,7 @@ class Production(WorldObject):
 		"""Makes the production finish now"""
 		if self._state != PRODUCTION.STATES.producing:
 			return
-		Scheduler().rem_call(self, self._finished_producing)
+		Scheduler().rem_call(self, self._get_producing_callback())
 		self._finished_producing()
 
 	def alter_production_time(self, modifier):
@@ -292,6 +292,10 @@ class Production(WorldObject):
 		return Scheduler().cur_tick - self._creation_tick
 
 	## PROTECTED METHODS
+	def _get_producing_callback(self):
+		"""Returns the callback used during the process of producing (state: producing)"""
+		return self._finished_producing
+
 	def _get_first_relevant_tick(self, ignore_pause):
 		"""
 		Returns the first tick that is relevant for production utilisation calculation

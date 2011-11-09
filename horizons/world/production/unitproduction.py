@@ -44,6 +44,8 @@ class UnitProduction(ChangingProduction):
 		self.__init()
 
 	## PROTECTED METHODS
+	def _get_producing_callback(self):
+		return self._produce
 
 	def _give_produced_res(self):
 		"""This needs to be overridden as we also have to produce the unit."""
