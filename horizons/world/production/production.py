@@ -198,48 +198,43 @@ class Production(WorldObject):
 			# switch state
 			self._state = self._pause_old_state
 			self._pause_old_state = None
-			self._do_unpause()
+
+			# apply state
+			if self._state in (PRODUCTION.STATES.waiting_for_res, \
+												 PRODUCTION.STATES.inventory_full):
+				# just restore watching
+				# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
+				self.inventory.add_change_listener(self._check_inventory)
+				if self.__class__.USES_GOLD:
+					self.owner_inventory.add_change_listener(self._check_inventory)
+				self._check_inventory()
+
+			elif self._state == PRODUCTION.STATES.producing:
+				# restore scheduler call
+				Scheduler().add_new_object(self._finished_producing, self, \
+																   self._pause_remaining_ticks)
+			else:
+				assert False, 'Unhandled production state: %s' % self._pause_old_state
 		else: # do pause
 			# switch state
 			self._pause_old_state = self._state
 			self._state = PRODUCTION.STATES.paused
-			self._do_pause()
+
+			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res, \
+												           PRODUCTION.STATES.inventory_full):
+				# just stop watching for new res
+				self.inventory.discard_change_listener(self._check_inventory)
+				if self.__class__.USES_GOLD:
+					self.owner_inventory.discard_change_listener(self._check_inventory)
+			elif self._pause_old_state == PRODUCTION.STATES.producing:
+				# save when production finishes and remove that call
+				self._pause_remaining_ticks = \
+						Scheduler().get_remaining_ticks(self, self._finished_producing)
+				Scheduler().rem_call(self, self._finished_producing)
+			else:
+				assert False, 'Unhandled production state: %s' % self._state
 
 		self._changed()
-
-	def _do_unpause(self):
-		"""Called by pause, outsourced to make it overrideable"""
-		if self._state in (PRODUCTION.STATES.waiting_for_res, \
-											 PRODUCTION.STATES.inventory_full):
-			# just restore watching
-			# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
-			self.inventory.add_change_listener(self._check_inventory)
-			if self.__class__.USES_GOLD:
-				self.owner_inventory.add_change_listener(self._check_inventory)
-			self._check_inventory()
-
-		elif self._state == PRODUCTION.STATES.producing:
-			# restore scheduler call
-			Scheduler().add_new_object(self._finished_producing, self, \
-															   self._pause_remaining_ticks)
-		else:
-			assert False, 'Unhandled production state: %s' % self._pause_old_state
-
-	def _do_pause(self):
-		"""Called by pause, outsourced to make it overrideable"""
-		if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res, \
-											           PRODUCTION.STATES.inventory_full):
-			# just stop watching for new res
-			self.inventory.discard_change_listener(self._check_inventory)
-			if self.__class__.USES_GOLD:
-				self.owner_inventory.discard_change_listener(self._check_inventory)
-		elif self._pause_old_state == PRODUCTION.STATES.producing:
-			# save when production finishes and remove that call
-			self._pause_remaining_ticks = \
-					Scheduler().get_remaining_ticks(self, self._finished_producing)
-			Scheduler().rem_call(self, self._finished_producing)
-		else:
-			assert False, 'Unhandled production state: %s' % self._state
 
 	def finish_production_now(self):
 		"""Makes the production finish now"""
