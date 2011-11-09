@@ -45,6 +45,23 @@ class UnitProduction(ChangingProduction):
 
 	## PROTECTED METHODS
 
+	def _do_unpause(self):
+		if self._state == PRODUCTION.STATES.producing:
+			# restore scheduler call
+			Scheduler().add_new_object(self._produce, self, \
+			                           self._pause_remaining_ticks)
+		else:
+			super(UnitProduction, self)._do_unpause()
+
+	def _do_pause(self):
+		if self._pause_old_state == PRODUCTION.STATES.producing:
+			# save when production finishes and remove that call
+			self._pause_remaining_ticks = \
+					Scheduler().get_remaining_ticks(self, self._produce)
+			Scheduler().rem_call(self, self._produce)
+		else:
+			super(UnitProduction, self)._do_unpause()
+
 	def _give_produced_res(self):
 		"""This needs to be overridden as we also have to produce the unit."""
 		super(UnitProduction, self)._give_produced_res()
