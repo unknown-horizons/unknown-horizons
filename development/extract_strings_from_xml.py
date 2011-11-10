@@ -111,16 +111,16 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 			else:
 				print_n_no_name(element_name, element.getAttribute(text_name))
 
-		if len(element.getAttribute(text_name)) and len(element.getAttribute('name')):
-			name = element.getAttribute('name')
-			value = element.getAttribute(text_name)
-			if name[0:6] == 'noi18n': #prepend 'noi18n' to labels without translation
-				break
+		name = element.getAttribute('name')
+		value = element.getAttribute(text_name)
+		if len(value) and len(name) and name != 'noi18n':
+			#prepend 'noi18n' to labels without translation
 			if name == 'version_label':
 				value = 'VERSION.string()'
+				element_strings.append('%s: %s' % (('"%s"' % name).ljust(30), value))
 			else:
 				value = '_("%s")' % value
-			element_strings.append('%s: %s' % (('"%s"' % name).ljust(30), value))
+				element_strings.append('%s: %s' % (('"%s"' % name).ljust(30), value))
 
 	return sorted(element_strings)
 

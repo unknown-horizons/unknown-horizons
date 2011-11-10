@@ -67,7 +67,7 @@ class _Tooltip(object):
 			self.gui.show()
 
 	def show_tooltip(self):
-		if self.tooltip != "":
+		if self.tooltip not in ["", None]:
 			translated_tooltip = _(self.tooltip)
 			#HACK this looks better than splitting into several lines & joining
 			# them. works because replace_whitespace in fill defaults to True:

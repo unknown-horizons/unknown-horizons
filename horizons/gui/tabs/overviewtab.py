@@ -25,6 +25,7 @@ import weakref
 from horizons.gui.tabs.tabinterface import TabInterface
 
 from horizons.scheduler import Scheduler
+from horizons.extscheduler import ExtScheduler
 from horizons.util import Callback, ActionSetLoader
 from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS
 from horizons.gui.widgets  import DeleteButton
@@ -59,7 +60,6 @@ class OverviewTab(TabInterface):
 			else:
 				self.widget.child_finder('player_emblem').image = \
 			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
-
 
 	def refresh(self):
 		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
@@ -154,13 +154,15 @@ class ShipOverviewTab(OverviewTab):
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
+		unit_image = self.widget.child_finder('shipImage')
+		unit_image.image = 'content/gui/images/objects/ships/116/%s.png' % self.instance.id
 		self._init_combat()
 
 	def _init_combat(self): # no combat
 		weapons_wdg = self.widget.child_finder('weapon_storage')
 		weapons_wdg.parent.removeChild(weapons_wdg)
 		weapons_wdg = self.widget.child_finder('lbl_weapon_storage').text = \
-		            _("Trade ship")
+		            _("Trade ship") # no weapons, as opposed to displaying the weapons
 
 	def refresh(self):
 		# no weapons:
@@ -261,6 +263,8 @@ class ProductionOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = _("Production overview")
+
+		ExtScheduler().add_new_object(self.widget.adaptLayout, self, 0)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""

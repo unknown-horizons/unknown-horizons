@@ -768,7 +768,8 @@ events:
     type: logbook
   - arguments: ["\u0414\u043E\u0441\u0442\u0438\u0433\u043D\u0443\u0442\u044C \u0437\
         \u0430\u043F\u0430\u0441\u0430 \u0432 30 \u0438\u043D\u0441\u0442\u0440\u0443\
-        \u043C\u0435\u043D\u0442\u043E\u0432."]
+        \u043C\u0435\u043D\u0442\u043E\u0432.", !!python/unicode 'Note that this might
+        take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var

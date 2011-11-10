@@ -342,7 +342,8 @@ events:
         \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
         \ as you need to have 30 tools in stock!"]
     type: logbook
-  - arguments: [!!python/unicode 'Alcance en la isla un stock de al menos 30 herramientas.']
+  - arguments: [!!python/unicode 'Alcance en la isla un stock de al menos 30 herramientas.',
+      !!python/unicode 'Note that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var

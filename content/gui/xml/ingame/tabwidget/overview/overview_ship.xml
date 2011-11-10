@@ -12,8 +12,8 @@
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-	<!-- Picture -->
-	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,20" />
+	<!-- picture is reset to proper class icon in ShipOverviewTab.__init__ -->
+	<Icon name="shipImage" image="content/gui/images/objects/ships/116/1000020.png" position="70,40" />
 	<Container name="weapon_storage_container" size="245,50" position = "20,170">
 		<HBox>
 			<!-- this label is reset to "trade ship" to tell the user that there can't be weapons -->

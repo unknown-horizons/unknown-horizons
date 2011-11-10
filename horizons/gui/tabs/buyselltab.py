@@ -40,7 +40,7 @@ class BuySellTab(TabInterface):
 	buy_button_path =  "content/gui/images/tabwidget/buysell_buy.png"
 	sell_button_path = "content/gui/images/tabwidget/buysell_sell.png"
 
-	dummy_icon_path = "content/gui/icons/buildmenu/outdated/dummy_btn.png"
+	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 
 	def __init__(self, instance, slots = 3):
 		"""

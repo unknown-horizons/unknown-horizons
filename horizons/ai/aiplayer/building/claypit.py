@@ -22,14 +22,15 @@
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 
 class AbstractClayPit(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
 		for building in settlement_manager.land_manager.settlement.get_buildings_by_id(BUILDINGS.CLAY_DEPOSIT_CLASS):
-			(x, y) = building.position.origin.to_tuple()
-			yield (x, y, 0)
+			if building.inventory[RES.RAW_CLAY_ID]:
+				(x, y) = building.position.origin.to_tuple()
+				yield (x, y, 0)
 
 	@property
 	def evaluator_class(self):

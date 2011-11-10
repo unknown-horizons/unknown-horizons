@@ -261,7 +261,8 @@ events:
         \ nella scheda 'Account' a confronto la 'Vendi' e 'Compra' valori l\xEC.\n\
         \nTASK: Buy come strumenti di cui hai bisogno di avere 30 utensili in magazzino!"]
     type: logbook
-  - arguments: [!!python/unicode 'Raggiungi una scorta per l''isola di almeno 30 attrezzi.']
+  - arguments: [!!python/unicode 'Raggiungi una scorta per l''isola di almeno 30 attrezzi.',
+      !!python/unicode 'Note that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var

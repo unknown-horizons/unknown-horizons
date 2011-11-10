@@ -120,6 +120,9 @@ class Player(ComponentHolder, WorldObject):
 		else:
 			return False
 
+	def notify_mine_empty(self, mine):
+		"""The Mine calls this function to let the player know that the mine is empty."""
+		pass
 
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
@@ -133,3 +136,6 @@ class HumanPlayer(Player):
 			                                                    {'level': settler.level+1})
 			self.session.ingame_gui._player_settler_level_change_listener()
 		return level_up
+
+	def notify_mine_empty(self, mine):
+		self.session.ingame_gui.message_widget.add(mine.position.center().x, mine.position.center().y, 'MINE_EMPTY')

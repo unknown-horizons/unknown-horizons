@@ -7,6 +7,10 @@
 # If a path is given, it's assumed to be the path to the translation files
 # from pootle for the scenario, and the .po files in there are used to
 # generate translated scenarios in horizons/scenarios/.
+#
+# If you are looking for a way to compile the tutorial translations:
+# The file development/copy_pofiles.sh does this (and a bit more). No need to
+# call this script directly thus, unless you want to translate more scenarios.
 
 # ###################################################
 # Copyright (C) 2011 The Unknown Horizons Team
@@ -82,7 +86,7 @@ echo "Compiling these translations for $1:"
 for path in "$2"/*.po; do
     lang=`basename "$path" | sed "s,$1-,,;s,.po,,"`
     mo=po/mo/$lang/LC_MESSAGES
-    R='s,:,,g;s,.po,,g;s,alencia,,g;s,(po_temp_tutorial//|messages|translations),\t,g;s/[.,]//g'
+    R='s,:,,g;s,.po,,g;s,alencia,,g;s,(po_temp_tutorial//|messages|message|translations),\t,g;s/[.,]//g'
     mkdir -p $mo && msgfmt --statistics $path -o $mo/$1.mo --check-format -v 2>&1 |perl -npe "$R"
 
     python2 << END > content/scenarios/$1_$lang.yaml

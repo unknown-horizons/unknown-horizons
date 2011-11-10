@@ -31,7 +31,7 @@ class RouteConfig(object):
 	"""
 	Widget that allows configurating a ship's trading route
 	"""
-	dummy_icon_path = "content/gui/icons/buildmenu/outdated/dummy_btn.png"
+	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/branch_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_branch.png"
 	MAX_ENTRIES = 6

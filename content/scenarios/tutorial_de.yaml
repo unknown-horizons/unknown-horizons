@@ -263,7 +263,8 @@ events:
         \ so lange Werkzeuge ein, bis Ihr 30 Einheiten auf Lager habt."]
     type: logbook
   - arguments: [!!python/unicode 'Erreicht einen Lagerbestand von 30 oder mehr Werkzeugen
-        auf Eurer Insel.']
+        auf Eurer Insel.', !!python/unicode 'Beachtet, dass dies eine Weile dauern
+        kann.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var

@@ -149,11 +149,11 @@ class DefaultPersonality:
 		no_school_sailor_upgrades = True
 		no_school_pioneer_upgrades = True
 
-		# tax rates and upgrade rights in settlements where there is a school but not enough bricks to build some building
+		# tax rates and upgrade rights in settlements where there is a school but not enough resources to build something
 		school_sailor_taxes = 0.9
 		school_pioneer_taxes = 1.0
 		school_settler_taxes = 0.8
-		school_sailor_upgrades = True
+		school_sailor_upgrades = False
 		school_pioneer_upgrades = False
 
 		# tax rates and upgrade rights in settlements with a school and none of the above problems
