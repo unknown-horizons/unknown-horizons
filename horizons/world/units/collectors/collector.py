@@ -76,13 +76,12 @@ class Collector(Unit):
 
 	def __init__(self, x, y, slots = 1, start_hidden=True, **kwargs):
 		super(Collector, self).__init__(slots = slots, \
-		                                size = size, \
 		                                x = x, \
 		                                y = y, \
 		                                **kwargs)
 
 
-		self.__init(self.states.idle, start_hidden, size)
+		self.__init(self.states.idle, start_hidden)
 
 		# start searching jobs just when construction (of subclass) is completed
 		Scheduler().add_new_object(self.search_job, self, 1)
