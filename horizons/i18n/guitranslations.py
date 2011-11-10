@@ -195,6 +195,7 @@ def set_translations():
 			},
 		"overview_farm.xml" : {
 			"headline"                    : _("Building overview"),
+			"capacity_utilisation_label"  : _("capacity utilization"),
 			"running_costs_label"         : _("Running costs"),
 			"capacity_utilisation"        : _("capacity utilization"),
 			"running_costs"               : _("Running costs"),
@@ -258,9 +259,11 @@ def set_translations():
 			"taxes"                       : _("Paid taxes"),
 			},
 		"overview_branchoffice.xml" : {
-			"collector_utilisation_label" : _("Collector utilisation:"),
 			"name_label"                  : _("Name:"),
-			"running_costs_label"         : _("Running costs:"),
+			"collector_utilisation_label" : _("Collector utilisation:"),
+			"running_costs_label"         : _("Running costs"),
+			"collector_utilisation"       : _("Collector utilisation:"),
+			"running_costs"               : _("Running costs"),
 			},
 		"overview_enemybranchoffice.xml" : {
 			"buying_label"                : _("Buying"),
@@ -274,6 +277,7 @@ def set_translations():
 			},
 		"overview_productionbuilding.xml" : {
 			"headline"                    : _("Building overview"),
+			"capacity_utilisation_label"  : _("capacity utilization"),
 			"running_costs_label"         : _("Running costs"),
 			"capacity_utilisation"        : _("capacity utilization"),
 			"running_costs"               : _("Running costs"),
@@ -312,14 +316,18 @@ def set_translations():
 			"name_label"                  : _("Name:"),
 			},
 		"buy_sell_goods.xml" : {
+			"buying_label"                : _("Buying"),
 			"exchange_label"              : _("Exchange:"),
 			"headline"                    : _("Trade"),
+			"selling_label"               : _("Selling"),
 			"ship_label"                  : _("Ship:"),
+			"trade_with_label"            : _("Trade partner:"),
 			},
 		"exchange_goods.xml" : {
 			"exchange_label"              : _("Exchange:"),
 			"headline"                    : _("Trade"),
 			"ship_label"                  : _("Ship:"),
+			"trade_with_label"            : _("Trade partner:"),
 			},
 		"fighting_ship_inventory.xml" : {
 			"configure_route_label"       : _("Configure trading route:"),
