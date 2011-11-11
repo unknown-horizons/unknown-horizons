@@ -174,7 +174,7 @@ class SingleplayerMenu(object):
 			#		'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 			#		})
 			#
-			horizons.main._start_map(scenario, is_scenario = True, campaign = {
+			horizons.main._start_map(scenario, ai_players=0, human_ai=False, is_scenario=True, campaign={
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 				})
 		else: # free play/random map
