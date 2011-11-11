@@ -399,7 +399,7 @@ class Fife(ApplicationBase):
 
 	def update_slider_values(self, slider, factor = 1, unit = ''):
 		self.OptionsDlg.findChild(name=slider+'_value').text = \
-		     u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).value * factor), unit)
+		     u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).getValue() * factor), unit)
 
 	def setup_sound(self):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
@@ -501,7 +501,7 @@ class Fife(ApplicationBase):
 		@param value: double - value that's used to set the emitters gain.
 		"""
 		if not value:
-			value = self.OptionsDlg.findChild(name="volume_music").value
+			value = self.OptionsDlg.findChild(name="volume_music").getValue()
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['bgsound'].setGain(value)
 		self.update_slider_values('volume_music', factor = 500, unit = '%')
@@ -511,7 +511,7 @@ class Fife(ApplicationBase):
 		@param value: double - value that's used to set the emitters gain.
 		"""
 		if not value:
-			value = self.OptionsDlg.findChild(name="volume_effects").value
+			value = self.OptionsDlg.findChild(name="volume_effects").getValue()
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)

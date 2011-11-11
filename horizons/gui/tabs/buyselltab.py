@@ -111,8 +111,8 @@ class BuySellTab(TabInterface):
 			slot.findChild(name='button').hover_image = self.dummy_icon_path
 			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
-			slider.scale_start = 0.0
-			slider.scale_end = float(self.settlement.inventory.limit)
+			slider.setScaleStart(0.0)
+			slider.setScaleEnd(float(self.settlement.inventory.limit))
 			# Set scale according to the settlement inventory size
 			slot.findChild(name="buysell").capture(Callback(self.toggle_buysell, num))
 			fillbar = slot.findChild(name="fillbar")
@@ -138,9 +138,9 @@ class BuySellTab(TabInterface):
 		slot = self.slots[slot_id]
 		slider = slot.findChild(name="slider")
 		if value is None: # use current slider value if player provided no input
-			value = int(slider.value)
+			value = int(slider.getValue())
 		else: # set slider to value entered by the player
-			slider.value = float(value)
+			slider.setValue(float(value))
 
 		if slot.action is "sell":
 			if slot.res is not None: # slot has been in use before, delete old value
@@ -194,7 +194,7 @@ class BuySellTab(TabInterface):
 		"""
 		slot = self.slots[slot]
 		button = slot.findChild(name="buysell")
-		limit = int(slot.findChild(name="slider").value)
+		limit = int(slot.findChild(name="slider").getValue())
 		if slot.action is "buy":
 			# setting to sell
 			button.up_image = self.sell_button_path
@@ -263,10 +263,10 @@ class BuySellTab(TabInterface):
 		"""
 		slider = self.slots[slot].findChild(name="slider")
 		if self.slots[slot].action is "buy":
-			self.add_buy_to_settlement(res_id, int(slider.value), slot)
+			self.add_buy_to_settlement(res_id, int(slider.getValue()), slot)
 		elif self.slots[slot].action is "sell":
-			self.add_sell_to_settlement(res_id, int(slider.value), slot)
-		self.slots[slot].findChild(name="amount").text = unicode(int(slider.value))+'t'
+			self.add_sell_to_settlement(res_id, int(slider.getValue()), slot)
+		self.slots[slot].findChild(name="amount").text = unicode(int(slider.getValue()))+'t'
 		self.slots[slot].adaptLayout()
 
 
