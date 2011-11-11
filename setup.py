@@ -9,6 +9,11 @@ import os
 import glob
 import platform
 from shutil import rmtree, copytree
+
+# Install dummy gettext before any imports from horizons
+import gettext
+gettext.install("")
+
 from horizons.constants import VERSION
 
 # Ensure we are in the correct directory
