@@ -73,6 +73,7 @@ files_to_skip = {
 	'credits1.xml',
 	'credits2.xml',
 	'credits3.xml',
+	'stringpreviewwidget.xml',
 	'startup_error_popup.xml'
 	}
 
@@ -113,16 +114,15 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 			else:
 				print_n_no_name(element_name, element.getAttribute(text_name))
 
-		if len(element.getAttribute(text_name)) and len(element.getAttribute('name')):
-			name = element.getAttribute('name')
-			text = element.getAttribute(text_name)
-			if name[0:6] == 'noi18n': #prepend 'noi18n' to labels without translation
-				break
+		name = element.getAttribute('name')
+		text = element.getAttribute(text_name)
+		i18n = element.getAttribute('comment') # translator comment about widget context
+		if len(text) and len(name) and i18n != 'noi18n':
+			#comment='noi18n' in widgets where translation is not desired
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
 				text = '_("%s")' % text
-			i18n = element.getAttribute('comment') # translator comment about widget context
 			comment = '(%s of widget: %s)' % (text_name, name) + (' %s' % (i18n) if i18n else '')
 			element_strings.append('# %s' %comment + ROWINDENT + '%-30s: (%-10s, %s)' % (('"%s"' % name), ('"%s"') % text_name, text))
 
