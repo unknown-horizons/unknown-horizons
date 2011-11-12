@@ -256,16 +256,16 @@ def set_translations():
 		"headline"                    : ("text"    , _("Trade boats")),
 		# (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 		"headline_BB_trade_ship1"     : ("text"    , _("Huker")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("01t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("03t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("08t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("550")),
 		# (tooltip of widget: BB_build_trade_1)
 		"BB_build_trade_1"            : ("tooltip" , _("Build this ship!")),
+		# (tooltip of widget: costs_001)
+		"costs_001"                   : ("tooltip" , _("Money")),
+		# (tooltip of widget: costs_003)
+		"costs_003"                   : ("tooltip" , _("Cloth")),
+		# (tooltip of widget: costs_004)
+		"costs_004"                   : ("tooltip" , _("Boards")),
+		# (tooltip of widget: costs_006)
+		"costs_006"                   : ("tooltip" , _("Tools")),
 		},
 
 	"boatbuilder_war1.xml" : {
@@ -273,18 +273,18 @@ def set_translations():
 		"headline"                    : ("text"    , _("War boats")),
 		# (text of widget: headline_BB_war1_ship1)
 		"headline_BB_war1_ship1"      : ("text"    , _("Frigate")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("02t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("06t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("07t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("13t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("750")),
 		# (tooltip of widget: BB_build_war1_1)
 		"BB_build_war1_1"             : ("tooltip" , _("Build this ship!")),
+		# (tooltip of widget: costs_001)
+		"costs_001"                   : ("tooltip" , _("Money")),
+		# (tooltip of widget: costs_003)
+		"costs_003"                   : ("tooltip" , _("Cloth")),
+		# (tooltip of widget: costs_004)
+		"costs_004"                   : ("tooltip" , _("Boards")),
+		# (tooltip of widget: costs_006)
+		"costs_006"                   : ("tooltip" , _("Tools")),
+		# (tooltip of widget: costs_040)
+		"costs_040"                   : ("tooltip" , _("Cannons")),
 		},
 
 	"buysellmenu.xml" : {
