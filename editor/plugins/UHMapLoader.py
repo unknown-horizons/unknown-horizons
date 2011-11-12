@@ -49,9 +49,10 @@ class MapLoader:
 		return True
 
 	def loadResource(self, path):
+
 		""" Loads the map from the given sqlite file """
 		model = self._engine.getModel()
-		map = model.createMap("name") # TODO: get the model name from the db
+		map = model.createMap(path)
 		grid = model.getCellGrid(self.GRID_TYPE)
 
 		# add layers
