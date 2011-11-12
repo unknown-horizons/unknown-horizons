@@ -237,7 +237,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if mode == 'load':
 			map_files, map_file_display = SavegameManager.get_saves()
 			if len(map_files) == 0:
-				self.show_popup(_("No saved games"), _("There are no saved games to load"))
+				self.show_popup(_("No saved games"), _("There are no saved games to load."))
 				return
 		else: # don't show autosave and quicksave on save
 			map_files, map_file_display = SavegameManager.get_regular_saves()
@@ -493,7 +493,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		selected_item = self.current.collectData("savegamelist")
 		if selected_item == -1 or selected_item >= len(map_files):
-			self.show_popup(_("No file selected"), _("You need to select a savegame to delete"))
+			self.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
 		message = _('Do you really want to delete the savegame "%s"?') % \

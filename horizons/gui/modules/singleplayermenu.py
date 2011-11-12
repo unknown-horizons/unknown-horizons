@@ -134,7 +134,7 @@ class SingleplayerMenu(object):
 		assert self.current is self.widgets['singleplayermenu']
 		playername = self.current.playerdata.get_player_name()
 		if len(playername) == 0:
-			self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
+			self.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
 		playercolor = self.current.playerdata.get_player_color()
 		horizons.main.fife.set_uh_setting("Nickname", playername)
