@@ -42,6 +42,9 @@ class MapLoader:
 		self._callback = callback
 		self._debug = debug
 
+	def isLoadable(self, path):
+		return True
+
 	def loadResource(self, path):
 		""" Loads the map from the given sqlite file """
 		model = self._engine.getModel()
