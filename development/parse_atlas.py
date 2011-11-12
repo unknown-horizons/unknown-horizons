@@ -32,7 +32,7 @@ gettext.install('', unicode=True)
 
 try:
 	import run_uh
-except ImportError, e:
+except ImportError as e:
 	print e.message
 	print 'Please run from uh root dir'
 	sys.exit(1)
@@ -62,7 +62,7 @@ class AtlasEntry(object):
 try:
 	f = open(os.path.join("development", "atlas", "atlas.sql"), "w+")
 	print >> f, "CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);"
-except IOError, e:
+except IOError as e:
 	print e.message
 	print 'Please make sure you have', os.path.join("development", "atlas"), "directory populated with atlas files."
 	sys.exit(1)

@@ -237,9 +237,9 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 	try:
 		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, natural_resource_multiplier, \
 			is_scenario = is_scenario, campaign = campaign)
-	except InvalidScenarioFileFormat, e:
+	except InvalidScenarioFileFormat as e:
 		raise
-	except Exception, e:
+	except Exception as e:
 		import traceback
 		print "Failed to load", map_file
 		traceback.print_exc()
@@ -466,7 +466,7 @@ def preload_game_data(lock):
 			log.debug("Preload: %s is done", f)
 			lock.release()
 		log.debug("Preloading done.")
-	except Exception, e:
+	except Exception as e:
 		log.warning("Exception occured in preloading thread: %s", e)
 	finally:
 		if lock.locked():

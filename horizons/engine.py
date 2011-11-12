@@ -83,7 +83,7 @@ class LocalizedSetting(Setting):
 		if confirmed:
 			try:
 				super(LocalizedSetting, self).setDefaults()
-			except AttributeError, err: #weird stuff happens in settings module reset
+			except AttributeError as err: #weird stuff happens in settings module reset
 				print "A problem occured while updating: %s" % err + "\n" + \
 				      "Please contact the developers if this happens more than once."
 
@@ -551,7 +551,7 @@ class Fife(ApplicationBase):
 				if NetworkInterface() is None:
 					NetworkInterface.create_instance()
 				NetworkInterface().network_data_changed(connect=False)
-			except Exception, e:
+			except Exception as e:
 				headline = _(u"Failed to apply new network data.")
 				descr = _(u"Networking couldn't be initialised with the current configuration.")
 				advice = _(u"Check the data you entered in the Network section.")
@@ -579,7 +579,7 @@ class Fife(ApplicationBase):
 		while not self._doQuit:
 			try:
 				self.engine.pump()
-			except fife.Exception, e:
+			except fife.Exception as e:
 				print e.getMessage()
 				break
 			for f in self.pump:

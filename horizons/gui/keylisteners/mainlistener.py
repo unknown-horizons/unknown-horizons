@@ -113,7 +113,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 			command = ''
 		try:
 			cmd = code.compile_command(self.commandbuffer + "\n" + command)
-		except BaseException, e:
+		except BaseException as e:
 			self.commandbuffer = ''
 			return str(e)
 		if cmd is None:
@@ -137,7 +137,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		sys.stdout = console_file(oldout)
 		try:
 			exec cmd in globals()
-		except BaseException, e:
+		except BaseException as e:
 			sys.stdout = oldout
 			return str(e)
 		sys.stdout = oldout

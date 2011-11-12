@@ -485,7 +485,7 @@ class Server(object):
 			fd.write("Players.Playing: %d\n" % (players_playing))
 
 			fd.close()
-		except IOError, e:
+		except IOError as e:
 			logging.error("[STATISTIC] Unable to open statistic file: %s" % (e))
 		return
 

@@ -47,7 +47,7 @@ class MultiplayerMenu(object):
 		if NetworkInterface() is None:
 			try:
 				NetworkInterface.create_instance()
-			except RuntimeError, e:
+			except RuntimeError as e:
 				headline = _(u"Failed to initialize networking.")
 				descr = _(u"Networking couldn't be initialised with the current configuration.")
 				advice = _(u"Check the data you entered in the Network section in the settings dialogue.")
@@ -97,7 +97,7 @@ class MultiplayerMenu(object):
 
 		try:
 			NetworkInterface().connect()
-		except Exception, err:
+		except Exception as err:
 			headline = _(u"Fatal Network Error")
 			descr = _(u"Could not connect to master server.")
 			advice = _(u"Please check your Internet connection. If it is fine, it means our master server is temporarily down.")

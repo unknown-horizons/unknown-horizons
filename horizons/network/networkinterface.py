@@ -88,7 +88,7 @@ class NetworkInterface(object):
 			clientaddress = [NETWORK.CLIENT_ADDRESS, client_port]
 		try:
 			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress)
-		except NetworkException, e:
+		except NetworkException as e:
 			raise RuntimeError(e)
 
 	def __get_player_name(self):
@@ -100,7 +100,7 @@ class NetworkInterface(object):
 		"""
 		try:
 			self._client.connect()
-		except NetworkException, e:
+		except NetworkException as e:
 			self.disconnect()
 			raise e
 
@@ -113,14 +113,14 @@ class NetworkInterface(object):
 			try:
 				while self._client.ping(): # ping receives packets
 					pass
-			except NetworkException, e:
+			except NetworkException as e:
 				self._handle_exception(e)
 
 	def creategame(self, mapname, maxplayers):
 		self.log.debug("[CREATEGAME] %s, %s", mapname, maxplayers)
 		try:
 			game = self._client.creategame(mapname, maxplayers)
-		except NetworkException, e:
+		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			return None
 		return self.game2mpgame(game)
@@ -138,14 +138,14 @@ class NetworkInterface(object):
 				self.change_name( self.__get_player_name() + unicode(i), save=False )
 				i += 1
 			self._client.joingame(uuid)
-		except NetworkException, e:
+		except NetworkException as e:
 			self._handle_exception(e)
 		return False
 
 	def leavegame(self):
 		try:
 			self._client.leavegame()
-		except NetworkException, e:
+		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			if fatal:
 				return False
@@ -154,7 +154,7 @@ class NetworkInterface(object):
 	def chat(self, message):
 		try:
 			self._client.chat(message)
-		except NetworkException, e:
+		except NetworkException as e:
 			self._handle_exception(e)
 			return False
 		return True
@@ -166,7 +166,7 @@ class NetworkInterface(object):
 			horizons.main.fife.save_settings()
 		try:
 			return self._client.changename(new_nick)
-		except NetworkException, e:
+		except NetworkException as e:
 			self._handle_exception(e)
 			return False
 
@@ -229,7 +229,7 @@ class NetworkInterface(object):
 		ret_mp_games = []
 		try:
 			games = self._client.listgames(onlyThisVersion=only_this_version_allowed)
-		except NetworkException, e:
+		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			return [] if not fatal else None
 		for game in games:
@@ -244,7 +244,7 @@ class NetworkInterface(object):
 		if self._client.isconnected():
 			try:
 				self._client.send(packet)
-			except NetworkException, e:
+			except NetworkException as e:
 				self._handle_exception(e)
 
 	def receive_all(self):
@@ -255,7 +255,7 @@ class NetworkInterface(object):
 		try:
 			while self._client.ping(): # ping receives packets
 				pass
-		except NetworkException, e:
+		except NetworkException as e:
 			self.log.debug("ping in receive_all failed: "+str(e))
 			self._handle_exception(e)
 			raise CommandError(e)
@@ -273,11 +273,11 @@ class NetworkInterface(object):
 	def _handle_exception(self, e):
 		try:
 			raise e
-		except FatalError, e:
+		except FatalError as e:
 			self._cb_error(e, fatal=True)
 			self.disconnect()
 			return True
-		except NetworkException, e:
+		except NetworkException as e:
 			self._cb_error(e, fatal=False)
 			return False
 

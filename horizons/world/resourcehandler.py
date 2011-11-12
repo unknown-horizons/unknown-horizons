@@ -145,7 +145,7 @@ class ResourceHandler(StorageHolder):
 		when there are no other possibilities"""
 		try:
 			return self.owner.inventory
-		except AttributeError, e: # no owner or no inventory, either way, we don't care
+		except AttributeError as e: # no owner or no inventory, either way, we don't care
 			return None
 
 	def load_production(self, db, production_id):

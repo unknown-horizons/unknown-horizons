@@ -98,7 +98,7 @@ class SingleplayerMenu(object):
 							difficulty = ScenarioEventHandler.get_difficulty_from_file( self.__get_selected_map() )
 							desc = ScenarioEventHandler.get_description_from_file( self.__get_selected_map() )
 							author = ScenarioEventHandler.get_author_from_file( self.__get_selected_map() )
-						except InvalidScenarioFileFormat, e:
+						except InvalidScenarioFileFormat as e:
 							self.__show_invalid_scenario_file_popup(e)
 							return
 						self.current.findChild(name="map_difficulty").text = _("Difficulty: %s") % (difficulty)
@@ -157,7 +157,7 @@ class SingleplayerMenu(object):
 			from horizons.scenario import InvalidScenarioFileFormat
 			try:
 				horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=is_scenario)
-			except InvalidScenarioFileFormat, e:
+			except InvalidScenarioFileFormat as e:
 				self.__show_invalid_scenario_file_popup(e)
 				self.show_single(show = 'scenario')
 		elif is_campaign:

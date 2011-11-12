@@ -322,7 +322,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			try:
 				self.current.additional_widget.hide()
 				del self.current.additional_widget
-			except AttributeError, e:
+			except AttributeError as e:
 				pass # only used for some widgets, e.g. pause
 
 
