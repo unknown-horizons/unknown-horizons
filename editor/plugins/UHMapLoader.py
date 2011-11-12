@@ -22,6 +22,7 @@
 import horizons.main # necessary so the correct load order of all modules is guaranteed
 from horizons.util.dbreader import DbReader
 from horizons.util.loaders import TileSetLoader
+from horizons.util import SQLiteAnimationLoader
 from horizons.constants import PATHS, VIEW
 
 import os.path
@@ -66,40 +67,12 @@ class MapLoader:
 		map_db = DbReader(path)
 		# TODO: check the map version number
 
-		# load objects catalogue
-		self._loadObjects(map_db, model)
-
 		# load all islands
 		islands = map_db("SELECT x, y, file FROM island")
 		for island in islands:
 			self._loadIsland(ground_layer, *island)
 
 		return map
-
-	def _loadObjects(self, map_db, model):
-		# get UH path
-		def up(path):
-			return os.path.split(path)[0]
-		uh_path = up(up(os.path.abspath(horizons.main.__file__)))
-		tile_set_path = os.path.join(uh_path, PATHS.TILE_SETS_DIRECTORY)
-
-		# load all tiles
-		TileSetLoader.load(tile_set_path)
-		tile_sets = TileSetLoader.get_sets()
-
-		for tile_set_id in tile_sets:
-			tile_set = tile_sets[tile_set_id]
-			object = model.createObject(str(tile_set_id), 'ground')
-			fife.ObjectVisual.create(object)
-			#for action_id in tile_set.iterkeys():
-				#action = object.createAction(action_id+"_"+str(tile_set_id))
-				#fife.ActionVisual.create(action)
-				#for rotation in tile_set[action_id].iterkeys():
-				#	anim = horizons.main.fife.animationloader.loadResource( \
-				#		str(tile_set_id)+"+"+str(action_id)+"+"+ \
-				#		str(rotation) + ':shift:center+0,bottom+8')
-				#	action.get2dGfxVisual().addAnimation(int(rotation), anim)
-				#	action.setDuration(anim.getDuration())
 
 	def _loadIsland(self, ground_layer, x, y, file):
 		""" Loads an island from the given file """
@@ -134,6 +107,9 @@ class UHMapLoader(scripts.plugin.Plugin):
 		# Fifedit plugin data
 		self._editor = scripts.editor.getEditor()
 
+		# load UH objects
+		self._loadObjects()
+
 		mapLoaders.addMapLoader('sqlite', MapLoader)
 		exts = list(mapLoaders.fileExtensions)
 		exts.append('sqlite')
@@ -155,4 +131,24 @@ class UHMapLoader(scripts.plugin.Plugin):
 
 	#--- End plugin functions ---#
 
+	def _loadObjects(self):
+		# get fifedit objects
+		engine = self._editor.getEngine()
+		model = engine.getModel()
+
+		# get UH path
+		def up(path):
+			return os.path.split(path)[0]
+		uh_path = up(up(os.path.abspath(horizons.main.__file__)))
+		tile_set_path = os.path.join(uh_path, PATHS.TILE_SETS_DIRECTORY)
+
+		# load all tiles
+		TileSetLoader.load(tile_set_path)
+		tile_sets = TileSetLoader.get_sets()
+		animationloader = SQLiteAnimationLoader()
+
+		for tile_set_id in tile_sets:
+			tile_set = tile_sets[tile_set_id]
+			object = model.createObject(str(tile_set_id), 'ground')
+			fife.ObjectVisual.create(object)
 
