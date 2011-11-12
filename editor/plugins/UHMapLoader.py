@@ -26,6 +26,7 @@ from horizons.constants import PATHS
 
 import os.path
 
+from fife import fife
 import fife.extensions.loaders as mapLoaders
 import scripts.editor
 import scripts.plugin
@@ -70,8 +71,12 @@ class MapLoader:
 
 		# load all tiles
 		TileSetLoader.load(tile_set_path)
-		tiles = TileSetLoader.get_sets()
-		print tiles
+		tile_sets = TileSetLoader.get_sets()
+
+		for tile_set_id in tile_sets:
+			tile_set = tiles[tile_set_id]
+			for action_id in tile_set.iterkeys():
+				object = model.createObject(str(cls.id), 'ground')
 
 	def _loadIsland(self, ground_layer, x, y, file):
 		""" Loads an island from the given file """
