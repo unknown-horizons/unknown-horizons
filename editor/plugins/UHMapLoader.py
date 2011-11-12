@@ -83,7 +83,7 @@ class MapLoader:
 			pass # TODO: place ground tile
 
 class UHMapLoader(scripts.plugin.Plugin):
-	""" The B{UHMapLoader} allows to load the UH map format in FIFEdit
+	""" The {UHMapLoader} allows to load the UH map format in FIFEdit
 	"""
 
 	def __init__(self):
