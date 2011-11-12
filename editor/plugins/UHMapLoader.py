@@ -22,7 +22,7 @@
 import horizons.main # necessary so the correct load order of all modules is guaranteed
 from horizons.util.dbreader import DbReader
 from horizons.util.loaders import TileSetLoader
-from horizons.constants import PATHS
+from horizons.constants import PATHS, VIEW
 
 import os.path
 
@@ -55,6 +55,13 @@ class MapLoader:
 
 		# add layers
 		ground_layer = map.createLayer(self.GROUND_LAYER_NAME, grid)
+
+		# add camera
+		cam = map.addCamera("main", ground_layer, fife.Rect(0, 0, 640, 480))
+		cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
+		cam.setRotation(VIEW.ROTATION)
+		cam.setTilt(VIEW.TILT)
+		cam.setZoom(VIEW.ZOOM)
 
 		map_db = DbReader(path)
 		# TODO: check the map version number
