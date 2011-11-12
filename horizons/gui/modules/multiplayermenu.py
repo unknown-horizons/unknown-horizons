@@ -98,7 +98,10 @@ class MultiplayerMenu(object):
 		try:
 			NetworkInterface().connect()
 		except Exception, err:
-			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
+			headline = _(u"Fatal Network Error")
+			descr = _(u"Could not connect to master server.")
+			advice = _(u"Please check your Internet connection. If it is fine, it means our master server is temporarily down.")
+			self.show_error_popup(headline, descr, advice, unicode(err))
 			return False
 		return True
 
