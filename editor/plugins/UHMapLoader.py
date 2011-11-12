@@ -106,8 +106,12 @@ class UHMapLoader(scripts.plugin.Plugin):
 
 		# Fifedit plugin data
 		self._editor = scripts.editor.getEditor()
+		self._engine = self._editor.getEngine()
 
 		# load UH objects
+		self._setUHPath()
+		self._fixupFife()
+		self._fixupHorizons()
 		self._loadObjects()
 
 		mapLoaders.addMapLoader('sqlite', MapLoader)
@@ -125,22 +129,34 @@ class UHMapLoader(scripts.plugin.Plugin):
 		return self._enabled;
 
 	def getName(self):
-		print("name")
 		""" Return plugin name """
 		return u"UHMapLoader"
 
 	#--- End plugin functions ---#
 
-	def _loadObjects(self):
-		# get fifedit objects
-		engine = self._editor.getEngine()
-		model = engine.getModel()
-
-		# get UH path
+	def _setUHPath(self):
+		"""Stores the UH path"""
 		def up(path):
 			return os.path.split(path)[0]
-		uh_path = up(up(os.path.abspath(horizons.main.__file__)))
-		tile_set_path = os.path.join(uh_path, PATHS.TILE_SETS_DIRECTORY)
+		self.uh_path = up(up(os.path.abspath(horizons.main.__file__)))
+
+	def _fixupHorizons(self):
+		"""Fixes some UH quirks that have to do with globals"""
+		class PatchedFife:
+			imagemanager = self._engine.getImageManager()
+			pass
+		horizons.main.fife = PatchedFife()
+
+	def _fixupFife(self):
+		"""Fixes some FIFE quirks that have to do with VFS"""
+		vfs = self._engine.getVFS()
+		vfs.addNewSource(self.uh_path)
+		vfs.addNewSource("/")
+
+	def _loadObjects(self):
+		# get fifedit objects
+		model = self._engine.getModel()
+		tile_set_path = os.path.join(self.uh_path, PATHS.TILE_SETS_DIRECTORY)
 
 		# load all tiles
 		TileSetLoader.load(tile_set_path)
@@ -151,4 +167,15 @@ class UHMapLoader(scripts.plugin.Plugin):
 			tile_set = tile_sets[tile_set_id]
 			object = model.createObject(str(tile_set_id), 'ground')
 			fife.ObjectVisual.create(object)
+
+			# load animations
+			for action_id in tile_sets[tile_set_id].iterkeys():
+				action = object.createAction(action_id+"_"+str(tile_set_id))
+				fife.ActionVisual.create(action)
+				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
+					anim = animationloader.loadResource( \
+						str(tile_set_id)+"+"+str(action_id)+"+"+ \
+						str(rotation) + ':shift:center+0,bottom+8')
+					action.get2dGfxVisual().addAnimation(int(rotation), anim)
+					action.setDuration(anim.getDuration())
 
