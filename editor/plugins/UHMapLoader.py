@@ -49,12 +49,12 @@ class MapLoader:
 		""" Loads the map from the given sqlite file """
 		model = self._engine.getModel()
 		map = model.createMap("name") # TODO: get the model name from the db
-		grid = map.getCellGrid(GRID_TYPE)
+		grid = model.getCellGrid(self.GRID_TYPE)
 
 		# add layers
-		ground_layer = map.createLayer(GROUND_LAYER_NAME, grid)
+		ground_layer = map.createLayer(self.GROUND_LAYER_NAME, grid)
 
-		map_db = DBReader(path)
+		map_db = DbReader(path)
 		# TODO: check the map version number
 
 		# load objects catalogue
@@ -64,6 +64,8 @@ class MapLoader:
 		islands = map_db("SELECT x, y, file FROM islands")
 		for island in islands:
 			self._loadIsland(ground_layer, *island)
+
+		return map
 
 	def _loadObjects(self, map_db, model):
 		# get UH path
@@ -77,9 +79,8 @@ class MapLoader:
 		tile_sets = TileSetLoader.get_sets()
 
 		for tile_set_id in tile_sets:
-			tile_set = tiles[tile_set_id]
-			for action_id in tile_set.iterkeys():
-				object = model.createObject(str(cls.id), 'ground')
+			tile_set = tile_sets[tile_set_id]
+			object = model.createObject(str(tile_set_id), 'ground')
 
 	def _loadIsland(self, ground_layer, x, y, file):
 		""" Loads an island from the given file """
