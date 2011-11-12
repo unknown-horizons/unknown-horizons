@@ -19,10 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife.extensions.loaders as mapLoaders
 import horizons.main # necessary so the correct load order of all modules is guaranteed
 from horizons.util.dbreader import DbReader
+from horizons.util.loaders import TileSetLoader
+from horizons.constants import PATHS
 
+import os.path
+
+import fife.extensions.loaders as mapLoaders
 import scripts.editor
 import scripts.plugin
 
@@ -58,7 +62,16 @@ class MapLoader:
 			self._loadIsland(ground_layer, *island)
 
 	def _loadObjects(self, map_db, model):
-		pass
+		# get UH path
+		def up(path):
+			return os.path.split(path)[0]
+		uh_path = up(up(os.path.abspath(horizons.main.__file__)))
+		tile_set_path = os.path.join(uh_path, PATHS.TILE_SETS_DIRECTORY)
+
+		# load all tiles
+		TileSetLoader.load(tile_set_path)
+		tiles = TileSetLoader.get_sets()
+		print tiles
 
 	def _loadIsland(self, ground_layer, x, y, file):
 		""" Loads an island from the given file """
