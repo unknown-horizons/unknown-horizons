@@ -90,6 +90,16 @@ class MapLoader:
 		for tile_set_id in tile_sets:
 			tile_set = tile_sets[tile_set_id]
 			object = model.createObject(str(tile_set_id), 'ground')
+			fife.ObjectVisual.create(object)
+			#for action_id in tile_set.iterkeys():
+				#action = object.createAction(action_id+"_"+str(tile_set_id))
+				#fife.ActionVisual.create(action)
+				#for rotation in tile_set[action_id].iterkeys():
+				#	anim = horizons.main.fife.animationloader.loadResource( \
+				#		str(tile_set_id)+"+"+str(action_id)+"+"+ \
+				#		str(rotation) + ':shift:center+0,bottom+8')
+				#	action.get2dGfxVisual().addAnimation(int(rotation), anim)
+				#	action.setDuration(anim.getDuration())
 
 	def _loadIsland(self, ground_layer, x, y, file):
 		""" Loads an island from the given file """
