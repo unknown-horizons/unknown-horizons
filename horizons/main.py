@@ -414,7 +414,7 @@ def _load_map(savegame, ai_players, human_ai):
 			print _("Error: Cannot find savegame \"%s\".") % savegame
 			return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches: ")
+		print _("Error: Found multiple matches:")
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
