@@ -36,6 +36,8 @@ class MapLoader:
 	GRID_TYPE = "square"
 	GROUND_LAYER_NAME = "ground"
 
+	time_to_load = 0
+
 	def __init__(self, engine, callback, debug, extensions):
 		""" Initialize the map loader """
 		self._engine = engine
@@ -61,7 +63,7 @@ class MapLoader:
 		self._loadObjects(map_db, model)
 
 		# load all islands
-		islands = map_db("SELECT x, y, file FROM islands")
+		islands = map_db("SELECT x, y, file FROM island")
 		for island in islands:
 			self._loadIsland(ground_layer, *island)
 
