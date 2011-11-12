@@ -40,9 +40,9 @@ class ScenarioChooser(object):
 		def _update_infos():
 			self.selected_scenario = scenarios[self._gui.collectData("scenario_list")]
 			data = SavegameManager.get_scenario_info(name = self.selected_scenario)
-			text = [_("Difficulty: ") + unicode( data.get('difficulty', '') ),
-			        _("Author: ") + unicode( data.get('author', '') ),
-			        _("Description: ") + unicode( data.get('description', '') ),
+			text = [_("Difficulty: %s") % ( data.get('difficulty', '') ),
+			        _("Author: %s") % ( data.get('author', '') ),
+			        _("Description: %s") % ( data.get('description', '') ),
 			       ]
 			self._gui.findChild(name="scenario_details").text = u"\n".join(text)
 		self._gui.findChild(name="scenario_list").capture(_update_infos)

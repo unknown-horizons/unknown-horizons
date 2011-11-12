@@ -159,11 +159,11 @@ class MultiplayerMenu(object):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
 		if game == None:
 			game = self.__get_selected_game()
-		self.current.findChild(name="game_map").text = _("Map: ") + game.get_map_name()
-		self.current.findChild(name="game_playersnum").text =  _("Players: ") + \
-				unicode(game.get_player_count()) + u"/" + unicode(game.get_player_limit())
+		self.current.findChild(name="game_map").text = _("Map: %s") % (game.get_map_name())
+		self.current.findChild(name="game_playersnum").text =  _("Players: %s") % (
+				unicode(game.get_player_count()) + u"/" + unicode(game.get_player_limit()))
 		creator_text = self.current.findChild(name="game_creator")
-		creator_text.text = _("Creator: ") + unicode(game.get_creator())
+		creator_text.text = _("Creator: %s") % (game.get_creator())
 		creator_text.adaptLayout()
 		textplayers = self.current.findChild(name="game_players")
 		if textplayers is not None:
@@ -276,7 +276,7 @@ class MultiplayerMenu(object):
 			mapfile = self.current.files[mapindex]
 			number_of_players = SavegameManager.get_recommended_number_of_players( mapfile )
 			self.current.findChild(name="recommended_number_of_players_lbl").text = \
-					_("Recommended number of players: ") + unicode( number_of_players )
+					_("Recommended number of players: %s") % (number_of_players)
 		if len(self.maps_display) > 0: # select first entry
 			self.current.distributeData({
 				'maplist' : 0,

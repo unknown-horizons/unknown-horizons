@@ -341,7 +341,7 @@ def _start_map(map_name, ai_players, human_ai, is_scenario=False, campaign=None,
 			print _("Error: Cannot find map \"%s\".") % map_name
 			return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches: ")
+		print _("Error: Found multiple matches:")
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
