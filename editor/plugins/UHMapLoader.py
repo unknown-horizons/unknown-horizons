@@ -71,6 +71,15 @@ class MapLoader:
 		cam.setTilt(VIEW.TILT)
 		cam.setZoom(VIEW.ZOOM)
 
+		# make layer the active layer
+		fife.InstanceRenderer.getInstance(cam).addActiveLayer(ground_layer)
+		fife.GridRenderer.getInstance(cam).addActiveLayer(ground_layer)
+		fife.BlockingInfoRenderer.getInstance(cam).addActiveLayer(ground_layer)
+		fife.CoordinateRenderer.getInstance(cam).addActiveLayer(ground_layer)
+		fife.CellSelectionRenderer.getInstance(cam).addActiveLayer(ground_layer)
+		fife.LightRenderer.getInstance(cam).addActiveLayer(ground_layer)
+		fife.GenericRenderer.getInstance(cam).addActiveLayer(ground_layer)
+
 		map_db = DbReader(os.path.join(getUHPath(), path))
 		# TODO: check the map version number
 
