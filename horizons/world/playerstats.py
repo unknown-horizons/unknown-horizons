@@ -56,7 +56,7 @@ class PlayerStats(WorldObject):
 				if building.id == BUILDINGS.RESIDENTIAL_CLASS:
 					settlers[building.level] += building.inhabitants
 					settler_buildings[building.level] += 1
-					for production in building._get_productions():
+					for production in building.get_productions():
 						if production is building._get_upgrade_production():
 							continue
 						if production.get_state() is PRODUCTION.STATES.producing:

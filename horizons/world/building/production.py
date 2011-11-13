@@ -112,7 +112,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 
 	def get_non_paused_utilisation(self):
 		total = 0
-		productions = self._get_productions()
+		productions = self.get_productions()
 		for production in productions:
 			if production.get_age() < PRODUCTION.STATISTICAL_WINDOW * 1.5:
 				return 1

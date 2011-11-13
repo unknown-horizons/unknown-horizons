@@ -476,7 +476,7 @@ class ProductionBuilder(AreaBuilder):
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full input and output inventories."""
 		for building in self.production_buildings:
-			for production in building._get_productions():
+			for production in building.get_productions():
 				if not production.get_produced_res():
 					continue
 				all_full = True

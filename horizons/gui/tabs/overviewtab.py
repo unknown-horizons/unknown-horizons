@@ -274,7 +274,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
-		for production in sorted(self.instance._get_productions(), \
+		for production in sorted(self.instance.get_productions(), \
 								             key=(lambda x: x.get_production_line_id())):
 			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
