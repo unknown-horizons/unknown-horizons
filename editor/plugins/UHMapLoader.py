@@ -32,6 +32,12 @@ import fife.extensions.loaders as mapLoaders
 import scripts.editor
 import scripts.plugin
 
+def getUHPath():
+	"""Stores the UH path"""
+	def up(path):
+		return os.path.split(path)[0]
+	return up(up(os.path.abspath(horizons.main.__file__)))
+
 class MapLoader:
 
 	GRID_TYPE = "square"
@@ -65,28 +71,31 @@ class MapLoader:
 		cam.setTilt(VIEW.TILT)
 		cam.setZoom(VIEW.ZOOM)
 
-		map_db = DbReader(path)
+		map_db = DbReader(os.path.join(getUHPath(), path))
 		# TODO: check the map version number
 
 		# load all islands
 		islands = map_db("SELECT x, y, file FROM island")
 		for island in islands:
-			self._loadIsland(ground_layer, *island)
+			self._loadIsland(ground_layer, model, *island)
 
 		return map
 
-	def _loadIsland(self, ground_layer, x, y, file):
+	def _loadIsland(self, ground_layer, model, ix, iy, file):
 		""" Loads an island from the given file """
-		island_db = DBReader(file)
+		island_db = DbReader(os.path.join(getUHPath(), file))
+
+		ground_tile = model.getObject('ts_beach0', 'ground')
 
 		# load ground tiles
 		ground = island_db("SELECT x, y FROM ground")
 		for (x, y) in ground:
-			pass # TODO: place ground tile
+			position = fife.ModelCoordinate(ix + x, iy + y, 0)
+			inst = ground_layer.createInstance(ground_tile, position)
+			fife.InstanceVisual.create(inst)
 
 class UHMapLoader(scripts.plugin.Plugin):
-	""" The B{UHMapLoader} allows to load the UH map format in FIFEdit
-	"""
+	""" The B{UHMapLoader} allows to load the UH map format in FIFEdit """
 
 	def __init__(self):
 		# Editor instance
@@ -110,7 +119,6 @@ class UHMapLoader(scripts.plugin.Plugin):
 		self._engine = self._editor.getEngine()
 
 		# load UH objects
-		self._setUHPath()
 		self._fixupFife()
 		self._fixupHorizons()
 		self._loadObjects()
@@ -135,12 +143,6 @@ class UHMapLoader(scripts.plugin.Plugin):
 
 	#--- End plugin functions ---#
 
-	def _setUHPath(self):
-		"""Stores the UH path"""
-		def up(path):
-			return os.path.split(path)[0]
-		self.uh_path = up(up(os.path.abspath(horizons.main.__file__)))
-
 	def _fixupHorizons(self):
 		"""Fixes some UH quirks that have to do with globals"""
 		class PatchedFife:
@@ -151,13 +153,13 @@ class UHMapLoader(scripts.plugin.Plugin):
 	def _fixupFife(self):
 		"""Fixes some FIFE quirks that have to do with VFS"""
 		vfs = self._engine.getVFS()
-		vfs.addNewSource(self.uh_path)
+		vfs.addNewSource(getUHPath())
 		vfs.addNewSource("/")
 
 	def _loadObjects(self):
 		# get fifedit objects
 		model = self._engine.getModel()
-		tile_set_path = os.path.join(self.uh_path, PATHS.TILE_SETS_DIRECTORY)
+		tile_set_path = os.path.join(getUHPath(), PATHS.TILE_SETS_DIRECTORY)
 
 		# load all tiles
 		TileSetLoader.load(tile_set_path)
