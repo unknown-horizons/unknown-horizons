@@ -42,6 +42,7 @@ class SavegameAccessor(DbReader):
 		self._load_production_line()
 		self._load_unit_path()
 		self._load_component()
+		self._load_storage_global_limit()
 
 
 	def _load_building(self):
@@ -212,3 +213,12 @@ class SavegameAccessor(DbReader):
 	def get_component_row(self, worldid):
 		worldid = int(worldid)
 		return self._component[worldid] if worldid in self._component else []
+
+
+	def _load_storage_global_limit(self):
+		self._storage_global_limit = {}
+		for row in self("SELECT object, value FROM storage_global_limit"):
+			self._storage_global_limit[(int(row[0]))] = int(row[1])
+
+	def get_storage_global_limit(self, worldid):
+		return self._storage_global_limit[int(worldid)]
