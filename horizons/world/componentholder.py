@@ -39,7 +39,7 @@ class ComponentHolder(object):
 	def load(self, db, worldid):
 		super(ComponentHolder, self).load(db, worldid)
 		self.components = {}
-		for name, module_name, class_name in db('SELECT name, module, class FROM component WHERE worldid = ?', worldid):
+		for name, module_name, class_name in db.get_component_row(worldid):
 			# get the class object from module and call init on it
 			module = __import__(module_name)
 			module = sys.modules[module_name]
