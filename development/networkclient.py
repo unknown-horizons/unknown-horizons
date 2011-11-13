@@ -77,7 +77,7 @@ def oncreate(*args):
     print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
     for player in game.players:
       print "  Player: %s (%s)" % (player.name, player.sid)
-  except ValueError as IndexError:
+  except (ValueError, IndexError):
     print "Maxplayers must be an integer"
 
 def onjoin(*args):
@@ -135,7 +135,7 @@ def onauto(*args):
   if len(args) >= 2:
     try:
       maxplayers = int(args[1])
-    except ValueError as IndexError:
+    except (ValueError, IndexError):
       print "Maxplayers must be an integer"
       return
   client.connect()
@@ -223,7 +223,7 @@ try:
       host = value
     if key == '-p':
       port = int(value)
-except ValueError as IndexError:
+except (ValueError, IndexError):
   port = 0
 
 if host == None or port == None or port <= 0:

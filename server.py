@@ -48,7 +48,7 @@ try:
 			port = int(value)
 		if key == '-s':
 			statfile = value
-except ValueError as IndexError:
+except (ValueError, IndexError):
 	port = 0
 
 if host == None or port == None or port <= 0:
