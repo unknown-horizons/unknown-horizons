@@ -39,6 +39,7 @@ class SavegameAccessor(DbReader):
 		self._load_wildanimal()
 		self._load_unit()
 		self._load_building_collector()
+		self._load_production_line()
 
 
 	def _load_building(self):
@@ -171,3 +172,15 @@ class SavegameAccessor(DbReader):
 
 	def get_building_collector_job_history(self, worldid):
 		return self._building_collector_job_history[int(worldid)]
+
+
+	def _load_production_line(self):
+		self._production_line = {}
+		for row in self("SELECT for_worldid, type, res, amount FROM production_line"):
+			id = int(row[0])
+			if id not in self._production_line:
+				self._production_line[id] = []
+			self._production_line[id].append(row[1:])
+
+	def get_production_line_row(self, for_worldid):
+		return self._production_line[for_worldid]
