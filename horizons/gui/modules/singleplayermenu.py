@@ -102,8 +102,8 @@ class SingleplayerMenu(object):
 							self.__show_invalid_scenario_file_popup(e)
 							return
 						self.current.findChild(name="map_difficulty").text = _("Difficulty: %s") % (difficulty)
-						self.current.findChild(name="map_author").text = _("Author: %s") + (author)
-						self.current.findChild(name="map_desc").text =  _("Description: %s") + (desc)
+						self.current.findChild(name="map_author").text = _("Author: %s") % (author)
+						self.current.findChild(name="map_desc").text =  _("Description: %s") % (desc)
 						#self.current.findChild(name="map_desc").parent.adaptLayout()
 				elif show == 'campaign': # update infos for campaign
 					def _update_infos():
