@@ -40,6 +40,7 @@ class SavegameAccessor(DbReader):
 		self._load_unit()
 		self._load_building_collector()
 		self._load_production_line()
+		self._load_unit_path()
 
 
 	def _load_building(self):
@@ -183,4 +184,17 @@ class SavegameAccessor(DbReader):
 			self._production_line[id].append(row[1:])
 
 	def get_production_line_row(self, for_worldid):
-		return self._production_line[for_worldid]
+		return self._production_line[int(for_worldid)]
+
+
+	def _load_unit_path(self):
+		self._unit_path = {}
+		for row in self("SELECT unit, x, y FROM unit_path ORDER BY 'index'"):
+			id = int(row[0])
+			if id not in self._unit_path:
+				self._unit_path[id] = []
+			self._unit_path[id].append(row[1:])
+
+	def get_unit_path(self, worldid):
+		worldid = int(worldid)
+		return self._unit_path[worldid] if worldid in self._unit_path else None
