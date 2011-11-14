@@ -78,3 +78,9 @@ class ComponentHolder(object):
 		else:
 			return None
 
+	def get_component_by_name(self, name):
+		if name in self.components:
+			return self.components[name]
+		else:
+			return None
+

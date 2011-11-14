@@ -445,11 +445,15 @@ class WeaponHolder(object):
 class MovingWeaponHolder(WeaponHolder):
 	def __init__(self, **kwargs):
 		super(MovingWeaponHolder, self).__init__(**kwargs)
+		self.__init()
+
+	def __init(self):
 		self.add_component(HoldGroundStance())
 		self.add_component(AggressiveStance())
 		self.add_component(NoneStance())
 		self.add_component(FleeStance())
 		self.stance = HoldGroundStance
+
 
 	def _stance_tick(self):
 		"""
@@ -554,7 +558,8 @@ class MovingWeaponHolder(WeaponHolder):
 
 	def load (self, db, worldid):
 		super(MovingWeaponHolder, self).load(db, worldid)
+		self.__init()
 		stance, state = db("SELECT stance, state FROM stance WHERE worldid = ?", worldid)[0]
-		self.stance = stance
-		self.get_component(self.get_component(self.stance).set_state(state))
+		self.stance = self.get_component_by_name(stance)
+		self.stance.set_state(state)
 
