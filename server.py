@@ -35,7 +35,7 @@ statfile = None
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:], 'h:p:s:')
-except getopt.GetoptError, err:
+except getopt.GetoptError as err:
 	print str(err)
 	usage()
 	sys.exit(1)
@@ -48,7 +48,7 @@ try:
 			port = int(value)
 		if key == '-s':
 			statfile = value
-except ValueError, IndexError:
+except (ValueError, IndexError):
 	port = 0
 
 if host == None or port == None or port <= 0:
@@ -58,7 +58,7 @@ if host == None or port == None or port <= 0:
 try:
 	server = Server(host, port, statfile)
 	server.run()
-except network.NetworkException, e:
+except network.NetworkException as e:
 	print "Error: %s" % (e)
 	sys.exit(2)
 

@@ -124,7 +124,7 @@ class BoatbuilderTab(OverviewTab):
 			upgrades_box.stylize('menu_black')
 
 			# Update needed resources
-			production = self.instance._get_productions()[0]
+			production = self.instance.get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
 			# Now sort!
 			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))

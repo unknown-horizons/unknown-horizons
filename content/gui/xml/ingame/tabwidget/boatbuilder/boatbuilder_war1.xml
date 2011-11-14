@@ -36,16 +36,16 @@
 		<Label position="0,3" text="Small gunboat" />-->
 		<Label name="headline_BB_war1_ship1" position="0,3" text="Frigate" />
 
-		<TooltipIcon image="content/gui/icons/resources/16/004.png" position="13,25" tooltip="Boards" />
-		<Label position="35,25" text="13t"  name="noi18n" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
-		<TooltipIcon image="content/gui/icons/resources/16/003.png" position="13,45" tooltip="Cloth" />
-		<Label position="35,45" text="06t"  name="noi18n" />
-		<TooltipIcon image="content/gui/icons/resources/16/006.png" position="68,25" tooltip="Tools" />
-		<Label position="90,25" text="02t"  name="noi18n" />
-		<TooltipIcon image="content/gui/icons/resources/16/040.png" position="68,45" tooltip="Cannons" />
-		<Label position="90,45" text="07t"  name="noi18n" />
-		<TooltipIcon image="content/gui/icons/resources/16/001.png" position="13,65" tooltip="Money" />
-		<Label position="35,65" text="750"  name="noi18n" />
+		<TooltipIcon image="content/gui/icons/resources/16/004.png" position="13,25" tooltip="Boards"  name="costs_004" />
+		<Label position="35,25" text="13t"  name="noi18n"  comment="noi18n" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
+		<TooltipIcon image="content/gui/icons/resources/16/003.png" position="13,45" tooltip="Cloth"   name="costs_003" />
+		<Label position="35,45" text="06t"  name="noi18n"  comment="noi18n" />
+		<TooltipIcon image="content/gui/icons/resources/16/006.png" position="68,25" tooltip="Tools"   name="costs_006" />
+		<Label position="90,25" text="02t"  name="noi18n"  comment="noi18n" />
+		<TooltipIcon image="content/gui/icons/resources/16/040.png" position="68,45" tooltip="Cannons" name="costs_040" />
+		<Label position="90,45" text="07t"  name="noi18n"  comment="noi18n" />
+		<TooltipIcon image="content/gui/icons/resources/16/001.png" position="13,65" tooltip="Money"   name="costs_001" />
+		<Label position="35,65" text="750"  name="noi18n"  comment="noi18n" />
 	</Container><!--
 
 	<Container position="110,197" size="260,87" >

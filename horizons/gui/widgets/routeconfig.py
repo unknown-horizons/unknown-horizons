@@ -168,7 +168,7 @@ class RouteConfig(object):
 		position = self.widgets.index(entry)
 		slider = slot.findChild(name="slider")
 		amount = slot.findChild(name="amount")
-		value = int(slider.getValue())
+		value = int(slider.value)
 		amount.text = unicode(value) + "t"
 		if slot.action is "unload":
 			value = -value
@@ -192,21 +192,21 @@ class RouteConfig(object):
 		slider = slot.findChild(name="slider")
 
 		if not has_value:
-			value = int(slider.getValue())
+			value = int(slider.value)
 			if slot.action is "unload":
 				value = -value
 
 		if value < 0:
 			self.show_unload_icon(slot)
-			slider.setValue(float(-value))
+			slider.value = float(-value)
 			amount = -value
 		elif value > 0:
 			self.show_load_icon(slot)
-			slider.setValue(float(value))
+			slider.value = float(value)
 			amount = value
 		else:
 			#if the slider value is 0 keep the load/unload persistent
-			slider.setValue(0.)
+			slider.value = 0.
 			amount = value
 
 		if res_id != 0:
@@ -270,8 +270,8 @@ class RouteConfig(object):
 			slot.action = "load"
 
 			slider = slot.findChild(name="slider")
-			slider.setScaleStart(0.0)
-			slider.setScaleEnd(float(self.instance.get_component(StorageComponent).inventory.limit))
+			slider.scale_start = 0.0
+			slider.scale_end = float(self.instance.get_component(StorageComponent).inventory.limit)
 
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 

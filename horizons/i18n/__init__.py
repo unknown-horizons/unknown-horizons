@@ -37,24 +37,18 @@ set_translations()
 translated_widgets = {}
 
 def translate_widget(untranslated, filename):
+	"""
+	Load widget translations from guitranslations.py file.
+	Its entries look like {element_name: (attribute, translation)}.
+	The translation is not applied to inactive widgets.
+	Check update_all_translations for the application.
+	"""
 	global translated_widgets
 	if filename in guitranslations.text_translations:
-		for i in guitranslations.text_translations[filename].iteritems():
-			try:
-				widget = untranslated.findChild(name=i[0])
-				#TODO what happens to TooltipLabels? their text is untouched (elif)
-				# we currently do not use any, but this could cause bugs.
-				if hasattr(widget, 'tooltip'):
-					widget.tooltip = i[1]
-				elif isinstance(widget, pychan.widgets.Label)\
-						or isinstance(widget, pychan.widgets.Button):
-					widget.text = i[1]
-				elif isinstance(widget, pychan.widgets.Window):
-					widget.title = i[1]
-				widget.adaptLayout()
-			except AttributeError, e:
-				print e
-				print i, ' in ', filename
+		for entry in guitranslations.text_translations[filename].iteritems():
+			widget = untranslated.findChild(name=entry[0])
+			replace_attribute(widget, entry[1][0], entry[1][1])
+			widget.adaptLayout()
 	else:
 		log.debug('No translation for file %s', filename)
 
@@ -62,6 +56,7 @@ def translate_widget(untranslated, filename):
 	translated_widgets[filename] = weakref.ref(untranslated)
 
 	return untranslated
+
 
 def update_all_translations():
 	"""Update the translations in every active widget"""
@@ -71,15 +66,14 @@ def update_all_translations():
 		widget = widget() # resolve weakref
 		if not widget:
 			continue
-		for element_name, translation in guitranslations.text_translations.get(filename,{}).iteritems():
-			try:
-				w = widget.findChild(name=element_name)
-				#TODO presumably doesn't work with TooltipLabels, see above
-				if hasattr(w, 'tooltip'):
-					w.tooltip = translation
-				else:
-					w.text = translation
-				widget.adaptLayout()
-			except AttributeError, e:
-				print e
-				print filename, widget
+		for element_name, (attribute, translation) in guitranslations.text_translations.get(filename,{}).iteritems():
+			element = widget.findChild(name=element_name)
+			replace_attribute(element, attribute, translation)
+			widget.adaptLayout()
+
+
+def replace_attribute(widget, attribute, text):
+	if hasattr(widget, attribute):
+		setattr(widget, attribute, text)
+	else:
+		log.debug("Could not replace attribute %s in widget %s", attribute, widget)

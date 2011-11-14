@@ -28,6 +28,7 @@ from builder import Builder
 from areabuilder import AreaBuilder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
+from horizons.world.building.production import Mine
 from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
 from horizons.constants import AI, BUILDINGS
@@ -473,17 +474,25 @@ class ProductionBuilder(AreaBuilder):
 			super(ProductionBuilder, self).remove_building(building)
 
 	def manage_production(self):
-		"""Pauses and resumes production buildings when they have full output inventories."""
+		"""Pauses and resumes production buildings when they have full input and output inventories."""
 		for building in self.production_buildings:
-			for production in building._get_productions():
+			for production in building.get_productions():
+				if not production.get_produced_res():
+					continue
 				all_full = True
 
 				# inventory full of the produced resources?
-				to_check = production._prod_line.production if building.id != BUILDINGS.CLAY_PIT_CLASS else production.get_produced_res()
-				for resource_id in to_check:
-					if production.inventory.get_free_space_for(resource_id) > 0:
+				for resource_id, min_amount in production.get_produced_res().iteritems():
+					if production.inventory.get_free_space_for(resource_id) >= min_amount:
 						all_full = False
 						break
+
+				# inventory full of the input resource?
+				if all_full and not isinstance(building, Mine):
+					for resource_id in production.get_consumed_resources():
+						if production.inventory.get_free_space_for(resource_id) > 0:
+							all_full = False
+							break
 
 				if all_full:
 					if not production.is_paused():

@@ -3,8 +3,8 @@ Unknown Horizons
 
 -----------------------------------------------------
 
-2011-11-0?: Milestone 2011.3
-changelog date: NOV 02; rev: 233cae93d2963a3637203d9ae6e6352ded25a2de
+2011-11-11: Milestone 2011.3
+changelog date: NOV 11; rev: 52f9d95664860098e1a53f5995b3e7a84b9ce32c
 
 Gameplay and Balancing
 * New features
@@ -102,6 +102,7 @@ User Interface
    ~ remove building-specific Destroy Building button. Use Destroy tool (X key)
    ~ instantly redraw building range (was: delayed for at least 0.1 seconds)
    ~ immediately update cam after click
+   ~ frigate overview tab fixed
 
 
 Codebase
@@ -152,6 +153,14 @@ Codebase
    ~ problem with utf-8 in filenames on the windows console
    ~ no yaml cache if utf8 characters in windows username (bsddb bug in python)
    ~ crash related to FIFE console evaluations overwriting gettext _
+   ~ crash on compaign startup
+   ~ UnitProduction endless loop fixed
+   ~ Ships sailing on land
+   ~ StorageCollector endless loop fixed
+   ~ resource deposits stay selected after being removed
+   ~ selection not removed after tearing
+   ~ unit health bar is rendered correctly
+   ~
 
 
 User-Contributed Content

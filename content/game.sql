@@ -358,7 +358,7 @@ INSERT INTO "message" VALUES('Your game has been quicksaved.',3,10.0,NULL,'QUICK
 INSERT INTO "message" VALUES('Screenshot has been saved to ${file}.',2,15.0,NULL,'SCREENSHOT');
 INSERT INTO "message" VALUES('Your settlers reached level ${level}.',1,20.0,3,'SETTLER_LEVEL_UP');
 INSERT INTO "message" VALUES('You need more ${resource} to build this building.',1,3.0,NULL,'NEED_MORE_RES');
-INSERT INTO "message" VALUES('One of your settler has no main square in it''s range.',1,15.0,NULL,'NO_MAIN_SQUARE_IN_RANGE');
+INSERT INTO "message" VALUES('One of your settler has no main square in its range.',1,15.0,NULL,'NO_MAIN_SQUARE_IN_RANGE');
 INSERT INTO "message" VALUES('Some of your settlers just moved out.',1,20.0,NULL,'SETTLERS_MOVED_OUT');
 INSERT INTO "message" VALUES('You have won!',1,60.0,NULL,'YOU_HAVE_WON');
 INSERT INTO "message" VALUES('Your mine has run out of resources.',1,15.0,NULL,'MINE_EMPTY');

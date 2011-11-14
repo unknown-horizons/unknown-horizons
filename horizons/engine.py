@@ -83,7 +83,7 @@ class LocalizedSetting(Setting):
 		if confirmed:
 			try:
 				super(LocalizedSetting, self).setDefaults()
-			except AttributeError, err: #weird stuff happens in settings module reset
+			except AttributeError as err: #weird stuff happens in settings module reset
 				print "A problem occured while updating: %s" % err + "\n" + \
 				      "Please contact the developers if this happens more than once."
 
@@ -399,7 +399,7 @@ class Fife(ApplicationBase):
 
 	def update_slider_values(self, slider, factor = 1, unit = ''):
 		self.OptionsDlg.findChild(name=slider+'_value').text = \
-		     u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).getValue() * factor), unit)
+		     u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).value * factor), unit)
 
 	def setup_sound(self):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
@@ -501,7 +501,7 @@ class Fife(ApplicationBase):
 		@param value: double - value that's used to set the emitters gain.
 		"""
 		if not value:
-			value = self.OptionsDlg.findChild(name="volume_music").getValue()
+			value = self.OptionsDlg.findChild(name="volume_music").value
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['bgsound'].setGain(value)
 		self.update_slider_values('volume_music', factor = 500, unit = '%')
@@ -511,7 +511,7 @@ class Fife(ApplicationBase):
 		@param value: double - value that's used to set the emitters gain.
 		"""
 		if not value:
-			value = self.OptionsDlg.findChild(name="volume_effects").getValue()
+			value = self.OptionsDlg.findChild(name="volume_effects").value
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)
@@ -551,7 +551,7 @@ class Fife(ApplicationBase):
 				if NetworkInterface() is None:
 					NetworkInterface.create_instance()
 				NetworkInterface().network_data_changed(connect=False)
-			except Exception, e:
+			except Exception as e:
 				headline = _(u"Failed to apply new network data.")
 				descr = _(u"Networking couldn't be initialised with the current configuration.")
 				advice = _(u"Check the data you entered in the Network section.")
@@ -579,7 +579,7 @@ class Fife(ApplicationBase):
 		while not self._doQuit:
 			try:
 				self.engine.pump()
-			except fife.Exception, e:
+			except fife.Exception as e:
 				print e.getMessage()
 				break
 			for f in self.pump:

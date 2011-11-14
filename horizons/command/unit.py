@@ -29,7 +29,7 @@ class GenericUnitCommand(GenericCommand):
 	def __call__(self, issuer):
 		try:
 			unit = self._get_object()
-		except WorldObjectNotFound, e:
+		except WorldObjectNotFound as e:
 			self.log.warn("Tried to call a unit command on an inexistent unit. It could have been killed: %s", e)
 			return
 		if unit.owner.worldid != issuer.worldid:

@@ -26,8 +26,8 @@
 		<Spacer max_size="50" />
 		<TooltipIcon name="collector_utilisation_label"  tooltip="Collector utilisation:"
 			image="content/gui/icons/resources/cap_util.png" />
-		<TooltipLabel name="collector_utilisation" text=""
-			tooltip="Collector utilisation:" />
+		<TooltipLabel name="collector_utilisation" text=""  tooltip="Collector utilisation:"
+			comment="Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)" />
 	</HBox>
 </Container>
 </Container>

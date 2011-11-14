@@ -90,7 +90,7 @@ class ProductionLine(object):
 		self.consumed_res = {}
 		self.produced_res = {}
 		self.unit_production = {}
-		for t, res, amount in db("SELECT type, res, amount FROM production_line WHERE for_worldid = ?", for_worldid):
+		for t, res, amount in db.get_production_line_row(for_worldid):
 			if t == "TIME":
 				self.time = res
 			else:

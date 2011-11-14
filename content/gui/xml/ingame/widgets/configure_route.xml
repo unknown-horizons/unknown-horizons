@@ -12,14 +12,16 @@
 		up_image="content/gui/icons/ship/traderoute.png"
 		down_image="content/gui/icons/ship/traderoute.png"
 		hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
-		tooltip="Start route" />
+		tooltip="Start route" comment="Trade route" />
 	<VBox position="250,485">
 		<HBox>
-			<Label name="lbl_wait_at_load" text="Wait at load:" />
+			<Label name="lbl_wait_at_load" text="Wait at load:"
+				comment="Trade route setting: Whether to wait until all goods could be loaded." />
 			<CheckBox name="wait_at_load" min_size="15,15" />
 		</HBox>
 		<HBox>
-			<Label name="lbl_wait_at_unload"  text="Wait at unload:"/>
+			<Label name="lbl_wait_at_unload"  text="Wait at unload:"
+				comment="Trade route setting: Whether to wait until all goods could be unloaded." />
 			<CheckBox name="wait_at_unload" min_size="15,15" />
 		</HBox>
 	</VBox>
@@ -38,7 +40,7 @@
 		up_image="content/gui/images/buttons/parrow_left.png"
 		down_image="content/gui/images/buttons/parrow_left_d.png"
 		hover_image="content/gui/images/buttons/parrow_left_h.png"
-		tooltip="Add to list" />
+		tooltip="Add to list" comment="List of harbors in trade route" />
 
 		<Label name="select_res_label" text=""/>
 		<VBox name="resources" size="100,200" />

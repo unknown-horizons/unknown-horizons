@@ -298,7 +298,7 @@ def setup_fife(args):
 	""" Find FIFE and setup search paths, if it can't be imported yet."""
 	try:
 		from fife import fife
-	except ImportError, e:
+	except ImportError as e:
 		if '--fife_in_library_path' in args:
 			# fife should already be in LD_LIBRARY_PATH
 			log_paths()

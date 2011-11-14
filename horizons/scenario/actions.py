@@ -73,8 +73,8 @@ def do_win(session):
 	continue_playing = False
 	if session.campaign is None or not AUTO_CONTINUE_CAMPAIGN:
 		continue_playing = session.gui.show_popup(_("You have won!"), \
-		                                          _("You have completed this scenario. " +
-		                                            "Do you want to continue playing?"), \
+		                                          _("You have completed this scenario.") + u" " + \
+		                                          _("Do you want to continue playing?"), \
 		                                          show_cancel_button=True)
 	if not continue_playing:
 		if session.campaign:

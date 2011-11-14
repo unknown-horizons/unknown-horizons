@@ -155,7 +155,7 @@ class SPSession(Session):
 			self.savecounter += 1
 
 			db = DbReader(savegame)
-		except IOError, e: # usually invalid filename
+		except IOError as e: # usually invalid filename
 			headline = _("Failed to create savegame file")
 			descr = _("There has been an error while creating your savegame file.")
 			advice = _("This usually means that the savegame name contains unsupported special characters.")
