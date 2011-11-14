@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-14 03:42+0200\n"
+"PO-Revision-Date: 2011-11-14 04:05+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en-suggest\n"
@@ -1166,9 +1166,9 @@ msgstr ""
 
 #: horizons/gui/widgets/buysellinventory.py:82
 #: horizons/gui/widgets/inventory.py:102
-#, python-format, fuzzy
+#, python-format, 
 msgid "Limit: %st per slot"
-msgstr "Limit: %(amount)st per slot"
+msgstr ""
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
@@ -1966,9 +1966,8 @@ msgstr ""
 
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:596
-#, fuzzy
 msgid "Read prev. entries"
-msgstr "Read previous entries"
+msgstr ""
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:598
