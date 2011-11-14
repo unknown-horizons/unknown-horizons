@@ -230,9 +230,9 @@ class ResourceManager(WorldObject):
 			if production is None or production.is_paused():
 				continue
 			for res, amount in production.get_consumed_resources().iteritems():
-				if res == resource_id and residence.inventory[resource_id] < abs(amount):
+				if res == resource_id and residence.get_component(StorageComponent).inventory[resource_id] < abs(amount):
 					# TODO: take into account the residence's collector
-					needed += abs(amount) - residence.inventory[resource_id]
+					needed += abs(amount) - residence.get_component(StorageComponent).inventory[resource_id]
 					limit_left -= 1
 		return needed
 
