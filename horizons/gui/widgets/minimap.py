@@ -91,10 +91,11 @@ class Minimap(object):
 		self.update_cam()
 
 		# reset image
-		self.renderer.removeAll("minimap_a_image"+self._id)
+		# add to global generic renderer
+		self.renderer.removeAll("minimap_image"+self._id)
 		self.minimap_image.reset()
 		node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
-		self.renderer.addImage("minimap_a_image"+self._id, node, self.minimap_image.image, False)
+		self.renderer.addImage("minimap_image"+self._id, node, self.minimap_image.image, False)
 
 		self._recalculate()
 		self._timed_update()
@@ -111,10 +112,8 @@ class Minimap(object):
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
 		use_rotation = self._get_rotation_setting()
-		#self.renderer.removeAll(self._get_render_name("cam"))
 		self.minimap_image.set_drawing_enabled()
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
-		#self.minimap_image.rendertarget.removeAll()
 		# draw rect for current screen
 		displayed_area = self.session.view.get_displayed_area()
 		minimap_corners_as_renderer_node = []
@@ -144,10 +143,6 @@ class Minimap(object):
 		for i in xrange(0, 4):
 			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"), minimap_corners_as_point[i], \
 												                      minimap_corners_as_point[ (i+1) % 4], *self.colors[self.cam_border])
-			"""
-			self.renderer.addLine("minimap_b_cam_border"+self._id, minimap_corners_as_renderer_node[i], \
-			                 minimap_corners_as_renderer_node[ (i+1) % 4], *self.colors[self.cam_border])
-			"""
 
 	def update(self, tup):
 		"""Recalculate and redraw minimap for real world coord tup
@@ -270,25 +265,31 @@ class Minimap(object):
 		"""Regular updates for domains we can't or don't want to keep track of."""
 		# update ship dots
 		# OPTIMISATION NOTE: there can be pretty many ships, don't rely on the inner loop being rarely executed
-		self.renderer.removeAll("minimap_b_ship"+self._id)
+		self.minimap_image.set_drawing_enabled()
+		self.minimap_image.rendertarget.removeAll(self._get_render_name("ship"))
 		use_rotation = self._get_rotation_setting()
 		for ship in self.world.ship_map.itervalues():
 			if not ship():
 				continue
+
 			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
+
 			color = ship().owner.color.to_tuple()
-			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 3, 3)
-			for tup in area_to_color.tuple_iter():
-				try:
-					if use_rotation:
-						tup = self._get_rotated_coords(tup)
-					node = fife.RendererNode(fife.Point(*tup))
-					self.renderer.addPoint("minimap_b_ship"+self._id, node, *color)
-				except KeyError:
-					# this happens in rare cases, when the ship is at the border of the map,
-					# and since we color an area, that's bigger than a point, it can exceed the
-					# minimap's dimensions.
-					pass
+
+			if use_rotation:
+				coord = self._get_rotated_coords(coord)
+			coord = (
+			  coord[0] - self.location.left,
+			  coord[1] - self.location.top
+			  )
+			node = fife.Point(*coord)
+
+			self.minimap_image.rendertarget.addQuad(self._get_render_name("ship"),
+			                                        fife.Point( coord[0]-1, coord[1]-1 ),
+			                                        fife.Point( coord[0]-1, coord[1]+1 ),
+			                                        fife.Point( coord[0]+1, coord[1]+1 ),
+			                                        fife.Point( coord[0]+1, coord[1]-1 ),
+			                                           *color)
 
 	def rotate_right (self):
 		# keep track of rotation at any time, but only apply
@@ -397,7 +398,7 @@ class _MinimapImage(object):
 		self.image = self.imagemanager.get( self.image_file_path )
 		"""
 		self.rendertarget.removeAll()
-		self.rendertarget.addQuad( "a", fife.Point(0,0), fife.Point(0, 120), fife.Point(120, 120), fife.Point(120, 0),  255, 0, 0 )
+		self.rendertarget.addQuad( "a", fife.Point(0,0), fife.Point(0, 120), fife.Point(120, 120), fife.Point(120, 0),  255, 255, 255 )
 		# TODO: use parameters from Minimap class constants
 
 	def set_drawing_enabled(self):
