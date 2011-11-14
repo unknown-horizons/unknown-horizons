@@ -50,6 +50,7 @@ class Entities(object):
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
 			assert ground_id not in cls.grounds
 			cls.grounds[ground_id] = GroundClass(db, ground_id)
+		cls.grounds[-1] = GroundClass(db, -1)
 
 	@classmethod
 	def load_buildings(cls, db):

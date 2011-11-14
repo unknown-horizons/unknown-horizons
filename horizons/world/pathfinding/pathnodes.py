@@ -41,15 +41,15 @@ class PathNodes(object):
 class ConsumerBuildingPathNodes(PathNodes):
 	"""List of path nodes for a consumer, that is a building
 	Interface:
-	self.nodes: list of coordinates of the home_building, where collector can walk
+	self.nodes: {(x, y): speed, ...} of the home_building, where the collectors can walk
 	"""
 	def __init__(self, consumerbuilding):
 		super(ConsumerBuildingPathNodes, self).__init__()
+		ground_map = consumerbuilding.island.ground_map
 		self.nodes = {}
-		for coordinate in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False):
-			tile = consumerbuilding.island.get_tile(Point(coordinate[0], coordinate[1]))
-			if tile is not None and not 'coastline' in tile.classes:
-				self.nodes[coordinate] = self.NODE_DEFAULT_SPEED
+		for coords in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False):
+			if coords in ground_map and not 'coastline' in ground_map[coords].classes:
+				self.nodes[coords] = self.NODE_DEFAULT_SPEED
 
 
 class IslandPathNodes(PathNodes):

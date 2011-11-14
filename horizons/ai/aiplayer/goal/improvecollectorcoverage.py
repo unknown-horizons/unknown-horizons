@@ -41,7 +41,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 	def _get_problematic_collector_coverage_buildings(self):
 		problematic_buildings = {}
 		for building in self.production_builder.production_buildings:
-			for production in building._get_productions():
+			for production in building.get_productions():
 				if production.get_age() < 1.5 * PRODUCTION.STATISTICAL_WINDOW:
 					continue
 				history = production.get_state_history_times(False)
@@ -186,6 +186,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		if result == BUILD_RESULT.IMPOSSIBLE:
 			if self.production_builder.last_collector_improvement_storage + self.personality.collector_improvement_storage_expires <= Scheduler().cur_tick:
 				result = self._build_extra_storage()
+				if result == BUILD_RESULT.OK:
+					self.production_builder.last_collector_improvement_storage = Scheduler().cur_tick
 		self._log_generic_build_result(result, 'storage')
 		return self._translate_build_result(result)
 

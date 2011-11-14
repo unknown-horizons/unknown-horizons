@@ -76,7 +76,7 @@ class GeneralLoader(object):
 		for dirname in dirs:
 			try:
 				rotations[int(dirname)] = cls._load_files(os.path.join(dir, dirname),time)
-			except Exception, e:
+			except Exception as e:
 				if dirname != '.DS_Store':
 					raise Exception("Failed to load action sets from %s with time %d: %s" % \
 				                	(os.path.join(dir, dirname), time, e))

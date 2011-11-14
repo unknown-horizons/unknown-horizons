@@ -60,7 +60,7 @@ class ResourceHandler(StorageHolder):
 
 	def save(self, db):
 		super(ResourceHandler, self).save(db)
-		for production in self._get_productions():
+		for production in self.get_productions():
 			production.save(db)
 			# set us to owner of that production
 			db("UPDATE production SET owner = ? WHERE rowid = ?", self.worldid, production.worldid)
@@ -74,9 +74,9 @@ class ResourceHandler(StorageHolder):
 
 	def remove(self):
 		super(ResourceHandler, self).remove()
-		for production in self._get_productions():
+		for production in self.get_productions():
 			self.remove_production(production)
-		assert len(self._get_productions()) == 0 , 'Failed to remove %s ' % self._get_productions()
+		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()
 		while self.__incoming_collectors: # safe list remove here
 			self.__incoming_collectors[0].cancel()
 
@@ -145,7 +145,7 @@ class ResourceHandler(StorageHolder):
 		when there are no other possibilities"""
 		try:
 			return self.owner.inventory
-		except AttributeError, e: # no owner or no inventory, either way, we don't care
+		except AttributeError as e: # no owner or no inventory, either way, we don't care
 			return None
 
 	def load_production(self, db, production_id):
@@ -217,7 +217,7 @@ class ResourceHandler(StorageHolder):
 		@param production: instance of Production. if None, we do it to all productions.
 		@param active: whether to set it active or inactive"""
 		if production is None:
-			for production in self._get_productions():
+			for production in self.get_productions():
 				self.set_active(production, active)
 			return
 
@@ -240,7 +240,7 @@ class ResourceHandler(StorageHolder):
 	def is_active(self, production=None):
 		"""Checks if a production, or the at least one production if production is None, is active"""
 		if production is None:
-			for production in self._get_productions():
+			for production in self.get_productions():
 				if not production.is_paused():
 					return True
 			return False
@@ -251,17 +251,17 @@ class ResourceHandler(StorageHolder):
 
 	def toggle_active(self, production=None):
 		if production is None:
-			for production in self._get_productions():
+			for production in self.get_productions():
 				self.toggle_active(production)
 		else:
 			active = self.is_active(production)
 			self.set_active(production, active = not active)
 
-	## PROTECTED METHODS
-	def _get_productions(self):
+	def get_productions(self):
 		"""Returns all productions, inactive and active ones, as list"""
 		return self._productions.values() + self._inactive_productions.values()
 
+	## PROTECTED METHODS
 	def _get_production(self, prod_line_id):
 		"""Returns a production of this producer by a production line id.
 		@return: instance of Production or None"""

@@ -238,7 +238,7 @@ class SettlementManager(WorldObject):
 				total = self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID) * self.get_resource_production_requirement(RES.GET_TOGETHER_ID)
 			else:
 				for residence in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
-					for production in residence._get_productions():
+					for production in residence.get_productions():
 						production_line = production._prod_line
 						if resource_id in production_line.consumed_res:
 							# subtract because the amount will be negative
@@ -328,8 +328,8 @@ class SettlementManager(WorldObject):
 		self.resource_manager.refresh()
 		self.need_materials = False
 
-	def _end_general_tick(self):
-		# set new tax settings and upgrade permissions
+	def refresh_taxes_and_upgrade_permissions(self):
+		# TODO: use a better system for managing settler upgrades and taxes
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
 			if self._manual_upgrade(0, 1):
@@ -352,6 +352,7 @@ class SettlementManager(WorldObject):
 				self._set_taxes_and_permissions(self.personality.final_sailor_taxes, self.personality.final_pioneer_taxes, \
 					self.personality.final_settler_taxes, self.personality.final_sailor_upgrades, self.personality.final_pioneer_upgrades)
 
+	def _end_general_tick(self):
 		self.trade_manager.finalize_requests()
 		self.trade_manager.organize_shipping()
 		self.resource_manager.record_expected_exportable_production(self.owner.tick_interval)

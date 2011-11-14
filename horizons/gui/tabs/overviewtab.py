@@ -151,13 +151,15 @@ class ShipOverviewTab(OverviewTab):
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
+		unit_image = self.widget.child_finder('shipImage')
+		unit_image.image = 'content/gui/images/objects/ships/116/%s.png' % self.instance.id
 		self._init_combat()
 
 	def _init_combat(self): # no combat
 		weapons_wdg = self.widget.child_finder('weapon_storage')
 		weapons_wdg.parent.removeChild(weapons_wdg)
 		weapons_wdg = self.widget.child_finder('lbl_weapon_storage').text = \
-		            _("Trade ship")
+		            _("Trade ship") # no weapons, as opposed to displaying the weapons
 
 	def refresh(self):
 		# no weapons:
@@ -272,7 +274,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
-		for production in sorted(self.instance._get_productions(), \
+		for production in sorted(self.instance.get_productions(), \
 								             key=(lambda x: x.get_production_line_id())):
 			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
@@ -369,7 +371,8 @@ class SettlerOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Settler overview")
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'), self.instance)
+		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
+		                  self.instance.settlement, self.instance.level)
 
 		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_settings[self.instance.level])
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
@@ -467,15 +470,15 @@ class ResourceDepositOverviewTab(OverviewTab):
 ###
 # Minor utility functions
 
-def _setup_tax_slider(slider, val_label, building):
+def _setup_tax_slider(slider, val_label, settlement, level):
 	"""Set up a slider to work as tax slider"""
-	slider.setScaleStart(SETTLER.TAX_SETTINGS_MIN)
-	slider.setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
-	slider.setStepLength(SETTLER.TAX_SETTINGS_STEP)
-	slider.setValue(building.settlement.tax_settings[building.level])
+	slider.scale_start = SETTLER.TAX_SETTINGS_MIN
+	slider.scale_end = SETTLER.TAX_SETTINGS_MAX
+	slider.step_length = SETTLER.TAX_SETTINGS_STEP
+	slider.value = settlement.tax_settings[level]
 	slider.stylize('book')
 	def on_slider_change():
-		val_label.text = unicode(slider.getValue())
-		if(building.settlement.tax_settings[building.level] != slider.getValue()):
-			SetTaxSetting(building.settlement, building.level, slider.getValue()).execute(building.settlement.session)
+		val_label.text = unicode(slider.value)
+		if(settlement.tax_settings[level] != slider.value):
+			SetTaxSetting(settlement, level, slider.value).execute(settlement.session)
 	slider.capture(on_slider_change)

@@ -39,6 +39,10 @@ class SavegameAccessor(DbReader):
 		self._load_wildanimal()
 		self._load_unit()
 		self._load_building_collector()
+		self._load_production_line()
+		self._load_unit_path()
+		self._load_component()
+		self._load_storage_global_limit()
 
 
 	def _load_building(self):
@@ -171,3 +175,50 @@ class SavegameAccessor(DbReader):
 
 	def get_building_collector_job_history(self, worldid):
 		return self._building_collector_job_history[int(worldid)]
+
+
+	def _load_production_line(self):
+		self._production_line = {}
+		for row in self("SELECT for_worldid, type, res, amount FROM production_line"):
+			id = int(row[0])
+			if id not in self._production_line:
+				self._production_line[id] = []
+			self._production_line[id].append(row[1:])
+
+	def get_production_line_row(self, for_worldid):
+		return self._production_line[int(for_worldid)]
+
+
+	def _load_unit_path(self):
+		self._unit_path = {}
+		for row in self("SELECT unit, x, y FROM unit_path ORDER BY 'index'"):
+			id = int(row[0])
+			if id not in self._unit_path:
+				self._unit_path[id] = []
+			self._unit_path[id].append(row[1:])
+
+	def get_unit_path(self, worldid):
+		worldid = int(worldid)
+		return self._unit_path[worldid] if worldid in self._unit_path else None
+
+
+	def _load_component(self):
+		self._component = {}
+		for row in self("SELECT worldid, name, module, class FROM component"):
+			id = int(row[0])
+			if id not in self._component:
+				self._component[id] = []
+			self._component[id].append(row[1:])
+
+	def get_component_row(self, worldid):
+		worldid = int(worldid)
+		return self._component[worldid] if worldid in self._component else []
+
+
+	def _load_storage_global_limit(self):
+		self._storage_global_limit = {}
+		for row in self("SELECT object, value FROM storage_global_limit"):
+			self._storage_global_limit[(int(row[0]))] = int(row[1])
+
+	def get_storage_global_limit(self, worldid):
+		return self._storage_global_limit[int(worldid)]

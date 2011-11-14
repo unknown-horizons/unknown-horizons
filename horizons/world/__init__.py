@@ -49,6 +49,7 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
+from horizons.world.ground import WaterDummy
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 
@@ -186,6 +187,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
 		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
+		#default_grounds = Entities.grounds[90]
 
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
@@ -196,7 +198,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
 						for y_offset in xrange(0,10):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = ground
+								self.ground_map[(x+x_offset, y+y_offset)] = Entities.grounds[-1](self.session, x, y)
 
 		# remove parts that are occupied by islands, create the island map and the full map
 		self.island_map = {}

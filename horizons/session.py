@@ -79,7 +79,7 @@ class Session(LivingObject):
 		assert isinstance(gui, Gui)
 		self.log.debug("Initing session")
 		self.gui = gui # main gui, not ingame gui
-		self.db = db # main db for game data (game.sqlite)
+		self.db = db # main db for game data (game.sql)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 		self.is_alive = True

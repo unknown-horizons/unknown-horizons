@@ -195,13 +195,11 @@ class AbstractPather(object):
 		"""
 		@return: Bool, whether a path was loaded
 		"""
-		path_steps = db("SELECT x, y FROM unit_path WHERE unit = ? ORDER BY `index`", worldid)
-		if len(path_steps) == 0:
+		path_steps = db.get_unit_path(worldid)
+		if path_steps is None:
 			return False
 		else:
-			self.path = []
-			for step in path_steps:
-				self.path.append(step) # the sql statement orders the steps
+			self.path = path_steps
 			cur_position = self.unit.position.to_tuple()
 			if cur_position in self.path:
 				self.cur = self.path.index(cur_position)

@@ -1,5 +1,5 @@
 <?fife type="atlas"?>
-<atlas name="buildings2.png" namespace="buildings2" width="1024" height="705">
+<atlas name="buildings2.png" namespace="buildings2" width="1024" height="1024">
 	<image source="content/gfx/buildings/settlers/smeltery/as_smeltery0/work/45/2.png" xpos="0" ypos="0" width="256" height="155"/>
 	<image source="content/gfx/buildings/settlers/smeltery/as_smeltery0/work/45/3.png" xpos="256" ypos="0" width="256" height="155"/>
 	<image source="content/gfx/buildings/settlers/smeltery/as_smeltery0/work/45/4.png" xpos="512" ypos="0" width="256" height="155"/>

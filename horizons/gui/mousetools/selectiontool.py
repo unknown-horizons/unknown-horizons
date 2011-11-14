@@ -33,9 +33,14 @@ class SelectionTool(NavigationTool):
 
 	def __init__(self, session):
 		super(SelectionTool, self).__init__(session)
+		self.deselect_at_end = True # Set this to deselect selections while exiting SelectionTool
 		self.session.gui.on_escape = self.session.gui.toggle_pause
 
 	def end(self):
+		# Deselect if needed while exiting
+		if self.deselect_at_end:
+			for i in self.session.selected_instances:
+				i.deselect()
 		super(SelectionTool, self).end()
 
 	def mouseDragged(self, evt):
@@ -146,6 +151,7 @@ class SelectionTool(NavigationTool):
 		for i in selected:
 			if hasattr(i, 'attack') and i.owner == self.session.world.player:
 				attacking_unit_found = True
+				self.deselect_at_end = False # Handover to AttackingTool without deselecting
 				break
 
 		if attacking_unit_found and not isinstance(self.session.cursor, AttackingTool):

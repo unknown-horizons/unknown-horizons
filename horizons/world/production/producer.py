@@ -56,7 +56,7 @@ class Producer(ResourceHandler):
 	@property
 	def capacity_utilisation(self):
 		total = 0
-		productions = self._get_productions()
+		productions = self.get_productions()
 		for production in productions:
 			state_history = production.get_state_history_times(False)
 			total += state_history[PRODUCTION.STATES.producing.index]
@@ -90,7 +90,7 @@ class Producer(ResourceHandler):
 		@param modifier: a numeric value
 		@param prod_line_id: id of production line to alter. None means every production line"""
 		if prod_line_id is None:
-			for production in self._get_productions():
+			for production in self.get_productions():
 				production.alter_production_time(modifier)
 		else:
 			self._get_production(prod_line_id).alter_production_time(modifier)
@@ -101,7 +101,7 @@ class Producer(ResourceHandler):
 		state of all productions combined. Check the PRODUCTION.STATES constant
 		for list of states and their importance."""
 		current_state = PRODUCTION.STATES.none
-		for production in self._get_productions():
+		for production in self.get_productions():
 			state = production.get_animating_state()
 			if state is not None and current_state < state:
 				current_state = state
@@ -138,7 +138,7 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 
 	def get_output_blocked_time(self):
 		""" gets the amount of time in range [0, 1] the output storage is blocked for the AI """
-		return max(production.get_output_blocked_time() for production in self._get_productions())
+		return max(production.get_output_blocked_time() for production in self.get_productions())
 
 class QueueProducer(Producer):
 	"""The QueueProducer stores all productions in a queue and runs them one

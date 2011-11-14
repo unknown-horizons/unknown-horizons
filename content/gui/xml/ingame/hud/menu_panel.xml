@@ -27,10 +27,10 @@
 		up_image="content/gui/icons/widgets/minimap/diplomacy.png"
 		down_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
 		hover_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
-		tooltip="Diplomacy" />
+		tooltip="Diplomacy" is_focusable="0"/>
 	<TooltipButton name="gameMenuButton" position="160,0"
 		up_image="content/gui/icons/widgets/minimap/gamemenu.png"
 		down_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
 		hover_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
-		tooltip="Game menu" />
+		tooltip="Game menu" is_focusable="0"/>
 </Container>

@@ -74,7 +74,7 @@ class HealthWidget(pychan.widgets.Container):
 		health_component = self.instance.get_component('health')
 		max_health = int(health_component.max_health)
 		health = int(health_component.health)
-		self.findChild(name='health_label').text = unicode(str(health)+'/'+str(max_health))
+		self.findChild(name='noi18n_health_label').text = unicode(str(health)+'/'+str(max_health))
 		self.findChild(name='health_bar').progress = int(health * 100. / max_health)
 
 	def remove(self, caller=None):

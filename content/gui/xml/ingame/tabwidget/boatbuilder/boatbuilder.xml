@@ -12,8 +12,9 @@
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Label name='name' position="25,40" text="" />
-		<TooltipIcon name="running_costs_label" image="content/gui/icons/resources/running_costs.png" position="180,40" tooltip="Running costs" />
-		<Label name="running_costs" position="200,40" text="" />
+		<TooltipIcon name="running_costs_label"	position="180,62" tooltip="Running costs"
+			image="content/gui/icons/resources/running_costs.png" />
+		<Label name="running_costs" position="200,62" text="" />
 		<!--<Label position="," name="health_label" text="Health:" />
 		<Label name='health' position="," text="" />-->
 
@@ -29,7 +30,8 @@
 
 	<Container position="25,133" size="260,160" name="container_active">
 		<!-- Current order, pause -->
-		<Label name="BB_current_order" position="0,0" text="Currently building:" />
+		<Label name="BB_current_order" position="0,0" text="Currently building:"
+			comment="Information about the ship currently under construction at the boat builder" />
 		<Label name="headline_BB_builtship_label" position="0,20" text=""/>
 		<TooltipIcon image="content/gfx/dummies/square_120.png" position="0,40"
 			name="BB_cur_ship_bg" />
@@ -40,17 +42,20 @@
 		<TooltipButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
 			down_image="content/gui/icons/templates/production/toggle_active_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-			position="145,100" border_size="0" name="toggle_active_active" tooltip="Pause" />
+			position="145,100"  border_size="0"  name="toggle_active_active"
+			comment="Pauses the current ship production, can be resumed later"  tooltip="Pause" />
 		<TooltipButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
 			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
-			position="145,100" border_size="0" name="toggle_active_inactive" tooltip="Resume" />
+			position="145,100"  border_size="0"  name="toggle_active_inactive"
+		comment="Resumes the currently paused ship production"  tooltip="Resume" />
 	</Container>
 
 	<Container position="25,300" size="260,40" name="BB_progress_container">
 		<!-- Progress display -->
 		<ProgressBar position="0,5" name="progress" />
-		<Label position="0,20" name="BB_progress_label" text="Construction progress:" />
+		<Label position="0,20" name="BB_progress_label" text="Construction progress:"
+			comment="Refers to the resources still missing to complete the current boat builder task" />
 		<Label position="165,20" name="BB_progress_perc" text="" />
 	</Container>
 
@@ -69,9 +74,12 @@
 
 	<Container position="25,400" size="260,100" name="BB_cancel_container">
 	<!-- Cancel task -->
-		<Label position="10,30" name="BB_cancel_build_label" text="Cancel building:" />
-		<Label position="10,45" name="BB_cancel_warning_label" text="(lose all resources)" /> <!-- smaller font than the above one -->
+		<Label position="10,30" name="BB_cancel_build_label" text="Cancel building:"
+			comment="abort construction of a ship, lose invested resources" />
+		<Label position="10,45" name="BB_cancel_warning_label" text="(lose all resources)"
+			comment="abort construction of a ship, lose invested resources" /> <!-- smaller font than the above one -->
 		<CancelButton name="BB_cancel_button"  position="160,12"  size="64,64"
+			comment="abort construction of a ship, lose invested resources"
 			tooltip="Cancel all building progress" /> <!-- needs a confirmation popup -->
 	</Container>
 </Container>

@@ -101,8 +101,8 @@ class ShipInventoryTab(InventoryTab):
 		def click_on_cannons(button):
 			button.button.capture(Callback(
 			  self.instance.session.gui.show_popup,
-			  _("Can't equip trade ship with weapons"),
-			  _("It is not possible to equip a trade ship with weapons")
+			  _("Cannot equip trade ship with weapons"),
+			  _("It is not possible to equip a trade ship with weapons.")
 			))
 		self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons, lambda b: b.res_id == WEAPONS.CANNON)
 

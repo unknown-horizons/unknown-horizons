@@ -44,7 +44,7 @@ def usage():
 def onquit(*args):
   try:
     client.disconnect()
-  except horizons.network.NetworkException, e:
+  except horizons.network.NetworkException as e:
     """ignore the errors"""
   sys.exit(0)
 
@@ -77,7 +77,7 @@ def oncreate(*args):
     print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
     for player in game.players:
       print "  Player: %s (%s)" % (player.name, player.sid)
-  except ValueError, IndexError:
+  except (ValueError, IndexError):
     print "Maxplayers must be an integer"
 
 def onjoin(*args):
@@ -135,7 +135,7 @@ def onauto(*args):
   if len(args) >= 2:
     try:
       maxplayers = int(args[1])
-    except ValueError, IndexError:
+    except (ValueError, IndexError):
       print "Maxplayers must be an integer"
       return
   client.connect()
@@ -212,7 +212,7 @@ if platform.system() == "Windows":
 
 try:
   opts, args = getopt.getopt(sys.argv[1:], 'h:p:')
-except getopt.GetoptError, err:
+except getopt.GetoptError as err:
   print str(err)
   usage()
   sys.exit(1)
@@ -223,7 +223,7 @@ try:
       host = value
     if key == '-p':
       port = int(value)
-except ValueError, IndexError:
+except (ValueError, IndexError):
   port = 0
 
 if host == None or port == None or port <= 0:
@@ -267,6 +267,6 @@ while True:
       print "[ERROR] Unknown command"
     else:
       commands[cmd](*pieces)
-  except horizons.network.NetworkException, e:
+  except horizons.network.NetworkException as e:
     print "[ERROR] %s" % (e)
   print prompt,

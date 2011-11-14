@@ -22,15 +22,16 @@
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 
 class AbstractIronMine(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
 		for building in settlement_manager.land_manager.settlement.get_buildings_by_id(BUILDINGS.MOUNTAIN_CLASS):
-			(x, y) = building.position.origin.to_tuple()
-			for rotation in xrange(4):
-				yield (x, y, rotation)
+			if building.inventory[RES.RAW_IRON_ID]:
+				(x, y) = building.position.origin.to_tuple()
+				for rotation in xrange(4):
+					yield (x, y, rotation)
 
 	@property
 	def evaluator_class(self):

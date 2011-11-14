@@ -25,6 +25,7 @@ import horizons.main
 
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.widgets.productionoverview import ProductionOverview
+from horizons.gui.tabs.overviewtab import _setup_tax_slider
 
 from horizons.extscheduler import ExtScheduler
 from horizons.util.gui import create_resource_icon
@@ -154,27 +155,14 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
 
-		self._setup_tax_slider()
+		slider = self.widget.child_finder('tax_slider')
+		val_label = self.widget.child_finder('tax_val_label')
+		_setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
 		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
 
 	@classmethod
 	def shown_for(cls, instance):
 		return instance.owner.settler_level >= cls.LEVEL
-
-	def _setup_tax_slider(self):
-		"""Set up a slider to work as tax slider"""
-		slider = self.widget.child_finder('tax_slider')
-		val_label = self.widget.child_finder('tax_val_label')
-		slider.setScaleStart(SETTLER.TAX_SETTINGS_MIN)
-		slider.setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
-		slider.setStepLength(SETTLER.TAX_SETTINGS_STEP)
-		slider.setValue(self.settlement.tax_settings[self.__class__.LEVEL])
-		slider.stylize('book')
-		def on_slider_change():
-			val_label.text = unicode(slider.getValue())
-			if(self.settlement.tax_settings[self.__class__.LEVEL] != slider.getValue()):
-				SetTaxSetting(self.settlement, self.__class__.LEVEL, slider.getValue()).execute(self.settlement.session)
-		slider.capture(on_slider_change)
 
 	def _get_last_tax_paid(self):
 		return sum([building.last_tax_payed for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS) if \

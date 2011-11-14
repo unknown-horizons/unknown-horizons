@@ -23,7 +23,7 @@ gettext.install('', unicode=True)
 
 try:
 	import run_uh
-except ImportError, e:
+except ImportError as e:
 	print e.message
 	print 'Please run from uh root dir'
 	sys.exit(1)
