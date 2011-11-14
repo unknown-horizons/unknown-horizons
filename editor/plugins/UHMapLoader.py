@@ -180,6 +180,7 @@ class UHMapLoader(scripts.plugin.Plugin):
 		animationloader = SQLiteAnimationLoader()
 
 		# load all ground tiles
+		print("loading UH ground tiles...")
 		tile_sets = TileSetLoader.get_sets()
 
 		for tile_set_id in tile_sets:
@@ -199,6 +200,7 @@ class UHMapLoader(scripts.plugin.Plugin):
 					action.setDuration(anim.getDuration())
 
 		# load all buildings
+		print("loading UH buildings...")
 		all_action_sets = ActionSetLoader.get_sets()
 		for (building_id,) in db("SELECT id FROM building"):
 			building_action_sets = db("SELECT action_set_id FROM action_set WHERE object_id=?", building_id)
@@ -225,4 +227,6 @@ class UHMapLoader(scripts.plugin.Plugin):
 						anim = animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
 						action.get2dGfxVisual().addAnimation(int(rotation), anim)
 						action.setDuration(anim.getDuration())
+
+		print("finished loading UH objects")
 
