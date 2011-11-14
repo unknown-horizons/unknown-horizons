@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-04 03:14+0200\n"
+"PO-Revision-Date: 2011-11-14 03:42+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en-suggest\n"
@@ -900,19 +900,16 @@ msgid "Version differs!"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:155
-#, fuzzy
 msgid "Map: "
-msgstr "Map:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:156
-#, fuzzy
 msgid "Players: "
-msgstr "Players:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:159
-#, fuzzy
 msgid "Creator: "
-msgstr "Creator:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:176
 #, python-format
@@ -925,30 +922,26 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
-#, fuzzy
 msgid "Recommended number of players: "
-msgstr "Recommended number of players:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
 #: horizons/gui/widgets/choose_next_scenario.py:43
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Difficulty:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:115
 #: horizons/gui/widgets/choose_next_scenario.py:44
-#, fuzzy
 msgid "Author: "
-msgstr "Author:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:104
 #: horizons/gui/modules/singleplayermenu.py:116
 #: horizons/gui/widgets/choose_next_scenario.py:45
-#, fuzzy
 msgid "Description: "
-msgstr "Description:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:135
 msgid "Invalid player name"
@@ -1075,9 +1068,8 @@ msgid "Can't equip trade ship with weapons"
 msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:105
-#, fuzzy
 msgid "It is not possible to equip a trade ship with weapons"
-msgstr "It is not possible to equip a trade ship with weapons."
+msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:133
 msgid "Equip weapon"
