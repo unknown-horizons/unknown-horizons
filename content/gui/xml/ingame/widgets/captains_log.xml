@@ -16,7 +16,7 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 	<Spacer />
 
 	<HBox max_size="80,36">
-		<ToggleImageButton name="backwardButton" tooltip="Read prev. entries"
+		<ToggleImageButton name="backwardButton" tooltip="Read previous entries"
 			comment="Entry of Captain's Log (logbook/diary used in scenarios)"
 			inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
 			up_image="content/gui/images/buttons/parrow_left.png"
