@@ -202,10 +202,10 @@ class UHMapLoader(scripts.plugin.Plugin):
 		# load all buildings
 		print("loading UH buildings...")
 		all_action_sets = ActionSetLoader.get_sets()
-		for (building_id,) in db("SELECT id FROM building"):
+		for (building_id, building_name) in db("SELECT id, name FROM building"):
 			building_action_sets = db("SELECT action_set_id FROM action_set WHERE object_id=?", building_id)
 			size_x, size_y = db("SELECT size_x, size_x FROM building WHERE id = ?", building_id)[0]
-			object = model.createObject(str(building_id), 'building')
+			object = model.createObject(str(building_name), 'building')
 			fife.ObjectVisual.create(object)
 
 			for (action_set_id,) in building_action_sets:
