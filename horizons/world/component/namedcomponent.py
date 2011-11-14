@@ -30,6 +30,8 @@ class NamedComponent(Component):
 
 	names_used = []
 
+	yaml_tag = u'!NameComponent'
+
 	def __init__(self, name=None):
 		super(NamedComponent, self).__init__()
 		self.name = name
@@ -77,6 +79,8 @@ class NamedComponent(Component):
 
 class ShipNameComponent(NamedComponent):
 
+	yaml_tag = u'!ShipNameComponent'
+
 	def _possible_names(self):
 		names = self.instance.session.db("SELECT name FROM shipnames WHERE for_player = 1")
 		# We need unicode strings as the name is displayed on screen.
@@ -85,11 +89,15 @@ class ShipNameComponent(NamedComponent):
 
 class PirateShipNameComponent(NamedComponent):
 
+	yaml_tag = u'!PirateShipNameComponent'
+
 	def _possible_names(self):
 		names = self.instance.session.db("SELECT name FROM shipnames WHERE for_pirate = 1")
 		return map(lambda x: unicode(x[0]), names)
 
 class SettlementNameComponent(NamedComponent):
+
+	yaml_tag = u'!SettlementNameComponent'
 
 	def _possible_names(self):
 		names = self.instance.session.db("SELECT name FROM citynames WHERE for_player = 1")

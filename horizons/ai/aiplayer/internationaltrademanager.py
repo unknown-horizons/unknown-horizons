@@ -27,6 +27,7 @@ from mission.internationaltrade import InternationalTrade
 from horizons.constants import RES, TRADER
 from horizons.util.python import decorators
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.tradepost import TradePostComponent
 
 class InternationalTradeManager(object):
 	"""
@@ -79,7 +80,7 @@ class InternationalTradeManager(object):
 				resource_manager = settlement_manager.resource_manager
 
 				# add the options where we sell to the other player
-				for resource_id, limit in settlement.buy_list.iteritems():
+				for resource_id, limit in settlement.get_component(TradePostComponent).buy_list.iteritems():
 					if resource_id not in resource_manager.resource_requirements:
 						continue # not a well-known resource: ignore it
 					if limit <= settlement.get_component(StorageComponent).inventory[resource_id]:
@@ -92,7 +93,7 @@ class InternationalTradeManager(object):
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, True))
 
 				# add the options where we buy from the other player
-				for resource_id, limit in settlement.sell_list.iteritems():
+				for resource_id, limit in settlement.get_component(TradePostComponent).sell_list.iteritems():
 					if resource_id not in resource_manager.resource_requirements:
 						continue # not a well-known resource: ignore it
 					if limit >= settlement.get_component(StorageComponent).inventory[resource_id]:

@@ -67,8 +67,8 @@ class WorldObject(ChangeListener):
 
 	def load(self, db, worldid):
 		super(WorldObject, self).load(db, worldid)
-		self.__init(worldid)
 		self.log.debug('loading worldobject %s %s', worldid, self)
+		self.__init(worldid)
 
 	def remove(self):
 		super(WorldObject, self).remove()

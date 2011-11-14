@@ -18,6 +18,8 @@ class StorageComponent(Component):
 
 	NAME = 'storagecomponent'
 
+	yaml_tag = u'!StorageComponent'
+
 	has_own_inventory = True # some objs share inventory, which requires different handling here.
 
 	def __init__(self, inventory=None):

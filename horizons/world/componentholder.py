@@ -21,6 +21,10 @@
 
 from component import Component
 import sys
+from yaml import load, dump
+from yaml import SafeLoader as Loader
+
+from horizons.world.component.storagecomponent import StorageComponent
 
 class ComponentHolder(object):
 	"""
@@ -37,9 +41,11 @@ class ComponentHolder(object):
 		super(ComponentHolder, self).remove()
 
 	def load(self, db, worldid):
+		self.read_component_file("content/objects/settlement.yaml")
 		super(ComponentHolder, self).load(db, worldid)
 		self.components = {}
 		for name in self.components:
+			print name
 			self.components[name].load(db, worldid)
 
 	def save(self, db):
@@ -84,3 +90,7 @@ class ComponentHolder(object):
 		else:
 			return None
 
+
+	def read_component_file(self, filename):
+		stream = file(filename, 'r')
+		print load(stream, Loader=Loader)

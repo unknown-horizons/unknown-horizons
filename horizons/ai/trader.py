@@ -28,6 +28,7 @@ from horizons.ai.generic import GenericAI
 from horizons.ext.enum import Enum
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
+from horizons.world.tradepost import TradePostComponent
 
 
 class Trader(GenericAI):
@@ -194,7 +195,7 @@ class Trader(GenericAI):
 		self.log.debug("Trader %s ship %s: reached bo", self.worldid, ship.worldid)
 		settlement = self.office[ship.worldid].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
-		for res in sorted(settlement.buy_list.iterkeys()): # check for resources that the settlement wants to buy
+		for res in sorted(settlement.get_component(TradePostComponent).buy_list.iterkeys()): # check for resources that the settlement wants to buy
 			amount = self.session.random.randint(*TRADER.SELL_AMOUNT) # select a random amount to sell
 			if amount == 0:
 				continue
@@ -204,7 +205,7 @@ class Trader(GenericAI):
 			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
 
 		# NOTE: must be sorted for mp games (same order everywhere)
-		for res in sorted(settlement.sell_list.iterkeys()):
+		for res in sorted(settlement.get_component(TradePostComponent).sell_list.iterkeys()):
 			# select a random amount to buy from the settlement
 			amount = self.session.random.randint(*TRADER.BUY_AMOUNT)
 			if amount == 0:

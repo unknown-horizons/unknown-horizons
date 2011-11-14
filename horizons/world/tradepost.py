@@ -29,6 +29,9 @@ class TradePostComponent(Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
 	"""
+	NAME = 'tradepostcomponent'
+	yaml_tag = u'!TradePostComponent'
+
 	def __init__(self):
 		super(TradePostComponent, self).__init__()
 
