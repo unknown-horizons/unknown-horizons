@@ -31,11 +31,7 @@ import fife.extensions.loaders as mapLoaders
 import scripts.editor
 import scripts.plugin
 
-def getUHPath():
-	"""Stores the UH path"""
-	def up(path):
-		return os.path.split(path)[0]
-	return up(up(os.path.abspath(horizons.main.__file__)))
+import util
 
 class UHObjectLoader(scripts.plugin.Plugin):
 	""" The B{UHObjectLoader} allows to load the UH objects into the FIFEdit object selector """
@@ -86,7 +82,7 @@ class UHObjectLoader(scripts.plugin.Plugin):
 			use_atlases = False
 			pass
 		horizons.main.fife = PatchedFife()
-		uh_path = getUHPath()
+		uh_path = util.getUHPath()
 		horizons.main.PATHS.TILE_SETS_DIRECTORY = os.path.join(uh_path, horizons.main.PATHS.TILE_SETS_DIRECTORY)
 		horizons.main.PATHS.ACTION_SETS_DIRECTORY = os.path.join(uh_path, horizons.main.PATHS.ACTION_SETS_DIRECTORY)
 		horizons.main.PATHS.DB_FILES = map(lambda file: os.path.join(uh_path, file), horizons.main.PATHS.DB_FILES)
@@ -94,7 +90,7 @@ class UHObjectLoader(scripts.plugin.Plugin):
 	def _fixupFife(self):
 		"""Fixes some FIFE quirks that have to do with VFS"""
 		vfs = self._engine.getVFS()
-		vfs.addNewSource(getUHPath())
+		vfs.addNewSource(util.getUHPath())
 		vfs.addNewSource("/")
 
 	def _loadObjects(self):

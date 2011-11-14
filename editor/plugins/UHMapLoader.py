@@ -31,11 +31,7 @@ import fife.extensions.loaders as mapLoaders
 import scripts.editor
 import scripts.plugin
 
-def getUHPath():
-	"""Stores the UH path"""
-	def up(path):
-		return os.path.split(path)[0]
-	return up(up(os.path.abspath(horizons.main.__file__)))
+import util
 
 class MapLoader:
 
@@ -79,7 +75,7 @@ class MapLoader:
 		fife.LightRenderer.getInstance(cam).addActiveLayer(ground_layer)
 		fife.GenericRenderer.getInstance(cam).addActiveLayer(ground_layer)
 
-		map_db = DbReader(os.path.join(getUHPath(), path))
+		map_db = DbReader(os.path.join(util.getUHPath(), path))
 		# TODO: check the map version number
 
 		# load all islands
@@ -91,7 +87,7 @@ class MapLoader:
 
 	def _loadIsland(self, ground_layer, model, ix, iy, file):
 		""" Loads an island from the given file """
-		island_db = DbReader(os.path.join(getUHPath(), file))
+		island_db = DbReader(os.path.join(util.getUHPath(), file))
 
 		ground_tile = model.getObject('ts_beach0', 'ground')
 
