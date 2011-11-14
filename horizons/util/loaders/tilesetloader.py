@@ -52,11 +52,11 @@ class TileSetLoader(object):
 					cls._find_tile_sets(full_path)
 
 	@classmethod
-	def load(cls, dir=None):
+	def load(cls):
 		#print "called"
 		if not cls._loaded:
 			cls.log.debug("Loading tile_sets...")
-			cls._find_tile_sets(dir or PATHS.TILE_SETS_DIRECTORY)
+			cls._find_tile_sets(PATHS.TILE_SETS_DIRECTORY)
 			cls.log.debug("Done!")
 			cls._loaded = True
 
