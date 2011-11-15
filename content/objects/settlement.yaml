@@ -1,9 +1,7 @@
 name: settlement
 components:
-- !SettlementNameComponent
-   name: None
-- !TradePostComponent
-
-- !StorageComponent
+- SettlementNameComponent
+- TradePostComponent
+- StorageComponent:
    inventory:
-      PositiveSizedSlotStorage: {size: 0}
+      PositiveSizedSlotStorage: {limit: 30}

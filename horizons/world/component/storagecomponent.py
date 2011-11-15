@@ -3,6 +3,7 @@ import horizons.main
 from horizons.world import storage
 from horizons import constants
 from horizons.world.component import Component
+from horizons.world.storage import PositiveSizedSlotStorage
 
 class StorageComponent(Component):
 	"""The StorageComponent class is used as as a parent class for everything that
@@ -18,7 +19,9 @@ class StorageComponent(Component):
 
 	NAME = 'storagecomponent'
 
-	yaml_tag = u'!StorageComponent'
+	storage_mapping = {
+	    'PositiveSizedSlotStorage': PositiveSizedSlotStorage
+	    }
 
 	has_own_inventory = True # some objs share inventory, which requires different handling here.
 
@@ -65,3 +68,13 @@ class StorageComponent(Component):
 		self.initialize()
 		if self.has_own_inventory:
 			self.inventory.load(db, worldid)
+
+	@classmethod
+	def get_instance(cls, arguments={}):
+		assert len(arguments['inventory']) == 1, "You may not have more than one inventory!"
+		inventory = None
+		for key, value in arguments['inventory'].iteritems():
+			storage = cls.storage_mapping[key]
+			inventory = storage(**value)
+		arguments['inventory'] = inventory
+		return cls(**arguments)

@@ -19,24 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from yaml import YAMLObject, SafeLoader
-
-class Component(YAMLObject):
-
-	yaml_loader = SafeLoader
+class Component(object):
 
 	#  Store the name of this component. This has to be overwritten in subclasses
 	NAME = None
-
-	# Must be set by each subclass!
-	yaml_tag = None
 
 	def __init__(self):
 		"""
 		@param instance: instance that has the component
 		"""
 		super(Component, self).__init__()
-		assert self.yaml_tag is not None
 		self.instance = None # Has to be set by the componentholder
 
 	def initialize(self):
@@ -60,3 +52,12 @@ class Component(YAMLObject):
 
 	def load(self, db, worldid):
 		pass
+
+	@classmethod
+	def get_instance(cls, arguments={}):
+		"""
+		This function is used to instantiate classes from yaml. Override this if
+		the component has more than just a basic constructor with primitiv types
+		(takes Custom classes as arguments e.g. Storages)
+		"""
+		return cls(**arguments)

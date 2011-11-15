@@ -25,12 +25,23 @@ from yaml import load, dump
 from yaml import SafeLoader as Loader
 
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent import NamedComponent, SettlementNameComponent
+from horizons.world.tradepost import TradePostComponent
 
 class ComponentHolder(object):
 	"""
 	Class that manages Component plug-ins
 	It can be inherided by all objects that can hold components
 	"""
+
+	class_mapping = {
+	    'StorageComponent': StorageComponent,
+	    'NamedComponent': NamedComponent,
+	    'SettlementNameComponent': SettlementNameComponent,
+	    'TradePostComponent': TradePostComponent
+	}
+
+
 	def __init__(self, *args, **kwargs):
 		self.components = {}
 		super(ComponentHolder, self).__init__(*args, **kwargs)
@@ -93,4 +104,15 @@ class ComponentHolder(object):
 
 	def read_component_file(self, filename):
 		stream = file(filename, 'r')
-		print load(stream, Loader=Loader)
+		result = load(stream, Loader=Loader)
+		print result
+		components = []
+		for entry in result['components']:
+			if isinstance(entry, dict):
+				for key, value in entry.iteritems():
+					components.append(self.class_mapping[key].get_instance(value))
+			else:
+				components.append(self.class_mapping[entry].get_instance())
+
+		for index, entry in enumerate(components):
+			print index, entry
