@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-05 04:27+0200\n"
+"PO-Revision-Date: 2011-11-05 04:28+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1179,7 +1179,7 @@ msgstr "Construir asentamiento"
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr ""
 
-# 76%
+# misses ship ==> unit! TODO replace navío
 #: horizons/gui/tabs/overviewtab.py:239
 #, fuzzy
 msgid "Unit overview"
@@ -1338,7 +1338,6 @@ msgstr "Campos"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:89
-#, fuzzy
 msgid "Pioneer buildings"
 msgstr "Edificios de los pioneros"
 
@@ -1361,7 +1360,6 @@ msgstr "Fábrica de ladrillos: Activa la arcilla en los ladrillos."
 
 #. (tooltip of widget: clay-pit-1)
 #: horizons/i18n/guitranslations.py:99
-#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
 msgstr "Pozo de arcilla: Obtiene la arcilla del depósito."
 
@@ -1430,7 +1428,6 @@ msgstr ""
 # 76%
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:134
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
 msgstr "Carbón de leña ardiente: Quema una gran cantidad de tablas."
 
@@ -1451,7 +1448,6 @@ msgstr ""
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:142
-#, fuzzy
 msgid "Smeltery: Refines all kind of ores."
 msgstr "Fundidora: Afina todo tipo de minerales."
 
@@ -1922,13 +1918,11 @@ msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:482
-#, fuzzy
 msgid "Resource deposit"
 msgstr "Depósito de recursos"
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py:484
-#, fuzzy
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 "Esto es un depósito de recursos, debes construir una mina aquí para "
@@ -2179,7 +2173,6 @@ msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:698
-#, fuzzy
 msgid "Key bindings"
 msgstr "Teclas de acceso"
 
@@ -2350,7 +2343,6 @@ msgstr "Opciones"
 
 #. (text of widget: start)
 #: horizons/i18n/guitranslations.py:771
-#, fuzzy
 msgid "Return to game"
 msgstr "Regresar a la partida"
 
@@ -2624,7 +2616,6 @@ msgstr "Aplicar"
 # 84%
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:915
-#, fuzzy
 msgid "Reset to default settings"
 msgstr "Reiniciar configuración por defecto"
 
@@ -2813,7 +2804,7 @@ msgstr ""
 # 76%
 #: horizons/savegamemanager.py:420
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Error: No se puede cargar el mapa \"%s\"."
 
@@ -2944,7 +2935,6 @@ msgstr ""
 
 # 92%
 #: run_uh.py:90
-#, fuzzy
 msgid "Starting Unknown Horizons"
 msgstr "Iniciando Unknown Horizons"
 
