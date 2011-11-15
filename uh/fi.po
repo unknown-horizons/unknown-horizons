@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-15 15:41+0200\n"
+"PO-Revision-Date: 2011-11-15 15:43+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -798,7 +798,7 @@ msgstr "Vahvistus ylikirjoittamiselle"
 
 #: horizons/gui/gui.py:277
 msgid "Please select a savegame or click on cancel."
-msgstr "Valitse tallennus tai paina 'peruuta'."
+msgstr "Valitse tallennus tai napsauta \"Peruuta\"."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:277
@@ -831,8 +831,8 @@ msgstr "Tallennettu %s"
 #, python-format
 msgid "Saved %(amount)d time"
 msgid_plural "Saved %(amount)d times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tallennettu %(amount)d kerran"
+msgstr[1] "Tallennettu %(amount)d kertaa"
 
 #: horizons/gui/gui.py:441
 #, python-format
@@ -845,12 +845,12 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
-"VAROITUS: Epäyhteensopiva versio %(ver)d!\n"
-"Tarvittu versio %(need)d!"
+"VAROITUS: Yhteensopimaton versio %(ver)d!\n"
+"Vaaditaan versio %(need)d!"
 
 #: horizons/gui/gui.py:446
 msgid "INCOMPATIBLE VERSION\n"
-msgstr "EPÄYHTEENSOPIVA VERSIO\n"
+msgstr "YHTEENSOPIMATON VERSIO\n"
 
 #: horizons/gui/gui.py:469
 msgid "No file selected"
