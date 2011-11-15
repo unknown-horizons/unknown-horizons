@@ -66,6 +66,7 @@ class BuildingClass(type):
 		@param db: DbReader
 		"""
 		super(BuildingClass, self).__init__(self)
+		print "foo"
 		self.id = id
 		self._object = None
 
@@ -111,6 +112,7 @@ class BuildingClass(type):
 	def _loadObject(cls, db):
 		"""Loads building from the db.
 		"""
+		print "foo loooooooooooooading"
 		cls.log.debug("Loading building %s", cls.id)
 		try:
 			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'building')

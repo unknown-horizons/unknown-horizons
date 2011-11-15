@@ -52,11 +52,11 @@ class UnitClass(type):
 			(getattr(globals()[self.class_package], self.class_name),),
 			attributes)
 
-	def __init__(self, db, id, **kwargs):
+	def __init__(self, db, id, radius = None, soundfiles = [], classname=None):
 		"""
 		@param id: unit id.
 		"""
-		super(UnitClass, self).__init__(self, **kwargs)
+		super(UnitClass, self).__init__(self)
 		self.id = id
 		self._object = None
 		self._loadObject(db)
@@ -64,6 +64,7 @@ class UnitClass(type):
 		soundfiles = db("SELECT file FROM sounds INNER JOIN object_sounds ON \
 			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]
+		print "Soundfiles for", id, ":", soundfiles
 
 	def _loadObject(cls, db):
 		"""Loads the object with all animations.

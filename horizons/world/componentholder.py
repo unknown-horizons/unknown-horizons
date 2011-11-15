@@ -125,3 +125,5 @@ class ComponentHolder(object):
 		del result['components']
 		for key, value in result.iteritems():
 			print key, value
+
+		return components

@@ -86,7 +86,7 @@ class GenericComponentCommand(Command):
 		self.kwargs = kwargs
 
 	def __call__(self, issuer):
-		return getattr(self._get_object().get_component(self.component_name), self.method)(*self.args, **self.kwargs)
+		return getattr(self._get_object().get_component_by_name(self.component_name), self.method)(*self.args, **self.kwargs)
 
 	def _get_object(self):
 		return WorldObject.get_object_by_id(self.obj_id)

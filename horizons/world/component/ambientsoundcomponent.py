@@ -31,12 +31,13 @@ class AmbientSoundComponent(Component):
 
 	NAME = "ambientsound"
 
-	def __init__(self, positioning=True, **kwargs):
+	def __init__(self, soundfiles=[], positioning=True, **kwargs):
 		"""
 		@param positioning: bool, whether sound should play from a certain position.
 		"""
 		super(AmbientSoundComponent, self).__init__()
 		self.__init(positioning)
+		self.soundfiles = soundfiles
 
 	def __init(self, positioning):
 		self.__positioning = positioning
