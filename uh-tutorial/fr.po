@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-10-14 21:35+0200\n"
+"PO-Revision-Date: 2011-10-14 21:36+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -649,7 +649,7 @@ msgstr "Atteignez un stock d'au moins 30 outils."
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:68
 msgid "Note that this might take a while."
-msgstr ""
+msgstr "Notez que ceci peut durer un moment."
 
 # The translation is bad, but it fits. for the moment, this is the solution
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).

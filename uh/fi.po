@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-05 23:59+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-11-15 15:41+0200\n"
+"Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Pelaaja ${player} loi uuden asutuskeskuksen."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr "Luotiin uusi maailma."
+msgstr "Uusi maailma luotu."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -665,20 +665,19 @@ msgstr "Uudelleenkäynnistys tarpeen"
 #: horizons/engine.py:71
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
-"Jotkin tekemistäsi muutoksista vaativat, että Unknown Horizons "
-"uudelleenkäynnistetään."
+"Jotkin tekemistäsi muutoksista edellyttävät pelin käynnistämistä uudelleen."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Palauta oletusasetukset"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Kaikki tekemäsi muutokset poistetaan."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Haluatko jatkaa?"
 
 #: horizons/engine.py:189
 msgid "System default"
@@ -702,16 +701,16 @@ msgstr ""
 #: horizons/engine.py:280
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Asetettu kieli, %(lang)s, kohdassa %(place)s ei onnistunut latautumaan"
+msgstr "Asetettu kieltä %(lang)s, kohdassa %(place)s ei pystytä lataamaan."
 
 #: horizons/engine.py:528
 msgid "Invalid network port"
-msgstr ""
+msgstr "Virheellinen verkkoportti"
 
 #: horizons/engine.py:529
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Määrittelemäsi portti on virheellinen. Sen tulisi olla numero väliltä 1 - "
+"Määrittelemäsi portti on virheellinen. Portin on oltava numero väliltä 1 - "
 "65535."
 
 #: horizons/engine.py:530
@@ -749,7 +748,7 @@ msgstr "Tallennus epäonnistui."
 
 #: horizons/gui/gui.py:160
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Oletko varma, että haluat poistua pelistä Unknown Horizons?"
+msgstr "Haluatko varmasti lopettaa pelin?"
 
 #: horizons/gui/gui.py:161
 msgid "Quit Game"
@@ -3069,11 +3068,11 @@ msgstr ""
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Kiitos, että käytitte peliä Unknown Horizons!"
+msgstr "Kiitos, että pelasit Unknown Horizonsia!"
 
 #: run_uh.py:387
 msgid "FIFE was not found."
-msgstr "FIFE: tä ei löytynyt."
+msgstr "FIFE:ä ei löytynyt."
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Tuntematon tallennuspäivä\n"
