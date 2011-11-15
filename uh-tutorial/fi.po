@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-10-05 14:00+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-11-15 16:47+0200\n"
+"Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. scenario difficulty
 #: po/tutorial.py:2
 msgid "Tutorial"
-msgstr "Tutoriaali"
+msgstr "Opastava"
 
 #. scenario author
 #: po/tutorial.py:4
@@ -33,8 +33,8 @@ msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
-"Tutoriaali:\n"
-"Rakenna ensimmäinen asutuskeskuksesi ja opi kuinka pelata!\n"
+"Aloitusopas:\n"
+"Rakenna ensimmäinen siirtokuntasi ja opi, miten tätä peliä pelataan!\n"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:8
@@ -46,7 +46,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
 msgid "Welcome to Unknown Horizons!"
-msgstr "Tervetuloa peliin Unknown Horizonsiin!"
+msgstr "Tervetuloa Unknown Horizonsiin!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:12
@@ -69,29 +69,28 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
-"Tämä on kapteenin lokikirja, johon kaikki tärkeä tieto kirjataan. Lyhyt "
-"huomautus jokaisesta tehtävästä tarjotaan kuvaruudun vasempaan reunaan.\n"
+"Tämä on kapteenin lokikirja, johon kaikki tärkeä tieto kirjataan. Jokaisesta "
+"tehtävästä ilmoitetaan vasemmassa reunassa.\n"
 "\n"
-"Jos olet kiinnostunut tarkemmista kuvauksista, niin lokikirjastasi "
-"toivottavasti löytyy kaikki tarvitsemasi.\n"
+"Jos olet kiinnostunut tarkemmista kuvauksista, niin lokikirjasta pitäisi "
+"löytyä kaikki tarvitsemasi.\n"
 "\n"
-"Kun olet sulkenut tämän lokikirjan, voit avata sen uudelleen 'Kapteenin "
-"lokikirja'-kuvakkeesta oikeasta yläkulmasta (minimap:n alapuolelta, "
-"sinetöidyn dokumentin ja sulan kera).\n"
+"Kun olet sulkenut tämän lokikirjan, voit avata sen uudelleen \"Kapteenin "
+"lokikirja\"-kuvakkeesta oikeasta yläkulmasta (pikkukartan alapuolelta, "
+"kuvakkeessa on sinetöity kirje ja sulka).\n"
 "\n"
-"Jos keksit ehdotuksia paremmille sanamuodoille, aiheita, joista haluaisit "
-"kuulla tai törmäät vikatilanteeseen: Pyydämme kertomaan meille, niin me "
-"yritämme parantaa tutoriaalia!\n"
+"Jos keksit ehdotuksia paremmalle kieliopille, haluaisit kuulla jostain lisää "
+"tai törmäät vikatilanteeseen, kerrothan siitä meille, niin me yritämme "
+"parantaa tätä peliopasta!\n"
 "\n"
-"Vieraile sivustolla www.unknown-horizons.org löytääksesi ohjeet, kuinka "
-"ottaa yhteyttä kehitysryhmään!\n"
+"Sivustolta www.unknown-horizons.org löydät kehitysryhmän yhteystiedot.\n"
 "\n"
-"Ja nyt, aloitetaanpas varsinainen peli."
+"Ja nyt viimeinkin aloitetaanpas itse peli!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:14
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "ASETU SAARELLE"
+msgstr "UUSI TEHTÄVÄ: ASETU SAARELLE"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
