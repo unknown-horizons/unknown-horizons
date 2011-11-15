@@ -3,7 +3,7 @@ import horizons.main
 from horizons.world import storage
 from horizons import constants
 from horizons.world.component import Component
-from horizons.world.storage import PositiveSizedSlotStorage
+from horizons.world.storage import PositiveSizedSlotStorage, PositiveSizedNumSlotStorage
 
 class StorageComponent(Component):
 	"""The StorageComponent class is used as as a parent class for everything that
@@ -20,7 +20,8 @@ class StorageComponent(Component):
 	NAME = 'storagecomponent'
 
 	storage_mapping = {
-	    'PositiveSizedSlotStorage': PositiveSizedSlotStorage
+	    'PositiveSizedSlotStorage': PositiveSizedSlotStorage,
+	    'PositiveTotalNumSlotStorage': PositiveSizedNumSlotStorage
 	    }
 
 	has_own_inventory = True # some objs share inventory, which requires different handling here.

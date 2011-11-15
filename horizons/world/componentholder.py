@@ -25,8 +25,10 @@ from yaml import load, dump
 from yaml import SafeLoader as Loader
 
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent import NamedComponent, SettlementNameComponent
+from horizons.world.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent
 from horizons.world.tradepost import TradePostComponent
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.world.component.healthcomponent import HealthComponent
 
 class ComponentHolder(object):
 	"""
@@ -37,8 +39,11 @@ class ComponentHolder(object):
 	class_mapping = {
 	    'StorageComponent': StorageComponent,
 	    'NamedComponent': NamedComponent,
+	    'ShipNameComponent': ShipNameComponent,
 	    'SettlementNameComponent': SettlementNameComponent,
-	    'TradePostComponent': TradePostComponent
+	    'TradePostComponent': TradePostComponent,
+	    'AmbientSoundComponent': AmbientSoundComponent,
+	    "HealthComponent": HealthComponent
 	}
 
 
@@ -52,7 +57,6 @@ class ComponentHolder(object):
 		super(ComponentHolder, self).remove()
 
 	def load(self, db, worldid):
-		self.read_component_file("content/objects/settlement.yaml")
 		super(ComponentHolder, self).load(db, worldid)
 		self.components = {}
 		for name in self.components:
@@ -101,8 +105,8 @@ class ComponentHolder(object):
 		else:
 			return None
 
-
-	def read_component_file(self, filename):
+	@classmethod
+	def read_component_file(cls, filename):
 		stream = file(filename, 'r')
 		result = load(stream, Loader=Loader)
 		print result
@@ -110,9 +114,14 @@ class ComponentHolder(object):
 		for entry in result['components']:
 			if isinstance(entry, dict):
 				for key, value in entry.iteritems():
-					components.append(self.class_mapping[key].get_instance(value))
+					components.append(cls.class_mapping[key].get_instance(value))
 			else:
-				components.append(self.class_mapping[entry].get_instance())
+				components.append(cls.class_mapping[entry].get_instance())
 
 		for index, entry in enumerate(components):
 			print index, entry
+
+
+		del result['components']
+		for key, value in result.iteritems():
+			print key, value

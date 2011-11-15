@@ -24,8 +24,7 @@
 
 from unittest import TestCase
 
-from horizons.world.storage import *
-
+from horizons.world.componentholder import ComponentHolder
 
 class TestGenericStorage(TestCase):
 

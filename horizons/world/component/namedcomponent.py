@@ -32,7 +32,6 @@ class NamedComponent(Component):
 
 	def __init__(self, name=None):
 		super(NamedComponent, self).__init__()
-		print "Name:", name
 		self.name = name
 
 	def initialize(self):

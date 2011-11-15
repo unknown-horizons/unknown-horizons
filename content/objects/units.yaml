@@ -1,0 +1,13 @@
+id: 1
+name: Huker
+type: Ship
+components:
+- AmbientSoundComponent
+- StorageComponent:
+   inventory:
+      PositiveTotalNumSlotStorage:
+         limit: 120
+         slotnum: 4
+- ShipNameComponent
+- HealthComponent:
+   maxhealth: 150

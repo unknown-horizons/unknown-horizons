@@ -34,13 +34,15 @@ class HealthComponent(Component):
 	# Store the name of this component
 	NAME = 'health'
 
-	def __init__(self):
+	def __init__(self, maxhealth=None):
 		super(HealthComponent, self).__init__()
+		self.max_health = float(maxhealth) if maxhealth is not None else None
 
 	def initialize(self):
 		health = self.instance.session.db.cached_query("SELECT max_health FROM health WHERE id = ?", self.instance.id)[0][0]
 		self.health = float(health)
-		self.max_health = float(health)
+		if self.max_health is None:
+			self.max_health = float(health)
 		self.add_damage_dealt_listener(self.check_if_alive)
 		self.add_damage_dealt_listener(self.redraw_health)
 
