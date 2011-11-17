@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-17 11:06+0200\n"
+"PO-Revision-Date: 2011-10-03 03:24+0200\n"
 "Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -2878,7 +2878,7 @@ msgstr ""
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Támadás"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2902,7 +2902,7 @@ msgstr ""
 
 #: run_uh.py:90
 msgid "Starting Unknown Horizons"
-msgstr ""
+msgstr "Unknown Horizons indítása"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
@@ -2910,7 +2910,7 @@ msgstr ""
 
 #: run_uh.py:94
 msgid "Starts a random map."
-msgstr ""
+msgstr "Random térkép indítása."
 
 #: run_uh.py:96
 msgid "Starts a random map with seed <seed>."
