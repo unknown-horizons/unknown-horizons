@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-08-01 15:40+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-11-17 10:49+0200\n"
+"Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -2760,7 +2760,7 @@ msgstr ""
 #: horizons/mpsession.py:50 horizons/mpsession.py:64 horizons/mpsession.py:66
 #: horizons/mpsession.py:68 horizons/mpsession.py:70
 msgid "Not possible"
-msgstr ""
+msgstr "Nem lehetséges"
 
 #: horizons/mpsession.py:50
 msgid "You cannot change the speed of a multiplayer game"
@@ -2932,7 +2932,7 @@ msgstr ""
 
 #: run_uh.py:106
 msgid "Loads the last quicksave."
-msgstr ""
+msgstr "Az utolsó gyorsmentés betöltése."
 
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
@@ -2940,7 +2940,7 @@ msgstr ""
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "AI beállítások"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
@@ -2956,7 +2956,7 @@ msgstr ""
 
 #: run_uh.py:120
 msgid "Development options"
-msgstr ""
+msgstr "Fejlesztési lehetőségek"
 
 #: run_uh.py:122
 msgid "Write debug output only to logfile, not to console. Implies -d."
