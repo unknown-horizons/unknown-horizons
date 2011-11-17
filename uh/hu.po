@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-17 10:49+0200\n"
+"PO-Revision-Date: 2011-11-17 11:06+0200\n"
 "Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -2764,12 +2764,12 @@ msgstr "Nem lehetséges"
 
 #: horizons/mpsession.py:50
 msgid "You cannot change the speed of a multiplayer game"
-msgstr ""
+msgstr "Nem lehet változtatni a multiplayer játék sebességét."
 
 #: horizons/mpsession.py:64 horizons/mpsession.py:66 horizons/mpsession.py:68
 #: horizons/mpsession.py:70
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "Mentés/betöltés a multiplayer játéknál nem lehetséges."
 
 #: horizons/savegamemanager.py:364
 #, python-format
@@ -2808,7 +2808,7 @@ msgstr "Nem sikerült menteni."
 
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
-msgstr ""
+msgstr "Hiba történt a gyorsmentés közben. A játék nem lett elmentve."
 
 #: horizons/spsession.py:124
 msgid "If this error happens again, please contact the development team:"
@@ -2816,28 +2816,30 @@ msgstr ""
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
-msgstr ""
+msgstr "Nem található gyorsmentés"
 
 #: horizons/spsession.py:132
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "Gyorsmentés szükséges a gyorsbetöltéshez."
 
 #. usually invalid filename
 #: horizons/spsession.py:159
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Nem sikerült létrehozni a mentést"
 
 #: horizons/spsession.py:160
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Nem történt hiba a játék mentése közben."
 
 #: horizons/spsession.py:161
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Ez általában azt jelenti, hogy a mentés neve nem támogatott karaktereket "
+"tartalmaz."
 
 #: horizons/spsession.py:167
 msgid "File used by another process"
-msgstr ""
+msgstr "Fájl által használt másik folyamat"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is currently used by another program."
