@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-06-25 14:11+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-11-17 16:49+0200\n"
+"Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgid "branch office"
 msgstr "sivutoimisto"
 
 msgid "your"
-msgstr "sinun"
+msgstr "sinun, -si"
 
 msgid "farm"
 msgstr "maatila"
@@ -50,13 +50,13 @@ msgid "main"
 msgstr "pää-"
 
 msgid "settlement"
-msgstr "asutuskeskus"
+msgstr "siirtokunta"
 
 msgid "start"
 msgstr "aloita"
 
 msgid "click"
-msgstr "paina"
+msgstr "napsauta"
 
 msgid "inhabitants"
 msgstr "asukkaat"
@@ -98,13 +98,13 @@ msgid "trade"
 msgstr "kaupankäynti"
 
 msgid "change"
-msgstr "vaihtaa / muuttaa"
+msgstr "vaihtaa, muuttaa"
 
 msgid "main square"
 msgstr "keskustori"
 
 msgid "trail"
-msgstr "polku / jälki"
+msgstr "polku, jälki"
 
 msgid "boards"
 msgstr "lautoja"
