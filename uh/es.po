@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-17 20:38+0200\n"
+"PO-Revision-Date: 2011-11-17 20:50+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -378,7 +378,7 @@ msgstr "tablas"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr ""
+msgstr "granate"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -388,17 +388,17 @@ msgstr "ladrillos"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "cañón"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "ganado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "matanza de ganado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -408,7 +408,7 @@ msgstr "carbón"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr ""
+msgstr "ciudadano"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -439,17 +439,17 @@ msgstr "cian"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "puñal"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr ""
+msgstr "alimento de venado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "carne de venado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -464,7 +464,7 @@ msgstr "fe"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "pescado"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -484,7 +484,7 @@ msgstr "hierba"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "gris"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -499,12 +499,12 @@ msgstr "felicidad"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "hierbas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "depósito de hierro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
