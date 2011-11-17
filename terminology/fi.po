@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-11-17 16:49+0200\n"
+"PO-Revision-Date: 2011-11-17 16:56+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -292,7 +292,7 @@ msgid "sailor"
 msgstr "merenkävijä"
 
 msgid "pioneer"
-msgstr "pioneeri"
+msgstr "uudisasukas"
 
 msgid "settler"
 msgstr "uudisasukas"
@@ -337,7 +337,7 @@ msgstr "takaisin"
 
 #
 msgid "build settlement"
-msgstr "rakenna asutuskeskus"
+msgstr "rakentaa siirtokunta"
 
 #
 msgid "Captain's log"
@@ -544,7 +544,7 @@ msgid "issues"
 msgstr ""
 
 msgid "minimap"
-msgstr "minimap / minikartta / pikkukartta"
+msgstr "pikkukartta"
 
 msgid "playing"
 msgstr ""
@@ -570,7 +570,7 @@ msgid "cattle"
 msgstr "karja"
 
 msgid "pig"
-msgstr ""
+msgstr "sika"
 
 msgid "herbs"
 msgstr "yrttejä"
@@ -582,7 +582,7 @@ msgid "butchery"
 msgstr "teurastamo"
 
 msgid "doctor"
-msgstr "tohtori"
+msgstr "lääkäri"
 
 msgid "education"
 msgstr "koulutus"
@@ -593,13 +593,13 @@ msgid "clay"
 msgstr "pelaa"
 
 msgid "charcoal"
-msgstr ""
+msgstr "puuhiili"
 
 msgid "iron"
-msgstr ""
+msgstr "rauta"
 
 msgid "ore"
-msgstr ""
+msgstr "malmi"
 
 #~ msgid "lamb"
 #~ msgstr "karitsa"
