@@ -2972,7 +2972,7 @@ msgstr ""
 
 #: run_uh.py:129
 msgid "For internal use only."
-msgstr ""
+msgstr "Csak belső használatra."
 
 #: run_uh.py:131
 msgid "Enable profiling (for developing only)."
