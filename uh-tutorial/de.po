@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-11-18 08:42+0200\n"
+"PO-Revision-Date: 2011-11-18 09:29+0200\n"
 "Last-Translator: djot <djot@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -689,6 +689,7 @@ msgstr ""
 "'große' Version auch die Bedürfnisse der Einwohner niedrigerer Stufen "
 "befriedigt."
 
+# zu Hause oder Zuhause, aber nicht zuhause
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
 msgid ""
@@ -711,7 +712,7 @@ msgstr ""
 "müssen also regelmäßig ihren Vorrat davon auffüllen.\n"
 "\n"
 "Dazu benötigen sie Zugang zu einem Gebäude, das Religion produziert (dem "
-"Pavillon) und werden dann regelmäßig Religion dort abholen und zuhause "
+"Pavillon) und werden dann regelmäßig Religion dort abholen und Zuhause "
 "verbrauchen.\n"
 "\n"
 "Es ist insbesondere NICHT ausreichend, dass das Gebäude nur in einem "
@@ -731,6 +732,7 @@ msgstr "Errichtet einen Pavillon mit einer Verbindung zu Euren Zelten."
 msgid "NEW TASK: NEXT INCREMENT"
 msgstr "NEUE AUFGABE: NÄCHSTE STUFE"
 
+# Niedrig oder 'niedrig' ... im Spiel selbst gibt es keine Bezeichnung 'niedrig', also keinen Tooltip oder Text der so hieße
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
 msgid ""
@@ -751,14 +753,14 @@ msgid ""
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
-"Alle Anforderungen sind jetzt erfüllt, wenn Eure Einwohner regelmäßig "
+"Alle Anforderungen sind jetzt erfüllt, falls Eure Einwohner regelmäßig "
 "Marktplatz und Pavillon aufsuchen können und die Nahrungsversorgung "
 "ausreichend ist.\n"
 "\n"
-"Wenn die Seefahrer glücklich genug sind, wollen sie zur nächsten Stufe "
+"Sobald die Seefahrer glücklich genug sind, wollen sie zur nächsten Stufe "
 "aufsteigen und zu Pionieren werden.\n"
 "\n"
-"Um sie glücklich zu machen, gibt es ein probates Mittel: Steuersenkungen. Da "
+"Um sie glücklich zu machen gibt es ein probates Mittel: Steuersenkungen. Da "
 "alle Bedürfnisse der Einwohner erfüllt sind, sollten sie bald aufsteigen.\n"
 "\n"
 "Ihr solltet nicht versuchen, die Steuern längerfristig auf Niedrig zu "
@@ -769,6 +771,7 @@ msgstr ""
 "ausreichend Baumaterial suchen, um ein Blockhaus zu errichten. Dieses Haus "
 "wird das alte Zelt ersetzen."
 
+# Niedrig oder 'niedrig' ... im Spiel selbst gibt es keine Bezeichnung 'niedrig', also keinen Tooltip oder Text der so hieße
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
 msgid ""
@@ -794,7 +797,7 @@ msgstr ""
 "Es gibt Verbesserungen für Gebäude, die Ihr selbst in Auftrag gebt. Hierbei "
 "werden Ressourcen verwendet, um eine bessere Stufe des Gebäudes am selben "
 "Ort zu errichten.\n"
-"Es gibt aber auch Verbesserungen ohne Kosten wie zum Beispiel das "
+"Es gibt aber auch Verbesserungen ohne Kosten, wie zum Beispiel das "
 "Holzfällerlager. In diesem Fall wird nur die Grafik aktualisiert.\n"
 "\n"
 "Verbesserte Wohnungen beherbergen mehr Bewohner und Pioniere zahlen auch "
@@ -902,6 +905,9 @@ msgid "NEW TASK: BUILD FIELDS"
 msgstr "NEUE AUFGABE: FELDER"
 
 # confectionery -> Zuckerbäckerei oder Süßigkeiten?
+# 
+# zu der => zur (?)
+# Einen ganzen Satz draus machen "- nicht zu den Feldern"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
 msgid ""
@@ -930,7 +936,7 @@ msgstr ""
 "* Zuckerfeld: erzeugt Zucker, welcher zum Brennen von Alkohol und für die "
 "Zuckerbäckerei (später) verwendet wird.\n"
 "\n"
-"Momentan braucht Ihr nur Weiden. Falls Nahrung knapp wird, vielleicht "
+"Momentan benötigt Ihr nur Weiden. Falls die Nahrung knapp wird, vielleicht "
 "aufgrund einer großen Stadt, könnt Ihr auch ein paar Kartoffeln anbauen.\n"
 "\n"
 "Beachtet, dass für die Abholung der Kartoffeln eine Straßenverbindung zu der "
@@ -955,28 +961,28 @@ msgid ""
 "TASK: Build at least one pasture in the farm's range and add potato fields if "
 "you like."
 msgstr ""
-"Geht sicher, dass alle Felder im Einzugsbereich der Farm liegen.\n"
+"Stellt sicher, dass alle Felder im Einzugsbereich der Farm liegen.\n"
 "\n"
 "Ihr könnt für eine Farm auch mehrere Felder anlegen. Ein Stück Weideland "
 "allein wird sie sicherlich nicht zu 100 Prozent auslasten – probiert aus, "
 "wie viele Felder eine Farm versorgen kann!\n"
 "\n"
-"Auf unterschiedlichen Feldern benötigen die Arbeiter der Farm auch "
-"unterschiedlich viel Zeit: Säen, Ernten, Tiere hüten, …). Deshalb kann es "
+"Auf unterschiedlichen Feldern benötigen die Arbeiter der Farm "
+"unterschiedlich viel Zeit: (Säen, Ernten, Tiere hüten, …). Deshalb kann es "
 "sein, dass eine Farm nicht alle Felder versorgen kann.\n"
 "\n"
-"Im Moment braucht Ihr Euch darüber aber noch keine Gedanken machen, da noch "
-"gar keine Felder angelegt sind. Lasst uns das ändern!\n"
+"Im Moment braucht Ihr Euch darüber keine Gedanken machen, da noch keine "
+"Felder angelegt sind. Lasst uns das ändern!\n"
 "\n"
 "AUFGABE: Legt mindestens eine Weide im Einzugsbereich der Farm an und fügt "
-"Kartoffelfelder hinzu, wenn Ihr wollt."
+"Kartoffelfelder hinzu, falls Ihr wollt."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:100
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
 "Legt mindestens eine Weide im Einzugsbereich der Farm an und fügt "
-"Kartoffelfelder hinzu, wenn Ihr wollt."
+"Kartoffelfelder hinzu, falls Ihr wollt."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:102
@@ -985,6 +991,21 @@ msgstr "NEUE AUFGABE: LAGER"
 
 # Letzter Absatz teilweise abgeschnitten.
 # zwei "\n" entfernt, letzter Absatz hoffentlich nicht mehr abgeschnitten.
+# 
+# befinde-N- sich wahrscheinlich eine Menge Bretter im Lager (?)
+# 
+# Kann ein Holzfällerlager brach liegen? Nur Felder können brach liegen, oder?
+# 
+# Außerdem sollte man sich mal einigen, ob es nun Holzfäller oder Holzfällerlager heißt
+# 
+# „gar nicht zu arbeiten“ => ändern in einen Satz mit „Produktion pausieren“, da es "stillgelegt" nirgens im Spiel gibt.
+# 
+# Falls dieser 'Stillgelegt'-Modus aktiviert ist, => "sinken die laufenden Kosten für dieses Gebäude.“
+# 
+# " als wenn der Betrieb weiterarbeitete" - mag vielleicht grammatikalisch richtig sein ("weiterarbeitet")
+# 
+# 
+# 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
 msgid ""
@@ -1009,20 +1030,21 @@ msgstr ""
 "\n"
 "Da das Kontor nur begrenzt viel Platz hat, um Güter aufzubewahren, werden "
 "Güter nicht mehr von Euren Betrieben in ein Lager transportiert, sobald der "
-"Bestand voll ist. Wenn also kein Siedler vor kurzem sein Zelt ausbauen "
+"Bestand voll ist. Falls also kein Siedler vor kurzem sein Zelt ausbauen "
 "wollte, befindet sich wahrscheinlich eine Menge Bretter im Lager und Euer "
 "Holzfällerlager liegt brach.\n"
-"Diese Situation kann mit zwei Maßnahmen verbessern, die wir uns nun "
+"Diese Situation kann durch zwei Maßnahmen verbessert werden, die wir uns nun "
 "anschauen wollen.\n"
 "\n"
 "Alle Betriebe bieten die Möglichkeit, gar nicht zu arbeiten. Das hört sich "
 "vielleicht merkwürdig an, aber klickt einmal auf das Zahnrad, welches sich "
-"zum Beispiel in der Übersicht des Holzfällerlagers findet.\n"
-"Wenn dieser 'Stillgelegt'-Modus aktiviert ist, werden die laufenden Kosten "
+"zum Beispiel in der Übersicht des Holzfällerlagers befindet.\n"
+"Falls dieser 'Stillgelegt'-Modus aktiviert ist, werden die laufenden Kosten "
 "für dieses Gebäude sinken. Sie werden vielleicht nicht immer auf null "
 "sinken, aber sie sind dennoch geringer, als wenn der Betrieb "
 "weiterarbeitete."
 
+# 8.	„Produktion pausieren“-Modus – nicht „stillgelegt“ - "stillgelegt" kommt im Spiel nicht vor
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
 msgid ""
@@ -1042,11 +1064,11 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
-"Ihr könnt somit Geld sparen, wenn Ihr einen Betrieb vorübergehend nicht "
+"Ihr könnt somit Geld sparen, falls Ihr einen Betrieb vorübergehend nicht "
 "benötigt, ihn aber auch nicht abreißen möchtet.\n"
 "\n"
 "Eine andere Lösung ist das Gebäude der Stufe I, welches wir bis jetzt noch "
-"nicht erwähnt haben: das Lagerzelt.\n"
+"nicht erwähnt haben: Das Lagerzelt.\n"
 "\n"
 "Dieses Gebäude hat zwei Zwecke. Es\n"
 "* bietet mehr Platz für Eure Güter und\n"
@@ -1070,6 +1092,9 @@ msgstr "Errichtet ein Lager (im Tab 'Stufe I') an einem sinnvollen Bauplatz."
 msgid "NEW TASK: BUILD A WEAVER"
 msgstr "NEUE AUFGABE: WEBER"
 
+# "Ihr benötigt immer noch einen Weber" - „immer noch“ weglassen
+# 
+# "Es gibt zwei mögliche Orte, an dem Ihr …“
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
 msgid ""
@@ -1089,13 +1114,13 @@ msgstr ""
 "Ihr benötigt immer noch einen Weber, um aus der nun produzierten Wolle Stoff "
 "herzustellen.\n"
 "\n"
-"Es gibt zwei Möglichkeiten, ihn zu bauen: entweder nahe der Farm oder in der "
+"Es gibt zwei Möglichkeiten, ihn zu bauen: Entweder nahe der Farm oder in der "
 "Nähe eines Lagers bzw. des Kontors.\n"
 "\n"
 "In beiden Fällen solltet Ihr eine Straßenverbindung sicherstellen.\n"
 "\n"
 "Der Weber wird auch ohne eine Straße bei der Farm Wolle abholen und Stoff "
-"produzieren, wenn sie nah genug gelegen ist.\n"
+"produzieren, falls sie nah genug gelegen ist.\n"
 "\n"
 "AUFGABE: Errichtet einen Weber, der Wolle abholen kann."
 
@@ -1148,6 +1173,8 @@ msgstr ""
 msgid "NO TASKS LEFT"
 msgstr "KEINE AUFGABEN ÜBRIG"
 
+# "Es gibt jetzt nichts mehr zu tun"
+# Gibt es nichts mehr zu tun? Doch, „Auf zu neuen Unknown Horizons“, Szenario, Multiplayer, Krieg/War
 #. This is the text body of a logbook page.
 #: po/tutorial.py:124
 msgid ""
@@ -1169,7 +1196,7 @@ msgid ""
 msgstr ""
 "Es gibt jetzt nichts mehr zu tun.\n"
 "\n"
-"Wenn Ihr Vorschläge habt, was wir verbessern, hinzufügen oder auslassen "
+"Falls Ihr Vorschläge habt, was wir verbessern, hinzufügen oder auslassen "
 "könnten bzw. sollten:\n"
 "\n"
 "www.unknown-horizons.org\n"
