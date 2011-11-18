@@ -1,8 +1,8 @@
 classpackage: ship
-classtype: PirateShip
-id: 1000005
-classname: Pirate
-radius: 5
+classtype: TradeShip
+id: 1000006
+classname: Trader
+radius: 8
 velocity: 12.0
 components:
 - AmbientSoundComponent
@@ -11,9 +11,7 @@ components:
       PositiveTotalNumSlotStorage:
          limit: 120
          slotnum: 4
-- PirateShipNameComponent
-- HealthComponent:
-   maxhealth: 250
+- ShipNameComponent
 
 actionsets:
-   - as_pirate0
+   - as_trader0

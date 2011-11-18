@@ -1,0 +1,15 @@
+classpackage: collectors
+classtype: AnimalCollector
+id: 1000007
+classname: AnimalCarriage
+radius: 5
+velocity: 12.0
+components:
+- AmbientSoundComponent
+- StorageComponent:
+   inventory:
+      PositiveSizedSlotStorage:
+         limit: 8
+
+actionsets:
+   - as_herder0

@@ -1,0 +1,15 @@
+classpackage: collectors
+classtype: BuildingCollector
+id: 1000002
+classname: BuildingCollector
+radius: 5
+velocity: 12.0
+components:
+- AmbientSoundComponent
+- StorageComponent:
+   inventory:
+      PositiveSizedSlotStorage:
+         limit: 8
+
+actionsets:
+   - as_carrier0

@@ -1,0 +1,15 @@
+classpackage: collectors
+classtype: StorageCollector
+id: 1000008
+classname: StorageCollector
+radius: 5
+velocity: 12.0
+components:
+- AmbientSoundComponent
+- StorageComponent:
+   inventory:
+      PositiveSizedSlotStorage:
+         limit: 8
+
+actionsets:
+   - as_carrier
