@@ -129,8 +129,9 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		#NOTE weapons
 		self.add_weapon_to_storage(WEAPONS.DAGGER)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
-		#TODO make system for loading unit name
-		self.name = 'Bomber Man'
+		names = self.session.db("SELECT name FROM groundunitnames")
+		# We need unicode strings as the name is displayed on screen.
+		self.name = map(lambda x: unicode(x[0], 'utf-8'), names)
 
 	def go(self, x, y):
 		super(FightingGroundUnit, self).go(x, y)
