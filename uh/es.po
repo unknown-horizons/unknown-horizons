@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-17 21:21+0200\n"
+"PO-Revision-Date: 2011-11-18 02:40+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1768,7 +1768,7 @@ msgstr "neutral"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:329
 msgid "Build fields"
-msgstr ""
+msgstr "Construir campos"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:339
@@ -1784,7 +1784,7 @@ msgstr "Recursos más necesitados:"
 #: horizons/i18n/guitranslations.py:350 horizons/i18n/guitranslations.py:381
 #: horizons/i18n/guitranslations.py:410
 msgid "Residents per house"
-msgstr ""
+msgstr "Residentes por casa"
 
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py:352 horizons/i18n/guitranslations.py:383
@@ -1886,12 +1886,12 @@ msgstr "5 residentes"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:430
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Actualización imposible:"
 
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:432
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "¡Este el el máximo incremento actual!"
 
 #. (text of widget: collector_utilisation_label) Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)
 #: horizons/i18n/guitranslations.py:445
@@ -1907,7 +1907,7 @@ msgstr "Nombre:"
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:456
 msgid "Selling"
-msgstr ""
+msgstr "Venta"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:461 horizons/i18n/guitranslations.py:516
@@ -1917,7 +1917,7 @@ msgstr "Armas:"
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:475
 msgid "capacity utilization"
-msgstr ""
+msgstr "Utilización de la capacidad"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:482
@@ -2011,17 +2011,17 @@ msgstr "Comenzar producción"
 #. (tooltip of widget: delete_bo) Trade route entry
 #: horizons/i18n/guitranslations.py:585
 msgid "Delete entry"
-msgstr ""
+msgstr "Borrar entrada"
 
 #. (tooltip of widget: move_down) Trade route entry
 #: horizons/i18n/guitranslations.py:587
 msgid "Move down"
-msgstr ""
+msgstr "Mover hacia abajo"
 
 #. (tooltip of widget: move_up) Trade route entry
 #: horizons/i18n/guitranslations.py:589
 msgid "Move up"
-msgstr ""
+msgstr "Mover hacia arriba"
 
 #. (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
 #: horizons/i18n/guitranslations.py:594
@@ -2227,7 +2227,7 @@ msgstr "{F3} = Muestra la lista de asentamientos"
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:718
 msgid "{F4} = Show ship list"
-msgstr ""
+msgstr "{F4} = Muestra la lista de barcos"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:720
@@ -2242,7 +2242,7 @@ msgstr "{F9} = Cargado rápido"
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:724
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "Equipos de desarrollo de FIFE y Unknown Horizons"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:726
@@ -2357,7 +2357,7 @@ msgstr "Cargando..."
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:783
 msgid "Attention please!"
-msgstr ""
+msgstr "¡Atención por favor!"
 
 #. (text of widget: credits)
 #: horizons/i18n/guitranslations.py:785
@@ -2503,7 +2503,7 @@ msgstr "Refrescar lista de partidas activas"
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:865
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Intervalo de autoguardados en minutos:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:867
@@ -2533,7 +2533,7 @@ msgstr "Idioma"
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:879
 msgid "Network"
-msgstr ""
+msgstr "Red de trabajo"
 
 #. (text of widget: headline_saving)
 #: horizons/i18n/guitranslations.py:881
@@ -2553,7 +2553,7 @@ msgstr "Seleccionar idioma:"
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:887
 msgid "Enable minimap rotation:"
-msgstr ""
+msgstr "Habilitar la rotación del minimapa:"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:889
@@ -2563,12 +2563,12 @@ msgstr "Volumen de la música:"
 #. (text of widget: network_port_hint_lbl)
 #: horizons/i18n/guitranslations.py:891
 msgid "(0 means default)"
-msgstr ""
+msgstr "(0 significa por defecto)"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:893
 msgid "Network port:"
-msgstr ""
+msgstr "Puerto de la red de trabajo:"
 
 #. (text of widget: number_of_autosaves_label)
 #: horizons/i18n/guitranslations.py:895
@@ -2598,7 +2598,7 @@ msgstr "Habilitar sonido:"
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:905
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Construcción sin interrupciones:"
 
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:907
@@ -2641,12 +2641,12 @@ msgstr "Comenzar partida"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:928
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:930
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Borrar partida guardada seleccionada"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:935
@@ -2676,7 +2676,7 @@ msgstr "Mapa aleatorio"
 #. (text of widget: scenario)
 #: horizons/i18n/guitranslations.py:947
 msgid "Scenario"
-msgstr ""
+msgstr "Escenario"
 
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
@@ -2689,27 +2689,27 @@ msgstr "Elige un mapa para jugar:"
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:966
 msgid "Map settings:"
-msgstr ""
+msgstr "Configuración del mapa:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:976
 msgid "AI players:"
-msgstr ""
+msgstr "Jugadores IA:"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:981
 msgid "Game settings:"
-msgstr ""
+msgstr "Configuración del juego:"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:983
 msgid "Free Trader"
-msgstr ""
+msgstr "Libre comercio"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:985
 msgid "Pirates"
-msgstr ""
+msgstr "Piratas"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:990
@@ -2731,15 +2731,17 @@ msgstr ""
 
 #: horizons/main.py:243
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Fallo al comenzar/cargar el juego"
 
 #: horizons/main.py:244
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "El juego seleccionado no puede comenzar."
 
 #: horizons/main.py:245
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
+"La partida guardada podría estar rota o ha sido guardada con una versión "
+"anterior."
 
 #: horizons/main.py:333
 #, python-format
@@ -2843,10 +2845,13 @@ msgstr "El guardado rápido ha fallado."
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
 msgstr ""
+"Ocurrió un error durante el guardado rápido. Tu partida no ha sido guardada."
 
 #: horizons/spsession.py:124
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"Si este error ocurre otra vez, por favor contacta con el equipo de "
+"desarrollo:"
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
@@ -2859,48 +2864,50 @@ msgstr "Necesitas guardar antes de cargar."
 #. usually invalid filename
 #: horizons/spsession.py:159
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Fallo al crear el archivo guardado"
 
 #: horizons/spsession.py:160
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Ha habido un error al crear la partida guardada."
 
 #: horizons/spsession.py:161
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Esto suele significar que el nombre de la partida guardada contiene "
+"caracteres especiales no soportados."
 
 #: horizons/spsession.py:167
 msgid "File used by another process"
-msgstr ""
+msgstr "Archivo usado por otro proceso"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "El archivo de la partida guardada está siendo usado por otro programa."
 
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to %s"
-msgstr ""
+msgstr "Ruta comercial: ir a %s"
 
 #: horizons/world/units/ship.py:273
 #, python-format
 msgid "Trade route: waiting at %s"
-msgstr ""
+msgstr "Ruta comercial: esperando a %s"
 
 #: horizons/world/units/ship.py:468
 #, python-format
 msgid "Going to %s"
-msgstr ""
+msgstr "Ir a %s"
 
 #: horizons/world/units/ship.py:469
 #, python-format
 msgid "Going to %(x)d, %(y)d"
-msgstr ""
+msgstr "Yendo a %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:473
-#, python-format
+#, python-format, fuzzy
 msgid "Idle at %s"
-msgstr ""
+msgstr "Inactivo en %s"
 
 #: horizons/world/units/ship.py:474
 #, python-format
@@ -2910,7 +2917,7 @@ msgstr ""
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr ""
+msgstr "Atacar "
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -2976,18 +2983,22 @@ msgstr "Carga el último guardado rápido."
 #: run_uh.py:108
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Establece la semilla utilizada para generar árboles, peces y otros recursos "
+"naturales."
 
 #: run_uh.py:111
 msgid "AI options"
-msgstr ""
+msgstr "Opciones IA"
 
 #: run_uh.py:113
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."
 msgstr ""
+"Utiliza <ai_players> jugadores con IA (excluye el posible híbrido humano-IA; "
+"por defecto es 1)."
 
 #: run_uh.py:115
 msgid "Makes the human player a human-AI hybrid (for development only)."
-msgstr ""
+msgstr "Haz del jugador humano un híbrido humano-IA (sólo para desarrollo)."
 
 #: run_uh.py:117
 msgid "Shows AI plans as highlights (for development only)."
@@ -3047,15 +3058,21 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Error: No se pueden encontrar las librerías requeridas"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Lamentamos informarle de que una librería que es requerida por Unknown "
+"Horizons, falta y necesita ser instalada."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Instalación para los usuarios de windows está disponible en el siguiente "
+"sitio \"http://pyyaml.org/wiki/PyYAML\", para los usuarios de Linux deben "
+"encontrarlo en su sistema de gestión de paquetes bajo el nombre \"pyyaml\" o "
+"\"python-yaml\"."
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
