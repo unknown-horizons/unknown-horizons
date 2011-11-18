@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-18 02:40+0200\n"
+"PO-Revision-Date: 2011-11-05 04:28+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1485,11 +1485,14 @@ msgstr "Inicio del juego"
 #: horizons/i18n/guitranslations.py:157
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr ""
+"¡Necesitas encontrar un asentamiento antes de poder construir edificios!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:159
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
+"Selecciona tu barco y arriba a la costa mediante un click en el botón "
+"derecho del ratón."
 
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:161
