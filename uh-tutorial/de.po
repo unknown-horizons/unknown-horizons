@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-10-05 13:55+0200\n"
+"PO-Revision-Date: 2011-10-31 21:54+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -25,7 +25,7 @@ msgstr "Einführung"
 #. scenario author
 #: po/tutorial.py:4
 msgid "The UH team"
-msgstr "Das UH Team"
+msgstr "Das UH-Team"
 
 #. scenario description
 #: po/tutorial.py:6
