@@ -1,14 +1,11 @@
 classpackage: ship
-classtype: Ship
+classtype: PirateShip
 id: 1000005
-classname: Huker
+classname: Pirate
 radius: 5
+velocity: 12.0
 components:
-- AmbientSoundComponent:
-   soundfiles:
-   - content/foo.wav
-   - content/foo2.wav
-   - content/foo3.wav
+- AmbientSoundComponent
 - StorageComponent:
    inventory:
       PositiveTotalNumSlotStorage:
@@ -16,7 +13,7 @@ components:
          slotnum: 4
 - ShipNameComponent
 - HealthComponent:
-   maxhealth: 150
+   maxhealth: 250
 
 actionsets:
-   - as_huker0
+   - as_pirate0

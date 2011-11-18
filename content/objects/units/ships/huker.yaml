@@ -1,0 +1,23 @@
+classpackage: ship
+classtype: Ship
+id: 1000001
+classname: Huker
+radius: 5
+velocity: 12.0
+components:
+- AmbientSoundComponent:
+   soundfiles:
+   - content/foo.wav
+   - content/foo2.wav
+   - content/foo3.wav
+- StorageComponent:
+   inventory:
+      PositiveTotalNumSlotStorage:
+         limit: 120
+         slotnum: 4
+- ShipNameComponent
+- HealthComponent:
+   maxhealth: 150
+
+actionsets:
+   - as_huker0

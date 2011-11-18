@@ -34,7 +34,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 class TestGenericStorage(TestCase):
 
 	def test_units(self):
-		components = ComponentHolder.read_component_file("content/objects/units.yaml")
+		components = ComponentHolder.read_component_file("content/objects/units/ships/huker.yaml")
 		self.assertTrue(isinstance(components[0], AmbientSoundComponent))
 		self.assertTrue(isinstance(components[1], StorageComponent))
 		self.assertTrue(isinstance(components[2], ShipNameComponent))

@@ -1,0 +1,19 @@
+classpackage: fightingship
+classtype: FightingShip
+id: 1000021
+classname: Frigate
+radius: 5
+velocity: 12.0
+components:
+- AmbientSoundComponent
+- StorageComponent:
+   inventory:
+      PositiveTotalNumSlotStorage:
+         limit: 120
+         slotnum: 4
+- ShipNameComponent
+- HealthComponent:
+   maxhealth: 200
+
+actionsets:
+   - as_frigate0
