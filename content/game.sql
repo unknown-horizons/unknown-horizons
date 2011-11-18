@@ -521,6 +521,13 @@ INSERT INTO "citynames" VALUES('Recife',0,1,'en');
 INSERT INTO "citynames" VALUES('St. Barthelemy',0,1,'en');
 INSERT INTO "citynames" VALUES('Bogwaters',1,0,'en');
 INSERT INTO "citynames" VALUES('Port la Riqueza',1,0,'en');
+CREATE TABLE groundunitnames (
+    "name" TEXT NOT NULL,
+    "locale" TEXT NOT NULL DEFAULT ('en')
+);
+INSERT INTO "groundunitnames" VALUES('Robin Hood','en');
+INSERT INTO "groundunitnames" VALUES('Klaus Stoertebeker','de');
+INSERT INTO "groundunitnames" VALUES('Blackbeard','en');
 CREATE TABLE shipnames (
     "name" TEXT NOT NULL,
     "for_player" BOOL NOT NULL DEFAULT ('0'),
