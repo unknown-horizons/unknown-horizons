@@ -104,14 +104,14 @@ events:
         \ Aby zapewni\u0107 sta\u0142y dost\u0119p do \u017Cywno\u015Bci nie mo\u017C\
         esz oprze\u0107 si\u0119 tylko na my\u015Bliwym."]
     type: logbook_w
-  - arguments: ['', "Rybak wymaga dost\u0119pu do otwartych w\xF3d a tak\u017C\u0119\
-        \ do \u0142awicy ryb w zasi\u0119gu.\n\nPo usytuowaniu chatki rybaka na wyb\u017C\
-        erzu wybuduje on sobie \u0142\xF3d\u017A ryback\u0105 i zacznie \u0142owi\u0107\
-        \ ryby.\n\nJest to bardzo dobre \u017Ar\xF3d\u0142o \u017Cywno\u015Bci kt\xF3\
-        re wystarcza na bardzo d\u0142ugo.\n\nTaka ma\u0142a osada jak twoja mo\u017C\
-        e wykorzysta\u0107 oba sposoby pozyskiwania \u017Cywno\u015Bci i zbalansowa\u0107\
-        \ je odpowiednio zgodnie z ich wadami i zaletami.\n\nNie zapomnij po\u0142\
-        \u0105czy\u0107 ich drog\u0105 ze swoim portem!"]
+  - arguments: ['', "Rybak wymaga dost\u0119pu do otwartych w\xF3d oraz do \u0142\
+        awicy ryb w zasi\u0119gu.\n\nPo usytuowaniu chatki rybaka na wybrze\u017C\
+        u wybuduje on sobie \u0142\xF3d\u017A ryback\u0105 i zacznie \u0142owi\u0107\
+        \ ryby.\n\nJest to bardzo wydajne \u017Ar\xF3d\u0142o \u017Cywno\u015Bci.\n\
+        \nTaka ma\u0142a osada jak twoja mo\u017Ce wykorzysta\u0107 oba sposoby pozyskiwania\
+        \ \u017Cywno\u015Bci i zbalansowa\u0107 je odpowiednio zgodnie z ich wadami\
+        \ i zaletami.\n\nNie zapomnij po\u0142\u0105czy\u0107 ich drog\u0105 ze swoim\
+        \ portem!"]
     type: logbook
   - arguments: ["Wybuduj chat\u0119 my\u015Bliwego i rybaka. Po\u0142\u0105cz je drog\u0105\
         \ z portem."]
