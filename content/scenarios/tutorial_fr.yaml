@@ -263,8 +263,8 @@ events:
         .\n\nMISSION: Achetez autant d'outils que n\xE9cessaire pour en avoir 30 en\
         \ stock!"]
     type: logbook
-  - arguments: [!!python/unicode 'Atteignez un stock d''au moins 30 outils.', !!python/unicode 'Note
-        that this might take a while.']
+  - arguments: [!!python/unicode 'Atteignez un stock d''au moins 30 outils.', !!python/unicode 'Notez
+        que ceci peut durer un moment.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var

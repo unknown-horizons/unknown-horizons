@@ -5,37 +5,37 @@
 # translation files from pootle.
 
 author: "UH-ryhm\xE4"
-description: "Tutoriaali:\nRakenna ensimm\xE4inen asutuskeskuksesi ja opi kuinka pelata!\n"
-difficulty: !!python/unicode 'Tutoriaali'
+description: "Aloitusopas:\nRakenna ensimm\xE4inen siirtokuntasi ja opi, miten t\xE4\
+  t\xE4 peli\xE4 pelataan!\n"
+difficulty: !!python/unicode 'Opastava'
 events:
 - actions:
   - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
         accessible for other ships like the Free Trader.']
     type: message
-  - arguments: [!!python/unicode 'Tervetuloa peliin Unknown Horizons!', "T\xE4m\xE4\
-        \ on kapteenin lokikirja, johon kaikki t\xE4rke\xE4 tieto kirjataan. Lyhyt\
-        \ huomautus jokaisesta teht\xE4v\xE4st\xE4 tarjotaan kuvaruudun vasempaan\
-        \ reunaan.\n\nJos olet kiinnostunut tarkemmista kuvauksista, niin lokikirjastasi\
-        \ toivottavasti l\xF6ytyy kaikki tarvitsemasi.\n\nKun olet sulkenut t\xE4\
-        m\xE4n lokikirjan, voit avata sen uudelleen 'Kapteenin lokikirja'-kuvakkeesta\
-        \ oikeasta yl\xE4kulmasta (minimap:n alapuolelta, sinet\xF6idyn dokumentin\
-        \ ja sulan kera).\n\nJos keksit ehdotuksia paremmille sanamuodoille, aiheita,\
-        \ joista haluaisit kuulla tai t\xF6rm\xE4\xE4t vikatilanteeseen: Pyyd\xE4\
-        mme kertomaan meille, niin me yrit\xE4mme parantaa tutoriaalia!\n\nVieraile\
-        \ sivustolla www.unknown-horizons.org l\xF6yt\xE4\xE4ksesi ohjeet, kuinka\
-        \ ottaa yhteytt\xE4 kehitysryhm\xE4\xE4n!\n\nJa nyt, aloitetaanpas varsinainen\
-        \ peli."]
+  - arguments: [!!python/unicode 'Tervetuloa Unknown Horizonsiin!', "T\xE4m\xE4 on\
+        \ kapteenin lokikirja, johon kaikki t\xE4rke\xE4 tieto kirjataan. Jokaisesta\
+        \ teht\xE4v\xE4st\xE4 ilmoitetaan vasemmassa reunassa.\n\nJos olet kiinnostunut\
+        \ tarkemmista kuvauksista, niin lokikirjasta pit\xE4isi l\xF6yty\xE4 kaikki\
+        \ tarvitsemasi.\n\nKun olet sulkenut t\xE4m\xE4n lokikirjan, voit avata sen\
+        \ uudelleen \"Kapteenin lokikirja\"-kuvakkeesta oikeasta yl\xE4kulmasta (pikkukartan\
+        \ alapuolelta, kuvakkeessa on sinet\xF6ity kirje ja sulka).\n\nJos keksit\
+        \ ehdotuksia paremmalle kieliopille, haluaisit kuulla jostain lis\xE4\xE4\
+        \ tai t\xF6rm\xE4\xE4t vikatilanteeseen, kerrothan siit\xE4 meille, niin me\
+        \ yrit\xE4mme parantaa t\xE4t\xE4 peliopasta!\n\nSivustolta www.unknown-horizons.org\
+        \ l\xF6yd\xE4t kehitysryhm\xE4n yhteystiedot.\n\nJa nyt viimeinkin aloitetaanpas\
+        \ itse peli!"]
     type: logbook_w
-  - arguments: [!!python/unicode 'ASETU SAARELLE', "Liikuttaaksesi laivaasi, valitse\
-        \ se hiiren vasemmalla painonapilla ja oikealla sijainti, johon haluat sen\
+  - arguments: ["UUSI TEHT\xC4V\xC4: ASETU SAARELLE", "Liikuta laivaasi valitsemalla\
+        \ se hiiren vasemmalla painikkeella ja oikealla sijainti, johon haluat sen\
         \ menev\xE4n.\n\nKun olet rannikon l\xE4hell\xE4, ankkurimainen n\xE4pp\xE4\
-        in yleiskatsaus-v\xE4lilehdell\xE4 tulee aktiiviseksi.\n\nT\xE4m\xE4 kertoo,\
-        \ ett\xE4 voit rakentaa sivutoimiston siihen painamalla n\xE4pp\xE4int\xE4\
-        \ (nimelt\xE4\xE4n 'Rakenna asutuskeskus').\n\nNyt kuva tulevasta rakennuksestasi\
-        \ seuraa hiiresi osoitinta.\n\nVoit rakentaa mihin tahansa, miss\xE4 kuvalla\
-        \ ei ole punertavaa v\xE4ris\xE4vy\xE4.\nPaina hiirell\xE4 mihin haluat rakentaa\
-        \ ensimm\xE4isen rakennuksesi.\n\nTEHT\xC4V\xC4: Rakenna sivutoimisto rannikolle.",
-      2]
+        in laivan Yleiskatsaus-v\xE4lilehdell\xE4 muuttuu aktiiviseksi.\n\nT\xE4m\xE4\
+        \ kertoo, ett\xE4 voit rakentaa sivutoimiston siihen painamalla n\xE4pp\xE4\
+        int\xE4 (nimelt\xE4\xE4n \"Rakenna asutuskeskus\").\n\nSeuraavaksi kuva tulevasta\
+        \ rakennuksestasi seuraa hiiresi osoitinta.\n\nVoit rakentaa mihin tahansa,\
+        \ kunhan rakennuksen kuvalla ei ole punertavaa v\xE4ris\xE4vy\xE4.\nKun olet\
+        \ l\xF6yt\xE4nyt sopivan kohdan, napsauta hiiren vasenta painiketta.\n\nTEHT\xC4\
+        V\xC4: Rakenna sivutoimisto rannikolle.", 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -43,9 +43,9 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'RAKENNA PUUNHAKKAAJA', !!python/unicode 'The construction
-        material on your ship got unloaded automatically. You can now construct some
-        basic buildings.
+  - arguments: ["UUSI TEHT\xC4V\xC4: RAKENNA PUUNHAKKAAJA", !!python/unicode 'The
+        construction material on your ship got unloaded automatically. You can now
+        construct some basic buildings.
 
 
         We will start with building a lumberjack.

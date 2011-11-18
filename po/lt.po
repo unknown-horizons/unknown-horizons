@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-08-01 15:41+0200\n"
+"PO-Revision-Date: 2011-11-11 03:11+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
@@ -61,9 +61,8 @@ msgstr ""
 # 83%
 #. This is a database entry: the name of a unit.
 #: database files sql
-#, fuzzy
 msgid "Cattle"
-msgstr "galvijai"
+msgstr "Galvijai"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -810,15 +809,14 @@ msgstr "Klaida:"
 
 # 94%
 #: horizons/gui/gui.py:426
-#, fuzzy
 msgid "Unknown savedate"
-msgstr "Nežinomi įrašo duomenys\n"
+msgstr "Nežinomi įrašo duomenys"
 
 # 91%
 #: horizons/gui/gui.py:428
-#, python-format, fuzzy
+#, python-format, 
 msgid "Saved at %s"
-msgstr "Įrašyta į %s\n"
+msgstr "Įrašyta į %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -912,9 +910,8 @@ msgstr ""
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:117
-#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr "Kažkas negerai su tinklu: "
+msgstr "Kažkas negerai su tinklu:"
 
 #: horizons/gui/modules/multiplayermenu.py:133
 msgid "Version differs!"
@@ -1000,7 +997,7 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:237
 #, fuzzy
 msgid "Resource density:"
-msgstr "Indėlių resursai"
+msgstr "Indėlių resursai:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -1016,11 +1013,8 @@ msgstr ""
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Prašome apie tai pranešti žaidimo autoriui."
+msgstr "Prašome apie tai pranešti žaidimo autoriui."
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -1433,9 +1427,8 @@ msgstr "Paleisti galvijai: Didina galvijų skaičių. Reikalingas ūkis."
 # 76%
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:134
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Anglies deginimas: Sudegina daug lentų."
+msgstr "Anglies deginimas: Sudegina daug lentų. Gamina lentos."
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:136
@@ -1806,18 +1799,16 @@ msgstr ""
 #. (text of widget: resident_1)
 #: horizons/i18n/guitranslations.py:356 horizons/i18n/guitranslations.py:387
 #: horizons/i18n/guitranslations.py:416
-#, fuzzy
 msgid "1 resident"
-msgstr "Gyventojai"
+msgstr "1 gyventojai"
 
 # 88%
 # 81%
 #. (text of widget: resident_2)
 #: horizons/i18n/guitranslations.py:358 horizons/i18n/guitranslations.py:389
 #: horizons/i18n/guitranslations.py:418
-#, fuzzy
 msgid "2 residents"
-msgstr "Gyventojai"
+msgstr "2 gyventojai"
 
 # 88%
 # 81%
@@ -1825,7 +1816,7 @@ msgstr "Gyventojai"
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:420
 #, fuzzy
 msgid "3 residents"
-msgstr "Gyventojai"
+msgstr "3 gyventojai"
 
 # 88%
 #. (text of widget: residents)
@@ -1880,17 +1871,15 @@ msgstr "Mokesčio tarifas"
 # 81%
 #. (text of widget: resident_4)
 #: horizons/i18n/guitranslations.py:422
-#, fuzzy
 msgid "4 residents"
-msgstr "Gyventojai"
+msgstr "4 gyventojai"
 
 # 88%
 # 81%
 #. (text of widget: resident_5)
 #: horizons/i18n/guitranslations.py:424
-#, fuzzy
 msgid "5 residents"
-msgstr "Gyventojai"
+msgstr "5 gyventojai"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:430
@@ -2112,9 +2101,8 @@ msgstr ""
 #. (text of widget: ship_name)
 #: horizons/i18n/guitranslations.py:642 horizons/i18n/guitranslations.py:663
 #: horizons/i18n/guitranslations.py:674
-#, fuzzy
 msgid "Name"
-msgstr "Pavadinimas:"
+msgstr "Pavadinimas"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:644
@@ -2134,9 +2122,8 @@ msgstr ""
 # 87%
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:657
-#, fuzzy
 msgid "Balance"
-msgstr "Likutis:"
+msgstr "Likutis"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:672
