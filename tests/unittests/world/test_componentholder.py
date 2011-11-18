@@ -43,3 +43,4 @@ class TestGenericStorage(TestCase):
 		self.assertEquals(components[1].inventory.limit, 120)
 		self.assertEquals(components[1].inventory.slotnum, 4)
 		self.assertListEqual(components[0].soundfiles, [ 'content/foo.wav', 'content/foo2.wav', 'content/foo3.wav'])
+		self.assertFalse(True)

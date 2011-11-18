@@ -29,6 +29,7 @@ from horizons.world.component.namedcomponent import NamedComponent, SettlementNa
 from horizons.world.tradepost import TradePostComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.units import UnitClass
 
 class ComponentHolder(object):
 	"""
@@ -58,6 +59,7 @@ class ComponentHolder(object):
 
 	def load(self, db, worldid):
 		super(ComponentHolder, self).load(db, worldid)
+		components = ComponentHolder.read_component_file("content/objects/units.yaml")
 		self.components = {}
 		for name in self.components:
 			print name
@@ -121,9 +123,7 @@ class ComponentHolder(object):
 		for index, entry in enumerate(components):
 			print index, entry
 
-
-		del result['components']
-		for key, value in result.iteritems():
-			print key, value
+		unit = UnitClass(None, id=result['id'], class_package=result['classpackage'], class_type=result['classtype'], radius=result['radius'], classname=result['classname'], action_sets=result['actionsets'])
+		print unit
 
 		return components
