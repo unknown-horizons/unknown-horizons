@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-05 04:28+0200\n"
+"PO-Revision-Date: 2011-11-17 20:51+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1894,7 +1894,7 @@ msgstr "Actualización imposible:"
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:432
 msgid "This is the current maximum increment!"
-msgstr "¡Este el el máximo incremento actual!"
+msgstr "¡Este es el máximo incremento actual!"
 
 #. (text of widget: collector_utilisation_label) Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)
 #: horizons/i18n/guitranslations.py:445
