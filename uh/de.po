@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-01 21:14+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-11-18 10:03+0200\n"
+"Last-Translator: djot <djot@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -436,10 +436,11 @@ msgstr "Münzen"
 msgid "community"
 msgstr "Gemeinschaft"
 
+# cyan is blaugrün
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "cyan"
-msgstr "türkis"
+msgstr "cyan"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
