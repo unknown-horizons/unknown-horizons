@@ -19,12 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.scheduler import Scheduler
+from fife import fife
 
 import horizons.main
+from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
 from horizons.gui.tabs import BuildRelatedTab
 from horizons.world.componentholder import ComponentHolder
+from horizons.world.status import StatusIcon
 
 class ConcretObject(ComponentHolder, WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -59,6 +61,11 @@ class ConcretObject(ComponentHolder, WorldObject):
 		if len(related_building) > 0 and BuildRelatedTab not in self.__class__.tabs:
 			self.__class__.tabs += (BuildRelatedTab,)
 
+		self._status_icon_key = "status_"+str(self.worldid)
+		self._status_icon_renderer = self.session.view.renderer['GenericRenderer']
+		Scheduler().add_new_object(self._update_status, self, run_in=1, loops=-1,
+		                           loop_interval = Scheduler().get_ticks(2))
+
 	@property
 	def fife_instance(self):
 		return self._instance
@@ -92,6 +99,7 @@ class ConcretObject(ComponentHolder, WorldObject):
 		return (action in ActionSetLoader.get_action_sets()[self._action_set_id])
 
 	def remove(self):
+		self._remove_status_icon()
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
@@ -123,5 +131,33 @@ class ConcretObject(ComponentHolder, WorldObject):
 					tabwidget._show_tab(num)
 
 			self.session.ingame_gui.show_menu( tabwidget )
+
+	def get_status_icons(self):
+		"""Returns a list of StatusIcon instances"""
+		return []
+
+	def _update_status(self):
+		"""Handles status icon bar"""
+		self._remove_status_icon()
+
+		status_list = self.get_status_icons()
+
+		if status_list:
+			status = max(status_list, key=StatusIcon.get_sorting_key())
+
+			# draw
+			#rel = fife.Point(30, -50) # TODO
+			rel = fife.Point(0, 0) # TODO
+			node = fife.RendererNode(self.fife_instance, rel)
+			self._status_icon_renderer.addAnimation(
+			  self._status_icon_key, node,
+			  horizons.main.fife.animationloader.loadResource( status.icon )
+			)
+
+	def _remove_status_icon(self):
+		self._status_icon_renderer.removeAll(self._status_icon_key)
+
+
+
 
 
