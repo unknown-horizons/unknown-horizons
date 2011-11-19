@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-11-18 09:33+0200\n"
-"Last-Translator: djot <djot@hotmail.com>\n"
+"PO-Revision-Date: 2011-11-19 13:10+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,6 @@ msgstr ""
 "verbessern.\n"
 "Unter www.unknown-horizons.org könnt Ihr das Team kontaktieren oder Hilfe "
 "erhalten.\n"
-"\n"
 "Und nun lasst uns das eigentliche Spiel beginnen."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -501,7 +500,6 @@ msgstr ""
 "\n"
 "Er beliefert Siedlungen mit Gütern, die Ihr momentan noch nicht produzieren "
 "könnt.\n"
-"\n"
 "Außerdem wird er Produktionsüberschüsse einkaufen, aber im Allgemeinen ist "
 "das Verbrauchen (mehr Zelte errichten) einträglicher als der Verkauf.\n"
 "\n"
@@ -682,14 +680,9 @@ msgstr ""
 "aufspannt.\n"
 "\n"
 "Dienstleistungsgebäude wie dieses benötigen einen Zugang zur Straße, "
-"ansonsten können es die Einwohner nicht erreichen.\n"
-"\n"
-"In späteren Stufen stehen verbesserte Versionen dieser Gebäude zur "
-"Verfügung. In diesem Fall wird das 'kleinere' Gebäude nicht benötigt, da die "
-"'große' Version auch die Bedürfnisse der Einwohner niedrigerer Stufen "
-"befriedigt."
+"ansonsten können es die Einwohner nicht erreichen."
 
-# zu Hause oder Zuhause, aber nicht zuhause
+# zuhause ist erlaubt und wesentlich schoener als eine sprachvergewaltigende trennung. cf. http://www.duden.de/rechtschreibung/zu_Hause
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
 msgid ""
@@ -712,7 +705,7 @@ msgstr ""
 "müssen also regelmäßig ihren Vorrat davon auffüllen.\n"
 "\n"
 "Dazu benötigen sie Zugang zu einem Gebäude, das Religion produziert (dem "
-"Pavillon) und werden dann regelmäßig Religion dort abholen und Zuhause "
+"Pavillon) und werden dann regelmäßig Religion dort abholen und zuhause "
 "verbrauchen.\n"
 "\n"
 "Es ist insbesondere NICHT ausreichend, dass das Gebäude nur in einem "
@@ -934,13 +927,13 @@ msgstr ""
 "* Weide: Schafe leben dort und produzieren Schafwolle\n"
 "* Kartoffelfeld: erzeugt Kartoffeln, die als Nahrung gehandelt werden\n"
 "* Zuckerfeld: erzeugt Zucker, welcher zum Brennen von Alkohol und für die "
-"Zuckerbäckerei (später) verwendet wird.\n"
+"Zuckerbäckerei verwendet wird.\n"
 "\n"
 "Momentan benötigt Ihr nur Weiden. Falls die Nahrung knapp wird, vielleicht "
 "aufgrund einer großen Stadt, könnt Ihr auch ein paar Kartoffeln anbauen.\n"
 "\n"
-"Beachtet, dass für die Abholung der Kartoffeln eine Straßenverbindung zu der "
-"Farm benötigt wird - nicht zu den Feldern."
+"Beachtet, dass Ihr für die Abholung der Kartoffeln eine Straßenverbindung "
+"zur Farm benötigt und nicht zu den Feldern!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:98
@@ -989,23 +982,9 @@ msgstr ""
 msgid "NEW TASK: BUILD STORAGE"
 msgstr "NEUE AUFGABE: LAGER"
 
-# Letzter Absatz teilweise abgeschnitten.
-# zwei "\n" entfernt, letzter Absatz hoffentlich nicht mehr abgeschnitten.
-# 
 # befinde-N- sich wahrscheinlich eine Menge Bretter im Lager (?)
 # 
-# Kann ein Holzfällerlager brach liegen? Nur Felder können brach liegen, oder?
-# 
 # Außerdem sollte man sich mal einigen, ob es nun Holzfäller oder Holzfällerlager heißt
-# 
-# „gar nicht zu arbeiten“ => ändern in einen Satz mit „Produktion pausieren“, da es "stillgelegt" nirgens im Spiel gibt.
-# 
-# Falls dieser 'Stillgelegt'-Modus aktiviert ist, => "sinken die laufenden Kosten für dieses Gebäude.“
-# 
-# " als wenn der Betrieb weiterarbeitete" - mag vielleicht grammatikalisch richtig sein ("weiterarbeitet")
-# 
-# 
-# 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
 msgid ""
@@ -1032,17 +1011,16 @@ msgstr ""
 "Güter nicht mehr von Euren Betrieben in ein Lager transportiert, sobald der "
 "Bestand voll ist. Falls also kein Siedler vor kurzem sein Zelt ausbauen "
 "wollte, befindet sich wahrscheinlich eine Menge Bretter im Lager und Euer "
-"Holzfällerlager liegt brach.\n"
-"Diese Situation kann durch zwei Maßnahmen verbessert werden, die wir uns nun "
+"Holzfäller kann nichts mehr lagern.\n"
+"Diese Situation könnt Ihr durch zwei Maßnahmen verbessern, die wir uns nun "
 "anschauen wollen.\n"
 "\n"
-"Alle Betriebe bieten die Möglichkeit, gar nicht zu arbeiten. Das hört sich "
-"vielleicht merkwürdig an, aber klickt einmal auf das Zahnrad, welches sich "
-"zum Beispiel in der Übersicht des Holzfällerlagers befindet.\n"
-"Falls dieser 'Stillgelegt'-Modus aktiviert ist, werden die laufenden Kosten "
-"für dieses Gebäude sinken. Sie werden vielleicht nicht immer auf null "
-"sinken, aber sie sind dennoch geringer, als wenn der Betrieb "
-"weiterarbeitete."
+"Alle Betriebe bieten die Möglichkeit, ihre Produktion zu pausieren. Klickt "
+"einmal auf das Zahnrad, welches sich in der Übersicht des Holzfällerlagers "
+"befindet.\n"
+"Ist dieser 'Stillgelegt'-Modus aktiv, sinken die laufenden Kosten eines "
+"Gebäudes. Sie werden vielleicht nicht immer auf null sinken, aber sie sind "
+"geringer als bei einem weiterhin produzierenden Betrieb."
 
 # 8.	„Produktion pausieren“-Modus – nicht „stillgelegt“ - "stillgelegt" kommt im Spiel nicht vor
 #. This is the text body of a logbook page.
@@ -1095,6 +1073,8 @@ msgstr "NEUE AUFGABE: WEBER"
 # "Ihr benötigt immer noch einen Weber" - „immer noch“ weglassen
 # 
 # "Es gibt zwei mögliche Orte, an dem Ihr …“
+# 
+# das 'entweder' nach dem kolon bitte klein belassen, beginnende kapitalen sind in einer ellipse ohne praedikat nicht erlaubt.
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
 msgid ""
@@ -1111,10 +1091,9 @@ msgid ""
 "\n"
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
-"Ihr benötigt immer noch einen Weber, um aus der nun produzierten Wolle Stoff "
-"herzustellen.\n"
+"Ihr benötigt nun noch einen Weber, um aus der Wolle Stoff herzustellen.\n"
 "\n"
-"Es gibt zwei Möglichkeiten, ihn zu bauen: Entweder nahe der Farm oder in der "
+"Es gibt zwei Möglichkeiten, ihn zu bauen: entweder nahe der Farm oder in der "
 "Nähe eines Lagers bzw. des Kontors.\n"
 "\n"
 "In beiden Fällen solltet Ihr eine Straßenverbindung sicherstellen.\n"
@@ -1135,9 +1114,8 @@ msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
 msgstr ""
-"Beherbergt insgesamt 50 oder mehr Einwohner in Eurer Stadt, um dieses "
-"Tutorial zu beenden.\n"
-"Ihr benötigt außerdem eine positive Bilanz."
+"Beherbergt mehr als 50 Einwohner, um das Tutorial zu beenden. Ihr benötigt "
+"außerdem eine positive Bilanz."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:118
@@ -1194,15 +1172,14 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
-"Es gibt jetzt nichts mehr zu tun.\n"
+"Glückwunsch, Ihr habt das Tutorial erfolgreich abgeschlossen und seid bereit "
+"für neue Abenteuer. Setzt Segel im Einzel- und Mehrspielermodus von Unknown "
+"Horizons!\n"
 "\n"
 "Falls Ihr Vorschläge habt, was wir verbessern, hinzufügen oder auslassen "
 "könnten bzw. sollten:\n"
-"\n"
 "www.unknown-horizons.org\n"
-"\n"
 "#unknown-horizons @ irc.freenode.net\n"
-"\n"
 "team@unknown-horizons.org\n"
 "\n"
 "Unsere Foren stehen Euch ebenfalls offen!\n"
