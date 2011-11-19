@@ -23,6 +23,13 @@ import operator
 
 """Classes used for StatusIcon.
 
+Code design note:
+The conditions for the statuses could also have been placed here,
+for more modularity and flexiblity.
+This way, we'd need to touch the objects' privates sometimes though,
+and we'd lose some direct interaction flexiblity. Therefore, the objects
+now contain all the logic, this module just covers the data.
+
 Priority:
 [   0-1000[: low
 [1000-2000[: medium
@@ -37,7 +44,6 @@ class StatusIcon(object):
 		self.priority = priority
 		self.icon = icon
 
-
 	@staticmethod
 	def get_sorting_key():
 		"""Use like this:
@@ -47,9 +53,12 @@ class StatusIcon(object):
 		"""
 		return operator.attrgetter("priority")
 
+	def __str__(self):
+		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
 
 
 class SettlerUnhappyStatus(StatusIcon):
+	# threshold is the inhabitants decrease level
 	def __init__(self):
 		super(SettlerUnhappyStatus, self).__init__( 1700, "as_buoy0-idle-45" )
 
@@ -60,4 +69,17 @@ class InventoryFullStatus(StatusIcon):
 		"""
 		super(InventoryFullStatus, self).__init__( 1200, "as_buoy0-idle-45" )
 		self.reslist = reslist
+
+
+class ProductivityLowStatus(StatusIcon):
+	"""Terminology: productiviy = capacity utilisation"""
+	threshold = 0.25 # display when productivity lower than this
+	def __init__(self):
+		super(ProductivityLowStatus, self).__init__( 400, "as_buoy0-idle-45" )
+
+
+class DecommissionedStatus(StatusIcon):
+	"""Terminology: productiviy = capacity utilisation"""
+	def __init__(self):
+		super(DecommissionedStatus, self).__init__( 800, "as_buoy0-idle-45" )
 

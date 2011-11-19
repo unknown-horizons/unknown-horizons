@@ -32,6 +32,7 @@ from horizons.scheduler import Scheduler
 from horizons.gui.tabs import ProductionOverviewTab
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
+from horizons.world.status import ProductivityLowStatus, DecommissionedStatus
 
 class Producer(ResourceHandler):
 	"""Class for objects, that produce something.
@@ -57,6 +58,8 @@ class Producer(ResourceHandler):
 	def capacity_utilisation(self):
 		total = 0
 		productions = self.get_productions()
+		if not productions:
+			return 0 # catch the border case, else there'll be a div by 0
 		for production in productions:
 			state_history = production.get_state_history_times(False)
 			total += state_history[PRODUCTION.STATES.producing.index]
@@ -119,6 +122,14 @@ class Producer(ResourceHandler):
 			self.act("work", repeating=True)
 		elif state is PRODUCTION.STATES.inventory_full:
 			self.act("idle_full", repeating=True)
+
+	def get_status_icons(self):
+		l = super(Producer, self).get_status_icons()
+		if self.capacity_utilisation < ProductivityLowStatus.threshold:
+			l.append( ProductivityLowStatus() )
+		if not self.is_active():
+			l.append( DecommissionedStatus() )
+		return l
 
 @metaChangeListenerDecorator("building_production_finished")
 class ProducerBuilding(Producer, BuildingResourceHandler):

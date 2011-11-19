@@ -310,10 +310,10 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		pass
 
 	def get_status_icons(self):
-		unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
-		return super(Settler, self).get_status_icons() +  \
-		       [ SettlerUnhappyStatus() ]  if unhappy else []
-
+		l = super(Settler, self).get_status_icons()
+		if self.happiness < self.__get_data("happiness_inhabitants_decrease_limit"):
+			l.append(SettlerUnhappyStatus())
+		return l
 
 	def __str__(self):
 		try:

@@ -23,7 +23,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
 from horizons.constants import PRODUCTION
-from horizons.world.status import InventoryFullStatus
+from horizons.world.status import InventoryFullStatus, DecommissionedStatus
 
 
 class ResourceHandler(StorageHolder):
@@ -270,13 +270,17 @@ class ResourceHandler(StorageHolder):
 		return self._productions.values() + self._inactive_productions.values()
 
 	def get_status_icons(self):
+		l = super(ResourceHandler, self).get_status_icons()
+
 		inventory_full_res = []
 		for res in self.get_produced_resources():
 			if (self.inventory.get_free_space_for(res) == 0):
 				inventory_full_res.append(res)
 
-		return super(ResourceHandler, self).get_status_icons() + \
-		       [ InventoryFullStatus(inventory_full_res)  ] if inventory_full_res else []
+		if inventory_full_res:
+			l.append( InventoryFullStatus(inventory_full_res) )
+
+		return l
 
 	## PROTECTED METHODS
 	def _get_production(self, prod_line_id):

@@ -63,8 +63,18 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 		self._status_icon_key = "status_"+str(self.worldid)
 		self._status_icon_renderer = self.session.view.renderer['GenericRenderer']
-		Scheduler().add_new_object(self._update_status, self, run_in=1, loops=-1,
-		                           loop_interval = Scheduler().get_ticks(2))
+
+		if not self.id in self.session.db.get_status_icon_exclusions():
+			# update now
+			Scheduler().add_new_object(self._update_status, self, run_in=0)
+
+			# update loop
+			interval = Scheduler().get_ticks(2)
+			# use session random to keep it synchronised in mp games,
+			# to be safe in case get_status_icon calls anything that changes anything
+			run_in = self.session.random.randint(1, interval) # don't update all at once
+			Scheduler().add_new_object(self._update_status, self, run_in=run_in, loops=-1,
+				                         loop_interval = interval)
 
 	@property
 	def fife_instance(self):
@@ -73,7 +83,7 @@ class ConcretObject(ComponentHolder, WorldObject):
 	def save(self, db):
 		super(ConcretObject, self).save(db)
 		db("INSERT INTO concrete_object(id, action_runtime) VALUES(?, ?)", self.worldid, \
-		   self._instance.getActionRuntime())
+			 self._instance.getActionRuntime())
 
 	def load(self, db, worldid):
 		super(ConcretObject, self).load(db, worldid)
@@ -144,10 +154,10 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 		if status_list:
 			status = max(status_list, key=StatusIcon.get_sorting_key())
+			print self, status
 
 			# draw
-			#rel = fife.Point(30, -50) # TODO
-			rel = fife.Point(0, 0) # TODO
+			rel = fife.Point(0, 0) # TODO: find suitable place within instance
 			node = fife.RendererNode(self.fife_instance, rel)
 			self._status_icon_renderer.addAnimation(
 			  self._status_icon_key, node,
@@ -156,7 +166,6 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 	def _remove_status_icon(self):
 		self._status_icon_renderer.removeAll(self._status_icon_key)
-
 
 
 

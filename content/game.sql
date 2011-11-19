@@ -814,3 +814,9 @@ INSERT INTO "settler_level" VALUES(2,'settler',10,5,'house');
 INSERT INTO "settler_level" VALUES(3,'citizen',15,8,'stone house');
 INSERT INTO "settler_level" VALUES(4,'merchant',21,13,'estate');
 INSERT INTO "settler_level" VALUES(5,'aristocrat',28,21,'manor');
+CREATE TABLE status_icon_exclusions (
+    "object_type" INT NOT NULL DEFAULT (''));
+INSERT INTO "status_icon_exclusions" VALUES(17);
+INSERT INTO "status_icon_exclusions" VALUES(33);
+INSERT INTO "status_icon_exclusions" VALUES(1000013);
+

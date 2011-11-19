@@ -244,10 +244,15 @@ class UhDbAccessor(DbReader):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
 
+	@decorators.cachedmethod
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
 		return frozenset( i[0] for i in self("SELECT type FROM translucent_buildings") )
+
+	@decorators.cachedmethod
+	def get_status_icon_exclusions(self):
+		return frozenset( i[0] for i in self("SELECT object_type FROM status_icon_exclusions") )
 
 
 	# Weapon table
