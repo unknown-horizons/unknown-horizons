@@ -469,7 +469,7 @@ INSERT INTO "citynames" VALUES('Xoxochetun',0,1,'en');
 INSERT INTO "citynames" VALUES('Port Royal',1,0,'en');
 INSERT INTO "citynames" VALUES('Tortuga',1,0,'en');
 INSERT INTO "citynames" VALUES('Porta Bravo',0,1,'en');
-INSERT INTO "citynames" VALUES('Porta dei Sol',0,1,'en');
+INSERT INTO "citynames" VALUES('Porta del Sol',0,1,'en');
 INSERT INTO "citynames" VALUES('Porta Atlantica',0,1,'en');
 INSERT INTO "citynames" VALUES('Porta Lino',0,1,'en');
 INSERT INTO "citynames" VALUES('Blackport',1,0,'en');
