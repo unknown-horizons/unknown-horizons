@@ -201,7 +201,6 @@ class Minimap(object):
 
 	def highlight(self, tup):
 		"""Try to get the users attention on a certain point of the minimap"""
-		print 'high', tup
 		tup = self._world_coord_to_minimap_coord( tup )
 		if self._get_rotation_setting():
 			tup = self._get_rotated_coords( tup )
