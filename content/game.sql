@@ -17,6 +17,7 @@ CREATE TABLE `ground_class` (`ground` INTEGER NOT NULL, `class` TEXT NOT NULL);
 INSERT INTO "ground_class" VALUES(1,'coastline');
 INSERT INTO "ground_class" VALUES(3,'constructible');
 INSERT INTO "ground_class" VALUES(4,'constructible');
+INSERT INTO "ground_class" VALUES(6,'constructible');
 INSERT INTO "ground_class" VALUES(5,'coastline');
 INSERT INTO "ground_class" VALUES(7,'constructible');
 CREATE TABLE `building` (`size_x` INTEGER NOT NULL, `size_y` INTEGER NOT NULL, `radius` INTEGER, `name` TEXT, `class_type` TEXT NOT NULL, `class_package` TEXT NOT NULL, `health` INTEGER NOT NULL, `inhabitants_start` INTEGER NOT NULL DEFAULT 0, `inhabitants_max` INTEGER NOT NULL DEFAULT 0, "id" INTEGER AUTO_INCREMENT, "button_name" TEXT DEFAULT NULL, "settler_level" INTEGER NOT NULL  DEFAULT 0, "tooltip_text" TEXT DEFAULT NULL);
