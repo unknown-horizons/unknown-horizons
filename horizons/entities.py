@@ -47,7 +47,7 @@ class Entities(object):
 			return
 		from world.ground import GroundClass
 		cls.grounds = {}
-		for (ground_id,) in db("SELECT id FROM ground") :
+		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
 			assert ground_id not in cls.grounds
 			cls.grounds[ground_id] = GroundClass(db, ground_id)
 		cls.grounds[-1] = GroundClass(db, -1)

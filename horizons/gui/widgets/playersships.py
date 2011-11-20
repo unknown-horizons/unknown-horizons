@@ -49,13 +49,17 @@ class PlayersShips(StatsWidget):
 		for ship in self.session.world.ships:
 			if ship.owner is player and ship.is_selectable:
 				sequence_number += 1
-				name_label = self._add_line_to_gui(ship, sequence_number)
+				name_label, status_label, status_position = self._add_line_to_gui(ship, sequence_number)
 				events['%s/mouseClicked' % name_label.name] = Callback(self._go_to_ship, ship)
+				events['%s/mouseClicked' % status_label.name] = Callback(self._go_to_point, status_position)
 		self._gui.mapEvents(events)
 		self._content_vbox.adaptLayout()
 
 	def _go_to_ship(self, ship):
-		self.session.view.center(ship.position.x, ship.position.y)
+		self._go_to_point(ship.position)
+
+	def _go_to_point(self, point):
+		self.session.view.center(point.x, point.y)
 
 	def _add_line_to_gui(self, ship, sequence_number):
 		sequence_number_label = widgets.Label(name = 'sequence_number_%d' % ship.worldid)
@@ -90,7 +94,7 @@ class PlayersShips(StatsWidget):
 		health.min_size = health.max_size = (70, 20)
 
 		status = widgets.Label(name = 'status_%d' % ship.worldid)
-		status.text = ship.get_status()
+		status.text, status_position = ship.get_status()
 		status.min_size = status.max_size = (320, 20)
 
 		hbox = widgets.HBox()
@@ -101,6 +105,6 @@ class PlayersShips(StatsWidget):
 		hbox.addChild(health)
 		hbox.addChild(status)
 		self._content_vbox.addChild(hbox)
-		return ship_name
+		return (ship_name, status, status_position)
 
 decorators.bind_all(PlayersShips)

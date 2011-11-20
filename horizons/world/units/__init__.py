@@ -81,14 +81,14 @@ class UnitClass(type):
 		cls._object.setPather(horizons.main.fife.engine.getModel().getPather('RoutePather'))
 		cls._object.setBlocking(False)
 		cls._object.setStatic(False)
-		action_sets = ActionSetLoader.get_action_sets()
+		action_sets = ActionSetLoader.get_sets()
 		for action_set_id in cls.action_sets:
 			for action_id in action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in action_sets[action_set_id][action_id].iterkeys():
 					anim = horizons.main.fife.animationloader.loadResource( \
-						str(action_set_id)+"-"+str(action_id)+"-"+ \
+						str(action_set_id)+"+"+str(action_id)+"+"+ \
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())

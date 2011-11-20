@@ -70,7 +70,7 @@ class TileSetLoader(object):
 		#			for key3, value3 in value2.iteritems():
 		#				print "File:", key3, "length:", value3
 	@classmethod
-	def get_tile_sets(cls):
+	def get_sets(cls):
 		if not cls._loaded:
 			cls.load()
 		return cls.tile_sets

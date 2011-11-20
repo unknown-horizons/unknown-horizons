@@ -55,7 +55,12 @@ class Player(ComponentHolder, WorldObject):
 		assert isinstance(color, Color)
 		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
 		self.add_component(StorageComponent(inventory = PositiveStorage()))
-		self.name = name
+		try:
+			self.name = unicode(name)
+		except UnicodeDecodeError:
+			# WORKAROUND: this line should be the only unicode conversion here.
+			# however, if unicode() gets a parameter, it will fail if the string is already unicode.
+			self.name = unicode(name, errors='ignore')
 		self.color = color
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel

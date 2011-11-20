@@ -51,6 +51,16 @@ class BoatBuilderEvaluator(BuildingEvaluator):
 		if distance_to_collector is None:
 			return None # require boat builders to have a collector building in range
 
+		# TODO: it would be better to do a check like this once per game because it is never going to change
+		# make sure the boat builder has access to the sea
+		near_sea = False
+		world = area_builder.session.world
+		for coords in builder.position.get_radius_coordinates(2):
+			if coords in world.water_body and world.water_body[coords] == world.sea_number:
+				near_sea = True
+		if not near_sea:
+			return None
+
 		personality = area_builder.owner.personality_manager.get('BoatBuilderEvaluator')
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 		value = float(Entities.buildings[BUILDINGS.BOATBUILDER_CLASS].radius) / distance_to_collector + alignment * personality.alignment_importance

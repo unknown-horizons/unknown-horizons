@@ -23,7 +23,7 @@ from fife import fife
 
 import horizons.main
 
-from horizons.util import ActionSetLoader
+from horizons.util import ActionSetLoader, TileSetLoader
 
 class SQLiteAnimationLoader(object):
 	"""Loads animations from a SQLite database.
@@ -44,15 +44,23 @@ class SQLiteAnimationLoader(object):
 		#TODO: complete documentation
 		"""
 		commands = location.split(':')
-		ident = commands.pop(0)
-		actionset, action, rotation = ident.split('-')
+		id = commands.pop(0)
+		actionset, action, rotation = id.split('+')
 		commands = zip(commands[0::2], commands[1::2])
 
-		ani = fife.Animation.createAnimation()
+		# Set the correct loader based on the actionset
+		loader = None
+		if actionset.startswith("ts_"):
+			loader = TileSetLoader
+		elif actionset.startswith("as_"):
+			loader = ActionSetLoader
+		else:
+			assert False, "Invalid set being loaded: " + actionset
 
+		ani = fife.Animation.createAnimation()
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
-			frame_end = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]
+		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
+			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
 			img = horizons.main.fife.imagemanager.load(file)
 			for command, arg in commands:
 				if command == 'shift':

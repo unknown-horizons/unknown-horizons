@@ -285,13 +285,13 @@ class StaticPather(object):
 	"""Misc pathing routines not depending on units.
 	Does not use AbstractPather Interface"""
 	@classmethod
-	def get_direct_path(cls, island, source, destination):
+	def get_direct_path(cls, island, source, destination, punish_turns=True):
 		"""Returns shortest direct path.
 		Useful for building roads.
 		@param island: island to search path on
 		@param source, destination: Point or anything supported by FindPath
 		@return: list of tuples or None in case no path is found"""
-		return FindPath()(source, destination, island.path_nodes.nodes)
+		return FindPath()(source, destination, island.path_nodes.nodes, punish_turns=punish_turns)
 
 	@classmethod
 	def get_path_on_roads(cls, island, source, destination):

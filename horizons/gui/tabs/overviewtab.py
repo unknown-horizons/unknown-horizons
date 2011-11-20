@@ -378,7 +378,7 @@ class SettlerOverviewTab(OverviewTab):
 		                  self.instance.settlement, self.instance.level)
 
 		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_settings[self.instance.level])
-		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
+		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
@@ -413,7 +413,7 @@ class SignalFireOverviewTab(OverviewTab):
 			widget = 'overview_signalfire.xml',
 			instance = instance
 		)
-		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
+		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image

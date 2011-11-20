@@ -31,6 +31,7 @@ from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
 from horizons.gui.tabs import FarmProductionOverviewTab
+from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -123,7 +124,11 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
 	Also provides collectors for buildings that consume resources (tavern)."""
-	pass
+	def get_status_icons(self):
+		banned_classes = InventoryFullStatus, ProductivityLowStatus
+		# inventories are full most of the time, don't show it
+		return [ i for i in super(SettlerServiceProvider, self).get_status_icons() if \
+		         not any( isinstance(i, klass) for klass in banned_classes ) ]
 
 class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):

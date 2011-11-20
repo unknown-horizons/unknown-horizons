@@ -28,6 +28,8 @@ import random
 import logging
 import copy
 import itertools
+import shutil
+import os.path
 
 from collections import deque
 
@@ -36,12 +38,13 @@ from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
 from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
 from horizons.util.color import Color
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL, PATHS
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.util import decorators, BuildingIndexer
+from horizons.util.dbreader import DbReader
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
@@ -185,7 +188,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		#add water
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
-		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER))]
+		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
 		#default_grounds = Entities.grounds[90]
 
 		# extra world size that is added so that he player can't see the "black void"
@@ -802,6 +805,23 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			bullet.save(db)
 		self.diplomacy.save(db)
 		Weapon.save_attacks(db)
+
+	def save_map(self, path, prefix):
+		map_file = os.path.join(path, prefix + '.sqlite')
+		shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, map_file)
+		db = DbReader(map_file)
+		db('BEGIN')
+		for island in self.islands:
+			island_name = '%s_island_%d_%d.sqlite' % (prefix, island.origin.x, island.origin.y)
+			island_db_path = os.path.join(path, island_name)
+			if os.path.exists(island_db_path):
+				os.unlink(island_db_path) # the process relies on having an empty file
+			db('INSERT INTO island (x, y, file) VALUES(?, ?, ?)', island.origin.x, island.origin.y, 'content/islands/' + island_name)
+			island_db = DbReader(island_db_path)
+			island.save_map(island_db)
+			island_db.close()
+		db('COMMIT')
+		db.close()
 
 	def get_checkup_hash(self):
 		dict = {
