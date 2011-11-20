@@ -267,9 +267,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			if self.pirate:
 				self.pirate.load_ship_states(savegame_db)
 
+			# load the AI stuff only when we have AI players
+			if any(isinstance(player, AIPlayer) for player in self.players):
+				AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+
 			# load the AI players
 			# this has to be done here because otherwise the ships and other objects won't exist
-			AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 			for player in self.players:
 				if not isinstance(player, HumanPlayer):
 					player.finish_loading(savegame_db)
@@ -388,7 +391,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				ship.inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = point.to_tuple()
-		AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+
+		# load the AI stuff only when we have AI players
+		if any(isinstance(player, AIPlayer) for player in self.players):
+			AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 
 		# add a pirate ship
 		if pirate_enabled:
