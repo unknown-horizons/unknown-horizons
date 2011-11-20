@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-08-01 15:38+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-11-21 01:18+0200\n"
+"Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgid "branch office"
 msgstr "afdelingskontor"
 
 msgid "your"
-msgstr ""
+msgstr "din"
 
 msgid "farm"
 msgstr "gård"
@@ -53,7 +53,7 @@ msgid "settlement"
 msgstr "afregning"
 
 msgid "start"
-msgstr ""
+msgstr "start"
 
 msgid "click"
 msgstr "klik"
@@ -72,7 +72,7 @@ msgid "production"
 msgstr "produktion"
 
 msgid "tab"
-msgstr "Fanen"
+msgstr "fanen"
 
 msgid "unknown"
 msgstr "ukendt"
@@ -103,13 +103,13 @@ msgstr "største torv"
 
 #, fuzzy
 msgid "trail"
-msgstr "trail"
+msgstr "spor"
 
 msgid "boards"
 msgstr "bestyrelser"
 
 msgid "buy"
-msgstr "Køb"
+msgstr "køb"
 
 msgid "coast"
 msgstr "kyst"
@@ -124,13 +124,13 @@ msgid "free"
 msgstr "gratis"
 
 msgid "log"
-msgstr ""
+msgstr "logbog"
 
 msgid "lumberjack"
 msgstr "skovhugger"
 
 msgid "sell"
-msgstr "sælger"
+msgstr "sælg"
 
 msgid "storage"
 msgstr "opbevaring"
@@ -157,7 +157,7 @@ msgid "reach"
 msgstr "rækkevidde"
 
 msgid "signal"
-msgstr ""
+msgstr "signal"
 
 msgid "signal fire"
 msgstr "signal brand"
@@ -172,19 +172,19 @@ msgid "wool"
 msgstr "uld"
 
 msgid "balance"
-msgstr ""
+msgstr "balance"
 
 msgid "choose"
 msgstr "vælge"
 
 msgid "fisher"
-msgstr ""
+msgstr "fisker"
 
 msgid "found"
 msgstr "fundet"
 
 msgid "pavilion"
-msgstr ""
+msgstr "pavilion"
 
 msgid "potato"
 msgstr "kartoffel"
@@ -214,6 +214,7 @@ msgstr "hus"
 msgid "inventory"
 msgstr "opgørelse"
 
+#, fuzzy
 msgid "level"
 msgstr ""
 
@@ -224,7 +225,7 @@ msgstr "flytte"
 # 80%
 #, fuzzy
 msgid "moved"
-msgstr "flytte"
+msgstr "flyttet"
 
 msgid "produce"
 msgstr "producere"
@@ -250,7 +251,7 @@ msgid "active"
 msgstr "aktive"
 
 msgid "add"
-msgstr "Tilføj"
+msgstr "tilføj"
 
 msgid "build menu"
 msgstr "opbygge menuen"
@@ -266,8 +267,9 @@ msgid "continue"
 msgstr "fortsætte"
 
 msgid "decrease"
-msgstr "Faldet"
+msgstr "faldet"
 
+#, fuzzy
 msgid "free trader"
 msgstr ""
 
@@ -282,6 +284,7 @@ msgstr "orlov"
 msgid "market"
 msgstr "marked"
 
+#, fuzzy
 msgid "partner"
 msgstr ""
 
@@ -295,13 +298,13 @@ msgid "settler"
 msgstr "bosætter"
 
 msgid "citizen"
-msgstr ""
+msgstr "borger"
 
 msgid "merchant"
-msgstr ""
+msgstr "handelsmand"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokrat"
 
 #
 msgid "refresh"
@@ -315,10 +318,10 @@ msgid "run"
 msgstr "køre"
 
 msgid "slot"
-msgstr ""
+msgstr "slot"
 
 msgid "stop"
-msgstr ""
+msgstr "stop"
 
 msgid "team"
 msgstr ""

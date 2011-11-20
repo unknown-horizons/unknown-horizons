@@ -7,20 +7,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-11-21 01:38+0200\n"
+"Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} og ${player2} er nu ${status}"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -35,12 +35,12 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr ""
+msgstr "Vildsvin"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Boat Builder"
-msgstr ""
+msgstr "Båd Bygger"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -85,7 +85,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Deer"
-msgstr ""
+msgstr "Hjort"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -100,7 +100,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Farm"
-msgstr ""
+msgstr "Gård"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -110,7 +110,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Fisher"
-msgstr ""
+msgstr "Fisker"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -222,7 +222,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Sheep"
-msgstr ""
+msgstr "Får"
 
 #. This is a database entry: the name of a building.
 #: database files sql
