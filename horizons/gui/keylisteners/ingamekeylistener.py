@@ -72,6 +72,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.coordinates_tooltip.toggle()
 		elif keystr == 'x':
 			self.session.toggle_destroy_tool()
+		elif keystr == 'r':
+			self.session.ingame_gui.toggle_road_tool()
 		elif keystr == '+' or keystr == '=':
 			self.session.speed_up()
 		elif keystr == '-':
