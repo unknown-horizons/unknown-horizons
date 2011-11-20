@@ -1,8 +1,8 @@
-classpackage: collectors
-classtype: StorageCollector
-id: 1000008
-classname: StorageCollector
-radius: 5
+classpackage: animal
+classtype: FarmAnimal
+id: 1000013
+classname: Sheep
+radius: 3
 velocity: 12.0
 components:
 - AmbientSoundComponent
@@ -12,4 +12,4 @@ components:
          limit: 8
 
 actionsets:
-   - as_carrier0
+   - as_sheep0
