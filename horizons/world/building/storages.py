@@ -28,8 +28,9 @@ from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab,
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.production import SettlerServiceProvider
 
-class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandler, \
+class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
 	Inherited eg. by branch office, storage tent.
@@ -72,7 +73,7 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		# settlement branch office setting is done at the settlement for loading
 
 
-class MainSquare(ProducerBuilding, StorageBuilding):
+class MainSquare(SettlerServiceProvider, StorageBuilding):
 	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
 
 	def _load_provided_resources(self):

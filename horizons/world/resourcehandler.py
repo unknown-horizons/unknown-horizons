@@ -23,7 +23,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
 from horizons.constants import PRODUCTION
-from horizons.world.status import InventoryFullStatus, DecommissionedStatus
+from horizons.world.status import InventoryFullStatus
 
 
 class ResourceHandler(StorageHolder):

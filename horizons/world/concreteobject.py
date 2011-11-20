@@ -154,10 +154,11 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 		if status_list:
 			status = max(status_list, key=StatusIcon.get_sorting_key())
-			print self, status
+			#print self, status
 
 			# draw
-			rel = fife.Point(0, 0) # TODO: find suitable place within instance
+			rel = fife.Point(8, -8) # TODO: find suitable place within instance
+			# NOTE: rel is interpreted as pixel offset on screen
 			node = fife.RendererNode(self.fife_instance, rel)
 			self._status_icon_renderer.addAnimation(
 			  self._status_icon_key, node,
