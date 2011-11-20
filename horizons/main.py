@@ -310,7 +310,7 @@ def _init_gettext(fife):
 
 def _start_dev_map(ai_players, human_ai):
 	# start the development map (it's the first one)
-	first_map = SavegameManager.get_maps()[0][1]
+	first_map = SavegameManager.get_maps()[0][0]
 	load_game(ai_players, human_ai, first_map)
 	return True
 
