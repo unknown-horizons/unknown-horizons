@@ -70,7 +70,7 @@ INSERT INTO "ground_class" VALUES(66,'coastline');
 INSERT INTO "ground_class" VALUES(67,'coastline');
 CREATE TABLE `building` (`size_x` INTEGER NOT NULL, `size_y` INTEGER NOT NULL, `radius` INTEGER, `name` TEXT, `class_type` TEXT NOT NULL, `class_package` TEXT NOT NULL, `health` INTEGER NOT NULL, `inhabitants_start` INTEGER NOT NULL DEFAULT 0, `inhabitants_max` INTEGER NOT NULL DEFAULT 0, "id" INTEGER AUTO_INCREMENT, "button_name" TEXT DEFAULT NULL, "settler_level" INTEGER NOT NULL  DEFAULT 0, "tooltip_text" TEXT DEFAULT NULL);
 INSERT INTO "building" VALUES(3,3,24,'Branch Office','BranchOffice','storages',1000,2,2,1,NULL,0, NULL);
-INSERT INTO "building" VALUES(2,2,17,'Storage Tent','StorageBuilding','storages',1000,1,1,2,'store-1',0,'Extends stock and provides collectors.');
+INSERT INTO "building" VALUES(2,2,17,'Storage Tent','StorageTent','storages',1000,1,1,2,'store-1',0,'Extends stock and provides collectors.');
 INSERT INTO "building" VALUES(2,2,12,'Tent','Settler','settler',1000,1,2,3,'resident-1',0,'Houses your inhabitants.');
 INSERT INTO "building" VALUES(6,6,0,'Main Square','MainSquare','storages',1000,1,1,4,'main_square-1',0,'Supplies citizens with goods.');
 INSERT INTO "building" VALUES(2,2,0,'Pavilion','SettlerServiceProvider','production',1000,1,1,5,'church-1',0,'Fulfills religious needs of sailors.');

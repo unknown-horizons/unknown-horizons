@@ -53,7 +53,6 @@ class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
 		self.inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()
 
-
 	def get_utilisation_history_length(self):
 		return None if not self.get_local_collectors() else self.get_local_collectors()[0].get_utilisation_history_length()
 
@@ -62,6 +61,10 @@ class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
 		if not collectors:
 			return None
 		return sum(collector.get_utilisation() for collector in collectors) / float(len(collectors))
+
+class StorageTent(StorageBuilding, BuildableSingle):
+	"""Can't inherit from Buildable* in StorageBuilding because of mro issues."""
+	pass
 
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
@@ -73,7 +76,7 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		# settlement branch office setting is done at the settlement for loading
 
 
-class MainSquare(SettlerServiceProvider, StorageBuilding):
+class MainSquare(StorageBuilding, SettlerServiceProvider):
 	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
 
 	def _load_provided_resources(self):
