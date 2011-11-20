@@ -207,12 +207,12 @@ class FindPath(object):
 			for neighbor_node in neighbors:
 
 				punishment = 0
+				# punish turns (i.e. check if the line is not continued as expected
 				if self.punish_turns and cur_node_data[0] is not None:
 					# cur = x, y
-					last = cur_node_data[0] # must be non-null, as checked above
-					# check if this neighbor continues the line
-					diff = ( x - last[0], y - last[1] )
-					if neighbor_node[0] != x + diff[0] or neighbor_node[1] != y + diff[1]: # not expected dir
+					last = cur_node_data[0]
+					diff = ( x - last[0], y - last[1] ) # vector from last to cur
+					if neighbor_node[0] != x + diff[0] or neighbor_node[1] != y + diff[1]:
 						punishment += self.__class__.TURN_PENALITY
 
 				if not neighbor_node in to_check:
