@@ -50,8 +50,21 @@ class ComponentHolder(object):
 
 
 	def __init__(self, *args, **kwargs):
-		self.components = {}
 		super(ComponentHolder, self).__init__(*args, **kwargs)
+		self.__load_components()
+
+	def __load_components(self):
+		self.components = {}
+		if hasattr(self, 'component_templates'):
+			for entry in self.component_templates:
+				if isinstance(entry, dict):
+					for key, value in entry.iteritems():
+						component = self.class_mapping[key].get_instance(value)
+						self.components[component.NAME] = component
+				else:
+					component = self.class_mapping[entry].get_instance()
+					self.components[component.NAME] = component
+
 
 	def remove(self):
 		for component in self.components.values():
@@ -60,10 +73,8 @@ class ComponentHolder(object):
 
 	def load(self, db, worldid):
 		super(ComponentHolder, self).load(db, worldid)
-		components = ComponentHolder.read_component_file("content/objects/units.yaml")
-		self.components = {}
+		self.__load_components()
 		for name in self.components:
-			print name
 			self.components[name].load(db, worldid)
 
 	def save(self, db):
@@ -114,12 +125,6 @@ class ComponentHolder(object):
 		result = load(stream, Loader=Loader)
 		print result
 		components = []
-		for entry in result['components']:
-			if isinstance(entry, dict):
-				for key, value in entry.iteritems():
-					components.append(cls.class_mapping[key].get_instance(value))
-			else:
-				components.append(cls.class_mapping[entry].get_instance())
 
 		for index, entry in enumerate(components):
 			print index, entry

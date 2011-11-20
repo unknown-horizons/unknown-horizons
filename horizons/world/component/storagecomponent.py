@@ -3,7 +3,7 @@ import horizons.main
 from horizons.world import storage
 from horizons import constants
 from horizons.world.component import Component
-from horizons.world.storage import PositiveSizedSlotStorage, PositiveSizedNumSlotStorage
+from horizons.world.storage import PositiveSizedSlotStorage, PositiveSizedNumSlotStorage, PositiveStorage
 
 class StorageComponent(Component):
 	"""The StorageComponent class is used as as a parent class for everything that
@@ -20,6 +20,7 @@ class StorageComponent(Component):
 	NAME = 'storagecomponent'
 
 	storage_mapping = {
+	    'PositiveStorage': PositiveStorage,
 	    'PositiveSizedSlotStorage': PositiveSizedSlotStorage,
 	    'PositiveTotalNumSlotStorage': PositiveSizedNumSlotStorage
 	    }
@@ -77,5 +78,4 @@ class StorageComponent(Component):
 		for key, value in arguments['inventory'].iteritems():
 			storage = cls.storage_mapping[key]
 			inventory = storage(**value)
-		arguments['inventory'] = inventory
-		return cls(**arguments)
+		return cls(inventory=inventory)

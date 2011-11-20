@@ -34,6 +34,7 @@ class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
+	component_templates = ({'StorageComponent': {'inventory': {'PositiveStorage': {}}}},)
 
 	def __init__(self, session, worldid, name, color, difficulty_level = None, inventory = None):
 		"""

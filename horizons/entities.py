@@ -20,6 +20,11 @@
 # ###################################################
 
 import logging
+import fnmatch
+import os
+
+from yaml import load, dump
+from yaml import SafeLoader as Loader
 
 class Entities(object):
 	"""Class that stores all the special classes for buildings, grounds etc.
@@ -71,7 +76,12 @@ class Entities(object):
 			cls.log.debug("Entities: units already loaded")
 			return
 		cls.units = {}
+
 		from world.units import UnitClass
-		for (unit_id,) in db("SELECT id FROM unit"):
-			assert unit_id not in cls.units
-			cls.units[unit_id] = UnitClass(db, unit_id)
+		for root, dirnames, filenames in os.walk('content/objects/units'):
+			for filename in fnmatch.filter(filenames, '*.yaml'):
+				stream = file(os.path.join(root, filename), 'r')
+				result = load(stream, Loader=Loader)
+				unit = UnitClass(id=result['id'], class_package=result['classpackage'], class_type=result['classtype'], radius=result['radius'], classname=result['classname'], action_sets=result['actionsets'], components=result['components'])
+				assert unit.id not in cls.units
+				cls.units[unit.id] = unit

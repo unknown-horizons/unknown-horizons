@@ -29,7 +29,7 @@ import horizons.main
 from horizons.util import ActionSetLoader
 
 class UnitClass(type):
-	def __new__(self, db, id, class_package, class_type, radius=None, classname=None, action_sets=[]):
+	def __new__(self, id, class_package, class_type, radius=None, classname=None, action_sets=[], components=[]):
 		"""
 		@param id: unit id
 		"""
@@ -52,7 +52,7 @@ class UnitClass(type):
 			(getattr(globals()[self.class_package], self.class_type),),
 			attributes)
 
-	def __init__(self, db, id, class_package, class_type, radius = None, classname=None, action_sets=[]):
+	def __init__(self, id, class_package, class_type, radius = None, classname=None, action_sets=[], components=[]):
 		"""
 		@param id: unit id.
 		"""
@@ -60,15 +60,12 @@ class UnitClass(type):
 		self.id = id
 		self._object = None
 		self.action_sets = action_sets
-		self._loadObject(db)
+		self._loadObject()
 		self.classname = classname
-		self.radius = int(db("SELECT radius FROM unit WHERE id=?", id)[0][0])
-		soundfiles = db("SELECT file FROM sounds INNER JOIN object_sounds ON \
-			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
-		self.soundfiles = [ i[0] for i in soundfiles ]
-		print "Soundfiles for", id, ":", soundfiles
+		self.radius = radius
+		self.component_templates = components
 
-	def _loadObject(cls, db):
+	def _loadObject(cls):
 		"""Loads the object with all animations.
 		"""
 		cls.log.debug('Loading unit %s', cls.id)

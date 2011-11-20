@@ -338,8 +338,10 @@ class Collector(Unit):
 		assert self.job is not None, '%s job is None in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, self.work_duration)
 		# play working sound
-		if self.soundfiles and self.has_component(AmbientSoundComponent):
-			self.get_component(AmbientSoundComponent).play_ambient(self.soundfiles[0], looping=False)
+		if self.has_component(AmbientSoundComponent):
+			am_comp = self.get_component(AmbientSoundComponent)
+			if len(am_comp.soundfiles) > 0:
+				am_comp.play_ambient(am_comp.soundfiles[0], looping=False)
 		self.state = self.states.working
 
 	def finish_working(self):
@@ -354,7 +356,7 @@ class Collector(Unit):
 		#               target inventory changelistener, and the collector must be in a consistent state then.
 		self.transfer_res_from_target()
 		# stop playing ambient sound if any
-		if self.soundfiles and self.has_component(AmbientSoundComponent):
+		if self.has_component(AmbientSoundComponent):
 			self.get_component(AmbientSoundComponent).stop_sound()
 
 	def transfer_res_from_target(self):
