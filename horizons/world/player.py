@@ -53,7 +53,12 @@ class Player(StorageHolder, WorldObject):
 	def __init(self, name, color, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
 		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
-		self.name = name
+		try:
+			self.name = unicode(name)
+		except UnicodeDecodeError:
+			# WORKAROUND: this line should be the only unicode conversion here.
+			# however, if unicode() gets a parameter, it will fail if the string is already unicode.
+			self.name = unicode(name, errors='ignore')
 		self.color = color
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel

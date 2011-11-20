@@ -34,6 +34,7 @@ from horizons.command.building import Build
 from horizons.util import decorators, Callback
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
+from horizons.world.status import SettlerUnhappyStatus
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -307,6 +308,12 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def level_upgrade(self, lvl):
 		"""Settlers only level up by themselves"""
 		pass
+
+	def get_status_icons(self):
+		l = super(Settler, self).get_status_icons()
+		if self.happiness < self.__get_data("happiness_inhabitants_decrease_limit"):
+			l.append(SettlerUnhappyStatus())
+		return l
 
 	def __str__(self):
 		try:

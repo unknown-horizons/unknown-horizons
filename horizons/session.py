@@ -152,12 +152,13 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
-	def destroy_tool(self):
+	def toggle_destroy_tool(self):
 		"""Initiate the destroy tool"""
-		if not hasattr(self.cursor, 'tear_tool_active') or \
-			 not self.cursor.tear_tool_active:
+		if not hasattr(self.cursor, 'tear_tool_active') or not self.cursor.tear_tool_active:
 			self.cursor = TearingTool(self)
 			self.ingame_gui.hide_menu()
+		else:
+			self.cursor = SelectionTool(self)
 
 	def autosave(self):
 		raise NotImplementedError

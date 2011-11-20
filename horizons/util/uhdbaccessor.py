@@ -253,10 +253,15 @@ class UhDbAccessor(DbReader):
 		db_data = self.cached_query(sql, ground_id)
 		return db_data[randint(0, len(db_data) - 1)] if db_data else None
 
+	@decorators.cachedmethod
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
 		return frozenset( i[0] for i in self("SELECT type FROM translucent_buildings") )
+
+	@decorators.cachedmethod
+	def get_status_icon_exclusions(self):
+		return frozenset( i[0] for i in self("SELECT object_type FROM status_icon_exclusions") )
 
 
 	# Weapon table

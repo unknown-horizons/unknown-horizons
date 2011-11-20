@@ -21,7 +21,7 @@ INSERT INTO "ground_class" VALUES(5,'coastline');
 INSERT INTO "ground_class" VALUES(7,'constructible');
 CREATE TABLE `building` (`size_x` INTEGER NOT NULL, `size_y` INTEGER NOT NULL, `radius` INTEGER, `name` TEXT, `class_type` TEXT NOT NULL, `class_package` TEXT NOT NULL, `health` INTEGER NOT NULL, `inhabitants_start` INTEGER NOT NULL DEFAULT 0, `inhabitants_max` INTEGER NOT NULL DEFAULT 0, "id" INTEGER AUTO_INCREMENT, "button_name" TEXT DEFAULT NULL, "settler_level" INTEGER NOT NULL  DEFAULT 0, "tooltip_text" TEXT DEFAULT NULL);
 INSERT INTO "building" VALUES(3,3,24,'Branch Office','BranchOffice','storages',1000,2,2,1,NULL,0, NULL);
-INSERT INTO "building" VALUES(2,2,17,'Storage Tent','StorageBuilding','storages',1000,1,1,2,'store-1',0,'Extends stock and provides collectors.');
+INSERT INTO "building" VALUES(2,2,17,'Storage Tent','StorageTent','storages',1000,1,1,2,'store-1',0,'Extends stock and provides collectors.');
 INSERT INTO "building" VALUES(2,2,12,'Tent','Settler','settler',1000,1,2,3,'resident-1',0,'Houses your inhabitants.');
 INSERT INTO "building" VALUES(6,6,0,'Main Square','MainSquare','storages',1000,1,1,4,'main_square-1',0,'Supplies citizens with goods.');
 INSERT INTO "building" VALUES(2,2,0,'Pavilion','SettlerServiceProvider','production',1000,1,1,5,'church-1',0,'Fulfills religious needs of sailors.');
@@ -420,7 +420,7 @@ INSERT INTO "citynames" VALUES('Xoxochetun',0,1,'en');
 INSERT INTO "citynames" VALUES('Port Royal',1,0,'en');
 INSERT INTO "citynames" VALUES('Tortuga',1,0,'en');
 INSERT INTO "citynames" VALUES('Porta Bravo',0,1,'en');
-INSERT INTO "citynames" VALUES('Porta dei Sol',0,1,'en');
+INSERT INTO "citynames" VALUES('Porta del Sol',0,1,'en');
 INSERT INTO "citynames" VALUES('Porta Atlantica',0,1,'en');
 INSERT INTO "citynames" VALUES('Porta Lino',0,1,'en');
 INSERT INTO "citynames" VALUES('Blackport',1,0,'en');
@@ -472,6 +472,13 @@ INSERT INTO "citynames" VALUES('Recife',0,1,'en');
 INSERT INTO "citynames" VALUES('St. Barthelemy',0,1,'en');
 INSERT INTO "citynames" VALUES('Bogwaters',1,0,'en');
 INSERT INTO "citynames" VALUES('Port la Riqueza',1,0,'en');
+CREATE TABLE groundunitnames (
+    "name" TEXT NOT NULL,
+    "locale" TEXT NOT NULL DEFAULT ('en')
+);
+INSERT INTO "groundunitnames" VALUES('Robin Hood','en');
+INSERT INTO "groundunitnames" VALUES('Klaus Stoertebeker','de');
+INSERT INTO "groundunitnames" VALUES('Blackbeard','en');
 CREATE TABLE shipnames (
     "name" TEXT NOT NULL,
     "for_player" BOOL NOT NULL DEFAULT ('0'),
@@ -758,3 +765,9 @@ INSERT INTO "settler_level" VALUES(2,'settler',10,5,'house');
 INSERT INTO "settler_level" VALUES(3,'citizen',15,8,'stone house');
 INSERT INTO "settler_level" VALUES(4,'merchant',21,13,'estate');
 INSERT INTO "settler_level" VALUES(5,'aristocrat',28,21,'manor');
+CREATE TABLE status_icon_exclusions (
+    "object_type" INT NOT NULL DEFAULT (''));
+INSERT INTO "status_icon_exclusions" VALUES(17);
+INSERT INTO "status_icon_exclusions" VALUES(33);
+INSERT INTO "status_icon_exclusions" VALUES(1000013);
+

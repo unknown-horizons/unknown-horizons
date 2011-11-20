@@ -23,6 +23,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
 from horizons.constants import PRODUCTION
+from horizons.world.status import InventoryFullStatus
 
 
 class ResourceHandler(StorageHolder):
@@ -88,6 +89,13 @@ class ResourceHandler(StorageHolder):
 		for production in self._productions.itervalues():
 			needed_res.update(production.get_consumed_resources().iterkeys())
 		return list(needed_res)
+
+	def get_produced_resources(self):
+		"""Returns the resources, that are produced by productions, that are currently active"""
+		produced_res = set()
+		for production in self._productions.itervalues():
+			produced_res.update(production.get_produced_res().iterkeys())
+		return list(produced_res)
 
 	def get_stocked_provided_resources(self):
 		"""Returns provided resources, where at least 1 ton is available"""
@@ -260,6 +268,19 @@ class ResourceHandler(StorageHolder):
 	def get_productions(self):
 		"""Returns all productions, inactive and active ones, as list"""
 		return self._productions.values() + self._inactive_productions.values()
+
+	def get_status_icons(self):
+		l = super(ResourceHandler, self).get_status_icons()
+
+		inventory_full_res = []
+		for res in self.get_produced_resources():
+			if (self.inventory.get_free_space_for(res) == 0):
+				inventory_full_res.append(res)
+
+		if inventory_full_res:
+			l.append( InventoryFullStatus(inventory_full_res) )
+
+		return l
 
 	## PROTECTED METHODS
 	def _get_production(self, prod_line_id):
