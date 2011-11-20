@@ -22,8 +22,9 @@
 import horizons.main
 from fife import fife
 
-from horizons.util import Point, Rect
+from horizons.util import Point, Rect, Circle
 from horizons.scheduler import Scheduler
+from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
 
 import math
@@ -39,10 +40,12 @@ class Minimap(object):
 	* Clear up distinction of coords where the minimap image or screen is the origin
 	* Create a minimap tag for pychan
 	** Handle clicks, remove overlay icon
+	* Don't call Scheduler, especially for minimaps that appear through gui interactions
 	"""
 	COLORS = { "island": (137, 117,  87),
 				     "cam":    (  1,   1,   1),
 	           "water" : (198, 188, 165),
+	           "highlight" : (255, 0, 0), # for events
 	           }
 
 	SIZE = (120, 120)
@@ -53,7 +56,8 @@ class Minimap(object):
 	  "background" : "c",
 	  "base" : "d", # islands, etc.
 	  "ship" : "e",
-	  "cam" : "f"
+	  "cam" : "f",
+	  "highlight" : "l"
 	  }
 
 	__next_minimap_id = 0
@@ -77,9 +81,13 @@ class Minimap(object):
 
 		self.minimap_image = _MinimapImage(self, targetrenderer,
 		                                   horizons.main.fife.imagemanager )
+		#import random
+		#ExtScheduler().add_new_object(lambda : self.highlight( (50+random.randint(-50,50), random.randint(-50,50) + 50 )), self, 2, loops=-1)
 
 
 	def end(self):
+		Scheduler().rem_all_classinst_calls(self)
+		ExtScheduler().rem_all_classinst_calls(self)
 		self.world = None
 		self.session = None
 		self.renderer = None
@@ -190,6 +198,45 @@ class Minimap(object):
 			abs_mouse_position = self._get_from_rotated_coords(abs_mouse_position)
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position)
 		self.session.view.center(*map_coord)
+
+	def highlight(self, tup):
+		"""Try to get the users attention on a certain point of the minimap"""
+		print 'high', tup
+		tup = self._world_coord_to_minimap_coord( tup )
+		if self._get_rotation_setting():
+			tup = self._get_rotated_coords( tup )
+		tup = (
+			  tup[0] - self.location.left,
+			  tup[1] - self.location.top
+		)
+
+		# grow the circle from MIN_RAD to MAX_RAD and back with STEPS steps, where the
+		# interval between steps is INTERVAL seconds
+		MIN_RAD = 3 # pixel
+		MAX_RAD = 12 # pixel
+		STEPS = 20
+		INTERVAL = math.pi / 16
+
+		def high(i=0):
+			i += 1
+			render_name = self._get_render_name("highlight")+str(tup)
+			self.minimap_image.set_drawing_enabled()
+			self.minimap_image.rendertarget.removeAll(render_name)
+			if i > STEPS:
+				return
+			part = i # grow bigger
+			if i > STEPS/2: # after the first half
+				part = STEPS-i  # become smaller
+
+			radius = MIN_RAD + int(( float(part) / (STEPS/2) ) * (MAX_RAD - MIN_RAD) )
+
+			for x, y in Circle( Point(*tup), radius=radius ).get_border_coordinates():
+				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), 0,0,0)
+
+			ExtScheduler().add_new_object(lambda : high(i), self, INTERVAL, loops=1)
+
+		high()
+
 
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it
