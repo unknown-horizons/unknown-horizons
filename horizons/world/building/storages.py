@@ -92,6 +92,7 @@ class MainSquare(StorageBuilding, SettlerServiceProvider):
 		self.island.path_nodes.register_road(self)
 
 	def remove(self):
+		super(MainSquare, self).remove()
 		self.island.path_nodes.unregister_road(self)
 
 	def recalculate_orientation(self):
