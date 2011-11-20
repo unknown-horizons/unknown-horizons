@@ -40,7 +40,7 @@ from horizons.entities import Entities
 from horizons.util import WorldObject, NamedObject, LivingObject, livingProperty, SavegameAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
-from horizons.constants import GAME_SPEED
+from horizons.constants import GAME_SPEED, PATHS
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
@@ -152,12 +152,13 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
-	def destroy_tool(self):
+	def toggle_destroy_tool(self):
 		"""Initiate the destroy tool"""
-		if not hasattr(self.cursor, 'tear_tool_active') or \
-			 not self.cursor.tear_tool_active:
+		if not hasattr(self.cursor, 'tear_tool_active') or not self.cursor.tear_tool_active:
 			self.cursor = TearingTool(self)
 			self.ingame_gui.hide_menu()
+		else:
+			self.cursor = SelectionTool(self)
 
 	def autosave(self):
 		raise NotImplementedError
@@ -324,3 +325,9 @@ class Session(LivingObject):
 		@return: True if game is loaded, else False
 		"""
 		return (self.savecounter > 0)
+
+	def save_map(self, prefix):
+		maps_folder = os.path.join(PATHS.USER_DIR, 'maps')
+		if not os.path.exists(maps_folder):
+			os.makedirs(maps_folder)
+		self.world.save_map(maps_folder, prefix)

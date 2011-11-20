@@ -23,7 +23,8 @@ from fife import fife
 
 import horizons.main
 
-from horizons.util import ActionSetLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 
 class SQLiteAtlasLoader(object):
 	"""Loads atlases and appropriate action sets from a JSON file and a SQLite database.
@@ -33,7 +34,7 @@ class SQLiteAtlasLoader(object):
 
 		# TODO: There's something wrong with ground entities if atlas.sql
 		# is loaded only here, for now it's added to DB_FILES (empty file if no atlases are used)
-		
+
 		#f = open('content/atlas.sql', "r")
 		#sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
 		#horizons.main.db.execute_script(sql)
@@ -60,14 +61,24 @@ class SQLiteAtlasLoader(object):
 		"""
 		commands = location.split(':')
 		id = commands.pop(0)
-		actionset, action, rotation = id.split('-')
+		actionset, action, rotation = id.split('+')
 		commands = zip(commands[0::2], commands[1::2])
 
 		ani = fife.Animation.createAnimation()
 
+		# Set the correct loader based on the actionset
+		loader = None
+		if actionset.startswith("ts_"):
+			loader = TileSetLoader
+		elif actionset.startswith("as_"):
+			loader = ActionSetLoader
+		else:
+			assert False, "Invalid set being loaded: " + actionset
+
+
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
-			entry = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]
+		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
+			entry = loader.get_sets()[actionset][action][int(rotation)][file]
 			# we don't need to load images at this point to query for its parameters
 			# such as width and height because we can get those from json file
 			xpos, ypos, width, height = entry[2:]

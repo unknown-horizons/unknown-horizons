@@ -171,52 +171,52 @@ class RES:
 	TOBACCO_PRODUCTS_ID = 32
 
 class GROUND:
-	DEFAULT_LAND = 1
-	SAND = 2
-	SHALLOW_WATER = 3
-	WATER = 4
+	DEFAULT_LAND = (3, "straight", 45)
+	SAND = (6, "straight", 45)
+	SHALLOW_WATER = (1, "straight", 45)
+	WATER = (0, "straight", 45)
 
 	# sand to shallow water tiles
-	COAST_SOUTH = 49
-	COAST_EAST = 50
-	COAST_NORTH = 51
-	COAST_WEST = 52
-	COAST_SOUTHWEST3 = 60
-	COAST_NORTHWEST3 = 59
-	COAST_NORTHEAST3 = 58
-	COAST_SOUTHEAST3 = 57
-	COAST_NORTHEAST1 = 65
-	COAST_SOUTHEAST1 = 66
-	COAST_SOUTHWEST1 = 67
-	COAST_NORTHWEST1 = 68
+	COAST_SOUTH = (5, "straight", 45)
+	COAST_EAST = (5, "straight", 135)
+	COAST_NORTH = (5, "straight", 225)
+	COAST_WEST = (5, "straight", 315)
+	COAST_SOUTHWEST3 = (5, "curve_in", 135)
+	COAST_NORTHWEST3 = (5, "curve_in", 225)
+	COAST_NORTHEAST3 = (5, "curve_in", 315)
+	COAST_SOUTHEAST3 = (5, "curve_in", 45)
+	COAST_NORTHEAST1 = (5, "curve_out", 225)
+	COAST_SOUTHEAST1 = (5, "curve_out", 135)
+	COAST_SOUTHWEST1 = (5, "curve_out", 45)
+	COAST_NORTHWEST1 = (5, "curve_out", 315)
 
 	# grass to sand tiles
-	SAND_SOUTH = 9
-	SAND_EAST = 10
-	SAND_NORTH = 11
-	SAND_WEST = 12
-	SAND_SOUTHWEST3 = 20
-	SAND_NORTHWEST3 = 19
-	SAND_NORTHEAST3 = 18
-	SAND_SOUTHEAST3 = 17
-	SAND_NORTHEAST1 = 25
-	SAND_SOUTHEAST1 = 26
-	SAND_SOUTHWEST1 = 27
-	SAND_NORTHWEST1 = 28
+	SAND_SOUTH = (4, "straight", 45)
+	SAND_EAST =  (4, "straight", 135)
+	SAND_NORTH = (4, "straight", 225)
+	SAND_WEST =  (4, "straight", 315)
+	SAND_SOUTHWEST3 = (4, "curve_in", 135)
+	SAND_NORTHWEST3 = (4, "curve_in", 225)
+	SAND_NORTHEAST3 = (4, "curve_in", 315)
+	SAND_SOUTHEAST3 = (4, "curve_in", 45)
+	SAND_NORTHEAST1 = (4, "curve_out", 225)
+	SAND_SOUTHEAST1 = (4, "curve_out", 135)
+	SAND_SOUTHWEST1 = (4, "curve_out", 45)
+	SAND_NORTHWEST1 = (4, "curve_out", 315)
 
 	# shallow water to deep water tiles
-	DEEP_WATER_SOUTH = 89
-	DEEP_WATER_EAST = 90
-	DEEP_WATER_NORTH = 91
-	DEEP_WATER_WEST = 92
-	DEEP_WATER_SOUTHWEST3 = 100
-	DEEP_WATER_NORTHWEST3 = 99
-	DEEP_WATER_NORTHEAST3 = 98
-	DEEP_WATER_SOUTHEAST3 = 97
-	DEEP_WATER_NORTHEAST1 = 105
-	DEEP_WATER_SOUTHEAST1 = 106
-	DEEP_WATER_SOUTHWEST1 = 107
-	DEEP_WATER_NORTHWEST1 = 108
+	DEEP_WATER_SOUTH = (2, "straight", 45)
+	DEEP_WATER_EAST =  (2, "straight", 135)
+	DEEP_WATER_NORTH = (2, "straight", 225)
+	DEEP_WATER_WEST =  (2, "straight", 315)
+	DEEP_WATER_SOUTHWEST3 = (2, "curve_in", 135)
+	DEEP_WATER_NORTHWEST3 = (2, "curve_in", 225)
+	DEEP_WATER_NORTHEAST3 = (2, "curve_in", 315)
+	DEEP_WATER_SOUTHEAST3 = (2, "curve_in", 45)
+	DEEP_WATER_NORTHEAST1 = (2, "curve_out", 225)
+	DEEP_WATER_SOUTHEAST1 = (2, "curve_out", 135)
+	DEEP_WATER_SOUTHWEST1 = (2, "curve_out", 45)
+	DEEP_WATER_NORTHWEST1 = (2, "curve_out", 315)
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
@@ -265,7 +265,6 @@ class MESSAGES:
 # AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:
 	HIGHLIGHT_PLANS = False # whether to show the AI players' plans on the map
-	AI_PLAYERS = 1 # number of AI players in a game started from the command line
 	HUMAN_AI = False # whether the human player is controlled by the AI
 
 class TRADER: # check resource values: ./development/print_db_data.py res

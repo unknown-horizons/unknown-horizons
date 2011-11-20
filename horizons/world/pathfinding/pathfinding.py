@@ -39,9 +39,11 @@ class FindPath(object):
 	"""
 	log = logging.getLogger("world.pathfinding")
 
+	TURN_PENALITY = 1 # penalty for every turn in a path, if it's enabled
+
 	@decorators.make_constants()
 	def __call__(self, source, destination, path_nodes, blocked_coords = list(), \
-				       diagonal = False, make_target_walkable = True):
+				       diagonal = False, make_target_walkable = True, punish_turns=False):
 		"""
 		@param source: Rect, Point or BasicBuilding
 		@param destination: Rect, Point or BasicBuilding
@@ -50,6 +52,7 @@ class FindPath(object):
 		@param diagonal: whether the unit is able to move diagonally
 		@param make_target_walkable: whether we force the tiles of the target to be walkable,
 		       even if they actually aren't (used e.g. when walking to a building)
+		@param punish_turns: Try to find straight paths
 		@return: list of coords as tuples that are part of the best path
 		         (from first coord after source to first coord in destination)
 						 or None if no path is found
@@ -68,6 +71,7 @@ class FindPath(object):
 		self.blocked_coords = blocked_coords
 		self.diagonal = diagonal
 		self.make_target_walkable = make_target_walkable
+		self.punish_turns = punish_turns
 
 		#self.log.debug('searching path from %s to %s. blocked: %s', \
 		#							 source, destination, blocked_coords)
@@ -202,12 +206,22 @@ class FindPath(object):
 
 			for neighbor_node in neighbors:
 
+				punishment = 0
+				# punish turns (i.e. check if the line is not continued as expected
+				if self.punish_turns and cur_node_data[0] is not None:
+					# cur = x, y
+					last = cur_node_data[0]
+					diff = ( x - last[0], y - last[1] ) # vector from last to cur
+					if neighbor_node[0] != x + diff[0] or neighbor_node[1] != y + diff[1]:
+						punishment += self.__class__.TURN_PENALITY
+
 				if not neighbor_node in to_check:
 					# add neighbor to list of reachable nodes to check
 
 					# save previous node, calc distance to neighbor_node
 					# and estimate from neighbor_node to destination
-					dist_to_here = cur_node_data[1] + path_nodes.get(cur_node_coords, 0)
+					dist_to_here = cur_node_data[1] + path_nodes.get(cur_node_coords, 0) + punishment
+
 					total_dist_estimation = destination.distance_to_tuple(neighbor_node) + dist_to_here
 					to_check[neighbor_node] = (cur_node_coords,
 					                           dist_to_here,
@@ -218,7 +232,7 @@ class FindPath(object):
 				else:
 					# neighbor has been processed,
 					# check if current node provides a better path to this neighbor
-					distance_to_neighbor = cur_node_data[1] + path_nodes.get(cur_node_coords, 0)
+					distance_to_neighbor = cur_node_data[1] + path_nodes.get(cur_node_coords, 0) + punishment
 
 					neighbor = to_check[neighbor_node]
 

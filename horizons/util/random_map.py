@@ -116,13 +116,13 @@ def create_random_island(id_string):
 
 	# write values to db
 	map_db = DbReader(":memory:")
-	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
+	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
 	map_db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 	map_db("BEGIN TRANSACTION")
 
 	# add grass tiles
 	for x, y in map_set:
-		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, GROUND.DEFAULT_LAND)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *GROUND.DEFAULT_LAND)
 
 	def fill_tiny_spaces(tile):
 		"""Fills 1 tile gulfs and straits with the specified tile
@@ -210,7 +210,7 @@ def create_random_island(id_string):
 			if to_fill:
 				for x, y in to_fill:
 					map_set.add((x, y))
-					map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
+					map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
 
 				old_size = len(edge_set)
 				edge_set = edge_set.difference(to_ignore).union(to_fill)
@@ -293,7 +293,7 @@ def create_random_island(id_string):
 				tile = GROUND.SAND_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
 	map_set = map_set.union(outline)
 
 	# add sand to shallow water tiles
@@ -347,7 +347,7 @@ def create_random_island(id_string):
 				tile = GROUND.COAST_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
 	map_set = map_set.union(outline)
 
 	# add shallow water to deep water tiles
@@ -401,7 +401,7 @@ def create_random_island(id_string):
 				tile = GROUND.DEEP_WATER_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
 
 	map_db("COMMIT")
 	return map_db

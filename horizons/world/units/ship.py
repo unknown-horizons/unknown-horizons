@@ -269,8 +269,8 @@ class ShipRoute(object):
 	def get_ship_status(self):
 		"""Return the current status of the ship."""
 		if self.ship.is_moving():
-			return _('Trade route: going to %s' % self.ship.get_location_based_status(self.ship.get_move_target()))
-		return _('Trade route: waiting at %s' % self.ship.get_location_based_status(self.ship.position))
+			return (_('Trade route: going to %s' % self.ship.get_location_based_status(self.ship.get_move_target())), self.ship.get_move_target())
+		return (_('Trade route: waiting at %s' % self.ship.get_location_based_status(self.ship.position)), self.ship.position)
 
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
@@ -436,7 +436,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.RendererNode(loc),
-				horizons.main.fife.animationloader.loadResource("as_buoy0-idle-45")
+				horizons.main.fife.animationloader.loadResource("as_buoy0+idle+45")
 			)
 
 	def _possible_names(self):
@@ -471,13 +471,13 @@ class Ship(NamedObject, StorageHolder, Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				return _('Going to %s' % location_based_status)
-			return _('Going to %(x)d, %(y)d' % {'x': target.x, 'y': target.y})
+				return (_('Going to %s' % location_based_status), target)
+			return (_('Going to %(x)d, %(y)d' % {'x': target.x, 'y': target.y}), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				return _('Idle at %s' % location_based_status)
-			return _('Idle at %(x)d, %(y)d' % {'x': self.position.x, 'y': self.position.y})
+				return (_('Idle at %s' % location_based_status), self.position)
+			return (_('Idle at %(x)d, %(y)d' % {'x': self.position.x, 'y': self.position.y}), self.position)
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
