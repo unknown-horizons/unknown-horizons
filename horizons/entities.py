@@ -59,7 +59,7 @@ class Entities(object):
 		cls.loaded = True
 
 	@classmethod
-	def load_grounds(cls, db):
+	def load_grounds(cls, db, load_now=False):
 		cls.log.debug("Entities: loading grounds")
 		if hasattr(cls, "grounds"):
 			cls.log.debug("Entities: grounds already loaded")
@@ -68,10 +68,12 @@ class Entities(object):
 		cls.grounds = _EntitiesLazyDict()
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
 			cls.grounds.create_on_access(ground_id, Callback(GroundClass, db, ground_id))
+			if load_now:
+				cls.grounds[ground_id]
 		cls.grounds[-1] = GroundClass(db, -1)
 
 	@classmethod
-	def load_buildings(cls, db):
+	def load_buildings(cls, db, load_now=False):
 		cls.log.debug("Entities: loading buildings")
 		if hasattr(cls, 'buildings'):
 			cls.log.debug("Entities: buildings already loaded")
@@ -80,9 +82,11 @@ class Entities(object):
 		from world.building import BuildingClass
 		for (building_id,) in db("SELECT id FROM building"):
 			cls.buildings.create_on_access(building_id, Callback(BuildingClass, db, building_id))
+			if load_now:
+				cls.buildings[building_id]
 
 	@classmethod
-	def load_units(cls, db):
+	def load_units(cls, db, load_now=False):
 		cls.log.debug("Entities: loading units")
 		if hasattr(cls, 'units'):
 			cls.log.debug("Entities: units already loaded")
@@ -91,3 +95,5 @@ class Entities(object):
 		from world.units import UnitClass
 		for (unit_id,) in db("SELECT id FROM unit"):
 			cls.units.create_on_access(unit_id, Callback(UnitClass, db, unit_id))
+			if load_now:
+				cls.units[unit_id]
