@@ -77,7 +77,26 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 
 
 class MainSquare(StorageBuilding, SettlerServiceProvider):
+	walkable = True
 	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
+
+	def __init__(self, *args, **kwargs):
+		super(MainSquare, self).__init__(*args, **kwargs)
+		self.__init()
+
+	def load(self, db, worldid):
+		super(MainSquare, self).load(db, worldid)
+		self.__init()
+
+	def __init(self):
+		self.island.path_nodes.register_road(self)
+
+	def remove(self):
+		self.island.path_nodes.unregister_road(self)
+
+	def recalculate_orientation(self):
+		# change gfx according to roads here
+		pass
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.
