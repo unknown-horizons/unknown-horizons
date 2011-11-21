@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-21 02:43+0200\n"
+"PO-Revision-Date: 2011-11-21 12:23+0200\n"
 "Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -25,12 +25,12 @@ msgstr "${player1} og ${player2} er nu ${status}"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement has been created by ${player}."
-msgstr ""
+msgstr "En ny bosættelse et blevet oprettet af ${player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr ""
+msgstr "En ny verden er blevet oprettet"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -45,22 +45,22 @@ msgstr "Båd Bygger"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Branch Office"
-msgstr ""
+msgstr "Afdelingskontor"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Brickyard"
-msgstr ""
+msgstr "Murstensværksted"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "Slagteri"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Cattle"
-msgstr ""
+msgstr "Kvæg"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -70,7 +70,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Trækulsbrænderi"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -80,7 +80,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Clay Pit"
-msgstr ""
+msgstr "Lergrav"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -90,12 +90,12 @@ msgstr "Hjort"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Distillery"
-msgstr ""
+msgstr "Destilleri"
 
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "Læge"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -115,7 +115,7 @@ msgstr "Fisker"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Fiskertelt"
 
 #. (text of widget: headline_BB_war1_ship1)
 #. This is a database entry: the name of a unit.
@@ -142,7 +142,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Jagertelt"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -157,17 +157,17 @@ msgstr "Logbog"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lookout"
-msgstr ""
+msgstr "Udkigspost"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Skovhuggerlejer"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Main Square"
-msgstr ""
+msgstr "Torv"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -177,7 +177,7 @@ msgstr "Bjerg"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "En af dine indbyggere har ikke noget torv i nærheden."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -212,7 +212,7 @@ msgstr "Forsvarsværk"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Saltkogeri"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -232,12 +232,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Smeltery"
-msgstr ""
+msgstr "Smelteri"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Nogle a dine indbyggere er lige flyttet."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -303,7 +303,7 @@ msgstr "Landsbyskole"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Vævertelt"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -333,27 +333,27 @@ msgstr "Du har brug for mere ${resource} for at bygge denne bygning."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Dit spil er blevet autogemt."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr "Din mine er løbet tør for ressource."
+msgstr "Din mine er løbet tør for ressourcer."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your settlers reached level ${level}."
-msgstr ""
+msgstr "Din indbyggerer er nået niveau ${level}."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr ""
+msgstr "agern"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokrat"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -368,7 +368,7 @@ msgstr "blå"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr ""
+msgstr "tømmer"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -383,7 +383,7 @@ msgstr "mursten"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr "kanoner"
+msgstr "kanon"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -413,7 +413,7 @@ msgstr "ler"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay deposit"
-msgstr ""
+msgstr "ler"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -423,7 +423,7 @@ msgstr "mønter"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "fællesskab"
 
 #. This is a database entry: the name of a color.
 #: database files sql

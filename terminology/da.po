@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-11-21 11:49+0200\n"
+"PO-Revision-Date: 2011-11-21 12:01+0200\n"
 "Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -506,89 +506,88 @@ msgid "no"
 msgstr "nej"
 
 msgid "tax"
-msgstr ""
+msgstr "skatter/afgifter"
 
 msgid "feature"
 msgstr "funktion"
 
 msgid "reached"
-msgstr ""
+msgstr "nået"
 
 msgid "slider"
 msgstr "skyderen"
 
 msgid "condition"
-msgstr ""
+msgstr "tilstand"
 
 msgid "consume"
-msgstr ""
+msgstr "forbrug"
 
 msgid "contact"
-msgstr ""
+msgstr "kontakt"
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialog"
 
 msgid "issues"
-msgstr ""
+msgstr "problemer"
 
 msgid "minimap"
-msgstr ""
+msgstr "minimap"
 
+#, fuzzy
 msgid "playing"
-msgstr ""
+msgstr "spille"
 
 # 75%
-#, fuzzy
 msgid "ruin"
-msgstr "køre"
+msgstr "ødelægge"
 
 msgid "seed"
-msgstr ""
+msgstr "frø"
 
 msgid "temporarily"
-msgstr ""
+msgstr "midlertidig"
 
 msgid "salt ponds"
 msgstr ""
 
 msgid "tobacco"
-msgstr ""
+msgstr "tobak"
 
 msgid "cattle"
-msgstr ""
+msgstr "kvæg"
 
 msgid "pig"
-msgstr ""
+msgstr "gris"
 
 msgid "herbs"
-msgstr ""
+msgstr "urter"
 
 msgid "herbary"
 msgstr ""
 
 msgid "butchery"
-msgstr ""
+msgstr "slagteri"
 
 msgid "doctor"
-msgstr ""
+msgstr "læge"
 
 msgid "education"
-msgstr ""
+msgstr "uddannelse"
 
 # 75%
-#, fuzzy
 msgid "clay"
-msgstr "spiller"
+msgstr "ler"
 
 msgid "charcoal"
-msgstr ""
+msgstr "trækul"
 
 msgid "iron"
-msgstr ""
+msgstr "jern"
 
 msgid "ore"
-msgstr ""
+msgstr "malm"
 
 # 
 #~ msgid "market place"
