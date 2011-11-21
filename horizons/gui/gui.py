@@ -218,8 +218,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				box.padding = 1 # further decrease if more entries
 				box.parent.padding = 3 # see above
 		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl") \
-		              for section in ('team','patchers','translators','special_thanks')]
-		for i in xrange(4):
+		              for section in ('team','patchers','translators','packagers','special_thanks')]
+		for i in xrange(5):
 			if label[i]: # add callbacks to each pickbelt that is displayed
 				label[i].capture(Callback(self.show_credits, i),
 				                 event_name="mouseClicked")
