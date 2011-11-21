@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-15 16:36+0200\n"
+"PO-Revision-Date: 2011-11-15 16:38+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -2220,7 +2220,6 @@ msgstr "{F10} = Konsoli näkyviin/pois"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:714
-#, fuzzy
 msgid "{F2} = Show player scores"
 msgstr "{F2} = Näytä pelitulokset"
 
