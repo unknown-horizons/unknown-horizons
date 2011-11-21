@@ -376,6 +376,7 @@ class _LanguageNameDict(dict):
 		return self.get(key, key)
 
 LANGUAGENAMES = _LanguageNameDict({
+	"af"    : u'Afrikaans',
 	"bg"    : u'Български',
 	"ca"    : u'Català',
   'ca@valencia' : u'Català de València',
@@ -385,6 +386,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"en"    : u'English',
 	"es"    : u'Español',
 	"et"    : u'Eesti',
+	"el"    : u'Ελληνικά',
 	"fi"    : u'Suomi',
 	"fr"    : u'Français',
 	"hu"    : u'Magyar',
@@ -395,9 +397,11 @@ LANGUAGENAMES = _LanguageNameDict({
 	"pl"    : u'Polski',
 	"pt_BR" : u'Português Br.',
 	"pt"    : u'Português',
+	"ro"    : u'Română',
 	"ru"    : u'Русский',
 	"sl"    : u'Slovenski',
 	"sv"    : u'Svenska',
+	"tr"    : u'Türkçe',
 	})
 
 AUTO_CONTINUE_CAMPAIGN=True
