@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.util.gui import load_uh_widget
-from horizons.util import Callback
+from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
 from horizons.gui.widgets.tooltip import TooltipButton
 
@@ -325,17 +325,22 @@ class RouteConfig(object):
 		  })
 		vbox.addChild(entry)
 
-	def append_bo(self):
+	def append_bo(self, branch_office=None):
+		"""Add a bo to the list on the left side.
+		@param branch_office: Set to add a specific one, else the selected one gets added.
+		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
 			return
 
-		selected = self.listbox._getSelectedItem()
+		if branch_office is None:
+			selected = self.listbox._getSelectedItem()
 
-		if selected == None:
-			return
+			if selected == None:
+				return
+			branch_office = self.branch_offices[selected]
 
-		self.instance.route.append(self.branch_offices[selected])
-		self.add_gui_entry(self.branch_offices[selected])
+		self.instance.route.append(branch_office)
+		self.add_gui_entry(branch_office)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
 
@@ -401,6 +406,15 @@ class RouteConfig(object):
 		self.minimap = Minimap(icon, self.instance.session, \
 		                       self.instance.session.view.renderer['GenericRenderer'],
 		                       horizons.main.fife.targetrenderer,
-		                       scrolling=False)
+		                       cam_border=False)
+		def on_click(map_coord):
+			print 'click on'
+			tile = self.instance.session.world.get_tile(Point(*map_coord))
+			print tile, tile.settlement
+			if tile is not None and tile.settlement is not None:
+				print 'not none'
+				self.append_bo( tile.settlement.branch_office )
+
+		self.minimap.on_click = on_click
 		self.minimap.draw()
 

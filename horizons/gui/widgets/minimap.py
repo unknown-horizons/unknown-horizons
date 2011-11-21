@@ -37,6 +37,7 @@ class Minimap(object):
 	Minimap can be drawn via GenericRenderer on an arbitrary position (determined by rect in ctor)
 	or
 	via Pychan Icon. In this case, the rect parameter only determines the size, the
+	Minimap will scroll by default on clicks, overwrite on_click if you don't want that.
 
 
 	NOTE: Rendered images are sorted by name, so use minimap_${X}_foo,
@@ -69,7 +70,7 @@ class Minimap(object):
 	__next_minimap_id = 0
 
 	def __init__(self, position, session, renderer, targetrenderer,
-	             scrolling=True):
+	             cam_border=True):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
 		@param renderer: renderer to be used. Only fife.GenericRenderer is explicitly supported.
@@ -80,12 +81,12 @@ class Minimap(object):
 		else: # assume icon
 			self.location = Rect.init_from_topleft_and_size(0, 0, position.width, position.height)
 			self.icon = position
-			if scrolling:
-				self.use_overlay_icon(self.icon)
+			self.use_overlay_icon(self.icon)
 		self.renderer = renderer
 		self.session = session
-		self.scrolling = scrolling
 		self.rotation = 0
+
+		self.cam_border = cam_border
 
 		self.world = None
 		self.location_center = self.location.center()
@@ -142,6 +143,8 @@ class Minimap(object):
 
 	def update_cam(self):
 		"""Redraw camera border."""
+		if not self.cam_border:
+			return
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
 		use_rotation = self._get_rotation_setting()
@@ -197,13 +200,23 @@ class Minimap(object):
 		The current gui requires, that the minimap is drawn behind an icon."""
 		self.overlay_icon = icon
 		icon.mapEvents({ \
-			icon.name + '/mousePressed' : self.on_click, \
-			icon.name + '/mouseDragged' : self.on_click \
+			icon.name + '/mousePressed' : self._on_click, \
+			icon.name + '/mouseDragged' : self._on_click \
 		})
 
-	def on_click(self, event):
-		"""Scrolls screen to the point, where the cursor points to on the minimap"""
+	def on_click(self, map_coord):
+		"""Handler for clicks (pressed and dragged)
+		Scrolls screen to the point, where the cursor points to on the minimap.
+		Overwrite this method to your convenience.
+		"""
 		# TODO: send ships via minimap
+		self.session.view.center(*map_coord)
+
+	def _on_click(self, event):
+		map_coord = self._get_event_coord(event)
+		self.on_click(map_coord)
+
+	def _get_event_coord(self, event):
 		mouse_position = Point(event.getX(), event.getY())
 		if not hasattr(self, "icon"):
 			icon_pos = Point(*self.overlay_icon.getAbsolutePos())
@@ -216,8 +229,7 @@ class Minimap(object):
 			abs_mouse_position = mouse_position.to_tuple()
 		if self._get_rotation_setting():
 			abs_mouse_position = self._get_from_rotated_coords(abs_mouse_position)
-		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position)
-		self.session.view.center(*map_coord)
+		return self._minimap_coord_to_world_coord(abs_mouse_position)
 
 	def highlight(self, tup):
 		"""Try to get the users attention on a certain point of the minimap"""
