@@ -65,14 +65,16 @@ class Minimap(object):
 	  }
 
 	__next_minimap_id = 0
+	_instances = []
 
 	def __init__(self, position, session, targetrenderer, renderer=None,
-	             cam_border=True, on_click=None):
+	             cam_border=True, use_rotation=True, on_click=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
 		@param renderer: renderer to be used if position isn't an icon
 		@param targetrenderer: target renderer to be used to draw directly into an image
 		@param cam_border: boolean, whether to draw the cam border
+		@param use_rotation: boolean, whether to use rotation (it must also be enabled in the settings)
 		@param on_click: function taking 1 argument or None for scrolling
 		"""
 		if isinstance(position, Rect):
@@ -89,6 +91,7 @@ class Minimap(object):
 			self.on_click = on_click
 
 		self.cam_border = cam_border
+		self.use_rotation = use_rotation
 
 		self.world = None
 		self.location_center = self.location.center()
@@ -98,11 +101,15 @@ class Minimap(object):
 
 		self.minimap_image = _MinimapImage(self, targetrenderer,
 		                                   horizons.main.fife.imagemanager )
+
+		self.__class__._instances.append(self)
+
 		#import random
 		#ExtScheduler().add_new_object(lambda : self.highlight( (50+random.randint(-50,50), random.randint(-50,50) + 50 )), self, 2, loops=-1)
 
 
 	def end(self):
+		self.__class__._instances.remove(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.world = None
 		self.session = None
@@ -182,7 +189,12 @@ class Minimap(object):
 												                      minimap_corners_as_point[ (i+1) % 4],
 			                                        *self.COLORS["cam"])
 
-	def update(self, tup):
+	@classmethod
+	def update(cls, tup):
+		for minimap in cls._instances:
+			minimap._update(tup)
+
+	def _update(self, tup):
 		"""Recalculate and redraw minimap for real world coord tup
 		@param tup: (x, y)"""
 		if self.world is None or not self.world.inited:
@@ -320,10 +332,12 @@ class Minimap(object):
 		real_map_point = Point(0, 0)
 		world_min_x = self.world.min_x
 		world_min_y = self.world.min_y
-		get_island = self.world.get_island
+		get_island_tuple = self.world.get_island_tuple
 		island_col = self.COLORS["island"]
 		location_left = self.location.left
 		location_top = self.location.top
+		rt_addPoint = rt.addPoint
+		fife_point = fife.Point(0,0)
 
 		use_rotation = self._get_rotation_setting()
 
@@ -355,7 +369,7 @@ class Minimap(object):
 				if last_island is not None and real_map_point_tuple in last_island.ground_map:
 					island = last_island
 				else:
-					island = get_island(real_map_point)
+					island = get_island_tuple(real_map_point_tuple)
 				if island is not None:
 					last_island = island
 					# this pixel is an island
@@ -373,9 +387,16 @@ class Minimap(object):
 					# inlined _get_rotated_coords
 					rot_x, rot_y = self._rotate( (location_left + x, location_top + y), self._rotations)
 					rot_x, rot_y = (rot_x - location_left, rot_y - location_top)
-					rt.addPoint(render_name, fife.Point(rot_x, rot_y) , *color)
+
+					# TODO: set this with one function call as soon as it's supported in fife
+					# (also below)
+					fife_point.x = rot_x
+					fife_point.y = rot_y
+					rt_addPoint(render_name, fife_point , *color)
 				else:
-					rt.addPoint(render_name, fife.Point(x, y) , *color)
+					fife_point.x = x
+					fife_point.y = y
+					rt_addPoint(render_name, fife_point, *color)
 
 
 	def _timed_update(self):
@@ -427,6 +448,8 @@ class Minimap(object):
 	## CALC UTILITY
 
 	def _get_rotation_setting(self):
+		if not self.use_rotation:
+			return False
 		return horizons.main.fife.get_uh_setting("MinimapRotation")
 
 	_rotations = { 0 : 0,

@@ -408,6 +408,15 @@ class RouteConfig(object):
 		self.minimap = Minimap(icon, self.instance.session, \
 		                       horizons.main.fife.targetrenderer,
 		                       cam_border=False,
+		                       use_rotation=False,
 		                       on_click=on_click)
+
+		"""
+		import cProfile as profile
+		import tempfile
+		outfilename = tempfile.mkstemp(text = True)[1]
+		print 'profile to ', outfilename
+		profile.runctx( "self.minimap.draw()", globals(), locals(), outfilename)
+		"""
 		self.minimap.draw()
 

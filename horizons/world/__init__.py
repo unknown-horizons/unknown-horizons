@@ -689,7 +689,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	def get_island(self, point):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param point: instance of Point"""
+		# NOTE: keep code synchronised with duplicated code below
 		tup = point.to_tuple()
+		if tup not in self.island_map:
+			return None
+		return self.island_map[tup]
+
+	def get_island_tuple(self, tup):
+		"""Overloaded from above"""
 		if tup not in self.island_map:
 			return None
 		return self.island_map[tup]
