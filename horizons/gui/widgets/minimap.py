@@ -1,4 +1,3 @@
-# ###################################################
 # Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -23,7 +22,6 @@ import horizons.main
 from fife import fife
 
 from horizons.util import Point, Rect, Circle
-from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
 
@@ -48,7 +46,6 @@ class Minimap(object):
 	* Clear up distinction of coords where the minimap image or screen is the origin
 	* Create a minimap tag for pychan
 	** Handle clicks, remove overlay icon
-	* Don't call Scheduler, especially for minimaps that appear through gui interactions
 	"""
 	COLORS = { "island": (137, 117,  87),
 				     "cam":    (  1,   1,   1),
@@ -69,22 +66,27 @@ class Minimap(object):
 
 	__next_minimap_id = 0
 
-	def __init__(self, position, session, renderer, targetrenderer,
-	             cam_border=True):
+	def __init__(self, position, session, targetrenderer, renderer=None,
+	             cam_border=True, on_click=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
-		@param renderer: renderer to be used. Only fife.GenericRenderer is explicitly supported.
+		@param renderer: renderer to be used if position isn't an icon
 		@param targetrenderer: target renderer to be used to draw directly into an image
+		@param cam_border: boolean, whether to draw the cam border
+		@param on_click: function taking 1 argument or None for scrolling
 		"""
 		if isinstance(position, Rect):
 			self.location = position
+			self.renderer = renderer
 		else: # assume icon
 			self.location = Rect.init_from_topleft_and_size(0, 0, position.width, position.height)
 			self.icon = position
 			self.use_overlay_icon(self.icon)
-		self.renderer = renderer
 		self.session = session
 		self.rotation = 0
+
+		if on_click is not None:
+			self.on_click = on_click
 
 		self.cam_border = cam_border
 
@@ -101,7 +103,6 @@ class Minimap(object):
 
 
 	def end(self):
-		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.world = None
 		self.session = None
@@ -121,7 +122,7 @@ class Minimap(object):
 			self.session.view.add_change_listener(self.update_cam)
 
 		if not hasattr(self, "icon"): #
-			# add to global generic renderer
+			# add to global generic renderer with id specific to this instance
 			self.renderer.removeAll("minimap_image"+self._id)
 			self.minimap_image.reset()
 			node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
@@ -134,9 +135,9 @@ class Minimap(object):
 		self._recalculate()
 		self._timed_update()
 
-		Scheduler().rem_all_classinst_calls(self)
-		Scheduler().add_new_object(self._timed_update, self, \
-								               Scheduler().get_ticks(self.SHIP_DOT_UPDATE_INTERVAL), -1)
+		ExtScheduler().rem_all_classinst_calls(self)
+		ExtScheduler().add_new_object(self._timed_update, self, \
+								               self.SHIP_DOT_UPDATE_INTERVAL, -1)
 
 	def _get_render_name(self, key):
 		return self.RENDER_NAMES[key] + self._id
@@ -201,7 +202,10 @@ class Minimap(object):
 		self.overlay_icon = icon
 		icon.mapEvents({ \
 			icon.name + '/mousePressed' : self._on_click, \
-			icon.name + '/mouseDragged' : self._on_click \
+			icon.name + '/mouseDragged' : self._on_click, \
+			icon.name + '/mouseEntered' : self._mouse_entered, \
+		  icon.name + '/mouseMoved' : self._mouse_moved,
+			icon.name + '/mouseExited' : self._mouse_exited \
 		})
 
 	def on_click(self, map_coord):
@@ -230,6 +234,25 @@ class Minimap(object):
 		if self._get_rotation_setting():
 			abs_mouse_position = self._get_from_rotated_coords(abs_mouse_position)
 		return self._minimap_coord_to_world_coord(abs_mouse_position)
+
+	def _mouse_entered(self, event):
+		self._mouse_moved(event)
+
+	def _mouse_moved(self, event):
+		if hasattr(self, "icon"): # only supported for icon mode atm
+			coords = self._get_event_coord(event)
+			tile = self.session.world.get_tile( Point(*coords) )
+			if tile is not None and tile.settlement is not None:
+				self.icon.tooltip = tile.settlement.name
+				#import pdb ; pdb.set_trace()
+				self.icon.position_tooltip(event)
+				self.icon.show_tooltip()
+			else:
+				self.icon.hide_tooltip()
+
+	def _mouse_exited(self, event):
+		if hasattr(self, "icon"): # only supported for icon mode atm
+			self.icon.hide_tooltip()
 
 	def highlight(self, tup):
 		"""Try to get the users attention on a certain point of the minimap"""

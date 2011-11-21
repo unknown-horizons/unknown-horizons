@@ -76,6 +76,8 @@ class IngameGui(LivingObject):
 
 		cityinfo = self.widgets['city_info']
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
+
+		# special settings for really small resolutions
 		width = horizons.main.fife.engine_settings.getScreenWidth()
 		x = 'center'
 		y = 'top'
@@ -101,11 +103,11 @@ class IngameGui(LivingObject):
 		minimap.position_technique = "right-20:top+4"
 		minimap.show()
 
-		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0] + 77, 51, 120, 120)
+		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0] + 77, 52, 120, 120)
 
 		self.minimap = Minimap(minimap_rect, self.session, \
-		                       self.session.view.renderer['GenericRenderer'],
-		                       horizons.main.fife.targetrenderer)
+		                       horizons.main.fife.targetrenderer, \
+		                       renderer=self.session.view.renderer['GenericRenderer'])
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,

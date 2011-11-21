@@ -23,6 +23,7 @@ from horizons.util.gui import load_uh_widget
 from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
 from horizons.gui.widgets.tooltip import TooltipButton
+from horizons.gui.widgets.minimap import Minimap
 
 import horizons.main
 
@@ -390,7 +391,6 @@ class RouteConfig(object):
 		wait_at_load_box.marked = self.instance.route.wait_at_load
 		def toggle_wait_at_load():
 			self.instance.route.wait_at_load = not self.instance.route.wait_at_load
-			print 'set to', self.instance.route.wait_at_load
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
@@ -400,21 +400,14 @@ class RouteConfig(object):
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
 
-
-		from horizons.gui.widgets.minimap import Minimap
 		icon = self._gui.findChild(name="minimap")
-		self.minimap = Minimap(icon, self.instance.session, \
-		                       self.instance.session.view.renderer['GenericRenderer'],
-		                       horizons.main.fife.targetrenderer,
-		                       cam_border=False)
 		def on_click(map_coord):
-			print 'click on'
 			tile = self.instance.session.world.get_tile(Point(*map_coord))
-			print tile, tile.settlement
 			if tile is not None and tile.settlement is not None:
-				print 'not none'
 				self.append_bo( tile.settlement.branch_office )
-
-		self.minimap.on_click = on_click
+		self.minimap = Minimap(icon, self.instance.session, \
+		                       horizons.main.fife.targetrenderer,
+		                       cam_border=False,
+		                       on_click=on_click)
 		self.minimap.draw()
 
