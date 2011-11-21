@@ -236,23 +236,29 @@ class Minimap(object):
 		return self._minimap_coord_to_world_coord(abs_mouse_position)
 
 	def _mouse_entered(self, event):
-		self._mouse_moved(event)
+		self._show_tooltip(event)
 
 	def _mouse_moved(self, event):
-		if hasattr(self, "icon"): # only supported for icon mode atm
-			coords = self._get_event_coord(event)
-			tile = self.session.world.get_tile( Point(*coords) )
-			if tile is not None and tile.settlement is not None:
-				self.icon.tooltip = tile.settlement.name
-				#import pdb ; pdb.set_trace()
-				self.icon.position_tooltip(event)
-				self.icon.show_tooltip()
-			else:
-				self.icon.hide_tooltip()
+		self._show_tooltip(event)
 
 	def _mouse_exited(self, event):
 		if hasattr(self, "icon"): # only supported for icon mode atm
 			self.icon.hide_tooltip()
+
+	def _show_tooltip(self, event):
+		if hasattr(self, "icon"): # only supported for icon mode atm
+			coords = self._get_event_coord(event)
+			tile = self.session.world.get_tile( Point(*coords) )
+			if tile is not None and tile.settlement is not None:
+				new_tooltip = tile.settlement.name
+				if self.icon.tooltip != new_tooltip:
+					self.icon.tooltip = new_tooltip
+					self.icon.position_tooltip(event)
+					self.icon.show_tooltip()
+				else:
+					self.icon.position_tooltip(event)
+			else:
+				self.icon.hide_tooltip()
 
 	def highlight(self, tup):
 		"""Try to get the users attention on a certain point of the minimap"""
