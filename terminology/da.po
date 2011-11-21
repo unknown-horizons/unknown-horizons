@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-11-21 01:45+0200\n"
+"PO-Revision-Date: 2011-11-21 11:49+0200\n"
 "Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -214,9 +214,8 @@ msgstr "hus"
 msgid "inventory"
 msgstr "opgørelse"
 
-#, fuzzy
 msgid "level"
-msgstr ""
+msgstr "niveau"
 
 #
 msgid "move"
@@ -231,9 +230,8 @@ msgid "produce"
 msgstr "producere"
 
 # 87%
-#, fuzzy
 msgid "produced"
-msgstr "producere"
+msgstr "produceret"
 
 msgid "pasture"
 msgstr "græsarealer"
@@ -324,7 +322,7 @@ msgid "stop"
 msgstr "stop"
 
 msgid "team"
-msgstr ""
+msgstr "hold"
 
 msgid "village"
 msgstr "landsby"
@@ -340,7 +338,7 @@ msgid "build settlement"
 msgstr "opbygge afregning"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "Kaptajnens logbog"
 
 msgid "cloth"
 msgstr "klud"
@@ -368,7 +366,7 @@ msgid "multiple"
 msgstr "flere"
 
 msgid "output"
-msgstr ""
+msgstr "produktion"
 
 #
 msgid "play"
@@ -397,7 +395,7 @@ msgid "sound"
 msgstr "lyd"
 
 msgid "from time to time"
-msgstr ""
+msgstr "fra tid til anden"
 
 msgid "trading"
 msgstr "handel"
@@ -440,7 +438,7 @@ msgid "hold"
 msgstr ""
 
 msgid "hunt"
-msgstr ""
+msgstr "jagt"
 
 msgid "income"
 msgstr "indkomst"
@@ -455,19 +453,18 @@ msgid "key"
 msgstr "nøgle"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "lammeuld"
 
 #
-#, fuzzy
 msgid "load/unload"
-msgstr "load / losse"
+msgstr "last / losse"
 
 #
 msgid "return"
 msgstr "tilbage"
 
 msgid "service"
-msgstr ""
+msgstr "service"
 
 #
 msgid "sheep"
@@ -503,10 +500,10 @@ msgid "check"
 msgstr ""
 
 msgid "connection"
-msgstr ""
+msgstr "forbindelse"
 
 msgid "no"
-msgstr ""
+msgstr "nej"
 
 msgid "tax"
 msgstr ""
