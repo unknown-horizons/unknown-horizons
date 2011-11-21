@@ -2,25 +2,26 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-21 02:39+0200\n"
-"Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: da\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Translate Toolkit 1.8.1\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "${player1} and ${player2} are now ${status}"
-msgstr "${player1} og ${player2} er nu ${status}"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -35,12 +36,12 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr "Vildsvin"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Boat Builder"
-msgstr "Båd Bygger"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -85,7 +86,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Deer"
-msgstr "Hjort"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -100,7 +101,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Farm"
-msgstr "Gård"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -110,7 +111,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Fisher"
-msgstr "Fisker"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -121,12 +122,12 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr "Fregat"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Gravel Path"
-msgstr "Grus Sti"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -147,12 +148,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
-msgstr "Jern Mine"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Log"
-msgstr "Logbog"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -172,7 +173,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Mountain"
-msgstr "Bjerg"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -182,32 +183,32 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pasture"
-msgstr "Græsmark"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pavilion"
-msgstr "Pavilion"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr "Svinesti"
+msgstr ""
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Pirate Ship"
-msgstr "Piratskib"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Potato Field"
-msgstr "Kartoffelmark"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Rampart"
-msgstr "Forsvarsværk"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -217,12 +218,12 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to ${file}."
-msgstr "Skærmbillede er blevet gemt i ${file}."
+msgstr ""
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Sheep"
-msgstr "Får"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -242,37 +243,37 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Storage Tent"
-msgstr "Opbevaringstelt"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Sugar Field"
-msgstr "Sukkermark"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tavern"
-msgstr "Kro"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent"
-msgstr "Telt"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent Ruin"
-msgstr "Ødelagt Telt"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr "Tobaksmark"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr "Tobakshandler"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -293,12 +294,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files horizons/i18n/guitranslations.py:80 sql
 msgid "Tree"
-msgstr "Træ"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Village school"
-msgstr "Landsbyskole"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -323,12 +324,12 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
 msgid "You have won!"
-msgstr "Du har vundet!"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more ${resource} to build this building."
-msgstr "Du har brug for mere ${resource} for at bygge denne bygning."
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -338,7 +339,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr "Din mine er løbet tør for ressource."
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -358,12 +359,12 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "black"
-msgstr "sort"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "blue"
-msgstr "blå"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -373,42 +374,42 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr "bordeaux rød"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr "mursten"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr "kanoner"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr "kvæg"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr "kvæg til slagteri"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "charcoal"
-msgstr "trækul"
+msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr "borger"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr "ler"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -418,7 +419,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr "mønter"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -428,12 +429,12 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "cyan"
-msgstr "turkis"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr "dolk"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -443,27 +444,27 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr "hjortekød"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr "uddannelse"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "faith"
-msgstr "tro"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr "fisk"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr "mad"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -473,27 +474,27 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr "græs"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr "grå"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "green"
-msgstr "grøn"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr "glæde"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr "urter"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -503,17 +504,17 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ingots"
-msgstr "jern barre"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ore"
-msgstr "jernmalm"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "lamb wool"
-msgstr "lame uld"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -528,112 +529,112 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr "medicinske urter"
+msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "merchant"
-msgstr "handelsmand"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr "orange"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr "grise"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr "grise til slagtning"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "pink"
-msgstr "pink"
+msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "pioneer"
-msgstr "pioner"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr "kartofler"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr "lilla"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "red"
-msgstr "rød"
+msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "sailor"
-msgstr "sømand"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr "salt"
+msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "settler"
-msgstr "nybygger"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr "sukker"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr "sukkerrør"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr "blå-grøn"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "textile"
-msgstr "tekstil"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr "tobaksblade"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr "tobaksplanter"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr "tobak"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tools"
-msgstr "værktøj"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "white"
-msgstr "hvid"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -643,12 +644,12 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr "uld"
+msgstr ""
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "yellow"
-msgstr "gul"
+msgstr ""
 
 #: horizons/engine.py:70
 msgid "Restart required"
@@ -668,7 +669,7 @@ msgstr ""
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr "Ønsker du at fortsætte?"
+msgstr ""
 
 #: horizons/engine.py:189
 msgid "System default"
@@ -676,7 +677,7 @@ msgstr ""
 
 #: horizons/engine.py:213
 msgid "Warning"
-msgstr "Advarsel"
+msgstr ""
 
 #: horizons/engine.py:214
 msgid ""
@@ -729,11 +730,11 @@ msgstr ""
 
 #: horizons/gui/gui.py:160
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Er du sikker på, at du vil lukke Unknown Horizons?"
+msgstr ""
 
 #: horizons/gui/gui.py:161
 msgid "Quit Game"
-msgstr "Luk Spillet"
+msgstr ""
 
 #: horizons/gui/gui.py:167
 msgid "Are you sure you want to abort the running session?"
@@ -745,7 +746,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:215
 msgid "No saved games"
-msgstr "Ingen gemte spil"
+msgstr ""
 
 #: horizons/gui/gui.py:215
 msgid "There are no saved games to load"
@@ -756,12 +757,12 @@ msgstr ""
 #: horizons/gui/gui.py:222 horizons/i18n/guitranslations.py:763
 #: horizons/i18n/guitranslations.py:789
 msgid "Load game"
-msgstr "Hent spil"
+msgstr ""
 
 #. (text of widget: savegame)
 #: horizons/gui/gui.py:222 horizons/i18n/guitranslations.py:767
 msgid "Save game"
-msgstr "Gem spil"
+msgstr ""
 
 #. savegamename already exists
 #: horizons/gui/gui.py:268
@@ -773,7 +774,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:269
 msgid "Confirmation for overwriting"
-msgstr "Bekræft overskrivningen"
+msgstr ""
 
 #: horizons/gui/gui.py:277
 msgid "Please select a savegame or click on cancel."
@@ -793,7 +794,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:352
 msgid "Error:"
-msgstr "Fejl:"
+msgstr ""
 
 #: horizons/gui/gui.py:426
 msgid "Unknown savedate"
@@ -802,7 +803,7 @@ msgstr ""
 #: horizons/gui/gui.py:428
 #, python-format
 msgid "Saved at %s"
-msgstr "Gemt på %s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -829,7 +830,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:469
 msgid "No file selected"
-msgstr "Ingen filer valgt"
+msgstr ""
 
 #: horizons/gui/gui.py:469
 msgid "You need to select a savegame to delete"
@@ -846,7 +847,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:479
 msgid "Error!"
-msgstr "Fejl!"
+msgstr ""
 
 #: horizons/gui/gui.py:479
 msgid "Failed to delete savefile!"
@@ -901,11 +902,11 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:155
 msgid "Map: "
-msgstr "Kort:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:156
 msgid "Players: "
-msgstr "Spiller:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:159
 msgid "Creator: "
@@ -918,7 +919,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Wrong version"
-msgstr "Forkert version"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
@@ -929,7 +930,7 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:114
 #: horizons/gui/widgets/choose_next_scenario.py:43
 msgid "Difficulty: "
-msgstr "Sværhedsgrad:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:115
@@ -953,7 +954,7 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:193
 msgid "Map size:"
-msgstr "Kortstørrelse:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
