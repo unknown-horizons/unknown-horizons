@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-21 12:23+0200\n"
-"Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
+"PO-Revision-Date: 2011-11-21 13:21+0200\n"
+"Last-Translator: Jacob <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:267 sql
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -227,7 +227,7 @@ msgstr "Får"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Signal Fire"
-msgstr ""
+msgstr "Røgsignal"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -277,12 +277,12 @@ msgstr "Tobakshandler"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Toolmaker"
-msgstr ""
+msgstr "Værktøjsmager"
 
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
 msgid "Trader"
-msgstr ""
+msgstr "Købmand"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -308,17 +308,19 @@ msgstr "Vævertelt"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Trætårn"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Du kan også trække veje."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Du har nået det nuværende maksimale tilvækst. Dine indbyggere vil ikke "
+"opgradere yderligere."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -438,7 +440,7 @@ msgstr "dolk"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr ""
+msgstr "hjortekød A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -468,7 +470,7 @@ msgstr "mad"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
-msgstr ""
+msgstr "kom-sammen"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -518,12 +520,12 @@ msgstr "lame uld"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "citronfarvet"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr ""
+msgstr "spiritus"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -638,7 +640,7 @@ msgstr "hvid"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wood"
-msgstr ""
+msgstr "lille skov"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -652,19 +654,20 @@ msgstr "gul"
 
 #: horizons/engine.py:70
 msgid "Restart required"
-msgstr ""
+msgstr "Genstart er nødvendig"
 
 #: horizons/engine.py:71
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "Nogle af dine ændringer kræver genstart af Unknown Horizons."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Gendan standartindstillingerne"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
 msgstr ""
+"Dette vil slette alle ændringer af de indstillinger, du har lavet indtil nu."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
@@ -672,7 +675,7 @@ msgstr "Ønsker du at fortsætte?"
 
 #: horizons/engine.py:189
 msgid "System default"
-msgstr ""
+msgstr "System standart"
 
 #: horizons/engine.py:213
 msgid "Warning"
@@ -721,11 +724,11 @@ msgstr ""
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:135 horizons/gui/modules/multiplayermenu.py:114
 msgid "Error"
-msgstr ""
+msgstr "Fejl"
 
 #: horizons/gui/gui.py:135
 msgid "Failed to save."
-msgstr ""
+msgstr "Kunne ikke gemme."
 
 #: horizons/gui/gui.py:160
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -737,11 +740,11 @@ msgstr "Luk Spillet"
 
 #: horizons/gui/gui.py:167
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Er du sikker på at du vil lukke den kørende session?"
 
 #: horizons/gui/gui.py:169
 msgid "Quit Session"
-msgstr ""
+msgstr "Luk Session"
 
 #: horizons/gui/gui.py:215
 msgid "No saved games"
@@ -749,7 +752,7 @@ msgstr "Ingen gemte spil"
 
 #: horizons/gui/gui.py:215
 msgid "There are no saved games to load"
-msgstr ""
+msgstr "Der er ingen gemte spil der kan hentes"
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -770,6 +773,8 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Det gemte spil med navnet \"%s\" eksisterer allerede. \n"
+"Skal det overskrives?"
 
 #: horizons/gui/gui.py:269
 msgid "Confirmation for overwriting"
@@ -777,19 +782,19 @@ msgstr "Bekræft overskrivningen"
 
 #: horizons/gui/gui.py:277
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Vælg et gemt spil eller klik på annuller."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:277
 msgid "Select a savegame"
-msgstr ""
+msgstr "Vælg et gemt spil"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
 #: horizons/gui/gui.py:351 horizons/i18n/guitranslations.py:607
 #: horizons/i18n/guitranslations.py:922
 msgid "Details:"
-msgstr ""
+msgstr "detaljer:"
 
 #: horizons/gui/gui.py:352
 msgid "Error:"
@@ -797,7 +802,7 @@ msgstr "Fejl:"
 
 #: horizons/gui/gui.py:426
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Ukendt gemt spil"
 
 #: horizons/gui/gui.py:428
 #, python-format
@@ -805,27 +810,29 @@ msgid "Saved at %s"
 msgstr "Gemt på %s"
 
 #: horizons/gui/gui.py:432
-#, python-format
+#, python-format, fuzzy
 msgid "Saved %(amount)d time"
 msgid_plural "Saved %(amount)d times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gemt %(amount)d gang"
+msgstr[1] "Gemt %(amount)d gange"
 
 #: horizons/gui/gui.py:441
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "Gemt spil ver. %d"
 
 #: horizons/gui/gui.py:443
-#, python-format
+#, python-format, fuzzy
 msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"ADVARSEL: ukompatibel ver. %(ver)d!\n"
+"Nødvendig ver. %(need)d!"
 
 #: horizons/gui/gui.py:446
 msgid "INCOMPATIBLE VERSION\n"
-msgstr ""
+msgstr "UCOMPATIBLE VERSION\n"
 
 #: horizons/gui/gui.py:469
 msgid "No file selected"
@@ -833,16 +840,16 @@ msgstr "Ingen filer valgt"
 
 #: horizons/gui/gui.py:469
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Du er nødt til at vælge et gemt spil for at slette"
 
 #: horizons/gui/gui.py:472
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Vil du virkelig slette det gemte spil \"%s\"?"
 
 #: horizons/gui/gui.py:474
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Bekræft sletning"
 
 #: horizons/gui/gui.py:479
 msgid "Error!"
@@ -850,11 +857,11 @@ msgstr "Fejl!"
 
 #: horizons/gui/gui.py:479
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Kunne ikke slette det gemte spil!"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Kunne ikke finde pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
