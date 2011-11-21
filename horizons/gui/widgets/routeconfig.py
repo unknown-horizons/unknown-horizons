@@ -223,6 +223,8 @@ class RouteConfig(object):
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
 		vbox = self._gui.findChild(name="resources")
+		# access directly, it's possible that it's not found in the gui if it's hidden
+		self.minimap.icon.hide()
 		label = self._gui.findChild(name="select_res_label")
 		label.text = unicode("Select Resources")
 
@@ -257,6 +259,9 @@ class RouteConfig(object):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="resources").removeAllChildren()
 		self._gui.findChild(name="select_res_label").text = unicode("")
+
+		# access directly, it's possible that it's not found in the gui if it's hidden
+		self.minimap.icon.show()
 
 	def add_trade_slots(self, entry, num):
 		x_position = 105
@@ -389,4 +394,13 @@ class RouteConfig(object):
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
+
+
+		from horizons.gui.widgets.minimap import Minimap
+		icon = self._gui.findChild(name="minimap")
+		self.minimap = Minimap(icon, self.instance.session, \
+		                       self.instance.session.view.renderer['GenericRenderer'],
+		                       horizons.main.fife.targetrenderer,
+		                       scrolling=False)
+		self.minimap.draw()
 

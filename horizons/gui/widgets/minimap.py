@@ -33,10 +33,17 @@ from math import sin, cos
 class Minimap(object):
 	"""A basic minimap.
 
+	USAGE:
+	Minimap can be drawn via GenericRenderer on an arbitrary position (determined by rect in ctor)
+	or
+	via Pychan Icon. In this case, the rect parameter only determines the size, the
+
+
 	NOTE: Rendered images are sorted by name, so use minimap_${X}_foo,
 				where X of {a, b, ..} indicating the z-order
 
 	TODO:
+	* Remove renderer when used in icon node
 	* Clear up distinction of coords where the minimap image or screen is the origin
 	* Create a minimap tag for pychan
 	** Handle clicks, remove overlay icon
@@ -48,7 +55,6 @@ class Minimap(object):
 	           "highlight" : (255, 0, 0), # for events
 	           }
 
-	SIZE = (120, 120)
 
 	SHIP_DOT_UPDATE_INTERVAL = 0.5 # seconds
 
@@ -62,15 +68,23 @@ class Minimap(object):
 
 	__next_minimap_id = 0
 
-	def __init__(self, rect, session, renderer, targetrenderer):
+	def __init__(self, position, session, renderer, targetrenderer,
+	             scrolling=True):
 		"""
-		@param rect: a Rect, where we will draw to
+		@param position: a Rect or a Pychan Icon, where we will draw to
 		@param renderer: renderer to be used. Only fife.GenericRenderer is explicitly supported.
 		@param targetrenderer: target renderer to be used to draw directly into an image
 		"""
-		self.location = rect
+		if isinstance(position, Rect):
+			self.location = position
+		else: # assume icon
+			self.location = Rect.init_from_topleft_and_size(0, 0, position.width, position.height)
+			self.icon = position
+			if scrolling:
+				self.use_overlay_icon(self.icon)
 		self.renderer = renderer
 		self.session = session
+		self.scrolling = scrolling
 		self.rotation = 0
 
 		self.world = None
@@ -105,12 +119,15 @@ class Minimap(object):
 		if not self.session.view.has_change_listener(self.update_cam):
 			self.session.view.add_change_listener(self.update_cam)
 
-		# reset image
-		# add to global generic renderer
-		self.renderer.removeAll("minimap_image"+self._id)
-		self.minimap_image.reset()
-		node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
-		self.renderer.addImage("minimap_image"+self._id, node, self.minimap_image.image, False)
+		if not hasattr(self, "icon"): #
+			# add to global generic renderer
+			self.renderer.removeAll("minimap_image"+self._id)
+			self.minimap_image.reset()
+			node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
+			self.renderer.addImage("minimap_image"+self._id, node, self.minimap_image.image, False)
+		else:
+			self.minimap_image.reset()
+			self.icon.image = fife.GuiImage( self.minimap_image.image )
 
 		self.update_cam()
 		self._recalculate()
@@ -187,13 +204,16 @@ class Minimap(object):
 	def on_click(self, event):
 		"""Scrolls screen to the point, where the cursor points to on the minimap"""
 		# TODO: send ships via minimap
-		icon_pos = Point(*self.overlay_icon.getAbsolutePos())
 		mouse_position = Point(event.getX(), event.getY())
-		abs_mouse_position = icon_pos + mouse_position
-		if not self.location.contains(abs_mouse_position):
-			# mouse click was on icon but not actually on minimap
-			return
-		abs_mouse_position = abs_mouse_position.to_tuple()
+		if not hasattr(self, "icon"):
+			icon_pos = Point(*self.overlay_icon.getAbsolutePos())
+			abs_mouse_position = icon_pos + mouse_position
+			if not self.location.contains(abs_mouse_position):
+				# mouse click was on icon but not actually on minimap
+				return
+			abs_mouse_position = abs_mouse_position.to_tuple()
+		else:
+			abs_mouse_position = mouse_position.to_tuple()
 		if self._get_rotation_setting():
 			abs_mouse_position = self._get_from_rotated_coords(abs_mouse_position)
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position)
@@ -435,6 +455,9 @@ class Minimap(object):
 			int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y \
 		)
 
+	def get_size(self):
+		return (self.location.height, self.location.width)
+
 class _MinimapImage(object):
 	"""Encapsulates handling of fife Image.
 	Provides:
@@ -443,7 +466,8 @@ class _MinimapImage(object):
 	def __init__(self, minimap, targetrenderer, imagemanager):
 		self.minimap = minimap
 		self.targetrenderer = targetrenderer
-		self.image = imagemanager.loadBlank(120, 120)
+		size = self.minimap.get_size()
+		self.image = imagemanager.loadBlank(size[0], size[1])
 		self.rendertarget = targetrenderer.createRenderTarget( self.image )
 		self.set_drawing_enabled()
 
@@ -451,11 +475,12 @@ class _MinimapImage(object):
 		"""Reset image to original image"""
 		# reload
 		self.rendertarget.removeAll()
+		size = self.minimap.get_size()
 		self.rendertarget.addQuad( self.minimap._get_render_name("background"),
 		                           fife.Point(0,0),
-		                           fife.Point(0, Minimap.SIZE[1]),
-		                           fife.Point(Minimap.SIZE[0], Minimap.SIZE[1]),
-		                           fife.Point(Minimap.SIZE[0], 0),
+		                           fife.Point(0, size[1]),
+		                           fife.Point(size[0], size[1]),
+		                           fife.Point(size[0], 0),
 		                           *Minimap.COLORS["water"])
 
 	def set_drawing_enabled(self):

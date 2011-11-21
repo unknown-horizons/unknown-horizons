@@ -43,7 +43,11 @@
 		tooltip="Add to list" comment="List of harbors in trade route" />
 
 		<Label name="select_res_label" text=""/>
-		<VBox name="resources" size="100,200" />
+
+		<!-- exactly one of the following two is enabled at any given time -->
+		<Icon name="minimap" size="250,250" max_size="250,250"/> <!-- settlement selection in minimap -->
+		<VBox name="resources" size="100,200" /> <!-- res selection -->
+
 		<HBox> <Spacer min_size="275" max_size="275"/>
 			<CancelButton tooltip="Exit" />
 		</HBox>
