@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-21 02:39+0200\n"
+"PO-Revision-Date: 2011-11-21 02:43+0200\n"
 "Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -957,11 +957,11 @@ msgstr "Kortstørrelse:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "Vand:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "Maksimale  ø-størrelse:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
@@ -996,7 +996,7 @@ msgstr ""
 #: horizons/gui/mousetools/buildingtool.py:117
 #: horizons/i18n/guitranslations.py:166
 msgid "Build"
-msgstr ""
+msgstr "Byg"
 
 #: horizons/gui/tabs/boatbuildertab.py:36
 msgid "Boat builder overview"
@@ -1008,23 +1008,23 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:180
 msgid "Fisher boats"
-msgstr ""
+msgstr "Fiskerbåde"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:190
 #: horizons/i18n/guitranslations.py:265
 msgid "Trade boats"
-msgstr ""
+msgstr "Handelsbåde"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:198
 #: horizons/i18n/guitranslations.py:274
 msgid "War boats"
-msgstr ""
+msgstr "Krigsbåde"
 
 #: horizons/gui/tabs/boatbuildertab.py:205
 msgid "War ships"
-msgstr ""
+msgstr "Krigsskibe"
 
 #: horizons/gui/tabs/boatbuildertab.py:222
 msgid "Confirm order"
@@ -1061,7 +1061,7 @@ msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:85
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "Køb/Sælg:"
 
 #: horizons/gui/tabs/inventorytab.py:104
 msgid "Can't equip trade ship with weapons"
