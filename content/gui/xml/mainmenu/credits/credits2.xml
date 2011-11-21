@@ -41,9 +41,15 @@
 			<Label text="Petr Palička (peca)" />
 		</VBox>
 	</VBox>
+	<VBox> <Label text="Danish"  name="headline" />
+		<VBox  name="box">
+			<Label text="hellwing" />
+		</VBox>
+	</VBox>
 	<VBox> <Label text="German"  name="headline" />
 		<VBox  name="box">
 			<Label text="Michael Skiba" />
+			<Label text="djot" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Spanish"  name="headline" />
@@ -154,6 +160,7 @@
 		<VBox  name="box">
 			<Label text="pilen" />
 			<Label text="Nagrim" />
+			<Label text="Aleksi Kinnunen (alluk.)" />
 		</VBox>
 	</VBox>
 </VBox>
