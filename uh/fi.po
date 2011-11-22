@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-15 16:38+0200\n"
+"PO-Revision-Date: 2011-11-22 17:23+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -111,7 +111,7 @@ msgstr "Kalaparvi"
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Fisher"
-msgstr ""
+msgstr "Kalastaja"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -200,7 +200,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Merirosvolaiva"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -531,7 +531,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr "viina"
+msgstr "viini"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -546,7 +546,7 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "oranssi"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -576,7 +576,7 @@ msgstr "perunoita"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr ""
+msgstr "violetti"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -591,7 +591,7 @@ msgstr "merenkävijä"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "suola"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -621,7 +621,7 @@ msgstr "kankaita"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "tupakanlehtiä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -631,7 +631,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "tupakkaa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1138,7 +1138,7 @@ msgstr "Salli päivitykset"
 #: horizons/gui/tabs/mainsquaretabs.py:234
 #: horizons/i18n/guitranslations.py:379
 msgid "Sailors"
-msgstr ""
+msgstr "Merenkävijät"
 
 # 75%
 #. (text of widget: headline)
@@ -1168,7 +1168,7 @@ msgstr "Sivutoimiston yleiskatsaus"
 
 #: horizons/gui/tabs/overviewtab.py:139
 msgid "Main square overview"
-msgstr ""
+msgstr "Keskustorin yleiskatsaus"
 
 #: horizons/gui/tabs/overviewtab.py:150 horizons/gui/tabs/overviewtab.py:232
 msgid "Ship overview"
@@ -1406,7 +1406,7 @@ msgstr ""
 #. (tooltip of widget: villageschool-1)
 #: horizons/i18n/guitranslations.py:113
 msgid "Village school: Provides education."
-msgstr "Kyläkoulu: Tarjoaa opetusta."
+msgstr "Kyläkoulu: Järjestää opetusta."
 
 #. (tooltip of widget: weaver-1)
 #: horizons/i18n/guitranslations.py:115
@@ -1416,7 +1416,7 @@ msgstr "Kutomo: Tekee lampaanvillasta vaatteita."
 #. (text of widget: companies_label)
 #: horizons/i18n/guitranslations.py:122
 msgid "Mining"
-msgstr ""
+msgstr "Kaivostoiminta"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:126
@@ -1426,12 +1426,12 @@ msgstr "Uudisasutusrakennukset"
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:130
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Teurastamo: Tarvitsee sikoja tai karjaa. Tuottaa ruokaa."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:132
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Karjalauma: Tarvitsee maatilan."
 
 # 76%
 #. (tooltip of widget: charcoal-burning-1)
@@ -1443,17 +1443,17 @@ msgstr "Puuhiilen polttopaikka: Polttaa paljon lautoja."
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:136
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Kaivos: Louhii malmeja maaperästä."
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:138
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Sikalauma: Tarvitsee maatilan."
 
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:140
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Suola-allas: Haihduttaa suolaa merivedestä. Rakennetaan rannikolle."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:142
@@ -1468,7 +1468,7 @@ msgstr "Majatalo: Järjestää pitoja."
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:146
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Tupakkapelto: Tuottaa tupakkaa. Tarvitsee maatilan."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:148
@@ -2030,7 +2030,7 @@ msgstr "Siirrä ylös"
 #. (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
 #: horizons/i18n/guitranslations.py:594
 msgid "Leave Captain's log"
-msgstr "Poistu kapteenin lokikirjasta"
+msgstr "Poistu Kapteenin päiväkirjasta"
 
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:596
@@ -2120,7 +2120,7 @@ msgstr "Nimi"
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:644
 msgid "Resources"
-msgstr ""
+msgstr "Resurssit"
 
 #. (text of widget: total_score)
 #: horizons/i18n/guitranslations.py:648
@@ -3046,13 +3046,13 @@ msgstr "Olemme tästä pahoillamme, ja haluamme korjata tämän virheen."
 
 #: run_uh.py:160
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Tehdäksemme tämän tarvitsemme tietoja lokitiedostosta:"
+msgstr "Tarvitsemme kuitenkin tietoja lokitiedostosta:"
 
 #: run_uh.py:162
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
 "Pyydämme antamaan sen meille IRC-kanavallamme tai keskustelufoorumillamme, "
-"katso sivustolta unknown-horizons.org ."
+"katso lisää sivustoltamme osoitteesta unknown-horizons.org."
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
