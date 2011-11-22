@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
+
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
@@ -401,10 +403,14 @@ class RouteConfig(object):
 		self._gui.position_technique = "automatic" # "center:center"
 
 		icon = self._gui.findChild(name="minimap")
-		def on_click(map_coord):
-			tile = self.instance.session.world.get_tile(Point(*map_coord))
-			if tile is not None and tile.settlement is not None:
-				self.append_bo( tile.settlement.branch_office )
+		def on_click(event, drag):
+			if drag:
+				return
+			if event.getButton() == fife.MouseEvent.LEFT:
+				map_coord = event.map_coord
+				tile = self.instance.session.world.get_tile(Point(*map_coord))
+				if tile is not None and tile.settlement is not None:
+					self.append_bo( tile.settlement.branch_office )
 		self.minimap = Minimap(icon, self.instance.session, \
 		                       horizons.main.fife.targetrenderer,
 		                       cam_border=False,

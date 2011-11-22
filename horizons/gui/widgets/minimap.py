@@ -24,6 +24,7 @@ from fife import fife
 from horizons.util import Point, Rect, Circle
 from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
+from horizons.command.unit import Act
 
 import math
 from math import sin, cos
@@ -214,25 +215,40 @@ class Minimap(object):
 		self.overlay_icon = icon
 		icon.mapEvents({ \
 			icon.name + '/mousePressed' : self._on_click, \
-			icon.name + '/mouseDragged' : self._on_click, \
+			icon.name + '/mouseDragged' : self._on_drag, \
 			icon.name + '/mouseEntered' : self._mouse_entered, \
 		  icon.name + '/mouseMoved' : self._mouse_moved,
 			icon.name + '/mouseExited' : self._mouse_exited \
 		})
 
-	def on_click(self, map_coord):
+	def on_click(self, event, drag):
 		"""Handler for clicks (pressed and dragged)
 		Scrolls screen to the point, where the cursor points to on the minimap.
 		Overwrite this method to your convenience.
 		"""
-		# TODO: send ships via minimap
-		self.session.view.center(*map_coord)
+		map_coord = event.map_coord
+		moveable_selecteds = [ i for i in self.session.selected_instances if i.movable ]
+		if moveable_selecteds and event.getButton() == fife.MouseEvent.RIGHT:
+			if drag:
+				return
+			for i in moveable_selecteds:
+				Act(i, *map_coord).execute(self.session)
+			self.highlight(map_coord, factor=0.3)
+		elif event.getButton() == fife.MouseEvent.LEFT:
+			self.session.view.center(*map_coord)
 
 	def _on_click(self, event):
-		map_coord = self._get_event_coord(event)
-		self.on_click(map_coord)
+		event.map_coord = self._get_event_coord(event)
+		if event.map_coord:
+			self.on_click(event, drag=False)
+
+	def _on_drag(self, event):
+		event.map_coord = self._get_event_coord(event)
+		if event.map_coord:
+			self.on_click(event, drag=True)
 
 	def _get_event_coord(self, event):
+		"""Returns position of event as uh map coordinate tuple or None"""
 		mouse_position = Point(event.getX(), event.getY())
 		if not hasattr(self, "icon"):
 			icon_pos = Point(*self.overlay_icon.getAbsolutePos())
@@ -260,19 +276,22 @@ class Minimap(object):
 	def _show_tooltip(self, event):
 		if hasattr(self, "icon"): # only supported for icon mode atm
 			coords = self._get_event_coord(event)
-			tile = self.session.world.get_tile( Point(*coords) )
-			if tile is not None and tile.settlement is not None:
-				new_tooltip = tile.settlement.name
-				if self.icon.tooltip != new_tooltip:
-					self.icon.tooltip = new_tooltip
-					self.icon.position_tooltip(event)
-					self.icon.show_tooltip()
+			if coords:
+				tile = self.session.world.get_tile( Point(*coords) )
+				if tile is not None and tile.settlement is not None:
+					new_tooltip = tile.settlement.name
+					if self.icon.tooltip != new_tooltip:
+						self.icon.tooltip = new_tooltip
+						self.icon.position_tooltip(event)
+						self.icon.show_tooltip()
+					else:
+						self.icon.position_tooltip(event)
 				else:
-					self.icon.position_tooltip(event)
+					self.icon.hide_tooltip()
 			else:
 				self.icon.hide_tooltip()
 
-	def highlight(self, tup):
+	def highlight(self, tup, factor=1.0):
 		"""Try to get the users attention on a certain point of the minimap"""
 		tup = self._world_coord_to_minimap_coord( tup )
 		if self._get_rotation_setting():
@@ -284,9 +303,9 @@ class Minimap(object):
 
 		# grow the circle from MIN_RAD to MAX_RAD and back with STEPS steps, where the
 		# interval between steps is INTERVAL seconds
-		MIN_RAD = 3 # pixel
-		MAX_RAD = 12 # pixel
-		STEPS = 20
+		MIN_RAD = int( 3 * factor) # pixel
+		MAX_RAD = int(12 * factor) # pixel
+		STEPS = (20 * factor)
 		INTERVAL = math.pi / 16
 
 		def high(i=0):
