@@ -26,6 +26,25 @@ import os
 from yaml import load, dump
 from yaml import SafeLoader as Loader
 
+from horizons.util import Callback
+
+class _EntitiesLazyDict(dict):
+	def __init__(self):
+		self._future_entries = {}
+
+	def create_on_access(self, key, construction_function):
+		self._future_entries[key] = construction_function
+
+	def __getitem__(self, key):
+		try:
+			return super(_EntitiesLazyDict, self).__getitem__(key)
+		except KeyError:
+			fun = self._future_entries.pop(key)
+			elem = fun()
+			self[key] = elem
+			return elem
+
+
 class Entities(object):
 	"""Class that stores all the special classes for buildings, grounds etc.
 	Stores class objects, not instances.
@@ -45,43 +64,47 @@ class Entities(object):
 		cls.loaded = True
 
 	@classmethod
-	def load_grounds(cls, db):
+	def load_grounds(cls, db, load_now=False):
 		cls.log.debug("Entities: loading grounds")
 		if hasattr(cls, "grounds"):
 			cls.log.debug("Entities: grounds already loaded")
 			return
 		from world.ground import GroundClass
-		cls.grounds = {}
+		cls.grounds = _EntitiesLazyDict()
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
-			assert ground_id not in cls.grounds
-			cls.grounds[ground_id] = GroundClass(db, ground_id)
+			cls.grounds.create_on_access(ground_id, Callback(GroundClass, db, ground_id))
+			if load_now:
+				cls.grounds[ground_id]
 		cls.grounds[-1] = GroundClass(db, -1)
 
 	@classmethod
-	def load_buildings(cls, db):
+	def load_buildings(cls, db, load_now=False):
 		cls.log.debug("Entities: loading buildings")
 		if hasattr(cls, 'buildings'):
 			cls.log.debug("Entities: buildings already loaded")
 			return
-		cls.buildings = {}
+		cls.buildings = _EntitiesLazyDict()
 		from world.building import BuildingClass
 		for (building_id,) in db("SELECT id FROM building"):
-			assert building_id not in cls.buildings
-			cls.buildings[building_id] = BuildingClass(db, building_id)
+			cls.buildings.create_on_access(building_id, Callback(BuildingClass, db, building_id))
+			if load_now:
+				cls.buildings[building_id]
 
 	@classmethod
-	def load_units(cls, db):
+	def load_units(cls, db, load_now=False):
 		cls.log.debug("Entities: loading units")
 		if hasattr(cls, 'units'):
 			cls.log.debug("Entities: units already loaded")
 			return
-		cls.units = {}
+		cls.units = _EntitiesLazyDict()
 
 		from world.units import UnitClass
 		for root, dirnames, filenames in os.walk('content/objects/units'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				stream = file(os.path.join(root, filename), 'r')
 				result = load(stream, Loader=Loader)
-				unit = UnitClass(id=result['id'], class_package=result['classpackage'], class_type=result['classtype'], radius=result['radius'], classname=result['classname'], action_sets=result['actionsets'], components=result['components'])
-				assert unit.id not in cls.units
-				cls.units[unit.id] = unit
+				unit_id = int(result['id'])
+				print "Loading unit:", unit_id
+				cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, class_package=result['classpackage'], class_type=result['classtype'], radius=result['radius'], classname=result['classname'], action_sets=result['actionsets'], components=result['components']))
+				if load_now:
+					cls.units[unit_id]

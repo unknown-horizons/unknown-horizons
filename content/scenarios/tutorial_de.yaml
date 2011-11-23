@@ -22,8 +22,8 @@ events:
         \ f\xFCr Erkl\xE4rungen in der Anleitung haben, m\xF6chtet bestimmte Bereiche\
         \ n\xE4her erkl\xE4rt haben oder Ihr habt einen Fehler gefunden: Teilt das\
         \ dem Team mit! Nur so k\xF6nnen wir diese Anleitung verbessern.\nUnter www.unknown-horizons.org\
-        \ k\xF6nnt Ihr das Team kontaktieren oder Hilfe erhalten.\n\nUnd nun lasst\
-        \ uns das eigentliche Spiel beginnen."]
+        \ k\xF6nnt Ihr das Team kontaktieren oder Hilfe erhalten.\nUnd nun lasst uns\
+        \ das eigentliche Spiel beginnen."]
     type: logbook_w
   - arguments: [!!python/unicode 'NEUE AUFGABE: INSEL BESIEDELN', "Um Euer Schiff\
         \ zu bewegen, w\xE4hlt es mit einem Linksklick an. Ein Rechtsklick bewegt\
@@ -59,10 +59,10 @@ events:
         \nW\xE4hlt f\xFCrs Erste das Holzf\xE4llerlager unter 'Betriebe' aus und platziert\
         \ es in einem Bereich, in dem es von B\xE4umen umgeben ist.\n\nB\xE4ume k\xF6\
         nnen auch nachtr\xE4glich gepflanzt werden - das kostet aber Geld. Nutzt also\
-        \ alle Ressourcen, die die Natur anbietet!\n\nEin Betrieb braucht immer eine\
-        \ Verbindung zu einem Lager oder dem Kontor, sonst k\xF6nnen die Waren nicht\
-        \ eingesammelt werden und bleiben ungenutzt im Betrieb.\n\nDas bedeutet, dass\
-        \ Ihr einen Trampelpfad vom Holzf\xE4llerlager zum Kontor bauen solltet.\n\
+        \ alle Ressourcen, welche die Natur anbietet!\n\nEin Betrieb braucht immer\
+        \ eine Verbindung zu einem Lager oder dem Kontor, sonst k\xF6nnen die Waren\
+        \ nicht eingesammelt werden und bleiben ungenutzt im Betrieb.\n\nDas bedeutet,\
+        \ dass Ihr einen Trampelpfad vom Holzf\xE4llerlager zum Kontor bauen solltet.\n\
         \nAUFGABE: Errichtet ein Holzf\xE4llerlager in einem bewaldeten Gebiet und\
         \ verseht es mit einem Stra\xDFenanschluss.\n\nBetrachtet, wie Eure ersten\
         \ selbst produzierten Bretter abgeholt werden."]
@@ -207,14 +207,14 @@ events:
         \ Schiff bemerkt, welches von Zeit zu Zeit Eure Insel ansteuert? Es geh\xF6\
         rt zum Freien H\xE4ndler, einem der ersten Siedler in diesem Archipel.\n\n\
         Er beliefert Siedlungen mit G\xFCtern, die Ihr momentan noch nicht produzieren\
-        \ k\xF6nnt.\n\nAu\xDFerdem wird er Produktions\xFCbersch\xFCsse einkaufen,\
-        \ aber im Allgemeinen ist das Verbrauchen (mehr Zelte errichten) eintr\xE4\
-        glicher als der Verkauf.\n\nIn der Regel fahren die Schiffe umher und halten\
-        \ Ausschau nach m\xF6glichen Gesch\xE4ften. Diesen Prozess k\xF6nnt Ihr aber\
-        \ ein wenig beschleunigen.\n\nZu diesem Zweck k\xF6nnt Ihr ein Leuchtfeuer\
-        \ an der K\xFCste in der N\xE4he des Kontors errichten. Es wird Schiffen den\
-        \ Weg zur Siedlung zu zeigen.\n\nDas Leuchtfeuer muss das Gebiet abdecken,\
-        \ durch welches die abzufangenden Schiffe navigieren."]
+        \ k\xF6nnt.\nAu\xDFerdem wird er Produktions\xFCbersch\xFCsse einkaufen, aber\
+        \ im Allgemeinen ist das Verbrauchen (mehr Zelte errichten) eintr\xE4glicher\
+        \ als der Verkauf.\n\nIn der Regel fahren die Schiffe umher und halten Ausschau\
+        \ nach m\xF6glichen Gesch\xE4ften. Diesen Prozess k\xF6nnt Ihr aber ein wenig\
+        \ beschleunigen.\n\nZu diesem Zweck k\xF6nnt Ihr ein Leuchtfeuer an der K\xFC\
+        ste in der N\xE4he des Kontors errichten. Es wird Schiffen den Weg zur Siedlung\
+        \ zu zeigen.\n\nDas Leuchtfeuer muss das Gebiet abdecken, durch welches die\
+        \ abzufangenden Schiffe navigieren."]
     type: logbook_w
   - arguments: ['', "Nach dieser kleinen Orientierungshilfe wird der H\xE4ndler gern\
         \ ab und an vorbeikommen und Euer Kontor inspizieren.\n\nAngebote werden \xFC\
@@ -283,16 +283,13 @@ events:
         ude zum Beten.\n\nDie L\xF6sung ist ein Pavillon, welchen der Dorfpfarrer\
         \ als Sonnenschutz aufspannt.\n\nDienstleistungsgeb\xE4ude wie dieses ben\xF6\
         tigen einen Zugang zur Stra\xDFe, ansonsten k\xF6nnen es die Einwohner nicht\
-        \ erreichen.\n\nIn sp\xE4teren Stufen stehen verbesserte Versionen dieser\
-        \ Geb\xE4ude zur Verf\xFCgung. In diesem Fall wird das 'kleinere' Geb\xE4\
-        ude nicht ben\xF6tigt, da die 'gro\xDFe' Version auch die Bed\xFCrfnisse der\
-        \ Einwohner niedrigerer Stufen befriedigt."]
+        \ erreichen."]
     type: logbook_w
   - arguments: ['', "Beachtet, dass die Religion wie ein Konsumgut behandelt wird.\
         \ Eure Einwohner m\xFCssen also regelm\xE4\xDFig ihren Vorrat davon auff\xFC\
         llen.\n\nDazu ben\xF6tigen sie Zugang zu einem Geb\xE4ude, das Religion produziert\
         \ (dem Pavillon) und werden dann regelm\xE4\xDFig Religion dort abholen und\
-        \ Zuhause verbrauchen.\n\nEs ist insbesondere NICHT ausreichend, dass das\
+        \ zuhause verbrauchen.\n\nEs ist insbesondere NICHT ausreichend, dass das\
         \ Geb\xE4ude nur in einem gewissen Einzugsgebiet liegt. Auch ein Weg dorthin\
         \ muss vom Zelt aus erreichbar sein.\n\nAUFGABE: Baut einen Pavillon mit einer\
         \ Verbindung zu den Zelten, um Euren Einwohnern den Zugang zum Glauben zu\
@@ -390,11 +387,11 @@ events:
         \nHier ein kurzer \xDCberblick:\n* Weide: Schafe leben dort und produzieren\
         \ Schafwolle\n* Kartoffelfeld: erzeugt Kartoffeln, die als Nahrung gehandelt\
         \ werden\n* Zuckerfeld: erzeugt Zucker, welcher zum Brennen von Alkohol und\
-        \ f\xFCr die Zuckerb\xE4ckerei (sp\xE4ter) verwendet wird.\n\nMomentan ben\xF6\
-        tigt Ihr nur Weiden. Falls die Nahrung knapp wird, vielleicht aufgrund einer\
-        \ gro\xDFen Stadt, k\xF6nnt Ihr auch ein paar Kartoffeln anbauen.\n\nBeachtet,\
-        \ dass f\xFCr die Abholung der Kartoffeln eine Stra\xDFenverbindung zu der\
-        \ Farm ben\xF6tigt wird - nicht zu den Feldern."]
+        \ f\xFCr die Zuckerb\xE4ckerei verwendet wird.\n\nMomentan ben\xF6tigt Ihr\
+        \ nur Weiden. Falls die Nahrung knapp wird, vielleicht aufgrund einer gro\xDF\
+        en Stadt, k\xF6nnt Ihr auch ein paar Kartoffeln anbauen.\n\nBeachtet, dass\
+        \ Ihr f\xFCr die Abholung der Kartoffeln eine Stra\xDFenverbindung zur Farm\
+        \ ben\xF6tigt und nicht zu den Feldern!"]
     type: logbook_w
   - arguments: ['', "Stellt sicher, dass alle Felder im Einzugsbereich der Farm liegen.\n\
         \nIhr k\xF6nnt f\xFCr eine Farm auch mehrere Felder anlegen. Ein St\xFCck\
@@ -425,15 +422,14 @@ events:
         \ hat, um G\xFCter aufzubewahren, werden G\xFCter nicht mehr von Euren Betrieben\
         \ in ein Lager transportiert, sobald der Bestand voll ist. Falls also kein\
         \ Siedler vor kurzem sein Zelt ausbauen wollte, befindet sich wahrscheinlich\
-        \ eine Menge Bretter im Lager und Euer Holzf\xE4llerlager liegt brach.\nDiese\
-        \ Situation kann durch zwei Ma\xDFnahmen verbessert werden, die wir uns nun\
-        \ anschauen wollen.\n\nAlle Betriebe bieten die M\xF6glichkeit, gar nicht\
-        \ zu arbeiten. Das h\xF6rt sich vielleicht merkw\xFCrdig an, aber klickt einmal\
-        \ auf das Zahnrad, welches sich zum Beispiel in der \xDCbersicht des Holzf\xE4\
-        llerlagers befindet.\nFalls dieser 'Stillgelegt'-Modus aktiviert ist, werden\
-        \ die laufenden Kosten f\xFCr dieses Geb\xE4ude sinken. Sie werden vielleicht\
-        \ nicht immer auf null sinken, aber sie sind dennoch geringer, als wenn der\
-        \ Betrieb weiterarbeitete."]
+        \ eine Menge Bretter im Lager und Euer Holzf\xE4ller kann nichts mehr lagern.\n\
+        Diese Situation k\xF6nnt Ihr durch zwei Ma\xDFnahmen verbessern, die wir uns\
+        \ nun anschauen wollen.\n\nAlle Betriebe bieten die M\xF6glichkeit, ihre Produktion\
+        \ zu pausieren. Klickt einmal auf das Zahnrad, welches sich in der \xDCbersicht\
+        \ des Holzf\xE4llerlagers befindet.\nIst dieser 'Stillgelegt'-Modus aktiv,\
+        \ sinken die laufenden Kosten eines Geb\xE4udes. Sie werden vielleicht nicht\
+        \ immer auf null sinken, aber sie sind geringer als bei einem weiterhin produzierenden\
+        \ Betrieb."]
     type: logbook_w
   - arguments: ['', "Ihr k\xF6nnt somit Geld sparen, falls Ihr einen Betrieb vor\xFC\
         bergehend nicht ben\xF6tigt, ihn aber auch nicht abrei\xDFen m\xF6chtet.\n\
@@ -460,14 +456,13 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEUE AUFGABE: WEBER', "Ihr ben\xF6tigt immer noch\
-        \ einen Weber, um aus der nun produzierten Wolle Stoff herzustellen.\n\nEs\
-        \ gibt zwei M\xF6glichkeiten, ihn zu bauen: Entweder nahe der Farm oder in\
-        \ der N\xE4he eines Lagers bzw. des Kontors.\n\nIn beiden F\xE4llen solltet\
-        \ Ihr eine Stra\xDFenverbindung sicherstellen.\n\nDer Weber wird auch ohne\
-        \ eine Stra\xDFe bei der Farm Wolle abholen und Stoff produzieren, falls sie\
-        \ nah genug gelegen ist.\n\nAUFGABE: Errichtet einen Weber, der Wolle abholen\
-        \ kann."]
+  - arguments: [!!python/unicode 'NEUE AUFGABE: WEBER', "Ihr ben\xF6tigt nun noch\
+        \ einen Weber, um aus der Wolle Stoff herzustellen.\n\nEs gibt zwei M\xF6\
+        glichkeiten, ihn zu bauen: entweder nahe der Farm oder in der N\xE4he eines\
+        \ Lagers bzw. des Kontors.\n\nIn beiden F\xE4llen solltet Ihr eine Stra\xDF\
+        enverbindung sicherstellen.\n\nDer Weber wird auch ohne eine Stra\xDFe bei\
+        \ der Farm Wolle abholen und Stoff produzieren, falls sie nah genug gelegen\
+        \ ist.\n\nAUFGABE: Errichtet einen Weber, der Wolle abholen kann."]
     type: logbook
   - arguments: [!!python/unicode 'Errichtet einen Weber, der Wolle von einer Farm
         abholen kann.']
@@ -482,8 +477,8 @@ events:
   - arguments: [tutStepDone, 55]
     type: var_lt
 - actions:
-  - arguments: ["Beherbergt insgesamt 50 oder mehr Einwohner in Eurer Stadt, um dieses\
-        \ Tutorial zu beenden.\nIhr ben\xF6tigt au\xDFerdem eine positive Bilanz."]
+  - arguments: ["Beherbergt mehr als 50 Einwohner, um das Tutorial zu beenden. Ihr\
+        \ ben\xF6tigt au\xDFerdem eine positive Bilanz."]
     type: message
   - arguments: [!!python/unicode 'NEUE AUFGABE: ABSCHLUSS', "Versucht, in Eurer Stadt\
         \ insgesamt 50 oder mehr Einwohner zu beherbergen, indem Ihr mehr Wohngeb\xE4\
@@ -505,16 +500,18 @@ events:
   - arguments: [tutStepDone, 58]
     type: var_lt
 - actions:
-  - arguments: ["KEINE AUFGABEN \xDCBRIG", "Es gibt jetzt nichts mehr zu tun.\n\n\
-        Falls Ihr Vorschl\xE4ge habt, was wir verbessern, hinzuf\xFCgen oder auslassen\
-        \ k\xF6nnten bzw. sollten:\n\nwww.unknown-horizons.org\n\n#unknown-horizons\
-        \ @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nUnsere Foren stehen Euch\
-        \ ebenfalls offen!\n\nDie besten Ergebnisse wurden bis jetzt erreicht, wenn\
-        \ man unseren IRC Kanal betritt, das solltet Ihr also zuerst probieren (-;\n\
-        \nGenauso wie Ihr auch kein Gast in fremder Gesellschaft sein m\xF6chtet,\
-        \ der einer Unterhaltung mangels Sprachkenntnis nicht folgen kann, bitten\
-        \ wir dort um Englisch. In dringenden F\xE4llen k\xF6nnt Ihr auch in gebrochenem\
-        \ Englisch Hilfe suchen und erw\xE4hnen, dass Ihr Deutsch sprecht."]
+  - arguments: ["KEINE AUFGABEN \xDCBRIG", "Gl\xFCckwunsch, Ihr habt das Tutorial\
+        \ erfolgreich abgeschlossen und seid bereit f\xFCr neue Abenteuer. Setzt Segel\
+        \ im Einzel- und Mehrspielermodus von Unknown Horizons!\n\nFalls Ihr Vorschl\xE4\
+        ge habt, was wir verbessern, hinzuf\xFCgen oder auslassen k\xF6nnten bzw.\
+        \ sollten:\nwww.unknown-horizons.org\n#unknown-horizons @ irc.freenode.net\n\
+        team@unknown-horizons.org\n\nUnsere Foren stehen Euch ebenfalls offen!\n\n\
+        Die besten Ergebnisse wurden bis jetzt erreicht, wenn man unseren IRC Kanal\
+        \ betritt, das solltet Ihr also zuerst probieren (-;\n\nGenauso wie Ihr auch\
+        \ kein Gast in fremder Gesellschaft sein m\xF6chtet, der einer Unterhaltung\
+        \ mangels Sprachkenntnis nicht folgen kann, bitten wir dort um Englisch. In\
+        \ dringenden F\xE4llen k\xF6nnt Ihr auch in gebrochenem Englisch Hilfe suchen\
+        \ und erw\xE4hnen, dass Ihr Deutsch sprecht."]
     type: logbook
   - arguments: [!!python/unicode 'Vielen Dank!', "\n\n\n\n\n\n\nDanke, dass Ihr Euch\
         \ Zeit und M\xFChe genommen habt, diese Einf\xFChrung zu spielen!\n\nDas UH-Team"]

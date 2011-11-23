@@ -32,6 +32,7 @@ from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
+from horizons.gui.widgets.minimap import Minimap
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -233,7 +234,7 @@ class Island(BuildingOwner, WorldObject):
 				if tile.settlement is None:
 					tile.settlement = settlement
 					settlement.ground_map[coord] = tile
-					self.session.ingame_gui.minimap.update(coord)
+					Minimap.update(coord)
 					self._register_change(coord[0], coord[1])
 
 					# notify all AI players when land ownership changes

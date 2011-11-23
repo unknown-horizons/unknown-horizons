@@ -36,7 +36,7 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.util.gui import LazyWidgetsDict
-from horizons.constants import RES
+from horizons.constants import BUILDINGS, RES
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -78,6 +78,8 @@ class IngameGui(LivingObject):
 
 		cityinfo = self.widgets['city_info']
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
+
+		# special settings for really small resolutions
 		width = horizons.main.fife.engine_settings.getScreenWidth()
 		x = 'center'
 		y = 'top'
@@ -103,11 +105,11 @@ class IngameGui(LivingObject):
 		minimap.position_technique = "right-20:top+4"
 		minimap.show()
 
-		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0] + 77, 52, 121, 118)
+		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0] + 77, 52, 120, 120)
 
 		self.minimap = Minimap(minimap_rect, self.session, \
-		                       self.session.view.renderer['GenericRenderer'],
-		                       horizons.main.fife.targetrenderer)
+		                       horizons.main.fife.targetrenderer, \
+		                       renderer=self.session.view.renderer['GenericRenderer'])
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
@@ -386,6 +388,14 @@ class IngameGui(LivingObject):
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
 		self.session.cursor = BuildingTool(self.session, cls, None if unit is None else unit())
+
+	def toggle_road_tool(self):
+		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL_CLASS:
+			if isinstance(self.session.cursor, BuildingTool):
+				print self.session.cursor._class.id, BUILDINGS.TRAIL_CLASS
+			self._build(BUILDINGS.TRAIL_CLASS)
+		else:
+			self.session.cursor = SelectionTool(self.session)
 
 	def _get_menu_object(self, menu):
 		"""Returns pychan object if menu is a string, else returns menu

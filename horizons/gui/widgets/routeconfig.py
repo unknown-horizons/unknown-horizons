@@ -19,11 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
+
 from horizons.util.gui import load_uh_widget
-from horizons.util import Callback
+from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
 from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.gui.widgets.minimap import Minimap
 
 import horizons.main
 
@@ -224,6 +227,8 @@ class RouteConfig(object):
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
 		vbox = self._gui.findChild(name="resources")
+		# access directly, it's possible that it's not found in the gui if it's hidden
+		self.minimap.icon.hide()
 		label = self._gui.findChild(name="select_res_label")
 		label.text = unicode("Select Resources")
 
@@ -258,6 +263,9 @@ class RouteConfig(object):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="resources").removeAllChildren()
 		self._gui.findChild(name="select_res_label").text = unicode("")
+
+		# access directly, it's possible that it's not found in the gui if it's hidden
+		self.minimap.icon.show()
 
 	def add_trade_slots(self, entry, num):
 		x_position = 105
@@ -321,17 +329,22 @@ class RouteConfig(object):
 		  })
 		vbox.addChild(entry)
 
-	def append_bo(self):
+	def append_bo(self, branch_office=None):
+		"""Add a bo to the list on the left side.
+		@param branch_office: Set to add a specific one, else the selected one gets added.
+		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
 			return
 
-		selected = self.listbox._getSelectedItem()
+		if branch_office is None:
+			selected = self.listbox._getSelectedItem()
 
-		if selected == None:
-			return
+			if selected == None:
+				return
+			branch_office = self.branch_offices[selected]
 
-		self.instance.route.append(self.branch_offices[selected])
-		self.add_gui_entry(self.branch_offices[selected])
+		self.instance.route.append(branch_office)
+		self.add_gui_entry(branch_office)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
 
@@ -381,7 +394,6 @@ class RouteConfig(object):
 		wait_at_load_box.marked = self.instance.route.wait_at_load
 		def toggle_wait_at_load():
 			self.instance.route.wait_at_load = not self.instance.route.wait_at_load
-			print 'set to', self.instance.route.wait_at_load
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
@@ -390,4 +402,28 @@ class RouteConfig(object):
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
+
+		icon = self._gui.findChild(name="minimap")
+		def on_click(event, drag):
+			if drag:
+				return
+			if event.getButton() == fife.MouseEvent.LEFT:
+				map_coord = event.map_coord
+				tile = self.instance.session.world.get_tile(Point(*map_coord))
+				if tile is not None and tile.settlement is not None:
+					self.append_bo( tile.settlement.branch_office )
+		self.minimap = Minimap(icon, self.instance.session, \
+		                       horizons.main.fife.targetrenderer,
+		                       cam_border=False,
+		                       use_rotation=False,
+		                       on_click=on_click)
+
+		"""
+		import cProfile as profile
+		import tempfile
+		outfilename = tempfile.mkstemp(text = True)[1]
+		print 'profile to ', outfilename
+		profile.runctx( "self.minimap.draw()", globals(), locals(), outfilename)
+		"""
+		self.minimap.draw()
 

@@ -41,6 +41,7 @@
 		<Label name="lbl_h" text="{H} = Show coordinate values (Debug)" />
 		<Label name="lbl_t" text="{T} = Toggle translucency of ambient buildings"
 			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
+		<Label name="lbl_r" text="{R} = Enable road building mode" />
 		<Label name="lbl_x" text="{X} = Enable destruct mode" />
 	</VBox>
 	<VBox>
