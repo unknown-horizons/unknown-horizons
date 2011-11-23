@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-23 18:51+0200\n"
+"PO-Revision-Date: 2011-11-23 19:54+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -1215,17 +1215,17 @@ msgstr "Tyhjyys"
 
 #: horizons/gui/widgets/logbook.py:157
 msgid "There is nothing written in your logbook yet!"
-msgstr "Sinun lokikirjaasi ei ole vielä kirjoitettu mitään!"
+msgstr "Lokikirjaasi ei ole kirjoitettu vielä mitään!"
 
 #: horizons/gui/widgets/playerssettlements.py:41
-#, python-format
+#, python-format, fuzzy
 msgid "%(player)s's settlements"
-msgstr ""
+msgstr "Pelaajan %(player)s siirtokunnat"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr ""
+msgstr "Pelaajan %(player)s alukset"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:81
