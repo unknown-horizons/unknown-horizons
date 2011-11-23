@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-23 18:50+0200\n"
+"PO-Revision-Date: 2011-11-23 18:51+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -755,11 +755,11 @@ msgstr "Poistu pelistä"
 
 #: horizons/gui/gui.py:167
 msgid "Are you sure you want to abort the running session?"
-msgstr "Oletko varma, että haluat sulkea käynnissä olevan istunnon?"
+msgstr "Haluatko varmasti lopettaa käynnissä olevan pelin?"
 
 #: horizons/gui/gui.py:169
 msgid "Quit Session"
-msgstr "Lopeta istunto"
+msgstr "Lopeta peli"
 
 #: horizons/gui/gui.py:215
 msgid "No saved games"
@@ -926,7 +926,7 @@ msgstr "Verkon kanssa ilmeni ongelma:"
 
 #: horizons/gui/modules/multiplayermenu.py:133
 msgid "Version differs!"
-msgstr "Versio eroaa!"
+msgstr "Versio ei ole sama!"
 
 #: horizons/gui/modules/multiplayermenu.py:155
 msgid "Map: "
@@ -955,7 +955,7 @@ msgstr "Väärä versio"
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "Suositeltu pelaajien lukumäärä: "
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -1117,7 +1117,7 @@ msgstr ""
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:76 horizons/i18n/guitranslations.py:301
 msgid "Account"
-msgstr "Käyttäjätili"
+msgstr "Budjetti"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:110
@@ -1143,9 +1143,8 @@ msgstr "Merenkävijät"
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:240
 #: horizons/i18n/guitranslations.py:348
-#, fuzzy
 msgid "Pioneers"
-msgstr "edelläkävijä"
+msgstr "Kansoittajat"
 
 # 75%
 #. (text of widget: headline)
@@ -1153,7 +1152,7 @@ msgstr "edelläkävijä"
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:408 horizons/i18n/guitranslations.py:646
 msgid "Settlers"
-msgstr "Uudisasukas"
+msgstr "Uudisasukkaat"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:49 horizons/gui/tabs/overviewtab.py:407
