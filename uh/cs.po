@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-23 20:48+0200\n"
+"PO-Revision-Date: 2011-11-23 20:47+0200\n"
 "Last-Translator: Turmaleus <turmaleus@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1620,7 +1620,7 @@ msgstr ""
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py:246
 msgid "Currently building:"
-msgstr ""
+msgstr "Právě stavíte:"
 
 #. (text of widget: BB_howto_build_lbl)
 #: horizons/i18n/guitranslations.py:248
