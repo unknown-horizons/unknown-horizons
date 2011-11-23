@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-11-17 16:56+0200\n"
+"PO-Revision-Date: 2011-11-23 16:29+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -44,7 +44,7 @@ msgid "overview"
 msgstr "yleiskatsaus"
 
 msgid "ship"
-msgstr "alus"
+msgstr "alus, laiva"
 
 msgid "main"
 msgstr "pää-"
@@ -116,13 +116,13 @@ msgid "coast"
 msgstr "rannikko"
 
 msgid "connect"
-msgstr "yhdistä"
+msgstr "yhdistää"
 
 msgid "cost"
 msgstr "kustannus"
 
 msgid "free"
-msgstr "ilmainen"
+msgstr "ilmainen, vapaa"
 
 msgid "log"
 msgstr "tukki / lokikirja"
@@ -131,7 +131,7 @@ msgid "lumberjack"
 msgstr "puunhakkaaja"
 
 msgid "sell"
-msgstr "myy"
+msgstr "myydä"
 
 msgid "storage"
 msgstr "varasto"
@@ -140,7 +140,7 @@ msgid "taxes"
 msgstr "veroja"
 
 msgid "trader"
-msgstr "kaupustelija"
+msgstr "kauppias"
 
 msgid "version"
 msgstr "versio"
@@ -279,7 +279,7 @@ msgstr "metsästäjä"
 
 #
 msgid "leave"
-msgstr "jätä"
+msgstr "jättää, poistua"
 
 #
 msgid "market"
@@ -292,19 +292,19 @@ msgid "sailor"
 msgstr "merenkävijä"
 
 msgid "pioneer"
-msgstr "uudisasukas"
+msgstr "kansoittaja (siirtokunnan tasona), uudisasukas (yleisesti)"
 
 msgid "settler"
 msgstr "uudisasukas"
 
 msgid "citizen"
-msgstr "kaupunkilainen"
+msgstr "kansalainen"
 
 msgid "merchant"
-msgstr "kauppamatkustaja"
+msgstr "kauppias"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aatelinen"
 
 #
 msgid "refresh"
@@ -330,7 +330,7 @@ msgid "village"
 msgstr "kylä"
 
 msgid "account"
-msgstr "tili / pankkitili"
+msgstr "budjetti, (käyttäjä)tili, pankkitili"
 
 msgid "back"
 msgstr "takaisin"
