@@ -138,9 +138,9 @@ class BasicBuilding(ConcretObject):
 		super(BasicBuilding, self).save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, location, level) \
 		   VALUES (?, ?, ?, ?, ?, ?, ?)", \
-								                       self.worldid, self.__class__.id, self.position.origin.x, \
-								                       self.position.origin.y, self.rotation, \
-								                       (self.settlement or self.island).worldid, self.level)
+		                                self.worldid, self.__class__.id, self.position.origin.x, \
+		                                self.position.origin.y, self.rotation, \
+		                                (self.settlement or self.island).worldid, self.level)
 		if self.has_running_costs:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self.get_payout)
 			db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES(?, ?)", self.worldid, remaining_ticks)
