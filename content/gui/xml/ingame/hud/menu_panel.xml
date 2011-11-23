@@ -12,17 +12,17 @@
 		up_image="content/gui/icons/widgets/minimap/tear.png"
 		down_image="content/gui/icons/widgets/minimap/tear_h.png"
 		hover_image="content/gui/icons/widgets/minimap/tear_h.png"
-		is_focusable="0" tooltip="Destroy" />
+		is_focusable="0" tooltip="Destroy (X)" />
 	<TooltipButton name="logbook" position="39,32"
 		up_image="content/gui/icons/widgets/minimap/captainslog.png"
 		down_image="content/gui/icons/widgets/minimap/captainslog_h.png"
 		hover_image="content/gui/icons/widgets/minimap/captainslog_h.png"
-		is_focusable="0" tooltip="Captain's log" />
+		is_focusable="0" tooltip="Captain's log (L)" />
 	<TooltipButton name="build" position="82,42"
 		up_image="content/gui/icons/widgets/minimap/build.png"
 		down_image="content/gui/icons/widgets/minimap/build_h.png"
 		hover_image="content/gui/icons/widgets/minimap/build_h.png"
-		is_focusable="0" tooltip="Build menu" />
+		is_focusable="0" tooltip="Build menu (B)" />
 	<TooltipButton name="diplomacyButton" position="130,32"
 		up_image="content/gui/icons/widgets/minimap/diplomacy.png"
 		down_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
@@ -32,5 +32,5 @@
 		up_image="content/gui/icons/widgets/minimap/gamemenu.png"
 		down_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
 		hover_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
-		tooltip="Game menu" is_focusable="0"/>
+		tooltip="Game menu (Esc)" is_focusable="0"/>
 </Container>

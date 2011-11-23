@@ -36,7 +36,7 @@
 				up_image="content/gui/icons/buildmenu/015.png"
 				hover_image="content/gui/icons/buildmenu/015_h.png"
 				down_image="content/gui/icons/buildmenu/015_h.png"
-				tooltip="Trail: Needed for collecting goods."/>
+				tooltip="Trail (R): Needed for collecting goods."/>
 			<!--<TooltipButton name="bridge-1"
 				up_image="content/gui/icons/buildmenu/outdated/bridge.png"
 				hover_image="content/gui/icons/buildmenu/outdated/bridge_h.png"
