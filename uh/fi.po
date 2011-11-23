@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-22 17:23+0200\n"
+"PO-Revision-Date: 2011-11-23 18:50+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -96,7 +96,7 @@ msgstr "Tislaamo"
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "Lääkäri"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -272,7 +272,7 @@ msgstr "Teltan_riekaleet"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Tupakkapelto"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -318,7 +318,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Polkuja voi myös vetää."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -660,12 +660,11 @@ msgstr "keltainen"
 
 #: horizons/engine.py:70
 msgid "Restart required"
-msgstr "Uudelleenkäynnistys tarpeen"
+msgstr "Pelin uudelleenkäynnistys"
 
 #: horizons/engine.py:71
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
-"Jotkin tekemistäsi muutoksista edellyttävät pelin käynnistämistä uudelleen."
+msgstr "Jotkut tekemäsi muutokset edellyttävät pelin käynnistämistä uudelleen."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
@@ -693,7 +692,7 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"SDL renderöijä on tarkoitettu vain vararatkaisuksi ja sisältää vakavia "
+"SDL-renderöinti on tarkoitettu vain vararatkaisuksi ja sisältää vakavia "
 "piirtovirheitä. \n"
 "\n"
 "Käyttö omalla vastuulla!"
