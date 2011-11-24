@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-24 06:49+0200\n"
+"PO-Revision-Date: 2011-11-24 07:00+0200\n"
 "Last-Translator: saiffe <saiffe@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -719,19 +719,21 @@ msgstr ""
 
 #: horizons/engine.py:542
 msgid "Failed to apply new network data."
-msgstr ""
+msgstr "Fallo al aplicar nuuevos datos d ela red"
 
 #: horizons/engine.py:543 horizons/gui/modules/multiplayermenu.py:52
 msgid "Networking couldn't be initialised with the current configuration."
-msgstr ""
+msgstr "No se pudo inicializar la conexión con la configuración actual"
 
 #: horizons/engine.py:544
 msgid "Check the data you entered in the Network section."
-msgstr ""
+msgstr "Revisa los datos introducidos en la sección de Red"
 
 #: horizons/engine.py:547
 msgid "Low port numbers sometimes require special privileges, try one greater than 1024 or 0."
 msgstr ""
+"Los números bajos de puerto algunas veces necesitan privilegios especiales, "
+"intenta con uno mayor a 1024 ó 0"
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:135 horizons/gui/modules/multiplayermenu.py:114
@@ -829,8 +831,8 @@ msgstr "Guardado en %s"
 #, python-format
 msgid "Saved %(amount)d time"
 msgid_plural "Saved %(amount)d times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Guardado %(amount)d vez"
+msgstr[1] "Guardado %(amount)d veces"
 
 #: horizons/gui/gui.py:441
 #, python-format
@@ -888,18 +890,22 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Usuarios Linux: Intenten instalar pyenet através de su administrador de "
+"paquetes"
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr ""
+msgstr "Usuarios Windows: Actualmente no existe soporte razonable para Windos"
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Fallo al inicializar conexión de red"
 
 #: horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the data you entered in the Network section in the settings dialogue."
 msgstr ""
+"Revisa los datos que introdujiste en la sección de Red en el diálogo de "
+"Ajustes"
 
 #: horizons/gui/modules/multiplayermenu.py:101
 #, python-format
@@ -907,6 +913,10 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"No es posible conectarse al servidor maestro. Por favor revise su conexión a "
+"Internet. Si está disponible, significa que nuestro servidor maestro está "
+"temporalmente caído.\n"
+"Detalles: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:101
 msgid "Network Error"
