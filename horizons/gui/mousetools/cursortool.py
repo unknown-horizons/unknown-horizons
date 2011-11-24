@@ -56,6 +56,9 @@ class CursorTool(fife.IMouseListener, LivingObject):
 	def mouseDragged(self, evt):
 		pass
 
+	def updateCursor(self, evt):
+		pass
+
 	def _get_world_location_from_event(self, evt):
 		"""Returns the coordinates of an event at the map.
 		@return Point with int coordinates"""

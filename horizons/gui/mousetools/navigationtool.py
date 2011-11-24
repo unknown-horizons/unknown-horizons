@@ -155,6 +155,11 @@ class NavigationTool(CursorTool):
 		"""
 		Utility method, returns the instances under the cursor
 		"""
+		if hasattr(evt, "hover_instances"):
+			# ah, what a friendly event, it already provides us with a list.
+			# used for non-standard events, such as from the minimap
+			print 'found hover'
+			return evt.hover_instances
 		instances = self.session.view.cam.getMatchingInstances(\
 			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS], False) # False for accurate
 

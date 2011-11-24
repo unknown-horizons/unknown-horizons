@@ -175,7 +175,7 @@ class Minimap(object):
 				corner[1] = self.world.min_y
 			corner = tuple(corner)
 
-			minimap_coords = self._world_coord_to_minimap_coord(corner)
+			minimap_coords = self._world_coords_to_minimap_coords(corner)
 			if use_rotation:
 				minimap_coords = self._get_rotated_coords( minimap_coords )
 			# transfrom from screen coord to minimap coord
@@ -200,7 +200,7 @@ class Minimap(object):
 		@param tup: (x, y)"""
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		minimap_point = self._world_coord_to_minimap_coord(tup)
+		minimap_point = self._world_coords_to_minimap_coords(tup)
 		if self._get_rotation_setting():
 			minimap_point = self._get_rotated_coords( minimap_point )
 		world_to_minimap = self._get_world_to_minimap_ratio()
@@ -226,28 +226,56 @@ class Minimap(object):
 		Scrolls screen to the point, where the cursor points to on the minimap.
 		Overwrite this method to your convenience.
 		"""
-		map_coord = event.map_coord
-		moveable_selecteds = [ i for i in self.session.selected_instances if i.movable ]
-		if moveable_selecteds and event.getButton() == fife.MouseEvent.RIGHT:
+		map_coords = event.map_coords
+		if event.getButton() == fife.MouseEvent.RIGHT:
+			self._to_screen_event(event)
 			if drag:
-				return
-			for i in moveable_selecteds:
-				Act(i, *map_coord).execute(self.session)
-			self.highlight(map_coord, factor=0.3)
+				self.session.cursor.mouseDragged(event)
+			else:
+				self.session.cursor.mousePressed(event)
+				if event.hover_instances:
+					map_coords = iter(event.hover_instances).next().position.to_tuple()
+				self.highlight(map_coords, factor=0.3)
 		elif event.getButton() == fife.MouseEvent.LEFT:
-			self.session.view.center(*map_coord)
+			self.session.view.center(*map_coords)
+
+	def _to_screen_event(self, event):
+		"""Translates an event of the minimap to one that looks like it was triggered on the normal screen"""
+		hover_instances = set()
+		ratio = self._get_world_to_minimap_ratio()
+		ratio = (ratio[0] + ratio[1]) / 2
+		allowed_distance = 3.0 / ratio
+		print 'allowed', allowed_distance
+		#print "ships" , self.session.world.ship_map
+		for ship in self.session.world.ship_map.itervalues():
+			ship = ship()
+			if ship is None:
+				continue
+			#print 'dist', ship.position.distance_to_tuple(event.map_coords)
+			if ship.position.distance_to_tuple(event.map_coords) < allowed_distance:
+				hover_instances.add( ship )
+				event.map_coords = ship.position.to_tuple()
+				break
+		print 'hvo', hover_instances
+		event.hover_instances = hover_instances
+
+		screen_coords = self.session.view.cam.toScreenCoordinates(
+		  fife.ExactModelCoordinate(*event.map_coords)
+		)
+		event.getX = lambda : screen_coords.x
+		event.getY = lambda : screen_coords.y
 
 	def _on_click(self, event):
-		event.map_coord = self._get_event_coord(event)
-		if event.map_coord:
+		event.map_coords = self._get_event_coords(event)
+		if event.map_coords:
 			self.on_click(event, drag=False)
 
 	def _on_drag(self, event):
-		event.map_coord = self._get_event_coord(event)
-		if event.map_coord:
+		event.map_coords = self._get_event_coords(event)
+		if event.map_coords:
 			self.on_click(event, drag=True)
 
-	def _get_event_coord(self, event):
+	def _get_event_coords(self, event):
 		"""Returns position of event as uh map coordinate tuple or None"""
 		mouse_position = Point(event.getX(), event.getY())
 		if not hasattr(self, "icon"):
@@ -261,13 +289,18 @@ class Minimap(object):
 			abs_mouse_position = mouse_position.to_tuple()
 		if self._get_rotation_setting():
 			abs_mouse_position = self._get_from_rotated_coords(abs_mouse_position)
-		return self._minimap_coord_to_world_coord(abs_mouse_position)
+		return self._minimap_coords_to_world_coords(abs_mouse_position)
 
 	def _mouse_entered(self, event):
 		self._show_tooltip(event)
 
 	def _mouse_moved(self, event):
-		self._show_tooltip(event)
+		event.map_coords = self._get_event_coords(event)
+		if event.map_coords:
+			self._show_tooltip(event)
+
+			self._to_screen_event(event)
+			self.session.cursor.updateCursor(event)
 
 	def _mouse_exited(self, event):
 		if hasattr(self, "icon"): # only supported for icon mode atm
@@ -275,7 +308,7 @@ class Minimap(object):
 
 	def _show_tooltip(self, event):
 		if hasattr(self, "icon"): # only supported for icon mode atm
-			coords = self._get_event_coord(event)
+			coords = self._get_event_coords(event)
 			if coords:
 				tile = self.session.world.get_tile( Point(*coords) )
 				if tile is not None and tile.settlement is not None:
@@ -292,8 +325,9 @@ class Minimap(object):
 				self.icon.hide_tooltip()
 
 	def highlight(self, tup, factor=1.0):
-		"""Try to get the users attention on a certain point of the minimap"""
-		tup = self._world_coord_to_minimap_coord( tup )
+		"""Try to get the users attention on a certain point of the minimap.
+		@param factor: indicates importance of event."""
+		tup = self._world_coords_to_minimap_coords( tup )
 		if self._get_rotation_setting():
 			tup = self._get_rotated_coords( tup )
 		tup = (
@@ -322,7 +356,7 @@ class Minimap(object):
 			radius = MIN_RAD + int(( float(part) / (STEPS/2) ) * (MAX_RAD - MIN_RAD) )
 
 			for x, y in Circle( Point(*tup), radius=radius ).get_border_coordinates():
-				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), 0,0,0)
+				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), 0, 0, 0)
 
 			ExtScheduler().add_new_object(lambda : high(i), self, INTERVAL, loops=1)
 
@@ -356,7 +390,7 @@ class Minimap(object):
 		location_left = self.location.left
 		location_top = self.location.top
 		rt_addPoint = rt.addPoint
-		fife_point = fife.Point(0,0)
+		fife_point = fife.Point(0, 0)
 
 		use_rotation = self._get_rotation_setting()
 
@@ -429,22 +463,22 @@ class Minimap(object):
 			if not ship():
 				continue
 
-			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
+			coords = self._world_coords_to_minimap_coords( ship().position.to_tuple() )
 
 			if use_rotation:
-				coord = self._get_rotated_coords(coord)
+				coords = self._get_rotated_coords(coords)
 			# transform from screen coord to minimap coord
-			coord = (
-			  coord[0] - self.location.left,
-			  coord[1] - self.location.top
+			coords = (
+			  coords[0] - self.location.left,
+			  coords[1] - self.location.top
 			  )
 
 			color = ship().owner.color.to_tuple()
 			self.minimap_image.rendertarget.addQuad(self._get_render_name("ship"),
-			                                        fife.Point( coord[0]-2, coord[1]-2 ),
-			                                        fife.Point( coord[0]-2, coord[1]+1 ),
-			                                        fife.Point( coord[0]+1, coord[1]+1 ),
-			                                        fife.Point( coord[0]+1, coord[1]-2 ),
+			                                        fife.Point( coords[0]-2, coords[1]-2 ),
+			                                        fife.Point( coords[0]-2, coords[1]+1 ),
+			                                        fife.Point( coords[0]+1, coords[1]+1 ),
+			                                        fife.Point( coords[0]+1, coords[1]-2 ),
 			                                        *color)
 
 	def rotate_right (self):
@@ -520,7 +554,7 @@ class Minimap(object):
 		pixel_per_coord_y = float(world_height) / minimap_height
 		return (pixel_per_coord_x, pixel_per_coord_y)
 
-	def _world_coord_to_minimap_coord(self, tup):
+	def _world_coords_to_minimap_coords(self, tup):
 		"""Calculates which pixel in the minimap contains a coord in the real map.
 		@param tup: (x, y) as ints
 		@return tuple"""
@@ -530,8 +564,8 @@ class Minimap(object):
 			int(round(float(tup[1] - self.world.min_y)/pixel_per_coord_y))+self.location.top \
 		)
 
-	def _minimap_coord_to_world_coord(self, tup):
-		"""Inverse to _world_coord_to_minimap_coord"""
+	def _minimap_coords_to_world_coords(self, tup):
+		"""Inverse to _world_coords_to_minimap_coords"""
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
 		return ( \
 			int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x, \

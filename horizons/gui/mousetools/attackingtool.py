@@ -58,6 +58,9 @@ class AttackingTool(SelectionTool):
 
 	def mouseMoved(self, evt):
 		super(AttackingTool, self).mouseMoved(evt)
+		self.updateCursor(evt)
+
+	def updateCursor(self, evt):
 		target = self._get_attackable_instance(evt)
 		if target:
 			horizons.main.fife.cursor.set(horizons.main.fife.attacking_cursor_image)
