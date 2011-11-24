@@ -231,7 +231,7 @@ class RouteConfig(object):
 		# access directly, it's possible that it's not found in the gui if it's hidden
 		self.minimap.icon.hide()
 		label = self._gui.findChild(name="select_res_label")
-		label.text = unicode("Select Resources")
+		label.text = _("Select resources:")
 
 		#hardcoded for 5 works better than vbox.width / button_width
 		amount_per_line = 5
