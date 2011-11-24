@@ -415,6 +415,7 @@ class RouteConfig(object):
 					self.append_bo( tile.settlement.branch_office )
 		self.minimap = Minimap(icon, self.instance.session, \
 		                       horizons.main.fife.targetrenderer,
+		                       horizons.main.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
 		                       on_click=on_click)

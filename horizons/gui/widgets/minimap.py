@@ -56,13 +56,16 @@ class Minimap(object):
 	           }
 
 
+	BRANCH_OFFICE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
+
 	SHIP_DOT_UPDATE_INTERVAL = 0.4 # seconds
 
 	RENDER_NAMES = { # alpha-ordering determines the order
 	  "background" : "c",
 	  "base" : "d", # islands, etc.
-	  "ship" : "e",
-	  "cam" : "f",
+	  "branch_office" : "e",
+	  "ship" : "f",
+	  "cam" : "g",
 	  "ship_route" : "h",
 	  "highlight" : "l"
 	  }
@@ -71,7 +74,7 @@ class Minimap(object):
 	__ship_route_counter = get_counter()
 	_instances = [] # all active instances
 
-	def __init__(self, position, session, targetrenderer, renderer=None,
+	def __init__(self, position, session, targetrenderer, imagemanager, renderer=None,
 	             cam_border=True, use_rotation=True, on_click=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
@@ -102,9 +105,9 @@ class Minimap(object):
 
 		self._id = str(self.__class__.__minimap_id_counter.next()) # internal identifier, used for allocating resources
 
-		self.minimap_image = _MinimapImage(self, targetrenderer,
-		                                   horizons.main.fife.imagemanager )
+		self.imagemanager = imagemanager
 
+		self.minimap_image = _MinimapImage(self, targetrenderer)
 
 		#import random
 		#ExtScheduler().add_new_object(lambda : self.highlight( (50+random.randint(-50,50), random.randint(-50,50) + 50 )), self, 2, loops=-1)
@@ -492,6 +495,28 @@ class Minimap(object):
 			                                        fife.Point( coord[0]+1, coord[1]-2 ),
 			                                        *color)
 
+		# draw settlement branch offices if something has changed
+		settlements = self.world.settlements
+		# save only worldids as to not introduce actual coupling
+		cur_settlements = set( i.worldid for i in settlements )
+		if not hasattr(self, "_last_settlements") or cur_settlements != self._last_settlements:
+			# update necessary
+			bo_img = self.imagemanager.load( self.__class__.BRANCH_OFFICE_IMAGE )
+			bo_render_name = self._get_render_name("branch_office")
+			self.minimap_image.rendertarget.removeAll( bo_render_name )
+			# scale bo icons
+			ratio = sum(self._get_world_to_minimap_ratio()) / 2.0
+			ratio = max(1.0, ratio)
+			new_width, new_height = int(bo_img.getWidth()/ratio), int(bo_img.getHeight()/ratio)
+			for settlement in settlements:
+				coord = settlement.branch_office.position.center().to_tuple()
+				coord = self._world_to_minimap(coord, use_rotation)
+				point = fife.Point( coord[0], coord[1] )
+				self.minimap_image.rendertarget.resizeImage(bo_render_name, point, bo_img,
+					                                          new_width, new_height)
+			self._last_settlements = cur_settlements
+
+
 	def rotate_right (self):
 		# keep track of rotation at any time, but only apply
 		# if it's actually used
@@ -605,11 +630,11 @@ class _MinimapImage(object):
 	Provides:
 	- self.rendertarget: instance of fife.RenderTarget
 	"""
-	def __init__(self, minimap, targetrenderer, imagemanager):
+	def __init__(self, minimap, targetrenderer):
 		self.minimap = minimap
 		self.targetrenderer = targetrenderer
 		size = self.minimap.get_size()
-		self.image = imagemanager.loadBlank(size[0], size[1])
+		self.image = self.minimap.imagemanager.loadBlank(size[0], size[1])
 		self.rendertarget = targetrenderer.createRenderTarget( self.image )
 		self.set_drawing_enabled()
 
