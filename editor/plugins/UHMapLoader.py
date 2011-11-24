@@ -46,6 +46,7 @@ class MapLoader:
 		self._engine = engine
 		self._callback = callback
 		self._debug = debug
+		self._cam = None
 
 	def isLoadable(self, path):
 		return True
@@ -62,20 +63,7 @@ class MapLoader:
 		building_layer = map.createLayer(self.BUILDING_LAYER_NAME, grid)
 
 		# add camera
-		cam = map.addCamera("main", ground_layer, fife.Rect(0, 0, 640, 480))
-		cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
-		cam.setRotation(VIEW.ROTATION)
-		cam.setTilt(VIEW.TILT)
-		cam.setZoom(VIEW.ZOOM)
-
-		# make layer the active layer
-		fife.InstanceRenderer.getInstance(cam).addActiveLayer(ground_layer)
-		fife.GridRenderer.getInstance(cam).addActiveLayer(ground_layer)
-		fife.BlockingInfoRenderer.getInstance(cam).addActiveLayer(ground_layer)
-		fife.CoordinateRenderer.getInstance(cam).addActiveLayer(ground_layer)
-		fife.CellSelectionRenderer.getInstance(cam).addActiveLayer(ground_layer)
-		fife.LightRenderer.getInstance(cam).addActiveLayer(ground_layer)
-		fife.GenericRenderer.getInstance(cam).addActiveLayer(ground_layer)
+		self._createCamera(building_layer, map)
 
 		map_db = DbReader(os.path.join(util.getUHPath(), path))
 		# TODO: check the map version number
@@ -89,6 +77,23 @@ class MapLoader:
 		self._loadBuildings(building_layer, model, map_db)
 
 		return map
+
+	def _createCamera(self, layer, map):
+		# add camera
+		cam = map.addCamera("main", layer, fife.Rect(0, 0, 640, 480))
+		cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
+		cam.setRotation(VIEW.ROTATION)
+		cam.setTilt(VIEW.TILT)
+		cam.setZoom(VIEW.ZOOM)
+
+		# make layer the active layer
+		fife.InstanceRenderer.getInstance(cam).activateAllLayers(map)
+		fife.GridRenderer.getInstance(cam).activateAllLayers(map)
+		fife.BlockingInfoRenderer.getInstance(cam).activateAllLayers(map)
+		fife.CoordinateRenderer.getInstance(cam).activateAllLayers(map)
+		fife.CellSelectionRenderer.getInstance(cam).activateAllLayers(map)
+		fife.LightRenderer.getInstance(cam).activateAllLayers(map)
+		fife.GenericRenderer.getInstance(cam).activateAllLayers(map)
 
 	def _loadIsland(self, ground_layer, model, ix, iy, file):
 		""" Loads an island from the given file """
