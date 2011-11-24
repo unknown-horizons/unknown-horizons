@@ -462,7 +462,7 @@ INSERT INTO "citynames" VALUES('Bonaire',0,1,'en');
 INSERT INTO "citynames" VALUES('Saba',0,1,'en');
 INSERT INTO "citynames" VALUES('St. Thomas',0,1,'en');
 INSERT INTO "citynames" VALUES('St. John',0,1,'en');
-INSERT INTO "citynames" VALUES('Santa Ana de Coro',0,1,'en');
+INSERT INTO "citynames" VALUES('Santa Ana de Cor',0,1,'en');
 INSERT INTO "citynames" VALUES('Seville',0,1,'en');
 INSERT INTO "citynames" VALUES('Santo Domingo',0,1,'en');
 INSERT INTO "citynames" VALUES('Brandenburg',0,1,'en');
