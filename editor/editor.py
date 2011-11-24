@@ -50,7 +50,8 @@ if __name__ == '__main__':
 	uh_path = up(up(os.path.realpath(sys.argv[0])))
 	sys.path.append(uh_path)
 
-	editor_path = get_fife_path() + '/tools/editor'
+	(options, argv) = get_option_parser().parse_args()
+	editor_path = get_fife_path(options.fife_path) + '/tools/editor'
 	os.chdir(editor_path)
 	sys.path.append(editor_path)
 
@@ -58,10 +59,7 @@ if __name__ == '__main__':
 	class MockOptions:
 		plugin_dir = uh_path + '/editor/plugins'
 	options = MockOptions()
-	mapfile = None
-	
-	# argument parsing
-	argv = get_option_parser().parse_args()[1]
+	mapfile = None	
 	if len(argv) > 0:
 		mapfile = argv[0]
 
