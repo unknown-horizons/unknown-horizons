@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-11 03:12+0200\n"
+"PO-Revision-Date: 2011-11-11 03:24+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ca@valencia\n"
@@ -39,7 +39,6 @@ msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Boat Builder"
 msgstr "Constructor de Barcos"
 
@@ -760,7 +759,6 @@ msgid "Quit Session"
 msgstr ""
 
 #: horizons/gui/gui.py:215
-#, fuzzy
 msgid "No saved games"
 msgstr "No vostres partides desades"
 
@@ -805,7 +803,6 @@ msgstr ""
 #. (text of widget: headline_details_label) More text describing the savegame
 #: horizons/gui/gui.py:351 horizons/i18n/guitranslations.py:607
 #: horizons/i18n/guitranslations.py:922
-#, fuzzy
 msgid "Details:"
 msgstr "Detalhes:"
 
