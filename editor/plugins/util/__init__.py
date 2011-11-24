@@ -29,4 +29,14 @@ def getUHPath():
 		return os.path.split(path)[0]
 	return up(up(os.path.abspath(horizons.main.__file__)))
 
+buildingMap = {}
+
+BUILDING_NAMESPACE = 'building'
+GROUND_NAMESPACE = 'ground'
+
+def getBuildingName(id):
+	return buildingMap[id]
+
+def addBuilding(id, name):
+	buildingMap[id] = name
 

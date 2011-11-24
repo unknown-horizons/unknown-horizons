@@ -109,7 +109,7 @@ class UHObjectLoader(scripts.plugin.Plugin):
 
 		for tile_set_id in tile_sets:
 			tile_set = tile_sets[tile_set_id]
-			object = model.createObject(str(tile_set_id), 'ground')
+			object = model.createObject(str(tile_set_id), util.GROUND_NAMESPACE)
 			fife.ObjectVisual.create(object)
 
 			# load animations
@@ -129,8 +129,9 @@ class UHObjectLoader(scripts.plugin.Plugin):
 		for (building_id, building_name) in db("SELECT id, name FROM building"):
 			building_action_sets = db("SELECT action_set_id FROM action_set WHERE object_id=?", building_id)
 			size_x, size_y = db("SELECT size_x, size_x FROM building WHERE id = ?", building_id)[0]
-			object = model.createObject(str(building_name), 'building')
+			object = model.createObject(str(building_name), util.BUILDING_NAMESPACE)
 			fife.ObjectVisual.create(object)
+			util.addBuilding(building_id, building_name)
 
 			for (action_set_id,) in building_action_sets:
 				for action_id in all_action_sets[action_set_id].iterkeys():

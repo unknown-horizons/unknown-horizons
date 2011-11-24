@@ -37,6 +37,7 @@ class MapLoader:
 
 	GRID_TYPE = "square"
 	GROUND_LAYER_NAME = "ground"
+	BUILDING_LAYER_NAME = "buildings"
 
 	time_to_load = 0
 
@@ -58,6 +59,7 @@ class MapLoader:
 
 		# add layers
 		ground_layer = map.createLayer(self.GROUND_LAYER_NAME, grid)
+		building_layer = map.createLayer(self.BUILDING_LAYER_NAME, grid)
 
 		# add camera
 		cam = map.addCamera("main", ground_layer, fife.Rect(0, 0, 640, 480))
@@ -83,19 +85,31 @@ class MapLoader:
 		for island in islands:
 			self._loadIsland(ground_layer, model, *island)
 
+		# load all buildings
+		self._loadBuildings(building_layer, model, map_db)
+
 		return map
 
 	def _loadIsland(self, ground_layer, model, ix, iy, file):
 		""" Loads an island from the given file """
 		island_db = DbReader(os.path.join(util.getUHPath(), file))
 
-		ground_tile = model.getObject('ts_beach0', 'ground')
+		ground_tile = model.getObject('ts_beach0', util.GROUND_NAMESPACE)
 
 		# load ground tiles
 		ground = island_db("SELECT x, y FROM ground")
 		for (x, y) in ground:
 			position = fife.ModelCoordinate(ix + x, iy + y, 0)
 			inst = ground_layer.createInstance(ground_tile, position)
+			fife.InstanceVisual.create(inst)
+
+	def _loadBuildings(self, building_layer, model, db):
+		""" Loads all buildings from the given db and places them on the map """
+		buildings = db("SELECT type, x, y, rotation FROM building")
+		for (type, x, y, rotation) in buildings:
+			object = model.getObject(util.getBuildingName(type), util.BUILDING_NAMESPACE)
+			position = fife.ModelCoordinate(x, y, 0)
+			inst = building_layer.createInstance(object, position)
 			fife.InstanceVisual.create(inst)
 
 class UHMapLoader(scripts.plugin.Plugin):
