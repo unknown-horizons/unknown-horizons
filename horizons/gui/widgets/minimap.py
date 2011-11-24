@@ -24,6 +24,7 @@ from fife import fife
 from horizons.util import Point, Rect, Circle
 from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
+from horizons.util.python import get_counter
 from horizons.command.unit import Act
 
 import math
@@ -62,10 +63,12 @@ class Minimap(object):
 	  "base" : "d", # islands, etc.
 	  "ship" : "e",
 	  "cam" : "f",
+	  "ship_route" : "h",
 	  "highlight" : "l"
 	  }
 
-	__next_minimap_id = 0
+	__minimap_id_counter = get_counter()
+	__ship_route_counter = get_counter()
 	_instances = [] # all active instances
 
 	def __init__(self, position, session, targetrenderer, renderer=None,
@@ -97,8 +100,7 @@ class Minimap(object):
 		self.world = None
 		self.location_center = self.location.center()
 
-		self._id = str(self.__class__.__next_minimap_id) # internal identifier, used for allocating resources
-		self.__class__.__next_minimap_id += 1
+		self._id = str(self.__class__.__minimap_id_counter.next()) # internal identifier, used for allocating resources
 
 		self.minimap_image = _MinimapImage(self, targetrenderer,
 		                                   horizons.main.fife.imagemanager )
@@ -185,14 +187,9 @@ class Minimap(object):
 				corner[1] = self.world.min_y
 			corner = tuple(corner)
 
-			minimap_coords = self._world_coord_to_minimap_coord(corner)
-			if use_rotation:
-				minimap_coords = self._get_rotated_coords( minimap_coords )
-			# transfrom from screen coord to minimap coord
-			minimap_corners_as_point.append( fife.Point(
-			  minimap_coords[0] - self.location.left,
-			  minimap_coords[1] - self.location.top
-			  ) )
+			coords = self._world_to_minimap( corner, use_rotation )
+			minimap_corners_as_point.append( fife.Point(coords[0], coords[1]) )
+
 
 		for i in xrange(0, 4):
 			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),
@@ -210,10 +207,13 @@ class Minimap(object):
 		@param tup: (x, y)"""
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		minimap_point = self._world_coord_to_minimap_coord(tup)
-		if self._get_rotation_setting():
-			minimap_point = self._get_rotated_coords( minimap_point )
+		minimap_point = self._world_to_minimap( tup, self._get_rotation_setting() )
 		world_to_minimap = self._get_world_to_minimap_ratio()
+		# TODO: remove this remnant of the old implementation, perhaps by refactoring recalculate()
+		minimap_point = (
+		  minimap_point[0] + self.location.left,
+		  minimap_point[1] + self.location.top,
+		)
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], \
 								                           int(round(1/world_to_minimap[0])) + 1, \
 								                           int(round(1/world_to_minimap[1])) + 1)
@@ -243,7 +243,7 @@ class Minimap(object):
 				return
 			for i in moveable_selecteds:
 				Act(i, *map_coord).execute(self.session)
-			self.highlight(map_coord, factor=0.3)
+			#self.highlight(map_coord, factor=0.3)
 		elif event.getButton() == fife.MouseEvent.LEFT:
 			self.session.view.center(*map_coord)
 
@@ -301,21 +301,20 @@ class Minimap(object):
 			else:
 				self.icon.hide_tooltip()
 
-	def highlight(self, tup, factor=1.0):
-		"""Try to get the users attention on a certain point of the minimap"""
-		tup = self._world_coord_to_minimap_coord( tup )
-		if self._get_rotation_setting():
-			tup = self._get_rotated_coords( tup )
-		tup = (
-			  tup[0] - self.location.left,
-			  tup[1] - self.location.top
-		)
+	def highlight(self, tup, factor=1.0, finish_callback=None, color=(0,0,0)):
+		"""Try to get the users attention on a certain point of the minimap.
+		@param tuple: world coords
+		@param factor: float indicating importance of event
+		@param finish_callback: executed when animation finishes
+		@param color: color of anim, (r,g,b), r,g,b of [0,255]
+		@return duration of full animation in seconds"""
+		tup = self._world_to_minimap( tup, self._get_rotation_setting())
 
 		# grow the circle from MIN_RAD to MAX_RAD and back with STEPS steps, where the
 		# interval between steps is INTERVAL seconds
 		MIN_RAD = int( 3 * factor) # pixel
 		MAX_RAD = int(12 * factor) # pixel
-		STEPS = (20 * factor)
+		STEPS = int(20 * factor)
 		INTERVAL = math.pi / 16
 
 		def high(i=0):
@@ -324,6 +323,8 @@ class Minimap(object):
 			self.minimap_image.set_drawing_enabled()
 			self.minimap_image.rendertarget.removeAll(render_name)
 			if i > STEPS:
+				if finish_callback:
+					finish_callback()
 				return
 			part = i # grow bigger
 			if i > STEPS/2: # after the first half
@@ -332,11 +333,53 @@ class Minimap(object):
 			radius = MIN_RAD + int(( float(part) / (STEPS/2) ) * (MAX_RAD - MIN_RAD) )
 
 			for x, y in Circle( Point(*tup), radius=radius ).get_border_coordinates():
-				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), 0,0,0)
+				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), *color)
 
 			ExtScheduler().add_new_object(lambda : high(i), self, INTERVAL, loops=1)
 
 		high()
+		return STEPS*INTERVAL
+
+	def show_ship_route(self, unit):
+		"""Show the path a unit is moving along"""
+		path = unit.path.path
+		if path is None:
+			return False
+
+		# draw every step-th coord
+		step = 1
+		relevant_coords = [ path[0] ]
+		for i in xrange(step, len(path), step):
+			relevant_coords.append( path[i] )
+		relevant_coords.append( path[-1] )
+
+		# get coords, actual drawing
+		use_rotation = self._get_rotation_setting()
+		self.minimap_image.set_drawing_enabled()
+		p = fife.Point(0, 0)
+		render_name = self._get_render_name("ship_route") + \
+		            str(self.__class__.__ship_route_counter.next())
+		color = unit.owner.color.to_tuple()
+		last_coord = None
+		for i in relevant_coords:
+			coord = self._world_to_minimap(i, use_rotation)
+			if last_coord is not None and \
+			   sum( abs(last_coord[i] - coord[i]) for i in (0, 1) ) < 2: # 2 is min dist in pixels
+				continue
+			last_coord = coord
+			p.x = coord[0]
+			p.y = coord[1]
+			self.minimap_image.rendertarget.addPoint(render_name,
+			                                         p, *color)
+
+		def cleanup():
+			self.minimap_image.set_drawing_enabled()
+			self.minimap_image.rendertarget.removeAll(render_name)
+
+		self.highlight(path[ -1 ], factor=0.4, finish_callback=cleanup, color=color)
+
+		return True
+
 
 
 	def _recalculate(self, where = None):
@@ -439,15 +482,7 @@ class Minimap(object):
 			if not ship():
 				continue
 
-			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
-
-			if use_rotation:
-				coord = self._get_rotated_coords(coord)
-			# transform from screen coord to minimap coord
-			coord = (
-			  coord[0] - self.location.left,
-			  coord[1] - self.location.top
-			  )
+			coord = self._world_to_minimap( ship().position.to_tuple(), use_rotation )
 
 			color = ship().owner.color.to_tuple()
 			self.minimap_image.rendertarget.addQuad(self._get_render_name("ship"),
@@ -475,6 +510,20 @@ class Minimap(object):
 			self.draw()
 
 	## CALC UTILITY
+	def _world_to_minimap(self, coord, use_rotation):
+		"""Complete coord transformation, batteries included.
+		The methods below are for more specialised purposes."""
+		coord = self._world_coord_to_minimap_coord( coord )
+
+		if use_rotation:
+			coord = self._get_rotated_coords(coord)
+		# transform from screen coord to minimap coord
+		coord = (
+		  coord[0] - self.location.left,
+		  coord[1] - self.location.top
+		  )
+
+		return coord
 
 	def _get_rotation_setting(self):
 		if not self.use_rotation:
