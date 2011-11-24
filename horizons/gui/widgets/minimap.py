@@ -55,7 +55,7 @@ class Minimap(object):
 	           }
 
 
-	SHIP_DOT_UPDATE_INTERVAL = 0.5 # seconds
+	SHIP_DOT_UPDATE_INTERVAL = 0.4 # seconds
 
 	RENDER_NAMES = { # alpha-ordering determines the order
 	  "background" : "c",
@@ -66,7 +66,7 @@ class Minimap(object):
 	  }
 
 	__next_minimap_id = 0
-	_instances = []
+	_instances = [] # all active instances
 
 	def __init__(self, position, session, targetrenderer, renderer=None,
 	             cam_border=True, use_rotation=True, on_click=None):
@@ -103,27 +103,37 @@ class Minimap(object):
 		self.minimap_image = _MinimapImage(self, targetrenderer,
 		                                   horizons.main.fife.imagemanager )
 
-		self.__class__._instances.append(self)
 
 		#import random
 		#ExtScheduler().add_new_object(lambda : self.highlight( (50+random.randint(-50,50), random.randint(-50,50) + 50 )), self, 2, loops=-1)
 
-
 	def end(self):
-		self.__class__._instances.remove(self)
-		ExtScheduler().rem_all_classinst_calls(self)
+		self.disable()
 		self.world = None
 		self.session = None
 		self.renderer = None
 
+	def disable(self):
+		"""Due to the way the minimap works, there isn't really a show/hide,
+		but you can disable it with this and enable again with draw().
+		Stops all updates."""
+		ExtScheduler().rem_all_classinst_calls(self)
+		if self.session.view.has_change_listener(self.update_cam):
+			self.session.view.remove_change_listener(self.update_cam)
+
+		self.__class__._instances.remove(self)
+
 	def draw(self):
 		"""Recalculates and draws the whole minimap of self.session.world or world.
 		The world you specified is reused for every operation until the next draw().
+		@param recalculate: do a full recalculation
 		"""
 		if not self.world:
 			self.world = self.session.world # use this from now on
 		if not self.world.inited:
 			return # don't draw while loading
+
+		self.__class__._instances.append(self)
 
 		# update cam when view updates
 		if not self.session.view.has_change_listener(self.update_cam):

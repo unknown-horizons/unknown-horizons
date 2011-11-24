@@ -49,11 +49,13 @@ class RouteConfig(object):
 		self._init_gui()
 
 	def show(self):
+		self.minimap.draw()
 		self._gui.show()
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def hide(self):
+		self.minimap.disable()
 		self._gui.hide()
 		if self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.remove_remove_listener(self.on_instance_removed)
@@ -424,5 +426,4 @@ class RouteConfig(object):
 		print 'profile to ', outfilename
 		profile.runctx( "self.minimap.draw()", globals(), locals(), outfilename)
 		"""
-		self.minimap.draw()
 
