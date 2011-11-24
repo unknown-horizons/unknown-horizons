@@ -51,3 +51,14 @@ def parse_port(port, allow_zero=False):
 		raise ValueError()
 	return portInt
 
+def get_counter():
+	"""Returns a counter.
+	USAGE:
+	my_things_counter = get_counter()
+	first = my_things_counter.next()
+	second = my_things_counter.next()
+	"""
+	i = 0
+	while True:
+		yield i
+		i += 1

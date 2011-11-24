@@ -413,6 +413,8 @@ class Ship(Unit):
 		if self.get_move_target() is None: # neither target nor surrounding possible
 			# TODO: give player some kind of feedback
 			pass
+		else:
+			self.session.ingame_gui.minimap.show_ship_route(self)
 
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)

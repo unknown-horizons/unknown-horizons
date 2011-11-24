@@ -109,6 +109,7 @@ class IngameGui(LivingObject):
 
 		self.minimap = Minimap(minimap_rect, self.session, \
 		                       horizons.main.fife.targetrenderer, \
+		                       horizons.main.fife.imagemanager, \
 		                       renderer=self.session.view.renderer['GenericRenderer'])
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,

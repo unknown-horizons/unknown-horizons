@@ -66,7 +66,7 @@ def set_translations():
 		# (tooltip of widget: store-1)
 		"store-1"                     : ("tooltip" , _("Storage: Extends stock and provides collectors.")),
 		# (tooltip of widget: street-1)
-		"street-1"                    : ("tooltip" , _("Trail: Needed for collecting goods.")),
+		"street-1"                    : ("tooltip" , _("Trail (R): Needed for collecting goods.")),
 		# (tooltip of widget: tree-1)
 		"tree-1"                      : ("tooltip" , _("Tree")),
 		},
@@ -168,26 +168,26 @@ def set_translations():
 
 	"menu_panel.xml" : {
 		# (tooltip of widget: build)
-		"build"                       : ("tooltip" , _("Build menu")),
+		"build"                       : ("tooltip" , _("Build menu (B)")),
 		# (tooltip of widget: destroy_tool)
-		"destroy_tool"                : ("tooltip" , _("Destroy")),
+		"destroy_tool"                : ("tooltip" , _("Destroy (X)")),
 		# (tooltip of widget: diplomacyButton)
 		"diplomacyButton"             : ("tooltip" , _("Diplomacy")),
 		# (tooltip of widget: gameMenuButton)
-		"gameMenuButton"              : ("tooltip" , _("Game menu")),
+		"gameMenuButton"              : ("tooltip" , _("Game menu (Esc)")),
 		# (tooltip of widget: logbook)
-		"logbook"                     : ("tooltip" , _("Captain's log")),
+		"logbook"                     : ("tooltip" , _("Captain's log (L)")),
 		},
 
 	"minimap.xml" : {
 		# (tooltip of widget: rotateLeft)
-		"rotateLeft"                  : ("tooltip" , _("Rotate map counterclockwise")),
+		"rotateLeft"                  : ("tooltip" , _("Rotate map counterclockwise (,)")),
 		# (tooltip of widget: rotateRight)
-		"rotateRight"                 : ("tooltip" , _("Rotate map clockwise")),
+		"rotateRight"                 : ("tooltip" , _("Rotate map clockwise (.)")),
 		# (tooltip of widget: speedDown)
-		"speedDown"                   : ("tooltip" , _("Decrease game speed")),
+		"speedDown"                   : ("tooltip" , _("Decrease game speed (-)")),
 		# (tooltip of widget: speedUp)
-		"speedUp"                     : ("tooltip" , _("Increase game speed")),
+		"speedUp"                     : ("tooltip" , _("Increase game speed (+)")),
 		# (tooltip of widget: zoomIn)
 		"zoomIn"                      : ("tooltip" , _("Zoom in")),
 		# (tooltip of widget: zoomOut)
@@ -226,6 +226,20 @@ def set_translations():
 		"chat_lbl"                    : ("text"    , _("Enter your message:")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Chat")),
+		},
+
+	"save_map.xml" : {
+		# (text of widget: enter_new_name_lbl)
+		"enter_new_name_lbl"          : ("text"    , _("Enter prefix:")),
+		# (text of widget: headline_change_name)
+		"headline_change_name"        : ("text"    , _("Save map")),
+		# (tooltip of widget: okButton)
+		"okButton"                    : ("tooltip" , _("Save the map")),
+		},
+
+	"island_inventory.xml" : {
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Settlement inventory")),
 		},
 
 	"boatbuilder.xml" : {
@@ -349,11 +363,6 @@ def set_translations():
 		"capacity_utilisation"        : ("tooltip" , _("capacity utilization")),
 		# (tooltip of widget: running_costs)
 		"running_costs"               : ("tooltip" , _("Running costs")),
-		},
-
-	"island_inventory.xml" : {
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Settlement inventory")),
 		},
 
 	"mainsquare_inhabitants.xml" : {
@@ -656,7 +665,7 @@ def set_translations():
 		# (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
 		"cancelButton"                : ("tooltip" , _("Leave Captain's log")),
 		# (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
-		"backwardButton"              : ("tooltip" , _("Read prev. entries")),
+		"backwardButton"              : ("tooltip" , _("Read previous entries")),
 		# (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 		"forwardButton"               : ("tooltip" , _("Read next entries")),
 		},
@@ -808,6 +817,8 @@ def set_translations():
 		"lbl_period"                  : ("text"    , _("{ . } = Rotate building right")),
 		# (text of widget: lbl_plus)
 		"lbl_plus"                    : ("text"    , _("{ + } = Increase game speed")),
+		# (text of widget: lbl_r)
+		"lbl_r"                       : ("text"    , _("{R} = Enable road building mode")),
 		# (text of widget: lbl_right)
 		"lbl_right"                   : ("text"    , _("{RIGHT} = Scroll right")),
 		# (text of widget: lbl_s)
@@ -871,6 +882,76 @@ def set_translations():
 		"version_label"               : ("text"    , VERSION.string()),
 		},
 
+	"settings.xml" : {
+		# (text of widget: autosave_interval_label)
+		"autosave_interval_label"     : ("text"    , _("Autosave interval in minutes:")),
+		# (text of widget: color_depth_label)
+		"color_depth_label"           : ("text"    , _("Color depth:")),
+		# (text of widget: edge_scrolling_label)
+		"edge_scrolling_label"        : ("text"    , _("Enable edge scrolling:")),
+		# (text of widget: effect_volume_label)
+		"effect_volume_label"         : ("text"    , _("Effects volume:")),
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Settings")),
+		# (text of widget: headline_graphics)
+		"headline_graphics"           : ("text"    , _("Graphics")),
+		# (text of widget: headline_language)
+		"headline_language"           : ("text"    , _("Language")),
+		# (text of widget: headline_network)
+		"headline_network"            : ("text"    , _("Network")),
+		# (text of widget: headline_saving)
+		"headline_saving"             : ("text"    , _("Saving")),
+		# (text of widget: headline_sound)
+		"headline_sound"              : ("text"    , _("Sound")),
+		# (text of widget: language_label)
+		"language_label"              : ("text"    , _("Select language:")),
+		# (text of widget: minimap_rotation_label)
+		"minimap_rotation_label"      : ("text"    , _("Enable minimap rotation:")),
+		# (text of widget: music_volume_label)
+		"music_volume_label"          : ("text"    , _("Music volume:")),
+		# (text of widget: network_port_hint_lbl)
+		"network_port_hint_lbl"       : ("text"    , _("(0 means default)")),
+		# (text of widget: network_port_lbl)
+		"network_port_lbl"            : ("text"    , _("Network port:")),
+		# (text of widget: number_of_autosaves_label)
+		"number_of_autosaves_label"   : ("text"    , _("Number of autosaves:")),
+		# (text of widget: number_of_quicksaves_label)
+		"number_of_quicksaves_label"  : ("text"    , _("Number of quicksaves:")),
+		# (text of widget: screen_fullscreen_text)
+		"screen_fullscreen_text"      : ("text"    , _("Full screen:")),
+		# (text of widget: screen_resolution_label)
+		"screen_resolution_label"     : ("text"    , _("Screen resolution:")),
+		# (text of widget: sound_enable_opt_text)
+		"sound_enable_opt_text"       : ("text"    , _("Enable sound:")),
+		# (text of widget: uninterrupted_building_label)
+		"uninterrupted_building_label": ("text"    , _("Uninterrupted building:")),
+		# (text of widget: use_renderer_label)
+		"use_renderer_label"          : ("text"    , _("Used renderer:")),
+		# (text of widget: warning)
+		"warning"                     : ("text"    , _("Please make sure that you know what you do.")),
+		# (tooltip of widget: okButton)
+		"okButton"                    : ("tooltip" , _("Apply")),
+		# (tooltip of widget: cancelButton)
+		"cancelButton"                : ("tooltip" , _("Return")),
+		# (tooltip of widget: defaultButton)
+		"defaultButton"               : ("tooltip" , _("Reset to default settings")),
+		},
+
+	"credits4.xml" : {
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Special Thanks")),
+		# (text of widget: packagers_lbl)
+		"packagers_lbl"               : ("text"    , _("Packagers")),
+		# (text of widget: patchers_lbl)
+		"patchers_lbl"                : ("text"    , _("Patchers")),
+		# (text of widget: team_lbl)
+		"team_lbl"                    : ("text"    , _("UH-Team")),
+		# (text of widget: translators_lbl)
+		"translators_lbl"             : ("text"    , _("Translators")),
+		# (tooltip of widget: okButton)
+		"okButton"                    : ("tooltip" , _("Exit to main menu")),
+		},
+
 	"multiplayer_creategame.xml" : {
 		# (text of widget: create_game_lbl)
 		"create_game_lbl"             : ("text"    , _("Create game:")),
@@ -930,61 +1011,6 @@ def set_translations():
 		"cancel"                      : ("tooltip" , _("Exit to main menu")),
 		# (tooltip of widget: refresh)
 		"refresh"                     : ("tooltip" , _("Refresh list of active games")),
-		},
-
-	"settings.xml" : {
-		# (text of widget: autosave_interval_label)
-		"autosave_interval_label"     : ("text"    , _("Autosave interval in minutes:")),
-		# (text of widget: color_depth_label)
-		"color_depth_label"           : ("text"    , _("Color depth:")),
-		# (text of widget: edge_scrolling_label)
-		"edge_scrolling_label"        : ("text"    , _("Enable edge scrolling:")),
-		# (text of widget: effect_volume_label)
-		"effect_volume_label"         : ("text"    , _("Effects volume:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Settings")),
-		# (text of widget: headline_graphics)
-		"headline_graphics"           : ("text"    , _("Graphics")),
-		# (text of widget: headline_language)
-		"headline_language"           : ("text"    , _("Language")),
-		# (text of widget: headline_network)
-		"headline_network"            : ("text"    , _("Network")),
-		# (text of widget: headline_saving)
-		"headline_saving"             : ("text"    , _("Saving")),
-		# (text of widget: headline_sound)
-		"headline_sound"              : ("text"    , _("Sound")),
-		# (text of widget: language_label)
-		"language_label"              : ("text"    , _("Select language:")),
-		# (text of widget: minimap_rotation_label)
-		"minimap_rotation_label"      : ("text"    , _("Enable minimap rotation:")),
-		# (text of widget: music_volume_label)
-		"music_volume_label"          : ("text"    , _("Music volume:")),
-		# (text of widget: network_port_hint_lbl)
-		"network_port_hint_lbl"       : ("text"    , _("(0 means default)")),
-		# (text of widget: network_port_lbl)
-		"network_port_lbl"            : ("text"    , _("Network port:")),
-		# (text of widget: number_of_autosaves_label)
-		"number_of_autosaves_label"   : ("text"    , _("Number of autosaves:")),
-		# (text of widget: number_of_quicksaves_label)
-		"number_of_quicksaves_label"  : ("text"    , _("Number of quicksaves:")),
-		# (text of widget: screen_fullscreen_text)
-		"screen_fullscreen_text"      : ("text"    , _("Full screen:")),
-		# (text of widget: screen_resolution_label)
-		"screen_resolution_label"     : ("text"    , _("Screen resolution:")),
-		# (text of widget: sound_enable_opt_text)
-		"sound_enable_opt_text"       : ("text"    , _("Enable sound:")),
-		# (text of widget: uninterrupted_building_label)
-		"uninterrupted_building_label": ("text"    , _("Uninterrupted building:")),
-		# (text of widget: use_renderer_label)
-		"use_renderer_label"          : ("text"    , _("Used renderer:")),
-		# (text of widget: warning)
-		"warning"                     : ("text"    , _("Please make sure that you know what you do.")),
-		# (tooltip of widget: okButton)
-		"okButton"                    : ("tooltip" , _("Apply")),
-		# (tooltip of widget: cancelButton)
-		"cancelButton"                : ("tooltip" , _("Return")),
-		# (tooltip of widget: defaultButton)
-		"defaultButton"               : ("tooltip" , _("Reset to default settings")),
 		},
 
 	"select_savegame.xml" : {
