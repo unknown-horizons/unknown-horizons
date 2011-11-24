@@ -23,6 +23,16 @@
 
 import os
 import sys
+import optparse
+
+
+def get_option_parser():
+	"""Returns initialized OptionParser object"""
+	p = optparse.OptionParser(usage="%prog [options] [mapfile]")
+	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
+				       help=_("Specify the path to FIFE root directory."))
+
+	return p
 
 if __name__ == '__main__':
 	import gettext
@@ -49,8 +59,14 @@ if __name__ == '__main__':
 		plugin_dir = uh_path + '/editor/plugins'
 	options = MockOptions()
 	mapfile = None
-	if len(sys.argv) > 1:
-		mapfile = sys.argv[1]
+	
+	# argument parsing
+	argv = get_option_parser().parse_args()[1]
+	if len(argv) > 0:
+		mapfile = argv[0]
+
 	from scripts.editor import Editor
 	app = Editor(options, mapfile)
 	app.run()
+
+
