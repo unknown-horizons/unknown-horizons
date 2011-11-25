@@ -126,7 +126,8 @@ class Minimap(object):
 		if self.session.view.has_change_listener(self.update_cam):
 			self.session.view.remove_change_listener(self.update_cam)
 
-		self.__class__._instances.remove(self)
+		if self in self.__class__._instances:
+			self.__class__._instances.remove(self)
 
 	def draw(self):
 		"""Recalculates and draws the whole minimap of self.session.world or world.
