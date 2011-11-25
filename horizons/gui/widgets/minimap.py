@@ -520,14 +520,14 @@ class Minimap(object):
 	def rotate_right (self):
 		# keep track of rotation at any time, but only apply
 		# if it's actually used
-		self.rotation += 1
+		self.rotation -= 1
 		self.rotation %= 4
 		if self._get_rotation_setting():
 			self.draw()
 
 	def rotate_left (self):
 		# see above
-		self.rotation -= 1
+		self.rotation += 1
 		self.rotation %= 4
 		if self._get_rotation_setting():
 			self.draw()
