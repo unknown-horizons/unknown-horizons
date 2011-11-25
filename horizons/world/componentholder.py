@@ -26,7 +26,7 @@ from yaml import SafeLoader as Loader
 
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
-from horizons.world.tradepost import TradePostComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.units import UnitClass

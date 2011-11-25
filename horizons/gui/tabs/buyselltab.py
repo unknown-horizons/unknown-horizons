@@ -29,6 +29,7 @@ from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 
 class BuySellTab(TabInterface):
 	"""
@@ -58,14 +59,16 @@ class BuySellTab(TabInterface):
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)
 		slot_count = 0
-		for res in self.settlement.buy_list:
+		buy_list = self.settlement.get_component(TradePostComponent).buy_list
+		for res in buy_list:
 			if slot_count < self.slots:
-				self.add_resource(res, slot_count, self.settlement.buy_list[res], \
+				self.add_resource(res, slot_count, buy_list[res], \
 				                  dont_use_commands=True)
 				slot_count += 1
-		for res in self.settlement.sell_list:
+		sell_list = self.settlement.get_component(TradePostComponent).sell_list
+		for res in sell_list:
 			if slot_count < self.slots:
-				self.add_resource(res, slot_count, self.settlement.sell_list[res], \
+				self.add_resource(res, slot_count, sell_list[res], \
 				                  dont_use_commands=True)
 				self.toggle_buysell(slot_count, dont_use_commands=True)
 				slot_count += 1
@@ -146,7 +149,7 @@ class BuySellTab(TabInterface):
 		if slot.action is "sell":
 			if slot.res is not None: # slot has been in use before, delete old value
 				if dont_use_commands: # dont_use_commands is true if called by __init__
-					self.settlement.remove_from_sell_list(slot.res)
+					self.settlement.get_component(TradePostComponent).remove_from_sell_list(slot.res)
 				else:
 					RemoveFromSellList(self.settlement, slot.res).execute(self.settlement.session)
 			if res_id != 0:
@@ -154,7 +157,7 @@ class BuySellTab(TabInterface):
 		else:
 			if slot.action is "buy" and slot.res is not None:
 				if dont_use_commands: # dont_use_commands is true if called by __init__
-					self.settlement.remove_from_buy_list(slot.res)
+					self.settlement.get_component(TradePostComponent).remove_from_buy_list(slot.res)
 				else:
 					RemoveFromBuyList(self.settlement, slot.res).execute(self.settlement.session)
 			if res_id != 0:
@@ -204,7 +207,7 @@ class BuySellTab(TabInterface):
 			if slot.res is not None:
 				self.log.debug("BuySellTab: Removing res %s from buy list", slot.res)
 				if dont_use_commands: # dont_use_commands is true if called by __init__
-					self.settlement.remove_from_buy_list(slot.res)
+					self.settlement.get_component(TradePostComponent).remove_from_buy_list(slot.res)
 				else:
 					RemoveFromBuyList(self.settlement, slot.res).execute(self.settlement.session)
 				self.add_sell_to_settlement(slot.res, limit, slot.id, dont_use_commands)
@@ -216,7 +219,7 @@ class BuySellTab(TabInterface):
 			if slot.res is not None:
 				self.log.debug("BuySellTab: Removing res %s from sell list", slot.res)
 				if dont_use_commands: # dont_use_commands is true if called by __init__
-					self.settlement.remove_from_sell_list(slot.res)
+					self.settlement.get_component(TradePostComponent).remove_from_sell_list(slot.res)
 				else:
 					RemoveFromSellList(self.settlement, slot.res).execute(self.settlement.session)
 				self.add_buy_to_settlement(slot.res, limit, slot.id, dont_use_commands)
@@ -236,7 +239,7 @@ class BuySellTab(TabInterface):
 		self.log.debug("BuySellTab: buying of res %s up to %s", res_id, limit)
 		self.slots[slot].action = "buy"
 		if dont_use_commands: # dont_use_commands is true if called by __init__
-			self.settlement.add_to_buy_list(res_id, limit)
+			self.settlement.get_component(TradePostComponent).add_to_buy_list(res_id, limit)
 		else:
 			AddToBuyList(self.settlement, res_id, limit).execute(self.settlement.session)
 		#print self.settlement.buy_list
@@ -288,8 +291,10 @@ class BuySellTab(TabInterface):
 		resources = self.settlement.session.db.get_res_id_and_icon(True)
 		# Add the zero element to the beginning that allows to remove the currently
 		# sold/bought resource
+		buy_list = self.settlement.get_component(TradePostComponent).buy_list
+		sell_list = self.settlement.get_component(TradePostComponent).sell_list
 		for (res_id, icon) in [(0, self.dummy_icon_path)] + list(resources):
-			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
+			if res_id in buy_list or res_id in sell_list:
 				continue # don't show resources that are already in the list
 			button = TooltipButton( size=(button_width, button_width), \
 			                        name="resource_icon_%02d" % res_id )

@@ -31,6 +31,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.util.gui import create_resource_icon
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, SETTLER
+from horizons.world.component.tradepostcomponent import TradePostComponent
 
 class MainSquareTab(TabInterface):
 	"""Tab for main square. Refreshes when one building on the settlement changes"""
@@ -88,8 +89,8 @@ class AccountTab(MainSquareTab):
 		super(AccountTab, self).refresh()
 		taxes = self.settlement.cumulative_taxes
 		running_costs = self.settlement.cumulative_running_costs
-		buy_expenses = self.settlement.buy_expenses
-		sell_income = self.settlement.sell_income
+		buy_expenses = self.settlement.get_component(TradePostComponent).buy_expenses
+		sell_income = self.settlement.get_component(TradePostComponent).sell_income
 		balance = self.settlement.balance
 		sign = '+' if balance >= 0 else '-'
 		self.widget.child_finder('taxes').text = unicode(taxes)

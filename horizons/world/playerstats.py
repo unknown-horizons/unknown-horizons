@@ -28,6 +28,7 @@ from horizons.entities import Entities
 from horizons.constants import SETTLER, BUILDINGS, PRODUCTION, RES, UNITS
 from horizons.util.python import decorators
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 
 class PlayerStats(WorldObject):
 	def __init__(self, player):
@@ -57,7 +58,7 @@ class PlayerStats(WorldObject):
 				if building.id == BUILDINGS.RESIDENTIAL_CLASS:
 					settlers[building.level] += building.inhabitants
 					settler_buildings[building.level] += 1
-					for production in building.get_productions():
+					for production in building.get_component(Producer).get_productions():
 						if production is building._get_upgrade_production():
 							continue
 						if production.get_state() is PRODUCTION.STATES.producing:

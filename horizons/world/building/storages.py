@@ -27,7 +27,7 @@ from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab,
 		 EnemyBranchOfficeOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
-from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.building.production import SettlerServiceProvider
 

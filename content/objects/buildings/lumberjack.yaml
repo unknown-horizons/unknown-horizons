@@ -14,9 +14,7 @@ components:
     maxhealth: 1000
 - ProducerComponent:
     productionlines:
-        - { time: 7, consumes: (4,1), produces: (8,1) }
-
-
+        - { time: 7, consumes: (4,1), produces: (8,1)}
 
 
 action_sets:

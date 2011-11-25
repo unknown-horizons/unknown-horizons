@@ -54,6 +54,7 @@ from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -544,7 +545,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				if self.session.random.randint(0, 2) == 0 and \
 				   Tree.check_build(self.session, tile, check_settlement = False):
 					building = Build(Tree, x, y, ownerless = True, island = island)(issuer = None)
-					building.finish_production_now() # make trees big and fill their inventory
+					building.get_component(Producer).finish_production_now() # make trees big and fill their inventory
 					if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
 					if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:

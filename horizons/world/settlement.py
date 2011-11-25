@@ -21,7 +21,7 @@
 
 import horizons.main
 
-from horizons.world.tradepost import TradePostComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList
 from horizons.constants import BUILDINGS, SETTLER
@@ -99,8 +99,8 @@ class Settlement(WorldObject, ComponentHolder, ChangeListener):
 	@property
 	def balance(self):
 		"""Returns sum(income) - sum(expenses) for settlement"""
-		return self.cumulative_taxes + self.sell_income \
-					 - self.cumulative_running_costs - self.buy_expenses
+		return self.cumulative_taxes + self.get_component(TradePostComponent).sell_income \
+					 - self.cumulative_running_costs - self.get_component(TradePostComponent).buy_expenses
 
 	@property
 	def island(self):

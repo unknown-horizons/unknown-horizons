@@ -26,6 +26,7 @@ from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.worldobject import WorldObject
 from horizons.world.status import InventoryFullStatus
+from horizons.world.production.producer import Producer
 
 
 class ResourceHandler(ComponentHolder):
@@ -50,12 +51,6 @@ class ResourceHandler(ComponentHolder):
 
 	def __init(self):
 		self.add_component(StorageComponent())
-		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
-		# the inactive ones won't get considered for needed_resources and such.
-		# the production_line id is the key in the dict (=> a building must not have two identical
-		# production lines)
-		self._productions = {}
-		self._inactive_productions = {}
 		# Stores a set of resource ids this resourcehandler provides for pickup
 		self.provided_resources = self._load_provided_resources()
 
@@ -78,9 +73,6 @@ class ResourceHandler(ComponentHolder):
 
 	def remove(self):
 		super(ResourceHandler, self).remove()
-		for production in self.get_productions():
-			self.remove_production(production)
-		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()
 		while self.__incoming_collectors: # safe list remove here
 			self.__incoming_collectors[0].cancel()
 
@@ -89,15 +81,19 @@ class ResourceHandler(ComponentHolder):
 		"""Returns the needed resources that are used by the productions
 		currently active."""
 		needed_res = set()
-		for production in self._productions.itervalues():
-			needed_res.update(production.get_consumed_resources().iterkeys())
+		if self.has_component(Producer):
+			prod_comp = self.get_component(Producer)
+			for production in prod_comp._productions.itervalues():
+				needed_res.update(production.get_consumed_resources().iterkeys())
 		return list(needed_res)
 
 	def get_produced_resources(self):
 		"""Returns the resources, that are produced by productions, that are currently active"""
 		produced_res = set()
-		for production in self._productions.itervalues():
-			produced_res.update(production.get_produced_res().iterkeys())
+		if self.has_component(Producer):
+			prod_comp = self.get_component(Producer)
+			for production in prod_comp._productions.itervalues():
+				produced_res.update(production.get_produced_res().iterkeys())
 		return list(produced_res)
 
 	def get_stocked_provided_resources(self):
@@ -107,9 +103,11 @@ class ResourceHandler(ComponentHolder):
 	def get_currently_consumed_resources(self):
 		"""Returns a list of resources, that are currently consumed in a production."""
 		consumed_res = set()
-		for production in self._productions.itervalues():
-			if production.get_state() == PRODUCTION.STATES.producing:
-				consumed_res.update(production.get_consumed_resources().iterkeys())
+		if self.has_component(Producer):
+			prod_comp = self.get_component(Producer)
+			for production in prod_comp._productions.itervalues():
+				if production.get_state() == PRODUCTION.STATES.producing:
+					consumed_res.update(production.get_consumed_resources().iterkeys())
 		return list(consumed_res)
 
 	def get_currently_not_consumed_resources(self):
@@ -132,24 +130,6 @@ class ResourceHandler(ComponentHolder):
 	def remove_incoming_collector(self, collector):
 		self.__incoming_collectors.remove(collector)
 
-	def add_production(self, production):
-		"""Override this function by the object using it.
-		Should add the provided production to the self._productions dict.
-		@param production: Production instance
-		"""
-		raise NotImplementedError, "This function has to be overridden!"
-
-	def add_production_by_id(self, production_line_id, production_class = Production):
-		"""Convenience method.
-		@param production_line_id: Production line from db
-		@param production_class: Subclass of Production that does the production. If the object
-		                         has a production_class-member, this will be used instead.
-		"""
-		if hasattr(self, "production_class"):
-			production_class = self.production_class
-		owner_inventory = self._get_owner_inventory()
-		self.add_production(production_class(self.get_component(StorageComponent).inventory, owner_inventory, production_line_id))
-
 	def _get_owner_inventory(self):
 		"""Returns the inventory of the owner to be able to retrieve special resources such as gold.
 		The production system should be as decoupled as possible from actual world objects, so only use
@@ -164,34 +144,9 @@ class ResourceHandler(ComponentHolder):
 		@return Production instance"""
 		raise NotImplementedError, "This function has to be overridden!"
 
-	def remove_production(self, production):
-		"""Removes a production instance.
-		@param production: Production instance"""
-		production.remove() # production "destructor"
-		if self.is_active(production):
-			del self._productions[production.get_production_line_id()]
-		else:
-			del self._inactive_productions[production.get_production_line_id()]
-
-	def remove_production_by_id(self, prod_line_id):
-		"""
-		Convenience method. Assumes, that this production line id has been added to this instance.
-		@param prod_line_id: production line id to remove
-		"""
-		self.remove_production( self._get_production(prod_line_id) )
-
-	def has_production_line(self, prod_line_id):
-		"""Checks if this instance has a production with a certain production line id"""
-		return bool( self._get_production(prod_line_id) )
-
 	def get_production_progress(self):
 		"""Can be used to return the overall production process."""
 		raise NotImplementedError, "This function has to be overridden!"
-
-	def get_production_lines(self):
-		"""Returns all production lines that have been added.
-		@return: a list of prodline ids"""
-		return self._productions.keys() + self._inactive_productions.keys()
 
 	def pickup_resources(self, res, amount, collector):
 		"""Try to get amount number of resources of id res_id that are in stock
@@ -222,62 +177,12 @@ class ResourceHandler(ComponentHolder):
 			# if this happens, a negative number would be returned. Use 0 instead.
 			return max(amount, 0)
 
-	def set_active(self, production=None, active=True):
-		"""Pause or unpause a production (aka set it active/inactive).
-		see also: is_active, toggle_active
-		@param production: instance of Production. if None, we do it to all productions.
-		@param active: whether to set it active or inactive"""
-		if production is None:
-			for production in self.get_productions():
-				self.set_active(production, active)
-			return
-
-		line_id = production.get_production_line_id()
-		if active:
-			if not self.is_active(production):
-				self.log.debug("ResHandler %s: reactivating production %s", self.worldid, line_id)
-				self._productions[line_id] = production
-				del self._inactive_productions[line_id]
-				production.pause(pause=False)
-		else:
-			if self.is_active(production):
-				self.log.debug("ResHandler %s: deactivating production %s", self.worldid, line_id)
-				self._inactive_productions[line_id] = production
-				del self._productions[line_id]
-				production.pause()
-
-		self._changed()
-
-	def is_active(self, production=None):
-		"""Checks if a production, or the at least one production if production is None, is active"""
-		if production is None:
-			for production in self.get_productions():
-				if not production.is_paused():
-					return True
-			return False
-		else:
-			assert production.get_production_line_id() in self._productions or \
-			       production.get_production_line_id() in self._inactive_productions
-			return not production.is_paused()
-
-	def toggle_active(self, production=None):
-		if production is None:
-			for production in self.get_productions():
-				self.toggle_active(production)
-		else:
-			active = self.is_active(production)
-			self.set_active(production, active = not active)
-
-	def get_productions(self):
-		"""Returns all productions, inactive and active ones, as list"""
-		return self._productions.values() + self._inactive_productions.values()
-
 	def get_status_icons(self):
 		l = super(ResourceHandler, self).get_status_icons()
 
 		inventory_full_res = []
 		for res in self.get_produced_resources():
-			if (self.inventory.get_free_space_for(res) == 0):
+			if (self.get_component(StorageComponent).inventory.get_free_space_for(res) == 0):
 				inventory_full_res.append(res)
 
 		if inventory_full_res:
@@ -286,16 +191,6 @@ class ResourceHandler(ComponentHolder):
 		return l
 
 	## PROTECTED METHODS
-	def _get_production(self, prod_line_id):
-		"""Returns a production of this producer by a production line id.
-		@return: instance of Production or None"""
-		if prod_line_id in self._productions:
-			return self._productions[prod_line_id]
-		elif prod_line_id in self._inactive_productions:
-			return self._inactive_productions[prod_line_id]
-		else:
-			return None
-
 	def _load_provided_resources(self):
 		"""Returns a iterable obj containing all resources this building provides.
 		This is outsourced from initiation to a method for the possiblity of overwriting it.
@@ -333,3 +228,4 @@ class StorageResourceHandler(ResourceHandler):
 		"""Storages provide every res.
 		Do not alter the returned list; if you need to do so, then copy it."""
 		return self.session.db.get_res(only_tradeable=True)
+

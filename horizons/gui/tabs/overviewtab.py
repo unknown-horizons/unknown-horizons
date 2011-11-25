@@ -38,6 +38,7 @@ from horizons.util.gui import load_uh_widget, create_resource_icon
 from horizons.entities import Entities
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 
 
 class OverviewTab(TabInterface):
@@ -277,7 +278,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
-		for production in sorted(self.instance.get_productions(), \
+		for production in sorted(self.instance.get_component(Producer).get_productions(), \
 								             key=(lambda x: x.get_production_line_id())):
 			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state

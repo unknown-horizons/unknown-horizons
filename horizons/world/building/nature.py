@@ -22,7 +22,7 @@
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.entities import Entities
 from horizons.constants import LAYERS
 from horizons.gui.tabs import ResourceDepositOverviewTab

@@ -36,6 +36,7 @@ from horizons.world.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus
+from horizons.world.production.producer import Producer
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -118,8 +119,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def _get_upgrade_production(self):
 		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
-		if self.has_production_line(upgrade_material_prodline):
-			return self._get_production(upgrade_material_prodline)
+		if self.get_component(Producer).has_production_line(upgrade_material_prodline):
+			return self.get_component(Producer)._get_production(upgrade_material_prodline)
 		return None
 
 	@property
@@ -156,17 +157,18 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
 		if not loading:
-			current_lines = self.get_production_lines()
+			prod_comp = self.get_component(Producer)
+			current_lines = prod_comp.get_production_lines()
 			for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
-				if not self.has_production_line(prod_line):
-					self.add_production_by_id(prod_line, self.owner)
+				if not prod_comp.has_production_line(prod_line):
+					prod_comp.add_production_by_id(prod_line, self.owner)
 				# cross out the new lines from the current lines, so only the old ones remain
 				if prod_line in current_lines:
 					current_lines.remove(prod_line)
 			for line in current_lines[:]: # iterate over copy for safe removal
 				# all lines, that were added here but are not used due to the current level
 				# NOTE: this contains the upgrade material production line
-				self.remove_production_by_id(line)
+				prod_comp.remove_production_by_id(line)
 		# update instance graphics
 		self.update_action_set_level(self.level)
 

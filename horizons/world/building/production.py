@@ -21,7 +21,7 @@
 
 
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
-from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
@@ -32,6 +32,7 @@ from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
 from horizons.gui.tabs import FarmProductionOverviewTab
 from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):

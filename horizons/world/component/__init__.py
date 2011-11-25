@@ -33,7 +33,7 @@ class Component(object):
 
 	def initialize(self):
 		"""
-		This is called by the ComponentHolder it set the instance. Use this to
+		This is called by the ComponentHolder after it set the instance. Use this to
 		initialize any needed infrastructure
 		"""
 		pass

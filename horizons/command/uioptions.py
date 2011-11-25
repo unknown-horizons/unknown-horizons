@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.command import GenericCommand, GenericComponentCommand
-from horizons.world.tradepost import TradePostComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.namedcomponent import NamedComponent
 
 class SetTaxSetting(GenericCommand):

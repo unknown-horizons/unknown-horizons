@@ -20,7 +20,8 @@
 # ###################################################
 
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import ProducerBuilding
+from horizons.util.changelistener import metaChangeListenerDecorator
 
 class CollectingProducerBuilding(CollectingBuilding, ProducerBuilding):
 	"""Class for buildings, that collect something and produce something.

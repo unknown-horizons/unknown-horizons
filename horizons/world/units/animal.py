@@ -32,11 +32,16 @@ from collectors import Collector, BuildingCollector, JobList
 from horizons.constants import RES, WILD_ANIMAL
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.resourcehandler import ResourceHandler
 
-class Animal(Producer):
+class Animal(ResourceHandler):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
 	and usually produce something (e.g. wool, meat)."""
 	log = logging.getLogger('world.units.animal')
+
+	def __init__(self, *args, **kwargs):
+		super(Animal, self).__init__(*args, **kwargs)
+		self.add_component(Producer())
 
 
 class CollectorAnimal(Animal):
