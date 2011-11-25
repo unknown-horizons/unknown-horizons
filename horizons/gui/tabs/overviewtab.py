@@ -374,7 +374,7 @@ class SettlerOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = _("Settler overview")
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
 		                  self.instance.settlement, self.instance.level)
 
@@ -391,7 +391,7 @@ class SettlerOverviewTab(OverviewTab):
 		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		super(SettlerOverviewTab, self).refresh()
 
 	def update_consumed_res(self):
@@ -434,11 +434,11 @@ class EnemyBranchOfficeOverviewTab(OverviewTab):
 			widget = 'overview_enemybranchoffice.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		self.tooltip = _("Branch office overview")
 
 	def refresh(self):
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 
 		selling_inventory = self.widget.findChild(name='selling_inventory')
 		selling_inventory.init(self.instance.session.db, self.instance.settlement.get_component(StorageComponent).inventory, self.instance.settlement.sell_list, True)

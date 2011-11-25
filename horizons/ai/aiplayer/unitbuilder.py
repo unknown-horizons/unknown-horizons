@@ -24,6 +24,7 @@ import logging
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, PRODUCTIONLINES
 from horizons.command.production import AddProduction
+from horizons.world.production.producer import Producer
 
 class UnitBuilder(object):
 	"""An object of this class builds the units of one player."""
@@ -57,7 +58,7 @@ class UnitBuilder(object):
 	@property
 	def num_ships_being_built(self):
 		"""Return the number of ships being built by all the boat builders of the player."""
-		return sum(len(boat_builder.get_production_lines()) for boat_builder in self._get_boat_builders())
+		return sum(len(boat_builder.get_component(Producer).get_production_lines()) for boat_builder in self._get_boat_builders())
 
 	def __str__(self):
 		return '%s UnitBuilder' % self.owner

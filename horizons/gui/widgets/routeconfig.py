@@ -27,6 +27,7 @@ from fife.extensions.pychan import widgets
 from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
+from horizons.world.component.namedcomponent import NamedComponent
 
 import horizons.main
 
@@ -43,7 +44,7 @@ class RouteConfig(object):
 		self.instance = instance
 
 		offices = instance.session.world.get_branch_offices()
-		self.branch_offices = dict([('%s (%s)' % (bo.settlement.name, bo.owner.name), bo) for bo in offices])
+		self.branch_offices = dict([('%s (%s)' % (bo.settlement.get_component(NamedComponent).name, bo.owner.name), bo) for bo in offices])
 		if not hasattr(instance, 'route'):
 			instance.create_route()
 
@@ -305,7 +306,7 @@ class RouteConfig(object):
 		self.widgets.append(entry)
 
 		settlement_name_label = entry.findChild(name = "bo_name")
-		settlement_name_label.text = unicode(branch_office.settlement.name)
+		settlement_name_label.text = unicode(branch_office.settlement.get_component(NamedComponent).name)
 		player_name_label = entry.findChild(name = "player_name")
 		player_name_label.text = unicode(branch_office.owner.name)
 

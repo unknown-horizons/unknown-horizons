@@ -32,6 +32,7 @@ from horizons.util.worldobject import WorldObjectNotFound
 from horizons.util.python import decorators
 from horizons.constants import RES
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class TradeManager(WorldObject):
 	"""
@@ -148,7 +149,7 @@ class TradeManager(WorldObject):
 				continue # TODO: consider unloading the resources if there is more than needed
 			any_transferred = True
 			self.log.info('Transfer %d of %d to %s for a journey from %s to %s, total amount %d', actual_amount, \
-				resource_id, ship, self.settlement_manager.settlement.name, destination_settlement_manager.settlement.name, amount)
+				resource_id, ship, self.settlement_manager.settlement.get_component(NamedComponent).name, destination_settlement_manager.settlement.get_component(NamedComponent).name, amount)
 			old_amount = self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]
 			mission.move_resource(ship, self.settlement_manager.settlement, resource_id, -actual_amount)
 			actually_transferred = old_amount - self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]
@@ -202,7 +203,7 @@ class TradeManager(WorldObject):
 		self.ships_sent[source_settlement_manager.worldid] += 1
 
 	def __str__(self):
-		result = 'TradeManager(%s, %d)' % (self.settlement_manager.settlement.name if hasattr(self.settlement_manager, 'settlement') else 'unknown', self.worldid)
+		result = 'TradeManager(%s, %d)' % (self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(self.settlement_manager, 'settlement') else 'unknown', self.worldid)
 		for resource_manager in self.data.itervalues():
 			result += '\n' + resource_manager.__str__()
 		return result
@@ -346,7 +347,7 @@ class SingleResourceTradeManager(WorldObject):
 		for settlement_manager_id, amount in self.partners.iteritems():
 			settlement_name = 'unknown'
 			try:
-				settlement_name = WorldObject.get_object_by_id(settlement_manager_id).settlement.name
+				settlement_name = WorldObject.get_object_by_id(settlement_manager_id).settlement.get_component(NamedComponent).name
 			except WorldObjectNotFound:
 				pass
 			result += '\n  import %.5f from %s' % (amount, settlement_name)

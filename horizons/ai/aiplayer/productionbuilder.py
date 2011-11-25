@@ -37,6 +37,7 @@ from horizons.util import Callback, Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
+from horizons.world.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
 	"""
@@ -509,6 +510,6 @@ class ProductionBuilder(AreaBuilder):
 		self.land_manager.refresh_resource_deposits()
 
 	def __str__(self):
-		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
+		return '%s.PB(%s/%d)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid)
 
 decorators.bind_all(ProductionBuilder)

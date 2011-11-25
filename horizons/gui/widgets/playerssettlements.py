@@ -26,6 +26,7 @@ from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util import Callback
+from horizons.world.component.namedcomponent import NamedComponent
 
 class PlayersSettlements(StatsWidget):
 	"""Widget that shows a list of the player's settlements."""
@@ -60,7 +61,7 @@ class PlayersSettlements(StatsWidget):
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
 		name = widgets.Label(name = 'name_%d' % settlement.worldid)
-		name.text = unicode(settlement.name)
+		name.text = unicode(settlement.get_component(NamedComponent).name)
 		name.min_size = name.max_size = (200, 20)
 
 		inhabitants = widgets.Label(name = 'inhabitants_%d' % settlement.worldid)

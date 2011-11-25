@@ -70,7 +70,6 @@ class TradeWidget(object):
 		self.partners = self.find_partner()
 		if len(self.partners) > 0:
 			dropdown = self.widget.findChild(name='partners')
-			#dropdown.setInitialData([item.settlement.name for item in self.partners])
 			#dropdown.capture(Callback(self.set_partner, dropdown.getData()))
 			nearest_partner = self.get_nearest_partner(self.partners)
 			#dropdown.setData(nearest_partner)

@@ -30,6 +30,7 @@ from horizons.constants import BUILDINGS, RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.settlement import Settlement
 
 class ResourceManager(WorldObject):
@@ -322,7 +323,7 @@ class ResourceManager(WorldObject):
 	def __str__(self):
 		if not hasattr(self, "settlement_manager"):
 			return 'UninitialisedResourceManager'
-		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.name, self.worldid)
+		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.get_component(NamedComponent).name, self.worldid)
 		for resource_manager in self._data.itervalues():
 			res = resource_manager.resource_id
 			if res not in [RES.FOOD_ID, RES.TEXTILE_ID, RES.BRICKS_ID]:

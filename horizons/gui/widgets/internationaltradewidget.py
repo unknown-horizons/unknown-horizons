@@ -26,6 +26,7 @@ from horizons.util.gui import load_uh_widget
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.util import Callback
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class InternationalTradeWidget(object):
 	log = logging.getLogger("gui.internationaltradewidget")
@@ -71,7 +72,7 @@ class InternationalTradeWidget(object):
 		if len(self.partners) > 0:
 			partner_label = self.widget.findChild(name='partners')
 			nearest_partner = self.get_nearest_partner(self.partners)
-			partner_label.text = unicode(self.partners[nearest_partner].settlement.name)
+			partner_label.text = unicode(self.partners[nearest_partner].settlement.get_component(NamedComponent).name)
 			old_partner = self.partner
 			self.partner = self.partners[nearest_partner]
 			# If we changed partners, update changelisteners
@@ -140,11 +141,11 @@ class InternationalTradeWidget(object):
 		if self.instance.position.distance(settlement.branch_office.position) <= self.radius:
 			if selling:
 				self.log.debug('InternationalTradeWidget : %s/%s is selling %d of res %d to %s/%s', \
-					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.name, settlement.owner.name)
+					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
 				SellResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
 			else:
 				self.log.debug('InternationalTradeWidget : %s/%s is buying %d of res %d from %s/%s', \
-					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.name, settlement.owner.name)
+					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
 				BuyResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
 			# update gui
 			self.draw_widget()

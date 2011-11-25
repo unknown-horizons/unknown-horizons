@@ -50,6 +50,7 @@ from horizons.command.production import ToggleActive
 from horizons.constants import BUILDINGS, RES, GAME_SPEED, SETTLER
 from horizons.entities import Entities
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.production.producer import Producer
 
 class SettlementManager(WorldObject):
@@ -417,6 +418,6 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 	def __str__(self):
-		return '%s.SM(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
+		return '%s.SM(%s/%d)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid)
 
 decorators.bind_all(SettlementManager)

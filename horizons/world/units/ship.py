@@ -38,7 +38,7 @@ from horizons.command.uioptions import TransferResource
 from horizons.constants import LAYERS, STORAGE, GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.namedcomponent import ShipNameComponent, PirateShipNameComponent
+from horizons.world.component.namedcomponent import ShipNameComponent, PirateShipNameComponent, NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
 
 class ShipRoute(object):
@@ -463,7 +463,7 @@ class Ship(Unit):
 			player_suffix = ''
 			if branch_office.owner is not self.owner:
 				player_suffix = ' (' + branch_office.owner.name + ')'
-			return branch_office.settlement.name + player_suffix
+			return branch_office.settlement.get_component(NamedComponent).name + player_suffix
 		return None
 
 	def get_status(self):

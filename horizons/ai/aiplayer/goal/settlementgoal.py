@@ -23,6 +23,7 @@ from horizons.ai.aiplayer.goal import Goal
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
+from horizons.world.component.namedcomponent import NamedComponent
 
 class SettlementGoal(Goal):
 	"""
@@ -42,7 +43,7 @@ class SettlementGoal(Goal):
 		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement.count_buildings(BUILDINGS.RESIDENTIAL_CLASS)
 
 	def __str__(self):
-		return super(SettlementGoal, self).__str__() + ', ' + self.settlement_manager.settlement.name
+		return super(SettlementGoal, self).__str__() + ', ' + self.settlement_manager.settlement.get_component(NamedComponent).name
 
 	def _log_generic_build_result(self, result, name):
 		if result == BUILD_RESULT.OK:
