@@ -195,23 +195,24 @@ class Trader(GenericAI):
 		self.log.debug("Trader %s ship %s: reached bo", self.worldid, ship.worldid)
 		settlement = self.office[ship.worldid].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
-		for res in sorted(settlement.get_component(TradePostComponent).buy_list.iterkeys()): # check for resources that the settlement wants to buy
+		trade_comp = settlement.get_component(TradePostComponent)
+		for res in sorted(trade_comp.buy_list.iterkeys()): # check for resources that the settlement wants to buy
 			amount = self.session.random.randint(*TRADER.SELL_AMOUNT) # select a random amount to sell
 			if amount == 0:
 				continue
 			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * amount)
-			settlement.buy(res, amount, price)
+			trade_comp.buy(res, amount, price)
 			# don't care if he bought it. the trader just offers.
 			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
 
 		# NOTE: must be sorted for mp games (same order everywhere)
-		for res in sorted(settlement.get_component(TradePostComponent).sell_list.iterkeys()):
+		for res in sorted(trade_comp.sell_list.iterkeys()):
 			# select a random amount to buy from the settlement
 			amount = self.session.random.randint(*TRADER.BUY_AMOUNT)
 			if amount == 0:
 				continue
 			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * amount)
-			settlement.sell(res, amount, price)
+			trade_comp.sell(res, amount, price)
 			self.log.debug("Trader %s: offered buy %s tons of res %s", self.worldid, amount, res)
 
 		del self.office[ship.worldid]

@@ -33,6 +33,8 @@ from horizons.constants import BUILDINGS, PRODUCTION, RES
 from horizons.gui.tabs import FarmProductionOverviewTab
 from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.production.producer import Producer
+from horizons.world.component.storagecomponent import StorageComponent
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -114,7 +116,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 
 	def get_non_paused_utilisation(self):
 		total = 0
-		productions = self.get_productions()
+		productions = self.get_component(Producer).get_productions()
 		for production in productions:
 			if production.get_age() < PRODUCTION.STATISTICAL_WINDOW * 1.5:
 				return 1
@@ -141,7 +143,7 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		super(Mine, self).__init__(*args, **kwargs)
 		self.__init(deposit_class, mine_empty_msg_shown=False)
 		for res, amount in inventory.iteritems():
-			self.inventory.alter(res, amount)
+			self.get_component(StorageComponent).inventory.alter(res, amount)
 
 	@classmethod
 	def get_loading_area(cls, building_id, rotation, pos):
@@ -172,7 +174,7 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		"""Returns dict containing inventory of deposit, which is needed for the mine build"""
 		deposit = session.world.get_building(position.center())
 		data = {}
-		data["inventory"] = deposit.inventory.get_dump()
+		data["inventory"] = deposit.get_component(StorageComponent).inventory.get_dump()
 		data["deposit_class"] = deposit.id
 		return data
 

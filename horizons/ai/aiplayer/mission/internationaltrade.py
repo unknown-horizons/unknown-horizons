@@ -26,6 +26,8 @@ from horizons.constants import RES, TRADER
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.ext.enum import Enum
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent  import NamedComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 
 class InternationalTrade(ShipMission):
 	"""
@@ -85,25 +87,25 @@ class InternationalTrade(ShipMission):
 			self.state = self.missionStates.moving_to_other_settlement
 			self._move_to_other_settlement()
 		self.log.info('%s started an international trade mission between %s and %s to sell %s and buy %s using %s', self, \
-			self.settlement_manager.settlement.name, self.settlement.name, self.sold_resource, self.bought_resource, self.ship)
+			self.settlement_manager.settlement.get_component(NamedComponent).name, self.settlement.get_component(NamedComponent).name, self.sold_resource, self.bought_resource, self.ship)
 
 	def _move_to_my_settlement(self):
 		self._move_to_branch_office_area(self.settlement_manager.settlement.branch_office.position, Callback(self._reached_my_settlement), \
-			Callback(self._move_to_my_settlement), 'Unable to move to my settlement (%s)' % self.settlement_manager.settlement.name)
+			Callback(self._move_to_my_settlement), 'Unable to move to my settlement (%s)' % self.settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _get_max_sellable_amount(self, available_amount):
-		if self.sold_resource not in self.settlement.buy_list:
+		if self.sold_resource not in self.settlement.get_component(TradePostComponent).buy_list:
 			return 0
-		if self.settlement.buy_list[self.sold_resource] >= self.settlement.get_component(StorageComponent).inventory[self.sold_resource]:
+		if self.settlement.get_component(TradePostComponent).buy_list[self.sold_resource] >= self.settlement.get_component(StorageComponent).inventory[self.sold_resource]:
 			return 0
 		if available_amount <= 0:
 			return 0
 		price = int(self.owner.session.db.get_res_value(self.sold_resource) * TRADER.PRICE_MODIFIER_SELL)
-		return min(self.settlement.get_component(StorageComponent).inventory[self.sold_resource] - self.settlement.buy_list[self.sold_resource],
+		return min(self.settlement.get_component(StorageComponent).inventory[self.sold_resource] - self.settlement.get_component(TradePostComponent).buy_list[self.sold_resource],
 			self.settlement.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price, available_amount)
 
 	def _reached_my_settlement(self):
-		self.log.info('%s reached my branch office area (%s)', self, self.settlement_manager.settlement.name)
+		self.log.info('%s reached my branch office area (%s)', self, self.settlement_manager.settlement.get_component(NamedComponent).name)
 		available_amount = max(0, self.settlement_manager.settlement.get_component(StorageComponent).inventory[self.sold_resource] - self.settlement_manager.resource_manager.resource_requirements[self.sold_resource])
 		sellable_amount = self._get_max_sellable_amount(available_amount)
 		if sellable_amount <= 0:
@@ -119,25 +121,25 @@ class InternationalTrade(ShipMission):
 
 	def _move_to_other_settlement(self):
 		self._move_to_branch_office_area(self.settlement.branch_office.position, Callback(self._reached_other_settlement), \
-			Callback(self._move_to_other_settlement), 'Unable to move to the other settlement (%s)' % self.settlement.name)
+			Callback(self._move_to_other_settlement), 'Unable to move to the other settlement (%s)' % self.settlement.get_component(NamedComponent).name)
 
 	def _get_max_buyable_amount(self):
 		if self.bought_resource is None:
 			return 0
-		if self.bought_resource not in self.settlement.sell_list:
+		if self.bought_resource not in self.settlement.get_component(TradePostComponent).sell_list:
 			return 0
-		if self.settlement.sell_list[self.bought_resource] >= self.settlement.get_component(StorageComponent).inventory[self.bought_resource]:
+		if self.settlement.get_component(TradePostComponent).sell_list[self.bought_resource] >= self.settlement.get_component(StorageComponent).inventory[self.bought_resource]:
 			return 0
 		needed_amount = self.settlement_manager.resource_manager.resource_requirements[self.bought_resource] - \
 			self.settlement_manager.settlement.get_component(StorageComponent).inventory[self.bought_resource]
 		if needed_amount <= 0:
 			return 0
 		price = int(self.owner.session.db.get_res_value(self.bought_resource) * TRADER.PRICE_MODIFIER_BUY)
-		return min(self.settlement.get_component(StorageComponent).inventory[self.bought_resource] - self.settlement.sell_list[self.bought_resource],
+		return min(self.settlement.get_component(StorageComponent).inventory[self.bought_resource] - self.settlement.get_component(TradePostComponent).sell_list[self.bought_resource],
 			self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price, needed_amount)
 
 	def _reached_other_settlement(self):
-		self.log.info('%s reached the other branch office area (%s)', self, self.settlement.name)
+		self.log.info('%s reached the other branch office area (%s)', self, self.settlement.get_component(NamedComponent).name)
 		if self.sold_resource is not None:
 			sellable_amount = self._get_max_sellable_amount(self.ship.get_component(StorageComponent).inventory[self.sold_resource])
 			if sellable_amount > 0:
@@ -160,10 +162,10 @@ class InternationalTrade(ShipMission):
 
 	def _return_to_my_settlement(self):
 		self._move_to_branch_office_area(self.settlement_manager.settlement.branch_office.position, Callback(self._returned_to_my_settlement), \
-			Callback(self._return_to_my_settlement), 'Unable to return to %s' % self.settlement_manager.settlement.name)
+			Callback(self._return_to_my_settlement), 'Unable to return to %s' % self.settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _returned_to_my_settlement(self):
 		self._unload_all_resources(self.settlement_manager.settlement)
-		self.report_success('Unloaded the bought resources at %s' % self.settlement_manager.settlement.name)
+		self.report_success('Unloaded the bought resources at %s' % self.settlement_manager.settlement.get_component(NamedComponent).name)
 
 decorators.bind_all(InternationalTrade)

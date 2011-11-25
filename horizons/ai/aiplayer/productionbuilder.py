@@ -36,6 +36,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import Callback, Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.world.production.producer import Producer
 
 class ProductionBuilder(AreaBuilder):
 	"""
@@ -339,7 +340,7 @@ class ProductionBuilder(AreaBuilder):
 		return self.__builder_cache[key][2]
 
 	def _init_cache(self):
-		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area.""" 
+		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area."""
 		super(ProductionBuilder, self)._init_cache()
 		self.__collector_area_cache = None
 		self.__available_squares_cache = {}
@@ -476,7 +477,7 @@ class ProductionBuilder(AreaBuilder):
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full input and output inventories."""
 		for building in self.production_buildings:
-			for production in building.get_productions():
+			for production in building.get_component(Producer).get_productions():
 				if not production.get_produced_res():
 					continue
 				all_full = True

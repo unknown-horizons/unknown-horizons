@@ -24,7 +24,7 @@ from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.gui.tabs import ProductionOverviewTab
 from horizons.command.unit import CreateUnit
 from horizons.world.production.unitproduction import UnitProduction
-from horizons.world.production.producer import Producer
+from horizons.world.production.producer import Producer, QueueProducer
 
 
 class BuildingResourceHandler(ResourceHandler):
@@ -54,16 +54,17 @@ class BuildingResourceHandler(ResourceHandler):
 		self.island.provider_buildings.remove(self)
 
 	def set_active(self, production=None, active=True):
-		super(BuildingResourceHandler, self).set_active(production, active)
+		if self.has_component(Producer):
+			self.get_component(Producer).set_active(production, active)
 		# set running costs, if activity status has changed.
 		self._set_running_costs_to_status()
 
 	def _set_running_costs_to_status(self):
 		if self.running_costs_active():
-			if not self.is_active():
+			if self.has_component(Producer) and not self.get_component(Producer).is_active():
 				self.toggle_costs()
 		else:
-			if self.is_active():
+			if self.has_component(Producer) and self.get_component(Producer).is_active():
 				self.toggle_costs()
 		self._changed()
 
@@ -79,7 +80,7 @@ class ProducerBuilding(BuildingResourceHandler):
 		self.add_component(Producer())
 
 	def add_production(self, production):
-		super(ProducerBuilding, self).add_production(production)
+		self.get_component(Producer).add_production(production)
 		production.add_production_finished_listener(self._production_finished)
 
 	def _production_finished(self, production):
@@ -89,7 +90,7 @@ class ProducerBuilding(BuildingResourceHandler):
 
 	def get_output_blocked_time(self):
 		""" gets the amount of time in range [0, 1] the output storage is blocked for the AI """
-		return max(production.get_output_blocked_time() for production in self.get_productions())
+		return max(production.get_output_blocked_time() for production in self.get_component(Producer).get_productions())
 
 class UnitProducerBuilding(ProducerBuilding):
 	"""Class for building that produce units.

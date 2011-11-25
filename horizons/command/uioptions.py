@@ -72,12 +72,12 @@ class TransferResource(GenericCommand):
 
 GenericCommand.allow_network(TransferResource)
 
-class SellResource(GenericCommand):
+class SellResource(GenericComponentCommand):
 	"""The given settlement attempts to sell the given amount of resource to the ship"""
 	def __init__(self, settlement, ship, resource_id, amount):
-		super(SellResource, self).__init__(settlement, 'sell_resource', ship.worldid, resource_id, amount)
+		super(SellResource, self).__init__(settlement, TradePostComponent.NAME, 'sell_resource', ship.worldid, resource_id, amount)
 
-GenericCommand.allow_network(SellResource)
+GenericComponentCommand.allow_network(SellResource)
 
 class BuyResource(GenericComponentCommand):
 	"""The given settlement attempts to buy the given amount of resource from the ship"""

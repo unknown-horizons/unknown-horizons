@@ -228,7 +228,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 		if changed:
 			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
-			self.alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
+			self.get_component(Producer).alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
 			self._changed()
 
 	def level_check(self):
@@ -245,7 +245,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# add a production line that gets the necessary upgrade material.
 			# when the production finishes, it calls upgrade_materials_collected.
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
-			if self.has_production_line(upgrade_material_prodline):
+			if self.get_component(Producer).has_production_line(upgrade_material_prodline):
 				return # already waiting for res
 			owner_inventory = self._get_owner_inventory()
 			upgrade_material_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \

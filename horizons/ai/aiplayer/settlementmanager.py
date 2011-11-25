@@ -50,6 +50,7 @@ from horizons.command.production import ToggleActive
 from horizons.constants import BUILDINGS, RES, GAME_SPEED, SETTLER
 from horizons.entities import Entities
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 
 class SettlementManager(WorldObject):
 	"""
@@ -239,7 +240,7 @@ class SettlementManager(WorldObject):
 				total = self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID) * self.get_resource_production_requirement(RES.GET_TOGETHER_ID)
 			else:
 				for residence in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
-					for production in residence.get_productions():
+					for production in residence.get_component(Producer).get_productions():
 						production_line = production._prod_line
 						if resource_id in production_line.consumed_res:
 							# subtract because the amount will be negative

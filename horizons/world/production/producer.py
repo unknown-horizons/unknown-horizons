@@ -118,13 +118,9 @@ class Producer(Component):
 		@param production: Production instance"""
 		production.remove() # production "destructor"
 		if self.is_active(production):
-			print "Removing active", production.get_production_line_id()
-			print self._productions
 			del self._productions[production.get_production_line_id()]
 		else:
-			print "Removing inactive"
 			del self._inactive_productions[production.get_production_line_id()]
-			print self._inactive_productions
 
 	def remove_production_by_id(self, prod_line_id):
 		"""
@@ -147,7 +143,6 @@ class Producer(Component):
 		super(Producer, self).remove()
 		for production in self.get_productions():
 			self.remove_production(production)
-			print self.get_productions()
 		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()
 
 
@@ -207,18 +202,18 @@ class Producer(Component):
 		line_id = production.get_production_line_id()
 		if active:
 			if not self.is_active(production):
-				self.log.debug("ResHandler %s: reactivating production %s", self.worldid, line_id)
+				self.log.debug("ResHandler %s: reactivating production %s", self.instance.worldid, line_id)
 				self._productions[line_id] = production
 				del self._inactive_productions[line_id]
 				production.pause(pause=False)
 		else:
 			if self.is_active(production):
-				self.log.debug("ResHandler %s: deactivating production %s", self.worldid, line_id)
+				self.log.debug("ResHandler %s: deactivating production %s", self.instance.worldid, line_id)
 				self._inactive_productions[line_id] = production
 				del self._productions[line_id]
 				production.pause()
 
-		self._changed()
+		self.instance._changed()
 
 	def toggle_active(self, production=None):
 		if production is None:

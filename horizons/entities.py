@@ -104,7 +104,6 @@ class Entities(object):
 				stream = file(os.path.join(root, filename), 'r')
 				result = load(stream, Loader=Loader)
 				unit_id = int(result['id'])
-				print "Loading unit:", unit_id
 				cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, class_package=result['classpackage'], class_type=result['classtype'], radius=result['radius'], classname=result['classname'], action_sets=result['actionsets'], components=result['components']))
 				if load_now:
 					cls.units[unit_id]

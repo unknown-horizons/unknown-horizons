@@ -30,6 +30,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import Rect
 from horizons.entities import Entities
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 
 class ImproveCollectorCoverageGoal(SettlementGoal):
 	def get_personality_name(self):
@@ -42,7 +43,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 	def _get_problematic_collector_coverage_buildings(self):
 		problematic_buildings = {}
 		for building in self.production_builder.production_buildings:
-			for production in building.get_productions():
+			for production in building.get_component(Producer).get_productions():
 				if production.get_age() < 1.5 * PRODUCTION.STATISTICAL_WINDOW:
 					continue
 				history = production.get_state_history_times(False)

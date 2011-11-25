@@ -26,6 +26,7 @@ from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import get_res_icon
 from horizons.util import Callback
 from horizons.constants import PRODUCTIONLINES
+from horizons.world.production.producer import Producer
 
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
@@ -124,7 +125,7 @@ class BoatbuilderTab(OverviewTab):
 			upgrades_box.stylize('menu_black')
 
 			# Update needed resources
-			production = self.instance.get_productions()[0]
+			production = self.instance.get_component(Producer).get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
 			# Now sort!
 			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))
