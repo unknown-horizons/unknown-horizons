@@ -110,8 +110,8 @@ class RouteConfig(object):
 			self.instance.route.enable()
 		elif not self.instance.route.can_enable():
 			self.stop_route()
-		self.hide()
-		self.show()
+
+		self._gui.adaptLayout()
 
 	def move_entry(self, entry, direction):
 		"""
@@ -140,8 +140,8 @@ class RouteConfig(object):
 
 		if enabled:
 			self.instance.route.enable()
-		self.hide()
-		self.show()
+
+		self._gui.adaptLayout()
 
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
@@ -257,8 +257,7 @@ class RouteConfig(object):
 			index += 1
 		vbox.addChild(current_hbox)
 
-		self.hide()
-		self.show()
+		self._gui.adaptLayout()
 
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
@@ -349,8 +348,7 @@ class RouteConfig(object):
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
 
-		self.hide()
-		self.show()
+		self._gui.adaptLayout()
 
 	def _init_gui(self):
 		"""
