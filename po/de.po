@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-18 10:03+0200\n"
+"PO-Revision-Date: 2011-11-23 11:34+0200\n"
 "Last-Translator: djot <djot@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -37,6 +37,11 @@ msgstr "Eine neue Welt wurde erschaffen."
 msgid "Boar"
 msgstr "Wildschwein"
 
+# Are there "boats" and "ships" or only boats (ships)?
+# 
+# If there is only one notation/label, name it either ship or boat, not both.
+# 
+# Here: Bootsbauer => Schiffbauer
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Boat Builder"
@@ -317,6 +322,7 @@ msgstr "Weber"
 msgid "Wooden Tower"
 msgstr "Turm"
 
+# "aufziehen" ersetzen
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
@@ -334,6 +340,7 @@ msgstr ""
 msgid "You have won!"
 msgstr "Ihr habt gewonnen!"
 
+# In German $resource would be "Münzen" which means "Coins". In the game there is only GOLD I guess, so no coins, money or other notations
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more ${resource} to build this building."
@@ -390,6 +397,7 @@ msgstr "bordeaux"
 msgid "bricks"
 msgstr "Ziegel"
 
+# "Kanonen" is plural form, singular is "Kanone"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
@@ -426,6 +434,7 @@ msgstr "Lehm"
 msgid "clay deposit"
 msgstr "Lehmvorkommen"
 
+# In UH only GOLD is necessary, right? No coins or money
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
@@ -442,6 +451,7 @@ msgstr "Gemeinschaft"
 msgid "cyan"
 msgstr "cyan"
 
+# Is "dagger" a weapon? If not, it's more llikely "cross" which would then be "Kreuz" in German
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
@@ -528,6 +538,10 @@ msgstr "Eisenerz"
 msgid "lamb wool"
 msgstr "Lammwolle"
 
+# - lemon heißt Zitrone
+# - lime ist Limone
+# - außderm wenn mit großem "L"
+# 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
@@ -614,6 +628,7 @@ msgstr "Zucker"
 msgid "sugar cane"
 msgstr "Zuckerrohr"
 
+# teal ist auch blaugrün, wie "cyan", kann auch seegrün oder grünblau heißen
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
@@ -1044,6 +1059,7 @@ msgstr "Bitte meldet dies dem Autor."
 msgid "Build"
 msgstr "Baue"
 
+# Only use boat or ship - so here "Schiffbau-Übersicht"
 #: horizons/gui/tabs/boatbuildertab.py:36
 msgid "Boat builder overview"
 msgstr "Bootsbau-Übersicht"
@@ -1774,6 +1790,7 @@ msgstr "Verbündeter"
 msgid "enemy"
 msgstr "Feind"
 
+# "neutral" klein normalerweise ... ich weiß nicht, wo es zur Verwendung kommt
 #. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:324
 msgid "neutral"
@@ -2104,6 +2121,7 @@ msgstr "Spielstatistiken"
 msgid "Land"
 msgstr "Gebiet"
 
+# General Question: Is it money or gold that is used in UH?
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py:640
 msgid "Money"
@@ -2309,6 +2327,9 @@ msgstr "{S} = Bildschirmfoto"
 msgid "{SHIFT} = Hold to place multiple buildings"
 msgstr "{UMSCHALT} = Gedrückt halten, um mehrere Gebäude zu platzieren"
 
+# This sentence goes beyond the page border on the right. There needs to be an automatically inserte break.
+# 
+# {SHIFT} breaks automatically, so why does {T} not break?
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:750
 msgid "{T} = Toggle translucency of ambient buildings"
@@ -2525,6 +2546,7 @@ msgstr "Maus-Scrollen am Rand:"
 msgid "Effects volume:"
 msgstr "Effektlautstärke:"
 
+# Ist nicht falsch, aber im PC-/Internetumfeld schreibt man eigentlich immer "Grafik".
 #. (text of widget: headline_graphics)
 #: horizons/i18n/guitranslations.py:875
 msgid "Graphics"
@@ -2834,6 +2856,7 @@ msgstr "Fehler: Das Szenario \"%s\" konnte nicht gefunden werden."
 msgid "Error: Cannot find scenario with file \"%s\"."
 msgstr "Fehler: Konnte das Szenario \"%s\" nicht finden."
 
+# What is this - the red "snake" at the end of the sentence? Some code from MS WORD?
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario. "
 msgstr "Ihr habt das Szenario bewältigt. "

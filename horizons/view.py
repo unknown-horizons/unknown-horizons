@@ -187,10 +187,10 @@ class View(ChangeListener):
 		self._changed()
 
 	def rotate_right(self):
-		self.cam.setRotation((self.cam.getRotation() + 90) % 360)
+		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
 
 	def rotate_left(self):
-		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
+		self.cam.setRotation((self.cam.getRotation() + 90) % 360)
 
 	def set_rotation(self, rotation):
 		self.cam.setRotation(rotation)

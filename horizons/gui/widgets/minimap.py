@@ -156,7 +156,7 @@ class Minimap(object):
 
 		self.update_cam()
 		self._recalculate()
-		self._timed_update()
+		self._timed_update(force=True)
 
 		ExtScheduler().rem_all_classinst_calls(self)
 		ExtScheduler().add_new_object(self._timed_update, self, \
@@ -246,7 +246,6 @@ class Minimap(object):
 				return
 			for i in moveable_selecteds:
 				Act(i, *map_coord).execute(self.session)
-			#self.highlight(map_coord, factor=0.3)
 		elif event.getButton() == fife.MouseEvent.LEFT:
 			self.session.view.center(*map_coord)
 
@@ -289,18 +288,18 @@ class Minimap(object):
 	def _show_tooltip(self, event):
 		if hasattr(self, "icon"): # only supported for icon mode atm
 			coords = self._get_event_coord(event)
-			if coords:
-				tile = self.session.world.get_tile( Point(*coords) )
-				if tile is not None and tile.settlement is not None:
-					new_tooltip = tile.settlement.name
-					if self.icon.tooltip != new_tooltip:
-						self.icon.tooltip = new_tooltip
-						self.icon.position_tooltip(event)
-						self.icon.show_tooltip()
-					else:
-						self.icon.position_tooltip(event)
+			if not coords: # no valid/relevant event location
+				self.icon.hide_tooltip()
+				return
+
+			tile = self.session.world.get_tile( Point(*coords) )
+			if tile is not None and tile.settlement is not None:
+				new_tooltip = tile.settlement.name
+				if self.icon.tooltip != new_tooltip:
+					self.icon.tooltip = new_tooltip
+					self.icon.show_tooltip()
 				else:
-					self.icon.hide_tooltip()
+					self.icon.position_tooltip(event)
 			else:
 				self.icon.hide_tooltip()
 
@@ -474,7 +473,7 @@ class Minimap(object):
 					rt_addPoint(render_name, fife_point, *color)
 
 
-	def _timed_update(self):
+	def _timed_update(self, force=False):
 		"""Regular updates for domains we can't or don't want to keep track of."""
 		# update ship dots
 		# OPTIMISATION NOTE: there can be pretty many ships, don't rely on the inner loop being rarely executed
@@ -499,7 +498,8 @@ class Minimap(object):
 		settlements = self.world.settlements
 		# save only worldids as to not introduce actual coupling
 		cur_settlements = set( i.worldid for i in settlements )
-		if not hasattr(self, "_last_settlements") or cur_settlements != self._last_settlements:
+		if force or \
+		   (not hasattr(self, "_last_settlements") or cur_settlements != self._last_settlements):
 			# update necessary
 			bo_img = self.imagemanager.load( self.__class__.BRANCH_OFFICE_IMAGE )
 			bo_render_name = self._get_render_name("branch_office")
@@ -520,17 +520,15 @@ class Minimap(object):
 	def rotate_right (self):
 		# keep track of rotation at any time, but only apply
 		# if it's actually used
-		self.rotation += 1
+		self.rotation -= 1
 		self.rotation %= 4
-		self.update_cam()
 		if self._get_rotation_setting():
 			self.draw()
 
 	def rotate_left (self):
 		# see above
-		self.rotation -= 1
+		self.rotation += 1
 		self.rotation %= 4
-		self.update_cam()
 		if self._get_rotation_setting():
 			self.draw()
 
