@@ -46,7 +46,7 @@ from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER
+from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
 
 # private module pointers of this module
@@ -171,6 +171,9 @@ def start(command_line_arguments):
 	if not startup_worked:
 		# don't start main loop if startup failed
 		return False
+
+	if command_line_arguments.gamespeed is not None:
+		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
 
 	fife.run()
 
