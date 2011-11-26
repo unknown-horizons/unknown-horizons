@@ -56,6 +56,7 @@ class MapLoader:
 		""" Loads the map from the given sqlite file """
 		model = self._engine.getModel()
 		map = model.createMap(path)
+		map.setFilename(path)
 		grid = model.getCellGrid(self.GRID_TYPE)
 
 		# add layers
@@ -142,9 +143,6 @@ class UHMapLoader(scripts.plugin.Plugin):
 		self._engine = self._editor.getEngine()
 
 		mapLoaders.addMapLoader('sqlite', MapLoader)
-		exts = list(mapLoaders.fileExtensions)
-		exts.append('sqlite')
-		mapLoaders.fileExtensions = tuple(exts)
 
 	def disable(self):
 		""" Disable plugin """
