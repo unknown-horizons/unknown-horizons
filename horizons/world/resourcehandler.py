@@ -136,16 +136,15 @@ class ResourceHandler(StorageHolder):
 		"""
 		raise NotImplementedError, "This function has to be overridden!"
 
-	def add_production_by_id(self, production_line_id, production_class = Production):
+	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.
 		@param production_line_id: Production line from db
-		@param production_class: Subclass of Production that does the production. If the object
-		                         has a production_class-member, this will be used instead.
 		"""
 		if hasattr(self, "production_class"):
 			production_class = self.production_class
 		owner_inventory = self._get_owner_inventory()
-		self.add_production(production_class(self.inventory, owner_inventory, production_line_id))
+		self.add_production(production_class(self.inventory, owner_inventory, \
+		                                     production_line_id, start_finished=start_finished))
 
 	def _get_owner_inventory(self):
 		"""Returns the inventory of the owner to be able to retrieve special resources such as gold.

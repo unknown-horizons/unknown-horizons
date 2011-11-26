@@ -44,15 +44,15 @@ class Producer(ResourceHandler):
 	production_class = Production
 
 	# INIT
-	def __init__(self, auto_init=True, **kwargs):
+	def __init__(self, auto_init=True, start_finished=False, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		# add production lines as specified in db.
 		if auto_init:
 			for prod_line in self.session.db("SELECT id FROM production_line WHERE object_id = ? \
 			    AND enabled_by_default = 1", self.id):
-				# for abeaumont patch:
+				# for abeaumont patch: // NOTE: this would now also be deprecated -- totycro, 11/2011
 				#self.add_production_by_id(prod_line[0], self.worldid, self.production_class)
-				self.add_production_by_id(prod_line[0], self.production_class)
+				self.add_production_by_id(prod_line[0], start_finished=start_finished)
 
 	@property
 	def capacity_utilisation(self):
@@ -176,11 +176,9 @@ class QueueProducer(Producer):
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE rowid = ?", worldid):
 			self.production_queue.append(prod_line_id)
 
-	def add_production_by_id(self, production_line_id, production_class = Production):
+	def add_production_by_id(self, production_line_id):
 		"""Convenience method.
 		@param production_line_id: Production line from db
-		@param production_class: Subclass of Production that does the production. If the object
-		                         has a production_class-member, this will be used instead.
 		"""
 		self.production_queue.append(production_line_id)
 		if not self.is_active():

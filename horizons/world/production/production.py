@@ -56,10 +56,14 @@ class Production(WorldObject):
 	USES_GOLD = False
 
 	## INIT/DESTRUCT
-	def __init__(self, inventory, owner_inventory, prod_line_id, auto_start=True, **kwargs):
+	def __init__(self, inventory, owner_inventory, prod_line_id, auto_start=True, \
+	             start_finished=False, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self._state_history = deque()
 		self.__init(inventory, owner_inventory, prod_line_id, PRODUCTION.STATES.none, Scheduler().cur_tick)
+
+		if start_finished:
+			self._give_produced_res()
 
 		# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
 		self.inventory.add_change_listener(self._check_inventory, call_listener_now=False)
