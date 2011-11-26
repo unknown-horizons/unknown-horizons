@@ -123,7 +123,6 @@ class UHMapLoader(scripts.plugin.Plugin):
 		self._engine = self._editor.getEngine()
 
 		mapLoaders.addMapLoader('sqlite', MapLoader)
-		mapLoaders.fileExtensions = tuple(exts)
 
 	def disable(self):
 		""" Disable plugin """
