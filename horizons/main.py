@@ -254,6 +254,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai)
 
+
 def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natural_resource_multiplier = 1):
 	"""Starts a multiplayer game server
 	TODO: acctual game data parameter passing
