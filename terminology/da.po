@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
 "PO-Revision-Date: 2011-11-21 12:01+0200\n"
-"Last-Translator: hellwing <jacob.kage@hotmail.com>\n"
+"Last-Translator: Jacob <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -37,6 +37,7 @@ msgstr "din"
 msgid "farm"
 msgstr "gård"
 
+#, fuzzy
 msgid "field"
 msgstr "felt"
 
@@ -135,6 +136,7 @@ msgstr "sælg"
 msgid "storage"
 msgstr "opbevaring"
 
+#, fuzzy
 msgid "taxes"
 msgstr "skatter"
 
@@ -222,7 +224,6 @@ msgid "move"
 msgstr "flytte"
 
 # 80%
-#, fuzzy
 msgid "moved"
 msgstr "flyttet"
 
@@ -315,6 +316,7 @@ msgstr "beboere"
 msgid "run"
 msgstr "køre"
 
+#, fuzzy
 msgid "slot"
 msgstr "slot"
 
