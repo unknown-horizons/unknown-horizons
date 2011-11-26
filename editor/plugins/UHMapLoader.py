@@ -54,6 +54,7 @@ class MapLoader:
 		""" Loads the map from the given sqlite file """
 		model = self._engine.getModel()
 		map = model.createMap(path)
+		map.setFilename(path)
 		grid = model.getCellGrid(self.GRID_TYPE)
 
 		# add layers
