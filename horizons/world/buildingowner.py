@@ -38,7 +38,7 @@ class BuildingOwner(object):
 		self.provider_buildings = ProviderHandler()
 		self.buildings = []
 
-	def add_building(self, building, player):
+	def add_building(self, building, player, load=False):
 		"""Adds a building to the island at the position x, y with player as the owner.
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement"""

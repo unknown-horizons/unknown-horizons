@@ -159,7 +159,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.island, self.settlement = self.load_location(db, worldid)
 
 		# island.add_building handles registration of building for island and settlement
-		self.island.add_building(self, self.owner)
+		self.island.add_building(self, self.owner, load=True)
 
 	def load_location(self, db, worldid):
 		"""
@@ -171,8 +171,11 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			# workaround: island can't be fetched from world, because it isn't fully constructed
 			island = WorldObject.get_object_by_id(db.get_settlement_island(location_obj.worldid))
 			# settlement might not have been registered in island, so do it if getter fails
+			"""
 			settlement = island.get_settlement(self.position.center()) or \
-								 island.add_existing_settlement(self.position, self.radius, location_obj)
+								 island.add_existing_settlement(self.position, self.radius, location_obj, load=True)
+								 """
+			settlement = location_obj
 		else: # loc is island
 			island = location_obj
 			settlement = None

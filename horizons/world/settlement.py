@@ -19,12 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import json
+import sqlite3
+
 import horizons.main
 
+from horizons.entities import Entities
 from horizons.world.tradepost import TradePost
 from horizons.world.storageholder import StorageHolder
 from horizons.world.storage import PositiveSizedSlotStorage
-from horizons.util import WorldObject, WeakList, NamedObject
+from horizons.util import WorldObject, WeakList, NamedObject, Rect, Point
 from horizons.constants import BUILDINGS, SETTLER
 
 class Settlement(TradePost, StorageHolder, NamedObject):
@@ -125,8 +129,12 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)", \
 				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 
+		# dump ground data via json, it's orders of magnitude faster than sqlite
+		data = json.dumps(self.ground_map.keys())
+		db("INSERT INTO settlement_tiles(rowid, data) VALUES(?, ?)", self.worldid, data)
+
 	@classmethod
-	def load(cls, db, worldid, session):
+	def load(cls, db, worldid, session, island):
 		self = cls.__new__(cls)
 
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
@@ -137,6 +145,29 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 			tax_settings[level] = tax
 		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
+		try:
+			# normal tile loading for new savegames
+			tile_data = db("SELECT data FROM settlement_tiles WHERE rowid = ?", worldid)[0][0]
+			tile_data = json.loads(tile_data)
+			for (x, y) in tile_data: # NOTE: json saves tuples as list
+				tup = (x, y)
+				tile = island.ground_map[tup]
+				self.ground_map[tup] = tile
+				tile.settlement = self
+		except sqlite3.OperationalError:
+			print "Updating data of outdated savegame.."
+			# old savegame, create settlement tiles provisionally (not correct, but useable)
+			# remove when there aren't any savegames from before december 2011 any more
+			for b_type, x, y in db("SELECT type, x, y FROM building WHERE location = ?", worldid):
+				cls = Entities.buildings[b_type]
+				position = Rect.init_from_topleft_and_size(x, y, cls.size[0], cls.size[1])
+				for coord in position.get_radius_coordinates(cls.radius, include_self=True):
+					tile = island.get_tile_tuple(coord)
+					if tile is not None:
+						if tile.settlement is None:
+							self.ground_map[coord] = island.ground_map[coord]
+							tile.settlement = self
+
 		# load super here cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)
 
@@ -145,7 +176,7 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		# that is in the radius of the building, to the settlement.
 		from horizons.world import load_building
 		for building_id, building_type in \
-				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
+			  db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			building = load_building(session, db, building_type, building_id)
 			if building_type == BUILDINGS.BRANCH_OFFICE_CLASS:
 				self.branch_office = building

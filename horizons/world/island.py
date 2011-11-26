@@ -83,7 +83,8 @@ class Island(BuildingOwner, WorldObject):
 
 		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
-			Settlement.load(db, settlement_id, self.session)
+			settlement = Settlement.load(db, settlement_id, self.session, self)
+			self.settlements.append(settlement)
 
 		# load buildings
 		from horizons.world import load_building
@@ -190,13 +191,13 @@ class Island(BuildingOwner, WorldObject):
 			if tup in self.ground_map:
 				yield self.ground_map[tup]
 
-	def add_settlement(self, position, radius, player):
+	def add_settlement(self, position, radius, player, load=False):
 		"""Adds a settlement to the island at the position x, y with radius as area of influence.
 		@param position: Rect describing the position of the new branch office
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(self.session, player)
-		self.add_existing_settlement(position, radius, settlement)
+		self.add_existing_settlement(position, radius, settlement, load)
 		# TODO: Move this to command, this message should not appear while loading
 		self.session.ingame_gui.message_widget.add(position.center().x, \
 		                                           position.center().y, \
@@ -208,14 +209,16 @@ class Island(BuildingOwner, WorldObject):
 
 		return settlement
 
-	def add_existing_settlement(self, position, radius, settlement):
+	def add_existing_settlement(self, position, radius, settlement, load=False):
 		"""Same as add_settlement, but uses settlement from parameter.
 		May also be called for extension of an existing settlement by a new building. (this
 		is useful for loading, where every loaded building extends the radius of its settlement).
-		@param position: Rect"""
+		@param position: Rect
+		@param load: whether it has been called during load"""
 		if settlement not in self.settlements:
 			self.settlements.append(settlement)
-		self.assign_settlement(position, radius, settlement)
+		if not load:
+			self.assign_settlement(position, radius, settlement)
 		self.session.scenario_eventhandler.check_events(CONDITIONS.settlements_num_greater)
 		return settlement
 
@@ -243,6 +246,7 @@ class Island(BuildingOwner, WorldObject):
 							player.on_settlement_expansion(settlement, coord)
 
 				building = tile.object
+				# found a new building, that is now in settlement radius
 				# assign buildings on tiles to settlement
 				if building is not None and building.settlement is None and \
 				   building.island == self: # don't steal from other islands
@@ -250,28 +254,28 @@ class Island(BuildingOwner, WorldObject):
 					building.owner = settlement.owner
 					settlement.add_building(building)
 
-		#TODO: inherit resources etc
 
-
-	def add_building(self, building, player):
+	def add_building(self, building, player, load=False):
 		"""Adds a building to the island at the position x, y with player as the owner.
 		@param building: Building class instance of the building that is to be added.
-		@param player: int id of the player that owns the settlement"""
-		building = super(Island, self).add_building(building, player)
-		for building.settlement in self.get_settlements(building.position, player):
-			self.assign_settlement(building.position, building.radius, building.settlement)
-			break
+		@param player: int id of the player that owns the settlement
+		@param load: boolean, whether it has been called during loading"""
+		building = super(Island, self).add_building(building, player, load=load)
+		if not load:
+			for building.settlement in self.get_settlements(building.position, player):
+				self.assign_settlement(building.position, building.radius, building.settlement)
+				break
 
 		if building.settlement is not None:
 			building.settlement.add_building(building)
-		building.init()
 		if building.id in self.building_indexers:
 			self.building_indexers[building.id].add(building)
 
 		# Reset the tiles this building was covering
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
-			self._register_change(point.x, point.y)
+			if not load:
+				self._register_change(point.x, point.y)
 
 		# keep track of the number of trees for animal population control
 		if building.id == BUILDINGS.TREE_CLASS:
