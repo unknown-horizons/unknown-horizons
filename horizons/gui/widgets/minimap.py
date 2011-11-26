@@ -304,10 +304,11 @@ class Minimap(object):
 			else:
 				self.icon.hide_tooltip()
 
-	def highlight(self, tup, factor=1.0, finish_callback=None, color=(0,0,0)):
+	def highlight(self, tup, factor=1.0, speed=1.0, finish_callback=None, color=(0,0,0)):
 		"""Try to get the users attention on a certain point of the minimap.
 		@param tuple: world coords
 		@param factor: float indicating importance of event
+		@param speed: animation speed as factor
 		@param finish_callback: executed when animation finishes
 		@param color: color of anim, (r,g,b), r,g,b of [0,255]
 		@return duration of full animation in seconds"""
@@ -318,7 +319,7 @@ class Minimap(object):
 		MIN_RAD = int( 3 * factor) # pixel
 		MAX_RAD = int(12 * factor) # pixel
 		STEPS = int(20 * factor)
-		INTERVAL = math.pi / 16
+		INTERVAL = (math.pi / 16) * factor
 
 		def high(i=0):
 			i += 1
@@ -379,7 +380,7 @@ class Minimap(object):
 			self.minimap_image.set_drawing_enabled()
 			self.minimap_image.rendertarget.removeAll(render_name)
 
-		self.highlight(path[ -1 ], factor=0.4, finish_callback=cleanup, color=color)
+		self.highlight(path[ -1 ], factor=0.4, speed= ( (1.0+math.sqrt(5) / 2) ), finish_callback=cleanup, color=color)
 
 		return True
 
@@ -488,12 +489,26 @@ class Minimap(object):
 			coord = self._world_to_minimap( ship().position.to_tuple(), use_rotation )
 
 			color = ship().owner.color.to_tuple()
+			a = 2 # change this to change height/width
+			b = a - 1
 			self.minimap_image.rendertarget.addQuad(self._get_render_name("ship"),
-			                                        fife.Point( coord[0]-2, coord[1]-2 ),
-			                                        fife.Point( coord[0]-2, coord[1]+1 ),
-			                                        fife.Point( coord[0]+1, coord[1]+1 ),
-			                                        fife.Point( coord[0]+1, coord[1]-2 ),
+			                                        fife.Point( coord[0]-1, coord[1]-1 ),
+			                                        fife.Point( coord[0]-1, coord[1]+2 ),
+			                                        fife.Point( coord[0]+2, coord[1]+2 ),
+			                                        fife.Point( coord[0]+2, coord[1]-1 ),
 			                                        *color)
+			if ship() in self.session.selected_instances:
+				self.minimap_image.rendertarget.addPoint(self._get_render_name("ship"),
+			                                         fife.Point( coord[0], coord[1] ),
+			                                         *Minimap.COLORS["water"])
+				for x_off, y_off in ((-2,  0),
+				                     (+2,  0),
+				                     ( 0, -2),
+				                     ( 0, +2)):
+					self.minimap_image.rendertarget.addPoint(self._get_render_name("ship"),
+					                                         fife.Point( coord[0]+x_off, coord[1] + y_off ),
+					                                         *color)
+
 
 		# draw settlement branch offices if something has changed
 		settlements = self.world.settlements
