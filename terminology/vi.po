@@ -1,0 +1,547 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-08 16:54+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
+
+msgid "build"
+msgstr ""
+
+msgid "game"
+msgstr ""
+
+msgid "building"
+msgstr ""
+
+msgid "tent"
+msgstr ""
+
+msgid "resource"
+msgstr ""
+
+msgid "branch office"
+msgstr ""
+
+msgid "your"
+msgstr ""
+
+msgid "farm"
+msgstr ""
+
+msgid "field"
+msgstr ""
+
+msgid "overview"
+msgstr ""
+
+msgid "ship"
+msgstr ""
+
+msgid "main"
+msgstr ""
+
+msgid "settlement"
+msgstr ""
+
+msgid "start"
+msgstr ""
+
+msgid "click"
+msgstr ""
+
+msgid "inhabitants"
+msgstr ""
+
+msgid "map"
+msgstr ""
+
+msgid "menu"
+msgstr ""
+
+msgid "production"
+msgstr ""
+
+msgid "tab"
+msgstr ""
+
+msgid "unknown"
+msgstr ""
+
+msgid "food"
+msgstr ""
+
+msgid "increment"
+msgstr ""
+
+msgid "select"
+msgstr ""
+
+msgid "setting"
+msgstr ""
+
+msgid "time"
+msgstr ""
+
+msgid "trade"
+msgstr ""
+
+msgid "change"
+msgstr ""
+
+msgid "main square"
+msgstr ""
+
+msgid "trail"
+msgstr ""
+
+msgid "boards"
+msgstr ""
+
+msgid "buy"
+msgstr ""
+
+msgid "coast"
+msgstr ""
+
+msgid "connect"
+msgstr ""
+
+msgid "cost"
+msgstr ""
+
+msgid "free"
+msgstr ""
+
+msgid "log"
+msgstr ""
+
+msgid "lumberjack"
+msgstr ""
+
+msgid "sell"
+msgstr ""
+
+msgid "storage"
+msgstr ""
+
+msgid "taxes"
+msgstr ""
+
+msgid "trader"
+msgstr ""
+
+msgid "version"
+msgstr ""
+
+msgid "companies"
+msgstr ""
+
+msgid "fire"
+msgstr ""
+
+msgid "left"
+msgstr ""
+
+msgid "reach"
+msgstr ""
+
+msgid "signal"
+msgstr ""
+
+msgid "signal fire"
+msgstr ""
+
+msgid "stock"
+msgstr ""
+
+msgid "tools"
+msgstr ""
+
+msgid "wool"
+msgstr ""
+
+msgid "balance"
+msgstr ""
+
+msgid "choose"
+msgstr ""
+
+msgid "fisher"
+msgstr ""
+
+msgid "found"
+msgstr ""
+
+msgid "pavilion"
+msgstr ""
+
+msgid "potato"
+msgstr ""
+
+msgid "range"
+msgstr ""
+
+msgid "raw"
+msgstr ""
+
+msgid "running"
+msgstr ""
+
+msgid "running costs"
+msgstr ""
+
+msgid "collector"
+msgstr ""
+
+msgid "help"
+msgstr ""
+
+msgid "house"
+msgstr ""
+
+msgid "inventory"
+msgstr ""
+
+msgid "level"
+msgstr ""
+
+msgid "move"
+msgstr ""
+
+msgid "moved"
+msgstr ""
+
+msgid "produce"
+msgstr ""
+
+msgid "produced"
+msgstr ""
+
+msgid "pasture"
+msgstr ""
+
+msgid "storage tent"
+msgstr ""
+
+msgid "sugar"
+msgstr ""
+
+msgid "tree"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "add"
+msgstr ""
+
+msgid "build menu"
+msgstr ""
+
+msgid "built"
+msgstr ""
+
+msgid "construction"
+msgstr ""
+
+msgid "continue"
+msgstr ""
+
+msgid "decrease"
+msgstr ""
+
+msgid "free trader"
+msgstr ""
+
+msgid "hunter"
+msgstr ""
+
+msgid "leave"
+msgstr ""
+
+msgid "market"
+msgstr ""
+
+msgid "partner"
+msgstr ""
+
+msgid "sailor"
+msgstr ""
+
+msgid "pioneer"
+msgstr ""
+
+msgid "settler"
+msgstr ""
+
+msgid "citizen"
+msgstr ""
+
+msgid "merchant"
+msgstr ""
+
+msgid "aristocrat"
+msgstr ""
+
+msgid "refresh"
+msgstr ""
+
+msgid "residents"
+msgstr ""
+
+msgid "run"
+msgstr ""
+
+msgid "slot"
+msgstr ""
+
+msgid "stop"
+msgstr ""
+
+msgid "team"
+msgstr ""
+
+msgid "village"
+msgstr ""
+
+msgid "account"
+msgstr ""
+
+msgid "back"
+msgstr ""
+
+msgid "build settlement"
+msgstr ""
+
+msgid "Captain's log"
+msgstr ""
+
+msgid "cloth"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "happiness"
+msgstr ""
+
+msgid "increase"
+msgstr ""
+
+msgid "liquor"
+msgstr ""
+
+msgid "mode"
+msgstr ""
+
+msgid "multiple"
+msgstr ""
+
+msgid "output"
+msgstr ""
+
+msgid "play"
+msgstr ""
+
+msgid "sale"
+msgstr ""
+
+msgid "save"
+msgstr ""
+
+msgid "school"
+msgstr ""
+
+msgid "screen"
+msgstr ""
+
+msgid "solution"
+msgstr ""
+
+msgid "sound"
+msgstr ""
+
+msgid "from time to time"
+msgstr ""
+
+msgid "trading"
+msgstr ""
+
+msgid "visit"
+msgstr ""
+
+msgid "weaver"
+msgstr ""
+
+msgid "animal"
+msgstr ""
+
+msgid "fish"
+msgstr ""
+
+msgid "fisherman"
+msgstr ""
+
+msgid "forest"
+msgstr ""
+
+msgid "forum"
+msgstr ""
+
+msgid "fulfill"
+msgstr ""
+
+msgid "graphics"
+msgstr ""
+
+msgid "grow"
+msgstr ""
+
+msgid "hold"
+msgstr ""
+
+msgid "hunt"
+msgstr ""
+
+msgid "income"
+msgstr ""
+
+msgid "information"
+msgstr ""
+
+msgid "key"
+msgstr ""
+
+msgid "lamb wool"
+msgstr ""
+
+msgid "load/unload"
+msgstr ""
+
+msgid "return"
+msgstr ""
+
+msgid "service"
+msgstr ""
+
+msgid "sheep"
+msgstr ""
+
+msgid "ship inventory"
+msgstr ""
+
+msgid "starting"
+msgstr ""
+
+msgid "trade partner"
+msgstr ""
+
+msgid "yields"
+msgstr ""
+
+msgid "faith"
+msgstr ""
+
+msgid "green"
+msgstr ""
+
+msgid "red"
+msgstr ""
+
+msgid "check"
+msgstr ""
+
+msgid "connection"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "tax"
+msgstr ""
+
+msgid "feature"
+msgstr ""
+
+msgid "reached"
+msgstr ""
+
+msgid "slider"
+msgstr ""
+
+msgid "condition"
+msgstr ""
+
+msgid "consume"
+msgstr ""
+
+msgid "contact"
+msgstr ""
+
+msgid "dialogue"
+msgstr ""
+
+msgid "issues"
+msgstr ""
+
+msgid "minimap"
+msgstr ""
+
+msgid "playing"
+msgstr ""
+
+msgid "ruin"
+msgstr ""
+
+msgid "seed"
+msgstr ""
+
+msgid "temporarily"
+msgstr ""
+
+msgid "salt ponds"
+msgstr ""
+
+msgid "tobacco"
+msgstr ""
+
+msgid "cattle"
+msgstr ""
+
+msgid "pig"
+msgstr ""
+
+msgid "herbs"
+msgstr ""
+
+msgid "herbary"
+msgstr ""
+
+msgid "butchery"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "clay"
+msgstr ""
+
+msgid "charcoal"
+msgstr ""
+
+msgid "iron"
+msgstr ""
+
+msgid "ore"
+msgstr ""
