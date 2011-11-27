@@ -24,7 +24,7 @@ from horizons.gui.widgets.tradewidget import TradeWidget
 from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.util import Callback
-from horizons.scheduler import Scheduler
+from horizons.extscheduler import ExtScheduler
 from horizons.constants import WEAPONS
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
 
@@ -48,11 +48,14 @@ class InventoryTab(TabInterface):
 		self.widget.child_finder('inventory').update()
 
 	def show(self):
-		Scheduler().add_new_object(self.refresh, self, run_in=1, loops=-1, loop_interval=16)
+		# run once now
+		ExtScheduler().add_new_object(self.refresh, self, run_in=0.01, loops=1)
+		# and every sec later
+		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=1)
 		super(InventoryTab, self).show()
 
 	def hide(self):
-		Scheduler().rem_call(self, self.refresh)
+		ExtScheduler().rem_call(self, self.refresh)
 		super(InventoryTab, self).hide()
 
 class ShipInventoryTab(InventoryTab):
