@@ -266,6 +266,7 @@ CREATE TABLE "message" ("text" TEXT NOT NULL ,"icon" INTEGER NOT NULL ,"visible_
 INSERT INTO "message" VALUES('A new settlement has been created by ${player}.',1,30.0,2,'NEW_SETTLEMENT');
 INSERT INTO "message" VALUES('A new world has been created.',1,15.0,1,'NEW_WORLD');
 INSERT INTO "message" VALUES('Your game has been quicksaved.',3,10.0,NULL,'QUICKSAVE');
+INSERT INTO "message" VALUES('Your game has been autosaved.',3,10.0,NULL,'AUTOSAVE');
 INSERT INTO "message" VALUES('Screenshot has been saved to ${file}.',2,15.0,NULL,'SCREENSHOT');
 INSERT INTO "message" VALUES('Your settlers reached level ${level}.',1,20.0,3,'SETTLER_LEVEL_UP');
 INSERT INTO "message" VALUES('You need more ${resource} to build this building.',1,3.0,NULL,'NEED_MORE_RES');

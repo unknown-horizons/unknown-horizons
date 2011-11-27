@@ -43,7 +43,7 @@ class Producer(Component):
 	production_class = Production
 
 	# INIT
-	def __init__(self, auto_init=True, **kwargs):
+	def __init__(self, auto_init=True, start_finished=False, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		self.__auto_init = auto_init
 
@@ -60,20 +60,17 @@ class Producer(Component):
 			    AND enabled_by_default = 1", self.instance.id):
 				# for abeaumont patch:
 				#self.add_production_by_id(prod_line[0], self.worldid, self.production_class)
-				self.add_production_by_id(prod_line[0], self.production_class)
+				self.add_production_by_id(prod_line[0], start_finished=start_finished)
 
 
-	def add_production_by_id(self, production_line_id, production_class = Production):
+	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.
 		@param production_line_id: Production line from db
-		@param production_class: Subclass of Production that does the production. If the object
-		                         has a production_class-member, this will be used instead.
 		"""
-		if hasattr(self, "production_class"):
-			production_class = self.production_class
-		owner_inventory = self.instance._get_owner_inventory()
-		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, production_line_id))
-
+		production_class = self.production_class
+		owner_inventory = self._get_owner_inventory()
+		self.add_production(production_class(self.inventory, owner_inventory, \
+		                                     production_line_id, start_finished=start_finished))
 
 	@property
 	def capacity_utilisation(self):
@@ -269,11 +266,9 @@ class QueueProducer(Producer):
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE rowid = ?", worldid):
 			self.production_queue.append(prod_line_id)
 
-	def add_production_by_id(self, production_line_id, production_class = Production):
+	def add_production_by_id(self, production_line_id):
 		"""Convenience method.
 		@param production_line_id: Production line from db
-		@param production_class: Subclass of Production that does the production. If the object
-		                         has a production_class-member, this will be used instead.
 		"""
 		self.production_queue.append(production_line_id)
 		if not self.is_active():
