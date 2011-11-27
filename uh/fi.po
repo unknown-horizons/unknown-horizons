@@ -1218,7 +1218,7 @@ msgid "There is nothing written in your logbook yet!"
 msgstr "Lokikirjaasi ei ole kirjoitettu vielä mitään!"
 
 #: horizons/gui/widgets/playerssettlements.py:41
-#, python-format, fuzzy
+#, python-format, 
 msgid "%(player)s's settlements"
 msgstr "Pelaajan %(player)s siirtokunnat"
 
