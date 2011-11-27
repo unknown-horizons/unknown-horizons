@@ -34,6 +34,7 @@ class Speech:
 	NEW_SETTLEMENT = "new_settlement"
 	NEW_WORLD = "new_world"
 	QUICKSAVE = None
+	AUTOSAVE = None
 	SCREENSHOT = None
 	SETTLER_LEVEL_UP = None
 	NEED_MORE_RES = None
