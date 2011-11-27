@@ -276,7 +276,11 @@ def parse_args():
 			def write(self, line):
 				line = unicode(line)
 				sys.__stdout__.write(line)
-				logfile.write(line)
+				try:
+					logfile.write(line)
+				except UnicodeEncodeError:
+					# python unicode handling is weird, this has been empirically proven to work
+					logfile.write( line.encode("UTF-8") )
 		sys.stdout = StdOutDuplicator()
 
 		# add a handler to stderr too _but_ only if logfile isn't already a tty
