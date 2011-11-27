@@ -75,9 +75,9 @@ class ProducerBuilding(BuildingResourceHandler):
 	behaviour"""
 	tabs = (ProductionOverviewTab,) # don't show inventory, just production (i.e. running costs)
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self, start_finished=False, *args, **kwargs):
 		super(ProducerBuilding, self).__init__(*args, **kwargs)
-		self.add_component(Producer())
+		self.add_component(Producer(start_finished=start_finished))
 
 	def add_production(self, production):
 		self.get_component(Producer).add_production(production)

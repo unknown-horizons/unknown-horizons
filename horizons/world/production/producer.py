@@ -46,6 +46,7 @@ class Producer(Component):
 	def __init__(self, auto_init=True, start_finished=False, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		self.__auto_init = auto_init
+		self.__start_finished = start_finished
 
 	def initialize(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
@@ -60,7 +61,7 @@ class Producer(Component):
 			    AND enabled_by_default = 1", self.instance.id):
 				# for abeaumont patch:
 				#self.add_production_by_id(prod_line[0], self.worldid, self.production_class)
-				self.add_production_by_id(prod_line[0], start_finished=start_finished)
+				self.add_production_by_id(prod_line[0], start_finished=self.__start_finished)
 
 
 	def add_production_by_id(self, production_line_id, start_finished=False):
@@ -68,8 +69,8 @@ class Producer(Component):
 		@param production_line_id: Production line from db
 		"""
 		production_class = self.production_class
-		owner_inventory = self._get_owner_inventory()
-		self.add_production(production_class(self.inventory, owner_inventory, \
+		owner_inventory = self.instance._get_owner_inventory()
+		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, \
 		                                     production_line_id, start_finished=start_finished))
 
 	@property
