@@ -44,10 +44,11 @@ class BuildingClass(type):
 	"""
 	log = logging.getLogger('world.building')
 
-	def __new__(self, db, id):
-		class_package, class_name = db.get_building_class_data(id)
-		__import__('horizons.world.building.'+class_package)
+	def __new__(self, db, id,  yaml_results=[]):
+		class_package =  yaml_results['baseclass'].split('.')[0]
+		class_name = yaml_results['baseclass'].split('.')[1]
 
+		__import__('horizons.world.building.'+class_package)
 		@classmethod
 		def load(cls, session, db, worldid):
 			self = cls.__new__(cls)
@@ -59,7 +60,7 @@ class BuildingClass(type):
 			(getattr(globals()[class_package], class_name),),
 			{'load': load})
 
-	def __init__(self, db, id):
+	def __init__(self, db, id, yaml_results=[]):
 		"""
 		Final loading for the building class. Load a lot of attributes for the building classes
 		@param id: building id.
@@ -68,14 +69,15 @@ class BuildingClass(type):
 		super(BuildingClass, self).__init__(self)
 		self.id = id
 		self._object = None
-
-		self.class_package, size_x, size_y, name, self.radius, inhabitants, inhabitants_max = \
-		    db("SELECT class_package, size_x, size_y, name, radius, \
-		    inhabitants_start, inhabitants_max FROM building WHERE id = ?", id)[0]
-		self._name = name
-		self.size = (int(size_x), int(size_y))
-		self.inhabitants = int(inhabitants)
-		self.inhabitants_max = int(inhabitants_max)
+		class_package = yaml_results['baseclass'].split('.')[0]
+		self.radius = yaml_results['radius']
+		self._name = yaml_results['name']
+		self.button_name = yaml_results['button_name']
+		self.settler_level = yaml_results['settler_level']
+		self.tooltip_text = yaml_results['tooltip_text']
+		self.size = (int(yaml_results['size_x']), int(yaml_results['size_y']))
+		self.inhabitants = int(yaml_results['inhabitants_start'])
+		self.inhabitants_max = int(yaml_results['inhabitants_max'])
 		#for (name,  value) in db("SELECT name, value FROM building_property WHERE building = ?", str(id)):
 		#	setattr(self, name, value)
 		self.costs = {}

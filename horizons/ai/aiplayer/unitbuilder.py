@@ -46,7 +46,7 @@ class UnitBuilder(object):
 		"""Build a new usable fishing boat."""
 		boat_builder = self._get_boat_builders()[0]
 		AddProduction(boat_builder, PRODUCTIONLINES.HUKER).execute(self.owner.session)
-		production = boat_builder._get_production(PRODUCTIONLINES.HUKER)
+		production = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.HUKER)
 		production.add_production_finished_listener(self._ship_built)
 		self.log.info('%s started building a ship', self)
 
