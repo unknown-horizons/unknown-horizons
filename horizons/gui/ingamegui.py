@@ -100,7 +100,7 @@ class IngameGui(LivingObject):
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
 		minimap = self.widgets['minimap']
-		minimap.position_technique = "right-20:top+4"
+		minimap.position_technique = "right-14:top+4"
 
 		icon = minimap.findChild(name="minimap")
 		self.minimap = Minimap(icon, self.session, \
