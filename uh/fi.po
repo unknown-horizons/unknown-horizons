@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-23 19:54+0200\n"
-"Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
+"PO-Revision-Date: 2011-11-27 02:36+0200\n"
+"Last-Translator: heze0 <heikki.ilvespakka@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Uusi maailma luotu."
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr ""
+msgstr "Villisika"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -60,7 +60,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Cattle"
-msgstr ""
+msgstr "Karja"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -122,7 +122,7 @@ msgstr "Kalastajan teltta"
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr ""
+msgstr "Fregatti"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -225,7 +225,7 @@ msgstr "Kuvakaappaus tallennettu tiedostoon ${file}."
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Sheep"
-msgstr ""
+msgstr "Lammas"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -1749,22 +1749,22 @@ msgstr "Verot"
 #. (tooltip of widget: show_production_overview)
 #: horizons/i18n/guitranslations.py:315
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Näytä tässä siirtokunnassa tuotetut resurssit"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:320
 msgid "ally"
-msgstr ""
+msgstr "liittolainen"
 
 #. (text of widget: enemy_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:322
 msgid "enemy"
-msgstr ""
+msgstr "vihollinen"
 
 #. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:324
 msgid "neutral"
-msgstr ""
+msgstr "puolueeton"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:329
@@ -1791,7 +1791,7 @@ msgstr "Asukkaita per talo:"
 #: horizons/i18n/guitranslations.py:352 horizons/i18n/guitranslations.py:383
 #: horizons/i18n/guitranslations.py:412
 msgid "Summary"
-msgstr ""
+msgstr "Yhteenveto"
 
 #. (text of widget: houses)
 #: horizons/i18n/guitranslations.py:354 horizons/i18n/guitranslations.py:385
@@ -1838,7 +1838,7 @@ msgstr "Verot:"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:366 horizons/i18n/guitranslations.py:395
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Päivitä käyttöoikeudet:"
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
@@ -2043,22 +2043,22 @@ msgstr "Seuraava merkintä"
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:603
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Tarjolla olevan skenaariot"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py:605
 msgid "Scenario description"
-msgstr ""
+msgstr "Skenaarion kuvaus"
 
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:609
 msgid "Continue playing"
-msgstr ""
+msgstr "Jatka pelaamista"
 
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:611
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Valitse tämä skenaario"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:616
@@ -2104,7 +2104,7 @@ msgstr ""
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py:640
 msgid "Money"
-msgstr ""
+msgstr "Raha"
 
 # 80%
 #. (text of widget: player_name)
@@ -2128,7 +2128,7 @@ msgstr "Yhteensä"
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:650
 msgid "Units"
-msgstr ""
+msgstr "Yksiköt"
 
 # 87%
 #. (text of widget: balance)
@@ -2159,7 +2159,7 @@ msgstr ""
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:687
 msgid "Aggressive"
-msgstr ""
+msgstr "Aggressiivinen"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:689
@@ -2174,7 +2174,7 @@ msgstr ""
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:693
 msgid "Passive"
-msgstr ""
+msgstr "Passiivinen"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:698
@@ -2845,7 +2845,7 @@ msgstr "Virhe tapahtui yritetettäessä pikatallennusta. Peliäsi ei tallennettu
 
 #: horizons/spsession.py:124
 msgid "If this error happens again, please contact the development team:"
-msgstr ""
+msgstr "Jos tämä virhe toistuu, ota yhteyttä kehitystiimiin:"
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
@@ -3054,7 +3054,7 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Virhe: Vaadittuja kirjastoja ei löydy"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
