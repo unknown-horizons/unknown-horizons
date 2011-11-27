@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-23 20:47+0200\n"
-"Last-Translator: Turmaleus <turmaleus@gmail.com>\n"
+"PO-Revision-Date: 2011-11-27 22:35+0200\n"
+"Last-Translator: Vilem <turmaleus@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -2980,7 +2980,7 @@ msgstr ""
 
 #: run_uh.py:159
 msgid "We are very sorry for this, and want to fix this error."
-msgstr ""
+msgstr "Velice se omlouváme a snažíme se tuto chybu vyřešit."
 
 #: run_uh.py:160
 msgid "In order to do this, we need the information from the logfile:"
@@ -2992,11 +2992,13 @@ msgstr ""
 
 #: run_uh.py:201
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Chyba: Nebylo možné najít potřebné knihovny"
 
 #: run_uh.py:202
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Je nám velice líto Vám oznámit, že knihovna, potřebná pro hru Unknown "
+"Horizons chybí a musí být naisntalována."
 
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
@@ -3004,11 +3006,11 @@ msgstr ""
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Děkujeme Vám za hraní Unknown Horizons!"
 
 #: run_uh.py:387
 msgid "FIFE was not found."
-msgstr ""
+msgstr "FIFE nebylo nalezeno."
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Neznáme datum uložení\n"
