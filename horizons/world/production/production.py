@@ -335,8 +335,6 @@ class Production(WorldObject):
 		first_relevant_tick = self._get_first_relevant_tick(True)
 		while len(self._state_history) > 1 and self._state_history[1][0] < first_relevant_tick:
 			self._state_history.popleft()
-		first_relevant_tick2 = self._get_first_relevant_tick(False)
-		assert first_relevant_tick == first_relevant_tick2
 
 	def _changed(self):
 		super(Production, self)._changed()
