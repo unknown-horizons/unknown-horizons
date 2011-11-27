@@ -392,7 +392,9 @@ LANGUAGENAMES = _LanguageNameDict({
 	"gl"    : u'Galego',
 	"hu"    : u'Magyar',
 	"it"    : u'Italiano',
+	"ja"    : u'Nihongo',
 	"lt"    : u'Lietuvių',
+	"ko"    : u'Hangugmal/Chosŏnmal',
 	"nb"    : u'Norw. Bokmål',
 	"nl"    : u'Nederlands',
 	"pl"    : u'Polski',
@@ -403,6 +405,8 @@ LANGUAGENAMES = _LanguageNameDict({
 	"sl"    : u'Slovenski',
 	"sv"    : u'Svenska',
 	"tr"    : u'Türkçe',
+	"vi"    : u'Tiếng Việt',
+	"zh_CN" : u'Pǔtōnghuà',
 	})
 
 AUTO_CONTINUE_CAMPAIGN=True
