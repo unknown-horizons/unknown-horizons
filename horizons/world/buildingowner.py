@@ -22,7 +22,7 @@
 
 from horizons.world.providerhandler import ProviderHandler
 from horizons.util import decorators, Point
-from horizons.util.shapes.radiusshape import RadiusShape
+from horizons.util.shapes.radiusshape import RadiusRect
 
 """
 Simple building management functionality.
@@ -105,7 +105,7 @@ class BuildingOwner(object):
 		raise NotImplementedError
 
 	@decorators.make_constants()
-	def get_providers_in_range(self, radiusshape, res=None, reslist=None, player=None):
+	def get_providers_in_range(self, radiusrect, res=None, reslist=None, player=None):
 		"""Returns all instances of provider within the specified shape.
 		NOTE: Specifing the res parameter is usually a huge speed gain.
 		@param radiusrect: instance of RadiusShape
@@ -114,7 +114,7 @@ class BuildingOwner(object):
 		@param player: Player instance, only buildings belonging to this player
 		@return: list of providers"""
 		assert not (bool(res) and bool(reslist))
-		assert isinstance(radiusshape, RadiusShape)
+		assert isinstance(radiusrect, RadiusRect)
 		# find out relevant providers
 		if res is not None:
 			provider_list = self.provider_buildings.provider_by_resources[res]
@@ -127,10 +127,15 @@ class BuildingOwner(object):
 			provider_list = self.provider_buildings
 		# filter out those that aren't in range
 		possible_providers = []
+		r2 = radiusrect.center
+		radius_squared = radiusrect.radius ** 2
 		for provider in provider_list:
-			if (player is None or player == provider.owner) and \
-				 provider.position.distance(radiusshape.center) <= radiusshape.radius:
-				possible_providers.append(provider)
+			if (player is None or player == provider.owner):
+				# inline of :
+				#provider.position.distance_to_rect(radiusrect.center) <= radiusrect.radius:
+				r1 = provider.position
+				if ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2) + (max(r1.top - r2.bottom, 0, r2.top - r1.bottom) ** 2)) <= radius_squared:
+					possible_providers.append(provider)
 		return possible_providers
 
 	def save(self, db):
