@@ -39,7 +39,7 @@
 		<VBox  name="box">
 			<Label text="Kristian Hynek (Kris_CZ)" />
 			<Label text="Petr Palička (peca)" />
-			<Label text="Turmaleus" />
+			<Label text="Vilem Soulak (Turmaleus)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Danish"  name="headline" />
