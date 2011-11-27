@@ -187,7 +187,7 @@ class Scheduler(LivingObject):
 					removed_calls += 1
 
 		test = 0
-		if removed_calls >= 0: # there also must be calls in the calls_by_instance dict
+		if removed_calls > 0: # there also must be calls in the calls_by_instance dict
 			for i in xrange(len(self.calls_by_instance[instance]) - 1, -1, -1):
 				obj = self.calls_by_instance[instance][i]
 				if obj.callback == callback:
