@@ -268,19 +268,6 @@ class ResourceHandler(StorageHolder):
 		"""Returns all productions, inactive and active ones, as list"""
 		return self._productions.values() + self._inactive_productions.values()
 
-	def get_status_icons(self):
-		l = super(ResourceHandler, self).get_status_icons()
-
-		inventory_full_res = []
-		for res in self.get_produced_resources():
-			if (self.inventory.get_free_space_for(res) == 0):
-				inventory_full_res.append(res)
-
-		if inventory_full_res:
-			l.append( InventoryFullStatus(inventory_full_res) )
-
-		return l
-
 	## PROTECTED METHODS
 	def _get_production(self, prod_line_id):
 		"""Returns a production of this producer by a production line id.

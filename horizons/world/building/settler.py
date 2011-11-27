@@ -71,6 +71,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data(loading = loading)
 		self.last_tax_payed = last_tax_payed
+		self.inventory.add_change_listener( self._update_status_icon )
 
 	def save(self, db):
 		super(Settler, self).save(db)
@@ -309,11 +310,15 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		"""Settlers only level up by themselves"""
 		pass
 
-	def get_status_icons(self):
-		l = super(Settler, self).get_status_icons()
-		if self.happiness < self.__get_data("happiness_inhabitants_decrease_limit"):
-			l.append(SettlerUnhappyStatus())
-		return l
+	def _update_status_icon(self):
+		unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
+		# check for changes
+		if unhappy and not hasattr(self, "_settler_status_icon"):
+			self._settler_status_icon = SettlerUnhappyStatus() # save ref for removal later
+			self._registered_status_icons.append( self._settler_status_icon )
+		if not unhappy and hasattr(self, "_settler_status_icon"):
+			self._registered_status_icons.remove( self._settler_status_icon )
+			del self._settler_status_icon
 
 	def __str__(self):
 		try:

@@ -261,7 +261,6 @@ class Production(WorldObject):
 		"""
 		Returns the part of time 0 <= x <= 1 the production has been in a state during the last history_length ticks.
 		"""
-
 		self._clean_state_history()
 		result = defaultdict(lambda: 0)
 		current_tick = Scheduler().cur_tick
@@ -294,6 +293,14 @@ class Production(WorldObject):
 
 	def get_age(self):
 		return Scheduler().cur_tick - self._creation_tick
+
+	def get_unstorable_produced_res(self):
+		"""Returns all produced res for whose there is no space"""
+		l = []
+		for res, amount in self._prod_line.produced_res.iteritems():
+			if self.inventory.get_free_space_for(res) < amount:
+				l.append(res)
+		return l
 
 	## PROTECTED METHODS
 	def _get_producing_callback(self):
@@ -425,6 +432,7 @@ class Production(WorldObject):
 		if hasattr(self, "_state"):
 			return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
 		else:
+
 			return "UninitializedProduction()"
 
 

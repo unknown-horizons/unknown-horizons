@@ -32,7 +32,7 @@ from horizons.scheduler import Scheduler
 from horizons.gui.tabs import ProductionOverviewTab
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
-from horizons.world.status import ProductivityLowStatus, DecommissionedStatus
+from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
 
 class Producer(ResourceHandler):
 	"""Class for objects, that produce something.
@@ -122,6 +122,19 @@ class Producer(ResourceHandler):
 			self.act("work", repeating=True)
 		elif state is PRODUCTION.STATES.inventory_full:
 			self.act("idle_full", repeating=True)
+
+		if self.has_status_icon:
+			full = state is PRODUCTION.STATES.inventory_full
+			if full and not hasattr(self, "_producer_status_icon"):
+				affected_res = set() # find them:
+				for prod in self.get_productions():
+					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
+				self._producer_status_icon = InventoryFullStatus(affected_res)
+				self._registered_status_icons.append( self._producer_status_icon )
+
+			if not full and hasattr(self, "_producer_status_icon"):
+				self._registered_status_icons.remove( self._producer_status_icon )
+				del self._producer_status_icon
 
 	def get_status_icons(self):
 		l = super(Producer, self).get_status_icons()
