@@ -65,6 +65,24 @@ class Producer(ResourceHandler):
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / len(productions)
 
+	def capacity_utilisation_below(self, limit):
+		"""Returns whether the capacity utilisation is below a value.
+		It is equivalent to "foo.capacity_utilisation <= value, but faster."""
+		# idea: retrieve the value, then check how long it has to take until the limit
+		# can be reached (from both sides). Within this timespan, don't check again.
+		cur_tick = Scheduler().cur_tick
+		if not hasattr(self, "_old_capacity_utilisation") or \
+		   self._old_capacity_utilisation[0] < cur_tick or \
+		   self._old_capacity_utilisation[1] !=  limit:
+			capac = self.capacity_utilisation
+			diff = abs(limit - capac)
+			# all those values are relative values, so we can just do this:
+			interval = diff * PRODUCTION.STATISTICAL_WINDOW
+			self._old_capacity_utilisation = (cur_tick + interval, # expiration date
+			                                  limit, capac < limit )
+		return self._old_capacity_utilisation[2]
+
+
 	def load(self, db, worldid):
 		super(Producer, self).load(db, worldid)
 
@@ -138,7 +156,7 @@ class Producer(ResourceHandler):
 
 	def get_status_icons(self):
 		l = super(Producer, self).get_status_icons()
-		if self.capacity_utilisation < ProductivityLowStatus.threshold:
+		if self.capacity_utilisation_below(ProductivityLowStatus.threshold):
 			l.append( ProductivityLowStatus() )
 		if not self.is_active():
 			l.append( DecommissionedStatus() )

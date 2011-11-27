@@ -72,7 +72,7 @@ class ConcretObject(ComponentHolder, WorldObject):
 			Scheduler().add_new_object(self._update_status, self, run_in=0)
 
 			# update loop
-			interval = Scheduler().get_ticks(2)
+			interval = Scheduler().get_ticks(3)
 			# use session random to keep it synchronised in mp games,
 			# to be safe in case get_status_icon calls anything that changes anything
 			run_in = self.session.random.randint(1, interval) # don't update all at once
@@ -154,7 +154,6 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 	def _update_status(self):
 		"""Handles status icon bar"""
-
 		status_list = self.get_status_icons()
 
 		if hasattr(self, "_old_status_list"):
@@ -179,7 +178,5 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 	def _remove_status_icon(self):
 		self._status_icon_renderer.removeAll(self._status_icon_key)
-
-
 
 

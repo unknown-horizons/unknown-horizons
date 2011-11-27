@@ -771,5 +771,10 @@ CREATE TABLE status_icon_exclusions (
     "object_type" INT NOT NULL DEFAULT (''));
 INSERT INTO "status_icon_exclusions" VALUES(17);
 INSERT INTO "status_icon_exclusions" VALUES(33);
+INSERT INTO "status_icon_exclusions" VALUES(15);
+INSERT INTO "status_icon_exclusions" VALUES(18);
+INSERT INTO "status_icon_exclusions" VALUES(19);
+INSERT INTO "status_icon_exclusions" VALUES(22);
+INSERT INTO "status_icon_exclusions" VALUES(36);
 INSERT INTO "status_icon_exclusions" VALUES(1000013);
 

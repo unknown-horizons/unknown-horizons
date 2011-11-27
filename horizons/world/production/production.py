@@ -254,8 +254,6 @@ class Production(WorldObject):
 		except AttributeError: # production line doesn't have this alter method
 			pass
 
-	def get_state_history_length(self):
-		return min(PRODUCTION.STATISTICAL_WINDOW, Scheduler().cur_tick - self._creation_tick)
 
 	def get_state_history_times(self, ignore_pause):
 		"""
@@ -314,7 +312,9 @@ class Production(WorldObject):
 		"""
 
 		current_tick = Scheduler().cur_tick
-		first_relevant_tick = current_tick - self.get_state_history_length()
+		state_hist_len = min(PRODUCTION.STATISTICAL_WINDOW, current_tick - self._creation_tick)
+
+		first_relevant_tick = current_tick - state_hist_len
 		if not ignore_pause:
 			return first_relevant_tick
 
@@ -335,6 +335,8 @@ class Production(WorldObject):
 		first_relevant_tick = self._get_first_relevant_tick(True)
 		while len(self._state_history) > 1 and self._state_history[1][0] < first_relevant_tick:
 			self._state_history.popleft()
+		first_relevant_tick2 = self._get_first_relevant_tick(False)
+		assert first_relevant_tick == first_relevant_tick2
 
 	def _changed(self):
 		super(Production, self)._changed()
