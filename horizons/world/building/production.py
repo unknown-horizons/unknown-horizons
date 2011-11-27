@@ -31,6 +31,7 @@ from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
 from horizons.gui.tabs import FarmProductionOverviewTab
+from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -112,7 +113,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 
 	def get_non_paused_utilisation(self):
 		total = 0
-		productions = self._get_productions()
+		productions = self.get_productions()
 		for production in productions:
 			if production.get_age() < PRODUCTION.STATISTICAL_WINDOW * 1.5:
 				return 1
@@ -123,7 +124,11 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
 	Also provides collectors for buildings that consume resources (tavern)."""
-	pass
+	def get_status_icons(self):
+		banned_classes = InventoryFullStatus, ProductivityLowStatus
+		# inventories are full most of the time, don't show it
+		return [ i for i in super(SettlerServiceProvider, self).get_status_icons() if \
+		         not any( isinstance(i, klass) for klass in banned_classes ) ]
 
 class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):
@@ -196,11 +201,10 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		   (hasattr(self, "_mine_empty_msg_shown") and \
 		    not self._mine_empty_msg_shown):
 			# all resources are gone from the mine.
-			self.session.ingame_gui.message_widget.add(self.position.center().x, \
-			                                           self.position.center().y, 'MINE_EMPTY')
 			self._mine_empty_msg_shown = True
 			if self.is_active():
 				self.set_active(active=False)
+			self.owner.notify_mine_empty(self)
 
 	def set_active(self, production=None, active=True):
 		super(Mine, self).set_active(production, active)

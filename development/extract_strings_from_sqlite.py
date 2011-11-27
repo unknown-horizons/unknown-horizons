@@ -107,7 +107,7 @@ class MSGID_collect:
 	def __str__(self):
 		s = []
 		for pair in self.msgids.items():
-			s += ['#: sqlite/%s\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])]
+			s += ['#. This is a database entry: %s.\n#: sql database files\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])]
 		return '\n'.join(s).strip()
 
 def collect_msgid(msgid, place):
@@ -120,22 +120,22 @@ def collect_all():
 	collector = MSGID_collect()
 
 	for building in db_session.query(Building):
-		collector.add_to_collection(building.name, 'Building')
+		collector.add_to_collection(building.name, 'the name of a building')
 
 	for unit in db_session.query(Unit):
-		collector.add_to_collection(unit.name, 'Unit')
+		collector.add_to_collection(unit.name, 'the name of a unit')
 
 	for color in db_session.query(Colors):
-		collector.add_to_collection(color.name, 'Colors')
+		collector.add_to_collection(color.name, 'the name of a color')
 
 	for message in db_session.query(Message):
-		collector.add_to_collection(message.text, 'Messages')
+		collector.add_to_collection(message.text, 'a messagewidget message (left part of the screen)')
 
 	for resource in db_session.query(Resource):
-		collector.add_to_collection(resource.name, 'Resources')
+		collector.add_to_collection(resource.name, 'the name of a resource')
 
 	for settler_level in db_session.query(SettlerLevel):
-		collector.add_to_collection(settler_level.name, 'SettlerLevel')
+		collector.add_to_collection(settler_level.name, 'the name of an inhabitant increment (tier / level)')
 
 	return collector
 

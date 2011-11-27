@@ -40,7 +40,6 @@ import optparse
 import signal
 import traceback
 import platform
-import gzip
 
 def log():
 	"""Returns Logger"""
@@ -111,8 +110,8 @@ def get_option_parser():
 	p.add_option_group(start_uh_group)
 
 	ai_group = optparse.OptionGroup(p, _("AI options"))
-	ai_group.add_option("--ai-players", dest="ai_players", metavar="<ai_players>", type="int", default=1, \
-	             help=_("Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 1)."))
+	ai_group.add_option("--ai-players", dest="ai_players", metavar="<ai_players>", type="int", default=0, \
+	             help=_("Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0)."))
 	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
 	             help=_("Makes the human player a human-AI hybrid (for development only)."))
 	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true", \
@@ -137,6 +136,8 @@ def get_option_parser():
 				               default=False, help=_("Enable the string previewer tool for scenario writers"))
 	dev_group.add_option("--no-preload", dest="nopreload", action="store_true", \
 				               default=False, help=_("Disable preloading while in main menu"))
+	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="int", \
+				               help=_("Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11)"))
 	p.add_option_group(dev_group)
 
 	return p
@@ -153,26 +154,21 @@ def excepthook_creator(outfilename):
 	The returned function does the same as the default, except it also prints the traceback
 	to a file.
 	@param outfilename: a filename to append traceback to"""
-	global logfile
-	global logfilename
 	def excepthook(exception_type, value, tb):
-		if logfile:
-			traceback.print_exception(exception_type, value, tb, file=logfile)
+		f = open(outfilename, 'a')
+		traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
 		print
 		print _('Unknown Horizons crashed.')
 		print
 		print _('We are very sorry for this, and want to fix this error.')
 		print _('In order to do this, we need the information from the logfile:')
-		print logfilename
+		print outfilename
 		print _('Please give it to us via IRC or our forum, for both see unknown-horizons.org .')
-		if logfile:
-			logfile.close()
 	return excepthook
 
 def exithandler(signum, frame):
 	"""Handles a kill quietly"""
-	global logfile
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
 	try:
@@ -188,7 +184,6 @@ def exithandler(signum, frame):
 	sys.exit(1)
 
 def main():
-	global logfile
 	# abort silently on signal
 	signal.signal(signal.SIGINT, exithandler)
 	signal.signal(signal.SIGTERM, exithandler)
@@ -246,7 +241,6 @@ def parse_args():
 	@returns option object from Parser
 	"""
 	global logfilename
-	global logfile
 	options = get_option_parser().parse_args()[0]
 
 	# apply options
@@ -265,16 +259,14 @@ def parse_args():
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log.gz" % \
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
 												         time.strftime("%y-%m-%d_%H-%M-%S"))
 		print 'Logging to %s' % logfilename.encode('utf-8', 'replace')
 		# create logfile
 		logfile = open(logfilename, 'w')
-		if not logfile.isatty():
-			logfile = gzip.GzipFile(fileobj=logfile)
 		# log there
-		file_handler = logging.StreamHandler( logfile )
-		logging.getLogger().addHandler( file_handler )
+		file_handler = logging.FileHandler(logfilename, 'a')
+		logging.getLogger().addHandler(file_handler)
 		# log exceptions
 		sys.excepthook = excepthook_creator(logfilename)
 		# log any other stdout output there (this happens, when FIFE c++ code launches some
@@ -284,7 +276,11 @@ def parse_args():
 			def write(self, line):
 				line = unicode(line)
 				sys.__stdout__.write(line)
-				logfile.write(line)
+				try:
+					logfile.write(line)
+				except UnicodeEncodeError:
+					# python unicode handling is weird, this has been empirically proven to work
+					logfile.write( line.encode("UTF-8") )
 		sys.stdout = StdOutDuplicator()
 
 		# add a handler to stderr too _but_ only if logfile isn't already a tty
@@ -308,7 +304,7 @@ def setup_fife(args):
 	""" Find FIFE and setup search paths, if it can't be imported yet."""
 	try:
 		from fife import fife
-	except ImportError, e:
+	except ImportError as e:
 		if '--fife_in_library_path' in args:
 			# fife should already be in LD_LIBRARY_PATH
 			log_paths()

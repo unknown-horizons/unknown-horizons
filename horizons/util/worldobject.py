@@ -54,7 +54,7 @@ class WorldObject(ChangeListener):
 		"""
 		try:
 			return cls.__objects[id]
-		except KeyError, e:
+		except KeyError as e:
 			raise WorldObjectNotFound(e.args[0])
 
 	@classmethod

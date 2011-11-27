@@ -19,7 +19,7 @@ gettext.install('', unicode=True)
 
 try:
 	import run_uh
-except ImportError, e:
+except ImportError as e:
 	print e.message
 	print 'Please run from uh root dir'
 	sys.exit(1)
@@ -117,8 +117,11 @@ def print_res():
 		print "%2s: %-16s %4s %6s %13s " % (id, name[0:16], value or '-', trade or '-', inventory or '-')
 
 def print_building():
-	print 'Buildings' + '\n' + '%2s: %-14s %11s %4s %6s %s' % ('id', 'name', 'running_costs', 'size', 'radius', 'from_class')
-	print '=' * 23 + 'R===P' + '=' * 50
+	print 'Buildings' + '\n' + 'Running costs scheme:'
+	print '=' * 2 + 'Running===Paused' + '=' * 2
+	for (cost, cost_inactive) in [('0-10',0),('11-24',5),('25-40',10),('>40',15)]:
+		print "   %5s :   %2s" % (cost or '--', cost_inactive or '--')
+	print '\n' + '=' * 23 + 'R===P' + '=' * 50
 	for id, name, c_type, c_package, x, y, radius, cost, cost_inactive in \
 			db('SELECT id, name, class_type, class_package, size_x, size_y, radius, cost_active, cost_inactive FROM \
 			building LEFT OUTER JOIN building_running_costs ON building_running_costs.building = building.id\

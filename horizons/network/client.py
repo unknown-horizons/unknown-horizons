@@ -233,7 +233,7 @@ class Client(object):
 			packet = None
 			try:
 				packet = packets.unserialize(event.packet.data)
-			except Exception, e:
+			except Exception as e:
 				self.log.error("Unknown packet from %s!" % (event.peer.address))
 				errstr = "Pickle/Security: %s" % (e)
 				print "[FATAL] %s" % (errstr) # print that even when no logger is enabled!

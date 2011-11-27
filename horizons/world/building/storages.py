@@ -28,8 +28,9 @@ from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab,
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.production import SettlerServiceProvider
 
-class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandler, \
+class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
 	Inherited eg. by branch office, storage tent.
@@ -52,7 +53,6 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		self.inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()
 
-
 	def get_utilisation_history_length(self):
 		return None if not self.get_local_collectors() else self.get_local_collectors()[0].get_utilisation_history_length()
 
@@ -61,6 +61,10 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		if not collectors:
 			return None
 		return sum(collector.get_utilisation() for collector in collectors) / float(len(collectors))
+
+class StorageTent(StorageBuilding, BuildableSingle):
+	"""Can't inherit from Buildable* in StorageBuilding because of mro issues."""
+	pass
 
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
@@ -72,8 +76,28 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		# settlement branch office setting is done at the settlement for loading
 
 
-class MainSquare(ProducerBuilding, StorageBuilding):
+class MainSquare(StorageBuilding, SettlerServiceProvider):
+	walkable = True
 	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
+
+	def __init__(self, *args, **kwargs):
+		super(MainSquare, self).__init__(*args, **kwargs)
+		self.__init()
+
+	def load(self, db, worldid):
+		super(MainSquare, self).load(db, worldid)
+		self.__init()
+
+	def __init(self):
+		self.island.path_nodes.register_road(self)
+
+	def remove(self):
+		super(MainSquare, self).remove()
+		self.island.path_nodes.unregister_road(self)
+
+	def recalculate_orientation(self):
+		# change gfx according to roads here
+		pass
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.

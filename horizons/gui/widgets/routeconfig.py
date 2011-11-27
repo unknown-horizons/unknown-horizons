@@ -19,10 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
+
 from horizons.util.gui import load_uh_widget
-from horizons.util import Callback
+from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
 from horizons.gui.widgets.tooltip import TooltipButton
+from horizons.gui.widgets.minimap import Minimap
 
 import horizons.main
 
@@ -30,7 +33,7 @@ class RouteConfig(object):
 	"""
 	Widget that allows configurating a ship's trading route
 	"""
-	dummy_icon_path = "content/gui/icons/buildmenu/outdated/dummy_btn.png"
+	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/branch_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_branch.png"
 	MAX_ENTRIES = 6
@@ -46,11 +49,13 @@ class RouteConfig(object):
 		self._init_gui()
 
 	def show(self):
+		self.minimap.draw()
 		self._gui.show()
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
 
 	def hide(self):
+		self.minimap.disable()
 		self._gui.hide()
 		if self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.remove_remove_listener(self.on_instance_removed)
@@ -105,8 +110,8 @@ class RouteConfig(object):
 			self.instance.route.enable()
 		elif not self.instance.route.can_enable():
 			self.stop_route()
-		self.hide()
-		self.show()
+
+		self._gui.adaptLayout()
 
 	def move_entry(self, entry, direction):
 		"""
@@ -135,8 +140,8 @@ class RouteConfig(object):
 
 		if enabled:
 			self.instance.route.enable()
-		self.hide()
-		self.show()
+
+		self._gui.adaptLayout()
 
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
@@ -167,7 +172,7 @@ class RouteConfig(object):
 		position = self.widgets.index(entry)
 		slider = slot.findChild(name="slider")
 		amount = slot.findChild(name="amount")
-		value = int(slider.getValue())
+		value = int(slider.value)
 		amount.text = unicode(value) + "t"
 		if slot.action is "unload":
 			value = -value
@@ -191,21 +196,21 @@ class RouteConfig(object):
 		slider = slot.findChild(name="slider")
 
 		if not has_value:
-			value = int(slider.getValue())
+			value = int(slider.value)
 			if slot.action is "unload":
 				value = -value
 
 		if value < 0:
 			self.show_unload_icon(slot)
-			slider.setValue(float(-value))
+			slider.value = float(-value)
 			amount = -value
 		elif value > 0:
 			self.show_load_icon(slot)
-			slider.setValue(float(value))
+			slider.value = float(value)
 			amount = value
 		else:
 			#if the slider value is 0 keep the load/unload persistent
-			slider.setValue(0.)
+			slider.value = 0.
 			amount = value
 
 		if res_id != 0:
@@ -223,8 +228,10 @@ class RouteConfig(object):
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
 		vbox = self._gui.findChild(name="resources")
+		# access directly, it's possible that it's not found in the gui if it's hidden
+		self.minimap.icon.hide()
 		label = self._gui.findChild(name="select_res_label")
-		label.text = unicode("Select Resources")
+		label.text = _("Select resources:")
 
 		#hardcoded for 5 works better than vbox.width / button_width
 		amount_per_line = 5
@@ -250,13 +257,15 @@ class RouteConfig(object):
 			index += 1
 		vbox.addChild(current_hbox)
 
-		self.hide()
-		self.show()
+		self._gui.adaptLayout()
 
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="resources").removeAllChildren()
 		self._gui.findChild(name="select_res_label").text = unicode("")
+
+		# access directly, it's possible that it's not found in the gui if it's hidden
+		self.minimap.icon.show()
 
 	def add_trade_slots(self, entry, num):
 		x_position = 105
@@ -269,8 +278,8 @@ class RouteConfig(object):
 			slot.action = "load"
 
 			slider = slot.findChild(name="slider")
-			slider.setScaleStart(0.0)
-			slider.setScaleEnd(float(self.instance.inventory.limit))
+			slider.scale_start = 0.0
+			slider.scale_end = float(self.instance.inventory.limit)
 
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
@@ -320,22 +329,26 @@ class RouteConfig(object):
 		  })
 		vbox.addChild(entry)
 
-	def append_bo(self):
+	def append_bo(self, branch_office=None):
+		"""Add a bo to the list on the left side.
+		@param branch_office: Set to add a specific one, else the selected one gets added.
+		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
 			return
 
-		selected = self.listbox._getSelectedItem()
+		if branch_office is None:
+			selected = self.listbox._getSelectedItem()
 
-		if selected == None:
-			return
+			if selected == None:
+				return
+			branch_office = self.branch_offices[selected]
 
-		self.instance.route.append(self.branch_offices[selected])
-		self.add_gui_entry(self.branch_offices[selected])
+		self.instance.route.append(branch_office)
+		self.add_gui_entry(branch_office)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
 
-		self.hide()
-		self.show()
+		self._gui.adaptLayout()
 
 	def _init_gui(self):
 		"""
@@ -380,7 +393,6 @@ class RouteConfig(object):
 		wait_at_load_box.marked = self.instance.route.wait_at_load
 		def toggle_wait_at_load():
 			self.instance.route.wait_at_load = not self.instance.route.wait_at_load
-			print 'set to', self.instance.route.wait_at_load
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
@@ -389,4 +401,28 @@ class RouteConfig(object):
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
+
+		icon = self._gui.findChild(name="minimap")
+		def on_click(event, drag):
+			if drag:
+				return
+			if event.getButton() == fife.MouseEvent.LEFT:
+				map_coord = event.map_coord
+				tile = self.instance.session.world.get_tile(Point(*map_coord))
+				if tile is not None and tile.settlement is not None:
+					self.append_bo( tile.settlement.branch_office )
+		self.minimap = Minimap(icon, self.instance.session, \
+		                       horizons.main.fife.targetrenderer,
+		                       horizons.main.fife.imagemanager,
+		                       cam_border=False,
+		                       use_rotation=False,
+		                       on_click=on_click)
+
+		"""
+		import cProfile as profile
+		import tempfile
+		outfilename = tempfile.mkstemp(text = True)[1]
+		print 'profile to ', outfilename
+		profile.runctx( "self.minimap.draw()", globals(), locals(), outfilename)
+		"""
 

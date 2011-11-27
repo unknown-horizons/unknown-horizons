@@ -79,7 +79,7 @@ class BoatbuilderTab(OverviewTab):
 
 			produced_unit_id = self.instance._get_production(production_lines[0]).get_produced_units().keys()[0]
 			(name,) = self.instance.session.db("SELECT name FROM unit WHERE id = ?", produced_unit_id)[0]
-			container_active.findChild(name="headline_BB_builtship_label").text = unicode(name)
+			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
 			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
 			container_active.findChild(name="BB_cur_ship_icon").image = "content/gui/images/objects/ships/116/%s.png" % (produced_unit_id)
 
@@ -124,7 +124,7 @@ class BoatbuilderTab(OverviewTab):
 			upgrades_box.stylize('menu_black')
 
 			# Update needed resources
-			production = self.instance._get_productions()[0]
+			production = self.instance.get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
 			# Now sort!
 			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))

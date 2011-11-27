@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-08-01 15:43+0200\n"
+"PO-Revision-Date: 2011-11-07 18:57+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb\n"
@@ -177,7 +177,6 @@ msgstr ""
 # 85%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
 msgstr "En av dine nybyggere din har ingen markedsplass i rekkevidde."
 
@@ -264,9 +263,8 @@ msgstr "Telt"
 # 77%
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Telt_ruin"
+msgstr "Telt ruin"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -810,15 +808,14 @@ msgstr "Feil:"
 
 # 94%
 #: horizons/gui/gui.py:426
-#, fuzzy
 msgid "Unknown savedate"
-msgstr "Lagringsdato ukjent\n"
+msgstr "Lagringsdato ukjent"
 
 # 91%
 #: horizons/gui/gui.py:428
-#, python-format, fuzzy
+#, python-format, 
 msgid "Saved at %s"
-msgstr "Lagret i %s\n"
+msgstr "Lagret i %s"
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -911,9 +908,8 @@ msgstr ""
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:117
-#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr "Noe gikk galt med nettverket: "
+msgstr "Noe gikk galt med nettverket:"
 
 #: horizons/gui/modules/multiplayermenu.py:133
 msgid "Version differs!"
@@ -993,9 +989,8 @@ msgstr ""
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
-msgstr "Ressurslager"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
@@ -1011,11 +1006,8 @@ msgstr ""
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:265
-#, fuzzy
 msgid "Please report this to the author."
-msgstr ""
-"\n"
-"Vennligst rapporter dette til forfatteren."
+msgstr "Vennligst rapporter dette til forfatteren."
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -1079,7 +1071,6 @@ msgid "Settlement inventory"
 msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:64
-#, fuzzy
 msgid "Ship inventory"
 msgstr "Innhold i skip"
 
@@ -1166,7 +1157,6 @@ msgid "Main square overview"
 msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:150 horizons/gui/tabs/overviewtab.py:232
-#, fuzzy
 msgid "Ship overview"
 msgstr "Skipsoversikt"
 
@@ -1183,19 +1173,17 @@ msgstr "Bygg bosetning"
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr ""
 
-# 76%
+# ship -> unit
 #: horizons/gui/tabs/overviewtab.py:239
 #, fuzzy
 msgid "Unit overview"
 msgstr "Skipsoversikt"
 
 #: horizons/gui/tabs/overviewtab.py:258
-#, fuzzy
 msgid "Production overview"
 msgstr "Produksjonsoverskit"
 
 #: horizons/gui/tabs/overviewtab.py:261
-#, fuzzy
 msgid "Destroy building"
 msgstr "Ødelegg bygning"
 
@@ -1277,13 +1265,11 @@ msgstr "Selskaper"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:56
-#, fuzzy
 msgid "Sailor buildings"
 msgstr "Seilerbyggninger"
 
 #. (text of widget: residents_infra_label)
 #: horizons/i18n/guitranslations.py:58
-#, fuzzy
 msgid "Residents and infrastructure"
 msgstr "Beboere og infrastruktur"
 
@@ -1345,7 +1331,6 @@ msgstr "Jorder"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:89
-#, fuzzy
 msgid "Pioneer buildings"
 msgstr "Pionèrbygninger"
 
@@ -1416,7 +1401,6 @@ msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:126
-#, fuzzy
 msgid "Settler buildings"
 msgstr "Bygninger"
 
@@ -1923,13 +1907,11 @@ msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:482
-#, fuzzy
 msgid "Resource deposit"
 msgstr "Ressurslager"
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py:484
-#, fuzzy
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 "Dette er en ressurskilde. Her kan du bygge en gruve for å grave opp "
@@ -1942,7 +1924,6 @@ msgstr "Innehold av ressurser:"
 
 #. (text of widget: needed_res_label)
 #: horizons/i18n/guitranslations.py:491
-#, fuzzy
 msgid "Needed resources:"
 msgstr "Ressurser som trengs:"
 
@@ -2030,7 +2011,6 @@ msgstr ""
 
 #. (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
 #: horizons/i18n/guitranslations.py:594
-#, fuzzy
 msgid "Leave Captain's log"
 msgstr "Gå ut av kapteinens loggbok"
 
@@ -2116,9 +2096,8 @@ msgstr ""
 #. (text of widget: ship_name)
 #: horizons/i18n/guitranslations.py:642 horizons/i18n/guitranslations.py:663
 #: horizons/i18n/guitranslations.py:674
-#, fuzzy
 msgid "Name"
-msgstr "Navn:"
+msgstr "Navn"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:644
@@ -2138,9 +2117,8 @@ msgstr ""
 # 87%
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:657
-#, fuzzy
 msgid "Balance"
-msgstr "Balanse:"
+msgstr "Balanse"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:672
@@ -2184,7 +2162,6 @@ msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:698
-#, fuzzy
 msgid "Key bindings"
 msgstr "Hurtigtaster"
 
@@ -2355,7 +2332,6 @@ msgstr "Innstillinger"
 
 #. (text of widget: start)
 #: horizons/i18n/guitranslations.py:771
-#, fuzzy
 msgid "Return to game"
 msgstr "Tilbake til spillet"
 
@@ -2623,9 +2599,8 @@ msgstr "Vær sikker på at du vet hva du gjør."
 # 83%
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:911
-#, fuzzy
 msgid "Apply"
-msgstr "Utfør:"
+msgstr "Utfør"
 
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:915
@@ -2950,7 +2925,6 @@ msgstr ""
 
 # 92%
 #: run_uh.py:90
-#, fuzzy
 msgid "Starting Unknown Horizons"
 msgstr "Starter Unknown Horizons"
 

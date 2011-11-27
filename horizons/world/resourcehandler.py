@@ -23,6 +23,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
 from horizons.constants import PRODUCTION
+from horizons.world.status import InventoryFullStatus
 
 
 class ResourceHandler(StorageHolder):
@@ -60,7 +61,7 @@ class ResourceHandler(StorageHolder):
 
 	def save(self, db):
 		super(ResourceHandler, self).save(db)
-		for production in self._get_productions():
+		for production in self.get_productions():
 			production.save(db)
 			# set us to owner of that production
 			db("UPDATE production SET owner = ? WHERE rowid = ?", self.worldid, production.worldid)
@@ -74,9 +75,9 @@ class ResourceHandler(StorageHolder):
 
 	def remove(self):
 		super(ResourceHandler, self).remove()
-		for production in self._get_productions():
+		for production in self.get_productions():
 			self.remove_production(production)
-		assert len(self._get_productions()) == 0 , 'Failed to remove %s ' % self._get_productions()
+		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()
 		while self.__incoming_collectors: # safe list remove here
 			self.__incoming_collectors[0].cancel()
 
@@ -88,6 +89,13 @@ class ResourceHandler(StorageHolder):
 		for production in self._productions.itervalues():
 			needed_res.update(production.get_consumed_resources().iterkeys())
 		return list(needed_res)
+
+	def get_produced_resources(self):
+		"""Returns the resources, that are produced by productions, that are currently active"""
+		produced_res = set()
+		for production in self._productions.itervalues():
+			produced_res.update(production.get_produced_res().iterkeys())
+		return list(produced_res)
 
 	def get_stocked_provided_resources(self):
 		"""Returns provided resources, where at least 1 ton is available"""
@@ -128,16 +136,15 @@ class ResourceHandler(StorageHolder):
 		"""
 		raise NotImplementedError, "This function has to be overridden!"
 
-	def add_production_by_id(self, production_line_id, production_class = Production):
+	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.
 		@param production_line_id: Production line from db
-		@param production_class: Subclass of Production that does the production. If the object
-		                         has a production_class-member, this will be used instead.
 		"""
 		if hasattr(self, "production_class"):
 			production_class = self.production_class
 		owner_inventory = self._get_owner_inventory()
-		self.add_production(production_class(self.inventory, owner_inventory, production_line_id))
+		self.add_production(production_class(self.inventory, owner_inventory, \
+		                                     production_line_id, start_finished=start_finished))
 
 	def _get_owner_inventory(self):
 		"""Returns the inventory of the owner to be able to retrieve special resources such as gold.
@@ -145,7 +152,7 @@ class ResourceHandler(StorageHolder):
 		when there are no other possibilities"""
 		try:
 			return self.owner.inventory
-		except AttributeError, e: # no owner or no inventory, either way, we don't care
+		except AttributeError as e: # no owner or no inventory, either way, we don't care
 			return None
 
 	def load_production(self, db, production_id):
@@ -217,7 +224,7 @@ class ResourceHandler(StorageHolder):
 		@param production: instance of Production. if None, we do it to all productions.
 		@param active: whether to set it active or inactive"""
 		if production is None:
-			for production in self._get_productions():
+			for production in self.get_productions():
 				self.set_active(production, active)
 			return
 
@@ -240,7 +247,7 @@ class ResourceHandler(StorageHolder):
 	def is_active(self, production=None):
 		"""Checks if a production, or the at least one production if production is None, is active"""
 		if production is None:
-			for production in self._get_productions():
+			for production in self.get_productions():
 				if not production.is_paused():
 					return True
 			return False
@@ -251,17 +258,17 @@ class ResourceHandler(StorageHolder):
 
 	def toggle_active(self, production=None):
 		if production is None:
-			for production in self._get_productions():
+			for production in self.get_productions():
 				self.toggle_active(production)
 		else:
 			active = self.is_active(production)
 			self.set_active(production, active = not active)
 
-	## PROTECTED METHODS
-	def _get_productions(self):
+	def get_productions(self):
 		"""Returns all productions, inactive and active ones, as list"""
 		return self._productions.values() + self._inactive_productions.values()
 
+	## PROTECTED METHODS
 	def _get_production(self, prod_line_id):
 		"""Returns a production of this producer by a production line id.
 		@return: instance of Production or None"""

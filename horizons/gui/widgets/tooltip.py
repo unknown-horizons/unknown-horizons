@@ -48,7 +48,6 @@ class _Tooltip(object):
 			self.name + '/mouseDragged' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
-		self.tooltip_items = []
 
 	def position_tooltip(self, event):
 		if (event.getButton() == fife.MouseEvent.MIDDLE):
@@ -67,7 +66,9 @@ class _Tooltip(object):
 			self.gui.show()
 
 	def show_tooltip(self):
-		if self.tooltip != "":
+		if self.tooltip not in ["", None]:
+			# recreate full tooltip since new text needs to be relayouted
+			self.gui.removeAllChildren()
 			translated_tooltip = _(self.tooltip)
 			#HACK this looks better than splitting into several lines & joining
 			# them. works because replace_whitespace in fill defaults to True:
@@ -77,34 +78,28 @@ class _Tooltip(object):
 			line_count = len(tooltip.splitlines())-1
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
-			self.tooltip_items.append(top_image)
 			for i in xrange(0, line_count):
 				middle_image = pychan.widgets.Icon( \
 				        image='content/gui/images/background/widgets/tooltip_bg_middle.png',
 				        position=(top_image.position[0], \
 				                  top_image.position[1] + self.SIZE_BG_TOP + self.LINE_HEIGHT * i))
 				self.gui.addChild(middle_image)
-				self.tooltip_items.append(middle_image)
 			bottom_image = pychan.widgets.Icon( \
 			        image='content/gui/images/background/widgets/tooltip_bg_bottom.png',
 			        position=(top_image.position[0], \
 			                  top_image.position[1] + self.SIZE_BG_TOP + self.LINE_HEIGHT * line_count))
 			self.gui.addChild(bottom_image)
-			self.tooltip_items.append(bottom_image)
 			label = pychan.widgets.Label(text=u"", position=(10, 5))
 			label.text = tooltip
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
-			self.tooltip_items.append(label)
 			self.gui.size = (145, self.SIZE_BG_TOP + self.LINE_HEIGHT * line_count + self.SIZE_BG_BOTTOM)
 			self.gui.show()
 
 	def hide_tooltip(self):
 		self.gui.hide()
 		ExtScheduler().rem_call(self, self.show_tooltip)
-		for i in self.tooltip_items:
-			self.gui.removeChild(i)
-		self.tooltip_items = []
+		self.gui.removeAllChildren()
 		self.tooltip_shown = False
 
 

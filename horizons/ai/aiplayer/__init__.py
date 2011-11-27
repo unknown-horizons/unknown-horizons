@@ -269,6 +269,7 @@ class AIPlayer(GenericAI):
 			elif result == GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE:
 				self.log.info('%s blocked further settlement resource usage by goal %s', self, goal)
 				settlements_blocked.add(goal.settlement_manager.worldid)
+				goal.settlement_manager.need_materials = True
 			else:
 				self.log.info('%s all further goals during this tick blocked by goal %s', self, goal)
 				break # built something; stop because otherwise the AI could look too fast
@@ -277,6 +278,10 @@ class AIPlayer(GenericAI):
 		for goal in goals:
 			if goal.active:
 				self.log.info('%s %s', self, goal)
+
+		# refresh taxes and upgrade permissions
+		for settlement_manager in self.settlement_managers:
+			settlement_manager.refresh_taxes_and_upgrade_permissions()
 
 	def request_ship(self):
 		self.log.info('%s received request for more ships', self)
@@ -299,6 +304,10 @@ class AIPlayer(GenericAI):
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s ship blocked (%s)", self, unit)
+
+	def notify_mine_empty(self, mine):
+		"""The Mine calls this function to let the player know that the mine is empty."""
+		self._settlement_manager_by_settlement_id[mine.settlement.worldid].production_builder.handle_mine_empty(mine)
 
 	def on_settlement_expansion(self, settlement, coords):
 		""" stores the ownership change in a list for later processing """

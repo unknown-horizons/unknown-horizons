@@ -36,7 +36,7 @@ class StepSlider(pychan.widgets.Slider):
 		self.__callback = callback
 
 	def __update(self):
-		value = round( self.getValue() / self.getStepLength()) * self.getStepLength()
-		self.setValue(value)
+		value = round( self.value / self.step_length) * self.step_length
+		self.value = value
 		if self.__callback is not None:
 			self.__callback()

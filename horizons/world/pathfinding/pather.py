@@ -195,13 +195,11 @@ class AbstractPather(object):
 		"""
 		@return: Bool, whether a path was loaded
 		"""
-		path_steps = db("SELECT x, y FROM unit_path WHERE unit = ? ORDER BY `index`", worldid)
-		if len(path_steps) == 0:
+		path_steps = db.get_unit_path(worldid)
+		if path_steps is None:
 			return False
 		else:
-			self.path = []
-			for step in path_steps:
-				self.path.append(step) # the sql statement orders the steps
+			self.path = path_steps
 			cur_position = self.unit.position.to_tuple()
 			if cur_position in self.path:
 				self.cur = self.path.index(cur_position)
@@ -287,13 +285,13 @@ class StaticPather(object):
 	"""Misc pathing routines not depending on units.
 	Does not use AbstractPather Interface"""
 	@classmethod
-	def get_direct_path(cls, island, source, destination):
+	def get_direct_path(cls, island, source, destination, punish_turns=True):
 		"""Returns shortest direct path.
 		Useful for building roads.
 		@param island: island to search path on
 		@param source, destination: Point or anything supported by FindPath
 		@return: list of tuples or None in case no path is found"""
-		return FindPath()(source, destination, island.path_nodes.nodes)
+		return FindPath()(source, destination, island.path_nodes.nodes, punish_turns=punish_turns)
 
 	@classmethod
 	def get_path_on_roads(cls, island, source, destination):

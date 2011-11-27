@@ -9,7 +9,8 @@
 	<Label name="version_label" text="Unknown Horizons" position="735,735" />
 
 	<!-- clockwise, starting at 0 degree -->
-	<Label name="start" text="Singleplayer" position="531,100" />
+	<Label name="start"  text="Singleplayer"  position="531,100"
+		comment="Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,144" />
 	<ImageButton name="startSingle"
 		position="488,169"
@@ -17,7 +18,8 @@
 		down_image="content/gui/icons/mainmenu/compass.png"
 		hover_image="content/gui/icons/mainmenu/compass.png" />
 
-	<Label name="start_multi" text="Multiplayer" position="680,200" />
+	<Label name="start_multi"  text="Multiplayer"  position="680,200"
+		comment="Opens widget to join or create multiplayer games" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,188" />
 	<ImageButton name="startMulti"
 		position="593,211"
@@ -25,7 +27,7 @@
 		down_image="content/gui/icons/mainmenu/multiplayer.png"
 		hover_image="content/gui/icons/mainmenu/multiplayer.png" />
 
-	<Label name="settings" text="Settings" position="728,365" />
+	<Label name="settings"  text="Settings"  position="728,365"  comment="Main / in-game menu entry" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="612,298" />
 	<ImageButton name="settingsLink"
 		position="637,323"
@@ -33,7 +35,7 @@
 		down_image="content/gui/icons/mainmenu/gears.png"
 		hover_image="content/gui/icons/mainmenu/gears.png" />
 
-	<Label name="help" text="Help" position="619,518" />
+	<Label name="help"  text="Help"  position="619,518"  comment="Main / in-game menu entry" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,406" />
 	<ImageButton name="helpLink"
 		position="593,431"
@@ -41,7 +43,7 @@
 		down_image="content/gui/icons/mainmenu/help.png"
 		hover_image="content/gui/icons/mainmenu/help.png" />
 
-	<Label name="quit" text="Quit" position="442,565" />
+	<Label name="quit" text="Quit" position="442,565"  comment="Completely shut down UH" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,452" />
 	<ImageButton name="closeButton"
 		position="484,478"
@@ -65,7 +67,7 @@
 		down_image="content/gui/icons/mainmenu/log.png"
 		hover_image="content/gui/icons/mainmenu/log.png" />
 
-	<Label name="loadgame" text="Load game" position="345,128" />
+	<Label name="loadgame" text="Load game" position="345,128"  comment="Open a widget to select which game to load" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="350,188" />
 	<ImageButton name="loadgameButton"
 		position="376,212"

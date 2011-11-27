@@ -36,7 +36,7 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.util.gui import LazyWidgetsDict
-from horizons.constants import RES
+from horizons.constants import BUILDINGS, RES
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -76,6 +76,8 @@ class IngameGui(LivingObject):
 
 		cityinfo = self.widgets['city_info']
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
+
+		# special settings for really small resolutions
 		width = horizons.main.fife.engine_settings.getScreenWidth()
 		x = 'center'
 		y = 'top'
@@ -98,36 +100,30 @@ class IngameGui(LivingObject):
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
 		minimap = self.widgets['minimap']
-		minimap.position_technique = "right-20:top+4"
-		minimap.show()
+		minimap.position_technique = "right-14:top+4"
 
-		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0] + 77, 52, 121, 118)
-
-		self.minimap = Minimap(minimap_rect, self.session, \
-		                       self.session.view.renderer['GenericRenderer'],
-		                       horizons.main.fife.targetrenderer)
+		icon = minimap.findChild(name="minimap")
+		self.minimap = Minimap(icon, self.session, \
+		                       horizons.main.fife.targetrenderer, \
+		                       horizons.main.fife.imagemanager, \
+		                       renderer=self.session.view.renderer['GenericRenderer'])
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
 			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
 			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
 			'speedUp' : self.session.speed_up,
-			'speedDown' : self.session.speed_down
-		})
+			'speedDown' : self.session.speed_down,
 
-		minimap_overlay = minimap.findChild(name='minimap_overlay_image')
-
-		self.minimap.use_overlay_icon(minimap_overlay)
-
-		self.widgets['menu_panel'].position_technique = "right+15:top+153"
-		self.widgets['menu_panel'].show()
-		self.widgets['menu_panel'].mapEvents({
-			'destroy_tool' : self.session.destroy_tool,
+			'destroy_tool' : self.session.toggle_destroy_tool,
 			'build' : self.show_build_menu,
 			'diplomacyButton' : self.show_diplomacy_menu,
 			'gameMenuButton' : self.main_gui.toggle_pause,
 			'logbook' : self.logbook.toggle_visibility
 		})
+
+		minimap.show()
+		#minimap.position_technique = "right+15:top+153"
 
 		self.widgets['tooltip'].hide()
 
@@ -148,18 +144,16 @@ class IngameGui(LivingObject):
 			self.callbacks_build[settler_level][button_name] = Callback(self._build, id_)
 
 	def end(self):
-		self.widgets['menu_panel'].mapEvents({
-			'destroy_tool' : None,
-			'build' : None,
-			'diplomacyButton' : None,
-			'gameMenuButton' : None
-		})
-
 		self.widgets['minimap'].mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
 			'rotateRight' : None,
-			'rotateLeft' : None
+			'rotateLeft' : None,
+
+			'destroy_tool' : None,
+			'build' : None,
+			'diplomacyButton' : None,
+			'gameMenuButton' : None
 		})
 
 		for w in self.widgets.itervalues():
@@ -317,8 +311,6 @@ class IngameGui(LivingObject):
 	def minimap_to_front(self):
 		self.widgets['minimap'].hide()
 		self.widgets['minimap'].show()
-		self.widgets['menu_panel'].hide()
-		self.widgets['menu_panel'].show()
 
 	def show_diplomacy_menu(self):
 		# check if the menu is already shown
@@ -384,6 +376,14 @@ class IngameGui(LivingObject):
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
 		self.session.cursor = BuildingTool(self.session, cls, None if unit is None else unit())
+
+	def toggle_road_tool(self):
+		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL_CLASS:
+			if isinstance(self.session.cursor, BuildingTool):
+				print self.session.cursor._class.id, BUILDINGS.TRAIL_CLASS
+			self._build(BUILDINGS.TRAIL_CLASS)
+		else:
+			self.session.cursor = SelectionTool(self.session)
 
 	def _get_menu_object(self, menu):
 		"""Returns pychan object if menu is a string, else returns menu

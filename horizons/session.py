@@ -79,7 +79,7 @@ class Session(LivingObject):
 		assert isinstance(gui, Gui)
 		self.log.debug("Initing session")
 		self.gui = gui # main gui, not ingame gui
-		self.db = db # main db for game data (game.sqlite)
+		self.db = db # main db for game data (game.sql)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 		self.is_alive = True
@@ -152,12 +152,13 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
-	def destroy_tool(self):
+	def toggle_destroy_tool(self):
 		"""Initiate the destroy tool"""
-		if not hasattr(self.cursor, 'tear_tool_active') or \
-			 not self.cursor.tear_tool_active:
+		if not hasattr(self.cursor, 'tear_tool_active') or not self.cursor.tear_tool_active:
 			self.cursor = TearingTool(self)
 			self.ingame_gui.hide_menu()
+		else:
+			self.cursor = SelectionTool(self)
 
 	def autosave(self):
 		raise NotImplementedError

@@ -32,6 +32,7 @@ from horizons.scheduler import Scheduler
 from horizons.gui.tabs import ProductionOverviewTab
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
+from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
 
 class Producer(ResourceHandler):
 	"""Class for objects, that produce something.
@@ -43,20 +44,22 @@ class Producer(ResourceHandler):
 	production_class = Production
 
 	# INIT
-	def __init__(self, auto_init=True, **kwargs):
+	def __init__(self, auto_init=True, start_finished=False, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		# add production lines as specified in db.
 		if auto_init:
 			for prod_line in self.session.db("SELECT id FROM production_line WHERE object_id = ? \
 			    AND enabled_by_default = 1", self.id):
-				# for abeaumont patch:
+				# for abeaumont patch: // NOTE: this would now also be deprecated -- totycro, 11/2011
 				#self.add_production_by_id(prod_line[0], self.worldid, self.production_class)
-				self.add_production_by_id(prod_line[0], self.production_class)
+				self.add_production_by_id(prod_line[0], start_finished=start_finished)
 
 	@property
 	def capacity_utilisation(self):
 		total = 0
-		productions = self._get_productions()
+		productions = self.get_productions()
+		if not productions:
+			return 0 # catch the border case, else there'll be a div by 0
 		for production in productions:
 			state_history = production.get_state_history_times(False)
 			total += state_history[PRODUCTION.STATES.producing.index]
@@ -90,7 +93,7 @@ class Producer(ResourceHandler):
 		@param modifier: a numeric value
 		@param prod_line_id: id of production line to alter. None means every production line"""
 		if prod_line_id is None:
-			for production in self._get_productions():
+			for production in self.get_productions():
 				production.alter_production_time(modifier)
 		else:
 			self._get_production(prod_line_id).alter_production_time(modifier)
@@ -101,7 +104,7 @@ class Producer(ResourceHandler):
 		state of all productions combined. Check the PRODUCTION.STATES constant
 		for list of states and their importance."""
 		current_state = PRODUCTION.STATES.none
-		for production in self._get_productions():
+		for production in self.get_productions():
 			state = production.get_animating_state()
 			if state is not None and current_state < state:
 				current_state = state
@@ -119,6 +122,27 @@ class Producer(ResourceHandler):
 			self.act("work", repeating=True)
 		elif state is PRODUCTION.STATES.inventory_full:
 			self.act("idle_full", repeating=True)
+
+		if self.has_status_icon:
+			full = state is PRODUCTION.STATES.inventory_full
+			if full and not hasattr(self, "_producer_status_icon"):
+				affected_res = set() # find them:
+				for prod in self.get_productions():
+					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
+				self._producer_status_icon = InventoryFullStatus(affected_res)
+				self._registered_status_icons.append( self._producer_status_icon )
+
+			if not full and hasattr(self, "_producer_status_icon"):
+				self._registered_status_icons.remove( self._producer_status_icon )
+				del self._producer_status_icon
+
+	def get_status_icons(self):
+		l = super(Producer, self).get_status_icons()
+		if self.capacity_utilisation < ProductivityLowStatus.threshold:
+			l.append( ProductivityLowStatus() )
+		if not self.is_active():
+			l.append( DecommissionedStatus() )
+		return l
 
 @metaChangeListenerDecorator("building_production_finished")
 class ProducerBuilding(Producer, BuildingResourceHandler):
@@ -138,7 +162,7 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 
 	def get_output_blocked_time(self):
 		""" gets the amount of time in range [0, 1] the output storage is blocked for the AI """
-		return max(production.get_output_blocked_time() for production in self._get_productions())
+		return max(production.get_output_blocked_time() for production in self.get_productions())
 
 class QueueProducer(Producer):
 	"""The QueueProducer stores all productions in a queue and runs them one
@@ -165,11 +189,9 @@ class QueueProducer(Producer):
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE rowid = ?", worldid):
 			self.production_queue.append(prod_line_id)
 
-	def add_production_by_id(self, production_line_id, production_class = Production):
+	def add_production_by_id(self, production_line_id):
 		"""Convenience method.
 		@param production_line_id: Production line from db
-		@param production_class: Subclass of Production that does the production. If the object
-		                         has a production_class-member, this will be used instead.
 		"""
 		self.production_queue.append(production_line_id)
 		if not self.is_active():

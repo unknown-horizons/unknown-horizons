@@ -53,7 +53,12 @@ class Player(StorageHolder, WorldObject):
 	def __init(self, name, color, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
 		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
-		self.name = name
+		try:
+			self.name = unicode(name)
+		except UnicodeDecodeError:
+			# WORKAROUND: this line should be the only unicode conversion here.
+			# however, if unicode() gets a parameter, it will fail if the string is already unicode.
+			self.name = unicode(name, errors='ignore')
 		self.color = color
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel
@@ -122,6 +127,9 @@ class Player(StorageHolder, WorldObject):
 		else:
 			return False
 
+	def notify_mine_empty(self, mine):
+		"""The Mine calls this function to let the player know that the mine is empty."""
+		pass
 
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
@@ -135,3 +143,6 @@ class HumanPlayer(Player):
 			                                                    {'level': settler.level+1})
 			self.session.ingame_gui._player_settler_level_change_listener()
 		return level_up
+
+	def notify_mine_empty(self, mine):
+		self.session.ingame_gui.message_widget.add(mine.position.center().x, mine.position.center().y, 'MINE_EMPTY')

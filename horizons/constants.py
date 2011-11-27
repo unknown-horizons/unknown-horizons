@@ -56,11 +56,10 @@ class VERSION:
 				return unicode(open(head_file).readline().strip()[0:7])
 		return u"<unknown>"
 
-	RELEASE_NAME    = "Unknown Horizons Version %s"
-	RELEASE_VERSION = _set_version()
+	RELEASE_NAME    = "Unknown Horizons %s"
 
-	# change to sth like this for release, please don't add %s to the first string
-	#RELEASE_NAME = _("Unknown Horizons") + unicode(" %s")
+	RELEASE_VERSION = _set_version()
+	# change to sth like this for release:
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
@@ -266,7 +265,6 @@ class MESSAGES:
 # AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:
 	HIGHLIGHT_PLANS = False # whether to show the AI players' plans on the map
-	AI_PLAYERS = 1 # number of AI players in a game started from the command line
 	HUMAN_AI = False # whether the human player is controlled by the AI
 
 class TRADER: # check resource values: ./development/print_db_data.py res
@@ -378,6 +376,7 @@ class _LanguageNameDict(dict):
 		return self.get(key, key)
 
 LANGUAGENAMES = _LanguageNameDict({
+	"af"    : u'Afrikaans',
 	"bg"    : u'Български',
 	"ca"    : u'Català',
   'ca@valencia' : u'Català de València',
@@ -387,8 +386,10 @@ LANGUAGENAMES = _LanguageNameDict({
 	"en"    : u'English',
 	"es"    : u'Español',
 	"et"    : u'Eesti',
+	"el"    : u'Ελληνικά',
 	"fi"    : u'Suomi',
 	"fr"    : u'Français',
+	"gl"    : u'Galego',
 	"hu"    : u'Magyar',
 	"it"    : u'Italiano',
 	"lt"    : u'Lietuvių',
@@ -397,9 +398,11 @@ LANGUAGENAMES = _LanguageNameDict({
 	"pl"    : u'Polski',
 	"pt_BR" : u'Português Br.',
 	"pt"    : u'Português',
+	"ro"    : u'Română',
 	"ru"    : u'Русский',
 	"sl"    : u'Slovenski',
 	"sv"    : u'Svenska',
+	"tr"    : u'Türkçe',
 	})
 
 AUTO_CONTINUE_CAMPAIGN=True

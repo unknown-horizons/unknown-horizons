@@ -49,6 +49,7 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
+from horizons.world.ground import WaterDummy
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 
@@ -186,6 +187,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
 		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
+		#default_grounds = Entities.grounds[90]
 
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
@@ -196,7 +198,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
 						for y_offset in xrange(0,10):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = ground
+								self.ground_map[(x+x_offset, y+y_offset)] = Entities.grounds[-1](self.session, x, y)
 
 		# remove parts that are occupied by islands, create the island map and the full map
 		self.island_map = {}
@@ -265,9 +267,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			if self.pirate:
 				self.pirate.load_ship_states(savegame_db)
 
+			# load the AI stuff only when we have AI players
+			if any(isinstance(player, AIPlayer) for player in self.players):
+				AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+
 			# load the AI players
 			# this has to be done here because otherwise the ships and other objects won't exist
-			AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 			for player in self.players:
 				if not isinstance(player, HumanPlayer):
 					player.finish_loading(savegame_db)
@@ -386,7 +391,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				ship.inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = point.to_tuple()
-		AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+
+		# load the AI stuff only when we have AI players
+		if any(isinstance(player, AIPlayer) for player in self.players):
+			AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 
 		# add a pirate ship
 		if pirate_enabled:
@@ -533,8 +541,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# add tree to every nth tile and an animal to one in every M trees
 				if self.session.random.randint(0, 2) == 0 and \
 				   Tree.check_build(self.session, tile, check_settlement = False):
-					building = Build(Tree, x, y, ownerless = True, island = island)(issuer = None)
-					building.finish_production_now() # make trees big and fill their inventory
+					building = Build(Tree, x, y, ownerless = True, island = island,
+					                 data = {"start_finished": True})(issuer = None)
 					if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
 					if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
@@ -681,7 +689,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	def get_island(self, point):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param point: instance of Point"""
+		# NOTE: keep code synchronised with duplicated code below
 		tup = point.to_tuple()
+		if tup not in self.island_map:
+			return None
+		return self.island_map[tup]
+
+	def get_island_tuple(self, tup):
+		"""Overloaded from above"""
 		if tup not in self.island_map:
 			return None
 		return self.island_map[tup]

@@ -143,10 +143,19 @@ class Circle(object):
 				if self.center.distance_to_tuple((x, y)) <= self.radius:
 					yield (x, y)
 
+	def get_border_coordinates(self, bordersize=1):
+		"""Returns only coordinates at the border. Very naive implementation"""
+		for x in xrange(self.center.x-self.radius, self.center.x+self.radius+1):
+			for y in xrange(self.center.y-self.radius, self.center.y+self.radius+1):
+				if (self.radius - bordersize) <= self.center.distance_to_tuple((x, y)) <= self.radius:
+					yield (x,y)
 
 def midpoint_circle(x0, y0, radius):
 	"""Midpoint circle algorithm with filling.
-	@see http://en.wikipedia.org/wiki/Midpoint_circle_algorithm"""
+	@see http://en.wikipedia.org/wiki/Midpoint_circle_algorithm.
+
+	This isn't properly tested and adapted to the uh coord system, don't use like this.
+	"""
 	f = 1 - radius
 	ddF_x = 1
 	ddF_y = -2 * radius

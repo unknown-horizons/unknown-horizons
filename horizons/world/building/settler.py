@@ -34,6 +34,7 @@ from horizons.command.building import Build
 from horizons.util import decorators, Callback
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
+from horizons.world.status import SettlerUnhappyStatus
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -70,6 +71,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data(loading = loading)
 		self.last_tax_payed = last_tax_payed
+		self.inventory.add_change_listener( self._update_status_icon )
 
 	def save(self, db):
 		super(Settler, self).save(db)
@@ -157,7 +159,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			current_lines = self.get_production_lines()
 			for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
 				if not self.has_production_line(prod_line):
-					self.add_production_by_id(prod_line, self.owner)
+					self.add_production_by_id(prod_line)
 				# cross out the new lines from the current lines, so only the old ones remain
 				if prod_line in current_lines:
 					current_lines.remove(prod_line)
@@ -307,6 +309,16 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def level_upgrade(self, lvl):
 		"""Settlers only level up by themselves"""
 		pass
+
+	def _update_status_icon(self):
+		unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
+		# check for changes
+		if unhappy and not hasattr(self, "_settler_status_icon"):
+			self._settler_status_icon = SettlerUnhappyStatus() # save ref for removal later
+			self._registered_status_icons.append( self._settler_status_icon )
+		if not unhappy and hasattr(self, "_settler_status_icon"):
+			self._registered_status_icons.remove( self._settler_status_icon )
+			del self._settler_status_icon
 
 	def __str__(self):
 		try:

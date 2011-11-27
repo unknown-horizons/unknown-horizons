@@ -84,6 +84,16 @@ class Water(SurfaceTile):
 	is_water = True
 	layer = LAYERS.WATER
 
+class WaterDummy(Water):
+	def __init__(self, session, x, y):
+		# no super call, we don't have an instance
+		self.x = x
+		self.y = y
+
+		self.settlement = None
+		self.blocked = False
+		self.object = None
+
 
 class GroundClass(type):
 	"""
@@ -99,11 +109,12 @@ class GroundClass(type):
 		self.id = id
 		self._object = None
 		self.velocity = {}
-		self._tile_set_id = db.get_random_tile_set(id)[0]
 		self.classes = ['ground[' + str(id) + ']']
 		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)
-		self._loadObject(db)
+		if id != -1	:
+			self._tile_set_id = db.get_random_tile_set(id)[0]
+			self._loadObject(db)
 
 	def __new__(self, db, id):
 		"""
@@ -111,6 +122,8 @@ class GroundClass(type):
 		"""
 		if id == GROUND.WATER[0]:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Water,), {})
+		elif id == -1:
+			return type.__new__(self, 'Ground[' + str(id) + ']', (WaterDummy,), {})
 		else:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
 
@@ -124,6 +137,7 @@ class GroundClass(type):
 			cls.log.debug('Already loaded ground %s', cls.id)
 			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'ground')
 			return
+
 		fife.ObjectVisual.create(cls._object)
 
 		tile_sets = TileSetLoader.get_sets()

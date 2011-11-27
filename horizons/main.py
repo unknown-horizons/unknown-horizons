@@ -46,7 +46,7 @@ from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER
+from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
 
 # private module pointers of this module
@@ -99,7 +99,6 @@ def start(command_line_arguments):
 			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
 			return False
 
-	AI.AI_PLAYERS = command_line_arguments.ai_players
 	if command_line_arguments.ai_highlights:
 		AI.HIGHLIGHT_PLANS = True
 	if command_line_arguments.human_ai:
@@ -173,6 +172,9 @@ def start(command_line_arguments):
 		# don't start main loop if startup failed
 		return False
 
+	if command_line_arguments.gamespeed is not None:
+		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
+
 	fife.run()
 
 def quit():
@@ -237,9 +239,9 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 	try:
 		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, natural_resource_multiplier, \
 			is_scenario = is_scenario, campaign = campaign)
-	except InvalidScenarioFileFormat, e:
+	except InvalidScenarioFileFormat as e:
 		raise
-	except Exception, e:
+	except Exception as e:
 		import traceback
 		print "Failed to load", map_file
 		traceback.print_exc()
@@ -251,6 +253,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 			      _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai)
+
 
 def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natural_resource_multiplier = 1):
 	"""Starts a multiplayer game server
@@ -310,7 +313,7 @@ def _init_gettext(fife):
 
 def _start_dev_map(ai_players, human_ai):
 	# start the development map (it's the first one)
-	first_map = SavegameManager.get_maps()[0][1]
+	first_map = SavegameManager.get_maps()[0][0]
 	load_game(ai_players, human_ai, first_map)
 	return True
 
@@ -341,7 +344,7 @@ def _start_map(map_name, ai_players, human_ai, is_scenario=False, campaign=None,
 			print _("Error: Cannot find map \"%s\".") % map_name
 			return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches: ")
+		print _("Error: Found multiple matches:")
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -414,7 +417,7 @@ def _load_map(savegame, ai_players, human_ai):
 			print _("Error: Cannot find savegame \"%s\".") % savegame
 			return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches: ")
+		print _("Error: Found multiple matches:")
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -454,10 +457,10 @@ def preload_game_data(lock):
 		log = logging.getLogger("preload")
 		mydb = _create_db() # create own db reader instance, since it's not thread-safe
 		preload_functions = [ ActionSetLoader.load, \
-		                      TileSetLoader.load,
-		                      Callback(Entities.load_grounds, mydb), \
-		                      Callback(Entities.load_buildings, mydb), \
-		                      Callback(Entities.load_units, mydb) ]
+		                      #TileSetLoader.load, -- this is not needed now, but will be for the new tile system
+		                      Callback(Entities.load_grounds, mydb, load_now=True), \
+		                      Callback(Entities.load_buildings, mydb, load_now=True), \
+		                      Callback(Entities.load_units, mydb, load_now=True) ]
 		for f in preload_functions:
 			if not lock.acquire(False):
 				break
@@ -466,7 +469,7 @@ def preload_game_data(lock):
 			log.debug("Preload: %s is done", f)
 			lock.release()
 		log.debug("Preloading done.")
-	except Exception, e:
+	except Exception as e:
 		log.warning("Exception occured in preloading thread: %s", e)
 	finally:
 		if lock.locked():

@@ -34,6 +34,7 @@ class Speech:
 	NEW_SETTLEMENT = "new_settlement"
 	NEW_WORLD = "new_world"
 	QUICKSAVE = None
+	AUTOSAVE = None
 	SCREENSHOT = None
 	SETTLER_LEVEL_UP = None
 	NEED_MORE_RES = None
@@ -43,6 +44,7 @@ class Speech:
 	DRAG_ROADS_HINT = None
 	DIPLOMACY_STATUS_CHANGED = None
 	MAX_INCR_REACHED = None
+	YOU_HAVE_WON = None
 
 DEFAULT_LANG="en"
 DEFAULT_VARIATION=0
@@ -95,5 +97,5 @@ def eval_category_name(category):
 	try:
 		cat_name = getattr(Speech, category)
 	except:
-		print "Incorect name of speech category"
+		print "Incorrect name of speech category: %s" % category
 	return cat_name

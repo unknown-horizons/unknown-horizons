@@ -22,7 +22,9 @@
 import math
 import logging
 
-from horizons.constants import AI, BUILDINGS
+from collections import defaultdict
+
+from horizons.constants import AI, BUILDINGS, RES
 from horizons.util.python import decorators
 from horizons.util import WorldObject
 
@@ -67,10 +69,7 @@ class LandManager(WorldObject):
 		self.roads = set() # set((x, y), ...) of coordinates where road can be built independent of the area purpose
 		self.coastline = self._get_coastline() # set((x, y), ...) of coordinates which coastal buildings could use in the production area
 		self.personality = self.owner.personality_manager.get('LandManager')
-
-		self.resource_deposits = {} # {building_id: [building, ...]} all resource deposits of a type on the island
-		for building_id in [BUILDINGS.CLAY_DEPOSIT_CLASS, BUILDINGS.MOUNTAIN_CLASS]:
-			self.resource_deposits[building_id] = [building for building in self.island.buildings if building.id == building_id]
+		self.refresh_resource_deposits()
 
 	def save(self, db):
 		super(LandManager, self).save(db)
@@ -113,6 +112,14 @@ class LandManager(WorldObject):
 				continue
 			result.add(coords)
 		return result
+
+	def refresh_resource_deposits(self):
+		self.resource_deposits = defaultdict(lambda: []) # {resource_id: [tile, ...]} all resource deposits of a type on the island
+		for resource_id, building_ids in {RES.RAW_CLAY_ID: [BUILDINGS.CLAY_DEPOSIT_CLASS, BUILDINGS.CLAY_PIT_CLASS], RES.RAW_IRON_ID: [BUILDINGS.MOUNTAIN_CLASS, BUILDINGS.IRON_MINE_CLASS]}.iteritems():
+			for building in self.island.buildings:
+				if building.id in building_ids:
+					if building.inventory[resource_id] > 0:
+						self.resource_deposits[resource_id].append(self.island.ground_map[building.position.origin.to_tuple()])
 
 	def _divide_island(self):
 		"""Divide the whole island between the purposes. The proportions depend on the personality."""

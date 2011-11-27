@@ -49,7 +49,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	# load widget
 	try:
 		widget = pychan.loadXML(get_gui_files_map()[filename])
-	except (IOError, ValueError), error:
+	except (IOError, ValueError) as error:
 		print 'PLEASE REPORT: invalid path %s in translation! %s' % (filename, error)
 		raise
 
