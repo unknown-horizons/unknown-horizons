@@ -73,6 +73,7 @@ files_to_skip = {
 	'credits1.xml',
 	'credits2.xml',
 	'credits3.xml',
+	'credits4.xml',
 	'stringpreviewwidget.xml',
 	'startup_error_popup.xml'
 	}
