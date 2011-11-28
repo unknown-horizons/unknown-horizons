@@ -195,7 +195,10 @@ class Trader(GenericAI):
 		settlement = self.office[ship.worldid].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
 		for res in sorted(settlement.buy_list.iterkeys()): # check for resources that the settlement wants to buy
-			amount = self.session.random.randint(*TRADER.SELL_AMOUNT) # select a random amount to sell
+			wanted_amount = settlement.buy_list[res]
+			actual_min_limit = min(wanted_amount, TRADER.SELL_AMOUNT_MIN)
+			# select a random amount to sell
+			amount = self.session.random.randint(actual_min_limit, TRADER.SELL_AMOUNT_MAX)
 			if amount == 0:
 				continue
 			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * amount)

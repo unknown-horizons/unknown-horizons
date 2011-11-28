@@ -275,7 +275,8 @@ class TRADER: # check resource values: ./development/print_db_data.py res
 	BUSINESS_SENSE = 50 # chance in percent to be sent to a branch office instead of random spot
 
 	BUY_AMOUNT = (2, 8)  # amount range to buy/sell from settlement per resource
-	SELL_AMOUNT = (2, 8) # => randomly picks an amount in this range for each trade
+	SELL_AMOUNT_MIN = 2
+	SELL_AMOUNT_MAX = 8
 
 # Taxes and Restrictions
 class SETTLER:
