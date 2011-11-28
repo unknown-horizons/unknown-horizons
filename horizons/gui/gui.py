@@ -18,12 +18,13 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from fife import fife
+
 import os
 import os.path
 import time
-from fife.extensions import pychan
 import logging
+from fife import fife
+from fife.extensions import pychan
 
 import horizons.main
 
@@ -138,7 +139,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				'start'    : events['e_start'],
 				'quit'     : events['e_quit'],
 			})
-			self.current.additional_widget = pychan.Icon(image="content/gui/images/background/transparent.png")
+
+			# load transparent background, that de facto prohibits access to other
+			# gui elements by eating all events
+			height = horizons.main.fife.engine_settings.getScreenHeight()
+			width = horizons.main.fife.engine_settings.getScreenWidth()
+			image = horizons.main.fife.imagemanager.loadBlank(width,  height)
+			image = fife.GuiImage(image)
+			self.current.additional_widget = pychan.Icon(image=image)
 			self.current.additional_widget.position = (0, 0)
 			self.current.additional_widget.show()
 			self.current.show()
