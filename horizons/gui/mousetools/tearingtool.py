@@ -47,7 +47,6 @@ class TearingTool(NavigationTool):
 	def end(self):
 		self._mark()
 		self.tear_tool_active = False
-		horizons.main.fife.set_cursor("default")
 		super(TearingTool, self).end()
 
 	def mouseDragged(self, evt):
@@ -64,6 +63,7 @@ class TearingTool(NavigationTool):
 		evt.consume()
 
 	def on_escape(self):
+		horizons.main.fife.set_cursor("default")
 		# cleanup in end() is called implicitly
 		self.session.cursor = SelectionTool(self.session)
 

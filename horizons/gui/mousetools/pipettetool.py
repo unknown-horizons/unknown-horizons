@@ -39,11 +39,11 @@ class PipetteTool(NavigationTool):
 		horizons.main.fife.set_cursor('pipette')
 
 	def end(self):
-		horizons.main.fife.set_cursor('default')
 		super(PipetteTool, self).end()
 
 	def on_escape(self):
 		self._remove_coloring()
+		horizons.main.fife.set_cursor('default')
 		self.session.cursor = SelectionTool(self.session)
 
 	def mouseMoved(self,  evt):
