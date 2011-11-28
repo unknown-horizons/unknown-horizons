@@ -1,0 +1,17 @@
+actionsets:
+  as_branchoffice0: {level: 0, preview: as_preview_branchoffice0}
+baseclass: storages.BranchOffice
+button_name: null
+components:
+  HealthComponent: {maxhealth: 1000}
+cost: 0
+cost_inactive: 0
+id: 1
+inhabitants_max: 2
+inhabitants_start: 2
+name: Branch Office
+radius: 24
+settler_level: 0
+size_x: 3
+size_y: 3
+tooltip_text: null

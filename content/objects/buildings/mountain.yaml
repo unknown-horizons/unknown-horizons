@@ -1,0 +1,17 @@
+actionsets:
+  as_mountain5x5: {level: 0, preview: as_preview_mountain5x5}
+baseclass: nature.ResourceDeposit
+button_name: null
+components:
+  HealthComponent: {maxhealth: 10}
+cost: 0
+cost_inactive: 0
+id: 34
+inhabitants_max: 0
+inhabitants_start: 0
+name: Mountain
+radius: 0
+settler_level: 0
+size_x: 5
+size_y: 5
+tooltip_text: null

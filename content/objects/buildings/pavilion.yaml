@@ -1,0 +1,24 @@
+actionsets:
+  as_church_wooden0: {level: 1}
+  as_sunsail0: {level: 0}
+baseclass: production.SettlerServiceProvider
+button_name: church-1
+components:
+  HealthComponent: {maxhealth: 1000}
+  ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [11, 1]
+        time: 4
+cost: 15
+cost_inactive: 5
+id: 5
+inhabitants_max: 1
+inhabitants_start: 1
+name: Pavilion
+radius: 0
+settler_level: 0
+size_x: 2
+size_y: 2
+tooltip_text: Fulfills religious needs of sailors.

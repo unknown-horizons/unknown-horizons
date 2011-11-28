@@ -1,0 +1,24 @@
+actionsets:
+  as_fish0: {level: 0}
+baseclass: nature.Fish
+button_name: null
+components:
+  HealthComponent: {maxhealth: 10}
+  ProducerComponent:
+    productionlines:
+      0:
+        changes_animation: false
+        produces:
+        - [28, 1]
+        time: 30
+cost: 0
+cost_inactive: 0
+id: 33
+inhabitants_max: 0
+inhabitants_start: 0
+name: Fish Deposit
+radius: 0
+settler_level: 0
+size_x: 1
+size_y: 1
+tooltip_text: null

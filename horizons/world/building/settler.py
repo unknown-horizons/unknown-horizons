@@ -73,7 +73,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data(loading = loading)
 		self.last_tax_payed = last_tax_payed
-		self.inventory.add_change_listener( self._update_status_icon )
+		self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 
 	def save(self, db):
 		super(Settler, self).save(db)

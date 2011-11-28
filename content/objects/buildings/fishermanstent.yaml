@@ -1,0 +1,25 @@
+actionsets:
+  as_fisherman0: {level: 0}
+baseclass: production.Fisher
+button_name: fisher-1
+components:
+  HealthComponent: {maxhealth: 1000}
+  ProducerComponent:
+    productionlines:
+      0:
+        consumes:
+        - [28, -1]
+        produces:
+        - [5, 1]
+        time: 10
+cost: 5
+cost_inactive: 0
+id: 11
+inhabitants_max: 1
+inhabitants_start: 1
+name: Fisherman's Tent
+radius: 20
+settler_level: 0
+size_x: 2
+size_y: 2
+tooltip_text: Fishes the sea, produces food.

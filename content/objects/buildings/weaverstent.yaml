@@ -1,0 +1,25 @@
+actionsets:
+  as_weaver0: {level: 0}
+baseclass: production.Refiner
+button_name: weaver-1
+components:
+  HealthComponent: {maxhealth: 1000}
+  ProducerComponent:
+    productionlines:
+      0:
+        consumes:
+        - [10, -1]
+        produces:
+        - [3, 1]
+        time: 12
+cost: 10
+cost_inactive: 0
+id: 7
+inhabitants_max: 2
+inhabitants_start: 2
+name: Weaver's Tent
+radius: 8
+settler_level: 1
+size_x: 2
+size_y: 2
+tooltip_text: Turns lamb wool into cloth.

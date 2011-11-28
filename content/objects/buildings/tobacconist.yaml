@@ -1,0 +1,25 @@
+actionsets:
+  as_tobacconist0: {level: 0}
+baseclass: production.Refiner
+button_name: tobacconist-1
+components:
+  HealthComponent: {maxhealth: 1000}
+  ProducerComponent:
+    productionlines:
+      0:
+        consumes:
+        - [31, -2]
+        produces:
+        - [32, 1]
+        time: 15
+cost: 10
+cost_inactive: 0
+id: 37
+inhabitants_max: 2
+inhabitants_start: 2
+name: Tobacconist
+radius: 8
+settler_level: 2
+size_x: 2
+size_y: 2
+tooltip_text: Produces tobaccos out of tobacco.

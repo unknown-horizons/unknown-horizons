@@ -1,0 +1,17 @@
+actionsets:
+  as_lookout0: {level: 0}
+baseclass: housing.Housing
+button_name: null
+components:
+  HealthComponent: {maxhealth: 1000}
+cost: 0
+cost_inactive: 0
+id: 13
+inhabitants_max: 1
+inhabitants_start: 1
+name: Lookout
+radius: 10
+settler_level: 0
+size_x: 1
+size_y: 1
+tooltip_text: Increases the player's sight.

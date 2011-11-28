@@ -252,17 +252,17 @@ class Producer(Component):
 		elif state is PRODUCTION.STATES.inventory_full:
 			self.instance.act("idle_full", repeating=True)
 
-		if self.has_status_icon:
+		if self.instance.has_status_icon:
 			full = state is PRODUCTION.STATES.inventory_full
 			if full and not hasattr(self, "_producer_status_icon"):
 				affected_res = set() # find them:
 				for prod in self.get_productions():
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
 				self._producer_status_icon = InventoryFullStatus(affected_res)
-				self._registered_status_icons.append( self._producer_status_icon )
+				self.instance._registered_status_icons.append( self._producer_status_icon )
 
 			if not full and hasattr(self, "_producer_status_icon"):
-				self._registered_status_icons.remove( self._producer_status_icon )
+				self.instance._registered_status_icons.remove( self._producer_status_icon )
 				del self._producer_status_icon
 
 	def get_status_icons(self):

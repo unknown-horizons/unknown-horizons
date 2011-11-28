@@ -1,0 +1,25 @@
+actionsets:
+  as_brickyard0: {level: 0}
+baseclass: production.Refiner
+button_name: brickyard-1
+components:
+  HealthComponent: {maxhealth: 1000}
+  ProducerComponent:
+    productionlines:
+      0:
+        consumes:
+        - [21, -1]
+        produces:
+        - [7, 1]
+        time: 15
+cost: 15
+cost_inactive: 5
+id: 24
+inhabitants_max: 1
+inhabitants_start: 1
+name: Brickyard
+radius: 8
+settler_level: 1
+size_x: 2
+size_y: 4
+tooltip_text: Turns clay into bricks.

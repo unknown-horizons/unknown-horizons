@@ -1,0 +1,23 @@
+actionsets:
+  as_cattlerun0: {level: 0}
+baseclass: nature.Field
+button_name: cattlerun-1
+components:
+  HealthComponent: {maxhealth: 10}
+  ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [33, 2]
+        time: 40
+cost: 0
+cost_inactive: 0
+id: 38
+inhabitants_max: 0
+inhabitants_start: 0
+name: Cattle Run
+radius: 0
+settler_level: 2
+size_x: 3
+size_y: 3
+tooltip_text: Raises cattle. Needs a farm.
