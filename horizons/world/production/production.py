@@ -28,7 +28,7 @@ from collections import defaultdict, deque
 from horizons.util import WorldObject
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.constants import PRODUCTION
-from horizons.world.production.productionline import ProductionLine
+from horizons.world.production.productionline import ProductionLineObject
 from horizons.world.component.storagecomponent import StorageComponent
 
 from horizons.scheduler import Scheduler
@@ -57,11 +57,11 @@ class Production(WorldObject):
 	USES_GOLD = False
 
 	## INIT/DESTRUCT
-	def __init__(self, inventory, owner_inventory, prod_line_id, auto_start=True, \
+	def __init__(self, inventory, owner_inventory, prod_id, prod__data, auto_start=True, \
 	             start_finished=False, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self._state_history = deque()
-		self.__init(inventory, owner_inventory, prod_line_id, PRODUCTION.STATES.none, Scheduler().cur_tick)
+		self.__init(inventory, owner_inventory, prod_id, prod_data, PRODUCTION.STATES.none, Scheduler().cur_tick)
 
 		if start_finished:
 			self._give_produced_res()
@@ -74,7 +74,7 @@ class Production(WorldObject):
 		if auto_start:
 			self._check_inventory()
 
-	def __init(self, inventory, owner_inventory, prod_line_id, state, creation_tick, pause_old_state = None):
+	def __init(self, inventory, owner_inventory, prod_id, prod_data, state, creation_tick, pause_old_state = None):
 		"""
 		@param inventory: inventory of assigned building
 		@param prod_line_id: id of production line.
@@ -87,12 +87,7 @@ class Production(WorldObject):
 		self._creation_tick = creation_tick
 
 		assert isinstance(prod_line_id, int)
-		self._prod_line = self._create_production_line(prod_line_id)
-
-	@classmethod
-	def _create_production_line(self, prod_line_id):
-		"""Returns a non-changeable production line instance"""
-		return ProductionLine.get_const_production_line(prod_line_id)
+		self._prod_line = ProductionLineObject(id=prod_id, data=prod_data)
 
 	def save(self, db):
 		self._clean_state_history()

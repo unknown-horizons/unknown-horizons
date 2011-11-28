@@ -75,27 +75,16 @@ class BuildingClass(type):
 		self.button_name = yaml_results['button_name']
 		self.settler_level = yaml_results['settler_level']
 		self.tooltip_text = yaml_results['tooltip_text']
+		self.action_sets = yaml_results['actionsets']
 		self.size = (int(yaml_results['size_x']), int(yaml_results['size_y']))
 		self.inhabitants = int(yaml_results['inhabitants_start'])
 		self.inhabitants_max = int(yaml_results['inhabitants_max'])
-		#for (name,  value) in db("SELECT name, value FROM building_property WHERE building = ?", str(id)):
-		#	setattr(self, name, value)
-		self.costs = {}
-		for (name, value) in db("SELECT resource, amount FROM building_costs WHERE building = ?", str(id)):
-			self.costs[name]=value
-		self._loadObject(db)
-		running_costs = db("SELECT cost_active, cost_inactive FROM building_running_costs WHERE building=?", self.id)
-		if len(running_costs) > 0:
-			self.running_costs = running_costs[0][0]
-			self.running_costs_inactive = running_costs[0][1]
-		else:
-			self.running_costs = 0
-			self.running_costs_inactive = 0
+		self.costs = yaml_results['buildingcosts']
+		self._loadObject()
+		self.running_costs = yaml_results['cost']
+		self.running_costs_inactive = yaml_results['cost_inactive']
 		self.has_running_costs = (self.running_costs != 0)
-		soundfiles = db("SELECT file FROM sounds INNER JOIN object_sounds ON \
-			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
-		self.soundfiles = [ i[0] for i in soundfiles ]
-
+		self.component_templates = yaml_results['components']
 		# for mines: on which deposit is it buildable
 		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
 		if buildable_on_deposit_type:
@@ -110,7 +99,7 @@ class BuildingClass(type):
 					 horizons/world/storageholder.py is the next place to go.
 					 """
 
-	def _loadObject(cls, db):
+	def _loadObject(cls):
 		"""Loads building from the db.
 		"""
 		cls.log.debug("Loading building %s", cls.id)
@@ -120,9 +109,9 @@ class BuildingClass(type):
 			cls.log.debug("Already loaded building %s", cls.id)
 			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
-		action_sets = db("SELECT action_set_id FROM action_set WHERE object_id=?",cls.id)
+		action_sets = cls.action_sets.iterkeys()
 		all_action_sets = ActionSetLoader.get_sets()
-		for (action_set_id,) in action_sets:
+		for action_set_id in action_sets:
 			for action_id in all_action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)

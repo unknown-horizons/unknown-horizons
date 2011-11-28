@@ -1,27 +1,28 @@
-actionsets:
-  as_toolmaker0: {level: 0}
+id: 30
+name: Toolmaker
 baseclass: production.IronRefiner
+radius: 8
+cost: 10
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 1
+inhabitants_max: 1
 button_name: toolmaker-1
+tooltip_text: Produces tools out of iron.
+settler_level: 2
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
     productionlines:
       0:
+        produces:
+        - [6, 2]
         consumes:
         - [4, -1]
         - [23, -1]
         - [26, -1]
-        produces:
-        - [6, 2]
         time: 15
-cost: 10
-cost_inactive: 0
-id: 30
-inhabitants_max: 1
-inhabitants_start: 1
-name: Toolmaker
-radius: 8
-settler_level: 2
-size_x: 2
-size_y: 2
-tooltip_text: Produces tools out of iron.
+actionsets:
+  as_toolmaker0: {level: 0}
+buildingcosts: {1: 500, 4: 2, 6: 2, 7: 2}

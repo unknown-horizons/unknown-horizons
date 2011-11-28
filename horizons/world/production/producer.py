@@ -43,10 +43,11 @@ class Producer(Component):
 	production_class = Production
 
 	# INIT
-	def __init__(self, auto_init=True, start_finished=False, **kwargs):
+	def __init__(self, auto_init=True, start_finished=False, production_lines={}, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		self.__auto_init = auto_init
 		self.__start_finished = start_finished
+		self.production_lines = production_lines
 
 	def initialize(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
@@ -57,12 +58,15 @@ class Producer(Component):
 		self._inactive_productions = {}
 		# add production lines as specified in db.
 		if self.__auto_init:
-			for prod_line in self.instance.session.db("SELECT id FROM production_line WHERE object_id = ? \
-			    AND enabled_by_default = 1", self.instance.id):
-				# for abeaumont patch:
-				#self.add_production_by_id(prod_line[0], self.worldid, self.production_class)
-				self.add_production_by_id(prod_line[0], start_finished=self.__start_finished)
+			for prod_line, attributes in self.production_lines.iteritems():
+				if 'enabled_by_default' in attributes and not attributes['enabled_by_default']:
+					continue  # It's set to false, don't add
+				self.create_production(prod_line, attributes)
 
+	def create_production(self, id, data):
+		production_class = self.production_class
+		owner_inventory = self.instance._get_owner_inventory()
+		self.add_production(production_class(inventory, owner_inventory, id, data))
 
 	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.
@@ -71,7 +75,7 @@ class Producer(Component):
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
 		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, \
-		                                     production_line_id, start_finished=start_finished))
+		                                     production_line_id, self.production_lines[production_line_id], start_finished=start_finished))
 
 	@property
 	def capacity_utilisation(self):

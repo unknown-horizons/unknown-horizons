@@ -1,25 +1,26 @@
-actionsets:
-  as_mine5x5: {level: 0, preview: as_preview_mine5x5}
+id: 28
+name: Iron Mine
 baseclass: production.Mine
+radius: 0
+cost: 15
+cost_inactive: 5
+size_x: 5
+size_y: 5
+inhabitants_start: 0
+inhabitants_max: 0
 button_name: iron-mine-1
+tooltip_text: Gets iron ore from deposit.
+settler_level: 2
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
     productionlines:
       0:
-        consumes:
-        - [24, -1]
         produces:
         - [25, 1]
+        consumes:
+        - [24, -1]
         time: 15
-cost: 15
-cost_inactive: 5
-id: 28
-inhabitants_max: 0
-inhabitants_start: 0
-name: Iron Mine
-radius: 0
-settler_level: 2
-size_x: 5
-size_y: 5
-tooltip_text: Gets iron ore from deposit.
+actionsets:
+  as_mine5x5: {preview: as_preview_mine5x5, level: 0}
+buildingcosts: {1: 500, 4: 10, 6: 2}

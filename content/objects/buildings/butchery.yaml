@@ -1,31 +1,32 @@
-actionsets:
-  as_butchery0: {level: 0}
+id: 41
+name: Butchery
 baseclass: production.Refiner
+radius: 8
+cost: 15
+cost_inactive: 5
+size_x: 2
+size_y: 2
+inhabitants_start: 2
+inhabitants_max: 2
 button_name: butchery-1
+tooltip_text: Needs pigs or cattle. Produces food.
+settler_level: 2
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
     productionlines:
       0:
+        produces:
+        - [5, 2]
         consumes:
         - [35, -1]
-        produces:
-        - [5, 2]
         time: 15
       1:
-        consumes:
-        - [36, -1]
         produces:
         - [5, 2]
+        consumes:
+        - [36, -1]
         time: 15
-cost: 15
-cost_inactive: 5
-id: 41
-inhabitants_max: 2
-inhabitants_start: 2
-name: Butchery
-radius: 8
-settler_level: 2
-size_x: 2
-size_y: 2
-tooltip_text: Needs pigs or cattle. Produces food.
+actionsets:
+  as_butchery0: {level: 0}
+buildingcosts: {1: 500, 6: 3, 7: 4}

@@ -1,25 +1,26 @@
-actionsets:
-  as_tavern0: {level: 0}
+id: 32
+name: Tavern
 baseclass: production.SettlerServiceProvider
+radius: 6
+cost: 5
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 2
+inhabitants_max: 2
 button_name: tavern-1
+tooltip_text: Provides get-together.
+settler_level: 2
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
     productionlines:
       0:
-        consumes:
-        - [22, -1]
         produces:
         - [27, 4]
+        consumes:
+        - [22, -1]
         time: 16
-cost: 5
-cost_inactive: 0
-id: 32
-inhabitants_max: 2
-inhabitants_start: 2
-name: Tavern
-radius: 6
-settler_level: 2
-size_x: 2
-size_y: 2
-tooltip_text: Provides get-together.
+actionsets:
+  as_tavern0: {level: 0}
+buildingcosts: {1: 250, 4: 4, 7: 2}

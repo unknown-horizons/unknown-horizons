@@ -1,16 +1,17 @@
-actionsets: {}
+id: 14
+name: Rampart
 baseclass: housing.Housing
-button_name: null
-components:
-  HealthComponent: {maxhealth: 1000}
+radius: 10
 cost: 0
 cost_inactive: 0
-id: 14
-inhabitants_max: 0
-inhabitants_start: 0
-name: Rampart
-radius: 10
-settler_level: 0
 size_x: 1
 size_y: 2
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: null
 tooltip_text: Protects your settlement.
+settler_level: 0
+components:
+  HealthComponent: {maxhealth: 1000}
+actionsets: {}
+buildingcosts: {1: 50}

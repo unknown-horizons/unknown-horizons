@@ -1,17 +1,18 @@
-actionsets:
-  as_clay0: {level: 0}
+id: 23
+name: Clay Deposit
 baseclass: nature.ResourceDeposit
-button_name: null
-components:
-  HealthComponent: {maxhealth: 10}
+radius: 0
 cost: 0
 cost_inactive: 0
-id: 23
-inhabitants_max: 0
-inhabitants_start: 0
-name: Clay Deposit
-radius: 0
-settler_level: 0
 size_x: 3
 size_y: 3
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: null
 tooltip_text: null
+settler_level: 0
+components:
+  HealthComponent: {maxhealth: 10}
+actionsets:
+  as_clay0: {level: 0}
+buildingcosts: {}

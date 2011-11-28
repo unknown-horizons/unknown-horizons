@@ -1,16 +1,17 @@
-actionsets: {}
+id: 43
+name: Gravel Path
 baseclass: path.Path
-button_name: null
-components:
-  HealthComponent: {maxhealth: 10}
+radius: 0
 cost: 0
 cost_inactive: 0
-id: 43
-inhabitants_max: 0
-inhabitants_start: 0
-name: Gravel Path
-radius: 0
-settler_level: 0
 size_x: 1
 size_y: 1
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: null
 tooltip_text: null
+settler_level: 0
+components:
+  HealthComponent: {maxhealth: 10}
+actionsets: {}
+buildingcosts: {}

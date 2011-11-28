@@ -1,18 +1,19 @@
-actionsets:
-  as_gravel_path: {level: 2}
-  as_trail: {level: 0}
+id: 15
+name: Trail
 baseclass: path.Path
-button_name: street-1
-components:
-  HealthComponent: {maxhealth: 10}
+radius: 0
 cost: 0
 cost_inactive: 0
-id: 15
-inhabitants_max: 0
-inhabitants_start: 0
-name: Trail
-radius: 0
-settler_level: 0
 size_x: 1
 size_y: 1
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: street-1
 tooltip_text: Needed for collecting goods.
+settler_level: 0
+components:
+  HealthComponent: {maxhealth: 10}
+actionsets:
+  as_trail: {level: 0}
+  as_gravel_path: {level: 2}
+buildingcosts: {1: 5}

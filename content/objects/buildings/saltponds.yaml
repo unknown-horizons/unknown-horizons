@@ -1,7 +1,16 @@
-actionsets:
-  as_saltponds0: {level: 0}
+id: 35
+name: Salt Ponds
 baseclass: production.SaltPond
+radius: 0
+cost: 10
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants_start: 1
+inhabitants_max: 1
 button_name: saltponds-1
+tooltip_text: Evaporates salt. Built on sea coast.
+settler_level: 2
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
@@ -10,14 +19,6 @@ components:
         produces:
         - [29, 2]
         time: 45
-cost: 10
-cost_inactive: 0
-id: 35
-inhabitants_max: 1
-inhabitants_start: 1
-name: Salt Ponds
-radius: 0
-settler_level: 2
-size_x: 3
-size_y: 3
-tooltip_text: Evaporates salt. Built on sea coast.
+actionsets:
+  as_saltponds0: {level: 0}
+buildingcosts: {1: 350, 4: 4, 6: 2}

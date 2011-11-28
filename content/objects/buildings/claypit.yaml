@@ -1,25 +1,26 @@
-actionsets:
-  as_clay_pit0: {level: 0}
+id: 25
+name: Clay Pit
 baseclass: production.Mine
+radius: 0
+cost: 15
+cost_inactive: 5
+size_x: 3
+size_y: 3
+inhabitants_start: 1
+inhabitants_max: 2
 button_name: clay-pit-1
+tooltip_text: Gets clay from deposit.
+settler_level: 1
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
     productionlines:
       0:
-        consumes:
-        - [20, -1]
         produces:
         - [21, 1]
+        consumes:
+        - [20, -1]
         time: 15
-cost: 15
-cost_inactive: 5
-id: 25
-inhabitants_max: 2
-inhabitants_start: 1
-name: Clay Pit
-radius: 0
-settler_level: 1
-size_x: 3
-size_y: 3
-tooltip_text: Gets clay from deposit.
+actionsets:
+  as_clay_pit0: {level: 0}
+buildingcosts: {1: 500, 4: 10, 6: 2}

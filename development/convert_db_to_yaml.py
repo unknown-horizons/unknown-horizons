@@ -10,7 +10,9 @@ Run without arguments for help
 import os.path
 import sys
 from collections import OrderedDict
+import collections
 from yaml import load, dump
+import yaml
 try:
 	from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
@@ -39,6 +41,64 @@ from horizons.constants import UNITS, SETTLER
 
 db = horizons.main._create_db()
 
+
+def construct_ordered_mapping(self, node, deep=False):
+	if not isinstance(node, yaml.MappingNode):
+		raise ConstructorError(None, None,
+				               "expected a mapping node, but found %s" % node.id,
+				               node.start_mark)
+	mapping = collections.OrderedDict()
+	for key_node, value_node in node.value:
+		key = self.construct_object(key_node, deep=deep)
+		if not isinstance(key, collections.Hashable):
+			raise ConstructorError("while constructing a mapping", node.start_mark,
+						           "found unhashable key", key_node.start_mark)
+		value = self.construct_object(value_node, deep=deep)
+		mapping[key] = value
+	return mapping
+
+yaml.constructor.BaseConstructor.construct_mapping = construct_ordered_mapping
+
+
+def construct_yaml_map_with_ordered_dict(self, node):
+	data = collections.OrderedDict()
+	yield data
+	value = self.construct_mapping(node)
+	data.update(value)
+
+yaml.constructor.Constructor.add_constructor(
+    'tag:yaml.org,2002:map',
+    construct_yaml_map_with_ordered_dict)
+
+
+def represent_ordered_mapping(self, tag, mapping, flow_style=None):
+	value = []
+	node = yaml.MappingNode(tag, value, flow_style=flow_style)
+	if self.alias_key is not None:
+		self.represented_objects[self.alias_key] = node
+	best_style = True
+	if hasattr(mapping, 'items'):
+		mapping = list(mapping.items())
+	for item_key, item_value in mapping:
+		node_key = self.represent_data(item_key)
+		node_value = self.represent_data(item_value)
+		if not (isinstance(node_key, yaml.ScalarNode) and not node_key.style):
+			best_style = False
+		if not (isinstance(node_value, yaml.ScalarNode) and not node_value.style):
+			best_style = False
+		value.append((node_key, node_value))
+	if flow_style is None:
+		if self.default_flow_style is not None:
+			node.flow_style = self.default_flow_style
+		else:
+			node.flow_style = best_style
+	return node
+
+yaml.representer.BaseRepresenter.represent_mapping = represent_ordered_mapping
+
+yaml.representer.Representer.add_representer(collections.OrderedDict,
+                                             yaml.representer.SafeRepresenter.represent_dict)
+
 def get_prod_line(id):
 	consumption = db("SELECT resource, amount FROM production \
                       WHERE production_line = ? AND amount < 0 ORDER BY amount ASC", id)
@@ -46,7 +106,7 @@ def get_prod_line(id):
                      WHERE production_line = ? AND amount > 0 ORDER BY amount ASC", id)
 	return (list([list(x) for x in consumption]), list([list(x) for x in production]))
 
-result = dict()
+result = OrderedDict()
 
 for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_start, inhabitants_max, button_name, tooltip_text, health, settler_level in \
     db('SELECT id, name, class_type, class_package, size_x, size_y, radius, cost_active, cost_inactive, inhabitants_start, inhabitants_max, button_name, tooltip_text, health, settler_level FROM \
@@ -97,11 +157,19 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 			result['actionsets'][action_set]['preview'] = preview_set
 
 
+	costs =  {}
+	for (name, value) in db("SELECT resource, amount FROM building_costs WHERE building = ?", id):
+		costs[name]=value
+
+	result['buildingcosts'] =  costs
+
+	soundfiles = list(db("SELECT file FROM sounds INNER JOIN object_sounds ON sounds.rowid = object_sounds.sound AND object_sounds.object = ?", id))
+	if len(soundfiles) >  0:
+		result['components']['AmbientSoundComponent'] = {'soundfiles':  [x[0] for x in soundfiles]}
 
 	filename = str(result['name']).lower().strip().replace(" ",  "").replace("'", "") + ".yaml"
 	stream = file("content/objects/buildings/" + filename, 'w')
-	dump(result, stream=stream, Dumper=Dumper)
-
+	dump(result, stream=stream)
 
 
 

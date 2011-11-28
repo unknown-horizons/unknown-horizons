@@ -1,7 +1,16 @@
-actionsets:
-  as_boat_builder0: {level: 0}
+id: 12
+name: Boat Builder
 baseclass: boatbuilder.BoatBuilder
+radius: 10
+cost: 25
+cost_inactive: 10
+size_x: 3
+size_y: 3
+inhabitants_start: 2
+inhabitants_max: 2
 button_name: boat_builder-1
+tooltip_text: Builds boats and small ships. Built on coast.
+settler_level: 1
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
@@ -41,14 +50,6 @@ components:
         - [4, -42]
         - [3, -24]
         time: 60
-cost: 25
-cost_inactive: 10
-id: 12
-inhabitants_max: 2
-inhabitants_start: 2
-name: Boat Builder
-radius: 10
-settler_level: 1
-size_x: 3
-size_y: 3
-tooltip_text: Builds boats and small ships. Built on coast.
+actionsets:
+  as_boat_builder0: {level: 0}
+buildingcosts: {1: 500, 4: 4, 6: 3}

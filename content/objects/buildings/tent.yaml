@@ -1,137 +1,138 @@
+id: 3
+name: Tent
+baseclass: settler.Settler
+radius: 12
+cost: 0
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 1
+inhabitants_max: 2
+button_name: resident-1
+tooltip_text: Houses your inhabitants.
+settler_level: 0
+components:
+  HealthComponent: {maxhealth: 1000}
+  ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [14, 13]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [5, -1]
+        time: 60
+      1:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [3, -1]
+        time: 180
+      2:
+        produces:
+        - [14, 3]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [11, -1]
+        time: 90
+      3:
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [4, -2]
+        time: 1
+      4:
+        produces:
+        - [14, 3]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [16, -1]
+        time: 90
+      5:
+        produces:
+        - [14, 1]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [19, -1]
+        time: 90
+      6:
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [4, -3]
+        - [7, -2]
+        time: 1
+      7:
+        produces:
+        - [14, 4]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [27, -1]
+        time: 90
+      8:
+        produces:
+        - [14, 12]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [5, -1]
+        time: 75
+      9:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [16, -1]
+        time: 90
+      10:
+        produces:
+        - [14, 4]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [29, -1]
+        time: 90
+      11:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [32, -1]
+        time: 180
+      12:
+        produces:
+        - [14, 15]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [5, -1]
+        time: 60
+      13:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [11, -1]
+        time: 90
 actionsets:
-  as_house0: {level: 2}
-  as_hut0: {level: 1}
-  as_hut1: {level: 1}
-  as_hut2: {level: 1}
   as_tent0: {level: 0}
   as_tent1: {level: 0}
   as_tent2: {level: 0}
   as_tent3: {level: 0}
   as_tent4: {level: 0}
   as_tent5: {level: 0}
-baseclass: settler.Settler
-button_name: resident-1
-components:
-  HealthComponent: {maxhealth: 1000}
-  ProducerComponent:
-    productionlines:
-      0:
-        changes_animation: false
-        consumes:
-        - [5, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 13]
-        time: 60
-      1:
-        changes_animation: false
-        consumes:
-        - [3, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 5]
-        time: 180
-      2:
-        changes_animation: false
-        consumes:
-        - [11, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 3]
-        time: 90
-      3:
-        changes_animation: false
-        consumes:
-        - [4, -2]
-        enabled_by_default: false
-        time: 1
-      4:
-        changes_animation: false
-        consumes:
-        - [16, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 3]
-        time: 90
-      5:
-        changes_animation: false
-        consumes:
-        - [19, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 1]
-        time: 90
-      6:
-        changes_animation: false
-        consumes:
-        - [4, -3]
-        - [7, -2]
-        enabled_by_default: false
-        time: 1
-      7:
-        changes_animation: false
-        consumes:
-        - [27, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 4]
-        time: 90
-      8:
-        changes_animation: false
-        consumes:
-        - [5, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 12]
-        time: 75
-      9:
-        changes_animation: false
-        consumes:
-        - [16, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 5]
-        time: 90
-      10:
-        changes_animation: false
-        consumes:
-        - [29, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 4]
-        time: 90
-      11:
-        changes_animation: false
-        consumes:
-        - [32, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 5]
-        time: 180
-      12:
-        changes_animation: false
-        consumes:
-        - [5, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 15]
-        time: 60
-      13:
-        changes_animation: false
-        consumes:
-        - [11, -1]
-        enabled_by_default: false
-        produces:
-        - [14, 5]
-        time: 90
-cost: 0
-cost_inactive: 0
-id: 3
-inhabitants_max: 2
-inhabitants_start: 1
-name: Tent
-radius: 12
-settler_level: 0
-size_x: 2
-size_y: 2
-tooltip_text: Houses your inhabitants.
+  as_hut1: {level: 1}
+  as_hut0: {level: 1}
+  as_house0: {level: 2}
+  as_hut2: {level: 1}
+buildingcosts: {1: 100, 4: 2}

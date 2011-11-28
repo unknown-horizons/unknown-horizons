@@ -1,7 +1,16 @@
-actionsets:
-  as_school0: {level: 0}
+id: 21
+name: Village school
 baseclass: production.SettlerServiceProvider
+radius: 0
+cost: 15
+cost_inactive: 5
+size_x: 2
+size_y: 2
+inhabitants_start: 1
+inhabitants_max: 1
 button_name: villageschool-1
+tooltip_text: Provides education.
+settler_level: 1
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
@@ -10,14 +19,6 @@ components:
         produces:
         - [16, 1]
         time: 4
-cost: 15
-cost_inactive: 5
-id: 21
-inhabitants_max: 1
-inhabitants_start: 1
-name: Village school
-radius: 0
-settler_level: 1
-size_x: 2
-size_y: 2
-tooltip_text: Provides education.
+actionsets:
+  as_school0: {level: 0}
+buildingcosts: {1: 500, 4: 4, 7: 4}

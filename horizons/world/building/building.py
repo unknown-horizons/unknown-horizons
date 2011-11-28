@@ -103,9 +103,9 @@ class BasicBuilding(ConcretObject):
 
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
-			if self.soundfiles and self.has_component(AmbientSoundComponent):
+			if self.has_component(AmbientSoundComponent):
 				play_every = 15 + random.randint(0, 15)
-				for soundfile in self.soundfiles:
+				for soundfile in self.get_component(AmbientSoundComponent).soundfiles:
 					self.get_component(AmbientSoundComponent).play_ambient(soundfile, True, play_every)
 
 

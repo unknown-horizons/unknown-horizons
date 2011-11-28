@@ -1,25 +1,28 @@
-actionsets:
-  as_fisherman0: {level: 0}
+id: 11
+name: Fisherman's Tent
 baseclass: production.Fisher
+radius: 20
+cost: 5
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 1
+inhabitants_max: 1
 button_name: fisher-1
+tooltip_text: Fishes the sea, produces food.
+settler_level: 0
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
     productionlines:
       0:
-        consumes:
-        - [28, -1]
         produces:
         - [5, 1]
+        consumes:
+        - [28, -1]
         time: 10
-cost: 5
-cost_inactive: 0
-id: 11
-inhabitants_max: 1
-inhabitants_start: 1
-name: Fisherman's Tent
-radius: 20
-settler_level: 0
-size_x: 2
-size_y: 2
-tooltip_text: Fishes the sea, produces food.
+  AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/branch_office.ogg]
+actionsets:
+  as_fisherman0: {level: 0}
+buildingcosts: {1: 250, 4: 3, 6: 1}

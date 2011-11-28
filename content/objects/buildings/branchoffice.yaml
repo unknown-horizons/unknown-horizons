@@ -1,17 +1,20 @@
-actionsets:
-  as_branchoffice0: {level: 0, preview: as_preview_branchoffice0}
+id: 1
+name: Branch Office
 baseclass: storages.BranchOffice
-button_name: null
-components:
-  HealthComponent: {maxhealth: 1000}
+radius: 24
 cost: 0
 cost_inactive: 0
-id: 1
-inhabitants_max: 2
-inhabitants_start: 2
-name: Branch Office
-radius: 24
-settler_level: 0
 size_x: 3
 size_y: 3
+inhabitants_start: 2
+inhabitants_max: 2
+button_name: null
 tooltip_text: null
+settler_level: 0
+components:
+  HealthComponent: {maxhealth: 1000}
+  AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/branch_office.ogg]
+actionsets:
+  as_branchoffice0: {preview: as_preview_branchoffice0, level: 0}
+buildingcosts: {1: 1000, 4: 12}

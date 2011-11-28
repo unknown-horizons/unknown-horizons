@@ -1,25 +1,26 @@
-actionsets:
-  as_charcoal_burning0: {level: 0}
+id: 31
+name: Charcoal Burning
 baseclass: production.CharcoalBurning
+radius: 6
+cost: 10
+cost_inactive: 0
+size_x: 2
+size_y: 3
+inhabitants_start: 1
+inhabitants_max: 1
 button_name: charcoal-burning-1
+tooltip_text: Burns a lot of boards.
+settler_level: 2
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
     productionlines:
       0:
-        consumes:
-        - [4, -5]
         produces:
         - [23, 2]
+        consumes:
+        - [4, -5]
         time: 20
-cost: 10
-cost_inactive: 0
-id: 31
-inhabitants_max: 1
-inhabitants_start: 1
-name: Charcoal Burning
-radius: 6
-settler_level: 2
-size_x: 2
-size_y: 3
-tooltip_text: Burns a lot of boards.
+actionsets:
+  as_charcoal_burning0: {level: 0}
+buildingcosts: {1: 250, 4: 2, 6: 1, 7: 3}

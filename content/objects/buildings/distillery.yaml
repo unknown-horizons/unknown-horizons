@@ -1,25 +1,26 @@
-actionsets:
-  as_distillery0: {level: 0}
+id: 26
+name: Distillery
 baseclass: production.Refiner
+radius: 8
+cost: 10
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 2
+inhabitants_max: 2
 button_name: distillery-1
+tooltip_text: Turns sugar into liquor.
+settler_level: 1
 components:
   HealthComponent: {maxhealth: 1000}
   ProducerComponent:
     productionlines:
       0:
-        consumes:
-        - [18, -1]
         produces:
         - [22, 1]
+        consumes:
+        - [18, -1]
         time: 12
-cost: 10
-cost_inactive: 0
-id: 26
-inhabitants_max: 2
-inhabitants_start: 2
-name: Distillery
-radius: 8
-settler_level: 1
-size_x: 2
-size_y: 2
-tooltip_text: Turns sugar into liquor.
+actionsets:
+  as_distillery0: {level: 0}
+buildingcosts: {1: 250, 4: 2, 6: 2, 7: 4}
