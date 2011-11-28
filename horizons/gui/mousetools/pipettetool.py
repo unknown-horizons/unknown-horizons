@@ -30,7 +30,7 @@ from horizons.gui.mousetools import SelectionTool, BuildingTool,  NavigationTool
 class PipetteTool(NavigationTool):
 	"""Tool to select buildings in order to build another building of
 	the type of the selected building"""
-	HIGHLIGHT_COLOR = (255, 0, 0)
+	HIGHLIGHT_COLOR = (0, 200, 90)
 
 	def __init__(self, session):
 		super(PipetteTool, self).__init__(session)
@@ -62,7 +62,7 @@ class PipetteTool(NavigationTool):
 			self.on_escape()
 			evt.consume()
 		else:
-			suer(PipetteTool,  self).mouseClicked(evt)
+			super(PipetteTool,  self).mouseClicked(evt)
 
 	def _get_object(self, evt):
 		for obj in self.get_hover_instances(evt):
