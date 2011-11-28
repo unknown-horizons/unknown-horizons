@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-11-23 11:34+0200\n"
 "Last-Translator: djot <djot@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,18 +34,28 @@ msgstr "Eine neue Welt wurde erschaffen."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr "AnimalCarriage"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr "Wildschwein"
 
 # Are there "boats" and "ships" or only boats (ships)?
-# 
+#
 # If there is only one notation/label, name it either ship or boat, not both.
-# 
+#
 # Here: Bootsbauer => Schiffbauer
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Boat Builder"
 msgstr "Bootsbauer"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BomberMan"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -57,6 +67,11 @@ msgstr "Kontor"
 #: database files sql
 msgid "Brickyard"
 msgstr "Ziegelei"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr "BuildingCollector"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -111,6 +126,16 @@ msgstr "Arzt"
 msgid "Farm"
 msgstr "Farm"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr "FarmAnimalCollector"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr "FieldCollector"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -153,6 +178,11 @@ msgstr "Huker"
 msgid "Hunter's Tent"
 msgstr "Jäger"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr "HunterCollector"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -172,6 +202,11 @@ msgstr "Krähennest"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Holzfällerlager"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr "LumberjackCollector"
 
 # *nicht* Hauptplatz!
 #. This is a database entry: the name of a building.
@@ -232,6 +267,11 @@ msgstr "Bildschirmfoto wurde unter ${file} gespeichert."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr "SettlerCollector"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Schaf"
 
@@ -254,6 +294,11 @@ msgstr "Einige Eurer Siedler haben Euch den Rücken gekehrt."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Lagerzelt"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr "StorageCollector"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -305,6 +350,11 @@ msgstr "Trampelpfad"
 #: database files horizons/i18n/guitranslations.py:80 sql
 msgid "Tree"
 msgstr "Baum"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "UsableFisher"
+msgstr ""
 
 # Building
 #. This is a database entry: the name of a building.
@@ -541,7 +591,7 @@ msgstr "Lammwolle"
 # - lemon heißt Zitrone
 # - lime ist Limone
 # - außderm wenn mit großem "L"
-# 
+#
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
@@ -844,12 +894,10 @@ msgstr "Fehler:"
 msgid "Unknown savedate"
 msgstr "Unbekanntes Speicherdatum"
 
-# 91%
 #: horizons/gui/gui.py:428
 #, python-format
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Gespeichert am %s"
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -2328,7 +2376,7 @@ msgid "{SHIFT} = Hold to place multiple buildings"
 msgstr "{UMSCHALT} = Gedrückt halten, um mehrere Gebäude zu platzieren"
 
 # This sentence goes beyond the page border on the right. There needs to be an automatically inserte break.
-# 
+#
 # {SHIFT} breaks automatically, so why does {T} not break?
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:750
@@ -3120,6 +3168,12 @@ msgstr "Danke für das Verwenden von Unknown Horizons!"
 msgid "FIFE was not found."
 msgstr "FIFE konnte nicht gefunden werden."
 
+# 91%
+#, python-format
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Gespeichert am %s"
+
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Unbekanntes Speicherdatum\n"
 
@@ -3421,14 +3475,8 @@ msgstr "FIFE konnte nicht gefunden werden."
 #~ msgid "NEW GAME - MULTIPLAYER"
 #~ msgstr "NEUES SPIEL - MEHRSPIELER"
 
-#~ msgid "FarmAnimalCollector"
-#~ msgstr "FarmAnimalCollector"
-
 #~ msgid " Help "
 #~ msgstr "Hilfe"
-
-#~ msgid "LumberjackCollector"
-#~ msgstr "LumberjackCollector"
 
 #~ msgid "Building Overview"
 #~ msgstr "Gebäudeübersicht"
@@ -3454,14 +3502,8 @@ msgstr "FIFE konnte nicht gefunden werden."
 #~ msgid "Settler Overview"
 #~ msgstr "Siedlerübersicht"
 
-#~ msgid "FieldCollector"
-#~ msgstr "FieldCollector"
-
 #~ msgid "CREATE GAME - MULTIPLAYER"
 #~ msgstr "SPIEL ERSTELLEN - MEHRSPIELER"
-
-#~ msgid "StorageCollector"
-#~ msgstr "StorageCollector"
 
 #~ msgid "Yeah, you made it..."
 #~ msgstr "Ja, Ihr habt es geschafft…"
@@ -3472,23 +3514,11 @@ msgstr "FIFE konnte nicht gefunden werden."
 #~ msgid "But this is a deadlink, sorry."
 #~ msgstr "Dies ist ein Platzhalter, Entschuldigt bitte."
 
-#~ msgid "BuildingCollector"
-#~ msgstr "BuildingCollector"
-
-#~ msgid "HunterCollector"
-#~ msgstr "HunterCollector"
-
 #~ msgid "Merchant Buildings"
 #~ msgstr "Kaufmannsgebäude"
 
-#~ msgid "AnimalCarriage"
-#~ msgstr "AnimalCarriage"
-
 #~ msgid " Load Game "
 #~ msgstr " Spiel Laden "
-
-#~ msgid "SettlerCollector"
-#~ msgstr "SettlerCollector"
 
 #~ msgid " Continue Game "
 #~ msgstr "Spiel fortsetzen"
