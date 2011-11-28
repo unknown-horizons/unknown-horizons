@@ -203,7 +203,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
-	fife.cursor.set(fife.default_cursor_image)
+	fife.set_cursor('default')
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
@@ -266,7 +266,7 @@ def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natu
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
-	fife.cursor.set(fife.default_cursor_image)
+	fife.set_cursor('default')
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()

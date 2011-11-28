@@ -255,14 +255,11 @@ class Production(WorldObject):
 		except AttributeError: # production line doesn't have this alter method
 			pass
 
-	def get_state_history_length(self):
-		return min(PRODUCTION.STATISTICAL_WINDOW, Scheduler().cur_tick - self._creation_tick)
 
 	def get_state_history_times(self, ignore_pause):
 		"""
 		Returns the part of time 0 <= x <= 1 the production has been in a state during the last history_length ticks.
 		"""
-
 		self._clean_state_history()
 		result = defaultdict(lambda: 0)
 		current_tick = Scheduler().cur_tick
@@ -296,6 +293,14 @@ class Production(WorldObject):
 	def get_age(self):
 		return Scheduler().cur_tick - self._creation_tick
 
+	def get_unstorable_produced_res(self):
+		"""Returns all produced res for whose there is no space"""
+		l = []
+		for res, amount in self._prod_line.produced_res.iteritems():
+			if self.inventory.get_free_space_for(res) < amount:
+				l.append(res)
+		return l
+
 	## PROTECTED METHODS
 	def _get_producing_callback(self):
 		"""Returns the callback used during the process of producing (state: producing)"""
@@ -308,7 +313,9 @@ class Production(WorldObject):
 		"""
 
 		current_tick = Scheduler().cur_tick
-		first_relevant_tick = current_tick - self.get_state_history_length()
+		state_hist_len = min(PRODUCTION.STATISTICAL_WINDOW, current_tick - self._creation_tick)
+
+		first_relevant_tick = current_tick - state_hist_len
 		if not ignore_pause:
 			return first_relevant_tick
 
@@ -426,6 +433,7 @@ class Production(WorldObject):
 		if hasattr(self, "_state"):
 			return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
 		else:
+
 			return "UninitializedProduction()"
 
 

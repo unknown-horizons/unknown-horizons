@@ -28,8 +28,8 @@ from horizons.scheduler import Scheduler
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.status import ProductivityLowStatus, DecommissionedStatus
 from horizons.world.component import Component
+from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
 
 class Producer(Component):
 	"""Class for objects, that produce something.
@@ -83,6 +83,24 @@ class Producer(Component):
 			state_history = production.get_state_history_times(False)
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / len(productions)
+
+	def capacity_utilisation_below(self, limit):
+		"""Returns whether the capacity utilisation is below a value.
+		It is equivalent to "foo.capacity_utilisation <= value, but faster."""
+		# idea: retrieve the value, then check how long it has to take until the limit
+		# can be reached (from both sides). Within this timespan, don't check again.
+		cur_tick = Scheduler().cur_tick
+		if not hasattr(self, "_old_capacity_utilisation") or \
+		   self._old_capacity_utilisation[0] < cur_tick or \
+		   self._old_capacity_utilisation[1] !=  limit:
+			capac = self.capacity_utilisation
+			diff = abs(limit - capac)
+			# all those values are relative values, so we can just do this:
+			interval = diff * PRODUCTION.STATISTICAL_WINDOW
+			self._old_capacity_utilisation = (cur_tick + interval, # expiration date
+			                                  limit, capac < limit )
+		return self._old_capacity_utilisation[2]
+
 
 	def load(self, db, worldid):
 		super(Producer, self).load(db, worldid)
@@ -220,6 +238,7 @@ class Producer(Component):
 		else:
 			active = self.is_active(production)
 			self.set_active(production, active = not active)
+
 	def _on_production_change(self):
 		"""Makes the instance act according to the producers
 		current state"""
@@ -233,9 +252,22 @@ class Producer(Component):
 		elif state is PRODUCTION.STATES.inventory_full:
 			self.instance.act("idle_full", repeating=True)
 
+		if self.has_status_icon:
+			full = state is PRODUCTION.STATES.inventory_full
+			if full and not hasattr(self, "_producer_status_icon"):
+				affected_res = set() # find them:
+				for prod in self.get_productions():
+					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
+				self._producer_status_icon = InventoryFullStatus(affected_res)
+				self._registered_status_icons.append( self._producer_status_icon )
+
+			if not full and hasattr(self, "_producer_status_icon"):
+				self._registered_status_icons.remove( self._producer_status_icon )
+				del self._producer_status_icon
+
 	def get_status_icons(self):
 		l = super(Producer, self).get_status_icons()
-		if self.capacity_utilisation < ProductivityLowStatus.threshold:
+		if self.capacity_utilisation_below(ProductivityLowStatus.threshold):
 			l.append( ProductivityLowStatus() )
 		if not self.is_active():
 			l.append( DecommissionedStatus() )

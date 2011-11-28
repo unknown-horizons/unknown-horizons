@@ -144,6 +144,7 @@ class Rect(object):
 	def distance_to_rect(self, other):
 		"""Calculates distance to an instance of Rect.
 		Don't use this, unless you are sure that distance() is too slow."""
+		# NOTE: this is duplicated in buildingowner.get_providers_in_range
 		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 
 	def distance_to_circle(self, other):

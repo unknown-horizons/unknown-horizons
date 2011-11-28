@@ -120,9 +120,10 @@ class Scheduler(LivingObject):
 				self.schedule[tick_key] = []
 			callback_obj.tick = tick_key
 			self.schedule[tick_key].append(callback_obj)
-			if not callback_obj.class_instance in self.calls_by_instance:
-				self.calls_by_instance[callback_obj.class_instance] = []
-			self.calls_by_instance[callback_obj.class_instance].append( callback_obj )
+			if not readd:  # readded calls haven't been removed here
+				if not callback_obj.class_instance in self.calls_by_instance:
+					self.calls_by_instance[callback_obj.class_instance] = []
+				self.calls_by_instance[callback_obj.class_instance].append( callback_obj )
 
 	def add_new_object(self, callback, class_instance, run_in=1, loops=1, loop_interval=None):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
@@ -193,7 +194,7 @@ class Scheduler(LivingObject):
 				if obj.callback == callback:
 					del self.calls_by_instance[instance][i]
 					test += 1
-			assert test == removed_calls
+			assert test == removed_calls,  "%s, %s" % (test, removed_calls)
 			if not self.calls_by_instance[instance]:
 				del self.calls_by_instance[instance]
 

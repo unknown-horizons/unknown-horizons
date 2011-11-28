@@ -340,10 +340,13 @@ class Fife(ApplicationBase):
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
-		self.default_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor.png')
-		self.tearing_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor_tear.png')
-		self.attacking_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor_attack.png')
-		self.cursor.set(self.default_cursor_image)
+		self.cursor_images = {
+		  'default': self.imagemanager.load('content/gui/images/cursors/cursor.png'),
+		  'tearing': self.imagemanager.load('content/gui/images/cursors/cursor_tear.png'),
+		  'attacking': self.imagemanager.load('content/gui/images/cursors/cursor_attack.png'),
+		  'pipette': self.imagemanager.load('content/gui/images/cursors/cursor_pipette.png')
+		}
+		self.cursor.set( self.cursor_images['default'] )
 
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)
@@ -375,6 +378,11 @@ class Fife(ApplicationBase):
 
 		self._gotInited = True
 		self.setup_setting_extras()
+
+	def set_cursor(self, which="default"):
+		"""Sets a certain cursor image.
+		See definition of cursor_images for reference."""
+		self.cursor.set( self.cursor_images[which] )
 
 	def setup_setting_extras(self):
 		slider_initial_data = {}

@@ -28,6 +28,8 @@ from horizons.constants import LAYERS
 from horizons.gui.tabs import ResourceDepositOverviewTab
 from horizons.world.building.building import SelectableBuilding
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.scheduler import Scheduler
+from horizons.util import Callback
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -102,7 +104,13 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 		self.__init()
 
 class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
-	pass
+
+	def __init__(self, *args, **kwargs):
+		super(Fish,  self).__init__(*args, **kwargs)
+
+		# Make the fish run at different speeds
+		multiplier =  0.7 + self.session.random.random() * 0.6
+		self._instance.setTimeMultiplier(multiplier)
 
 
 

@@ -42,6 +42,7 @@ class ConcretObject(ComponentHolder, WorldObject):
 	is_unit = False
 	is_building = False
 	is_selectable = False
+	has_status_icon = False
 
 	def __init__(self, session, **kwargs):
 		"""
@@ -64,17 +65,22 @@ class ConcretObject(ComponentHolder, WorldObject):
 		self._status_icon_key = "status_"+str(self.worldid)
 		self._status_icon_renderer = self.session.view.renderer['GenericRenderer']
 
-		if not self.id in self.session.db.get_status_icon_exclusions():
+		# only buildings for now
+		if self.is_building and not self.id in self.session.db.get_status_icon_exclusions():
+			self.has_status_icon = True
 			# update now
 			Scheduler().add_new_object(self._update_status, self, run_in=0)
 
 			# update loop
-			interval = Scheduler().get_ticks(2)
+			interval = Scheduler().get_ticks(3)
 			# use session random to keep it synchronised in mp games,
 			# to be safe in case get_status_icon calls anything that changes anything
 			run_in = self.session.random.randint(1, interval) # don't update all at once
 			Scheduler().add_new_object(self._update_status, self, run_in=run_in, loops=-1,
 				                         loop_interval = interval)
+
+		# status icons, that are expensive to decide, can be appended/removed here
+		self._registered_status_icons = []
 
 	@property
 	def fife_instance(self):
@@ -144,13 +150,18 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 	def get_status_icons(self):
 		"""Returns a list of StatusIcon instances"""
-		return []
+		return self._registered_status_icons[:] # always add pushed icons
 
 	def _update_status(self):
 		"""Handles status icon bar"""
-		self._remove_status_icon()
-
 		status_list = self.get_status_icons()
+
+		if hasattr(self, "_old_status_list"):
+			if status_list == self._old_status_list:
+				return
+		self._old_status_list = status_list
+
+		self._remove_status_icon()
 
 		if status_list:
 			status = max(status_list, key=StatusIcon.get_sorting_key())
@@ -167,7 +178,5 @@ class ConcretObject(ComponentHolder, WorldObject):
 
 	def _remove_status_icon(self):
 		self._status_icon_renderer.removeAll(self._status_icon_key)
-
-
 
 

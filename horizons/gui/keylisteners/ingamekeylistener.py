@@ -168,6 +168,13 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			# require shift to make it less likely that an ordinary user stumbles upon this
 			# this is done because the maps aren't usable without moving them to the right places
 			self.session.ingame_gui.show_save_map_dialog()
+		elif keystr == 'o':
+			# copy mode: pipette tool
+			from horizons.gui.mousetools import PipetteTool, SelectionTool
+			if isinstance(self.session.cursor, PipetteTool):
+				self.session.cursor = SelectionTool(self.session)
+			else:
+				self.session.cursor = PipetteTool(self.session)
 		else:
 			return
 		evt.consume()

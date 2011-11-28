@@ -26,7 +26,7 @@ from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
 from horizons.util import Rect
-from horizons.util.shapes.radiusshape import RadiusShape, RadiusRect
+from horizons.util.shapes.radiusshape import RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
@@ -88,7 +88,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 	def _do_select(cls, renderer, position, world, settlement):
 		# Don't call super here, because we don't want to highlight the island
 		# only fish deposits
-		for building in world.get_providers_in_range(RadiusShape(position, cls.radius), res=RES.FISH_ID):
+		for building in world.get_providers_in_range(RadiusRect(position, cls.radius), res=RES.FISH_ID):
 			renderer.addColored(building._instance, *cls.selection_color)
 			cls._selected_tiles.append(building)
 

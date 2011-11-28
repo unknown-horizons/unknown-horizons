@@ -63,7 +63,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 43
+	SAVEGAMEREVISION= 44
 
 	@staticmethod
 	def string():
@@ -275,7 +275,8 @@ class TRADER: # check resource values: ./development/print_db_data.py res
 	BUSINESS_SENSE = 50 # chance in percent to be sent to a branch office instead of random spot
 
 	BUY_AMOUNT = (2, 8)  # amount range to buy/sell from settlement per resource
-	SELL_AMOUNT = (2, 8) # => randomly picks an amount in this range for each trade
+	SELL_AMOUNT_MIN = 2
+	SELL_AMOUNT_MAX = 8
 
 # Taxes and Restrictions
 class SETTLER:
@@ -392,7 +393,9 @@ LANGUAGENAMES = _LanguageNameDict({
 	"gl"    : u'Galego',
 	"hu"    : u'Magyar',
 	"it"    : u'Italiano',
+	"ja"    : u'Nihongo',
 	"lt"    : u'Lietuvių',
+	"ko"    : u'Hangugmal/Chosŏnmal',
 	"nb"    : u'Norw. Bokmål',
 	"nl"    : u'Nederlands',
 	"pl"    : u'Polski',
@@ -403,6 +406,8 @@ LANGUAGENAMES = _LanguageNameDict({
 	"sl"    : u'Slovenski',
 	"sv"    : u'Svenska',
 	"tr"    : u'Türkçe',
+	"vi"    : u'Tiếng Việt',
+	"zh_CN" : u'Pǔtōnghuà',
 	})
 
 AUTO_CONTINUE_CAMPAIGN=True
