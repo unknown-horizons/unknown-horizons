@@ -76,7 +76,7 @@ class AreaBuilder(WorldObject):
 			if tile is None:
 				continue
 			coords = (tile.x, tile.y)
-			if coords in blocked_coords_set:
+			if coords in blocked_coords_set or coords not in self.settlement.ground_map:
 				continue
 			if coords in self.land_manager.roads or (coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
 				yield coords
@@ -124,7 +124,7 @@ class AreaBuilder(WorldObject):
 					break
 
 		for coords in self.land_manager.village:
-			if coords in self.land_manager.roads:
+			if coords in self.land_manager.roads and coords in self.settlement.ground_map:
 				nodes[coords] = 1
 				distance_to_road[coords] = 0
 				for (dx, dy) in moves:
