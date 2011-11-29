@@ -380,7 +380,7 @@ class Production(WorldObject):
 		self._remove_res_to_expend()
 		# call finished in some time
 		time = Scheduler().get_ticks(self._prod_line.time)
-		Scheduler().add_new_object(self._finished_producing, self, time)
+		Scheduler().add_new_object(self._get_producing_callback, self, time)
 
 	def _finished_producing(self, continue_producing=True, **kwargs):
 		"""Called when the production finishes."""

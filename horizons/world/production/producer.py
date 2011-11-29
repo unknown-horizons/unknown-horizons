@@ -176,6 +176,7 @@ class Producer(Component):
 
 	def remove(self):
 		super(Producer, self).remove()
+		Scheduler().rem_all_classinst_calls(self)
 		for production in self.get_productions():
 			self.remove_production(production)
 		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()

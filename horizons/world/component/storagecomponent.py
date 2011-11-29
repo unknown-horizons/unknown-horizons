@@ -35,8 +35,8 @@ class StorageComponent(Component):
 	def initialize(self):
 		if self.inventory is None:
 			self.create_inventory()
-		if self.has_own_inventory:
-			self.inventory.add_change_listener(self.instance._changed)
+		#if self.has_own_inventory:
+			#self.inventory.add_change_listener(self.instance._changed)
 
 	def remove(self):
 		super(StorageComponent, self).remove()
