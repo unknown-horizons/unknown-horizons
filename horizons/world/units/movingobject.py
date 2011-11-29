@@ -75,6 +75,9 @@ class MovingObject(ConcretObject):
 
 		self.path = self.pather_class(self, session=self.session)
 
+		self._exact_model_coords = fife.ExactModelCoordinate() # save instance since construction is expensive (no other purpose)
+		self._fife_location = None
+
 	def check_move(self, destination):
 		"""Tries to find a path to destination
 		@param destination: destination supported by pathfinding
@@ -155,8 +158,9 @@ class MovingObject(ConcretObject):
 		"""
 		assert self._next_target is not None
 
-		# this data structure is needed multiple times, only create once
-		fife_location = fife.Location(self._instance.getLocationRef().getLayer())
+		if self._fife_location is None:
+			# this data structure is needed multiple times, only create once
+			self._fife_location = fife.Location(self._instance.getLocationRef().getLayer())
 
 		if resume:
 			self.__is_moving = True
@@ -164,9 +168,10 @@ class MovingObject(ConcretObject):
 			#self.log.debug("%s move tick from %s to %s", self, self.last_position, self._next_target)
 			self.last_position = self.position
 			self.position = self._next_target
-			fife_location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
+			self._exact_model_coords.set(self.position.x, self.position.y, 0)
+			self._fife_location.setExactLayerCoordinates(self._exact_model_coords)
 			# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
-			self._instance.setLocation(fife_location)
+			self._instance.setLocation(self._fife_location)
 			self._changed()
 
 		# try to get next step, handle a blocked path
@@ -219,10 +224,11 @@ class MovingObject(ConcretObject):
 		move_time = self.get_unit_velocity()
 
 		#location = fife.Location(self._instance.getLocation().getLayer())
-		fife_location.setExactLayerCoordinates(fife.ExactModelCoordinate(self._next_target.x, self._next_target.y, 0))
+		self._exact_model_coords.set(self._next_target.x, self._next_target.y, 0)
+		self._fife_location.setExactLayerCoordinates(self._exact_model_coords)
 
 		# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
-		self._instance.move(self._move_action+"_"+str(self._action_set_id), fife_location, \
+		self._instance.move(self._move_action+"_"+str(self._action_set_id), self._fife_location, \
 												float(self.session.timer.get_ticks(1)) / move_time[0])
 		# coords per sec
 
