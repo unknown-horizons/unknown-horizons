@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-10-14 21:34+0200\n"
+"PO-Revision-Date: 2011-11-29 02:03+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -962,7 +962,7 @@ msgstr "Usodna napaka omrežja"
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:117
 msgid "Something went wrong with the network:"
-msgstr "Nekaj je šlo narobe z omrežjem: "
+msgstr "Nekaj je šlo narobe z omrežjem:"
 
 #: horizons/gui/modules/multiplayermenu.py:133
 msgid "Version differs!"
@@ -996,7 +996,7 @@ msgstr "Napačna različica"
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr "Priporočeno število igralcev:"
+msgstr "Priporočeno število igralcev: "
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
@@ -2963,7 +2963,7 @@ msgstr "Čaka na %(x)d, %(y)d"
 #: horizons/world/units/weaponholder.py:437
 #: horizons/world/units/weaponholder.py:438
 msgid "Attacking "
-msgstr "Napada"
+msgstr "Napada "
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
