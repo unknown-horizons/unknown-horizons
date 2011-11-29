@@ -657,18 +657,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		@param local: bool, whether the player is the one sitting on front of this machine."""
 		inv = self.session.db.get_player_start_res()
 		player = None
+		if is_ai: # a human controlled AI player
+			player = AIPlayer(self.session, id, name, color, difficulty_level)
+		else:
+			player = HumanPlayer(self.session, id, name, color, difficulty_level)
+		player.initialize(inv)  # Componentholder init
 		if local:
-			if is_ai: # a human controlled AI player
-				player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
-			else:
-				player = HumanPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
 			self.player = player
 			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
 			                                          call_listener_now=True)
-		elif is_ai:
-			player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
-		else:
-			player = Player(self.session, id, name, color, difficulty_level, inventory=inv)
 		self.players.append(player)
 
 	def get_tile(self, point):

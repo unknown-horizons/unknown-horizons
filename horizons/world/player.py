@@ -36,7 +36,7 @@ class Player(ComponentHolder, WorldObject):
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
 	component_templates = ({'StorageComponent': {'inventory': {'PositiveStorage': {}}}},)
 
-	def __init__(self, session, worldid, name, color, difficulty_level = None, inventory = None):
+	def __init__(self, session, worldid, name, color, difficulty_level = None):
 		"""
 		@param session: Session instance
 		@param worldid: player's worldid
@@ -48,6 +48,8 @@ class Player(ComponentHolder, WorldObject):
 		super(Player, self).__init__(worldid=worldid)
 		self.__init(name, color, difficulty_level)
 
+	def initialize(self, inventory):
+		super(Player, self).initialize()
 		if inventory:
 			for res, value in inventory.iteritems():
 				self.get_component(StorageComponent).inventory.alter(res, value)

@@ -55,7 +55,6 @@ class Producer(Component):
 		# the inactive ones won't get considered for needed_resources and such.
 		# the production_line id is the key in the dict (=> a building must not have two identical
 		# production lines)
-		print 'initialize!'
 		self._productions = {}
 		self._inactive_productions = {}
 		# add production lines as specified in db.
@@ -136,7 +135,7 @@ class Producer(Component):
 			self._inactive_productions[production.get_production_line_id()] = production
 		else:
 			self._productions[production.get_production_line_id()] = production
-		production.add_change_listener(self._on_production_change, call_listener_now=False)
+		production.add_change_listener(self._on_production_change, call_listener_now=True)
 		self.instance._changed()
 
 	def finish_production_now(self):

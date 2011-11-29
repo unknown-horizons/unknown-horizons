@@ -154,8 +154,8 @@ class ProductionLineObject(object):
 	def __init(self):
 		self._init_finished = False
 		self.time = self.__data['time'] # time in seconds that production takes
-		self.changes_animation = self.__data['changes_animation'] if 'changes_animation' in self.__data else False # whether this prodline influences animation
-		self.save_statistics = self.__data['save_statistics'] if 'save_statistics' in self.__data else False  #whether statistics about this production line should be kept
+		self.changes_animation = self.__data['changes_animation'] if 'changes_animation' in self.__data else True # whether this prodline influences animation
+		self.save_statistics = self.__data['save_statistics'] if 'save_statistics' in self.__data else True #whether statistics about this production line should be kept
 		# here we store all resource information.
 		# needed resources have a negative amount, produced ones are positive.
 		self.production = {}

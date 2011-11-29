@@ -61,19 +61,23 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.default_level_on_build # settlers always start in first level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
-		self.__init(self.__get_data("happiness_init_value"))
-		self.run()
+
+	def __init(self, loading = False, last_tax_payed=0):
+		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
+		self._update_level_data(loading = loading)
+		self.last_tax_payed = last_tax_payed
+
+	def initialize(self):
+		super(Settler, self).initialize()
+		happiness = self.__get_data("happiness_init_value")
+		if happiness is not None:
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
+		self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
-
-	def __init(self, happiness = None, loading = False, last_tax_payed=0):
-		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
-		if happiness is not None:
-			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
-		self._update_level_data(loading = loading)
-		self.last_tax_payed = last_tax_payed
-		self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
+		self.__init()
+		self.run()
 
 	def save(self, db):
 		super(Settler, self).save(db)
