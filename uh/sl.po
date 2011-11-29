@@ -857,7 +857,7 @@ msgstr "Neznani shranjeni podatki"
 #: horizons/gui/gui.py:428
 #, python-format
 msgid "Saved at %(time)s"
-msgstr ""
+msgstr "Shranjeno ob %(time)s"
 
 #: horizons/gui/gui.py:432
 #, python-format
