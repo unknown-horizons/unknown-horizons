@@ -142,10 +142,15 @@ class SpecializedStorage(GenericStorage):
 		return (res in self._storage)
 
 class SizedSpecializedStorage(SpecializedStorage):
-	"""Just like SpecializedStorage, but each res has an own limit."""
-	def __init__(self):
+	"""Just like SpecializedStorage, but each res has an own limit.
+	Can take a dict {res: size, res2: size2} to init slots
+	"""
+
+	def __init__(self, slot_sizes={}):
 		super(SizedSpecializedStorage, self).__init__()
 		self.__slot_limits = {}
+		for res, size in slot_sizes.iteritems():
+			self.add_resource_slot(res, size)
 
 	def alter(self, res, amount):
 		if not self.has_resource_slot(res):

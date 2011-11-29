@@ -12,8 +12,8 @@ button_name: distillery-1
 tooltip_text: Turns sugar into liquor.
 settler_level: 1
 components:
-  HealthComponent: {maxhealth: 1000}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
     productionlines:
       0:
         produces:
@@ -21,6 +21,10 @@ components:
         consumes:
         - [18, -1]
         time: 12
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {18: 6, 22: 6}
 actionsets:
   as_distillery0: {level: 0}
 buildingcosts: {1: 250, 4: 2, 6: 2, 7: 4}

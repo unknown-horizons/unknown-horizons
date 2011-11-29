@@ -12,7 +12,8 @@ button_name: null
 tooltip_text: null
 settler_level: 0
 components:
-  HealthComponent: {maxhealth: 1000}
+- HealthComponent: {maxhealth: 1000}
+- StorageComponent
 actionsets:
   as_tent_ruin0: {level: 0}
 buildingcosts: {}

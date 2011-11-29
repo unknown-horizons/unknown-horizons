@@ -313,11 +313,8 @@ class Ship(Unit):
 				STORAGE.SHIP_TOTAL_STORAGE,
 				STORAGE.SHIP_TOTAL_SLOTS_NUMBER))
 				           )
-		self.add_component(ShipNameComponent())
 		self._selected = False
 		# register ship in world
-		if self.__class__.has_health:
-			self.add_component(HealthComponent())
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -485,10 +482,6 @@ class Ship(Unit):
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()
-
-	def __init(self):
-		super(PirateShip, self).__init()
-		self.add_component(PirateShipNameComponent()) # Because this has the same name as the ShipNameComponent it will override the old ShipnameComponent
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""

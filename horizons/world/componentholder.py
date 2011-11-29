@@ -53,20 +53,27 @@ class ComponentHolder(object):
 
 	def __init__(self, *args, **kwargs):
 		super(ComponentHolder, self).__init__(*args, **kwargs)
+		self.components = {}
+
+	def initialize():
+		"""Has to be called every time an componentholder is created."""
 		self.__load_components()
 
 	def __load_components(self):
-		self.components = {}
+		tmp_comp = []
 		if hasattr(self, 'component_templates'):
 			for entry in self.component_templates:
 				if isinstance(entry, dict):
 					for key, value in entry.iteritems():
 						component = self.class_mapping[key].get_instance(value)
-						self.components[component.NAME] = component
+						tmp_comp.append(component)
 				else:
 					component = self.class_mapping[entry].get_instance()
-					self.components[component.NAME] = component
-
+					tmp_comp.append(component)
+		# 'Resolve' dependencies
+		tmp_comp.sort()
+		for component in tmp_comp:
+			self.add_component(component)
 
 	def remove(self):
 		for component in self.components.values():
@@ -75,6 +82,7 @@ class ComponentHolder(object):
 
 	def load(self, db, worldid):
 		super(ComponentHolder, self).load(db, worldid)
+		self.components = {}
 		self.__load_components()
 		for name in self.components:
 			self.components[name].load(db, worldid)

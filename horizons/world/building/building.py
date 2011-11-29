@@ -36,9 +36,10 @@ from horizons.world.building.buildable import BuildableSingle
 from horizons.gui.tabs import EnemyBuildingOverviewTab
 from horizons.command.building import Build
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.componentholder import ComponentHolder
 
 
-class BasicBuilding(ConcretObject):
+class BasicBuilding(ConcretObject, ComponentHolder):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
@@ -76,7 +77,6 @@ class BasicBuilding(ConcretObject):
 			    owner is not None else None
 
 	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None, action_set_id=None):
-		self.add_component(AmbientSoundComponent())
 		self.owner = owner
 		if level is None:
 			level = 0 if self.owner is None else self.owner.settler_level

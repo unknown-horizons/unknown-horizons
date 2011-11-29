@@ -12,13 +12,17 @@ button_name: sugarfield-1
 tooltip_text: Used in liquor production. Needs a farm.
 settler_level: 1
 components:
-  HealthComponent: {maxhealth: 10}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
     productionlines:
       0:
         produces:
         - [17, 1]
         time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {17: 1}
 actionsets:
   as_sugarfield0: {level: 0}
 buildingcosts: {1: 150}

@@ -12,13 +12,17 @@ button_name: doctor-1
 tooltip_text: Treats diseases. Consumes herbs.
 settler_level: 2
 components:
-  HealthComponent: {maxhealth: 1000}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
     productionlines:
       0:
         consumes:
         - [38, -2]
         time: 60
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {38: 8}
 actionsets:
   as_doctor0: {level: 0}
 buildingcosts: {1: 500, 4: 3, 6: 3, 7: 3}

@@ -12,13 +12,17 @@ button_name: herbary-1
 tooltip_text: Produces herbs. Needs a farm.
 settler_level: 2
 components:
-  HealthComponent: {maxhealth: 10}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
     productionlines:
       0:
         produces:
         - [37, 1]
         time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {37: 1}
 actionsets:
   as_herbary0: {level: 0}
 buildingcosts: {1: 150}

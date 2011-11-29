@@ -77,7 +77,6 @@ class ProducerBuilding(BuildingResourceHandler):
 
 	def __init__(self, start_finished=False, *args, **kwargs):
 		super(ProducerBuilding, self).__init__(*args, **kwargs)
-		self.add_component(Producer(start_finished=start_finished))
 
 	def add_production(self, production):
 		self.get_component(Producer).add_production(production)

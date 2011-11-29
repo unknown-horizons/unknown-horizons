@@ -25,10 +25,9 @@ import horizons.main
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
 from horizons.gui.tabs import BuildRelatedTab
-from horizons.world.componentholder import ComponentHolder
 from horizons.world.status import StatusIcon
 
-class ConcretObject(ComponentHolder, WorldObject):
+class ConcretObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
 	"Concrete" here means "you can touch it", e.g. a Branch Office is a ConcreteObject,
 	a Settlement isn't.

@@ -12,14 +12,15 @@ button_name: main_square-1
 tooltip_text: Supplies citizens with goods.
 settler_level: 0
 components:
-  HealthComponent: {maxhealth: 1000}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
     productionlines:
       0:
         produces:
         - [19, 5]
         time: 1
-  AmbientSoundComponent:
+- StorageComponent
+- AmbientSoundComponent:
     soundfiles: [content/audio/sounds/main_square.ogg]
 actionsets:
   as_mainsquare0: {preview: as_preview_mainsquare0, level: 0}

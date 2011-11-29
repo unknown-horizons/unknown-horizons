@@ -63,7 +63,6 @@ class Unit(MovingObject):
 		self._instance.addActionListener(self.InstanceActionListener)
 
 		self.loading_area = self.position
-		self.add_component(AmbientSoundComponent())
 
 	def remove(self):
 		self.log.debug("Unit.remove for %s started", self)

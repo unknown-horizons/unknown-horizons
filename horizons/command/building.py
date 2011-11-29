@@ -28,7 +28,6 @@ from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.scenario import CONDITIONS
 from horizons.constants import BUILDINGS, RES
-from horizons.world.player import HumanPlayer
 from horizons.world.component.storagecomponent import StorageComponent
 
 class Build(Command):
@@ -113,6 +112,7 @@ class Build(Command):
 		  action_set_id=self.action_set_id, \
 		  **self.data
 		)
+		building.initialize()
 
 		island.add_building(building, issuer)
 
@@ -137,6 +137,7 @@ class Build(Command):
 		building.start()
 
 		# unload the remaining resources on the human player ship if we just founded a new settlement
+		from horizons.world.player import HumanPlayer
 		if building.id == BUILDINGS.BRANCH_OFFICE_CLASS and isinstance(building.owner, HumanPlayer):
 			ship = WorldObject.get_object_by_id(self.ship)
 			for res, amount in [(res, amount) for res, amount in ship.get_component(StorageComponent).inventory]: # copy the inventory first because otherwise we would modify it while iterating

@@ -127,9 +127,9 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 	result['tooltip_text'] = tooltip_text
 	result['settler_level'] = settler_level
 
-	result['components'] = {}
+	result['components'] = []
 
-	result['components']['HealthComponent'] = {'maxhealth': health}
+	result['components'].append({'HealthComponent': {'maxhealth': health}})
 
 	production_lines = {}
 	for num, (prodlineid, changes_anim, object, time, default) in enumerate(db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line WHERE object_id=?", id)):
@@ -147,7 +147,16 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 		production_lines[num] = prod_line
 
 	if len(production_lines) > 0:
-		result['components']['ProducerComponent'] =  {'productionlines': production_lines}
+		result['components'].append({'ProducerComponent': {'productionlines': production_lines}})
+
+	query_result = db("SELECT resource, size FROM storage WHERE object_id=?", id)
+	if len(query_result) == 0:
+		result['components'].append('StorageComponent')
+	else:
+		slot_sizes = {}
+		for resource, size in query_result:
+			slot_sizes[resource] = size
+		result['components'].append({'StorageComponent': {'inventory': {'SlotsStorage': {'slot_sizes': slot_sizes}}}})
 
 	result['actionsets'] =  {}
 
@@ -165,7 +174,7 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 
 	soundfiles = list(db("SELECT file FROM sounds INNER JOIN object_sounds ON sounds.rowid = object_sounds.sound AND object_sounds.object = ?", id))
 	if len(soundfiles) >  0:
-		result['components']['AmbientSoundComponent'] = {'soundfiles':  [x[0] for x in soundfiles]}
+		result['components'].append({'AmbientSoundComponent': {'soundfiles':  [x[0] for x in soundfiles]}})
 
 	filename = str(result['name']).lower().strip().replace(" ",  "").replace("'", "") + ".yaml"
 	stream = file("content/objects/buildings/" + filename, 'w')

@@ -57,7 +57,7 @@ class Production(WorldObject):
 	USES_GOLD = False
 
 	## INIT/DESTRUCT
-	def __init__(self, inventory, owner_inventory, prod_id, prod__data, auto_start=True, \
+	def __init__(self, inventory, owner_inventory, prod_id, prod_data, auto_start=True, \
 	             start_finished=False, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self._state_history = deque()
@@ -86,7 +86,7 @@ class Production(WorldObject):
 		self._pause_old_state = pause_old_state # only used in pause()
 		self._creation_tick = creation_tick
 
-		assert isinstance(prod_line_id, int)
+		assert isinstance(prod_id, int)
 		self._prod_line = ProductionLineObject(id=prod_id, data=prod_data)
 
 	def save(self, db):

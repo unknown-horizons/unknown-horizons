@@ -12,14 +12,18 @@ button_name: null
 tooltip_text: null
 settler_level: 0
 components:
-  HealthComponent: {maxhealth: 10}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
     productionlines:
       0:
         changes_animation: false
         produces:
         - [28, 1]
         time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {28: 1}
 actionsets:
   as_fish0: {level: 0}
 buildingcosts: {}

@@ -12,7 +12,8 @@ button_name: lighthouse-1
 tooltip_text: Allows the player to trade with the free trader.
 settler_level: 0
 components:
-  HealthComponent: {maxhealth: 1000}
+- HealthComponent: {maxhealth: 1000}
+- StorageComponent
 actionsets:
   as_signalfire0: {preview: as_preview_signalfire0, level: 0}
   as_signalfire_wooden0: {level: 1}

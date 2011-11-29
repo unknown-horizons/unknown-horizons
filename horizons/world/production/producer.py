@@ -39,21 +39,23 @@ class Producer(Component):
 	log = logging.getLogger("world.production")
 
 	NAME = "producer"
+	DEPENDENCIES = [StorageComponent]
 
 	production_class = Production
 
 	# INIT
-	def __init__(self, auto_init=True, start_finished=False, production_lines={}, **kwargs):
+	def __init__(self, auto_init=True, start_finished=False, productionlines={}, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		self.__auto_init = auto_init
 		self.__start_finished = start_finished
-		self.production_lines = production_lines
+		self.production_lines = productionlines
 
 	def initialize(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
 		# the inactive ones won't get considered for needed_resources and such.
 		# the production_line id is the key in the dict (=> a building must not have two identical
 		# production lines)
+		print 'initialize!'
 		self._productions = {}
 		self._inactive_productions = {}
 		# add production lines as specified in db.
@@ -63,10 +65,24 @@ class Producer(Component):
 					continue  # It's set to false, don't add
 				self.create_production(prod_line, attributes)
 
+	def get_production_lines_by_level(self, level):
+		prod_lines = []
+		print "Instance id:", self.instance.id
+		print "Production lines:", self.production_lines
+		for key, data in self.production_lines.iteritems():
+			print key, data
+			if 'level' in data and data['level'] == level:
+				prod_lines.append(key)
+			elif level == 0 and 'level' not in data:
+				prod_lines.append(key)
+		print "(Producer.get_production_lines)Production lines for level", level, ":", prod_lines
+		return prod_lines
+
+
 	def create_production(self, id, data):
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
-		self.add_production(production_class(inventory, owner_inventory, id, data))
+		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, id, data))
 
 	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.
@@ -120,7 +136,7 @@ class Producer(Component):
 			self._inactive_productions[production.get_production_line_id()] = production
 		else:
 			self._productions[production.get_production_line_id()] = production
-		production.add_change_listener(self._on_production_change, call_listener_now=True)
+		production.add_change_listener(self._on_production_change, call_listener_now=False)
 		self.instance._changed()
 
 	def finish_production_now(self):

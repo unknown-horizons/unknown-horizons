@@ -148,25 +148,27 @@ class ProductionLineObject(object):
 	def __init__(self, id, data={}):
 		"""Inits self from db and registers itself as template"""
 		self.__data = data
+		self.id = id
 		self.__init()
 
 	def __init(self):
 		self._init_finished = False
-		self.id = data['id']
-		self.time = data['time'] # time in seconds that production takes
-		self.changes_animation = data['changes_animation'] if 'changes_animation' in data else False # whether this prodline influences animation
-		self.save_statistics = data['save_statistics'] if 'save_statistics' in data else False  #whether statistics about this production line should be kept
+		self.time = self.__data['time'] # time in seconds that production takes
+		self.changes_animation = self.__data['changes_animation'] if 'changes_animation' in self.__data else False # whether this prodline influences animation
+		self.save_statistics = self.__data['save_statistics'] if 'save_statistics' in self.__data else False  #whether statistics about this production line should be kept
 		# here we store all resource information.
 		# needed resources have a negative amount, produced ones are positive.
 		self.production = {}
 		self.produced_res = {} # contains only produced
 		self.consumed_res = {} # contains only consumed
-		for res, amount in data['produces']:
-			self.production[res] = amount
-			self.produced_res[res] = amount
-		for res, amount in data['consumes']:
-			self.production[res] = amount
-			self.consumed_res[res] = amount
+		if 'produces' in self.__data:
+			for res, amount in self.__data['produces']:
+				self.production[res] = amount
+				self.produced_res[res] = amount
+		if 'consumes' in self.__data:
+			for res, amount in self.__data['consumes']:
+				self.production[res] = amount
+				self.consumed_res[res] = amount
 		# Stores unit_id: amount entries, if units are to be produced by this production line
 		self.unit_production = {}
 		for unit, amount in horizons.main.db("SELECT unit, amount FROM unit_production WHERE production_line = ?", self.id):

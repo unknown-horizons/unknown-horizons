@@ -94,13 +94,11 @@ class Entities(object):
 				cls.log.debug("Loading: " +  filename)
 				stream = file(os.path.join(root, filename), 'r')
 				result = load(stream, Loader=Loader)
-				print  result
 				building_id = int(result['id'])
 				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_results=result))
 				if True:
 				#if load_now:
 					cls.buildings[building_id]
-					print  cls.buildings[building_id]
 
 	@classmethod
 	def load_units(cls, db, load_now=False):

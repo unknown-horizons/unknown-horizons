@@ -41,8 +41,6 @@ class Animal(ResourceHandler):
 
 	def __init__(self, *args, **kwargs):
 		super(Animal, self).__init__(*args, **kwargs)
-		self.add_component(Producer())
-
 
 class CollectorAnimal(Animal):
 	"""Animals that will inherit from collector"""

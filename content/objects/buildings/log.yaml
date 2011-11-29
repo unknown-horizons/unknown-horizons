@@ -12,6 +12,7 @@ button_name: null
 tooltip_text: Road across a river.
 settler_level: 0
 components:
-  HealthComponent: {maxhealth: 10}
+- HealthComponent: {maxhealth: 10}
+- StorageComponent
 actionsets: {}
 buildingcosts: {1: 50, 4: 2}

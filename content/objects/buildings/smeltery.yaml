@@ -12,8 +12,8 @@ button_name: smeltery-1
 tooltip_text: Refines all kind of ores.
 settler_level: 2
 components:
-  HealthComponent: {maxhealth: 1000}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
     productionlines:
       0:
         produces:
@@ -22,6 +22,10 @@ components:
         - [25, -2]
         - [23, -1]
         time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {25: 6, 26: 9, 23: 6}
 actionsets:
   as_smeltery0: {level: 0}
 buildingcosts: {1: 1250, 4: 8, 6: 4, 7: 6}

@@ -24,12 +24,16 @@ class Component(object):
 	#  Store the name of this component. This has to be overwritten in subclasses
 	NAME = None
 
+	# Store dependencies to other components here
+	DEPENDENCIES = []
+
 	def __init__(self):
 		"""
 		@param instance: instance that has the component
 		"""
 		super(Component, self).__init__()
 		self.instance = None # Has to be set by the componentholder
+		self.session = None  # Has to be set by the componentholder
 
 	def initialize(self):
 		"""
@@ -61,3 +65,10 @@ class Component(object):
 		(takes Custom classes as arguments e.g. Storages)
 		"""
 		return cls(**arguments)
+
+
+	def __gt__(self, other):
+		return other in self.DEPENDENCIES
+
+	def __lt__(self, other):
+		return not self.__gt__(other)

@@ -50,7 +50,6 @@ class ResourceHandler(ComponentHolder):
 		self.__init()
 
 	def __init(self):
-		self.add_component(StorageComponent())
 		# Stores a set of resource ids this resourcehandler provides for pickup
 		self.provided_resources = self._load_provided_resources()
 

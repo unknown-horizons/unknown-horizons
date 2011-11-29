@@ -12,8 +12,8 @@ button_name: tree-1
 tooltip_text: Tree
 settler_level: 0
 components:
-  HealthComponent: {maxhealth: 10}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
     productionlines:
       0:
         produces:
@@ -24,6 +24,10 @@ components:
         produces:
         - [12, 1]
         time: 25
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {8: 1, 12: 1}
 actionsets:
   as_tupelo2: {level: 0}
   as_spruce1: {level: 0}

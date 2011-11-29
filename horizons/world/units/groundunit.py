@@ -47,7 +47,6 @@ class GroundUnit(Unit):
 		super(GroundUnit, self).__init__(x=x, y=y, **kwargs)
 		self.session.world.ground_units.append(self)
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
-		self.add_component(HealthComponent())
 
 	def remove(self):
 		if self in self.session.selected_instances:

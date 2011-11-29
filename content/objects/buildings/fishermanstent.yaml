@@ -12,8 +12,8 @@ button_name: fisher-1
 tooltip_text: Fishes the sea, produces food.
 settler_level: 0
 components:
-  HealthComponent: {maxhealth: 1000}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
     productionlines:
       0:
         produces:
@@ -21,7 +21,11 @@ components:
         consumes:
         - [28, -1]
         time: 10
-  AmbientSoundComponent:
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {28: 8, 5: 8}
+- AmbientSoundComponent:
     soundfiles: [content/audio/sounds/branch_office.ogg]
 actionsets:
   as_fisherman0: {level: 0}

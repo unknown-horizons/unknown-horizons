@@ -12,13 +12,17 @@ button_name: potatofield-1
 tooltip_text: Yields food. Needs a farm.
 settler_level: 1
 components:
-  HealthComponent: {maxhealth: 10}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
     productionlines:
       0:
         produces:
         - [15, 1]
         time: 26
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {15: 1}
 actionsets:
   as_potatofield0: {level: 0}
 buildingcosts: {1: 150}

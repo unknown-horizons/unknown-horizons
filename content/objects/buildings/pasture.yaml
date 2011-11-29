@@ -12,14 +12,18 @@ button_name: pasture-1
 tooltip_text: Raises sheep. Produces wool. Needs a farm.
 settler_level: 1
 components:
-  HealthComponent: {maxhealth: 10}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
     productionlines:
       0:
         produces:
         - [2, 1]
         time: 30
-  AmbientSoundComponent:
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {9: 10, 2: 1}
+- AmbientSoundComponent:
     soundfiles: [content/audio/sounds/sheepfield.ogg]
 actionsets:
   as_pasture0: {level: 0}

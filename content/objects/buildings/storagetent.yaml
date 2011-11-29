@@ -12,7 +12,8 @@ button_name: store-1
 tooltip_text: Extends stock and provides collectors.
 settler_level: 0
 components:
-  HealthComponent: {maxhealth: 1000}
+- HealthComponent: {maxhealth: 1000}
+- StorageComponent
 actionsets:
   as_storagetent0: {level: 0}
   as_storagetent1: {level: 1}

@@ -12,8 +12,8 @@ button_name: boat_builder-1
 tooltip_text: Builds boats and small ships. Built on coast.
 settler_level: 1
 components:
-  HealthComponent: {maxhealth: 1000}
-  ProducerComponent:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
     productionlines:
       0:
         consumes:
@@ -50,6 +50,10 @@ components:
         - [4, -42]
         - [3, -24]
         time: 60
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {40: 12, 3: 12, 4: 12, 6: 12}
 actionsets:
   as_boat_builder0: {level: 0}
 buildingcosts: {1: 500, 4: 4, 6: 3}
