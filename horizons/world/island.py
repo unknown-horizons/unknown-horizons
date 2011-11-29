@@ -338,7 +338,8 @@ class Island(BuildingOwner, WorldObject):
 			for building in self.buildings:
 				if building.id == BUILDINGS.TREE_CLASS:
 					point = building.position.origin
-					Entities.units[UNITS.WILD_ANIMAL_CLASS](self, x=point.x, y=point.y, session=self.session)
+					animal = Entities.units[UNITS.WILD_ANIMAL_CLASS](self, x=point.x, y=point.y, session=self.session)
+					animal.initialize()
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
 		# so do nothing in this case.

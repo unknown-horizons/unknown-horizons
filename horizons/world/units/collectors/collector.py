@@ -87,8 +87,6 @@ class Collector(Unit):
 		Scheduler().add_new_object(self.search_job, self, 1)
 
 	def __init(self, state, start_hidden):
-		# TODO: use different storage to support multiple slots. see StorageHolder
-		self.get_component(StorageComponent).inventory.limit = COLLECTORS.DEFAULT_STORAGE_SIZE
 		self.state = state
 		self.start_hidden = start_hidden
 		if self.start_hidden:

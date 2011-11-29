@@ -53,7 +53,8 @@ class AnimalField(CollectingBuilding, Field):
 		for (animal, number) in self.session.db("SELECT unit_id, count FROM animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
-				Entities.units[animal](self, session=self.session)
+				unit = Entities.units[animal](self, session=self.session)
+				unit.initialize()
 		super(AnimalField, self).create_collector()
 
 	def remove(self):
@@ -86,17 +87,21 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 
 	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
-		self.__init(inventory)
+		print inventory
+		if inventory is not None:
+			self.reinit_inventory(inventory)
 
-	def __init(self, inventory=None):
-		if inventory is None: # a new deposit
-			for resource, min_amount, max_amount in \
-			    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
-			                    self.id):
-				self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
-		else: # deposit was removed for mine, now build back
-			for res, amount in inventory.iteritems():
-				self.get_component(StorageComponent).inventory.alter(res, amount)
+	def reinit_inventory(self, inventory):
+		for res, amount in inventory.iteritems():
+			self.get_component(StorageComponent).inventory.alter(res, amount)
+
+
+	def initialize(self):
+		super(ResourceDeposit, self).initialize()
+		for resource, min_amount, max_amount in \
+		    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
+		                    self.id):
+			self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
 
 	def load(self, db, worldid):
 		super(ResourceDeposit, self).load(db, worldid)

@@ -41,6 +41,9 @@ class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
 	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
+
+	def initialize(self):
+		super(StorageBuilding, self).initialize()
 		self.get_component(StorageComponent).inventory = self.settlement.get_component(StorageComponent).inventory
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 		self.get_component(StorageComponent).inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))

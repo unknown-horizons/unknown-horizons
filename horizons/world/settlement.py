@@ -35,7 +35,7 @@ from horizons.world.component.namedcomponent import SettlementNameComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.changelistener import ChangeListener
 
-class Settlement(ComponentHolder, ChangeListener):
+class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, session, owner):

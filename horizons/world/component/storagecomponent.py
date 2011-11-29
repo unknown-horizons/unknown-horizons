@@ -74,9 +74,10 @@ class StorageComponent(Component):
 
 	@classmethod
 	def get_instance(cls, arguments={}):
-		assert len(arguments['inventory']) == 1, "You may not have more than one inventory!"
 		inventory = None
-		for key, value in arguments['inventory'].iteritems():
-			storage = cls.storage_mapping[key]
-			inventory = storage(**value)
+		if 'inventory' in arguments:
+			assert len(arguments['inventory']) == 1, "You may not have more than one inventory!"
+			for key, value in arguments['inventory'].iteritems():
+				storage = cls.storage_mapping[key]
+				inventory = storage(**value)
 		return cls(inventory=inventory)
