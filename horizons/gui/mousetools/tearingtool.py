@@ -80,7 +80,7 @@ class TearingTool(NavigationTool):
 
 			if not evt.isShiftPressed() and not horizons.main.fife.get_uh_setting('UninterruptedBuilding'):
 				self.tear_tool_active = False
-				self.session.cursor = SelectionTool(self.session)
+				self.on_escape()
 			evt.consume()
 
 	def mousePressed(self,  evt):
