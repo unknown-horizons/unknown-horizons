@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-10-30 05:27+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,11 @@ msgstr "Een nieuwe wereld is aangemaakt"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr "Dieren Rijtuig"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr "Zwijn"
 
@@ -51,6 +56,11 @@ msgstr "Kantoor"
 #: database files sql
 msgid "Brickyard"
 msgstr "Bakstenenfabriek"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr "Gebouwen Verzamelaar"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -102,6 +112,16 @@ msgstr "Dokter"
 msgid "Farm"
 msgstr "Boerderij"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr "Boerderij Dieren Verzamelaar"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr "Veld Verzamelaar"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -144,6 +164,11 @@ msgstr "Huker"
 msgid "Hunter's Tent"
 msgstr "Jagers Tent"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr "Jager Verzamelaar"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -163,6 +188,11 @@ msgstr "Uitkijk"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Houthakkers Kamp"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr "Houthakker Verzamelaar"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -222,6 +252,11 @@ msgstr "Screenshot is opgeslagen als ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr "Kolonisten Verzamelaar"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Schaap"
 
@@ -244,6 +279,11 @@ msgstr "Enkele van Uw kolonisten zijn vertrokken."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Opslag Tent"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr "Opslag Verzamelaar"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -821,11 +861,10 @@ msgstr "Fout:"
 msgid "Unknown savedate"
 msgstr "Datum van opslaan onbekend"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Opgeslagen op %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -3086,6 +3125,11 @@ msgstr "Bedankt dat U Unknown Horizons gebruikt!"
 msgid "FIFE was not found."
 msgstr "FIFE niet gevonden."
 
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Opgeslagen op %s"
+
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Datum van opslaan onbekend\n"
 
@@ -3305,14 +3349,8 @@ msgstr "FIFE niet gevonden."
 #~ msgid "NEW GAME - MULTIPLAYER"
 #~ msgstr "NIEUW SPEL - MULTIPLAYER"
 
-#~ msgid "FarmAnimalCollector"
-#~ msgstr "Boerderij Dieren Verzamelaar"
-
 #~ msgid " Help "
 #~ msgstr "Help"
-
-#~ msgid "LumberjackCollector"
-#~ msgstr "Houthakker Verzamelaar"
 
 #~ msgid "Building Overview"
 #~ msgstr "Gebouwen Overzicht"
@@ -3338,14 +3376,8 @@ msgstr "FIFE niet gevonden."
 #~ msgid "Settler Overview"
 #~ msgstr "Kolonisten Overzicht"
 
-#~ msgid "FieldCollector"
-#~ msgstr "Veld Verzamelaar"
-
 #~ msgid "CREATE GAME - MULTIPLAYER"
 #~ msgstr "MAAK SPEL - MULTIPLAYER"
-
-#~ msgid "StorageCollector"
-#~ msgstr "Opslag Verzamelaar"
 
 #~ msgid "Yeah, you made it..."
 #~ msgstr "U heeft het gehaald..."
@@ -3356,23 +3388,11 @@ msgstr "FIFE niet gevonden."
 #~ msgid "But this is a deadlink, sorry."
 #~ msgstr "Maar dit leidt nergens naar."
 
-#~ msgid "BuildingCollector"
-#~ msgstr "Gebouwen Verzamelaar"
-
-#~ msgid "HunterCollector"
-#~ msgstr "Jager Verzamelaar"
-
 #~ msgid "Merchant Buildings"
 #~ msgstr "Handelaar Gebouwen"
 
-#~ msgid "AnimalCarriage"
-#~ msgstr "Dieren Rijtuig"
-
 #~ msgid " Load Game "
 #~ msgstr "Spel laden"
-
-#~ msgid "SettlerCollector"
-#~ msgstr "Kolonisten Verzamelaar"
 
 #~ msgid " Continue Game "
 #~ msgstr "Spel hervatten"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-11-11 03:11+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,11 @@ msgstr ""
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr ""
 
@@ -51,6 +56,11 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Brickyard"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -104,6 +114,16 @@ msgstr "Gydytojas"
 msgid "Farm"
 msgstr "Ūkis"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -146,6 +166,11 @@ msgstr ""
 msgid "Hunter's Tent"
 msgstr ""
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -164,6 +189,11 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lumberjack Camp"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -223,6 +253,11 @@ msgstr ""
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr ""
 
@@ -245,6 +280,11 @@ msgstr ""
 #: database files sql
 msgid "Storage Tent"
 msgstr "Saugojimo palapinė"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -812,11 +852,10 @@ msgstr "Klaida:"
 msgid "Unknown savedate"
 msgstr "Nežinomi įrašo duomenys"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Įrašyta į %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -1198,7 +1237,7 @@ msgstr ""
 #: horizons/gui/widgets/buysellinventory.py:82
 #: horizons/gui/widgets/inventory.py:102
 #, python-format
-#, python-format, fuzzy
+#, python-format,
 msgid "Limit: %st per slot"
 msgstr "Riba: %st už lizdą"
 
@@ -1288,7 +1327,6 @@ msgstr "Paslaugos"
 
 #. (tooltip of widget: church-1)
 #: horizons/i18n/guitranslations.py:62
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
 msgstr "Pavilijonas: Suteikia jūreiviams prieigą prie religijos."
 
@@ -1626,7 +1664,6 @@ msgstr "Atšaukti statybas:"
 
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "(lose all resources)"
 msgstr "(prarasti visi resursai)"
 
@@ -1822,7 +1859,6 @@ msgstr "3 gyventojai"
 #. (text of widget: residents)
 #: horizons/i18n/guitranslations.py:362 horizons/i18n/guitranslations.py:391
 #: horizons/i18n/guitranslations.py:426
-#, fuzzy
 msgid "residents"
 msgstr "Gyventojai"
 
@@ -2453,7 +2489,6 @@ msgstr "Rodyti žaidimus tik su ta pačia versija:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:844
-#, fuzzy
 msgid "New game - Multiplayer"
 msgstr "Naujas žaidimas - Kelių žaidėjų"
 
@@ -3047,6 +3082,11 @@ msgstr ""
 #: run_uh.py:387
 msgid "FIFE was not found."
 msgstr ""
+
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Įrašyta į %s"
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Nežinomi įrašo duomenys\n"
