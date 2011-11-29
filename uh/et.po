@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-11-05 04:48+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,11 @@ msgstr "Uus maailm on loodud."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr "AnimalCarriage"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr ""
 
@@ -51,6 +56,11 @@ msgstr "Harukontor"
 #: database files sql
 msgid "Brickyard"
 msgstr "Tellisetehas"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr "BuildingCollector"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -102,6 +112,16 @@ msgstr ""
 msgid "Farm"
 msgstr "Talu"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr "FarmAnimalCollector"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr "FieldCollector"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -144,6 +164,11 @@ msgstr ""
 msgid "Hunter's Tent"
 msgstr "Jahimehe Telk"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr "HunterCollector"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -163,6 +188,11 @@ msgstr "Vaatetorn"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Puuraiduri Laager"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr "LumberjackCollector"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -222,6 +252,11 @@ msgstr "Ekraanitõmmis on salvestatud faili ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr "SettlerCollector"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Lammas"
 
@@ -244,6 +279,11 @@ msgstr "Mõned sinu asunikud kolisid just välja."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Lao Telk"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr "StorageCollector"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -810,8 +850,8 @@ msgstr "Salvestuskuupäev teadmata"
 
 #: horizons/gui/gui.py:428
 #, python-format
-msgid "Saved at %s"
-msgstr "Salvestatud %s"
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -3046,6 +3086,10 @@ msgstr ""
 msgid "FIFE was not found."
 msgstr "FIFE't ei leitud."
 
+#, python-format
+#~ msgid "Saved at %s"
+#~ msgstr "Salvestatud %s"
+
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Salvestuskuupäev teadmata\n"
 
@@ -3216,14 +3260,8 @@ msgstr "FIFE't ei leitud."
 #~ msgid "NEW GAME - MULTIPLAYER"
 #~ msgstr "UUS MÄNG - MITMEMÄNG"
 
-#~ msgid "FarmAnimalCollector"
-#~ msgstr "FarmAnimalCollector"
-
 #~ msgid " Help "
 #~ msgstr " Abi "
-
-#~ msgid "LumberjackCollector"
-#~ msgstr "LumberjackCollector"
 
 #~ msgid "Building Overview"
 #~ msgstr "Ehitise ülevaade"
@@ -3249,14 +3287,8 @@ msgstr "FIFE't ei leitud."
 #~ msgid "Settler Overview"
 #~ msgstr "Asunike Ülevaade"
 
-#~ msgid "FieldCollector"
-#~ msgstr "FieldCollector"
-
 #~ msgid "CREATE GAME - MULTIPLAYER"
 #~ msgstr "LOO MÄNG - MITMEMÄNG"
-
-#~ msgid "StorageCollector"
-#~ msgstr "StorageCollector"
 
 #~ msgid "Yeah, you made it..."
 #~ msgstr "Jah, sa jõudsid siia..."
@@ -3267,23 +3299,11 @@ msgstr "FIFE't ei leitud."
 #~ msgid "But this is a deadlink, sorry."
 #~ msgstr "Kuid see on surnud viide, vabandust."
 
-#~ msgid "BuildingCollector"
-#~ msgstr "BuildingCollector"
-
-#~ msgid "HunterCollector"
-#~ msgstr "HunterCollector"
-
 #~ msgid "Merchant Buildings"
 #~ msgstr "Kaupmeeste Ehitised"
 
-#~ msgid "AnimalCarriage"
-#~ msgstr "AnimalCarriage"
-
 #~ msgid " Load Game "
 #~ msgstr " Laadi mäng "
-
-#~ msgid "SettlerCollector"
-#~ msgstr "SettlerCollector"
 
 #~ msgid " Continue Game "
 #~ msgstr " Jätka mängu "

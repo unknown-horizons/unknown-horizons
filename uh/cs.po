@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-27 22:35+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
+"PO-Revision-Date: 2011-11-27 22:36+0200\n"
 "Last-Translator: Vilem <turmaleus@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -34,6 +34,11 @@ msgstr "Byl vytvořen nov svět."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr "Kanec"
 
@@ -51,6 +56,11 @@ msgstr "Pobočka"
 #: database files sql
 msgid "Brickyard"
 msgstr "Cihelna"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -102,6 +112,16 @@ msgstr "Lékař"
 msgid "Farm"
 msgstr "Farma"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -144,6 +164,11 @@ msgstr ""
 msgid "Hunter's Tent"
 msgstr "Lovecký stan"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -163,6 +188,11 @@ msgstr "Rozhledna"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Dřevorubecký tábor"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -221,6 +251,11 @@ msgstr "Snímek obrazovky je uložen do ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Ovce"
 
@@ -243,6 +278,11 @@ msgstr "Někteří osadníci se odstěhovali."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Skladovací stan"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -813,11 +853,10 @@ msgstr "Chyba:"
 msgid "Unknown savedate"
 msgstr "Neznáme datum uložení"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Uloženo v %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -3011,6 +3050,11 @@ msgstr "Děkujeme Vám za hraní Unknown Horizons!"
 #: run_uh.py:387
 msgid "FIFE was not found."
 msgstr "FIFE nebylo nalezeno."
+
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Uloženo v %s"
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Neznáme datum uložení\n"

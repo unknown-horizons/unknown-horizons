@@ -52,11 +52,6 @@ msgstr "Wildschwein"
 msgid "Boat Builder"
 msgstr "Bootsbauer"
 
-#. This is a database entry: the name of a unit.
-#: database files sql
-msgid "BomberMan"
-msgstr ""
-
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Branch Office"
@@ -350,11 +345,6 @@ msgstr "Trampelpfad"
 #: database files horizons/i18n/guitranslations.py:80 sql
 msgid "Tree"
 msgstr "Baum"
-
-#. This is a database entry: the name of a unit.
-#: database files sql
-msgid "UsableFisher"
-msgstr ""
 
 # Building
 #. This is a database entry: the name of a building.

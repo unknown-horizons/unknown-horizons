@@ -2,21 +2,20 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
+"PO-Revision-Date: 2011-11-28 01:21+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -31,6 +30,11 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "AnimalCarriage"
 msgstr ""
 
 #. This is a database entry: the name of a unit.
@@ -51,6 +55,11 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Brickyard"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -103,6 +112,16 @@ msgstr ""
 msgid "Farm"
 msgstr ""
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -145,6 +164,11 @@ msgstr ""
 msgid "Hunter's Tent"
 msgstr ""
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -163,6 +187,11 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lumberjack Camp"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -222,6 +251,11 @@ msgstr ""
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr ""
 
@@ -243,6 +277,11 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Storage Tent"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -802,7 +841,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:428
 #, python-format
-msgid "Saved at %s"
+msgid "Saved at %(time)s"
 msgstr ""
 
 #: horizons/gui/gui.py:432
@@ -810,7 +849,6 @@ msgstr ""
 msgid "Saved %(amount)d time"
 msgid_plural "Saved %(amount)d times"
 msgstr[0] ""
-msgstr[1] ""
 
 #: horizons/gui/gui.py:441
 #, python-format

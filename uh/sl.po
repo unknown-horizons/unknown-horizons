@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-10-14 21:34+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,11 @@ msgstr "Ustvarjen je bil nov svet."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr "Živalska kočija"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr "Divja svinja"
 
@@ -52,6 +57,11 @@ msgstr "Podružnična pisarna"
 #: database files sql
 msgid "Brickyard"
 msgstr "Opekarna"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr "Zbiralnik zgradb"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -103,6 +113,16 @@ msgstr "Zdravnik"
 msgid "Farm"
 msgstr "Kmetija"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr "Zbiralnik živalske kmetije"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr "Zbiralnik polja"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -145,6 +165,11 @@ msgstr "Huker"
 msgid "Hunter's Tent"
 msgstr "Lovčev šotor"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr "Zbiralnik lovcev"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -164,6 +189,11 @@ msgstr "Obeti"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Drvarjev tabor"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr "Zbiralnik drvarjev"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -223,6 +253,11 @@ msgstr "Zaslonski posnetek je bil shranjen v ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr "Zbiralnik naseljencev"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Ovca"
 
@@ -245,6 +280,11 @@ msgstr "Nekateri od vaših naseljencev so se pravkar odselili."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Shrambeni šotor"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr "Zbiralnik shrambe"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -814,11 +854,10 @@ msgstr "Napaka:"
 msgid "Unknown savedate"
 msgstr "Neznani shranjeni podatki"
 
-# 91%
 #: horizons/gui/gui.py:428
 #, python-format
-msgid "Saved at %s"
-msgstr "Shranjeno v %s"
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -2783,7 +2822,7 @@ msgstr ""
 # 81%
 #: horizons/main.py:374 horizons/savegamemanager.py:415
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Napaka: Ni mogoče najti kampanje \"%s\"."
 
@@ -2819,14 +2858,14 @@ msgstr "Napaka: program ne ve kako upravljati z vrsto pogoja %(type)s"
 # 76%
 #: horizons/savegamemanager.py:420
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Napaka: Ni mogoče najti kampanje z datoteko \"%s\"."
 
 # 81%
 #: horizons/savegamemanager.py:438
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Error: Cannot find scenario \"%s\"."
 msgstr "Napaka: Ni mogoče najti scenarija \"%s\"."
 
@@ -2835,7 +2874,7 @@ msgstr "Napaka: Ni mogoče najti scenarija \"%s\"."
 # 83%
 #: horizons/savegamemanager.py:443
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Error: Cannot find scenario with file \"%s\"."
 msgstr "Napaka: Ni mogoče najti scenarija z datoteko \"%s\"."
 
@@ -3089,6 +3128,11 @@ msgstr "Hvala, ker uporabljate Unknown Horizons!"
 msgid "FIFE was not found."
 msgstr "FIFE ni bilo mogoče najti."
 
+# 91%
+#, python-format
+#~ msgid "Saved at %s"
+#~ msgstr "Shranjeno v %s"
+
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Neznani shranjeni podatki\n"
 
@@ -3305,14 +3349,8 @@ msgstr "FIFE ni bilo mogoče najti."
 #~ msgid "NEW GAME - MULTIPLAYER"
 #~ msgstr "NOVA IGRA - VEČ IGRALCEV"
 
-#~ msgid "FarmAnimalCollector"
-#~ msgstr "Zbiralnik živalske kmetije"
-
 #~ msgid " Help "
 #~ msgstr "Pomoč"
-
-#~ msgid "LumberjackCollector"
-#~ msgstr "Zbiralnik drvarjev"
 
 #~ msgid "Building Overview"
 #~ msgstr "Pregled zgradbe"
@@ -3338,14 +3376,8 @@ msgstr "FIFE ni bilo mogoče najti."
 #~ msgid "Settler Overview"
 #~ msgstr "Pregled naselbine"
 
-#~ msgid "FieldCollector"
-#~ msgstr "Zbiralnik polja"
-
 #~ msgid "CREATE GAME - MULTIPLAYER"
 #~ msgstr "USTVARI IGRO - VEČ IGRALCEV"
-
-#~ msgid "StorageCollector"
-#~ msgstr "Zbiralnik shrambe"
 
 #~ msgid "Yeah, you made it..."
 #~ msgstr "Ja, uspelo vam je ..."
@@ -3356,23 +3388,11 @@ msgstr "FIFE ni bilo mogoče najti."
 #~ msgid "But this is a deadlink, sorry."
 #~ msgstr "Oprostite, toda to je mrtva povezava."
 
-#~ msgid "BuildingCollector"
-#~ msgstr "Zbiralnik zgradb"
-
-#~ msgid "HunterCollector"
-#~ msgstr "Zbiralnik lovcev"
-
 #~ msgid "Merchant Buildings"
 #~ msgstr "Zgradbe trgovcev"
 
-#~ msgid "AnimalCarriage"
-#~ msgstr "Živalska kočija"
-
 #~ msgid " Load Game "
 #~ msgstr "Naloži igro"
-
-#~ msgid "SettlerCollector"
-#~ msgstr "Zbiralnik naseljencev"
 
 #~ msgid " Continue Game "
 #~ msgstr "Nadaljuj igro"

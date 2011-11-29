@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-11-07 18:59+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,11 @@ msgstr "Един нов свят беше създаден."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr ""
 
@@ -50,6 +55,11 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Brickyard"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -102,6 +112,16 @@ msgstr ""
 msgid "Farm"
 msgstr "Ферма"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -144,6 +164,11 @@ msgstr ""
 msgid "Hunter's Tent"
 msgstr "Палатката на ловеца"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -163,6 +188,11 @@ msgstr ""
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Лагерът на дървара"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -223,6 +253,11 @@ msgstr "Скрийншотът беше запазен в ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Овца"
 
@@ -244,6 +279,11 @@ msgstr "Някои от твоите сезелници се преместих�
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Storage Tent"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -822,11 +862,10 @@ msgstr "Грешка:"
 msgid "Unknown savedate"
 msgstr "Неизвестна дата на запазване"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Запазено на %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -3055,6 +3094,11 @@ msgstr "Благодаря Ви, че използвахте Unknown Horizons!"
 #: run_uh.py:387
 msgid "FIFE was not found."
 msgstr ""
+
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Запазено на %s"
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Неизвестна дата на запазване\n"

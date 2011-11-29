@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-11-27 02:36+0200\n"
-"Last-Translator: heze0 <heikki.ilvespakka@gmail.com>\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
+"PO-Revision-Date: 2011-11-27 19:56+0200\n"
+"Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,11 @@ msgstr "Uusi maailma luotu."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr "Villisika"
 
@@ -52,10 +57,15 @@ msgstr "Sivutoimisto"
 msgid "Brickyard"
 msgstr "Savenvalamo"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "Teurastamo"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -65,7 +75,7 @@ msgstr "Karja"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Cattle Run"
-msgstr ""
+msgstr "Karjalauma"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -102,6 +112,16 @@ msgstr "Lääkäri"
 #: database files sql
 msgid "Farm"
 msgstr "Maatila"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -145,6 +165,11 @@ msgstr ""
 msgid "Hunter's Tent"
 msgstr "Metsästäjän teltta"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -164,6 +189,11 @@ msgstr "Vartiopaikka"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Puunhakkaajan leiri"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -195,7 +225,7 @@ msgstr "Paviljonki"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr ""
+msgstr "Sikalauma"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -224,6 +254,11 @@ msgstr "Kuvakaappaus tallennettu tiedostoon ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Lammas"
 
@@ -246,6 +281,11 @@ msgstr "Jotkin uudisasukkaistasi muuttivat juuri pois."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Varastoteltta"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -324,6 +364,8 @@ msgstr "Polkuja voi myös vetää."
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Olet saavuttanut korkeimman siirtokunnan tason. Asukkaasi eivät voi enää "
+"kehittää asumuksiaan."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
@@ -389,7 +431,7 @@ msgstr "tiiliä"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "tykkiä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -820,11 +862,10 @@ msgstr "Virhe:"
 msgid "Unknown savedate"
 msgstr "Tuntematon tallennuspäivä"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Tallennettu %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -882,15 +923,17 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
-msgstr ""
+msgstr "Moninpeli vaatii toimiakseen kirjaston \"pyenet\", jota ei ole asennettu."
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Linuxin käyttäjät: Yritä asentaa pyenet paketinhallinnallasi."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
+"Windowsin käyttäjät: Tällä hetkellä emme tarjoa tukea tälle ominaisuudelle "
+"Windowsissa."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
@@ -1001,7 +1044,7 @@ msgstr "Saaren suosituskoko:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Saarten koonvaihtelu:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
@@ -1174,7 +1217,7 @@ msgstr "Aluksen yleiskatsaus"
 
 #: horizons/gui/tabs/overviewtab.py:160
 msgid "Trade ship"
-msgstr ""
+msgstr "Kauppalaiva"
 
 #. (tooltip of widget: foundSettlement)
 #: horizons/gui/tabs/overviewtab.py:184 horizons/i18n/guitranslations.py:520
@@ -1218,7 +1261,8 @@ msgid "There is nothing written in your logbook yet!"
 msgstr "Lokikirjaasi ei ole kirjoitettu vielä mitään!"
 
 #: horizons/gui/widgets/playerssettlements.py:41
-#, python-format, 
+#, python-format
+#, python-format,
 msgid "%(player)s's settlements"
 msgstr "Pelaajan %(player)s siirtokunnat"
 
@@ -1697,7 +1741,7 @@ msgstr "Osta resursseja"
 #. (text of widget: buysell_help_label)
 #: horizons/i18n/guitranslations.py:285
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "Napsauta ylänurkan pientä kuvaketta:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:287
@@ -1769,7 +1813,7 @@ msgstr "puolueeton"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:329
 msgid "Build fields"
-msgstr ""
+msgstr "Pystytä tuotantoa"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:339
@@ -1894,7 +1938,7 @@ msgstr "Päivittäminen ei onnistu:"
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:432
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "Tämä on jo korkein saavuttamasi taso!"
 
 #. (text of widget: collector_utilisation_label) Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)
 #: horizons/i18n/guitranslations.py:445
@@ -2325,7 +2369,7 @@ msgstr "{X} = Mahdollista tuhoaminen"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:756 horizons/i18n/guitranslations.py:913
 msgid "Return"
-msgstr ""
+msgstr "Poistu"
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -2705,7 +2749,7 @@ msgstr "Pelin asetukset:"
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:983
 msgid "Free Trader"
-msgstr ""
+msgstr "Vapaakauppias"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:985
@@ -2881,7 +2925,7 @@ msgstr "Tallennustiedosto on tällä hetkellä toisen ohjelman käytössä."
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to %s"
-msgstr ""
+msgstr "Kauppareitti: menossa kohteeseen %s"
 
 #: horizons/world/units/ship.py:273
 #, python-format
@@ -3063,6 +3107,9 @@ msgstr ""
 #: run_uh.py:203
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Asennusohjelma Windowsille on ladattavissa osoitteesta "
+"\"http://pyyaml.org/wiki/PyYAML\", Linuxissa sen pitäisi löytyä "
+"paketinhallintajärjestelmästä hakusanalla \"pyyaml\" tai \"python-yaml\"."
 
 #: run_uh.py:227
 msgid "Thank you for using Unknown Horizons!"
@@ -3071,6 +3118,11 @@ msgstr "Kiitos, että pelasit Unknown Horizonsia!"
 #: run_uh.py:387
 msgid "FIFE was not found."
 msgstr "FIFE:ä ei löytynyt."
+
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Tallennettu %s"
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Tuntematon tallennuspäivä\n"
