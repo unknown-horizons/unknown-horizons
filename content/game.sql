@@ -52,7 +52,7 @@ INSERT INTO "building" VALUES(4,4,10,'Smeltery','Smeltery','production',1000,2,2
 INSERT INTO "building" VALUES(2,2,8,'Toolmaker','IronRefiner','production',1000,1,1,30,'toolmaker-1',2,'Produces tools out of iron.');
 INSERT INTO "building" VALUES(2,3,6,'Charcoal Burning','CharcoalBurning','production',1000,1,1,31,'charcoal-burning-1',2,'Burns a lot of boards.');
 INSERT INTO "building" VALUES(2,2,6,'Tavern','SettlerServiceProvider','production',1000,2,2,32,'tavern-1',2,'Provides get-together.');
-INSERT INTO "building" VALUES(1,1,0,'Fish Deposit','Fish','nature',10,0,0,33,NULL,0,NULL);
+INSERT INTO "building" VALUES(2,2,0,'Fish Deposit','Fish','nature',10,0,0,33,NULL,0,NULL);
 INSERT INTO "building" VALUES(5,5,0,'Mountain','ResourceDeposit','nature',10,0,0,34,NULL,0,NULL);
 INSERT INTO "building" VALUES(3,3,0,'Salt Ponds','SaltPond','production',1000,1,1,35,'saltponds-1',2,'Evaporates salt. Built on sea coast.');
 INSERT INTO "building" VALUES(3,3,0,'Tobacco Field','Field','nature',10,0,0,36,'tobaccofield-1',2,'Produces tobacco. Needs a farm.');
