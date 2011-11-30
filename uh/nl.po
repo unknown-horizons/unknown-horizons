@@ -2667,10 +2667,12 @@ msgstr "Controleer dat u weet wat u doet."
 msgid "Apply"
 msgstr "Toepassen"
 
+# 84%
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:915
+#, fuzzy
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Hertel standaard instellingen"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:920
