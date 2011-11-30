@@ -30,8 +30,6 @@ from horizons.scheduler import Scheduler
 class Path(object):
 	"""Object with path functionality"""
 	walkable = True
-	show_buildingtool_preview_tab = False
-	layer = LAYERS.FIELDS
 
 	# no __init__
 
@@ -88,7 +86,8 @@ class Path(object):
 
 class Road(Path, BasicBuilding, BuildableLine):
 	"""Actual buildable road."""
-	pass
+	show_buildingtool_preview_tab = False
+	layer = LAYERS.FIELDS
 
 class Bridge(BasicBuilding, BuildableSingle):
 	layer = LAYERS.FIELDS
