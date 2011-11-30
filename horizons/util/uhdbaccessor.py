@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import sys
 from random import randint
 
 from horizons.util import decorators
@@ -165,6 +166,13 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT id, button_name, settler_level \
 		                          FROM building \
 		                          WHERE button_name IS NOT NULL")
+
+	def get_settlerlvl_of_building(self, building_id):
+		"""Returns the level a building can be built or a very large int"""
+		res = self.cached_query("SELECT settler_level FROM building \
+														 WHERE button_name IS NOT NULL AND \
+		                         id = ?", building_id)
+		return res[0][0] if res else sys.maxint
 
 	def get_related_building_ids(self, building_class_id):
 		"""Returns list of building ids related to building_class_id.
