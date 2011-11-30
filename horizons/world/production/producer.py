@@ -69,15 +69,11 @@ class Producer(Component):
 
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
-		print "Instance id:", self.instance.id
-		print "Production lines:", self.production_lines
 		for key, data in self.production_lines.iteritems():
-			print key, data
 			if 'level' in data and data['level'] == level:
 				prod_lines.append(key)
 			elif level == 0 and 'level' not in data:
 				prod_lines.append(key)
-		print "(Producer.get_production_lines)Production lines for level", level, ":", prod_lines
 		return prod_lines
 
 
@@ -135,8 +131,10 @@ class Producer(Component):
 		assert isinstance(production, Production)
 		self.log.debug('%s: added production line %s', self, production.get_production_line_id())
 		if production.is_paused():
+			self.log.debug('%s: added production line %s is paused', self, production.get_production_line_id())
 			self._inactive_productions[production.get_production_line_id()] = production
 		else:
+			self.log.debug('%s: added production line %s is active', self, production.get_production_line_id())
 			self._productions[production.get_production_line_id()] = production
 		production.add_change_listener(self._on_production_change, call_listener_now=True)
 		self.instance._changed()

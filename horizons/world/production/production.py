@@ -374,13 +374,14 @@ class Production(WorldObject):
 
 	def _produce(self):
 		"""Called when there are enough res in the inventory for starting production"""
-		self.log.debug("%s start", self)
+		self.log.debug("%s _produce", self)
 		assert self._check_available_res() and self._check_for_space_for_produced_res()
 		# take the res we need
 		self._remove_res_to_expend()
 		# call finished in some time
 		time = Scheduler().get_ticks(self._prod_line.time)
-		Scheduler().add_new_object(self._get_producing_callback, self, time)
+		Scheduler().add_new_object(self._get_producing_callback(), self, time)
+		self.log.debug("%s _produce Adding callback in %d time", self, time)
 
 	def _finished_producing(self, continue_producing=True, **kwargs):
 		"""Called when the production finishes."""

@@ -61,7 +61,6 @@ class GenericStorage(ChangeListener):
 
 	def load(self, db, ownerid):
 		for (res, amount) in db.get_storage_rowids_by_ownerid(ownerid):
-			print "foo"
 			assert self[res] == 0
 			self.alter(res, amount)
 
