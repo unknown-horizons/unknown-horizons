@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-11-24 07:02+0200\n"
 "Last-Translator: saiffe <saiffe@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,11 @@ msgstr "Se ha creado un nuevo mundo."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr "Carruaje"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr "Verraco"
 
@@ -51,6 +56,11 @@ msgstr "Surcursal"
 #: database files sql
 msgid "Brickyard"
 msgstr "Cantero"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr "Constructor"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -102,6 +112,16 @@ msgstr "Doctor"
 msgid "Farm"
 msgstr "Granja"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr "Animal Doméstico"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr "Granjero"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -144,6 +164,11 @@ msgstr "Barco pesquero"
 msgid "Hunter's Tent"
 msgstr "Tienda de cazador"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr "Cazador"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -163,6 +188,11 @@ msgstr "Vigilancia"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Campo de leñador"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr "Leñador"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -222,6 +252,11 @@ msgstr "Pantallazo guardado en ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr "Colono"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Oveja"
 
@@ -244,6 +279,11 @@ msgstr "Algunos de tus colonos se han mudado."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Tienda de almacenamiento"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr "Encargado"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -821,11 +861,10 @@ msgstr "Error:"
 msgid "Unknown savedate"
 msgstr "Fecha desconocida"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Guardado en %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -2786,7 +2825,7 @@ msgstr ""
 # 81%
 #: horizons/main.py:374 horizons/savegamemanager.py:415
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Error: No se puede cargar el campaña \"%s\"."
 
@@ -2822,7 +2861,7 @@ msgstr ""
 # 76%
 #: horizons/savegamemanager.py:420
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Error: No se puede cargar el mapa \"%s\"."
 
@@ -2918,6 +2957,7 @@ msgid "Going to %(x)d, %(y)d"
 msgstr "Yendo a %(x)d, %(y)d"
 
 #: horizons/world/units/ship.py:473
+#, python-format
 #, python-format, fuzzy
 msgid "Idle at %s"
 msgstr "Inactivo en %s"
@@ -3094,6 +3134,11 @@ msgstr "¡Gracias por usar Unknown Horizons!"
 #: run_uh.py:387
 msgid "FIFE was not found."
 msgstr "No se ha encontrado FIFE."
+
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Guardado en %s"
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Fecha desconocida\n"
@@ -3285,14 +3330,8 @@ msgstr "No se ha encontrado FIFE."
 #~ msgid "NEW GAME - MULTIPLAYER"
 #~ msgstr "Nuevo juego - Multijugador"
 
-#~ msgid "FarmAnimalCollector"
-#~ msgstr "Animal Doméstico"
-
 #~ msgid " Help "
 #~ msgstr " Ayuda"
-
-#~ msgid "LumberjackCollector"
-#~ msgstr "Leñador"
 
 #~ msgid "Building Overview"
 #~ msgstr "Contrucción"
@@ -3318,14 +3357,8 @@ msgstr "No se ha encontrado FIFE."
 #~ msgid "Settler Overview"
 #~ msgstr "Colonos"
 
-#~ msgid "FieldCollector"
-#~ msgstr "Granjero"
-
 #~ msgid "CREATE GAME - MULTIPLAYER"
 #~ msgstr "Crear partida - Multijugador"
-
-#~ msgid "StorageCollector"
-#~ msgstr "Encargado"
 
 #~ msgid "Yeah, you made it..."
 #~ msgstr "Sí, lo has hecho..."
@@ -3336,23 +3369,11 @@ msgstr "No se ha encontrado FIFE."
 #~ msgid "But this is a deadlink, sorry."
 #~ msgstr "Pero es un enlace roto..."
 
-#~ msgid "BuildingCollector"
-#~ msgstr "Constructor"
-
-#~ msgid "HunterCollector"
-#~ msgstr "Cazador"
-
 #~ msgid "Merchant Buildings"
 #~ msgstr "Edificios de los mercantes"
 
-#~ msgid "AnimalCarriage"
-#~ msgstr "Carruaje"
-
 #~ msgid " Load Game "
 #~ msgstr " Cargar partida"
-
-#~ msgid "SettlerCollector"
-#~ msgstr "Colono"
 
 #~ msgid " Continue Game "
 #~ msgstr " Continuar partida "

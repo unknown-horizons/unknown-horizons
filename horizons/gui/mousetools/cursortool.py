@@ -24,18 +24,16 @@ from fife import fife
 import horizons.main
 
 from horizons.util import Point
-from horizons.util.living import LivingObject
 
-class CursorTool(fife.IMouseListener, LivingObject):
+class CursorTool(fife.IMouseListener):
 	"""Basic tool for cursors."""
 	def __init__(self, session):
 		super(CursorTool, self).__init__()
 		self.session = session
 		horizons.main.fife.eventmanager.addMouseListener(self)
 
-	def end(self):
+	def remove(self):
 		horizons.main.fife.eventmanager.removeMouseListener(self)
-		super(CursorTool, self).end()
 
 	def mousePressed(self, evt):
 		pass

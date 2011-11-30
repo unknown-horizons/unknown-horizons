@@ -115,7 +115,6 @@ class BuildRelatedTab(OverviewTab):
 			instance.deselect()
 		self.instance.session.selected_instances.clear()
 
-		self.instance.session.cursor = BuildingTool(self.instance.session, \
-		                                            Entities.buildings[building_id], \
-		                                            ship=None,
-		                                            build_related=self.instance)
+		self.instance.session.set_cursor('building', Entities.buildings[building_id], \
+		                                             ship=None,
+		                                             build_related=self.instance)

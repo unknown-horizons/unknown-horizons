@@ -24,7 +24,7 @@ from fife import fife
 import horizons.main
 
 from horizons.entities import Entities
-from horizons.gui.mousetools import SelectionTool, BuildingTool,  NavigationTool
+from horizons.gui.mousetools import  NavigationTool
 
 
 class PipetteTool(NavigationTool):
@@ -36,15 +36,15 @@ class PipetteTool(NavigationTool):
 		super(PipetteTool, self).__init__(session)
 		self.session.gui.on_escape = self.on_escape
 		self.renderer = session.view.renderer['InstanceRenderer']
-		horizons.main.fife.set_cursor('pipette')
+		horizons.main.fife.set_cursor_image('pipette')
 
-	def end(self):
-		horizons.main.fife.set_cursor('default')
-		super(PipetteTool, self).end()
+	def remove(self):
+		self._remove_coloring()
+		horizons.main.fife.set_cursor_image('default')
+		super(PipetteTool, self).remove()
 
 	def on_escape(self):
-		self._remove_coloring()
-		self.session.cursor = SelectionTool(self.session)
+		self.session.set_cursor()
 
 	def mouseMoved(self,  evt):
 		self.update_coloring(evt)
@@ -53,10 +53,7 @@ class PipetteTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			obj = self._get_object(evt)
 			if obj:
-				# clean up before end, it could interfere with other colorings
-				self._remove_coloring()
-				self.session.cursor = BuildingTool(self.session, \
-				                                   Entities.buildings[obj.id])
+				self.session.set_cursor('building', Entities.buildings[obj.id])
 			evt.consume()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			self.on_escape()

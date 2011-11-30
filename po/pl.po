@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-09-15 22:21+0200\n"
 "Last-Translator: mtfk <mitfik@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,12 @@ msgstr "Nowa osada została założona przez gracza ${player}."
 msgid "A new world has been created."
 msgstr "Nowy świat został utworzony."
 
+# Unit
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "AnimalCarriage"
+msgstr "Wóz"
+
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
@@ -56,6 +62,11 @@ msgstr "Port"
 #: database files sql
 msgid "Brickyard"
 msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr "Budowniczy"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -110,6 +121,16 @@ msgstr "Lekarz"
 msgid "Farm"
 msgstr "Farma"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr "Hodowca"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr "Rolnik"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -153,6 +174,11 @@ msgstr ""
 msgid "Hunter's Tent"
 msgstr "Namiot myśliwego"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr "Myśliwy"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -174,6 +200,12 @@ msgstr "Punkt obserwacyjny"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Obóz drwali"
+
+# Unit
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr "Drwal"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -239,6 +271,11 @@ msgstr "Zrzut erkanu został zapisany w ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr "Osadnik"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Owca"
 
@@ -264,6 +301,11 @@ msgstr "Część z osadników właśnie się wyprowadziła."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Namiot składowy"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr "Magazynier"
 
 # Building
 #. This is a database entry: the name of a building.
@@ -852,11 +894,10 @@ msgstr "Błąd:"
 msgid "Unknown savedate"
 msgstr "Nieznany zapis gry\n"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, fuzzy
-msgid "Saved at %s"
-msgstr "Zapisano na %s\n"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -3311,15 +3352,8 @@ msgstr "FIFE nie zostało znalezione."
 #~ msgid "NEW GAME - SINGLEPLAYER"
 #~ msgstr "NOWA GRA - POJEDYNCZY GRACZ"
 
-#~ msgid "FarmAnimalCollector"
-#~ msgstr "Hodowca"
-
 #~ msgid " Help "
 #~ msgstr " Pomoc"
-
-# Unit
-#~ msgid "LumberjackCollector"
-#~ msgstr "Drwal"
 
 #~ msgid "The random map features is still in active development. "
 #~ msgstr "Random funkcji map jest nadal aktywny w rozwoju. "
@@ -3340,12 +3374,6 @@ msgstr "FIFE nie zostało znalezione."
 #~ msgid "Settler Overview"
 #~ msgstr "Osadnik Opis"
 
-#~ msgid "FieldCollector"
-#~ msgstr "Rolnik"
-
-#~ msgid "StorageCollector"
-#~ msgstr "Magazynier"
-
 #~ msgid "Yeah, you made it..."
 #~ msgstr "Wspaniale!"
 
@@ -3357,21 +3385,8 @@ msgstr "FIFE nie zostało znalezione."
 #~ "Jednak odnośnik ten\n"
 #~ "nigdzie nie prowadzi."
 
-#~ msgid "BuildingCollector"
-#~ msgstr "Budowniczy"
-
-#~ msgid "HunterCollector"
-#~ msgstr "Myśliwy"
-
-# Unit
-#~ msgid "AnimalCarriage"
-#~ msgstr "Wóz"
-
 #~ msgid " Load Game "
 #~ msgstr " Wczytaj grę"
-
-#~ msgid "SettlerCollector"
-#~ msgstr "Osadnik"
 
 #~ msgid " Continue Game "
 #~ msgstr "Kontynuuj grę"

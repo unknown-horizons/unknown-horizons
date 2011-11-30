@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
-"PO-Revision-Date: 2011-10-30 05:20+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
+"PO-Revision-Date: 2011-11-29 02:00+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -25,12 +25,17 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement has been created by ${player}."
-msgstr "En ny bosättning har skapats av ${player}"
+msgstr "En ny bosättning har skapats av ${player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
 msgstr "En ny värld har skapats."
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "AnimalCarriage"
+msgstr ""
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -51,6 +56,11 @@ msgstr "Handelskontor"
 #: database files sql
 msgid "Brickyard"
 msgstr "Tegelbruk"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -103,6 +113,16 @@ msgstr "Läkare"
 msgid "Farm"
 msgstr "Gård"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -147,6 +167,11 @@ msgstr "Fiskebåt"
 msgid "Hunter's Tent"
 msgstr "Jägare"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -168,6 +193,11 @@ msgstr "Utkiksplats"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Skogshuggare"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -227,6 +257,11 @@ msgstr "Skärmdump har sparats till ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr ""
 
@@ -249,6 +284,11 @@ msgstr "Några av din nybyggare har flyttat ut."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Förvaringstält"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -477,7 +517,6 @@ msgstr "fisk"
 msgid "food"
 msgstr "föda"
 
-# resource: feeling of coziness
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
@@ -707,7 +746,7 @@ msgstr ""
 # Fritt översatt.
 #: horizons/engine.py:280
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
 msgstr "Inställt språk %(lang)s vid %(place)s kunde inte laddas"
 
@@ -829,11 +868,10 @@ msgstr "Fel:"
 msgid "Unknown savedate"
 msgstr "Okänt spardatum"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Sparad den %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -2808,6 +2846,7 @@ msgstr ""
 
 # 81%
 #: horizons/main.py:374 horizons/savegamemanager.py:415
+#, python-format
 #, python-format, fuzzy
 msgid "Error: Cannot find campaign \"%s\"."
 msgstr "Fel: Kan inte hitta karta \"%s\"."
@@ -2827,9 +2866,8 @@ msgid "Not possible"
 msgstr "Inte möjligt"
 
 #: horizons/mpsession.py:50
-#, fuzzy
 msgid "You cannot change the speed of a multiplayer game"
-msgstr "Du kan inte ändra hastighet i ett flespelar spel."
+msgstr "Du kan inte ändra hastighet i ett flespelar spel"
 
 #: horizons/mpsession.py:64 horizons/mpsession.py:66 horizons/mpsession.py:68
 #: horizons/mpsession.py:70
@@ -2844,6 +2882,7 @@ msgstr ""
 
 # 83%
 #: horizons/savegamemanager.py:420
+#, python-format
 #, python-format, fuzzy
 msgid "Error: Cannot find campaign with file \"%s\"."
 msgstr "Fel: Kan inte hitta scenario med fil \"%s\"."
@@ -2882,7 +2921,7 @@ msgstr ""
 
 #: horizons/spsession.py:132
 msgid "No quicksaves found"
-msgstr "Inga snabbsparade spel hittade."
+msgstr "Inga snabbsparade spel hittade"
 
 #: horizons/spsession.py:132
 msgid "You need to quicksave before you can quickload."
@@ -3087,6 +3126,11 @@ msgstr ""
 #: run_uh.py:387
 msgid "FIFE was not found."
 msgstr "FIFE kunde inte hittas."
+
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Sparad den %s"
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Okänt spardatum\n"

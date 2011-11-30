@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-11-05 04:28+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,11 @@ msgstr "Um novo mundo foi criado."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr "Javali"
 
@@ -52,6 +57,11 @@ msgstr "Feitoria"
 #: database files sql
 msgid "Brickyard"
 msgstr "Fábrica de tijolos"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -103,6 +113,16 @@ msgstr "Doutor"
 msgid "Farm"
 msgstr "Fazenda"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -145,6 +165,11 @@ msgstr "Huker"
 msgid "Hunter's Tent"
 msgstr "Tenda de caçador"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr ""
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -164,6 +189,11 @@ msgstr "Vigia"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Acampamento de lenhadores"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -222,6 +252,11 @@ msgstr "Captura de tela gravada em ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr ""
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Ovelha"
 
@@ -244,6 +279,11 @@ msgstr "Alguns dos seus colonos abandonaram a colônia."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Armazém"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr ""
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -818,11 +858,10 @@ msgstr "Erro:"
 msgid "Unknown savedate"
 msgstr "Data de salvamento desconhecida"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Salvo em %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -2809,14 +2848,14 @@ msgstr "Erro: Impossível localizar campanha do arquivo \"%s\"."
 # 81%
 #: horizons/savegamemanager.py:438
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Error: Cannot find scenario \"%s\"."
 msgstr "Erro: Não foi possível encontrar o cenário \"%s\"."
 
 # 83%
 #: horizons/savegamemanager.py:443
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Error: Cannot find scenario with file \"%s\"."
 msgstr "Erro: Não foi possível encontrar o cenário para o arquivo \"%s\"."
 
@@ -2891,7 +2930,8 @@ msgid "Going to %s"
 msgstr "Indo para %s"
 
 #: horizons/world/units/ship.py:469
-#, python-format, 
+#, python-format
+#, python-format,
 msgid "Going to %(x)d, %(y)d"
 msgstr "Indo para %(x)d, %(y)d"
 
@@ -2901,7 +2941,8 @@ msgid "Idle at %s"
 msgstr "Ocioso em %s"
 
 #: horizons/world/units/ship.py:474
-#, python-format, 
+#, python-format
+#, python-format,
 msgid "Idle at %(x)d, %(y)d"
 msgstr "Ocioso em %(x)d, %(y)d"
 
@@ -3072,6 +3113,11 @@ msgstr "Obrigado por jogar o Unknown Horizons!"
 #: run_uh.py:387
 msgid "FIFE was not found."
 msgstr "FIFE não encontrado."
+
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Salvo em %s"
 
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Data de salvamento desconhecida\n"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-10-03 03:18+0200\n"
+"POT-Creation-Date: 2011-10-03 05:40+0200\n"
 "PO-Revision-Date: 2011-11-07 18:57+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,11 @@ msgstr "En ny verden har blitt skapt."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "AnimalCarriage"
+msgstr "Dyrekjerre"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Boar"
 msgstr ""
 
@@ -51,6 +56,11 @@ msgstr "Filial"
 #: database files sql
 msgid "Brickyard"
 msgstr "Mursteinsverk"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "BuildingCollector"
+msgstr "BuildingCollector"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -102,6 +112,16 @@ msgstr ""
 msgid "Farm"
 msgstr "Gård"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FarmAnimalCollector"
+msgstr "FarmAnimalCollector"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "FieldCollector"
+msgstr "FieldCollector"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
@@ -144,6 +164,11 @@ msgstr ""
 msgid "Hunter's Tent"
 msgstr "Jegertelt"
 
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "HunterCollector"
+msgstr "HunterCollector"
+
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
@@ -163,6 +188,11 @@ msgstr "Utsiktstårn"
 #: database files sql
 msgid "Lumberjack Camp"
 msgstr "Tømmerhuggers leir"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "LumberjackCollector"
+msgstr "LumberjackCollector"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -222,6 +252,11 @@ msgstr "Skjermdump lagret som ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
+msgid "SettlerCollector"
+msgstr "SettlerCollector"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
 msgid "Sheep"
 msgstr "Sau"
 
@@ -244,6 +279,11 @@ msgstr "Noen av bosetterne dine flyttet ut."
 #: database files sql
 msgid "Storage Tent"
 msgstr "Lagertelt"
+
+#. This is a database entry: the name of a unit.
+#: database files sql
+msgid "StorageCollector"
+msgstr "StorageCollector"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -811,11 +851,10 @@ msgstr "Feil:"
 msgid "Unknown savedate"
 msgstr "Lagringsdato ukjent"
 
-# 91%
 #: horizons/gui/gui.py:428
-#, python-format, 
-msgid "Saved at %s"
-msgstr "Lagret i %s"
+#, python-format
+msgid "Saved at %(time)s"
+msgstr ""
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -987,7 +1026,6 @@ msgstr ""
 msgid "Island size deviation:"
 msgstr ""
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:237
 msgid "Resource density:"
 msgstr ""
@@ -3052,6 +3090,11 @@ msgstr "Takk for at du spiller Unknown Horizons!"
 msgid "FIFE was not found."
 msgstr "FIFE ble ikke funnet."
 
+# 91%
+#, python-format, 
+#~ msgid "Saved at %s"
+#~ msgstr "Lagret i %s"
+
 #~ msgid "Unknown savedate\n"
 #~ msgstr "Lagringsdato ukjent\n"
 
@@ -3222,14 +3265,8 @@ msgstr "FIFE ble ikke funnet."
 #~ msgid "NEW GAME - MULTIPLAYER"
 #~ msgstr "NYTT SPILL - FLERSPILLER"
 
-#~ msgid "FarmAnimalCollector"
-#~ msgstr "FarmAnimalCollector"
-
 #~ msgid " Help "
 #~ msgstr " Hjelp "
-
-#~ msgid "LumberjackCollector"
-#~ msgstr "LumberjackCollector"
 
 #~ msgid "Building Overview"
 #~ msgstr "Byggingsoversikt"
@@ -3256,14 +3293,8 @@ msgstr "FIFE ble ikke funnet."
 #~ msgid "Settler Overview"
 #~ msgstr "Byggingsoversikt"
 
-#~ msgid "FieldCollector"
-#~ msgstr "FieldCollector"
-
 #~ msgid "CREATE GAME - MULTIPLAYER"
 #~ msgstr "OPPRETT SPILL - FLERSPILLER"
-
-#~ msgid "StorageCollector"
-#~ msgstr "StorageCollector"
 
 #~ msgid "Yeah, you made it..."
 #~ msgstr "Du klarte det..."
@@ -3274,23 +3305,11 @@ msgstr "FIFE ble ikke funnet."
 #~ msgid "But this is a deadlink, sorry."
 #~ msgstr "Men dette er en død lenke, beklager."
 
-#~ msgid "BuildingCollector"
-#~ msgstr "BuildingCollector"
-
-#~ msgid "HunterCollector"
-#~ msgstr "HunterCollector"
-
 #~ msgid "Merchant Buildings"
 #~ msgstr "Kjøpmenns bygninger"
 
-#~ msgid "AnimalCarriage"
-#~ msgstr "Dyrekjerre"
-
 #~ msgid " Load Game "
 #~ msgstr " Åpne Spill "
-
-#~ msgid "SettlerCollector"
-#~ msgstr "SettlerCollector"
 
 #~ msgid " Continue Game "
 #~ msgstr " Fortsett spillet "

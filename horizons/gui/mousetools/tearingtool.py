@@ -24,7 +24,6 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.building import Tear
 from horizons.util import Point
 
@@ -32,7 +31,6 @@ class TearingTool(NavigationTool):
 	"""
 	Represents a dangling tool to remove (tear) buildings.
 	"""
-
 	tear_selection_color = (255, 255, 255)
 
 	def __init__(self, session):
@@ -42,13 +40,14 @@ class TearingTool(NavigationTool):
 		self.oldedges = None
 		self.tear_tool_active = True
 		self.session.gui.on_escape = self.on_escape
-		horizons.main.fife.set_cursor("tearing")
+		self.session.ingame_gui.hide_menu()
+		horizons.main.fife.set_cursor_image("tearing")
 
-	def end(self):
+	def remove(self):
 		self._mark()
 		self.tear_tool_active = False
-		horizons.main.fife.set_cursor("default")
-		super(TearingTool, self).end()
+		horizons.main.fife.set_cursor_image("default")
+		super(TearingTool, self).remove()
 
 	def mouseDragged(self, evt):
 		coords = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
@@ -64,8 +63,7 @@ class TearingTool(NavigationTool):
 		evt.consume()
 
 	def on_escape(self):
-		# cleanup in end() is called implicitly
-		self.session.cursor = SelectionTool(self.session)
+		self.session.set_cursor()
 
 	def mouseReleased(self,  evt):
 		"""Tear selected instances and set selection tool as cursor"""
@@ -77,10 +75,11 @@ class TearingTool(NavigationTool):
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
 				Tear(i).execute(self.session)
+			self.selected = set()
 
 			if not evt.isShiftPressed() and not horizons.main.fife.get_uh_setting('UninterruptedBuilding'):
 				self.tear_tool_active = False
-				self.session.cursor = SelectionTool(self.session)
+				self.on_escape()
 			evt.consume()
 
 	def mousePressed(self,  evt):
