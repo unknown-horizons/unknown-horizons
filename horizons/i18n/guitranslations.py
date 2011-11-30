@@ -578,16 +578,6 @@ def set_translations():
 		"exchange_label"              : ("text"    , _("Exchange:")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Trade")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("10t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("1t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("20t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("50t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("5t")),
 		# (text of widget: selling_label)
 		"selling_label"               : ("text"    , _("Selling")),
 		# (text of widget: ship_label)
@@ -601,16 +591,6 @@ def set_translations():
 		"exchange_label"              : ("text"    , _("Exchange:")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Trade")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("10t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("1t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("20t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("50t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("5t")),
 		# (text of widget: ship_label)
 		"ship_label"                  : ("text"    , _("Ship:")),
 		# (text of widget: trade_with_label)
