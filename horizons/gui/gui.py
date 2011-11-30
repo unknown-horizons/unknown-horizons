@@ -255,26 +255,17 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
 
 		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
-		"""
 		if mode == 'save': # only show enter_filename on save
 			self.current.findChild(name='enter_filename').show()
-			print 'show'
 		else:
-			print 'hide'
-			#import pdb ; pdb.set_trace()
-			#self.current.findChild(name='enter_filename').hide()
-			"""
-			self.current.findChild(name='enter_filename').parent.removeChild(
-			self.current.findChild(name='enter_filename')
-			)
-			"""
+			self.current.findChild(name='enter_filename').hide()
+		"""
 
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
 			if self.current.collectData('savegamelist') != -1: # check if we actually collect valid data
-				if mode == 'save':
-					self.current.distributeData({'savegamefile' : \
-					                             map_file_display[self.current.collectData('savegamelist')]})
+				self.current.distributeData({'savegamefile' : \
+				                             map_file_display[self.current.collectData('savegamelist')]})
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
 		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
@@ -286,18 +277,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
-		events = { 'okButton'     : True,
-		           'cancelButton' : False,
-		           'deleteButton' :
-		           'delete' }
-		self.current.show()
-		if mode =='save':
-			self.current.findChild(name='enter_filename').show()
-			events['savegamefile'] = True
-		else:
-			self.current.findChild(name='enter_filename').hide()
-
-		retval = self.show_dialog(self.current, events, onPressEscape = False)
+		retval = self.show_dialog(self.current, {
+		                                          'okButton'     : True,
+		                                          'cancelButton' : False,
+		                                          'deleteButton' : 'delete',
+		                                          'savegamefile' : True
+		                                        },
+		                                        onPressEscape = False)
 		if not retval: # cancelled
 			self.current = old_current
 			return
