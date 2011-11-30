@@ -26,7 +26,9 @@ from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableLine, BuildableSingle
 from horizons.scheduler import Scheduler
 
-class Path(BasicBuilding, BuildableLine):
+
+class Path(object):
+	"""Object with path functionality"""
 	walkable = True
 	show_buildingtool_preview_tab = False
 	layer = LAYERS.FIELDS
@@ -50,14 +52,13 @@ class Path(BasicBuilding, BuildableLine):
 			# do it once when everything is finished.
 			Scheduler().add_new_object(self.recalculate_orientation, self, run_in=0)
 
-
 	def remove(self):
 		super(Path, self).remove()
 		self.island.path_nodes.unregister_road(self)
 		self.recalculate_surrounding_tile_orientation()
 
 	def recalculate_surrounding_tile_orientation(self):
-		for tile in self.island.get_surrounding_tiles(self.position.origin):
+		for tile in self.island.get_surrounding_tiles(self.position):
 			if tile is not None and tile.object is not None and \
 			   self.island.path_nodes.is_road(tile.x, tile.y):
 				tile.object.recalculate_orientation()
@@ -84,6 +85,10 @@ class Path(BasicBuilding, BuildableLine):
 		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
 		self.act(action, location, True)
+
+class Road(Path, BasicBuilding, BuildableLine):
+	"""Actual buildable road."""
+	pass
 
 class Bridge(BasicBuilding, BuildableSingle):
 	layer = LAYERS.FIELDS

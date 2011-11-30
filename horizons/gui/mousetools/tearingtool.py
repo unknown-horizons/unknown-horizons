@@ -77,6 +77,7 @@ class TearingTool(NavigationTool):
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
 				Tear(i).execute(self.session)
+			self.selected = set()
 
 			if not evt.isShiftPressed() and not horizons.main.fife.get_uh_setting('UninterruptedBuilding'):
 				self.tear_tool_active = False

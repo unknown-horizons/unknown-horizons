@@ -35,7 +35,7 @@ INSERT INTO "building" VALUES(2,2,20,'Fisherman''s Tent','Fisher','production',1
 INSERT INTO "building" VALUES(3,3,10,'Boat Builder','BoatBuilder','boatbuilder',1000,2,2,12,'boat_builder-1',1,'Builds boats and small ships. Built on coast.');
 INSERT INTO "building" VALUES(1,1,10,'Lookout','Housing','housing',1000,1,1,13,NULL,0,'Increases the player''s sight.');
 INSERT INTO "building" VALUES(1,2,10,'Rampart','Housing','housing',1000,0,0,14,NULL,0,'Protects your settlement.');
-INSERT INTO "building" VALUES(1,1,0,'Trail','Path','path',10,0,0,15,'street-1',0,'Needed for collecting goods.');
+INSERT INTO "building" VALUES(1,1,0,'Trail','Road','path',10,0,0,15,'street-1',0,'Needed for collecting goods.');
 INSERT INTO "building" VALUES(1,1,10,'Log','Bridge','path',10,0,0,16,NULL,0,'Road across a river.');
 INSERT INTO "building" VALUES(1,1,0,'Tree','Tree','nature',10,0,0,17,'tree-1',0, 'Tree');
 INSERT INTO "building" VALUES(3,3,0,'Pasture','Field','nature',10,0,0,18,'pasture-1',1,'Raises sheep. Produces wool. Needs a farm.');
