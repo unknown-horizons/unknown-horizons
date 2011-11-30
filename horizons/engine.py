@@ -379,7 +379,7 @@ class Fife(ApplicationBase):
 		self._gotInited = True
 		self.setup_setting_extras()
 
-	def set_cursor(self, which="default"):
+	def set_cursor_image(self, which="default"):
 		"""Sets a certain cursor image.
 		See definition of cursor_images for reference."""
 		self.cursor.set( self.cursor_images[which] )

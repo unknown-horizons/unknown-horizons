@@ -28,9 +28,8 @@ import horizons.main
 
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
-from horizons.gui.mousetools import SelectionTool
+from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool
 from horizons.gui.keylisteners import IngameKeyListener
-from horizons.gui.mousetools import TearingTool
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.view import View
@@ -68,7 +67,6 @@ class Session(LivingObject):
 	view = livingProperty()
 	ingame_gui = livingProperty()
 	keylistener = livingProperty()
-	cursor = livingProperty()
 	world = livingProperty()
 	scenario_eventhandler = livingProperty()
 
@@ -152,13 +150,33 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
+	def toggle_cursor(self, which, *args, **kwargs):
+		"""Alternate between the cursor which and default.
+		args and kwargs are used to construct which."""
+		if self.current_cursor == which:
+			self.set_cursor()
+		else:
+			self.set_cursor(which, *args, **kwargs)
+
+	def set_cursor(self, which='default', *args, **kwargs):
+		"""Sets the mousetool (i.e. cursor).
+		This is done here for encapsulation and control over destructors.
+		Further arguments are passed to the mouse tool constructor."""
+		self.cursor.remove()
+		self.current_cursor = which
+		klass = {
+			'default'   : SelectionTool,
+		  'selection' : SelectionTool,
+		  'tearing'   : TearingTool,
+		  'pipette'   : PipetteTool,
+		  'attacking' : AttackingTool,
+		  'building'  : BuildingTool
+		}[which]
+		self.cursor = klass(self, *args, **kwargs)
+
 	def toggle_destroy_tool(self):
 		"""Initiate the destroy tool"""
-		if not hasattr(self.cursor, 'tear_tool_active') or not self.cursor.tear_tool_active:
-			self.cursor = TearingTool(self)
-			self.ingame_gui.hide_menu()
-		else:
-			self.cursor = SelectionTool(self)
+		self.toggle_cursor('tearing')
 
 	def autosave(self):
 		raise NotImplementedError
@@ -231,6 +249,7 @@ class Session(LivingObject):
 				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
 
 		# cursor has to be inited last, else player interacts with a not inited world with it.
+		self.current_cursor = 'default'
 		self.cursor = SelectionTool(self)
 		# Set cursor correctly, menus might need to be opened.
 		# Open menus later, they may need unit data not yet inited

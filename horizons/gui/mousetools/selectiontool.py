@@ -36,12 +36,12 @@ class SelectionTool(NavigationTool):
 		self.deselect_at_end = True # Set this to deselect selections while exiting SelectionTool
 		self.session.gui.on_escape = self.session.gui.toggle_pause
 
-	def end(self):
+	def remove(self):
 		# Deselect if needed while exiting
 		if self.deselect_at_end:
 			for i in self.session.selected_instances:
 				i.deselect()
-		super(SelectionTool, self).end()
+		super(SelectionTool, self).remove()
 
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
@@ -155,10 +155,10 @@ class SelectionTool(NavigationTool):
 				break
 
 		if attacking_unit_found and not isinstance(self.session.cursor, AttackingTool):
-			self.session.cursor = AttackingTool(self.session)
+			self.session.set_cursor('attacking')
 		if not attacking_unit_found and isinstance(self.session.cursor, AttackingTool):
-			self.session.cursor = SelectionTool(self.session)
-			horizons.main.fife.set_cursor('default')
+			self.session.set_cursor()
+			horizons.main.fife.set_cursor_image('default')
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():

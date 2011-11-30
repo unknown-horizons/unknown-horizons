@@ -170,11 +170,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.ingame_gui.show_save_map_dialog()
 		elif keystr == 'o':
 			# copy mode: pipette tool
-			from horizons.gui.mousetools import PipetteTool, SelectionTool
-			if isinstance(self.session.cursor, PipetteTool):
-				self.session.cursor = SelectionTool(self.session)
-			else:
-				self.session.cursor = PipetteTool(self.session)
+			self.session.toggle_cursor('pipette')
 		else:
 			return
 		evt.consume()

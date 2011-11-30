@@ -71,10 +71,10 @@ class NavigationTool(CursorTool):
 
 		self.tooltip = CoordsTooltip.get_instance(self)
 
-	def end(self):
+	def remove(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
-		super(NavigationTool, self).end()
+		super(NavigationTool, self).remove()
 
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
@@ -135,7 +135,7 @@ class NavigationTool(CursorTool):
 			y += 6 + mousepoint.y - self.session.view.cam.getViewPort().bottom()
 		x *= 10
 		y *= 10
-		self.session.view.autoscroll(x,y)
+		self.session.view.autoscroll(x, y)
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
