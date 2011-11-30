@@ -99,6 +99,9 @@ class BuildingClass(type):
 					 horizons/world/storageholder.py is the next place to go.
 					 """
 
+	def __str__(self):
+		return "Building[" + str(self.id) + "](" + self._name + ")"
+
 	def _loadObject(cls):
 		"""Loads building from the db.
 		"""

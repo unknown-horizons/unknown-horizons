@@ -112,7 +112,7 @@ class Build(Command):
 		  action_set_id=self.action_set_id, \
 		  **self.data
 		)
-		building.initialize()
+		building.initialize(**self.data)
 
 		island.add_building(building, issuer)
 

@@ -30,6 +30,7 @@ from horizons.world.building.building import SelectableBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.scheduler import Scheduler
 from horizons.util import Callback
+from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -76,6 +77,11 @@ class AnimalField(CollectingBuilding, Field):
 class Tree(ProducerNatureBuilding):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
+
+	def initialize(self, start_finished=False, **kwargs):
+		super(Tree, self).initialize( **kwargs )
+		if start_finished:
+			self.get_component(Producer).finish_production_now()
 
 class ResourceDeposit(SelectableBuilding, NatureBuilding):
 	"""Class for stuff like clay deposits."""

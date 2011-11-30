@@ -64,6 +64,9 @@ class Producer(Component):
 					continue  # It's set to false, don't add
 				self.create_production(prod_line, attributes)
 
+		if self.__start_finished:
+			self.finish_production_now()
+
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
 		print "Instance id:", self.instance.id
@@ -292,6 +295,9 @@ class Producer(Component):
 		if not self.is_active():
 			l.append( DecommissionedStatus() )
 		return l
+
+	def __str__(self):
+		return "Producer(owner: " + str(self.instance) + ")"
 
 
 class QueueProducer(Producer):
