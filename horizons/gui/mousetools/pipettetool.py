@@ -72,8 +72,8 @@ class PipetteTool(NavigationTool):
 
 	def update_coloring(self, evt):
 		obj = self._get_object(evt)
+		self._remove_coloring()
 		if obj:
-			self._remove_coloring()
 			self._add_coloring(obj)
 
 	def _is_buildable(self, building_id):
