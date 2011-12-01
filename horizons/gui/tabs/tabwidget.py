@@ -121,11 +121,12 @@ class TabWidget(object):
 	def _draw_widget(self):
 		"""Draws the widget, but does not show it automatically"""
 		self.current_tab.position = (self.widget.position[0] + self.widget.size[0] - 11,
-			self.widget.position[1] - 52)
+		                             self.widget.position[1] - 52)
 		self.current_tab.refresh()
 
 	def show(self):
 		"""Show the current widget"""
+		self.current_tab.ensure_loaded()
 		self._draw_widget()
 		self.current_tab.show()
 		self.widget.show()

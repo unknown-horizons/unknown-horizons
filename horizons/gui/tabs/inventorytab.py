@@ -27,20 +27,23 @@ from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import WEAPONS
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
+from horizons.util.gui import load_uh_widget
 
 class InventoryTab(TabInterface):
 
-	def __init__(self, instance = None, widget = 'island_inventory.xml', \
+	def __init__(self, instance = None, widget = 'island_inventory.xml',
 	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
-		super(InventoryTab, self).__init__(widget = widget)
+		super(InventoryTab, self).__init__(widget = widget, lazy_loading=True)
 		self.instance = instance
-		self.init_values()
 		self.button_up_image = icon_path % 'u'
 		self.button_active_image = icon_path % 'a'
 		self.button_down_image = icon_path % 'd'
 		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Settlement inventory")
-		self.widget.child_finder('inventory').init(self.instance.session.db, \
+
+	def _lazy_loading_init(self):
+		super(InventoryTab, self)._lazy_loading_init()
+		self.widget.child_finder('inventory').init(self.instance.session.db,
 		                                           self.instance.inventory)
 
 	def refresh(self):
