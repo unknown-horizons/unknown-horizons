@@ -42,7 +42,7 @@ class PlayersSettlements(StatsWidget):
 
 		sequence_number = 0
 		events = {}
-		for settlement in self.session.world.settlements:
+		for settlement in sorted(self.session.world.settlements, key = lambda settlement: (settlement.name, settlement.worldid)):
 			if settlement.owner is self.session.world.player:
 				sequence_number += 1
 				name_label = self._add_line_to_gui(settlement, sequence_number)
