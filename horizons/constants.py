@@ -72,7 +72,7 @@ class VERSION:
 ## WORLD
 class UNITS:
 	# ./development/print_db_data.py unit
-	PLAYER_SHIP_CLASS          = 1000001
+	PLAYER_SHIP_CLASS          = 1000020
 	BUILDING_COLLECTOR_CLASS   = 1000002
 	FISHER_BOAT                = 1000004
 	PIRATE_SHIP_CLASS          = 1000005
