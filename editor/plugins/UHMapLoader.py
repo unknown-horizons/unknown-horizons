@@ -72,6 +72,11 @@ class MapLoader:
 		# load all islands
 		islands = map_db("SELECT x, y, file FROM island")
 		for island in islands:
+			name = island[2]
+			if name[0:6] == "random":
+				raise RuntimeError("Map contains random generated islands. Cannot load that")
+
+		for island in islands:
 			self._loadIsland(ground_layer, model, *island)
 
 		# load all buildings
