@@ -143,10 +143,6 @@ class ResourceHandler(ComponentHolder):
 		@return Production instance"""
 		raise NotImplementedError, "This function has to be overridden!"
 
-	def get_production_progress(self):
-		"""Can be used to return the overall production process."""
-		raise NotImplementedError, "This function has to be overridden!"
-
 	def pickup_resources(self, res, amount, collector):
 		"""Try to get amount number of resources of id res_id that are in stock
 		and removes them from the stock. Will return smaller amount if not

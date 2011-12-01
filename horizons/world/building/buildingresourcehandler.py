@@ -104,18 +104,6 @@ class UnitProducerBuilding(ProducerBuilding):
 		self.add_component(QueueProducer())
 		self.set_active(active=False)
 
-
-	def get_production_progress(self):
-		"""Returns the current progress of the active production."""
-		for production in self._productions.itervalues():
-			# Always return first production
-			return production.progress
-		for production in self._inactive_productions.itervalues():
-			# try inactive ones, if no active ones are found
-			# this makes e.g. the boatbuilder's progress bar constant when you pause it
-			return production.progress
-		return 0 # No production available
-
 	def on_queue_element_finished(self, production):
 		self.__create_unit()
 		super(UnitProducerBuilding, self).on_queue_element_finished(production)

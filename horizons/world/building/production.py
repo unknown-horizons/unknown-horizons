@@ -141,7 +141,12 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		"""
 		# needs to be inited before super(), since that will call the _on_production_changed hook
 		super(Mine, self).__init__(*args, **kwargs)
-		self.__init(deposit_class, mine_empty_msg_shown=False)
+		self.__inventory = inventory
+		self.__deposit_class = deposit_class
+
+	def initialize(self, deposit_class, inventory, **kwargs):
+		super(Mine, self).initialize( ** kwargs)
+		self.__init(deposit_class=deposit_class, mine_empty_msg_shown=False)
 		for res, amount in inventory.iteritems():
 			self.get_component(StorageComponent).inventory.alter(res, amount)
 

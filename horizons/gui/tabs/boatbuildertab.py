@@ -48,7 +48,7 @@ class BoatbuilderTab(OverviewTab):
 		needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 
 		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
-		production_lines = self.instance.get_production_lines()
+		production_lines = self.instance.get_component(Producer).get_production_lines()
 		if production_lines:
 
 			if cancel_container is None:
@@ -64,7 +64,7 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.progress_container, self.widget.findChild(name="BB_needed_resources_container"))
 				progress_container = main_container.progress_container
 
-			progress = self.instance.get_production_progress()
+			progress = self.instance.get_component(Producer).get_production_progress()
 			self.widget.findChild(name='progress').progress = progress*100
 			self.widget.findChild(name='BB_progress_perc').text = unicode(math.floor(progress*100))+u"%"
 
