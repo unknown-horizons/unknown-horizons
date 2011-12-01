@@ -316,7 +316,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
-		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)
@@ -329,6 +328,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.deselect()
 			if self in self.session.selected_instances:
 				self.session.selected_instances.remove(self)
+		super(Ship, self).remove()
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
