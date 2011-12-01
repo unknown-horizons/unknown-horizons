@@ -472,11 +472,11 @@ def set_translations():
 		# (text of widget: name_label)
 		"name_label"                  : ("text"    , _("Name:")),
 		# (tooltip of widget: collector_utilisation_label)
-		"collector_utilisation_label" : ("tooltip" , _("Collector utilisation:")),
+		"collector_utilisation_label" : ("tooltip" , _("Collector utilisation")),
 		# (tooltip of widget: running_costs_label)
 		"running_costs_label"         : ("tooltip" , _("Running costs")),
-		# (tooltip of widget: collector_utilisation) Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)
-		"collector_utilisation"       : ("tooltip" , _("Collector utilisation:")),
+		# (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
+		"collector_utilisation"       : ("tooltip" , _("Collector utilisation")),
 		# (tooltip of widget: running_costs)
 		"running_costs"               : ("tooltip" , _("Running costs")),
 		},
