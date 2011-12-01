@@ -52,11 +52,13 @@ class MapLoader:
 		return True
 
 	def loadResource(self, path):
-
 		""" Loads the map from the given sqlite file """
+		# creates absolute path to mapfile
+		path = os.path.join(util.getUHPath(), path)
 		model = self._engine.getModel()
 		map = model.createMap(path)
 		map.setFilename(path)
+		
 		grid = model.getCellGrid(self.GRID_TYPE)
 
 		# add layers
@@ -66,7 +68,7 @@ class MapLoader:
 		# add camera
 		self._createCamera(building_layer, map)
 
-		map_db = DbReader(os.path.join(util.getUHPath(), path))
+		map_db = DbReader(path)
 		# TODO: check the map version number
 
 		# load all islands

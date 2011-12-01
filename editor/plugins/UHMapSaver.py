@@ -25,15 +25,31 @@ import horizons.main # necessary so the correct load order of all modules is gua
 import scripts.editor
 import scripts.plugin
 
+import os.path
+import shutil
+
+import util
+
+TEMPLATE_DATAFORMAT_PATH = os.path.join(util.getUHPath(),'content','savegame_template.sqlite')
+
 class MapSaver:
 	def __init__(self, filepath, engine, map, importList):
+		# copy template to save map
+		self.filepath = filepath
 		pass
 
 	def saveResource(self):
-		print "save sucessful"
+		try:
+			savepath = self.filepath + '/.saved.sqlite'
+			shutil.copy(TEMPLATE_DATAFORMAT_PATH, savepath)
+		except IOError as exception:
+			print "Did not save map!"
+			raise exception
+		else:	
+			print "Successfully saved " + savepath 
 
 class UHMapSaver(scripts.plugin.Plugin):
-	""" The {UHMapLoader} allows to load the UH map format in FIFEdit
+	""" The {UHMapSaver} allows to load the UH map format in FIFEdit
 	"""
 
 	def __init__(self):
