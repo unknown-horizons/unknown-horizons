@@ -323,7 +323,6 @@ class Ship(Unit):
 		self.get_component(ShipNameComponent).set_name(name)
 
 	def remove(self):
-		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)
@@ -336,6 +335,7 @@ class Ship(Unit):
 			self.deselect()
 			if self in self.session.selected_instances:
 				self.session.selected_instances.remove(self)
+		super(Ship, self).remove()
 
 	def create_route(self):
 		self.route = ShipRoute(self)
