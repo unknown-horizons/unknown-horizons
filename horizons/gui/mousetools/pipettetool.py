@@ -31,6 +31,7 @@ class PipetteTool(NavigationTool):
 	"""Tool to select buildings in order to build another building of
 	the type of the selected building"""
 	HIGHLIGHT_COLOR = (0, 200, 90)
+	HIGHLIGHT_NOT_POSSIBLE_COLOR = (200, 90, 90)
 
 	def __init__(self, session):
 		super(PipetteTool, self).__init__(session)
@@ -52,8 +53,10 @@ class PipetteTool(NavigationTool):
 	def mousePressed(self,  evt):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			obj = self._get_object(evt)
-			if obj:
+			if obj and self._is_buildable(obj.id):
 				self.session.set_cursor('building', Entities.buildings[obj.id])
+			elif obj:
+				pass # TODO: error sound
 			evt.consume()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			self.on_escape()
@@ -69,12 +72,21 @@ class PipetteTool(NavigationTool):
 
 	def update_coloring(self, evt):
 		obj = self._get_object(evt)
+		self._remove_coloring()
 		if obj:
-			self._remove_coloring()
 			self._add_coloring(obj)
 
+	def _is_buildable(self, building_id):
+		return self.session.db.get_settlerlvl_of_building(building_id) <= \
+		       self.session.world.player.settler_level
+
 	def _add_coloring(self,  obj):
-		self.renderer.addColored(obj.fife_instance, *self.__class__.HIGHLIGHT_COLOR)
+		if self._is_buildable(obj.id):
+			self.renderer.addColored(obj.fife_instance,
+			                         *self.__class__.HIGHLIGHT_COLOR)
+		else:
+			self.renderer.addColored(obj.fife_instance,
+			                         *self.__class__.HIGHLIGHT_NOT_POSSIBLE_COLOR)
 
 	def _remove_coloring(self):
 		self.renderer.removeAllColored()

@@ -477,8 +477,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
 					details_label.text += _("Savegame version %d") % ( savegame_info['savegamerev'] )
 				else:
-					details_label.text += _("WARNING: Incompatible version %(version)d!") + u"\n" + _("Required version: %(need)d!") \
-					                % {'version' : savegame_info['savegamerev'], 'need' : VERSION.SAVEGAMEREVISION}
+					details_label.text += _("WARNING: Incompatible version %(version)d!") % \
+					                         {'version' : savegame_info['savegamerev']} + u"\n" + \
+					                      _("Required version: %(need)d!") % \
+					                         {'need' : VERSION.SAVEGAMEREVISION}
 			except KeyError:
 				details_label.text += _("Incompatible version")
 

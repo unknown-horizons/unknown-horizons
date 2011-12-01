@@ -154,6 +154,8 @@ class View(ChangeListener):
 			pos.y = self.session.world.min_y
 
 		self.cam.setLocation(loc)
+		for i in ['speech', 'effects']:
+			horizons.main.fife.emitter[i].setPosition(pos.x, pos.y, 1)
 		horizons.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self._changed()
 
