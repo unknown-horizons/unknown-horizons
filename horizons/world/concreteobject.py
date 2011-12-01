@@ -101,6 +101,8 @@ class ConcretObject(WorldObject):
 		Scheduler().add_new_object( Callback(set_action_runtime, self, runtime), self, run_in=0)
 
 	def act(self, action, facing_loc=None, repeating=False):
+		if self._instance is None:
+			print self, "act with instance:", self._instance
 		if facing_loc is None:
 			facing_loc = self._instance.getFacingLocation()
 		if not self.has_action(action):

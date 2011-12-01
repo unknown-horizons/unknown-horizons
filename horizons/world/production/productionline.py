@@ -176,12 +176,6 @@ class ProductionLineObject(object):
 
 		self._init_finished = True
 
-	def __setattr__(self, name, value):
-		if hasattr(self, "_init_finished") and self._init_finished:
-			raise TypeError, 'ProductionLineData is const, use ProductionLine'
-		else:
-			self.__dict__[name] = value
-
 	def __str__(self):
 		return "ProductionLineData(lineid=%s)" % self.id
 

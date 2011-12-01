@@ -39,7 +39,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.componentholder import ComponentHolder
 
 
-class BasicBuilding(ConcretObject, ComponentHolder):
+class BasicBuilding(ComponentHolder, ConcretObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class

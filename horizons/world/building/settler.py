@@ -252,9 +252,10 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.get_component(Producer).has_production_line(upgrade_material_prodline):
 				return # already waiting for res
+			prodline_data = self.session.db.get_production_line_data(upgrade_material_prodline)
 			owner_inventory = self._get_owner_inventory()
 			upgrade_material_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \
-			                                                  upgrade_material_prodline)
+			                                                  upgrade_material_prodline, prodline_data)
 			upgrade_material_production.add_production_finished_listener(self.level_up)
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
