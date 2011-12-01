@@ -59,12 +59,12 @@ class PlayerStats(WorldObject):
 					settlers[building.level] += building.inhabitants
 					settler_buildings[building.level] += 1
 					for production in building.get_component(Producer).get_productions():
-						if production is building._get_upgrade_production():
-							continue
 						if production.get_state() is PRODUCTION.STATES.producing:
-							happiness = production.get_produced_res()[RES.HAPPINESS_ID]
-							for resource_id in production.get_consumed_resources():
-								settler_resources_provided[resource_id] += happiness / production.get_production_time()
+							produced_res = production.get_produced_res()
+							if RES.HAPPINESS_ID in produced_res:
+								happiness = produced_res[RES.HAPPINESS_ID]
+								for resource_id in production.get_consumed_resources():
+									settler_resources_provided[resource_id] += happiness / production.get_production_time()
 
 				# resources held in buildings
 				if building.has_component(StorageComponent) and building.id not in [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS, BUILDINGS.MAIN_SQUARE_CLASS]:

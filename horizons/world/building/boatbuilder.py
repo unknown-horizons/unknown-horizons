@@ -36,4 +36,7 @@ class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, 
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)
+
+	def initialize(self, **kwargs):
+		super(BoatBuilder, self).initialize( ** kwargs)
 		self.get_component(StorageComponent).inventory.limit = 10
