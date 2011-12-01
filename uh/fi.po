@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-11-27 19:56+0200\n"
+"PO-Revision-Date: 2011-12-01 20:41+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -152,7 +152,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Herbary"
-msgstr ""
+msgstr "Yrttitarha"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #. This is a database entry: the name of a unit.
@@ -208,9 +208,8 @@ msgstr "Vuori"
 # 85%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "One of your settler has no main square in it's range."
-msgstr "Yksi uudisasukkaistasi ei ole kauppapaikan kantamassa."
+msgstr "Joku uudisasukkaasi ei ole tarpeeksi lähellä keskustoria."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -305,9 +304,8 @@ msgstr "Teltta"
 # 77%
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
-msgstr "Teltan_riekaleet"
+msgstr "Teltan rauniot"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -322,7 +320,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Toolmaker"
-msgstr "Työkalujen tekijä"
+msgstr "Työkalunvalmistaja"
 
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
@@ -528,7 +526,7 @@ msgstr "ruohoa"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "harmaa"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -543,7 +541,7 @@ msgstr "onnellisuutta"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "yrttejä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -568,7 +566,7 @@ msgstr "lampaan villaa"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "sitruuna"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -608,7 +606,7 @@ msgstr "vaaleanpunainen"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "pioneer"
-msgstr "edelläkävijä"
+msgstr "kansoittaja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -702,7 +700,7 @@ msgstr "keltainen"
 
 #: horizons/engine.py:70
 msgid "Restart required"
-msgstr "Pelin uudelleenkäynnistys"
+msgstr "Uudelleenkäynnistys vaaditaan"
 
 #: horizons/engine.py:71
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -735,14 +733,14 @@ msgid ""
 "Use at own risk!"
 msgstr ""
 "SDL-renderöinti on tarkoitettu vain vararatkaisuksi ja sisältää vakavia "
-"piirtovirheitä. \n"
+"graafisia virheitä. \n"
 "\n"
-"Käyttö omalla vastuulla!"
+"Käyttö vain omalla vastuulla!"
 
 #: horizons/engine.py:280
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Asetettu kieltä %(lang)s, kohdassa %(place)s ei pystytä lataamaan."
+msgstr "Asetettu kieltä %(lang)s, sijainnissa %(place)s ei pystytä lataamaan."
 
 #: horizons/engine.py:528
 msgid "Invalid network port"
@@ -865,7 +863,7 @@ msgstr "Tuntematon tallennuspäivä"
 #: horizons/gui/gui.py:428
 #, python-format
 msgid "Saved at %(time)s"
-msgstr ""
+msgstr "Tallennettu viimeksi %(time)s"
 
 #: horizons/gui/gui.py:432
 #, python-format
@@ -988,8 +986,9 @@ msgstr "Tekijä: "
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
 "Pelin versio eroaa sinun versiostasi. Moninpelissä jokaisella pitää olla "
-"sama versio. Tämä korjautuu jos jokainen pelaaja päivittää viimeisimpään "
-"versioon. Pelin versio: %(gameversion)s Oma versiosi: %(ownversion)s"
+"sama versio. Ongelma poistuu, kunhan jokainen pelaaja päivittää oman pelinsä "
+"viimeisimpään versioon. Pelin versio: %(gameversion)s Oma versiosi: %"
+"(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Wrong version"
@@ -1032,7 +1031,7 @@ msgstr "Kartan koko:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr "Vesi:"
+msgstr "Veden määrä:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
@@ -1078,7 +1077,7 @@ msgstr "Rakenna"
 
 #: horizons/gui/tabs/boatbuildertab.py:36
 msgid "Boat builder overview"
-msgstr "Laivanrakennuksen yleiskatsaus"
+msgstr "Veneenveistämön yleiskatsaus"
 
 #: horizons/gui/tabs/boatbuildertab.py:114
 msgid "Resources still needed:"
@@ -1746,7 +1745,7 @@ msgstr "Napsauta ylänurkan pientä kuvaketta:"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:287
 msgid "Buy or sell resources"
-msgstr "Osta tai myy tavaroita"
+msgstr "Osta tai myy"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:289
@@ -1762,7 +1761,7 @@ msgstr "Valitse raaka-aineet:"
 #. (text of widget: buying_label)
 #: horizons/i18n/guitranslations.py:299 horizons/i18n/guitranslations.py:454
 msgid "Buying"
-msgstr "Ostamassa"
+msgstr "Ostot"
 
 #. (text of widget: headline_balance_label)
 #: horizons/i18n/guitranslations.py:303
@@ -1975,8 +1974,8 @@ msgstr "Luonnonvara"
 #: horizons/i18n/guitranslations.py:484
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Tämä on luonnonvaralöydös, johon voit rakentaa louhoksen kaivaaksesi ylös "
-"resursseja."
+"Tämä on luonnonvaralöydös, josta voit kaivaa ylös resursseja rakentamalla "
+"louhoksen."
 
 #. (text of widget: res_dep_description_lbl2) It == The resource deposit
 #: horizons/i18n/guitranslations.py:486
@@ -2008,14 +2007,14 @@ msgstr "Rakenna asutuskeskus:"
 #. (tooltip of widget: name)
 #: horizons/i18n/guitranslations.py:518
 msgid "Click to change the name of this ship."
-msgstr "Paina vaihtaaksesi tämän aluksen nimen."
+msgstr "Vaihda aluksen nimi napsauttamalla tätä."
 
 #. (text of widget: signal_fire_description_lbl)
 #: horizons/i18n/guitranslations.py:525
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
-"Merkkituli näyttää vapaakauppiaalle, kuinka löytää asutuskeskuksesi, kun "
-"haluat ostaa tai myydä tavaraa."
+"Merkkituli näyttää vapaakauppiaalle reitin sivutoimistollesi, jonka ansiosta "
+"voit myydä ja ostaa tavaraa."
 
 #. (text of widget: trader_description_lbl)
 #: horizons/i18n/guitranslations.py:530
@@ -2859,9 +2858,9 @@ msgstr "Virhe: Ei löydy kampanjaa tiedostolla \"%s\"."
 # 81%
 #: horizons/savegamemanager.py:438
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario \"%s\"."
-msgstr "Virhe: Ei löydetty tallennusta \"%s\"."
+msgstr "Virhe: Tallennusta \"%s\" ei löytynyt."
 
 # 83%
 #: horizons/savegamemanager.py:443
