@@ -39,7 +39,7 @@ class PlayersOverview(StatsWidget):
 
 	def refresh(self):
 		super(PlayersOverview, self).refresh()
-		for player in self.session.world.players:
+		for player in sorted(self.session.world.players, key = lambda player: (-player.get_latest_stats().total_score, player.worldid)):
 			self._add_line_to_gui(player)
 		self._content_vbox.adaptLayout()
 
