@@ -31,9 +31,11 @@ from horizons.util.gui import load_uh_widget
 
 class InventoryTab(TabInterface):
 
+	lazy_loading = True
+
 	def __init__(self, instance = None, widget = 'island_inventory.xml',
 	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
-		super(InventoryTab, self).__init__(widget = widget, lazy_loading=True)
+		super(InventoryTab, self).__init__(widget = widget)
 		self.instance = instance
 		self.button_up_image = icon_path % 'u'
 		self.button_active_image = icon_path % 'a'
@@ -125,9 +127,11 @@ class ShipInventoryTab(InventoryTab):
 
 class FightingShipInventoryTab(ShipInventoryTab):
 
-	def __init__(self, instance = None):
-		widget = 'fighting_ship_inventory.xml'
+	def __init__(self, instance = None, widget = 'fighting_ship_inventory.xml'):
 		super(FightingShipInventoryTab, self).__init__(instance, widget)
+
+	def _lazy_loading_init(self):
+		super(FightingShipInventoryTab, self)._lazy_loading_init()
 		#create weapon inventory, needed only in gui for inventory widget
 		self.weapon_inventory = self.instance.get_weapon_storage()
 		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, \

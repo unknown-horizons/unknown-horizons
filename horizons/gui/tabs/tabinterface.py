@@ -42,14 +42,21 @@ class TabInterface(object):
 	ensure proper initialization of needed properties.
 	"""
 
-	def __init__(self, widget=None, lazy_loading=False, **kwargs):
+	"""
+	Whether to load the tab only when it's shown.
+	If true, self.widget will only be valid after _lazy_loading_init, which
+	is guaranteed to be executed before show(), refresh() and the like.
+	Usually, you will want to overwrite _lazy_loading_init and call the super impl as first step.
+	"""
+	lazy_loading = False
+
+	def __init__(self, widget=None, **kwargs):
 		"""
 		@param widget: filename of a widget. Set this to None if you create your own widget at self.widget
-		@param lazy_loading: whether to only load the content when really required
 		"""
 		super(TabInterface, self).__init__()
 		if widget is not None:
-			if not lazy_loading:
+			if not self.__class__.lazy_loading:
 				self.widget = self._load_widget(widget)
 			else:
 				self.widget = widget
@@ -89,9 +96,9 @@ class TabInterface(object):
 
 	def ensure_loaded(self):
 		"""Called when a tab is shown, acts as hook for lazy loading"""
-		if not hasattr(self.widget, "show"):
-			# probably not loaded yet
+		if self.__class__.lazy_loading and not hasattr(self, "_lazy_loading_loaded"):
 			self._lazy_loading_init()
+			self._lazy_loading_loaded = True
 
 	def _lazy_loading_init(self):
 		"""Called when widget is initialised for lazily initialised tabs.
