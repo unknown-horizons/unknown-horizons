@@ -42,15 +42,19 @@ class TabInterface(object):
 	ensure proper initialization of needed properties.
 	"""
 
-	def __init__(self, widget=None, **kwargs):
+	def __init__(self, widget=None, lazy_loading=False, **kwargs):
 		"""
 		@param widget: filename of a widget. Set this to None if you create your own widget at self.widget
+		@param lazy_loading: whether to only load the content when really required
 		"""
 		super(TabInterface, self).__init__()
 		if widget is not None:
-			self.widget = load_uh_widget(widget, style="menu_black")
-			self.widget.child_finder = PychanChildFinder(self.widget)
+			if not lazy_loading:
+				self.widget = self._load_widget(widget)
+			else:
+				self.widget = widget
 		else:
+			# set manually by child
 			self.widget = None
 		# You can override these if you want to use separate images for your tab
 		self.button_up_image = 'content/gui/images/tabwidget/tab.png' # TabButtons usual image
@@ -82,6 +86,23 @@ class TabInterface(object):
 		"""Method for fine-grained control of which tabs to show.
 		@return: whether this tab should really be shown for this instance"""
 		return True
+
+	def ensure_loaded(self):
+		"""Called when a tab is shown, acts as hook for lazy loading"""
+		if not hasattr(self.widget, "show"):
+			# probably not loaded yet
+			self._lazy_loading_init()
+
+	def _lazy_loading_init(self):
+		"""Called when widget is initialised for lazily initialised tabs.
+		You may want to overwrite this in the subclass."""
+		self.widget = self._load_widget(self.widget)
+		self.init_values()
+
+	def _load_widget(self, widget):
+		widget = load_uh_widget(widget, style="menu_black")
+		widget.child_finder = PychanChildFinder(widget)
+		return widget
 
 	def _get_x(self):
 		"""Returs the widget's x position"""

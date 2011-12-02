@@ -24,6 +24,7 @@ from fife import fife
 import horizons.main
 
 from horizons.entities import Entities
+from horizons.constants import LAYERS
 from horizons.gui.mousetools import  NavigationTool
 
 
@@ -65,7 +66,7 @@ class PipetteTool(NavigationTool):
 			super(PipetteTool,  self).mouseClicked(evt)
 
 	def _get_object(self, evt):
-		for obj in self.get_hover_instances(evt):
+		for obj in self.get_hover_instances(evt, layers=[LAYERS.FIELDS, LAYERS.OBJECTS]):
 			if obj.id in Entities.buildings:
 				return obj
 		return None

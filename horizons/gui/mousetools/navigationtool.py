@@ -151,18 +151,30 @@ class NavigationTool(CursorTool):
 		if command.getCommandType() == fife.CMD_APP_ICONIFIED or command.getCommandType() == fife.CMD_INPUT_FOCUS_LOST:
 			self.session.view.autoscroll(0, 0) #stop autoscroll
 
-	def get_hover_instances(self, evt):
+	def get_hover_instances(self, evt, layers=None):
 		"""
 		Utility method, returns the instances under the cursor
+		@param layers: list of layer ids to search for. Default to OBJECTS
 		"""
-		instances = self.session.view.cam.getMatchingInstances(\
-			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS], False) # False for accurate
+		if layers is None:
+			layers = [LAYERS.OBJECTS]
 
-		layer_instances = [i.this for i in self.session.view.layers[LAYERS.OBJECTS].getInstances()]
-		instances = [i for i in instances if i.this in layer_instances]
+
+		all_instances = []
+		for layer in layers:
+			instances = self.session.view.cam.getMatchingInstances(\
+		    fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[layer], False) # False for accurate
+
+			# check if instances are really in layer (there can be problems with updating
+			# the list on fife-side when instances are removed. This mechanism fixes that.)
+
+			# This should be a set, but the swig-objects aren't hashable.
+			# The list can contain thousands of elements, so linear search is still somewhat feasible . (<1ms)
+			layer_instances = [i.this for i in self.session.view.layers[layer].getInstances()]
+			all_instances.extend(i for i in instances if i.this in layer_instances)
 
 		hover_instances = []
-		for i in instances:
+		for i in all_instances:
 			id = i.getId()
 			# Check id, can be '' if instance is created and clicked on before
 			# actual game representation class is created (network play)

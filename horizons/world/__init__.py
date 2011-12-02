@@ -464,7 +464,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
 					x, y = locations[pos][1]
 					if object_class.check_build(self.session, Point(x, y), check_settlement = False):
-						Build(object_class, x, y, ownerless = True, island = locations[pos][2])(issuer = None)
+						Build(object_class, x, y, locations[pos][2], 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 						break
 
 		for island in self.islands:
@@ -544,7 +544,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# add tree to every nth tile and an animal to one in every M trees
 				if self.session.random.randint(0, 2) == 0 and \
 				   Tree.check_build(self.session, tile, check_settlement = False):
-					building = Build(Tree, x, y, ownerless = True, island = island,
+					building = Build(Tree, x, y, island, 45 + self.session.random.randint(0, 3) * 90, ownerless = True,
 					                 data = {"start_finished": True})(issuer = None)
 					if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
@@ -559,7 +559,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						fish_y = y + y_dir * self.session.random.randint(3, 9)
 						# now we have the location, check if we can build here
 						if (fish_x, fish_y) in self.ground_map:
-							Build(FishDeposit, fish_x, fish_y, ownerless = True, island = self)(issuer = None)
+							Build(FishDeposit, fish_x, fish_y, self, 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 
 	@decorators.make_constants()
 	def get_random_possible_ground_unit_position(self):
