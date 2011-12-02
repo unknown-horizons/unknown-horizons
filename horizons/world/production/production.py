@@ -25,8 +25,7 @@ import copy
 
 from collections import defaultdict, deque
 
-from horizons.util import WorldObject
-from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.changelistener import metaChangeListenerDecorator, ChangeListener
 from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLineObject
 from horizons.world.component.storagecomponent import StorageComponent
@@ -35,7 +34,7 @@ from horizons.scheduler import Scheduler
 
 
 @metaChangeListenerDecorator("production_finished")
-class Production(WorldObject):
+class Production(ChangeListener):
 	"""Class for production to be used by ResourceHandler.
 	Controls production and starts it by watching the assigned building's inventory,
 	which is virtually the only "interface" to the building.
@@ -61,6 +60,8 @@ class Production(WorldObject):
 	             start_finished=False, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self._state_history = deque()
+		self.prod_id = prod_id
+		self.prod_data = prod_data
 		self.__init(inventory, owner_inventory, prod_id, prod_data, PRODUCTION.STATES.none, Scheduler().cur_tick)
 
 		if start_finished:
@@ -89,7 +90,8 @@ class Production(WorldObject):
 		assert isinstance(prod_id, int)
 		self._prod_line = ProductionLineObject(id=prod_id, data=prod_data)
 
-	def save(self, db):
+	def save(self, db, owner_id):
+		"""owner_id: worldid of the owner of the producer object that owns this production"""
 		self._clean_state_history()
 		current_tick = Scheduler().cur_tick
 		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
@@ -102,35 +104,29 @@ class Production(WorldObject):
 		# use a number > 0 for ticks
 		if remaining_ticks < 1:
 			remaining_ticks = 1
-		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, creation_tick) VALUES(?, ?, ?, ?, ?, ?)', \
-			 self.worldid, self._state.index, self._prod_line.id, remaining_ticks, \
-			 None if self._pause_old_state is None else self._pause_old_state.index, translated_creation_tick)
+		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, creation_tick, owner) VALUES(?, ?, ?, ?, ?, ?, ?)', \
+		     None, self._state.index, self._prod_line.id, remaining_ticks, \
+			 None if self._pause_old_state is None else self._pause_old_state.index, translated_creation_tick, owner_id)
 
 		# save state history
 		for tick, state in self._state_history:
 				# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + 1
-			db("INSERT INTO production_state_history(production, tick, state) VALUES(?, ?, ?)", \
-				 self.worldid, translated_tick, state)
+			db("INSERT INTO production_state_history(production, tick, state, object_id) VALUES(?, ?, ?, ?)", \
+				 self.prod_id, translated_tick, state, owner_id)
 
-	@classmethod
-	def load(cls, db, worldid):
-		self = cls.__new__(cls)
-		self._load(db, worldid)
-		return self
-
-	def _load(self, db, worldid):
+	def load(self, db, worldid):
+		# Worldid is the world id of the producer component instance calling this
 		super(Production, self).load(db, worldid)
 
-		db_data = db.get_production_row(worldid)
-		obj = WorldObject.get_object_by_id(db_data[1])
-		owner_inventory = obj._get_owner_inventory()
-		self.__init(obj.get_component(StorageComponent).inventory, owner_inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
-			db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
+		db_data = db.get_production_by_id_and_owner(self.prod_id, worldid)
+		self._creation_tick = db_data[3]
+		self._state = PRODUCTION.STATES[db_data[0]]
+		self._pause_old_state = None if db_data[2] is None else PRODUCTION.STATES[db_data[2]]
 		if self._state == PRODUCTION.STATES.paused:
-			self._pause_remaining_ticks = db_data[3]
+			self._pause_remaining_ticks = db_data[1]
 		elif self._state == PRODUCTION.STATES.producing:
-			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[3])
+			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[1])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
 				 self._state == PRODUCTION.STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)

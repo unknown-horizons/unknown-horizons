@@ -120,6 +120,14 @@ class Producer(Component):
 
 	def load(self, db, worldid):
 		super(Producer, self).load(db, worldid)
+		# load all productions
+		for production in self.get_productions():
+			production.load(db, worldid)
+
+	def save(self, db):
+		super(Producer, self).save(db)
+		for production in self.get_productions():
+			production.save(db, self.instance.worldid)
 
 	def load_production(self, db, worldid):
 		return self.production_class.load(db, worldid)
@@ -134,7 +142,7 @@ class Producer(Component):
 		else:
 			self.log.debug('%s: added production line %s is active', self, production.get_production_line_id())
 			self._productions[production.get_production_line_id()] = production
-		production.add_change_listener(self._on_production_change, call_listener_now=True)
+		production.add_change_listener(self._on_production_change, call_listener_now=False)
 		self.instance._changed()
 
 	def finish_production_now(self):

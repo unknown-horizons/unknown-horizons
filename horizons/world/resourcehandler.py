@@ -58,17 +58,10 @@ class ResourceHandler(ComponentHolder):
 
 	def save(self, db):
 		super(ResourceHandler, self).save(db)
-		for production in self.get_productions():
-			production.save(db)
-			# set us to owner of that production
-			db("UPDATE production SET owner = ? WHERE rowid = ?", self.worldid, production.worldid)
 
 	def load(self, db, worldid):
 		super(ResourceHandler, self).load(db, worldid)
 		self.__init()
-		# load all productions
-		for production in db.get_production_ids_by_owner(worldid):
-			self.add_production( self.load_production(db, production) )
 
 	def remove(self):
 		super(ResourceHandler, self).remove()

@@ -98,6 +98,12 @@ class SavegameAccessor(DbReader):
 		for production_id, tick, state in self("SELECT production, tick, state FROM production_state_history ORDER BY production, tick"):
 			self._production_state_history[int(production_id)].append((tick, state))
 
+	def get_productionworldid_by_id_and_owner(self, id, ownerid):
+		return self("SELECT rowid FROM production WHERE prod_line_id=? AND owner=?", id, ownerid)[0][0]
+
+	def get_production_by_id_and_owner(self, id, ownerid):
+		return self("SELECT state, remaining_ticks, _pause_old_state, creation_tick FROM production WHERE prod_line_id=? AND owner=?", id, ownerid)[0]
+
 	def get_production_row(self, worldid):
 		"""Returns (state, owner, prod_line_id, remaining_ticks, _pause_old_state, creation_tick)"""
 		return self._production[int(worldid)]

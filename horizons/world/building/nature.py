@@ -93,7 +93,6 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 
 	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
-		print inventory
 		if inventory is not None:
 			self.reinit_inventory(inventory)
 
@@ -111,7 +110,6 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 
 	def load(self, db, worldid):
 		super(ResourceDeposit, self).load(db, worldid)
-		self.__init()
 
 class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
 

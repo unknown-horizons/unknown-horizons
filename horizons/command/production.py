@@ -27,12 +27,12 @@ class ToggleActive(GenericComponentCommand):
 	"""Sets a production to active/inactive."""
 	def __init__(self, obj, production=None):
 		super(ToggleActive, self).__init__(obj, Producer.NAME, "toggle_active")
-		self._production = None if production is None else production.worldid
+		self._production = None if production is None else production.prod_id
 
 	def __call__(self, issuer):
 		# NOTE: special call method, cause production must be saved as id, not as Production obj
-		return getattr(self._get_object().get_component_by_name(self.component_name), self.method)( None if self._production is None else \
-		                                          WorldObject.get_object_by_id(self._production) )
+		obj = self._get_object()
+		return getattr(obj.get_component_by_name(self.component_name), self.method)( None if self._production is None else obj._get_production(self._production))
 
 GenericComponentCommand.allow_network(ToggleActive)
 
