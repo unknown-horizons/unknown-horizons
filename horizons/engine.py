@@ -562,7 +562,7 @@ class Fife(ApplicationBase):
 				NetworkInterface().network_data_changed(connect=False)
 			except Exception as e:
 				headline = _(u"Failed to apply new network data.")
-				descr = _(u"Networking couldn't be initialised with the current configuration.")
+				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _(u"Check the data you entered in the Network section.")
 				if 0 < parse_port(port, allow_zero=True) < 1024:
 					#i18n This is advice for players seeing a network error with the current config
