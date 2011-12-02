@@ -338,7 +338,7 @@ events:
         \xE4ss\xE4) ja odota merenk\xE4vij\xF6iden p\xE4ivittymist\xE4."]
     type: logbook
   - arguments: ["Laske verotasosi alas (palkin vasempaan p\xE4\xE4h\xE4n) ja odota\
-        \ merenk\xE4vij\xF6idesi p\xE4ivittyv\xE4n."]
+        \ merenk\xE4vij\xF6idesi p\xE4ivittyv\xE4n seuraavalle tasolle."]
     type: message
   - arguments: [tutStepDone, 43]
     type: set_var
@@ -382,32 +382,30 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'RAKENNA PELTOJA', "Maatila ei itse tule tuottamaan\
-        \ mit\xE4\xE4n ilman peltoja.\n\nSinulla t\xE4ll\xE4 hetkell\xE4 valittavissasi\
-        \ laitumet, peruna- ja sokeripellot.\n\nPidet\xE4\xE4n lyhyt katsaus:\n* Laidun:\
-        \ Lampaat elelev\xE4t siell\xE4 tuottaen villaa.\n* Perunamaa: Kasvattaa perunoita,\
-        \ joita t\xE4ll\xE4 hetkell\xE4 pidet\xE4\xE4n ruokana.\n* Sokeripelto: Kasvattaa\
+  - arguments: [!!python/unicode 'RAKENNA PELTOJA', "Maatila ei itse itsess\xE4\xE4\
+        n tuota mit\xE4\xE4n ilman peltoja.\n\nT\xE4ll\xE4 hetkell\xE4 valittavissasi\
+        \ on laitumet sek\xE4 peruna- ja sokeripellot.\n\nN\xE4iden ominaisuuksia:\n\
+        * Laidun: Lampaat elelev\xE4t siell\xE4 tuottaen villaa.\n* Perunamaa: Kasvattaa\
+        \ perunoita, jotka ovat mainiota ruokaa kansallesi.\n* Sokeripelto: Kasvattaa\
         \ sokeria, jota k\xE4ytet\xE4\xE4n alkoholijuomien tislaamisessa ja (my\xF6\
-        hemmin) tuottamaan makeisherkkuja.\n\nTarvitsemme nyt laitumia, mutta jos\
-        \ ruoantuotantoketjusi on liian lyhyt, (mahdollisesti paljon asuinrakennuksia,)\
-        \ voit my\xF6s tuottaa v\xE4h\xE4n perunoita.\n\nHuomaa, ett\xE4 perunoita\
-        \ varten tarvitset tieyhteyden maatilaan (et peltoon!), sill\xE4 se tulee\
-        \ olemaan ainoa yritys ty\xF6st\xE4m\xE4\xE4n kyseisi\xE4 tavaroita."]
+        hemmin) tuottamaan makeisia.\n\nTarvitsemme nyt vain laitumia, mutta jos tarvitset\
+        \ lis\xE4\xE4 ruokaa (esimerkiksi jos sinulla on paljon asukkaita), voit rakentaa\
+        \ my\xF6s perunapellon.\n\nHuomaa, ett\xE4 perunoiden tuottamista varten tarvitset\
+        \ tieyhteyden varastolta tai sivutoimistolta maatilalle (ei siis peltoon!)."]
     type: logbook_w
   - arguments: ['', "Varmista, ett\xE4 kaikki rakentamasi pellot ovat maatilan alueella.\n\
-        \nVoit harrastaa sekatuotantoa - yksi laidun ei johda 100 prosentin tehokkuuteen,\
-        \ mutta sinun t\xE4ytyy tarkistaa, montako peltoa yksi maatila voi hoitaa.\n\
-        \nEri tyyppiset pellot tarvitsevat maatilayksik\xF6ilt\xE4 enemm\xE4n tai\
-        \ v\xE4hemm\xE4n aikaa (kylv\xE4miseen, korjuuseen, paimennukseen, jne.) ja\
-        \ sen vuoksi maatila ei v\xE4ltt\xE4m\xE4tt\xE4 pysty huolehtimaan kaikista\
-        \ rakentamistasi pelloista ajoissa.\n\nMutta nyt sinun ei tarvitse huolehtia\
-        \ paljoa, sill\xE4 et ole viel\xE4 rakentanut yht\xE4k\xE4\xE4n peltoa. Tehd\xE4\
-        \xE4n siis asialle jotakin!\n\nTEHT\xC4V\xC4: Rakenna v\xE4hint\xE4\xE4n yksi\
-        \ laidun maatilan ulottuville ja lis\xE4\xE4 perunamaita, jos tykk\xE4\xE4\
-        t."]
+        \nVoit harrastaa sekatuotantoa - yksi laidun ei johda 100 prosentin tehokkuuteen\
+        \ - mutta muista kuitenkin tarkistaa, kuinka montako peltoa yksi maatila kykenee\
+        \ hoitamaan.\n\nEri tyyppiset pellot tarvitsevat maatilayksik\xF6ilt\xE4 enemm\xE4\
+        n tai v\xE4hemm\xE4n aikaa (kylv\xE4miseen, korjuuseen, paimennukseen, jne.)\
+        \ ja sen vuoksi maatila ei v\xE4ltt\xE4m\xE4tt\xE4 pysty huolehtimaan kaikista\
+        \ rakentamistasi pelloista.\n\nViel\xE4 sinun ei kutenkaan tarvitse huolehtia,\
+        \ sill\xE4 et ole viel\xE4 rakentanut yht\xE4k\xE4\xE4n peltoa. Tehd\xE4\xE4\
+        n siis asialle jotakin!\n\nTEHT\xC4V\xC4: Rakenna v\xE4hint\xE4\xE4n yksi\
+        \ laidun maatilan ulottuville ja lis\xE4\xE4 halutessasi perunapeltoja."]
     type: logbook
-  - arguments: ["Rakenna v\xE4hint\xE4\xE4n yksi laidun maatilan ulottuville ja lis\xE4\
-        \xE4 perunamaita, jos tykk\xE4\xE4t."]
+  - arguments: ["Rakenna v\xE4hint\xE4\xE4n yksi laidun maatilan ulottuville ja halutessasi\
+        \ my\xF6s perunapeltoja."]
     type: message
   - arguments: [tutStepDone, 49]
     type: set_var
@@ -419,36 +417,34 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'RAKENNA VARASTO', "Olet katsonut puunhakkaajaasi\
-        \ l\xE4hiaikoina?\n\nKoska sivutoimistollasi ei ole loputtomasti tilaa tavaroiden\
-        \ varastoimiseen, ker\xE4\xE4j\xE4t lakkaavat ker\xE4\xE4m\xE4st\xE4 tavaroita\
-        \ yrityksilt\xE4, kun varasto on t\xE4ynn\xE4.\nJoten jos yksik\xE4\xE4n merenk\xE4\
-        vij\xE4 ei ole l\xE4hiaikoina halunnut p\xE4ivitt\xE4\xE4 telttaansa, sinulla\
-        \ todenn\xE4k\xF6isesti paljon lautoja, ja siin\xE4 tapauksessa puunhakkaajasi\
-        \ saattaa olla toimettomana.\nVoimme parantaa tilannetta kahdella erilaisella\
-        \ l\xE4hestymistavalla, ja alla tutustumme molempiin.\n\nKaikilla yritykset\
-        \ tarjoavat mahdollisuuden olla tekem\xE4tt\xE4 lainkaan ty\xF6t\xE4.\nT\xE4\
-        m\xE4 saattaa kuulostaa oudolta, mutta yrit\xE4p\xE4 painaa hammaspy\xF6r\xE4\
-        \xE4, jonka n\xE4et esimerkiksi puunhakkaajan yleiskatsauksessa.\n\nJos t\xE4\
-        m\xE4 'tauko'-tila on k\xE4yt\xF6ss\xE4, rakennuksesta maksamasi juoksevat\
-        \ kustannukset v\xE4henev\xE4t. Ne eiv\xE4t mene nollaan, mutta silti alemmas\
-        \ kuin yrityksen ollessa k\xE4yt\xF6ss\xE4."]
+  - arguments: [!!python/unicode 'RAKENNA VARASTO', "Olet vilkaissut puunhakkaajaasi\
+        \ l\xE4hiaikoina?\n\nSivutoimistollasi ei ole loputtomasti tilaa tavaroiden\
+        \ varastoimiseen. Ker\xE4\xE4j\xE4t lakkaavat ker\xE4\xE4m\xE4st\xE4 tavaroita\
+        \ yrityksilt\xE4, kun varasto on t\xE4ynn\xE4.\nJoten jos asukkaasi eiv\xE4\
+        t viime aikoina ole olleet kiinnostuneita p\xE4ivittelem\xE4\xE4n asuntojaan\
+        \ ja sinulla on paljon lautoja, puunhakkaajasi saattaa olla toimettomana.\n\
+        Voimme parantaa tilannetta kahdella erilaisella l\xE4hestymistavalla, ja alla\
+        \ tutustumme molempiin.\n\nKaikkien yritysten toiminta voidaan v\xE4liaikaisesti\
+        \ keskeytt\xE4\xE4.\nT\xE4m\xE4 saattaa kuulostaa oudolta, mutta kokeilepa\
+        \ napsauttaa puunhakkaajan yleiskatsauksessa olevaa hammaspy\xF6r\xE4\xE4\
+        .\n\nKun t\xE4m\xE4 \"taukotila\" on k\xE4yt\xF6ss\xE4, rakennuksesta maksamasi\
+        \ juoksevat kustannukset v\xE4henev\xE4t. Ne eiv\xE4t laske nollaan, mutta\
+        \ kuitenkin alemmaksi kuin yrityksen ollessa k\xE4yt\xF6ss\xE4."]
     type: logbook_w
-  - arguments: ['', "T\xE4m\xE4 tarkoittaa, ett\xE4 voit s\xE4\xE4st\xE4\xE4 rahaa,\
-        \ kun hetkellisesti et tarvitse yrityst\xE4 ja et my\xF6sk\xE4\xE4n halua\
-        \ repi\xE4 sit\xE4 maantasalle.\n\nToinen ratkaisu on rakentaa viimeinen tason\
-        \ I rakennus, jota ei ole viel\xE4 mainittu: varastoteltta.\n\nT\xE4ll\xE4\
-        \ rakennuksella on kaksi tarkoitusta. Se:\n* Tarjoaa lis\xE4\xE4 varastotilaa\
-        \ tavaroillesi, ja\n* l\xE4hett\xE4\xE4 omat ker\xE4\xE4j\xE4ns\xE4 hakemaan\
-        \ tavaroita, aivan niin kuin sivutoimistokin tekee.\n\nHuomaa, ett\xE4 yritykset\
-        \ voidaan my\xF6s yhdist\xE4\xE4 varastoon, jotta niiden tuotteet ker\xE4\
-        tt\xE4isiin, ja jos sivutoimistolla on k\xE4det t\xE4ynn\xE4 t\xF6it\xE4 ker\xE4\
-        \xE4misess\xE4, voit rakentaa varastoteltan auttamaan sit\xE4.\n\nTEHT\xC4\
-        V\xC4: Rakenna varastoteltta, mieluiten paikkaan, jossa tarvitset ker\xE4\xE4\
-        ji\xE4."]
+  - arguments: ['', "T\xE4m\xE4 tarkoittaa siis sit\xE4, ett\xE4 voit s\xE4\xE4st\xE4\
+        \xE4 rahaa kun et v\xE4liaikaisesti tarvitse yrityst\xE4 ja et my\xF6sk\xE4\
+        \xE4n halua tuhota sit\xE4 maan tasalle.\n\nToinen ratkaisu on rakentaa viimeinen\
+        \ tason I rakennus, jota ei ole viel\xE4 mainittu: varastoteltta.\n\nT\xE4\
+        ll\xE4 rakennuksella on kaksi tarkoitusta. Se...\n* tarjoaa lis\xE4\xE4 varastotilaa\
+        \ tavaroillesi\n* l\xE4hett\xE4\xE4 omat ker\xE4\xE4j\xE4ns\xE4 hakemaan tavaroita,\
+        \ samalla tavalla kuin sivutoimistokin\n\nYritykset voidaan siis yhdist\xE4\
+        \xE4 sivutoimiston sijasta varastoon, jolloin niiden tuotteet tulevat my\xF6\
+        s ker\xE4tyiksi. Varasto on hy\xF6dyllinen my\xF6s silloin kun sivutoimistolla\
+        \ on paljon hommia ker\xE4yst\xF6iss\xE4.\n\nTEHT\xC4V\xC4: Rakenna varastoteltta\
+        \ mieluiten sellaiseen paikkaan, jossa tarvitset ker\xE4\xE4ji\xE4."]
     type: logbook
-  - arguments: ["Rakenna varastoteltta (tason I v\xE4lilehdell\xE4) mihin tuntuu j\xE4\
-        rkev\xE4lt\xE4."]
+  - arguments: ["Rakenna varastoteltta (tason I-v\xE4lilehdell\xE4) j\xE4rkev\xE4\xE4\
+        n paikkaan."]
     type: message
   - arguments: [tutStepDone, 52]
     type: set_var
@@ -460,17 +456,16 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'RAKENNA VAATTURI', "Nyt kun villan tuotanto on toiminnassa,\
-        \ tarvitset viel\xE4 vaatturin tuottamaan vaatteita t\xE4st\xE4 villasta.\n\
-        \nOn kaksi paikkaa, joihin voit rakentaa sen - joko l\xE4helle maatilaa tai\
-        \ l\xE4helle Varastotelttaa (tai Sivutoimistoa).\n\nMolemmissa tapauksissa\
-        \ sinun tulee my\xF6s varmistaa tieyhteys.\n\nVoit sijoittaa vaatturin l\xE4\
-        helle maatilaa ja h\xE4vitt\xE4\xE4 kaikki polut maatilalle n\xE4hd\xE4ksesi,\
-        \ ett\xE4 se silti saa villaa haettua ja tuotantoa.\n\nTEHT\xC4V\xC4: Rakenna\
-        \ vaatturi sijaintiin, jossa se saa villaa."]
+  - arguments: [!!python/unicode 'RAKENNA KUTOMO', "Nyt kun villan tuotanto on k\xE4\
+        ynniss\xE4, tarvitset viel\xE4 kutomon tuottamaan villasta vaatteita.\n\n\
+        Kutomo voidaan rakentaa kolmeen paikkaan - joko maatilan, varaston tai sivutoimiston\
+        \ l\xE4helle.\n\nKaikissa tapauksissa sinun pit\xE4\xE4 luonnollisesti varmistaa\
+        \ polkuyhteys..\n\nVoit testimieless\xE4 sijoittaa kutomon maatilan l\xE4\
+        hettyville ja tuhota kaikki polut maatilalle johtavat polut. N\xE4in voit\
+        \ havaita, ett\xE4 kutomo saa silti noudettua villaa ja tuotettua vaatteita.\n\
+        \nTEHT\xC4V\xC4: Rakenna kutomo paikkaan, josta se saa villaa."]
     type: logbook
-  - arguments: [!!python/unicode 'Rakenna vaatturi, joka jotenkin saavuttaa maatilasi
-        villan.']
+  - arguments: [!!python/unicode 'Rakenna kutomo, joka saa jollain tavalla villaa.']
     type: message
   - arguments: [tutStepDone, 55]
     type: set_var
@@ -482,16 +477,15 @@ events:
   - arguments: [tutStepDone, 55]
     type: var_lt
 - actions:
-  - arguments: ["Asuta kaupungissasi v\xE4hint\xE4\xE4n 50 asukasta tai enemm\xE4\
-        n l\xE4p\xE4ist\xE4ksesi t\xE4m\xE4n tutoriaalin. Tarvitset kokonaisuutena\
-        \ voittoa tuottavan talouden."]
+  - arguments: ["Asuta siirtokuntaasi v\xE4hint\xE4\xE4n 50 asukasta ja l\xE4p\xE4\
+        ise t\xE4m\xE4 harjoituspeli. Tarvitset my\xF6s voittoa tuottavan talouden."]
     type: message
-  - arguments: ["L\xC4P\xC4ISE TUTORIAALI", "Yrit\xE4 asuttaa kaupungissasi kokonaiset\
-        \ 50 asukasta tai enemm\xE4n luomalla asuinrakennustarjontaa.\n\nKun olet\
-        \ saanut pidetty taloutta, joka voi el\xE4tt\xE4\xE4 t\xE4ll\xE4isen m\xE4\
-        \xE4r\xE4n kuluttajia, olet valmis l\xE4htem\xE4\xE4n kohti Tuntemattomia\
-        \ Taivaanrantoja!\n\nTEHT\xC4V\xC4: Ker\xE4\xE4 v\xE4hint\xE4\xE4n 50 asukasta\
-        \ ja rakenna kannattava talous, jotta l\xE4p\xE4isisit t\xE4m\xE4n tutoriaalin."]
+  - arguments: ["L\xC4P\xC4ISE HARJOITUSPELI", "Yrit\xE4 saada siirtokuntaasi v\xE4\
+        hint\xE4\xE4n 50 asukasta rakentamalla lis\xE4\xE4 asuinrakennuksia.\n\nJos\
+        \ pystyt luomaan t\xE4llaisen taloisuuden, joka kest\xE4\xE4 t\xE4llaista\
+        \ asukkaiden m\xE4\xE4r\xE4\xE4, olet valmis l\xE4htem\xE4\xE4n kohti Tuntematonta\
+        \ Horisonttia!\n\nTEHT\xC4V\xC4: Hanki v\xE4hint\xE4\xE4n 50 asukasta, varmista\
+        \ ett\xE4 taloutesi on tasapainossa ja l\xE4p\xE4ise t\xE4m\xE4 harjoituspeli."]
     type: logbook
   - arguments: [tutStepDone, 58]
     type: set_var
@@ -505,16 +499,17 @@ events:
   - arguments: [tutStepDone, 58]
     type: var_lt
 - actions:
-  - arguments: ["EI TEHT\xC4VI\xC4 J\xC4LJELL\xC4", "There is nothing left to do now.\n\
-        \nJos sinulla on ehdotuksia, mit\xE4 me voisimme tai mit\xE4 pit\xE4isi kehitt\xE4\
-        \xE4, lis\xE4t\xE4 tai j\xE4tt\xE4\xE4 pois:\n\nwww.unknown-horizons.org\n\
-        \n#unknown-horizons @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nKeskustelupalstamme\
-        \ ovat avoinna my\xF6s sinulle!\n\nParhaita tuloksia t\xE4h\xE4n menness\xE4\
-        \ on saatu aikaan liittym\xE4ll\xE4 IRC-kanavallemme, joten voit yritt\xE4\
-        \xE4 sit\xE4 ensimm\xE4isen\xE4 (-;"]
+  - arguments: ["EI TEHT\xC4VI\xC4 J\xC4LJELL\xC4", "Mit\xE4\xE4n teht\xE4vi\xE4 ei\
+        \ ole en\xE4\xE4 j\xE4ljell\xE4.\n\nJos sinulle j\xE4i t\xE4st\xE4 harjoituspelist\xE4\
+        \ jotain sanottavaa, kuten parannettavaa, moitittavaa, poistettavaa tai kehuttavaa,\
+        \ kerro se meille:\n\nwww.unknown-horizons.org\n\n#unknown-horizons @ irc.freenode.net\n\
+        \nteam@unknown-horizons.org\n\nMy\xF6s keskustelualueemme ovat aina avoinna\
+        \ sinulle!\n\nParhaat tulokset ovat tulleet IRC-kanaviltamme, joten kokeile\
+        \ niit\xE4 ensimm\xE4isen\xE4 (-;"]
     type: logbook
-  - arguments: [!!python/unicode 'Kiitoksia!', "\n\n\n\n\n\n\nKiitos, ett\xE4 pelasitte\
-        \ t\xE4t\xE4 tutoriaalia!\n\nAllekirjoittajana UH-Team"]
+  - arguments: [!!python/unicode 'Suuret kiitokset!', "\n\n\n\n\n\n\nKiitos, ett\xE4\
+        \ pelasit t\xE4t\xE4 harjoituspeli\xE4!\n\nTerveisin,\nUnknown Horizonsin\
+        \ kehitt\xE4j\xE4t"]
     type: logbook
   - arguments: [tutStepDone, 61]
     type: set_var
@@ -535,8 +530,8 @@ events:
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: ["Onneksi olkoon! Olet saavuttanut t\xE4m\xE4n tutoriaalin lopun ja\
-        \ olet valmis kohtaamaan uusia haasteita!"]
+  - arguments: ["Onneksi olkoon! Olet pelannut t\xE4m\xE4n harjoituspelin l\xE4pi\
+        \ ja olet valmis kohtaamaan uusia haasteita!"]
     type: message
   conditions:
   - arguments: [tutStepDone, 60]
