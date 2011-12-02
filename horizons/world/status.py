@@ -75,7 +75,7 @@ class InventoryFullStatus(StatusIcon):
 
 
 class ProductivityLowStatus(StatusIcon):
-	"""Terminology: productiviy = capacity utilisation"""
+	"""Terminology: productivity = capacity utilisation"""
 	threshold = 0.25 # display when productivity lower than this
 	def __init__(self):
 		super(ProductivityLowStatus, self).__init__( 400, "as_buoy0+idle+45" )
