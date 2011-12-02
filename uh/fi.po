@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-01 20:42+0200\n"
+"PO-Revision-Date: 2011-12-01 20:43+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -431,10 +431,12 @@ msgstr "tiiliä"
 msgid "cannon"
 msgstr "tykkiä"
 
+# 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "cattle"
-msgstr ""
+msgstr "Karja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1047,7 +1049,6 @@ msgstr "Saarten koonvaihtelu:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:237
-#, fuzzy
 msgid "Resource density:"
 msgstr "Luonnonvara"
 
@@ -1911,7 +1912,6 @@ msgstr "Maksetut verot"
 #: horizons/i18n/guitranslations.py:399 horizons/i18n/guitranslations.py:401
 #: horizons/i18n/guitranslations.py:436 horizons/i18n/guitranslations.py:438
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:505
-#, fuzzy
 msgid "Tax rate"
 msgstr "Veroprosentti"
 
@@ -2194,10 +2194,12 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+# 87%
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:680
+#, fuzzy
 msgid "Weapons"
-msgstr ""
+msgstr "Aseet:"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:687
@@ -2926,10 +2928,11 @@ msgstr "Tallennustiedosto on tällä hetkellä toisen ohjelman käytössä."
 msgid "Trade route: going to %s"
 msgstr "Kauppareitti: menossa kohteeseen %s"
 
+# 76%
 #: horizons/world/units/ship.py:273
-#, python-format
+#, python-format, fuzzy
 msgid "Trade route: waiting at %s"
-msgstr ""
+msgstr "Kauppareitti: menossa kohteeseen %s"
 
 #: horizons/world/units/ship.py:468
 #, python-format
