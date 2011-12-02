@@ -137,7 +137,8 @@ class Session(LivingObject):
 				horizons.main.fife.emitter['ambient'].remove(emitter)
 			horizons.main.fife.emitter['effects'].stop()
 			horizons.main.fife.emitter['speech'].stop()
-		self.cursor.remove()
+		if hasattr(self, "cursor"): # the line below would crash uglily on ^C
+			self.cursor.remove()
 		self.cursor = None
 		self.world = None
 		self.keylistener = None
