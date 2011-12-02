@@ -157,8 +157,10 @@ class UhDbAccessor(DbReader):
 		@param building_class_id: class of building, int
 		@return: string tooltip_text
 		"""
-		sql = "SELECT tooltip_text FROM building WHERE id = ?"
-		return self.cached_query(sql, building_class_id)[0][0]
+		sql = "SELECT name, tooltip_text FROM building WHERE id = ?"
+		query = self.cached_query(sql, building_class_id)[0]
+		tooltip = _("{building}: {description}")
+		return tooltip.format(building=query[0], description=query[1])
 
 
 	def get_building_id_buttonname_settlerlvl(self):
