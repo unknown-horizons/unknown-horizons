@@ -133,20 +133,6 @@ class BranchOfficeOverviewTab(OverviewTab):
 		super(BranchOfficeOverviewTab, self).on_instance_removed()
 
 
-class MainSquareOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(MainSquareOverviewTab, self).__init__(
-			widget = 'overview_mainsquare.xml',
-			instance = instance
-		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		self.tooltip = _("Main square overview")
-
-	def refresh(self):
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		super(MainSquareOverviewTab, self).refresh()
-
-
 class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance, widget = 'overview_trade_ship.xml', \
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):

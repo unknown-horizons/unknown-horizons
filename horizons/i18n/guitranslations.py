@@ -493,11 +493,6 @@ def set_translations():
 		"lbl_weapon_storage"          : ("text"    , _("Weapons:")),
 		},
 
-	"overview_mainsquare.xml" : {
-		# (text of widget: name_label)
-		"name_label"                  : ("text"    , _("Name:")),
-		},
-
 	"overview_productionbuilding.xml" : {
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Building overview")),

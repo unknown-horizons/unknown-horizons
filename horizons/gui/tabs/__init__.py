@@ -22,8 +22,7 @@
 from inventorytab import InventoryTab
 from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
 						BranchOfficeOverviewTab, SettlerOverviewTab, \
-						MainSquareOverviewTab, SignalFireOverviewTab, \
-						TraderShipOverviewTab, EnemyBuildingOverviewTab, \
+						SignalFireOverviewTab, TraderShipOverviewTab, EnemyBuildingOverviewTab, \
 						EnemyShipOverviewTab, ResourceDepositOverviewTab, \
 						EnemyBranchOfficeOverviewTab, FarmProductionOverviewTab, \
 						FightingShipOverviewTab, GroundUnitOverviewTab
