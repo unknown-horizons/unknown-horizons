@@ -1102,11 +1102,13 @@ msgstr ""
 msgid "Increment"
 msgstr ""
 
+# 83%
 #. (text of widget: headline)
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:544
 #: horizons/i18n/guitranslations.py:553
+#, fuzzy
 msgid "Trade"
-msgstr ""
+msgstr "Obchodník"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:334
@@ -1278,9 +1280,11 @@ msgstr ""
 msgid "Stop route"
 msgstr ""
 
+# 75%
 #: horizons/gui/widgets/unitoverview.py:108
+#, fuzzy
 msgid "none"
-msgstr ""
+msgstr "Žádné"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:45
@@ -1439,10 +1443,12 @@ msgstr "Tkadlec: Vyrábí látku z jehněčí vlny."
 msgid "Mining"
 msgstr ""
 
+# 76%
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:126
+#, fuzzy
 msgid "Settler buildings"
-msgstr ""
+msgstr "Namořní budovy"
 
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:130
@@ -1590,10 +1596,12 @@ msgstr "Přiblížit"
 msgid "Zoom out"
 msgstr "Oddálit"
 
+# 83%
 #. (tooltip of widget: boards_icon)
 #: horizons/i18n/guitranslations.py:208
+#, fuzzy
 msgid "Boards"
-msgstr ""
+msgstr "prkna"
 
 #. (tooltip of widget: bricks_icon)
 #: horizons/i18n/guitranslations.py:210
@@ -1928,10 +1936,12 @@ msgstr ""
 msgid "capacity utilization"
 msgstr ""
 
+# 76%
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:482
+#, fuzzy
 msgid "Resource deposit"
-msgstr ""
+msgstr "Hustota zdrojů:"
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py:484
@@ -1948,11 +1958,13 @@ msgstr ""
 msgid "Needed resources:"
 msgstr ""
 
+# 88%
 #. (tooltip of widget: happiness_label)
 #. (tooltip of widget: happiness)
 #: horizons/i18n/guitranslations.py:495 horizons/i18n/guitranslations.py:509
+#, fuzzy
 msgid "Happiness"
-msgstr ""
+msgstr "štěstí"
 
 #. (tooltip of widget: residents_label)
 #. (tooltip of widget: inhabitants)
@@ -1960,10 +1972,12 @@ msgstr ""
 msgid "Residents"
 msgstr ""
 
+# 94%
 #. (text of widget: foundSettlement_label)
 #: horizons/i18n/guitranslations.py:514
+#, fuzzy
 msgid "Build settlement:"
-msgstr ""
+msgstr "Postavit osadu"
 
 #. (tooltip of widget: name)
 #: horizons/i18n/guitranslations.py:518
@@ -2424,10 +2438,12 @@ msgstr ""
 msgid "The game will start as soon as enough players have joined."
 msgstr ""
 
+# 80%
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:825
+#, fuzzy
 msgid "Chat:"
-msgstr ""
+msgstr "Chat"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:827
