@@ -11,6 +11,7 @@ inhabitants_max: 2
 button_name: tobacconist-1
 tooltip_text: Produces tobaccos out of tobacco.
 settler_level: 2
+buildingcosts: {1: 250, 4: 1, 6: 2, 7: 4}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,4 +28,3 @@ components:
         slot_sizes: {32: 4, 31: 6}
 actionsets:
   as_tobacconist0: {level: 0}
-buildingcosts: {1: 250, 4: 1, 6: 2, 7: 4}

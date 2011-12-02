@@ -11,6 +11,7 @@ inhabitants_max: 1
 button_name: main_square-1
 tooltip_text: Supplies citizens with goods.
 settler_level: 0
+buildingcosts: {1: 1000, 4: 5}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -24,4 +25,3 @@ components:
     soundfiles: [content/audio/sounds/main_square.ogg]
 actionsets:
   as_mainsquare0: {preview: as_preview_mainsquare0, level: 0}
-buildingcosts: {1: 1000, 4: 5}

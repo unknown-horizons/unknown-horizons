@@ -11,6 +11,7 @@ inhabitants_max: 1
 button_name: toolmaker-1
 tooltip_text: Produces tools out of iron.
 settler_level: 2
+buildingcosts: {1: 500, 4: 2, 6: 2, 7: 2}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -29,4 +30,3 @@ components:
         slot_sizes: {26: 4, 4: 4, 6: 8, 23: 4}
 actionsets:
   as_toolmaker0: {level: 0}
-buildingcosts: {1: 500, 4: 2, 6: 2, 7: 2}

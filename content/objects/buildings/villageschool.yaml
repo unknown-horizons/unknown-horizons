@@ -11,6 +11,7 @@ inhabitants_max: 1
 button_name: villageschool-1
 tooltip_text: Provides education.
 settler_level: 1
+buildingcosts: {1: 500, 4: 4, 7: 4}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -25,4 +26,3 @@ components:
         slot_sizes: {16: 10}
 actionsets:
   as_school0: {level: 0}
-buildingcosts: {1: 500, 4: 4, 7: 4}

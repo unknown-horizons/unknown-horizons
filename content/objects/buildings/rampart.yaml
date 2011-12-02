@@ -11,8 +11,8 @@ inhabitants_max: 0
 button_name: null
 tooltip_text: Protects your settlement.
 settler_level: 0
+buildingcosts: {1: 50}
 components:
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent
 actionsets: {}
-buildingcosts: {1: 50}

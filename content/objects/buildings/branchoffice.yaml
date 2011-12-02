@@ -11,6 +11,7 @@ inhabitants_max: 2
 button_name: null
 tooltip_text: null
 settler_level: 0
+buildingcosts: {1: 1000, 4: 12}
 components:
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent
@@ -18,4 +19,3 @@ components:
     soundfiles: [content/audio/sounds/branch_office.ogg]
 actionsets:
   as_branchoffice0: {preview: as_preview_branchoffice0, level: 0}
-buildingcosts: {1: 1000, 4: 12}

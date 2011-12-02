@@ -11,6 +11,7 @@ inhabitants_max: 2
 button_name: tavern-1
 tooltip_text: Provides get-together.
 settler_level: 2
+buildingcosts: {1: 250, 4: 4, 7: 2}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,4 +28,3 @@ components:
         slot_sizes: {27: 12, 22: 4}
 actionsets:
   as_tavern0: {level: 0}
-buildingcosts: {1: 250, 4: 4, 7: 2}

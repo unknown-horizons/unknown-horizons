@@ -11,6 +11,7 @@ inhabitants_max: 0
 button_name: iron-mine-1
 tooltip_text: Gets iron ore from deposit.
 settler_level: 2
+buildingcosts: {1: 500, 4: 10, 6: 2}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,4 +28,3 @@ components:
         slot_sizes: {24: 1000000, 25: 10}
 actionsets:
   as_mine5x5: {preview: as_preview_mine5x5, level: 0}
-buildingcosts: {1: 500, 4: 10, 6: 2}

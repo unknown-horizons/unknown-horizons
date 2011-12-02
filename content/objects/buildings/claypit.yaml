@@ -11,6 +11,7 @@ inhabitants_max: 2
 button_name: clay-pit-1
 tooltip_text: Gets clay from deposit.
 settler_level: 1
+buildingcosts: {1: 500, 4: 10, 6: 2}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,4 +28,3 @@ components:
         slot_sizes: {20: 1000000, 21: 10}
 actionsets:
   as_clay_pit0: {level: 0}
-buildingcosts: {1: 500, 4: 10, 6: 2}

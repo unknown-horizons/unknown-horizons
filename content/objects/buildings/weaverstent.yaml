@@ -11,6 +11,7 @@ inhabitants_max: 2
 button_name: weaver-1
 tooltip_text: Turns lamb wool into cloth.
 settler_level: 1
+buildingcosts: {1: 250, 4: 3, 6: 2}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,4 +28,3 @@ components:
         slot_sizes: {10: 8, 3: 8}
 actionsets:
   as_weaver0: {level: 0}
-buildingcosts: {1: 250, 4: 3, 6: 2}

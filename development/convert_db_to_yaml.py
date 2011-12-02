@@ -127,6 +127,12 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 	result['tooltip_text'] = tooltip_text
 	result['settler_level'] = settler_level
 
+	costs =  {}
+	for (name, value) in db("SELECT resource, amount FROM building_costs WHERE building = ?", id):
+		costs[name]=value
+
+	result['buildingcosts'] =  costs
+
 	result['components'] = []
 
 	result['components'].append({'HealthComponent': {'maxhealth': health}})
@@ -143,6 +149,10 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 			prod_line['produces'] = production
 		if len(consumption) > 0:
 			prod_line['consumes'] = consumption
+
+		level = db("SELECT level from settler_production_line WHERE production_line=?", prodlineid)
+		if len(level) > 0:
+			prod_line['level'] = [ x for (x,) in level]
 
 		production_lines[prodlineid] = prod_line
 
@@ -166,11 +176,6 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 			result['actionsets'][action_set]['preview'] = preview_set
 
 
-	costs =  {}
-	for (name, value) in db("SELECT resource, amount FROM building_costs WHERE building = ?", id):
-		costs[name]=value
-
-	result['buildingcosts'] =  costs
 
 	soundfiles = list(db("SELECT file FROM sounds INNER JOIN object_sounds ON sounds.rowid = object_sounds.sound AND object_sounds.object = ?", id))
 	if len(soundfiles) >  0:

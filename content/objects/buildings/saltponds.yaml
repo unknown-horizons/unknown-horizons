@@ -11,6 +11,7 @@ inhabitants_max: 1
 button_name: saltponds-1
 tooltip_text: Evaporates salt. Built on sea coast.
 settler_level: 2
+buildingcosts: {1: 350, 4: 4, 6: 2}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -25,4 +26,3 @@ components:
         slot_sizes: {29: 8}
 actionsets:
   as_saltponds0: {level: 0}
-buildingcosts: {1: 350, 4: 4, 6: 2}

@@ -11,6 +11,7 @@ inhabitants_max: 3
 button_name: doctor-1
 tooltip_text: Treats diseases. Consumes herbs.
 settler_level: 2
+buildingcosts: {1: 500, 4: 3, 6: 3, 7: 3}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -25,4 +26,3 @@ components:
         slot_sizes: {38: 8}
 actionsets:
   as_doctor0: {level: 0}
-buildingcosts: {1: 500, 4: 3, 6: 3, 7: 3}

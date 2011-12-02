@@ -11,6 +11,7 @@ inhabitants_max: 0
 button_name: tree-1
 tooltip_text: Tree
 settler_level: 0
+buildingcosts: {1: 10}
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
@@ -39,4 +40,3 @@ actionsets:
   as_maple2: {level: 0}
   as_maple1: {level: 0}
   as_maple0: {level: 0}
-buildingcosts: {1: 10}

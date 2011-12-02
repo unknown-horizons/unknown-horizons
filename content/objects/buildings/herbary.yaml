@@ -11,6 +11,7 @@ inhabitants_max: 0
 button_name: herbary-1
 tooltip_text: Produces herbs. Needs a farm.
 settler_level: 2
+buildingcosts: {1: 150}
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
@@ -25,4 +26,3 @@ components:
         slot_sizes: {37: 1}
 actionsets:
   as_herbary0: {level: 0}
-buildingcosts: {1: 150}

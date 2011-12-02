@@ -11,6 +11,7 @@ inhabitants_max: 1
 button_name: brickyard-1
 tooltip_text: Turns clay into bricks.
 settler_level: 1
+buildingcosts: {1: 500, 4: 6, 6: 1}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,4 +28,3 @@ components:
         slot_sizes: {21: 4, 7: 10}
 actionsets:
   as_brickyard0: {level: 0}
-buildingcosts: {1: 500, 4: 6, 6: 1}

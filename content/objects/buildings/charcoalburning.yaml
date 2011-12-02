@@ -11,6 +11,7 @@ inhabitants_max: 1
 button_name: charcoal-burning-1
 tooltip_text: Burns a lot of boards.
 settler_level: 2
+buildingcosts: {1: 250, 4: 2, 6: 1, 7: 3}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,4 +28,3 @@ components:
         slot_sizes: {4: 10, 23: 2}
 actionsets:
   as_charcoal_burning0: {level: 0}
-buildingcosts: {1: 250, 4: 2, 6: 1, 7: 3}

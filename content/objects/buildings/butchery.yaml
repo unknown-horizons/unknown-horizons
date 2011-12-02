@@ -11,6 +11,7 @@ inhabitants_max: 2
 button_name: butchery-1
 tooltip_text: Needs pigs or cattle. Produces food.
 settler_level: 2
+buildingcosts: {1: 500, 6: 3, 7: 4}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -33,4 +34,3 @@ components:
         slot_sizes: {35: 4, 36: 6, 5: 12}
 actionsets:
   as_butchery0: {level: 0}
-buildingcosts: {1: 500, 6: 3, 7: 4}

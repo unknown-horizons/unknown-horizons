@@ -11,6 +11,7 @@ inhabitants_max: 0
 button_name: null
 tooltip_text: null
 settler_level: 0
+buildingcosts: {}
 components:
 - HealthComponent: {maxhealth: 10}
 - StorageComponent:
@@ -19,4 +20,3 @@ components:
         slot_sizes: {24: 1000000}
 actionsets:
   as_mountain5x5: {preview: as_preview_mountain5x5, level: 0}
-buildingcosts: {}

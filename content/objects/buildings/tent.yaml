@@ -11,6 +11,7 @@ inhabitants_max: 2
 button_name: resident-1
 tooltip_text: Houses your inhabitants.
 settler_level: 0
+buildingcosts: {1: 100, 4: 2}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -26,82 +27,92 @@ components:
         produces:
         - [14, 4]
         changes_animation: false
+        level: [2]
         enabled_by_default: false
+        time: 90
         consumes:
         - [29, -1]
-        time: 90
       70:
         produces:
         - [14, 5]
         changes_animation: false
+        level: [2]
         enabled_by_default: false
+        time: 180
         consumes:
         - [32, -1]
-        time: 180
       71:
         produces:
         - [14, 15]
         changes_animation: false
+        level: [0]
         enabled_by_default: false
+        time: 60
         consumes:
         - [5, -1]
-        time: 60
       72:
         produces:
         - [14, 5]
         changes_animation: false
+        level: [0]
         enabled_by_default: false
+        time: 90
         consumes:
         - [11, -1]
-        time: 90
       41:
         produces:
         - [14, 4]
         changes_animation: false
+        level: [2]
         enabled_by_default: false
+        time: 90
         consumes:
         - [27, -1]
-        time: 90
       43:
         produces:
         - [14, 12]
         changes_animation: false
+        level: [2]
         enabled_by_default: false
+        time: 75
         consumes:
         - [5, -1]
-        time: 75
       44:
         produces:
         - [14, 5]
         changes_animation: false
+        level: [2]
         enabled_by_default: false
+        time: 90
         consumes:
         - [16, -1]
-        time: 90
       19:
         produces:
         - [14, 13]
         changes_animation: false
+        level: [1]
         enabled_by_default: false
+        time: 60
         consumes:
         - [5, -1]
-        time: 60
       20:
         produces:
         - [14, 5]
         changes_animation: false
+        level: [1, 2]
         enabled_by_default: false
+        time: 180
         consumes:
         - [3, -1]
-        time: 180
       21:
         produces:
         - [14, 3]
         changes_animation: false
+        level: [1, 2]
         enabled_by_default: false
+        time: 90
         consumes:
         - [11, -1]
-        time: 90
       24:
         changes_animation: false
         enabled_by_default: false
@@ -112,18 +123,20 @@ components:
         produces:
         - [14, 3]
         changes_animation: false
+        level: [1]
         enabled_by_default: false
+        time: 90
         consumes:
         - [16, -1]
-        time: 90
       30:
         produces:
         - [14, 1]
         changes_animation: false
+        level: [0, 1, 2]
         enabled_by_default: false
+        time: 90
         consumes:
         - [19, -1]
-        time: 90
 - StorageComponent:
     inventory:
       SlotsStorage:
@@ -139,4 +152,3 @@ actionsets:
   as_hut0: {level: 1}
   as_house0: {level: 2}
   as_hut2: {level: 1}
-buildingcosts: {1: 100, 4: 2}

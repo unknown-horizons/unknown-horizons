@@ -70,9 +70,7 @@ class Producer(Component):
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
 		for key, data in self.production_lines.iteritems():
-			if 'level' in data and data['level'] == level:
-				prod_lines.append(key)
-			elif level == 0 and 'level' not in data:
+			if 'level' in data and level in data['level']:
 				prod_lines.append(key)
 		return prod_lines
 

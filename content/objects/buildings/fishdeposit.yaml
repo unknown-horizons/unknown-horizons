@@ -11,6 +11,7 @@ inhabitants_max: 0
 button_name: null
 tooltip_text: null
 settler_level: 0
+buildingcosts: {}
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
@@ -26,4 +27,3 @@ components:
         slot_sizes: {28: 1}
 actionsets:
   as_fish0: {level: 0}
-buildingcosts: {}

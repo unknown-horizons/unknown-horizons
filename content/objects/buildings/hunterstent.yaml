@@ -11,6 +11,7 @@ inhabitants_max: 1
 button_name: hunter-1
 tooltip_text: Hunts wild forest animals, produces food.
 settler_level: 0
+buildingcosts: {1: 250, 4: 2, 6: 1}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,4 +28,3 @@ components:
         slot_sizes: {5: 6, 13: 4}
 actionsets:
   as_hunter0: {level: 0}
-buildingcosts: {1: 250, 4: 2, 6: 1}

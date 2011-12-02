@@ -11,9 +11,9 @@ inhabitants_max: 1
 button_name: tower-1
 tooltip_text: Defends your settlement.
 settler_level: 1
+buildingcosts: {1: 500, 4: 12, 6: 3}
 components:
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent
 actionsets:
   as_woodentower0: {level: 0}
-buildingcosts: {1: 500, 4: 12, 6: 3}

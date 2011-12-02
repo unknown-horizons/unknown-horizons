@@ -11,9 +11,9 @@ inhabitants_max: 1
 button_name: null
 tooltip_text: Increases the player's sight.
 settler_level: 0
+buildingcosts: {1: 100, 4: 4}
 components:
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent
 actionsets:
   as_lookout0: {level: 0}
-buildingcosts: {1: 100, 4: 4}
