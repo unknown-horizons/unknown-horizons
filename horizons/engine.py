@@ -301,7 +301,8 @@ class Fife(ApplicationBase):
 				name = ''
 
 		except IOError:
-			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': name, 'place': position}
+			print _("Configured language {lang} at {place} could not be loaded").format(
+			         lang=name, place=position)
 			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 			self._setting.set(UH_MODULE, "Language", 'System default')
 		update_all_translations()
