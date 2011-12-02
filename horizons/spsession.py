@@ -35,6 +35,7 @@ from horizons.constants import PATHS, GAME_SPEED, SINGLEPLAYER
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.timer import Timer
+from horizons.util.uhdbaccessor import read_savegame_template
 
 
 class SPSession(Session):
@@ -152,7 +153,6 @@ class SPSession(Session):
 		try:
 			if os.path.exists(savegame):
 				os.unlink(savegame)
-			shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, savegame)
 			self.savecounter += 1
 
 			db = DbReader(savegame)
@@ -171,6 +171,8 @@ class SPSession(Session):
 			raise
 
 		try:
+			read_savegame_template(db)
+
 			db("BEGIN")
 			self.world.save(db)
 			#self.manager.save(db)

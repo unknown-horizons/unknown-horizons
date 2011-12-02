@@ -22,6 +22,7 @@
 import sys
 from random import randint
 
+from horizons.constants import PATHS
 from horizons.util import decorators
 from horizons.util.dbreader import DbReader
 from horizons.util.gui import get_res_icon
@@ -283,3 +284,9 @@ class UhDbAccessor(DbReader):
 	def get_weapon_attack_radius(self, weapon_id):
 		"""Returns weapon's attack radius modifier."""
 		return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
+
+
+
+def read_savegame_template(db):
+	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
+	db.execute_script( savegame_template.read() )
