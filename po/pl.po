@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-09-15 22:21+0200\n"
-"Last-Translator: mtfk <mitfik@gmail.com>\n"
+"PO-Revision-Date: 2011-10-30 04:01+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1307,10 +1307,12 @@ msgstr ""
 msgid "%(player)s's ships"
 msgstr ""
 
+# 75%
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:81
+#, fuzzy
 msgid "None"
-msgstr ""
+msgstr "brak"
 
 #: horizons/gui/widgets/playersships.py:83
 msgid "N/A"
