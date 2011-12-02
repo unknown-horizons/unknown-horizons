@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-11-14 04:05+0200\n"
+"PO-Revision-Date: 2011-11-29 01:46+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en-suggest\n"
@@ -1898,9 +1898,8 @@ msgstr ""
 
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:475
-#, fuzzy
 msgid "capacity utilization"
-msgstr "Capacity utilization"
+msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:482
@@ -2431,9 +2430,8 @@ msgstr ""
 
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:842
-#, fuzzy
 msgid "Show only games with the same version:"
-msgstr "Only show games with the same version:"
+msgstr ""
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:844
