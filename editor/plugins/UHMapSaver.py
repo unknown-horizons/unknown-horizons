@@ -20,6 +20,7 @@
 # ###################################################
 
 import fife.extensions.savers as mapSavers
+from horizons.util.dbreader import DbReader
 import horizons.main # necessary so the correct load order of all modules is guaranteed
 
 import scripts.editor
@@ -35,19 +36,38 @@ TEMPLATE_DATAFORMAT_PATH = os.path.join(util.getUHPath(),'content','savegame_tem
 class MapSaver:
 	def __init__(self, filepath, engine, map, importList):
 		# copy template to save map
-		self.filepath = filepath
+		self._filepath = filepath
+		self._engine = engine
+		self._model = engine.getModel()
+		self._map = map
+		self._mapDatabase = None
 		pass
+			
+	def _saveBuildings(self):
+		building_layer = self._map.getLayer(util.BUILDING_LAYER_NAME)
+		instances = building_layer.getInstances()
+		for instance in instances:
+			type = util.getBuildingId(instance.getObject().getId())
+			rotation = instance.getRotation()
+			position = instance.getLocationRef().getExactLayerCoordinates()
+			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
 
 	def saveResource(self):
 		try:
-			savepath = self.filepath + '/.saved.sqlite'
+			savepath = self._filepath + '.saved.sqlite'
 			shutil.copy(TEMPLATE_DATAFORMAT_PATH, savepath)
 		except IOError as exception:
 			print "Did not save map!"
 			raise exception
 		else:	
+			self._mapDatabase = DbReader(savepath)
+			# transaction save operations to gain performance
+			self._mapDatabase("BEGIN IMMEDIATE TRANSACTION")
+			self._saveBuildings()
+			self._mapDatabase("COMMIT TRANSACTION");
+			
 			print "Successfully saved " + savepath 
-
+	
 class UHMapSaver(scripts.plugin.Plugin):
 	""" The {UHMapSaver} allows to load the UH map format in FIFEdit
 	"""

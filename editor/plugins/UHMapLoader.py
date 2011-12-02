@@ -36,8 +36,6 @@ import util
 class MapLoader:
 
 	GRID_TYPE = "square"
-	GROUND_LAYER_NAME = "ground"
-	BUILDING_LAYER_NAME = "buildings"
 
 	time_to_load = 0
 
@@ -62,8 +60,8 @@ class MapLoader:
 		grid = model.getCellGrid(self.GRID_TYPE)
 
 		# add layers
-		ground_layer = map.createLayer(self.GROUND_LAYER_NAME, grid)
-		building_layer = map.createLayer(self.BUILDING_LAYER_NAME, grid)
+		ground_layer = map.createLayer(util.GROUND_LAYER_NAME, grid)
+		building_layer = map.createLayer(util.BUILDING_LAYER_NAME, grid)
 
 		# add camera
 		self._createCamera(building_layer, map)
