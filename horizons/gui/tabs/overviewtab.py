@@ -27,9 +27,13 @@ from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.util import Callback, ActionSetLoader, NamedObject
-from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS
+from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS, WEAPONS
 from horizons.gui.widgets  import DeleteButton
 from horizons.gui.widgets.unitoverview import StanceWidget
+from horizons.gui.widgets.tradewidget import TradeWidget
+from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
+from horizons.gui.widgets.routeconfig import RouteConfig
+from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
@@ -144,87 +148,130 @@ class MainSquareOverviewTab(OverviewTab):
 
 
 class ShipOverviewTab(OverviewTab):
-	def __init__(self, instance, widget = 'overview_ship.xml', \
+	def __init__(self, instance, widget = 'overview_trade_ship.xml', \
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
 		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
+		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.inventory)
 		self.tooltip = _("Ship overview")
-		health_widget = self.widget.findChild(name='health')
-		health_widget.init(self.instance)
-		self.add_remove_listener(health_widget.remove)
-		unit_image = self.widget.child_finder('shipImage')
-		unit_image.image = 'content/gui/images/objects/ships/116/%s.png' % self.instance.id
-		self._init_combat()
 
-	def _init_combat(self): # no combat
-		weapons_wdg = self.widget.child_finder('weapon_storage')
-		weapons_wdg.parent.removeChild(weapons_wdg)
-		weapons_wdg = self.widget.child_finder('lbl_weapon_storage').text = \
-		            _("Trade ship") # no weapons, as opposed to displaying the weapons
+	def _configure_route(self):
+		self.route_menu = RouteConfig(self.instance)
+		self.route_menu.toggle_visibility()
 
-	def refresh(self):
-		# no weapons:
-		# show rename when you click on name
-		events = {
-			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance)
-		}
-
-		# check if an island is in range and it doesn't contain a player's settlement
+	def _refresh_found_settlement_button(self, events):
 		island_without_player_settlement_found = False
 		tooltip = _("The ship needs to be close to an island to found a settlement.")
-		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, \
-		                                                                self.instance.radius):
-			player_settlements = [ settlement for settlement in island.settlements if \
-			                       settlement.owner is self.instance.session.world.player ]
-			if len(player_settlements) == 0:
+		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius):
+			if not any(settlement.owner is self.instance.session.world.player for settlement in island.settlements):
 				island_without_player_settlement_found = True
 			else:
 				tooltip = _("You already have a settlement on this island.")
 
 		if island_without_player_settlement_found:
-			events['foundSettlement'] = Callback(self.instance.session.ingame_gui._build, \
+			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build, \
 			                                     BUILDINGS.BRANCH_OFFICE_CLASS, \
 			                                     weakref.ref(self.instance) )
-			self.widget.child_finder('bg_button').set_active()
-			self.widget.child_finder('foundSettlement').set_active()
-			self.widget.child_finder('foundSettlement').tooltip = _("Build settlement")
+			self.widget.child_finder('found_settlement_bg').set_active()
+			self.widget.child_finder('found_settlement').set_active()
+			self.widget.child_finder('found_settlement').tooltip = _("Build settlement")
 		else:
-			events['foundSettlement'] = None
-			self.widget.child_finder('bg_button').set_inactive()
-			self.widget.child_finder('foundSettlement').set_inactive()
-			self.widget.child_finder('foundSettlement').tooltip = tooltip
+			events['found_settlement'] = None
+			self.widget.child_finder('found_settlement_bg').set_inactive()
+			self.widget.child_finder('found_settlement').set_inactive()
+			self.widget.child_finder('found_settlement').tooltip = tooltip
 
-		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set,
-		   self.instance,
-		   Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].costs,
-		   {},
-		   res_from_ship = True )
-		events['foundSettlement/mouseEntered'] = cb
-		cb1 = Callback( self.instance.session.ingame_gui.resourceinfo_set,
-		                None ) # hides the resource status widget
-		cb2 = Callback( self.widget.child_finder('foundSettlement').hide_tooltip)
+		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set, self.instance,
+			Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].costs, {}, res_from_ship = True)
+		events['found_settlement/mouseEntered'] = cb
+
+		cb1 = Callback(self.instance.session.ingame_gui.resourceinfo_set, None) # hides the resource status widget
+		cb2 = Callback(self.widget.child_finder('found_settlement').hide_tooltip)
 		#TODO the tooltip should actually hide on its own. Ticket #1096
 		cb = Callback.ChainedCallbacks(cb1, cb2)
-		events['foundSettlement/mouseExited'] = cb
+		events['found_settlement/mouseExited'] = cb
+
+	def _refresh_trade_button(self, events):
+		branch_offices = self.instance.session.world.get_branch_offices(self.instance.position, \
+			self.instance.radius, self.instance.owner, True)
+
+		if branch_offices:
+			if branch_offices[0].owner is self.instance.owner:
+				wdg = TradeWidget(self.instance)
+				tooltip = _('Load/Unload')
+			else:
+				wdg = InternationalTradeWidget(self.instance)
+				tooltip = _('Buy/Sell')
+			events['trade'] = Callback(self.instance.session.ingame_gui.show_menu, wdg)
+			self.widget.findChild(name='trade_bg').set_active()
+			self.widget.findChild(name='trade').set_active()
+			self.widget.findChild(name='trade').tooltip = tooltip
+		else:
+			events['trade'] = None
+			self.widget.findChild(name='trade_bg').set_inactive()
+			self.widget.findChild(name='trade').set_inactive()
+			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest branch office')
+
+	def _refresh_combat(self): # no combat
+		def click_on_cannons(button):
+			button.button.capture(Callback(
+			  self.instance.session.gui.show_popup,
+			  _("Cannot equip trade ship with weapons"),
+			  _("It is not possible to equip a trade ship with weapons.")
+			))
+		self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons, lambda b: b.res_id == WEAPONS.CANNON)
+
+	def refresh(self):
+		# show rename when you click on name
+		events = {
+			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
+			'configure_route/mouseClicked': Callback(self._configure_route)
+		}
+
+		self._refresh_found_settlement_button(events)
+		self._refresh_trade_button(events)
 		self.widget.mapEvents(events)
+
+		self.widget.child_finder('inventory').update()
+		self._refresh_combat()
 		super(ShipOverviewTab, self).refresh()
 
 
 class FightingShipOverviewTab(ShipOverviewTab):
-	def __init__(self, instance, widget = 'overview_ship.xml'):
-		super(FightingShipOverviewTab, self).__init__(instance, widget)
-		stance_widget = StanceWidget()
+	def __init__(self, instance, widget = 'overview_war_ship.xml', \
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
+		super(FightingShipOverviewTab, self).__init__(instance, widget, icon_path)
+		stance_widget = self.widget.findChild(name='stance')
 		stance_widget.init(self.instance)
 		self.add_remove_listener(stance_widget.remove)
-		self.widget.findChild(name='stance').addChild(stance_widget)
 
-	def _init_combat(self): # no combat
-		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
-		weapon_storage_widget.init(self.instance)
-		self.add_remove_listener(weapon_storage_widget.remove)
+		#create weapon inventory, needed only in gui for inventory widget
+		self.weapon_inventory = self.instance.get_weapon_storage()
+		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, self.weapon_inventory)
 
-	def show(self):
-		self.widget.findChild(name='weapon_storage').update()
-		super(FightingShipOverviewTab, self).show()
+	def _refresh_combat(self):
+		def apply_equip(button):
+			button.button.tooltip = _("Equip weapon")
+			button.button.capture(Callback(self.equip_weapon, button.res_id))
+
+		def apply_unequip(button):
+			button.button.tooltip = _("Unequip weapon")
+			button.button.capture(Callback(self.unequip_weapon, button.res_id))
+
+		self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip, lambda b: b.res_id == WEAPONS.CANNON)
+		self.widget.findChild(name='inventory').apply_to_buttons(apply_equip, lambda b: b.res_id == WEAPONS.CANNON)
+
+	def equip_weapon(self, weapon_id):
+		if EquipWeaponFromInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
+			self.weapon_inventory.alter(weapon_id, 1)
+		self.widget.child_finder('weapon_inventory').update()
+		self.refresh()
+
+	def unequip_weapon(self, weapon_id):
+		if UnequipWeaponToInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
+			self.weapon_inventory.alter(weapon_id, -1)
+		self.widget.child_finder('weapon_inventory').update()
+		self.refresh()
+
 
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):

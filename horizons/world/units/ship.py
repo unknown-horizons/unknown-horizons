@@ -25,8 +25,7 @@ from fife import fife
 
 import horizons.main
 
-from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-	TraderShipOverviewTab, EnemyShipOverviewTab
+from horizons.gui.tabs import TraderShipOverviewTab, EnemyShipOverviewTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
@@ -282,7 +281,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	@param y: int y position
 	"""
 	pather_class = ShipPather
-	tabs = (ShipOverviewTab, ShipInventoryTab, )
+	tabs = (ShipOverviewTab, )
 	enemy_tabs = (EnemyShipOverviewTab, )
 	health_bar_y = -150
 	is_ship = True
