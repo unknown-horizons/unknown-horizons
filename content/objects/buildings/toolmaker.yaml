@@ -15,7 +15,7 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      0:
+      38:
         produces:
         - [6, 2]
         consumes:

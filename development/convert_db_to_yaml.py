@@ -144,7 +144,7 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 		if len(consumption) > 0:
 			prod_line['consumes'] = consumption
 
-		production_lines[num] = prod_line
+		production_lines[prodlineid] = prod_line
 
 	if len(production_lines) > 0:
 		result['components'].append({'ProducerComponent': {'productionlines': production_lines}})

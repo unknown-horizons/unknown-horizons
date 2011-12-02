@@ -15,17 +15,17 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      0:
-        produces:
-        - [5, 2]
-        consumes:
-        - [35, -1]
-        time: 15
-      1:
+      56:
         produces:
         - [5, 2]
         consumes:
         - [36, -1]
+        time: 15
+      55:
+        produces:
+        - [5, 2]
+        consumes:
+        - [35, -1]
         time: 15
 - StorageComponent:
     inventory:

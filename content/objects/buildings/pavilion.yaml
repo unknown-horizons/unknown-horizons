@@ -15,7 +15,7 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      0:
+      13:
         produces:
         - [11, 1]
         time: 4

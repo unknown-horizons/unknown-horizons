@@ -15,11 +15,11 @@ components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
-      0:
+      1:
         produces:
         - [8, 1]
         time: 60
-      1:
+      17:
         changes_animation: false
         produces:
         - [12, 1]

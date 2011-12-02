@@ -15,84 +15,14 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      0:
-        produces:
-        - [14, 13]
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [5, -1]
-        time: 60
-      1:
-        produces:
-        - [14, 5]
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [3, -1]
-        time: 180
-      2:
-        produces:
-        - [14, 3]
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [11, -1]
-        time: 90
-      3:
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [4, -2]
-        time: 1
-      4:
-        produces:
-        - [14, 3]
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [16, -1]
-        time: 90
-      5:
-        produces:
-        - [14, 1]
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [19, -1]
-        time: 90
-      6:
+      35:
         changes_animation: false
         enabled_by_default: false
         consumes:
         - [4, -3]
         - [7, -2]
         time: 1
-      7:
-        produces:
-        - [14, 4]
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [27, -1]
-        time: 90
-      8:
-        produces:
-        - [14, 12]
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [5, -1]
-        time: 75
-      9:
-        produces:
-        - [14, 5]
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [16, -1]
-        time: 90
-      10:
+      69:
         produces:
         - [14, 4]
         changes_animation: false
@@ -100,7 +30,7 @@ components:
         consumes:
         - [29, -1]
         time: 90
-      11:
+      70:
         produces:
         - [14, 5]
         changes_animation: false
@@ -108,7 +38,7 @@ components:
         consumes:
         - [32, -1]
         time: 180
-      12:
+      71:
         produces:
         - [14, 15]
         changes_animation: false
@@ -116,13 +46,83 @@ components:
         consumes:
         - [5, -1]
         time: 60
-      13:
+      72:
         produces:
         - [14, 5]
         changes_animation: false
         enabled_by_default: false
         consumes:
         - [11, -1]
+        time: 90
+      41:
+        produces:
+        - [14, 4]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [27, -1]
+        time: 90
+      43:
+        produces:
+        - [14, 12]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [5, -1]
+        time: 75
+      44:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [16, -1]
+        time: 90
+      19:
+        produces:
+        - [14, 13]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [5, -1]
+        time: 60
+      20:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [3, -1]
+        time: 180
+      21:
+        produces:
+        - [14, 3]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [11, -1]
+        time: 90
+      24:
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [4, -2]
+        time: 1
+      26:
+        produces:
+        - [14, 3]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [16, -1]
+        time: 90
+      30:
+        produces:
+        - [14, 1]
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [19, -1]
         time: 90
 - StorageComponent:
     inventory:
