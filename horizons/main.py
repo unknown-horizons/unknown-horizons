@@ -41,8 +41,8 @@ import shutil
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port
-from horizons.util.uhdbaccessor import UhDbAccessor
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader
+from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
@@ -159,7 +159,8 @@ def start(command_line_arguments):
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
 	elif command_line_arguments.stringpreview:
-		startup_worked = _start_map(PATHS.SAVEGAME_TEMPLATE, ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False)
+		first_map = SavegameManager.get_maps()[0][0]
+		startup_worked = _start_map(first_map, ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False)
 		from development.stringpreviewwidget import StringPreviewWidget
 		__string_previewer = StringPreviewWidget(_modules.session)
 		__string_previewer.show()

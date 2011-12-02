@@ -348,11 +348,11 @@ def set_translations():
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Building overview")),
 		# (tooltip of widget: capacity_utilisation_label)
-		"capacity_utilisation_label"  : ("tooltip" , _("capacity utilization")),
+		"capacity_utilisation_label"  : ("tooltip" , _("Capacity utilization")),
 		# (tooltip of widget: running_costs_label)
 		"running_costs_label"         : ("tooltip" , _("Running costs")),
 		# (tooltip of widget: capacity_utilisation)
-		"capacity_utilisation"        : ("tooltip" , _("capacity utilization")),
+		"capacity_utilisation"        : ("tooltip" , _("Capacity utilization")),
 		# (tooltip of widget: running_costs)
 		"running_costs"               : ("tooltip" , _("Running costs")),
 		},
@@ -502,11 +502,11 @@ def set_translations():
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Building overview")),
 		# (tooltip of widget: capacity_utilisation_label)
-		"capacity_utilisation_label"  : ("tooltip" , _("capacity utilization")),
+		"capacity_utilisation_label"  : ("tooltip" , _("Capacity utilization")),
 		# (tooltip of widget: running_costs_label)
 		"running_costs_label"         : ("tooltip" , _("Running costs")),
 		# (tooltip of widget: capacity_utilisation)
-		"capacity_utilisation"        : ("tooltip" , _("capacity utilization")),
+		"capacity_utilisation"        : ("tooltip" , _("Capacity utilization")),
 		# (tooltip of widget: running_costs)
 		"running_costs"               : ("tooltip" , _("Running costs")),
 		},
@@ -899,7 +899,7 @@ def set_translations():
 		# (text of widget: exit_to_main_menu_lbl)
 		"exit_to_main_menu_lbl"       : ("text"    , _("Main menu:")),
 		# (text of widget: game_showonlyownversion)
-		"game_showonlyownversion"     : ("text"    , _("Show only games with the same version:")),
+		"game_showonlyownversion"     : ("text"    , _("Only show games with the same version:")),
 		# (text of widget: headline_left)
 		"headline_left"               : ("text"    , _("New game - Multiplayer")),
 		# (text of widget: join_game_lbl)

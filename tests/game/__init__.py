@@ -49,6 +49,7 @@ from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
 from horizons.util import (Color, DbReader, Rect, WorldObject, LivingObject,
 						   SavegameAccessor, Point, DifficultySettings)
+from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world import World
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
@@ -95,9 +96,9 @@ def create_map():
 	# Create savegame with the island above.
 	fd, savegame = tempfile.mkstemp()
 	os.close(fd)
-	shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, savegame)
 
 	db = DbReader(savegame)
+	read_savegame_template(db)
 	db("BEGIN TRANSACTION")
 	db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", 20, 20, islandfile)
 	db("COMMIT")

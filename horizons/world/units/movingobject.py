@@ -26,15 +26,15 @@ from horizons.scheduler import Scheduler
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, decorators
+from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
 from horizons.world.componentholder import ComponentHolder
-from horizons.world.concreteobject import ConcretObject
 
 class MoveNotPossible(Exception):
 	"""Gets thrown when the unit should move some where, but there is no possible path"""
 	pass
 
-class MovingObject(ComponentHolder, ConcretObject):
+class MovingObject(ComponentHolder, ConcreteObject):
 	"""This class provides moving functionality and is to be inherited by Unit.
 	Its purpose is to provide a cleaner division of the code.
 

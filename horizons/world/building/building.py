@@ -27,7 +27,7 @@ from fife import fife
 import horizons.main
 from horizons.scheduler import Scheduler
 
-from horizons.world.concreteobject import ConcretObject
+from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
@@ -39,7 +39,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.componentholder import ComponentHolder
 
 
-class BasicBuilding(ComponentHolder, ConcretObject):
+class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class

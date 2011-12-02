@@ -49,8 +49,8 @@ class MultiplayerMenu(object):
 				NetworkInterface.create_instance()
 			except RuntimeError as e:
 				headline = _(u"Failed to initialize networking.")
-				descr = _(u"Networking couldn't be initialised with the current configuration.")
-				advice = _(u"Check the data you entered in the Network section in the settings dialogue.")
+				descr = _("Network features could not be initialized with the current configuration.")
+				advice = _("Check the settings you specified in the network section.")
 				self.show_error_popup(headline, descr, advice, unicode(e))
 				return
 

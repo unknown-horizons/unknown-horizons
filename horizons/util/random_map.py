@@ -28,6 +28,7 @@ import string
 import copy
 
 from horizons.util import Circle, Rect, Point, DbReader
+from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.constants import GROUND, PATHS
 
 # this is how a random island id looks like (used for creation)
@@ -458,8 +459,8 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 				break
 
 	filename = tempfile.mkstemp()[1]
-	shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, filename)
 	db = DbReader(filename)
+	read_savegame_template(db)
 
 	# move some of the islands to stretch the map to the right size
 	if len(islands) > 1:

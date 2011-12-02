@@ -45,6 +45,7 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.util import decorators, BuildingIndexer
 from horizons.util.dbreader import DbReader
+from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
@@ -819,8 +820,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 	def save_map(self, path, prefix):
 		map_file = os.path.join(path, prefix + '.sqlite')
-		shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, map_file)
 		db = DbReader(map_file)
+		read_savegame_template(db)
 		db('BEGIN')
 		for island in self.islands:
 			island_name = '%s_island_%d_%d.sqlite' % (prefix, island.origin.x, island.origin.y)

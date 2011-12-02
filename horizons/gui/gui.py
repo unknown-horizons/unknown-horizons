@@ -299,7 +299,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame in map_file_display: # savegamename already exists
-				message = _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % selected_savegame
+				message = _("A savegame with the name '{name}' already exists.").format(
+				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
 					self.current = old_current
 					return self.show_select_savegame(mode=mode) # reshow dialog
@@ -461,26 +462,27 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if savegame_info['timestamp'] == -1:
 				details_label.text += _("Unknown savedate")
 			else:
-				details_label.text += _("Saved at %(time)s") % \
-				                       {'time': time.strftime("%H:%M, %A, %B %d",
-				                         time.localtime(savegame_info['timestamp']))}
+				details_label.text += _("Saved at {time}").format(
+				                         time=time.strftime("%H:%M, %A, %B %d",
+				                         time.localtime(savegame_info['timestamp'])))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
-			details_label.text += N_("Saved %(amount)d time",
-			                         "Saved %(amount)d times",
-			                         counter) % {'amount': counter}
+			details_label.text += N_("Saved {amount} time",
+			                         "Saved {amount} times",
+			                         counter).format(amount=counter)
 			details_label.text += u'\n'
 			details_label.stylize('book_t')
 
 			from horizons.constants import VERSION
 			try:
 				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
-					details_label.text += _("Savegame version %d") % ( savegame_info['savegamerev'] )
+					details_label.text += _("Savegame version {version}").format(
+					                         version=savegame_info['savegamerev'])
 				else:
-					details_label.text += _("WARNING: Incompatible version %(version)d!") % \
-					                         {'version' : savegame_info['savegamerev']} + u"\n" + \
-					                      _("Required version: %(need)d!") % \
-					                         {'need' : VERSION.SAVEGAMEREVISION}
+					details_label.text += _("WARNING: Incompatible version {version}!").format(
+					                         version=savegame_info['savegamerev']) + u"\n" + \
+					                      _("Required version: {required}!").format(
+					                         required=VERSION.SAVEGAMEREVISION)
 			except KeyError:
 				details_label.text += _("Incompatible version")
 
@@ -508,8 +510,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
-		message = _('Do you really want to delete the savegame "%s"?') % \
-		             SavegameManager.get_savegamename_from_filename(selected_file)
+		message = _("Do you really want to delete the savegame '{name}'?").format(
+		             name=SavegameManager.get_savegamename_from_filename(selected_file))
 		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):
 			try:
 				os.unlink(selected_file)

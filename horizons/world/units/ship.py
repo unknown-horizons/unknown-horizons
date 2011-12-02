@@ -270,8 +270,12 @@ class ShipRoute(object):
 	def get_ship_status(self):
 		"""Return the current status of the ship."""
 		if self.ship.is_moving():
-			return (_('Trade route: going to %s' % self.ship.get_location_based_status(self.ship.get_move_target())), self.ship.get_move_target())
-		return (_('Trade route: waiting at %s' % self.ship.get_location_based_status(self.ship.position)), self.ship.position)
+			return (_('Trade route: going to {location}').format(
+			           location=self.ship.get_location_based_status(self.ship.get_move_target())),
+			        self.ship.get_move_target())
+		return (_('Trade route: waiting at {position}').format(
+		           position=self.ship.get_location_based_status(self.ship.position)),
+		        self.ship.position)
 
 class Ship(Unit):
 	"""Class representing a ship
@@ -471,13 +475,13 @@ class Ship(Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				return (_('Going to %s' % location_based_status), target)
-			return (_('Going to %(x)d, %(y)d' % {'x': target.x, 'y': target.y}), target)
+				return (_('Going to {location}').format(location=location_based_status), target)
+			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				return (_('Idle at %s' % location_based_status), self.position)
-			return (_('Idle at %(x)d, %(y)d' % {'x': self.position.x, 'y': self.position.y}), self.position)
+				return (_('Idle at {location}').format(location=location_based_status), self.position)
+			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

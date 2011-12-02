@@ -366,6 +366,23 @@ class RouteConfig(object):
 		self.slots = {}
 		self.slots_per_entry = 3
 
+		icon = self._gui.findChild(name="minimap")
+		def on_click(event, drag):
+			if drag:
+				return
+			if event.getButton() == fife.MouseEvent.LEFT:
+				map_coord = event.map_coord
+				tile = self.instance.session.world.get_tile(Point(*map_coord))
+				if tile is not None and tile.settlement is not None:
+					self.append_bo( tile.settlement.branch_office )
+
+		self.minimap = Minimap(icon, self.instance.session, \
+		                       horizons.main.fife.targetrenderer,
+		                       horizons.main.fife.imagemanager,
+		                       cam_border=False,
+		                       use_rotation=False,
+		                       on_click=on_click)
+
 		resources = horizons.main.db.get_res_id_and_icon(True)
 		#map an icon for a resource
 		#map a resource for an icon
@@ -403,22 +420,6 @@ class RouteConfig(object):
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
-
-		icon = self._gui.findChild(name="minimap")
-		def on_click(event, drag):
-			if drag:
-				return
-			if event.getButton() == fife.MouseEvent.LEFT:
-				map_coord = event.map_coord
-				tile = self.instance.session.world.get_tile(Point(*map_coord))
-				if tile is not None and tile.settlement is not None:
-					self.append_bo( tile.settlement.branch_office )
-		self.minimap = Minimap(icon, self.instance.session, \
-		                       horizons.main.fife.targetrenderer,
-		                       horizons.main.fife.imagemanager,
-		                       cam_border=False,
-		                       use_rotation=False,
-		                       on_click=on_click)
 
 		"""
 		import cProfile as profile

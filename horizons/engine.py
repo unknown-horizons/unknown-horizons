@@ -301,7 +301,8 @@ class Fife(ApplicationBase):
 				name = ''
 
 		except IOError:
-			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': name, 'place': position}
+			print _("Configured language {lang} at {place} could not be loaded").format(
+			         lang=name, place=position)
 			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 			self._setting.set(UH_MODULE, "Language", 'System default')
 		update_all_translations()
@@ -561,12 +562,12 @@ class Fife(ApplicationBase):
 				NetworkInterface().network_data_changed(connect=False)
 			except Exception as e:
 				headline = _(u"Failed to apply new network data.")
-				descr = _(u"Networking couldn't be initialised with the current configuration.")
-				advice = _(u"Check the data you entered in the Network section.")
+				descr = _("Network features could not be initialized with the current configuration.")
+				advice = _("Check the settings you specified in the network section.")
 				if 0 < parse_port(port, allow_zero=True) < 1024:
 					#i18n This is advice for players seeing a network error with the current config
 					advice += u" " + \
-					       _("Low port numbers sometimes require special privileges, try one greater than 1024 or 0.")
+					       _("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
 				details = unicode(e)
 				horizons.main._modules.gui.show_error_popup(headline, descr, advice, details)
 				ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)

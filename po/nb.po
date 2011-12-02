@@ -1026,9 +1026,11 @@ msgstr ""
 msgid "Island size deviation:"
 msgstr ""
 
+# 76%
 #: horizons/gui/modules/singleplayermenu.py:237
+#, fuzzy
 msgid "Resource density:"
-msgstr ""
+msgstr "Ressurslager"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
