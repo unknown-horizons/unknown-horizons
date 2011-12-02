@@ -27,7 +27,7 @@ from fife import fife
 import horizons.main
 from horizons.scheduler import Scheduler
 
-from horizons.world.concreteobject import ConcretObject
+from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
 from horizons.ambientsound import AmbientSound
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
@@ -37,7 +37,7 @@ from horizons.gui.tabs import EnemyBuildingOverviewTab
 from horizons.command.building import Build
 
 
-class BasicBuilding(AmbientSound, ConcretObject):
+class BasicBuilding(AmbientSound, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class

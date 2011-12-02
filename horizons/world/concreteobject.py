@@ -28,7 +28,7 @@ from horizons.gui.tabs import BuildRelatedTab
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.status import StatusIcon
 
-class ConcretObject(ComponentHolder, WorldObject):
+class ConcreteObject(ComponentHolder, WorldObject):
 	"""Class for concrete objects like Units or Buildings.
 	"Concrete" here means "you can touch it", e.g. a Branch Office is a ConcreteObject,
 	a Settlement isn't.
@@ -48,7 +48,7 @@ class ConcretObject(ComponentHolder, WorldObject):
 		"""
 		@param session: Session instance this obj belongs to
 		"""
-		super(ConcretObject, self).__init__(**kwargs)
+		super(ConcreteObject, self).__init__(**kwargs)
 		self.session = session
 		self.__init()
 
@@ -87,12 +87,12 @@ class ConcretObject(ComponentHolder, WorldObject):
 		return self._instance
 
 	def save(self, db):
-		super(ConcretObject, self).save(db)
+		super(ConcreteObject, self).save(db)
 		db("INSERT INTO concrete_object(id, action_runtime) VALUES(?, ?)", self.worldid, \
 			 self._instance.getActionRuntime())
 
 	def load(self, db, worldid):
-		super(ConcretObject, self).load(db, worldid)
+		super(ConcreteObject, self).load(db, worldid)
 		self.__init()
 		runtime = db.get_concrete_object_action_runtime(worldid)
 		# delay setting of runtime until load of sub/super-class has set the action
@@ -119,7 +119,7 @@ class ConcretObject(ComponentHolder, WorldObject):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
-		super(ConcretObject, self).remove()
+		super(ConcreteObject, self).remove()
 
 	def show_menu(self, jump_to_tabclass=None):
 		"""Shows tabs from self.__class__.tabs, if there are any.
