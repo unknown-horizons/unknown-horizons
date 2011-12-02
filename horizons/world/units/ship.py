@@ -473,13 +473,13 @@ class Ship(NamedObject, StorageHolder, Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				return (_('Going to %s' % location_based_status), target)
-			return (_('Going to %(x)d, %(y)d' % {'x': target.x, 'y': target.y}), target)
+				return (_('Going to {location}').format(location=location_based_status), target)
+			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				return (_('Idle at %s' % location_based_status), self.position)
-			return (_('Idle at %(x)d, %(y)d' % {'x': self.position.x, 'y': self.position.y}), self.position)
+				return (_('Idle at {location}').format(location=location_based_status), self.position)
+			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
