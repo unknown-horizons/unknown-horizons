@@ -328,3 +328,7 @@ class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 			return 0
 		else:
 			return super(PositiveSizedNumSlotStorage, self).get_free_space_for(res)
+
+########################################################################
+class SettlementStorage:
+	"""Dummy class to signal the storagecomponent to use the settlements inventory"""

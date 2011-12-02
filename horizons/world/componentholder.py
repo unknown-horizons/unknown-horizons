@@ -131,18 +131,3 @@ class ComponentHolder(object):
 			return self.components[name]
 		else:
 			return None
-
-	@classmethod
-	def read_component_file(cls, filename):
-		stream = file(filename, 'r')
-		result = load(stream, Loader=Loader)
-		print result
-		components = []
-
-		for index, entry in enumerate(components):
-			print index, entry
-
-		unit = UnitClass(None, id=result['id'], class_package=result['classpackage'], class_type=result['classtype'], radius=result['radius'], classname=result['classname'], action_sets=result['actionsets'])
-		print unit
-
-		return components

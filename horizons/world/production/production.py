@@ -399,8 +399,9 @@ class Production(WorldObject):
 	def _give_produced_res(self):
 		"""Put produces goods to the inventory"""
 		for res, amount in self._prod_line.produced_res.iteritems():
-			self.inventory.alter(res, amount)
-			self.log.debug("produced %s of %s", amount, res)
+			ret = self.inventory.alter(res, amount)
+			if res == 19:
+				self.log.debug("produced %s of %s, %s could not fit", amount, res, ret)
 
 	def _check_available_res(self):
 		"""Checks if all required resources are there.

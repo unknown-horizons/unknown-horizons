@@ -112,9 +112,10 @@ class Build(Command):
 		  action_set_id=self.action_set_id, \
 		  **self.data
 		)
+		island.add_building(building, issuer)
+
 		building.initialize(**self.data)
 
-		island.add_building(building, issuer)
 
 		if self.settlement is not None:
 			secondary_resource_source = WorldObject.get_object_by_id(self.settlement)

@@ -24,13 +24,14 @@ from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
 		 MainSquareOverviewTab, AccountTab, \
 		 MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
-		 EnemyBranchOfficeOverviewTab
+		 EnemyBranchOfficeOverviewTab, ProductionOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.building.production import SettlerServiceProvider
 from horizons.world.building.path import Path
+from horizons.world.production.producer import Producer
 
 class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
@@ -45,7 +46,10 @@ class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
 
 	def initialize(self):
 		super(StorageBuilding, self).initialize()
-		self.get_component(StorageComponent).inventory = self.settlement.get_component(StorageComponent).inventory
+
+		# Only don't add for mainsquare
+		if self.id is not 4:
+			self.get_component(StorageComponent).inventory = self.settlement.get_component(StorageComponent).inventory
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 		self.get_component(StorageComponent).inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 
@@ -81,7 +85,7 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 
 class MainSquare(Path, StorageBuilding, SettlerServiceProvider):
 	walkable = True
-	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
+	tabs = (MainSquareOverviewTab, ProductionOverviewTab, InventoryTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
 
 	def recalculate_orientation(self):
 		# change gfx according to roads here

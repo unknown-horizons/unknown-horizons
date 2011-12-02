@@ -20,7 +20,9 @@ components:
         produces:
         - [19, 5]
         time: 1
-- StorageComponent
+- StorageComponent:
+    inventory:
+        SettlementStorage: {}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/main_square.ogg]
 actionsets:

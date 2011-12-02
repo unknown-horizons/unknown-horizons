@@ -3,7 +3,7 @@ import horizons.main
 from horizons.world import storage
 from horizons import constants
 from horizons.world.component import Component
-from horizons.world.storage import PositiveSizedSlotStorage, PositiveSizedNumSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage
+from horizons.world.storage import PositiveSizedSlotStorage, PositiveSizedNumSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage, SettlementStorage
 
 class StorageComponent(Component):
 	"""The StorageComponent class is used as as a parent class for everything that
@@ -23,7 +23,8 @@ class StorageComponent(Component):
 	    'PositiveStorage': PositiveStorage,
 	    'PositiveSizedSlotStorage': PositiveSizedSlotStorage,
 	    'PositiveTotalNumSlotStorage': PositiveSizedNumSlotStorage,
-	    'SlotsStorage': PositiveSizedSpecializedStorage
+	    'SlotsStorage': PositiveSizedSpecializedStorage,
+	    'SettlementStorage': SettlementStorage
 	    }
 
 	has_own_inventory = True # some objs share inventory, which requires different handling here.
@@ -35,8 +36,10 @@ class StorageComponent(Component):
 	def initialize(self):
 		if self.inventory is None:
 			self.create_inventory()
-		#if self.has_own_inventory:
-			#self.inventory.add_change_listener(self.instance._changed)
+		elif isinstance(self.inventory, SettlementStorage):
+			self.inventory = self.instance.settlement.get_component(StorageComponent).inventory
+		if self.has_own_inventory:
+			self.inventory.add_change_listener(self.instance._changed)
 
 	def remove(self):
 		super(StorageComponent, self).remove()
