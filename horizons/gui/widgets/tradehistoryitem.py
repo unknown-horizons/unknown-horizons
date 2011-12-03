@@ -47,9 +47,9 @@ class TradeHistoryItem(pychan.widgets.Container):
 
 		resource_amount_label = self.findChild(name='resource_amount')
 		if amount < 0:
-			resource_amount_label.text = unicode(amount).ljust(4)
+			resource_amount_label.text = unicode(amount)
 		else:
-			resource_amount_label.text = unicode('+' + str(amount)).ljust(4)
+			resource_amount_label.text = unicode('+' + str(amount))
 
 		resource_icon = self.findChild(name='resource_icon')
 		resource_icon.image = get_res_icon(resource_id)[3]

@@ -8,7 +8,7 @@
 		<TooltipIcon name="gold_icon" />
 	</HBox>
 	<HBox>
-		<Label name="resource_amount" text="x" max_size="22,16" />
 		<TooltipIcon name="resource_icon" />
+		<Label name="resource_amount" />
 	</HBox>
 </VBox>
