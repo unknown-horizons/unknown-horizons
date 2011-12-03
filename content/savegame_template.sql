@@ -82,4 +82,5 @@ CREATE TABLE "production_queue" (production_line_id INTEGER NOT NULL);
 CREATE TABLE production_line(for_worldid INTEGER, type STRING, res INTEGER, amount INTEGER);
 CREATE TABLE "settler" ("inhabitants" INTEGER, "last_tax_payed" INTEGER);
 CREATE TABLE "settlement_tiles" (data STRING);
+CREATE TABLE "trade_history" ("settlement" INTEGER NOT NULL,"tick" INTEGER NOT NULL, "player" INTEGER NOT NULL, "resource_id" INTEGER NOT NULL, "amount" INTEGER NOT NULL, "gold" INTEGER NOT NULL);
 COMMIT;

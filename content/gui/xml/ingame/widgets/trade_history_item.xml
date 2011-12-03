@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--This widget shows a single entry of the trade log.-->
+<VBox size="245,45">
+	<HBox>
+		<Label name="player_emblem" text="   " size="12,18"/>
+		<Label name="player_name" min_size="138,20"/>
+		<Label name="gold_amount" />
+		<TooltipIcon name="gold_icon" />
+	</HBox>
+	<HBox>
+		<Label name="resource_amount" text="x" max_size="22,16" />
+		<TooltipIcon name="resource_icon" />
+	</HBox>
+</VBox>

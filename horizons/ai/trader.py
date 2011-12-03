@@ -202,7 +202,7 @@ class Trader(GenericAI):
 			if amount == 0:
 				continue
 			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * amount)
-			settlement.buy(res, amount, price)
+			settlement.buy(res, amount, price, self.worldid)
 			# don't care if he bought it. the trader just offers.
 			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
 
@@ -213,7 +213,7 @@ class Trader(GenericAI):
 			if amount == 0:
 				continue
 			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * amount)
-			settlement.sell(res, amount, price)
+			settlement.sell(res, amount, price, self.worldid)
 			self.log.debug("Trader %s: offered buy %s tons of res %s", self.worldid, amount, res)
 
 		del self.office[ship.worldid]
