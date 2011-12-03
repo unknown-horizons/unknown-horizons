@@ -32,7 +32,7 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
 from horizons.util.gui import load_uh_widget
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
 
 class BuildingTool(NavigationTool):
@@ -237,7 +237,8 @@ class BuildingTool(NavigationTool):
 				self.renderer.removeColored(self.buildings_fife_instances[building])
 				self.renderer.addOutlined(self.buildings_fife_instances[building], \
 				                          self.buildable_color[0], self.buildable_color[1],\
-				                          self.buildable_color[2], 1)
+				                          self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
+				                          GFX.BUILDING_OUTLINE_THRESHOLD)
 				if hasattr(self._class, "select_building"):
 					self._class.select_building(self.session, building.position, settlement)
 			else: # not buildable

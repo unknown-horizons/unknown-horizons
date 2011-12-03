@@ -35,7 +35,7 @@ from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED
+from horizons.constants import LAYERS, STORAGE, GAME_SPEED, GFX
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 
@@ -361,7 +361,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
 		self._selected = True
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1, 64)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.SHIP_OUTLINE_WIDTH, GFX.SHIP_OUTLINE_THRESHOLD)
 		# add a buoy at the ship's target if the player owns the ship
 		if self.session.world.player == self.owner:
 			self._update_buoy()
