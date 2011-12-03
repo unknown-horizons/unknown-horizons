@@ -32,6 +32,7 @@ from horizons.util.gui import create_resource_icon
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, SETTLER
 from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class MainSquareTab(TabInterface):
 	"""Tab for main square. Refreshes when one building on the settlement changes"""
@@ -103,7 +104,7 @@ class MainSquareOverviewTab(AccountTab):
 	def __init__(self, instance):
 		super(MainSquareOverviewTab, self).__init__(instance)
 		self.tooltip = _('Main square overview')
-		self.widget.child_finder('headline').text = self.settlement.name
+		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 
 class MainSquareSettlerTabSettlerTab(MainSquareTab):
 	"""Displays information about the settlers on average as overview"""
