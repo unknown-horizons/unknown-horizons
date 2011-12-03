@@ -493,11 +493,6 @@ def set_translations():
 		"lbl_weapon_storage"          : ("text"    , _("Weapons:")),
 		},
 
-	"overview_mainsquare.xml" : {
-		# (text of widget: name_label)
-		"name_label"                  : ("text"    , _("Name:")),
-		},
-
 	"overview_productionbuilding.xml" : {
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Building overview")),
@@ -543,17 +538,6 @@ def set_translations():
 		"happiness"                   : ("tooltip" , _("Happiness")),
 		},
 
-	"overview_ship.xml" : {
-		# (text of widget: foundSettlement_label)
-		"foundSettlement_label"       : ("text"    , _("Build settlement:")),
-		# (text of widget: lbl_weapon_storage)
-		"lbl_weapon_storage"          : ("text"    , _("Weapons:")),
-		# (tooltip of widget: name)
-		"name"                        : ("tooltip" , _("Click to change the name of this ship.")),
-		# (tooltip of widget: foundSettlement)
-		"foundSettlement"             : ("tooltip" , _("Build settlement")),
-		},
-
 	"overview_signalfire.xml" : {
 		# (text of widget: signal_fire_description_lbl)
 		"signal_fire_description_lbl" : ("text"    , _("The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods.")),
@@ -595,24 +579,6 @@ def set_translations():
 		"ship_label"                  : ("text"    , _("Ship:")),
 		# (text of widget: trade_with_label)
 		"trade_with_label"            : ("text"    , _("Trade partner:")),
-		},
-
-	"fighting_ship_inventory.xml" : {
-		# (text of widget: configure_route_label)
-		"configure_route_label"       : ("text"    , _("Configure trading route:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Inventory")),
-		# (text of widget: load_unload_label)
-		"load_unload_label"           : ("text"    , _("Load/Unload:")),
-		},
-
-	"ship_inventory.xml" : {
-		# (text of widget: configure_route_label)
-		"configure_route_label"       : ("text"    , _("Configure trading route:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Inventory")),
-		# (text of widget: load_unload_label)
-		"load_unload_label"           : ("text"    , _("Load/Unload:")),
 		},
 
 	"overview_farmproductionline.xml" : {

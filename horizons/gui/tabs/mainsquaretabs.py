@@ -99,6 +99,12 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('sale').text = unicode(sell_income)
 		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
 
+class MainSquareOverviewTab(AccountTab):
+	def __init__(self, instance):
+		super(MainSquareOverviewTab, self).__init__(instance)
+		self.tooltip = _('Main square overview')
+		self.widget.child_finder('headline').text = self.settlement.name
+
 class MainSquareSettlerTabSettlerTab(MainSquareTab):
 	"""Displays information about the settlers on average as overview"""
 	def __init__(self, instance):

@@ -22,9 +22,8 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MainSquareOverviewTab, AccountTab, \
-		 MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
-		 EnemyBranchOfficeOverviewTab, ProductionOverviewTab
+		 AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
+		 EnemyBranchOfficeOverviewTab, MainSquareOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.building.buildingresourcehandler import ProducerBuilding
@@ -85,7 +84,7 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 
 class MainSquare(Path, StorageBuilding, SettlerServiceProvider):
 	walkable = True
-	tabs = (MainSquareOverviewTab, ProductionOverviewTab, InventoryTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
+	tabs = (MainSquareOverviewTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
 
 	def recalculate_orientation(self):
 		# change gfx according to roads here

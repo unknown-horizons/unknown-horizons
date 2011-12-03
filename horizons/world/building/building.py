@@ -31,7 +31,7 @@ from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
-from horizons.constants import RES, LAYERS, GAME
+from horizons.constants import RES, LAYERS, GAME, GFX
 from horizons.world.building.buildable import BuildableSingle
 from horizons.gui.tabs import EnemyBuildingOverviewTab
 from horizons.command.building import Build
@@ -314,8 +314,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	#@decorators.relese_mode(ret="Building")
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
-		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
-								                     self.worldid)
+		return '%s(id=%s;worldid=%s)' % (classname, self.id, self.worldid)
 
 
 
@@ -328,8 +327,9 @@ class SelectableBuilding(object):
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
 		renderer = self.session.view.renderer['InstanceRenderer']
-		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
-								         self.selection_color[2], 1)
+		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1],
+		                     self.selection_color[2], GFX.BUILDING_OUTLINE_WIDTH,
+		                     GFX.BUILDING_OUTLINE_THRESHOLD)
 		if reset_cam:
 			self.session.view.center(*self.position.origin.to_tuple())
 		self._do_select(renderer, self.position, self.session.world, self.settlement)

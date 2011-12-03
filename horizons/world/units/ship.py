@@ -25,8 +25,7 @@ from fife import fife
 
 import horizons.main
 
-from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-     TraderShipOverviewTab, EnemyShipOverviewTab
+from horizons.gui.tabs import TraderShipOverviewTab, EnemyShipOverviewTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
@@ -35,7 +34,7 @@ from horizons.util import Point, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED
+from horizons.constants import LAYERS, STORAGE, GAME_SPEED, GFX
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.namedcomponent import ShipNameComponent, PirateShipNameComponent, NamedComponent
@@ -283,7 +282,7 @@ class Ship(Unit):
 	@param y: int y position
 	"""
 	pather_class = ShipPather
-	tabs = (ShipOverviewTab, ShipInventoryTab, )
+	tabs = (ShipOverviewTab, )
 	enemy_tabs = (EnemyShipOverviewTab, )
 	health_bar_y = -150
 	is_ship = True
@@ -366,7 +365,7 @@ class Ship(Unit):
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
 		self._selected = True
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1, 64)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.SHIP_OUTLINE_WIDTH, GFX.SHIP_OUTLINE_THRESHOLD)
 		# add a buoy at the ship's target if the player owns the ship
 		if self.session.world.player == self.owner:
 			self._update_buoy()
