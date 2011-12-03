@@ -337,6 +337,7 @@ class BuildingTool(NavigationTool):
 						                                                horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
 						                                                not found_buildable or self._class.class_package == 'path'):
 				self.startPoint = point
+				self.highlight_buildable()
 				self.preview_build(point, point)
 			else:
 				self.on_escape()
