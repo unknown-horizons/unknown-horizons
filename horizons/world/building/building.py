@@ -146,6 +146,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES(?, ?)", self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
+		self.island, self.settlement = self.load_location(db, worldid)
 		super(BasicBuilding, self).load(db, worldid)
 		x, y, location, rotation, level = db.get_building_row(worldid)
 
@@ -159,7 +160,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.__init(Point(x, y), rotation, owner, level=level, \
 		            remaining_ticks_of_month=remaining_ticks_of_month)
 
-		self.island, self.settlement = self.load_location(db, worldid)
 
 		# island.add_building handles registration of building for island and settlement
 		self.island.add_building(self, self.owner, load=True)

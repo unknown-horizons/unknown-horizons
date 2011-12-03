@@ -108,9 +108,6 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 		                    self.id):
 			self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
 
-	def load(self, db, worldid):
-		super(ResourceDeposit, self).load(db, worldid)
-
 class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
 
 	def __init__(self, *args, **kwargs):

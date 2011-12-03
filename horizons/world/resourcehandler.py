@@ -22,14 +22,13 @@
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
 from horizons.constants import PRODUCTION
-from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.worldobject import WorldObject
 from horizons.world.status import InventoryFullStatus
 from horizons.world.production.producer import Producer
 
 
-class ResourceHandler(ComponentHolder):
+class ResourceHandler(object):
 	"""The ResourceHandler class acts as a basic class for describing objects
 	that handle resources. This means the objects can provide resources for
 	Collectors and have multiple productions. This is a base class, meaning

@@ -42,7 +42,7 @@ class WorldObject(ChangeListener):
 
 	def __init(self, worldid=None):
 		self.worldid = worldid if worldid is not None else WorldObject.__next_id
-		assert self.worldid not in WorldObject.__objects
+		assert self.worldid not in WorldObject.__objects, "WorldObject ID(" + str(worldid) + ") already in use by " + str(self.get_object_by_id(worldid))
 		WorldObject.__objects[self.worldid] = self
 		# Make sure that new WorldIDs are always higher than every other WorldObject
 		WorldObject.__next_id = max(WorldObject.__next_id, self.worldid+1)

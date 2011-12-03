@@ -86,13 +86,13 @@ class ComponentHolder(object):
 		super(ComponentHolder, self).load(db, worldid)
 		self.components = {}
 		self.__load_components()
-		for name in self.components:
-			self.components[name].load(db, worldid)
+		for component in sorted(self.components.itervalues()):
+			component.load(db, worldid)
 
 	def save(self, db):
 		super(ComponentHolder, self).save(db)
-		for name in self.components:
-			self.components[name].save(db)
+		for component in self.components.itervalues():
+			component.save(db)
 
 	def add_component(self, component):
 		"""
