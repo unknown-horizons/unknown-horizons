@@ -4,17 +4,18 @@
 # It was automatically generated with development/create_scenario_pot.sh using
 # translation files from pootle.
 
-author: "T\xFDm UH"
-description: "Tutorial:\nPostav svoj\xED prvn\xED osadu a nau\u010D se hr\xE1t!\n"
-difficulty: !!python/unicode 'Tutorial'
+author: !!python/unicode 'Az UH csapat'
+description: "Bemutat\xF3:\n\xE9p\xEDtsd fel az els\u0151 telepedet, \xE9s tanuld\
+  \ meg hogyan kell j\xE1tszani!\n"
+difficulty: "Bemutat\xF3"
 events:
 - actions:
-  - arguments: ["Postav na pob\u0159e\u017E\xED pobo\u010Dku, aby byla snadno dostupn\xE1\
-        \ ostatn\xEDm lod\xEDm, jako je t\u0159eba voln\xFD obchodn\xEDk."]
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
-  - arguments: ["V\xEDtej v Unknown Horizons!", !!python/unicode 'This is your Captain''s
-        log where all important information is stored. A short notification of each
-        task will be provided on the left of the screen.
+  - arguments: [!!python/unicode 'Welcome to Unknown Horizons!', !!python/unicode 'This
+        is your Captain''s log where all important information is stored. A short
+        notification of each task will be provided on the left of the screen.
 
 
         If you are interested in longer descriptions, your log will hopefully provide
@@ -35,17 +36,28 @@ events:
 
         And now, let''s start the actual game.']
     type: logbook_w
-  - arguments: ["NOV\xDD \xDAKOL: OS\xCDDLI OSTROV", "Pro pohyb lod\xED, j\xED vyber\
-        \ kliknut\xEDm na lev\xE9 tla\u010D\xEDtko, a klikni prav\xFDm tla\u010D\xED\
-        tkem na m\xEDsto kam chce\u0161 plout. \n\nJakmile bude\u0161 v bl\xEDzkosti\
-        \ pob\u0159e\u017E\xED, tla\u010D\xEDtko kotvy, kter\xE9 vid\xED\u0161 na\
-        \ kart\u011B p\u0159ehledu, bude aktivn\xED.\n\nTo nazna\u010Duje, \u017E\
-        e zde m\u016F\u017Ee\u0161 postavit pobo\u010Dku stiskem tohoto tla\u010D\xED\
-        tka (nazvan\xE9 'Postav osadu').\n\nNyn\xED se zobraz\xED n\xE1hled budovy\
-        \ p\u0159i pohybu kurzorem.\n\nM\u016F\u017Ee\u0161 postavit budovu na jak\xE9\
-        mkoliv m\xEDst\u011B, kde n\xE1hled nen\xED zbarven \u010Derven\u011B.\nKlikni\
-        \ kdekoliv pro um\xEDst\u011Bn\xED tv\xE9 prvn\xED budovy.\n\n\xDAKOL: Postav\
-        \ pobo\u010Dku na pob\u0159e\u017E\xED.", 2]
+  - arguments: [!!python/unicode 'NEW TASK: SETTLE ON AN ISLAND', !!python/unicode 'To
+        move your ship, select it with a left click and right click on the location
+        you want it to go to.
+
+
+        Once you are near the coast, the anchor-like button you see in the overview
+        tab will become active.
+
+
+        This indicates that you are able to build a branch office there by pressing
+        that button (called ''Build Settlement'').
+
+
+        Now a preview of your building is dragged around when you move the cursor.
+
+
+        You can build on any spot where this preview is not shaded red.
+
+        Click where you want to place your first building.
+
+
+        TASK: Build a branch office at the coast.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -53,9 +65,9 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: ["NOV\xDD \xDAKOL: POSTAV D\u0158EVORUBCE", !!python/unicode 'The construction
-        material on your ship got unloaded automatically. You can now construct some
-        basic buildings.
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A LUMBERJACK', !!python/unicode 'The
+        construction material on your ship got unloaded automatically. You can now
+        construct some basic buildings.
 
 
         We will start with building a lumberjack.
@@ -77,18 +89,33 @@ events:
         You are currently in the first increment (the Sailors level) so are offered
         only the basic buildings.']
     type: logbook_w
-  - arguments: ['', "Jak se bude va\u0161e civilizace rozv\xEDjet, z\xEDsk\xE1te st\xE1\
-        le komplexn\u011Bj\u0161\xED a komplexn\u011Bj\u0161\xED budovy. \n\nNyn\xED\
-        \ vyberte d\u0159evorubce v sekci 'Podniky' a postavte ho v oblasti, kde jsou\
-        \ stromy.\n\nPodnik v\u017Edy pot\u0159ebuje spojen\xED stezkou ke skladi\u0161\
-        ti nebo pobo\u010Dce, jinak zbo\u017E\xED z\u016Fstane v podniku a nebude\
-        \ vybr\xE1no.\n\nTo znamen\xE1, \u017Ee mus\xEDte vybudovat stezku spojuj\xED\
-        c\xED va\u0161\xED pobo\u010Dku (nebo skladi\u0161t\u011B) a d\u0159evorubce.\
-        \ \n\n\xDAKOL: Postavte d\u0159evorubce in lesnat\xE9 oblasti a propojte ho\
-        \ cestou. \n\nSledujte jak v\xFDb\u011Br\u010D\xED vybere va\u0161e prvn\xED\
-        \ vyprodukovan\xE9 prkna."]
+  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
+        more and more complex buildings.
+
+
+        For now, select the lumberjack under ''Companies'' and build it in an area
+        with some trees around.
+
+
+        You can also plant trees later - but that costs money. Use what nature provided
+        you with!
+
+
+        A company always needs a trail connection to a storage or branch office, otherwise
+        goods will remain at the company and not be collected.
+
+
+        This means that you have to build a trail connecting your branch office (or
+        storage) and lumberjack.
+
+
+        TASK: Build a lumberjack in a wooded area and connect it to a road.
+
+
+        Watch how a collector will fetch your first self-produced boards.']
     type: logbook
-  - arguments: ["Postavte d\u0159evorubce a spojte ho s pobo\u010Dkou pomoc\xED stezky."]
+  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
+        office using a trail.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -104,8 +131,8 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: ["NOV\xDD \xDAKOL: POTRAVN\xCD Z\xC1SOBOV\xC1N\xCD", !!python/unicode 'You
-        will need to have some food-producing companies, too, because people in general
+  - arguments: [!!python/unicode 'NEW TASK: FOOD SUPPLY', !!python/unicode 'You will
+        need to have some food-producing companies, too, because people in general
         (and especially sailors) are very hungry.
 
 
@@ -696,8 +723,8 @@ events:
   - arguments: [tutStepDone, 58]
     type: var_lt
 - actions:
-  - arguments: ["\u017D\xC1DN\xC9 DAL\u0160\xCD \xDAKOLY", !!python/unicode 'There
-        is nothing left to do now.
+  - arguments: [!!python/unicode 'NO TASKS LEFT', !!python/unicode 'There is nothing
+        left to do now.
 
 
         If you have any suggestions on what we could or should improve, add or leave
@@ -719,8 +746,18 @@ events:
         The best results until now were achieved by joining our IRC channel, so you
         could try that out first (-;']
     type: logbook
-  - arguments: ["D\xEDky!", "\n\n\n\n\n\n\nD\u011Bkujeme za hran\xED tutorialu!\n\n\
-        Tv\u016Fj UH-Team"]
+  - arguments: [!!python/unicode 'Thanks!', !!python/unicode '
+
+
+
+
+
+
+
+        Thanks for playing the tutorial!
+
+
+        Your UH-Team']
     type: logbook
   - arguments: [tutStepDone, 61]
     type: set_var
@@ -741,12 +778,12 @@ events:
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: ["Gratulujeme! Dostal jsi se na konec tutorialu a jsi p\u0159ipraven\
-        \ na dal\u0161\xED v\xFDzvy!"]
+  - arguments: [!!python/unicode 'Congratulations! You have reached the end of this
+        tutorial and are ready to meet new challenges!']
     type: message
   conditions:
   - arguments: [tutStepDone, 60]
     type: var_gt
-locale: cs
+locale: hu
 mapfile: development.sqlite
 
