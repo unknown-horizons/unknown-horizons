@@ -549,7 +549,7 @@ class Fife(ApplicationBase):
 		except ValueError:
 			headline = _("Invalid network port")
 			descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
-			advice = _("Please check the port you entered and make sure it's in the specified range.")
+			advice = _("Please check the port you entered and make sure it is in the specified range.")
 			horizons.main._modules.gui.show_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
 			self.set_uh_setting("NetworkPort", u"0")
@@ -561,7 +561,7 @@ class Fife(ApplicationBase):
 					NetworkInterface.create_instance()
 				NetworkInterface().network_data_changed(connect=False)
 			except Exception as e:
-				headline = _(u"Failed to apply new network data.")
+				headline = _(u"Failed to apply new network settings.")
 				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _("Check the settings you specified in the network section.")
 				if 0 < parse_port(port, allow_zero=True) < 1024:

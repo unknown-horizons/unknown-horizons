@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-11-21 13:21+0200\n"
+"PO-Revision-Date: 2011-11-21 13:22+0200\n"
 "Last-Translator: Jacob <jacob.kage@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -82,10 +82,12 @@ msgstr ""
 msgid "Charcoal Burning"
 msgstr "Trækulsbrænderi"
 
+# 83%
 #. This is a database entry: the name of a building.
 #: database files sql
+#, fuzzy
 msgid "Clay Deposit"
-msgstr ""
+msgstr "ler"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -1087,11 +1089,13 @@ msgstr ""
 msgid "Increment"
 msgstr ""
 
+# 83%
 #. (text of widget: headline)
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:544
 #: horizons/i18n/guitranslations.py:553
+#, fuzzy
 msgid "Trade"
-msgstr ""
+msgstr "Købmand"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:334
@@ -1153,18 +1157,22 @@ msgstr ""
 msgid "Sailors"
 msgstr ""
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:240
 #: horizons/i18n/guitranslations.py:348
+#, fuzzy
 msgid "Pioneers"
-msgstr ""
+msgstr "pioner"
 
+# 75%
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:408 horizons/i18n/guitranslations.py:646
+#, fuzzy
 msgid "Settlers"
-msgstr ""
+msgstr "nybygger"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:49 horizons/gui/tabs/overviewtab.py:407
@@ -1572,30 +1580,40 @@ msgstr ""
 msgid "Zoom out"
 msgstr ""
 
+# 83%
 #. (tooltip of widget: boards_icon)
 #: horizons/i18n/guitranslations.py:208
+#, fuzzy
 msgid "Boards"
-msgstr ""
+msgstr "tømmer"
 
+# 83%
 #. (tooltip of widget: bricks_icon)
 #: horizons/i18n/guitranslations.py:210
+#, fuzzy
 msgid "Bricks"
-msgstr ""
+msgstr "mursten"
 
+# 75%
 #. (tooltip of widget: food_icon)
 #: horizons/i18n/guitranslations.py:212
+#, fuzzy
 msgid "Food"
-msgstr ""
+msgstr "mad"
 
+# 75%
 #. (tooltip of widget: textiles_icon)
 #: horizons/i18n/guitranslations.py:214
+#, fuzzy
 msgid "Textiles"
-msgstr ""
+msgstr "tekstil"
 
+# 80%
 #. (tooltip of widget: tools_icon)
 #: horizons/i18n/guitranslations.py:216
+#, fuzzy
 msgid "Tools"
-msgstr ""
+msgstr "værktøj"
 
 #. (tooltip of widget: gold_icon)
 #: horizons/i18n/guitranslations.py:221
@@ -1930,11 +1948,13 @@ msgstr ""
 msgid "Needed resources:"
 msgstr ""
 
+# 88%
 #. (tooltip of widget: happiness_label)
 #. (tooltip of widget: happiness)
 #: horizons/i18n/guitranslations.py:495 horizons/i18n/guitranslations.py:509
+#, fuzzy
 msgid "Happiness"
-msgstr ""
+msgstr "glæde"
 
 #. (tooltip of widget: residents_label)
 #. (tooltip of widget: inhabitants)
@@ -2597,20 +2617,24 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
+# 84%
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:915
+#, fuzzy
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Gendan standartindstillingerne"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:920
 msgid "Enter filename:"
 msgstr ""
 
+# 76%
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:924
+#, fuzzy
 msgid "Your saved games:"
-msgstr ""
+msgstr "Ingen gemte spil"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: okay)
@@ -2805,9 +2829,11 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
+# 75%
 #: horizons/spsession.py:122
+#, fuzzy
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Kunne ikke gemme."
 
 #: horizons/spsession.py:123
 msgid "An error happened during quicksave. Your game has not been saved."
