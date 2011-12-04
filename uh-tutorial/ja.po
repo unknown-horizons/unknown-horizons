@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-04 07:44+0200\n"
+"PO-Revision-Date: 2011-11-28 01:10+0200\n"
 "Last-Translator: shirayuki <shirayuking@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -21,12 +21,12 @@ msgstr ""
 #. scenario difficulty
 #: po/tutorial.py:2
 msgid "Tutorial"
-msgstr ""
+msgstr "チュートリアル"
 
 #. scenario author
 #: po/tutorial.py:4
 msgid "The UH team"
-msgstr ""
+msgstr "UH チーム"
 
 #. scenario description
 #: po/tutorial.py:6
@@ -45,7 +45,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Unknown Horizons にようこそ!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:12
@@ -739,7 +739,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:126
 msgid "Thanks!"
-msgstr ""
+msgstr "ありがとう!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:128
