@@ -142,6 +142,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			elif client_id is not None and len(ai_data) == 0:
 				# possible human player candidate with different client id
 				human_players.append(player)
+		self.owner_highlight_active = False
 
 		if self.player is None:
 			# we have no human player.
@@ -868,21 +869,17 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 	def toggle_owner_highlight(self):
 		renderer = self.session.view.renderer['InstanceRenderer']
-		if not self.session.owner_highlight_active: #show
-			for player in self.session.world.players:
+		self.owner_highlight_active = not self.owner_highlight_active
+		if self.owner_highlight_active: #show
+			for player in self.players:
 				red = player.color.r
 				green = player.color.g
 				blue = player.color.b
 				for settlement in player.settlements:
 					for tile in settlement.ground_map.itervalues():
 						renderer.addColored(tile._instance, red, green, blue)
-			self.session.owner_highlight_active = True
 		else: # 'hide' functionality
-			for player in self.session.world.players:
-				for settlement in player.settlements:
-					for tile in settlement.ground_map.itervalues():
-						renderer.removeColored(tile._instance)
-			self.session.owner_highlight_active = False
+			renderer.removeAllColored()
 
 	@decorators.make_constants()
 	def toggle_translucency(self):
