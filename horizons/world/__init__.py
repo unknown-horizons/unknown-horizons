@@ -866,6 +866,24 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		if self.trader and len(self.settlements) > self.trader.get_ship_count() * 2:
 			self.trader.create_ship()
 
+	def toggle_owner_highlight(self):
+		renderer = self.session.view.renderer['InstanceRenderer']
+		if not self.session.owner_highlight_active: #show
+			for player in self.session.world.players:
+				red = player.color.r
+				green = player.color.g
+				blue = player.color.b
+				for settlement in player.settlements:
+					for tile in settlement.ground_map.itervalues():
+						renderer.addColored(tile._instance, red, green, blue)
+			self.session.owner_highlight_active = True
+		else: # 'hide' functionality
+			for player in self.session.world.players:
+				for settlement in player.settlements:
+					for tile in settlement.ground_map.itervalues():
+						renderer.removeColored(tile._instance)
+			self.session.owner_highlight_active = False
+
 	@decorators.make_constants()
 	def toggle_translucency(self):
 		"""Make certain building types translucent"""

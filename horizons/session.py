@@ -102,6 +102,7 @@ class Session(LivingObject):
 		self.keylistener = IngameKeyListener(self)
 		self.coordinates_tooltip = None
 		self.display_speed()
+		self.owner_highlight_active = False
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
