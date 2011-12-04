@@ -22,7 +22,6 @@
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.gui.tabs import ProductionOverviewTab
-from horizons.command.unit import CreateUnit
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.world.production.producer import Producer, QueueProducer
 
@@ -96,38 +95,6 @@ class UnitProducerBuilding(ProducerBuilding):
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
 	building specific behaviour."""
 
-	# Use UnitProduction instead of normal Production
-	production_class = UnitProduction
-
 	def __init__(self, **kwargs):
 		super(UnitProducerBuilding, self).__init__(**kwargs)
-		self.add_component(QueueProducer())
 		self.set_active(active=False)
-
-	def on_queue_element_finished(self, production):
-		self.__create_unit()
-		super(UnitProducerBuilding, self).on_queue_element_finished(production)
-
-	#----------------------------------------------------------------------
-	def __create_unit(self):
-		"""Create the produced unit now."""
-		productions = self._productions.values()
-		for production in productions:
-			assert isinstance(production, UnitProduction)
-			self.on_building_production_finished(production.get_produced_units())
-			for unit, amount in production.get_produced_units().iteritems():
-				for i in xrange(0, amount):
-					radius = 1
-					found_tile = False
-					# search for free water tile, and increase search radius if none is found
-					while not found_tile:
-						for coord in Circle(self.position.center(), radius).tuple_iter():
-							point = Point(coord[0], coord[1])
-							if self.island.get_tile(point) is None:
-								tile = self.session.world.get_tile(point)
-								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
-									# execute bypassing the manager, it's simulated on every machine
-									CreateUnit(self.owner.worldid, unit, point.x, point.y)(issuer=self.owner)
-									found_tile = True
-									break
-						radius += 1

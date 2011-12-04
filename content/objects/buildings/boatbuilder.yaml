@@ -14,7 +14,7 @@ settler_level: 1
 buildingcosts: {1: 500, 4: 4, 6: 3}
 components:
 - HealthComponent: {maxhealth: 1000}
-- ProducerComponent:
+- UnitProducerComponent:
     productionlines:
       64:
         consumes:

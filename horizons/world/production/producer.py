@@ -30,6 +30,8 @@ from horizons.util.shapes.point import Point
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component import Component
 from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
+from horizons.world.production.unitproduction import UnitProduction
+from horizons.command.unit import CreateUnit
 
 class Producer(Component):
 	"""Class for objects, that produce something.
@@ -62,7 +64,8 @@ class Producer(Component):
 			for prod_line, attributes in self.production_lines.iteritems():
 				if 'enabled_by_default' in attributes and not attributes['enabled_by_default']:
 					continue  # It's set to false, don't add
-				self.create_production(prod_line, attributes)
+				prod = self.create_production(prod_line)
+				self.add_production(prod)
 
 		if self.__start_finished:
 			self.finish_production_now()
@@ -75,10 +78,12 @@ class Producer(Component):
 		return prod_lines
 
 
-	def create_production(self, id, data):
+	def create_production(self, id):
+		data = self.production_lines[id]
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
-		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, id, data))
+		return production_class(inventory = self.instance.get_component(StorageComponent).inventory, \
+		                        owner_inventory=owner_inventory, prod_id=id, prod_data=data)
 
 	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.
@@ -321,11 +326,12 @@ class QueueProducer(Producer):
 
 	production_class = SingleUseProduction
 
+
 	def __init__(self, **kwargs):
 		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
-		self.__init()
 
-	def __init(self):
+	def initialize(self, **kwargs):
+		super(QueueProducer, self).initialize( ** kwargs)
 		self.production_queue = [] # queue of production line ids
 
 	def save(self, db):
@@ -336,7 +342,6 @@ class QueueProducer(Producer):
 
 	def load(self, db, worldid):
 		super(QueueProducer, self).load(db, worldid)
-		self.__init()
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE rowid = ?", worldid):
 			self.production_queue.append(prod_line_id)
 
@@ -375,7 +380,7 @@ class QueueProducer(Producer):
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
 			owner_inventory = self.instance._get_owner_inventory()
-			prod = self.production_class(inventory=self.instance.get_component(StorageComponent).inventory, owner_inventory=owner_inventory, prod_line_id=production_line_id)
+			prod = self.create_production(production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
 			self.add_production( prod )
 		else:
@@ -390,3 +395,36 @@ class QueueProducer(Producer):
 			self.remove_production(production)
 		self.set_active(active=False)
 
+
+class UnitProducer(QueueProducer):
+	"""The QueueProducer stores all productions in a queue and runs them one
+	by one. """
+
+	production_class = UnitProduction
+
+	def on_queue_element_finished(self, production):
+		self.__create_unit()
+		super(UnitProducer, self).on_queue_element_finished(production)
+
+	def __create_unit(self):
+		"""Create the produced unit now."""
+		productions = self._productions.values()
+		for production in productions:
+			assert isinstance(production, UnitProduction)
+			self.instance.on_building_production_finished(production.get_produced_units())
+			for unit, amount in production.get_produced_units().iteritems():
+				for i in xrange(0, amount):
+					radius = 1
+					found_tile = False
+					# search for free water tile, and increase search radius if none is found
+					while not found_tile:
+						for coord in Circle(self.instance.position.center(), radius).tuple_iter():
+							point = Point(coord[0], coord[1])
+							if self.instance.island.get_tile(point) is None:
+								tile = self.instance.session.world.get_tile(point)
+								if tile is not None and tile.is_water and coord not in self.instance.session.world.ship_map:
+									# execute bypassing the manager, it's simulated on every machine
+									CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
+									found_tile = True
+									break
+						radius += 1

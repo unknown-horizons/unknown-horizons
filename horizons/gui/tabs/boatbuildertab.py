@@ -78,7 +78,7 @@ class BoatbuilderTab(OverviewTab):
 
 
 
-			produced_unit_id = self.instance._get_production(production_lines[0]).get_produced_units().keys()[0]
+			produced_unit_id = self.instance.get_component(Producer)._get_production(production_lines[0]).get_produced_units().keys()[0]
 			(name,) = self.instance.session.db("SELECT name FROM unit WHERE id = ?", produced_unit_id)[0]
 			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
 			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
@@ -88,7 +88,7 @@ class BoatbuilderTab(OverviewTab):
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
 
-			if not self.instance.is_active(): # if production is paused
+			if not self.instance.get_component(Producer).is_active(): # if production is paused
 				# remove active button, if it's there, and save a reference to it
 				if button_active is not None:
 					container_active.button_active = button_active
@@ -151,7 +151,7 @@ class BoatbuilderTab(OverviewTab):
 	#		print "Cancelbutton search.."
 			cancel_button = self.widget.findChild(name="BB_cancel_button")
 	#		print "Found:", cancel_button
-			cancel_button.capture(self.instance.cancel_all_productions, event_name="mouseClicked")
+			cancel_button.capture(self.instance.get_component(Producer).cancel_all_productions, event_name="mouseClicked")
 	#		print cancel_button.isCaptured()
 
 		else: # display sth when nothing is produced

@@ -141,7 +141,7 @@ class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance, widget = 'overview_trade_ship.xml', \
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
 		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
-		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.inventory)
+		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 		self.tooltip = _("Ship overview")
 
 	def _configure_route(self):
