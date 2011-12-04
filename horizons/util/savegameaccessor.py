@@ -21,6 +21,7 @@
 
 from collections import defaultdict, deque
 
+from horizons.savegamemanager import SavegameManager
 from horizons.util import DbReader
 
 ########################################################################
@@ -30,6 +31,7 @@ class SavegameAccessor(DbReader):
 
 	def __init__(self, dbfile):
 		super(SavegameAccessor, self).__init__(dbfile=dbfile)
+		self._upgrade_savegame(dbfile)
 		self._load_building()
 		self._load_settlement()
 		self._load_concrete_object()
@@ -43,6 +45,18 @@ class SavegameAccessor(DbReader):
 		self._load_unit_path()
 		self._load_component()
 		self._load_storage_global_limit()
+
+	def _upgrade_savegame(self, dbfile):
+		"""Tries to make old savegames compatible with the current version"""
+		metadata = SavegameManager.get_metadata(dbfile)
+		rev = metadata['savegamerev']
+		if rev == 0: # not a regular savegame, usually a map
+			return
+		if rev <= 44:
+			# add trade history table
+			self("CREATE TABLE \"trade_history\" (\"settlement\" INTEGER NOT NULL," \
+			     "\"tick\" INTEGER NOT NULL, \"player\" INTEGER NOT NULL, " \
+			     "\"resource_id\" INTEGER NOT NULL, \"amount\" INTEGER NOT NULL, \"gold\" INTEGER NOT NULL)")
 
 
 	def _load_building(self):
