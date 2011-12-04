@@ -76,7 +76,7 @@ def create_map():
 	os.close(fd)
 
 	db = DbReader(islandfile)
-	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
+	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
 	db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 
 	db("BEGIN TRANSACTION")
@@ -86,9 +86,9 @@ def create_map():
 			ground = GROUND.DEFAULT_LAND
 		else:
 			# Add coastline at the borders.
-			ground = 49
-		tiles.append((x, y, ground))
-	db.execute_many("INSERT INTO ground VALUES(?, ?, ?)", tiles)
+			ground = GROUND.SHALLOW_WATER
+		tiles.append([x, y] + list(ground))
+	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", tiles)
 	db("COMMIT")
 
 	# Create savegame with the island above.
