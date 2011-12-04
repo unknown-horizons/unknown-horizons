@@ -54,7 +54,7 @@ class SavegameAccessor(DbReader):
 			return
 		if rev <= 44:
 			# add trade history table
-			self("CREATE TABLE \"trade_history\" (\"settlement\" INTEGER NOT NULL," \
+			self("CREATE TABLE IF NOT EXISTS \"trade_history\" (\"settlement\" INTEGER NOT NULL," \
 			     "\"tick\" INTEGER NOT NULL, \"player\" INTEGER NOT NULL, " \
 			     "\"resource_id\" INTEGER NOT NULL, \"amount\" INTEGER NOT NULL, \"gold\" INTEGER NOT NULL)")
 
