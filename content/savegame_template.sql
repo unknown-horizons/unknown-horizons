@@ -87,4 +87,5 @@ CREATE TABLE production_state_history (
     "state" INTEGER NOT NULL,
     "object_id" INTEGER NOT NULL
 );
+CREATE TABLE "trade_history" ("settlement" INTEGER NOT NULL,"tick" INTEGER NOT NULL, "player" INTEGER NOT NULL, "resource_id" INTEGER NOT NULL, "amount" INTEGER NOT NULL, "gold" INTEGER NOT NULL);
 COMMIT;

@@ -79,7 +79,7 @@ class AmbientSoundComponent(Component):
 			if play_every is None:
 				self.__emitter.setLooping(looping)
 			elif looping and play_every is not None:
-				duration = play_every + self.__emitter.getDuration()*1000
+				duration = play_every*1000 + self.__emitter.getDuration()
 				self.__timer = repeatCall(duration, self.__emitter.play)
 			self.__emitter.play()
 

@@ -50,11 +50,16 @@ class RouteConfig(object):
 
 		self._init_gui()
 
+	@property
+	def session(self):
+		return self.instance.session
+
 	def show(self):
 		self.minimap.draw()
 		self._gui.show()
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
+		self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
 		self.minimap.disable()
@@ -372,11 +377,11 @@ class RouteConfig(object):
 				return
 			if event.getButton() == fife.MouseEvent.LEFT:
 				map_coord = event.map_coord
-				tile = self.instance.session.world.get_tile(Point(*map_coord))
+				tile = self.session.world.get_tile(Point(*map_coord))
 				if tile is not None and tile.settlement is not None:
 					self.append_bo( tile.settlement.branch_office )
 
-		self.minimap = Minimap(icon, self.instance.session, \
+		self.minimap = Minimap(icon, self.session, \
 		                       horizons.main.fife.targetrenderer,
 		                       horizons.main.fife.imagemanager,
 		                       cam_border=False,
@@ -397,7 +402,6 @@ class RouteConfig(object):
 		for entry in self.instance.route.waypoints:
 			self.add_gui_entry(entry['branch_office'], entry['resource_list'])
 		# we want escape key to close the widget, what needs to be fixed here?
-		#self._gui.on_escape = self.hide
 		self.start_button_set_active()
 		if self.instance.route.enabled:
 			self.start_button_set_inactive()

@@ -38,6 +38,7 @@ class TradePostComponent(Component):
 	def initialize(self):
 		self.buy_list = {} # dict of resources that are to be bought. { res_id: limit, .. }
 		self.sell_list = {} # dict of resources that are to be sold.  { res_id: limit, .. }
+		self.trade_history = [] # [(tick, player_id, resource_id, amount, gold), ...] ordered by tick, player_id
 		self.buy_history = {} # { tick_id: (res, amount, price) }
 		self.sell_history = {} # { tick_id: (res, amount, price) }
 		self.total_income = 0
@@ -73,6 +74,11 @@ class TradePostComponent(Component):
 		db("INSERT INTO trade_values(object, total_income, total_expenses) VALUES (?, ?, ?)",
 		   self.instance.worldid, self.total_income, self.total_expenses)
 
+		for row in self.trade_history:
+			translated_tick = row[0] - Scheduler().cur_tick # pre-translate for the loading process
+			db("INSERT INTO trade_history(settlement, tick, player, resource_id, amount, gold) VALUES(?, ?, ?, ?, ?, ?)",
+				self.worldid, translated_tick, row[1], row[2], row[3], row[4])
+
 	def load(self, db, worldid):
 		super(TradePostComponent, self).load(db, worldid)
 
@@ -87,11 +93,15 @@ class TradePostComponent(Component):
 		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses FROM trade_values WHERE object = ?",
 		   self.worldid)[0]
 
-	def buy(self, res, amount, price):
+		for row in db("SELECT tick, player, resource_id, amount, gold FROM trade_history WHERE settlement = ? ORDER BY tick, player", self.worldid):
+			self.trade_history.append(row)
+
+	def buy(self, res, amount, price, player_id):
 		"""Check if we can buy, and process actions to our inventory
 		@param res:
 		@param amount:
 		@param price: cumulative price for whole amount of res
+		@param player_id: the worldid of the trade partner
 		@return bool, whether we did buy it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.buy_list or \
@@ -105,16 +115,18 @@ class TradePostComponent(Component):
 			assert remnant == 0
 			remnant = self.instance.get_component(StorageComponent).inventory.alter(res, amount)
 			assert remnant == 0
+			self.trade_history.append((Scheduler().cur_tick, player_id, res, amount, -price))
 			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
 			self.total_expenses += amount*price
 			return True
 		assert False
 
-	def sell(self, res, amount, price):
+	def sell(self, res, amount, price, player_id):
 		"""Check if we can sell, and process actions to our inventory
 		@param res:
 		@param amount:
 		@param price: cumulative price for whole amount of res
+		@param player_id: the worldid of the trade partner
 		@return bool, whether we did sell it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.sell_list or \
@@ -127,6 +139,7 @@ class TradePostComponent(Component):
 			assert remnant == 0
 			remnant = self.instance.get_component(StorageComponent).inventory.alter(res, -amount)
 			assert remnant == 0
+			self.trade_history.append((Scheduler().cur_tick, player_id, res, -amount, price))
 			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
 			self.total_income += amount*price
 			return True
@@ -174,6 +187,7 @@ class TradePostComponent(Component):
 		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -total_price) == 0
 		assert self.instance.get_component(StorageComponent).inventory.alter(resource_id, -amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, amount) == 0
+		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, -amount, total_price))
 		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_income += total_price
 		return amount
@@ -225,6 +239,7 @@ class TradePostComponent(Component):
 		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, total_price) == 0
 		assert self.instance.get_component(StorageComponent).inventory.alter(resource_id, amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, -amount) == 0
+		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, amount, -total_price))
 		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_expenses += total_price
 		return amount

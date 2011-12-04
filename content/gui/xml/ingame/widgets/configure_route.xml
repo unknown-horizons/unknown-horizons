@@ -12,17 +12,17 @@
 		up_image="content/gui/icons/ship/traderoute.png"
 		down_image="content/gui/icons/ship/traderoute.png"
 		hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
-		tooltip="Start route" comment="Trade route" />
+		tooltip="Start route" comment="Trade route" is_focusable="0"/>
 	<VBox position="250,485">
 		<HBox>
 			<Label name="lbl_wait_at_load" text="Wait at load:"
 				comment="Trade route setting: Whether to wait until all goods could be loaded." />
-			<CheckBox name="wait_at_load" min_size="15,15" />
+			<CheckBox name="wait_at_load" min_size="15,15" is_focusable="0"/>
 		</HBox>
 		<HBox>
 			<Label name="lbl_wait_at_unload"  text="Wait at unload:"
 				comment="Trade route setting: Whether to wait until all goods could be unloaded." />
-			<CheckBox name="wait_at_unload" min_size="15,15" />
+			<CheckBox name="wait_at_unload" min_size="15,15" is_focusable="0"/>
 		</HBox>
 	</VBox>
 
@@ -34,22 +34,22 @@
 		<Icon image="content/gui/images/background/hr.png" />
 
 		<ScrollArea max_size="300,200" horizontal_scrollbar="0">
-			<ListBox name="branch_office_list" />
+			<ListBox name="branch_office_list" is_focusable="0"/>
 		</ScrollArea>
 		<TooltipButton name="add_bo" border_size="0"
 		up_image="content/gui/images/buttons/parrow_left.png"
 		down_image="content/gui/images/buttons/parrow_left_d.png"
 		hover_image="content/gui/images/buttons/parrow_left_h.png"
-		tooltip="Add to list" comment="List of harbors in trade route" />
+		tooltip="Add to list" comment="List of harbors in trade route"   is_focusable="0"/>
 
 		<Label name="select_res_label" text=""/>
 
 		<!-- exactly one of the following two is enabled at any given time -->
-		<TooltipIcon name="minimap" size="300,300" max_size="300,300"/> <!-- settlement selection in minimap -->
+		<TooltipIcon name="minimap" size="300,300" max_size="300,300" is_focusable="0"/> <!-- settlement selection in minimap -->
 		<VBox name="resources" size="100,200" /> <!-- res selection -->
 
 		<HBox> <Spacer min_size="275" max_size="275"/>
-			<CancelButton tooltip="Exit" />
+			<CancelButton tooltip="Exit"  is_focusable="0"/>
 		</HBox>
 	</VBox>
 <!-- Here pickbelts could be added to achieve more space.

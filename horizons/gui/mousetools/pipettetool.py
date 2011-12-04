@@ -56,8 +56,11 @@ class PipetteTool(NavigationTool):
 			obj = self._get_object(evt)
 			if obj and self._is_buildable(obj.id):
 				self.session.set_cursor('building', Entities.buildings[obj.id])
-			elif obj:
-				pass # TODO: error sound
+			elif obj: # object that is not buildable
+				# TODO: error sound
+				self.on_escape()
+			else:
+				self.on_escape()
 			evt.consume()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			self.on_escape()

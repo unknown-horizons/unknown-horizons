@@ -164,14 +164,7 @@ class NavigationTool(CursorTool):
 		for layer in layers:
 			instances = self.session.view.cam.getMatchingInstances(\
 		    fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[layer], False) # False for accurate
-
-			# check if instances are really in layer (there can be problems with updating
-			# the list on fife-side when instances are removed. This mechanism fixes that.)
-
-			# This should be a set, but the swig-objects aren't hashable.
-			# The list can contain thousands of elements, so linear search is still somewhat feasible . (<1ms)
-			layer_instances = [i.this for i in self.session.view.layers[layer].getInstances()]
-			all_instances.extend(i for i in instances if i.this in layer_instances)
+			all_instances.extend(instances)
 
 		hover_instances = []
 		for i in all_instances:
