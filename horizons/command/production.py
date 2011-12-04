@@ -31,8 +31,8 @@ class ToggleActive(GenericComponentCommand):
 
 	def __call__(self, issuer):
 		# NOTE: special call method, cause production must be saved as id, not as Production obj
-		obj = self._get_object()
-		return getattr(obj.get_component_by_name(self.component_name), self.method)( None if self._production is None else obj._get_production(self._production))
+		obj = self._get_object().get_component_by_name(self.component_name)
+		return getattr(obj, self.method)( None if self._production is None else obj._get_production(self._production))
 
 GenericComponentCommand.allow_network(ToggleActive)
 
