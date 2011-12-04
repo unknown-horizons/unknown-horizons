@@ -2426,10 +2426,12 @@ msgstr "Voltar:"
 msgid "Choose a map:"
 msgstr "Escolha um mapa:"
 
+# 80%
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:810
+#, fuzzy
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Novo Jogo - Multijogador"
 
 #. (text of widget: mp_player_limit_lbl)
 #: horizons/i18n/guitranslations.py:812
