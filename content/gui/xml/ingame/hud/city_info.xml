@@ -5,7 +5,7 @@
 	<Icon image="content/gui/images/background/widgets/city_name_bg.png"  position="0,17" />
 
 	<TooltipIcon name="owner_emblem"  position="5,19" />
-	<TooltipIcon name="city_info_inhabitants"  position="174,8"
+	<TooltipIcon name="city_info_inhabitants"  position="174,11"
 		image="content/gui/icons/widgets/cityinfo/inhabitants.png" 
 		tooltip="Inhabitants" />
 
