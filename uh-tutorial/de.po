@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-11-19 13:19+0200\n"
+"PO-Revision-Date: 2011-12-03 20:31+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -631,6 +631,7 @@ msgstr ""
 "\n"
 "AUFGABE: Kauft so lange Werkzeuge ein, bis Ihr 30 Einheiten auf Lager habt."
 
+# Erreicht einen Lagerbestand von mindestens 30 Werkzeugen auf Eurer Insel.
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:66
 msgid "Reach an island stock of at least 30 tools."
@@ -850,6 +851,8 @@ msgstr ""
 "Umgebung errichtet werden."
 
 # Farmen,..., müssen nicht zwangsläufig mit einen Kontor oder Lagerzelt verbunden werden? --> Das widerspricht sich mit dem Rest des Tutorials z.B. Holzfällerlager
+# 
+# The first sentence" We will have a closer look at this later" / "Wir werden später darauf zurückkommen" belongs to the page (text paragraph) before (here: the left page of the log)
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
 msgid ""
@@ -1022,7 +1025,7 @@ msgstr ""
 "Gebäudes. Sie werden vielleicht nicht immer auf null sinken, aber sie sind "
 "geringer als bei einem weiterhin produzierenden Betrieb."
 
-# 8.	„Produktion pausieren“-Modus – nicht „stillgelegt“ - "stillgelegt" kommt im Spiel nicht vor
+# „Produktion pausieren“-Modus – nicht „stillgelegt“ - "stillgelegt" kommt im Spiel nicht vor
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
 msgid ""
@@ -1117,12 +1120,19 @@ msgstr ""
 "Beherbergt mehr als 50 Einwohner, um das Tutorial zu beenden. Ihr benötigt "
 "außerdem eine positive Bilanz."
 
+# BUG(?): This page should create a log entry for itself. Currently it does not. "Build a weaver" is on the left side and "Complete Tutorial" on the right
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:118
 msgid "NEW TASK: COMPLETE TUTORIAL"
 msgstr "NEUE AUFGABE: ABSCHLUSS"
 
 # HELPME: Kosumenten/Bewohnern? --> consumers
+# 
+# "consumer" wäre "Verbraucher", ich würde aber Einwohner lassen
+# 
+# „Versucht, mindestens 50 Einwohner zu …“
+# „AUFGABE: Erreicht mindestens 50 Einwohner …“ - statt insgesamt 50 oder mehr
+# 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
 msgid ""
@@ -1146,6 +1156,7 @@ msgstr ""
 "AUFGABE: Erreicht insgesamt 50 Einwohner und eine positive Bilanz, um dieses "
 "Tutorial abzuschließen."
 
+# „KEINE AUFGABEN ÜBRIG“: => „ALLE AUFGABEN ERFÜLLT/ERLEDIGT“?
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:122
 msgid "NO TASKS LEFT"
@@ -1197,6 +1208,10 @@ msgstr ""
 msgid "Thanks!"
 msgstr "Vielen Dank!"
 
+# "Danke, dass Ihr Euch Zeit und Mühe genommen habt, diese Einführung zu spielen!"
+# 
+# Mühe kann man sich nicht nehmen ... reicht nicht => 
+# Vielen Dank für das (Durch-)Spielen der Einführung.
 #. This is the text body of a logbook page.
 #: po/tutorial.py:128
 msgid ""
