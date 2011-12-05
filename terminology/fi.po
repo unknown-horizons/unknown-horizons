@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-01 20:16+0200\n"
+"PO-Revision-Date: 2011-12-05 18:54+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
-msgstr "rakenna"
+msgstr "rakentaa"
 
 msgid "game"
 msgstr "peli"
@@ -521,22 +521,22 @@ msgid "feature"
 msgstr "ominaisuus"
 
 msgid "reached"
-msgstr ""
+msgstr "saavutettu"
 
 msgid "slider"
 msgstr "vieritin"
 
 msgid "condition"
-msgstr ""
+msgstr "kunto"
 
 msgid "consume"
-msgstr ""
+msgstr "kuluttaa, kulutus"
 
 msgid "contact"
 msgstr ""
 
 msgid "dialogue"
-msgstr ""
+msgstr "keskustelu, vuoropuhelu"
 
 msgid "issues"
 msgstr ""
