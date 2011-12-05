@@ -125,7 +125,6 @@ class SavegameManager(object):
 	savegame_dir = PATHS.USER_DIR + "/save"
 	autosave_dir = savegame_dir+"/autosave"
 	quicksave_dir = savegame_dir+"/quicksave"
-	demo_dir = "content/demo"
 	maps_dir = "content/maps"
 	scenario_maps_dir = "content/scenariomaps"
 	scenarios_dir = "content/scenarios"
@@ -308,10 +307,9 @@ class SavegameManager(object):
 	@classmethod
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
-		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir, \
-		              cls.autosave_dir, cls.quicksave_dir, cls.demo_dir)
-		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, \
-		                                  cls.quicksave_dir, cls.demo_dir], \
+		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir,
+		              cls.autosave_dir, cls.quicksave_dir)
+		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir],
 		                                 include_displaynames = include_displaynames)
 
 	@classmethod
