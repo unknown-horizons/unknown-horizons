@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from math import ceil
-
 import horizons.main
 
 from horizons.util import Callback, random_map
@@ -64,7 +62,7 @@ class SingleplayerMenu(object):
 			def _update_infos():
 				number_of_players = SavegameManager.get_recommended_number_of_players( self.__get_selected_map() )
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
-				    _("Recommended number of players: %s") % (number_of_players)
+				    _("Recommended number of players: {number}").format(number=number_of_players)
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
@@ -101,9 +99,12 @@ class SingleplayerMenu(object):
 						except InvalidScenarioFileFormat as e:
 							self.__show_invalid_scenario_file_popup(e)
 							return
-						self.current.findChild(name="map_difficulty").text = _("Difficulty: %s") % (difficulty)
-						self.current.findChild(name="map_author").text = _("Author: %s") % (author)
-						self.current.findChild(name="map_desc").text =  _("Description: %s") % (desc)
+						self.current.findChild(name="map_difficulty").text = \
+						        _("Difficulty: {difficulty}").format(difficulty=difficulty)
+						self.current.findChild(name="map_author").text = \
+						        _("Author: {author}").format(author=author)
+						self.current.findChild(name="map_desc").text = \
+						        _("Description: {desc}").format(desc=desc)
 						#self.current.findChild(name="map_desc").parent.adaptLayout()
 				elif show == 'campaign': # update infos for campaign
 					def _update_infos():
@@ -113,9 +114,12 @@ class SingleplayerMenu(object):
 							# TODO : an "invalid campaign popup"
 							self.__show_invalid_scenario_file_popup(e)
 							return
-						self.current.findChild(name="map_difficulty").text = _("Difficulty: %s") % (campaign_info.get('difficulty', ''))
-						self.current.findChild(name="map_author").text = _("Author: %s") % (campaign_info.get('author', ''))
-						self.current.findChild(name="map_desc").text = _("Description: %s") % (campaign_info.get('description', ''))
+						self.current.findChild(name="map_difficulty").text = \
+						        _("Difficulty: {difficulty}").format(difficulty=campaign_info.get('difficulty', ''))
+						self.current.findChild(name="map_author").text = \
+						        _("Author: {author}").format(author=campaign_info.get('author', ''))
+						self.current.findChild(name="map_desc").text = \
+						        _("Description: {desc}").format(desc=campaign_info.get('description', ''))
 
 				self.current.findChild(name="maplist").capture(_update_infos)
 				_update_infos()
