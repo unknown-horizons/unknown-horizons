@@ -137,10 +137,13 @@ class SavegameManager(object):
 	autosave_basename = "autosave-"
 	quicksave_basename = "quicksave-"
 
-	autosave_filenamepattern = autosave_basename+'%(timestamp)d.'+savegame_extension
-	quicksave_filenamepattern = quicksave_basename+'%(timestamp).4f.'+savegame_extension
+	# Use {{}} because this string is formatted twice and
+	# {timestamp} is replaced in the second format() call.
+	save_filename_timeformat = "{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M.{ext}"
+	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename, ext=savegame_extension)
+	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename, ext=savegame_extension)
 
-	display_timeformat = "%y/%m/%d %H:%M"
+	display_timeformat = "%Y/%m/%d %H:%M"
 
 	# metadata of a savegame with default values
 	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : ""  }
@@ -166,7 +169,7 @@ class SavegameManager(object):
 			if savegameinfo['timestamp'] == -1:
 				return ""
 			else:
-				return time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
+				return time.strftime(cls.display_timeformat, time.localtime(savegameinfo['timestamp']))
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):
@@ -204,16 +207,16 @@ class SavegameManager(object):
 	@classmethod
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
-		name = "%s/%s" % (cls.autosave_dir, \
-		                  cls.autosave_filenamepattern % {'timestamp':time.time()})
+		prepared_filename = time.strftime(cls.autosave_filenamepattern.format(timestamp=time.time())))
+		name = "{directory}/{name}".format(directory=cls.autosave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
 	@classmethod
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
-		name = "%s/%s" % (cls.quicksave_dir, \
-		                  cls.quicksave_filenamepattern % {'timestamp':time.time()})
+		prepared_filename = time.strftime(cls.quicksave_filenamepattern.format(timestamp=time.time())))
+		name = "{directory}/{name}".format(directory=cls.quicksave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
