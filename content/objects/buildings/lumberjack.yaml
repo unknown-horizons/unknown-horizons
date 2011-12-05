@@ -9,6 +9,9 @@ inhabitants_max: 1
 button_name: lumberjack-1
 settler_level: 0
 tooltip_text: Chops down trees and turns them into boards.
+buildingcosts: {1: 250, 6: 2}
+cost: 5
+cost_inactive: 0
 components:
 - HealthComponent:
     maxhealth: 1000
@@ -17,6 +20,6 @@ components:
         - { time: 7, consumes: (4,1), produces: (8,1)}
 
 
-action_sets:
+actionsets:
     as_lumberjack0: 0
     as_lumberjack_barrack0: 1
