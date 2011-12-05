@@ -37,3 +37,5 @@ def test_ai_long():
 
 	for seed in [1, 2, 3, 4]:
 		yield generate_test(seed)
+
+test_ai_long.long = True

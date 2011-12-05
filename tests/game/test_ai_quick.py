@@ -37,3 +37,5 @@ def test_ai_quick():
 
 	for seed in xrange(1, 16):
 		yield generate_test(seed)
+
+test_ai_quick.long = True
