@@ -22,6 +22,8 @@
 
 from horizons.command.building import Build
 from horizons.constants import RES, BUILDINGS
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 
 from tests.game import game_test, settle
 
@@ -38,12 +40,12 @@ def test_example(s, p):
 	assert farm
 
 	# Pause the production, we want to start it explicitly later.
-	production = farm._get_production(7)
+	production = farm.get_component(Producer)._get_production(7)
 	production.pause()
 
 	# Farm has no raw wool or wool.
-	assert farm.inventory[RES.LAMB_WOOL_ID] == 0
-	assert farm.inventory[RES.WOOL_ID] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.WOOL_ID] == 0
 
 	# Build pastures, let the game run for 31 seconds. Pastures currently need
 	# 30s to produce wool.
@@ -53,17 +55,17 @@ def test_example(s, p):
 
 	s.run(seconds=31)
 
-	assert p1.inventory[RES.LAMB_WOOL_ID]
-	assert p2.inventory[RES.LAMB_WOOL_ID]
+	assert p1.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
+	assert p2.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
 
 	# Give farm collectors a chance to get the wool from the pastures.
 	s.run(seconds=5)
 
-	assert farm.inventory[RES.LAMB_WOOL_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
 
 	# Resume the production, let the game run for a second. The farm should have
 	# produced wool now.
 	production.pause(pause=False)
 	s.run(seconds=1)
-	assert farm.inventory[RES.WOOL_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.WOOL_ID]
 

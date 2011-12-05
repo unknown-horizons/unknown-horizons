@@ -21,6 +21,7 @@
 
 from horizons.command.building import Build, Tear
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 from horizons.constants import BUILDINGS, RES
 
 from tests.game import settle, game_test
@@ -37,7 +38,7 @@ def test_ticket_979(s, p):
 
 	# Let it work for a bit
 	s.run(seconds=60)
-	assert farm.inventory[RES.FOOD_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID]
 
 	# The settlement inventory is already full of food (from the ship): dispose of it
 	assert settlement.get_component(StorageComponent).inventory[RES.FOOD_ID] > 0
@@ -88,9 +89,9 @@ def test_ticket_1005(s, p):
 	assert len(s.world.ships) == 2
 
 	builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(p)
-	builder.inventory.alter(RES.TEXTILE_ID, 5)
-	builder.inventory.alter(RES.BOARDS_ID, 4)
-	builder.add_production_by_id(15)
+	builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 5)
+	builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 4)
+	builder.get_component(Producer).add_production_by_id(15)
 
 	s.run(seconds=130)
 
