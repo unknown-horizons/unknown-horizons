@@ -254,16 +254,18 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
 
-		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
+		if not hasattr(self, 'filename_hbox'):
+			self.filename_hbox = self.current.findChild(name='enter_filename')
+			self.filename_hbox_parent = self.filename_hbox._getParent()
+
 		if mode == 'save': # only show enter_filename on save
-			self.current.findChild(name='enter_filename').show()
-		else:
-			self.current.findChild(name='enter_filename').hide()
-		"""
+			self.filename_hbox_parent.showChild(self.filename_hbox)
+		elif self.filename_hbox not in self.filename_hbox_parent.hidden_children:
+			self.filename_hbox_parent.hideChild(self.filename_hbox)
 
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if self.current.collectData('savegamelist') != -1: # check if we actually collect valid data
+			if self.current.collectData('savegamelist') != -1 and mode == 'save': # check if we actually collect valid data
 				self.current.distributeData({'savegamefile' : \
 				                             map_file_display[self.current.collectData('savegamelist')]})
 
@@ -277,13 +279,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
-		retval = self.show_dialog(self.current, {
-		                                          'okButton'     : True,
-		                                          'cancelButton' : False,
-		                                          'deleteButton' : 'delete',
-		                                          'savegamefile' : True
-		                                        },
-		                                        onPressEscape = False)
+		eventMap = {
+			'okButton'     : True,
+			'cancelButton' : False,
+			'deleteButton' : 'delete'
+		}
+
+		if mode == 'save':
+			eventMap['savegamefile'] = True
+
+		retval = self.show_dialog(self.current, eventMap, onPressEscape = False)
 		if not retval: # cancelled
 			self.current = old_current
 			return
