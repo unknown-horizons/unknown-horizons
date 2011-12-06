@@ -525,7 +525,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:78
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr ""
+msgstr "NOVÝ ÚKOL: DALŠÍ EPOCHA"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
