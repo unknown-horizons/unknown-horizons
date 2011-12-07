@@ -78,15 +78,17 @@ events:
         only the basic buildings.']
     type: logbook_w
   - arguments: ['', "Jak se bude va\u0161e civilizace rozv\xEDjet, z\xEDsk\xE1te st\xE1\
-        le komplexn\u011Bj\u0161\xED a komplexn\u011Bj\u0161\xED budovy. \n\nNyn\xED\
+        le komplexn\u011Bj\u0161\xED a komplexn\u011Bj\u0161\xED budovy.\n\nNyn\xED\
         \ vyberte d\u0159evorubce v sekci 'Podniky' a postavte ho v oblasti, kde jsou\
-        \ stromy.\n\nPodnik v\u017Edy pot\u0159ebuje spojen\xED stezkou ke skladi\u0161\
+        \ stromy.\n\nPozd\u011Bji m\u016F\u017Eete stromy tak\xE9 s\xE1zet, ale bude\
+        \ V\xE1s to st\xE1t pen\xEDze. Vyu\u017Eijte to, co V\xE1m p\u0159\xEDroda\
+        \ poskytuje!\n\nPodnik v\u017Edy pot\u0159ebuje spojen\xED stezkou ke skladi\u0161\
         ti nebo pobo\u010Dce, jinak zbo\u017E\xED z\u016Fstane v podniku a nebude\
         \ vybr\xE1no.\n\nTo znamen\xE1, \u017Ee mus\xEDte vybudovat stezku spojuj\xED\
-        c\xED va\u0161\xED pobo\u010Dku (nebo skladi\u0161t\u011B) a d\u0159evorubce.\
-        \ \n\n\xDAKOL: Postavte d\u0159evorubce in lesnat\xE9 oblasti a propojte ho\
-        \ cestou. \n\nSledujte jak v\xFDb\u011Br\u010D\xED vybere va\u0161e prvn\xED\
-        \ vyprodukovan\xE9 prkna."]
+        c\xED va\u0161\xED pobo\u010Dku (nebo skladi\u0161t\u011B) a d\u0159evorubce.\n\
+        \n\xDAKOL: Postavte d\u0159evorubce in lesnat\xE9 oblasti a propojte ho cestou.\n\
+        \nSledujte jak v\xFDb\u011Br\u010D\xED vybere va\u0161e prvn\xED vyprodukovan\xE9\
+        \ prkna."]
     type: logbook
   - arguments: ["Postavte d\u0159evorubce a spojte ho s pobo\u010Dkou pomoc\xED stezky."]
     type: message
@@ -157,7 +159,7 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: MAIN SQUARE', !!python/unicode 'Your residents
+  - arguments: ["NOV\xDD \xDAKOL: N\xC1M\u011AST\xCD", !!python/unicode 'Your residents
         need a main square where they can fetch their goods from.
 
 
@@ -343,7 +345,7 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: LEARN TO TRADE', !!python/unicode "Excellent!\
+  - arguments: ["NOV\xDD \xDAKOL: V\xDDUKA OBCHODOVAN\xCD", !!python/unicode "Excellent!\
         \ The Free Trader will now stop by at your branch office from time to time.\n\
         \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
         \ type of good, the green bar across the bottom of the slot (if visible) shows\
@@ -432,9 +434,9 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: NEXT INCREMENT', !!python/unicode 'All
-        demands are fulfilled now if your inhabitants can regularly visit the main
-        square & pavilion and your food supply is adequate.
+  - arguments: ["NOV\xDD \xDAKOL: DAL\u0160\xCD EPOCHA", !!python/unicode 'All demands
+        are fulfilled now if your inhabitants can regularly visit the main square
+        & pavilion and your food supply is adequate.
 
 
         If the sailors are happy enough, they want to advance to the next increment
