@@ -1562,7 +1562,7 @@ msgstr "Wählt Euer Schiff an und nähert Euch der Küste per Rechtsklick."
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:161
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Danach klickt auf den großen Knopf im Übersichtstab des Schiffes."
+msgstr "Danach klickt auf den großen Knopf im Übersichts-Tab des Schiffes."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:449
