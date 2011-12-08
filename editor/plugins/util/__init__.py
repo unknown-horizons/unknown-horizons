@@ -31,11 +31,21 @@ def getUHPath():
 
 buildingMap = {}
 
+# Namespaces
 BUILDING_NAMESPACE = 'building'
 GROUND_NAMESPACE = 'ground'
 
+# Layers
+GROUND_LAYER_NAME = "ground"
+BUILDING_LAYER_NAME = "buildings"
+
 def getBuildingName(id):
 	return buildingMap[id]
+
+def getBuildingId(name):
+	for id, value in buildingMap.iteritems():
+		if value == name:
+			return id
 
 def addBuilding(id, name):
 	buildingMap[id] = name
