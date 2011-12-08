@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-11-23 11:34+0200\n"
-"Last-Translator: djot <djot@hotmail.com>\n"
+"PO-Revision-Date: 2011-12-08 01:52+0200\n"
+"Last-Translator: raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -887,7 +887,7 @@ msgstr "Unbekanntes Speicherdatum"
 #: horizons/gui/gui.py:428
 #, python-format
 msgid "Saved at %(time)s"
-msgstr "Gespeichert um %(time)"
+msgstr "Gespeichert um %(time)s"
 
 #: horizons/gui/gui.py:432
 #, python-format

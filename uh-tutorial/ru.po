@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-10-07 20:43+0200\n"
+"PO-Revision-Date: 2011-10-07 20:47+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -364,7 +364,7 @@ msgstr ""
 "На вкладках обзора различных уровней развития вы можете видеть статистику "
 "ваших жителей. Вы также можете установить здесь глобальные налоги для "
 "каждого уровня развития и разрешить или запретить жителям данного уровня "
-"продвигаться на следующий. "
+"продвигаться на следующий."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:40

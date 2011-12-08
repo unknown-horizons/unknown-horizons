@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-05 13:10+0200\n"
-"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
+"PO-Revision-Date: 2011-12-08 22:32+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -241,6 +241,20 @@ msgid ""
 "\n"
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Dále budete nutné postavit některé základní společnosti, které budou "
+"produkovat jídlo. Všichni lidé (a námořníci obzvláště) jsou velmi hladoví.\n"
+"\n"
+"Dostupné společnosti pro první epochu jsou Lovec a Rybář.\n"
+"\n"
+"Lovec, překvapivě, loví v lesích zvířata, proto potřebuje okolo sebe stromy.\n"
+"\n"
+"Všimněte si, že lovec můžete umístit blízko dřevorubcova lesa.\n"
+"\n"
+"Stává se, že zvířata se nemnoží dostatečně rychle nebo jednodušeji se umí "
+"dobře schovat.\n"
+"\n"
+"Závěrem: Lovec není příliš spolehlivý zdroj potravy, pokud potřebujete "
+"nepřerušované zásobení."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:30
@@ -260,11 +274,24 @@ msgid ""
 "\n"
 "Don't forget to connect them to your branch office with trails!"
 msgstr ""
+"Rybář potřebuej budovu na pobřeží stejně jako pobočka a hejno ryb v dosahu.\n"
+"\n"
+"Postaví si malou loďku a bude chytat ryby.\n"
+"\n"
+"Jedná se o nepřetržitý zdroj potravy, cenou za to je trochu delší produkční "
+"čas každé jednotky jídla.\n"
+"\n"
+"Malá osada, jakou je ta Vaše, může využít obě společnosti. Pokud je uvidíte "
+"v přímém srovnání, můžete lépe porovnat jejich výhody a nevýhody.\n"
+"\n"
+"ÚKOL: Postavte lovce a rybáře.\n"
+"\n"
+"Nezapomeňte je připojit k Vaší pobočce pomocí stezek!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:32
 msgid "Build a hunter and a fisher. Connect them to the branch office."
-msgstr ""
+msgstr "Postavte lovce a rybáře. Spojte je s budovou Vaší pobočky."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:34
@@ -291,6 +318,21 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
+"Vaši obyvatelé potřebují náměstí, kde si mohou vyzvednout zboží.\n"
+"\n"
+"To znamená, že musí mít spojení pomocí stezky ze svých domů na náměstí.\n"
+"\n"
+"Všechno zboží ve Vaší pobočce je dostupné na tomto \"tržišti\", takže "
+"obyvatelé nemusí chodit k rybáři nebo až do pobočky.\n"
+"\n"
+"Měli byste zvážit založení Vaší obytné osady v oblasti, kterou můžete snadno "
+"rozšířit a vybudovat kolem stezky.\n"
+"\n"
+"Měli byste se vyvarovat výstavby stanů příliš blízko Vašemu dřevorubci "
+"například, protože postavením stanů budou vyklizeny stromy, které dřevorubec "
+"potřebuje k produkci prken.\n"
+"\n"
+"ÚKOL: Postavte náměstí."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
@@ -309,16 +351,30 @@ msgid ""
 "inhabitants. You also set the increment-specific global tax here and allow or "
 "deny inhabitants of this increment to upgrade to the next higher one."
 msgstr ""
+"Nyní se blíže podívejme na náměstí.\n"
+"\n"
+"V záložce \"Účet\" můžete vidět přehled financí této Vašeho ostrova, který "
+"zahrnuje všechny platby, které platíte, a všechny daně, které dostáváte.\n"
+"\n"
+"Položky \"Nákup\" a \"Prodej\" ukazují Vaši obchodní bilanci a budou vysvětleny "
+"později.\n"
+"\n"
+"Pokud je Vaše bilance kladná, vykazujete zisk.\n"
+"\n"
+"Dále jsou zde záložky odpovídající jednotlivým epochám. Zde můžete sledovat "
+"statistiky o Vašich obyvatelích. Zde můžete nastavit celkovou daň a povolit "
+"nebo zakázat obyvatelům na dané úrovni postoupit do vyšší úrovně."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:40
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
+"Postavte náměstí. Vyberte oblast, kde se nenachází mnoho produkčních budov."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:42
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NOVÝ ÚKOL: OBYTNÉ BUDOVY"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
@@ -335,11 +391,22 @@ msgid ""
 "\n"
 "TASK: Build a tent and connect it to the main square."
 msgstr ""
+"Osadníci chtějí mít střechu nad hlavou, jinak je ani nenapadne usadit se ve "
+"Vašem městě! Potřebujete zajistit jim stany.\n"
+"\n"
+"Stany jsou základními obytnými budovami. Vaši obyvatelé je budou vylepšovat "
+"až dosáhnou vyšší epochy.\n"
+"\n"
+"Osadníci se nezdají být příliš užiteční, snaží se spotřebovat všechno zboží, "
+"které produkujete, ale na druhou stranu platí daně, které jsou prozatím "
+"Vaším jediným zdrojem peněz!\n"
+"\n"
+"ÚKOL: Postavte stan a propojte jej k náměstí."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:46
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "Postavte stan a propojte jej s náměstím."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:48
@@ -363,17 +430,35 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"Nyní se pojďme podívat na přehledovou záložku pro stan.\n"
+"Můžete zde vidět:\n"
+"* spokojenost obyvatel\n"
+"* daně, které platí\n"
+"* zdroje, které požadují.\n"
+"\n"
+"Pokud budou jejich požadavky splněny, štěstí a také příjem z daní vzrostou.\n"
+"\n"
+"Pokud nebudou splněny, štěstí a příjem poklesne. Po určité době se obyvatelé "
+"stanou nevrlými, opustí Vaši vesnici a zanechají za sebou rozpadající se "
+"trosky.\n"
+"\n"
+"Všimněte si, že i zde můžete změnit nastavení celkové daně.\n"
+"\n"
+"ÚKOL: Postavte alespoň tři další stany.\n"
+"\n"
+"TIP: Přidržení klávesy SHIFT Vám zjednoduší hromadnou výstavbu budov "
+"stejného druhu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:50
 msgid ""
 "Build at least three additional tents and connect them to the main square."
-msgstr ""
+msgstr "Postavte alespoň tři další stany a propojte je s náměstím."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:52
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "NOVÝ ÚKOL: POSTAVTE SIGNÁLNÍ OHEŇ"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -395,6 +480,24 @@ msgid ""
 "The signal fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"Vidíte lodě, které čas od času projedou okolo Vašeho ostrova? Tyto lodě "
+"patří Svobodnému obchodníkovi, jednomu z prvních osadníků v tomto "
+"souostroví.\n"
+"\n"
+"Tento obchodník bude zásobovat Vaši osadu potřebným zbožím, které zatím "
+"nemůžete sami produkovat.\n"
+"Také můžete prodávat přebytky z Vaší produkce. Obecně je ale výhodnější tyto "
+"přebytky spotřebovat (tak, že postavíte více stanů). Příjem z daní bude "
+"vyšší než by byl příjem z prodeje.\n"
+"\n"
+"Normálně obchodní lodě pouze proplouvají okolo a hledají obchodní "
+"příležitosti, ale my můžeme věci trochu urychlit.\n"
+"\n"
+"Pro tento účel postavte signální oheň na pobřeží poblíž Vaší pobočky. Tak "
+"ukážete lodím cestu do Vaší osady.\n"
+"\n"
+"Aby mohl signální oheň přilákat lodě, musí pokrývat oblast, kterou lodě "
+"projíždějí."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56
@@ -416,11 +519,28 @@ msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your branch office."
 msgstr ""
+"Pokud by obchodník plánoval proplout okolo, po této malé reklamě, zakotví a "
+"navštíví Vaši pobočku.\n"
+"\n"
+"Zakázky můžete nabízet pomocí záložky \"Prodej/Nákup\" u Vaší pobočky. (Tato "
+"funkce je nyní poněkud nešikovná. Pokud by Vás napadlo nějaké elegantní "
+"zlepšení této funkce, prosím, sdílejte svoje nápady! Potřebujeme Vaši pomoc "
+"zde!)\n"
+"\n"
+"V epoše \"námořníci\" máte k dispozici tři obchodní sloty.\n"
+"\n"
+"Klikněte na malou ikonu, abyste změnili režim slotu z \"Nákupu\" na \"Prodej\" a "
+"naopak.\n"
+"\n"
+"Klikněte do slotu a vyberte zboží, se kterým chcete obchodovat. Více tuto "
+"část vysvětlíme později, až budete připraveni obchodovat.\n"
+"\n"
+"ÚKOL: Postavte signální oheň na pobřeží v blízkosti Vaší pobočky."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:58
 msgid "Build a signal fire at the coast close to your branch office."
-msgstr ""
+msgstr "Postavte signální oheň na pobřeží v blízkosti Vaší pobočky."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:60
@@ -444,6 +564,18 @@ msgid ""
 "When selling the 'target value' is the number which you hold in reserve to "
 "not sell"
 msgstr ""
+"Výborně! Svobodný obchodník nyní čas od času zakotví u Tvé pobočky.\n"
+"\n"
+"Pokračujme v našem návodu, jak obchodovat.\n"
+"\n"
+"Po vybrání konkrétního typu zboží, zelený ukazatel napravo od slotu (pokud "
+"je viditelný) ukazuje, kolik jednotek zboží máte aktuálně ve skladu.\n"
+"\n"
+"Tažením posuvníku na pravé straně každého slotu určíte \"cílovou hodnotu\", "
+"která má různé významy pro \"Prodej\" a \"Nákup\".\n"
+"Pokud nakupujete zboží, bude nakoupeno tolik zboží, aby byla udržena \"cílová "
+"hodnota\" na skladu.Pokud zboží prodáváte, \"cílová hodnota\" určuje množství "
+"zboží, které uchováváte jako rezervu a nebude prodáno."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
@@ -465,21 +597,40 @@ msgid ""
 "\n"
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"Ukážeme si to na příkladu: \n"
+"Pokud máme nastavený slot do na \"Nákup\" a na skladě máme 5 tun daného zboží, "
+"tak nastavení posuvníku na hodnotu 9 tun způsobí nákup maximálně 4 dalších "
+"tun zboží. \n"
+"Prodej funguje obdobně. Slot \"Prodej\" s 18 tunami zboží na skladě a posuvník "
+"nastavený na hodnotu 13 tun způsobí, že bude prodáno 5 tun zboží.\n"
+"\n"
+"Pokud svobodný obchodník bude chtít nakoupit nebo prodat méně zboží než "
+"nastavení Vašich slotů dovoluje, nezbývá Vám nic jiného než počkat na jeho "
+"příští cestu.\n"
+"\n"
+"Unknown Horizons obsahují chytré nastavení cen, to znamená, že cena za "
+"jednotku zboží se může měnit.\n"
+"Není možné měnit ceny manuálně!\n"
+"\n"
+"Vaši obchodní bilanci můžete vidět v záložce \"Účet\", kde jsou srovnány "
+"\"Nákup\" a \"Prodej\".\n"
+"\n"
+"ÚKOL: Nakupte nástroje tak, aby zásoby ve Vašem skladu byly 30 jednotek!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:66
 msgid "Reach an island stock of at least 30 tools."
-msgstr ""
+msgstr "Dosáhněte alespoň 30 nástrojů na skladu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:68
 msgid "Note that this might take a while."
-msgstr ""
+msgstr "Všimněte si, že to může chvíli trvat."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:70
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "NOVÝ ÚKOL: POSTAVTE PAVILÓN"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:72
@@ -500,6 +651,21 @@ msgid ""
 "\n"
 "In later increments, upgraded versions of buildings may become available."
 msgstr ""
+"Pro tuto chvíli máte dostatek nástrojů. Velmi dobře!\n"
+"\n"
+"Svým obyvatelům nyní poskytujete bydlení, náměstí a jídlo.\n"
+"\n"
+"Stále je zde ještě jeden požadavek, který nebyl doposud uspokojen, jak si "
+"můžete sami ověřit v záložce tržnice nebo stanu. Vaši námořnící chtějí "
+"základní budovu, kde by se mohli modlit.\n"
+"\n"
+"Řešením je pavilón, který vesnický pastor rychle vztyčí jako úkryt před "
+"sluncem.\n"
+"\n"
+"Budovy služeb, jako je tato, potřebují být propojeny se stany pomocí cest, "
+"jinak je Vaši obyvatelé nebudou moci využívat.\n"
+"\n"
+"V pozdějších epochách, budou možná k dispozici vylepšené verze budov."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
@@ -519,11 +685,24 @@ msgid ""
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"Všimněte si, že víra se chová jako fyzický zdroj!\n"
+"\n"
+"To znamená, že Vaši obyvatelé potřebují stezky k dodavateli (pavilónu), aby "
+"si mohli přijít vyzvednout víru.\n"
+"Po určité době tuto víru zkonzumují a potom znovu vyhledají producenta, aby "
+"dostali více víry.\n"
+"\n"
+"Důležité:\n"
+"NENÍ dostačující, že se budova nachází v dostatečné vzdálenosti od stanů.\n"
+"Spojení pomocí stezky je rovněž vyžadováno.\n"
+"\n"
+"ÚKOL: Postavte pavilón spojený stezkou se stany, abyste uspokojili potřebu "
+"víry Vašich námořníků."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:76
 msgid "Build a pavilion with connection to the tents."
-msgstr ""
+msgstr "Postavte pavilón propojený se stany."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:78
@@ -550,6 +729,22 @@ msgid ""
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
+"Všechny požadvky byly nyní splněny. Vaši obyvatelé můžou pravidelně "
+"navštěvovat náměstí a pavilón a Vaše zásobení jídlem je dostačující.\n"
+"\n"
+"Pokud budou námořníci dostatečně šťastní, budou chtít postoupit do další "
+"epochy nazvané Pionýři.\n"
+"\n"
+"Abyste je učinilišťastnými, není nic jednoduššího než nastavit daně na nižší "
+"úroveň, dokud nebudou naplněny všechny požadavky Vašich obyvatel.\n"
+"\n"
+"Nízké daně je potřeba využívat obezřetně. Pokud je necháte na nízké úrovni, "
+"přivedete svůj ostrov, dříve nebo později, k bankrotu. Pokud ale víte, co "
+"děláte, fungují skvěle.\n"
+"\n"
+"Po určité době se první obyvatelé vypraví na náměstí, aby získali nový "
+"stavební materiál, který potřebují ke stavbě srubu. Tímto domem nahradí své "
+"dosavadní stany."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
@@ -571,17 +766,35 @@ msgid ""
 "\n"
 "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
+"Takové vylepšení obytných budov jsou jediným vylepšením, které Vás stojí "
+"prostředky a nemůže být Vámi zakázáno.\n"
+"\n"
+"Jsou zde také manuální vylepšení některých budov, kdy jsou prostředky "
+"využity ke stavbě lepší verze budovy na tom samém místě. Také existují "
+"vylepšení bez poplatků, jak například sami uvidíte, jako napři u dřevorubce "
+"(v tomto případě dojde pouze ke grafické změně).\n"
+"\n"
+"Vylepšené domy pojmou více obyvatel a pionýři také platí vyšší daně než "
+"námořníci.\n"
+"\n"
+"Jak už jste si možná všimli, nevýhodou je, že pionýři požadují dodatečné "
+"zboží, které námořníci nepotřebovali - takže budete muset utratit peníze, "
+"abyste je učinili šťastnými.\n"
+"\n"
+"ÚKOL: Nastavate výši daní na nízkou hodnotu (levý okraj posuvníku) a "
+"počkejte na vylepšení."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:84
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
+"Nastavte výši daní na nízkou hodnotu (levý okraj) a počkejte na vylepšení."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:86
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "NOVÝ ÚKOL: POSTAVTE FARMU"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
@@ -600,6 +813,19 @@ msgid ""
 "\n"
 "The output of farms depends on what kind of fields you build around it."
 msgstr ""
+"Gratulujeme! Část Tvých obyvatel dosáhla Epochy II!\n"
+"\n"
+"Nyní máte přístup k novým budovám, podívejte se do Stavebního menu znova.\n"
+"\n"
+"Nová blýskavá záložka se zde objevila.\n"
+"\n"
+"Pionýři budou požadovat látku, to znamená, že budete muset vytvořit výrobní "
+"linku pro látku, která začne ovčí vlnou (ovce jsou produkovány na farmě).\n"
+"\n"
+"Farma je vyjímečná produkční budova, která neprodukuje pouze jednu, ale "
+"velmi mnoho (a rozličných) druhů zbožé, které si zvolíte.\n"
+"\n"
+"Výstupní produkt závisí na typu polí, které jsou vystavěny okolo ní."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
@@ -622,16 +848,33 @@ msgid ""
 "\n"
 "TASK: Build a farm."
 msgstr ""
+"K tomuto se vrátíme později.\n"
+"\n"
+"Farmy, stejně jako všechny společnosti produkující suroviny, nemusí být "
+"propojeny se skladištěm nebo pobočkou.\n"
+"\n"
+"Jednotky výrobní společnosti musí dosáhnout na výstupy z farmy a výběrčím z "
+"pobočky nebo skladiště stačí dosáhnout na výsledné produkty z výrobní "
+"společnosti.\n"
+"\n"
+"Nicméně, pokud plánujete provádět některou část z výrobního řetězce v jiných "
+"částech ostrova (což může dávat smysl) nebo na různých ostrovech, budete "
+"potřebovat propojení k výběrčím.\n"
+"\n"
+"Zkuste postavit farmu tak, aby nebyla blízko pobřeží a stávajících budov, "
+"protože bude pro správnou činnost potřebovat místo okolo sebe.\n"
+"\n"
+"ÚKOL: Postavte farmu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:92
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "Postavte farmu a nechte kolem ni volné místo."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:94
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "NOVÝ ÚKOL: STAVBA POLÍ"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
@@ -652,6 +895,23 @@ msgid ""
 "Note that for potatoes you will need a road connection to the farm (not to "
 "the field!) as it will be the only company to work on the goods."
 msgstr ""
+"Samotná farma nebude nic produkovat, pokud nebudou postavena pole.\n"
+"\n"
+"Nyní máte možnost výběru mezi pastvinami, bramborovými poli a platážemi s "
+"cukrovou třtinou.\n"
+"\n"
+"Proveďme krátké shrnutí:\n"
+"* Pastviny - žijí zde ovce, produkují ovčí vlnu.\n"
+"* Bramborové pole - pěstují se zde brambory, ty slouží jako potrava.\n"
+"* Plantáž cukrové třtiny - pěstuje se zde třtina, která je dále použita k "
+"destilaci kořalky a (později) produkci cukrovinek.\n"
+"\n"
+"Nyní potřebujeme pouze pastviny, ale v případě, že Vaše zásobení jídlem je "
+"příliš malé (díky mnoha obytným budovám), můžeté také postavit bramborové "
+"pole.\n"
+"\n"
+"Všimněte si, že brambory potřebují propojení cestu k farmě (nikoli k poli!), "
+"což je jediná budova, která pracuje se zbožím."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:98
@@ -672,11 +932,27 @@ msgid ""
 "TASK: Build at least one pasture in the farm's range and add potato fields if "
 "you like."
 msgstr ""
+"Ujistěte se, že všechna pole, která stavíte, leží v oblasti, která je "
+"pokryta farmou.\n"
+"\n"
+"Můžete mít kombinovanou produkci - jedna jednotka pastvin nepovede ke "
+"stoprocentní efektivnosti farmy, ale na druhou stranu, počet polí, které "
+"jedna farma může zabezpečit je omezen.\n"
+"\n"
+"Různé druhy polí mají různé časové požadavky (k vysetí, sklizni, pastvě, "
+"atd.) a kvůli tomu nemusí být farma schopna obsloužit všechna pole včas.\n"
+"\n"
+"Nyní se tím nemusíte příliš zabývat, protože jste nevybudovali žádné pole. "
+"Pojďme to změnit!\n"
+"\n"
+"ÚKOL: Vybudujte alespoň jednu pastvinu v okolí farmy a přidejte bramborové "
+"pole, pokud chcete."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:100
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
+"Vybudujte alespoň jednu pastvinu a přidejte bramborové pole, pokud chcete."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:102
