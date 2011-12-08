@@ -305,7 +305,7 @@ def setup_fife(args):
 	try:
 		from fife import fife
 	except ImportError as e:
-		if '--fife_in_library_path' in args:
+		if '--fife-in-library-path' in args:
 			# fife should already be in LD_LIBRARY_PATH
 			log_paths()
 			print 'Failed to load FIFE:', e
