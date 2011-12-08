@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-11-21 02:20+0200\n"
-"Last-Translator: Anonymous Pootle User\n"
+"PO-Revision-Date: 2011-12-08 02:01+0200\n"
+"Last-Translator: raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -41,12 +41,12 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr ""
+msgstr "vier"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Boat Builder"
-msgstr ""
+msgstr "Excursie cu Builder"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -66,12 +66,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "măcel"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Cattle"
-msgstr ""
+msgstr "bovine"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -96,17 +96,17 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Deer"
-msgstr ""
+msgstr "cerb"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Distillery"
-msgstr ""
+msgstr "distilerie"
 
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "doctor"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -131,7 +131,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Fisher"
-msgstr ""
+msgstr "pescar"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -258,7 +258,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Sheep"
-msgstr ""
+msgstr "oaie"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -298,7 +298,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent"
-msgstr ""
+msgstr "cort"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -334,7 +334,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files horizons/i18n/guitranslations.py:80 sql
 msgid "Tree"
-msgstr ""
+msgstr "copac"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -399,12 +399,12 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "black"
-msgstr ""
+msgstr "negru"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "blue"
-msgstr ""
+msgstr "albastru"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -424,12 +424,12 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "tun"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "bovine"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -489,22 +489,22 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr ""
+msgstr "educaţie"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "faith"
-msgstr ""
+msgstr "credinţă"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "peşte"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "alimente"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -514,12 +514,12 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr ""
+msgstr "iarbă"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "gri"
 
 #. This is a database entry: the name of a color.
 #: database files sql

@@ -887,7 +887,7 @@ msgstr "Unbekanntes Speicherdatum"
 #: horizons/gui/gui.py:428
 #, python-format
 msgid "Saved at %(time)s"
-msgstr ""
+msgstr "Gespeichert um %(time)"
 
 #: horizons/gui/gui.py:432
 #, python-format
