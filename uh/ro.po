@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-08 02:01+0200\n"
+"PO-Revision-Date: 2011-12-08 02:02+0200\n"
 "Last-Translator: raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -524,17 +524,17 @@ msgstr "gri"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "green"
-msgstr ""
+msgstr "verde"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr ""
+msgstr "fericire"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "ierburi"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -559,7 +559,7 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "lămâie"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -584,7 +584,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "porci"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -717,7 +717,7 @@ msgstr ""
 
 #: horizons/engine.py:213
 msgid "Warning"
-msgstr ""
+msgstr "avertizare"
 
 #: horizons/engine.py:214
 msgid ""
@@ -762,7 +762,7 @@ msgstr ""
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:135 horizons/gui/modules/multiplayermenu.py:114
 msgid "Error"
-msgstr ""
+msgstr "eroare"
 
 #: horizons/gui/gui.py:135
 msgid "Failed to save."
