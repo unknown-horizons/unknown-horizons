@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-09 22:38+0200\n"
+"PO-Revision-Date: 2011-12-09 23:38+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -67,7 +67,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr "măcel"
+msgstr "abator"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -77,22 +77,22 @@ msgstr "bovine"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Cattle Run"
-msgstr ""
+msgstr "pășune"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "mangalizare în bocșă"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Clay Deposit"
-msgstr ""
+msgstr "zăcământ de argilă"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Clay Pit"
-msgstr ""
+msgstr "carieră de argilă"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -112,7 +112,7 @@ msgstr "doctor"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Farm"
-msgstr ""
+msgstr "fermă"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -127,7 +127,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
-msgstr ""
+msgstr "banc de pești"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -137,13 +137,13 @@ msgstr "pescar"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "cort de pescuit"
 
 #. (text of widget: headline_BB_war1_ship1)
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr ""
+msgstr "fregată"
 
 #. This is a database entry: the name of a building.
 #: database files sql
