@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 00:40+0200\n"
+"PO-Revision-Date: 2011-12-10 00:52+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -224,32 +224,32 @@ msgstr "pavilion"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr ""
+msgstr "cocină (de porci)"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Pirate Ship"
-msgstr ""
+msgstr "navă pirați"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Potato Field"
-msgstr ""
+msgstr "câmp de cartofi"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Rampart"
-msgstr ""
+msgstr "parapet"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Salt Ponds"
-msgstr ""
+msgstr "saline"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to ${file}."
-msgstr ""
+msgstr "instantaneul a fost salvat în ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
