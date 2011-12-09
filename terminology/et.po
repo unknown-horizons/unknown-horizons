@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-06-25 14:35+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-09 12:11+0200\n"
+"Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -20,25 +20,25 @@ msgid "game"
 msgstr "mäng"
 
 msgid "building"
-msgstr "ehitise"
+msgstr "ehitis"
 
 msgid "tent"
-msgstr ""
+msgstr "telk"
 
 msgid "resource"
-msgstr ""
+msgstr "ressurss"
 
 msgid "branch office"
 msgstr "harukontor"
 
 msgid "your"
-msgstr ""
+msgstr "sinu"
 
 msgid "farm"
-msgstr ""
+msgstr "farm"
 
 msgid "field"
-msgstr ""
+msgstr "väli"
 
 msgid "overview"
 msgstr "ülevaade"
@@ -47,7 +47,7 @@ msgid "ship"
 msgstr "laev"
 
 msgid "main"
-msgstr ""
+msgstr "põhiline"
 
 msgid "settlement"
 msgstr "koloonia"
@@ -59,16 +59,16 @@ msgid "click"
 msgstr ""
 
 msgid "inhabitants"
-msgstr ""
+msgstr "elanikud"
 
 msgid "map"
-msgstr ""
+msgstr "kaart"
 
 msgid "menu"
-msgstr ""
+msgstr "menüü"
 
 msgid "production"
-msgstr ""
+msgstr "tootmine"
 
 msgid "tab"
 msgstr ""
