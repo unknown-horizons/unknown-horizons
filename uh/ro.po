@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 00:52+0200\n"
+"PO-Revision-Date: 2011-12-10 01:36+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -264,22 +264,22 @@ msgstr "oaie"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Signal Fire"
-msgstr ""
+msgstr "foc de semnalizare"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Smeltery"
-msgstr ""
+msgstr "topitorie"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Unii dintre coloniști tăi tocmai s-au mutat."
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Storage Tent"
-msgstr ""
+msgstr "cort pentru depozitare"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -289,12 +289,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Sugar Field"
-msgstr ""
+msgstr "plantație de zahăr"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tavern"
-msgstr ""
+msgstr "tavernă"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -304,53 +304,53 @@ msgstr "cort"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent Ruin"
-msgstr ""
+msgstr "cort părăsit"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "plantație de tutun"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr ""
+msgstr "cultivator de tutun"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Toolmaker"
-msgstr ""
+msgstr "lăcătuș"
 
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
 msgid "Trader"
-msgstr ""
+msgstr "negustor"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Trail"
-msgstr ""
+msgstr "cărare"
 
 #. (tooltip of widget: tree-1)
 #. This is a database entry: the name of a building.
 #: database files horizons/i18n/guitranslations.py:80 sql
 msgid "Tree"
-msgstr "copac"
+msgstr "arbore"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Village school"
-msgstr ""
+msgstr "școală de sat"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "cort de țesătorie"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "turn de lemn"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
