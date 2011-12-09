@@ -265,13 +265,18 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if self.current.collectData('savegamelist') != -1 and mode == 'save': # check if we actually collect valid data
-				self.current.distributeData({'savegamefile' : \
+			if mode == 'save': # set textbox only if we are in save mode
+				if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
+					self.current.findChild(name="savegamefile").text = u""
+				else:
+					self.current.distributeData({'savegamefile' : \
 				                             map_file_display[self.current.collectData('savegamelist')]})
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
+		self.current.distributeData({'savegamelist' : -1}) # Don't select anything by default
 		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
 		                               tmp_selected_changed)
+		cb() # Refresh data on start
 		self.current.findChild(name="savegamelist").mapEvents({
 		    'savegamelist/action'              : cb,
 		    'savegamelist/mouseWheelMovedUp'   : cb,
@@ -295,14 +300,21 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		if retval == 'delete':
 			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
-			self._delete_savegame(map_files)
+			delete_retval = self._delete_savegame(map_files)
+			if delete_retval:
+				self.current.distributeData({'savegamelist' : -1})
+				cb()
 			self.current = old_current
 			return self.show_select_savegame(mode=mode)
 
 		selected_savegame = None
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
-			if selected_savegame in map_file_display: # savegamename already exists
+			if selected_savegame == "":
+				self.show_error_popup(windowtitle = _("No filename given"), description = _("Please enter a valid filename."),)
+				self.current = old_current
+				return self.show_select_savegame(mode=mode) # reshow dialog				
+			elif selected_savegame in map_file_display: # savegamename already exists
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
@@ -453,8 +465,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if old_label is not None:
 				box.removeChild(old_label)
 			map_file = None
+			map_file_index = gui.collectData(savegamelist)
+			if map_file_index == -1:
+				return
 			try:
-				map_file = map_files[gui.collectData(savegamelist)]
+				map_file = map_files[map_file_index]
 			except IndexError:
 				# this was a click in the savegame list, but not on an element
 				# it happens when the savegame list is empty
