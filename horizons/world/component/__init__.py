@@ -60,7 +60,7 @@ class Component(object):
 	@classmethod
 	def get_instance(cls, arguments={}):
 		"""
-		This function is used to instantiate classes from yaml. Override this if
+		This function is used to instantiate classes from yaml data. Override this if
 		the component has more than just a basic constructor with primitiv types
 		(takes Custom classes as arguments e.g. Storages)
 		"""
