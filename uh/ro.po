@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-09 22:11+0200\n"
+"PO-Revision-Date: 2011-12-10 00:40+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -153,7 +153,7 @@ msgstr "drum de pietriș"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Herbary"
-msgstr ""
+msgstr "erboristerie"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #. This is a database entry: the name of a unit.
@@ -164,7 +164,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "cort vânătoare"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -174,17 +174,17 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
-msgstr ""
+msgstr "mină de fier"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Log"
-msgstr ""
+msgstr "protocol"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lookout"
-msgstr ""
+msgstr "turn de veghe"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -199,27 +199,27 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Main Square"
-msgstr ""
+msgstr "piață principală"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Mountain"
-msgstr ""
+msgstr "munte"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "unul dintre coloniști nu are piața principală în raza sa de acțiune"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pasture"
-msgstr ""
+msgstr "pășune"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pavilion"
-msgstr ""
+msgstr "pavilion"
 
 #. This is a database entry: the name of a building.
 #: database files sql
