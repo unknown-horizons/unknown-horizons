@@ -226,8 +226,14 @@ class RouteConfig(object):
 		else:
 			slot.findChild(name="amount").text = unicode("")
 
-	def show_resource_menu(self, slot, entry):
+	def handle_resource_click(self, widget, event):
+		if event.getButton() == fife.MouseEvent.LEFT:
+			self.show_resource_menu(widget.parent, widget.parent.parent)
+		elif event.getButton() == fife.MouseEvent.RIGHT:
+			# remove the load/unload order
+			self.add_resource(widget.parent, 0, widget.parent.parent)
 
+	def show_resource_menu(self, slot, entry):
 		position = self.widgets.index(entry)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
@@ -289,7 +295,7 @@ class RouteConfig(object):
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
 			button = slot.findChild(name="button")
-			button.capture(Callback(self.show_resource_menu, slot, entry))
+			button.capture(self.handle_resource_click, event_name = 'mouseClicked')
 			button.up_image = self.dummy_icon_path
 			button.down_image = self.dummy_icon_path
 			button.hover_image = self.dummy_icon_path
