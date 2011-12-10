@@ -56,7 +56,7 @@ msgid "start"
 msgstr ""
 
 msgid "click"
-msgstr ""
+msgstr "vajuta"
 
 msgid "inhabitants"
 msgstr "elanikud"
