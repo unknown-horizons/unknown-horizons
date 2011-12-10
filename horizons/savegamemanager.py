@@ -145,6 +145,8 @@ class SavegameManager(object):
 
 	display_timeformat = "%Y/%m/%d %H:%M"
 
+	savegame_screenshot_width = 290
+
 	# metadata of a savegame with default values
 	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : ""  }
 	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int, \
@@ -287,14 +289,20 @@ class SavegameManager(object):
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
 
 		# special handling for screenshot (as blob)
-		"""
-		import horizons.main
 		screenshot_fd, screenshot_filename = tempfile.mkstemp()
-		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename)
+
+		width = horizons.main.fife.engine_settings.getScreenWidth()
+		height = horizons.main.fife.engine_settings.getScreenHeight()
+
+		# scale to the correct with and adapt height with same factor
+		factor = float( cls.savegame_screenshot_width ) / width
+		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
+		                                                           int(float(width) * factor),
+		                                                           int(float(height) * factor))
+
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()
 		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
 		os.unlink(screenshot_filename)
-		"""
 
 	@classmethod
 	def get_regular_saves(cls, include_displaynames = True):

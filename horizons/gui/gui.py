@@ -22,6 +22,7 @@
 import os
 import os.path
 import time
+import tempfile
 import logging
 from fife import fife
 from fife.extensions import pychan
@@ -313,7 +314,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if selected_savegame == "":
 				self.show_error_popup(windowtitle = _("No filename given"), description = _("Please enter a valid filename."),)
 				self.current = old_current
-				return self.show_select_savegame(mode=mode) # reshow dialog				
+				return self.show_select_savegame(mode=mode) # reshow dialog
 			elif selected_savegame in map_file_display: # savegamename already exists
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
@@ -457,6 +458,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	@staticmethod
 	def _create_show_savegame_details(gui, map_files, savegamelist):
 		"""Creates a function that displays details of a savegame in gui"""
+
 		def tmp_show_details():
 			"""Fetches details of selected savegame and displays it"""
 			# N_ takes care of plural forms for different languages
@@ -475,6 +477,19 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				# it happens when the savegame list is empty
 				return
 			savegame_info = SavegameManager.get_metadata(map_file)
+
+			# screenshot
+			if savegame_info['screenshot'] is not None:
+				fd, filename = tempfile.mkstemp()
+				with os.fdopen(fd, "w") as f:
+					f.write(savegame_info['screenshot'])
+				# fife only supports relative paths
+				gui.findChild(name="screenshot").image = os.path.relpath(filename)
+				os.unlink(filename)
+			else:
+				gui.findChild(name="screenshot").image = None
+
+			# savegamedetails
 			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
@@ -508,12 +523,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 			box.addChild( details_label )
 
-			"""
-			if savegame_info['screenshot']:
-				fd, filename = tempfile.mkstemp()
-				os.fdopen(fd, "w").write(savegame_info['screenshot'])
-				box.addChild( pychan.widgets.Icon(image=filename) )
-			"""
 
 			gui.adaptLayout()
 		return tmp_show_details
