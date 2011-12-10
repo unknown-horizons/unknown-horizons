@@ -45,4 +45,4 @@ class TestComponent(TestCase):
 		# Trigger __lt__
 		self.assertFalse(producer < storage)
 		# Trigger __gt__
-		self.assertFalse(producer > storage)
+		self.assertTrue(producer > storage)
