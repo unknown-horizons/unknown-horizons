@@ -75,7 +75,7 @@ def test_hunter(s, p):
 		animal = CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(None)
 		# wild animals are slow eaters, we feed them directly
 		animal.get_component(StorageComponent).inventory.alter(12, 10)
-		animal.finish_production_now()
+		animal.get_component(Producer).finish_production_now()
 		assert animal
 
 	s.run(seconds=30)
