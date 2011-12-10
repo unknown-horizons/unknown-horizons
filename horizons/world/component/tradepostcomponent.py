@@ -77,7 +77,7 @@ class TradePostComponent(Component):
 		for row in self.trade_history:
 			translated_tick = row[0] - Scheduler().cur_tick # pre-translate for the loading process
 			db("INSERT INTO trade_history(settlement, tick, player, resource_id, amount, gold) VALUES(?, ?, ?, ?, ?, ?)",
-				self.worldid, translated_tick, row[1], row[2], row[3], row[4])
+				self.instance.worldid, translated_tick, row[1], row[2], row[3], row[4])
 
 	def load(self, db, worldid):
 		super(TradePostComponent, self).load(db, worldid)
