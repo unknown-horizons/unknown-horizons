@@ -457,7 +457,7 @@ class SavegameManager(object):
 		elif filename:
 			if not filename in sfiles:
 				#xgettext:python-format
-				print _("Error: Cannot find scenario with file '{name}'.").format(name=filename)
+				print _("Error: Cannot find scenario '{name}'.").format(name=filename)
 				return {}
 			index = sfiles.index(filename)
 		data = YamlCache.get_file(sfiles[index])
