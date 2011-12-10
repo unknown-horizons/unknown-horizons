@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 03:38+0200\n"
+"PO-Revision-Date: 2011-12-10 03:59+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -329,7 +329,7 @@ msgstr "negustor"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Trail"
-msgstr "cărare"
+msgstr "potecă"
 
 #. (tooltip of widget: tree-1)
 #. This is a database entry: the name of a building.
@@ -1361,17 +1361,17 @@ msgstr "Cort: găzduiește locuitori."
 #. (tooltip of widget: store-1)
 #: horizons/i18n/guitranslations.py:76
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
+msgstr "Magazie: mărește stocul și furnizează colectori."
 
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:78
 msgid "Trail: Needed for collecting goods."
-msgstr ""
+msgstr "Potecă: necesar pentru transportul mărfurilor."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:87 horizons/i18n/guitranslations.py:124
 msgid "Fields"
-msgstr ""
+msgstr "câmpii"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:89
@@ -1387,31 +1387,33 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:95
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
+"Constructor de ambarcațiuni: construiește bărci și nave mici. Construibil pe "
+"coastă."
 
 #. (tooltip of widget: brickyard-1)
 #: horizons/i18n/guitranslations.py:97
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
+msgstr "Cărămidărie: transformă argila în cărămizi."
 
 #. (tooltip of widget: clay-pit-1)
 #: horizons/i18n/guitranslations.py:99
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
+msgstr "Carieră de argilă: extrage argila din zăcământ."
 
 #. (tooltip of widget: distillery-1)
 #: horizons/i18n/guitranslations.py:101
 msgid "Distillery: Turns sugar into liquor."
-msgstr ""
+msgstr "Distilerie: transformă trestia de zahăr în băutură."
 
 #. (tooltip of widget: herder-1)
 #: horizons/i18n/guitranslations.py:103
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
+msgstr "Fermă: cultivează câmpuri și crește vite."
 
 #. (tooltip of widget: pasture-1)
 #: horizons/i18n/guitranslations.py:105
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "Pășune: crește oi și furnizează lână. Necesită o fermă."
 
 #. (tooltip of widget: potatofield-1)
 #: horizons/i18n/guitranslations.py:107
