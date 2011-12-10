@@ -10,6 +10,14 @@ components:
    inventory:
       PositiveSizedSlotStorage:
          limit: 8
+- ProducerComponent:
+    productionlines:
+      16:
+        produces:
+        - [13, 1]
+        consumes:
+        - [12, -1]
+        time: 45
 
 actionsets:
    - as_fallowdeer0
