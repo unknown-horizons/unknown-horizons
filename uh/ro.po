@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 02:56+0200\n"
+"PO-Revision-Date: 2011-12-10 03:38+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -943,153 +943,161 @@ msgid ""
 "Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\n"
 "Details: %s"
 msgstr ""
+"Nu s-a putut conexiunea la serverul principal. Verificați conexiunea de "
+"internet. Dacă e în regulă, probabil serverul principal nu e disponibil "
+"temporar.\n"
+"Detalii: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:101
 msgid "Network Error"
-msgstr ""
+msgstr "eroare de rețea"
 
 #: horizons/gui/modules/multiplayermenu.py:116
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "eroare de rețea fatală"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "a avut loc o problemă de rețea:"
 
 #: horizons/gui/modules/multiplayermenu.py:133
 msgid "Version differs!"
-msgstr ""
+msgstr "Versiuni diferite!"
 
 #: horizons/gui/modules/multiplayermenu.py:155
 msgid "Map: "
-msgstr ""
+msgstr "hartă:"
 
 #: horizons/gui/modules/multiplayermenu.py:156
 msgid "Players: "
-msgstr ""
+msgstr "jucători:"
 
 #: horizons/gui/modules/multiplayermenu.py:159
 msgid "Creator: "
-msgstr ""
+msgstr "creator:"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Versiunea jocului diferă de cea locală. Fiecare jucător în rețea trebuie să "
+"folosească aceeași versiune. Problema poate fi rezolvată prin actualizarea "
+"la versiunea curentă de fiecare jucător. Versiune de joc:  %(gameversion)s. "
+"Versiunea locală: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Wrong version"
-msgstr ""
+msgstr "versiune greșită"
 
 #: horizons/gui/modules/multiplayermenu.py:272
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: "
-msgstr ""
+msgstr "număr recomandat de jucători:"
 
 #: horizons/gui/modules/singleplayermenu.py:102
 #: horizons/gui/modules/singleplayermenu.py:114
 #: horizons/gui/widgets/choose_next_scenario.py:43
 msgid "Difficulty: "
-msgstr ""
+msgstr "dificultate:"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:115
 #: horizons/gui/widgets/choose_next_scenario.py:44
 msgid "Author: "
-msgstr ""
+msgstr "autor:"
 
 #: horizons/gui/modules/singleplayermenu.py:104
 #: horizons/gui/modules/singleplayermenu.py:116
 #: horizons/gui/widgets/choose_next_scenario.py:45
 msgid "Description: "
-msgstr ""
+msgstr "descriere:"
 
 #: horizons/gui/modules/singleplayermenu.py:135
 msgid "Invalid player name"
-msgstr ""
+msgstr "nume de jucător invalid"
 
 #: horizons/gui/modules/singleplayermenu.py:135
 msgid "You entered an invalid playername"
-msgstr ""
+msgstr "ați introdus un nume de jucător invalid"
 
 #: horizons/gui/modules/singleplayermenu.py:193
 msgid "Map size:"
-msgstr ""
+msgstr "mărimea hărții:"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Water:"
-msgstr ""
+msgstr "apă:"
 
 #: horizons/gui/modules/singleplayermenu.py:205
 msgid "Max island size:"
-msgstr ""
+msgstr "dimensiune maximă a insulei:"
 
 #: horizons/gui/modules/singleplayermenu.py:211
 msgid "Preferred island size:"
-msgstr ""
+msgstr "dimensiune preferată a insulei:"
 
 #: horizons/gui/modules/singleplayermenu.py:217
 msgid "Island size deviation:"
-msgstr ""
+msgstr "devierea la mărimea insulei:"
 
 #: horizons/gui/modules/singleplayermenu.py:237
 msgid "Resource density:"
-msgstr ""
+msgstr "densitatea resurselor:"
 
 #: horizons/gui/modules/singleplayermenu.py:262
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "numele scenariului invalid"
 
 #: horizons/gui/modules/singleplayermenu.py:263
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "Fișierul selectat nu este un scenariu valid."
 
 #: horizons/gui/modules/singleplayermenu.py:264
 msgid "Error message:"
-msgstr ""
+msgstr "mesaj eroare:"
 
 #: horizons/gui/modules/singleplayermenu.py:265
 msgid "Please report this to the author."
-msgstr ""
+msgstr "Raportați asta autorului."
 
 #. (text of widget: headline)
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:117
 #: horizons/i18n/guitranslations.py:166
 msgid "Build"
-msgstr ""
+msgstr "construcție"
 
 #: horizons/gui/tabs/boatbuildertab.py:36
 msgid "Boat builder overview"
-msgstr ""
+msgstr "sumar constructor de ambarcațiuni"
 
 #: horizons/gui/tabs/boatbuildertab.py:114
 msgid "Resources still needed:"
-msgstr ""
+msgstr "resurse încă necesare:"
 
 #: horizons/gui/tabs/boatbuildertab.py:180
 msgid "Fisher boats"
-msgstr ""
+msgstr "ambarcațiuni de pescuit"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:190
 #: horizons/i18n/guitranslations.py:265
 msgid "Trade boats"
-msgstr ""
+msgstr "ambarcațiuni de comerț"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:198
 #: horizons/i18n/guitranslations.py:274
 msgid "War boats"
-msgstr ""
+msgstr "ambarcațiuni de război"
 
 #: horizons/gui/tabs/boatbuildertab.py:205
 msgid "War ships"
-msgstr ""
+msgstr "nave de război"
 
 #: horizons/gui/tabs/boatbuildertab.py:222
 msgid "Confirm order"
-msgstr ""
+msgstr "confirmare ordin"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
@@ -1097,184 +1105,185 @@ msgstr ""
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "etapă de dezvoltare"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/buyselltab.py:72 horizons/i18n/guitranslations.py:544
 #: horizons/i18n/guitranslations.py:553
 msgid "Trade"
-msgstr ""
+msgstr "comerț"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:42 horizons/i18n/guitranslations.py:334
 msgid "Settlement inventory"
-msgstr ""
+msgstr "inventarul coloniei"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
-msgstr ""
+msgstr "inventarul navei"
 
 #. (text of widget: load_unload_label)
 #: horizons/gui/tabs/inventorytab.py:82 horizons/i18n/guitranslations.py:564
 #: horizons/i18n/guitranslations.py:573
 msgid "Load/Unload:"
-msgstr ""
+msgstr "încarcă/descarcă:"
 
 #: horizons/gui/tabs/inventorytab.py:85
 msgid "Buy/Sell:"
-msgstr ""
+msgstr "cumpără/vinde:"
 
 #: horizons/gui/tabs/inventorytab.py:104
 msgid "Can't equip trade ship with weapons"
-msgstr ""
+msgstr "ambarcațiunile de comerț nu pot fi echipate cu arme"
 
 #: horizons/gui/tabs/inventorytab.py:105
 msgid "It is not possible to equip a trade ship with weapons"
-msgstr ""
+msgstr "nu este posibilă echiparea unei ambarcațiuni de comerț cu arme"
 
 #: horizons/gui/tabs/inventorytab.py:133
 msgid "Equip weapon"
-msgstr ""
+msgstr "echipare arme"
 
 #: horizons/gui/tabs/inventorytab.py:136
 msgid "Unequip weapon"
-msgstr ""
+msgstr "dezarmare"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:76 horizons/i18n/guitranslations.py:301
 msgid "Account"
-msgstr ""
+msgstr "balanță"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:110
 #: horizons/gui/tabs/overviewtab.py:364 horizons/i18n/guitranslations.py:341
 msgid "Settler overview"
-msgstr ""
+msgstr "sumar colonist"
 
 #: horizons/gui/tabs/mainsquaretabs.py:204
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "nu permite avansări"
 
 #: horizons/gui/tabs/mainsquaretabs.py:207
 msgid "Allow upgrades"
-msgstr ""
+msgstr "permite avansări"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:234
 #: horizons/i18n/guitranslations.py:379
 msgid "Sailors"
-msgstr ""
+msgstr "marinari"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:240
 #: horizons/i18n/guitranslations.py:348
 msgid "Pioneers"
-msgstr ""
+msgstr "pionieri"
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:408 horizons/i18n/guitranslations.py:646
 msgid "Settlers"
-msgstr ""
+msgstr "coloniști"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:49 horizons/gui/tabs/overviewtab.py:407
 #: horizons/i18n/guitranslations.py:535
 msgid "Overview"
-msgstr ""
+msgstr "sumar"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:424
 msgid "Branch office overview"
-msgstr ""
+msgstr "sumar sucursală"
 
 #: horizons/gui/tabs/overviewtab.py:139
 msgid "Main square overview"
-msgstr ""
+msgstr "sumar plasament principal"
 
 #: horizons/gui/tabs/overviewtab.py:150 horizons/gui/tabs/overviewtab.py:232
 msgid "Ship overview"
-msgstr ""
+msgstr "sumar navă"
 
 #: horizons/gui/tabs/overviewtab.py:160
 msgid "Trade ship"
-msgstr ""
+msgstr "navă de schimb"
 
 #. (tooltip of widget: foundSettlement)
 #: horizons/gui/tabs/overviewtab.py:184 horizons/i18n/guitranslations.py:520
 msgid "Build settlement"
-msgstr ""
+msgstr "stabilește o colonie"
 
 #: horizons/gui/tabs/overviewtab.py:190
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr ""
+"Nava trebuie să fie în apropierea unei insule pentru a stabili o colonie."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Unit overview"
-msgstr ""
+msgstr "sumar unități"
 
 #: horizons/gui/tabs/overviewtab.py:258
 msgid "Production overview"
-msgstr ""
+msgstr "sumar producție"
 
 #: horizons/gui/tabs/overviewtab.py:261
 msgid "Destroy building"
-msgstr ""
+msgstr "distrugere clădire"
 
 #: horizons/gui/tabs/selectmultitab.py:52
 msgid "Selected Units"
-msgstr ""
+msgstr "unități selecționate"
 
 #: horizons/gui/widgets/buysellinventory.py:82
 #: horizons/gui/widgets/inventory.py:102
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "limită: %st pe slot"
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
-msgstr ""
+msgstr "vid"
 
 #: horizons/gui/widgets/logbook.py:157
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Nu e nimic înscris în jurnalul de bord!"
 
 #: horizons/gui/widgets/playerssettlements.py:41
 #, python-format
 msgid "%(player)s's settlements"
-msgstr ""
+msgstr "coloniile lui %(player)s"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-format
 msgid "%(player)s's ships"
-msgstr ""
+msgstr "ambarcațiunile lui %(player)s"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:81
 msgid "None"
-msgstr ""
+msgstr "niciun"
 
 #: horizons/gui/widgets/playersships.py:83
 msgid "N/A"
-msgstr ""
+msgstr "indisponibil"
 
 #: horizons/gui/widgets/productionoverview.py:48
 #, python-format
 msgid "Production overview of %(settlement)s"
-msgstr ""
+msgstr "sumar producție de %(settlement)s"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:64 horizons/i18n/guitranslations.py:624
 msgid "Start route"
-msgstr ""
+msgstr "începe rută"
 
 #: horizons/gui/widgets/routeconfig.py:68
 msgid "Stop route"
-msgstr ""
+msgstr "oprește rută"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "niciun"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:45
@@ -1295,23 +1304,23 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:54 horizons/i18n/guitranslations.py:85
 #: horizons/i18n/guitranslations.py:120
 msgid "Companies"
-msgstr ""
+msgstr "companii"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:56
 msgid "Sailor buildings"
-msgstr ""
+msgstr "bastiment"
 
 #. (text of widget: residents_infra_label)
 #: horizons/i18n/guitranslations.py:58
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "locuitori și infrastructură"
 
 #. (text of widget: services_label)
 #: horizons/i18n/guitranslations.py:60 horizons/i18n/guitranslations.py:93
 #: horizons/i18n/guitranslations.py:128
 msgid "Services"
-msgstr ""
+msgstr "servicii"
 
 #. (tooltip of widget: church-1)
 #: horizons/i18n/guitranslations.py:62
@@ -1321,32 +1330,33 @@ msgstr ""
 #. (tooltip of widget: fisher-1)
 #: horizons/i18n/guitranslations.py:64
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
+msgstr "Pescar: pescuiește în mare, produce hrană."
 
 #. (tooltip of widget: hunter-1)
 #: horizons/i18n/guitranslations.py:66
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "Vânător: vânează animale sălbatice, produce hrană."
 
 #. (tooltip of widget: lighthouse-1)
 #: horizons/i18n/guitranslations.py:68
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
+"Foc de semnal: permite utilizatorului comerțul cu negustorul independent."
 
 #. (tooltip of widget: lumberjack-1)
 #: horizons/i18n/guitranslations.py:70
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
+msgstr "Tăietor de lemne: taie arbori și îi transformă în scânduri."
 
 #. (tooltip of widget: main_square-1)
 #: horizons/i18n/guitranslations.py:72
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
+msgstr "Piață principală: permite accesul cetățenilor la bunuri."
 
 #. (tooltip of widget: resident-1)
 #: horizons/i18n/guitranslations.py:74
 msgid "Tent: Houses your inhabitants."
-msgstr ""
+msgstr "Cort: găzduiește locuitori."
 
 #. (tooltip of widget: store-1)
 #: horizons/i18n/guitranslations.py:76
