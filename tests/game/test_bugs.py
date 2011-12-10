@@ -22,7 +22,7 @@
 from horizons.command.building import Build, Tear
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES
 
 from tests.game import settle, game_test
 from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
@@ -96,6 +96,28 @@ def test_ticket_1005(s, p):
 	s.run(seconds=130)
 
 	assert len(s.world.ships) == 3
+
+
+@game_test
+def test_ticket_1232(s, p):
+	settlement, island = settle(s)
+	assert len(s.world.ships) == 2
+
+	boat_builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(p)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 10)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 8)
+
+	production_finished = [False]
+	boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
+	production1 = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.HUKER)
+	production1.add_production_finished_listener(lambda _: production_finished.__setitem__(0, True))
+	while not production_finished[0]:
+		s.run(ticks=1)
+	assert len(s.world.ships) == 3
+
+	boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
+	s.run(seconds=130)
+	assert len(s.world.ships) == 4
 
 
 def test_brick_tool_interference():
