@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 05:00+0200\n"
+"PO-Revision-Date: 2011-12-10 05:10+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -1988,66 +1988,70 @@ msgstr "click aici pentru a schimba numele navei"
 #: horizons/i18n/guitranslations.py:525
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
+"Focul de semnalizare indică negustorului independent indică prezența "
+"coloniei pentru eventuale tranzacții."
 
 #. (text of widget: trader_description_lbl)
 #: horizons/i18n/guitranslations.py:530
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
+"Aceasta este nava negustorului independent. Vă va vizita din când în când "
+"pentru a vinde și a cumpăra bunuri."
 
 #. (text of widget: exchange_label)
 #: horizons/i18n/guitranslations.py:542 horizons/i18n/guitranslations.py:551
 msgid "Exchange:"
-msgstr ""
+msgstr "schimb:"
 
 #. (text of widget: ship_label)
 #: horizons/i18n/guitranslations.py:546 horizons/i18n/guitranslations.py:555
 msgid "Ship:"
-msgstr ""
+msgstr "navă:"
 
 #. (text of widget: configure_route_label)
 #: horizons/i18n/guitranslations.py:560 horizons/i18n/guitranslations.py:569
 msgid "Configure trading route:"
-msgstr ""
+msgstr "configurare rută comercială:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:562 horizons/i18n/guitranslations.py:571
 msgid "Inventory"
-msgstr ""
+msgstr "inventar:"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:578
 msgid "Pause production"
-msgstr ""
+msgstr "suspendare producție"
 
 #. (tooltip of widget: toggle_active_inactive)
 #: horizons/i18n/guitranslations.py:580
 msgid "Start production"
-msgstr ""
+msgstr "reluare producție"
 
 #. (tooltip of widget: delete_bo) Trade route entry
 #: horizons/i18n/guitranslations.py:585
 msgid "Delete entry"
-msgstr ""
+msgstr "ștergere intrare"
 
 #. (tooltip of widget: move_down) Trade route entry
 #: horizons/i18n/guitranslations.py:587
 msgid "Move down"
-msgstr ""
+msgstr "coborâre"
 
 #. (tooltip of widget: move_up) Trade route entry
 #: horizons/i18n/guitranslations.py:589
 msgid "Move up"
-msgstr ""
+msgstr "urcare"
 
 #. (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
 #: horizons/i18n/guitranslations.py:594
 msgid "Leave Captain's log"
-msgstr ""
+msgstr "părăsiți jurnalul de bord"
 
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:596
 msgid "Read prev. entries"
-msgstr ""
+msgstr "citire intrări precedente"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:598
@@ -2057,22 +2061,22 @@ msgstr ""
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:603
 msgid "Available Scenarios"
-msgstr ""
+msgstr "scenarii disponibile"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py:605
 msgid "Scenario description"
-msgstr ""
+msgstr "descrierea scenarului"
 
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:609
 msgid "Continue playing"
-msgstr ""
+msgstr "continuați jocul"
 
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:611
 msgid "Choose this scenario"
-msgstr ""
+msgstr "alegeți acest scenariu"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:616
@@ -2087,7 +2091,7 @@ msgstr ""
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:620
 msgid "Exit"
-msgstr ""
+msgstr "renunțați"
 
 #. (tooltip of widget: add_bo) List of harbors in trade route
 #: horizons/i18n/guitranslations.py:622
