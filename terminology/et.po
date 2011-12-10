@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-09 12:11+0200\n"
+"PO-Revision-Date: 2011-12-10 12:41+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -71,55 +71,55 @@ msgid "production"
 msgstr "tootmine"
 
 msgid "tab"
-msgstr ""
+msgstr "silt"
 
 msgid "unknown"
-msgstr ""
+msgstr "tundmatu"
 
 msgid "food"
-msgstr ""
+msgstr "toit"
 
 msgid "increment"
-msgstr ""
+msgstr "juurdekasv"
 
 msgid "select"
-msgstr ""
+msgstr "vali"
 
 msgid "setting"
-msgstr ""
+msgstr "seade"
 
 msgid "time"
-msgstr ""
+msgstr "aeg"
 
 msgid "trade"
-msgstr ""
+msgstr "kauple"
 
 msgid "change"
-msgstr ""
+msgstr "muuda"
 
 msgid "main square"
-msgstr "turuplats"
+msgstr "peaväljak"
 
 msgid "trail"
-msgstr ""
+msgstr "teerada"
 
 msgid "boards"
-msgstr ""
+msgstr "lauad"
 
 msgid "buy"
-msgstr ""
+msgstr "osta"
 
 msgid "coast"
-msgstr ""
+msgstr "rannik"
 
 msgid "connect"
-msgstr ""
+msgstr "ühenda"
 
 msgid "cost"
-msgstr ""
+msgstr "hind"
 
 msgid "free"
-msgstr ""
+msgstr "tasuta"
 
 msgid "log"
 msgstr ""
@@ -128,52 +128,52 @@ msgid "lumberjack"
 msgstr "puuraidur"
 
 msgid "sell"
-msgstr ""
+msgstr "müü"
 
 msgid "storage"
-msgstr "lao"
+msgstr "ladu"
 
 msgid "taxes"
-msgstr ""
+msgstr "maksud"
 
 msgid "trader"
-msgstr ""
+msgstr "kaupleja"
 
 msgid "version"
-msgstr ""
+msgstr "versioon"
 
 msgid "companies"
-msgstr ""
+msgstr "kompaniid"
 
 msgid "fire"
-msgstr ""
+msgstr "tuli"
 
 msgid "left"
-msgstr ""
+msgstr "vasak"
 
 msgid "reach"
-msgstr ""
+msgstr "ulatus"
 
 msgid "signal"
-msgstr ""
+msgstr "signaal"
 
 msgid "signal fire"
-msgstr "signaalituli"
+msgstr "signaaltuli"
 
 msgid "stock"
-msgstr "lao"
+msgstr "kaup"
 
 msgid "tools"
-msgstr "asunike"
+msgstr "tööriistad"
 
 msgid "wool"
-msgstr ""
+msgstr "vill"
 
 msgid "balance"
-msgstr ""
+msgstr "bilanss"
 
 msgid "choose"
-msgstr ""
+msgstr "vali"
 
 msgid "fisher"
 msgstr "kalur"
@@ -185,120 +185,119 @@ msgid "pavilion"
 msgstr "paviljon"
 
 msgid "potato"
-msgstr ""
+msgstr "kartul"
 
 msgid "range"
-msgstr ""
+msgstr "ulatus"
 
 msgid "raw"
-msgstr ""
+msgstr "toores"
 
 msgid "running"
-msgstr ""
+msgstr "jooksvad"
 
 msgid "running costs"
-msgstr ""
+msgstr "jooksvad kulud"
 
 msgid "collector"
-msgstr ""
+msgstr "koguja"
 
 msgid "help"
-msgstr ""
+msgstr "abi"
 
 msgid "house"
-msgstr ""
+msgstr "maja"
 
 msgid "inventory"
-msgstr ""
+msgstr "inventar"
 
 msgid "level"
-msgstr ""
+msgstr "tase"
 
 msgid "move"
-msgstr ""
+msgstr "liiguta"
 
 msgid "moved"
-msgstr ""
+msgstr "liigutatud"
 
 msgid "produce"
-msgstr ""
+msgstr "tooda"
 
 msgid "produced"
-msgstr ""
+msgstr "toodetud"
 
 msgid "pasture"
-msgstr ""
+msgstr "karjamaa"
 
 msgid "storage tent"
-msgstr ""
+msgstr "laotelk"
 
 msgid "sugar"
-msgstr ""
+msgstr "suhkur"
 
 msgid "tree"
-msgstr ""
+msgstr "puu"
 
 msgid "active"
-msgstr ""
+msgstr "aktiivne"
 
 msgid "add"
-msgstr ""
+msgstr "lisa"
 
 msgid "build menu"
-msgstr ""
+msgstr "ehitiste menüü"
 
 # 80%
-#, fuzzy
 msgid "built"
-msgstr "ehita"
+msgstr "ehitatud"
 
 msgid "construction"
-msgstr ""
+msgstr "ehitus"
 
 msgid "continue"
-msgstr ""
+msgstr "jätka"
 
 msgid "decrease"
-msgstr ""
+msgstr "vähenda"
 
 msgid "free trader"
-msgstr ""
+msgstr "vaba kaupleja"
 
 msgid "hunter"
-msgstr "jahimehe"
+msgstr "jahimees"
 
 msgid "leave"
-msgstr ""
+msgstr "lahku"
 
 msgid "market"
-msgstr ""
+msgstr "turg"
 
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 msgid "sailor"
-msgstr "meremehe"
+msgstr "meremees"
 
 msgid "pioneer"
-msgstr "pioneeri"
+msgstr "teerajaja"
 
 msgid "settler"
-msgstr ""
+msgstr "asunik"
 
 msgid "citizen"
-msgstr ""
+msgstr "kodanik"
 
 msgid "merchant"
-msgstr ""
+msgstr "kaupmees"
 
 msgid "aristocrat"
-msgstr ""
+msgstr "aristokraat"
 
 msgid "refresh"
-msgstr ""
+msgstr "uuenda"
 
 msgid "residents"
-msgstr ""
+msgstr "elanikud"
 
 msgid "run"
 msgstr ""
@@ -307,244 +306,244 @@ msgid "slot"
 msgstr ""
 
 msgid "stop"
-msgstr ""
+msgstr "stopp"
 
 msgid "team"
-msgstr ""
+msgstr "tiim"
 
 msgid "village"
-msgstr ""
+msgstr "küla"
 
 msgid "account"
-msgstr ""
+msgstr "konto"
 
 msgid "back"
-msgstr ""
+msgstr "tagasi"
 
 msgid "build settlement"
-msgstr ""
+msgstr "ehita koloonia"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "Kapteni päevik"
 
 msgid "cloth"
-msgstr ""
+msgstr "riie"
 
 msgid "description"
-msgstr ""
+msgstr "kirjeldus"
 
 msgid "happiness"
-msgstr "õnnelikkus"
+msgstr "heaolu"
 
 msgid "increase"
-msgstr ""
+msgstr "suurenda"
 
 msgid "liquor"
-msgstr ""
+msgstr "alkohol"
 
 msgid "mode"
-msgstr ""
+msgstr "moodus"
 
 msgid "multiple"
-msgstr ""
+msgstr "mitu"
 
 msgid "output"
-msgstr ""
+msgstr "väljund"
 
 msgid "play"
-msgstr ""
+msgstr "mängi"
 
 msgid "sale"
-msgstr ""
+msgstr "müük"
 
 msgid "save"
-msgstr ""
+msgstr "salvesta"
 
 msgid "school"
-msgstr ""
+msgstr "kool"
 
 msgid "screen"
-msgstr ""
+msgstr "ekraan"
 
 msgid "solution"
-msgstr ""
+msgstr "lahendus"
 
 msgid "sound"
-msgstr ""
+msgstr "heli"
 
 msgid "from time to time"
-msgstr ""
+msgstr "aegajalt"
 
 msgid "trading"
-msgstr ""
+msgstr "kauplemine"
 
 msgid "visit"
-msgstr ""
+msgstr "külasta"
 
 msgid "weaver"
-msgstr ""
+msgstr "kuduja"
 
 msgid "animal"
-msgstr ""
+msgstr "loom"
 
 msgid "fish"
-msgstr ""
+msgstr "kala"
 
 msgid "fisherman"
-msgstr ""
+msgstr "kalur"
 
 msgid "forest"
-msgstr ""
+msgstr "mets"
 
 msgid "forum"
-msgstr ""
+msgstr "foorum"
 
 msgid "fulfill"
-msgstr ""
+msgstr "vii täide"
 
 msgid "graphics"
-msgstr ""
+msgstr "graafika"
 
 msgid "grow"
-msgstr ""
+msgstr "kasvata"
 
 msgid "hold"
-msgstr ""
+msgstr "ootel"
 
 msgid "hunt"
-msgstr ""
+msgstr "jahi"
 
 msgid "income"
-msgstr ""
+msgstr "sissetulek"
 
 msgid "information"
-msgstr ""
+msgstr "informatsioon"
 
 msgid "key"
-msgstr ""
+msgstr "võti"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "lambavill"
 
 msgid "load/unload"
-msgstr ""
+msgstr "lae/ära lae"
 
 msgid "return"
-msgstr ""
+msgstr "tagasi"
 
 msgid "service"
-msgstr ""
+msgstr "teenindus"
 
 msgid "sheep"
-msgstr ""
+msgstr "lammas"
 
 msgid "ship inventory"
-msgstr ""
+msgstr "laeva inventar"
 
 msgid "starting"
-msgstr ""
+msgstr "alustab"
 
 msgid "trade partner"
-msgstr ""
+msgstr "kaubanduspartner"
 
 msgid "yields"
-msgstr ""
+msgstr "saagikus"
 
 msgid "faith"
-msgstr ""
+msgstr "usk"
 
 msgid "green"
-msgstr ""
+msgstr "roheline"
 
 msgid "red"
-msgstr ""
+msgstr "punane"
 
 msgid "check"
-msgstr ""
+msgstr "kontrolli"
 
 msgid "connection"
-msgstr ""
+msgstr "ühendus"
 
 msgid "no"
-msgstr ""
+msgstr "ei"
 
 msgid "tax"
-msgstr ""
+msgstr "maks"
 
 msgid "feature"
-msgstr ""
+msgstr "iseärasus"
 
 msgid "reached"
-msgstr ""
+msgstr "jõudnud"
 
 msgid "slider"
-msgstr ""
+msgstr "liugur"
 
 msgid "condition"
-msgstr ""
+msgstr "seisund"
 
 msgid "consume"
-msgstr ""
+msgstr "tarbima"
 
 msgid "contact"
-msgstr ""
+msgstr "kontakt"
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialoog"
 
 msgid "issues"
-msgstr ""
+msgstr "küsimustes"
 
 msgid "minimap"
-msgstr ""
+msgstr "mini kaart"
 
 msgid "playing"
-msgstr ""
+msgstr "mängib"
 
 msgid "ruin"
 msgstr ""
 
 msgid "seed"
-msgstr ""
+msgstr "seeme"
 
 msgid "temporarily"
-msgstr ""
+msgstr "ajutiselt"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "soola tiigid"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tubakas"
 
 msgid "cattle"
-msgstr ""
+msgstr "eluskari"
 
 msgid "pig"
-msgstr ""
+msgstr "siga"
 
 msgid "herbs"
-msgstr ""
+msgstr "ravimtaimed"
 
 msgid "herbary"
-msgstr ""
+msgstr "apteek"
 
 msgid "butchery"
-msgstr ""
+msgstr "lihunik"
 
 msgid "doctor"
-msgstr ""
+msgstr "arst"
 
 msgid "education"
-msgstr ""
+msgstr "haridus"
 
 msgid "clay"
-msgstr ""
+msgstr "savi"
 
 msgid "charcoal"
-msgstr ""
+msgstr "süsi"
 
 msgid "iron"
-msgstr ""
+msgstr "raud"
 
 msgid "ore"
-msgstr ""
+msgstr "maak"
