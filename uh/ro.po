@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 03:59+0200\n"
+"PO-Revision-Date: 2011-12-10 04:38+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -1418,32 +1418,34 @@ msgstr "Pășune: crește oi și furnizează lână. Necesită o fermă."
 #. (tooltip of widget: potatofield-1)
 #: horizons/i18n/guitranslations.py:107
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
+msgstr "Plantație de cartofi: produce nutrienți. Necesită o fermă."
 
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:109
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
+"Plantație de trestie de zahăr: utilizat în producerea băuturii. Necesită o "
+"fermă."
 
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:111
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Turn de lemn: apără coloniile."
 
 #. (tooltip of widget: villageschool-1)
 #: horizons/i18n/guitranslations.py:113
 msgid "Village school: Provides education."
-msgstr ""
+msgstr "Școală de sat: asigură educație."
 
 #. (tooltip of widget: weaver-1)
 #: horizons/i18n/guitranslations.py:115
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
+msgstr "Țesător: transformă lâna în îmbrăcăminte."
 
 #. (text of widget: companies_label)
 #: horizons/i18n/guitranslations.py:122
 msgid "Mining"
-msgstr ""
+msgstr "exploatare minieră"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:126
@@ -1453,219 +1455,221 @@ msgstr ""
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:130
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Abator: necesită porcine sau bovine. Produce alimente."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:132
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Izlaz: crește bovine. Necesită o fermă."
 
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:134
+#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Carbonizare în bocşă: carbonizarea lemnului."
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:136
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Mină: extrage minereu din zăcământ."
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:138
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Coteț: crește porcine. Necesită o fermă."
 
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:140
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Salină: produce sare. Construibil pe coastă."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:142
 msgid "Smeltery: Refines all kind of ores."
-msgstr ""
+msgstr "Topitorie: rafinează toate tipurile de minereuri."
 
 #. (tooltip of widget: tavern-1)
 #: horizons/i18n/guitranslations.py:144
+#, fuzzy
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "Tavernă: asigură obediența coloniștilor."
 
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:146
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Plantație de tutun: produce tutun. Necesită o fermă."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:148
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Tutungiu: produce țigări din tutun."
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:150
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Fierar: produce unelte din fier."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:155
 msgid "Game start"
-msgstr ""
+msgstr "pornire joc"
 
 #. (text of widget: howto_1_need_bo)
 #: horizons/i18n/guitranslations.py:157
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "E necesar să fondați o colonie pentru a putea construi clădiri!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:159
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Selecționați-vă nava și apropiați-o de coastă prin clic dreapta."
 
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:161
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Apoi apăsați butonul mare din fereastra de navigare."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:449
 msgid "Running costs:"
-msgstr ""
+msgstr "costuri de întreținere:"
 
 #. (tooltip of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:173 horizons/i18n/guitranslations.py:659
 msgid "Inhabitants"
-msgstr ""
+msgstr "locuitori:"
 
 #. (tooltip of widget: city_name)
 #: horizons/i18n/guitranslations.py:175
 msgid "Click to change the name of your settlement."
-msgstr ""
+msgstr "Click pentru a schimba numele coloniei."
 
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:180
 msgid "Build menu"
-msgstr ""
+msgstr "meniu de construcție"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:182
 msgid "Destroy"
-msgstr ""
+msgstr "distruge"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:184
 msgid "Diplomacy"
-msgstr ""
+msgstr "diplomație"
 
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:186
 msgid "Game menu"
-msgstr ""
+msgstr "meniul jocului"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:188
 msgid "Captain's log"
-msgstr ""
+msgstr "jurnal de bord"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:193
 msgid "Rotate map counterclockwise"
-msgstr ""
+msgstr "rotiți harta în sens anti-orar"
 
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:195
 msgid "Rotate map clockwise"
-msgstr ""
+msgstr "rotiți harta în sens orar"
 
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:197
 msgid "Decrease game speed"
-msgstr ""
+msgstr "diminuați viteza jocului"
 
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:199
 msgid "Increase game speed"
-msgstr ""
+msgstr "sporiți viteza jocului"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:201
 msgid "Zoom in"
-msgstr ""
+msgstr "mărire"
 
 #. (tooltip of widget: zoomOut)
 #: horizons/i18n/guitranslations.py:203
 msgid "Zoom out"
-msgstr ""
+msgstr "micșorare"
 
 #. (tooltip of widget: boards_icon)
 #: horizons/i18n/guitranslations.py:208
 msgid "Boards"
-msgstr ""
+msgstr "scânduri"
 
 #. (tooltip of widget: bricks_icon)
 #: horizons/i18n/guitranslations.py:210
 msgid "Bricks"
-msgstr ""
+msgstr "cărămizi"
 
 #. (tooltip of widget: food_icon)
 #: horizons/i18n/guitranslations.py:212
 msgid "Food"
-msgstr ""
+msgstr "alimentație"
 
 #. (tooltip of widget: textiles_icon)
 #: horizons/i18n/guitranslations.py:214
 msgid "Textiles"
-msgstr ""
+msgstr "îmbrăcăminte"
 
 #. (tooltip of widget: tools_icon)
 #: horizons/i18n/guitranslations.py:216
 msgid "Tools"
-msgstr ""
+msgstr "unelte"
 
 #. (tooltip of widget: gold_icon)
 #: horizons/i18n/guitranslations.py:221
 msgid "Gold"
-msgstr ""
+msgstr "aur"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:226
 msgid "Enter new name:"
-msgstr ""
+msgstr "scrieți nume nou:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:228
 msgid "Change name"
-msgstr ""
+msgstr "schimbare nume:"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: apply_new_nickname)
 #: horizons/i18n/guitranslations.py:230 horizons/i18n/guitranslations.py:852
 msgid "Apply the new name"
-msgstr ""
+msgstr "folosiți noul nume"
 
 #. (text of widget: chat_lbl)
 #: horizons/i18n/guitranslations.py:235
 msgid "Enter your message:"
-msgstr ""
+msgstr "scrieți mesaj:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:237
 msgid "Chat"
-msgstr ""
+msgstr "șuetă:"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:242
 msgid "Cancel building:"
-msgstr ""
+msgstr "anulare construcție:"
 
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:244
 msgid "(lose all resources)"
-msgstr ""
+msgstr "(pieire totală a resurselor)"
 
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py:246
 msgid "Currently building:"
-msgstr ""
+msgstr "în curs de construcție:"
 
 #. (text of widget: BB_howto_build_lbl)
 #: horizons/i18n/guitranslations.py:248
