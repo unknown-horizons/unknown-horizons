@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 7f6b5a5\n"
+"Project-Id-Version: Unknown Horizons f9bbf7f\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-12-11 00:10+0100\n"
+"POT-Creation-Date: 2011-12-11 00:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "A new settlement has been created by ${player}."
+msgid "A new settlement was founded by ${player}."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -210,11 +210,6 @@ msgstr ""
 msgid "Mountain"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "One of your settler has no main square in its range."
-msgstr ""
-
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pasture"
@@ -277,7 +272,12 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "Some of your settlers just moved out."
+msgid "Some of your inhabitants have no access to a main square."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
+msgid "Some of your inhabitants just moved out."
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -372,13 +372,13 @@ msgid "You have reached the current maximum increment. Your inhabitants will not
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: database files horizons/scenario/actions.py:75 sql
-msgid "You have won!"
+#: database files sql
+msgid "You need more ${resource} to build this building."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "You need more ${resource} to build this building."
+msgid "You won!"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -393,12 +393,12 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "Your mine has run out of resources."
+msgid "Your inhabitants reached level ${level}."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "Your settlers reached level ${level}."
+msgid "Your mine has run out of resources."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -2873,14 +2873,13 @@ msgstr ""
 msgid "Error: don't know how to handle condition type {condition}"
 msgstr ""
 
-#: horizons/savegamemanager.py:454
+#: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
 msgstr ""
 
-#: horizons/savegamemanager.py:460
-#, python-format
-msgid "Error: Cannot find scenario with file '{name}'."
+#: horizons/scenario/actions.py:75
+msgid "You have won!"
 msgstr ""
 
 #: horizons/scenario/actions.py:76
