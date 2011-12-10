@@ -189,9 +189,8 @@ class SavegameManager(object):
 		"""Internal function, that returns the saves of a dir"""
 		if not filename_extension:
 			filename_extension = cls.savegame_extension
-		files = [f for p in dirs for f in glob.glob(p+'/*.'+filename_extension) if \
-		         os.path.isfile(f)]
-		files.sort()
+		files = sorted((-os.path.getmtime(f), f) for p in dirs for f in glob.glob(p+'/*.'+filename_extension) if os.path.isfile(f))
+		files = zip(*files)[1] if files else []
 		if include_displaynames:
 			return (files, cls.__get_displaynames(files))
 		else:
