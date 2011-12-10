@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-10 12:41+0200\n"
+"PO-Revision-Date: 2011-12-10 13:22+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -53,7 +53,7 @@ msgid "settlement"
 msgstr "koloonia"
 
 msgid "start"
-msgstr ""
+msgstr "alusta"
 
 msgid "click"
 msgstr "vajuta"
@@ -122,7 +122,7 @@ msgid "free"
 msgstr "tasuta"
 
 msgid "log"
-msgstr ""
+msgstr "palk"
 
 msgid "lumberjack"
 msgstr "puuraidur"
@@ -179,7 +179,7 @@ msgid "fisher"
 msgstr "kalur"
 
 msgid "found"
-msgstr ""
+msgstr "leitud"
 
 msgid "pavilion"
 msgstr "paviljon"
@@ -300,10 +300,10 @@ msgid "residents"
 msgstr "elanikud"
 
 msgid "run"
-msgstr ""
+msgstr "käivita"
 
 msgid "slot"
-msgstr ""
+msgstr "ava"
 
 msgid "stop"
 msgstr "stopp"
@@ -501,7 +501,7 @@ msgid "playing"
 msgstr "mängib"
 
 msgid "ruin"
-msgstr ""
+msgstr "varemed"
 
 msgid "seed"
 msgstr "seeme"

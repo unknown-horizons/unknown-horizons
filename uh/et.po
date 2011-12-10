@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 13:01+0200\n"
+"PO-Revision-Date: 2011-12-10 13:18+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -391,62 +391,62 @@ msgstr "Sinu elanikud saavutasid ${level}-nda taseme."
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr "Tammetõrud"
+msgstr "tammetõrud"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr "Aristokraat"
+msgstr "aristokraat"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "black"
-msgstr "Must"
+msgstr "must"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "blue"
-msgstr "Sinine"
+msgstr "sinine"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr "Lauad"
+msgstr "lauad"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr "Bordoo punane"
+msgstr "bordoo punane"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr "Telliskivid"
+msgstr "telliskivid"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr "Kahur"
+msgstr "kahur"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr "Eluskari"
+msgstr "eluskari"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr "Tapaloomad"
+msgstr "tapaloomad"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "charcoal"
-msgstr "Süsi"
+msgstr "süsi"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr "Kodanik"
+msgstr "kodanik"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -477,17 +477,17 @@ msgstr "tsüaan"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "pistoda"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr ""
+msgstr "hirve toit A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "hirve liha"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -503,17 +503,17 @@ msgstr "usk"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "kala"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr "söök"
+msgstr "toit"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
-msgstr ""
+msgstr "koosviibimine"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -523,7 +523,7 @@ msgstr "rohi"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "hall"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -533,27 +533,27 @@ msgstr "roheline"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr "õnnelikkus"
+msgstr "heaolu"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "taimed"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "raua maardla"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ingots"
-msgstr ""
+msgstr "raua valublokid"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ore"
-msgstr ""
+msgstr "rauamaak"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -563,37 +563,37 @@ msgstr "lambavill"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "sidrun"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr ""
+msgstr "alkohol"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "ravimtaimed"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "merchant"
-msgstr ""
+msgstr "kaupmees"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "oraanz"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "sead"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "tapasead"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -603,7 +603,7 @@ msgstr "roosa"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "pioneer"
-msgstr "pioneeri"
+msgstr "teerajaja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -613,7 +613,7 @@ msgstr "kartulid"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr ""
+msgstr "purpur"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -623,12 +623,12 @@ msgstr "punane"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "sailor"
-msgstr ""
+msgstr "meremees"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "sool"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -643,7 +643,7 @@ msgstr "suhkur"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "suhkruroog"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -658,22 +658,22 @@ msgstr "tekstiili"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "tubaka lehed"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "tubaka taimed"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "tubakas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tools"
-msgstr "tööriistu"
+msgstr "tööriistad"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -705,15 +705,15 @@ msgstr "Mõned sinu muudatused vajavad Unknown Horizons'i taaskäivitamist."
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "Taasta algseaded"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "See kustutab sinu poolt tehtud seadete muudatused."
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Kas soovid jätkata?"
 
 #: horizons/engine.py:189
 msgid "System default"
@@ -737,11 +737,13 @@ msgstr "Seadistatud keelt %(lang)s ei õnnestunud laadida asukohast %(place)s"
 
 #: horizons/engine.py:528
 msgid "Invalid network port"
-msgstr ""
+msgstr "Vale võrguport"
 
 #: horizons/engine.py:529
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"Sinu poolt valitud pord number ei ole kehtiv.Peab olema number 1 ja 65535 "
+"vahel."
 
 #: horizons/engine.py:530
 msgid "Please check the port you entered and make sure it's in the specified range."
@@ -826,12 +828,12 @@ msgstr "Ülekirjutamise kinnitus"
 
 #: horizons/gui/gui.py:277
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "Vali salvestatud mäng või vajuta tühista."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:277
 msgid "Select a savegame"
-msgstr ""
+msgstr "Vali salvestatud mäng"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
