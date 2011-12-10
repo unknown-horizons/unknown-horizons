@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 01:36+0200\n"
+"PO-Revision-Date: 2011-12-09 23:38+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -355,47 +355,49 @@ msgstr "turn de lemn"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Puteți ancora rutele."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
+msgstr "Ați ajuns la dezvoltarea maximă. Locuitorii nu vor mai evolua ulterior."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
 msgid "You have won!"
-msgstr ""
+msgstr "Ați câștigat!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more ${resource} to build this building."
 msgstr ""
+"Aveți nevoie de mai mult ${resource} pentru a putea construi această "
+"clădire."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "O salvare rapidă a fost efectuată."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "O mină a fost epuizată."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your settlers reached level ${level}."
-msgstr ""
+msgstr "Coloniștii tăi au evoluat la nivelul ${level}."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr ""
+msgstr "ghinde"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr ""
+msgstr "aristocrat"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -410,17 +412,17 @@ msgstr "albastru"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr ""
+msgstr "scânduri"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr ""
+msgstr "bordo"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr ""
+msgstr "cărămizi"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -435,12 +437,12 @@ msgstr "bovine"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "abator"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "charcoal"
-msgstr ""
+msgstr "mangal"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
