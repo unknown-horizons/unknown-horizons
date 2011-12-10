@@ -375,6 +375,7 @@ class SavegameManager(object):
 			for condition in conditions:
 				# all conditions have to be reached
 				if condition['type'] != 'goal_reached':
+					#xgettext:python-format
 					print _("Error: don't know how to handle condition type {condition}").format(condition=condition)
 				if not condition['goal'] in campaign_status.get(condition['scenario'], []):
 					break
@@ -424,11 +425,13 @@ class SavegameManager(object):
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in cnames:
+				#xgettext:python-format
 				print _("Error: Cannot find campaign '{name}'.").format(name=name)
 				return None
 			index = cnames.index(name)
 		elif filename:
 			if not filename in cfiles:
+				#xgettext:python-format
 				print _("Error: Cannot find campaign '{name}'.").format(name=filename)
 				return None
 			index = cfiles.index(filename)
@@ -447,11 +450,13 @@ class SavegameManager(object):
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in snames:
+				#xgettext:python-format
 				print _("Error: Cannot find scenario '{name}'.").format(name=name)
 				return {}
 			index = snames.index(name)
 		elif filename:
 			if not filename in sfiles:
+				#xgettext:python-format
 				print _("Error: Cannot find scenario with file '{name}'.").format(name=filename)
 				return {}
 			index = sfiles.index(filename)

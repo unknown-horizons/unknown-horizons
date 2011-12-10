@@ -316,6 +316,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				self.current = old_current
 				return self.show_select_savegame(mode=mode) # reshow dialog
 			elif selected_savegame in map_file_display: # savegamename already exists
+				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
@@ -508,12 +509,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if savegame_info['timestamp'] == -1:
 				details_label.text += _("Unknown savedate")
 			else:
+				#xgettext:python-format
 				details_label.text += _("Saved at {time}").format(
 				                         time=time.strftime("%H:%M, %A, %B %d",
 				                         time.localtime(savegame_info['timestamp'])))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
 			# N_ takes care of plural forms for different languages
+			#xgettext:python-format
 			details_label.text += N_("Saved {amount} time",
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
@@ -523,11 +526,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			from horizons.constants import VERSION
 			try:
 				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
+					#xgettext:python-format
 					details_label.text += _("Savegame version {version}").format(
 					                         version=savegame_info['savegamerev'])
 				else:
+					#xgettext:python-format
 					details_label.text += _("WARNING: Incompatible version {version}!").format(
 					                         version=savegame_info['savegamerev']) + u"\n" + \
+					#xgettext:python-format
 					                      _("Required version: {required}!").format(
 					                         required=VERSION.SAVEGAMEREVISION)
 			except KeyError:
@@ -551,6 +557,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
+		#xgettext:python-format
 		message = _("Do you really want to delete the savegame '{name}'?").format(
 		             name=SavegameManager.get_savegamename_from_filename(selected_file))
 		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):
