@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-09 03:57+0200\n"
+"PO-Revision-Date: 2011-12-09 04:24+0200\n"
 "Last-Translator: shirayuki <shirayuking@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement has been created by ${player}."
-msgstr ""
+msgstr "新しい決済は、${player} によって作成されています。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -40,7 +40,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr ""
+msgstr "イノシシ"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -50,12 +50,12 @@ msgstr "ボート ビルダー"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Branch Office"
-msgstr ""
+msgstr "支店"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Brickyard"
-msgstr ""
+msgstr "ブリックヤード"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -65,12 +65,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "精肉店"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Cattle"
-msgstr ""
+msgstr "牛"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -80,7 +80,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "炭焼き"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -95,22 +95,22 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Deer"
-msgstr ""
+msgstr "鹿"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Distillery"
-msgstr ""
+msgstr "酒造"
 
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
 msgid "Doctor"
-msgstr ""
+msgstr "医師"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Farm"
-msgstr ""
+msgstr "農場"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -130,23 +130,23 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Fisher"
-msgstr ""
+msgstr "漁師"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "漁師のテント"
 
 #. (text of widget: headline_BB_war1_ship1)
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Frigate"
-msgstr ""
+msgstr "フリゲート"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Gravel Path"
-msgstr ""
+msgstr "砂利道"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -162,7 +162,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "ハンターのテント"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -172,22 +172,22 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
-msgstr ""
+msgstr "鉄鉱山"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Log"
-msgstr ""
+msgstr "ログ"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lookout"
-msgstr ""
+msgstr "展望台"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "木こりキャンプ"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -197,27 +197,27 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Main Square"
-msgstr ""
+msgstr "メイン広場"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Mountain"
-msgstr ""
+msgstr "山"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your settler has no main square in it's range."
-msgstr ""
+msgstr "その範囲に入植者のいずれかのメイン広場はありません。"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pasture"
-msgstr ""
+msgstr "牧草地"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pavilion"
-msgstr ""
+msgstr "パビリオン"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -227,27 +227,27 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Pirate Ship"
-msgstr ""
+msgstr "海賊船"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Potato Field"
-msgstr ""
+msgstr "じゃがいも畑"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Rampart"
-msgstr ""
+msgstr "城壁"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Salt Ponds"
-msgstr ""
+msgstr "塩の池"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to ${file}."
-msgstr ""
+msgstr "スクリーンショットは ${file} に保存されています。"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -257,12 +257,12 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Sheep"
-msgstr ""
+msgstr "羊"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Signal Fire"
-msgstr ""
+msgstr "のろし"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -272,12 +272,12 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "あなたの入植者の何人かは外に移動します。"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Storage Tent"
-msgstr ""
+msgstr "ストレージのテント"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -292,12 +292,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tavern"
-msgstr ""
+msgstr "居酒屋"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent"
-msgstr ""
+msgstr "テント"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -317,43 +317,43 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Toolmaker"
-msgstr ""
+msgstr "工具"
 
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:494 sql
 msgid "Trader"
-msgstr ""
+msgstr "トレーダー"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Trail"
-msgstr ""
+msgstr "歩道"
 
 #. (tooltip of widget: tree-1)
 #. This is a database entry: the name of a building.
 #: database files horizons/i18n/guitranslations.py:80 sql
 msgid "Tree"
-msgstr ""
+msgstr "木"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Village school"
-msgstr ""
+msgstr "村の学校"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "織工のテント"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr ""
+msgstr "木製の塔"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "道路をドラッグすることもできます。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -363,7 +363,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files horizons/scenario/actions.py:75 sql
 msgid "You have won!"
-msgstr ""
+msgstr "あなたの勝ちです!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -373,7 +373,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "あなたのゲームはクイック保存されています。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -388,47 +388,48 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr ""
+msgstr "ドングリ"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr ""
+msgstr "貴族"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "black"
-msgstr ""
+msgstr "黒"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "blue"
-msgstr ""
+msgstr "青"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr ""
+msgstr "ボード"
 
 #. This is a database entry: the name of a color.
 #: database files sql
+#, fuzzy
 msgid "bordeaux"
-msgstr ""
+msgstr "えんじ色"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr ""
+msgstr "レンガ"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "キャノン"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "牛"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -438,17 +439,17 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "charcoal"
-msgstr ""
+msgstr "炭"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr ""
+msgstr "市民"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr ""
+msgstr "粘土"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -458,62 +459,62 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr ""
+msgstr "コイン"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "コミュニティ"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "cyan"
-msgstr ""
+msgstr "シアン"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "短剣"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr ""
+msgstr "鹿料理 A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "鹿の肉"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr ""
+msgstr "教育"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "faith"
-msgstr ""
+msgstr "信仰"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "魚"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "食料"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
-msgstr ""
+msgstr "集まり"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr ""
+msgstr "草"
 
 #. This is a database entry: the name of a color.
 #: database files sql
