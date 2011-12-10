@@ -68,7 +68,7 @@ class Component(object):
 
 
 	def __gt__(self, other):
-		return other in self.DEPENDENCIES
+		return other.__class__ in self.DEPENDENCIES
 
 	def __lt__(self, other):
 		return not self.__gt__(other)
