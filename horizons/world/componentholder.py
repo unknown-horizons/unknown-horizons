@@ -74,7 +74,7 @@ class ComponentHolder(object):
 				else:
 					component = self.class_mapping[entry].get_instance()
 					tmp_comp.append(component)
-		# 'Resolve' dependencies
+		# 'Resolve' dependencies by utilizing overloaded gt/lt
 		tmp_comp.sort()
 		for component in tmp_comp:
 			self.add_component(component)

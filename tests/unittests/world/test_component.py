@@ -26,7 +26,6 @@ from unittest import TestCase
 
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
