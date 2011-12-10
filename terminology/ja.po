@@ -3,149 +3,150 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-12-09 04:12+0200\n"
+"Last-Translator: shirayuki <shirayuking@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
-msgstr ""
+msgstr "ビルド"
 
 msgid "game"
-msgstr ""
+msgstr "ゲーム"
 
 msgid "building"
-msgstr ""
+msgstr "ビルド中/ビル"
 
 msgid "tent"
-msgstr ""
+msgstr "テント"
 
 msgid "resource"
-msgstr ""
+msgstr "資源"
 
 msgid "branch office"
-msgstr ""
+msgstr "支店"
 
 msgid "your"
-msgstr ""
+msgstr "あなたの"
 
 msgid "farm"
-msgstr ""
+msgstr "農場"
 
 msgid "field"
-msgstr ""
+msgstr "フィールド"
 
 msgid "overview"
-msgstr ""
+msgstr "概要"
 
 msgid "ship"
-msgstr ""
+msgstr "船"
 
 msgid "main"
-msgstr ""
+msgstr "メイン"
 
 msgid "settlement"
-msgstr ""
+msgstr "決済"
 
 msgid "start"
-msgstr ""
+msgstr "開始"
 
 msgid "click"
-msgstr ""
+msgstr "クリック"
 
 msgid "inhabitants"
-msgstr ""
+msgstr "住民"
 
 msgid "map"
-msgstr ""
+msgstr "地図"
 
 msgid "menu"
-msgstr ""
+msgstr "メニュー"
 
 msgid "production"
-msgstr ""
+msgstr "生産"
 
 msgid "tab"
-msgstr ""
+msgstr "タブ"
 
 msgid "unknown"
-msgstr ""
+msgstr "不明"
 
 msgid "food"
-msgstr ""
+msgstr "食料"
 
 msgid "increment"
-msgstr ""
+msgstr "増分"
 
 msgid "select"
-msgstr ""
+msgstr "選択"
 
 msgid "setting"
-msgstr ""
+msgstr "設定"
 
 msgid "time"
-msgstr ""
+msgstr "時刻"
 
 msgid "trade"
-msgstr ""
+msgstr "交易"
 
 msgid "change"
-msgstr ""
+msgstr "変更"
 
 msgid "main square"
-msgstr ""
+msgstr "メイン広場"
 
 msgid "trail"
-msgstr ""
+msgstr "歩道"
 
 msgid "boards"
-msgstr ""
+msgstr "ボード"
 
 msgid "buy"
-msgstr ""
+msgstr "購入"
 
 msgid "coast"
-msgstr ""
+msgstr "海岸"
 
 msgid "connect"
-msgstr ""
+msgstr "接続"
 
 msgid "cost"
-msgstr ""
+msgstr "費用"
 
 msgid "free"
-msgstr ""
+msgstr "無料"
 
 msgid "log"
-msgstr ""
+msgstr "ログ"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "木こり"
 
 msgid "sell"
-msgstr ""
+msgstr "販売"
 
 msgid "storage"
-msgstr ""
+msgstr "ストレージ"
 
 msgid "taxes"
-msgstr ""
+msgstr "税金"
 
 msgid "trader"
-msgstr ""
+msgstr "交易者"
 
 msgid "version"
-msgstr ""
+msgstr "バージョン"
 
 msgid "companies"
-msgstr ""
+msgstr "企業"
 
 msgid "fire"
-msgstr ""
+msgstr "火"
 
 msgid "left"
 msgstr ""
