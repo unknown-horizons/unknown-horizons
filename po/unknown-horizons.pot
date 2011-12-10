@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 20dff96\n"
+"Project-Id-Version: Unknown Horizons 7f6b5a5\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-12-05 11:49+0100\n"
+"POT-Creation-Date: 2011-12-11 00:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -326,7 +326,7 @@ msgid "Toolmaker"
 msgstr ""
 
 #. This is a database entry: the name of a unit.
-#: database files horizons/world/units/ship.py:505 sql
+#: database files horizons/world/units/ship.py:511 sql
 msgid "Trader"
 msgstr ""
 
@@ -742,169 +742,187 @@ msgid ""
 "Use at own risk!"
 msgstr ""
 
-#: horizons/engine.py:304
+#: horizons/engine.py:305
+#, python-format
 msgid "Configured language {lang} at {place} could not be loaded"
 msgstr ""
 
-#: horizons/engine.py:550
+#: horizons/engine.py:551
 msgid "Invalid network port"
 msgstr ""
 
-#: horizons/engine.py:551
+#: horizons/engine.py:552
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 
-#: horizons/engine.py:552
+#: horizons/engine.py:553
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 
-#: horizons/engine.py:564
+#: horizons/engine.py:565
 msgid "Failed to apply new network settings."
 msgstr ""
 
-#: horizons/engine.py:565 horizons/gui/modules/multiplayermenu.py:52
+#: horizons/engine.py:566 horizons/gui/modules/multiplayermenu.py:52
 msgid "Network features could not be initialized with the current configuration."
 msgstr ""
 
-#: horizons/engine.py:566 horizons/gui/modules/multiplayermenu.py:53
+#: horizons/engine.py:567 horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the settings you specified in the network section."
 msgstr ""
 
 #. i18n This is advice for players seeing a network error with the current config
-#: horizons/engine.py:570
+#: horizons/engine.py:571
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/gui/gui.py:165 horizons/gui/ingamegui.py:519
+#: horizons/gui/gui.py:166 horizons/gui/ingamegui.py:519
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Error"
 msgstr ""
 
-#: horizons/gui/gui.py:165
+#: horizons/gui/gui.py:166
 msgid "Failed to save."
 msgstr ""
 
-#: horizons/gui/gui.py:190
+#: horizons/gui/gui.py:191
 msgid "Are you sure you want to quit Unknown Horizons?"
 msgstr ""
 
-#: horizons/gui/gui.py:191
+#: horizons/gui/gui.py:192
 msgid "Quit Game"
 msgstr ""
 
-#: horizons/gui/gui.py:197
+#: horizons/gui/gui.py:198
 msgid "Are you sure you want to abort the running session?"
 msgstr ""
 
-#: horizons/gui/gui.py:199
+#: horizons/gui/gui.py:200
 msgid "Quit Session"
 msgstr ""
 
-#: horizons/gui/gui.py:248
+#: horizons/gui/gui.py:249
 msgid "No saved games"
 msgstr ""
 
-#: horizons/gui/gui.py:248
+#: horizons/gui/gui.py:249
 msgid "There are no saved games to load."
 msgstr ""
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
-#: horizons/gui/gui.py:255 horizons/i18n/guitranslations.py:813
+#: horizons/gui/gui.py:256 horizons/i18n/guitranslations.py:813
 #: horizons/i18n/guitranslations.py:839
 msgid "Load game"
 msgstr ""
 
 #. (text of widget: savegame)
-#: horizons/gui/gui.py:255 horizons/i18n/guitranslations.py:817
+#: horizons/gui/gui.py:256 horizons/i18n/guitranslations.py:817
 msgid "Save game"
 msgstr ""
 
+#: horizons/gui/gui.py:315
+msgid "No filename given"
+msgstr ""
+
+#: horizons/gui/gui.py:315
+msgid "Please enter a valid filename."
+msgstr ""
+
+#. reshow dialog
 #. savegamename already exists
-#: horizons/gui/gui.py:301
+#: horizons/gui/gui.py:320
+#, python-format
 msgid "A savegame with the name '{name}' already exists."
 msgstr ""
 
-#: horizons/gui/gui.py:302
+#: horizons/gui/gui.py:321
 msgid "Overwrite it?"
 msgstr ""
 
-#: horizons/gui/gui.py:303
+#: horizons/gui/gui.py:322
 msgid "Confirmation for overwriting"
 msgstr ""
 
-#: horizons/gui/gui.py:311
+#: horizons/gui/gui.py:330
 msgid "Please select a savegame or click on cancel."
 msgstr ""
 
 #. ok button has been pressed, but no savegame was selected
-#: horizons/gui/gui.py:311
+#: horizons/gui/gui.py:330
 msgid "Select a savegame"
 msgstr ""
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
-#: horizons/gui/gui.py:387 horizons/i18n/guitranslations.py:646
+#: horizons/gui/gui.py:406 horizons/i18n/guitranslations.py:646
 #: horizons/i18n/guitranslations.py:972
 msgid "Details:"
 msgstr ""
 
-#: horizons/gui/gui.py:388
+#: horizons/gui/gui.py:407
 msgid "Error:"
 msgstr ""
 
-#: horizons/gui/gui.py:462
+#: horizons/gui/gui.py:510
 msgid "Unknown savedate"
 msgstr ""
 
-#: horizons/gui/gui.py:464
+#: horizons/gui/gui.py:513
+#, python-format
 msgid "Saved at {time}"
 msgstr ""
 
-#: horizons/gui/gui.py:469
+#. N_ takes care of plural forms for different languages
+#: horizons/gui/gui.py:520
+#, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] ""
 msgstr[1] ""
 
-#: horizons/gui/gui.py:478
+#: horizons/gui/gui.py:530
+#, python-format
 msgid "Savegame version {version}"
 msgstr ""
 
-#: horizons/gui/gui.py:481
+#: horizons/gui/gui.py:534
+#, python-format
 msgid "WARNING: Incompatible version {version}!"
 msgstr ""
 
-#: horizons/gui/gui.py:483
+#: horizons/gui/gui.py:537
+#, python-format
 msgid "Required version: {required}!"
 msgstr ""
 
-#: horizons/gui/gui.py:486
+#: horizons/gui/gui.py:540
 msgid "Incompatible version"
 msgstr ""
 
-#: horizons/gui/gui.py:509
+#: horizons/gui/gui.py:557
 msgid "No file selected"
 msgstr ""
 
-#: horizons/gui/gui.py:509
+#: horizons/gui/gui.py:557
 msgid "You need to select a savegame to delete."
 msgstr ""
 
-#: horizons/gui/gui.py:512
+#: horizons/gui/gui.py:561
+#, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
 msgstr ""
 
-#: horizons/gui/gui.py:514
+#: horizons/gui/gui.py:563
 msgid "Confirm deletion"
 msgstr ""
 
-#: horizons/gui/gui.py:519
+#: horizons/gui/gui.py:568
 msgid "Error!"
 msgstr ""
 
-#: horizons/gui/gui.py:519
+#: horizons/gui/gui.py:568
 msgid "Failed to delete savefile!"
 msgstr ""
 
@@ -963,46 +981,54 @@ msgstr ""
 msgid "Version differs!"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:168
+#: horizons/gui/modules/multiplayermenu.py:169
+#, python-format
 msgid "Map: {map_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:169
+#: horizons/gui/modules/multiplayermenu.py:171
+#, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:173
+#: horizons/gui/modules/multiplayermenu.py:176
+#, python-format
 msgid "Creator: {player}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:190
-msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py:190
+#: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:288
+#: horizons/gui/modules/multiplayermenu.py:195
+#, python-format
+msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
+#, python-format
 msgid "Recommended number of players: {number}"
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
 #: horizons/gui/widgets/choose_next_scenario.py:43
+#, python-format
 msgid "Difficulty: {difficulty}"
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
 #: horizons/gui/widgets/choose_next_scenario.py:44
+#, python-format
 msgid "Author: {author}"
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:107
 #: horizons/gui/modules/singleplayermenu.py:122
 #: horizons/gui/widgets/choose_next_scenario.py:45
+#, python-format
 msgid "Description: {desc}"
 msgstr ""
 
@@ -1107,7 +1133,7 @@ msgstr ""
 
 #. (text of widget: headline)
 #. (tooltip of widget: trade)
-#: horizons/gui/tabs/buyselltab.py:82 horizons/i18n/guitranslations.py:566
+#: horizons/gui/tabs/buyselltab.py:83 horizons/i18n/guitranslations.py:566
 #: horizons/i18n/guitranslations.py:579 horizons/i18n/guitranslations.py:594
 #: horizons/i18n/guitranslations.py:605
 msgid "Trade"
@@ -1228,8 +1254,9 @@ msgstr ""
 msgid "Selected Units"
 msgstr ""
 
-#: horizons/gui/widgets/buysellinventory.py:82
-#: horizons/gui/widgets/inventory.py:102
+#: horizons/gui/widgets/buysellinventory.py:83
+#: horizons/gui/widgets/inventory.py:103
+#, python-format
 msgid "Limit: {amount}t per slot"
 msgstr ""
 
@@ -1241,30 +1268,33 @@ msgstr ""
 msgid "There is nothing written in your logbook yet!"
 msgstr ""
 
-#: horizons/gui/widgets/playerssettlements.py:41
+#: horizons/gui/widgets/playerssettlements.py:42
+#, python-format
 msgid "{player}'s settlements"
 msgstr ""
 
 #. (text of widget: total_score)
-#: horizons/gui/widgets/playerssettlements.py:111
+#: horizons/gui/widgets/playerssettlements.py:112
 #: horizons/i18n/guitranslations.py:692
 msgid "Total"
 msgstr ""
 
-#: horizons/gui/widgets/playersships.py:44
+#: horizons/gui/widgets/playersships.py:45
+#, python-format
 msgid "{player}'s ships"
 msgstr ""
 
 #. i18n There are no weapons equipped at the moment.
-#: horizons/gui/widgets/playersships.py:85
+#: horizons/gui/widgets/playersships.py:86
 msgid "None"
 msgstr ""
 
-#: horizons/gui/widgets/playersships.py:87
+#: horizons/gui/widgets/playersships.py:88
 msgid "N/A"
 msgstr ""
 
-#: horizons/gui/widgets/productionoverview.py:48
+#: horizons/gui/widgets/productionoverview.py:49
+#, python-format
 msgid "Production overview of {settlement}"
 msgstr ""
 
@@ -1278,7 +1308,7 @@ msgid "Stop route"
 msgstr ""
 
 #. (text of widget: headline)
-#: horizons/gui/widgets/routeconfig.py:239
+#: horizons/gui/widgets/routeconfig.py:245
 #: horizons/i18n/guitranslations.py:311
 msgid "Select resources:"
 msgstr ""
@@ -2782,40 +2812,45 @@ msgstr ""
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 
-#: horizons/main.py:345
+#: horizons/main.py:346
+#, python-format
 msgid "Error: Cannot find map '{name}'."
 msgstr ""
 
-#: horizons/main.py:348 horizons/main.py:421
+#: horizons/main.py:349 horizons/main.py:426
 msgid "Error: Found multiple matches:"
 msgstr ""
 
-#: horizons/main.py:371
+#: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
 msgstr ""
 
-#: horizons/main.py:379
+#: horizons/main.py:381
+#, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
 
-#: horizons/main.py:380
+#: horizons/main.py:382
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
 
-#: horizons/main.py:381
+#: horizons/main.py:384
+#, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
 
-#: horizons/main.py:387 horizons/savegamemanager.py:427
-#: horizons/savegamemanager.py:432
+#: horizons/main.py:391 horizons/savegamemanager.py:429
+#: horizons/savegamemanager.py:435
+#, python-format
 msgid "Error: Cannot find campaign '{name}'."
 msgstr ""
 
-#: horizons/main.py:418
+#: horizons/main.py:423
+#, python-format
 msgid "Error: Cannot find savegame '{name}'."
 msgstr ""
 
-#: horizons/main.py:436
+#: horizons/main.py:441
 msgid "Error: No quicksave found."
 msgstr ""
 
@@ -2833,15 +2868,18 @@ msgstr ""
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
 
-#: horizons/savegamemanager.py:376
+#: horizons/savegamemanager.py:379
+#, python-format
 msgid "Error: don't know how to handle condition type {condition}"
 msgstr ""
 
-#: horizons/savegamemanager.py:450
+#: horizons/savegamemanager.py:454
+#, python-format
 msgid "Error: Cannot find scenario '{name}'."
 msgstr ""
 
-#: horizons/savegamemanager.py:455
+#: horizons/savegamemanager.py:460
+#, python-format
 msgid "Error: Cannot find scenario with file '{name}'."
 msgstr ""
 
@@ -2899,7 +2937,8 @@ msgstr ""
 msgid "The savegame file is currently used by another program."
 msgstr ""
 
-#: horizons/util/uhdbaccessor.py:163
+#: horizons/util/uhdbaccessor.py:164
+#, python-format
 msgid "{building}: {description}"
 msgstr ""
 
@@ -2939,35 +2978,43 @@ msgstr ""
 msgid "The trade partner does not buy more of this."
 msgstr ""
 
-#: horizons/world/units/ship.py:271
+#: horizons/world/units/ship.py:272
+#, python-format
 msgid "Trade route: going to {location}"
 msgstr ""
 
-#: horizons/world/units/ship.py:274
+#: horizons/world/units/ship.py:276
+#, python-format
 msgid "Trade route: waiting at {position}"
 msgstr ""
 
-#: horizons/world/units/ship.py:479
+#: horizons/world/units/ship.py:482
+#, python-format
 msgid "Going to {location}"
 msgstr ""
 
-#: horizons/world/units/ship.py:480
+#: horizons/world/units/ship.py:484
+#, python-format
 msgid "Going to {x}, {y}"
 msgstr ""
 
-#: horizons/world/units/ship.py:484
+#: horizons/world/units/ship.py:489
+#, python-format
 msgid "Idle at {location}"
 msgstr ""
 
-#: horizons/world/units/ship.py:485
+#: horizons/world/units/ship.py:491
+#, python-format
 msgid "Idle at {x}, {y}"
 msgstr ""
 
-#: horizons/world/units/weaponholder.py:439
+#: horizons/world/units/weaponholder.py:440
+#, python-format
 msgid "Attacking {target} '{name}' ({owner})"
 msgstr ""
 
-#: horizons/world/units/weaponholder.py:443
+#: horizons/world/units/weaponholder.py:445
+#, python-format
 msgid "Attacking {owner}"
 msgstr ""
 
