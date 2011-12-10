@@ -25,7 +25,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement has been created by ${player}."
-msgstr "新しい決済は、${player} によって作成されています。"
+msgstr "新しい決済は ${player} によって作成されています。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
