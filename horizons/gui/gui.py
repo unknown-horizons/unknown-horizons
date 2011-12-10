@@ -461,7 +461,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		def tmp_show_details():
 			"""Fetches details of selected savegame and displays it"""
-			# N_ takes care of plural forms for different languages
+			gui.findChild(name="screenshot").image = None
 			box = gui.findChild(name="savegamedetails_box")
 			old_label = box.findChild(name="savegamedetails_lbl")
 			if old_label is not None:
@@ -480,14 +480,26 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 			# screenshot
 			if savegame_info['screenshot'] is not None:
+				# try to find a writeable location, that is accessible via relative paths
+				# (required by fife)
 				fd, filename = tempfile.mkstemp()
-				with os.fdopen(fd, "w") as f:
-					f.write(savegame_info['screenshot'])
-				# fife only supports relative paths
-				gui.findChild(name="screenshot").image = os.path.relpath(filename)
-				os.unlink(filename)
-			else:
-				gui.findChild(name="screenshot").image = None
+				try:
+					path_rel = os.path.relpath(filename)
+				except ValueError: # the relative path sometimes doesn't exist on win
+					os.unlink(filename)
+					# try again in the current dir, it's often writable
+					fd, filename = tempfile.mkstemp(dir=os.curdir)
+					try:
+						path_rel = os.path.relpath(filename)
+					except ValueError:
+						fd, filename = None, None
+
+				if fd:
+					with os.fdopen(fd, "w") as f:
+						f.write(savegame_info['screenshot'])
+					# fife only supports relative paths
+					gui.findChild(name="screenshot").image = path_rel
+					os.unlink(filename)
 
 			# savegamedetails
 			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
@@ -501,6 +513,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				                         time.localtime(savegame_info['timestamp'])))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
+			# N_ takes care of plural forms for different languages
 			details_label.text += N_("Saved {amount} time",
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
