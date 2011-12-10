@@ -60,7 +60,7 @@ class Entities(object):
 
 		cls.load_grounds(db)
 		cls.load_buildings(db)
-		cls.load_units(db)
+		cls.load_units()
 		cls.loaded = True
 
 	@classmethod
@@ -101,7 +101,7 @@ class Entities(object):
 					cls.buildings[building_id]
 
 	@classmethod
-	def load_units(cls, db, load_now=False):
+	def load_units(cls, load_now=False):
 		cls.log.debug("Entities: loading units")
 		if hasattr(cls, 'units'):
 			cls.log.debug("Entities: units already loaded")

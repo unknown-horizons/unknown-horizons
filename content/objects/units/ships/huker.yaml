@@ -5,11 +5,7 @@ classname: Huker
 radius: 5
 velocity: 12.0
 components:
-- AmbientSoundComponent:
-   soundfiles:
-   - content/foo.wav
-   - content/foo2.wav
-   - content/foo3.wav
+- AmbientSoundComponent
 - StorageComponent:
    inventory:
       PositiveTotalNumSlotStorage:

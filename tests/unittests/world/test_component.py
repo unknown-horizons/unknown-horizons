@@ -30,17 +30,19 @@ from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
+from horizons.entities import Entities
+from horizons.constants import UNITS
 
-class TestGenericStorage(TestCase):
+class TestComponent(TestCase):
 
-	def test_units(self):
-		components = ComponentHolder.read_component_file("content/objects/units/ships/huker.yaml")
-		self.assertTrue(isinstance(components[0], AmbientSoundComponent))
-		self.assertTrue(isinstance(components[1], StorageComponent))
-		self.assertTrue(isinstance(components[2], ShipNameComponent))
-		self.assertTrue(isinstance(components[3], HealthComponent))
-		self.assertEquals(components[3].max_health, 150)
-		self.assertEquals(components[1].get_component(StorageComponent).limit, 120)
-		self.assertEquals(components[1].get_component(StorageComponent).slotnum, 4)
-		self.assertListEqual(components[0].soundfiles, [ 'content/foo.wav', 'content/foo2.wav', 'content/foo3.wav'])
-		self.assertFalse(True)
+	def test_dependencysorting(self):
+		storage = StorageComponent()
+		producer = Producer()
+		components = [ producer, AmbientSoundComponent(), storage]
+		components.sort()
+		self.assertTrue(components.index(producer) > components.index(storage))
+		# Trigger __lt__
+		self.assertFalse(producer < storage)
+		# Trigger __gt__
+		self.assertFalse(producer > storage)
