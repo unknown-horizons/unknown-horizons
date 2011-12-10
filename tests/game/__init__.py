@@ -267,12 +267,12 @@ def game_test(*args, **kwargs):
 	"""
 	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
 
-	timeout = kwargs.get('timeout', 5)
+	timeout = kwargs.get('timeout', 5)	# zero means no timeout
 	mapgen = kwargs.get('mapgen', create_map)
 	human_player = kwargs.get('human_player', True)
 	ai_players = kwargs.get('ai_players', 0)
 
-	if TEST_TIMELIMIT:
+	if TEST_TIMELIMIT and timeout:
 		def handler(signum, frame):
 			raise Exception('Test run exceeded %ds time limit' % timeout)
 		signal.signal(signal.SIGALRM, handler)
@@ -282,13 +282,13 @@ def game_test(*args, **kwargs):
 		def wrapped(*args):
 			horizons.main.db = db
 			s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
-			if TEST_TIMELIMIT:
+			if TEST_TIMELIMIT and timeout:
 				signal.alarm(timeout)
 			try:
 				return func(s, p, *args)
 			finally:
 				s.end()
-				if TEST_TIMELIMIT:
+				if TEST_TIMELIMIT and timeout:
 					signal.alarm(0)
 		return wrapped
 

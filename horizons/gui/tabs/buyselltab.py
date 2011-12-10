@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
 from fife.extensions import pychan
 import logging
 
@@ -134,7 +135,7 @@ class BuySellTab(TabInterface):
 			slot.id = num
 			slot.action = 'buy'
 			slot.res = None
-			slot.findChild(name='button').capture(Callback(self.show_resource_menu, num))
+			slot.findChild(name='button').capture(self.handle_click, event_name = 'mouseClicked')
 			slot.findChild(name='button').up_image = self.dummy_icon_path
 			slot.findChild(name='button').down_image = self.dummy_icon_path
 			slot.findChild(name='button').hover_image = self.dummy_icon_path
@@ -298,6 +299,12 @@ class BuySellTab(TabInterface):
 		self.slots[slot].findChild(name="amount").text = unicode(int(slider.value))+'t'
 		self.slots[slot].adaptLayout()
 
+	def handle_click(self, widget, event):
+		if event.getButton() == fife.MouseEvent.LEFT:
+			self.show_resource_menu(widget.parent.id)
+		elif event.getButton() == fife.MouseEvent.RIGHT:
+			# remove the buy/sell offer
+			self.add_resource(0, widget.parent.id, None, False)
 
 	def show_resource_menu(self, slot_id):
 		"""

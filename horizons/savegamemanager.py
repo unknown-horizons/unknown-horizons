@@ -125,7 +125,6 @@ class SavegameManager(object):
 	savegame_dir = PATHS.USER_DIR + "/save"
 	autosave_dir = savegame_dir+"/autosave"
 	quicksave_dir = savegame_dir+"/quicksave"
-	demo_dir = "content/demo"
 	maps_dir = "content/maps"
 	scenario_maps_dir = "content/scenariomaps"
 	scenarios_dir = "content/scenarios"
@@ -138,10 +137,15 @@ class SavegameManager(object):
 	autosave_basename = "autosave-"
 	quicksave_basename = "quicksave-"
 
-	autosave_filenamepattern = autosave_basename+'%(timestamp)d.'+savegame_extension
-	quicksave_filenamepattern = quicksave_basename+'%(timestamp).4f.'+savegame_extension
+	# Use {{}} because this string is formatted twice and
+	# {timestamp} is replaced in the second format() call.
+	save_filename_timeformat = "{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M.{ext}"
+	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename, ext=savegame_extension)
+	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename, ext=savegame_extension)
 
-	display_timeformat = "%y/%m/%d %H:%M"
+	display_timeformat = "%Y/%m/%d %H:%M"
+
+	savegame_screenshot_width = 290
 
 	# metadata of a savegame with default values
 	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : ""  }
@@ -167,13 +171,13 @@ class SavegameManager(object):
 			if savegameinfo['timestamp'] == -1:
 				return ""
 			else:
-				return time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
+				return time.strftime(cls.display_timeformat, time.localtime(savegameinfo['timestamp']))
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):
-				name = "Autosave %s" % get_timestamp_string(cls.get_metadata(f))
+				name = "Autosave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
 			elif f.startswith(cls.quicksave_dir):
-				name = "Quicksave %s" % get_timestamp_string(cls.get_metadata(f))
+				name = "Quicksave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
 			else:
 				name = os.path.splitext(os.path.basename(f))[0]
 
@@ -187,9 +191,8 @@ class SavegameManager(object):
 		"""Internal function, that returns the saves of a dir"""
 		if not filename_extension:
 			filename_extension = cls.savegame_extension
-		files = [f for p in dirs for f in glob.glob(p+'/*.'+filename_extension) if \
-		         os.path.isfile(f)]
-		files.sort()
+		files = sorted((-os.path.getmtime(f), f) for p in dirs for f in glob.glob(p+'/*.'+filename_extension) if os.path.isfile(f))
+		files = zip(*files)[1] if files else []
 		if include_displaynames:
 			return (files, cls.__get_displaynames(files))
 		else:
@@ -198,23 +201,25 @@ class SavegameManager(object):
 	@classmethod
 	def create_filename(cls, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
-		name = "%s/%s.%s" % (cls.savegame_dir, savegamename, cls.savegame_extension)
+		name = "{directory}/{name}.{ext}".format(directory=cls.savegame_dir,
+		                                         name=savegamename,
+		                                         ext=cls.savegame_extension)
 		cls.log.debug("Savegamemanager: creating save-filename: %s", name)
 		return name
 
 	@classmethod
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
-		name = "%s/%s" % (cls.autosave_dir, \
-		                  cls.autosave_filenamepattern % {'timestamp':time.time()})
+		prepared_filename = time.strftime(cls.autosave_filenamepattern.format(timestamp=time.time()))
+		name = "{directory}/{name}".format(directory=cls.autosave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
 	@classmethod
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
-		name = "%s/%s" % (cls.quicksave_dir, \
-		                  cls.quicksave_filenamepattern % {'timestamp':time.time()})
+		prepared_filename = time.strftime(cls.quicksave_filenamepattern.format(timestamp=time.time()))
+		name = "{directory}/{name}".format(directory=cls.quicksave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
@@ -284,14 +289,20 @@ class SavegameManager(object):
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
 
 		# special handling for screenshot (as blob)
-		"""
-		import horizons.main
 		screenshot_fd, screenshot_filename = tempfile.mkstemp()
-		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename)
+
+		width = horizons.main.fife.engine_settings.getScreenWidth()
+		height = horizons.main.fife.engine_settings.getScreenHeight()
+
+		# scale to the correct with and adapt height with same factor
+		factor = float( cls.savegame_screenshot_width ) / width
+		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
+		                                                           int(float(width) * factor),
+		                                                           int(float(height) * factor))
+
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()
 		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
 		os.unlink(screenshot_filename)
-		"""
 
 	@classmethod
 	def get_regular_saves(cls, include_displaynames = True):
@@ -308,10 +319,9 @@ class SavegameManager(object):
 	@classmethod
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
-		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir, \
-		              cls.autosave_dir, cls.quicksave_dir, cls.demo_dir)
-		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, \
-		                                  cls.quicksave_dir, cls.demo_dir], \
+		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir,
+		              cls.autosave_dir, cls.quicksave_dir)
+		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir],
 		                                 include_displaynames = include_displaynames)
 
 	@classmethod
@@ -370,7 +380,7 @@ class SavegameManager(object):
 			for condition in conditions:
 				# all conditions have to be reached
 				if condition['type'] != 'goal_reached':
-					print _("Error: don't know how to handle %(type)s condition type") % condition
+					print _("Error: don't know how to handle condition type {condition}").format(condition=condition)
 				if not condition['goal'] in campaign_status.get(condition['scenario'], []):
 					break
 			else:
@@ -421,12 +431,12 @@ class SavegameManager(object):
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in cnames:
-				print _("Error: Cannot find campaign \"%s\".") % (name,)
+				print _("Error: Cannot find campaign '{name}'.").format(name=name)
 				return None
 			index = cnames.index(name)
 		elif filename:
 			if not filename in cfiles:
-				print _("Error: Cannot find campaign with file \"%s\".") % (filename,)
+				print _("Error: Cannot find campaign '{name}'.").format(name=filename)
 				return None
 			index = cfiles.index(filename)
 		infos = cdatas[index]
@@ -439,19 +449,19 @@ class SavegameManager(object):
 		return infos
 
 	@classmethod
-	def get_scenario_info(cls, name = "", file = ""):
+	def get_scenario_info(cls, name = "", filename = ""):
 		"""Return this scenario data"""
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in snames:
-				print _("Error: Cannot find scenario \"%s\".") % (name,)
+				print _("Error: Cannot find scenario '{name}'.").format(name=name)
 				return {}
 			index = snames.index(name)
-		elif file:
-			if not file in sfiles:
-				print _("Error: Cannot find scenario with file \"%s\".") % (file,)
+		elif filename:
+			if not filename in sfiles:
+				print _("Error: Cannot find scenario with file '{name}'.").format(name=filename)
 				return {}
-			index = sfiles.index(file)
+			index = sfiles.index(filename)
 		data = YamlCache.get_file(sfiles[index])
 		return data
 

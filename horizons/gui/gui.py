@@ -22,6 +22,7 @@
 import os
 import os.path
 import time
+import tempfile
 import logging
 from fife import fife
 from fife.extensions import pychan
@@ -255,22 +256,29 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
 
-		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
+		if not hasattr(self, 'filename_hbox'):
+			self.filename_hbox = self.current.findChild(name='enter_filename')
+			self.filename_hbox_parent = self.filename_hbox._getParent()
+
 		if mode == 'save': # only show enter_filename on save
-			self.current.findChild(name='enter_filename').show()
-		else:
-			self.current.findChild(name='enter_filename').hide()
-		"""
+			self.filename_hbox_parent.showChild(self.filename_hbox)
+		elif self.filename_hbox not in self.filename_hbox_parent.hidden_children:
+			self.filename_hbox_parent.hideChild(self.filename_hbox)
 
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if self.current.collectData('savegamelist') != -1: # check if we actually collect valid data
-				self.current.distributeData({'savegamefile' : \
+			if mode == 'save': # set textbox only if we are in save mode
+				if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
+					self.current.findChild(name="savegamefile").text = u""
+				else:
+					self.current.distributeData({'savegamefile' : \
 				                             map_file_display[self.current.collectData('savegamelist')]})
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
+		self.current.distributeData({'savegamelist' : -1}) # Don't select anything by default
 		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
 		                               tmp_selected_changed)
+		cb() # Refresh data on start
 		self.current.findChild(name="savegamelist").mapEvents({
 		    'savegamelist/action'              : cb,
 		    'savegamelist/mouseWheelMovedUp'   : cb,
@@ -278,27 +286,37 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
-		retval = self.show_dialog(self.current, {
-		                                          'okButton'     : True,
-		                                          'cancelButton' : False,
-		                                          'deleteButton' : 'delete',
-		                                          'savegamefile' : True
-		                                        },
-		                                        onPressEscape = False)
+		eventMap = {
+			'okButton'     : True,
+			'cancelButton' : False,
+			'deleteButton' : 'delete'
+		}
+
+		if mode == 'save':
+			eventMap['savegamefile'] = True
+
+		retval = self.show_dialog(self.current, eventMap, onPressEscape = False)
 		if not retval: # cancelled
 			self.current = old_current
 			return
 
 		if retval == 'delete':
 			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
-			self._delete_savegame(map_files)
+			delete_retval = self._delete_savegame(map_files)
+			if delete_retval:
+				self.current.distributeData({'savegamelist' : -1})
+				cb()
 			self.current = old_current
 			return self.show_select_savegame(mode=mode)
 
 		selected_savegame = None
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
-			if selected_savegame in map_file_display: # savegamename already exists
+			if selected_savegame == "":
+				self.show_error_popup(windowtitle = _("No filename given"), description = _("Please enter a valid filename."),)
+				self.current = old_current
+				return self.show_select_savegame(mode=mode) # reshow dialog
+			elif selected_savegame in map_file_display: # savegamename already exists
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
@@ -441,6 +459,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	@staticmethod
 	def _create_show_savegame_details(gui, map_files, savegamelist):
 		"""Creates a function that displays details of a savegame in gui"""
+
 		def tmp_show_details():
 			"""Fetches details of selected savegame and displays it"""
 			# N_ takes care of plural forms for different languages
@@ -449,13 +468,29 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if old_label is not None:
 				box.removeChild(old_label)
 			map_file = None
+			map_file_index = gui.collectData(savegamelist)
+			if map_file_index == -1:
+				return
 			try:
-				map_file = map_files[gui.collectData(savegamelist)]
+				map_file = map_files[map_file_index]
 			except IndexError:
 				# this was a click in the savegame list, but not on an element
 				# it happens when the savegame list is empty
 				return
 			savegame_info = SavegameManager.get_metadata(map_file)
+
+			# screenshot
+			if savegame_info['screenshot'] is not None:
+				fd, filename = tempfile.mkstemp()
+				with os.fdopen(fd, "w") as f:
+					f.write(savegame_info['screenshot'])
+				# fife only supports relative paths
+				gui.findChild(name="screenshot").image = os.path.relpath(filename)
+				os.unlink(filename)
+			else:
+				gui.findChild(name="screenshot").image = None
+
+			# savegamedetails
 			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
@@ -489,12 +524,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 			box.addChild( details_label )
 
-			"""
-			if savegame_info['screenshot']:
-				fd, filename = tempfile.mkstemp()
-				os.fdopen(fd, "w").write(savegame_info['screenshot'])
-				box.addChild( pychan.widgets.Icon(image=filename) )
-			"""
 
 			gui.adaptLayout()
 		return tmp_show_details

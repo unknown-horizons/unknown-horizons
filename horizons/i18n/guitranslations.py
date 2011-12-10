@@ -300,6 +300,8 @@ def set_translations():
 		"buysell_help_label"          : ("text"    , _("Click on slot icon to toggle mode:")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Buy or sell resources")),
+		# (text of widget: headline_trade_history)
+		"headline_trade_history"      : ("text"    , _("Trade history")),
 		# (text of widget: sell_label)
 		"sell_label"                  : ("text"    , _("Sell resources")),
 		},
@@ -579,6 +581,28 @@ def set_translations():
 		"ship_label"                  : ("text"    , _("Ship:")),
 		# (text of widget: trade_with_label)
 		"trade_with_label"            : ("text"    , _("Trade partner:")),
+		},
+
+	"overview_trade_ship.xml" : {
+		# (tooltip of widget: name)
+		"name"                        : ("tooltip" , _("Click to change the name of this ship.")),
+		# (tooltip of widget: configure_route)
+		"configure_route"             : ("tooltip" , _("Configure trading route")),
+		# (tooltip of widget: found_settlement)
+		"found_settlement"            : ("tooltip" , _("Build settlement")),
+		# (tooltip of widget: trade)
+		"trade"                       : ("tooltip" , _("Trade")),
+		},
+
+	"overview_war_ship.xml" : {
+		# (tooltip of widget: name)
+		"name"                        : ("tooltip" , _("Click to change the name of this ship.")),
+		# (tooltip of widget: configure_route)
+		"configure_route"             : ("tooltip" , _("Configure trading route")),
+		# (tooltip of widget: found_settlement)
+		"found_settlement"            : ("tooltip" , _("Build settlement")),
+		# (tooltip of widget: trade)
+		"trade"                       : ("tooltip" , _("Trade")),
 		},
 
 	"overview_farmproductionline.xml" : {

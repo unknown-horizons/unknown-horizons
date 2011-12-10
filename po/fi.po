@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-03 23:48+0200\n"
+"PO-Revision-Date: 2011-12-05 18:34+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -147,7 +147,7 @@ msgstr "Fregatti"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Gravel Path"
-msgstr ""
+msgstr "Sorapolku"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -244,7 +244,7 @@ msgstr "Valli"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Suola-allas"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -315,7 +315,7 @@ msgstr "Tupakkapelto"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tupakkatehdas"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -373,8 +373,7 @@ msgstr "Voitit pelin!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more ${resource} to build this building."
-msgstr ""
-"Tarvitset enemmän resurssia ${resource} tämän rakennuksen rakentamiseen."
+msgstr "Tarvitset enemmän ${resource} tämän rakennuksen rakentamiseen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -573,12 +572,12 @@ msgstr "sitruuna"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr "viini"
+msgstr "viiniä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "lääkeyrttejä"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -593,12 +592,12 @@ msgstr "oranssi"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "sikoja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "teurassikoja"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -648,7 +647,7 @@ msgstr "sokeria"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "sokeriruokoa"
 
 #. This is a database entry: the name of a color.
 #: database files sql
@@ -668,7 +667,7 @@ msgstr "tupakanlehtiä"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "tupakanlehtiä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1519,7 +1518,7 @@ msgstr "Tupakkapelto: Tuottaa tupakkaa. Tarvitsee maatilan."
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:148
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Tupakkatehdas: Valmistaa tupakkaa tupakanlehdistä."
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:150
@@ -1620,32 +1619,32 @@ msgstr "Loitonna kuvaa"
 #. (tooltip of widget: boards_icon)
 #: horizons/i18n/guitranslations.py:208
 msgid "Boards"
-msgstr "Lautoja"
+msgstr "Laudat"
 
 #. (tooltip of widget: bricks_icon)
 #: horizons/i18n/guitranslations.py:210
 msgid "Bricks"
-msgstr "Tiiliä"
+msgstr "Tiilet"
 
 #. (tooltip of widget: food_icon)
 #: horizons/i18n/guitranslations.py:212
 msgid "Food"
-msgstr "Ruokaa"
+msgstr "Ruoka"
 
 #. (tooltip of widget: textiles_icon)
 #: horizons/i18n/guitranslations.py:214
 msgid "Textiles"
-msgstr "Kankaita"
+msgstr "Kankaat"
 
 #. (tooltip of widget: tools_icon)
 #: horizons/i18n/guitranslations.py:216
 msgid "Tools"
-msgstr "Työkaluja"
+msgstr "Työkalut"
 
 #. (tooltip of widget: gold_icon)
 #: horizons/i18n/guitranslations.py:221
 msgid "Gold"
-msgstr "Kultaa"
+msgstr "Kulta"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:226
@@ -2303,7 +2302,7 @@ msgstr "{G} = Ruudukko päälle/pois"
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:728
 msgid "{H} = Show coordinate values (Debug)"
-msgstr ""
+msgstr "{H} = Näytä koordinaatit (Debug)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:730
@@ -2358,7 +2357,7 @@ msgstr "{SHIFT} = Pidä pohjassa sijoittaaksesi useita rakennuksia"
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:750
 msgid "{T} = Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "{T} = Muuta ympäristön läpikuultavuutta"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:752
@@ -2403,7 +2402,7 @@ msgstr "Jatka peliä"
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:776
 msgid "Loading ..."
-msgstr "Ladataan ..."
+msgstr "Ladataan..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:783

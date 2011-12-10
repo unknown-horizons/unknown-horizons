@@ -22,7 +22,9 @@
 			</HBox>
 		</VBox>
 
-		<VBox name="content_vbox" />
+		<ScrollArea background_color="255,255,255,0" min_size="650,400">
+			<VBox name="content_vbox" />
+		</ScrollArea>
 <!--
 In this VBox a line is added per player in the following format:
 			<HBox>
