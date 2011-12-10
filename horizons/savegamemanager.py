@@ -187,11 +187,11 @@ class SavegameManager(object):
 		return displaynames
 
 	@classmethod
-	def __get_saves_from_dirs(cls, dirs, include_displaynames = True, filename_extension = None):
+	def __get_saves_from_dirs(cls, dirs, include_displaynames, filename_extension, order_by_date):
 		"""Internal function, that returns the saves of a dir"""
 		if not filename_extension:
 			filename_extension = cls.savegame_extension
-		files = sorted((-os.path.getmtime(f), f) for p in dirs for f in glob.glob(p+'/*.'+filename_extension) if os.path.isfile(f))
+		files = sorted((-os.path.getmtime(f) if order_by_date else 0, f) for p in dirs for f in glob.glob(p + '/*.' + filename_extension) if os.path.isfile(f))
 		files = zip(*files)[1] if files else []
 		if include_displaynames:
 			return (files, cls.__get_displaynames(files))
@@ -308,36 +308,31 @@ class SavegameManager(object):
 	def get_regular_saves(cls, include_displaynames = True):
 		"""Returns all savegames, that were saved via the ingame save dialog"""
 		cls.log.debug("Savegamemanager: regular saves from: %s", cls.savegame_dir)
-		return cls.__get_saves_from_dirs([cls.savegame_dir], \
-		                                 include_displaynames = include_displaynames)
+		return cls.__get_saves_from_dirs([cls.savegame_dir], include_displaynames, None, True)
 
 	@classmethod
 	def get_maps(cls, include_displaynames = True):
 		cls.log.debug("Savegamemanager: get maps from %s", cls.maps_dir)
-		return cls.__get_saves_from_dirs([cls.maps_dir], include_displaynames = include_displaynames)
+		return cls.__get_saves_from_dirs([cls.maps_dir], include_displaynames, None, False)
 
 	@classmethod
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
 		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir,
 		              cls.autosave_dir, cls.quicksave_dir)
-		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir],
-		                                 include_displaynames = include_displaynames)
+		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir], include_displaynames, None, True)
 
 	@classmethod
 	def get_quicksaves(cls, include_displaynames = True):
 		"""Returns all savegames, that were saved via quicksave"""
 		cls.log.debug("Savegamemanager: quicksaves from: %s", cls.quicksave_dir)
-		return cls.__get_saves_from_dirs([cls.quicksave_dir], \
-		                                 include_displaynames = include_displaynames)
+		return cls.__get_saves_from_dirs([cls.quicksave_dir], include_displaynames, None, True)
 
 	@classmethod
 	def get_scenarios(cls, include_displaynames = True):
 		"""Returns all scenarios"""
 		cls.log.debug("Savegamemanager: scenarios from: %s", cls.scenarios_dir)
-		return cls.__get_saves_from_dirs([cls.scenarios_dir], \
-		                                 include_displaynames = include_displaynames,
-		                                 filename_extension = cls.scenario_extension)
+		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
 	def get_available_scenarios(cls, include_displaynames = True, locales = None):
@@ -406,9 +401,7 @@ class SavegameManager(object):
 		@return: (campaign_files, campaign_names, campaign_scenarios, campaign_data) (depending of the parameters)
 		"""
 		cls.log.debug("Savegamemanager: campaigns from: %s", cls.campaigns_dir)
-		files, names = cls.__get_saves_from_dirs([cls.campaigns_dir], \
-		                                         include_displaynames = include_displaynames,
-		                                         filename_extension = cls.campaign_extension)
+		files, names = cls.__get_saves_from_dirs([cls.campaigns_dir], include_displaynames, cls.campaign_extension, False)
 		if not include_displaynames:
 			return (files,)
 		if not include_scenario_list:
