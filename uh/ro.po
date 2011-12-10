@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-03 05:40+0200\n"
-"PO-Revision-Date: 2011-12-10 05:10+0200\n"
-"Last-Translator: trendy <trendynickname@gmail.com>\n"
+"PO-Revision-Date: 2011-12-10 23:14+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -209,7 +209,7 @@ msgstr "munte"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your settler has no main square in it's range."
-msgstr "unul dintre coloniști nu are piața principală în raza sa de acțiune"
+msgstr "unul dintre coloniști nu are piața principală în raza sa de acțiune."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -736,7 +736,7 @@ msgstr ""
 #: horizons/engine.py:280
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Limba aleasă %(lang) la locația %(place) nu a putut fi încărcată"
+msgstr "Limba aleasă %(lang)s la locația %(place)s nu a putut fi încărcată"
 
 #: horizons/engine.py:528
 msgid "Invalid network port"
@@ -745,7 +745,7 @@ msgstr "port de rețea invalid"
 #: horizons/engine.py:529
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Portul specificat nu este valid. Trebuie să fie un număr între 1 și 65535"
+"Portul specificat nu este valid. Trebuie să fie un număr între 1 și 65535."
 
 #: horizons/engine.py:530
 msgid "Please check the port you entered and make sure it's in the specified range."
@@ -822,7 +822,7 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
-"O salvare cu numele \"%s\" există deja.\n"
+"O salvare cu numele \"%s\" există deja. \n"
 "Doriți s-o înlocuiți?"
 
 #: horizons/gui/gui.py:269
@@ -1538,7 +1538,7 @@ msgstr "costuri de întreținere:"
 #. (text of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:173 horizons/i18n/guitranslations.py:659
 msgid "Inhabitants"
-msgstr "locuitori:"
+msgstr "locuitori"
 
 #. (tooltip of widget: city_name)
 #: horizons/i18n/guitranslations.py:175
@@ -1638,7 +1638,7 @@ msgstr "scrieți nume nou:"
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:228
 msgid "Change name"
-msgstr "schimbare nume:"
+msgstr "schimbare nume"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: apply_new_nickname)
@@ -1654,7 +1654,7 @@ msgstr "scrieți mesaj:"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:237
 msgid "Chat"
-msgstr "șuetă:"
+msgstr "șuetă"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:242
@@ -1686,7 +1686,7 @@ msgstr "construcție în progres:"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:252 horizons/i18n/guitranslations.py:471
 msgid "Building overview"
-msgstr "sumar de clădiri:"
+msgstr "sumar de clădiri"
 
 #. (tooltip of widget: BB_cancel_button) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:254
@@ -1857,7 +1857,7 @@ msgstr "locuitori"
 #: horizons/i18n/guitranslations.py:364 horizons/i18n/guitranslations.py:393
 #: horizons/i18n/guitranslations.py:428 horizons/i18n/guitranslations.py:493
 msgid "Taxes:"
-msgstr "taxe"
+msgstr "taxe:"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:366 horizons/i18n/guitranslations.py:395
@@ -1977,12 +1977,12 @@ msgstr "locuitori"
 #. (text of widget: foundSettlement_label)
 #: horizons/i18n/guitranslations.py:514
 msgid "Build settlement:"
-msgstr "construire colonie"
+msgstr "construire colonie:"
 
 #. (tooltip of widget: name)
 #: horizons/i18n/guitranslations.py:518
 msgid "Click to change the name of this ship."
-msgstr "click aici pentru a schimba numele navei"
+msgstr "click aici pentru a schimba numele navei."
 
 #. (text of widget: signal_fire_description_lbl)
 #: horizons/i18n/guitranslations.py:525
@@ -2016,7 +2016,7 @@ msgstr "configurare rută comercială:"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:562 horizons/i18n/guitranslations.py:571
 msgid "Inventory"
-msgstr "inventar:"
+msgstr "inventar"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:578
