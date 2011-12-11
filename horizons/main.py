@@ -434,12 +434,10 @@ def _load_last_quicksave():
 	"""Load last quicksave
 	@return: bool, whether loading succeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
-	save = None
-	try:
-		save = save_files[len(save_files)-1]
-	except KeyError:
+	if not save_files:
 		print _("Error: No quicksave found.")
 		return False
+	save = max(save_files)
 	load_game(savegame=save)
 	return True
 
