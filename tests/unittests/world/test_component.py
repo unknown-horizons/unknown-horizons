@@ -24,24 +24,31 @@
 
 from unittest import TestCase
 
-from horizons.world.componentholder import ComponentHolder
-from horizons.world.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.production.producer import Producer
-from horizons.entities import Entities
-from horizons.constants import UNITS
+from horizons.world.component import Component
+
+
+class A(Component):
+	NAME = 'A'
+
+class B(Component):
+	NAME = 'B'
+	DEPENDENCIES = [A]
+
+class C(Component):
+	NAME = 'C'
+
 
 class TestComponent(TestCase):
 
 	def test_dependencysorting(self):
-		storage = StorageComponent()
-		producer = Producer()
-		components = [ producer, AmbientSoundComponent(), storage]
+		a = A()
+		b = B()
+		components = [b, C(), a]
 		components.sort()
-		self.assertTrue(components.index(producer) > components.index(storage))
+		self.assertTrue(components.index(b) > components.index(a))
 		# Trigger __lt__
-		self.assertFalse(producer < storage)
+		self.assertFalse(b < a)
+		self.assertTrue(a < b)
 		# Trigger __gt__
-		self.assertTrue(producer > storage)
+		self.assertTrue(b > a)
+		self.assertFalse(a > b)
