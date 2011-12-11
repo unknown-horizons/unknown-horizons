@@ -24,21 +24,15 @@ from unittest import TestCase
 from horizons.ext.dummy import Dummy
 from horizons.world.component.healthcomponent import HealthComponent
 
+from mock import Mock
 
-class DummyInstance(object):
-
-	def __init__(self):
-		self.session = Dummy()
-		self.removed = False
-
-	def remove(self):
-		self.removed = True
-		
 
 class TestHealthComponent(TestCase):
 
 	def setUp(self):
-		self.instance = DummyInstance()
+		self.instance = Mock()
+		self.instance.session = Dummy()
+
 		self.component = HealthComponent(20)
 		self.component.instance = self.instance
 		self.component.initialize()
@@ -54,16 +48,16 @@ class TestHealthComponent(TestCase):
 		self.component.deal_damage(1, 19)
 		self.assertEqual(self.component.health, 1)
 		self.assertEqual(self.component.max_health, 20)
-		self.assertFalse(self.instance.removed)
+		self.assertFalse(self.instance.remove.called)
 
 	def test_damage_zero_health(self):
 		self.component.deal_damage(1, 20)
 		self.assertEqual(self.component.health, 0)
 		self.assertEqual(self.component.max_health, 20)
-		self.assertTrue(self.instance.removed)
+		self.assertTrue(self.instance.remove.called)
 		
 	def test_huge_damage(self):
 		self.component.deal_damage(1, 300)
 		self.assertEqual(self.component.health, -280)
 		self.assertEqual(self.component.max_health, 20)
-		self.assertTrue(self.instance.removed)
+		self.assertTrue(self.instance.remove.called)
