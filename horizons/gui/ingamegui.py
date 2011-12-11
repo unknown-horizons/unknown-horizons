@@ -528,7 +528,7 @@ class IngameGui(LivingObject):
 
 	def on_switch_main_widget(self, widget):
 		"""The main widget has been switched to the given one (possibly None)."""
-		if self.main_widget: # close the old one if it exists
+		if self.main_widget and self.main_widget != widget: # close the old one if it exists
 			old_main_widget = self.main_widget
 			self.main_widget = None
 			old_main_widget.hide()
