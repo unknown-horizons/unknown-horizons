@@ -49,8 +49,8 @@ class MultiplayerMenu(object):
 				NetworkInterface.create_instance()
 			except RuntimeError as e:
 				headline = _(u"Failed to initialize networking.")
-				descr = _(u"Networking couldn't be initialised with the current configuration.")
-				advice = _(u"Check the data you entered in the Network section in the settings dialogue.")
+				descr = _("Network features could not be initialized with the current configuration.")
+				advice = _("Check the settings you specified in the network section.")
 				self.show_error_popup(headline, descr, advice, unicode(e))
 				return
 
@@ -137,7 +137,13 @@ class MultiplayerMenu(object):
 		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
 		if self.games is None:
 			return False
-		self.current.distributeInitialData({'gamelist' : map(lambda x: "%s (%u, %u)%s"%(x.get_map_name(), x.get_player_count(), x.get_player_limit(), " " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else ""), self.games)})
+		self.current.distributeInitialData({'gamelist' : map(lambda x: "{name} ({players}, {limit}){version}".format(
+		                        name=x.get_map_name(),
+		                        players=x.get_player_count(),
+		                        limit=x.get_player_limit(),
+		                        version=" " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else ""
+						    ),
+		        self.games)})
 		self.current.distributeData({'gamelist' : 0}) # select first map
 		self.__update_game_details()
 		return True
@@ -159,11 +165,15 @@ class MultiplayerMenu(object):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
 		if game == None:
 			game = self.__get_selected_game()
-		self.current.findChild(name="game_map").text = _("Map: %s") % (game.get_map_name())
-		self.current.findChild(name="game_playersnum").text =  _("Players: %s") % (
-				unicode(game.get_player_count()) + u"/" + unicode(game.get_player_limit()))
+		#xgettext:python-format
+		self.current.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.get_map_name())
+		#xgettext:python-format
+		self.current.findChild(name="game_playersnum").text =  _("Players: {player_amount}/{player_limit}").format(
+		                           player_amount=game.get_player_count(),
+		                           player_limit=game.get_player_limit())
 		creator_text = self.current.findChild(name="game_creator")
-		creator_text.text = _("Creator: %s") % (game.get_creator())
+		#xgettext:python-format
+		creator_text.text = _("Creator: {player}").format(player=game.get_creator())
 		creator_text.adaptLayout()
 		textplayers = self.current.findChild(name="game_players")
 		if textplayers is not None:
@@ -180,9 +190,13 @@ class MultiplayerMenu(object):
 		if game.get_uuid() == -1: # -1 signals no game
 			return
 		if game.get_version() != NetworkInterface().get_clientversion():
-			self.show_popup(_("Wrong version"), _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s") % {'gameversion': game.get_version(), 'ownversion': NetworkInterface().get_clientversion()})
+			self.show_popup(_("Wrong version"),
+			                   #xgettext:python-format
+			                _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}").format(
+			                  game_version=game.get_version(),
+			                  own_version=NetworkInterface().get_clientversion()))
 			return
-		# acctual join
+		# actual join
 		join_worked = NetworkInterface().joingame(game.get_uuid())
 		if not join_worked:
 			return
@@ -247,16 +261,16 @@ class MultiplayerMenu(object):
 		chatbox.selected = len(chatbox.items) - 1
 
 	def __player_joined(self, game, player):
-		self.__print_event_message("%s has joined the game" % (player.name))
+		self.__print_event_message("{player} has joined the game".format(player=player.name))
 
 	def __player_left(self, game, player):
-		self.__print_event_message("%s has left the game" % (player.name))
+		self.__print_event_message("{player} has left the game".format(player=player.name))
 
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:
-			self.__print_event_message("You are now known as %s" % (plnew.name))
+			self.__print_event_message("You are now known as {new_name}".format(new_name=plnew.name))
 		else:
-			self.__print_event_message("%s is now known as %s" % (plold.name, plnew.name))
+			self.__print_event_message("{player} is now known as {new_name}".format(player=plold.name, new_name=plnew.name))
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""
@@ -276,7 +290,7 @@ class MultiplayerMenu(object):
 			mapfile = self.current.files[mapindex]
 			number_of_players = SavegameManager.get_recommended_number_of_players( mapfile )
 			self.current.findChild(name="recommended_number_of_players_lbl").text = \
-					_("Recommended number of players: %s") % (number_of_players)
+					_("Recommended number of players: {number}").format(number=number_of_players) #xgettext:python-format
 		if len(self.maps_display) > 0: # select first entry
 			self.current.distributeData({
 				'maplist' : 0,

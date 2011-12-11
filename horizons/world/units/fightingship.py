@@ -19,8 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-	EnemyShipOverviewTab, FightingShipOverviewTab, FightingShipInventoryTab
+from horizons.gui.tabs import EnemyShipOverviewTab, FightingShipOverviewTab
 from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
@@ -31,8 +30,8 @@ class FightingShip(MovingWeaponHolder, Ship):
 	@param y: int y position
 	"""
 	health_bar_y = -190
-	tabs = (FightingShipOverviewTab, FightingShipInventoryTab)
-	enemy_tabs = (EnemyShipOverviewTab,)
+	tabs = (FightingShipOverviewTab, )
+	enemy_tabs = (EnemyShipOverviewTab, )
 
 	def __init__(self, x, y, **kwargs):
 		super(FightingShip, self).__init__(x=x, y=y, **kwargs)

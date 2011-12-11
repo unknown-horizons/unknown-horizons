@@ -144,6 +144,7 @@ class Rect(object):
 	def distance_to_rect(self, other):
 		"""Calculates distance to an instance of Rect.
 		Don't use this, unless you are sure that distance() is too slow."""
+		# NOTE: this is duplicated in buildingowner.get_providers_in_range
 		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 
 	def distance_to_circle(self, other):
@@ -284,6 +285,28 @@ class Rect(object):
 		@return: tuple of coord-tuples"""
 		return ( (self.left, self.top), (self.right, self.top),
 		         (self.right, self.bottom), (self.left, self.bottom) )
+
+	def get_surrounding(self, include_corners=True):
+		"""Returns neighboring coords of the rect.
+		@param include_corners: whether to also move diagonally from the rect corners"""
+		# top and bottom
+		surrounding_top = self.top - 1
+		surrounding_bottom = self.bottom + 1
+		for x in xrange(self.left,  self.right + 1):
+			yield (x, surrounding_bottom)
+			yield (x, surrounding_top)
+		# left and right
+		surrounding_left = self.left - 1
+		surrounding_right = self.right + 1
+		for y in xrange(self.top, self.bottom + 1):
+			yield (surrounding_left, y)
+			yield (surrounding_right, y)
+
+		if include_corners:
+			yield (self.top-1, self.left-1)
+			yield (self.top-1, self.right+1)
+			yield (self.bottom+1, self.left-1)
+			yield (self.bottom+1, self.right+1)
 
 	def __str__(self):
 		return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.left, self.top, self.width, self.height)

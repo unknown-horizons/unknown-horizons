@@ -41,11 +41,12 @@ class PlayersShips(StatsWidget):
 		super(PlayersShips, self).refresh()
 		player = self.session.world.player
 		self._clear_entries()
-		self._gui.findChild(name = 'headline').text = _('%(player)s\'s ships') % {'player': self.session.world.player.name}
+		#xgettext:python-format
+		self._gui.findChild(name = 'headline').text = _("{player}'s ships").format(player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}
-		for ship in self.session.world.ships:
+		for ship in sorted(self.session.world.ships, key = lambda ship: (ship.name, ship.worldid)):
 			if ship.owner is player and ship.is_selectable:
 				sequence_number += 1
 				name_label, status_label, status_position = self._add_line_to_gui(ship, sequence_number)

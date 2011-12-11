@@ -31,14 +31,50 @@ except ImportError:
 	sys.exit(1)
 
 
+def mock_fife_and_gui():
+	"""
+	Using a custom import hook, we catch all imports of fife, horizons.gui and enet
+	and provide a dummy module. Unfortunately horizons.gui has to be mocked too,
+	pychan will fail otherwise (isinstance checks that Dummy fails, metaclass
+	errors - pretty bad stuff).
+	"""
+	from horizons.ext.dummy import Dummy
+
+	class Importer(object):
+
+		def find_module(self, fullname, path=None):
+			if fullname.startswith('fife') or \
+			   fullname.startswith('horizons.gui') or \
+			   fullname.startswith('enet'):
+				return self
+
+			return None
+
+		def load_module(self, name):
+			mod = sys.modules.setdefault(name, Dummy())
+			return mod
+
+	sys.meta_path = [Importer()]
+
+def setup_horizons():
+	"""
+	Get ready for testing.
+	"""
+
+	# This needs to run at first, importing setup_fife seems to trigger
+	# other imports that we need to avoid
+	mock_fife_and_gui()
+
+	# set global reference to fife
+	import horizons.main
+	import fife
+	horizons.main.fife = fife.fife
+
+
 if __name__ == '__main__':
 	gettext.install('', unicode=True) # no translations here
 
-	from run_uh import setup_fife
-	setup_fife(sys.argv)
-
-	from tests import mock_fife
-	mock_fife()
+	setup_horizons()
 
 	nose.run(defaultTest='tests')
 

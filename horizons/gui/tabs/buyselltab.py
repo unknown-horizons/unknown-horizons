@@ -19,20 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
 from fife.extensions import pychan
 import logging
 
 from tabinterface import TabInterface
+from horizons.extscheduler import ExtScheduler
 from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBuyList, \
                                        RemoveFromSellList
+from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
 from horizons.gui.widgets.tooltip import TooltipButton
-from horizons.util import Callback
+from horizons.util import Callback, WorldObject
 from horizons.util.gui import load_uh_widget, get_res_icon
 
 class BuySellTab(TabInterface):
 	"""
 	Allows players to tell settlements which resources to buy or sell by adding
 	slots in either buy or sell mode and introducing a limit per such slot.
+	Also contains the trade history.
 	"""
 	log = logging.getLogger("gui")
 
@@ -53,6 +57,8 @@ class BuySellTab(TabInterface):
 		self.button_active_image = self.icon_path % 'a'
 		self.button_down_image = self.icon_path % 'd'
 		self.button_hover_image = self.icon_path % 'h'
+
+		# add the buy/sell slots
 		self.slots = {}
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)
@@ -68,29 +74,49 @@ class BuySellTab(TabInterface):
 				                  dont_use_commands=True)
 				self.toggle_buysell(slot_count, dont_use_commands=True)
 				slot_count += 1
+
+		# init the trade history
+		self.trade_history = self.widget.findChild(name='trade_history')
+		self.trade_history_widget_cache = {} # {(tick, player_id, resource_id, amount, gold): widget, ...}
+
 		self.hide()
 		self.tooltip = _("Trade")
 
 	def hide(self):
-		"""
-		Hides the buyselltab and all widgets we perhaps added during runtime.
-		"""
+		"""Hide the tab and all widgets we may have added at runtime."""
+		ExtScheduler().rem_all_classinst_calls(self)
 		self.widget.hide()
 		if self.resources is not None:
 			self.resources.hide()
 
 	def show(self):
-		"""
-		Displays the tab content.
-		"""
+		"""Display the tab's content, start the refresher."""
 		self.widget.show()
 		self.settlement.session.ingame_gui.minimap_to_front()
+		self.refresh()
+		ExtScheduler().add_new_object(self.refresh, self, run_in=0.4, loops = -1)
+
+	def _refresh_trade_history(self):
+		self.trade_history.removeAllChildren()
+		unused_rows = set(self.trade_history_widget_cache.keys())
+
+		total_entries = len(self.settlement.trade_history)
+		for i in xrange(min(5, total_entries)):
+			row = self.settlement.trade_history[total_entries - i - 1]
+			player = WorldObject.get_object_by_id(row[1])
+			if row not in self.trade_history_widget_cache:
+				self.trade_history_widget_cache[row] = TradeHistoryItem(player, row[2], row[3], row[4])
+			widget = self.trade_history_widget_cache[row]
+			self.trade_history.addChild(widget)
+			unused_rows.discard(row)
+		self.trade_history.adaptLayout()
+
+		for row in unused_rows:
+			del self.trade_history_widget_cache[row]
 
 	def refresh(self):
-		"""
-		We don't refresh. Ticket #970
-		"""
-		pass
+		self._refresh_trade_history()
+		# TODO: We don't refresh. Ticket #970
 
 	def add_slots(self, num):
 		"""
@@ -105,7 +131,7 @@ class BuySellTab(TabInterface):
 			slot.id = num
 			slot.action = 'buy'
 			slot.res = None
-			slot.findChild(name='button').capture(Callback(self.show_resource_menu, num))
+			slot.findChild(name='button').capture(self.handle_click, event_name = 'mouseClicked')
 			slot.findChild(name='button').up_image = self.dummy_icon_path
 			slot.findChild(name='button').down_image = self.dummy_icon_path
 			slot.findChild(name='button').hover_image = self.dummy_icon_path
@@ -269,6 +295,12 @@ class BuySellTab(TabInterface):
 		self.slots[slot].findChild(name="amount").text = unicode(int(slider.value))+'t'
 		self.slots[slot].adaptLayout()
 
+	def handle_click(self, widget, event):
+		if event.getButton() == fife.MouseEvent.LEFT:
+			self.show_resource_menu(widget.parent.id)
+		elif event.getButton() == fife.MouseEvent.RIGHT:
+			# remove the buy/sell offer
+			self.add_resource(0, widget.parent.id, None, False)
 
 	def show_resource_menu(self, slot_id):
 		"""

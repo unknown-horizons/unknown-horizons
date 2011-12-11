@@ -53,6 +53,9 @@ class StatusIcon(object):
 		"""
 		return operator.attrgetter("priority")
 
+	def __cmp__(self, other):
+		return cmp(self.__class__, other.__class__)
+
 	def __str__(self):
 		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
 
@@ -72,7 +75,7 @@ class InventoryFullStatus(StatusIcon):
 
 
 class ProductivityLowStatus(StatusIcon):
-	"""Terminology: productiviy = capacity utilisation"""
+	"""Terminology: productivity = capacity utilisation"""
 	threshold = 0.25 # display when productivity lower than this
 	def __init__(self):
 		super(ProductivityLowStatus, self).__init__( 400, "as_buoy0+idle+45" )

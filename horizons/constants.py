@@ -63,7 +63,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 43
+	SAVEGAMEREVISION= 45
 
 	@staticmethod
 	def string():
@@ -220,7 +220,7 @@ class GROUND:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [8, 16, 32, 48, 64, 96, 128, 176] #starting at 0.5x with max of 11x
+	TICK_RATES = [ int(i*16) for i in 0.5, 1, 2, 3, 4, 6, 8, 11, 20 ]
 
 class COLORS:
 	BLACK = 9
@@ -275,7 +275,8 @@ class TRADER: # check resource values: ./development/print_db_data.py res
 	BUSINESS_SENSE = 50 # chance in percent to be sent to a branch office instead of random spot
 
 	BUY_AMOUNT = (2, 8)  # amount range to buy/sell from settlement per resource
-	SELL_AMOUNT = (2, 8) # => randomly picks an amount in this range for each trade
+	SELL_AMOUNT_MIN = 2
+	SELL_AMOUNT_MAX = 8
 
 # Taxes and Restrictions
 class SETTLER:
@@ -344,7 +345,7 @@ class PATHS:
 	# paths relative to uh dir
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
-	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
+	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sql")
 	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
@@ -392,7 +393,9 @@ LANGUAGENAMES = _LanguageNameDict({
 	"gl"    : u'Galego',
 	"hu"    : u'Magyar',
 	"it"    : u'Italiano',
+	"ja"    : u'Nihongo',
 	"lt"    : u'Lietuvių',
+	"ko"    : u'Hangugmal/Chosŏnmal',
 	"nb"    : u'Norw. Bokmål',
 	"nl"    : u'Nederlands',
 	"pl"    : u'Polski',
@@ -403,6 +406,19 @@ LANGUAGENAMES = _LanguageNameDict({
 	"sl"    : u'Slovenski',
 	"sv"    : u'Svenska',
 	"tr"    : u'Türkçe',
+	"vi"    : u'Tiếng Việt',
+	"zh_CN" : u'Pǔtōnghuà',
 	})
 
 AUTO_CONTINUE_CAMPAIGN=True
+
+class GFX:
+	BUILDING_OUTLINE_THRESHOLD = 96
+	BUILDING_OUTLINE_WIDTH = 2
+
+	UNIT_OUTLINE_THRESHOLD = 96
+	UNIT_OUTLINE_WIDTH = 2
+
+	SHIP_OUTLINE_THRESHOLD = 96
+	SHIP_OUTLINE_WIDTH = 2
+

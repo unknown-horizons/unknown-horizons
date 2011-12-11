@@ -154,6 +154,10 @@ class View(ChangeListener):
 			pos.y = self.session.world.min_y
 
 		self.cam.setLocation(loc)
+		for i in ['speech', 'effects']:
+			emitter = horizons.main.fife.emitter[i]
+			if emitter is not None:
+				emitter.setPosition(pos.x, pos.y, 1)
 		horizons.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self._changed()
 
@@ -163,10 +167,22 @@ class View(ChangeListener):
 			zoom = VIEW.ZOOM_MIN
 		self.set_zoom(zoom)
 
-	def zoom_in(self):
+	def zoom_in(self, mappoint=None):
+		"""@param evt: Fife mouseevent, mouseposition to zoom in"""
 		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom > VIEW.ZOOM_MAX):
 			zoom = VIEW.ZOOM_MAX
+		elif mappoint is not None:
+			cam = self.session.view.cam
+			loc = cam.getLocation()
+			current_loc = loc.getMapCoordinates()
+			current_loc.x = (current_loc.x + mappoint.x)/2
+			current_loc.y = (current_loc.y + mappoint.y)/2
+			cursor = horizons.main.fife.cursor
+			screencoords = self.cam.toScreenCoordinates(current_loc)
+			cursor.setPosition(screencoords.x, screencoords.y)
+			self.session.view.center(current_loc.x, current_loc.y)
+			# Center cursor
 		self.set_zoom(zoom)
 
 	def get_zoom(self):

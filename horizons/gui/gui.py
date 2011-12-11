@@ -18,12 +18,14 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from fife import fife
+
 import os
 import os.path
 import time
-from fife.extensions import pychan
+import tempfile
 import logging
+from fife import fife
+from fife.extensions import pychan
 
 import horizons.main
 
@@ -138,7 +140,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				'start'    : events['e_start'],
 				'quit'     : events['e_quit'],
 			})
-			self.current.additional_widget = pychan.Icon(image="content/gui/images/background/transparent.png")
+
+			# load transparent background, that de facto prohibits access to other
+			# gui elements by eating all events
+			height = horizons.main.fife.engine_settings.getScreenHeight()
+			width = horizons.main.fife.engine_settings.getScreenWidth()
+			image = horizons.main.fife.imagemanager.loadBlank(width,  height)
+			image = fife.GuiImage(image)
+			self.current.additional_widget = pychan.Icon(image=image)
 			self.current.additional_widget.position = (0, 0)
 			self.current.additional_widget.show()
 			self.current.show()
@@ -246,22 +255,29 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
 
-		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
+		if not hasattr(self, 'filename_hbox'):
+			self.filename_hbox = self.current.findChild(name='enter_filename')
+			self.filename_hbox_parent = self.filename_hbox._getParent()
+
 		if mode == 'save': # only show enter_filename on save
-			self.current.findChild(name='enter_filename').show()
-		else:
-			self.current.findChild(name='enter_filename').hide()
-		"""
+			self.filename_hbox_parent.showChild(self.filename_hbox)
+		elif self.filename_hbox not in self.filename_hbox_parent.hidden_children:
+			self.filename_hbox_parent.hideChild(self.filename_hbox)
 
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if self.current.collectData('savegamelist') != -1: # check if we actually collect valid data
-				self.current.distributeData({'savegamefile' : \
+			if mode == 'save': # set textbox only if we are in save mode
+				if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
+					self.current.findChild(name="savegamefile").text = u""
+				else:
+					self.current.distributeData({'savegamefile' : \
 				                             map_file_display[self.current.collectData('savegamelist')]})
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
+		self.current.distributeData({'savegamelist' : -1}) # Don't select anything by default
 		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
 		                               tmp_selected_changed)
+		cb() # Refresh data on start
 		self.current.findChild(name="savegamelist").mapEvents({
 		    'savegamelist/action'              : cb,
 		    'savegamelist/mouseWheelMovedUp'   : cb,
@@ -269,28 +285,40 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
-		retval = self.show_dialog(self.current, {
-		                                          'okButton'     : True,
-		                                          'cancelButton' : False,
-		                                          'deleteButton' : 'delete',
-		                                          'savegamefile' : True
-		                                        },
-		                                        onPressEscape = False)
+		eventMap = {
+			'okButton'     : True,
+			'cancelButton' : False,
+			'deleteButton' : 'delete'
+		}
+
+		if mode == 'save':
+			eventMap['savegamefile'] = True
+
+		retval = self.show_dialog(self.current, eventMap, onPressEscape = False)
 		if not retval: # cancelled
 			self.current = old_current
 			return
 
 		if retval == 'delete':
 			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
-			self._delete_savegame(map_files)
+			delete_retval = self._delete_savegame(map_files)
+			if delete_retval:
+				self.current.distributeData({'savegamelist' : -1})
+				cb()
 			self.current = old_current
 			return self.show_select_savegame(mode=mode)
 
 		selected_savegame = None
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
-			if selected_savegame in map_file_display: # savegamename already exists
-				message = _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % selected_savegame
+			if selected_savegame == "":
+				self.show_error_popup(windowtitle = _("No filename given"), description = _("Please enter a valid filename."),)
+				self.current = old_current
+				return self.show_select_savegame(mode=mode) # reshow dialog
+			elif selected_savegame in map_file_display: # savegamename already exists
+				#xgettext:python-format
+				message = _("A savegame with the name '{name}' already exists.").format(
+				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
 					self.current = old_current
 					return self.show_select_savegame(mode=mode) # reshow dialog
@@ -431,57 +459,88 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	@staticmethod
 	def _create_show_savegame_details(gui, map_files, savegamelist):
 		"""Creates a function that displays details of a savegame in gui"""
+
 		def tmp_show_details():
 			"""Fetches details of selected savegame and displays it"""
-			# N_ takes care of plural forms for different languages
+			gui.findChild(name="screenshot").image = None
 			box = gui.findChild(name="savegamedetails_box")
 			old_label = box.findChild(name="savegamedetails_lbl")
 			if old_label is not None:
 				box.removeChild(old_label)
 			map_file = None
+			map_file_index = gui.collectData(savegamelist)
+			if map_file_index == -1:
+				return
 			try:
-				map_file = map_files[gui.collectData(savegamelist)]
+				map_file = map_files[map_file_index]
 			except IndexError:
 				# this was a click in the savegame list, but not on an element
 				# it happens when the savegame list is empty
 				return
 			savegame_info = SavegameManager.get_metadata(map_file)
+
+			# screenshot
+			if savegame_info['screenshot'] is not None:
+				# try to find a writeable location, that is accessible via relative paths
+				# (required by fife)
+				fd, filename = tempfile.mkstemp()
+				try:
+					path_rel = os.path.relpath(filename)
+				except ValueError: # the relative path sometimes doesn't exist on win
+					os.unlink(filename)
+					# try again in the current dir, it's often writable
+					fd, filename = tempfile.mkstemp(dir=os.curdir)
+					try:
+						path_rel = os.path.relpath(filename)
+					except ValueError:
+						fd, filename = None, None
+
+				if fd:
+					with os.fdopen(fd, "w") as f:
+						f.write(savegame_info['screenshot'])
+					# fife only supports relative paths
+					gui.findChild(name="screenshot").image = path_rel
+					os.unlink(filename)
+
+			# savegamedetails
 			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
 				details_label.text += _("Unknown savedate")
 			else:
-				details_label.text += _("Saved at %(time)s") % \
-				                       {'time': time.strftime("%H:%M, %A, %B %d",
-				                         time.localtime(savegame_info['timestamp']))}
+				#xgettext:python-format
+				details_label.text += _("Saved at {time}").format(
+				                         time=time.strftime("%H:%M, %A, %B %d",
+				                         time.localtime(savegame_info['timestamp'])))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
-			details_label.text += N_("Saved %(amount)d time",
-			                         "Saved %(amount)d times",
-			                         counter) % {'amount': counter}
+			# N_ takes care of plural forms for different languages
+			#xgettext:python-format
+			details_label.text += N_("Saved {amount} time",
+			                         "Saved {amount} times",
+			                         counter).format(amount=counter)
 			details_label.text += u'\n'
 			details_label.stylize('book_t')
 
 			from horizons.constants import VERSION
 			try:
 				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
-					details_label.text += _("Savegame version %d") % ( savegame_info['savegamerev'] )
+					#xgettext:python-format
+					details_label.text += _("Savegame version {version}").format(
+					                         version=savegame_info['savegamerev'])
 				else:
-					details_label.text += _("WARNING: Incompatible version %(version)d!") + u"\n" + _("Required version: %(need)d!") \
-					                % {'version' : savegame_info['savegamerev'], 'need' : VERSION.SAVEGAMEREVISION}
+					#xgettext:python-format
+					details_label.text += _("WARNING: Incompatible version {version}!").format(
+					                         version=savegame_info['savegamerev']) + u"\n" + \
+					                      _("Required version: {required}!").format(
+					                         required=VERSION.SAVEGAMEREVISION) #xgettext:python-format
 			except KeyError:
 				details_label.text += _("Incompatible version")
 
 
 			box.addChild( details_label )
 
-			"""
-			if savegame_info['screenshot']:
-				fd, filename = tempfile.mkstemp()
-				os.fdopen(fd, "w").write(savegame_info['screenshot'])
-				box.addChild( pychan.widgets.Icon(image=filename) )
-			"""
 
 			gui.adaptLayout()
 		return tmp_show_details
@@ -497,8 +556,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
-		message = _('Do you really want to delete the savegame "%s"?') % \
-		             SavegameManager.get_savegamename_from_filename(selected_file)
+		#xgettext:python-format
+		message = _("Do you really want to delete the savegame '{name}'?").format(
+		             name=SavegameManager.get_savegamename_from_filename(selected_file))
 		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):
 			try:
 				os.unlink(selected_file)

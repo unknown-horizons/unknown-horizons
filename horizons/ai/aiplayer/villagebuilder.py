@@ -65,9 +65,9 @@ class VillageBuilder(AreaBuilder):
 		self.roads_built = False
 		self.personality = self.owner.personality_manager.get('VillageBuilder')
 
-		# initialise here for feeder islands
-		self.num_sections = 0
-		self.current_section = 0
+		if self.land_manager.feeder_island:
+			self.num_sections = 0
+			self.current_section = 0
 
 	def save(self, db):
 		super(VillageBuilder, self).save(db)

@@ -436,8 +436,14 @@ class WeaponHolder(object):
 		if self.is_attacking():
 			target = self.get_attack_target()
 			if isinstance(target, Ship):
-				return (_('Attacking ') + target.classname.lower() + ' ' + target.name + ' (' + target.owner.name + ')', target.position)
-			return (_('Attacking ') + target.owner.name, target.position)
+				#xgettext:python-format
+				string = _("Attacking {target} '{name}' ({owner})")
+				return (string.format(target=target.classname.lower(), name=target.name,
+				                      owner=target.owner.name),
+				        target.position)
+			#xgettext:python-format
+			return (_('Attacking {owner}').format(owner=target.owner.name),
+			        target.position)
 		return super(WeaponHolder, self).get_status()
 
 @metaChangeListenerDecorator("user_move_issued")

@@ -48,11 +48,16 @@ class RouteConfig(object):
 
 		self._init_gui()
 
+	@property
+	def session(self):
+		return self.instance.session
+
 	def show(self):
 		self.minimap.draw()
 		self._gui.show()
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
+		self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
 		self.minimap.disable()
@@ -111,7 +116,20 @@ class RouteConfig(object):
 		elif not self.instance.route.can_enable():
 			self.stop_route()
 
+		self._check_no_entries_label()
+
 		self._gui.adaptLayout()
+
+	def _check_no_entries_label(self):
+		"""Update hint informing about how to add waypoints. Only visible when there are none."""
+		name = "no_entries_hint"
+		if not self.instance.route.waypoints:
+			lbl = widgets.Label(name=name, text=_("Click on a settlement to add a waypoint!"))
+			self._gui.findChild(name="left_vbox").addChild( lbl )
+		else:
+			lbl = self._gui.findChild(name=name)
+			if lbl:
+				self._gui.findChild(name="left_vbox").removeChild( lbl )
 
 	def move_entry(self, entry, direction):
 		"""
@@ -221,8 +239,14 @@ class RouteConfig(object):
 		else:
 			slot.findChild(name="amount").text = unicode("")
 
-	def show_resource_menu(self, slot, entry):
+	def handle_resource_click(self, widget, event):
+		if event.getButton() == fife.MouseEvent.LEFT:
+			self.show_resource_menu(widget.parent, widget.parent.parent)
+		elif event.getButton() == fife.MouseEvent.RIGHT:
+			# remove the load/unload order
+			self.add_resource(widget.parent, 0, widget.parent.parent)
 
+	def show_resource_menu(self, slot, entry):
 		position = self.widgets.index(entry)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
@@ -231,7 +255,7 @@ class RouteConfig(object):
 		# access directly, it's possible that it's not found in the gui if it's hidden
 		self.minimap.icon.hide()
 		label = self._gui.findChild(name="select_res_label")
-		label.text = _("Select resources:")
+		label.text = _("Select a resource:")
 
 		#hardcoded for 5 works better than vbox.width / button_width
 		amount_per_line = 5
@@ -284,7 +308,7 @@ class RouteConfig(object):
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
 			button = slot.findChild(name="button")
-			button.capture(Callback(self.show_resource_menu, slot, entry))
+			button.capture(self.handle_resource_click, event_name = 'mouseClicked')
 			button.up_image = self.dummy_icon_path
 			button.down_image = self.dummy_icon_path
 			button.hover_image = self.dummy_icon_path
@@ -329,24 +353,20 @@ class RouteConfig(object):
 		  })
 		vbox.addChild(entry)
 
-	def append_bo(self, branch_office=None):
+	def append_bo(self, branch_office):
 		"""Add a bo to the list on the left side.
 		@param branch_office: Set to add a specific one, else the selected one gets added.
 		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
+			# TODO: error sound
 			return
-
-		if branch_office is None:
-			selected = self.listbox._getSelectedItem()
-
-			if selected == None:
-				return
-			branch_office = self.branch_offices[selected]
 
 		self.instance.route.append(branch_office)
 		self.add_gui_entry(branch_office)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
+
+		self._check_no_entries_label()
 
 		self._gui.adaptLayout()
 
@@ -357,12 +377,27 @@ class RouteConfig(object):
 		slots : dict with slots for each entry
 		"""
 		self._gui = load_uh_widget("configure_route.xml")
-		self.listbox = self._gui.findChild(name="branch_office_list")
-		self.listbox._setItems(list(self.branch_offices))
 
 		self.widgets = []
 		self.slots = {}
 		self.slots_per_entry = 3
+
+		icon = self._gui.findChild(name="minimap")
+		def on_click(event, drag):
+			if drag:
+				return
+			if event.getButton() == fife.MouseEvent.LEFT:
+				map_coord = event.map_coord
+				tile = self.session.world.get_tile(Point(*map_coord))
+				if tile is not None and tile.settlement is not None:
+					self.append_bo( tile.settlement.branch_office )
+
+		self.minimap = Minimap(icon, self.session, \
+		                       horizons.main.fife.targetrenderer,
+		                       horizons.main.fife.imagemanager,
+		                       cam_border=False,
+		                       use_rotation=False,
+		                       on_click=on_click)
 
 		resources = horizons.main.db.get_res_id_and_icon(True)
 		#map an icon for a resource
@@ -378,10 +413,11 @@ class RouteConfig(object):
 		for entry in self.instance.route.waypoints:
 			self.add_gui_entry(entry['branch_office'], entry['resource_list'])
 		# we want escape key to close the widget, what needs to be fixed here?
-		#self._gui.on_escape = self.hide
 		self.start_button_set_active()
 		if self.instance.route.enabled:
 			self.start_button_set_inactive()
+
+		self._check_no_entries_label()
 
 		wait_at_unload_box = self._gui.findChild(name="wait_at_unload")
 		wait_at_unload_box.marked = self.instance.route.wait_at_unload
@@ -397,26 +433,9 @@ class RouteConfig(object):
 
 		self._gui.mapEvents({
 		  'cancelButton' : self.hide,
-		  'add_bo/mouseClicked' : self.append_bo,
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
-
-		icon = self._gui.findChild(name="minimap")
-		def on_click(event, drag):
-			if drag:
-				return
-			if event.getButton() == fife.MouseEvent.LEFT:
-				map_coord = event.map_coord
-				tile = self.instance.session.world.get_tile(Point(*map_coord))
-				if tile is not None and tile.settlement is not None:
-					self.append_bo( tile.settlement.branch_office )
-		self.minimap = Minimap(icon, self.instance.session, \
-		                       horizons.main.fife.targetrenderer,
-		                       horizons.main.fife.imagemanager,
-		                       cam_border=False,
-		                       use_rotation=False,
-		                       on_click=on_click)
 
 		"""
 		import cProfile as profile

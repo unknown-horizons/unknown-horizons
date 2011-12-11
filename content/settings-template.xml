@@ -19,6 +19,8 @@
 		<Setting name="LogToPrompt" type="int"> 1 </Setting>
 		<Setting name="LogToFile" type="int"> 0 </Setting>
 		<Setting name="Lighting" type="int"> 0 </Setting>
+		<Setting name="GLUseFramebuffer" type="bool"> True </Setting>
+		<Setting name="GLUseNPOT" type="bool"> True </Setting>
 	</Module>
 	<Module name="unknownhorizons">
 		<Setting name="AIPlayers" type="int">1</Setting>
@@ -42,6 +44,6 @@
 		<Setting name="MapResourceDensity" type="float">2.0</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">8</Setting>
+		<Setting name="SettingsVersion" type="int">9</Setting>
 	</Module>
 </Settings>

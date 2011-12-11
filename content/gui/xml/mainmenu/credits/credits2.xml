@@ -39,11 +39,12 @@
 		<VBox  name="box">
 			<Label text="Kristian Hynek (Kris_CZ)" />
 			<Label text="Petr Palička (peca)" />
+			<Label text="Vilem Soulak (Turmaleus)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Danish"  name="headline" />
 		<VBox  name="box">
-			<Label text="hellwing" />
+			<Label text="Jacob Hellwing (hellwing)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="German"  name="headline" />

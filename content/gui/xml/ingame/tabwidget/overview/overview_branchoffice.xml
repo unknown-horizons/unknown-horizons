@@ -24,10 +24,10 @@
 		<TooltipLabel name="running_costs" text=""
 			tooltip="Running costs" />
 		<Spacer max_size="50" />
-		<TooltipIcon name="collector_utilisation_label"  tooltip="Collector utilisation:"
+		<TooltipIcon name="collector_utilisation_label"  tooltip="Collector utilisation"
 			image="content/gui/icons/resources/cap_util.png" />
-		<TooltipLabel name="collector_utilisation" text=""  tooltip="Collector utilisation:"
-			comment="Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)" />
+		<TooltipLabel name="collector_utilisation" text=""  tooltip="Collector utilisation"
+			comment="Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)" />
 	</HBox>
 </Container>
 </Container>

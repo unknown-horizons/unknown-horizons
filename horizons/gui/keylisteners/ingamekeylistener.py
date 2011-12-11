@@ -143,6 +143,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.ingame_gui.show_chat_dialog()
 		elif keystr == 't':
 			self.session.world.toggle_translucency()
+		elif keystr == 'a':
+			self.session.world.toggle_owner_highlight()
 		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4, fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
 			num = int(keyval - fife.Key.NUM_0)
 			if evt.isControlPressed():
@@ -168,6 +170,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			# require shift to make it less likely that an ordinary user stumbles upon this
 			# this is done because the maps aren't usable without moving them to the right places
 			self.session.ingame_gui.show_save_map_dialog()
+		elif keystr == 'o':
+			# copy mode: pipette tool
+			self.session.toggle_cursor('pipette')
 		else:
 			return
 		evt.consume()

@@ -25,8 +25,7 @@ from fife import fife
 
 import horizons.main
 
-from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, \
-	TraderShipOverviewTab, EnemyShipOverviewTab
+from horizons.gui.tabs import TraderShipOverviewTab, EnemyShipOverviewTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
@@ -36,7 +35,7 @@ from horizons.util import Point, NamedObject, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.command.uioptions import TransferResource
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED
+from horizons.constants import LAYERS, STORAGE, GAME_SPEED, GFX
 from horizons.scheduler import Scheduler
 from horizons.world.component.healthcomponent import HealthComponent
 
@@ -86,6 +85,7 @@ class ShipRoute(object):
 		self.waypoints[position]['resource_list'].pop(res_id)
 
 	def on_route_bo_reached(self):
+		"""Transfer resources, wait if necessary and move to next bo when possible"""
 		branch_office = self.get_location()['branch_office']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
 
@@ -131,12 +131,18 @@ class ShipRoute(object):
 					if settlement.inventory[res] < amount: # not enough res
 						amount = settlement.inventory[res]
 
+					# the ship should never pick up more than the number defined in the route config
+					if self.ship.inventory[res] + amount > self.get_location()['resource_list'][res]:
+						amount = self.get_location()['resource_list'][res] - self.ship.inventory[res]
+
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
 					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
 
-				if amount_transferred < status.remaining_transfers[res] and self.ship.inventory.get_free_space_for(res) > 0:
+				if amount_transferred < status.remaining_transfers[res] and \
+				   self.ship.inventory.get_free_space_for(res) > 0 and\
+				   self.ship.inventory[res] < self.get_location()['resource_list'][res]:
 					status.settlement_provides_enough_res = False
 				status.remaining_transfers[res] -= amount_transferred
 			else:
@@ -269,8 +275,14 @@ class ShipRoute(object):
 	def get_ship_status(self):
 		"""Return the current status of the ship."""
 		if self.ship.is_moving():
-			return (_('Trade route: going to %s' % self.ship.get_location_based_status(self.ship.get_move_target())), self.ship.get_move_target())
-		return (_('Trade route: waiting at %s' % self.ship.get_location_based_status(self.ship.position)), self.ship.position)
+			#xgettext:python-format
+			return (_('Trade route: going to {location}').format(
+			           location=self.ship.get_location_based_status(self.ship.get_move_target())),
+			        self.ship.get_move_target())
+			#xgettext:python-format
+		return (_('Trade route: waiting at {position}').format(
+		           position=self.ship.get_location_based_status(self.ship.position)),
+		        self.ship.position)
 
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
@@ -278,7 +290,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	@param y: int y position
 	"""
 	pather_class = ShipPather
-	tabs = (ShipOverviewTab, ShipInventoryTab, )
+	tabs = (ShipOverviewTab, )
 	enemy_tabs = (EnemyShipOverviewTab, )
 	health_bar_y = -150
 	is_ship = True
@@ -316,7 +328,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
-		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)
@@ -329,6 +340,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.deselect()
 			if self in self.session.selected_instances:
 				self.session.selected_instances.remove(self)
+		super(Ship, self).remove()
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
@@ -358,7 +370,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
 		self._selected = True
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1, 64)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.SHIP_OUTLINE_WIDTH, GFX.SHIP_OUTLINE_THRESHOLD)
 		# add a buoy at the ship's target if the player owns the ship
 		if self.session.world.player == self.owner:
 			self._update_buoy()
@@ -473,13 +485,17 @@ class Ship(NamedObject, StorageHolder, Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				return (_('Going to %s' % location_based_status), target)
-			return (_('Going to %(x)d, %(y)d' % {'x': target.x, 'y': target.y}), target)
+				#xgettext:python-format
+				return (_('Going to {location}').format(location=location_based_status), target)
+			#xgettext:python-format
+			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				return (_('Idle at %s' % location_based_status), self.position)
-			return (_('Idle at %(x)d, %(y)d' % {'x': self.position.x, 'y': self.position.y}), self.position)
+				#xgettext:python-format
+				return (_('Idle at {location}').format(location=location_based_status), self.position)
+			#xgettext:python-format
+			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

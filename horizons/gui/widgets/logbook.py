@@ -87,9 +87,10 @@ class LogBook(object):
 		# don't show if there are no messages
 		#if len(self._messages) == 0:
 		#	return
-		self._gui.show()
-		self.session.ingame_gui.on_switch_main_widget(self)
-		self.session.speed_pause(True)
+		if not self._gui.isVisible():
+			self._gui.show()
+			self.session.ingame_gui.on_switch_main_widget(self)
+			self.session.speed_pause(True)
 
 	def hide(self):
 		if not self._hiding_widget:

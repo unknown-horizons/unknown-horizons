@@ -166,7 +166,7 @@ def set_translations():
 		"city_name"                   : ("tooltip" , _("Click to change the name of your settlement.")),
 		},
 
-	"menu_panel.xml" : {
+	"minimap.xml" : {
 		# (tooltip of widget: build)
 		"build"                       : ("tooltip" , _("Build menu (B)")),
 		# (tooltip of widget: destroy_tool)
@@ -177,9 +177,6 @@ def set_translations():
 		"gameMenuButton"              : ("tooltip" , _("Game menu (Esc)")),
 		# (tooltip of widget: logbook)
 		"logbook"                     : ("tooltip" , _("Captain's log (L)")),
-		},
-
-	"minimap.xml" : {
 		# (tooltip of widget: rotateLeft)
 		"rotateLeft"                  : ("tooltip" , _("Rotate map counterclockwise (,)")),
 		# (tooltip of widget: rotateRight)
@@ -235,11 +232,6 @@ def set_translations():
 		"headline_change_name"        : ("text"    , _("Save map")),
 		# (tooltip of widget: okButton)
 		"okButton"                    : ("tooltip" , _("Save the map")),
-		},
-
-	"island_inventory.xml" : {
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Settlement inventory")),
 		},
 
 	"boatbuilder.xml" : {
@@ -308,6 +300,8 @@ def set_translations():
 		"buysell_help_label"          : ("text"    , _("Click on slot icon to toggle mode:")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Buy or sell resources")),
+		# (text of widget: headline_trade_history)
+		"headline_trade_history"      : ("text"    , _("Trade history")),
 		# (text of widget: sell_label)
 		"sell_label"                  : ("text"    , _("Sell resources")),
 		},
@@ -356,13 +350,18 @@ def set_translations():
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Building overview")),
 		# (tooltip of widget: capacity_utilisation_label)
-		"capacity_utilisation_label"  : ("tooltip" , _("capacity utilization")),
+		"capacity_utilisation_label"  : ("tooltip" , _("Capacity utilization")),
 		# (tooltip of widget: running_costs_label)
 		"running_costs_label"         : ("tooltip" , _("Running costs")),
 		# (tooltip of widget: capacity_utilisation)
-		"capacity_utilisation"        : ("tooltip" , _("capacity utilization")),
+		"capacity_utilisation"        : ("tooltip" , _("Capacity utilization")),
 		# (tooltip of widget: running_costs)
 		"running_costs"               : ("tooltip" , _("Running costs")),
+		},
+
+	"island_inventory.xml" : {
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Settlement inventory")),
 		},
 
 	"mainsquare_inhabitants.xml" : {
@@ -475,11 +474,11 @@ def set_translations():
 		# (text of widget: name_label)
 		"name_label"                  : ("text"    , _("Name:")),
 		# (tooltip of widget: collector_utilisation_label)
-		"collector_utilisation_label" : ("tooltip" , _("Collector utilisation:")),
+		"collector_utilisation_label" : ("tooltip" , _("Collector utilisation")),
 		# (tooltip of widget: running_costs_label)
 		"running_costs_label"         : ("tooltip" , _("Running costs")),
-		# (tooltip of widget: collector_utilisation) Percentage describing how much time the collectors were idle (not collecting resources for this building's inventory)
-		"collector_utilisation"       : ("tooltip" , _("Collector utilisation:")),
+		# (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
+		"collector_utilisation"       : ("tooltip" , _("Collector utilisation")),
 		# (tooltip of widget: running_costs)
 		"running_costs"               : ("tooltip" , _("Running costs")),
 		},
@@ -496,20 +495,15 @@ def set_translations():
 		"lbl_weapon_storage"          : ("text"    , _("Weapons:")),
 		},
 
-	"overview_mainsquare.xml" : {
-		# (text of widget: name_label)
-		"name_label"                  : ("text"    , _("Name:")),
-		},
-
 	"overview_productionbuilding.xml" : {
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Building overview")),
 		# (tooltip of widget: capacity_utilisation_label)
-		"capacity_utilisation_label"  : ("tooltip" , _("capacity utilization")),
+		"capacity_utilisation_label"  : ("tooltip" , _("Capacity utilization")),
 		# (tooltip of widget: running_costs_label)
 		"running_costs_label"         : ("tooltip" , _("Running costs")),
 		# (tooltip of widget: capacity_utilisation)
-		"capacity_utilisation"        : ("tooltip" , _("capacity utilization")),
+		"capacity_utilisation"        : ("tooltip" , _("Capacity utilization")),
 		# (tooltip of widget: running_costs)
 		"running_costs"               : ("tooltip" , _("Running costs")),
 		},
@@ -546,17 +540,6 @@ def set_translations():
 		"happiness"                   : ("tooltip" , _("Happiness")),
 		},
 
-	"overview_ship.xml" : {
-		# (text of widget: foundSettlement_label)
-		"foundSettlement_label"       : ("text"    , _("Build settlement:")),
-		# (text of widget: lbl_weapon_storage)
-		"lbl_weapon_storage"          : ("text"    , _("Weapons:")),
-		# (tooltip of widget: name)
-		"name"                        : ("tooltip" , _("Click to change the name of this ship.")),
-		# (tooltip of widget: foundSettlement)
-		"foundSettlement"             : ("tooltip" , _("Build settlement")),
-		},
-
 	"overview_signalfire.xml" : {
 		# (text of widget: signal_fire_description_lbl)
 		"signal_fire_description_lbl" : ("text"    , _("The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods.")),
@@ -581,16 +564,6 @@ def set_translations():
 		"exchange_label"              : ("text"    , _("Exchange:")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Trade")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("10t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("1t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("20t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("50t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("5t")),
 		# (text of widget: selling_label)
 		"selling_label"               : ("text"    , _("Selling")),
 		# (text of widget: ship_label)
@@ -604,38 +577,32 @@ def set_translations():
 		"exchange_label"              : ("text"    , _("Exchange:")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Trade")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("10t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("1t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("20t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("50t")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("5t")),
 		# (text of widget: ship_label)
 		"ship_label"                  : ("text"    , _("Ship:")),
 		# (text of widget: trade_with_label)
 		"trade_with_label"            : ("text"    , _("Trade partner:")),
 		},
 
-	"fighting_ship_inventory.xml" : {
-		# (text of widget: configure_route_label)
-		"configure_route_label"       : ("text"    , _("Configure trading route:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Inventory")),
-		# (text of widget: load_unload_label)
-		"load_unload_label"           : ("text"    , _("Load/Unload:")),
+	"overview_trade_ship.xml" : {
+		# (tooltip of widget: name)
+		"name"                        : ("tooltip" , _("Click to change the name of this ship.")),
+		# (tooltip of widget: configure_route)
+		"configure_route"             : ("tooltip" , _("Configure trading route")),
+		# (tooltip of widget: found_settlement)
+		"found_settlement"            : ("tooltip" , _("Build settlement")),
+		# (tooltip of widget: trade)
+		"trade"                       : ("tooltip" , _("Trade")),
 		},
 
-	"ship_inventory.xml" : {
-		# (text of widget: configure_route_label)
-		"configure_route_label"       : ("text"    , _("Configure trading route:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Inventory")),
-		# (text of widget: load_unload_label)
-		"load_unload_label"           : ("text"    , _("Load/Unload:")),
+	"overview_war_ship.xml" : {
+		# (tooltip of widget: name)
+		"name"                        : ("tooltip" , _("Click to change the name of this ship.")),
+		# (tooltip of widget: configure_route)
+		"configure_route"             : ("tooltip" , _("Configure trading route")),
+		# (tooltip of widget: found_settlement)
+		"found_settlement"            : ("tooltip" , _("Build settlement")),
+		# (tooltip of widget: trade)
+		"trade"                       : ("tooltip" , _("Trade")),
 		},
 
 	"overview_farmproductionline.xml" : {
@@ -690,8 +657,6 @@ def set_translations():
 		"lbl_wait_at_unload"          : ("text"    , _("Wait at unload:")),
 		# (tooltip of widget: cancelButton)
 		"cancelButton"                : ("tooltip" , _("Exit")),
-		# (tooltip of widget: add_bo) List of harbors in trade route
-		"add_bo"                      : ("tooltip" , _("Add to list")),
 		# (tooltip of widget: start_route) Trade route
 		"start_route"                 : ("tooltip" , _("Start route")),
 		},
@@ -882,6 +847,67 @@ def set_translations():
 		"version_label"               : ("text"    , VERSION.string()),
 		},
 
+	"multiplayer_creategame.xml" : {
+		# (text of widget: create_game_lbl)
+		"create_game_lbl"             : ("text"    , _("Create game:")),
+		# (text of widget: exit_to_mp_menu_lbl)
+		"exit_to_mp_menu_lbl"         : ("text"    , _("Back:")),
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Choose a map:")),
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Create game - Multiplayer")),
+		# (text of widget: mp_player_limit_lbl)
+		"mp_player_limit_lbl"         : ("text"    , _("Player limit:")),
+		# (tooltip of widget: create)
+		"create"                      : ("tooltip" , _("Create this new game")),
+		# (tooltip of widget: cancel)
+		"cancel"                      : ("tooltip" , _("Exit to multiplayer menu")),
+		},
+
+	"multiplayer_gamelobby.xml" : {
+		# (text of widget: exit_to_mp_menu_lbl)
+		"exit_to_mp_menu_lbl"         : ("text"    , _("Leave:")),
+		# (text of widget: game_start_notice)
+		"game_start_notice"           : ("text"    , _("The game will start as soon as enough players have joined.")),
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Chat:")),
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Gamelobby")),
+		# (text of widget: startmessage)
+		"startmessage"                : ("text"    , _("Game details:")),
+		# (tooltip of widget: cancel)
+		"cancel"                      : ("tooltip" , _("Exit gamelobby")),
+		},
+
+	"multiplayermenu.xml" : {
+		# (text of widget: active_games_lbl)
+		"active_games_lbl"            : ("text"    , _("Active games:")),
+		# (text of widget: create_game_lbl)
+		"create_game_lbl"             : ("text"    , _("Create game:")),
+		# (text of widget: exit_to_main_menu_lbl)
+		"exit_to_main_menu_lbl"       : ("text"    , _("Main menu:")),
+		# (text of widget: game_showonlyownversion)
+		"game_showonlyownversion"     : ("text"    , _("Only show games with the same version:")),
+		# (text of widget: headline_left)
+		"headline_left"               : ("text"    , _("New game - Multiplayer")),
+		# (text of widget: join_game_lbl)
+		"join_game_lbl"               : ("text"    , _("Join game")),
+		# (text of widget: name_lbl)
+		"name_lbl"                    : ("text"    , _("Apply:")),
+		# (text of widget: refr_gamelist_lbl)
+		"refr_gamelist_lbl"           : ("text"    , _("Refresh list:")),
+		# (tooltip of widget: apply_new_nickname)
+		"apply_new_nickname"          : ("tooltip" , _("Apply the new name")),
+		# (tooltip of widget: create)
+		"create"                      : ("tooltip" , _("Create a new game")),
+		# (tooltip of widget: join)
+		"join"                        : ("tooltip" , _("Join the selected game")),
+		# (tooltip of widget: cancel)
+		"cancel"                      : ("tooltip" , _("Exit to main menu")),
+		# (tooltip of widget: refresh)
+		"refresh"                     : ("tooltip" , _("Refresh list of active games")),
+		},
+
 	"settings.xml" : {
 		# (text of widget: autosave_interval_label)
 		"autosave_interval_label"     : ("text"    , _("Autosave interval in minutes:")),
@@ -935,82 +961,6 @@ def set_translations():
 		"cancelButton"                : ("tooltip" , _("Return")),
 		# (tooltip of widget: defaultButton)
 		"defaultButton"               : ("tooltip" , _("Reset to default settings")),
-		},
-
-	"credits4.xml" : {
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Special Thanks")),
-		# (text of widget: packagers_lbl)
-		"packagers_lbl"               : ("text"    , _("Packagers")),
-		# (text of widget: patchers_lbl)
-		"patchers_lbl"                : ("text"    , _("Patchers")),
-		# (text of widget: team_lbl)
-		"team_lbl"                    : ("text"    , _("UH-Team")),
-		# (text of widget: translators_lbl)
-		"translators_lbl"             : ("text"    , _("Translators")),
-		# (tooltip of widget: okButton)
-		"okButton"                    : ("tooltip" , _("Exit to main menu")),
-		},
-
-	"multiplayer_creategame.xml" : {
-		# (text of widget: create_game_lbl)
-		"create_game_lbl"             : ("text"    , _("Create game:")),
-		# (text of widget: exit_to_mp_menu_lbl)
-		"exit_to_mp_menu_lbl"         : ("text"    , _("Back:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Choose a map:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Create game - Multiplayer")),
-		# (text of widget: mp_player_limit_lbl)
-		"mp_player_limit_lbl"         : ("text"    , _("Player limit:")),
-		# (tooltip of widget: create)
-		"create"                      : ("tooltip" , _("Create this new game")),
-		# (tooltip of widget: cancel)
-		"cancel"                      : ("tooltip" , _("Exit to multiplayer menu")),
-		},
-
-	"multiplayer_gamelobby.xml" : {
-		# (text of widget: exit_to_mp_menu_lbl)
-		"exit_to_mp_menu_lbl"         : ("text"    , _("Leave:")),
-		# (text of widget: game_start_notice)
-		"game_start_notice"           : ("text"    , _("The game will start as soon as enough players have joined.")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Chat:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Gamelobby")),
-		# (text of widget: startmessage)
-		"startmessage"                : ("text"    , _("Game details:")),
-		# (tooltip of widget: cancel)
-		"cancel"                      : ("tooltip" , _("Exit gamelobby")),
-		},
-
-	"multiplayermenu.xml" : {
-		# (text of widget: active_games_lbl)
-		"active_games_lbl"            : ("text"    , _("Active games:")),
-		# (text of widget: create_game_lbl)
-		"create_game_lbl"             : ("text"    , _("Create game:")),
-		# (text of widget: exit_to_main_menu_lbl)
-		"exit_to_main_menu_lbl"       : ("text"    , _("Main menu:")),
-		# (text of widget: game_showonlyownversion)
-		"game_showonlyownversion"     : ("text"    , _("Show only games with the same version:")),
-		# (text of widget: headline_left)
-		"headline_left"               : ("text"    , _("New game - Multiplayer")),
-		# (text of widget: join_game_lbl)
-		"join_game_lbl"               : ("text"    , _("Join game")),
-		# (text of widget: name_lbl)
-		"name_lbl"                    : ("text"    , _("Apply:")),
-		# (text of widget: refr_gamelist_lbl)
-		"refr_gamelist_lbl"           : ("text"    , _("Refresh list:")),
-		# (tooltip of widget: apply_new_nickname)
-		"apply_new_nickname"          : ("tooltip" , _("Apply the new name")),
-		# (tooltip of widget: create)
-		"create"                      : ("tooltip" , _("Create a new game")),
-		# (tooltip of widget: join)
-		"join"                        : ("tooltip" , _("Join the selected game")),
-		# (tooltip of widget: cancel)
-		"cancel"                      : ("tooltip" , _("Exit to main menu")),
-		# (tooltip of widget: refresh)
-		"refresh"                     : ("tooltip" , _("Refresh list of active games")),
 		},
 
 	"select_savegame.xml" : {

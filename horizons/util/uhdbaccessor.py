@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import sys
 from random import randint
 
+from horizons.constants import PATHS
 from horizons.util import decorators
 from horizons.util.dbreader import DbReader
 from horizons.util.gui import get_res_icon
@@ -156,8 +158,11 @@ class UhDbAccessor(DbReader):
 		@param building_class_id: class of building, int
 		@return: string tooltip_text
 		"""
-		sql = "SELECT tooltip_text FROM building WHERE id = ?"
-		return self.cached_query(sql, building_class_id)[0][0]
+		sql = "SELECT name, tooltip_text FROM building WHERE id = ?"
+		query = self.cached_query(sql, building_class_id)[0]
+		#xgettext:python-format
+		tooltip = _("{building}: {description}")
+		return tooltip.format(building=query[0], description=query[1])
 
 
 	def get_building_id_buttonname_settlerlvl(self):
@@ -165,6 +170,13 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT id, button_name, settler_level \
 		                          FROM building \
 		                          WHERE button_name IS NOT NULL")
+
+	def get_settlerlvl_of_building(self, building_id):
+		"""Returns the level a building can be built or a very large int"""
+		res = self.cached_query("SELECT settler_level FROM building \
+														 WHERE button_name IS NOT NULL AND \
+		                         id = ?", building_id)
+		return res[0][0] if res else sys.maxint
 
 	def get_related_building_ids(self, building_class_id):
 		"""Returns list of building ids related to building_class_id.
@@ -273,3 +285,9 @@ class UhDbAccessor(DbReader):
 	def get_weapon_attack_radius(self, weapon_id):
 		"""Returns weapon's attack radius modifier."""
 		return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
+
+
+
+def read_savegame_template(db):
+	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
+	db.execute_script( savegame_template.read() )

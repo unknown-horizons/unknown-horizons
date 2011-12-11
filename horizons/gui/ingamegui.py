@@ -26,7 +26,7 @@ from fife.extensions import pychan
 from horizons.entities import Entities
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect
 from horizons.util.python import Callback
-from horizons.gui.mousetools import BuildingTool, SelectionTool
+from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
@@ -347,7 +347,7 @@ class IngameGui(LivingObject):
 			if not update: # this was only a toggle call, don't reshow
 				return
 
-		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
+		self.session.set_cursor() # set default cursor for build menu
 		self.deselect_all()
 
 		if not any( (settlement.owner == self.session.world.player) for settlement in self.session.world.settlements):
@@ -375,7 +375,7 @@ class IngameGui(LivingObject):
 		cls = Entities.buildings[building_id]
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
-		self.session.cursor = BuildingTool(self.session, cls, None if unit is None else unit())
+		self.session.set_cursor('building', cls, None if unit is None else unit())
 
 	def toggle_road_tool(self):
 		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL_CLASS:
@@ -383,7 +383,7 @@ class IngameGui(LivingObject):
 				print self.session.cursor._class.id, BUILDINGS.TRAIL_CLASS
 			self._build(BUILDINGS.TRAIL_CLASS)
 		else:
-			self.session.cursor = SelectionTool(self.session)
+			self.session.set_cursor()
 
 	def _get_menu_object(self, menu):
 		"""Returns pychan object if menu is a string, else returns menu
@@ -516,7 +516,8 @@ class IngameGui(LivingObject):
 			self.session.save_map(name)
 			self._hide_save_map_dialog()
 		else:
-			self.session.gui.show_popup(_('Error'), _('Valid map names are in the form') + u' [a-zA-Z0-9_-]+')
+			#xgettext:python-format
+			self.session.gui.show_popup(_('Error'), _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+'))
 
 	def on_escape(self):
 		if self.main_widget:
@@ -526,8 +527,8 @@ class IngameGui(LivingObject):
 		return True
 
 	def on_switch_main_widget(self, widget):
-		"""The main widget has been switched to the given one (possible None)."""
-		if self.main_widget: # close the old one if it exists
+		"""The main widget has been switched to the given one (possibly None)."""
+		if self.main_widget and self.main_widget != widget: # close the old one if it exists
 			old_main_widget = self.main_widget
 			self.main_widget = None
 			old_main_widget.hide()

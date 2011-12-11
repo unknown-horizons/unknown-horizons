@@ -49,6 +49,7 @@ from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
 from horizons.util import (Color, DbReader, Rect, WorldObject, NamedObject, LivingObject,
 						   SavegameAccessor, Point, DifficultySettings)
+from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world import World
 
 
@@ -75,7 +76,7 @@ def create_map():
 	os.close(fd)
 
 	db = DbReader(islandfile)
-	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
+	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
 	db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 
 	db("BEGIN TRANSACTION")
@@ -85,17 +86,17 @@ def create_map():
 			ground = GROUND.DEFAULT_LAND
 		else:
 			# Add coastline at the borders.
-			ground = 49
-		tiles.append((x, y, ground))
-	db.execute_many("INSERT INTO ground VALUES(?, ?, ?)", tiles)
+			ground = GROUND.SHALLOW_WATER
+		tiles.append([x, y] + list(ground))
+	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", tiles)
 	db("COMMIT")
 
 	# Create savegame with the island above.
 	fd, savegame = tempfile.mkstemp()
 	os.close(fd)
-	shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, savegame)
 
 	db = DbReader(savegame)
+	read_savegame_template(db)
 	db("BEGIN TRANSACTION")
 	db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", 20, 20, islandfile)
 	db("COMMIT")
@@ -264,12 +265,12 @@ def game_test(*args, **kwargs):
 	"""
 	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
 
-	timeout = kwargs.get('timeout', 5)
+	timeout = kwargs.get('timeout', 5)	# zero means no timeout
 	mapgen = kwargs.get('mapgen', create_map)
 	human_player = kwargs.get('human_player', True)
 	ai_players = kwargs.get('ai_players', 0)
 
-	if TEST_TIMELIMIT:
+	if TEST_TIMELIMIT and timeout:
 		def handler(signum, frame):
 			raise Exception('Test run exceeded %ds time limit' % timeout)
 		signal.signal(signal.SIGALRM, handler)
@@ -279,13 +280,13 @@ def game_test(*args, **kwargs):
 		def wrapped(*args):
 			horizons.main.db = db
 			s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
-			if TEST_TIMELIMIT:
+			if TEST_TIMELIMIT and timeout:
 				signal.alarm(timeout)
 			try:
 				return func(s, p, *args)
 			finally:
 				s.end()
-				if TEST_TIMELIMIT:
+				if TEST_TIMELIMIT and timeout:
 					signal.alarm(0)
 		return wrapped
 

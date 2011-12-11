@@ -41,8 +41,8 @@ import shutil
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port
-from horizons.util.uhdbaccessor import UhDbAccessor
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader
+from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
@@ -159,7 +159,8 @@ def start(command_line_arguments):
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
 	elif command_line_arguments.stringpreview:
-		startup_worked = _start_map(PATHS.SAVEGAME_TEMPLATE, ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False)
+		first_map = SavegameManager.get_maps()[0][0]
+		startup_worked = _start_map(first_map, ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False)
 		from development.stringpreviewwidget import StringPreviewWidget
 		__string_previewer = StringPreviewWidget(_modules.session)
 		__string_previewer.show()
@@ -203,7 +204,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
-	fife.cursor.set(fife.default_cursor_image)
+	fife.set_cursor_image('default')
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
@@ -266,7 +267,7 @@ def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natu
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
-	fife.cursor.set(fife.default_cursor_image)
+	fife.set_cursor_image('default')
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
@@ -341,7 +342,8 @@ def _start_map(map_name, ai_players, human_ai, is_scenario=False, campaign=None,
 		if os.path.exists(map_name):
 			map_file = map_name
 		else:
-			print _("Error: Cannot find map \"%s\".") % map_name
+			#xgettext:python-format
+			print _("Error: Cannot find map '{name}'.").format(name=map_name)
 			return False
 	if len(map_file.splitlines()) > 1:
 		print _("Error: Found multiple matches:")
@@ -375,15 +377,18 @@ def _start_campaign(campaign_name):
 		path_in_campaign_dir = os.path.join(SavegameManager.campaigns_dir, campaign_basename)
 		if not (os.path.exists(path_in_campaign_dir) and \
 		        os.path.samefile(campaign_name, path_in_campaign_dir)):
-			print _("Due to technical reasons, the campaign file will be copied to the UH campaign directory (%s).") % SavegameManager.campaigns_dir + \
+			#xgettext:python-format
+			print _("Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path}).").format(path=SavegameManager.campaigns_dir) + \
 			      "\n" + _("This means that changes in the file you specified will not apply to the game directly.") + \
-			      _("To see the changes, either always start UH with the current arguments or edit the file %s.") % path_in_campaign_dir
+			      _("To see the changes, either always start UH with the current arguments or edit the file {filename}.").format(filename=path_in_campaign_dir) #xgettext:python-format
+
 			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
 		# use campaign file name below
 		campaign_name = os.path.splitext( campaign_basename )[0]
 	campaign = SavegameManager.get_campaign_info(name = campaign_name)
 	if not campaign:
-		print _("Error: Cannot find campaign \"%s\".") % campaign_name
+		#xgettext:python-format
+		print _("Error: Cannot find campaign '{name}'.").format(campaign_name)
 		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
@@ -414,7 +419,8 @@ def _load_map(savegame, ai_players, human_ai):
 		if os.path.exists(savegame):
 			map_file = savegame
 		else:
-			print _("Error: Cannot find savegame \"%s\".") % savegame
+			#xgettext:python-format
+			print _("Error: Cannot find savegame '{name}'.").format(name=savegame)
 			return False
 	if len(map_file.splitlines()) > 1:
 		print _("Error: Found multiple matches:")
@@ -428,12 +434,10 @@ def _load_last_quicksave():
 	"""Load last quicksave
 	@return: bool, whether loading succeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
-	save = None
-	try:
-		save = save_files[len(save_files)-1]
-	except KeyError:
+	if not save_files:
 		print _("Error: No quicksave found.")
 		return False
+	save = max(save_files)
 	load_game(savegame=save)
 	return True
 

@@ -462,17 +462,11 @@ class Minimap(object):
 				if use_rotation:
 					# inlined _get_rotated_coords
 					rot_x, rot_y = self._rotate( (location_left + x, location_top + y), self._rotations)
-					rot_x, rot_y = (rot_x - location_left, rot_y - location_top)
-
-					# TODO: set this with one function call as soon as it's supported in fife
-					# (also below)
-					fife_point.x = rot_x
-					fife_point.y = rot_y
-					rt_addPoint(render_name, fife_point , *color)
+					fife_point.set(rot_x - location_left, rot_y - location_top)
 				else:
-					fife_point.x = x
-					fife_point.y = y
-					rt_addPoint(render_name, fife_point, *color)
+					fife_point.set(x, y)
+
+				rt_addPoint(render_name, fife_point, *color)
 
 
 	def _timed_update(self, force=False):

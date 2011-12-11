@@ -22,13 +22,13 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MainSquareOverviewTab, AccountTab, \
-		 MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
-		 EnemyBranchOfficeOverviewTab
+		 AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
+		 EnemyBranchOfficeOverviewTab, MainSquareOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.production.producer import ProducerBuilding
 from horizons.world.building.production import SettlerServiceProvider
+from horizons.world.building.path import Path
 
 class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
@@ -75,25 +75,9 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		self.settlement.branch_office = self # we never need to unset this since bo's are indestructible
 		# settlement branch office setting is done at the settlement for loading
 
-
-class MainSquare(StorageBuilding, SettlerServiceProvider):
+class MainSquare(Path, StorageBuilding, SettlerServiceProvider):
 	walkable = True
-	tabs = (MainSquareOverviewTab, AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
-
-	def __init__(self, *args, **kwargs):
-		super(MainSquare, self).__init__(*args, **kwargs)
-		self.__init()
-
-	def load(self, db, worldid):
-		super(MainSquare, self).load(db, worldid)
-		self.__init()
-
-	def __init(self):
-		self.island.path_nodes.register_road(self)
-
-	def remove(self):
-		super(MainSquare, self).remove()
-		self.island.path_nodes.unregister_road(self)
+	tabs = (MainSquareOverviewTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab)
 
 	def recalculate_orientation(self):
 		# change gfx according to roads here

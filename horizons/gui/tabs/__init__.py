@@ -19,11 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from inventorytab import InventoryTab, ShipInventoryTab, FightingShipInventoryTab
+from inventorytab import InventoryTab
 from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
 						BranchOfficeOverviewTab, SettlerOverviewTab, \
-						MainSquareOverviewTab, SignalFireOverviewTab, \
-						TraderShipOverviewTab, EnemyBuildingOverviewTab, \
+						SignalFireOverviewTab, TraderShipOverviewTab, EnemyBuildingOverviewTab, \
 						EnemyShipOverviewTab, ResourceDepositOverviewTab, \
 						EnemyBranchOfficeOverviewTab, FarmProductionOverviewTab, \
 						FightingShipOverviewTab, GroundUnitOverviewTab
@@ -36,7 +35,7 @@ from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, \
 						BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from mainsquaretabs import AccountTab, MainSquareSettlerTabSettlerTab, \
 						MainSquareSailorsTab, MainSquarePioneersTab, \
-						MainSquareSettlersTab
+						MainSquareSettlersTab, MainSquareOverviewTab
 from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab

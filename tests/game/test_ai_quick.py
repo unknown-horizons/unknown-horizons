@@ -25,17 +25,17 @@ from tests.game import game_test
 
 def test_ai_quick():
 	def generate_test(seed):
-		return lambda : True
-		# TODO: specifying kwargs is broken, the parameters will always stay as kwargs in future occurences of @game_test
-		#@game_test(mapgen = partial(generate_map_from_seed, seed), human_player = False, ai_players = 2)
+		@game_test(mapgen = partial(generate_map_from_seed, seed), human_player = False, ai_players = 2, timeout = 0)
 		def do_test(session, _):
 			"""
-			Let 2 AI players play for three minutes.
+			Let 2 AI players play for four minutes.
 			(disabled due to time limit)
 			"""
-			#session.run(seconds = 180)
-			#assert session.world.settlements
+			session.run(seconds = 4 * 60)
+			assert session.world.settlements
 		return do_test
 
 	for seed in xrange(1, 16):
 		yield generate_test(seed)
+
+test_ai_quick.long = True

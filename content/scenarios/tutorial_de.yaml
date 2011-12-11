@@ -18,11 +18,11 @@ events:
         \ Aufgabe gibt es auch kurze Mitteilungen.\n\nFalls Ihr das Logbuch geschlossen\
         \ habt, k\xF6nnt Ihr es per Taste 'L' oder \xFCber das Logbuchsymbol in der\
         \ Ecke oben rechts (unter der Weltkarte mit einem versiegelten Dokument und\
-        \ einer Feder) wieder \xF6ffnen.\n\nSolltet Ihr Verbesserungsvorschl\xE4ge\
-        \ f\xFCr Erkl\xE4rungen in der Anleitung haben, m\xF6chtet bestimmte Bereiche\
-        \ n\xE4her erkl\xE4rt haben oder Ihr habt einen Fehler gefunden: Teilt das\
-        \ dem Team mit! Nur so k\xF6nnen wir diese Anleitung verbessern.\nUnter www.unknown-horizons.org\
-        \ k\xF6nnt Ihr das Team kontaktieren oder Hilfe erhalten.\nUnd nun lasst uns\
+        \ einer Feder) wieder \xF6ffnen.\n\nIhr habt Vorschl\xE4ge f\xFCr bessere\
+        \ Erkl\xE4rungen, m\xF6chtet bestimmte Bereiche n\xE4her erl\xE4utert haben\
+        \ oder gar einen Fehler gefunden?\nTeilt das dem Team mit! Nur so k\xF6nnen\
+        \ wir diese Einf\xFChrung verbessern.\n\nUnter www.unknown-horizons.org k\xF6\
+        nnt Ihr das Team kontaktieren sowie auch Hilfe erhalten.\nUnd nun lasst uns\
         \ das eigentliche Spiel beginnen."]
     type: logbook_w
   - arguments: [!!python/unicode 'NEUE AUFGABE: INSEL BESIEDELN', "Um Euer Schiff\

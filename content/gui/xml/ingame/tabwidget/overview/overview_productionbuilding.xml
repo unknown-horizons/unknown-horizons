@@ -21,10 +21,10 @@
 		<TooltipLabel name="running_costs" text=""
 			tooltip="Running costs" />
 	<Spacer max_size="50" />
-		<TooltipIcon name="capacity_utilisation_label"  tooltip="capacity utilization"
+		<TooltipIcon name="capacity_utilisation_label"  tooltip="Capacity utilization"
 			image="content/gui/icons/resources/cap_util.png" />
 		<TooltipLabel name="capacity_utilisation" text=""
-			tooltip="capacity utilization" />
+			tooltip="Capacity utilization" />
 	</HBox>
 
 

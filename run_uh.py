@@ -137,7 +137,7 @@ def get_option_parser():
 	dev_group.add_option("--no-preload", dest="nopreload", action="store_true", \
 				               default=False, help=_("Disable preloading while in main menu"))
 	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="int", \
-				               help=_("Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11)"))
+				               help=_("Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"))
 	p.add_option_group(dev_group)
 
 	return p

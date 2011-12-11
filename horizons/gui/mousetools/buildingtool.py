@@ -32,7 +32,7 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
 from horizons.util.gui import load_uh_widget
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
 
 class BuildingTool(NavigationTool):
@@ -95,7 +95,7 @@ class BuildingTool(NavigationTool):
 		self._buildable_tiles.add(tile) # it's a set, so duplicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 
-	def end(self):
+	def remove(self):
 		self._remove_listeners()
 		self._remove_building_instances()
 		self._remove_coloring()
@@ -106,7 +106,7 @@ class BuildingTool(NavigationTool):
 			self.session.view.remove_change_listener(self.draw_gui)
 			self.gui.hide()
 		ExtScheduler().rem_all_classinst_calls(self)
-		super(BuildingTool, self).end()
+		super(BuildingTool, self).remove()
 
 	def load_gui(self):
 		if self.gui is None:
@@ -237,7 +237,8 @@ class BuildingTool(NavigationTool):
 				self.renderer.removeColored(self.buildings_fife_instances[building])
 				self.renderer.addOutlined(self.buildings_fife_instances[building], \
 				                          self.buildable_color[0], self.buildable_color[1],\
-				                          self.buildable_color[2], 1)
+				                          self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
+				                          GFX.BUILDING_OUTLINE_THRESHOLD)
 				if hasattr(self._class, "select_building"):
 					self._class.select_building(self.session, building.position, settlement)
 			else: # not buildable
@@ -270,7 +271,7 @@ class BuildingTool(NavigationTool):
 		self._build_logic.on_escape(self.session)
 		if self.gui is not None:
 			self.gui.hide()
-		self.session.cursor = SelectionTool(self.session)
+		self.session.set_cursor()
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
@@ -336,6 +337,7 @@ class BuildingTool(NavigationTool):
 						                                                horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
 						                                                not found_buildable or self._class.class_package == 'path'):
 				self.startPoint = point
+				self.highlight_buildable()
 				self.preview_build(point, point)
 			else:
 				self.on_escape()

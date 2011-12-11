@@ -45,6 +45,7 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.util import decorators, BuildingIndexer
 from horizons.util.dbreader import DbReader
+from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
@@ -141,6 +142,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			elif client_id is not None and len(ai_data) == 0:
 				# possible human player candidate with different client id
 				human_players.append(player)
+		self.owner_highlight_active = False
 
 		if self.player is None:
 			# we have no human player.
@@ -461,7 +463,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
 					x, y = locations[pos][1]
 					if object_class.check_build(self.session, Point(x, y), check_settlement = False):
-						Build(object_class, x, y, ownerless = True, island = locations[pos][2])(issuer = None)
+						Build(object_class, x, y, locations[pos][2], 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 						break
 
 		for island in self.islands:
@@ -541,7 +543,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# add tree to every nth tile and an animal to one in every M trees
 				if self.session.random.randint(0, 2) == 0 and \
 				   Tree.check_build(self.session, tile, check_settlement = False):
-					building = Build(Tree, x, y, ownerless = True, island = island,
+					building = Build(Tree, x, y, island, 45 + self.session.random.randint(0, 3) * 90, ownerless = True,
 					                 data = {"start_finished": True})(issuer = None)
 					if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
@@ -556,7 +558,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						fish_y = y + y_dir * self.session.random.randint(3, 9)
 						# now we have the location, check if we can build here
 						if (fish_x, fish_y) in self.ground_map:
-							Build(FishDeposit, fish_x, fish_y, ownerless = True, island = self)(issuer = None)
+							Build(FishDeposit, fish_x, fish_y, self, 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 
 	@decorators.make_constants()
 	def get_random_possible_ground_unit_position(self):
@@ -819,8 +821,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 	def save_map(self, path, prefix):
 		map_file = os.path.join(path, prefix + '.sqlite')
-		shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, map_file)
 		db = DbReader(map_file)
+		read_savegame_template(db)
 		db('BEGIN')
 		for island in self.islands:
 			island_name = '%s_island_%d_%d.sqlite' % (prefix, island.origin.x, island.origin.y)
@@ -864,6 +866,20 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		# make sure there's a trader ship for 2 settlements
 		if self.trader and len(self.settlements) > self.trader.get_ship_count() * 2:
 			self.trader.create_ship()
+
+	def toggle_owner_highlight(self):
+		renderer = self.session.view.renderer['InstanceRenderer']
+		self.owner_highlight_active = not self.owner_highlight_active
+		if self.owner_highlight_active: #show
+			for player in self.players:
+				red = player.color.r
+				green = player.color.g
+				blue = player.color.b
+				for settlement in player.settlements:
+					for tile in settlement.ground_map.itervalues():
+						renderer.addColored(tile._instance, red, green, blue)
+		else: # 'hide' functionality
+			renderer.removeAllColored()
 
 	@decorators.make_constants()
 	def toggle_translucency(self):

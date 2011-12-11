@@ -27,7 +27,7 @@ from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle
 from unit import Unit
-from horizons.constants import GAME_SPEED, WEAPONS
+from horizons.constants import GAME_SPEED, WEAPONS, GFX
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.gui.tabs import GroundUnitOverviewTab, EnemyShipOverviewTab
@@ -74,7 +74,7 @@ class GroundUnit(Unit):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
 		self.draw_health()
 		if reset_cam:
 			self.session.view.center(*self.position.to_tuple())

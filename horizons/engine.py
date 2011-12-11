@@ -301,7 +301,9 @@ class Fife(ApplicationBase):
 				name = ''
 
 		except IOError:
-			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': name, 'place': position}
+			#xgettext:python-format
+			print _("Configured language {lang} at {place} could not be loaded").format(
+			         lang=name, place=position)
 			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 			self._setting.set(UH_MODULE, "Language", 'System default')
 		update_all_translations()
@@ -340,10 +342,13 @@ class Fife(ApplicationBase):
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
-		self.default_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor.png')
-		self.tearing_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor_tear.png')
-		self.attacking_cursor_image = self.imagemanager.load('content/gui/images/cursors/cursor_attack.png')
-		self.cursor.set(self.default_cursor_image)
+		self.cursor_images = {
+		  'default': self.imagemanager.load('content/gui/images/cursors/cursor.png'),
+		  'tearing': self.imagemanager.load('content/gui/images/cursors/cursor_tear.png'),
+		  'attacking': self.imagemanager.load('content/gui/images/cursors/cursor_attack.png'),
+		  'pipette': self.imagemanager.load('content/gui/images/cursors/cursor_pipette.png')
+		}
+		self.cursor.set( self.cursor_images['default'] )
 
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)
@@ -375,6 +380,11 @@ class Fife(ApplicationBase):
 
 		self._gotInited = True
 		self.setup_setting_extras()
+
+	def set_cursor_image(self, which="default"):
+		"""Sets a certain cursor image.
+		See definition of cursor_images for reference."""
+		self.cursor.set( self.cursor_images[which] )
 
 	def setup_setting_extras(self):
 		slider_initial_data = {}
@@ -540,7 +550,7 @@ class Fife(ApplicationBase):
 		except ValueError:
 			headline = _("Invalid network port")
 			descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
-			advice = _("Please check the port you entered and make sure it's in the specified range.")
+			advice = _("Please check the port you entered and make sure it is in the specified range.")
 			horizons.main._modules.gui.show_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
 			self.set_uh_setting("NetworkPort", u"0")
@@ -552,13 +562,13 @@ class Fife(ApplicationBase):
 					NetworkInterface.create_instance()
 				NetworkInterface().network_data_changed(connect=False)
 			except Exception as e:
-				headline = _(u"Failed to apply new network data.")
-				descr = _(u"Networking couldn't be initialised with the current configuration.")
-				advice = _(u"Check the data you entered in the Network section.")
+				headline = _(u"Failed to apply new network settings.")
+				descr = _("Network features could not be initialized with the current configuration.")
+				advice = _("Check the settings you specified in the network section.")
 				if 0 < parse_port(port, allow_zero=True) < 1024:
 					#i18n This is advice for players seeing a network error with the current config
 					advice += u" " + \
-					       _("Low port numbers sometimes require special privileges, try one greater than 1024 or 0.")
+					       _("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
 				details = unicode(e)
 				horizons.main._modules.gui.show_error_popup(headline, descr, advice, details)
 				ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)

@@ -71,10 +71,10 @@ class NavigationTool(CursorTool):
 
 		self.tooltip = CoordsTooltip.get_instance(self)
 
-	def end(self):
+	def remove(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
-		super(NavigationTool, self).end()
+		super(NavigationTool, self).remove()
 
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
@@ -135,11 +135,12 @@ class NavigationTool(CursorTool):
 			y += 6 + mousepoint.y - self.session.view.cam.getViewPort().bottom()
 		x *= 10
 		y *= 10
-		self.session.view.autoscroll(x,y)
+		self.session.view.autoscroll(x, y)
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
-		self.session.view.zoom_in()
+		point = self._get_world_location_from_event(evt)
+		self.session.view.zoom_in(point)
 		evt.consume()
 
 	# move down mouse wheel = zoom out
@@ -151,18 +152,23 @@ class NavigationTool(CursorTool):
 		if command.getCommandType() == fife.CMD_APP_ICONIFIED or command.getCommandType() == fife.CMD_INPUT_FOCUS_LOST:
 			self.session.view.autoscroll(0, 0) #stop autoscroll
 
-	def get_hover_instances(self, evt):
+	def get_hover_instances(self, evt, layers=None):
 		"""
 		Utility method, returns the instances under the cursor
+		@param layers: list of layer ids to search for. Default to OBJECTS
 		"""
-		instances = self.session.view.cam.getMatchingInstances(\
-			fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS], False) # False for accurate
+		if layers is None:
+			layers = [LAYERS.OBJECTS]
 
-		layer_instances = [i.this for i in self.session.view.layers[LAYERS.OBJECTS].getInstances()]
-		instances = [i for i in instances if i.this in layer_instances]
+
+		all_instances = []
+		for layer in layers:
+			instances = self.session.view.cam.getMatchingInstances(\
+		    fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[layer], False) # False for accurate
+			all_instances.extend(instances)
 
 		hover_instances = []
-		for i in instances:
+		for i in all_instances:
 			id = i.getId()
 			# Check id, can be '' if instance is created and clicked on before
 			# actual game representation class is created (network play)
