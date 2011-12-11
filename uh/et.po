@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-11 11:42+0200\n"
+"PO-Revision-Date: 2011-12-11 12:01+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -1030,7 +1030,7 @@ msgstr "Valitud fail ei ole kehtiv stsenaariumi fail."
 
 #: horizons/gui/modules/singleplayermenu.py:283
 msgid "Error message:"
-msgstr ""
+msgstr "Veateade:"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:284
@@ -1046,11 +1046,11 @@ msgstr "Ehita"
 
 #: horizons/gui/mousetools/navigationtool.py:68
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Vihje eemaldamiseks vajuta H"
 
 #: horizons/gui/tabs/boatbuildertab.py:36
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Paadiehitaja ülevaade"
 
 #: horizons/gui/tabs/boatbuildertab.py:131
 msgid "Resources still needed:"
@@ -1059,37 +1059,36 @@ msgstr "Veel vajaminevad ressursid:"
 # 76%
 # 100%
 #: horizons/gui/tabs/boatbuildertab.py:209
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Kalapaat"
+msgstr "Kalapaadid"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:219
 #: horizons/i18n/guitranslations.py:262
 msgid "Trade boats"
-msgstr ""
+msgstr "Kaubapaadid"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:227
 #: horizons/i18n/guitranslations.py:279
 msgid "War boats"
-msgstr ""
+msgstr "Sõjapaadid"
 
 #: horizons/gui/tabs/boatbuildertab.py:234
 msgid "War ships"
-msgstr ""
+msgstr "Sõjalaevad"
 
 #: horizons/gui/tabs/boatbuildertab.py:251
 msgid "Confirm order"
-msgstr ""
+msgstr "Kinnita tellimus"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Ehitamisega seotud valdkonnad"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr "Samm"
+msgstr "Juurdekasv"
 
 #. (text of widget: headline)
 #. (tooltip of widget: trade)
@@ -1097,21 +1096,21 @@ msgstr "Samm"
 #: horizons/i18n/guitranslations.py:579 horizons/i18n/guitranslations.py:594
 #: horizons/i18n/guitranslations.py:605
 msgid "Trade"
-msgstr "Kaubandus"
+msgstr "Kauple"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:37 horizons/i18n/guitranslations.py:364
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Koloonia inventar"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:77 horizons/i18n/guitranslations.py:318
 msgid "Account"
-msgstr "Arvestusaruanne"
+msgstr "Konto"
 
 #: horizons/gui/tabs/mainsquaretabs.py:104
 msgid "Main square overview"
-msgstr ""
+msgstr "Peaväljaku ülevaade"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:118
@@ -1121,24 +1120,24 @@ msgstr "Asunike ülevaade"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Keela uuendused"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Luba uuendused"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:229
 #: horizons/i18n/guitranslations.py:409
 msgid "Sailors"
-msgstr ""
+msgstr "Meremehed"
 
 # 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:235
 #: horizons/i18n/guitranslations.py:378
 msgid "Pioneers"
-msgstr "Pioneeri"
+msgstr "Teerajajad"
 
 # 75%
 #. (text of widget: headline)
@@ -1146,7 +1145,7 @@ msgstr "Pioneeri"
 #: horizons/gui/tabs/mainsquaretabs.py:241
 #: horizons/i18n/guitranslations.py:438 horizons/i18n/guitranslations.py:690
 msgid "Settlers"
-msgstr "Asunik"
+msgstr "Asunikud"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:54 horizons/gui/tabs/overviewtab.py:450
@@ -1160,15 +1159,15 @@ msgstr "Harukontori ülevaade"
 
 #: horizons/gui/tabs/overviewtab.py:141 horizons/gui/tabs/overviewtab.py:269
 msgid "Ship overview"
-msgstr "Laevade ülevaade"
+msgstr "Laeva ülevaade"
 
 #: horizons/gui/tabs/overviewtab.py:149
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "Koloonia asutamiseks peab laev saare lähedal asuma."
 
 #: horizons/gui/tabs/overviewtab.py:154
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "Sul juba on koloonia sellel saarel."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:162 horizons/i18n/guitranslations.py:592
@@ -1176,39 +1175,39 @@ msgstr ""
 msgid "Build settlement"
 msgstr "Ehita koloonia"
 
+# 91%
 #: horizons/gui/tabs/overviewtab.py:186
 msgid "Load/Unload"
-msgstr ""
+msgstr "Peale- / Mahalaadimine"
 
 #: horizons/gui/tabs/overviewtab.py:189
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Osta/Müü"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
-msgstr ""
+msgstr "Liiga kaugel lähimast harukontorist"
 
 #: horizons/gui/tabs/overviewtab.py:204
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Kaubalaevale ei saa paigaldada relvastust."
 
 #: horizons/gui/tabs/overviewtab.py:205
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "Kaubalaevale relvastuse paigaldamine on võimatu."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
-msgstr ""
+msgstr "Paigalda relv"
 
 #: horizons/gui/tabs/overviewtab.py:243
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Eemalda relv"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:276
-#, fuzzy
 msgid "Unit overview"
-msgstr "Laevade ülevaade"
+msgstr "Üksuse ülevaade"
 
 #: horizons/gui/tabs/overviewtab.py:295 horizons/gui/tabs/overviewtab.py:397
 msgid "Production overview"
@@ -1216,37 +1215,37 @@ msgstr "Tootmise ülevaade"
 
 #: horizons/gui/tabs/selectmultitab.py:52
 msgid "Selected Units"
-msgstr ""
+msgstr "Valitud üksused"
 
 #: horizons/gui/widgets/buysellinventory.py:83
 #: horizons/gui/widgets/inventory.py:103
-#, python-format
+#, python-format, fuzzy
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Limiit: {amount}t ava kohta"
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
-msgstr ""
+msgstr "Tühjus"
 
 #: horizons/gui/widgets/logbook.py:157
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Sinu logiraamatus puuduvad kirjed!"
 
 #: horizons/gui/widgets/playerssettlements.py:42
-#, python-format
+#, python-format, fuzzy
 msgid "{player}'s settlements"
-msgstr ""
+msgstr "{player}'i kolooniad"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
 #: horizons/i18n/guitranslations.py:692
 msgid "Total"
-msgstr ""
+msgstr "Kokku"
 
 #: horizons/gui/widgets/playersships.py:45
-#, python-format
+#, python-format, fuzzy
 msgid "{player}'s ships"
-msgstr ""
+msgstr "{player}'i laevad"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
