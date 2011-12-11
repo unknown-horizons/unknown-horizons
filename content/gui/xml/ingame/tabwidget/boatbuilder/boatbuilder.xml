@@ -28,30 +28,30 @@
 
 	<!--	ONLY ACTIVE WHEN BUILDING -->
 
-	<Container position="25,133" size="260,160" name="container_active">
+	<Container position="25,133" size="260,190" name="container_active">
 		<!-- Current order, pause -->
 		<Label name="BB_current_order" position="0,0" text="Currently building:"
 			comment="Information about the ship currently under construction at the boat builder" />
-		<Label name="headline_BB_builtship_label" position="0,20" text=""/>
-		<TooltipIcon image="content/gfx/dummies/square_120.png" position="0,40"
+		<Label name="headline_BB_builtship_label" position="0,43" text=""/>
+		<TooltipIcon image="content/gfx/dummies/square_120.png" position="0,65"
 			name="BB_cur_ship_bg" />
-		<TooltipIcon name="BB_cur_ship_icon" position="2,42" />
-		<VBox position="125,50" name="BB_upgrades_box"/> 	<!-- translations? -->
+		<TooltipIcon name="BB_cur_ship_icon" position="2,67" />
+		<VBox position="125,75" name="BB_upgrades_box"/> 	<!-- translations? -->
 
 		<!-- one of those button gets removed at runtime -->
 		<TooltipButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
 			down_image="content/gui/icons/templates/production/toggle_active_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-			position="145,100"  border_size="0"  name="toggle_active_active"
+			position="145,130"  border_size="0"  name="toggle_active_active"
 			comment="Pauses the current ship production, can be resumed later"  tooltip="Pause" />
 		<TooltipButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
 			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
-			position="145,100"  border_size="0"  name="toggle_active_inactive"
+			position="145,130"  border_size="0"  name="toggle_active_inactive"
 		comment="Resumes the currently paused ship production"  tooltip="Resume" />
 	</Container>
 
-	<Container position="25,300" size="260,40" name="BB_progress_container">
+	<Container position="25,325" size="260,40" name="BB_progress_container">
 		<!-- Progress display -->
 		<ProgressBar position="0,5" name="progress" />
 		<Label position="0,20" name="BB_progress_label" text="Construction progress:"
@@ -59,7 +59,7 @@
 		<Label position="165,20" name="BB_progress_perc" text="" />
 	</Container>
 
-	<Container position="25,355" size="260,50" name="BB_needed_resources_container">
+	<Container position="25,380" size="260,50" name="BB_needed_resources_container">
 	<!-- Resources -->
 		<Label position="0,0" name="BB_needed_res_label" text="" />
 		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" />
@@ -72,13 +72,13 @@
 		[ ] 11t	[ ] 8t	[ ] 2t -->
 	</Container>
 
-	<Container position="25,400" size="260,100" name="BB_cancel_container">
+	<Container position="25,410" size="260,100" name="BB_cancel_container">
 	<!-- Cancel task -->
 		<Label position="10,30" name="BB_cancel_build_label" text="Cancel building:"
 			comment="abort construction of a ship, lose invested resources" />
 		<Label position="10,45" name="BB_cancel_warning_label" text="(lose all resources)"
 			comment="abort construction of a ship, lose invested resources" /> <!-- smaller font than the above one -->
-		<CancelButton name="BB_cancel_button"  position="160,12"  size="64,64"
+		<CancelButton name="BB_cancel_button"  position="160,22"  size="64,64"
 			comment="abort construction of a ship, lose invested resources"
 			tooltip="Cancel all building progress" /> <!-- needs a confirmation popup -->
 	</Container>
