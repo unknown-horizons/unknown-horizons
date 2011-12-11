@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-11 12:16+0200\n"
+"PO-Revision-Date: 2011-12-11 17:41+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -219,10 +219,11 @@ msgstr "Valukoda"
 msgid "Some of your inhabitants have no access to a main square."
 msgstr "Osadel elanikel puudub juurdepääs peaväljakule."
 
+# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Mõned sinu elanikud kolisid just välja."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -317,10 +318,11 @@ msgstr "Sa vajad rohkem ${resource} selle ehitise ehitamiseks."
 msgid "You won!"
 msgstr "Sinu võit!"
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Sinu mäng on automaatselt salvestatud."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -597,7 +599,7 @@ msgstr "suhkruroog"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr ""
+msgstr "teal"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -679,6 +681,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDL renderdusmootor on mõeldud ainult varulahendusena ja sellel esineb "
+"tõsised graafika tõrkeid. \n"
+"\n"
+"Kasuta vaid omavastutusel!"
 
 #: horizons/engine.py:305
 #, python-format
@@ -1342,10 +1348,11 @@ msgstr "Telk: Majutab sinu asunikke."
 msgid "Storage: Extends stock and provides collectors."
 msgstr "Ladu: Suurendab kaubavaru ja varustab kogujatega."
 
+# 89%
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
 msgid "Trail (R): Needed for collecting goods."
-msgstr ""
+msgstr "Rada (R): Vajalik kaupade kogumiseks."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
@@ -1500,7 +1507,7 @@ msgstr "Vali oma laev ja lähene rannikule vajutades parempoolset nuppu."
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:152
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Lõpetades,vajuta suurt nuppu laeva ülevaate paneelil."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:159
@@ -1511,67 +1518,68 @@ msgstr "Jooksvad kulud:"
 #. (text of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:703
 msgid "Inhabitants"
-msgstr ""
+msgstr "elanikud"
 
 #. (tooltip of widget: city_name)
 #: horizons/i18n/guitranslations.py:166
 msgid "Click to change the name of your settlement."
-msgstr "Klõpsa oma koloonia nime muutmiseks."
+msgstr "Vajuta oma koloonia nime muutmiseks."
 
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:171
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Ehitiste menüü (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:173
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Lammuta (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:175
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomaatia"
 
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:177
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Mängu menüü (Esc)"
 
+# 76%
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "Kapteni logiraamat (L)"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Keera kaarti vastpäeva (,)"
 
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:183
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Keera kaarti päripäeva (.)"
 
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Aeglusta mängu (-)"
 
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Kiirenda mängu (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
 msgid "Zoom in"
-msgstr ""
+msgstr "Suurenda"
 
 #. (tooltip of widget: zoomOut)
 #: horizons/i18n/guitranslations.py:191
 msgid "Zoom out"
-msgstr ""
+msgstr "Vähenda"
 
 #. (tooltip of widget: boards_icon)
 #. (tooltip of widget: costs_004)
@@ -1636,17 +1644,17 @@ msgstr "Vestlus"
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:230
 msgid "Enter prefix:"
-msgstr ""
+msgstr "Sisesta eesliide:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
 msgid "Save map"
-msgstr ""
+msgstr "Salvesta kaart"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "Salvesta kaart"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
@@ -1724,17 +1732,17 @@ msgstr "Ehita see laev!"
 #: horizons/i18n/guitranslations.py:268 horizons/i18n/guitranslations.py:285
 #: horizons/i18n/guitranslations.py:684
 msgid "Money"
-msgstr ""
+msgstr "Raha"
 
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
 msgid "Cloth"
-msgstr ""
+msgstr "Riie"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "Kahurid"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298
@@ -1754,7 +1762,7 @@ msgstr "Osta või müü resursse"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:304
 msgid "Trade history"
-msgstr ""
+msgstr "Kauplemise ajalugu"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:306
@@ -1797,22 +1805,22 @@ msgstr "Maksud"
 #. (tooltip of widget: show_production_overview)
 #: horizons/i18n/guitranslations.py:332
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "Näita koloonia poolt toodetud ressursse"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:337 horizons/world/__init__.py:303
 msgid "ally"
-msgstr ""
+msgstr "liitlane"
 
 #. (text of widget: enemy_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:339 horizons/world/__init__.py:305
 msgid "enemy"
-msgstr ""
+msgstr "vaenlane"
 
 #. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:341 horizons/world/__init__.py:307
 msgid "neutral"
-msgstr ""
+msgstr "neutraalne"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:346
@@ -1842,19 +1850,20 @@ msgstr "Enim vajatud resurss:"
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:411
 #: horizons/i18n/guitranslations.py:440
 msgid "Residents per house"
-msgstr ""
+msgstr "Elanike maja kohta"
 
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py:382 horizons/i18n/guitranslations.py:413
 #: horizons/i18n/guitranslations.py:442
 msgid "Summary"
-msgstr ""
+msgstr "Kokkuvõte"
 
 #. (text of widget: houses)
 #: horizons/i18n/guitranslations.py:384 horizons/i18n/guitranslations.py:415
 #: horizons/i18n/guitranslations.py:444
+#, fuzzy
 msgid "houses"
-msgstr ""
+msgstr "maju"
 
 # 88%
 # 81%
@@ -1925,7 +1934,7 @@ msgstr "Makstavad maksud"
 #: horizons/i18n/guitranslations.py:466 horizons/i18n/guitranslations.py:468
 #: horizons/i18n/guitranslations.py:530 horizons/i18n/guitranslations.py:536
 msgid "Tax rate"
-msgstr ""
+msgstr "Maksumäär"
 
 # 88%
 # 81%
@@ -1965,12 +1974,12 @@ msgstr ""
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:568
 msgid "Selling"
-msgstr ""
+msgstr "Müügis"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:495
 msgid "Weapons:"
-msgstr ""
+msgstr "Relvad:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:513
