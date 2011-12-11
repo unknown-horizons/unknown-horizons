@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-11 10:40+0200\n"
+"PO-Revision-Date: 2011-12-11 10:57+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -217,7 +217,7 @@ msgstr "Valukoda"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Osadel elanikel puudub juurdepääs peaväljakule."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -315,7 +315,7 @@ msgstr "Sa vajad rohkem ${resource} selle ehitise ehitamiseks."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Sinu võit!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -698,23 +698,27 @@ msgstr ""
 #: horizons/engine.py:553
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Palun kontrolli sisestatud pordi andmeid ja veendu et see jääb nõutud "
+"vahemikku."
 
 #: horizons/engine.py:565
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "Uute võrgu seadete rakendamine ebaõnnestus."
 
 #: horizons/engine.py:566 horizons/gui/modules/multiplayermenu.py:52
 msgid "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "Võrku ei suudetud rakendada praeguste seadetega."
 
 #: horizons/engine.py:567 horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Kontrolli võrgu seadeid."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine.py:571
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
+"Väiksemad pordi numbrid vajavad teinekord erilisi juurdepääsu õigusi,proovi "
+"numbrit 0 või suuremat kui 1024."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:166 horizons/gui/ingamegui.py:519
@@ -724,9 +728,8 @@ msgstr "Viga"
 
 # 75%
 #: horizons/gui/gui.py:166
-#, fuzzy
 msgid "Failed to save."
-msgstr "Kiirsalvestus ebaõnnestus."
+msgstr "Salvestamine ebaõnnestus."
 
 #: horizons/gui/gui.py:191
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -766,7 +769,7 @@ msgstr "Salvesta mäng"
 
 #: horizons/gui/gui.py:315
 msgid "No filename given"
-msgstr ""
+msgstr "Faili nimi puudub."
 
 #: horizons/gui/gui.py:315
 msgid "Please enter a valid filename."
