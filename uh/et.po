@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-10 16:56+0200\n"
+"PO-Revision-Date: 2011-12-11 10:40+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "mängimas"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -105,7 +105,7 @@ msgstr "Talu"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
-msgstr "kala varud"
+msgstr "Kala varud"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
