@@ -380,8 +380,8 @@ def _start_campaign(campaign_name):
 			#xgettext:python-format
 			print _("Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path}).").format(path=SavegameManager.campaigns_dir) + \
 			      "\n" + _("This means that changes in the file you specified will not apply to the game directly.") + \
-				 #xgettext:python-format
-			      _("To see the changes, either always start UH with the current arguments or edit the file {filename}.").format(filename=path_in_campaign_dir)
+			      _("To see the changes, either always start UH with the current arguments or edit the file {filename}.").format(filename=path_in_campaign_dir) #xgettext:python-format
+
 			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
 		# use campaign file name below
 		campaign_name = os.path.splitext( campaign_basename )[0]

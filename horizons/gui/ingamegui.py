@@ -517,7 +517,7 @@ class IngameGui(LivingObject):
 			self._hide_save_map_dialog()
 		else:
 			#xgettext:python-format
-			self.session.gui.show_popup(_('Error'), _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
+			self.session.gui.show_popup(_('Error'), _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+'))
 
 	def on_escape(self):
 		if self.main_widget:
