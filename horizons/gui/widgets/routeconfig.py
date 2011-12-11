@@ -124,7 +124,7 @@ class RouteConfig(object):
 		"""Update hint informing about how to add waypoints. Only visible when there are none."""
 		name = "no_entries_hint"
 		if not self.instance.route.waypoints:
-			lbl = widgets.Label(name=name, text=_("Click on the settlements to add waypoints!"))
+			lbl = widgets.Label(name=name, text=_("Click on a settlement to add a waypoint!"))
 			self._gui.findChild(name="left_vbox").addChild( lbl )
 		else:
 			lbl = self._gui.findChild(name=name)

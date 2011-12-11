@@ -85,6 +85,7 @@ class ShipRoute(object):
 		self.waypoints[position]['resource_list'].pop(res_id)
 
 	def on_route_bo_reached(self):
+		"""Transfer resources, wait if necessary and move to next bo when possible"""
 		branch_office = self.get_location()['branch_office']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
 
@@ -130,12 +131,18 @@ class ShipRoute(object):
 					if settlement.inventory[res] < amount: # not enough res
 						amount = settlement.inventory[res]
 
+					# the ship should never pick up more than the number defined in the route config
+					if self.ship.inventory[res] + amount > self.get_location()['resource_list'][res]:
+						amount = self.get_location()['resource_list'][res] - self.ship.inventory[res]
+
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
 					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
 
-				if amount_transferred < status.remaining_transfers[res] and self.ship.inventory.get_free_space_for(res) > 0:
+				if amount_transferred < status.remaining_transfers[res] and \
+				   self.ship.inventory.get_free_space_for(res) > 0 and\
+				   self.ship.inventory[res] < self.get_location()['resource_list'][res]:
 					status.settlement_provides_enough_res = False
 				status.remaining_transfers[res] -= amount_transferred
 			else:
