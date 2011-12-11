@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-11 12:01+0200\n"
+"PO-Revision-Date: 2011-12-11 12:16+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -1250,35 +1250,35 @@ msgstr "{player}'i laevad"
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
 msgid "None"
-msgstr ""
+msgstr "Mitte ühtegi"
 
 #: horizons/gui/widgets/playersships.py:88
 msgid "N/A"
-msgstr ""
+msgstr "Pole saadaval"
 
 #: horizons/gui/widgets/productionoverview.py:49
-#, python-format
+#, python-format, fuzzy
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "{settlement} tootmise ülevaade"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:74 horizons/i18n/guitranslations.py:663
 msgid "Start route"
-msgstr ""
+msgstr "Teekonna algus"
 
 #: horizons/gui/widgets/routeconfig.py:78
 msgid "Stop route"
-msgstr ""
+msgstr "Teekonna lõpp"
 
 #. (text of widget: headline)
 #: horizons/gui/widgets/routeconfig.py:245
 #: horizons/i18n/guitranslations.py:311
 msgid "Select resources:"
-msgstr "Vali resursid:"
+msgstr "Vali ressursid:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "mitte ühtegi"
 
 #. (text of widget: companies_label)
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:76
@@ -1380,7 +1380,7 @@ msgstr "Saviauk: Kaevandab savi lasundist."
 #. (tooltip of widget: distillery-1)
 #: horizons/i18n/guitranslations.py:92
 msgid "Distillery: Turns sugar into liquor."
-msgstr ""
+msgstr "Viinaköök: toodab suhkrust alkoholi"
 
 #. (tooltip of widget: herder-1)
 #: horizons/i18n/guitranslations.py:94
@@ -1400,12 +1400,12 @@ msgstr "Kartulipõld: Toodab sööki. Vajab talu."
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:100
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr ""
+msgstr "Suhkruroo väli: Kasutatakse alkoholi tootmiseks.Vajab talu"
 
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:102
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Puidust torn: Kaitseb sinu kolooniat."
 
 #. (tooltip of widget: villageschool-1)
 #: horizons/i18n/guitranslations.py:104
@@ -1425,77 +1425,77 @@ msgstr "Asunike ehitised"
 #. (text of widget: mining_label)
 #: horizons/i18n/guitranslations.py:117
 msgid "Mining"
-msgstr ""
+msgstr "Kaevandus"
 
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:121
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Lihunik: Vajab sigu või kariloomi.Toodab toitu."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:123
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Karjamaa: Kasvatab kariloomi.Vajab talu."
 
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:125
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Söe põletamine: Põletab suure koguse puitlaudu puusöeks."
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:127
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Kaevandus: Kaevandab maaki maardlast."
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:129
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Sigala: Kasvatab sigu.Vajab talu."
 
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:131
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Soola tiik: Aurutab veest soola.Ehitatakse rannikule."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:133
 msgid "Smeltery: Refines all kind of ores."
-msgstr ""
+msgstr "Valukoda: Puhastab erinevaid maake."
 
 #. (tooltip of widget: tavern-1)
 #: horizons/i18n/guitranslations.py:135
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "Kõrts: Korraldab kokkusaamisi."
 
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:137
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Tubakapõld: Toodab tubakat.Vajab talu."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:139
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Tubaka kaupmees: Toodab tubakatooteid."
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:141
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Tööriista valmistaja: Toodab rauast tööriistu."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:146
 msgid "Game start"
-msgstr ""
+msgstr "Mängu algus"
 
 #. (text of widget: howto_1_need_bo)
 #: horizons/i18n/guitranslations.py:148
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "Sa pead asutama koloonia enne ehitiste rajamist."
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:150
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Vali oma laev ja lähene rannikule vajutades parempoolset nuppu."
 
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:152
