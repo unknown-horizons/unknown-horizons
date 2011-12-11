@@ -40,7 +40,7 @@ class NamedComponent(Component):
 	def set_name(self, name=None):
 		"""Actually sets the name."""
 		if self.name is not None and self.name in NamedComponent.names_used:
-			NamedObject.names_used.remove(self.name)
+			NamedComponent.names_used.remove(self.name)
 		if name is None:
 			name = self.get_default_name()
 		self.name = name
