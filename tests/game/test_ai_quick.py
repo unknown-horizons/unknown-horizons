@@ -28,10 +28,10 @@ def test_ai_quick():
 		@game_test(mapgen = partial(generate_map_from_seed, seed), human_player = False, ai_players = 2, timeout = 0)
 		def do_test(session, _):
 			"""
-			Let 2 AI players play for three minutes.
+			Let 2 AI players play for four minutes.
 			(disabled due to time limit)
 			"""
-			session.run(seconds = 180)
+			session.run(seconds = 4 * 60)
 			assert session.world.settlements
 		return do_test
 
