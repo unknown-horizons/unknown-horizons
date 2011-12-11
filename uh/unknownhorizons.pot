@@ -872,7 +872,7 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr ""
 
 #: horizons/gui/ingamegui.py:519
-msgid "Valid map names are in the form"
+msgid "Valid map names are in the following form: {expression}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:40
@@ -2315,16 +2315,6 @@ msgstr ""
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
 msgid "{X} = Enable destruct mode"
-msgstr ""
-
-#. (text of widget: noi18n)
-#: horizons/i18n/guitranslations.py:802
-msgid "http://www.fifengine.de"
-msgstr ""
-
-#. (text of widget: noi18n)
-#: horizons/i18n/guitranslations.py:804
-msgid "http://www.unknown-horizons.org"
 msgstr ""
 
 #. (tooltip of widget: okButton)

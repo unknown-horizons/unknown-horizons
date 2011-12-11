@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-11 01:42+0200\n"
+"PO-Revision-Date: 2011-12-11 01:47+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -350,9 +350,8 @@ msgstr "Schnellspeicherung abgeschlossen."
 # 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your inhabitants reached level ${level}."
-msgstr "Eure Siedler haben die Stufe ${level} erreicht."
+msgstr "Eure Einwohner haben die Stufe ${level} erreicht."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -793,9 +792,8 @@ msgstr "Keine Speicherstände"
 
 # 96%
 #: horizons/gui/gui.py:249
-#, fuzzy
 msgid "There are no saved games to load."
-msgstr "Es gibt keine Speicherstände zum Laden"
+msgstr "Es gibt keine Speicherstände zum Laden."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -895,15 +893,14 @@ msgstr "Keine Datei ausgewählt"
 
 # 97%
 #: horizons/gui/gui.py:557
-#, fuzzy
 msgid "You need to select a savegame to delete."
-msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu entfernen"
+msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu entfernen."
 
 # 84%
 #: horizons/gui/gui.py:561
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Wollt Ihr wirklich den Spielstand \"{name}\" entfernen?"
+msgstr "Wollt Ihr den Spielstand '{name}' wirklich entfernen?"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
@@ -928,7 +925,7 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Ohne Mitspieler benötigt Ihr keine Diplomatie."
 
 #: horizons/gui/ingamegui.py:519
-msgid "Valid map names are in the form"
+msgid "Valid map names are in the following form: {expression}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:40
@@ -1003,7 +1000,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Recommended number of players: {number}"
 msgstr "Empfohlene Spieleranzahl: {number}"
 
@@ -1034,9 +1031,8 @@ msgstr "Ungültiger Spielername"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:141
-#, fuzzy
 msgid "You entered an invalid playername."
-msgstr "Ihr habt einen ungültigen Spielernamen eingegeben"
+msgstr "Ihr habt einen ungültigen Spielernamen eingegeben."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1218,15 +1214,13 @@ msgstr "Siedlung errichten"
 
 # 91%
 #: horizons/gui/tabs/overviewtab.py:186
-#, fuzzy
 msgid "Load/Unload"
-msgstr "Laden/Entladen:"
+msgstr "Laden/Entladen"
 
 # 88%
 #: horizons/gui/tabs/overviewtab.py:189
-#, fuzzy
 msgid "Buy/Sell"
-msgstr "Handel treiben:"
+msgstr "Handel treiben"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1240,9 +1234,8 @@ msgstr "Handelsschiffe können nicht bewaffnet werden"
 
 # 98%
 #: horizons/gui/tabs/overviewtab.py:205
-#, fuzzy
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr "Ihr könnt Handelsschiffe nicht mit Waffen ausrüsten"
+msgstr "Ihr könnt Handelsschiffe nicht mit Waffen ausrüsten."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
@@ -1598,9 +1591,8 @@ msgstr "Spielmenü (Esc)"
 # 76%
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
-#, fuzzy
 msgid "Captain's log (L)"
-msgstr "Logbuch"
+msgstr "Logbuch (L)"
 
 # 87%
 #. (tooltip of widget: rotateLeft)
@@ -1714,7 +1706,7 @@ msgstr "Karte speichern"
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "Speichere Karte ab"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
@@ -1798,12 +1790,12 @@ msgstr "Geld"
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
 msgid "Cloth"
-msgstr ""
+msgstr "Kleidung"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "Kanonen"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298
@@ -1823,7 +1815,7 @@ msgstr "Waren Ein-/Verkaufen"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:304
 msgid "Trade history"
-msgstr ""
+msgstr "Handelschronik"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:306
@@ -2021,9 +2013,8 @@ msgstr "Name:"
 #. (tooltip of widget: collector_utilisation_label)
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:477 horizons/i18n/guitranslations.py:481
-#, fuzzy
 msgid "Collector utilisation"
-msgstr "Auslastung der Träger:"
+msgstr "Auslastung der Träger"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:568
@@ -2108,9 +2099,8 @@ msgstr "Klickt hier, um dieses Schiff umzutaufen."
 # 95%
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
-#, fuzzy
 msgid "Configure trading route"
-msgstr "Handelsroute konfigurieren:"
+msgstr "Handelsroute konfigurieren"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2403,7 +2393,7 @@ msgstr "{ + } = Spielgeschwindigkeit erhöhen"
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
 msgid "{R} = Enable road building mode"
-msgstr ""
+msgstr "{R} = Straßenbaumodus"
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
@@ -2437,16 +2427,6 @@ msgstr "{HOCH} = Nach oben scrollen"
 #: horizons/i18n/guitranslations.py:800
 msgid "{X} = Enable destruct mode"
 msgstr "{X} = Abrissmodus aktivieren"
-
-#. (text of widget: noi18n)
-#: horizons/i18n/guitranslations.py:802
-msgid "http://www.fifengine.de"
-msgstr ""
-
-#. (text of widget: noi18n)
-#: horizons/i18n/guitranslations.py:804
-msgid "http://www.unknown-horizons.org"
-msgstr ""
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -2882,13 +2862,12 @@ msgstr ""
 #: horizons/main.py:346
 #, python-format
 msgid "Error: Cannot find map '{name}'."
-msgstr "Fehler: Die Karte \"{name}\" konnte nicht gefunden werden."
+msgstr "Fehler: Die Karte '{name}' konnte nicht gefunden werden."
 
 # 96%
 #: horizons/main.py:349 horizons/main.py:426
-#, fuzzy
 msgid "Error: Found multiple matches:"
-msgstr "Fehler: Mehrere Treffer gefunden: "
+msgstr "Fehler: Mehrere Treffer gefunden:"
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
@@ -2914,12 +2893,12 @@ msgstr ""
 #: horizons/savegamemanager.py:435
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr "Fehler: Die Kampagne \"{name}\" konnte nicht gefunden werden."
+msgstr "Fehler: Die Kampagne '{name}' konnte nicht gefunden werden."
 
 #: horizons/main.py:423
 #, python-format
 msgid "Error: Cannot find savegame '{name}'."
-msgstr "Fehler: Der Spielstand \"{name}\" konnte nicht gefunden werden."
+msgstr "Fehler: Der Spielstand '{name}' konnte nicht gefunden werden."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
@@ -2947,7 +2926,7 @@ msgstr ""
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr "Fehler: Das Szenario \"{name}\" konnte nicht gefunden werden."
+msgstr "Fehler: Das Szenario '{name}' konnte nicht gefunden werden."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -2956,9 +2935,8 @@ msgstr "Ihr habt gewonnen!"
 # What is this - the red "snake" at the end of the sentence? Some code from MS WORD?
 # 97%
 #: horizons/scenario/actions.py:76
-#, fuzzy
 msgid "You have completed this scenario."
-msgstr "Ihr habt das Szenario bewältigt. "
+msgstr "Ihr habt das Szenario bewältigt."
 
 # 75%
 #: horizons/scenario/actions.py:77
@@ -3024,7 +3002,7 @@ msgstr ""
 #: horizons/util/uhdbaccessor.py:164
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
