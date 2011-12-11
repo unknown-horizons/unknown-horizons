@@ -657,8 +657,6 @@ def set_translations():
 		"lbl_wait_at_unload"          : ("text"    , _("Wait at unload:")),
 		# (tooltip of widget: cancelButton)
 		"cancelButton"                : ("tooltip" , _("Exit")),
-		# (tooltip of widget: add_bo) List of harbors in trade route
-		"add_bo"                      : ("tooltip" , _("Add to list")),
 		# (tooltip of widget: start_route) Trade route
 		"start_route"                 : ("tooltip" , _("Start route")),
 		},

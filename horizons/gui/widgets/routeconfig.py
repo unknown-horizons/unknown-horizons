@@ -116,7 +116,20 @@ class RouteConfig(object):
 		elif not self.instance.route.can_enable():
 			self.stop_route()
 
+		self._check_no_entries_label()
+
 		self._gui.adaptLayout()
+
+	def _check_no_entries_label(self):
+		"""Update hint informing about how to add waypoints. Only visible when there are none."""
+		name = "no_entries_hint"
+		if not self.instance.route.waypoints:
+			lbl = widgets.Label(name=name, text=_("Click on the settlements to add waypoints!"))
+			self._gui.findChild(name="left_vbox").addChild( lbl )
+		else:
+			lbl = self._gui.findChild(name=name)
+			if lbl:
+				self._gui.findChild(name="left_vbox").removeChild( lbl )
 
 	def move_entry(self, entry, direction):
 		"""
@@ -242,7 +255,7 @@ class RouteConfig(object):
 		# access directly, it's possible that it's not found in the gui if it's hidden
 		self.minimap.icon.hide()
 		label = self._gui.findChild(name="select_res_label")
-		label.text = _("Select resources:")
+		label.text = _("Select a resource:")
 
 		#hardcoded for 5 works better than vbox.width / button_width
 		amount_per_line = 5
@@ -340,24 +353,20 @@ class RouteConfig(object):
 		  })
 		vbox.addChild(entry)
 
-	def append_bo(self, branch_office=None):
+	def append_bo(self, branch_office):
 		"""Add a bo to the list on the left side.
 		@param branch_office: Set to add a specific one, else the selected one gets added.
 		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
+			# TODO: error sound
 			return
-
-		if branch_office is None:
-			selected = self.listbox._getSelectedItem()
-
-			if selected == None:
-				return
-			branch_office = self.branch_offices[selected]
 
 		self.instance.route.append(branch_office)
 		self.add_gui_entry(branch_office)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
+
+		self._check_no_entries_label()
 
 		self._gui.adaptLayout()
 
@@ -368,8 +377,6 @@ class RouteConfig(object):
 		slots : dict with slots for each entry
 		"""
 		self._gui = load_uh_widget("configure_route.xml")
-		self.listbox = self._gui.findChild(name="branch_office_list")
-		self.listbox._setItems(list(self.branch_offices))
 
 		self.widgets = []
 		self.slots = {}
@@ -410,6 +417,8 @@ class RouteConfig(object):
 		if self.instance.route.enabled:
 			self.start_button_set_inactive()
 
+		self._check_no_entries_label()
+
 		wait_at_unload_box = self._gui.findChild(name="wait_at_unload")
 		wait_at_unload_box.marked = self.instance.route.wait_at_unload
 		def toggle_wait_at_unload():
@@ -424,7 +433,6 @@ class RouteConfig(object):
 
 		self._gui.mapEvents({
 		  'cancelButton' : self.hide,
-		  'add_bo/mouseClicked' : self.append_bo,
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
