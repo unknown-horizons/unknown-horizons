@@ -165,11 +165,14 @@ class MultiplayerMenu(object):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
 		if game == None:
 			game = self.__get_selected_game()
+		#xgettext:python-format
 		self.current.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.get_map_name())
+		#xgettext:python-format
 		self.current.findChild(name="game_playersnum").text =  _("Players: {player_amount}/{player_limit}").format(
 		                           player_amount=game.get_player_count(),
 		                           player_limit=game.get_player_limit())
 		creator_text = self.current.findChild(name="game_creator")
+		#xgettext:python-format
 		creator_text.text = _("Creator: {player}").format(player=game.get_creator())
 		creator_text.adaptLayout()
 		textplayers = self.current.findChild(name="game_players")
@@ -187,11 +190,13 @@ class MultiplayerMenu(object):
 		if game.get_uuid() == -1: # -1 signals no game
 			return
 		if game.get_version() != NetworkInterface().get_clientversion():
-			self.show_popup(_("Wrong version"), _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}").format(
+			self.show_popup(_("Wrong version"),
+			                   #xgettext:python-format
+			                _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}").format(
 			                  game_version=game.get_version(),
 			                  own_version=NetworkInterface().get_clientversion()))
 			return
-		# acctual join
+		# actual join
 		join_worked = NetworkInterface().joingame(game.get_uuid())
 		if not join_worked:
 			return
@@ -285,7 +290,7 @@ class MultiplayerMenu(object):
 			mapfile = self.current.files[mapindex]
 			number_of_players = SavegameManager.get_recommended_number_of_players( mapfile )
 			self.current.findChild(name="recommended_number_of_players_lbl").text = \
-					_("Recommended number of players: {number}").format(number=number_of_players)
+					_("Recommended number of players: {number}").format(number=number_of_players) #xgettext:python-format
 		if len(self.maps_display) > 0: # select first entry
 			self.current.distributeData({
 				'maplist' : 0,

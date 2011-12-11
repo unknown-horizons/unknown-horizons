@@ -301,6 +301,7 @@ class Fife(ApplicationBase):
 				name = ''
 
 		except IOError:
+			#xgettext:python-format
 			print _("Configured language {lang} at {place} could not be loaded").format(
 			         lang=name, place=position)
 			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])

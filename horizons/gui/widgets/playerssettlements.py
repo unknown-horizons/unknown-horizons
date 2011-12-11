@@ -39,6 +39,7 @@ class PlayersSettlements(StatsWidget):
 
 	def refresh(self):
 		super(PlayersSettlements, self).refresh()
+		#xgettext:python-format
 		self._gui.findChild(name = 'headline').text = _("{player}'s settlements").format(player=self.session.world.player.name)
 
 		sequence_number = 0

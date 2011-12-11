@@ -518,7 +518,8 @@ class IngameGui(LivingObject):
 			self.session.save_map(name)
 			self._hide_save_map_dialog()
 		else:
-			self.session.gui.show_popup(_('Error'), _('Valid map names are in the form') + u' [a-zA-Z0-9_-]+')
+			#xgettext:python-format
+			self.session.gui.show_popup(_('Error'), _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+'))
 
 	def on_escape(self):
 		if self.main_widget:
@@ -528,8 +529,8 @@ class IngameGui(LivingObject):
 		return True
 
 	def on_switch_main_widget(self, widget):
-		"""The main widget has been switched to the given one (possible None)."""
-		if self.main_widget: # close the old one if it exists
+		"""The main widget has been switched to the given one (possibly None)."""
+		if self.main_widget and self.main_widget != widget: # close the old one if it exists
 			old_main_widget = self.main_widget
 			self.main_widget = None
 			old_main_widget.hide()

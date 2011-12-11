@@ -69,7 +69,7 @@ class BuildingClass(type):
 		super(BuildingClass, self).__init__(self)
 		self.id = id
 		self._object = None
-		class_package = yaml_results['baseclass'].split('.')[0]
+		self.class_package = yaml_results['baseclass'].split('.')[0]
 		self.radius = yaml_results['radius']
 		self._name = yaml_results['name']
 		self.button_name = yaml_results['button_name']

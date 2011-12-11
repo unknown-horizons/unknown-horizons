@@ -106,48 +106,31 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: ["NOV\xDD \xDAKOL: POTRAVN\xCD Z\xC1SOBOV\xC1N\xCD", !!python/unicode 'You
-        will need to have some food-producing companies, too, because people in general
-        (and especially sailors) are very hungry.
-
-
-        Available companies in the first increment are the Hunter and Fisher.
-
-
-        The Hunter, surprisingly, hunts animals in the forest, so he needs trees around.
-
-
-        Note that you can place your Hunter close to the lumberjack''s forest.
-
-
-        It can happen that the animals don''t reproduce fast enough or simply hide
-        well.
-
-
-        Conclusion: the hunter is not too reliable if you need continuous supply.']
+  - arguments: ["NOV\xDD \xDAKOL: POTRAVN\xCD Z\xC1SOBOV\xC1N\xCD", "D\xE1le budete\
+        \ nutn\xE9 postavit n\u011Bkter\xE9 z\xE1kladn\xED spole\u010Dnosti, kter\xE9\
+        \ budou produkovat j\xEDdlo. V\u0161ichni lid\xE9 (a n\xE1mo\u0159n\xEDci\
+        \ obzvl\xE1\u0161t\u011B) jsou velmi hladov\xED.\n\nDostupn\xE9 spole\u010D\
+        nosti pro prvn\xED epochu jsou Lovec a Ryb\xE1\u0159.\n\nLovec, p\u0159ekvapiv\u011B\
+        , lov\xED v les\xEDch zv\xED\u0159ata, proto pot\u0159ebuje okolo sebe stromy.\n\
+        \nV\u0161imn\u011Bte si, \u017Ee lovec m\u016F\u017Eete um\xEDstit bl\xED\
+        zko d\u0159evorubcova lesa.\n\nSt\xE1v\xE1 se, \u017Ee zv\xED\u0159ata se\
+        \ nemno\u017E\xED dostate\u010Dn\u011B rychle nebo jednodu\u0161eji se um\xED\
+        \ dob\u0159e schovat.\n\nZ\xE1v\u011Brem: Lovec nen\xED p\u0159\xEDli\u0161\
+        \ spolehliv\xFD zdroj potravy, pokud pot\u0159ebujete nep\u0159eru\u0161ovan\xE9\
+        \ z\xE1soben\xED."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
-        the branch office and a fish school in range.
-
-
-        He will build a small rowing vessel and catch some fish.
-
-
-        This is a very constant supply at the cost of a slightly longer production
-        time per unit of food.
-
-
-        A small settlement like yours can use both companies, and you can better balance
-        pros and cons if you see the direct comparison.
-
-
-        TASK: Build a hunter and a fisher.
-
-
-        Don''t forget to connect them to your branch office with trails!']
+  - arguments: ['', "Ryb\xE1\u0159 pot\u0159ebuej budovu na pob\u0159e\u017E\xED stejn\u011B\
+        \ jako pobo\u010Dka a hejno ryb v dosahu.\n\nPostav\xED si malou lo\u010F\
+        ku a bude chytat ryby.\n\nJedn\xE1 se o nep\u0159etr\u017Eit\xFD zdroj potravy,\
+        \ cenou za to je trochu del\u0161\xED produk\u010Dn\xED \u010Das ka\u017E\
+        d\xE9 jednotky j\xEDdla.\n\nMal\xE1 osada, jakou je ta Va\u0161e, m\u016F\u017E\
+        e vyu\u017E\xEDt ob\u011B spole\u010Dnosti. Pokud je uvid\xEDte v p\u0159\xED\
+        m\xE9m srovn\xE1n\xED, m\u016F\u017Eete l\xE9pe porovnat jejich v\xFDhody\
+        \ a nev\xFDhody.\n\n\xDAKOL: Postavte lovce a ryb\xE1\u0159e.\n\nNezapome\u0148\
+        te je p\u0159ipojit k Va\u0161\xED pobo\u010Dce pomoc\xED stezek!"]
     type: logbook
-  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
-        branch office.']
+  - arguments: ["Postavte lovce a ryb\xE1\u0159e. Spojte je s budovou Va\u0161\xED\
+        \ pobo\u010Dky."]
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -159,48 +142,34 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: ["NOV\xDD \xDAKOL: N\xC1M\u011AST\xCD", !!python/unicode 'Your residents
-        need a main square where they can fetch their goods from.
-
-
-        This means that they need a trail connection from their home to the main square.
-
-
-        All goods in your branch office are available at this ''market place'', so
-        your residents do not need to walk to the fisher or even to the branch office.
-
-
-        You should consider founding your actual house settlement in an area where
-        you can easily expand it and build some trails, too.
-
-
-        You should avoid placing tents too close to your lumberjacks for example because
-        building tents will clear away the trees that your lumberjack needs to produce
-        boards.
-
-
-        TASK: Build a main square.']
+  - arguments: ["NOV\xDD \xDAKOL: N\xC1M\u011AST\xCD", "Va\u0161i obyvatel\xE9 pot\u0159\
+        ebuj\xED n\xE1m\u011Bst\xED, kde si mohou vyzvednout zbo\u017E\xED.\n\nTo\
+        \ znamen\xE1, \u017Ee mus\xED m\xEDt spojen\xED pomoc\xED stezky ze sv\xFD\
+        ch dom\u016F na n\xE1m\u011Bst\xED.\n\nV\u0161echno zbo\u017E\xED ve Va\u0161\
+        \xED pobo\u010Dce je dostupn\xE9 na tomto \"tr\u017Ei\u0161ti\", tak\u017E\
+        e obyvatel\xE9 nemus\xED chodit k ryb\xE1\u0159i nebo a\u017E do pobo\u010D\
+        ky.\n\nM\u011Bli byste zv\xE1\u017Eit zalo\u017Een\xED Va\u0161\xED obytn\xE9\
+        \ osady v oblasti, kterou m\u016F\u017Eete snadno roz\u0161\xED\u0159it a\
+        \ vybudovat kolem stezky.\n\nM\u011Bli byste se vyvarovat v\xFDstavby stan\u016F\
+        \ p\u0159\xEDli\u0161 bl\xEDzko Va\u0161emu d\u0159evorubci nap\u0159\xED\
+        klad, proto\u017Ee postaven\xEDm stan\u016F budou vyklizeny stromy, kter\xE9\
+        \ d\u0159evorubec pot\u0159ebuje k produkci prken.\n\n\xDAKOL: Postavte n\xE1\
+        m\u011Bst\xED."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
-
-
-        In the ''Account'' tab you get a balance sheet of this island, featuring all
-        costs you pay and all taxes you earn.
-
-
-        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
-        later on.
-
-
-        If your balance is positive, you all-in-all make a profit.
-
-
-        In the different increment overview tabs you can see statistics about your
-        inhabitants. You also set the increment-specific global tax here and allow
-        or deny inhabitants of this increment to upgrade to the next higher one.']
+  - arguments: ['', "Nyn\xED se bl\xED\u017Ee pod\xEDvejme na n\xE1m\u011Bst\xED.\n\
+        \nV z\xE1lo\u017Ece \"\xDA\u010Det\" m\u016F\u017Eete vid\u011Bt p\u0159ehled\
+        \ financ\xED t\xE9to Va\u0161eho ostrova, kter\xFD zahrnuje v\u0161echny platby,\
+        \ kter\xE9 plat\xEDte, a v\u0161echny dan\u011B, kter\xE9 dost\xE1v\xE1te.\n\
+        \nPolo\u017Eky \"N\xE1kup\" a \"Prodej\" ukazuj\xED Va\u0161i obchodn\xED\
+        \ bilanci a budou vysv\u011Btleny pozd\u011Bji.\n\nPokud je Va\u0161e bilance\
+        \ kladn\xE1, vykazujete zisk.\n\nD\xE1le jsou zde z\xE1lo\u017Eky odpov\xED\
+        daj\xEDc\xED jednotliv\xFDm epoch\xE1m. Zde m\u016F\u017Eete sledovat statistiky\
+        \ o Va\u0161ich obyvatel\xEDch. Zde m\u016F\u017Eete nastavit celkovou da\u0148\
+        \ a povolit nebo zak\xE1zat obyvatel\u016Fm na dan\xE9 \xFArovni postoupit\
+        \ do vy\u0161\u0161\xED \xFArovn\u011B."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a main square. Choose an area without many
-        economy buildings.']
+  - arguments: ["Postavte n\xE1m\u011Bst\xED. Vyberte oblast, kde se nenach\xE1z\xED\
+        \ mnoho produk\u010Dn\xEDch budov."]
     type: message
   - arguments: [tutStepDone, 25]
     type: set_var
@@ -218,23 +187,18 @@ events:
   - arguments: [tutStepDone, 25]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: RESIDENTIAL BUILDINGS', !!python/unicode 'Settlers
-        want to have a roof over their heads, else they won''t even think of living
-        in your city! You need to provide tents.
-
-
-        Tents are the basic residential buildings. Your inhabitants will want to upgrade
-        it when they reach higher increments.
-
-
-        Settlers may not look very useful since they will try to consume all goods
-        you produce - but they at least pay taxes, and that''s the only way you can
-        make money for now!
-
-
-        TASK: Build a tent and connect it to the main square.']
+  - arguments: ["NOV\xDD \xDAKOL: OBYTN\xC9 BUDOVY", "Osadn\xEDci cht\u011Bj\xED m\xED\
+        t st\u0159echu nad hlavou, jinak je ani nenapadne usadit se ve Va\u0161em\
+        \ m\u011Bst\u011B! Pot\u0159ebujete zajistit jim stany.\n\nStany jsou z\xE1\
+        kladn\xEDmi obytn\xFDmi budovami. Va\u0161i obyvatel\xE9 je budou vylep\u0161\
+        ovat a\u017E dos\xE1hnou vy\u0161\u0161\xED epochy.\n\nOsadn\xEDci se nezdaj\xED\
+        \ b\xFDt p\u0159\xEDli\u0161 u\u017Eite\u010Dn\xED, sna\u017E\xED se spot\u0159\
+        ebovat v\u0161echno zbo\u017E\xED, kter\xE9 produkujete, ale na druhou stranu\
+        \ plat\xED dan\u011B, kter\xE9 jsou prozat\xEDm Va\u0161\xEDm jedin\xFDm zdrojem\
+        \ pen\u011Bz!\n\n\xDAKOL: Postavte stan a propojte jej k n\xE1m\u011Bst\xED\
+        ."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a tent and connect it to the main square.']
+  - arguments: ["Postavte stan a propojte jej s n\xE1m\u011Bst\xEDm."]
     type: message
   - arguments: [tutStepDone, 28]
     type: set_var
@@ -246,36 +210,21 @@ events:
   - arguments: [tutStepDone, 28]
     type: var_lt
 - actions:
-  - arguments: ['', !!python/unicode 'Let''s have a look at the tent overview tab.
-
-        You can see
-
-        * the happiness of these residents,
-
-        * the taxes they pay and
-
-        * the resources they demand.
-
-
-        If their demands are fulfilled, happiness and thus your tax income increase.
-
-
-        If not, happiness and income decrease. At some time your residents may get
-        really sour and simply turn their back on your village, leaving behind a decaying
-        ruin.
-
-
-        Note that you can also change the global tax settings here, too.
-
-
-        TASK: Build at least three additional tents.
-
-
-        TIP: Holding down SHIFT eases constructing multiple buildings of the same
-        kind.']
+  - arguments: ['', "Nyn\xED se poj\u010Fme pod\xEDvat na p\u0159ehledovou z\xE1lo\u017E\
+        ku pro stan.\nM\u016F\u017Eete zde vid\u011Bt:\n* spokojenost obyvatel\n*\
+        \ dan\u011B, kter\xE9 plat\xED\n* zdroje, kter\xE9 po\u017Eaduj\xED.\n\nPokud\
+        \ budou jejich po\u017Eadavky spln\u011Bny, \u0161t\u011Bst\xED a tak\xE9\
+        \ p\u0159\xEDjem z dan\xED vzrostou.\n\nPokud nebudou spln\u011Bny, \u0161\
+        t\u011Bst\xED a p\u0159\xEDjem poklesne. Po ur\u010Dit\xE9 dob\u011B se obyvatel\xE9\
+        \ stanou nevrl\xFDmi, opust\xED Va\u0161i vesnici a zanechaj\xED za sebou\
+        \ rozpadaj\xEDc\xED se trosky.\n\nV\u0161imn\u011Bte si, \u017Ee i zde m\u016F\
+        \u017Eete zm\u011Bnit nastaven\xED celkov\xE9 dan\u011B.\n\n\xDAKOL: Postavte\
+        \ alespo\u0148 t\u0159i dal\u0161\xED stany.\n\nTIP: P\u0159idr\u017Een\xED\
+        \ kl\xE1vesy SHIFT V\xE1m zjednodu\u0161\xED hromadnou v\xFDstavbu budov stejn\xE9\
+        ho druhu."]
     type: logbook
-  - arguments: [!!python/unicode 'Build at least three additional tents and connect
-        them to the main square.']
+  - arguments: ["Postavte alespo\u0148 t\u0159i dal\u0161\xED stany a propojte je\
+        \ s n\xE1m\u011Bst\xEDm."]
     type: message
   - arguments: [tutStepDone, 31]
     type: set_var
@@ -287,53 +236,40 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD SIGNAL FIRE', !!python/unicode 'Can
-        you see the ship passing your island from time to time? That ship belongs
-        to the Free Trader, one of the first settlers in this archipelago.
-
-
-        The trader will supply your settlement with necessary goods which you can''t
-        produce yet.
-
-        You can also sell surpluses of your production, but in general consuming them
-        (by building more tents) instead of selling them yields more profit.
-
-
-        Normally the trader ships just sail around and look for deals, but you can
-        speed things up a bit.
-
-
-        For this purpose, build a signal fire at the coast near your branch office.
-        It will show ships the way to your settlement.
-
-
-        The signal fire has to cover the area which the ships pass through to catch
-        them.']
+  - arguments: ["NOV\xDD \xDAKOL: POSTAVTE SIGN\xC1LN\xCD OHE\u0147", "Vid\xEDte lod\u011B\
+        , kter\xE9 \u010Das od \u010Dasu projedou okolo Va\u0161eho ostrova? Tyto\
+        \ lod\u011B pat\u0159\xED Svobodn\xE9mu obchodn\xEDkovi, jednomu z prvn\xED\
+        ch osadn\xEDk\u016F v tomto souostrov\xED.\n\nTento obchodn\xEDk bude z\xE1\
+        sobovat Va\u0161i osadu pot\u0159ebn\xFDm zbo\u017E\xEDm, kter\xE9 zat\xED\
+        m nem\u016F\u017Eete sami produkovat.\nTak\xE9 m\u016F\u017Eete prod\xE1vat\
+        \ p\u0159ebytky z Va\u0161\xED produkce. Obecn\u011B je ale v\xFDhodn\u011B\
+        j\u0161\xED tyto p\u0159ebytky spot\u0159ebovat (tak, \u017Ee postav\xEDte\
+        \ v\xEDce stan\u016F). P\u0159\xEDjem z dan\xED bude vy\u0161\u0161\xED ne\u017E\
+        \ by byl p\u0159\xEDjem z prodeje.\n\nNorm\xE1ln\u011B obchodn\xED lod\u011B\
+        \ pouze proplouvaj\xED okolo a hledaj\xED obchodn\xED p\u0159\xEDle\u017E\
+        itosti, ale my m\u016F\u017Eeme v\u011Bci trochu urychlit.\n\nPro tento \xFA\
+        \u010Del postavte sign\xE1ln\xED ohe\u0148 na pob\u0159e\u017E\xED pobl\xED\
+        \u017E Va\u0161\xED pobo\u010Dky. Tak uk\xE1\u017Eete lod\xEDm cestu do Va\u0161\
+        \xED osady.\n\nAby mohl sign\xE1ln\xED ohe\u0148 p\u0159il\xE1kat lod\u011B\
+        , mus\xED pokr\xFDvat oblast, kterou lod\u011B proj\xED\u017Ed\u011Bj\xED."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
-
-
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
-        it, please share your thoughts! We need your help here!)
-
-
-        At the ''sailors'' increment, you are equipped with three trading slots.
-
-
-        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
-        vice versa.
-
-
-        Click in the slot to choose the good you want to trade with. We will further
-        explain this once you are ready to trade.
-
-
-        TASK: Build a signal fire at the coast close to your branch office.']
+  - arguments: ['', "Pokud by obchodn\xEDk pl\xE1noval proplout okolo, po t\xE9to\
+        \ mal\xE9 reklam\u011B, zakotv\xED a nav\u0161t\xEDv\xED Va\u0161i pobo\u010D\
+        ku.\n\nZak\xE1zky m\u016F\u017Eete nab\xEDzet pomoc\xED z\xE1lo\u017Eky \"\
+        Prodej/N\xE1kup\" u Va\u0161\xED pobo\u010Dky. (Tato funkce je nyn\xED pon\u011B\
+        kud ne\u0161ikovn\xE1. Pokud by V\xE1s napadlo n\u011Bjak\xE9 elegantn\xED\
+        \ zlep\u0161en\xED t\xE9to funkce, pros\xEDm, sd\xEDlejte svoje n\xE1pady!\
+        \ Pot\u0159ebujeme Va\u0161i pomoc zde!)\n\nV epo\u0161e \"n\xE1mo\u0159n\xED\
+        ci\" m\xE1te k dispozici t\u0159i obchodn\xED sloty.\n\nKlikn\u011Bte na malou\
+        \ ikonu, abyste zm\u011Bnili re\u017Eim slotu z \"N\xE1kupu\" na \"Prodej\"\
+        \ a naopak.\n\nKlikn\u011Bte do slotu a vyberte zbo\u017E\xED, se kter\xFD\
+        m chcete obchodovat. V\xEDce tuto \u010D\xE1st vysv\u011Btl\xEDme pozd\u011B\
+        ji, a\u017E budete p\u0159ipraveni obchodovat.\n\n\xDAKOL: Postavte sign\xE1\
+        ln\xED ohe\u0148 na pob\u0159e\u017E\xED v bl\xEDzkosti Va\u0161\xED pobo\u010D\
+        ky."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
-        office.']
+  - arguments: ["Postavte sign\xE1ln\xED ohe\u0148 na pob\u0159e\u017E\xED v bl\xED\
+        zkosti Va\u0161\xED pobo\u010Dky."]
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -345,29 +281,38 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: ["NOV\xDD \xDAKOL: V\xDDUKA OBCHODOVAN\xCD", !!python/unicode "Excellent!\
-        \ The Free Trader will now stop by at your branch office from time to time.\n\
-        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
-        \ type of good, the green bar across the bottom of the slot (if visible) shows\
-        \ you how much you have in stock of this good.\n\nDragging the slider on the\
-        \ right of each slot determines your 'target value' which has a different\
-        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
-        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
-        \ which you hold in reserve to not sell"]
+  - arguments: ["NOV\xDD \xDAKOL: V\xDDUKA OBCHODOVAN\xCD", "V\xFDborn\u011B! Svobodn\xFD\
+        \ obchodn\xEDk nyn\xED \u010Das od \u010Dasu zakotv\xED u Tv\xE9 pobo\u010D\
+        ky.\n\nPokra\u010Dujme v na\u0161em n\xE1vodu, jak obchodovat.\n\nPo vybr\xE1\
+        n\xED konkr\xE9tn\xEDho typu zbo\u017E\xED, zelen\xFD ukazatel napravo od\
+        \ slotu (pokud je viditeln\xFD) ukazuje, kolik jednotek zbo\u017E\xED m\xE1\
+        te aktu\xE1ln\u011B ve skladu.\n\nTa\u017Een\xEDm posuvn\xEDku na prav\xE9\
+        \ stran\u011B ka\u017Ed\xE9ho slotu ur\u010D\xEDte \"c\xEDlovou hodnotu\"\
+        , kter\xE1 m\xE1 r\u016Fzn\xE9 v\xFDznamy pro \"Prodej\" a \"N\xE1kup\".\n\
+        Pokud nakupujete zbo\u017E\xED, bude nakoupeno tolik zbo\u017E\xED, aby byla\
+        \ udr\u017Eena \"c\xEDlov\xE1 hodnota\" na skladu.Pokud zbo\u017E\xED prod\xE1\
+        v\xE1te, \"c\xEDlov\xE1 hodnota\" ur\u010Duje mno\u017Estv\xED zbo\u017E\xED\
+        , kter\xE9 uchov\xE1v\xE1te jako rezervu a nebude prod\xE1no."]
     type: logbook_w
-  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
-        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
-        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
-        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
-        \ however only wants to buy or sell less than your settings would allow him,\
-        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
-        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
-        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
-        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
-        \ as you need to have 30 tools in stock!"]
+  - arguments: ['', "Uk\xE1\u017Eeme si to na p\u0159\xEDkladu: \nPokud m\xE1me nastaven\xFD\
+        \ slot do na \"N\xE1kup\" a na sklad\u011B m\xE1me 5 tun dan\xE9ho zbo\u017E\
+        \xED, tak nastaven\xED posuvn\xEDku na hodnotu 9 tun zp\u016Fsob\xED n\xE1\
+        kup maxim\xE1ln\u011B 4 dal\u0161\xEDch tun zbo\u017E\xED. \nProdej funguje\
+        \ obdobn\u011B. Slot \"Prodej\" s 18 tunami zbo\u017E\xED na sklad\u011B a\
+        \ posuvn\xEDk nastaven\xFD na hodnotu 13 tun zp\u016Fsob\xED, \u017Ee bude\
+        \ prod\xE1no 5 tun zbo\u017E\xED.\n\nPokud svobodn\xFD obchodn\xEDk bude cht\xED\
+        t nakoupit nebo prodat m\xE9n\u011B zbo\u017E\xED ne\u017E nastaven\xED Va\u0161\
+        ich slot\u016F dovoluje, nezb\xFDv\xE1 V\xE1m nic jin\xE9ho ne\u017E po\u010D\
+        kat na jeho p\u0159\xED\u0161t\xED cestu.\n\nUnknown Horizons obsahuj\xED\
+        \ chytr\xE9 nastaven\xED cen, to znamen\xE1, \u017Ee cena za jednotku zbo\u017E\
+        \xED se m\u016F\u017Ee m\u011Bnit.\nNen\xED mo\u017En\xE9 m\u011Bnit ceny\
+        \ manu\xE1ln\u011B!\n\nVa\u0161i obchodn\xED bilanci m\u016F\u017Eete vid\u011B\
+        t v z\xE1lo\u017Ece \"\xDA\u010Det\", kde jsou srovn\xE1ny \"N\xE1kup\" a\
+        \ \"Prodej\".\n\n\xDAKOL: Nakupte n\xE1stroje tak, aby z\xE1soby ve Va\u0161\
+        em skladu byly 30 jednotek!"]
     type: logbook
-  - arguments: [!!python/unicode 'Reach an island stock of at least 30 tools.', !!python/unicode 'Note
-        that this might take a while.']
+  - arguments: ["Dos\xE1hn\u011Bte alespo\u0148 30 n\xE1stroj\u016F na skladu.", "V\u0161\
+        imn\u011Bte si, \u017Ee to m\u016F\u017Ee chv\xEDli trvat."]
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -379,50 +324,31 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A PAVILION', !!python/unicode 'Those
-        tools will be enough for the moment. Well done!
-
-
-        You now provide housing, a main square and food to your inhabitants.
-
-
-        Still there is one demand which we have not satisfied so far, you may check
-        that in the marketplace or tent tab - your sailors want a basic building where
-        they can pray.
-
-
-        The solution is a pavilion which the village parson quickly puts up as shelter
-        from the sun.
-
-
-        Service buildings like this also need to be connected to the tents with a
-        trail, else your inhabitants feel unable to reach them.
-
-
-        In later increments, upgraded versions of buildings may become available.']
+  - arguments: ["NOV\xDD \xDAKOL: POSTAVTE PAVIL\xD3N", "Pro tuto chv\xEDli m\xE1\
+        te dostatek n\xE1stroj\u016F. Velmi dob\u0159e!\n\nSv\xFDm obyvatel\u016F\
+        m nyn\xED poskytujete bydlen\xED, n\xE1m\u011Bst\xED a j\xEDdlo.\n\nSt\xE1\
+        le je zde je\u0161t\u011B jeden po\u017Eadavek, kter\xFD nebyl doposud uspokojen,\
+        \ jak si m\u016F\u017Eete sami ov\u011B\u0159it v z\xE1lo\u017Ece tr\u017E\
+        nice nebo stanu. Va\u0161i n\xE1mo\u0159n\xEDc\xED cht\u011Bj\xED z\xE1kladn\xED\
+        \ budovu, kde by se mohli modlit.\n\n\u0158e\u0161en\xEDm je pavil\xF3n, kter\xFD\
+        \ vesnick\xFD pastor rychle vzty\u010D\xED jako \xFAkryt p\u0159ed sluncem.\n\
+        \nBudovy slu\u017Eeb, jako je tato, pot\u0159ebuj\xED b\xFDt propojeny se\
+        \ stany pomoc\xED cest, jinak je Va\u0161i obyvatel\xE9 nebudou moci vyu\u017E\
+        \xEDvat.\n\nV pozd\u011Bj\u0161\xEDch epoch\xE1ch, budou mo\u017En\xE1 k dispozici\
+        \ vylep\u0161en\xE9 verze budov."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
-
-
-        This means that your inhabitants need a road connection to the producer (pavilion)
-        to pick up faith there.
-
-        After some time, they will have consumed it and then again look for a producer
-        to collect more faith.
-
-
-        Important:
-
-        It is NOT enough that the building is merely within a certain range of the
-        tents.
-
-        The road connection is required as well.
-
-
-        TASK: Build a pavilion with a trail to the tents in order to fulfill your
-        sailors'' demand for faith.']
+  - arguments: ['', "V\u0161imn\u011Bte si, \u017Ee v\xEDra se chov\xE1 jako fyzick\xFD\
+        \ zdroj!\n\nTo znamen\xE1, \u017Ee Va\u0161i obyvatel\xE9 pot\u0159ebuj\xED\
+        \ stezky k dodavateli (pavil\xF3nu), aby si mohli p\u0159ij\xEDt vyzvednout\
+        \ v\xEDru.\nPo ur\u010Dit\xE9 dob\u011B tuto v\xEDru zkonzumuj\xED a potom\
+        \ znovu vyhledaj\xED producenta, aby dostali v\xEDce v\xEDry.\n\nD\u016Fle\u017E\
+        it\xE9:\nNEN\xCD dosta\u010Duj\xEDc\xED, \u017Ee se budova nach\xE1z\xED v\
+        \ dostate\u010Dn\xE9 vzd\xE1lenosti od stan\u016F.\nSpojen\xED pomoc\xED stezky\
+        \ je rovn\u011B\u017E vy\u017Eadov\xE1no.\n\n\xDAKOL: Postavte pavil\xF3n\
+        \ spojen\xFD stezkou se stany, abyste uspokojili pot\u0159ebu v\xEDry Va\u0161\
+        ich n\xE1mo\u0159n\xEDk\u016F."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a pavilion with connection to the tents.']
+  - arguments: ["Postavte pavil\xF3n propojen\xFD se stany."]
     type: message
   - arguments: [tutStepDone, 40]
     type: set_var
@@ -434,51 +360,42 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: ["NOV\xDD \xDAKOL: DAL\u0160\xCD EPOCHA", !!python/unicode 'All demands
-        are fulfilled now if your inhabitants can regularly visit the main square
-        & pavilion and your food supply is adequate.
-
-
-        If the sailors are happy enough, they want to advance to the next increment
-        called Pioneers.
-
-
-        To make them happy, there is nothing else for you to do but setting taxes
-        to a lower level since you have fulfilled all the demands of your inhabitants.
-
-
-        You should try to not always run on low taxes since this will probably lead
-        to bankruptcy sooner or later. For a period of time and if you know what you
-        are doing, it is fine though.
-
-
-        After some time, the first unit should walk to the main square and have a
-        look for new construction material there to build a log house. This house
-        will replace the old tent.']
+  - arguments: ["NOV\xDD \xDAKOL: DAL\u0160\xCD EPOCHA", "V\u0161echny po\u017Eadvky\
+        \ byly nyn\xED spln\u011Bny. Va\u0161i obyvatel\xE9 m\u016F\u017Eou pravideln\u011B\
+        \ nav\u0161t\u011Bvovat n\xE1m\u011Bst\xED a pavil\xF3n a Va\u0161e z\xE1\
+        soben\xED j\xEDdlem je dosta\u010Duj\xEDc\xED.\n\nPokud budou n\xE1mo\u0159\
+        n\xEDci dostate\u010Dn\u011B \u0161\u0165astn\xED, budou cht\xEDt postoupit\
+        \ do dal\u0161\xED epochy nazvan\xE9 Pion\xFD\u0159i.\n\nAbyste je u\u010D\
+        inili\u0161\u0165astn\xFDmi, nen\xED nic jednodu\u0161\u0161\xEDho ne\u017E\
+        \ nastavit dan\u011B na ni\u017E\u0161\xED \xFArove\u0148, dokud nebudou napln\u011B\
+        ny v\u0161echny po\u017Eadavky Va\u0161ich obyvatel.\n\nN\xEDzk\xE9 dan\u011B\
+        \ je pot\u0159eba vyu\u017E\xEDvat obez\u0159etn\u011B. Pokud je nech\xE1\
+        te na n\xEDzk\xE9 \xFArovni, p\u0159ivedete sv\u016Fj ostrov, d\u0159\xED\
+        ve nebo pozd\u011Bji, k bankrotu. Pokud ale v\xEDte, co d\u011Bl\xE1te, funguj\xED\
+        \ skv\u011Ble.\n\nPo ur\u010Dit\xE9 dob\u011B se prvn\xED obyvatel\xE9 vyprav\xED\
+        \ na n\xE1m\u011Bst\xED, aby z\xEDskali nov\xFD stavebn\xED materi\xE1l, kter\xFD\
+        \ pot\u0159ebuj\xED ke stavb\u011B srubu. T\xEDmto domem nahrad\xED sv\xE9\
+        \ dosavadn\xED stany."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Such residential upgrades are the only ones
-        which cost resources and can not be restricted by you.
-
-
-        There are manual upgrades to some buildings where you use resources to construct
-        a better version on the same spot, and there are upgrades without costs for
-        example as you will see with the lumberjack (In this case, only the graphics
-        change).
-
-
-        Upgraded housing accomodates more inhabitants, and pioneers pay more taxes
-        than sailors, too.
-
-
-        As you may have figured out already, the downside is that pioneers demand
-        additional goods which sailors do not need - so you will need to spend this
-        extra money to make them happy as well.
-
-
-        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - arguments: ['', "Takov\xE9 vylep\u0161en\xED obytn\xFDch budov jsou jedin\xFD\
+        m vylep\u0161en\xEDm, kter\xE9 V\xE1s stoj\xED prost\u0159edky a nem\u016F\
+        \u017Ee b\xFDt V\xE1mi zak\xE1z\xE1no.\n\nJsou zde tak\xE9 manu\xE1ln\xED\
+        \ vylep\u0161en\xED n\u011Bkter\xFDch budov, kdy jsou prost\u0159edky vyu\u017E\
+        ity ke stavb\u011B lep\u0161\xED verze budovy na tom sam\xE9m m\xEDst\u011B\
+        . Tak\xE9 existuj\xED vylep\u0161en\xED bez poplatk\u016F, jak nap\u0159\xED\
+        klad sami uvid\xEDte, jako nap\u0159i u d\u0159evorubce (v tomto p\u0159\xED\
+        pad\u011B dojde pouze ke grafick\xE9 zm\u011Bn\u011B).\n\nVylep\u0161en\xE9\
+        \ domy pojmou v\xEDce obyvatel a pion\xFD\u0159i tak\xE9 plat\xED vy\u0161\
+        \u0161\xED dan\u011B ne\u017E n\xE1mo\u0159n\xEDci.\n\nJak u\u017E jste si\
+        \ mo\u017En\xE1 v\u0161imli, nev\xFDhodou je, \u017Ee pion\xFD\u0159i po\u017E\
+        aduj\xED dodate\u010Dn\xE9 zbo\u017E\xED, kter\xE9 n\xE1mo\u0159n\xEDci nepot\u0159\
+        ebovali - tak\u017Ee budete muset utratit pen\xEDze, abyste je u\u010Dinili\
+        \ \u0161\u0165astn\xFDmi.\n\n\xDAKOL: Nastavate v\xFD\u0161i dan\xED na n\xED\
+        zkou hodnotu (lev\xFD okraj posuvn\xEDku) a po\u010Dkejte na vylep\u0161en\xED\
+        ."]
     type: logbook
-  - arguments: [!!python/unicode 'Set the tax level to Low (left end) and wait for
-        your sailors to upgrade.']
+  - arguments: ["Nastavte v\xFD\u0161i dan\xED na n\xEDzkou hodnotu (lev\xFD okraj)\
+        \ a po\u010Dkejte na vylep\u0161en\xED."]
     type: message
   - arguments: [tutStepDone, 43]
     type: set_var
@@ -490,50 +407,32 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A FARM', !!python/unicode 'Congratulations!
-        Some of your inhabitants have reached increment II!
-
-
-        Now you have access to new buildings, take a look at the Build menu again.
-
-
-        A shiny new tab appeared there.
-
-
-        Pioneers will demand cloth, so you need to set up a production line for cloth
-        starting with lambs wool (which is one of the goods produced at the farm).
-
-
-        The farm is a very special production building since it can produce not only
-        one, but very many (and different) goods if you choose.
-
-
-        The output of farms depends on what kind of fields you build around it.']
+  - arguments: ["NOV\xDD \xDAKOL: POSTAVTE FARMU", "Gratulujeme! \u010C\xE1st Tv\xFD\
+        ch obyvatel dos\xE1hla Epochy II!\n\nNyn\xED m\xE1te p\u0159\xEDstup k nov\xFD\
+        m budov\xE1m, pod\xEDvejte se do Stavebn\xEDho menu znova.\n\nNov\xE1 bl\xFD\
+        skav\xE1 z\xE1lo\u017Eka se zde objevila.\n\nPion\xFD\u0159i budou po\u017E\
+        adovat l\xE1tku, to znamen\xE1, \u017Ee budete muset vytvo\u0159it v\xFDrobn\xED\
+        \ linku pro l\xE1tku, kter\xE1 za\u010Dne ov\u010D\xED vlnou (ovce jsou produkov\xE1\
+        ny na farm\u011B).\n\nFarma je vyj\xEDme\u010Dn\xE1 produk\u010Dn\xED budova,\
+        \ kter\xE1 neprodukuje pouze jednu, ale velmi mnoho (a rozli\u010Dn\xFDch)\
+        \ druh\u016F zbo\u017E\xE9, kter\xE9 si zvol\xEDte.\n\nV\xFDstupn\xED produkt\
+        \ z\xE1vis\xED na typu pol\xED, kter\xE9 jsou vystav\u011Bny okolo n\xED."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
-
-
-        Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a Branch Office.
-
-
-        As long as units of the final production company can reach the farm, and collectors
-        from the branch office or storage tent can reach the final company everything''s
-        fine.
-
-
-        If you, however, plan to do some processing on different parts of the island
-        (which can make sense) or even on different islands, you will need a connection
-        to collectors.
-
-
-        Try to build the farm not too close to the coast or your existing buildings
-        since it will need some space around it to work well.
-
-
-        TASK: Build a farm.']
+  - arguments: ['', "K tomuto se vr\xE1t\xEDme pozd\u011Bji.\n\nFarmy, stejn\u011B\
+        \ jako v\u0161echny spole\u010Dnosti produkuj\xEDc\xED suroviny, nemus\xED\
+        \ b\xFDt propojeny se skladi\u0161t\u011Bm nebo pobo\u010Dkou.\n\nJednotky\
+        \ v\xFDrobn\xED spole\u010Dnosti mus\xED dos\xE1hnout na v\xFDstupy z farmy\
+        \ a v\xFDb\u011Br\u010D\xEDm z pobo\u010Dky nebo skladi\u0161t\u011B sta\u010D\
+        \xED dos\xE1hnout na v\xFDsledn\xE9 produkty z v\xFDrobn\xED spole\u010Dnosti.\n\
+        \nNicm\xE9n\u011B, pokud pl\xE1nujete prov\xE1d\u011Bt n\u011Bkterou \u010D\
+        \xE1st z v\xFDrobn\xEDho \u0159et\u011Bzce v jin\xFDch \u010D\xE1stech ostrova\
+        \ (co\u017E m\u016F\u017Ee d\xE1vat smysl) nebo na r\u016Fzn\xFDch ostrovech,\
+        \ budete pot\u0159ebovat propojen\xED k v\xFDb\u011Br\u010D\xEDm.\n\nZkuste\
+        \ postavit farmu tak, aby nebyla bl\xEDzko pob\u0159e\u017E\xED a st\xE1vaj\xED\
+        c\xEDch budov, proto\u017Ee bude pro spr\xE1vnou \u010Dinnost pot\u0159ebovat\
+        \ m\xEDsto okolo sebe.\n\n\xDAKOL: Postavte farmu."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a farm and keep some empty space around it.']
+  - arguments: ["Postavte farmu a nechte kolem ni voln\xE9 m\xEDsto."]
     type: message
   - arguments: [tutStepDone, 46]
     type: set_var
@@ -545,42 +444,35 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD FIELDS', !!python/unicode 'The farm
-        itself is not going to produce anything without some fields.
-
-
-        You currently have the choice between pastures, potato and sugar fields.
-
-
-        Let''s have a short overview:
-
-        * Pasture: Sheep live here, producing lamb wool.
-
-        * Potato field: Grows potatoes which are currently treated as food.
-
-        * Sugar field: Grows sugar which is used to distill liquor and (later) produce
-        confectionery.
-
-
-        We now only need pastures, but in case your food supply chain is too small
-        (maybe many residential buildings) you can also produce some potatoes.
-
-
-        Note that for potatoes you will need a road connection to the farm (not to
-        the field!) as it will be the only company to work on the goods.']
+  - arguments: ["NOV\xDD \xDAKOL: STAVBA POL\xCD", "Samotn\xE1 farma nebude nic produkovat,\
+        \ pokud nebudou postavena pole.\n\nNyn\xED m\xE1te mo\u017Enost v\xFDb\u011B\
+        ru mezi pastvinami, bramborov\xFDmi poli a plat\xE1\u017Eemi s cukrovou t\u0159\
+        tinou.\n\nProve\u010Fme kr\xE1tk\xE9 shrnut\xED:\n* Pastviny - \u017Eij\xED\
+        \ zde ovce, produkuj\xED ov\u010D\xED vlnu.\n* Bramborov\xE9 pole - p\u011B\
+        stuj\xED se zde brambory, ty slou\u017E\xED jako potrava.\n* Plant\xE1\u017E\
+        \ cukrov\xE9 t\u0159tiny - p\u011Bstuje se zde t\u0159tina, kter\xE1 je d\xE1\
+        le pou\u017Eita k destilaci ko\u0159alky a (pozd\u011Bji) produkci cukrovinek.\n\
+        \nNyn\xED pot\u0159ebujeme pouze pastviny, ale v p\u0159\xEDpad\u011B, \u017E\
+        e Va\u0161e z\xE1soben\xED j\xEDdlem je p\u0159\xEDli\u0161 mal\xE9 (d\xED\
+        ky mnoha obytn\xFDm budov\xE1m), m\u016F\u017Eet\xE9 tak\xE9 postavit bramborov\xE9\
+        \ pole.\n\nV\u0161imn\u011Bte si, \u017Ee brambory pot\u0159ebuj\xED propojen\xED\
+        \ cestu k farm\u011B (nikoli k poli!), co\u017E je jedin\xE1 budova, kter\xE1\
+        \ pracuje se zbo\u017E\xEDm."]
     type: logbook_w
-  - arguments: ['', "Make sure that all fields you build are in the area covered by\
-        \ the farm.\n\nYou can have combined production - one pasture will not lead\
-        \ to 100 percent efficiency of the farm - but you need to check how many fields\
-        \ one farm can serve.\n\nDifferent classes of fields require the farm units\
-        \ to spend more or less time there (to seed, harvest, herd, etc\u2026) and\
-        \ because of that, the farm may be unable to serve all of the fields you built\
-        \ for it in time.\n\nFor now, you do not need to care about these issues a\
-        \ lot since you haven't built any fields. Let's change that!\n\nTASK: Build\
-        \ at least one pasture in the farm's range and add potato fields if you like."]
+  - arguments: ['', "Ujist\u011Bte se, \u017Ee v\u0161echna pole, kter\xE1 stav\xED\
+        te, le\u017E\xED v oblasti, kter\xE1 je pokryta farmou.\n\nM\u016F\u017Eete\
+        \ m\xEDt kombinovanou produkci - jedna jednotka pastvin nepovede ke stoprocentn\xED\
+        \ efektivnosti farmy, ale na druhou stranu, po\u010Det pol\xED, kter\xE9 jedna\
+        \ farma m\u016F\u017Ee zabezpe\u010Dit je omezen.\n\nR\u016Fzn\xE9 druhy pol\xED\
+        \ maj\xED r\u016Fzn\xE9 \u010Dasov\xE9 po\u017Eadavky (k vyset\xED, sklizni,\
+        \ pastv\u011B, atd.) a kv\u016Fli tomu nemus\xED b\xFDt farma schopna obslou\u017E\
+        it v\u0161echna pole v\u010Das.\n\nNyn\xED se t\xEDm nemus\xEDte p\u0159\xED\
+        li\u0161 zab\xFDvat, proto\u017Ee jste nevybudovali \u017E\xE1dn\xE9 pole.\
+        \ Poj\u010Fme to zm\u011Bnit!\n\n\xDAKOL: Vybudujte alespo\u0148 jednu pastvinu\
+        \ v okol\xED farmy a p\u0159idejte bramborov\xE9 pole, pokud chcete."]
     type: logbook
-  - arguments: [!!python/unicode 'Build at least one pasture and add potato fields
-        if you like.']
+  - arguments: ["Vybudujte alespo\u0148 jednu pastvinu a p\u0159idejte bramborov\xE9\
+        \ pole, pokud chcete."]
     type: message
   - arguments: [tutStepDone, 49]
     type: set_var

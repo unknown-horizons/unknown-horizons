@@ -317,6 +317,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				self.current = old_current
 				return self.show_select_savegame(mode=mode) # reshow dialog
 			elif selected_savegame in map_file_display: # savegamename already exists
+				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
@@ -462,7 +463,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		def tmp_show_details():
 			"""Fetches details of selected savegame and displays it"""
-			# N_ takes care of plural forms for different languages
+			gui.findChild(name="screenshot").image = None
 			box = gui.findChild(name="savegamedetails_box")
 			old_label = box.findChild(name="savegamedetails_lbl")
 			if old_label is not None:
@@ -481,14 +482,26 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 			# screenshot
 			if savegame_info['screenshot'] is not None:
+				# try to find a writeable location, that is accessible via relative paths
+				# (required by fife)
 				fd, filename = tempfile.mkstemp()
-				with os.fdopen(fd, "w") as f:
-					f.write(savegame_info['screenshot'])
-				# fife only supports relative paths
-				gui.findChild(name="screenshot").image = os.path.relpath(filename)
-				os.unlink(filename)
-			else:
-				gui.findChild(name="screenshot").image = None
+				try:
+					path_rel = os.path.relpath(filename)
+				except ValueError: # the relative path sometimes doesn't exist on win
+					os.unlink(filename)
+					# try again in the current dir, it's often writable
+					fd, filename = tempfile.mkstemp(dir=os.curdir)
+					try:
+						path_rel = os.path.relpath(filename)
+					except ValueError:
+						fd, filename = None, None
+
+				if fd:
+					with os.fdopen(fd, "w") as f:
+						f.write(savegame_info['screenshot'])
+					# fife only supports relative paths
+					gui.findChild(name="screenshot").image = path_rel
+					os.unlink(filename)
 
 			# savegamedetails
 			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
@@ -497,11 +510,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if savegame_info['timestamp'] == -1:
 				details_label.text += _("Unknown savedate")
 			else:
+				#xgettext:python-format
 				details_label.text += _("Saved at {time}").format(
 				                         time=time.strftime("%H:%M, %A, %B %d",
 				                         time.localtime(savegame_info['timestamp'])))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
+			# N_ takes care of plural forms for different languages
+			#xgettext:python-format
 			details_label.text += N_("Saved {amount} time",
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
@@ -511,13 +527,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			from horizons.constants import VERSION
 			try:
 				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
+					#xgettext:python-format
 					details_label.text += _("Savegame version {version}").format(
 					                         version=savegame_info['savegamerev'])
 				else:
+					#xgettext:python-format
 					details_label.text += _("WARNING: Incompatible version {version}!").format(
 					                         version=savegame_info['savegamerev']) + u"\n" + \
 					                      _("Required version: {required}!").format(
-					                         required=VERSION.SAVEGAMEREVISION)
+					                         required=VERSION.SAVEGAMEREVISION) #xgettext:python-format
 			except KeyError:
 				details_label.text += _("Incompatible version")
 
@@ -539,6 +557,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
+		#xgettext:python-format
 		message = _("Do you really want to delete the savegame '{name}'?").format(
 		             name=SavegameManager.get_savegamename_from_filename(selected_file))
 		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):

@@ -86,6 +86,7 @@ class ShipRoute(object):
 		self.waypoints[position]['resource_list'].pop(res_id)
 
 	def on_route_bo_reached(self):
+		"""Transfer resources, wait if necessary and move to next bo when possible"""
 		branch_office = self.get_location()['branch_office']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
 
@@ -131,12 +132,19 @@ class ShipRoute(object):
 					if settlement.get_component(StorageComponent).inventory[res] < amount: # not enough res
 						amount = settlement.get_component(StorageComponent).inventory[res]
 
+					# the ship should never pick up more than the number defined in the route config
+					if self.ship.inventory[res] + amount > self.get_location()['resource_list'][res]:
+						amount = self.get_location()['resource_list'][res] - self.ship.inventory[res]
+
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
 					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
 
-				if amount_transferred < status.remaining_transfers[res] and self.ship.get_component(StorageComponent).inventory.get_free_space_for(res) > 0:
+				inv_comp = self.ship.get_component(StorageComponent)
+				if amount_transferred < status.remaining_transfers[res] and \
+				   inv_comp.inventory.get_free_space_for(res) > 0 and\
+				   inv_comp.inventory[res] < self.get_location()['resource_list'][res]:
 					status.settlement_provides_enough_res = False
 				status.remaining_transfers[res] -= amount_transferred
 			else:
@@ -269,9 +277,11 @@ class ShipRoute(object):
 	def get_ship_status(self):
 		"""Return the current status of the ship."""
 		if self.ship.is_moving():
+			#xgettext:python-format
 			return (_('Trade route: going to {location}').format(
 			           location=self.ship.get_location_based_status(self.ship.get_move_target())),
 			        self.ship.get_move_target())
+			#xgettext:python-format
 		return (_('Trade route: waiting at {position}').format(
 		           position=self.ship.get_location_based_status(self.ship.position)),
 		        self.ship.position)
@@ -474,12 +484,16 @@ class Ship(Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
+				#xgettext:python-format
 				return (_('Going to {location}').format(location=location_based_status), target)
+			#xgettext:python-format
 			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
+				#xgettext:python-format
 				return (_('Idle at {location}').format(location=location_based_status), self.position)
+			#xgettext:python-format
 			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
 class PirateShip(Ship):

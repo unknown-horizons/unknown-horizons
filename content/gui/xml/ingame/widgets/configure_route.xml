@@ -31,17 +31,6 @@
 	<!-- right side -->
 
 	<VBox name="right_vbox" max_size="350,508" min_size="350,508" position="520,40" padding="2">
-		<Icon image="content/gui/images/background/hr.png" />
-
-		<ScrollArea max_size="300,200" horizontal_scrollbar="0">
-			<ListBox name="branch_office_list" is_focusable="0"/>
-		</ScrollArea>
-		<TooltipButton name="add_bo" border_size="0"
-		up_image="content/gui/images/buttons/parrow_left.png"
-		down_image="content/gui/images/buttons/parrow_left_d.png"
-		hover_image="content/gui/images/buttons/parrow_left_h.png"
-		tooltip="Add to list" comment="List of harbors in trade route"   is_focusable="0"/>
-
 		<Label name="select_res_label" text=""/>
 
 		<!-- exactly one of the following two is enabled at any given time -->

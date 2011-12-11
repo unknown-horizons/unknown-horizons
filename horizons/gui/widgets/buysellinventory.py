@@ -79,6 +79,7 @@ class BuySellInventory(pychan.widgets.Container):
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		label = pychan.widgets.Label()
+		#xgettext:python-format
 		label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
 		label.position = (110, 150)
 		self.__icon.position = (90, 150)

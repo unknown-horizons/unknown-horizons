@@ -160,6 +160,7 @@ class UhDbAccessor(DbReader):
 		"""
 		sql = "SELECT name, tooltip_text FROM building WHERE id = ?"
 		query = self.cached_query(sql, building_class_id)[0]
+		#xgettext:python-format
 		tooltip = _("{building}: {description}")
 		return tooltip.format(building=query[0], description=query[1])
 
