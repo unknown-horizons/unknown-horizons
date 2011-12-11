@@ -51,6 +51,23 @@ class MapSaver:
 			rotation = instance.getRotation()
 			position = instance.getLocationRef().getExactLayerCoordinates()
 			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
+			
+	def _saveGroundTiles(self):
+		ground_layer = self._map.getLayer(util.GROUND_LAYER_NAME)
+		instances = ground_layer.getInstances()
+		for instance in instances:
+			position = instance.getPosition()
+			self._islandDatabase("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, instance.getObject().getId(), "straight", 45)
+		pass
+			
+	def _saveIsalnds(self):
+		# write function for figuring out if ground tiles are connected to one 
+		# island
+		
+		# write all islands into own file
+		
+		# connect islands into DB
+		pass
 
 	def saveResource(self):
 		try:
