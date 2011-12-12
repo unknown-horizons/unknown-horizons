@@ -33,16 +33,18 @@ class Inventory(pychan.widgets.Container):
 	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
 
 	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
-	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached')]
-	# uncached; required when resource icons should appear multiple times at any given moment
+	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached'), BoolAttr('display_legend')]
+	# uncached: required when resource icons should appear multiple times at any given moment
 	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
+	# display_legend: whether to display a string explanation about slot limits
 	ITEMS_PER_LINE = 4 # TODO: make this a xml attribute with a default value
-	def __init__(self, uncached=False, **kwargs):
+	def __init__(self, uncached=False, display_legend=True, **kwargs):
 		# this inits the gui part of the inventory. @see init().
 		super(Inventory, self).__init__(**kwargs)
 		self._inventory = None
 		self.__inited = False
 		self.uncached = uncached
+		self.display_legend = display_legend
 
 	def init(self, db, inventory):
 		# this inits the logic of the inventory. @see __init__().
@@ -89,21 +91,22 @@ class Inventory(pychan.widgets.Container):
 				self.parent.removeChildren(icons[self.ITEMS_PER_LINE-1:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
-		if isinstance(self._inventory, TotalStorage):
-			# Add total storage indicator
-			sum_stored_res = self._inventory.get_sum_of_stored_resources()
-			label = pychan.widgets.Label()
-			label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
-			label.position = (170, 53)
-			self.__icon.position = (150, 53)
-			self.addChildren(label, self.__icon)
-		elif isinstance(self._inventory, PositiveSizedSlotStorage):
-			label = pychan.widgets.Label()
-			#xgettext:python-format
-			label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
-			label.position = (20, 203)
-			self.__icon.position = (0, 203)
-			self.addChildren(label, self.__icon)
+		if self.display_legend:
+			if isinstance(self._inventory, TotalStorage):
+				# Add total storage indicator
+				sum_stored_res = self._inventory.get_sum_of_stored_resources()
+				label = pychan.widgets.Label()
+				label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
+				label.position = (170, 53)
+				self.__icon.position = (150, 53)
+				self.addChildren(label, self.__icon)
+			elif isinstance(self._inventory, PositiveSizedSlotStorage):
+				label = pychan.widgets.Label()
+				#xgettext:python-format
+				label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
+				label.position = (20, 203)
+				self.__icon.position = (0, 203)
+				self.addChildren(label, self.__icon)
 		self.adaptLayout()
 		self.stylize('menu_black')
 
