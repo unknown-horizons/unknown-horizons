@@ -533,9 +533,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				else:
 					#xgettext:python-format
 					details_label.text += _("WARNING: Incompatible version {version}!").format(
-					                         version=savegame_info['savegamerev']) + u"\n" + \
-					                      _("Required version: {required}!").format(
-					                         required=VERSION.SAVEGAMEREVISION) #xgettext:python-format
+					                         version=savegame_info['savegamerev']) + u"\n"
+					#xgettext:python-format
+					details_label.text += _("Required version: {required}!").format(
+					                         required=VERSION.SAVEGAMEREVISION)
 			except KeyError:
 				details_label.text += _("Incompatible version")
 

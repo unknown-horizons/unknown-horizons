@@ -661,11 +661,6 @@ def set_translations():
 		"start_route"                 : ("tooltip" , _("Start route")),
 		},
 
-	"healthwidget.xml" : {
-		# (text of widget: noi18n_health_label)
-		"noi18n_health_label"         : ("text"    , _("100/100")),
-		},
-
 	"island_production.xml" : {
 		# (tooltip of widget: cancelButton)
 		"cancelButton"                : ("tooltip" , _("Close")),
@@ -796,10 +791,6 @@ def set_translations():
 		"lbl_up"                      : ("text"    , _("{UP} = Scroll up")),
 		# (text of widget: lbl_x)
 		"lbl_x"                       : ("text"    , _("{X} = Enable destruct mode")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("http://www.fifengine.de")),
-		# (text of widget: noi18n)
-		"noi18n"                      : ("text"    , _("http://www.unknown-horizons.org")),
 		# (tooltip of widget: okButton)
 		"okButton"                    : ("tooltip" , _("Return")),
 		},
