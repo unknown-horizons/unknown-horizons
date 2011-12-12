@@ -191,12 +191,12 @@ class RouteConfig(object):
 	def slider_adjust(self, slot, res_id, entry):
 		position = self.widgets.index(entry)
 		slider = slot.findChild(name="slider")
-		amount = slot.findChild(name="amount")
-		value = int(slider.value)
-		amount.text = unicode(value) + "t"
+		amount_lbl = slot.findChild(name="amount")
+		amount = int(slider.value)
+		amount_lbl.text = '{amount}t'.format(amount=amount)
 		if slot.action is "unload":
-			value = -value
-		self.instance.route.add_to_resource_list(position, res_id, value)
+			amount = -amount
+		self.instance.route.add_to_resource_list(position, res_id, amount)
 		slot.adaptLayout()
 
 	def add_resource(self, slot, res_id, entry, has_value = False, value=0):
@@ -254,33 +254,33 @@ class RouteConfig(object):
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
 		vbox = self._gui.findChild(name="resources")
-		# access directly, it's possible that it's not found in the gui if it's hidden
-		self.minimap.icon.hide()
-		label = self._gui.findChild(name="select_res_label")
-		label.text = _("Select a resource:")
+		lbl = widgets.Label(name='select_res_label', text=_('Select a resource:'))
+		vbox.addChild( lbl )
 
-		#hardcoded for 5 works better than vbox.width / button_width
-		amount_per_line = 5
+		#hardcoded for 6 works better than vbox.width / button_width
+		amount_per_line = 6
 
-		current_hbox = widgets.HBox()
+		current_hbox = widgets.HBox(max_size="326,46")
 		index = 1
 
 		for res_id in self.icon_for_resource:
-			if res_id in self.instance.route.waypoints[position]['resource_list'] and\
+			if res_id in self.instance.route.waypoints[position]['resource_list'] and \
 			   slot.findChild(name='button').up_image.source is not self.icon_for_resource[res_id]:
 				continue
-			button = TooltipButton(size=(50,50))
+			button = TooltipButton(size=(46,46))
 			icon = self.icon_for_resource[res_id]
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			button.capture(Callback(self.add_resource, slot, res_id, entry))
 			if res_id != 0:
-				button.tooltip = horizons.main.db.get_res_name(res_id)
+				button.tooltip = self.session.db.get_res_name(res_id)
 			current_hbox.addChild(button)
-			if index > amount_per_line:
+			if index >= amount_per_line:
 				index -= amount_per_line
 				vbox.addChild(current_hbox)
-				current_hbox = widgets.HBox()
+				current_hbox = widgets.HBox(max_size="326,26")
 			index += 1
+		current_hbox.addSpacer(widgets.Spacer())
+		#TODO this spacer does absolutely nothing.
 		vbox.addChild(current_hbox)
 
 		self._gui.adaptLayout()
@@ -288,10 +288,6 @@ class RouteConfig(object):
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="resources").removeAllChildren()
-		self._gui.findChild(name="select_res_label").text = unicode("")
-
-		# access directly, it's possible that it's not found in the gui if it's hidden
-		self.minimap.icon.show()
 
 	def add_trade_slots(self, entry, num):
 		x_position = 105
@@ -401,7 +397,7 @@ class RouteConfig(object):
 		                       use_rotation=False,
 		                       on_click=on_click)
 
-		resources = horizons.main.db.get_res_id_and_icon(True)
+		resources = self.session.db.get_res_id_and_icon(True)
 		#map an icon for a resource
 		#map a resource for an icon
 		self.resource_for_icon = {}
