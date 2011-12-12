@@ -47,8 +47,9 @@ def translate_widget(untranslated, filename):
 	if filename in guitranslations.text_translations:
 		for entry in guitranslations.text_translations[filename].iteritems():
 			widget = untranslated.findChild(name=entry[0])
-			replace_attribute(widget, entry[1][0], entry[1][1])
-			widget.adaptLayout()
+			if widget is not None:
+				replace_attribute(widget, entry[1][0], entry[1][1])
+				widget.adaptLayout()
 	else:
 		log.debug('No translation for file %s', filename)
 
