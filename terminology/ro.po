@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-15 00:29+0200\n"
+"PO-Revision-Date: 2011-12-15 00:47+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -321,127 +321,127 @@ msgid "account"
 msgstr "cont / finanțe"
 
 msgid "back"
-msgstr ""
+msgstr "înapoi"
 
 msgid "build settlement"
-msgstr ""
+msgstr "fondează o colonie"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "jurnal de bord"
 
 msgid "cloth"
-msgstr ""
+msgstr "îmbrăcăminte"
 
 msgid "description"
-msgstr ""
+msgstr "descriere"
 
 msgid "happiness"
-msgstr ""
+msgstr "fericire"
 
 msgid "increase"
-msgstr ""
+msgstr "a crește / a mări / a spori"
 
 msgid "liquor"
-msgstr ""
+msgstr "lichior"
 
 msgid "mode"
-msgstr ""
+msgstr "mod"
 
 msgid "multiple"
-msgstr ""
+msgstr "multiplu"
 
 msgid "output"
-msgstr ""
+msgstr "producție / rezultat"
 
 msgid "play"
-msgstr ""
+msgstr "joacă"
 
 msgid "sale"
-msgstr ""
+msgstr "a vinde / tranzacție"
 
 msgid "save"
-msgstr ""
+msgstr "a salva / salvare"
 
 msgid "school"
-msgstr ""
+msgstr "școală"
 
 msgid "screen"
-msgstr ""
+msgstr "ecran"
 
 msgid "solution"
-msgstr ""
+msgstr "soluție"
 
 msgid "sound"
-msgstr ""
+msgstr "sunet"
 
 msgid "from time to time"
-msgstr ""
+msgstr "din când în când"
 
 msgid "trading"
-msgstr ""
+msgstr "comerț"
 
 msgid "visit"
-msgstr ""
+msgstr "a vizita / vizită"
 
 msgid "weaver"
-msgstr ""
+msgstr "țesător"
 
 msgid "animal"
-msgstr ""
+msgstr "animal"
 
 msgid "fish"
-msgstr ""
+msgstr "pește"
 
 msgid "fisherman"
-msgstr ""
+msgstr "pescar"
 
 msgid "forest"
-msgstr ""
+msgstr "pădure"
 
 msgid "forum"
-msgstr ""
+msgstr "forum"
 
 msgid "fulfill"
-msgstr ""
+msgstr "a completa / a realiza"
 
 msgid "graphics"
-msgstr ""
+msgstr "grafică"
 
 msgid "grow"
-msgstr ""
+msgstr "a crește"
 
 msgid "hold"
-msgstr ""
+msgstr "a ține"
 
 msgid "hunt"
-msgstr ""
+msgstr "a vâna"
 
 msgid "income"
-msgstr ""
+msgstr "venit"
 
 msgid "information"
-msgstr ""
+msgstr "informație"
 
 msgid "key"
-msgstr ""
+msgstr "cheie"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "lână de oaie"
 
 msgid "load/unload"
-msgstr ""
+msgstr "încarcă / descarcă"
 
 msgid "return"
-msgstr ""
+msgstr "a reîntoarce / a reveni"
 
 msgid "service"
-msgstr ""
+msgstr "lucru / serviciu"
 
 msgid "sheep"
-msgstr ""
+msgstr "oaie"
 
 msgid "ship inventory"
-msgstr ""
+msgstr "inventar / cargou"
 
 msgid "starting"
 msgstr ""
