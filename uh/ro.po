@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 19:13+0200\n"
+"PO-Revision-Date: 2011-12-14 20:41+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -774,18 +774,18 @@ msgstr "Niciun nume de fișier dat"
 
 #: horizons/gui/gui.py:315
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Introduceți un nume de fișier valid."
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py:320
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "O salvare de joc cu numele '{name}' există deja."
 
 #: horizons/gui/gui.py:321
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Înlocuiți?"
 
 #: horizons/gui/gui.py:322
 msgid "Confirmation for overwriting"
@@ -815,51 +815,54 @@ msgstr "eroare:"
 msgid "Unknown savedate"
 msgstr "data salvării necunoscută"
 
+# 76%
 #: horizons/gui/gui.py:513
 #, python-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Salvat la {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:520
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Salvat o dată"
+msgstr[1] "Salvat de două ori"
+msgstr[2] "Salvat de {amount} ori"
 
 #: horizons/gui/gui.py:530
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Versiunea salvării de joc {version}"
 
 #: horizons/gui/gui.py:534
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr ""
+msgstr "ATENȚIE: versiunea {version} incompatibilă!"
 
 #: horizons/gui/gui.py:537
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "Versiune necesară: {required}!"
 
 #: horizons/gui/gui.py:540
 msgid "Incompatible version"
-msgstr ""
+msgstr "Versiune incompatibilă"
 
 #: horizons/gui/gui.py:557
 msgid "No file selected"
 msgstr "niciun fișier selectat"
 
+# 97%
 #: horizons/gui/gui.py:557
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Trebuie să selectați o salvare de joc pentru ștergere."
 
+# 84%
 #: horizons/gui/gui.py:561
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Sigur doriți să ștergeți salvarea de joc '{name}'?"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
@@ -877,15 +880,15 @@ msgstr "Eșec la ștergerea salvării de joc!"
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:325
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Nu este posibilă diplomația"
 
 #: horizons/gui/ingamegui.py:326
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "Nu este posibilă diplomația deoarece nu există alți jucători."
 
 #: horizons/gui/ingamegui.py:519
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "Numele de hărți valide au următoarea formă: {expression}"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -894,6 +897,8 @@ msgstr "pyenet nu a putut fi găsit"
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"Modul joc de rețea necesită librăria \"Pyenet\", care nu a putut fi găsită în "
+"sistemul dumneavoastră."
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -917,11 +922,13 @@ msgstr "eroare de rețea fatală"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Nu s-a putut conecta la serverul principal."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Verifică conexiunea de rețea. Dacă nu e vreo problemă, serverul principal e "
+"temporar indisponibil."
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid "Something went wrong with the network:"
@@ -934,17 +941,17 @@ msgstr "Versiuni diferite!"
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Harta: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Jucători: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 #, python-format
 msgid "Creator: {player}"
-msgstr ""
+msgstr "Creator: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
