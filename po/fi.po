@@ -22,10 +22,12 @@ msgstr ""
 msgid "${player1} and ${player2} are now ${status}"
 msgstr ""
 
+# 78%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new settlement was founded by ${player}."
-msgstr ""
+msgstr "Pelaaja ${player} loi uuden siirtokunnan."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -220,10 +222,12 @@ msgstr "Sulattamo"
 msgid "Some of your inhabitants have no access to a main square."
 msgstr ""
 
+# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Jotkut uudisasukkaasi muuttivat juuri pois."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -319,20 +323,24 @@ msgstr "Tarvitset enemmän ${resource} tämän rakennuksen rakentamiseen."
 msgid "You won!"
 msgstr ""
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Pelillesi suoritettiin pikatallennus."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
 msgstr "Pelillesi suoritettiin pikatallennus."
 
+# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your inhabitants reached level ${level}."
-msgstr ""
+msgstr "Uudisasukkaasi saavuttivat tason ${level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -688,10 +696,11 @@ msgstr ""
 "\n"
 "Käyttö vain omalla vastuulla!"
 
+# 86%
 #: horizons/engine.py:305
-#, python-format
+#, python-format, fuzzy
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr ""
+msgstr "Asetettu kieltä %(lang)s, sijainnissa %(place)s ei pystytä lataamaan."
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
@@ -707,17 +716,23 @@ msgstr ""
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 
+# 81%
 #: horizons/engine.py:565
+#, fuzzy
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "Virhe yritettäessä ottaa käyttöön verkkotietoja."
 
+# 78%
 #: horizons/engine.py:566 horizons/gui/modules/multiplayermenu.py:52
+#, fuzzy
 msgid "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "Verkkoa ei saatu otettua käyttöön näillä asetuksilla."
 
+# 75%
 #: horizons/engine.py:567 horizons/gui/modules/multiplayermenu.py:53
+#, fuzzy
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Tarkista verkko-osioon kirjoittamasi tiedot."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine.py:571
@@ -754,9 +769,13 @@ msgstr "Lopeta peli"
 msgid "No saved games"
 msgstr "Ei tallennettuja pelejä"
 
+# 96%
 #: horizons/gui/gui.py:249
+#, fuzzy
 msgid "There are no saved games to load."
 msgstr ""
+"Et ole tallentanut vielä yhtäkään peliä. Aloita uusi peli napsauttamalla "
+"\"Yksinpeli\" tai \"Moninpeli\"."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -818,18 +837,20 @@ msgstr "Virhe:"
 msgid "Unknown savedate"
 msgstr "Tuntematon tallennuspäivä"
 
+# 76%
 #: horizons/gui/gui.py:513
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Tallennettu viimeksi %(time)s"
 
+# 80%
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:520
-#, python-format
+#, python-format, fuzzy
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tallennettu %(amount)d kerran"
+msgstr[1] "Tallennettu %(amount)d kertaa"
 
 #: horizons/gui/gui.py:530
 #, python-format
@@ -854,14 +875,19 @@ msgstr ""
 msgid "No file selected"
 msgstr "Tiedostoa ei ole valittu"
 
+# 97%
 #: horizons/gui/gui.py:557
+#, fuzzy
 msgid "You need to select a savegame to delete."
 msgstr ""
+"Valitse ensin poistettava pelitallennus napsauttamalla sitä ja yritä "
+"uudelleen."
 
+# 84%
 #: horizons/gui/gui.py:561
-#, python-format
+#, python-format, fuzzy
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa tallennuksen \"%s\"?"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
@@ -957,11 +983,12 @@ msgstr "Väärä versio"
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
 
+# 79%
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
-#, python-format
+#, python-format, fuzzy
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Pelaajien suositeltu määrä: "
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
@@ -988,9 +1015,11 @@ msgstr ""
 msgid "Invalid player name"
 msgstr "Virheellinen pelaajanimi"
 
+# 97%
 #: horizons/gui/modules/singleplayermenu.py:141
+#, fuzzy
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Antamasi pelaajanimi on virheellinen"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1171,13 +1200,17 @@ msgstr ""
 msgid "Build settlement"
 msgstr "Rakenna asutuskeskus"
 
+# 91%
 #: horizons/gui/tabs/overviewtab.py:186
+#, fuzzy
 msgid "Load/Unload"
-msgstr ""
+msgstr "Ota kyytiin/pois:"
 
+# 88%
 #: horizons/gui/tabs/overviewtab.py:189
+#, fuzzy
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Osta/Myy:"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1227,10 +1260,11 @@ msgstr "Tyhjä"
 msgid "There is nothing written in your logbook yet!"
 msgstr "Päiväkirjaasi ei ole kirjoitettu vielä mitään!"
 
+# 83%
 #: horizons/gui/widgets/playerssettlements.py:42
-#, python-format
+#, python-format, fuzzy
 msgid "{player}'s settlements"
-msgstr ""
+msgstr "Pelaajan %(player)s siirtokunnat"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1238,24 +1272,28 @@ msgstr ""
 msgid "Total"
 msgstr "Yhteensä"
 
+# 77%
 #: horizons/gui/widgets/playersships.py:45
-#, python-format
+#, python-format, fuzzy
 msgid "{player}'s ships"
-msgstr ""
+msgstr "Pelaajan %(player)s alukset"
 
+# 75%
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
+#, fuzzy
 msgid "None"
-msgstr ""
+msgstr "ei mitään"
 
 #: horizons/gui/widgets/playersships.py:88
 msgid "N/A"
 msgstr ""
 
+# 89%
 #: horizons/gui/widgets/productionoverview.py:49
-#, python-format
+#, python-format, fuzzy
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "Siirtokunnassa %(settlement)s tuotetut resurssit"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:74 horizons/i18n/guitranslations.py:663
@@ -1338,10 +1376,12 @@ msgstr "Teltta: Tarjoaa asuinpaikan uudisasukkaillesi."
 msgid "Storage: Extends stock and provides collectors."
 msgstr "Varasto: laajentaa valikoimaa ja tarjoaa kerääjiä."
 
+# 89%
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
+#, fuzzy
 msgid "Trail (R): Needed for collecting goods."
-msgstr ""
+msgstr "Polku: Vaaditaan tavaroiden keräämiselle."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
@@ -1543,30 +1583,40 @@ msgstr "Diplomatia"
 msgid "Game menu (Esc)"
 msgstr ""
 
+# 76%
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
+#, fuzzy
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "Kapteenin päiväkirja"
 
+# 87%
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
+#, fuzzy
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Käännä karttaa vastapäivään"
 
+# 83%
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:183
+#, fuzzy
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Käännä karttaa myötäpäivään"
 
+# 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
+#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Hidasta pelin nopeutta"
 
+# 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
+#, fuzzy
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Kiihdytä pelin nopeutta"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -1824,14 +1874,16 @@ msgstr "puolueeton"
 msgid "Build fields"
 msgstr "Pystytä tuotantoa"
 
+# 95%
 #. (tooltip of widget: capacity_utilisation_label)
 #. (tooltip of widget: capacity_utilisation)
 #. (tooltip of widget: capacity_utilisation_label)
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:353 horizons/i18n/guitranslations.py:357
 #: horizons/i18n/guitranslations.py:502 horizons/i18n/guitranslations.py:506
+#, fuzzy
 msgid "Capacity utilization"
-msgstr ""
+msgstr "käyttöosuus"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:369
@@ -2046,10 +2098,12 @@ msgstr "Kaupankäyntikumppani:"
 msgid "Click to change the name of this ship."
 msgstr "Vaihda aluksen nimi napsauttamalla tätä."
 
+# 95%
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
+#, fuzzy
 msgid "Configure trading route"
-msgstr ""
+msgstr "Muuta kauppareittiä:"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2081,10 +2135,12 @@ msgstr "Siirrä ylös"
 msgid "Leave Captain's log"
 msgstr "Poistu Kapteenin päiväkirjasta"
 
+# 80%
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:635
+#, fuzzy
 msgid "Read previous entries"
-msgstr ""
+msgstr "Edellinen merkintä"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:637
@@ -2510,10 +2566,12 @@ msgstr "Aktiivisia pelejä:"
 msgid "Main menu:"
 msgstr "Päävalikko:"
 
+# 78%
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:892
+#, fuzzy
 msgid "Only show games with the same version:"
-msgstr ""
+msgstr "Näytä vain saman version pelit:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:894
@@ -2800,14 +2858,17 @@ msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 "Kyseinen tallennus saattaa olla rikki tai tehty pelin vanhemmalla versiolla."
 
+# 75%
 #: horizons/main.py:346
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find map '{name}'."
-msgstr ""
+msgstr "Virhe: Kenttää \"%s\" ei löytynyt."
 
+# 96%
 #: horizons/main.py:349 horizons/main.py:426
+#, fuzzy
 msgid "Error: Found multiple matches:"
-msgstr ""
+msgstr "Virhe: Löydettiin useita: "
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
@@ -2827,16 +2888,18 @@ msgstr ""
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
 
+# 78%
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "Virhe: Ei löydy kampanjaa \"%s\"."
 
+# 78%
 #: horizons/main.py:423
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find savegame '{name}'."
-msgstr ""
+msgstr "Virhe: Ei löydetty tallennusta \"%s\"."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
@@ -2861,22 +2924,28 @@ msgstr "Tallentaminen/lataaminen ei ole vielä mahdollista moninpeleissä"
 msgid "Error: don't know how to handle condition type {condition}"
 msgstr ""
 
+# 81%
+# 78%
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "Virhe: Tallennusta \"%s\" ei löytynyt."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
 msgstr "Voitit pelin!"
 
+# 97%
 #: horizons/scenario/actions.py:76
+#, fuzzy
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Olet tämän tämän kentän.  "
 
+# 75%
 #: horizons/scenario/actions.py:77
+#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Haluatko jatkaa?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
