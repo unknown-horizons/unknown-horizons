@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-10 23:14+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-14 17:59+0200\n"
+"Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -220,10 +220,11 @@ msgstr "topitorie"
 msgid "Some of your inhabitants have no access to a main square."
 msgstr ""
 
+# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Unii dintre coloniștii tăi tocmai s-au mutat."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -316,7 +317,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Ați câștigat!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -531,7 +532,7 @@ msgstr "negustor"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "portocaliu"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -699,7 +700,7 @@ msgstr ""
 
 #: horizons/engine.py:553
 msgid "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "Verificați ca portul să fie în intervalul specificat."
 
 #: horizons/engine.py:565
 msgid "Failed to apply new network settings."

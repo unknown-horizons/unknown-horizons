@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 17:41+0200\n"
+"PO-Revision-Date: 2011-12-14 18:01+0200\n"
 "Last-Translator: mumuxe <antoinepernot@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -918,6 +918,7 @@ msgstr "Aucune diplomatie n'est possible."
 #: horizons/gui/ingamegui.py:326
 msgid "Cannot do diplomacy as there are no other players."
 msgstr ""
+"Vous ne pouvez pas faire de la diplomatie car il n'y a aucun autre joueur."
 
 #: horizons/gui/ingamegui.py:519
 msgid "Valid map names are in the following form: {expression}"
@@ -936,7 +937,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
-"Utilisateurs de gnu/linux: Essayez d'installer pyenet avec votre "
+"Utilisateurs de GNU/Linux: Essayez d'installer pyenet avec votre "
 "gestionnaire de paquets."
 
 #: horizons/gui/modules/multiplayermenu.py:43
@@ -956,11 +957,13 @@ msgstr "Erreur fatale du réseau"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Impossible de se connecter au serveur principal."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Veuillez vérifier votre connexion à Internet. Si cette dernière fonctionne, "
+"cela signifie que le serveur principal est probablement hors service."
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid "Something went wrong with the network:"
@@ -973,17 +976,17 @@ msgstr "Version différente !"
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Carte : {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Joueurs : {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 #, python-format
 msgid "Creator: {player}"
-msgstr ""
+msgstr "Créateur : {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
@@ -993,34 +996,38 @@ msgstr "Mauvaise version"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"La version du jeu n'est pas celle que vous avez. Chaque joueur doit avoir la "
+"même version pour jouer en multijoueur. Cela peut être résolu si chaque "
+"joueur mettent à jour leur version vers la dernière version du jeu. Version "
+"du jeu : {game_version} Votre version : {own_version}"
 
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
-#, python-format, fuzzy
+#, python-format, 
 msgid "Recommended number of players: {number}"
-msgstr "Nombre de joueurs recommandé: "
+msgstr "Nombre de joueurs recommandé : {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
 #: horizons/gui/widgets/choose_next_scenario.py:43
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Difficulté : {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Auteur : {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 #: horizons/gui/modules/singleplayermenu.py:122
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Description : {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "Invalid player name"
@@ -1034,7 +1041,7 @@ msgstr "Vous avez entré un nom de joueur invalide"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
-msgstr "Taille de la carte:"
+msgstr "Taille de la carte : "
 
 #: horizons/gui/modules/singleplayermenu.py:208
 msgid "Water:"
@@ -1221,15 +1228,13 @@ msgstr "Établir une colonie"
 
 # 91%
 #: horizons/gui/tabs/overviewtab.py:186
-#, fuzzy
 msgid "Load/Unload"
-msgstr "Charger/Décharger :"
+msgstr "Charger/Décharger"
 
 # 88%
 #: horizons/gui/tabs/overviewtab.py:189
-#, fuzzy
 msgid "Buy/Sell"
-msgstr "Achat/Vente:"
+msgstr "Achat/Vente"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1237,15 +1242,13 @@ msgstr ""
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:204
-#, fuzzy
 msgid "Cannot equip trade ship with weapons"
-msgstr "Les navires de commerce ne peuvent pas être armés"
+msgstr "Les navires de commerce ne peuvent pas être armés."
 
 # 98%
 #: horizons/gui/tabs/overviewtab.py:205
-#, fuzzy
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr "Il est impossible d'équipper un navire de commerce avec der armes"
+msgstr "Il est impossible d'équiper un navire de commerce avec des armes."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
@@ -1286,9 +1289,9 @@ msgstr "Il n'y a encore rien dans votre journal de bord !"
 
 # 83%
 #: horizons/gui/widgets/playerssettlements.py:42
-#, python-format, fuzzy
+#, python-format, 
 msgid "{player}'s settlements"
-msgstr "Colonies de %(player)s"
+msgstr "Colonies de %(player)"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1298,9 +1301,9 @@ msgstr "Total"
 
 # 77%
 #: horizons/gui/widgets/playersships.py:45
-#, python-format, fuzzy
+#, python-format, 
 msgid "{player}'s ships"
-msgstr "Bateaux de %(player)s"
+msgstr "Bateaux de %(player)"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
@@ -1313,9 +1316,9 @@ msgstr "Indisponible"
 
 # 89%
 #: horizons/gui/widgets/productionoverview.py:49
-#, python-format, fuzzy
+#, python-format, 
 msgid "Production overview of {settlement}"
-msgstr "Sommaire de production de %(settlement)s"
+msgstr "Sommaire de production de %(settlement)"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:74 horizons/i18n/guitranslations.py:663
@@ -1606,42 +1609,37 @@ msgstr "Diplomatie"
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:177
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Menu du jeu (Esc)"
 
 # 76%
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
-#, fuzzy
 msgid "Captain's log (L)"
-msgstr "Journal de bord"
+msgstr "Journal de bord (L)"
 
 # 87%
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
-#, fuzzy
 msgid "Rotate map counterclockwise (,)"
-msgstr "Tourner la carte dans le sens anti-horaire"
+msgstr "Tourner la carte dans le sens anti-horaire (,)"
 
 # 83%
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:183
-#, fuzzy
 msgid "Rotate map clockwise (.)"
-msgstr "Tourner la carte dans le sens horaire"
+msgstr "Tourner la carte dans le sens horaire (.)"
 
 # 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
-#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Baisser la vitesse du jeu"
+msgstr "Baisser la vitesse du jeu (-)"
 
 # 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Augmenter la vitesse du jeu"
+msgstr "Augmenter la vitesse du jeu (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -1721,12 +1719,12 @@ msgstr ""
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
 msgid "Save map"
-msgstr ""
+msgstr "Sauvegarder la carte"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "Sauvegarde la carte"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
@@ -1810,12 +1808,12 @@ msgstr "Argent"
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
 msgid "Cloth"
-msgstr ""
+msgstr "Tissu"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "Canons"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298
@@ -1835,7 +1833,7 @@ msgstr "Acheter ou vendre des ressources"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:304
 msgid "Trade history"
-msgstr ""
+msgstr "Historique des échanges commerciaux"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:306
@@ -2426,7 +2424,7 @@ msgstr "{ + } = Augmenter la vitesse du jeu"
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
 msgid "{R} = Enable road building mode"
-msgstr ""
+msgstr "{R} = Activer le mode de construction de routes"
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
@@ -2889,9 +2887,9 @@ msgstr "La sauvegarde peut être corrompue ou provient d'une version antérieure
 
 # 75%
 #: horizons/main.py:346
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find map '{name}'."
-msgstr "Erreur: Impossible de trouver la carte «%s»."
+msgstr "Erreur: Impossible de trouver la carte '{name}'."
 
 # 96%
 #: horizons/main.py:349 horizons/main.py:426
@@ -2904,9 +2902,11 @@ msgid "Error: campaign filenames have to end in \".yaml\"."
 msgstr "Erreur: les fichiers de campagne doivent finir en «.yaml»."
 
 #: horizons/main.py:381
-#, python-format
+#, python-format, fuzzy
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
+"Pour des raisons techniques, le fichier de campagne va être copié vers le "
+"dossier de campagne UH ({path})."
 
 #: horizons/main.py:382
 msgid "This means that changes in the file you specified will not apply to the game directly."
@@ -2923,15 +2923,15 @@ msgstr ""
 # 78%
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign '{name}'."
-msgstr "Erreur: Impossible de trouver la campagne «%s»."
+msgstr "Erreur: Impossible de trouver la campagne '{name}'."
 
 # 78%
 #: horizons/main.py:423
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find savegame '{name}'."
-msgstr "Erreur: Impossible de trouver la sauvegarde «%s»."
+msgstr "Erreur: Impossible de trouver la sauvegarde '{name}'."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
