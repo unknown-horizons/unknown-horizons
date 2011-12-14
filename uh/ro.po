@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 21:41+0200\n"
+"PO-Revision-Date: 2011-12-14 21:59+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -2252,118 +2252,121 @@ msgstr "{ , } = Rotește clădirea în stânga"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
+#, fuzzy
 msgid "{DOWN} = Scroll down"
-msgstr "{JOS} = Deplasare în jos"
+msgstr "{DOWN} = Deplasare în jos"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
 msgid "{ESC} = Show pause menu"
-msgstr ""
+msgstr "{ESC} = Afișează meniul-pauză"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
 msgid "{F1} = Display help"
-msgstr ""
+msgstr "{F1} = Afișează ajutorul"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
 msgid "{F10} = Toggle console on/off"
-msgstr ""
+msgstr "{F10} = Activează/Dezactivează consola"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
 msgid "{F2} = Show player scores"
-msgstr ""
+msgstr "{F2} = Afișează scorurile jucătorilor"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
 msgid "{F3} = Show settlement list"
-msgstr ""
+msgstr "{F3} = Afișează lista coloniilor"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
 msgid "{F4} = Show ship list"
-msgstr ""
+msgstr "{F4} = Afișează lista navelor"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
 msgid "{F5} = Quicksave"
-msgstr ""
+msgstr "{F5} = Salvare de joc rapidă"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
 msgid "{F9} = Quickload"
-msgstr ""
+msgstr "{F9} = Încărcare rapidă"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
+#, fuzzy
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "Echipa de developare FIFE și Unknown Horizons"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
 msgid "{G} = Toggle grid on/off"
-msgstr ""
+msgstr "{G} = Activează/Dezactivează grila"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
 msgid "{H} = Show coordinate values (Debug)"
-msgstr ""
+msgstr "{H} = Afișează valorile coordonatelor (mod de testare / Debug)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
 msgid "Have fun."
-msgstr ""
+msgstr "Distracție plăcută!"
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
 msgid "{L} = Toggle Captain's log"
-msgstr ""
+msgstr "{L} = Afișează jurnalul de bord"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
+#, fuzzy
 msgid "{LEFT} = Scroll left"
-msgstr ""
+msgstr "{LEFT} = Deplasare în dreapta"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
 msgid "{ - } = Decrease game speed"
-msgstr ""
+msgstr "{ - } = Reduce viteza jocului"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
 msgid "{P} = Pause game"
-msgstr ""
+msgstr "{P} = Suspendă jocul"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
 msgid "{ . } = Rotate building right"
-msgstr ""
+msgstr "{ . } = Rotire clădire la dreapta"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
 msgid "{ + } = Increase game speed"
-msgstr ""
+msgstr "{ + } = Sporește viteza jocului"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
 msgid "{R} = Enable road building mode"
-msgstr ""
+msgstr "{R} = Activează modul de construcție a drumurilor"
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
 msgid "{RIGHT} = Scroll right"
-msgstr ""
+msgstr "{RIGHT} = Deplasare la dreapta"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
 msgid "{S} = Screenshot"
-msgstr ""
+msgstr "{S} = Captură de ecran"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
 msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr ""
+msgstr "{SHIFT} = Mențineți apăsat pentru plasări multiple"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
