@@ -487,6 +487,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				try:
 					path_rel = os.path.relpath(filename)
 				except ValueError: # the relative path sometimes doesn't exist on win
+					os.close(fd)
 					os.unlink(filename)
 					# try again in the current dir, it's often writable
 					fd, filename = tempfile.mkstemp(dir=os.curdir)
