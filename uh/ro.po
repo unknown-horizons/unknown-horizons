@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 20:59+0200\n"
+"PO-Revision-Date: 2011-12-14 21:41+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -322,7 +322,7 @@ msgstr "Ați câștigat!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "O salvare automată a fost efectuată."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -685,9 +685,9 @@ msgstr ""
 "Utilizați pe risc propriu!"
 
 #: horizons/engine.py:305
-#, python-format
+#, python-format, fuzzy
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr ""
+msgstr "Limba aleasă {lang} la locația {place} nu a putut fi încărcată"
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
@@ -1353,7 +1353,7 @@ msgstr "Magazie: mărește stocul și furnizează colectori."
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
 msgid "Trail (R): Needed for collecting goods."
-msgstr ""
+msgstr "Potecă (R): necesară pentru colectarea bunurilor."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
@@ -1362,13 +1362,15 @@ msgstr "câmpii"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:80
+#, fuzzy
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "Clădiri pioniere"
 
 #. (text of widget: military_label)
 #: horizons/i18n/guitranslations.py:82
+#, fuzzy
 msgid "Military"
-msgstr ""
+msgstr "Armată"
 
 #. (tooltip of widget: boat_builder-1)
 #: horizons/i18n/guitranslations.py:86
@@ -1431,8 +1433,9 @@ msgstr "Țesător: transformă lâna în îmbrăcăminte."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:115
+#, fuzzy
 msgid "Settler buildings"
-msgstr ""
+msgstr "Clădirile colonistului"
 
 #. (text of widget: mining_label)
 #: horizons/i18n/guitranslations.py:117
@@ -1535,12 +1538,12 @@ msgstr "Click pentru a schimba numele coloniei."
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:171
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Meniu de construcție (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:173
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Distrugere (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:175
@@ -1550,32 +1553,36 @@ msgstr "diplomație"
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:177
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Meniu de joc (Esc)"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "Jurnal de bord (L)"
 
+# 87%
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Rotiți harta în sens anti-orar (,)"
 
+# 83%
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:183
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Rotiți harta în sens orar (.)"
 
+# 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Diminuați viteza jocului (-)"
 
+# 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Sporiți viteza jocului (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -1650,17 +1657,17 @@ msgstr "șuetă"
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:230
 msgid "Enter prefix:"
-msgstr ""
+msgstr "Introduceți prefix:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
 msgid "Save map"
-msgstr ""
+msgstr "Salvați hartă"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "Salvați harta"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
@@ -1733,22 +1740,24 @@ msgstr "costuri de funcționare"
 msgid "Build this ship!"
 msgstr "Construiți această navă!"
 
+# Monetar?
 #. (tooltip of widget: costs_001)
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py:268 horizons/i18n/guitranslations.py:285
 #: horizons/i18n/guitranslations.py:684
+#, fuzzy
 msgid "Money"
-msgstr ""
+msgstr "Bani"
 
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
 msgid "Cloth"
-msgstr ""
+msgstr "Îmbrăcăminte"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "Tunuri"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298
@@ -1768,7 +1777,7 @@ msgstr "cumpără sau vinde resurse"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:304
 msgid "Trade history"
-msgstr ""
+msgstr "Istoric schimburi comerciale"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:306
@@ -1840,7 +1849,7 @@ msgstr "construire de câmp"
 #: horizons/i18n/guitranslations.py:353 horizons/i18n/guitranslations.py:357
 #: horizons/i18n/guitranslations.py:502 horizons/i18n/guitranslations.py:506
 msgid "Capacity utilization"
-msgstr ""
+msgstr "capacitate de utilizare"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:369
@@ -1850,7 +1859,7 @@ msgstr "satisfacție generală:"
 #. (text of widget: most_needed_res_lbl)
 #: horizons/i18n/guitranslations.py:373
 msgid "Most needed resource:"
-msgstr ""
+msgstr "Cele mai necesare resurse:"
 
 #. (text of widget: headline_residents_per_house)
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:411
@@ -1901,8 +1910,9 @@ msgstr "taxe:"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:396 horizons/i18n/guitranslations.py:425
+#, fuzzy
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Permisiuni de avansare:"
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
@@ -1946,8 +1956,9 @@ msgstr "5 locuitori"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:460
+#, fuzzy
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Avansarea nu este posibilă:"
 
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:462
@@ -1963,7 +1974,7 @@ msgstr "nume:"
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:477 horizons/i18n/guitranslations.py:481
 msgid "Collector utilisation"
-msgstr ""
+msgstr "utilizarea colectorilor"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:568
@@ -2036,7 +2047,7 @@ msgstr "navă:"
 #. (text of widget: trade_with_label)
 #: horizons/i18n/guitranslations.py:572 horizons/i18n/guitranslations.py:583
 msgid "Trade partner:"
-msgstr ""
+msgstr "Partener comercial:"
 
 #. (tooltip of widget: name)
 #: horizons/i18n/guitranslations.py:588 horizons/i18n/guitranslations.py:599
@@ -2111,12 +2122,12 @@ msgstr "alegeți acest scenariu"
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:655
 msgid "Wait at load:"
-msgstr ""
+msgstr "Așteptă la încărcare:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:657
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Așteaptă la descărcare:"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:659
@@ -2126,7 +2137,7 @@ msgstr "renunțați"
 #. (tooltip of widget: add_bo) List of harbors in trade route
 #: horizons/i18n/guitranslations.py:661
 msgid "Add to list"
-msgstr ""
+msgstr "Adaugă la listă"
 
 #. (text of widget: noi18n_health_label)
 #: horizons/i18n/guitranslations.py:668
@@ -2137,22 +2148,22 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:673 horizons/i18n/guitranslations.py:696
 #: horizons/i18n/guitranslations.py:711 horizons/i18n/guitranslations.py:726
 msgid "Close"
-msgstr ""
+msgstr "Închide"
 
 #. (text of widget: building_score)
 #: horizons/i18n/guitranslations.py:678
 msgid "Buildings"
-msgstr ""
+msgstr "Clădiri"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:680
 msgid "Player scores"
-msgstr ""
+msgstr "Scorurile jucătorilor"
 
 #. (text of widget: land_score)
 #: horizons/i18n/guitranslations.py:682
 msgid "Land"
-msgstr ""
+msgstr "Teren"
 
 #. (text of widget: player_name)
 #. (text of widget: settlement_name)
@@ -2160,87 +2171,89 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:686 horizons/i18n/guitranslations.py:707
 #: horizons/i18n/guitranslations.py:718
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:688
 msgid "Resources"
-msgstr ""
+msgstr "Resurse"
 
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:694
 msgid "Units"
-msgstr ""
+msgstr "Unități"
 
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:701
 msgid "Balance"
-msgstr ""
+msgstr "Bilanț"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:716
 msgid "Health"
-msgstr ""
+msgstr "Sănătate"
 
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:720
+#, fuzzy
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:722
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:724
 msgid "Weapons"
-msgstr ""
+msgstr "Armament"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:731
 msgid "Aggressive"
-msgstr ""
+msgstr "Agresiv"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:733
 msgid "Flee"
-msgstr ""
+msgstr "Evitare"
 
 #. (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:735
 msgid "Hold ground"
-msgstr ""
+msgstr "Ține poziția"
 
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:737
 msgid "Passive"
-msgstr ""
+msgstr "Pasiv"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:742
+#, fuzzy
 msgid "Key bindings"
-msgstr ""
+msgstr "Asociere de taste"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
 msgid "{B} = Show build menu"
-msgstr ""
+msgstr "{B} = Afișează meniul construcție"
 
 #. (text of widget: lbl_c)
 #: horizons/i18n/guitranslations.py:746
 msgid "{C} = Chat"
-msgstr ""
+msgstr "{C} = Discuție"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
 msgid "{ , } = Rotate building left"
-msgstr ""
+msgstr "{ , } = Rotește clădirea în stânga"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
 msgid "{DOWN} = Scroll down"
-msgstr ""
+msgstr "{JOS} = Deplasare în jos"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
