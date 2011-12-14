@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 23:21+0200\n"
+"PO-Revision-Date: 2011-12-14 23:14+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -26,7 +26,7 @@ msgstr "${player1} și ${player2} sunt acum ${status}"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by ${player}."
-msgstr ""
+msgstr "O nouă colonie a fost fondată de ${player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -329,10 +329,12 @@ msgstr "O salvare automată a fost efectuată."
 msgid "Your game has been quicksaved."
 msgstr "O salvare rapidă a fost efectuată."
 
+# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your inhabitants reached level ${level}."
-msgstr ""
+msgstr "Coloniștii tăi au evoluat la nivelul ${level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -702,17 +704,23 @@ msgstr ""
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr "Verificați ca portul să fie în intervalul specificat."
 
+# 81%
 #: horizons/engine.py:565
+#, fuzzy
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "Eșec în aplicarea noilor date de rețea."
 
+# 78%
 #: horizons/engine.py:566 horizons/gui/modules/multiplayermenu.py:52
+#, fuzzy
 msgid "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "Rețeaua nu a putut fi inițializată cu configurările actuale."
 
+# 75%
 #: horizons/engine.py:567 horizons/gui/modules/multiplayermenu.py:53
+#, fuzzy
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Verificați datele introduse în secțiunea de rețea."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine.py:571
@@ -1237,10 +1245,11 @@ msgstr "vid"
 msgid "There is nothing written in your logbook yet!"
 msgstr "Nu e nimic înscris în jurnalul de bord!"
 
+# 83%
 #: horizons/gui/widgets/playerssettlements.py:42
-#, python-format
+#, python-format, fuzzy
 msgid "{player}'s settlements"
-msgstr ""
+msgstr "coloniile lui %(player)s"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -2054,10 +2063,12 @@ msgstr "Partener comercial:"
 msgid "Click to change the name of this ship."
 msgstr "click aici pentru a schimba numele navei."
 
+# 95%
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
+#, fuzzy
 msgid "Configure trading route"
-msgstr ""
+msgstr "configurare rută comercială:"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2089,15 +2100,19 @@ msgstr "urcare"
 msgid "Leave Captain's log"
 msgstr "părăsiți jurnalul de bord"
 
+# 80%
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:635
+#, fuzzy
 msgid "Read previous entries"
-msgstr ""
+msgstr "citire intrări precedente"
 
+# 77%
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:637
+#, fuzzy
 msgid "Read next entries"
-msgstr ""
+msgstr "citire intrări precedente"
 
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:642
@@ -2818,6 +2833,7 @@ msgid "Failed to start/load the game"
 msgstr "Eșec la începerea/încărcarea jocului"
 
 #: horizons/main.py:253
+#, fuzzy
 msgid "The game you selected couldn't be started."
 msgstr "Partida selecționată nu a putut fi demarată."
 
@@ -3077,60 +3093,72 @@ msgid "Starting Unknown Horizons"
 msgstr "Pornește Unknown Horizons"
 
 #: run_uh.py:93
+#, fuzzy
 msgid "Starts <map>. <map> is the mapname."
-msgstr ""
+msgstr "Demarează  <map>. <map> este numele hărții."
 
 #: run_uh.py:95
+#, fuzzy
 msgid "Starts a random map."
-msgstr ""
+msgstr "Demarează o hartă alternativă."
 
 #: run_uh.py:97
+#, fuzzy
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "Demarează o hartă alternativă cu baza <seed>."
 
 #: run_uh.py:99
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr ""
+msgstr "Începe scenariul  <scenario>. <scenario> este numele scenariului."
 
 #: run_uh.py:101
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr ""
+msgstr "Începe campania  <campaign>. <campaign> este numele campaniei."
 
 #: run_uh.py:103
+#, fuzzy
 msgid "Starts the development map without displaying the main menu."
-msgstr ""
+msgstr "Începe harta în lucru fără a afișa meniul principal"
 
 #: run_uh.py:105
 msgid "Loads a saved game. <save> is the savegamename."
-msgstr ""
+msgstr "Încarcă o partidă de joc. <save> este numele salvării de joc."
 
 #: run_uh.py:107
 msgid "Loads the last quicksave."
-msgstr ""
+msgstr "Încarcă ultima salvare de joc rapidă."
 
 #: run_uh.py:109
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
 msgstr ""
+"Definește rădăcinile folosite pentru a genera arborii, peștii și alte "
+"resurse naturale."
 
 #: run_uh.py:112
 msgid "AI options"
-msgstr ""
+msgstr "Opțiuni IA"
 
 #: run_uh.py:114
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0)."
 msgstr ""
+"Utilizează <ai_players> jucători IA (exclude posibilitatea hibridului uman-"
+"IA; valoarea standard e 0)."
 
 #: run_uh.py:116
+#, fuzzy
 msgid "Makes the human player a human-AI hybrid (for development only)."
 msgstr ""
+"Transformă jucătorul uman într-un hibrid uman-IA (doar pentru lucrul la joc)"
 
 #: run_uh.py:118
+#, fuzzy
 msgid "Shows AI plans as highlights (for development only)."
-msgstr ""
+msgstr "Afișează planurile IA evidențiat (doar pentru lucrul la joc)."
 
 #: run_uh.py:121
+#, fuzzy
 msgid "Development options"
-msgstr ""
+msgstr "Opțiuni mod de lucru"
 
 #: run_uh.py:123
 msgid "Write debug output only to logfile, not to console. Implies -d."
