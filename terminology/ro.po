@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-15 00:47+0200\n"
+"PO-Revision-Date: 2011-12-15 00:49+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -444,88 +444,88 @@ msgid "ship inventory"
 msgstr "inventar / cargou"
 
 msgid "starting"
-msgstr ""
+msgstr "lansare / începe / debutează"
 
 msgid "trade partner"
-msgstr ""
+msgstr "partener comercial"
 
 msgid "yields"
-msgstr ""
+msgstr "randament"
 
 msgid "faith"
-msgstr ""
+msgstr "credință"
 
 msgid "green"
-msgstr ""
+msgstr "verde"
 
 msgid "red"
-msgstr ""
+msgstr "roșu"
 
 msgid "check"
-msgstr ""
+msgstr "a verifica"
 
 msgid "connection"
-msgstr ""
+msgstr "conexiune"
 
 msgid "no"
-msgstr ""
+msgstr "nu"
 
 msgid "tax"
-msgstr ""
+msgstr "taxă"
 
 msgid "feature"
-msgstr ""
+msgstr "funcție / trăsătură"
 
 msgid "reached"
-msgstr ""
+msgstr "atins / ajuns"
 
 msgid "slider"
-msgstr ""
+msgstr "reglabil / glisor"
 
 msgid "condition"
-msgstr ""
+msgstr "condiție / stare"
 
 msgid "consume"
-msgstr ""
+msgstr "a consuma"
 
 msgid "contact"
-msgstr ""
+msgstr "contact"
 
 msgid "dialogue"
-msgstr ""
+msgstr "dialog"
 
 msgid "issues"
-msgstr ""
+msgstr "probleme"
 
 msgid "minimap"
-msgstr ""
+msgstr "mini-hartă"
 
 msgid "playing"
-msgstr ""
+msgstr "joacă"
 
 msgid "ruin"
-msgstr ""
+msgstr "ruină"
 
 msgid "seed"
-msgstr ""
+msgstr "semințe / rădăcină"
 
 msgid "temporarily"
-msgstr ""
+msgstr "temporar"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "saline"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tutun"
 
 msgid "cattle"
-msgstr ""
+msgstr "bovine"
 
 msgid "pig"
-msgstr ""
+msgstr "porc"
 
 msgid "herbs"
-msgstr ""
+msgstr "ierburi"
 
 msgid "herbary"
 msgstr ""
