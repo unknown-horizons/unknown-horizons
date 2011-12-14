@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 20:41+0200\n"
+"PO-Revision-Date: 2011-12-14 20:59+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -961,41 +961,47 @@ msgstr "versiune greșită"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"Versiunea jocului diferă de versiunea locală. Fiecare jucător trebuie să "
+"folosească aceeași versiune. Poate fi rezolvat prin actualizarea fiecărui "
+"jucător la ultima versiune. Versiunea jocului: {game_version} Versiunea "
+"locală: {own_version}"
 
+# 79%
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Număr recomandat de jucători: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
 #: horizons/gui/widgets/choose_next_scenario.py:43
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Dificultate: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Autor: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 #: horizons/gui/modules/singleplayermenu.py:122
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Descriere: {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "Invalid player name"
 msgstr "nume de jucător invalid"
 
+# 97%
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Ați introdus un nume de jucător invalid."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1045,8 +1051,9 @@ msgid "Build"
 msgstr "construcție"
 
 #: horizons/gui/mousetools/navigationtool.py:68
+#, fuzzy
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Apăsați H să înlăturați acest ajutor"
 
 #: horizons/gui/tabs/boatbuildertab.py:36
 msgid "Boat builder overview"
@@ -1164,7 +1171,7 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:154
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "Aveți deja o colonie pe această insulă."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:162 horizons/i18n/guitranslations.py:592
@@ -1172,25 +1179,29 @@ msgstr ""
 msgid "Build settlement"
 msgstr "stabilește o colonie"
 
+# 91%
 #: horizons/gui/tabs/overviewtab.py:186
 msgid "Load/Unload"
-msgstr ""
+msgstr "Încarcă/Descarcă:"
 
+# 88%
 #: horizons/gui/tabs/overviewtab.py:189
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Cumpără/Vinde:"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
-msgstr ""
+msgstr "Prea departe de sucursală"
 
+# 94%
 #: horizons/gui/tabs/overviewtab.py:204
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Ambarcațiunile de comerț nu pot fi echipate cu arme"
 
+# 98%
 #: horizons/gui/tabs/overviewtab.py:205
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "Nu este posibilă echiparea unei ambarcațiuni de comerț cu arme."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
@@ -1216,7 +1227,7 @@ msgstr "unități selecționate"
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Limită: {amount}t pe slot"
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
@@ -1235,12 +1246,13 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py:112
 #: horizons/i18n/guitranslations.py:692
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
+# avoids the possessive article
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "{player}'s ships"
-msgstr ""
+msgstr "Flota {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
@@ -1254,7 +1266,7 @@ msgstr "indisponibil"
 #: horizons/gui/widgets/productionoverview.py:49
 #, python-format
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "Sumar producție {settlement}"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:74 horizons/i18n/guitranslations.py:663
@@ -1300,7 +1312,7 @@ msgstr "servicii"
 #. (tooltip of widget: church-1)
 #: horizons/i18n/guitranslations.py:53
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
+msgstr "Pavilion: satisface necesitățile religioase ale marinarilor."
 
 #. (tooltip of widget: fisher-1)
 #: horizons/i18n/guitranslations.py:55
