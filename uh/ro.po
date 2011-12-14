@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 23:14+0200\n"
+"PO-Revision-Date: 2011-12-15 00:11+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -3161,56 +3161,64 @@ msgid "Development options"
 msgstr "Opțiuni mod de lucru"
 
 #: run_uh.py:123
+#, fuzzy
 msgid "Write debug output only to logfile, not to console. Implies -d."
-msgstr ""
+msgstr "Scrieți mesajele de lucru doar în jurnal, nu și la consolă. Implică -d."
 
 #: run_uh.py:126
+#, fuzzy
 msgid "Enable logging for a certain logging module (for developing only)."
 msgstr ""
+"Activați înregistrarea pentru un modul particular (doar pentru lucrul la "
+"joc)."
 
 #: run_uh.py:128
+#, fuzzy
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr ""
+msgstr "Scrieți jurnalul la <filename> în loc de locația standard"
 
 #: run_uh.py:130
 msgid "For internal use only."
-msgstr ""
+msgstr "Doar pentru uz intern."
 
 #: run_uh.py:132
 msgid "Enable profiling (for developing only)."
-msgstr ""
+msgstr "Activează profilarea (doar pentru lucrul la joc)."
 
 #: run_uh.py:134
 msgid "Run the game for <max_ticks> ticks."
-msgstr ""
+msgstr "Lansează jocul pentru <max_ticks> turnuri."
 
 #: run_uh.py:136
 msgid "Enable the string previewer tool for scenario writers"
 msgstr ""
+"Activează utilitarul de previzualizare text pentru creatorii de scenariu."
 
 #: run_uh.py:138
 msgid "Disable preloading while in main menu"
-msgstr ""
+msgstr "Dezactivează încărcarea în avans în meniul principal"
 
 #: run_uh.py:140
 msgid "Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"
-msgstr ""
+msgstr "Schimbă viteza jocului (valori: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"
 
 #: run_uh.py:162
 msgid "Unknown Horizons crashed."
-msgstr ""
+msgstr "Unknown Horizons a eșuat."
 
 #: run_uh.py:164
 msgid "We are very sorry for this, and want to fix this error."
-msgstr ""
+msgstr "Ne cerem scuze și dorim să remediem problema."
 
 #: run_uh.py:165
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "Pentru a putea, avem nevoie de informațiile din fișierul jurnal:"
 
 #: run_uh.py:167
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
+"Vă rugăm să ni-l transmiteți prin IRC sau forum, pentru detalii vizitați "
+"unknown-horizons.org."
 
 #: run_uh.py:208
 msgid "Error: Unable to find required libraries"
