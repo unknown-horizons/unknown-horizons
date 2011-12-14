@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 22:58+0200\n"
+"PO-Revision-Date: 2011-12-14 23:21+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -2856,45 +2856,49 @@ msgstr "Schimbările în fișierul specificat nu se vor aplica direct."
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
+"Ca schimbările să se aplice, mereu porniți UH cu argumentele curente sau "
+"editați fișierul {filename}."
 
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "Eroare:imposibil de găsit campania '{name}'."
 
 #: horizons/main.py:423
 #, python-format
 msgid "Error: Cannot find savegame '{name}'."
-msgstr ""
+msgstr "Eroare: imposibil de găsit salvarea de joc '{name}'."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
-msgstr ""
+msgstr "Eroare: nu a fost găsită nicio salvare rapidă."
 
 #: horizons/mpsession.py:53 horizons/mpsession.py:67 horizons/mpsession.py:69
 #: horizons/mpsession.py:71 horizons/mpsession.py:73
+#, fuzzy
 msgid "Not possible"
-msgstr ""
+msgstr "imposibil"
 
 #: horizons/mpsession.py:53
 msgid "You cannot change the speed of a multiplayer game"
-msgstr ""
+msgstr "Nu se poate schimba viteza unui joc de rețea!"
 
 #: horizons/mpsession.py:67 horizons/mpsession.py:69 horizons/mpsession.py:71
 #: horizons/mpsession.py:73
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
+"Nu este posibilă încă salvarea/încărcarea partidei pentru jocul de rețea."
 
 #: horizons/savegamemanager.py:379
-#, python-format
+#, python-format, fuzzy
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "Eroare: nu știu cum să folosesc condiția {condition}"
 
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "Eroare: imposibil de găsit scenariul '{name}'."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -2902,57 +2906,62 @@ msgstr "Ați câștigat!"
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Ați încheiat acest scenariu."
 
 #: horizons/scenario/actions.py:77
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Doriți să continuați partida?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
 msgid "unknown"
-msgstr ""
+msgstr "necunoscut"
 
 #: horizons/spsession.py:124
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Eșec la salvare rapidă."
 
 #: horizons/spsession.py:125
 msgid "An error happened during quicksave. Your game has not been saved."
 msgstr ""
+"A avut loc o eroare în timpul salvării rapide. Partida nu a fost salvată."
 
 #: horizons/spsession.py:126
+#, fuzzy
 msgid "If this error happens again, please contact the development team:"
-msgstr ""
+msgstr "Dacă această eroare se repetă, contactați echipa de developare."
 
 #: horizons/spsession.py:134
+#, fuzzy
 msgid "No quicksaves found"
-msgstr ""
+msgstr "Nicio salvare rapidă existentă"
 
 #: horizons/spsession.py:134
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "Aveți nevoie să aveți o salvare rapidă pentru a putea reîncărca."
 
 #. usually invalid filename
 #: horizons/spsession.py:160
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Eșec la crearea fișierului salvării de joc"
 
 #: horizons/spsession.py:161
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Eșec la crearea fișierului salvării de joc"
 
 #: horizons/spsession.py:162
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Aceasta poate fi din cauza folosirii caracterelor speciale nesuportate în "
+"numele fișierului."
 
 #: horizons/spsession.py:168
 msgid "File used by another process"
-msgstr ""
+msgstr "Fișier utilizat de un alt proces."
 
 #: horizons/spsession.py:169
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "Fișierul salvării de joc este utilizat de alt program."
 
 #: horizons/util/uhdbaccessor.py:164
 #, python-format
@@ -2961,103 +2970,111 @@ msgstr ""
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Partenerul comercial nu vinde asta."
 
 #: horizons/world/tradepost.py:162
 msgid "You can not store this."
-msgstr ""
+msgstr "Nu puteți stoca asta."
 
 #: horizons/world/tradepost.py:169
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Nu vă puteți permite să cumpărați asta."
 
 #: horizons/world/tradepost.py:178
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Partenerul de comerț nu vinde mai mult."
 
 #: horizons/world/tradepost.py:198
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "Partenerul de comerț nu cumpără asta."
 
 #: horizons/world/tradepost.py:209
 msgid "You do not possess this."
-msgstr ""
+msgstr "Nu aveți asta."
 
 #: horizons/world/tradepost.py:217
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "Partenerul de comerț nu poate stoca mai mult din asta."
 
 #: horizons/world/tradepost.py:224
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Partenerul de comerț nu-și permite să cumpere asta."
 
 #: horizons/world/tradepost.py:231
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "Partenerul de comerț nu cumpără mai mult din asta."
 
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Rută comercială: deplasare la {location}"
 
 #: horizons/world/units/ship.py:276
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Rută comercială: așteptare la {location}"
 
 #: horizons/world/units/ship.py:482
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Deplasare la {location}"
 
 #: horizons/world/units/ship.py:484
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Deplasare prin {x}, {y}"
 
 #: horizons/world/units/ship.py:489
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "În repaos la {location}"
 
 #: horizons/world/units/ship.py:491
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "În repaos la {x}, {y}"
 
 #: horizons/world/units/weaponholder.py:440
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Atacă {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:445
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Atacă {owner}"
 
 #: run_uh.py:80
+#, fuzzy
 msgid "Enable debug output to stderr and a logfile."
 msgstr ""
+"Permite redirecționarea mesajelor debug către stderr și fișierul jurnal."
 
 #: run_uh.py:82
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Specificați calea către directorul rădăcină FIFE."
 
 #: run_uh.py:84
+#, fuzzy
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
 msgstr ""
+"Restabilește parametrii standard. Util dacă Unknown Horizons nu poate porni "
+"din cauza unei configurații greșite."
 
 #: run_uh.py:86
 msgid "Specify alternative multiplayer master server."
-msgstr ""
+msgstr "Specificați serverul principal alternativ pentru jocul de rețea."
 
 #: run_uh.py:88
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
+"Specificați adresa de rețea pe care doriți să o folosiți. Util dacă NAT nu "
+"funcționează dar puteți redirecționa către un port static."
 
 #: run_uh.py:91
+#, fuzzy
 msgid "Starting Unknown Horizons"
-msgstr ""
+msgstr "Pornește Unknown Horizons"
 
 #: run_uh.py:93
 msgid "Starts <map>. <map> is the mapname."
