@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 18:01+0200\n"
+"PO-Revision-Date: 2011-12-14 18:02+0200\n"
 "Last-Translator: mumuxe <antoinepernot@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -2960,9 +2960,9 @@ msgstr ""
 # 81%
 # 78%
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario '{name}'."
-msgstr "Erreur: Impossible de trouver la sauvegarde «%s»."
+msgstr "Erreur: Impossible de trouver le scénario '{name}'."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -3048,7 +3048,7 @@ msgstr "Vous ne pouvez pas stocker cela."
 
 #: horizons/world/tradepost.py:169
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Vous ne pouvez pas vous permettre d'acheter cela."
 
 #: horizons/world/tradepost.py:178
 msgid "The trade partner does not sell more of this."
@@ -3068,7 +3068,7 @@ msgstr "Votre partenaire commercial ne peux pas stocker davantage de cela."
 
 #: horizons/world/tradepost.py:224
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Votre partenaire commercial ne peux pas se permettre d'acheter cela"
 
 #: horizons/world/tradepost.py:231
 msgid "The trade partner does not buy more of this."
