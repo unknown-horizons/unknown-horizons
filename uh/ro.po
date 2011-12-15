@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-15 00:11+0200\n"
-"Last-Translator: trendy <trendynickname@gmail.com>\n"
+"PO-Revision-Date: 2011-12-15 04:19+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -1097,7 +1097,7 @@ msgstr "confirmare ordin"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Construiește câmpurile asociate"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -1190,12 +1190,12 @@ msgstr "stabilește o colonie"
 # 91%
 #: horizons/gui/tabs/overviewtab.py:186
 msgid "Load/Unload"
-msgstr "Încarcă/Descarcă:"
+msgstr "Încarcă/Descarcă"
 
 # 88%
 #: horizons/gui/tabs/overviewtab.py:189
 msgid "Buy/Sell"
-msgstr "Cumpără/Vinde:"
+msgstr "Cumpără/Vinde"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1247,9 +1247,9 @@ msgstr "Nu e nimic înscris în jurnalul de bord!"
 
 # 83%
 #: horizons/gui/widgets/playerssettlements.py:42
-#, python-format, fuzzy
+#, python-format, 
 msgid "{player}'s settlements"
-msgstr "coloniile lui %(player)s"
+msgstr "coloniile lui {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -2066,9 +2066,8 @@ msgstr "click aici pentru a schimba numele navei."
 # 95%
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
-#, fuzzy
 msgid "Configure trading route"
-msgstr "configurare rută comercială:"
+msgstr "configurare rută comercială"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2854,7 +2853,7 @@ msgstr "Eroare: s-au găsit rezultate multiple:"
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr "Eroare: fișierele de campanie trebuie să se termine în „.yaml”."
+msgstr "Eroare: fișierele de campanie trebuie să se termine în \".yaml\"."
 
 #: horizons/main.py:381
 #, python-format
@@ -2898,13 +2897,13 @@ msgstr "imposibil"
 
 #: horizons/mpsession.py:53
 msgid "You cannot change the speed of a multiplayer game"
-msgstr "Nu se poate schimba viteza unui joc de rețea!"
+msgstr "Nu se poate schimba viteza unui joc de rețea"
 
 #: horizons/mpsession.py:67 horizons/mpsession.py:69 horizons/mpsession.py:71
 #: horizons/mpsession.py:73
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
-"Nu este posibilă încă salvarea/încărcarea partidei pentru jocul de rețea."
+"Nu este posibilă încă salvarea/încărcarea partidei pentru jocul de rețea"
 
 #: horizons/savegamemanager.py:379
 #, python-format, fuzzy
@@ -2943,9 +2942,8 @@ msgstr ""
 "A avut loc o eroare în timpul salvării rapide. Partida nu a fost salvată."
 
 #: horizons/spsession.py:126
-#, fuzzy
 msgid "If this error happens again, please contact the development team:"
-msgstr "Dacă această eroare se repetă, contactați echipa de developare."
+msgstr "Dacă această eroare se repetă, contactați echipa de developare:"
 
 #: horizons/spsession.py:134
 #, fuzzy
@@ -2963,7 +2961,7 @@ msgstr "Eșec la crearea fișierului salvării de joc"
 
 #: horizons/spsession.py:161
 msgid "There has been an error while creating your savegame file."
-msgstr "Eșec la crearea fișierului salvării de joc"
+msgstr "Eșec la crearea fișierului salvării de joc."
 
 #: horizons/spsession.py:162
 msgid "This usually means that the savegame name contains unsupported special characters."
@@ -2973,7 +2971,7 @@ msgstr ""
 
 #: horizons/spsession.py:168
 msgid "File used by another process"
-msgstr "Fișier utilizat de un alt proces."
+msgstr "Fișier utilizat de un alt proces"
 
 #: horizons/spsession.py:169
 msgid "The savegame file is currently used by another program."
@@ -3116,9 +3114,8 @@ msgid "Starts <campaign>. <campaign> is the campaign name."
 msgstr "Începe campania  <campaign>. <campaign> este numele campaniei."
 
 #: run_uh.py:103
-#, fuzzy
 msgid "Starts the development map without displaying the main menu."
-msgstr "Începe harta în lucru fără a afișa meniul principal"
+msgstr "Începe harta în lucru fără a afișa meniul principal."
 
 #: run_uh.py:105
 msgid "Loads a saved game. <save> is the savegamename."
@@ -3145,10 +3142,10 @@ msgstr ""
 "IA; valoarea standard e 0)."
 
 #: run_uh.py:116
-#, fuzzy
 msgid "Makes the human player a human-AI hybrid (for development only)."
 msgstr ""
-"Transformă jucătorul uman într-un hibrid uman-IA (doar pentru lucrul la joc)"
+"Transformă jucătorul uman într-un hibrid uman-IA (doar pentru lucrul la "
+"joc)."
 
 #: run_uh.py:118
 #, fuzzy
@@ -3192,7 +3189,7 @@ msgstr "Lansează jocul pentru <max_ticks> turnuri."
 #: run_uh.py:136
 msgid "Enable the string previewer tool for scenario writers"
 msgstr ""
-"Activează utilitarul de previzualizare text pentru creatorii de scenariu."
+"Activează utilitarul de previzualizare text pentru creatorii de scenariu"
 
 #: run_uh.py:138
 msgid "Disable preloading while in main menu"
@@ -3218,7 +3215,7 @@ msgstr "Pentru a putea, avem nevoie de informațiile din fișierul jurnal:"
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
 "Vă rugăm să ni-l transmiteți prin IRC sau forum, pentru detalii vizitați "
-"unknown-horizons.org."
+"unknown-horizons.org ."
 
 #: run_uh.py:208
 msgid "Error: Unable to find required libraries"

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-14 19:20+0200\n"
-"Last-Translator: Antoine <antoinepernot@mailoo.org>\n"
+"PO-Revision-Date: 2011-12-15 04:10+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -895,7 +895,7 @@ msgstr "Vous devez sélectionner une sauvegarde à supprimer."
 #: horizons/gui/gui.py:561
 #, python-format, 
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Voulez-vous vraiment supprimer la sauvegarde «%s» ?"
+msgstr "Voulez-vous vraiment supprimer la sauvegarde «{name}» ?"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
@@ -1291,7 +1291,7 @@ msgstr "Il n'y a encore rien dans votre journal de bord !"
 #: horizons/gui/widgets/playerssettlements.py:42
 #, python-format, 
 msgid "{player}'s settlements"
-msgstr "Colonies de %(player)"
+msgstr "Colonies de {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1303,7 +1303,7 @@ msgstr "Total"
 #: horizons/gui/widgets/playersships.py:45
 #, python-format, 
 msgid "{player}'s ships"
-msgstr "Bateaux de %(player)"
+msgstr "Bateaux de {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86

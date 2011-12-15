@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-11 19:52+0200\n"
-"Last-Translator: ussikene <ussikene@gmail.com>\n"
+"PO-Revision-Date: 2011-12-15 04:07+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -692,7 +692,7 @@ msgstr ""
 #: horizons/engine.py:305
 #, python-format
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr "Seadistatud keelt %(lang)s ei õnnestunud laadida asukohast %(place)s"
+msgstr "Seadistatud keelt {lang} ei õnnestunud laadida asukohast {place}"
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
@@ -2817,9 +2817,9 @@ msgstr ""
 
 # 75%
 #: horizons/main.py:346
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find map '{name}'."
-msgstr "Viga: Ei leita kaarti \"%s\"."
+msgstr "Viga: Ei leita kaarti \"{name}\"."
 
 # 96%
 #: horizons/main.py:349 horizons/main.py:426
@@ -2849,15 +2849,15 @@ msgstr ""
 # 78%
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign '{name}'."
-msgstr "Viga: Ei leita kaarti \"%s\"."
+msgstr "Viga: Ei leita kaarti \"{name}\"."
 
 # 78%
 #: horizons/main.py:423
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find savegame '{name}'."
-msgstr "Viga: ei leita salvestatud mängu \"%s\"."
+msgstr "Viga: ei leita salvestatud mängu \"{name}\"."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
@@ -2885,9 +2885,9 @@ msgstr ""
 # 81%
 # 78%
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario '{name}'."
-msgstr "Viga: ei leita salvestatud mängu \"%s\"."
+msgstr "Viga: ei leita salvestatud mängu \"{name}\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
