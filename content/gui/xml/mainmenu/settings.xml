@@ -114,19 +114,22 @@
 	</VBox>
 
 	<HBox>
-		<Label name="minimap_rotation_label"  text="Enable minimap rotation:" />
+		<Label name="minimap_rotation_label"  text="Rotate minimap with map:" />
 		<CheckBox min_size="24,24"  name="minimaprotation" />
 	</HBox>
 	<HBox>
-		<Label name="edge_scrolling_label"  text="Enable edge scrolling:" />
+		<TooltipLabel name="edge_scrolling_label"  text="Scroll at map edge:"
+			tooltip="Whether to move the viewport when the mouse pointer is close to map edges" />
 		<CheckBox min_size="24,24"  name="edgescrolling" />
 	</HBox>
 	<HBox>
-		<Label name="uninterrupted_building_label"  text="Uninterrupted building:" />
+		<TooltipLabel name="uninterrupted_building_label"  text="Uninterrupted building:"
+			tooltip="When enabled, do not exit the build mode after successful construction" />
 		<CheckBox min_size="24,24"  name="uninterrupted_building" />
 	</HBox>
 	<HBox>
-		<Label name="auto_unload_label"  text="Auto Unload by ships:" />
+		<TooltipLabel name="auto_unload_label"  text="Auto-unload ship:"
+			comment="Whether to unload the ship after founding a settlement" />
 		<CheckBox min_size="24,24"  name="auto_unload" />
 	</HBox>
 
