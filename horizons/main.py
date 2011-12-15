@@ -378,9 +378,12 @@ def _start_campaign(campaign_name):
 		if not (os.path.exists(path_in_campaign_dir) and \
 		        os.path.samefile(campaign_name, path_in_campaign_dir)):
 			#xgettext:python-format
-			print _("Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path}).").format(path=SavegameManager.campaigns_dir) + \
-			      "\n" + _("This means that changes in the file you specified will not apply to the game directly.") + \
-			      _("To see the changes, either always start UH with the current arguments or edit the file {filename}.").format(filename=path_in_campaign_dir) #xgettext:python-format
+			string = _("Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path}).").format(path=SavegameManager.campaigns_dir)
+			string += "\n"
+			string += _("This means that changes in the file you specified will not apply to the game directly.")
+			#xgettext:python-format
+			string += _("To see the changes, either always start UH with the current arguments or edit the file {filename}.").format(filename=path_in_campaign_dir)
+			print string
 
 			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
 		# use campaign file name below
