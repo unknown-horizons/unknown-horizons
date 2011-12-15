@@ -143,6 +143,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# possible human player candidate with different client id
 				human_players.append(player)
 		self.owner_highlight_active = False
+		self.health_visible_for_all_health_instances = False
 
 		if self.player is None:
 			# we have no human player.
@@ -915,6 +916,20 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				except AttributeError:
 					pass # obj has been deleted, inst() returned None
 			self._translucent_buildings.clear()
+			
+	def toggle_health_for_all_health_instances(self):
+		"""Show health bar of every instance with an health component, which isnt selected already"""
+		self.health_visible_for_all_health_instances = not self.health_visible_for_all_health_instances
+		if self.health_visible_for_all_health_instances:
+			for instance in self.session.world.get_health_instances():
+				if not instance._selected:
+					instance.draw_health()
+					self.session.view.add_change_listener(instance.draw_health)
+		else:
+			for instance in self.session.world.get_health_instances():
+				if self.session.view.has_change_listener(instance.draw_health) and not instance._selected:
+					self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(instance.worldid))
+					self.session.view.remove_change_listener(instance.draw_health)	
 
 
 def load_building(session, db, typeid, worldid):

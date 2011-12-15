@@ -173,6 +173,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == 'o':
 			# copy mode: pipette tool
 			self.session.toggle_cursor('pipette')
+		elif keystr == 'k':
+			# shows health bar of every instance with an health component
+			self.session.world.toggle_health_for_all_health_instances()
 		else:
 			return
 		evt.consume()
