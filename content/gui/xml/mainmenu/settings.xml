@@ -125,6 +125,10 @@
 		<Label name="uninterrupted_building_label"  text="Uninterrupted building:" />
 		<CheckBox min_size="24,24"  name="uninterrupted_building" />
 	</HBox>
+	<HBox>
+		<Label name="auto_unload_label"  text="Auto Unload by ships:" />
+		<CheckBox min_size="24,24"  name="auto_unload" />
+	</HBox>
 
 <Spacer min_size="2" />
 	<VBox name="language_settings">

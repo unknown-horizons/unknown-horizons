@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+import horizons.main
 
 from horizons.entities import Entities
 from horizons.command import Command
@@ -136,7 +137,7 @@ class Build(Command):
 		building.start()
 
 		# unload the remaining resources on the human player ship if we just founded a new settlement
-		if building.id == BUILDINGS.BRANCH_OFFICE_CLASS and isinstance(building.owner, HumanPlayer):
+		if building.id == BUILDINGS.BRANCH_OFFICE_CLASS and isinstance(building.owner, HumanPlayer) and horizons.main.fife.get_uh_setting("AutoUnload"):
 			ship = WorldObject.get_object_by_id(self.ship)
 			for res, amount in [(res, amount) for res, amount in ship.inventory]: # copy the inventory first because otherwise we would modify it while iterating
 				amount = min(amount, building.settlement.inventory.get_free_space_for(res))
