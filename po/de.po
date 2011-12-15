@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-11 01:47+0200\n"
+"PO-Revision-Date: 2011-12-15 04:29+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -926,7 +926,7 @@ msgstr "Ohne Mitspieler benötigt Ihr keine Diplomatie."
 
 #: horizons/gui/ingamegui.py:519
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "Zulässige Namen haben diese Form: {expression}"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -2877,6 +2877,8 @@ msgstr "Fehler: Kampagnen-Dateien müssen auf \".yaml\" enden."
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
+"Aus technischen Gründen wird die Kampagnendatei dabei in das "
+"Kampagnenverzeichnis von UH kopiert ({path})."
 
 #: horizons/main.py:382
 msgid "This means that changes in the file you specified will not apply to the game directly."
@@ -2888,6 +2890,9 @@ msgstr ""
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
+"Um Eure Änderungen zu sehen, solltet ihr entweder UH immer mit den "
+"momentanen Kommandozeilen-Argumenten starten oder die folgende Datei "
+"editieren: {filename}."
 
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
@@ -3006,79 +3011,79 @@ msgstr "{building}: {description}"
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Euer Handelspartner verkauft dies nicht."
 
 #: horizons/world/tradepost.py:162
 msgid "You can not store this."
-msgstr ""
+msgstr "Ihr könnt dies nicht lagern."
 
 #: horizons/world/tradepost.py:169
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Ihr könnt Euch dies nicht leisten."
 
 #: horizons/world/tradepost.py:178
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Euer Handelspartner verkauft davon nichts mehr."
 
 #: horizons/world/tradepost.py:198
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "Euer Handelspartner kauft dies nicht."
 
 #: horizons/world/tradepost.py:209
 msgid "You do not possess this."
-msgstr ""
+msgstr "Ihr besitzt dies nicht."
 
 #: horizons/world/tradepost.py:217
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "Euer Handelspartner kann nicht mehr davon lagern."
 
 #: horizons/world/tradepost.py:224
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Euer Handelspartner kann sich dies nicht leisten."
 
 #: horizons/world/tradepost.py:231
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "Euer Handelspartner kauft davon nichts mehr."
 
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Handelsroute: Auf dem Weg zu {location}"
 
 #: horizons/world/units/ship.py:276
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Handelsroute: Warte bei {position}"
 
 #: horizons/world/units/ship.py:482
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Auf dem Weg zu {location}"
 
 #: horizons/world/units/ship.py:484
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Auf dem Weg zu {x}, {y}"
 
 #: horizons/world/units/ship.py:489
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Untätig bei {location}"
 
 #: horizons/world/units/ship.py:491
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Untätig bei {x}, {y}"
 
 #: horizons/world/units/weaponholder.py:440
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Angriff auf {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:445
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Angriff auf {owner}"
 
 #: run_uh.py:80
 msgid "Enable debug output to stderr and a logfile."

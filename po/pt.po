@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-11-29 02:02+0200\n"
+"PO-Revision-Date: 2011-12-15 04:32+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -690,7 +690,7 @@ msgstr ""
 #: horizons/engine.py:305
 #, python-format
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr ""
+msgstr "A língua configurada {lang} em {place} não pode ser carregada"
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
@@ -755,7 +755,7 @@ msgstr "Sem jogos gravados"
 
 #: horizons/gui/gui.py:249
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "Não existem jogos gravados para carregar."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -856,12 +856,13 @@ msgstr "Nenhum ficheiro selecionado"
 
 #: horizons/gui/gui.py:557
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "É necessário seleccionar um jogo gravado para apagar."
 
+# 84%
 #: horizons/gui/gui.py:561
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Tem a certeza que deseja apagar o jogo gravado \"{name}\"?"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
@@ -994,7 +995,7 @@ msgstr "Nome de jogador inválido"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Introduziu um nome de jogador inválido."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1176,11 +1177,11 @@ msgstr "Construir povoação"
 
 #: horizons/gui/tabs/overviewtab.py:186
 msgid "Load/Unload"
-msgstr ""
+msgstr "Carregar/Descarregar"
 
 #: horizons/gui/tabs/overviewtab.py:189
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Comprar/Vender"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1229,10 +1230,11 @@ msgstr "Vazio"
 msgid "There is nothing written in your logbook yet!"
 msgstr "O seu diário de bordo ainda está em branco!"
 
+# 83%
 #: horizons/gui/widgets/playerssettlements.py:42
 #, python-format
 msgid "{player}'s settlements"
-msgstr ""
+msgstr "povoações de {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1240,10 +1242,11 @@ msgstr ""
 msgid "Total"
 msgstr "Total"
 
+# 77%
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "{player}'s ships"
-msgstr ""
+msgstr "navios de {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
@@ -1254,10 +1257,11 @@ msgstr ""
 msgid "N/A"
 msgstr ""
 
+# 89%
 #: horizons/gui/widgets/productionoverview.py:49
 #, python-format
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "Relatório da produção em {settlement}"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:74 horizons/i18n/guitranslations.py:663
@@ -1968,7 +1972,7 @@ msgstr "Nome:"
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:477 horizons/i18n/guitranslations.py:481
 msgid "Collector utilisation"
-msgstr ""
+msgstr "Transportadores utilizados"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:568
@@ -2051,7 +2055,7 @@ msgstr "Clique para mudar o nome deste navio."
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
 msgid "Configure trading route"
-msgstr ""
+msgstr "Configurar a rota comercial"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2803,10 +2807,11 @@ msgstr ""
 "O ficheiro pode estar corrompido ou ter sido gravado com uma versão "
 "anterior."
 
+# 75%
 #: horizons/main.py:346
 #, python-format
 msgid "Error: Cannot find map '{name}'."
-msgstr ""
+msgstr "Erro: Não foi possível encontrar o mapa \"{name}\"."
 
 #: horizons/main.py:349 horizons/main.py:426
 msgid "Error: Found multiple matches:"
@@ -2832,16 +2837,19 @@ msgstr ""
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
 
+# 81%
+# 78%
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "Erro: Não foi possível encontrar o campanha \"{name}\"."
 
+# 78%
 #: horizons/main.py:423
 #, python-format
 msgid "Error: Cannot find savegame '{name}'."
-msgstr ""
+msgstr "Erro: Não foi possível encontrar o jogo gravado \"{name}\"."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
@@ -2866,10 +2874,12 @@ msgstr "De momento não é possível carregar/gravar jogos em rede"
 msgid "Error: don't know how to handle condition type {condition}"
 msgstr ""
 
+# 81%
+# 78%
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "Erro: Não foi possível encontrar o cenário \"{name}\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
