@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-11 17:05+0200\n"
+"PO-Revision-Date: 2011-12-11 18:18+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -136,7 +136,6 @@ msgstr "ÜLESANNE: EHITA PUURAIDUR"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
-#, fuzzy
 msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings.\n"
