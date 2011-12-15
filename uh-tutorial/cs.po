@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-08 22:32+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-15 20:51+0200\n"
+"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -135,7 +135,6 @@ msgstr "NOVÝ ÚKOL: POSTAV DŘEVORUBCE"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
-#, fuzzy
 msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings.\n"
@@ -165,10 +164,9 @@ msgstr ""
 "Také rybář potřebuje nějaká prkna, aby si mohl vyrobit svou loďku.\n"
 "\n"
 "Aby jste postavili dřevorubce, otevřete stavební menu kliknutním na velkou "
-"ikonu pod mini mapou nebo stisknutím klávesy B.\n"
+"ikonu pod mini mapou nebo stisknutím klávesy B\n"
 "\n"
 "Stavební menu je rozděleno podle jednotlivých epoch.\n"
-"\n"
 "Nyní se nacházíte v první epoše (námořnická úroveň), proto máte k dispozici "
 "pouze základní budovy."
 
@@ -574,8 +572,9 @@ msgstr ""
 "Tažením posuvníku na pravé straně každého slotu určíte \"cílovou hodnotu\", "
 "která má různé významy pro \"Prodej\" a \"Nákup\".\n"
 "Pokud nakupujete zboží, bude nakoupeno tolik zboží, aby byla udržena \"cílová "
-"hodnota\" na skladu.Pokud zboží prodáváte, \"cílová hodnota\" určuje množství "
-"zboží, které uchováváte jako rezervu a nebude prodáno."
+"hodnota\" na skladu.\n"
+"Pokud zboží prodáváte, \"cílová hodnota\" určuje množství zboží, které "
+"uchováváte jako rezervu a nebude prodáno."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
