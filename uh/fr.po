@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-15 04:10+0200\n"
+"PO-Revision-Date: 2011-12-15 15:12+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -785,7 +785,7 @@ msgstr "Aucune partie sauvegardée"
 # 96%
 #: horizons/gui/gui.py:249
 msgid "There are no saved games to load."
-msgstr "Il n'y a aucune partie sauvegardée à charger"
+msgstr "Il n'y a aucune partie sauvegardée à charger."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -879,7 +879,7 @@ msgstr "Version requise : {required} !"
 
 #: horizons/gui/gui.py:540
 msgid "Incompatible version"
-msgstr "Version incompatible."
+msgstr "Version incompatible"
 
 #: horizons/gui/gui.py:557
 msgid "No file selected"
@@ -913,7 +913,7 @@ msgstr "Échec lors de l'effacement de la sauvegarde !"
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:325
 msgid "No diplomacy possible"
-msgstr "Aucune diplomatie n'est possible."
+msgstr "Aucune diplomatie n'est possible"
 
 #: horizons/gui/ingamegui.py:326
 msgid "Cannot do diplomacy as there are no other players."
@@ -1041,28 +1041,28 @@ msgstr "Vous avez entré un nom de joueur invalide."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
-msgstr "Taille de la carte : "
+msgstr "Taille de la carte :"
 
 #: horizons/gui/modules/singleplayermenu.py:208
 msgid "Water:"
-msgstr "Eau:"
+msgstr "Eau :"
 
 #: horizons/gui/modules/singleplayermenu.py:216
 msgid "Max island size:"
-msgstr "Taille maximale des îles:"
+msgstr "Taille maximale des îles :"
 
 #: horizons/gui/modules/singleplayermenu.py:224
 msgid "Preferred island size:"
-msgstr "Taille préférée des îles:"
+msgstr "Taille préférée des îles :"
 
 #: horizons/gui/modules/singleplayermenu.py:232
 msgid "Island size deviation:"
-msgstr "Divergance de la taille des îles:"
+msgstr "Divergance de la taille des îles :"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:254
 msgid "Resource density:"
-msgstr "Densité des ressources:"
+msgstr "Densité des ressources :"
 
 #: horizons/gui/modules/singleplayermenu.py:281
 msgid "Invalid scenario file"
@@ -1074,7 +1074,7 @@ msgstr "Le fichier sélectionné n'est pas un scénario valide."
 
 #: horizons/gui/modules/singleplayermenu.py:283
 msgid "Error message:"
-msgstr "Message d'erreur:"
+msgstr "Message d'erreur :"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:284
@@ -1090,7 +1090,7 @@ msgstr "Construction"
 
 #: horizons/gui/mousetools/navigationtool.py:68
 msgid "Press H to remove this hint"
-msgstr "Appuyez sur H pour enlever cette aide."
+msgstr "Appuyez sur H pour enlever cette aide"
 
 #: horizons/gui/tabs/boatbuildertab.py:36
 msgid "Boat builder overview"
@@ -1243,7 +1243,7 @@ msgstr ""
 # 94%
 #: horizons/gui/tabs/overviewtab.py:204
 msgid "Cannot equip trade ship with weapons"
-msgstr "Les navires de commerce ne peuvent pas être armés."
+msgstr "Les navires de commerce ne peuvent pas être armés"
 
 # 98%
 #: horizons/gui/tabs/overviewtab.py:205
@@ -1277,7 +1277,7 @@ msgstr "Unités sélectionnées"
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: {amount}t per slot"
-msgstr "Limite : {amount} par emplacement."
+msgstr "Limite : {amount}t par emplacement"
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
@@ -1318,7 +1318,7 @@ msgstr "Indisponible"
 #: horizons/gui/widgets/productionoverview.py:49
 #, python-format, 
 msgid "Production overview of {settlement}"
-msgstr "Sommaire de production de %(settlement)"
+msgstr "Sommaire de production de {settlement}"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:74 horizons/i18n/guitranslations.py:663
@@ -1515,7 +1515,7 @@ msgstr "Charbonnier : Produit du charbon de bois à partir de planches."
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:127
 msgid "Mine: Gets ores from deposit."
-msgstr "Mine : Extrait du minerai à partir du gisement"
+msgstr "Mine : Extrait du minerai à partir du gisement."
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:129
@@ -1536,7 +1536,7 @@ msgstr "Fonderie : Raffine tout type de minerais."
 #. (tooltip of widget: tavern-1)
 #: horizons/i18n/guitranslations.py:135
 msgid "Tavern: Provides get-together."
-msgstr "Taverne: Rapproche la communauté !"
+msgstr "Taverne: Rapproche la communauté."
 
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:137
@@ -1562,7 +1562,7 @@ msgstr "Début de partie"
 #: horizons/i18n/guitranslations.py:148
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr ""
-"Vous devez fonder une colonie avant de pouvoir construire des bâtiments!"
+"Vous devez fonder une colonie avant de pouvoir construire des bâtiments !"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:150
@@ -1713,7 +1713,7 @@ msgstr "Discuter"
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:230
 msgid "Enter prefix:"
-msgstr "Entrez le préfixe : "
+msgstr "Entrez le préfixe :"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
@@ -1728,7 +1728,7 @@ msgstr "Sauvegarde la carte"
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
 msgid "Cancel building:"
-msgstr "Annuler la construction:"
+msgstr "Annuler la construction :"
 
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:241
@@ -2030,7 +2030,7 @@ msgstr "Mise à jour impossible :"
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:462
 msgid "This is the current maximum increment!"
-msgstr "Ceci est actuellement l'échelon maximum"
+msgstr "Ceci est actuellement l'échelon maximum !"
 
 #. (text of widget: name_label)
 #: horizons/i18n/guitranslations.py:475 horizons/i18n/guitranslations.py:557
@@ -2041,9 +2041,8 @@ msgstr "Nom :"
 #. (tooltip of widget: collector_utilisation_label)
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:477 horizons/i18n/guitranslations.py:481
-#, fuzzy
 msgid "Collector utilisation"
-msgstr "Utilisation des collecteurs:"
+msgstr "Utilisation des collecteurs"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:568
@@ -2128,7 +2127,7 @@ msgstr "Cliquez pour changer le nom de ce navire."
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
 msgid "Configure trading route"
-msgstr "Configurer la route commerciale :"
+msgstr "Configurer la route commerciale"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2688,7 +2687,7 @@ msgstr "Sélectionner la langue :"
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:937
 msgid "Enable minimap rotation:"
-msgstr "Activer la rotation de la mini-carte:"
+msgstr "Activer la rotation de la mini-carte :"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:939
@@ -2825,17 +2824,17 @@ msgstr "Choisir une carte :"
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:1016
 msgid "Map settings:"
-msgstr "Réglages de carte:"
+msgstr "Réglages de carte :"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1026
 msgid "AI players:"
-msgstr "Joueurs IA:"
+msgstr "Joueurs IA :"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:1031
 msgid "Game settings:"
-msgstr "Réglages de partie:"
+msgstr "Réglages de partie :"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1033
@@ -2890,7 +2889,7 @@ msgstr "Erreur: Impossible de trouver la carte '{name}'."
 # 96%
 #: horizons/main.py:349 horizons/main.py:426
 msgid "Error: Found multiple matches:"
-msgstr "Erreur: Plusieurs correspondances trouvées : "
+msgstr "Erreur: Plusieurs correspondances trouvées :"
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
@@ -2966,7 +2965,7 @@ msgstr "Vous avez gagné !"
 # 97%
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario."
-msgstr "Vous avez terminé ce scénario. "
+msgstr "Vous avez terminé ce scénario."
 
 # 75%
 #: horizons/scenario/actions.py:77
@@ -2991,7 +2990,7 @@ msgstr ""
 #: horizons/spsession.py:126
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
-"Si cette erreur se reproduit, merci de contacter l'équipe de développement:"
+"Si cette erreur se reproduit, merci de contacter l'équipe de développement :"
 
 #: horizons/spsession.py:134
 msgid "No quicksaves found"
@@ -3061,7 +3060,7 @@ msgstr "Votre partenaire commercial ne peux pas stocker davantage de cela."
 
 #: horizons/world/tradepost.py:224
 msgid "The trade partner can not afford to buy this."
-msgstr "Votre partenaire commercial ne peux pas se permettre d'acheter cela"
+msgstr "Votre partenaire commercial ne peux pas se permettre d'acheter cela."
 
 #: horizons/world/tradepost.py:231
 msgid "The trade partner does not buy more of this."
@@ -3156,7 +3155,7 @@ msgstr "Démarre <scenario>. <scenario> est le nom de scénario."
 
 #: run_uh.py:101
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr "Démarre <campaign>. <campaign> est le nom de la campagne.."
+msgstr "Démarre <campaign>. <campaign> est le nom de la campagne."
 
 #: run_uh.py:103
 msgid "Starts the development map without displaying the main menu."
@@ -3195,7 +3194,7 @@ msgstr ""
 
 #: run_uh.py:118
 msgid "Shows AI plans as highlights (for development only)."
-msgstr "Montrer les plans de l'IA par surlignement (développement seulement)"
+msgstr "Montrer les plans de l'IA par surlignement (développement seulement)."
 
 #: run_uh.py:121
 msgid "Development options"
@@ -3235,9 +3234,8 @@ msgstr ""
 "Active l'outil de pré-visualisation de textes pour les créateurs de scénario"
 
 #: run_uh.py:138
-#, fuzzy
 msgid "Disable preloading while in main menu"
-msgstr "Désactive le préchargement lors du menu principal."
+msgstr "Désactive le préchargement lors du menu principal"
 
 #: run_uh.py:140
 msgid "Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"
@@ -3249,7 +3247,7 @@ msgstr "Unknown Horizons a planté."
 
 #: run_uh.py:164
 msgid "We are very sorry for this, and want to fix this error."
-msgstr "Nous vous prions de bien vouloir nous excuser pour la gêne occasionnée"
+msgstr "Nous vous prions de bien vouloir nous excuser pour la gêne occasionnée."
 
 #: run_uh.py:165
 msgid "In order to do this, we need the information from the logfile:"
@@ -3283,7 +3281,7 @@ msgstr ""
 
 #: run_uh.py:236
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Merci d'utiliser Unknown Horizons!"
+msgstr "Merci d'utiliser Unknown Horizons !"
 
 #: run_uh.py:400
 msgid "FIFE was not found."
