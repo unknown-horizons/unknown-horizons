@@ -105,6 +105,7 @@ class MapLoader:
 		""" Loads an island from the given file """
 		island_db = DbReader(os.path.join(util.getUHPath(), file))
 
+		# todo (MMB) alter ground tile type
 		ground_tile = model.getObject('ts_beach0', util.GROUND_NAMESPACE)
 
 		# load ground tiles
