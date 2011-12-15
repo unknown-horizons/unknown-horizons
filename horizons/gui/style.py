@@ -71,7 +71,7 @@ STYLES= {
 			'border_size': 0,
 			'background_color' : fife.Color(0, 0, 0, 0)
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'border_size': 0,
 			'background_color' : fife.Color(40, 40, 40, 0),
 			'font' : 'libertine_14_black',
@@ -103,7 +103,7 @@ STYLES= {
 			'border_size': 0,
 			'margins' : (10, 5)
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'border_size': 0,
 			'font' : 'libertine_mainmenu'
 		}
@@ -124,7 +124,7 @@ STYLES= {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'margins': (0,0),
 			'font' : 'libertine_14_black'
 		},
@@ -148,7 +148,7 @@ STYLES= {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'alpha':0,
 			'font' : 'libertine_small_black'
 		}
@@ -169,7 +169,7 @@ STYLES= {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'margins': (0,0),
 			'font' : 'libertine_small'
 		}
@@ -191,10 +191,7 @@ STYLES= {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
-		'Label' : {
-			'font' : 'libertine_18'
-		},
-    'TooltipLabel': {
+		('Label','TooltipLabel') : {
 			'font' : 'libertine_18'
 		}
 },
@@ -214,7 +211,7 @@ STYLES= {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'font' : 'libertine_headline'
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
@@ -229,7 +226,7 @@ STYLES= {
 			'font' : 'libertine_14_black',
 			'foreground_color' : fife.Color(80,80,40),
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'font' : 'libertine_14_black',
 		},
 		'CheckBox' : {
@@ -286,7 +283,7 @@ STYLES= {
 	    'default' : {
 			'font' : 'libertine_14_black',
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'font' : 'libertine_14_black',
 		},
 		'TextBox' : {
@@ -324,7 +321,7 @@ STYLES= {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
-		'Label' : {
+		('Label','TooltipLabel') : {
 			'font' : 'libertine_tooltip'
 		}
 	},
