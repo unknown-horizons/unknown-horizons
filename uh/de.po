@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-15 04:29+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-16 22:59+0200\n"
+"Last-Translator: eppixx <eppi15@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -228,14 +228,13 @@ msgstr "Schmelzhütte"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Einige Eurer Einwohner haben keinen Zugang zu einem Marktplatz"
 
 # 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Some of your inhabitants just moved out."
-msgstr "Einige Eurer Siedler haben Euch den Rücken gekehrt."
+msgstr "Einige Eurer Siedler haben gerade Ihre Siedlung verlassen."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -265,7 +264,7 @@ msgstr "Verlassenes Zelt"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr "Tabakplantage"
+msgstr "Tabakfeld"
 
 #. This is a database entry: the name of a building.
 #: database files sql
