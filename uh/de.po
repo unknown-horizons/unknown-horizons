@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-16 22:59+0200\n"
+"PO-Revision-Date: 2011-12-16 23:23+0200\n"
 "Last-Translator: eppixx <eppi15@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -732,6 +732,8 @@ msgstr ""
 #: horizons/engine.py:553
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Bitte prüfen Sie den eingegebenen Port und ob dieser im vorgegebenen Berich "
+"liegt."
 
 # 81%
 #: horizons/engine.py:565
@@ -757,6 +759,8 @@ msgstr "Überprüft die Einstellungen im Abschnitt Netzwerk."
 #: horizons/engine.py:571
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
+"Niedriege Port-Nummern können spezielle Zugangsprivilegien erfordern. Wählen "
+"Sie 0 oder eine Nummer größer als 1024."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:166 horizons/gui/ingamegui.py:519
@@ -767,7 +771,7 @@ msgstr "Fehler"
 # 75%
 #: horizons/gui/gui.py:166
 msgid "Failed to save."
-msgstr "Speicherung fehlgeschlagen."
+msgstr "Speichervorgang fehlgeschlagen."
 
 #: horizons/gui/gui.py:191
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -880,7 +884,7 @@ msgstr "Warnung: Inkompatible Version {version}!"
 #: horizons/gui/gui.py:537
 #, python-format
 msgid "Required version: {required}!"
-msgstr "Benötigt wird {required}!"
+msgstr "Benötigt wird Verison{required}!"
 
 #: horizons/gui/gui.py:540
 msgid "Incompatible version"
@@ -925,7 +929,7 @@ msgstr "Ohne Mitspieler benötigt Ihr keine Diplomatie."
 
 #: horizons/gui/ingamegui.py:519
 msgid "Valid map names are in the following form: {expression}"
-msgstr "Zulässige Namen haben diese Form: {expression}"
+msgstr "Zulässige Karten-Namen haben diese Form: {expression}"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -934,7 +938,7 @@ msgstr "Pyenet konnte nicht gefunden werden"
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
-"Der Mehrspielermodus benötigt die Bibliothek \"Pyenet\", welche nicht in Eurem "
+"Der Mehrspielermodus benötigt die Bibliothek \"Pyenet\", welche nicht in Ihrem "
 "System gefunden werden konnte."
 
 #: horizons/gui/modules/multiplayermenu.py:42
@@ -959,9 +963,8 @@ msgid "Could not connect to master server."
 msgstr "Verbindungsversuch zum Master-Server fehlgeschlagen."
 
 #: horizons/gui/modules/multiplayermenu.py:103
-#, fuzzy
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
-msgstr "Bitte überprüft Eure Internetverbindung."
+msgstr "Bitte überprüfen Sie Ihre Internetverbindung."
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid "Something went wrong with the network:"
@@ -969,7 +972,7 @@ msgstr "Es ist ein Netzwerkfehler aufgetreten:"
 
 #: horizons/gui/modules/multiplayermenu.py:144
 msgid "Version differs!"
-msgstr "Andere Version!"
+msgstr "Die Version ist nicht gleich!"
 
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
@@ -994,6 +997,9 @@ msgstr "Falsche Version"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"Die Versions-Nummer unterscheidet sich von Ihrer. Jeder Spieler muss die "
+"gleiche Version benutzen. Dies kann durch ein Update auf die neueste Version "
+"behoben werden. Spiel-Version: {game_version} Ihre Version: {own_version}"
 
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:294
@@ -1083,7 +1089,7 @@ msgstr "Baue"
 
 #: horizons/gui/mousetools/navigationtool.py:68
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Drücke H, um diesen Hinweis zu entfernen"
 
 # Only use boat or ship - so here "Schiffbau-Übersicht"
 #: horizons/gui/tabs/boatbuildertab.py:36
@@ -1189,11 +1195,11 @@ msgstr "Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:111 horizons/gui/tabs/overviewtab.py:467
 msgid "Branch office overview"
-msgstr "Kontorübersicht"
+msgstr "Kontor-Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:141 horizons/gui/tabs/overviewtab.py:269
 msgid "Ship overview"
-msgstr "Schiffsübersicht"
+msgstr "Schiffs-Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:149
 msgid "The ship needs to be close to an island to found a settlement."
