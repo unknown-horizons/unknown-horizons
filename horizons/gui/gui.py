@@ -67,6 +67,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.session = None
 		self.current_dialog = None
 
+		labels = self.widgets['help'].getNamedChildren()
+		labels = dict( [(name, lbl) for (name, lbl) in labels.items() if name.startswith('lbl_')] )
+		for (name, lbl) in labels.items():
+			lbl[0].text = u'[{key}] = {text}'.format(text=lbl[0].text, key=name[4:].upper())
+
 		self.dialog_executed = False
 
 		self.__pause_displayed = False

@@ -731,66 +731,66 @@ def set_translations():
 		},
 
 	"help.xml" : {
+		# (text of widget: fife_and_uh_team)
+		"fife_and_uh_team"            : ("text"    , _("The FIFE and Unknown Horizons development teams")),
+		# (text of widget: have_fun)
+		"have_fun"                    : ("text"    , _("Have fun.")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Key bindings")),
+		# (text of widget: lbl_+)
+		"lbl_+"                       : ("text"    , _("Increase game speed")),
+		# (text of widget: lbl_,)
+		"lbl_,"                       : ("text"    , _("Rotate building left")),
+		# (text of widget: lbl_-)
+		"lbl_-"                       : ("text"    , _("Decrease game speed")),
+		# (text of widget: lbl_.)
+		"lbl_."                       : ("text"    , _("Rotate building right")),
 		# (text of widget: lbl_b)
-		"lbl_b"                       : ("text"    , _("{B} = Show build menu")),
+		"lbl_b"                       : ("text"    , _("Show build menu")),
 		# (text of widget: lbl_c)
-		"lbl_c"                       : ("text"    , _("{C} = Chat")),
-		# (text of widget: lbl_comma)
-		"lbl_comma"                   : ("text"    , _("{ , } = Rotate building left")),
+		"lbl_c"                       : ("text"    , _("Chat")),
 		# (text of widget: lbl_down)
-		"lbl_down"                    : ("text"    , _("{DOWN} = Scroll down")),
-		# (text of widget: lbl_escape)
-		"lbl_escape"                  : ("text"    , _("{ESC} = Show pause menu")),
+		"lbl_down"                    : ("text"    , _("Scroll down")),
+		# (text of widget: lbl_esc)
+		"lbl_esc"                     : ("text"    , _("Show pause menu")),
 		# (text of widget: lbl_f1)
-		"lbl_f1"                      : ("text"    , _("{F1} = Display help")),
+		"lbl_f1"                      : ("text"    , _("Display help")),
 		# (text of widget: lbl_f10)
-		"lbl_f10"                     : ("text"    , _("{F10} = Toggle console on/off")),
+		"lbl_f10"                     : ("text"    , _("Toggle console on/off")),
 		# (text of widget: lbl_f2)
-		"lbl_f2"                      : ("text"    , _("{F2} = Show player scores")),
+		"lbl_f2"                      : ("text"    , _("Show player scores")),
 		# (text of widget: lbl_f3)
-		"lbl_f3"                      : ("text"    , _("{F3} = Show settlement list")),
+		"lbl_f3"                      : ("text"    , _("Show settlement list")),
 		# (text of widget: lbl_f4)
-		"lbl_f4"                      : ("text"    , _("{F4} = Show ship list")),
+		"lbl_f4"                      : ("text"    , _("Show ship list")),
 		# (text of widget: lbl_f5)
-		"lbl_f5"                      : ("text"    , _("{F5} = Quicksave")),
+		"lbl_f5"                      : ("text"    , _("Quicksave")),
 		# (text of widget: lbl_f9)
-		"lbl_f9"                      : ("text"    , _("{F9} = Quickload")),
-		# (text of widget: lbl_fife_and_uh_team)
-		"lbl_fife_and_uh_team"        : ("text"    , _("The FIFE and Unknown Horizons development teams")),
+		"lbl_f9"                      : ("text"    , _("Quickload")),
 		# (text of widget: lbl_g)
-		"lbl_g"                       : ("text"    , _("{G} = Toggle grid on/off")),
+		"lbl_g"                       : ("text"    , _("Toggle grid on/off")),
 		# (text of widget: lbl_h)
-		"lbl_h"                       : ("text"    , _("{H} = Show coordinate values (Debug)")),
-		# (text of widget: lbl_have_fun)
-		"lbl_have_fun"                : ("text"    , _("Have fun.")),
+		"lbl_h"                       : ("text"    , _("Show coordinate values (Debug)")),
 		# (text of widget: lbl_l)
-		"lbl_l"                       : ("text"    , _("{L} = Toggle Captain's log")),
+		"lbl_l"                       : ("text"    , _("Toggle Captain's log")),
 		# (text of widget: lbl_left)
-		"lbl_left"                    : ("text"    , _("{LEFT} = Scroll left")),
-		# (text of widget: lbl_minus)
-		"lbl_minus"                   : ("text"    , _("{ - } = Decrease game speed")),
+		"lbl_left"                    : ("text"    , _("Scroll left")),
 		# (text of widget: lbl_p)
-		"lbl_p"                       : ("text"    , _("{P} = Pause game")),
-		# (text of widget: lbl_period)
-		"lbl_period"                  : ("text"    , _("{ . } = Rotate building right")),
-		# (text of widget: lbl_plus)
-		"lbl_plus"                    : ("text"    , _("{ + } = Increase game speed")),
+		"lbl_p"                       : ("text"    , _("Pause game")),
 		# (text of widget: lbl_r)
-		"lbl_r"                       : ("text"    , _("{R} = Enable road building mode")),
+		"lbl_r"                       : ("text"    , _("Enable road building mode")),
 		# (text of widget: lbl_right)
-		"lbl_right"                   : ("text"    , _("{RIGHT} = Scroll right")),
+		"lbl_right"                   : ("text"    , _("Scroll right")),
 		# (text of widget: lbl_s)
-		"lbl_s"                       : ("text"    , _("{S} = Screenshot")),
+		"lbl_s"                       : ("text"    , _("Screenshot")),
 		# (text of widget: lbl_shift)
-		"lbl_shift"                   : ("text"    , _("{SHIFT} = Hold to place multiple buildings")),
+		"lbl_shift"                   : ("text"    , _("Hold to place multiple buildings")),
 		# (text of widget: lbl_t)
-		"lbl_t"                       : ("text"    , _("{T} = Toggle translucency of ambient buildings")),
+		"lbl_t"                       : ("text"    , _("Toggle translucency of ambient buildings")),
 		# (text of widget: lbl_up)
-		"lbl_up"                      : ("text"    , _("{UP} = Scroll up")),
+		"lbl_up"                      : ("text"    , _("Scroll up")),
 		# (text of widget: lbl_x)
-		"lbl_x"                       : ("text"    , _("{X} = Enable destruct mode")),
+		"lbl_x"                       : ("text"    , _("Enable destruct mode")),
 		# (tooltip of widget: okButton)
 		"okButton"                    : ("tooltip" , _("Return")),
 		},
