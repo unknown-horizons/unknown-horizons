@@ -36,20 +36,14 @@ class TradeHistoryItem(pychan.widgets.Container):
 		self.findChild(name='player_name').text = player.name
 
 		gold_amount_label = self.findChild(name='gold_amount')
-		if gold < 0:
-			gold_amount_label.text = unicode(gold).ljust(5)
-		else:
-			gold_amount_label.text = unicode('+' + str(gold)).ljust(5)
+		gold_amount_label.text = u'{gold:+5d}'.format(gold=gold)
 
 		gold_icon = self.findChild(name='gold_icon')
 		gold_icon.image = get_res_icon(RES.GOLD_ID)[3]
 		gold_icon.tooltip = player.session.db.get_res_name(RES.GOLD_ID)
 
 		resource_amount_label = self.findChild(name='resource_amount')
-		if amount < 0:
-			resource_amount_label.text = unicode(amount)
-		else:
-			resource_amount_label.text = unicode('+' + str(amount))
+		resource_amount_label.text = u'{amount:+5d}'.format(amount=amount)
 
 		resource_icon = self.findChild(name='resource_icon')
 		resource_icon.image = get_res_icon(resource_id)[3]
