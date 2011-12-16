@@ -53,29 +53,18 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: ["NOV\xDD \xDAKOL: POSTAV D\u0158EVORUBCE", !!python/unicode 'The construction
-        material on your ship got unloaded automatically. You can now construct some
-        basic buildings.
-
-
-        We will start with building a lumberjack.
-
-
-        This is essential because, at this stage, boards are the only poles your sailors
-        can afford to hang their tents over.
-
-
-        The fisherman needs some boards to build his vessel as well.
-
-
-        In order to construct lumberjacks; open the build menu by either clicking
-        the big icon below the mini map or pressing B key.
-
-
-        The build menu is sorted by increments.
-
-        You are currently in the first increment (the Sailors level) so are offered
-        only the basic buildings.']
+  - arguments: ["NOV\xDD \xDAKOL: POSTAV D\u0158EVORUBCE", "Stavebn\xED materi\xE1\
+        l se z lodi vylo\u017E\xED automaticky. Nyn\xED m\u016F\u017Eete postavit\
+        \ n\u011Bkolik z\xE1kladn\xEDch budov.\n\nZa\u010Dneme se stavbou d\u0159\
+        evorubce. \n\nV t\xE9to \u010D\xE1sti hry je to nezbytn\xE9, proto\u017Ee\
+        \ prkna jsou to jedin\xE9, co m\u016F\u017Eete poskytnout n\xE1mo\u0159n\xED\
+        k\u016Fm k zakryt\xED jejich stan\u016F.\n\nTak\xE9 ryb\xE1\u0159 pot\u0159\
+        ebuje n\u011Bjak\xE1 prkna, aby si mohl vyrobit svou lo\u010Fku.\n\nAby jste\
+        \ postavili d\u0159evorubce, otev\u0159ete stavebn\xED menu kliknutn\xEDm\
+        \ na velkou ikonu pod mini mapou nebo stisknut\xEDm kl\xE1vesy B\n\nStavebn\xED\
+        \ menu je rozd\u011Bleno podle jednotliv\xFDch epoch.\nNyn\xED se nach\xE1\
+        z\xEDte v prvn\xED epo\u0161e (n\xE1mo\u0159nick\xE1 \xFArove\u0148), proto\
+        \ m\xE1te k dispozici pouze z\xE1kladn\xED budovy."]
     type: logbook_w
   - arguments: ['', "Jak se bude va\u0161e civilizace rozv\xEDjet, z\xEDsk\xE1te st\xE1\
         le komplexn\u011Bj\u0161\xED a komplexn\u011Bj\u0161\xED budovy.\n\nNyn\xED\
@@ -290,7 +279,7 @@ events:
         \ stran\u011B ka\u017Ed\xE9ho slotu ur\u010D\xEDte \"c\xEDlovou hodnotu\"\
         , kter\xE1 m\xE1 r\u016Fzn\xE9 v\xFDznamy pro \"Prodej\" a \"N\xE1kup\".\n\
         Pokud nakupujete zbo\u017E\xED, bude nakoupeno tolik zbo\u017E\xED, aby byla\
-        \ udr\u017Eena \"c\xEDlov\xE1 hodnota\" na skladu.Pokud zbo\u017E\xED prod\xE1\
+        \ udr\u017Eena \"c\xEDlov\xE1 hodnota\" na skladu.\nPokud zbo\u017E\xED prod\xE1\
         v\xE1te, \"c\xEDlov\xE1 hodnota\" ur\u010Duje mno\u017Estv\xED zbo\u017E\xED\
         , kter\xE9 uchov\xE1v\xE1te jako rezervu a nebude prod\xE1no."]
     type: logbook_w

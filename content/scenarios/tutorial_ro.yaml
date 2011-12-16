@@ -4,33 +4,37 @@
 # It was automatically generated with development/create_scenario_pot.sh using
 # translation files from pootle.
 
-author: !!python/unicode 'UH meeskond'
-description: "\xD5petus:\nEhita oma esimene koloonia ja \xF5pi kuidas m\xE4ngida!\n"
-difficulty: "\xD5petus"
+author: !!python/unicode 'Echipa UH'
+description: "Practica:\nStabile\u0219te o colonie \u0219i \xEEnva\u021B\u0103 cum\
+  \ s\u0103 joci!\n"
+difficulty: "Practic\u0103"
 events:
 - actions:
-  - arguments: ["Ehita rannikule harukontor nii et see oleks lihtsalt ligip\xE4\xE4\
-        setav teistele laevadele ja vaba kauplejale."]
+  - arguments: ["Construie\u0219te o sucursal\u0103 pe coast\u0103. A\u0219a va fi\
+        \ accesibil\u0103 c\u0103tre alte nave ca negustorul independent."]
     type: message
-  - arguments: ["Tere tulemast m\xE4ngima Unknown Horizons!", "See siin on sinu Kapteni\
-        \ logiraamat kuhu k\xF5ik vajalik info salvestatakse.Vasakule ekraani serva\
-        \ kuvatakse l\xFChiteade iga tegevuse kohta.\n\nKui sind huvitab pikem kirjeldus\
-        \ tegevusest siis loodetavasti su logiraamat seda ka kuvab.\n\nLogiraamatu\
-        \ sulgemise puhul on v\xF5imalik seda taasavada vajutades Kapteni logiraamat\
-        \ nuppu \xFCleval paremal nurgas (mini kaardist allpool,suletud dokument ja\
-        \ sulg)\n\nEttepanekud,parem \xF5igekirj ja teemad mis vajavad t\xE4psemat\
-        \ seletust v\xF5i isegi vead mis ilmnevad: Palun anna nendest meile teada\
-        \ ja me proovime t\xE4iendada \xF5petust.\n\nK\xFClasta lehek\xFClge www.unknown-horizons.org\
-        \ abi saamiseks kuidas m\xE4ngu loojatega \xFChendust saada!\n\nJa n\xFC\xFC\
-        d alustame m\xE4ngimisega."]
+  - arguments: ["Bine a\u021Bi venit la Unknown Horizons!", "Acesta este jurnalul\
+        \ de bord unde toate informa\u021Biile importante sunt \xEEnregistrate. O\
+        \ notificare redus\u0103 a fiec\u0103rei activit\u0103\u021Bi va ap\u0103\
+        rea \xEEn st\xE2nga ecranului.\n\nDac\u0103 sunte\u021Bi interesat \xEEn descrieri\
+        \ detaliate, jurnalul ar trebui s\u0103 ofere ajutorul necesar.\n\nDup\u0103\
+        \ ce \xEEnchide\u021Bi acest jurnal, poate fi redeschis prin icoana \u201E\
+        jurnal de bord\u201D din col\u021Bul din dreapta-sus (sub mini-hart\u0103\
+        , cu un document \xEEnchis \u0219i o pan\u0103).\n\nPentru orice sugestie\
+        \ de redactare, probleme de \xEEn\u021Belegere sau erori nu ezita\u021Bi s\u0103\
+        \ ne contacta\u021Bi.\n\nVizita\u021Bi www.unknown-horizons.org pentru detalii.\n\
+        \n\u0218i acum, s\u0103 \xEEncepem s\u0103 ne juc\u0103m."]
     type: logbook_w
-  - arguments: ["\xDCLESANNE: KOLONISEERI SAAR", "Laeva liigutamiseks vali laev vasakpoolse\
-        \ nupuga ja seej\xE4rel vali parempoolse nupuga uus asukoht.\n\nRannikule\
-        \ piisaval l\xE4hedale j\xF5udes aktiveerub ankru kujutisega nupp.\n\nNupule\
-        \ vajutades saad rannikule ehitada harukontori (nupu nimi Ehita Koloonia)\n\
-        \nVajutus j\xE4rgselt saad ehitist liigutada kasutades hiire kursorit.\n\n\
-        Ehitada saab igale kohale mis ei ole m\xE4rgitud punasega.\nEhitamiseks vajuta\
-        \ hiire nuppu.\n\n\xDCLESANNE: ehita harukontor rannikule.", 2]
+  - arguments: ["SARCIN\u0102: COLONIZEAZ\u0102 O INSUL\u0102", "Pentru a muta nava,\
+        \ selec\u021Biona\u021Bi-o cu clic st\xE2nga \u0219i clic dreapta la destina\u021B\
+        ia unde o dori\u021Bi.\n\nC\xE2nd sunte\u021Bi \xEEn apropierea coastei, butonul\
+        \ \xEEn form\u0103 de ancor\u0103 din panou va deveni activ.\n\nAcesta indic\u0103\
+        \ posibilitate construirii unei sucursale prin ap\u0103sarea butonului \u201E\
+        creare colonie\u201D.\n\nAcum o vizionare a cl\u0103dirii este mobil\u0103\
+        \ cu cursorul.\n\nPute\u021Bi construi unde aceast\u0103 vizionare nu are\
+        \ nuan\u021B\u0103 ro\u0219iatic\u0103.\nClic unde dori\u021Bi s\u0103 plasa\u021B\
+        i cl\u0103direa.\n\nSARCIN\u0102: construi\u021Bi o sucursal\u0103 pe coast\u0103\
+        .", 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -38,15 +42,29 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: ["\xDCLESANNE: EHITA PUURAIDUR", "Sinu laeval olevad materjalid laaditakse\
-        \ maha automaatselt. N\xFC\xFCd saad ehitada m\xF5ned algelised ehitised.\n\
-        \nAlustame puuraidurist.\n\nSee on vajalik kuna puidust lauad on ainsad vahendid\
-        \ momendil mida saab kasutada telkide p\xFCstitamiseks.\n\nLisaks vajab ka\
-        \ kalamees oma laeva ehitamiseks laudu.\n\nEt ehitada puuraidur ava ehitiste\
-        \ men\xFC\xFC vajutades suurele ikoonile mini kaardi all v\xF5i vajutades\
-        \ nuppu B.\n\nEhitiste men\xFC\xFC on jagatud gruppideks.\nSinu kasutada on\
-        \ momendil ainult esimene grupp (Meremehe tase) seega saad ehitada ainult\
-        \  algelisi ehitisi."]
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A LUMBERJACK', !!python/unicode 'The
+        construction material on your ship got unloaded automatically. You can now
+        construct some basic buildings.
+
+
+        We will start with building a lumberjack.
+
+
+        This is essential because, at this stage, boards are the only poles your sailors
+        can afford to hang their tents over.
+
+
+        The fisherman needs some boards to build his vessel as well.
+
+
+        In order to construct lumberjacks; open the build menu by either clicking
+        the big icon below the mini map or pressing B key.
+
+
+        The build menu is sorted by increments.
+
+        You are currently in the first increment (the Sailors level) so are offered
+        only the basic buildings.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
         more and more complex buildings.
@@ -743,6 +761,6 @@ events:
   conditions:
   - arguments: [tutStepDone, 60]
     type: var_gt
-locale: et
+locale: ro
 mapfile: development.sqlite
 
