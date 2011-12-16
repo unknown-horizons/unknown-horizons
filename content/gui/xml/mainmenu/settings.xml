@@ -4,7 +4,7 @@
 <Container name="settings_window" size="800,580" background_image="content/gui/images/background/book.png">
 
 <!-- west side -->
-<VBox min_size="320,545"  max_size="320,545"  position="65,0">
+<VBox min_size="320,550"  max_size="320,550"  position="65,0">
 <Spacer fixed_size="40" />
 	<VBox> 
 		<Label text="Settings"  name="headline" />
@@ -79,17 +79,17 @@
 	<HBox max_size="34,40">
 	<!-- if no max_size is set, button reaction area expands to whole page -->
 		<DeleteButton name="defaultButton" tooltip="Reset to default settings" />
-	</HBox>>
+	</HBox>
 	</VBox>
 </VBox> 
 
 <!-- east side -->
-<VBox min_size="320,545"  max_size="320,545"  position="420,0">
+<VBox min_size="320,550"  max_size="320,550"  position="420,0">
 <Spacer fixed_size="40" />
 	<Label name="headline_saving"  text="Saving"  font="libertine_headline" 
 		position_technique="automatic" />
 <!-- automatic is a shorthand for center:center #TODO get this working at all -->
-	<VBox  name="saving_settings">
+	<VBox name="saving_settings"  padding="2">
 		<HBox>
 			<Label name="autosave_interval_label"  text="Autosave interval in minutes:"
 				wrap_text="1"  max_size="250,40"  min_size="250,20" />
@@ -113,6 +113,7 @@
 			orientation="0"  scale_start="1.0"  scale_end="30.0"  step_length="1.0" />
 	</VBox>
 
+	<VBox name="misc_settings"  padding="2">
 	<HBox>
 		<TooltipLabel name="minimap_rotation_label"  text="Rotate minimap with map:"
 			tooltip="Whether to also rotate the minimap whenever the regular map is rotated" />
@@ -133,9 +134,10 @@
 			tooltip="Whether to unload the ship after founding a settlement" />
 		<CheckBox min_size="24,24"  name="auto_unload" />
 	</HBox>
+	</VBox>
 
 <Spacer min_size="2" />
-	<VBox name="language_settings">
+	<VBox name="language_settings" padding="2">
 		<Label text="Language" 
 			name="headline_language"  font="libertine_headline" />
 		<HBox>
