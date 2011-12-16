@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-16 23:47+0200\n"
+"PO-Revision-Date: 2011-12-17 00:00+0200\n"
 "Last-Translator: eppixx <eppi15@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -3216,7 +3216,7 @@ msgstr "Starte die Vorschau von Logbucheinträgen in Szenarios"
 
 #: run_uh.py:138
 msgid "Disable preloading while in main menu"
-msgstr ""
+msgstr "Deaktiviert das Vorladen im Hauptmenü"
 
 #: run_uh.py:140
 msgid "Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"
