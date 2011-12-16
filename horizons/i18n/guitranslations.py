@@ -902,10 +902,6 @@ def set_translations():
 	"settings.xml" : {
 		# (text of widget: autosave_interval_label)
 		"autosave_interval_label"     : ("text"    , _("Autosave interval in minutes:")),
-		# (text of widget: color_depth_label)
-		"color_depth_label"           : ("text"    , _("Color depth:")),
-		# (text of widget: edge_scrolling_label)
-		"edge_scrolling_label"        : ("text"    , _("Enable edge scrolling:")),
 		# (text of widget: effect_volume_label)
 		"effect_volume_label"         : ("text"    , _("Effects volume:")),
 		# (text of widget: headline)
@@ -922,14 +918,8 @@ def set_translations():
 		"headline_sound"              : ("text"    , _("Sound")),
 		# (text of widget: language_label)
 		"language_label"              : ("text"    , _("Select language:")),
-		# (text of widget: minimap_rotation_label)
-		"minimap_rotation_label"      : ("text"    , _("Enable minimap rotation:")),
 		# (text of widget: music_volume_label)
 		"music_volume_label"          : ("text"    , _("Music volume:")),
-		# (text of widget: network_port_hint_lbl)
-		"network_port_hint_lbl"       : ("text"    , _("(0 means default)")),
-		# (text of widget: network_port_lbl)
-		"network_port_lbl"            : ("text"    , _("Network port:")),
 		# (text of widget: number_of_autosaves_label)
 		"number_of_autosaves_label"   : ("text"    , _("Number of autosaves:")),
 		# (text of widget: number_of_quicksaves_label)
@@ -940,10 +930,6 @@ def set_translations():
 		"screen_resolution_label"     : ("text"    , _("Screen resolution:")),
 		# (text of widget: sound_enable_opt_text)
 		"sound_enable_opt_text"       : ("text"    , _("Enable sound:")),
-		# (text of widget: uninterrupted_building_label)
-		"uninterrupted_building_label": ("text"    , _("Uninterrupted building:")),
-		# (text of widget: use_renderer_label)
-		"use_renderer_label"          : ("text"    , _("Used renderer:")),
 		# (text of widget: warning)
 		"warning"                     : ("text"    , _("Please make sure that you know what you do.")),
 		# (tooltip of widget: okButton)
@@ -952,6 +938,34 @@ def set_translations():
 		"cancelButton"                : ("tooltip" , _("Return")),
 		# (tooltip of widget: defaultButton)
 		"defaultButton"               : ("tooltip" , _("Reset to default settings")),
+		# (text of widget: auto_unload_label)
+		"auto_unload_label"           : ("text"    , _("Auto-unload ship:")),
+		# (text of widget: color_depth_label)
+		"color_depth_label"           : ("text"    , _("Color depth:")),
+		# (text of widget: edge_scrolling_label)
+		"edge_scrolling_label"        : ("text"    , _("Scroll at map edge:")),
+		# (text of widget: minimap_rotation_label)
+		"minimap_rotation_label"      : ("text"    , _("Rotate minimap with map:")),
+		# (text of widget: network_port_lbl)
+		"network_port_lbl"            : ("text"    , _("Network port:")),
+		# (text of widget: uninterrupted_building_label)
+		"uninterrupted_building_label": ("text"    , _("Uninterrupted building:")),
+		# (text of widget: use_renderer_label)
+		"use_renderer_label"          : ("text"    , _("Used renderer:")),
+		# (tooltip of widget: auto_unload_label)
+		"auto_unload_label"           : ("tooltip" , _("Whether to unload the ship after founding a settlement")),
+		# (tooltip of widget: color_depth_label)
+		"color_depth_label"           : ("tooltip" , _("If set to 0, use the driver default")),
+		# (tooltip of widget: edge_scrolling_label)
+		"edge_scrolling_label"        : ("tooltip" , _("Whether to move the viewport when the mouse pointer is close to map edges")),
+		# (tooltip of widget: minimap_rotation_label)
+		"minimap_rotation_label"      : ("tooltip" , _("Whether to also rotate the minimap whenever the regular map is rotated")),
+		# (tooltip of widget: network_port_lbl)
+		"network_port_lbl"            : ("tooltip" , _("If set to 0, use the router default")),
+		# (tooltip of widget: uninterrupted_building_label)
+		"uninterrupted_building_label": ("tooltip" , _("When enabled, do not exit the build mode after successful construction")),
+		# (tooltip of widget: use_renderer_label)
+		"use_renderer_label"          : ("tooltip" , _("SDL is only meant as unsupported fallback and might cause problems!")),
 		},
 
 	"select_savegame.xml" : {
