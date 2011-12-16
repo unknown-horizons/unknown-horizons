@@ -11,21 +11,20 @@ The file
 
 content/gui/images/cursors/cursor_pipette.png
 
-is licensed by the GIMP team ( http://gimp.org ) under the terms of the  General Public License, version 2.
+is licensed by the GIMP team ( http://gimp.org ) under the terms of the GNU General Public License, version 2.
 
 
 The file  
 
 /horizons/ext/enum.py  
 
-is licensed under the terms of the  Python 2.4.2 License  by way of derogation from the above.
-Informations can be obtained at  http://www.python.org/download/releases/2.4.2/license/ .
+is derived from http://cheeseshop.python.org/pypi/enum version 0.4.3 which is licensed under the terms of the GNU General Public License, version 2 or later .
 
 
 /setup.py
 
 is derived from https://launchpad.net/python-distutils-extra
-which is licensed under the GNU GPL v2 .
+which is licensed under the terms of the GNU General Public License, version 2 .
 
 
 /horizons/ext/dummy.py
