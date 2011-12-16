@@ -26,14 +26,14 @@
 			</VBox>
 		<Spacer min_size="25"/>
 			<VBox>
-				<Label name="color_depth_label"  text="Color depth:"
-					wrap_text="1"  max_size="140,20" />
+				<TooltipLabel name="color_depth_label"  text="Color depth:"  max_size="140,20"
+					wrap_text="1"  tooltip="If set to 0, use the driver default" />
 				<ScrollArea  min_size="80,30" >
 					<ListBox name="screen_bpp" />
 				</ScrollArea>
 				<Spacer />
-				<Label name="use_renderer_label"  text="Used renderer:" 
-					wrap_text="1" />
+				<TooltipLabel name="use_renderer_label"  text="Used renderer:"
+					wrap_text="1"  tooltip="SDL is only meant as unsupported fallback and might cause problems!" />
 				<ScrollArea  min_size="80,30" >
 					<ListBox name="render_backend" />
 				</ScrollArea>
@@ -114,7 +114,8 @@
 	</VBox>
 
 	<HBox>
-		<Label name="minimap_rotation_label"  text="Rotate minimap with map:" />
+		<TooltipLabel name="minimap_rotation_label"  text="Rotate minimap with map:"
+			tooltip="Whether to also rotate the minimap whenever the regular map is rotated" />
 		<CheckBox min_size="24,24"  name="minimaprotation" />
 	</HBox>
 	<HBox>
@@ -129,7 +130,7 @@
 	</HBox>
 	<HBox>
 		<TooltipLabel name="auto_unload_label"  text="Auto-unload ship:"
-			comment="Whether to unload the ship after founding a settlement" />
+			tooltip="Whether to unload the ship after founding a settlement" />
 		<CheckBox min_size="24,24"  name="auto_unload" />
 	</HBox>
 
@@ -149,9 +150,9 @@
 		<Label text="Network"
 			name="headline_network" font="libertine_headline" />
 		<HBox max_size="320,60">
-			<Label text="Network port:" name="network_port_lbl" />
-	    <TextField name="network_port" text="" min_size="50,16"/>
-			<Label text="(0 means default)" name="network_port_hint_lbl" />
+			<TooltipLabel text="Network port:" name="network_port_lbl"
+				tooltip="If set to 0, use the router default" />
+			<TextField name="network_port" text="" min_size="50,16"/>
 		</HBox>
 	</VBox>
 <Spacer />
