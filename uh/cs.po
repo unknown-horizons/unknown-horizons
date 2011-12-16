@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-04 00:28+0200\n"
+"PO-Revision-Date: 2011-12-16 16:51+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -319,14 +319,13 @@ msgstr "Potřebuješ více ${resource} k postavení budovy."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Vyhráli jste!"
 
-# 86%
+# automatic save
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been autosaved."
-msgstr "Hra byla rychle uložena."
+msgstr "Hra byla automaticky uložena."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -429,7 +428,7 @@ msgstr "společnost"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "cyan"
-msgstr ""
+msgstr "azurová"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -693,9 +692,9 @@ msgstr ""
 
 # 86%
 #: horizons/engine.py:305
-#, python-format, fuzzy
+#, python-format, 
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr "Nastavený jazyk %(lang)s na %(place)s neleze načíst"
+msgstr "Nastavený jazyk {lang} na {place} neleze načíst"
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
@@ -765,9 +764,8 @@ msgstr "Žádné uložené hry"
 
 # 96%
 #: horizons/gui/gui.py:249
-#, fuzzy
 msgid "There are no saved games to load."
-msgstr "Nejsou žádné uložené hry k nahrání"
+msgstr "Nejsou žádné uložené hry k nahrání."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -868,15 +866,14 @@ msgstr "Nevybrán žádný soubor"
 
 # 97%
 #: horizons/gui/gui.py:557
-#, fuzzy
 msgid "You need to select a savegame to delete."
-msgstr "Potřebuješ vybrat uloženou hru pro smazání"
+msgstr "Potřebuješ vybrat uloženou hru pro smazání."
 
 # 84%
 #: horizons/gui/gui.py:561
-#, python-format, fuzzy
+#, python-format, 
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Opravdu chceš smazat uloženou hru \"%s\"?"
+msgstr "Opravdu chceš smazat uloženou hru \"{name}\"?"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
@@ -974,9 +971,9 @@ msgstr ""
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
-#, python-format, fuzzy
+#, python-format, 
 msgid "Recommended number of players: {number}"
-msgstr "Doporučený počet hráčů: "
+msgstr "Doporučený počet hráčů: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
@@ -1005,9 +1002,8 @@ msgstr "Neplatné jméno hráče"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:141
-#, fuzzy
 msgid "You entered an invalid playername."
-msgstr "Zadal jsi neplatné jméno hráče"
+msgstr "Zadal jsi neplatné jméno hráče."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1189,15 +1185,13 @@ msgstr "Postavit osadu"
 
 # 91%
 #: horizons/gui/tabs/overviewtab.py:186
-#, fuzzy
 msgid "Load/Unload"
-msgstr "Naložit/Vyložit:"
+msgstr "Naložit/Vyložit"
 
 # 88%
 #: horizons/gui/tabs/overviewtab.py:189
-#, fuzzy
 msgid "Buy/Sell"
-msgstr "Koupit/Prodat:"
+msgstr "Koupit/Prodat"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1211,9 +1205,8 @@ msgstr "Obchodní lodě nelze vyzbrojit"
 
 # 98%
 #: horizons/gui/tabs/overviewtab.py:205
-#, fuzzy
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr "Není možné vybavit obchodní lodě zbraněmi"
+msgstr "Není možné vybavit obchodní lodě zbraněmi."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
@@ -1364,9 +1357,8 @@ msgstr ""
 # 89%
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
-#, fuzzy
 msgid "Trail (R): Needed for collecting goods."
-msgstr "Stezka: Protřebná pro sběr zboží."
+msgstr "Stezka (R): Protřebná pro sběr zboží."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
@@ -1564,37 +1556,32 @@ msgstr ""
 # 76%
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
-#, fuzzy
 msgid "Captain's log (L)"
-msgstr "Kapitánův deník"
+msgstr "Kapitánův deník (L)"
 
 # 87%
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
-#, fuzzy
 msgid "Rotate map counterclockwise (,)"
-msgstr "Otočit mapu proti směru hodinových ručiček"
+msgstr "Otočit mapu proti směru hodinových ručiček (,)"
 
 # 83%
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:183
-#, fuzzy
 msgid "Rotate map clockwise (.)"
-msgstr "Otočit mapu po směru hodinových ručiček"
+msgstr "Otočit mapu po směru hodinových ručiček (.)"
 
 # 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
-#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Zpomalit herní rychlost"
+msgstr "Zpomalit herní rychlost (-)"
 
 # 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Zrychlit herní rychlost"
+msgstr "Zrychlit herní rychlost (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
