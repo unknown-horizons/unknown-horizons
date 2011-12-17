@@ -303,9 +303,20 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 
 
 def _init_gettext(fife):
+	"""
+	Maps _ to the ugettext unicode gettext call. Use: _(string).
+	N_ takes care of plural forms for different languages. It masks ungettext
+	calls (unicode, plural-aware _() ) to create different translation strings
+	depending on the counter value. Not all languages have only two plural forms
+	"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
+	where n is a counter. N_ is, for some reason, broken. Cf. horizons.i18n.utils
+	We will need to make gettext recognise namespaces some time, but hardcoded
+	'unknown-horizons' works for now since we currently only use one namespace.
+	"""
 	from gettext import translation
 	namespace_translation = translation('unknown-horizons', 'content/lang', fallback=True)
-	_ = namespace_translation.ugettext
+	_  = namespace_translation.ugettext
+	N_ = namespace_translation.ungettext
 	fife.update_languages()
 
 
