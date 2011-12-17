@@ -2238,65 +2238,65 @@ msgstr "Kortkommandon"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Visa byggmenyn"
+msgid "Show build menu"
+msgstr "Visa byggmenyn"
 
 #. (text of widget: lbl_c)
 #: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Chatt"
+msgid "Chat"
+msgstr "Chatt"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Rotera byggnaden åt vänster"
+msgid "Rotate building left"
+msgstr "Rotera byggnaden åt vänster"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
-msgstr "{DOWN} = Flytta vyn nedåt"
+msgid "Scroll down"
+msgstr "Flytta vyn nedåt"
 
 # Pausemeny detsamma som huvudmenyn?
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
 #, fuzzy
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Visa pausemenyn"
+msgid "Show pause menu"
+msgstr "Visa pausemenyn"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Visa hjälp"
+msgid "Display help"
+msgstr "Visa hjälp"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Visa konsoll på/av"
+msgid "Toggle console on/off"
+msgstr "Visa konsoll på/av"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
-msgstr "{F2} = Visa spelarpoäng"
+msgid "Show player scores"
+msgstr "Visa spelarpoäng"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
-msgstr "{F3} = Visa bosättningslista"
+msgid "Show settlement list"
+msgstr "Visa bosättningslista"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
-msgstr "{F4} = Visa fartygslista"
+msgid "Show ship list"
+msgstr "Visa fartygslista"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Snabbspara"
+msgid "Quicksave"
+msgstr "Snabbspara"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Snabbladda"
+msgid "Quickload"
+msgstr "Snabbladda"
 
 # utvecklingsteam?
 #. (text of widget: lbl_fife_and_uh_team)
@@ -2306,12 +2306,12 @@ msgstr "FIFE och Unknown Horizons utvecklingsteam"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Visa rutnät på/av"
+msgid "Toggle grid on/off"
+msgstr "Visa rutnät på/av"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
+msgid "Show coordinate values (Debug)"
 msgstr ""
 
 #. (text of widget: lbl_have_fun)
@@ -2321,68 +2321,68 @@ msgstr "Ha roligt."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Visa Kaptenens loggbok"
+msgid "Toggle Captain's log"
+msgstr "Visa Kaptenens loggbok"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
-msgstr "{LEFT} = Flytta vyn åt vänster"
+msgid "Scroll left"
+msgstr "Flytta vyn åt vänster"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Minska spelhastigheten"
+msgid "Decrease game speed"
+msgstr "Minska spelhastigheten"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Pausa spel"
+msgid "Pause game"
+msgstr "Pausa spel"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Rotera byggnaden åt höger"
+msgid "Rotate building right"
+msgstr "Rotera byggnaden åt höger"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Öka spelhastigheten"
+msgid "Increase game speed"
+msgstr "Öka spelhastigheten"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
+msgid "Enable road building mode"
 msgstr ""
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{RIGHT} = Flytta vyn åt höger"
+msgid "Scroll right"
+msgstr "Flytta vyn åt höger"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Skärmdump"
+msgid "Screenshot"
+msgstr "Skärmdump"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Håll ner för att placera flera byggnader"
+msgid "Hold to place multiple buildings"
+msgstr "Håll ner för att placera flera byggnader"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
+msgid "Toggle translucency of ambient buildings"
 msgstr ""
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{UP} = Flytta vyn uppåt"
+msgid "Scroll up"
+msgstr "Flytta vyn uppåt"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Aktivera rivläge"
+msgid "Enable destruct mode"
+msgstr "Aktivera rivläge"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
