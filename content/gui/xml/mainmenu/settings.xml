@@ -142,8 +142,8 @@
 			name="headline_language"  font="headline" />
 		<HBox>
 			<Label text="Select language:"  name="language_label" />
-			<ScrollArea min_size="125,80" >
-				<ListBox name="language" />
+			<ScrollArea min_size="165,80" >
+				<ListBox name="cjkv_language" />
 			</ScrollArea>
 		</HBox>
 	</VBox>

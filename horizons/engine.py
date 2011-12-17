@@ -200,7 +200,7 @@ class Fife(ApplicationBase):
 		# English is not shipped as .mo file.
 		languages_map['en'] = ''
 
-		self._setting.createAndAddEntry(UH_MODULE, "Language", "language",
+		self._setting.createAndAddEntry(UH_MODULE, "Language", "cjkv_language",
 		                                applyfunction=self.update_languages,
 		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages_map.keys())])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",

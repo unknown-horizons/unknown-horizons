@@ -122,3 +122,12 @@ source: content/fonts/LinLibertineB.ttf
 size: 13
 color: 255,255,255
 antialias: 1
+
+
+[Font/14_black_cjkv]
+
+type: truetype
+source: content/fonts/UMing.ttc
+size: 15
+color: 68,42,2
+antialias: 1
