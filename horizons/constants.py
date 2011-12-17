@@ -220,7 +220,7 @@ class GROUND:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [ int(i*16) for i in 0.5, 1, 2, 3, 4, 6, 8, 11, 20 ]
+	TICK_RATES = [ int(i*16) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20) ]
 
 class COLORS:
 	BLACK = 9
