@@ -20,6 +20,7 @@
 # ###################################################
 
 from gettext import translation
+from horizons.constants import FONTDEFS
 
 """
 N_ takes care of plural forms for different languages. It masks ungettext
@@ -52,3 +53,10 @@ def find_available_languages():
 			# use the language code itself (e.g. ca@valencia.po -> ca.po)
 
 	return languages
+
+def get_fontdef_for_locale(locale):
+	"""Returns path to the fontdef file for a locale. Libertine is default."""
+	fontdef_file = 'libertine'
+	if locale in FONTDEFS.iterkeys():
+		fontdef_file = FONTDEFS[locale]
+	return 'content/fonts/{filename}.fontdef'.format(filename = fontdef_file)

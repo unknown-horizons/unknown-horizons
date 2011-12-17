@@ -43,7 +43,7 @@ from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader, Callback, pa
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations
 from horizons.util.gui import load_uh_widget
-from horizons.i18n.utils import find_available_languages
+from horizons.i18n.utils import find_available_languages, get_fontdef_for_locale
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 
@@ -376,7 +376,9 @@ class Fife(ApplicationBase):
 
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
-		self.pychan.loadFonts("content/fonts/libertine.fontdef")
+
+		fontdef = get_fontdef_for_locale('en')
+		pychan.loadFonts(fontdef)
 
 		self._gotInited = True
 		self.setup_setting_extras()

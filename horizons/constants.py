@@ -410,6 +410,13 @@ LANGUAGENAMES = _LanguageNameDict({
 	"zh_CN" : u'Pǔtōnghuà',
 	})
 
+FONTDEFS = {
+  'ja'   : 'uming',
+  'ko'   : 'uming',
+  'vi'   : 'uming',
+  'zh_CN': 'uming',
+		}
+
 AUTO_CONTINUE_CAMPAIGN=True
 
 class GFX:
@@ -421,4 +428,3 @@ class GFX:
 
 	SHIP_OUTLINE_THRESHOLD = 96
 	SHIP_OUTLINE_WIDTH = 2
-
