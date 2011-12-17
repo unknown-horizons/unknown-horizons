@@ -72,7 +72,8 @@ class VERSION:
 ## WORLD
 class UNITS:
 	# ./development/print_db_data.py unit
-	PLAYER_SHIP_CLASS          = 1000001
+	HUKER_SHIP_CLASS           = 1000001
+	PLAYER_SHIP_CLASS          = HUKER_SHIP_CLASS
 	BUILDING_COLLECTOR_CLASS   = 1000002
 	FISHER_BOAT                = 1000004
 	PIRATE_SHIP_CLASS          = 1000005
@@ -86,6 +87,8 @@ class UNITS:
 class WEAPONS:
 	CANNON = 40
 	DAGGER = 41
+
+	DEFAULT_FIGHTING_SHIP_WEAPONS_NUM = 7
 
 class BUILDINGS:
 	# ./development/print_db_data.py building

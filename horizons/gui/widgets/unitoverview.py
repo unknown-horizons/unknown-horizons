@@ -18,10 +18,14 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 from fife.extensions import pychan
+
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
 from horizons.gui.widgets import TooltipIcon
+from horizons.command.unit import SetStance
+from horizons.extscheduler import ExtScheduler
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.stancecomponent import *
 
@@ -31,6 +35,7 @@ class StanceWidget(pychan.widgets.Container):
 		super(StanceWidget, self).__init__(size=(245,50), **kwargs)
 		widget = load_uh_widget('stancewidget.xml')
 		self.addChild(widget)
+		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
 
 	def init(self, instance):
 		self.instance = instance
@@ -42,13 +47,25 @@ class StanceWidget(pychan.widgets.Container):
 			'flee': Callback(self.set_stance, FleeStance)
 			})
 
+	def beforeShow(self):
+		super(StanceWidget, self).beforeShow()
+		ExtScheduler().rem_all_classinst_calls(self)
+		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
+
+	def refresh(self):
+		self.toggle_stance()
+		if not self.isVisible():
+			# refresh not needed
+			ExtScheduler().rem_all_classinst_calls(self)
+
 	def remove(self, caller=None):
 		"""Removes instance ref"""
+		ExtScheduler().rem_all_classinst_calls(self)
 		self.mapEvents({})
 		self.instance = None
 
 	def set_stance(self, stance):
-		self.instance.set_stance(stance)
+		SetStance(self.instance, stance).execute(self.instance.session)
 		self.toggle_stance()
 
 	def toggle_stance(self):

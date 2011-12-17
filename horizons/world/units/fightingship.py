@@ -35,14 +35,9 @@ class FightingShip(MovingWeaponHolder, Ship):
 
 	def __init__(self, x, y, **kwargs):
 		super(FightingShip, self).__init__(x=x, y=y, **kwargs)
-		#NOTE dummy cannon
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
+		# add default weapons
+		for i in xrange(WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM):
+			self.add_weapon_to_storage(WEAPONS.CANNON)
 
 	def go(self, x, y):
 		super(FightingShip, self).go(x, y)

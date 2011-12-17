@@ -23,6 +23,7 @@ from tabinterface import TabInterface
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget
 from horizons.scheduler import Scheduler
+from horizons.command.unit import SetStance
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.stancecomponent import *
 
@@ -117,6 +118,7 @@ class SelectMultiTab(TabInterface):
 		self._scheduled_refresh = False
 		self.hide_selected_units_widget()
 		self.draw_selected_units_widget()
+		self.toggle_stance()
 		self.widget.adaptLayout()
 
 	def on_instance_removed(self, instance):
@@ -133,7 +135,7 @@ class SelectMultiTab(TabInterface):
 				self.session.ingame_gui.hide_menu()
 				return
 
-			# if one unit remains, show it's menu
+			# if one unit remains, show its menu
 			if len(self.instances) == 1:
 				self.session.ingame_gui.hide_menu()
 				self.instances[0].show_menu()
@@ -169,7 +171,7 @@ class SelectMultiTab(TabInterface):
 	def set_stance(self, stance):
 		for i in self.instances:
 			if hasattr(i, 'stance'):
-				i.set_stance(stance)
+				SetStance(i, stance).execute(i.session)
 		self.toggle_stance()
 
 	def toggle_stance(self):
@@ -185,6 +187,7 @@ class SelectMultiTab(TabInterface):
 		stance = stance_units[0].stance
 		for unit in stance_units[1:]:
 			if unit.stance != stance:
+				# not all have the same stance, toggle none
 				return
 		self.widget.findChild(name = stance).set_active()
 

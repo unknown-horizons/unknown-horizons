@@ -88,3 +88,15 @@ class CreateUnit(Command):
 		return unit
 
 GenericCommand.allow_network(CreateUnit)
+
+
+class SetStance(GenericUnitCommand):
+	"""Command class that moves a unit.
+	@param unit: Instance of Unit
+	@param stance: stance as string representation
+	"""
+	def __init__(self, unit, stance):
+		super(SetStance, self).__init__(unit, "set_stance", stance)
+
+GenericCommand.allow_network(SetStance)
+
