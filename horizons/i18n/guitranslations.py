@@ -740,11 +740,11 @@ def set_translations():
 		# (text of widget: lbl_+)
 		"lbl_+"                       : ("text"    , _("Increase game speed")),
 		# (text of widget: lbl_,)
-		"lbl_,"                       : ("text"    , _("Rotate building left")),
+		"lbl_,"                       : ("text"    , _("Rotate building or map counterclockwise")),
 		# (text of widget: lbl_-)
 		"lbl_-"                       : ("text"    , _("Decrease game speed")),
 		# (text of widget: lbl_.)
-		"lbl_."                       : ("text"    , _("Rotate building right")),
+		"lbl_."                       : ("text"    , _("Rotate building or map clockwise")),
 		# (text of widget: lbl_b)
 		"lbl_b"                       : ("text"    , _("Show build menu")),
 		# (text of widget: lbl_c)

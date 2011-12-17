@@ -2,7 +2,7 @@
 <Container name="help_window" size="800,580" position="100,100">
 <Icon image="content/gui/images/background/book.png" />
 
-<VBox position="107,42" max_size="340,450" min_size="340,450">
+<VBox position="107,42" max_size="340,450" min_size="340,450" padding="15">
 	<Label text="Key bindings" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox>
@@ -16,8 +16,10 @@
 		<Label name="lbl_-" text="Decrease game speed" />
 	</VBox>
 	<VBox>
-		<Label name="lbl_," text="Rotate building left" />
-		<Label name="lbl_." text="Rotate building right" />
+		<Label name="lbl_," text="Rotate building or map counterclockwise"
+			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
+		<Label name="lbl_." text="Rotate building or map clockwise"
+			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
 	</VBox>
 	<VBox>
 		<Label name="lbl_b" text="Show build menu" />
@@ -34,13 +36,13 @@
 	<Spacer />
 </VBox>
 
-<VBox position="447,82" max_size="340,380" min_size="340,380">
+<VBox position="447,82" max_size="340,445" min_size="340,445" padding="15">
 	<VBox>
 		<Label name="lbl_p" text="Pause game" />
 		<Label name="lbl_g" text="Toggle grid on/off" />
 		<Label name="lbl_h" text="Show coordinate values (Debug)" />
 		<Label name="lbl_t" text="Toggle translucency of ambient buildings"
-			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
+			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
 		<Label name="lbl_r" text="Enable road building mode" />
 		<Label name="lbl_x" text="Enable destruct mode" />
 	</VBox>
@@ -54,16 +56,15 @@
 		<Label name="lbl_c" text="Chat" />
 		<Label name="lbl_shift" text="Hold to place multiple buildings"
 			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
-	</VBox> <Spacer />
-	<VBox>
-		<Label name="have_fun" text="Have fun." />
 	</VBox>
 	<VBox>
+		<Label name="have_fun" text="Have fun." />
 		<Label name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
 			text="The FIFE and Unknown Horizons development teams" />
 		<Label text="http://www.unknown-horizons.org"  name="url_uh"  comment="noi18n" />
-		<Label text="http://www.fifengine.de"  name="url_fife"  comment="noi18n" />
+		<Label text="http://www.fifengine.net"  name="url_fife"  comment="noi18n" />
 	</VBox>
+<Spacer />
 </VBox>
 
 <OkButton position="695,500"  tooltip="Return" />
