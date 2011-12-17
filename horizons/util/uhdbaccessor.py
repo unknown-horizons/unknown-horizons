@@ -287,6 +287,13 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
 
 
+	# Units
+
+	def get_unit_type_name(self, type_id):
+		"""Returns the name of a unit type identified by its type"""
+		return self.cached_query("SELECT name FROM unit where id = ?", type_id)[0][0]
+
+
 
 def read_savegame_template(db):
 	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")

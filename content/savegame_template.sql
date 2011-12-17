@@ -78,7 +78,7 @@ CREATE TABLE "settlement" ("island" INTEGER NOT NULL ,"owner" INTEGER NOT NULL )
 CREATE TABLE "settlement_level_properties" ("settlement" INTEGER NOT NULL, "level" INTEGER NOT NULL , "upgrading_allowed" BOOL NOT NULL, "tax_setting" FLOAT NOT NULL);
 CREATE TABLE "player" ("color" INTEGER NOT NULL ,"name" TEXT NOT NULL ,"client_id" TEXT,"is_trader" BOOL NOT NULL  DEFAULT (0) ,"is_pirate" BOOL NOT NULL  DEFAULT (0) ,"settler_level" INTEGER NOT NULL ,"difficulty_level" INTEGER);
 CREATE TABLE "ai_mission_special_domestic_trade" ("source_settlement_manager" INTEGER NOT NULL , "destination_settlement_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "state" INTEGER NOT NULL );
-CREATE TABLE "production_queue" (production_line_id INTEGER NOT NULL);
+CREATE TABLE "production_queue" (object INTEGER NOT NULL, position INTEGER NOT NULL, production_line_id INTEGER NOT NULL);
 CREATE TABLE production_line(for_worldid INTEGER, type STRING, res INTEGER, amount INTEGER);
 CREATE TABLE "settler" ("inhabitants" INTEGER, "last_tax_payed" INTEGER);
 CREATE TABLE "settlement_tiles" (data STRING);

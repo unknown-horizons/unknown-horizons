@@ -57,6 +57,10 @@ class SavegameAccessor(DbReader):
 			self("CREATE TABLE IF NOT EXISTS \"trade_history\" (\"settlement\" INTEGER NOT NULL," \
 			     "\"tick\" INTEGER NOT NULL, \"player\" INTEGER NOT NULL, " \
 			     "\"resource_id\" INTEGER NOT NULL, \"amount\" INTEGER NOT NULL, \"gold\" INTEGER NOT NULL)")
+		if rev <= 45:
+			# fix production queue table
+			self("DROP TABLE production_queue")
+			self("CREATE TABLE \"production_queue\" (object INTEGER NOT NULL, position INTEGER NOT NULL, production_line_id INTEGER NOT NULL)")
 
 
 	def _load_building(self):
