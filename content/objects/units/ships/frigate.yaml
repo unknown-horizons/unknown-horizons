@@ -1,6 +1,6 @@
 classpackage: fightingship
 classtype: FightingShip
-id: 1000021
+id: 1000020
 classname: Frigate
 radius: 5
 velocity: 12.0
