@@ -50,6 +50,7 @@ class HealthComponent(Component):
 		#scaling factor multiplies the damage taken by the unit
 		scaling_factor = 1
 		self.health -= scaling_factor * damage
+		self.health = max(self.health, 0.0) # don't go below 0
 		self.log.debug("dealing damage %s to %s; new health: %s", scaling_factor*damage, self.instance, self.health)
 		self.on_damage_dealt()
 
