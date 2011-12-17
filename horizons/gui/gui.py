@@ -64,13 +64,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
+		build_help_strings(self.widgets['help'])
 		self.session = None
 		self.current_dialog = None
-
-		labels = self.widgets['help'].getNamedChildren()
-		labels = dict( [(name, lbl) for (name, lbl) in labels.items() if name.startswith('lbl_')] )
-		for (name, lbl) in labels.items():
-			lbl[0].text = u'[{key}] = {text}'.format(text=lbl[0].text, key=name[4:].upper())
 
 		self.dialog_executed = False
 
@@ -575,3 +571,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				return False
 		else: # player cancelled deletion
 			return False
+
+def build_help_strings(widgets):
+	labels = widgets.getNamedChildren()
+	labels = dict( [(name, lbl) for (name, lbl) in labels.items() if name.startswith('lbl_')] )
+	for (name, lbl) in labels.items():
+		lbl[0].text = u'[{key}] = {text}'.format(text=_(lbl[0].text), key=name[4:].upper())

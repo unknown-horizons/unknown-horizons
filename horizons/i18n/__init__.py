@@ -61,6 +61,7 @@ def translate_widget(untranslated, filename):
 
 def update_all_translations():
 	"""Update the translations in every active widget"""
+	from horizons.gui.gui import build_help_strings
 	global translated_widgets
 	set_translations()
 	for (filename, widget) in translated_widgets.iteritems():
@@ -70,7 +71,9 @@ def update_all_translations():
 		for element_name, (attribute, translation) in guitranslations.text_translations.get(filename,{}).iteritems():
 			element = widget.findChild(name=element_name)
 			replace_attribute(element, attribute, translation)
-			widget.adaptLayout()
+		if filename == 'help.xml':
+			build_help_strings(widget)
+		widget.adaptLayout()
 
 
 def replace_attribute(widget, attribute, text):
