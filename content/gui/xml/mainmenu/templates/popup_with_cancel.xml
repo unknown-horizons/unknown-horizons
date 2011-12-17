@@ -3,9 +3,9 @@
 	background_image="content/gui/images/background/notice.png">
 
 <VBox position="40,30"  name="message_box" position_technique="automatic">
-	<Label text=""  name="headline"  font="libertine_headline" />
+	<Label text=""  name="headline"  font="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<Label name="popup_message"  font="libertine_14_black"
+	<Label name="popup_message"  font="14_black"
 		 wrap_text="1"  max_size="300,200"  min_size="300,200" />
 </VBox>
 

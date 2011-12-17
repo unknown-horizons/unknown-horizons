@@ -30,7 +30,7 @@ STYLES= {
 			'foreground_color' : fife.Color(255, 255, 255),
 			'background_color' : fife.Color(40, 40, 40, 255),
 			'selection_color' : fife.Color(80, 80, 80, 255),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		'Button' : {
 			'border_size': 1,
@@ -44,27 +44,27 @@ STYLES= {
 			'background_color' : fife.Color(255,255,255,128),
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'border_size': 0,
 		},
 		('Slider','StepSlider') : {
 			'base_color' : fife.Color(80,80,40,128),
 		},
 		'TextBox' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'opaque': 0
 		},
 		'ListBox' : {
 			'background_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
 			'selection_color' : fife.Color(255,255,255,128),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		'ScrollArea' : {
 			'background_color' : fife.Color(255,255,255,64),
 			'foreground_color' : fife.Color(80,80,40),
 			'base_color' : fife.Color(0,0,0,0),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'horizontal_scrollbar' : 0,
 		},
 		'RadioButton' : {
@@ -74,13 +74,13 @@ STYLES= {
 		('Label','TooltipLabel') : {
 			'border_size': 0,
 			'background_color' : fife.Color(40, 40, 40, 0),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		'Window' : {
 			'border_size': 1,
 			'margins': (10, 10),
 			'titlebar_height' : 30,
-			'font' : 'libertine_large',
+			'font' : 'large',
 			'base_color' : fife.Color(60, 60, 60)
 		},
 		('Container','HBox','VBox') : {
@@ -97,7 +97,7 @@ STYLES= {
 			'foreground_color' : fife.Color(255, 255, 255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'libertine_mainmenu'
+			'font' : 'mainmenu'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -105,7 +105,7 @@ STYLES= {
 		},
 		('Label','TooltipLabel') : {
 			'border_size': 0,
-			'font' : 'libertine_mainmenu'
+			'font' : 'mainmenu'
 		}
 },
 
@@ -118,7 +118,7 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'libertine_small_black'
+			'font' : 'small_black'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -126,7 +126,7 @@ STYLES= {
 		},
 		('Label','TooltipLabel') : {
 			'margins': (0,0),
-			'font' : 'libertine_14_black'
+			'font' : '14_black'
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
 		('Container','HBox','VBox') : {
@@ -142,7 +142,7 @@ STYLES= {
 			'foreground_color' : fife.Color(0, 0, 0, 0),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'libertine_small_black'
+			'font' : 'small_black'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -150,7 +150,7 @@ STYLES= {
 		},
 		('Label','TooltipLabel') : {
 			'alpha':0,
-			'font' : 'libertine_small_black'
+			'font' : 'small_black'
 		}
 },
 
@@ -163,7 +163,7 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'libertine_small'
+			'font' : 'small'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -171,7 +171,7 @@ STYLES= {
 		},
 		('Label','TooltipLabel') : {
 			'margins': (0,0),
-			'font' : 'libertine_small'
+			'font' : 'small'
 		}
 },
 
@@ -184,15 +184,15 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'libertine_large'
+			'font' : 'large'
 		},
 		'Button' : {
-			'font' : 'libertine_18',
+			'font' : '18',
 			'border_size': 0,
 			'margins' : (0,0)
 		},
 		('Label','TooltipLabel') : {
-			'font' : 'libertine_18'
+			'font' : '18'
 		}
 },
 
@@ -205,14 +205,14 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'libertine_headline'
+			'font' : 'headline'
 		},
 		'Button' : {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
 		('Label','TooltipLabel') : {
-			'font' : 'libertine_headline'
+			'font' : 'headline'
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
 		('Container','HBox','VBox') : {
@@ -223,11 +223,11 @@ STYLES= {
 	    'default' : {
 			'border_size': 0,
 			'margins': (0,0),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'foreground_color' : fife.Color(80,80,40),
 		},
 		('Label','TooltipLabel') : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		'CheckBox' : {
 			'selection_color' : fife.Color(255,255,255,200),
@@ -240,30 +240,30 @@ STYLES= {
 			'background_color' : fife.Color(255,255,255,128),
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		('Slider','StepSlider') : {
 			'base_color' : fife.Color(80,80,40,128),
 		},
 		'TextBox' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'opaque': 0
 		},
 		'ListBox' : {
 			'background_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
 			'selection_color' : fife.Color(255,255,255,128),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		'ScrollArea' : {
 			'background_color' : fife.Color(255,255,255,64),
 			'foreground_color' : fife.Color(80,80,40),
 			'base_color' : fife.Color(0,0,0,0),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'horizontal_scrollbar' : 0,
 		},
 		'HBox' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'foreground_color' : fife.Color(80,80,40),
 			'opaque': 0
 		},
@@ -272,7 +272,7 @@ STYLES= {
 			'background_color' : fife.Color(255,255,255,64),
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		('Container','HBox','VBox') : {
 #			'background_image' : ****,
@@ -281,28 +281,28 @@ STYLES= {
 
 'book_t': { # same as book, only styles anything text-related
 	    'default' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		('Label','TooltipLabel') : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		'TextBox' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'opaque': 0
 		},
 		'ListBox' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		},
 		'ScrollArea' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'horizontal_scrollbar' : 0,
 		},
 		'HBox' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 			'opaque': 0
 		},
 		'TextField' : {
-			'font' : 'libertine_14_black',
+			'font' : '14_black',
 		}
 },
 
@@ -315,14 +315,14 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'libertine_headline'
+			'font' : 'headline'
 		},
 		'Button' : {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
 		('Label','TooltipLabel') : {
-			'font' : 'libertine_tooltip'
+			'font' : 'tooltip'
 		}
 	},
 

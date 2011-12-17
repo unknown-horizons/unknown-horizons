@@ -76,10 +76,10 @@
 </Container>
 
 <Container position="800,3"  size="170,500"  name="pickbelt">
-	<Label name="patchers_lbl"  position="55,210"  text="Patchers"  font="libertine_small_tooltip" />
-	<Label name="translators_lbl"  position="60,260"  text="Translators"  font="libertine_small_tooltip" />
-	<Label name="packagers_lbl"  position="65,310"  text="Packagers" font="libertine_small_tooltip" />
-	<Label name="special_thanks_lbl"  position="70,360"  text="Special Thanks" font="libertine_small_tooltip" />
+	<Label name="patchers_lbl"  position="55,210"  text="Patchers"  font="small_tooltip" />
+	<Label name="translators_lbl"  position="60,260"  text="Translators"  font="small_tooltip" />
+	<Label name="packagers_lbl"  position="65,310"  text="Packagers" font="small_tooltip" />
+	<Label name="special_thanks_lbl"  position="70,360"  text="Special Thanks" font="small_tooltip" />
 </Container>
 
 </Container>
