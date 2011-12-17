@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-15 15:12+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-18 01:18+0200\n"
+"Last-Translator: Antoine <antoinepernot@mailoo.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -721,11 +721,10 @@ msgstr ""
 "compris entre 1 et 65535."
 
 #: horizons/engine.py:553
-#, fuzzy
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
-"Veuillez vérifier le port que vous avez entré et vérifiez si il est dans le "
-"rayon d'action."
+"Veuillez vérifier le port que vous avez entré et assurez-vous qu'il soit "
+"compris dans la gamme spécifiée."
 
 # 81%
 #: horizons/engine.py:565
@@ -1238,7 +1237,7 @@ msgstr "Achat/Vente"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
-msgstr ""
+msgstr "Trop loin du comptoir le plus proche."
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:204
@@ -1905,9 +1904,8 @@ msgstr "Construire des champs"
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:353 horizons/i18n/guitranslations.py:357
 #: horizons/i18n/guitranslations.py:502 horizons/i18n/guitranslations.py:506
-#, fuzzy
 msgid "Capacity utilization"
-msgstr "capacité utilisée"
+msgstr "Utilisation de la capacité"
 
 # Resources
 #. (text of widget: avg_happiness_lbl)
@@ -2912,6 +2910,8 @@ msgstr ""
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
+"Pour que les changements s'opèrent, démarrez à chaque fois UH avec les "
+"paramètres actuels ou bien éditez le fichier {filename}."
 
 # 81%
 # 78%
@@ -2949,7 +2949,7 @@ msgstr ""
 #: horizons/savegamemanager.py:379
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "Erreur : ne sait pas comment gérer le type de condition {condition}."
 
 # 81%
 # 78%
