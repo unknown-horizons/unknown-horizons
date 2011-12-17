@@ -276,6 +276,9 @@ class Fife(ApplicationBase):
 		assert symbol is not None, "Something went badly wrong with the translation update!" + \
 		       " Searching for: " + str(data) + " in " + str(LANGUAGENAMES)
 
+		fontdef = get_fontdef_for_locale(symbol)
+		self.pychan.loadFonts(fontdef)
+
 		try:
 			index = sorted(languages_map.keys()).index(symbol)
 		# This only happens on startup when the language is not available
@@ -377,8 +380,7 @@ class Fife(ApplicationBase):
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
 
-		fontdef = get_fontdef_for_locale('en')
-		pychan.loadFonts(fontdef)
+		self.update_languages()
 
 		self._gotInited = True
 		self.setup_setting_extras()

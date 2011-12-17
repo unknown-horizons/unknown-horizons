@@ -317,7 +317,6 @@ def _init_gettext(fife):
 	namespace_translation = translation('unknown-horizons', 'content/lang', fallback=True)
 	_  = namespace_translation.ugettext
 	N_ = namespace_translation.ungettext
-	fife.update_languages()
 
 
 
