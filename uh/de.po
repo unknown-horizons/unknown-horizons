@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-17 15:42+0200\n"
+"PO-Revision-Date: 2011-12-17 15:44+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -938,7 +938,7 @@ msgstr "Pyenet konnte nicht gefunden werden"
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
-"Der Mehrspielermodus benötigt die Bibliothek \"Pyenet\", welche nicht in Ihrem "
+"Der Mehrspielermodus benötigt die Bibliothek \"Pyenet\", welche nicht in Eurem "
 "System gefunden werden konnte."
 
 #: horizons/gui/modules/multiplayermenu.py:42
@@ -964,7 +964,7 @@ msgstr "Verbindungsversuch zum Master-Server fehlgeschlagen."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
-msgstr "Bitte überprüfen Sie Ihre Internetverbindung."
+msgstr "Bitte überprüft Eure Internetverbindung."
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid "Something went wrong with the network:"
@@ -997,9 +997,9 @@ msgstr "Falsche Version"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
-"Die Versions-Nummer unterscheidet sich von Ihrer. Jeder Spieler muss die "
+"Die Versions-Nummer unterscheidet sich von Eurer. Jeder Spieler muss die "
 "gleiche Version benutzen. Dies kann durch ein Update auf die neueste Version "
-"behoben werden. Spiel-Version: {game_version} Ihre Version: {own_version}"
+"behoben werden. Spiel-Version: {game_version} Eure Version: {own_version}"
 
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:294
@@ -2078,7 +2078,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:550
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
-"Dies ist das Schiff des Freien Händlers. Er wird von Zeit zu Zeit Ihre "
+"Dies ist das Schiff des Freien Händlers. Er wird von Zeit zu Zeit Eure "
 "Siedlung besuchen und nach Angeboten Ausschau halten."
 
 #. (text of widget: exchange_label)
