@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-18 15:31+0200\n"
+"PO-Revision-Date: 2011-12-18 15:57+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -221,6 +221,17 @@ msgid ""
 "\n"
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"市民は大抵（船乗りは特に）とても空腹なので、食糧を作る機関も必要です。\n"
+"\n"
+"第一の時代で作ることができる機関には、狩猟場と漁場があります。\n"
+"\n"
+"猟師は、なんと、森の動物を狩ります。狩猟場は木の生い茂った場所に作らなければなりません。\n"
+"\n"
+"伐採所の森のそばに狩猟場を作ることもできます。\n"
+"\n"
+"動物はそれほど速く増えないし、猟師からうまく隠れてしまうこともあります。\n"
+"\n"
+"つまり、狩猟場は安定的な食糧供給の機関としてはあまり信用できない、ということです。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:30
@@ -240,16 +251,27 @@ msgid ""
 "\n"
 "Don't forget to connect them to your branch office with trails!"
 msgstr ""
+"漁場は支部と同じように海岸沿いに、そしてその範囲内に魚群がある場所に作りましょう。\n"
+"\n"
+"漁師は小さな漕ぎ船を作って、魚を捕ります。\n"
+"\n"
+"これはユニットあたりの生産にはやや時間がかかりますが、とても安定した食糧供給の方法です。\n"
+"\n"
+"始めたばかりの集落の場合にはどちらの機関も使えばよく、それぞれの長所と短所を比較してバランスを取っていってください。\n"
+"\n"
+"任務：　狩猟場と漁場を作る。\n"
+"\n"
+"道で支部とつなぐのを忘れずに！"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:32
 msgid "Build a hunter and a fisher. Connect them to the branch office."
-msgstr ""
+msgstr "狩猟場と漁場を作って、支部と道でつなぐ。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:34
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "新しい任務：　メイン広場"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:36
