@@ -105,12 +105,10 @@ class MapLoader:
 		""" Loads an island from the given file """
 		island_db = DbReader(os.path.join(util.getUHPath(), file))
 
-		# todo (MMB) alter ground tile type
-		ground_tile = model.getObject('ts_beach0', util.GROUND_NAMESPACE)
-
 		# load ground tiles
-		ground = island_db("SELECT x, y FROM ground")
-		for (x, y) in ground:
+		ground = island_db("SELECT x, y, ground_id FROM ground")
+		for (x, y, ground_id) in ground:
+			ground_tile = model.getObject(util.getGroundTileName(ground_id), util.GROUND_NAMESPACE)
 			position = fife.ModelCoordinate(ix + x, iy + y, 0)
 			inst = ground_layer.createInstance(ground_tile, position)
 			fife.InstanceVisual.create(inst)

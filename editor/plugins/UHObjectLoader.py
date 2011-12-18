@@ -107,18 +107,19 @@ class UHObjectLoader(scripts.plugin.Plugin):
 		print("loading UH ground tiles...")
 		tile_sets = TileSetLoader.get_sets()
 
-		for tile_set_id in tile_sets:
-			tile_set = tile_sets[tile_set_id]
-			object = model.createObject(str(tile_set_id), util.GROUND_NAMESPACE)
+		# tile_set_name is actually the name of the tile
+		for tile_set_name in tile_sets:
+			tile_set = tile_sets[tile_set_name]
+			object = model.createObject(str(tile_set_name), util.GROUND_NAMESPACE)
 			fife.ObjectVisual.create(object)
 
 			# load animations
-			for action_id in tile_sets[tile_set_id].iterkeys():
-				action = object.createAction(action_id+"_"+str(tile_set_id))
+			for action_id in tile_sets[tile_set_name].iterkeys():
+				action = object.createAction(action_id+"_"+str(tile_set_name))
 				fife.ActionVisual.create(action)
-				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
+				for rotation in tile_sets[tile_set_name][action_id].iterkeys():
 					anim = animationloader.loadResource( \
-						str(tile_set_id)+"+"+str(action_id)+"+"+ \
+						str(tile_set_name)+"+"+str(action_id)+"+"+ \
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())
