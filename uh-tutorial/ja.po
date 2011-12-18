@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-18 14:51+0200\n"
+"PO-Revision-Date: 2011-12-18 15:31+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -144,6 +144,18 @@ msgid ""
 "You are currently in the first increment (the Sailors level) so are offered "
 "only the basic buildings."
 msgstr ""
+"集落を作ったとき、船に積まれていた建設資材は荷下ろしされています。この資材を使って、必要最小限の建造物を作ることができます。\n"
+"\n"
+"まずは伐採所を作りましょう。\n"
+"\n"
+"今の段階では伐採所は不可欠です。船乗りが風雨を避けるテントを張るための板材が必要だからです。\n"
+"\n"
+"漁船を作るためにも板材を必要とします。\n"
+"\n"
+"伐採所を作るには、ミニマップの下にある大きなアイコンをクリックするかBキーを押して建設メニューを開きます。\n"
+"\n"
+"建設メニューは時代ごとに並んでいます。\n"
+"今は第一の時代（船乗りの段階）なので、最小限の建造物だけ作ることができます。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
@@ -167,16 +179,29 @@ msgid ""
 "\n"
 "Watch how a collector will fetch your first self-produced boards."
 msgstr ""
+"文化が進歩すると、より高度な建造物も作れるようになります。\n"
+"\n"
+"とりあえずは、「機関」の下にある伐採所を選択して、木で囲まれた場所に伐採所を作りましょう。\n"
+"\n"
+"後から木を植えることもできますが、お金がかかります。今は自然の恵みをいただきましょう！\n"
+"\n"
+"どの機関も必ず貯蔵庫か支部まで道でつなぐ必要があります。そうしなければ、物品は機関に貯まったまま集められません。\n"
+"\n"
+"つまり、今から作る伐採所は道で支部（または貯蔵庫）とつながなければなりません。\n"
+"\n"
+"任務：　木の生い茂った場所に伐採所を作り、道でつなぐ。\n"
+"\n"
+"住民が初の自作の板材を取りに来るのを見ていましょう。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:24
 msgid "Build a lumberjack and connect it to the branch office using a trail."
-msgstr ""
+msgstr "伐採所を作って、道で支部とつなぎましょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:26
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "新しい任務：　食糧調達"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:28
