@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-18 15:57+0200\n"
+"PO-Revision-Date: 2011-12-18 16:35+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid ""
 "Build a branch office at the coast, so it is easy accessible for other ships "
 "like the Free Trader."
-msgstr "独立交易船などの他の船が近づきやすいように、海岸沿いに支部を建設しましょう。"
+msgstr "自由交易船などの他の船が近づきやすいように、海岸沿いに支部を建設しましょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
@@ -293,6 +293,18 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
+"住民が物品を取りに来るためのメイン広場が必要です。\n"
+"\n"
+"メイン広場と住民の家は道でつなぎます。\n"
+"\n"
+"支部にあるすべての物品はこの「市場」で手に入るため、住民は漁場や支部まで歩き回らなくて済むのです。\n"
+"\n"
+"後から拡げやすい場所に住民の家（テント）も作って、道でつないでください。\n"
+"\n"
+"テントを作るときは、たとえば、伐採所に近づきすぎないようにしましょう。テントの場所にあった木は除去されてしまうため、伐採所は板材を生産できなくなってしま"
+"います。\n"
+"\n"
+"任務：　メイン広場を作る。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
@@ -311,16 +323,26 @@ msgid ""
 "inhabitants. You also set the increment-specific global tax here and allow or "
 "deny inhabitants of this increment to upgrade to the next higher one."
 msgstr ""
+"それでは、メイン広場をよく見てみましょう。\n"
+"\n"
+"「会計」タブでは、この島のバランスシートを見ることができます。バランスシートには支出と税収が書かれています。\n"
+"\n"
+"後で説明しますが、「販売」と「購入」は交易のバランスを表しています。\n"
+"\n"
+"バランスシートがプラスの値であれば、全体的には黒字です。\n"
+"\n"
+"それぞれの時代の概要タブでは、住民の統計情報を見ることができます。ここでは、特定の時代の税率を変えたり、その時代の住民が次の時代に進むのを許容または禁止"
+"することができます。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:40
 msgid "Build a main square. Choose an area without many economy buildings."
-msgstr ""
+msgstr "メイン広場を作る。生産的な建造物の多くない場所を選ぶこと。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:42
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "新しい任務：　住宅"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
@@ -337,11 +359,18 @@ msgid ""
 "\n"
 "TASK: Build a tent and connect it to the main square."
 msgstr ""
+"住民は屋根のないところになんて住みたくないのです。テントを作りましょう。\n"
+"\n"
+"テントは最小限の住宅です。時代が進むと住民がより良い住宅に改築します。\n"
+"\n"
+"住民は生産物を消費していくばかりで役に立たないように見えるかもしれませんが、税を納めてくれます。税収はいまのところ、唯一の収入源なのです！\n"
+"\n"
+"任務：　テントを作って、メイン広場とつなげる。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:46
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "テントを作って、メイン広場とつなげる。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:48
@@ -365,17 +394,32 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"テントの概要タブを見てみましょう。\n"
+"次のことがわかります。\n"
+"* 住民の幸福度\n"
+"* 納めている税の額\n"
+"* 求めている資源\n"
+"\n"
+"求めている資源が満たされれば、幸福度が向上し、税の額も増えます。\n"
+"\n"
+"満たされなければ、幸福度も税収も減ります。放っておけば、そのうち住民は幻滅して、荒れ果てた廃墟を残して集落から立ち去ってしまいます。\n"
+"\n"
+"ここでも全体の税率を変えることができます。\n"
+"\n"
+"任務：　追加で最低三つのテントを作る。\n"
+"\n"
+"ヒント：　シフトキーを押したままにしておくと、同じ建造物を連続して作ることができます。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:50
 msgid ""
 "Build at least three additional tents and connect them to the main square."
-msgstr ""
+msgstr "追加で最低三つのテントを作って、メイン広場とつなぐ。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:52
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "新しい任務：　のろしを上げる"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
