@@ -2224,64 +2224,59 @@ msgstr "Назначение клавиш"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Вызвать меню строительства"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Чат"
+msgid "Show build menu"
+msgstr "Вызвать меню строительства"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Повернуть строение влево"
+msgid "Rotate building left"
+msgstr "Повернуть строение влево"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
-msgstr "{DOWN} = Прокрутить вниз"
+msgid "Scroll down"
+msgstr "Прокрутить вниз"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Вызвать главное меню"
+msgid "Show pause menu"
+msgstr "Вызвать главное меню"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Помощь"
+msgid "Display help"
+msgstr "Помощь"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Вкл/выкл консоль"
+msgid "Toggle console on/off"
+msgstr "Вкл/выкл консоль"
 
 # 92%
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
-msgstr "{F2} = Показать статистику игрока"
+msgid "Show player scores"
+msgstr "Показать статистику игрока"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
-msgstr "{F3} = Показать список поселений"
+msgid "Show settlement list"
+msgstr "Показать список поселений"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
-msgstr "{F4} = Показать список кораблей"
+msgid "Show ship list"
+msgstr "Показать список кораблей"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Быстрое сохранение"
+msgid "Quicksave"
+msgstr "Быстрое сохранение"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Быстрая загрузка"
+msgid "Quickload"
+msgstr "Быстрая загрузка"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2290,13 +2285,13 @@ msgstr "Команды разработчиков FIFE и Неизведанны
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Вкл/выкл сетку"
+msgid "Toggle grid on/off"
+msgstr "Вкл/выкл сетку"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
-msgstr "{H} = Показать значения координат (отладка)"
+msgid "Show coordinate values (Debug)"
+msgstr "Показать значения координат (отладка)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
@@ -2305,68 +2300,68 @@ msgstr "Приятной игры."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Судовой журнал"
+msgid "Toggle Captain's log"
+msgstr "Судовой журнал"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
-msgstr "{LEFT} = Прокрутить влево"
+msgid "Scroll left"
+msgstr "Прокрутить влево"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Уменьшить скорость игры"
+msgid "Decrease game speed"
+msgstr "Уменьшить скорость игры"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Пауза"
+msgid "Pause game"
+msgstr "Пауза"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Повернуть строение вправо"
+msgid "Rotate building right"
+msgstr "Повернуть строение вправо"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Увеличить скорость игры"
+msgid "Increase game speed"
+msgstr "Увеличить скорость игры"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
+msgid "Enable road building mode"
 msgstr ""
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{RIGHT} = Прокрутить вправо"
+msgid "Scroll right"
+msgstr "Прокрутить вправо"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Снимок экрана"
+msgid "Screenshot"
+msgstr "Снимок экрана"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Зажмите для множественных построек"
+msgid "Hold to place multiple buildings"
+msgstr "Зажмите для множественных построек"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
-msgstr "{T} = Переключить полупрозрачность элементов окружения"
+msgid "Toggle translucency of ambient buildings"
+msgstr "Переключить полупрозрачность элементов окружения"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{UP} = Прокрутить вверх"
+msgid "Scroll up"
+msgstr "Прокрутить вверх"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Уничтожение объекта"
+msgid "Enable destruct mode"
+msgstr "Уничтожение объекта"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -3365,12 +3360,6 @@ msgstr "FIFE не найден."
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Вращать карту по часовой стрелке"
 
-#~ msgid "Decrease game speed"
-#~ msgstr "Уменьшить скорость игры"
-
-#~ msgid "Increase game speed"
-#~ msgstr "Увеличить скорость игры"
-
 #~ msgid "Collector utilisation:"
 #~ msgstr "Занятость сборщика:"
 
@@ -3548,9 +3537,6 @@ msgstr "FIFE не найден."
 
 #~ msgid "Leave player scores"
 #~ msgstr "Покинуть статистику игрока"
-
-#~ msgid "{R} = Show player scores"
-#~ msgstr "{R} = Показать статистику игрока"
 
 #~ msgid "Choose your opponents:"
 #~ msgstr "Выберите оппонентов:"

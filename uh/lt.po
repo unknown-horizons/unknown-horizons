@@ -2216,63 +2216,58 @@ msgstr "Klavišų susiejimai"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Rodyti statymo meniu"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Pokalbis"
+msgid "Show build menu"
+msgstr "Rodyti statymo meniu"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Pasukti statinį kairėn"
+msgid "Rotate building left"
+msgstr "Pasukti statinį kairėn"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
-msgstr "{DOWN} = Slinkti žemyn"
+msgid "Scroll down"
+msgstr "Slinkti žemyn"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Rodyti pauzės meniu"
+msgid "Show pause menu"
+msgstr "Rodyti pauzės meniu"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Rodyti pagalbą"
+msgid "Display help"
+msgstr "Rodyti pagalbą"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Perjungti pultą įj/išj"
+msgid "Toggle console on/off"
+msgstr "Perjungti pultą įj/išj"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
+msgid "Show player scores"
 msgstr ""
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
+msgid "Show settlement list"
 msgstr ""
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
+msgid "Show ship list"
 msgstr ""
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Greitas įrašymas"
+msgid "Quicksave"
+msgstr "Greitas įrašymas"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Greitas įkrovimas"
+msgid "Quickload"
+msgstr "Greitas įkrovimas"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2281,12 +2276,12 @@ msgstr "FIFE ir Nežinomi Horizontai kūrėjų komandos"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Perjungti tinklelį įj/išj"
+msgid "Toggle grid on/off"
+msgstr "Perjungti tinklelį įj/išj"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
+msgid "Show coordinate values (Debug)"
 msgstr ""
 
 #. (text of widget: lbl_have_fun)
@@ -2296,68 +2291,68 @@ msgstr "Smagaus žaidimo."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Perjungti Kapitono žurnalą"
+msgid "Toggle Captain's log"
+msgstr "Perjungti Kapitono žurnalą"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
-msgstr "{LEFT} = Slinkti kairėn"
+msgid "Scroll left"
+msgstr "Slinkti kairėn"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Sumažinti žaidimo greitį"
+msgid "Decrease game speed"
+msgstr "Sumažinti žaidimo greitį"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Žaidimo pauzė"
+msgid "Pause game"
+msgstr "Žaidimo pauzė"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Pasukti statinį dešinėn"
+msgid "Rotate building right"
+msgstr "Pasukti statinį dešinėn"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Padidinti žaidimo greitį"
+msgid "Increase game speed"
+msgstr "Padidinti žaidimo greitį"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
+msgid "Enable road building mode"
 msgstr ""
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{RIGHT} = Slinkti dešinėn"
+msgid "Scroll right"
+msgstr "Slinkti dešinėn"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Ekrano nuotrauka"
+msgid "Screenshot"
+msgstr "Ekrano nuotrauka"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Laikykite, norėdami pastatyti daug pastatų"
+msgid "Hold to place multiple buildings"
+msgstr "Laikykite, norėdami pastatyti daug pastatų"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
+msgid "Toggle translucency of ambient buildings"
 msgstr ""
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{UP} = Slinkti viršun"
+msgid "Scroll up"
+msgstr "Slinkti viršun"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Įgalinti naikinimo būseną"
+msgid "Enable destruct mode"
+msgstr "Įgalinti naikinimo būseną"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -3251,12 +3246,6 @@ msgstr ""
 
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Pasukti žemėlapį pagal laikrodžio rodyklę"
-
-#~ msgid "Decrease game speed"
-#~ msgstr "Sumažinti žaidimo greitį"
-
-#~ msgid "Increase game speed"
-#~ msgstr "Padidinti žaidimo greitį"
 
 #~ msgid "capacity utilization"
 #~ msgstr "galios panaudojimas"
