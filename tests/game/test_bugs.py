@@ -38,8 +38,8 @@ def test_ticket_979(s, p):
 	s.run(seconds=60)
 	assert farm.inventory[RES.FOOD_ID]
 
-	# The settlement inventory is already full of food (from the ship): dispose of it
-	assert settlement.inventory[RES.FOOD_ID] > 0
+	# Depending on auto unloading (which we aren't interested in here),
+	# the settlement inventory may already be full of food: dispose of it
 	settlement.inventory.alter(RES.FOOD_ID, -settlement.inventory[RES.FOOD_ID])
 	assert settlement.inventory[RES.FOOD_ID] == 0
 
