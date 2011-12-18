@@ -21,6 +21,8 @@
 
 import logging
 
+from collections import deque
+
 import horizons.main
 
 from horizons.util import LivingObject, ManualConstructionSingleton
@@ -76,7 +78,7 @@ class Scheduler(LivingObject):
 			# this can happen for e.g. rem_all_classinst_calls
 			cur_schedule = self.schedule[self.cur_tick]
 			while cur_schedule:
-				callback = cur_schedule.pop(0)
+				callback = cur_schedule.popleft()
 				# TODO: some system-level unit tests fail if this list is not processed in the correct order
 				#       (i.e. if e.g. pop() was used here). This is an indication of invalid assumptions
 				#       in the program and should be fixed.
@@ -119,7 +121,7 @@ class Scheduler(LivingObject):
 			interval = callback_obj.loop_interval if readd else callback_obj.run_in
 			tick_key = self.cur_tick + interval
 			if not tick_key in self.schedule:
-				self.schedule[tick_key] = []
+				self.schedule[tick_key] = deque()
 			callback_obj.tick = tick_key
 			self.schedule[tick_key].append(callback_obj)
 			if not readd:  # readded calls haven't been removed here
