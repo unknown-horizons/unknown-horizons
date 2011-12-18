@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-18 17:24+0200\n"
+"PO-Revision-Date: 2011-12-18 17:44+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -618,16 +618,26 @@ msgid ""
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"信仰は物理的な資源と同じように扱われます。\n"
+"\n"
+"つまり、住民が信仰を生産者（パビリオン）に取りに行くために、道がつながっていなければならないのです。\n"
+"そのうち、住民は信仰を消費して、さらなる信仰を求めて生産者のところに向かいます。\n"
+"\n"
+"重要：\n"
+"建造物はその有効範囲内にテントがあるだけでは不十分です。\n"
+"道がつながっている必要があります。\n"
+"\n"
+"任務：　船乗りの信仰を満たすためにパビリオンを作って、道でテントとつなぐ。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:76
 msgid "Build a pavilion with connection to the tents."
-msgstr ""
+msgstr "パビリオンを作ってテントとつなぐ。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:78
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr ""
+msgstr "新しい任務：　次の時代"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
@@ -649,6 +659,15 @@ msgid ""
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
+"住民がメイン広場とパビリオンを定期的に訪れるようになり、食糧供給が充分に行われていれば、すべての需要は満たされています。\n"
+"\n"
+"船乗りは幸福で満たされると、彼らは開拓者と呼ばれる次の時代に進もうとします。\n"
+"\n"
+"住民の要求をすべて満たした今、幸福度を上げるには税率を下げるしかありません。\n"
+"\n"
+"いつも税率を低いままにしておくと遠からず破産してしまいます。でも一時的に、そして自分が何をしているかわかっていれば、良い手段なのです。\n"
+"\n"
+"そのうち、最初の住民がメイン広場に来て、ログハウスを作るのに必要な建設資材を探します。テントはログハウスに置きかわります。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
