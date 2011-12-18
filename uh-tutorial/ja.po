@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-04 07:45+0200\n"
-"Last-Translator: shirayuki <shirayuking@gmail.com>\n"
+"PO-Revision-Date: 2011-12-18 14:51+0200\n"
+"Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr ""
 "\n"
 "もっと説明を読みたければ、航海日誌を見ると良いかもしれません。\n"
 "\n"
-"この航海日誌を閉じた後、もう一度開くには、画面右下の（ミニマップの下、封蝋された文章と羽の）「船長の航海日誌」アイコンをクリックしてください。\n"
+"この航海日誌を閉じた後、もう一度開くには、画面右上の（ミニマップの下、封蝋された文章と羽の）「船長の航海日誌」アイコンをクリックしてください。\n"
 "\n"
 "チュートリアルの向上のために：　より良い言い回しや説明してほしいテーマ、おかしな状態があれば、開発チームに連絡をお願いします。\n"
 "\n"
@@ -85,7 +85,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:14
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr ""
+msgstr "新しい任務：　島に集落を作る"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -106,11 +106,23 @@ msgid ""
 "\n"
 "TASK: Build a branch office at the coast."
 msgstr ""
+"船を動かすには、左クリックで船を選択して、右クリックで目的の場所を示しましょう。\n"
+"\n"
+"海岸に近づいたら、右側の概要タブにある錨のアイコンがアクティブになります。\n"
+"\n"
+"錨のアイコンが押せるようになると、その近辺に支部を作る（「集落を作る」と言います）ことができます。\n"
+"\n"
+"錨のアイコンを押してマウスカーソルを動かすと、集落を作る位置をプレビューで見ることができます。\n"
+"\n"
+"プレビューが赤い影で表示されていなければ、その場所に集落を作ることができます。\n"
+"好きな場所をクリックして、最初の集落を作りましょう。\n"
+"\n"
+"任務：　海岸沿いに支部を作る。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:18
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr ""
+msgstr "新しい任務：　伐採所を作る"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
