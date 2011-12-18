@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-11-28 01:10+0200\n"
+"PO-Revision-Date: 2011-12-04 07:45+0200\n"
 "Last-Translator: shirayuki <shirayuking@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -34,13 +34,15 @@ msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
+"チュートリアル\n"
+"最初の集落を作って、プレイ方法を学びましょう\n"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:8
 msgid ""
 "Build a branch office at the coast, so it is easy accessible for other ships "
 "like the Free Trader."
-msgstr ""
+msgstr "独立交易船などの他の船が近づきやすいように、海岸沿いに支部を建設しましょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
@@ -68,6 +70,17 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
+"これは船長の航海日誌です。重要な情報はすべて航海日誌に記録されます。それぞれの任務を知らせる短いメッセージは画面の左側に表示されます。\n"
+"\n"
+"もっと説明を読みたければ、航海日誌を見ると良いかもしれません。\n"
+"\n"
+"この航海日誌を閉じた後、もう一度開くには、画面右下の（ミニマップの下、封蝋された文章と羽の）「船長の航海日誌」アイコンをクリックしてください。\n"
+"\n"
+"チュートリアルの向上のために：　より良い言い回しや説明してほしいテーマ、おかしな状態があれば、開発チームに連絡をお願いします。\n"
+"\n"
+"開発チームへの連絡は、 www.unknown-horizons.org にアクセスしてください。\n"
+"\n"
+"それでは、ゲームを始めましょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:14
