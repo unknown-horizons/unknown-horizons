@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-18 16:35+0200\n"
+"PO-Revision-Date: 2011-12-18 16:58+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -441,6 +441,15 @@ msgid ""
 "The signal fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"島のまわりを行き来している船が見えますか？　その船は自由交易船といって、この群島の初期入植者たちです。\n"
+"交易者はあなたの集落に必要で、また自力で生産できない物品を供給してくれます。\n"
+"あなたの生産品の余剰分を買い取ってもらうこともできますが、大抵の場合は余剰分は売るよりも（もっとテントを作って）消費してしまったほうが収入が増えます。\n"
+"\n"
+"通常、自由交易船はただ航海して取引を探すだけですが、少しだけスピードアップさせることができます。\n"
+"\n"
+"このために、支部のそばの海岸にのろしを上げましょう。のろしが船をあなたの集落に導くのです。\n"
+"\n"
+"のろしの有効範囲内に船が来るように上げる必要があります。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56
@@ -462,16 +471,27 @@ msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your branch office."
 msgstr ""
+"このちょっとした周知運動によって、交易者は通り過ぎようとしていたあなたの支部に立ち寄ってくれるでしょう。\n"
+"\n"
+"支部の「購入/販売」タブで取引の提示ができます。（この機能は現在とても使いづらくなっています。使いやすくする良いアイデアが思いついたら、ぜひ教えてくださ"
+"い。ご協力をお願いします！）\n"
+"\n"
+"「船乗り」の時代には、三つの取引枠があります。\n"
+"\n"
+"取引枠の中の左上にある小さなアイコンをクリックすると、その枠の状態を「購入」と「販売」に交互に切り替えることができます。\n"
+"取引枠をクリックして取引したい物品を選択しましょう。この操作については、後で取引できる状態になったら詳しく説明します。\n"
+"\n"
+"任務：　支部の近くの海岸沿いの場所にのろしを上げる。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:58
 msgid "Build a signal fire at the coast close to your branch office."
-msgstr ""
+msgstr "支部の近くの海岸沿いの場所にのろしを上げる。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:60
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "新しい任務：　交易"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
