@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-17 15:45+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-18 17:13+0200\n"
+"Last-Translator: raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -964,7 +964,9 @@ msgstr "Verbindungsversuch zum Master-Server fehlgeschlagen."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
-msgstr "Bitte überprüft Eure Internetverbindung."
+msgstr ""
+"Bitte überprüft Eure Internetverbindung. Wenn diese okay ist, bedeutet es, "
+"dass unsere Master-Server vorübergehend nicht verfügbar sind."
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid "Something went wrong with the network:"
@@ -1393,9 +1395,8 @@ msgstr "Lagerzelt: Erweitert die Lagerkapazität und stellt Träger bereit."
 # 89%
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
-#, fuzzy
 msgid "Trail (R): Needed for collecting goods."
-msgstr "Pfad: Wird zum Transport von Gütern benötigt."
+msgstr "Pfad (R): Wird zum Transport von Gütern benötigt."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
@@ -1602,30 +1603,26 @@ msgstr "Logbuch (L)"
 # 87%
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
-#, fuzzy
 msgid "Rotate map counterclockwise (,)"
-msgstr "Karte gegen den Uhrzeigersinn drehen"
+msgstr "Karte gegen den Uhrzeigersinn drehen (,)"
 
 # 83%
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:183
-#, fuzzy
 msgid "Rotate map clockwise (.)"
-msgstr "Karte im Uhrzeigersinn drehen"
+msgstr "Karte im Uhrzeigersinn drehen (.)"
 
 # 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
-#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Spielgeschwindigkeit verringern"
+msgstr "Spielgeschwindigkeit verringern (-)"
 
 # 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Spielgeschwindigkeit erhöhen"
+msgstr "Spielgeschwindigkeit erhöhen (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -1893,9 +1890,8 @@ msgstr "Felder errichten"
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:353 horizons/i18n/guitranslations.py:357
 #: horizons/i18n/guitranslations.py:502 horizons/i18n/guitranslations.py:506
-#, fuzzy
 msgid "Capacity utilization"
-msgstr "Auslastung"
+msgstr "Kapazitätsauslastung"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:369
@@ -2140,9 +2136,8 @@ msgstr "Logbuch verlassen"
 # 80%
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:635
-#, fuzzy
 msgid "Read previous entries"
-msgstr "Frühere Einträge"
+msgstr "Lese frühere Einträge"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:637
@@ -2931,7 +2926,7 @@ msgstr "Speichern/Laden ist im Mehrspieler-Modus noch nicht möglich"
 #: horizons/savegamemanager.py:379
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "Fehler: Weiß nicht wie ich den Konditionstyp {condition} behandeln soll"
 
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
 #, python-format
@@ -3167,6 +3162,8 @@ msgstr "KI-Einstellungen"
 #: run_uh.py:114
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0)."
 msgstr ""
+"Verwendet <ai_players> KI-Spieler (ausgenommen mögliche Mensch-Hybrid-AI; "
+"Standard: 0)."
 
 #: run_uh.py:116
 msgid "Makes the human player a human-AI hybrid (for development only)."
@@ -3221,6 +3218,8 @@ msgstr "Deaktiviert das Vorladen im Hauptmenü"
 #: run_uh.py:140
 msgid "Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"
 msgstr ""
+"Führt das Spiel in der vorgegebenen Geschwindigkeit aus (Werte: 0.5, 1, 2, "
+"3, 4, 6, 8, 11, 20)"
 
 #: run_uh.py:162
 msgid "Unknown Horizons crashed."

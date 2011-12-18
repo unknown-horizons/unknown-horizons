@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-18 16:58+0200\n"
+"PO-Revision-Date: 2011-12-18 17:24+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -510,6 +510,15 @@ msgid ""
 "When selling the 'target value' is the number which you hold in reserve to "
 "not sell"
 msgstr ""
+"素晴らしい！　自由交易船はあなたの支部に立ち寄るようになっているでしょう。\n"
+"\n"
+"それでは取引の方法について学びましょう。\n"
+"\n"
+"取引したい物品を選択すると、取引枠に並んだ緑色のバーが（もしあれば）あなたがその物品をどのくらい貯蔵しているか表します。\n"
+"\n"
+"それぞれの取引枠の右にあるスライダーをドラッグして、「購入」や「販売」の「目標値」を決めましょう。\n"
+"購入する場合、その物品が「目標値」だけ貯蔵されるまでその物品を買おうとします。\n"
+"販売する場合、その物品が「目標値」だけ貯蔵された状態で残りを売ろうとします。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
@@ -531,21 +540,34 @@ msgid ""
 "\n"
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"たとえば、\n"
+"「購入」の取引枠で、5トンの貯蔵があるとします。スライダーを9トンのところに動かしておくと、最大で4トンを買うことになります（お金があれば）。\n"
+"販売も似た仕組みです。「販売」の取引枠で、18トンの貯蔵があって、スライダーを13トンのところに動かしておくと、最大で5トンを売ることになります。\n"
+"\n"
+"ただし、交易者があなたの提示した量よりも少なく売り買いしたいと考えている場合もあります。そのときは、交易者の希望を受け入れて取引して、また交易に来てくれ"
+"るのを待ちましょう。\n"
+"\n"
+"Unknown Horizons には高度な価格設定機能がついていて、物品の単価は自動的に変動します。\n"
+"人手で変えることはできません！\n"
+"\n"
+"交易のバランスは、「会計」タブで「販売」と「購入」の値を比べるとわかります。\n"
+"\n"
+"任務：　工具を30になるまで購入する。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:66
 msgid "Reach an island stock of at least 30 tools."
-msgstr ""
+msgstr "工具の貯蔵を30以上にする"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:68
 msgid "Note that this might take a while."
-msgstr ""
+msgstr "この任務達成にはしばらく時間がかかるかもしれません。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:70
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "新しい任務：　パビリオンを作る"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:72
@@ -566,6 +588,17 @@ msgid ""
 "\n"
 "In later increments, upgraded versions of buildings may become available."
 msgstr ""
+"さしあたって必要な工具は揃いました！\n"
+"\n"
+"いまや住宅やメイン広場、食糧は供給できています。\n"
+"\n"
+"まだ満たされていない要求がひとつあります。市場かテントのタブを見てみましょう。住民は祈るための場所を求めています。\n"
+"\n"
+"太陽から隠れるシェルターとして住民にすぐにパビリオンを作らせれば良いのです。\n"
+"\n"
+"このような公共施設も道でテントにつなぐ必要があります。そうしなければ、住民はたどり着くことができないのです。\n"
+"\n"
+"時代が進めば、進化した建造物が作れるようになります。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
