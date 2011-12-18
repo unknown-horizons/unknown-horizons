@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-18 17:13+0200\n"
+"PO-Revision-Date: 2011-12-18 17:18+0200\n"
 "Last-Translator: raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -336,7 +336,6 @@ msgstr "Ihr habt gewonnen!"
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been autosaved."
 msgstr "Automatischer Speichervorgang abgeschlossen."
 
@@ -737,13 +736,11 @@ msgstr ""
 
 # 81%
 #: horizons/engine.py:565
-#, fuzzy
 msgid "Failed to apply new network settings."
 msgstr "Anwenden der Netzwerkeinstellungen fehlgeschlagen."
 
 # 78%
 #: horizons/engine.py:566 horizons/gui/modules/multiplayermenu.py:52
-#, fuzzy
 msgid "Network features could not be initialized with the current configuration."
 msgstr ""
 "Die Netzwerkfunktionen konnten mit den aktuellen Einstellungen nicht "
@@ -751,7 +748,6 @@ msgstr ""
 
 # 75%
 #: horizons/engine.py:567 horizons/gui/modules/multiplayermenu.py:53
-#, fuzzy
 msgid "Check the settings you specified in the network section."
 msgstr "Überprüft die Einstellungen im Abschnitt Netzwerk."
 
@@ -1235,7 +1231,6 @@ msgstr "Entfernung zum nächstgelegenen Kontor zu groß"
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:204
-#, fuzzy
 msgid "Cannot equip trade ship with weapons"
 msgstr "Handelsschiffe können nicht bewaffnet werden"
 
@@ -2567,7 +2562,6 @@ msgstr "Hauptmenü:"
 # 78%
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:892
-#, fuzzy
 msgid "Only show games with the same version:"
 msgstr "Zeige nur Spiele gleicher Version:"
 
@@ -2945,7 +2939,6 @@ msgstr "Ihr habt das Szenario bewältigt."
 
 # 75%
 #: horizons/scenario/actions.py:77
-#, fuzzy
 msgid "Do you want to continue playing?"
 msgstr "Möchtet Ihr fortfahren?"
 
