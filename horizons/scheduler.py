@@ -31,7 +31,9 @@ class Scheduler(LivingObject):
 
 	TODO:
 	- Refactor to use a data structure that is suitable for iteration (ticking) as well as
-	  searching/deleting by instance, possibly also by callback
+	  searching/deleting by instance, possibly also by callback.
+	  Suggestion: { tick -> { instance -> [callback] }} (basically a k-d tree)
+
 
 	@param timer: Timer instance the schedular registers itself with.
 	"""
