@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-18 17:44+0200\n"
+"PO-Revision-Date: 2011-12-18 18:27+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -689,17 +689,28 @@ msgid ""
 "\n"
 "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
+"このような住宅は、その進化が自動的に資源を消費するもので、あなたが禁止することができない唯一の建造物です。\n"
+"\n"
+"資源を消費して人手で進化させることができる建造物もあります。何も消費せずに進化する建造物もあります。たとえば伐採所はその例です（このケースではグラフィッ"
+"クが変わるだけです）。\n"
+"\n"
+"進化した住宅にはより多くの住民が住むことができます。開拓者は船乗りより多くの税を納めます。\n"
+"\n"
+"すでにお気づきかもしれませんが、マイナス面として、開拓者は船乗りより多くの物品を要求します。そのため、開拓者を幸福にするためにより多くのお金を使わなけれ"
+"ばなりません。\n"
+"\n"
+"任務：　税率を最低（左端）に変えて、船乗りが進化するのを待つ。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:84
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
-msgstr ""
+msgstr "税率を最低（左端）に変えて、船乗りが進化するのを待つ。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:86
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "新しい任務：　農場を作る"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
@@ -718,6 +729,17 @@ msgid ""
 "\n"
 "The output of farms depends on what kind of fields you build around it."
 msgstr ""
+"おめでとうございます！　幾人かの住民が次の時代に進みました！！\n"
+"\n"
+"いまや新しい建造物を作れるようになりました。建造物メニューを見てみましょう。\n"
+"\n"
+"輝かしい新たなタブがありますね。\n"
+"\n"
+"開拓者は服を求めています。羊毛から始まる服の生産ラインを作りましょう（羊毛は農場の生産品のひとつです）。\n"
+"\n"
+"農場はとても特殊な生産拠点で、ひとつではなく、選択によって多くの異なる物品を生産することができます。\n"
+"\n"
+"農場の生産物はその周囲の土地の種類によって決まります。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
@@ -740,16 +762,27 @@ msgid ""
 "\n"
 "TASK: Build a farm."
 msgstr ""
+"後でもっと詳しく見てみましょう。\n"
+"\n"
+"農場は、原材料を生産するすべての土地と同じく、貯蔵庫や支部と必ずしもつながっている必要はありません。\n"
+"\n"
+"最終的な物品を生産する機関は農場につながっている必要があります。そして支部や貯蔵庫、テントから機関につながっていれば、問題ありません。\n"
+"\n"
+"ただし、もし島の別の場所で生産しているものがあったり（理にかなっていることもあります）、違う島でも生産していたりするときには、つなげる必要があります。\n"
+"\n"
+"農場が機能するには周囲にある程度広い用地が必要なので、海岸や他の建造物に近すぎない場所に農場を作ってみましょう。\n"
+"\n"
+"任務：　農場を作る。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:92
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "周囲に用地を確保できる場所に農場を作る。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:94
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "新しい任務：　農業用地を作る"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
@@ -770,6 +803,18 @@ msgid ""
 "Note that for potatoes you will need a road connection to the farm (not to "
 "the field!) as it will be the only company to work on the goods."
 msgstr ""
+"農場そのものは農場用地がなければ何も生産しません。\n"
+"\n"
+"今の時点では、牧場やジャガイモ畑、サトウキビ畑を選べます。\n"
+"\n"
+"それぞれ簡単に紹介します。\n"
+"* 牧場：　羊がいます。羊毛が採れます。\n"
+"* ジャガイモ畑：　ジャガイモを食料として栽培します。\n"
+"* サトウキビ畑：　サトウキビを栽培します。蒸留酒や、（後で）菓子製造に使います。\n"
+"\n"
+"今は牧場だけあれば良いですが、もし食糧供給量が小さすぎる場合には（住宅が多いのでしょう）ジャガイモ畑を作っても構いません。\n"
+"\n"
+"ジャガイモ畑を作る場合は収穫する人が来るための道を、生産する場である農場につなぐ必要があります（畑そのものではありません！）"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:98
