@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-09 04:24+0200\n"
-"Last-Translator: shirayuki <shirayuking@gmail.com>\n"
+"PO-Revision-Date: 2011-12-19 15:31+0200\n"
+"Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -212,7 +212,7 @@ msgstr "のろし"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Smeltery"
-msgstr ""
+msgstr "精錬所"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -232,7 +232,7 @@ msgstr "ストレージのテント"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Sugar Field"
-msgstr ""
+msgstr "サトウキビ畑"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -247,17 +247,17 @@ msgstr "テント"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tent Ruin"
-msgstr ""
+msgstr "テントの残骸"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacco Field"
-msgstr ""
+msgstr "タバコ畑"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tobacconist"
-msgstr ""
+msgstr "タバコ屋"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -303,22 +303,22 @@ msgstr "道路をドラッグすることもできます。"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
+msgstr "現在の最終時代に到達しました。これ以上のレベル向上はできません。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more ${resource} to build this building."
-msgstr ""
+msgstr "この建造物を作るにはあと ${resource} 必要です。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "勝利しました！"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "自動セーブしました。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -328,12 +328,12 @@ msgstr "あなたのゲームはクイック保存されています。"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your inhabitants reached level ${level}."
-msgstr ""
+msgstr "住民はレベル ${level} に到達しました。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "鉱山を掘りつくしました。"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
