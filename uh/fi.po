@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-05 18:36+0200\n"
-"Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
+"PO-Revision-Date: 2011-12-19 03:00+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -698,9 +698,9 @@ msgstr ""
 
 # 86%
 #: horizons/engine.py:305
-#, python-format, fuzzy
+#, python-format, 
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr "Asetettu kieltä %(lang)s, sijainnissa %(place)s ei pystytä lataamaan."
+msgstr "Asetettu kieltä {lang}, sijainnissa {place} ei pystytä lataamaan"
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
@@ -839,18 +839,18 @@ msgstr "Tuntematon tallennuspäivä"
 
 # 76%
 #: horizons/gui/gui.py:513
-#, python-format, fuzzy
+#, python-format, 
 msgid "Saved at {time}"
-msgstr "Tallennettu viimeksi %(time)s"
+msgstr "Tallennettu viimeksi {time}"
 
 # 80%
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:520
-#, python-format, fuzzy
+#, python-format, 
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Tallennettu %(amount)d kerran"
-msgstr[1] "Tallennettu %(amount)d kertaa"
+msgstr[0] "Tallennettu {amount} kerran"
+msgstr[1] "Tallennettu {amount} kertaa"
 
 #: horizons/gui/gui.py:530
 #, python-format
@@ -885,9 +885,9 @@ msgstr ""
 
 # 84%
 #: horizons/gui/gui.py:561
-#, python-format, fuzzy
+#, python-format, 
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Haluatko varmasti poistaa tallennuksen \"%s\"?"
+msgstr "Haluatko varmasti poistaa tallennuksen \"{name}\"?"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
@@ -986,9 +986,9 @@ msgstr ""
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
-#, python-format, fuzzy
+#, python-format, 
 msgid "Recommended number of players: {number}"
-msgstr "Pelaajien suositeltu määrä: "
+msgstr "Pelaajien suositeltu määrä: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
@@ -1017,9 +1017,8 @@ msgstr "Virheellinen pelaajanimi"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:141
-#, fuzzy
 msgid "You entered an invalid playername."
-msgstr "Antamasi pelaajanimi on virheellinen"
+msgstr "Antamasi pelaajanimi on virheellinen."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1125,7 +1124,7 @@ msgstr "Kaupankäynti"
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:37 horizons/i18n/guitranslations.py:364
 msgid "Settlement inventory"
-msgstr "Siirtokunnan tavaravalikko:"
+msgstr "Siirtokunnan tavaravalikko"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:77 horizons/i18n/guitranslations.py:318
@@ -1202,15 +1201,13 @@ msgstr "Rakenna asutuskeskus"
 
 # 91%
 #: horizons/gui/tabs/overviewtab.py:186
-#, fuzzy
 msgid "Load/Unload"
-msgstr "Ota kyytiin/pois:"
+msgstr "Ota kyytiin/pois"
 
 # 88%
 #: horizons/gui/tabs/overviewtab.py:189
-#, fuzzy
 msgid "Buy/Sell"
-msgstr "Osta/Myy:"
+msgstr "Osta/Myy"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1262,9 +1259,9 @@ msgstr "Päiväkirjaasi ei ole kirjoitettu vielä mitään!"
 
 # 83%
 #: horizons/gui/widgets/playerssettlements.py:42
-#, python-format, fuzzy
+#, python-format, 
 msgid "{player}'s settlements"
-msgstr "Pelaajan %(player)s siirtokunnat"
+msgstr "Pelaajan {player} siirtokunnat"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1274,9 +1271,9 @@ msgstr "Yhteensä"
 
 # 77%
 #: horizons/gui/widgets/playersships.py:45
-#, python-format, fuzzy
+#, python-format, 
 msgid "{player}'s ships"
-msgstr "Pelaajan %(player)s alukset"
+msgstr "Pelaajan {player} alukset"
 
 # 75%
 #. i18n There are no weapons equipped at the moment.
@@ -1291,9 +1288,9 @@ msgstr ""
 
 # 89%
 #: horizons/gui/widgets/productionoverview.py:49
-#, python-format, fuzzy
+#, python-format, 
 msgid "Production overview of {settlement}"
-msgstr "Siirtokunnassa %(settlement)s tuotetut resurssit"
+msgstr "Siirtokunnassa {settlement} tuotetut resurssit"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:74 horizons/i18n/guitranslations.py:663
@@ -1521,7 +1518,7 @@ msgstr "Tupakkatehdas: Valmistaa tupakkaa tupakanlehdistä."
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:141
 msgid "Toolmaker: Produces tools out of iron."
-msgstr "Työkalunvalmistaja: Valmistaa työkaluja raudasta."
+msgstr "Työkalujen valmistaja: Valmistaa työkaluja raudasta."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:146
@@ -1899,7 +1896,7 @@ msgstr "Eniten kaivattu resurssi:"
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:411
 #: horizons/i18n/guitranslations.py:440
 msgid "Residents per house"
-msgstr "Asukkaita per talo:"
+msgstr "Asukkaita per talo"
 
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py:382 horizons/i18n/guitranslations.py:413
@@ -2101,9 +2098,8 @@ msgstr "Vaihda aluksen nimi napsauttamalla tätä."
 # 95%
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
-#, fuzzy
 msgid "Configure trading route"
-msgstr "Muuta kauppareittiä:"
+msgstr "Muuta kauppareittiä"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2256,9 +2252,8 @@ msgstr ""
 # 87%
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:724
-#, fuzzy
 msgid "Weapons"
-msgstr "Aseet:"
+msgstr "Aseet"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:731
@@ -2287,63 +2282,58 @@ msgstr "Näppämistöasetukset"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Näytä rakennusvalikko"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Keskustelu"
+msgid "Show build menu"
+msgstr "Näytä rakennusvalikko"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Käännä rakennusta vasemmalle"
+msgid "Rotate building left"
+msgstr "Käännä rakennusta vasemmalle"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
-msgstr "{ALAS} = Vieritä alas"
+msgid "Scroll down"
+msgstr "Vieritä alas"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Näytä pysäytysvalikko"
+msgid "Show pause menu"
+msgstr "Näytä pysäytysvalikko"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Tuo esiin tämän ohjeen"
+msgid "Display help"
+msgstr "Tuo esiin tämän ohjeen"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Konsoli näkyviin/pois"
+msgid "Toggle console on/off"
+msgstr "Konsoli näkyviin/pois"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
-msgstr "{F2} = Näytä pelitulokset"
+msgid "Show player scores"
+msgstr "Näytä pelitulokset"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
-msgstr "{F3} = Näytä asukaslista"
+msgid "Show settlement list"
+msgstr "Näytä asukaslista"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
-msgstr "{F4} = Näytä lista aluksista"
+msgid "Show ship list"
+msgstr "Näytä lista aluksista"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Pikatallennus"
+msgid "Quicksave"
+msgstr "Pikatallennus"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Pikalataus"
+msgid "Quickload"
+msgstr "Pikalataus"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2352,13 +2342,13 @@ msgstr "FIFE ja Unknown Horizons -kehitysryhmät"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Ruudukko päälle/pois"
+msgid "Toggle grid on/off"
+msgstr "Ruudukko päälle/pois"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
-msgstr "{H} = Näytä koordinaatit (Debug)"
+msgid "Show coordinate values (Debug)"
+msgstr "Näytä koordinaatit (Debug)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
@@ -2367,68 +2357,68 @@ msgstr "Pidä hauskaa!"
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Avaa/sulje Kapteenin päiväkirja"
+msgid "Toggle Captain's log"
+msgstr "Avaa/sulje Kapteenin päiväkirja"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
-msgstr "{VASEN} = Vieritä vasemmalle"
+msgid "Scroll left"
+msgstr "Vieritä vasemmalle"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Hidasta pelin nopeutta"
+msgid "Decrease game speed"
+msgstr "Hidasta pelin nopeutta"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Pysäytä peli"
+msgid "Pause game"
+msgstr "Pysäytä peli"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Käännä rakennusta oikealle"
+msgid "Rotate building right"
+msgstr "Käännä rakennusta oikealle"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Kiihdytä pelin nopeutta"
+msgid "Increase game speed"
+msgstr "Kiihdytä pelin nopeutta"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
+msgid "Enable road building mode"
 msgstr ""
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{OIKEA} = Vieritä oikealle"
+msgid "Scroll right"
+msgstr "Vieritä oikealle"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Ota kuvakaappaus"
+msgid "Screenshot"
+msgstr "Ota kuvakaappaus"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Pidä pohjassa sijoittaaksesi useita rakennuksia"
+msgid "Hold to place multiple buildings"
+msgstr "Pidä pohjassa sijoittaaksesi useita rakennuksia"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
-msgstr "{T} = Muuta ympäristön läpikuultavuutta"
+msgid "Toggle translucency of ambient buildings"
+msgstr "Muuta ympäristön läpikuultavuutta"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{YLÖS} = Vieritä ylös"
+msgid "Scroll up"
+msgstr "Vieritä ylös"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Tuhoamistyökalu"
+msgid "Enable destruct mode"
+msgstr "Tuhoamistyökalu"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -2463,7 +2453,7 @@ msgstr "Jatka peliä"
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:826
 msgid "Loading ..."
-msgstr "Ladataan..."
+msgstr "Ladataan ..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:833
@@ -2860,15 +2850,14 @@ msgstr ""
 
 # 75%
 #: horizons/main.py:346
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find map '{name}'."
-msgstr "Virhe: Kenttää \"%s\" ei löytynyt."
+msgstr "Virhe: Kenttää \"{name}\" ei löytynyt."
 
 # 96%
 #: horizons/main.py:349 horizons/main.py:426
-#, fuzzy
 msgid "Error: Found multiple matches:"
-msgstr "Virhe: Löydettiin useita: "
+msgstr "Virhe: Löydettiin useita:"
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
@@ -2891,15 +2880,15 @@ msgstr ""
 # 78%
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign '{name}'."
-msgstr "Virhe: Ei löydy kampanjaa \"%s\"."
+msgstr "Virhe: Ei löydy kampanjaa \"{name}\"."
 
 # 78%
 #: horizons/main.py:423
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find savegame '{name}'."
-msgstr "Virhe: Ei löydetty tallennusta \"%s\"."
+msgstr "Virhe: Ei löydetty tallennusta \"{name}\"."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
@@ -2927,9 +2916,9 @@ msgstr ""
 # 81%
 # 78%
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario '{name}'."
-msgstr "Virhe: Tallennusta \"%s\" ei löytynyt."
+msgstr "Virhe: Tallennusta \"{name}\" ei löytynyt."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -2937,9 +2926,8 @@ msgstr "Voitit pelin!"
 
 # 97%
 #: horizons/scenario/actions.py:76
-#, fuzzy
 msgid "You have completed this scenario."
-msgstr "Olet tämän tämän kentän.  "
+msgstr "Olet tämän tämän kentän."
 
 # 75%
 #: horizons/scenario/actions.py:77
@@ -3220,8 +3208,8 @@ msgstr "Tarvitsemme kuitenkin tietoja lokitiedostosta:"
 #: run_uh.py:167
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
-"Annathan sen meille IRC-kanavallamme tai keskustelualueillamme, katso "
-"lisätietoja sivustoltamme osoitteesta unknown-horizons.org."
+"Annathan sen meille IRC-kanavallamme tai keskustelualueillamme, katso lisää "
+"sivustoltamme osoitteesta unknown-horizons.org ."
 
 #: run_uh.py:208
 msgid "Error: Unable to find required libraries"
@@ -3451,12 +3439,6 @@ msgstr "FIFE:ä ei löytynyt."
 
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Käännä karttaa myötäpäivään"
-
-#~ msgid "Decrease game speed"
-#~ msgstr "Hidasta pelin nopeutta"
-
-#~ msgid "Increase game speed"
-#~ msgstr "Kiihdytä pelin nopeutta"
 
 #~ msgid "capacity utilization"
 #~ msgstr "käyttöosuus"

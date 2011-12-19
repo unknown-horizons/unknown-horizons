@@ -2252,64 +2252,59 @@ msgstr "Asociere de taste"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Afișează meniul construcție"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Discuție"
+msgid "Show build menu"
+msgstr "Afișează meniul construcție"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Rotește clădirea în stânga"
+msgid "Rotate building left"
+msgstr "Rotește clădirea în stânga"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
 #, fuzzy
-msgid "{DOWN} = Scroll down"
-msgstr "{DOWN} = Deplasare în jos"
+msgid "Scroll down"
+msgstr "Deplasare în jos"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Afișează meniul-pauză"
+msgid "Show pause menu"
+msgstr "Afișează meniul-pauză"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Afișează ajutorul"
+msgid "Display help"
+msgstr "Afișează ajutorul"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Activează/Dezactivează consola"
+msgid "Toggle console on/off"
+msgstr "Activează/Dezactivează consola"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
-msgstr "{F2} = Afișează scorurile jucătorilor"
+msgid "Show player scores"
+msgstr "Afișează scorurile jucătorilor"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
-msgstr "{F3} = Afișează lista coloniilor"
+msgid "Show settlement list"
+msgstr "Afișează lista coloniilor"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
-msgstr "{F4} = Afișează lista navelor"
+msgid "Show ship list"
+msgstr "Afișează lista navelor"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Salvare de joc rapidă"
+msgid "Quicksave"
+msgstr "Salvare de joc rapidă"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Încărcare rapidă"
+msgid "Quickload"
+msgstr "Încărcare rapidă"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2319,13 +2314,13 @@ msgstr "Echipa de developare FIFE și Unknown Horizons"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Activează/Dezactivează grila"
+msgid "Toggle grid on/off"
+msgstr "Activează/Dezactivează grila"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
-msgstr "{H} = Afișează valorile coordonatelor (mod de testare / Debug)"
+msgid "Show coordinate values (Debug)"
+msgstr "Afișează valorile coordonatelor (mod de testare / Debug)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
@@ -2334,69 +2329,69 @@ msgstr "Distracție plăcută!"
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Afișează jurnalul de bord"
+msgid "Toggle Captain's log"
+msgstr "Afișează jurnalul de bord"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
 #, fuzzy
-msgid "{LEFT} = Scroll left"
-msgstr "{LEFT} = Deplasare în dreapta"
+msgid "Scroll left"
+msgstr "Deplasare în dreapta"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Reduce viteza jocului"
+msgid "Decrease game speed"
+msgstr "Reduce viteza jocului"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Suspendă jocul"
+msgid "Pause game"
+msgstr "Suspendă jocul"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Rotire clădire la dreapta"
+msgid "Rotate building right"
+msgstr "Rotire clădire la dreapta"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Sporește viteza jocului"
+msgid "Increase game speed"
+msgstr "Sporește viteza jocului"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
-msgstr "{R} = Activează modul de construcție a drumurilor"
+msgid "Enable road building mode"
+msgstr "Activează modul de construcție a drumurilor"
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{RIGHT} = Deplasare la dreapta"
+msgid "Scroll right"
+msgstr "Deplasare la dreapta"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Captură de ecran"
+msgid "Screenshot"
+msgstr "Captură de ecran"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Mențineți apăsat pentru plasări multiple"
+msgid "Hold to place multiple buildings"
+msgstr "Mențineți apăsat pentru plasări multiple"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
-msgstr "{T} = Schimbă activarea transparenței"
+msgid "Toggle translucency of ambient buildings"
+msgstr "Schimbă activarea transparenței"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{UP} = Deplasare în sus"
+msgid "Scroll up"
+msgstr "Deplasare în sus"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Activează modul distrucție"
+msgid "Enable destruct mode"
+msgstr "Activează modul distrucție"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -3428,12 +3423,6 @@ msgstr ""
 
 #~ msgid "Rotate map clockwise"
 #~ msgstr "rotiți harta în sens orar"
-
-#~ msgid "Decrease game speed"
-#~ msgstr "diminuați viteza jocului"
-
-#~ msgid "Increase game speed"
-#~ msgstr "sporiți viteza jocului"
 
 #~ msgid "Collector utilisation:"
 #~ msgstr "utilizarea colectorilor:"

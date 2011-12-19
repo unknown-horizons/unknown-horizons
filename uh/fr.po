@@ -2306,64 +2306,59 @@ msgstr "Associations de touches"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Afficher le menu construction"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Discuter"
+msgid "Show build menu"
+msgstr "Afficher le menu construction"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Tourner le bâtiment sur la gauche"
+msgid "Rotate building left"
+msgstr "Tourner le bâtiment sur la gauche"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
-msgstr "{BAS} = Déplacer vers le bas"
+msgid "Scroll down"
+msgstr "Déplacer vers le bas"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Afficher le menu pause"
+msgid "Show pause menu"
+msgstr "Afficher le menu pause"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Afficher l'aide"
+msgid "Display help"
+msgstr "Afficher l'aide"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Activer/Désactiver la console"
+msgid "Toggle console on/off"
+msgstr "Activer/Désactiver la console"
 
 # 92%
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
-msgstr "{F2} = Afficher les scores des joeurs"
+msgid "Show player scores"
+msgstr "Afficher les scores des joeurs"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
-msgstr "{F3} = Affiche la liste des colonies"
+msgid "Show settlement list"
+msgstr "Affiche la liste des colonies"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
-msgstr "{F4} = Affiche la liste des navires"
+msgid "Show ship list"
+msgstr "Affiche la liste des navires"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Sauvegarde rapide"
+msgid "Quicksave"
+msgstr "Sauvegarde rapide"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Chargement rapide"
+msgid "Quickload"
+msgstr "Chargement rapide"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2372,13 +2367,13 @@ msgstr "L'équipe du développement de FIFE et d'Unknown Horizons"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Activer/Désactiver la grille"
+msgid "Toggle grid on/off"
+msgstr "Activer/Désactiver la grille"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
-msgstr "{H} = Affiche la valeur des coordonnées (Debug)"
+msgid "Show coordinate values (Debug)"
+msgstr "Affiche la valeur des coordonnées (Debug)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
@@ -2387,68 +2382,68 @@ msgstr "Amusez-vous bien."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Afficher le journal de bord"
+msgid "Toggle Captain's log"
+msgstr "Afficher le journal de bord"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
-msgstr "{GAUCHE} = Déplacer vers la gauche"
+msgid "Scroll left"
+msgstr "Déplacer vers la gauche"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Réduire la vitesse du jeu"
+msgid "Decrease game speed"
+msgstr "Réduire la vitesse du jeu"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Suspendre la partie"
+msgid "Pause game"
+msgstr "Suspendre la partie"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Tourner le bâtiment sur la droite"
+msgid "Rotate building right"
+msgstr "Tourner le bâtiment sur la droite"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Augmenter la vitesse du jeu"
+msgid "Increase game speed"
+msgstr "Augmenter la vitesse du jeu"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
-msgstr "{R} = Activer le mode de construction de routes"
+msgid "Enable road building mode"
+msgstr "Activer le mode de construction de routes"
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{DROITE} = Déplacer vers la droite"
+msgid "Scroll right"
+msgstr "Déplacer vers la droite"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Capture de l'écran"
+msgid "Screenshot"
+msgstr "Capture de l'écran"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Maintenir pour placer plusieurs bâtiments"
+msgid "Hold to place multiple buildings"
+msgstr "Maintenir pour placer plusieurs bâtiments"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
-msgstr "{T} = Activer/Désactiver la transparence"
+msgid "Toggle translucency of ambient buildings"
+msgstr "Activer/Désactiver la transparence"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{HAUT} = Déplacer vers le haut"
+msgid "Scroll up"
+msgstr "Déplacer vers le haut"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Activer le mode destruction"
+msgid "Enable destruct mode"
+msgstr "Activer le mode destruction"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -3516,12 +3511,6 @@ msgstr "FIFE n'a pas été trouvé."
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Tourner la carte dans le sens horaire"
 
-#~ msgid "Decrease game speed"
-#~ msgstr "Baisser la vitesse du jeu"
-
-#~ msgid "Increase game speed"
-#~ msgstr "Augmenter la vitesse du jeu"
-
 #~ msgid "Collector utilisation:"
 #~ msgstr "Utilisation des collecteurs:"
 
@@ -3703,9 +3692,6 @@ msgstr "FIFE n'a pas été trouvé."
 
 #~ msgid "Leave player scores"
 #~ msgstr "Quitter le panneau des scores"
-
-#~ msgid "{R} = Show player scores"
-#~ msgstr "{R} = Afficher les scores "
 
 #~ msgid "Choose your opponents:"
 #~ msgstr "Choisissez vos opposants:"
