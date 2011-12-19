@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-11-05 04:28+0200\n"
+"PO-Revision-Date: 2011-12-18 02:22+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -695,9 +695,9 @@ msgstr ""
 
 # 86%
 #: horizons/engine.py:305
-#, python-format, fuzzy
+#, python-format, 
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr "A configuração da linguagem %(lang)s em %(place)s não pode ser aberta"
+msgstr "A configuração da linguagem {lang} em {place} não pode ser aberta"
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
@@ -768,9 +768,8 @@ msgstr "Nenhum jogo salvo"
 
 # 96%
 #: horizons/gui/gui.py:249
-#, fuzzy
 msgid "There are no saved games to load."
-msgstr "Não existem jogos salvos para abrir"
+msgstr "Não existem jogos salvos para abrir."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -871,15 +870,14 @@ msgstr "Nenhum arquivo selecionado"
 
 # 97%
 #: horizons/gui/gui.py:557
-#, fuzzy
 msgid "You need to select a savegame to delete."
-msgstr "Você precisa selecionar o jogo salvo para removê-lo"
+msgstr "Você precisa selecionar o jogo salvo para removê-lo."
 
 # 84%
 #: horizons/gui/gui.py:561
-#, python-format, fuzzy
+#, python-format, 
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Você realmente deseja remover o jogo salvo \"%s\"?"
+msgstr "Você realmente deseja remover o jogo salvo \"{name}\"?"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
@@ -980,9 +978,9 @@ msgstr ""
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
-#, python-format, fuzzy
+#, python-format, 
 msgid "Recommended number of players: {number}"
-msgstr "Número recomendado de jogadores: "
+msgstr "Número recomendado de jogadores: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
@@ -1011,9 +1009,8 @@ msgstr "Nome de jogador inválido"
 
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:141
-#, fuzzy
 msgid "You entered an invalid playername."
-msgstr "Você informou um nome de jogador inválido"
+msgstr "Você informou um nome de jogador inválido."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1197,15 +1194,13 @@ msgstr "Construir colônia"
 
 # 91%
 #: horizons/gui/tabs/overviewtab.py:186
-#, fuzzy
 msgid "Load/Unload"
-msgstr "Carregar/Descarregar:"
+msgstr "Carregar/Descarregar"
 
 # 88%
 #: horizons/gui/tabs/overviewtab.py:189
-#, fuzzy
 msgid "Buy/Sell"
-msgstr "Comprar/Vender:"
+msgstr "Comprar/Vender"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1217,9 +1212,8 @@ msgstr ""
 
 # 98%
 #: horizons/gui/tabs/overviewtab.py:205
-#, fuzzy
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr "Não é possível equipar um navio mercante com armas"
+msgstr "Não é possível equipar um navio mercante com armas."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
@@ -1999,9 +1993,8 @@ msgstr "Nome:"
 #. (tooltip of widget: collector_utilisation_label)
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:477 horizons/i18n/guitranslations.py:481
-#, fuzzy
 msgid "Collector utilisation"
-msgstr "Coletores utilizados:"
+msgstr "Coletores utilizados"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:568
@@ -2084,9 +2077,8 @@ msgstr "Clique para mudar o nome deste navio."
 # 95%
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
-#, fuzzy
 msgid "Configure trading route"
-msgstr "Configurar a rota comercial:"
+msgstr "Configurar a rota comercial"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2268,63 +2260,58 @@ msgstr "Atalhos"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Mostrar menu de construção"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Conversa"
+msgid "Show build menu"
+msgstr "Mostrar menu de construção"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
+msgid "Rotate building left"
 msgstr ""
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
+msgid "Scroll down"
 msgstr ""
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Mostrar menu de pausa"
+msgid "Show pause menu"
+msgstr "Mostrar menu de pausa"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Mostrar ajuda"
+msgid "Display help"
+msgstr "Mostrar ajuda"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Habilita/desabilita console"
+msgid "Toggle console on/off"
+msgstr "Habilita/desabilita console"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
+msgid "Show player scores"
 msgstr ""
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
+msgid "Show settlement list"
 msgstr ""
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
+msgid "Show ship list"
 msgstr ""
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Salvamento rápido"
+msgid "Quicksave"
+msgstr "Salvamento rápido"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Carregamento rápido"
+msgid "Quickload"
+msgstr "Carregamento rápido"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2333,12 +2320,12 @@ msgstr ""
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Habilita/desabilita grid"
+msgid "Toggle grid on/off"
+msgstr "Habilita/desabilita grid"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
+msgid "Show coordinate values (Debug)"
 msgstr ""
 
 #. (text of widget: lbl_have_fun)
@@ -2348,68 +2335,68 @@ msgstr "Divirta-se."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
+msgid "Toggle Captain's log"
 msgstr ""
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
+msgid "Scroll left"
 msgstr ""
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Diminuir velocidade do jogo"
+msgid "Decrease game speed"
+msgstr "Diminuir velocidade do jogo"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Pausar jogo"
+msgid "Pause game"
+msgstr "Pausar jogo"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
+msgid "Rotate building right"
 msgstr ""
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Aumentar velocidade do jogo"
+msgid "Increase game speed"
+msgstr "Aumentar velocidade do jogo"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
+msgid "Enable road building mode"
 msgstr ""
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
+msgid "Scroll right"
 msgstr ""
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Screenshot"
+msgid "Screenshot"
+msgstr "Screenshot"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Segure para posicionar múltiplas estruturas"
+msgid "Hold to place multiple buildings"
+msgstr "Segure para posicionar múltiplas estruturas"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
+msgid "Toggle translucency of ambient buildings"
 msgstr ""
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
+msgid "Scroll up"
 msgstr ""
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Habilita modo de destruição"
+msgid "Enable destruct mode"
+msgstr "Habilita modo de destruição"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -2842,15 +2829,14 @@ msgstr "O jogo salvo pode estar corropido ou foi salvo numa versão anterior."
 
 # 75%
 #: horizons/main.py:346
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find map '{name}'."
-msgstr "Erro: Impossível localizar mapa \"%s\"."
+msgstr "Erro: Impossível localizar mapa \"{name}\"."
 
 # 96%
 #: horizons/main.py:349 horizons/main.py:426
-#, fuzzy
 msgid "Error: Found multiple matches:"
-msgstr "Erro: Foram encontradas múltiplas ocorrências: "
+msgstr "Erro: Foram encontradas múltiplas ocorrências:"
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
@@ -2876,15 +2862,15 @@ msgstr ""
 # 78%
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign '{name}'."
-msgstr "Erro: Impossível localizar campanha \"%s\"."
+msgstr "Erro: Impossível localizar campanha \"{name}\"."
 
 # 78%
 #: horizons/main.py:423
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find savegame '{name}'."
-msgstr "Erro: Impossível localizar o jogo salvo \"%s\"."
+msgstr "Erro: Impossível localizar o jogo salvo \"{name}\"."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
@@ -2912,9 +2898,9 @@ msgstr ""
 # 81%
 # 78%
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find scenario '{name}'."
-msgstr "Erro: Não foi possível encontrar o cenário \"%s\"."
+msgstr "Erro: Não foi possível encontrar o cenário \"{name}\"."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -2922,9 +2908,8 @@ msgstr "Você venceu!"
 
 # 97%
 #: horizons/scenario/actions.py:76
-#, fuzzy
 msgid "You have completed this scenario."
-msgstr "Você completou este cenário. "
+msgstr "Você completou este cenário."
 
 # 75%
 #: horizons/scenario/actions.py:77
@@ -3392,12 +3377,6 @@ msgstr "FIFE não encontrado."
 
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Rotacionar o mapa no sentido do horário"
-
-#~ msgid "Decrease game speed"
-#~ msgstr "Diminuir a velocidade de jogo"
-
-#~ msgid "Increase game speed"
-#~ msgstr "Aumentar a velocidade de jogo"
 
 #~ msgid "Collector utilisation:"
 #~ msgstr "Coletores utilizados:"
