@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-19 17:00+0200\n"
+"PO-Revision-Date: 2011-12-19 17:13+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -1391,243 +1391,243 @@ msgstr "村の学校：　教育を提供します。"
 #. (tooltip of widget: weaver-1)
 #: horizons/i18n/guitranslations.py:106
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
+msgstr "機織り：　羊毛から布を作ります。"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:115
 msgid "Settler buildings"
-msgstr ""
+msgstr "入植者の建造物"
 
 #. (text of widget: mining_label)
 #: horizons/i18n/guitranslations.py:117
 msgid "Mining"
-msgstr ""
+msgstr "鉱山"
 
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:121
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "肉屋：　豚か牛が必要です。食糧を生産します。"
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:123
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "牛の放牧地：　牛を育てます。農場が必要です。"
 
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:125
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "炭焼き場：　板材から石炭を作ります。"
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:127
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "鉱山：　鉱床から鉱石を掘ります。"
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:129
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "豚小屋：　豚を育てます。農場が必要です。"
 
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:131
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "塩田：　塩を作ります。海岸沿いに建造してください。"
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:133
 msgid "Smeltery: Refines all kind of ores."
-msgstr ""
+msgstr "精錬所：　鉱石を精錬します。"
 
 #. (tooltip of widget: tavern-1)
 #: horizons/i18n/guitranslations.py:135
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "酒場：　住民の集いの場です。"
 
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:137
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "タバコ畑：　タバコを作ります。農場が必要です。"
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:139
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "タバコ屋：　タバコの葉からタバコを作ります。"
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:141
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "工具製作所：　鉄から工具を作ります。"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:146
 msgid "Game start"
-msgstr ""
+msgstr "ゲーム開始"
 
 #. (text of widget: howto_1_need_bo)
 #: horizons/i18n/guitranslations.py:148
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "建造物を建てる前に集落を作る必要があります。"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:150
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "船を選択して右クリックで海岸に近づけてください。"
 
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:152
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "そのあと、船の概要タブにある大きなボタンを押してください。"
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:159
 msgid "Running costs:"
-msgstr ""
+msgstr "運営費："
 
 #. (tooltip of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:703
 msgid "Inhabitants"
-msgstr ""
+msgstr "住民"
 
 #. (tooltip of widget: city_name)
 #: horizons/i18n/guitranslations.py:166
 msgid "Click to change the name of your settlement."
-msgstr ""
+msgstr "クリックすると集落の名前が変更できます。"
 
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:171
 msgid "Build menu (B)"
-msgstr ""
+msgstr "建築メニュー（B）"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:173
 msgid "Destroy (X)"
-msgstr ""
+msgstr "破壊（X）"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:175
 msgid "Diplomacy"
-msgstr ""
+msgstr "外交"
 
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:177
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "ゲームメニュー（Esc）"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "船長の航海日誌（L）"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "左回りに地図を回転（,）"
 
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:183
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "右回りに地図を回転（.）"
 
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "ゲームスピードを遅くする（-）"
 
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "ゲームスピードを速くする（+）"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
 msgid "Zoom in"
-msgstr ""
+msgstr "ズームイン"
 
 #. (tooltip of widget: zoomOut)
 #: horizons/i18n/guitranslations.py:191
 msgid "Zoom out"
-msgstr ""
+msgstr "ズームアウト"
 
 #. (tooltip of widget: boards_icon)
 #. (tooltip of widget: costs_004)
 #: horizons/i18n/guitranslations.py:196 horizons/i18n/guitranslations.py:272
 #: horizons/i18n/guitranslations.py:289
 msgid "Boards"
-msgstr ""
+msgstr "板材"
 
 #. (tooltip of widget: bricks_icon)
 #: horizons/i18n/guitranslations.py:198
 msgid "Bricks"
-msgstr ""
+msgstr "レンガ"
 
 #. (tooltip of widget: food_icon)
 #: horizons/i18n/guitranslations.py:200
 msgid "Food"
-msgstr ""
+msgstr "食糧"
 
 #. (tooltip of widget: textiles_icon)
 #: horizons/i18n/guitranslations.py:202
 msgid "Textiles"
-msgstr ""
+msgstr "織物"
 
 #. (tooltip of widget: tools_icon)
 #. (tooltip of widget: costs_006)
 #: horizons/i18n/guitranslations.py:204 horizons/i18n/guitranslations.py:274
 #: horizons/i18n/guitranslations.py:291
 msgid "Tools"
-msgstr ""
+msgstr "工具"
 
 #. (tooltip of widget: gold_icon)
 #: horizons/i18n/guitranslations.py:209
 msgid "Gold"
-msgstr ""
+msgstr "金"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:214
 msgid "Enter new name:"
-msgstr ""
+msgstr "新しい名前："
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:216
 msgid "Change name"
-msgstr ""
+msgstr "名前の変更"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: apply_new_nickname)
 #: horizons/i18n/guitranslations.py:218 horizons/i18n/guitranslations.py:902
 msgid "Apply the new name"
-msgstr ""
+msgstr "新しい名前に変更"
 
 #. (text of widget: chat_lbl)
 #: horizons/i18n/guitranslations.py:223
 msgid "Enter your message:"
-msgstr ""
+msgstr "メッセージを入力："
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:225
 msgid "Chat"
-msgstr ""
+msgstr "チャット"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:230
 msgid "Enter prefix:"
-msgstr ""
+msgstr "敬称の入力："
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
 msgid "Save map"
-msgstr ""
+msgstr "地図の保存"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "地図の保存"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
 msgid "Cancel building:"
-msgstr ""
+msgstr "建造の中止："
 
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:241
