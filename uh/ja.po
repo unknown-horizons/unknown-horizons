@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-19 16:42+0200\n"
+"PO-Revision-Date: 2011-12-19 17:00+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -1104,289 +1104,289 @@ msgstr "進化を禁止する"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
-msgstr ""
+msgstr "進化を許す"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:229
 #: horizons/i18n/guitranslations.py:409
 msgid "Sailors"
-msgstr ""
+msgstr "船乗り"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:235
 #: horizons/i18n/guitranslations.py:378
 msgid "Pioneers"
-msgstr ""
+msgstr "開拓者"
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #: horizons/gui/tabs/mainsquaretabs.py:241
 #: horizons/i18n/guitranslations.py:438 horizons/i18n/guitranslations.py:690
 msgid "Settlers"
-msgstr ""
+msgstr "入植者"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:54 horizons/gui/tabs/overviewtab.py:450
 #: horizons/i18n/guitranslations.py:555
 msgid "Overview"
-msgstr ""
+msgstr "概要"
 
 #: horizons/gui/tabs/overviewtab.py:111 horizons/gui/tabs/overviewtab.py:467
 msgid "Branch office overview"
-msgstr ""
+msgstr "支部の概要"
 
 #: horizons/gui/tabs/overviewtab.py:141 horizons/gui/tabs/overviewtab.py:269
 msgid "Ship overview"
-msgstr ""
+msgstr "船の概要"
 
 #: horizons/gui/tabs/overviewtab.py:149
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "集落を作るには島に近づく必要があります。"
 
 #: horizons/gui/tabs/overviewtab.py:154
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "この島にはすでに集落を作っています。"
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:162 horizons/i18n/guitranslations.py:592
 #: horizons/i18n/guitranslations.py:603
 msgid "Build settlement"
-msgstr ""
+msgstr "集落を作る"
 
 #: horizons/gui/tabs/overviewtab.py:186
 msgid "Load/Unload"
-msgstr ""
+msgstr "荷上げ／荷下ろし"
 
 #: horizons/gui/tabs/overviewtab.py:189
 msgid "Buy/Sell"
-msgstr ""
+msgstr "購入／販売"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
-msgstr ""
+msgstr "一番近い支部から離れすぎています"
 
 #: horizons/gui/tabs/overviewtab.py:204
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "交易船には武器を装備できません"
 
 #: horizons/gui/tabs/overviewtab.py:205
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "交易船に武器を装備することはできません。"
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
-msgstr ""
+msgstr "武器の装備"
 
 #: horizons/gui/tabs/overviewtab.py:243
 msgid "Unequip weapon"
-msgstr ""
+msgstr "武器の解除"
 
 #: horizons/gui/tabs/overviewtab.py:276
 msgid "Unit overview"
-msgstr ""
+msgstr "ユニットの概要"
 
 #: horizons/gui/tabs/overviewtab.py:295 horizons/gui/tabs/overviewtab.py:397
 msgid "Production overview"
-msgstr ""
+msgstr "生産の概要"
 
 #: horizons/gui/tabs/selectmultitab.py:52
 msgid "Selected Units"
-msgstr ""
+msgstr "選択したユニット"
 
 #: horizons/gui/widgets/buysellinventory.py:83
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "上限：　枠につき {amount}"
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
-msgstr ""
+msgstr "空"
 
 #: horizons/gui/widgets/logbook.py:157
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "航海日誌にはまだ何も書かれていません！"
 
 #: horizons/gui/widgets/playerssettlements.py:42
-#, python-format
+#, python-format, fuzzy
 msgid "{player}'s settlements"
-msgstr ""
+msgstr "{player} の集落"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
 #: horizons/i18n/guitranslations.py:692
 msgid "Total"
-msgstr ""
+msgstr "合計"
 
 #: horizons/gui/widgets/playersships.py:45
-#, python-format
+#, python-format, fuzzy
 msgid "{player}'s ships"
-msgstr ""
+msgstr "{player} の船"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: horizons/gui/widgets/playersships.py:88
 msgid "N/A"
-msgstr ""
+msgstr "取引なし"
 
 #: horizons/gui/widgets/productionoverview.py:49
 #, python-format
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "{settlement} の生産の概要"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:74 horizons/i18n/guitranslations.py:663
 msgid "Start route"
-msgstr ""
+msgstr "交易路の開設"
 
 #: horizons/gui/widgets/routeconfig.py:78
 msgid "Stop route"
-msgstr ""
+msgstr "交易路の廃止"
 
 #. (text of widget: headline)
 #: horizons/gui/widgets/routeconfig.py:245
 #: horizons/i18n/guitranslations.py:311
 msgid "Select resources:"
-msgstr ""
+msgstr "資源の選択："
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
-msgstr ""
+msgstr "なし"
 
 #. (text of widget: companies_label)
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:76
 #: horizons/i18n/guitranslations.py:111
 msgid "Companies"
-msgstr ""
+msgstr "機関"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:47
 msgid "Sailor buildings"
-msgstr ""
+msgstr "船乗りの建造物"
 
 #. (text of widget: residents_infra_label)
 #: horizons/i18n/guitranslations.py:49
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "住民とインフラ"
 
 #. (text of widget: services_label)
 #: horizons/i18n/guitranslations.py:51 horizons/i18n/guitranslations.py:84
 #: horizons/i18n/guitranslations.py:119
 msgid "Services"
-msgstr ""
+msgstr "公共施設"
 
 #. (tooltip of widget: church-1)
 #: horizons/i18n/guitranslations.py:53
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
+msgstr "パビリオン：　船乗りの進行を満たします。"
 
 #. (tooltip of widget: fisher-1)
 #: horizons/i18n/guitranslations.py:55
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
+msgstr "漁師：　魚を捕って、食糧を生産します。"
 
 #. (tooltip of widget: hunter-1)
 #: horizons/i18n/guitranslations.py:57
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "猟師：　森の動物を狩って、食糧を生産します。"
 
 #. (tooltip of widget: lighthouse-1)
 #: horizons/i18n/guitranslations.py:59
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
+msgstr "のろし：　自由交易船と交易できるようにします。"
 
 #. (tooltip of widget: lumberjack-1)
 #: horizons/i18n/guitranslations.py:61
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
+msgstr "伐採所：　木を切って板材を作ります。"
 
 #. (tooltip of widget: main_square-1)
 #: horizons/i18n/guitranslations.py:63
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
+msgstr "メイン広場：　市民に物品を提供します。"
 
 #. (tooltip of widget: resident-1)
 #: horizons/i18n/guitranslations.py:65
 msgid "Tent: Houses your inhabitants."
-msgstr ""
+msgstr "テント：　住民の住宅です。"
 
 #. (tooltip of widget: store-1)
 #: horizons/i18n/guitranslations.py:67
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
+msgstr "貯蔵庫：　貯蔵量を増やします。"
 
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
 msgid "Trail (R): Needed for collecting goods."
-msgstr ""
+msgstr "道（R）：　物品を集めるのに必要です。"
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
 msgid "Fields"
-msgstr ""
+msgstr "農地"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:80
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "開拓者の建造物"
 
 #. (text of widget: military_label)
 #: horizons/i18n/guitranslations.py:82
 msgid "Military"
-msgstr ""
+msgstr "軍事"
 
 #. (tooltip of widget: boat_builder-1)
 #: horizons/i18n/guitranslations.py:86
 msgid "Boat builder: Builds boats and small ships. Built on coast."
-msgstr ""
+msgstr "船大工：　手漕ぎ船と小舟を作ります。海岸沿いに建造してください。"
 
 #. (tooltip of widget: brickyard-1)
 #: horizons/i18n/guitranslations.py:88
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
+msgstr "レンガ工場：　粘土からレンガを作ります。"
 
 #. (tooltip of widget: clay-pit-1)
 #: horizons/i18n/guitranslations.py:90
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
+msgstr "粘土供給所：　貯蔵から粘土を取り出せます。"
 
 #. (tooltip of widget: distillery-1)
 #: horizons/i18n/guitranslations.py:92
 msgid "Distillery: Turns sugar into liquor."
-msgstr ""
+msgstr "蒸留酒製造所：　砂糖から酒を造ります。"
 
 #. (tooltip of widget: herder-1)
 #: horizons/i18n/guitranslations.py:94
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
+msgstr "農場：　作物を栽培し、家畜を育てます。"
 
 #. (tooltip of widget: pasture-1)
 #: horizons/i18n/guitranslations.py:96
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "牧場：　羊を育てます。羊毛を生産します。農場が必要です。"
 
 #. (tooltip of widget: potatofield-1)
 #: horizons/i18n/guitranslations.py:98
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
+msgstr "ジャガイモ畑：　食糧を生産します。農場が必要です。"
 
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:100
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr ""
+msgstr "サトウキビ畑：　酒の醸造に使います。農場が必要です。"
 
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:102
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "木製の要塞：　集落を防衛します。"
 
 #. (tooltip of widget: villageschool-1)
 #: horizons/i18n/guitranslations.py:104
 msgid "Village school: Provides education."
-msgstr ""
+msgstr "村の学校：　教育を提供します。"
 
 #. (tooltip of widget: weaver-1)
 #: horizons/i18n/guitranslations.py:106
