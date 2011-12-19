@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-19 13:56+0200\n"
+"PO-Revision-Date: 2011-12-19 14:41+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -835,16 +835,27 @@ msgid ""
 "TASK: Build at least one pasture in the farm's range and add potato fields if "
 "you like."
 msgstr ""
+"農場の有効範囲内に農地が来るようにしてください。\n"
+"\n"
+"複合生産ができます。ひとつの牧場では、農場の能力を100%"
+"使い切ることはできないでしょう。かといって、農場の能力を超えるほどの農地を作らないように気を付けましょう。\n"
+"\n"
+"農地の種類によって生産（種をまいて収穫したり、家畜を世話したり、など）のスピードは変わるため、農場はすべての農地から同じタイミングで原料を受け取れるわけ"
+"ではありません。\n"
+"\n"
+"今はまだ農地を作っていないので、このことについてそれほど気にする必要はありません。それではやってみましょう！\n"
+"\n"
+"任務：　農場の有効範囲内にひとつ以上の牧場を作る。お好みでジャガイモ畑も。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:100
 msgid "Build at least one pasture and add potato fields if you like."
-msgstr ""
+msgstr "ひとつ以上の牧場を作る。お好みでジャガイモ畑も。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:102
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "新しい任務：　貯蔵庫を作る"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
@@ -866,6 +877,16 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
+"ところで、最近、伐採所を見ていますか？\n"
+"\n"
+"支部は無限に物品を貯蔵できるわけではないので、一杯で貯めることができなくなると機関からの物品の収集は止まってしまいます。\n"
+"もし船乗りがテントを改築しなくなっているなら、板材の貯蔵が一杯になっていて、伐採所がストップしているのかもしれません。\n"
+"この状況を解決する方法はふたつあります。順に紹介しましょう。\n"
+"\n"
+"どの機関も生産を停止させることができます。\n"
+"変に思うかもしれませんが、たとえば、伐採所の概要タブで歯車をクリックしてみてください。\n"
+"\n"
+"この「休憩」モードをオンにすると（これを「停止」といいます）、建造物の運営費は減ります。ゼロにはなりませんが、生産し続けるよりは減るのです。"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
@@ -886,16 +907,27 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
+"つまり、一時的に機関が不要になって、取り壊したくないときは、お金を節約できるのです。\n"
+"\n"
+"もうひとつの方法は、第一の時代にある最後の建造物を作ることです。これまで出てこなかった、貯蔵庫です。\n"
+"\n"
+"貯蔵庫にはふたつの目的があります。\n"
+"* 物品をより多く貯蔵すること\n"
+"* 支部と同じように、住民が物品を取りに来る場を提供すること\n"
+"\n"
+"生産物を集められるように、機関は貯蔵庫につなげることができます。支部の貯蔵能力を超えてしまう状況は、貯蔵庫を置くことで解決できます。\n"
+"\n"
+"任務：　できれば物品の需要がある場所に貯蔵庫を作る。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:108
 msgid "Build a storage tent (increment I tab) where it makes sense."
-msgstr ""
+msgstr "（第一の時代のタブにある）貯蔵庫を、役に立つ場所に作る。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:110
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "新しい任務：　機織り場を作る"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
@@ -913,23 +945,32 @@ msgid ""
 "\n"
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
+"羊毛が生産され始めましたが、羊毛から布を作るにはさらに機織り場が必要です。\n"
+"\n"
+"機織り場の建築場所の候補はふたつあります。農場の近くか、貯蔵庫（または支部）の近くです。\n"
+"\n"
+"どちらの場合も道でつなぐのを忘れないようにしてください。\n"
+"\n"
+"農場の近くに作って、農場への道を撤去してしまっても羊毛は生産されて刈り取られることがわかるでしょう。\n"
+"\n"
+"任務：　羊毛が得られる場所に機織り場を作る。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:114
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr ""
+msgstr "羊毛が得られる農場につながる場所に機織り場を作る。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:116
 msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
-msgstr ""
+msgstr "住民が50人以上になればこのチュートリアルは完了です。収支が黒字になるようにしましょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:118
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "新しい任務：　チュートリアルを完了する"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
