@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-19 16:01+0200\n"
+"PO-Revision-Date: 2011-12-19 16:42+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -584,90 +584,90 @@ msgstr "入植者"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr ""
+msgstr "砂糖"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "サトウキビ"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr ""
+msgstr "コガモ"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "textile"
-msgstr ""
+msgstr "織物"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "タバコの葉"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "タバコ農園"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "タバコ"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tools"
-msgstr ""
+msgstr "工具"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "white"
-msgstr ""
+msgstr "白い"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wood"
-msgstr ""
+msgstr "木"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr ""
+msgstr "羊毛"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "yellow"
-msgstr ""
+msgstr "黄色い"
 
 #: horizons/engine.py:70
 msgid "Restart required"
-msgstr ""
+msgstr "再起動してください。"
 
 #: horizons/engine.py:71
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "変更を有効にするにはUnknown Horizonsを再起動してください。"
 
 #: horizons/engine.py:75
 msgid "Restore default settings"
-msgstr ""
+msgstr "初期設定に戻す"
 
 #: horizons/engine.py:76
 msgid "This will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "変更した設定はすべて保存されません。"
 
 #: horizons/engine.py:77
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "処理を続けますか？"
 
 #: horizons/engine.py:199
 msgid "System default"
-msgstr ""
+msgstr "初期値"
 
 #: horizons/engine.py:223
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine.py:225
@@ -676,394 +676,399 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDLレンダリングは代替手段であり、画像出力には相当の異常が見られます。\n"
+"自己責任で使ってください！"
 
 #: horizons/engine.py:305
 #, python-format
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr ""
+msgstr "{place} の設定言語 {lang} は読み込まれていません。"
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
-msgstr ""
+msgstr "無効なネットワークポートです。"
 
 #: horizons/engine.py:552
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr ""
+msgstr "指定したポートは無効です。1から65535までの数を指定してください。"
 
 #: horizons/engine.py:553
 msgid "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "入力したポートが範囲内にあるか確かめてください。"
 
 #: horizons/engine.py:565
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "新しいネットワーク設定が適用できませんでした。"
 
 #: horizons/engine.py:566 horizons/gui/modules/multiplayermenu.py:52
 msgid "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "現在の設定ではネットワーク機能の初期化ができません。"
 
 #: horizons/engine.py:567 horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "ネットワークの設定を確認してください。"
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine.py:571
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
-msgstr ""
+msgstr "小さいポート番号を使うには特別なアクセス権限が必要な場合があります。0か1024より大きな数を試してみてください。"
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:166 horizons/gui/ingamegui.py:519
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Error"
-msgstr ""
+msgstr "ゲームの保存中に問題が発生しました。"
 
 #: horizons/gui/gui.py:166
 msgid "Failed to save."
-msgstr ""
+msgstr "保存できませんでした。"
 
 #: horizons/gui/gui.py:191
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Unknown Horizonsを終了しますか？"
 
 #: horizons/gui/gui.py:192
 msgid "Quit Game"
-msgstr ""
+msgstr "ゲーム終了"
 
 #: horizons/gui/gui.py:198
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "実行中のセッションを中止しますか？"
 
 #: horizons/gui/gui.py:200
 msgid "Quit Session"
-msgstr ""
+msgstr "セッション終了"
 
 #: horizons/gui/gui.py:249
 msgid "No saved games"
-msgstr ""
+msgstr "保存されたゲームはありません"
 
 #: horizons/gui/gui.py:249
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "保存されたゲームはありません。"
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
 #: horizons/gui/gui.py:256 horizons/i18n/guitranslations.py:813
 #: horizons/i18n/guitranslations.py:839
 msgid "Load game"
-msgstr ""
+msgstr "ゲームの読み込み"
 
 #. (text of widget: savegame)
 #: horizons/gui/gui.py:256 horizons/i18n/guitranslations.py:817
 msgid "Save game"
-msgstr ""
+msgstr "ゲームの保存"
 
 #: horizons/gui/gui.py:315
 msgid "No filename given"
-msgstr ""
+msgstr "ファイル名が入力されていません"
 
 #: horizons/gui/gui.py:315
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "有効なファイル名を入力してください。"
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py:320
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "'{name}' という保存名はすでに存在します。"
 
 #: horizons/gui/gui.py:321
 msgid "Overwrite it?"
-msgstr ""
+msgstr "上書きしますか？"
 
 #: horizons/gui/gui.py:322
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "上書きの確認"
 
 #: horizons/gui/gui.py:330
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "保存されたゲームを選択するか、キャンセルしてください。"
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:330
 msgid "Select a savegame"
-msgstr ""
+msgstr "保存されたゲームの選択"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
 #: horizons/gui/gui.py:406 horizons/i18n/guitranslations.py:646
 #: horizons/i18n/guitranslations.py:972
 msgid "Details:"
-msgstr ""
+msgstr "詳細："
 
 #: horizons/gui/gui.py:407
 msgid "Error:"
-msgstr ""
+msgstr "エラー："
 
 #: horizons/gui/gui.py:510
 msgid "Unknown savedate"
-msgstr ""
+msgstr "保存日不明"
 
 #: horizons/gui/gui.py:513
 #, python-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "{time} に保存"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:520
-#, python-format
+#, python-format, , fuzzy
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
+msgstr[0] "{amount} 回保存"
 
 #: horizons/gui/gui.py:530
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "保存したゲームのバージョン {version}"
 
 #: horizons/gui/gui.py:534
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr ""
+msgstr "警告：　互換性のないバージョン {version}！"
 
 #: horizons/gui/gui.py:537
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "必要なバージョン {required}！"
 
 #: horizons/gui/gui.py:540
 msgid "Incompatible version"
-msgstr ""
+msgstr "互換性のないバージョン"
 
 #: horizons/gui/gui.py:557
 msgid "No file selected"
-msgstr ""
+msgstr "ファイルが選択されていません"
 
 #: horizons/gui/gui.py:557
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "削除するゲームを選んでください。"
 
 #: horizons/gui/gui.py:561
-#, python-format
+#, python-format, fuzzy
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "'{name}' を削除しますか？"
 
 #: horizons/gui/gui.py:563
 msgid "Confirm deletion"
-msgstr ""
+msgstr "削除の確認"
 
 #: horizons/gui/gui.py:568
 msgid "Error!"
-msgstr ""
+msgstr "エラー！"
 
 #: horizons/gui/gui.py:568
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "削除に失敗しました！"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:325
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "外交関係は結べません"
 
 #: horizons/gui/ingamegui.py:326
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "他のプレイヤーがいないため、外交関係は結べません。"
 
 #: horizons/gui/ingamegui.py:519
+#, fuzzy
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "有効なマップ名を入力してください： {expression}"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "pyenetが見つかりません"
 
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
-msgstr ""
+msgstr "マルチプレイには \"pyenet\" ライブラリが必要です。"
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Linuxをお使いの方は、パッケージ管理ツールからpyenetをインストールしてください。"
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr ""
+msgstr "Windowsをお使いの方は、現在、サポート対象外です。"
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "ネットワークの初期化ができませんでした。"
 
 #: horizons/gui/modules/multiplayermenu.py:101
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "致命的なネットワークエラー"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "マスターサーバーに接続できませんでした。"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
-msgstr ""
+msgstr "インターネット接続を確認してください。もし問題なければ、我々のマスターサーバーが一時的にダウンしています。"
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "ネットワークに問題が発生しました。"
 
 #: horizons/gui/modules/multiplayermenu.py:144
 msgid "Version differs!"
-msgstr ""
+msgstr "バージョンが違います！"
 
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "マップ： {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
-#, python-format
+#, python-format, fuzzy
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "プレイヤー： {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:176
-#, python-format
+#, python-format, fuzzy
 msgid "Creator: {player}"
-msgstr ""
+msgstr "作者： {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
-msgstr ""
+msgstr "バージョンが違います"
 
 #: horizons/gui/modules/multiplayermenu.py:195
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"あなたのゲームのバージョンは一致しません。マルチプレイでは、すべてのプレイヤーが同じバージョンでなければなりません。全員が最新版をインストールすれば問題"
+"は解決するでしょう。ゲームバージョン： {game_version}、あなたのバージョン： {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "推奨プレイヤー数： {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
 #: horizons/gui/widgets/choose_next_scenario.py:43
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "難易度： {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "作者： {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 #: horizons/gui/modules/singleplayermenu.py:122
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "説明： {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "Invalid player name"
-msgstr ""
+msgstr "無効なプレイヤー名"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "無効なプレイヤー名です。"
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
-msgstr ""
+msgstr "マップの大きさ："
 
 #: horizons/gui/modules/singleplayermenu.py:208
 msgid "Water:"
-msgstr ""
+msgstr "水域："
 
 #: horizons/gui/modules/singleplayermenu.py:216
 msgid "Max island size:"
-msgstr ""
+msgstr "最大の島の大きさ："
 
 #: horizons/gui/modules/singleplayermenu.py:224
 msgid "Preferred island size:"
-msgstr ""
+msgstr "推奨される島の大きさ："
 
 #: horizons/gui/modules/singleplayermenu.py:232
 msgid "Island size deviation:"
-msgstr ""
+msgstr "島の大きさのばらつき："
 
 #: horizons/gui/modules/singleplayermenu.py:254
 msgid "Resource density:"
-msgstr ""
+msgstr "資源の密度："
 
 #: horizons/gui/modules/singleplayermenu.py:281
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "無効なシナリオファイル"
 
 #: horizons/gui/modules/singleplayermenu.py:282
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "無効なシナリオファイルです。"
 
 #: horizons/gui/modules/singleplayermenu.py:283
 msgid "Error message:"
-msgstr ""
+msgstr "エラーメッセージ："
 
 #: horizons/gui/modules/singleplayermenu.py:284
 msgid "Please report this to the author."
-msgstr ""
+msgstr "作者に報告してください。"
 
 #. (text of widget: headline)
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:120
 #: horizons/i18n/guitranslations.py:157
 msgid "Build"
-msgstr ""
+msgstr "建築する"
 
 #: horizons/gui/mousetools/navigationtool.py:68
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "このヒントを消すにはHキーを押してください"
 
 #: horizons/gui/tabs/boatbuildertab.py:36
 msgid "Boat builder overview"
-msgstr ""
+msgstr "船大工の概要"
 
 #: horizons/gui/tabs/boatbuildertab.py:131
 msgid "Resources still needed:"
-msgstr ""
+msgstr "資源が必要です："
 
 #: horizons/gui/tabs/boatbuildertab.py:209
 msgid "Fisher boats"
-msgstr ""
+msgstr "漁船"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:219
 #: horizons/i18n/guitranslations.py:262
 msgid "Trade boats"
-msgstr ""
+msgstr "交易船"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:227
 #: horizons/i18n/guitranslations.py:279
 msgid "War boats"
-msgstr ""
+msgstr "軍船"
 
 #: horizons/gui/tabs/boatbuildertab.py:234
 msgid "War ships"
-msgstr ""
+msgstr "軍艦"
 
 #: horizons/gui/tabs/boatbuildertab.py:251
 msgid "Confirm order"
-msgstr ""
+msgstr "指令の確認"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "農地を作成する"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "時代"
 
 #. (text of widget: headline)
 #. (tooltip of widget: trade)
@@ -1071,31 +1076,31 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:579 horizons/i18n/guitranslations.py:594
 #: horizons/i18n/guitranslations.py:605
 msgid "Trade"
-msgstr ""
+msgstr "交易"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:37 horizons/i18n/guitranslations.py:364
 msgid "Settlement inventory"
-msgstr ""
+msgstr "集落の物品"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:77 horizons/i18n/guitranslations.py:318
 msgid "Account"
-msgstr ""
+msgstr "会計"
 
 #: horizons/gui/tabs/mainsquaretabs.py:104
 msgid "Main square overview"
-msgstr ""
+msgstr "メイン広場の概要"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:118
 #: horizons/gui/tabs/overviewtab.py:405 horizons/i18n/guitranslations.py:371
 msgid "Settler overview"
-msgstr ""
+msgstr "入植者の概要"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "進化を禁止する"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
