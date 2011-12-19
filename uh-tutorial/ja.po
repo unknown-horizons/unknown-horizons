@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-19 14:41+0200\n"
+"PO-Revision-Date: 2011-12-19 14:52+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -984,11 +984,16 @@ msgid ""
 "TASK: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"もっと住宅を作って、住民が50人以上になるようにしましょう。\n"
+"\n"
+"この人数の消費者を養うだけの経済をキープできれば、新たなUnknown Horizonsを発見できる支度ができるのです！\n"
+"\n"
+"任務：　住民を50人以上、収支を黒字にして、チュートリアルを完了します。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:122
 msgid "NO TASKS LEFT"
-msgstr "残りタスクなし"
+msgstr "残りの任務なし"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:124
@@ -1009,11 +1014,23 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"もう任務はありません。\n"
+"\n"
+"もし、このチュートリアルをもっと良くするためのアイデアがあるなら：\n"
+"www.unknown-horizons.org\n"
+"\n"
+"#unknown-horizons @  irc.freenode.net\n"
+"\n"
+"team@unknown-horizons.org\n"
+"\n"
+"連絡をお待ちしています！\n"
+"\n"
+"今のところ、IRCが一番やりとりが活発なので、できれば最初に試してみてください (^_-)"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:126
 msgid "Thanks!"
-msgstr "ありがとう!"
+msgstr "ありがとう！"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:128
@@ -1029,10 +1046,20 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"チュートリアルで遊んでくれてありがとうございました！\n"
+"\n"
+"UH チーム"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:130
 msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
-msgstr ""
+msgstr "おめでとうございます！　チュートリアルは完了しました。新しいことにチャレンジしてみましょう！"
