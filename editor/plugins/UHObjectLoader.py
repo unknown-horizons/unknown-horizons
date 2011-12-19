@@ -132,10 +132,11 @@ class UHObjectLoader(scripts.plugin.Plugin):
 			size_x, size_y = db("SELECT size_x, size_x FROM building WHERE id = ?", building_id)[0]
 			object = model.createObject(str(building_name), util.BUILDING_NAMESPACE)
 			fife.ObjectVisual.create(object)
-			util.addBuilding(building_id, building_name)
 
+			main_action = None
 			for (action_set_id,) in building_action_sets:
 				for action_id in all_action_sets[action_set_id].iterkeys():
+					main_action = action_id+"_"+str(action_set_id)
 					action = object.createAction(action_id+"_"+str(action_set_id))
 					fife.ActionVisual.create(action)
 					for rotation in all_action_sets[action_set_id][action_id].iterkeys():
@@ -153,6 +154,8 @@ class UHObjectLoader(scripts.plugin.Plugin):
 						anim = animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
 						action.get2dGfxVisual().addAnimation(int(rotation), anim)
 						action.setDuration(anim.getDuration())
+						
+			util.addBuilding(building_id, building_name, main_action)
 
 		print("finished loading UH objects")
 

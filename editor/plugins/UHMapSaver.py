@@ -21,6 +21,8 @@
 
 import fife.extensions.savers as mapSavers
 from horizons.util.dbreader import DbReader
+from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
+
 import horizons.main # necessary so the correct load order of all modules is guaranteed
 
 import scripts.editor
@@ -31,7 +33,7 @@ import shutil
 
 import util
 
-TEMPLATE_DATAFORMAT_PATH = os.path.join(util.getUHPath(),'content','savegame_template.sqlite')
+TEMPLATE_DATAFORMAT_PATH = os.path.join(util.getUHPath(), 'content', 'savegame_template.sql')
 
 class MapSaver:
 	def __init__(self, filepath, engine, map, importList):
@@ -48,7 +50,7 @@ class MapSaver:
 		instances = building_layer.getInstances()
 		for instance in instances:
 			type = util.getBuildingId(instance.getObject().getId())
-			rotation = instance.getRotation()
+			rotation = (instance.getRotation() + 45) % 360
 			position = instance.getLocationRef().getExactLayerCoordinates()
 			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
 			
@@ -72,18 +74,29 @@ class MapSaver:
 	def saveResource(self):
 		try:
 			savepath = self._filepath + '.saved.sqlite'
-			shutil.copy(TEMPLATE_DATAFORMAT_PATH, savepath)
+			if os.path.exists(savepath):
+				os.remove(savepath)
+			self._mapDatabase = self._create_db(savepath)
 		except IOError as exception:
 			print "Did not save map!"
 			raise exception
 		else:	
-			self._mapDatabase = DbReader(savepath)
 			# transaction save operations to gain performance
 			self._mapDatabase("BEGIN IMMEDIATE TRANSACTION")
 			self._saveBuildings()
 			self._mapDatabase("COMMIT TRANSACTION");
 			
 			print "Successfully saved " + savepath 
+	
+	def _create_db(self, savepath):
+		"""Returns a dbreader instance, that is connected to the main game data dbfiles.
+		NOTE: This data is read_only, so there are no concurrency issues"""
+		horizons.main.PATHS.SAVEGAME_TEMPLATE = os.path.join(util.getUHPath(), horizons.main.PATHS.SAVEGAME_TEMPLATE)
+
+		db = UhDbAccessor(savepath)
+		read_savegame_template(db)
+		return db
+
 	
 class UHMapSaver(scripts.plugin.Plugin):
 	""" The {UHMapSaver} allows to load the UH map format in FIFEdit

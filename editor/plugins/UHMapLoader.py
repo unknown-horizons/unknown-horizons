@@ -100,27 +100,108 @@ class MapLoader:
 		fife.CellSelectionRenderer.getInstance(cam).activateAllLayers(map)
 		fife.LightRenderer.getInstance(cam).activateAllLayers(map)
 		fife.GenericRenderer.getInstance(cam).activateAllLayers(map)
+		
+	def act(self, action, rotation, instance, layer, x, y):
+		instance.setRotation(rotation)
+
+		facing_loc = fife.Location(layer)
+		layer_coords = list((x, y, 0))
+
+		if rotation == 45:
+			layer_coords[0] = x+3
+		elif rotation == 135:
+			layer_coords[1] = y-3
+		elif rotation == 225:
+			layer_coords[0] = x-3
+		elif rotation == 315:
+			layer_coords[1] = y+3
+		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
+
+		instance.act(action, facing_loc, True)
 
 	def _loadIsland(self, ground_layer, model, ix, iy, file):
 		""" Loads an island from the given file """
 		island_db = DbReader(os.path.join(util.getUHPath(), file))
 
 		# load ground tiles
-		ground = island_db("SELECT x, y, ground_id FROM ground")
-		for (x, y, ground_id) in ground:
-			ground_tile = model.getObject(util.getGroundTileName(ground_id), util.GROUND_NAMESPACE)
-			position = fife.ModelCoordinate(ix + x, iy + y, 0)
+		ground = island_db("SELECT x, y, ground_id, action_id, rotation FROM ground")
+		for (x, y, ground_id, action_id, rotation) in ground:
+			groundTileName = util.getGroundTileName(ground_id)
+			ground_tile = model.getObject(groundTileName, util.GROUND_NAMESPACE)
+			x = ix + x
+			y = iy + y
+			position = fife.ModelCoordinate(x, y, 0)
 			inst = ground_layer.createInstance(ground_tile, position)
+			self.act(action_id+"_"+str(groundTileName), rotation, inst, ground_layer, x, y)
+			inst.setRotation(rotation)
 			fife.InstanceVisual.create(inst)
 
 	def _loadBuildings(self, building_layer, model, db):
 		""" Loads all buildings from the given db and places them on the map """
 		buildings = db("SELECT type, x, y, rotation FROM building")
-		for (type, x, y, rotation) in buildings:
-			object = model.getObject(util.getBuildingName(type), util.BUILDING_NAMESPACE)
-			position = fife.ModelCoordinate(x, y, 0)
-			inst = building_layer.createInstance(object, position)
+		for (id, x, y, rotation) in buildings:
+			name = util.getBuildingName(id)
+			object = model.getObject(name, util.BUILDING_NAMESPACE)
+			action_id = util.getBuildingActionId(id)
+			
+			facing_loc = fife.Location(building_layer)
+			instance_coords = list((x, y, 0))
+			layer_coords = list((x, y, 0))
+	
+			# NOTE:
+			# nobody actually knows how the code below works.
+			# it's for adapting the facing location and instance coords in
+			# different rotations, and works with all quadratic buildings (tested up to 4x4)
+			# for the first unquadratic building (2x4), a hack fix was put into it.
+			# the plan for fixing this code in general is to wait until there are more
+			# unquadratic buildings, and figure out a pattern of the placement error,
+			# then fix that generally.
+			
+			size = (3, 3)
+	
+			if rotation == 45:
+				layer_coords[0] = x+size[0]+3
+	
+				if size[0] == 2 and size[1] == 4:
+					# HACK: fix for 4x2 buildings
+					instance_coords[0] -= 1
+					instance_coords[1] += 1
+	
+			elif rotation == 135:
+				instance_coords[1] = y + size[1] - 1
+				layer_coords[1] = y-size[1]-3
+	
+				if size[0] == 2 and size[1] == 4:
+					# HACK: fix for 4x2 buildings
+					instance_coords[0] += 1
+					instance_coords[1] -= 1
+	
+			elif rotation == 225:
+				instance_coords = list(( x + size[0] - 1, y + size[1] - 1, 0))
+				layer_coords[0] = x-size[0]-3
+	
+				if size[0] == 2 and size[1] == 4:
+					# HACK: fix for 4x2 buildings
+					instance_coords[0] += 1
+					instance_coords[1] -= 1
+	
+			elif rotation == 315:
+				instance_coords[0] = x + size[0] - 1
+				layer_coords[1] = y+size[1]+3
+	
+				if size[0] == 2 and size[1] == 4:
+					# HACK: fix for 4x2 buildings
+					instance_coords[0] += 1
+					instance_coords[1] -= 1
+	
+			else:
+				return None
+			
+			inst = building_layer.createInstance(object, fife.ModelCoordinate(*instance_coords))
+			inst.setRotation(rotation)
+			facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 			fife.InstanceVisual.create(inst)
+			inst.act(action_id, facing_loc, True)
 
 class UHMapLoader(scripts.plugin.Plugin):
 	""" The B{UHMapLoader} allows to load the UH map format in FIFEdit """

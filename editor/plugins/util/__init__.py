@@ -31,9 +31,15 @@ def getUHPath():
 
 # Maps from ids to building names 
 buildingMap = {}
+# Maps from building names to ids
+reverseBuildingMap = {}
+# Maps from building id to action id
+buildinActionMap = {}
 # Maps from ids to ground tile names 
 # TODO (MMB) remove static creation with dynamic creation from UH code, or change Map format
 groundTileMap = { 0:'ts_deep0', 1:'ts_shallow0', 2:'ts_shallow-deep0', 3:'ts_grass0', 4:'ts_grass-beach0', 5:'ts_beach-shallow0', 6:'ts_beach0'};
+# Maps from ground tile names to ids
+reverseGroundTileMap = {}
 
 # Namespaces
 BUILDING_NAMESPACE = 'building'
@@ -47,21 +53,28 @@ def getBuildingName(id):
 	return buildingMap[id]
 
 def getBuildingId(name):
-	__getIdFromName(name, buildingMap)
+	return reverseBuildingMap[name]
 
-def addBuilding(id, name):
-	buildingMap[id] = name
-	
+def getBuildingActionId(id):
+	return buildinActionMap[id]
+
+def getGroundTileId(name):
+	return reverseGroundTileMap[name]
+
 def getGroundTileName(id):
-	return groundTileMap[id]	
+	return groundTileMap[id]
+	
+def addBuilding(id, name, action_id):
+	buildingMap[id] = name
+	reverseBuildingMap[name] = id
+	buildinActionMap[id] = action_id
 	
 def addGroundTile(id, name):
 	groundTileMap[id] = name
-	
-def getGroundTileId(name):
-	__getIdFromName(name, groundTileMap)
+	reverseGroundTileMap[name] = id
+
+def generateReverseGroundTileMap():
+	for key in groundTileMap:
+		reverseGroundTileMap[groundTileMap[key]] = key
 		
-def __getIdFromName(name, map):
-	for id, value in map.iteritems():
-		if value == name:
-			return id
+generateReverseGroundTileMap() 
