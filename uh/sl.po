@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-11-29 17:49+0200\n"
-"Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
+"PO-Revision-Date: 2011-12-19 03:07+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -2218,63 +2218,58 @@ msgstr "Tipkovne bližnjice"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{ B } = Pokaži meni gradnje"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{ C } = Klepet"
+msgid "Show build menu"
+msgstr "Pokaži meni gradnje"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Zavrti zgradbo levo"
+msgid "Rotate building left"
+msgstr "Zavrti zgradbo levo"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
-msgstr "{DOL} = Drsi navzdol"
+msgid "Scroll down"
+msgstr "Drsi navzdol"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ ESC } = Pokaži meni premora"
+msgid "Show pause menu"
+msgstr "Pokaži meni premora"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{ F1 } = Prikaži pomoč"
+msgid "Display help"
+msgstr "Prikaži pomoč"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{ F10 } = Preklopi vklop/izklop konzole"
+msgid "Toggle console on/off"
+msgstr "Preklopi vklop/izklop konzole"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
-msgstr "{F2} = Pokaži rezultate igralcev"
+msgid "Show player scores"
+msgstr "Pokaži rezultate igralcev"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
-msgstr "{F3} = Pokaži seznam naselbin"
+msgid "Show settlement list"
+msgstr "Pokaži seznam naselbin"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
-msgstr "{F4} = Pokaži seznam ladij"
+msgid "Show ship list"
+msgstr "Pokaži seznam ladij"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{ F5 } = Hitro shrani"
+msgid "Quicksave"
+msgstr "Hitro shrani"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{ F9 } = Hitro naloži"
+msgid "Quickload"
+msgstr "Hitro naloži"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2283,13 +2278,13 @@ msgstr "Razvojni ekipi FIFE in Unknown Horizons"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{ G } = Vklopi/izklopi mrežo"
+msgid "Toggle grid on/off"
+msgstr "Vklopi/izklopi mrežo"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
-msgstr "{H} = Pokaži vrednosti koordinat (razhroščevanje)"
+msgid "Show coordinate values (Debug)"
+msgstr "Pokaži vrednosti koordinat (razhroščevanje)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
@@ -2298,68 +2293,68 @@ msgstr "Zabavajte se."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Preklopi kapitanov dnevnik"
+msgid "Toggle Captain's log"
+msgstr "Preklopi kapitanov dnevnik"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
-msgstr "{LEVO} = Drsi levo"
+msgid "Scroll left"
+msgstr "Drsi levo"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Zmanjša hitrost igre"
+msgid "Decrease game speed"
+msgstr "Zmanjša hitrost igre"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{ P } = Premor igre"
+msgid "Pause game"
+msgstr "Premor igre"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Zavrti zgradbo desno"
+msgid "Rotate building right"
+msgstr "Zavrti zgradbo desno"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Poveča hitrost igre"
+msgid "Increase game speed"
+msgstr "Poveča hitrost igre"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
+msgid "Enable road building mode"
 msgstr ""
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{DESNO} = Drsi desno"
+msgid "Scroll right"
+msgstr "Drsi desno"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{ S } = Zaslonski posnetek"
+msgid "Screenshot"
+msgstr "Zaslonski posnetek"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{ SHIFT } = Držite za postavljanje več zgradb"
+msgid "Hold to place multiple buildings"
+msgstr "Držite za postavljanje več zgradb"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
-msgstr "{T} = Preklopi prozornost zgradb okolice"
+msgid "Toggle translucency of ambient buildings"
+msgstr "Preklopi prozornost zgradb okolice"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{GOR} = Drsi navzgor"
+msgid "Scroll up"
+msgstr "Drsi navzgor"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{ X } = Omogoči način uničenja"
+msgid "Enable destruct mode"
+msgstr "Omogoči način uničenja"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -3398,12 +3393,6 @@ msgstr "FIFE ni bilo mogoče najti."
 
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Zavrti zemljevid v smeri urinega kazalca"
-
-#~ msgid "Decrease game speed"
-#~ msgstr "Zmanjšaj hitrost igre"
-
-#~ msgid "Increase game speed"
-#~ msgstr "Povečaj hitrost igre"
 
 #~ msgid "Collector utilisation:"
 #~ msgstr "Učinkovitost zbiralcev:"

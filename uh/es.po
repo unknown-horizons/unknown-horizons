@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-11-24 07:02+0200\n"
-"Last-Translator: saiffe <saiffe@gmail.com>\n"
+"PO-Revision-Date: 2011-12-19 03:10+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -300,7 +300,7 @@ msgstr "Torre de madera"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "Tambien puedes arrastrar caminos"
+msgstr "Tambien puedes arrastrar caminos."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -903,15 +903,15 @@ msgstr ""
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
 "Usuarios Linux: Intenten instalar pyenet através de su administrador de "
-"paquetes"
+"paquetes."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr "Usuarios Windows: Actualmente no existe soporte razonable para Windos"
+msgstr "Usuarios Windows: Actualmente no existe soporte razonable para Windos."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
-msgstr "Fallo al inicializar conexión de red"
+msgstr "Fallo al inicializar conexión de red."
 
 #: horizons/gui/modules/multiplayermenu.py:101
 #: horizons/gui/modules/multiplayermenu.py:123
@@ -2231,63 +2231,58 @@ msgstr "Teclas de acceso"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Menú de construcción"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Chat"
+msgid "Show build menu"
+msgstr "Menú de construcción"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Rotar edificio a la izquierda"
+msgid "Rotate building left"
+msgstr "Rotar edificio a la izquierda"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
-msgstr "{ABAJO} = Scroll abajo"
+msgid "Scroll down"
+msgstr "Scroll abajo"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Menú de pausa"
+msgid "Show pause menu"
+msgstr "Menú de pausa"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Mostrar ayuda"
+msgid "Display help"
+msgstr "Mostrar ayuda"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Mostrar/Ocultar consola"
+msgid "Toggle console on/off"
+msgstr "Mostrar/Ocultar consola"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
-msgstr "{F2} = Muestra la puntuación del jugador"
+msgid "Show player scores"
+msgstr "Muestra la puntuación del jugador"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
-msgstr "{F3} = Muestra la lista de asentamientos"
+msgid "Show settlement list"
+msgstr "Muestra la lista de asentamientos"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
-msgstr "{F4} = Muestra la lista de barcos"
+msgid "Show ship list"
+msgstr "Muestra la lista de barcos"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Guardado rápido"
+msgid "Quicksave"
+msgstr "Guardado rápido"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Cargado rápido"
+msgid "Quickload"
+msgstr "Cargado rápido"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2296,12 +2291,12 @@ msgstr "Equipos de desarrollo de FIFE y Unknown Horizons"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Mostrar/Ocultar rejilla"
+msgid "Toggle grid on/off"
+msgstr "Mostrar/Ocultar rejilla"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
+msgid "Show coordinate values (Debug)"
 msgstr ""
 
 #. (text of widget: lbl_have_fun)
@@ -2311,68 +2306,68 @@ msgstr "Pásalo bien."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
+msgid "Toggle Captain's log"
 msgstr ""
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
-msgstr "{IZQUIERDA} = Scroll izquierda"
+msgid "Scroll left"
+msgstr "Scroll izquierda"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Reducir la velocidad de juego"
+msgid "Decrease game speed"
+msgstr "Reducir la velocidad de juego"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Pausa"
+msgid "Pause game"
+msgstr "Pausa"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Rotar edificio a la derecha"
+msgid "Rotate building right"
+msgstr "Rotar edificio a la derecha"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Incrementar la velocidad de juego"
+msgid "Increase game speed"
+msgstr "Incrementar la velocidad de juego"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
+msgid "Enable road building mode"
 msgstr ""
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{DERECHA} = Scroll derecha"
+msgid "Scroll right"
+msgstr "Scroll derecha"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Captura de pantalla"
+msgid "Screenshot"
+msgstr "Captura de pantalla"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Mantener para construir múltiples edificios"
+msgid "Hold to place multiple buildings"
+msgstr "Mantener para construir múltiples edificios"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
+msgid "Toggle translucency of ambient buildings"
 msgstr ""
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{ARRIBA} = Scroll arriba"
+msgid "Scroll up"
+msgstr "Scroll arriba"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Modo destrucción"
+msgid "Enable destruct mode"
+msgstr "Modo destrucción"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -3375,12 +3370,6 @@ msgstr "No se ha encontrado FIFE."
 
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Girar hacia la derecha del mapa"
-
-#~ msgid "Decrease game speed"
-#~ msgstr "Disminuir la velocidad del juego"
-
-#~ msgid "Increase game speed"
-#~ msgstr "Aumentar la velocidad del juego"
 
 #~ msgid "capacity utilization"
 #~ msgstr "Utilización de la capacidad"

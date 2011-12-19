@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-15 04:07+0200\n"
+"PO-Revision-Date: 2011-12-19 03:02+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -763,7 +763,7 @@ msgstr "Salvestatud mänge pole"
 # 96%
 #: horizons/gui/gui.py:249
 msgid "There are no saved games to load."
-msgstr "Laadimiseks pole salvestatud mänge"
+msgstr "Laadimiseks pole salvestatud mänge."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -779,7 +779,7 @@ msgstr "Salvesta mäng"
 
 #: horizons/gui/gui.py:315
 msgid "No filename given"
-msgstr "Faili nimi puudub."
+msgstr "Faili nimi puudub"
 
 #: horizons/gui/gui.py:315
 msgid "Please enter a valid filename."
@@ -864,7 +864,7 @@ msgstr "Faili pole valitud"
 # 97%
 #: horizons/gui/gui.py:557
 msgid "You need to select a savegame to delete."
-msgstr "Kustutamiseks pead valima salvestatud mängu"
+msgstr "Kustutamiseks pead valima salvestatud mängu."
 
 # 84%
 #: horizons/gui/gui.py:561
@@ -926,7 +926,7 @@ msgstr "Totaalne Võrgustiku Viga"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Could not connect to master server."
-msgstr "Peaserveriga ühendumine ebaõnnestus"
+msgstr "Peaserveriga ühendumine ebaõnnestus."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
@@ -1005,7 +1005,7 @@ msgstr "Vigane mängija nimi"
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "You entered an invalid playername."
-msgstr "Sa sisestasid vigase mängijanime"
+msgstr "Sa sisestasid vigase mängijanime."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1203,7 +1203,7 @@ msgstr "Liiga kaugel lähimast harukontorist"
 
 #: horizons/gui/tabs/overviewtab.py:204
 msgid "Cannot equip trade ship with weapons"
-msgstr "Kaubalaevale ei saa paigaldada relvastust."
+msgstr "Kaubalaevale ei saa paigaldada relvastust"
 
 #: horizons/gui/tabs/overviewtab.py:205
 msgid "It is not possible to equip a trade ship with weapons."
@@ -1394,7 +1394,7 @@ msgstr "Saviauk: Kaevandab savi lasundist."
 #. (tooltip of widget: distillery-1)
 #: horizons/i18n/guitranslations.py:92
 msgid "Distillery: Turns sugar into liquor."
-msgstr "Viinaköök: toodab suhkrust alkoholi"
+msgstr "Viinaköök: toodab suhkrust alkoholi."
 
 #. (tooltip of widget: herder-1)
 #: horizons/i18n/guitranslations.py:94
@@ -1414,7 +1414,7 @@ msgstr "Kartulipõld: Toodab sööki. Vajab talu."
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:100
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr "Suhkruroo väli: Kasutatakse alkoholi tootmiseks.Vajab talu"
+msgstr "Suhkruroo väli: Kasutatakse alkoholi tootmiseks.Vajab talu."
 
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:102
@@ -2818,9 +2818,8 @@ msgstr "Viga: Ei leita kaarti \"{name}\"."
 
 # 96%
 #: horizons/main.py:349 horizons/main.py:426
-#, fuzzy
 msgid "Error: Found multiple matches:"
-msgstr "Viga: Leiti mitu vastet: "
+msgstr "Viga: Leiti mitu vastet:"
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
@@ -2890,9 +2889,8 @@ msgstr "Sa oled võitnud!"
 
 # 97%
 #: horizons/scenario/actions.py:76
-#, fuzzy
 msgid "You have completed this scenario."
-msgstr "Sa läbisid selle stsenaariumi. "
+msgstr "Sa läbisid selle stsenaariumi."
 
 # 75%
 #: horizons/scenario/actions.py:77
