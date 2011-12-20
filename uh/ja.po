@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-20 17:00+0200\n"
+"PO-Revision-Date: 2011-12-20 17:41+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -2294,44 +2294,44 @@ msgstr "右にスクロール"
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
 msgid "Screenshot"
-msgstr ""
+msgstr "スクリーンショット"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
 msgid "Hold to place multiple buildings"
-msgstr ""
+msgstr "複数の建造物を作るには押しっぱなしにしてください"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "周囲の建造物を透明／不透明にする"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
 msgid "Scroll up"
-msgstr ""
+msgstr "上にスクロール"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
 msgid "Enable destruct mode"
-msgstr ""
+msgstr "破壊モードにする"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:806 horizons/i18n/guitranslations.py:963
 msgid "Return"
-msgstr ""
+msgstr "戻る"
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
 #: horizons/i18n/guitranslations.py:811 horizons/i18n/guitranslations.py:837
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #. (text of widget: quit)
 #: horizons/i18n/guitranslations.py:815
 msgid "Cancel game"
-msgstr ""
+msgstr "ゲームのキャンセル"
 
 #. (text of widget: settings)
 #. (text of widget: settings) Main / in-game menu entry
@@ -2339,339 +2339,339 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:819 horizons/i18n/guitranslations.py:843
 #: horizons/i18n/guitranslations.py:923
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #. (text of widget: start)
 #: horizons/i18n/guitranslations.py:821
 msgid "Return to game"
-msgstr ""
+msgstr "ゲームに戻る"
 
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:826
 msgid "Loading ..."
-msgstr ""
+msgstr "ロード中..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:833
 msgid "Attention please!"
-msgstr ""
+msgstr "ご注意ください！"
 
 #. (text of widget: credits)
 #: horizons/i18n/guitranslations.py:835
 msgid "Credits"
-msgstr ""
+msgstr "クレジット"
 
 #. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py:841
 msgid "Quit"
-msgstr ""
+msgstr "終了"
 
 #. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
 #: horizons/i18n/guitranslations.py:845
 msgid "Singleplayer"
-msgstr ""
+msgstr "シングルプレイ"
 
 #. (text of widget: start_multi) Opens widget to join or create multiplayer games
 #: horizons/i18n/guitranslations.py:847
 msgid "Multiplayer"
-msgstr ""
+msgstr "マルチプレイ"
 
 #. (text of widget: create_game_lbl)
 #: horizons/i18n/guitranslations.py:854 horizons/i18n/guitranslations.py:888
 msgid "Create game:"
-msgstr ""
+msgstr "ゲームの作成："
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:856
 msgid "Back:"
-msgstr ""
+msgstr "戻る："
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:858
 msgid "Choose a map:"
-msgstr ""
+msgstr "マップの選択："
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:860
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "ゲームの作成　マルチプレイ"
 
 #. (text of widget: mp_player_limit_lbl)
 #: horizons/i18n/guitranslations.py:862
 msgid "Player limit:"
-msgstr ""
+msgstr "プレイヤーの最大数："
 
 #. (tooltip of widget: create)
 #: horizons/i18n/guitranslations.py:864
 msgid "Create this new game"
-msgstr ""
+msgstr "このゲームを始める"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:866
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "マルチプレイのメニューを閉じる"
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:871
 msgid "Leave:"
-msgstr ""
+msgstr "戻る："
 
 #. (text of widget: game_start_notice)
 #: horizons/i18n/guitranslations.py:873
 msgid "The game will start as soon as enough players have joined."
-msgstr ""
+msgstr "十分なプレイヤーが集まるとゲームは始まります。"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:875
 msgid "Chat:"
-msgstr ""
+msgstr "チャット："
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:877
 msgid "Gamelobby"
-msgstr ""
+msgstr "ロビー"
 
 #. (text of widget: startmessage)
 #: horizons/i18n/guitranslations.py:879
 msgid "Game details:"
-msgstr ""
+msgstr "ゲームの詳細："
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:881
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "ロビーから出る"
 
 #. (text of widget: active_games_lbl)
 #: horizons/i18n/guitranslations.py:886
 msgid "Active games:"
-msgstr ""
+msgstr "ゲーム一覧："
 
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
 #: horizons/i18n/guitranslations.py:890 horizons/i18n/guitranslations.py:987
 msgid "Main menu:"
-msgstr ""
+msgstr "メインメニュー"
 
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:892
 msgid "Only show games with the same version:"
-msgstr ""
+msgstr "同じバージョンのゲームを表示："
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:894
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "新規ゲーム　マルチプレイ"
 
 #. (text of widget: join_game_lbl)
 #: horizons/i18n/guitranslations.py:896
 msgid "Join game"
-msgstr ""
+msgstr "ゲームに参加"
 
 #. (text of widget: name_lbl)
 #: horizons/i18n/guitranslations.py:898
 msgid "Apply:"
-msgstr ""
+msgstr "適用："
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:900
 msgid "Refresh list:"
-msgstr ""
+msgstr "更新："
 
 #. (tooltip of widget: create)
 #: horizons/i18n/guitranslations.py:904
 msgid "Create a new game"
-msgstr ""
+msgstr "新しくゲームを始める"
 
 #. (tooltip of widget: join)
 #: horizons/i18n/guitranslations.py:906
 msgid "Join the selected game"
-msgstr ""
+msgstr "選んだゲームに参加する"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:908 horizons/i18n/guitranslations.py:1001
 msgid "Exit to main menu"
-msgstr ""
+msgstr "メインメニューに戻る"
 
 #. (tooltip of widget: refresh)
 #: horizons/i18n/guitranslations.py:910
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "ゲーム一覧を更新"
 
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:915
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "自動セーブ間隔（分）："
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:917
 msgid "Color depth:"
-msgstr ""
+msgstr "色深度："
 
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:919
 msgid "Enable edge scrolling:"
-msgstr ""
+msgstr "ウィンドウの端でスクロールする："
 
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py:921
 msgid "Effects volume:"
-msgstr ""
+msgstr "効果音の音量："
 
 #. (text of widget: headline_graphics)
 #: horizons/i18n/guitranslations.py:925
 msgid "Graphics"
-msgstr ""
+msgstr "グラフィック"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py:927
 msgid "Language"
-msgstr ""
+msgstr "言語"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:929
 msgid "Network"
-msgstr ""
+msgstr "ネットワーク"
 
 #. (text of widget: headline_saving)
 #: horizons/i18n/guitranslations.py:931
 msgid "Saving"
-msgstr ""
+msgstr "セーブ"
 
 #. (text of widget: headline_sound)
 #: horizons/i18n/guitranslations.py:933
 msgid "Sound"
-msgstr ""
+msgstr "音"
 
 #. (text of widget: language_label)
 #: horizons/i18n/guitranslations.py:935
 msgid "Select language:"
-msgstr ""
+msgstr "言語："
 
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:937
 msgid "Enable minimap rotation:"
-msgstr ""
+msgstr "ミニマップを回転する："
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:939
 msgid "Music volume:"
-msgstr ""
+msgstr "BGMの音量："
 
 #. (text of widget: network_port_hint_lbl)
 #: horizons/i18n/guitranslations.py:941
 msgid "(0 means default)"
-msgstr ""
+msgstr "（0にすると初期値になる）"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:943
 msgid "Network port:"
-msgstr ""
+msgstr "ネットワークポート："
 
 #. (text of widget: number_of_autosaves_label)
 #: horizons/i18n/guitranslations.py:945
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "オートセーブの数："
 
 #. (text of widget: number_of_quicksaves_label)
 #: horizons/i18n/guitranslations.py:947
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "クイックセーブの数："
 
 #. (text of widget: screen_fullscreen_text)
 #: horizons/i18n/guitranslations.py:949
 msgid "Full screen:"
-msgstr ""
+msgstr "フルスクリーン："
 
 #. (text of widget: screen_resolution_label)
 #: horizons/i18n/guitranslations.py:951
 msgid "Screen resolution:"
-msgstr ""
+msgstr "解像度："
 
 #. (text of widget: sound_enable_opt_text)
 #: horizons/i18n/guitranslations.py:953
 msgid "Enable sound:"
-msgstr ""
+msgstr "音を鳴らす："
 
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:955
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "中断されない建造："
 
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:957
 msgid "Used renderer:"
-msgstr ""
+msgstr "レンダリング："
 
 #. (text of widget: warning)
 #: horizons/i18n/guitranslations.py:959
 msgid "Please make sure that you know what you do."
-msgstr ""
+msgstr "することを確認してください。"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:961
 msgid "Apply"
-msgstr ""
+msgstr "適用"
 
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:965
 msgid "Reset to default settings"
-msgstr ""
+msgstr "初期値に戻す"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:970
 msgid "Enter filename:"
-msgstr ""
+msgstr "ファイル名："
 
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:974
 msgid "Your saved games:"
-msgstr ""
+msgstr "セーブしたゲーム："
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: okay)
 #: horizons/i18n/guitranslations.py:976 horizons/i18n/guitranslations.py:999
 msgid "Start game"
-msgstr ""
+msgstr "ゲームの開始"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:978
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:980
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "セーブしたゲームの削除"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:985
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "新規ゲーム　シングルプレイ"
 
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py:989
 msgid "Start game:"
-msgstr ""
+msgstr "ゲーム開始："
 
 #. (text of widget: campaign)
 #: horizons/i18n/guitranslations.py:991
 msgid "Campaign"
-msgstr ""
+msgstr "キャンペーン"
 
 #. (text of widget: free_maps)
 #: horizons/i18n/guitranslations.py:993
 msgid "Free play"
-msgstr ""
+msgstr "フリープレイ"
 
 #. (text of widget: random)
 #: horizons/i18n/guitranslations.py:995
 msgid "Random map"
-msgstr ""
+msgstr "ランダムマップ"
 
 #. (text of widget: scenario)
 #: horizons/i18n/guitranslations.py:997
 msgid "Scenario"
-msgstr ""
+msgstr "シナリオ"
 
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
@@ -2679,275 +2679,275 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:1006 horizons/i18n/guitranslations.py:1011
 #: horizons/i18n/guitranslations.py:1021
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "プレイするマップ："
 
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:1016
 msgid "Map settings:"
-msgstr ""
+msgstr "マップの設定："
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1026
 msgid "AI players:"
-msgstr ""
+msgstr "AIプレイヤー："
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:1031
 msgid "Game settings:"
-msgstr ""
+msgstr "ゲーム設定："
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1033
 msgid "Free Trader"
-msgstr ""
+msgstr "自由交易船"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1035
 msgid "Pirates"
-msgstr ""
+msgstr "海賊"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:1040
 msgid "Color:"
-msgstr ""
+msgstr "色："
 
 #. (text of widget: player_label)
 #: horizons/i18n/guitranslations.py:1042
 msgid "Player name:"
-msgstr ""
+msgstr "プレイヤー名："
 
 #: horizons/main.py:87
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
-msgstr ""
+msgstr "エラー：　--mp-masterオプションが不正です。ポート番号は1から65535までの数を指定してください。"
 
 #: horizons/main.py:99
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
-msgstr ""
+msgstr "エラー：　--mp-bindオプションが不正です。ポート番号は1から65535までの数を指定してください。"
 
 #: horizons/main.py:252
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "ゲームの開始／ロードができませんでした。"
 
 #: horizons/main.py:253
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "選択したゲームを開始できませんでした。"
 
 #: horizons/main.py:254
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
+msgstr "セーブデータが壊れているか、古いバージョンです。"
 
 #: horizons/main.py:346
 #, python-format
 msgid "Error: Cannot find map '{name}'."
-msgstr ""
+msgstr "エラー：　マップ '{name}' が見つかりません。"
 
 #: horizons/main.py:349 horizons/main.py:426
 msgid "Error: Found multiple matches:"
-msgstr ""
+msgstr "エラー：　候補が複数あります："
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr ""
+msgstr "エラー：　キャンペーンファイルは \".yaml\" で終わる名前にしてください。"
 
 #: horizons/main.py:381
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
-msgstr ""
+msgstr "技術的な理由から、キャンペーンファイルはUHキャンペーンディレクトリ（{path}）にコピーしてください。"
 
 #: horizons/main.py:382
 msgid "This means that changes in the file you specified will not apply to the game directly."
-msgstr ""
+msgstr "ファイルへの変更はすぐにはゲームに反映されません。"
 
 #: horizons/main.py:384
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
-msgstr ""
+msgstr "変更を確認するには、今の設定でUHを起動するかファイル {filename} を編集してください。"
 
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "エラー：　キャンペーン '{name}' が見つかりません。"
 
 #: horizons/main.py:423
 #, python-format
 msgid "Error: Cannot find savegame '{name}'."
-msgstr ""
+msgstr "エラー：　セーブデータ '{name}' が見つかりません。"
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
-msgstr ""
+msgstr "エラー：　クイックセーブはありません。"
 
 #: horizons/mpsession.py:53 horizons/mpsession.py:67 horizons/mpsession.py:69
 #: horizons/mpsession.py:71 horizons/mpsession.py:73
 msgid "Not possible"
-msgstr ""
+msgstr "不可能"
 
 #: horizons/mpsession.py:53
 msgid "You cannot change the speed of a multiplayer game"
-msgstr ""
+msgstr "マルチプレイではゲームスピードは変更できません"
 
 #: horizons/mpsession.py:67 horizons/mpsession.py:69 horizons/mpsession.py:71
 #: horizons/mpsession.py:73
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "マルチプレイのセーブ／ロードはまだできません"
 
 #: horizons/savegamemanager.py:379
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "エラー：　状態 {condition} に対応できません。"
 
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "エラー：　シナリオ '{name}' が見つかりません。"
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
-msgstr "あなたの勝ちです!"
+msgstr "あなたの勝ちです！"
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "シナリオを完了しました。"
 
 #: horizons/scenario/actions.py:77
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "続けてプレイしますか？"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
 msgid "unknown"
-msgstr ""
+msgstr "未知"
 
 #: horizons/spsession.py:124
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "クイックセーブに失敗しました。"
 
 #: horizons/spsession.py:125
 msgid "An error happened during quicksave. Your game has not been saved."
-msgstr ""
+msgstr "クイックセーブ中にエラーが発生しました。セーブされませんでした。"
 
 #: horizons/spsession.py:126
 msgid "If this error happens again, please contact the development team:"
-msgstr ""
+msgstr "このエラーが続けて出る場合は、開発チームに報告をお願いします："
 
 #: horizons/spsession.py:134
 msgid "No quicksaves found"
-msgstr ""
+msgstr "クイックセーブがありません"
 
 #: horizons/spsession.py:134
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "クイックロードの前にクイックセーブが必要です。"
 
 #. usually invalid filename
 #: horizons/spsession.py:160
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "セーブデータが作成できませんでした"
 
 #: horizons/spsession.py:161
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "セーブファイルの作成中にエラーが発生しました。"
 
 #: horizons/spsession.py:162
 msgid "This usually means that the savegame name contains unsupported special characters."
-msgstr ""
+msgstr "セーブの名前に未対応の文字が含まれている可能性があります。"
 
 #: horizons/spsession.py:168
 msgid "File used by another process"
-msgstr ""
+msgstr "ファイルが他のプロセスで使われています"
 
 #: horizons/spsession.py:169
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "セーブファイルが他のプログラムで使われています。"
 
 #: horizons/util/uhdbaccessor.py:164
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "交易相手は販売していません。"
 
 #: horizons/world/tradepost.py:162
 msgid "You can not store this."
-msgstr ""
+msgstr "貯蔵できません。"
 
 #: horizons/world/tradepost.py:169
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "資金が足りません。"
 
 #: horizons/world/tradepost.py:178
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "交易相手はこれ以上販売していません。"
 
 #: horizons/world/tradepost.py:198
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "交易相手は購入しません。"
 
 #: horizons/world/tradepost.py:209
 msgid "You do not possess this."
-msgstr ""
+msgstr "所有できません。"
 
 #: horizons/world/tradepost.py:217
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "交易相手はこれ以上貯蔵できません。"
 
 #: horizons/world/tradepost.py:224
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "交易相手の資金が足りません。"
 
 #: horizons/world/tradepost.py:231
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "交易相手はこれ以上購入しません。"
 
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "交易路：　{location} 行"
 
 #: horizons/world/units/ship.py:276
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "交易路：　{position} 停泊"
 
 #: horizons/world/units/ship.py:482
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "{location} 行"
 
 #: horizons/world/units/ship.py:484
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "{x}, {y} に移動"
 
 #: horizons/world/units/ship.py:489
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "{location} に停止中"
 
 #: horizons/world/units/ship.py:491
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "{x}, {y} に停止中"
 
 #: horizons/world/units/weaponholder.py:440
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "{target} '{name}' ({owner}) を攻撃"
 
 #: horizons/world/units/weaponholder.py:445
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "{owner} を攻撃"
 
 #: run_uh.py:80
 msgid "Enable debug output to stderr and a logfile."
-msgstr ""
+msgstr "stderrとログファイルにデバッグ出力する。"
 
 #: run_uh.py:82
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "パスをFIFEのルートディレクトリにする。"
 
 #: run_uh.py:84
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
