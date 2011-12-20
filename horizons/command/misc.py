@@ -26,7 +26,8 @@ class Chat(Command):
 		self.message = unicode(message)
 
 	def __call__(self, issuer):
-		msg = unicode(issuer.name) + u": " + self.message
+		#xgettext:python-format
+		msg = _('{name}: {chatmessage}').format(name=issuer.name, chatmessage=self.message)
 		issuer.session.ingame_gui.message_widget.add_custom(None, None, msg)
 
 Command.allow_network(Chat)
