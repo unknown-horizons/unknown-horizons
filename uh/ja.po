@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-19 17:13+0200\n"
+"PO-Revision-Date: 2011-12-20 16:41+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -404,7 +404,7 @@ msgstr "粘土"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay deposit"
-msgstr "粘土の貯蔵"
+msgstr "粘土の鉱床"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1632,43 +1632,43 @@ msgstr "建造の中止："
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:241
 msgid "(lose all resources)"
-msgstr ""
+msgstr "（すべての資源を失いました）"
 
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py:243
 msgid "Currently building:"
-msgstr ""
+msgstr "建造中："
 
 #. (text of widget: BB_howto_build_lbl)
 #: horizons/i18n/guitranslations.py:245
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
-msgstr ""
+msgstr "船を作るには、クラスのタブをクリックして、作りたい船を選んでください。"
 
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
 #: horizons/i18n/guitranslations.py:247
 msgid "Construction progress:"
-msgstr ""
+msgstr "建造の進行度："
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:249 horizons/i18n/guitranslations.py:351
 #: horizons/i18n/guitranslations.py:500
 msgid "Building overview"
-msgstr ""
+msgstr "建造物の概要"
 
 #. (tooltip of widget: BB_cancel_button) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:251
 msgid "Cancel all building progress"
-msgstr ""
+msgstr "すべての建造を中止する"
 
 #. (tooltip of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 #: horizons/i18n/guitranslations.py:253
 msgid "Pause"
-msgstr ""
+msgstr "一時停止"
 
 #. (tooltip of widget: toggle_active_inactive) Resumes the currently paused ship production
 #: horizons/i18n/guitranslations.py:255
 msgid "Resume"
-msgstr ""
+msgstr "再開"
 
 #. (tooltip of widget: running_costs_label)
 #. (text of widget: running_costs_label)
@@ -1685,113 +1685,113 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:504 horizons/i18n/guitranslations.py:508
 #: horizons/i18n/guitranslations.py:705
 msgid "Running costs"
-msgstr ""
+msgstr "運営費"
 
 #. (tooltip of widget: BB_build_trade_1)
 #. (tooltip of widget: BB_build_war1_1)
 #: horizons/i18n/guitranslations.py:266 horizons/i18n/guitranslations.py:283
 msgid "Build this ship!"
-msgstr ""
+msgstr "この船を作る"
 
 #. (tooltip of widget: costs_001)
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py:268 horizons/i18n/guitranslations.py:285
 #: horizons/i18n/guitranslations.py:684
 msgid "Money"
-msgstr ""
+msgstr "お金"
 
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
 msgid "Cloth"
-msgstr ""
+msgstr "布"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "大砲"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298
 msgid "Buy resources"
-msgstr ""
+msgstr "資源を購入する"
 
 #. (text of widget: buysell_help_label)
 #: horizons/i18n/guitranslations.py:300
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "モードを切り替えるには枠のアイコンをクリック："
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:302
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "資源の購入／販売"
 
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:304
 msgid "Trade history"
-msgstr ""
+msgstr "交易の記録"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:306
 msgid "Sell resources"
-msgstr ""
+msgstr "資源を販売する"
 
 #. (text of widget: buy_expenses_label)
 #. (text of widget: buying_label)
 #: horizons/i18n/guitranslations.py:316 horizons/i18n/guitranslations.py:488
 #: horizons/i18n/guitranslations.py:562
 msgid "Buying"
-msgstr ""
+msgstr "購入"
 
 #. (text of widget: headline_balance_label)
 #: horizons/i18n/guitranslations.py:320
 msgid "Balance:"
-msgstr ""
+msgstr "収支バランス："
 
 #. (text of widget: headline_expenses_label)
 #: horizons/i18n/guitranslations.py:322
 msgid "Expenses:"
-msgstr ""
+msgstr "支出："
 
 #. (text of widget: headline_income_label)
 #: horizons/i18n/guitranslations.py:324
 msgid "Income:"
-msgstr ""
+msgstr "収入："
 
 #. (text of widget: sell_income_label)
 #: horizons/i18n/guitranslations.py:328
 msgid "Sale"
-msgstr ""
+msgstr "販売"
 
 #. (text of widget: taxes_label)
 #. (text of widget: taxes)
 #: horizons/i18n/guitranslations.py:330 horizons/i18n/guitranslations.py:709
 msgid "Taxes"
-msgstr ""
+msgstr "税金"
 
 #. (tooltip of widget: show_production_overview)
 #: horizons/i18n/guitranslations.py:332
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "この集落で生産される資源を見る"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:337 horizons/world/__init__.py:303
 msgid "ally"
-msgstr ""
+msgstr "同盟"
 
 #. (text of widget: enemy_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:339 horizons/world/__init__.py:305
 msgid "enemy"
-msgstr ""
+msgstr "敵"
 
 #. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:341 horizons/world/__init__.py:307
 msgid "neutral"
-msgstr ""
+msgstr "中立"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:346
 msgid "Build fields"
-msgstr ""
+msgstr "農地を作る"
 
 #. (tooltip of widget: capacity_utilisation_label)
 #. (tooltip of widget: capacity_utilisation)
@@ -1800,69 +1800,69 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:353 horizons/i18n/guitranslations.py:357
 #: horizons/i18n/guitranslations.py:502 horizons/i18n/guitranslations.py:506
 msgid "Capacity utilization"
-msgstr ""
+msgstr "稼働率"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:369
 msgid "Average happiness:"
-msgstr ""
+msgstr "平均幸福度："
 
 #. (text of widget: most_needed_res_lbl)
 #: horizons/i18n/guitranslations.py:373
 msgid "Most needed resource:"
-msgstr ""
+msgstr "最も必要とされている資源："
 
 #. (text of widget: headline_residents_per_house)
 #: horizons/i18n/guitranslations.py:380 horizons/i18n/guitranslations.py:411
 #: horizons/i18n/guitranslations.py:440
 msgid "Residents per house"
-msgstr ""
+msgstr "住宅あたりの住民"
 
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py:382 horizons/i18n/guitranslations.py:413
 #: horizons/i18n/guitranslations.py:442
 msgid "Summary"
-msgstr ""
+msgstr "まとめ"
 
 #. (text of widget: houses)
 #: horizons/i18n/guitranslations.py:384 horizons/i18n/guitranslations.py:415
 #: horizons/i18n/guitranslations.py:444
 msgid "houses"
-msgstr ""
+msgstr "住宅"
 
 #. (text of widget: resident_1)
 #: horizons/i18n/guitranslations.py:386 horizons/i18n/guitranslations.py:417
 #: horizons/i18n/guitranslations.py:446
 msgid "1 resident"
-msgstr ""
+msgstr "ひとりの住民"
 
 #. (text of widget: resident_2)
 #: horizons/i18n/guitranslations.py:388 horizons/i18n/guitranslations.py:419
 #: horizons/i18n/guitranslations.py:448
 msgid "2 residents"
-msgstr ""
+msgstr "ふたりの住民"
 
 #. (text of widget: resident_3)
 #: horizons/i18n/guitranslations.py:390 horizons/i18n/guitranslations.py:450
 msgid "3 residents"
-msgstr ""
+msgstr "三人の住民"
 
 #. (text of widget: residents)
 #: horizons/i18n/guitranslations.py:392 horizons/i18n/guitranslations.py:421
 #: horizons/i18n/guitranslations.py:456
 msgid "residents"
-msgstr ""
+msgstr "住民"
 
 #. (text of widget: tax_label)
 #: horizons/i18n/guitranslations.py:394 horizons/i18n/guitranslations.py:423
 #: horizons/i18n/guitranslations.py:458 horizons/i18n/guitranslations.py:524
 msgid "Taxes:"
-msgstr ""
+msgstr "税："
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:396 horizons/i18n/guitranslations.py:425
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "進化の許可："
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
@@ -1877,7 +1877,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:464 horizons/i18n/guitranslations.py:470
 #: horizons/i18n/guitranslations.py:528 horizons/i18n/guitranslations.py:538
 msgid "Paid taxes"
-msgstr ""
+msgstr "納税"
 
 #. (tooltip of widget: tax_rate_icon)
 #. (tooltip of widget: tax_val_label)
@@ -1892,48 +1892,48 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:466 horizons/i18n/guitranslations.py:468
 #: horizons/i18n/guitranslations.py:530 horizons/i18n/guitranslations.py:536
 msgid "Tax rate"
-msgstr ""
+msgstr "税率"
 
 #. (text of widget: resident_4)
 #: horizons/i18n/guitranslations.py:452
 msgid "4 residents"
-msgstr ""
+msgstr "四人の住民"
 
 #. (text of widget: resident_5)
 #: horizons/i18n/guitranslations.py:454
 msgid "5 residents"
-msgstr ""
+msgstr "五人の住民"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:460
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "進化不可能："
 
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:462
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "今のところ到達できる最終時代です！"
 
 #. (text of widget: name_label)
 #: horizons/i18n/guitranslations.py:475 horizons/i18n/guitranslations.py:557
 msgid "Name:"
-msgstr ""
+msgstr "名前："
 
 #. (tooltip of widget: collector_utilisation_label)
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:477 horizons/i18n/guitranslations.py:481
 msgid "Collector utilisation"
-msgstr ""
+msgstr "稼働率"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:568
 msgid "Selling"
-msgstr ""
+msgstr "販売"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:495
 msgid "Weapons:"
-msgstr ""
+msgstr "武器："
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:513
