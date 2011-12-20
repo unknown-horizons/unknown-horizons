@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-20 16:41+0200\n"
+"PO-Revision-Date: 2011-12-20 17:00+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -1938,175 +1938,175 @@ msgstr "武器："
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:513
 msgid "Resource deposit"
-msgstr ""
+msgstr "資源の鉱床"
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py:515
 msgid "This is a resource deposit where you can build a mine to dig up resources."
-msgstr ""
+msgstr "これは資源鉱床です。ここに採掘坑を作れば資源を採掘できます。"
 
 #. (text of widget: res_dep_description_lbl2) It == The resource deposit
 #: horizons/i18n/guitranslations.py:517
 msgid "It contains these resources:"
-msgstr ""
+msgstr "含まれる資源："
 
 #. (text of widget: needed_res_label)
 #: horizons/i18n/guitranslations.py:522
 msgid "Needed resources:"
-msgstr ""
+msgstr "必要な資源："
 
 #. (tooltip of widget: happiness_label)
 #. (tooltip of widget: happiness)
 #: horizons/i18n/guitranslations.py:526 horizons/i18n/guitranslations.py:540
 msgid "Happiness"
-msgstr ""
+msgstr "幸福度"
 
 #. (tooltip of widget: residents_label)
 #. (tooltip of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:532 horizons/i18n/guitranslations.py:534
 msgid "Residents"
-msgstr ""
+msgstr "住民"
 
 #. (text of widget: signal_fire_description_lbl)
 #: horizons/i18n/guitranslations.py:545
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
-msgstr ""
+msgstr "自由交易船と交易（物品の売り買い）をしたいなら、のろしをあげましょう。"
 
 #. (text of widget: trader_description_lbl)
 #: horizons/i18n/guitranslations.py:550
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
-msgstr ""
+msgstr "自由交易船です。物品の売り買いのため、時々あなたの集落に立ち寄ります。"
 
 #. (text of widget: exchange_label)
 #: horizons/i18n/guitranslations.py:564 horizons/i18n/guitranslations.py:577
 msgid "Exchange:"
-msgstr ""
+msgstr "取引："
 
 #. (text of widget: ship_label)
 #: horizons/i18n/guitranslations.py:570 horizons/i18n/guitranslations.py:581
 msgid "Ship:"
-msgstr ""
+msgstr "船："
 
 #. (text of widget: trade_with_label)
 #: horizons/i18n/guitranslations.py:572 horizons/i18n/guitranslations.py:583
 msgid "Trade partner:"
-msgstr ""
+msgstr "交易相手"
 
 #. (tooltip of widget: name)
 #: horizons/i18n/guitranslations.py:588 horizons/i18n/guitranslations.py:599
 msgid "Click to change the name of this ship."
-msgstr ""
+msgstr "クリックで船の名前を変更できます。"
 
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
 msgid "Configure trading route"
-msgstr ""
+msgstr "交易路の設定"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
 msgid "Pause production"
-msgstr ""
+msgstr "生産の一時停止"
 
 #. (tooltip of widget: toggle_active_inactive)
 #: horizons/i18n/guitranslations.py:612 horizons/i18n/guitranslations.py:619
 msgid "Start production"
-msgstr ""
+msgstr "生産の開始"
 
 #. (tooltip of widget: delete_bo) Trade route entry
 #: horizons/i18n/guitranslations.py:624
 msgid "Delete entry"
-msgstr ""
+msgstr "項目の削除"
 
 #. (tooltip of widget: move_down) Trade route entry
 #: horizons/i18n/guitranslations.py:626
 msgid "Move down"
-msgstr ""
+msgstr "下に移動"
 
 #. (tooltip of widget: move_up) Trade route entry
 #: horizons/i18n/guitranslations.py:628
 msgid "Move up"
-msgstr ""
+msgstr "上に移動"
 
 #. (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
 #: horizons/i18n/guitranslations.py:633
 msgid "Leave Captain's log"
-msgstr ""
+msgstr "船長の航海日誌を閉じる"
 
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:635
 msgid "Read previous entries"
-msgstr ""
+msgstr "前のページを見る"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:637
 msgid "Read next entries"
-msgstr ""
+msgstr "次のページを見る"
 
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:642
 msgid "Available Scenarios"
-msgstr ""
+msgstr "シナリオ"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py:644
 msgid "Scenario description"
-msgstr ""
+msgstr "シナリオの説明"
 
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:648
 msgid "Continue playing"
-msgstr ""
+msgstr "プレイを続ける"
 
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:650
 msgid "Choose this scenario"
-msgstr ""
+msgstr "このシナリオを選ぶ"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:655
 msgid "Wait at load:"
-msgstr ""
+msgstr "荷上げ待ち："
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:657
 msgid "Wait at unload:"
-msgstr ""
+msgstr "荷下ろし待ち："
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:659
 msgid "Exit"
-msgstr ""
+msgstr "終了"
 
 #. (tooltip of widget: add_bo) List of harbors in trade route
 #: horizons/i18n/guitranslations.py:661
 msgid "Add to list"
-msgstr ""
+msgstr "交易路に追加"
 
 #. (text of widget: noi18n_health_label)
 #: horizons/i18n/guitranslations.py:668
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:673 horizons/i18n/guitranslations.py:696
 #: horizons/i18n/guitranslations.py:711 horizons/i18n/guitranslations.py:726
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #. (text of widget: building_score)
 #: horizons/i18n/guitranslations.py:678
 msgid "Buildings"
-msgstr ""
+msgstr "建造物"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:680
 msgid "Player scores"
-msgstr ""
+msgstr "プレイヤースコア"
 
 #. (text of widget: land_score)
 #: horizons/i18n/guitranslations.py:682
 msgid "Land"
-msgstr ""
+msgstr "土地"
 
 #. (text of widget: player_name)
 #. (text of widget: settlement_name)
@@ -2114,182 +2114,182 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:686 horizons/i18n/guitranslations.py:707
 #: horizons/i18n/guitranslations.py:718
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:688
 msgid "Resources"
-msgstr ""
+msgstr "資源"
 
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:694
 msgid "Units"
-msgstr ""
+msgstr "ユニット"
 
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:701
 msgid "Balance"
-msgstr ""
+msgstr "バランス"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:716
 msgid "Health"
-msgstr ""
+msgstr "健康"
 
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:720
 msgid "Type"
-msgstr ""
+msgstr "船のタイプ"
 
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:722
 msgid "Status"
-msgstr ""
+msgstr "状態"
 
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:724
 msgid "Weapons"
-msgstr ""
+msgstr "武器"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:731
 msgid "Aggressive"
-msgstr ""
+msgstr "好戦"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:733
 msgid "Flee"
-msgstr ""
+msgstr "逃走"
 
 #. (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:735
 msgid "Hold ground"
-msgstr ""
+msgstr "防衛"
 
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:737
 msgid "Passive"
-msgstr ""
+msgstr "防御"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:742
 msgid "Key bindings"
-msgstr ""
+msgstr "キーボード"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
 msgid "Show build menu"
-msgstr ""
+msgstr "建築メニューの表示"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
 msgid "Rotate building left"
-msgstr ""
+msgstr "建造物を左に回転"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
 msgid "Scroll down"
-msgstr ""
+msgstr "下にスクロール"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
 msgid "Show pause menu"
-msgstr ""
+msgstr "一時停止メニューの表示"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
 msgid "Display help"
-msgstr ""
+msgstr "ヘルプの表示"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
 msgid "Toggle console on/off"
-msgstr ""
+msgstr "表示枠の表示／非表示"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
 msgid "Show player scores"
-msgstr ""
+msgstr "プレイヤースコアの表示"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
 msgid "Show settlement list"
-msgstr ""
+msgstr "集落の一覧の表示"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
 msgid "Show ship list"
-msgstr ""
+msgstr "船の一覧の表示"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
 msgid "Quicksave"
-msgstr ""
+msgstr "クイックセーブ"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
 msgid "Quickload"
-msgstr ""
+msgstr "クイックロード"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "FIFEとUnknown Horizons開発チーム"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
 msgid "Toggle grid on/off"
-msgstr ""
+msgstr "グリッドの表示／非表示"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "座標の表示（デバッグ用）"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
 msgid "Have fun."
-msgstr ""
+msgstr "楽しんでください！"
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "船長の航海日誌の表示／非表示"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
 msgid "Scroll left"
-msgstr ""
+msgstr "左にスクロール"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
 msgid "Decrease game speed"
-msgstr ""
+msgstr "ゲームスピードを遅くする"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
 msgid "Pause game"
-msgstr ""
+msgstr "一時停止"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
 msgid "Rotate building right"
-msgstr ""
+msgstr "建造物を右に回転"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
 msgid "Increase game speed"
-msgstr ""
+msgstr "ゲームスピードを速くする"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
 msgid "Enable road building mode"
-msgstr ""
+msgstr "道の作成モードをオンにする"
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
 msgid "Scroll right"
-msgstr ""
+msgstr "右にスクロール"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
