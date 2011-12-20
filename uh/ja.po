@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-20 17:50+0200\n"
+"PO-Revision-Date: 2011-12-20 17:51+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -362,7 +362,6 @@ msgstr "ボード"
 
 #. This is a database entry: the name of a color.
 #: database files sql
-#, fuzzy
 msgid "bordeaux"
 msgstr "えんじ色"
 
@@ -2765,7 +2764,7 @@ msgstr "変更を確認するには、今の設定でUHを起動するかファ�
 
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: Cannot find campaign '{name}'."
 msgstr "エラー：　キャンペーン '{name}' が見つかりません。"
 
