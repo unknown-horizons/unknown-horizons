@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-20 17:41+0200\n"
+"PO-Revision-Date: 2011-12-20 17:50+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -2947,63 +2947,63 @@ msgstr "stderrとログファイルにデバッグ出力する。"
 
 #: run_uh.py:82
 msgid "Specify the path to FIFE root directory."
-msgstr "パスをFIFEのルートディレクトリにする。"
+msgstr "パスをFIFEのルートディレクトリにしてください。"
 
 #: run_uh.py:84
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
-msgstr ""
+msgstr "初期値に戻す。設定ミスで正常に起動できなくなったときにどうぞ。"
 
 #: run_uh.py:86
 msgid "Specify alternative multiplayer master server."
-msgstr ""
+msgstr "代わりのマルチプレイのマスターサーバーを指定してください。"
 
 #: run_uh.py:88
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
-msgstr ""
+msgstr "ローカルネットワークのネットワークアドレスを指定してください。これは、NAT接続が動作せず、スタティックポートを持っている場合に有効です。"
 
 #: run_uh.py:91
 msgid "Starting Unknown Horizons"
-msgstr ""
+msgstr "Unknown Horizonsを開始"
 
 #: run_uh.py:93
 msgid "Starts <map>. <map> is the mapname."
-msgstr ""
+msgstr "<map> の開始。 <map> はマップの名前。"
 
 #: run_uh.py:95
 msgid "Starts a random map."
-msgstr ""
+msgstr "ランダムマップの開始。"
 
 #: run_uh.py:97
 msgid "Starts a random map with seed <seed>."
-msgstr ""
+msgstr "シード <seed> でランダムマップを開始。"
 
 #: run_uh.py:99
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr ""
+msgstr "<scenario> の開始。 <scenario> はマップの名前。"
 
 #: run_uh.py:101
 msgid "Starts <campaign>. <campaign> is the campaign name."
-msgstr ""
+msgstr "<campaign> の開始。 <campaign> はマップの名前。"
 
 #: run_uh.py:103
 msgid "Starts the development map without displaying the main menu."
-msgstr ""
+msgstr "メインメニューを表示せずにマップ開発を開始。"
 
 #: run_uh.py:105
 msgid "Loads a saved game. <save> is the savegamename."
-msgstr ""
+msgstr "ゲームのロード。 <save> はセーブファイル名。"
 
 #: run_uh.py:107
 msgid "Loads the last quicksave."
-msgstr ""
+msgstr "最新のクイックセーブのロード。"
 
 #: run_uh.py:109
 msgid "Sets the seed used to generate trees, fish, and other natural resources."
-msgstr ""
+msgstr "木や他の自然資源を生成するシートを設定。"
 
 #: run_uh.py:112
 msgid "AI options"
-msgstr ""
+msgstr "AIオプション"
 
 #: run_uh.py:114
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0)."
