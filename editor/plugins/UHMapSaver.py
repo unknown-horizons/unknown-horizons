@@ -20,7 +20,6 @@
 # ###################################################
 
 import fife.extensions.savers as mapSavers
-from horizons.util.dbreader import DbReader
 from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 
 import horizons.main # necessary so the correct load order of all modules is guaranteed
