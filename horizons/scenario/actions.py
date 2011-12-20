@@ -40,10 +40,9 @@ def show_message(session, *message):
 	delay_iter = 1
 	for msg in message:
 		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, None, None, \
-		                                    msg + '\n'* 30 + 'UHtutorial', visible_for=visible_ticks), \
-		                                    None, run_in=delay_iter)
+		                                    msg,  visible_for=visible_ticks), \
+		                           None, run_in=delay_iter)
 		delay_iter += delay_ticks
-		# for the part """ + '\n'* 30 + 'UHtutorial'""" see below comment (#535)
 
 def show_db_message(session, message_id):
 	"""Shows a message specified in the db on the ingame message widget"""
