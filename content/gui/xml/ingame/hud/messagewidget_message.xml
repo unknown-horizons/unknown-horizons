@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Container size="300,66"  is_focusable="0"  name="message"
+	comment="This widget holds the messagewidget message background and text. For the icon, see messagewidget_icon.xml">
+	<VBox name="msg_bg"  padding="0">
+		<Icon image="content/gui/images/background/widgets/message_bg_top.png" />
+		<VBox name="msg_bg_middle" padding="0" comment="In this box, bg_mid icons are inserted as necessary" />
+		<Icon image="content/gui/images/background/widgets/message_bg_bottom.png" />
+	</VBox>
+
+	<Label name="text" text=""  position="6,3"  font="message"  size="300,0" />
+</Container>
