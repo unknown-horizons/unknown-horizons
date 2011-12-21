@@ -20,7 +20,7 @@ antialias: 1
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
-size: 17
+size: 22
 color: 255,255,255
 antialias: 1
 

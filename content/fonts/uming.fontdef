@@ -20,7 +20,7 @@ antialias: 1
 
 type: truetype
 source: content/fonts/UMing.ttc
-size: 17
+size: 25
 color: 255,255,255
 antialias: 1
 

@@ -105,7 +105,8 @@ STYLES= {
 		},
 		('Label','TooltipLabel') : {
 			'border_size': 0,
-			'font' : 'mainmenu'
+			'font' : 'mainmenu',
+			'background_color' : fife.Color(0, 0, 0, 102)
 		}
 },
 
