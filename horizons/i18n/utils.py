@@ -20,7 +20,7 @@
 # ###################################################
 
 from gettext import translation
-from horizons.constants import FONTDEFS
+from horizons.constants import FONTDEFS, LANGUAGENAMES
 
 """
 N_ takes care of plural forms for different languages. It masks ungettext
@@ -33,6 +33,7 @@ N_ = namespace_translation.ungettext
 
 
 def find_available_languages():
+	"""Returns a dict( lang_key -> locale_dir )"""
 	alternatives = ('content/lang',
 	                'build/mo',
 	                '/usr/share/locale',
@@ -43,14 +44,20 @@ def find_available_languages():
 	import os
 	from glob import glob
 
-	languages = []
+	languages = {}
 
 	for i in alternatives:
 		for j in glob('%s/*/*/unknown-horizons.mo' % i):
 			splited = j.split(os.sep)
-			languages.append((splited[-3], os.sep.join(splited[:-3])))
+			key = splited[-3]
+			if not key in languages:
+				languages[key] = os.sep.join(splited[:-3])
 			#TODO we need to strip strings here if an "@" occurs and only
 			# use the language code itself (e.g. ca@valencia.po -> ca.po)
+
+	# there's always a default, which is english
+	languages[LANGUAGENAMES['']] = ''
+	languages['en'] = ''
 
 	return languages
 

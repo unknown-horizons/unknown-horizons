@@ -380,8 +380,7 @@ class _LanguageNameDict(dict):
 		for item in self.iteritems():
 			if item[1] == value:
 				return item[0]
-		return None
-
+		return "" # meaning default key
 
 
 LANGUAGENAMES = _LanguageNameDict({

@@ -43,7 +43,7 @@ from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader, Callback, pa
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations
 from horizons.util.gui import load_uh_widget
-from horizons.i18n.utils import find_available_languages, get_fontdef_for_locale
+from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 
@@ -91,6 +91,8 @@ class LocalizedSetting(Setting):
 		# catch events for settings that should be displayed in another way than they should be saved
 		v = super(LocalizedSetting, self).get(module, name, defaultValue)
 		if module == UH_MODULE and name == "Language":
+			if v is None: # the entry is None for empty strings
+				v = ""
 			v = LANGUAGENAMES[v]
 		return v
 
@@ -210,14 +212,11 @@ class Fife(ApplicationBase):
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
 		                                initialdata=[0, 16, 32], requiresrestart=True)
 
-		languages_map = dict(find_available_languages())
-		languages_map[LANGUAGENAMES['']] = ''
-		# English is not shipped as .mo file.
-		languages_map['en'] = ''
+		languages = find_available_languages().keys()
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "cjkv_language",
 		                                applyfunction=self.update_languages,
-		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages_map.keys())])
+		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages)])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
 		                                applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
@@ -274,52 +273,38 @@ class Fife(ApplicationBase):
 
 		data is used when changing the language in the settings menu.
 		"""
-
 		if data is None:
 			data = self._setting.get(UH_MODULE, "Language")
-		languages_map = dict(find_available_languages())
-		languages_map[ LANGUAGENAMES[''] ] = '' # the empty language is the default
-		# English is not shipped as .mo file.
-		languages_map['en'] = ''
-		symbol = LANGUAGENAMES.get_by_value(data)
-		assert symbol is not None, "Something went badly wrong with the translation update!" + \
-		       " Searching for: " + str(data) + " in " + str(LANGUAGENAMES)
 
+		# get language key
+		symbol = LANGUAGENAMES.get_by_value(data)
+
+		if symbol != '': # non-default
+			try:
+				# NOTE about gettext fallback mechanism:
+				# English is not shipped as .mo file, thus if English is
+				# selected we use NullTranslations to get English output.
+				fallback = (symbol == 'en')
+				trans = gettext.translation('unknown-horizons', find_available_languages()[symbol], \
+				                            languages=[symbol], fallback=fallback)
+				trans.install(unicode=True, names=['ngettext',])
+			except IOError:
+				#xgettext:python-format
+				print _("Configured language {lang} could not be loaded").format(lang=name)
+				self._setting.set(UH_MODULE, "Language", LANGUAGENAMES[''])
+				return self.update_languages() # recurse
+		else:
+			# default locale
+			if platform.system() == "Windows": # win doesn't set the language variable by default
+				os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
+			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
+
+		# update fonts
 		fontdef = get_fontdef_for_locale(symbol)
 		self.pychan.loadFonts(fontdef)
 
-		try:
-			index = sorted(languages_map.keys()).index(symbol)
-		# This only happens on startup when the language is not available
-		# (either from the settings file or $LANG).
-		except ValueError:
-			print "Language %s is not available!" % data
-			index = sorted(languages_map.keys()).index('System default')
-			# Reset the language or the settings crashes.
-			self._setting.set(UH_MODULE, "Language", 'System default')
-
-		name, position = sorted(languages_map.items())[index]
-		try:
-			if name != LANGUAGENAMES['']:
-				# English is not shipped as .mo file, thus if English is
-				# selected we use NullTranslations to get English output.
-				fallback = name == 'en'
-				trans = gettext.translation('unknown-horizons', position, languages=[name], fallback=fallback)
-				trans.install(unicode=True, names=['ngettext',])
-			else:
-				if platform.system() == "Windows": # win doesn't set the language variable by default
-					os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
-				gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
-				name = ''
-
-		except IOError:
-			#xgettext:python-format
-			print _("Configured language {lang} at {place} could not be loaded").format(
-			         lang=name, place=position)
-			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
-			self._setting.set(UH_MODULE, "Language", 'System default')
+		# dynamically reset all translations of active widgets
 		update_all_translations()
-
 
 	def init(self):
 		"""
