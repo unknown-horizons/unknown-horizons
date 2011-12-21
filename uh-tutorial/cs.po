@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-21 19:46+0200\n"
+"PO-Revision-Date: 2011-12-21 19:54+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -996,6 +996,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
+#, fuzzy
 msgid ""
 "This means that you can save money when you temporarily do not need a company "
 "and do not want to tear it down, either.\n"
@@ -1013,6 +1014,21 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
+"Můžetě ušetřit peníze pokud dočasně zastavíte společnost kterou zrovna "
+"nepotřebujete a nechcete jí zbourat.\n"
+"\n"
+"Dalším řešením je vybudování poslední budovy, která zatím nebyla zmíněna: "
+"skladovacího stanu..\n"
+"\n"
+"tato budova má dva učely a to:\n"
+"*Nabízí více prostoru pro vaše zboží, a\n"
+"* vysílá své sběratele vyzvednout zboží, stejně jako Obchodní přístav.\n"
+"\n"
+"Note that companies can also be connected to a storage in order to get their "
+"products collected, and if the branch office is overwhelmed with collector "
+"tasks, you can place a storage tent to help out there.\n"
+"\n"
+"TASK: Build a storage tent, preferably where you need collectors."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:108
