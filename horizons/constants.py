@@ -401,9 +401,9 @@ LANGUAGENAMES = _LanguageNameDict({
 	"gl"    : u'Galego',
 	"hu"    : u'Magyar',
 	"it"    : u'Italiano',
-	"ja"    : u'Nihongo',
+	"ja"    : u'日本語',
 	"lt"    : u'Lietuvių',
-	"ko"    : u'Hangugmal/Chosŏnmal',
+	"ko"    : u'한국말/조선말',
 	"nb"    : u'Norw. Bokmål',
 	"nl"    : u'Nederlands',
 	"pl"    : u'Polski',
@@ -415,7 +415,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"sv"    : u'Svenska',
 	"tr"    : u'Türkçe',
 	"vi"    : u'Tiếng Việt',
-	"zh_CN" : u'Pǔtōnghuà',
+	"zh_CN" : u'普通話',
 	})
 
 FONTDEFS = {
