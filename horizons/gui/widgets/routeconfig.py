@@ -191,7 +191,7 @@ class RouteConfig(object):
 		slider = slot.findChild(name="slider")
 		amount_lbl = slot.findChild(name="amount")
 		amount = int(slider.value)
-		amount_lbl.text = '{amount}t'.format(amount=amount)
+		amount_lbl.text = u'{amount}t'.format(amount=amount)
 		if slot.action is "unload":
 			amount = -amount
 		self.instance.route.add_to_resource_list(position, res_id, amount)
