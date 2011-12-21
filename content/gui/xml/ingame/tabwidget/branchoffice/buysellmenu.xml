@@ -12,7 +12,7 @@
 		<HBox size="250, 100"  position="23,47"  name="content"  padding="10" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-		<VBox position="20,120" max_size="245,60" name="legend">
+		<VBox position="20,120" max_size="245,80" name="legend">
 			<Label name="buysell_help_label"  text="Click on slot icon to toggle mode:"
 				wrap_text="1" max_size="245,40" />
 			<HBox>
@@ -24,7 +24,7 @@
 			</HBox>
 		</VBox>
 
-		<Label name="headline_trade_history" position="22,195" text="Trade history" />
-		<VBox position="22,220" size="244,300" name="trade_history" />
+		<Label name="headline_trade_history" position="22,215" text="Trade history" />
+		<VBox position="22,240" size="244,280" name="trade_history" />
 	</Container>
 </Container>
