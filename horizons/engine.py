@@ -174,6 +174,16 @@ class Fife(ApplicationBase):
 					for entryname in entry_list:
 						update_value(modulename, entryname)
 
+				# patch old values
+				if user_settings_version <= 10:
+					old_entries = entries
+					entries = []
+					for i in old_entries:
+						if i[0] == UH_MODULE and i[1] == "Language":
+							entries.append( (i[0], i[1], LANGUAGENAMES.get_by_value(i[2])) )
+						else:
+							entries.append(i)
+
 				# write actual new file
 				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
 				user_config_parser = SimpleXMLSerializer( _user_config_file )
