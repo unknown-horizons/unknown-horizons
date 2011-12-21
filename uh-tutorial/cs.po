@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-21 15:35+0200\n"
+"PO-Revision-Date: 2011-12-21 12:23+0200\n"
 "Last-Translator: Spek <pavelspek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -602,27 +602,27 @@ msgstr ""
 "nastavený na hodnotu 13 tun způsobí, že bude prodáno 5 tun zboží.\n"
 "\n"
 "Pokud svobodný obchodník bude chtít nakoupit nebo prodat méně zboží než "
-"nastavení Tvých slotů dovoluje, nezbývá Ti nic jiného než počkat na jeho "
+"nastavení vašich slotů dovoluje, nezbývá vám nic jiného než počkat na jeho "
 "příští cestu.\n"
 "\n"
-"Unknown Horizons obsahují chytré nastavení cen, to znamená, že cena za "
-"jednotku zboží se může měnit.\n"
+"Unknown Horizons obsahuje chytré nastavení cen, to znamená, že cena za "
+"jednotku zboží se může lišit.\n"
 "Není možné měnit ceny manuálně!\n"
 "\n"
-"Tvou obchodní bilanci můžeš vidět v záložce \"Účet\", kde jsou srovnány "
+"Vaši obchodní bilanci můžete vidět v záložce \"Účet\", kde jsou srovnány "
 "\"Nákup\" a \"Prodej\".\n"
 "\n"
-"ÚKOL: Nakup nástroje tak, aby zásoby ve Tvék skladu byly 30 jednotek!"
+"ÚKOL: Nakupte nástroje tak, aby zásoby ve vašem skladu byly 30 jednotek!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:66
 msgid "Reach an island stock of at least 30 tools."
-msgstr "Dosáhni alespoň 30 nástrojů ve skladu."
+msgstr "Dosáhněte zásoby 30 nástrojů ve skladu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:68
 msgid "Note that this might take a while."
-msgstr "Všimni si, že to může chvíli trvat."
+msgstr "Všimněte si, že to může chvíli trvat."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:70
@@ -648,21 +648,21 @@ msgid ""
 "\n"
 "In later increments, upgraded versions of buildings may become available."
 msgstr ""
-"Pro tuto chvíli máš dostatek nástrojů. Velmi dobře!\n"
+"Pro tuto chvíli máte dostatek nástrojů. Velmi dobře!\n"
 "\n"
-"Svým obyvatelům nyní poskytuješ bydlení, náměstí a jídlo.\n"
+"Vašim obyvatelům nyní poskytujete bydlení, tržiště a jídlo.\n"
 "\n"
 "Stále je zde ještě jeden požadavek, který nebyl doposud uspokojen, jak si "
-"můžeš sám ověřit v záložce tržnice nebo stanu - Tví námořnící chtějí "
-"základní budovu, kde by se mohli modlit.\n"
+"můžete sami ověřit v záložce tržnice nebo stanu - vaši námořníci chtějí "
+"budovu, kde by se mohli modlit.\n"
 "\n"
 "Řešením je pavilón, který vesnický pastor rychle vztyčí jako úkryt před "
 "sluncem.\n"
 "\n"
 "Budovy služeb, jako je tato, potřebují být propojeny se stany pomocí cest, "
-"jinak je Tví obyvatelé nebudou moci využívat.\n"
+"jinak je vaši obyvatelé nebudou moci využívat.\n"
 "\n"
-"V pozdějších epochách, budou možná k dispozici vylepšené verze budov."
+"V pozdějších úrovních, budou možná k dispozici vylepšené verze budov."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
@@ -704,7 +704,7 @@ msgstr "Postav pavilón propojený se stany."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:78
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr "NOVÝ ÚKOL: DALŠÍ EPOCHA"
+msgstr "NOVÝ ÚKOL: DALŠÍ ÚROVEŇ"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
