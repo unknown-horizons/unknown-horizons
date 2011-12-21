@@ -171,7 +171,7 @@ class IngameGui(LivingObject):
 		show = False
 		if self.resource_source is not None and self.resources_needed.get(RES.GOLD_ID, 0) != 0:
 			show = True
-			lines.append('- ' + str(self.resources_needed[RES.GOLD_ID]))
+			lines.append('-' + str(self.resources_needed[RES.GOLD_ID]))
 		self.status_set('gold', first)
 		self.status_set_extra('gold',lines)
 		self.set_status_position('gold')
@@ -297,7 +297,7 @@ class IngameGui(LivingObject):
 			show = False
 			if self.resources_needed.get(res_id, 0) != 0:
 				show = True
-				lines.append('- ' + str(self.resources_needed[res_id]))
+				lines.append('-' + str(self.resources_needed[res_id]))
 			self.status_set(res_name, first)
 			self.status_set_extra(res_name,lines)
 			self.set_status_position(res_name)
