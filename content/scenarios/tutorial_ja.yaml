@@ -548,8 +548,8 @@ events:
         \u307E\u3057\u305F\u3002\u5EFA\u9020\u7269\u30E1\u30CB\u30E5\u30FC\u3092\u898B\
         \u3066\u307F\u307E\u3057\u3087\u3046\u3002\n\n\u8F1D\u304B\u3057\u3044\u65B0\
         \u305F\u306A\u30BF\u30D6\u304C\u3042\u308A\u307E\u3059\u306D\u3002\n\n\u958B\
-        \u62D3\u8005\u306F\u670D\u3092\u6C42\u3081\u3066\u3044\u307E\u3059\u3002\u7F8A\
-        \u6BDB\u304B\u3089\u59CB\u307E\u308B\u670D\u306E\u751F\u7523\u30E9\u30A4\u30F3\
+        \u62D3\u8005\u306F\u5E03\u3092\u6C42\u3081\u3066\u3044\u307E\u3059\u3002\u7F8A\
+        \u6BDB\u304B\u3089\u59CB\u307E\u308B\u5E03\u306E\u751F\u7523\u30E9\u30A4\u30F3\
         \u3092\u4F5C\u308A\u307E\u3057\u3087\u3046\uFF08\u7F8A\u6BDB\u306F\u8FB2\u5834\
         \u306E\u751F\u7523\u54C1\u306E\u3072\u3068\u3064\u3067\u3059\uFF09\u3002\n\
         \n\u8FB2\u5834\u306F\u3068\u3066\u3082\u7279\u6B8A\u306A\u751F\u7523\u62E0\
@@ -596,19 +596,19 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u8FB2\u696D\u7528\u5730\
-        \u3092\u4F5C\u308B", "\u8FB2\u5834\u305D\u306E\u3082\u306E\u306F\u8FB2\u5834\
-        \u7528\u5730\u304C\u306A\u3051\u308C\u3070\u4F55\u3082\u751F\u7523\u3057\u307E\
-        \u305B\u3093\u3002\n\n\u4ECA\u306E\u6642\u70B9\u3067\u306F\u3001\u7267\u5834\
-        \u3084\u30B8\u30E3\u30AC\u30A4\u30E2\u7551\u3001\u30B5\u30C8\u30A6\u30AD\u30D3\
-        \u7551\u3092\u9078\u3079\u307E\u3059\u3002\n\n\u305D\u308C\u305E\u308C\u7C21\
-        \u5358\u306B\u7D39\u4ECB\u3057\u307E\u3059\u3002\n* \u7267\u5834\uFF1A\u3000\
-        \u7F8A\u304C\u3044\u307E\u3059\u3002\u7F8A\u6BDB\u304C\u63A1\u308C\u307E\u3059\
-        \u3002\n* \u30B8\u30E3\u30AC\u30A4\u30E2\u7551\uFF1A\u3000\u30B8\u30E3\u30AC\
-        \u30A4\u30E2\u3092\u98DF\u6599\u3068\u3057\u3066\u683D\u57F9\u3057\u307E\u3059\
-        \u3002\n* \u30B5\u30C8\u30A6\u30AD\u30D3\u7551\uFF1A\u3000\u30B5\u30C8\u30A6\
-        \u30AD\u30D3\u3092\u683D\u57F9\u3057\u307E\u3059\u3002\u84B8\u7559\u9152\u3084\
-        \u3001\uFF08\u5F8C\u3067\uFF09\u83D3\u5B50\u88FD\u9020\u306B\u4F7F\u3044\u307E\
+  - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u8FB2\u5730\u3092\u4F5C\
+        \u308B", "\u8FB2\u5834\u305D\u306E\u3082\u306E\u306F\u8FB2\u5730\u304C\u306A\
+        \u3051\u308C\u3070\u4F55\u3082\u751F\u7523\u3057\u307E\u305B\u3093\u3002\n\
+        \n\u4ECA\u306E\u6642\u70B9\u3067\u306F\u3001\u7267\u5834\u3084\u30B8\u30E3\
+        \u30AC\u30A4\u30E2\u7551\u3001\u30B5\u30C8\u30A6\u30AD\u30D3\u7551\u3092\u9078\
+        \u3079\u307E\u3059\u3002\n\n\u305D\u308C\u305E\u308C\u7C21\u5358\u306B\u7D39\
+        \u4ECB\u3057\u307E\u3059\u3002\n* \u7267\u5834\uFF1A\u3000\u7F8A\u304C\u3044\
+        \u307E\u3059\u3002\u7F8A\u6BDB\u304C\u63A1\u308C\u307E\u3059\u3002\n* \u30B8\
+        \u30E3\u30AC\u30A4\u30E2\u7551\uFF1A\u3000\u30B8\u30E3\u30AC\u30A4\u30E2\u3092\
+        \u98DF\u6599\u3068\u3057\u3066\u683D\u57F9\u3057\u307E\u3059\u3002\n* \u30B5\
+        \u30C8\u30A6\u30AD\u30D3\u7551\uFF1A\u3000\u30B5\u30C8\u30A6\u30AD\u30D3\u3092\
+        \u683D\u57F9\u3057\u307E\u3059\u3002\u84B8\u7559\u9152\u3084\u3001\uFF08\u5F8C\
+        \u306B\uFF09\u83D3\u5B50\u3092\u4F5C\u308B\u3068\u304D\u306B\u4F7F\u3044\u307E\
         \u3059\u3002\n\n\u4ECA\u306F\u7267\u5834\u3060\u3051\u3042\u308C\u3070\u826F\
         \u3044\u3067\u3059\u304C\u3001\u3082\u3057\u98DF\u7CE7\u4F9B\u7D66\u91CF\u304C\
         \u5C0F\u3055\u3059\u304E\u308B\u5834\u5408\u306B\u306F\uFF08\u4F4F\u5B85\u304C\
@@ -617,21 +617,34 @@ events:
         \n\u30B8\u30E3\u30AC\u30A4\u30E2\u7551\u3092\u4F5C\u308B\u5834\u5408\u306F\
         \u53CE\u7A6B\u3059\u308B\u4EBA\u304C\u6765\u308B\u305F\u3081\u306E\u9053\u3092\
         \u3001\u751F\u7523\u3059\u308B\u5834\u3067\u3042\u308B\u8FB2\u5834\u306B\u3064\
-        \u306A\u3050\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\uFF08\u7551\u305D\u306E\
-        \u3082\u306E\u3067\u306F\u3042\u308A\u307E\u305B\u3093\uFF01\uFF09"]
+        \u306A\u3050\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\uFF08\u8FB2\u5730\u305D\
+        \u306E\u3082\u306E\u3067\u306F\u3042\u308A\u307E\u305B\u3093\uFF01\uFF09"]
     type: logbook_w
-  - arguments: ['', "Make sure that all fields you build are in the area covered by\
-        \ the farm.\n\nYou can have combined production - one pasture will not lead\
-        \ to 100 percent efficiency of the farm - but you need to check how many fields\
-        \ one farm can serve.\n\nDifferent classes of fields require the farm units\
-        \ to spend more or less time there (to seed, harvest, herd, etc\u2026) and\
-        \ because of that, the farm may be unable to serve all of the fields you built\
-        \ for it in time.\n\nFor now, you do not need to care about these issues a\
-        \ lot since you haven't built any fields. Let's change that!\n\nTASK: Build\
-        \ at least one pasture in the farm's range and add potato fields if you like."]
+  - arguments: ['', "\u8FB2\u5834\u306E\u6709\u52B9\u7BC4\u56F2\u5185\u306B\u8FB2\u5730\
+        \u304C\u6765\u308B\u3088\u3046\u306B\u3057\u3066\u304F\u3060\u3055\u3044\u3002\
+        \n\n\u8907\u5408\u751F\u7523\u304C\u3067\u304D\u307E\u3059\u3002\u3072\u3068\
+        \u3064\u306E\u7267\u5834\u3067\u306F\u3001\u8FB2\u5834\u306E\u80FD\u529B\u3092\
+        100%\u4F7F\u3044\u5207\u308B\u3053\u3068\u306F\u3067\u304D\u306A\u3044\u3067\
+        \u3057\u3087\u3046\u3002\u304B\u3068\u3044\u3063\u3066\u3001\u8FB2\u5834\u306E\
+        \u80FD\u529B\u3092\u8D85\u3048\u308B\u307B\u3069\u306E\u8FB2\u5730\u3092\u4F5C\
+        \u3089\u306A\u3044\u3088\u3046\u306B\u6C17\u3092\u4ED8\u3051\u307E\u3057\u3087\
+        \u3046\u3002\n\n\u8FB2\u5730\u306E\u7A2E\u985E\u306B\u3088\u3063\u3066\u751F\
+        \u7523\uFF08\u7A2E\u3092\u307E\u3044\u3066\u53CE\u7A6B\u3057\u305F\u308A\u3001\
+        \u5BB6\u755C\u3092\u4E16\u8A71\u3057\u305F\u308A\u3001\u306A\u3069\uFF09\u306E\
+        \u30B9\u30D4\u30FC\u30C9\u306F\u5909\u308F\u308B\u305F\u3081\u3001\u8FB2\u5834\
+        \u306F\u3059\u3079\u3066\u306E\u8FB2\u5730\u304B\u3089\u540C\u3058\u30BF\u30A4\
+        \u30DF\u30F3\u30B0\u3067\u539F\u6599\u3092\u53D7\u3051\u53D6\u308C\u308B\u308F\
+        \u3051\u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002\n\n\u4ECA\u306F\u307E\
+        \u3060\u8FB2\u5730\u3092\u4F5C\u3063\u3066\u3044\u306A\u3044\u306E\u3067\u3001\
+        \u3053\u306E\u3053\u3068\u306B\u3064\u3044\u3066\u305D\u308C\u307B\u3069\u6C17\
+        \u306B\u3059\u308B\u5FC5\u8981\u306F\u3042\u308A\u307E\u305B\u3093\u3002\u305D\
+        \u308C\u3067\u306F\u3084\u3063\u3066\u307F\u307E\u3057\u3087\u3046\uFF01\n\
+        \n\u4EFB\u52D9\uFF1A\u3000\u8FB2\u5834\u306E\u6709\u52B9\u7BC4\u56F2\u5185\
+        \u306B\u3072\u3068\u3064\u4EE5\u4E0A\u306E\u7267\u5834\u3092\u4F5C\u308B\u3002\
+        \u304A\u597D\u307F\u3067\u30B8\u30E3\u30AC\u30A4\u30E2\u7551\u3082\u3002"]
     type: logbook
-  - arguments: [!!python/unicode 'Build at least one pasture and add potato fields
-        if you like.']
+  - arguments: ["\u3072\u3068\u3064\u4EE5\u4E0A\u306E\u7267\u5834\u3092\u4F5C\u308B\
+        \u3002\u304A\u597D\u307F\u3067\u30B8\u30E3\u30AC\u30A4\u30E2\u7551\u3082\u3002"]
     type: message
   - arguments: [tutStepDone, 49]
     type: set_var
@@ -643,43 +656,56 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD STORAGE', !!python/unicode 'Did
-        you watch your lumberjack recently?
-
-
-        Since your branch office does not have unlimited space to store goods, collectors
-        will stop fetching goods from companies when stock is full.
-
-        So if no sailor recently wanted to upgrade his tent, you probably have a lot
-        of boards and in that case, the lumberjack may idle.
-
-        We can improve this situation with two different approaches, and below we
-        will have a look at both of them.
-
-
-        All companies offer the possibility of doing no work at all.
-
-        This may sound strange, but try to click on the gear wheel you see in, for
-        example, a lumberjack''s overview.
-
-
-        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
-        costs you pay for the building will decrease. They won''t be zero, but still
-        lower than if you keep the company producing.']
+  - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u8CAF\u8535\u5EAB\u3092\
+        \u4F5C\u308B", "\u3068\u3053\u308D\u3067\u3001\u6700\u8FD1\u3001\u4F10\u63A1\
+        \u6240\u3092\u898B\u3066\u3044\u307E\u3059\u304B\uFF1F\n\n\u652F\u90E8\u306F\
+        \u7121\u9650\u306B\u7269\u54C1\u3092\u8CAF\u8535\u3067\u304D\u308B\u308F\u3051\
+        \u3067\u306F\u306A\u3044\u306E\u3067\u3001\u4E00\u676F\u3067\u8CAF\u3081\u308B\
+        \u3053\u3068\u304C\u3067\u304D\u306A\u304F\u306A\u308B\u3068\u6A5F\u95A2\u304B\
+        \u3089\u306E\u7269\u54C1\u306E\u53CE\u96C6\u306F\u6B62\u307E\u3063\u3066\u3057\
+        \u307E\u3044\u307E\u3059\u3002\n\u3082\u3057\u8239\u4E57\u308A\u304C\u30C6\
+        \u30F3\u30C8\u3092\u6539\u7BC9\u3057\u306A\u304F\u306A\u3063\u3066\u3044\u308B\
+        \u306A\u3089\u3001\u677F\u6750\u306E\u8CAF\u8535\u304C\u4E00\u676F\u306B\u306A\
+        \u3063\u3066\u3044\u3066\u3001\u4F10\u63A1\u6240\u304C\u30B9\u30C8\u30C3\u30D7\
+        \u3057\u3066\u3044\u308B\u306E\u304B\u3082\u3057\u308C\u307E\u305B\u3093\u3002\
+        \n\u3053\u306E\u72B6\u6CC1\u3092\u89E3\u6C7A\u3059\u308B\u65B9\u6CD5\u306F\
+        \u3075\u305F\u3064\u3042\u308A\u307E\u3059\u3002\u9806\u306B\u7D39\u4ECB\u3057\
+        \u307E\u3057\u3087\u3046\u3002\n\n\u3069\u306E\u6A5F\u95A2\u3082\u751F\u7523\
+        \u3092\u505C\u6B62\u3055\u305B\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\
+        \u3002\n\u5909\u306B\u601D\u3046\u304B\u3082\u3057\u308C\u307E\u305B\u3093\
+        \u304C\u3001\u305F\u3068\u3048\u3070\u3001\u4F10\u63A1\u6240\u306E\u6982\u8981\
+        \u30BF\u30D6\u3067\u6B6F\u8ECA\u3092\u30AF\u30EA\u30C3\u30AF\u3057\u3066\u307F\
+        \u3066\u304F\u3060\u3055\u3044\u3002\n\n\u3053\u306E\u300C\u4F11\u61A9\u300D\
+        \u30E2\u30FC\u30C9\u3092\u30AA\u30F3\u306B\u3059\u308B\u3068\uFF08\u3053\u308C\
+        \u3092\u300C\u505C\u6B62\u300D\u3068\u3044\u3044\u307E\u3059\uFF09\u3001\u5EFA\
+        \u9020\u7269\u306E\u904B\u55B6\u8CBB\u306F\u6E1B\u308A\u307E\u3059\u3002\u30BC\
+        \u30ED\u306B\u306F\u306A\u308A\u307E\u305B\u3093\u304C\u3001\u751F\u7523\u3057\
+        \u7D9A\u3051\u308B\u3088\u308A\u306F\u6E1B\u308B\u306E\u3067\u3059\u3002"]
     type: logbook_w
-  - arguments: ['', !!python/unicode "This means that you can save money when you\
-        \ temporarily do not need a company and do not want to tear it down, either.\n\
-        \nAnother solution is to build the last increment-I building which has not\
-        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
-        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the branch office does.\n\nNote that companies\
-        \ can also be connected to a storage in order to get their products collected,\
-        \ and if the branch office is overwhelmed with collector tasks, you can place\
-        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
-        \ where you need collectors."]
+  - arguments: ['', "\u3064\u307E\u308A\u3001\u4E00\u6642\u7684\u306B\u6A5F\u95A2\u304C\
+        \u4E0D\u8981\u306B\u306A\u3063\u3066\u3001\u53D6\u308A\u58CA\u3057\u305F\u304F\
+        \u306A\u3044\u3068\u304D\u306F\u3001\u304A\u91D1\u3092\u7BC0\u7D04\u3067\u304D\
+        \u308B\u306E\u3067\u3059\u3002\n\n\u3082\u3046\u3072\u3068\u3064\u306E\u65B9\
+        \u6CD5\u306F\u3001\u7B2C\u4E00\u306E\u6642\u4EE3\u306B\u3042\u308B\u6700\u5F8C\
+        \u306E\u5EFA\u9020\u7269\u3092\u4F5C\u308B\u3053\u3068\u3067\u3059\u3002\u3053\
+        \u308C\u307E\u3067\u51FA\u3066\u3053\u306A\u304B\u3063\u305F\u3001\u8CAF\u8535\
+        \u5EAB\u3067\u3059\u3002\n\n\u8CAF\u8535\u5EAB\u306B\u306F\u3075\u305F\u3064\
+        \u306E\u76EE\u7684\u304C\u3042\u308A\u307E\u3059\u3002\n* \u7269\u54C1\u3092\
+        \u3088\u308A\u591A\u304F\u8CAF\u8535\u3059\u308B\u3053\u3068\n* \u652F\u90E8\
+        \u3068\u540C\u3058\u3088\u3046\u306B\u3001\u4F4F\u6C11\u304C\u7269\u54C1\u3092\
+        \u53D6\u308A\u306B\u6765\u308B\u5834\u3092\u63D0\u4F9B\u3059\u308B\u3053\u3068\
+        \n\n\u751F\u7523\u7269\u3092\u96C6\u3081\u3089\u308C\u308B\u3088\u3046\u306B\
+        \u3001\u6A5F\u95A2\u306F\u8CAF\u8535\u5EAB\u306B\u3064\u306A\u3052\u308B\u3053\
+        \u3068\u304C\u3067\u304D\u307E\u3059\u3002\u652F\u90E8\u306E\u8CAF\u8535\u80FD\
+        \u529B\u3092\u8D85\u3048\u3066\u3057\u307E\u3046\u72B6\u6CC1\u306F\u3001\u8CAF\
+        \u8535\u5EAB\u3092\u7F6E\u304F\u3053\u3068\u3067\u89E3\u6C7A\u3067\u304D\u307E\
+        \u3059\u3002\n\n\u4EFB\u52D9\uFF1A\u3000\u3067\u304D\u308C\u3070\u7269\u54C1\
+        \u306E\u9700\u8981\u304C\u3042\u308B\u5834\u6240\u306B\u8CAF\u8535\u5EAB\u3092\
+        \u4F5C\u308B\u3002"]
     type: logbook
-  - arguments: [!!python/unicode 'Build a storage tent (increment I tab) where it
-        makes sense.']
+  - arguments: ["\uFF08\u7B2C\u4E00\u306E\u6642\u4EE3\u306E\u30BF\u30D6\u306B\u3042\
+        \u308B\uFF09\u8CAF\u8535\u5EAB\u3092\u3001\u5F79\u306B\u7ACB\u3064\u5834\u6240\
+        \u306B\u4F5C\u308B\u3002"]
     type: message
   - arguments: [tutStepDone, 52]
     type: set_var
@@ -691,26 +717,26 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A WEAVER', !!python/unicode 'Now
-        the wool production is set up, you still need a weaver to produce cloth out
-        of this wool.
-
-
-        There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the Branch Office).
-
-
-        In both cases you should ensure the connection to a trail as well.
-
-
-        You can place the weaver close to the farm and tear down any trail to the
-        farm to see that it will still fetch the wool and produce.
-
-
-        TASK: Build a weaver positioned so it can get wool.']
+  - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u6A5F\u7E54\u308A\u5834\
+        \u3092\u4F5C\u308B", "\u7F8A\u6BDB\u304C\u751F\u7523\u3055\u308C\u59CB\u3081\
+        \u307E\u3057\u305F\u304C\u3001\u7F8A\u6BDB\u304B\u3089\u5E03\u3092\u4F5C\u308B\
+        \u306B\u306F\u3055\u3089\u306B\u6A5F\u7E54\u308A\u5834\u304C\u5FC5\u8981\u3067\
+        \u3059\u3002\n\n\u6A5F\u7E54\u308A\u5834\u306E\u5EFA\u7BC9\u5834\u6240\u306E\
+        \u5019\u88DC\u306F\u3075\u305F\u3064\u3042\u308A\u307E\u3059\u3002\u8FB2\u5834\
+        \u306E\u8FD1\u304F\u304B\u3001\u8CAF\u8535\u5EAB\uFF08\u307E\u305F\u306F\u652F\
+        \u90E8\uFF09\u306E\u8FD1\u304F\u3067\u3059\u3002\n\n\u3069\u3061\u3089\u306E\
+        \u5834\u5408\u3082\u9053\u3067\u3064\u306A\u3050\u306E\u3092\u5FD8\u308C\u306A\
+        \u3044\u3088\u3046\u306B\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n\n\u8FB2\
+        \u5834\u306E\u8FD1\u304F\u306B\u4F5C\u3063\u3066\u3001\u8FB2\u5834\u3078\u306E\
+        \u9053\u3092\u64A4\u53BB\u3057\u3066\u3057\u307E\u3063\u3066\u3082\u7F8A\u6BDB\
+        \u306F\u751F\u7523\u3055\u308C\u3066\u5208\u308A\u53D6\u3089\u308C\u308B\u3053\
+        \u3068\u304C\u308F\u304B\u308B\u3067\u3057\u3087\u3046\u3002\n\n\u4EFB\u52D9\
+        \uFF1A\u3000\u7F8A\u6BDB\u304C\u5F97\u3089\u308C\u308B\u5834\u6240\u306B\u6A5F\
+        \u7E54\u308A\u5834\u3092\u4F5C\u308B\u3002"]
     type: logbook
-  - arguments: [!!python/unicode 'Build a weaver that can somehow reach the wool of
-        your farm.']
+  - arguments: ["\u7F8A\u6BDB\u304C\u5F97\u3089\u308C\u308B\u8FB2\u5834\u306B\u3064\
+        \u306A\u304C\u308B\u5834\u6240\u306B\u6A5F\u7E54\u308A\u5834\u3092\u4F5C\u308B\
+        \u3002"]
     type: message
   - arguments: [tutStepDone, 55]
     type: set_var
@@ -722,20 +748,22 @@ events:
   - arguments: [tutStepDone, 55]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
-        city to complete the tutorial. You need a positive balance.']
+  - arguments: ["\u4F4F\u6C11\u304C50\u4EBA\u4EE5\u4E0A\u306B\u306A\u308C\u3070\u3053\
+        \u306E\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\u306F\u5B8C\u4E86\u3067\u3059\
+        \u3002\u53CE\u652F\u304C\u9ED2\u5B57\u306B\u306A\u308B\u3088\u3046\u306B\u3057\
+        \u307E\u3057\u3087\u3046\u3002"]
     type: message
-  - arguments: [!!python/unicode 'NEW TASK: COMPLETE TUTORIAL', !!python/unicode 'Try
-        to house a total of 50 or more inhabitants in your city by providing more
-        residential buildings.
-
-
-        Once you are able to keep an economy running which can satisfy this amount
-        of consumers, you are ready to discover new Unknown Horizons!
-
-
-        TASK: Reach a total number of 50 inhabitants and a positive balance to complete
-        this tutorial.']
+  - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u30C1\u30E5\u30FC\u30C8\
+        \u30EA\u30A2\u30EB\u3092\u5B8C\u4E86\u3059\u308B", "\u3082\u3063\u3068\u4F4F\
+        \u5B85\u3092\u4F5C\u3063\u3066\u3001\u4F4F\u6C11\u304C50\u4EBA\u4EE5\u4E0A\
+        \u306B\u306A\u308B\u3088\u3046\u306B\u3057\u307E\u3057\u3087\u3046\u3002\n\
+        \n\u3053\u306E\u4EBA\u6570\u306E\u6D88\u8CBB\u8005\u3092\u990A\u3046\u3060\
+        \u3051\u306E\u7D4C\u6E08\u3092\u30AD\u30FC\u30D7\u3067\u304D\u308C\u3070\u3001\
+        \u65B0\u305F\u306AUnknown Horizons\u3092\u767A\u898B\u3067\u304D\u308B\u652F\
+        \u5EA6\u304C\u3067\u304D\u308B\u306E\u3067\u3059\uFF01\n\n\u4EFB\u52D9\uFF1A\
+        \u3000\u4F4F\u6C11\u309250\u4EBA\u4EE5\u4E0A\u3001\u53CE\u652F\u3092\u9ED2\
+        \u5B57\u306B\u3057\u3066\u3001\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\u3092\
+        \u5B8C\u4E86\u3057\u307E\u3059\u3002"]
     type: logbook
   - arguments: [tutStepDone, 58]
     type: set_var
@@ -749,41 +777,21 @@ events:
   - arguments: [tutStepDone, 58]
     type: var_lt
 - actions:
-  - arguments: ["\u6B8B\u308A\u30BF\u30B9\u30AF\u306A\u3057", !!python/unicode 'There
-        is nothing left to do now.
-
-
-        If you have any suggestions on what we could or should improve, add or leave
-        out:
-
-
-        www.unknown-horizons.org
-
-
-        #unknown-horizons @ irc.freenode.net
-
-
-        team@unknown-horizons.org
-
-
-        Our forums are open to you as well!
-
-
-        The best results until now were achieved by joining our IRC channel, so you
-        could try that out first (-;']
+  - arguments: ["\u6B8B\u308A\u306E\u4EFB\u52D9\u306A\u3057", "\u3082\u3046\u4EFB\u52D9\
+        \u306F\u3042\u308A\u307E\u305B\u3093\u3002\n\n\u3082\u3057\u3001\u3053\u306E\
+        \u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\u3092\u3082\u3063\u3068\u826F\u304F\
+        \u3059\u308B\u305F\u3081\u306E\u30A2\u30A4\u30C7\u30A2\u304C\u3042\u308B\u306A\
+        \u3089\uFF1A\nwww.unknown-horizons.org\n\n#unknown-horizons @  irc.freenode.net\n\
+        \nteam@unknown-horizons.org\n\n\u9023\u7D61\u3092\u304A\u5F85\u3061\u3057\u3066\
+        \u3044\u307E\u3059\uFF01\n\n\u4ECA\u306E\u3068\u3053\u308D\u3001IRC\u304C\u4E00\
+        \u756A\u3084\u308A\u3068\u308A\u304C\u6D3B\u767A\u306A\u306E\u3067\u3001\u3067\
+        \u304D\u308C\u3070\u6700\u521D\u306B\u8A66\u3057\u3066\u307F\u3066\u304F\u3060\
+        \u3055\u3044 (^_-)"]
     type: logbook
-  - arguments: ["\u3042\u308A\u304C\u3068\u3046!", !!python/unicode '
-
-
-
-
-
-
-
-        Thanks for playing the tutorial!
-
-
-        Your UH-Team']
+  - arguments: ["\u3042\u308A\u304C\u3068\u3046\uFF01", "\n\n\n\n\n\n\n\u30C1\u30E5\
+        \u30FC\u30C8\u30EA\u30A2\u30EB\u3067\u904A\u3093\u3067\u304F\u308C\u3066\u3042\
+        \u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3057\u305F\uFF01\n\nUH \u30C1\
+        \u30FC\u30E0"]
     type: logbook
   - arguments: [tutStepDone, 61]
     type: set_var
@@ -804,8 +812,10 @@ events:
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: [!!python/unicode 'Congratulations! You have reached the end of this
-        tutorial and are ready to meet new challenges!']
+  - arguments: ["\u304A\u3081\u3067\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01\
+        \u3000\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\u306F\u5B8C\u4E86\u3057\u307E\
+        \u3057\u305F\u3002\u65B0\u3057\u3044\u3053\u3068\u306B\u30C1\u30E3\u30EC\u30F3\
+        \u30B8\u3057\u3066\u307F\u307E\u3057\u3087\u3046\uFF01"]
     type: message
   conditions:
   - arguments: [tutStepDone, 60]
