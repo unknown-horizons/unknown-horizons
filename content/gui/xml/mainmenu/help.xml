@@ -2,7 +2,7 @@
 <Container name="help_window" size="800,580" position="100,100">
 <Icon image="content/gui/images/background/book.png" />
 
-<VBox position="107,42" max_size="340,450" min_size="340,450" padding="15">
+<VBox position="107,42" max_size="340,485" min_size="340,485" padding="15">
 	<Label text="Key bindings" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox>
