@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Container size="64,250" is_focusable="0"
+	comment="This widget places an icon belonging to a certain message. For bg image and text see messagewidget_message.xml">
+
+	<VBox name="button_space" />
+</Container>

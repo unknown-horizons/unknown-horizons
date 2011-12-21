@@ -20,6 +20,7 @@
 # ###################################################
 
 from string import Template
+import textwrap
 
 from fife.extensions import pychan
 
@@ -32,11 +33,17 @@ from horizons.ambientsound import AmbientSound
 from horizons.i18n.voice import get_speech_file
 
 class MessageWidget(LivingObject):
-	"""Class that organises the messages in the top right of the screen.
-	It uses Message Class instances to store messages and manages the
-	archive.
-	@param x, y: int position where the widget is placed on the screen."""
+	"""Class that organizes the messages. Displayed on left screen edge.
+	It uses Message instances to store messages and manages the archive.
+	@param x, y: int position where the widget is placed on the screen.
+	"""
 
+	BG_IMAGE_MIDDLE = 'content/gui/images/background/widgets/message_bg_middle.png'
+	IMG_HEIGHT = 24 # distance of above segments in px.
+	LINE_HEIGHT = 17
+	ICON_TEMPLATE = 'messagewidget_icon.xml'
+	MSG_TEMPLATE = 'messagewidget_message.xml'
+	CHARS_PER_LINE = 34 # character count after which we start new line. no wrap
 	SHOW_NEW_MESSAGE_TEXT = 4 # seconds
 	MAX_MESSAGES = 5
 
@@ -46,12 +53,12 @@ class MessageWidget(LivingObject):
 		self.x_pos, self.y_pos = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
-		self.widget = load_uh_widget('hud_messages.xml')
+		self.widget = load_uh_widget(self.ICON_TEMPLATE)
 		self.widget.position = (
 			 5,
 			 horizons.main.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
 
-		self.text_widget = load_uh_widget('hud_messages_text.xml')
+		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
 		self.widget.show()
 		self.current_tick = 0
@@ -63,10 +70,10 @@ class MessageWidget(LivingObject):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id string, needed to retrieve the message from the database.
-		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
-		@params sound_file if not set play default message speech for string_id
-						if set for False do not play sound
-						if set sound file path play this sound, for example some event sound
+		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
+		@param sound_file: if True: play default message speech for string_id
+		                   if False: do not play sound
+		                   if sound file path: play this sound file
 		"""
 		sound = {
 							True: get_speech_file(string_id),
@@ -97,7 +104,10 @@ class MessageWidget(LivingObject):
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
 
 	def draw_widget(self):
-		"""Updates the widget."""
+		"""
+		Updates whole messagewidget (all messages): draw icons.
+		Inactive messages need their icon hovered to display their text again
+		"""
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
@@ -113,7 +123,7 @@ class MessageWidget(LivingObject):
 					button.name + "/mouseExited": self.hide_text
 				}
 				if message.x is not None and message.y is not None:
-					# center source of event on click, if there is a source
+					# move camera to source of event on click, if there is a source
 					events[button.name] = Callback( \
 						self.session.view.center, message.x, message.y)
 				button.mapEvents(events)
@@ -127,7 +137,23 @@ class MessageWidget(LivingObject):
 		assert isinstance(index, int)
 		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
 		label = self.text_widget.findChild(name='text')
-		label.text = unicode(self.active_messages[self.position+index].message)
+		text = unicode(self.active_messages[self.position+index].message)
+		text = text.replace(r'\n', self.CHARS_PER_LINE*' ')
+		text = textwrap.fill(text, self.CHARS_PER_LINE)
+
+		self.bg_middle = self.text_widget.findChild(name='msg_bg_middle')
+		self.bg_middle.removeAllChildren()
+
+		line_count = len(text.splitlines()) - 1
+		for i in xrange(line_count * self.LINE_HEIGHT / self.IMG_HEIGHT):
+			middle_icon = pychan.Icon(image=self.BG_IMAGE_MIDDLE)
+			self.bg_middle.addChild(middle_icon)
+
+		message_container = self.text_widget.findChild(name='message')
+		message_container.size = (300, 21 + self.IMG_HEIGHT * line_count + 21)
+
+		self.bg_middle.adaptLayout()
+		label.text = text
 		label.adaptLayout()
 		self.text_widget.show()
 
@@ -184,7 +210,7 @@ class Message(object):
 	@param x, y: int position on the map where the action took place.
 	@param id: message id string, needed to retrieve the message from the database.
 	@param created: tickid when the message was created.
-	@param message_dict: template dict with the neccassary values for the message. ( e.g.: {'player': 'Arthus'}
+	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	"""
 	def __init__(self, x, y, id, created, read=False, display=None, message=None, message_dict=None, icon_id=None):
 		self.x, self.y = x, y
