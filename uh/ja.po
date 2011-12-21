@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-20 17:51+0200\n"
+"PO-Revision-Date: 2011-12-21 14:36+0200\n"
 "Last-Translator: naraba <narabanow@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "${player1} and ${player2} are now ${status}"
-msgstr ""
+msgstr "${player1} と ${player2} は状態が ${status} です。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -65,7 +65,7 @@ msgstr "牛"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Cattle Run"
-msgstr ""
+msgstr "牛の放牧地"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -75,12 +75,12 @@ msgstr "炭焼き"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Clay Deposit"
-msgstr ""
+msgstr "粘土鉱床"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Clay Pit"
-msgstr ""
+msgstr "粘土取引所"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -105,7 +105,7 @@ msgstr "農場"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Fish Deposit"
-msgstr ""
+msgstr "漁場"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -131,13 +131,13 @@ msgstr "砂利道"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Herbary"
-msgstr ""
+msgstr "薬草園"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #. This is a database entry: the name of a unit.
 #: database files horizons/i18n/guitranslations.py:264 sql
 msgid "Huker"
-msgstr ""
+msgstr "魚釣りの船"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -177,7 +177,7 @@ msgstr "パビリオン"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr ""
+msgstr "豚小屋"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -812,7 +812,7 @@ msgstr "{time} に保存"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:520
-#, python-format, , fuzzy
+#, python-format, , 
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] "{amount} 回保存"
@@ -872,9 +872,8 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "他のプレイヤーがいないため、外交関係は結べません。"
 
 #: horizons/gui/ingamegui.py:519
-#, fuzzy
 msgid "Valid map names are in the following form: {expression}"
-msgstr "有効なマップ名を入力してください： {expression}"
+msgstr "有効なマップ名を入力してください：　{expression}"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -923,14 +922,14 @@ msgid "Map: {map_name}"
 msgstr "マップ： {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
-#, python-format, fuzzy
+#, python-format, 
 msgid "Players: {player_amount}/{player_limit}"
-msgstr "プレイヤー： {player_amount}/{player_limit}"
+msgstr "プレイヤー：　{player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:176
-#, python-format, fuzzy
+#, python-format, 
 msgid "Creator: {player}"
-msgstr "作者： {player}"
+msgstr "作者：　{player}"
 
 #: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
@@ -3006,91 +3005,93 @@ msgstr "AIオプション"
 
 #: run_uh.py:114
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0)."
-msgstr ""
+msgstr "AIプレイヤー <ai_players> を指定してください（人とAIの混合は除きます。0は初期値です）。"
 
 #: run_uh.py:116
 msgid "Makes the human player a human-AI hybrid (for development only)."
-msgstr ""
+msgstr "人とAIの混合でプレイする（開発チーム向け）。"
 
 #: run_uh.py:118
 msgid "Shows AI plans as highlights (for development only)."
-msgstr ""
+msgstr "AIの計画をハイライト表示する（開発チーム向け）。"
 
 #: run_uh.py:121
 msgid "Development options"
-msgstr ""
+msgstr "開発オプション"
 
 #: run_uh.py:123
 msgid "Write debug output only to logfile, not to console. Implies -d."
-msgstr ""
+msgstr "デバッグ出力をログファイルだけにする。-dオプションと同じ。"
 
 #: run_uh.py:126
 msgid "Enable logging for a certain logging module (for developing only)."
-msgstr ""
+msgstr "特定のログモジュールを使ってログ出力する（開発チーム向け）。"
 
 #: run_uh.py:128
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr ""
+msgstr "UHユーザディレクトリの代わりに <filename> にログを出力する"
 
 #: run_uh.py:130
 msgid "For internal use only."
-msgstr ""
+msgstr "チーム外秘"
 
 #: run_uh.py:132
 msgid "Enable profiling (for developing only)."
-msgstr ""
+msgstr "分析モードにする（開発チーム向け）。"
 
 #: run_uh.py:134
 msgid "Run the game for <max_ticks> ticks."
-msgstr ""
+msgstr "<max_ticks> 回ゲームを実行する。"
 
 #: run_uh.py:136
 msgid "Enable the string previewer tool for scenario writers"
-msgstr ""
+msgstr "シナリオ作者用の文字列プレビューを利用する。"
 
 #: run_uh.py:138
 msgid "Disable preloading while in main menu"
-msgstr ""
+msgstr "メインメニューを開いているときは事前ロードしない"
 
 #: run_uh.py:140
 msgid "Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"
-msgstr ""
+msgstr "指定したゲームスピードにする（0.5, 1, 2, 3, 4, 6, 8, 11, 20の中から選択）"
 
 #: run_uh.py:162
 msgid "Unknown Horizons crashed."
-msgstr ""
+msgstr "Unknown Horizonsは強制停止しました。"
 
 #: run_uh.py:164
 msgid "We are very sorry for this, and want to fix this error."
-msgstr ""
+msgstr "ご迷惑おかけします。このエラーは修復したいと思います。"
 
 #: run_uh.py:165
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "エラー修復のため、ログファイルの情報の報告をお願いします："
 
 #: run_uh.py:167
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
-msgstr ""
+msgstr "IRCか開発チームのフォーラムまでお願いします。 unknown-horizons.org をご覧ください。"
 
 #: run_uh.py:208
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "エラー：　必要なライブラリが見つかりません。"
 
 #: run_uh.py:209
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
-msgstr ""
+msgstr "Unknown Horizons の動作に必要なライブラリがありません。インストールしてください。"
 
 #: run_uh.py:210
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"インストーラーは、Windowsユーザーは \"http://pyyaml.org/wiki/PyYAML\" にあります。Linuxユーザーは "
+"\"pyyaml\" または \"python-yaml\" でパッケージ管理ツールから探してください。"
 
 #: run_uh.py:236
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Unknown Horizons のプレイ、ありがとうございます！"
 
 #: run_uh.py:400
 msgid "FIFE was not found."
-msgstr ""
+msgstr "FIFEが見つかりません。"
 
 #~ msgid "A new settlement has been created by ${player}."
 #~ msgstr "新しい決済は ${player} によって作成されています。"
