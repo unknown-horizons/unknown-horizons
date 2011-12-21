@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-21 11:34+0200\n"
+"PO-Revision-Date: 2011-12-21 11:57+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -34,7 +34,7 @@ msgid ""
 "Build your first settlement and learn how to play!\n"
 msgstr ""
 "Tutorial:\n"
-"Postav svojí první osadu a nauč se hrát!\n"
+"Postavte svojí první osadu a naučte se hrát!\n"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:8
@@ -42,8 +42,8 @@ msgid ""
 "Build a branch office at the coast, so it is easy accessible for other ships "
 "like the Free Trader."
 msgstr ""
-"Postav na pobřeží pobočku, aby byla snadno dostupná ostatním lodím, jako je "
-"třeba volný obchodník."
+"Postavte na pobřeží pobočku, aby byla snadno dostupná ostatním lodím, jako "
+"je třeba volný obchodník."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
@@ -52,7 +52,6 @@ msgstr "Vítej v Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:12
-#, fuzzy
 msgid ""
 "This is your Captain's log where all important information is stored. A short "
 "notification of each task will be provided on the left of the screen.\n"
@@ -72,26 +71,26 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
-"Toto je tvůj Lodní deník, kde jsou uloženy všechny důležité informace. "
-"Krátký popis každého úkolu bude zobrazen na levé straně obrazovky.\n"
+"Toto je váš Lodní deník, kde jsou uloženy všechny důležité informace. Krátký "
+"popis každého úkolu bude zobrazen na levé straně obrazovky.\n"
 "\n"
-"Pokud máš zájem o podrobnější popis, v deníku snad najdeš veškeré informace, "
-"které potřebuješ.\n"
+"Pokud máte zájem o podrobnější popis, v deníku snad najdete veškeré "
+"informace, které potřebujete.\n"
 "\n"
 "Po zavření deníku, může být tento znovu otevřen ikonou 'Lodní deník' v "
 "pravém horním rohu (pod mini-mapou, se zavřeným dokumentem a brkem).\n"
 "\n"
-"Pro jakékoliv návrhy na lepší formulace, témata, které bys chtěl mít "
+"Pro jakékoliv návrhy na lepší formulace, témata, které byste chtěil mít "
 "vysvětlené nebo je někde chyba napište nám a my se pokusíme o nápravu.\n"
 "\n"
-"Na www.unknown-horizons.org nás můžeš kontaktovat.\n"
+"Na www.unknown-horizons.org nás můžete kontaktovat.\n"
 "\n"
-"A nyní pojď hrát."
+"A nyní pojďme hrát."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:14
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "NOVÝ ÚKOL: OSÍDLI OSTROV"
+msgstr "NOVÝ ÚKOL: OSÍDLIT OSTROV"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -955,7 +954,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:102
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "NOVÝ ÚKOL: POSTAVTE SKLADIŠTĚ"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
@@ -1040,7 +1039,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:118
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "NOVÝ ÚKOL: TUTORIAL JE KOMPLETNÍ"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
@@ -1062,6 +1061,7 @@ msgstr "ŽÁDNÉ DALŠÍ ÚKOLY"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:124
+#, fuzzy
 msgid ""
 "There is nothing left to do now.\n"
 "\n"
@@ -1079,6 +1079,21 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"Nic dalšího se zatím nedá dělat.\n"
+"\n"
+"Pokud máš nějaké nápady co by se mohlo nebo mělo vylepšit, přidat neb "
+"vynechat::\n"
+"\n"
+"www.unknown-horizons.org\n"
+"\n"
+"#unknown-horizons @ irc.freenode.net\n"
+"\n"
+"team@unknown-horizons.org\n"
+"\n"
+"Naše fórum je pro tebe otevřené!\n"
+"\n"
+"Nejlepších výsledků bylo dosaženo pomocí našeho IRC kanálu, takže to byste "
+"mohli zkusit jako první (-;"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:126
