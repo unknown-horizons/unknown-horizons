@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-09-12 09:19+0200\n"
-"Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
+"PO-Revision-Date: 2011-12-21 16:26+0200\n"
+"Last-Translator: Spek <pavelspek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -59,22 +59,14 @@ msgid "resource"
 msgstr "zdroje"
 
 # (poterminology) uh-tutorial/tutorial.pot (21)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 msgid "branch office"
-msgstr "pobočka"
+msgstr "Obchodní přístav"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 msgid "your"
-msgstr "tvoje"
+msgstr "vaše"
 
 # (poterminology) uh-tutorial/tutorial.pot (19)
 #
@@ -264,13 +256,9 @@ msgid "change"
 msgstr "změna"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 msgid "main square"
-msgstr "náměstí"
+msgstr "tržnice"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
