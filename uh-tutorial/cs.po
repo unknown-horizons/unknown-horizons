@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-21 16:24+0200\n"
+"PO-Revision-Date: 2011-12-21 16:25+0200\n"
 "Last-Translator: Spek <pavelspek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1022,7 +1022,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:110
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "NOVÝ ÚKOL: POSTAVTE TKALCOVNU"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
