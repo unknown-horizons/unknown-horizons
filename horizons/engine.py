@@ -87,6 +87,21 @@ class LocalizedSetting(Setting):
 				print "A problem occured while updating: %s" % err + "\n" + \
 				      "Please contact the developers if this happens more than once."
 
+	def get(self, module, name, defaultValue=None):
+		# catch events for settings that should be displayed in another way than they should be saved
+		v = super(LocalizedSetting, self).get(module, name, defaultValue)
+		if module == UH_MODULE and name == "Language":
+			v = LANGUAGENAMES[v]
+		return v
+
+
+	def set(self, module, name, val, extra_attrs={}):
+		# catch events for settings that should be displayed in another way than they should be saved
+		if module == UH_MODULE and name == "Language":
+			val = LANGUAGENAMES.get_by_value(val)
+		return super(LocalizedSetting, self).set(module, name, val, extra_attrs)
+
+
 class Fife(ApplicationBase):
 	"""
 	"""
@@ -196,7 +211,7 @@ class Fife(ApplicationBase):
 		                                initialdata=[0, 16, 32], requiresrestart=True)
 
 		languages_map = dict(find_available_languages())
-		languages_map[_('System default')] = ''
+		languages_map[LANGUAGENAMES['']] = ''
 		# English is not shipped as .mo file.
 		languages_map['en'] = ''
 
@@ -263,16 +278,10 @@ class Fife(ApplicationBase):
 		if data is None:
 			data = self._setting.get(UH_MODULE, "Language")
 		languages_map = dict(find_available_languages())
-		languages_map['System default'] = ''
+		languages_map[ LANGUAGENAMES[''] ] = '' # the empty language is the default
 		# English is not shipped as .mo file.
 		languages_map['en'] = ''
-		symbol = None
-		if data == unicode('System default'):
-			symbol = 'System default'
-		else:
-			for key, value in LANGUAGENAMES.iteritems():
-				if value == data:
-					symbol = key
+		symbol = LANGUAGENAMES.get_by_value(data)
 		assert symbol is not None, "Something went badly wrong with the translation update!" + \
 		       " Searching for: " + str(data) + " in " + str(LANGUAGENAMES)
 
@@ -291,7 +300,7 @@ class Fife(ApplicationBase):
 
 		name, position = sorted(languages_map.items())[index]
 		try:
-			if name != 'System default':
+			if name != LANGUAGENAMES['']:
 				# English is not shipped as .mo file, thus if English is
 				# selected we use NullTranslations to get English output.
 				fallback = name == 'en'

@@ -376,7 +376,16 @@ class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, key)
 
+	def get_by_value(self, value):
+		for item in self.iteritems():
+			if item[1] == value:
+				return item[0]
+		return None
+
+
+
 LANGUAGENAMES = _LanguageNameDict({
+	"" 			: u'System default',
 	"af"    : u'Afrikaans',
 	"bg"    : u'Български',
 	"ca"    : u'Català',
