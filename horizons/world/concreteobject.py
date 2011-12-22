@@ -103,11 +103,15 @@ class ConcreteObject(WorldObject):
 	def act(self, action, facing_loc=None, repeating=False):
 		if self._instance is None:
 			print self, "act with instance:", self._instance
-		if facing_loc is None:
-			facing_loc = self._instance.getFacingLocation()
 		if not self.has_action(action):
 			action = 'idle'
-		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
+		# TODO This should not happen, this is a fix for the component introduction
+		# Should be fixed as soon as we move concrete object to a component as well
+		# which ensures proper initialization order for loading and initing
+		if self._instance is not None:
+			if facing_loc is None:
+				facing_loc = self._instance.getFacingLocation()
+			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
 		self._action = action
 
 	def has_action(self, action):
