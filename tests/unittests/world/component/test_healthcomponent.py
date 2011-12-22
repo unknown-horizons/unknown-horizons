@@ -40,7 +40,7 @@ class TestHealthComponent(TestCase):
 	def test_trivial(self):
 		self.assertEqual(self.component.health, 20)
 		self.assertEqual(self.component.max_health, 20)
-		
+
 	def test_maxhealth_required(self):
 		self.assertRaises(AssertionError, HealthComponent, None)
 
@@ -55,9 +55,9 @@ class TestHealthComponent(TestCase):
 		self.assertEqual(self.component.health, 0)
 		self.assertEqual(self.component.max_health, 20)
 		self.assertTrue(self.instance.remove.called)
-		
+
 	def test_huge_damage(self):
 		self.component.deal_damage(1, 300)
-		self.assertEqual(self.component.health, -280)
+		self.assertEqual(self.component.health, 0)
 		self.assertEqual(self.component.max_health, 20)
 		self.assertTrue(self.instance.remove.called)
