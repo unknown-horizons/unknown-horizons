@@ -204,7 +204,7 @@ class Message(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string.Template, meaning it can contain placeholders
 	like the following: $player, ${gold}. The second version is recommended, as the word
-	can then be followed by other characters without a whitespace (e.g. "${player}'s home").
+	can then be followed by other characters without a whitespace (e.g. "home of ${player}").
 	The dict needed to fill these placeholders needs to be provided when creating the Message.
 
 	@param x, y: int position on the map where the action took place.
