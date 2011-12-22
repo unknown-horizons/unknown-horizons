@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-21 23:13+0200\n"
+"PO-Revision-Date: 2011-12-21 23:14+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -203,9 +203,8 @@ msgstr "jídlo"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 # (poterminology) uh/unknownhorizons.pot (1)
-#, fuzzy
 msgid "increment"
-msgstr "epocha"
+msgstr "úroveň"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
