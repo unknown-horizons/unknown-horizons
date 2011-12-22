@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-22 10:50+0200\n"
+"PO-Revision-Date: 2011-12-22 11:32+0200\n"
 "Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1057,6 +1057,18 @@ msgid ""
 "\n"
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
+"Nyní je nastavena produkce vlny, ale stále potřebujete tkalcovnu pro "
+"produkci látky z vlny.\n"
+"\n"
+"Jsou zde dvě místa, kde je můžete postavit - buď v blízkosti farmy nebo v "
+"blízkosti skladovacího stanu (obchodního přístavu).\n"
+"\n"
+"V obou případech se ujistěte jestli je propojená stezkou.\n"
+"\n"
+"Pokud bude tkadlec v dosahu farmy nemusíte je propojit stezkou a přece to "
+"bude fungovat.\n"
+"\n"
+"ÚKOL: Postavte tkalcovnu tak, aby byla v dosahu vlny."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:114
@@ -1066,13 +1078,12 @@ msgstr "Postavte tkalcovnu, která bude v dosahu vlny z Vaší farmy."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:116
-#, fuzzy
 msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
 msgstr ""
-"Dosáhnětě 50 a více obyvatel ve vašem městě k dokončení tutorialu. Musíte ít "
-"pozitivní bilanci."
+"Dosáhnětě 50 a více obyvatel ve vašem městě k dokončení tutorialu. Musíte "
+"mít pozitivní bilanci."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:118
@@ -1091,6 +1102,11 @@ msgid ""
 "TASK: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"Dosáhnětě 50 a více obyvatel tím, že jim postavíte více domů.\n"
+"\n"
+"Jakmile uspokojíte obyvatele, jste připraveni objevovat nové neznámé obzory!\n"
+"\n"
+"ÚKOL: Udržte při počtu 50 obyvatel kladnou bilanci pro dokončení tutorialu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:122
