@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-22 12:20+0200\n"
-"Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
+"PO-Revision-Date: 2011-12-22 12:52+0200\n"
+"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -707,6 +707,8 @@ msgstr "Vybraný port není platný. Musí být mezi číslem 1 a 65535."
 #: horizons/engine.py:553
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Zkontrolujte prosím port, který jste zadali, a ujistěte se, že je v určeném "
+"rozsahu."
 
 # 81%
 #: horizons/engine.py:565
@@ -730,6 +732,8 @@ msgstr "Zkontroluj informace, které jsi zadal v části o síťi."
 #: horizons/engine.py:571
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
+"Nízká čísla portů někdy vyžadují zvláštní přístup oprávnění, zkuste 0 nebo "
+"číslo větší než 1024."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:166 horizons/gui/ingamegui.py:519
@@ -785,7 +789,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:315
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Zadejte prosím platný název souboru."
 
 #. reshow dialog
 #. savegamename already exists
