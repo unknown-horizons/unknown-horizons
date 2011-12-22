@@ -133,8 +133,7 @@ class SPSession(Session):
 		if len(files) == 0:
 			self.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
 			return
-		files.sort()
-		horizons.main.load_game(savegame=files[-1])
+		horizons.main.load_game(savegame=files[0])
 
 	def save(self, savegamename=None):
 		"""Saves a game

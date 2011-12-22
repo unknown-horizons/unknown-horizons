@@ -29,7 +29,7 @@
 		<Setting name="AutosaveInterval" type="float">10.0</Setting>
 		<Setting name="AutosaveMaxCount" type="float">10.0</Setting>
 		<Setting name="QuicksaveMaxCount" type="float">10.0</Setting>
-		<Setting name="Language" type="unicode">System default</Setting>
+		<Setting name="Language" type="unicode"/>
 		<Setting name="ClientID" type="str"></Setting>
 		<Setting name="Nickname" type="unicode">Unnamed Traveler</Setting>
 		<Setting name="MinimapRotation" type="bool">False</Setting>
@@ -42,8 +42,9 @@
 		<Setting name="RandomMapPreferredIslandSize" type="float">2.0</Setting>
 		<Setting name="RandomMapIslandSizeDeviation" type="float">2.0</Setting>
 		<Setting name="MapResourceDensity" type="float">2.0</Setting>
+		<Setting name="AutoUnload" type="bool">True</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">9</Setting>
+		<Setting name="SettingsVersion" type="int">11</Setting>
 	</Module>
 </Settings>

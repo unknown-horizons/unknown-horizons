@@ -11,11 +11,11 @@
 
 <Container position="1, 4"  size="170,580">
 	<Label position="50,160"  name="team_lbl"  text="UH-Team"
-		font="libertine_small_tooltip" />
+		font="small_tooltip" />
 	<Label position="55,210"  name="patchers_lbl"  text="Patchers"
-		font="libertine_small_tooltip" />
+		font="small_tooltip" />
 	<Label position="60,260"  name="translators_lbl"  text="Translators"
-		font="libertine_small_tooltip" />
+		font="small_tooltip" />
 </Container>
 
 <!-- this is the fourth container ( packagers ).                                        !!!
@@ -68,7 +68,7 @@
 </Container>
 
 <Container position="800,3"  size="170,500"  name="pickbelt">
-	<Label name="special_thanks_lbl"  position="70,360"  text="Special Thanks" font="libertine_small_tooltip" />
+	<Label name="special_thanks_lbl"  position="70,360"  text="Special Thanks" font="small_tooltip" />
 </Container>
 
 </Container>

@@ -484,8 +484,6 @@ class Minimap(object):
 			coord = self._world_to_minimap( ship().position.to_tuple(), use_rotation )
 
 			color = ship().owner.color.to_tuple()
-			a = 2 # change this to change height/width
-			b = a - 1
 			self.minimap_image.rendertarget.addQuad(self._get_render_name("ship"),
 			                                        fife.Point( coord[0]-1, coord[1]-1 ),
 			                                        fife.Point( coord[0]-1, coord[1]+2 ),
@@ -587,6 +585,7 @@ class Minimap(object):
 
 		x = tup[0]
 		y = tup[1]
+
 		# rotate around center of minimap
 		x -= self.location_center.x
 		y -= self.location_center.y
@@ -596,13 +595,17 @@ class Minimap(object):
 
 		new_x += self.location_center.x
 		new_y += self.location_center.y
+
+		new_x = int(round(new_x))
+		new_y = int(round(new_y))
+
 		#some points may get out of range
 		new_x = max (self.location.left, new_x)
 		new_x = min (self.location.right, new_x)
 		new_y = max (self.location.top, new_y)
 		new_y = min (self.location.bottom, new_y)
-		tup = int(new_x), int(new_y)
-		return tup
+
+		return (new_x, new_y)
 
 	def _get_world_to_minimap_ratio(self):
 		world_height = self.world.map_dimensions.height

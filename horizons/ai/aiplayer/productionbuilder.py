@@ -237,6 +237,7 @@ class ProductionBuilder(AreaBuilder):
 		brickyard_colour = (0, 32, 0)
 		boatbuilder_colour = (163, 73, 164)
 		salt_ponds_colour = (153, 217, 234)
+		misc_colour = (0, 255, 255)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, (purpose, _) in self.plan.iteritems():
@@ -275,6 +276,8 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *salt_ponds_colour)
 			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
+			elif purpose != BUILDING_PURPOSE.NONE:
+				renderer.addColored(tile._instance, *misc_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
 

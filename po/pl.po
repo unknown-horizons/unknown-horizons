@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-10-30 04:01+0200\n"
+"PO-Revision-Date: 2011-12-11 02:01+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -825,7 +825,7 @@ msgstr "Proszę wybrać rekord lub kliknąć anuluj."
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:330
 msgid "Select a savegame"
-msgstr "Wybierz zapisany stan gry."
+msgstr "Wybierz zapisany stan gry"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
@@ -840,9 +840,8 @@ msgstr "Błąd:"
 
 # 94%
 #: horizons/gui/gui.py:510
-#, fuzzy
 msgid "Unknown savedate"
-msgstr "Nieznany zapis gry\n"
+msgstr "Nieznany zapis gry"
 
 #: horizons/gui/gui.py:513
 #, python-format
@@ -924,7 +923,7 @@ msgstr "Nie mogę znaleźć pyenet"
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
 "Brak biblioteki \"pyenet\", która jest wymagana aby grać w trybie wielu "
-"graczy. "
+"graczy."
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -1370,7 +1369,7 @@ msgstr "Namiot: Daje schronienie mieszkańcom."
 #. (tooltip of widget: store-1)
 #: horizons/i18n/guitranslations.py:67
 msgid "Storage: Extends stock and provides collectors."
-msgstr "Magazyn: Zwiększa możliwość przechowywania zapasów"
+msgstr "Magazyn: Zwiększa możliwość przechowywania zapasów."
 
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
@@ -1437,7 +1436,7 @@ msgstr ""
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:102
 msgid "Wooden tower: Defends your settlement."
-msgstr "Drewniana wieża obronna"
+msgstr "Drewniana wieża obronna."
 
 #. (tooltip of widget: villageschool-1)
 #: horizons/i18n/guitranslations.py:104
@@ -2262,63 +2261,58 @@ msgstr "Skróty klawiszowe"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:744
-msgid "{B} = Show build menu"
-msgstr "{B} = Pokaż menu budowania"
-
-#. (text of widget: lbl_c)
-#: horizons/i18n/guitranslations.py:746
-msgid "{C} = Chat"
-msgstr "{C} = Chat"
+msgid "Show build menu"
+msgstr "Pokaż menu budowania"
 
 #. (text of widget: lbl_comma)
 #: horizons/i18n/guitranslations.py:748
-msgid "{ , } = Rotate building left"
-msgstr "{ , } = Obróć budynek w lewo"
+msgid "Rotate building left"
+msgstr "Obróć budynek w lewo"
 
 #. (text of widget: lbl_down)
 #: horizons/i18n/guitranslations.py:750
-msgid "{DOWN} = Scroll down"
-msgstr "{DOWN} = Przesuń w dół"
+msgid "Scroll down"
+msgstr "Przesuń w dół"
 
 #. (text of widget: lbl_escape)
 #: horizons/i18n/guitranslations.py:752
-msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Pokaż menu"
+msgid "Show pause menu"
+msgstr "Pokaż menu"
 
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
-msgid "{F1} = Display help"
-msgstr "{F1} = Wyświetl pomoc"
+msgid "Display help"
+msgstr "Wyświetl pomoc"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
-msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Włącz/Wyłącz konsolę"
+msgid "Toggle console on/off"
+msgstr "Włącz/Wyłącz konsolę"
 
 #. (text of widget: lbl_f2)
 #: horizons/i18n/guitranslations.py:758
-msgid "{F2} = Show player scores"
-msgstr "{F2} = Pokaż punkty graczy"
+msgid "Show player scores"
+msgstr "Pokaż punkty graczy"
 
 #. (text of widget: lbl_f3)
 #: horizons/i18n/guitranslations.py:760
-msgid "{F3} = Show settlement list"
-msgstr "{F3} = Pokaż listę osad"
+msgid "Show settlement list"
+msgstr "Pokaż listę osad"
 
 #. (text of widget: lbl_f4)
 #: horizons/i18n/guitranslations.py:762
-msgid "{F4} = Show ship list"
-msgstr "{F4} = Pokaż listę statków"
+msgid "Show ship list"
+msgstr "Pokaż listę statków"
 
 #. (text of widget: lbl_f5)
 #: horizons/i18n/guitranslations.py:764
-msgid "{F5} = Quicksave"
-msgstr "{F5} = Szybki zapis"
+msgid "Quicksave"
+msgstr "Szybki zapis"
 
 #. (text of widget: lbl_f9)
 #: horizons/i18n/guitranslations.py:766
-msgid "{F9} = Quickload"
-msgstr "{F9} = Szybkie wczytywanie"
+msgid "Quickload"
+msgstr "Szybkie wczytywanie"
 
 #. (text of widget: lbl_fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:768
@@ -2327,13 +2321,13 @@ msgstr "Zespół deweloperów FIFE i Unknown Horizons"
 
 #. (text of widget: lbl_g)
 #: horizons/i18n/guitranslations.py:770
-msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Włącz/Wyłącz siatkę"
+msgid "Toggle grid on/off"
+msgstr "Włącz/Wyłącz siatkę"
 
 #. (text of widget: lbl_h)
 #: horizons/i18n/guitranslations.py:772
-msgid "{H} = Show coordinate values (Debug)"
-msgstr "{H} = Pokaż współrzędne (Debug)"
+msgid "Show coordinate values (Debug)"
+msgstr "Pokaż współrzędne (Debug)"
 
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
@@ -2342,68 +2336,68 @@ msgstr "Baw się dobrze."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
-msgid "{L} = Toggle Captain's log"
-msgstr "{L} = Włącz/Wyłącz Dziennik kapitański"
+msgid "Toggle Captain's log"
+msgstr "Włącz/Wyłącz Dziennik kapitański"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:778
-msgid "{LEFT} = Scroll left"
-msgstr "{LEFT} = Przesuń w lewo"
+msgid "Scroll left"
+msgstr "Przesuń w lewo"
 
 #. (text of widget: lbl_minus)
 #: horizons/i18n/guitranslations.py:780
-msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Spowolnij grę"
+msgid "Decrease game speed"
+msgstr "Spowolnij grę"
 
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
-msgid "{P} = Pause game"
-msgstr "{P} = Zatrzymaj grę"
+msgid "Pause game"
+msgstr "Zatrzymaj grę"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
-msgid "{ . } = Rotate building right"
-msgstr "{ . } = Obróć budynek w prawo"
+msgid "Rotate building right"
+msgstr "Obróć budynek w prawo"
 
 #. (text of widget: lbl_plus)
 #: horizons/i18n/guitranslations.py:786
-msgid "{ + } = Increase game speed"
-msgstr "{ + } = Przyśpiesz grę"
+msgid "Increase game speed"
+msgstr "Przyśpiesz grę"
 
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
-msgid "{R} = Enable road building mode"
+msgid "Enable road building mode"
 msgstr ""
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
-msgid "{RIGHT} = Scroll right"
-msgstr "{RIGHT} = Przesuń w prawo"
+msgid "Scroll right"
+msgstr "Przesuń w prawo"
 
 #. (text of widget: lbl_s)
 #: horizons/i18n/guitranslations.py:792
-msgid "{S} = Screenshot"
-msgstr "{S} = Zrzut ekranu"
+msgid "Screenshot"
+msgstr "Zrzut ekranu"
 
 #. (text of widget: lbl_shift)
 #: horizons/i18n/guitranslations.py:794
-msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Trzymaj aby postawić kilka budynków"
+msgid "Hold to place multiple buildings"
+msgstr "Trzymaj aby postawić kilka budynków"
 
 #. (text of widget: lbl_t)
 #: horizons/i18n/guitranslations.py:796
-msgid "{T} = Toggle translucency of ambient buildings"
-msgstr "{T} = Włącz/Wyłącz przeźroczystość otoczenia budynków"
+msgid "Toggle translucency of ambient buildings"
+msgstr "Włącz/Wyłącz przeźroczystość otoczenia budynków"
 
 #. (text of widget: lbl_up)
 #: horizons/i18n/guitranslations.py:798
-msgid "{UP} = Scroll up"
-msgstr "{UP} = Przesuń w górę"
+msgid "Scroll up"
+msgstr "Przesuń w górę"
 
 #. (text of widget: lbl_x)
 #: horizons/i18n/guitranslations.py:800
-msgid "{X} = Enable destruct mode"
-msgstr "{X} = Włącz tryb niszczenia"
+msgid "Enable destruct mode"
+msgstr "Włącz tryb niszczenia"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
@@ -2823,7 +2817,7 @@ msgstr ""
 
 #: horizons/main.py:252
 msgid "Failed to start/load the game"
-msgstr "Nie udało się wstartować/wczytać gry."
+msgstr "Nie udało się wstartować/wczytać gry"
 
 #: horizons/main.py:253
 msgid "The game you selected couldn't be started."
@@ -2891,8 +2885,7 @@ msgstr "Nie możesz zmienić prędkości gry w trybie dla wielu graczy"
 #: horizons/mpsession.py:67 horizons/mpsession.py:69 horizons/mpsession.py:71
 #: horizons/mpsession.py:73
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
-"Zapis/Wczytanie gry w trybie wielugraczy jest w tym momencie niemożliwe."
+msgstr "Zapis/Wczytanie gry w trybie wielugraczy jest w tym momencie niemożliwe"
 
 #: horizons/savegamemanager.py:379
 #, python-format
@@ -2933,7 +2926,7 @@ msgstr ""
 #: horizons/spsession.py:126
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
-"jeżeli ten błąd wystąpi raz jeszcze, prosimy o kontakt z zespołem "
+"Jeżeli ten błąd wystąpi raz jeszcze, prosimy o kontakt z zespołem "
 "developerów:"
 
 #: horizons/spsession.py:134
@@ -2961,7 +2954,7 @@ msgstr ""
 
 #: horizons/spsession.py:168
 msgid "File used by another process"
-msgstr "Plik używany jest w tym momencie przez inny proces."
+msgstr "Plik używany jest w tym momencie przez inny proces"
 
 #: horizons/spsession.py:169
 msgid "The savegame file is currently used by another program."
@@ -3059,7 +3052,7 @@ msgstr "Podaj ścieżkę do folderu FIFE."
 #: run_uh.py:84
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
 msgstr ""
-"Przywróć domyślne ustawienia. Często zdaża się iż  Unknown Horizons nie "
+"Przywróć domyślne ustawienia. Często zdaża się iż Unknown Horizons nie "
 "uruchamia się z powodu błędów w konfiguracji."
 
 #: run_uh.py:86
@@ -3411,12 +3404,6 @@ msgstr "FIFE nie zostało znalezione."
 
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Obróć mapę zgodnie z ruchem wskazówek zegara"
-
-#~ msgid "Decrease game speed"
-#~ msgstr "Zmniejsz prędkość gry"
-
-#~ msgid "Increase game speed"
-#~ msgstr "Zwiększ prędkość gry"
 
 # 94%
 #~ msgid "Build settlement:"

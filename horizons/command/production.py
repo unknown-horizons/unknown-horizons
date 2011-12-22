@@ -42,3 +42,20 @@ class AddProduction(GenericComponentCommand):
 		super(AddProduction, self).__init__(obj, Producer.NAME, "add_production_by_id", production_line_id)
 
 GenericComponentCommand.allow_network(AddProduction)
+
+
+class RemoveFromQueue(GenericCommand):
+	"""Remove a production line id from a queueproducer's queue"""
+	def __init__(self, obj, production_line_id):
+		super(RemoveFromQueue, self).__init__(obj, "remove_from_queue", production_line_id)
+
+GenericCommand.allow_network(RemoveFromQueue)
+
+
+class CancelCurrentProduction(GenericCommand):
+	"""Cancel the current production of a queueproducer.
+	Makes it proceed to the next one."""
+	def __init__(self, obj):
+		super(CancelCurrentProduction, self).__init__(obj, "cancel_current_production")
+
+GenericCommand.allow_network(CancelCurrentProduction)

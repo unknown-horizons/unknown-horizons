@@ -4,7 +4,7 @@
 <Container name="settings_window" size="800,580" background_image="content/gui/images/background/book.png">
 
 <!-- west side -->
-<VBox min_size="320,545"  max_size="320,545"  position="65,0">
+<VBox min_size="320,550"  max_size="320,550"  position="65,0">
 <Spacer fixed_size="40" />
 	<VBox> 
 		<Label text="Settings"  name="headline" />
@@ -14,7 +14,7 @@
 	</VBox>
 	<VBox  name="graphics_settings"> <!-- graphics -->
 		<Label text="Graphics" 
-		       name="headline_graphics"  font="libertine_headline" />
+		       name="headline_graphics"  font="headline" />
 
 		<HBox  max_size="320,245">
 			<VBox>
@@ -26,14 +26,14 @@
 			</VBox>
 		<Spacer min_size="25"/>
 			<VBox>
-				<Label name="color_depth_label"  text="Color depth:"
-					wrap_text="1"  max_size="140,20" />
+				<TooltipLabel name="color_depth_label"  text="Color depth:"  max_size="140,20"
+					wrap_text="1"  tooltip="If set to 0, use the driver default" />
 				<ScrollArea  min_size="80,30" >
 					<ListBox name="screen_bpp" />
 				</ScrollArea>
 				<Spacer />
-				<Label name="use_renderer_label"  text="Used renderer:" 
-					wrap_text="1" />
+				<TooltipLabel name="use_renderer_label"  text="Used renderer:"
+					wrap_text="1"  tooltip="SDL is only meant as unsupported fallback and might cause problems!" />
 				<ScrollArea  min_size="80,30" >
 					<ListBox name="render_backend" />
 				</ScrollArea>
@@ -49,7 +49,7 @@
 <Spacer min_size="10" />
 
 	<VBox  name="sound_settings" ><!-- sound -->
-		<Label name="headline_sound" text="Sound" font="libertine_headline" />
+		<Label name="headline_sound" text="Sound" font="headline" />
 		<VBox>
 			<HBox >
 				<Label name="music_volume_label" text="Music volume:" wrap_text="1"
@@ -79,17 +79,17 @@
 	<HBox max_size="34,40">
 	<!-- if no max_size is set, button reaction area expands to whole page -->
 		<DeleteButton name="defaultButton" tooltip="Reset to default settings" />
-	</HBox>>
+	</HBox>
 	</VBox>
 </VBox> 
 
 <!-- east side -->
-<VBox min_size="320,545"  max_size="320,545"  position="420,0">
+<VBox min_size="320,550"  max_size="320,550"  position="420,0">
 <Spacer fixed_size="40" />
-	<Label name="headline_saving"  text="Saving"  font="libertine_headline" 
+	<Label name="headline_saving"  text="Saving"  font="headline" 
 		position_technique="automatic" />
 <!-- automatic is a shorthand for center:center #TODO get this working at all -->
-	<VBox  name="saving_settings">
+	<VBox name="saving_settings"  padding="2">
 		<HBox>
 			<Label name="autosave_interval_label"  text="Autosave interval in minutes:"
 				wrap_text="1"  max_size="250,40"  min_size="250,20" />
@@ -113,38 +113,48 @@
 			orientation="0"  scale_start="1.0"  scale_end="30.0"  step_length="1.0" />
 	</VBox>
 
+	<VBox name="misc_settings"  padding="2">
 	<HBox>
-		<Label name="minimap_rotation_label"  text="Enable minimap rotation:" />
+		<TooltipLabel name="minimap_rotation_label"  text="Rotate minimap with map:"
+			tooltip="Whether to also rotate the minimap whenever the regular map is rotated" />
 		<CheckBox min_size="24,24"  name="minimaprotation" />
 	</HBox>
 	<HBox>
-		<Label name="edge_scrolling_label"  text="Enable edge scrolling:" />
+		<TooltipLabel name="edge_scrolling_label"  text="Scroll at map edge:"
+			tooltip="Whether to move the viewport when the mouse pointer is close to map edges" />
 		<CheckBox min_size="24,24"  name="edgescrolling" />
 	</HBox>
 	<HBox>
-		<Label name="uninterrupted_building_label"  text="Uninterrupted building:" />
+		<TooltipLabel name="uninterrupted_building_label"  text="Uninterrupted building:"
+			tooltip="When enabled, do not exit the build mode after successful construction" />
 		<CheckBox min_size="24,24"  name="uninterrupted_building" />
 	</HBox>
+	<HBox>
+		<TooltipLabel name="auto_unload_label"  text="Auto-unload ship:"
+			tooltip="Whether to unload the ship after founding a settlement" />
+		<CheckBox min_size="24,24"  name="auto_unload" />
+	</HBox>
+	</VBox>
 
 <Spacer min_size="2" />
-	<VBox name="language_settings">
+	<VBox name="language_settings" padding="2">
 		<Label text="Language" 
-			name="headline_language"  font="libertine_headline" />
+			name="headline_language"  font="headline" />
 		<HBox>
 			<Label text="Select language:"  name="language_label" />
-			<ScrollArea min_size="125,80" >
-				<ListBox name="language" />
+			<ScrollArea min_size="165,80" >
+				<ListBox name="cjkv_language" />
 			</ScrollArea>
 		</HBox>
 	</VBox>
 <Spacer min_size="2" />
 	<VBox name="network_settings">
 		<Label text="Network"
-			name="headline_network" font="libertine_headline" />
+			name="headline_network" font="headline" />
 		<HBox max_size="320,60">
-			<Label text="Network port:" name="network_port_lbl" />
-	    <TextField name="network_port" text="" min_size="50,16"/>
-			<Label text="(0 means default)" name="network_port_hint_lbl" />
+			<TooltipLabel text="Network port:" name="network_port_lbl"
+				tooltip="If set to 0, use the router default" />
+			<TextField name="network_port" text="" min_size="50,16"/>
 		</HBox>
 	</VBox>
 <Spacer />

@@ -23,8 +23,6 @@ import math
 import logging
 from fife import fife
 
-import horizons.main
-
 from horizons.world.units.movingobject import MovingObject
 from horizons.util import Point, WorldObject, WeakMethod, Circle, decorators
 from horizons.constants import LAYERS
@@ -205,7 +203,7 @@ class Unit(MovingObject):
 
 	@property
 	def classname(self):
-		return horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
+		return self.session.db.get_unit_type_name(self.id)
 
 	def __str__(self): # debug
 		return '%s(id=%s;worldid=%s)' % (self.classname, self.id, self.worldid)

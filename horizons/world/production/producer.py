@@ -22,6 +22,9 @@
 import logging
 
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.world.resourcehandler import ResourceHandler
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.production.productionline import ProductionLine
 from horizons.world.production.production import Production, SingleUseProduction
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
@@ -336,13 +339,15 @@ class QueueProducer(Producer):
 
 	def save(self, db):
 		super(QueueProducer, self).save(db)
-		for prod_line_id in self.production_queue:
-			db("INSERT INTO production_queue (rowid, production_line_id) VALUES(?, ?)",
-			   self.worldid, prod_line_id)
+		for i in enumerate(self.production_queue):
+			position, prod_line_id = i
+			db("INSERT INTO production_queue (object, position, production_line_id) VALUES(?, ?, ?)",
+			   self.worldid, position, prod_line_id)
 
 	def load(self, db, worldid):
 		super(QueueProducer, self).load(db, worldid)
-		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE rowid = ?", worldid):
+		self.__init()
+		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE object = ? ORDER by position", worldid):
 			self.production_queue.append(prod_line_id)
 
 	def add_production_by_id(self, production_line_id):
@@ -388,12 +393,24 @@ class QueueProducer(Producer):
 
 	def cancel_all_productions(self):
 		self.production_queue = []
+		self.cancel_current_production()
+
+	def cancel_current_production(self):
+		"""Cancels the current production and proceeds to the next one, if there is one"""
 		# Remove current productions, loose all progress and resources
 		for production in self._productions.copy().itervalues():
 			self.remove_production(production)
 		for production in self._inactive_productions.copy().itervalues():
 			self.remove_production(production)
-		self.set_active(active=False)
+		if self.production_queue:
+			self.start_next_production()
+		else:
+			self.set_active(active=False)
+
+	def remove_from_queue(self, index):
+		"""Remove the index'th element from the queue. First element is 0"""
+		self.production_queue.pop(index)
+		self._changed()
 
 
 class UnitProducer(QueueProducer):
@@ -401,6 +418,18 @@ class UnitProducer(QueueProducer):
 	by one. """
 
 	production_class = UnitProduction
+
+	def get_unit_production_queue(self):
+		"""Returns a list unit type ids that are going to be produced.
+		Does not include the currently produced unit. List is in order."""
+		queue = []
+		for prod_line_id in self.production_queue:
+			prod_line = ProductionLine.get_const_production_line(prod_line_id)
+			units = prod_line.unit_production.keys()
+			if len(units) > 1:
+				print 'WARNING: unit production system has been designed for 1 type per order'
+			queue.append(units[0])
+		return queue
 
 	def on_queue_element_finished(self, production):
 		self.__create_unit()

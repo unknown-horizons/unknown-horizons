@@ -43,7 +43,7 @@ from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader, Callback, pa
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations
 from horizons.util.gui import load_uh_widget
-from horizons.i18n.utils import find_available_languages
+from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 
@@ -86,6 +86,23 @@ class LocalizedSetting(Setting):
 			except AttributeError as err: #weird stuff happens in settings module reset
 				print "A problem occured while updating: %s" % err + "\n" + \
 				      "Please contact the developers if this happens more than once."
+
+	def get(self, module, name, defaultValue=None):
+		# catch events for settings that should be displayed in another way than they should be saved
+		v = super(LocalizedSetting, self).get(module, name, defaultValue)
+		if module == UH_MODULE and name == "Language":
+			if v is None: # the entry is None for empty strings
+				v = ""
+			v = LANGUAGENAMES[v]
+		return v
+
+
+	def set(self, module, name, val, extra_attrs={}):
+		# catch events for settings that should be displayed in another way than they should be saved
+		if module == UH_MODULE and name == "Language":
+			val = LANGUAGENAMES.get_by_value(val)
+		return super(LocalizedSetting, self).set(module, name, val, extra_attrs)
+
 
 class Fife(ApplicationBase):
 	"""
@@ -157,6 +174,16 @@ class Fife(ApplicationBase):
 					for entryname in entry_list:
 						update_value(modulename, entryname)
 
+				# patch old values
+				if user_settings_version <= 10:
+					old_entries = entries
+					entries = []
+					for i in old_entries:
+						if i[0] == UH_MODULE and i[1] == "Language":
+							entries.append( (i[0], i[1], LANGUAGENAMES.get_by_value(i[2])) )
+						else:
+							entries.append(i)
+
 				# write actual new file
 				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
 				user_config_parser = SimpleXMLSerializer( _user_config_file )
@@ -188,21 +215,18 @@ class Fife(ApplicationBase):
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
 		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
-
+		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation", \
 		                                applyfunction=update_minimap)
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
 		                                initialdata=[0, 16, 32], requiresrestart=True)
 
-		languages_map = dict(find_available_languages())
-		languages_map[_('System default')] = ''
-		# English is not shipped as .mo file.
-		languages_map['en'] = ''
+		languages = find_available_languages().keys()
 
-		self._setting.createAndAddEntry(UH_MODULE, "Language", "language",
+		self._setting.createAndAddEntry(UH_MODULE, "Language", "cjkv_language",
 		                                applyfunction=self.update_languages,
-		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages_map.keys())])
+		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages)])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
 		                                applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
@@ -259,55 +283,38 @@ class Fife(ApplicationBase):
 
 		data is used when changing the language in the settings menu.
 		"""
-
 		if data is None:
 			data = self._setting.get(UH_MODULE, "Language")
-		languages_map = dict(find_available_languages())
-		languages_map['System default'] = ''
-		# English is not shipped as .mo file.
-		languages_map['en'] = ''
-		symbol = None
-		if data == unicode('System default'):
-			symbol = 'System default'
-		else:
-			for key, value in LANGUAGENAMES.iteritems():
-				if value == data:
-					symbol = key
-		assert symbol is not None, "Something went badly wrong with the translation update!" + \
-		       " Searching for: " + str(data) + " in " + str(LANGUAGENAMES)
 
-		try:
-			index = sorted(languages_map.keys()).index(symbol)
-		# This only happens on startup when the language is not available
-		# (either from the settings file or $LANG).
-		except ValueError:
-			print "Language %s is not available!" % data
-			index = sorted(languages_map.keys()).index('System default')
-			# Reset the language or the settings crashes.
-			self._setting.set(UH_MODULE, "Language", 'System default')
+		# get language key
+		symbol = LANGUAGENAMES.get_by_value(data)
 
-		name, position = sorted(languages_map.items())[index]
-		try:
-			if name != 'System default':
+		if symbol != '': # non-default
+			try:
+				# NOTE about gettext fallback mechanism:
 				# English is not shipped as .mo file, thus if English is
 				# selected we use NullTranslations to get English output.
-				fallback = name == 'en'
-				trans = gettext.translation('unknown-horizons', position, languages=[name], fallback=fallback)
+				fallback = (symbol == 'en')
+				trans = gettext.translation('unknown-horizons', find_available_languages()[symbol], \
+				                            languages=[symbol], fallback=fallback)
 				trans.install(unicode=True, names=['ngettext',])
-			else:
-				if platform.system() == "Windows": # win doesn't set the language variable by default
-					os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
-				gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
-				name = ''
-
-		except IOError:
-			#xgettext:python-format
-			print _("Configured language {lang} at {place} could not be loaded").format(
-			         lang=name, place=position)
+			except IOError:
+				#xgettext:python-format
+				print _("Configured language {lang} could not be loaded").format(lang=name)
+				self._setting.set(UH_MODULE, "Language", LANGUAGENAMES[''])
+				return self.update_languages() # recurse
+		else:
+			# default locale
+			if platform.system() == "Windows": # win doesn't set the language variable by default
+				os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
 			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
-			self._setting.set(UH_MODULE, "Language", 'System default')
-		update_all_translations()
 
+		# update fonts
+		fontdef = get_fontdef_for_locale(symbol)
+		self.pychan.loadFonts(fontdef)
+
+		# dynamically reset all translations of active widgets
+		update_all_translations()
 
 	def init(self):
 		"""
@@ -376,7 +383,8 @@ class Fife(ApplicationBase):
 
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
-		self.pychan.loadFonts("content/fonts/libertine.fontdef")
+
+		self.update_languages()
 
 		self._gotInited = True
 		self.setup_setting_extras()

@@ -65,6 +65,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
+		build_help_strings(self.widgets['help'])
 		self.session = None
 		self.current_dialog = None
 
@@ -488,6 +489,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				try:
 					path_rel = os.path.relpath(filename)
 				except ValueError: # the relative path sometimes doesn't exist on win
+					os.close(fd)
 					os.unlink(filename)
 					# try again in the current dir, it's often writable
 					fd, filename = tempfile.mkstemp(dir=os.curdir)
@@ -570,3 +572,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				return False
 		else: # player cancelled deletion
 			return False
+
+def build_help_strings(widgets):
+	labels = widgets.getNamedChildren()
+	labels = dict( [(name, lbl) for (name, lbl) in labels.items() if name.startswith('lbl_')] )
+	for (name, lbl) in labels.items():
+		lbl[0].text = u'[{key}] = {text}'.format(text=_(lbl[0].text), key=name[4:].upper())

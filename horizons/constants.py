@@ -63,7 +63,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 45
+	SAVEGAMEREVISION= 46
 
 	@staticmethod
 	def string():
@@ -223,7 +223,7 @@ class GROUND:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [ int(i*16) for i in 0.5, 1, 2, 3, 4, 6, 8, 11, 20 ]
+	TICK_RATES = [ int(i*16) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20) ]
 
 class COLORS:
 	BLACK = 9
@@ -379,7 +379,15 @@ class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, key)
 
+	def get_by_value(self, value):
+		for item in self.iteritems():
+			if item[1] == value:
+				return item[0]
+		return "" # meaning default key
+
+
 LANGUAGENAMES = _LanguageNameDict({
+	"" 			: u'System default',
 	"af"    : u'Afrikaans',
 	"bg"    : u'Български',
 	"ca"    : u'Català',
@@ -396,9 +404,9 @@ LANGUAGENAMES = _LanguageNameDict({
 	"gl"    : u'Galego',
 	"hu"    : u'Magyar',
 	"it"    : u'Italiano',
-	"ja"    : u'Nihongo',
+	"ja"    : u'日本語',
 	"lt"    : u'Lietuvių',
-	"ko"    : u'Hangugmal/Chosŏnmal',
+	"ko"    : u'한국말/조선말',
 	"nb"    : u'Norw. Bokmål',
 	"nl"    : u'Nederlands',
 	"pl"    : u'Polski',
@@ -410,8 +418,15 @@ LANGUAGENAMES = _LanguageNameDict({
 	"sv"    : u'Svenska',
 	"tr"    : u'Türkçe',
 	"vi"    : u'Tiếng Việt',
-	"zh_CN" : u'Pǔtōnghuà',
+	"zh_CN" : u'普通話',
 	})
+
+FONTDEFS = {
+  'ja'   : 'uming',
+  'ko'   : 'uming',
+  'vi'   : 'uming',
+  'zh_CN': 'uming',
+		}
 
 AUTO_CONTINUE_CAMPAIGN=True
 
@@ -424,4 +439,3 @@ class GFX:
 
 	SHIP_OUTLINE_THRESHOLD = 96
 	SHIP_OUTLINE_WIDTH = 2
-

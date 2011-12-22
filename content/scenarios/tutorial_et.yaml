@@ -38,29 +38,15 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: ["\xDCLESANNE: EHITA PUURAIDUR", !!python/unicode 'The construction
-        material on your ship got unloaded automatically. You can now construct some
-        basic buildings.
-
-
-        We will start with building a lumberjack.
-
-
-        This is essential because, at this stage, boards are the only poles your sailors
-        can afford to hang their tents over.
-
-
-        The fisherman needs some boards to build his vessel as well.
-
-
-        In order to construct lumberjacks; open the build menu by either clicking
-        the big icon below the mini map or pressing B key.
-
-
-        The build menu is sorted by increments.
-
-        You are currently in the first increment (the Sailors level) so are offered
-        only the basic buildings.']
+  - arguments: ["\xDCLESANNE: EHITA PUURAIDUR", "Sinu laeval olevad materjalid laaditakse\
+        \ maha automaatselt. N\xFC\xFCd saad ehitada m\xF5ned algelised ehitised.\n\
+        \nAlustame puuraidurist.\n\nSee on vajalik kuna puidust lauad on ainsad vahendid\
+        \ momendil mida saab kasutada telkide p\xFCstitamiseks.\n\nLisaks vajab ka\
+        \ kalamees oma laeva ehitamiseks laudu.\n\nEt ehitada puuraidur ava ehitiste\
+        \ men\xFC\xFC vajutades suurele ikoonile mini kaardi all v\xF5i vajutades\
+        \ nuppu B.\n\nEhitiste men\xFC\xFC on jagatud gruppideks.\nSinu kasutada on\
+        \ momendil ainult esimene grupp (Meremehe tase) seega saad ehitada ainult\
+        \  algelisi ehitisi."]
     type: logbook_w
   - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
         more and more complex buildings.

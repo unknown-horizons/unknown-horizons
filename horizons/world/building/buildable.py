@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.util import Point, Rect, decorators
-from horizons.world.pathfinding.pather import StaticPather
+from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.util.shapes.circle import Circle
@@ -255,7 +255,7 @@ class BuildableLine(Buildable):
 		if island is None:
 			return []
 
-		path = StaticPather.get_direct_path(island, point1, point2)
+		path = RoadPathFinder()(island.path_nodes.nodes, point1.to_tuple(), point2.to_tuple())
 		if path is None: # can't find a path between these points
 			return [] # TODO: maybe implement alternative strategy
 
