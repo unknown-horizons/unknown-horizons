@@ -27,7 +27,7 @@ from horizons.command.building import Build, Tear
 from horizons.command.unit import CreateUnit
 from horizons.constants import BUILDINGS, UNITS
 from horizons.util import Point
-from horizons.world.pathfinding.pather import StaticPather
+from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
 
 from tests.game import settle, game_test, RANDOM_SEED
 
@@ -87,10 +87,10 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 	assert Build(BUILDINGS.PASTURE_CLASS, 26, 37, island, settlement=settlement)(p)
 
 	# Build roads
-	for (start, dest) in [(Point(27, 30), Point(30, 23)), (Point(32, 23), Point(35, 30)),
-						  (Point(25, 21), Point(30, 23)), (Point(32, 23), Point(35, 21)),
-						  (Point(30, 35), Point(32, 25)), (Point(26, 33), Point(27, 30))]:
-		path = StaticPather.get_direct_path(island, start, dest)
+	for (start, dest) in [(Point(27, 30), Point(30, 23)), (Point(32, 23), Point(35, 29)),
+						  (Point(25, 22), Point(30, 23)), (Point(32, 23), Point(35, 22)),
+						  (Point(30, 34), Point(32, 25)), (Point(26, 32), Point(27, 30))]:
+		path = RoadPathFinder()(island.path_nodes.nodes, start.to_tuple(), dest.to_tuple())
 		assert path
 		for (x, y) in path:
 			a = Build(BUILDINGS.TRAIL_CLASS, x, y, island, settlement=settlement)(p)
