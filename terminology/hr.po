@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-22 18:01+0200\n"
+"PO-Revision-Date: 2011-12-22 18:11+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -114,7 +114,7 @@ msgid "coast"
 msgstr "obala"
 
 msgid "connect"
-msgstr "spoi"
+msgstr "spoji"
 
 msgid "cost"
 msgstr "cijena"
@@ -207,13 +207,13 @@ msgid "help"
 msgstr "pomoć"
 
 msgid "house"
-msgstr ""
+msgstr "kuća"
 
 msgid "inventory"
-msgstr ""
+msgstr "inventar"
 
 msgid "level"
-msgstr ""
+msgstr "level"
 
 msgid "move"
 msgstr ""
@@ -225,7 +225,7 @@ msgid "produce"
 msgstr ""
 
 msgid "produced"
-msgstr ""
+msgstr "proizvedeno"
 
 msgid "pasture"
 msgstr ""
@@ -234,16 +234,16 @@ msgid "storage tent"
 msgstr ""
 
 msgid "sugar"
-msgstr ""
+msgstr "šećer"
 
 msgid "tree"
-msgstr ""
+msgstr "drvo"
 
 msgid "active"
-msgstr ""
+msgstr "aktivno"
 
 msgid "add"
-msgstr ""
+msgstr "dodaj"
 
 msgid "build menu"
 msgstr ""
@@ -255,7 +255,7 @@ msgid "construction"
 msgstr ""
 
 msgid "continue"
-msgstr ""
+msgstr "nastavi"
 
 msgid "decrease"
 msgstr ""
@@ -264,43 +264,43 @@ msgid "free trader"
 msgstr ""
 
 msgid "hunter"
-msgstr ""
+msgstr "lovac"
 
 msgid "leave"
 msgstr ""
 
 msgid "market"
-msgstr ""
+msgstr "tržište"
 
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 msgid "sailor"
-msgstr ""
+msgstr "mornar"
 
 msgid "pioneer"
-msgstr ""
+msgstr "pionir"
 
 msgid "settler"
 msgstr ""
 
 msgid "citizen"
-msgstr ""
+msgstr "građanin"
 
 msgid "merchant"
-msgstr ""
+msgstr "trgovac"
 
 msgid "aristocrat"
 msgstr ""
 
 msgid "refresh"
-msgstr ""
+msgstr "osvježi"
 
 msgid "residents"
-msgstr ""
+msgstr "stanovnika"
 
 msgid "run"
-msgstr ""
+msgstr "trči"
 
 msgid "slot"
 msgstr ""
@@ -309,19 +309,19 @@ msgid "stop"
 msgstr ""
 
 msgid "team"
-msgstr ""
+msgstr "tim"
 
 msgid "village"
-msgstr ""
+msgstr "naselje"
 
 msgid "account"
-msgstr ""
+msgstr "račun"
 
 msgid "back"
-msgstr ""
+msgstr "nazad"
 
 msgid "build settlement"
-msgstr ""
+msgstr "izgradi nastambu"
 
 msgid "Captain's log"
 msgstr ""
@@ -330,7 +330,7 @@ msgid "cloth"
 msgstr ""
 
 msgid "description"
-msgstr ""
+msgstr "opis"
 
 msgid "happiness"
 msgstr ""
@@ -351,16 +351,16 @@ msgid "output"
 msgstr ""
 
 msgid "play"
-msgstr ""
+msgstr "igraj"
 
 msgid "sale"
 msgstr ""
 
 msgid "save"
-msgstr ""
+msgstr "sačuvaj"
 
 msgid "school"
-msgstr ""
+msgstr "škola"
 
 msgid "screen"
 msgstr ""
@@ -369,10 +369,10 @@ msgid "solution"
 msgstr ""
 
 msgid "sound"
-msgstr ""
+msgstr "zvuk"
 
 msgid "from time to time"
-msgstr ""
+msgstr "s vremena na vrijeme"
 
 msgid "trading"
 msgstr ""
@@ -384,25 +384,25 @@ msgid "weaver"
 msgstr ""
 
 msgid "animal"
-msgstr ""
+msgstr "životinja"
 
 msgid "fish"
-msgstr ""
+msgstr "riba"
 
 msgid "fisherman"
 msgstr ""
 
 msgid "forest"
-msgstr ""
+msgstr "šuma"
 
 msgid "forum"
-msgstr ""
+msgstr "forum"
 
 msgid "fulfill"
 msgstr ""
 
 msgid "graphics"
-msgstr ""
+msgstr "grafika"
 
 msgid "grow"
 msgstr ""
@@ -435,7 +435,7 @@ msgid "service"
 msgstr ""
 
 msgid "sheep"
-msgstr ""
+msgstr "ovca"
 
 msgid "ship inventory"
 msgstr ""
@@ -447,16 +447,16 @@ msgid "trade partner"
 msgstr ""
 
 msgid "yields"
-msgstr ""
+msgstr "prinosi"
 
 msgid "faith"
-msgstr ""
+msgstr "vjera"
 
 msgid "green"
-msgstr ""
+msgstr "zelana"
 
 msgid "red"
-msgstr ""
+msgstr "crvena"
 
 msgid "check"
 msgstr ""
@@ -465,7 +465,7 @@ msgid "connection"
 msgstr ""
 
 msgid "no"
-msgstr ""
+msgstr "ne"
 
 msgid "tax"
 msgstr ""
