@@ -21,9 +21,6 @@
 
 import logging
 
-from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.world.resourcehandler import ResourceHandler
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.productionline import ProductionLine
 from horizons.world.production.production import Production, SingleUseProduction
 from horizons.constants import PRODUCTION
