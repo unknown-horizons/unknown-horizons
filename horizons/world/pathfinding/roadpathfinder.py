@@ -26,13 +26,26 @@ from horizons.util.python import decorators
 class RoadPathFinder(object):
 	"""Finds the shortest path that should be most preferred by human players."""
 
-	def __call__(self, path_nodes, source, destination):
+	# the values are based on the configurations of the first two of the three sets of relative coordinates (previous, current, next)
+	__counterclockwise_turns = [((0, 0), (0, 1)), ((0, 1), (1, 1)), ((1, 0), (0, 0)), ((1, 1), (1, 0))]
+
+	@classmethod
+	def __is_preferred_turn(cls, previous_coords, current_coords, next_coords, clockwise):
+		"""Returns True if and only if the turn is in the preferred direction."""
+		min_x = min(previous_coords[0], current_coords[0], next_coords[0])
+		min_y = min(previous_coords[1], current_coords[1], next_coords[1])
+		relative_previous_coords = (previous_coords[0] - min_x, previous_coords[1] - min_y)
+		relative_current_coords = (current_coords[0] - min_x, current_coords[1] - min_y)
+		return ((relative_previous_coords, relative_current_coords) in cls.__counterclockwise_turns) ^ clockwise
+
+	def __call__(self, path_nodes, source, destination, clockwise = True):
 		"""
 		Return the path from the source to the destination or None if it is impossible.
 
 		@param path_nodes: {(x, y): unused value, ...}
 		@param source: (x, y)
 		@param destination: (x, y)
+		@param clockwise: bool; whether to try finding the path clockwise or counterclockwise
 		"""
 
 		if source not in path_nodes or destination not in path_nodes:
@@ -43,9 +56,9 @@ class RoadPathFinder(object):
 		distance = {}
 		heap = []
 		for dir in xrange(2): # 0 -> changed x, 1 -> changed y
-			# NOTE: all distances are in the form (actual distance, number of turns)
-			real_distance = (1, 0)
-			expected_distance = (((source[0] - destination[0]) ** 2 + (source[1] - destination[1]) ** 2) ** 0.5, 0)
+			# NOTE: all distances are in the form (actual distance, number of turns, number of non-preferred turns)
+			real_distance = (1, 0, 0)
+			expected_distance = (((source[0] - destination[0]) ** 2 + (source[1] - destination[1]) ** 2) ** 0.5, 0, 0)
 			key = (source[0], source[1], dir)
 			# the value is (real distance so far, previous key)
 			distance[key] = (real_distance, None)
@@ -71,9 +84,16 @@ class RoadPathFinder(object):
 					continue
 				reduced_dir = 0 if moves[dir][0] != 0 else 1
 				next_key = (coords[0], coords[1], reduced_dir)
-				# NOTE: all distances are in the form (actual distance, number of turns)
-				real_distance = (distance_so_far[0] + 1, distance_so_far[1] + (0 if reduced_dir == key[2] else 1))
-				expected_distance = (real_distance[0] + ((coords[0] - destination[0]) ** 2 + (coords[1] - destination[1]) ** 2) ** 0.5, real_distance[1])
+
+				# determine whether this is a turn and if so then whether it is in the preferred direction
+				turn = reduced_dir != key[2]
+				if turn and distance[key][1] is None:
+					continue # disallow turning as the first step; doesn't affect the ability to find the best path
+				good_turn = self.__is_preferred_turn(distance[key][1][:2], key[:2], coords, clockwise) if turn else True
+
+				# NOTE: all distances are in the form (actual distance, number of turns, number of non-preferred turns)
+				real_distance = (distance_so_far[0] + 1, distance_so_far[1] + (1 if turn else 0), distance_so_far[2] + (0 if good_turn else 1))
+				expected_distance = (real_distance[0] + ((coords[0] - destination[0]) ** 2 + (coords[1] - destination[1]) ** 2) ** 0.5, real_distance[1], real_distance[2])
 				if next_key not in distance or distance[next_key][0] > real_distance:
 					distance[next_key] = (real_distance, key)
 					heapq.heappush(heap, (expected_distance, real_distance, next_key))
@@ -82,7 +102,7 @@ class RoadPathFinder(object):
 		if final_key is not None:
 			path = []
 			while final_key is not None:
-				path.append((final_key[0], final_key[1]))
+				path.append(final_key[:2])
 				final_key = distance[final_key][1]
 			return path
 		return None
