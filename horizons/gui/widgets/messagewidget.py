@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from string import Template
 import textwrap
 
 from fife.extensions import pychan
@@ -217,13 +216,17 @@ class Message(object):
 		self.id = id
 		self.read = read
 		self.created = created
-		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for FROM message WHERE id_string=?', id).rows[0][0])
-		icon = icon_id if icon_id else horizons.main.db('SELECT icon FROM message where id_string = ?', id)[0][0]
-		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image FROM message_icon WHERE color=? AND icon_id = ?', 1, icon)[0]
+		self.display = display if display is not None else horizons.main.db.get_msg_visibility(id)
+		icon = icon_id if icon_id else horizons.main.db.get_msg_icon_id(id)
+		self.up_image, self.down_image, self.hover_image = horizons.main.db.get_msg_icons(icon)
 		if message is not None:
 			assert isinstance(message, str) or isinstance(message, unicode)
 			self.message = message
 		else:
-			text = horizons.main.db('SELECT text FROM message WHERE id_string=?', id)[0][0]
-			self.message = Template(_(text)).safe_substitute( \
-			  message_dict if message_dict is not None else {})
+			msg = _(horizons.main.db.get_msg_text(id))
+			try:
+				self.message = msg.format(**message_dict if message_dict is not None else {})
+			except KeyError as err:
+				self.message = msg
+				print "Warning: Unsubstituted string {err} in {id} message \"{msg}\", dict {dic}".format(
+				       err=err, msg=msg, id=id, dic=message_dict)
