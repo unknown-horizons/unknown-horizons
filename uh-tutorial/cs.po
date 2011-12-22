@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-22 12:43+0200\n"
+"PO-Revision-Date: 2011-12-22 13:21+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1032,7 +1032,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:108
 msgid "Build a storage tent (increment I tab) where it makes sense."
-msgstr "Vybudujte skladovací stan,tam kde to má smysl."
+msgstr "Vybudujte skladovací stan (v záložce úrovně I) tam, kde to má smysl."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:110
@@ -1104,7 +1104,8 @@ msgstr ""
 "\n"
 "Jakmile uspokojíte obyvatele, jste připraveni objevovat nové neznámé obzory!\n"
 "\n"
-"ÚKOL: Udržte při počtu 50 obyvatel kladnou bilanci pro dokončení tutorialu."
+"ÚKOL: Dosáhněte počtu 50 obyvatel a udrže kladnou bilanci pro dokončení "
+"tutorialu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:122

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-22 12:52+0200\n"
-"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
+"PO-Revision-Date: 2011-12-22 13:24+0200\n"
+"Last-Translator: Pavel <pavelspek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -895,7 +895,7 @@ msgstr "Chyba při smazání uloženého souboru!"
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:325
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Není možná žádná diplomacie"
 
 #: horizons/gui/ingamegui.py:326
 msgid "Cannot do diplomacy as there are no other players."
@@ -939,6 +939,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Prosím, zkontrolujte Vaše připojení k internetu. Pokud je v pořádku, je "
+"možné, že hlavní server je dočasně mimo provoz."
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid "Something went wrong with the network:"
@@ -951,7 +953,7 @@ msgstr "Verze se liší!"
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Mapa: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
 #, python-format
@@ -971,6 +973,9 @@ msgstr "Špatná verze"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"Rozdílné verze hry! Hráči musí používat stejnou verzi hry, prosím "
+"aktualizujte na nejnovější verzi. Verze hry: {game_version} Vaše verze: "
+"{own_version}"
 
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:294
@@ -984,21 +989,21 @@ msgstr "Doporučený počet hráčů: {number}"
 #: horizons/gui/widgets/choose_next_scenario.py:43
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Obtížnost: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Autor: {autho}"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 #: horizons/gui/modules/singleplayermenu.py:122
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Popis: {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "Invalid player name"
@@ -1098,7 +1103,7 @@ msgstr ""
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "Úroveň"
 
 # 83%
 #. (text of widget: headline)
@@ -1106,9 +1111,8 @@ msgstr ""
 #: horizons/gui/tabs/buyselltab.py:83 horizons/i18n/guitranslations.py:566
 #: horizons/i18n/guitranslations.py:579 horizons/i18n/guitranslations.py:594
 #: horizons/i18n/guitranslations.py:605
-#, fuzzy
 msgid "Trade"
-msgstr "Obchodník"
+msgstr "Obchod"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:37 horizons/i18n/guitranslations.py:364
@@ -1439,7 +1443,7 @@ msgstr "Tkadlec: Vyrábí látku z jehněčí vlny."
 #: horizons/i18n/guitranslations.py:115
 #, fuzzy
 msgid "Settler buildings"
-msgstr "Namořní budovy"
+msgstr "Budovy osadníků"
 
 #. (text of widget: mining_label)
 #: horizons/i18n/guitranslations.py:117
@@ -1524,7 +1528,7 @@ msgstr ""
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:159
 msgid "Running costs:"
-msgstr ""
+msgstr "Provozní náklady:"
 
 #. (tooltip of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
@@ -1540,12 +1544,12 @@ msgstr "Klikněte pro změnu jména Vaší osady."
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:171
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Stavební menu (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:173
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Zbourat (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:175
@@ -1555,7 +1559,7 @@ msgstr "Diplomacie"
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:177
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Herní menu (Esc)"
 
 # 76%
 #. (tooltip of widget: logbook)
@@ -1635,7 +1639,7 @@ msgstr "Zlato"
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:214
 msgid "Enter new name:"
-msgstr ""
+msgstr "Zadejte nové jméno:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:216
