@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-22 13:21+0200\n"
+"PO-Revision-Date: 2011-12-22 13:22+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -456,6 +456,7 @@ msgstr "Postavte alespoň tři další stany a propojte je s tržištěm."
 msgid "NEW TASK: BUILD SIGNAL FIRE"
 msgstr "NOVÝ ÚKOL: POSTAVTE SIGNÁLNÍ OHEŇ"
 
+# Free Trader překlad jako Svobodný obchodník
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
 msgid ""
@@ -1070,7 +1071,6 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:114
-#, fuzzy
 msgid "Build a weaver that can somehow reach the wool of your farm."
 msgstr "Postavte tkalcovnu, která bude v dosahu vlny z Vaší farmy."
 
