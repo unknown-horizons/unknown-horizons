@@ -257,6 +257,8 @@ class Session(LivingObject):
 		# Open menus later, they may need unit data not yet inited
 		self.cursor.apply_select()
 
+		Scheduler().before_ticking()
+
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""
 		TUTORIAL:
