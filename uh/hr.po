@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-22 17:40+0200\n"
+"PO-Revision-Date: 2011-12-22 17:52+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -920,12 +920,12 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Mapa: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
-#, python-format
+#, python-format, fuzzy
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Igrači: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 #, python-format
@@ -934,7 +934,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
-msgstr ""
+msgstr "Pogrešna verzija"
 
 #: horizons/gui/modules/multiplayermenu.py:195
 #, python-format
@@ -945,32 +945,32 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:65
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Preporučen broj igrača: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
 #: horizons/gui/widgets/choose_next_scenario.py:43
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Težina: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Autor: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 #: horizons/gui/modules/singleplayermenu.py:122
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Opis: {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "Invalid player name"
-msgstr ""
+msgstr "Nevažeće ime igrača"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "You entered an invalid playername."
@@ -978,23 +978,23 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
-msgstr ""
+msgstr "Veličina mape:"
 
 #: horizons/gui/modules/singleplayermenu.py:208
 msgid "Water:"
-msgstr ""
+msgstr "Voda:"
 
 #: horizons/gui/modules/singleplayermenu.py:216
 msgid "Max island size:"
-msgstr ""
+msgstr "Maksimalna veličina otoka:"
 
 #: horizons/gui/modules/singleplayermenu.py:224
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Preporučena veličina otoka:"
 
 #: horizons/gui/modules/singleplayermenu.py:232
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Odstupanje veličine otoka:"
 
 #: horizons/gui/modules/singleplayermenu.py:254
 msgid "Resource density:"
@@ -1021,7 +1021,7 @@ msgstr ""
 #: horizons/gui/mousetools/buildingtool.py:120
 #: horizons/i18n/guitranslations.py:157
 msgid "Build"
-msgstr ""
+msgstr "Izgradi"
 
 #: horizons/gui/mousetools/navigationtool.py:68
 msgid "Press H to remove this hint"
@@ -1043,17 +1043,17 @@ msgstr ""
 #: horizons/gui/tabs/boatbuildertab.py:219
 #: horizons/i18n/guitranslations.py:262
 msgid "Trade boats"
-msgstr ""
+msgstr "Plovila za razmjenu"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:227
 #: horizons/i18n/guitranslations.py:279
 msgid "War boats"
-msgstr ""
+msgstr "Plovila za rat"
 
 #: horizons/gui/tabs/boatbuildertab.py:234
 msgid "War ships"
-msgstr ""
+msgstr "Brodovi za rat"
 
 #: horizons/gui/tabs/boatbuildertab.py:251
 msgid "Confirm order"
