@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-23 12:24+0200\n"
+"PO-Revision-Date: 2011-12-23 13:08+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -1504,12 +1504,12 @@ msgstr ""
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:175
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomacija"
 
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:177
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Glavni izbornik (Esc)"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
