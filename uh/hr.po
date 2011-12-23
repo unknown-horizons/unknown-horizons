@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-23 11:00+0200\n"
+"PO-Revision-Date: 2011-12-23 11:34+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -1752,7 +1752,7 @@ msgstr ""
 #. (text of widget: headline_income_label)
 #: horizons/i18n/guitranslations.py:324
 msgid "Income:"
-msgstr ""
+msgstr "Dohodak:"
 
 #. (text of widget: sell_income_label)
 #: horizons/i18n/guitranslations.py:328
@@ -1914,7 +1914,7 @@ msgstr ""
 #. (text of widget: name_label)
 #: horizons/i18n/guitranslations.py:475 horizons/i18n/guitranslations.py:557
 msgid "Name:"
-msgstr ""
+msgstr "Ime:"
 
 #. (tooltip of widget: collector_utilisation_label)
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
@@ -2002,12 +2002,12 @@ msgstr ""
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
 msgid "Pause production"
-msgstr ""
+msgstr "Pauziraj proizvodnju"
 
 #. (tooltip of widget: toggle_active_inactive)
 #: horizons/i18n/guitranslations.py:612 horizons/i18n/guitranslations.py:619
 msgid "Start production"
-msgstr ""
+msgstr "Pokreni proizvodnju"
 
 #. (tooltip of widget: delete_bo) Trade route entry
 #: horizons/i18n/guitranslations.py:624
@@ -2072,23 +2072,23 @@ msgstr ""
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:659
 msgid "Exit"
-msgstr ""
+msgstr "Izađi"
 
 #. (tooltip of widget: add_bo) List of harbors in trade route
 #: horizons/i18n/guitranslations.py:661
 msgid "Add to list"
-msgstr ""
+msgstr "Dodaj na listu"
 
 #. (text of widget: noi18n_health_label)
 #: horizons/i18n/guitranslations.py:668
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:673 horizons/i18n/guitranslations.py:696
 #: horizons/i18n/guitranslations.py:711 horizons/i18n/guitranslations.py:726
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
 #. (text of widget: building_score)
 #: horizons/i18n/guitranslations.py:678
@@ -2141,7 +2141,7 @@ msgstr ""
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:722
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:724
@@ -2151,7 +2151,7 @@ msgstr ""
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:731
 msgid "Aggressive"
-msgstr ""
+msgstr "Agresivno"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:733
@@ -2166,7 +2166,7 @@ msgstr ""
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:737
 msgid "Passive"
-msgstr ""
+msgstr "Pasivno"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:742
@@ -2201,7 +2201,7 @@ msgstr ""
 #. (text of widget: lbl_f1)
 #: horizons/i18n/guitranslations.py:754
 msgid "{F1} = Display help"
-msgstr ""
+msgstr "{F1} = Prikaži pomoć"
 
 #. (text of widget: lbl_f10)
 #: horizons/i18n/guitranslations.py:756
@@ -2251,7 +2251,7 @@ msgstr ""
 #. (text of widget: lbl_have_fun)
 #: horizons/i18n/guitranslations.py:774
 msgid "Have fun."
-msgstr ""
+msgstr "Zabavi se."
 
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:776
@@ -2271,7 +2271,7 @@ msgstr ""
 #. (text of widget: lbl_p)
 #: horizons/i18n/guitranslations.py:782
 msgid "{P} = Pause game"
-msgstr ""
+msgstr "{P} = Pauziraj igru"
 
 #. (text of widget: lbl_period)
 #: horizons/i18n/guitranslations.py:784
@@ -2328,7 +2328,7 @@ msgstr ""
 #. (text of widget: help) Main / in-game menu entry
 #: horizons/i18n/guitranslations.py:811 horizons/i18n/guitranslations.py:837
 msgid "Help"
-msgstr ""
+msgstr "Pomoć"
 
 #. (text of widget: quit)
 #: horizons/i18n/guitranslations.py:815
@@ -2346,7 +2346,7 @@ msgstr ""
 #. (text of widget: start)
 #: horizons/i18n/guitranslations.py:821
 msgid "Return to game"
-msgstr ""
+msgstr "Vrati se u igru"
 
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:826
@@ -2381,7 +2381,7 @@ msgstr ""
 #. (text of widget: create_game_lbl)
 #: horizons/i18n/guitranslations.py:854 horizons/i18n/guitranslations.py:888
 msgid "Create game:"
-msgstr ""
+msgstr "Kreiraj igru:"
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:856
@@ -2391,7 +2391,7 @@ msgstr ""
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:858
 msgid "Choose a map:"
-msgstr ""
+msgstr "Izaberi mapu:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:860
@@ -2436,7 +2436,7 @@ msgstr ""
 #. (text of widget: startmessage)
 #: horizons/i18n/guitranslations.py:879
 msgid "Game details:"
-msgstr ""
+msgstr "Detalji igre:"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:881
@@ -2446,13 +2446,13 @@ msgstr ""
 #. (text of widget: active_games_lbl)
 #: horizons/i18n/guitranslations.py:886
 msgid "Active games:"
-msgstr ""
+msgstr "Aktivne igre:"
 
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
 #: horizons/i18n/guitranslations.py:890 horizons/i18n/guitranslations.py:987
 msgid "Main menu:"
-msgstr ""
+msgstr "Glavni izbornik:"
 
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:892
@@ -2482,7 +2482,7 @@ msgstr ""
 #. (tooltip of widget: create)
 #: horizons/i18n/guitranslations.py:904
 msgid "Create a new game"
-msgstr ""
+msgstr "Kreiraj novu igru"
 
 #. (tooltip of widget: join)
 #: horizons/i18n/guitranslations.py:906
@@ -2492,7 +2492,7 @@ msgstr ""
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:908 horizons/i18n/guitranslations.py:1001
 msgid "Exit to main menu"
-msgstr ""
+msgstr "Izađi do glavnog izbornika"
 
 #. (tooltip of widget: refresh)
 #: horizons/i18n/guitranslations.py:910
@@ -2547,7 +2547,7 @@ msgstr ""
 #. (text of widget: language_label)
 #: horizons/i18n/guitranslations.py:935
 msgid "Select language:"
-msgstr ""
+msgstr "Odaberi jezik:"
 
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:937
@@ -2557,7 +2557,7 @@ msgstr ""
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:939
 msgid "Music volume:"
-msgstr ""
+msgstr "Jačina glazbe:"
 
 #. (text of widget: network_port_hint_lbl)
 #: horizons/i18n/guitranslations.py:941
@@ -2627,13 +2627,13 @@ msgstr ""
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:974
 msgid "Your saved games:"
-msgstr ""
+msgstr "Tvoje sačuvane igre:"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: okay)
 #: horizons/i18n/guitranslations.py:976 horizons/i18n/guitranslations.py:999
 msgid "Start game"
-msgstr ""
+msgstr "Započni igru"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:978
@@ -2653,7 +2653,7 @@ msgstr ""
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py:989
 msgid "Start game:"
-msgstr "Započmi igru:"
+msgstr "Započni igru:"
 
 #. (text of widget: campaign)
 #: horizons/i18n/guitranslations.py:991
