@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-23 15:52+0200\n"
+"PO-Revision-Date: 2011-12-23 16:07+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -1010,7 +1010,7 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:283
 msgid "Error message:"
-msgstr ""
+msgstr "Poruka greške:"
 
 #: horizons/gui/modules/singleplayermenu.py:284
 msgid "Please report this to the author."
@@ -1087,7 +1087,7 @@ msgstr "Račun"
 
 #: horizons/gui/tabs/mainsquaretabs.py:104
 msgid "Main square overview"
-msgstr ""
+msgstr "Pregled glavnog trga"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:118
