@@ -144,7 +144,7 @@ class MessageWidget(LivingObject):
 		self.bg_middle.removeAllChildren()
 
 		line_count = len(text.splitlines()) - 1
-		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
+		for i in xrange(line_count * self.LINE_HEIGHT / self.IMG_HEIGHT):
 			middle_icon = pychan.Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
 
@@ -216,7 +216,7 @@ class Message(object):
 		self.id = id
 		self.read = read
 		self.created = created
-		self.display = display or horizons.main.db.get_msg_visibility(id)
+		self.display = display if display is not None else horizons.main.db.get_msg_visibility(id)
 		icon = icon_id if icon_id else horizons.main.db.get_msg_icon_id(id)
 		self.up_image, self.down_image, self.hover_image = horizons.main.db.get_msg_icons(icon)
 		if message is not None:
@@ -225,7 +225,7 @@ class Message(object):
 		else:
 			msg = _(horizons.main.db.get_msg_text(id))
 			try:
-				self.message = msg.format(**message_dict or {})
+				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
 				self.message = msg
 				print "Warning: Unsubstituted string {err} in {id} message \"{msg}\", dict {dic}".format(
