@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-23 11:34+0200\n"
+"PO-Revision-Date: 2011-12-23 12:24+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -1556,12 +1556,12 @@ msgstr ""
 #. (tooltip of widget: bricks_icon)
 #: horizons/i18n/guitranslations.py:198
 msgid "Bricks"
-msgstr ""
+msgstr "Cigle"
 
 #. (tooltip of widget: food_icon)
 #: horizons/i18n/guitranslations.py:200
 msgid "Food"
-msgstr ""
+msgstr "Hrana"
 
 #. (tooltip of widget: textiles_icon)
 #: horizons/i18n/guitranslations.py:202
@@ -1573,22 +1573,22 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:204 horizons/i18n/guitranslations.py:274
 #: horizons/i18n/guitranslations.py:291
 msgid "Tools"
-msgstr ""
+msgstr "Alati"
 
 #. (tooltip of widget: gold_icon)
 #: horizons/i18n/guitranslations.py:209
 msgid "Gold"
-msgstr ""
+msgstr "Zlato"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:214
 msgid "Enter new name:"
-msgstr ""
+msgstr "Unesi novo ime:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:216
 msgid "Change name"
-msgstr ""
+msgstr "Promijeni ime"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: apply_new_nickname)
@@ -1599,7 +1599,7 @@ msgstr ""
 #. (text of widget: chat_lbl)
 #: horizons/i18n/guitranslations.py:223
 msgid "Enter your message:"
-msgstr ""
+msgstr "Napiši poruku:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:225
@@ -1619,7 +1619,7 @@ msgstr ""
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "Sačuvaj mapu"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
@@ -1660,12 +1660,12 @@ msgstr ""
 #. (tooltip of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 #: horizons/i18n/guitranslations.py:253
 msgid "Pause"
-msgstr ""
+msgstr "Pauziraj"
 
 #. (tooltip of widget: toggle_active_inactive) Resumes the currently paused ship production
 #: horizons/i18n/guitranslations.py:255
 msgid "Resume"
-msgstr ""
+msgstr "Nastavi"
 
 #. (tooltip of widget: running_costs_label)
 #. (text of widget: running_costs_label)
@@ -1688,14 +1688,14 @@ msgstr ""
 #. (tooltip of widget: BB_build_war1_1)
 #: horizons/i18n/guitranslations.py:266 horizons/i18n/guitranslations.py:283
 msgid "Build this ship!"
-msgstr ""
+msgstr "Izgradi ovaj brod!"
 
 #. (tooltip of widget: costs_001)
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py:268 horizons/i18n/guitranslations.py:285
 #: horizons/i18n/guitranslations.py:684
 msgid "Money"
-msgstr ""
+msgstr "Novac"
 
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
@@ -1705,7 +1705,7 @@ msgstr ""
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "Topovi"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298
