@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-23 18:41+0200\n"
+"PO-Revision-Date: 2011-12-23 18:55+0200\n"
 "Last-Translator: Pavel <pavelspek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1136,7 +1136,7 @@ msgstr "Přehled osadníků"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Nejsou povolena vylepšení."
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
@@ -1203,7 +1203,7 @@ msgstr "Koupit/Prodat"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
-msgstr ""
+msgstr "Příliš daleko od nejbližšího Obchodního přístavu."
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:204
@@ -1248,7 +1248,7 @@ msgstr "Prázdnota"
 
 #: horizons/gui/widgets/logbook.py:157
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Ve Vašem lodním deníku není zatím žádný záznam!"
 
 #: horizons/gui/widgets/playerssettlements.py:42
 #, python-format
@@ -1259,7 +1259,7 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py:112
 #: horizons/i18n/guitranslations.py:692
 msgid "Total"
-msgstr ""
+msgstr "Celkem"
 
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
@@ -1360,13 +1360,13 @@ msgstr "Stan: Ubytování pro tvé obyvatele."
 #. (tooltip of widget: store-1)
 #: horizons/i18n/guitranslations.py:67
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
+msgstr "Skladiště: Zvyšuje zásobní kapacitu a poskytuje sběrače."
 
 # 89%
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
 msgid "Trail (R): Needed for collecting goods."
-msgstr "Stezka (R): Protřebná pro sběr zboží."
+msgstr "Stezka (R): Potřebná pro sběr zboží."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
@@ -1376,12 +1376,12 @@ msgstr "Pole"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:80
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "Průkopnické stavby"
 
 #. (text of widget: military_label)
 #: horizons/i18n/guitranslations.py:82
 msgid "Military"
-msgstr ""
+msgstr "Armáda"
 
 #. (tooltip of widget: boat_builder-1)
 #: horizons/i18n/guitranslations.py:86
@@ -1406,17 +1406,17 @@ msgstr ""
 #. (tooltip of widget: herder-1)
 #: horizons/i18n/guitranslations.py:94
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
+msgstr "Farma: Obhospodařuje pole a chová dobytek."
 
 #. (tooltip of widget: pasture-1)
 #: horizons/i18n/guitranslations.py:96
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "Pastvina: Chová ovce. Produkuje vlnu. Potřebuje farmu."
 
 #. (tooltip of widget: potatofield-1)
 #: horizons/i18n/guitranslations.py:98
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
+msgstr "Bramborové pole: Produkuje jídlo. Potřebuje farmu."
 
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:100
