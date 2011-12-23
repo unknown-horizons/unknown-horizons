@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-23 13:08+0200\n"
+"PO-Revision-Date: 2011-12-23 14:07+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -1107,13 +1107,13 @@ msgstr ""
 #: horizons/gui/tabs/mainsquaretabs.py:229
 #: horizons/i18n/guitranslations.py:409
 msgid "Sailors"
-msgstr ""
+msgstr "Mornari"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:235
 #: horizons/i18n/guitranslations.py:378
 msgid "Pioneers"
-msgstr ""
+msgstr "Pioniri"
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
@@ -1288,12 +1288,12 @@ msgstr ""
 #. (tooltip of widget: hunter-1)
 #: horizons/i18n/guitranslations.py:57
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "Lovac: Lovi šumske divlje životinje, proizvdi hranu."
 
 #. (tooltip of widget: lighthouse-1)
 #: horizons/i18n/guitranslations.py:59
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
+msgstr "Signalna vatra: Dozvoljava igraču trgovanje sa slobodnim trgovcem."
 
 #. (tooltip of widget: lumberjack-1)
 #: horizons/i18n/guitranslations.py:61
@@ -1323,7 +1323,7 @@ msgstr ""
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
 msgid "Fields"
-msgstr ""
+msgstr "Polja"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:80
@@ -1333,7 +1333,7 @@ msgstr ""
 #. (text of widget: military_label)
 #: horizons/i18n/guitranslations.py:82
 msgid "Military"
-msgstr ""
+msgstr "Vojska"
 
 #. (tooltip of widget: boat_builder-1)
 #: horizons/i18n/guitranslations.py:86
