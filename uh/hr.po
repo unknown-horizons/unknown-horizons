@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-22 17:52+0200\n"
+"PO-Revision-Date: 2011-12-23 11:00+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -57,12 +57,12 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Butchery"
-msgstr ""
+msgstr "Klaonica"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Cattle"
-msgstr ""
+msgstr "Stoka"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -2638,7 +2638,7 @@ msgstr ""
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:978
 msgid "Cancel"
-msgstr ""
+msgstr "Odustani"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:980
@@ -2653,27 +2653,27 @@ msgstr ""
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py:989
 msgid "Start game:"
-msgstr ""
+msgstr "Započmi igru:"
 
 #. (text of widget: campaign)
 #: horizons/i18n/guitranslations.py:991
 msgid "Campaign"
-msgstr ""
+msgstr "Kampanja"
 
 #. (text of widget: free_maps)
 #: horizons/i18n/guitranslations.py:993
 msgid "Free play"
-msgstr ""
+msgstr "Slobodna igra"
 
 #. (text of widget: random)
 #: horizons/i18n/guitranslations.py:995
 msgid "Random map"
-msgstr ""
+msgstr "Nasumična mapa"
 
 #. (text of widget: scenario)
 #: horizons/i18n/guitranslations.py:997
 msgid "Scenario"
-msgstr ""
+msgstr "Scenario"
 
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
@@ -2681,7 +2681,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:1006 horizons/i18n/guitranslations.py:1011
 #: horizons/i18n/guitranslations.py:1021
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Izaberi mapu za igranje:"
 
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:1016
@@ -2706,17 +2706,17 @@ msgstr ""
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1035
 msgid "Pirates"
-msgstr ""
+msgstr "Gusari"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:1040
 msgid "Color:"
-msgstr ""
+msgstr "Boja:"
 
 #. (text of widget: player_label)
 #: horizons/i18n/guitranslations.py:1042
 msgid "Player name:"
-msgstr ""
+msgstr "Ime igrača:"
 
 #: horizons/main.py:87
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
@@ -2741,7 +2741,7 @@ msgstr ""
 #: horizons/main.py:346
 #, python-format
 msgid "Error: Cannot find map '{name}'."
-msgstr ""
+msgstr "Greška: Nije pronađena mapa '{name}'."
 
 #: horizons/main.py:349 horizons/main.py:426
 msgid "Error: Found multiple matches:"
@@ -2749,7 +2749,7 @@ msgstr ""
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
-msgstr ""
+msgstr "Greška: ime kampanje mora završavati sa \".yaml\"."
 
 #: horizons/main.py:381
 #, python-format
@@ -2806,7 +2806,7 @@ msgstr ""
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
-msgstr ""
+msgstr "Pobijedili ste!"
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario."
@@ -2814,12 +2814,12 @@ msgstr ""
 
 #: horizons/scenario/actions.py:77
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Želite li nastaviti igrati?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
 msgid "unknown"
-msgstr ""
+msgstr "nepoznato"
 
 #: horizons/spsession.py:124
 msgid "Failed to quicksave."
@@ -2889,7 +2889,7 @@ msgstr ""
 
 #: horizons/world/tradepost.py:209
 msgid "You do not possess this."
-msgstr ""
+msgstr "Ne posjedujete to."
 
 #: horizons/world/tradepost.py:217
 msgid "The trade partner can not store more of this."
@@ -3089,8 +3089,8 @@ msgstr ""
 
 #: run_uh.py:236
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Hvala što koristite Unknown Horizons!"
 
 #: run_uh.py:400
 msgid "FIFE was not found."
-msgstr ""
+msgstr "FFE nije pronađen."

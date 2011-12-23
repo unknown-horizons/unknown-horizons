@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-23 10:42+0200\n"
+"PO-Revision-Date: 2011-12-23 10:48+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -390,7 +390,7 @@ msgid "fish"
 msgstr "riba"
 
 msgid "fisherman"
-msgstr ""
+msgstr "ribar"
 
 msgid "forest"
 msgstr "šuma"
@@ -414,10 +414,10 @@ msgid "hunt"
 msgstr ""
 
 msgid "income"
-msgstr ""
+msgstr "prihod"
 
 msgid "information"
-msgstr ""
+msgstr "informacija"
 
 msgid "key"
 msgstr ""
@@ -474,7 +474,7 @@ msgid "feature"
 msgstr ""
 
 msgid "reached"
-msgstr ""
+msgstr "dostignuto"
 
 msgid "slider"
 msgstr ""
@@ -486,7 +486,7 @@ msgid "consume"
 msgstr ""
 
 msgid "contact"
-msgstr ""
+msgstr "kontakt"
 
 msgid "dialogue"
 msgstr ""
@@ -516,13 +516,13 @@ msgid "tobacco"
 msgstr ""
 
 msgid "cattle"
-msgstr ""
+msgstr "stoka"
 
 msgid "pig"
-msgstr ""
+msgstr "prase"
 
 msgid "herbs"
-msgstr ""
+msgstr "bilje"
 
 msgid "herbary"
 msgstr ""
@@ -537,13 +537,13 @@ msgid "education"
 msgstr "obrazovanje"
 
 msgid "clay"
-msgstr ""
+msgstr "glina"
 
 msgid "charcoal"
-msgstr ""
+msgstr "drveni ugljen"
 
 msgid "iron"
-msgstr ""
+msgstr "željezo"
 
 msgid "ore"
-msgstr ""
+msgstr "ruda"
