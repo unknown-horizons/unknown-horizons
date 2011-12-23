@@ -87,14 +87,15 @@ class BuildRelatedTab(OverviewTab):
 
 		# Check if the level of the building is lower or same as the settler level
 		if level <= self.instance.owner.settler_level:
-			path = "content/gui/icons/buildmenu/%03d" % building_id + "%s.png"
+			# {{mode}} in double braces because it is replaced as a second step
+			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
 			tooltip = self.instance.session.db.get_building_tooltip(building_id)
 
-			build_button = TooltipButton(name="build%s" % building_id, \
+			build_button = TooltipButton(name="build{id}".format(id=building_id), \
 			                             tooltip=tooltip)
-			build_button.up_image = path % ''
-			build_button.down_image = path % '_h'
-			build_button.hover_image = path % '_h'
+			build_button.up_image = path.format(mode='')
+			build_button.down_image = path.format(mode='_h')
+			build_button.hover_image = path.format(mode='_h')
 			build_button.capture(Callback(self.buildField, building_id))
 
 			container.findChild(name="build_button_container").addChild(build_button)
