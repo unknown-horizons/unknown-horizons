@@ -737,60 +737,60 @@ def set_translations():
 		"have_fun"                    : ("text"    , _("Have fun.")),
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Key bindings")),
-		# (text of widget: lbl_+)
-		"lbl_+"                       : ("text"    , _("Increase game speed")),
-		# (text of widget: lbl_,)
-		"lbl_,"                       : ("text"    , _("Rotate building or map counterclockwise")),
-		# (text of widget: lbl_-)
-		"lbl_-"                       : ("text"    , _("Decrease game speed")),
-		# (text of widget: lbl_.)
-		"lbl_."                       : ("text"    , _("Rotate building or map clockwise")),
-		# (text of widget: lbl_b)
-		"lbl_b"                       : ("text"    , _("Show build menu")),
-		# (text of widget: lbl_c)
-		"lbl_c"                       : ("text"    , _("Chat")),
+		# (text of widget: lbl_BUILD_TOOL)
+		"lbl_BUILD_TOOL"              : ("text"    , _("Show build menu")),
+		# (text of widget: lbl_CHAT)
+		"lbl_CHAT"                    : ("text"    , _("Chat")),
+		# (text of widget: lbl_COORD_TOOLTIP)
+		"lbl_COORD_TOOLTIP"           : ("text"    , _("Show coordinate values (Debug)")),
+		# (text of widget: lbl_DESTROY_TOOL)
+		"lbl_DESTROY_TOOL"            : ("text"    , _("Enable destruct mode")),
+		# (text of widget: lbl_GRID)
+		"lbl_GRID"                    : ("text"    , _("Toggle grid on/off")),
+		# (text of widget: lbl_LOGBOOK)
+		"lbl_LOGBOOK"                 : ("text"    , _("Toggle Captain's log")),
+		# (text of widget: lbl_PAUSE)
+		"lbl_PAUSE"                   : ("text"    , _("Pause game")),
+		# (text of widget: lbl_PLAYERS_OVERVIEW)
+		"lbl_PLAYERS_OVERVIEW"        : ("text"    , _("Show player scores")),
+		# (text of widget: lbl_QUICKLOAD)
+		"lbl_QUICKLOAD"               : ("text"    , _("Quickload")),
+		# (text of widget: lbl_QUICKSAVE)
+		"lbl_QUICKSAVE"               : ("text"    , _("Quicksave")),
+		# (text of widget: lbl_ROAD_TOOL)
+		"lbl_ROAD_TOOL"               : ("text"    , _("Enable road building mode")),
+		# (text of widget: lbl_ROTATE_LEFT)
+		"lbl_ROTATE_LEFT"             : ("text"    , _("Rotate building or map counterclockwise")),
+		# (text of widget: lbl_ROTATE_RIGHT)
+		"lbl_ROTATE_RIGHT"            : ("text"    , _("Rotate building or map clockwise")),
+		# (text of widget: lbl_SETTLEMENTS_OVERVIEW)
+		"lbl_SETTLEMENTS_OVERVIEW"    : ("text"    , _("Show settlement list")),
+		# (text of widget: lbl_SHIPS_OVERVIEW)
+		"lbl_SHIPS_OVERVIEW"          : ("text"    , _("Show ship list")),
+		# (text of widget: lbl_SPEED_DOWN)
+		"lbl_SPEED_DOWN"              : ("text"    , _("Decrease game speed")),
+		# (text of widget: lbl_SPEED_UP)
+		"lbl_SPEED_UP"                : ("text"    , _("Increase game speed")),
+		# (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
+		"lbl_TILE_OWNER_HIGHLIGHT"    : ("text"    , _("Highlight tile ownership")),
+		# (text of widget: lbl_TRANSLUCENCY)
+		"lbl_TRANSLUCENCY"            : ("text"    , _("Toggle translucency of ambient buildings")),
 		# (text of widget: lbl_down)
 		"lbl_down"                    : ("text"    , _("Scroll down")),
-		# (text of widget: lbl_esc)
-		"lbl_esc"                     : ("text"    , _("Show pause menu")),
 		# (text of widget: lbl_f1)
 		"lbl_f1"                      : ("text"    , _("Display help")),
 		# (text of widget: lbl_f10)
 		"lbl_f10"                     : ("text"    , _("Toggle console on/off")),
-		# (text of widget: lbl_f2)
-		"lbl_f2"                      : ("text"    , _("Show player scores")),
-		# (text of widget: lbl_f3)
-		"lbl_f3"                      : ("text"    , _("Show settlement list")),
-		# (text of widget: lbl_f4)
-		"lbl_f4"                      : ("text"    , _("Show ship list")),
-		# (text of widget: lbl_f5)
-		"lbl_f5"                      : ("text"    , _("Quicksave")),
-		# (text of widget: lbl_f9)
-		"lbl_f9"                      : ("text"    , _("Quickload")),
-		# (text of widget: lbl_g)
-		"lbl_g"                       : ("text"    , _("Toggle grid on/off")),
-		# (text of widget: lbl_h)
-		"lbl_h"                       : ("text"    , _("Show coordinate values (Debug)")),
-		# (text of widget: lbl_l)
-		"lbl_l"                       : ("text"    , _("Toggle Captain's log")),
 		# (text of widget: lbl_left)
 		"lbl_left"                    : ("text"    , _("Scroll left")),
-		# (text of widget: lbl_p)
-		"lbl_p"                       : ("text"    , _("Pause game")),
-		# (text of widget: lbl_r)
-		"lbl_r"                       : ("text"    , _("Enable road building mode")),
 		# (text of widget: lbl_right)
 		"lbl_right"                   : ("text"    , _("Scroll right")),
 		# (text of widget: lbl_s)
 		"lbl_s"                       : ("text"    , _("Screenshot")),
 		# (text of widget: lbl_shift)
 		"lbl_shift"                   : ("text"    , _("Hold to place multiple buildings")),
-		# (text of widget: lbl_t)
-		"lbl_t"                       : ("text"    , _("Toggle translucency of ambient buildings")),
 		# (text of widget: lbl_up)
 		"lbl_up"                      : ("text"    , _("Scroll up")),
-		# (text of widget: lbl_x)
-		"lbl_x"                       : ("text"    , _("Enable destruct mode")),
 		# (tooltip of widget: okButton)
 		"okButton"                    : ("tooltip" , _("Return")),
 		},
@@ -904,8 +904,6 @@ def set_translations():
 		"autosave_interval_label"     : ("text"    , _("Autosave interval in minutes:")),
 		# (text of widget: effect_volume_label)
 		"effect_volume_label"         : ("text"    , _("Effects volume:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Settings")),
 		# (text of widget: headline_graphics)
 		"headline_graphics"           : ("text"    , _("Graphics")),
 		# (text of widget: headline_language)
@@ -930,8 +928,6 @@ def set_translations():
 		"screen_resolution_label"     : ("text"    , _("Screen resolution:")),
 		# (text of widget: sound_enable_opt_text)
 		"sound_enable_opt_text"       : ("text"    , _("Enable sound:")),
-		# (text of widget: warning)
-		"warning"                     : ("text"    , _("Please make sure that you know what you do.")),
 		# (tooltip of widget: okButton)
 		"okButton"                    : ("tooltip" , _("Apply")),
 		# (tooltip of widget: cancelButton)
