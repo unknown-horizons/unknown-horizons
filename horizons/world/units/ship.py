@@ -380,6 +380,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.view.center(*self.position.to_tuple())
 		self.session.view.add_change_listener(self.draw_health)
 
+		if self.owner is self.session.world.player:
+			self.session.ingame_gui.minimap.show_unit_path(self)
+
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
 		self._selected = False
@@ -419,7 +422,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			# TODO: give player some kind of feedback
 			pass
 		else:
-			self.session.ingame_gui.minimap.show_ship_route(self)
+			self.session.ingame_gui.minimap.show_unit_path(self)
 
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)
