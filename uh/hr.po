@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-23 16:07+0200\n"
+"PO-Revision-Date: 2011-12-24 15:50+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -32,27 +32,27 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr ""
+msgstr "Novi svijet je kreiran."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Boar"
-msgstr ""
+msgstr "Vepar"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Boat Builder"
-msgstr ""
+msgstr "Brodogradilište"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Branch Office"
-msgstr ""
+msgstr "Podružnica"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Brickyard"
-msgstr ""
+msgstr "Ciglana"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -92,7 +92,7 @@ msgstr "Jelen"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Distillery"
-msgstr ""
+msgstr "Destilerija"
 
 #. This is a database entry: the name of a building the name of a unit.
 #: database files sql
@@ -112,7 +112,7 @@ msgstr ""
 #. This is a database entry: the name of a unit.
 #: database files sql
 msgid "Fisher"
-msgstr ""
+msgstr "Ribar"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -149,7 +149,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Iron Mine"
-msgstr ""
+msgstr "Rudnik željeza"
 
 #. This is a database entry: the name of a building.
 #: database files sql
