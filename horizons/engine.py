@@ -46,6 +46,7 @@ from horizons.util.gui import load_uh_widget
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
+from horizons.gui.widgets.pickbeltwidget import OptionsPickbeltWidget
 
 UH_MODULE = "unknownhorizons"
 
@@ -55,7 +56,7 @@ class LocalizedSetting(Setting):
 	plain load_xml().
 	"""
 	def _loadWidget(self, dialog):
-		wdg = load_uh_widget(dialog, style="book")
+		wdg = OptionsPickbeltWidget().get_widget()
 		# HACK: fife settings call stylize, which breaks our styling on widget load
 		no_restyle_str = "do_not_restyle_this"
 		self.setGuiStyle(no_restyle_str)
