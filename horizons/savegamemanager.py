@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import sqlite3
 import tempfile
 import logging
@@ -122,13 +123,13 @@ class SavegameManager(object):
 	"""
 	log = logging.getLogger("savegamemanager")
 
-	savegame_dir = PATHS.USER_DIR + "/save"
-	autosave_dir = savegame_dir+"/autosave"
-	quicksave_dir = savegame_dir+"/quicksave"
-	maps_dir = "content/maps"
-	scenario_maps_dir = "content/scenariomaps"
-	scenarios_dir = "content/scenarios"
-	campaigns_dir = "content/campaign"
+	savegame_dir = os.path.join(PATHS.USER_DIR, "save")
+	autosave_dir = os.path.join(savegame_dir, "autosave")
+	quicksave_dir = os.path.join(savegame_dir, "quicksave")
+	maps_dir = os.path.join("content", "maps")
+	scenario_maps_dir = os.path.join("content", "scenariomaps")
+	scenarios_dir = os.path.join("content", "scenarios")
+	campaigns_dir = os.path.join("content", "campaign")
 
 	savegame_extension = "sqlite"
 	scenario_extension = "yaml"
@@ -201,7 +202,8 @@ class SavegameManager(object):
 	@classmethod
 	def create_filename(cls, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
-		name = "{directory}/{name}.{ext}".format(directory=cls.savegame_dir,
+		name = "{directory}{sep}{name}.{ext}".format(directory=cls.savegame_dir,
+		                                         sep=os.sep,
 		                                         name=savegamename,
 		                                         ext=cls.savegame_extension)
 		cls.log.debug("Savegamemanager: creating save-filename: %s", name)
@@ -211,7 +213,7 @@ class SavegameManager(object):
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
 		prepared_filename = time.strftime(cls.autosave_filenamepattern.format(timestamp=time.time()))
-		name = "{directory}/{name}".format(directory=cls.autosave_dir, name=prepared_filename)
+		name = "{directory}{sep}{name}".format(directory=cls.autosave_dir, sep=os.sep, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
@@ -219,7 +221,7 @@ class SavegameManager(object):
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
 		prepared_filename = time.strftime(cls.quicksave_filenamepattern.format(timestamp=time.time()))
-		name = "{directory}/{name}".format(directory=cls.quicksave_dir, name=prepared_filename)
+		name = "{directory}{sep}{name}".format(directory=cls.quicksave_dir, sep=os.sep, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
