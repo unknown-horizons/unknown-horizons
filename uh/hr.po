@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-24 15:50+0200\n"
+"PO-Revision-Date: 2011-12-24 16:37+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -159,7 +159,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Main Square"
-msgstr ""
+msgstr "Glavni trg"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -169,17 +169,17 @@ msgstr "Planina"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pasture"
-msgstr ""
+msgstr "Pašnjak"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pavilion"
-msgstr ""
+msgstr "Paviljon"
 
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Pigsty"
-msgstr ""
+msgstr "Svinjac"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -189,7 +189,7 @@ msgstr "Gusarski brod"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Potato Field"
-msgstr ""
+msgstr "Polje krumpira"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -239,7 +239,7 @@ msgstr "Polje šećera"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Tavern"
-msgstr ""
+msgstr "Pivnica"
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -264,7 +264,7 @@ msgstr ""
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Toolmaker"
-msgstr ""
+msgstr "Alatnica"
 
 #. This is a database entry: the name of a unit.
 #: database files horizons/world/units/ship.py:511 sql
