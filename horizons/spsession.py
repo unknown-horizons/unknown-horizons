@@ -163,7 +163,11 @@ class SPSession(Session):
 			return self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
 		except WindowsError as err:
-			if err.winerror == 32:
+			if err.winerror == 5:
+				self.gui.show_error_popup(_("Access is denied"), \
+				                          _("The savegame file is probably read-only."))
+				return self.save()
+			elif err.winerror == 32:
 				self.gui.show_error_popup(_("File used by another process"), \
 				                          _("The savegame file is currently used by another program."))
 				return self.save()
