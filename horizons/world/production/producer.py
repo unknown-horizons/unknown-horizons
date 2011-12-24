@@ -74,7 +74,7 @@ class Producer(ResourceHandler):
 		cur_tick = Scheduler().cur_tick
 		if not hasattr(self, "_old_capacity_utilisation") or \
 		   self._old_capacity_utilisation[0] < cur_tick or \
-		   self._old_capacity_utilisation[1] !=  limit:
+		   self._old_capacity_utilisation[1] != limit:
 			capac = self.capacity_utilisation
 			diff = abs(limit - capac)
 			# all those values are relative values, so we can just do this:

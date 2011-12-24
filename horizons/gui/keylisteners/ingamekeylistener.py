@@ -24,6 +24,13 @@ import horizons.main
 
 from horizons.util.living import LivingObject
 
+class _Actions(object):
+	"""Internal data"""
+	GRID, COORD_TOOLTIP, DESTROY_TOOL, PLAYERS_OVERVIEW, ROAD_TOOL, SPEED_UP, SPEED_DOWN, \
+	PAUSE, SETTLEMENTS_OVERVIEW, SHIPS_OVERVIEW, LOGBOOK, BUILD_TOOL, ROTATE_RIGHT, \
+	ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, SAVE_MAP, \
+	PIPETTE, HEALTH_BAR, = range(22)
+
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
 
@@ -32,6 +39,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
+		self.keyconfig = KeyConfig()
 		horizons.main.fife.eventmanager.addKeyListenerFront(self)
 		self.keysPressed = []
 		# Used to sum up the keyboard autoscrolling
@@ -62,31 +70,33 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		if self.key_scroll[0] != 0 or self.key_scroll != 0:
 			self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
 
+		action = self.keyconfig.translate(evt)
+
 		if keyval == fife.Key.ESCAPE:
 			if not self.session.ingame_gui.on_escape():
 				return # let the MainListener handle this
-		elif keystr == 'g':
+		elif action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
-		elif keystr == 'h':
+		elif action == _Actions.COORD_TOOLTIP:
 			self.session.coordinates_tooltip.toggle()
-		elif keystr == 'x':
+		elif action == _Actions.DESTROY_TOOL:
 			self.session.toggle_destroy_tool()
-		elif keystr == 'r':
+		elif action == _Actions.ROAD_TOOL:
 			self.session.ingame_gui.toggle_road_tool()
-		elif keystr == '+' or keystr == '=':
+		elif action == _Actions.SPEED_UP:
 			self.session.speed_up()
-		elif keystr == '-':
+		elif action == _Actions.SPEED_DOWN:
 			self.session.speed_down()
-		elif keystr == 'p':
+		elif action == _Actions.PAUSE:
 			self.session.gui.toggle_pause()
-		elif keyval == fife.Key.F2:
+		elif action == _Actions.PLAYERS_OVERVIEW:
 			self.session.ingame_gui.players_overview.toggle_visibility()
-		elif keyval == fife.Key.F3:
+		elif action == _Actions.SETTLEMENTS_OVERVIEW:
 			self.session.ingame_gui.players_settlements.toggle_visibility()
-		elif keyval == fife.Key.F4:
+		elif action == _Actions.SHIPS_OVERVIEW:
 			self.session.ingame_gui.players_ships.toggle_visibility()
-		elif keystr == 'l':
+		elif action == _Actions.LOGBOOK:
 			self.session.ingame_gui.logbook.toggle_visibility()
 		elif keystr == 'd':
 			pass
@@ -124,26 +134,26 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			#print all_lists
 			"""
 
-		elif keystr == 'b':
+		elif action == _Actions.BUILD_TOOL:
 			self.session.ingame_gui.show_build_menu()
-		elif keystr == '.':
+		elif action == _Actions.ROTATE_RIGHT:
 			if hasattr(self.session.cursor, "rotate_right"):
 				# used in e.g. build preview to rotate building instead of map
 				self.session.cursor.rotate_right()
 			else:
 				self.session.view.rotate_right()
 				self.session.ingame_gui.minimap.rotate_right()
-		elif keystr == ',':
+		elif action == _Actions.ROTATE_LEFT:
 			if hasattr(self.session.cursor, "rotate_left"):
 				self.session.cursor.rotate_left()
 			else:
 				self.session.view.rotate_left()
 				self.session.ingame_gui.minimap.rotate_left()
-		elif keystr == 'c':
+		elif action == _Actions.CHAT:
 			self.session.ingame_gui.show_chat_dialog()
-		elif keystr == 't':
+		elif action == _Actions.TRANSLUCENCY:
 			self.session.world.toggle_translucency()
-		elif keystr == 'a':
+		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
 			self.session.world.toggle_owner_highlight()
 		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4, fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
 			num = int(keyval - fife.Key.NUM_0)
@@ -162,18 +172,18 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 				for instance in self.session.selection_groups[num] - self.session.selected_instances:
 					instance.select(reset_cam=True)
 				self.session.selected_instances = self.session.selection_groups[num]
-		elif keyval == fife.Key.F5:
+		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave()
-		elif keyval == fife.Key.F9:
+		elif action == _Actions.QUICKLOAD:
 			self.session.quickload()
-		elif keyval == fife.Key.F12 and evt.isShiftPressed():
+		elif action == _Actions.SAVE_MAP:
 			# require shift to make it less likely that an ordinary user stumbles upon this
 			# this is done because the maps aren't usable without moving them to the right places
 			self.session.ingame_gui.show_save_map_dialog()
-		elif keystr == 'o':
+		elif action == _Actions.PIPETTE:
 			# copy mode: pipette tool
 			self.session.toggle_cursor('pipette')
-		elif keystr == 'k':
+		elif action == _Actions.HEALTH_BAR:
 			# shows health bar of every instance with an health component
 			self.session.world.toggle_health_for_all_health_instances()
 		else:
@@ -193,3 +203,61 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		   keyval == fife.Key.DOWN:
 			self.key_scroll[1] = 0
 		self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
+
+
+class KeyConfig(object):
+	"""Class for storing key bindings.
+	The central function is translate().
+	"""
+	def __init__(self):
+		self.keystring_mappings = {
+		  "g" : _Actions.GRID,
+		  "h" : _Actions.COORD_TOOLTIP,
+		  "x" : _Actions.DESTROY_TOOL,
+		  "r" : _Actions.ROAD_TOOL,
+		  "+" : _Actions.SPEED_UP,
+		  "=" : _Actions.SPEED_UP,
+		  "-" : _Actions.SPEED_DOWN,
+		  "p" : _Actions.PAUSE,
+		  "l" : _Actions.LOGBOOK,
+		  "b" : _Actions.BUILD_TOOL,
+		  "." : _Actions.ROTATE_RIGHT,
+		  "," : _Actions.ROTATE_LEFT,
+		  "c" : _Actions.CHAT,
+		  "t" : _Actions.TRANSLUCENCY,
+		  "a" : _Actions.TILE_OWNER_HIGHLIGHT,
+		  "o" : _Actions.PIPETTE,
+		  "k" : _Actions.HEALTH_BAR,
+		}
+		self.keyval_mappings = {
+			fife.Key.F2 : _Actions.PLAYERS_OVERVIEW,
+			fife.Key.F3 : _Actions.SETTLEMENTS_OVERVIEW,
+			fife.Key.F4 : _Actions.SHIPS_OVERVIEW,
+			fife.Key.F5 : _Actions.QUICKSAVE,
+			fife.Key.F9 : _Actions.QUICKLOAD,
+			fife.Key.F12 : _Actions.SAVE_MAP,
+		}
+		self.requires_shift = set( (
+		  _Actions.SAVE_MAP,
+		) )
+
+	def translate(self, evt):
+		"""
+		@param evt: fife.Event
+		@return pseudo-enum IngameKeyListener.Action
+		"""
+		keyval = evt.getKey().getValue()
+		keystr = evt.getKey().getAsString().lower()
+
+		action = None
+		if keystr in self.keystring_mappings:
+			action = self.keystring_mappings[keystr]
+		elif keyval in self.keyval_mappings:
+			action = self.keyval_mappings[keyval]
+
+		if action is None:
+			return None
+		elif action in self.requires_shift and not evt.isShiftPressed():
+			return None
+		else:
+			return action # all checks passed
