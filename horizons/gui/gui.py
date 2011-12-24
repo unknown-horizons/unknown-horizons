@@ -255,6 +255,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# Prepare widget
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
+		self.current.findChild(name='okButton').tooltip = _('Save game') if mode == 'save' else _('Load game')
 
 		if not hasattr(self, 'filename_hbox'):
 			self.filename_hbox = self.current.findChild(name='enter_filename')

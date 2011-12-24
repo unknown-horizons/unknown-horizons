@@ -45,7 +45,7 @@
 		<HBox min_size="300,40">
 			<CancelButton tooltip="Cancel" />
 			<Spacer min_size="200" />
-			<OkButton tooltip="Start game" />
+			<OkButton />
 		</HBox>
 	</VBox>
 </Container>
