@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-25 10:40+0200\n"
+"PO-Revision-Date: 2011-12-25 10:45+0200\n"
 "Last-Translator: shile <sisko@fakat.ba>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -564,7 +564,7 @@ msgstr "Izgradi farmu i ostavi nešto slobodnog mjesta oko nje."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:94
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "ZADATAK: IZGRADI POLJA"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
@@ -614,7 +614,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:102
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "ZADATAK: IZGRADI SKLADIŠTE"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
@@ -717,7 +717,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:122
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "NEMA VIŠE ZADATAKA"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:124
@@ -742,7 +742,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:126
 msgid "Thanks!"
-msgstr ""
+msgstr "Hvala!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:128
