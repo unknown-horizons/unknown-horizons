@@ -3,113 +3,114 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-12-26 18:50+0200\n"
+"Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
-msgstr ""
+msgstr "construír"
 
 msgid "game"
-msgstr ""
+msgstr "xogo"
 
 msgid "building"
-msgstr ""
+msgstr "edificio"
 
 msgid "tent"
-msgstr ""
+msgstr "tenda"
 
 msgid "resource"
-msgstr ""
+msgstr "recurso"
 
 msgid "branch office"
-msgstr ""
+msgstr "sucursal"
 
 msgid "your"
-msgstr ""
+msgstr "su"
 
 msgid "farm"
-msgstr ""
+msgstr "granxa"
 
 msgid "field"
-msgstr ""
+msgstr "campo"
 
 msgid "overview"
-msgstr ""
+msgstr "información"
 
 msgid "ship"
-msgstr ""
+msgstr "barco"
 
 msgid "main"
-msgstr ""
+msgstr "principal"
 
 msgid "settlement"
-msgstr ""
+msgstr "asentamento"
 
 msgid "start"
-msgstr ""
+msgstr "inicio / comezar"
 
 msgid "click"
-msgstr ""
+msgstr "clica"
 
 msgid "inhabitants"
-msgstr ""
+msgstr "habitantes"
 
 msgid "map"
-msgstr ""
+msgstr "mapa"
 
 msgid "menu"
-msgstr ""
+msgstr "menú"
 
 msgid "production"
-msgstr ""
+msgstr "producción"
 
 msgid "tab"
-msgstr ""
+msgstr "pestana"
 
 msgid "unknown"
-msgstr ""
+msgstr "descoñecido"
 
 msgid "food"
-msgstr ""
+msgstr "alimento"
 
 msgid "increment"
-msgstr ""
+msgstr "incremento"
 
 msgid "select"
-msgstr ""
+msgstr "escoller"
 
 msgid "setting"
-msgstr ""
+msgstr "axuste"
 
 msgid "time"
-msgstr ""
+msgstr "tempo"
 
 msgid "trade"
-msgstr ""
+msgstr "comercio"
 
 msgid "change"
-msgstr ""
+msgstr "cambio"
 
 msgid "main square"
-msgstr ""
+msgstr "praza principal"
 
 msgid "trail"
-msgstr ""
+msgstr "camiño"
 
 msgid "boards"
-msgstr ""
+msgstr "taboleiros"
 
 msgid "buy"
-msgstr ""
+msgstr "mercar"
 
 msgid "coast"
-msgstr ""
+msgstr "costa"
 
 msgid "connect"
 msgstr ""
