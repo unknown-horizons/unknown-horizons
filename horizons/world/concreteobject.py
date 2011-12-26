@@ -170,18 +170,13 @@ class ConcreteObject(WorldObject):
 
 		if status_list:
 			status = max(status_list, key=StatusIcon.get_sorting_key())
-			#print self, status
 
 			# draw
 			rel = fife.Point(8, -8) # TODO: find suitable place within instance
 			# NOTE: rel is interpreted as pixel offset on screen
 			node = fife.RendererNode(self.fife_instance, rel)
-			self._status_icon_renderer.addAnimation(
-			  self._status_icon_key, node,
-			  horizons.main.fife.animationloader.loadResource( status.icon )
-			)
+			status.render(self._status_icon_renderer, self._status_icon_key, node)
 
 	def _remove_status_icon(self):
 		self._status_icon_renderer.removeAll(self._status_icon_key)
-
 

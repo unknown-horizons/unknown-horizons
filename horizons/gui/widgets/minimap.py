@@ -345,11 +345,21 @@ class Minimap(object):
 		high()
 		return STEPS*INTERVAL
 
-	def show_ship_route(self, unit):
+	def show_unit_path(self, unit):
 		"""Show the path a unit is moving along"""
 		path = unit.path.path
 		if path is None:
-			return False
+			return
+
+		# the path always contains the full path, the unit might be somewhere in it
+		position_of_unit_in_path = 0
+		unit_pos = unit.position.to_tuple()
+		for i in xrange(len(path)):
+			if path[i] == unit_pos:
+				position_of_unit_in_path = i
+				break
+		position_of_unit_in_path += 1 # looks nicer when unit is moving
+		path = path[position_of_unit_in_path:]
 
 		# draw every step-th coord
 		step = 1
@@ -362,8 +372,7 @@ class Minimap(object):
 		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		p = fife.Point(0, 0)
-		render_name = self._get_render_name("ship_route") + \
-		            str(self.__class__.__ship_route_counter.next())
+		render_name = self._get_render_name("ship_route") + str(self.__class__.__ship_route_counter.next())
 		color = unit.owner.color.to_tuple()
 		last_coord = None
 		for i in relevant_coords:

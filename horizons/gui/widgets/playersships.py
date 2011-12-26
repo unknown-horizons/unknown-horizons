@@ -43,7 +43,7 @@ class PlayersShips(StatsWidget):
 		player = self.session.world.player
 		self._clear_entries()
 		#xgettext:python-format
-		self._gui.findChild(name = 'headline').text = _("{player}'s ships").format(player=self.session.world.player.name)
+		self._gui.findChild(name = 'headline').text = _("ships of {player}").format(player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}

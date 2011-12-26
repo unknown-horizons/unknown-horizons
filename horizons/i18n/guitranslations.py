@@ -975,8 +975,6 @@ def set_translations():
 		"headline_details_label"      : ("text"    , _("Details:")),
 		# (text of widget: headline_saved_games_label)
 		"headline_saved_games_label"  : ("text"    , _("Your saved games:")),
-		# (tooltip of widget: okButton)
-		"okButton"                    : ("tooltip" , _("Start game")),
 		# (tooltip of widget: cancelButton)
 		"cancelButton"                : ("tooltip" , _("Cancel")),
 		# (tooltip of widget: deleteButton)

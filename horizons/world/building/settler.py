@@ -150,6 +150,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		house_name = self.session.db.get_settler_house_name(self.level)
 		return (_(house_name)).title()
 
+	@property
+	def capacity_utilisation(self):
+		# this concept does not make sense here, so spare us the calculations
+		return 1.0
+
 	def _update_level_data(self, loading = False):
 		"""Updates all settler-related data because of a level change or because of loading"""
 		# taxes, inhabitants

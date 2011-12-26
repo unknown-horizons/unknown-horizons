@@ -101,12 +101,23 @@ class Scheduler(LivingObject):
 			del self.schedule[self.cur_tick]
 
 			# run jobs added in the loop above
-			for callback in self.additional_cur_tick_schedule:
-				assert callback.loops == 0 # can't loop with no delay
-				callback.callback()
-			self.additional_cur_tick_schedule = []
+			self._run_additional_jobs()
 
 		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
+
+	def before_ticking(self):
+		"""Called after game load and before game has started.
+		Callbacks with run_in=0 are used as generic "do this as soon as the current context
+		is finished". If this is done during load, it is supposed to mean tick -1, since it
+		does not belong to the first tick. This method simulates this.
+		"""
+		self._run_additional_jobs()
+
+	def _run_additional_jobs(self):
+		for callback in self.additional_cur_tick_schedule:
+			assert callback.loops == 0 # can't loop with no delay
+			callback.callback()
+		self.additional_cur_tick_schedule = []
 
 	def add_object(self, callback_obj, readd=False):
 		"""Adds a new CallbackObject instance to the callbacks list for the first time

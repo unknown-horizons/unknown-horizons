@@ -29,15 +29,15 @@ events:
     type: logbook_w
   - arguments: ["NOV\xDD \xDAKOL: OS\xCDDLIT OSTROV", "Pro pohyb lod\xED, j\xED vyberte\
         \ kliknut\xEDm na lev\xE9 tla\u010D\xEDtko, a klikn\u011Bte prav\xFDm tla\u010D\
-        \xEDtkem na m\xEDsto kam chcete plout. \n\nJakmile budete v bl\xEDzkosti pob\u0159\
+        \xEDtkem na m\xEDsto kam chcete plout.\n\nJakmile budete v bl\xEDzkosti pob\u0159\
         e\u017E\xED, tla\u010D\xEDtko kotvy, kter\xE9 vid\xEDte na kart\u011B p\u0159\
         ehledu, bude aktivn\xED.\n\nTo nazna\u010Duje, \u017Ee zde m\u016F\u017Eete\
         \ postavit Obchodn\xED p\u0159\xEDstav stiskem tohoto tla\u010D\xEDtka (nazvan\xE9\
-        \ 'Postavit osadu').\n\nNyn\xED se zobraz\xED n\xE1hled budovy p\u0159i pohybu\
-        \ kurzorem.\n\nM\u016F\u017Eete postavit budovu na jak\xE9mkoliv m\xEDst\u011B\
-        , kde n\xE1hled nen\xED zbarven \u010Derven\u011B.\nKlikn\u011Bte kdekoliv\
-        \ pro um\xEDst\u011Bn\xED va\u0161\xED prvn\xED budovy.\n\n\xDAKOL: Postavte\
-        \ Obchodn\xED p\u0159\xEDstav na pob\u0159e\u017E\xED.", 2]
+        \ \"Postavit osadu\").\n\nNyn\xED se zobraz\xED n\xE1hled budovy p\u0159i\
+        \ pohybu kurzorem.\n\nM\u016F\u017Eete postavit budovu na jak\xE9mkoliv m\xED\
+        st\u011B, kde n\xE1hled nen\xED zbarven \u010Derven\u011B.\nKlikn\u011Bte\
+        \ kdekoliv pro um\xEDst\u011Bn\xED va\u0161\xED prvn\xED budovy.\n\n\xDAKOL:\
+        \ Postavte Obchodn\xED p\u0159\xEDstav na pob\u0159e\u017E\xED.", 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -53,17 +53,17 @@ events:
         k\u016Fm k zakryt\xED jejich stan\u016F.\n\nTak\xE9 ryb\xE1\u0159 pot\u0159\
         ebuje n\u011Bjak\xE1 prkna, aby si mohl vyrobit svou lo\u010Fku.\n\nAby jste\
         \ postavili d\u0159evorubce, otev\u0159ete stavebn\xED menu kliknut\xEDm na\
-        \ velkou ikonu pod mini mapou nebo stisknut\xEDm kl\xE1vesy B\n\nStavebn\xED\
+        \ velkou ikonu pod mini mapou nebo stisknut\xEDm kl\xE1vesy B.\n\nStavebn\xED\
         \ menu je rozd\u011Bleno podle jednotliv\xFDch \xFArovn\xED.\nNyn\xED se nach\xE1\
         z\xEDte na prvn\xED \xFArovni (n\xE1mo\u0159nick\xE1 \xFArove\u0148), proto\
         \ m\xE1te k dispozici pouze z\xE1kladn\xED budovy."]
     type: logbook_w
   - arguments: ['', "Jak se bude va\u0161e civilizace rozv\xEDjet, z\xEDsk\xE1te st\xE1\
         le komplexn\u011Bj\u0161\xED a komplexn\u011Bj\u0161\xED budovy.\n\nNyn\xED\
-        \ vyberte d\u0159evorubce v sekci 'Podniky' a postavte ho v oblasti, kde jsou\
-        \ stromy.\n\nPozd\u011Bji m\u016F\u017Eete stromy tak\xE9 s\xE1zet, ale bude\
-        \ V\xE1s to st\xE1t pen\xEDze. Vyu\u017Eijte to, co V\xE1m p\u0159\xEDroda\
-        \ poskytuje!\n\nPodnik v\u017Edy pot\u0159ebuje spojen\xED stezkou ke skladi\u0161\
+        \ vyberte d\u0159evorubce v sekci \"Podniky\" a postavte ho v oblasti, kde\
+        \ jsou stromy.\n\nPozd\u011Bji m\u016F\u017Eete stromy tak\xE9 s\xE1zet, ale\
+        \ bude V\xE1s to st\xE1t pen\xEDze. Vyu\u017Eijte to, co V\xE1m p\u0159\xED\
+        roda poskytuje!\n\nPodnik v\u017Edy pot\u0159ebuje spojen\xED stezkou ke skladi\u0161\
         ti nebo Obchodn\xEDmu p\u0159\xEDstavu, jinak zbo\u017E\xED z\u016Fstane v\
         \ podniku a nebude vybr\xE1no.\n\nTo znamen\xE1, \u017Ee mus\xEDte vybudovat\
         \ stezku spojuj\xEDc\xED v\xE1\u0161 Obchodn\xED p\u0159\xEDstav (nebo skladi\u0161\
@@ -100,19 +100,19 @@ events:
         \ p\u0159\xEDli\u0161 spolehliv\xFD zdroj potravy, pokud pot\u0159ebujete\
         \ nep\u0159eru\u0161ovan\xE9 z\xE1sobov\xE1n\xED."]
     type: logbook_w
-  - arguments: ['', "Ryb\xE1\u0159 pot\u0159ebuje budovu na pob\u0159e\u017E\xED stejn\u011B\
-        \ jako Obchodn\xED p\u0159\xEDstav a hejno ryb v dosahu.\n\nPostav\xED si\
-        \ malou lo\u010Fku a bude chytat ryby.\n\nJedn\xE1 se o nep\u0159etr\u017E\
-        it\xFD zdroj potravy, cenou za to je trochu del\u0161\xED produk\u010Dn\xED\
-        \ \u010Das ka\u017Ed\xE9 jednotky j\xEDdla.\n\nMal\xE1 osada, jakou je ta\
-        \ Va\u0161e, m\u016F\u017Ee vyu\u017E\xEDt ob\u011B spole\u010Dnosti. Pokud\
-        \ je uvid\xEDte v p\u0159\xEDm\xE9m srovn\xE1n\xED, m\u016F\u017Eete l\xE9\
-        pe porovnat jejich v\xFDhody a nev\xFDhody.\n\n\xDAKOL: Postavte lovce a ryb\xE1\
-        \u0159e.\n\nNezapome\u0148te je p\u0159ipojit k Va\u0161emu Obchodn\xEDmu\
-        \ p\u0159\xEDstavu pomoc\xED stezek!"]
+  - arguments: ['', "Ryb\xE1\u0159 pot\u0159ebuje budovu na pob\u0159e\u017E\xED a\
+        \ Obchodn\xED p\u0159\xEDstav a hejno ryb v dosahu.\n\nPostav\xED si malou\
+        \ lo\u010Fku a bude chytat ryby.\n\nJedn\xE1 se o nep\u0159etr\u017Eit\xFD\
+        \ zdroj potravy, cenou za to je trochu del\u0161\xED produk\u010Dn\xED \u010D\
+        as ka\u017Ed\xE9 jednotky j\xEDdla.\n\nMal\xE1 osada, jakou je ta Va\u0161\
+        e, m\u016F\u017Ee vyu\u017E\xEDt ob\u011B spole\u010Dnosti. Pokud je uvid\xED\
+        te v p\u0159\xEDm\xE9m srovn\xE1n\xED, m\u016F\u017Eete l\xE9pe porovnat jejich\
+        \ v\xFDhody a nev\xFDhody.\n\n\xDAKOL: Postavte lovce a ryb\xE1\u0159e.\n\n\
+        Nezapome\u0148te je p\u0159ipojit k Va\u0161emu Obchodn\xEDmu p\u0159\xED\
+        stavu pomoc\xED stezek!"]
     type: logbook
   - arguments: ["Postavte lovce a ryb\xE1\u0159e. Spojte je s budovou Obchodn\xED\
-        ho p\u0159\xEDstavu"]
+        ho p\u0159\xEDstavu."]
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -220,8 +220,8 @@ events:
 - actions:
   - arguments: ["NOV\xDD \xDAKOL: POSTAVTE SIGN\xC1LN\xCD OHE\u0147", "Vid\xEDte lod\u011B\
         , kter\xE9 \u010Das od \u010Dasu projedou okolo Va\u0161eho ostrova? Tyto\
-        \ lod\u011B pat\u0159\xED Voln\xE9mu obchodn\xEDkovi, jednomu z prvn\xEDch\
-        \ osadn\xEDk\u016F v tomto souostrov\xED.\n\nObchodn\xEDk bude z\xE1sobovat\
+        \ lod\u011B pat\u0159\xED Svobodn\xE9mu obchodn\xEDkovi, jednomu z prvn\xED\
+        ch osadn\xEDk\u016F v tomto souostrov\xED.\n\nObchodn\xEDk bude z\xE1sobovat\
         \ Va\u0161i osadu pot\u0159ebn\xFDm zbo\u017E\xEDm, kter\xE9 zat\xEDm nem\u016F\
         \u017Eete sami produkovat.\nTak\xE9 m\u016F\u017Eete prod\xE1vat p\u0159ebytky\
         \ z Va\u0161\xED produkce. Obecn\u011B je ale v\xFDhodn\u011Bj\u0161\xED tyto\
@@ -284,7 +284,7 @@ events:
         \ posuvn\xEDk nastaven\xFD na hodnotu 13 tun zp\u016Fsob\xED, \u017Ee bude\
         \ prod\xE1no 5 tun zbo\u017E\xED.\n\nPokud svobodn\xFD obchodn\xEDk bude cht\xED\
         t nakoupit nebo prodat m\xE9n\u011B zbo\u017E\xED ne\u017E nastaven\xED va\u0161\
-        ich slot\u016F dovoluje, nezb\xFDv\xE1 v\xE1m nic jin\xE9ho ne\u017E po\u010D\
+        ich slot\u016F dovoluje, nezb\xFDv\xE1 V\xE1m nic jin\xE9ho ne\u017E po\u010D\
         kat na jeho p\u0159\xED\u0161t\xED cestu.\n\nUnknown Horizons obsahuje chytr\xE9\
         \ nastaven\xED cen, to znamen\xE1, \u017Ee cena za jednotku zbo\u017E\xED\
         \ se m\u016F\u017Ee li\u0161it.\nNen\xED mo\u017En\xE9 m\u011Bnit ceny manu\xE1\
@@ -319,15 +319,16 @@ events:
         V pozd\u011Bj\u0161\xEDch \xFArovn\xEDch, budou mo\u017En\xE1 k dispozici\
         \ vylep\u0161en\xE9 verze budov."]
     type: logbook_w
-  - arguments: ['', "V\u0161imni si, \u017Ee v\xEDra se chov\xE1 jako fyzick\xFD zdroj!\n\
-        \nTo znamen\xE1, \u017Ee Tv\xED obyvatel\xE9 pot\u0159ebuj\xED stezky k producentovi\
-        \ (pavil\xF3nu), aby si mohli p\u0159ij\xEDt vyzvednout v\xEDru.\nPo ur\u010D\
-        it\xE9 dob\u011B tuto v\xEDru zkonzumuj\xED a potom znovu vyhledaj\xED producenta,\
-        \ aby dostali v\xEDce v\xEDry.\n\nD\u016Fle\u017Eit\xE9:\nNEN\xCD dosta\u010D\
-        uj\xEDc\xED, \u017Ee se budova nach\xE1z\xED v dostate\u010Dn\xE9 vzd\xE1\
-        lenosti od stan\u016F.\nSpojen\xED pomoc\xED stezky je rovn\u011B\u017E vy\u017E\
-        adov\xE1no.\n\n\xDAKOL: Postav pavil\xF3n spojen\xFD stezkou se stany, aby\
-        \ ss uspokojiia pot\u0159eba v\xEDry Tv\xFDch n\xE1mo\u0159n\xEDk\u016F."]
+  - arguments: ['', "V\u0161imn\u011Bte si, \u017Ee v\xEDra se chov\xE1 jako fyzick\xFD\
+        \ zdroj!\n\nTo znamen\xE1, \u017Ee va\u0161i obyvatel\xE9 pot\u0159ebuj\xED\
+        \ stezky k producentovi (pavil\xF3nu), aby si mohli p\u0159ij\xEDt vyzvednout\
+        \ v\xEDru.\nPo ur\u010Dit\xE9 dob\u011B tuto v\xEDru zkonzumuj\xED a potom\
+        \ znovu vyhledaj\xED producenta, aby dostali v\xEDce v\xEDry.\n\nD\u016Fle\u017E\
+        it\xE9:\nNEN\xCD dosta\u010Duj\xEDc\xED, \u017Ee se budova nach\xE1z\xED v\
+        \ dostate\u010Dn\xE9 vzd\xE1lenosti od stan\u016F.\nSpojen\xED pomoc\xED stezky\
+        \ je rovn\u011B\u017E vy\u017Eadov\xE1no.\n\n\xDAKOL: Postavte pavil\xF3n\
+        \ spojen\xFD stezkou se stany, aby se uspokojila pot\u0159eba v\xEDry va\u0161\
+        ich n\xE1mo\u0159n\xEDk\u016F."]
     type: logbook
   - arguments: ["Postav pavil\xF3n propojen\xFD se stany."]
     type: message
@@ -482,19 +483,22 @@ events:
         \ ni\u017E\u0161\xED. Nebudou nula, ale st\xE1le ni\u017E\u0161\xED, ne\u017E\
         \ pokud budete dodavatel pracovat."]
     type: logbook_w
-  - arguments: ['', !!python/unicode "This means that you can save money when you\
-        \ temporarily do not need a company and do not want to tear it down, either.\n\
-        \nAnother solution is to build the last increment-I building which has not\
-        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
-        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the branch office does.\n\nNote that companies\
-        \ can also be connected to a storage in order to get their products collected,\
-        \ and if the branch office is overwhelmed with collector tasks, you can place\
-        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
-        \ where you need collectors."]
+  - arguments: ['', "M\u016F\u017Eet\u011B u\u0161et\u0159it pen\xEDze pokud do\u010D\
+        asn\u011B zastav\xEDte spole\u010Dnost kterou zrovna nepot\u0159ebujete a\
+        \ nechcete j\xED zbourat.\n\nDal\u0161\xEDm \u0159e\u0161en\xEDm je vybudov\xE1\
+        n\xED posledn\xED budovy, kter\xE1 zat\xEDm nebyla zm\xEDn\u011Bna: skladovac\xED\
+        ho stanu..\n\ntato budova m\xE1 dva u\u010Dely a to:\n* Nab\xEDz\xED v\xED\
+        ce prostoru pro va\u0161e zbo\u017E\xED, a\n* vys\xEDl\xE1 sv\xE9 sb\u011B\
+        ra\u010De vyzvednout zbo\u017E\xED, stejn\u011B jako Obchodn\xED p\u0159\xED\
+        stav.\n\nPamatujte \u017Ee v\u0161echny spole\u010Dnosti pot\u0159ebuj\xED\
+        \ b\xFDt spojeny s Obchodn\xEDm p\u0159\xEDstavem pro svoz zbo\u017E\xED.\
+        \ Pokud m\xE1 Obchodn\xED p\u0159\xEDstav moc \xFAkol\u016F postavte skladovac\xED\
+        \ stan ktery Obchodn\xEDmu p\u0159\xEDstavu pom\u016F\u017Ee p\u0159i sv\xE1\
+        \u017Een\xED v\xFDrobk\u016F..\n\n\xDAKOL: Vybudujte skladovac\xED stan, p\u0159\
+        ednostn\u011B tam kde pot\u0159ebujete sb\u011Bra\u010De."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a storage tent (increment I tab) where it
-        makes sense.']
+  - arguments: ["Vybudujte skladovac\xED stan (v z\xE1lo\u017Ece \xFArovn\u011B I)\
+        \ tam, kde to m\xE1 smysl."]
     type: message
   - arguments: [tutStepDone, 52]
     type: set_var
@@ -506,26 +510,16 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: ["NOV\xDD \xDAKOL: POSTAVTE TKALCOVNU", !!python/unicode 'Now the wool
-        production is set up, you still need a weaver to produce cloth out of this
-        wool.
-
-
-        There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the Branch Office).
-
-
-        In both cases you should ensure the connection to a trail as well.
-
-
-        You can place the weaver close to the farm and tear down any trail to the
-        farm to see that it will still fetch the wool and produce.
-
-
-        TASK: Build a weaver positioned so it can get wool.']
+  - arguments: ["NOV\xDD \xDAKOL: POSTAVTE TKALCOVNU", "Nyn\xED je nastavena produkce\
+        \ vlny, ale st\xE1le pot\u0159ebujete tkalcovnu pro produkci l\xE1tky z vlny.\n\
+        \nJsou zde dv\u011B m\xEDsta, kde je m\u016F\u017Eete postavit - bu\u010F\
+        \ v bl\xEDzkosti farmy nebo v bl\xEDzkosti skladovac\xEDho stanu (obchodn\xED\
+        ho p\u0159\xEDstavu).\n\nV obou p\u0159\xEDpadech se ujist\u011Bte jestli\
+        \ je propojen\xE1 stezkou.\n\nPokud bude tkadlec v dosahu farmy nemus\xED\
+        te je propojit stezkou a p\u0159ece to bude fungovat.\n\n\xDAKOL: Postavte\
+        \ tkalcovnu tak, aby byla v dosahu vlny."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a weaver that can somehow reach the wool of
-        your farm.']
+  - arguments: ["Postavte tkalcovnu, kter\xE1 bude v dosahu vlny z Va\u0161\xED farmy."]
     type: message
   - arguments: [tutStepDone, 55]
     type: set_var
@@ -537,20 +531,14 @@ events:
   - arguments: [tutStepDone, 55]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
-        city to complete the tutorial. You need a positive balance.']
+  - arguments: ["Dos\xE1hn\u011Bt\u011B 50 a v\xEDce obyvatel ve va\u0161em m\u011B\
+        st\u011B k dokon\u010Den\xED tutorialu. Mus\xEDte m\xEDt pozitivn\xED bilanci."]
     type: message
-  - arguments: ["NOV\xDD \xDAKOL: DOKON\u010CETE TUTORIAL", !!python/unicode 'Try
-        to house a total of 50 or more inhabitants in your city by providing more
-        residential buildings.
-
-
-        Once you are able to keep an economy running which can satisfy this amount
-        of consumers, you are ready to discover new Unknown Horizons!
-
-
-        TASK: Reach a total number of 50 inhabitants and a positive balance to complete
-        this tutorial.']
+  - arguments: ["NOV\xDD \xDAKOL: DOKON\u010CETE TUTORIAL", "Dos\xE1hn\u011Bt\u011B\
+        \ 50 a v\xEDce obyvatel t\xEDm, \u017Ee jim postav\xEDte v\xEDce dom\u016F\
+        .\n\nJakmile uspokoj\xEDte obyvatele, jste p\u0159ipraveni objevovat nov\xE9\
+        \ nezn\xE1m\xE9 obzory!\n\n\xDAKOL: Dos\xE1hn\u011Bte po\u010Dtu 50 obyvatel\
+        \ a udr\u017Ee kladnou bilanci pro dokon\u010Den\xED tutorialu."]
     type: logbook
   - arguments: [tutStepDone, 58]
     type: set_var

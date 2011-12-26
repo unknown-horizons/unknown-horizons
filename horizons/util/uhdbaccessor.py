@@ -187,6 +187,39 @@ class UhDbAccessor(DbReader):
 		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
 
 
+	# Message table
+
+	def get_msg_visibility(self, msg_id_string):
+		"""
+		@param msg_id_string: string id of the message
+		@return: int: for how long in seconds the message will stay visible
+		"""
+		sql = "SELECT visible_for FROM message WHERE id_string = ?"
+		return self.cached_query(sql, msg_id_string)[0][0]
+
+	def get_msg_text(self, msg_id_string):
+		"""
+		@param msg_id_string: string id of the message
+		"""
+		sql = "SELECT text FROM message WHERE id_string = ?"
+		return self.cached_query(sql, msg_id_string)[0][0]
+
+	def get_msg_icon_id(self, msg_id_string):
+		"""
+		@param msg_id_string: string id of the message
+		@return: int: id
+		"""
+		sql = "SELECT icon FROM message where id_string = ?"
+		return self.cached_query(sql, msg_id_string)[0][0]
+
+	def get_msg_icons(self, msg_id_string):
+		"""
+		@param msg_id_string: string id of the message
+		@return: tuple: (up, down, hover) images
+		"""
+		sql = "SELECT up_image, down_image, hover_image FROM message_icon WHERE icon_id = ?"
+		return self.cached_query(sql, msg_id_string)[0]
+
 	#
 	#
 	# Settler DATABASE

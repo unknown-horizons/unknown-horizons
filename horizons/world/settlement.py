@@ -159,7 +159,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 		except sqlite3.OperationalError:
 			print "Updating data of outdated savegame.."
 			# old savegame, create settlement tiles provisionally (not correct, but useable)
-			# remove when there aren't any savegames from before december 2011 any more
+			# TODO: remove when there aren't any savegames from before december 2011 any more
 			for b_type, x, y in db("SELECT type, x, y FROM building WHERE location = ?", worldid):
 				cls = Entities.buildings[b_type]
 				position = Rect.init_from_topleft_and_size(x, y, cls.size[0], cls.size[1])

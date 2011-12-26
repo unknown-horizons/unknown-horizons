@@ -255,7 +255,7 @@ class BuildableLine(Buildable):
 		if island is None:
 			return []
 
-		path = RoadPathFinder()(island.path_nodes.nodes, point1.to_tuple(), point2.to_tuple())
+		path = RoadPathFinder()(island.path_nodes.nodes, point1.to_tuple(), point2.to_tuple(), rotation == 45 or rotation == 225)
 		if path is None: # can't find a path between these points
 			return [] # TODO: maybe implement alternative strategy
 
