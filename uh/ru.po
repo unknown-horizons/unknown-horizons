@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-27 12:51+0200\n"
+"PO-Revision-Date: 2011-12-27 15:04+0200\n"
 "Last-Translator: ZukinZIn <michaelts@rambler.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -2981,7 +2981,7 @@ msgstr ""
 #: horizons/world/units/ship.py:482
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Идти к {location}"
 
 #: horizons/world/units/ship.py:484
 #, python-format
@@ -2991,22 +2991,22 @@ msgstr ""
 #: horizons/world/units/ship.py:489
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Ожидать в {location}"
 
 #: horizons/world/units/ship.py:491
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Ожидать в {x}, {y}"
 
 #: horizons/world/units/weaponholder.py:440
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Атакую {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:445
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Атакую {owner}"
 
 #: run_uh.py:80
 msgid "Enable debug output to stderr and a logfile."
@@ -3135,6 +3135,8 @@ msgstr ""
 #: run_uh.py:140
 msgid "Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"
 msgstr ""
+"Запустить игру с заданной скоростью (Значения: 0.5, 1, 2, 3, 4, 6, 8, 11, "
+"20)"
 
 #: run_uh.py:162
 msgid "Unknown Horizons crashed."
