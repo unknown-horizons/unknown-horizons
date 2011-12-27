@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-27 12:39+0200\n"
+"PO-Revision-Date: 2011-12-27 12:51+0200\n"
 "Last-Translator: ZukinZIn <michaelts@rambler.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -999,7 +999,7 @@ msgstr "Недопустимое имя игрока"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Вы ввели недопустимое имя игрока."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1739,12 +1739,12 @@ msgstr "Деньги"
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
 msgid "Cloth"
-msgstr ""
+msgstr "Одежда"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "Пушки"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298
@@ -1764,7 +1764,7 @@ msgstr "Купить или продать ресурсы"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:304
 msgid "Trade history"
-msgstr ""
+msgstr "История торговли"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:306
@@ -2085,7 +2085,7 @@ msgstr "Закрыть судовой журнал"
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:635
 msgid "Read previous entries"
-msgstr ""
+msgstr "Предыдущие записи"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:637
@@ -2337,7 +2337,7 @@ msgstr "Увеличить скорость игры"
 #. (text of widget: lbl_r)
 #: horizons/i18n/guitranslations.py:788
 msgid "Enable road building mode"
-msgstr ""
+msgstr "Вкл. режим строительства дорог"
 
 #. (text of widget: lbl_right)
 #: horizons/i18n/guitranslations.py:790
@@ -2691,7 +2691,7 @@ msgstr "Начать игру"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:978
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:980
@@ -2798,7 +2798,7 @@ msgstr "Сохранение может быть повреждено или с�
 #: horizons/main.py:346
 #, python-format
 msgid "Error: Cannot find map '{name}'."
-msgstr ""
+msgstr "ОШИБКА: Не найдена карта '{name}'."
 
 #: horizons/main.py:349 horizons/main.py:426
 msgid "Error: Found multiple matches:"
@@ -2811,7 +2811,7 @@ msgstr "Ошибка: имена файлов кампании должны за
 #: horizons/main.py:381
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
-msgstr ""
+msgstr "Файл кампании будет скопирован в директорию с НГ ({path})."
 
 #: horizons/main.py:382
 msgid "This means that changes in the file you specified will not apply to the game directly."
@@ -2828,12 +2828,12 @@ msgstr ""
 #: horizons/savegamemanager.py:435
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "ОШИБКА: Не найдена кампания '{name}'."
 
 #: horizons/main.py:423
 #, python-format
 msgid "Error: Cannot find savegame '{name}'."
-msgstr ""
+msgstr "ОШИБКА: Не найдена сохраненная игра '{name}'."
 
 #: horizons/main.py:441
 msgid "Error: No quicksave found."
@@ -2863,7 +2863,7 @@ msgstr ""
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "ОШИБКА: Не найден сценарий '{name}'."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -2871,11 +2871,11 @@ msgstr "Вы выиграли!"
 
 #: horizons/scenario/actions.py:76
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Вы завершили сценарий."
 
 #: horizons/scenario/actions.py:77
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Хотите продолжить игру?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
@@ -2933,7 +2933,7 @@ msgstr ""
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Ваш партнер не продает это."
 
 #: horizons/world/tradepost.py:162
 msgid "You can not store this."
@@ -2945,11 +2945,11 @@ msgstr ""
 
 #: horizons/world/tradepost.py:178
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Ваш партнер не продаст вам больше этого."
 
 #: horizons/world/tradepost.py:198
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "Ваш партнер не будет покупать это."
 
 #: horizons/world/tradepost.py:209
 msgid "You do not possess this."
