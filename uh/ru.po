@@ -308,6 +308,7 @@ msgstr "Вы также можете двигать дороги, удержив
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Вы достигли максимального роста. Ваши жители не будут развиваться дальше"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -714,7 +715,7 @@ msgstr "Сетевые функции не могут быть инициали�
 
 #: horizons/engine.py:567 horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Проверьте сетевые настройки."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine.py:571
@@ -1190,7 +1191,7 @@ msgstr "Покупка/Продажа"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
-msgstr ""
+msgstr "Слишком далеко от конторы"
 
 #: horizons/gui/tabs/overviewtab.py:204
 msgid "Cannot equip trade ship with weapons"
@@ -1656,7 +1657,7 @@ msgstr ""
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "Сохранить карту"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
@@ -2050,7 +2051,7 @@ msgstr "Кликните для изменение названия этого �
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
 msgid "Configure trading route"
-msgstr ""
+msgstr "Настроить торговый путь"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2941,7 +2942,7 @@ msgstr ""
 
 #: horizons/world/tradepost.py:169
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Вы не можете позволить себе эту покупку."
 
 #: horizons/world/tradepost.py:178
 msgid "The trade partner does not sell more of this."
@@ -2953,7 +2954,7 @@ msgstr "Ваш партнер не будет покупать это."
 
 #: horizons/world/tradepost.py:209
 msgid "You do not possess this."
-msgstr ""
+msgstr "Это не ваше."
 
 #: horizons/world/tradepost.py:217
 msgid "The trade partner can not store more of this."
