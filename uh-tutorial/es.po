@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-27 21:46+0200\n"
+"PO-Revision-Date: 2011-12-28 00:39+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -278,16 +278,30 @@ msgid ""
 "\n"
 "Don't forget to connect them to your branch office with trails!"
 msgstr ""
+"El pescador necesita una construcción costera y un banco de peces a su "
+"alcance.\n"
+"\n"
+"Él construirá una pequeña embarcación de remo para coger algún pescado.\n"
+"\n"
+"Este es un suministro bastante constante al coste de una producción, en "
+"tiempo por unidad de alimento, ligeramente superior.\n"
+"\n"
+"Un asentamiento pequeño como el tuyo puede usar ambas compañías, y ver así "
+"mejor, cuales son los pros y contras de cada una.\n"
+"\n"
+"OBJETIVO: Construir un puesto de caza y otro de pesca.\n"
+"\n"
+"¡No olvides comunicarlas a tu sucursal mediante un modesto sendero!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:32
 msgid "Build a hunter and a fisher. Connect them to the branch office."
-msgstr "Construya un cazador y un pescador. Conéctelos al asentamiento."
+msgstr "Construya un puesto de caza y pesca. Conéctelos al asentamiento."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:34
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "PLAZA PRINCIPAL"
+msgstr "LA PLAZA PRINCIPAL"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:36
