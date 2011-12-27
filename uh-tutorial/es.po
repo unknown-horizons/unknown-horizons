@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-27 20:08+0200\n"
+"PO-Revision-Date: 2011-12-27 20:11+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -42,6 +42,8 @@ msgid ""
 "Build a branch office at the coast, so it is easy accessible for other ships "
 "like the Free Trader."
 msgstr ""
+"Construye una sucursal en la costa, así será de fácil acceso para otros "
+"barcos como el 'Free Trader'."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
