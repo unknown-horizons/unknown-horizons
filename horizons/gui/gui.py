@@ -31,6 +31,7 @@ import horizons.main
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
+from horizons.gui.keylisteners.ingamekeylistener import KeyConfig, _Actions
 from horizons.util import Callback
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.gui import LazyWidgetsDict
@@ -574,8 +575,31 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		else: # player cancelled deletion
 			return False
 
-def build_help_strings(widgets):
+def build_help_strings(widgets, keyconfig=KeyConfig()):
+	"""
+	Loads the help strings from pychan object widgets (containing no key definitions)
+	and adds 	the keys defined in the keyconfig configuration object in front of them.
+	The layout is defined through HELPSTRING_LAYOUT and translated.
+	"""
+	#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
+	HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
+
+	#HACK Ugliness starts; load actions defined through keys and map them to FIFE key strings
+	actions = _Actions.__dict__
+	reversed_keys = dict([[str(v),k] for k,v in fife.Key.__dict__.iteritems()])
+	reversed_stringmap = dict([[str(v),k] for k,v in keyconfig.keystring_mappings.iteritems()])
+	reversed_keyvalmap = dict([[str(v), reversed_keys[str(k)]] for k,v in keyconfig.keyval_mappings.iteritems()])
+	actionmap = dict(reversed_stringmap, **reversed_keyvalmap)
+	#HACK Ugliness ends here; These hacks can be removed once a config file exists which is nice to parse.
+
 	labels = widgets.getNamedChildren()
+	# filter misc labels that do not describe key functions
 	labels = dict( [(name, lbl) for (name, lbl) in labels.items() if name.startswith('lbl_')] )
+
+	# now prepend the actual keys to the function strings defined in xml
 	for (name, lbl) in labels.items():
-		lbl[0].text = u'[{key}] = {text}'.format(text=_(lbl[0].text), key=name[4:].upper())
+		try:
+			keyname = '{key}'.format(key=actionmap[str(actions[name[4:]])])
+		except KeyError as err:
+			keyname = ' '
+		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
