@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-19 02:54+0200\n"
+"PO-Revision-Date: 2011-12-19 03:03+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -18,10 +18,12 @@ msgstr ""
 "20)) ? 1 : 2);;\n"
 "X-Generator: Pootle 2.1.5\n"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "O nouă colonie a fost fondată de ${player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -191,10 +193,12 @@ msgstr "câmp de cartofi"
 msgid "Salt Ponds"
 msgstr "saline"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "instantaneul a fost salvat în ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -303,10 +307,14 @@ msgstr "Puteți ancora rutele."
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr "Ați ajuns la dezvoltarea maximă. Locuitorii nu vor mai evolua ulterior."
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You need more {resource} to build this building."
 msgstr ""
+"Aveți nevoie de mai mult ${resource} pentru a putea construi această "
+"clădire."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -323,10 +331,13 @@ msgstr "O salvare automată a fost efectuată."
 msgid "Your game has been quicksaved."
 msgstr "O salvare rapidă a fost efectuată."
 
+# 77%
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Coloniștii tăi au evoluat la nivelul ${level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -638,10 +649,12 @@ msgstr "lână"
 msgid "yellow"
 msgstr "galben"
 
+# 93%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr ""
+msgstr "${player1} și ${player2} sunt acum ${status}"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -684,10 +697,11 @@ msgstr ""
 "\n"
 "Utilizați pe risc propriu!"
 
+# 80%
 #: horizons/engine.py:304
-#, python-format
+#, python-format, fuzzy
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "Limba aleasă {lang} la locația {place} nu a putut fi încărcată"
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
@@ -1292,9 +1306,11 @@ msgstr "oprește rută"
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
+# 83%
 #: horizons/gui/widgets/routeconfig.py:255
+#, fuzzy
 msgid "Select a resource:"
-msgstr ""
+msgstr "selecționați resursele:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
