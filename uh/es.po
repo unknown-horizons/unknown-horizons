@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-28 14:34+0200\n"
+"PO-Revision-Date: 2011-12-28 15:01+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -856,7 +856,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:543
 msgid "Incompatible version"
-msgstr ""
+msgstr "Versión incompatible"
 
 #: horizons/gui/gui.py:560
 msgid "No file selected"
@@ -864,7 +864,7 @@ msgstr "No se ha seleccionado ningún archivo"
 
 #: horizons/gui/gui.py:560
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Necesitas seleccionar una partida guardada para borrar."
 
 #: horizons/gui/gui.py:564
 #, python-format
@@ -887,11 +887,11 @@ msgstr "¡Error al borrar la partida guardada!"
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:325
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "No es posible la diplomacia"
 
 #: horizons/gui/ingamegui.py:326
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "No puedes hacer diplomacia al no haber otros jugadores."
 
 #: horizons/gui/ingamegui.py:520
 msgid "Valid map names are in the following form: {expression}"
@@ -946,17 +946,17 @@ msgstr "Versión diferente!"
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Mapa: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Jugadores: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 #, python-format
 msgid "Creator: {player}"
-msgstr ""
+msgstr "Creador: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
@@ -971,36 +971,36 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:65
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Número recomendado de jugadores: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
 #: horizons/gui/widgets/choose_next_scenario.py:43
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Dificultad: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Autor: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 #: horizons/gui/modules/singleplayermenu.py:122
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Descripción: {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "Invalid player name"
-msgstr "Nombre inválido"
+msgstr "Nombre del jugador inválido"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Has introducido un nombre de jugador inválido."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
@@ -1034,7 +1034,7 @@ msgstr "Archivo de escenario inválido"
 
 #: horizons/gui/modules/singleplayermenu.py:282
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "El archivo seleccionado no es un archivo válido de escenario."
 
 #: horizons/gui/modules/singleplayermenu.py:283
 msgid "Error message:"
@@ -1054,7 +1054,7 @@ msgstr "Construir"
 
 #: horizons/gui/mousetools/navigationtool.py:68
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Presiona H para remover este consejo"
 
 #: horizons/gui/tabs/boatbuildertab.py:42
 msgid "Boat builder overview"
@@ -1130,11 +1130,11 @@ msgstr "Visión general de los colonos"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "No permitir actualizaciones"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Permitir actualizaciones"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:229
@@ -1173,11 +1173,11 @@ msgstr "Visión general del navío"
 
 #: horizons/gui/tabs/overviewtab.py:149
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "El navío necesita estar cerca de una isla para funda un asentamiento."
 
 #: horizons/gui/tabs/overviewtab.py:154
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "Ya has fundado un asentamiento en esta isla."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:162 horizons/i18n/guitranslations.py:592
@@ -1187,11 +1187,11 @@ msgstr "Construir asentamiento"
 
 #: horizons/gui/tabs/overviewtab.py:186
 msgid "Load/Unload"
-msgstr ""
+msgstr "Cargar/Descargar"
 
 #: horizons/gui/tabs/overviewtab.py:189
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Comprar/Vender"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
@@ -1199,11 +1199,11 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:204
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "No puedes equipar a un barco comercial con armas"
 
 #: horizons/gui/tabs/overviewtab.py:205
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "No es posible equipar a un barco comercial con armas."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
