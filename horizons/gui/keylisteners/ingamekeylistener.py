@@ -29,7 +29,8 @@ class _Actions(object):
 	GRID, COORD_TOOLTIP, DESTROY_TOOL, PLAYERS_OVERVIEW, ROAD_TOOL, SPEED_UP, SPEED_DOWN, \
 	PAUSE, SETTLEMENTS_OVERVIEW, SHIPS_OVERVIEW, LOGBOOK, BUILD_TOOL, ROTATE_RIGHT, \
 	ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, SAVE_MAP, \
-	PIPETTE, HEALTH_BAR, = range(22)
+	PIPETTE, HEALTH_BAR, ESCAPE, LEFT, RIGHT, UP, DOWN, DEBUG = \
+	range(28)
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
@@ -53,26 +54,25 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
+		action = self.keyconfig.translate(evt)
 
 		was = keyval in self.keysPressed
 		if not was:
 			self.keysPressed.append(keyval)
-		if keyval == fife.Key.LEFT:
+		if action == _Actions.LEFT:
 			if not was: self.key_scroll[0] -= 25
-		if keyval == fife.Key.RIGHT:
+		if action == _Actions.RIGHT:
 			if not was: self.key_scroll[0] += 25
-		if keyval == fife.Key.UP:
+		if action == _Actions.UP:
 			if not was: self.key_scroll[1] -= 25
-		if keyval == fife.Key.DOWN:
+		if action == _Actions.DOWN:
 			if not was: self.key_scroll[1] += 25
 
 		# We scrolled, do autoscroll
 		if self.key_scroll[0] != 0 or self.key_scroll != 0:
 			self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
 
-		action = self.keyconfig.translate(evt)
-
-		if keyval == fife.Key.ESCAPE:
+		if action == _Actions.ESCAPE:
 			if not self.session.ingame_gui.on_escape():
 				return # let the MainListener handle this
 		elif action == _Actions.GRID:
@@ -98,7 +98,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.ingame_gui.players_ships.toggle_visibility()
 		elif action == _Actions.LOGBOOK:
 			self.session.ingame_gui.logbook.toggle_visibility()
-		elif keystr == 'd':
+		elif action == _Actions.DEBUG:
 			pass
 			#import pdb; pdb.set_trace()
 			#debug code to check for memory leaks:
@@ -192,15 +192,16 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()
+		action = self.keyconfig.translate(evt)
 		try:
 			self.keysPressed.remove(keyval)
 		except:
 			return
-		if keyval == fife.Key.LEFT or \
-		   keyval == fife.Key.RIGHT:
+		if action == _Actions.LEFT or \
+		   action == _Actions.RIGHT:
 			self.key_scroll[0] = 0
-		if keyval == fife.Key.UP or \
-		   keyval == fife.Key.DOWN:
+		if action == _Actions.UP or \
+		   action == _Actions.DOWN:
 			self.key_scroll[1] = 0
 		self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
 
@@ -228,8 +229,14 @@ class KeyConfig(object):
 		  "a" : _Actions.TILE_OWNER_HIGHLIGHT,
 		  "o" : _Actions.PIPETTE,
 		  "k" : _Actions.HEALTH_BAR,
+		  "d" : _Actions.DEBUG,
 		}
 		self.keyval_mappings = {
+			fife.Key.ESCAPE: _Actions.ESCAPE,
+			fife.Key.LEFT: _Actions.LEFT,
+			fife.Key.RIGHT: _Actions.RIGHT,
+			fife.Key.UP: _Actions.UP,
+			fife.Key.DOWN: _Actions.DOWN,
 			fife.Key.F2 : _Actions.PLAYERS_OVERVIEW,
 			fife.Key.F3 : _Actions.SETTLEMENTS_OVERVIEW,
 			fife.Key.F4 : _Actions.SHIPS_OVERVIEW,

@@ -6,10 +6,10 @@
 	<Label text="Key bindings" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox>
-		<Label name="lbl_left" text="Scroll left" />
-		<Label name="lbl_right" text="Scroll right" />
-		<Label name="lbl_up" text="Scroll up" />
-		<Label name="lbl_down" text="Scroll down" />
+		<Label name="lbl_LEFT" text="Scroll left" />
+		<Label name="lbl_RIGHT" text="Scroll right" />
+		<Label name="lbl_UP" text="Scroll up" />
+		<Label name="lbl_DOWN" text="Scroll down" />
 	</VBox>
 	<VBox>
 		<Label name="lbl_SPEED_UP" text="Increase game speed" />
