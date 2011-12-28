@@ -17,10 +17,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pootle 2.1.5\n"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "新しい決済は ${player} によって作成されています。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -189,10 +191,12 @@ msgstr "じゃがいも畑"
 msgid "Salt Ponds"
 msgstr "塩の池"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "スクリーンショットは ${file} に保存されています。"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -300,10 +304,12 @@ msgstr "道路をドラッグすることもできます。"
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr "現在の最終時代に到達しました。これ以上のレベル向上はできません。"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "この建造物を作るにはあと ${resource} 必要です。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -320,10 +326,12 @@ msgstr "自動セーブしました。"
 msgid "Your game has been quicksaved."
 msgstr "あなたのゲームはクイック保存されています。"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "住民はレベル ${level} に到達しました。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -635,10 +643,12 @@ msgstr "羊毛"
 msgid "yellow"
 msgstr "黄色い"
 
+# 93%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr ""
+msgstr "${player1} と ${player2} は状態が ${status} です。"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -679,10 +689,11 @@ msgstr ""
 "SDLレンダリングは代替手段であり、画像出力には相当の異常が見られます。\n"
 "自己責任で使ってください！"
 
+# 80%
 #: horizons/engine.py:304
-#, python-format
+#, python-format, fuzzy
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "{place} の設定言語 {lang} は読み込まれていません。"
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
@@ -1259,9 +1270,11 @@ msgstr "交易路の廃止"
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
+# 83%
 #: horizons/gui/widgets/routeconfig.py:255
+#, fuzzy
 msgid "Select a resource:"
-msgstr ""
+msgstr "資源の選択："
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
