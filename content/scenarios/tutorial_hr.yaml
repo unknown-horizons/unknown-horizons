@@ -4,38 +4,59 @@
 # It was automatically generated with development/create_scenario_pot.sh using
 # translation files from pootle.
 
-author: !!python/unicode 'El equipo de UH'
-description: "Tutorial del juego\n\xA1Construya su primer asentamiento y aprenda los\
-  \ entresijos del juego!\n"
+author: !!python/unicode 'The UH team'
+description: "Turorial:\nIzgradi svoje prvo naseljenje i nau\u010Di kako igrati!\n"
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: ["Construye una sucursal en la costa, as\xED ser\xE1 de f\xE1cil acceso\
-        \ para otros barcos como el 'Free Trader'."]
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
-  - arguments: ["\xA1Bienvenido a Unknown Horizons!", "Este es tu cuaderno de bit\xE1\
-        cora en donde toda la informaci\xF3n importante ser\xE1 registrada. Una peque\xF1\
-        a notificaci\xF3n de cada tarea se te facilitar\xE1 a la izquierda de la pantalla.\n\
-        \nSi est\xE1s interesado en descripciones m\xE1s detalladas, tu cuaderno te\
-        \ proporcionar\xE1 toda la ayuda que necesitas.\n\nDespu\xE9s de cerrar este\
-        \ cuaderno, podr\xE1 reabrirse en el icono 'Bit\xE1cora del capit\xE1n', que\
-        \ se encuentra en la esquina superior derecha (debajo del mini-mapa, con un\
-        \ documento sellado y una pluma).\n\nSi tiene alguna sugerencia sobre la mejora\
-        \ de un texto, temas que le gustar\xEDa que fuesen explicados o incluso alg\xFA\
-        n tipo de error, por favor, \xA1contacte con nosotros y trataremos de mejorar\
-        \ el tutorial!\n\n\xA1Visita www.unknown-horizons.org para obtener ayuda de\
-        \ como contactar con el equipo!\n\nY ahora, comencemos la partida."]
+  - arguments: ["Dobrodo\u0161li u Unknown Horizons!", !!python/unicode 'This is your
+        Captain''s log where all important information is stored. A short notification
+        of each task will be provided on the left of the screen.
+
+
+        If you are interested in longer descriptions, your log will hopefully provide
+        all the help you need.
+
+
+        After you close this log, it can be re-opened with the ''Captain''s Log''
+        icon in the top-right corner (below the mini-map, with a sealed document and
+        a feather).
+
+
+        For any suggestions on better wording, topics you would like to have explained
+        or even buggy conditions: Please tell us and we will try to improve the tutorial!
+
+
+        Visit www.unknown-horizons.org for help on how to contact the team!
+
+
+        And now, let''s start the actual game.']
     type: logbook_w
-  - arguments: [!!python/unicode 'ESTABLECERSE EN UNA ISLA', "Para mover tu barco,\
-        \ selecci\xF3nalo con un clic izquierdo y luego haz clic derecho sobre la\
-        \ ubicaci\xF3n a la cual deseas ir.\n\nUna vez este cerca de la costa, el\
-        \ bot\xF3n con forma de ancla que ve en la ficha de informaci\xF3n se activar\xE1\
-        .\n\nEsto significa que puedes construir ah\xED un asentamiento pulsando el\
-        \ bot\xF3n llamado 'Construir asentamiento'.\n\nAhora, al mover el cursor\
-        \ ver\xE1s una visualizaci\xF3n del edificio.\n\nPuedes construir en cualquier\
-        \ lugar cuya visualizaci\xF3n no sea de color rojo.\nHaz clic donde desees\
-        \ colocar tu primer edificio.\n\nOBJETIVO: Construir un asentamiento en la\
-        \ costa.", 2]
+  - arguments: [!!python/unicode 'NOVI ZADATAK: NASELI SE NA OTOK', !!python/unicode 'To
+        move your ship, select it with a left click and right click on the location
+        you want it to go to.
+
+
+        Once you are near the coast, the anchor-like button you see in the overview
+        tab will become active.
+
+
+        This indicates that you are able to build a branch office there by pressing
+        that button (called ''Build Settlement'').
+
+
+        Now a preview of your building is dragged around when you move the cursor.
+
+
+        You can build on any spot where this preview is not shaded red.
+
+        Click where you want to place your first building.
+
+
+        TASK: Build a branch office at the coast.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -43,32 +64,57 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'EL ASERRADERO', "El material de construcci\xF3n\
-        \ de tu barco se descarga autom\xE1ticamente. Ahora ya es posible construir\
-        \ algunos edificios b\xE1sicos\n\nEmpezaremos construyendo un aserradero.\n\
-        \nEsto es esencial, porque en este momento, los tablones son el \xFAnico soporte\
-        \ que los marineros pueden permitirse para levantar sus tiendas.\n\nEl pescador\
-        \ tambi\xE9n necesitar\xE1 unos cuantos tablones para construirse un barco.\n\
-        \nPara construir aserraderos, abre el men\xFA de construcci\xF3n clicando\
-        \ el icono grande que aparece debajo del minimapa o presiona la letra B en\
-        \ el teclado.\n\nEl men\xFA de construcci\xF3n est\xE1 ordenado por incrementos.\n\
-        Actualmente te encuentras en el primer incremento (el nivel de los marineros),\
-        \ por lo que s\xF3lo podr\xE1s construir edificios b\xE1sicos."]
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A LUMBERJACK', !!python/unicode 'The
+        construction material on your ship got unloaded automatically. You can now
+        construct some basic buildings.
+
+
+        We will start with building a lumberjack.
+
+
+        This is essential because, at this stage, boards are the only poles your sailors
+        can afford to hang their tents over.
+
+
+        The fisherman needs some boards to build his vessel as well.
+
+
+        In order to construct lumberjacks; open the build menu by either clicking
+        the big icon below the mini map or pressing B key.
+
+
+        The build menu is sorted by increments.
+
+        You are currently in the first increment (the Sailors level) so are offered
+        only the basic buildings.']
     type: logbook_w
-  - arguments: ['', "Seg\xFAn vaya avanzando tu civilizaci\xF3n, podr\xE1s acceder\
-        \ a construir edificios cada vez m\xE1s complejos.\n\nPero ahora, selecciona\
-        \ el aserradero (en 'Compa\xF1\xEDas') y constr\xFAyelo en un superficie con\
-        \ \xE1rboles alrededor.\n\nMas adelante podr\xE1s plantar tus propios \xE1\
-        rboles - pero esto cuesta dinero. \xA1Aprovecha lo que la naturaleza te da!\n\
-        \nUn negocio siempre necesita una conexi\xF3n con un almac\xE9n o con la sucursal,\
-        \ de lo contrario los bienes permanecer\xE1n en el negocio y no ser\xE1n recogidos.\n\
-        \nEsto significa que tendr\xE1s que construir un sendero que conecte tu sucursal\
-        \ (o un almac\xE9n) con tu aserradero.\n\nOBJETIVO: Construir un aserradero\
-        \ en una zona boscosa y conectarlo mediante un sendero.\n\nAhora observa como\
-        \ un le\xF1ador recoger\xE1 tus primeros tablones."]
+  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
+        more and more complex buildings.
+
+
+        For now, select the lumberjack under ''Companies'' and build it in an area
+        with some trees around.
+
+
+        You can also plant trees later - but that costs money. Use what nature provided
+        you with!
+
+
+        A company always needs a trail connection to a storage or branch office, otherwise
+        goods will remain at the company and not be collected.
+
+
+        This means that you have to build a trail connecting your branch office (or
+        storage) and lumberjack.
+
+
+        TASK: Build a lumberjack in a wooded area and connect it to a road.
+
+
+        Watch how a collector will fetch your first self-produced boards.']
     type: logbook
-  - arguments: ["Construya un aserradero y con\xE9ctelo al asentamiento usando un\
-        \ sendero."]
+  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
+        office using a trail.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -84,26 +130,48 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'SUMINISTRO DE ALIMENTOS', "Tambi\xE9n necesitar\xE1\
-        s negocios que suministren alimentos, ya que a la gente en general (y especialmente\
-        \ a los marineros) no les gusta tener el est\xF3mago vac\xEDo.\n\nEn el primer\
-        \ incremento est\xE1n disponibles la caza y la pesca.\n\nEl cazador, sigilosamente,\
-        \ caza animales en el bosque, por lo tanto necesita \xE1rboles a su alrededor.\n\
-        \nTen en cuenta que puedes colocar al cazador cerca del bosque del aserradero.\n\
-        \nPuede pasar que los animales no se reproduzcan lo bastante r\xE1pido o que\
-        \ simplemente se escondan muy bien.\n\nConclusi\xF3n: La caza no es muy fiable\
-        \ si se necesita un suministro continuo."]
+  - arguments: [!!python/unicode 'NEW TASK: FOOD SUPPLY', !!python/unicode 'You will
+        need to have some food-producing companies, too, because people in general
+        (and especially sailors) are very hungry.
+
+
+        Available companies in the first increment are the Hunter and Fisher.
+
+
+        The Hunter, surprisingly, hunts animals in the forest, so he needs trees around.
+
+
+        Note that you can place your Hunter close to the lumberjack''s forest.
+
+
+        It can happen that the animals don''t reproduce fast enough or simply hide
+        well.
+
+
+        Conclusion: the hunter is not too reliable if you need continuous supply.']
     type: logbook_w
-  - arguments: ['', "El pescador necesita una construcci\xF3n costera y un banco de\
-        \ peces a su alcance.\n\n\xC9l construir\xE1 una peque\xF1a embarcaci\xF3\
-        n de remo para coger alg\xFAn pescado.\n\nEste es un suministro bastante constante\
-        \ al coste de una producci\xF3n, en tiempo por unidad de alimento, ligeramente\
-        \ superior.\n\nUn asentamiento peque\xF1o como el tuyo puede usar ambas compa\xF1\
-        \xEDas, y ver as\xED mejor, cuales son los pros y contras de cada una.\n\n\
-        OBJETIVO: Construir un puesto de caza y otro de pesca.\n\n\xA1No olvides comunicarlas\
-        \ a tu sucursal mediante un modesto sendero!"]
+  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
+        the branch office and a fish school in range.
+
+
+        He will build a small rowing vessel and catch some fish.
+
+
+        This is a very constant supply at the cost of a slightly longer production
+        time per unit of food.
+
+
+        A small settlement like yours can use both companies, and you can better balance
+        pros and cons if you see the direct comparison.
+
+
+        TASK: Build a hunter and a fisher.
+
+
+        Don''t forget to connect them to your branch office with trails!']
     type: logbook
-  - arguments: ["Construya un puesto de caza y pesca. Con\xE9ctelos al asentamiento."]
+  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
+        branch office.']
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -115,17 +183,27 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'LA PLAZA PRINCIPAL', "Tus habitantes necesitan una\
-        \ plaza principal en la cual puedan obtener sus bienes necesitados.\n\nDe\
-        \ ello se deduce que necesitan un sendero que les comunique sus casas con\
-        \ dicha plaza principal.\n\nTodos los bienes de tu sucursal estar\xE1n disponibles\
-        \ en este 'mercadillo', as\xED los habitantes no necesitar\xE1n caminar hasta\
-        \ el puesto de pesca o a la sucursal\n\nDeber\xEDas considerar fundar tu nueva\
-        \ hogar en un \xE1rea donde puedas f\xE1cilmente expandirlo, y poder tambi\xE9\
-        n construir algunos senderos.\n\nDeber\xEDas evitar colocar las tiendas demasiado\
-        \ cerca de tu aserradero por ejemplo, porque \xE9stas limpiar\xE1n la zona\
-        \ de \xE1rboles que se necesitar\xE1n para construir tablones.\n\nOBJETIVO:\
-        \ Construir una plaza principal."]
+  - arguments: [!!python/unicode 'NOVI ZADATAK: GLAVNI TRG', !!python/unicode 'Your
+        residents need a main square where they can fetch their goods from.
+
+
+        This means that they need a trail connection from their home to the main square.
+
+
+        All goods in your branch office are available at this ''market place'', so
+        your residents do not need to walk to the fisher or even to the branch office.
+
+
+        You should consider founding your actual house settlement in an area where
+        you can easily expand it and build some trails, too.
+
+
+        You should avoid placing tents too close to your lumberjacks for example because
+        building tents will clear away the trees that your lumberjack needs to produce
+        boards.
+
+
+        TASK: Build a main square.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
 
@@ -145,8 +223,8 @@ events:
         inhabitants. You also set the increment-specific global tax here and allow
         or deny inhabitants of this increment to upgrade to the next higher one.']
     type: logbook
-  - arguments: [!!python/unicode 'Construya una plaza principal. Elija una zona sin
-        demasiados edificios comerciales.']
+  - arguments: [!!python/unicode 'Build a main square. Choose an area without many
+        economy buildings.']
     type: message
   - arguments: [tutStepDone, 25]
     type: set_var
@@ -164,7 +242,7 @@ events:
   - arguments: [tutStepDone, 25]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'EDIFICIOS RESIDENCIALES', !!python/unicode 'Settlers
+  - arguments: [!!python/unicode 'NEW TASK: RESIDENTIAL BUILDINGS', !!python/unicode 'Settlers
         want to have a roof over their heads, else they won''t even think of living
         in your city! You need to provide tents.
 
@@ -180,7 +258,7 @@ events:
 
         TASK: Build a tent and connect it to the main square.']
     type: logbook
-  - arguments: ["Construya una tienda y con\xE9ctela a la plaza principal."]
+  - arguments: [!!python/unicode 'Build a tent and connect it to the main square.']
     type: message
   - arguments: [tutStepDone, 28]
     type: set_var
@@ -220,8 +298,8 @@ events:
         TIP: Holding down SHIFT eases constructing multiple buildings of the same
         kind.']
     type: logbook
-  - arguments: ["Construya al menos tres tiendas adicionales y con\xE9ctelas a la\
-        \ plaza principal."]
+  - arguments: [!!python/unicode 'Build at least three additional tents and connect
+        them to the main square.']
     type: message
   - arguments: [tutStepDone, 31]
     type: set_var
@@ -233,9 +311,9 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: ["CONSTRUIR UNA SE\xD1AL DE FUEGO", !!python/unicode 'Can you see the
-        ship passing your island from time to time? That ship belongs to the Free
-        Trader, one of the first settlers in this archipelago.
+  - arguments: [!!python/unicode 'ZADATAK: IZGRADI SIGNALNU VATRU', !!python/unicode 'Can
+        you see the ship passing your island from time to time? That ship belongs
+        to the Free Trader, one of the first settlers in this archipelago.
 
 
         The trader will supply your settlement with necessary goods which you can''t
@@ -278,7 +356,8 @@ events:
 
         TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
-  - arguments: ["Construya una se\xF1a de humo en la costa cerca de su asentamiento."]
+  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
+        office.']
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -290,7 +369,7 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'EL COMERCIO', !!python/unicode "Excellent! The Free\
+  - arguments: ["ZADATAK: NAU\u010CI TRGOVATI", !!python/unicode "Excellent! The Free\
         \ Trader will now stop by at your branch office from time to time.\n\nLet's\
         \ continue our tutorial on how to trade.\n\nAfter selecting a particular type\
         \ of good, the green bar across the bottom of the slot (if visible) shows\
@@ -311,8 +390,8 @@ events:
         \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
         \ as you need to have 30 tools in stock!"]
     type: logbook
-  - arguments: [!!python/unicode 'Alcance en la isla un stock de al menos 30 herramientas.',
-      !!python/unicode 'Note that this might take a while.']
+  - arguments: [!!python/unicode 'Reach an island stock of at least 30 tools.', !!python/unicode 'Note
+        that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -324,8 +403,8 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: ["CONSTRUIR UN PABELL\xD3N", !!python/unicode 'Those tools will be
-        enough for the moment. Well done!
+  - arguments: [!!python/unicode 'NEW TASK: BUILD A PAVILION', !!python/unicode 'Those
+        tools will be enough for the moment. Well done!
 
 
         You now provide housing, a main square and food to your inhabitants.
@@ -367,7 +446,7 @@ events:
         TASK: Build a pavilion with a trail to the tents in order to fulfill your
         sailors'' demand for faith.']
     type: logbook
-  - arguments: [!!python/unicode 'Construya un convento conectado a las tiendas.']
+  - arguments: [!!python/unicode 'Build a pavilion with connection to the tents.']
     type: message
   - arguments: [tutStepDone, 40]
     type: set_var
@@ -379,7 +458,7 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'SIGUIENTE NIVEL DE CRECIMIENTO', !!python/unicode 'All
+  - arguments: [!!python/unicode 'NEW TASK: NEXT INCREMENT', !!python/unicode 'All
         demands are fulfilled now if your inhabitants can regularly visit the main
         square & pavilion and your food supply is adequate.
 
@@ -435,7 +514,7 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A FARM', !!python/unicode 'Congratulations!
+  - arguments: [!!python/unicode 'ZADATAK: IZGRADI FARMU', !!python/unicode 'Congratulations!
         Some of your inhabitants have reached increment II!
 
 
@@ -478,7 +557,7 @@ events:
 
         TASK: Build a farm.']
     type: logbook
-  - arguments: [!!python/unicode 'Build a farm and keep some empty space around it.']
+  - arguments: ["Izgradi farmu i ostavi ne\u0161to slobodnog mjesta oko nje."]
     type: message
   - arguments: [tutStepDone, 46]
     type: set_var
@@ -490,7 +569,7 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD FIELDS', !!python/unicode 'The farm
+  - arguments: [!!python/unicode 'ZADATAK: IZGRADI POLJA', !!python/unicode 'The farm
         itself is not going to produce anything without some fields.
 
 
@@ -537,8 +616,8 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD STORAGE', !!python/unicode 'Did
-        you watch your lumberjack recently?
+  - arguments: ["ZADATAK: IZGRADI SKLADI\u0160TE", !!python/unicode 'Did you watch
+        your lumberjack recently?
 
 
         Since your branch office does not have unlimited space to store goods, collectors
@@ -619,9 +698,9 @@ events:
   - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
         city to complete the tutorial. You need a positive balance.']
     type: message
-  - arguments: [!!python/unicode 'COMPLETA EL TUTORIAL', !!python/unicode 'Try to
-        house a total of 50 or more inhabitants in your city by providing more residential
-        buildings.
+  - arguments: [!!python/unicode 'NEW TASK: COMPLETE TUTORIAL', !!python/unicode 'Try
+        to house a total of 50 or more inhabitants in your city by providing more
+        residential buildings.
 
 
         Once you are able to keep an economy running which can satisfy this amount
@@ -643,8 +722,8 @@ events:
   - arguments: [tutStepDone, 58]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NO TASKS LEFT', !!python/unicode 'There is nothing
-        left to do now.
+  - arguments: ["NEMA VI\u0160E ZADATAKA", !!python/unicode 'There is nothing left
+        to do now.
 
 
         If you have any suggestions on what we could or should improve, add or leave
@@ -666,8 +745,18 @@ events:
         The best results until now were achieved by joining our IRC channel, so you
         could try that out first (-;']
     type: logbook
-  - arguments: ["\xA1Gracias!", "\n\n\n\n\n\n\n\xA1Gracias por haber jugado al tutorial!\n\
-        \nEl equipo de UH"]
+  - arguments: [!!python/unicode 'Hvala!', !!python/unicode '
+
+
+
+
+
+
+
+        Thanks for playing the tutorial!
+
+
+        Your UH-Team']
     type: logbook
   - arguments: [tutStepDone, 61]
     type: set_var
@@ -688,12 +777,12 @@ events:
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: ["\xA1Felicidades! \xA1Has llegado al final de este tutorial y ya est\xE1\
-        s preparado para conocer nuevos desaf\xEDos!"]
+  - arguments: [!!python/unicode 'Congratulations! You have reached the end of this
+        tutorial and are ready to meet new challenges!']
     type: message
   conditions:
   - arguments: [tutStepDone, 60]
     type: var_gt
-locale: es
+locale: hr
 mapfile: development.sqlite
 

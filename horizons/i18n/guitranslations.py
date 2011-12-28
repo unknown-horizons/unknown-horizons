@@ -904,8 +904,6 @@ def set_translations():
 		"autosave_interval_label"     : ("text"    , _("Autosave interval in minutes:")),
 		# (text of widget: effect_volume_label)
 		"effect_volume_label"         : ("text"    , _("Effects volume:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Settings")),
 		# (text of widget: headline_graphics)
 		"headline_graphics"           : ("text"    , _("Graphics")),
 		# (text of widget: headline_language)
@@ -930,8 +928,6 @@ def set_translations():
 		"screen_resolution_label"     : ("text"    , _("Screen resolution:")),
 		# (text of widget: sound_enable_opt_text)
 		"sound_enable_opt_text"       : ("text"    , _("Enable sound:")),
-		# (text of widget: warning)
-		"warning"                     : ("text"    , _("Please make sure that you know what you do.")),
 		# (tooltip of widget: okButton)
 		"okButton"                    : ("tooltip" , _("Apply")),
 		# (tooltip of widget: cancelButton)

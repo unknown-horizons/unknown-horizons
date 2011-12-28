@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-23 18:55+0200\n"
+"PO-Revision-Date: 2011-12-23 19:12+0200\n"
 "Last-Translator: Pavel <pavelspek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1421,7 +1421,7 @@ msgstr "Bramborové pole: Produkuje jídlo. Potřebuje farmu."
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:100
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr "Po cukrové třtiny: Používané ve výrobě alkoholu. Potřebuje farmu."
+msgstr "Pole cukrové třtiny: Používané ve výrobě alkoholu. Potřebuje farmu."
 
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:102
@@ -1453,7 +1453,7 @@ msgstr "Hornictví"
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:121
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Řeznictví:  Produkuje jídlo.Potřebuje prasata nebo skot."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:123
@@ -1468,7 +1468,7 @@ msgstr ""
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:127
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Důl: Získává rudu ze zdroje."
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:129
@@ -1478,7 +1478,7 @@ msgstr ""
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:131
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Solná jezera: Produkce soli. Lze stavět pouze na pobřeží."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:133
@@ -1493,12 +1493,12 @@ msgstr ""
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:137
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr "Tabáková plantáž: Produkuje tabák. Potřebuje farmu."
+msgstr "Tabáková plantáž: Produkuje tabákové listy. Potřebuje farmu."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:139
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Trafika: Vyrábí tabák z Tabákových listů."
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:141
@@ -1670,7 +1670,7 @@ msgstr ""
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
 msgid "Save map"
-msgstr ""
+msgstr "Uložit mapu"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234

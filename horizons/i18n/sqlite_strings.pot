@@ -48,11 +48,6 @@ msgstr ""
 msgid "happiness"
 msgstr ""
 
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "FarmAnimalCollector"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "sugar"
@@ -126,11 +121,6 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: sql database files
 msgid "cyan"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "BuildingCollector"
 msgstr ""
 
 #. This is a database entry: the name of a building.
@@ -213,11 +203,6 @@ msgstr ""
 msgid "lamb wool"
 msgstr ""
 
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "LumberjackCollector"
-msgstr ""
-
 #. This is a database entry: the name of a color.
 #: sql database files
 msgid "purple"
@@ -291,11 +276,6 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
 msgid "Some of your settlers just moved out."
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "FieldCollector"
 msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -443,11 +423,6 @@ msgstr ""
 msgid "Storage Tent"
 msgstr ""
 
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "StorageCollector"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "tobacco plants"
@@ -456,21 +431,6 @@ msgstr ""
 #. This is a database entry: the name of a color.
 #: sql database files
 msgid "white"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "HunterCollector"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "AnimalCarriage"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "SettlerCollector"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
