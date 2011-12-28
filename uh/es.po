@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-28 15:01+0200\n"
+"PO-Revision-Date: 2011-12-28 15:18+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -192,9 +192,8 @@ msgstr "Lagunas de agua salada"
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr "Captura de pantalla guardada en ${file}."
+msgstr "Captura de pantalla guardada en {file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -311,7 +310,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Necesitas más {resource} para construir este edificio."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -330,9 +329,8 @@ msgstr "La partida se ha guardado."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your inhabitants reached level {level}."
-msgstr "Tus habitantes han alcanzado el nivel ${level}."
+msgstr "Tus habitantes han alcanzado el nivel {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -648,7 +646,7 @@ msgstr "amarillo"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "{player1} and {player2} are now {status}"
-msgstr ""
+msgstr "{player1} y {player2} ahora están {status}"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -1217,7 +1215,7 @@ msgstr "Quitar arma"
 #: horizons/gui/tabs/overviewtab.py:276
 #, fuzzy
 msgid "Unit overview"
-msgstr "Visión general del navío"
+msgstr "Visión general del unidades"
 
 #: horizons/gui/tabs/overviewtab.py:295 horizons/gui/tabs/overviewtab.py:397
 msgid "Production overview"
@@ -1286,7 +1284,7 @@ msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:255
 msgid "Select a resource:"
-msgstr ""
+msgstr "Selecciona un recurso:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -1296,7 +1294,7 @@ msgstr "ninguno"
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:76
 #: horizons/i18n/guitranslations.py:111
 msgid "Companies"
-msgstr "Empresas"
+msgstr "Compañías"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:47
@@ -1358,7 +1356,7 @@ msgstr "Almacén: Amplia la capacidad y provee recolectores."
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
 msgid "Trail (R): Needed for collecting goods."
-msgstr ""
+msgstr "Sendero (R): Necesario para recolectar bienes."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
@@ -1385,7 +1383,7 @@ msgstr ""
 #. (tooltip of widget: brickyard-1)
 #: horizons/i18n/guitranslations.py:88
 msgid "Brickyard: Turns clay into bricks."
-msgstr "Fábrica de ladrillos: Activa la arcilla en los ladrillos."
+msgstr "Fábrica de ladrillos: Convierte la arcilla en ladrillos."
 
 #. (tooltip of widget: clay-pit-1)
 #: horizons/i18n/guitranslations.py:90
@@ -1400,24 +1398,24 @@ msgstr "Destilería: Convierte el azúcar en licor."
 #. (tooltip of widget: herder-1)
 #: horizons/i18n/guitranslations.py:94
 msgid "Farm: Grows field crops and raises livestock."
-msgstr "Granja: Crecen cultivos y crían ganado."
+msgstr "Granja: Planta cultivos y cría ganado."
 
 #. (tooltip of widget: pasture-1)
 #: horizons/i18n/guitranslations.py:96
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr "Pasto: Aumentar ovejas. Producir lana. Las necesidades de una granja."
+msgstr "Pasto: Aumenta ovejas. Produce lana. Necesita de una granja."
 
 #. (tooltip of widget: potatofield-1)
 #: horizons/i18n/guitranslations.py:98
 msgid "Potato field: Yields food. Needs a farm."
-msgstr "Campo de papas: Produce alimento. Necesita una granja."
+msgstr "Campo de patatas: Produce alimento. Necesita una granja."
 
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:100
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
-"Campo de caña de azúcar: se utiliza en la producción de licor. Las "
-"necesidades de una granja."
+"Campo de caña de azúcar: Se utiliza en la producción de licor. Necesita de "
+"una granja."
 
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:102
@@ -1447,28 +1445,31 @@ msgstr "Minería"
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:121
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Carnicería: Necesita cerdos o ganado. Produce alimento."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:123
+#, fuzzy
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Mejora de ganado: Aumenta el ganado. Necesita de una granja."
 
 # 76%
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:125
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Carbón de leña ardiente: Quema una gran cantidad de tablas."
+msgstr ""
+"Fábrica de carbón: Quema una gran cantidad de tablas para convertirlas en "
+"carbón."
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:127
 msgid "Mine: Gets ores from deposit."
-msgstr ""
+msgstr "Mina: Obtiene mineral del depósito."
 
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:129
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Pocilga: Aumenta los cerdos. Necesita una granja."
 
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:131
@@ -1483,7 +1484,7 @@ msgstr "Fundidora: Afina todo tipo de minerales."
 #. (tooltip of widget: tavern-1)
 #: horizons/i18n/guitranslations.py:135
 msgid "Tavern: Provides get-together."
-msgstr "Taberna: Proporciona encuentro."
+msgstr "Taberna: Proporciona encuentros."
 
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:137
@@ -1508,15 +1509,14 @@ msgstr "Inicio del juego"
 #. (text of widget: howto_1_need_bo)
 #: horizons/i18n/guitranslations.py:148
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
-"¡Necesitas encontrar un asentamiento antes de poder construir edificios!"
+msgstr "¡Necesitas fundar un asentamiento antes de poder construir edificios!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:150
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Selecciona tu barco y arriba a la costa mediante un click en el botón "
-"derecho del ratón."
+"Selecciona tu barco y arriba a la costa mediante un clic en el botón derecho "
+"del ratón."
 
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:152
@@ -1542,12 +1542,12 @@ msgstr "Clica para cambiar el nombre de tu asentamiento."
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:171
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Menú de construcción (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:173
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Destruir (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:175
@@ -1557,12 +1557,12 @@ msgstr "Diplomacia"
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:177
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Menú del juego (Esc)"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "Bitácora del capitán (L)"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
@@ -1577,12 +1577,12 @@ msgstr ""
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Reducir la velocidad de juego (-)"
 
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Incrementar la velocidad de juego (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -1663,12 +1663,12 @@ msgstr ""
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
 msgid "Save map"
-msgstr ""
+msgstr "Guardar mapa"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "Guardar el mapa"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
@@ -1757,7 +1757,7 @@ msgstr ""
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "Cañones"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298

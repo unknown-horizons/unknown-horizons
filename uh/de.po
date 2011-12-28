@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-28 03:08+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-28 15:13+0200\n"
+"Last-Translator: Linkal <marcel@linkal.homeip.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1097,7 +1097,7 @@ msgstr "Bootsbau-Übersicht"
 
 #: horizons/gui/tabs/boatbuildertab.py:91
 msgid "(place in queue: {place})"
-msgstr ""
+msgstr "Gebäude oder Karte im Uhrzeigersinn drehen"
 
 #: horizons/gui/tabs/boatbuildertab.py:152
 msgid "Resources still needed:"
@@ -2295,7 +2295,7 @@ msgstr "Spielgeschwindigkeit erhöhen"
 #. (text of widget: lbl_,)
 #: horizons/i18n/guitranslations.py:743
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Gebäude oder Karte gegen den Uhrzeigersinn drehen"
 
 #. (text of widget: lbl_-)
 #: horizons/i18n/guitranslations.py:745
@@ -2305,7 +2305,7 @@ msgstr "Spielgeschwindigkeit verringern"
 #. (text of widget: lbl_.)
 #: horizons/i18n/guitranslations.py:747
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Gebäude oder Karte im Uhrzeigersinn drehen"
 
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:749

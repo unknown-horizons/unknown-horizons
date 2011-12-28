@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-19 03:02+0200\n"
+"PO-Revision-Date: 2011-12-28 15:08+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "Pelaaja {player} loi uuden siirtokunnan."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -193,7 +193,7 @@ msgstr "Suola-allas"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Kuvakaappaus tallennettu tiedostoon {file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -309,7 +309,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Tarvitset enemmän {resource} tämän rakennuksen rakentamiseen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -331,7 +331,7 @@ msgstr "Pelillesi suoritettiin pikatallennus."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Uudisasukkaasi saavuttivat tason {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
