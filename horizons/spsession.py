@@ -133,6 +133,7 @@ class SPSession(Session):
 		if len(files) == 0:
 			self.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
 			return
+		self.ingame_gui.on_escape() # close widgets that might be open
 		horizons.main.load_game(savegame=files[0])
 
 	def save(self, savegamename=None):

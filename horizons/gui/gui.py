@@ -180,6 +180,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			# make game pause if there is a game and we're not in the main menu
 			if self.session is not None and self.current != self.widgets['ingamemenu']:
 				self.session.speed_pause()
+			if self.session is not None:
+				self.session.ingame_gui.on_escape() # close dialogs that might be open
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
 			self.on_help() # toggle state
 		else:
