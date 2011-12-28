@@ -4,36 +4,38 @@
 # It was automatically generated with development/create_scenario_pot.sh using
 # translation files from pootle.
 
-author: !!python/unicode 'El equipo UH'
-description: "El tutorial:\n\xA1Construya su primer asentamiento y aprenda como jugar!\n"
+author: !!python/unicode 'El equipo de UH'
+description: "Tutorial del juego\n\xA1Construya su primer asentamiento y aprenda los\
+  \ entresijos del juego!\n"
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: ["Construye una sucursal en la costa, as\xED ser\xE1 de f\xE1cil acceso\
+        \ para otros barcos como el 'Free Trader'."]
     type: message
-  - arguments: ["\xA1Bienvenido a Unknown Horizons!", "Este es su cuaderno de bit\xE1\
-        cora en el cual se almacenar\xE1 toda la informaci\xF3n importante. Una peque\xF1\
-        a notificaci\xF3n de cada tarea se le facilitar\xE1 a la izquierda de la pantalla.\n\
-        \nSi est\xE1 interesado en descripciones m\xE1s detalladas, su cuaderno le\
+  - arguments: ["\xA1Bienvenido a Unknown Horizons!", "Este es tu cuaderno de bit\xE1\
+        cora en donde toda la informaci\xF3n importante ser\xE1 registrada. Una peque\xF1\
+        a notificaci\xF3n de cada tarea se te facilitar\xE1 a la izquierda de la pantalla.\n\
+        \nSi est\xE1s interesado en descripciones m\xE1s detalladas, tu cuaderno te\
         \ proporcionar\xE1 toda la ayuda que necesitas.\n\nDespu\xE9s de cerrar este\
-        \ cuaderno, podr\xE1 reabrirse con el icono 'Bit\xE1cora del Capit\xE1n',\
-        \ que se encuentra en la esquina superior derecha (por debajo del mini-mapa,\
-        \ con un documento sellado y una pluma).\n\nPara cualquier sugerencia sobre\
-        \ la mejora del texto, temas que le gustar\xEDa que fuesen explicados o incluso\
-        \ sobre alg\xFAn tipo de error: Por favor, \xA1contacte con nosotros y trataremos\
-        \ de mejorar el tutorial!\n\n\xA1Visita www.unknown-horizons.org para obtener\
-        \ ayuda de como contactar con el equipo!\n\nY ahora, comencemos la partida."]
+        \ cuaderno, podr\xE1 reabrirse en el icono 'Bit\xE1cora del capit\xE1n', que\
+        \ se encuentra en la esquina superior derecha (debajo del mini-mapa, con un\
+        \ documento sellado y una pluma).\n\nSi tiene alguna sugerencia sobre la mejora\
+        \ de un texto, temas que le gustar\xEDa que fuesen explicados o incluso alg\xFA\
+        n tipo de error, por favor, \xA1contacte con nosotros y trataremos de mejorar\
+        \ el tutorial!\n\n\xA1Visita www.unknown-horizons.org para obtener ayuda de\
+        \ como contactar con el equipo!\n\nY ahora, comencemos la partida."]
     type: logbook_w
-  - arguments: [!!python/unicode 'ESTABLECERSE EN UNA ISLA', "Para mover su barco,\
-        \ selecci\xF3nelo con un clic izquierdo y luego haga clic derecho sobre la\
-        \ ubicaci\xF3n a la cual desea ir.\n\nUna vez este cerca de la costa, el bot\xF3\
-        n con forma de ancla que ve en la ficha resumen se activar\xE1.\n\nEsto significa\
-        \ que puede construir ah\xED un asentamiento pulsando el bot\xF3n llamado\
-        \ 'Contruir asentamient'.\n\nAhora una visualizaci\xF3n del edificio es arrastrada\
-        \ al mover el cursor.\n\nPuede construir en cualquier lugar donde esta visualizaci\xF3\
-        n no sea de color rojo.\nHaga clic donde desee colocar su primer edificio.\n\
-        \nObjetivo: Construir un asentamiento en la costa.", 2]
+  - arguments: [!!python/unicode 'ESTABLECERSE EN UNA ISLA', "Para mover tu barco,\
+        \ selecci\xF3nalo con un clic izquierdo y luego haz clic derecho sobre la\
+        \ ubicaci\xF3n a la cual deseas ir.\n\nUna vez este cerca de la costa, el\
+        \ bot\xF3n con forma de ancla que ve en la ficha de informaci\xF3n se activar\xE1\
+        .\n\nEsto significa que puedes construir ah\xED un asentamiento pulsando el\
+        \ bot\xF3n llamado 'Construir asentamiento'.\n\nAhora, al mover el cursor\
+        \ ver\xE1s una visualizaci\xF3n del edificio.\n\nPuedes construir en cualquier\
+        \ lugar cuya visualizaci\xF3n no sea de color rojo.\nHaz clic donde desees\
+        \ colocar tu primer edificio.\n\nOBJETIVO: Construir un asentamiento en la\
+        \ costa.", 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -41,41 +43,29 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'CONSTRUIR UN ASERRADERO', !!python/unicode 'The
-        construction material on your ship got unloaded automatically. You can now
-        construct some basic buildings.
-
-
-        We will start with building a lumberjack.
-
-
-        This is essential because, at this stage, boards are the only poles your sailors
-        can afford to hang their tents over.
-
-
-        The fisherman needs some boards to build his vessel as well.
-
-
-        In order to construct lumberjacks; open the build menu by either clicking
-        the big icon below the mini map or pressing B key.
-
-
-        The build menu is sorted by increments.
-
-        You are currently in the first increment (the Sailors level) so are offered
-        only the basic buildings.']
+  - arguments: [!!python/unicode 'EL ASERRADERO', "El material de construcci\xF3n\
+        \ de tu barco se descarga autom\xE1ticamente. Ahora ya es posible construir\
+        \ algunos edificios b\xE1sicos\n\nEmpezaremos construyendo un aserradero.\n\
+        \nEsto es esencial, porque en este momento, los tablones son el \xFAnico soporte\
+        \ que los marineros pueden permitirse para levantar sus tiendas.\n\nEl pescador\
+        \ tambi\xE9n necesitar\xE1 unos cuantos tablones para construirse un barco.\n\
+        \nPara construir aserraderos, abre el men\xFA de construcci\xF3n clicando\
+        \ el icono grande que aparece debajo del minimapa o presiona la letra B en\
+        \ el teclado.\n\nEl men\xFA de construcci\xF3n est\xE1 ordenado por incrementos.\n\
+        Actualmente te encuentras en el primer incremento (el nivel de los marineros),\
+        \ por lo que s\xF3lo podr\xE1s construir edificios b\xE1sicos."]
     type: logbook_w
-  - arguments: ['', "Cuanto mas aumenta el nivel de su civilizaci\xF3n, mas edificios\
-        \ complejos va a poder construir.\n\nAhora, seleccione el le\xF1ador en 'compa\xF1\
-        \xEDas' y construya lo en una zona con arboles.\n\nMas adelante tambi\xE9\
-        n podr\xE1 plantar sus propios arboles - pero esto cuesta dinero. As\xED que\
-        \ utilice lo que la naturaleza les da!\n\nUn negocio siempre necesita un camino\
-        \ que le conecta con un almac\xE9n o una sucursal, si no los bienes permanecer\xE1\
-        n en el negocio y no ser\xE1n recogidos.\n\nEso significa que tendr\xE1 que\
-        \ construir un camino que conecta su sucursal (o un almac\xE9n) con su le\xF1\
-        ador.\n\nOBJETIVO: Construya un le\xF1ador en una zona con arboles y conecte\
-        \ lo con la calle\n\nAhora relaje y observe como recoger\xE1n sus primeros\
-        \ tablones."]
+  - arguments: ['', "Seg\xFAn vaya avanzando tu civilizaci\xF3n, podr\xE1s acceder\
+        \ a construir edificios cada vez m\xE1s complejos.\n\nPero ahora, selecciona\
+        \ el aserradero (en 'Compa\xF1\xEDas') y constr\xFAyelo en un superficie con\
+        \ \xE1rboles alrededor.\n\nMas adelante podr\xE1s plantar tus propios \xE1\
+        rboles - pero esto cuesta dinero. \xA1Aprovecha lo que la naturaleza te da!\n\
+        \nUn negocio siempre necesita una conexi\xF3n con un almac\xE9n o con la sucursal,\
+        \ de lo contrario los bienes permanecer\xE1n en el negocio y no ser\xE1n recogidos.\n\
+        \nEsto significa que tendr\xE1s que construir un sendero que conecte tu sucursal\
+        \ (o un almac\xE9n) con tu aserradero.\n\nOBJETIVO: Construir un aserradero\
+        \ en una zona boscosa y conectarlo mediante un sendero.\n\nAhora observa como\
+        \ un le\xF1ador recoger\xE1 tus primeros tablones."]
     type: logbook
   - arguments: ["Construya un aserradero y con\xE9ctelo al asentamiento usando un\
         \ sendero."]
@@ -94,37 +84,26 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'SUMINISTRO DE ALIMENTOS', "Tambi\xE9n necesitaran\
-        \ negocios que fabriquen comida porque la gente normalmente es bastante hambrienta\
-        \ (y especialmente los marineros).\n\nEn el primer nivel son disponibles el\
-        \ cazador y el pescador.\n\nComo ya sabr\xE1s, el cazador caza animales en\
-        \ el bosque, as\xED que necesita arboles a su alrededor.\n\nTenga en cuenta\
-        \ que puede colocar el cazador cerca del bosque del le\xF1ador.\n\nPuede pasar\
-        \ que los animales no se reproduzcan bastante r\xE1pidos o que simplemente\
-        \ se escondan muy bien.\n\nConclusi\xF3n: El cazador no es muy fiable si necesita\
-        \ un suministro continuo."]
+  - arguments: [!!python/unicode 'SUMINISTRO DE ALIMENTOS', "Tambi\xE9n necesitar\xE1\
+        s negocios que suministren alimentos, ya que a la gente en general (y especialmente\
+        \ a los marineros) no les gusta tener el est\xF3mago vac\xEDo.\n\nEn el primer\
+        \ incremento est\xE1n disponibles la caza y la pesca.\n\nEl cazador, sigilosamente,\
+        \ caza animales en el bosque, por lo tanto necesita \xE1rboles a su alrededor.\n\
+        \nTen en cuenta que puedes colocar al cazador cerca del bosque del aserradero.\n\
+        \nPuede pasar que los animales no se reproduzcan lo bastante r\xE1pido o que\
+        \ simplemente se escondan muy bien.\n\nConclusi\xF3n: La caza no es muy fiable\
+        \ si se necesita un suministro continuo."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
-        the branch office and a fish school in range.
-
-
-        He will build a small rowing vessel and catch some fish.
-
-
-        This is a very constant supply at the cost of a slightly longer production
-        time per unit of food.
-
-
-        A small settlement like yours can use both companies, and you can better balance
-        pros and cons if you see the direct comparison.
-
-
-        TASK: Build a hunter and a fisher.
-
-
-        Don''t forget to connect them to your branch office with trails!']
+  - arguments: ['', "El pescador necesita una construcci\xF3n costera y un banco de\
+        \ peces a su alcance.\n\n\xC9l construir\xE1 una peque\xF1a embarcaci\xF3\
+        n de remo para coger alg\xFAn pescado.\n\nEste es un suministro bastante constante\
+        \ al coste de una producci\xF3n, en tiempo por unidad de alimento, ligeramente\
+        \ superior.\n\nUn asentamiento peque\xF1o como el tuyo puede usar ambas compa\xF1\
+        \xEDas, y ver as\xED mejor, cuales son los pros y contras de cada una.\n\n\
+        OBJETIVO: Construir un puesto de caza y otro de pesca.\n\n\xA1No olvides comunicarlas\
+        \ a tu sucursal mediante un modesto sendero!"]
     type: logbook
-  - arguments: ["Construya un cazador y un pescador. Con\xE9ctelos al asentamiento."]
+  - arguments: ["Construya un puesto de caza y pesca. Con\xE9ctelos al asentamiento."]
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -136,27 +115,17 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'PLAZA PRINCIPAL', !!python/unicode 'Your residents
-        need a main square where they can fetch their goods from.
-
-
-        This means that they need a trail connection from their home to the main square.
-
-
-        All goods in your branch office are available at this ''market place'', so
-        your residents do not need to walk to the fisher or even to the branch office.
-
-
-        You should consider founding your actual house settlement in an area where
-        you can easily expand it and build some trails, too.
-
-
-        You should avoid placing tents too close to your lumberjacks for example because
-        building tents will clear away the trees that your lumberjack needs to produce
-        boards.
-
-
-        TASK: Build a main square.']
+  - arguments: [!!python/unicode 'LA PLAZA PRINCIPAL', "Tus habitantes necesitan una\
+        \ plaza principal en la cual puedan obtener sus bienes necesitados.\n\nDe\
+        \ ello se deduce que necesitan un sendero que les comunique sus casas con\
+        \ dicha plaza principal.\n\nTodos los bienes de tu sucursal estar\xE1n disponibles\
+        \ en este 'mercadillo', as\xED los habitantes no necesitar\xE1n caminar hasta\
+        \ el puesto de pesca o a la sucursal\n\nDeber\xEDas considerar fundar tu nueva\
+        \ hogar en un \xE1rea donde puedas f\xE1cilmente expandirlo, y poder tambi\xE9\
+        n construir algunos senderos.\n\nDeber\xEDas evitar colocar las tiendas demasiado\
+        \ cerca de tu aserradero por ejemplo, porque \xE9stas limpiar\xE1n la zona\
+        \ de \xE1rboles que se necesitar\xE1n para construir tablones.\n\nOBJETIVO:\
+        \ Construir una plaza principal."]
     type: logbook_w
   - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
 
