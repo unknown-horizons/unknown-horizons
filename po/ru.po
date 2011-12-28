@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-11 00:21+0100\n"
-"PO-Revision-Date: 2011-12-27 15:04+0200\n"
-"Last-Translator: ZukinZIn <michaelts@rambler.ru>\n"
+"PO-Revision-Date: 2011-12-27 22:51+0200\n"
+"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -219,12 +219,12 @@ msgstr "Плавильня"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Некоторые жители не могут попасть на главную площадь"
+msgstr "Некоторые жители не могут попасть на главную площадь."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Некоторые ваши жители только что уехали."
 
 # Can we drop the 'Tent' part ? Or we need something like 'Палатка-хранилище', 'Склад-палатка' etc.
 #. This is a database entry: the name of a building.
@@ -308,7 +308,7 @@ msgstr "Вы также можете двигать дороги, удержив
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
-"Вы достигли максимального роста. Ваши жители не будут развиваться дальше"
+"Вы достигли максимального роста. Ваши жители не будут развиваться дальше."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -333,7 +333,7 @@ msgstr "Быстрое сохранение успешно выполнено."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your inhabitants reached level ${level}."
-msgstr "Ваши жители достигли уровня: ${level}"
+msgstr "Ваши жители достигли уровня: ${level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -691,7 +691,7 @@ msgstr ""
 #: horizons/engine.py:305
 #, python-format
 msgid "Configured language {lang} at {place} could not be loaded"
-msgstr ""
+msgstr "Настроенный язык {lang} в {place} не может быть загружен"
 
 #: horizons/engine.py:551
 msgid "Invalid network port"
@@ -711,7 +711,7 @@ msgstr "Не удалось применить сетевые настройки
 
 #: horizons/engine.py:566 horizons/gui/modules/multiplayermenu.py:52
 msgid "Network features could not be initialized with the current configuration."
-msgstr "Сетевые функции не могут быть инициализированы в текущей конфигурации"
+msgstr "Сетевые функции не могут быть инициализированы в текущей конфигурации."
 
 #: horizons/engine.py:567 horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the settings you specified in the network section."
@@ -722,7 +722,7 @@ msgstr "Проверьте сетевые настройки."
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
 "Для портов < 1024 могут потребоваться специальные права. Попробуйте 0 или "
-"порт больше 1024"
+"порт больше 1024."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:166 horizons/gui/ingamegui.py:519
@@ -756,7 +756,7 @@ msgstr "Нет сохраненных игр"
 
 #: horizons/gui/gui.py:249
 msgid "There are no saved games to load."
-msgstr "Нет сохраненных игр"
+msgstr "Нет сохраненных игр."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -776,7 +776,7 @@ msgstr "Не указано имя файла"
 
 #: horizons/gui/gui.py:315
 msgid "Please enter a valid filename."
-msgstr "Введите правильное имя файла"
+msgstr "Введите правильное имя файла."
 
 #. reshow dialog
 #. savegamename already exists
@@ -826,12 +826,12 @@ msgstr "Сохранено в {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:520
-#, python-format
+#, python-format, fuzzy
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Еще не сохранялось"
+msgstr[1] "Сохранено {amount} раз"
+msgstr[2] "Сохранено {amount} раза"
 
 #: horizons/gui/gui.py:530
 #, python-format
@@ -858,7 +858,7 @@ msgstr "Файл не выбран"
 
 #: horizons/gui/gui.py:557
 msgid "You need to select a savegame to delete."
-msgstr "Необходимо выбрать сохраненную игру для удаления"
+msgstr "Необходимо выбрать сохраненную игру для удаления."
 
 #: horizons/gui/gui.py:561
 #, python-format
@@ -881,15 +881,15 @@ msgstr "Не удалось уничтожить файл сохранения!"
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:325
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Дипломатия не возможна"
 
 #: horizons/gui/ingamegui.py:326
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "Дипломатия не возможна, т.к. нет здесь других игроков."
 
 #: horizons/gui/ingamegui.py:519
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "Допустимы имена карт в следующей форме: {expression}"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -924,13 +924,13 @@ msgstr "Сетевая ошибка"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Could not connect to master server."
-msgstr "Не могу соединиться с master сервером"
+msgstr "Не могу соединиться с master сервером."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
 "Если Ваше соединение с Интернетом в порядке (проверьте!), возможно наш "
-"master сервер временно не доступен"
+"master сервер временно не доступен."
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:124
@@ -964,8 +964,8 @@ msgstr "Неправильная версия"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
-"Версия игры на хосте({game_version}) отличается от вашей({own_version}). Все "
-"игроки в сетевой игре должены использовать одинаковые версии."
+"Версия игры на хосте ({game_version}) отличается от вашей ({own_version}). "
+"Все игроки в сетевой игре должены использовать одинаковые версии."
 
 #: horizons/gui/modules/multiplayermenu.py:294
 #: horizons/gui/modules/singleplayermenu.py:65
@@ -1169,11 +1169,11 @@ msgstr "Обзор корабля"
 
 #: horizons/gui/tabs/overviewtab.py:149
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr "Корабль должен быть вблизи острова, чтобы основать поселение"
+msgstr "Корабль должен быть вблизи острова, чтобы основать поселение."
 
 #: horizons/gui/tabs/overviewtab.py:154
 msgid "You already have a settlement on this island."
-msgstr "У вас уже есть поселение на этом острове"
+msgstr "У вас уже есть поселение на этом острове."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:162 horizons/i18n/guitranslations.py:592
@@ -1226,7 +1226,7 @@ msgstr "Выбранные юниты"
 #: horizons/gui/widgets/inventory.py:103
 #, python-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Лимит: {amount}т на слот"
 
 #: horizons/gui/widgets/logbook.py:156
 msgid "Emptiness"
@@ -1239,7 +1239,7 @@ msgstr "В вашем логи ещё нет записей!"
 #: horizons/gui/widgets/playerssettlements.py:42
 #, python-format
 msgid "{player}'s settlements"
-msgstr ""
+msgstr "Поселения {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1250,7 +1250,7 @@ msgstr "Всего"
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "{player}'s ships"
-msgstr ""
+msgstr "Корабли {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
@@ -1652,7 +1652,7 @@ msgstr "Префикс:"
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
 msgid "Save map"
-msgstr ""
+msgstr "Сохранение карты"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
@@ -1837,7 +1837,7 @@ msgstr "Строить поля"
 #: horizons/i18n/guitranslations.py:353 horizons/i18n/guitranslations.py:357
 #: horizons/i18n/guitranslations.py:502 horizons/i18n/guitranslations.py:506
 msgid "Capacity utilization"
-msgstr ""
+msgstr "Использование производственных мощностей"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:369
@@ -1970,7 +1970,7 @@ msgstr "Название:"
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:477 horizons/i18n/guitranslations.py:481
 msgid "Collector utilisation"
-msgstr ""
+msgstr "Использование сборщиков"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:568
@@ -2222,7 +2222,7 @@ msgstr "Удерживать позицию"
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:737
 msgid "Passive"
-msgstr ""
+msgstr "Пассивно"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:742
@@ -2509,7 +2509,7 @@ msgstr "Главное меню:"
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:892
 msgid "Only show games with the same version:"
-msgstr ""
+msgstr "Игры с версией как у вас:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:894
@@ -2803,7 +2803,7 @@ msgstr "ОШИБКА: Не найдена карта '{name}'."
 
 #: horizons/main.py:349 horizons/main.py:426
 msgid "Error: Found multiple matches:"
-msgstr ""
+msgstr "Ошибка: Обнаружены множественные совпадения."
 
 #: horizons/main.py:372
 msgid "Error: campaign filenames have to end in \".yaml\"."
@@ -2824,6 +2824,8 @@ msgstr ""
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
+"Чтобы увидеть изменения, всегда запускайте НГ с текущими аргументами или "
+"отредактируйте файл {filename}."
 
 #: horizons/main.py:391 horizons/savegamemanager.py:429
 #: horizons/savegamemanager.py:435
@@ -2859,12 +2861,12 @@ msgstr ""
 #: horizons/savegamemanager.py:379
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "Ошибка: не знаю, как обращаться с условием типа {condition}"
 
 #: horizons/savegamemanager.py:454 horizons/savegamemanager.py:460
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr "ОШИБКА: Не найден сценарий '{name}'."
+msgstr "Ошибка: Не найден сценарий '{name}'."
 
 #: horizons/scenario/actions.py:75
 msgid "You have won!"
@@ -2930,7 +2932,7 @@ msgstr "Файл сохранения используется другой пр
 #: horizons/util/uhdbaccessor.py:164
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
@@ -2938,7 +2940,7 @@ msgstr "Ваш партнер не продает это."
 
 #: horizons/world/tradepost.py:162
 msgid "You can not store this."
-msgstr ""
+msgstr "Вы не можете хранить это."
 
 #: horizons/world/tradepost.py:169
 msgid "You can not afford to buy this."
@@ -2958,25 +2960,25 @@ msgstr "Это не ваше."
 
 #: horizons/world/tradepost.py:217
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "Вашему партнеру негде хранить это."
 
 #: horizons/world/tradepost.py:224
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Ваш партнер не может позволить себе эту покупку."
 
 #: horizons/world/tradepost.py:231
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "Ваш партнер не купить больше этого."
 
 #: horizons/world/units/ship.py:272
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Торговый путь: к {location}"
 
 #: horizons/world/units/ship.py:276
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Торговый путь: ожидание в {position}"
 
 #: horizons/world/units/ship.py:482
 #, python-format
@@ -2986,7 +2988,7 @@ msgstr "Идти к {location}"
 #: horizons/world/units/ship.py:484
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Идти к {x}, {y}"
 
 #: horizons/world/units/ship.py:489
 #, python-format
@@ -3082,6 +3084,8 @@ msgstr "Настройки ИИ"
 #: run_uh.py:114
 msgid "Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0)."
 msgstr ""
+"Использовать <ai_players> ИИ-игроков (исключая возможные гибриды ИИ-человек; "
+"по умолчанию 0)."
 
 #: run_uh.py:116
 msgid "Makes the human player a human-AI hybrid (for development only)."
@@ -3130,7 +3134,7 @@ msgstr "Запустить предварительный просмотрщик
 
 #: run_uh.py:138
 msgid "Disable preloading while in main menu"
-msgstr ""
+msgstr "Запретить подзагрузку игры в главном меню"
 
 #: run_uh.py:140
 msgid "Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)"
