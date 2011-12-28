@@ -629,8 +629,8 @@ def set_translations():
 		},
 
 	"captains_log.xml" : {
-		# (tooltip of widget: cancelButton) Captain's Log: logbook/diary used in scenarios
-		"cancelButton"                : ("tooltip" , _("Leave Captain's log")),
+		# (tooltip of widget: okButton) Captain's Log: logbook/diary used in scenarios
+		"okButton"                    : ("tooltip" , _("Leave Captain's log")),
 		# (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 		"backwardButton"              : ("tooltip" , _("Read previous entries")),
 		# (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
@@ -655,15 +655,15 @@ def set_translations():
 		"lbl_wait_at_load"            : ("text"    , _("Wait at load:")),
 		# (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 		"lbl_wait_at_unload"          : ("text"    , _("Wait at unload:")),
-		# (tooltip of widget: cancelButton)
-		"cancelButton"                : ("tooltip" , _("Exit")),
+		# (tooltip of widget: okButton)
+		"okButton"                    : ("tooltip" , _("Exit")),
 		# (tooltip of widget: start_route) Trade route
 		"start_route"                 : ("tooltip" , _("Start route")),
 		},
 
 	"island_production.xml" : {
-		# (tooltip of widget: cancelButton)
-		"cancelButton"                : ("tooltip" , _("Close")),
+		# (tooltip of widget: okButton)
+		"okButton"                    : ("tooltip" , _("Close")),
 		},
 
 	"players_overview.xml" : {
@@ -685,8 +685,8 @@ def set_translations():
 		"total_score"                 : ("text"    , _("Total")),
 		# (text of widget: unit_score)
 		"unit_score"                  : ("text"    , _("Units")),
-		# (tooltip of widget: cancelButton)
-		"cancelButton"                : ("tooltip" , _("Close")),
+		# (tooltip of widget: okButton)
+		"okButton"                    : ("tooltip" , _("Close")),
 		},
 
 	"players_settlements.xml" : {
@@ -700,8 +700,8 @@ def set_translations():
 		"settlement_name"             : ("text"    , _("Name")),
 		# (text of widget: taxes)
 		"taxes"                       : ("text"    , _("Taxes")),
-		# (tooltip of widget: cancelButton)
-		"cancelButton"                : ("tooltip" , _("Close")),
+		# (tooltip of widget: okButton)
+		"okButton"                    : ("tooltip" , _("Close")),
 		},
 
 	"ships_list.xml" : {
@@ -715,8 +715,8 @@ def set_translations():
 		"status"                      : ("text"    , _("Status")),
 		# (text of widget: weapons)
 		"weapons"                     : ("text"    , _("Weapons")),
-		# (tooltip of widget: cancelButton)
-		"cancelButton"                : ("tooltip" , _("Close")),
+		# (tooltip of widget: okButton)
+		"okButton"                    : ("tooltip" , _("Close")),
 		},
 
 	"stancewidget.xml" : {
@@ -745,8 +745,12 @@ def set_translations():
 		"lbl_COORD_TOOLTIP"           : ("text"    , _("Show coordinate values (Debug)")),
 		# (text of widget: lbl_DESTROY_TOOL)
 		"lbl_DESTROY_TOOL"            : ("text"    , _("Enable destruct mode")),
+		# (text of widget: lbl_DOWN)
+		"lbl_DOWN"                    : ("text"    , _("Scroll down")),
 		# (text of widget: lbl_GRID)
 		"lbl_GRID"                    : ("text"    , _("Toggle grid on/off")),
+		# (text of widget: lbl_LEFT)
+		"lbl_LEFT"                    : ("text"    , _("Scroll left")),
 		# (text of widget: lbl_LOGBOOK)
 		"lbl_LOGBOOK"                 : ("text"    , _("Toggle Captain's log")),
 		# (text of widget: lbl_PAUSE)
@@ -757,6 +761,8 @@ def set_translations():
 		"lbl_QUICKLOAD"               : ("text"    , _("Quickload")),
 		# (text of widget: lbl_QUICKSAVE)
 		"lbl_QUICKSAVE"               : ("text"    , _("Quicksave")),
+		# (text of widget: lbl_RIGHT)
+		"lbl_RIGHT"                   : ("text"    , _("Scroll right")),
 		# (text of widget: lbl_ROAD_TOOL)
 		"lbl_ROAD_TOOL"               : ("text"    , _("Enable road building mode")),
 		# (text of widget: lbl_ROTATE_LEFT)
@@ -775,22 +781,16 @@ def set_translations():
 		"lbl_TILE_OWNER_HIGHLIGHT"    : ("text"    , _("Highlight tile ownership")),
 		# (text of widget: lbl_TRANSLUCENCY)
 		"lbl_TRANSLUCENCY"            : ("text"    , _("Toggle translucency of ambient buildings")),
-		# (text of widget: lbl_down)
-		"lbl_down"                    : ("text"    , _("Scroll down")),
+		# (text of widget: lbl_UP)
+		"lbl_UP"                      : ("text"    , _("Scroll up")),
 		# (text of widget: lbl_f1)
 		"lbl_f1"                      : ("text"    , _("Display help")),
 		# (text of widget: lbl_f10)
 		"lbl_f10"                     : ("text"    , _("Toggle console on/off")),
-		# (text of widget: lbl_left)
-		"lbl_left"                    : ("text"    , _("Scroll left")),
-		# (text of widget: lbl_right)
-		"lbl_right"                   : ("text"    , _("Scroll right")),
 		# (text of widget: lbl_s)
 		"lbl_s"                       : ("text"    , _("Screenshot")),
 		# (text of widget: lbl_shift)
 		"lbl_shift"                   : ("text"    , _("Hold to place multiple buildings")),
-		# (text of widget: lbl_up)
-		"lbl_up"                      : ("text"    , _("Scroll up")),
 		# (tooltip of widget: okButton)
 		"okButton"                    : ("tooltip" , _("Return")),
 		},
