@@ -66,7 +66,7 @@ class StatsWidget(object):
 
 	def _init_gui(self):
 		self._gui = load_uh_widget(self.widget_file_name)
-		self._gui.mapEvents({'cancelButton': self.hide})
+		self._gui.mapEvents({'okButton': self.hide})
 		self._gui.position_technique = 'automatic'
 		self._content_vbox = self._gui.findChild(name = 'content_vbox')
 		self.refresh()

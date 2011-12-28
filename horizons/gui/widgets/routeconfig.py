@@ -430,7 +430,7 @@ class RouteConfig(object):
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
-		  'cancelButton' : self.hide,
+		  'okButton' : self.hide,
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
