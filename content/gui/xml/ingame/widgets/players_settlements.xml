@@ -37,7 +37,7 @@ In this VBox a line is added per settlement in the following format:
 		<Spacer />
 		<HBox>
 			<Spacer min_size="627" />
-			<CancelButton tooltip="Close" />
+			<OkButton tooltip="Close" />
 		</HBox>
 	</VBox>
 </Container>

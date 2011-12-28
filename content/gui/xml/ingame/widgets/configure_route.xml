@@ -37,7 +37,7 @@
 		<VBox name="resources" max_size="326,172" min_size="276,158" /> <!-- res selection box, filled with icons -->
 
 		<HBox> <Spacer min_size="275" max_size="275"/>
-			<CancelButton tooltip="Exit"  is_focusable="0"/>
+			<OkButton tooltip="Exit" />
 		</HBox>
 	</VBox>
 <!-- Here pickbelts could be added to achieve more space.
