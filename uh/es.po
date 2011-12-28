@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-28 15:18+0200\n"
+"PO-Revision-Date: 2011-12-28 16:37+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1777,7 +1777,7 @@ msgstr "Comprar/Vender recursos"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:304
 msgid "Trade history"
-msgstr ""
+msgstr "Historial del comercio"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:306
@@ -1799,7 +1799,7 @@ msgstr "Compras"
 #. (text of widget: headline_balance_label)
 #: horizons/i18n/guitranslations.py:320
 msgid "Balance:"
-msgstr "Saldo:"
+msgstr "Balance:"
 
 #. (text of widget: headline_expenses_label)
 #: horizons/i18n/guitranslations.py:322
@@ -1923,7 +1923,7 @@ msgstr "Impuestos:"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:396 horizons/i18n/guitranslations.py:425
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Actualizar permisos:"
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
@@ -2071,7 +2071,7 @@ msgstr "Clic aquí para cambiar el nombre del navío."
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:590 horizons/i18n/guitranslations.py:601
 msgid "Configure trading route"
-msgstr ""
+msgstr "Configurar la ruta de comercio"
 
 #. (tooltip of widget: toggle_active_active)
 #: horizons/i18n/guitranslations.py:610 horizons/i18n/guitranslations.py:617
@@ -2106,12 +2106,12 @@ msgstr "Dejar el cuaderno de bitácora"
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:635
 msgid "Read previous entries"
-msgstr ""
+msgstr "Leer entradas anteriores"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:637
 msgid "Read next entries"
-msgstr "Leer entradas próximas"
+msgstr "Leer siguientes entradas"
 
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:642
@@ -2126,7 +2126,7 @@ msgstr "Descripción del escenario"
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:648
 msgid "Continue playing"
-msgstr "Continua jugando"
+msgstr "Continuar jugando"
 
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:650
@@ -2516,7 +2516,7 @@ msgstr "Menú principal:"
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:881
 msgid "Only show games with the same version:"
-msgstr ""
+msgstr "Sólo muestra partidas con la misma versión:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:883
@@ -2892,11 +2892,11 @@ msgstr "¡Has ganado!"
 
 #: horizons/scenario/actions.py:75
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Has completado este escenario."
 
 #: horizons/scenario/actions.py:76
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "¿Desea continuar jugando?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
@@ -2943,11 +2943,11 @@ msgstr ""
 
 #: horizons/spsession.py:167
 msgid "Access is denied"
-msgstr ""
+msgstr "Acceso denegado"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "El archivo de partida guardada es probablemente sólo de lectura."
 
 #: horizons/spsession.py:171
 msgid "File used by another process"
@@ -2968,11 +2968,11 @@ msgstr ""
 
 #: horizons/world/tradepost.py:162
 msgid "You can not store this."
-msgstr ""
+msgstr "No puedes almacenar esto."
 
 #: horizons/world/tradepost.py:169
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "No te puedes permitir comprar esto."
 
 #: horizons/world/tradepost.py:178
 msgid "The trade partner does not sell more of this."
@@ -2984,7 +2984,7 @@ msgstr ""
 
 #: horizons/world/tradepost.py:209
 msgid "You do not possess this."
-msgstr ""
+msgstr "Tu no posees esto."
 
 #: horizons/world/tradepost.py:217
 msgid "The trade partner can not store more of this."
