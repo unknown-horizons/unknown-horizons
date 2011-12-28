@@ -104,9 +104,10 @@ class BuySellTab(TabInterface):
 		self.trade_history.removeAllChildren()
 		unused_rows = set(self.trade_history_widget_cache.keys())
 
-		total_entries = len(self.settlement.trade_history)
-		for i in xrange(min(5, total_entries)):
-			row = self.settlement.trade_history[total_entries - i - 1]
+		settlement_trade_history = self.settlement.get_component(TradePostComponent).trade_history
+		total_entries = len(settlement_trade_history)
+		for i in xrange(min(4, total_entries)):
+			row = settlement_trade_history[total_entries - i - 1]
 			player = WorldObject.get_object_by_id(row[1])
 			if row not in self.trade_history_widget_cache:
 				self.trade_history_widget_cache[row] = TradeHistoryItem(player, row[2], row[3], row[4])
@@ -249,10 +250,6 @@ class BuySellTab(TabInterface):
 				else:
 					RemoveFromSellList(self.settlement, slot.res).execute(self.settlement.session)
 				self.add_buy_to_settlement(slot.res, limit, slot.id, dont_use_commands)
-		#print "Buylist:", self.settlement.buy_list
-		#print "Selllist:", self.settlement.sell_list
-
-
 
 	def add_buy_to_settlement(self, res_id, limit, slot, dont_use_commands=False):
 		"""
@@ -260,7 +257,6 @@ class BuySellTab(TabInterface):
 		Actions have the form (res_id , limit) where limit is the amount until
 		which the settlement will try to buy this resource.
 		"""
-		#print "limit:", limit
 		assert res_id is not None, "Resource to buy is None"
 		self.log.debug("BuySellTab: buying of res %s up to %s", res_id, limit)
 		self.slots[slot].action = "buy"
@@ -268,8 +264,6 @@ class BuySellTab(TabInterface):
 			self.settlement.get_component(TradePostComponent).add_to_buy_list(res_id, limit)
 		else:
 			AddToBuyList(self.settlement, res_id, limit).execute(self.settlement.session)
-		#print self.settlement.buy_list
-
 
 	def add_sell_to_settlement(self, res_id, limit, slot, dont_use_commands=False):
 		"""
@@ -277,15 +271,13 @@ class BuySellTab(TabInterface):
 		Actions have the form (res_id , limit) where limit is the amount until
 		which the settlement will allow to sell this resource.
 		"""
-		#print "limit:", limit
 		assert res_id is not None, "Resource to sell is None"
 		self.log.debug("BuySellTab: selling of res %s up to %s", res_id, limit)
 		self.slots[slot].action = "sell"
 		if dont_use_commands: # dont_use_commands is true if called by __init__
-			self.settlement.add_to_sell_list(res_id, limit)
+			self.settlement.get_component(TradePostComponent).add_to_sell_list(res_id, limit)
 		else:
 			AddToSellList(self.settlement, res_id, limit).execute(self.settlement.session)
-		#print self.settlement.sell_list
 
 	def slider_adjust(self, res_id, slot):
 		"""
