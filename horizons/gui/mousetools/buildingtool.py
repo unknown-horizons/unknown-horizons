@@ -45,7 +45,7 @@ class BuildingTool(NavigationTool):
 
 	buildable_color = (255, 255, 255)
 	not_buildable_color = (255, 0, 0)
-	nearby_objects_radius = 3
+	nearby_objects_radius = 4
 
 	# archive the last roads built, for possible user notification
 	_last_road_built = []
