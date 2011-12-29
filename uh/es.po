@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 10:58+0200\n"
+"PO-Revision-Date: 2011-12-29 11:23+0200\n"
 "Last-Translator: Cur5 <233mhz@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -827,9 +827,9 @@ msgid "Unknown savedate"
 msgstr "Fecha desconocida"
 
 #: horizons/gui/gui.py:516
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Guardado en {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:523
@@ -852,7 +852,7 @@ msgstr "ADVERTENCIA: Versión incompatible {version}!"
 #: horizons/gui/gui.py:540
 #, python-format
 msgid "Required version: {required}!"
-msgstr "Versión requerida: {necesario}!"
+msgstr "Versión requerida: {required}!"
 
 #: horizons/gui/gui.py:543
 msgid "Incompatible version"
@@ -869,7 +869,7 @@ msgstr "Necesitas seleccionar una partida guardada para borrar."
 #: horizons/gui/gui.py:564
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Realmente quieres borrar la partida guardada '{name}'?"
 
 #: horizons/gui/gui.py:566
 msgid "Confirm deletion"
@@ -895,7 +895,7 @@ msgstr "No puedes hacer diplomacia al no haber otros jugadores."
 
 #: horizons/gui/ingamegui.py:520
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "Nombres válidos de mapa de la siguiente forma: {expression}"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -915,7 +915,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr "Usuarios Windows: Actualmente no existe soporte razonable para Windos."
+msgstr "Usuarios Windows: Actualmente no existe soporte razonable para Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
@@ -924,15 +924,17 @@ msgstr "Fallo al inicializar conexión de red."
 #: horizons/gui/modules/multiplayermenu.py:101
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Error en la red"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "No puede conectar al servidor principal"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Por favor, compruebe su conexión a internet. Si ya lo ha hecho, nuestro "
+"servidor principal está temporalmente caído."
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:124
@@ -966,6 +968,10 @@ msgstr "Versión incorrecta"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"La versión del juego es diferente de la suya. Todos los jugadores en una "
+"partida multijugador debe utilizar la misma versión. Esto se puede "
+"solucionar actualizando a la última versión. La versión del juego: { "
+"game_version} Su versión {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:293
 #: horizons/gui/modules/singleplayermenu.py:65
@@ -1093,8 +1099,9 @@ msgid "Confirm order"
 msgstr "Confirmar la orden"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
+#, fuzzy
 msgid "Build related fields"
-msgstr ""
+msgstr "Contrucción de campos relacionados"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -1120,7 +1127,7 @@ msgstr "Cuenta"
 
 #: horizons/gui/tabs/mainsquaretabs.py:104
 msgid "Main square overview"
-msgstr ""
+msgstr "Visión de la plaza principal"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:118
@@ -1195,7 +1202,7 @@ msgstr "Comprar/Vender"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
-msgstr ""
+msgstr "Demasiado lejos de la sucursal más cercana"
 
 #: horizons/gui/tabs/overviewtab.py:204
 msgid "Cannot equip trade ship with weapons"
@@ -1215,9 +1222,8 @@ msgstr "Quitar arma"
 
 # misses ship ==> unit! TODO replace navío
 #: horizons/gui/tabs/overviewtab.py:276
-#, fuzzy
 msgid "Unit overview"
-msgstr "Visión general del unidades"
+msgstr "Visión de unidades"
 
 #: horizons/gui/tabs/overviewtab.py:295 horizons/gui/tabs/overviewtab.py:397
 msgid "Production overview"
@@ -1255,7 +1261,7 @@ msgstr "Total"
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "ships of {player}"
-msgstr ""
+msgstr "Barcos del {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
@@ -1264,7 +1270,7 @@ msgstr "Ninguno"
 
 #: horizons/gui/widgets/playersships.py:88
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: horizons/gui/widgets/productionoverview.py:49
 #, python-format
@@ -1282,7 +1288,7 @@ msgstr "Parar ruta"
 
 #: horizons/gui/widgets/routeconfig.py:127
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "Haga clic sobre un asentamiento para añadir un punto de referencia!"
 
 #: horizons/gui/widgets/routeconfig.py:255
 msgid "Select a resource:"
@@ -1476,7 +1482,7 @@ msgstr "Pocilga: Aumenta los cerdos. Necesita una granja."
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:131
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Salinas: la sal se evapora. Construir en la costa del mar."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:133
@@ -1495,8 +1501,9 @@ msgstr "Campo de tabaco: Produce tabaco. Necesita una granja."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:139
+#, fuzzy
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Estanco: Produce tabaco"
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:141
@@ -1523,7 +1530,7 @@ msgstr ""
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:152
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "A continuación, pulse el botón grande en la petañas resumen del barco."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:159
