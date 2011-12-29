@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 22:44+0200\n"
+"PO-Revision-Date: 2011-12-29 23:16+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -213,7 +213,7 @@ msgstr "Sulattamo"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Joillakin asukkaillasi ei ole keskustoria lähellään."
 
 # 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -314,7 +314,7 @@ msgstr "Tarvitset enemmän {resource} tämän rakennuksen rakentamiseen."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Sinä voitit!"
 
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -341,7 +341,7 @@ msgstr "Kaivoksesi on tyhjentynyt."
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr ""
+msgstr "tammenterhoja"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
