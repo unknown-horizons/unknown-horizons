@@ -27,10 +27,10 @@
 		<Label name="lbl_PAUSE" text="Pause game" />
 	</VBox>
 	<VBox>
-		<Label name="lbl_f1" text="Display help" />
+		<Label name="lbl_HELP" text="Display help" />
 		<Label name="lbl_QUICKSAVE" text="Quicksave" />
 		<Label name="lbl_QUICKLOAD" text="Quickload" />
-		<Label name="lbl_f10" text="Toggle console on/off" />
+		<Label name="lbl_CONSOLE" text="Toggle console on/off" />
 	</VBox>
 
 	<Spacer />
@@ -52,9 +52,9 @@
 		<Label name="lbl_SHIPS_OVERVIEW" text="Show ship list" />
 	</VBox>
 	<VBox>
-		<Label name="lbl_s" text="Screenshot" />
+		<Label name="lbl_SCREENSHOT" text="Screenshot" />
 		<Label name="lbl_CHAT" text="Chat" />
-		<Label name="lbl_shift" text="Hold to place multiple buildings"
+		<Label name="lbl_SHIFT" text="Hold to place multiple buildings"
 			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
 	</VBox>
 	<VBox>

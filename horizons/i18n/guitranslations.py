@@ -741,6 +741,8 @@ def set_translations():
 		"lbl_BUILD_TOOL"              : ("text"    , _("Show build menu")),
 		# (text of widget: lbl_CHAT)
 		"lbl_CHAT"                    : ("text"    , _("Chat")),
+		# (text of widget: lbl_CONSOLE)
+		"lbl_CONSOLE"                 : ("text"    , _("Toggle console on/off")),
 		# (text of widget: lbl_COORD_TOOLTIP)
 		"lbl_COORD_TOOLTIP"           : ("text"    , _("Show coordinate values (Debug)")),
 		# (text of widget: lbl_DESTROY_TOOL)
@@ -749,6 +751,8 @@ def set_translations():
 		"lbl_DOWN"                    : ("text"    , _("Scroll down")),
 		# (text of widget: lbl_GRID)
 		"lbl_GRID"                    : ("text"    , _("Toggle grid on/off")),
+		# (text of widget: lbl_HELP)
+		"lbl_HELP"                    : ("text"    , _("Display help")),
 		# (text of widget: lbl_LEFT)
 		"lbl_LEFT"                    : ("text"    , _("Scroll left")),
 		# (text of widget: lbl_LOGBOOK)
@@ -769,8 +773,12 @@ def set_translations():
 		"lbl_ROTATE_LEFT"             : ("text"    , _("Rotate building or map counterclockwise")),
 		# (text of widget: lbl_ROTATE_RIGHT)
 		"lbl_ROTATE_RIGHT"            : ("text"    , _("Rotate building or map clockwise")),
+		# (text of widget: lbl_SCREENSHOT)
+		"lbl_SCREENSHOT"              : ("text"    , _("Screenshot")),
 		# (text of widget: lbl_SETTLEMENTS_OVERVIEW)
 		"lbl_SETTLEMENTS_OVERVIEW"    : ("text"    , _("Show settlement list")),
+		# (text of widget: lbl_SHIFT)
+		"lbl_SHIFT"                   : ("text"    , _("Hold to place multiple buildings")),
 		# (text of widget: lbl_SHIPS_OVERVIEW)
 		"lbl_SHIPS_OVERVIEW"          : ("text"    , _("Show ship list")),
 		# (text of widget: lbl_SPEED_DOWN)
@@ -783,14 +791,6 @@ def set_translations():
 		"lbl_TRANSLUCENCY"            : ("text"    , _("Toggle translucency of ambient buildings")),
 		# (text of widget: lbl_UP)
 		"lbl_UP"                      : ("text"    , _("Scroll up")),
-		# (text of widget: lbl_f1)
-		"lbl_f1"                      : ("text"    , _("Display help")),
-		# (text of widget: lbl_f10)
-		"lbl_f10"                     : ("text"    , _("Toggle console on/off")),
-		# (text of widget: lbl_s)
-		"lbl_s"                       : ("text"    , _("Screenshot")),
-		# (text of widget: lbl_shift)
-		"lbl_shift"                   : ("text"    , _("Hold to place multiple buildings")),
 		# (tooltip of widget: okButton)
 		"okButton"                    : ("tooltip" , _("Return")),
 		},

@@ -59,6 +59,7 @@ class KeyConfig(object):
 		  "o" : _Actions.PIPETTE,
 		  "k" : _Actions.HEALTH_BAR,
 		  "d" : _Actions.DEBUG,
+		  "s" : _Actions.SCREENSHOT,
 		  "j" : _Actions.SHOW_SELECTED,
 		}
 		self.keyval_mappings = {
@@ -67,11 +68,13 @@ class KeyConfig(object):
 			fife.Key.RIGHT: _Actions.RIGHT,
 			fife.Key.UP: _Actions.UP,
 			fife.Key.DOWN: _Actions.DOWN,
+			fife.Key.F1 : _Actions.HELP,
 			fife.Key.F2 : _Actions.PLAYERS_OVERVIEW,
 			fife.Key.F3 : _Actions.SETTLEMENTS_OVERVIEW,
 			fife.Key.F4 : _Actions.SHIPS_OVERVIEW,
 			fife.Key.F5 : _Actions.QUICKSAVE,
 			fife.Key.F9 : _Actions.QUICKLOAD,
+			fife.Key.F10 : _Actions.CONSOLE,
 			fife.Key.F12 : _Actions.SAVE_MAP,
 		}
 		self.requires_shift = set( (
