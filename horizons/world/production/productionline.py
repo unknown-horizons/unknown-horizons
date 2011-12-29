@@ -29,7 +29,6 @@ class ProductionLine(object):
 
 	def __init__(self, id, data={}):
 		"""Inits self from yaml data"""
-		print data
 		self.__data = data
 		self.id = id
 		self.__init()
