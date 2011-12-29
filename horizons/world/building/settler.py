@@ -315,8 +315,20 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 					# a main square is in range
 					return
 		# no main square found
+
+		# check if we had a similar warning nearby recently
+		if hasattr(self.__class__, "_last_main_square_in_range_warning"):
+			when = self.__class__._last_main_square_in_range_warning[0]
+			where = self.__class__._last_main_square_in_range_warning[1]
+
+			# last 10 sec in radius of 8
+			if when > Scheduler().cur_tick - Scheduler().get_ticks(10) and \
+				 where.distance(self.position) < 8:
+				return
+
 		self.session.ingame_gui.message_widget.add(self.position.origin.x, self.position.origin.y, \
 		                                           'NO_MAIN_SQUARE_IN_RANGE')
+		self.__class__._last_main_square_in_range_warning = (Scheduler().cur_tick, self.position.origin.copy())
 
 	def level_upgrade(self, lvl):
 		"""Settlers only level up by themselves"""
