@@ -104,7 +104,7 @@ class MainSquareOverviewTab(AccountTab):
 	def __init__(self, instance):
 		super(MainSquareOverviewTab, self).__init__(instance)
 		self.tooltip = _('Main square overview')
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
+		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
 
 class MainSquareSettlerTabSettlerTab(MainSquareTab):
 	"""Displays information about the settlers on average as overview"""
