@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 20:37+0200\n"
+"PO-Revision-Date: 2011-12-29 20:45+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -641,15 +641,16 @@ msgstr "volna"
 msgid "yellow"
 msgstr "rumena"
 
+# 93%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "{player1} and {player2} are now {status}"
-msgstr ""
+msgstr "{player1} in {player2} sta zdaj {status}"
 
 #: horizons/command/misc.py:30
-#, python-format
+#, python-format, fuzzy
 msgid "{name}: {chatmessage}"
-msgstr ""
+msgstr "{name}: {chatmessage}"
 
 #: horizons/engine.py:71
 msgid "Restart required"
@@ -690,7 +691,7 @@ msgstr ""
 #: horizons/engine.py:304
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "Nastavljenega jezika {lang} ni mogoče naložiti"
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
