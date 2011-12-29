@@ -373,8 +373,8 @@ class ProductionOverviewTab(OverviewTab):
 
 	def _refresh_utilisation(self):
 		utilisation = 0
-		if hasattr(self.instance, 'capacity_utilisation'):
-			utilisation = int(round(self.instance.capacity_utilisation * 100))
+		if self.instance.has_component(Producer):
+			utilisation = int(round(self.instance.get_component(Producer).capacity_utilisation * 100))
 		self.widget.child_finder('capacity_utilisation').text = unicode(str(utilisation) + '%')
 
 	def show(self):
