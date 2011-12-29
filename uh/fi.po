@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 22:42+0200\n"
+"PO-Revision-Date: 2011-12-29 22:44+0200\n"
 "Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -440,7 +440,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "peuranlihaa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -494,8 +494,9 @@ msgstr "yrttejä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "iron deposit"
-msgstr ""
+msgstr "raakarautaa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -600,7 +601,7 @@ msgstr "sokeriruokoa"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr ""
+msgstr "sinivihreä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -655,7 +656,7 @@ msgstr ""
 #: horizons/command/misc.py:30
 #, python-format
 msgid "{name}: {chatmessage}"
-msgstr ""
+msgstr "{name}: {chatmessage}"
 
 #: horizons/engine.py:71
 msgid "Restart required"
@@ -711,6 +712,7 @@ msgstr ""
 #: horizons/engine.py:562
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Tarkista kirjoittamasi portin numero, ja varmista sen olevan tällä alueella."
 
 # 81%
 #: horizons/engine.py:574
@@ -789,22 +791,22 @@ msgstr "Tallenna peli"
 
 #: horizons/gui/gui.py:317
 msgid "No filename given"
-msgstr ""
+msgstr "Tiedostonimeä ei annettu"
 
 #: horizons/gui/gui.py:317
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Kirjoita kelvollinen tiedostonimi."
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py:322
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "Pelitallennus nimellä \"{name}\" on jo olemassa."
 
 #: horizons/gui/gui.py:323
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Korvataanko se?"
 
 #: horizons/gui/gui.py:324
 msgid "Confirmation for overwriting"
@@ -855,21 +857,21 @@ msgstr[1] "Tallennettu {amount} kertaa"
 #: horizons/gui/gui.py:533
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Tallennusversio {version}"
 
 #: horizons/gui/gui.py:537
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr ""
+msgstr "VAROITUS: Yhteensopimaton versio {version}!"
 
 #: horizons/gui/gui.py:540
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "Vaadittu versio: {required}!"
 
 #: horizons/gui/gui.py:543
 msgid "Incompatible version"
-msgstr ""
+msgstr "Yhteensopimaton versio"
 
 #: horizons/gui/gui.py:560
 msgid "No file selected"
@@ -906,19 +908,20 @@ msgstr "Tallennuksen poistaminen epäonnistui!"
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:325
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Diplomatia ei ole käytössä"
 
 #: horizons/gui/ingamegui.py:326
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "Muita pelaajia ei ole, joten diplomatia on tarpeetonta."
 
 #: horizons/gui/ingamegui.py:520
 msgid "Valid map names are in the following form: {expression}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:40
+#, fuzzy
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Tiedostoa \"pyenet\" ei löydy"
 
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
