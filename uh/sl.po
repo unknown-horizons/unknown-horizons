@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-19 03:07+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-29 20:37+0200\n"
+"Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "{player} je ustanovil novo naselbino."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -190,10 +190,11 @@ msgstr "Njiva krompirja"
 msgid "Salt Ponds"
 msgstr "Soline"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Zaslonski posnetek je bil shranjen v {file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -213,12 +214,12 @@ msgstr "Talilnica"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Nekateri prebivalci nimajo dostopa do glavnega trga."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Nekateri prebivalci so se pravkar odselili."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -302,20 +303,22 @@ msgstr "Povlečete lahko tudi poti."
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr "Dosegli ste zadnjo stopnjo. Vaši naseljenci se ne bodo več nadgradili."
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Za izgradnjo te zgradbe potrebujete več {resource}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Zmagali ste!"
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Vaša igra je bila samodejno shranjena."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -325,7 +328,7 @@ msgstr "Vaša igra je bila hitro shranjena."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Prebivalci so dosegli stopnjo {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
