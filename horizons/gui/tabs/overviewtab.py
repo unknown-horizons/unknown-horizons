@@ -70,7 +70,7 @@ class OverviewTab(TabInterface):
 			name_widget = self.widget.child_finder('name')
 			# Named objects can't be translated.
 			if self.instance.has_component(NamedComponent):
-				name_widget.text = self.instance.get_component(NamedComponent).name
+				name_widget.text = unicode(self.instance.get_component(NamedComponent).name)
 			else:
 				name_widget.text = _(self.instance.name)
 
