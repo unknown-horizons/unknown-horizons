@@ -63,24 +63,24 @@ class FoundSettlement(ShipMission):
 		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
-			self.ship.add_move_callback(Callback(self._reached_warehouse_area))
-			self.ship.add_blocked_callback(Callback(self._move_to_warehouse_area))
+			self.ship.add_move_callback(Callback(self._reached_destination_area))
+			self.ship.add_blocked_callback(Callback(self._move_to_destination_area))
 		else:
 			assert False, 'invalid state'
 
 	def start(self):
 		self.state = self.missionStates.moving
-		self._move_to_warehouse_area()
+		self._move_to_destination_area()
 
-	def _move_to_warehouse_area(self):
+	def _move_to_destination_area(self):
 		if self.warehouse_location is None:
 			self.report_failure('No possible warehouse location')
 			return
 
-		self._move_to_warehouse_area(self.warehouse_location.position, Callback(self._reached_warehouse_area), \
-			Callback(self._move_to_warehouse_area), 'Move not possible')
+		self._move_to_warehouse_area(self.warehouse_location.position, Callback(self._reached_destination_area), \
+			Callback(self._move_to_destination_area), 'Move not possible')
 
-	def _reached_warehouse_area(self):
+	def _reached_destination_area(self):
 		self.log.info('%s reached BO area', self)
 
 		self.warehouse = self.warehouse_location.execute()
