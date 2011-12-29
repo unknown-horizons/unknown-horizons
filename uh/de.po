@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 19:42+0200\n"
+"PO-Revision-Date: 2011-12-29 19:44+0200\n"
 "Last-Translator: raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -2721,28 +2721,32 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:956
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
-"Die Karte verschieben wenn sich der Mauszeiger am Kartenrand "
+"Die Karte verschieben, wenn sich der Mauszeiger am Kartenrand "
 "(Bildschirmrand) befindet"
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:958
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Minimap mit der Karte mitdrehen"
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:960
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Bei der Auswahl von 0 wird die Standardeinstellung vom Router verwendet"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:962
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Wenn aktiviert, wird der Bau-Modus nach dem erfolgreichen Aufbau nicht "
+"beendet"
 
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:964
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+"SDL ist nur als nicht unterstützte Rückfall Option gedacht und könnte zu "
+"Problemen führen!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:969
@@ -3008,9 +3012,8 @@ msgid "Access is denied"
 msgstr "Zugriff wurde verweigert"
 
 #: horizons/spsession.py:168
-#, fuzzy
 msgid "The savegame file is probably read-only."
-msgstr "Der Speicherstand nicht beschreibbar."
+msgstr "Der Speicherstand ist möglicherweise nicht beschreibbar (nur lesbar)."
 
 #: horizons/spsession.py:171
 msgid "File used by another process"
