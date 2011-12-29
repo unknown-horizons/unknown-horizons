@@ -293,45 +293,6 @@ def set_translations():
 		"costs_040"                   : ("tooltip" , _("Cannons")),
 		},
 
-	"buysellmenu.xml" : {
-		# (text of widget: buy_label)
-		"buy_label"                   : ("text"    , _("Buy resources")),
-		# (text of widget: buysell_help_label)
-		"buysell_help_label"          : ("text"    , _("Click on slot icon to toggle mode:")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Buy or sell resources")),
-		# (text of widget: headline_trade_history)
-		"headline_trade_history"      : ("text"    , _("Trade history")),
-		# (text of widget: sell_label)
-		"sell_label"                  : ("text"    , _("Sell resources")),
-		},
-
-	"select_trade_resource.xml" : {
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Select resources:")),
-		},
-
-	"tab_account.xml" : {
-		# (text of widget: buy_expenses_label)
-		"buy_expenses_label"          : ("text"    , _("Buying")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Account")),
-		# (text of widget: headline_balance_label)
-		"headline_balance_label"      : ("text"    , _("Balance:")),
-		# (text of widget: headline_expenses_label)
-		"headline_expenses_label"     : ("text"    , _("Expenses:")),
-		# (text of widget: headline_income_label)
-		"headline_income_label"       : ("text"    , _("Income:")),
-		# (text of widget: running_costs_label)
-		"running_costs_label"         : ("text"    , _("Running costs")),
-		# (text of widget: sell_income_label)
-		"sell_income_label"           : ("text"    , _("Sale")),
-		# (text of widget: taxes_label)
-		"taxes_label"                 : ("text"    , _("Taxes")),
-		# (tooltip of widget: show_production_overview)
-		"show_production_overview"    : ("tooltip" , _("Show resources produced in this settlement")),
-		},
-
 	"diplomacy.xml" : {
 		# (text of widget: ally_label) Diplomacy state of player
 		"ally_label"                  : ("text"    , _("ally")),
@@ -470,19 +431,6 @@ def set_translations():
 		"taxes"                       : ("tooltip" , _("Paid taxes")),
 		},
 
-	"overview_warehouse.xml" : {
-		# (text of widget: name_label)
-		"name_label"                  : ("text"    , _("Name:")),
-		# (tooltip of widget: collector_utilisation_label)
-		"collector_utilisation_label" : ("tooltip" , _("Collector utilisation")),
-		# (tooltip of widget: running_costs_label)
-		"running_costs_label"         : ("tooltip" , _("Running costs")),
-		# (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
-		"collector_utilisation"       : ("tooltip" , _("Collector utilisation")),
-		# (tooltip of widget: running_costs)
-		"running_costs"               : ("tooltip" , _("Running costs")),
-		},
-
 	"overview_enemywarehouse.xml" : {
 		# (text of widget: buying_label)
 		"buying_label"                : ("text"    , _("Buying")),
@@ -550,6 +498,19 @@ def set_translations():
 		"trader_description_lbl"      : ("text"    , _("This is the free trader's ship. It will visit you from time to time to buy or sell goods.")),
 		},
 
+	"overview_warehouse.xml" : {
+		# (text of widget: name_label)
+		"name_label"                  : ("text"    , _("Name:")),
+		# (tooltip of widget: collector_utilisation_label)
+		"collector_utilisation_label" : ("tooltip" , _("Collector utilisation")),
+		# (tooltip of widget: running_costs_label)
+		"running_costs_label"         : ("tooltip" , _("Running costs")),
+		# (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
+		"collector_utilisation"       : ("tooltip" , _("Collector utilisation")),
+		# (tooltip of widget: running_costs)
+		"running_costs"               : ("tooltip" , _("Running costs")),
+		},
+
 	"overviewtab.xml" : {
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Overview")),
@@ -603,6 +564,45 @@ def set_translations():
 		"found_settlement"            : ("tooltip" , _("Build settlement")),
 		# (tooltip of widget: trade)
 		"trade"                       : ("tooltip" , _("Trade")),
+		},
+
+	"buysellmenu.xml" : {
+		# (text of widget: buy_label)
+		"buy_label"                   : ("text"    , _("Buy resources")),
+		# (text of widget: buysell_help_label)
+		"buysell_help_label"          : ("text"    , _("Click on slot icon to toggle mode:")),
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Buy or sell resources")),
+		# (text of widget: headline_trade_history)
+		"headline_trade_history"      : ("text"    , _("Trade history")),
+		# (text of widget: sell_label)
+		"sell_label"                  : ("text"    , _("Sell resources")),
+		},
+
+	"select_trade_resource.xml" : {
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Select resources:")),
+		},
+
+	"tab_account.xml" : {
+		# (text of widget: buy_expenses_label)
+		"buy_expenses_label"          : ("text"    , _("Buying")),
+		# (text of widget: headline)
+		"headline"                    : ("text"    , _("Account")),
+		# (text of widget: headline_balance_label)
+		"headline_balance_label"      : ("text"    , _("Balance:")),
+		# (text of widget: headline_expenses_label)
+		"headline_expenses_label"     : ("text"    , _("Expenses:")),
+		# (text of widget: headline_income_label)
+		"headline_income_label"       : ("text"    , _("Income:")),
+		# (text of widget: running_costs_label)
+		"running_costs_label"         : ("text"    , _("Running costs")),
+		# (text of widget: sell_income_label)
+		"sell_income_label"           : ("text"    , _("Sale")),
+		# (text of widget: taxes_label)
+		"taxes_label"                 : ("text"    , _("Taxes")),
+		# (tooltip of widget: show_production_overview)
+		"show_production_overview"    : ("tooltip" , _("Show resources produced in this settlement")),
 		},
 
 	"overview_farmproductionline.xml" : {

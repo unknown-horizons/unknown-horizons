@@ -208,6 +208,11 @@ msgstr ""
 msgid "cattle"
 msgstr ""
 
+#. This is a database entry: the name of a building.
+#: sql database files
+msgid "Warehouse"
+msgstr ""
+
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
 msgid "You can also drag roads."
@@ -501,11 +506,6 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "grass"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Branch Office"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
