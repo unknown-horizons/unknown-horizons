@@ -296,7 +296,7 @@ class Minimap(object):
 
 			tile = self.session.world.get_tile( Point(*coords) )
 			if tile is not None and tile.settlement is not None:
-				new_tooltip = tile.settlement.get_component(NamedComponent).name
+				new_tooltip = unicode(tile.settlement.get_component(NamedComponent).name)
 				if self.icon.tooltip != new_tooltip:
 					self.icon.tooltip = new_tooltip
 					self.icon.show_tooltip()
