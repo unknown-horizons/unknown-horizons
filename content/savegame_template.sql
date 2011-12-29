@@ -16,7 +16,7 @@ CREATE TABLE "storage_properties" ("object" INTEGER NOT NULL ,"name" TEXT NOT NU
 CREATE TABLE "trade_buy" (object INTEGER NOT NULL, "resource" INTEGER NOT NULL , "trade_limit" INTEGER NOT NULL);
 CREATE TABLE "trade_sell" (object INTEGER NOT NULL, "resource" INTEGER NOT NULL , "trade_limit" INTEGER NOT NULL);
 CREATE TABLE "collector" ("state" INTEGER NOT NULL ,"remaining_ticks" INTEGER, "start_hidden" BOOLEAN NOT NULL  DEFAULT '1');
-CREATE TABLE "trader_ships" ("state" INTEGER NOT NULL , remaining_ticks INTEGER, "targeted_branch" INTEGER);
+CREATE TABLE "trader_ships" ("state" INTEGER NOT NULL , remaining_ticks INTEGER, "targeted_warehouse" INTEGER);
 CREATE TABLE wildanimal (can_reproduce BOOL, health INTEGER);
 CREATE TABLE "message_widget_active" ("id" INTEGER NOT NULL  DEFAULT '' ,"read" INTEGER NOT NULL  DEFAULT '' ,"created" INTEGER NOT NULL  DEFAULT '' ,"display" INTEGER NOT NULL  DEFAULT '' ,"message" TEXT NOT NULL  DEFAULT '' , "x" INTEGER, "y" INTEGER);
 CREATE TABLE "message_widget_archive" ("id" INTEGER NOT NULL  DEFAULT '' ,"read" INTEGER NOT NULL  DEFAULT '' ,"created" INTEGER NOT NULL  DEFAULT '' ,"display" INTEGER NOT NULL  DEFAULT '' ,"message" TEXT NOT NULL  DEFAULT '' , "x" INTEGER, "y" INTEGER);
@@ -32,7 +32,7 @@ CREATE TABLE mine(deposit_class INTEGER NOT NULL, mine_empty_msg_shown BOOL);
 CREATE TABLE settlement_produced_res(settlement INT NOT NULL, res INT NOT NULL, amount INT NOT NULL);
 CREATE TABLE remaining_ticks_of_month(ticks INTEGER);
 CREATE TABLE "pirate_home_point" ("x" INTEGER NOT NULL , "y" INTEGER NOT NULL );
-CREATE TABLE ship_route_waypoint(ship_id INTEGER, branch_office_id INTEGER, waypoint_index INTEGER);
+CREATE TABLE ship_route_waypoint(ship_id INTEGER, warehouse_id INTEGER, waypoint_index INTEGER);
 CREATE TABLE ship_route_resources(ship_id INTEGER, waypoint_index INTEGER, res INTEGER, amount INTEGER);
 CREATE TABLE 'weapon_storage' ('owner_id' INT, 'weapon_id' INT, 'number' INT, remaining_ticks INT);
 CREATE TABLE unit_health ('owner_id' INT, 'health' FLOAT);
@@ -50,7 +50,7 @@ CREATE TABLE "ai_builder" ("building_type" INTEGER NOT NULL , "x" INTEGER NOT NU
 CREATE TABLE "ai_land_manager" ("owner" INTEGER NOT NULL ,"island" INTEGER NOT NULL ,"feeder_island" BOOL NOT NULL );
 CREATE TABLE "ai_land_manager_coords" ("land_manager" INTEGER NOT NULL , "x" INTEGER NOT NULL , "y" INTEGER NOT NULL , "purpose" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_domestic_trade" ("source_settlement_manager" INTEGER NOT NULL , "destination_settlement_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "state" INTEGER NOT NULL );
-CREATE TABLE "ai_mission_found_settlement" ("land_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "bo_builder" INTEGER NOT NULL, "state" INTEGER NOT NULL );
+CREATE TABLE "ai_mission_found_settlement" ("land_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "warehouse_builder" INTEGER NOT NULL, "state" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_international_trade" ("settlement_manager" INTEGER NOT NULL , "settlement" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "bought_resource" INTEGER, "sold_resource" INTEGER, "state" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_prepare_foundation_ship" ("settlement_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "feeder_island" BOOL NOT NULL, "state" INTEGER NOT NULL );
 CREATE TABLE "ai_personality_manager" ("personality" TEXT NOT NULL );
