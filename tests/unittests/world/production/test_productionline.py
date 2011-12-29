@@ -21,12 +21,12 @@
 
 from tests.unittests import TestCase
 
-from horizons.world.production.productionline import _ProductionLineData, ProductionLine
+from horizons.world.production.productionline import ProductionLine
 
 
 class TestBase(TestCase):
 
-	def add_line(self, ident, time, changes_animation, resources=None, units=None):
+	def add_line(self, ident, units=None):
 		"""Add a new production line
 		@param ident: numeric value
 		@param time: production time
@@ -34,16 +34,6 @@ class TestBase(TestCase):
 		@param resources: mapping of {resource: amount}
 		@param units: mapping of {unit: amount}
 		"""
-		self.db('INSERT INTO production_line (id, time, changes_animation) \
-				 VALUES (?, ?, ?)', ident, time, int(changes_animation))
-
-		if resources:
-			self.db.execute_many(
-				'INSERT INTO production (production_line, resource, amount) \
-				 VALUES (?, ?, ?)',
-				[(ident, res, amount) for (res, amount) in resources.items()]
-			)
-
 		if units:
 			self.db.execute_many(
 				'INSERT INTO unit_production (production_line, unit, amount) \
@@ -54,47 +44,33 @@ class TestBase(TestCase):
 
 class TestProductionLineData(TestBase):
 
-	def test_init_unknown_identifier(self):
-		self.assertRaises(IndexError, _ProductionLineData, 1)
-
 	def test_init(self):
-		self.add_line(1, 5, 0, {2: 3, 4: -5}, {10: 4, 12: 8})
-		self.add_line(2, 4, 1, {2: 5}, {10: 7})
+		self.add_line(1, {10: 4, 12: 8})
 
-		data = _ProductionLineData(1)
-		self.assertEqual(data.time, 5)
+		data = {'enabled_by_default': False,
+		        'time': 90,
+		        'level': [0, 1, 2],
+		        'changes_animation': False,
+		        'produces': [[14, 1]],
+		        'consumes': [[19, -1]]
+		}
+		data = ProductionLine(1, data)
+		self.assertEqual(data.time, 90)
 		self.assertEqual(data.changes_animation, False)
-		self.assertEqual(data.production, {2: 3, 4: -5})
-		self.assertEqual(data.produced_res, {2: 3})
-		self.assertEqual(data.consumed_res, {4: -5})
+		self.assertEqual(data.production, {14: 1, 19: -1})
+		self.assertEqual(data.produced_res, {14: 1})
+		self.assertEqual(data.consumed_res, {19: -1})
 		self.assertEqual(data.unit_production, {10: 4, 12: 8})
-
-	def test_no_zero_production_amount(self):
-		self.add_line(1, 5, 0, {3: 0})
-		self.assertRaises(AssertionError, _ProductionLineData, 1)
-
-	def test_readonly(self):
-		self.add_line(1, 5, 0)
-		data = _ProductionLineData(1)
-
-		def tmp():
-			data.produced_res = 5
-		self.assertRaises(TypeError, tmp)
-
 
 class TestProductionLine(TestBase):
 
 	def setUp(self):
 		"""Clear ProductionLine cache."""
-		ProductionLine.reset()
 		super(TestProductionLine, self).setUp()
 
-	def test_init_unknown_identifier(self):
-		self.assertRaises(IndexError, ProductionLine, 1)
-
 	def test_alter_production_time(self):
-		self.add_line(1, 10, 0)
-		line = ProductionLine(1)
+		data = { 'time': 10 }
+		line = ProductionLine(1, data)
 
 		self.assertEqual(line.time, 10)
 
@@ -112,8 +88,12 @@ class TestProductionLine(TestBase):
 		# line.alter_production_time(0)
 
 	def test_change_amount(self):
-		self.add_line(1, 10, 0, {2: 3, 4: -5})
-		line = ProductionLine(1)
+		data = {
+		        'time': 10,
+		        'produces': [[2, 3]],
+		        'consumes': [[4, -5]]
+		}
+		line = ProductionLine(1, data)
 
 		line.change_amount(2, 10)
 		self.assertEqual(line.production, {2: 10, 4: -5})
@@ -129,13 +109,3 @@ class TestProductionLine(TestBase):
 		# line.change_amount(X, 0)
 		# line.change_amount(2, -3) - produced becomes consumed
 		# line.change_amount(4, 3)  - consumed becomes produced
-
-	def test_reset(self):
-		self.add_line(1, 10, 0)
-		self.assertFalse(ProductionLine._data)
-
-		ProductionLine.get_const_production_line(1)
-		self.assertTrue(ProductionLine._data)
-
-		ProductionLine.reset()
-		self.assertFalse(ProductionLine._data)

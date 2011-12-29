@@ -27,7 +27,7 @@ from collections import defaultdict, deque
 
 from horizons.util.changelistener import metaChangeListenerDecorator, ChangeListener
 from horizons.constants import PRODUCTION
-from horizons.world.production.productionline import ProductionLineObject
+from horizons.world.production.productionline import ProductionLine
 from horizons.world.component.storagecomponent import StorageComponent
 
 from horizons.scheduler import Scheduler
@@ -88,7 +88,7 @@ class Production(ChangeListener):
 		self._creation_tick = creation_tick
 
 		assert isinstance(prod_id, int)
-		self._prod_line = ProductionLineObject(id=prod_id, data=prod_data)
+		self._prod_line = ProductionLine(id=prod_id, data=prod_data)
 
 	def save(self, db, owner_id):
 		"""owner_id: worldid of the owner of the producer object that owns this production"""
