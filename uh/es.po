@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-28 16:37+0200\n"
-"Last-Translator: Fabio <angelscry86@gmail.com>\n"
+"PO-Revision-Date: 2011-12-29 10:58+0200\n"
+"Last-Translator: Cur5 <233mhz@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -218,9 +218,8 @@ msgstr "Alguno de tus habitantes no tiene acceso a la plaza principal."
 # Contexto
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Some of your inhabitants just moved out."
-msgstr "Alguno de tus habitantes se acaba de mudar."
+msgstr "Algunos de tus habitantes se acaba de mudar."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -711,20 +710,23 @@ msgstr ""
 
 #: horizons/engine.py:574
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "No se ha podido aplicar la nueva configuración de red."
 
 #: horizons/engine.py:575 horizons/gui/modules/multiplayermenu.py:52
 msgid "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "Las funciones de red no se pueden iniciar con la configuración actual."
 
 #: horizons/engine.py:576 horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Compruebe los ajustes especificados en la sección de la red."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine.py:580
+#, fuzzy
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
+"Un número bajo de puerto a veces requieren privilegios especiales de acceso, "
+"intente 0 o un número mayor que 1024."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:167 horizons/gui/ingamegui.py:520
@@ -845,12 +847,12 @@ msgstr ""
 #: horizons/gui/gui.py:537
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr ""
+msgstr "ADVERTENCIA: Versión incompatible {version}!"
 
 #: horizons/gui/gui.py:540
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "Versión requerida: {necesario}!"
 
 #: horizons/gui/gui.py:543
 msgid "Incompatible version"
