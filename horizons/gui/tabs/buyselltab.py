@@ -54,7 +54,7 @@ class BuySellTab(TabInterface):
 		super(BuySellTab, self).__init__(widget = 'buysellmenu.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		self.icon_path = 'content/gui/icons/tabwidget/branchoffice/buysell_%s.png'
+		self.icon_path = 'content/gui/icons/tabwidget/warehouse/buysell_%s.png'
 		self.button_up_image = self.icon_path % 'u'
 		self.button_active_image = self.icon_path % 'a'
 		self.button_down_image = self.icon_path % 'd'

@@ -79,10 +79,10 @@ class SettlementFounder(object):
 			value -= self.personality.no_raw_iron_penalty
 		value -= len(island.settlements) * self.personality.enemy_settlement_penalty
 
-		# take into the distance to our old branch offices and the other players' islands
+		# take into the distance to our old warehouses and the other players' islands
 		for settlement in self.world.settlements:
 			if settlement.owner is self.owner:
-				value += self.personality.compact_empire_importance / float(island.position.distance(settlement.branch_office.position) + self.personality.extra_branch_office_distance)
+				value += self.personality.compact_empire_importance / float(island.position.distance(settlement.warehouse.position) + self.personality.extra_warehouse_distance)
 			else:
 				value -= self.personality.nearby_enemy_penalty / float(island.position.distance(settlement.island.position) + self.personality.extra_enemy_island_distance)
 

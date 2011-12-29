@@ -32,7 +32,7 @@ from tests.game.test_farm import _build_farm
 @game_test
 def test_ticket_979(s, p):
 	settlement, island = settle(s)
-	storage_collectors = settlement.branch_office.get_local_collectors()
+	storage_collectors = settlement.warehouse.get_local_collectors()
 
 	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
 
@@ -45,7 +45,7 @@ def test_ticket_979(s, p):
 	settlement.get_component(StorageComponent).inventory.alter(RES.FOOD_ID, -settlement.get_component(StorageComponent).inventory[RES.FOOD_ID])
 	assert settlement.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
 
-	# Build a road, connecting farm and branch office
+	# Build a road, connecting farm and warehouse
 	for y in range(23, 30):
 		assert Build(BUILDINGS.TRAIL_CLASS, 30, y, island, settlement=settlement)(p)
 

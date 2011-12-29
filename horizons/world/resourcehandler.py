@@ -204,7 +204,7 @@ class ResourceHandler(object):
 		return amount-ret
 
 class StorageResourceHandler(ResourceHandler):
-	"""Same as ResourceHandler, but for storage buildings such as branch offices.
+	"""Same as ResourceHandler, but for storage buildings such as warehouses.
 	Provides all tradeable resources."""
 
 	def get_consumed_resources(self):

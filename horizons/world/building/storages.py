@@ -21,9 +21,9 @@
 
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
+from horizons.gui.tabs import WarehouseOverviewTab, BuySellTab, InventoryTab, \
 		 AccountTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, \
-		 EnemyBranchOfficeOverviewTab, MainSquareOverviewTab
+		 EnemyWarehouseOverviewTab, MainSquareOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.building.buildingresourcehandler import ProducerBuilding
@@ -35,10 +35,10 @@ from horizons.world.production.producer import Producer
 class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
-	Inherited eg. by branch office, storage tent.
+	Inherited eg. by warehouse, storage tent.
 	These objects don't have a storage themselves, but use the settlement storage.
 	"""
-	tabs = (BranchOfficeOverviewTab, InventoryTab, AccountTab)
+	tabs = (WarehouseOverviewTab, InventoryTab, AccountTab)
 	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
@@ -72,14 +72,14 @@ class StorageTent(StorageBuilding, BuildableSingle):
 	"""Can't inherit from Buildable* in StorageBuilding because of mro issues."""
 	pass
 
-class BranchOffice(StorageBuilding, BuildableSingleFromShip):
+class Warehouse(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
-	tabs = (BranchOfficeOverviewTab, InventoryTab, BuySellTab, AccountTab)
-	enemy_tabs = (EnemyBranchOfficeOverviewTab,)
+	tabs = (WarehouseOverviewTab, InventoryTab, BuySellTab, AccountTab)
+	enemy_tabs = (EnemyWarehouseOverviewTab,)
 	def __init__(self, *args, **kwargs):
-		super(BranchOffice, self).__init__(*args, **kwargs)
-		self.settlement.branch_office = self # we never need to unset this since bo's are indestructible
-		# settlement branch office setting is done at the settlement for loading
+		super(Warehouse, self).__init__(*args, **kwargs)
+		self.settlement.warehouse = self # we never need to unset this since bo's are indestructible
+		# settlement warehouse setting is done at the settlement for loading
 
 class MainSquare(Path, StorageBuilding, SettlerServiceProvider):
 	walkable = True

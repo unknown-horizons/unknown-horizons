@@ -140,7 +140,7 @@ class AIPlayer(GenericAI):
 			settlement_manager = SettlementManager(self, mission.land_manager)
 			self.settlement_managers.append(settlement_manager)
 			self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
-			self.add_building(settlement_manager.settlement.branch_office)
+			self.add_building(settlement_manager.settlement.warehouse)
 			if settlement_manager.feeder_island:
 				self.need_feeder_island = False
 		elif isinstance(mission, PrepareFoundationShip):

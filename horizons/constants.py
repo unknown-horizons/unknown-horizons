@@ -92,7 +92,7 @@ class WEAPONS:
 
 class BUILDINGS:
 	# ./development/print_db_data.py building
-	BRANCH_OFFICE_CLASS = 1
+	WAREHOUSE_CLASS = 1
 	STORAGE_CLASS = 2
 	RESIDENTIAL_CLASS = 3
 	MAIN_SQUARE_CLASS = 4
@@ -273,9 +273,9 @@ class AI:
 class TRADER: # check resource values: ./development/print_db_data.py res
 	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
 	PRICE_MODIFIER_SELL = 1.5 # sell for x times the resource value
-	TRADING_DURATION = 4 # seconds that trader stays at branch office to simulate (un)loading
+	TRADING_DURATION = 4 # seconds that trader stays at warehouse to simulate (un)loading
 
-	BUSINESS_SENSE = 50 # chance in percent to be sent to a branch office instead of random spot
+	BUSINESS_SENSE = 50 # chance in percent to be sent to a warehouse instead of random spot
 
 	BUY_AMOUNT = (2, 8)  # amount range to buy/sell from settlement per resource
 	SELL_AMOUNT_MIN = 2

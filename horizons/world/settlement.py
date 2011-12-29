@@ -55,7 +55,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = {}
-		self.branch_office = None # this is set later in the same tick by the bo itself or load() here
+		self.warehouse = None # this is set later in the same tick by the bo itself or load() here
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
 
@@ -110,7 +110,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	@property
 	def island(self):
 		"""Returns the island this settlement is on"""
-		return self.session.world.get_island(self.branch_office.position.origin)
+		return self.session.world.get_island(self.warehouse.position.origin)
 
 	def level_upgrade(self, lvl):
 		"""Upgrades settlement to a new increment.
@@ -180,7 +180,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 			  db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			building = load_building(session, db, building_type, building_id)
 			if building_type == BUILDINGS.BRANCH_OFFICE_CLASS:
-				self.branch_office = building
+				self.warehouse = building
 
 		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):
 			self.produced_res[res] = amount

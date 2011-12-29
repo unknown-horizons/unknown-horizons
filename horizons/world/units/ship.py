@@ -43,7 +43,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 class ShipRoute(object):
 	"""
 	waypoints: list of dicts with the keys
-		- branch_office:  a branch office object
+		- warehouse:  a warehouse object
 		- resource_list: a {res_id:amount} dict
 			- if amount is negative the ship unloads
 			- if amount is positive the ship loads
@@ -61,9 +61,9 @@ class ShipRoute(object):
 
 		self.current_transfer = {} # used for partial unloading in combination with waiting
 
-	def append(self, branch_office):
+	def append(self, warehouse):
 		self.waypoints.append({
-			'branch_office' : branch_office,
+			'warehouse' : warehouse,
 			'resource_list' : {}
 		})
 
@@ -87,7 +87,7 @@ class ShipRoute(object):
 
 	def on_route_bo_reached(self):
 		"""Transfer resources, wait if necessary and move to next bo when possible"""
-		branch_office = self.get_location()['branch_office']
+		warehouse = self.get_location()['warehouse']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
 
 		if self.current_transfer is not None:
@@ -97,7 +97,7 @@ class ShipRoute(object):
 				   cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
 					del self.current_transfer[res]
 
-		settlement = branch_office.settlement
+		settlement = warehouse.settlement
 		status = self._transer_resources(settlement, resource_list)
 		if (not status.settlement_has_enough_space_to_take_res and self.wait_at_unload) or \
 		   (not status.settlement_provides_enough_res and self.wait_at_load):
@@ -175,13 +175,13 @@ class ShipRoute(object):
 		if next_destination == None:
 			return
 
-		branch_office = next_destination['branch_office']
-		if self.ship.position.distance_to_point(branch_office.position.center()) <= self.ship.radius:
+		warehouse = next_destination['warehouse']
+		if self.ship.position.distance_to_point(warehouse.position.center()) <= self.ship.radius:
 			self.on_route_bo_reached()
 			return
 
 		try:
-			self.ship.move(Circle(branch_office.position.center(), self.ship.radius), self.on_route_bo_reached,
+			self.ship.move(Circle(warehouse.position.center(), self.ship.radius), self.on_route_bo_reached,
 						   blocked_callback = self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds
@@ -202,10 +202,10 @@ class ShipRoute(object):
 		return self.waypoints[self.current_waypoint]
 
 	def can_enable(self):
-		branch_offices = set()
+		warehouses = set()
 		for waypoint in self.waypoints:
-			branch_offices.add(waypoint['branch_office'])
-		return len(branch_offices) > 1
+			warehouses.add(waypoint['warehouse'])
+		return len(warehouses) > 1
 
 	def enable(self):
 		if not self.can_enable():
@@ -232,16 +232,16 @@ class ShipRoute(object):
 			db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload " + \
 			   "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
 
-		query = "SELECT branch_office_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
+		query = "SELECT warehouse_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
 		offices_id = db(query, self.ship.worldid)
 
 		for office_id, in offices_id:
-			branch_office = WorldObject.get_object_by_id(office_id)
+			warehouse = WorldObject.get_object_by_id(office_id)
 			query = "SELECT res, amount FROM ship_route_resources WHERE ship_id = ? and waypoint_index = ?"
 			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
 
 			self.waypoints.append({
-				'branch_office' : branch_office,
+				'warehouse' : warehouse,
 				'resource_list' : resource_list
 			})
 
@@ -268,8 +268,8 @@ class ShipRoute(object):
 
 		for entry in self.waypoints:
 			index = self.waypoints.index(entry)
-			db("INSERT INTO ship_route_waypoint(ship_id, branch_office_id, waypoint_index) VALUES(?, ?, ?)",
-			   worldid, entry['branch_office'].worldid, index)
+			db("INSERT INTO ship_route_waypoint(ship_id, warehouse_id, waypoint_index) VALUES(?, ?, ?)",
+			   worldid, entry['warehouse'].worldid, index)
 			for res in entry['resource_list']:
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
 				   worldid, index, res, entry['resource_list'][res])
@@ -470,13 +470,13 @@ class Ship(Unit):
 		return ships
 
 	def get_location_based_status(self, position):
-		branch_offices = self.session.world.get_branch_offices(position, self.radius, self.owner, True)
-		if branch_offices:
-			branch_office = branch_offices[0] # TODO: don't ignore the other possibilities
+		warehouses = self.session.world.get_warehouses(position, self.radius, self.owner, True)
+		if warehouses:
+			warehouse = warehouses[0] # TODO: don't ignore the other possibilities
 			player_suffix = ''
-			if branch_office.owner is not self.owner:
-				player_suffix = ' (' + branch_office.owner.name + ')'
-			return branch_office.settlement.get_component(NamedComponent).name + player_suffix
+			if warehouse.owner is not self.owner:
+				player_suffix = ' (' + warehouse.owner.name + ')'
+			return warehouse.settlement.get_component(NamedComponent).name + player_suffix
 		return None
 
 	def get_status(self):

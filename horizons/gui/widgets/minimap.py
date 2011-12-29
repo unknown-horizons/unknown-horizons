@@ -64,7 +64,7 @@ class Minimap(object):
 	RENDER_NAMES = { # alpha-ordering determines the order
 	  "background" : "c",
 	  "base" : "d", # islands, etc.
-	  "branch_office" : "e",
+	  "warehouse" : "e",
 	  "ship" : "f",
 	  "cam" : "g",
 	  "ship_route" : "h",
@@ -512,7 +512,7 @@ class Minimap(object):
 					                                         *color)
 
 
-		# draw settlement branch offices if something has changed
+		# draw settlement warehouses if something has changed
 		settlements = self.world.settlements
 		# save only worldids as to not introduce actual coupling
 		cur_settlements = set( i.worldid for i in settlements )
@@ -520,14 +520,14 @@ class Minimap(object):
 		   (not hasattr(self, "_last_settlements") or cur_settlements != self._last_settlements):
 			# update necessary
 			bo_img = self.imagemanager.load( self.__class__.BRANCH_OFFICE_IMAGE )
-			bo_render_name = self._get_render_name("branch_office")
+			bo_render_name = self._get_render_name("warehouse")
 			self.minimap_image.rendertarget.removeAll( bo_render_name )
 			# scale bo icons
 			ratio = sum(self._get_world_to_minimap_ratio()) / 2.0
 			ratio = max(1.0, ratio)
 			new_width, new_height = int(bo_img.getWidth()/ratio), int(bo_img.getHeight()/ratio)
 			for settlement in settlements:
-				coord = settlement.branch_office.position.center().to_tuple()
+				coord = settlement.warehouse.position.center().to_tuple()
 				coord = self._world_to_minimap(coord, use_rotation)
 				point = fife.Point( coord[0], coord[1] )
 				self.minimap_image.rendertarget.resizeImage(bo_render_name, point, bo_img,

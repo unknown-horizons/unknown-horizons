@@ -28,7 +28,7 @@ from horizons.entities import Entities
 
 class AbstractSignalFire(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
-		for (x, y) in settlement_manager.settlement.branch_office.position.get_radius_coordinates(self.radius):
+		for (x, y) in settlement_manager.settlement.warehouse.position.get_radius_coordinates(self.radius):
 			if (x, y) in settlement_manager.production_builder.plan:
 				if (x, y) in settlement_manager.island.last_changed[self.size]:
 					yield (x, y, 0)

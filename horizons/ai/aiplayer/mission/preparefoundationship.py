@@ -28,7 +28,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 
 class PrepareFoundationShip(ShipMission):
 	"""
-	Given a ship and a settlement manager it moves the ship to the branch office and loads
+	Given a ship and a settlement manager it moves the ship to the warehouse and loads
 	it with the resources required to start another settlement.
 	"""
 
@@ -38,7 +38,7 @@ class PrepareFoundationShip(ShipMission):
 		super(PrepareFoundationShip, self).__init__(success_callback, failure_callback, ship)
 		self.settlement_manager = settlement_manager
 		self.feeder_island = feeder_island
-		self.branch_office = self.settlement_manager.settlement.branch_office
+		self.warehouse = self.settlement_manager.settlement.warehouse
 		self.state = self.missionStates.created
 
 	def save(self, db):
@@ -55,7 +55,7 @@ class PrepareFoundationShip(ShipMission):
 	def _load(self, db, worldid, success_callback, failure_callback):
 		db_result = db("SELECT settlement_manager, ship, feeder_island, state FROM ai_mission_prepare_foundation_ship WHERE rowid = ?", worldid)[0]
 		self.settlement_manager = WorldObject.get_object_by_id(db_result[0])
-		self.branch_office = self.settlement_manager.settlement.branch_office
+		self.warehouse = self.settlement_manager.settlement.warehouse
 		self.feeder_island = db_result[2]
 		self.state = self.missionStates[db_result[3]]
 		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback, \
@@ -72,7 +72,7 @@ class PrepareFoundationShip(ShipMission):
 		self._move_to_bo_area()
 
 	def _move_to_bo_area(self):
-		self._move_to_branch_office_area(self.branch_office.position, Callback(self._reached_bo_area), \
+		self._move_to_warehouse_area(self.warehouse.position, Callback(self._reached_bo_area), \
 			Callback(self._move_to_bo_area), 'Move not possible')
 
 	def _load_foundation_resources(self):

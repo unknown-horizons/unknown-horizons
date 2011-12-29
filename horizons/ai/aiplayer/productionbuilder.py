@@ -46,7 +46,7 @@ class ProductionBuilder(AreaBuilder):
 	Important attributes:
 	* plan: a dictionary of the form {(x, y): (purpose, extra data), ...} where purpose is one of the BUILDING_PURPOSE constants.
 		Coordinates being in the plan means that the tile doesn't belong to another player.
-	* collector_buildings: a list of every building in the settlement that provides general collectors (branch office, storages)
+	* collector_buildings: a list of every building in the settlement that provides general collectors (warehouse, storages)
 	* production_buildings: a list of buildings in the settlement where productions should be paused and resumed at appropriate times
 	* unused_fields: a dictionary where the key is a BUILDING_PURPOSE constant of a field and the value is a deque that holds the
 		coordinates of unused field spots. {building purpose: deque([(x, y), ...]), ...}
@@ -60,7 +60,7 @@ class ProductionBuilder(AreaBuilder):
 		super(ProductionBuilder, self).__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
-		for x, y in settlement_manager.settlement.branch_office.position.tuple_iter():
+		for x, y in settlement_manager.settlement.warehouse.position.tuple_iter():
 			self.register_change(x, y, BUILDING_PURPOSE.BRANCH_OFFICE, None)
 		self._refresh_unused_fields()
 

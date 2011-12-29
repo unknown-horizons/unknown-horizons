@@ -371,7 +371,7 @@ class IngameGui(LivingObject):
 	def _build(self, building_id, unit = None):
 		"""Calls the games buildingtool class for the building_id.
 		@param building_id: int with the building id that is to be built.
-		@param unit: weakref to the unit, that builds (e.g. ship for branch office)"""
+		@param unit: weakref to the unit, that builds (e.g. ship for warehouse)"""
 		self.hide_menu()
 		self.deselect_all()
 		cls = Entities.buildings[building_id]

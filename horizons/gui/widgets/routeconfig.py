@@ -43,8 +43,8 @@ class RouteConfig(object):
 	def __init__(self, instance):
 		self.instance = instance
 
-		offices = instance.session.world.get_branch_offices()
-		self.branch_offices = dict([('%s (%s)' % (bo.settlement.get_component(NamedComponent).name, bo.owner.name), bo) for bo in offices])
+		offices = instance.session.world.get_warehouses()
+		self.warehouses = dict([('%s (%s)' % (bo.settlement.get_component(NamedComponent).name, bo.owner.name), bo) for bo in offices])
 		if not hasattr(instance, 'route'):
 			instance.create_route()
 
@@ -320,15 +320,15 @@ class RouteConfig(object):
 			self.slots[entry][num] = slot
 			self.show_load_icon(slot)
 
-	def add_gui_entry(self, branch_office, resource_list = None):
+	def add_gui_entry(self, warehouse, resource_list = None):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
 		self.widgets.append(entry)
 
 		settlement_name_label = entry.findChild(name = "bo_name")
-		settlement_name_label.text = unicode(branch_office.settlement.get_component(NamedComponent).name)
+		settlement_name_label.text = unicode(warehouse.settlement.get_component(NamedComponent).name)
 		player_name_label = entry.findChild(name = "player_name")
-		player_name_label.text = unicode(branch_office.owner.name)
+		player_name_label.text = unicode(warehouse.owner.name)
 
 		self.add_trade_slots(entry, self.slots_per_entry)
 
@@ -351,16 +351,16 @@ class RouteConfig(object):
 		  })
 		vbox.addChild(entry)
 
-	def append_bo(self, branch_office):
+	def append_bo(self, warehouse):
 		"""Add a bo to the list on the left side.
-		@param branch_office: Set to add a specific one, else the selected one gets added.
+		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
 			# TODO: error sound
 			return
 
-		self.instance.route.append(branch_office)
-		self.add_gui_entry(branch_office)
+		self.instance.route.append(warehouse)
+		self.add_gui_entry(warehouse)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
 
@@ -388,7 +388,7 @@ class RouteConfig(object):
 				map_coord = event.map_coord
 				tile = self.session.world.get_tile(Point(*map_coord))
 				if tile is not None and tile.settlement is not None:
-					self.append_bo( tile.settlement.branch_office )
+					self.append_bo( tile.settlement.warehouse )
 
 		self.minimap = Minimap(icon, self.session, \
 		                       horizons.main.fife.targetrenderer,
@@ -409,7 +409,7 @@ class RouteConfig(object):
 		#don't do any actions if the resource menu is shown
 		self.resource_menu_shown = False
 		for entry in self.instance.route.waypoints:
-			self.add_gui_entry(entry['branch_office'], entry['resource_list'])
+			self.add_gui_entry(entry['warehouse'], entry['resource_list'])
 		# we want escape key to close the widget, what needs to be fixed here?
 		self.start_button_set_active()
 		if self.instance.route.enabled:

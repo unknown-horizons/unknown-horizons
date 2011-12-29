@@ -715,16 +715,16 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		return islands
 
 	@decorators.make_constants()
-	def get_branch_offices(self, position=None, radius=None, owner=None, include_friendly=False):
-		"""Returns all branch offices on the map. Optionally only those in range
+	def get_warehouses(self, position=None, radius=None, owner=None, include_friendly=False):
+		"""Returns all warehouses on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
-		@param owner: Player instance, list only branch offices belonging to this player.
-		@param include_friendly also list the branch offices belonging to friends
-		@return: List of branch offices.
+		@param owner: Player instance, list only warehouses belonging to this player.
+		@param include_friendly also list the warehouses belonging to friends
+		@return: List of warehouses.
 		"""
-		branchoffices = []
+		warehouses = []
 		islands = []
 		if radius is not None and position is not None:
 			islands = self.get_islands_in_radius(position, radius)
@@ -733,12 +733,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		for island in self.islands:
 			for settlement in island.settlements:
-				bo = settlement.branch_office
+				bo = settlement.warehouse
 				if (radius is None or position is None or \
 				    bo.position.distance(position) <= radius) and \
 				   (owner is None or bo.owner == owner or include_friendly):
-					branchoffices.append(bo)
-		return branchoffices
+					warehouses.append(bo)
+		return warehouses
 
 	@decorators.make_constants()
 	def get_ships(self, position=None, radius=None):

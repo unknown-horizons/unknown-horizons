@@ -29,7 +29,7 @@ from horizons.world.status import StatusIcon
 
 class ConcreteObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
-	"Concrete" here means "you can touch it", e.g. a Branch Office is a ConcreteObject,
+	"Concrete" here means "you can touch it", e.g. a Warehouse is a ConcreteObject,
 	a Settlement isn't.
 	All such objects have positions, so Islands are no ConcreteObjects for technical reasons.
 

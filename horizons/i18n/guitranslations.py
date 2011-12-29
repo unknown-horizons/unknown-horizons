@@ -470,7 +470,7 @@ def set_translations():
 		"taxes"                       : ("tooltip" , _("Paid taxes")),
 		},
 
-	"overview_branchoffice.xml" : {
+	"overview_warehouse.xml" : {
 		# (text of widget: name_label)
 		"name_label"                  : ("text"    , _("Name:")),
 		# (tooltip of widget: collector_utilisation_label)
@@ -483,7 +483,7 @@ def set_translations():
 		"running_costs"               : ("tooltip" , _("Running costs")),
 		},
 
-	"overview_enemybranchoffice.xml" : {
+	"overview_enemywarehouse.xml" : {
 		# (text of widget: buying_label)
 		"buying_label"                : ("text"    , _("Buying")),
 		# (text of widget: selling_label)

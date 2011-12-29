@@ -45,7 +45,7 @@ class ResourceManager(WorldObject):
 	settlement should have in inventory and how much it actually has.
 	That data is used by this class to make buy/sell decisions in this settlement,
 	by InternationalTradeManager to decide which resources to buy/sell at other players'
-	branch offices and by SpecialDomesticTradeManager to decide which resources to transfer
+	warehouses and by SpecialDomesticTradeManager to decide which resources to transfer
 	between the player's settlements in order to make best use of them.
 
 	Currently the quota priority system works by assigning local requests a high priority

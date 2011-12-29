@@ -138,7 +138,7 @@ class InternationalTradeWidget(object):
 
 	def transfer(self, res_id, settlement, selling):
 		"""Buy or sell the resources"""
-		if self.instance.position.distance(settlement.branch_office.position) <= self.radius:
+		if self.instance.position.distance(settlement.warehouse.position) <= self.radius:
 			if selling:
 				self.log.debug('InternationalTradeWidget : %s/%s is selling %d of res %d to %s/%s', \
 					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
@@ -162,16 +162,16 @@ class InternationalTradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		branch_offices = self.instance.session.world.get_branch_offices(self.instance.position, self.radius, self.instance.owner, True)
-		if branch_offices is not None:
-			partners.extend(branch_offices)
+		warehouses = self.instance.session.world.get_warehouses(self.instance.position, self.radius, self.instance.owner, True)
+		if warehouses is not None:
+			partners.extend(warehouses)
 		return partners
 
 	def get_nearest_partner(self, partners):
 		nearest = None
 		nearest_dist = None
 		for partner in partners:
-			if partner.owner is not self.instance.owner: # international trade ignored domestic branch offices
+			if partner.owner is not self.instance.owner: # international trade ignored domestic warehouses
 				dist = partner.position.distance(self.instance.position)
 				nearest = partners.index(partner) if dist < nearest_dist or nearest_dist is None else nearest
 				nearest_dist = dist if dist < nearest_dist or nearest_dist is None else nearest_dist

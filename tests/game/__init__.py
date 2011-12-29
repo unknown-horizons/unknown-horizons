@@ -237,7 +237,7 @@ def new_settlement(session, pos=Point(30, 20)):
 		ship.get_component(StorageComponent).inventory.alter(res, amount)
 
 	building = Build(BUILDINGS.BRANCH_OFFICE_CLASS, pos.x, pos.y, island, ship=ship)(player)
-	assert building, "Could not build branch office at %s" % pos
+	assert building, "Could not build warehouse at %s" % pos
 
 	return (building.settlement, island)
 

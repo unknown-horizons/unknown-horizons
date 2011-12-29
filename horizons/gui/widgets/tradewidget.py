@@ -156,9 +156,9 @@ class TradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		branch_offices = self.instance.session.world.get_branch_offices(position=self.instance.position, radius=self.radius, owner=self.instance.owner)
-		if branch_offices is not None:
-			partners.extend(branch_offices)
+		warehouses = self.instance.session.world.get_warehouses(position=self.instance.position, radius=self.radius, owner=self.instance.owner)
+		if warehouses is not None:
+			partners.extend(warehouses)
 		return partners
 
 	def get_nearest_partner(self, partners):

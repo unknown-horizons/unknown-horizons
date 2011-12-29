@@ -55,9 +55,9 @@ class TradeManager(WorldObject):
 	* TradeManager of A reserves production at the ResourceManager of B as described above
 	* ResourceManager of B keeps track of how much resources it is producing for A
 	* TradeManager of A sends a ship to B to pick up some resources (a DomesticTrade mission)
-	* the ship arrives at the branch office of B and calls A's TradeManager.load_resources
+	* the ship arrives at the warehouse of B and calls A's TradeManager.load_resources
 		which loads the ship and adjusts the data of B's ResourceManager
-	* the ship arrives at the branch office of A and unloads the resources
+	* the ship arrives at the warehouse of A and unloads the resources
 	"""
 
 	log = logging.getLogger("ai.aiplayer.trademanager")

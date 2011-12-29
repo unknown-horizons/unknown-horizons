@@ -95,7 +95,7 @@ class VillageBuilder(AreaBuilder):
 
 	def _get_village_section_coordinates(self, start_x, start_y, width, height):
 		"""Return set([(x, y), ...]) of usable coordinates in the rectangle defined by the parameters."""
-		bo_coords_set = set(self.land_manager.settlement.branch_office.position.tuple_iter())
+		bo_coords_set = set(self.land_manager.settlement.warehouse.position.tuple_iter())
 		result = set()
 		for dx in xrange(width):
 			for dy in xrange(height):
@@ -453,7 +453,7 @@ class VillageBuilder(AreaBuilder):
 			if coords not in self.plan or self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				not_needed.append(coords)
 		for coords in not_needed:
-			# if the branch office is (partly) in the village area then it needs to be handed over but it won't be in the plan at all
+			# if the warehouse is (partly) in the village area then it needs to be handed over but it won't be in the plan at all
 			if coords in self.plan:
 				del self.plan[coords]
 			self.land_manager.add_to_production(coords)

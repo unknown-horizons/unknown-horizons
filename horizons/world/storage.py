@@ -35,7 +35,7 @@ Storages with certain properties:
 Combinations:
 - SizedSlottedStorage: One limit, each res value must be <= the limit and >= 0.
 - PositiveTotalStorage: use case: ship inventory
-- PositiveSizedSlotStorage: every res has the same limit, only positive values (branch office)
+- PositiveSizedSlotStorage: every res has the same limit, only positive values (warehouse)
 - PositiveSizedSpecializedStorage: Like SizedSpecializedStorage, plus only positive values.
 """
 
@@ -292,7 +292,7 @@ class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
 
 class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 	"""A storage consisting of a slot for each resource, all slots have the same size 'limit'
-	Used by the branch office for example. So with a limit of 30 you could have a max of
+	Used by the warehouse for example. So with a limit of 30 you could have a max of
 	30 from each resource."""
 	def __init__(self, limit):
 		super(PositiveSizedSlotStorage, self).__init__(limit)

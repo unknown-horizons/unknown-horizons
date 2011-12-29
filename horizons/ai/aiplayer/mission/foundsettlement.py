@@ -29,7 +29,7 @@ from horizons.ext.enum import Enum
 class FoundSettlement(ShipMission):
 	"""
 	Given a ship with the required resources and a bo_location the ship is taken near
-	the location and a branch office is built.
+	the location and a warehouse is built.
 	"""
 
 	missionStates = Enum('created', 'moving')
@@ -38,7 +38,7 @@ class FoundSettlement(ShipMission):
 		super(FoundSettlement, self).__init__(success_callback, failure_callback, ship)
 		self.land_manager = land_manager
 		self.bo_location = bo_location
-		self.branch_office = None
+		self.warehouse = None
 		self.state = self.missionStates.created
 
 	def save(self, db):
@@ -58,7 +58,7 @@ class FoundSettlement(ShipMission):
 		db_result = db("SELECT land_manager, ship, bo_builder, state FROM ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
 		self.land_manager = WorldObject.get_object_by_id(db_result[0])
 		self.bo_location = Builder.load(db, db_result[2], self.land_manager)
-		self.branch_office = None
+		self.warehouse = None
 		self.state = self.missionStates[db_result[3]]
 		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
 
@@ -74,31 +74,31 @@ class FoundSettlement(ShipMission):
 
 	def _move_to_bo_area(self):
 		if self.bo_location is None:
-			self.report_failure('No possible branch office location')
+			self.report_failure('No possible warehouse location')
 			return
 
-		self._move_to_branch_office_area(self.bo_location.position, Callback(self._reached_bo_area), \
+		self._move_to_warehouse_area(self.bo_location.position, Callback(self._reached_bo_area), \
 			Callback(self._move_to_bo_area), 'Move not possible')
 
 	def _reached_bo_area(self):
 		self.log.info('%s reached BO area', self)
 
-		self.branch_office = self.bo_location.execute()
-		if not self.branch_office:
-			self.report_failure('Unable to build the branch office')
+		self.warehouse = self.bo_location.execute()
+		if not self.warehouse:
+			self.report_failure('Unable to build the warehouse')
 			return
 
 		island = self.bo_location.land_manager.island
 		self.land_manager.settlement = island.get_settlement(self.bo_location.point)
-		self.log.info('%s built the branch office', self)
+		self.log.info('%s built the warehouse', self)
 
 		self._unload_all_resources(self.land_manager.settlement)
-		self.report_success('Built the branch office, transferred resources')
+		self.report_success('Built the warehouse, transferred resources')
 
 	@classmethod
 	def find_bo_location(cls, ship, land_manager):
 		"""
-		Finds a location for the branch office on the given island
+		Finds a location for the warehouse on the given island
 		@param LandManager: the LandManager of the island
 		@return _BuildPosition: a possible build location
 		"""
@@ -114,15 +114,15 @@ class FoundSettlement(ShipMission):
 				for d in xrange(2, 6):
 					coords = (x + d * x_offset, y + d * y_offset)
 					if coords in world.water_body and world.water_body[coords] == world.water_body[ship.position.to_tuple()]:
-						# the planned branch office should be reachable from the ship's water body
+						# the planned warehouse should be reachable from the ship's water body
 						ok = True
 			if not ok:
 				continue
 
 			build_info = None
 			point = Point(x, y)
-			branch_office = Builder(BUILDINGS.BRANCH_OFFICE_CLASS, land_manager, point, ship = ship)
-			if not branch_office:
+			warehouse = Builder(BUILDINGS.BRANCH_OFFICE_CLASS, land_manager, point, ship = ship)
+			if not warehouse:
 				continue
 
 			cost = 0
@@ -134,9 +134,9 @@ class FoundSettlement(ShipMission):
 					cost += distance
 
 			for settlement_manager in land_manager.owner.settlement_managers:
-				cost += branch_office.position.distance(settlement_manager.settlement.branch_office.position) * personality.linear_branch_office_penalty
+				cost += warehouse.position.distance(settlement_manager.settlement.warehouse.position) * personality.linear_warehouse_penalty
 
-			options.append((cost, branch_office))
+			options.append((cost, warehouse))
 
 		for _, build_info in sorted(options):
 			(x, y) = build_info.position.get_coordinates()[4]

@@ -1,6 +1,6 @@
 id: 1
-name: Branch Office
-baseclass: storages.BranchOffice
+name: Warehouse
+baseclass: storages.Warehouse
 radius: 24
 cost: 0
 cost_inactive: 0
@@ -16,6 +16,6 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent
 - AmbientSoundComponent:
-    soundfiles: [content/audio/sounds/branch_office.ogg]
+    soundfiles: [content/audio/sounds/warehouse.ogg]
 actionsets:
-  as_branchoffice0: {preview: as_preview_branchoffice0, level: 0}
+  as_warehouse0: {preview: as_preview_warehouse0, level: 0}

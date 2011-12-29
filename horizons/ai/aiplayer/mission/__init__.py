@@ -107,7 +107,7 @@ class ShipMission(Mission):
 		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory]:
 			self.move_resource(self.ship, settlement, res, amount)
 
-	def _move_to_branch_office_area(self, bo_position, success_callback, blocked_callback, failure_msg):
+	def _move_to_warehouse_area(self, bo_position, success_callback, blocked_callback, failure_msg):
 		(x, y) = bo_position.get_coordinates()[4]
 		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
 		try:

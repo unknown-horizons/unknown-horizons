@@ -366,7 +366,7 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 
 
 class BuildableSingleFromShip(BuildableSingleOnOcean):
-	"""Buildings that can be build from a ship. Currently only Branch Office."""
+	"""Buildings that can be build from a ship. Currently only Warehouse."""
 	@classmethod
 	def _check_settlement(cls, session, position, ship, issuer=None):
 		# building from ship doesn't require settlements

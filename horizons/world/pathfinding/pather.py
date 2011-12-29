@@ -242,7 +242,7 @@ class BuildingCollectorPather(AbstractPather):
 
 
 class RoadPather(AbstractPather):
-	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
+	"""Pather for collectors, that depend on roads (e.g. the one used for the warehouse)"""
 	def __init__(self, unit, *args, **kwargs):
 		super(RoadPather, self).__init__(unit, move_diagonal=False, *args, **kwargs)
 		self.island = self.session.world.get_island(unit.position)

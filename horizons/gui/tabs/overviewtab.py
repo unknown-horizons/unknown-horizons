@@ -102,16 +102,16 @@ class OverviewTab(TabInterface):
 
 
 
-class BranchOfficeOverviewTab(OverviewTab):
-	""" the main tab of branch offices and storages """
+class WarehouseOverviewTab(OverviewTab):
+	""" the main tab of warehouses and storages """
 
 	def __init__(self, instance):
-		super(BranchOfficeOverviewTab, self).__init__(
-			widget = 'overview_branchoffice.xml',
+		super(WarehouseOverviewTab, self).__init__(
+			widget = 'overview_warehouse.xml',
 			instance = instance
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
-		self.tooltip = _("Branch office overview")
+		self.tooltip = _("warehouse overview")
 		self._refresh_collector_utilisation()
 
 	def _refresh_collector_utilisation(self):
@@ -121,19 +121,19 @@ class BranchOfficeOverviewTab(OverviewTab):
 	def refresh(self):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		self._refresh_collector_utilisation()
-		super(BranchOfficeOverviewTab, self).refresh()
+		super(WarehouseOverviewTab, self).refresh()
 
 	def show(self):
-		super(BranchOfficeOverviewTab, self).show()
+		super(WarehouseOverviewTab, self).show()
 		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
 
 	def hide(self):
-		super(BranchOfficeOverviewTab, self).hide()
+		super(WarehouseOverviewTab, self).hide()
 		Scheduler().rem_all_classinst_calls(self)
 
 	def on_instance_removed(self):
 		Scheduler().rem_all_classinst_calls(self)
-		super(BranchOfficeOverviewTab, self).on_instance_removed()
+		super(WarehouseOverviewTab, self).on_instance_removed()
 
 
 class ShipOverviewTab(OverviewTab):
@@ -180,11 +180,11 @@ class ShipOverviewTab(OverviewTab):
 		events['found_settlement/mouseExited'] = cb
 
 	def _refresh_trade_button(self, events):
-		branch_offices = self.instance.session.world.get_branch_offices(self.instance.position, \
+		warehouses = self.instance.session.world.get_warehouses(self.instance.position, \
 			self.instance.radius, self.instance.owner, True)
 
-		if branch_offices:
-			if branch_offices[0].owner is self.instance.owner:
+		if warehouses:
+			if warehouses[0].owner is self.instance.owner:
 				wdg = TradeWidget(self.instance)
 				tooltip = _('Load/Unload')
 			else:
@@ -198,7 +198,7 @@ class ShipOverviewTab(OverviewTab):
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest branch office')
+			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
@@ -460,14 +460,14 @@ class EnemyBuildingOverviewTab(OverviewTab):
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
 
-class EnemyBranchOfficeOverviewTab(OverviewTab):
+class EnemyWarehouseOverviewTab(OverviewTab):
 	def __init__(self, instance):
-		super(EnemyBranchOfficeOverviewTab, self).__init__(
-			widget = 'overview_enemybranchoffice.xml',
+		super(EnemyWarehouseOverviewTab, self).__init__(
+			widget = 'overview_enemywarehouse.xml',
 			instance = instance
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
-		self.tooltip = _("Branch office overview")
+		self.tooltip = _("warehouse overview")
 
 	def refresh(self):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
@@ -478,7 +478,7 @@ class EnemyBranchOfficeOverviewTab(OverviewTab):
 		buying_inventory = self.widget.findChild(name='buying_inventory')
 		buying_inventory.init(self.instance.session.db, self.instance.settlement.get_component(StorageComponent).inventory, self.instance.settlement.buy_list, False)
 
-		super(EnemyBranchOfficeOverviewTab, self).refresh()
+		super(EnemyWarehouseOverviewTab, self).refresh()
 
 class EnemyShipOverviewTab(OverviewTab):
 	def  __init__(self, instance):

@@ -21,10 +21,10 @@
 
 from inventorytab import InventoryTab
 from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
-						BranchOfficeOverviewTab, SettlerOverviewTab, \
+						WarehouseOverviewTab, SettlerOverviewTab, \
 						SignalFireOverviewTab, TraderShipOverviewTab, EnemyBuildingOverviewTab, \
 						EnemyShipOverviewTab, ResourceDepositOverviewTab, \
-						EnemyBranchOfficeOverviewTab, FarmProductionOverviewTab, \
+						EnemyWarehouseOverviewTab, FarmProductionOverviewTab, \
 						FightingShipOverviewTab, GroundUnitOverviewTab
 
 from buyselltab import BuySellTab

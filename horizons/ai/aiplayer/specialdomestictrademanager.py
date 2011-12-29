@@ -62,7 +62,7 @@ class SpecialDomesticTradeManager(object):
 		The route is created between the two settlements that need resources with most
 		value transported between them but the actual mission will be unaware of the
 		initial reasons for creating it and pick up whatever resources need to be
-		transported when it gets to the source branch office.
+		transported when it gets to the source warehouse.
 		"""
 
 		ship = None

@@ -193,7 +193,7 @@ class Island(BuildingOwner, WorldObject):
 
 	def add_settlement(self, position, radius, player, load=False):
 		"""Adds a settlement to the island at the position x, y with radius as area of influence.
-		@param position: Rect describing the position of the new branch office
+		@param position: Rect describing the position of the new warehouse
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(self.session, player)

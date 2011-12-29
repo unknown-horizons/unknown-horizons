@@ -143,13 +143,13 @@ def player_produced_res_greater(session, res, limit):
 
 def buildings_connected_to_branch_gt(session, building_class, number):
 	"""Checks whether more than number of building_class type buildings are
-	connected to a branch office or storage."""
+	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
 	        BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
 
 def buildings_connected_to_branch_lt(session, building_class, number):
 	"""Checks whether less than number of building_class type buildings are
-	connected to a branch office or storage."""
+	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
 	        BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
 

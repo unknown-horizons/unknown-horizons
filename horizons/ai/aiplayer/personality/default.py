@@ -30,7 +30,7 @@ class DefaultPersonality:
 
 		enemy_settlement_penalty = 200 # penalty for every enemy settlement on the island
 		compact_empire_importance = 100 # importance of keeping our islands close together
-		extra_branch_office_distance = 1 # extra distance to add to the usual branch office to island distance when choosing an island
+		extra_warehouse_distance = 1 # extra distance to add to the usual warehouse to island distance when choosing an island
 		nearby_enemy_penalty = 100 # importance of keeping our islands away from other players' islands
 		extra_enemy_island_distance = 1 # extra distance to add to the usual island to other player's island distance when choosing an island
 
@@ -164,12 +164,12 @@ class DefaultPersonality:
 		final_pioneer_upgrades = True
 
 	class FoundSettlement:
-		# use a penalty for branch office being too close to the village area
+		# use a penalty for warehouse being too close to the village area
 		too_close_penalty_threshold = 3
 		too_close_constant_penalty = 100
 		too_close_linear_penalty = 0
 
-		linear_branch_office_penalty = 1000 # add a penalty of this constant * distance to a branch office to the branch office penalty
+		linear_warehouse_penalty = 1000 # add a penalty of this constant * distance to a warehouse to the warehouse penalty
 
 	class FeederChainGoal:
 		extra_priority = 1 # extra priority given to goals that are supposed to produce resources for other settlements on feeder islands
