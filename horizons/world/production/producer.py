@@ -343,7 +343,6 @@ class QueueProducer(Producer):
 
 	def load(self, db, worldid):
 		super(QueueProducer, self).load(db, worldid)
-		self.__init()
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE object = ? ORDER by position", worldid):
 			self.production_queue.append(prod_line_id)
 

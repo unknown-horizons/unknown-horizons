@@ -84,7 +84,7 @@ class BoatbuilderTab(OverviewTab):
 				container_active = main_container.container_active
 
 			# Update boatbuilder queue
-			queue = self.instance.get_unit_production_queue()
+			queue = self.instance.get_component(Producer).get_unit_production_queue()
 			queue_container = container_active.findChild(name="queue_container")
 			queue_container.removeAllChildren()
 			for i in enumerate(queue):

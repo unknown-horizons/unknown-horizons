@@ -436,13 +436,13 @@ class ChangingProduction(Production):
 		"""Returns a changeable production line instance"""
 		return ProductionLine(prod_line_id)
 
-	def save(self, db):
+	def save(self, db, owner_id):
 		super(ChangingProduction, self).save(db)
-		self._prod_line.save(db, self.worldid)
+		self._prod_line.save(db, owner_id)
 
 	def _load(self, db, worldid):
 		super(ChangingProduction, self)._load(db, worldid)
-		self._prod_line.load(db, self.worldid)
+		self._prod_line.load(db, worldid)
 
 
 class SettlerProduction(ChangingProduction):
@@ -485,7 +485,7 @@ class ProgressProduction(Production):
 		self.original_prod_line = copy.deepcopy(self._prod_line)
 		self.progress = progress # float indicating current production progress
 
-	def save(self, db):
+	def save(self, db, owner_id):
 		# TODO
 		pass
 
