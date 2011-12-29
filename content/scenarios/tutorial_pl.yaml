@@ -120,7 +120,7 @@ events:
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
@@ -170,9 +170,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -247,11 +247,11 @@ events:
         \ Twoj\u0105 osad\u0119."]
     type: logbook_w
   - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
+        also stop by and look into your warehouse if it planned to sail past it.
 
 
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
+        You can propose deals via the warehouse tab ''Buy/Sell''. (This feature is
+        currently quite fiddly to use. If you come up with a nice way of improving
         it, please share your thoughts! We need your help here!)
 
 
@@ -266,7 +266,7 @@ events:
         explain this once you are ready to trade.
 
 
-        TASK: Build a signal fire at the coast close to your branch office.']
+        TASK: Build a signal fire at the coast close to your warehouse.']
     type: logbook
   - arguments: ["Wybuduj latarnie na wybrze\u017Cu w pobli\u017Cu swojego portu."]
     type: message
@@ -281,8 +281,8 @@ events:
     type: var_lt
 - actions:
   - arguments: ["Nowe Zadanie: Naucz si\u0119 handlowa\u0107", !!python/unicode "Excellent!\
-        \ The Free Trader will now stop by at your branch office from time to time.\n\
-        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
+        \ The Free Trader will now stop by at your warehouse from time to time.\n\n\
+        Let's continue our tutorial on how to trade.\n\nAfter selecting a particular\
         \ type of good, the green bar across the bottom of the slot (if visible) shows\
         \ you how much you have in stock of this good.\n\nDragging the slider on the\
         \ right of each slot determines your 'target value' which has a different\
@@ -426,11 +426,11 @@ events:
 
 
         Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a Branch Office.
+        to be connected to storage or a warehouse.
 
 
         As long as units of the final production company can reach the farm, and collectors
-        from the branch office or storage tent can reach the final company everything''s
+        from the warehouse or storage tent can reach the final company everything''s
         fine.
 
 
@@ -508,7 +508,7 @@ events:
         you watch your lumberjack recently?
 
 
-        Since your branch office does not have unlimited space to store goods, collectors
+        Since your warehouse does not have unlimited space to store goods, collectors
         will stop fetching goods from companies when stock is full.
 
         So if no sailor recently wanted to upgrade his tent, you probably have a lot
@@ -533,9 +533,9 @@ events:
         \nAnother solution is to build the last increment-I building which has not\
         \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
         \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the branch office does.\n\nNote that companies\
-        \ can also be connected to a storage in order to get their products collected,\
-        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ to fetch goods, just like the warehouse does.\n\nNote that companies can\
+        \ also be connected to a storage in order to get their products collected,\
+        \ and if the warehouse is overwhelmed with collector tasks, you can place\
         \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
         \ where you need collectors."]
     type: logbook
@@ -558,7 +558,7 @@ events:
 
 
         There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the Branch Office).
+        to a Storage Tent (or the warehouse).
 
 
         In both cases you should ensure the connection to a trail as well.

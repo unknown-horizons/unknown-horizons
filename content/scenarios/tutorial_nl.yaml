@@ -171,7 +171,7 @@ events:
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
@@ -227,9 +227,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -302,19 +302,19 @@ events:
         speed things up a bit.
 
 
-        For this purpose, build a signal fire at the coast near your branch office.
-        It will show ships the way to your settlement.
+        For this purpose, build a signal fire at the coast near your warehouse. It
+        will show ships the way to your settlement.
 
 
         The signal fire has to cover the area which the ships pass through to catch
         them.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
+        also stop by and look into your warehouse if it planned to sail past it.
 
 
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
+        You can propose deals via the warehouse tab ''Buy/Sell''. (This feature is
+        currently quite fiddly to use. If you come up with a nice way of improving
         it, please share your thoughts! We need your help here!)
 
 
@@ -329,7 +329,7 @@ events:
         explain this once you are ready to trade.
 
 
-        TASK: Build a signal fire at the coast close to your branch office.']
+        TASK: Build a signal fire at the coast close to your warehouse.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een signaal vuur bij de kust nabij het kantoor.']
     type: message
