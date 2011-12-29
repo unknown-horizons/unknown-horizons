@@ -102,7 +102,6 @@ class ConcreteObject(WorldObject):
 
 	def act(self, action, facing_loc=None, repeating=False):
 		if self._instance is None:
-			print self, "act with instance:", self._instance
 		if not self.has_action(action):
 			action = 'idle'
 		# TODO This should not happen, this is a fix for the component introduction
