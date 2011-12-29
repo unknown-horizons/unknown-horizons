@@ -34,8 +34,9 @@ class KeyConfig(object):
 		GRID, COORD_TOOLTIP, DESTROY_TOOL, PLAYERS_OVERVIEW, ROAD_TOOL, SPEED_UP, SPEED_DOWN, \
 		PAUSE, SETTLEMENTS_OVERVIEW, SHIPS_OVERVIEW, LOGBOOK, BUILD_TOOL, ROTATE_RIGHT, \
 		ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, SAVE_MAP, \
-		PIPETTE, HEALTH_BAR, ESCAPE, LEFT, RIGHT, UP, DOWN, DEBUG, CONSOLE, HELP, SCREENSHOT = \
-		range(31)
+		PIPETTE, HEALTH_BAR, ESCAPE, LEFT, RIGHT, UP, DOWN, DEBUG, CONSOLE, HELP, SCREENSHOT, \
+		SHOW_SELECTED = \
+		range(32)
 
 	def __init__(self):
 		_Actions = self._Actions
@@ -58,6 +59,7 @@ class KeyConfig(object):
 		  "o" : _Actions.PIPETTE,
 		  "k" : _Actions.HEALTH_BAR,
 		  "d" : _Actions.DEBUG,
+		  "j" : _Actions.SHOW_SELECTED,
 		}
 		self.keyval_mappings = {
 			fife.Key.ESCAPE: _Actions.ESCAPE,

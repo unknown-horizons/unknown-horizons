@@ -155,7 +155,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 				# create new group (only consider units owned by the player)
 				self.session.selection_groups[num] = \
 				    set(filter(lambda unit : unit.owner == self.session.world.player,
-				               self.session.selected_instances.copy()))
+				               self.session.selected_instances))
 				# drop units of the new group from all other groups
 				for group in self.session.selection_groups:
 					if group is not self.session.selection_groups[num]:
@@ -180,6 +180,14 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif action == _Actions.HEALTH_BAR:
 			# shows health bar of every instance with an health component
 			self.session.world.toggle_health_for_all_health_instances()
+		elif action == _Actions.SHOW_SELECTED:
+			if self.session.selected_instances:
+				# scroll to first one, we can never guarantee to display all selected units
+				instance = iter(self.session.selected_instances).next()
+				self.session.view.center( * instance.position.to_tuple())
+				for instance in self.session.selected_instances:
+					if hasattr(instance, "path"):
+						self.session.ingame_gui.minimap.show_unit_path(instance)
 		else:
 			return
 		evt.consume()

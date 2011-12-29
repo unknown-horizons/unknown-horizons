@@ -345,11 +345,11 @@ class Minimap(object):
 		high()
 		return STEPS*INTERVAL
 
-	def show_unit_path(self, unit):
+	def show_unit_path(self, unit, ):
 		"""Show the path a unit is moving along"""
 		path = unit.path.path
-		if path is None:
-			return
+		if path is None: # show at least the position
+			path = [ unit.position.to_tuple() ]
 
 		# the path always contains the full path, the unit might be somewhere in it
 		position_of_unit_in_path = 0
@@ -358,7 +358,8 @@ class Minimap(object):
 			if path[i] == unit_pos:
 				position_of_unit_in_path = i
 				break
-		position_of_unit_in_path += 1 # looks nicer when unit is moving
+		if len(path) > 1:
+			position_of_unit_in_path += 1 # looks nicer when unit is moving
 		path = path[position_of_unit_in_path:]
 
 		# draw every step-th coord
