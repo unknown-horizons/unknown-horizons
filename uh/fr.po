@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 18:53+0200\n"
+"PO-Revision-Date: 2011-12-29 19:09+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -2738,7 +2738,7 @@ msgstr "Moteur de rendu utilisé :"
 #. (tooltip of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:952
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Décharger le navire après la fondation d'une colonie"
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:954
@@ -2749,26 +2749,30 @@ msgstr "Si réglé sur 0, utilise le pilote par défaut "
 #: horizons/i18n/guitranslations.py:956
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
+"Déplacer la zone de visualisation quand le curseur est proche d'un bord de "
+"carte"
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:958
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Également, tourner la mini-carte chaque fois que la carte est tournée "
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:960
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Si réglé sur 0, utilise les réglages par défaut du routeur"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:962
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Si actif, ne pas sortir du mode construction après qu'une construction soit "
+"terminée"
 
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:964
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr ""
+msgstr "SDL est seulement une solution de secours et peut causer des problèmes!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:969
@@ -3039,11 +3043,11 @@ msgstr ""
 
 #: horizons/spsession.py:167
 msgid "Access is denied"
-msgstr ""
+msgstr "Accès refusé"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "La sauvegarde est probablement en lecture seule."
 
 #: horizons/spsession.py:171
 msgid "File used by another process"

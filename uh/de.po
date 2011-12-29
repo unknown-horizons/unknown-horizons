@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-28 15:13+0200\n"
-"Last-Translator: Linkal <marcel@linkal.homeip.net>\n"
+"PO-Revision-Date: 2011-12-29 19:42+0200\n"
+"Last-Translator: raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -2674,7 +2674,7 @@ msgstr "Werkseinstellungen verwenden"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:938
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Schiff automatisch entladen:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:940
@@ -2684,12 +2684,12 @@ msgstr "Farbtiefe:"
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:942
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "Am Kartenrand scrollen:"
 
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:944
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Minimap und Karte (zusammen) drehen:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:946
@@ -2709,17 +2709,20 @@ msgstr "Renderer:"
 #. (tooltip of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:952
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Das Schiff nach der Gründung einer Siedlung entladen"
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:954
 msgid "If set to 0, use the driver default"
 msgstr ""
+"Bei der Auswahl von 0 wird die Standardeinstellung vom Treiber verwendet"
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:956
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
+"Die Karte verschieben wenn sich der Mauszeiger am Kartenrand "
+"(Bildschirmrand) befindet"
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:958
