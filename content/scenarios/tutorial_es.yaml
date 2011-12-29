@@ -127,23 +127,15 @@ events:
         \ de \xE1rboles que se necesitar\xE1n para construir tablones.\n\nOBJETIVO:\
         \ Construir una plaza principal."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
-
-
-        In the ''Account'' tab you get a balance sheet of this island, featuring all
-        costs you pay and all taxes you earn.
-
-
-        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
-        later on.
-
-
-        If your balance is positive, you all-in-all make a profit.
-
-
-        In the different increment overview tabs you can see statistics about your
-        inhabitants. You also set the increment-specific global tax here and allow
-        or deny inhabitants of this increment to upgrade to the next higher one.']
+  - arguments: ['', "Ahora vamos a tener una mirada m\xE1s cercana a la plaza principal.\
+        \ \n\nEn la pesta\xF1a \"Cuenta\"  se obtiene un balance de esta isla, que\
+        \ incluye todos los costos que paga y todos los impuestos que usted gana.\
+        \ \n\n'La pesta\xF1a \"Vender y Comprar\" se refieren a la balanza comercial\
+        \ y se explicar\xE1 m\xE1s adelante. \n\\ nSi su saldo es positivo, todo lo\
+        \ que hace son ganancias. \n\\ nEn las distintas pesta\xF1as de incremento\
+        \ puede ver las estad\xEDsticas acerca de sus habitantes. Tambi\xE9n se establece\
+        \ el impuesto global y permitir o denegar los habitantes la siguiente actualizaci\xF3\
+        n."]
     type: logbook
   - arguments: [!!python/unicode 'Construya una plaza principal. Elija una zona sin
         demasiados edificios comerciales.']
@@ -164,21 +156,15 @@ events:
   - arguments: [tutStepDone, 25]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'EDIFICIOS RESIDENCIALES', !!python/unicode 'Settlers
-        want to have a roof over their heads, else they won''t even think of living
-        in your city! You need to provide tents.
-
-
-        Tents are the basic residential buildings. Your inhabitants will want to upgrade
-        it when they reach higher increments.
-
-
-        Settlers may not look very useful since they will try to consume all goods
-        you produce - but they at least pay taxes, and that''s the only way you can
-        make money for now!
-
-
-        TASK: Build a tent and connect it to the main square.']
+  - arguments: [!!python/unicode 'EDIFICIOS RESIDENCIALES', "Los colonos necesitan\
+        \ tener un techo sobre sus cabezas, antes siquiera pensar en vivir en tu ciudad!\
+        \ Usted necesidad  proporcionar tiendas de campa\xF1a. \n\nLas tiendas de\
+        \ campa\xF1a son los edificios de viviendas b\xE1sicas. Sus habitantes las\
+        \ actualizar\xE1n cuando consigan incrementos. \n\nLos colonos pueden parecer\
+        \ poco \xFAtiles, ya que consumen todas las mercanc\xEDas que produce - pero\
+        \ al menos pagan impuestos, y esa es la \xFAnica manera de ganar dinero por\
+        \ ahora \n\nTAREA: Crear una tienda de campa\xF1a y conectarla a la plaza\
+        \ principal."]
     type: logbook
   - arguments: ["Construya una tienda y con\xE9ctela a la plaza principal."]
     type: message
@@ -192,33 +178,16 @@ events:
   - arguments: [tutStepDone, 28]
     type: var_lt
 - actions:
-  - arguments: ['', !!python/unicode 'Let''s have a look at the tent overview tab.
-
-        You can see
-
-        * the happiness of these residents,
-
-        * the taxes they pay and
-
-        * the resources they demand.
-
-
-        If their demands are fulfilled, happiness and thus your tax income increase.
-
-
-        If not, happiness and income decrease. At some time your residents may get
-        really sour and simply turn their back on your village, leaving behind a decaying
-        ruin.
-
-
-        Note that you can also change the global tax settings here, too.
-
-
-        TASK: Build at least three additional tents.
-
-
-        TIP: Holding down SHIFT eases constructing multiple buildings of the same
-        kind.']
+  - arguments: ['', "Vamos a echar un vistazo a la ficha resumen tienda. \nUsted puede\
+        \ ver: \n* La felicidad de los residentes\n* Los impuestos que pagan\n* Los\
+        \ recursos que demandan\n\\ nSi sus demandas se cumplan, la felicidad y los\
+        \ impuestos que pagan aumentar\xE1n.\n\\ nSi no, la felicidad y los ingresos\
+        \ bajar\xE1n. En alg\xFAn momento los residentes pueden sentirse tristes y\
+        \ simplemente abandonar su pueblo, dejando tras de s\xED una ruina decadente.\
+        \ \n\nTenga en cuenta que tambi\xE9n puede cambiar la configuraci\xF3n del\
+        \ impuesto global aqu\xED. \n\nTAREA:. Construir al menos tres tiendas adicionales\
+        \ \n\nSUGERENCIA: pulsando la tecla May\xFAsculas facilita la construcci\xF3\
+        n de varios edificios de la misma clase."]
     type: logbook
   - arguments: ["Construya al menos tres tiendas adicionales y con\xE9ctelas a la\
         \ plaza principal."]
@@ -233,28 +202,18 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: ["CONSTRUIR UNA SE\xD1AL DE FUEGO", !!python/unicode 'Can you see the
-        ship passing your island from time to time? That ship belongs to the Free
-        Trader, one of the first settlers in this archipelago.
-
-
-        The trader will supply your settlement with necessary goods which you can''t
-        produce yet.
-
-        You can also sell surpluses of your production, but in general consuming them
-        (by building more tents) instead of selling them yields more profit.
-
-
-        Normally the trader ships just sail around and look for deals, but you can
-        speed things up a bit.
-
-
-        For this purpose, build a signal fire at the coast near your warehouse. It
-        will show ships the way to your settlement.
-
-
-        The signal fire has to cover the area which the ships pass through to catch
-        them.']
+  - arguments: ["CONSTRUIR UNA SE\xD1AL DE FUEGO", "\xBFPuede ver el barco pasando\
+        \ por su isla de vez en cuendo? Este barco pertenece al libre comercio, es\
+        \ uno de los primeros pobladores de este archipi\xE9lago. \n\nEl comerciante\
+        \ le proporcionar\xE1  los bienes necesarios que no se puede producir todav\xED\
+        a. \nTambi\xE9n puede vender los excedentes de su producci\xF3n, pero en general,\
+        \ consumirlos (para la construcci\xF3n de m\xE1s tiendas de campa\xF1a) en\
+        \ lugar de venderlos, le rendir\xE1n mayor beneficio. \n\nNormalmente los\
+        \ barcos comerciantes s\xF3lo navegan alrededor y buscan ofertas, pero se\
+        \ puede acelerar un poco las cosas. \n\nPara ello, construir una se\xF1al\
+        \ de fuego en la costa cerca de su almac\xE9n. Mostrar\xE1 el camino a los\
+        \ buques a su establecimiento. \n\\ nLa se\xF1al de fuego tiene que cubrir\
+        \ la zona por la que los barcos pasan para atraerlos."]
     type: logbook_w
   - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
         also stop by and look into your warehouse if it planned to sail past it.
