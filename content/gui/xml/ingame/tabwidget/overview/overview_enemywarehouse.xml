@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Enemy branch office overview tab -->
+<!-- Enemy warehouse overview tab -->
 <Container  size="250,350">
 <TabBG amount="4"/>
 	<Icon name="player_emblem" position="25,50"/>

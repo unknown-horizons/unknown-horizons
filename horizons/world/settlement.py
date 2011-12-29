@@ -179,7 +179,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 		for building_id, building_type in \
 			  db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			building = load_building(session, db, building_type, building_id)
-			if building_type == BUILDINGS.BRANCH_OFFICE_CLASS:
+			if building_type == BUILDINGS.WAREHOUSE_CLASS:
 				self.warehouse = building
 
 		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):

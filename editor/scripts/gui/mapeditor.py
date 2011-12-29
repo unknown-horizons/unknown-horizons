@@ -605,9 +605,9 @@ class MapEditor:
 			if self._eventlistener.controlPressed:
 				if self._eventlistener.altPressed:
 					if self._eventlistener.shiftPressed:
-						self._controller.getUndoManager().previousBranch()
+						self._controller.getUndoManager().previousWarehouse()
 					else:
-						self._controller.getUndoManager().nextBranch()
+						self._controller.getUndoManager().nextWarehouse()
 				else:
 					if self._eventlistener.shiftPressed:
 						self._controller.redo()

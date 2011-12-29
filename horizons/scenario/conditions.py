@@ -36,7 +36,7 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater',\
                   'player_total_earnings_greater','time_passed', \
                   'var_eq', 'var_gt', 'var_lt',
-                  'buildings_connected_to_branch_gt', 'buildings_connected_to_branch_lt',\
+                  'buildings_connected_to_warehouse_gt', 'buildings_connected_to_warehouse_lt',\
                   'buildings_connected_to_building_gt', 'buildings_connected_to_building_lt', \
                   'settlement_produced_res_greater', 'player_produced_res_greater', \
                   'player_number_of_ships_gt', 'player_number_of_ships_lt')
@@ -57,8 +57,8 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.settlement_res_stored_greater,
                                 CONDITIONS.time_passed,
                                 CONDITIONS.player_total_earnings_greater,
-                                CONDITIONS.buildings_connected_to_branch_gt,
-                                CONDITIONS.buildings_connected_to_branch_lt,
+                                CONDITIONS.buildings_connected_to_warehouse_gt,
+                                CONDITIONS.buildings_connected_to_warehouse_lt,
                                 CONDITIONS.buildings_connected_to_building_gt,
                                 CONDITIONS.buildings_connected_to_building_lt,
                                 CONDITIONS.settlement_produced_res_greater,
@@ -141,17 +141,17 @@ def player_produced_res_greater(session, res, limit):
 	"""Returns whether more than limit res have been produced at all of the player's settlements combined"""
 	return sum(settlement.produced_res.get(res, 0) for settlement in _get_player_settlements(session)) > limit
 
-def buildings_connected_to_branch_gt(session, building_class, number):
+def buildings_connected_to_warehouse_gt(session, building_class, number):
 	"""Checks whether more than number of building_class type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
+	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
 
-def buildings_connected_to_branch_lt(session, building_class, number):
+def buildings_connected_to_warehouse_lt(session, building_class, number):
 	"""Checks whether less than number of building_class type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
+	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
 
 def buildings_connected_to_building_gt(session, building_class, class2, number):
 	"""Checks whether more than number of building_class type buildings are

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Overview tab for branch offices and storages -->
+<!-- Overview tab for warehouses and storages -->
 <Container size="260,400">
 <TabBG amount="5"/>
 <Icon name="player_emblem" position="25,50"/>

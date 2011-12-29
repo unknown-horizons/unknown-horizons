@@ -57,7 +57,7 @@ class Minimap(object):
 	           }
 
 
-	BRANCH_OFFICE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
+	WAREHOUSE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
 
 	SHIP_DOT_UPDATE_INTERVAL = 0.4 # seconds
 
@@ -519,7 +519,7 @@ class Minimap(object):
 		if force or \
 		   (not hasattr(self, "_last_settlements") or cur_settlements != self._last_settlements):
 			# update necessary
-			bo_img = self.imagemanager.load( self.__class__.BRANCH_OFFICE_IMAGE )
+			bo_img = self.imagemanager.load( self.__class__.WAREHOUSE_IMAGE )
 			bo_render_name = self._get_render_name("warehouse")
 			self.minimap_image.rendertarget.removeAll( bo_render_name )
 			# scale bo icons

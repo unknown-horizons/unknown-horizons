@@ -40,9 +40,9 @@ class UndoManager:
 	group them, use startGroup and endGroup. When you undo a group, you will
 	undo all the actions within it.
 	
-	If branched mode is enabled, you will not overwrite the redostack when
-	adding an action. Instead, a new branch will be created with the new actions.
-	To navigate in branches, you can use nextBranch and redoBranch.
+	If warehouseed mode is enabled, you will not overwrite the redostack when
+	adding an action. Instead, a new warehouse will be created with the new actions.
+	To navigate in warehouses, you can use nextWarehouse and redoWarehouse.
 	
 	Example
 	=======
@@ -70,9 +70,9 @@ class UndoManager:
 	undomanager.undo()
 	"""
 
-	def __init__(self, branchedMode = True):
+	def __init__(self, warehouseedMode = True):
 		self._groups = []
-		self._branched_mode = branchedMode
+		self._warehouseed_mode = warehouseedMode
 		
 		def warn(msg):
 			print "Warning: ",msg
@@ -111,9 +111,9 @@ class UndoManager:
 		""" 
 		Adds an action to the stack.
 		
-		If the redostack is not empty and branchmode is enabed,
-		a new branch will be created. If branchmod is disabled,
-		the redo branch will be cleared.
+		If the redostack is not empty and warehousemode is enabed,
+		a new warehouse will be created. If warehousemod is disabled,
+		the redo warehouse will be cleared.
 		"""
 		
 		if len(self._groups) > 0:
@@ -122,8 +122,8 @@ class UndoManager:
 			stackitem = UndoStackItem(action)
 			
 			stackitem.previous = self.current_item
-			if self._branched_mode:
-				stackitem.previous.addBranch(stackitem)
+			if self._warehouseed_mode:
+				stackitem.previous.addWarehouse(stackitem)
 			else:
 				stackitem.previous.next = stackitem
 			
@@ -137,7 +137,7 @@ class UndoManager:
 		Clears the undostack.
 		"""
 		self._groups = []
-		self.first_item.clearBranches()
+		self.first_item.clearWarehouses()
 		self.current_item = self.first_item
 		
 		cleared.send(sender=self)
@@ -179,26 +179,26 @@ class UndoManager:
 		postRedo.send(sender=self)
 		changed.send(sender=self)
 
-	def getBranchMode(self): 
-		""" Returns true if branch mode is enabled """
-		return self._branched_mode
+	def getWarehouseMode(self): 
+		""" Returns true if warehouse mode is enabled """
+		return self._warehouseed_mode
 		
-	def setBranchMode(self, enable):
-		""" Enable or disable branch mode """
-		self._branched_mode = enable
+	def setWarehouseMode(self, enable):
+		""" Enable or disable warehouse mode """
+		self._warehouseed_mode = enable
 		changed.send(sender=self)
 
-	def getBranches(self): 
-		""" Returns branches from current stack item. """
-		return self.current_item.getBranches()
-	def nextBranch(self): 
-		""" Switch to next branch in current item """
-		self.current_item.nextBranch()
+	def getWarehouses(self): 
+		""" Returns warehouses from current stack item. """
+		return self.current_item.getWarehouses()
+	def nextWarehouse(self): 
+		""" Switch to next warehouse in current item """
+		self.current_item.nextWarehouse()
 		changed.send(sender=self)
 		
-	def previousBranch(self):
-		""" Switch previous branch in current item """
-		self.current_item.previousBranch()
+	def previousWarehouse(self):
+		""" Switch previous warehouse in current item """
+		self.current_item.previousWarehouse()
 		changed.send(sender=self)
 
 class UndoObject:
@@ -276,71 +276,71 @@ class UndoGroup:
 class UndoStackItem:
 	""" Represents an action or actiongroup in the undostack. Do not use directly! """
 	def __init__(self, object):
-		self._branches = []
-		self._currentbranch = -1
+		self._warehouses = []
+		self._currentwarehouse = -1
 		
 		self.parent = None
 		self.object = object
 		self.previous = None
 		self.next = None
 		
-	def getBranches(self):
-		""" Returns a list of the branches """
-		return self._branches;
+	def getWarehouses(self):
+		""" Returns a list of the warehouses """
+		return self._warehouses;
 	
-	def addBranch(self, item):
-		""" Adds a branch to the list and sets this item to point to that branch """
-		self._branches.append(item)
+	def addWarehouse(self, item):
+		""" Adds a warehouse to the list and sets this item to point to that warehouse """
+		self._warehouses.append(item)
 		
-		self._currentbranch += 1
-		self.next = self._branches[self._currentbranch]
+		self._currentwarehouse += 1
+		self.next = self._warehouses[self._currentwarehouse]
 		self.next.parent = self
 		
-	def nextBranch(self):
-		""" Sets this item to point to next branch """
-		if len(self._branches) <= 0:
+	def nextWarehouse(self):
+		""" Sets this item to point to next warehouse """
+		if len(self._warehouses) <= 0:
 			return
-		self._currentbranch += 1
-		if self._currentbranch >= len(self._branches):
-			self._currentbranch = 0
-		self.next = self._branches[self._currentbranch]
+		self._currentwarehouse += 1
+		if self._currentwarehouse >= len(self._warehouses):
+			self._currentwarehouse = 0
+		self.next = self._warehouses[self._currentwarehouse]
 		changed.send(sender=self)
 			
-	def previousBranch(self):
-		""" Sets this item to point to previous branch """
-		if len(self._branches) <= 0:
+	def previousWarehouse(self):
+		""" Sets this item to point to previous warehouse """
+		if len(self._warehouses) <= 0:
 			return
 			
-		self._currentbranch -= 1
-		if self._currentbranch < 0:
-			self._currentbranch = len(self._branches)-1
-		self.next = self._branches[self._currentbranch]
+		self._currentwarehouse -= 1
+		if self._currentwarehouse < 0:
+			self._currentwarehouse = len(self._warehouses)-1
+		self.next = self._warehouses[self._currentwarehouse]
 		changed.send(sender=self)
 		
-	def setBranchIndex(self, index):
-		""" Set this item to point to branches[index] """
-		if index < 0 or index >= len(self._branches):
+	def setWarehouseIndex(self, index):
+		""" Set this item to point to warehouses[index] """
+		if index < 0 or index >= len(self._warehouses):
 			return
-		self._currentbranch = index
+		self._currentwarehouse = index
 		changed.send(sender=self)
-		self.next = self._branches[self._currentbranch]
+		self.next = self._warehouses[self._currentwarehouse]
 		
-	def clearBranches(self):
-		""" Removes all branches """
-		self._branches = []
-		self._currentbranch = -1
+	def clearWarehouses(self):
+		""" Removes all warehouses """
+		self._warehouses = []
+		self._currentwarehouse = -1
 		self._next = None
 		changed.send(sender=self)
 	
-	def setBranch(self, branch):
-		""" Set this item to point to branch. Returns True on success. """
-		for b in range(len(self._branches)):
-			if self._branches[b] == branch:
-				self._currentbranch = b
-				self.next = self._branches[self._currentbranch]
+	def setWarehouse(self, warehouse):
+		""" Set this item to point to warehouse. Returns True on success. """
+		for b in range(len(self._warehouses)):
+			if self._warehouses[b] == warehouse:
+				self._currentwarehouse = b
+				self.next = self._warehouses[self._currentwarehouse]
 				changed.send(sender=self)
 				return True
 		else:
-			print "Didn't find branch!"
+			print "Didn't find warehouse!"
 			return False
 	

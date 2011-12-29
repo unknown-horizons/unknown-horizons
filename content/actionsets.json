@@ -9745,10 +9745,10 @@
    }
   }
  }, 
- "as_branchoffice0": {
+ "as_warehouse0": {
   "idle": {
    "225": {
-    "content/gfx/buildings/sailors/branchoffice/as_branchoffice0/idle/225/0.png": [
+    "content/gfx/buildings/sailors/warehouse/as_warehouse0/idle/225/0.png": [
      0.5, 
      10, 
      192, 
@@ -9758,7 +9758,7 @@
     ]
    }, 
    "315": {
-    "content/gfx/buildings/sailors/branchoffice/as_branchoffice0/idle/315/0.png": [
+    "content/gfx/buildings/sailors/warehouse/as_warehouse0/idle/315/0.png": [
      0.5, 
      10, 
      384, 
@@ -9768,7 +9768,7 @@
     ]
    }, 
    "45": {
-    "content/gfx/buildings/sailors/branchoffice/as_branchoffice0/idle/45/0.png": [
+    "content/gfx/buildings/sailors/warehouse/as_warehouse0/idle/45/0.png": [
      0.5, 
      10, 
      576, 
@@ -9778,7 +9778,7 @@
     ]
    }, 
    "135": {
-    "content/gfx/buildings/sailors/branchoffice/as_branchoffice0/idle/135/0.png": [
+    "content/gfx/buildings/sailors/warehouse/as_warehouse0/idle/135/0.png": [
      0.5, 
      10, 
      0, 

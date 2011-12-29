@@ -24,7 +24,7 @@
 import scripts.undomanager as undomanager
 
 print "Testing undomanager:"
-umanager = undomanager.UndoManager(branchedMode=False)
+umanager = undomanager.UndoManager(warehouseedMode=False)
 
 print "--- Testing basic undo/redo ---"
 
@@ -74,8 +74,8 @@ umanager.undo()
 print "Redo"
 umanager.redo()
 
-print "--- Testing branches (without branch mode) ---"
-print "Branch mode:", umanager.getBranchMode()
+print "--- Testing warehouses (without warehouse mode) ---"
+print "Warehouse mode:", umanager.getWarehouseMode()
 
 print "Setting up actions"
 umanager.addAction(newAction("1-1"))
@@ -90,19 +90,19 @@ umanager.addAction(newAction("3-1"))
 umanager.addAction(newAction("3-2"))
 umanager.addAction(newAction("3-3"))
 umanager.undo(3)
-print "Branches", umanager.getBranches()
-print "Next branch"
-umanager.nextBranch()
+print "Warehouses", umanager.getWarehouses()
+print "Next warehouse"
+umanager.nextWarehouse()
 umanager.redo(3)
 umanager.undo(3)
-print "Prev branch"
-umanager.previousBranch()
+print "Prev warehouse"
+umanager.previousWarehouse()
 umanager.redo(3)
 
-print "--- Testing branches (with branch mode) ---"
-print "Activating branch mode:"
-umanager.setBranchMode(True)
-print "Branch mode:", umanager.getBranchMode()
+print "--- Testing warehouses (with warehouse mode) ---"
+print "Activating warehouse mode:"
+umanager.setWarehouseMode(True)
+print "Warehouse mode:", umanager.getWarehouseMode()
 
 print "Setting up actions"
 umanager.addAction(newAction("1-1"))
@@ -117,13 +117,13 @@ umanager.addAction(newAction("3-1"))
 umanager.addAction(newAction("3-2"))
 umanager.addAction(newAction("3-3"))
 umanager.undo(3)
-print "Branches", umanager.getBranches()
-print "Next branch"
-umanager.nextBranch()
+print "Warehouses", umanager.getWarehouses()
+print "Next warehouse"
+umanager.nextWarehouse()
 umanager.redo(3)
 umanager.undo(3)
-print "Prev branch"
-umanager.previousBranch()
+print "Prev warehouse"
+umanager.previousWarehouse()
 umanager.redo(3)
 
 import gc

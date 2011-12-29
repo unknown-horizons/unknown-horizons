@@ -27,6 +27,6 @@ components:
       SlotsStorage:
         slot_sizes: {28: 8, 5: 8}
 - AmbientSoundComponent:
-    soundfiles: [content/audio/sounds/branch_office.ogg]
+    soundfiles: [content/audio/sounds/warehouse.ogg]
 actionsets:
   as_fisherman0: {level: 0}

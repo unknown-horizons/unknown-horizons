@@ -236,7 +236,7 @@ def new_settlement(session, pos=Point(30, 20)):
 	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
 		ship.get_component(StorageComponent).inventory.alter(res, amount)
 
-	building = Build(BUILDINGS.BRANCH_OFFICE_CLASS, pos.x, pos.y, island, ship=ship)(player)
+	building = Build(BUILDINGS.WAREHOUSE_CLASS, pos.x, pos.y, island, ship=ship)(player)
 	assert building, "Could not build warehouse at %s" % pos
 
 	return (building.settlement, island)

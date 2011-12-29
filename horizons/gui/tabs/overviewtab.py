@@ -158,7 +158,7 @@ class ShipOverviewTab(OverviewTab):
 
 		if island_without_player_settlement_found:
 			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build, \
-			                                     BUILDINGS.BRANCH_OFFICE_CLASS, \
+			                                     BUILDINGS.WAREHOUSE_CLASS, \
 			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('found_settlement_bg').set_active()
 			self.widget.child_finder('found_settlement').set_active()
@@ -170,7 +170,7 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('found_settlement').tooltip = tooltip
 
 		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set, self.instance,
-			Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].costs, {}, res_from_ship = True)
+			Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs, {}, res_from_ship = True)
 		events['found_settlement/mouseEntered'] = cb
 
 		cb1 = Callback(self.instance.session.ingame_gui.resourceinfo_set, None) # hides the resource status widget

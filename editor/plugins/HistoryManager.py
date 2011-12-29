@@ -52,14 +52,14 @@ class HistoryManager(plugin.Plugin):
 		self._show_action = Action(u"History manager", checkable=True)
 		self._undo_action = Action(u"Undo", "gui/icons/undo.png")
 		self._redo_action = Action(u"Redo", "gui/icons/redo.png")
-		self._next_action = Action(u"Next branch", "gui/icons/next_branch.png")
-		self._prev_action = Action(u"Previous branch", "gui/icons/previous_branch.png")
+		self._next_action = Action(u"Next warehouse", "gui/icons/next_warehouse.png")
+		self._prev_action = Action(u"Previous warehouse", "gui/icons/previous_warehouse.png")
 		
 		self._show_action.helptext = u"Toggle HistoryManager"
 		self._undo_action.helptext = u"Undo action   (CTRL+Z)"
 		self._redo_action.helptext = u"Redo action   (CTRL+SHIFT+Z)"
-		self._next_action.helptext = u"Next branch   (CTRL+ALT+Z"
-		self._prev_action.helptext = u"Previous branch   (CTRL+ALT+SHIFT+Z)"
+		self._next_action.helptext = u"Next warehouse   (CTRL+ALT+Z"
+		self._prev_action.helptext = u"Previous warehouse   (CTRL+ALT+SHIFT+Z)"
 		
 		scripts.gui.action.activated.connect(self.toggle, sender=self._show_action)
 		scripts.gui.action.activated.connect(self._undo, sender=self._undo_action)
@@ -167,28 +167,28 @@ class HistoryManager(plugin.Plugin):
 		if stackitem == undomanager.current_item:
 			return
 		
-		if undomanager.getBranchMode() is False:
+		if undomanager.getWarehouseMode() is False:
 			self._linearUndo(stackitem)
 			return
 		
 		searchlist = []
 		searchlist2 = []
 		parent = stackitem
-		branch = parent.next
+		warehouse = parent.next
 		while parent is not None:
-			if parent is undomanager.first_item or len(parent._branches) > 1:
-				searchlist.append( (parent, branch) )
-			branch = parent
+			if parent is undomanager.first_item or len(parent._warehouses) > 1:
+				searchlist.append( (parent, warehouse) )
+			warehouse = parent
 			parent = parent.parent
 		
 		current_item = undomanager.current_item
 		
 		parent = current_item
-		branch = parent.next
+		warehouse = parent.next
 		while parent is not None:
-			if parent is undomanager.first_item or len(parent._branches) > 1:
-				searchlist2.append( (parent, branch) )
-			branch = parent
+			if parent is undomanager.first_item or len(parent._warehouses) > 1:
+				searchlist2.append( (parent, warehouse) )
+			warehouse = parent
 			parent = parent.parent
 			
 		searchlist.reverse()
@@ -219,10 +219,10 @@ class HistoryManager(plugin.Plugin):
 			print "Nada (undo)"
 			return
 				
-		# Switch branches
+		# Switch warehouses
 		for s_item in searchlist:
-			 if s_item[0].setBranch(s_item[1]) is False:
-				print "Warning: HistoryManager: Switching branch failed for: ", s_item
+			 if s_item[0].setWarehouse(s_item[1]) is False:
+				print "Warning: HistoryManager: Switching warehouse failed for: ", s_item
 			 
 		# Redo to stackitem
 		item = current_item
@@ -240,10 +240,10 @@ class HistoryManager(plugin.Plugin):
 		self.update()
 		
 		
-	def recursiveUpdate(self, item, indention, parent=None, branchstr="-"):
+	def recursiveUpdate(self, item, indention, parent=None, warehousestr="-"):
 		items = []
 		
-		branchnr = 0
+		warehousenr = 0
 		
 		class _ListItem:
 			def __init__(self, str, item, parent):
@@ -255,20 +255,20 @@ class HistoryManager(plugin.Plugin):
 				return self.str.encode("utf-8")
 		
 		while item is not None:
-			listitem = _ListItem(u" "*indention + branchstr + " " + item.object.name, item, parent)
+			listitem = _ListItem(u" "*indention + warehousestr + " " + item.object.name, item, parent)
 			items.append(listitem)
-			branchnr = -1
+			warehousenr = -1
 			
-			for branch in item.getBranches():
-				branchnr += 1
-				if branchnr == 0:
+			for warehouse in item.getWarehouses():
+				warehousenr += 1
+				if warehousenr == 0:
 					continue
 					
-				items.extend(self.recursiveUpdate(branch, indention+2, listitem, str(branchnr)))
+				items.extend(self.recursiveUpdate(warehouse, indention+2, listitem, str(warehousenr)))
 			
-			if self.undomanager.getBranchMode():
-				if len(item._branches) > 0:
-					item = item._branches[0]
+			if self.undomanager.getWarehouseMode():
+				if len(item._warehouses) > 0:
+					item = item._warehouses[0]
 				else:
 					break
 			else: item = item.next
@@ -314,11 +314,11 @@ class HistoryManager(plugin.Plugin):
 		
 	def _next(self):
 		if self.undomanager:
-			self.undomanager.nextBranch()
+			self.undomanager.nextWarehouse()
 		
 	def _prev(self):
 		if self.undomanager:
-			self.undomanager.previousBranch()
+			self.undomanager.previousWarehouse()
 		
 	def toggle(self):
 		if self.gui.isVisible() or self.gui.isDocked():

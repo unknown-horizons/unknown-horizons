@@ -40,7 +40,7 @@ class GOAL_RESULT:
 class BUILDING_PURPOSE:
 	NONE = 1
 	RESERVED = 2
-	BRANCH_OFFICE = 3
+	WAREHOUSE = 3
 	ROAD = 4
 	FISHER = 5
 	LUMBERJACK = 6
@@ -74,7 +74,7 @@ class BUILDING_PURPOSE:
 
 	@classmethod
 	def init_translation(cls):
-		cls.purpose_to_building[cls.BRANCH_OFFICE] = BUILDINGS.BRANCH_OFFICE_CLASS
+		cls.purpose_to_building[cls.WAREHOUSE] = BUILDINGS.WAREHOUSE_CLASS
 		cls.purpose_to_building[cls.ROAD] = BUILDINGS.TRAIL_CLASS
 		cls.purpose_to_building[cls.FISHER] = BUILDINGS.FISHERMAN_CLASS
 		cls.purpose_to_building[cls.LUMBERJACK] = BUILDINGS.LUMBERJACK_CLASS

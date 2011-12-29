@@ -207,7 +207,7 @@ class BuildingTool(NavigationTool):
 				self.buildings_action_set_ids[i] = action_set_id
 
 
-			if self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS:
+			if self._class.id == BUILDINGS.WAREHOUSE_CLASS:
 				settlement = self.session.world.get_settlement(building.position.center())
 			else:
 				# Player shouldn't be allowed to build in this case, else it can trigger
@@ -333,7 +333,7 @@ class BuildingTool(NavigationTool):
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
 
 			# check how to continue: either build again or escape
-			if not self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS and (evt.isShiftPressed() or \
+			if not self._class.id == BUILDINGS.WAREHOUSE_CLASS and (evt.isShiftPressed() or \
 						                                                horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
 						                                                not found_buildable or self._class.class_package == 'path'):
 				self.startPoint = point

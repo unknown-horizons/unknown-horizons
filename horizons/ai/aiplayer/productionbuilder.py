@@ -61,7 +61,7 @@ class ProductionBuilder(AreaBuilder):
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
 		for x, y in settlement_manager.settlement.warehouse.position.tuple_iter():
-			self.register_change(x, y, BUILDING_PURPOSE.BRANCH_OFFICE, None)
+			self.register_change(x, y, BUILDING_PURPOSE.WAREHOUSE, None)
 		self._refresh_unused_fields()
 
 	def __init(self, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road):
@@ -383,7 +383,7 @@ class ProductionBuilder(AreaBuilder):
 			if coords not in self.plan:
 				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
 
-	collector_building_classes = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]
+	collector_building_classes = [BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS]
 	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS, BUILDINGS.TOBACCO_FIELD_CLASS]
 	production_building_classes = set([BUILDINGS.FISHERMAN_CLASS, BUILDINGS.LUMBERJACK_CLASS, BUILDINGS.FARM_CLASS, BUILDINGS.CLAY_PIT_CLASS,
 		BUILDINGS.BRICKYARD_CLASS, BUILDINGS.WEAVER_CLASS, BUILDINGS.DISTILLERY_CLASS, BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SMELTERY_CLASS,
