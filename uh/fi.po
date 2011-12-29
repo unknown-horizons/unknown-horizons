@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-28 15:08+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-29 22:42+0200\n"
+"Last-Translator: alluk. <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -900,7 +900,7 @@ msgstr "Virhe!"
 
 #: horizons/gui/gui.py:571
 msgid "Failed to delete savefile!"
-msgstr "Tallennusta ei voitu poistaa!"
+msgstr "Tallennuksen poistaminen epäonnistui!"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -926,30 +926,31 @@ msgstr "Moninpeli vaatii toimiakseen kirjaston \"pyenet\", jota ei ole asennettu
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr "Linuxin käyttäjät: Yritä asentaa pyenet paketinhallinnallasi."
+msgstr "Linuxin käyttäjät: Yritä asentaa \"pyenet\" paketinhallinnallasi."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
-"Windowsin käyttäjät: Tällä hetkellä emme tarjoa tukea tälle ominaisuudelle "
-"Windowsissa."
+"Windowsin käyttäjät: Tällä hetkellä emme tue tätä ominaisuutta Windowsissa."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
-msgstr "Virhe yritettäessä ottaa verkkoa käyttöön."
+msgstr "Virhe verkon käyttöön ottamisessa."
 
 #: horizons/gui/modules/multiplayermenu.py:101
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Vakava verkkovirhe"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Isäntäpalvelimeen ei voitu muodostaa yhteyttä."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Tarkista Internet-yhteys. Jos se toimii, isäntäpalvelimellamme on "
+"väliaikainen ongelma."
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:124
@@ -963,17 +964,17 @@ msgstr "Versio ei ole sama!"
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Kartta: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Pelaajat: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:176
-#, python-format
+#, python-format, fuzzy
 msgid "Creator: {player}"
-msgstr ""
+msgstr "Tekijä: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
@@ -997,7 +998,7 @@ msgstr "Pelaajien suositeltu määrä: {number}"
 #: horizons/gui/widgets/choose_next_scenario.py:43
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Vaikeustaso: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
@@ -1011,7 +1012,7 @@ msgstr ""
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Kuvaus: {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "Invalid player name"
@@ -1073,7 +1074,7 @@ msgstr "Rakenna"
 
 #: horizons/gui/mousetools/navigationtool.py:68
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Piilota tämä vihje painamalla H"
 
 #: horizons/gui/tabs/boatbuildertab.py:42
 msgid "Boat builder overview"
@@ -1081,7 +1082,7 @@ msgstr "Veneenveistämön yleiskatsaus"
 
 #: horizons/gui/tabs/boatbuildertab.py:91
 msgid "(place in queue: {place})"
-msgstr ""
+msgstr "(paikka jonossa: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:152
 msgid "Resources still needed:"
@@ -1197,7 +1198,7 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:154
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "Tällä saarella on jo yksi siirtokunnistasi."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:162 horizons/i18n/guitranslations.py:592
@@ -1208,7 +1209,7 @@ msgstr "Rakenna asutuskeskus"
 # 91%
 #: horizons/gui/tabs/overviewtab.py:186
 msgid "Load/Unload"
-msgstr "Ota kyytiin/pois"
+msgstr "Lastaa/Pura"
 
 # 88%
 #: horizons/gui/tabs/overviewtab.py:189
@@ -1264,9 +1265,9 @@ msgid "There is nothing written in your logbook yet!"
 msgstr "Päiväkirjaasi ei ole kirjoitettu vielä mitään!"
 
 #: horizons/gui/widgets/playerssettlements.py:42
-#, python-format
+#, python-format, fuzzy
 msgid "settlements of {player}"
-msgstr ""
+msgstr "pelaajan {player} siirtokunnat"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1277,7 +1278,7 @@ msgstr "Yhteensä"
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "ships of {player}"
-msgstr ""
+msgstr "pelaajan {player} alukset"
 
 # 75%
 #. i18n There are no weapons equipped at the moment.
@@ -1308,11 +1309,11 @@ msgstr "Lopeta reitti"
 
 #: horizons/gui/widgets/routeconfig.py:127
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "Lisää siirtokunta reittipisteeksi napsauttamalla sitä!"
 
 #: horizons/gui/widgets/routeconfig.py:255
 msgid "Select a resource:"
-msgstr ""
+msgstr "Valitse resurssit:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -1383,9 +1384,8 @@ msgstr "Varasto: laajentaa valikoimaa ja tarjoaa kerääjiä."
 # 89%
 #. (tooltip of widget: street-1)
 #: horizons/i18n/guitranslations.py:69
-#, fuzzy
 msgid "Trail (R): Needed for collecting goods."
-msgstr "Polku: Vaaditaan tavaroiden keräämiselle."
+msgstr "Polku (R): Vaaditaan tavaroiden keräämiselle."
 
 #. (text of widget: fields_label)
 #: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:113
@@ -1447,8 +1447,9 @@ msgstr ""
 
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:102
+#, fuzzy
 msgid "Wooden tower: Defends your settlement."
-msgstr ""
+msgstr "Puutorni: Puolustaa siirtokuntaasi."
 
 #. (tooltip of widget: villageschool-1)
 #: horizons/i18n/guitranslations.py:104
@@ -1483,9 +1484,8 @@ msgstr "Karjalauma: Tarvitsee maatilan."
 # 76%
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:125
-#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards to charcoal."
-msgstr "Puuhiilen polttopaikka: Polttaa paljon lautoja."
+msgstr "Puuhiilenpolttaja: Polttaa lautoja puuhiileksi."
 
 #. (tooltip of widget: iron-mine-1)
 #: horizons/i18n/guitranslations.py:127
@@ -1570,12 +1570,12 @@ msgstr "Vaihda siirtokuntasi nimeä napsauttamalla tätä."
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:171
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Rakennusvalikko (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:173
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Tuhoa (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:175
@@ -1585,42 +1585,37 @@ msgstr "Diplomatia"
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:177
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Pelivalikko (Esc)"
 
 # 76%
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:179
-#, fuzzy
 msgid "Captain's log (L)"
-msgstr "Kapteenin päiväkirja"
+msgstr "Kapteenin päiväkirja (L)"
 
 # 87%
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:181
-#, fuzzy
 msgid "Rotate map counterclockwise (,)"
-msgstr "Käännä karttaa vastapäivään"
+msgstr "Käännä karttaa vastapäivään (,)"
 
 # 83%
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:183
-#, fuzzy
 msgid "Rotate map clockwise (.)"
-msgstr "Käännä karttaa myötäpäivään"
+msgstr "Käännä karttaa myötäpäivään (.)"
 
 # 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
-#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Hidasta pelin nopeutta"
+msgstr "Hidasta pelin nopeutta (-)"
 
-# 82%
+# 82
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Kiihdytä pelin nopeutta"
+msgstr "Kiihdytä pelin nopeutta (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -1701,12 +1696,12 @@ msgstr ""
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:232
 msgid "Save map"
-msgstr ""
+msgstr "Tallenna kartta"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:234
 msgid "Save the map"
-msgstr ""
+msgstr "Tallenna kartta"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:239
@@ -1794,7 +1789,7 @@ msgstr ""
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
 msgid "Cannons"
-msgstr ""
+msgstr "Tykkiä"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:298
@@ -1814,7 +1809,7 @@ msgstr "Osta tai myy"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:304
 msgid "Trade history"
-msgstr ""
+msgstr "Kauppahistoria"
 
 #. (text of widget: sell_label)
 #: horizons/i18n/guitranslations.py:306
@@ -2210,7 +2205,7 @@ msgstr "Pelitulokset"
 #. (text of widget: land_score)
 #: horizons/i18n/guitranslations.py:675
 msgid "Land"
-msgstr ""
+msgstr "Maa"
 
 # 80%
 #. (text of widget: player_name)
@@ -2454,7 +2449,7 @@ msgstr "Jatka peliä"
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:815
 msgid "Loading ..."
-msgstr "Ladataan ..."
+msgstr "Ladataan..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:822
@@ -2678,7 +2673,7 @@ msgstr "Palauta oletusasetukset"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:938
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Pura laivan lasti automaattisesti:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:940
@@ -2693,7 +2688,7 @@ msgstr ""
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:944
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Käännä pikkukarttaa pääkarttaa käännettäessä:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:946
@@ -2955,9 +2950,8 @@ msgstr "Olet tämän tämän kentän."
 
 # 75%
 #: horizons/scenario/actions.py:76
-#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr "Haluatko jatkaa?"
+msgstr "Haluatko jatkaa pelaamista?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171
@@ -3001,11 +2995,11 @@ msgstr ""
 
 #: horizons/spsession.py:167
 msgid "Access is denied"
-msgstr ""
+msgstr "Pääsy estetty"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "Tallennustiedostolle on vain lukuoikeudet."
 
 #: horizons/spsession.py:171
 msgid "File used by another process"
@@ -3018,11 +3012,11 @@ msgstr "Tallennustiedosto on tällä hetkellä toisen ohjelman käytössä."
 #: horizons/util/uhdbaccessor.py:164
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Kauppakumppanisi ei myy tätä."
 
 #: horizons/world/tradepost.py:162
 msgid "You can not store this."
@@ -3069,27 +3063,27 @@ msgstr ""
 #: horizons/world/units/ship.py:492
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Menossa kohteeseen {location}"
 
 #: horizons/world/units/ship.py:494
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Menossa kohteeseen {x}, {y}"
 
 #: horizons/world/units/ship.py:499
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Paikallaan kohteessa {location}"
 
 #: horizons/world/units/ship.py:501
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Paikallaan kohteessa {x}, {y}"
 
 #: horizons/world/units/weaponholder.py:440
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Hyökätään kohteeseen {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:445
 #, python-format
