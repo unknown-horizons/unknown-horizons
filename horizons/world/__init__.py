@@ -733,11 +733,11 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		for island in self.islands:
 			for settlement in island.settlements:
-				bo = settlement.warehouse
+				warehouse = settlement.warehouse
 				if (radius is None or position is None or \
-				    bo.position.distance(position) <= radius) and \
-				   (owner is None or bo.owner == owner or include_friendly):
-					warehouses.append(bo)
+				    warehouse.position.distance(position) <= radius) and \
+				   (owner is None or warehouse.owner == owner or include_friendly):
+					warehouses.append(warehouse)
 		return warehouses
 
 	@decorators.make_constants()

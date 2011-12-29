@@ -85,8 +85,8 @@ class ShipRoute(object):
 	def remove_from_resource_list(self, position, res_id):
 		self.waypoints[position]['resource_list'].pop(res_id)
 
-	def on_route_bo_reached(self):
-		"""Transfer resources, wait if necessary and move to next bo when possible"""
+	def on_route_warehouse_reached(self):
+		"""Transfer resources, wait if necessary and move to next warehouse when possible"""
 		warehouse = self.get_location()['warehouse']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
 
@@ -103,10 +103,10 @@ class ShipRoute(object):
 		   (not status.settlement_provides_enough_res and self.wait_at_load):
 			self.current_transfer = status.remaining_transfers
 			# retry
-			Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)
+			Scheduler().add_new_object(self.on_route_warehouse_reached, self, GAME_SPEED.TICKS_PER_SECOND)
 		else:
 			self.current_transfer = None
-			self.move_to_next_route_bo()
+			self.move_to_next_route_warehouse()
 
 	def _transer_resources(self, settlement, resource_list):
 		"""Transfers resources to/from settlement according to list.
@@ -168,20 +168,20 @@ class ShipRoute(object):
 
 	def on_ship_blocked(self):
 		# the ship was blocked while it was already moving so try again
-		self.move_to_next_route_bo(advance_waypoint = False)
+		self.move_to_next_route_warehouse(advance_waypoint = False)
 
-	def move_to_next_route_bo(self, advance_waypoint = True):
+	def move_to_next_route_warehouse(self, advance_waypoint = True):
 		next_destination = self.get_next_destination(advance_waypoint)
 		if next_destination == None:
 			return
 
 		warehouse = next_destination['warehouse']
 		if self.ship.position.distance_to_point(warehouse.position.center()) <= self.ship.radius:
-			self.on_route_bo_reached()
+			self.on_route_warehouse_reached()
 			return
 
 		try:
-			self.ship.move(Circle(warehouse.position.center(), self.ship.radius), self.on_route_bo_reached,
+			self.ship.move(Circle(warehouse.position.center(), self.ship.radius), self.on_route_warehouse_reached,
 						   blocked_callback = self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds
@@ -211,7 +211,7 @@ class ShipRoute(object):
 		if not self.can_enable():
 			return False
 		self.enabled = True
-		self.move_to_next_route_bo()
+		self.move_to_next_route_warehouse()
 		return True
 
 	def disable(self):
@@ -249,7 +249,7 @@ class ShipRoute(object):
 		for res, amount in db("SELECT res, amount FROM ship_route_current_transfer WHERE ship_id = ?", self.ship.worldid):
 			waiting = True
 			self.current_transfer[res] = amount
-			Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)
+			Scheduler().add_new_object(self.on_route_warehouse_reached, self, GAME_SPEED.TICKS_PER_SECOND)
 
 		if enabled and not waiting:
 			self.current_waypoint -= 1

@@ -143,23 +143,23 @@ class Trader(GenericAI):
 		self.log.debug("Trader %s ship %s found signal fire %s", self.worldid, ship.worldid, signal_fire)
 		# search a warehouse in the range of the signal fire and move to it
 		warehouses = self.session.world.get_warehouses()
-		for bo in warehouses:
-			if bo.position.distance(signal_fire.position) <= signal_fire.radius and \
-			   bo.owner == signal_fire.owner:
-				self.log.debug("Trader %s moving to bo %s", self.worldid, bo)
+		for house in warehouses:
+			if house.position.distance(signal_fire.position) <= signal_fire.radius and \
+			   house.owner == signal_fire.owner:
+				self.log.debug("Trader %s moving to house %s", self.worldid, house)
 				self.allured_by_signal_fire[ship] = True
 				# HACK: remove allured flag in a few ticks
 				def rem_allured(self, ship): self.allured_by_signal_fire[ship] = False
 				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, Scheduler().get_ticks(60))
-				self.send_ship_random_warehouse(ship, bo)
+				self.send_ship_random_warehouse(ship, house)
 				return
-		self.log.debug("Trader can't find bo in range of the signal fire")
+		self.log.debug("Trader can't find warehouse in range of signal fire")
 
 	def send_ship_random_warehouse(self, ship, warehouse=None):
 		"""Sends a ship to a random warehouse on the map
 		@param ship: Ship instance that is to be used
 		@param warehouse: warehouse instance to move to. Random one is selected on None."""
-		self.log.debug("Trader %s ship %s moving to bo (random=%s)", self.worldid, ship.worldid, \
+		self.log.debug("Trader %s ship %s moving to warehouse (random=%s)", self.worldid, ship.worldid, \
 		               (warehouse is None))
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		warehouses = self.session.world.get_warehouses()
@@ -173,7 +173,7 @@ class Trader(GenericAI):
 				self.office[ship.worldid] = warehouses[rand]
 			else:
 				self.office[ship.worldid] = warehouse
-			# try to find a possible position near the bo
+			# try to find a possible position near the warehouse
 
 			if self.office[ship.worldid] == None:
 				# DEBUG output for http://trac.unknown-horizons.org/t/ticket/958
@@ -192,7 +192,7 @@ class Trader(GenericAI):
 	def reached_warehouse(self, ship):
 		"""Actions that need to be taken when reaching a warehouse
 		@param ship: ship instance"""
-		self.log.debug("Trader %s ship %s: reached bo", self.worldid, ship.worldid)
+		self.log.debug("Trader %s ship %s: reached warehouse", self.worldid, ship.worldid)
 		settlement = self.office[ship.worldid].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
 		trade_comp = settlement.get_component(TradePostComponent)
@@ -230,7 +230,7 @@ class Trader(GenericAI):
 		@param ship: ship instance"""
 		if self.session.random.randint(0, 100) < TRADER.BUSINESS_SENSE:
 			# delay one tick, to allow old movement calls to completely finish
-			self.log.debug("Trader %s ship %s: idle, moving to random bo", self.worldid, ship.worldid)
+			self.log.debug("Trader %s ship %s: idle, moving to random warehouse", self.worldid, ship.worldid)
 			Scheduler().add_new_object(Callback(self.send_ship_random_warehouse, ship), self, run_in=0)
 		else:
 			self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)

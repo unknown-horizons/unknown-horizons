@@ -55,7 +55,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = {}
-		self.warehouse = None # this is set later in the same tick by the bo itself or load() here
+		self.warehouse = None # this is set later in the same tick by the warehouse itself or load() here
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
 

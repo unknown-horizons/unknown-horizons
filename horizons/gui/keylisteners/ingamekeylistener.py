@@ -116,7 +116,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 				for b in buildings_weakref:
 					if b().id == 17: continue
-					if b().id == 1: continue # bo is unremovable
+					if b().id == 1: continue # warehouse is unremovable
 
 					#if b().id != 2: continue # test storage now
 

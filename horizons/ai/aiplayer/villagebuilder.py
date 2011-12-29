@@ -95,12 +95,12 @@ class VillageBuilder(AreaBuilder):
 
 	def _get_village_section_coordinates(self, start_x, start_y, width, height):
 		"""Return set([(x, y), ...]) of usable coordinates in the rectangle defined by the parameters."""
-		bo_coords_set = set(self.land_manager.settlement.warehouse.position.tuple_iter())
+		warehouse_coords_set = set(self.land_manager.settlement.warehouse.position.tuple_iter())
 		result = set()
 		for dx in xrange(width):
 			for dy in xrange(height):
 				coords = (start_x + dx, start_y + dy)
-				if coords in self.land_manager.village and self.land_manager.coords_usable(coords) and coords not in bo_coords_set:
+				if coords in self.land_manager.village and self.land_manager.coords_usable(coords) and coords not in warehouse_coords_set:
 					result.add(coords)
 		return result
 

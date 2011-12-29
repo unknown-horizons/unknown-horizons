@@ -519,19 +519,19 @@ class Minimap(object):
 		if force or \
 		   (not hasattr(self, "_last_settlements") or cur_settlements != self._last_settlements):
 			# update necessary
-			bo_img = self.imagemanager.load( self.__class__.WAREHOUSE_IMAGE )
-			bo_render_name = self._get_render_name("warehouse")
-			self.minimap_image.rendertarget.removeAll( bo_render_name )
-			# scale bo icons
+			warehouse_img = self.imagemanager.load( self.__class__.WAREHOUSE_IMAGE )
+			warehouse_render_name = self._get_render_name("warehouse")
+			self.minimap_image.rendertarget.removeAll( warehouse_render_name )
+			# scale warehouse icons
 			ratio = sum(self._get_world_to_minimap_ratio()) / 2.0
 			ratio = max(1.0, ratio)
-			new_width, new_height = int(bo_img.getWidth()/ratio), int(bo_img.getHeight()/ratio)
+			new_width, new_height = int(warehouse_img.getWidth()/ratio), int(warehouse_img.getHeight()/ratio)
 			for settlement in settlements:
 				coord = settlement.warehouse.position.center().to_tuple()
 				coord = self._world_to_minimap(coord, use_rotation)
 				point = fife.Point( coord[0], coord[1] )
-				self.minimap_image.rendertarget.resizeImage(bo_render_name, point, bo_img,
-					                                          new_width, new_height)
+				self.minimap_image.rendertarget.resizeImage(warehouse_render_name, point,
+				                                            warehouse_img, new_width, new_height)
 			self._last_settlements = cur_settlements
 
 

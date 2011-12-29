@@ -43,8 +43,8 @@ class RouteConfig(object):
 	def __init__(self, instance):
 		self.instance = instance
 
-		offices = instance.session.world.get_warehouses()
-		self.warehouses = dict([('%s (%s)' % (bo.settlement.get_component(NamedComponent).name, bo.owner.name), bo) for bo in offices])
+		warehouses = instance.session.world.get_warehouses()
+		self.warehouses = dict([('%s (%s)' % (w.settlement.get_component(NamedComponent).name, w.owner.name), w) for w in warehouses])
 		if not hasattr(instance, 'route'):
 			instance.create_route()
 
@@ -325,7 +325,7 @@ class RouteConfig(object):
 		entry = load_uh_widget("route_entry.xml")
 		self.widgets.append(entry)
 
-		settlement_name_label = entry.findChild(name = "bo_name")
+		settlement_name_label = entry.findChild(name = "warehouse_name")
 		settlement_name_label.text = unicode(warehouse.settlement.get_component(NamedComponent).name)
 		player_name_label = entry.findChild(name = "player_name")
 		player_name_label.text = unicode(warehouse.owner.name)
@@ -345,14 +345,14 @@ class RouteConfig(object):
 			index += 1
 
 		entry.mapEvents({
-		  'delete_bo/mouseClicked' : Callback(self.remove_entry, entry),
+		  'delete_warehouse/mouseClicked' : Callback(self.remove_entry, entry),
 		  'move_up/mouseClicked' : Callback(self.move_entry, entry, 'up'),
 		  'move_down/mouseClicked' : Callback(self.move_entry, entry, 'down')
 		  })
 		vbox.addChild(entry)
 
-	def append_bo(self, warehouse):
-		"""Add a bo to the list on the left side.
+	def append_warehouse(self, warehouse):
+		"""Add a warehouse to the list on the left side.
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
@@ -388,7 +388,7 @@ class RouteConfig(object):
 				map_coord = event.map_coord
 				tile = self.session.world.get_tile(Point(*map_coord))
 				if tile is not None and tile.settlement is not None:
-					self.append_bo( tile.settlement.warehouse )
+					self.append_warehouse( tile.settlement.warehouse )
 
 		self.minimap = Minimap(icon, self.session, \
 		                       horizons.main.fife.targetrenderer,

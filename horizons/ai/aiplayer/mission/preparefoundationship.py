@@ -62,18 +62,18 @@ class PrepareFoundationShip(ShipMission):
 			WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
-			self.ship.add_move_callback(Callback(self._reached_bo_area))
-			self.ship.add_blocked_callback(Callback(self._move_to_bo_area))
+			self.ship.add_move_callback(Callback(self._reached_warehouse_area))
+			self.ship.add_blocked_callback(Callback(self._move_to_warehouse_area))
 		else:
 			assert False, 'invalid state'
 
 	def start(self):
 		self.state = self.missionStates.moving
-		self._move_to_bo_area()
+		self._move_to_warehouse_area()
 
-	def _move_to_bo_area(self):
-		self._move_to_warehouse_area(self.warehouse.position, Callback(self._reached_bo_area), \
-			Callback(self._move_to_bo_area), 'Move not possible')
+	def _move_to_warehouse_area(self):
+		self._move_to_warehouse_area(self.warehouse.position, Callback(self._reached_warehouse_area), \
+			Callback(self._move_to_warehouse_area), 'Move not possible')
 
 	def _load_foundation_resources(self):
 		personality = self.owner.personality_manager.get('SettlementFounder')
@@ -85,7 +85,7 @@ class PrepareFoundationShip(ShipMission):
 		for resource_id, max_amount in max_amounts.iteritems():
 			self.move_resource(self.ship, self.settlement_manager.settlement, resource_id, self.ship.get_component(StorageComponent).inventory[resource_id] - max_amount)
 
-	def _reached_bo_area(self):
+	def _reached_warehouse_area(self):
 		self.log.info('%s reached BO area', self)
 		self._load_foundation_resources()
 

@@ -144,12 +144,12 @@ def set_translations():
 	"buildtab_no_settlement.xml" : {
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Game start")),
-		# (text of widget: howto_1_need_bo)
-		"howto_1_need_bo"             : ("text"    , _("You need to found a settlement before you can construct buildings!")),
+		# (text of widget: howto_1_need_warehouse)
+		"howto_1_need_warehouse"      : ("text"    , _("You need to found a settlement before you can construct buildings!")),
 		# (text of widget: howto_2_navigate_ship)
 		"howto_2_navigate_ship"       : ("text"    , _("Select your ship and approach the coast via right-click.")),
-		# (text of widget: howto_3_build_bo)
-		"howto_3_build_bo"            : ("text"    , _("Afterwards, press the large button in the ship overview tab.")),
+		# (text of widget: howto_3_build_warehouse)
+		"howto_3_build_warehouse"     : ("text"    , _("Afterwards, press the large button in the ship overview tab.")),
 		},
 
 	"place_building.xml" : {
@@ -620,8 +620,8 @@ def set_translations():
 		},
 
 	"route_entry.xml" : {
-		# (tooltip of widget: delete_bo) Trade route entry
-		"delete_bo"                   : ("tooltip" , _("Delete entry")),
+		# (tooltip of widget: delete_warehouse) Trade route entry
+		"delete_warehouse"            : ("tooltip" , _("Delete entry")),
 		# (tooltip of widget: move_down) Trade route entry
 		"move_down"                   : ("tooltip" , _("Move down")),
 		# (tooltip of widget: move_up) Trade route entry
