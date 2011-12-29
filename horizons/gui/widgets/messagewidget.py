@@ -98,6 +98,9 @@ class MessageWidget(LivingObject):
 			# play default msg sound
 			AmbientSoundComponent.play_special('message')
 
+		if message.x is not None and message.y is not None:
+			self.session.ingame_gui.minimap.highlight( (message.x, message.y) )
+
 		self.draw_widget()
 		self.show_text(0)
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
@@ -123,8 +126,12 @@ class MessageWidget(LivingObject):
 				}
 				if message.x is not None and message.y is not None:
 					# move camera to source of event on click, if there is a source
-					events[button.name] = Callback( \
-						self.session.view.center, message.x, message.y)
+					callback = Callback.ChainedCallbacks(
+					  Callback(self.session.view.center, message.x, message.y),
+					  Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
+					)
+					events[button.name] = callback
+
 				button.mapEvents(events)
 				button_space.addChild(button)
 		button_space.resizeToContent()

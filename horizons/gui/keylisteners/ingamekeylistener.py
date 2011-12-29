@@ -186,6 +186,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()
+		_Actions = KeyConfig._Actions
 		action = KeyConfig().translate(evt)
 		try:
 			self.keysPressed.remove(keyval)
