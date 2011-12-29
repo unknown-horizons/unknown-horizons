@@ -74,17 +74,17 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 			return
 
 		action = KeyConfig().translate(evt)
-		_Acions = KeyConfig._Actions
+		_Actions = KeyConfig._Actions
 
-		if action == _Acions.ESCAPE:
+		if action == _Actions.ESCAPE:
 			self.gui.on_escape()
 			evt.consume()
-		elif action == _Acions.CONSOLE:
+		elif action == _Actions.CONSOLE:
 			horizons.main.fife.console.toggleShowHide()
 			evt.consume()
-		elif action == _Acions.HELP:
+		elif action == _Actions.HELP:
 			self.gui.on_help()
-		elif action == _Acions.SCREENSHOT:
+		elif action == _Actions.SCREENSHOT:
 			screenshotfilename = os.path.join(PATHS.SCREENSHOT_DIR,
 			            string.replace(datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
 
@@ -98,7 +98,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 				# ingame message if there is a session
 				self.gui.session.ingame_gui.message_widget.add(None, None, 'SCREENSHOT', \
 																													{'file': screenshotfilename})
-		elif action == _Acions.QUICKLOAD:
+		elif action == _Actions.QUICKLOAD:
 			from horizons.main import _load_last_quicksave
 			_load_last_quicksave()
 
