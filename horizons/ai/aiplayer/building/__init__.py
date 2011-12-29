@@ -146,7 +146,7 @@ class AbstractBuilding(object):
 	@property
 	def evaluator_class(self):
 		"""Return the relevant BuildingEvaluator subclass."""
-		raise NotImplementedError, 'This function has to be overridden.'
+		raise NotImplementedError('This function has to be overridden.')
 
 	@property
 	def directly_buildable(self):

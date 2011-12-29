@@ -39,7 +39,7 @@ class Const(object):
 		"""Disallow changing an already set attribute, as an asymptote to const behaviour,
 		which is not supported by python"""
 		if name in self.__dict__:
-			raise Exception, "Can't change a ConstRect"
+			raise Exception("Can't change a ConstRect")
 		super(Const, self).__setattr__(name, value)
 
 def parse_port(port, allow_zero=False):

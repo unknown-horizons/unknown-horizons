@@ -147,7 +147,7 @@ class BuildingEvaluator(WorldObject):
 	@property
 	def purpose(self):
 		"""Return the BUILDING_PURPOSE constant relevant to the builder."""
-		raise NotImplementedError, 'This function has to be overridden.'
+		raise NotImplementedError('This function has to be overridden.')
 
 	def have_resources(self):
 		"""Return None if the builder is unreachable by road, False if there are not enough resources, and True otherwise."""

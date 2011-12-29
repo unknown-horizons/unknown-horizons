@@ -64,9 +64,9 @@ def int_to_roman(input):
 	MCMXCIX
 	"""
 	if type(input) != type(1):
-		raise TypeError, "expected integer, got %s" % type(input)
+		raise TypeError("expected integer, got %s" % type(input))
 	if not 0 < input < 4000:
-		raise ValueError, "Argument must be between 1 and 3999"
+		raise ValueError("Argument must be between 1 and 3999")
 	ints = (1000, 900,  500, 400, 100,  90, 50,  40, 10,  9,   5,  4,   1)
 	nums = ('M',  'CM', 'D', 'CD','C', 'XC','L','XL','X','IX','V','IV','I')
 	result = ""
@@ -105,14 +105,14 @@ def roman_to_int(input):
 	ValueError: input is not a valid roman numeral: IL
 	"""
 	if type(input) != type(""):
-		raise TypeError, "expected string, got %s" % type(input)
+		raise TypeError("expected string, got %s" % type(input))
 	input = input.upper()
 	nums = ['M', 'D', 'C', 'L', 'X', 'V', 'I']
 	ints = [1000, 500, 100, 50,  10,  5,   1]
 	places = []
 	for c in input:
 		if not c in nums:
-			raise ValueError, "input is not a valid roman numeral: %s" % input
+			raise ValueError("input is not a valid roman numeral: %s" % input)
 	for i in range(len(input)):
 		c = input[i]
 		value = ints[nums.index(c)]
@@ -131,4 +131,4 @@ def roman_to_int(input):
 	if int_to_roman(sum) == input:
 		return sum
 	else:
-		raise ValueError, 'input is not a valid roman numeral: %s' % input
+		raise ValueError('input is not a valid roman numeral: %s' % input)

@@ -87,16 +87,16 @@ class Plugin:
 	""" The base class for all plugins. All plugins should override these functions. """
 
 	def enable(self):
-		raise NotImplementedError, "Plugin has not implemented the enable() function!"
+		raise NotImplementedError("Plugin has not implemented the enable() function!")
 
 	def disable(self):
-		raise NotImplementedError, "Plugin has not implemented the disable() function!"
+		raise NotImplementedError("Plugin has not implemented the disable() function!")
 
 	def isEnabled(self):
-		raise NotImplementedError, "Plugin has not implemented the isEnabled() function!"
+		raise NotImplementedError("Plugin has not implemented the isEnabled() function!")
 
 	def getName(self):
-		raise NotImplementedError, "Plugin has not implemented the getName() function!"
+		raise NotImplementedError("Plugin has not implemented the getName() function!")
 
 	#--- These are not so important ---#
 	def getAuthor(self):

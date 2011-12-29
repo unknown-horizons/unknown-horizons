@@ -309,7 +309,7 @@ class AreaBuilder(WorldObject):
 
 	def display(self):
 		"""Show the plan on the map unless it is disabled in the settings."""
-		raise NotImplementedError, 'This function has to be overridden.'
+		raise NotImplementedError('This function has to be overridden.')
 
 	def _init_cache(self):
 		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area.""" 

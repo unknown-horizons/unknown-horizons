@@ -43,7 +43,7 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 
 	@classmethod
 	def get_higher_level_building_id(cls):
-		raise NotImplementedError, 'This function has to be overridden.'
+		raise NotImplementedError('This function has to be overridden.')
 
 	@classmethod
 	def load(cls, db, building_id):
