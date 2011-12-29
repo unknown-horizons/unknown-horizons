@@ -17,10 +17,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Pootle 2.1.5\n"
 
+# 78%
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "{player} založil novou osadu"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
