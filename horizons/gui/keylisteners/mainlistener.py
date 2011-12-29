@@ -28,6 +28,7 @@ import os.path
 
 import horizons.main
 
+from horizons.gui.keylisteners import KeyConfig
 from horizons.util.living import LivingObject
 from horizons.constants import PATHS
 
@@ -71,17 +72,19 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 	def keyPressed(self, evt):
 		if evt.isConsumed():
 			return
-		keyval = evt.getKey().getValue()
-		keystr = evt.getKey().getAsString().lower()
-		if keyval == fife.Key.ESCAPE:
+
+		action = KeyConfig().translate(evt)
+		_Acions = KeyConfig._Actions
+
+		if action == _Acions.ESCAPE:
 			self.gui.on_escape()
 			evt.consume()
-		elif keyval == fife.Key.F10:
+		elif action == _Acions.CONSOLE:
 			horizons.main.fife.console.toggleShowHide()
 			evt.consume()
-		elif keyval == fife.Key.F1:
+		elif action == _Acions.HELP:
 			self.gui.on_help()
-		elif keystr == 's':
+		elif action == _Acions.SCREENSHOT:
 			screenshotfilename = os.path.join(PATHS.SCREENSHOT_DIR,
 			            string.replace(datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
 
@@ -95,7 +98,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 				# ingame message if there is a session
 				self.gui.session.ingame_gui.message_widget.add(None, None, 'SCREENSHOT', \
 																													{'file': screenshotfilename})
-		elif keyval == fife.Key.F9:
+		elif action == _Acions.QUICKLOAD:
 			from horizons.main import _load_last_quicksave
 			_load_last_quicksave()
 

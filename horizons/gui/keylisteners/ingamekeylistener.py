@@ -23,14 +23,7 @@ from fife import fife
 import horizons.main
 
 from horizons.util.living import LivingObject
-
-class _Actions(object):
-	"""Internal data"""
-	GRID, COORD_TOOLTIP, DESTROY_TOOL, PLAYERS_OVERVIEW, ROAD_TOOL, SPEED_UP, SPEED_DOWN, \
-	PAUSE, SETTLEMENTS_OVERVIEW, SHIPS_OVERVIEW, LOGBOOK, BUILD_TOOL, ROTATE_RIGHT, \
-	ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, SAVE_MAP, \
-	PIPETTE, HEALTH_BAR, ESCAPE, LEFT, RIGHT, UP, DOWN, DEBUG = \
-	range(28)
+from horizons.gui.keylisteners import KeyConfig
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
@@ -40,7 +33,6 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
-		self.keyconfig = KeyConfig()
 		horizons.main.fife.eventmanager.addKeyListenerFront(self)
 		self.keysPressed = []
 		# Used to sum up the keyboard autoscrolling
@@ -54,7 +46,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
-		action = self.keyconfig.translate(evt)
+		action = KeyConfig().translate(evt)
+
+		_Actions = KeyConfig._Actions
 
 		was = keyval in self.keysPressed
 		if not was:
@@ -192,7 +186,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()
-		action = self.keyconfig.translate(evt)
+		action = KeyConfig().translate(evt)
 		try:
 			self.keysPressed.remove(keyval)
 		except:
@@ -205,66 +199,3 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.key_scroll[1] = 0
 		self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
 
-
-class KeyConfig(object):
-	"""Class for storing key bindings.
-	The central function is translate().
-	"""
-	def __init__(self):
-		self.keystring_mappings = {
-		  "g" : _Actions.GRID,
-		  "h" : _Actions.COORD_TOOLTIP,
-		  "x" : _Actions.DESTROY_TOOL,
-		  "r" : _Actions.ROAD_TOOL,
-		  "+" : _Actions.SPEED_UP,
-		  "=" : _Actions.SPEED_UP,
-		  "-" : _Actions.SPEED_DOWN,
-		  "p" : _Actions.PAUSE,
-		  "l" : _Actions.LOGBOOK,
-		  "b" : _Actions.BUILD_TOOL,
-		  "." : _Actions.ROTATE_RIGHT,
-		  "," : _Actions.ROTATE_LEFT,
-		  "c" : _Actions.CHAT,
-		  "t" : _Actions.TRANSLUCENCY,
-		  "a" : _Actions.TILE_OWNER_HIGHLIGHT,
-		  "o" : _Actions.PIPETTE,
-		  "k" : _Actions.HEALTH_BAR,
-		  "d" : _Actions.DEBUG,
-		}
-		self.keyval_mappings = {
-			fife.Key.ESCAPE: _Actions.ESCAPE,
-			fife.Key.LEFT: _Actions.LEFT,
-			fife.Key.RIGHT: _Actions.RIGHT,
-			fife.Key.UP: _Actions.UP,
-			fife.Key.DOWN: _Actions.DOWN,
-			fife.Key.F2 : _Actions.PLAYERS_OVERVIEW,
-			fife.Key.F3 : _Actions.SETTLEMENTS_OVERVIEW,
-			fife.Key.F4 : _Actions.SHIPS_OVERVIEW,
-			fife.Key.F5 : _Actions.QUICKSAVE,
-			fife.Key.F9 : _Actions.QUICKLOAD,
-			fife.Key.F12 : _Actions.SAVE_MAP,
-		}
-		self.requires_shift = set( (
-		  _Actions.SAVE_MAP,
-		) )
-
-	def translate(self, evt):
-		"""
-		@param evt: fife.Event
-		@return pseudo-enum IngameKeyListener.Action
-		"""
-		keyval = evt.getKey().getValue()
-		keystr = evt.getKey().getAsString().lower()
-
-		action = None
-		if keystr in self.keystring_mappings:
-			action = self.keystring_mappings[keystr]
-		elif keyval in self.keyval_mappings:
-			action = self.keyval_mappings[keyval]
-
-		if action is None:
-			return None
-		elif action in self.requires_shift and not evt.isShiftPressed():
-			return None
-		else:
-			return action # all checks passed

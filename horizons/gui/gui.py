@@ -31,7 +31,7 @@ import horizons.main
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
-from horizons.gui.keylisteners.ingamekeylistener import KeyConfig, _Actions
+from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.util import Callback
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.gui import LazyWidgetsDict
@@ -576,7 +576,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		else: # player cancelled deletion
 			return False
 
-def build_help_strings(widgets, keyconfig=KeyConfig()):
+def build_help_strings(widgets):
 	"""
 	Loads the help strings from pychan object widgets (containing no key definitions)
 	and adds 	the keys defined in the keyconfig configuration object in front of them.
@@ -586,10 +586,10 @@ def build_help_strings(widgets, keyconfig=KeyConfig()):
 	HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
 
 	#HACK Ugliness starts; load actions defined through keys and map them to FIFE key strings
-	actions = _Actions.__dict__
+	actions = KeyConfig._Actions.__dict__
 	reversed_keys = dict([[str(v),k] for k,v in fife.Key.__dict__.iteritems()])
-	reversed_stringmap = dict([[str(v),k] for k,v in keyconfig.keystring_mappings.iteritems()])
-	reversed_keyvalmap = dict([[str(v), reversed_keys[str(k)]] for k,v in keyconfig.keyval_mappings.iteritems()])
+	reversed_stringmap = dict([[str(v),k] for k,v in KeyConfig().keystring_mappings.iteritems()])
+	reversed_keyvalmap = dict([[str(v), reversed_keys[str(k)]] for k,v in KeyConfig().keyval_mappings.iteritems()])
 	actionmap = dict(reversed_stringmap, **reversed_keyvalmap)
 	#HACK Ugliness ends here; These hacks can be removed once a config file exists which is nice to parse.
 
