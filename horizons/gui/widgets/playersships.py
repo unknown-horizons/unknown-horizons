@@ -28,6 +28,7 @@ from horizons.util import Callback
 from horizons.util.python import decorators
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""
@@ -47,7 +48,7 @@ class PlayersShips(StatsWidget):
 
 		sequence_number = 0
 		events = {}
-		for ship in sorted(self.session.world.ships, key = lambda ship: (ship.name, ship.worldid)):
+		for ship in sorted(self.session.world.ships, key = lambda ship: (ship.get_component(NamedComponent).name, ship.worldid)):
 			if ship.owner is player and ship.is_selectable:
 				sequence_number += 1
 				name_label, status_label, status_position = self._add_line_to_gui(ship, sequence_number)
@@ -68,7 +69,7 @@ class PlayersShips(StatsWidget):
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
 		ship_name = widgets.Label(name = 'ship_name_%d' % ship.worldid)
-		ship_name.text = unicode(ship.name)
+		ship_name.text = unicode(ship.get_component(NamedComponent).name)
 		ship_name.min_size = ship_name.max_size = (110, 20)
 
 		ship_type = widgets.Label(name = 'ship_type_%d' % ship.worldid)
