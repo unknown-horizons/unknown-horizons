@@ -27,6 +27,7 @@ from horizons.entities import Entities
 from horizons.constants import GAME_SPEED, RES
 from horizons.util.python import decorators
 from horizons.world.production.productionline import ProductionLine
+from horizons.world.production.producer import Producer
 
 class AbstractBuilding(object):
 	"""
@@ -38,7 +39,7 @@ class AbstractBuilding(object):
 
 	log = logging.getLogger("ai.aiplayer.building")
 
-	def __init__(self, building_id, name, settler_level, production_line_ids):
+	def __init__(self, building_id, name, settler_level):
 		super(AbstractBuilding, self).__init__()
 		self.id = building_id
 		self.name = name
@@ -49,14 +50,18 @@ class AbstractBuilding(object):
 		self.radius = Entities.buildings[building_id].radius
 		self.lines = {} # output_resource_id: ProductionLine
 		if self.producer_building:
-			for production_line_id in production_line_ids:
-				production_line = ProductionLine(production_line_id)
-				assert len(production_line.produced_res) == 1
-				self.lines[production_line.produced_res.keys()[0]] = production_line
+			self.init_production_lines()
 
 	__loaded = False
 	buildings = {} # building_id: AbstractBuilding instance
 	_available_buildings = {} # building_id: subclass of AbstractBuilding
+
+	def init_production_lines(self):
+		production_lines = Entities.buildings[self.id].get_component_template(Producer.NAME)['productionlines']
+		for key, value in production_lines.iteritems():
+			production_line = ProductionLine(key, value)
+			assert len(production_line.produced_res) == 1
+			self.lines[production_line.produced_res.keys()[0]] = production_line
 
 	@classmethod
 	def load_all(cls, db):
@@ -69,11 +74,6 @@ class AbstractBuilding(object):
 		cls.__loaded = True
 
 	@classmethod
-	def _load_production_line_ids(cls, db, building_id):
-		db_result = db("SELECT id FROM production_line WHERE object_id = ? AND enabled_by_default = 1", building_id)
-		return [id for (id,) in db_result]
-
-	@classmethod
 	def _load_name(cls, db, building_id):
 		return db("SELECT name FROM building WHERE id = ?", building_id)[0][0]
 
@@ -83,10 +83,9 @@ class AbstractBuilding(object):
 
 	@classmethod
 	def load(cls, db, building_id):
-		production_line_ids = cls._load_production_line_ids(db, building_id)
 		name = cls._load_name(db, building_id)
 		settler_level = cls._load_settler_level(db, building_id)
-		return cls(building_id, name, settler_level, production_line_ids)
+		return cls(building_id, name, settler_level)
 
 	monthly_gold_cost = 50
 	resource_cost = {RES.GOLD_ID: 1, RES.BOARDS_ID: 20, RES.BRICKS_ID: 45, RES.TOOLS_ID: 50}

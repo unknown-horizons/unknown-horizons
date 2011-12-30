@@ -28,6 +28,8 @@ import horizons.main
 from fife import fife
 
 from horizons.util import ActionSetLoader
+from horizons.entities import Entities
+from horizons.world.production.producer import Producer
 
 class BuildingClass(type):
 	"""Class that is used to create Building-Classes from the database.

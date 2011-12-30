@@ -133,3 +133,14 @@ class ComponentHolder(object):
 			return self.components[name]
 		else:
 			return None
+
+	@classmethod
+	def get_component_template(cls, component_name):
+		"""Returns the component template data given a component NAME"""
+		for entry in cls.component_templates:
+			if isinstance(entry, dict):
+				for key, value in entry.iteritems():
+					if cls.class_mapping[key].NAME == component_name:
+						return value
+		raise KeyError("This class does not contain a component with name: " + component_name)
+
