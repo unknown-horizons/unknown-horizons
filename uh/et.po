@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-19 03:03+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-30 22:36+0200\n"
+"Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -192,7 +192,7 @@ msgstr "Soola tiigid"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Ekraanitõmmis on salvestatud faili {file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -306,7 +306,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Sa vajad rohkem {resource} selle ehitise ehitamiseks."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -327,7 +327,7 @@ msgstr "Sinu mäng on kiirsalvestatud."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Sinu elanikud saavutasid {level}. taseme."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -641,15 +641,17 @@ msgstr "vill"
 msgid "yellow"
 msgstr "kollane"
 
+# üle kontrollida mängus
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr ""
+msgstr "{player1} ja {player2}  on nüüd {status}"
 
 #: horizons/command/misc.py:30
 #, python-format
 msgid "{name}: {chatmessage}"
-msgstr ""
+msgstr "{name}: {chatmessage}"
 
 #: horizons/engine.py:71
 msgid "Restart required"
@@ -690,7 +692,7 @@ msgstr ""
 #: horizons/engine.py:304
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "Seadistatud keelt {lang} ei õnnestunud laadida"
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
@@ -1070,7 +1072,7 @@ msgstr "Paadiehitaja ülevaade"
 
 #: horizons/gui/tabs/boatbuildertab.py:91
 msgid "(place in queue: {place})"
-msgstr ""
+msgstr "(koht järjekorras: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:152
 msgid "Resources still needed:"
@@ -1215,7 +1217,7 @@ msgstr "Kaubalaevale ei saa paigaldada relvastust"
 
 #: horizons/gui/tabs/overviewtab.py:205
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr "Kaubalaevale relvastuse paigaldamine on võimatu."
+msgstr "Kaubalaevale relvastuse paigaldamine ei ole võimalik."
 
 #: horizons/gui/tabs/overviewtab.py:239
 msgid "Equip weapon"
@@ -1299,7 +1301,7 @@ msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:255
 msgid "Select a resource:"
-msgstr ""
+msgstr "Vali ressurss:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -2590,7 +2592,7 @@ msgstr "Keel"
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:912
 msgid "Network"
-msgstr ""
+msgstr "Võrk"
 
 #. (text of widget: headline_saving)
 #: horizons/i18n/guitranslations.py:914
@@ -2668,7 +2670,7 @@ msgstr ""
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:946
 msgid "Network port:"
-msgstr ""
+msgstr "Võrgu port:"
 
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:948
@@ -2733,7 +2735,7 @@ msgstr ""
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:977
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Kustuta valitud salvestatud mäng"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:982
@@ -2783,27 +2785,27 @@ msgstr "Vali mängimiseks kaart:"
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:1013
 msgid "Map settings:"
-msgstr ""
+msgstr "Kaardi seaded:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1023
 msgid "AI players:"
-msgstr ""
+msgstr "TI mängijad:"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:1028
 msgid "Game settings:"
-msgstr ""
+msgstr "Mängu seaded:"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1030
 msgid "Free Trader"
-msgstr ""
+msgstr "Vaba kaupleja"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1032
 msgid "Pirates"
-msgstr ""
+msgstr "Piraadid"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:1037
@@ -2825,22 +2827,24 @@ msgstr ""
 
 #: horizons/main.py:252
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Mängu alustamine/laadimine ebaõnnestus"
 
 #: horizons/main.py:253
+#, fuzzy
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "Sinu valitud mängu ei õnnestunud alustada."
 
 #: horizons/main.py:254
+#, fuzzy
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
+msgstr "Salvestatud mäng võib olla vigane või salvestatud eelneva versiooniga."
 
 # 75%
 #: horizons/main.py:356
 #, python-format
 #, python-format,
 msgid "Error: Cannot find map '{name}'."
-msgstr "Viga: Ei leita kaarti \"{name}\"."
+msgstr "Viga: Ei leita kaarti '{name}'."
 
 # 96%
 #: horizons/main.py:359 horizons/main.py:439
@@ -2967,44 +2971,47 @@ msgstr ""
 
 #: horizons/spsession.py:167
 msgid "Access is denied"
-msgstr ""
+msgstr "Ligipääs puudub"
 
 #: horizons/spsession.py:168
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "Salvestatud mängu fail on arvatavasti kirjutuskaitstud."
 
 #: horizons/spsession.py:171
+#, fuzzy
 msgid "File used by another process"
-msgstr ""
+msgstr "Faili kasutab teine protsess."
 
 #: horizons/spsession.py:172
+#, fuzzy
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "Salvestatud mängu faili kasutab parasjagu teine programm."
 
 #: horizons/util/uhdbaccessor.py:164
-#, python-format
+#, python-format, fuzzy
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Kaubanduspartner ei müü seda."
 
 #: horizons/world/tradepost.py:162
 msgid "You can not store this."
 msgstr ""
 
 #: horizons/world/tradepost.py:169
+#, fuzzy
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Sa ei saa endale seda võimaldada."
 
 #: horizons/world/tradepost.py:178
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Kaubanduspartner ei müü seda rohkem."
 
 #: horizons/world/tradepost.py:198
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "Kaubanduspartner ei osta seda."
 
 #: horizons/world/tradepost.py:209
 msgid "You do not possess this."
