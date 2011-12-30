@@ -477,7 +477,7 @@ def preload_game_data(lock):
 		                      #TileSetLoader.load, -- this is not needed now, but will be for the new tile system
 		                      Callback(Entities.load_grounds, mydb, load_now=True), \
 		                      Callback(Entities.load_buildings, mydb, load_now=True), \
-		                      Callback(Entities.load_units, mydb, load_now=True) ]
+		                      Callback(Entities.load_units, load_now=True) ]
 		for f in preload_functions:
 			if not lock.acquire(False):
 				break
