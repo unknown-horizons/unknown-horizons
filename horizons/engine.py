@@ -585,7 +585,7 @@ class Fife(ApplicationBase):
 	def run(self):
 		"""
 		"""
-		self.init()
+		assert self._gotInited
 		self.__setup_screen_resolutions()
 		self.engine.initializePumping()
 		self.loop()
