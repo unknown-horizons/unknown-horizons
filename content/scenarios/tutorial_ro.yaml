@@ -10,8 +10,8 @@ description: "Practica:\nStabile\u0219te o colonie \u0219i \xEEnva\u021B\u0103 c
 difficulty: "Practic\u0103"
 events:
 - actions:
-  - arguments: ["Construie\u0219te o sucursal\u0103 pe coast\u0103. A\u0219a va fi\
-        \ accesibil\u0103 c\u0103tre alte nave ca negustorul independent."]
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
   - arguments: ["Bine a\u021Bi venit la Unknown Horizons!", "Acesta este jurnalul\
         \ de bord unde toate informa\u021Biile importante sunt \xEEnregistrate. O\
@@ -25,16 +25,28 @@ events:
         \ ne contacta\u021Bi.\n\nVizita\u021Bi www.unknown-horizons.org pentru detalii.\n\
         \n\u0218i acum, s\u0103 \xEEncepem s\u0103 ne juc\u0103m."]
     type: logbook_w
-  - arguments: ["SARCIN\u0102: COLONIZEAZ\u0102 O INSUL\u0102", "Pentru a muta nava,\
-        \ selec\u021Biona\u021Bi-o cu clic st\xE2nga \u0219i clic dreapta la destina\u021B\
-        ia unde o dori\u021Bi.\n\nC\xE2nd sunte\u021Bi \xEEn apropierea coastei, butonul\
-        \ \xEEn form\u0103 de ancor\u0103 din panou va deveni activ.\n\nAcesta indic\u0103\
-        \ posibilitate construirii unei sucursale prin ap\u0103sarea butonului \u201E\
-        creare colonie\u201D.\n\nAcum o vizionare a cl\u0103dirii este mobil\u0103\
-        \ cu cursorul.\n\nPute\u021Bi construi unde aceast\u0103 vizionare nu are\
-        \ nuan\u021B\u0103 ro\u0219iatic\u0103.\nClic unde dori\u021Bi s\u0103 plasa\u021B\
-        i cl\u0103direa.\n\nSARCIN\u0102: construi\u021Bi o sucursal\u0103 pe coast\u0103\
-        .", 2]
+  - arguments: ["SARCIN\u0102: COLONIZEAZ\u0102 O INSUL\u0102", !!python/unicode 'To
+        move your ship, select it with a left click and right click on the location
+        you want it to go to.
+
+
+        Once you are near the coast, the anchor-like button you see in the overview
+        tab will become active.
+
+
+        This indicates that you are able to build a branch office there by pressing
+        that button (called ''Build Settlement'').
+
+
+        Now a preview of your building is dragged around when you move the cursor.
+
+
+        You can build on any spot where this preview is not shaded red.
+
+        Click where you want to place your first building.
+
+
+        TASK: Build a branch office at the coast.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var

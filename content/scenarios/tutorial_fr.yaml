@@ -10,8 +10,8 @@ description: "Didacticiel:\n\xC9tablissez votre premi\xE8re colonie et apprenez 
 difficulty: !!python/unicode 'Didacticiel'
 events:
 - actions:
-  - arguments: ["Construire un comptoir sur la c\xF4te, ainsi il sera facilement accessible\
-        \ aux autres navires comme ceux du Marchant Ind\xE9pendant."]
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
   - arguments: [!!python/unicode 'Bienvenue dans Unknown Horizons !', "Voici votre\
         \ journal de bord o\xF9 sont enregistr\xE9es toutes les informations importantes.\
@@ -26,16 +26,28 @@ events:
         \ pour savoir comment contacter l'\xE9quipe!\n\nEt maintenant, commen\xE7\
         ons \xE0 jouer."]
     type: logbook_w
-  - arguments: ["MISSION: COLONISER UNE \xCELE", "Pour d\xE9placer votre bateau, s\xE9\
-        lectionnez le par un clic gauche et faites un clic droit sur la destination\
-        \ de votre choix.\n\nUne fois que vous \xEAtes pr\xE8s de la c\xF4te, le bouton\
-        \ en forme d'ancre du panneau deviendra actif.\n\nCela signifie que vous \xEA\
-        tes alors capable de construire un comptoir ici en cliquant sur ce bouton\
-        \ (nomm\xE9 \xABConstruire la colonie\xBB).\n\nMaintenant, un aper\xE7u de\
-        \ votre comptoir devrait suivre votre curseur.\n\nVous pouvez construire aux\
-        \ endroits o\xF9 cet aper\xE7u n\u2019apparait pas en rouge.\nCliquez \xE0\
-        \ l'endroit o\xF9 vous voulez placer votre premi\xE8re construction.\n\nMISSION:\
-        \ Construire un comptoir sur la c\xF4te.", 2]
+  - arguments: ["MISSION: COLONISER UNE \xCELE", !!python/unicode 'To move your ship,
+        select it with a left click and right click on the location you want it to
+        go to.
+
+
+        Once you are near the coast, the anchor-like button you see in the overview
+        tab will become active.
+
+
+        This indicates that you are able to build a branch office there by pressing
+        that button (called ''Build Settlement'').
+
+
+        Now a preview of your building is dragged around when you move the cursor.
+
+
+        You can build on any spot where this preview is not shaded red.
+
+        Click where you want to place your first building.
+
+
+        TASK: Build a branch office at the coast.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -55,19 +67,33 @@ events:
         \ au premier niveau (niveau des marins) et ne sont donc propos\xE9s que les\
         \ b\xE2timents de base."]
     type: logbook_w
-  - arguments: ['', "Plus votre civilisation avancera et plus vous pourrez construire\
-        \ de b\xE2timents complexes.\n\nMaintenant construisez un camp de bucheron\
-        \ dans une zone bois\xE9e.\n\nVous pourrez aussi planter des arbres plus tard\
-        \ - mais cela vous coutera de l'argent. Utilisez ce que la nature vous offre!\n\
-        \nUne entreprise n\xE9cessite une route menant \xE0 un d\xE9p\xF4t ou un comptoir,\
-        \ autrement les biens produits y resteront et ne seront pas collect\xE9s.\n\
-        \nVous devez donc construire un sentier entre votre comptoir (ou votre d\xE9\
-        p\xF4t) et votre bucheron.\n\nMISSION: Installez un bucheron dans une zone\
-        \ bois\xE9e et connectez le \xE0 une route.\n\nRegardez-le produire vos premi\xE8\
-        res planches."]
+  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
+        more and more complex buildings.
+
+
+        For now, select the lumberjack under ''Companies'' and build it in an area
+        with some trees around.
+
+
+        You can also plant trees later - but that costs money. Use what nature provided
+        you with!
+
+
+        A company always needs a trail connection to a storage or branch office, otherwise
+        goods will remain at the company and not be collected.
+
+
+        This means that you have to build a trail connecting your branch office (or
+        storage) and lumberjack.
+
+
+        TASK: Build a lumberjack in a wooded area and connect it to a road.
+
+
+        Watch how a collector will fetch your first self-produced boards.']
     type: logbook
-  - arguments: ["Construisez un campement de bucheron et connectez le \xE0 votre comptoir\
-        \ par une route."]
+  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
+        office using a trail.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -88,23 +114,33 @@ events:
         \ gens (et surtout les marins) ont toujours faim.\n\nAu premier niveau vous\
         \ disposez du Chasseur et du P\xEAcheur.\n\nLe chasseur chasse le gibier dans\
         \ la for\xEAt et a donc besoin de bois autour de lui.\n\nNotez que vous pouvez\
-        \ le placer \xE0 cot\xE9 de la for\xEAt du bucheron.\n\nIl peut arriver que\
-        \ le gibier ne se reproduise pas assez rapidement ou qu'il soit bien cach\xE9\
+        \ le placer \xE0 cot\xE9 de la for\xEAt du b\xFBcheron.\n\nIl peut arriver\
+        \ que le gibier ne se reproduise pas assez rapidement ou qu'il soit bien cach\xE9\
         ...\n\nConclusion: le chasseur n'est pas tr\xE8s fiable si vous avez besoin\
         \ d'un approvisionnement constant."]
     type: logbook_w
-  - arguments: ['', "Le p\xEAcheur a besoin d'un b\xE2timent c\xF4tier et d'un banc\
-        \ de poisson \xE0 proximit\xE9.\n\nIl construira un petit bateau \xE0 rame\
-        \ et ira attraper du poisson.\n\nC'est une source de nourriture tr\xE8s constante\
-        \ mais d'un temps de production par unit\xE9 de nourriture l\xE9g\xE8rement\
-        \ plus long.\n\nUne petite colonie comme la votre peut utiliser ces deux types\
-        \ d'entreprises, et vous pourrez mieux en \xE9valuer les avantages et les\
-        \ inconv\xE9nients en les comparant directement.\n\nMISSION: Construire une\
-        \ hutte de chasseur et une de p\xEAcheur.\n\nEt n'oubliez pas les sentiers\
-        \ les reliant \xE0 votre comptoir!"]
+  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
+        the branch office and a fish school in range.
+
+
+        He will build a small rowing vessel and catch some fish.
+
+
+        This is a very constant supply at the cost of a slightly longer production
+        time per unit of food.
+
+
+        A small settlement like yours can use both companies, and you can better balance
+        pros and cons if you see the direct comparison.
+
+
+        TASK: Build a hunter and a fisher.
+
+
+        Don''t forget to connect them to your branch office with trails!']
     type: logbook
-  - arguments: ["Construisez une cabane de chasseur et une de p\xEAcheur. Connectez\
-        \ les \xE0 votre comptoir."]
+  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
+        branch office.']
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -116,16 +152,27 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION: LA PLACE CENTRALE', "Vos habitants ont\
-        \ besoin d'une place marchande o\xF9 ils trouveront des biens de consommation.\n\
-        \nCela signifie qu'il leur faudra un sentier menant des habitations \xE0 la\
-        \ place centrale.\n\nToutes les marchandises de votre comptoir sont disponibles\
-        \ dans cette \xABplace du march\xE9\xBB, donc vos habitants n'ont pas besoin\
-        \ d'aller chez le p\xEAcheur ou m\xEAme jusqu'au comptoir.\n\nVous devriez\
-        \ fonder votre campement de tentes dans un endroit o\xF9 vous pourrez facilement\
-        \ l'\xE9tendre et y construire des routes.\n\nPar exemple, nous conseillons\
-        \ de ne pas placer vos tentes trop pr\xE8s de vos bucherons, cela d\xE9truirais\
-        \ leurs pr\xE9cieux arbres.\n\nMISSION: Construire une place centrale."]
+  - arguments: [!!python/unicode 'MISSION: LA PLACE CENTRALE', !!python/unicode 'Your
+        residents need a main square where they can fetch their goods from.
+
+
+        This means that they need a trail connection from their home to the main square.
+
+
+        All goods in your branch office are available at this ''market place'', so
+        your residents do not need to walk to the fisher or even to the branch office.
+
+
+        You should consider founding your actual house settlement in an area where
+        you can easily expand it and build some trails, too.
+
+
+        You should avoid placing tents too close to your lumberjacks for example because
+        building tents will clear away the trees that your lumberjack needs to produce
+        boards.
+
+
+        TASK: Build a main square.']
     type: logbook_w
   - arguments: ['', "Maintenant, nous allons regarder de plus pr\xE8s la place centrale.\n\
         \nDans l'onglet \xABCompte\xBB vous obtenez un bilan de cette \xEEle, avec\
@@ -186,7 +233,7 @@ events:
         \ peuvent en avoir vraiment marre, ils tournent alors le dos \xE0 votre village.\n\
         \nNotez que vous pouvez r\xE9gler les taxes ici aussi.\n\nMISSION: Construisez\
         \ au moins 3 tentes suppl\xE9mentaires.\n\nAstuce: Il est plus simple de construire\
-        \ plusieurs b\xE2timents du m\xEAme type en gardant la touche SHIFT enfonc\xE9\
+        \ plusieurs b\xE2timents du m\xEAme type en gardant la touche MAJ enfonc\xE9\
         e."]
     type: logbook
   - arguments: ["Construisez 3 tentes suppl\xE9mentaires et reliez les \xE0 la place\
@@ -202,33 +249,53 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION : LA SIGNALISATION', "Avez-vous remarqu\xE9\
-        \ le navire qui passe de temps en temps devant votre \xEEle? C'est le navire\
-        \ du marchand ind\xE9pendant, l'un des premiers colons de cet archipel.\n\n\
-        Il approvisionne votre colonie en marchandises que vous ne pouvez pas encore\
-        \ produire.\nVous pouvez \xE9galement vendre vos surplus de production, mais\
-        \ en g\xE9n\xE9ral il est plus profitable de les consommer (en constiusant\
-        \ plus de tentes).\n\nNormalement les navire marchands ne font que chercher\
-        \ des marchers \xE0 conclure, mais vous pouvez acc\xE9l\xE9rer les choses\
-        \ und peu.\n\n\xC0 cette fin construisez un phare sur la c\xF4te pr\xE8s de\
-        \ votre comptoir. Il motrera aux navires le chemin vers votre colonie.\n\n\
-        Le phare doit couvrir le territoir \xE0 travers lequel les navires passent\
-        \ pour les guider."]
+  - arguments: [!!python/unicode 'MISSION : LA SIGNALISATION', !!python/unicode 'Can
+        you see the ship passing your island from time to time? That ship belongs
+        to the Free Trader, one of the first settlers in this archipelago.
+
+
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
+
+
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
+
+
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
+
+
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
     type: logbook_w
-  - arguments: ['', "Apr\xE8s cette annonce le marchand fera une escale chez vous\
-        \ pour regarder votre comptoir m\xEAme s'il avait pr\xE9vu de passer tout\
-        \ droit.\n\nVous pouvez faire des offres dans l'onglet \"Achat/Vente\" de\
-        \ votre comptoir. (Cette fonction est malheureusement un peu difficile \xE0\
-        \ utiliser pour le moment. Si vous avez une bonne id\xE9e pour l'am\xE9riorer\
-        \ partagez la avec nous! Nous avons besion de votre aide!)\n\nAu niveau \"\
-        marins\" vous avez trois emplacements de commerce \xE0 votre disposition.\n\
-        \nCliquez sur le petit symbole pour changer le mode der \"Achat\" \xE0 \"\
-        Vente\" et vice versa.\n\nCliquez sur l'emplacement de commerce pour choisir\
-        \ la marchandise que vous voulez vendre ou acheter. Nous expliquerons ce proc\xE9\
-        d\xE9 plus pr\xE9cis\xE9ment lorsque vous serez pr\xE8t \xE0 faire affaire.\n\
-        \nMISSION: \xC9rigez un phare sur la c\xF4te pr\xE8s de votre comptoir."]
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
-  - arguments: ["Construisez un feu de signalisation sur la c\xF4te proche du comptoir."]
+  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
+        office.']
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -240,16 +307,15 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION: COMMERCER', "Excellent! Le bateau-marchand\
-        \ va maintenant s'arr\xEAter \xE0 votre comptoir de temps en temps.\n\nContinuons\
-        \ ce tutoriel et voyons comment commercer.\n\nApr\xE8s avoir s\xE9lectionn\xE9\
-        \ un type de produit, la barre verte le long de l'emplacement (si visible)\
-        \ vous indique le niveau de stock de ce produit.\n\nBouger le curseur d'un\
-        \ emplacement (\xE0 droite) d\xE9termine sa \xABvaleur cible\xBB qui a un\
-        \ sens diff\xE9rent pour \xABacheter\xBB ou \xABvendre\xBB.\nQuand vous achetez,\
-        \ vous allez acheter suffisamment pour atteindre votre \xABvaleur cible\xBB\
-        \ de stock.\nQuand vous vendez, la \xABvaleur cible\xBB est la quantit\xE9\
-        \ de produit que vous voulez garder en r\xE9serve et ne pas vendre"]
+  - arguments: [!!python/unicode 'MISSION: COMMERCER', !!python/unicode "Excellent!\
+        \ The Free Trader will now stop by at your branch office from time to time.\n\
+        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
+        \ type of good, the green bar across the bottom of the slot (if visible) shows\
+        \ you how much you have in stock of this good.\n\nDragging the slider on the\
+        \ right of each slot determines your 'target value' which has a different\
+        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
+        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
+        \ which you hold in reserve to not sell"]
     type: logbook_w
   - arguments: ['', "Par exemple :\nUn emplacement \xABachat\xBB avec 5 tonnes en\
         \ stock et un curseur \xE0 9 provoquera l'achat de 4 tonnes suppl\xE9mentaires.\n\
@@ -290,7 +356,7 @@ events:
     type: logbook_w
   - arguments: ['', "Notez que la foi est trait\xE9 comme un bien physique!\n\nCela\
         \ implique que vos habitants auront besoin d'une connexion routi\xE8re vers\
-        \ le producteur (le pavillon) pour aller y checher de la foi.\n\nAttention:\n\
+        \ le producteur (le pavillon) pour aller y chercher de la foi.\n\nAttention:\n\
         Il n'est PAS suffisant que le b\xE2timent soit simplement dans un certain\
         \ rayon des tentes.\nLa connexion routi\xE8re est \xE9galement requise.\n\n\
         MISSION: \xC9difiez un pavillon avec un sentier vers les tentes pour qu'il\
@@ -326,14 +392,14 @@ events:
         \ des ressources et que vous ne pouvez pas restreindre.\n\nPour certains b\xE2\
         timents, les am\xE9liorations n\xE9cessitent des ressources mais donnent une\
         \ version plus performante du m\xEAme b\xE2timent et il y a des am\xE9liorations\
-        \ qui ne coutent rien, comme par exemple pour les camps de bucheron (ici,\
-        \ c'est juste l'aspect qui changera).\n\nLes logements am\xE9lior\xE9es peuvent\
-        \ h\xE9berger plus d'habitants et, de plus, les pionniers paient plus de taxes\
-        \ que les marins.\n\nComme vous l'avez peut-\xEAtre constat\xE9, le d\xE9\
-        savantage est que les pionniers demandent des biens suppl\xE9mentaires dont\
-        \ les marins n'ont pas besoin - vous devrez donc d\xE9penser cet argent suppl\xE9\
-        mentaire pour les satisfaire aussi.\n\nMISSION: Baissez les taxes (c\xF4t\xE9\
-        \ gauche du r\xE9gleur) et attendez que les marins se d\xE9veloppent."]
+        \ qui ne co\xFBtent rien, comme par exemple pour les camps de b\xFBcheron\
+        \ (ici, c'est juste l'aspect qui changera).\n\nLes logements am\xE9lior\xE9\
+        es peuvent h\xE9berger plus d'habitants et, de plus, les pionniers paient\
+        \ plus de taxes que les marins.\n\nComme vous l'avez peut-\xEAtre constat\xE9\
+        , le d\xE9savantage est que les pionniers demandent des biens suppl\xE9mentaires\
+        \ dont les marins n'ont pas besoin - vous devrez donc d\xE9penser cet argent\
+        \ suppl\xE9mentaire pour les satisfaire aussi.\n\nMISSION: Baissez les taxes\
+        \ (c\xF4t\xE9 gauche du r\xE9gleur) et attendez que les marins se d\xE9veloppent."]
     type: logbook
   - arguments: ["R\xE9glez les taxes sur Bas (c\xF4t\xE9 gauche du r\xE9gleur) et\
         \ attendez que vos marins se d\xE9veloppent."]
@@ -359,17 +425,28 @@ events:
         \ voulez.\n\nLa production d'une ferme d\xE9pend du type de champ que vous\
         \ placez autour d'elle."]
     type: logbook_w
-  - arguments: ['', "Nous regarderons cela de plus pr\xE8s plus tard.\n\nLes fermes,\
-        \ comme tout les b\xE2timents produisant des biens bruts, n'ont pas besoin\
-        \ d'\xEAtre connect\xE9es \xE0 un comptoir ou au stock.\n\nTant qu'une personne\
-        \ de l'entreprise de transformation peut atteindre la ferme et qu'un porteur\
-        \ du comptoir ou d'un d\xE9p\xF4t peut atteindre l'entreprise alors tout ira\
-        \ bien.\n\nCependant si vous pensez affiner ces biens brut sur une autre partie\
-        \ de l'\xEEle ou m\xEAme sur une autre \xEEle, vous devrez les connecter \xE0\
-        \ un d\xE9p\xF4t ou \xE0 un comptoir.\n\nEssayez de construire une ferme,\
-        \ mais pas trop pr\xE8s de la c\xF4te ou d'autres b\xE2timents puisqu'elle\
-        \ aura besoin d'espace autour d'elle pour bien fonctionner.\n\nMISSION: Construisez\
-        \ une ferme."]
+  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
+
+
+        Farms, like all companies producing raw materials, do not necessarily need
+        to be connected to storage or a Branch Office.
+
+
+        As long as units of the final production company can reach the farm, and collectors
+        from the branch office or storage tent can reach the final company everything''s
+        fine.
+
+
+        If you, however, plan to do some processing on different parts of the island
+        (which can make sense) or even on different islands, you will need a connection
+        to collectors.
+
+
+        Try to build the farm not too close to the coast or your existing buildings
+        since it will need some space around it to work well.
+
+
+        TASK: Build a farm.']
     type: logbook
   - arguments: [!!python/unicode 'Construisez une ferme et laissez de l''espace libre
         autour d''elle.']
@@ -384,18 +461,18 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION: CHAMPS', "La ferme elle-m\xEAme ne produira\
-        \ rien sans champs.\n\nPour l'instant vous avez le choix entre des pr\xE9\
-        s, des champs de pommes de terre et des champs de canne \xE0 sucre.\n\nVoyons\
-        \ ce qu'ils produisent:\n* Pr\xE9s: Des moutons vivent ici et produisent de\
-        \ la laine.\n* Champs de pomme de terre: Des pommes de terre y poussent et\
-        \ constituent votre nourriture.\n* Champs de canne \xE0 sucre: De la canne\
+  - arguments: [!!python/unicode 'MISSION: LES CHAMPS', "La ferme elle-m\xEAme ne\
+        \ produira rien sans champs.\n\nPour l'instant vous avez le choix entre des\
+        \ pr\xE9s, des champs de pommes de terre et des champs de canne \xE0 sucre.\n\
+        \nVoyons ce qu'ils produisent:\n* Pr\xE9s: Des moutons vivent ici et produisent\
+        \ de la laine.\n* Champs de pomme de terre: Des pommes de terre y poussent\
+        \ et constituent votre nourriture.\n* Champs de canne \xE0 sucre: De la canne\
         \ \xE0 sucre qui sert \xE0 produire de l'alcool et (plus tard) des confiseries.\n\
         \nPour l'instant nous avons seulement besoin de pr\xE9s mais si vos ressources\
         \ alimentaires ne sont pas suffisantes (beaucoup d'habitations) vous pouvez\
         \ aussi produire des pommes de terre.\n\nNotez que dans le cas des pommes\
         \ de terre vous devrez connecter la ferme (pas les champs!) au r\xE9seau routier\
-        \ puisque c'est la seule entreprise de cette chaine de production."]
+        \ puisque c'est la seule entreprise de cette cha\xEEne de production."]
     type: logbook_w
   - arguments: ['', "Assurez-vous que tous les champs sont dans l'espace couvert par\
         \ la ferme.\n\nVous pouvez combiner vos productions - un champ ne m\xE8nera\
@@ -422,32 +499,40 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: ["MISSION : L'ENTREP\xD4T", "Avez vous observ\xE9 le bucheron r\xE9\
-        cemment?\n\nPuisque votre comptoir n'a qu'une capacit\xE9 limit\xE9, les collecteurs\
-        \ arr\xEAterons d'aller chercher les biens dans les entreprises lorsqu'il\
-        \ sera plein.\nDonc si aucun marin n'a am\xE9lior\xE9 sa tente, vous avez\
-        \ probablement beaucoup de planches et dans ce cas le bucheron est peut-\xEA\
-        tre inactif.\nNous pouvons corriger cette situation par deux approches diff\xE9\
-        rentes que nous allons pr\xE9senter plus bas.\n\nToutes les entreprises offrent\
-        \ la possibilit\xE9 de stopper le travail.\nCela peut paraitre \xE9trange\
-        \ mais essayez de cliquer sur les engrenages que vous voyez par exemple dans\
-        \ le sommaire du bucheron.\n\nSi ce mode \xABpause\xBB est disponible (nous\
-        \ l'appelons \xABd\xE9saffection\xBB), les couts de fonctionnements que vous\
-        \ payez pour le b\xE2timent baisseront. Il ne baisseront pas \xE0 z\xE9ro,\
-        \ mais ils seront d\xE9j\xE0 plus bas que si le b\xE2timent fonctionnait."]
+  - arguments: ["MISSION : L'ENTREP\xD4T", !!python/unicode 'Did you watch your lumberjack
+        recently?
+
+
+        Since your branch office does not have unlimited space to store goods, collectors
+        will stop fetching goods from companies when stock is full.
+
+        So if no sailor recently wanted to upgrade his tent, you probably have a lot
+        of boards and in that case, the lumberjack may idle.
+
+        We can improve this situation with two different approaches, and below we
+        will have a look at both of them.
+
+
+        All companies offer the possibility of doing no work at all.
+
+        This may sound strange, but try to click on the gear wheel you see in, for
+        example, a lumberjack''s overview.
+
+
+        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
+        costs you pay for the building will decrease. They won''t be zero, but still
+        lower than if you keep the company producing.']
     type: logbook_w
-  - arguments: ['', "Cela veut dire que vous pouvez \xE9conomiser de l'argent en d\xE9\
-        sactivant des b\xE2timents que vous ne voulez pas d\xE9truire mais dont vous\
-        \ n'avez pas besoin pour l'instant.\n\nUne autre solution est de construire\
-        \ le dernier b\xE2timent de niveau 1 qui n'a pas encore \xE9t\xE9 mentionn\xE9\
-        \ : l'entrep\xF4t.\n\nCe b\xE2timent a deux fonctions. Il:\n* Offre plus d'espace\
-        \ de stockage pour vos biens et\n* Envoie ses propres collecteurs pour aller\
-        \ chercher des biens tout comme le comptoir le fait.\n\nNotez que les entreprises\
-        \ peuvent \xE9galement \xEAtre connect\xE9es \xE0 un entrep\xF4t \xE0 la place\
-        \ d'un comptoir et si le comptoir est surcharg\xE9 vous pouvez l'aider \xE0\
-        \ tout collecter en construisant un entrep\xF4t.\n\nMISSION: Construisez un\
-        \ entrep\xF4t, de pr\xE9f\xE9rence quelque part o\xF9 vous avez besoin de\
-        \ collecteurs."]
+  - arguments: ['', !!python/unicode "This means that you can save money when you\
+        \ temporarily do not need a company and do not want to tear it down, either.\n\
+        \nAnother solution is to build the last increment-I building which has not\
+        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
+        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
+        \ to fetch goods, just like the branch office does.\n\nNote that companies\
+        \ can also be connected to a storage in order to get their products collected,\
+        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
+        \ where you need collectors."]
     type: logbook
   - arguments: ["Construisez un entrep\xF4t (dans l'onglet niveau I) \xE0 un emplacement\
         \ utile."]
@@ -462,16 +547,23 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'MISSION: LE TISSERAND', "Maintenant la production\
-        \ de laine est lanc\xE9e, mais vous avez besoin d'un tisserand pour produire\
-        \ du tissu \xE0 partir de la laine.\n\nIl y a deux endroits o\xF9 vous pouvez\
-        \ l'installer - ou bien pr\xE8s de la ferme ou bien pr\xE8s d'un entrep\xF4\
-        t (ou du comptoir).\n\nDans les deux cas vous devrez vous assurer qu'il est\
-        \ \xE9galement connect\xE9 \xE0 un sentier.\n\nVous pouvez placer le tisserand\
-        \ pr\xE8s de la ferme et d\xE9truire tous les sentiers qui m\xE8nent \xE0\
-        \ la ferme pour observer qu'il ira chercher la laine directement \xE0 la ferme.\n\
-        \nMISSION: Construisez un tisserand \xE0 un emplacement \xE0 partir duquel\
-        \ il pourra aller chercher de la laine."]
+  - arguments: [!!python/unicode 'MISSION: LE TISSERAND', !!python/unicode 'Now the
+        wool production is set up, you still need a weaver to produce cloth out of
+        this wool.
+
+
+        There are two spots where you can build it - either close to the farm or close
+        to a Storage Tent (or the Branch Office).
+
+
+        In both cases you should ensure the connection to a trail as well.
+
+
+        You can place the weaver close to the farm and tear down any trail to the
+        farm to see that it will still fetch the wool and produce.
+
+
+        TASK: Build a weaver positioned so it can get wool.']
     type: logbook
   - arguments: ["Installer un tisserand qui pourra acc\xE9der \xE0 la laine de votre\
         \ ferme."]
