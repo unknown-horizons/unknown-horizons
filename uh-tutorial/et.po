@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-11 18:18+0200\n"
-"Last-Translator: ussikene <ussikene@gmail.com>\n"
+"PO-Revision-Date: 2011-12-30 22:45+0200\n"
+"Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -250,7 +250,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:34
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "ÜLESANNE: PEAVÄLJAK"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:36
@@ -354,7 +354,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:52
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "ÜLESANNE: EHITA SIGNAALTULI"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -406,7 +406,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:60
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "ÜLESANNE: ÕPI KAUPLEMA"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
@@ -460,7 +460,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:70
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "ÜLESANNE: EHITA PAVILJON"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:72
@@ -562,7 +562,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:86
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "ÜLESANNE: EHITA FARM"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
