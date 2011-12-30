@@ -19,8 +19,8 @@ TL_NOT_SHIPPING=(en-suggest) # languages that will never end up in UH (helpers)
 # better numbers than included languages.  statistics are always printed,
 # regardless of whether the language was considered INCOMPLETE or not.
 # languages that would show up if more strings are translated:
-TL_INCOMPLETE=( af  el  gl  ko  tr  vi  zh_CN )
-TL_TUT_INCOMPLETE=( af  ca@valencia  el  gl  hr  ko  lt  nb  sl  tr  vi  zh_CN )
+TL_INCOMPLETE=( af  el  ga  gl  id  ko  lv  sr  th  tr  vi  zh_CN  zu )
+TL_TUT_INCOMPLETE=( af  ca@valencia  el  ga  gl  id  ko  lt  lv  nb  sl  sr  th  tr  vi  zh_CN  zu )
 ###############################################################################
 
 function build_ungrep {
