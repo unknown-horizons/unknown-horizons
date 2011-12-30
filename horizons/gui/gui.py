@@ -509,7 +509,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					os.unlink(filename)
 
 			# savegamedetails
-			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
+			details_label = pychan.widgets.Label(min_size=(290, 0), max_size=(290, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
