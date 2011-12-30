@@ -139,13 +139,12 @@ class NavigationTool(CursorTool):
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
-		point = self._get_world_location_from_event(evt)
-		self.session.view.zoom_in(point)
+		self.session.view.zoom_in(True)
 		evt.consume()
 
 	# move down mouse wheel = zoom out
 	def mouseWheelMovedDown(self, evt):
-		self.session.view.zoom_out()
+		self.session.view.zoom_out(True)
 		evt.consume()
 
 	def onCommand(self, command):
