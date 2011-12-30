@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 18:15+0200\n"
-"Last-Translator: ZukinZIn <michaelts@rambler.ru>\n"
+"PO-Revision-Date: 2011-12-30 08:20+0200\n"
+"Last-Translator: Torv <PLAAATONNN@narod.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -1253,7 +1253,7 @@ msgstr "В вашем логи ещё нет записей!"
 #: horizons/gui/widgets/playerssettlements.py:42
 #, python-format
 msgid "settlements of {player}"
-msgstr ""
+msgstr "поселение игрока {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1264,7 +1264,7 @@ msgstr "Всего"
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "ships of {player}"
-msgstr ""
+msgstr "корабли игрока {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
@@ -1291,7 +1291,7 @@ msgstr "Остановить маршрут"
 
 #: horizons/gui/widgets/routeconfig.py:127
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "Нажмите на поселении чтобы добавить точку остановки!"
 
 # 83%
 #: horizons/gui/widgets/routeconfig.py:255
@@ -2677,7 +2677,7 @@ msgstr ""
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:954
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Если установлен 0, то использовать драйвер по умолчанию"
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:956
@@ -2698,6 +2698,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:962
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Когда включен, режим строительства не отменяется после успешной постройки"
 
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:964
