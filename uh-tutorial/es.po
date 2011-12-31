@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-31 01:59+0200\n"
+"PO-Revision-Date: 2011-12-31 01:39+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -819,7 +819,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:102
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "EL ALMACÉN"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
@@ -866,11 +866,13 @@ msgstr ""
 #: po/tutorial.py:108
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr ""
+"Construya una tienda de almacén (en la pestaña de 'Incremento' 1) donde "
+"pueda ser útil."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:110
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "EL TEJEDOR"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
@@ -892,7 +894,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:114
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr ""
+msgstr "Construya un tejedor que de algún modo alcance la lana de tu granja."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:116
@@ -900,11 +902,13 @@ msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
 msgstr ""
+"Hospeda al menos a 50 habitantes en tu ciudad para completar el tutorial. "
+"Necesitas un balance positivo."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:118
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "COMPLETA EL TUTORIAL"
+msgstr "FINALIZACIÓN DEL TUTORIAL"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
@@ -918,11 +922,20 @@ msgid ""
 "TASK: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"Intenta hospedar a al menos 50 habitantes en tu ciudad suministrándoles más "
+"edificios residenciales.\n"
+"\n"
+"Una vez seas capaz de llevar un economía capaz de satisfacer a este número "
+"de consumidores, estarás listo para descubrir nuevos Unknown Horizons "
+"(horizontes desconocidos)!\n"
+"\n"
+"OBJETIVO: Alcanzar un total de 50 habitantes y tener un balance positivo "
+"para completar este tutorial."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:122
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "NO MÁS OBJETIVOS"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:124
@@ -943,6 +956,21 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"No queda nada por hacer.\n"
+"\n"
+"Si tienes alguna sugerencia de qué podríamos o deberíamos mejorar, únete y "
+"coméntanos:\n"
+"\n"
+"www.unknown-horizons.org\n"
+"\n"
+"#unknown-horizons @ irc.freenode.net\n"
+"\n"
+"team@unknown-horizons.org\n"
+"\n"
+"Nuestros foros también están abiertos a ti!\n"
+"\n"
+"Los mejores resultados hasta ahora fueron logrados al unirse a nuestro canal "
+"de IRC, así que podrías probar (-;"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:126
