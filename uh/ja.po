@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-21 14:37+0200\n"
-"Last-Translator: naraba <narabanow@gmail.com>\n"
+"PO-Revision-Date: 2011-12-31 06:14+0200\n"
+"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -20,9 +20,8 @@ msgstr ""
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new settlement was founded by {player}."
-msgstr "新しい決済は ${player} によって作成されています。"
+msgstr "新しい決済は {player} によって作成されています。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -194,9 +193,8 @@ msgstr "塩の池"
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr "スクリーンショットは ${file} に保存されています。"
+msgstr "スクリーンショットは {file} に保存されています。"
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -329,9 +327,8 @@ msgstr "あなたのゲームはクイック保存されています。"
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your inhabitants reached level {level}."
-msgstr "住民はレベル ${level} に到達しました。"
+msgstr "住民はレベル {level} に到達しました。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-10-01 03:58+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-31 06:16+0200\n"
+"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Samouczek"
 #. scenario author
 #: po/tutorial.py:4
 msgid "The UH team"
-msgstr "Zespół UH "
+msgstr "Zespół UH"
 
 #. scenario description
 #: po/tutorial.py:6
@@ -570,7 +570,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:66
 msgid "Reach an island stock of at least 30 tools."
-msgstr "Zdobądź co najmniej 30 sztuk narzędzi. "
+msgstr "Zdobądź co najmniej 30 sztuk narzędzi."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:68

@@ -2117,7 +2117,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:679 horizons/i18n/guitranslations.py:700
 #: horizons/i18n/guitranslations.py:711
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:681

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 19:09+0200\n"
+"PO-Revision-Date: 2011-12-29 19:10+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1244,7 +1244,7 @@ msgstr "Achat/Vente"
 
 #: horizons/gui/tabs/overviewtab.py:198
 msgid "Too far from the nearest branch office"
-msgstr "Trop loin du comptoir le plus proche."
+msgstr "Trop loin du comptoir le plus proche"
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:204
@@ -1336,11 +1336,11 @@ msgstr "Arrêter la route"
 
 #: horizons/gui/widgets/routeconfig.py:127
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Cliquez sur une colonie pour ajouter un point de passage!"
+msgstr "Cliquez sur une colonie pour ajouter un point de passage !"
 
 #: horizons/gui/widgets/routeconfig.py:255
 msgid "Select a resource:"
-msgstr "Sélectionner une ressource:"
+msgstr "Sélectionner une ressource :"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -2703,7 +2703,7 @@ msgstr "Restaurer les paramètres par défaut"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:938
 msgid "Auto-unload ship:"
-msgstr "Auto-décharger le navire:"
+msgstr "Auto-décharger le navire :"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:940
@@ -2713,12 +2713,12 @@ msgstr "Profondeur des couleurs :"
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:942
 msgid "Scroll at map edge:"
-msgstr "Défilement en bord de carte:"
+msgstr "Défilement en bord de carte :"
 
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:944
 msgid "Rotate minimap with map:"
-msgstr "Tourner la mini-carte avec la carte:"
+msgstr "Tourner la mini-carte avec la carte :"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:946
@@ -2743,7 +2743,7 @@ msgstr "Décharger le navire après la fondation d'une colonie"
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:954
 msgid "If set to 0, use the driver default"
-msgstr "Si réglé sur 0, utilise le pilote par défaut "
+msgstr "Si réglé sur 0, utilise le pilote par défaut"
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:956
@@ -2755,7 +2755,7 @@ msgstr ""
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:958
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Également, tourner la mini-carte chaque fois que la carte est tournée "
+msgstr "Également, tourner la mini-carte chaque fois que la carte est tournée"
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:960
@@ -2772,7 +2772,8 @@ msgstr ""
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:964
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr "SDL est seulement une solution de secours et peut causer des problèmes!"
+msgstr ""
+"SDL est seulement une solution de secours et peut causer des problèmes !"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:969
@@ -2973,7 +2974,7 @@ msgstr ""
 #: horizons/savegamemanager.py:381
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr "Erreur : ne sait pas comment gérer le type de condition {condition}."
+msgstr "Erreur : ne sait pas comment gérer la condition type {condition}"
 
 # 81%
 # 78%
