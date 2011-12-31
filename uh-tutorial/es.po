@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-31 01:07+0200\n"
+"PO-Revision-Date: 2011-12-31 01:59+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -533,11 +533,29 @@ msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your warehouse."
 msgstr ""
+"Después de este pequeño anuncio, el comerciante también parará por aquí y "
+"mirará en tu almacén, si tenía previsto zarpar antes de ello.\n"
+"\n"
+"Puedes proponer ofertas a través de la ficha del almacén \"Comprar/Vender\". "
+"(Esta característica actualmente es bastante liosa de utilizar. Si tienes "
+"alguna buena idea para mejorarla, ¡por favor comparte tus pensamientos! "
+"Necesitamos tu ayuda aquí!)\n"
+"\n"
+"Con el incremento de los \"marineros\", se te equipará con tres ranuras para "
+"el comercio.\n"
+"\n"
+"Haz clic en el icono pequeño de la ranura para cambiar el modo de 'comprar' "
+"a 'vender' y viceversa.\n"
+"\n"
+"Haz clic en la ranura para elegir el bien con el que quieres comerciar. "
+"Explicaremos más una vez estés listo para comerciar.\n"
+"\n"
+"OBJETIVO: Construir una señal de humo en la costa cerca del almacén."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:58
 msgid "Build a signal fire at the coast close to your warehouse."
-msgstr "Construya una seña de humo en la costa cerca de su asentamiento."
+msgstr "Construya una señal de humo en la costa cerca de su asentamiento."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:60
@@ -591,12 +609,12 @@ msgstr "Alcance en la isla un stock de al menos 30 herramientas."
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:68
 msgid "Note that this might take a while."
-msgstr ""
+msgstr "Ten en cuenta que esto podría llevar un tiempo."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:70
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "CONSTRUIR UN PABELLÓN"
+msgstr "EL PABELLÓN"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:72
@@ -694,11 +712,13 @@ msgstr ""
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
+"Configura el nivel de impuestos a 'Bajo' (izquierda de todo) y espera a la "
+"actualización de tus marineros."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:86
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "LAS GRANJAS"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
@@ -744,11 +764,12 @@ msgstr ""
 #: po/tutorial.py:92
 msgid "Build a farm and keep some empty space around it."
 msgstr ""
+"Construya una granja manteniendo disponible algún espacio alrededor de ella."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:94
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "LOS CAMPOS"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
