@@ -29,14 +29,15 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 	def __init__(self, building_id, name, settler_level):
 		super(AbstractFakeResourceDeposit, self).__init__(building_id, name, settler_level)
 		self.lines = {} # output_resource_id: ProductionLine
+		self.__init_production_lines()
 
 	@classmethod
 	def get_higher_level_building_id(cls):
 		raise NotImplementedError('This function has to be overridden.')
 
 
-	def init_production_lines(self):
-		production_lines = Entities.buildings[self.get_higher_level_building_id()].get_component_template(Producer.NAME)['productionlines']
+	def __init_production_lines(self):
+		production_lines = self._get_producer_building().get_component_template(Producer.NAME)['productionlines']
 		for key, value in production_lines.iteritems():
 			production_line = ProductionLine(key, value)
 			production_line.id = None
@@ -48,6 +49,8 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 			production_line.consumed_res = {}
 			self.lines[production_line.produced_res.keys()[0]] = production_line
 
+	def _get_producer_building(self):
+		return Entities.buildings[self.get_higher_level_building_id()]
 
 	@classmethod
 	def load(cls, db, building_id):

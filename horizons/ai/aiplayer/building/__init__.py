@@ -50,18 +50,21 @@ class AbstractBuilding(object):
 		self.radius = Entities.buildings[building_id].radius
 		self.lines = {} # output_resource_id: ProductionLine
 		if self.producer_building:
-			self.init_production_lines()
+			self.__init_production_lines()
 
 	__loaded = False
 	buildings = {} # building_id: AbstractBuilding instance
 	_available_buildings = {} # building_id: subclass of AbstractBuilding
 
-	def init_production_lines(self):
-		production_lines = Entities.buildings[self.id].get_component_template(Producer.NAME)['productionlines']
+	def __init_production_lines(self):
+		production_lines = self._get_producer_building().get_component_template(Producer.NAME)['productionlines']
 		for key, value in production_lines.iteritems():
 			production_line = ProductionLine(key, value)
 			assert len(production_line.produced_res) == 1
 			self.lines[production_line.produced_res.keys()[0]] = production_line
+
+	def _get_producer_building(self):
+		return Entities.buildings[self.id]
 
 	@classmethod
 	def load_all(cls, db):
