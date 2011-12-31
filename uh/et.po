@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-30 22:36+0200\n"
-"Last-Translator: Mihkel <RM87@hot.ee>\n"
+"PO-Revision-Date: 2011-12-31 05:59+0200\n"
+"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "Uus koloonia rajati {player} poolt."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -301,7 +301,7 @@ msgstr "Sa saad teeradu ka lohistada."
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
-"Oled jõudnud maksimaalse juurdekasvuni.Su elanikud ei arene rohkem edasi."
+"Oled jõudnud maksimaalse juurdekasvuni. Su elanikud ei arene rohkem edasi."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -644,9 +644,8 @@ msgstr "kollane"
 # üle kontrollida mängus
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr "{player1} ja {player2}  on nüüd {status}"
+msgstr "{player1} ja {player2} on nüüd {status}"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -701,7 +700,7 @@ msgstr "Vale võrguport"
 #: horizons/engine.py:561
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Sinu poolt valitud pord number ei ole kehtiv.Peab olema number 1 ja 65535 "
+"Sinu poolt valitud pord number ei ole kehtiv. Peab olema number 1 ja 65535 "
 "vahel."
 
 #: horizons/engine.py:562
@@ -726,7 +725,7 @@ msgstr "Kontrolli võrgu seadeid."
 #: horizons/engine.py:580
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
-"Väiksemad pordi numbrid vajavad teinekord erilisi juurdepääsu õigusi,proovi "
+"Väiksemad pordi numbrid vajavad teinekord erilisi juurdepääsu õigusi, proovi "
 "numbrit 0 või suuremat kui 1024."
 
 #. There was a problem during the 'save game' procedure.
@@ -933,7 +932,7 @@ msgstr "Peaserveriga ühendumine ebaõnnestus."
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
-"Palun kontrolli Interneti ühendust.Kui ühendus töötab siis on peaserver "
+"Palun kontrolli Interneti ühendust. Kui ühendus töötab siis on peaserver "
 "ajutiselt maas."
 
 # 97%
@@ -969,7 +968,7 @@ msgstr "Vale versioon"
 #, python-format,
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
-"Mängu versioon erineb sinu mängu omast.Kõik mitmikmängu mängijad peavad "
+"Mängu versioon erineb sinu mängu omast. Kõik mitmikmängu mängijad peavad "
 "kasutama ühesugust versiooni. Vea parandamine: kõik mängijad uuendavad "
 "uusima saada oleva versioonini. Mängu versioon: {game_version} Sinu version: "
 "{own_version}"
@@ -1428,7 +1427,7 @@ msgstr "Kartulipõld: Toodab sööki. Vajab talu."
 #. (tooltip of widget: sugarfield-1)
 #: horizons/i18n/guitranslations.py:100
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr "Suhkruroo väli: Kasutatakse alkoholi tootmiseks.Vajab talu."
+msgstr "Suhkruroo väli: Kasutatakse alkoholi tootmiseks. Vajab talu."
 
 #. (tooltip of widget: tower-1)
 #: horizons/i18n/guitranslations.py:102
@@ -1458,12 +1457,12 @@ msgstr "Kaevandus"
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:121
 msgid "Butchery: Needs pigs or cattle. Produces food."
-msgstr "Lihunik: Vajab sigu või kariloomi.Toodab toitu."
+msgstr "Lihunik: Vajab sigu või kariloomi. Toodab toitu."
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:123
 msgid "Cattle run: Raises cattle. Needs a farm."
-msgstr "Karjamaa: Kasvatab kariloomi.Vajab talu."
+msgstr "Karjamaa: Kasvatab kariloomi. Vajab talu."
 
 #. (tooltip of widget: charcoal-burning-1)
 #: horizons/i18n/guitranslations.py:125
@@ -1478,12 +1477,12 @@ msgstr "Kaevandus: Kaevandab maaki maardlast."
 #. (tooltip of widget: pigsty-1)
 #: horizons/i18n/guitranslations.py:129
 msgid "Pigsty: Raises pigs. Needs a farm."
-msgstr "Sigala: Kasvatab sigu.Vajab talu."
+msgstr "Sigala: Kasvatab sigu. Vajab talu."
 
 #. (tooltip of widget: saltponds-1)
 #: horizons/i18n/guitranslations.py:131
 msgid "Salt ponds: Evaporates salt. Built on sea coast."
-msgstr "Soola tiik: Aurutab veest soola.Ehitatakse rannikule."
+msgstr "Soola tiik: Aurutab veest soola. Ehitatakse rannikule."
 
 #. (tooltip of widget: smeltery-1)
 #: horizons/i18n/guitranslations.py:133
@@ -1498,7 +1497,7 @@ msgstr "Kõrts: Korraldab kokkusaamisi."
 #. (tooltip of widget: tobaccofield-1)
 #: horizons/i18n/guitranslations.py:137
 msgid "Tobacco field: Produces tobacco. Needs a farm."
-msgstr "Tubakapõld: Toodab tubakat.Vajab talu."
+msgstr "Tubakapõld: Toodab tubakat. Vajab talu."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:139
@@ -1528,7 +1527,7 @@ msgstr "Vali oma laev ja lähene rannikule vajutades parempoolset nuppu."
 #. (text of widget: howto_3_build_bo)
 #: horizons/i18n/guitranslations.py:152
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Lõpetades,vajuta suurt nuppu laeva ülevaate paneelil."
+msgstr "Lõpetades, vajuta suurt nuppu laeva ülevaate paneelil."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:159
@@ -2226,7 +2225,7 @@ msgstr ""
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:717
 msgid "Weapons"
-msgstr ""
+msgstr "Relvad"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:724
@@ -2978,9 +2977,8 @@ msgid "The savegame file is probably read-only."
 msgstr "Salvestatud mängu fail on arvatavasti kirjutuskaitstud."
 
 #: horizons/spsession.py:171
-#, fuzzy
 msgid "File used by another process"
-msgstr "Faili kasutab teine protsess."
+msgstr "Faili kasutab teine protsess"
 
 #: horizons/spsession.py:172
 #, fuzzy

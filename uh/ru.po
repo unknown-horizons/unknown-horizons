@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-30 08:20+0200\n"
+"PO-Revision-Date: 2011-12-30 08:24+0200\n"
 "Last-Translator: Torv <PLAAATONNN@narod.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -2835,7 +2835,7 @@ msgstr "ОШИБКА: Не найдена карта '{name}'."
 
 #: horizons/main.py:359 horizons/main.py:439
 msgid "Error: Found multiple matches:"
-msgstr "Ошибка: Обнаружены множественные совпадения."
+msgstr "Ошибка: Обнаружены множественные совпадения:"
 
 #: horizons/main.py:382
 msgid "Error: campaign filenames have to end in \".yaml\"."
