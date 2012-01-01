@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2012-01-01 19:26+0200\n"
+"PO-Revision-Date: 2012-01-01 20:27+0200\n"
 "Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -594,7 +594,7 @@ msgstr "suhkruroog"
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr "teal"
+msgstr "sinakasroheline"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -847,7 +847,7 @@ msgstr "Salvestatud mängu versioon {version}"
 #: horizons/gui/gui.py:537
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr "HOIATUS: Mitte sobiv versioon {version}!"
+msgstr "HOIATUS: Mittesobiv versioon {versioon}!"
 
 #: horizons/gui/gui.py:540
 #, python-format
@@ -904,9 +904,9 @@ msgid "Unable to find pyenet"
 msgstr "Ei leia pyenet-i"
 
 #: horizons/gui/modules/multiplayermenu.py:41
+#, fuzzy
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
-msgstr ""
-"Mitmikmängu seadetele vajalik andmekogu \"pyenet\" puudub sinu süsteemist."
+msgstr "Mitmikmängu seadetele vajalik teek \"pyenet\" puudub sinu süsteemist."
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -947,7 +947,7 @@ msgstr "Versioon erineb!"
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr "kaart: {map_name}"
+msgstr "Kaart: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
 #, python-format
@@ -1538,7 +1538,7 @@ msgstr "Jooksvad kulud:"
 #. (text of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:696
 msgid "Inhabitants"
-msgstr "elanikud"
+msgstr "Elanikud"
 
 #. (tooltip of widget: city_name)
 #: horizons/i18n/guitranslations.py:166
