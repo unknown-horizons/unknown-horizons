@@ -589,8 +589,8 @@ class Fife(ApplicationBase):
 		self.__setup_screen_resolutions()
 		self.engine.initializePumping()
 		self.loop()
-		self.__kill_engine()
 		self.engine.finalizePumping()
+		self.__kill_engine()
 
 	def loop(self):
 		"""
