@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 11:23+0200\n"
-"Last-Translator: Cur5 <233mhz@gmail.com>\n"
+"PO-Revision-Date: 2011-12-31 05:59+0200\n"
+"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -928,7 +928,7 @@ msgstr "Error en la red"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Could not connect to master server."
-msgstr "No puede conectar al servidor principal"
+msgstr "No puede conectar al servidor principal."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
@@ -1501,9 +1501,8 @@ msgstr "Campo de tabaco: Produce tabaco. Necesita una granja."
 
 #. (tooltip of widget: tobacconist-1)
 #: horizons/i18n/guitranslations.py:139
-#, fuzzy
 msgid "Tobacconist: Produces tobaccos out of tobacco."
-msgstr "Estanco: Produce tabaco"
+msgstr "Estanco: Produce tabaco."
 
 #. (tooltip of widget: toolmaker-1)
 #: horizons/i18n/guitranslations.py:141
