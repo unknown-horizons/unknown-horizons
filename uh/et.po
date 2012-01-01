@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-31 05:59+0200\n"
-"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2012-01-01 19:26+0200\n"
+"Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -1906,14 +1906,14 @@ msgstr "1 elanik"
 #: horizons/i18n/guitranslations.py:388 horizons/i18n/guitranslations.py:419
 #: horizons/i18n/guitranslations.py:448
 msgid "2 residents"
-msgstr "2 elanikke"
+msgstr "2 elanikku"
 
 # 88%
 # 81%
 #. (text of widget: resident_3)
 #: horizons/i18n/guitranslations.py:390 horizons/i18n/guitranslations.py:450
 msgid "3 residents"
-msgstr "3 elanikke"
+msgstr "3 elanikku"
 
 # 88%
 #. (text of widget: residents)
@@ -1968,14 +1968,14 @@ msgstr "Maksumäär"
 #. (text of widget: resident_4)
 #: horizons/i18n/guitranslations.py:452
 msgid "4 residents"
-msgstr "4 elanikke"
+msgstr "4 elanikku"
 
 # 88%
 # 81%
 #. (text of widget: resident_5)
 #: horizons/i18n/guitranslations.py:454
 msgid "5 residents"
-msgstr "5 elanikke"
+msgstr "5 elanikku"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:460
@@ -2230,22 +2230,22 @@ msgstr "Relvad"
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:724
 msgid "Aggressive"
-msgstr ""
+msgstr "Agresiivne"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:726
 msgid "Flee"
-msgstr ""
+msgstr "Põgene"
 
 #. (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:728
 msgid "Hold ground"
-msgstr ""
+msgstr "Hoia positsiooni"
 
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:730
 msgid "Passive"
-msgstr ""
+msgstr "Pasiivne"
 
 #. (text of widget: fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:735
@@ -2397,7 +2397,7 @@ msgstr "Luba lammutamise režiim"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:795 horizons/i18n/guitranslations.py:934
 msgid "Return"
-msgstr ""
+msgstr "Tagasi"
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -2440,7 +2440,7 @@ msgstr "Autorid"
 #. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py:830
 msgid "Quit"
-msgstr ""
+msgstr "Välju"
 
 #. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
 #: horizons/i18n/guitranslations.py:834
@@ -3025,7 +3025,7 @@ msgstr ""
 
 #: horizons/world/tradepost.py:231
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "Kaubanduspartner ei osta seda rohkem."
 
 #: horizons/world/units/ship.py:279
 #, python-format
