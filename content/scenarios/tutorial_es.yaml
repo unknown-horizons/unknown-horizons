@@ -202,17 +202,17 @@ events:
   - arguments: [tutStepDone, 25]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'EDIFICIOS RESIDENCIALES', "Los colonos necesitan\
-        \ tener un techo sobre sus cabezas, antes siquiera pensar en vivir en tu ciudad!\
-        \ Usted necesidad  proporcionar tiendas de campa\xF1a. \n\nLas tiendas de\
-        \ campa\xF1a son los edificios de viviendas b\xE1sicas. Sus habitantes las\
-        \ actualizar\xE1n cuando consigan incrementos. \n\nLos colonos pueden parecer\
-        \ poco \xFAtiles, ya que consumen todas las mercanc\xEDas que produce - pero\
-        \ al menos pagan impuestos, y esa es la \xFAnica manera de ganar dinero por\
-        \ ahora \n\nTAREA: Crear una tienda de campa\xF1a y conectarla a la plaza\
-        \ principal."]
+  - arguments: [!!python/unicode 'EDIFICIOS RESIDENCIALES', "Los colonos quieren tener\
+        \ un techo sobre sus cabezas, \xA1o ni siquiera pensar\xE1n en vivir en tu\
+        \ ciudad! Necesitas proporcionar tiendas de campa\xF1a.\n\nLas tiendas de\
+        \ campa\xF1a son los edificios residenciales m\xE1s b\xE1sicos. Tus habitantes\
+        \ las actualizar\xE1n cuando consigan alcanzar un mayor incremento.\n\nLos\
+        \ colonos podr\xEDan no parecer muy \xFAtiles, ya que intentar\xE1n consumir\
+        \ todas las mercanc\xEDas que produces - \xA1pero al menos pagan impuestos,\
+        \ y esa es la \xFAnica manera de ganar dinero por ahora!\n\nOBJETIVO: Construir\
+        \ una tienda de campa\xF1a y conectarla a la plaza principal."]
     type: logbook
-  - arguments: ["Construya una tienda y con\xE9ctela a la plaza principal."]
+  - arguments: ["Construya una tienda de campa\xF1a y con\xE9ctela a la plaza principal."]
     type: message
   - arguments: [tutStepDone, 28]
     type: set_var
@@ -224,15 +224,15 @@ events:
   - arguments: [tutStepDone, 28]
     type: var_lt
 - actions:
-  - arguments: ['', "Vamos a echar un vistazo a la ficha resumen tienda. \nUsted puede\
-        \ ver: \n* La felicidad de los residentes\n* Los impuestos que pagan\n* Los\
-        \ recursos que demandan\n\\ nSi sus demandas se cumplan, la felicidad y los\
-        \ impuestos que pagan aumentar\xE1n.\n\\ nSi no, la felicidad y los ingresos\
+  - arguments: ['', "Vamos a echar un vistazo a la ficha resumen tienda.\nEn ella\
+        \ puedes ver:\n* La felicidad de los residentes\n* Los impuestos que pagan\n\
+        * Los recursos que demandan\n\nSi sus demandas se cumplen, la felicidad y\
+        \ los impuestos que pagan aumentar\xE1n.\n\nSi no, la felicidad y los ingresos\
         \ bajar\xE1n. En alg\xFAn momento los residentes pueden sentirse tristes y\
-        \ simplemente abandonar su pueblo, dejando tras de s\xED una ruina decadente.\
-        \ \n\nTenga en cuenta que tambi\xE9n puede cambiar la configuraci\xF3n del\
-        \ impuesto global aqu\xED. \n\nTAREA:. Construir al menos tres tiendas adicionales\
-        \ \n\nSUGERENCIA: pulsando la tecla May\xFAsculas facilita la construcci\xF3\
+        \ simplemente abandonar tu pueblo, dejando tras de s\xED una ruina decadente.\n\
+        \nTen en cuenta que tambi\xE9n puedes cambiar la configuraci\xF3n del impuesto\
+        \ global aqu\xED.\n\nOBJETIVO: Construir al menos tres tiendas adicionales.\n\
+        \nConsejo: Pulsando la tecla 'May\xFAsculas' (SHIFT) se facilita la construcci\xF3\
         n de varios edificios de la misma clase."]
     type: logbook
   - arguments: ["Construya al menos tres tiendas adicionales y con\xE9ctelas a la\
@@ -248,7 +248,7 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: ["CONSTRUIR UNA SE\xD1AL DE FUEGO", !!python/unicode 'Can you see the
+  - arguments: ["CONSTRUIR UNA SE\xD1AL DE HUMO", !!python/unicode 'Can you see the
         ship passing your island from time to time? That ship belongs to the Free
         Trader, one of the first settlers in this archipelago.
 
@@ -316,19 +316,20 @@ events:
         \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
         \ which you hold in reserve to not sell"]
     type: logbook_w
-  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
-        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
-        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
-        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
-        \ however only wants to buy or sell less than your settings would allow him,\
-        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
-        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
-        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
-        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
-        \ as you need to have 30 tools in stock!"]
+  - arguments: ['', "Por ejemplo:\nTeniendo en la ranura 'Comprar' y 5 tn de existencias,\
+        \ un valor objetivo en 9 tn causar\xE1 una compra de m\xE1ximo 4 tn.\nLa venta\
+        \ funciona de forma similar. En la ranura 'Vender', con 18 tn de existencias\
+        \ y un valor objetivo en 13, se vender\xE1n 5 tn.\n\nSi el comerciante libre\
+        \ sin embargo s\xF3lo quiere comprar o vender menos de lo que tu le permites,\
+        \ necesitar\xE1s vivir con ello y esperar a que vuelva de nuevo.\n\nUnknown\
+        \ Horizons funciona con precios inteligentes, por lo que el valor de una unidad\
+        \ puede variar.\n\xA1NO es posible cambiar precios manualmente!\n\nPuedes\
+        \ ver tu balance comercial en la pesta\xF1a 'Cuenta' y comparar el valor de\
+        \ las 'Ventas' y 'Compras' all\xED.\n\nOBJETIVO: \xA1Comprar tantas herramientas\
+        \ como necesites para tener 30 en existencias!"]
     type: logbook
   - arguments: [!!python/unicode 'Alcance en la isla un stock de al menos 30 herramientas.',
-      !!python/unicode 'Note that this might take a while.']
+      "Ten en cuenta que esto podr\xEDa llevar un tiempo."]
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -340,8 +341,8 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: ["CONSTRUIR UN PABELL\xD3N", !!python/unicode 'Those tools will be
-        enough for the moment. Well done!
+  - arguments: ["EL PABELL\xD3N", !!python/unicode 'Those tools will be enough for
+        the moment. Well done!
 
 
         You now provide housing, a main square and food to your inhabitants.
@@ -438,8 +439,8 @@ events:
 
         TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.']
     type: logbook
-  - arguments: [!!python/unicode 'Set the tax level to Low (left end) and wait for
-        your sailors to upgrade.']
+  - arguments: ["Configura el nivel de impuestos a 'Bajo' (izquierda de todo) y espera\
+        \ a la actualizaci\xF3n de tus marineros."]
     type: message
   - arguments: [tutStepDone, 43]
     type: set_var
@@ -451,7 +452,7 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A FARM', !!python/unicode 'Congratulations!
+  - arguments: [!!python/unicode 'LAS GRANJAS', !!python/unicode 'Congratulations!
         Some of your inhabitants have reached increment II!
 
 
@@ -494,7 +495,8 @@ events:
 
         TASK: Build a farm.']
     type: logbook
-  - arguments: [!!python/unicode 'Build a farm and keep some empty space around it.']
+  - arguments: ["Construya una granja manteniendo disponible alg\xFAn espacio alrededor\
+        \ de ella."]
     type: message
   - arguments: [tutStepDone, 46]
     type: set_var
@@ -506,8 +508,8 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD FIELDS', !!python/unicode 'The farm
-        itself is not going to produce anything without some fields.
+  - arguments: [!!python/unicode 'LOS CAMPOS', !!python/unicode 'The farm itself is
+        not going to produce anything without some fields.
 
 
         You currently have the choice between pastures, potato and sugar fields.
@@ -553,8 +555,7 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD STORAGE', !!python/unicode 'Did
-        you watch your lumberjack recently?
+  - arguments: ["EL ALMAC\xC9N", !!python/unicode 'Did you watch your lumberjack recently?
 
 
         Since your branch office does not have unlimited space to store goods, collectors
@@ -588,8 +589,8 @@ events:
         \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
         \ where you need collectors."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a storage tent (increment I tab) where it
-        makes sense.']
+  - arguments: ["Construya una tienda de almac\xE9n (en la pesta\xF1a de 'Incremento'\
+        \ 1) donde pueda ser \xFAtil."]
     type: message
   - arguments: [tutStepDone, 52]
     type: set_var
@@ -601,9 +602,8 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A WEAVER', !!python/unicode 'Now
-        the wool production is set up, you still need a weaver to produce cloth out
-        of this wool.
+  - arguments: [!!python/unicode 'EL TEJEDOR', !!python/unicode 'Now the wool production
+        is set up, you still need a weaver to produce cloth out of this wool.
 
 
         There are two spots where you can build it - either close to the farm or close
@@ -619,8 +619,7 @@ events:
 
         TASK: Build a weaver positioned so it can get wool.']
     type: logbook
-  - arguments: [!!python/unicode 'Build a weaver that can somehow reach the wool of
-        your farm.']
+  - arguments: ["Construya un tejedor que de alg\xFAn modo alcance la lana de tu granja."]
     type: message
   - arguments: [tutStepDone, 55]
     type: set_var
@@ -632,20 +631,15 @@ events:
   - arguments: [tutStepDone, 55]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
-        city to complete the tutorial. You need a positive balance.']
+  - arguments: [!!python/unicode 'Hospeda al menos a 50 habitantes en tu ciudad para
+        completar el tutorial. Necesitas un balance positivo.']
     type: message
-  - arguments: [!!python/unicode 'COMPLETA EL TUTORIAL', !!python/unicode 'Try to
-        house a total of 50 or more inhabitants in your city by providing more residential
-        buildings.
-
-
-        Once you are able to keep an economy running which can satisfy this amount
-        of consumers, you are ready to discover new Unknown Horizons!
-
-
-        TASK: Reach a total number of 50 inhabitants and a positive balance to complete
-        this tutorial.']
+  - arguments: ["FINALIZACI\xD3N DEL TUTORIAL", "Intenta hospedar a al menos 50 habitantes\
+        \ en tu ciudad suministr\xE1ndoles m\xE1s edificios residenciales.\n\nUna\
+        \ vez seas capaz de llevar un econom\xEDa capaz de satisfacer a este n\xFA\
+        mero de consumidores, estar\xE1s listo para descubrir nuevos Unknown Horizons\
+        \ (horizontes desconocidos)!\n\nOBJETIVO: Alcanzar un total de 50 habitantes\
+        \ y tener un balance positivo para completar este tutorial."]
     type: logbook
   - arguments: [tutStepDone, 58]
     type: set_var
@@ -659,28 +653,12 @@ events:
   - arguments: [tutStepDone, 58]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NO TASKS LEFT', !!python/unicode 'There is nothing
-        left to do now.
-
-
-        If you have any suggestions on what we could or should improve, add or leave
-        out:
-
-
-        www.unknown-horizons.org
-
-
-        #unknown-horizons @ irc.freenode.net
-
-
-        team@unknown-horizons.org
-
-
-        Our forums are open to you as well!
-
-
-        The best results until now were achieved by joining our IRC channel, so you
-        could try that out first (-;']
+  - arguments: ["NO M\xC1S OBJETIVOS", "No queda nada por hacer.\n\nSi tienes alguna\
+        \ sugerencia de qu\xE9 podr\xEDamos o deber\xEDamos mejorar, \xFAnete y com\xE9\
+        ntanos:\n\nwww.unknown-horizons.org\n\n#unknown-horizons @ irc.freenode.net\n\
+        \nteam@unknown-horizons.org\n\nNuestros foros tambi\xE9n est\xE1n abiertos\
+        \ a ti!\n\nLos mejores resultados hasta ahora fueron logrados al unirse a\
+        \ nuestro canal de IRC, as\xED que podr\xEDas probar (-;"]
     type: logbook
   - arguments: ["\xA1Gracias!", "\n\n\n\n\n\n\n\xA1Gracias por haber jugado al tutorial!\n\
         \nEl equipo de UH"]

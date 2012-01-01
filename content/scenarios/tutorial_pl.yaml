@@ -4,7 +4,7 @@
 # It was automatically generated with development/create_scenario_pot.sh using
 # translation files from pootle.
 
-author: "Zesp\xF3\u0142 UH "
+author: "Zesp\xF3\u0142 UH"
 description: "Samouczek:\nZbuduj swoj\u0105 pierwsz\u0105 osad\u0119 i naucz si\u0119\
   \ jak gra\u0107!\n"
 difficulty: !!python/unicode 'Samouczek'
@@ -301,7 +301,7 @@ events:
         \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
         \ as you need to have 30 tools in stock!"]
     type: logbook
-  - arguments: ["Zdob\u0105d\u017A co najmniej 30 sztuk narz\u0119dzi. ", !!python/unicode 'Note
+  - arguments: ["Zdob\u0105d\u017A co najmniej 30 sztuk narz\u0119dzi.", !!python/unicode 'Note
         that this might take a while.']
     type: message
   - arguments: [tutStepDone, 37]
