@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2012-01-01 18:55+0200\n"
-"Last-Translator: cykusz <rafalm3@gmail.com>\n"
+"PO-Revision-Date: 2012-01-02 23:26+0200\n"
+"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
-msgstr "Nowa osada została znaleziona przez {player}"
+msgstr "Nowa osada została znaleziona przez {player}."
 
 # Messages
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -319,7 +319,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Potrzebujesz więcej {resource}, aby zbudować ten budynek."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -731,7 +731,7 @@ msgstr ""
 
 #: horizons/engine.py:574
 msgid "Failed to apply new network settings."
-msgstr "Nie udało się zatwierdzić nowych ustawień sieciowych"
+msgstr "Nie udało się zatwierdzić nowych ustawień sieciowych."
 
 #: horizons/engine.py:575 horizons/gui/modules/multiplayermenu.py:52
 msgid "Network features could not be initialized with the current configuration."
