@@ -689,10 +689,13 @@ msgstr ""
 "\n"
 "Použití na vlastní riziko!"
 
+# 86%
+# 80%
+# oprava závorek
 #: horizons/engine.py:304
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "Nastavený jazyk {lang} neleze načíst"
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
