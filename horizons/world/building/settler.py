@@ -26,7 +26,7 @@ from horizons.scheduler import Scheduler
 
 from horizons.gui.tabs import SettlerOverviewTab
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
-from horizons.world.building.buildable import BuildableRect
+from horizons.world.building.buildable import BuildableRect, BuildableSingle
 from horizons.constants import RES, BUILDINGS, GAME, SETTLER
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
