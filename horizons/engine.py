@@ -241,7 +241,18 @@ class Fife(ApplicationBase):
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
 
 		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
-
+		
+		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity", \
+									 applyfunction=self.set_mouse_sensitivity, requiresrestart = True)
+	
+	def set_mouse_sensitivity(self, value=None):
+		if not value:
+			value = self.OptionsDlg.findChild(name="mousesensitivity").value
+		else:
+			#in _setup_settings engine_setting doesnt exist yet
+			self.engine_settings.setMouseSensitivity(value)
+		self.update_slider_values('mousesensitivity')
+	
 	def _show_renderbackend_warning(self):
 		backend = self.get_fife_setting("RenderBackend")
 		if backend == 'SDL':
@@ -408,16 +419,25 @@ class Fife(ApplicationBase):
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
 		slider_initial_data['volume_music_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
 		slider_initial_data['volume_effects_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
+		slider_initial_data['mousesensitivity_value'] = unicode("%.2f"%float(self._setting.get(FIFE_MODULE, "MouseSensitivity")))
+		
 		self.OptionsDlg.distributeInitialData(slider_initial_data)
 
 		for x in slider_dict.values():
 			slider_event_map[x] = Callback(self.update_slider_values, x)
 		slider_event_map['volume_music'] = self.set_volume_music
 		slider_event_map['volume_effects'] = self.set_volume_effects
+		slider_event_map['mousesensitivity'] = self.set_mouse_sensitivity
+		
 		self.OptionsDlg.mapEvents(slider_event_map)
 
 	def update_slider_values(self, slider, factor = 1, unit = ''):
-		self.OptionsDlg.findChild(name=slider+'_value').text = \
+		if slider == "mousesensitivity":
+			#for floating wanted
+		    self.OptionsDlg.findChild(name=slider+'_value').text = \
+		    u"%.2f %s"%(float(self.OptionsDlg.findChild(name=slider).value * factor), unit)
+		else:
+			 self.OptionsDlg.findChild(name=slider+'_value').text = \
 		     u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).value * factor), unit)
 
 	def setup_sound(self):
