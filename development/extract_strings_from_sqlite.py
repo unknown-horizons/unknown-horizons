@@ -58,16 +58,6 @@ Base = sqlalchemy.ext.declarative.declarative_base()
 # Classes
 #
 
-class Building(Base):
-	__tablename__ = 'building'
-
-	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
-
-class Unit(Base):
-	__tablename__ = 'unit'
-
-	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
-
 class Colors(Base):
 	__tablename__ = 'colors'
 
@@ -118,12 +108,6 @@ def print_msgid(msgid):
 
 def collect_all():
 	collector = MSGID_collect()
-
-	for building in db_session.query(Building):
-		collector.add_to_collection(building.name, 'the name of a building')
-
-	for unit in db_session.query(Unit):
-		collector.add_to_collection(unit.name, 'the name of a unit')
 
 	for color in db_session.query(Colors):
 		collector.add_to_collection(color.name, 'the name of a color')
