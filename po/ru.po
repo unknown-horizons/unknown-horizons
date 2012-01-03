@@ -7,8 +7,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
+<<<<<<< HEAD
 "PO-Revision-Date: 2011-12-27 22:51+0200\n"
 "Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
+=======
+"PO-Revision-Date: 2011-12-30 08:24+0200\n"
+"Last-Translator: Torv <PLAAATONNN@narod.ru>\n"
+>>>>>>> master
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +27,11 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
+<<<<<<< HEAD
 msgstr "Новое поселение найдено игроком ${player}."
+=======
+msgstr "Новое поселение найдено игроком {player}."
+>>>>>>> master
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -192,10 +201,15 @@ msgstr "Картофельное поле"
 msgid "Salt Ponds"
 msgstr "Солёные озёра"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to {file}."
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Снимок экрана сохранен в {file}."
+>>>>>>> master
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -306,10 +320,15 @@ msgid "You have reached the current maximum increment. Your inhabitants will not
 msgstr ""
 "Вы достигли максимального роста. Ваши жители не будут развиваться дальше."
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more {resource} to build this building."
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Вам необходимо больше {resource} для постройки этого строения."
+>>>>>>> master
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -326,10 +345,15 @@ msgstr "Автосохранение прошло успешно."
 msgid "Your game has been quicksaved."
 msgstr "Быстрое сохранение успешно выполнено."
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your inhabitants reached level {level}."
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Ваши жители достигли {level} уровня."
+>>>>>>> master
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -643,15 +667,27 @@ msgstr "шерсть"
 msgid "yellow"
 msgstr "желтый"
 
+<<<<<<< HEAD
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "{player1} and {player2} are now {status}"
 msgstr ""
+=======
+# 93%
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
+msgid "{player1} and {player2} are now {status}"
+msgstr "{player1} и {player2} теперь {status}"
+>>>>>>> master
 
 #: horizons/command/misc.py:30
 #, python-format
 msgid "{name}: {chatmessage}"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "{name}: {chatmessage}"
+>>>>>>> master
 
 #: horizons/engine.py:71
 msgid "Restart required"
@@ -690,10 +726,18 @@ msgstr ""
 "\n"
 "Используйте на свой страх и риск!"
 
+<<<<<<< HEAD
 #: horizons/engine.py:304
 #, python-format
 msgid "Configured language {lang} could not be loaded"
 msgstr ""
+=======
+# 80%
+#: horizons/engine.py:304
+#, python-format
+msgid "Configured language {lang} could not be loaded"
+msgstr "Настроенный язык {lang} не может быть загружен"
+>>>>>>> master
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
@@ -1248,7 +1292,11 @@ msgstr "В вашем логи ещё нет записей!"
 #: horizons/gui/widgets/playerssettlements.py:42
 #, python-format
 msgid "settlements of {player}"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "поселение игрока {player}"
+>>>>>>> master
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:112
@@ -1259,7 +1307,11 @@ msgstr "Всего"
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "ships of {player}"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "корабли игрока {player}"
+>>>>>>> master
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:86
@@ -1286,11 +1338,20 @@ msgstr "Остановить маршрут"
 
 #: horizons/gui/widgets/routeconfig.py:127
 msgid "Click on a settlement to add a waypoint!"
+<<<<<<< HEAD
 msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:255
 msgid "Select a resource:"
 msgstr ""
+=======
+msgstr "Нажмите на поселении чтобы добавить точку остановки!"
+
+# 83%
+#: horizons/gui/widgets/routeconfig.py:255
+msgid "Select a resource:"
+msgstr "Выберите ресурсы:"
+>>>>>>> master
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -2671,7 +2732,11 @@ msgstr ""
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:954
 msgid "If set to 0, use the driver default"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Если установлен 0, то использовать драйвер по умолчанию"
+>>>>>>> master
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:956
@@ -2692,6 +2757,10 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:962
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Когда включен, режим строительства не отменяется после успешной постройки"
+>>>>>>> master
 
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:964
@@ -2828,7 +2897,11 @@ msgstr "ОШИБКА: Не найдена карта '{name}'."
 
 #: horizons/main.py:359 horizons/main.py:439
 msgid "Error: Found multiple matches:"
+<<<<<<< HEAD
 msgstr "Ошибка: Обнаружены множественные совпадения."
+=======
+msgstr "Ошибка: Обнаружены множественные совпадения:"
+>>>>>>> master
 
 #: horizons/main.py:382
 msgid "Error: campaign filenames have to end in \".yaml\"."

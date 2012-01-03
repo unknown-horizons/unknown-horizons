@@ -7,8 +7,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
+<<<<<<< HEAD
 "PO-Revision-Date: 2011-12-29 19:42+0200\n"
 "Last-Translator: raymond <raymondv@gmx.de>\n"
+=======
+"PO-Revision-Date: 2011-12-29 19:45+0200\n"
+"Last-Translator: Raymond <raymondv@gmx.de>\n"
+>>>>>>> master
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -301,13 +306,13 @@ msgstr "Weber"
 #. This is a database entry: the name of a building.
 #: database files sql
 msgid "Wooden Tower"
-msgstr "Turm"
+msgstr "Hölzerner Turm"
 
 # "aufziehen" ersetzen
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "Ihr könnt Straßen auch bei gedrückter Maustaste aufziehen."
+msgstr "Ihr könnt Straßen auch bei gedrückter Maustaste errichten."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -754,7 +759,7 @@ msgstr "Überprüft die Einstellungen im Abschnitt Netzwerk."
 #: horizons/engine.py:580
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
-"Niedriege Port-Nummern können spezielle Zugangsprivilegien erfordern. "
+"Niedrige Port-Nummern können spezielle Zugangsprivilegien erfordern. "
 "Versucht es mit 0 oder einer Nummer größer als 1024."
 
 #. There was a problem during the 'save game' procedure.
@@ -894,13 +899,13 @@ msgstr "Keine Datei ausgewählt"
 # 97%
 #: horizons/gui/gui.py:560
 msgid "You need to select a savegame to delete."
-msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu entfernen."
+msgstr "Ihr müsst einen Speicherstand auswählen, um ihn zu entfernen."
 
 # 84%
 #: horizons/gui/gui.py:564
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Wollt Ihr den Spielstand '{name}' wirklich entfernen?"
+msgstr "Wollt Ihr den Speicherstand '{name}' wirklich entfernen?"
 
 #: horizons/gui/gui.py:566
 msgid "Confirm deletion"
@@ -2689,7 +2694,11 @@ msgstr "Am Kartenrand scrollen:"
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:944
 msgid "Rotate minimap with map:"
+<<<<<<< HEAD
 msgstr "Minimap und Karte (zusammen) drehen:"
+=======
+msgstr "Weltkarte mit Karte drehen:"
+>>>>>>> master
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:946
@@ -2721,28 +2730,50 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:956
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
+<<<<<<< HEAD
 "Die Karte verschieben wenn sich der Mauszeiger am Kartenrand "
+=======
+"Die Karte verschieben, wenn sich der Mauszeiger am Kartenrand "
+>>>>>>> master
 "(Bildschirmrand) befindet"
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:958
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Minimap mit der Karte mitdrehen"
+>>>>>>> master
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:960
 msgid "If set to 0, use the router default"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Bei der Auswahl von 0 wird die Standardeinstellung vom Router verwendet"
+>>>>>>> master
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:962
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Wenn aktiviert, wird der Bau-Modus nach dem erfolgreichen Aufbau nicht "
+"beendet"
+>>>>>>> master
 
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:964
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+<<<<<<< HEAD
+=======
+"SDL ist nur als nicht unterstützte Rückfall Option gedacht und könnte zu "
+"Problemen führen!"
+>>>>>>> master
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:969
@@ -3008,9 +3039,16 @@ msgid "Access is denied"
 msgstr "Zugriff wurde verweigert"
 
 #: horizons/spsession.py:168
+<<<<<<< HEAD
 #, fuzzy
 msgid "The savegame file is probably read-only."
 msgstr "Der Speicherstand nicht beschreibbar."
+=======
+msgid "The savegame file is probably read-only."
+msgstr ""
+"Der Spielstand kann nicht gespeichert werden. Möglicherweise ist die Datei "
+"nicht beschreibbar."
+>>>>>>> master
 
 #: horizons/spsession.py:171
 msgid "File used by another process"

@@ -41,7 +41,7 @@ import shutil
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader, Callback
 from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
@@ -136,6 +136,21 @@ def start(command_line_arguments):
 	preload_lock = threading.Lock()
 	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
 	preloading = (preload_thread, preload_lock)
+
+	# initalize update checker
+	from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
+	update_info = UpdateInfo()
+	update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
+	update_check_thread.start()
+	def update_info_handler(info):
+		if info.status == UpdateInfo.UNINITIALISED:
+			ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
+		elif info.status == UpdateInfo.READY:
+			show_new_version_hint(_modules.gui, info)
+		elif info.status == UpdateInfo.INVALID:
+			pass # couldn't retrieve file or nothing relevant in there
+
+	update_info_handler(update_info) # schedules checks by itself
 
 	# start something according to commandline parameters
 	startup_worked = True

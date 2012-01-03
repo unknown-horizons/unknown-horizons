@@ -11,10 +11,8 @@ description: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\n\u6700\u521D\u306E\u96
 difficulty: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
 events:
 - actions:
-  - arguments: ["\u81EA\u7531\u4EA4\u6613\u8239\u306A\u3069\u306E\u4ED6\u306E\u8239\
-        \u304C\u8FD1\u3065\u304D\u3084\u3059\u3044\u3088\u3046\u306B\u3001\u6D77\u5CB8\
-        \u6CBF\u3044\u306B\u652F\u90E8\u3092\u5EFA\u8A2D\u3057\u307E\u3057\u3087\u3046\
-        \u3002"]
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
   - arguments: ["Unknown Horizons \u306B\u3088\u3046\u3053\u305D!", "\u3053\u308C\u306F\
         \u8239\u9577\u306E\u822A\u6D77\u65E5\u8A8C\u3067\u3059\u3002\u91CD\u8981\u306A\
@@ -41,27 +39,27 @@ events:
         \u3057\u3087\u3046\u3002"]
     type: logbook_w
   - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u5CF6\u306B\u96C6\u843D\
-        \u3092\u4F5C\u308B", "\u8239\u3092\u52D5\u304B\u3059\u306B\u306F\u3001\u5DE6\
-        \u30AF\u30EA\u30C3\u30AF\u3067\u8239\u3092\u9078\u629E\u3057\u3066\u3001\u53F3\
-        \u30AF\u30EA\u30C3\u30AF\u3067\u76EE\u7684\u306E\u5834\u6240\u3092\u793A\u3057\
-        \u307E\u3057\u3087\u3046\u3002\n\n\u6D77\u5CB8\u306B\u8FD1\u3065\u3044\u305F\
-        \u3089\u3001\u53F3\u5074\u306E\u6982\u8981\u30BF\u30D6\u306B\u3042\u308B\u9328\
-        \u306E\u30A2\u30A4\u30B3\u30F3\u304C\u30A2\u30AF\u30C6\u30A3\u30D6\u306B\u306A\
-        \u308A\u307E\u3059\u3002\n\n\u9328\u306E\u30A2\u30A4\u30B3\u30F3\u304C\u62BC\
-        \u305B\u308B\u3088\u3046\u306B\u306A\u308B\u3068\u3001\u305D\u306E\u8FD1\u8FBA\
-        \u306B\u652F\u90E8\u3092\u4F5C\u308B\uFF08\u300C\u96C6\u843D\u3092\u4F5C\u308B\
-        \u300D\u3068\u8A00\u3044\u307E\u3059\uFF09\u3053\u3068\u304C\u3067\u304D\u307E\
-        \u3059\u3002\n\n\u9328\u306E\u30A2\u30A4\u30B3\u30F3\u3092\u62BC\u3057\u3066\
-        \u30DE\u30A6\u30B9\u30AB\u30FC\u30BD\u30EB\u3092\u52D5\u304B\u3059\u3068\u3001\
-        \u96C6\u843D\u3092\u4F5C\u308B\u4F4D\u7F6E\u3092\u30D7\u30EC\u30D3\u30E5\u30FC\
-        \u3067\u898B\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002\n\n\u30D7\
-        \u30EC\u30D3\u30E5\u30FC\u304C\u8D64\u3044\u5F71\u3067\u8868\u793A\u3055\u308C\
-        \u3066\u3044\u306A\u3051\u308C\u3070\u3001\u305D\u306E\u5834\u6240\u306B\u96C6\
-        \u843D\u3092\u4F5C\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002\n\
-        \u597D\u304D\u306A\u5834\u6240\u3092\u30AF\u30EA\u30C3\u30AF\u3057\u3066\u3001\
-        \u6700\u521D\u306E\u96C6\u843D\u3092\u4F5C\u308A\u307E\u3057\u3087\u3046\u3002\
-        \n\n\u4EFB\u52D9\uFF1A\u3000\u6D77\u5CB8\u6CBF\u3044\u306B\u652F\u90E8\u3092\
-        \u4F5C\u308B\u3002", 2]
+        \u3092\u4F5C\u308B", !!python/unicode 'To move your ship, select it with a
+        left click and right click on the location you want it to go to.
+
+
+        Once you are near the coast, the anchor-like button you see in the overview
+        tab will become active.
+
+
+        This indicates that you are able to build a branch office there by pressing
+        that button (called ''Build Settlement'').
+
+
+        Now a preview of your building is dragged around when you move the cursor.
+
+
+        You can build on any spot where this preview is not shaded red.
+
+        Click where you want to place your first building.
+
+
+        TASK: Build a branch office at the coast.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -91,31 +89,33 @@ events:
         \u968E\uFF09\u306A\u306E\u3067\u3001\u6700\u5C0F\u9650\u306E\u5EFA\u9020\u7269\
         \u3060\u3051\u4F5C\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002"]
     type: logbook_w
-  - arguments: ['', "\u6587\u5316\u304C\u9032\u6B69\u3059\u308B\u3068\u3001\u3088\u308A\
-        \u9AD8\u5EA6\u306A\u5EFA\u9020\u7269\u3082\u4F5C\u308C\u308B\u3088\u3046\u306B\
-        \u306A\u308A\u307E\u3059\u3002\n\n\u3068\u308A\u3042\u3048\u305A\u306F\u3001\
-        \u300C\u6A5F\u95A2\u300D\u306E\u4E0B\u306B\u3042\u308B\u4F10\u63A1\u6240\u3092\
-        \u9078\u629E\u3057\u3066\u3001\u6728\u3067\u56F2\u307E\u308C\u305F\u5834\u6240\
-        \u306B\u4F10\u63A1\u6240\u3092\u4F5C\u308A\u307E\u3057\u3087\u3046\u3002\n\
-        \n\u5F8C\u304B\u3089\u6728\u3092\u690D\u3048\u308B\u3053\u3068\u3082\u3067\
-        \u304D\u307E\u3059\u304C\u3001\u304A\u91D1\u304C\u304B\u304B\u308A\u307E\u3059\
-        \u3002\u4ECA\u306F\u81EA\u7136\u306E\u6075\u307F\u3092\u3044\u305F\u3060\u304D\
-        \u307E\u3057\u3087\u3046\uFF01\n\n\u3069\u306E\u6A5F\u95A2\u3082\u5FC5\u305A\
-        \u8CAF\u8535\u5EAB\u304B\u652F\u90E8\u307E\u3067\u9053\u3067\u3064\u306A\u3050\
-        \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\u305D\u3046\u3057\u306A\u3051\
-        \u308C\u3070\u3001\u7269\u54C1\u306F\u6A5F\u95A2\u306B\u8CAF\u307E\u3063\u305F\
-        \u307E\u307E\u96C6\u3081\u3089\u308C\u307E\u305B\u3093\u3002\n\n\u3064\u307E\
-        \u308A\u3001\u4ECA\u304B\u3089\u4F5C\u308B\u4F10\u63A1\u6240\u306F\u9053\u3067\
-        \u652F\u90E8\uFF08\u307E\u305F\u306F\u8CAF\u8535\u5EAB\uFF09\u3068\u3064\u306A\
-        \u304C\u306A\u3051\u308C\u3070\u306A\u308A\u307E\u305B\u3093\u3002\n\n\u4EFB\
-        \u52D9\uFF1A\u3000\u6728\u306E\u751F\u3044\u8302\u3063\u305F\u5834\u6240\u306B\
-        \u4F10\u63A1\u6240\u3092\u4F5C\u308A\u3001\u9053\u3067\u3064\u306A\u3050\u3002\
-        \n\n\u4F4F\u6C11\u304C\u521D\u306E\u81EA\u4F5C\u306E\u677F\u6750\u3092\u53D6\
-        \u308A\u306B\u6765\u308B\u306E\u3092\u898B\u3066\u3044\u307E\u3057\u3087\u3046\
-        \u3002"]
+  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
+        more and more complex buildings.
+
+
+        For now, select the lumberjack under ''Companies'' and build it in an area
+        with some trees around.
+
+
+        You can also plant trees later - but that costs money. Use what nature provided
+        you with!
+
+
+        A company always needs a trail connection to a storage or branch office, otherwise
+        goods will remain at the company and not be collected.
+
+
+        This means that you have to build a trail connecting your branch office (or
+        storage) and lumberjack.
+
+
+        TASK: Build a lumberjack in a wooded area and connect it to a road.
+
+
+        Watch how a collector will fetch your first self-produced boards.']
     type: logbook
-  - arguments: ["\u4F10\u63A1\u6240\u3092\u4F5C\u3063\u3066\u3001\u9053\u3067\u652F\
-        \u90E8\u3068\u3064\u306A\u304E\u307E\u3057\u3087\u3046\u3002"]
+  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
+        office using a trail.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -150,25 +150,28 @@ events:
         \u3066\u306F\u3042\u307E\u308A\u4FE1\u7528\u3067\u304D\u306A\u3044\u3001\u3068\
         \u3044\u3046\u3053\u3068\u3067\u3059\u3002"]
     type: logbook_w
-  - arguments: ['', "\u6F01\u5834\u306F\u652F\u90E8\u3068\u540C\u3058\u3088\u3046\u306B\
-        \u6D77\u5CB8\u6CBF\u3044\u306B\u3001\u305D\u3057\u3066\u305D\u306E\u7BC4\u56F2\
-        \u5185\u306B\u9B5A\u7FA4\u304C\u3042\u308B\u5834\u6240\u306B\u4F5C\u308A\u307E\
-        \u3057\u3087\u3046\u3002\n\n\u6F01\u5E2B\u306F\u5C0F\u3055\u306A\u6F15\u304E\
-        \u8239\u3092\u4F5C\u3063\u3066\u3001\u9B5A\u3092\u6355\u308A\u307E\u3059\u3002\
-        \n\n\u3053\u308C\u306F\u30E6\u30CB\u30C3\u30C8\u3042\u305F\u308A\u306E\u751F\
-        \u7523\u306B\u306F\u3084\u3084\u6642\u9593\u304C\u304B\u304B\u308A\u307E\u3059\
-        \u304C\u3001\u3068\u3066\u3082\u5B89\u5B9A\u3057\u305F\u98DF\u7CE7\u4F9B\u7D66\
-        \u306E\u65B9\u6CD5\u3067\u3059\u3002\n\n\u59CB\u3081\u305F\u3070\u304B\u308A\
-        \u306E\u96C6\u843D\u306E\u5834\u5408\u306B\u306F\u3069\u3061\u3089\u306E\u6A5F\
-        \u95A2\u3082\u4F7F\u3048\u3070\u3088\u304F\u3001\u305D\u308C\u305E\u308C\u306E\
-        \u9577\u6240\u3068\u77ED\u6240\u3092\u6BD4\u8F03\u3057\u3066\u30D0\u30E9\u30F3\
-        \u30B9\u3092\u53D6\u3063\u3066\u3044\u3063\u3066\u304F\u3060\u3055\u3044\u3002\
-        \n\n\u4EFB\u52D9\uFF1A\u3000\u72E9\u731F\u5834\u3068\u6F01\u5834\u3092\u4F5C\
-        \u308B\u3002\n\n\u9053\u3067\u652F\u90E8\u3068\u3064\u306A\u3050\u306E\u3092\
-        \u5FD8\u308C\u305A\u306B\uFF01"]
+  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
+        the branch office and a fish school in range.
+
+
+        He will build a small rowing vessel and catch some fish.
+
+
+        This is a very constant supply at the cost of a slightly longer production
+        time per unit of food.
+
+
+        A small settlement like yours can use both companies, and you can better balance
+        pros and cons if you see the direct comparison.
+
+
+        TASK: Build a hunter and a fisher.
+
+
+        Don''t forget to connect them to your branch office with trails!']
     type: logbook
-  - arguments: ["\u72E9\u731F\u5834\u3068\u6F01\u5834\u3092\u4F5C\u3063\u3066\u3001\
-        \u652F\u90E8\u3068\u9053\u3067\u3064\u306A\u3050\u3002"]
+  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
+        branch office.']
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -181,24 +184,27 @@ events:
     type: var_lt
 - actions:
   - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u30E1\u30A4\u30F3\u5E83\
-        \u5834", "\u4F4F\u6C11\u304C\u7269\u54C1\u3092\u53D6\u308A\u306B\u6765\u308B\
-        \u305F\u3081\u306E\u30E1\u30A4\u30F3\u5E83\u5834\u304C\u5FC5\u8981\u3067\u3059\
-        \u3002\n\n\u30E1\u30A4\u30F3\u5E83\u5834\u3068\u4F4F\u6C11\u306E\u5BB6\u306F\
-        \u9053\u3067\u3064\u306A\u304E\u307E\u3059\u3002\n\n\u652F\u90E8\u306B\u3042\
-        \u308B\u3059\u3079\u3066\u306E\u7269\u54C1\u306F\u3053\u306E\u300C\u5E02\u5834\
-        \u300D\u3067\u624B\u306B\u5165\u308B\u305F\u3081\u3001\u4F4F\u6C11\u306F\u6F01\
-        \u5834\u3084\u652F\u90E8\u307E\u3067\u6B69\u304D\u56DE\u3089\u306A\u304F\u3066\
-        \u6E08\u3080\u306E\u3067\u3059\u3002\n\n\u5F8C\u304B\u3089\u62E1\u3052\u3084\
-        \u3059\u3044\u5834\u6240\u306B\u4F4F\u6C11\u306E\u5BB6\uFF08\u30C6\u30F3\u30C8\
-        \uFF09\u3082\u4F5C\u3063\u3066\u3001\u9053\u3067\u3064\u306A\u3044\u3067\u304F\
-        \u3060\u3055\u3044\u3002\n\n\u30C6\u30F3\u30C8\u3092\u4F5C\u308B\u3068\u304D\
-        \u306F\u3001\u305F\u3068\u3048\u3070\u3001\u4F10\u63A1\u6240\u306B\u8FD1\u3065\
-        \u304D\u3059\u304E\u306A\u3044\u3088\u3046\u306B\u3057\u307E\u3057\u3087\u3046\
-        \u3002\u30C6\u30F3\u30C8\u306E\u5834\u6240\u306B\u3042\u3063\u305F\u6728\u306F\
-        \u9664\u53BB\u3055\u308C\u3066\u3057\u307E\u3046\u305F\u3081\u3001\u4F10\u63A1\
-        \u6240\u306F\u677F\u6750\u3092\u751F\u7523\u3067\u304D\u306A\u304F\u306A\u3063\
-        \u3066\u3057\u307E\u3044\u307E\u3059\u3002\n\n\u4EFB\u52D9\uFF1A\u3000\u30E1\
-        \u30A4\u30F3\u5E83\u5834\u3092\u4F5C\u308B\u3002"]
+        \u5834", !!python/unicode 'Your residents need a main square where they can
+        fetch their goods from.
+
+
+        This means that they need a trail connection from their home to the main square.
+
+
+        All goods in your branch office are available at this ''market place'', so
+        your residents do not need to walk to the fisher or even to the branch office.
+
+
+        You should consider founding your actual house settlement in an area where
+        you can easily expand it and build some trails, too.
+
+
+        You should avoid placing tents too close to your lumberjacks for example because
+        building tents will clear away the trees that your lumberjack needs to produce
+        boards.
+
+
+        TASK: Build a main square.']
     type: logbook_w
   - arguments: ['', "\u305D\u308C\u3067\u306F\u3001\u30E1\u30A4\u30F3\u5E83\u5834\u3092\
         \u3088\u304F\u898B\u3066\u307F\u307E\u3057\u3087\u3046\u3002\n\n\u300C\u4F1A\
@@ -302,58 +308,53 @@ events:
     type: var_lt
 - actions:
   - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u306E\u308D\u3057\u3092\
-        \u4E0A\u3052\u308B", "\u5CF6\u306E\u307E\u308F\u308A\u3092\u884C\u304D\u6765\
-        \u3057\u3066\u3044\u308B\u8239\u304C\u898B\u3048\u307E\u3059\u304B\uFF1F\u3000\
-        \u305D\u306E\u8239\u306F\u81EA\u7531\u4EA4\u6613\u8239\u3068\u3044\u3063\u3066\
-        \u3001\u3053\u306E\u7FA4\u5CF6\u306E\u521D\u671F\u5165\u690D\u8005\u305F\u3061\
-        \u3067\u3059\u3002\n\u4EA4\u6613\u8005\u306F\u3042\u306A\u305F\u306E\u96C6\
-        \u843D\u306B\u5FC5\u8981\u3067\u3001\u307E\u305F\u81EA\u529B\u3067\u751F\u7523\
-        \u3067\u304D\u306A\u3044\u7269\u54C1\u3092\u4F9B\u7D66\u3057\u3066\u304F\u308C\
-        \u307E\u3059\u3002\n\u3042\u306A\u305F\u306E\u751F\u7523\u54C1\u306E\u4F59\
-        \u5270\u5206\u3092\u8CB7\u3044\u53D6\u3063\u3066\u3082\u3089\u3046\u3053\u3068\
-        \u3082\u3067\u304D\u307E\u3059\u304C\u3001\u5927\u62B5\u306E\u5834\u5408\u306F\
-        \u4F59\u5270\u5206\u306F\u58F2\u308B\u3088\u308A\u3082\uFF08\u3082\u3063\u3068\
-        \u30C6\u30F3\u30C8\u3092\u4F5C\u3063\u3066\uFF09\u6D88\u8CBB\u3057\u3066\u3057\
-        \u307E\u3063\u305F\u307B\u3046\u304C\u53CE\u5165\u304C\u5897\u3048\u307E\u3059\
-        \u3002\n\n\u901A\u5E38\u3001\u81EA\u7531\u4EA4\u6613\u8239\u306F\u305F\u3060\
-        \u822A\u6D77\u3057\u3066\u53D6\u5F15\u3092\u63A2\u3059\u3060\u3051\u3067\u3059\
-        \u304C\u3001\u5C11\u3057\u3060\u3051\u30B9\u30D4\u30FC\u30C9\u30A2\u30C3\u30D7\
-        \u3055\u305B\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002\n\n\u3053\
-        \u306E\u305F\u3081\u306B\u3001\u652F\u90E8\u306E\u305D\u3070\u306E\u6D77\u5CB8\
-        \u306B\u306E\u308D\u3057\u3092\u4E0A\u3052\u307E\u3057\u3087\u3046\u3002\u306E\
-        \u308D\u3057\u304C\u8239\u3092\u3042\u306A\u305F\u306E\u96C6\u843D\u306B\u5C0E\
-        \u304F\u306E\u3067\u3059\u3002\n\n\u306E\u308D\u3057\u306E\u6709\u52B9\u7BC4\
-        \u56F2\u5185\u306B\u8239\u304C\u6765\u308B\u3088\u3046\u306B\u4E0A\u3052\u308B\
-        \u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"]
+        \u4E0A\u3052\u308B", !!python/unicode 'Can you see the ship passing your island
+        from time to time? That ship belongs to the Free Trader, one of the first
+        settlers in this archipelago.
+
+
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
+
+
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
+
+
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
+
+
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
     type: logbook_w
-  - arguments: ['', "\u3053\u306E\u3061\u3087\u3063\u3068\u3057\u305F\u5468\u77E5\u904B\
-        \u52D5\u306B\u3088\u3063\u3066\u3001\u4EA4\u6613\u8005\u306F\u901A\u308A\u904E\
-        \u304E\u3088\u3046\u3068\u3057\u3066\u3044\u305F\u3042\u306A\u305F\u306E\u652F\
-        \u90E8\u306B\u7ACB\u3061\u5BC4\u3063\u3066\u304F\u308C\u308B\u3067\u3057\u3087\
-        \u3046\u3002\n\n\u652F\u90E8\u306E\u300C\u8CFC\u5165/\u8CA9\u58F2\u300D\u30BF\
-        \u30D6\u3067\u53D6\u5F15\u306E\u63D0\u793A\u304C\u3067\u304D\u307E\u3059\u3002\
-        \uFF08\u3053\u306E\u6A5F\u80FD\u306F\u73FE\u5728\u3068\u3066\u3082\u4F7F\u3044\
-        \u3065\u3089\u304F\u306A\u3063\u3066\u3044\u307E\u3059\u3002\u4F7F\u3044\u3084\
-        \u3059\u304F\u3059\u308B\u826F\u3044\u30A2\u30A4\u30C7\u30A2\u304C\u601D\u3044\
-        \u3064\u3044\u305F\u3089\u3001\u305C\u3072\u6559\u3048\u3066\u304F\u3060\u3055\
-        \u3044\u3002\u3054\u5354\u529B\u3092\u304A\u9858\u3044\u3057\u307E\u3059\uFF01\
-        \uFF09\n\n\u300C\u8239\u4E57\u308A\u300D\u306E\u6642\u4EE3\u306B\u306F\u3001\
-        \u4E09\u3064\u306E\u53D6\u5F15\u67A0\u304C\u3042\u308A\u307E\u3059\u3002\n\
-        \n\u53D6\u5F15\u67A0\u306E\u4E2D\u306E\u5DE6\u4E0A\u306B\u3042\u308B\u5C0F\
-        \u3055\u306A\u30A2\u30A4\u30B3\u30F3\u3092\u30AF\u30EA\u30C3\u30AF\u3059\u308B\
-        \u3068\u3001\u305D\u306E\u67A0\u306E\u72B6\u614B\u3092\u300C\u8CFC\u5165\u300D\
-        \u3068\u300C\u8CA9\u58F2\u300D\u306B\u4EA4\u4E92\u306B\u5207\u308A\u66FF\u3048\
-        \u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002\n\u53D6\u5F15\u67A0\
-        \u3092\u30AF\u30EA\u30C3\u30AF\u3057\u3066\u53D6\u5F15\u3057\u305F\u3044\u7269\
-        \u54C1\u3092\u9078\u629E\u3057\u307E\u3057\u3087\u3046\u3002\u3053\u306E\u64CD\
-        \u4F5C\u306B\u3064\u3044\u3066\u306F\u3001\u5F8C\u3067\u53D6\u5F15\u3067\u304D\
-        \u308B\u72B6\u614B\u306B\u306A\u3063\u305F\u3089\u8A73\u3057\u304F\u8AAC\u660E\
-        \u3057\u307E\u3059\u3002\n\n\u4EFB\u52D9\uFF1A\u3000\u652F\u90E8\u306E\u8FD1\
-        \u304F\u306E\u6D77\u5CB8\u6CBF\u3044\u306E\u5834\u6240\u306B\u306E\u308D\u3057\
-        \u3092\u4E0A\u3052\u308B\u3002"]
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
-  - arguments: ["\u652F\u90E8\u306E\u8FD1\u304F\u306E\u6D77\u5CB8\u6CBF\u3044\u306E\
-        \u5834\u6240\u306B\u306E\u308D\u3057\u3092\u4E0A\u3052\u308B\u3002"]
+  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
+        office.']
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -365,26 +366,15 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u4EA4\u6613", "\u7D20\u6674\
-        \u3089\u3057\u3044\uFF01\u3000\u81EA\u7531\u4EA4\u6613\u8239\u306F\u3042\u306A\
-        \u305F\u306E\u652F\u90E8\u306B\u7ACB\u3061\u5BC4\u308B\u3088\u3046\u306B\u306A\
-        \u3063\u3066\u3044\u308B\u3067\u3057\u3087\u3046\u3002\n\n\u305D\u308C\u3067\
-        \u306F\u53D6\u5F15\u306E\u65B9\u6CD5\u306B\u3064\u3044\u3066\u5B66\u3073\u307E\
-        \u3057\u3087\u3046\u3002\n\n\u53D6\u5F15\u3057\u305F\u3044\u7269\u54C1\u3092\
-        \u9078\u629E\u3059\u308B\u3068\u3001\u53D6\u5F15\u67A0\u306B\u4E26\u3093\u3060\
-        \u7DD1\u8272\u306E\u30D0\u30FC\u304C\uFF08\u3082\u3057\u3042\u308C\u3070\uFF09\
-        \u3042\u306A\u305F\u304C\u305D\u306E\u7269\u54C1\u3092\u3069\u306E\u304F\u3089\
-        \u3044\u8CAF\u8535\u3057\u3066\u3044\u308B\u304B\u8868\u3057\u307E\u3059\u3002\
-        \n\n\u305D\u308C\u305E\u308C\u306E\u53D6\u5F15\u67A0\u306E\u53F3\u306B\u3042\
-        \u308B\u30B9\u30E9\u30A4\u30C0\u30FC\u3092\u30C9\u30E9\u30C3\u30B0\u3057\u3066\
-        \u3001\u300C\u8CFC\u5165\u300D\u3084\u300C\u8CA9\u58F2\u300D\u306E\u300C\u76EE\
-        \u6A19\u5024\u300D\u3092\u6C7A\u3081\u307E\u3057\u3087\u3046\u3002\n\u8CFC\
-        \u5165\u3059\u308B\u5834\u5408\u3001\u305D\u306E\u7269\u54C1\u304C\u300C\u76EE\
-        \u6A19\u5024\u300D\u3060\u3051\u8CAF\u8535\u3055\u308C\u308B\u307E\u3067\u305D\
-        \u306E\u7269\u54C1\u3092\u8CB7\u304A\u3046\u3068\u3057\u307E\u3059\u3002\n\
-        \u8CA9\u58F2\u3059\u308B\u5834\u5408\u3001\u305D\u306E\u7269\u54C1\u304C\u300C\
-        \u76EE\u6A19\u5024\u300D\u3060\u3051\u8CAF\u8535\u3055\u308C\u305F\u72B6\u614B\
-        \u3067\u6B8B\u308A\u3092\u58F2\u308D\u3046\u3068\u3057\u307E\u3059\u3002"]
+  - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u4EA4\u6613", !!python/unicode "Excellent!\
+        \ The Free Trader will now stop by at your branch office from time to time.\n\
+        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
+        \ type of good, the green bar across the bottom of the slot (if visible) shows\
+        \ you how much you have in stock of this good.\n\nDragging the slider on the\
+        \ right of each slot determines your 'target value' which has a different\
+        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
+        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
+        \ which you hold in reserve to not sell"]
     type: logbook_w
   - arguments: ['', "\u305F\u3068\u3048\u3070\u3001\n\u300C\u8CFC\u5165\u300D\u306E\
         \u53D6\u5F15\u67A0\u3067\u30015\u30C8\u30F3\u306E\u8CAF\u8535\u304C\u3042\u308B\
@@ -560,28 +550,28 @@ events:
         \u571F\u5730\u306E\u7A2E\u985E\u306B\u3088\u3063\u3066\u6C7A\u307E\u308A\u307E\
         \u3059\u3002"]
     type: logbook_w
-  - arguments: ['', "\u5F8C\u3067\u3082\u3063\u3068\u8A73\u3057\u304F\u898B\u3066\u307F\
-        \u307E\u3057\u3087\u3046\u3002\n\n\u8FB2\u5834\u306F\u3001\u539F\u6750\u6599\
-        \u3092\u751F\u7523\u3059\u308B\u3059\u3079\u3066\u306E\u571F\u5730\u3068\u540C\
-        \u3058\u304F\u3001\u8CAF\u8535\u5EAB\u3084\u652F\u90E8\u3068\u5FC5\u305A\u3057\
-        \u3082\u3064\u306A\u304C\u3063\u3066\u3044\u308B\u5FC5\u8981\u306F\u3042\u308A\
-        \u307E\u305B\u3093\u3002\n\n\u6700\u7D42\u7684\u306A\u7269\u54C1\u3092\u751F\
-        \u7523\u3059\u308B\u6A5F\u95A2\u306F\u8FB2\u5834\u306B\u3064\u306A\u304C\u3063\
-        \u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\u305D\u3057\
-        \u3066\u652F\u90E8\u3084\u8CAF\u8535\u5EAB\u3001\u30C6\u30F3\u30C8\u304B\u3089\
-        \u6A5F\u95A2\u306B\u3064\u306A\u304C\u3063\u3066\u3044\u308C\u3070\u3001\u554F\
-        \u984C\u3042\u308A\u307E\u305B\u3093\u3002\n\n\u305F\u3060\u3057\u3001\u3082\
-        \u3057\u5CF6\u306E\u5225\u306E\u5834\u6240\u3067\u751F\u7523\u3057\u3066\u3044\
-        \u308B\u3082\u306E\u304C\u3042\u3063\u305F\u308A\uFF08\u7406\u306B\u304B\u306A\
-        \u3063\u3066\u3044\u308B\u3053\u3068\u3082\u3042\u308A\u307E\u3059\uFF09\u3001\
-        \u9055\u3046\u5CF6\u3067\u3082\u751F\u7523\u3057\u3066\u3044\u305F\u308A\u3059\
-        \u308B\u3068\u304D\u306B\u306F\u3001\u3064\u306A\u3052\u308B\u5FC5\u8981\u304C\
-        \u3042\u308A\u307E\u3059\u3002\n\n\u8FB2\u5834\u304C\u6A5F\u80FD\u3059\u308B\
-        \u306B\u306F\u5468\u56F2\u306B\u3042\u308B\u7A0B\u5EA6\u5E83\u3044\u7528\u5730\
-        \u304C\u5FC5\u8981\u306A\u306E\u3067\u3001\u6D77\u5CB8\u3084\u4ED6\u306E\u5EFA\
-        \u9020\u7269\u306B\u8FD1\u3059\u304E\u306A\u3044\u5834\u6240\u306B\u8FB2\u5834\
-        \u3092\u4F5C\u3063\u3066\u307F\u307E\u3057\u3087\u3046\u3002\n\n\u4EFB\u52D9\
-        \uFF1A\u3000\u8FB2\u5834\u3092\u4F5C\u308B\u3002"]
+  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
+
+
+        Farms, like all companies producing raw materials, do not necessarily need
+        to be connected to storage or a Branch Office.
+
+
+        As long as units of the final production company can reach the farm, and collectors
+        from the branch office or storage tent can reach the final company everything''s
+        fine.
+
+
+        If you, however, plan to do some processing on different parts of the island
+        (which can make sense) or even on different islands, you will need a connection
+        to collectors.
+
+
+        Try to build the farm not too close to the coast or your existing buildings
+        since it will need some space around it to work well.
+
+
+        TASK: Build a farm.']
     type: logbook
   - arguments: ["\u5468\u56F2\u306B\u7528\u5730\u3092\u78BA\u4FDD\u3067\u304D\u308B\
         \u5834\u6240\u306B\u8FB2\u5834\u3092\u4F5C\u308B\u3002"]
@@ -657,51 +647,39 @@ events:
     type: var_lt
 - actions:
   - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u8CAF\u8535\u5EAB\u3092\
-        \u4F5C\u308B", "\u3068\u3053\u308D\u3067\u3001\u6700\u8FD1\u3001\u4F10\u63A1\
-        \u6240\u3092\u898B\u3066\u3044\u307E\u3059\u304B\uFF1F\n\n\u652F\u90E8\u306F\
-        \u7121\u9650\u306B\u7269\u54C1\u3092\u8CAF\u8535\u3067\u304D\u308B\u308F\u3051\
-        \u3067\u306F\u306A\u3044\u306E\u3067\u3001\u4E00\u676F\u3067\u8CAF\u3081\u308B\
-        \u3053\u3068\u304C\u3067\u304D\u306A\u304F\u306A\u308B\u3068\u6A5F\u95A2\u304B\
-        \u3089\u306E\u7269\u54C1\u306E\u53CE\u96C6\u306F\u6B62\u307E\u3063\u3066\u3057\
-        \u307E\u3044\u307E\u3059\u3002\n\u3082\u3057\u8239\u4E57\u308A\u304C\u30C6\
-        \u30F3\u30C8\u3092\u6539\u7BC9\u3057\u306A\u304F\u306A\u3063\u3066\u3044\u308B\
-        \u306A\u3089\u3001\u677F\u6750\u306E\u8CAF\u8535\u304C\u4E00\u676F\u306B\u306A\
-        \u3063\u3066\u3044\u3066\u3001\u4F10\u63A1\u6240\u304C\u30B9\u30C8\u30C3\u30D7\
-        \u3057\u3066\u3044\u308B\u306E\u304B\u3082\u3057\u308C\u307E\u305B\u3093\u3002\
-        \n\u3053\u306E\u72B6\u6CC1\u3092\u89E3\u6C7A\u3059\u308B\u65B9\u6CD5\u306F\
-        \u3075\u305F\u3064\u3042\u308A\u307E\u3059\u3002\u9806\u306B\u7D39\u4ECB\u3057\
-        \u307E\u3057\u3087\u3046\u3002\n\n\u3069\u306E\u6A5F\u95A2\u3082\u751F\u7523\
-        \u3092\u505C\u6B62\u3055\u305B\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\
-        \u3002\n\u5909\u306B\u601D\u3046\u304B\u3082\u3057\u308C\u307E\u305B\u3093\
-        \u304C\u3001\u305F\u3068\u3048\u3070\u3001\u4F10\u63A1\u6240\u306E\u6982\u8981\
-        \u30BF\u30D6\u3067\u6B6F\u8ECA\u3092\u30AF\u30EA\u30C3\u30AF\u3057\u3066\u307F\
-        \u3066\u304F\u3060\u3055\u3044\u3002\n\n\u3053\u306E\u300C\u4F11\u61A9\u300D\
-        \u30E2\u30FC\u30C9\u3092\u30AA\u30F3\u306B\u3059\u308B\u3068\uFF08\u3053\u308C\
-        \u3092\u300C\u505C\u6B62\u300D\u3068\u3044\u3044\u307E\u3059\uFF09\u3001\u5EFA\
-        \u9020\u7269\u306E\u904B\u55B6\u8CBB\u306F\u6E1B\u308A\u307E\u3059\u3002\u30BC\
-        \u30ED\u306B\u306F\u306A\u308A\u307E\u305B\u3093\u304C\u3001\u751F\u7523\u3057\
-        \u7D9A\u3051\u308B\u3088\u308A\u306F\u6E1B\u308B\u306E\u3067\u3059\u3002"]
+        \u4F5C\u308B", !!python/unicode 'Did you watch your lumberjack recently?
+
+
+        Since your branch office does not have unlimited space to store goods, collectors
+        will stop fetching goods from companies when stock is full.
+
+        So if no sailor recently wanted to upgrade his tent, you probably have a lot
+        of boards and in that case, the lumberjack may idle.
+
+        We can improve this situation with two different approaches, and below we
+        will have a look at both of them.
+
+
+        All companies offer the possibility of doing no work at all.
+
+        This may sound strange, but try to click on the gear wheel you see in, for
+        example, a lumberjack''s overview.
+
+
+        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
+        costs you pay for the building will decrease. They won''t be zero, but still
+        lower than if you keep the company producing.']
     type: logbook_w
-  - arguments: ['', "\u3064\u307E\u308A\u3001\u4E00\u6642\u7684\u306B\u6A5F\u95A2\u304C\
-        \u4E0D\u8981\u306B\u306A\u3063\u3066\u3001\u53D6\u308A\u58CA\u3057\u305F\u304F\
-        \u306A\u3044\u3068\u304D\u306F\u3001\u304A\u91D1\u3092\u7BC0\u7D04\u3067\u304D\
-        \u308B\u306E\u3067\u3059\u3002\n\n\u3082\u3046\u3072\u3068\u3064\u306E\u65B9\
-        \u6CD5\u306F\u3001\u7B2C\u4E00\u306E\u6642\u4EE3\u306B\u3042\u308B\u6700\u5F8C\
-        \u306E\u5EFA\u9020\u7269\u3092\u4F5C\u308B\u3053\u3068\u3067\u3059\u3002\u3053\
-        \u308C\u307E\u3067\u51FA\u3066\u3053\u306A\u304B\u3063\u305F\u3001\u8CAF\u8535\
-        \u5EAB\u3067\u3059\u3002\n\n\u8CAF\u8535\u5EAB\u306B\u306F\u3075\u305F\u3064\
-        \u306E\u76EE\u7684\u304C\u3042\u308A\u307E\u3059\u3002\n* \u7269\u54C1\u3092\
-        \u3088\u308A\u591A\u304F\u8CAF\u8535\u3059\u308B\u3053\u3068\n* \u652F\u90E8\
-        \u3068\u540C\u3058\u3088\u3046\u306B\u3001\u4F4F\u6C11\u304C\u7269\u54C1\u3092\
-        \u53D6\u308A\u306B\u6765\u308B\u5834\u3092\u63D0\u4F9B\u3059\u308B\u3053\u3068\
-        \n\n\u751F\u7523\u7269\u3092\u96C6\u3081\u3089\u308C\u308B\u3088\u3046\u306B\
-        \u3001\u6A5F\u95A2\u306F\u8CAF\u8535\u5EAB\u306B\u3064\u306A\u3052\u308B\u3053\
-        \u3068\u304C\u3067\u304D\u307E\u3059\u3002\u652F\u90E8\u306E\u8CAF\u8535\u80FD\
-        \u529B\u3092\u8D85\u3048\u3066\u3057\u307E\u3046\u72B6\u6CC1\u306F\u3001\u8CAF\
-        \u8535\u5EAB\u3092\u7F6E\u304F\u3053\u3068\u3067\u89E3\u6C7A\u3067\u304D\u307E\
-        \u3059\u3002\n\n\u4EFB\u52D9\uFF1A\u3000\u3067\u304D\u308C\u3070\u7269\u54C1\
-        \u306E\u9700\u8981\u304C\u3042\u308B\u5834\u6240\u306B\u8CAF\u8535\u5EAB\u3092\
-        \u4F5C\u308B\u3002"]
+  - arguments: ['', !!python/unicode "This means that you can save money when you\
+        \ temporarily do not need a company and do not want to tear it down, either.\n\
+        \nAnother solution is to build the last increment-I building which has not\
+        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
+        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
+        \ to fetch goods, just like the branch office does.\n\nNote that companies\
+        \ can also be connected to a storage in order to get their products collected,\
+        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
+        \ where you need collectors."]
     type: logbook
   - arguments: ["\uFF08\u7B2C\u4E00\u306E\u6642\u4EE3\u306E\u30BF\u30D6\u306B\u3042\
         \u308B\uFF09\u8CAF\u8535\u5EAB\u3092\u3001\u5F79\u306B\u7ACB\u3064\u5834\u6240\
@@ -718,21 +696,22 @@ events:
     type: var_lt
 - actions:
   - arguments: ["\u65B0\u3057\u3044\u4EFB\u52D9\uFF1A\u3000\u6A5F\u7E54\u308A\u5834\
-        \u3092\u4F5C\u308B", "\u7F8A\u6BDB\u304C\u751F\u7523\u3055\u308C\u59CB\u3081\
-        \u307E\u3057\u305F\u304C\u3001\u7F8A\u6BDB\u304B\u3089\u5E03\u3092\u4F5C\u308B\
-        \u306B\u306F\u3055\u3089\u306B\u6A5F\u7E54\u308A\u5834\u304C\u5FC5\u8981\u3067\
-        \u3059\u3002\n\n\u6A5F\u7E54\u308A\u5834\u306E\u5EFA\u7BC9\u5834\u6240\u306E\
-        \u5019\u88DC\u306F\u3075\u305F\u3064\u3042\u308A\u307E\u3059\u3002\u8FB2\u5834\
-        \u306E\u8FD1\u304F\u304B\u3001\u8CAF\u8535\u5EAB\uFF08\u307E\u305F\u306F\u652F\
-        \u90E8\uFF09\u306E\u8FD1\u304F\u3067\u3059\u3002\n\n\u3069\u3061\u3089\u306E\
-        \u5834\u5408\u3082\u9053\u3067\u3064\u306A\u3050\u306E\u3092\u5FD8\u308C\u306A\
-        \u3044\u3088\u3046\u306B\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n\n\u8FB2\
-        \u5834\u306E\u8FD1\u304F\u306B\u4F5C\u3063\u3066\u3001\u8FB2\u5834\u3078\u306E\
-        \u9053\u3092\u64A4\u53BB\u3057\u3066\u3057\u307E\u3063\u3066\u3082\u7F8A\u6BDB\
-        \u306F\u751F\u7523\u3055\u308C\u3066\u5208\u308A\u53D6\u3089\u308C\u308B\u3053\
-        \u3068\u304C\u308F\u304B\u308B\u3067\u3057\u3087\u3046\u3002\n\n\u4EFB\u52D9\
-        \uFF1A\u3000\u7F8A\u6BDB\u304C\u5F97\u3089\u308C\u308B\u5834\u6240\u306B\u6A5F\
-        \u7E54\u308A\u5834\u3092\u4F5C\u308B\u3002"]
+        \u3092\u4F5C\u308B", !!python/unicode 'Now the wool production is set up,
+        you still need a weaver to produce cloth out of this wool.
+
+
+        There are two spots where you can build it - either close to the farm or close
+        to a Storage Tent (or the Branch Office).
+
+
+        In both cases you should ensure the connection to a trail as well.
+
+
+        You can place the weaver close to the farm and tear down any trail to the
+        farm to see that it will still fetch the wool and produce.
+
+
+        TASK: Build a weaver positioned so it can get wool.']
     type: logbook
   - arguments: ["\u7F8A\u6BDB\u304C\u5F97\u3089\u308C\u308B\u8FB2\u5834\u306B\u3064\
         \u306A\u304C\u308B\u5834\u6240\u306B\u6A5F\u7E54\u308A\u5834\u3092\u4F5C\u308B\

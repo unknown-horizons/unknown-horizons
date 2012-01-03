@@ -7,8 +7,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
+<<<<<<< HEAD
 "PO-Revision-Date: 2011-12-19 03:07+0200\n"
 "Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+=======
+"PO-Revision-Date: 2011-12-29 20:45+0200\n"
+"Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
+>>>>>>> master
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +26,11 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "{player} je ustanovil novo naselbino."
+>>>>>>> master
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -190,10 +199,15 @@ msgstr "Njiva krompirja"
 msgid "Salt Ponds"
 msgstr "Soline"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Screenshot has been saved to {file}."
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Zaslonski posnetek je bil shranjen v {file}."
+>>>>>>> master
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -213,12 +227,12 @@ msgstr "Talilnica"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Nekateri prebivalci nimajo dostopa do glavnega trga."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Nekateri prebivalci so se pravkar odselili."
 
 #. This is a database entry: the name of a building.
 #: database files sql
@@ -302,20 +316,26 @@ msgstr "Povlečete lahko tudi poti."
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr "Dosegli ste zadnjo stopnjo. Vaši naseljenci se ne bodo več nadgradili."
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more {resource} to build this building."
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Za izgradnjo te zgradbe potrebujete več {resource}."
+>>>>>>> master
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Zmagali ste!"
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Vaša igra je bila samodejno shranjena."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -325,7 +345,11 @@ msgstr "Vaša igra je bila hitro shranjena."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your inhabitants reached level {level}."
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Prebivalci so dosegli stopnjo {level}."
+>>>>>>> master
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -638,6 +662,7 @@ msgstr "volna"
 msgid "yellow"
 msgstr "rumena"
 
+<<<<<<< HEAD
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "{player1} and {player2} are now {status}"
@@ -647,6 +672,18 @@ msgstr ""
 #, python-format
 msgid "{name}: {chatmessage}"
 msgstr ""
+=======
+# 93%
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
+msgid "{player1} and {player2} are now {status}"
+msgstr "{player1} in {player2} sta zdaj {status}"
+
+#: horizons/command/misc.py:30
+#, python-format, fuzzy
+msgid "{name}: {chatmessage}"
+msgstr "{name}: {chatmessage}"
+>>>>>>> master
 
 #: horizons/engine.py:71
 msgid "Restart required"
@@ -687,7 +724,11 @@ msgstr ""
 #: horizons/engine.py:304
 #, python-format
 msgid "Configured language {lang} could not be loaded"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Nastavljenega jezika {lang} ni mogoče naložiti"
+>>>>>>> master
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
@@ -699,11 +740,11 @@ msgstr "Navedena vrata niso veljavna. Biti morajo število med 1 in 65535."
 
 #: horizons/engine.py:562
 msgid "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "Preverite vnesena vrata in se prepričajte, da so v določenem obsegu."
 
 #: horizons/engine.py:574
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "Uveljavitev novih omrežnih nastavitev je spodletela."
 
 #: horizons/engine.py:575 horizons/gui/modules/multiplayermenu.py:52
 msgid "Network features could not be initialized with the current configuration."
@@ -2650,6 +2691,7 @@ msgstr "Uporabljen izrisovalnik:"
 #: horizons/i18n/guitranslations.py:952
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
+<<<<<<< HEAD
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:954
@@ -2661,6 +2703,19 @@ msgstr ""
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
 
+=======
+
+#. (tooltip of widget: color_depth_label)
+#: horizons/i18n/guitranslations.py:954
+msgid "If set to 0, use the driver default"
+msgstr ""
+
+#. (tooltip of widget: edge_scrolling_label)
+#: horizons/i18n/guitranslations.py:956
+msgid "Whether to move the viewport when the mouse pointer is close to map edges"
+msgstr ""
+
+>>>>>>> master
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:958
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"

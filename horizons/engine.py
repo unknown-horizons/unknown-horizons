@@ -585,12 +585,12 @@ class Fife(ApplicationBase):
 	def run(self):
 		"""
 		"""
-		self.init()
+		assert self._gotInited
 		self.__setup_screen_resolutions()
 		self.engine.initializePumping()
 		self.loop()
-		self.__kill_engine()
 		self.engine.finalizePumping()
+		self.__kill_engine()
 
 	def loop(self):
 		"""

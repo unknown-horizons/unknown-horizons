@@ -57,9 +57,9 @@ class VERSION:
 		return u"<unknown>"
 
 	RELEASE_NAME    = "Unknown Horizons %s"
-
 	RELEASE_VERSION = _set_version()
-	# change to sth like this for release:
+	# change for release:
+	IS_DEV_VERSION = True
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
@@ -373,6 +373,7 @@ class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
 	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
+	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.txt"
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):

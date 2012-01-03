@@ -9,8 +9,8 @@ description: "\xD5petus:\nEhita oma esimene koloonia ja \xF5pi kuidas m\xE4ngida
 difficulty: "\xD5petus"
 events:
 - actions:
-  - arguments: ["Ehita rannikule harukontor nii et see oleks lihtsalt ligip\xE4\xE4\
-        setav teistele laevadele ja vaba kauplejale."]
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
   - arguments: ["Tere tulemast m\xE4ngima Unknown Horizons!", "See siin on sinu Kapteni\
         \ logiraamat kuhu k\xF5ik vajalik info salvestatakse.Vasakule ekraani serva\
@@ -24,13 +24,28 @@ events:
         \ abi saamiseks kuidas m\xE4ngu loojatega \xFChendust saada!\n\nJa n\xFC\xFC\
         d alustame m\xE4ngimisega."]
     type: logbook_w
-  - arguments: ["\xDCLESANNE: KOLONISEERI SAAR", "Laeva liigutamiseks vali laev vasakpoolse\
-        \ nupuga ja seej\xE4rel vali parempoolse nupuga uus asukoht.\n\nRannikule\
-        \ piisaval l\xE4hedale j\xF5udes aktiveerub ankru kujutisega nupp.\n\nNupule\
-        \ vajutades saad rannikule ehitada harukontori (nupu nimi Ehita Koloonia)\n\
-        \nVajutus j\xE4rgselt saad ehitist liigutada kasutades hiire kursorit.\n\n\
-        Ehitada saab igale kohale mis ei ole m\xE4rgitud punasega.\nEhitamiseks vajuta\
-        \ hiire nuppu.\n\n\xDCLESANNE: ehita harukontor rannikule.", 2]
+  - arguments: ["\xDCLESANNE: KOLONISEERI SAAR", !!python/unicode 'To move your ship,
+        select it with a left click and right click on the location you want it to
+        go to.
+
+
+        Once you are near the coast, the anchor-like button you see in the overview
+        tab will become active.
+
+
+        This indicates that you are able to build a branch office there by pressing
+        that button (called ''Build Settlement'').
+
+
+        Now a preview of your building is dragged around when you move the cursor.
+
+
+        You can build on any spot where this preview is not shaded red.
+
+        Click where you want to place your first building.
+
+
+        TASK: Build a branch office at the coast.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -143,8 +158,8 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: MAIN SQUARE', !!python/unicode 'Your residents
-        need a main square where they can fetch their goods from.
+  - arguments: ["\xDCLESANNE: PEAV\xC4LJAK", !!python/unicode 'Your residents need
+        a main square where they can fetch their goods from.
 
 
         This means that they need a trail connection from their home to the main square.
@@ -271,9 +286,9 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD SIGNAL FIRE', !!python/unicode 'Can
-        you see the ship passing your island from time to time? That ship belongs
-        to the Free Trader, one of the first settlers in this archipelago.
+  - arguments: ["\xDCLESANNE: EHITA SIGNAALTULI", !!python/unicode 'Can you see the
+        ship passing your island from time to time? That ship belongs to the Free
+        Trader, one of the first settlers in this archipelago.
 
 
         The trader will supply your settlement with necessary goods which you can''t
@@ -328,10 +343,17 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
+<<<<<<< HEAD
   - arguments: [!!python/unicode 'NEW TASK: LEARN TO TRADE', !!python/unicode "Excellent!\
         \ The Free Trader will now stop by at your warehouse from time to time.\n\n\
         Let's continue our tutorial on how to trade.\n\nAfter selecting a particular\
         \ type of good, the green bar across the bottom of the slot (if visible) shows\
+=======
+  - arguments: ["\xDCLESANNE: \xD5PI KAUPLEMA", !!python/unicode "Excellent! The Free\
+        \ Trader will now stop by at your branch office from time to time.\n\nLet's\
+        \ continue our tutorial on how to trade.\n\nAfter selecting a particular type\
+        \ of good, the green bar across the bottom of the slot (if visible) shows\
+>>>>>>> master
         \ you how much you have in stock of this good.\n\nDragging the slider on the\
         \ right of each slot determines your 'target value' which has a different\
         \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
@@ -362,8 +384,8 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A PAVILION', !!python/unicode 'Those
-        tools will be enough for the moment. Well done!
+  - arguments: ["\xDCLESANNE: EHITA PAVILJON", !!python/unicode 'Those tools will
+        be enough for the moment. Well done!
 
 
         You now provide housing, a main square and food to your inhabitants.
@@ -473,8 +495,8 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A FARM', !!python/unicode 'Congratulations!
-        Some of your inhabitants have reached increment II!
+  - arguments: ["\xDCLESANNE: EHITA FARM", !!python/unicode 'Congratulations! Some
+        of your inhabitants have reached increment II!
 
 
         Now you have access to new buildings, take a look at the Build menu again.

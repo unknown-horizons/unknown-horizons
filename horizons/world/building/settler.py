@@ -26,7 +26,7 @@ from horizons.scheduler import Scheduler
 
 from horizons.gui.tabs import SettlerOverviewTab
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
-from horizons.world.building.buildable import BuildableSingle
+from horizons.world.building.buildable import BuildableRect, BuildableSingle
 from horizons.constants import RES, BUILDINGS, GAME, SETTLER
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
@@ -46,7 +46,7 @@ class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""
 	buildable_upon = True
 
-class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
+class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	log = logging.getLogger("world.building.settler")
 

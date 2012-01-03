@@ -13,8 +13,8 @@ description: !!python/unicode 'Tutorial:
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: ["Costruire una filiale della costa, quindi \xE8 facilmente accessibile\
-        \ per le altre navi per il commercio libero"]
+  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
+        accessible for other ships like the Free Trader.']
     type: message
   - arguments: [!!python/unicode 'Benvenuti a Unknown Horizons!', "Questo \xE8 il\
         \ tuo diario del Capitano dove sono conservate tutte le informazioni importanti.\
@@ -29,16 +29,28 @@ events:
         \ per un aiuto su come contattare il team!\n\nE ora, iniziamo il gioco vero\
         \ e proprio."]
     type: logbook_w
-  - arguments: [!!python/unicode 'OBIETTIVO: INSEDIARSI SU UN''ISOLA', "Per spostare\
-        \ la nave, selezionarla con un clic sinistro e fare un clic destro sulla posizione\
-        \ cui si desidera andare.\n\nUna volta vicino alla costa, il pulsante con\
-        \ l'ancora visibile nella scheda panoramica si attiver\xE0.\n\nCi\xF2 significa\
-        \ che \xE8 ora in grado di costruirvi qui una filiale premendo il pulsante\
-        \ (chiamato 'Costruisci Insediamento').\n\nUn'anteprima dell'edificio verr\xE0\
-        \ visualizzata quando si sposta il cursore.\n\n\xC8 possibile costruire in\
-        \ ogni luogo dove l'anteprima non diventa rossa.\nFare clic dove si desidera\
-        \ posizionare il primo edificio.\n\nOBIETTIVO: Costruire una filiale presso\
-        \ la costa.", 2]
+  - arguments: [!!python/unicode 'OBIETTIVO: INSEDIARSI SU UN''ISOLA', !!python/unicode 'To
+        move your ship, select it with a left click and right click on the location
+        you want it to go to.
+
+
+        Once you are near the coast, the anchor-like button you see in the overview
+        tab will become active.
+
+
+        This indicates that you are able to build a branch office there by pressing
+        that button (called ''Build Settlement'').
+
+
+        Now a preview of your building is dragged around when you move the cursor.
+
+
+        You can build on any spot where this preview is not shaded red.
+
+        Click where you want to place your first building.
+
+
+        TASK: Build a branch office at the coast.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -57,19 +69,33 @@ events:
         \ ordinato per incrementi.\nStai nel primo livello (il livello Marinai) in\
         \ modo tale sono offerti solo gli edifici di base."]
     type: logbook_w
-  - arguments: ['', "Quando la civilizzazione avanza, guadagnerai altri edifici pi\xF9\
-        \ complessi.\n\nPer adesso, seleziona il tagliaboschi sotto 'Compagnie' e\
-        \ costruiscilo in una zona con presenza di alberi.\n\nPotrai anche piantare\
-        \ alberi successivamente - ma questo costa denaro. Usa quello che la natura\
-        \ ti fornisce!\n\nUna compagnia necessita sempre di un sentiero verso un magazzino\
-        \ od una filiale, altrimenti i beni rimarranno alla compagnia e non verranno\
-        \ immagazzinati.\n\nQuesto comporta che dovrai costruire un sentiero tra la\
-        \ filiale (o magazzino) ed il tagliaboschi.\n\nOBIETTIVO: Costruisci un tagliaboschi\
-        \ in una zona alberata e connettilo ad una strada.\n\nGuarda come un trasportatore\
-        \ prender\xE0 le tue prime assi autoprodotte."]
+  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
+        more and more complex buildings.
+
+
+        For now, select the lumberjack under ''Companies'' and build it in an area
+        with some trees around.
+
+
+        You can also plant trees later - but that costs money. Use what nature provided
+        you with!
+
+
+        A company always needs a trail connection to a storage or branch office, otherwise
+        goods will remain at the company and not be collected.
+
+
+        This means that you have to build a trail connecting your branch office (or
+        storage) and lumberjack.
+
+
+        TASK: Build a lumberjack in a wooded area and connect it to a road.
+
+
+        Watch how a collector will fetch your first self-produced boards.']
     type: logbook
-  - arguments: [!!python/unicode 'Costruisci un tagliaboschi e collegalo alla filiale
-        con un sentiero.']
+  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
+        office using a trail.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -95,17 +121,28 @@ events:
         \ velocemente o semplicemente si nascondano bene.\n\nConclusione: il cacciatore\
         \ non \xE8 molto affidabile se desideri un rifornimento continuo."]
     type: logbook_w
-  - arguments: ['', "Il Pescatore necessita di un sito di costruzione vicino alla\
-        \ riva, come la filiale, ed un branco di pesci nelle vicinanze.\n\nCostruir\xE0\
-        \ un piccola imbarcazione a remi e pescher\xE0 dei pesci.\n\nQuesto \xE8 un\
-        \ rifornimento costante al prezzo di un tempo di produzione di unit\xE0 di\
-        \ cibo leggermente maggiore.\n\nUn piccolo insediamento come il tuo potr\xE0\
-        \ usare entrambe le compagnie, e potrai bilanciare i pro ed i contro se vedrai\
-        \ un confronto diretto.\n\nOBIETTIVO: Costruisci un cacciatore ed un pescatore.\n\
-        \nNon dimenticarti di connetterli alla filiale con i sentieri!"]
+  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
+        the branch office and a fish school in range.
+
+
+        He will build a small rowing vessel and catch some fish.
+
+
+        This is a very constant supply at the cost of a slightly longer production
+        time per unit of food.
+
+
+        A small settlement like yours can use both companies, and you can better balance
+        pros and cons if you see the direct comparison.
+
+
+        TASK: Build a hunter and a fisher.
+
+
+        Don''t forget to connect them to your branch office with trails!']
     type: logbook
-  - arguments: [!!python/unicode 'Costruisci un cacciatore ed un pescatore. Connettili
-        alla filiale.']
+  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
+        branch office.']
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -117,16 +154,27 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: PIAZZA PRINCIPALE', "I tuoi abitanti\
-        \ necessitano una piazza principale da cui possano prelevare i propri beni.\n\
-        \nQuesto significa che necessitano di un sentiero tra la loro casa e la piazza\
-        \ principale.\n\nTutti i beni nella tua filiale sono disponibili in questa\
-        \ 'piazza del mercato', quindi gli abitanti non dovranno andare dal pescatore\
-        \ o alla filiale.\n\nDovrai considerare costruire le abitazioni in una zona\
-        \ che potrai espandere facilmente e costruire anche dei sentieri.\n\nDovrai\
-        \ evitare di piazzare le tende troppo vicine al taglialegna, per esempio,\
-        \ perch\xE9 la costruzione di tende rimuover\xE0 gli alberi di cui il taglialegna\
-        \ necessita per costruire le assi.\n\nOBIETTIVO: Costruisci una piazza principale."]
+  - arguments: [!!python/unicode 'OBIETTIVO: PIAZZA PRINCIPALE', !!python/unicode 'Your
+        residents need a main square where they can fetch their goods from.
+
+
+        This means that they need a trail connection from their home to the main square.
+
+
+        All goods in your branch office are available at this ''market place'', so
+        your residents do not need to walk to the fisher or even to the branch office.
+
+
+        You should consider founding your actual house settlement in an area where
+        you can easily expand it and build some trails, too.
+
+
+        You should avoid placing tents too close to your lumberjacks for example because
+        building tents will clear away the trees that your lumberjack needs to produce
+        boards.
+
+
+        TASK: Build a main square.']
     type: logbook_w
   - arguments: ['', "Diamo ora uno sguardo pi\xF9 da vicino la piazza principale.\n\
         \nNella scheda 'Account' si ottiene un bilancio di questa isola, con tutte\
@@ -201,33 +249,53 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: IL SEGNALE DI FUOCO', "Riesci a vedere\
-        \ la nave di passaggio la tua isola di tanto in tanto? Quella nave appartiene\
-        \ alla Trader Libera, uno dei primi coloni in questo arcipelago.\n\nL'operatore\
-        \ fornir\xE0 il vostro accordo con beni di prima necessit\xE0 che non si riesce\
-        \ a produrre ancora.\n\xC8 possibile anche vendere le eccedenze della vostra\
-        \ produzione, ma in generale consumano pi\xF9 loro (con la costruzione di\
-        \ pi\xF9 tende) anzich\xE9 che venderle e produrr\xE8 profitto.\n\nNormalmente\
-        \ le navi commerciante solo navigare intorno e cercare occasioni, ma \xE8\
-        \ possibile accelerare le cose un po '.\n\nA tale scopo, creare un incendio\
-        \ segnale sulla costa vicino alla tua filiale. Mostrer\xE0 le navi la strada\
-        \ per il vostro insediamento.\n\nIl fuoco segnale deve coprire l'area che\
-        \ le navi passano per catturarli."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL SEGNALE DI FUOCO', !!python/unicode 'Can
+        you see the ship passing your island from time to time? That ship belongs
+        to the Free Trader, one of the first settlers in this archipelago.
+
+
+        The trader will supply your settlement with necessary goods which you can''t
+        produce yet.
+
+        You can also sell surpluses of your production, but in general consuming them
+        (by building more tents) instead of selling them yields more profit.
+
+
+        Normally the trader ships just sail around and look for deals, but you can
+        speed things up a bit.
+
+
+        For this purpose, build a signal fire at the coast near your branch office.
+        It will show ships the way to your settlement.
+
+
+        The signal fire has to cover the area which the ships pass through to catch
+        them.']
     type: logbook_w
-  - arguments: ['', "Dopo questo annuncio poco, il commerciante sar\xE0 fermato a\
-        \ guardare la tua filiale se si prevede di navigare di passaggio.\n\nSi pu\xF2\
-        \ proporre occasioni tramite 'Acquisto / Vendita' la scheda filiale. (Questa\
-        \ funzione \xE8 attualmente poco pratica da usare. Se si arriva con una bella\
-        \ soluzione di migliorarlo, vi preghiamo di condividere i tuoi pensieri! Abbiamo\
-        \ bisogno del vostro aiuto qui!)\n\nA incrementare il 'marinai', si sono dotate\
-        \ di tre slot trading.\n\nCliccare sulla piccola icona per cambiare la modalit\xE0\
-        \ di slot da 'Buy' a 'Sell' e viceversa.\n\nClicca nello slot di scegliere\
-        \ il bene che vogliono commerciare con. Ci illustrer\xE0 pi\xF9 dettagliatamente\
-        \ questa volta si \xE8 pronti al commercio.\n\nTASK: Costruire un incendio\
-        \ segnale sulla costa vicino al vostro filiale."]
+  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
+        also stop by and look into your branch office if it planned to sail past it.
+
+
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
+        it, please share your thoughts! We need your help here!)
+
+
+        At the ''sailors'' increment, you are equipped with three trading slots.
+
+
+        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
+        vice versa.
+
+
+        Click in the slot to choose the good you want to trade with. We will further
+        explain this once you are ready to trade.
+
+
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
-  - arguments: [!!python/unicode 'Costruisci un segnale di fuoco sulla costa vicino
-        alla tua filiale.']
+  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
+        office.']
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -239,15 +307,15 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: IL COMMERCIO', "Eccellente! Il Libero\
-        \ Commerciante ora si fermer\xE0 alla tua filiale di tanto in tanto.\n\nContinuiamo\
-        \ il tutorial su come commerciare.\n\nDopo aver selezionato un tipo specifico\
-        \ di bene, la barra verde nel basso dello spazio (se visibile) mostrer\xE0\
-        \ la quantit\xE0 di questo bene nei tuoi magazzini.\n\nSpostando il selettore\
-        \ a destra di ogni spazio determina la 'quantit\xE0 obiettivo' che ha un diverso\
-        \ significato nei casi 'Compra' e 'Vendi'.\nQuando compri ne comprerai a sufficienza\
-        \ per tenere la 'quantit\xE0 obiettivo' in magazzino.\nQuando vendi la 'quantit\xE0\
-        \ obiettivo' \xE8 il numero che mantieni in riserva da non vendere."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL COMMERCIO', !!python/unicode "Excellent!\
+        \ The Free Trader will now stop by at your branch office from time to time.\n\
+        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
+        \ type of good, the green bar across the bottom of the slot (if visible) shows\
+        \ you how much you have in stock of this good.\n\nDragging the slider on the\
+        \ right of each slot determines your 'target value' which has a different\
+        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
+        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
+        \ which you hold in reserve to not sell"]
     type: logbook_w
   - arguments: ['', "Ad esempio:\nChe presenta una fessura 'Buy' e 5 tonnellate in\
         \ magazzino, uno slider posizionato a 9 tonnellate ti far\xE0 acquistare ulteriori\
@@ -353,17 +421,28 @@ events:
         \nLa produzione della fattoria dipende dal tipo di campi che vi costruisci\
         \ attorno."]
     type: logbook_w
-  - arguments: ['', "Gli daremo un'occhiata pi\xF9 tardi.\n\nLe fattorie, come tutte\
-        \ le compagnie che producono materiali grezzi, non devono essere necessariamente\
-        \ connesse a magazzini o Filiali.\n\nFintanto che unit\xE0 della compagnia\
-        \ di produzione finale potranno raggiungere la fattoria, ed i trasportatori\
-        \ dalla filiale o dalla tenda magazzino possono raggiungere la compagnia finale\
-        \ va tutto bene.\n\nSe, comunque, pensi di fare delle lavorazioni in parti\
-        \ differenti dell'isola (che pu\xF2 avere senso) o addirittura su isole diverse,\
-        \ ti servir\xE0 una connessione ai collettori.\n\nProva a costruire la fattoria\
-        \ non troppo vicino alla costa od ai tuoi edifici gi\xE0 esistenti, dato che\
-        \ vi sar\xE0 necessario dello spazio vicino per funzionare bene.\n\nOBIETTIVO:\
-        \ Costruisci una fattoria."]
+  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
+
+
+        Farms, like all companies producing raw materials, do not necessarily need
+        to be connected to storage or a Branch Office.
+
+
+        As long as units of the final production company can reach the farm, and collectors
+        from the branch office or storage tent can reach the final company everything''s
+        fine.
+
+
+        If you, however, plan to do some processing on different parts of the island
+        (which can make sense) or even on different islands, you will need a connection
+        to collectors.
+
+
+        Try to build the farm not too close to the coast or your existing buildings
+        since it will need some space around it to work well.
+
+
+        TASK: Build a farm.']
     type: logbook
   - arguments: [!!python/unicode 'Costruisci una fattoria mantenendo dello spazio
         disponibile intorno.']
@@ -414,29 +493,40 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: I MAGAZZINI', "Hai controllato il tagliaboschi\
-        \ recentemente?\n\nDato che la filiale non dispone di spazio illimitato per\
-        \ immagazzinare beni, i trasportatori si fermeranno a raccogliere beni dalle\
-        \ compagnie quando la scorta \xE8 piena.\nQuindi se nessun marinaio ha recentemente\
-        \ aggiornato la tenda, avrai probabilmente molte assi ed in quel caso il taglialegna\
-        \ potrebbe oziare.\nPossiamo migliorare questa situazione con due approcci\
-        \ differenti, e sotto discuteremo entrambi.\n\nTutte le compagnie hanno la\
-        \ possibilit\xE0 di non fare alcun lavoro.\nQuesto potr\xE0 sembrare strano,\
-        \ ma prova a cliccare sulla ruota dentata che vedi, ad esempio, nella panoramica\
-        \ del tagliaboschi.\n\nSe questo modo 'pausa' \xE8 abilitato (lo chiamiamo\
-        \ 'Decommissione'), i costi ricorrenti che paghi per l'edificio diminuiranno.\
-        \ Non saranno zero, ma comunque pi\xF9 bassi del caso con la compagnia attiva."]
+  - arguments: [!!python/unicode 'OBIETTIVO: I MAGAZZINI', !!python/unicode 'Did you
+        watch your lumberjack recently?
+
+
+        Since your branch office does not have unlimited space to store goods, collectors
+        will stop fetching goods from companies when stock is full.
+
+        So if no sailor recently wanted to upgrade his tent, you probably have a lot
+        of boards and in that case, the lumberjack may idle.
+
+        We can improve this situation with two different approaches, and below we
+        will have a look at both of them.
+
+
+        All companies offer the possibility of doing no work at all.
+
+        This may sound strange, but try to click on the gear wheel you see in, for
+        example, a lumberjack''s overview.
+
+
+        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
+        costs you pay for the building will decrease. They won''t be zero, but still
+        lower than if you keep the company producing.']
     type: logbook_w
-  - arguments: ['', "Questo significa che puoi risparmiare denaro quando non hai temporaneamente\
-        \ bisogno di una compagnia e comunque non vuoi distruggerla.\n\nUn'altra soluzione\
-        \ \xE8 di costruire l'ultimo edificio di livello I che non abbiamo ancora\
-        \ discusso: la tenda magazzino.\n\nQuesto edificio ha due scopi:\n* offre\
-        \ pi\xF9 spazio per i tuoi beni, e \n* invia i propri trasportatori per raccogliere\
-        \ beni, proprio come fa la filiale.\n\nNota che le compagnie possono anche\
-        \ essere connesse ad un magazzino in modo da avere i propri prodotti raccolti,\
-        \ e se la filiale \xE8 sovraccarica per i lavori di raccolta, puoi costruire\
-        \ un magazzino tenda per aiutarla.\n\nOBIETTIVO: Costruisci un magazzino tenda,\
-        \ preferibilmente dove necessiti di trasportatori."]
+  - arguments: ['', !!python/unicode "This means that you can save money when you\
+        \ temporarily do not need a company and do not want to tear it down, either.\n\
+        \nAnother solution is to build the last increment-I building which has not\
+        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
+        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
+        \ to fetch goods, just like the branch office does.\n\nNote that companies\
+        \ can also be connected to a storage in order to get their products collected,\
+        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
+        \ where you need collectors."]
     type: logbook
   - arguments: ["Costruisci una tenda magazzino (scheda livello I) dove pu\xF2 essere\
         \ utile."]
@@ -451,14 +541,23 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OBIETTIVO: IL TESSITORE', "Ora che la produzione\
-        \ di lana \xE8 avviata hai ancora bisogno di un tessitore per produrre abiti\
-        \ da questa lana.\n\nCi sono due zone dove costruirlo - o vicino alla fattoria\
-        \ o vicino ad un Magazzino Tenda (o Filiale).\n\nIn entrambi i casi devi anche\
-        \ provvedere ad una connessione con un sentiero.\n\nPuoi costruire il tessitore\
-        \ vicino alla fattoria e demolire ogni sentiero verso la fattoria per vedere\
-        \ che comunque raccoglier\xE0 la lana e produrr\xE0.\n\nOBIETTIVO: Costruisci\
-        \ un tessitore posizionandolo in modo che possa raccogliere lana."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL TESSITORE', !!python/unicode 'Now
+        the wool production is set up, you still need a weaver to produce cloth out
+        of this wool.
+
+
+        There are two spots where you can build it - either close to the farm or close
+        to a Storage Tent (or the Branch Office).
+
+
+        In both cases you should ensure the connection to a trail as well.
+
+
+        You can place the weaver close to the farm and tear down any trail to the
+        farm to see that it will still fetch the wool and produce.
+
+
+        TASK: Build a weaver positioned so it can get wool.']
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un tessitore che possa raggiungere la
         lana della fattoria.']
