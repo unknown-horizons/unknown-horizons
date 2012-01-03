@@ -95,8 +95,7 @@ class Entities(object):
 
 				building_id = int(result['id'])
 				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_results=result))
-				if True:
-				#if load_now:
+				if load_now:
 					cls.buildings[building_id]
 
 	@classmethod
