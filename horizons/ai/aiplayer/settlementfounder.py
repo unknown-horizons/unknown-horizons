@@ -61,7 +61,6 @@ class SettlementFounder(object):
 							usable = False
 							break
 					if usable:
-						print object.__class__
 						for resource_id, amount in object.get_component(StorageComponent).inventory:
 							resources[resource_id] += amount
 				continue
