@@ -24,9 +24,8 @@ import logging
 from fife import fife
 
 from horizons.world.units.movingobject import MovingObject
-from horizons.util import Point, WorldObject, WeakMethod, Circle, decorators
+from horizons.util import Point, WorldObject, WeakMethod, decorators
 from horizons.constants import LAYERS
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
 

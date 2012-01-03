@@ -26,11 +26,9 @@ from horizons.gui.tabs import WarehouseOverviewTab, BuySellTab, InventoryTab, \
 		 EnemyWarehouseOverviewTab, MainSquareOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
-from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.building.production import SettlerServiceProvider
 from horizons.world.building.path import Path
-from horizons.world.production.producer import Producer
 
 class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):

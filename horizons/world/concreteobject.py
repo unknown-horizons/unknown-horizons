@@ -21,7 +21,6 @@
 
 from fife import fife
 
-import horizons.main
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
 from horizons.gui.tabs import BuildRelatedTab

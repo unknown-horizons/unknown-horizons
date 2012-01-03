@@ -22,8 +22,7 @@
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.gui.tabs import ProductionOverviewTab
-from horizons.world.production.unitproduction import UnitProduction
-from horizons.world.production.producer import Producer, QueueProducer
+from horizons.world.production.producer import Producer
 
 
 class BuildingResourceHandler(ResourceHandler):

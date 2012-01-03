@@ -28,7 +28,6 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle
 from unit import Unit
 from horizons.constants import GAME_SPEED, WEAPONS, GFX
-from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.gui.tabs import GroundUnitOverviewTab, EnemyShipOverviewTab
 

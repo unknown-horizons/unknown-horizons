@@ -43,7 +43,6 @@ import sys
 import copy
 
 from horizons.util import ChangeListener
-from horizons.util.worldobject import WorldObject
 
 class GenericStorage(ChangeListener):
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing

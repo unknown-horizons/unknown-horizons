@@ -28,8 +28,6 @@ from horizons.constants import LAYERS
 from horizons.gui.tabs import ResourceDepositOverviewTab
 from horizons.world.building.building import SelectableBuilding
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.scheduler import Scheduler
-from horizons.util import Callback
 from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):

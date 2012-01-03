@@ -23,7 +23,7 @@
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingleOnOcean
 from horizons.gui.tabs import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
-			     BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
+			     BoatbuilderWar1Tab
 from horizons.world.building.buildingresourcehandler import UnitProducerBuilding
 from collectingbuilding import CollectingBuilding
 from horizons.world.component.storagecomponent import StorageComponent

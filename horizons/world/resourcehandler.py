@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
-from horizons.world.production.production import Production
 from horizons.constants import PRODUCTION
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.worldobject import WorldObject

@@ -32,7 +32,6 @@ from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
 from horizons.gui.tabs import FarmProductionOverviewTab
 from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.producer import Producer
 from horizons.world.component.storagecomponent import StorageComponent
 

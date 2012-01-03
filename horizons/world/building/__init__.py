@@ -28,8 +28,6 @@ import horizons.main
 from fife import fife
 
 from horizons.util import ActionSetLoader
-from horizons.entities import Entities
-from horizons.world.production.producer import Producer
 from horizons.i18n.objecttranslations import object_translations
 
 class BuildingClass(type):

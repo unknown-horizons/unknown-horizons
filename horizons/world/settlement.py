@@ -22,18 +22,16 @@
 import json
 import sqlite3
 
-import horizons.main
-
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.storage import PositiveSizedSlotStorage
-from horizons.util import WorldObject, WeakList
-from horizons.entities import Entities
-from horizons.util import WorldObject, WeakList, Rect, Point
 from horizons.constants import BUILDINGS, SETTLER
+from horizons.entities import Entities
+from horizons.util.worldobject import WorldObject
+from horizons.util.shapes.rect import Rect
+from horizons.util.changelistener import ChangeListener
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.namedcomponent import SettlementNameComponent
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.changelistener import ChangeListener
+from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.storage import PositiveSizedSlotStorage
 
 class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	"""The Settlement class describes a settlement and stores all the necessary information

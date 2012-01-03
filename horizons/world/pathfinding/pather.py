@@ -20,10 +20,9 @@
 # ###################################################
 
 import weakref
-import sys
 import logging
 
-from horizons.util import Rect, Point, decorators
+from horizons.util import Point, decorators
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.pathfinding.pathfinding import FindPath

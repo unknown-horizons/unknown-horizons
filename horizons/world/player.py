@@ -28,7 +28,6 @@ from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.storage import PositiveStorage
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""

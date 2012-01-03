@@ -28,7 +28,6 @@ from collections import defaultdict, deque
 from horizons.util.changelistener import metaChangeListenerDecorator, ChangeListener
 from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLine
-from horizons.world.component.storagecomponent import StorageComponent
 
 from horizons.scheduler import Scheduler
 

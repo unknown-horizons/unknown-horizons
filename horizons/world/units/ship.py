@@ -26,18 +26,15 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.tabs import TraderShipOverviewTab, EnemyShipOverviewTab, ShipOverviewTab
-from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle, WorldObject
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
-from horizons.command.uioptions import TransferResource
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED, GFX
+from horizons.constants import LAYERS, GAME_SPEED, GFX
 from horizons.scheduler import Scheduler
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.namedcomponent import ShipNameComponent, PirateShipNameComponent, NamedComponent
+from horizons.world.component.namedcomponent import ShipNameComponent, NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
 
 class ShipRoute(object):

@@ -26,15 +26,13 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
-from horizons.constants import WEAPONS, GAME_SPEED
+from horizons.constants import GAME_SPEED
 from horizons.world.component.stancecomponent import HoldGroundStance, AggressiveStance, \
 	NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.worldobject import WorldObject
-
-import gc
 
 @metaChangeListenerDecorator("storage_modified")
 @metaChangeListenerDecorator("user_attack_issued")

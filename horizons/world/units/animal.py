@@ -19,13 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import random
 import logging
 
 from horizons.scheduler import Scheduler
 
-from horizons.world.production.producer import Producer
-from horizons.util import Point, RadiusRect, Rect, WorldObject
+from horizons.util import Point, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather
 from horizons.command.unit import CreateUnit
 from collectors import Collector, BuildingCollector, JobList

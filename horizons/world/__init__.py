@@ -23,22 +23,19 @@
 __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
 import bisect
-import weakref
-import random
 import logging
 import copy
 import itertools
-import shutil
 import os.path
 
 from collections import deque
 
 import horizons.main
 from horizons.world.island import Island
-from horizons.world.player import Player, HumanPlayer
+from horizons.world.player import HumanPlayer
 from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
 from horizons.util.color import Color
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL, PATHS
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
@@ -50,12 +47,10 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
-from horizons.world.ground import WaterDummy
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.production.producer import Producer
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -916,7 +911,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				except AttributeError:
 					pass # obj has been deleted, inst() returned None
 			self._translucent_buildings.clear()
-			
+
 	def toggle_health_for_all_health_instances(self):
 		"""Show health bar of every instance with an health component, which isnt selected already"""
 		self.health_visible_for_all_health_instances = not self.health_visible_for_all_health_instances
@@ -929,7 +924,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			for instance in self.session.world.get_health_instances():
 				if self.session.view.has_change_listener(instance.draw_health) and not instance._selected:
 					self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(instance.worldid))
-					self.session.view.remove_change_listener(instance.draw_health)	
+					self.session.view.remove_change_listener(instance.draw_health)
 
 
 def load_building(session, db, typeid, worldid):

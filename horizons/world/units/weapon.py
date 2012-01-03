@@ -21,7 +21,7 @@
 
 import logging
 
-from horizons.util import Point, Circle, Callback
+from horizons.util import Point, Callback
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator

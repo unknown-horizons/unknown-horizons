@@ -19,12 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import sys
 import logging
 
-from horizons.util import Rect, Point, decorators
-
-from horizons.world.pathfinding import PathBlockedError
+from horizons.util import Point, decorators
 
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class
