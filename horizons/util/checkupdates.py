@@ -19,9 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions import pychan
+import webbrowser
 import urllib2
 
 from horizons.constants import NETWORK, VERSION
+from horizons.util import Callback
 
 class UpdateInfo(object):
 	INVALID, READY, UNINITIALISED = range(3)
@@ -69,7 +72,17 @@ def show_new_version_hint(gui, info):
 	text = _(u"There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version}).").format(
 	        new_version=info.version,
 	        old_version=VERSION.RELEASE_VERSION)
-	text += u"\n" + _(u"Please download it here:")
-	text += u"\n" + info.link
-	gui.show_popup(title, text)
+
+	dl_btn = pychan.widgets.Button(name="dl", text=_("Click to download"))
+	dl_btn.position = (48, 138) # i've tried, this button cannot be placed in a sane way
+	def do_dl():
+		webbrowser.open(info.link)
+		dl_btn.text = _("A page has been opened in your browser.")
+		popup.adaptLayout()
+	dl_btn.capture(do_dl)
+
+	popup = gui.build_popup(title, text)
+	popup.addChild( dl_btn )
+
+	gui.show_dialog(popup, {"okButton" : True})
 

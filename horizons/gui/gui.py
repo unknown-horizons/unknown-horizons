@@ -356,10 +356,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				pass # only used for some widgets, e.g. pause
 
 
-	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
+	def show_dialog(self, dlg, bind, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
-		@param actions: actions that are executed by the dialog { 'ok': callback, 'cancel': callback }
+		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
 		@param onPressEscape: callback that is to be called if the escape button is pressed
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 		"""
@@ -373,7 +373,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					dlg.hide()
 			dlg.capture(_escape, event_name="keyPressed")
 		self.dialog_executed = True
-		ret = dlg.execute(actions)
+		ret = dlg.execute(bind)
 		self.dialog_executed = False
 		return ret
 
