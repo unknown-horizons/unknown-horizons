@@ -45,10 +45,6 @@ class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
 
 	def initialize(self):
 		super(StorageBuilding, self).initialize()
-
-		# Only don't add for mainsquare
-		if self.id is not 4:
-			self.get_component(StorageComponent).inventory = self.settlement.get_component(StorageComponent).inventory
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 		self.get_component(StorageComponent).inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 

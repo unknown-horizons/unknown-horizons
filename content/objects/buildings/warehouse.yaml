@@ -14,7 +14,9 @@ settler_level: 0
 buildingcosts: {1: 1000, 4: 12}
 components:
 - HealthComponent: {maxhealth: 1000}
-- StorageComponent
+- StorageComponent:
+    inventory:
+        SettlementStorage: {}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/warehouse.ogg]
 actionsets:

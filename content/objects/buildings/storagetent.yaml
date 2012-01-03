@@ -14,7 +14,9 @@ settler_level: 0
 buildingcosts: {1: 350, 4: 4}
 components:
 - HealthComponent: {maxhealth: 1000}
-- StorageComponent
+- StorageComponent:
+    inventory:
+        SettlementStorage: {}
 actionsets:
   as_storagetent0: {level: 0}
   as_storagetent1: {level: 1}
