@@ -377,14 +377,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.dialog_executed = False
 		return ret
 
-	def show_popup(self, windowtitle, message, show_cancel_button = False):
+	def show_popup(self, windowtitle, message, show_cancel_button=False, big=False):
 		"""Displays a popup with the specified text
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, show cancel button or not
+		@param big: boolean, whether to use big version of the dialog
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
-		popup = self.build_popup(windowtitle, message, show_cancel_button)
+		popup = self.build_popup(windowtitle, message, show_cancel_button, big=big)
 		if show_cancel_button:
 			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 		else:
@@ -408,16 +409,20 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			msg += _(u"Details:") + u" " + details
 		self.show_popup( _(u"Error:") + u" " + windowtitle, msg, show_cancel_button=False)
 
-	def build_popup(self, windowtitle, message, show_cancel_button = False):
+	def build_popup(self, windowtitle, message, show_cancel_button = False, big=False):
 		""" Creates a pychan popup widget with the specified properties.
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, include cancel button or not
+		@param big: boolean, whether to use the bigger version
 		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
 		"""
 		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
 		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
-		if show_cancel_button:
+		if big:
+			self.widgets.reload('popup_350')
+			popup = self.widgets['popup_350']
+		elif show_cancel_button:
 			self.widgets.reload('popup_with_cancel')
 			popup = self.widgets['popup_with_cancel']
 		else:
