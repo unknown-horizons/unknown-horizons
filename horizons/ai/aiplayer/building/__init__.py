@@ -111,7 +111,7 @@ class AbstractBuilding(object):
 		if resource_id not in self.lines:
 			return None
 		line = self.lines[resource_id]
-		return line.produced_res[resource_id] / line.time / GAME_SPEED.TICKS_PER_SECOND
+		return line.produced_res[resource_id] / float(line.time) / GAME_SPEED.TICKS_PER_SECOND
 
 	def get_production_level(self, building, resource_id):
 		"""Return the actual production capacity of a single building of this type producing the given resource."""
