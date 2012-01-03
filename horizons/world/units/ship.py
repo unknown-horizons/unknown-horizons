@@ -321,11 +321,6 @@ class Ship(Unit):
 			self.route.load(db)
 
 	def __init(self):
-		self.add_component(StorageComponent(
-			inventory = PositiveTotalNumSlotsStorage(
-				STORAGE.SHIP_TOTAL_STORAGE,
-				STORAGE.SHIP_TOTAL_SLOTS_NUMBER))
-				           )
 		self._selected = False
 		# register ship in world
 		self.session.world.ships.append(self)
