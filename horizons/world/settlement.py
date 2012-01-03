@@ -36,6 +36,19 @@ from horizons.world.storage import PositiveSizedSlotStorage
 class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
+
+	component_templates = ({
+	    					'StorageComponent':
+	                            {'inventory':
+	                             {'PositiveSizedSlotStorage':
+	                              { 'limit': 0 }
+	                             }
+	                            }
+	                        }
+	                        ,
+	                        'TradePostComponent',
+	                        'SettlementNameComponent')
+
 	def __init__(self, session, owner):
 		"""
 		@param owner: Player object that owns the settlement
@@ -46,9 +59,6 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
 		self.session = session
 		self.owner = owner
-		self.add_component(SettlementNameComponent())
-		self.add_component(TradePostComponent())
-		self.add_component(StorageComponent(inventory = PositiveSizedSlotStorage(0)))
 		self.buildings = []
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
@@ -135,6 +145,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	@classmethod
 	def load(cls, db, worldid, session, island):
 		self = cls.__new__(cls)
+		self.session = session
 		super(Settlement, self).load(db, worldid)
 
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]

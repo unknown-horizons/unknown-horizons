@@ -195,6 +195,7 @@ class Island(BuildingOwner, WorldObject):
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(self.session, player)
+		settlement.initialize()
 		self.add_existing_settlement(position, radius, settlement, load)
 		# TODO: Move this to command, this message should not appear while loading
 		self.session.ingame_gui.message_widget.add(position.center().x, \

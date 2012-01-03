@@ -90,10 +90,9 @@ class TradePostComponent(Component):
 		for (res, limit) in db("SELECT resource, trade_limit FROM trade_sell WHERE object = ?", worldid):
 			self.sell_list[res] = limit
 
-		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses FROM trade_values WHERE object = ?",
-		   self.worldid)[0]
+		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses FROM trade_values WHERE object = ?", worldid)[0]
 
-		for row in db("SELECT tick, player, resource_id, amount, gold FROM trade_history WHERE settlement = ? ORDER BY tick, player", self.worldid):
+		for row in db("SELECT tick, player, resource_id, amount, gold FROM trade_history WHERE settlement = ? ORDER BY tick, player", worldid):
 			self.trade_history.append(row)
 
 	@property

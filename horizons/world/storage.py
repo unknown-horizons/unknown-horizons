@@ -61,7 +61,6 @@ class GenericStorage(ChangeListener):
 
 	def load(self, db, ownerid):
 		for (res, amount) in db.get_storage_rowids_by_ownerid(ownerid):
-			assert self[res] == 0
 			self.alter(res, amount)
 
 	def alter(self, res, amount):
@@ -294,7 +293,7 @@ class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 	"""A storage consisting of a slot for each resource, all slots have the same size 'limit'
 	Used by the warehouse for example. So with a limit of 30 you could have a max of
 	30 from each resource."""
-	def __init__(self, limit):
+	def __init__(self, limit=0):
 		super(PositiveSizedSlotStorage, self).__init__(limit)
 
 	def alter(self, res, amount):
