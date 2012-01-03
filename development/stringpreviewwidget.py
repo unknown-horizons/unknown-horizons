@@ -50,7 +50,7 @@ class StringPreviewWidget(object):
 	def load(self):
 		"""Load selected scenario and show strings"""
 		if self.listbox.selected == -1:
-			self._gui.findChild(name="hintlbl").text = u"you need to select sth in the list above"
+			self._gui.findChild(name="hintlbl").text = u"Select a scenario first."
 		else:
 			self._gui.findChild(name="hintlbl").text = u""
 
