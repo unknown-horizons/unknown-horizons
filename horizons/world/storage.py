@@ -61,8 +61,6 @@ class GenericStorage(ChangeListener):
 				ownerid, slot[0], slot[1])
 
 	def load(self, db, ownerid):
-		print db.get_storage_rowids_by_ownerid(ownerid)
-		print WorldObject.get_object_by_id(ownerid)
 		for (res, amount) in db.get_storage_rowids_by_ownerid(ownerid):
 			assert self[res] == 0
 			self.alter(res, amount)
