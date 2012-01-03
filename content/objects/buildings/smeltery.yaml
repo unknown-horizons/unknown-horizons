@@ -1,5 +1,5 @@
 id: 29
-name: Smeltery
+name: _ Smeltery
 baseclass: production.Smeltery
 radius: 10
 cost: 50
@@ -9,7 +9,7 @@ size_y: 4
 inhabitants_start: 2
 inhabitants_max: 2
 button_name: smeltery-1
-tooltip_text: Refines all kind of ores.
+tooltip_text: _ Refines all kind of ores.
 settler_level: 2
 buildingcosts: {1: 1250, 4: 8, 6: 4, 7: 6}
 components:

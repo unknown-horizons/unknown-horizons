@@ -1,5 +1,5 @@
 id: 11
-name: Fisherman's Tent
+name: _ Fisherman's Tent
 baseclass: production.Fisher
 radius: 20
 cost: 5
@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: fisher-1
-tooltip_text: Fishes the sea, produces food.
+tooltip_text: _ Fishes the sea, produces food.
 settler_level: 0
 buildingcosts: {1: 250, 4: 3, 6: 1}
 components:

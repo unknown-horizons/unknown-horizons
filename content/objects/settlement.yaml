@@ -1,7 +1,0 @@
-name: settlement
-components:
-- SettlementNameComponent
-- TradePostComponent
-- StorageComponent:
-   inventory:
-      PositiveSizedSlotStorage: {limit: 30}

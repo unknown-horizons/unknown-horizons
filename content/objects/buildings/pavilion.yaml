@@ -1,5 +1,5 @@
 id: 5
-name: Pavilion
+name: _ Pavilion
 baseclass: production.SettlerServiceProvider
 radius: 0
 cost: 15
@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: church-1
-tooltip_text: Fulfills religious needs of sailors.
+tooltip_text: _ Fulfills religious needs of sailors.
 settler_level: 0
 buildingcosts: {1: 500, 4: 5, 6: 2}
 components:

@@ -1,5 +1,5 @@
 id: 28
-name: Iron Mine
+name: _ Iron Mine
 baseclass: production.Mine
 radius: 0
 cost: 15
@@ -9,7 +9,7 @@ size_y: 5
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: iron-mine-1
-tooltip_text: Gets iron ore from deposit.
+tooltip_text: _ Gets iron ore from deposit.
 settler_level: 2
 buildingcosts: {1: 500, 4: 10, 6: 2}
 components:

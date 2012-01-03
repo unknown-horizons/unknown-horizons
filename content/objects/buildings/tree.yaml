@@ -1,5 +1,5 @@
 id: 17
-name: Tree
+name: _ Tree
 baseclass: nature.Tree
 radius: 0
 cost: 0
@@ -9,7 +9,7 @@ size_y: 1
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: tree-1
-tooltip_text: Tree
+tooltip_text: _ Tree
 settler_level: 0
 buildingcosts: {1: 10}
 components:

@@ -1,5 +1,5 @@
 id: 23
-name: Clay Deposit
+name: _ Clay Deposit
 baseclass: nature.ResourceDeposit
 radius: 0
 cost: 0
@@ -9,7 +9,7 @@ size_y: 3
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: null
-tooltip_text: null
+tooltip_text: _ null
 settler_level: 0
 buildingcosts: {}
 components:

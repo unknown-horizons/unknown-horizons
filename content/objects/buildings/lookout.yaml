@@ -1,5 +1,5 @@
 id: 13
-name: Lookout
+name: _ Lookout
 baseclass: housing.Housing
 radius: 10
 cost: 0
@@ -9,7 +9,7 @@ size_y: 1
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: null
-tooltip_text: Increases the player's sight.
+tooltip_text: _ Increases the player's sight.
 settler_level: 0
 buildingcosts: {1: 100, 4: 4}
 components:

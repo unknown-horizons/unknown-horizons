@@ -1,5 +1,5 @@
 id: 4
-name: Main Square
+name: _ Main Square
 baseclass: storages.MainSquare
 radius: 0
 cost: 0
@@ -9,7 +9,7 @@ size_y: 6
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: main_square-1
-tooltip_text: Supplies citizens with goods.
+tooltip_text: _ Supplies citizens with goods.
 settler_level: 0
 buildingcosts: {1: 1000, 4: 5}
 components:

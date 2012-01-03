@@ -1,5 +1,5 @@
 id: 15
-name: Trail
+name: _ Trail
 baseclass: path.Road
 radius: 0
 cost: 0
@@ -9,7 +9,7 @@ size_y: 1
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: street-1
-tooltip_text: Needed for collecting goods.
+tooltip_text: _ Needed for collecting goods.
 settler_level: 0
 buildingcosts: {1: 5}
 components:

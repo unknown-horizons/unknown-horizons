@@ -1,5 +1,5 @@
 id: 35
-name: Salt Ponds
+name: _ Salt Ponds
 baseclass: production.SaltPond
 radius: 0
 cost: 10
@@ -9,7 +9,7 @@ size_y: 3
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: saltponds-1
-tooltip_text: Evaporates salt. Built on sea coast.
+tooltip_text: _ Evaporates salt. Built on sea coast.
 settler_level: 2
 buildingcosts: {1: 350, 4: 4, 6: 2}
 components:

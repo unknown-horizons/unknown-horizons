@@ -1,5 +1,5 @@
 id: 24
-name: Brickyard
+name: _ Brickyard
 baseclass: production.Refiner
 radius: 8
 cost: 15
@@ -9,7 +9,7 @@ size_y: 4
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: brickyard-1
-tooltip_text: Turns clay into bricks.
+tooltip_text: _ Turns clay into bricks.
 settler_level: 1
 buildingcosts: {1: 500, 4: 6, 6: 1}
 components:

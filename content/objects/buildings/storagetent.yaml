@@ -1,5 +1,5 @@
 id: 2
-name: Storage Tent
+name: _ Storage Tent
 baseclass: storages.StorageTent
 radius: 17
 cost: 0
@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: store-1
-tooltip_text: Extends stock and provides collectors.
+tooltip_text: _ Extends stock and provides collectors.
 settler_level: 0
 buildingcosts: {1: 350, 4: 4}
 components:

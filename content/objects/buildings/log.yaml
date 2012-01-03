@@ -1,5 +1,5 @@
 id: 16
-name: Log
+name: _ Log
 baseclass: path.Bridge
 radius: 10
 cost: 0
@@ -9,7 +9,7 @@ size_y: 1
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: null
-tooltip_text: Road across a river.
+tooltip_text: _ Road across a river.
 settler_level: 0
 buildingcosts: {1: 50, 4: 2}
 components:

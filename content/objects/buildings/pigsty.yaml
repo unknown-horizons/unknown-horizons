@@ -1,5 +1,5 @@
 id: 39
-name: Pigsty
+name: _ Pigsty
 baseclass: nature.Field
 radius: 0
 cost: 0
@@ -9,7 +9,7 @@ size_y: 5
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: pigsty-1
-tooltip_text: Raises pigs. Needs a farm.
+tooltip_text: _ Raises pigs. Needs a farm.
 settler_level: 2
 buildingcosts: {1: 200, 4: 2}
 components:

@@ -1,5 +1,5 @@
 id: 26
-name: Distillery
+name: _ Distillery
 baseclass: production.Refiner
 radius: 8
 cost: 10
@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 2
 inhabitants_max: 2
 button_name: distillery-1
-tooltip_text: Turns sugar into liquor.
+tooltip_text: _ Turns sugar into liquor.
 settler_level: 1
 buildingcosts: {1: 250, 4: 2, 6: 2, 7: 4}
 components:

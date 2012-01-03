@@ -1,5 +1,5 @@
 id: 22
-name: Sugar Field
+name: _ Sugar Field
 baseclass: nature.Field
 radius: 0
 cost: 0
@@ -9,7 +9,7 @@ size_y: 3
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: sugarfield-1
-tooltip_text: Used in liquor production. Needs a farm.
+tooltip_text: _ Used in liquor production. Needs a farm.
 settler_level: 1
 buildingcosts: {1: 150}
 components:

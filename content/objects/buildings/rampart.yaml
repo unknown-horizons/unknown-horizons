@@ -1,5 +1,5 @@
 id: 14
-name: Rampart
+name: _ Rampart
 baseclass: housing.Housing
 radius: 10
 cost: 0
@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: null
-tooltip_text: Protects your settlement.
+tooltip_text: _ Protects your settlement.
 settler_level: 0
 buildingcosts: {1: 50}
 components:

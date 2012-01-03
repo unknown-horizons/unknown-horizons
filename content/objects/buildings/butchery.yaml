@@ -1,5 +1,5 @@
 id: 41
-name: Butchery
+name: _ Butchery
 baseclass: production.Refiner
 radius: 8
 cost: 15
@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 2
 inhabitants_max: 2
 button_name: butchery-1
-tooltip_text: Needs pigs or cattle. Produces food.
+tooltip_text: _ Needs pigs or cattle. Produces food.
 settler_level: 2
 buildingcosts: {1: 500, 6: 3, 7: 4}
 components:
