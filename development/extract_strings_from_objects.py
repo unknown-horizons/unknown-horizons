@@ -88,8 +88,7 @@ def list_all_files():
 		for directory, subdirs, files in os.walk(folder):
 			for filename in files:
 				if filename.endswith('.yaml') and filename not in files_to_skip:
-					result.append('{directory}/{filename}'.format(
-					                directory=directory, filename=filename))
+					result.append(os.path.join(directory, filename))
 	return sorted(result)
 
 def content_from_file(filename):

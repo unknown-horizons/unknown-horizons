@@ -26,12 +26,14 @@ import weakref
 from fife.extensions import pychan
 
 import horizons.main
+import horizons.i18n.objecttranslations
 from horizons.i18n.guitranslations import set_translations, text_translations
 
 log = logging.getLogger("i18n")
 
 # init translations
 set_translations()
+objecttranslations.set_translations()
 
 # save translated widgets
 translated_widgets = {}
@@ -64,6 +66,7 @@ def update_all_translations():
 	from horizons.gui.gui import build_help_strings
 	global translated_widgets
 	set_translations()
+	objecttranslations.set_translations()
 	for (filename, widget) in translated_widgets.iteritems():
 		widget = widget() # resolve weakref
 		if not widget:

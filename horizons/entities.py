@@ -85,15 +85,14 @@ class Entities(object):
 			return
 		cls.buildings = _EntitiesLazyDict()
 		from world.building import BuildingClass
-		#for (building_id,) in db("SELECT id FROM building"):
-		#	cls.buildings.create_on_access(building_id, Callback(BuildingClass, db, building_id))
-		#	if load_now:
-		#		cls.buildings[building_id]
 		for root, dirnames, filenames in os.walk('content/objects/buildings'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				cls.log.debug("Loading: " +  filename)
-				stream = file(os.path.join(root, filename), 'r')
+				full_file = os.path.join(root, filename)
+				stream = file(full_file, 'r')
 				result = load(stream, Loader=Loader)
+				result['yaml_file'] = full_file
+
 				building_id = int(result['id'])
 				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_results=result))
 				if True:

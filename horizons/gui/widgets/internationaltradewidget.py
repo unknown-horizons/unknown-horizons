@@ -67,7 +67,7 @@ class InternationalTradeWidget(object):
 			self.radius = self.instance.radius
 
 	def draw_widget(self):
-		self.widget.findChild(name='ship_name').text = unicode(self.instance.name)
+		self.widget.findChild(name='ship_name').text = unicode(self.instance.get_component(NamedComponent).name)
 		self.partners = self.find_partner()
 		if len(self.partners) > 0:
 			partner_label = self.widget.findChild(name='partners')
@@ -141,11 +141,11 @@ class InternationalTradeWidget(object):
 		if self.instance.position.distance(settlement.warehouse.position) <= self.radius:
 			if selling:
 				self.log.debug('InternationalTradeWidget : %s/%s is selling %d of res %d to %s/%s', \
-					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
+					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
 				SellResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
 			else:
 				self.log.debug('InternationalTradeWidget : %s/%s is buying %d of res %d from %s/%s', \
-					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
+					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
 				BuyResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
 			# update gui
 			self.draw_widget()

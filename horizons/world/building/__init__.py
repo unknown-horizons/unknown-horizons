@@ -30,6 +30,7 @@ from fife import fife
 from horizons.util import ActionSetLoader
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
+from horizons.i18n.objecttranslations import object_translations
 
 class BuildingClass(type):
 	"""Class that is used to create Building-Classes from the database.
@@ -73,10 +74,10 @@ class BuildingClass(type):
 		self._object = None
 		self.class_package = yaml_results['baseclass'].split('.')[0]
 		self.radius = yaml_results['radius']
-		self._name = yaml_results['name']
+		self._name = object_translations[yaml_results['yaml_file']]['name']
 		self.button_name = yaml_results['button_name']
 		self.settler_level = yaml_results['settler_level']
-		self.tooltip_text = yaml_results['tooltip_text']
+		self.tooltip_text = object_translations[yaml_results['yaml_file']]['tooltip_text']
 		self.action_sets = yaml_results['actionsets']
 		self.size = (int(yaml_results['size_x']), int(yaml_results['size_y']))
 		self.inhabitants = int(yaml_results['inhabitants_start'])
