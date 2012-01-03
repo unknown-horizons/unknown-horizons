@@ -10,6 +10,7 @@
 </VBox>
 
 <HBox min_size="365,40"  position="40,220"  name="button_box">
+	<CancelButton/>
 	<Spacer fixed_size="340" />
 	<OkButton />
 </HBox>

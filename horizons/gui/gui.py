@@ -377,15 +377,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.dialog_executed = False
 		return ret
 
-	def show_popup(self, windowtitle, message, show_cancel_button=False, big=False):
+	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0):
 		"""Displays a popup with the specified text
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, show cancel button or not
-		@param big: boolean, whether to use big version of the dialog
+		@param size: 0, 1 or 2. Larger means bigger.
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
-		popup = self.build_popup(windowtitle, message, show_cancel_button, big=big)
+		popup = self.build_popup(windowtitle, message, show_cancel_button, size=size)
 		if show_cancel_button:
 			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 		else:
@@ -409,25 +409,32 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			msg += _(u"Details:") + u" " + details
 		self.show_popup( _(u"Error:") + u" " + windowtitle, msg, show_cancel_button=False)
 
-	def build_popup(self, windowtitle, message, show_cancel_button = False, big=False):
+	def build_popup(self, windowtitle, message, show_cancel_button = False, size=0):
 		""" Creates a pychan popup widget with the specified properties.
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, include cancel button or not
-		@param big: boolean, whether to use the bigger version
+		@param size: 0, 1 or 2
 		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
 		"""
+		if size == 0:
+			wdg_name = "popup_230"
+		elif size == 1:
+			wdg_name = "popup_290"
+		elif size == 2:
+			wdg_name = "popup_350"
+		else:
+			assert False, "size should be 0 <= size <= 2, but is "+str(size)
+
 		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
 		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
-		if big:
-			self.widgets.reload('popup_350')
-			popup = self.widgets['popup_350']
-		elif show_cancel_button:
-			self.widgets.reload('popup_with_cancel')
-			popup = self.widgets['popup_with_cancel']
-		else:
-			self.widgets.reload('popup')
-			popup = self.widgets['popup']
+		self.widgets.reload(wdg_name)
+		popup = self.widgets[wdg_name]
+
+		if not show_cancel_button:
+			cancel_button = popup.findChild(name="cancelButton")
+			cancel_button.parent.removeChild(cancel_button)
+
 		headline = popup.findChild(name='headline')
 		# just to be safe, the gettext-function is used twice,
 		# once on the original, once on the unicode string.
