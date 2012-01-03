@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container name="popup_window"  size="472,290"
-	background_image="content/gui/images/background/notice290.png" >
+	background_image="content/gui/images/background/notice290.png">
 
 <VBox position="30,30"  name="message_box">
 	<Label text=""  name="headline"  font="headline" />
@@ -9,10 +9,7 @@
 		 wrap_text="1"  max_size="420,260"  min_size="420,260" />
 </VBox>
 
-<HBox min_size="365,40"  position="40,220"  name="button_box">
-	<CancelButton/>
-	<Spacer fixed_size="340" />
-	<OkButton />
-</HBox>
+<CancelButton position="25,220" />
+<OkButton position="410,220" />
 
 </Container>

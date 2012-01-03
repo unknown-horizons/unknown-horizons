@@ -38,4 +38,6 @@ def test_ai_quick():
 	for seed in xrange(1, 16):
 		yield generate_test(seed)
 
+# this disables the test in general and only makes it being run when
+# called like this: run_tests.py -a long
 test_ai_quick.long = True
