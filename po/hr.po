@@ -2197,7 +2197,6 @@ msgstr ""
 #. (text of widget: lbl_,)
 #: horizons/i18n/guitranslations.py:743
 msgid "Rotate building or map counterclockwise"
-<<<<<<< HEAD
 msgstr ""
 
 #. (text of widget: lbl_-)
@@ -2205,15 +2204,6 @@ msgstr ""
 msgid "Decrease game speed"
 msgstr ""
 
-=======
-msgstr ""
-
-#. (text of widget: lbl_-)
-#: horizons/i18n/guitranslations.py:745
-msgid "Decrease game speed"
-msgstr ""
-
->>>>>>> master
 #. (text of widget: lbl_.)
 #: horizons/i18n/guitranslations.py:747
 msgid "Rotate building or map clockwise"

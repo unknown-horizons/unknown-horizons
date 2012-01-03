@@ -10,8 +10,8 @@ description: "Samouczek:\nZbuduj swoj\u0105 pierwsz\u0105 osad\u0119 i naucz si\
 difficulty: !!python/unicode 'Samouczek'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a warehouse at the coast, so it is easy accessible
-        for other ships like the Free Trader.']
+  - arguments: ["Wybuduj port na wybrze\u017Cu, tak aby inne statki mia\u0142y do\
+        \ niego dost\u0119p, np. Kupcy."]
     type: message
   - arguments: [!!python/unicode 'Witaj w Unknown Horizons!', "To tw\xF3j Dziennik\
         \ Pok\u0142adowy, gdzie przechowywane s\u0105 wszystkie wa\u017Cne informacje.\
@@ -28,28 +28,17 @@ events:
         \ si\u0119 z zespo\u0142em!\n\nTeraz przejd\u017Amy do w\u0142a\u015Bciwej\
         \ gry."]
     type: logbook_w
-  - arguments: ["Nowe zadanie: Osiedl si\u0119 na wyspie", !!python/unicode 'To move
-        your ship, select it with a left click and right click on the location you
-        want it to go to.
-
-
-        Once you are near the coast, the anchor-like button you see in the overview
-        tab will become active.
-
-
-        This indicates that you are able to build a warehouse there by pressing that
-        button (called ''Build Settlement'').
-
-
-        Now a preview of your building is dragged around when you move the cursor.
-
-
-        You can build on any spot where this preview is not shaded red.
-
-        Click where you want to place your first building.
-
-
-        TASK: Build a warehouse at the coast.', 2]
+  - arguments: ["Nowe zadanie: Osiedl si\u0119 na wyspie", "Aby poruszy\u0107 si\u0119\
+        \ swoim statkiem, kliknij na niego lewym przyciskiem myszy a nast\u0119pnie\
+        \ prawym przyciskiem myszy wybierz miejsce docelowe.\n\nJak tylko zbli\u017C\
+        ysz si\u0119 do wybrze\u017Ca, przycisk 'Buduj port' zostanie automatycznie\
+        \ aktywowany.\n\nZa pomoc\u0105 niego b\u0119dziesz m\xF3g\u0142 wybudowa\u0107\
+        \ sw\xF3j port.na danej wyspie.\n\nAby wybra\u0107 miejsce dla portu kliknij\
+        \ przycisk 'Buduj port' z zak\u0142adki pogl\u0105du statku a nast\u0119pnie\
+        \ wybierz miejsce gdzie chcia\u0142by\u015B go zlokalizow\u0105\u0107.\n\n\
+        Mo\u017Cesz wybra\u0107 dowolne miejsce na kt\xF3rym podgl\u0105d budynku\
+        \ nie jest pod\u015Bwietlony na czerwono.Kliknij aby go postawi\u0107.\n\n\
+        Zadanie: Wybuduj port na wybrze\u017Cu.", 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -71,33 +60,21 @@ events:
         \ na pierwszy z etap\xF3w (poziom \u017Beglarzy) dlatego masz dost\u0119p\
         \ tylko do podstawowych budynk\xF3w."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
-        more and more complex buildings.
-
-
-        For now, select the lumberjack under ''Companies'' and build it in an area
-        with some trees around.
-
-
-        You can also plant trees later - but that costs money. Use what nature provided
-        you with!
-
-
-        A company always needs a trail connection to a storage or warehouse, otherwise
-        goods will remain at the company and not be collected.
-
-
-        This means that you have to build a trail connecting your warehouse (or storage)
-        and lumberjack.
-
-
-        TASK: Build a lumberjack in a wooded area and connect it to a road.
-
-
-        Watch how a collector will fetch your first self-produced boards.']
+  - arguments: ['', "Wraz z rozwojem cywilizacji, zdob\u0119dziesz dost\u0119p do\
+        \ coraz to bardziej zaawansowanych budowli.\n\nNarazie zaznacz chat\u0119\
+        \ drwala z kategori 'Przemys\u0142 i rolnictwo' i wybuduj j\u0105 w rejonie\
+        \ drzew.\n\nMasz mo\u017Cliwo\u015B\u0107 tak\u017Ce sadzenia drzew - ale\
+        \ to kosztuje, narazie skorzysta\u0107 z tego co nautra daje!\n\nAby wykorzysta\u0107\
+        \ wszystkie dobra kt\xF3re zosta\u0142y zebrane/wyprodukowane w danym miejscu\
+        \ musisz po\u0142\u0105czy\u0107 je drog\u0105 z reszta infrastruktury w twoiej\
+        \ osadzie. Inaczej nie b\u0119d\u0105 brane pod uwag\u0119.\nOznacza to i\u017C\
+        \ musisz postawi\u0107 drog\u0119 pomi\u0119dzy portem (lub magazynem) i chat\u0105\
+        \ drwala.\n\nZadanie: Wybuduj chat\u0119 drwala w lesie i po\u0142\u0105cz\
+        \ j\u0105 z drog\u0105.\n\nObserwuj jak pomocnik odbiera od drwala Twoje pierwsze\
+        \ wyprodukowane deski."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the warehouse
-        using a trail.']
+  - arguments: ["Wybuduj chat\u0119 drwala i po\u0142\u0105cz j\u0105 drog\u0105 z\
+        \ portem."]
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -127,60 +104,42 @@ events:
         \ Aby zapewni\u0107 sta\u0142y dost\u0119p do \u017Cywno\u015Bci nie mo\u017C\
         esz oprze\u0107 si\u0119 tylko na my\u015Bliwym."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
-        the warehouse and a fish school in range.
-
-
-        He will build a small rowing vessel and catch some fish.
-
-
-        This is a very constant supply at the cost of a slightly longer production
-        time per unit of food.
-
-
-        A small settlement like yours can use both companies, and you can better balance
-        pros and cons if you see the direct comparison.
-
-
-        TASK: Build a hunter and a fisher.
-
-
-        Don''t forget to connect them to your warehouse with trails!']
+  - arguments: ['', "Rybak wymaga dost\u0119pu do otwartych w\xF3d oraz do \u0142\
+        awicy ryb w zasi\u0119gu.\n\nPo usytuowaniu chatki rybaka na wybrze\u017C\
+        u wybuduje on sobie \u0142\xF3d\u017A ryback\u0105 i zacznie \u0142owi\u0107\
+        \ ryby.\n\nJest to bardzo wydajne \u017Ar\xF3d\u0142o \u017Cywno\u015Bci.\n\
+        \nTaka ma\u0142a osada jak twoja mo\u017Ce wykorzysta\u0107 oba sposoby pozyskiwania\
+        \ \u017Cywno\u015Bci i zbalansowa\u0107 je odpowiednio zgodnie z ich wadami\
+        \ i zaletami.\n\nNie zapomnij po\u0142\u0105czy\u0107 ich drog\u0105 ze swoim\
+        \ portem!"]
     type: logbook
-  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
-        warehouse.']
+  - arguments: ["Wybuduj chat\u0119 my\u015Bliwego i rybaka. Po\u0142\u0105cz je drog\u0105\
+        \ z portem."]
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: ["Now Zadanie: Rynek g\u0142\xF3wny", !!python/unicode 'Your residents
-        need a main square where they can fetch their goods from.
-
-
-        This means that they need a trail connection from their home to the main square.
-
-
-        All goods in your warehouse are available at this ''market place'', so your
-        residents do not need to walk to the fisher or even to the warehouse.
-
-
-        You should consider founding your actual house settlement in an area where
-        you can easily expand it and build some trails, too.
-
-
-        You should avoid placing tents too close to your lumberjacks for example because
-        building tents will clear away the trees that your lumberjack needs to produce
-        boards.
-
-
-        TASK: Build a main square.']
+  - arguments: ["Now Zadanie: Rynek g\u0142\xF3wny", "Twoi osadnicy potrzebuj\u0105\
+        \ rynku g\u0142\xF3wnego na kt\xF3rym b\u0119d\u0105 mogli dosta\u0107 wszystkie\
+        \ niezb\u0119dne im towary.\n\nOznacza to i\u017C potrzebuj\u0105 oni bezpo\u015B\
+        redniego po\u0142\u0105czenia z domu na rynek g\u0142\xF3wny.\n\nWszystkie\
+        \ dobra kt\xF3re posiadasz b\u0119d\u0105 dost\u0119pne na rynku, dzi\u0119\
+        ki temu twoi osadnicy nie s\u0105 zmuszeni chodzi\u0107 bezpo\u015Brednio\
+        \ do rybaka czy do portu.\n\nMusisz odpowiednio rozplanowa\u0107 rozlo\u017C\
+        enie poszczeg\xF3lnych dom\xF3w osadnik\xF3w na terenie kt\xF3ry w p\xF3\u017A\
+        niejszym czasie b\u0119dziesz m\xF3g\u0142 rozbudowywa\u0107 i zapewni\u0107\
+        \ odpowiednie doj\u015Bcie drog\u0105.\n\nPowiniene\u015B przestrzec si\u0119\
+        \ od stawiania budynk\xF3w w pobli\u017Cu chaty drwala i my\u015Bliwego z\
+        \ racji tego i\u017C stawiaj\u0105c budynek niszczysz las co za tym idzie\
+        \ odbierasz schornienie zwierz\u0119t\u0105 i materia\u0142 dla drwala.\n\n\
+        Zadanie: Wybuduj rynek g\u0142\xF3wny."]
     type: logbook_w
   - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
 
@@ -211,9 +170,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -271,35 +230,28 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: ["Nowe Zadanie: Wybuduj sygna\u0142 \u015Bwietlny", !!python/unicode 'Can
-        you see the ship passing your island from time to time? That ship belongs
-        to the Free Trader, one of the first settlers in this archipelago.
-
-
-        The trader will supply your settlement with necessary goods which you can''t
-        produce yet.
-
-        You can also sell surpluses of your production, but in general consuming them
-        (by building more tents) instead of selling them yields more profit.
-
-
-        Normally the trader ships just sail around and look for deals, but you can
-        speed things up a bit.
-
-
-        For this purpose, build a signal fire at the coast near your warehouse. It
-        will show ships the way to your settlement.
-
-
-        The signal fire has to cover the area which the ships pass through to catch
-        them.']
+  - arguments: ["Nowe Zadanie: Wybuduj sygna\u0142 \u015Bwietlny", "Jak pewnie zauwa\u017C\
+        y\u0142e\u015B, od czasu do czasu Twoj\u0105 ko\u0142o Twojego portu przep\u0142\
+        ywaj\u0105 r\xF3\u017Cne statki. Te statki to kupcy, Jedni z pierwszych \u017C\
+        eglarzy na tym archipelagu.\n\nKupcy s\u0105 wstanie dostarczy\u0107 r\xF3\
+        \u017Cnego rodzaju dobra kt\xF3rych nie jeste\u015B w stanie wyprodukowa\u0107\
+        .\nMo\u017Cesz tak\u017Ce sprzeda\u0107 im nadmiar swoich zasob\xF3w w celu\
+        \ zarobkowym, jednak nadmiarowe dobra lepiej skonsumowa\u0107 ( poprzez postawienie\
+        \ wi\u0119kszej ilo\u015Bci namiot\xF3w ) i czerpa\u0107 wi\u0119ksze korzy\u015B\
+        ci z podatk\xF3w.\n\nNormalnie kupcy p\u0142ywaj\u0105 i poszukuj\u0119 mo\u017C\
+        liwo\u015Bci handlu, jednak mo\u017Cesz sprawi\u0107 aby szybciej do Ciebie\
+        \ trafili.\n\nW tym celu postaw sygna\u0142 \u015Bwietlny w postaci du\u017C\
+        ego ogniaska przy swoim porcie. Pozwoli to wskaza\u0107 przep\u0142ywaj\u0105\
+        cym drog\u0119 do Twojej osady.\n\nSygna\u0142 \u015Bwietlny musi pokry\u0107\
+        \ obszar kt\xF3rym przep\u0142ywaj\u0105 statki aby nakierowa\u0107 ich na\
+        \ Twoj\u0105 osad\u0119."]
     type: logbook_w
   - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your warehouse if it planned to sail past it.
+        also stop by and look into your branch office if it planned to sail past it.
 
 
-        You can propose deals via the warehouse tab ''Buy/Sell''. (This feature is
-        currently quite fiddly to use. If you come up with a nice way of improving
+        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
+        is currently quite fiddly to use. If you come up with a nice way of improving
         it, please share your thoughts! We need your help here!)
 
 
@@ -314,9 +266,9 @@ events:
         explain this once you are ready to trade.
 
 
-        TASK: Build a signal fire at the coast close to your warehouse.']
+        TASK: Build a signal fire at the coast close to your branch office.']
     type: logbook
-  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your warehouse.']
+  - arguments: ["Wybuduj latarnie na wybrze\u017Cu w pobli\u017Cu swojego portu."]
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -329,8 +281,8 @@ events:
     type: var_lt
 - actions:
   - arguments: ["Nowe Zadanie: Naucz si\u0119 handlowa\u0107", !!python/unicode "Excellent!\
-        \ The Free Trader will now stop by at your warehouse from time to time.\n\n\
-        Let's continue our tutorial on how to trade.\n\nAfter selecting a particular\
+        \ The Free Trader will now stop by at your branch office from time to time.\n\
+        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
         \ type of good, the green bar across the bottom of the slot (if visible) shows\
         \ you how much you have in stock of this good.\n\nDragging the slider on the\
         \ right of each slot determines your 'target value' which has a different\
@@ -474,11 +426,11 @@ events:
 
 
         Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a warehouse.
+        to be connected to storage or a Branch Office.
 
 
         As long as units of the final production company can reach the farm, and collectors
-        from the warehouse or storage tent can reach the final company everything''s
+        from the branch office or storage tent can reach the final company everything''s
         fine.
 
 
@@ -556,7 +508,7 @@ events:
         you watch your lumberjack recently?
 
 
-        Since your warehouse does not have unlimited space to store goods, collectors
+        Since your branch office does not have unlimited space to store goods, collectors
         will stop fetching goods from companies when stock is full.
 
         So if no sailor recently wanted to upgrade his tent, you probably have a lot
@@ -581,9 +533,9 @@ events:
         \nAnother solution is to build the last increment-I building which has not\
         \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
         \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the warehouse does.\n\nNote that companies can\
-        \ also be connected to a storage in order to get their products collected,\
-        \ and if the warehouse is overwhelmed with collector tasks, you can place\
+        \ to fetch goods, just like the branch office does.\n\nNote that companies\
+        \ can also be connected to a storage in order to get their products collected,\
+        \ and if the branch office is overwhelmed with collector tasks, you can place\
         \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
         \ where you need collectors."]
     type: logbook
@@ -606,7 +558,7 @@ events:
 
 
         There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the warehouse).
+        to a Storage Tent (or the Branch Office).
 
 
         In both cases you should ensure the connection to a trail as well.

@@ -104,7 +104,7 @@ class _build_i18n(distutils.cmd.Command):
 			lang = os.path.basename(po_file[:-3])
 			if selected_languages and not lang in selected_languages:
 				continue
-			mo_dir = os.path.join("build", "mo", lang, "LC_MESSAGES")
+			mo_dir = os.path.join("content", "lang", lang, "LC_MESSAGES")
 			mo_file = os.path.join(mo_dir, "%s.mo" % self.domain)
 			if not os.path.exists(mo_dir):
 				os.makedirs(mo_dir)

@@ -7,13 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-<<<<<<< HEAD
-"PO-Revision-Date: 2011-12-18 02:08+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
-=======
 "PO-Revision-Date: 2012-01-01 18:55+0200\n"
 "Last-Translator: cykusz <rafalm3@gmail.com>\n"
->>>>>>> master
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -26,11 +21,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Nowa osada została znaleziona przez {player}"
->>>>>>> master
 
 # Messages
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -681,11 +672,7 @@ msgstr ""
 #: horizons/command/misc.py:30
 #, python-format
 msgid "{name}: {chatmessage}"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "{name}: {chatmessage}"
->>>>>>> master
 
 #: horizons/engine.py:71
 msgid "Restart required"
@@ -726,11 +713,7 @@ msgstr ""
 #: horizons/engine.py:304
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Wybrany język {lang} nie mógł zostać załadowany"
->>>>>>> master
 
 #: horizons/engine.py:560
 msgid "Invalid network port"

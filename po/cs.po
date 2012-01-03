@@ -7,13 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-<<<<<<< HEAD
-"PO-Revision-Date: 2011-12-23 19:19+0200\n"
-"Last-Translator: Pavel <pavelspek@gmail.com>\n"
-=======
 "PO-Revision-Date: 2011-12-31 06:11+0200\n"
 "Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
->>>>>>> master
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +22,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new settlement was founded by {player}."
-<<<<<<< HEAD
-msgstr "{player} založil novou osadu"
-=======
 msgstr "{player} založil novou osadu."
->>>>>>> master
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1308,13 +1299,6 @@ msgstr "Ukončit obchodní cestu"
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
-<<<<<<< HEAD
-#: horizons/gui/widgets/routeconfig.py:127
-msgid "Click on a settlement to add a waypoint!"
-msgstr ""
-
-=======
->>>>>>> master
 #: horizons/gui/widgets/routeconfig.py:255
 msgid "Select a resource:"
 msgstr ""
@@ -1477,11 +1461,7 @@ msgstr "Hornictví"
 #. (tooltip of widget: butchery-1)
 #: horizons/i18n/guitranslations.py:121
 msgid "Butchery: Needs pigs or cattle. Produces food."
-<<<<<<< HEAD
-msgstr "Řeznictví:  Produkuje jídlo.Potřebuje prasata nebo skot."
-=======
 msgstr "Řeznictví: Produkuje jídlo. Potřebuje prasata nebo skot."
->>>>>>> master
 
 #. (tooltip of widget: cattlerun-1)
 #: horizons/i18n/guitranslations.py:123
@@ -1822,11 +1802,7 @@ msgstr ""
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:311
 msgid "Select resources:"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Vyberte zdroje:"
->>>>>>> master
 
 #. (text of widget: buy_expenses_label)
 #. (text of widget: buying_label)
@@ -2274,7 +2250,6 @@ msgstr ""
 #. (text of widget: lbl_+)
 #: horizons/i18n/guitranslations.py:741
 msgid "Increase game speed"
-<<<<<<< HEAD
 msgstr ""
 
 #. (text of widget: lbl_,)
@@ -2292,25 +2267,6 @@ msgstr ""
 msgid "Rotate building or map clockwise"
 msgstr ""
 
-=======
-msgstr ""
-
-#. (text of widget: lbl_,)
-#: horizons/i18n/guitranslations.py:743
-msgid "Rotate building or map counterclockwise"
-msgstr ""
-
-#. (text of widget: lbl_-)
-#: horizons/i18n/guitranslations.py:745
-msgid "Decrease game speed"
-msgstr ""
-
-#. (text of widget: lbl_.)
-#: horizons/i18n/guitranslations.py:747
-msgid "Rotate building or map clockwise"
-msgstr ""
-
->>>>>>> master
 #. (text of widget: lbl_b)
 #: horizons/i18n/guitranslations.py:749
 msgid "Show build menu"

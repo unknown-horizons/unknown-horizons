@@ -10,13 +10,8 @@ description: "Didacticiel:\n\xC9tablissez votre premi\xE8re colonie et apprenez 
 difficulty: !!python/unicode 'Didacticiel'
 events:
 - actions:
-<<<<<<< HEAD
-  - arguments: ["Construisez un comptoir sur la c\xF4te, ainsi il sera facilement\
-        \ accessible aux autres navires comme ceux du Marchant Ind\xE9pendant."]
-=======
   - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
         accessible for other ships like the Free Trader.']
->>>>>>> master
     type: message
   - arguments: [!!python/unicode 'Bienvenue dans Unknown Horizons !', "Voici votre\
         \ journal de bord o\xF9 sont enregistr\xE9es toutes les informations importantes.\
@@ -72,21 +67,6 @@ events:
         \ au premier niveau (niveau des marins) et ne sont donc propos\xE9s que les\
         \ b\xE2timents de base."]
     type: logbook_w
-<<<<<<< HEAD
-  - arguments: ['', "Plus votre civilisation avancera et plus vous pourrez construire\
-        \ de b\xE2timents complexes.\n\nMaintenant construisez un camp de b\xFBcheron\
-        \ dans une zone bois\xE9e.\n\nVous pourrez aussi planter des arbres plus tard\
-        \ - mais cela vous co\xFBtera de l'argent. Utilisez ce que la nature vous\
-        \ offre!\n\nUne entreprise n\xE9cessite une route menant \xE0 un d\xE9p\xF4\
-        t ou un comptoir, autrement les biens produits y resteront et ne seront pas\
-        \ collect\xE9s.\n\nVous devez donc construire un sentier entre votre comptoir\
-        \ (ou votre d\xE9p\xF4t) et votre b\xFBcheron.\n\nMISSION: Installez un b\xFB\
-        cheron dans une zone bois\xE9e et connectez le \xE0 une route.\n\nRegardez-le\
-        \ produire vos premi\xE8res planches."]
-    type: logbook
-  - arguments: ["Construisez un campement de b\xFBcheron et connectez le \xE0 votre\
-        \ comptoir par une route."]
-=======
   - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
         more and more complex buildings.
 
@@ -114,7 +94,6 @@ events:
     type: logbook
   - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
         office using a trail.']
->>>>>>> master
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -167,24 +146,12 @@ events:
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-<<<<<<< HEAD
-  - arguments: [!!python/unicode 'MISSION: LA PLACE CENTRALE', "Vos habitants ont\
-        \ besoin d'une place marchande o\xF9 ils trouveront des biens de consommation.\n\
-        \nCela signifie qu'il leur faudra un sentier menant des habitations \xE0 la\
-        \ place centrale.\n\nToutes les marchandises de votre comptoir sont disponibles\
-        \ dans cette \xABplace du march\xE9\xBB, donc vos habitants n'ont pas besoin\
-        \ d'aller chez le p\xEAcheur ou m\xEAme jusqu'au comptoir.\n\nVous devriez\
-        \ fonder votre campement de tentes dans un endroit o\xF9 vous pourrez facilement\
-        \ l'\xE9tendre et y construire des routes.\n\nPar exemple, nous conseillons\
-        \ de ne pas placer vos tentes trop pr\xE8s de vos b\xFBcherons, cela d\xE9\
-        truirais leurs pr\xE9cieux arbres.\n\nMISSION: Construire une place centrale."]
-=======
   - arguments: [!!python/unicode 'MISSION: LA PLACE CENTRALE', !!python/unicode 'Your
         residents need a main square where they can fetch their goods from.
 
@@ -206,7 +173,6 @@ events:
 
 
         TASK: Build a main square.']
->>>>>>> master
     type: logbook_w
   - arguments: ['', "Maintenant, nous allons regarder de plus pr\xE8s la place centrale.\n\
         \nDans l'onglet \xABCompte\xBB vous obtenez un bilan de cette \xEEle, avec\
@@ -229,9 +195,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -283,32 +249,6 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-<<<<<<< HEAD
-  - arguments: [!!python/unicode 'MISSION : LA SIGNALISATION', "Avez-vous remarqu\xE9\
-        \ le navire qui passe de temps en temps devant votre \xEEle? C'est le navire\
-        \ du marchand ind\xE9pendant, l'un des premiers colons de cet archipel.\n\n\
-        Il approvisionne votre colonie en marchandises que vous ne pouvez pas encore\
-        \ produire.\nVous pouvez \xE9galement vendre vos surplus de production, mais\
-        \ en g\xE9n\xE9ral il est plus profitable de les consommer (en construisant\
-        \ plus de tentes).\n\nNormalement les navire marchands ne font que chercher\
-        \ des opportunit\xE9s, mais vous pouvez, un peu acc\xE9l\xE9rer les choses.\n\
-        \n\xC0 cette fin construisez un phare sur la c\xF4te pr\xE8s de votre comptoir.\
-        \ Il montrera aux navires le chemin vers votre colonie.\n\nLe phare doit couvrir\
-        \ le territoire \xE0 travers lequel les navires passent pour les guider."]
-    type: logbook_w
-  - arguments: ['', "Apr\xE8s cette annonce le marchand fera une escale chez vous\
-        \ pour regarder votre comptoir m\xEAme s'il avait pr\xE9vu de passer tout\
-        \ droit.\n\nVous pouvez faire des offres dans l'onglet \"Achat/Vente\" de\
-        \ votre comptoir. (Cette fonction est malheureusement un peu difficile \xE0\
-        \ utiliser pour le moment. Si vous avez une bonne id\xE9e pour l\u2019am\xE9\
-        liorer partagez la avec nous! Nous avons besoin de votre aide!)\n\nAu niveau\
-        \ \"marins\" vous avez trois emplacements de commerce \xE0 votre disposition.\n\
-        \nCliquez sur le petit symbole pour changer le mode der \"Achat\" \xE0 \"\
-        Vente\" et vice versa.\n\nCliquez sur l'emplacement de commerce pour choisir\
-        \ la marchandise que vous voulez vendre ou acheter. Nous expliquerons ce proc\xE9\
-        d\xE9 plus pr\xE9cis\xE9ment lorsque vous serez pr\xEAt \xE0 faire affaire.\n\
-        \nMISSION: \xC9rigez un phare sur la c\xF4te pr\xE8s de votre comptoir."]
-=======
   - arguments: [!!python/unicode 'MISSION : LA SIGNALISATION', !!python/unicode 'Can
         you see the ship passing your island from time to time? That ship belongs
         to the Free Trader, one of the first settlers in this archipelago.
@@ -353,7 +293,6 @@ events:
 
 
         TASK: Build a signal fire at the coast close to your branch office.']
->>>>>>> master
     type: logbook
   - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
         office.']
@@ -560,21 +499,6 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-<<<<<<< HEAD
-  - arguments: ["MISSION : L'ENTREP\xD4T", "Avez vous observ\xE9 le b\xFBcheron r\xE9\
-        cemment?\n\nPuisque votre comptoir n'a qu'une capacit\xE9 limit\xE9, les collecteurs\
-        \ arr\xEAterons d'aller chercher les biens dans les entreprises lorsqu'il\
-        \ sera plein.\nDonc si aucun marin n'a am\xE9lior\xE9 sa tente, vous avez\
-        \ probablement beaucoup de planches et dans ce cas le b\xFBcheron est peut-\xEA\
-        tre inactif.\nNous pouvons corriger cette situation par deux approches diff\xE9\
-        rentes que nous allons pr\xE9senter plus bas.\n\nToutes les entreprises offrent\
-        \ la possibilit\xE9 de stopper le travail.\nCela peut para\xEEtre \xE9trange\
-        \ mais essayez de cliquer sur les engrenages que vous voyez par exemple dans\
-        \ le sommaire du b\xFBcheron.\n\nSi ce mode \xABpause\xBB est disponible (nous\
-        \ l'appelons \xABd\xE9saffection\xBB), les co\xFBts de fonctionnements que\
-        \ vous payez pour le b\xE2timent baisseront. Il ne baisseront pas \xE0 z\xE9\
-        ro, mais ils seront d\xE9j\xE0 plus bas que si le b\xE2timent fonctionnait."]
-=======
   - arguments: ["MISSION : L'ENTREP\xD4T", !!python/unicode 'Did you watch your lumberjack
         recently?
 
@@ -598,7 +522,6 @@ events:
         If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
         costs you pay for the building will decrease. They won''t be zero, but still
         lower than if you keep the company producing.']
->>>>>>> master
     type: logbook_w
   - arguments: ['', !!python/unicode "This means that you can save money when you\
         \ temporarily do not need a company and do not want to tear it down, either.\n\

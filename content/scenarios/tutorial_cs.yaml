@@ -149,7 +149,7 @@ events:
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
@@ -200,9 +200,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_warehouse_gt
+    type: buildings_connected_to_branch_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]

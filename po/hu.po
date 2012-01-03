@@ -640,11 +640,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "{player1} and {player2} are now {status}"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "{player1} és {player2} most {status}"
->>>>>>> master
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -2216,7 +2212,6 @@ msgstr ""
 #. (text of widget: lbl_,)
 #: horizons/i18n/guitranslations.py:743
 msgid "Rotate building or map counterclockwise"
-<<<<<<< HEAD
 msgstr ""
 
 #. (text of widget: lbl_-)
@@ -2224,15 +2219,6 @@ msgstr ""
 msgid "Decrease game speed"
 msgstr ""
 
-=======
-msgstr ""
-
-#. (text of widget: lbl_-)
-#: horizons/i18n/guitranslations.py:745
-msgid "Decrease game speed"
-msgstr ""
-
->>>>>>> master
 #. (text of widget: lbl_.)
 #: horizons/i18n/guitranslations.py:747
 msgid "Rotate building or map clockwise"
