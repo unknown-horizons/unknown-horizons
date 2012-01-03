@@ -38,4 +38,6 @@ def test_ai_long():
 	for seed in [1, 2, 3, 4]:
 		yield generate_test(seed)
 
+# this disables the test in general and only makes it being run when
+# called like this: run_tests.py -a long
 test_ai_long.long = True
