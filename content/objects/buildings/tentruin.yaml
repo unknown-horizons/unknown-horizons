@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: null
-tooltip_text: _ null
+tooltip_text: null
 settler_level: 0
 buildingcosts: {}
 components:
