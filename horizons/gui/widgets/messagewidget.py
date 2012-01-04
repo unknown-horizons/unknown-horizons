@@ -119,6 +119,7 @@ class MessageWidget(LivingObject):
 				button.up_image = message.up_image
 				button.hover_image = message.hover_image
 				button.down_image = message.down_image
+				button.is_focusable = False
 				# show text on hover
 				events = {
 					button.name + "/mouseEntered": Callback(self.show_text, index),
