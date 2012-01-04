@@ -23,7 +23,7 @@ import logging
 import fnmatch
 import os
 
-from yaml import load, dump
+from yaml import load
 from yaml import SafeLoader as Loader
 
 from horizons.util import Callback
@@ -88,7 +88,7 @@ class Entities(object):
 		for root, dirnames, filenames in os.walk('content/objects/buildings'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				cls.log.debug("Loading: " +  filename)
-				full_file = os.path.join(root, filename)
+				full_file = root + "/" + filename
 				stream = file(full_file, 'r')
 				result = load(stream, Loader=Loader)
 				result['yaml_file'] = full_file
