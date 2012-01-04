@@ -45,6 +45,7 @@ class _EntitiesLazyDict(dict):
 			return elem
 
 
+
 class Entities(object):
 	"""Class that stores all the special classes for buildings, grounds etc.
 	Stores class objects, not instances.
@@ -95,7 +96,7 @@ class Entities(object):
 
 				building_id = int(result['id'])
 				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_results=result))
-				if load_now:
+				if True:
 					cls.buildings[building_id]
 
 	@classmethod

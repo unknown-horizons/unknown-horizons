@@ -56,7 +56,7 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 	def load(cls, db, building_id):
 		# load the higher level building data because resource deposits don't actually produce anything
 		name = cls._load_name(db, building_id)
-		settler_level = cls._load_settler_level(db, building_id)
+		settler_level = cls._load_settler_level(building_id)
 		return cls(building_id, name, settler_level)
 
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):

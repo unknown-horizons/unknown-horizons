@@ -78,16 +78,16 @@ class AbstractBuilding(object):
 
 	@classmethod
 	def _load_name(cls, db, building_id):
-		return db("SELECT name FROM building WHERE id = ?", building_id)[0][0]
+		return Entities.buildings[building_id]._name
 
 	@classmethod
-	def _load_settler_level(cls, db, building_id):
-		return db("SELECT settler_level FROM building WHERE id = ?", building_id)[0][0]
+	def _load_settler_level(cls, building_id):
+		return Entities.buildings[building_id].settler_level
 
 	@classmethod
 	def load(cls, db, building_id):
 		name = cls._load_name(db, building_id)
-		settler_level = cls._load_settler_level(db, building_id)
+		settler_level = cls._load_settler_level(building_id)
 		return cls(building_id, name, settler_level)
 
 	monthly_gold_cost = 50

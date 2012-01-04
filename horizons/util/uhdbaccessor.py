@@ -19,13 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import sys
 from random import randint
 
 from horizons.constants import PATHS
 from horizons.util import decorators
 from horizons.util.dbreader import DbReader
 from horizons.util.gui import get_res_icon
+from horizons.entities import Entities
 
 ########################################################################
 class UhDbAccessor(DbReader):
@@ -135,22 +135,6 @@ class UhDbAccessor(DbReader):
 
 	# Building table
 
-	def get_building_class_data(self, building_class_id):
-		"""Returns data for class of a building class.
-		@param building_class_id: class of building, int
-		@return: tuple: (class_package, class_name)
-		"""
-		sql = "SELECT class_package, class_type FROM building WHERE id = ?"
-		return self.cached_query(sql, building_class_id)[0]
-
-	def get_building_level(self, building_class_id):
-		"""Returns settler_level of a building class.
-		@param building_class_id: class of building, int
-		@return: int settler_level
-		"""
-		sql = "SELECT settler_level FROM building WHERE id = ?"
-		return self.cached_query(sql, building_class_id)[0][0]
-
 	def get_building_tooltip(self, building_class_id):
 		"""Returns tooltip text of a building class.
 		ATTENTION: This text is automatically translated when loaded
@@ -158,25 +142,10 @@ class UhDbAccessor(DbReader):
 		@param building_class_id: class of building, int
 		@return: string tooltip_text
 		"""
-		sql = "SELECT name, tooltip_text FROM building WHERE id = ?"
-		query = self.cached_query(sql, building_class_id)[0]
+		buildingtype = Entities.buildings[building_class_id]
 		#xgettext:python-format
 		tooltip = _("{building}: {description}")
-		return tooltip.format(building=query[0], description=query[1])
-
-
-	def get_building_id_buttonname_settlerlvl(self):
-		"""Returns a list of id, button_name and settler_level"""
-		return self.cached_query("SELECT id, button_name, settler_level \
-		                          FROM building \
-		                          WHERE button_name IS NOT NULL")
-
-	def get_settlerlvl_of_building(self, building_id):
-		"""Returns the level a building can be built or a very large int"""
-		res = self.cached_query("SELECT settler_level FROM building \
-														 WHERE button_name IS NOT NULL AND \
-		                         id = ?", building_id)
-		return res[0][0] if res else sys.maxint
+		return tooltip.format(building=buildingtype.name, description=buildingtype.tooltip_text)
 
 	def get_related_building_ids(self, building_class_id):
 		"""Returns list of building ids related to building_class_id.

@@ -22,7 +22,6 @@
 from fife.extensions.pychan.widgets import Icon
 
 from horizons.gui.widgets  import TooltipButton
-from horizons.gui.mousetools  import BuildingTool
 from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
@@ -83,7 +82,7 @@ class BuildRelatedTab(OverviewTab):
 
 
 	def _create_build_buttons(self, building_id, container):
-		level = self.instance.session.db.get_building_level(building_id)
+		level = Entities.buildings[building_id].settler_level
 
 		# Check if the level of the building is lower or same as the settler level
 		if level <= self.instance.owner.settler_level:

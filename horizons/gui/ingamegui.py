@@ -24,7 +24,7 @@ import horizons.main
 from fife.extensions import pychan
 
 from horizons.entities import Entities
-from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect
+from horizons.util import livingProperty, LivingObject, PychanChildFinder
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
@@ -140,17 +140,19 @@ class IngameGui(LivingObject):
 
 		# map button names to build functions calls with the building id
 		self.callbacks_build = {}
-		for id_,button_name,settler_level in self.session.db.get_building_id_buttonname_settlerlvl():
-			if not settler_level in self.callbacks_build:
-				self.callbacks_build[settler_level] = {}
-			self.callbacks_build[settler_level][button_name] = Callback(self._build, id_)
+		for buildingtype in Entities.buildings.itervalues():
+			if buildingtype.button_name is not None:
+				settler_level = buildingtype.settler_level
+				if not settler_level in self.callbacks_build:
+					self.callbacks_build[settler_level] = {}
+				self.callbacks_build[settler_level][buildingtype.button_name] = Callback(self._build, buildingtype.id)
 
 	def end(self):
 		self.widgets['minimap'].mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
 			'rotateRight' : None,
-			'rotateLeft' : None,
+			'rotateLeft': None,
 
 			'destroy_tool' : None,
 			'build' : None,
