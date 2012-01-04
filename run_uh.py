@@ -338,6 +338,7 @@ def init_environment():
 	#find FIFE and setup search paths, if it can't be imported yet
 	setup_fife(sys.argv)
 
+	standalone_error_popup('fe', 'Please do.')
 	#for some external libraries distributed with UH
 	sys.path.append( os.path.join('horizons', 'ext') )
 
@@ -479,8 +480,8 @@ def standalone_error_popup(headline, msg):
 
 	dlg = pychan.loadXML("content/gui/xml/startup_error_popup.xml")
 	# can't translate as translations are only set up later
-	dlg.findChild(name="headline").text = headline
-	dlg.findChild(name="msg").text = msg
+	dlg.findChild(name="headline").text = unicode(headline)
+	dlg.findChild(name="msg").text = unicode(msg)
 	dlg.mapEvents({'quit_button': do_quit})
 	dlg.show()
 
