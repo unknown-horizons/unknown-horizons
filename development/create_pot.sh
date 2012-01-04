@@ -2,9 +2,10 @@
 
 # Create po/unknown-horizons.pot to be uploaded at pootle.
 # (language Templates, project Unknown Horizons)
-# Update strings extracted from xml and sql files.
+# Update strings extracted from xml, yaml and sql files.
 # The flag -keep forces to skip this update.
-# The flags -keepxml and -keepsql partially skip. Only use one of them.
+# The flags -keepxml, keepyaml and -keepsql partially skip.
+# Only use one of them.
 
 
 VERSION=$(python2 -c 'from horizons.constants import VERSION
@@ -12,13 +13,18 @@ print "%s" % VERSION.RELEASE_VERSION')
 
 RESULT_FILE=unknown-horizons.pot
 XML_PY_FILE=horizons/i18n/guitranslations.py
+YAML_PY_FILE=horizons/i18n/objecttranslations.py
 SQL_POT_FILE=po/sqlite_strings.pot
 
 
 if [ ! "x$1" = "x-keep" ]; then
 	if [ ! "x$1" = "x-keepxml" ]; then
-		python2 development/extract_strings_from_xml.py $XML_PY_FILE
+		python2 development/extract_strings_from_xml.py $XML_PY_FILE 2&>/dev/null
 		echo "   * Regenerated xml translation file at $XML_PY_FILE."
+	fi
+	if [ ! "x$1" = "x-keepyaml" ]; then
+		python2 development/extract_strings_from_objects.py $YAML_PY_FILE
+		echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
 	fi
 	if [ ! "x$1" = "x-keepsql" ]; then
 		python2 development/extract_strings_from_sqlite.py > $SQL_POT_FILE
