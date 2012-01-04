@@ -231,7 +231,7 @@ class Production(ChangeListener):
 
 		self._changed()
 
-	FROM oduction_now(self):
+	def finish_production_now(self):
 		"""Makes the production finish now"""
 		if self._state != PRODUCTION.STATES.producing:
 			return
