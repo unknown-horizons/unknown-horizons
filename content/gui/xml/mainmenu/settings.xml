@@ -113,12 +113,13 @@
 				 <Label name="headline_mouse" text="Mouse" font="headline" position_technique="automatic" />
 				 
 				 <HBox>
-					<Label name="mouse_sensitivity_label" text="Mouse sensitivity(0-default):" 
+					<Label name="mouse_sensitivity_label" text="Mouse sensitivity:" 
 						wrap_text="1" max_size="250,40"  min_size="250,20" />
 					<Label text="" name="mousesensitivity_value" />
 				 </HBox>
 				 <Slider size="300,20" name="mousesensitivity" 
-					 orientation="0" scale_start="-0.99" scale_end="10.00" step_length="1.0"/>
+					 orientation="0" scale_start="-0.99" scale_end="2.00" step_length="1.0"
+					 tooltip="0 is default system settings"/>
 			</VBox>
 
 			<VBox name="language_settings">

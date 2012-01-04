@@ -243,15 +243,23 @@ class Fife(ApplicationBase):
 		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
 		
 		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity", \
-									 applyfunction=self.set_mouse_sensitivity, requiresrestart = True)
+									 #read comment in set_mouse_sensitivity function about this
+									 #applyfunction=self.set_mouse_sensitivity, \
+									 requiresrestart=True)
 	
 	def set_mouse_sensitivity(self, value=None):
+		"""
+		Use this function for update slider value(and label) and change mouse sensitivity.
+		uncomment "else" with func below and "applyfunction=self.set_mouse_sensitivity" above
+		 if u know how to change sensitivity values in runtime
+		"""
 		if not value:
+			#value=None means function called not for saving(and changing)
+			#sensitivity, just for slider update in this version value=None everytime
 			value = self.OptionsDlg.findChild(name="mousesensitivity").value
-		else:
-			#in _setup_settings engine_setting doesnt exist yet
-			self.engine_settings.setMouseSensitivity(value)
-		self.update_slider_values('mousesensitivity')
+		#else:
+		#    self.engine_settings.setMouseSensitivity(value)
+		self.update_slider_values('mousesensitivity', factor=100, unit='%')
 	
 	def _show_renderbackend_warning(self):
 		backend = self.get_fife_setting("RenderBackend")
@@ -357,7 +365,7 @@ class Fife(ApplicationBase):
 		self.targetrenderer = self.engine.getTargetRenderer()
 		self.use_atlases = False
 		if self.use_atlases: self.animationloader = SQLiteAtlasLoader()
-		else: self.animationloader =  SQLiteAnimationLoader()
+		else: self.animationloader = SQLiteAnimationLoader()
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
@@ -407,7 +415,11 @@ class Fife(ApplicationBase):
 		self.cursor.set( self.cursor_images[which] )
 
 	def setup_setting_extras(self):
+		#slider_initial_data exposes initial data when menu settings opened
 		slider_initial_data = {}
+		#slider_event_map should contain slider name as key and function 
+		#which will update slider as value 
+		#read fife-extension-pychan-Widget-widget.py if u want know how it works
 		slider_event_map = {}
 		self.OptionsDlg = self._setting.loadSettingsDialog()
 		self.OptionsDlg.position_technique = "automatic" # "center:center"
@@ -419,7 +431,7 @@ class Fife(ApplicationBase):
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
 		slider_initial_data['volume_music_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
 		slider_initial_data['volume_effects_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
-		slider_initial_data['mousesensitivity_value'] = unicode("%.2f"%float(self._setting.get(FIFE_MODULE, "MouseSensitivity")))
+		slider_initial_data['mousesensitivity_value'] = unicode("%.1f" % float(self._setting.get(FIFE_MODULE, "MouseSensitivity") * 100)) + '%'
 		
 		self.OptionsDlg.distributeInitialData(slider_initial_data)
 
@@ -432,13 +444,18 @@ class Fife(ApplicationBase):
 		self.OptionsDlg.mapEvents(slider_event_map)
 
 	def update_slider_values(self, slider, factor = 1, unit = ''):
+		"""
+		slider - slider name
+		factor - value will be multiplied by factor
+		unit - this string will be added to the end
+		"""
 		if slider == "mousesensitivity":
 			#for floating wanted
-		    self.OptionsDlg.findChild(name=slider+'_value').text = \
-		    u"%.2f %s"%(float(self.OptionsDlg.findChild(name=slider).value * factor), unit)
+			self.OptionsDlg.findChild(name=slider + '_value').text = \
+			u"%.2f%s" % (float(self.OptionsDlg.findChild(name=slider).value * factor), unit)
 		else:
-			 self.OptionsDlg.findChild(name=slider+'_value').text = \
-		     u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).value * factor), unit)
+			 self.OptionsDlg.findChild(name=slider + '_value').text = \
+			 u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).value * factor), unit)
 
 	def setup_sound(self):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
