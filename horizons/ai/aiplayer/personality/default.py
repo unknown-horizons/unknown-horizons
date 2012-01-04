@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -383,7 +383,7 @@ class DefaultPersonality:
 	class FarmEvaluator:
 		alignment_importance = 0.001 # the larger this value, the larger the effect of alignment on the placement
 		existing_road_importance = 0.005 # bonus for every reused tile of existing (or planned) road
-		wasted_space_penalty = 0.02 
+		wasted_space_penalty = 0.02
 		immediate_connection_importance = 0.005 # bonus for road and non-blocked access to the road
 
 		immediate_connection_road = 3 # bonus for a road in an entrance of the farm

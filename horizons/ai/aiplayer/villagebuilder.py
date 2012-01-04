@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -203,7 +203,7 @@ class VillageBuilder(AreaBuilder):
 	def _remove_unreachable_roads(cls, section_plan, main_square):
 		"""
 		Remove the roads that can't be reached by starting from the main square.
-		
+
 		@param section_plan: {(x, y): BUILDING_PURPOSE constant, ...}
 		@param main_square: Rect representing the position of the main square
 		"""

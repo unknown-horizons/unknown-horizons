@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -231,7 +231,7 @@ class Production(ChangeListener):
 
 		self._changed()
 
-	def finish_production_now(self):
+	FROM oduction_now(self):
 		"""Makes the production finish now"""
 		if self._state != PRODUCTION.STATES.producing:
 			return

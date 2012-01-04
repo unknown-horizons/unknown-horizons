@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,7 @@
 
 
 HEADER = '''# ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #

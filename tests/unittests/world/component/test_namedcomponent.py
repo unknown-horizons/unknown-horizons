@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -64,7 +64,7 @@ class TestNamedComponent(TestCase):
 		component2.set_name('Test')
 		self.assertEquals(component.name, u'Test')
 		self.assertEquals(component2.name, u'Test')
-		
+
 		component.set_name(u'Test name')
 		component3 = self.make_component()
 		self.assertEquals(component3.name, u'Test 2')
