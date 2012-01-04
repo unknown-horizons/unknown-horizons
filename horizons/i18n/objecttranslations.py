@@ -1,4 +1,3 @@
-
 # ###################################################
 # Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -68,7 +67,6 @@ def set_translations():
 
 	"content/objects/buildings/claydeposit.yaml" : {
 		"name"                        : _("Clay Deposit"),
-		"tooltip_text"                : _("null"),
 		},
 
 	"content/objects/buildings/claypit.yaml" : {
@@ -93,7 +91,6 @@ def set_translations():
 
 	"content/objects/buildings/fishdeposit.yaml" : {
 		"name"                        : _("Fish Deposit"),
-		"tooltip_text"                : _("null"),
 		},
 
 	"content/objects/buildings/fishermanstent.yaml" : {
@@ -103,7 +100,6 @@ def set_translations():
 
 	"content/objects/buildings/gravelpath.yaml" : {
 		"name"                        : _("Gravel Path"),
-		"tooltip_text"                : _("null"),
 		},
 
 	"content/objects/buildings/herbary.yaml" : {
@@ -143,7 +139,6 @@ def set_translations():
 
 	"content/objects/buildings/mountain.yaml" : {
 		"name"                        : _("Mountain"),
-		"tooltip_text"                : _("null"),
 		},
 
 	"content/objects/buildings/pasture.yaml" : {
@@ -208,7 +203,6 @@ def set_translations():
 
 	"content/objects/buildings/tentruin.yaml" : {
 		"name"                        : _("Tent Ruin"),
-		"tooltip_text"                : _("null"),
 		},
 
 	"content/objects/buildings/tobaccofield.yaml" : {
@@ -233,7 +227,6 @@ def set_translations():
 
 	"content/objects/buildings/tree.yaml" : {
 		"name"                        : _("Tree"),
-		"tooltip_text"                : _("Tree"),
 		},
 
 	"content/objects/buildings/villageschool.yaml" : {
@@ -243,7 +236,6 @@ def set_translations():
 
 	"content/objects/buildings/warehouse.yaml" : {
 		"name"                        : _("Warehouse"),
-		"tooltip_text"                : _("null"),
 		},
 
 	"content/objects/buildings/weaverstent.yaml" : {
@@ -256,4 +248,3 @@ def set_translations():
 		"tooltip_text"                : _("Defends your settlement."),
 		},
 	}
-

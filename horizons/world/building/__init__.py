@@ -75,7 +75,14 @@ class BuildingClass(type):
 		self._name = object_translations[yaml_results['yaml_file']]['name']
 		self.button_name = yaml_results['button_name']
 		self.settler_level = yaml_results['settler_level']
-		self.tooltip_text = object_translations[yaml_results['yaml_file']]['tooltip_text']
+		try:
+			self.tooltip_text = object_translations[yaml_results['yaml_file']]['tooltip_text']
+		except KeyError as err: # not found => use value defined in yaml unless it is null
+			tooltip_text = yaml_results['tooltip_text']
+			if tooltip_text is not None:
+				self.tooltip_text = tooltip_text
+			else:
+				self.tooltip_text = u''
 		self.action_sets = yaml_results['actionsets']
 		self.size = (int(yaml_results['size_x']), int(yaml_results['size_y']))
 		self.inhabitants = int(yaml_results['inhabitants_start'])
