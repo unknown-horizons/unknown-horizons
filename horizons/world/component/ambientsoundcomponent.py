@@ -50,7 +50,7 @@ class AmbientSoundComponent(Component):
 			self.__emitter.setGain(horizons.main.fife.get_uh_setting("VolumeEffects")*10)
 			if self.__positioning:
 				self.__emitter.setRolloff(1.9)
-			horizons.main.fife.emitter['ambient'].append(self.__emitter)
+			horizons.main.fife.sound.emitter['ambient'].append(self.__emitter)
 
 	def load(self, db, worldid):
 		super(AmbientSoundComponent, self).load(db, worldid)
@@ -103,4 +103,4 @@ class AmbientSoundComponent(Component):
 				a.position = position
 			soundfile = horizons.main.db.get_sound_file(sound)
 			a.play_ambient(soundfile, looping = False)
-			horizons.main.fife.emitter['ambient'].remove(a.__emitter)
+			horizons.main.fife.sound.emitter['ambient'].remove(a.__emitter)

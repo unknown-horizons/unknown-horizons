@@ -155,7 +155,7 @@ class View(ChangeListener):
 
 		self.cam.setLocation(loc)
 		for i in ['speech', 'effects']:
-			emitter = horizons.main.fife.emitter[i]
+			emitter = horizons.main.fife.sound.emitter[i]
 			if emitter is not None:
 				emitter.setPosition(pos.x, pos.y, 1)
 		horizons.main.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
