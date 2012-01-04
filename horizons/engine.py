@@ -75,10 +75,10 @@ class LocalizedSetting(Setting):
 	def setDefaults(self):
 		title = _("Restore default settings")
 		msg = _("This will delete all changes to the settings you made so far.") + \
-		      u" " + _("Do you want to continue?")
+			u" " + _("Do you want to continue?")
 		try:
 			confirmed = horizons.main._modules.gui.show_popup(title, msg, \
-			                                                  show_cancel_button=True)
+												                                show_cancel_button=True)
 		except AttributeError: #no gui available, called by e.g. cmd line param
 			confirmed = True
 		if confirmed:
@@ -86,7 +86,7 @@ class LocalizedSetting(Setting):
 				super(LocalizedSetting, self).setDefaults()
 			except AttributeError as err: #weird stuff happens in settings module reset
 				print "A problem occured while updating: %s" % err + "\n" + \
-				      "Please contact the developers if this happens more than once."
+							"Please contact the developers if this happens more than once."
 
 	def get(self, module, name, defaultValue=None):
 		# catch events for settings that should be displayed in another way than they should be saved
@@ -193,10 +193,10 @@ class Fife(ApplicationBase):
 				user_config_parser.save()
 
 		self._setting = LocalizedSetting(app_name=UH_MODULE,
-		                                 settings_file=PATHS.USER_CONFIG_FILE,
-		                                 settings_gui_xml="settings.xml",
-		                                 changes_gui_xml="requirerestart.xml",
-		                                 default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
+								                     settings_file=PATHS.USER_CONFIG_FILE,
+								                     settings_gui_xml="settings.xml",
+								                     changes_gui_xml="requirerestart.xml",
+								                     default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
 
 		# TODO: find a way to apply changing to a running game in a clean fashion
 		#       possibility: use singaling via changelistener
@@ -211,36 +211,55 @@ class Fife(ApplicationBase):
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",
-		                                applyfunction=update_autosave_interval)
+								                    applyfunction=update_autosave_interval)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
 		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
 		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation", \
-		                                applyfunction=update_minimap)
+								                    applyfunction=update_minimap)
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
-		                                initialdata=[0, 16, 32], requiresrestart=True)
+								                    initialdata=[0, 16, 32], requiresrestart=True)
 
 		languages = find_available_languages().keys()
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "cjkv_language",
-		                                applyfunction=self.update_languages,
-		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages)])
+								                    applyfunction=self.update_languages,
+								                    initialdata= [LANGUAGENAMES[x] for x in sorted(languages)])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
-		                                applyfunction=self.set_volume_music)
+								                    applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
-		                                applyfunction=self.set_volume_effects)
+								                    applyfunction=self.set_volume_effects)
 
 		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
-		                                applyfunction=self.set_network_port)
+								                    applyfunction=self.set_network_port)
 
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
 
 		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
+
+		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity", \
+								                    #read comment in set_mouse_sensitivity function about this
+								                    #applyfunction=self.set_mouse_sensitivity, \
+								                    requiresrestart=True)
+
+	def set_mouse_sensitivity(self, value=None):
+		"""
+		Use this function for update slider value(and label) and change mouse sensitivity.
+		uncomment "else" with func below and "applyfunction=self.set_mouse_sensitivity" above
+		 if u know how to change sensitivity values in runtime
+		"""
+		if not value:
+			#value=None means function called not for saving(and changing)
+			#sensitivity, just for slider update in this version value=None everytime
+			value = self.OptionsDlg.findChild(name="mousesensitivity").value
+		#else:
+		#    self.engine_settings.setMouseSensitivity(value)
+		self.update_slider_values('mousesensitivity', factor=100, unit='%')
 
 	def _show_renderbackend_warning(self):
 		backend = self.get_fife_setting("RenderBackend")
@@ -297,7 +316,7 @@ class Fife(ApplicationBase):
 				# selected we use NullTranslations to get English output.
 				fallback = (symbol == 'en')
 				trans = gettext.translation('unknown-horizons', find_available_languages()[symbol], \
-				                            languages=[symbol], fallback=fallback)
+																    languages=[symbol], fallback=fallback)
 				trans.install(unicode=True, names=['ngettext',])
 			except IOError:
 				#xgettext:python-format
@@ -346,15 +365,15 @@ class Fife(ApplicationBase):
 		self.targetrenderer = self.engine.getTargetRenderer()
 		self.use_atlases = False
 		if self.use_atlases: self.animationloader = SQLiteAtlasLoader()
-		else: self.animationloader =  SQLiteAnimationLoader()
+		else: self.animationloader = SQLiteAnimationLoader()
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
 		self.cursor_images = {
-		  'default': self.imagemanager.load('content/gui/images/cursors/cursor.png'),
-		  'tearing': self.imagemanager.load('content/gui/images/cursors/cursor_tear.png'),
-		  'attacking': self.imagemanager.load('content/gui/images/cursors/cursor_attack.png'),
-		  'pipette': self.imagemanager.load('content/gui/images/cursors/cursor_pipette.png')
+			'default': self.imagemanager.load('content/gui/images/cursors/cursor.png'),
+			'tearing': self.imagemanager.load('content/gui/images/cursors/cursor_tear.png'),
+			'attacking': self.imagemanager.load('content/gui/images/cursors/cursor_attack.png'),
+			'pipette': self.imagemanager.load('content/gui/images/cursors/cursor_pipette.png')
 		}
 		self.cursor.set( self.cursor_images['default'] )
 
@@ -375,10 +394,10 @@ class Fife(ApplicationBase):
 		from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 
 		widgets = [OkButton, CancelButton, DeleteButton,
-		           Inventory, BuySellInventory, ImageFillStatusButton,
-		           ProgressBar, StepSlider, TabBG, ToggleImageButton,
-		           TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
-		           HealthWidget, StanceWidget, WeaponStorageWidget]
+							 Inventory, BuySellInventory, ImageFillStatusButton,
+							 ProgressBar, StepSlider, TabBG, ToggleImageButton,
+							 TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
+							 HealthWidget, StanceWidget, WeaponStorageWidget]
 		for widget in widgets:
 			pychan.widgets.registerWidget(widget)
 
@@ -396,29 +415,47 @@ class Fife(ApplicationBase):
 		self.cursor.set( self.cursor_images[which] )
 
 	def setup_setting_extras(self):
+		#slider_initial_data exposes initial data when menu settings opened
 		slider_initial_data = {}
+		#slider_event_map should contain slider name as key and function
+		#which will update slider as value
+		#read fife-extension-pychan-Widget-widget.py if u want know how it works
 		slider_event_map = {}
 		self.OptionsDlg = self._setting.loadSettingsDialog()
 		self.OptionsDlg.position_technique = "automatic" # "center:center"
 		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
-		               'AutosaveMaxCount' : 'autosavemaxcount',
-		               'QuicksaveMaxCount' : 'quicksavemaxcount'}
+								   'AutosaveMaxCount' : 'autosavemaxcount',
+								   'QuicksaveMaxCount' : 'quicksavemaxcount'}
 
 		for x in slider_dict.keys():
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
 		slider_initial_data['volume_music_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
 		slider_initial_data['volume_effects_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
+		slider_initial_data['mousesensitivity_value'] = unicode("%.1f" % float(self._setting.get(FIFE_MODULE, "MouseSensitivity") * 100)) + '%'
+
 		self.OptionsDlg.distributeInitialData(slider_initial_data)
 
 		for x in slider_dict.values():
 			slider_event_map[x] = Callback(self.update_slider_values, x)
 		slider_event_map['volume_music'] = self.set_volume_music
 		slider_event_map['volume_effects'] = self.set_volume_effects
+		slider_event_map['mousesensitivity'] = self.set_mouse_sensitivity
+
 		self.OptionsDlg.mapEvents(slider_event_map)
 
 	def update_slider_values(self, slider, factor = 1, unit = ''):
-		self.OptionsDlg.findChild(name=slider+'_value').text = \
-		     u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).value * factor), unit)
+		"""
+		slider - slider name
+		factor - value will be multiplied by factor
+		unit - this string will be added to the end
+		"""
+		if slider == "mousesensitivity":
+			#for floating wanted
+			self.OptionsDlg.findChild(name=slider + '_value').text = \
+				u"%.2f%s" % (float(self.OptionsDlg.findChild(name=slider).value * factor), unit)
+		else:
+			self.OptionsDlg.findChild(name=slider + '_value').text = \
+				u"%s%s" % (int(self.OptionsDlg.findChild(name=slider).value * factor), unit)
 
 	def setup_sound(self):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
@@ -483,7 +520,7 @@ class Fife(ApplicationBase):
 
 		if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
 			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and \
-			   self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
+				 self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
 				# last track has finished (TODO: find cleaner way to check for this)
 				skip = 0 if len(self.music) == 1 else random.randint(1, len(self.music)-1)
 				self.music_rand_element = (self.music_rand_element + skip) % len(self.music)
@@ -492,8 +529,8 @@ class Fife(ApplicationBase):
 					self.next_menu_music_element = self.music_rand_element
 
 		self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = \
-			    self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), \
-			    self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
+			self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), \
+			self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
@@ -577,7 +614,7 @@ class Fife(ApplicationBase):
 				if 0 < parse_port(port, allow_zero=True) < 1024:
 					#i18n This is advice for players seeing a network error with the current config
 					advice += u" " + \
-					       _("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
+						_("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
 				details = unicode(e)
 				horizons.main._modules.gui.show_error_popup(headline, descr, advice, details)
 				ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)
