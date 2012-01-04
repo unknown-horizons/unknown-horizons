@@ -106,6 +106,7 @@ class LocalizedSetting(Setting):
 
 class Fife(ApplicationBase):
 	"""
+	Basic initiation of engine. Followed later by init().
 	"""
 	def __init__(self):
 		self.pump = []
@@ -336,7 +337,7 @@ class Fife(ApplicationBase):
 		update_all_translations()
 
 	def init(self):
-		"""
+		"""Second initialisation stage of engine
 		"""
 		logToPrompt, logToFile, debugPychan = True, True, False
 		if self._gotInited:
@@ -406,7 +407,13 @@ class Fife(ApplicationBase):
 		self.update_languages()
 
 		self._gotInited = True
-		self.setup_setting_extras()
+
+	def show_settings(self):
+		"""Show fife settings gui"""
+		if not hasattr(self, "_settings_extra_inited "):
+			self.setup_setting_extras()
+			self._settings_extra_inited = True
+		self._setting.onOptionsPress()
 
 	def set_cursor_image(self, which="default"):
 		"""Sets a certain cursor image.

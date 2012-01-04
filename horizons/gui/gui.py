@@ -168,7 +168,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def show_settings(self):
-		horizons.main.fife._setting.onOptionsPress()
+		horizons.main.fife.show_settings()
 
 	_help_is_displayed = False
 	def on_help(self):
