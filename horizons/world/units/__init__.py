@@ -33,7 +33,7 @@ class UnitClass(IngameType):
 
 	log = logging.getLogger('world.units')
 
-	def __new__(self, id, yaml_data=[]):
+	def __new__(self, id, yaml_data):
 		"""
 		@param id: unit id
 		"""
@@ -55,7 +55,7 @@ class UnitClass(IngameType):
 			(getattr(globals()[self.class_package], self.class_type),),
 			attributes)
 
-	def __init__(self, id, yaml_data=[]):
+	def __init__(self, id, yaml_data):
 		"""
 		@param id: unit id.
 		"""
@@ -68,6 +68,7 @@ class UnitClass(IngameType):
 		self.classname = yaml_data['classname']
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
+
 	def _loadObject(cls):
 		"""Loads the object with all animations.
 		"""
