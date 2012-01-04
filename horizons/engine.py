@@ -170,7 +170,7 @@ class Fife(ApplicationBase):
 				# update known settings and unreferenced settings
 				for modulename, module in self._setting.entries.iteritems():
 					for entryname in module.iterkeys():
-						update_value(mod./gui/xml/mainmenu/settings.xmlulename, entryname)
+						update_value(modulename, entryname)
 				for modulename, entry_list in self.UNREFERENCED_SETTINGS.iteritems():
 					for entryname in entry_list:
 						update_value(modulename, entryname)
