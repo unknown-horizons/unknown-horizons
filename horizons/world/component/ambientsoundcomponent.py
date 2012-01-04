@@ -46,7 +46,7 @@ class AmbientSoundComponent(Component):
 
 	def __create_emitter(self):
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
-			self.__emitter = horizons.main.fife.soundmanager.createEmitter()
+			self.__emitter = horizons.main.fife.sound.soundmanager.createEmitter()
 			self.__emitter.setGain(horizons.main.fife.get_uh_setting("VolumeEffects")*10)
 			if self.__positioning:
 				self.__emitter.setRolloff(1.9)
@@ -75,7 +75,7 @@ class AmbientSoundComponent(Component):
 			# set to current position
 			if(hasattr(self, 'position') and self.position != None and self.__positioning):
 				self.__emitter.setPosition(self.position.center().x, self.position.center().y, 1)
-			self.__emitter.setSoundClip(horizons.main.fife.soundclipmanager.load(soundfile))
+			self.__emitter.setSoundClip(horizons.main.fife.sound.soundclipmanager.load(soundfile))
 			if play_every is None:
 				self.__emitter.setLooping(looping)
 			elif looping and play_every is not None:
