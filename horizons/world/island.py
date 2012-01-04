@@ -352,7 +352,9 @@ class Island(BuildingOwner, WorldObject):
 		self.last_change_id = -1
 		self.building_sizes = set()
 		for id, buildingtype in Entities.buildings.iteritems():
-			self.building_sizes.add(buildingtype.size)
+			w, h = buildingtype.size
+			self.building_sizes.add((w, h))
+			self.building_sizes.add((h, w))
 
 		self.last_changed = {}
 		for size in self.building_sizes:
