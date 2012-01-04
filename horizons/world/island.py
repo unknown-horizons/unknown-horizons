@@ -351,10 +351,8 @@ class Island(BuildingOwner, WorldObject):
 		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """
 		self.last_change_id = -1
 		self.building_sizes = set()
-		db_result = self.session.db("SELECT DISTINCT size_x, size_y FROM building WHERE button_name IS NOT NULL")
-		for size_x, size_y in db_result:
-			self.building_sizes.add((size_x, size_y))
-			self.building_sizes.add((size_y, size_x))
+		for id, buildingtype in Entities.buildings.iteritems():
+			self.building_sizes.add(buildingtype.size)
 
 		self.last_changed = {}
 		for size in self.building_sizes:
