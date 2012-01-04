@@ -16,4 +16,4 @@ components:
    maxhealth: 150
 
 actionsets:
-   - as_huker0
+   as_huker0: {level: 0}

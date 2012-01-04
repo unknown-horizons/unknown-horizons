@@ -31,21 +31,18 @@ class BuildingResourceHandler(ResourceHandler):
 	"""
 	def __init__(self, island, **kwargs):
 		super(BuildingResourceHandler, self).__init__(island=island, **kwargs)
-		self.__init(island)
 
-	def __init(self, island):
-		"""
-		@param island: the island where the building is located
-		"""
-		island.provider_buildings.append(self)
+	def initialize(self):
+		super(BuildingResourceHandler, self).initialize()
+		self.__init()
+
+	def __init(self):
+		self.island.provider_buildings.append(self)
 
 	def load(self, db, worldid):
 		super(BuildingResourceHandler, self).load(db, worldid)
-		# workaround, fetch island from db cause self.island might not be initialised
-		location = self.load_location(db, worldid)
-		island = location[0]
-		self.__init(island)
 		self._set_running_costs_to_status()
+		self.__init()
 
 	def remove(self):
 		super(BuildingResourceHandler, self).remove()

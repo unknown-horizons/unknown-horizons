@@ -16,4 +16,4 @@ components:
    maxhealth: 200
 
 actionsets:
-   - as_frigate0
+   as_frigate0: {level: 0}

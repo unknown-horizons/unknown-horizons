@@ -12,4 +12,4 @@ components:
          limit: 8
 
 actionsets:
-   - as_sheep0
+   as_sheep0: {level: 0}

@@ -14,4 +14,4 @@ components:
 - ShipNameComponent
 
 actionsets:
-   - as_trader0
+   as_trader0: {level: 0}

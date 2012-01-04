@@ -27,13 +27,16 @@ from fife import fife
 
 import horizons.main
 from horizons.util import ActionSetLoader
+from horizons.world.ingametype import IngameType
 
-class UnitClass(type):
+class UnitClass(IngameType):
+
+	log = logging.getLogger('world.units')
+
 	def __new__(self, id, class_package, class_type, radius=None, classname=None, action_sets=[], components=[]):
 		"""
 		@param id: unit id
 		"""
-		log = logging.getLogger('world.units')
 
 		@classmethod
 		def load(cls, session, db, worldid):
@@ -43,7 +46,6 @@ class UnitClass(type):
 			return self
 
 		attributes = {'load': load}
-		#attributes.update(db("SELECT name, value FROM unit_property WHERE unit = ?", str(id)))
 
 		self.class_package,  self.class_type = (class_package, class_type)
 		__import__('horizons.world.units.'+self.class_package)
@@ -60,6 +62,7 @@ class UnitClass(type):
 		self.id = id
 		self._object = None
 		self.action_sets = action_sets
+		self.action_sets_by_level = self.action_sets_by_level(action_sets)
 		self._loadObject()
 		self.classname = classname
 		self.radius = radius

@@ -82,7 +82,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			level = 0 if self.owner is None else self.owner.settler_level
 		self.level = level
 		self._action_set_id = action_set_id if action_set_id is not None else \
-		    self.session.db.get_random_action_set(self.id, self.level)[0]
+		    self.get_random_action_set(self.level)[0]
 		self.rotation = rotation
 		if self.rotation in (135, 315): # Rotate the rect correctly
 			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
@@ -202,9 +202,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		search for an action set everywhere, which makes it alot more effective, if you're
 		just updating.
 		@param level: int level number"""
-		action_sets = self.session.db.get_random_action_set(self.id, level, exact_level=True)
-		if action_sets:
-			self._action_set_id = action_sets[0] # Set the new action_set
+		action_set = self.get_random_action_set(level, exact_level=True)[0]
+		if action_set:
+			self._action_set_id = action_set # Set the new action_set
 			self.act(self._action, repeating=True)
 
 	def level_upgrade(self, lvl):
@@ -282,7 +282,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 		if action_set_id is None:
-			action_set_id = session.db.get_random_action_set(cls.id, level=level)[0]
+			action_set_id = cls.get_random_action_set(level=level)[0]
 		fife.InstanceVisual.create(instance)
 
 		action_sets = ActionSetLoader.get_sets()

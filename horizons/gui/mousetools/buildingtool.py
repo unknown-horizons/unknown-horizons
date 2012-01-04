@@ -26,10 +26,9 @@ import weakref
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Point, decorators, Callback
+from horizons.util import ActionSetLoader, Point, decorators
 from horizons.command.building import Build
 from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
 from horizons.util.gui import load_uh_widget
 from horizons.constants import BUILDINGS, GFX
@@ -134,7 +133,7 @@ class BuildingTool(NavigationTool):
 			level = self.session.world.player.settler_level if \
 				not hasattr(self._class, "default_level_on_build") else \
 				self._class.default_level_on_build
-			self.action_set = self.session.db.get_random_action_set(self._class.id, level)
+			self.action_set = self._class.get_random_action_set(level)[0]
 		action_set, preview_action_set = self.action_set
 		action_sets = ActionSetLoader.get_sets()
 		if preview_action_set in action_sets:

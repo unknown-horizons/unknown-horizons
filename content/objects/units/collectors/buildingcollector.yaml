@@ -12,4 +12,4 @@ components:
          limit: 8
 
 actionsets:
-   - as_carrier0
+   as_carrier0: {level: 0}

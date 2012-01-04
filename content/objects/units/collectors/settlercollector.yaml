@@ -12,7 +12,7 @@ components:
          limit: 8
 
 actionsets:
-   - as_male
-   - as_female
-   - as_male2
-   - as_female2
+   as_male: {level: 0}
+   as_female: {level: 0}
+   as_male2: {level: 0}
+   as_female2: {level: 0}

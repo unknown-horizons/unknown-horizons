@@ -16,4 +16,4 @@ components:
    maxhealth: 80
 
 actionsets:
-   - as_fisher0
+   as_fisher0: {level: 0}

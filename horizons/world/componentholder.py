@@ -52,12 +52,10 @@ class ComponentHolder(object):
 	def __init__(self, *args, **kwargs):
 		super(ComponentHolder, self).__init__(*args, **kwargs)
 		self.components = {}
-		self.__initialized = False
 
 	def initialize(self):
 		"""Has to be called every time an componentholder is created."""
 		self.__load_components()
-		self.__initialized = True
 
 	def __load_components(self):
 		tmp_comp = []

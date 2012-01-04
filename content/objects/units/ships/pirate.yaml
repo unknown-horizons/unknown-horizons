@@ -16,4 +16,4 @@ components:
    maxhealth: 250
 
 actionsets:
-   - as_pirate0
+   as_pirate0: {level: 0}

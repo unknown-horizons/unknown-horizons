@@ -45,14 +45,16 @@ class ResourceHandler(object):
 	## INIT/DESTRUCT
 	def __init__(self, **kwargs):
 		super(ResourceHandler, self).__init__(**kwargs)
-		self.__init()
 
 	def __init(self):
-		# Stores a set of resource ids this resourcehandler provides for pickup
-		self.provided_resources = self._load_provided_resources()
-
 		# list of collectors that are on the way here
 		self.__incoming_collectors = []
+		self.provided_resources = self._load_provided_resources()
+
+	def initialize(self):
+		super(ResourceHandler, self).initialize()
+		self.__init()
+
 
 	def save(self, db):
 		super(ResourceHandler, self).save(db)
@@ -126,7 +128,7 @@ class ResourceHandler(object):
 		when there are no other possibilities"""
 		try:
 			return self.owner.get_component(StorageComponent).inventory
-		except AttributeError as e: # no owner or no inventory, either way, we don't care
+		except AttributeError: # no owner or no inventory, either way, we don't care
 			return None
 
 	def load_production(self, db, production_id):
@@ -181,7 +183,11 @@ class ResourceHandler(object):
 		"""Returns a iterable obj containing all resources this building provides.
 		This is outsourced from initiation to a method for the possiblity of overwriting it.
 		Do not alter the returned list; if you need to do so, then copy it."""
-		return self.session.db.get_provided_resources(self.id)
+		produced_res = []
+		for prod in self.get_component(Producer).get_productions():
+			for res in prod.get_produced_res():
+				produced_res.append(res)
+		return set(produced_res)
 
 	def transfer_to_storageholder(self, amount, res_id, transfer_to):
 		"""Transfers amount of res_id to transfer_to.

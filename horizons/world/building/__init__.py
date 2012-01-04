@@ -29,8 +29,9 @@ from fife import fife
 
 from horizons.util import ActionSetLoader
 from horizons.i18n.objecttranslations import object_translations
+from horizons.world.ingametype import IngameType
 
-class BuildingClass(type):
+class BuildingClass(IngameType):
 	"""Class that is used to create Building-Classes from the database.
 	@param id: int - building id in the database.
 
@@ -77,13 +78,14 @@ class BuildingClass(type):
 		self.settler_level = yaml_results['settler_level']
 		try:
 			self.tooltip_text = object_translations[yaml_results['yaml_file']]['tooltip_text']
-		except KeyError as err: # not found => use value defined in yaml unless it is null
+		except KeyError: # not found => use value defined in yaml unless it is null
 			tooltip_text = yaml_results['tooltip_text']
 			if tooltip_text is not None:
 				self.tooltip_text = tooltip_text
 			else:
 				self.tooltip_text = u''
 		self.action_sets = yaml_results['actionsets']
+		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
 		self.size = (int(yaml_results['size_x']), int(yaml_results['size_y']))
 		self.inhabitants = int(yaml_results['inhabitants_start'])
 		self.inhabitants_max = int(yaml_results['inhabitants_max'])
@@ -106,6 +108,7 @@ class BuildingClass(type):
 					 derived from the storageholder, I suggest you start digging deeper there.
 					 horizons/world/storageholder.py is the next place to go.
 					 """
+
 
 	def __str__(self):
 		return "Building[" + str(self.id) + "](" + self._name + ")"
