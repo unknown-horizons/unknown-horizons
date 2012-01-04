@@ -313,8 +313,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 	#@decorators.relese_mode(ret="Building")
 	def __str__(self): # debug
-		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
-		return '%s(id=%s;worldid=%s)' % (classname, self.id, self.worldid)
+		return '%s(id=%s;worldid=%s)' % (self._name, self.id, self.worldid)
 
 
 
