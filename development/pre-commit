@@ -118,5 +118,5 @@ for fname in files_modified:
 
 if exitcode == 1:
 	if not tkMessageBox.askyesno("Errors have been detected", "Cancel Commit?"):
-		exit_code = 0
+		exitcode = 0
 sys.exit(exitcode)

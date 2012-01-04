@@ -33,7 +33,7 @@ class UnitClass(IngameType):
 
 	log = logging.getLogger('world.units')
 
-	def __new__(self, id, class_package, class_type, radius=None, classname=None, action_sets=[], components=[]):
+	def __new__(self, id, yaml_data=[]):
 		"""
 		@param id: unit id
 		"""
@@ -47,27 +47,27 @@ class UnitClass(IngameType):
 
 		attributes = {'load': load}
 
-		self.class_package,  self.class_type = (class_package, class_type)
+		self.class_package = yaml_data['classpackage']
+		self.class_type = yaml_data['classtype']
 		__import__('horizons.world.units.'+self.class_package)
 
 		return type.__new__(self, 'Unit[' + str(id) + ']',
 			(getattr(globals()[self.class_package], self.class_type),),
 			attributes)
 
-	def __init__(self, id, class_package, class_type, radius = None, classname=None, action_sets=[], components=[]):
+	def __init__(self, id, yaml_data=[]):
 		"""
 		@param id: unit id.
 		"""
 		super(UnitClass, self).__init__(self)
 		self.id = id
 		self._object = None
-		self.action_sets = action_sets
-		self.action_sets_by_level = self.action_sets_by_level(action_sets)
+		self.action_sets = yaml_data['actionsets']
+		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
 		self._loadObject()
-		self.classname = classname
-		self.radius = radius
-		self.component_templates = components
-
+		self.classname = yaml_data['classname']
+		self.radius = yaml_data['radius']
+		self.component_templates = yaml_data['components']
 	def _loadObject(cls):
 		"""Loads the object with all animations.
 		"""
