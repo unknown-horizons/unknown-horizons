@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Container name="change_name_dialog_window" size="374,230" position="325,235">
-<Icon image="content/gui/images/background/notice.png" />
+<Container name="change_name_dialog_window" size="374,230" position="325,235"
+	background_image="content/gui/images/background/notice230.png">
 
 <VBox position="50,30" padding="10">
 	<Label name="headline_change_name" text="Change name" />
