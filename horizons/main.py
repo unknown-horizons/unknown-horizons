@@ -123,9 +123,8 @@ def start(command_line_arguments):
 		# We need a new client id
 		client_id = "".join("-" if c in (8, 13, 18, 23) else \
 		                    random.choice("0123456789abcdef") for c in xrange(0, 36))
-		from engine import UH_MODULE
-		fife.settings.set(UH_MODULE, "ClientID", client_id)
-		fife.settings.saveSettings()
+		fife.set_uh_setting("ClientID", client_id)
+		fife.save_settings()
 
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()

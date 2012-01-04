@@ -70,7 +70,7 @@ class Fife(ApplicationBase):
 
 	# existing settings not part of this gui or the fife defaults
 	# (required for preserving values when upgrading settings file)
-	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers"] }
+	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers", "ClientID"] }
 
 	def _setup_settings(self, check_file_version=True):
 		_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
