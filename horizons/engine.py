@@ -42,7 +42,6 @@ import horizons.gui.style
 from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader, Callback, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations
-from horizons.util.gui import load_uh_widget
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
@@ -78,7 +77,7 @@ class LocalizedSetting(Setting):
 			u" " + _("Do you want to continue?")
 		try:
 			confirmed = horizons.main._modules.gui.show_popup(title, msg, \
-												                                show_cancel_button=True)
+						                                      show_cancel_button=True)
 		except AttributeError: #no gui available, called by e.g. cmd line param
 			confirmed = True
 		if confirmed:
@@ -86,7 +85,7 @@ class LocalizedSetting(Setting):
 				super(LocalizedSetting, self).setDefaults()
 			except AttributeError as err: #weird stuff happens in settings module reset
 				print "A problem occured while updating: %s" % err + "\n" + \
-							"Please contact the developers if this happens more than once."
+					  "Please contact the developers if this happens more than once."
 
 	def get(self, module, name, defaultValue=None):
 		# catch events for settings that should be displayed in another way than they should be saved
@@ -193,10 +192,10 @@ class Fife(ApplicationBase):
 				user_config_parser.save()
 
 		self._setting = LocalizedSetting(app_name=UH_MODULE,
-								                     settings_file=PATHS.USER_CONFIG_FILE,
-								                     settings_gui_xml="settings.xml",
-								                     changes_gui_xml="requirerestart.xml",
-								                     default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
+				                         settings_file=PATHS.USER_CONFIG_FILE,
+				                         settings_gui_xml="settings.xml",
+				                         changes_gui_xml="requirerestart.xml",
+				                         default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
 
 		# TODO: find a way to apply changing to a running game in a clean fashion
 		#       possibility: use singaling via changelistener
@@ -211,30 +210,30 @@ class Fife(ApplicationBase):
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",
-								                    applyfunction=update_autosave_interval)
+				                        applyfunction=update_autosave_interval)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
 		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
 		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation", \
-								                    applyfunction=update_minimap)
+				                        applyfunction=update_minimap)
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
-								                    initialdata=[0, 16, 32], requiresrestart=True)
+				                        initialdata=[0, 16, 32], requiresrestart=True)
 
 		languages = find_available_languages().keys()
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "cjkv_language",
-								                    applyfunction=self.update_languages,
-								                    initialdata= [LANGUAGENAMES[x] for x in sorted(languages)])
+				                        applyfunction=self.update_languages,
+				                        initialdata= [LANGUAGENAMES[x] for x in sorted(languages)])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
-								                    applyfunction=self.set_volume_music)
+				                        applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
-								                    applyfunction=self.set_volume_effects)
+				                        applyfunction=self.set_volume_effects)
 
 		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
-								                    applyfunction=self.set_network_port)
+				                        applyfunction=self.set_network_port)
 
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
@@ -243,9 +242,9 @@ class Fife(ApplicationBase):
 		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity", \
-								                    #read comment in set_mouse_sensitivity function about this
-								                    #applyfunction=self.set_mouse_sensitivity, \
-								                    requiresrestart=True)
+				                        #read comment in set_mouse_sensitivity function about this
+				                        #applyfunction=self.set_mouse_sensitivity, \
+				                        requiresrestart=True)
 
 	def set_mouse_sensitivity(self, value=None):
 		"""
@@ -316,11 +315,11 @@ class Fife(ApplicationBase):
 				# selected we use NullTranslations to get English output.
 				fallback = (symbol == 'en')
 				trans = gettext.translation('unknown-horizons', find_available_languages()[symbol], \
-																    languages=[symbol], fallback=fallback)
+								            languages=[symbol], fallback=fallback)
 				trans.install(unicode=True, names=['ngettext',])
 			except IOError:
 				#xgettext:python-format
-				print _("Configured language {lang} could not be loaded").format(lang=name)
+				print _("Configured language {lang} could not be loaded").format(lang=symbol)
 				self._setting.set(UH_MODULE, "Language", LANGUAGENAMES[''])
 				return self.update_languages() # recurse
 		else:
@@ -394,10 +393,10 @@ class Fife(ApplicationBase):
 		from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 
 		widgets = [OkButton, CancelButton, DeleteButton,
-							 Inventory, BuySellInventory, ImageFillStatusButton,
-							 ProgressBar, StepSlider, TabBG, ToggleImageButton,
-							 TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
-							 HealthWidget, StanceWidget, WeaponStorageWidget]
+				   Inventory, BuySellInventory, ImageFillStatusButton,
+				   ProgressBar, StepSlider, TabBG, ToggleImageButton,
+				   TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
+				   HealthWidget, StanceWidget, WeaponStorageWidget]
 		for widget in widgets:
 			pychan.widgets.registerWidget(widget)
 
@@ -424,8 +423,8 @@ class Fife(ApplicationBase):
 		self.OptionsDlg = self._setting.loadSettingsDialog()
 		self.OptionsDlg.position_technique = "automatic" # "center:center"
 		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
-								   'AutosaveMaxCount' : 'autosavemaxcount',
-								   'QuicksaveMaxCount' : 'quicksavemaxcount'}
+				       'AutosaveMaxCount' : 'autosavemaxcount',
+				       'QuicksaveMaxCount' : 'quicksavemaxcount'}
 
 		for x in slider_dict.keys():
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
@@ -520,7 +519,7 @@ class Fife(ApplicationBase):
 
 		if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
 			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and \
-				 self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
+			   self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
 				# last track has finished (TODO: find cleaner way to check for this)
 				skip = 0 if len(self.music) == 1 else random.randint(1, len(self.music)-1)
 				self.music_rand_element = (self.music_rand_element + skip) % len(self.music)
