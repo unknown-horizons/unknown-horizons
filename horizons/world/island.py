@@ -350,18 +350,10 @@ class Island(BuildingOwner, WorldObject):
 	def _init_cache(self):
 		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """
 		self.last_change_id = -1
-		self.building_sizes = set()
-		for id, buildingtype in Entities.buildings.iteritems():
-			w, h = buildingtype.size
-			self.building_sizes.add((w, h))
-			self.building_sizes.add((h, w))
 
-		self.last_changed = {}
-		for size in self.building_sizes:
-			self.last_changed[size] = {}
-
-		for (x, y) in self.ground_map:
-			for size_x, size_y in self.building_sizes:
+		def calc_cache(size_x, size_y):
+			d = {}
+			for (x, y) in self.ground_map:
 				all_on_island = True
 				for dx in xrange(size_x):
 					for dy in xrange(size_y):
@@ -371,7 +363,18 @@ class Island(BuildingOwner, WorldObject):
 					if not all_on_island:
 						break
 				if all_on_island:
-					self.last_changed[(size_x, size_y)][(x, y)] = self.last_change_id
+					d[ (x, y) ] = self.last_change_id
+			return d
+
+		class LazyDict(dict):
+			def __getitem__(self, x):
+				try:
+					return super(LazyDict, self).__getitem__(x)
+				except KeyError:
+					val = self[x] = calc_cache(*x)
+					return val
+
+		self.last_changed = LazyDict()
 
 	def _register_change(self, x, y):
 		""" registers the possible buildability change of a rectangle on this island """
