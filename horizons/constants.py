@@ -23,7 +23,6 @@
 import ctypes
 import platform
 import os.path
-import re
 import locale
 
 from horizons.ext.enum import Enum
@@ -250,6 +249,7 @@ class PRODUCTIONLINES:
 	HUKER = 15
 	FISHING_BOAT = None # will get added later
 	FRIGATE = 58
+	WOOD = 2
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
