@@ -52,7 +52,7 @@ def dbreader_call(func):
 	return wrapper
 	
 
-@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2)
+@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=0)
 def test_save_trivial(session, _):
 	"""
 	Let 2 AI players play for a while, then attempt to save the game.
@@ -75,3 +75,8 @@ def test_save_trivial(session, _):
 	DbReader.__call__ = DbReader.__call__.__original__
 
 	os.unlink(filename)
+
+
+# this disables the test in general and only makes it being run when
+# called like this: run_tests.py -a long
+test_save_trivial.long = True
