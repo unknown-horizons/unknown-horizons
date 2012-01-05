@@ -26,6 +26,7 @@ from functools import partial, wraps
 import mock
 from horizons.util.dbreader import DbReader
 from horizons.util.random_map import generate_map_from_seed
+from horizons.util.savegameaccessor import SavegameAccessor
 
 from tests.game import game_test
 
@@ -36,7 +37,8 @@ def dbreader_call(func):
 
 	This is needed because some classes attempt to store Dummy objects in the
 	database, e.g. ConcreteObject with self._instance.getActionRuntime().
-	We fix this by replacing it with None, SQLite doesn't care much about types.
+	We fix this by replacing it with zero, SQLite doesn't care much about types,
+	and hopefully a number is less likely to break code than None.
 
 	Yes, this is ugly and will most likely break later. For now, it works.
 	"""
@@ -45,7 +47,7 @@ def dbreader_call(func):
 		args = list(args)
 		for i in range(len(args)):
 			if args[i].__class__.__name__ == 'Dummy':
-				args[i] = None
+				args[i] = 0
 		return func(self, command, *args)
 
 	wrapper.__original__ = func
@@ -73,6 +75,8 @@ def test_save_trivial(session, _):
 		assert session.save(savegamename=filename)
 
 	DbReader.__call__ = DbReader.__call__.__original__
+
+	SavegameAccessor(filename)
 
 	os.unlink(filename)
 
