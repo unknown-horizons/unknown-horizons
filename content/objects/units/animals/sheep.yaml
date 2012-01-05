@@ -1,7 +1,7 @@
 classpackage: animal
 classtype: FarmAnimal
 id: 1000003
-classname: Sheep
+name: Sheep
 radius: 3
 velocity: 12.0
 components:

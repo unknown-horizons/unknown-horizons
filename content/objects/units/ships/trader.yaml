@@ -1,7 +1,7 @@
 classpackage: ship
 classtype: TradeShip
 id: 1000006
-classname: Trader
+name: Trader
 radius: 8
 velocity: 12.0
 components:

@@ -1,7 +1,7 @@
 classpackage: collectors
 classtype: HunterCollector
 id: 1000014
-classname: HunterCollector
+name: HunterCollector
 radius: 5
 velocity: 12.0
 components:

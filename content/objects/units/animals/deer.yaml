@@ -1,7 +1,7 @@
 classpackage: animal
 classtype: WildAnimal
 id: 1000013
-classname: Deer
+name: Deer
 radius: 5
 velocity: 12.0
 components:

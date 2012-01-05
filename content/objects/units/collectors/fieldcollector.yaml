@@ -1,7 +1,7 @@
 classpackage: collectors
 classtype: FieldCollector
 id: 1000009
-classname: FieldCollector
+name: FieldCollector
 radius: 5
 velocity: 12.0
 components:

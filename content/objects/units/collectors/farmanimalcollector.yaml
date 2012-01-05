@@ -1,7 +1,7 @@
 classpackage: collectors
 classtype: FarmAnimalCollector
 id: 1000015
-classname: FarmAnimalCollector
+name: FarmAnimalCollector
 radius: 5
 velocity: 12.0
 components:

@@ -1,7 +1,7 @@
 classpackage: ship
 classtype: Ship
 id: 1000016
-classname: Fisher
+name: Fisher
 radius: 5
 velocity: 12.0
 components:

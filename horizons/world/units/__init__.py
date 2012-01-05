@@ -65,7 +65,7 @@ class UnitClass(IngameType):
 		self.action_sets = yaml_data['actionsets']
 		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
 		self._loadObject()
-		self.classname = yaml_data['classname']
+		self.classname = yaml_data['name']
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
 
