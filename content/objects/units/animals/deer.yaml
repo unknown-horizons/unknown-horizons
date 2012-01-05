@@ -1,5 +1,4 @@
-classpackage: animal
-classtype: WildAnimal
+baseclass: animal.WildAnimal
 id: 1000013
 name: Deer
 radius: 5

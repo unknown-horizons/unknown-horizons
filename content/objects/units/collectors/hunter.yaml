@@ -1,5 +1,4 @@
-classpackage: collectors
-classtype: HunterCollector
+baseclass: collectors.HunterCollector
 id: 1000014
 name: HunterCollector
 radius: 5

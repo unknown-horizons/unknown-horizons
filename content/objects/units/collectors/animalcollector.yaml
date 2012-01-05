@@ -1,5 +1,4 @@
-classpackage: collectors
-classtype: AnimalCollector
+baseclass: collectors.AnimalCollector
 id: 1000007
 name: AnimalCarriage
 radius: 5

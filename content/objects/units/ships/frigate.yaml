@@ -1,5 +1,4 @@
-classpackage: fightingship
-classtype: FightingShip
+baseclass: fightingship.FightingShip
 id: 1000020
 name: Frigate
 radius: 5

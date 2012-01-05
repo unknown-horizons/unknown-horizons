@@ -1,5 +1,4 @@
-classpackage: collectors
-classtype: StorageCollector
+baseclass: collectors.StorageCollector
 id: 1000011
 name: SettlerCollector
 radius: 5

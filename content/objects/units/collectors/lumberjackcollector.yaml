@@ -1,5 +1,4 @@
-classpackage: collectors
-classtype: FieldCollector
+baseclass: collectors.FieldCollector
 id: 1000010
 name: LumberjackCollector
 radius: 5

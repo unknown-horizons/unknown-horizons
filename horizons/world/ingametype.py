@@ -23,6 +23,28 @@ from horizons.constants import SETTLER
 
 class IngameType(type):
 
+	# Base package to import from, must end with the '.', the package is appended
+	basepackage = 'horizons.world.building.'
+	# Class name beginning for the type.__new__ constructor
+	classstring = 'Type['
+
+	def __new__(self, id,  yaml_data):
+		self.class_package =  yaml_data['baseclass'].split('.')[0]
+		self.class_name = yaml_data['baseclass'].split('.')[1]
+
+		@classmethod
+		def load(cls, session, db, worldid):
+			self = cls.__new__(cls)
+			self.session = session
+			super(cls, self).load(db, worldid)
+			return self
+
+		module = __import__(self.basepackage+self.class_package, [], [], [self.class_name])
+		return type.__new__(self, self.classstring + str(id) + ']',
+			(getattr(module, self.class_name),),
+			{'load': load})
+
+
 	def __init__(self, id, yaml_data):
 		self.id = id
 		self._name = yaml_data['name']

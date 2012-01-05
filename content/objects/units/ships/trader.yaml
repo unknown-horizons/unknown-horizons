@@ -1,5 +1,4 @@
-classpackage: ship
-classtype: TradeShip
+baseclass: ship.TradeShip
 id: 1000006
 name: Trader
 radius: 8

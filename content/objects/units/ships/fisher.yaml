@@ -1,5 +1,4 @@
-classpackage: ship
-classtype: FisherShip
+baseclass: ship.FisherShip
 id: 1000004
 name: Fisher
 radius: 5

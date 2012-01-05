@@ -1,5 +1,4 @@
-classpackage: collectors
-classtype: FarmAnimalCollector
+baseclass: collectors.FarmAnimalCollector
 id: 1000015
 name: FarmAnimalCollector
 radius: 5

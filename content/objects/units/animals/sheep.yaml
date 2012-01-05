@@ -1,5 +1,4 @@
-classpackage: animal
-classtype: FarmAnimal
+baseclass: animal.FarmAnimal
 id: 1000003
 name: Sheep
 radius: 3

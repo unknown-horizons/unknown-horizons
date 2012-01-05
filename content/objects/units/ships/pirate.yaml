@@ -1,5 +1,4 @@
-classpackage: ship
-classtype: PirateShip
+baseclass: ship.PirateShip
 id: 1000005
 name: Pirate
 radius: 5

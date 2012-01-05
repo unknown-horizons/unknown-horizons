@@ -46,21 +46,11 @@ class BuildingClass(IngameType):
 	"""
 	log = logging.getLogger('world.building')
 
-	def __new__(self, db, id,  yaml_data=[]):
-		class_package =  yaml_data['baseclass'].split('.')[0]
-		class_name = yaml_data['baseclass'].split('.')[1]
+	basepackage = 'horizons.world.building.'
+	classstring = 'Building['
 
-		__import__('horizons.world.building.'+class_package)
-		@classmethod
-		def load(cls, session, db, worldid):
-			self = cls.__new__(cls)
-			self.session = session
-			super(cls, self).load(db, worldid)
-			return self
-		# Return the new type for this building, including it's attributes, like the previously defined load function.
-		return type.__new__(self, 'Building[%s]' % str(id),
-			(getattr(globals()[class_package], class_name),),
-			{'load': load})
+	def __new__(self, db, id, yaml_data):
+		return super(BuildingClass, self).__new__(self, id, yaml_data)
 
 	def __init__(self, db, id, yaml_data=[]):
 		"""

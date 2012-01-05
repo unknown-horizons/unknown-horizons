@@ -1,5 +1,4 @@
-classpackage: collectors
-classtype: BuildingCollector
+baseclass: collectors.BuildingCollector
 id: 1000002
 name: BuildingCollector
 radius: 5

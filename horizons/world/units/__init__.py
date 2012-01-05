@@ -32,28 +32,8 @@ from horizons.world.ingametype import IngameType
 class UnitClass(IngameType):
 
 	log = logging.getLogger('world.units')
-
-	def __new__(self, id, yaml_data):
-		"""
-		@param id: unit id
-		"""
-
-		@classmethod
-		def load(cls, session, db, worldid):
-			self = cls.__new__(cls)
-			self.session = session
-			super(cls, self).load(db, worldid)
-			return self
-
-		attributes = {'load': load}
-
-		self.class_package = yaml_data['classpackage']
-		self.class_type = yaml_data['classtype']
-		__import__('horizons.world.units.'+self.class_package)
-
-		return type.__new__(self, 'Unit[' + str(id) + ']',
-			(getattr(globals()[self.class_package], self.class_type),),
-			attributes)
+	basepackage = 'horizons.world.units.'
+	classstring = 'Unit['
 
 	def __init__(self, id, yaml_data):
 		"""
