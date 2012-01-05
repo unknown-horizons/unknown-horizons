@@ -76,6 +76,9 @@ def setup_horizons():
 	import fife
 	horizons.main.fife = fife.fife
 
+	from run_uh import create_user_dirs
+	create_user_dirs()
+
 
 if __name__ == '__main__':
 	gettext.install('', unicode=True) # no translations here
