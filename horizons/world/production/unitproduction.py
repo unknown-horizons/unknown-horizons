@@ -47,10 +47,6 @@ class UnitProduction(ChangingProduction):
 	def _get_producing_callback(self):
 		return self._produce
 
-	def _give_produced_res(self):
-		"""This needs to be overridden as we also have to produce the unit."""
-		super(UnitProduction, self)._give_produced_res()
-
 	def _check_available_res(self):
 		# Gold must be available from the beginning
 		if self._prod_line.consumed_res.get(RES.GOLD_ID, 0) > 0: # check if gold is needed

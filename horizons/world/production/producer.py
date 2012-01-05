@@ -352,6 +352,11 @@ class QueueProducer(Producer):
 		"""
 		self.production_queue.append(production_line_id)
 		if not self.is_active():
+			# Remove all calls to start_next_production
+			# These might still be scheduled if the last production finished
+			# in the same tick as this one is being added in
+			Scheduler().rem_call(self, self.start_next_production)
+
 			self.start_next_production()
 
 	def load_production(self, db, worldid):
@@ -380,7 +385,6 @@ class QueueProducer(Producer):
 			self.set_active(active=True)
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
-			owner_inventory = self.instance._get_owner_inventory()
 			prod = self.create_production(production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
 			self.add_production( prod )

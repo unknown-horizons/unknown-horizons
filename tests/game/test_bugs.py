@@ -21,7 +21,7 @@
 
 from horizons.command.building import Build, Tear
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.production.producer import Producer
+from horizons.world.production.producer import Producer, QueueProducer
 from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES
 
 from tests.game import settle, game_test
@@ -106,17 +106,26 @@ def test_ticket_1232(s, p):
 	boat_builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(p)
 	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 10)
 	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 8)
+	assert isinstance(boat_builder.get_component(Producer),QueueProducer)
 
 	production_finished = [False]
 	boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
 	production1 = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.HUKER)
 	production1.add_production_finished_listener(lambda _: production_finished.__setitem__(0, True))
+	assert boat_builder.get_component(Producer).is_active()
 	while not production_finished[0]:
 		s.run(ticks=1)
+	assert not boat_builder.get_component(Producer).is_active()
 	assert len(s.world.ships) == 3
+	# Make sure enough res are available
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 10)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 8)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 5)
 
 	boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
+	assert boat_builder.get_component(Producer).is_active()
 	s.run(seconds=130)
+	assert not boat_builder.get_component(Producer).is_active()
 	assert len(s.world.ships) == 4
 
 
