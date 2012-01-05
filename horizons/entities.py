@@ -85,7 +85,8 @@ class Entities(object):
 		for root, dirnames, filenames in os.walk('content/objects/buildings'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				cls.log.debug("Loading: " +  filename)
-				full_file = os.path.join(root, filename)
+				# This is needed for dict lookups! Do not convert to os.join!
+				full_file = root + "/" + filename
 				result = YamlCache.get_file(full_file)
 				result['yaml_file'] = full_file
 
