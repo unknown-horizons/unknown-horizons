@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-30 08:24+0200\n"
-"Last-Translator: Torv <PLAAATONNN@narod.ru>\n"
+"PO-Revision-Date: 2011-12-31 05:56+0200\n"
+"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -2652,7 +2652,7 @@ msgstr ""
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:944
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Вращать миникарту вместе с картой:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:946
