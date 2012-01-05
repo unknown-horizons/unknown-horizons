@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2012-01-04 21:18+0200\n"
+"PO-Revision-Date: 2012-01-04 21:43+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -2451,7 +2451,7 @@ msgstr "Jatka peliä"
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:815
 msgid "Loading ..."
-msgstr "Ladataan..."
+msgstr "Ladataan ..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:822
