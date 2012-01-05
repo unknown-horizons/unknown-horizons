@@ -23,10 +23,7 @@ import logging
 import fnmatch
 import os
 
-from yaml import load
-from yaml import SafeLoader as Loader
-
-from horizons.util import Callback
+from horizons.util import Callback, YamlCache
 
 class _EntitiesLazyDict(dict):
 	def __init__(self):
@@ -43,7 +40,6 @@ class _EntitiesLazyDict(dict):
 			elem = fun()
 			self[key] = elem
 			return elem
-
 
 
 class Entities(object):
@@ -89,14 +85,13 @@ class Entities(object):
 		for root, dirnames, filenames in os.walk('content/objects/buildings'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				cls.log.debug("Loading: " +  filename)
-				full_file = root + "/" + filename
-				stream = file(full_file, 'r')
-				result = load(stream, Loader=Loader)
+				full_file = os.path.join(root, filename)
+				result = YamlCache.get_file(full_file)
 				result['yaml_file'] = full_file
 
 				building_id = int(result['id'])
 				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_data=result))
-				if True:
+				if load_now or True:
 					cls.buildings[building_id]
 
 	@classmethod
@@ -110,8 +105,8 @@ class Entities(object):
 		from world.units import UnitClass
 		for root, dirnames, filenames in os.walk('content/objects/units'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
-				stream = file(os.path.join(root, filename), 'r')
-				result = load(stream, Loader=Loader)
+				full_file = os.path.join(root, filename)
+				result = YamlCache.get_file(full_file)
 				unit_id = int(result['id'])
 				cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, yaml_data=result))
 				if load_now:

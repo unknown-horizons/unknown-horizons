@@ -24,7 +24,6 @@ import shutil
 import os.path
 import tempfile
 
-from horizons.savegamemanager import SavegameManager
 from horizons.util.python import decorators
 from horizons.constants import VERSION
 from horizons.util import DbReader
@@ -50,6 +49,8 @@ class SavegameUpgrader(object):
 		db("CREATE TABLE \"production_queue\" (object INTEGER NOT NULL, position INTEGER NOT NULL, production_line_id INTEGER NOT NULL)")
 
 	def _upgrade(self):
+		# fix import loop
+		from horizons.savegamemanager import SavegameManager
 		metadata = SavegameManager.get_metadata(self.original_path)
 		rev = metadata['savegamerev']
 		if rev == 0: # not a regular savegame, usually a map

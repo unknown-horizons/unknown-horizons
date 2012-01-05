@@ -41,13 +41,13 @@ import shutil
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader, Callback
-from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader, Callback
+from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 
 # private module pointers of this module
 class Modules(object):
@@ -342,7 +342,7 @@ def _start_dev_map(ai_players, human_ai):
 	load_game(ai_players, human_ai, first_map)
 	return True
 
-def _start_map(map_name, ai_players, human_ai, is_scenario=False, campaign=None, pirate_enabled=True, trader_enabled=True):
+def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None, pirate_enabled=True, trader_enabled=True):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""

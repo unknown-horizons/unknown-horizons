@@ -34,6 +34,7 @@ from savegameaccessor import SavegameAccessor
 from sqliteanimationloader import SQLiteAnimationLoader
 from sqliteatlasloader import SQLiteAtlasLoader
 from difficultysettings import DifficultySettings
+from yamlcache import YamlCache
 
 from shapes.point import Point, ConstPoint
 from shapes.rect import Rect, ConstRect
