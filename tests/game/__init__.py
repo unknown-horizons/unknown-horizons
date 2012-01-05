@@ -22,7 +22,6 @@
 
 import inspect
 import os
-import shutil
 import signal
 import tempfile
 from functools import wraps
@@ -41,7 +40,7 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.ai.trader import Trader
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import PATHS, GROUND, UNITS, BUILDINGS, GAME_SPEED, RES
+from horizons.constants import GROUND, UNITS, BUILDINGS, GAME_SPEED, RES
 from horizons.entities import Entities
 from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
@@ -135,11 +134,13 @@ class SPTestSession(SPSession):
 		Entities.load(self.db)
 		self.scenario_eventhandler = Dummy()
 		self.campaign = {}
-		self.selected_instances = []
 
 		# GUI
 		self.gui.session = self
 		self.ingame_gui = Dummy()
+
+		self.selected_instances = set()
+		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 		GAME_SPEED.TICKS_PER_SECOND = 16
 

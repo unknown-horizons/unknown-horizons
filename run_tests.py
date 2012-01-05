@@ -37,6 +37,9 @@ except ImportError:
 	sys.exit(1)
 
 
+from horizons.ext.dummy import Dummy
+
+
 def mock_fife_and_gui():
 	"""
 	Using a custom import hook, we catch all imports of fife, horizons.gui and enet
@@ -44,8 +47,6 @@ def mock_fife_and_gui():
 	pychan will fail otherwise (isinstance checks that Dummy fails, metaclass
 	errors - pretty bad stuff).
 	"""
-	from horizons.ext.dummy import Dummy
-
 	class Importer(object):
 
 		def find_module(self, fullname, path=None):
@@ -75,6 +76,8 @@ def setup_horizons():
 	import horizons.main
 	import fife
 	horizons.main.fife = fife.fife
+
+	horizons.main._modules.gui = Dummy()
 
 	from run_uh import create_user_dirs
 	create_user_dirs()
