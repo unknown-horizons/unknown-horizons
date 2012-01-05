@@ -94,6 +94,9 @@ class DefaultPersonality:
 		max_coverage_building_capacity = 22 # maximum number of residences a coverage building can service
 		normal_coverage_building_capacity = 20 # the initial plan calls for this number of residences per coverage building (may or may not be optimised away)
 
+		min_coverage_building_options = 10 # consider at least this many coverage building options
+		coverage_building_option_ratio = 0.4 # consider this * 100% of the possible options
+
 	class LandManager:
 		max_section_side = 22 # minimise the number of village sections by considering this to be its maximum side length
 

@@ -483,7 +483,10 @@ class VillageBuilder(AreaBuilder):
 
 		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
 		planned_tents = self._get_sorted_residence_positions()
+
 		possible_positions = copy.copy(planned_tents)
+		num_kept = int(min(len(possible_positions), max(self.personality.min_coverage_building_options, len(possible_positions) * self.personality.coverage_building_option_ratio)))
+		possible_positions = self.session.random.sample(possible_positions, num_kept)
 
 		def get_centroid(planned, blocked):
 			total_x, total_y = 0, 0
