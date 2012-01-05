@@ -28,6 +28,11 @@ try:
 except ImportError:
 	from yaml import SafeLoader
 
+# make SafeLoader allow unicode
+def construct_yaml_str(self, node):
+	return self.construct_scalar(node)
+SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_str)
+
 from horizons.constants import PATHS
 
 class YamlCache(object):
