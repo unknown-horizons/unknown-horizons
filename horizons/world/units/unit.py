@@ -48,11 +48,9 @@ class Unit(MovingObject):
 				WeakMethod(self.onInstanceActionFinished)
 		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
-		if self._object is None:
-			self.__class__._loadObject()
 
 		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance( \
-			self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
+			self.__class__._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))

@@ -64,7 +64,7 @@ class IngameType(type):
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']
 		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
-		self._object = None
+		self._real_object = None # wrapped by _object
 
 		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
 		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py
@@ -73,6 +73,12 @@ class IngameType(type):
 		All units and buildings are implemented as ComponentHolders, which you should
 		check out next: horizons/world/componentholder.py
 		"""
+
+	@property
+	def _object(self):
+		if self._real_object is None:
+			self._loadObject()
+		return self._real_object
 
 	def action_sets_by_level(self, action_sets):
 		as_by_level = {}
@@ -84,3 +90,7 @@ class IngameType(type):
 				elif 'level' not in value and i == 0:
 					as_by_level[i] = setname
 		return as_by_level
+
+	def _loadObject(self):
+		"""Inits self._real_object"""
+		raise NotImplementedError()

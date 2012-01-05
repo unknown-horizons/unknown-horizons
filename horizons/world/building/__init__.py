@@ -73,26 +73,25 @@ class BuildingClass(IngameType):
 		if buildable_on_deposit_type:
 			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
 
-		self._loadObject()
-
 	def __str__(self):
 		return "Building[" + str(self.id) + "](" + self._name + ")"
+
 
 	def _loadObject(cls):
 		"""Loads building from the db.
 		"""
 		cls.log.debug("Loading building %s", cls.id)
 		try:
-			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'building')
+			cls._real_object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'building')
 		except RuntimeError:
 			cls.log.debug("Already loaded building %s", cls.id)
-			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
+			cls._real_object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
 		action_sets = cls.action_sets.iterkeys()
 		all_action_sets = ActionSetLoader.get_sets()
 		for action_set_id in action_sets:
 			for action_id in all_action_sets[action_set_id].iterkeys():
-				action = cls._object.createAction(action_id+"_"+str(action_set_id))
+				action = cls._real_object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in all_action_sets[action_set_id][action_id].iterkeys():
 					#print "rotation:", rotation

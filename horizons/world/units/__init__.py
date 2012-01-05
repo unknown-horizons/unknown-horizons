@@ -40,25 +40,24 @@ class UnitClass(IngameType):
 		@param id: unit id.
 		"""
 		super(UnitClass, self).__init__(id, yaml_data)
-		self._loadObject()
 
 	def _loadObject(cls):
 		"""Loads the object with all animations.
 		"""
 		cls.log.debug('Loading unit %s', cls.id)
 		try:
-			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'unit')
+			cls._real_object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'unit')
 		except RuntimeError:
 			cls.log.debug('Already loaded unit %s', cls.id)
-			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'unit')
+			cls._real_object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'unit')
 			return
-		cls._object.setPather(horizons.main.fife.engine.getModel().getPather('RoutePather'))
-		cls._object.setBlocking(False)
-		cls._object.setStatic(False)
+		cls._real_object.setPather(horizons.main.fife.engine.getModel().getPather('RoutePather'))
+		cls._real_object.setBlocking(False)
+		cls._real_object.setStatic(False)
 		action_sets = ActionSetLoader.get_sets()
 		for action_set_id in cls.action_sets:
 			for action_id in action_sets[action_set_id].iterkeys():
-				action = cls._object.createAction(action_id+"_"+str(action_set_id))
+				action = cls._real_object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in action_sets[action_set_id][action_id].iterkeys():
 					anim = horizons.main.fife.animationloader.loadResource( \
