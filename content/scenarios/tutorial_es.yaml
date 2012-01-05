@@ -10,8 +10,8 @@ description: "Tutorial del juego\n\xA1Construya su primer asentamiento y aprenda
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: ["Construye una sucursal en la costa, as\xED ser\xE1 de f\xE1cil acceso\
+        \ para otros barcos como el 'Free Trader'."]
     type: message
   - arguments: ["\xA1Bienvenido a Unknown Horizons!", "Este es tu cuaderno de bit\xE1\
         cora en donde se registrar\xE1 toda la informaci\xF3n importante. Una peque\xF1\
@@ -26,28 +26,16 @@ events:
         \ el tutorial!\n\n\xA1Visita www.unknown-horizons.org para obtener ayuda de\
         \ como contactar con el equipo!\n\nY ahora, comencemos la partida."]
     type: logbook_w
-  - arguments: [!!python/unicode 'ESTABLECERSE EN UNA ISLA', !!python/unicode 'To
-        move your ship, select it with a left click and right click on the location
-        you want it to go to.
-
-
-        Once you are near the coast, the anchor-like button you see in the overview
-        tab will become active.
-
-
-        This indicates that you are able to build a branch office there by pressing
-        that button (called ''Build Settlement'').
-
-
-        Now a preview of your building is dragged around when you move the cursor.
-
-
-        You can build on any spot where this preview is not shaded red.
-
-        Click where you want to place your first building.
-
-
-        TASK: Build a branch office at the coast.', 2]
+  - arguments: [!!python/unicode 'ESTABLECERSE EN UNA ISLA', "Para mover tu barco,\
+        \ selecci\xF3nalo con un clic izquierdo y luego haz clic derecho sobre la\
+        \ ubicaci\xF3n a la cual deseas ir.\n\nUna vez este cerca de la costa, el\
+        \ bot\xF3n con forma de ancla que ve en la ficha de informaci\xF3n se activar\xE1\
+        .\n\nEsto significa que puedes construir ah\xED un asentamiento pulsando el\
+        \ bot\xF3n llamado 'Construir asentamiento'.\n\nAhora, al mover el cursor\
+        \ ver\xE1s una visualizaci\xF3n del edificio.\n\nPuedes construir en cualquier\
+        \ lugar cuya visualizaci\xF3n no sea de color rojo.\nHaz clic donde desees\
+        \ colocar tu primer edificio.\n\nOBJETIVO: Construir un asentamiento en la\
+        \ costa.", 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -67,33 +55,20 @@ events:
         Actualmente te encuentras en el primer incremento (el nivel de los marineros),\
         \ por lo que s\xF3lo podr\xE1s construir edificios b\xE1sicos."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
-        more and more complex buildings.
-
-
-        For now, select the lumberjack under ''Companies'' and build it in an area
-        with some trees around.
-
-
-        You can also plant trees later - but that costs money. Use what nature provided
-        you with!
-
-
-        A company always needs a trail connection to a storage or branch office, otherwise
-        goods will remain at the company and not be collected.
-
-
-        This means that you have to build a trail connecting your branch office (or
-        storage) and lumberjack.
-
-
-        TASK: Build a lumberjack in a wooded area and connect it to a road.
-
-
-        Watch how a collector will fetch your first self-produced boards.']
+  - arguments: ['', "Seg\xFAn vaya avanzando tu civilizaci\xF3n, podr\xE1s acceder\
+        \ a construir edificios cada vez m\xE1s complejos.\n\nPero ahora, selecciona\
+        \ el aserradero (en 'Compa\xF1\xEDas') y constr\xFAyelo en un superficie con\
+        \ \xE1rboles alrededor.\n\nMas adelante podr\xE1s plantar tus propios \xE1\
+        rboles - pero esto cuesta dinero. \xA1Aprovecha lo que la naturaleza te da!\n\
+        \nUn negocio siempre necesita una conexi\xF3n con un almac\xE9n o con la sucursal,\
+        \ de lo contrario los bienes permanecer\xE1n en el negocio y no ser\xE1n recogidos.\n\
+        \nEsto significa que tendr\xE1s que construir un sendero que conecte tu sucursal\
+        \ (o un almac\xE9n) con tu aserradero.\n\nOBJETIVO: Construir un aserradero\
+        \ en una zona boscosa y conectarlo mediante un sendero.\n\nAhora observa como\
+        \ un le\xF1ador recoger\xE1 tus primeros tablones."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
-        office using a trail.']
+  - arguments: ["Construya un aserradero y con\xE9ctelo al asentamiento usando un\
+        \ sendero."]
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -119,60 +94,38 @@ events:
         \ simplemente se escondan muy bien.\n\nConclusi\xF3n: La caza no es muy fiable\
         \ si se necesita un suministro continuo."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
-        the branch office and a fish school in range.
-
-
-        He will build a small rowing vessel and catch some fish.
-
-
-        This is a very constant supply at the cost of a slightly longer production
-        time per unit of food.
-
-
-        A small settlement like yours can use both companies, and you can better balance
-        pros and cons if you see the direct comparison.
-
-
-        TASK: Build a hunter and a fisher.
-
-
-        Don''t forget to connect them to your branch office with trails!']
+  - arguments: ['', "El pescador necesita una construcci\xF3n costera y un banco de\
+        \ peces a su alcance.\n\n\xC9l construir\xE1 una peque\xF1a embarcaci\xF3\
+        n de remo para coger alg\xFAn pescado.\n\nEste es un suministro bastante constante\
+        \ al coste de una producci\xF3n, en tiempo por unidad de alimento, ligeramente\
+        \ superior.\n\nUn asentamiento peque\xF1o como el tuyo puede usar ambas compa\xF1\
+        \xEDas, y ver as\xED mejor, cuales son los pros y contras de cada una.\n\n\
+        OBJETIVO: Construir un puesto de caza y otro de pesca.\n\n\xA1No olvides comunicarlas\
+        \ a tu sucursal mediante un modesto sendero!"]
     type: logbook
-  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
-        branch office.']
+  - arguments: ["Construya un puesto de caza y pesca. Con\xE9ctelos al asentamiento."]
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'LA PLAZA PRINCIPAL', !!python/unicode 'Your residents
-        need a main square where they can fetch their goods from.
-
-
-        This means that they need a trail connection from their home to the main square.
-
-
-        All goods in your branch office are available at this ''market place'', so
-        your residents do not need to walk to the fisher or even to the branch office.
-
-
-        You should consider founding your actual house settlement in an area where
-        you can easily expand it and build some trails, too.
-
-
-        You should avoid placing tents too close to your lumberjacks for example because
-        building tents will clear away the trees that your lumberjack needs to produce
-        boards.
-
-
-        TASK: Build a main square.']
+  - arguments: [!!python/unicode 'LA PLAZA PRINCIPAL', "Tus habitantes necesitan una\
+        \ plaza principal en la cual puedan obtener sus bienes necesitados.\n\nDe\
+        \ ello se deduce que necesitan un sendero que les comunique sus casas con\
+        \ dicha plaza principal.\n\nTodos los bienes de tu sucursal estar\xE1n disponibles\
+        \ en este 'mercadillo', as\xED los habitantes no necesitar\xE1n caminar hasta\
+        \ el puesto de pesca o a la sucursal\n\nDeber\xEDas considerar fundar tu nueva\
+        \ hogar en un \xE1rea donde puedas f\xE1cilmente expandirlo, y poder tambi\xE9\
+        n construir algunos senderos.\n\nDeber\xEDas evitar colocar las tiendas demasiado\
+        \ cerca de tu aserradero por ejemplo, porque \xE9stas limpiar\xE1n la zona\
+        \ de \xE1rboles que se necesitar\xE1n para construir tablones.\n\nOBJETIVO:\
+        \ Construir una plaza principal."]
     type: logbook_w
   - arguments: ['', "Ahora vamos a tener una mirada m\xE1s cercana a la plaza principal.\n\
         \nEn la pesta\xF1a \"Cuenta\" se obtiene un balance de esta isla, que incluye\
@@ -194,9 +147,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -248,53 +201,33 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: ["CONSTRUIR UNA SE\xD1AL DE HUMO", !!python/unicode 'Can you see the
-        ship passing your island from time to time? That ship belongs to the Free
-        Trader, one of the first settlers in this archipelago.
-
-
-        The trader will supply your settlement with necessary goods which you can''t
-        produce yet.
-
-        You can also sell surpluses of your production, but in general consuming them
-        (by building more tents) instead of selling them yields more profit.
-
-
-        Normally the trader ships just sail around and look for deals, but you can
-        speed things up a bit.
-
-
-        For this purpose, build a signal fire at the coast near your branch office.
-        It will show ships the way to your settlement.
-
-
-        The signal fire has to cover the area which the ships pass through to catch
-        them.']
+  - arguments: ["CONSTRUIR UNA SE\xD1AL DE HUMO", "\xBFTe has fijado en el barco que\
+        \ pasa por tu isla de vez en cuando? Este barco pertenece al 'Comercio Libre',\
+        \ uno de los primeros pobladores de este archipi\xE9lago.\n\nEl comerciante\
+        \ te proporcionar\xE1 los bienes necesarios que no puedas producir todav\xED\
+        a.\nTambi\xE9n puedes venderle los excedentes de tu producci\xF3n, pero en\
+        \ general, consumirlos (construyendo m\xE1s tiendas de campa\xF1a) en lugar\
+        \ de venderlos, te dar\xE1 mayor beneficio.\n\nNormalmente los barcos comerciantes\
+        \ s\xF3lo navegan alrededor buscando ofertas, pero se puede acelerar un poco\
+        \ las cosas.\n\nPara ello, construye una se\xF1al de humo en la costa cerca\
+        \ de tu almac\xE9n. Mostrar\xE1 el camino a los buques hacia tu asentamiento.\n\
+        \nLa se\xF1al de humo tiene que cubrir la zona por la que pasan los barcos\
+        \ para atraerlos."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
-
-
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
-        it, please share your thoughts! We need your help here!)
-
-
-        At the ''sailors'' increment, you are equipped with three trading slots.
-
-
-        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
-        vice versa.
-
-
-        Click in the slot to choose the good you want to trade with. We will further
-        explain this once you are ready to trade.
-
-
-        TASK: Build a signal fire at the coast close to your branch office.']
+  - arguments: ['', "Despu\xE9s de este peque\xF1o anuncio, el comerciante tambi\xE9\
+        n parar\xE1 por aqu\xED y mirar\xE1 en tu almac\xE9n, si ten\xEDa previsto\
+        \ zarpar antes de ello.\n\nPuedes proponer ofertas a trav\xE9s de la ficha\
+        \ del almac\xE9n \"Comprar/Vender\". (Esta caracter\xEDstica actualmente es\
+        \ bastante liosa de utilizar. Si tienes alguna buena idea para mejorarla,\
+        \ \xA1por favor comparte tus pensamientos! Necesitamos tu ayuda aqu\xED!)\n\
+        \nCon el incremento de los \"marineros\", se te equipar\xE1 con tres ranuras\
+        \ para el comercio.\n\nHaz clic en el icono peque\xF1o de la ranura para cambiar\
+        \ el modo de 'comprar' a 'vender' y viceversa.\n\nHaz clic en la ranura para\
+        \ elegir el bien con el que quieres comerciar. Explicaremos m\xE1s una vez\
+        \ est\xE9s listo para comerciar.\n\nOBJETIVO: Construir una se\xF1al de humo\
+        \ en la costa cerca del almac\xE9n."]
     type: logbook
-  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
-        office.']
+  - arguments: ["Construya una se\xF1al de humo en la costa cerca de su asentamiento."]
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -306,15 +239,16 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'EL COMERCIO', !!python/unicode "Excellent! The Free\
-        \ Trader will now stop by at your branch office from time to time.\n\nLet's\
-        \ continue our tutorial on how to trade.\n\nAfter selecting a particular type\
-        \ of good, the green bar across the bottom of the slot (if visible) shows\
-        \ you how much you have in stock of this good.\n\nDragging the slider on the\
-        \ right of each slot determines your 'target value' which has a different\
-        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
-        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
-        \ which you hold in reserve to not sell"]
+  - arguments: [!!python/unicode 'EL COMERCIO', "\xA1Excelente! El comerciante libre\
+        \ ahora se parar\xE1 en tu almac\xE9n de vez en cuando.\n\nContinuemos con\
+        \ nuestro tutorial sobre c\xF3mo comerciar.\n\nDespu\xE9s de seleccionar un\
+        \ tipo de bien concreto, la barra verde en la parte inferior de la ranura\
+        \ (si est\xE1 visible) te mostrar\xE1 cuantas existencias tienes de dicho\
+        \ bien.\n\nAl arrastrar el puntero a la derecha de cada ranura se muestra\
+        \ el 'valor objetivo', el cual tiene un diferente significado de 'Comprar'\
+        \ y 'Vender'. \nCuando compras, comprar\xE1s lo suficiente para mantener tu\
+        \ 'valor objetivo' en existencias.\nCuando vendes, el 'valor objetivo' es\
+        \ el n\xFAmero de existencias que prefieres reservar antes que vender."]
     type: logbook_w
   - arguments: ['', "Por ejemplo:\nTeniendo en la ranura 'Comprar' y 5 tn de existencias,\
         \ un valor objetivo en 9 tn causar\xE1 una compra de m\xE1ximo 4 tn.\nLa venta\
@@ -476,11 +410,11 @@ events:
 
 
         Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a Branch Office.
+        to be connected to storage or a warehouse.
 
 
         As long as units of the final production company can reach the farm, and collectors
-        from the branch office or storage tent can reach the final company everything''s
+        from the warehouse or storage tent can reach the final company everything''s
         fine.
 
 
@@ -558,7 +492,7 @@ events:
   - arguments: ["EL ALMAC\xC9N", !!python/unicode 'Did you watch your lumberjack recently?
 
 
-        Since your branch office does not have unlimited space to store goods, collectors
+        Since your warehouse does not have unlimited space to store goods, collectors
         will stop fetching goods from companies when stock is full.
 
         So if no sailor recently wanted to upgrade his tent, you probably have a lot
@@ -583,9 +517,9 @@ events:
         \nAnother solution is to build the last increment-I building which has not\
         \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
         \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the branch office does.\n\nNote that companies\
-        \ can also be connected to a storage in order to get their products collected,\
-        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ to fetch goods, just like the warehouse does.\n\nNote that companies can\
+        \ also be connected to a storage in order to get their products collected,\
+        \ and if the warehouse is overwhelmed with collector tasks, you can place\
         \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
         \ where you need collectors."]
     type: logbook
@@ -607,7 +541,7 @@ events:
 
 
         There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the Branch Office).
+        to a Storage Tent (or the warehouse).
 
 
         In both cases you should ensure the connection to a trail as well.
@@ -690,4 +624,5 @@ events:
     type: var_gt
 locale: es
 mapfile: development.sqlite
+translation_status: 53 translated messages, 12 untranslated messages.
 

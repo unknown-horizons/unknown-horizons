@@ -13,8 +13,8 @@ description: !!python/unicode 'De tutorial:
 difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: [!!python/unicode 'Bouw een hoofdkantoor aan de kust, zodat deze makkelijk
+        bereikbaar is voor andere schepen als die van de vrije handelaar.']
     type: message
   - arguments: [!!python/unicode 'Welkom bij Unknown Horizons!', "Dit is uw logboek\
         \ waar alle belangrijke informatie staat opgeslagen. Een korte notificatie\
@@ -28,28 +28,29 @@ events:
         \ voor hulp en om het team te kunnen contacten!\n\nEn dan nu, laten we met\
         \ het echte spel beginnen."]
     type: logbook_w
-  - arguments: [!!python/unicode 'OPDRACHT: KOLONISEER EEN EILAND', !!python/unicode 'To
-        move your ship, select it with a left click and right click on the location
-        you want it to go to.
+  - arguments: [!!python/unicode 'OPDRACHT: KOLONISEER EEN EILAND', !!python/unicode 'Om
+        uw schip te verplaatsen, selecteer het met een linker muisklik en klik rechts
+        op de locatie waar het schip naar toe moet varen.
 
 
-        Once you are near the coast, the anchor-like button you see in the overview
-        tab will become active.
+        Zodra het schip bij de kust is, wordt de knop met het anker in het overzicht
+        scherm actief.
 
 
-        This indicates that you are able to build a branch office there by pressing
-        that button (called ''Build Settlement'').
+        Dit betekend dat u een kantoor kunt plaatsen door op deze knop te klikken
+        (genaamd ''Plaats kolonie'').
 
 
-        Now a preview of your building is dragged around when you move the cursor.
+        Een voorbeeld van het gebouw wordt getoond wanneer u de cursor beweegt.
 
 
-        You can build on any spot where this preview is not shaded red.
+        U kunt het gebouw plaatsen op iedere locatie waar het voorbeeld niet rood
+        is.
 
-        Click where you want to place your first building.
+        Klik waar u uw eerste gebouw wilt plaatsen.
 
 
-        TASK: Build a branch office at the coast.', 2]
+        OPDRACHT: Plaats een kantoor aan de kust.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -81,33 +82,33 @@ events:
         Momenteel zit u in de basisreeks (de zeemansreeks), u kunt hierdoor alleen
         de basisgebouwen bouwen.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'As your civilization advances, you also gain
-        more and more complex buildings.
+  - arguments: ['', !!python/unicode 'Met het uitbreiden van uw kolonie kunnen ook
+        complexere gebouwen geplaatst worden.
 
 
-        For now, select the lumberjack under ''Companies'' and build it in an area
-        with some trees around.
+        Selecteer de houthakker onder ''Bedrijven'' en plaats het in een regio met
+        veel bomen.
 
 
-        You can also plant trees later - but that costs money. Use what nature provided
-        you with!
+        U kunt ook bomen planten - maar dat kost geld. Gebruik wat wordt aangeboden
+        door de natuur!
 
 
-        A company always needs a trail connection to a storage or branch office, otherwise
-        goods will remain at the company and not be collected.
+        Een bedrijf heeft altijd een wegverbinding nodig tussen een opslagruimte of
+        kantoor, anders worden goederen niet opgehaald.
 
 
-        This means that you have to build a trail connecting your branch office (or
-        storage) and lumberjack.
+        Dat betekent dat u een pad moet plaatsen die het kantoor (of een opslag) en
+        de houthakker verbindt.
 
 
-        TASK: Build a lumberjack in a wooded area and connect it to a road.
+        OPDRACHT: Plaats een houthakker in bebost gebied en verbind het met een weg.
 
 
-        Watch how a collector will fetch your first self-produced boards.']
+        Let op hoe een verzamelaar uw eerste zelf geproduceerde planken ophaalt.']
     type: logbook
-  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
-        office using a trail.']
+  - arguments: [!!python/unicode 'Plaats een houthakker en verbind deze met het kantoor
+        met een pad.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -143,60 +144,59 @@ events:
         Conclusie: de jager is niet betrouwbaar genoeg voor een gelijkmatig aanbod
         van voedsel.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
-        the branch office and a fish school in range.
+  - arguments: ['', !!python/unicode 'De visser heeft een bouwplaats aan het water
+        en een school vissen in de buurt nodig.
 
 
-        He will build a small rowing vessel and catch some fish.
+        Hij zal dan een klein roeibootje maken en gaan vissen.
 
 
-        This is a very constant supply at the cost of a slightly longer production
-        time per unit of food.
+        Dit is een constante aanvoer wat alleen maar een klein beetje meer productietijd
+        nodig heeft per voedsel eenheid.
 
 
-        A small settlement like yours can use both companies, and you can better balance
-        pros and cons if you see the direct comparison.
+        Een kleine kolonie als die van u kan beide bedrijven gebruiken en u kan de
+        voor- en nadelen beter uitbalanceren als u de vergelijking bekijkt.
 
 
-        TASK: Build a hunter and a fisher.
+        OPDRACHT: Bouw een jager en een visser.
 
 
-        Don''t forget to connect them to your branch office with trails!']
+        En vergeet de paden naar het hoofdkantoor niet!']
     type: logbook
-  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
-        branch office.']
+  - arguments: [!!python/unicode 'Plaats een jager en een visser. Verbind ze met het
+        kantoor.']
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: MARKTPLAATS', !!python/unicode 'Your residents
-        need a main square where they can fetch their goods from.
+  - arguments: [!!python/unicode 'OPDRACHT: MARKTPLAATS', !!python/unicode 'Uw inwoners
+        hebben een marktplaats nodig waar ze de goederen kunnen ophalen.
 
 
-        This means that they need a trail connection from their home to the main square.
+        Dit betekent dat de marktplaats en hun huis met een pad verbonden moeten zijn.
 
 
-        All goods in your branch office are available at this ''market place'', so
-        your residents do not need to walk to the fisher or even to the branch office.
+        Alle goederen in het kantoor zijn beschikbaar op deze ''marktplaats'', zeelui
+        hoeven dus niet naar de visser of het kantoor te lopen.
 
 
-        You should consider founding your actual house settlement in an area where
-        you can easily expand it and build some trails, too.
+        Overweeg goed waar u de huizen in de nederzetting plaatst: Een gebied dat
+        eenvoudig kan worden uitgebreid en eenvoudig wegen geplaatst kunnen worden.
 
 
-        You should avoid placing tents too close to your lumberjacks for example because
-        building tents will clear away the trees that your lumberjack needs to produce
-        boards.
+        Plaats geen tenten dichtbij de houthakker. De houthakker heeft ruimte nodig
+        voor bomen.
 
 
-        TASK: Build a main square.']
+        OPDRACHT: Plaats een plein.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
 
@@ -227,9 +227,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -302,19 +302,19 @@ events:
         speed things up a bit.
 
 
-        For this purpose, build a signal fire at the coast near your branch office.
-        It will show ships the way to your settlement.
+        For this purpose, build a signal fire at the coast near your warehouse. It
+        will show ships the way to your settlement.
 
 
         The signal fire has to cover the area which the ships pass through to catch
         them.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
+        also stop by and look into your warehouse if it planned to sail past it.
 
 
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
+        You can propose deals via the warehouse tab ''Buy/Sell''. (This feature is
+        currently quite fiddly to use. If you come up with a nice way of improving
         it, please share your thoughts! We need your help here!)
 
 
@@ -329,10 +329,9 @@ events:
         explain this once you are ready to trade.
 
 
-        TASK: Build a signal fire at the coast close to your branch office.']
+        TASK: Build a signal fire at the coast close to your warehouse.']
     type: logbook
-  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
-        office.']
+  - arguments: [!!python/unicode 'Plaats een signaal vuur bij de kust nabij het kantoor.']
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -344,15 +343,15 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: LEER HANDELEN', !!python/unicode "Excellent!\
-        \ The Free Trader will now stop by at your branch office from time to time.\n\
-        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
-        \ type of good, the green bar across the bottom of the slot (if visible) shows\
-        \ you how much you have in stock of this good.\n\nDragging the slider on the\
-        \ right of each slot determines your 'target value' which has a different\
-        \ meaning on 'Buy' and 'Sell'. \nWhen buying, you will buy sufficient to hold\
-        \ your 'target value' in stock. \nWhen selling the 'target value' is the number\
-        \ which you hold in reserve to not sell"]
+  - arguments: [!!python/unicode 'OPDRACHT: LEER HANDELEN', !!python/unicode "Perfect!\
+        \ De Vrije Handelaarzal nu van tijd tot tijd bij uw hoofdkantoor langskomen.\n\
+        \nLaten we verder gaan met de uitleg over handelen.\n\nNadat er een specifiek\
+        \ goed is geselecteerd, geeft de groene balk weer (als deze zichtbaar is)\
+        \ hoeveel je er van in voorraad hebt.\n\nDoor de schuifbalk aan de rechterkant\
+        \ van elk slot te bewegen, kies je de 'streefwaarde', welke een verschillende\
+        \ betekenis heeft voor 'kopen en verkopen'. \nBij kopen, zal je aankopen doen\
+        \ maar je 'streefwaarde' in voorraad houden. \nBij verkoop is de 'streefwaarde'\
+        \ het aantal dat je reserve houdt en niet verkoopt"]
     type: logbook_w
   - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
         \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
@@ -511,28 +510,27 @@ events:
         De uitvoer van de boerderij hangt af van het type velden wat je rond de boerderij
         aanlegt.']
     type: logbook_w
-  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
+  - arguments: ['', !!python/unicode 'We zullen hier later wat dieper op ingaan.
 
 
-        Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a Branch Office.
+        Boerderijen, zoals alle bedrijven die ruwe materialen produceren, hebben geen
+        pad naar een opslag of kantoor nodig.
 
 
-        As long as units of the final production company can reach the farm, and collectors
-        from the branch office or storage tent can reach the final company everything''s
-        fine.
+        Zolang de inwoners van de eindproducenten de boerderij kunnen bereiken is
+        alles in orde.
 
 
-        If you, however, plan to do some processing on different parts of the island
-        (which can make sense) or even on different islands, you will need a connection
-        to collectors.
+        Mocht je van plan zijn het verwerken op een ander deel van het eiland te doen
+        (wat opzich wel logisch is) of misschien zelfs op een ander eiland, dan heb
+        je wel een connectie naar de verzamelaars nodig.
 
 
-        Try to build the farm not too close to the coast or your existing buildings
-        since it will need some space around it to work well.
+        Probeer de boerderij niet te dicht bij de kust of andere gebouwen te plaatsen,
+        omdat het ruimte in de buurt nodig heeft om te kunnen werken.
 
 
-        TASK: Build a farm.']
+        OPDRACHT: Bouw een boerderij.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een boerderij, zorg voor vrije ruimte eromheen.']
     type: message
@@ -604,40 +602,39 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: OPSLAGRUIMTE', !!python/unicode 'Did you
-        watch your lumberjack recently?
+  - arguments: [!!python/unicode 'OPDRACHT: OPSLAGRUIMTE', !!python/unicode 'Heeft
+        u onlangs de houthakker gezien?
 
 
-        Since your branch office does not have unlimited space to store goods, collectors
-        will stop fetching goods from companies when stock is full.
+        Aangezien het kantoor beperkte ruimte heeft om goederen op te slaan, zullen
+        verzamelaar stoppen goederen op te halen van bedrijven wanneer de opslagruimte
+        vol is.
 
-        So if no sailor recently wanted to upgrade his tent, you probably have a lot
-        of boards and in that case, the lumberjack may idle.
+        Als er recentelijk geen zeelui hun tenten hebben verbeterd, heeft u waarschijnlijk
+        veel planken. In dat geval zal de houthakker rusten.
 
-        We can improve this situation with two different approaches, and below we
-        will have a look at both of them.
-
-
-        All companies offer the possibility of doing no work at all.
-
-        This may sound strange, but try to click on the gear wheel you see in, for
-        example, a lumberjack''s overview.
+        We kunnen deze situatie oplossen met twee verschillende aanpakken.
 
 
-        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
-        costs you pay for the building will decrease. They won''t be zero, but still
-        lower than if you keep the company producing.']
+        Alle bedrijven hebben de optie om buiten bedrijf gezet te worden.
+
+        Dit klinkt misschien raar. Klik op het tandwiel in het houthakkers overzicht.
+
+
+        Als deze ''rust'' in ingeschakeld zullen de onderhoudskosten van het gebouw
+        afnemen. Onderhoudskosten zullen niet altijd helemaal nul zijn, maar allicht
+        wel lager dan in actieve status.']
     type: logbook_w
-  - arguments: ['', !!python/unicode "This means that you can save money when you\
-        \ temporarily do not need a company and do not want to tear it down, either.\n\
-        \nAnother solution is to build the last increment-I building which has not\
-        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
-        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the branch office does.\n\nNote that companies\
-        \ can also be connected to a storage in order to get their products collected,\
-        \ and if the branch office is overwhelmed with collector tasks, you can place\
-        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
-        \ where you need collectors."]
+  - arguments: ['', !!python/unicode "Dit betekent dat u geld kan besparen wanneer\
+        \ u tijdelijk geen bepaald bedrijf nodig heeft en het ook niet wilt slopen.\n\
+        \nEen andere oplossing is het plaatsen van het laatste niveau I gebouw, dat\
+        \ nog niet besproken is: De opslag tent.\n\nDit gebouw heeft twee doeleinden:\n\
+        * Het biedt meer ruimte voor goederen \n* Het stuurt eigen verzamelaars om\
+        \ goederen te halen, zoals het kantoor doet.\n\nMerk op dat bedrijven ook\
+        \ met een opslag tent verbonden kunnen worden om hun goederen op te laten\
+        \ halen, en als alle verzamelaars van het kantoor bezet zijn, kan een opslag\
+        \ tent de oplossing bieden.\n\nOPDRACHT: Plaats een opslag tent, bij voorkeur\
+        \ waar u verzamelaars nodig heeft."]
     type: logbook
   - arguments: [!!python/unicode 'Plaats een opslag tent (niveau I scherm).']
     type: message
@@ -651,23 +648,24 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'OPDRACHT: KLEERMAKER', !!python/unicode 'Now the
-        wool production is set up, you still need a weaver to produce cloth out of
-        this wool.
+  - arguments: [!!python/unicode 'OPDRACHT: KLEERMAKER', !!python/unicode 'Nu de wol
+        productie gereed is heeft u nog een kleermaker nodig om kleren te fabriceren
+        van de wol.
 
 
-        There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the Branch Office).
+        Er zijn twee plaatsen waar u de kleermaker kunt plaatsen - ofwel dichtbij
+        de boerderij of dicht bij een opslag tent danwel het kantoor.
 
 
-        In both cases you should ensure the connection to a trail as well.
+        In beide gevallen dient er een verbinding met de weg te zijn.
 
 
-        You can place the weaver close to the farm and tear down any trail to the
-        farm to see that it will still fetch the wool and produce.
+        U kunt de kleermaker dichtbij de boerderij plaatsen en alle wegen naar de
+        boerderij afbreken om te zien dat de kleermaker alsnog wol ophaalt en kleren
+        produceert.
 
 
-        TASK: Build a weaver positioned so it can get wool.']
+        OPDRACHT: Plaats een kleermaker waar het wol kan ophalen.']
     type: logbook
   - arguments: [!!python/unicode 'Plaats een kleermaker die de wel van je boerderij
         kan bereiken.']
@@ -768,4 +766,5 @@ events:
     type: var_gt
 locale: nl
 mapfile: development.sqlite
+translation_status: 59 translated messages, 6 untranslated messages.
 

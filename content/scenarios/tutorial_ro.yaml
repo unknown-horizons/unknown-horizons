@@ -10,8 +10,8 @@ description: "Practica:\nStabile\u0219te o colonie \u0219i \xEEnva\u021B\u0103 c
 difficulty: "Practic\u0103"
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a branch office at the coast, so it is easy
-        accessible for other ships like the Free Trader.']
+  - arguments: ["Construie\u0219te o sucursal\u0103 pe coast\u0103. A\u0219a va fi\
+        \ accesibil\u0103 c\u0103tre alte nave ca negustorul independent."]
     type: message
   - arguments: ["Bine a\u021Bi venit la Unknown Horizons!", "Acesta este jurnalul\
         \ de bord unde toate informa\u021Biile importante sunt \xEEnregistrate. O\
@@ -25,28 +25,16 @@ events:
         \ ne contacta\u021Bi.\n\nVizita\u021Bi www.unknown-horizons.org pentru detalii.\n\
         \n\u0218i acum, s\u0103 \xEEncepem s\u0103 ne juc\u0103m."]
     type: logbook_w
-  - arguments: ["SARCIN\u0102: COLONIZEAZ\u0102 O INSUL\u0102", !!python/unicode 'To
-        move your ship, select it with a left click and right click on the location
-        you want it to go to.
-
-
-        Once you are near the coast, the anchor-like button you see in the overview
-        tab will become active.
-
-
-        This indicates that you are able to build a branch office there by pressing
-        that button (called ''Build Settlement'').
-
-
-        Now a preview of your building is dragged around when you move the cursor.
-
-
-        You can build on any spot where this preview is not shaded red.
-
-        Click where you want to place your first building.
-
-
-        TASK: Build a branch office at the coast.', 2]
+  - arguments: ["SARCIN\u0102: COLONIZEAZ\u0102 O INSUL\u0102", "Pentru a muta nava,\
+        \ selec\u021Biona\u021Bi-o cu clic st\xE2nga \u0219i clic dreapta la destina\u021B\
+        ia unde o dori\u021Bi.\n\nC\xE2nd sunte\u021Bi \xEEn apropierea coastei, butonul\
+        \ \xEEn form\u0103 de ancor\u0103 din panou va deveni activ.\n\nAcesta indic\u0103\
+        \ posibilitate construirii unei sucursale prin ap\u0103sarea butonului \u201E\
+        creare colonie\u201D.\n\nAcum o vizionare a cl\u0103dirii este mobil\u0103\
+        \ cu cursorul.\n\nPute\u021Bi construi unde aceast\u0103 vizionare nu are\
+        \ nuan\u021B\u0103 ro\u0219iatic\u0103.\nClic unde dori\u021Bi s\u0103 plasa\u021B\
+        i cl\u0103direa.\n\nSARCIN\u0102: construi\u021Bi o sucursal\u0103 pe coast\u0103\
+        .", 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -90,12 +78,12 @@ events:
         you with!
 
 
-        A company always needs a trail connection to a storage or branch office, otherwise
+        A company always needs a trail connection to a storage or warehouse, otherwise
         goods will remain at the company and not be collected.
 
 
-        This means that you have to build a trail connecting your branch office (or
-        storage) and lumberjack.
+        This means that you have to build a trail connecting your warehouse (or storage)
+        and lumberjack.
 
 
         TASK: Build a lumberjack in a wooded area and connect it to a road.
@@ -103,8 +91,8 @@ events:
 
         Watch how a collector will fetch your first self-produced boards.']
     type: logbook
-  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the branch
-        office using a trail.']
+  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the warehouse
+        using a trail.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -141,7 +129,7 @@ events:
         Conclusion: the hunter is not too reliable if you need continuous supply.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'The Fisher needs a coastal building site like
-        the branch office and a fish school in range.
+        the warehouse and a fish school in range.
 
 
         He will build a small rowing vessel and catch some fish.
@@ -158,16 +146,16 @@ events:
         TASK: Build a hunter and a fisher.
 
 
-        Don''t forget to connect them to your branch office with trails!']
+        Don''t forget to connect them to your warehouse with trails!']
     type: logbook
   - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
-        branch office.']
+        warehouse.']
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
@@ -180,8 +168,8 @@ events:
         This means that they need a trail connection from their home to the main square.
 
 
-        All goods in your branch office are available at this ''market place'', so
-        your residents do not need to walk to the fisher or even to the branch office.
+        All goods in your warehouse are available at this ''market place'', so your
+        residents do not need to walk to the fisher or even to the warehouse.
 
 
         You should consider founding your actual house settlement in an area where
@@ -224,9 +212,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -317,19 +305,19 @@ events:
         speed things up a bit.
 
 
-        For this purpose, build a signal fire at the coast near your branch office.
-        It will show ships the way to your settlement.
+        For this purpose, build a signal fire at the coast near your warehouse. It
+        will show ships the way to your settlement.
 
 
         The signal fire has to cover the area which the ships pass through to catch
         them.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
+        also stop by and look into your warehouse if it planned to sail past it.
 
 
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
+        You can propose deals via the warehouse tab ''Buy/Sell''. (This feature is
+        currently quite fiddly to use. If you come up with a nice way of improving
         it, please share your thoughts! We need your help here!)
 
 
@@ -344,10 +332,9 @@ events:
         explain this once you are ready to trade.
 
 
-        TASK: Build a signal fire at the coast close to your branch office.']
+        TASK: Build a signal fire at the coast close to your warehouse.']
     type: logbook
-  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your branch
-        office.']
+  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your warehouse.']
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -360,8 +347,8 @@ events:
     type: var_lt
 - actions:
   - arguments: [!!python/unicode 'NEW TASK: LEARN TO TRADE', !!python/unicode "Excellent!\
-        \ The Free Trader will now stop by at your branch office from time to time.\n\
-        \nLet's continue our tutorial on how to trade.\n\nAfter selecting a particular\
+        \ The Free Trader will now stop by at your warehouse from time to time.\n\n\
+        Let's continue our tutorial on how to trade.\n\nAfter selecting a particular\
         \ type of good, the green bar across the bottom of the slot (if visible) shows\
         \ you how much you have in stock of this good.\n\nDragging the slider on the\
         \ right of each slot determines your 'target value' which has a different\
@@ -528,11 +515,11 @@ events:
 
 
         Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a Branch Office.
+        to be connected to storage or a warehouse.
 
 
         As long as units of the final production company can reach the farm, and collectors
-        from the branch office or storage tent can reach the final company everything''s
+        from the warehouse or storage tent can reach the final company everything''s
         fine.
 
 
@@ -610,7 +597,7 @@ events:
         you watch your lumberjack recently?
 
 
-        Since your branch office does not have unlimited space to store goods, collectors
+        Since your warehouse does not have unlimited space to store goods, collectors
         will stop fetching goods from companies when stock is full.
 
         So if no sailor recently wanted to upgrade his tent, you probably have a lot
@@ -635,9 +622,9 @@ events:
         \nAnother solution is to build the last increment-I building which has not\
         \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
         \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the branch office does.\n\nNote that companies\
-        \ can also be connected to a storage in order to get their products collected,\
-        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ to fetch goods, just like the warehouse does.\n\nNote that companies can\
+        \ also be connected to a storage in order to get their products collected,\
+        \ and if the warehouse is overwhelmed with collector tasks, you can place\
         \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
         \ where you need collectors."]
     type: logbook
@@ -660,7 +647,7 @@ events:
 
 
         There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the Branch Office).
+        to a Storage Tent (or the warehouse).
 
 
         In both cases you should ensure the connection to a trail as well.
@@ -775,4 +762,5 @@ events:
     type: var_gt
 locale: ro
 mapfile: development.sqlite
+translation_status: 8 translated messages, 57 untranslated messages.
 
