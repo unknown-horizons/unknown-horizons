@@ -424,7 +424,7 @@ class UnitProducer(QueueProducer):
 		Does not include the currently produced unit. List is in order."""
 		queue = []
 		for prod_line_id in self.production_queue:
-			prod_line = ProductionLine.get_const_production_line(prod_line_id)
+			prod_line = ProductionLine(prod_line_id, self.production_lines[prod_line_id])
 			units = prod_line.unit_production.keys()
 			if len(units) > 1:
 				print 'WARNING: unit production system has been designed for 1 type per order'

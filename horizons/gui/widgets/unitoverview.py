@@ -27,7 +27,7 @@ from horizons.gui.widgets import TooltipIcon
 from horizons.command.unit import SetStance
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.stancecomponent import *
+from horizons.world.component.stancecomponent import NoneStance, AggressiveStance, HoldGroundStance, FleeStance
 
 class StanceWidget(pychan.widgets.Container):
 	"""Widget used for setting up the stance for one instance"""
@@ -73,7 +73,7 @@ class StanceWidget(pychan.widgets.Container):
 		self.findChild(name='hold_ground').set_inactive()
 		self.findChild(name='none').set_inactive()
 		self.findChild(name='flee').set_inactive()
-		self.findChild(name=self.instance.stance).set_active()
+		self.findChild(name=self.instance.stance.NAME).set_active()
 
 class HealthWidget(pychan.widgets.Container):
 	"""Widget that shows a health bar for an unit"""
