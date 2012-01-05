@@ -224,11 +224,23 @@ class SavegameManager(object):
 		width = horizons.main.fife.engine_settings.getScreenWidth()
 		height = horizons.main.fife.engine_settings.getScreenHeight()
 
+
+		# hide whatever dialog we have
+		dialog_hidden = False
+		if horizons.main._modules.gui.is_visible():
+			dialog_hidden = True
+			horizons.main._modules.gui.hide()
+			horizons.main.fife.engine.pump()
+
 		# scale to the correct with and adapt height with same factor
 		factor = float( cls.savegame_screenshot_width ) / width
 		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
 		                                                           int(float(width) * factor),
 		                                                           int(float(height) * factor))
+
+		if dialog_hidden:
+			horizons.main._modules.gui.show()
+			horizons.main.fife.engine.pump()
 
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()
 		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))

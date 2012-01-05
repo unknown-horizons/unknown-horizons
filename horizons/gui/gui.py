@@ -358,6 +358,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			except AttributeError as e:
 				pass # only used for some widgets, e.g. pause
 
+	def is_visible(self):
+		return self.current is not None and self.current.isVisible()
+
 
 	def show_dialog(self, dlg, bind, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
@@ -496,8 +499,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				return
 			savegame_info = SavegameManager.get_metadata(map_file)
 
-			# screenshot
-			if savegame_info['screenshot'] is not None:
+			# screenshot (len can be 0 if save failed in a weird way)
+			if savegame_info['screenshot'] is not None and len(savegame_info['screenshot']) > 0:
 				# try to find a writeable location, that is accessible via relative paths
 				# (required by fife)
 				fd, filename = tempfile.mkstemp()
