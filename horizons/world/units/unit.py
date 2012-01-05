@@ -205,7 +205,7 @@ class Unit(MovingObject):
 		return self.session.db.get_unit_type_name(self.id)
 
 	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.classname, self.id, self.worldid)
+		return '%s(id=%s;worldid=%s)' % (self._name, self.id, self.worldid)
 
 
 decorators.bind_all(Unit)

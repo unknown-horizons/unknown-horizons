@@ -59,15 +59,8 @@ class UnitClass(IngameType):
 		"""
 		@param id: unit id.
 		"""
-		super(UnitClass, self).__init__(self)
-		self.id = id
-		self._object = None
-		self.action_sets = yaml_data['actionsets']
-		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
+		super(UnitClass, self).__init__(id, yaml_data)
 		self._loadObject()
-		self.classname = yaml_data['name']
-		self.radius = yaml_data['radius']
-		self.component_templates = yaml_data['components']
 
 	def _loadObject(cls):
 		"""Loads the object with all animations.

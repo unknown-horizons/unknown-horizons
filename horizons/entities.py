@@ -95,7 +95,7 @@ class Entities(object):
 				result['yaml_file'] = full_file
 
 				building_id = int(result['id'])
-				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_results=result))
+				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_data=result))
 				if True:
 					cls.buildings[building_id]
 

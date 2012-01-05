@@ -46,9 +46,9 @@ class BuildingClass(IngameType):
 	"""
 	log = logging.getLogger('world.building')
 
-	def __new__(self, db, id,  yaml_results=[]):
-		class_package =  yaml_results['baseclass'].split('.')[0]
-		class_name = yaml_results['baseclass'].split('.')[1]
+	def __new__(self, db, id,  yaml_data=[]):
+		class_package =  yaml_data['baseclass'].split('.')[0]
+		class_name = yaml_data['baseclass'].split('.')[1]
 
 		__import__('horizons.world.building.'+class_package)
 		@classmethod
@@ -62,43 +62,39 @@ class BuildingClass(IngameType):
 			(getattr(globals()[class_package], class_name),),
 			{'load': load})
 
-	def __init__(self, db, id, yaml_results=[]):
+	def __init__(self, db, id, yaml_data=[]):
 		"""
 		Final loading for the building class. Load a lot of attributes for the building classes
 		@param id: building id.
 		@param db: DbReader
 		"""
-		super(BuildingClass, self).__init__(self)
-		self.id = id
-		self._object = None
-		self.class_package = yaml_results['baseclass'].split('.')[0]
-		self.radius = yaml_results['radius']
-		self._name = object_translations[yaml_results['yaml_file']]['name']
-		self.button_name = yaml_results['button_name']
-		self.settler_level = yaml_results['settler_level']
+		super(BuildingClass, self).__init__(id, yaml_data)
+		self.class_package = yaml_data['baseclass'].split('.')[0]
+		# Override with translation here
+		self._name = object_translations[yaml_data['yaml_file']]['name']
+		self.button_name = yaml_data['button_name']
+		self.settler_level = yaml_data['settler_level']
 		try:
-			self.tooltip_text = object_translations[yaml_results['yaml_file']]['tooltip_text']
+			self.tooltip_text = object_translations[yaml_data['yaml_file']]['tooltip_text']
 		except KeyError: # not found => use value defined in yaml unless it is null
-			tooltip_text = yaml_results['tooltip_text']
+			tooltip_text = yaml_data['tooltip_text']
 			if tooltip_text is not None:
 				self.tooltip_text = tooltip_text
 			else:
 				self.tooltip_text = u''
-		self.action_sets = yaml_results['actionsets']
-		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
-		self.size = (int(yaml_results['size_x']), int(yaml_results['size_y']))
-		self.inhabitants = int(yaml_results['inhabitants_start'])
-		self.inhabitants_max = int(yaml_results['inhabitants_max'])
-		self.costs = yaml_results['buildingcosts']
-		self._loadObject()
-		self.running_costs = yaml_results['cost']
-		self.running_costs_inactive = yaml_results['cost_inactive']
+		self.size = (int(yaml_data['size_x']), int(yaml_data['size_y']))
+		self.inhabitants = int(yaml_data['inhabitants_start'])
+		self.inhabitants_max = int(yaml_data['inhabitants_max'])
+		self.costs = yaml_data['buildingcosts']
+		self.running_costs = yaml_data['cost']
+		self.running_costs_inactive = yaml_data['cost_inactive']
 		self.has_running_costs = (self.running_costs != 0)
-		self.component_templates = yaml_results['components']
 		# for mines: on which deposit is it buildable
 		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
 		if buildable_on_deposit_type:
 			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
+
+		self._loadObject()
 
 		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
 		             buildings you should check out the separate classes in horizons/world/buildings/*.

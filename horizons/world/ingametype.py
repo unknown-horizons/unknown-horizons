@@ -23,6 +23,15 @@ from horizons.constants import SETTLER
 
 class IngameType(type):
 
+	def __init__(self, id, yaml_data):
+		self.id = id
+		self._name = yaml_data['name']
+		self.radius = yaml_data['radius']
+		self.component_templates = yaml_data['components']
+		self.action_sets = yaml_data['actionsets']
+		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
+		self._object = None
+
 	def action_sets_by_level(self, action_sets):
 		as_by_level = {}
 		for i in xrange(0, SETTLER.CURRENT_MAX_INCR+1):
