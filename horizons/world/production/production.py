@@ -436,7 +436,7 @@ class ChangingProduction(Production):
 		return ProductionLine(prod_line_id)
 
 	def save(self, db, owner_id):
-		super(ChangingProduction, self).save(db)
+		super(ChangingProduction, self).save(db, owner_id)
 		self._prod_line.save(db, owner_id)
 
 	def _load(self, db, worldid):
