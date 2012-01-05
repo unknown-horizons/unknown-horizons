@@ -22,6 +22,18 @@
 from horizons.constants import SETTLER
 
 class IngameType(type):
+	"""Class that is used to create Ingame-Type-Classes from yaml data.
+	@param id: int - building id in the database.
+	@param yaml_data: a dict containing all the data read from yaml files
+
+	Note this creates class types, NOT instances. These types are created at the beginning of a session
+	and are later used to create instances, when buildings are built.
+	The __new__() function uses quite some python magic to construct the new class.
+
+	TUTORIAL:
+	Check out the __new__() function if you feel your pretty good with python and
+	are interested in how it all works,	otherwise, continue to the __init__() function.
+	"""
 
 	# Base package to import from, must end with the '.', the package is appended
 	basepackage = 'horizons.world.building.'
@@ -53,6 +65,14 @@ class IngameType(type):
 		self.action_sets = yaml_data['actionsets']
 		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
 		self._object = None
+
+		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
+		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py
+		which contains the unit and building specific attributes and loading.
+
+		All units and buildings are implemented as ComponentHolders, which you should
+		check out next: horizons/world/componentholder.py
+		"""
 
 	def action_sets_by_level(self, action_sets):
 		as_by_level = {}

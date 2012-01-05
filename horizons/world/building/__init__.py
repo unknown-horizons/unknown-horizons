@@ -32,18 +32,6 @@ from horizons.i18n.objecttranslations import object_translations
 from horizons.world.ingametype import IngameType
 
 class BuildingClass(IngameType):
-	"""Class that is used to create Building-Classes from the database.
-	@param id: int - building id in the database.
-
-	Note this creates classes, NOT instances. These are classes are created at the beginning of a session
-	and are later used to create instances, when buildings are built.
-	The __new__() function uses quite some python magic to construct the new class. Basically this is just cool
-	and doesn't have a real benefit quite yet except for saving a little loading time.
-
-	TUTORIAL:
-	Check out the __new__() function if you feel your pretty good with python and are interested in how it all works,
-	otherwise, continue to the __init__() function.
-	"""
 	log = logging.getLogger('world.building')
 
 	basepackage = 'horizons.world.building.'
@@ -59,9 +47,10 @@ class BuildingClass(IngameType):
 		@param db: DbReader
 		"""
 		super(BuildingClass, self).__init__(id, yaml_data)
-		self.class_package = yaml_data['baseclass'].split('.')[0]
-		# Override with translation here
+
+		# Override name with translation here
 		self._name = object_translations[yaml_data['yaml_file']]['name']
+
 		self.button_name = yaml_data['button_name']
 		self.settler_level = yaml_data['settler_level']
 		try:
@@ -85,16 +74,6 @@ class BuildingClass(IngameType):
 			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
 
 		self._loadObject()
-
-		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
-		             buildings you should check out the separate classes in horizons/world/buildings/*.
-					 Unit creation is very similar, you could check it out though and see which attributes a unit
-					 always has.
-					 As most of the buildings are derived from the production/provider/consumer classes, which are
-					 derived from the storageholder, I suggest you start digging deeper there.
-					 horizons/world/storageholder.py is the next place to go.
-					 """
-
 
 	def __str__(self):
 		return "Building[" + str(self.id) + "](" + self._name + ")"
