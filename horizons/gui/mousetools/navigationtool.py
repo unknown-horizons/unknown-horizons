@@ -20,6 +20,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
 from fife import fife
 import horizons.main
 
@@ -35,6 +37,7 @@ class NavigationTool(CursorTool):
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.middle_scroll_active = False
+		self.__last_hover_settlement = None # private weakref, see last_hover_settlement()
 
 		class CmdListener(fife.ICommandListener): pass
 		self.cmdlist = CmdListener()
@@ -74,7 +77,16 @@ class NavigationTool(CursorTool):
 	def remove(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
+		self.__last_hover_settlement = None
 		super(NavigationTool, self).remove()
+
+	@property
+	def last_hover_settlement(self):
+		"""The last settlement the mouse has hovered above"""
+		if self.__last_hover_settlement is not None and self.__last_hover_settlement() is not None: # weakref
+			return self.__last_hover_settlement()
+		else:
+			return None
 
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
@@ -112,17 +124,13 @@ class NavigationTool(CursorTool):
 
 		# Status menu update
 		current = self.session.view.cam.toMapCoordinates(mousepoint, False)
-		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2:
+		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2: # move was far enough, 4 px
 			self.lastmoved = current
-			island = self.session.world.get_island(Point(int(round(current.x)), int(round(current.y))))
-			if island:
-				settlement = island.get_settlement(Point(int(round(current.x)), int(round(current.y))))
-				if settlement:
-					self.session.ingame_gui.resourceinfo_set(settlement)
-				else:
-					self.session.ingame_gui.resourceinfo_set(None)
-			else:
-				self.session.ingame_gui.resourceinfo_set(None)
+			# update res bar with settlement-related info
+			settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
+			self.__last_hover_settlement = weakref.ref(settlement) if settlement else None
+			self.session.ingame_gui.resourceinfo_set(self.last_hover_settlement)
+
 		# Mouse scrolling
 		x, y = 0, 0
 		if mousepoint.x < 5:

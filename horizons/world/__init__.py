@@ -103,7 +103,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.bullets = None
 		super(World, self).end()
 
-	@decorators.make_constants()
 	def _init(self, savegame_db):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
@@ -346,7 +345,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				self.fish_indexer.add(tile.object)
 		self.fish_indexer._update()
 
-	@decorators.make_constants()
 	def init_new_world(self, trader_enabled, pirate_enabled, natural_resource_multiplier):
 		"""
 		This should be called if a new map is loaded (not a savegame, a fresh
@@ -559,7 +557,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						if (fish_x, fish_y) in self.ground_map:
 							Build(FishDeposit, fish_x, fish_y, self, 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 
-	@decorators.make_constants()
 	def get_random_possible_ground_unit_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
 		offset = 2
@@ -574,7 +571,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				if (x, y) in island.path_nodes.nodes:
 					return Point(x, y)
 
-	@decorators.make_constants()
 	def get_random_possible_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
 		offset = 2
@@ -600,7 +596,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		return Point(x, y)
 
-	@decorators.make_constants()
 	def get_random_possible_coastal_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world
 		but on the coast of an island"""
@@ -709,7 +704,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				break
 		return islands
 
-	@decorators.make_constants()
 	def get_warehouses(self, position=None, radius=None, owner=None, include_friendly=False):
 		"""Returns all warehouses on the map. Optionally only those in range
 		around the specified position.
@@ -735,7 +729,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					warehouses.append(warehouse)
 		return warehouses
 
-	@decorators.make_constants()
 	def get_ships(self, position=None, radius=None):
 		"""Returns all ships on the map. Optionally only those in range
 		around the specified position.
@@ -753,7 +746,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			return self.ships
 
-	@decorators.make_constants()
 	def get_ground_units(self, position=None, radius=None):
 		"""@see get_ships"""
 		if position is not None and radius is not None:
@@ -766,7 +758,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			return self.ground_units
 
-	@decorators.make_constants()
 	def get_buildings(self, position=None, radius=None):
 		"""@see get_ships"""
 		buildings = []
@@ -782,7 +773,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					buildings.append(building)
 		return buildings
 
-	@decorators.make_constants()
 	def get_health_instances(self, position=None, radius=None):
 		"""Returns all instances that have health"""
 		instances = []
@@ -877,7 +867,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else: # 'hide' functionality
 			renderer.removeAllColored()
 
-	@decorators.make_constants()
 	def toggle_translucency(self):
 		"""Make certain building types translucent"""
 		if not hasattr(self, "_translucent_buildings"):
@@ -930,3 +919,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 def load_building(session, db, typeid, worldid):
 	"""Loads a saved building. Don't load buildings yourself in the game code."""
 	return Entities.buildings[typeid].load(session, db, worldid)
+
+
+decorators.bind_all(World)
+decorators.bind_all(load_building)
