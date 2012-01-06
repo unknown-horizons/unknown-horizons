@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2012-01-01 20:27+0200\n"
+"PO-Revision-Date: 2012-01-01 21:16+0200\n"
 "Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -2343,10 +2343,12 @@ msgstr "Lülita alusvõrk sisse/välja"
 msgid "Show coordinate values (Debug)"
 msgstr ""
 
+# 75%
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:775
+#, fuzzy
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "Lahku Kapteni Logist"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:777
@@ -2642,7 +2644,6 @@ msgstr "Rakenda"
 # 84%
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:936
-#, fuzzy
 msgid "Reset to default settings"
 msgstr "Taasta algseaded"
 

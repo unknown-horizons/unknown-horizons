@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-31 05:59+0200\n"
-"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2012-01-06 03:32+0200\n"
+"Last-Translator: guest <team@unknown-horizons.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -241,10 +241,9 @@ msgstr "Taberna"
 msgid "Tent"
 msgstr "Tienda"
 
-# 77%
+# Contexto
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
 msgstr "Ruinas de una tienda"
 
@@ -650,7 +649,7 @@ msgstr "{player1} y {player2} ahora están {status}"
 #: horizons/command/misc.py:30
 #, python-format
 msgid "{name}: {chatmessage}"
-msgstr ""
+msgstr "{name}: {chatmessage}"
 
 #: horizons/engine.py:71
 msgid "Restart required"
@@ -692,7 +691,7 @@ msgstr ""
 #: horizons/engine.py:304
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "No se puede cargar la lengua {lang}"
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
@@ -1024,6 +1023,7 @@ msgstr "Máximo tamaño de la isla:"
 msgid "Preferred island size:"
 msgstr "Tamaño de la isla preferido:"
 
+# too long
 #: horizons/gui/modules/singleplayermenu.py:232
 #, fuzzy
 msgid "Island size deviation:"
@@ -1760,7 +1760,7 @@ msgstr "Dinero"
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
 msgid "Cloth"
-msgstr ""
+msgstr "Ropa"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
@@ -2337,10 +2337,12 @@ msgstr "Mostrar/Ocultar rejilla"
 msgid "Show coordinate values (Debug)"
 msgstr ""
 
+# 75%
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:775
+#, fuzzy
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "Dejar el cuaderno de bitácora"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:777
@@ -2968,7 +2970,7 @@ msgstr "El archivo de la partida guardada está siendo usado por otro programa."
 #: horizons/util/uhdbaccessor.py:164
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/tradepost.py:151
 msgid "The trade partner does not sell this."
@@ -3019,12 +3021,12 @@ msgstr ""
 #: horizons/world/units/ship.py:492
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Vayando a {location}"
 
 #: horizons/world/units/ship.py:494
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Vayando a {x}, {y}"
 
 #: horizons/world/units/ship.py:499
 #, python-format
