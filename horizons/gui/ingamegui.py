@@ -359,8 +359,8 @@ class IngameGui(LivingObject):
 			# indicates a mistake in the mental model of the user. Display a hint.
 			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
 		else:
-			btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
-							 range(0, self.session.world.player.settler_level+1)]
+			btabs = [BuildTab(index+1, self.callbacks_build) for index in \
+							 range(self.session.world.player.settler_level+1)]
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
 											active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
