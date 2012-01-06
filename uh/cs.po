@@ -1310,7 +1310,7 @@ msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:255
 msgid "Select a resource:"
-msgstr ""
+msgstr "Vyberte zdroj:"
 
 # 75%
 #: horizons/gui/widgets/unitoverview.py:108
