@@ -189,10 +189,12 @@ msgstr "Aardappelveld"
 msgid "Salt Ponds"
 msgstr "Zout Meren"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Screenshot is opgeslagen als ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -303,20 +305,24 @@ msgstr ""
 "De maximale toename is bereikt, uw inwoners zullen zich niet verder "
 "ontwikkelen."
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "U heeft meer ${resource} nodig om dit gebouw te plaatsen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
 msgstr ""
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Uw spel is snel opgeslagen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1283,9 +1289,11 @@ msgstr "Handelsroute stoppen"
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
+# 83%
 #: horizons/gui/widgets/routeconfig.py:255
+#, fuzzy
 msgid "Select a resource:"
-msgstr ""
+msgstr "Selecteer grondstoffen:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -1569,15 +1577,19 @@ msgstr ""
 msgid "Rotate map clockwise (.)"
 msgstr ""
 
+# 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
+#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Spel snelheid verlagen"
 
+# 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
+#, fuzzy
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Spel snelheid verhogen"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -2897,9 +2909,11 @@ msgstr "U heeft gewonnen!"
 msgid "You have completed this scenario."
 msgstr ""
 
+# 75%
 #: horizons/scenario/actions.py:76
+#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Wil je verdergaan?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171

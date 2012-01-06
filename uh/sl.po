@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-29 20:45+0200\n"
+"PO-Revision-Date: 2011-12-29 21:07+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -1278,9 +1278,11 @@ msgstr "Končaj pot"
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
+# 83%
 #: horizons/gui/widgets/routeconfig.py:255
+#, fuzzy
 msgid "Select a resource:"
-msgstr ""
+msgstr "Izberi sredstva:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -1562,15 +1564,19 @@ msgstr ""
 msgid "Rotate map clockwise (.)"
 msgstr ""
 
+# 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
+#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Zmanjša hitrost igre"
 
+# 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
+#, fuzzy
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Poveča hitrost igre"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -2886,9 +2892,11 @@ msgstr "Zmagali ste!"
 msgid "You have completed this scenario."
 msgstr ""
 
+# 75%
 #: horizons/scenario/actions.py:76
+#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Ali želite nadaljevati?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171

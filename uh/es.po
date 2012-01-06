@@ -241,10 +241,9 @@ msgstr "Taberna"
 msgid "Tent"
 msgstr "Tienda"
 
-# 77%
+# Contexto
 #. This is a database entry: the name of a building.
 #: database files sql
-#, fuzzy
 msgid "Tent Ruin"
 msgstr "Ruinas de una tienda"
 
@@ -1024,6 +1023,7 @@ msgstr "Máximo tamaño de la isla:"
 msgid "Preferred island size:"
 msgstr "Tamaño de la isla preferido:"
 
+# too long
 #: horizons/gui/modules/singleplayermenu.py:232
 #, fuzzy
 msgid "Island size deviation:"
@@ -2337,10 +2337,12 @@ msgstr "Mostrar/Ocultar rejilla"
 msgid "Show coordinate values (Debug)"
 msgstr ""
 
+# 75%
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:775
+#, fuzzy
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "Dejar el cuaderno de bitácora"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:777
