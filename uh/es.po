@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2012-01-06 03:15+0200\n"
+"PO-Revision-Date: 2012-01-06 03:32+0200\n"
 "Last-Translator: guest <team@unknown-horizons.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -692,7 +692,7 @@ msgstr ""
 #: horizons/engine.py:304
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "No se puede cargar la lengua {lang}"
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
@@ -1760,7 +1760,7 @@ msgstr "Dinero"
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:270 horizons/i18n/guitranslations.py:287
 msgid "Cloth"
-msgstr ""
+msgstr "Ropa"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:293
@@ -3019,12 +3019,12 @@ msgstr ""
 #: horizons/world/units/ship.py:492
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Vayando a {location}"
 
 #: horizons/world/units/ship.py:494
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Vayando a {x}, {y}"
 
 #: horizons/world/units/ship.py:499
 #, python-format
