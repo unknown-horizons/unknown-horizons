@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
 "PO-Revision-Date: 2011-12-19 03:09+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
@@ -191,10 +191,13 @@ msgstr "Camp de patates"
 msgid "Salt Ponds"
 msgstr ""
 
+# Messages
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "La captura de pantalla s'ha desat a ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -317,10 +320,13 @@ msgstr ""
 msgid "You won!"
 msgstr ""
 
+# Messages
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "S'ha desat el joc."
 
 # Messages
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -2312,10 +2318,12 @@ msgstr ""
 msgid "Show coordinate values (Debug)"
 msgstr ""
 
+# 75%
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:775
+#, fuzzy
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "Registre dels filtres"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:777

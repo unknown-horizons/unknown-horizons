@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
 "PO-Revision-Date: 2011-12-18 02:23+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -17,10 +17,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.1.5\n"
 
+# 78%
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "Uma nova colônia foi criada por ${player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -190,10 +193,12 @@ msgstr "Plantação de batatas"
 msgid "Salt Ponds"
 msgstr "Lagoas de sal"
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Captura de tela gravada em ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -305,10 +310,12 @@ msgstr ""
 "Você alcançou o máximo incremento corrente. Seus habitantes não vão melhorar "
 "mais."
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Precisa de mais ${resource} para construir este edifício."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -327,10 +334,13 @@ msgstr "O seu jogo foi salvo."
 msgid "Your game has been quicksaved."
 msgstr "O seu jogo foi salvo."
 
+# 77%
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Os seus habitantes chegaram ao nível ${level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -644,10 +654,12 @@ msgstr "lã"
 msgid "yellow"
 msgstr "amarelo"
 
+# 93%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr ""
+msgstr "${player1} e ${player2} estão agora ${status}"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -690,10 +702,11 @@ msgstr ""
 "\n"
 "Use por sua conta e risco!"
 
+# 80%
 #: horizons/engine.py:304
-#, python-format
+#, python-format, fuzzy
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "A configuração da linguagem {lang} em {place} não pode ser aberta"
 
 #: horizons/engine.py:560
 msgid "Invalid network port"
@@ -1297,9 +1310,11 @@ msgstr "Parar rota"
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
+# 83%
 #: horizons/gui/widgets/routeconfig.py:255
+#, fuzzy
 msgid "Select a resource:"
-msgstr ""
+msgstr "Selecionar recursos:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -2350,10 +2365,12 @@ msgstr "Habilita/desabilita grid"
 msgid "Show coordinate values (Debug)"
 msgstr ""
 
+# 75%
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:775
+#, fuzzy
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "Diário do Capitão"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:777
