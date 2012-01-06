@@ -138,14 +138,11 @@ class IngameGui(LivingObject):
 		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
 
-		# map button names to build functions calls with the building id
-		self.callbacks_build = {}
-		for buildingtype in Entities.buildings.itervalues():
-			if buildingtype.button_name is not None:
-				settler_level = buildingtype.settler_level
-				if not settler_level in self.callbacks_build:
-					self.callbacks_build[settler_level] = {}
-				self.callbacks_build[settler_level][buildingtype.button_name] = Callback(self._build, buildingtype.id)
+		# map buildings to build functions calls with their building id.
+		# This is necessary because BuildTabs have no session.
+		self.callbacks_build = dict()
+		for building_id in Entities.buildings.iterkeys():
+			self.callbacks_build[building_id] = Callback(self._build, building_id)
 
 	def end(self):
 		self.widgets['minimap'].mapEvents({
