@@ -84,7 +84,7 @@ def start(command_line_arguments):
 			if len(mpieces[2]) > 0:
 				NETWORK.SERVER_PORT = parse_port(mpieces[2], allow_zero=True)
 		except ValueError:
-			print _("Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535.")
+			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 			return False
 
 	# init fife before mp_bind is parsed, since it's needed there
@@ -96,7 +96,7 @@ def start(command_line_arguments):
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
 			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2], allow_zero=True))
 		except ValueError:
-			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
+			print "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 			return False
 
 	if command_line_arguments.ai_highlights:
@@ -367,10 +367,10 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 			map_file = map_name
 		else:
 			#xgettext:python-format
-			print _("Error: Cannot find map '{name}'.").format(name=map_name)
+			print "Error: Cannot find map '{name}'.".format(name=map_name)
 			return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches:")
+		print "Error: Found multiple matches:"
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -393,7 +393,7 @@ def _start_campaign(campaign_name):
 		# This is not very clean, but it's safe.
 
 		if not campaign_name.endswith(".yaml"):
-			print _("Error: campaign filenames have to end in \".yaml\".")
+			print "Error: campaign filenames have to end in \".yaml\"."
 			return False
 
 		# check if the user specified a file in the UH campaign dir
@@ -415,7 +415,7 @@ def _start_campaign(campaign_name):
 	campaign = SavegameManager.get_campaign_info(name = campaign_name)
 	if not campaign:
 		#xgettext:python-format
-		print _("Error: Cannot find campaign '{name}'.").format(campaign_name)
+		print "Error: Cannot find campaign '{name}'.".format(campaign_name)
 		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
@@ -447,10 +447,10 @@ def _load_map(savegame, ai_players, human_ai):
 			map_file = savegame
 		else:
 			#xgettext:python-format
-			print _("Error: Cannot find savegame '{name}'.").format(name=savegame)
+			print "Error: Cannot find savegame '{name}'.".format(name=savegame)
 			return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches:")
+		print "Error: Found multiple matches:"
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -462,7 +462,7 @@ def _load_last_quicksave():
 	@return: bool, whether loading succeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
 	if not save_files:
-		print _("Error: No quicksave found.")
+		print "Error: No quicksave found."
 		return False
 	save = max(save_files)
 	load_game(savegame=save)
