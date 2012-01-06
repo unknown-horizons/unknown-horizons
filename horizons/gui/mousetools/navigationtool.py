@@ -37,7 +37,7 @@ class NavigationTool(CursorTool):
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.middle_scroll_active = False
-		self.__last_hover_settlement = None # private weakref, see last_hover_settlement()
+		self.__last_hover_player_settlement = None # private weakref, see last_hover_player_settlement()
 
 		class CmdListener(fife.ICommandListener): pass
 		self.cmdlist = CmdListener()
@@ -77,14 +77,14 @@ class NavigationTool(CursorTool):
 	def remove(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
-		self.__last_hover_settlement = None
+		self.__last_hover_player_settlement = None
 		super(NavigationTool, self).remove()
 
 	@property
-	def last_hover_settlement(self):
-		"""The last settlement the mouse has hovered above"""
-		if self.__last_hover_settlement is not None and self.__last_hover_settlement() is not None: # weakref
-			return self.__last_hover_settlement()
+	def last_hover_player_settlement(self):
+		"""The last settlement belonging to the player the mouse has hovered above"""
+		if self.__last_hover_player_settlement is not None and self.__last_hover_player_settlement() is not None: # weakref
+			return self.__last_hover_player_settlement()
 		else:
 			return None
 
@@ -128,8 +128,9 @@ class NavigationTool(CursorTool):
 			self.lastmoved = current
 			# update res bar with settlement-related info
 			settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
-			self.__last_hover_settlement = weakref.ref(settlement) if settlement else None
-			self.session.ingame_gui.resourceinfo_set(self.last_hover_settlement)
+			self.__last_hover_player_settlement = weakref.ref(settlement) if \
+			  settlement and settlement.owner == self.session.world.player else None
+			self.session.ingame_gui.resourceinfo_set(settlement) # set for any settlement
 
 		# Mouse scrolling
 		x, y = 0, 0
