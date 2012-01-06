@@ -128,6 +128,9 @@ class Producer(Component):
 		# load all productions
 		for production in self.get_productions():
 			production.load(db, worldid)
+			# Listener has been removed in the productions.load(), because the
+			# changelistener's load is called
+			production.add_change_listener(self._on_production_change, call_listener_now=False)
 
 	def save(self, db):
 		super(Producer, self).save(db)
