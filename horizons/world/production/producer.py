@@ -124,6 +124,9 @@ class Producer(Component):
 
 
 	def load(self, db, worldid):
+		# Call this before super, because we have to make sure this is called before the
+		# ConcreteObject's callback which is added during loading
+		Scheduler().add_new_object(self._on_production_change, self, run_in = 0)
 		super(Producer, self).load(db, worldid)
 		# load all productions
 		for production in self.get_productions():
