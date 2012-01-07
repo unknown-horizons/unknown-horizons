@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-07 22:41+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-07 22:59+0200\n"
+"Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -463,21 +463,24 @@ msgstr "Nem sikerült alkalmazni az új hálózati beállításokat."
 #: horizons/gui/modules/multiplayermenu.py:52
 msgid "Network features could not be initialized with the current configuration."
 msgstr ""
+"A hálózati tulajdonságok nem inicializálhatóak a jelenlegi beállításokkal."
 
 #: horizons/engine/settingshandler.py:228
 #: horizons/gui/modules/multiplayermenu.py:53
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Ellenőrizd a hálózati beállításokat."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:232
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
+"Az alacsony portszámok néha különleges jogosultságokat igényelnek, próbáld "
+"meg a 0-t, vagy egy 1024-nél nagyobb számot."
 
 #: horizons/engine/settingshandler.py:262
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "A beállított {lang} nyelvet nem sikerült betölteni."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:168 horizons/gui/ingamegui.py:526
@@ -512,7 +515,7 @@ msgstr "Nincsenek mentett játékok"
 
 #: horizons/gui/gui.py:253
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "Nincsenek betölthető mentett játékok."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -529,22 +532,22 @@ msgstr "Játék mentése"
 
 #: horizons/gui/gui.py:320
 msgid "No filename given"
-msgstr ""
+msgstr "Nincs megadva fájlnév"
 
 #: horizons/gui/gui.py:320
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Adj meg egy érvényes fájlnevet."
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py:325
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "Egy mentés a(z) '{name}' névvel már létezik."
 
 #: horizons/gui/gui.py:326
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Felülírjam?"
 
 #: horizons/gui/gui.py:327
 msgid "Confirmation for overwriting"
@@ -576,9 +579,9 @@ msgid "Unknown savedate"
 msgstr "Ismeretlen mentési idő"
 
 #: horizons/gui/gui.py:534
-#, python-format
+#, python-format, fuzzy
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Mentve {time}-kor"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:541
@@ -591,21 +594,21 @@ msgstr[1] ""
 #: horizons/gui/gui.py:551
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Mentés verzió {version}"
 
 #: horizons/gui/gui.py:555
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr ""
+msgstr "FIGYELEM: Inkompatibilis verzió {version}!"
 
 #: horizons/gui/gui.py:558
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "Elvárt verzió: {required}!"
 
 #: horizons/gui/gui.py:561
 msgid "Incompatible version"
-msgstr ""
+msgstr "Inkompatibilis verzió"
 
 #: horizons/gui/gui.py:578
 msgid "No file selected"
@@ -613,12 +616,12 @@ msgstr "Nincs fájl kiválasztva"
 
 #: horizons/gui/gui.py:578
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Ki kell választanod egy mentést a törléshez."
 
 #: horizons/gui/gui.py:582
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Biztosan törölni szeretnéd a(z) '{name}' mentést?"
 
 #: horizons/gui/gui.py:584
 msgid "Confirm deletion"
@@ -641,7 +644,7 @@ msgstr ""
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:331
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Diplomácia nem lehetséges"
 
 #: horizons/gui/ingamegui.py:332
 msgid "Cannot do diplomacy as there are no other players."
