@@ -122,6 +122,45 @@ class TestRunner(object):
 			pass
 
 
+def setup_gui_logger():
+	"""
+	By monkey-patching pychan.events.EventMapper.addEvent, we can decorate the callbacks
+	with out log output.
+	"""
+	from fife.extensions.pychan import tools
+	from fife.extensions.pychan.events import EventMapper
+
+	def find_container(widget):
+		"""
+		Walk through the tree to find the container the given widget is in.
+		"""
+		while widget.parent:
+			widget = widget.parent
+		return widget
+
+	def log(func):
+		@wraps(func)
+		def wrapper(self, event_name, callback, group_name):
+			# filter out mouse events (too much noise)
+			if 'mouse' in event_name:
+				return func(self, event_name, callback, group_name)
+
+			def new_callback(event, widget):
+				"""
+				pychan will pass the callback event and widget keyword arguments if expected.
+				We do not know if callback expected these, so we use tools.applyOnlySuitable -
+				which is what pychan does.
+				"""
+				print widget, find_container(widget), event_name + '/' + group_name
+				return tools.applyOnlySuitable(callback, event=event, widget=widget)
+
+			return func(self, event_name, new_callback, group_name)
+
+		return wrapper
+
+	EventMapper.addEvent = log(EventMapper.addEvent)
+
+
 def gui_test(func):
 	"""Magic nose integration.
 
