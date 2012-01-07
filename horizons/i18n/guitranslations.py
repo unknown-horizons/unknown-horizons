@@ -40,107 +40,6 @@ def set_translations():
 	global text_translations
 	text_translations = {
 
-	"buildtab_increment0.xml" : {
-		# (text of widget: companies_label)
-		"companies_label"             : ("text"    , _("Companies")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Sailor buildings")),
-		# (text of widget: residents_infra_label)
-		"residents_infra_label"       : ("text"    , _("Residents and infrastructure")),
-		# (text of widget: services_label)
-		"services_label"              : ("text"    , _("Services")),
-		# (tooltip of widget: church-1)
-		"church-1"                    : ("tooltip" , _("Pavilion: Fulfills religious needs of sailors.")),
-		# (tooltip of widget: fisher-1)
-		"fisher-1"                    : ("tooltip" , _("Fisherman: Fishes the sea, produces food.")),
-		# (tooltip of widget: hunter-1)
-		"hunter-1"                    : ("tooltip" , _("Hunter: Hunts wild forest animals, produces food.")),
-		# (tooltip of widget: lighthouse-1)
-		"lighthouse-1"                : ("tooltip" , _("Signal fire: Allows the player to trade with the free trader.")),
-		# (tooltip of widget: lumberjack-1)
-		"lumberjack-1"                : ("tooltip" , _("Lumberjack: Chops down trees and turns them into boards.")),
-		# (tooltip of widget: main_square-1)
-		"main_square-1"               : ("tooltip" , _("Main square: Supplies citizens with goods.")),
-		# (tooltip of widget: resident-1)
-		"resident-1"                  : ("tooltip" , _("Tent: Houses your inhabitants.")),
-		# (tooltip of widget: store-1)
-		"store-1"                     : ("tooltip" , _("Storage: Extends stock and provides collectors.")),
-		# (tooltip of widget: street-1)
-		"street-1"                    : ("tooltip" , _("Trail (R): Needed for collecting goods.")),
-		# (tooltip of widget: tree-1)
-		"tree-1"                      : ("tooltip" , _("Tree")),
-		},
-
-	"buildtab_increment1.xml" : {
-		# (text of widget: companies_label)
-		"companies_label"             : ("text"    , _("Companies")),
-		# (text of widget: fields_label)
-		"fields_label"                : ("text"    , _("Fields")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Pioneer buildings")),
-		# (text of widget: military_label)
-		"military_label"              : ("text"    , _("Military")),
-		# (text of widget: services_label)
-		"services_label"              : ("text"    , _("Services")),
-		# (tooltip of widget: boat_builder-1)
-		"boat_builder-1"              : ("tooltip" , _("Boat builder: Builds boats and small ships. Built on coast.")),
-		# (tooltip of widget: brickyard-1)
-		"brickyard-1"                 : ("tooltip" , _("Brickyard: Turns clay into bricks.")),
-		# (tooltip of widget: clay-pit-1)
-		"clay-pit-1"                  : ("tooltip" , _("Clay pit: Gets clay from deposit.")),
-		# (tooltip of widget: distillery-1)
-		"distillery-1"                : ("tooltip" , _("Distillery: Turns sugar into liquor.")),
-		# (tooltip of widget: herder-1)
-		"herder-1"                    : ("tooltip" , _("Farm: Grows field crops and raises livestock.")),
-		# (tooltip of widget: pasture-1)
-		"pasture-1"                   : ("tooltip" , _("Pasture: Raises sheep. Produces wool. Needs a farm.")),
-		# (tooltip of widget: potatofield-1)
-		"potatofield-1"               : ("tooltip" , _("Potato field: Yields food. Needs a farm.")),
-		# (tooltip of widget: sugarfield-1)
-		"sugarfield-1"                : ("tooltip" , _("Sugarcane field: Used in liquor production. Needs a farm.")),
-		# (tooltip of widget: tower-1)
-		"tower-1"                     : ("tooltip" , _("Wooden tower: Defends your settlement.")),
-		# (tooltip of widget: villageschool-1)
-		"villageschool-1"             : ("tooltip" , _("Village school: Provides education.")),
-		# (tooltip of widget: weaver-1)
-		"weaver-1"                    : ("tooltip" , _("Weaver: Turns lamb wool into cloth.")),
-		},
-
-	"buildtab_increment2.xml" : {
-		# (text of widget: companies_label)
-		"companies_label"             : ("text"    , _("Companies")),
-		# (text of widget: fields_label)
-		"fields_label"                : ("text"    , _("Fields")),
-		# (text of widget: headline)
-		"headline"                    : ("text"    , _("Settler buildings")),
-		# (text of widget: mining_label)
-		"mining_label"                : ("text"    , _("Mining")),
-		# (text of widget: services_label)
-		"services_label"              : ("text"    , _("Services")),
-		# (tooltip of widget: butchery-1)
-		"butchery-1"                  : ("tooltip" , _("Butchery: Needs pigs or cattle. Produces food.")),
-		# (tooltip of widget: cattlerun-1)
-		"cattlerun-1"                 : ("tooltip" , _("Cattle run: Raises cattle. Needs a farm.")),
-		# (tooltip of widget: charcoal-burning-1)
-		"charcoal-burning-1"          : ("tooltip" , _("Charcoal burning: Burns a lot of boards to charcoal.")),
-		# (tooltip of widget: iron-mine-1)
-		"iron-mine-1"                 : ("tooltip" , _("Mine: Gets ores from deposit.")),
-		# (tooltip of widget: pigsty-1)
-		"pigsty-1"                    : ("tooltip" , _("Pigsty: Raises pigs. Needs a farm.")),
-		# (tooltip of widget: saltponds-1)
-		"saltponds-1"                 : ("tooltip" , _("Salt ponds: Evaporates salt. Built on sea coast.")),
-		# (tooltip of widget: smeltery-1)
-		"smeltery-1"                  : ("tooltip" , _("Smeltery: Refines all kind of ores.")),
-		# (tooltip of widget: tavern-1)
-		"tavern-1"                    : ("tooltip" , _("Tavern: Provides get-together.")),
-		# (tooltip of widget: tobaccofield-1)
-		"tobaccofield-1"              : ("tooltip" , _("Tobacco field: Produces tobacco. Needs a farm.")),
-		# (tooltip of widget: tobacconist-1)
-		"tobacconist-1"               : ("tooltip" , _("Tobacconist: Produces tobaccos out of tobacco.")),
-		# (tooltip of widget: toolmaker-1)
-		"toolmaker-1"                 : ("tooltip" , _("Toolmaker: Produces tools out of iron.")),
-		},
-
 	"buildtab_no_settlement.xml" : {
 		# (text of widget: headline)
 		"headline"                    : ("text"    , _("Game start")),
@@ -908,6 +807,8 @@ def set_translations():
 		"headline_graphics"           : ("text"    , _("Graphics")),
 		# (text of widget: headline_language)
 		"headline_language"           : ("text"    , _("Language")),
+		# (text of widget: headline_mouse)
+		"headline_mouse"              : ("text"    , _("Mouse")),
 		# (text of widget: headline_network)
 		"headline_network"            : ("text"    , _("Network")),
 		# (text of widget: headline_saving)
@@ -942,6 +843,8 @@ def set_translations():
 		"edge_scrolling_label"        : ("text"    , _("Scroll at map edge:")),
 		# (text of widget: minimap_rotation_label)
 		"minimap_rotation_label"      : ("text"    , _("Rotate minimap with map:")),
+		# (text of widget: mouse_sensitivity_label)
+		"mouse_sensitivity_label"     : ("text"    , _("Mouse sensitivity:")),
 		# (text of widget: network_port_lbl)
 		"network_port_lbl"            : ("text"    , _("Network port:")),
 		# (text of widget: uninterrupted_building_label)
@@ -956,6 +859,8 @@ def set_translations():
 		"edge_scrolling_label"        : ("tooltip" , _("Whether to move the viewport when the mouse pointer is close to map edges")),
 		# (tooltip of widget: minimap_rotation_label)
 		"minimap_rotation_label"      : ("tooltip" , _("Whether to also rotate the minimap whenever the regular map is rotated")),
+		# (tooltip of widget: mouse_sensitivity_label)
+		"mouse_sensitivity_label"     : ("tooltip" , _("0 is default system settings")),
 		# (tooltip of widget: network_port_lbl)
 		"network_port_lbl"            : ("tooltip" , _("If set to 0, use the router default")),
 		# (tooltip of widget: uninterrupted_building_label)
