@@ -67,9 +67,11 @@ def set_translations():
 FOOTER = '''\n\t}\n'''
 ROWINDENT = '\n\t\t'
 
+OBJECT_PATH = 'content/objects/'
+
 locations_to_translate = {
-	'content/objects/buildings/',
-	'content/objects/units/ships/',
+	OBJECT_PATH + 'buildings/',
+	OBJECT_PATH + 'units/ships/',
 	}
 
 files_to_skip = {
@@ -92,14 +94,14 @@ def list_all_files():
 	return sorted(result)
 
 def content_from_file(filename):
-	#print '     = {name}'.format(name=filename)
 	parsed = load(file(filename, 'r'), Loader=Loader)
 	object_strings = []
 	for component, value in parsed.iteritems():
 		if isinstance(value, str) or isinstance(value, unicode):
 			if value.startswith('_ '):
 				text = '_("{value}")'.format(value=value[2:])
-				object_strings.append('%-30s: %s' % (('"%s"') % component, text))
+				comment = '%s of %s' %(component, filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':'))
+				object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
 
 	strings = sorted(object_strings)
 
