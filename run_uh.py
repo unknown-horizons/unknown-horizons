@@ -139,7 +139,7 @@ def get_option_parser():
 	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="int", \
 				               help="Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)")
 	dev_group.add_option("--gui-test", dest="gui_test", metavar="<test>", \
-	                           default=False, help="Run GUI test. <test> is the dotted path.")
+	                           default=False, help="INTERNAL. Use run_tests.py instead.")
 	dev_group.add_option("--gui-log", dest="log_gui", action="store_true", default=False, help="Log gui interactions")
 	p.add_option_group(dev_group)
 

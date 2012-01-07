@@ -139,7 +139,7 @@ class TestRunner(object):
 
 	def stop(self):
 		self._engine.pump.remove(self._tick)
-		self._engine.quit()
+		self._engine.breakLoop(0)
 
 	def _tick(self):
 		try:
@@ -183,10 +183,31 @@ def gui_test(*args, **kwargs):
 		def wrapped():
 			test_name = '%s.%s' % (func.__module__, func.__name__)
 			args = ['python', 'run_uh.py', '--gui-test', test_name]
-			proc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+			try:
+				# if nose does not capture stdout, then most likely someone wants to
+				# use a debugger (he passed -s at the cmdline). In that case, we will
+				# redirect stdout/stderr from the gui-test process to the testrunner
+				# process.
+				sys.stdout.fileno()
+				stdout = sys.stdout
+				stderr = sys.stderr
+				nose_captured = False
+			except AttributeError:
+				# if nose captures stdout, we can't redirect to sys.stdout, as that was
+				# replaced by StringIO. Instead we capture it and return the data at the
+				# end.
+				stdout = subprocess.PIPE
+				stderr = subprocess.PIPE
+				nose_captured = True
+
+			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr)
 			stdout, stderr = proc.communicate()
-			if stderr:
-				print stderr
+			if proc.returncode != 0:
+				if nose_captured:
+					print stdout
+					print '-' * 30
+					print stderr
 				assert False, 'Test failed'
 
 		# we need to store the original function, otherwise the new process will execute
