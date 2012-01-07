@@ -192,7 +192,7 @@ def start(command_line_arguments):
 
 	if command_line_arguments.gui_test:
 		from tests.gui import TestRunner
-		TestRunner(fife)
+		TestRunner(fife, command_line_arguments.gui_test)
 
 	fife.run()
 
