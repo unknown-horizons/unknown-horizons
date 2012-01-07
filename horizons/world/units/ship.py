@@ -400,9 +400,11 @@ class Ship(Unit):
 			self.route.disable()
 
 		move_target = Point(int(round(x)), int(round(y)))
+		move_possible = False
 
 		try:
 			self.move(move_target)
+			move_possible = True
 		except MoveNotPossible:
 			# find a near tile to move to
 			surrounding = Circle(move_target, radius=1)
@@ -410,14 +412,15 @@ class Ship(Unit):
 			while surrounding.radius < 5:
 				try:
 					self.move(surrounding)
+					move_possible = True
 				except MoveNotPossible:
 					surrounding.radius += 1
 					continue
 				break
 
-		if self.get_move_target() is None: # neither target nor surrounding possible
+		if not move_possible: # neither target nor surrounding possible
 			# TODO: give player some kind of feedback
-			pass
+			self._update_buoy()
 		else:
 			self.session.ingame_gui.minimap.show_unit_path(self)
 
@@ -431,16 +434,17 @@ class Ship(Unit):
 	def _update_buoy(self):
 		"""Draw a buoy at the move target if the ship is moving."""
 		move_target = self.get_move_target()
+
+		ship_id = self.worldid
+		session = self.session # this has to happen here,
+		# cause a reference to self in a temporary function is implemented
+		# as a hard reference, which causes a memory leak
+		def tmp():
+			session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
+		tmp() # also remove now
+
 		if move_target != None:
 			# set remove buoy callback
-			ship_id = self.worldid
-			session = self.session # this has to happen here,
-			# cause a reference to self in a temporary function is implemented
-			# as a hard reference, which causes a memory leak
-			def tmp():
-				session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
-			tmp() # also remove now
-
 			self.add_move_callback(tmp)
 
 			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
