@@ -190,6 +190,10 @@ def start(command_line_arguments):
 	if command_line_arguments.gamespeed is not None:
 		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
 
+	if command_line_arguments.gui_test:
+		from tests.gui import TestRunner
+		TestRunner(fife)
+
 	fife.run()
 
 def quit():

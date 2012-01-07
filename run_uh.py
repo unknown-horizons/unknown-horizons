@@ -78,6 +78,8 @@ def get_option_parser():
 	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
 	p.add_option("-d", "--debug", dest="debug", action="store_true", \
 				       default=False, help="Enable debug output to stderr and a logfile.")
+	p.add_option("-g", "--gui-test", dest="gui_test", action="store_true", \
+				       default=False, help="Enable gui test.")
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
 				       help="Specify the path to FIFE root directory.")
 	p.add_option("--restore-settings", dest="restore_settings", action="store_true", \

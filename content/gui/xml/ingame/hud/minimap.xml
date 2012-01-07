@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<Container size="255,249"> <!-- positioning happens in ingamegui#init -->
+<Container size="255,249" name="mainhud"> <!-- positioning happens in ingamegui#init -->
 <!-- The actual minimap Icon is placed after everything else so that it gets focus  -->
 	<Icon name="minimap_overlay_image" position="31, 1"
 		image="content/gui/images/background/widgets/map_bg.png" />
