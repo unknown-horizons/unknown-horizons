@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-07 07:48+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-07 21:46+0200\n"
+"Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -35,17 +35,18 @@ msgstr "A képernyőkép a(z) {file}-ba lett elmentve."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Egyes lakosaidnak nincs elérhető főtér a közelükben."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Néhány lakosod elköltözött."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Utakat húzva is építhetsz."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
