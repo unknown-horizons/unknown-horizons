@@ -170,7 +170,7 @@ def gui_test(func):
 	@wraps(func)
 	def wrapped():
 		test_name = '%s.%s' % (func.__module__, func.__name__)
-		proc = subprocess.Popen(['python', 'run_uh.py', '-g', test_name],
+		proc = subprocess.Popen(['python', 'run_uh.py', '--gui-test', test_name],
 								stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 		stdout, stderr = proc.communicate()
 		if stderr:
