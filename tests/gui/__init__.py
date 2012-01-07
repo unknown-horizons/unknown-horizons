@@ -21,6 +21,7 @@
 
 import contextlib
 import inspect
+import os
 import subprocess
 import sys
 from collections import deque
@@ -31,6 +32,10 @@ from fife import fife
 import horizons.main
 from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.util import Point
+
+
+# path where test savegames are stored (tests/gui/ingame/fixtures/)
+TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
 
 
 class TestFinished(StopIteration):
@@ -216,12 +221,16 @@ def gui_test(*args, **kwargs):
 	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
 
 	use_dev_map = kwargs.get('use_dev_map', False)
+	use_fixture = kwargs.get('use_fixture', None)
 
 	def deco(func):
 		@wraps(func)
 		def wrapped():
 			test_name = '%s.%s' % (func.__module__, func.__name__)
 			args = ['python', 'run_uh.py', '--gui-test', test_name]
+			if use_fixture:
+				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
+				args.extend(['--load-map', path])
 
 			try:
 				# if nose does not capture stdout, then most likely someone wants to
