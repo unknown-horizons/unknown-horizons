@@ -20,7 +20,9 @@
 # ###################################################
 
 import contextlib
+import inspect
 import subprocess
+import sys
 from functools import wraps
 
 
@@ -87,16 +89,21 @@ class TestRunner(object):
 		self._gui_handlers = []
 
 		test = self.load_test(test_path).__original__ # see gui_test
+		self.setup_test(test)
 		test_gen = test(GuiHelper(self._engine.pychan, self))
 		self._gui_handlers.append(test_gen)
 		self.start()
+
+	def setup_test(self, test):
+		if test.__use_dev_map__:
+			from horizons.main import _start_dev_map
+			_start_dev_map(0, False)
 
 	def load_test(self, test_name):
 		"""Load test from dotted path, e.g.:
 		
 			tests.gui.test_example.example
 		"""
-		import sys
 		path, name = test_name.rsplit('.', 1)
 		__import__(path)
 		module = sys.modules[path]
@@ -161,26 +168,53 @@ def setup_gui_logger():
 	EventMapper.addEvent = log(EventMapper.addEvent)
 
 
-def gui_test(func):
+def gui_test(*args, **kwargs):
 	"""Magic nose integration.
 
 	Each GUI test is run in a new process. In case of an error, stderr will be
 	printed. That way it will appear in the nose failure listing.
-	"""
-	@wraps(func)
-	def wrapped():
-		test_name = '%s.%s' % (func.__module__, func.__name__)
-		proc = subprocess.Popen(['python', 'run_uh.py', '--gui-test', test_name],
-								stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-		stdout, stderr = proc.communicate()
-		if stderr:
-			print stderr
-			assert False, 'Test failed'
 
-	# we need to store the original function, otherwise the new process will execute
-	# this decorator, thus spawning a new process..
-	wrapped.__original__ = func
-	wrapped.gui = True # mark as gui for test selection
-	return wrapped
+	The decorator can be used in 2 ways:
+
+		1. No decorator arguments
+
+			@gui_test
+			def foo(session, player):
+				pass
+
+		2. Pass extra arguments (timeout, different map generator)
+
+			@gui_test(use_dev_map=True)
+			def foo(session, player):
+				pass
+	"""
+	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
+
+	use_dev_map = kwargs.get('use_dev_map', False)
+
+	def deco(func):
+		@wraps(func)
+		def wrapped():
+			test_name = '%s.%s' % (func.__module__, func.__name__)
+			args = ['python', 'run_uh.py', '--gui-test', test_name]
+			proc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+			stdout, stderr = proc.communicate()
+			if stderr:
+				print stderr
+				assert False, 'Test failed'
+
+		# we need to store the original function, otherwise the new process will execute
+		# this decorator, thus spawning a new process..
+		func.__use_dev_map__ = use_dev_map
+		wrapped.__original__ = func
+		wrapped.gui = True # mark as gui for test selection
+		return wrapped
+
+	if no_decorator_arguments:
+		# return the wrapped function
+		return deco(args[0])
+	else:
+		# return a decorator
+		return deco
 
 gui_test.__test__ = False
