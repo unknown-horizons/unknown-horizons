@@ -168,13 +168,13 @@ class IngameGui(LivingObject):
 
 	def update_gold(self):
 		first = str(self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID])
-		lines = []
 		show = False
+		amount = None
 		if self.resource_source is not None and self.resources_needed.get(RES.GOLD_ID, 0) != 0:
 			show = True
-			lines.append(u'-{amount}'.format(amount = self.resources_needed[RES.GOLD_ID]))
+			amount = u'-{amount}'.format(amount = self.resources_needed[RES.GOLD_ID])
 		self.status_set('gold', first)
-		self.status_set_extra('gold',lines)
+		self.status_set_extra('gold', amount)
 		self.set_status_position('gold')
 		if show:
 			self.widgets['status_extra_gold'].show()
@@ -194,45 +194,42 @@ class IngameGui(LivingObject):
 		foundlabel.resizeToContent()
 		gui.resizeToContent()
 
-	def status_set_extra(self,label,value):
+	def status_set_extra(self, res, value):
 		"""Sets a value on the extra status bar. (below normal status bar, needed res for build)
-		@param label: str containing the name of the label to be set.
-		@param value: value the Label is to be set to.
+		@param res: str containing the name of the label to be set (usually a resource name).
+		@param value: value the Label is to be set to. Gets converted to unicode. None if empty.
 		"""
 		bg_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
 		bg_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
+
+		if res == 'gold':
+			extra_widget = self.widgets['status_extra_gold']
+		else:
+			extra_widget = self.widgets['status_extra']
+
 		if not hasattr(self, "bg_icon_pos"):
 			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
 			self.bgs_shown = {}
-		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if label == 'gold' else bg_icon_res, \
-								                  position=self.bg_icon_pos[label], name='bg_icon_' + label)
+		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if res == 'gold' else bg_icon_res, \
+		                              position=self.bg_icon_pos[res], name='bg_icon_{res}'.format(res=res))
 
-		if not value:
-			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
+		if value is None:
+			foundlabel = extra_widget if res == 'gold' else extra_widget.child_finder('{res}_{whatever}'.format(res=res, whatever=2))
 			foundlabel.text = u''
 			foundlabel.resizeToContent()
-			if label in self.bgs_shown:
-				(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).removeChild(self.bgs_shown[label])
-				del self.bgs_shown[label]
-			self.widgets['status_extra_gold'].resizeToContent() if label == 'gold' else self.widgets['status_extra'].resizeToContent()
+			if res in self.bgs_shown:
+				extra_widget.removeChild(self.bgs_shown[res])
+				del self.bgs_shown[res]
 			return
-		if isinstance(value, str):
-			value = [value]
-		#for i in xrange(len(value), 3):
-		#	value.append("")
 
-		if (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).findChild(name='bg_icon_' + label) is None:
-			(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).insertChild(bg_icon, 0)
-			self.bgs_shown[label] = bg_icon
+		if extra_widget.findChild(name='bg_icon_{res}'.format(res=res)) is None:
+			extra_widget.insertChild(bg_icon, 0)
+			self.bgs_shown[res] = bg_icon
 
-		for i in xrange(0,len(value)):
-			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(name=label + '_' + str(i+2))
-			foundlabel._setText(unicode(value[i]))
-			foundlabel.resizeToContent()
-		if label == 'gold':
-			self.widgets['status_extra_gold'].resizeToContent()
-		else:
-			self.widgets['status_extra'].resizeToContent()
+		foundlabel = extra_widget.child_finder(name='{res}_{whatever}'.format(res=res, whatever=2))
+		foundlabel.text = unicode(value)
+		foundlabel.resizeToContent()
+		extra_widget.resizeToContent()
 
 	def cityinfo_set(self, settlement):
 		"""Sets the city name at top center of screen.
@@ -294,13 +291,13 @@ class IngameGui(LivingObject):
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
 			first = str(self.resource_source.get_component(StorageComponent).inventory[res_id])
-			lines = []
 			show = False
+			amount = None
 			if self.resources_needed.get(res_id, 0) != 0:
 				show = True
-				lines.append(u'-{amount}'.format(amount = self.resources_needed[res_id]))
+				amount = u'-{amount}'.format(amount = self.resources_needed[res_id])
 			self.status_set(res_name, first)
-			self.status_set_extra(res_name,lines)
+			self.status_set_extra(res_name, amount)
 			self.set_status_position(res_name)
 			if show:
 				self.widgets['status_extra'].show()
