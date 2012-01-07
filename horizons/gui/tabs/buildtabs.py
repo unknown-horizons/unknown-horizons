@@ -166,7 +166,7 @@ class BuildTab(TabInterface):
 		pass
 
 	def show(self):
-		self.__class__.last_active_build_tab = self.tabindex - 1
+		self.__class__.last_active_build_tab = self.tabindex - 1 # build tabs start at 1
 		super(BuildTab, self).show()
 
 	def hide(self):
