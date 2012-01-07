@@ -23,7 +23,10 @@ import contextlib
 import inspect
 import subprocess
 import sys
+from collections import deque
 from functools import wraps
+
+import horizons.main
 
 
 class TestFinished(StopIteration):
@@ -39,16 +42,23 @@ class GuiHelper(object):
 		self._pychan = pychan
 		self._manager = self._pychan.manager
 		self._runner = runner
+		self.session = horizons.main._modules.session
 
 	@property
 	def active_widgets(self):
 		return self._manager.allWidgets.keys()
 
 	def find(self, name):
-		"""Find a container by name."""
-		for w in self.active_widgets:
+		"""Recursive find a widget by name."""
+		widgets = deque(self.active_widgets)
+		while widgets:
+			w = widgets.popleft()
 			if w.name == name:
 				return w
+			else:
+				if hasattr(w, 'children'):
+					widgets.extend(w.children)
+
 		return None
 
 	def trigger(self, root, event):
@@ -68,6 +78,10 @@ class GuiHelper(object):
 		self._runner._gui_handlers.append(func())
 		yield
 		self._runner._gui_handlers.pop()
+
+	def select(self, objects):
+		self.session.selected_instances = set(objects)
+		self.session.cursor.apply_select()
 
 
 class TestRunner(object):

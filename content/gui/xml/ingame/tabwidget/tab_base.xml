@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="50,50">
+<Container size="50,50" name="tab_base">
 	<VBox name="content">
 	</VBox>
 </Container>
