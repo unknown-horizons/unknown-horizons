@@ -61,7 +61,7 @@ def setup_gui_logger():
 		@wraps(func)
 		def wrapper(self, event_name, callback, group_name):
 			# filter out mouse events (too much noise)
-			if 'mouse' in event_name:
+			if 'mouse' in event_name and event_name != 'mouseClicked':
 				return func(self, event_name, callback, group_name)
 
 			def new_callback(event, widget):
