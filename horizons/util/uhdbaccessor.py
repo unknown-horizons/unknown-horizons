@@ -148,7 +148,7 @@ class UhDbAccessor(DbReader):
 		buildingtype = Entities.buildings[building_class_id]
 		#xgettext:python-format
 		tooltip = _("{building}: {description}")
-		return tooltip.format(building=buildingtype.name, description=buildingtype.tooltip_text)
+		return tooltip.format(building=buildingtype._name, description=buildingtype.tooltip_text)
 
 	def get_related_building_ids(self, building_class_id):
 		"""Returns list of building ids related to building_class_id.
