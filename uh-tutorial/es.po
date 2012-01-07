@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2012-01-07 19:27+0200\n"
+"PO-Revision-Date: 2012-01-07 19:24+0200\n"
 "Last-Translator: stefania_m <stefaniamagnin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -766,7 +766,7 @@ msgstr ""
 "\n"
 "Después de algún tiempo, la primera unidad debería ir a la plaza principal y "
 "buscar nuevos materiales de construcción para poder construir una casa de "
-"madera. Esta casa reemplazará las viejas tiendas."
+"madera. Esta casa reemplazará a las viejas tiendas."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
