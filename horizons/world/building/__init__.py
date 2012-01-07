@@ -74,7 +74,7 @@ class BuildingClass(IngameType):
 			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
 
 	def __str__(self):
-		return "Building[" + str(self.id) + "](" + self._name + ")"
+		return "Building[" + str(self.id) + "](" + self.name + ")"
 
 
 	def _loadObject(cls):
@@ -109,3 +109,4 @@ class BuildingClass(IngameType):
 					anim = horizons.main.fife.animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())
+

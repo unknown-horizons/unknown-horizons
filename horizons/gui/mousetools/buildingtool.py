@@ -116,7 +116,7 @@ class BuildingTool(NavigationTool):
 		self.gui.mapEvents( { "rotate_left" : self.rotate_left,
 				              "rotate_right": self.rotate_right } )
 		# set translated building name in gui
-		self.gui.findChild(name='headline').text = _('Build') + u' ' + _(self._class._name)
+		self.gui.findChild(name='headline').text = _('Build') + u' ' + _(self._class.name)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content

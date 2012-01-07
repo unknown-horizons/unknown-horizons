@@ -78,7 +78,7 @@ class AbstractBuilding(object):
 
 	@classmethod
 	def _load_name(cls, db, building_id):
-		return Entities.buildings[building_id]._name
+		return Entities.buildings[building_id].name
 
 	@classmethod
 	def _load_settler_level(cls, building_id):

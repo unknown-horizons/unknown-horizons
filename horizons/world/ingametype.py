@@ -94,3 +94,7 @@ class IngameType(type):
 	def _loadObject(self):
 		"""Inits self._real_object"""
 		raise NotImplementedError()
+
+	@property
+	def name(self):
+		return self._name

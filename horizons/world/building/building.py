@@ -24,7 +24,6 @@ import random
 
 from fife import fife
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.concreteobject import ConcreteObject
@@ -108,10 +107,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				for soundfile in self.get_component(AmbientSoundComponent).soundfiles:
 					self.get_component(AmbientSoundComponent).play_ambient(soundfile, True, play_every)
 
-
-	@property
-	def name(self):
-		return self._name
 
 	def toggle_costs(self):
 		self.running_costs , self.running_costs_inactive = \
@@ -313,7 +308,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 	#@decorators.relese_mode(ret="Building")
 	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self._name, self.id, self.worldid)
+		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid)
 
 
 

@@ -19,14 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import Icon
 
 from horizons.entities import Entities
-from horizons.gui.tabs import OverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.gui.widgets  import TooltipButton
-from horizons.util import Callback
-from horizons.util.gui import load_uh_widget
 from horizons.util.python.roman_numerals import int_to_roman
 
 class BuildTab(TabInterface):
@@ -113,7 +108,9 @@ class BuildTab(TabInterface):
 
 	last_active_build_tab = None
 
-	def __init__(self, tabindex = 1, callback_mapping={}):
+	def __init__(self, tabindex = 1, callback_mapping=None):
+		if callback_mapping is None:
+			callback_mapping = {}
 		super(BuildTab, self).__init__(widget = 'buildtab.xml')
 		self.init_values()
 		self.tabindex = tabindex
@@ -149,7 +146,7 @@ class BuildTab(TabInterface):
 			icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
 			button = self.widget.child_finder('button_{position}'.format(position=position))
 			#xgettext:python-format
-			button.tooltip = _('{building}: {description}').format(building = Entities.buildings[building_id]._name,
+			button.tooltip = _('{building}: {description}').format(building = Entities.buildings[building_id].name,
 			                                                    description = Entities.buildings[building_id].tooltip_text)
 			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
 			button.up_image = path.format(mode='')
