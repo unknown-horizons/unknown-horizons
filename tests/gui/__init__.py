@@ -79,6 +79,14 @@ class GuiHelper(object):
 		event - string describing the event
 		"""
 		widget_name, event_name, group_name = event.split('/')
+
+		try:
+			# Some widgets use numbers as name, they need to be converted
+			# otherwise the lookup fails.
+			widget_name = int(widget_name)
+		except ValueError:
+			pass
+
 		widget = root.findChild(name=widget_name)
 		callback = widget.event_mapper.callbacks[group_name][event_name]
 		callback()
