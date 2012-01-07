@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-08 00:42+0200\n"
+"PO-Revision-Date: 2012-01-08 00:55+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -1149,159 +1149,161 @@ msgstr "Játék menü (Esc)"
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:78
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "A Kapitány naplója (L)"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:80
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Térkép forgatása óramutató járásával ellentétesen (,)"
 
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:82
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Térkép forgatása óramutató járásával egyezően (.)"
 
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:84
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Játék lassítása (-)"
 
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:86
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Játék gyorsítása (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:88
 msgid "Zoom in"
-msgstr ""
+msgstr "Nagyítás"
 
 #. (tooltip of widget: zoomOut)
 #: horizons/i18n/guitranslations.py:90
 msgid "Zoom out"
-msgstr ""
+msgstr "Kicsinyítés"
 
 #. (tooltip of widget: boards_icon)
 #. (tooltip of widget: costs_004)
 #: horizons/i18n/guitranslations.py:95 horizons/i18n/guitranslations.py:171
 #: horizons/i18n/guitranslations.py:188
 msgid "Boards"
-msgstr ""
+msgstr "Deszkák"
 
 #. (tooltip of widget: bricks_icon)
 #: horizons/i18n/guitranslations.py:97
 msgid "Bricks"
-msgstr ""
+msgstr "Téglák"
 
 #. (tooltip of widget: food_icon)
 #: horizons/i18n/guitranslations.py:99
 msgid "Food"
-msgstr ""
+msgstr "Ételek"
 
 #. (tooltip of widget: textiles_icon)
 #: horizons/i18n/guitranslations.py:101
 msgid "Textiles"
-msgstr ""
+msgstr "Textilek"
 
 #. (tooltip of widget: tools_icon)
 #. (tooltip of widget: costs_006)
 #: horizons/i18n/guitranslations.py:103 horizons/i18n/guitranslations.py:173
 #: horizons/i18n/guitranslations.py:190
 msgid "Tools"
-msgstr ""
+msgstr "Szerszámok"
 
 #. (tooltip of widget: gold_icon)
 #: horizons/i18n/guitranslations.py:108
 msgid "Gold"
-msgstr ""
+msgstr "Arany"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:113
 msgid "Enter new name:"
-msgstr ""
+msgstr "Írd be az új nevet:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:115
 msgid "Change name"
-msgstr ""
+msgstr "Névválatoztatás"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: apply_new_nickname)
 #: horizons/i18n/guitranslations.py:117 horizons/i18n/guitranslations.py:790
 msgid "Apply the new name"
-msgstr ""
+msgstr "Új név alkalmazása"
 
 #. (text of widget: chat_lbl)
 #: horizons/i18n/guitranslations.py:122
 msgid "Enter your message:"
-msgstr ""
+msgstr "Írd be az üzenetedet:"
 
 #. (text of widget: headline)
 #. (text of widget: lbl_CHAT)
 #: horizons/i18n/guitranslations.py:124 horizons/i18n/guitranslations.py:642
 msgid "Chat"
-msgstr ""
+msgstr "Beszélgetés"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:129
 msgid "Enter prefix:"
-msgstr ""
+msgstr "Írd be az előtagot:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:131
 msgid "Save map"
-msgstr ""
+msgstr "Térkép mentése"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:133
 msgid "Save the map"
-msgstr ""
+msgstr "Térkép mentése"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:138
 msgid "Cancel building:"
-msgstr ""
+msgstr "Építés visszavonása:"
 
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:140
 msgid "(lose all resources)"
-msgstr ""
+msgstr "(minden nyersanyag elvész)"
 
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py:142
 msgid "Currently building:"
-msgstr ""
+msgstr "Jelenleg épül:"
 
 #. (text of widget: BB_howto_build_lbl)
 #: horizons/i18n/guitranslations.py:144
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
+"Hajó építéséhez kattints az egyik osztályra, majd válaszd ki a hajót és "
+"erősítsd meg az utasítást."
 
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
 #: horizons/i18n/guitranslations.py:146
 msgid "Construction progress:"
-msgstr ""
+msgstr "Építés előrehaladása:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:148 horizons/i18n/guitranslations.py:211
 #: horizons/i18n/guitranslations.py:347
 msgid "Building overview"
-msgstr ""
+msgstr "Építés áttekintés"
 
 #. (tooltip of widget: BB_cancel_button) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:150
 msgid "Cancel all building progress"
-msgstr ""
+msgstr "Minden építési folyamat visszavonása"
 
 #. (tooltip of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 #: horizons/i18n/guitranslations.py:152
 msgid "Pause"
-msgstr ""
+msgstr "Szünet"
 
 #. (tooltip of widget: toggle_active_inactive) Resumes the currently paused ship production
 #: horizons/i18n/guitranslations.py:154
 msgid "Resume"
-msgstr ""
+msgstr "Folytatás"
 
 #. (tooltip of widget: running_costs_label)
 #. (tooltip of widget: running_costs)
@@ -1317,7 +1319,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:410 horizons/i18n/guitranslations.py:498
 #: horizons/i18n/guitranslations.py:597
 msgid "Running costs"
-msgstr ""
+msgstr "Üzemeltetési költségek"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #: horizons/i18n/guitranslations.py:163
