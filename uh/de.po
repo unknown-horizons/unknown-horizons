@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-07 07:57+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-07 07:59+0200\n"
+"Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -884,7 +884,7 @@ msgstr "Stufe {increment}"
 #. '... buildings' will cause wrong declinations all over :/
 #: horizons/gui/tabs/buildtabs.py:137
 msgid "{incr_inhabitant_name}"
-msgstr ""
+msgstr "{incr_inhabitant_name}"
 
 #: horizons/gui/tabs/buildtabs.py:152 horizons/util/uhdbaccessor.py:150
 #, python-format
@@ -2599,7 +2599,7 @@ msgstr "Protokoll"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:153
 msgid "Road across a river."
-msgstr ""
+msgstr "Straße über einen Fluss."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:158
@@ -2609,7 +2609,7 @@ msgstr "Krähennest"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:160
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Erhöht die Spielersicht."
 
 #. name of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:165

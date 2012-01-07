@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-07 23:57+0200\n"
+"PO-Revision-Date: 2012-01-08 00:42+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -803,7 +803,7 @@ msgstr "A kiválasztott fájl nem egy érvényes szcenárió fájl."
 
 #: horizons/gui/modules/singleplayermenu.py:283
 msgid "Error message:"
-msgstr ""
+msgstr "Hibaüzenet:"
 
 # 97%
 # 100%
@@ -820,7 +820,7 @@ msgstr "Épít"
 
 #: horizons/gui/mousetools/navigationtool.py:71
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Nyomd meg a H-t a tipp eltűntetéséhez."
 
 #: horizons/gui/tabs/boatbuildertab.py:43
 msgid "Boat builder overview"
@@ -891,7 +891,7 @@ msgstr "Kereskedelem"
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:224
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Település raktárkészlet"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:79 horizons/i18n/guitranslations.py:490
@@ -900,7 +900,7 @@ msgstr "Fiók"
 
 #: horizons/gui/tabs/mainsquaretabs.py:106
 msgid "Main square overview"
-msgstr ""
+msgstr "Főtér áttekintés"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:120
@@ -909,31 +909,33 @@ msgid "Settler overview"
 msgstr "Telepes áttekintés"
 
 #: horizons/gui/tabs/mainsquaretabs.py:201
+#, fuzzy
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Fejlődés tiltása"
 
 #: horizons/gui/tabs/mainsquaretabs.py:204
+#, fuzzy
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Fejlődés engedélyezése"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:231
 #: horizons/i18n/guitranslations.py:269
 msgid "Sailors"
-msgstr ""
+msgstr "Tengerészek"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:237
 #: horizons/i18n/guitranslations.py:238
 msgid "Pioneers"
-msgstr ""
+msgstr "Telepesek"
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #: horizons/gui/tabs/mainsquaretabs.py:243
 #: horizons/i18n/guitranslations.py:298 horizons/i18n/guitranslations.py:582
 msgid "Settlers"
-msgstr ""
+msgstr "Telepesek"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:57 horizons/gui/tabs/overviewtab.py:453
@@ -952,45 +954,45 @@ msgstr "Hajó áttekintés"
 
 #: horizons/gui/tabs/overviewtab.py:152
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "A hajónak egy sziget közelében kell lennie egy település alapításához."
 
 #: horizons/gui/tabs/overviewtab.py:157
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "Már van egy településed ezen a szigeten."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:165 horizons/i18n/guitranslations.py:452
 #: horizons/i18n/guitranslations.py:463
 msgid "Build settlement"
-msgstr ""
+msgstr "Település építése"
 
 #: horizons/gui/tabs/overviewtab.py:189
 msgid "Load/Unload"
-msgstr ""
+msgstr "Berakodás/Kirakodás"
 
 #: horizons/gui/tabs/overviewtab.py:192
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Vásárlás/Eladás"
 
 #: horizons/gui/tabs/overviewtab.py:201
 msgid "Too far from the nearest warehouse"
-msgstr ""
+msgstr "Túl messze van a legközelebbi raktár"
 
 #: horizons/gui/tabs/overviewtab.py:207
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Nem sikerült felszerelni fegyverekkel a kereskedelmi hajót"
 
 #: horizons/gui/tabs/overviewtab.py:208
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "Kereskedelmi hajót nem lehet felszerelni fegyverekkel."
 
 #: horizons/gui/tabs/overviewtab.py:242
 msgid "Equip weapon"
-msgstr ""
+msgstr "Felfegyverzés"
 
 #: horizons/gui/tabs/overviewtab.py:246
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Lefegyverzés"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:279
@@ -1004,13 +1006,13 @@ msgstr "Termelési áttekintés"
 
 #: horizons/gui/tabs/selectmultitab.py:55
 msgid "Selected Units"
-msgstr ""
+msgstr "Kiválasztott egységek"
 
 #: horizons/gui/widgets/buysellinventory.py:83
 #: horizons/gui/widgets/inventory.py:106
 #, python-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Korlát: {amount}t helyenként"
 
 #: horizons/gui/widgets/logbook.py:157
 msgid "Emptiness"
@@ -1024,13 +1026,13 @@ msgstr "Nincs semmi írva az eseménykönyvedbe eddig!"
 #: horizons/gui/widgets/pickbeltwidget.py:89
 #: horizons/i18n/guitranslations.py:807
 msgid "Graphics"
-msgstr ""
+msgstr "Grafika"
 
 #. (text of widget: headline_sound)
 #: horizons/gui/widgets/pickbeltwidget.py:90
 #: horizons/i18n/guitranslations.py:817
 msgid "Sound"
-msgstr ""
+msgstr "Hang"
 
 #: horizons/gui/widgets/pickbeltwidget.py:91
 #, fuzzy
@@ -1040,23 +1042,23 @@ msgstr "Kilépés"
 #: horizons/gui/widgets/playerssettlements.py:43
 #, python-format
 msgid "settlements of {player}"
-msgstr ""
+msgstr "{player} települései"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:113
 #: horizons/i18n/guitranslations.py:584
 msgid "Total"
-msgstr ""
+msgstr "Összesen"
 
 #: horizons/gui/widgets/playersships.py:47
 #, python-format
 msgid "ships of {player}"
-msgstr ""
+msgstr "{player} hajói"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:88
 msgid "None"
-msgstr ""
+msgstr "Semmi"
 
 #: horizons/gui/widgets/playersships.py:90
 msgid "N/A"
@@ -1065,7 +1067,7 @@ msgstr ""
 #: horizons/gui/widgets/productionoverview.py:50
 #, python-format
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "{settlement} termelésének áttekintése"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:76 horizons/i18n/guitranslations.py:560
@@ -1082,67 +1084,67 @@ msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:257
 msgid "Select a resource:"
-msgstr ""
+msgstr "Válassz egy nyersanyagot:"
 
 #: horizons/gui/widgets/unitoverview.py:127
 msgid "none"
-msgstr ""
+msgstr "semmi"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:45
 msgid "Game start"
-msgstr ""
+msgstr "Játék indítása"
 
 #. (text of widget: howto_1_need_warehouse)
 #: horizons/i18n/guitranslations.py:47
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "Előbb egy települést kell alapítanod, mielőtt épületeket építenél!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:49
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Válaszd ki a hajódat és közelítsd meg a partot jobb gombbal kattintva."
 
 #. (text of widget: howto_3_build_warehouse)
 #: horizons/i18n/guitranslations.py:51
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Azután nyomd meg a nagy gombot a hajó áttekintés fülön."
 
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py:58
 msgid "Running costs:"
-msgstr ""
+msgstr "Üzemeltetési költség:"
 
 #. (tooltip of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:63 horizons/i18n/guitranslations.py:595
 msgid "Inhabitants"
-msgstr ""
+msgstr "Lakosok"
 
 #. (tooltip of widget: city_name)
 #: horizons/i18n/guitranslations.py:65
 msgid "Click to change the name of your settlement."
-msgstr ""
+msgstr "Kattints a település nevének megváltoztatásához."
 
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:70
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Építési menü (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:72
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Lerombol (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:74
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomácia"
 
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:76
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Játék menü (Esc)"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:78
