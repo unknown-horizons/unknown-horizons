@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import BUILDINGS, PRODUCTION
+from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
 from horizons.world.production.producer import Producer
 from tests.gui import TestFinished, gui_test
 
@@ -58,5 +58,51 @@ def test_ticket_1224(gui):
 
 	# Check (active) running costs
 	assert running_costs() == '25', "Expected 25, got %s" % running_costs()
+
+	raise TestFinished
+
+
+@gui_test(use_fixture='boatbuilder_1224')
+def test_ticket_1294(gui):
+	"""
+	Boat builder running costs are inconsistent.
+	"""
+	yield # test needs to be a generator for now
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+
+	gui.select([boatbuilder])
+
+	# Select trade ships tab
+	c = gui.find(name='tab_base')
+	gui.trigger(c, '1/action/default')
+
+	# Build huker
+	c = gui.find(name='boatbuilder_trade')
+	gui.trigger(c, 'BB_build_trade_1/action/default')
+
+	# Pause huker construction
+	c = gui.find(name='BB_main_tab')
+	gui.trigger(c, 'toggle_active_active/action/default')
+
+	# Select war ships tab
+	c = gui.find(name='tab_base')
+	gui.trigger(c, '2/action/default')
+
+	# Build frigate
+	c = gui.find(name='boatbuilder_war1')
+	gui.trigger(c, 'BB_build_war1_1/action/default')
+
+	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1]) # speed things up a bit
+
+	# Wait until production ends
+	producer = boatbuilder.get_component(Producer)
+	while producer._get_current_state() != PRODUCTION.STATES.done:
+		yield
+
+	# After some seconds it will crash
+	for i in xrange(gui.session.timer.get_ticks(5)):
+		yield
 
 	raise TestFinished
