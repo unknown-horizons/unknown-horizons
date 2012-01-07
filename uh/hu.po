@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-07 21:46+0200\n"
-"Last-Translator: probert <r.panovics@freemail.hu>\n"
+"PO-Revision-Date: 2012-01-07 22:41+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -52,341 +52,351 @@ msgstr "Utakat húzva is építhetsz."
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Elérted a jelenlegi maximális fejlettségi szintet. A lakosaid már nem fognak "
+"feljebb emelkedni."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Több {resource} nyersanyagra van szükség az épület megépítéséhez."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Nyertél!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "A játékmeneted automatikusan mentve lett."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "A játékmeneted gyorsmentve lett."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "A lakosaid elérték a(z) {level} szintet."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "A bányád kimerült."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "acorns"
-msgstr ""
+msgstr "makk"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr ""
+msgstr "arisztokrata"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "black"
-msgstr ""
+msgstr "fekete"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "blue"
-msgstr ""
+msgstr "kék"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr ""
+msgstr "táblák"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "bordeaux"
-msgstr ""
+msgstr "bordeaux"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr ""
+msgstr "téglák"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "ágyú"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "marha"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "vágómarha"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "charcoal"
-msgstr ""
+msgstr "faszén"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "citizen"
-msgstr ""
+msgstr "polgár"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr ""
+msgstr "anyag"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "clay deposit"
-msgstr ""
+msgstr "agyaglelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr ""
+msgstr "érmék"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "közösség"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "cyan"
-msgstr ""
+msgstr "cián"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "tőr"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "deer food A"
-msgstr ""
+msgstr "szarvasétel A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "szarvashús"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr ""
+msgstr "oktatás"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "faith"
-msgstr ""
+msgstr "bizalom"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "hal"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "étel"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
-msgstr ""
+msgstr "összejövetel"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr ""
+msgstr "fű"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "gray"
-msgstr ""
+msgstr "szürke"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "green"
-msgstr ""
+msgstr "zöld"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr ""
+msgstr "boldogság"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "fűszernövények"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "vaslelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "iron ingots"
-msgstr ""
+msgstr "vasöntvények"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ore"
-msgstr ""
+msgstr "vasérc"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "lamb wool"
-msgstr ""
+msgstr "bárány gyapjú"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "lemon"
-msgstr ""
+msgstr "citrom"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr ""
+msgstr "likör"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "gyógynövények"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "merchant"
-msgstr ""
+msgstr "kereskedő"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "orange"
-msgstr ""
+msgstr "narancs"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "disznók"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "vágódisznók"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "pink"
-msgstr ""
+msgstr "rózsaszín"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "pioneer"
-msgstr ""
+msgstr "telepes"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr ""
+msgstr "krumplik"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "purple"
-msgstr ""
+msgstr "bíbor"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "red"
-msgstr ""
+msgstr "piros"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "sailor"
-msgstr ""
+msgstr "tengerész"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "só"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "settler"
-msgstr ""
+msgstr "telepes"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr ""
+msgstr "cukor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "cukornád"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "teal"
-msgstr ""
+msgstr "kékeszöld"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "textile"
-msgstr ""
+msgstr "textil"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "dohánylevelek"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "dohányültetvények"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "dohány"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "tools"
-msgstr ""
+msgstr "szerszámok"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "white"
-msgstr ""
+msgstr "fehér"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wood"
-msgstr ""
+msgstr "fa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr ""
+msgstr "gyapjú"
 
 #. This is a database entry: the name of a color.
 #: database files sql
 msgid "yellow"
-msgstr ""
+msgstr "sárga"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -443,11 +453,11 @@ msgstr "A port, amelyet megadtál nem valós. 1 és 65535 közötti számnak kel
 
 #: horizons/engine/settingshandler.py:214
 msgid "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "Ellenörizd, hogy az általad beírt port a megadott tartományban van-e."
 
 #: horizons/engine/settingshandler.py:226
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "Nem sikerült alkalmazni az új hálózati beállításokat."
 
 #: horizons/engine/settingshandler.py:227
 #: horizons/gui/modules/multiplayermenu.py:52
@@ -2411,9 +2421,8 @@ msgstr ""
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:75
-#, fuzzy
 msgid "Burns a lot of boards."
-msgstr "Faszén égető: Rengeteg deszkát éget."
+msgstr "Rengeteg deszkát éget."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:80
@@ -2449,9 +2458,8 @@ msgstr ""
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:101
-#, fuzzy
 msgid "Treats diseases. Consumes herbs."
-msgstr "Orvos: Kezeli a betegségeket. Gyógynövényeket készít."
+msgstr "Kezeli a betegségeket. Gyógynövényeket készít."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:106
@@ -2492,9 +2500,8 @@ msgstr ""
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:132
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
-msgstr "Gyógynövény: Gyógynövényeket termel. Egy farm szükséges."
+msgstr "Gyógynövényeket termel. Egy farm szükséges."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:137
@@ -2705,9 +2712,8 @@ msgstr ""
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:275
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
-msgstr "Gyógynövény: Gyógynövényeket termel. Egy farm szükséges."
+msgstr "Gyógynövényeket termel. Egy farm szükséges."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:280
@@ -2736,9 +2742,8 @@ msgstr ""
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Nyom: Szükséges az áruk begyűjtéséhez."
+msgstr "Szükséges az áruk begyűjtéséhez."
 
 #. name of buildings:tree
 #. tooltip_text of buildings:tree
