@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-07 23:41+0200\n"
+"PO-Revision-Date: 2012-01-07 23:57+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -689,8 +689,11 @@ msgid "Could not connect to master server."
 msgstr "Nem sikerült kapcsolódni a főszerverhez."
 
 #: horizons/gui/modules/multiplayermenu.py:103
+#, fuzzy
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Ellenőrizd az internet kapcsolatodat. Amennyiben rendben van, az azt "
+"jelenti, hogy a főszerverünk ideiglenesen elérhetetlen."
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:124
@@ -704,17 +707,17 @@ msgstr "A verzió eltér!"
 #: horizons/gui/modules/multiplayermenu.py:169
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Térkép: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:171
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Játékosok: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 #, python-format
 msgid "Creator: {player}"
-msgstr ""
+msgstr "Létrehozó: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:193
 msgid "Wrong version"
@@ -724,31 +727,35 @@ msgstr "Hibás verzió"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"A játék verziója eltér a Tiedtől. Többjátékos üzemmódban minden játékosnak "
+"ugyanazt a verziót kell használnia. A legegyszerűbb, ha minden játékos a "
+"legutolsó verzióra frissít. A játék verziója: {game_version} A Te verziód: "
+"{own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:293
 #: horizons/gui/modules/singleplayermenu.py:65
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Játékosok ajánlott száma: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:103
 #: horizons/gui/modules/singleplayermenu.py:118
 #: horizons/gui/widgets/choose_next_scenario.py:43
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Nehézség: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 #: horizons/gui/modules/singleplayermenu.py:120
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Szerző: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 #: horizons/gui/modules/singleplayermenu.py:122
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Leírás: {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "Invalid player name"
@@ -756,31 +763,31 @@ msgstr "Hibás játékos név"
 
 #: horizons/gui/modules/singleplayermenu.py:141
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Érvénytelen játékosnevet adtál meg."
 
 #: horizons/gui/modules/singleplayermenu.py:199
 msgid "Map size:"
-msgstr ""
+msgstr "Térkép mérete:"
 
 #: horizons/gui/modules/singleplayermenu.py:208
 msgid "Water:"
-msgstr ""
+msgstr "Víz:"
 
 #: horizons/gui/modules/singleplayermenu.py:216
 msgid "Max island size:"
-msgstr ""
+msgstr "Maximális szigetméret:"
 
 #: horizons/gui/modules/singleplayermenu.py:224
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Preferált szigetméret:"
 
 #: horizons/gui/modules/singleplayermenu.py:232
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Szigetméret eltérés:"
 
 #: horizons/gui/modules/singleplayermenu.py:254
 msgid "Resource density:"
-msgstr ""
+msgstr "Nyersanyagsűrűség:"
 
 # szkenárió??
 #: horizons/gui/modules/singleplayermenu.py:281
@@ -788,9 +795,11 @@ msgstr ""
 msgid "Invalid scenario file"
 msgstr "Hibás szkenárió fájl"
 
+# szcenárió can be "forgatókönyv"
 #: horizons/gui/modules/singleplayermenu.py:282
+#, fuzzy
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "A kiválasztott fájl nem egy érvényes szcenárió fájl."
 
 #: horizons/gui/modules/singleplayermenu.py:283
 msgid "Error message:"
