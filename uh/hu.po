@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-08 00:55+0200\n"
+"PO-Revision-Date: 2012-01-08 01:03+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -1330,44 +1330,44 @@ msgstr ""
 #. (tooltip of widget: BB_build_war1_1)
 #: horizons/i18n/guitranslations.py:165 horizons/i18n/guitranslations.py:182
 msgid "Build this ship!"
-msgstr ""
+msgstr "Hajó megépítése!"
 
 #. (tooltip of widget: costs_001)
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py:167 horizons/i18n/guitranslations.py:184
 #: horizons/i18n/guitranslations.py:576
 msgid "Money"
-msgstr ""
+msgstr "Pénz"
 
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:169 horizons/i18n/guitranslations.py:186
 msgid "Cloth"
-msgstr ""
+msgstr "Ruha"
 
 #. (text of widget: headline_BB_war1_ship1)
 #: horizons/i18n/guitranslations.py:180
 msgid "Frigate"
-msgstr ""
+msgstr "Fregatt"
 
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:192
 msgid "Cannons"
-msgstr ""
+msgstr "Ágyúk"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:197 horizons/world/__init__.py:301
 msgid "ally"
-msgstr ""
+msgstr "szövetséges"
 
 #. (text of widget: enemy_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:199 horizons/world/__init__.py:303
 msgid "enemy"
-msgstr ""
+msgstr "ellenség"
 
 #. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:201 horizons/world/__init__.py:305
 msgid "neutral"
-msgstr ""
+msgstr "semleges"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:206
