@@ -167,30 +167,32 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).end()
 
 	def update_gold(self):
-		first = str(self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID])
+		player_gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID]
+		self.status_set('gold', player_gold)
+
+		gold_needed = self.resources_needed.get(RES.GOLD_ID, None) # defaults to None if key not found
 		show = False
 		amount = None
-		if self.resource_source is not None and self.resources_needed.get(RES.GOLD_ID, 0) != 0:
+		if self.resource_source is not None and gold_needed is not None:
 			show = True
-			amount = u'-{amount}'.format(amount = self.resources_needed[RES.GOLD_ID])
-		self.status_set('gold', first)
+			amount = u'-{amount}'.format(amount = gold_needed)
 		self.status_set_extra('gold', amount)
+
 		self.set_status_position('gold')
 		if show:
 			self.widgets['status_extra_gold'].show()
 		else:
 			self.widgets['status_extra_gold'].hide()
 
-	def status_set(self, label, value):
-		"""Sets a value on the status bar (available res of the settlement).
-		@param label: str containing the name of the label to be set.
+	def status_set(self, res, value):
+		"""Sets a value on the status bar (available res of the player/settlement).
+		@param res: str containing the name of the label to be set (usually a resource name).
 		@param value: value the Label is to be set to.
 		"""
-		if isinstance(value,list):
-			value = value[0]
-		gui = self.widgets['status_gold'] if label == 'gold' else self.widgets['status']
-		foundlabel = gui.child_finder(label + '_1')
-		foundlabel._setText(unicode(value))
+		gui = self.widgets['status_gold'] if res == 'gold' else self.widgets['status']
+		# labels: tools_1 = inventory amount, tools_2 = cost of to-be-built building
+		foundlabel = gui.child_finder('{res}_1'.format(res=res))
+		foundlabel.text = unicode(value)
 		foundlabel.resizeToContent()
 		gui.resizeToContent()
 
@@ -277,36 +279,39 @@ class IngameGui(LivingObject):
 		cityinfo.mapEvents({
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
 			})
+
 		foundlabel = cityinfo.child_finder('owner_emblem')
 		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)
 		foundlabel.tooltip = unicode(self.settlement.owner.name)
+
 		foundlabel = cityinfo.child_finder('city_name')
 		foundlabel.text = unicode(self.settlement.get_component(SettlementNameComponent).name)
 		foundlabel.resizeToContent()
+
 		foundlabel = cityinfo.child_finder('city_inhabitants')
 		foundlabel.text = unicode(' %s' % (self.settlement.inhabitants))
 		foundlabel.resizeToContent()
+
 		cityinfo.adaptLayout()
 
 	def update_resource_source(self):
 		"""Sets the values for resource status bar as well as the building costs"""
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
-			first = str(self.resource_source.get_component(StorageComponent).inventory[res_id])
+			inventory_res = self.resource_source.get_component(StorageComponent).inventory[res_id]
+			self.status_set(res_name, inventory_res)
+
+			res_needed = self.resources_needed.get(res_id, None) # defaults to None if key not found
 			show = False
 			amount = None
-			if self.resources_needed.get(res_id, 0) != 0:
+			if res_needed is not None:
 				show = True
-				amount = u'-{amount}'.format(amount = self.resources_needed[res_id])
-			self.status_set(res_name, first)
+				amount = u'-{amount}'.format(amount = res_needed)
 			self.status_set_extra(res_name, amount)
+
 			self.set_status_position(res_name)
 			if show:
 				self.widgets['status_extra'].show()
-
-	def ship_build(self, ship):
-		"""Calls the Games build_object class."""
-		self._build(1, ship)
 
 	def minimap_to_front(self):
 		self.widgets['minimap'].hide()
@@ -467,7 +472,9 @@ class IngameGui(LivingObject):
 		self.widgets['change_name'].hide()
 
 	def change_name(self, instance):
-		"""Applies the change_name dialogs input and hides it"""
+		"""Applies the change_name dialogs input and hides it.
+		If the new name has length 0 or only contains blanks, the old name is kept.
+		"""
 		new_name = self.widgets['change_name'].collectData('new_name')
 		self.widgets['change_name'].findChild(name='new_name').text = u''
 		if not (len(new_name) == 0 or new_name.isspace()):
