@@ -131,7 +131,7 @@ def start(command_line_arguments):
 	if command_line_arguments.log_gui:
 		if command_line_arguments.gui_test:
 			raise Exception("Logging gui interactions doesn't work when running tests.")
-		from tests.gui import setup_gui_logger
+		from tests.gui.logger import setup_gui_logger
 		setup_gui_logger()
 
 	ExtScheduler.create_instance(fife.pump)
