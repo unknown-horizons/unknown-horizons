@@ -19,12 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import contextlib
+
+
+class TestFinished(StopIteration):
+	"""Needed to distinguish between the real test finishing, or a
+	dialog handler that ends."""
+	pass
+
 
 class GuiHelper(object):
 
-	def __init__(self, pychan):
+	def __init__(self, pychan, runner):
 		self._pychan = pychan
 		self._manager = self._pychan.manager
+		self._runner = runner
 
 	@property
 	def active_widgets(self):
@@ -48,24 +57,32 @@ class GuiHelper(object):
 		callback = widget.event_mapper.callbacks[group_name][event_name]
 		callback()
 
+	@contextlib.contextmanager
+	def handler(self, func):
+		"""Temporarily install another gui handler, e.g. to handle a dialog."""
+		self._runner._gui_handlers.append(func())
+		yield
+		self._runner._gui_handlers.pop()
+
 
 def test_mainmenu(gui):
+	"""
+	Begins in main menu, starts a new single player game, checks the gold display,
+	opens the game menu and cancels the game.
+	"""
 	yield # test needs to be a generator for now
 
 	# Main menu
-	assert len(gui.active_widgets) == 1
-	main_menu = gui.active_widgets[0]
+	main_menu = gui.find(name='menu')
 	gui.trigger(main_menu, 'startSingle/action/default')
 
 	# Single-player menu
 	assert len(gui.active_widgets) == 1
 	singleplayer_menu = gui.active_widgets[0]
-	# Start a game
-	gui.trigger(singleplayer_menu, 'okay/action/default')
+	gui.trigger(singleplayer_menu, 'okay/action/default') # start a game
 
 	# Hopefully we're ingame now
 	assert len(gui.active_widgets) == 4
-	# Check gold display
 	gold_display = gui.find(name='status_gold')
 	assert gold_display.findChild(name='gold_1').text == '30000'
 
@@ -74,11 +91,19 @@ def test_mainmenu(gui):
 	gui.trigger(hud, 'gameMenuButton/action/default')
 	game_menu = gui.find(name='menu')
 
-	# canceling the game opens a dialog, which breaks our code..
 	# Cancel current game
-	# gui.trigger(game_menu, 'quit/action/default')
+	def dialog():
+		yield
+		popup = gui.find(name='popup_window')
+		gui.trigger(popup, 'okButton/action/__execute__')
+
+	with gui.handler(dialog):
+		gui.trigger(game_menu, 'quit/action/default')
+
 	# Back at the main menu
-	# assert len(gui.active_widgets) == 1
+	assert gui.find(name='menu')
+
+	raise TestFinished
 
 
 class TestRunner(object):
@@ -94,14 +119,16 @@ class TestRunner(object):
 	"""
 	def __init__(self, engine):
 		self._engine = engine
+		# Stack of test generators, see _tick
+		self._gui_handlers = []
 
 		test = test_mainmenu
-		self._test_name = test.__name__
-		self._test = test(GuiHelper(self._engine.pychan))
-		self.start()
+		test_gen = test(GuiHelper(self._engine.pychan, self))
+		self._gui_handlers.append(test_gen)
+		self.start(test.__name__)
 
-	def start(self):
-		print "Test '%s' started" % self._test_name
+	def start(self, test_name):
+		print "Test '%s' started" % test_name
 		self._engine.pump.append(self._tick)
 
 	def stop(self):
@@ -110,7 +137,13 @@ class TestRunner(object):
 
 	def _tick(self):
 		try:
-			self._test.next()
-		except StopIteration:
+			# Normally, we would just use the test generator here. But dialogs
+			# start their own mainloop, and then we would call the test generator
+			# again (while it is still running). Therefore, dialogs have to be handled
+			# with separate generators.
+			self._gui_handlers[-1].next() # run the most recent generator
+		except TestFinished:
 			print "Test finished"
 			self.stop()
+		except StopIteration:
+			pass
