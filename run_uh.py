@@ -78,8 +78,6 @@ def get_option_parser():
 	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
 	p.add_option("-d", "--debug", dest="debug", action="store_true", \
 				       default=False, help="Enable debug output to stderr and a logfile.")
-	p.add_option("-g", "--gui-test", dest="gui_test", metavar="<test>", \
-				       default=False, help="Run GUI test. <test> is the dotted path.")
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
 				       help="Specify the path to FIFE root directory.")
 	p.add_option("--restore-settings", dest="restore_settings", action="store_true", \
@@ -140,6 +138,8 @@ def get_option_parser():
 				               default=False, help="Disable preloading while in main menu")
 	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="int", \
 				               help="Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)")
+	dev_group.add_option("-g", "--gui-test", dest="gui_test", metavar="<test>", \
+	                           default=False, help="Run GUI test. <test> is the dotted path.")
 	p.add_option_group(dev_group)
 
 	return p
