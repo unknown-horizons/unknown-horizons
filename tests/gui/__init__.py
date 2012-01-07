@@ -26,6 +26,8 @@ import sys
 from collections import deque
 from functools import wraps
 
+import mock
+from fife import fife
 import horizons.main
 
 
@@ -37,6 +39,8 @@ class TestFinished(StopIteration):
 
 
 class GuiHelper(object):
+
+	Key = fife.Key
 
 	def __init__(self, pychan, runner):
 		self._pychan = pychan
@@ -82,6 +86,13 @@ class GuiHelper(object):
 	def select(self, objects):
 		self.session.selected_instances = set(objects)
 		self.session.cursor.apply_select()
+
+	def pressKey(self, keycode):
+		evt = mock.Mock()
+		evt.getKey.return_value = self.Key(keycode)
+
+		self.session.keylistener.keyPressed(evt)
+		self.session.keylistener.keyReleased(evt)
 
 
 class TestRunner(object):
