@@ -29,9 +29,13 @@ def _find_container(widget):
 	"""
 	Walk through the tree to find the container the given widget is in.
 	"""
+	path = [widget.name]
 	while widget.parent:
 		widget = widget.parent
-	return widget
+		path.append(widget.name)
+
+	path.reverse()
+	return widget, '/'.join(map(str, path))
 
 
 def _log_event(widget, event_name, group_name):
@@ -40,8 +44,9 @@ def _log_event(widget, event_name, group_name):
 
 	TODO: Detect dialogs (they need to be handled differently)
 	"""
-	container = _find_container(widget)
+	container, path = _find_container(widget)
 
+	print "# %s" % path
 	print "c = gui.find(name='%s')" % container.name
 	print "gui.trigger(c, '%s/%s/%s')" % (widget.name, event_name, group_name)
 	print ''
