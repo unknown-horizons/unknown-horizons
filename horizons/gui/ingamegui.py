@@ -213,8 +213,9 @@ class IngameGui(LivingObject):
 		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if res == 'gold' else bg_icon_res, \
 		                              position=self.bg_icon_pos[res], name='bg_icon_{res}'.format(res=res))
 
+		# labels: tools_1 = inventory amount, tools_2 = cost of to-be-built building
 		if value is None:
-			foundlabel = extra_widget if res == 'gold' else extra_widget.child_finder('{res}_{whatever}'.format(res=res, whatever=2))
+			foundlabel = extra_widget if res == 'gold' else extra_widget.child_finder('{res}_2'.format(res=res))
 			foundlabel.text = u''
 			foundlabel.resizeToContent()
 			if res in self.bgs_shown:
@@ -226,7 +227,8 @@ class IngameGui(LivingObject):
 			extra_widget.insertChild(bg_icon, 0)
 			self.bgs_shown[res] = bg_icon
 
-		foundlabel = extra_widget.child_finder(name='{res}_{whatever}'.format(res=res, whatever=2))
+		# labels: tools_1 = inventory amount, tools_2 = cost of to-be-built building
+		foundlabel = extra_widget.child_finder(name='{res}_2'.format(res=res))
 		foundlabel.text = unicode(value)
 		foundlabel.resizeToContent()
 		extra_widget.resizeToContent()
@@ -418,21 +420,6 @@ class IngameGui(LivingObject):
 			self.hide_menu()
 		else:
 			self.show_menu(menu)
-
-	def build_load_tab(self, num):
-		"""Loads a subcontainer into the build menu and changes the tabs background.
-		@param num: number representing the tab to load.
-		"""
-		tab1 = self.widgets['build'].findChild(name=('tab'+str(self.active_build)))
-		tab2 = self.widgets['build'].findChild(name=('tab'+str(num)))
-		activetabimg, nonactiveimg= tab1._getImage(), tab2._getImage()
-		tab1._setImage(nonactiveimg)
-		tab2._setImage(activetabimg)
-		contentarea = self.widgets['build'].findChild(name='content')
-		contentarea.removeChild(self.widgets['build_tab'+str(self.active_build)])
-		contentarea.addChild(self.widgets['build_tab'+str(num)])
-		contentarea.adaptLayout()
-		self.active_build = num
 
 	def set_status_position(self, resource_name):
 		icon_name = resource_name + '_icon'
