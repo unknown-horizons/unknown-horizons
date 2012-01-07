@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-07 22:59+0200\n"
+"PO-Revision-Date: 2012-01-07 23:41+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -647,41 +647,46 @@ msgid "No diplomacy possible"
 msgstr "Diplomácia nem lehetséges"
 
 #: horizons/gui/ingamegui.py:332
+#, fuzzy
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "Diplomáciai kapcsolat nem lehetséges, mert nincsenek más játékosok."
 
 #: horizons/gui/ingamegui.py:526
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "A térképnevek a következő formátumban érvényesek: {expression}"
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "A pyenet könyvtár nem található"
 
 #: horizons/gui/modules/multiplayermenu.py:41
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
+"A többjátékos üzemmódhoz szükség van a \"pyenet\" programkönyvtárra, ami nem "
+"található meg a rendszereden."
 
 #: horizons/gui/modules/multiplayermenu.py:42
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Linux felhasználók: próbáld meg telepíteni a pyenet-et a csomagkezelővel."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr ""
+msgstr "Windows felhasználók: jelenleg nincs elfogadható támogatás Windowshoz."
 
 #: horizons/gui/modules/multiplayermenu.py:51
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "A hálózat inicializálása sikertelen."
 
 #: horizons/gui/modules/multiplayermenu.py:101
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Végzetes hálózati hiba"
 
 #: horizons/gui/modules/multiplayermenu.py:102
+#, fuzzy
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Nem sikerült kapcsolódni a főszerverhez."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
