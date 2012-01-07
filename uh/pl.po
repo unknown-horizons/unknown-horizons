@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
 "PO-Revision-Date: 2012-01-02 23:26+0200\n"
-"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -200,10 +200,13 @@ msgstr "Pole ziemniaczane"
 msgid "Salt Ponds"
 msgstr "Basen solny"
 
+# Messages
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Zrzut erkanu został zapisany w ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -326,10 +329,12 @@ msgstr "Potrzebujesz więcej {resource}, aby zbudować ten budynek."
 msgid "You won!"
 msgstr ""
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Gra została zapisana."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -664,10 +669,12 @@ msgstr "wełna"
 msgid "yellow"
 msgstr "żółty"
 
+# 93%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr ""
+msgstr "${player1} i ${player2} są teraz ${status}"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -1306,9 +1313,11 @@ msgstr "Zatrzymaj"
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
+# 83%
 #: horizons/gui/widgets/routeconfig.py:255
+#, fuzzy
 msgid "Select a resource:"
-msgstr ""
+msgstr "Wybierz zasoby:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -1594,15 +1603,19 @@ msgstr ""
 msgid "Rotate map clockwise (.)"
 msgstr ""
 
+# 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
+#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Spowolnij grę"
 
+# 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
+#, fuzzy
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Przyśpiesz grę"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -2924,9 +2937,11 @@ msgstr "Zwyciężyłeś!"
 msgid "You have completed this scenario."
 msgstr ""
 
+# 75%
 #: horizons/scenario/actions.py:76
+#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Czy chcesz kontynuować?"
 
 #: horizons/scenario/scenarioeventhandler.py:161
 #: horizons/scenario/scenarioeventhandler.py:171

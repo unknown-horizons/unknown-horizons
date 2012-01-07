@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-12-28 01:50+0100\n"
-"PO-Revision-Date: 2011-12-11 02:01+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-12-18 02:23+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -189,10 +189,12 @@ msgstr "Potetåker"
 msgid "Salt Ponds"
 msgstr ""
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Skjermdump lagret som ${file}."
 
 #. This is a database entry: the name of a unit.
 #: database files sql
@@ -301,20 +303,24 @@ msgstr ""
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
 
+# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Du trenger mer ${resource} for å konstruere denne bygningen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
 msgstr ""
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Spillet har blitt lagret."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1274,9 +1280,11 @@ msgstr ""
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
+# 83%
 #: horizons/gui/widgets/routeconfig.py:255
+#, fuzzy
 msgid "Select a resource:"
-msgstr ""
+msgstr "Velg ressurser:"
 
 #: horizons/gui/widgets/unitoverview.py:108
 msgid "none"
@@ -1555,15 +1563,19 @@ msgstr ""
 msgid "Rotate map clockwise (.)"
 msgstr ""
 
+# 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:185
+#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Reduser farten i spillet"
 
+# 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:187
+#, fuzzy
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Øk farten i spillet"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:189
@@ -2313,10 +2325,12 @@ msgstr "Slå rutenett av/på"
 msgid "Show coordinate values (Debug)"
 msgstr ""
 
+# 75%
 #. (text of widget: lbl_l)
 #: horizons/i18n/guitranslations.py:775
+#, fuzzy
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "Gå ut av kapteinens loggbok"
 
 #. (text of widget: lbl_left)
 #: horizons/i18n/guitranslations.py:777
