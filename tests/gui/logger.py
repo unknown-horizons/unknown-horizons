@@ -21,6 +21,9 @@
 
 from functools import wraps
 
+from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
+
+from fife import fife
 from fife.extensions.pychan import tools
 from fife.extensions.pychan.events import EventMapper
 
@@ -38,7 +41,7 @@ def _find_container(widget):
 	return widget, '/'.join(map(str, path))
 
 
-def _log_event(widget, event_name, group_name):
+def _log_widget_event(widget, event_name, group_name):
 	"""
 	Output test code to replay the events.
 
@@ -49,6 +52,14 @@ def _log_event(widget, event_name, group_name):
 	print "# %s" % path
 	print "c = gui.find(name='%s')" % container.name
 	print "gui.trigger(c, '%s/%s/%s')" % (widget.name, event_name, group_name)
+	print ''
+
+
+def _log_key_event(key):
+	"""
+	Output test code to press the key.
+	"""
+	print 'gui.pressKey(gui.Key.%s)' % key
 	print ''
 
 
@@ -70,7 +81,7 @@ def setup_gui_logger():
 				We do not know if callback expected these, so we use tools.applyOnlySuitable -
 				which is what pychan does.
 				"""
-				_log_event(widget, event_name, group_name)
+				_log_widget_event(widget, event_name, group_name)
 				return tools.applyOnlySuitable(callback, event=event, widget=widget)
 
 			return func(self, event_name, new_callback, group_name)
@@ -78,3 +89,19 @@ def setup_gui_logger():
 		return wrapper
 
 	EventMapper.addEvent = log(EventMapper.addEvent)
+
+	# lookup keyname from keycode
+	lookup = {}
+	for keyname in [k for k in dir(fife.Key) if k.upper() == k]:
+		lookup[getattr(fife.Key, keyname)] = keyname
+
+	def log_keys(func):
+		@wraps(func)
+		def wrapper(self, evt):
+			keycode = evt.getKey().getValue()
+			_log_key_event(lookup[keycode])
+			return func(self, evt)
+
+		return wrapper
+
+	IngameKeyListener.keyReleased = log_keys(IngameKeyListener.keyReleased)
