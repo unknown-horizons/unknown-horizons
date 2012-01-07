@@ -35,7 +35,16 @@ def _find_container(widget):
 
 
 def _log_event(widget, event_name, group_name):
-	print widget, _find_container(widget), event_name + '/' + group_name
+	"""
+	Output test code to replay the events.
+
+	TODO: Detect dialogs (they need to be handled differently)
+	"""
+	container = _find_container(widget)
+
+	print "c = gui.find(name='%s')" % container.name
+	print "gui.trigger(c, '%s/%s/%s')" % (widget.name, event_name, group_name)
+	print ''
 
 
 def setup_gui_logger():
