@@ -29,6 +29,8 @@ from functools import wraps
 import mock
 from fife import fife
 import horizons.main
+from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.util import Point
 
 
 class TestFinished(StopIteration):
@@ -93,6 +95,43 @@ class GuiHelper(object):
 
 		self.session.keylistener.keyPressed(evt)
 		self.session.keylistener.keyReleased(evt)
+
+	@contextlib.contextmanager
+	def cursor_map_coords(self):
+		"""
+		Temporarly changes CursorTool to interpret mouse event coordinates
+		as map coordinates. Makes it easier to write tests.
+		"""
+		old = CursorTool._get_world_location_from_event
+
+		def new(self, evt):
+			return Point(evt.getX(), evt.getY())
+
+		CursorTool._get_world_location_from_event = new
+		yield
+		CursorTool._get_world_location_from_event = old
+
+	def cursor_move(self, x, y):
+		self.session.cursor.mouseMoved(self._make_mouse_event(x, y))
+
+	def cursor_press_button(self, x, y, button):
+		self.session.cursor.mousePressed(self._make_mouse_event(x, y, button))
+
+	def cursor_release_button(self, x, y, button):
+		self.session.cursor.mouseReleased(self._make_mouse_event(x, y, button))
+
+	def _make_mouse_event(self, x, y, button=None):
+		if button:
+			button = {'left': fife.MouseEvent.LEFT,
+					  'right': fife.MouseEvent.RIGHT}[button]
+
+		evt = mock.Mock()
+		evt.isConsumedByWidgets.return_value = False
+		evt.getX.return_value = x
+		evt.getY.return_value = y
+		evt.getButton.return_value = button
+
+		return evt
 
 
 class TestRunner(object):
