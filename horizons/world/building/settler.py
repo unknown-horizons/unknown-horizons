@@ -146,7 +146,6 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 
 	@property
 	def name(self):
-		level_name = self.session.db.get_settler_name(self.level)
 		house_name = self.session.db.get_settler_house_name(self.level)
 		return (_(house_name)).title()
 
@@ -297,8 +296,9 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner == self.session.world.player:
+		# check_duplicate: only trigger once for different settlers of a neighborhood
 				self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
-			                                           'SETTLERS_MOVED_OUT')
+			                                           'SETTLERS_MOVED_OUT', check_duplicate=True)
 		else:
 			self.level -= 1
 			self._update_level_data()
@@ -315,20 +315,9 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 					# a main square is in range
 					return
 		# no main square found
-
-		# check if we had a similar warning nearby recently
-		if hasattr(self.__class__, "_last_main_square_in_range_warning"):
-			when = self.__class__._last_main_square_in_range_warning[0]
-			where = self.__class__._last_main_square_in_range_warning[1]
-
-			# last 10 sec in radius of 8
-			if when > Scheduler().cur_tick - Scheduler().get_ticks(10) and \
-				 where.distance(self.position) < 8:
-				return
-
+		# check_duplicate: only trigger once for different settlers of a neighborhood
 		self.session.ingame_gui.message_widget.add(self.position.origin.x, self.position.origin.y, \
-		                                           'NO_MAIN_SQUARE_IN_RANGE')
-		self.__class__._last_main_square_in_range_warning = (Scheduler().cur_tick, self.position.origin.copy())
+		                                           'NO_MAIN_SQUARE_IN_RANGE', check_duplicate=True)
 
 	def level_upgrade(self, lvl):
 		"""Settlers only level up by themselves"""

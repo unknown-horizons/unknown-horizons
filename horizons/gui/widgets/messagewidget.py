@@ -26,7 +26,8 @@ from fife.extensions import pychan
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
-from horizons.util import LivingObject, Callback
+from horizons.util import LivingObject, Callback, Point
+from horizons.scheduler import Scheduler
 from horizons.util.gui import load_uh_widget
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.i18n.voice import get_speech_file
@@ -45,6 +46,9 @@ class MessageWidget(LivingObject):
 	CHARS_PER_LINE = 34 # character count after which we start new line. no wrap
 	SHOW_NEW_MESSAGE_TEXT = 4 # seconds
 	MAX_MESSAGES = 5
+
+	_DUPLICATE_TIME_THRESHOLD = 10 # sec
+	_DUPLICATE_SPACE_THRESHOLD = 8 # distance
 
 	def __init__(self, session, x, y):
 		super(MessageWidget, self).__init__()
@@ -65,7 +69,9 @@ class MessageWidget(LivingObject):
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
-	def add(self, x, y, string_id, message_dict=None, sound_file=True):
+		self._last_message = {} # used to detect fast subsequent messages in add()
+
+	def add(self, x, y, string_id, message_dict=None, sound_file=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id string, needed to retrieve the message from the database.
@@ -73,7 +79,17 @@ class MessageWidget(LivingObject):
 		@param sound_file: if True: play default message speech for string_id
 		                   if False: do not play sound
 		                   if sound file path: play this sound file
+		@param check_duplicate: check for pseudo-duplicates (similar messages recently nearby)
 		"""
+		if check_duplicate:
+			if string_id in self._last_message:
+				when, where = self._last_message[string_id]
+				if when > Scheduler().cur_tick - Scheduler().get_ticks(self.__class__._DUPLICATE_TIME_THRESHOLD) and \
+				   where.distance( (x, y) ) < self.__class__._DUPLICATE_SPACE_THRESHOLD:
+					# there has been a message nearby recently, abort
+					return
+			self._last_message[string_id] = (Scheduler().cur_tick, Point(x, y))
+
 		sound = {
 							True: get_speech_file(string_id),
 							False: None
