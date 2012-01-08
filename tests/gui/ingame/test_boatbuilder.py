@@ -106,3 +106,38 @@ def test_ticket_1294(gui):
 		yield
 
 	yield TestFinished
+
+
+@gui_test(use_fixture='boatbuilder_1224')
+def test_remove_from_queue(gui):
+	"""
+	Boatbuilder crashes when canceling a ship in the queue.
+	"""
+	yield # test needs to be a generator for now
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+
+	gui.select([boatbuilder])
+
+	# Select trade ships tab
+	c = gui.find(name='tab_base')
+	gui.trigger(c, '1/action/default')
+
+	# Build huker
+	c = gui.find(name='boatbuilder_trade')
+	gui.trigger(c, 'BB_build_trade_1/action/default')
+
+	# Select war ships tab
+	c = gui.find(name='tab_base')
+	gui.trigger(c, '2/action/default')
+
+	# Build frigate
+	c = gui.find(name='boatbuilder_war1')
+	gui.trigger(c, 'BB_build_war1_1/action/default')
+
+	# Cancel huker -> crash
+	c = gui.find(name='BB_main_tab')
+	gui.trigger(c, 'queue_container/mouseClicked/default')
+
+	yield TestFinished
