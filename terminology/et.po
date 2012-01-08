@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-30 22:26+0200\n"
-"Last-Translator: Mihkel <RM87@hot.ee>\n"
+"PO-Revision-Date: 2012-01-08 14:53+0200\n"
+"Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgid "farm"
 msgstr "farm"
 
 msgid "field"
-msgstr "väli"
+msgstr "põld"
 
 msgid "overview"
 msgstr "ülevaade"
@@ -70,8 +70,9 @@ msgstr "menüü"
 msgid "production"
 msgstr "tootmine"
 
+# vaheleht?
 msgid "tab"
-msgstr "silt"
+msgstr "vaheleht"
 
 msgid "unknown"
 msgstr "tundmatu"
@@ -79,8 +80,10 @@ msgstr "tundmatu"
 msgid "food"
 msgstr "toit"
 
+# mitte just päris see :D
+#, fuzzy
 msgid "increment"
-msgstr "juurdekasv"
+msgstr "kasum"
 
 msgid "select"
 msgstr "vali"
