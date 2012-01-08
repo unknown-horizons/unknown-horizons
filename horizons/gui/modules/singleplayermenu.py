@@ -32,6 +32,10 @@ class SingleplayerMenu(object):
 		@param show: string, which type of games to show
 		"""
 		assert show in ('random', 'scenario', 'campaign', 'free_maps')
+		# save player name before removing playerdata container
+		if hasattr(self.current, 'playerdata'):
+			playername = self.current.playerdata.get_player_name()
+			horizons.main.fife.set_uh_setting("Nickname", playername)
 		self.hide()
 		# reload since the gui is changed at runtime
 		self.widgets.reload('singleplayermenu')
