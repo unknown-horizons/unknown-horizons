@@ -166,15 +166,9 @@ class TestRunner(object):
 		self._gui_handlers = []
 
 		test = self.load_test(test_path).__original__ # see gui_test
-		self.setup_test(test)
 		test_gen = test(GuiHelper(self._engine.pychan, self))
 		self._gui_handlers.append(test_gen)
 		self.start()
-
-	def setup_test(self, test):
-		if test.__use_dev_map__:
-			from horizons.main import _start_dev_map
-			_start_dev_map(0, False)
 
 	def load_test(self, test_name):
 		"""Load test from dotted path, e.g.:
@@ -239,6 +233,8 @@ def gui_test(*args, **kwargs):
 			if use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				args.extend(['--load-map', path])
+			elif use_dev_map:
+				args.append('--start-dev-map')
 
 			try:
 				# if nose does not capture stdout, then most likely someone wants to
@@ -268,7 +264,6 @@ def gui_test(*args, **kwargs):
 
 		# we need to store the original function, otherwise the new process will execute
 		# this decorator, thus spawning a new process..
-		func.__use_dev_map__ = use_dev_map
 		wrapped.__original__ = func
 		wrapped.gui = True # mark as gui for test selection
 		return wrapped
