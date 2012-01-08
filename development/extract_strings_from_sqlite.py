@@ -58,11 +58,6 @@ Base = sqlalchemy.ext.declarative.declarative_base()
 # Classes
 #
 
-class Colors(Base):
-	__tablename__ = 'colors'
-
-	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
-
 class Message(Base):
 	__tablename__ = 'message'
 
@@ -108,9 +103,6 @@ def print_msgid(msgid):
 
 def collect_all():
 	collector = MSGID_collect()
-
-	for color in db_session.query(Colors):
-		collector.add_to_collection(color.name, 'the name of a color')
 
 	for message in db_session.query(Message):
 		collector.add_to_collection(message.text, 'a messagewidget message (left part of the screen)')
