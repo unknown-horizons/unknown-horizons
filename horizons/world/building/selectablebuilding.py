@@ -31,14 +31,20 @@ class SelectableBuilding(object):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
+		self.set_selection_outline()
+		if reset_cam:
+			self.session.view.center(*self.position.origin.to_tuple())
+		renderer = self.session.view.renderer['InstanceRenderer']
+		self._do_select(renderer, self.position, self.session.world, self.settlement)
+		self._is_selected = True
+
+	def set_selection_outline(self):
+		"""Only set the selection outline.
+		Useful when it has been removed by some kind of interference"""
 		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1],
 		                     self.selection_color[2], GFX.BUILDING_OUTLINE_WIDTH,
 		                     GFX.BUILDING_OUTLINE_THRESHOLD)
-		if reset_cam:
-			self.session.view.center(*self.position.origin.to_tuple())
-		self._do_select(renderer, self.position, self.session.world, self.settlement)
-		self._is_selected = True
 
 	def deselect(self):
 		"""Runs neccassary steps to deselect the building.

@@ -476,7 +476,7 @@ class BuildingTool(NavigationTool):
 		"""Used as callback method"""
 		if self.start_point is not None:
 			self.preview_build(self.start_point,
-						       self.start_point if self.end_point is None else self.end_point, force=force)
+			                   self.start_point if self.end_point is None else self.end_point, force=force)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
@@ -505,8 +505,8 @@ class BuildingTool(NavigationTool):
 				self.renderer.removeOutlined(fife_instance)
 				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
 					fife_instance.get2dGfxVisual().setTransparency(0)
-			for building in self._related_buildings:
-				building.select() # restore selection, removeOutline can destroy it
+		for building in self._related_buildings:
+			building.set_selection_outline() # restore selection, removeOutline can destroy it
 		self._modified_instances.clear()
 		for fife_instance in self.buildings_fife_instances.itervalues():
 			layer = fife_instance.getLocationRef().getLayer()
