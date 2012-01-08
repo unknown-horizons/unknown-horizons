@@ -32,6 +32,7 @@
 		<Setting name="QuicksaveMaxCount" type="float">10.0</Setting>
 		<Setting name="Language" type="unicode"/>
 		<Setting name="ClientID" type="str"></Setting>
+		<Setting name="ColorID" type="int">1</Setting>
 		<Setting name="Nickname" type="unicode">Unnamed Traveler</Setting>
 		<Setting name="MinimapRotation" type="bool">False</Setting>
 		<Setting name="EdgeScrolling" type="bool">True</Setting>
@@ -46,6 +47,6 @@
 		<Setting name="AutoUnload" type="bool">True</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">12</Setting>
+		<Setting name="SettingsVersion" type="int">13</Setting>
 	</Module>
 </Settings>
