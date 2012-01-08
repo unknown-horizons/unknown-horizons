@@ -30,12 +30,13 @@ from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
-from horizons.constants import RES, LAYERS, GAME, GFX
+from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
 from horizons.gui.tabs import EnemyBuildingOverviewTab
 from horizons.command.building import Build
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.componentholder import ComponentHolder
+from horizons.world.building.selectablebuilding import SelectableBuilding
 
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
@@ -316,112 +317,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid)
 
 
-
-class SelectableBuilding(object):
-	range_applies_only_on_island = True
-	selection_color = (255, 255, 0)
-	_selected_tiles = [] # tiles that are selected. used for clean deselect.
-	is_selectable = True
-
-	def select(self, reset_cam=False):
-		"""Runs necessary steps to select the building."""
-		renderer = self.session.view.renderer['InstanceRenderer']
-		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1],
-		                     self.selection_color[2], GFX.BUILDING_OUTLINE_WIDTH,
-		                     GFX.BUILDING_OUTLINE_THRESHOLD)
-		if reset_cam:
-			self.session.view.center(*self.position.origin.to_tuple())
-		self._do_select(renderer, self.position, self.session.world, self.settlement)
-		self._is_selected = True
-
-	def deselect(self):
-		"""Runs neccassary steps to deselect the building.
-		Only deselects if this building has been selected."""
-		if not hasattr(self, "_is_selected") or not self._is_selected:
-			return # only deselect selected buildings (simplifies other code)
-		self._is_selected = False
-		renderer = self.session.view.renderer['InstanceRenderer']
-		renderer.removeOutlined(self._instance)
-		renderer.removeAllColored()
-
-	def remove(self):
-		super(SelectableBuilding, self).remove()
-		#TODO move this as a listener
-		if self in self.session.selected_instances:
-			self.session.selected_instances.remove(self)
-		if self.owner == self.session.world.player:
-			self.deselect()
-
-	@classmethod
-	def select_building(cls, session, position, settlement):
-		"""Select a hypothecial instance of this class. Use Case: Buildingtool.
-		Only works on a subclass of BuildingClass, since it requires certain class attributes.
-		@param session: Session instance
-		@param position: Position of building, usually Rect
-		@param settlement: Settlement instance the building belongs to"""
-		renderer = session.view.renderer['InstanceRenderer']
-
-		"""
-		import cProfile as profile
-		import tempfile
-		outfilename = tempfile.mkstemp(text = True)[1]
-		print 'profile to ', outfilename
-		profile.runctx( "cls._do_select(renderer, position, session.world, settlement)", globals(), locals(), outfilename)
-		"""
-		cls._do_select(renderer, position, session.world, settlement)
-
-	@classmethod
-	def deselect_building(cls, session):
-		"""@see select_building,
-		@return list of tiles that were deselected."""
-		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
-		for tile in cls._selected_tiles:
-			remove_colored(tile._instance)
-			if tile.object is not None:
-				remove_colored(tile.object._instance)
-		selected_tiles = cls._selected_tiles
-		cls._selected_tiles = []
-		return selected_tiles
-
-	@classmethod
-	@decorators.make_constants()
-	def _do_select(cls, renderer, position, world, settlement):
-		if cls.range_applies_only_on_island:
-			island = world.get_island(position.origin)
-			if island is None:
-				return # preview isn't on island, and therefore invalid
-
-			ground_holder = None # use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
-			if settlement is None:
-				ground_holder = island
-			else:
-				ground_holder = settlement
-
-			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=False):
-				try:
-					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-						cls._add_selected_tile(tile, position, renderer)
-				except AttributeError:
-					pass # no tile or no object on tile
-		else:
-			# we have to color water too
-			for tile in world.get_tiles_in_radius(position.center(), cls.radius):
-				try:
-					if settlement is None or tile.settlement is None or tile.settlement == settlement:
-						cls._add_selected_tile(tile, position, renderer)
-				except AttributeError:
-					pass # no tile or no object on tile
-
-
-	@classmethod
-	def _add_selected_tile(cls, tile, position, renderer):
-		cls._selected_tiles.append(tile)
-		renderer.addColored(tile._instance, *cls.selection_color)
-		# Add color to objects on tht tiles
-		renderer.addColored(tile.object._instance, *cls.selection_color)
-
-
-
 class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):
 	"""Building with default properties, that does nothing."""
 	pass
+
+
+decorators.bind_all(BasicBuilding)

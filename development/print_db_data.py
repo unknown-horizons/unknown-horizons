@@ -258,6 +258,8 @@ for (x,y) in abbrevs.iteritems(): # add convenience abbreviations to possible fl
 
 args = sys.argv
 
+print 'WARNING: most of the features are currently broken since units and buildings are now represented differently.'
+
 if len(args) == 1:
 	print 'Start with one of those args: %s \nSupported abbreviations: %s' % (sorted(functions.keys()), sorted(abbrevs.keys()))
 else:

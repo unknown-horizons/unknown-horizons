@@ -29,6 +29,7 @@ class CursorTool(fife.IMouseListener):
 	"""Basic tool for cursors."""
 	def __init__(self, session):
 		super(CursorTool, self).__init__()
+		assert isinstance(session, horizons.session.Session)
 		self.session = session
 		horizons.main.fife.eventmanager.addMouseListener(self)
 

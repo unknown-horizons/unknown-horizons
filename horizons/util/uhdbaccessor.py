@@ -158,6 +158,14 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT related_building FROM related_buildings WHERE building = ?"
 		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
 
+	@decorators.cachedmethod
+	def get_inverse_related_building_ids(self, building_class_id):
+		"""Inverse of the above, gives the lumberjack to the tree.
+		@param building_class_id: class of building, int
+		@return list of building class ids
+		"""
+		sql = "SELECT building FROM related_buildings WHERE related_building = ?"
+		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
 
 	# Message table
 

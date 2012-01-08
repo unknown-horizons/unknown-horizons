@@ -76,6 +76,7 @@ class Session(LivingObject):
 	def __init__(self, gui, db, rng_seed=None):
 		super(Session, self).__init__()
 		assert isinstance(gui, Gui)
+		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
 		self.gui = gui # main gui, not ingame gui
 		self.db = db # main db for game data (game.sql)

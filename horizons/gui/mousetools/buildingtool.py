@@ -26,6 +26,7 @@ import weakref
 
 import horizons.main
 
+from horizons.entities import Entities
 from horizons.util import ActionSetLoader, Point, decorators
 from horizons.command.building import Build
 from horizons.gui.mousetools.navigationtool import NavigationTool
@@ -44,6 +45,7 @@ class BuildingTool(NavigationTool):
 
 	buildable_color = (255, 255, 255)
 	not_buildable_color = (255, 0, 0)
+	related_buildings_outline = (255, 0, 0, 2) # (r, g, b, width)
 	nearby_objects_radius = 4
 
 	# archive the last roads built, for possible user notification
@@ -62,10 +64,11 @@ class BuildingTool(NavigationTool):
 		self.buildings_fife_instances = {} # fife instances of possible builds
 		self.buildings_missing_resources = {} # missing resources for possible builds
 		self.rotation = 45 + random.randint(0, 3)*90
-		self.startPoint, self.endPoint = None, None
+		self.start_point, self.end_point = None, None
 		self.last_change_listener = None
 		self._modified_instances = set() # fife instances modified for transparency
 		self._buildable_tiles = set() # tiles marked as buildable
+		self._related_buildings = []
 		self._build_logic = None
 		if self.ship is not None:
 			self._build_logic = ShipBuildingToolLogic(ship)
@@ -83,13 +86,20 @@ class BuildingTool(NavigationTool):
 
 		self.highlight_buildable()
 
-	@decorators.make_constants()
 	def highlight_buildable(self, tiles_to_check = None):
 		"""Highlights all buildable tiles.
 		@param tiles_to_check: list of tiles to check for coloring."""
 		self._build_logic.highlight_buildable(self, tiles_to_check)
 
-	@decorators.make_constants()
+		# also distinguish related buildings (lumberjack for tree)
+		related = self.session.db.get_inverse_related_building_ids(self._class.id)
+		for settlement in self.session.world.settlements:
+			if settlement.owner == self.session.world.player:
+				for bid in related:
+					for building in settlement.get_buildings_by_id(bid):
+						building.select()
+						self._related_buildings.append(building)
+
 	def _color_buildable_tile(self, tile):
 		self._buildable_tiles.add(tile) # it's a set, so duplicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
@@ -151,7 +161,6 @@ class BuildingTool(NavigationTool):
 		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2 - 70)
 		self.gui.adaptLayout()
 
-	@decorators.make_constants()
 	def preview_build(self, point1, point2, force=False):
 		"""Display buildings as preview if build requirements are met"""
 		#self.session.view.renderer['InstanceRenderer'].removeAllColored()
@@ -179,11 +188,8 @@ class BuildingTool(NavigationTool):
 		settlement = None # init here so we can access it below loop
 		neededResources, usableResources = {}, {}
 		# check if the buildings are buildable and color them appropriatly
-		i = -1
-		for building in self.buildings:
-			i += 1
-			# make surrounding transparent
-			self._make_surrounding_transparent(building.position)
+		for item in enumerate(self.buildings):
+			i, building = item
 
 			# get gfx for the building
 			# workaround for buildings like settler, that don't use the current level of
@@ -214,6 +220,10 @@ class BuildingTool(NavigationTool):
 				settlement = self.session.world.get_settlement(building.position.origin)
 				if settlement is None:
 					building.buildable = False
+
+			self._make_surrounding_transparent(building.position)
+
+			self.highlight_related_buildings(building)
 
 			if building.buildable:
 				# building seems to buildable, check res too now
@@ -250,7 +260,6 @@ class BuildingTool(NavigationTool):
 			res_from_ship = bool(self.ship))
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
-	@decorators.make_constants()
 	def _make_surrounding_transparent(self, building_position):
 		"""Makes the surrounding of building_position transparent"""
 		world_contains = self.session.world.map_dimensions.contains_without_border
@@ -265,6 +274,35 @@ class BuildingTool(NavigationTool):
 				inst.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
 				self._modified_instances.add( weakref.ref(inst) )
 
+	def highlight_related_buildings(self, building):
+		"""Point out buildings that are relevant (e.g. lumberjacks when building trees)"""
+		# tuple for fast lookup with few elements
+		ids = tuple(self.session.db.get_inverse_related_building_ids(self._class.id))
+		if not ids: # nothing is related
+			return
+
+		radii = dict( [ (bid, Entities.buildings[bid].radius) for bid in ids ] )
+		max_radius = max(radii.itervalues())
+		settlement = self.session.world.get_settlement(building.position.origin)
+		if not settlement: # not valid for us
+			return
+
+		highlighted_buildings = set()
+		for tile in settlement.get_tiles_in_radius(building.position, max_radius, include_self=False):
+			if tile.object is not None and tile.object.id in ids:
+				related_building = tile.object
+				# check if it was actually this one's radius
+				if building.position.distance_to_tuple( (tile.x, tile.y) ) <= \
+				   Entities.buildings[related_building.id].radius:
+					# found one
+					if related_building in highlighted_buildings:
+						continue
+					highlighted_buildings.add(related_building)
+					inst = related_building.fife_instance
+					self.renderer.addOutlined(inst, *self.related_buildings_outline)
+					self._modified_instances.add( weakref.ref(inst) )
+
+
 	def on_escape(self):
 		self.session.ingame_gui.resourceinfo_set(None)
 		self._build_logic.on_escape(self.session)
@@ -276,8 +314,8 @@ class BuildingTool(NavigationTool):
 		self.log.debug("BuildingTool mouseMoved")
 		super(BuildingTool, self).mouseMoved(evt)
 		point = self._get_world_location_from_event(evt)
-		if self.startPoint != point:
-			self.startPoint = point
+		if self.start_point != point:
+			self.start_point = point
 		self._check_update_preview(point)
 		evt.consume()
 
@@ -299,7 +337,7 @@ class BuildingTool(NavigationTool):
 		self.log.debug("BuildingTool mouseDragged")
 		super(BuildingTool, self).mouseDragged(evt)
 		point = self._get_world_location_from_event(evt)
-		if self.startPoint is not None:
+		if self.start_point is not None:
 			self._check_update_preview(point)
 		evt.consume()
 
@@ -335,7 +373,7 @@ class BuildingTool(NavigationTool):
 			if not self._class.id == BUILDINGS.WAREHOUSE_CLASS and (evt.isShiftPressed() or \
 						                                                horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
 						                                                not found_buildable or self._class.class_package == 'path'):
-				self.startPoint = point
+				self.start_point = point
 				self.highlight_buildable()
 				self.preview_build(point, point)
 			else:
@@ -345,7 +383,6 @@ class BuildingTool(NavigationTool):
 			# TODO: figure out why there is a != in the comparison above. why not just use else?
 			super(BuildingTool, self).mouseReleased(evt)
 
-	@decorators.make_constants()
 	def do_build(self):
 		"""Actually builds the previews
 		@return whether it was possible to build anything of the previews."""
@@ -408,10 +445,10 @@ class BuildingTool(NavigationTool):
 		self.buildings_action_set_ids = []
 		return built
 
-	def _check_update_preview(self, endpoint):
-		"""Used internally if the endpoint changes"""
-		if self.endPoint != endpoint:
-			self.endPoint = endpoint
+	def _check_update_preview(self, end_point):
+		"""Used internally if the end_point changes"""
+		if self.end_point != end_point:
+			self.end_point = end_point
 			self.update_preview()
 
 	def _remove_listeners(self):
@@ -437,9 +474,9 @@ class BuildingTool(NavigationTool):
 
 	def update_preview(self, force=False):
 		"""Used as callback method"""
-		if self.startPoint is not None:
-			self.preview_build(self.startPoint,
-						       self.startPoint if self.endPoint is None else self.endPoint, force=force)
+		if self.start_point is not None:
+			self.preview_build(self.start_point,
+						       self.start_point if self.end_point is None else self.end_point, force=force)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
@@ -461,10 +498,15 @@ class BuildingTool(NavigationTool):
 			deselected_tiles = self._class.deselect_building(self.session)
 			# redraw buildables (removal of selection might have tampered with it)
 			self.highlight_buildable(deselected_tiles)
-		for fife_instance in self._modified_instances:
-			if fife_instance():
-				if not hasattr(fife_instance(), "keep_translucency") or not fife_instance().keep_translucency:
-					fife_instance().get2dGfxVisual().setTransparency(0)
+		for inst_weakref in self._modified_instances:
+			fife_instance = inst_weakref()
+			if fife_instance:
+				# remove everything that might have been added, we don't keep track of the single changes
+				self.renderer.removeOutlined(fife_instance)
+				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
+					fife_instance.get2dGfxVisual().setTransparency(0)
+			for building in self._related_buildings:
+				building.select() # restore selection, removeOutline can destroy it
 		self._modified_instances.clear()
 		for fife_instance in self.buildings_fife_instances.itervalues():
 			layer = fife_instance.getLocationRef().getLayer()
@@ -474,6 +516,8 @@ class BuildingTool(NavigationTool):
 
 	def _remove_coloring(self):
 		"""Removes coloring from tiles, that indicate that the tile is buildable"""
+		for building in self._related_buildings:
+			building.deselect()
 		self.renderer.removeAllOutlines()
 		self.renderer.removeAllColored()
 
@@ -484,7 +528,6 @@ class ShipBuildingToolLogic(object):
 	def __init__(self, ship):
 		self.ship = ship
 
-	@decorators.make_constants()
 	def highlight_buildable(self, building_tool, tiles_to_check = None):
 		"""Highlights all buildable tiles.
 		@param tiles_to_check: list of tiles to check for coloring."""
@@ -522,7 +565,6 @@ class SettlementBuildingToolLogic(object):
 	"""Helper class to seperate the logic needen when building from a settlement
 	from the main building tool"""
 
-	@decorators.make_constants()
 	def highlight_buildable(self, building_tool, tiles_to_check = None):
 		"""Highlights all buildable tiles.
 		@param tiles_to_check: list of tiles to check for coloring."""
@@ -561,3 +603,8 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 		from horizons.gui.tabs import BuildRelatedTab
 		self.instance().show_menu(jump_to_tabclass=BuildRelatedTab)
 
+
+decorators.bind_all(BuildingTool)
+decorators.bind_all(SettlementBuildingToolLogic)
+decorators.bind_all(ShipBuildingToolLogic)
+decorators.bind_all(BuildRelatedBuildingToolLogic)
