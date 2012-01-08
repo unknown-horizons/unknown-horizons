@@ -68,8 +68,10 @@ class MultiplayerMenu(object):
 			'join'    : self.__join_game,
 			'create'  : self.__show_create_game,
 			'refresh' : self.__refresh,
-			'apply_new_nickname' : self.__apply_new_nickname
 		}
+		# store old name and color
+		self.__apply_new_nickname()
+		# reload because changing modes (not yet implemented) will need it
 		self.widgets.reload('multiplayermenu')
 		self._switch_current_widget('multiplayermenu', center=True, event_map=event_map, hide_old=True)
 
@@ -105,10 +107,6 @@ class MultiplayerMenu(object):
 			return False
 		return True
 
-	def __apply_new_nickname(self):
-		new_nick = self.current.playerdata.get_player_name()
-		NetworkInterface().change_name(new_nick)
-
 	def __on_error(self, exception, fatal=True):
 		"""Error callback"""
 		if fatal and self.session is not None:
@@ -128,6 +126,7 @@ class MultiplayerMenu(object):
 	def __cancel(self):
 		if NetworkInterface().isconnected():
 			NetworkInterface().disconnect()
+		self.__apply_new_nickname()
 		self.show_main()
 
 	def __refresh(self):
@@ -200,6 +199,7 @@ class MultiplayerMenu(object):
 		join_worked = NetworkInterface().joingame(game.get_uuid())
 		if not join_worked:
 			return
+		self.__apply_new_nickname()
 		self.__show_gamelobby()
 
 	def __prepare_game(self, game):
@@ -228,6 +228,11 @@ class MultiplayerMenu(object):
 		self.current.show()
 
 		self.on_escape = event_map['cancel']
+
+	def __apply_new_nickname(self):
+		if hasattr(self.current, 'playerdata'):
+			playername = self.current.playerdata.get_player_name()
+			NetworkInterface().change_name(playername)
 
 	def __chatfield_onfocus(self):
 		textfield = self.current.findChild(name="chatTextField")
@@ -278,6 +283,7 @@ class MultiplayerMenu(object):
 			'cancel' : self.show_multi,
 			'create' : self.__create_game
 		}
+		self.__apply_new_nickname()
 		self._switch_current_widget('multiplayer_creategame', center=True, event_map=event_map, hide_old=True)
 
 		self.current.files, self.maps_display = SavegameManager.get_maps()

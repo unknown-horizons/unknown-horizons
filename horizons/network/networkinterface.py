@@ -49,7 +49,7 @@ class NetworkInterface(object):
 		self.cbs_error = [] # callbacks on error that looks like this: error(exception, fatal=True)
 		self._client.register_callback("lobbygame_join",       self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_leave",      self._cb_game_details_changed)
-		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
+		#self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
 		#self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
 		self._client.register_callback("game_starts", self._cb_game_starts)
