@@ -133,3 +133,18 @@ class GuiHelper(object):
 		evt.getButton.return_value = button
 
 		return evt
+
+	def run(self, seconds=0):
+		"""
+		Provide a nicer (yet not perfect) way to run the game for some time.
+
+		Usage:
+
+			for i in gui.run(seconds=13):
+				yield
+		"""
+		# TODO this is weird, find out why it doesn't work like expected without this
+		seconds *= 10
+
+		for i in xrange(self.session.timer.get_ticks(seconds)):
+			yield

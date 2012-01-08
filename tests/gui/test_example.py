@@ -58,10 +58,14 @@ def test_example(gui):
 	# All commands above run sequentially, neither the engine nor the timer
 	# will be run. If you need the game to run for some time (or have to wait for
 	# something to happen), make multiple `yield` calls.
-	for i in xrange(gui.session.timer.get_ticks(5)):
+	for i in gui.run(seconds=5):
 		# Game will run for 5 seconds
-		# TODO This does not work as expected. Passing *50* gives around 5 seconds time.
 		yield
+
+	"""
+	while not condition:
+		yield
+	"""
 
 	# When you call `yield` the engine is allowed to run, therefore updating the display.
 	# You can also interact with the game as normal, but please don't mess with the test. :)

@@ -102,7 +102,7 @@ def test_ticket_1294(gui):
 		yield
 
 	# After some seconds it will crash
-	for i in xrange(gui.session.timer.get_ticks(5)):
+	for i in gui.run(seconds=2):
 		yield
 
 	yield TestFinished
