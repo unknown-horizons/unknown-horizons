@@ -22,13 +22,24 @@
 from tests.gui import TestFinished, gui_test
 
 
+# The `gui_test` decorator is needed to identify gui tests. You can use it
+# without argument, but is has to be `@gui_test()` (notice the parantheses).
+#
+# It accepts either one of these arguments:
+#
+# 	use_dev_map=True		- Game launches with --start-dev-map (no main menu)
+# 	use_fixture='name'		- Game launches with --load-map=tests/gui/ingame/fixtures/name.sqlite
+#
 @gui_test()
 def test_example(gui):
 	"""
-	Begins in main menu, starts a new single player game, checks the gold display,
-	opens the game menu and cancels the game.
+	Every gui test has to accept one argument, an instance of `tests.gui.GuiHelper`.
 	"""
-	yield # test needs to be a generator for now
+
+	# Tests need to be generators, better start the test with a `yield` to avoid
+	# forgetting it.
+	# `yield` will give control back to the engine mainloop for one iteration.
+	yield
 
 	# Main menu
 	main_menu = gui.find(name='menu')
@@ -44,6 +55,20 @@ def test_example(gui):
 	gold_display = gui.find(name='status_gold')
 	assert gold_display.findChild(name='gold_1').text == '30000'
 
+	# All commands above run sequentially, neither the engine nor the timer
+	# will be run. If you need the game to run for some time (or have to wait for
+	# something to happen), make multiple `yield` calls.
+	for i in xrange(gui.session.timer.get_ticks(5)):
+		# Game will run for 5 seconds
+		# TODO This does not work as expected. Passing *50* gives around 5 seconds time.
+		yield
+
+	# When you call `yield` the engine is allowed to run, therefore updating the display.
+	# You can also interact with the game as normal, but please don't mess with the test. :)
+	#
+	# TIP: You can watch the test in slow-motion if you insert these waits between
+	# interactions.
+
 	# Open game menu
 	hud = gui.find(name='mainhud')
 	gui.trigger(hud, 'gameMenuButton/action/default')
@@ -55,10 +80,17 @@ def test_example(gui):
 		popup = gui.find(name='popup_window')
 		gui.trigger(popup, 'okButton/action/__execute__')
 
+	# Dialog handling has to be done by a separate generator.
 	with gui.handler(dialog):
 		gui.trigger(game_menu, 'quit/action/default')
+
+	# Code execution will continue here once `dialog` has ended.
 
 	# Back at the main menu
 	assert gui.find(name='menu')
 
+	# Necessary to signal the game that our test has finished.
+	#
+	# TIP: If you leave it out, your game will continue to run. Useful if you want
+	# to check your test's actions.
 	yield TestFinished
