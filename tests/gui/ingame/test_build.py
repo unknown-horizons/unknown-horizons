@@ -69,4 +69,4 @@ def test_found_settlement(gui):
 	assert isinstance(gui.session.cursor, CursorTool)
 	assert len(player.settlements) == 1
 
-	raise TestFinished
+	yield TestFinished

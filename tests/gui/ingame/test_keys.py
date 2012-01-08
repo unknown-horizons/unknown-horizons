@@ -35,4 +35,4 @@ def test_ticket_1342(gui):
 	gui.pressKey(gui.Key.F4)
 	assert gui.find(name='ships_list') is None
 
-	raise TestFinished
+	yield TestFinished

@@ -59,7 +59,7 @@ def test_ticket_1224(gui):
 	# Check (active) running costs
 	assert running_costs() == '25', "Expected 25, got %s" % running_costs()
 
-	raise TestFinished
+	yield TestFinished
 
 
 @gui_test(use_fixture='boatbuilder_1224')
@@ -105,4 +105,4 @@ def test_ticket_1294(gui):
 	for i in xrange(gui.session.timer.get_ticks(5)):
 		yield
 
-	raise TestFinished
+	yield TestFinished

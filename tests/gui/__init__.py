@@ -37,11 +37,10 @@ from horizons.util import Point
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
 
 
-class TestFinished(StopIteration):
-	"""Needed to distinguish between the real test finishing, or a
-	dialog handler that ends."""
-	__test__ = False
-	pass
+# Used by the test to signal that's it's finished.
+# Needed to distinguish between the original test and other generators used
+# for dialogs.
+TestFinished = 'finished'
 
 
 class GuiHelper(object):
@@ -192,9 +191,9 @@ class TestRunner(object):
 			# start their own mainloop, and then we would call the test generator
 			# again (while it is still running). Therefore, dialogs have to be handled
 			# with separate generators.
-			self._gui_handlers[-1].next() # run the most recent generator
-		except TestFinished:
-			self.stop()
+			value = self._gui_handlers[-1].next() # run the most recent generator
+			if value == TestFinished:
+				self.stop()
 		except StopIteration:
 			pass
 

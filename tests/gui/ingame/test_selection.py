@@ -41,4 +41,4 @@ def test_select_ship(gui):
 	gui.select([player_ship])
 	assert gui.find('overview_trade_ship')
 
-	raise TestFinished
+	yield TestFinished

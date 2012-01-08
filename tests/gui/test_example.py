@@ -61,4 +61,4 @@ def test_example(gui):
 	# Back at the main menu
 	assert gui.find(name='menu')
 
-	raise TestFinished
+	yield TestFinished

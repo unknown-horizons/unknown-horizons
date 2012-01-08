@@ -53,4 +53,4 @@ def test_hud(gui):
 	c = gui.find(name='mainhud')
 	gui.trigger(c, 'diplomacyButton/action/default')
 
-	raise TestFinished
+	yield TestFinished

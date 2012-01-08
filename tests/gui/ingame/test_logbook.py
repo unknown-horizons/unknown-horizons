@@ -39,4 +39,4 @@ def test_logbook(gui):
 	gui.trigger(logbook, 'okButton/action/default')
 	assert gui.find(name='captains_log') is None
 
-	raise TestFinished
+	yield TestFinished

@@ -48,4 +48,4 @@ def test_ticket_1352(gui):
 
 	gui.select([ship])
 
-	raise TestFinished
+	yield TestFinished
