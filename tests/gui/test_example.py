@@ -22,7 +22,7 @@
 from tests.gui import TestFinished, gui_test
 
 
-@gui_test
+@gui_test()
 def test_example(gui):
 	"""
 	Begins in main menu, starts a new single player game, checks the gold display,

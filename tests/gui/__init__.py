@@ -20,7 +20,6 @@
 # ###################################################
 
 import contextlib
-import inspect
 import os
 import subprocess
 import sys
@@ -200,31 +199,12 @@ class TestRunner(object):
 			pass
 
 
-def gui_test(*args, **kwargs):
+def gui_test(use_dev_map=False, use_fixture=None):
 	"""Magic nose integration.
 
 	Each GUI test is run in a new process. In case of an error, stderr will be
 	printed. That way it will appear in the nose failure listing.
-
-	The decorator can be used in 2 ways:
-
-		1. No decorator arguments
-
-			@gui_test
-			def foo(session, player):
-				pass
-
-		2. Pass extra arguments (timeout, different map generator)
-
-			@gui_test(use_dev_map=True)
-			def foo(session, player):
-				pass
 	"""
-	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
-
-	use_dev_map = kwargs.get('use_dev_map', False)
-	use_fixture = kwargs.get('use_fixture', None)
-
 	def deco(func):
 		@wraps(func)
 		def wrapped():
@@ -268,11 +248,6 @@ def gui_test(*args, **kwargs):
 		wrapped.gui = True # mark as gui for test selection
 		return wrapped
 
-	if no_decorator_arguments:
-		# return the wrapped function
-		return deco(args[0])
-	else:
-		# return a decorator
-		return deco
+	return deco
 
 gui_test.__test__ = False
