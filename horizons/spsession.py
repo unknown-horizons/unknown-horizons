@@ -195,6 +195,7 @@ class SPSession(Session):
 			# make sure everything get's written now
 			db("COMMIT")
 			db.close()
+			self.ingame_gui.message_widget.add(None, None, 'SAVED_GAME')
 			return True
 		except:
 			print "Save Exception"

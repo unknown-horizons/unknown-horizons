@@ -33,6 +33,7 @@ class Speech:
 	"""Definition of category names, those names are the name of directory where speech should be"""
 	NEW_SETTLEMENT = "new_settlement"
 	NEW_WORLD = "new_world"
+	SAVED_GAME = None
 	QUICKSAVE = None
 	AUTOSAVE = None
 	SCREENSHOT = None
