@@ -22,7 +22,6 @@
 import random
 import os
 import time
-import shutil
 import traceback
 import json
 
@@ -31,7 +30,7 @@ import horizons.main
 from horizons.session import Session
 from horizons.manager import SPManager
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import PATHS, GAME_SPEED, SINGLEPLAYER
+from horizons.constants import GAME_SPEED, SINGLEPLAYER
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.timer import Timer
