@@ -19,6 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+"""
+When activated, the GUI logger hooks into pychan/guichan and logs actions such
+as key presses and widget interactions.
+The output is formatted as code that can be used for writing GUI tests.
+"""
+
 from functools import wraps
 
 from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
@@ -28,9 +34,18 @@ from fife.extensions.pychan import tools
 from fife.extensions.pychan.events import EventMapper
 
 
+# Lookup from fife.Key objects to keynames
+KEY_NAME_LOOKUP = {}
+for keyname in [k for k in dir(fife.Key) if k.upper() == k]:
+	KEY_NAME_LOOKUP[getattr(fife.Key, keyname)] = keyname
+
+
 def _find_container(widget):
 	"""
-	Walk through the tree to find the container the given widget is in.
+	Walk up the tree to find the container the given widget is in.
+
+	Returns the container and a path of widget names collected when traversing
+	the tree.
 	"""
 	path = [widget.name]
 	while widget.parent:
@@ -64,11 +79,8 @@ def _log_key_event(key):
 
 
 def setup_gui_logger():
-	"""
-	By monkey-patching pychan.events.EventMapper.addEvent, we can decorate the callbacks
-	with out log output.
-	"""
-	def log(func):
+	# Wrap event callbacks before they are registered at a widget
+	def deco(func):
 		@wraps(func)
 		def wrapper(self, event_name, callback, group_name):
 			# filter out mouse events (too much noise)
@@ -88,20 +100,16 @@ def setup_gui_logger():
 
 		return wrapper
 
-	EventMapper.addEvent = log(EventMapper.addEvent)
+	EventMapper.addEvent = deco(EventMapper.addEvent)
 
-	# lookup keyname from keycode
-	lookup = {}
-	for keyname in [k for k in dir(fife.Key) if k.upper() == k]:
-		lookup[getattr(fife.Key, keyname)] = keyname
-
-	def log_keys(func):
+	# Catch events when a key is released
+	def deco2(func):
 		@wraps(func)
 		def wrapper(self, evt):
 			keycode = evt.getKey().getValue()
-			_log_key_event(lookup[keycode])
+			_log_key_event(KEY_NAME_LOOKUP[keycode])
 			return func(self, evt)
 
 		return wrapper
 
-	IngameKeyListener.keyReleased = log_keys(IngameKeyListener.keyReleased)
+	IngameKeyListener.keyReleased = deco2(IngameKeyListener.keyReleased)

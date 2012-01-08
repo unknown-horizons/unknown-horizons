@@ -27,7 +27,7 @@ from tests.gui import TestFinished, gui_test
 @gui_test(use_dev_map=True)
 def test_ticket_1352(gui):
 	"""
-	Found a settlement.
+	Clicking on a frigate crashes the game.
 	"""
 	yield # test needs to be a generator for now
 

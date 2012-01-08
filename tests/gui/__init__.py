@@ -19,6 +19,34 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+"""
+How GUI tests are run:
+
+A test marked with the `gui_test` decorator will be collected by nose.
+When this test is run, it will launch the game in a subprocess, passing it the
+dotted path to the test (along with other options), similar to this code:
+
+	def test_example():
+		returncode = subprocess.call(['python', 'run_uh.py', '--gui-test',
+									  'tests.gui.minimap'])
+		if returncode != 0:
+			assert False
+
+	def minimap(gui):
+		yield
+		menu = gui.find(name='mainmenu')
+		yield TestFinished
+
+When the game is run with --gui-test, an instance of `TestRunner` will load
+the test and install a callback function in the engine's mainloop. Each call
+the test will be further exhausted:
+
+	def callback():
+		value = minimap.next()
+		if value == TestFinished:
+			# Test ends
+"""
+
 import os
 import subprocess
 import sys
@@ -38,60 +66,77 @@ TestFinished = 'finished'
 
 
 class TestRunner(object):
-	"""
-	I assumed it would be necessay to run the test 'in parallel' to the
-	engine, e.g. click a button, let the engine run, click another button.
-	That's why the TestRunner installs its _tick method into engine.pump, to
-	be called once in a while. The test is a generator to make use of yield
-	to allow the test to give up control to the engine.
+	"""Manages test execution.
 
-	For the above example it is not necessary, but it might be needed later on,
-	so let's leave it that way for now.
+	Tests have to be generators. With generators, we can give control back to the
+	engine anytime we want and easily continue at that point later.
+	Letting the engine run is important, because otherwise no timer will be
+	continued and for example a production will never finish.
+
+	Dialogs need to be handled slightly different. Their execution results in a
+	separate call to the engine's mainloop, in turn, this would call the `_tick`
+	method and attempt to continue the generator (which is still running).
+
+	Therefore, a new generator has to be installed to handle dialogs. Handlers are
+	hold in list used as stack - only the last added handler will be continued
+	until it has finished.
 	"""
 	__test__ = False
 
 	def __init__(self, engine, test_path):
 		self._engine = engine
-		# Stack of test generators, see _tick
 		self._gui_handlers = []
 
-		test = self.load_test(test_path).__original__ # see gui_test
+		test = self._load_test(test_path)
 		test_gen = test(GuiHelper(self._engine.pychan, self))
 		self._gui_handlers.append(test_gen)
-		self.start()
+		self._start()
 
-	def load_test(self, test_name):
-		"""Load test from dotted path, e.g.:
+	def _load_test(self, test_name):
+		"""Import test from dotted path, e.g.:
 		
 			tests.gui.test_example.example
 		"""
 		path, name = test_name.rsplit('.', 1)
 		__import__(path)
 		module = sys.modules[path]
-		return getattr(module, name)
+		test_function = getattr(module, name)
 
-	def start(self):
+		# __original__ is the real test function that was
+		# decorated with `gui_test`
+		return test_function.__original__
+
+	def _start(self):
 		self._engine.pump.append(self._tick)
 
-	def stop(self):
+	def _stop(self):
 		self._engine.pump.remove(self._tick)
 		self._engine.breakLoop(0)
 
 	def _tick(self):
+		"""Continue test execution.
+
+		This function will be called by the engine's mainloop each frame.
+		"""
 		try:
-			# Normally, we would just use the test generator here. But dialogs
-			# start their own mainloop, and then we would call the test generator
-			# again (while it is still running). Therefore, dialogs have to be handled
-			# with separate generators.
-			value = self._gui_handlers[-1].next() # run the most recent generator
+			# continue execution of current gui handler
+			value = self._gui_handlers[-1].next()
 			if value == TestFinished:
-				self.stop()
+				self._stop()
 		except StopIteration:
+			# if we end up here, it means that either
+			#   - a dialog handler has finished its execution (all fine) or
+			#   - the test has finished without signaling it (this might be on purpose)
+			#
+			# TODO issue a warning if this was the test itself
 			pass
 
 
 def gui_test(use_dev_map=False, use_fixture=None):
 	"""Magic nose integration.
+
+	use_dev_map		-	starts the game with --start-dev-map
+	use_fixture		-	starts the game with --load-map fixture_name
 
 	Each GUI test is run in a new process. In case of an error, stderr will be
 	printed. That way it will appear in the nose failure listing.

@@ -33,6 +33,8 @@ from tests.gui import TestFinished, gui_test
 @gui_test()
 def test_example(gui):
 	"""
+	Documented example test.
+
 	Every gui test has to accept one argument, an instance of `tests.gui.GuiHelper`.
 	"""
 

@@ -60,13 +60,13 @@ def test_found_settlement(gui):
 	c = gui.find(name='overview_trade_ship')
 	gui.trigger(c, 'found_settlement/action/default')
 
-	assert isinstance(gui.session.cursor, BuildingTool)
+	assert isinstance(gui.cursor, BuildingTool)
 	with gui.cursor_map_coords():
 		gui.cursor_move(64, 12)
 		gui.cursor_press_button(64, 12, 'left')
 		gui.cursor_release_button(64, 12, 'left')
 
-	assert isinstance(gui.session.cursor, CursorTool)
+	assert isinstance(gui.cursor, CursorTool)
 	assert len(player.settlements) == 1
 
 	yield TestFinished

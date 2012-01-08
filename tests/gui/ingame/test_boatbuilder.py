@@ -65,7 +65,7 @@ def test_ticket_1224(gui):
 @gui_test(use_fixture='boatbuilder')
 def test_ticket_1294(gui):
 	"""
-	Boat builder running costs are inconsistent.
+	Boatbuilder crash with out of order finishing.
 	"""
 	yield # test needs to be a generator for now
 

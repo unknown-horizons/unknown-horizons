@@ -19,6 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+"""
+Cleaner interface to various game/gui functions to make tests easier.
+"""
+
 import contextlib
 from collections import deque
 
@@ -44,7 +48,14 @@ class GuiHelper(object):
 		return horizons.main._modules.session
 
 	@property
+	def cursor(self):
+		return self.session.cursor
+
+	@property
 	def active_widgets(self):
+		"""Active widgets are the top level containers currently
+		known by pychan.
+		"""
 		return self._manager.allWidgets.keys()
 
 	def find(self, name):
@@ -64,19 +75,31 @@ class GuiHelper(object):
 		"""Trigger a widget event in a container.
 
 		root  - container that holds the widget
-		event - string describing the event
+		event - string describing the event (widget/event/group)
+
+		Example:
+			c = gui.find('mainmenu')
+			gui.trigger(c, 'OkButton/action/default')
 		"""
 		widget_name, event_name, group_name = event.split('/')
 
 		try:
-			# Some widgets use numbers as name, they need to be converted
+			# Some widgets use numbers as name. Their name needs to be converted,
 			# otherwise the lookup fails.
 			widget_name = int(widget_name)
 		except ValueError:
 			pass
 
 		widget = root.findChild(name=widget_name)
-		callback = widget.event_mapper.callbacks[group_name][event_name]
+		if not widget:
+			raise Exception("'%s' contains no widget with the name '%s'" % (
+								root.name, widget_name))
+		try:
+			callback = widget.event_mapper.callbacks[group_name][event_name]
+		except KeyError:
+			raise Exception("No callback for event '%s/%s' registered for widget '%s'" % (
+								event_name, group_name, widget.name))
+
 		callback()
 
 	@contextlib.contextmanager
@@ -87,10 +110,21 @@ class GuiHelper(object):
 		self._runner._gui_handlers.pop()
 
 	def select(self, objects):
+		"""Select all objects in the given list.
+
+		Note, this is not the same process as selection with a mouse. For example
+		selecting a ship will not result in the display of its healthbar, but the
+		corresponding tab will be shown.
+		"""
 		self.session.selected_instances = set(objects)
 		self.session.cursor.apply_select()
 
 	def pressKey(self, keycode):
+		"""Simulate a global keypress.
+
+		Example:
+			gui.pressKey(gui.Key.F4)
+		"""
 		evt = mock.Mock()
 		evt.getKey.return_value = self.Key(keycode)
 
@@ -99,9 +133,13 @@ class GuiHelper(object):
 
 	@contextlib.contextmanager
 	def cursor_map_coords(self):
-		"""
-		Temporarly changes CursorTool to interpret mouse event coordinates
-		as map coordinates. Makes it easier to write tests.
+		"""Temporarly changes CursorTool to interpret mouse event coordinates
+		as map coordinates instead of window coordinates. Makes it easier to
+		write tests.
+
+		Example:
+			with gui.cursor_map_coords():
+				gui.cursor_move(2, 3)
 		"""
 		old = CursorTool._get_world_location_from_event
 
@@ -113,13 +151,13 @@ class GuiHelper(object):
 		CursorTool._get_world_location_from_event = old
 
 	def cursor_move(self, x, y):
-		self.session.cursor.mouseMoved(self._make_mouse_event(x, y))
+		self.cursor.mouseMoved(self._make_mouse_event(x, y))
 
 	def cursor_press_button(self, x, y, button):
-		self.session.cursor.mousePressed(self._make_mouse_event(x, y, button))
+		self.cursor.mousePressed(self._make_mouse_event(x, y, button))
 
 	def cursor_release_button(self, x, y, button):
-		self.session.cursor.mouseReleased(self._make_mouse_event(x, y, button))
+		self.cursor.mouseReleased(self._make_mouse_event(x, y, button))
 
 	def _make_mouse_event(self, x, y, button=None):
 		if button:
@@ -135,11 +173,9 @@ class GuiHelper(object):
 		return evt
 
 	def run(self, seconds=0):
-		"""
-		Provide a nicer (yet not perfect) way to run the game for some time.
+		"""Provide a nicer (yet not perfect) way to run the game for some time.
 
-		Usage:
-
+		Example:
 			for i in gui.run(seconds=13):
 				yield
 		"""
