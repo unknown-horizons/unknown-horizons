@@ -38,7 +38,10 @@ class GuiHelper(object):
 		self._pychan = pychan
 		self._manager = self._pychan.manager
 		self._runner = runner
-		self.session = horizons.main._modules.session
+
+	@property
+	def session(self):
+		return horizons.main._modules.session
 
 	@property
 	def active_widgets(self):
