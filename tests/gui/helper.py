@@ -180,7 +180,7 @@ class GuiHelper(object):
 				yield
 		"""
 		# TODO this is weird, find out why it doesn't work like expected without this
-		seconds *= 10
+		# seconds *= 10
 
 		for i in xrange(self.session.timer.get_ticks(seconds)):
 			yield
