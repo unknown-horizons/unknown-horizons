@@ -141,6 +141,8 @@ def get_option_parser():
 	dev_group.add_option("--gui-test", dest="gui_test", metavar="<test>", \
 	                           default=False, help="INTERNAL. Use run_tests.py instead.")
 	dev_group.add_option("--gui-log", dest="log_gui", action="store_true", default=False, help="Log gui interactions")
+	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int", \
+	                           help="Use this seed for singleplayer sessions.")
 	p.add_option_group(dev_group)
 
 	return p

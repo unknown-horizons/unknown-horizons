@@ -100,7 +100,7 @@ def gui_test(use_dev_map=False, use_fixture=None):
 		@wraps(func)
 		def wrapped():
 			test_name = '%s.%s' % (func.__module__, func.__name__)
-			args = ['python', 'run_uh.py', '--gui-test', test_name]
+			args = ['python', 'run_uh.py', '--sp-seed', str(42), '--gui-test', test_name]
 			if use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				args.extend(['--load-map', path])

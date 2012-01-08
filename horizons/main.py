@@ -159,10 +159,9 @@ def start(command_line_arguments):
 
 	update_info_handler(update_info) # schedules checks by itself
 
-	# When running GUI tests, use a constant seed for the RNG.
-	# Needs to be changed before startup.
-	if command_line_arguments.gui_test:
-		SINGLEPLAYER.SEED = 42
+	# Singleplayer seed needs to be changed before startup.
+	if command_line_arguments.sp_seed:
+		SINGLEPLAYER.SEED = command_line_arguments.sp_seed
 
 	# start something according to commandline parameters
 	startup_worked = True
