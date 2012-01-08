@@ -33,15 +33,13 @@ class SingleplayerMenu(object):
 		"""
 		assert show in ('random', 'scenario', 'campaign', 'free_maps')
 		# save player name before removing playerdata container
-		if hasattr(self.current, 'playerdata'):
-			playername = self.current.playerdata.get_player_name()
-			horizons.main.fife.set_uh_setting("Nickname", playername)
+		self._save_player_name()
 		self.hide()
 		# reload since the gui is changed at runtime
 		self.widgets.reload('singleplayermenu')
 		self._switch_current_widget('singleplayermenu', center=True)
 		eventMap = {
-			'cancel'    : self.show_main,
+			'cancel'    : Callback.ChainedCallbacks(self._save_player_name, self.show_main),
 			'okay'      : self.start_single,
 			'scenario'  : Callback(self.show_single, show='scenario'),
 			'campaign'  : Callback(self.show_single, show='campaign'),
@@ -145,7 +143,7 @@ class SingleplayerMenu(object):
 			self.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
 		playercolor = self.current.playerdata.get_player_color()
-		horizons.main.fife.set_uh_setting("Nickname", playername)
+		self._save_player_name()
 
 		if self.current.collectData('random'):
 			map_file = self.__get_random_map_file()
@@ -286,3 +284,8 @@ class SingleplayerMenu(object):
 		                description=_("The selected file is not a valid scenario file."),
 		                details=_("Error message:") + u' ' + unicode(str(exception)),
 		                advice=_("Please report this to the author."))
+
+	def _save_player_name(self):
+		if hasattr(self.current, 'playerdata'):
+			playername = self.current.playerdata.get_player_name()
+			horizons.main.fife.set_uh_setting("Nickname", playername)
