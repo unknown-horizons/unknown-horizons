@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-07 07:51+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-08 18:12+0200\n"
+"Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -1701,7 +1701,7 @@ msgstr ""
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:547
 msgid "Continue playing"
-msgstr ""
+msgstr "Jätka mängimist"
 
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:549
@@ -1721,28 +1721,28 @@ msgstr ""
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:558
 msgid "Exit"
-msgstr ""
+msgstr "Välju"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:565 horizons/i18n/guitranslations.py:588
 #: horizons/i18n/guitranslations.py:603 horizons/i18n/guitranslations.py:618
 msgid "Close"
-msgstr ""
+msgstr "Sulge"
 
 #. (text of widget: building_score)
 #: horizons/i18n/guitranslations.py:570
 msgid "Buildings"
-msgstr ""
+msgstr "Ehitised"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:572
 msgid "Player scores"
-msgstr ""
+msgstr "Mängija punktid"
 
 #. (text of widget: land_score)
 #: horizons/i18n/guitranslations.py:574
 msgid "Land"
-msgstr ""
+msgstr "Maa"
 
 # 80%
 #. (text of widget: player_name)
@@ -1777,7 +1777,7 @@ msgstr ""
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:612
 msgid "Type"
-msgstr ""
+msgstr "Tüüp"
 
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:614
@@ -1905,12 +1905,12 @@ msgstr ""
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:672
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Keera kaarti või ehitist vastupäeva"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:674
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Keera kaarti või ehitist päripäeva"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:676
