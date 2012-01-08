@@ -24,7 +24,7 @@ from horizons.world.production.producer import Producer
 from tests.gui import TestFinished, gui_test
 
 
-@gui_test(use_fixture='boatbuilder_1224')
+@gui_test(use_fixture='boatbuilder')
 def test_ticket_1224(gui):
 	"""
 	Boat builder running costs are inconsistent.
@@ -62,7 +62,7 @@ def test_ticket_1224(gui):
 	yield TestFinished
 
 
-@gui_test(use_fixture='boatbuilder_1224')
+@gui_test(use_fixture='boatbuilder')
 def test_ticket_1294(gui):
 	"""
 	Boat builder running costs are inconsistent.
@@ -108,7 +108,7 @@ def test_ticket_1294(gui):
 	yield TestFinished
 
 
-@gui_test(use_fixture='boatbuilder_1224')
+@gui_test(use_fixture='boatbuilder')
 def test_remove_from_queue(gui):
 	"""
 	Boatbuilder crashes when canceling a ship in the queue.
