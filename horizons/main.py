@@ -126,6 +126,14 @@ def start(command_line_arguments):
 		fife.set_uh_setting("ClientID", client_id)
 		fife.save_settings()
 
+	# Install gui logger, needs to be done before instanciating Gui, otherwise we miss
+	# the events of the main menu buttons
+	if command_line_arguments.log_gui:
+		if command_line_arguments.gui_test:
+			raise Exception("Logging gui interactions doesn't work when running tests.")
+		from tests.gui.logger import setup_gui_logger
+		setup_gui_logger()
+
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()
 	_modules.gui = Gui()
@@ -150,6 +158,10 @@ def start(command_line_arguments):
 			pass # couldn't retrieve file or nothing relevant in there
 
 	update_info_handler(update_info) # schedules checks by itself
+
+	# Singleplayer seed needs to be changed before startup.
+	if command_line_arguments.sp_seed:
+		SINGLEPLAYER.SEED = command_line_arguments.sp_seed
 
 	# start something according to commandline parameters
 	startup_worked = True
@@ -189,6 +201,10 @@ def start(command_line_arguments):
 
 	if command_line_arguments.gamespeed is not None:
 		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
+
+	if command_line_arguments.gui_test:
+		from tests.gui import TestRunner
+		TestRunner(fife, command_line_arguments.gui_test)
 
 	fife.run()
 

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="250,350">
+<Container size="250,350" name="overview_trade_ship">
 	<TabBG amount="4"/>
 	<Icon name="player_emblem" position="25,50"/>
 
