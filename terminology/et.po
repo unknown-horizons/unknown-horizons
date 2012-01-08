@@ -81,9 +81,10 @@ msgid "food"
 msgstr "toit"
 
 # mitte just päris see :D
+# 
 #, fuzzy
 msgid "increment"
-msgstr "kasum"
+msgstr ""
 
 msgid "select"
 msgstr "vali"
