@@ -275,48 +275,25 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: ["EL PABELL\xD3N", !!python/unicode 'Those tools will be enough for
-        the moment. Well done!
-
-
-        You now provide housing, a main square and food to your inhabitants.
-
-
-        Still there is one demand which we have not satisfied so far, you may check
-        that in the marketplace or tent tab - your sailors want a basic building where
-        they can pray.
-
-
-        The solution is a pavilion which the village parson quickly puts up as shelter
-        from the sun.
-
-
-        Service buildings like this also need to be connected to the tents with a
-        trail, else your inhabitants feel unable to reach them.
-
-
-        In later increments, upgraded versions of buildings may become available.']
+  - arguments: ["EL PABELL\xD3N", "Esas herramientas bastar\xE1n por el momento. \xA1\
+        Bien hecho!\n\nAhora tus habitantes ya tienen viviendas, una plaza principal\
+        \ y alimento.\n\nTodav\xEDa hay una demanda que no hemos satisfecho, puedes\
+        \ comprobarlo en la pesta\xF1a mercado o tienda - tus marineros quieren un\
+        \ edificio b\xE1sico donde puedan rezar.\n\nLa soluci\xF3n es un convento\
+        \ que el p\xE1rroco de la villa construye r\xE1pidamente como refugio contra\
+        \ el sol. \n\nEdificios que ofrecen servicios como \xE9ste, tambi\xE9n necesitan\
+        \ estar conectados a las tiendas mediante caminos, o tus habitantes no podr\xE1\
+        n utilizarlos.\n\nEn futuros incrementos, versiones actualizadas de los edificios\
+        \ pueden estar disponibles."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
-
-
-        This means that your inhabitants need a road connection to the producer (pavilion)
-        to pick up faith there.
-
-        After some time, they will have consumed it and then again look for a producer
-        to collect more faith.
-
-
-        Important:
-
-        It is NOT enough that the building is merely within a certain range of the
-        tents.
-
-        The road connection is required as well.
-
-
-        TASK: Build a pavilion with a trail to the tents in order to fulfill your
-        sailors'' demand for faith.']
+  - arguments: ['', "\xA1Ten en cuenta que la Fe es tratada como un recurso f\xED\
+        sico!\n\nEsto significa que tus habitantes necesitan un camino que los lleve\
+        \ al productor (convento) para recoger Fe.\nDespu\xE9s de alg\xFAn tiempo,\
+        \ la habr\xE1n consumido toda y buscar\xE1n de nuevo por un productor para\
+        \ buscar m\xE1s Fe.\n\nImportante:\nNO es suficiente que los edificios est\xE9\
+        n entre cierto rango de tiendas.\nLos caminos son indispensables tambi\xE9\
+        n.\n\nOBJETIVO: Construye un convento con caminos hacia las tiendas para satisfacer\
+        \ la demanda de Fe de tus habitantes."]
     type: logbook
   - arguments: [!!python/unicode 'Construya un convento conectado a las tiendas.']
     type: message
@@ -330,48 +307,32 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'SIGUIENTE NIVEL DE CRECIMIENTO', !!python/unicode 'All
-        demands are fulfilled now if your inhabitants can regularly visit the main
-        square & pavilion and your food supply is adequate.
-
-
-        If the sailors are happy enough, they want to advance to the next increment
-        called Pioneers.
-
-
-        To make them happy, there is nothing else for you to do but setting taxes
-        to a lower level since you have fulfilled all the demands of your inhabitants.
-
-
-        You should try to not always run on low taxes since this will probably lead
-        to bankruptcy sooner or later. For a period of time and if you know what you
-        are doing, it is fine though.
-
-
-        After some time, the first unit should walk to the main square and have a
-        look for new construction material there to build a log house. This house
-        will replace the old tent.']
+  - arguments: [!!python/unicode 'SIGUIENTE NIVEL DE CRECIMIENTO', "Todas las demandas\
+        \ son ahora satisfechas si tus habitantes pueden regularmente visitar la plaza\
+        \ principal y el convento, y si tu suministro de alimentos es adecuado.\n\n\
+        Si los marineros son lo suficientemente felices, ellos quieren avanzar hacia\
+        \ el siguiente incremento denominado Pioneros.\n\nPara hacerlos felices, no\
+        \ hay nada que puedas hacer salvo disminuir los impuestos ya que ya has satisfecho\
+        \ todas las demandas de tus habitantes.\n\nNo deber\xEDas tener siempre los\
+        \ impuestos bajos, ya que probablemente terminar\xEDas en bancarrota tarde\
+        \ o temprano. Sin embargo, por un per\xEDodo de tiempo y si sabes lo que est\xE1\
+        s haciendo, puede ser beneficioso.\n\nDespu\xE9s de alg\xFAn tiempo, la primera\
+        \ unidad deber\xEDa ir a la plaza principal y buscar nuevos materiales de\
+        \ construcci\xF3n para poder construir una casa de madera. Esta casa reemplazar\xE1\
+        \ a las viejas tiendas."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'Such residential upgrades are the only ones
-        which cost resources and can not be restricted by you.
-
-
-        There are manual upgrades to some buildings where you use resources to construct
-        a better version on the same spot, and there are upgrades without costs for
-        example as you will see with the lumberjack (In this case, only the graphics
-        change).
-
-
-        Upgraded housing accomodates more inhabitants, and pioneers pay more taxes
-        than sailors, too.
-
-
-        As you may have figured out already, the downside is that pioneers demand
-        additional goods which sailors do not need - so you will need to spend this
-        extra money to make them happy as well.
-
-
-        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - arguments: ['', "Tales mejoras residenciales son las \xFAnicas que cuestan recursos\
+        \ y que no pueden ser restringidas por el usuario.\n\nExisten mejoras manuales\
+        \ para algunos edificios, en las cuales utilizas los recursos para construir\
+        \ mejores versiones de un edificio en el lugar en el que est\xE1n, y existen\
+        \ otras mejoras que no cuestan nada, por ejemplo como ver\xE1s con el le\xF1\
+        ador (en este caso, s\xF3lo los gr\xE1ficos cambian).\n\nLas mejoras en las\
+        \ viviendas permiten alojar m\xE1s habitantes, y los Pioneros pagan m\xE1\
+        s impuestos que los Marineros.\n\nComo quiz\xE1s ya te hayas dado cuenta,\
+        \ lo malo es que los Pioneros demandan bienes adicionales que los Marineros\
+        \ no necesitan - as\xED que tendr\xE1s que gastar dinero extra para hacerlos\
+        \ felices tambi\xE9n.\n\nOBJETIVO: Fijar los impuestos como Bajos (extremo\
+        \ izquierdo) y espera que los Marineros asciendan de categor\xEDa."]
     type: logbook
   - arguments: ["Configura el nivel de impuestos a 'Bajo' (izquierda de todo) y espera\
         \ a la actualizaci\xF3n de tus marineros."]
@@ -386,48 +347,26 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'LAS GRANJAS', !!python/unicode 'Congratulations!
-        Some of your inhabitants have reached increment II!
-
-
-        Now you have access to new buildings, take a look at the Build menu again.
-
-
-        A shiny new tab appeared there.
-
-
-        Pioneers will demand cloth, so you need to set up a production line for cloth
-        starting with lambs wool (which is one of the goods produced at the farm).
-
-
-        The farm is a very special production building since it can produce not only
-        one, but very many (and different) goods if you choose.
-
-
-        The output of farms depends on what kind of fields you build around it.']
+  - arguments: [!!python/unicode 'LAS GRANJAS', "\xA1Felicitaciones! \xA1Algunos de\
+        \ tus habitantes alcanzaron el incremento II!\n\nAhora tienes acceso a nuevos\
+        \ edificios, echa un vistazo al menu Construir.\n\nUna nueva y brillante pesta\xF1\
+        a apareci\xF3 all\xED.\n\nLos Pioneros demandan ropa, as\xED que debes comenzar\
+        \ la producci\xF3n de ropa empezando con lana de oveja (que es uno de los\
+        \ bienes producidos en la granja).\n\nLa granja es un edificio de producci\xF3\
+        n muy especia, ya que produce muchos (y diferentes) tipos de bienes si lo\
+        \ deseas.\n\nLa producci\xF3n de las granjas depende del tipo de campos que\
+        \ construyes a su alrededor."]
     type: logbook_w
-  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
-
-
-        Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a warehouse.
-
-
-        As long as units of the final production company can reach the farm, and collectors
-        from the warehouse or storage tent can reach the final company everything''s
-        fine.
-
-
-        If you, however, plan to do some processing on different parts of the island
-        (which can make sense) or even on different islands, you will need a connection
-        to collectors.
-
-
-        Try to build the farm not too close to the coast or your existing buildings
-        since it will need some space around it to work well.
-
-
-        TASK: Build a farm.']
+  - arguments: ['', "Lo veremos con m\xE1s detenimiento m\xE1s tarde.\n\nLas granjas,\
+        \ como todas los negocios que producen materiales crudos, no necesitan estar\
+        \ conectadas a un dep\xF3sito o almac\xE9n.\n\nSiempre y cuando el negocio\
+        \ de producci\xF3n final pueda llegar a la granja, y los colectores del dep\xF3\
+        sito o tienda almac\xE9n puedan llegar al negocio final, todo est\xE1 bien.\n\
+        \nSin embargo, si planeas producir en diferentes partes de la isla (que puede\
+        \ ser \xFAtil) o incluso en diferentes islas, necesitar\xE1s una conexi\xF3\
+        n con los colectores.\n\nIntenta construir la granja no demasiado cerca de\
+        \ la costa o de las otras construcciones ya que necesitar\xE1 algo de espacio\
+        \ alrededor para trabajar bien.\n\nOBJETIVO: Construye una granja."]
     type: logbook
   - arguments: ["Construya una granja manteniendo disponible alg\xFAn espacio alrededor\
         \ de ella."]
@@ -442,42 +381,33 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'LOS CAMPOS', !!python/unicode 'The farm itself is
-        not going to produce anything without some fields.
-
-
-        You currently have the choice between pastures, potato and sugar fields.
-
-
-        Let''s have a short overview:
-
-        * Pasture: Sheep live here, producing lamb wool.
-
-        * Potato field: Grows potatoes which are currently treated as food.
-
-        * Sugar field: Grows sugar which is used to distill liquor and (later) produce
-        confectionery.
-
-
-        We now only need pastures, but in case your food supply chain is too small
-        (maybe many residential buildings) you can also produce some potatoes.
-
-
-        Note that for potatoes you will need a road connection to the farm (not to
-        the field!) as it will be the only company to work on the goods.']
+  - arguments: [!!python/unicode 'LOS CAMPOS', "La granja por si sola no producir\xE1\
+        \ nada sin algunos campos.\n\nActualmente puedes elegir entre pastos, campos\
+        \ de patatas y campos de az\xFAcar.\n\nUna corta perspectiva general:\n* Pastos:\
+        \ Las ovejas viven aqu\xED, produciendo lana.\n* Campo de patatas: Se cultivan\
+        \ patatas que son tratadas como alimento.\n* Campo de az\xFAcar: Se cultiva\
+        \ az\xFAcar que es usada para destilar bebidas alcoh\xF3licas y para (m\xE1\
+        s tarde) producir dulces.\n\nAhora s\xF3lo necesitamos pastos, pero en caso\
+        \ de que tu cadena de suministro de alimentos sea peque\xF1a (quiz\xE1s tienes\
+        \ demasiadas viviendas) puedes producir tambi\xE9n patatas.\n\nTen en cuenta\
+        \ que para las patatas necesitar\xE1s un camino de conexi\xF3n con la granja\
+        \ (\xA1no el campo!) ya que \xE9sta ser\xE1 el \xFAnico negocio que trabaje\
+        \ con ellas. "]
     type: logbook_w
-  - arguments: ['', "Make sure that all fields you build are in the area covered by\
-        \ the farm.\n\nYou can have combined production - one pasture will not lead\
-        \ to 100 percent efficiency of the farm - but you need to check how many fields\
-        \ one farm can serve.\n\nDifferent classes of fields require the farm units\
-        \ to spend more or less time there (to seed, harvest, herd, etc\u2026) and\
-        \ because of that, the farm may be unable to serve all of the fields you built\
-        \ for it in time.\n\nFor now, you do not need to care about these issues a\
-        \ lot since you haven't built any fields. Let's change that!\n\nTASK: Build\
-        \ at least one pasture in the farm's range and add potato fields if you like."]
+  - arguments: ['', "Aseg\xFArate de que todos los campos que construyas se encuentren\
+        \ en el \xE1rea cubierta por la granja.\n\nPuedes tenes una producci\xF3n\
+        \ combinada - un campo de pastos no lleva\u0155a a una eficiencia del 100%\
+        \ de la granja - pero necesitas comprobar cu\xE1ntos campos una granja puede\
+        \ atender.\n\nDiferentes clases de campos requieren que los trabajadores de\
+        \ la granja gasten m\xE1s o menos tiempo con ellos (para sembrar, cosechar,\
+        \ cuidar del reba\xF1o, etc...) y por eso, la granja puede ser incapaz de\
+        \ atender a tiempo todos los campos que construyes.\n\nPor ahora, no necesitas\
+        \ preocuparte por estos inconvenientes demasiado  ya que no has construido\
+        \ ning\xFAn campo. \xA1Cambiemos eso!\n\nOBJETIVO: Construye al menos un campo\
+        \ de pastos en el rango de la granja y agrega un campo de patatas si te apetece."]
     type: logbook
-  - arguments: [!!python/unicode 'Build at least one pasture and add potato fields
-        if you like.']
+  - arguments: [!!python/unicode 'Construye al menos un campo de pastos y agrega un
+        campo de patatas si te apetece.']
     type: message
   - arguments: [tutStepDone, 49]
     type: set_var
@@ -489,39 +419,31 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: ["EL ALMAC\xC9N", !!python/unicode 'Did you watch your lumberjack recently?
-
-
-        Since your warehouse does not have unlimited space to store goods, collectors
-        will stop fetching goods from companies when stock is full.
-
-        So if no sailor recently wanted to upgrade his tent, you probably have a lot
-        of boards and in that case, the lumberjack may idle.
-
-        We can improve this situation with two different approaches, and below we
-        will have a look at both of them.
-
-
-        All companies offer the possibility of doing no work at all.
-
-        This may sound strange, but try to click on the gear wheel you see in, for
-        example, a lumberjack''s overview.
-
-
-        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
-        costs you pay for the building will decrease. They won''t be zero, but still
-        lower than if you keep the company producing.']
+  - arguments: ["EL ALMAC\xC9N", "\xBFHas mirado a tu le\xF1ador recientemente?\n\n\
+        Como tu almac\xE9n no tiene espacio ilimitado para almacenar bienes, los colectores\
+        \ dejar\xE1n de buscar bienes en los negocios cuando no haya m\xE1s lugar.\n\
+        Asi que si ning\xFAn marinero quizo recientemente mejorar su tienda, probablemente\
+        \ tengas un mont\xF3n de madera, y en ese caso, el le\xF1ador puede estar\
+        \ sin hacer nada.\nPodemos arreglar esta situaci\xF3n de dos maneras, y les\
+        \ echaremos un vistazo a cada una de ellas.\n\nTodos los negocios ofrecen\
+        \ la posibilidad de no hacer nada.\nPuede sonar extra\xF1o, pero intenta hacer\
+        \ click en la rueda de herramientas que ves en, por ejemplo, la vista general\
+        \ de un le\xF1ador.\n\nSi este modo de \"descanso\" est\xE1 activado (lo llamamos\
+        \ \"Fuera de servicio\"), los costos que pagas por el edificio disminuir\xE1\
+        n. No ser\xE1n nulos, pero al menos ser\xE1n menores que si mantuvieses el\
+        \ negocio en producci\xF3n."]
     type: logbook_w
-  - arguments: ['', !!python/unicode "This means that you can save money when you\
-        \ temporarily do not need a company and do not want to tear it down, either.\n\
-        \nAnother solution is to build the last increment-I building which has not\
-        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
-        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the warehouse does.\n\nNote that companies can\
-        \ also be connected to a storage in order to get their products collected,\
-        \ and if the warehouse is overwhelmed with collector tasks, you can place\
-        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
-        \ where you need collectors."]
+  - arguments: ['', "Esto significa que puedes ahorrar dinero cuando temporalmente\
+        \ no necesites la producci\xF3n de un negocio pero tampoco quieras demolerlo.\n\
+        \nOtra soluci\xF3n es construir otro edificio del incremento I que todav\xED\
+        a no utilizamos: la tienda almac\xE9n.\n\nEste edificio tiene dos prop\xF3\
+        sitos:\n* Ofrece m\xE1s capacidad de almacenamiento para tus bienes, y \n\
+        * Env\xEDa a sus propios colectores a buscar bienes, tal como lo hace el almac\xE9\
+        n.\n\nTen en cuenta que los negocios tambi\xE9n pueden ser conectadas con\
+        \ un dep\xF3sito o almac\xE9n para almacenar sus productos, y si el almac\xE9\
+        n est\xE1 desbordado, puedes colocar una tienda almac\xE9n para ayudar.\n\n\
+        OBJETIVO: Construye una tienda almac\xE9n, preferentemente donde necesites\
+        \ colectores. "]
     type: logbook
   - arguments: ["Construya una tienda de almac\xE9n (en la pesta\xF1a de 'Incremento'\
         \ 1) donde pueda ser \xFAtil."]
@@ -536,22 +458,14 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'EL TEJEDOR', !!python/unicode 'Now the wool production
-        is set up, you still need a weaver to produce cloth out of this wool.
-
-
-        There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the warehouse).
-
-
-        In both cases you should ensure the connection to a trail as well.
-
-
-        You can place the weaver close to the farm and tear down any trail to the
-        farm to see that it will still fetch the wool and produce.
-
-
-        TASK: Build a weaver positioned so it can get wool.']
+  - arguments: [!!python/unicode 'EL TEJEDOR', "Ahora que produces lana, todav\xED\
+        a necesitas una tejedora para fabricar ropa con ella.\n\nHay dos lugares donde\
+        \ puedes construirla - cerca de la granja o cerca del almac\xE9n (o tienda\
+        \ almac\xE9n).\n\nEn ambos casos deber\xEDas asegurar la conexi\xF3n mediantes\
+        \ caminos.\n\nPuedes colocar la tejedora cerca de la granja y demoler cualquier\
+        \ camino que conecte a \xE9sta para ver que a\xFAn as\xED la tejedora buscar\xE1\
+        \ la lana y producir\xE1 ropa.\n\nOBJETIVO: Construye una tejedora bien posicionada\
+        \ para poder adquirir lana."]
     type: logbook
   - arguments: ["Construya un tejedor que de alg\xFAn modo alcance la lana de tu granja."]
     type: message
@@ -624,5 +538,5 @@ events:
     type: var_gt
 locale: es
 mapfile: development.sqlite
-translation_status: 53 translated messages, 12 untranslated messages.
+translation_status: 65 translated messages.
 
