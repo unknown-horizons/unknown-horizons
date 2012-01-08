@@ -60,8 +60,10 @@ def test_example(gui):
 	# All commands above run sequentially, neither the engine nor the timer
 	# will be run. If you need the game to run for some time (or have to wait for
 	# something to happen), make multiple `yield` calls.
-	for i in gui.run(seconds=5):
-		# Game will run for 5 seconds
+	# Despite the wording, the 2 seconds will elapse once the game simulation ran 2
+	# seconds. If the game is paused, this will run longer.
+	for i in gui.run(seconds=2):
+		# Game will run for 2 seconds
 		yield
 
 	"""

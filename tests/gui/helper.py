@@ -31,6 +31,7 @@ import mock
 import horizons.main
 from fife import fife
 from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.scheduler import Scheduler
 from horizons.util import Point
 
 
@@ -175,12 +176,23 @@ class GuiHelper(object):
 	def run(self, seconds=0):
 		"""Provide a nicer (yet not perfect) way to run the game for some time.
 
+		Despite its name, this method will run the *game simulation* for X seconds.
+		When the game is paused, the timer continues once the game unpauses.
+
 		Example:
 			for i in gui.run(seconds=13):
 				yield
 		"""
-		# TODO this is weird, find out why it doesn't work like expected without this
-		# seconds *= 10
 
-		for i in xrange(self.session.timer.get_ticks(seconds)):
+		# little hack because we don't have Python3's nonlocal
+		class Flag(object):
+			running = True
+
+		def stop():
+			Flag.running = False
+
+		ticks = Scheduler().get_ticks(seconds)
+		Scheduler().add_new_object(stop, None, run_in=ticks)
+
+		while Flag.running:
 			yield
