@@ -41,9 +41,6 @@ class Sound(object):
 		self.emitter['effects'] = None
 		self.emitter['speech'] = None
 
-		self.soundmanager = self.engine.engine.getSoundManager()
-		self.soundmanager.init()
-
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
 		self.ingame_music = glob.glob('content/audio/music/*.ogg')
 		self.menu_music = glob.glob('content/audio/music/menu/*.ogg')
@@ -62,6 +59,9 @@ class Sound(object):
 	def enable_sound(self):
 		"""Enable all sound and start playing music."""
 		if self.engine.get_fife_setting("PlaySounds"): # Set up sound if it is enabled
+			self.soundmanager = self.engine.engine.getSoundManager()
+			self.soundmanager.init()
+
 			self.soundclipmanager = self.engine.engine.getSoundClipManager()
 			self.emitter['bgsound'] = self.soundmanager.createEmitter()
 			self.emitter['bgsound'].setGain(self.engine.get_uh_setting("VolumeMusic"))

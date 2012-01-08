@@ -158,7 +158,8 @@ class View(ChangeListener):
 			emitter = horizons.main.fife.sound.emitter[i]
 			if emitter is not None:
 				emitter.setPosition(pos.x, pos.y, 1)
-		horizons.main.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
+		if horizons.main.fife.get_fife_setting("PlaySounds"):
+			horizons.main.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self._changed()
 
 	def _prepare_zoom_to_cursor(self, zoom):
