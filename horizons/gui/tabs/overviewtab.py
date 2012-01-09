@@ -41,6 +41,7 @@ from horizons.util.gui import load_uh_widget, create_resource_icon
 from horizons.entities import Entities
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.production.producer import Producer
 
 
@@ -470,13 +471,14 @@ class EnemyWarehouseOverviewTab(OverviewTab):
 		self.tooltip = _("warehouse overview")
 
 	def refresh(self):
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		settlement = self.instance.settlement
+		self.widget.findChild(name="headline").text = unicode(settlement.get_component(NamedComponent).name)
 
 		selling_inventory = self.widget.findChild(name='selling_inventory')
-		selling_inventory.init(self.instance.session.db, self.instance.settlement.get_component(StorageComponent).inventory, self.instance.settlement.sell_list, True)
+		selling_inventory.init(self.instance.session.db, settlement.get_component(StorageComponent).inventory, settlement.get_component(TradePostComponent).sell_list, True)
 
 		buying_inventory = self.widget.findChild(name='buying_inventory')
-		buying_inventory.init(self.instance.session.db, self.instance.settlement.get_component(StorageComponent).inventory, self.instance.settlement.buy_list, False)
+		buying_inventory.init(self.instance.session.db, settlement.get_component(StorageComponent).inventory, settlement.get_component(TradePostComponent).buy_list, False)
 
 		super(EnemyWarehouseOverviewTab, self).refresh()
 

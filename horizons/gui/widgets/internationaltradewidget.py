@@ -25,6 +25,7 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.util import Callback
+from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.namedcomponent import NamedComponent
 
@@ -77,16 +78,16 @@ class InternationalTradeWidget(object):
 			self.partner = self.partners[nearest_partner]
 			# If we changed partners, update changelisteners
 			if old_partner and old_partner is not self.partner:
-				old_partner.inventory.remove_change_listener(self.draw_widget)
-				self.partner.inventory.add_change_listener(self.draw_widget)
+				old_partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
+				self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
 
 			selling_inventory = self.widget.findChild(name='selling_inventory')
-			selling_inventory.init(self.instance.session.db, self.partner.inventory, self.partner.settlement.sell_list, True)
+			selling_inventory.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory, self.partner.settlement.get_component(TradePostComponent).sell_list, True)
 			for button in self.get_widgets_by_class(selling_inventory, ImageFillStatusButton):
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, True))
 
 			buying_inventory = self.widget.findChild(name='buying_inventory')
-			buying_inventory.init(self.instance.session.db, self.partner.inventory, self.partner.settlement.buy_list, False)
+			buying_inventory.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory, self.partner.settlement.get_component(TradePostComponent).buy_list, False)
 			for button in self.get_widgets_by_class(buying_inventory, ImageFillStatusButton):
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
 
@@ -100,12 +101,12 @@ class InternationalTradeWidget(object):
 
 	def __remove_changelisteners(self):
 		self.instance.remove_change_listener(self.draw_widget)
-		self.partner.inventory.remove_change_listener(self.draw_widget)
+		self.partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
 		# TODO: partner buy / sell list
 
 	def __add_changelisteners(self):
 		self.instance.add_change_listener(self.draw_widget)
-		self.partner.inventory.add_change_listener(self.draw_widget)
+		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
 		# TODO: partner buy / sell list
 
 	def set_partner(self, partner_id):
