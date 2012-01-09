@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-08 18:12+0200\n"
-"Last-Translator: ussikene <ussikene@gmail.com>\n"
+"PO-Revision-Date: 2012-01-09 07:32+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -845,9 +845,8 @@ msgid "Build related fields"
 msgstr "Ehitamisega seotud valdkonnad"
 
 #: horizons/gui/tabs/buildtabs.py:128
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "Juurdekasv"
+msgstr "Juurdekasv {increment}"
 
 #. i18n In English, this is Sailors, Pioneers, Settlers.
 #. TODO what formatting to use? getting names from DB and adding
@@ -1060,7 +1059,7 @@ msgstr "Teekonna lõpp"
 
 #: horizons/gui/widgets/routeconfig.py:129
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Teeviida lisamiseks vajuta kolooniale."
+msgstr "Teeviida lisamiseks vajuta kolooniale!"
 
 #: horizons/gui/widgets/routeconfig.py:257
 msgid "Select a resource:"
@@ -1078,7 +1077,7 @@ msgstr "Mängu algus"
 #. (text of widget: howto_1_need_warehouse)
 #: horizons/i18n/guitranslations.py:47
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Sa pead asutama koloonia enne ehitiste rajamist."
+msgstr "Sa pead asutama koloonia enne ehitiste rajamist!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:49
@@ -1390,7 +1389,7 @@ msgstr "Kokkuvõte"
 #: horizons/i18n/guitranslations.py:304
 #, fuzzy
 msgid "houses"
-msgstr "maju"
+msgstr "majad"
 
 # 88%
 # 81%
@@ -1431,7 +1430,7 @@ msgstr "Maksud:"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:285
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Uuenduste lubamine:"
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
@@ -1480,7 +1479,7 @@ msgstr "5 elanikku"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:320
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Uuenduste lisamine võimatu:"
 
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:322
@@ -1658,7 +1657,7 @@ msgstr "Jätka tootmist"
 #. (tooltip of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py:523
 msgid "Delete entry"
-msgstr ""
+msgstr "Kustuta kaubatee"
 
 #. (tooltip of widget: move_down) Trade route entry
 #: horizons/i18n/guitranslations.py:525
@@ -1691,12 +1690,12 @@ msgstr "Loe järgnevaid sissekandeid"
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:541
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Saadavad tsenaariumid"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py:543
 msgid "Scenario description"
-msgstr ""
+msgstr "Tsenaariumi kirjeldus"
 
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:547
@@ -1706,17 +1705,17 @@ msgstr "Jätka mängimist"
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:549
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Vali tsenaarium"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:554
 msgid "Wait at load:"
-msgstr ""
+msgstr "Oota"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:556
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Oota"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:558
@@ -1756,12 +1755,12 @@ msgstr "Nimi"
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:580
 msgid "Resources"
-msgstr ""
+msgstr "Ressursid"
 
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:586
 msgid "Units"
-msgstr ""
+msgstr "Üksused"
 
 # 87%
 #. (text of widget: balance)
@@ -1772,7 +1771,7 @@ msgstr "Bilanss"
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:608
 msgid "Health"
-msgstr ""
+msgstr "Elud"
 
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:612
@@ -1812,7 +1811,7 @@ msgstr "Pasiivne"
 #. (text of widget: fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:634
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "FIFE ja Unknown Horizons-i arendus meeskond"
 
 #. (text of widget: have_fun)
 #: horizons/i18n/guitranslations.py:636
@@ -1880,7 +1879,7 @@ msgstr "Peata mäng"
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:662
 msgid "Show player scores"
-msgstr ""
+msgstr "Näita mängijate punkte"
 
 #. (text of widget: lbl_QUICKLOAD)
 #: horizons/i18n/guitranslations.py:664
@@ -1900,7 +1899,7 @@ msgstr "Nihuta paremale"
 #. (text of widget: lbl_ROAD_TOOL)
 #: horizons/i18n/guitranslations.py:670
 msgid "Enable road building mode"
-msgstr ""
+msgstr "Luba teede rajamine"
 
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:672
