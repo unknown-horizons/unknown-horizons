@@ -853,7 +853,7 @@ msgid "Overview"
 msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:115 horizons/gui/tabs/overviewtab.py:471
-msgid "warehouse overview"
+msgid "Warehouse overview"
 msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:145 horizons/gui/tabs/overviewtab.py:273

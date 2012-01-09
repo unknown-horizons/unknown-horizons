@@ -295,8 +295,9 @@ class MultiplayerMenu(object):
 			mapindex = self.current.collectData('maplist')
 			mapfile = self.current.files[mapindex]
 			number_of_players = SavegameManager.get_recommended_number_of_players( mapfile )
+			#xgettext:python-format
 			self.current.findChild(name="recommended_number_of_players_lbl").text = \
-					_("Recommended number of players: {number}").format(number=number_of_players) #xgettext:python-format
+					_("Recommended number of players: {number}").format(number=number_of_players)
 		if len(self.maps_display) > 0: # select first entry
 			self.current.distributeData({
 				'maplist' : 0,

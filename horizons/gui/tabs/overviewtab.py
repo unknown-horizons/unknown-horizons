@@ -28,7 +28,6 @@ from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.util import Callback, ActionSetLoader
 from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS, WEAPONS
-from horizons.gui.widgets  import DeleteButton
 from horizons.gui.widgets.tradewidget import TradeWidget
 from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
@@ -112,7 +111,7 @@ class WarehouseOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
-		self.tooltip = _("warehouse overview")
+		self.tooltip = _("Warehouse overview")
 		self._refresh_collector_utilisation()
 
 	def _refresh_collector_utilisation(self):
@@ -468,7 +467,7 @@ class EnemyWarehouseOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
-		self.tooltip = _("warehouse overview")
+		self.tooltip = _("Warehouse overview")
 
 	def refresh(self):
 		settlement = self.instance.settlement

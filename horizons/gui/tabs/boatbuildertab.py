@@ -20,7 +20,6 @@
 # ###################################################
 
 import math
-from fife.extensions import pychan
 import operator
 
 from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
@@ -90,7 +89,10 @@ class BoatbuilderTab(OverviewTab):
 			for i in enumerate(queue):
 				place_in_queue, unit_type = i
 				image = self.__class__.SHIP_THUMBNAIL.format(type_id=unit_type)
-				tooltip = self.instance.session.db.get_unit_type_name(unit_type) + " " + _(u"(place in queue: {place})").format(place=place_in_queue+1)
+				#xgettext:python-format
+				tooltip = _(u"{ship} (place in queue: {place})").format(
+				               ship=self.instance.session.db.get_unit_type_name(unit_type),
+				               place=place_in_queue+1 )
 				# people don't count properly, always starting at 1..
 				icon_name = "queue_elem_"+str(place_in_queue)
 				icon = TooltipIcon(name=icon_name, image=image, tooltip=tooltip)

@@ -355,7 +355,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			try:
 				self.current.additional_widget.hide()
 				del self.current.additional_widget
-			except AttributeError as e:
+			except AttributeError:
 				pass # only used for some widgets, e.g. pause
 
 	def is_visible(self):
@@ -598,7 +598,8 @@ def build_help_strings(widgets):
 	The layout is defined through HELPSTRING_LAYOUT and translated.
 	"""
 	#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-	HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
+	#xgettext:python-format
+	HELPSTRING_LAYOUT = _('[{key}] = {text}')
 
 	#HACK Ugliness starts; load actions defined through keys and map them to FIFE key strings
 	actions = KeyConfig._Actions.__dict__
@@ -616,6 +617,6 @@ def build_help_strings(widgets):
 	for (name, lbl) in labels.items():
 		try:
 			keyname = '{key}'.format(key=actionmap[str(actions[name[4:]])])
-		except KeyError as err:
+		except KeyError:
 			keyname = ' '
 		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
