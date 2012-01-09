@@ -25,6 +25,12 @@ import horizons.main
 
 from horizons.util import Point
 
+
+# round half towards plus infinity
+# http://en.wikipedia.org/wiki/Rounding#Round_half_up
+roundhalfplus = lambda x: int(round(math.floor(x + x) / 2.0 + 0.25))
+
+
 class CursorTool(fife.IMouseListener):
 	"""Basic tool for cursors."""
 	def __init__(self, session):
@@ -57,12 +63,24 @@ class CursorTool(fife.IMouseListener):
 
 	def _get_world_location_from_event(self, evt):
 		"""Returns the coordinates of an event at the map.
+
+		Why roundhalfplus?
+
+		        a      b     a-b   round(a)-round(b)  roundplus(a)-roundplus(b)
+
+		       1.50   0.50   1.00       1.00               1.0
+		       0.50  -0.49   0.99       1.00               1.0
+		      -0.49  -1.49   1.00       1.00               1.0
+		Error: 0.50  -0.50   1.00       2.00               1.0
+
+		This error would result in fields at position 0 to be smaller than the others,
+		because both sides (-0.5 and 0.5) would be wrongly assigned to the other fields.
+
 		@return Point with int coordinates"""
 		screenpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 		mapcoord = self.session.view.cam.toMapCoordinates(screenpoint, False)
-		# undocumented legacy formula to correct coords, probably
-		return Point(int(round(math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25)), \
-		             int(round(math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)))
+
+		return Point(roundhalfplus(mapcoord.x), roundhalfplus(mapcoord.y))
 
 	def _get_exact_world_location_from_event(self, evt):
 		"""Returns the coordinates of an event at the map.
