@@ -782,12 +782,8 @@ def set_translations():
 		"headline_left"               : ("text"    , _("New game - Multiplayer")),
 		# (text of widget: join_game_lbl)
 		"join_game_lbl"               : ("text"    , _("Join game")),
-		# (text of widget: name_lbl)
-		"name_lbl"                    : ("text"    , _("Apply:")),
 		# (text of widget: refr_gamelist_lbl)
 		"refr_gamelist_lbl"           : ("text"    , _("Refresh list:")),
-		# (tooltip of widget: apply_new_nickname)
-		"apply_new_nickname"          : ("tooltip" , _("Apply the new name")),
 		# (tooltip of widget: create)
 		"create"                      : ("tooltip" , _("Create a new game")),
 		# (tooltip of widget: join)
@@ -942,5 +938,7 @@ def set_translations():
 		"color_label"                 : ("text"    , _("Color:")),
 		# (text of widget: player_label)
 		"player_label"                : ("text"    , _("Player name:")),
+		# (text of widget: selectedcolor)
+		"selectedcolor"               : ("text"    , _(" ")),
 		},
 	}
