@@ -163,6 +163,10 @@ class GuiHelper(object):
 	def cursor_release_button(self, x, y, button):
 		self.cursor.mouseReleased(self._make_mouse_event(x, y, button))
 
+	def cursor_click(self, x, y, button):
+		self.cursor_press_button(x, y, button)
+		self.cursor_release_button(x, y, button)
+
 	def _make_mouse_event(self, x, y, button=None):
 		if button:
 			button = {'left': fife.MouseEvent.LEFT,

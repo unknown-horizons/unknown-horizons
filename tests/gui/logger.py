@@ -79,7 +79,25 @@ def _log_key_event(key):
 	print ''
 
 
+# Keep a list of events to detect mouse clicks (pressed and released)
+# Clicks are what we're interested in, we don't support mouseMoved/mouseDragged
+mousetool_events = []
+
 def _log_mousetool_event(tool_name, event_name, x, y, button):
+	"""
+	Prints out debug information for all captured events. Tries to detect mouse clicks
+	(button pressed and released after) and emit test code for those.
+	"""
+	if event_name == 'mouseReleased':
+		last_event = mousetool_events[-1]
+		if last_event == ('mousePressed', x, y, button):
+			print "gui.cursor_click(%s, %s, '%s')" % (x, y, button)
+			mousetool_events.pop()
+	elif event_name == 'mousePressed':
+		mousetool_events.append((event_name, x, y, button))
+	else:
+		raise Exception("Event '%s' not supported." % event_name)
+
 	# Output debug information, no test code yet
 	if button:
 		print "# %s.%s(%d, %d, '%s')" % (tool_name, event_name, x, y, button)

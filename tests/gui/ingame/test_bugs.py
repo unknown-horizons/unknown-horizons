@@ -42,8 +42,7 @@ def test_ticket_1352(gui):
 	# disabled because it is difficult to select the ship
 	with gui.cursor_map_coords():
 		gui.cursor_move(x, y)
-		gui.cursor_press_button(x, y, 'left')
-		gui.cursor_release_button(x, y, 'left')
+		gui.cursor_click(x, y, 'left')
 	"""
 
 	gui.select([ship])

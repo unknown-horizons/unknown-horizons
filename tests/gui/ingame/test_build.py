@@ -63,8 +63,7 @@ def test_found_settlement(gui):
 	assert isinstance(gui.cursor, BuildingTool)
 	with gui.cursor_map_coords():
 		gui.cursor_move(64, 12)
-		gui.cursor_press_button(64, 12, 'left')
-		gui.cursor_release_button(64, 12, 'left')
+		gui.cursor_click(64, 12, 'left')
 
 	assert isinstance(gui.cursor, CursorTool)
 	assert len(player.settlements) == 1
