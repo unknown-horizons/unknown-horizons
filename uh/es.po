@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-06 03:32+0200\n"
-"Last-Translator: guest <team@unknown-horizons.org>\n"
+"PO-Revision-Date: 2012-01-09 16:45+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -613,7 +613,7 @@ msgstr "Necesitas seleccionar una partida guardada para borrar."
 #: horizons/gui/gui.py:582
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Realmente quieres borrar la partida guardada '{name}'?"
+msgstr "¿Realmente quieres borrar la partida guardada '{name}'?"
 
 #: horizons/gui/gui.py:584
 msgid "Confirm deletion"
@@ -1058,7 +1058,7 @@ msgstr "Parar ruta"
 
 #: horizons/gui/widgets/routeconfig.py:129
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Haga clic sobre un asentamiento para añadir un punto de referencia!"
+msgstr "¡Haga clic sobre un asentamiento para añadir un punto de referencia!"
 
 #: horizons/gui/widgets/routeconfig.py:257
 msgid "Select a resource:"
@@ -2537,9 +2537,8 @@ msgstr "Mina de hierro"
 
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:146
-#, fuzzy
 msgid "Gets iron ore from deposit."
-msgstr "Minas de hierro: Obtiene mineral de hierro del depósito."
+msgstr "Obtiene mineral de hierro del depósito."
 
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:151
@@ -2694,9 +2693,8 @@ msgstr "Campo de azúcar"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:249
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr "Campo de caña de azúcar: Se utiliza en la producción de licor. Necesita de una granja."
+msgstr "Se utiliza en la producción de licor. Necesita de una granja."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:254
@@ -2766,9 +2764,8 @@ msgstr "Sendero"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Camino: Necesario para la recogida de mercancías."
+msgstr "Necesario para la recogida de mercancías."
 
 #. name of buildings:tree
 #. tooltip_text of buildings:tree
