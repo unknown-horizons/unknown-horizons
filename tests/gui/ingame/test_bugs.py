@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.command.unit import CreateUnit
-from horizons.constants import UNITS
+from horizons.constants import UNITS, GAME_SPEED
 from tests.gui import TestFinished, gui_test
 
 
@@ -47,5 +47,29 @@ def test_ticket_1352(gui):
 	"""
 
 	gui.select([ship])
+
+	yield TestFinished
+
+
+@gui_test(use_dev_map=True, ai_players=3)
+def test_ticket_1368(gui):
+	"""
+	Selecting a warehouse from an ai player crashes.
+
+	Test runs faster with 3 AI players, because a new settlement is
+	founded earlier. It is still pretty slow, but let's care about
+	speed later.
+	"""
+	yield # test needs to be a generator for now
+
+	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1])
+
+	# Wait until ai has settled down
+	world = gui.session.world
+	while not world.settlements:
+		yield
+
+	ai_warehouse = world.settlements[0].warehouse
+	gui.select([ai_warehouse])
 
 	yield TestFinished

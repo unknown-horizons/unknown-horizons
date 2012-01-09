@@ -132,11 +132,12 @@ class TestRunner(object):
 			pass
 
 
-def gui_test(use_dev_map=False, use_fixture=None):
+def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
-	use_fixture		-	starts the game with --load-map fixture_name
+	use_fixture		-	starts the game with --load-map=fixture_name
+	ai_players		-	starts the game with --ai_players=<number>
 
 	Each GUI test is run in a new process. In case of an error, stderr will be
 	printed. That way it will appear in the nose failure listing.
@@ -151,6 +152,9 @@ def gui_test(use_dev_map=False, use_fixture=None):
 				args.extend(['--load-map', path])
 			elif use_dev_map:
 				args.append('--start-dev-map')
+
+			if ai_players:
+				args.extend(['--ai-players', str(ai_players)])
 
 			try:
 				# if nose does not capture stdout, then most likely someone wants to
