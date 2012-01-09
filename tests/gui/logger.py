@@ -27,6 +27,7 @@ The output is formatted as code that can be used for writing GUI tests.
 
 from functools import wraps
 
+from horizons.gui import mousetools
 from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
 
 from fife import fife
@@ -78,6 +79,14 @@ def _log_key_event(key):
 	print ''
 
 
+def _log_mousetool_event(tool_name, event_name, x, y, button):
+	# Output debug information, no test code yet
+	if button:
+		print "# %s.%s(%d, %d, '%s')" % (tool_name, event_name, x, y, button)
+	else:
+		print "# %s.%s(%d, %d)" % (tool_name, event_name, x, y)
+
+
 def setup_gui_logger():
 	# Wrap event callbacks before they are registered at a widget
 	def deco(func):
@@ -113,3 +122,38 @@ def setup_gui_logger():
 		return wrapper
 
 	IngameKeyListener.keyReleased = deco2(IngameKeyListener.keyReleased)
+
+	# Catch mouse events of the various mouse tools
+	mouse_button = {
+		fife.MouseEvent.LEFT: 'left', fife.MouseEvent.RIGHT: 'right',
+	}
+
+	def deco3(func):
+		@wraps(func)
+		def wrapper(self, evt):
+			x, y = self._get_world_location_from_event(evt).to_tuple()
+			button = mouse_button.get(evt.getButton())
+			data = {
+				'tool_name': self.__class__.__name__,
+				'event_name': func.__name__,
+				'x': x, 'y': y, 'button': button
+			}
+
+			_log_mousetool_event(**data)
+
+			return func(self, evt)
+
+		return wrapper
+
+	# no mouseDragged/mouseMoved support yet
+	targets = {
+		mousetools.BuildingTool: ('mousePressed', 'mouseReleased', ),
+		mousetools.SelectionTool: ('mousePressed', 'mouseReleased', ),
+		mousetools.TearingTool: ('mousePressed', 'mouseReleased', ),
+		mousetools.PipetteTool: ('mousePressed', ),
+	}
+
+	for tool, events in targets.items():
+		for event in events:
+			original = getattr(tool, event)
+			setattr(tool, event, deco3(original))
