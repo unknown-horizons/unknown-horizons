@@ -26,10 +26,8 @@ from horizons.util import Color, DifficultySettings, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
-from horizons.network import CommandError, NetworkException, NotConnected, FatalError
+from horizons.network import CommandError, NetworkException, FatalError
 
-
-import getpass
 import logging
 
 class NetworkInterface(object):
