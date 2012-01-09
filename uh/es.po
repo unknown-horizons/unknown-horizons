@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-07 06:19+0100\n"
-"PO-Revision-Date: 2012-01-09 16:45+0200\n"
+"PO-Revision-Date: 2012-01-09 16:46+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -2392,9 +2392,8 @@ msgstr "Constructor de barcos"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:47
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Constructor de barcos: Construye barcos y buques pequeños. Construido en la costa."
+msgstr "Construye barcos y buques pequeños. Construido en la costa."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:52
@@ -2515,9 +2514,8 @@ msgstr "Herboristería"
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:132
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
-msgstr "Produce tabaco. Necesita una granja."
+msgstr "Produce hierbas. Necesita una granja."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:137
