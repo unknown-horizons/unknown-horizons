@@ -41,8 +41,8 @@ class IngameType(type):
 	classstring = 'Type['
 
 	def __new__(self, id,  yaml_data):
-		self.class_package =  yaml_data['baseclass'].split('.')[0]
-		self.class_name = yaml_data['baseclass'].split('.')[1]
+		class_package = yaml_data['baseclass'].split('.')[0]
+		class_name = yaml_data['baseclass'].split('.')[1]
 
 		@classmethod
 		def load(cls, session, db, worldid):
@@ -51,10 +51,10 @@ class IngameType(type):
 			super(cls, self).load(db, worldid)
 			return self
 
-		module = __import__(self.basepackage+self.class_package, [], [], [self.class_name])
+		module = __import__(self.basepackage+class_package, [], [], [class_name])
 		return type.__new__(self, self.classstring + str(id) + ']',
-			(getattr(module, self.class_name),),
-			{'load': load})
+			(getattr(module, class_name),),
+			{'load': load, 'class_package': class_package, 'class_name': class_name})
 
 
 	def __init__(self, id, yaml_data):
