@@ -64,3 +64,9 @@ class CursorTool(fife.IMouseListener):
 		return Point(int(round(math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25)), \
 		             int(round(math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)))
 
+	def _get_exact_world_location_from_event(self, evt):
+		"""Returns the coordinates of an event at the map.
+		@return FifePoint with float coordinates"""
+		screenpoint = fife.ScreenPoint(evt.getX(), evt.getY())
+		return self.session.view.cam.toMapCoordinates(screenpoint, False)
+

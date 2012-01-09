@@ -123,7 +123,7 @@ class NavigationTool(CursorTool):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
 
 		# Status menu update
-		current = self.session.view.cam.toMapCoordinates(mousepoint, False)
+		current = self._get_exact_world_location_from_event(evt)
 		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2: # move was far enough, 4 px
 			self.lastmoved = current
 			# update res bar with settlement-related info

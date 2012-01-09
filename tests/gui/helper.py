@@ -143,13 +143,16 @@ class GuiHelper(object):
 				gui.cursor_move(2, 3)
 		"""
 		old = CursorTool._get_world_location_from_event
+		old_exact = CursorTool._get_exact_world_location_from_event
 
 		def new(self, evt):
 			return Point(evt.getX(), evt.getY())
 
 		CursorTool._get_world_location_from_event = new
+		CursorTool._get_exact_world_location_from_event = new
 		yield
 		CursorTool._get_world_location_from_event = old
+		CursorTool._get_exact_world_location_from_event = old_exact
 
 	def cursor_move(self, x, y):
 		self.cursor.mouseMoved(self._make_mouse_event(x, y))

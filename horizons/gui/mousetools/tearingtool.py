@@ -50,16 +50,16 @@ class TearingTool(NavigationTool):
 		super(TearingTool, self).remove()
 
 	def mouseDragged(self, evt):
-		coords = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+		coords = self._get_world_location_from_event(evt).to_tuple()
 		if self.coords is None:
-			self.coords = (int(round(coords.x)), int(round(coords.y)))
-		self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
+			self.coords = coords
+		self._mark(self.coords, coords)
 		evt.consume()
 
 	def mouseMoved(self,  evt):
 		super(TearingTool, self).mouseMoved(evt)
-		coords = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-		self._mark((int(round(coords.x)), int(round(coords.y))))
+		coords = self._get_world_location_from_event(evt).to_tuple()
+		self._mark(coords)
 		evt.consume()
 
 	def on_escape(self):
@@ -68,10 +68,10 @@ class TearingTool(NavigationTool):
 	def mouseReleased(self,  evt):
 		"""Tear selected instances and set selection tool as cursor"""
 		if fife.MouseEvent.LEFT == evt.getButton():
-			coords = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			coords = self._get_world_location_from_event(evt).to_tuple()
 			if self.coords is None:
-				self.coords = (int(round(coords.x)), int(round(coords.y)))
-			self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
+				self.coords = coords
+			self._mark(self.coords, coords)
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
 				Tear(i).execute(self.session)
@@ -86,8 +86,7 @@ class TearingTool(NavigationTool):
 		if fife.MouseEvent.RIGHT == evt.getButton():
 			self.on_escape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
-			coords = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			self.coords = (int(round(coords.x)), int(round(coords.y)))
+			self.coords = self._get_world_location_from_event(evt).to_tuple()
 			self._mark(self.coords)
 		else:
 			return
