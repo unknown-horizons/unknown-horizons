@@ -56,9 +56,10 @@ from horizons.world import World
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
 
+from tests import RANDOM_SEED
+
 
 db = None
-RANDOM_SEED = 42
 
 def setup_package():
 	"""

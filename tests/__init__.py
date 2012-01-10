@@ -18,3 +18,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+# Seed that is used by all tests to initialize the RNG
+RANDOM_SEED = 42
