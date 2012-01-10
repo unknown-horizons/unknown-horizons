@@ -274,6 +274,17 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai
 	return session, session.world.player
 
 
+def load_session(savegame, rng_seed=RANDOM_SEED):
+	"""
+	Start a new session with the given savegame.
+	"""
+	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
+
+	session.load(savegame, [])
+
+	return session
+
+
 def new_settlement(session, pos=Point(30, 20)):
 	"""
 	Creates a settlement at the given position. It returns the settlement and the island
