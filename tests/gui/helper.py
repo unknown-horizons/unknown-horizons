@@ -43,6 +43,7 @@ class GuiHelper(object):
 		self._pychan = pychan
 		self._manager = self._pychan.manager
 		self._runner = runner
+		self.follow_mouse = True
 
 	@property
 	def session(self):
@@ -156,6 +157,8 @@ class GuiHelper(object):
 
 	def cursor_move(self, x, y):
 		self.cursor.mouseMoved(self._make_mouse_event(x, y))
+		if self.follow_mouse:
+			self.session.view.center(x, y)
 
 	def cursor_press_button(self, x, y, button):
 		self.cursor.mousePressed(self._make_mouse_event(x, y, button))
@@ -164,6 +167,7 @@ class GuiHelper(object):
 		self.cursor.mouseReleased(self._make_mouse_event(x, y, button))
 
 	def cursor_click(self, x, y, button):
+		self.cursor_move(x, y)
 		self.cursor_press_button(x, y, button)
 		self.cursor_release_button(x, y, button)
 
@@ -203,3 +207,6 @@ class GuiHelper(object):
 
 		while Flag.running:
 			yield
+
+	def disable_autoscroll(self):
+		self.session.view.autoscroll = mock.Mock()
