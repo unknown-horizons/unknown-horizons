@@ -3295,7 +3295,7 @@ msgstr "L'arxiu de la partida guardada està sent usat per un altre programa."
 #: horizons/util/checkupdates.py:71
 #, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Gràcies per utilitzar Horizons Desconeguts!"
+msgstr "versió Unknown Horizons"
 
 #: horizons/util/checkupdates.py:72
 #, python-format
