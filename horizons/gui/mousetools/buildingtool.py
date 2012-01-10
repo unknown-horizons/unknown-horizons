@@ -45,7 +45,7 @@ class BuildingTool(NavigationTool):
 
 	buildable_color = (255, 255, 255)
 	not_buildable_color = (255, 0, 0)
-	related_buildings_outline = (255, 0, 0, 2) # (r, g, b, width)
+	related_building_color = (0, 192, 0)
 	nearby_objects_radius = 4
 
 	# archive the last roads built, for possible user notification
@@ -299,7 +299,8 @@ class BuildingTool(NavigationTool):
 						continue
 					highlighted_buildings.add(related_building)
 					inst = related_building.fife_instance
-					self.renderer.addOutlined(inst, *self.related_buildings_outline)
+					self.renderer.removeOutlined(inst)
+					self.renderer.addColored(inst, *self.related_building_color)
 					self._modified_instances.add( weakref.ref(inst) )
 
 
