@@ -173,7 +173,7 @@ class GuiHelper(object):
 		self.cursor_press_button(x, y, button)
 		self.cursor_release_button(x, y, button)
 
-	def _make_mouse_event(self, x, y, button=None):
+	def _make_mouse_event(self, x, y, button=None, shift=False):
 		if button:
 			button = {'left': fife.MouseEvent.LEFT,
 					  'right': fife.MouseEvent.RIGHT}[button]
@@ -183,6 +183,7 @@ class GuiHelper(object):
 		evt.getX.return_value = x
 		evt.getY.return_value = y
 		evt.getButton.return_value = button
+		evt.isShiftPressed.return_value = shift
 
 		return evt
 

@@ -65,9 +65,6 @@ def test_build_a_settlement(gui):
 
 		# Place fisher
 		gui.cursor_click(52, 3, 'left')
-		# TODO find out why we have to cancel the current operation, this does
-		# not behave like normal gameplay
-		gui.cursor_click(52, 3, 'right')	# cancel
 
 		# Select path
 		c = gui.find(name='tab')
@@ -88,14 +85,12 @@ def test_build_a_settlement(gui):
 		gui.trigger(c, 'button_5/action/default')
 
 		gui.cursor_click(52, 6, 'left')
-		gui.cursor_click(52, 6, 'right')	# cancel
 
 		# Build main square
 		c = gui.find(name='tab')
 		gui.trigger(c, 'button_3/action/default')
 
 		gui.cursor_click(53, 11, 'left')
-		gui.cursor_click(53, 11, 'right')	# cancel
 
 		# Select path
 		c = gui.find(name='tab')
@@ -116,20 +111,17 @@ def test_build_a_settlement(gui):
 		gui.trigger(c, 'button_1/action/default')
 
 		gui.cursor_click(58, 9, 'left')
-		gui.cursor_click(58, 9, 'right')	# cancel
 
 		# Build a tent
 		c = gui.find(name='tab')
 		gui.trigger(c, 'button_1/action/default')
 
 		gui.cursor_click(58, 7, 'left')
-		gui.cursor_click(58, 7, 'right')	# cancel
 
 		# Build a tent
 		c = gui.find(name='tab')
 		gui.trigger(c, 'button_1/action/default')
 
 		gui.cursor_click(58, 5, 'left')
-		gui.cursor_click(58, 5, 'right')	# cancel
 
 	yield TestFinished
