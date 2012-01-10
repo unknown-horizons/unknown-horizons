@@ -24,13 +24,7 @@ from horizons.constants import GAME_SPEED
 from horizons.gui.mousetools.buildingtool import BuildingTool 
 from horizons.gui.mousetools.cursortool import CursorTool
 from tests.gui import TestFinished, gui_test
-
-
-def get_player_ship(session):
-	for ship in session.world.ships:
-		if ship.owner == session.world.player:
-			return ship
-	return None
+from tests.gui.helper import get_player_ship
 
 
 @gui_test(use_dev_map=True)

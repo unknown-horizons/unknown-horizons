@@ -35,6 +35,13 @@ from horizons.scheduler import Scheduler
 from horizons.util import Point
 
 
+def get_player_ship(session):
+	for ship in session.world.ships:
+		if ship.owner == session.world.player:
+			return ship
+	raise Exception('Player ship not found')
+
+
 class GuiHelper(object):
 
 	Key = fife.Key

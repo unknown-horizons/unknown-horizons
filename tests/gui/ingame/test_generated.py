@@ -21,13 +21,7 @@
 
 
 from tests.gui import gui_test, TestFinished
-
-
-def get_player_ship(session):
-	for ship in session.world.ships:
-		if ship.owner == session.world.player:
-			return ship
-	return None
+from tests.gui.helper import get_player_ship
 
 
 @gui_test(use_dev_map=True)
@@ -37,7 +31,6 @@ def test_build_a_settlement(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	player = gui.session.world.player
 	ship = get_player_ship(gui.session)
 
 	gui.select([ship])
