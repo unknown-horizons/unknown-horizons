@@ -43,6 +43,8 @@ def test_example(gui):
 	# `yield` will give control back to the engine mainloop for one iteration.
 	yield
 
+	gui.disable_autoscroll()
+
 	# Main menu
 	main_menu = gui.find(name='menu')
 	gui.trigger(main_menu, 'startSingle/action/default')

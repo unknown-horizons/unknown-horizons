@@ -37,9 +37,6 @@ def test_build_a_settlement(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	# TODO find out why the view scrolled during testing
-	gui.disable_autoscroll() 
-
 	player = gui.session.world.player
 	ship = get_player_ship(gui.session)
 

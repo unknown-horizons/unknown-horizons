@@ -45,6 +45,8 @@ class GuiHelper(object):
 		self._runner = runner
 		self.follow_mouse = True
 
+		self.disable_autoscroll()
+
 	@property
 	def session(self):
 		return horizons.main._modules.session
@@ -209,4 +211,13 @@ class GuiHelper(object):
 			yield
 
 	def disable_autoscroll(self):
-		self.session.view.autoscroll = mock.Mock()
+		"""
+		NavigationTool.mouseMoved is using the 'real' mouse position in the window to
+		check if it is near the borders and initiates auto scroll. However, we are
+		sending events with map coordinates, so a location at (0, 2) would trigger
+		scrolling. Disable autoscroll by replacing view.autoscroll with a NOP.
+		"""
+		if hasattr(self.session, 'view'):
+			# try to disable only if we're ingame already
+			# Tests starting in the menu need to do call `disable_autoscroll()` explicitly
+			self.session.view.autoscroll = mock.Mock()
