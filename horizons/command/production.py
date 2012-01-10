@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.command import GenericCommand, GenericComponentCommand
-from horizons.util import WorldObject
 from horizons.world.production.producer import Producer
 
 class ToggleActive(GenericComponentCommand):
@@ -44,12 +43,12 @@ class AddProduction(GenericComponentCommand):
 GenericComponentCommand.allow_network(AddProduction)
 
 
-class RemoveFromQueue(GenericCommand):
+class RemoveFromQueue(GenericComponentCommand):
 	"""Remove a production line id from a queueproducer's queue"""
 	def __init__(self, obj, production_line_id):
-		super(RemoveFromQueue, self).__init__(obj, "remove_from_queue", production_line_id)
+		super(RemoveFromQueue, self).__init__(obj, Producer.NAME, "remove_from_queue", production_line_id)
 
-GenericCommand.allow_network(RemoveFromQueue)
+GenericComponentCommand.allow_network(RemoveFromQueue)
 
 
 class CancelCurrentProduction(GenericCommand):

@@ -421,7 +421,7 @@ class QueueProducer(Producer):
 	def remove_from_queue(self, index):
 		"""Remove the index'th element from the queue. First element is 0"""
 		self.production_queue.pop(index)
-		self._changed()
+		self.instance._changed()
 
 
 class UnitProducer(QueueProducer):
