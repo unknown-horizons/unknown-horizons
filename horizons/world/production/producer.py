@@ -131,6 +131,11 @@ class Producer(Component):
 		# load all productions
 		for production in self.get_productions():
 			production.load(db, worldid)
+			# move inactive productions to the correct list
+			if production.is_paused():
+				if production.prod_id in self._productions:
+					self._inactive_productions[production.prod_id] = production
+					del self._productions[production.prod_id]
 			# Listener has been removed in the productions.load(), because the
 			# changelistener's load is called
 			production.add_change_listener(self._on_production_change, call_listener_now=False)
