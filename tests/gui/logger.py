@@ -94,7 +94,7 @@ class GuiHooks(object):
 			@wraps(func)
 			def wrapper(self, evt):
 				keycode = evt.getKey().getValue()
-				log(KEY_NAME_LOOKUP[keycode])
+				log(keycode)
 				return func(self, evt)
 
 			return wrapper
@@ -168,6 +168,31 @@ class TestCodeGenerator(object):
 		# Clicks are what we're interested in, we don't support mouseMoved/mouseDragged
 		self._mousetool_events = []
 
+		self._dialog_active = False
+		self._dialog_opener = []	# the code that triggered the dialog
+
+		# The generator will not print out new code immediately, because the event might
+		# have triggered a dialog (and we don't know yet). Therefore we need to store it
+		# until we either receive a new event or know that a dialog was opened.
+		self._last_command = []
+		self._handler_count = 1
+
+	def _add(self, code):
+		if self._dialog_active:
+			# when a dialog is active, we emit the code right away
+			self._emit(code)
+			return
+
+		if self._last_command:
+			self._emit(self._last_command)
+		self._last_command = code
+
+	def _emit(self, lines):
+		for line in lines:
+			if self._dialog_active:
+				print '\t',
+			print line
+
 	def _find_container(self, widget):
 		"""
 		Walk up the tree to find the container the given widget is in.
@@ -190,21 +215,25 @@ class TestCodeGenerator(object):
 		container, path = self._find_container(widget)
 
 		if container.name == '__unnamed__':
-			print '# TODO this container needs a name to identify it correctly'
+			print '# FIXME this container needs a name to identify it!'
 			print '# Path: %s' % path
 		else:
 			log.debug('# %s' % path)
 
-		print "c = gui.find(name='%s')" % container.name
-		print "gui.trigger(c, '%s/%s/%s')" % (widget.name, event_name, group_name)
-		print ''
+			self._add([
+				"c = gui.find(name='%s')" % container.name,
+				"gui.trigger(c, '%s/%s/%s')" % (widget.name, event_name, group_name),
+				''
+			])
 
-	def new_key_event(self, key):
+	def new_key_event(self, keycode):
 		"""
 		Output test code to press the key.
 		"""
-		print 'gui.pressKey(gui.Key.%s)' % key
-		print ''
+		self._add([
+			'gui.pressKey(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode],
+			''
+		])
 
 	def new_mousetool_event(self, tool_name, event_name, x, y, button):
 		"""
@@ -214,7 +243,7 @@ class TestCodeGenerator(object):
 		if event_name == 'mouseReleased':
 			last_event = self._mousetool_events[-1]
 			if last_event == ('mousePressed', x, y, button):
-				print "gui.cursor_click(%s, %s, '%s')" % (x, y, button)
+				self._add(["gui.cursor_click(%s, %s, '%s')" % (x, y, button)])
 				self._mousetool_events.pop()
 		elif event_name == 'mousePressed':
 			self._mousetool_events.append((event_name, x, y, button))
@@ -228,10 +257,34 @@ class TestCodeGenerator(object):
 			log.debug("# %s.%s(%d, %d)" % (tool_name, event_name, x, y))
 
 	def dialog_opened(self):
-		print '# Dialog opened'
+		"""
+		Start the dialog handler:
+
+			def func1():
+				yield
+				# code for new events will follow
+		"""
+		self._dialog_opener = self._last_command
+		self._last_command = []
+		self._emit(['def func%d():\n\tyield' % self._handler_count])
+		self._dialog_active = True
 
 	def dialog_closed(self):
-		print '# Dialog closed'
+		"""
+		Emits code like this when the dialog was closed. `func` is the handler code
+		that is started in `dialog_opened` and will contain all events in the dialog's
+		lifetime.
+
+		    with gui.handler(func):
+			    # code that triggered the dialog
+				gui.cursor_click(2, 3, 'left')
+		"""
+		self._dialog_active = False
+		self._emit(['with gui.handler(func%d):' % self._handler_count])
+		for line in self._dialog_opener:
+			self._emit(['\t' + line])
+		self._last_command = []
+		self._handler_count += 1
 
 
 def setup_gui_logger():
