@@ -21,38 +21,13 @@
 
 import os
 import tempfile
-from functools import partial, wraps
+from functools import partial
 
-import mock
-from horizons.util.dbreader import DbReader
 from horizons.util.random_map import generate_map_from_seed
 from horizons.util.savegameaccessor import SavegameAccessor
 
 from tests.game import game_test
 
-
-def dbreader_call(func):
-	"""
-	Wrapper around DbReader.__call__ to convert Dummy objects to valid values.
-
-	This is needed because some classes attempt to store Dummy objects in the
-	database, e.g. ConcreteObject with self._instance.getActionRuntime().
-	We fix this by replacing it with zero, SQLite doesn't care much about types,
-	and hopefully a number is less likely to break code than None.
-
-	Yes, this is ugly and will most likely break later. For now, it works.
-	"""
-	@wraps(func)
-	def wrapper(self, command, *args):
-		args = list(args)
-		for i in range(len(args)):
-			if args[i].__class__.__name__ == 'Dummy':
-				args[i] = 0
-		return func(self, command, *args)
-
-	wrapper.__original__ = func
-	return wrapper
-	
 
 @game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=0)
 def test_save_trivial(session, _):
@@ -67,14 +42,7 @@ def test_save_trivial(session, _):
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)
 
-	DbReader.__call__ = dbreader_call(DbReader.__call__)
-
-	# SavegameManager.write_metadata tries to create a screenshot and breaks when
-	# accessing fife properties
-	with mock.patch('horizons.spsession.SavegameManager'):
-		assert session.save(savegamename=filename)
-
-	DbReader.__call__ = DbReader.__call__.__original__
+	assert session.save(savegamename=filename)
 
 	SavegameAccessor(filename)
 
