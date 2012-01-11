@@ -150,6 +150,8 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
 			args = ['python', 'run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
 			if use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
+				if not os.path.exists(path):
+					raise Exception('Savegame %s not found' % path)
 				args.extend(['--load-map', path])
 			elif use_dev_map:
 				args.append('--start-dev-map')
