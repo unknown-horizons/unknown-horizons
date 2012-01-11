@@ -110,3 +110,30 @@ def test_ticket_1369(gui):
 		assert gui.find(name='overview_trade_ship')
 
 	yield TestFinished
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_1362(gui):
+	"""
+	Saving a game, loading it again and attempting to save it again will crash.
+	"""
+	yield
+
+	gui.pressKey(gui.Key.F5)	# quicksave
+	for i in gui.run(seconds=2):
+		yield
+
+	gui.pressKey(gui.Key.F9)	# quickload
+	while gui.find(name='loadingscreen'):
+		yield
+
+	def func():
+		yield
+		# test for error popup
+		assert gui.find(name='popup_window') is None
+
+	# quicksave
+	with gui.handler(func):
+		gui.pressKey(gui.Key.F5)
+
+	yield TestFinished
