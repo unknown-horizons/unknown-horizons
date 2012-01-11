@@ -23,6 +23,7 @@ import os
 import os.path
 import logging
 import json
+from random import Random
 
 import horizons.main
 
@@ -90,6 +91,7 @@ class Session(LivingObject):
 
 		#game
 		self.random = self.create_rng(rng_seed)
+		assert isinstance(self.random, Random)
 		self.timer = self.create_timer()
 		Scheduler.create_instance(self.timer)
 		self.manager = self.create_manager()

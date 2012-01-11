@@ -28,10 +28,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.util.shapes.rect import Rect
 from horizons.util.changelistener import ChangeListener
 from horizons.world.componentholder import ComponentHolder
-from horizons.world.component.namedcomponent import SettlementNameComponent
-from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.storage import PositiveSizedSlotStorage
 
 class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	"""The Settlement class describes a settlement and stores all the necessary information
@@ -57,6 +54,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
+		from horizons.session import Session
+		assert isinstance(session, Session)
 		self.session = session
 		self.owner = owner
 		self.buildings = []

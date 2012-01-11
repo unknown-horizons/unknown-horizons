@@ -35,7 +35,7 @@ from horizons.world.island import Island
 from horizons.world.player import HumanPlayer
 from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
 from horizons.util.color import Color
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL
+from horizons.constants import UNITS, BUILDINGS, RES, GAME, WILD_ANIMAL
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
@@ -51,6 +51,8 @@ from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
+
+from horizons.world.catastrophe.catastrophemanager import CatastropheManager
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -186,14 +188,11 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		#add water
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
-		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
-		#default_grounds = Entities.grounds[90]
 
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
 		for x in xrange(self.min_x-border, self.max_x+border, 10):
 			for y in xrange(self.min_y-border, self.max_y+border, 10):
-				ground = default_grounds(self.session, x, y)
 				for x_offset in xrange(0,10):
 					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
 						for y_offset in xrange(0,10):
@@ -310,6 +309,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			                                           'DIPLOMACY_STATUS_CHANGED', data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
+
+		self.catastrophe_manager = CatastropheManager(self.session)
 
 		self.inited = True
 		"""TUTORIAL:
@@ -720,7 +721,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			islands = self.islands
 
-		for island in self.islands:
+		for island in islands:
 			for settlement in island.settlements:
 				warehouse = settlement.warehouse
 				if (radius is None or position is None or \
