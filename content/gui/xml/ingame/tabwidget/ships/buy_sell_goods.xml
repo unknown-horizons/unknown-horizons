@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="264,550">
+<Container size="264,550" name="buy_sell_goods">
 <TabBG amount="8"/>
 
 <Container position="0,70" size="250,500">

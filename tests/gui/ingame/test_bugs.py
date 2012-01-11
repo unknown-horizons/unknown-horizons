@@ -22,6 +22,7 @@
 from horizons.command.unit import CreateUnit
 from horizons.constants import UNITS, GAME_SPEED
 from tests.gui import TestFinished, gui_test
+from tests.gui.helper import get_player_ship
 
 
 @gui_test(use_dev_map=True)
@@ -70,5 +71,42 @@ def test_ticket_1368(gui):
 
 	ai_warehouse = world.settlements[0].warehouse
 	gui.select([ai_warehouse])
+
+	yield TestFinished
+
+
+@gui_test(use_fixture='ai_settlement')
+def test_ticket_1369(gui):
+	"""
+	Ship tab closed when moving away from another player's warehouse after trading.
+	"""
+	yield
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+
+	with gui.cursor_map_coords():
+		# move ship near foreign warehouse and wait for it to arrive
+		gui.cursor_click(68, 23, 'right')
+		while (ship.position.x, ship.position.y) != (68, 23):
+			yield
+
+		# click trade button
+		c = gui.find(name='overview_trade_ship')
+		gui.trigger(c, 'trade/action/default')
+
+		# trade widget visible
+		assert gui.find(name='buy_sell_goods')
+
+		# move ship away from warehouse
+		gui.cursor_click(77, 17, 'right')
+		while (ship.position.x, ship.position.y) != (77, 17):
+			yield
+
+		# trade widget should not be visible anymore
+		assert gui.find(name='buy_sell_goods') is None
+
+		# but the ship overview should be
+		assert gui.find(name='overview_trade_ship')
 
 	yield TestFinished
