@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.command.unit import CreateUnit
-from horizons.constants import UNITS, GAME_SPEED
+from horizons.constants import UNITS, GAME_SPEED, BUILDINGS
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
@@ -135,5 +135,73 @@ def test_ticket_1362(gui):
 	# quicksave
 	with gui.handler(func):
 		gui.pressKey(gui.Key.F5)
+
+	yield TestFinished
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_1371(gui):
+	"""
+	Build related tab becomes invisible.
+
+	 * use uninterrupted building (press shift)
+	 * click on lumberjack
+	 * click on the 'build related' tab
+	 * click on the tree
+	 * build a tree
+
+     => tab itself is invisible, but buttons for choosing it aren't
+	"""
+	yield
+
+	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1])
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+
+	with gui.cursor_map_coords():
+		gui.cursor_click(59, 1, 'right')
+		while (ship.position.x, ship.position.y) != (59, 1):
+			yield
+
+		# Found settlement
+		c = gui.find(name='overview_trade_ship')
+		gui.trigger(c, 'found_settlement/action/default')
+
+		gui.cursor_click(56, 3, 'left')
+
+		c = gui.find(name='mainhud')
+		gui.trigger(c, 'build/action/default')
+
+		# Build lumberjack
+		c = gui.find(name='tab')
+		gui.trigger(c, 'button_5/action/default')
+		gui.cursor_click(52, 7, 'left')
+
+		# Select lumberjack
+		# TODO selecting should work when clicking on the map
+		settlement = gui.session.world.player.settlements[0]
+		lumberjack = settlement.get_buildings_by_id(BUILDINGS.LUMBERJACK_CLASS)[0]
+		gui.select([lumberjack])
+
+		# Open build related tab
+		c = gui.find(name='tab_base')
+		gui.trigger(c, '1/action/default')
+
+		# Select tree
+		c = gui.find(name='farm_overview_buildrelated')
+		gui.trigger(c, 'build17/action/default')
+
+		# Plant a tree (without uninterrupted building)
+		gui.cursor_click(49, 6, 'left')
+		assert gui.find(name='farm_overview_buildrelated')
+
+		# Select tree again and plant it with uninterrupted building
+		c = gui.find(name='farm_overview_buildrelated')
+		gui.trigger(c, 'build17/action/default')
+		gui.cursor_click(49, 7, 'left', shift=True)
+
+		# Tab should still be there
+		assert gui.find(name='farm_overview_buildrelated')
 
 	yield TestFinished

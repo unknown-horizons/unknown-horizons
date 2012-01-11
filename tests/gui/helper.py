@@ -169,16 +169,16 @@ class GuiHelper(object):
 		if self.follow_mouse:
 			self.session.view.center(x, y)
 
-	def cursor_press_button(self, x, y, button):
-		self.cursor.mousePressed(self._make_mouse_event(x, y, button))
+	def cursor_press_button(self, x, y, button, shift=False):
+		self.cursor.mousePressed(self._make_mouse_event(x, y, button, shift))
 
-	def cursor_release_button(self, x, y, button):
-		self.cursor.mouseReleased(self._make_mouse_event(x, y, button))
+	def cursor_release_button(self, x, y, button, shift=False):
+		self.cursor.mouseReleased(self._make_mouse_event(x, y, button, shift))
 
-	def cursor_click(self, x, y, button):
+	def cursor_click(self, x, y, button, shift=False):
 		self.cursor_move(x, y)
-		self.cursor_press_button(x, y, button)
-		self.cursor_release_button(x, y, button)
+		self.cursor_press_button(x, y, button, shift)
+		self.cursor_release_button(x, y, button, shift)
 
 	def _make_mouse_event(self, x, y, button=None, shift=False):
 		if button:

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Overview of relatedfields of farms -->
-<Container size="250,450">
+<Container size="250,450" name="farm_overview_buildrelated">
 <TabBG amount="6"/>
 
 <Container position="0,70" size="250,400" >
