@@ -221,8 +221,7 @@ class TestCodeGenerator(object):
 			log.debug('# %s' % path)
 
 			self._add([
-				"c = gui.find(name='%s')" % container.name,
-				"gui.trigger(c, '%s/%s/%s')" % (widget.name, event_name, group_name),
+				"gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name),
 				''
 			])
 

@@ -29,8 +29,7 @@ def test_logbook(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	hud = gui.find(name='mainhud')
-	gui.trigger(hud, 'logbook/action/default')
+	gui.trigger('mainhud', 'logbook/action/default')
 
 	logbook = gui.find(name='captains_log')
 	assert logbook

@@ -42,26 +42,22 @@ def test_build_a_settlement(gui):
 		# Wait for ship to arrive
 		for i in gui.run(seconds=7): yield
 
-		c = gui.find(name='overview_trade_ship')
-		gui.trigger(c, 'found_settlement/action/default')
+		gui.trigger('overview_trade_ship', 'found_settlement/action/default')
 
 		# Place warehouse
 		gui.cursor_click(56, 3, 'left')
 
 		# Select buildmenu
-		c = gui.find(name='mainhud')
-		gui.trigger(c, 'build/action/default')
+		gui.trigger('mainhud', 'build/action/default')
 
 		# Select fisher
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_26/action/default')
+		gui.trigger('tab', 'button_26/action/default')
 
 		# Place fisher
 		gui.cursor_click(52, 3, 'left')
 
 		# Select path
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_21/action/default')
+		gui.trigger('tab', 'button_21/action/default')
 
 		# Build some paths
 		# Has to be one by one, no mouse drag support yet
@@ -74,20 +70,15 @@ def test_build_a_settlement(gui):
 		gui.cursor_click(54, 7, 'right')	# cancel
 
 		# Build lumberjack
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_5/action/default')
-
+		gui.trigger('tab', 'button_5/action/default')
 		gui.cursor_click(52, 6, 'left')
 
 		# Build main square
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_3/action/default')
-
+		gui.trigger('tab', 'button_3/action/default')
 		gui.cursor_click(53, 11, 'left')
 
 		# Select path
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_21/action/default')
+		gui.trigger('tab', 'button_21/action/default')
 
 		# Build some paths
 		gui.cursor_click(57, 6, 'left')
@@ -100,21 +91,15 @@ def test_build_a_settlement(gui):
 		gui.cursor_click(57, 13, 'right')	# cancel
 
 		# Build a tent
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_1/action/default')
-
+		gui.trigger('tab', 'button_1/action/default')
 		gui.cursor_click(58, 9, 'left')
 
 		# Build a tent
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_1/action/default')
-
+		gui.trigger('tab', 'button_1/action/default')
 		gui.cursor_click(58, 7, 'left')
 
 		# Build a tent
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_1/action/default')
-
+		gui.trigger('tab', 'button_1/action/default')
 		gui.cursor_click(58, 5, 'left')
 
 	yield TestFinished

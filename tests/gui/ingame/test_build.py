@@ -51,8 +51,7 @@ def test_found_settlement(gui):
 	gui.session.speed_set(GAME_SPEED.TICK_RATES[0])
 
 	gui.select([ship])
-	c = gui.find(name='overview_trade_ship')
-	gui.trigger(c, 'found_settlement/action/default')
+	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
 
 	assert isinstance(gui.cursor, BuildingTool)
 	with gui.cursor_map_coords():

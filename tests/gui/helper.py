@@ -85,12 +85,15 @@ class GuiHelper(object):
 	def trigger(self, root, event):
 		"""Trigger a widget event in a container.
 
-		root  - container that holds the widget
+		root  - container (object or name) that holds the widget
 		event - string describing the event (widget/event/group)
 
 		Example:
 			c = gui.find('mainmenu')
 			gui.trigger(c, 'OkButton/action/default')
+
+		Equivalent to:
+			gui.trigger('mainmenu', 'OkButton/action/default')
 		"""
 		widget_name, event_name, group_name = event.split('/')
 
@@ -100,6 +103,10 @@ class GuiHelper(object):
 			widget_name = int(widget_name)
 		except ValueError:
 			pass
+
+		# if container is given by name, look it up first
+		if isinstance(root, basestring):
+			root = self.find(name=root)
 
 		widget = root.findChild(name=widget_name)
 		if not widget:

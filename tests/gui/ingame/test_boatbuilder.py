@@ -44,12 +44,10 @@ def test_ticket_1224(gui):
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
 
 	# Select trade ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '1/action/default')
+	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	c = gui.find(name='boatbuilder_trade')
-	gui.trigger(c, 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
 
 	# Wait until production starts
 	producer = boatbuilder.get_component(Producer)
@@ -75,24 +73,19 @@ def test_ticket_1294(gui):
 	gui.select([boatbuilder])
 
 	# Select trade ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '1/action/default')
+	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	c = gui.find(name='boatbuilder_trade')
-	gui.trigger(c, 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
 
 	# Pause huker construction
-	c = gui.find(name='BB_main_tab')
-	gui.trigger(c, 'toggle_active_active/action/default')
+	gui.trigger('BB_main_tab', 'toggle_active_active/action/default')
 
 	# Select war ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '2/action/default')
+	gui.trigger('tab_base', '2/action/default')
 
 	# Build frigate
-	c = gui.find(name='boatbuilder_war1')
-	gui.trigger(c, 'BB_build_war1_1/action/default')
+	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
 
 	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1]) # speed things up a bit
 
@@ -121,23 +114,18 @@ def test_remove_from_queue(gui):
 	gui.select([boatbuilder])
 
 	# Select trade ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '1/action/default')
+	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	c = gui.find(name='boatbuilder_trade')
-	gui.trigger(c, 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
 
 	# Select war ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '2/action/default')
+	gui.trigger('tab_base', '2/action/default')
 
 	# Build frigate
-	c = gui.find(name='boatbuilder_war1')
-	gui.trigger(c, 'BB_build_war1_1/action/default')
+	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
 
 	# Cancel huker -> crash
-	c = gui.find(name='BB_main_tab')
-	gui.trigger(c, 'queue_container/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'queue_container/mouseClicked/default')
 
 	yield TestFinished

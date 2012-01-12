@@ -92,8 +92,7 @@ def test_ticket_1369(gui):
 			yield
 
 		# click trade button
-		c = gui.find(name='overview_trade_ship')
-		gui.trigger(c, 'trade/action/default')
+		gui.trigger('overview_trade_ship', 'trade/action/default')
 
 		# trade widget visible
 		assert gui.find(name='buy_sell_goods')
@@ -165,17 +164,14 @@ def test_ticket_1371(gui):
 			yield
 
 		# Found settlement
-		c = gui.find(name='overview_trade_ship')
-		gui.trigger(c, 'found_settlement/action/default')
+		gui.trigger('overview_trade_ship', 'found_settlement/action/default')
 
 		gui.cursor_click(56, 3, 'left')
 
-		c = gui.find(name='mainhud')
-		gui.trigger(c, 'build/action/default')
+		gui.trigger('mainhud', 'build/action/default')
 
 		# Build lumberjack
-		c = gui.find(name='tab')
-		gui.trigger(c, 'button_5/action/default')
+		gui.trigger('tab', 'button_5/action/default')
 		gui.cursor_click(52, 7, 'left')
 
 		# Select lumberjack
@@ -185,20 +181,17 @@ def test_ticket_1371(gui):
 		gui.select([lumberjack])
 
 		# Open build related tab
-		c = gui.find(name='tab_base')
-		gui.trigger(c, '1/action/default')
+		gui.trigger('tab_base', '1/action/default')
 
 		# Select tree
-		c = gui.find(name='farm_overview_buildrelated')
-		gui.trigger(c, 'build17/action/default')
+		gui.trigger('farm_overview_buildrelated', 'build17/action/default')
 
 		# Plant a tree (without uninterrupted building)
 		gui.cursor_click(49, 6, 'left')
 		assert gui.find(name='farm_overview_buildrelated')
 
 		# Select tree again and plant it with uninterrupted building
-		c = gui.find(name='farm_overview_buildrelated')
-		gui.trigger(c, 'build17/action/default')
+		gui.trigger('farm_overview_buildrelated', 'build17/action/default')
 		gui.cursor_click(49, 7, 'left', shift=True)
 
 		# Tab should still be there
