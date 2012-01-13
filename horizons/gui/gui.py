@@ -634,3 +634,6 @@ def build_help_strings(widgets):
 		except KeyError:
 			keyname = ' '
 		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
+
+	author_label = widgets.findChild(name='fife_and_uh_team')
+	author_label.tooltip = u"www.unknown-[br]horizons.org[br]www.fifengine.net"

@@ -56,14 +56,12 @@
 		<Label name="lbl_SCREENSHOT" text="Screenshot" />
 		<Label name="lbl_CHAT" text="Chat" />
 		<Label name="lbl_SHIFT" text="Hold to place multiple buildings"
-			wrap_text="1"  max_size="290,25"  min_size="290,25"/>
+			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
 	</VBox>
 	<VBox>
 		<Label name="have_fun" text="Have fun." />
-		<Label name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
+		<TooltipLabel name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
 			text="The FIFE and Unknown Horizons development teams" />
-		<Label text="http://www.unknown-horizons.org"  name="url_uh"  comment="noi18n" />
-		<Label text="http://www.fifengine.net"  name="url_fife"  comment="noi18n" />
 	</VBox>
 <Spacer />
 </VBox>
