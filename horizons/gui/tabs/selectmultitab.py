@@ -115,11 +115,15 @@ class SelectMultiTab(TabInterface):
 			Scheduler().add_new_object(self.refresh_unit_widget, self, run_in = 0)
 
 	def refresh_unit_widget(self):
-		self._scheduled_refresh = False
-		self.hide_selected_units_widget()
-		self.draw_selected_units_widget()
-		self.toggle_stance()
-		self.widget.adaptLayout()
+		if self.instances:
+			self._scheduled_refresh = False
+			self.hide_selected_units_widget()
+			self.draw_selected_units_widget()
+			self.toggle_stance()
+			self.widget.adaptLayout()
+		else:
+			# all units were destroyed
+			self.hide_selected_units_widget()
 
 	def on_instance_removed(self, instance):
 		if hasattr(instance, 'stance'):
@@ -189,7 +193,7 @@ class SelectMultiTab(TabInterface):
 			if unit.stance != stance:
 				# not all have the same stance, toggle none
 				return
-		self.widget.findChild(name = stance).set_active()
+		self.widget.findChild(name = stance.NAME).set_active()
 
 class UnitEntry(object):
 	def __init__(self, instances, show_number = True):

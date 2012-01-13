@@ -57,6 +57,16 @@ class Attack(GenericUnitCommand):
 
 GenericCommand.allow_network(Attack)
 
+class RemoveUnit(GenericUnitCommand):
+	"""
+	Command class that removes the unit. Not to be used if .remove() is going to be called through an indirect command anyway.
+	@param unit: Instance of Unit
+	"""
+	def __init__(self, unit):
+		super(RemoveUnit, self).__init__(unit, "remove")
+
+GenericCommand.allow_network(RemoveUnit)
+
 class CreateUnit(Command):
 	"""Command class that creates a unit.
 	TODO: remove this command and put the code in a method in e.g. world.

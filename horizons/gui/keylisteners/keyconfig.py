@@ -35,8 +35,8 @@ class KeyConfig(object):
 		PAUSE, SETTLEMENTS_OVERVIEW, SHIPS_OVERVIEW, LOGBOOK, BUILD_TOOL, ROTATE_RIGHT, \
 		ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, SAVE_MAP, \
 		PIPETTE, HEALTH_BAR, ESCAPE, LEFT, RIGHT, UP, DOWN, DEBUG, CONSOLE, HELP, SCREENSHOT, \
-		SHOW_SELECTED = \
-		range(32)
+		SHOW_SELECTED, REMOVE_SELECTED = \
+		range(33)
 
 	def __init__(self):
 		_Actions = self._Actions
@@ -63,6 +63,7 @@ class KeyConfig(object):
 		  "j" : _Actions.SHOW_SELECTED,
 		}
 		self.keyval_mappings = {
+			fife.Key.DELETE: _Actions.REMOVE_SELECTED,
 			fife.Key.ESCAPE: _Actions.ESCAPE,
 			fife.Key.LEFT: _Actions.LEFT,
 			fife.Key.RIGHT: _Actions.RIGHT,

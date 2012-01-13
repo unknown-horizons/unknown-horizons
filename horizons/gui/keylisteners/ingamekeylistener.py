@@ -76,6 +76,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.coordinates_tooltip.toggle()
 		elif action == _Actions.DESTROY_TOOL:
 			self.session.toggle_destroy_tool()
+		elif action == _Actions.REMOVE_SELECTED:
+			self.session.remove_selected()
 		elif action == _Actions.ROAD_TOOL:
 			self.session.ingame_gui.toggle_road_tool()
 		elif action == _Actions.SPEED_UP:

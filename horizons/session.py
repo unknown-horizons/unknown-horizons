@@ -29,6 +29,8 @@ import horizons.main
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool
+from horizons.command.building import Tear
+from horizons.command.unit import RemoveUnit
 from horizons.gui.keylisteners import IngameKeyListener
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
@@ -351,6 +353,26 @@ class Session(LivingObject):
 		@return: True if game is loaded, else False
 		"""
 		return (self.savecounter > 0)
+
+	def remove_selected(self):
+		self.log.debug('Removing %s', self.selected_instances)
+		for instance in [inst for inst in self.selected_instances]:
+			if instance.is_building:
+				if instance.tearable and instance.owner is self.world.player:
+					self.log.debug('Attempting to remove building %s', inst)
+					Tear(instance).execute(self)
+					self.selected_instances.discard(instance)
+				else:
+					self.log.debug('Unable to remove building %s', inst)
+			elif instance.is_unit:
+				if instance.owner is self.world.player:
+					self.log.debug('Attempting to remove unit %s', inst)
+					RemoveUnit(instance).execute(self)
+					self.selected_instances.discard(instance)
+				else:
+					self.log.debug('Unable to remove unit %s', inst)
+			else:
+				self.log.error('Unable to remove unknown object %s', instance)
 
 	def save_map(self, prefix):
 		maps_folder = os.path.join(PATHS.USER_DIR, 'maps')
