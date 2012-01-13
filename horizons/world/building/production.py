@@ -184,7 +184,7 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 
 	def remove(self):
 		# build the deposit back here after remove() is finished
-		deposit_build_data = { 'inventory' : self.inventory.get_dump() }
+		deposit_build_data = { 'inventory' : self.get_component(StorageComponent).inventory.get_dump() }
 		build_cmd = Build(self.__deposit_class, self.position.origin.x, self.position.origin.y, \
 		                  self.island, ownerless=True, data = deposit_build_data)
 		Scheduler().add_new_object(build_cmd, build_cmd, run_in=0)
