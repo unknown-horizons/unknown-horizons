@@ -505,6 +505,7 @@ class BuildingTool(NavigationTool):
 			if fife_instance:
 				# remove everything that might have been added, we don't keep track of the single changes
 				self.renderer.removeOutlined(fife_instance)
+				self.renderer.removeColored(fife_instance)
 				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
 					fife_instance.get2dGfxVisual().setTransparency(0)
 		for building in self._related_buildings:
