@@ -162,6 +162,7 @@ class MessageWidget(LivingObject):
 		label = self.text_widget.findChild(name='text')
 		text = unicode(self.active_messages[self.position+index].message)
 		text = text.replace(r'\n', self.CHARS_PER_LINE*' ')
+		text = text.replace(r'[br]', self.CHARS_PER_LINE*' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
 
 		self.bg_middle = self.text_widget.findChild(name='msg_bg_middle')
