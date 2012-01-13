@@ -418,6 +418,6 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 	def __str__(self):
-		return '%s.SM(%s/%d)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid)
+		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(SettlementManager)

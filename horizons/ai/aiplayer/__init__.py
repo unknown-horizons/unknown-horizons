@@ -369,6 +369,6 @@ class AIPlayer(GenericAI):
 		Builder.cache.clear()
 
 	def __str__(self):
-		return 'AI(%s/%d)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid)
+		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(AIPlayer)

@@ -260,7 +260,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
-		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir,
+		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.savegame_dir,
 		              cls.autosave_dir, cls.quicksave_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir], include_displaynames, None, True)
 

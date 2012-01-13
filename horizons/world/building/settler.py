@@ -146,7 +146,7 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 
 	@property
 	def name(self):
-		house_name = self.session.db.get_settler_house_name(self.level)
+		house_name = self.session.db.get_settler_house_name(self.level) if hasattr(self, 'level') else 'unknown residence'
 		return (_(house_name)).title()
 
 	@property

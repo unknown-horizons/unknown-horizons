@@ -208,7 +208,7 @@ class Unit(MovingObject):
 		return self._name
 
 	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid)
+		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
 
 
 decorators.bind_all(Unit)
