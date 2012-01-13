@@ -67,7 +67,7 @@ def update_all_translations():
 		widget = widget() # resolve weakref
 		if not widget:
 			continue
-		for element_name, (attribute, translation) in guitranslations.text_translations.get(filename,{}).iteritems():
+		for (element_name, attribute), translation in guitranslations.text_translations.get(filename,{}).iteritems():
 			element = widget.findChild(name=element_name)
 			replace_attribute(element, attribute, translation)
 		if filename == 'help.xml':
