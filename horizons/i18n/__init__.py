@@ -20,14 +20,10 @@
 # ###################################################
 
 import logging
-import os
 import weakref
 
-from fife.extensions import pychan
-
-import horizons.main
 import horizons.i18n.objecttranslations
-from horizons.i18n.guitranslations import set_translations, text_translations
+from horizons.i18n.guitranslations import set_translations
 
 log = logging.getLogger("i18n")
 
@@ -48,9 +44,9 @@ def translate_widget(untranslated, filename):
 	global translated_widgets
 	if filename in guitranslations.text_translations:
 		for entry in guitranslations.text_translations[filename].iteritems():
-			widget = untranslated.findChild(name=entry[0])
+			widget = untranslated.findChild(name=entry[0][0])
 			if widget is not None:
-				replace_attribute(widget, entry[1][0], entry[1][1])
+				replace_attribute(widget, entry[0][1], entry[1])
 				widget.adaptLayout()
 	else:
 		log.debug('No translation for file %s', filename)
