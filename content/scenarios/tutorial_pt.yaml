@@ -270,7 +270,7 @@ events:
         \ necess\xE1rias para teres em stock 30 ferramentas!"]
     type: logbook
   - arguments: [!!python/unicode 'Atinge o limite de, pelo menos, 30 ferramentas em
-        stock na ilha.', !!python/unicode 'Note that this might take a while.']
+        stock na ilha.', !!python/unicode 'Pode demorar algum tempo.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -558,5 +558,5 @@ events:
     type: var_gt
 locale: pt
 mapfile: development.sqlite
-translation_status: 64 translated messages, 1 untranslated message.
+translation_status: 65 translated messages.
 
