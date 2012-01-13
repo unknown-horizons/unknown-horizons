@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-07 07:59+0200\n"
+"PO-Revision-Date: 2012-01-13 16:50+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -614,7 +614,7 @@ msgstr "Zulässige Karten-Namen haben diese Form: {expression}"
 #: horizons/gui/ingamegui.py:514
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Versuchen Sie einen Namen, der nur Buchstaben und Zahlen enthält."
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -2208,9 +2208,8 @@ msgstr "Weltkarte mit Karte drehen:"
 
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:843
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Maus???"
+msgstr "Maus-Empfindlichkeit:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:845
@@ -2951,7 +2950,7 @@ msgstr "Hier downloaden"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Eine Seite wurde in Ihrem Browser geöffnet."
 
 #: horizons/world/component/tradepostcomponent.py:163
 msgid "The trade partner does not sell this."
