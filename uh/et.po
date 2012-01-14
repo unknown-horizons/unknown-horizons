@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-14 22:43+0200\n"
+"PO-Revision-Date: 2012-01-09 18:26+0200\n"
 "Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -2887,11 +2887,12 @@ msgstr "Kiirsalvestus ebaõnnestus."
 
 #: horizons/spsession.py:124
 msgid "An error happened during quicksave. Your game has not been saved."
-msgstr ""
+msgstr "Kiirsalvestuse tegemisel tekkis tõrge. Sinu mängu ei ole salvestatud."
 
 #: horizons/spsession.py:125
+#, fuzzy
 msgid "If this error happens again, please contact the development team:"
-msgstr ""
+msgstr "Kui see viga kordub siis palun kontakteeru arendus meeskonnaga:"
 
 #: horizons/spsession.py:133
 msgid "No quicksaves found"
@@ -2903,16 +2904,20 @@ msgstr "Sa pead tegema kiirsalvestuse enne kui saad kiirlaadimise teha."
 
 #. usually invalid filename
 #: horizons/spsession.py:159
+#, fuzzy
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Salvestatud mängu faili tegemine ebaõnnestus."
 
 #: horizons/spsession.py:160
 msgid "There has been an error while creating your savegame file."
 msgstr ""
 
 #: horizons/spsession.py:161
+#, fuzzy
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
+"Tavaliselt tähendab see seda, et salvestatud mängu nimi sisaldab "
+"mittetoetatud sümbole."
 
 #: horizons/spsession.py:167
 msgid "Access is denied"
@@ -2933,9 +2938,8 @@ msgstr "Salvestatud mängu faili kasutab parasjagu teine programm."
 
 # 92%
 #: horizons/util/checkupdates.py:71
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Unknown Horizons'i käivitamine"
+msgstr "Unknown Horizons'i uus versioon"
 
 #: horizons/util/checkupdates.py:72
 #, python-format
@@ -2943,12 +2947,13 @@ msgid "There is a more recent release of Unknown Horizons ({new_version}) than t
 msgstr ""
 
 #: horizons/util/checkupdates.py:76
+#, fuzzy
 msgid "Click to download"
-msgstr ""
+msgstr "Vajuta allalaadimiseks"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Lehekülg avati sinu veebilehitsejas."
 
 #: horizons/world/component/tradepostcomponent.py:163
 msgid "The trade partner does not sell this."
@@ -2976,8 +2981,9 @@ msgid "You do not possess this."
 msgstr ""
 
 #: horizons/world/component/tradepostcomponent.py:228
+#, fuzzy
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "Kaubanduspartner ei saa seda rohkem talletada."
 
 #: horizons/world/component/tradepostcomponent.py:235
 msgid "The trade partner can not afford to buy this."
@@ -3051,15 +3057,21 @@ msgstr ""
 
 #: run_uh.py:213
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Tõrge: Ei leia vajalike teeke."
 
 #: run_uh.py:214
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Meil on kahju teatada, et Unknown Horizons'i jaoks vajalik teek puudub ning "
+"see tuleb paigaldada."
 
 #: run_uh.py:215
+#, fuzzy
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Windowsi kasutajatele vajalikud paigalduspakid on saadaval: "
+"\"http://pyyaml.org/wiki/PyYAML\", Linuxi kasutajad peaks leidma selle oma "
+"pakihaldurist nime \"pyyaml\" või \"python-yaml\" alt."
 
 #: run_uh.py:241
 msgid "Thank you for using Unknown Horizons!"
