@@ -6,7 +6,7 @@
 	</HBox>
 
 	<HBox>
-		<Label name="color_label" text="Color:" max_size="100,20" min_size="100,20" />
+		<Label name="color_label" text="Color:" max_size="100,20" min_size="100,20" comment="noi18n" />
 		<HBox padding="15">
 			<VBox>
 			<Spacer fixed_size="10" />
