@@ -26,6 +26,8 @@ import horizons.main
 from horizons.entities import Entities
 from horizons.constants import LAYERS
 from horizons.gui.mousetools import  NavigationTool
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+
 
 
 class PipetteTool(NavigationTool):
@@ -57,7 +59,7 @@ class PipetteTool(NavigationTool):
 			if obj and self._is_buildable(obj.id):
 				self.session.set_cursor('building', Entities.buildings[obj.id])
 			elif obj: # object that is not buildable
-				# TODO: error sound
+				AmbientSoundComponent.play_special('error')
 				self.on_escape()
 			else:
 				self.on_escape()

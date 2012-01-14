@@ -102,7 +102,7 @@ class MessageWidget(LivingObject):
 	def _add_message(self, message, sound = None):
 		"""Internal function for adding messages. Do not call directly.
 		@param message: Message instance
-		@param sound: path tosoundfile"""
+		@param sound: path to soundfile"""
 		self.active_messages.insert(0, message)
 
 		if len(self.active_messages) > self.MAX_MESSAGES:

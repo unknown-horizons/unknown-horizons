@@ -28,6 +28,7 @@ from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
 import horizons.main
 
@@ -356,7 +357,8 @@ class RouteConfig(object):
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
-			# TODO: error sound
+			# reached max entries the gui can hold
+			AmbientSoundComponent.play_special('error')
 			return
 
 		self.instance.route.append(warehouse)

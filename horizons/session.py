@@ -42,6 +42,7 @@ from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAcc
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS
 
 class Session(LivingObject):
@@ -302,7 +303,7 @@ class Session(LivingObject):
 
 	def speed_up(self):
 		if self.speed_is_paused():
-			# TODO: sound feedback to signal that this is an invalid action
+			AmbientSoundComponent.play_special('error')
 			return
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)
@@ -313,7 +314,7 @@ class Session(LivingObject):
 
 	def speed_down(self):
 		if self.speed_is_paused():
-			# TODO: sound feedback to signal that this is an invalid action
+			AmbientSoundComponent.play_special('error')
 			return
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)

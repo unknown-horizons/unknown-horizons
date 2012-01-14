@@ -25,6 +25,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component import Component
 
+
 class TradePostComponent(Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
@@ -156,7 +157,6 @@ class TradePostComponent(Component):
 	def sell_resource(self, ship_worldid, resource_id, amount):
 		""" Attempt to sell the given amount of resource to the ship, returns the amount sold """
 		ship = WorldObject.get_object_by_id(ship_worldid)
-		# TODO: add some kind of "ding" sound to all of these messages
 		if resource_id not in self.sell_list:
 			if ship.owner == self.instance.session.world.player:
 				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
@@ -202,7 +202,6 @@ class TradePostComponent(Component):
 
 	def buy_resource(self, ship_worldid, resource_id, amount):
 		""" Attempt to buy the given amount of resource from the ship, return the amount bought """
-		# TODO: add some kind of "ding" sound to all of these messages
 		ship = WorldObject.get_object_by_id(ship_worldid)
 		if resource_id not in self.buy_list:
 			if ship.owner == self.instance.session.world.player:
