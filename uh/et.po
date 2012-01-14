@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-09 18:26+0200\n"
+"PO-Revision-Date: 2012-01-14 22:43+0200\n"
 "Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -985,7 +985,7 @@ msgstr "Mäng"
 #: horizons/gui/widgets/playerssettlements.py:43
 #, python-format
 msgid "Settlements of {player}"
-msgstr ""
+msgstr "{player} kolooniad"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:113
@@ -1681,7 +1681,7 @@ msgstr "Vali tsenaarium"
 #: horizons/i18n/guitranslations.py:554
 #, fuzzy
 msgid "Wait at load:"
-msgstr "Oota"
+msgstr "Oota :"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:556
@@ -1808,7 +1808,7 @@ msgstr "Lülita konsool sisse/välja"
 #. (text of widget: lbl_COORD_TOOLTIP)
 #: horizons/i18n/guitranslations.py:646
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "Näita koordinaatide väärtusi (Silumine)"
 
 #. (text of widget: lbl_DESTROY_TOOL)
 #: horizons/i18n/guitranslations.py:648
@@ -1887,20 +1887,24 @@ msgstr "Keera kaarti või ehitist päripäeva"
 msgid "Screenshot"
 msgstr "Ekraanipilt"
 
+# ainsus /mitmus?
 #. (text of widget: lbl_SETTLEMENTS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:678
+#, fuzzy
 msgid "Show settlement list"
-msgstr ""
+msgstr "Näita kolooniate nimekirja"
 
 #. (text of widget: lbl_SHIFT)
 #: horizons/i18n/guitranslations.py:680
 msgid "Hold to place multiple buildings"
 msgstr "Vajuta paigutamaks mitut ehitist"
 
+# ainsus/mitmus?
 #. (text of widget: lbl_SHIPS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:682
+#, fuzzy
 msgid "Show ship list"
-msgstr ""
+msgstr "Näita laevade nimekirja"
 
 #. (text of widget: lbl_SPEED_DOWN)
 #: horizons/i18n/guitranslations.py:684
@@ -1964,7 +1968,7 @@ msgstr "Laadimine..."
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:721
 msgid "Attention please!"
-msgstr ""
+msgstr "Tähelepanu!"
 
 #. (text of widget: credits)
 #: horizons/i18n/guitranslations.py:723
@@ -2065,7 +2069,7 @@ msgstr "Peamenüü:"
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:780
 msgid "Only show games with the same version:"
-msgstr ""
+msgstr "Näita ainult sama versiooniga mänge:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:782
@@ -2105,7 +2109,7 @@ msgstr "Värskenda aktiivsete mängude nimekirja"
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:799
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Automaatse salvestuse intervall minutites:"
 
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py:801
@@ -2119,9 +2123,8 @@ msgstr "Keel"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:807
-#, fuzzy
 msgid "Mouse"
-msgstr "maju"
+msgstr "Hiir"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:809
@@ -2203,9 +2206,8 @@ msgstr ""
 # 76%
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:843
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Ressursi rohkus:"
+msgstr "Hiire tundlikkus:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:845
@@ -2244,14 +2246,14 @@ msgstr ""
 
 #. (tooltip of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:859
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "Taasta algseaded"
+msgstr "0 on süsteemi vaikeseaded"
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:861
+#, fuzzy
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "kui väärtuseks on 0, kasutatakse marsruuteri vaikeseadeid."
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:863
@@ -2419,8 +2421,9 @@ msgstr "Söe põletamine"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:75
+#, fuzzy
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "Põletab hunnikus laudu."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:80
@@ -2447,7 +2450,7 @@ msgstr "Alkoholi tehas"
 #: horizons/i18n/objecttranslations.py:94
 #, fuzzy
 msgid "Turns sugar into liquor."
-msgstr "toodab suhkrust alkoholi."
+msgstr "Valmistab suhkrust alkoholi."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:99
@@ -2532,7 +2535,7 @@ msgstr "Palk"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:153
 msgid "Road across a river."
-msgstr ""
+msgstr "Tee üle jõe."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:158
@@ -2542,7 +2545,7 @@ msgstr "Vaatetorn"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:160
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Suurendab mängija vaatevälja."
 
 #. name of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:165
@@ -2635,7 +2638,7 @@ msgstr "Soola tiigid"
 #: horizons/i18n/objecttranslations.py:221
 #, fuzzy
 msgid "Evaporates salt. Built on sea coast."
-msgstr "Aurutab veest soola. Ehitatakse rannikule."
+msgstr "Aurustab veest soola. Ehitatakse rannikule."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:226
@@ -2773,9 +2776,8 @@ msgstr "Annab haridust."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:315
-#, fuzzy
 msgid "Warehouse"
-msgstr "maju"
+msgstr "Ladu"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:320
@@ -2871,9 +2873,8 @@ msgstr "Sa läbisid selle stsenaariumi."
 
 # 75%
 #: horizons/scenario/actions.py:76
-#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr "Kas soovid jätkata?"
+msgstr "Kas soovid mängimist jätkata?"
 
 #: horizons/scenario/scenarioeventhandler.py:160
 #: horizons/scenario/scenarioeventhandler.py:170
