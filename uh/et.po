@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-09 07:33+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-09 18:26+0200\n"
+"Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "Sinu mäng on kiirsalvestatud."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr ""
+msgstr "Sinu mäng on salvestatud."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -582,7 +582,7 @@ msgstr "Salvestatud mängu kustutamine ebaõnnestus!"
 #: horizons/gui/gui.py:602
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -602,7 +602,7 @@ msgstr "Töötavad kaardid on järgnevas formaadis: {expression}"
 #: horizons/gui/ingamegui.py:514
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Proovi nime, mis sisaldab ainult tähti ja numbreid."
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -1644,7 +1644,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:532
 #, fuzzy
 msgid "Leave Captain's log"
-msgstr "Lahku Kapteni Logist"
+msgstr "Lahku Kapteni päevikust"
 
 # 80%
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
