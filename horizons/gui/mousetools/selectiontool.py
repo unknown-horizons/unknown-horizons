@@ -138,6 +138,8 @@ class SelectionTool(NavigationTool):
 		Called when selected instances changes. (Shows their menu)
 		If one of the selected instances can attack, switch mousetool to AttackingTool
 		"""
+		if (self.session.world.health_visible_for_all_health_instances):
+			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
 		if len(selected) > 1 and all( i.is_unit for i in selected ):
 			self.session.ingame_gui.show_multi_select_tab()
