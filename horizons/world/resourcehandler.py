@@ -165,19 +165,6 @@ class ResourceHandler(object):
 			# if this happens, a negative number would be returned. Use 0 instead.
 			return max(amount, 0)
 
-	def get_status_icons(self):
-		l = super(ResourceHandler, self).get_status_icons()
-
-		inventory_full_res = []
-		for res in self.get_produced_resources():
-			if (self.get_component(StorageComponent).inventory.get_free_space_for(res) == 0):
-				inventory_full_res.append(res)
-
-		if inventory_full_res:
-			l.append( InventoryFullStatus(inventory_full_res) )
-
-		return l
-
 	## PROTECTED METHODS
 	def _load_provided_resources(self):
 		"""Returns a iterable obj containing all resources this building provides.
