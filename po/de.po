@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-13 16:52+0200\n"
+"PO-Revision-Date: 2012-01-14 03:37+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -785,7 +785,7 @@ msgstr "Bootsbau-Übersicht"
 #: horizons/gui/tabs/boatbuildertab.py:93
 #, python-format
 msgid "(place in queue: {place})"
-msgstr "Gebäude oder Karte im Uhrzeigersinn drehen"
+msgstr "(Platz in Warteschlange: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:155
 msgid "Resources still needed:"
@@ -1920,8 +1920,9 @@ msgstr "Spielgeschwindigkeit erhöhen"
 
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:688
+#, fuzzy
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Eingefärbter Landbesitz"
 
 # This sentence goes beyond the page border on the right. There needs to be an automatically inserte break.
 #
@@ -2235,7 +2236,7 @@ msgstr "Das Schiff nach der Gründung einer Siedlung entladen"
 #: horizons/i18n/guitranslations.py:853
 msgid "If set to 0, use the driver default"
 msgstr ""
-"Bei der Auswahl von 0 wird die Standardeinstellung vom Treiber verwendet"
+"Bei der Auswahl von 0 wird die Standardeinstellung des Treibers verwendet"
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:855
@@ -2257,7 +2258,8 @@ msgstr "0 verwendet die Systemeinstellungen"
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:861
 msgid "If set to 0, use the router default"
-msgstr "Bei der Auswahl von 0 wird die Standardeinstellung vom Router verwendet"
+msgstr ""
+"Bei der Auswahl von 0 wird die Standardeinstellung des Routers verwendet"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:863
@@ -2270,13 +2272,13 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:865
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
-"SDL ist nur als nicht unterstützte Rückfall Option gedacht und könnte zu "
-"Problemen führen!"
+"SDL ist nur als nicht unterstütztes Reservesystem gedacht und kann Probleme "
+"hervorrufen!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:870
 msgid "Enter filename:"
-msgstr "Dateiname eingeben:"
+msgstr "Dateinamen eingeben:"
 
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:874
