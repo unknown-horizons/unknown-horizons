@@ -148,17 +148,21 @@ class BuildTab(TabInterface):
 			button = self.widget.child_finder('button_{position}'.format(position=position))
 			building = Entities.buildings[building_id]
 			settlement = self.session.cursor.last_hover_player_settlement
+
+			icon = self.widget.child_finder('icon_{position}'.format(position=position))
+
 			#xgettext:python-format
 			button.tooltip = _('{building}: {description}').format(building = building.name,
 			                                                    description = building.tooltip_text)
 			cb = Callback( self.session.ingame_gui.resourceinfo_set,
 						settlement, building.costs, {})
-			icon = self.widget.child_finder('icon_{position}'.format(position=position))
 
+			enough_res = True # show all buildings by default
+			if settlement is not None:
+				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
 			#check whether to disable build menu icon (not enough res available)
 			#TODO this does not refresh right now, the icons should get active
 			# as soon as enough res are available!
-			(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
 			if enough_res:
 				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
 				path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
