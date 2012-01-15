@@ -22,6 +22,7 @@
 
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.command.building import Build
 from horizons.util import Callback
 from horizons.util.python.roman_numerals import int_to_roman
 
@@ -144,20 +145,31 @@ class BuildTab(TabInterface):
 		# 1,3,5,7.. | 2,4,6,8.. | 21,23,25,27.. | 22,24,26,28..
 		"""
 		for position, building_id in self.__class__.image_data[tabindex].iteritems():
-			icon = self.widget.child_finder('icon_{position}'.format(position=position))
-			icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
 			button = self.widget.child_finder('button_{position}'.format(position=position))
+			building = Entities.buildings[building_id]
+			settlement = self.session.cursor.last_hover_player_settlement
 			#xgettext:python-format
-			button.tooltip = _('{building}: {description}').format(building = Entities.buildings[building_id].name,
-			                                                    description = Entities.buildings[building_id].tooltip_text)
-			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
-			button.up_image = path.format(mode='')
-			button.down_image = path.format(mode='_h')
-			button.hover_image = path.format(mode='_h')
-
+			button.tooltip = _('{building}: {description}').format(building = building.name,
+			                                                    description = building.tooltip_text)
 			cb = Callback( self.session.ingame_gui.resourceinfo_set,
-						self.session.cursor.last_hover_player_settlement,
-			               Entities.buildings[building_id].costs, {})
+						settlement, building.costs, {})
+			icon = self.widget.child_finder('icon_{position}'.format(position=position))
+
+			#check whether to disable build menu icon (not enough res available)
+			#TODO this does not refresh right now, the icons should get active
+			# as soon as enough res are available!
+			(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
+			if enough_res:
+				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
+				path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
+				button.down_image = path.format(mode='_h')
+				button.hover_image = path.format(mode='_h')
+			else:
+				icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
+				path = "content/gui/icons/buildmenu/greyscale/{id:03d}{{mode}}.png".format(id=building_id)
+				button.down_image = path.format(mode='')
+				button.hover_image = path.format(mode='')
+			button.up_image = path.format(mode='')
 
 			button.mapEvents({'{button}/mouseEntered'.format(button=button.name) : cb})
 			button.capture(self.callback_mapping[building_id])
