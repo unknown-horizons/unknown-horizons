@@ -2,6 +2,7 @@
 *.pyc
 *.po~
 *.nsi
+*.swp
 *.sql~
 *.py~
 *.xml~
