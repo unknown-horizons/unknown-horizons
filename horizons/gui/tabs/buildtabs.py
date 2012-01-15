@@ -22,6 +22,7 @@
 
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.util import Callback
 from horizons.util.python.roman_numerals import int_to_roman
 
 class BuildTab(TabInterface):
@@ -108,11 +109,12 @@ class BuildTab(TabInterface):
 
 	last_active_build_tab = None
 
-	def __init__(self, tabindex = 1, callback_mapping=None):
+	def __init__(self, tabindex = 1, callback_mapping=None, session=None):
 		if callback_mapping is None:
 			callback_mapping = {}
 		super(BuildTab, self).__init__(widget = 'buildtab.xml')
 		self.init_values()
+		self.session = session
 		self.tabindex = tabindex
 		self.callback_mapping = callback_mapping
 
@@ -152,6 +154,12 @@ class BuildTab(TabInterface):
 			button.up_image = path.format(mode='')
 			button.down_image = path.format(mode='_h')
 			button.hover_image = path.format(mode='_h')
+
+			cb = Callback( self.session.ingame_gui.resourceinfo_set,
+						self.session.cursor.last_hover_player_settlement,
+			               Entities.buildings[building_id].costs, {})
+
+			button.mapEvents({'{button}/mouseEntered'.format(button=button.name) : cb})
 			button.capture(self.callback_mapping[building_id])
 
 	def update_text(self, tabindex):
