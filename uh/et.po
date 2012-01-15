@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-09 18:26+0200\n"
-"Last-Translator: Mihkel <RM87@hot.ee>\n"
+"PO-Revision-Date: 2012-01-15 17:41+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -888,8 +888,9 @@ msgid "Overview"
 msgstr "Ülevaade"
 
 #: horizons/gui/tabs/overviewtab.py:115 horizons/gui/tabs/overviewtab.py:471
+#, fuzzy
 msgid "Warehouse overview"
-msgstr ""
+msgstr "Turuplatsi ülevaade"
 
 #: horizons/gui/tabs/overviewtab.py:145 horizons/gui/tabs/overviewtab.py:273
 msgid "Ship overview"
@@ -1681,13 +1682,13 @@ msgstr "Vali tsenaarium"
 #: horizons/i18n/guitranslations.py:554
 #, fuzzy
 msgid "Wait at load:"
-msgstr "Oota :"
+msgstr "Oota:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:556
 #, fuzzy
 msgid "Wait at unload:"
-msgstr "Oota"
+msgstr "Oota:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:558
@@ -2251,9 +2252,8 @@ msgstr "0 on süsteemi vaikeseaded"
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:861
-#, fuzzy
 msgid "If set to 0, use the router default"
-msgstr "kui väärtuseks on 0, kasutatakse marsruuteri vaikeseadeid."
+msgstr "Kui väärtuseks on 0, kasutatakse marsruuteri vaikeseadeid"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:863
@@ -2752,9 +2752,8 @@ msgstr "Rada"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Rada: Vajalik kaupade kogumiseks."
+msgstr "Vajalik kaupade kogumiseks."
 
 #. name of buildings:tree
 #. tooltip_text of buildings:tree
@@ -2904,9 +2903,8 @@ msgstr "Sa pead tegema kiirsalvestuse enne kui saad kiirlaadimise teha."
 
 #. usually invalid filename
 #: horizons/spsession.py:159
-#, fuzzy
 msgid "Failed to create savegame file"
-msgstr "Salvestatud mängu faili tegemine ebaõnnestus."
+msgstr "Salvestatud mängu faili tegemine ebaõnnestus"
 
 #: horizons/spsession.py:160
 msgid "There has been an error while creating your savegame file."
@@ -3052,12 +3050,12 @@ msgstr "Selle tegemiseks vajame informatsiooni logifailist:"
 #: run_uh.py:172
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
-"Palun anna see meile läbi  IRC'i või meie foorumi. Mõlemad leiad lehelt "
+"Palun anna see meile läbi IRC'i või meie foorumi. Mõlemad leiad lehelt "
 "unknown-horizons.org ."
 
 #: run_uh.py:213
 msgid "Error: Unable to find required libraries"
-msgstr "Tõrge: Ei leia vajalike teeke."
+msgstr "Tõrge: Ei leia vajalike teeke"
 
 #: run_uh.py:214
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
