@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-16 04:58+0200\n"
+"PO-Revision-Date: 2012-01-16 05:04+0200\n"
 "Last-Translator: janczarny <janczarny@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -46,7 +46,7 @@ msgstr "Część Twoich mieszkańców nie ma dostępu do rynku."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr "Część Twoich mieszkańców wyprowadziła się. "
+msgstr "Część twoich mieszkańców wyprowadziła się."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -160,7 +160,7 @@ msgstr "glina"
 #: database files sql
 #, fuzzy
 msgid "clay deposit"
-msgstr "Magazyn gliny"
+msgstr "złoże gliny"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -181,7 +181,7 @@ msgstr "sztylet"
 #: database files sql
 #, fuzzy
 msgid "deer food A"
-msgstr "Jelenie jedzenie A"
+msgstr "jelenie jedzenie A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1018,7 +1018,7 @@ msgstr "Nic"
 #: horizons/gui/widgets/playersships.py:90
 #, fuzzy
 msgid "N/A"
-msgstr "Nie dostępny"
+msgstr "nie dostępny"
 
 #: horizons/gui/widgets/productionoverview.py:50
 #, python-format
