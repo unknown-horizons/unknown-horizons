@@ -55,9 +55,10 @@ class ComponentHolder(object):
 
 	def initialize(self):
 		"""Has to be called every time an componentholder is created."""
-		self.__load_components()
+		for component in self.__create_components():
+			self.add_component(component)
 
-	def __load_components(self):
+	def __create_components(self):
 		tmp_comp = []
 		if hasattr(self, 'component_templates'):
 			for entry in self.component_templates:
@@ -70,8 +71,7 @@ class ComponentHolder(object):
 					tmp_comp.append(component)
 		# 'Resolve' dependencies by utilizing overloaded gt/lt
 		tmp_comp.sort()
-		for component in tmp_comp:
-			self.add_component(component)
+		return tmp_comp
 
 	def remove(self):
 		for component in self.components.values():
@@ -81,9 +81,10 @@ class ComponentHolder(object):
 	def load(self, db, worldid):
 		super(ComponentHolder, self).load(db, worldid)
 		self.components = {}
-		self.__load_components()
-		for component in sorted(self.components.itervalues()):
+		for component in self.__create_components():
+			component.instance = self
 			component.load(db, worldid)
+			self.components[component.NAME] = component
 
 	def save(self, db):
 		super(ComponentHolder, self).save(db)

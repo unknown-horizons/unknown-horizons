@@ -61,17 +61,20 @@ class Production(ChangeListener):
 		self._state_history = deque()
 		self.prod_id = prod_id
 		self.prod_data = prod_data
+		self.__auto_start = auto_start
+		self.__start_finished = start_finished
 		self.__init(inventory, owner_inventory, prod_id, prod_data, PRODUCTION.STATES.none, Scheduler().cur_tick)
-
-		if start_finished:
-			self._give_produced_res()
 
 		# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
 		self.inventory.add_change_listener(self._check_inventory, call_listener_now=False)
 		if self.__class__.USES_GOLD:
 			self.owner_inventory.add_change_listener(self._check_inventory, call_listener_now=False)
 
-		if auto_start:
+
+	def start(self):
+		if self.__start_finished:
+			self._give_produced_res()
+		if self.__auto_start:
 			self._check_inventory()
 
 	def __init(self, inventory, owner_inventory, prod_id, prod_data, state, creation_tick, pause_old_state = None):
@@ -395,8 +398,6 @@ class Production(ChangeListener):
 		"""Put produces goods to the inventory"""
 		for res, amount in self._prod_line.produced_res.iteritems():
 			ret = self.inventory.alter(res, amount)
-			if res == 19:
-				self.log.debug("produced %s of %s, %s could not fit", amount, res, ret)
 
 	def _check_available_res(self):
 		"""Checks if all required resources are there.

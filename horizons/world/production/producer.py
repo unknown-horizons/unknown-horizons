@@ -52,13 +52,17 @@ class Producer(Component):
 		self.__start_finished = start_finished
 		self.production_lines = productionlines
 
-	def initialize(self):
+	def __init(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
 		# the inactive ones won't get considered for needed_resources and such.
 		# the production_line id is the key in the dict (=> a building must not have two identical
 		# production lines)
 		self._productions = {}
 		self._inactive_productions = {}
+
+
+	def initialize(self):
+		self.__init()
 		# add production lines as specified in db.
 		if self.__auto_init:
 			for prod_line, attributes in self.production_lines.iteritems():
@@ -66,7 +70,7 @@ class Producer(Component):
 					continue  # It's set to false, don't add
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
-
+				prod.start()
 		if self.__start_finished:
 			self.finish_production_now()
 
@@ -129,13 +133,13 @@ class Producer(Component):
 		Scheduler().add_new_object(self._on_production_change, self, run_in = 0)
 		super(Producer, self).load(db, worldid)
 		# load all productions
-		for production in self.get_productions():
+		self.__init()
+		lines_to_load = db("SELECT prod_line_id FROM production WHERE owner=?", worldid)
+		for line_id,  in lines_to_load:
+			production = self.create_production(line_id)
+			assert isinstance(production, Production)
 			production.load(db, worldid)
-			# move inactive productions to the correct list
-			if production.is_paused():
-				if production.prod_id in self._productions:
-					self._inactive_productions[production.prod_id] = production
-					del self._productions[production.prod_id]
+			self.add_production(production)
 			# Listener has been removed in the productions.load(), because the
 			# changelistener's load is called
 			production.add_change_listener(self._on_production_change, call_listener_now=False)
@@ -340,9 +344,9 @@ class QueueProducer(Producer):
 
 	def __init__(self, **kwargs):
 		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
+		self.__init()
 
-	def initialize(self, **kwargs):
-		super(QueueProducer, self).initialize( ** kwargs)
+	def __init(self):
 		self.production_queue = [] # queue of production line ids
 
 	def save(self, db):
@@ -354,6 +358,7 @@ class QueueProducer(Producer):
 
 	def load(self, db, worldid):
 		super(QueueProducer, self).load(db, worldid)
+		self.__init()
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE object = ? ORDER by position", worldid):
 			self.production_queue.append(prod_line_id)
 
