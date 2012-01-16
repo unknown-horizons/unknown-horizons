@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-11 23:33+0200\n"
+"PO-Revision-Date: 2012-01-16 23:01+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -1919,110 +1919,112 @@ msgstr ""
 #. (text of widget: lbl_UP)
 #: horizons/i18n/guitranslations.py:692
 msgid "Scroll up"
-msgstr ""
+msgstr "Görgetés felfelé"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:694 horizons/i18n/guitranslations.py:831
 msgid "Return"
-msgstr ""
+msgstr "Vissza"
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
 #: horizons/i18n/guitranslations.py:699 horizons/i18n/guitranslations.py:725
 msgid "Help"
-msgstr ""
+msgstr "Segítség"
 
 #. (text of widget: quit)
 #: horizons/i18n/guitranslations.py:703
 msgid "Cancel game"
-msgstr ""
+msgstr "Kilépés"
 
 #. (text of widget: settings)
 #. (text of widget: settings) Main / in-game menu entry
 #: horizons/i18n/guitranslations.py:707 horizons/i18n/guitranslations.py:731
 msgid "Settings"
-msgstr ""
+msgstr "Beállítások"
 
 #. (text of widget: start)
 #: horizons/i18n/guitranslations.py:709
 msgid "Return to game"
-msgstr ""
+msgstr "Játék folytatása"
 
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:714
 msgid "Loading ..."
-msgstr ""
+msgstr "Betöltés ..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:721
 msgid "Attention please!"
-msgstr ""
+msgstr "Figyelem!"
 
 #. (text of widget: credits)
 #: horizons/i18n/guitranslations.py:723
+#, fuzzy
 msgid "Credits"
-msgstr ""
+msgstr "Stáblista"
 
 #. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py:729
 msgid "Quit"
-msgstr ""
+msgstr "Kilépés"
 
 #. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
 #: horizons/i18n/guitranslations.py:733
 msgid "Singleplayer"
-msgstr ""
+msgstr "Egyjátékos mód"
 
 #. (text of widget: start_multi) Opens widget to join or create multiplayer games
 #: horizons/i18n/guitranslations.py:735
 msgid "Multiplayer"
-msgstr ""
+msgstr "Többjátékos mód"
 
 #. (text of widget: create_game_lbl)
 #: horizons/i18n/guitranslations.py:742 horizons/i18n/guitranslations.py:776
 msgid "Create game:"
-msgstr ""
+msgstr "Játék létrehozása:"
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:744
 msgid "Back:"
-msgstr ""
+msgstr "Vissza:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:746
 msgid "Choose a map:"
-msgstr ""
+msgstr "Térkép kiválasztás:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:748
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Játék létrehozása - többjátékos mód"
 
 #. (text of widget: mp_player_limit_lbl)
 #: horizons/i18n/guitranslations.py:750
+#, fuzzy
 msgid "Player limit:"
-msgstr ""
+msgstr "Játékos limit:"
 
 #. (tooltip of widget: create)
 #: horizons/i18n/guitranslations.py:752
 msgid "Create this new game"
-msgstr ""
+msgstr "Az új játék létrehozása"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:754
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "Kilépés a többjátékos menübe"
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:759
 msgid "Leave:"
-msgstr ""
+msgstr "Kilépés:"
 
 #. (text of widget: game_start_notice)
 #: horizons/i18n/guitranslations.py:761
 msgid "The game will start as soon as enough players have joined."
-msgstr ""
+msgstr "A játék azonnal elindul, amint elég játékos csatlakozott."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:763
@@ -2037,7 +2039,7 @@ msgstr ""
 #. (text of widget: startmessage)
 #: horizons/i18n/guitranslations.py:767
 msgid "Game details:"
-msgstr ""
+msgstr "Játék leírás:"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:769
@@ -2047,28 +2049,28 @@ msgstr ""
 #. (text of widget: active_games_lbl)
 #: horizons/i18n/guitranslations.py:774
 msgid "Active games:"
-msgstr ""
+msgstr "Aktív játékok:"
 
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
 #: horizons/i18n/guitranslations.py:778 horizons/i18n/guitranslations.py:885
 msgid "Main menu:"
-msgstr ""
+msgstr "Főmenü:"
 
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:780
 msgid "Only show games with the same version:"
-msgstr ""
+msgstr "Csak azonos verziójú játékok mutatása:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:782
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "Új játék - többjátékos"
 
 #. (text of widget: join_game_lbl)
 #: horizons/i18n/guitranslations.py:784
 msgid "Join game"
-msgstr ""
+msgstr "Csatlakozás a játékhoz"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:786
