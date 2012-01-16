@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-16 05:04+0200\n"
+"PO-Revision-Date: 2012-01-16 19:59+0200\n"
 "Last-Translator: janczarny <janczarny@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -40,8 +40,9 @@ msgstr "Zrzut ekranu został zapisany w {file}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Część Twoich mieszkańców nie ma dostępu do rynku."
+msgstr "Twoi mieszkańcy nie mają dostępu do rynku."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -211,8 +212,9 @@ msgstr "jedzenie"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "get-together"
-msgstr ""
+msgstr "razem"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -272,8 +274,9 @@ msgstr "świnie"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "świnie na rzeź"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -353,7 +356,7 @@ msgstr "wełna"
 #, python-format
 #, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr "${player1} i ${player2} są teraz ${status}"
+msgstr "{player1} i {player2} są teraz {status}"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -407,8 +410,11 @@ msgstr ""
 "1 do 65535."
 
 #: horizons/engine/settingshandler.py:214
+#, fuzzy
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Proszę sprawdzić port jaki wpisałeś i upewnić się, czy jest w określonym "
+"zasięgu."
 
 #: horizons/engine/settingshandler.py:226
 msgid "Failed to apply new network settings."
@@ -416,18 +422,23 @@ msgstr "Nie udało się zatwierdzić nowych ustawień sieciowych."
 
 #: horizons/engine/settingshandler.py:227
 #: horizons/gui/modules/multiplayermenu.py:52
+#, fuzzy
 msgid "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "Funkcje sieciowe nie mogą zostać zainicjowany z aktualną konfiguracją."
 
 #: horizons/engine/settingshandler.py:228
 #: horizons/gui/modules/multiplayermenu.py:53
+#, fuzzy
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Sprawdź ustawienia określone w sekcji sieci."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:232
+#, fuzzy
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
+"Porty o małych numerach wymagają czasami specjalnych uprawnień, spróbuj 0 "
+"lub numer portu większy niż 1024."
 
 #: horizons/engine/settingshandler.py:262
 #, python-format
@@ -467,8 +478,9 @@ msgid "No saved games"
 msgstr "Brak zapisanych stanów gry"
 
 #: horizons/gui/gui.py:253
+#, fuzzy
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "Nie ma zapisanych gier które można wczytać."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -484,23 +496,26 @@ msgid "Save game"
 msgstr "Zapisz grę"
 
 #: horizons/gui/gui.py:320
+#, fuzzy
 msgid "No filename given"
-msgstr ""
+msgstr "Nie podano nazwy pliku"
 
 #: horizons/gui/gui.py:320
+#, fuzzy
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Proszę wprowadzić poprawną nazwę pliku."
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py:325
-#, python-format
+#, python-format, fuzzy
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "Zapis gry o nazwie '{name}' już istnieje."
 
 #: horizons/gui/gui.py:326
+#, fuzzy
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Czy chcesz nadpisać to?"
 
 #: horizons/gui/gui.py:327
 msgid "Confirmation for overwriting"
@@ -538,22 +553,22 @@ msgstr "Zapisano o {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:541
-#, python-format
+#, python-format, fuzzy
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Zapisano {amount}"
+msgstr[1] "Zapisano {amount} razy"
 msgstr[2] ""
 
 #: horizons/gui/gui.py:551
-#, python-format
+#, python-format, fuzzy
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Wersja zapisanej gry {version}"
 
 #: horizons/gui/gui.py:555
-#, python-format
+#, python-format, fuzzy
 msgid "WARNING: Incompatible version {version}!"
-msgstr ""
+msgstr "Ostrzeżenie: Niekompatybilne wersje {version}!"
 
 #: horizons/gui/gui.py:558
 #, python-format
