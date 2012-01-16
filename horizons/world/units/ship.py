@@ -37,7 +37,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.component.namedcomponent import ShipNameComponent, NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
 
-class ShipRoute(object):
+class TradeRoute(object):
 	"""
 	waypoints: list of dicts with the keys
 		- warehouse:  a warehouse object
@@ -313,7 +313,7 @@ class Ship(Unit):
 		self.__init()
 
 		# if ship did not have route configured, do not add attribute
-		if ShipRoute.has_route(db, worldid):
+		if TradeRoute.has_route(db, worldid):
 			self.create_route()
 			self.route.load(db)
 
@@ -343,7 +343,7 @@ class Ship(Unit):
 		super(Ship, self).remove()
 
 	def create_route(self):
-		self.route = ShipRoute(self)
+		self.route = TradeRoute(self)
 
 	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
