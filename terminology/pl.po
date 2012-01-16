@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2012-01-16 21:01+0200\n"
+"PO-Revision-Date: 2012-01-16 21:04+0200\n"
 "Last-Translator: janczarny <janczarny@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -238,9 +238,8 @@ msgstr "uruchomione"
 msgid "running costs"
 msgstr "koszty utrzymania"
 
-#, fuzzy
 msgid "collector"
-msgstr "Kolekcjoner"
+msgstr "kupiec"
 
 msgid "help"
 msgstr "pomoc"
@@ -259,9 +258,8 @@ msgid "move"
 msgstr "przesuń"
 
 # 80%
-#, fuzzy
 msgid "moved"
-msgstr "przesuń"
+msgstr "przesunięty"
 
 msgid "produce"
 msgstr "produkuj"
@@ -635,10 +633,10 @@ msgid "starting"
 msgstr "startować"
 
 msgid "trade partner"
-msgstr ""
+msgstr "partner handlowy"
 
 msgid "yields"
-msgstr ""
+msgstr "plony"
 
 msgid "faith"
 msgstr "wiara"
@@ -705,49 +703,49 @@ msgid "ruin"
 msgstr "ruina"
 
 msgid "seed"
-msgstr ""
+msgstr "ziarno"
 
 msgid "temporarily"
-msgstr ""
+msgstr "tymczasowo"
 
 msgid "salt ponds"
-msgstr ""
+msgstr "uncje soli"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tytoń"
 
 msgid "cattle"
-msgstr ""
+msgstr "bydło"
 
 msgid "pig"
-msgstr ""
+msgstr "świnia"
 
 msgid "herbs"
-msgstr ""
+msgstr "zioła"
 
 msgid "herbary"
-msgstr ""
+msgstr "zielarz"
 
 msgid "butchery"
-msgstr ""
+msgstr "rzeźnik"
 
 msgid "doctor"
-msgstr ""
+msgstr "doktor"
 
 msgid "education"
-msgstr ""
+msgstr "edukacja"
 
 msgid "clay"
-msgstr ""
+msgstr "glina"
 
 msgid "charcoal"
-msgstr ""
+msgstr "węgiel drzewny"
 
 msgid "iron"
-msgstr ""
+msgstr "żelazo"
 
 msgid "ore"
-msgstr ""
+msgstr "ruda"
 
 #~ msgid "lamb"
 #~ msgstr "owca"

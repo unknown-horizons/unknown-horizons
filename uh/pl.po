@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-16 20:40+0200\n"
+"PO-Revision-Date: 2012-01-16 21:13+0200\n"
 "Last-Translator: janczarny <janczarny@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -40,9 +40,8 @@ msgstr "Zrzut ekranu został zapisany w {file}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Twoi mieszkańcy nie mają dostępu do rynku."
+msgstr "Twoim mieszkańcom brakuje dostępu do rynku."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -57,11 +56,10 @@ msgstr "Możesz także przesuwać drogi."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
-"Osiągnąłeś maksymalny stadium rozwoju. Twoi mieszkańcy nie będą się dalej "
-"rozwijać."
+"Osiągnąłeś maksymalny poziom rozwoju cywilizacyjnego. Twoi mieszkańcy nie "
+"będą awansować na wyższy poziom."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -87,10 +85,13 @@ msgstr "Gra została automatycznie zapisana."
 msgid "Your game has been quicksaved."
 msgstr "Gra została zapisana."
 
+# 86%
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been saved."
-msgstr ""
+msgstr "Gra została zapisana."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -566,9 +567,9 @@ msgid "Savegame version {version}"
 msgstr "Wersja zapisanej gry {version}"
 
 #: horizons/gui/gui.py:555
-#, python-format, fuzzy
+#, python-format, 
 msgid "WARNING: Incompatible version {version}!"
-msgstr "Ostrzeżenie: Niekompatybilne wersje {version}!"
+msgstr "OSTRZEŻENIE: Niekompatybilne wersje {version}!"
 
 #: horizons/gui/gui.py:558
 #, python-format, fuzzy
@@ -608,15 +609,16 @@ msgstr "Nie można usunąć zapisanej gry!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/gui.py:602
-#, python-format, fuzzy
+#, python-format, 
 msgid "[{key}] = {text}"
 msgstr "[{key}] = {text}"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:330
+#, fuzzy
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Dyplomacja nie możliwa"
 
 #: horizons/gui/ingamegui.py:331
 msgid "Cannot do diplomacy as there are no other players."
@@ -854,12 +856,11 @@ msgstr "Wzrost {increment}"
 #. TODO what formatting to use? getting names from DB and adding
 #. '... buildings' will cause wrong declinations all over :/
 #: horizons/gui/tabs/buildtabs.py:134
-#, fuzzy
 msgid "{incr_inhabitant_name}"
 msgstr "{incr_inhabitant_name}"
 
 #: horizons/gui/tabs/buildtabs.py:149 horizons/util/uhdbaccessor.py:150
-#, python-format, fuzzy
+#, python-format, 
 msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
@@ -926,9 +927,11 @@ msgstr "Osadnicy"
 msgid "Overview"
 msgstr "Przegląd"
 
+# lub Rynku lub Rynku Miejskiego
+# 94%
 #: horizons/gui/tabs/overviewtab.py:115 horizons/gui/tabs/overviewtab.py:471
 msgid "Warehouse overview"
-msgstr ""
+msgstr "Przegląd magazynu"
 
 #: horizons/gui/tabs/overviewtab.py:145 horizons/gui/tabs/overviewtab.py:273
 msgid "Ship overview"
@@ -940,7 +943,7 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:158
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "Posiadasz osadę na tej wyspie."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:166 horizons/i18n/guitranslations.py:452
@@ -1236,12 +1239,14 @@ msgstr "Zastosuj nową nazwę"
 
 #. (text of widget: chat_lbl)
 #: horizons/i18n/guitranslations.py:122
+#, fuzzy
 msgid "Enter your message:"
 msgstr "Wpisz swoją wiadomość:"
 
 #. (text of widget: headline)
 #. (text of widget: lbl_CHAT)
 #: horizons/i18n/guitranslations.py:124 horizons/i18n/guitranslations.py:642
+#, fuzzy
 msgid "Chat"
 msgstr "Czat"
 
@@ -1265,6 +1270,7 @@ msgstr "Zapisz tę mapę"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:138
+#, fuzzy
 msgid "Cancel building:"
 msgstr "Przerwij budowanie:"
 
@@ -1581,6 +1587,7 @@ msgstr ""
 
 #. (text of widget: trader_description_lbl)
 #: horizons/i18n/guitranslations.py:397
+#, fuzzy
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
 "To jest okręt wolnego kupca. Będzie cię odwiedzał od czasu do czasu, by "
@@ -1875,6 +1882,7 @@ msgstr "Pokaż menu budowania"
 
 #. (text of widget: lbl_CONSOLE)
 #: horizons/i18n/guitranslations.py:644
+#, fuzzy
 msgid "Toggle console on/off"
 msgstr "Włącz/Wyłącz konsolę"
 
@@ -1895,6 +1903,7 @@ msgstr "Przesuń w dół"
 
 #. (text of widget: lbl_GRID)
 #: horizons/i18n/guitranslations.py:652
+#, fuzzy
 msgid "Toggle grid on/off"
 msgstr "Włącz/Wyłącz siatkę"
 
@@ -1993,6 +2002,7 @@ msgstr "Podświetl tereny zamieszkane"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:690
+#, fuzzy
 msgid "Toggle translucency of ambient buildings"
 msgstr "Włącz/Wyłącz przeźroczystość otoczenia budynków"
 
@@ -2441,7 +2451,6 @@ msgstr "Nazwa gracza:"
 
 #. (text of widget: selectedcolor)
 #: horizons/i18n/guitranslations.py:942
-#, fuzzy
 msgid " "
 msgstr "~"
 
