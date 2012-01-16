@@ -95,7 +95,7 @@ class TestRunner(object):
 
 	def _load_test(self, test_name):
 		"""Import test from dotted path, e.g.:
-		
+
 			tests.gui.test_example.example
 		"""
 		path, name = test_name.rsplit('.', 1)
@@ -147,7 +147,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
 		@wraps(func)
 		def wrapped():
 			test_name = '%s.%s' % (func.__module__, func.__name__)
-			args = ['python', 'run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
+			args = [sys.executable, 'run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
 			if use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):
