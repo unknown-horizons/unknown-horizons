@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-16 19:59+0200\n"
+"PO-Revision-Date: 2012-01-16 20:40+0200\n"
 "Last-Translator: janczarny <janczarny@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -571,26 +571,28 @@ msgid "WARNING: Incompatible version {version}!"
 msgstr "Ostrzeżenie: Niekompatybilne wersje {version}!"
 
 #: horizons/gui/gui.py:558
-#, python-format
+#, python-format, fuzzy
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "Wymaga wersja: {required}!"
 
 #: horizons/gui/gui.py:561
+#, fuzzy
 msgid "Incompatible version"
-msgstr ""
+msgstr "Niekompatybilna wersja"
 
 #: horizons/gui/gui.py:578
 msgid "No file selected"
 msgstr "Żaden plik nie został wybrany"
 
 #: horizons/gui/gui.py:578
+#, fuzzy
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Musisz mieć zaznaczony zapis gry, by go usunąć."
 
 #: horizons/gui/gui.py:582
-#, python-format
+#, python-format, fuzzy
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć zapis gry  '{name}'?"
 
 #: horizons/gui/gui.py:584
 msgid "Confirm deletion"
@@ -606,9 +608,9 @@ msgstr "Nie można usunąć zapisanej gry!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/gui.py:602
-#, python-format
+#, python-format, fuzzy
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -626,9 +628,9 @@ msgid "Valid map names are in the following form: {expression}"
 msgstr ""
 
 #: horizons/gui/ingamegui.py:514
-#, python-format
+#, python-format, fuzzy
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Spróbuj wpisać nazwę która zawiera litery i liczby."
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -657,16 +659,21 @@ msgstr "Inicjalizacja sieci niepowiodła się."
 
 #: horizons/gui/modules/multiplayermenu.py:103
 #: horizons/gui/modules/multiplayermenu.py:121
+#, fuzzy
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Poważny Błąd Sieciowy"
 
 #: horizons/gui/modules/multiplayermenu.py:104
+#, fuzzy
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Nie można podłączyć się do głównego serwera."
 
 #: horizons/gui/modules/multiplayermenu.py:105
+#, fuzzy
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Proszę sprawdzić połączenie z internetem. Jeśli jest w porządku oznacza to "
+"że nasz serwer jest tymczasowo wyłączony."
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:122
@@ -688,24 +695,28 @@ msgid "Players: {player_amount}/{player_limit}"
 msgstr "Gracze: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:175
-#, python-format
+#, python-format, fuzzy
 msgid "Creator: {player}"
-msgstr ""
+msgstr "Twórca: : {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:192
 msgid "Wrong version"
 msgstr "Zła wersja"
 
 #: horizons/gui/modules/multiplayermenu.py:194
-#, python-format
+#, python-format, 
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"Wersja gry jest inna niż twoja. Każdy gracz grający w multiplayer musi "
+"posiadać taką samą wersje gry. Ten problem może zostać rozwiązany przez "
+"aktualizacje gry przez każdego gracza do najnowszej wersji. Wersja gry: "
+"{game_version} Twoja wersja gry: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:300
 #: horizons/gui/modules/singleplayermenu.py:68
-#, python-format
+#, python-format, fuzzy
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Rekomendowana ilość graczy wynosi: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:106
 #: horizons/gui/modules/singleplayermenu.py:121
@@ -787,17 +798,18 @@ msgid "Build"
 msgstr "Zbuduj"
 
 #: horizons/gui/mousetools/navigationtool.py:71
+#, fuzzy
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Naciśnij H, aby usunąć tą wskazówkę"
 
 #: horizons/gui/tabs/boatbuildertab.py:43
 msgid "Boat builder overview"
 msgstr "Podgląd budowy łodzi"
 
 #: horizons/gui/tabs/boatbuildertab.py:93
-#, python-format
+#, python-format, fuzzy
 msgid "(place in queue: {place})"
-msgstr ""
+msgstr "(pozycje w kolejce: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:155
 msgid "Resources still needed:"
@@ -842,13 +854,14 @@ msgstr "Wzrost {increment}"
 #. TODO what formatting to use? getting names from DB and adding
 #. '... buildings' will cause wrong declinations all over :/
 #: horizons/gui/tabs/buildtabs.py:134
+#, fuzzy
 msgid "{incr_inhabitant_name}"
-msgstr ""
+msgstr "{incr_inhabitant_name}"
 
 #: horizons/gui/tabs/buildtabs.py:149 horizons/util/uhdbaccessor.py:150
-#, python-format
+#, python-format, fuzzy
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #. (text of widget: headline)
 #. (tooltip of widget: trade)
@@ -936,16 +949,19 @@ msgid "Build settlement"
 msgstr "Zbuduj osadę"
 
 #: horizons/gui/tabs/overviewtab.py:190
+#, fuzzy
 msgid "Load/Unload"
-msgstr ""
+msgstr "Załaduj/Wyładuj"
 
 #: horizons/gui/tabs/overviewtab.py:193
+#, fuzzy
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Kup/Sprzedaj"
 
 #: horizons/gui/tabs/overviewtab.py:202
+#, fuzzy
 msgid "Too far from the nearest warehouse"
-msgstr ""
+msgstr "Za daleko do najbliższego magazynu"
 
 #: horizons/gui/tabs/overviewtab.py:208
 msgid "Cannot equip trade ship with weapons"
@@ -978,9 +994,9 @@ msgstr "Zaznaczone jednostki"
 
 #: horizons/gui/widgets/buysellinventory.py:83
 #: horizons/gui/widgets/inventory.py:106
-#, python-format
+#, python-format, fuzzy
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Limit: {amount}t na slot"
 
 #: horizons/gui/widgets/logbook.py:157
 msgid "Emptiness"
@@ -1005,12 +1021,12 @@ msgstr "Dźwięk"
 #: horizons/gui/widgets/pickbeltwidget.py:91
 #, fuzzy
 msgid "Game"
-msgstr "Wyłącz grę"
+msgstr "Gra"
 
 #: horizons/gui/widgets/playerssettlements.py:43
-#, python-format
+#, python-format, fuzzy
 msgid "Settlements of {player}"
-msgstr ""
+msgstr "Osada {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:113
@@ -1036,9 +1052,9 @@ msgid "N/A"
 msgstr "nie dostępny"
 
 #: horizons/gui/widgets/productionoverview.py:50
-#, python-format
+#, python-format, fuzzy
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "Stan produkcji {settlement}"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:76 horizons/i18n/guitranslations.py:560
@@ -1050,14 +1066,15 @@ msgid "Stop route"
 msgstr "Zatrzymaj"
 
 #: horizons/gui/widgets/routeconfig.py:129
+#, fuzzy
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "Kliknij na osadę, by dodać punkt orientacyjny!"
 
 # 83%
 #: horizons/gui/widgets/routeconfig.py:257
 #, fuzzy
 msgid "Select a resource:"
-msgstr "Wybierz zasoby:"
+msgstr "Zaznacz zasoby:"
 
 #: horizons/gui/widgets/unitoverview.py:127
 msgid "none"
@@ -1102,13 +1119,15 @@ msgstr "Kliknij aby zmienić nazwę osady."
 
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:70
+#, fuzzy
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Menu budowy (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:72
+#, fuzzy
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Zniszcz (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:74
@@ -1117,30 +1136,34 @@ msgstr "Dyplomacja"
 
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:76
+#, fuzzy
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Menu gry (Esc)"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:78
+#, fuzzy
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "Dziennik kapitana (L)"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:80
+#, fuzzy
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Obracaj mapę zgodnie z przeciwnie do kierunku zegara (,)"
 
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:82
+#, fuzzy
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Obracaj mapę zgodnie z kierunkiem zegara (,)"
 
 # 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:84
 #, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Spowolnij szybkość gry"
+msgstr "Spowolnij szybkość gry (-)"
 
 # 82%
 #. (tooltip of widget: speedUp)
@@ -1207,8 +1230,9 @@ msgstr "Zmień nazwę"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:117
+#, fuzzy
 msgid "Apply the new name"
-msgstr "Zastosować nową nazwę"
+msgstr "Zastosuj nową nazwę"
 
 #. (text of widget: chat_lbl)
 #: horizons/i18n/guitranslations.py:122
@@ -1223,18 +1247,21 @@ msgstr "Czat"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:129
+#, fuzzy
 msgid "Enter prefix:"
-msgstr ""
+msgstr "Wprowadź prefix:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:131
+#, fuzzy
 msgid "Save map"
-msgstr ""
+msgstr "Zapisz mapę"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:133
+#, fuzzy
 msgid "Save the map"
-msgstr ""
+msgstr "Zapisz tę mapę"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:138
@@ -1432,8 +1459,9 @@ msgstr "Podatki:"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:285
+#, fuzzy
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Przywileje awansu:"
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
@@ -1481,13 +1509,15 @@ msgstr "5 mieszkańców"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:320
+#, fuzzy
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Awans nie możliwy:"
 
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:322
+#, fuzzy
 msgid "This is the current maximum increment!"
-msgstr "Osiągnąłęś najwyższy poziom rozwoju!"
+msgstr "Osiągnąłeś najwyższy poziom rozwoju!"
 
 #. (text of widget: buying_label)
 #. (text of widget: buy_expenses_label)
@@ -1498,13 +1528,15 @@ msgstr "Kupno"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:337 horizons/i18n/guitranslations.py:428
+#, fuzzy
 msgid "Selling"
-msgstr ""
+msgstr "Sprzedaż"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:342
+#, fuzzy
 msgid "Weapons:"
-msgstr "Broń:"
+msgstr "Bronie:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:360
@@ -1587,8 +1619,9 @@ msgstr "Kliknij aby zmienić nazwę tego statku."
 
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:450 horizons/i18n/guitranslations.py:461
+#, fuzzy
 msgid "Configure trading route"
-msgstr ""
+msgstr "Konfiguruj szlak handlowy"
 
 #. (text of widget: buy_label)
 #: horizons/i18n/guitranslations.py:470
@@ -1597,8 +1630,9 @@ msgstr "Kup zasoby"
 
 #. (text of widget: buysell_help_label)
 #: horizons/i18n/guitranslations.py:472
+#, fuzzy
 msgid "Click on slot icon to toggle mode:"
-msgstr ""
+msgstr "Kliknij na ikonę slotu (miejsca), aby przełączyć tryb:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:474
@@ -1684,8 +1718,9 @@ msgstr "Zamknij Dziennik Pokładowy"
 
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:534
+#, fuzzy
 msgid "Read previous entries"
-msgstr ""
+msgstr "Zobacz poprzednie wpisy"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:536
@@ -1694,8 +1729,9 @@ msgstr "Czytaj nast. wpisy"
 
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:541
+#, fuzzy
 msgid "Available Scenarios"
-msgstr "Dostępne scenariusze"
+msgstr "Dostępne Scenariusze"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py:543
@@ -1714,13 +1750,15 @@ msgstr "Wybierz ten scenariusz"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:554
+#, fuzzy
 msgid "Wait at load:"
-msgstr ""
+msgstr "Czekaj na załadowanie:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:556
+#, fuzzy
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Czekaj na rozładowanie:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:558
@@ -1800,13 +1838,15 @@ msgstr "Agresywny"
 
 #. (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:625
+#, fuzzy
 msgid "Flee"
-msgstr ""
+msgstr "Ucieczka"
 
 #. (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:627
+#, fuzzy
 msgid "Hold ground"
-msgstr ""
+msgstr "Utrzymaj pozycje"
 
 #. (tooltip of widget: none) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:629
@@ -1900,18 +1940,20 @@ msgstr "Przesuń w prawo"
 
 #. (text of widget: lbl_ROAD_TOOL)
 #: horizons/i18n/guitranslations.py:670
+#, fuzzy
 msgid "Enable road building mode"
-msgstr ""
+msgstr "Włącz tryb budowanie dróg"
 
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:672
+#, fuzzy
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Obracanie budynków lub mapy zgodnie w lewo"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:674
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Obracanie budynków lub mapy zgodnie w prawo"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:676
@@ -1945,8 +1987,9 @@ msgstr "Przyśpiesz grę"
 
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:688
+#, fuzzy
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Podświetl tereny zamieszkane"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:690
@@ -2211,8 +2254,9 @@ msgstr "Przywróć domyślne ustawienia"
 
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:835
+#, fuzzy
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Automatycznie rozładuj statek:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:837
@@ -2226,8 +2270,9 @@ msgstr ""
 
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:841
+#, fuzzy
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Obracaj minimapę wraz z mapą:"
 
 # 76%
 #. (text of widget: mouse_sensitivity_label)
@@ -2243,8 +2288,9 @@ msgstr "Port sieciowy:"
 
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:847
+#, fuzzy
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Nieprzerwane budowanie:"
 
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:849
@@ -2258,8 +2304,9 @@ msgstr ""
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:853
+#, fuzzy
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Jeśli ustawisz 0, używasz domyślnego sterownika"
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:855
@@ -2394,8 +2441,9 @@ msgstr "Nazwa gracza:"
 
 #. (text of widget: selectedcolor)
 #: horizons/i18n/guitranslations.py:942
+#, fuzzy
 msgid " "
-msgstr ""
+msgstr "~"
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:45
@@ -2404,14 +2452,14 @@ msgstr "Stoczniowiec"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:47
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Buduje łodzie i małe łódki, musi być na brzegu."
+msgstr "Buduje statki i małe łodzie. Musi być na brzegu."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:52
+#, fuzzy
 msgid "Brickyard"
-msgstr ""
+msgstr "Cegielnia"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:54
@@ -2422,35 +2470,36 @@ msgstr "Zmienia glinę w cegły."
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:59
 msgid "Butchery"
-msgstr ""
+msgstr "Rzeźnik"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:61
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Rzeźnik: Wymaga świń lub budła. Produkuje jedzenie."
+msgstr "Rzeźnik: Wymaga świń lub bydła. Produkuje jedzenie."
 
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:66
+#, fuzzy
 msgid "Cattle Run"
-msgstr ""
+msgstr "Bydło Biega"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:68
 #, fuzzy
 msgid "Raises cattle. Needs a farm."
-msgstr "Chodowla świń. Wymagana farma."
+msgstr "Aby rozwijać bydło. Wymagana jest farma."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:73
+#, fuzzy
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Wypalanie Węgla Drzewnego"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:75
 #, fuzzy
 msgid "Burns a lot of boards."
-msgstr "Spala bardzo dużo desek"
+msgstr "Spala bardzo dużo desek."
 
 # Building
 #. name of buildings:claydeposit
@@ -2522,12 +2571,13 @@ msgstr "Łowi ryby, dostarcza jedzenie."
 #. name of buildings:gravelpath
 #: horizons/i18n/objecttranslations.py:125
 msgid "Gravel Path"
-msgstr ""
+msgstr "Droga polna (Żwirowa)"
 
 #. name of buildings:herbary
 #: horizons/i18n/objecttranslations.py:130
+#, fuzzy
 msgid "Herbary"
-msgstr ""
+msgstr "Zielarz"
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:132
@@ -2564,8 +2614,9 @@ msgstr "Dziennik"
 
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:153
+#, fuzzy
 msgid "Road across a river."
-msgstr ""
+msgstr "Droga przechodzi przez rzekę."
 
 # Building
 #. name of buildings:lookout
@@ -2575,8 +2626,9 @@ msgstr "Punkt obserwacyjny"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:160
+#, fuzzy
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Zwiększa zasięg wzroku gracza."
 
 # Building
 #. name of buildings:lumberjackcamp
@@ -2671,8 +2723,9 @@ msgstr "Basen solny"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:221
+#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Odparowuje sól. Wybuduj na brzegu morza."
 
 # Building
 #. name of buildings:signalfire
@@ -2693,8 +2746,9 @@ msgstr "Formiarnia"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:235
+#, fuzzy
 msgid "Refines all kind of ores."
-msgstr ""
+msgstr "Oczyszcza wszelkiego rodzaju rudy kopalniane."
 
 # Building
 #. name of buildings:storagetent
@@ -2728,8 +2782,9 @@ msgstr "Tawerna"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:256
+#, fuzzy
 msgid "Provides get-together."
-msgstr ""
+msgstr "Zapewnia spotkania."
 
 #. name of buildings:tent
 #: horizons/i18n/objecttranslations.py:261
@@ -2768,7 +2823,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:282
 #, fuzzy
 msgid "Produces tobaccos out of tobacco."
-msgstr "Wytwarza tytoń z liści tytoniu"
+msgstr "Wytwarza tytoń z liści tytoniu."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:287
@@ -2853,9 +2908,11 @@ msgstr ""
 "wersji gry."
 
 #: horizons/main.py:421
-#, python-format
+#, python-format, fuzzy
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
+"Z powodu przyczyn technicznych, plik kampanii zostanie skopiowany do "
+"katalogu UH kampanii ({path})."
 
 #: horizons/main.py:423
 #, fuzzy
@@ -2987,19 +3044,22 @@ msgstr ""
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
-msgstr ""
+msgstr "Kliknij, aby pobrać"
 
 #: horizons/util/checkupdates.py:80
+#, fuzzy
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Strona została otworzona w Twojej przeglądarce."
 
 #: horizons/world/component/tradepostcomponent.py:163
+#, fuzzy
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Partner handlowy nie sprzedaje aktualnie tego."
 
 #: horizons/world/component/tradepostcomponent.py:174
+#, fuzzy
 msgid "You can not store this."
-msgstr ""
+msgstr "Nie możesz tego zmagazynować."
 
 #: horizons/world/component/tradepostcomponent.py:181
 msgid "You can not afford to buy this."
@@ -3064,14 +3124,14 @@ msgid "Trader"
 msgstr "Handlarz"
 
 #: horizons/world/units/weaponholder.py:439
-#, python-format
+#, python-format, fuzzy
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Atakowany {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:444
-#, python-format
+#, python-format, fuzzy
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Atakowany {owner}"
 
 #: run_uh.py:167
 msgid "Unknown Horizons crashed."
