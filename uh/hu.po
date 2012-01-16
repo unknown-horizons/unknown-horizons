@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-16 23:01+0200\n"
+"PO-Revision-Date: 2012-01-16 23:08+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -2075,97 +2075,97 @@ msgstr "Csatlakozás a játékhoz"
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:786
 msgid "Refresh list:"
-msgstr ""
+msgstr "Lista frissítése:"
 
 #. (tooltip of widget: create)
 #: horizons/i18n/guitranslations.py:788
 msgid "Create a new game"
-msgstr ""
+msgstr "Új játék létrhozása"
 
 #. (tooltip of widget: join)
 #: horizons/i18n/guitranslations.py:790
 msgid "Join the selected game"
-msgstr ""
+msgstr "Csatlakozás a kiválasztott játékhoz"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:792 horizons/i18n/guitranslations.py:899
 msgid "Exit to main menu"
-msgstr ""
+msgstr "Kilépés a főmenübe"
 
 #. (tooltip of widget: refresh)
 #: horizons/i18n/guitranslations.py:794
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "Aktív játékok listájának frissítése"
 
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:799
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Automatikus mentés intervallum (perc):"
 
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py:801
 msgid "Effects volume:"
-msgstr ""
+msgstr "Effekt hangerő:"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py:805
 msgid "Language"
-msgstr ""
+msgstr "Nyelv"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:807
 msgid "Mouse"
-msgstr ""
+msgstr "Egér"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:809
 msgid "Network"
-msgstr ""
+msgstr "Hálózat"
 
 #. (text of widget: headline_saving)
 #: horizons/i18n/guitranslations.py:811
 msgid "Saving"
-msgstr ""
+msgstr "Mentés"
 
 #. (text of widget: language_label)
 #: horizons/i18n/guitranslations.py:815
 msgid "Select language:"
-msgstr ""
+msgstr "Nyelv kiválasztása:"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:817
 msgid "Music volume:"
-msgstr ""
+msgstr "Zene hangerő:"
 
 #. (text of widget: number_of_autosaves_label)
 #: horizons/i18n/guitranslations.py:819
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "Automatikus mentések száma:"
 
 #. (text of widget: number_of_quicksaves_label)
 #: horizons/i18n/guitranslations.py:821
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "Gyorsmentések száma:"
 
 #. (text of widget: screen_fullscreen_text)
 #: horizons/i18n/guitranslations.py:823
 msgid "Full screen:"
-msgstr ""
+msgstr "Teljes képernyő:"
 
 #. (text of widget: screen_resolution_label)
 #: horizons/i18n/guitranslations.py:825
 msgid "Screen resolution:"
-msgstr ""
+msgstr "Képernyő felbontás:"
 
 #. (text of widget: sound_enable_opt_text)
 #: horizons/i18n/guitranslations.py:827
 msgid "Enable sound:"
-msgstr ""
+msgstr "Hang bekapcsolás:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:829
 msgid "Apply"
-msgstr ""
+msgstr "Alkalmaz"
 
 # 84%
 #. (tooltip of widget: defaultButton)
@@ -2177,17 +2177,17 @@ msgstr "Visszaállítás az eredeti beállításokra"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:835
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Hajó automatikus kirakodása:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:837
 msgid "Color depth:"
-msgstr ""
+msgstr "Színmélység:"
 
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:839
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "A térkép szélére görgetés:"
 
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:841
@@ -2197,12 +2197,12 @@ msgstr ""
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:843
 msgid "Mouse sensitivity:"
-msgstr ""
+msgstr "Egér érzékenység:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:845
 msgid "Network port:"
-msgstr ""
+msgstr "Hálózati port:"
 
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:847
