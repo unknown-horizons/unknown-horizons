@@ -55,6 +55,7 @@ class MapSaver:
 			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
 			
 	def _saveGroundTiles(self):
+		print "Saving ground tiles ..."
 		ground_layer = self._map.getLayer(util.GROUND_LAYER_NAME)
 		instances = ground_layer.getInstances()
 		for instance in instances:
