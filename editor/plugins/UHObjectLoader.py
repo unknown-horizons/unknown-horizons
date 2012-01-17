@@ -21,7 +21,7 @@
 
 import horizons.main # this must be the first import, so the correct load order of all modules is guaranteed
 from horizons.util.dbreader import DbReader
-from horizons.util.yamlcache import SafeLoader
+from horizons.util.yamlcache import SafeLoader, YamlCache
 from horizons.util import SQLiteAnimationLoader, ActionSetLoader, TileSetLoader
 from horizons.constants import PATHS, VIEW
 
@@ -133,8 +133,7 @@ class UHObjectLoader(scripts.plugin.Plugin):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				# This is needed for dict lookups! Do not convert to os.join!
 				full_file = root + "/" + filename
-				f = open(full_file, 'r')
-				result = yaml.load(f, Loader = SafeLoader)
+				result = YamlCache.get_file(full_file)
 				result['yaml_file'] = full_file
 				self._loadBuilding(result, all_action_sets, model, animationloader)
 
