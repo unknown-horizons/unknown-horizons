@@ -20,8 +20,7 @@
 # ###################################################
 
 import horizons.main # this must be the first import, so the correct load order of all modules is guaranteed
-from horizons.util.dbreader import DbReader
-from horizons.util.yamlcache import SafeLoader
+from horizons.util.yamlcache import SafeLoader, YamlCache
 from horizons.util import SQLiteAnimationLoader, ActionSetLoader, TileSetLoader
 from horizons.constants import PATHS, VIEW
 
@@ -98,21 +97,23 @@ class UHObjectLoader(scripts.plugin.Plugin):
 
 	def _loadObjects(self):
 		# get fifedit objects
-		model = self._engine.getModel()
+		self.model = self._engine.getModel()
+		self.all_action_sets = ActionSetLoader.get_sets()
 
-		# get UH db and loaders
-		db = horizons.main._create_db()
 		TileSetLoader.load()
 		ActionSetLoader.load()
-		animationloader = SQLiteAnimationLoader()
+		self.animationloader = SQLiteAnimationLoader()
 
-		# load all ground tiles
+		self._loadGroundTiles()
+		self._loadBuildings()
+
+	def _loadGroundTiles(self):
 		print("loading UH ground tiles...")
 		tile_sets = TileSetLoader.get_sets()
 
 		for tile_set_id in tile_sets:
 			tile_set = tile_sets[tile_set_id]
-			object = model.createObject(str(tile_set_id), util.GROUND_NAMESPACE)
+			object = self.model.createObject(str(tile_set_id), util.GROUND_NAMESPACE)
 			fife.ObjectVisual.create(object)
 
 			# load animations
@@ -120,42 +121,40 @@ class UHObjectLoader(scripts.plugin.Plugin):
 				action = object.createAction(action_id+"_"+str(tile_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
-					anim = animationloader.loadResource( \
+					anim = self.animationloader.loadResource( \
 						str(tile_set_id)+"+"+str(action_id)+"+"+ \
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())
 
-		# load all buildings
+	def _loadBuildings(self):
 		print("loading UH buildings...")
-		all_action_sets = ActionSetLoader.get_sets()
 		for root, dirnames, filenames in os.walk(util.getUHPath() + '/content/objects/buildings'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				# This is needed for dict lookups! Do not convert to os.join!
 				full_file = root + "/" + filename
-				f = open(full_file, 'r')
-				result = yaml.load(f, Loader = SafeLoader)
+				result = YamlCache.get_file(full_file)
 				result['yaml_file'] = full_file
-				self._loadBuilding(result, all_action_sets, model, animationloader)
+				self._loadBuilding(result)
 
 		print("finished loading UH objects")
 
-	def _loadBuilding(self, yaml, all_action_sets, model, animationloader):
+	def _loadBuilding(self, yaml):
 		id = int(yaml['id'])
-		name = yaml['name']
+		name = yaml['name'][2:]
 		size_x = yaml['size_x']
 		size_y = yaml['size_y']
 		action_sets = yaml['actionsets']
-		object = model.createObject(str(name), util.BUILDING_NAMESPACE)
+		object = self.model.createObject(str(name), util.BUILDING_NAMESPACE)
 		fife.ObjectVisual.create(object)
 
 		main_action = 'idle'
 		for action_set_id in action_sets.iterkeys():
-			for action_id in all_action_sets[action_set_id].iterkeys():
+			for action_id in self.all_action_sets[action_set_id].iterkeys():
 				main_action = action_id+"_"+str(action_set_id)
 				action = object.createAction(main_action)
 				fife.ActionVisual.create(action)
-				for rotation in all_action_sets[action_set_id][action_id].iterkeys():
+				for rotation in self.all_action_sets[action_set_id][action_id].iterkeys():
 					if rotation == 45:
 						command = 'left-32,bottom+' + str(size_x * 16)
 					elif rotation == 135:
@@ -167,7 +166,7 @@ class UHObjectLoader(scripts.plugin.Plugin):
 					else:
 						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
 							   { 'id': action_set_id, 'rotation': rotation, 'action_id': action_id }
-					anim = animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
+					anim = self.animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())
 
