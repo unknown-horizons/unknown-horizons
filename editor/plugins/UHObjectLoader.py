@@ -19,12 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main # necessary so the correct load order of all modules is guaranteed
+import horizons.main # this must be the first import, so the correct load order of all modules is guaranteed
 from horizons.util.dbreader import DbReader
+from horizons.util.yamlcache import SafeLoader
 from horizons.util import SQLiteAnimationLoader, ActionSetLoader, TileSetLoader
 from horizons.constants import PATHS, VIEW
 
-import os.path
+import os
+import yaml
+import fnmatch
 
 from fife import fife
 import fife.extensions.loaders as mapLoaders
@@ -107,19 +110,18 @@ class UHObjectLoader(scripts.plugin.Plugin):
 		print("loading UH ground tiles...")
 		tile_sets = TileSetLoader.get_sets()
 
-		# tile_set_name is actually the name of the tile
-		for tile_set_name in tile_sets:
-			tile_set = tile_sets[tile_set_name]
-			object = model.createObject(str(tile_set_name), util.GROUND_NAMESPACE)
+		for tile_set_id in tile_sets:
+			tile_set = tile_sets[tile_set_id]
+			object = model.createObject(str(tile_set_id), util.GROUND_NAMESPACE)
 			fife.ObjectVisual.create(object)
 
 			# load animations
-			for action_id in tile_sets[tile_set_name].iterkeys():
-				action = object.createAction(action_id+"_"+str(tile_set_name))
+			for action_id in tile_sets[tile_set_id].iterkeys():
+				action = object.createAction(action_id+"_"+str(tile_set_id))
 				fife.ActionVisual.create(action)
-				for rotation in tile_sets[tile_set_name][action_id].iterkeys():
+				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
 					anim = animationloader.loadResource( \
-						str(tile_set_name)+"+"+str(action_id)+"+"+ \
+						str(tile_set_id)+"+"+str(action_id)+"+"+ \
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())
@@ -127,35 +129,47 @@ class UHObjectLoader(scripts.plugin.Plugin):
 		# load all buildings
 		print("loading UH buildings...")
 		all_action_sets = ActionSetLoader.get_sets()
-		for (building_id, building_name) in db("SELECT id, name FROM building"):
-			building_action_sets = db("SELECT action_set_id FROM action_set WHERE object_id=?", building_id)
-			size_x, size_y = db("SELECT size_x, size_x FROM building WHERE id = ?", building_id)[0]
-			object = model.createObject(str(building_name), util.BUILDING_NAMESPACE)
-			fife.ObjectVisual.create(object)
-
-			main_action = None
-			for (action_set_id,) in building_action_sets:
-				for action_id in all_action_sets[action_set_id].iterkeys():
-					main_action = action_id+"_"+str(action_set_id)
-					action = object.createAction(action_id+"_"+str(action_set_id))
-					fife.ActionVisual.create(action)
-					for rotation in all_action_sets[action_set_id][action_id].iterkeys():
-						if rotation == 45:
-							command = 'left-32,bottom+' + str(size_x * 16)
-						elif rotation == 135:
-							command = 'left-' + str(size_y * 32) + ',bottom+16'
-						elif rotation == 225:
-							command = 'left-' + str((size_x + size_y - 1) * 32) + ',bottom+' + str(size_y * 16)
-						elif rotation == 315:
-							command = 'left-' + str(size_x * 32) + ',bottom+' + str((size_x + size_y - 1) * 16)
-						else:
-							assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
-								   { 'id': action_set_id, 'rotation': rotation, 'action_id': action_id }
-						anim = animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
-						action.get2dGfxVisual().addAnimation(int(rotation), anim)
-						action.setDuration(anim.getDuration())
-						
-			util.addBuilding(building_id, building_name, main_action)
+		for root, dirnames, filenames in os.walk(util.getUHPath() + '/content/objects/buildings'):
+			for filename in fnmatch.filter(filenames, '*.yaml'):
+				# This is needed for dict lookups! Do not convert to os.join!
+				full_file = root + "/" + filename
+				f = open(full_file, 'r')
+				result = yaml.load(f, Loader = SafeLoader)
+				result['yaml_file'] = full_file
+				self._loadBuilding(result, all_action_sets, model, animationloader)
 
 		print("finished loading UH objects")
+
+	def _loadBuilding(self, yaml, all_action_sets, model, animationloader):
+		id = int(yaml['id'])
+		name = yaml['name']
+		size_x = yaml['size_x']
+		size_y = yaml['size_y']
+		action_sets = yaml['actionsets']
+		object = model.createObject(str(name), util.BUILDING_NAMESPACE)
+		fife.ObjectVisual.create(object)
+
+		main_action = 'idle'
+		for action_set_id in action_sets.iterkeys():
+			for action_id in all_action_sets[action_set_id].iterkeys():
+				main_action = action_id+"_"+str(action_set_id)
+				action = object.createAction(main_action)
+				fife.ActionVisual.create(action)
+				for rotation in all_action_sets[action_set_id][action_id].iterkeys():
+					if rotation == 45:
+						command = 'left-32,bottom+' + str(size_x * 16)
+					elif rotation == 135:
+						command = 'left-' + str(size_y * 32) + ',bottom+16'
+					elif rotation == 225:
+						command = 'left-' + str((size_x + size_y - 1) * 32) + ',bottom+' + str(size_y * 16)
+					elif rotation == 315:
+						command = 'left-' + str(size_x * 32) + ',bottom+' + str((size_x + size_y - 1) * 16)
+					else:
+						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
+							   { 'id': action_set_id, 'rotation': rotation, 'action_id': action_id }
+					anim = animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
+					action.get2dGfxVisual().addAnimation(int(rotation), anim)
+					action.setDuration(anim.getDuration())
+
+		util.addBuilding(id, name, main_action)
 

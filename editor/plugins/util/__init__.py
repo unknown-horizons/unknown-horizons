@@ -34,7 +34,7 @@ buildingMap = {}
 # Maps from building names to ids
 reverseBuildingMap = {}
 # Maps from building id to action id
-buildinActionMap = {}
+buildingActionMap = {}
 # Maps from ids to ground tile names 
 # TODO (MMB) remove static creation with dynamic creation from UH code, or change Map format
 groundTileMap = { 0:'ts_deep0', 1:'ts_shallow0', 2:'ts_shallow-deep0', 3:'ts_grass0', 4:'ts_grass-beach0', 5:'ts_beach-shallow0', 6:'ts_beach0'};
@@ -56,7 +56,7 @@ def getBuildingId(name):
 	return reverseBuildingMap[name]
 
 def getBuildingActionId(id):
-	return buildinActionMap[id]
+	return buildingActionMap[id]
 
 def getGroundTileId(name):
 	return reverseGroundTileMap[name]
@@ -67,7 +67,7 @@ def getGroundTileName(id):
 def addBuilding(id, name, action_id):
 	buildingMap[id] = name
 	reverseBuildingMap[name] = id
-	buildinActionMap[id] = action_id
+	buildingActionMap[id] = action_id
 	
 def addGroundTile(id, name):
 	groundTileMap[id] = name
