@@ -112,7 +112,7 @@ def start(command_line_arguments):
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
-	db = _create_db()
+	db = _create_map_db()
 
 	# init game parts
 
@@ -484,7 +484,7 @@ def _load_last_quicksave():
 	load_game(savegame=save)
 	return True
 
-def _create_db():
+def _create_map_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
 	NOTE: This data is read_only, so there are no concurrency issues"""
 	_db = UhDbAccessor(':memory:')
@@ -502,7 +502,7 @@ def preload_game_data(lock):
 		from horizons.entities import Entities
 		from horizons.util import Callback
 		log = logging.getLogger("preload")
-		mydb = _create_db() # create own db reader instance, since it's not thread-safe
+		mydb = _create_map_db() # create own db reader instance, since it's not thread-safe
 		preload_functions = [ ActionSetLoader.load, \
 		                      TileSetLoader.load,
 		                      Callback(Entities.load_grounds, mydb, load_now=True), \
