@@ -44,33 +44,110 @@ class MapSaver:
 		self._map = map
 		self._mapDatabase = None
 		pass
+	
+	def _extractPositionRotationFromInstance(self, instance):
+		rotation = (instance.getRotation() + 45) % 360
+		position = instance.getLocationRef().getExactLayerCoordinates()
+		return (position, rotation)
 			
 	def _saveBuildings(self):
 		building_layer = self._map.getLayer(util.BUILDING_LAYER_NAME)
 		instances = building_layer.getInstances()
 		for instance in instances:
 			type = util.getBuildingId(instance.getObject().getId())
-			rotation = (instance.getRotation() + 45) % 360
-			position = instance.getLocationRef().getExactLayerCoordinates()
+			(position, rotation) = self._extractPositionRotationFromInstance(instance)
 			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
 			
 	def _saveGroundTiles(self):
 		print "Saving ground tiles ..."
+		# do partitioning of islands
+		
+			#self._islandDatabase("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, instance.getObject().getId(), "straight", 45)
+		pass
+			
+	def _saveIsland(self, name, tiles):		
+		pass
+	
+	def _saveIslands(self):
+		tiles = self._buildGroundTilesLayerArray()
+		tiles = self._groupGroundTilesToIslands(tiles)
+		islandsToGroundtiles = self._partitionIslandsFromGroundTiles(tiles)
+		print islandsToGroundtiles
+	
+	def _buildGroundTilesLayerArray(self):
+		print "_buildGroundTilesLayerArray"
+		# A representation of all the tiles, syntax is tiles(x, y, instance of groundtile)
+		tiles = {}
+		
+		# Builds an x,y representation of all groundtiles
 		ground_layer = self._map.getLayer(util.GROUND_LAYER_NAME)
 		instances = ground_layer.getInstances()
 		for instance in instances:
-			position = instance.getPosition()
-			self._islandDatabase("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, instance.getObject().getId(), "straight", 45)
-		pass
+			type = util.getGroundTileId(instance.getObject().getId())
+			(position, rotation) = self._extractPositionRotationFromInstance(instance)
+			tiles[(int(position.x), int(position.y))] = (None, instance)
 			
-	def _saveIsalnds(self):
-		# write function for figuring out if ground tiles are connected to one 
-		# island
-		
-		# write all islands into own file
-		
-		# connect islands into DB
-		pass
+		return tiles
+	
+	def _groupGroundTilesToIslands(self, tiles):
+		print "_groupGroundTilesToIslands"
+		islandCounter = 0
+		for (x, y) in tiles:
+			(connectedIsland, instance) = tiles[(x, y)]
+			isConnected = False
+			
+			try:
+				if tiles[(x-1, y)] != None:
+					# Connect tile to existing island
+					print "Left merger of groundtiles to existing island"
+					(connectedIsland, tmpInstance) =  tiles[(x-1, y)] 
+					tiles[(x, y)] = (connectedIsland, instance)
+					isConnected = True
+			except KeyError:
+				pass
+			
+			try:
+				if tiles[(x, y-1)] != None:
+					if isConnected == False:
+						print "Up merger of groundtiles to existing island"
+						(connectedIsland, tmpInstance) =  tiles[(x, y-1)] 
+						tiles[(x, y)] = (connectedIsland, instance)
+						isConnected = True
+				
+					else:
+						(oldIsland, tmpInstance) = tiles[(x, y-1)]
+						tiles = self._updateExistingIslandName(tiles, oldIsland, connectedIsland)
+			except KeyError:
+				pass
+			if isConnected == False:
+				# create new island
+				tiles[(x,y)] = ("island_" + str(islandCounter), instance)
+				islandCounter += 1
+				print "Creating new island..."
+				print tiles[(x,y)]
+					
+		return tiles
+
+	
+	def _updateExistingIslandName(self, tiles, oldIsland, newIsland):
+		for (x,y) in tiles:
+			(name, instance) = tiles[(x,y)]
+			if name == oldIsland:
+				tiles[(x, y)] = (newIsland, instance)
+		return tiles
+											
+	
+	def _partitionIslandsFromGroundTiles(self, tiles):
+		islandsToGroundtiles = {}
+		for (x, y) in tiles:
+			(islandName, instance) = tiles[(x, y)]
+			print islandName, instance
+			if islandName != None:
+				try:
+					islandsToGroundtiles[islandName].append(instance)
+				except KeyError:
+					islandsToGroundtiles[islandName] = [instance,]
+		return islandsToGroundtiles
 
 	def saveResource(self):
 		try:
@@ -85,6 +162,7 @@ class MapSaver:
 			# transaction save operations to gain performance
 			self._mapDatabase("BEGIN IMMEDIATE TRANSACTION")
 			self._saveBuildings()
+			self._saveIslands()
 			self._mapDatabase("COMMIT TRANSACTION");
 			
 			print "Successfully saved " + savepath 
