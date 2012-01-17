@@ -100,6 +100,13 @@ class YamlCache(object):
 		except UnicodeError as e:
 			print "Warning: failed to open "+cls.yaml_cache+": "+e
 			return # see _write_bin_file
+		except Exception as e:
+			# same as for the ImportError. If there is an old database file that was created with a
+			# deprecated dbm library, opening it will fail with an obscure exception, so we delete it
+			# and simply retry.
+			print "Warning: you probably have an old cache file; deleting and retrying"
+			os.remove(cls.yaml_cache)
+			s = shelve.open(cls.yaml_cache)
 
 		for key, value in s.iteritems():
 			cls.cache[key] = value
