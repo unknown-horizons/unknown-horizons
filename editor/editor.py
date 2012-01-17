@@ -59,11 +59,15 @@ if __name__ == '__main__':
 	class MockOptions:
 		plugin_dir = uh_path + '/editor/plugins'
 	options = MockOptions()
-	mapfile = None	
+	mapfile = None
 	if len(argv) > 0:
 		mapfile = argv[0]
 
-	from scripts.editor import Editor
+	from scripts.editor import Editor, TDS
+	# force UH plugins to be enabled
+	TDS.set("Plugins", "UHObjectLoader", True)
+	TDS.set("Plugins", "UHMapLoader", True)
+	TDS.set("Plugins", "UHMapSaver", True)
 	app = Editor(options, mapfile)
 	app.run()
 
