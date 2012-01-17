@@ -142,7 +142,7 @@ class UHObjectLoader(scripts.plugin.Plugin):
 
 	def _loadBuilding(self, yaml, all_action_sets, model, animationloader):
 		id = int(yaml['id'])
-		name = yaml['name']
+		name = yaml['name'][2:]
 		size_x = yaml['size_x']
 		size_y = yaml['size_y']
 		action_sets = yaml['actionsets']
