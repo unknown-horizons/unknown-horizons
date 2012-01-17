@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -41,7 +41,7 @@ class Goal(object):
 
 	def get_personality_name(self):
 		"""Return the name of the goal's personality module."""
-		raise NotImplementedError, 'This function has to be overridden.'
+		raise NotImplementedError('This function has to be overridden.')
 
 	@property
 	def priority(self):
@@ -59,7 +59,7 @@ class Goal(object):
 
 	def execute(self):
 		"""Do whatever is best to get closer to fulfilling the goal (usually involves building a building)."""
-		raise NotImplementedError, "This function has to be overridden."
+		raise NotImplementedError("This function has to be overridden.")
 
 	def update(self):
 		"""Update the goal to find out whether it is currently active and what its current priority is."""

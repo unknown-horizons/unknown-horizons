@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,22 +23,19 @@
 __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
 import bisect
-import weakref
-import random
 import logging
 import copy
 import itertools
-import shutil
 import os.path
 
 from collections import deque
 
 import horizons.main
 from horizons.world.island import Island
-from horizons.world.player import Player, HumanPlayer
+from horizons.world.player import HumanPlayer
 from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
 from horizons.util.color import Color
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL, PATHS
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
@@ -50,9 +47,10 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
-from horizons.world.ground import WaterDummy
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
+from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -105,7 +103,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.bullets = None
 		super(World, self).end()
 
-	@decorators.make_constants()
 	def _init(self, savegame_db):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
@@ -143,6 +140,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# possible human player candidate with different client id
 				human_players.append(player)
 		self.owner_highlight_active = False
+		self.health_visible_for_all_health_instances = False
 
 		if self.player is None:
 			# we have no human player.
@@ -158,7 +156,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				self.player = self.players[0]
 
 		if self.player is not None:
-			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
+			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
 			                                          call_listener_now=True)
 
 		if self.player is None and self.session.is_game_loaded():
@@ -347,7 +345,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				self.fish_indexer.add(tile.object)
 		self.fish_indexer._update()
 
-	@decorators.make_constants()
 	def init_new_world(self, trader_enabled, pirate_enabled, natural_resource_multiplier):
 		"""
 		This should be called if a new map is loaded (not a savegame, a fresh
@@ -390,7 +387,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
 			# give ship basic resources
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
-				ship.inventory.alter(res, amount)
+				ship.get_component(StorageComponent).inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = point.to_tuple()
 
@@ -403,7 +400,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
-		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
+		self.session.ingame_gui.message_widget.add(None, None, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are None. No players loaded?"
 		return ret_coords
 
@@ -548,7 +545,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					if self.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
 					if self.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
-						building.inventory.alter(RES.WILDANIMALFOOD_ID, -1)
+						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD_ID, -1)
 
 				if 'coastline' in tile.classes and self.session.random.random() < natural_resource_multiplier / 4.0:
 					# try to place fish: from the current position go to a random directions twice
@@ -560,7 +557,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						if (fish_x, fish_y) in self.ground_map:
 							Build(FishDeposit, fish_x, fish_y, self, 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 
-	@decorators.make_constants()
 	def get_random_possible_ground_unit_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
 		offset = 2
@@ -575,7 +571,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				if (x, y) in island.path_nodes.nodes:
 					return Point(x, y)
 
-	@decorators.make_constants()
 	def get_random_possible_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
 		offset = 2
@@ -601,7 +596,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		return Point(x, y)
 
-	@decorators.make_constants()
 	def get_random_possible_coastal_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world
 		but on the coast of an island"""
@@ -656,18 +650,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		@param local: bool, whether the player is the one sitting on front of this machine."""
 		inv = self.session.db.get_player_start_res()
 		player = None
-		if local:
-			if is_ai: # a human controlled AI player
-				player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
-			else:
-				player = HumanPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
-			self.player = player
-			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
-			                                          call_listener_now=True)
-		elif is_ai:
-			player = AIPlayer(self.session, id, name, color, difficulty_level, inventory=inv)
+		if is_ai: # a human controlled AI player
+			player = AIPlayer(self.session, id, name, color, difficulty_level)
 		else:
-			player = Player(self.session, id, name, color, difficulty_level, inventory=inv)
+			player = HumanPlayer(self.session, id, name, color, difficulty_level)
+		player.initialize(inv)  # Componentholder init
+		if local:
+			self.player = player
+			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
+			                                          call_listener_now=True)
 		self.players.append(player)
 
 	def get_tile(self, point):
@@ -713,17 +704,16 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				break
 		return islands
 
-	@decorators.make_constants()
-	def get_branch_offices(self, position=None, radius=None, owner=None, include_friendly=False):
-		"""Returns all branch offices on the map. Optionally only those in range
+	def get_warehouses(self, position=None, radius=None, owner=None, include_friendly=False):
+		"""Returns all warehouses on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
-		@param owner: Player instance, list only branch offices belonging to this player.
-		@param include_friendly also list the branch offices belonging to friends
-		@return: List of branch offices.
+		@param owner: Player instance, list only warehouses belonging to this player.
+		@param include_friendly also list the warehouses belonging to friends
+		@return: List of warehouses.
 		"""
-		branchoffices = []
+		warehouses = []
 		islands = []
 		if radius is not None and position is not None:
 			islands = self.get_islands_in_radius(position, radius)
@@ -732,14 +722,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		for island in self.islands:
 			for settlement in island.settlements:
-				bo = settlement.branch_office
+				warehouse = settlement.warehouse
 				if (radius is None or position is None or \
-				    bo.position.distance(position) <= radius) and \
-				   (owner is None or bo.owner == owner or include_friendly):
-					branchoffices.append(bo)
-		return branchoffices
+				    warehouse.position.distance(position) <= radius) and \
+				   (owner is None or warehouse.owner == owner or include_friendly):
+					warehouses.append(warehouse)
+		return warehouses
 
-	@decorators.make_constants()
 	def get_ships(self, position=None, radius=None):
 		"""Returns all ships on the map. Optionally only those in range
 		around the specified position.
@@ -757,7 +746,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			return self.ships
 
-	@decorators.make_constants()
 	def get_ground_units(self, position=None, radius=None):
 		"""@see get_ships"""
 		if position is not None and radius is not None:
@@ -770,7 +758,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			return self.ground_units
 
-	@decorators.make_constants()
 	def get_buildings(self, position=None, radius=None):
 		"""@see get_ships"""
 		buildings = []
@@ -786,13 +773,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					buildings.append(building)
 		return buildings
 
-	@decorators.make_constants()
 	def get_health_instances(self, position=None, radius=None):
 		"""Returns all instances that have health"""
 		instances = []
 		for instance in self.get_ships(position, radius)+\
 				self.get_ground_units(position, radius):
-			if instance.has_component('health'):
+			if instance.has_component(HealthComponent):
 				instances.append(instance)
 		return instances
 
@@ -850,7 +836,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					'inhabitants': str(settlement.inhabitants),
 					'cumulative_running_costs': str(settlement.cumulative_running_costs),
 					'cumulative_taxes': str(settlement.cumulative_taxes),
-					'inventory': str(settlement.inventory._storage),
+					'inventory': str(settlement.get_component(StorageComponent).inventory._storage),
 				}
 				dict['settlements'].append(entry)
 		for ship in self.ships:
@@ -881,7 +867,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else: # 'hide' functionality
 			renderer.removeAllColored()
 
-	@decorators.make_constants()
 	def toggle_translucency(self):
 		"""Make certain building types translucent"""
 		if not hasattr(self, "_translucent_buildings"):
@@ -916,7 +901,25 @@ class World(BuildingOwner, LivingObject, WorldObject):
 					pass # obj has been deleted, inst() returned None
 			self._translucent_buildings.clear()
 
+	def toggle_health_for_all_health_instances(self):
+		"""Show health bar of every instance with an health component, which isnt selected already"""
+		self.health_visible_for_all_health_instances = not self.health_visible_for_all_health_instances
+		if self.health_visible_for_all_health_instances:
+			for instance in self.session.world.get_health_instances():
+				if not instance._selected:
+					instance.draw_health()
+					self.session.view.add_change_listener(instance.draw_health)
+		else:
+			for instance in self.session.world.get_health_instances():
+				if self.session.view.has_change_listener(instance.draw_health) and not instance._selected:
+					self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(instance.worldid))
+					self.session.view.remove_change_listener(instance.draw_health)
+
 
 def load_building(session, db, typeid, worldid):
 	"""Loads a saved building. Don't load buildings yourself in the game code."""
 	return Entities.buildings[typeid].load(session, db, worldid)
+
+
+decorators.bind_all(World)
+decorators.bind_all(load_building)

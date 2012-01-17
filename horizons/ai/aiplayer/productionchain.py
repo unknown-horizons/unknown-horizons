@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,7 +31,7 @@ class ProductionChain(object):
 	A production chain handles the building of buildings required to produce a resource.
 
 	Production chains use the list of production lines and the available AbstractBuilding
-	subclasses to figure out all ways of producing a certain resource and finding the 
+	subclasses to figure out all ways of producing a certain resource and finding the
 	right ratio of them to produce just enough of the resource. The result is a tree
 	that can be used to produce the required resource.
 

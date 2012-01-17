@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -95,12 +95,12 @@ class VillageBuilder(AreaBuilder):
 
 	def _get_village_section_coordinates(self, start_x, start_y, width, height):
 		"""Return set([(x, y), ...]) of usable coordinates in the rectangle defined by the parameters."""
-		bo_coords_set = set(self.land_manager.settlement.branch_office.position.tuple_iter())
+		warehouse_coords_set = set(self.land_manager.settlement.warehouse.position.tuple_iter())
 		result = set()
 		for dx in xrange(width):
 			for dy in xrange(height):
 				coords = (start_x + dx, start_y + dy)
-				if coords in self.land_manager.village and self.land_manager.coords_usable(coords) and coords not in bo_coords_set:
+				if coords in self.land_manager.village and self.land_manager.coords_usable(coords) and coords not in warehouse_coords_set:
 					result.add(coords)
 		return result
 
@@ -203,7 +203,7 @@ class VillageBuilder(AreaBuilder):
 	def _remove_unreachable_roads(cls, section_plan, main_square):
 		"""
 		Remove the roads that can't be reached by starting from the main square.
-		
+
 		@param section_plan: {(x, y): BUILDING_PURPOSE constant, ...}
 		@param main_square: Rect representing the position of the main square
 		"""
@@ -453,7 +453,7 @@ class VillageBuilder(AreaBuilder):
 			if coords not in self.plan or self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				not_needed.append(coords)
 		for coords in not_needed:
-			# if the branch office is (partly) in the village area then it needs to be handed over but it won't be in the plan at all
+			# if the warehouse is (partly) in the village area then it needs to be handed over but it won't be in the plan at all
 			if coords in self.plan:
 				del self.plan[coords]
 			self.land_manager.add_to_production(coords)
@@ -483,7 +483,10 @@ class VillageBuilder(AreaBuilder):
 
 		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
 		planned_tents = self._get_sorted_residence_positions()
+
 		possible_positions = copy.copy(planned_tents)
+		num_kept = int(min(len(possible_positions), max(self.personality.min_coverage_building_options, len(possible_positions) * self.personality.coverage_building_option_ratio)))
+		possible_positions = self.session.random.sample(possible_positions, num_kept)
 
 		def get_centroid(planned, blocked):
 			total_x, total_y = 0, 0
@@ -846,6 +849,6 @@ class VillageBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *unknown_colour)
 
 	def __str__(self):
-		return '%s VillageBuilder(%d)' % (self.settlement_manager, self.worldid)
+		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(VillageBuilder)

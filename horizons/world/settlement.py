@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,24 +22,39 @@
 import json
 import sqlite3
 
-import horizons.main
-
-from horizons.entities import Entities
-from horizons.world.tradepost import TradePost
-from horizons.world.storageholder import StorageHolder
-from horizons.world.storage import PositiveSizedSlotStorage
-from horizons.util import WorldObject, WeakList, NamedObject, Rect, Point
 from horizons.constants import BUILDINGS, SETTLER
+from horizons.entities import Entities
+from horizons.util.worldobject import WorldObject
+from horizons.util.shapes.rect import Rect
+from horizons.util.changelistener import ChangeListener
+from horizons.world.componentholder import ComponentHolder
+from horizons.world.component.namedcomponent import SettlementNameComponent
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.storage import PositiveSizedSlotStorage
 
-class Settlement(TradePost, StorageHolder, NamedObject):
+class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
+
+	component_templates = ({
+	    					'StorageComponent':
+	                            {'inventory':
+	                             {'PositiveSizedSlotStorage':
+	                              { 'limit': 0 }
+	                             }
+	                            }
+	                        }
+	                        ,
+	                        'TradePostComponent',
+	                        'SettlementNameComponent')
+
 	def __init__(self, session, owner):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
-		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 		super(Settlement, self).__init__()
+		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
 		self.session = session
@@ -48,7 +63,7 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = {}
-		self.branch_office = None # this is set later in the same tick by the bo itself or load() here
+		self.warehouse = None # this is set later in the same tick by the warehouse itself or load() here
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
 
@@ -77,9 +92,6 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 				if building.level == level:
 					building.on_change_upgrade_permissions()
 
-	def _possible_names(self):
-		names = horizons.main.db("SELECT name FROM citynames WHERE for_player = 1")
-		return map(lambda x: x[0], names)
 
 	@property
 	def inhabitants(self):
@@ -100,22 +112,19 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 	@property
 	def balance(self):
 		"""Returns sum(income) - sum(expenses) for settlement"""
-		return self.cumulative_taxes + self.sell_income \
-					 - self.cumulative_running_costs - self.buy_expenses
+		return self.cumulative_taxes + self.get_component(TradePostComponent).sell_income \
+					 - self.cumulative_running_costs - self.get_component(TradePostComponent).buy_expenses
 
 	@property
 	def island(self):
 		"""Returns the island this settlement is on"""
-		return self.session.world.get_island(self.branch_office.position.origin)
+		return self.session.world.get_island(self.warehouse.position.origin)
 
 	def level_upgrade(self, lvl):
 		"""Upgrades settlement to a new increment.
 		It only delegates the upgrade to its buildings."""
 		for building in self.buildings:
 			building.level_upgrade(lvl)
-
-	def create_inventory(self):
-		self.inventory = PositiveSizedSlotStorage(0)
 
 	def save(self, db, islandid):
 		super(Settlement, self).save(db)
@@ -136,6 +145,8 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 	@classmethod
 	def load(cls, db, worldid, session, island):
 		self = cls.__new__(cls)
+		self.session = session
+		super(Settlement, self).load(db, worldid)
 
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		upgrade_permissions = {}
@@ -157,7 +168,7 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		except sqlite3.OperationalError:
 			print "Updating data of outdated savegame.."
 			# old savegame, create settlement tiles provisionally (not correct, but useable)
-			# remove when there aren't any savegames from before december 2011 any more
+			# TODO: remove when there aren't any savegames from before december 2011 any more
 			for b_type, x, y in db("SELECT type, x, y FROM building WHERE location = ?", worldid):
 				cls = Entities.buildings[b_type]
 				position = Rect.init_from_topleft_and_size(x, y, cls.size[0], cls.size[1])
@@ -169,7 +180,6 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 							tile.settlement = self
 
 		# load super here cause basic stuff is just set up now
-		super(Settlement, self).load(db, worldid)
 
 		# load all buildings from this settlement
 		# the buildings will expand the area of the settlement by adding everything,
@@ -178,8 +188,8 @@ class Settlement(TradePost, StorageHolder, NamedObject):
 		for building_id, building_type in \
 			  db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			building = load_building(session, db, building_type, building_id)
-			if building_type == BUILDINGS.BRANCH_OFFICE_CLASS:
-				self.branch_office = building
+			if building_type == BUILDINGS.WAREHOUSE_CLASS:
+				self.warehouse = building
 
 		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):
 			self.produced_res[res] = amount

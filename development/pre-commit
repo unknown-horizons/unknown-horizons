@@ -1,0 +1,122 @@
+#!/usr/bin/env python2
+#-*- mode: python -*-
+# ###################################################
+# Copyright (C) 2012 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
+#
+# Unknown Horizons is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the
+# Free Software Foundation, Inc.,
+# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# ###################################################
+
+"""
+INFORMATION:
+This is the pre-commit hook used on the unknown horizons team. It checks the
+staged files using pyflakes and checks for added print statements. It gives you
+the choice to cancel a commit if errors are found.
+
+= Installation =
+
+== Windows ==
+Copy this file to .git/hooks/
+Your done! If the hook is updated you have to copy it again manually.
+
+== Linux/MacOS ==
+cd .git/hooks
+ln -s ../../development/pre-commit pre-commit
+This will create a soft-link to the file in development and therefore keep it
+updated automatically.
+
+"""
+
+from subprocess import Popen, PIPE
+import sys
+import re
+import tkMessageBox
+
+syntax_checker = "pyflakes"
+
+class bcolors:
+	"""Colors used to color the output"""
+	HEADER = '\033[95m'
+	OKBLUE = '\033[94m'
+	OKGREEN = '\033[92m'
+	WARNING = '\033[93m'
+	FAIL = '\033[91m'
+	ENDC = '\033[0m'
+
+def cleanup(pyflakeserrorlist):
+	"""Methode used to filter bad errors from pyflakes"""
+	for line in list(pyflakeserrorlist):
+		if line.find("undefined name '_'") != -1:
+			# These messegase are produced because of gettext and cannot be removed
+			# Therefore we ignore the error
+			del pyflakeserrorlist[pyflakeserrorlist.index(line)]
+	return pyflakeserrorlist
+
+def run(command):
+	"""Runs a command and returns a triple with the output: (returnvalue, stdout, stderr"""
+	p = Popen(command.split(), stdout=PIPE, stderr=PIPE)
+	p.wait()
+	return p.returncode, [ line.strip() for line in p.stdout.readlines()], [line.strip() for line in p.stderr.readlines()]
+
+_, files_modified, _= run("git diff-index --name-only HEAD")
+
+exitcode = 0
+# Find added prints in a git diff output
+r = re.compile('^\+.*print.*')
+
+for fname in files_modified:
+	if fname.strip().endswith(".py"):
+		# Check using pyflakes
+		print >>sys.stderr, "Checking syntax on %s: ... "%(fname,),
+		exit_code, stderrors, errors = run("%s %s"%(syntax_checker, fname))
+		stderrors = cleanup(stderrors)
+		errors = cleanup(errors)
+		stderrors.extend(errors)
+
+		if len(stderrors):
+			print >>sys.stderr, "\rChecking syntax on %s:" %(fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
+			for line in stderrors:
+				print >>sys.stderr, "\t", line
+			exitcode = exit_code
+		else:
+			print >>sys.stderr, "\rChecking syntax on %s:" %(fname), bcolors.OKGREEN, "OK!", bcolors.ENDC
+
+		# Check for added prints
+		print >>sys.stderr, "Checking for 'print' on %s: ... " %(fname),
+		_, output, _ = run("git diff %s" %(fname))
+		found_re = False
+		for line in output:
+			if r.match(line):
+				if not found_re:
+					print >>sys.stderr, "\rChecking for 'print' on %s:" %(fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
+					found_re = True
+				index = output.index(line)
+				if index > 0:
+					print "\t", output[index-1]
+				print "\t", bcolors.FAIL, line, bcolors.ENDC
+				if len(output) > index:
+					print "\t", output[index+1]
+		if found_re:
+			exitcode = 1
+		else:
+			print >>sys.stderr, "\rChecking for 'print' on %s:" %(fname), bcolors.OKGREEN, "OK!", bcolors.ENDC
+
+
+if exitcode == 1:
+	if not tkMessageBox.askyesno("Errors have been detected", "Cancel Commit?"):
+		exitcode = 0
+sys.exit(exitcode)

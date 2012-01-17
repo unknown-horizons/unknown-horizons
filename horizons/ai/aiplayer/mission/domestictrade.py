@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,7 +30,7 @@ class DomesticTrade(ShipMission):
 	loaded with resources, and then moved to the other one to unload the resources.
 	"""
 
-	missionStates = Enum('created', 'moving_to_source_bo', 'moving_to_destination_bo')
+	missionStates = Enum('created', 'moving_to_source_warehouse', 'moving_to_destination_warehouse')
 
 	def __init__(self, source_settlement_manager, destination_settlement_manager, ship, success_callback, failure_callback):
 		super(DomesticTrade, self).__init__(success_callback, failure_callback, ship)
@@ -56,38 +56,38 @@ class DomesticTrade(ShipMission):
 		self.state = self.missionStates[db_result[3]]
 		super(DomesticTrade, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
 
-		if self.state == self.missionStates.moving_to_source_bo:
-			self.ship.add_move_callback(Callback(self._reached_source_bo_area))
-			self.ship.add_blocked_callback(Callback(self._move_to_source_bo_area))
-		elif self.state == self.missionStates.moving_to_destination_bo:
-			self.ship.add_move_callback(Callback(self._reached_destination_bo_area))
-			self.ship.add_blocked_callback(Callback(self._move_to_destination_bo_area))
+		if self.state == self.missionStates.moving_to_source_warehouse:
+			self.ship.add_move_callback(Callback(self._reached_source_warehouse_area))
+			self.ship.add_blocked_callback(Callback(self._move_to_source_warehouse_area))
+		elif self.state == self.missionStates.moving_to_destination_warehouse:
+			self.ship.add_move_callback(Callback(self._reached_destination_warehouse_area))
+			self.ship.add_blocked_callback(Callback(self._move_to_destination_warehouse_area))
 		else:
 			assert False, 'invalid state'
 
 	def start(self):
-		self.state = self.missionStates.moving_to_source_bo
-		self._move_to_source_bo_area()
+		self.state = self.missionStates.moving_to_source_warehouse
+		self._move_to_source_warehouse_area()
 
-	def _move_to_source_bo_area(self):
-		self._move_to_branch_office_area(self.source_settlement_manager.settlement.branch_office.position, Callback(self._reached_source_bo_area), \
-			Callback(self._move_to_source_bo_area), 'First move not possible')
+	def _move_to_source_warehouse_area(self):
+		self._move_to_warehouse_area(self.source_settlement_manager.settlement.warehouse.position, Callback(self._reached_source_warehouse_area), \
+			Callback(self._move_to_source_warehouse_area), 'First move not possible')
 
-	def _reached_source_bo_area(self):
-		self.log.info('%s reached the source branch office area', self)
+	def _reached_source_warehouse_area(self):
+		self.log.info('%s reached the source warehouse area', self)
 		if self.source_settlement_manager.trade_manager.load_resources(self):
 			self.log.info('%s loaded resources', self)
-			self.state = self.missionStates.moving_to_destination_bo
-			self._move_to_destination_bo_area()
+			self.state = self.missionStates.moving_to_destination_warehouse
+			self._move_to_destination_warehouse_area()
 		else:
-			self.report_failure('No need for the ship at the source branch office')
+			self.report_failure('No need for the ship at the source warehouse')
 
-	def _move_to_destination_bo_area(self):
-		self._move_to_branch_office_area(self.destination_settlement_manager.settlement.branch_office.position, Callback(self._reached_destination_bo_area), \
-			Callback(self._move_to_destination_bo_area), 'Second move not possible')
+	def _move_to_destination_warehouse_area(self):
+		self._move_to_warehouse_area(self.destination_settlement_manager.settlement.warehouse.position, Callback(self._reached_destination_warehouse_area), \
+			Callback(self._move_to_destination_warehouse_area), 'Second move not possible')
 
-	def _reached_destination_bo_area(self):
-		self.log.info('%s reached destination branch office area', self)
+	def _reached_destination_warehouse_area(self):
+		self.log.info('%s reached destination warehouse area', self)
 		self._unload_all_resources(self.destination_settlement_manager.settlement)
 		self.report_success('Unloaded resources')
 

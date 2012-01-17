@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -73,6 +73,7 @@ class _Tooltip(object):
 			#HACK this looks better than splitting into several lines & joining
 			# them. works because replace_whitespace in fill defaults to True:
 			replaced = translated_tooltip.replace(r'\n', self.CHARS_PER_LINE*' ')
+			replaced = replaced.replace(r'[br]', self.CHARS_PER_LINE*' ')
 			tooltip = textwrap.fill(replaced, self.CHARS_PER_LINE)
 			#----------------------------------------------------------------
 			line_count = len(tooltip.splitlines())-1

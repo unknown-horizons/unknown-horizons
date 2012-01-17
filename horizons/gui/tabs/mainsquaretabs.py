@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,6 +31,8 @@ from horizons.extscheduler import ExtScheduler
 from horizons.util.gui import create_resource_icon
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, SETTLER
+from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class MainSquareTab(TabInterface):
 	"""Tab for main square. Refreshes when one building on the settlement changes"""
@@ -69,7 +71,7 @@ class AccountTab(MainSquareTab):
 		super(AccountTab, self).__init__(widget = 'tab_account.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		icon_path = 'content/gui/icons/tabwidget/branchoffice/account_%s.png'
+		icon_path = 'content/gui/icons/tabwidget/warehouse/account_%s.png'
 		self.button_up_image = icon_path % 'u'
 		self.button_active_image = icon_path % 'a'
 		self.button_down_image = icon_path % 'd'
@@ -88,8 +90,8 @@ class AccountTab(MainSquareTab):
 		super(AccountTab, self).refresh()
 		taxes = self.settlement.cumulative_taxes
 		running_costs = self.settlement.cumulative_running_costs
-		buy_expenses = self.settlement.buy_expenses
-		sell_income = self.settlement.sell_income
+		buy_expenses = self.settlement.get_component(TradePostComponent).buy_expenses
+		sell_income = self.settlement.get_component(TradePostComponent).sell_income
 		balance = self.settlement.balance
 		sign = '+' if balance >= 0 else '-'
 		self.widget.child_finder('taxes').text = unicode(taxes)
@@ -102,7 +104,7 @@ class MainSquareOverviewTab(AccountTab):
 	def __init__(self, instance):
 		super(MainSquareOverviewTab, self).__init__(instance)
 		self.tooltip = _('Main square overview')
-		self.widget.child_finder('headline').text = self.settlement.name
+		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
 
 class MainSquareSettlerTabSettlerTab(MainSquareTab):
 	"""Displays information about the settlers on average as overview"""

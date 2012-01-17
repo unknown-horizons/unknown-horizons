@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,6 +28,7 @@ from horizons.ai.aiplayer.mission.preparefoundationship import PrepareFoundation
 from horizons.ai.aiplayer.landmanager import LandManager
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
+from horizons.world.component.storagecomponent import StorageComponent
 
 class SettlementFounder(object):
 	"""This class handles the settlement founding activities of an AI player."""
@@ -60,7 +61,7 @@ class SettlementFounder(object):
 							usable = False
 							break
 					if usable:
-						for resource_id, amount in object.inventory:
+						for resource_id, amount in object.get_component(StorageComponent).inventory:
 							resources[resource_id] += amount
 				continue
 			if tile.settlement is not None:
@@ -77,10 +78,10 @@ class SettlementFounder(object):
 			value -= self.personality.no_raw_iron_penalty
 		value -= len(island.settlements) * self.personality.enemy_settlement_penalty
 
-		# take into the distance to our old branch offices and the other players' islands
+		# take into the distance to our old warehouses and the other players' islands
 		for settlement in self.world.settlements:
 			if settlement.owner is self.owner:
-				value += self.personality.compact_empire_importance / float(island.position.distance(settlement.branch_office.position) + self.personality.extra_branch_office_distance)
+				value += self.personality.compact_empire_importance / float(island.position.distance(settlement.warehouse.position) + self.personality.extra_warehouse_distance)
 			else:
 				value -= self.personality.nearby_enemy_penalty / float(island.position.distance(settlement.island.position) + self.personality.extra_enemy_island_distance)
 
@@ -121,16 +122,16 @@ class SettlementFounder(object):
 
 	def _have_settlement_starting_resources(self, ship, settlement, min_money, min_resources):
 		"""Returns a boolean showing whether we have enough resources to found a new settlement."""
-		if self.owner.inventory[RES.GOLD_ID] < min_money:
+		if self.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] < min_money:
 			return False
 
 		if ship is not None:
-			for res, amount in ship.inventory:
+			for res, amount in ship.get_component(StorageComponent).inventory:
 				if res in min_resources and min_resources[res] > 0:
 					min_resources[res] = max(0, min_resources[res] - amount)
 
 		if settlement:
-			for res, amount in settlement.inventory:
+			for res, amount in settlement.get_component(StorageComponent).inventory:
 				if res in min_resources and min_resources[res] > 0:
 					min_resources[res] = max(0, min_resources[res] - amount)
 
@@ -142,12 +143,12 @@ class SettlementFounder(object):
 	def have_starting_resources(self, ship, settlement):
 		"""Returns a boolean showing whether we have enough resources to found a new normal settlement."""
 		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_island_gold, \
-			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.FOOD_ID: self.personality.min_new_island_food, RES.TOOLS_ID: self.personality.min_new_island_tools})
+				                                        {RES.BOARDS_ID: self.personality.min_new_island_boards, RES.FOOD_ID: self.personality.min_new_island_food, RES.TOOLS_ID: self.personality.min_new_island_tools})
 
 	def have_feeder_island_starting_resources(self, ship, settlement):
 		"""Returns a boolean showing whether we have enough resources to found a new feeder island."""
 		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_feeder_island_gold, \
-			{RES.BOARDS_ID: self.personality.min_new_island_boards, RES.TOOLS_ID: self.personality.min_new_island_tools})
+				                                        {RES.BOARDS_ID: self.personality.min_new_island_boards, RES.TOOLS_ID: self.personality.min_new_island_tools})
 
 	def _prepare_foundation_ship(self, settlement_manager, ship, feeder_island):
 		"""Start a mission to load the settlement foundation resources on the given ship from the specified settlement."""

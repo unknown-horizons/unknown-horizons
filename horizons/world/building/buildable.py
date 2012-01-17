@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.util import Point, Rect, decorators
-from horizons.world.pathfinding.pather import StaticPather
+from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.util.shapes.circle import Circle
@@ -255,7 +255,7 @@ class BuildableLine(Buildable):
 		if island is None:
 			return []
 
-		path = StaticPather.get_direct_path(island, point1, point2)
+		path = RoadPathFinder()(island.path_nodes.nodes, point1.to_tuple(), point2.to_tuple(), rotation == 45 or rotation == 225)
 		if path is None: # can't find a path between these points
 			return [] # TODO: maybe implement alternative strategy
 
@@ -366,7 +366,7 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 
 
 class BuildableSingleFromShip(BuildableSingleOnOcean):
-	"""Buildings that can be build from a ship. Currently only Branch Office."""
+	"""Buildings that can be build from a ship. Currently only Warehouse."""
 	@classmethod
 	def _check_settlement(cls, session, position, ship, issuer=None):
 		# building from ship doesn't require settlements

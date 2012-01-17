@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,16 +22,24 @@
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.world.production.productionline import ProductionLine
 from horizons.util.python import decorators
+from horizons.entities import Entities
+from horizons.world.production.producer import Producer
 
 class AbstractFakeResourceDeposit(AbstractBuilding):
-	def __init__(self, building_id, name, settler_level, production_line_ids):
-		super(AbstractFakeResourceDeposit, self).__init__(building_id, name, settler_level, [])
+	def __init__(self, building_id, name, settler_level):
+		super(AbstractFakeResourceDeposit, self).__init__(building_id, name, settler_level)
 		self.lines = {} # output_resource_id: ProductionLine
-		assert len(production_line_ids) == 1, 'expected exactly 1 production line'
-		for production_line_id in production_line_ids:
-			# create a fake production line that is similar to the higher level building one
-			# TODO: use a better way of producing fake ProductionLine-s
-			production_line = ProductionLine(production_line_id)
+		self.__init_production_lines()
+
+	@classmethod
+	def get_higher_level_building_id(cls):
+		raise NotImplementedError('This function has to be overridden.')
+
+
+	def __init_production_lines(self):
+		production_lines = self._get_producer_building().get_component_template(Producer.NAME)['productionlines']
+		for key, value in production_lines.iteritems():
+			production_line = ProductionLine(key, value)
 			production_line.id = None
 			production_line.production = {}
 			production_line.produced_res = {}
@@ -41,17 +49,15 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 			production_line.consumed_res = {}
 			self.lines[production_line.produced_res.keys()[0]] = production_line
 
-	@classmethod
-	def get_higher_level_building_id(cls):
-		raise NotImplementedError, 'This function has to be overridden.'
+	def _get_producer_building(self):
+		return Entities.buildings[self.get_higher_level_building_id()]
 
 	@classmethod
 	def load(cls, db, building_id):
 		# load the higher level building data because resource deposits don't actually produce anything
-		production_line_ids = cls._load_production_line_ids(db, cls.get_higher_level_building_id())
 		name = cls._load_name(db, building_id)
-		settler_level = cls._load_settler_level(db, building_id)
-		return cls(building_id, name, settler_level, production_line_ids)
+		settler_level = cls._load_settler_level(building_id)
+		return cls(building_id, name, settler_level)
 
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
 		""" you don't actually build resource deposits """

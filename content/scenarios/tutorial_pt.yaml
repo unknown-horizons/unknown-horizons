@@ -113,7 +113,7 @@ events:
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
@@ -151,9 +151,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -270,7 +270,7 @@ events:
         \ necess\xE1rias para teres em stock 30 ferramentas!"]
     type: logbook
   - arguments: [!!python/unicode 'Atinge o limite de, pelo menos, 30 ferramentas em
-        stock na ilha.', !!python/unicode 'Note that this might take a while.']
+        stock na ilha.', !!python/unicode 'Pode demorar algum tempo.']
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -558,4 +558,5 @@ events:
     type: var_gt
 locale: pt
 mapfile: development.sqlite
+translation_status: 65 translated messages.
 

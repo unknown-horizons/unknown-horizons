@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -57,6 +57,16 @@ class Attack(GenericUnitCommand):
 
 GenericCommand.allow_network(Attack)
 
+class RemoveUnit(GenericUnitCommand):
+	"""
+	Command class that removes the unit. Not to be used if .remove() is going to be called through an indirect command anyway.
+	@param unit: Instance of Unit
+	"""
+	def __init__(self, unit):
+		super(RemoveUnit, self).__init__(unit, "remove")
+
+GenericCommand.allow_network(RemoveUnit)
+
 class CreateUnit(Command):
 	"""Command class that creates a unit.
 	TODO: remove this command and put the code in a method in e.g. world.
@@ -82,7 +92,21 @@ class CreateUnit(Command):
 		@param issuer: the issuer of the command
 		"""
 		owner = WorldObject.get_object_by_id(self.owner_id)
-		return Entities.units[self.unit_id](session=owner.session, owner=owner, \
+		unit = Entities.units[self.unit_id](session=owner.session, owner=owner, \
 		                                    x=self.x, y=self.y, **self.kwargs)
+		unit.initialize()
+		return unit
 
 GenericCommand.allow_network(CreateUnit)
+
+
+class SetStance(GenericUnitCommand):
+	"""Command class that moves a unit.
+	@param unit: Instance of Unit
+	@param stance: stance as string representation
+	"""
+	def __init__(self, unit, stance):
+		super(SetStance, self).__init__(unit, "set_stance", stance)
+
+GenericCommand.allow_network(SetStance)
+

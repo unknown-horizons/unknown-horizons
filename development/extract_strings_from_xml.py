@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,7 @@
 
 
 header = '''# ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -78,7 +78,6 @@ files_to_skip = {
 	'startup_error_popup.xml'
 	}
 
-import glob
 import xml.dom.minidom
 import os
 import sys
@@ -125,7 +124,7 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 			else:
 				text = '_("%s")' % text
 			comment = '(%s of widget: %s)' % (text_name, name) + (' %s' % (i18n) if i18n else '')
-			element_strings.append('# %s' %comment + ROWINDENT + '%-30s: (%-10s, %s)' % (('"%s"' % name), ('"%s"') % text_name, text))
+			element_strings.append('# %s' %comment + ROWINDENT + '(%-30s, %-10s): %s' % (('"%s"' % name), ('"%s"') % text_name, text))
 
 	return sorted(element_strings)
 

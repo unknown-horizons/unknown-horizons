@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,6 +26,8 @@ import horizons.main
 from horizons.entities import Entities
 from horizons.constants import LAYERS
 from horizons.gui.mousetools import  NavigationTool
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+
 
 
 class PipetteTool(NavigationTool):
@@ -57,7 +59,7 @@ class PipetteTool(NavigationTool):
 			if obj and self._is_buildable(obj.id):
 				self.session.set_cursor('building', Entities.buildings[obj.id])
 			elif obj: # object that is not buildable
-				# TODO: error sound
+				AmbientSoundComponent.play_special('error')
 				self.on_escape()
 			else:
 				self.on_escape()
@@ -81,7 +83,7 @@ class PipetteTool(NavigationTool):
 			self._add_coloring(obj)
 
 	def _is_buildable(self, building_id):
-		return self.session.db.get_settlerlvl_of_building(building_id) <= \
+		return Entities.buildings[building_id].settler_level <= \
 		       self.session.world.player.settler_level
 
 	def _add_coloring(self,  obj):

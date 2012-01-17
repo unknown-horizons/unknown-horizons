@@ -40,6 +40,7 @@ class ScenarioChooser(object):
 		def _update_infos():
 			self.selected_scenario = scenarios[self._gui.collectData("scenario_list")]
 			data = SavegameManager.get_scenario_info(name = self.selected_scenario)
+			#xgettext:python-format
 			text = [_("Difficulty: {difficulty}").format(difficulty=data.get('difficulty', '')),
 			        _("Author: {author}").format(author=data.get('author', '')),
 			        _("Description: {desc}").format(desc=data.get('description', '')),

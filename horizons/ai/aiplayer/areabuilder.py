@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -220,7 +220,7 @@ class AreaBuilder(WorldObject):
 	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
 		"""
 		Return a Builder object containing the info.
-		
+
 		If it is impossible to build it then the return value could either be None
 		or a Builder object that evaluates to False.
 		"""
@@ -309,10 +309,10 @@ class AreaBuilder(WorldObject):
 
 	def display(self):
 		"""Show the plan on the map unless it is disabled in the settings."""
-		raise NotImplementedError, 'This function has to be overridden.'
+		raise NotImplementedError('This function has to be overridden.')
 
 	def _init_cache(self):
-		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area.""" 
+		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area."""
 		self.last_change_id = -1
 
 	def register_change(self, x, y, purpose, data):

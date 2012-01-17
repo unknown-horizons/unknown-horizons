@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,6 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle
 from unit import Unit
 from horizons.constants import GAME_SPEED, WEAPONS, GFX
-from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.gui.tabs import GroundUnitOverviewTab, EnemyShipOverviewTab
 
@@ -47,7 +46,6 @@ class GroundUnit(Unit):
 		super(GroundUnit, self).__init__(x=x, y=y, **kwargs)
 		self.session.world.ground_units.append(self)
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
-		self.add_component('health', HealthComponent)
 
 	def remove(self):
 		if self in self.session.selected_instances:

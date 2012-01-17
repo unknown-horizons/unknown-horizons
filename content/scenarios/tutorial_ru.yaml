@@ -315,7 +315,7 @@ events:
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
@@ -421,9 +421,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -768,8 +768,9 @@ events:
     type: logbook
   - arguments: ["\u0414\u043E\u0441\u0442\u0438\u0433\u043D\u0443\u0442\u044C \u0437\
         \u0430\u043F\u0430\u0441\u0430 \u0432 30 \u0438\u043D\u0441\u0442\u0440\u0443\
-        \u043C\u0435\u043D\u0442\u043E\u0432.", !!python/unicode 'Note that this might
-        take a while.']
+        \u043C\u0435\u043D\u0442\u043E\u0432.", "\u041C\u043E\u0436\u0435\u0442 \u043F\
+        \u043E\u043D\u0430\u0434\u043E\u0431\u0438\u0442\u044C\u0441\u044F \u0432\u0440\
+        \u0435\u043C\u044F."]
     type: message
   - arguments: [tutStepDone, 37]
     type: set_var
@@ -1507,4 +1508,5 @@ events:
     type: var_gt
 locale: ru
 mapfile: development.sqlite
+translation_status: 65 translated messages.
 

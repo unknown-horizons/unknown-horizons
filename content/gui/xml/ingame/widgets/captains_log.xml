@@ -7,10 +7,10 @@
 and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 
 <VBox max_size="350,508" min_size="350,508" position="175,40" padding="2">
-	<Label name="head_left" font="libertine_headline"
+	<Label name="head_left" font="headline"
 		wrap_text="0" max_size="323, 25" min_size="323, 25" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<Label name="lbl_left"  font="libertine_14_black"
+	<Label name="lbl_left"  font="14_black"
 		wrap_text="1" max_size="323,432" />
 
 	<Spacer />
@@ -35,16 +35,16 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 	<!-- right side -->
 
 <VBox max_size="350,508" min_size="350,508" position="520,40" padding="2">
-	<Label name="head_right" font="libertine_headline"
+	<Label name="head_right" font="headline"
 		wrap_text="0" max_size="323, 25" min_size="323, 25" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<Label name="lbl_right"  font="libertine_14_black"
+	<Label name="lbl_right"  font="14_black"
 		wrap_text="1" max_size="323,432" />
 
 	<Spacer />
 
 	<HBox> <Spacer min_size="275"/>
-		<CancelButton tooltip="Leave Captain's log"
+		<OkButton tooltip="Leave Captain's log"
 			comment="Captain's Log: logbook/diary used in scenarios" />
 	</HBox>
 	<!-- Yes, this button will not be placed on the very right without min_size.

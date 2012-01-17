@@ -1,0 +1,31 @@
+id: 8
+name: _ Lumberjack Camp
+baseclass: production.Lumberjack
+radius: 3
+cost: 5
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 1
+inhabitants_max: 1
+button_name: lumberjack-1
+tooltip_text: _ Chops down trees and turns them into boards.
+settler_level: 0
+buildingcosts: {1: 250, 6: 2}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      2:
+        produces:
+        - [4, 1]
+        consumes:
+        - [8, -1]
+        time: 7
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {8: 10, 4: 10}
+actionsets:
+  as_lumberjack0: {level: 0}
+  as_lumberjack_barrack0: {level: 1}

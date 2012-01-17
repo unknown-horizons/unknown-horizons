@@ -71,6 +71,10 @@ class _build_i18n(distutils.cmd.Command):
 		"""
 		Update the language files, generate mo files and add them
 		to the to be installed files
+
+		NOTE: This code is partly broken and hack-fixed to the state where it appears to work.
+		      It should be removed, since nobody understands the code well enough to be able to maintain it.
+
 		"""
 		if not os.path.isdir(self.po_dir):
 			return
@@ -104,7 +108,7 @@ class _build_i18n(distutils.cmd.Command):
 			lang = os.path.basename(po_file[:-3])
 			if selected_languages and not lang in selected_languages:
 				continue
-			mo_dir = os.path.join("build", "mo", lang, "LC_MESSAGES")
+			mo_dir = os.path.join("content", "lang", lang, "LC_MESSAGES")
 			mo_file = os.path.join(mo_dir, "%s.mo" % self.domain)
 			if not os.path.exists(mo_dir):
 				os.makedirs(mo_dir)
@@ -149,10 +153,15 @@ class _build_i18n(distutils.cmd.Command):
 
 		# Since specifying a .mofile dir is not supported, we manually move build/mo/
 		# to a place more appropriate in our opinion, currently content/lang/.
-		if os.path.exists(os.path.join("content", "lang")):
-			rmtree(os.path.join("content", "lang"))
-		copytree(os.path.join("build", "mo"), \
-			os.path.join("content", "lang"))
+
+		if os.path.exists(os.path.join("build", "mo")):
+			# it appears build/mo should always magically appear, but does not on some gentoo machines.
+			# there, everything is placed in content/lang, so it's fine
+			# on other machines, we have to move stuff around like that:
+			if os.path.exists(os.path.join("content", "lang")):
+				rmtree(os.path.join("content", "lang"))
+			copytree(os.path.join("build", "mo"), \
+				os.path.join("content", "lang"))
 
 build.sub_commands.append(('build_i18n', None))
 

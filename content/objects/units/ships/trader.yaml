@@ -1,0 +1,16 @@
+baseclass: ship.TradeShip
+id: 1000006
+name: Trader
+radius: 8
+velocity: 12.0
+components:
+- AmbientSoundComponent
+- StorageComponent:
+   inventory:
+      PositiveTotalNumSlotStorage:
+         limit: 120
+         slotnum: 4
+- ShipNameComponent
+
+actionsets:
+   as_trader0: {level: 0}

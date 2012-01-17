@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,24 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import random
 import logging
 
 from horizons.scheduler import Scheduler
 
-from horizons.world.production.producer import Producer
-from horizons.util import Point, RadiusRect, Rect, WorldObject
+from horizons.util import Point, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather
 from horizons.command.unit import CreateUnit
 from collectors import Collector, BuildingCollector, JobList
 from horizons.constants import RES, WILD_ANIMAL
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.resourcehandler import ResourceHandler
 
-class Animal(Producer):
+class Animal(ResourceHandler):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
 	and usually produce something (e.g. wool, meat)."""
 	log = logging.getLogger('world.units.animal')
 
+	def __init__(self, *args, **kwargs):
+		super(Animal, self).__init__(*args, **kwargs)
 
 class CollectorAnimal(Animal):
 	"""Animals that will inherit from collector"""
@@ -89,7 +91,7 @@ class CollectorAnimal(Animal):
 			super(CollectorAnimal, self).search_job()
 
 	def get_home_inventory(self):
-		return self.inventory
+		return self.get_component(StorageComponent).inventory
 
 	def get_collectable_res(self):
 		return self.get_needed_resources()
@@ -248,7 +250,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		           can_reproduce = self.next_clone_can_reproduce())(issuer=None)
 		# reset own resources
 		for res in self.get_consumed_resources():
-			self.inventory.reset(res)
+			self.get_component(StorageComponent).inventory.reset(res)
 
 	def next_clone_can_reproduce(self):
 		"""Returns, whether the next child will be able to reproduce himself.

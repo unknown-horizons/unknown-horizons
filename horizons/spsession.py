@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,6 @@
 import random
 import os
 import time
-import shutil
 import traceback
 import json
 
@@ -31,7 +30,7 @@ import horizons.main
 from horizons.session import Session
 from horizons.manager import SPManager
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import PATHS, GAME_SPEED, SINGLEPLAYER
+from horizons.constants import GAME_SPEED, SINGLEPLAYER
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.timer import Timer
@@ -133,8 +132,8 @@ class SPSession(Session):
 		if len(files) == 0:
 			self.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
 			return
-		files.sort()
-		horizons.main.load_game(savegame=files[-1])
+		self.ingame_gui.on_escape() # close widgets that might be open
+		horizons.main.load_game(savegame=files[0])
 
 	def save(self, savegamename=None):
 		"""Saves a game
@@ -164,7 +163,11 @@ class SPSession(Session):
 			return self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
 		except WindowsError as err:
-			if err.winerror == 32:
+			if err.winerror == 5:
+				self.gui.show_error_popup(_("Access is denied"), \
+				                          _("The savegame file is probably read-only."))
+				return self.save()
+			elif err.winerror == 32:
 				self.gui.show_error_popup(_("File used by another process"), \
 				                          _("The savegame file is currently used by another program."))
 				return self.save()
@@ -191,6 +194,7 @@ class SPSession(Session):
 			# make sure everything get's written now
 			db("COMMIT")
 			db.close()
+			self.ingame_gui.message_widget.add(None, None, 'SAVED_GAME')
 			return True
 		except:
 			print "Save Exception"

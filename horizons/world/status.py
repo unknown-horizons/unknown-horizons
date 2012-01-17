@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,8 @@
 
 import operator
 
+import horizons.main
+
 """Classes used for StatusIcon.
 
 Code design note:
@@ -40,6 +42,8 @@ class StatusIcon(object):
 	def __init__(self, priority, icon):
 		"""
 		@param priority: integer
+		@param icon: fife identifier for animations or icons. Must be supported by either the animationloader
+								 or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
 		"""
 		self.priority = priority
 		self.icon = icon
@@ -53,6 +57,14 @@ class StatusIcon(object):
 		"""
 		return operator.attrgetter("priority")
 
+	def render(self, renderer, key, renderernode):
+		try: # to load an animation
+			anim = horizons.main.fife.animationloader.loadResource( self.icon )
+			renderer.addAnimation( key, renderernode, anim )
+		except ValueError as e:
+			img = horizons.main.fife.imagemanager.load( self.icon )
+			renderer.addImage( key, renderernode, img )
+
 	def __cmp__(self, other):
 		return cmp(self.__class__, other.__class__)
 
@@ -63,26 +75,23 @@ class StatusIcon(object):
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	def __init__(self):
-		super(SettlerUnhappyStatus, self).__init__( 1700, "as_buoy0+idle+45" )
+		super(SettlerUnhappyStatus, self).__init__( 1700, "content/gui/icons/building_status_icon/settler_unhappy.png")
 
 class InventoryFullStatus(StatusIcon):
 	def __init__(self, reslist):
 		"""
 		@param reslist: list of integers describing the resources
 		"""
-		super(InventoryFullStatus, self).__init__( 1200, "as_buoy0+idle+45" )
+		super(InventoryFullStatus, self).__init__( 1200, "content/gui/icons/building_status_icon/inventory_full.png")
 		self.reslist = reslist
-
 
 class ProductivityLowStatus(StatusIcon):
 	"""Terminology: productivity = capacity utilisation"""
 	threshold = 0.25 # display when productivity lower than this
 	def __init__(self):
-		super(ProductivityLowStatus, self).__init__( 400, "as_buoy0+idle+45" )
-
+		super(ProductivityLowStatus, self).__init__( 400, "content/gui/icons/building_status_icon/productivity_low.png")
 
 class DecommissionedStatus(StatusIcon):
 	"""Terminology: productiviy = capacity utilisation"""
 	def __init__(self):
-		super(DecommissionedStatus, self).__init__( 800, "as_buoy0+idle+45" )
-
+		super(DecommissionedStatus, self).__init__( 800, "content/gui/icons/building_status_icon/decommissioned.png")

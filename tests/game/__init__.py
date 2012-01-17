@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,12 +20,14 @@
 # ###################################################
 
 
+import contextlib
 import inspect
 import os
-import shutil
 import signal
 import tempfile
 from functools import wraps
+
+import mock
 
 # check if SIGALRM is supported, this is not the case on Windows
 # we might provide an alternative later, but for now, this will do
@@ -41,20 +43,23 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.ai.trader import Trader
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import PATHS, GROUND, UNITS, BUILDINGS, GAME_SPEED, RES
+from horizons.constants import GROUND, UNITS, BUILDINGS, GAME_SPEED, RES
 from horizons.entities import Entities
 from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import (Color, DbReader, Rect, WorldObject, NamedObject, LivingObject,
+from horizons.util import (Color, DbReader, Rect, WorldObject, LivingObject,
 						   SavegameAccessor, Point, DifficultySettings)
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world import World
+from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.storagecomponent import StorageComponent
+
+from tests import RANDOM_SEED
 
 
 db = None
-RANDOM_SEED = 42
 
 def setup_package():
 	"""
@@ -104,6 +109,34 @@ def create_map():
 	return savegame
 
 
+@contextlib.contextmanager
+def _dbreader_convert_dummy_objects():
+	"""
+	Wrapper around DbReader.__call__ to convert Dummy objects to valid values.
+
+	This is needed because some classes attempt to store Dummy objects in the
+	database, e.g. ConcreteObject with self._instance.getActionRuntime().
+	We fix this by replacing it with zero, SQLite doesn't care much about types,
+	and hopefully a number is less likely to break code than None.
+
+	Yes, this is ugly and will most likely break later. For now, it works.
+	"""
+	def deco(func):
+		@wraps(func)
+		def wrapper(self, command, *args):
+			args = list(args)
+			for i in range(len(args)):
+				if args[i].__class__.__name__ == 'Dummy':
+					args[i] = 0
+			return func(self, command, *args)
+		return wrapper
+
+	original = DbReader.__call__
+	DbReader.__call__ = deco(DbReader.__call__)
+	yield
+	DbReader.__call__ = original
+
+
 class SPTestSession(SPSession):
 
 	def __init__(self, db, rng_seed=None):
@@ -118,7 +151,7 @@ class SPTestSession(SPSession):
 		self.is_alive = True
 
 		WorldObject.reset()
-		NamedObject.reset()
+		NamedComponent.reset()
 		AIPlayer.clear_caches()
 
 		# Game
@@ -133,13 +166,27 @@ class SPTestSession(SPSession):
 		Entities.load(self.db)
 		self.scenario_eventhandler = Dummy()
 		self.campaign = {}
-		self.selected_instances = []
 
 		# GUI
 		self.gui.session = self
 		self.ingame_gui = Dummy()
 
+		self.selected_instances = set()
+		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
+
 		GAME_SPEED.TICKS_PER_SECOND = 16
+
+	def save(self, *args, **kwargs):
+		"""
+		Wrapper around original save function to fix some things.
+		"""
+		# SavegameManager.write_metadata tries to create a screenshot and breaks when
+		# accessing fife properties
+		with mock.patch('horizons.spsession.SavegameManager'):
+			# We need to covert Dummy() objects to a sensible value that can be stored
+			# in the database
+			with _dbreader_convert_dummy_objects():
+				return super(SPTestSession, self).save(*args, **kwargs)
 
 	def load(self, savegame, players):
 		"""
@@ -149,29 +196,36 @@ class SPTestSession(SPSession):
 		self.savegame = savegame
 		self.savegame_db = SavegameAccessor(self.savegame)
 
+		self.savecounter = 1
+
 		self.world = World(self)
 		self.world._init(self.savegame_db)
 		for i in sorted(players):
 			self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['is_ai'], i['difficulty'])
 		self.manager.load(self.savegame_db)
 
-	def end(self):
+	def end(self, keep_map=False):
 		"""
 		Clean up temporary files.
 		"""
 		super(SPTestSession, self).end()
 		# Find all islands in the map first
-		random_map = False
-		for (island_file, ) in self.savegame_db('SELECT file FROM island'):
-			if island_file[:7] != 'random:': # random islands don't exist as files
-				os.remove(island_file)
-			else:
-				random_map = True
-				break
+		if not keep_map:
+			for (island_file, ) in self.savegame_db('SELECT file FROM island'):
+				if island_file[:7] != 'random:': # random islands don't exist as files
+					os.remove(island_file)
 		# Finally remove savegame
 		self.savegame_db.close()
-		if not random_map:
-			os.remove(self.savegame)
+		os.remove(self.savegame)
+
+	@classmethod
+	def cleanup(cls):
+		"""
+		If a test uses manual session management, we cannot be sure that session.end was
+		called before a crash, leaving the game in an unclean state. This method should
+		return the game to a valid state.
+		"""
+		Scheduler.destroy_instance()
 
 	def run(self, ticks=1, seconds=None):
 		"""
@@ -215,10 +269,21 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai
 			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=player)
 			# give ship basic resources
 			for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-				ship.inventory.alter(res, amount)
+				ship.get_component(StorageComponent).inventory.alter(res, amount)
 		AIPlayer.load_abstract_buildings(session.db)
 
 	return session, session.world.player
+
+
+def load_session(savegame, rng_seed=RANDOM_SEED):
+	"""
+	Start a new session with the given savegame.
+	"""
+	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
+
+	session.load(savegame, [])
+
+	return session
 
 
 def new_settlement(session, pos=Point(30, 20)):
@@ -232,10 +297,10 @@ def new_settlement(session, pos=Point(30, 20)):
 
 	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, pos.x, pos.y)(player)
 	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-		ship.inventory.alter(res, amount)
+		ship.get_component(StorageComponent).inventory.alter(res, amount)
 
-	building = Build(BUILDINGS.BRANCH_OFFICE_CLASS, pos.x, pos.y, island, ship=ship)(player)
-	assert building, "Could not build branch office at %s" % pos
+	building = Build(BUILDINGS.WAREHOUSE_CLASS, pos.x, pos.y, island, ship=ship)(player)
+	assert building, "Could not build warehouse at %s" % pos
 
 	return (building.settlement, island)
 
@@ -269,6 +334,7 @@ def game_test(*args, **kwargs):
 	mapgen = kwargs.get('mapgen', create_map)
 	human_player = kwargs.get('human_player', True)
 	ai_players = kwargs.get('ai_players', 0)
+	manual_session = kwargs.get('manual_session', False)
 
 	if TEST_TIMELIMIT and timeout:
 		def handler(signum, frame):
@@ -279,13 +345,21 @@ def game_test(*args, **kwargs):
 		@wraps(func)
 		def wrapped(*args):
 			horizons.main.db = db
-			s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
+			if not manual_session:
+				s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
 			if TEST_TIMELIMIT and timeout:
 				signal.alarm(timeout)
 			try:
-				return func(s, p, *args)
+				if not manual_session:
+					return func(s, p, *args)
+				else:
+					return func(*args)
 			finally:
-				s.end()
+				if not manual_session:
+					s.end()
+				else:
+					SPTestSession.cleanup()
+
 				if TEST_TIMELIMIT and timeout:
 					signal.alarm(0)
 		return wrapped
@@ -305,10 +379,10 @@ def settle(s):
 	Create a new settlement, start with some resources.
 	"""
 	settlement, island = new_settlement(s)
-	settlement.inventory.alter(RES.GOLD_ID, 5000)
-	settlement.inventory.alter(RES.BOARDS_ID, 50)
-	settlement.inventory.alter(RES.TOOLS_ID, 50)
-	settlement.inventory.alter(RES.BRICKS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, 5000)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS_ID, 50)
 	return settlement, island
 
 

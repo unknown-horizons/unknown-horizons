@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -44,12 +44,12 @@ init_environment()
 import horizons.main
 from horizons.util import ActionSetLoader, TileSetLoader
 
-# Dummy fife object for 
+# Dummy fife object for
 class DummyFife:
 	use_atlases = False
 horizons.main.fife = DummyFife()
 
-class AtlasEntry(object):	
+class AtlasEntry(object):
 	def __init__(self, source, xpos, ypos, width, height):
 		self.source = source
 		self.xpos = xpos
@@ -57,7 +57,7 @@ class AtlasEntry(object):
 		self.width = width
 		self.height = height
 		self.file = ""
-		
+
 # We add info of every atlases to .sql file
 try:
 	f = open(os.path.join("development", "atlas", "atlas.sql"), "w+")
@@ -83,7 +83,7 @@ for i, atlas_xml_file in enumerate(atlas_xml_files):
 	atlas_src = "/".join(["content", "gfx", "atlas", atlas])
 	print >> f, "INSERT INTO atlas VALUES({0}, '{1}');".format(i, atlas_src)
 	atlases[atlas] = i
-			
+
 	for node in root.childNodes:
 		if node.nodeType == minidom.Node.ELEMENT_NODE and node.nodeName == "image":
 			source = node.getAttribute("source")
@@ -94,7 +94,7 @@ for i, atlas_xml_file in enumerate(atlas_xml_files):
 			if source in mapping:
 				print 'Warning: {0} is defined in more than one atlases'.format(source)
 			mapping[source] = AtlasEntry(atlas, xpos, ypos, width, height)
-			
+
 not_found = 0
 
 # Modify a bit how all_action_sets looks like
@@ -106,7 +106,7 @@ for tileset_id in all_action_sets:
 				# File name is only there for image manager to have unique names, it really doesn't matter
 				# if its '/' or '\\' or even ':', we just need to pick one
 				file_new = file.replace('\\', '/')
-				
+
 				try:
 					entry = mapping[file_new]
 				except KeyError:
@@ -115,7 +115,7 @@ for tileset_id in all_action_sets:
 					continue
 
 				# Instead of only float value we need to hold a 'bit' more infos in all_action_sets dictionary
-				animval = all_action_sets[tileset_id][action_id][rotation][file]	
+				animval = all_action_sets[tileset_id][action_id][rotation][file]
 				del all_action_sets[tileset_id][action_id][rotation][file]
 				all_action_sets[tileset_id][action_id][rotation][file_new] = [animval, \
 					atlases[entry.source], entry.xpos, entry.ypos, entry.width, entry.height]
@@ -141,7 +141,7 @@ for (file,) in anims:
 		continue
 	print >> f, "INSERT INTO tile_sets_atlas VALUES('{0}', {1}, {2}, {3}, {4}, {5});".format(file, \
 		atlases[entry.source], entry.xpos, entry.ypos, entry.width, entry.height)
-	
+
 # all_tile_sets = TileSetLoader.get_tile_sets()
 # for tileset_id in all_tile_sets:
 	# print tileset_id (as_)
@@ -155,7 +155,7 @@ f.close()
 print "Parsing done ..."
 if not_found > 0:
 	print "Total not found images: ", not_found
-	
+
 import shutil
 print "Copying atlas.sql to", os.path.join("content", "atlas.sql")
 shutil.copyfile(os.path.join("development","atlas", "atlas.sql"), os.path.join("content", "atlas.sql"))

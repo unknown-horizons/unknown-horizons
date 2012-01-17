@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,18 +23,19 @@ import horizons.main
 
 from horizons.constants import PLAYER
 from horizons.world.playerstats import PlayerStats
-from horizons.world.storageholder import StorageHolder
-from horizons.world.storage import PositiveStorage
 from horizons.util import WorldObject, Callback, Color, DifficultySettings
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
+from horizons.world.componentholder import ComponentHolder
+from horizons.world.component.storagecomponent import StorageComponent
 
-class Player(StorageHolder, WorldObject):
+class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
+	component_templates = ({'StorageComponent': {'inventory': {'PositiveStorage': {}}}},)
 
-	def __init__(self, session, worldid, name, color, difficulty_level = None, inventory = None):
+	def __init__(self, session, worldid, name, color, difficulty_level = None):
 		"""
 		@param session: Session instance
 		@param worldid: player's worldid
@@ -46,9 +47,11 @@ class Player(StorageHolder, WorldObject):
 		super(Player, self).__init__(worldid=worldid)
 		self.__init(name, color, difficulty_level)
 
+	def initialize(self, inventory):
+		super(Player, self).initialize()
 		if inventory:
 			for res, value in inventory.iteritems():
-				self.inventory.alter(res, value)
+				self.get_component(StorageComponent).inventory.alter(res, value)
 
 	def __init(self, name, color, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
@@ -80,9 +83,6 @@ class Player(StorageHolder, WorldObject):
 		return [ settlement for settlement in self.session.world.settlements if \
 		         settlement.owner == self ]
 
-	def create_inventory(self):
-		self.inventory = PositiveStorage()
-
 	def save(self, db):
 		super(Player, self).save(db)
 		client_id = None if self is not self.session.world.player else \
@@ -111,7 +111,6 @@ class Player(StorageHolder, WorldObject):
 		      a signaling concept for such events is planned.
 		"""
 		self.log.warning("ERROR: UNIT %s CANNOT MOVE ANY FURTHER!", unit)
-		pass
 
 	def notify_settler_reached_level(self, settler):
 		"""Settler calls this to notify the player

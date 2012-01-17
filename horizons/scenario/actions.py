@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -40,10 +40,9 @@ def show_message(session, *message):
 	delay_iter = 1
 	for msg in message:
 		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, None, None, \
-		                                    msg + '\n'* 30 + 'UHtutorial', visible_for=visible_ticks), \
-		                                    None, run_in=delay_iter)
+		                                    msg,  visible_for=visible_ticks), \
+		                           None, run_in=delay_iter)
 		delay_iter += delay_ticks
-		# for the part """ + '\n'* 30 + 'UHtutorial'""" see below comment (#535)
 
 def show_db_message(session, message_id):
 	"""Shows a message specified in the db on the ingame message widget"""
@@ -68,7 +67,7 @@ def do_win(session):
 	"""Called when player won"""
 	session.speed_pause()
 	show_db_message(session, 'YOU_HAVE_WON')
-	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/szenario/win.ogg")
+	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
 	continue_playing = False
 	if session.campaign is None or not AUTO_CONTINUE_CAMPAIGN:
@@ -96,7 +95,7 @@ def goal_reached(session, goal_number):
 def do_lose(session):
 	"""Called when player lost"""
 	show_message(session, 'You failed the scenario.')
-	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/szenario/loose.ogg')
+	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/scenario/loose.ogg')
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
 

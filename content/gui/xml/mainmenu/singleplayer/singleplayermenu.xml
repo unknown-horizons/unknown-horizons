@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container name="menu"  size="1024,768"  position_technique="automatic">
-	<Icon image="content/gui/images/background/mainmenu_bg.png" />
+	<Icon name="background" />
 	<Icon image="content/gui/images/background/book.png"  position="100,100" />
 
 	<Container size="320,510"  position="175,132">
@@ -25,8 +25,9 @@
 	the content doesn't show up. Pychan wasn't designed for Containers within Containers,
 	which might be the source of this bug
 	-->
-	<VBox name="playerdataselectioncontainer"  position="200,320" />
-	<VBox name="aidataselectioncontainer"  position="200,500" />
+	<VBox name="playerdataselectioncontainer"  position="180,320" />
+	<VBox name="aidataselectioncontainer"  position="180,500" />
+	<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="284,363" />
 
 	<!-- load the proper xml submenu template (scenario, random maps, free play, ..) -->
 	<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side_box" />

@@ -13,7 +13,7 @@
 # call this script directly thus, unless you want to translate more scenarios.
 
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -115,7 +115,9 @@ for path in "$2"/*.po; do
     lang=`basename "$path" | sed "s,$1-,,;s,.po,,"`
     mo=po/mo/$lang/LC_MESSAGES
     R='s,:,,g;s,.po,,g;s,alencia,,g;s,(po_temp_tutorial//|messages|message|translations),\t,g;s/[.,]//g'
-    mkdir -p $mo && msgfmt --statistics $path -o $mo/$1.mo --check-format -v 2>&1 |perl -npe "$R"
+    mkdir -p $mo
+    msgfmt --statistics $path -o $mo/$1.mo --check-format -v 2>&1 |perl -npe "$R"
+    numbers=$(msgfmt --statistics $path -o $mo/$1.mo --check-format 2>&1) # this does not include -v!
 
     python2 << END > content/scenarios/$1_$lang.yaml
 import yaml
@@ -139,6 +141,7 @@ scenario['difficulty'] = _(scenario['difficulty'])
 scenario['author'] = _(scenario['author'])
 scenario['description'] = _(scenario['description'])
 scenario['locale'] = '$lang'
+scenario['translation_status'] = '$numbers'
 
 for i, event in enumerate(scenario['events']):
 	for j, action in enumerate(event['actions']):

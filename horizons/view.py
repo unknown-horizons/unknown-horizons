@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -155,34 +155,41 @@ class View(ChangeListener):
 
 		self.cam.setLocation(loc)
 		for i in ['speech', 'effects']:
-			emitter = horizons.main.fife.emitter[i]
+			emitter = horizons.main.fife.sound.emitter[i]
 			if emitter is not None:
 				emitter.setPosition(pos.x, pos.y, 1)
-		horizons.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
+		if horizons.main.fife.get_fife_setting("PlaySounds"):
+			horizons.main.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self._changed()
 
-	def zoom_out(self):
+	def _prepare_zoom_to_cursor(self, zoom):
+		"""Change the camera's position to accommodation zooming to the specified setting."""
+		def middle(click_coord, scale, length):
+			mid = length / 2.0
+			return int(round(mid - (click_coord - mid) * (scale - 1)))
+
+		scale = self.cam.getZoom() / zoom
+		x, y = horizons.main.fife.cursor.getPosition()
+		new_x = middle(x, scale, horizons.main.fife.engine_settings.getScreenWidth())
+		new_y = middle(y, scale, horizons.main.fife.engine_settings.getScreenHeight())
+		screen_point = fife.ScreenPoint(new_x, new_y)
+		map_point = self.session.view.cam.toMapCoordinates(screen_point, False)
+		self.session.view.center(map_point.x, map_point.y)
+
+	def zoom_out(self, track_cursor = False):
 		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom < VIEW.ZOOM_MIN):
 			zoom = VIEW.ZOOM_MIN
+		if track_cursor:
+			self._prepare_zoom_to_cursor(zoom)
 		self.set_zoom(zoom)
 
-	def zoom_in(self, mappoint=None):
-		"""@param evt: Fife mouseevent, mouseposition to zoom in"""
+	def zoom_in(self, track_cursor = False):
 		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom > VIEW.ZOOM_MAX):
 			zoom = VIEW.ZOOM_MAX
-		elif mappoint is not None:
-			cam = self.session.view.cam
-			loc = cam.getLocation()
-			current_loc = loc.getMapCoordinates()
-			current_loc.x = (current_loc.x + mappoint.x)/2
-			current_loc.y = (current_loc.y + mappoint.y)/2
-			cursor = horizons.main.fife.cursor
-			screencoords = self.cam.toScreenCoordinates(current_loc)
-			cursor.setPosition(screencoords.x, screencoords.y)
-			self.session.view.center(current_loc.x, current_loc.y)
-			# Center cursor
+		if track_cursor:
+			self._prepare_zoom_to_cursor(zoom)
 		self.set_zoom(zoom)
 
 	def get_zoom(self):

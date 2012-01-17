@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +25,9 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.util import Callback
+from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class InternationalTradeWidget(object):
 	log = logging.getLogger("gui.internationaltradewidget")
@@ -65,31 +68,31 @@ class InternationalTradeWidget(object):
 			self.radius = self.instance.radius
 
 	def draw_widget(self):
-		self.widget.findChild(name='ship_name').text = unicode(self.instance.name)
+		self.widget.findChild(name='ship_name').text = unicode(self.instance.get_component(NamedComponent).name)
 		self.partners = self.find_partner()
 		if len(self.partners) > 0:
 			partner_label = self.widget.findChild(name='partners')
 			nearest_partner = self.get_nearest_partner(self.partners)
-			partner_label.text = unicode(self.partners[nearest_partner].settlement.name)
+			partner_label.text = unicode(self.partners[nearest_partner].settlement.get_component(NamedComponent).name)
 			old_partner = self.partner
 			self.partner = self.partners[nearest_partner]
 			# If we changed partners, update changelisteners
 			if old_partner and old_partner is not self.partner:
-				old_partner.inventory.remove_change_listener(self.draw_widget)
-				self.partner.inventory.add_change_listener(self.draw_widget)
+				old_partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
+				self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
 
 			selling_inventory = self.widget.findChild(name='selling_inventory')
-			selling_inventory.init(self.instance.session.db, self.partner.inventory, self.partner.settlement.sell_list, True)
+			selling_inventory.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory, self.partner.settlement.get_component(TradePostComponent).sell_list, True)
 			for button in self.get_widgets_by_class(selling_inventory, ImageFillStatusButton):
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, True))
 
 			buying_inventory = self.widget.findChild(name='buying_inventory')
-			buying_inventory.init(self.instance.session.db, self.partner.inventory, self.partner.settlement.buy_list, False)
+			buying_inventory.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory, self.partner.settlement.get_component(TradePostComponent).buy_list, False)
 			for button in self.get_widgets_by_class(buying_inventory, ImageFillStatusButton):
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
 
 			inv = self.widget.findChild(name='inventory_ship')
-			inv.init(self.instance.session.db, self.instance.inventory)
+			inv.init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
 			self.widget.adaptLayout()
@@ -98,12 +101,12 @@ class InternationalTradeWidget(object):
 
 	def __remove_changelisteners(self):
 		self.instance.remove_change_listener(self.draw_widget)
-		self.partner.inventory.remove_change_listener(self.draw_widget)
+		self.partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
 		# TODO: partner buy / sell list
 
 	def __add_changelisteners(self):
 		self.instance.add_change_listener(self.draw_widget)
-		self.partner.inventory.add_change_listener(self.draw_widget)
+		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
 		# TODO: partner buy / sell list
 
 	def set_partner(self, partner_id):
@@ -136,14 +139,14 @@ class InternationalTradeWidget(object):
 
 	def transfer(self, res_id, settlement, selling):
 		"""Buy or sell the resources"""
-		if self.instance.position.distance(settlement.branch_office.position) <= self.radius:
+		if self.instance.position.distance(settlement.warehouse.position) <= self.radius:
 			if selling:
 				self.log.debug('InternationalTradeWidget : %s/%s is selling %d of res %d to %s/%s', \
-					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.name, settlement.owner.name)
+					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
 				SellResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
 			else:
 				self.log.debug('InternationalTradeWidget : %s/%s is buying %d of res %d from %s/%s', \
-					self.instance.name, self.instance.owner.name, self.exchange, res_id, settlement.name, settlement.owner.name)
+					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
 				BuyResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
 			# update gui
 			self.draw_widget()
@@ -160,16 +163,16 @@ class InternationalTradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		branch_offices = self.instance.session.world.get_branch_offices(self.instance.position, self.radius, self.instance.owner, True)
-		if branch_offices is not None:
-			partners.extend(branch_offices)
+		warehouses = self.instance.session.world.get_warehouses(self.instance.position, self.radius, self.instance.owner, True)
+		if warehouses is not None:
+			partners.extend(warehouses)
 		return partners
 
 	def get_nearest_partner(self, partners):
 		nearest = None
 		nearest_dist = None
 		for partner in partners:
-			if partner.owner is not self.instance.owner: # international trade ignored domestic branch offices
+			if partner.owner is not self.instance.owner: # international trade ignored domestic warehouses
 				dist = partner.position.distance(self.instance.position)
 				nearest = partners.index(partner) if dist < nearest_dist or nearest_dist is None else nearest
 				nearest_dist = dist if dist < nearest_dist or nearest_dist is None else nearest_dist

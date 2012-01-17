@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -140,7 +140,7 @@ class AIPlayer(GenericAI):
 			settlement_manager = SettlementManager(self, mission.land_manager)
 			self.settlement_managers.append(settlement_manager)
 			self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
-			self.add_building(settlement_manager.settlement.branch_office)
+			self.add_building(settlement_manager.settlement.warehouse)
 			if settlement_manager.feeder_island:
 				self.need_feeder_island = False
 		elif isinstance(mission, PrepareFoundationShip):
@@ -369,6 +369,6 @@ class AIPlayer(GenericAI):
 		Builder.cache.clear()
 
 	def __str__(self):
-		return 'AI(%s/%d)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid)
+		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(AIPlayer)

@@ -3,6 +3,162 @@ Unknown Horizons
 
 -----------------------------------------------------
 
+2012-??-??: Milestone 2012.1
+changelog date: DEC 19; rev: 0f74dbf6d5e1660b7c91600a6b8679ac87d995bc
+
+Gameplay and Balancing
+* New features
+   + screenshots of savegames
+   + 
+
+* Modifications and changes
+   # lower running costs for several buildings when paused:
+     # charcoal burning, distillery, farm, tobacconist, weaver: 0 (was: 5)
+     # salt ponds: 0 (was: 10)
+     # doctor: 5 (was: 15)
+   # maximum game speed now: 20x
+   # 
+
+* Fixed bugs and problems
+   ~ main square now walkable, i.e. behaves like a road
+   ~ ships only load as many tons of a res as specified in the route at max
+   ~ 
+
+
+Media Content
+* New files and features
+   + icon: capcity utilisation (also used for other stats)
+   + icon: different happiness stage smileys
+   + sound: build sound (Novatlan)
+   + building: new fish (lmg)
+   + icon: pipette cursor
+   + icon: minimap background image
+   + font: CJKV support through UMing
+   + 
+
+* Brush-ups and modifications
+   # icon: save/load in main / pause menu
+   # icon: inhabitant amount
+   # fish animations run at different speeds
+   # 
+
+User Interface
+* Additions and new features
+   + shortcut R to enter road building mode
+   + minimap in ship route config dialog, click on BO to add it to the route
+   + sending ships via click on minimap, highlight selected ships in minimap
+   + pipette tool to clone existing buildings (O)
+   + save and show trade history
+   + hotkey A to display owner color on tiles
+   + zoom to mouse position as new center
+   + remove resources in buy, sell, load, unload slots on right click
+   + setting to disable auto-unloading goods on founding settlements
+   + hotkey K toggles healthbars
+   + boat builder now displays queue and allows modifications
+   + 
+
+* Repositioning and modifications
+   # sliders for map creation always start in center position
+   + ship status now clickable in ship list
+   # show branch office locations on minimap
+   # combine widgets minimap and menu_panel to new widget 'minimap'
+   # simplified ship and main square tabs
+   # tooltip explanations to some settings
+   # 
+
+* Fixed bugs and usability problems
+   ~ reduce tooltip flickering
+   ~ camera view rotation directions were incorrectly named
+   ~ show message when autosaving
+   ~ faster first access to pause menu
+   ~ mousetool destruction between sessions
+   ~ sound got cut off on scroll (#1277)
+   ~ sort players in player scores overview according to total score
+   ~ add summary to settlement list
+   ~ rotate natural resources randomly
+   ~ add savegame date and time to filenames
+   ~ main widgets could be displayed twice, resulting in an infinite pause loop
+   ~ 
+
+
+Codebase
+* New functionalities
+   + script to pull and compile .po files from TL repo (dev/copy_pofiles)
+   + comment= widget attribute as context help for translators
+   + save random map settings to settings.xml file
+   + save maps (shift + F12)
+   + status icons above buildings and units, status icon exclusions
+   + minimap highlights
+   + cmd line option --game-speed
+   + use fife.Point.set where reasonable (performance)
+   + lazy loading for tabs
+   + building and unit outline settings (threshold, width) now configureable
+   + dynamically update data of older savegames to current format
+   + locale-aware fontdef loading (LinLibertine vs. UMing)
+   + 
+
+* Modified structures
+   # adapt all widgets to new pychan keyword API
+   # refactored i18n methods to replace widget content
+   # rename ResourceHandler._get_productions to ResourceHandler.get_productions
+   # improved loading speed for production lines, PathNodes, AbstractPather,
+     # ComponentHolder and GlobalLimitStorage
+   # minimap no longer uses GenericRenderer and supports more than one minimap
+   # road pathfinder now prefers straight lines
+   # default ai player amount is 0 for games started from cmd line
+   # save tile ownership instead of autogenerating it on load
+   # speed improvements to loading/saving huge settlements (scheduler)
+   # inventory tab uses ExtScheduler instead of Scheduler
+   # refactored management of all mousetools
+   # rename ConcretObject to ConcreteObject
+   # now using python's '{foo}'.format(foo=bar) for all i18n strings
+   # store savegame template as sql statements instead of binary sqlite file
+   # 
+
+* Fixed crashes and inconsistencies
+   ~ crash when clicking on savegames in save dialog (#1223)
+   ~ uninterrupted building setting now also affects destruction tool
+   ~ crash when player name contained unreasonable characters
+   ~ sand tiles are buildable again
+   ~ crash when removing main square
+   ~ trader now respect settlement needs when selling (buying 1 was impossible)
+   ~ routeconfig crash
+   ~ faulty parameter name caused endless loops when FIFE was not found
+   ~ crash with inaccessible entries in guitranslations
+   ~ rounding issue caused problems with minimap
+   ~ 
+
+
+User-Contributed Content
+* Translations
+   + new translations: ja, ro
+   + new terminology translations: ja, ro
+   + new tutorial translations: bg, et, hu, ja, ro
+   # updates to translations: bg, ca, cs, de, es, et, fi, fr, hu, it, lt, nb,
+                              nl, pl, pt, pt_BR, ru, sl, sv
+   # updates to tutorial translations: cs, de, fi, fr, pl, ru
+
+* Campaigns, scenarios and maps
+   ~ removed old maps and islands (incompatibility with new tileset structure)
+   + island bay_and_lake
+   + map development
+   + map singularity40
+   + map triple
+   + map test-map-tiny
+   + map quattro
+   + 
+
+* Media Content
+
+* New team members with this release, Annotations
+   + Push access was granted to:
+   + We accepted pull requests or patches by:
+   + Translators that joined our teams and contributed several strings:
+     Please refer to the credits!
+
+
+-----------------------------------------------------
+
 2011-11-11: Milestone 2011.3
 changelog date: NOV 11; rev: 52f9d95664860098e1a53f5995b3e7a84b9ce32c
 

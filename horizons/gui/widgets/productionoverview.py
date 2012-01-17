@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,6 +27,7 @@ from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util.gui import create_resource_icon
 from horizons.util import Callback
+from horizons.world.component.namedcomponent import NamedComponent
 
 class ProductionOverview(StatsWidget):
 	"""
@@ -46,7 +47,7 @@ class ProductionOverview(StatsWidget):
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
 		#xgettext:python-format
-		self._gui.findChild(name = 'headline').text = _('Production overview of {settlement}').format(settlement=self.settlement.name)
+		self._gui.findChild(name = 'headline').text = _('Production overview of {settlement}').format(settlement=self.settlement.get_component(NamedComponent).name)
 
 		for resource_id, amount in sorted(self.settlement.produced_res.items(), key = lambda data: data[1], reverse = True):
 			self._add_line_to_gui(resource_id, amount)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import sqlite3
 import tempfile
 import logging
@@ -25,85 +26,13 @@ import os
 import os.path
 import glob
 import time
-import shelve
 import yaml
-try:
-	from yaml import CLoader as Loader
-except ImportError:
-	from yaml import Loader
 
 from horizons.constants import PATHS, VERSION
-from horizons.util import DbReader
+from horizons.util import DbReader, YamlCache
 
 import horizons.main
 
-class YamlCache(object):
-	"""Loads and caches YAML files
-	"""
-	cache = {}
-	virgin = True
-	dirty = False
-	yaml_cache = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
-
-	@classmethod
-	def get_file(cls, filename):
-		if cls.virgin:
-			cls._read_bin_file()
-			cls.virgin = False
-		data = cls.get_yaml_file(filename)
-		if cls.dirty:
-			cls._write_bin_file()
-			cls.dirty = False
-		return data
-
-	@classmethod
-	def get_yaml_file(cls, filename):
-		# calc the hash
-		f = open(filename, 'r')
-		h = hash(f.read())
-		f.seek(0)
-		# check for updates or new files
-		if (filename in cls.cache and \
-				cls.cache[filename][0] != h) or \
-			 (not filename in cls.cache):
-			cls.dirty = True
-			cls.cache[filename] = (h, yaml.load( f, Loader = Loader ) )
-
-		return cls.cache[filename][1]
-
-	@classmethod
-	def _write_bin_file(cls):
-		try:
-			s = shelve.open(cls.yaml_cache)
-		except UnicodeError:
-			# this can happen with unicode characters in the name, because the bdb module on win
-			# converts it internally to ascii and fails to open the file. Since this is just a cache,
-			# we don't require it for the game to function, there is just a slight speed penality
-			# on every startup
-			return
-		for key, value in cls.cache.iteritems():
-			# TODO : manage unicode problems (paths with accents ?)
-			s[str(key)] = value # We have to decode it because _user_dir is encoded in constants
-		s.close()
-
-	@classmethod
-	def _read_bin_file(cls):
-		try:
-			s = shelve.open(cls.yaml_cache)
-		except ImportError:
-			# Some python distributions used to use the bsddb module as underlying shelve.
-			# The bsddb module is now deprecated since 2.6 and is not present in some 2.7 distributions.
-			# Therefore, the line above will yield an ImportError if it has been executed with
-			# a python supporting bsddb and now is executed again with python with no support for it.
-			# Since this may also be caused by a different error, we just try again once.
-			os.remove(cls.yaml_cache)
-			s = shelve.open(cls.yaml_cache)
-		except UnicodeError:
-			return # see _write_bin_file
-
-		for key, value in s.iteritems():
-			cls.cache[key] = value
-		s.close()
 
 class SavegameManager(object):
 	"""Controls savegamefiles.
@@ -122,13 +51,13 @@ class SavegameManager(object):
 	"""
 	log = logging.getLogger("savegamemanager")
 
-	savegame_dir = PATHS.USER_DIR + "/save"
-	autosave_dir = savegame_dir+"/autosave"
-	quicksave_dir = savegame_dir+"/quicksave"
-	maps_dir = "content/maps"
-	scenario_maps_dir = "content/scenariomaps"
-	scenarios_dir = "content/scenarios"
-	campaigns_dir = "content/campaign"
+	savegame_dir = os.path.join(PATHS.USER_DIR, "save")
+	autosave_dir = os.path.join(savegame_dir, "autosave")
+	quicksave_dir = os.path.join(savegame_dir, "quicksave")
+	maps_dir = os.path.join("content", "maps")
+	scenario_maps_dir = os.path.join("content", "scenariomaps")
+	scenarios_dir = os.path.join("content", "scenarios")
+	campaigns_dir = os.path.join("content", "campaign")
 
 	savegame_extension = "sqlite"
 	scenario_extension = "yaml"
@@ -201,7 +130,8 @@ class SavegameManager(object):
 	@classmethod
 	def create_filename(cls, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
-		name = "{directory}/{name}.{ext}".format(directory=cls.savegame_dir,
+		name = "{directory}{sep}{name}.{ext}".format(directory=cls.savegame_dir,
+		                                         sep=os.sep,
 		                                         name=savegamename,
 		                                         ext=cls.savegame_extension)
 		cls.log.debug("Savegamemanager: creating save-filename: %s", name)
@@ -211,7 +141,7 @@ class SavegameManager(object):
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
 		prepared_filename = time.strftime(cls.autosave_filenamepattern.format(timestamp=time.time()))
-		name = "{directory}/{name}".format(directory=cls.autosave_dir, name=prepared_filename)
+		name = "{directory}{sep}{name}".format(directory=cls.autosave_dir, sep=os.sep, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
@@ -219,7 +149,7 @@ class SavegameManager(object):
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
 		prepared_filename = time.strftime(cls.quicksave_filenamepattern.format(timestamp=time.time()))
-		name = "{directory}/{name}".format(directory=cls.quicksave_dir, name=prepared_filename)
+		name = "{directory}{sep}{name}".format(directory=cls.quicksave_dir, sep=os.sep, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
@@ -294,11 +224,23 @@ class SavegameManager(object):
 		width = horizons.main.fife.engine_settings.getScreenWidth()
 		height = horizons.main.fife.engine_settings.getScreenHeight()
 
+
+		# hide whatever dialog we have
+		dialog_hidden = False
+		if horizons.main._modules.gui.is_visible():
+			dialog_hidden = True
+			horizons.main._modules.gui.hide()
+			horizons.main.fife.engine.pump()
+
 		# scale to the correct with and adapt height with same factor
 		factor = float( cls.savegame_screenshot_width ) / width
 		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
 		                                                           int(float(width) * factor),
 		                                                           int(float(height) * factor))
+
+		if dialog_hidden:
+			horizons.main._modules.gui.show()
+			horizons.main.fife.engine.pump()
 
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()
 		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
@@ -318,7 +260,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
-		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir,
+		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.savegame_dir,
 		              cls.autosave_dir, cls.quicksave_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir], include_displaynames, None, True)
 

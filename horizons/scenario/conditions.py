@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +25,7 @@ from horizons.constants import BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.util.worldobject import WorldObject
+from horizons.world.component.storagecomponent import StorageComponent
 
 
 # event conditions to specify at check_events()
@@ -35,7 +36,7 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater',\
                   'player_total_earnings_greater','time_passed', \
                   'var_eq', 'var_gt', 'var_lt',
-                  'buildings_connected_to_branch_gt', 'buildings_connected_to_branch_lt',\
+                  'buildings_connected_to_warehouse_gt', 'buildings_connected_to_warehouse_lt',\
                   'buildings_connected_to_building_gt', 'buildings_connected_to_building_lt', \
                   'settlement_produced_res_greater', 'player_produced_res_greater', \
                   'player_number_of_ships_gt', 'player_number_of_ships_lt')
@@ -56,8 +57,8 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.settlement_res_stored_greater,
                                 CONDITIONS.time_passed,
                                 CONDITIONS.player_total_earnings_greater,
-                                CONDITIONS.buildings_connected_to_branch_gt,
-                                CONDITIONS.buildings_connected_to_branch_lt,
+                                CONDITIONS.buildings_connected_to_warehouse_gt,
+                                CONDITIONS.buildings_connected_to_warehouse_lt,
                                 CONDITIONS.buildings_connected_to_building_gt,
                                 CONDITIONS.buildings_connected_to_building_lt,
                                 CONDITIONS.settlement_produced_res_greater,
@@ -78,11 +79,11 @@ def settler_level_greater(session, limit):
 
 def player_gold_greater(session, limit):
 	"""Returns whether the player has more gold then limit"""
-	return (session.world.player.inventory[RES.GOLD_ID] > limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] > limit)
 
 def player_gold_less(session, limit):
 	"""Returns whether the player has less gold then limit"""
-	return (session.world.player.inventory[RES.GOLD_ID] < limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] < limit)
 
 def settlement_balance_greater(session, limit):
 	"""Returns whether at least one settlement of player has a balance > limit"""
@@ -112,16 +113,16 @@ def building_num_of_type_greater(session, building_class, limit):
 
 def player_res_stored_greater(session, res, limit):
 	"""Returns whether all settlements of player combined have more than limit of res"""
-	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) > limit)
+	return (sum(settlement.get_component(StorageComponent).inventory[res] for settlement in _get_player_settlements(session)) > limit)
 
 def player_res_stored_less(session, res, limit):
 	"""Returns whether all settlements of player combined have less than limit of res"""
-	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) < limit)
+	return (sum(settlement.get_component(StorageComponent).inventory[res] for settlement in _get_player_settlements(session)) < limit)
 
 def settlement_res_stored_greater(session, res, limit):
 	"""Returs whether at least one settlement of player has more than limit of res"""
 	return any(settlement for settlement in _get_player_settlements(session) if \
-	           settlement.inventory[res] > limit)
+	           settlement.get_component(StorageComponent).inventory[res] > limit)
 
 def player_total_earnings_greater(session, total):
 	"""Returns whether the player has earned more then 'total' money with trading
@@ -140,17 +141,17 @@ def player_produced_res_greater(session, res, limit):
 	"""Returns whether more than limit res have been produced at all of the player's settlements combined"""
 	return sum(settlement.produced_res.get(res, 0) for settlement in _get_player_settlements(session)) > limit
 
-def buildings_connected_to_branch_gt(session, building_class, number):
+def buildings_connected_to_warehouse_gt(session, building_class, number):
 	"""Checks whether more than number of building_class type buildings are
-	connected to a branch office or storage."""
+	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
+	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
 
-def buildings_connected_to_branch_lt(session, building_class, number):
+def buildings_connected_to_warehouse_lt(session, building_class, number):
 	"""Checks whether less than number of building_class type buildings are
-	connected to a branch office or storage."""
+	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
+	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
 
 def buildings_connected_to_building_gt(session, building_class, class2, number):
 	"""Checks whether more than number of building_class type buildings are

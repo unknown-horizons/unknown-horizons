@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ import logging
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, PRODUCTIONLINES
 from horizons.command.production import AddProduction
+from horizons.world.production.producer import Producer
 
 class UnitBuilder(object):
 	"""An object of this class builds the units of one player."""
@@ -45,7 +46,7 @@ class UnitBuilder(object):
 		"""Build a new usable fishing boat."""
 		boat_builder = self._get_boat_builders()[0]
 		AddProduction(boat_builder, PRODUCTIONLINES.HUKER).execute(self.owner.session)
-		production = boat_builder._get_production(PRODUCTIONLINES.HUKER)
+		production = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.HUKER)
 		production.add_production_finished_listener(self._ship_built)
 		self.log.info('%s started building a ship', self)
 
@@ -57,7 +58,7 @@ class UnitBuilder(object):
 	@property
 	def num_ships_being_built(self):
 		"""Return the number of ships being built by all the boat builders of the player."""
-		return sum(len(boat_builder.get_production_lines()) for boat_builder in self._get_boat_builders())
+		return sum(len(boat_builder.get_component(Producer).get_production_lines()) for boat_builder in self._get_boat_builders())
 
 	def __str__(self):
 		return '%s UnitBuilder' % self.owner

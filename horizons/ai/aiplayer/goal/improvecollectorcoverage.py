@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,6 +29,8 @@ from horizons.constants import BUILDINGS, RES, PRODUCTION
 from horizons.scheduler import Scheduler
 from horizons.util import Rect
 from horizons.entities import Entities
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 
 class ImproveCollectorCoverageGoal(SettlementGoal):
 	def get_personality_name(self):
@@ -41,7 +43,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 	def _get_problematic_collector_coverage_buildings(self):
 		problematic_buildings = {}
 		for building in self.production_builder.production_buildings:
-			for production in building.get_productions():
+			for production in building.get_component(Producer).get_productions():
 				if production.get_age() < 1.5 * PRODUCTION.STATISTICAL_WINDOW:
 					continue
 				history = production.get_state_history_times(False)
@@ -50,7 +52,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				if amount_paused < self.personality.min_bad_collector_coverage:
 					continue
 				for resource_id in production.get_produced_res():
-					if self.settlement.inventory.get_free_space_for(resource_id) > self.personality.min_free_space:
+					if self.settlement.get_component(StorageComponent).inventory.get_free_space_for(resource_id) > self.personality.min_free_space:
 						# this is actually problematic
 						problematic_buildings[building.worldid] = building
 		return problematic_buildings.values()
@@ -78,9 +80,9 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		cost = self.production_builder.get_road_cost(path)
 		for resource_id, amount in cost.iteritems():
 			if resource_id == RES.GOLD_ID:
-				if self.owner.inventory[resource_id] < amount:
+				if self.owner.get_component(StorageComponent).inventory[resource_id] < amount:
 					return BUILD_RESULT.NEED_RESOURCES
-			elif self.settlement.inventory[resource_id] < amount:
+			elif self.settlement.get_component(StorageComponent).inventory[resource_id] < amount:
 				return BUILD_RESULT.NEED_RESOURCES
 		return BUILD_RESULT.OK if self.production_builder.build_road(path) else BUILD_RESULT.UNKNOWN_ERROR
 

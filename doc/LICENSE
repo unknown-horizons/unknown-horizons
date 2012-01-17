@@ -3,35 +3,51 @@ UNKNOWN HORIZONS
 
 
 
-Our code is published under the terms of the  General Public License, version 2 and later.
+Our code is published under the terms of the  General Public License, version 2
+and later.
 The license text is shipped with this program as doc/GPL (from now on: "see GPL").
 For more information visit  http://www.gnu.org/copyleft/gpl.html .
 
 The file
 
+/content/fonts/UMing.ttc
+
+is licensed under the terms of the the Arphic Public License (see APL).
+Currently supported charsets:
+ISO8859-1,2,3,4,7,9,10,13,14,15  Big5  HKSCS-2004  GB2312-80  as well as
+Bopomofo Extensions for Hakka, Minnan (Unicode 5.0) and their MBE variants.
+Partly supported:
+CNS 11643  GBK  GB18030  Japanese  Korean
+AR PL UMing is a font under development, for the project homepage, visit
+http://www.freedesktop.org/wiki/Software/CJKUnifonts .
+
+
+The file
+
 content/gui/images/cursors/cursor_pipette.png
 
-is licensed by the GIMP team ( http://gimp.org ) under the terms of the  General Public License, version 2.
+is derived from a file licensed by the GIMP team ( http://gimp.org ) under the
+terms of the GNU General Public License, version 2.
 
 
 The file  
 
 /horizons/ext/enum.py  
 
-is licensed under the terms of the  Python 2.4.2 License  by way of derogation from the above.
-Informations can be obtained at  http://www.python.org/download/releases/2.4.2/license/ .
+is derived from  http://cheeseshop.python.org/pypi/enum version 0.4.3  which is
+licensed under the terms of the GNU General Public License, version 2 or later.
 
 
 /setup.py
 
 is derived from https://launchpad.net/python-distutils-extra
-which is licensed under the GNU GPL v2 .
+which is licensed under the terms of the GNU General Public License, version 2.
 
 
 /horizons/ext/dummy.py
 
-is licensed by nosklo under the terms of the  MIT license.  Information can be obtained at
-http://www.opensource.org/licenses/mit-license.php .
+is licensed by nosklo under the terms of the  MIT license.  Information can be
+obtained at http://www.opensource.org/licenses/mit-license.php .
 
 
 The files
@@ -93,4 +109,3 @@ For more information visit  http://creativecommons.org/licenses/by-sa/3.0/legalc
 
 For further informations visit  http://unknown-horizons.org
 or contact us by sending a mail to  team@unknown-horizons.org .
-

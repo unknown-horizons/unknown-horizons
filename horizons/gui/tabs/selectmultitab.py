@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,9 @@ from tabinterface import TabInterface
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget
 from horizons.scheduler import Scheduler
+from horizons.command.unit import SetStance
+from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.stancecomponent import *
 
 class SelectMultiTab(TabInterface):
 	"""
@@ -112,10 +115,15 @@ class SelectMultiTab(TabInterface):
 			Scheduler().add_new_object(self.refresh_unit_widget, self, run_in = 0)
 
 	def refresh_unit_widget(self):
-		self._scheduled_refresh = False
-		self.hide_selected_units_widget()
-		self.draw_selected_units_widget()
-		self.widget.adaptLayout()
+		if self.instances:
+			self._scheduled_refresh = False
+			self.hide_selected_units_widget()
+			self.draw_selected_units_widget()
+			self.toggle_stance()
+			self.widget.adaptLayout()
+		else:
+			# all units were destroyed
+			self.hide_selected_units_widget()
 
 	def on_instance_removed(self, instance):
 		if hasattr(instance, 'stance'):
@@ -131,7 +139,7 @@ class SelectMultiTab(TabInterface):
 				self.session.ingame_gui.hide_menu()
 				return
 
-			# if one unit remains, show it's menu
+			# if one unit remains, show its menu
 			if len(self.instances) == 1:
 				self.session.ingame_gui.hide_menu()
 				self.instances[0].show_menu()
@@ -155,10 +163,10 @@ class SelectMultiTab(TabInterface):
 		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
 		self.widget.mapEvents({
-			'aggressive': Callback(self.set_stance, 'aggressive'),
-			'hold_ground': Callback(self.set_stance, 'hold_ground'),
-			'none': Callback(self.set_stance, 'none'),
-			'flee': Callback(self.set_stance, 'flee')
+			'aggressive': Callback(self.set_stance, AggressiveStance),
+			'hold_ground': Callback(self.set_stance, HoldGroundStance),
+			'none': Callback(self.set_stance, NoneStance),
+			'flee': Callback(self.set_stance, FleeStance)
 		})
 
 	def hide_stance_widget(self):
@@ -167,7 +175,7 @@ class SelectMultiTab(TabInterface):
 	def set_stance(self, stance):
 		for i in self.instances:
 			if hasattr(i, 'stance'):
-				i.set_stance(stance)
+				SetStance(i, stance).execute(i.session)
 		self.toggle_stance()
 
 	def toggle_stance(self):
@@ -183,8 +191,9 @@ class SelectMultiTab(TabInterface):
 		stance = stance_units[0].stance
 		for unit in stance_units[1:]:
 			if unit.stance != stance:
+				# not all have the same stance, toggle none
 				return
-		self.widget.findChild(name = stance).set_active()
+		self.widget.findChild(name = stance.NAME).set_active()
 
 class UnitEntry(object):
 	def __init__(self, instances, show_number = True):
@@ -198,7 +207,7 @@ class UnitEntry(object):
 		for i in instances:
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
 				i.add_remove_listener(Callback(self.on_instance_removed, i))
-			health_component = i.get_component("health")
+			health_component = i.get_component(HealthComponent)
 			if not health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.add_damage_dealt_listener(self.draw_health)
 		self.draw_health()
@@ -214,7 +223,7 @@ class UnitEntry(object):
 		self.instances.remove(instance)
 		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
 			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
-		health_component = instance.get_component("health")
+		health_component = instance.get_component(HealthComponent)
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 
@@ -225,7 +234,7 @@ class UnitEntry(object):
 		health = 0
 		max_health = 0
 		for instance in self.instances:
-			health_component = instance.get_component("health")
+			health_component = instance.get_component(HealthComponent)
 			health += health_component.health
 			max_health += health_component.max_health
 		health_ratio = float(health) / max_health
@@ -240,7 +249,7 @@ class UnitEntry(object):
 		for instance in self.instances:
 			if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
 				instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
-			health_component = instance.get_component("health")
+			health_component = instance.get_component(HealthComponent)
 			if health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.remove_damage_dealt_listener(self.draw_health)
 

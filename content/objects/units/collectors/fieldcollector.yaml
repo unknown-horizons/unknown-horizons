@@ -1,0 +1,14 @@
+baseclass: collectors.FieldCollector
+id: 1000009
+name: FieldCollector
+radius: 5
+velocity: 12.0
+components:
+- AmbientSoundComponent
+- StorageComponent:
+   inventory:
+      PositiveSizedSlotStorage:
+         limit: 8
+
+actionsets:
+   as_farmer0: {level: 0}

@@ -1,37 +1,31 @@
-[Font/libertine_13]
+[Font/13]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
 size: 14
 color: 255,255,255
 antialias: 1
-#row_spacing: 50
-#glyph_spacing: 100
 
 
-[Font/libertine_14]
+[Font/14]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
 size: 15
 color: 255,255,255
 antialias: 1
-#row_spacing: 50
-#glyph_spacing: 100
 
 
-[Font/libertine_mainmenu]
+[Font/mainmenu]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
-size: 17
+size: 22
 color: 255,255,255
 antialias: 1
-#row_spacing: 50
-#glyph_spacing: 100
 
 
-[Font/libertine_18]
+[Font/18]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
@@ -40,18 +34,16 @@ color: 255,255,255
 antialias: 1
 
 
-[Font/libertine_small]
+[Font/small]
 
 type: truetype
 source: content/fonts/LinLibertine.ttf
 size: 17
 color: 255,255,255
 antialias: 1
-#row_spacing: 50
-#glyph_spacing: 100
 
 
-[Font/libertine_14_black]
+[Font/14_black]
 
 type: truetype
 source: content/fonts/LinLibertineI.ttf
@@ -60,7 +52,7 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/libertine_18_black]
+[Font/18_black]
 
 type: truetype
 source: content/fonts/LinLibertineI.ttf
@@ -69,7 +61,7 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/libertine_small_black]
+[Font/small_black]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
@@ -78,7 +70,7 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/libertine_large]
+[Font/large]
 
 type: truetype
 source: content/fonts/LinLibertine.ttf
@@ -87,7 +79,7 @@ color: 255,255,255
 antialias: 1
 
 
-[Font/libertine_large_load]
+[Font/large_load]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
@@ -96,7 +88,7 @@ color: 120,100,65
 antialias: 1
 
 
-[Font/libertine_headline]
+[Font/headline]
 
 type: truetype
 source: content/fonts/LinLibertineC.ttf
@@ -105,33 +97,37 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/libertine_tooltip]
+[Font/tooltip]
 
 type: truetype
 source: content/fonts/LinLibertineI.ttf
 size: 15
 color: 68,42,2
-#color: 255,255,255
 antialias: 1
-#row_spacing: 50
-#glyph_spacing: 100
 
 
-[Font/libertine_message]
+[Font/message]
 
 type: truetype
 source: content/fonts/LinLibertineB.ttf
 size: 15
 color: 255,255,255
 antialias: 1
-#row_spacing: 50
-#glyph_spacing: 100
 
 
-[Font/libertine_small_tooltip]
+[Font/small_tooltip]
 
 type: truetype
 source: content/fonts/LinLibertineB.ttf
 size: 13
 color: 255,255,255
+antialias: 1
+
+
+[Font/14_black_cjkv]
+
+type: truetype
+source: content/fonts/UMing.ttc
+size: 15
+color: 68,42,2
 antialias: 1

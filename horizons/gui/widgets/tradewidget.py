@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,8 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget
 from horizons.command.uioptions import TransferResource
 from horizons.util import Callback
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class TradeWidget(object):
 	log = logging.getLogger("gui.tradewidget")
@@ -64,29 +66,28 @@ class TradeWidget(object):
 			self.radius = self.instance.radius
 
 	def draw_widget(self):
-		self.widget.findChild(name='ship_name').text = unicode(self.instance.name)
+		self.widget.findChild(name='ship_name').text = unicode(self.instance.get_component(NamedComponent).name)
 		self.partners = self.find_partner()
 		if len(self.partners) > 0:
 			dropdown = self.widget.findChild(name='partners')
-			#dropdown.setInitialData([item.settlement.name for item in self.partners])
 			#dropdown.capture(Callback(self.set_partner, dropdown.getData()))
 			nearest_partner = self.get_nearest_partner(self.partners)
 			#dropdown.setData(nearest_partner)
-			dropdown.text = unicode(self.partners[nearest_partner].settlement.name) # label fix for release use only
+			dropdown.text = unicode(self.partners[nearest_partner].settlement.get_component(NamedComponent).name) # label fix for release use only
 			old_partner = self.partner
 			self.partner = self.partners[nearest_partner]
 			# If we changed partners, update changelisteners
 			if old_partner and old_partner is not self.partner:
-				old_partner.inventory.remove_change_listener(self.draw_widget)
-				self.partner.inventory.add_change_listener(self.draw_widget)
+				old_partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
+				self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
 			inv_partner = self.widget.findChild(name='inventory_partner')
-			inv_partner.init(self.instance.session.db, self.partner.inventory)
+			inv_partner.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory)
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
 				#button.uncached = True
 				#button.filled = button.filled
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner, self.instance))
 			inv = self.widget.findChild(name='inventory_ship')
-			inv.init(self.instance.session.db, self.instance.inventory)
+			inv.init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
 				#button.uncached = True
 				#button.filled = button.filled
@@ -98,11 +99,11 @@ class TradeWidget(object):
 
 	def __remove_changelisteners(self):
 		self.instance.remove_change_listener(self.draw_widget)
-		self.partner.inventory.remove_change_listener(self.draw_widget)
+		self.partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
 
 	def __add_changelisteners(self):
 		self.instance.add_change_listener(self.draw_widget)
-		self.partner.inventory.add_change_listener(self.draw_widget)
+		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
 
 
 	def set_partner(self, partner_id):
@@ -138,7 +139,7 @@ class TradeWidget(object):
 		if self.instance.position.distance(transfer_to.position) <= self.radius and \
 			 transfer_to is not None and transfer_from is not None:
 			self.log.debug('TradeWidget : Transferring %s of res %s from %s to %s', self.exchange, \
-			               res_id, transfer_from.name, transfer_to.name)
+			               res_id, transfer_from, transfer_to)
 			TransferResource(self.exchange, res_id, transfer_from, transfer_to).execute(self.instance.session)
 			# update gui
 			self.draw_widget()
@@ -155,9 +156,9 @@ class TradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		branch_offices = self.instance.session.world.get_branch_offices(position=self.instance.position, radius=self.radius, owner=self.instance.owner)
-		if branch_offices is not None:
-			partners.extend(branch_offices)
+		warehouses = self.instance.session.world.get_warehouses(position=self.instance.position, radius=self.radius, owner=self.instance.owner)
+		if warehouses is not None:
+			partners.extend(warehouses)
 		return partners
 
 	def get_nearest_partner(self, partners):

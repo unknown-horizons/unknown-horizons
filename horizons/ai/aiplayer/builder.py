@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -36,7 +36,7 @@ class Builder(WorldObject):
 
 	rotations = [45, 135, 225, 315]
 	# don't change the orientation of the following building types
-	non_rotatable_buildings = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, \
+	non_rotatable_buildings = [BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, \
 		BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SALT_PONDS_CLASS]
 
 	def __init__(self, building_id, land_manager, point, orientation = 0, ship = None, worldid = None):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -21,11 +21,12 @@
 
 import logging
 
-from horizons.util import Point, Circle, Callback
+from horizons.util import Point, Callback
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.units.bullet import Bullet
+from horizons.world.component.healthcomponent import HealthComponent
 
 @metaChangeListenerDecorator("attack_ready")
 @metaChangeListenerDecorator("weapon_fired")
@@ -92,7 +93,8 @@ class Weapon(object):
 		units = session.world.get_health_instances(position, attack_radius)
 
 		for unit in units:
-			unit.get_component('health').deal_damage(weapon_id, damage)
+			cls.log.debug("dealing damage to %s", unit)
+			unit.get_component(HealthComponent).deal_damage(weapon_id, damage)
 
 	def make_attack_ready(self):
 		self.attack_ready = True

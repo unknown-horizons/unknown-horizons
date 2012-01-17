@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,17 +21,20 @@
 
 from collections import defaultdict, deque
 
-from horizons.savegamemanager import SavegameManager
+from horizons.util.savegameupgrader import SavegameUpgrader
+from horizons.util.python import decorators
 from horizons.util import DbReader
 
-########################################################################
 class SavegameAccessor(DbReader):
-	"""SavegameAccessor is the class used for loading saved games.
-	Frequent select queries are preloaded for faster access."""
+	"""
+	SavegameAccessor is the class used for loading saved games.
+
+	Frequent select queries are preloaded for faster access.
+	"""
 
 	def __init__(self, dbfile):
-		super(SavegameAccessor, self).__init__(dbfile=dbfile)
-		self._upgrade_savegame(dbfile)
+		self.upgrader = SavegameUpgrader(dbfile)
+		super(SavegameAccessor, self).__init__(dbfile=self.upgrader.get_path())
 		self._load_building()
 		self._load_settlement()
 		self._load_concrete_object()
@@ -46,17 +49,9 @@ class SavegameAccessor(DbReader):
 		self._load_component()
 		self._load_storage_global_limit()
 
-	def _upgrade_savegame(self, dbfile):
-		"""Tries to make old savegames compatible with the current version"""
-		metadata = SavegameManager.get_metadata(dbfile)
-		rev = metadata['savegamerev']
-		if rev == 0: # not a regular savegame, usually a map
-			return
-		if rev <= 44:
-			# add trade history table
-			self("CREATE TABLE IF NOT EXISTS \"trade_history\" (\"settlement\" INTEGER NOT NULL," \
-			     "\"tick\" INTEGER NOT NULL, \"player\" INTEGER NOT NULL, " \
-			     "\"resource_id\" INTEGER NOT NULL, \"amount\" INTEGER NOT NULL, \"gold\" INTEGER NOT NULL)")
+	def close(self):
+		super(SavegameAccessor, self).close()
+		self.upgrader.close()
 
 
 	def _load_building(self):
@@ -111,6 +106,12 @@ class SavegameAccessor(DbReader):
 		self._production_state_history = defaultdict(lambda: deque())
 		for production_id, tick, state in self("SELECT production, tick, state FROM production_state_history ORDER BY production, tick"):
 			self._production_state_history[int(production_id)].append((tick, state))
+
+	def get_productionworldid_by_id_and_owner(self, id, ownerid):
+		return self("SELECT rowid FROM production WHERE prod_line_id=? AND owner=?", id, ownerid)[0][0]
+
+	def get_production_by_id_and_owner(self, id, ownerid):
+		return self("SELECT state, remaining_ticks, _pause_old_state, creation_tick FROM production WHERE prod_line_id=? AND owner=?", id, ownerid)[0]
 
 	def get_production_row(self, worldid):
 		"""Returns (state, owner, prod_line_id, remaining_ticks, _pause_old_state, creation_tick)"""
@@ -236,3 +237,5 @@ class SavegameAccessor(DbReader):
 
 	def get_storage_global_limit(self, worldid):
 		return self._storage_global_limit[int(worldid)]
+
+decorators.bind_all(SavegameAccessor)

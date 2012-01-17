@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,7 +30,7 @@ class DefaultPersonality:
 
 		enemy_settlement_penalty = 200 # penalty for every enemy settlement on the island
 		compact_empire_importance = 100 # importance of keeping our islands close together
-		extra_branch_office_distance = 1 # extra distance to add to the usual branch office to island distance when choosing an island
+		extra_warehouse_distance = 1 # extra distance to add to the usual warehouse to island distance when choosing an island
 		nearby_enemy_penalty = 100 # importance of keeping our islands away from other players' islands
 		extra_enemy_island_distance = 1 # extra distance to add to the usual island to other player's island distance when choosing an island
 
@@ -93,6 +93,9 @@ class DefaultPersonality:
 
 		max_coverage_building_capacity = 22 # maximum number of residences a coverage building can service
 		normal_coverage_building_capacity = 20 # the initial plan calls for this number of residences per coverage building (may or may not be optimised away)
+
+		min_coverage_building_options = 10 # consider at least this many coverage building options
+		coverage_building_option_ratio = 0.4 # consider this * 100% of the possible options
 
 	class LandManager:
 		max_section_side = 22 # minimise the number of village sections by considering this to be its maximum side length
@@ -164,12 +167,12 @@ class DefaultPersonality:
 		final_pioneer_upgrades = True
 
 	class FoundSettlement:
-		# use a penalty for branch office being too close to the village area
+		# use a penalty for warehouse being too close to the village area
 		too_close_penalty_threshold = 3
 		too_close_constant_penalty = 100
 		too_close_linear_penalty = 0
 
-		linear_branch_office_penalty = 1000 # add a penalty of this constant * distance to a branch office to the branch office penalty
+		linear_warehouse_penalty = 1000 # add a penalty of this constant * distance to a warehouse to the warehouse penalty
 
 	class FeederChainGoal:
 		extra_priority = 1 # extra priority given to goals that are supposed to produce resources for other settlements on feeder islands
@@ -383,7 +386,7 @@ class DefaultPersonality:
 	class FarmEvaluator:
 		alignment_importance = 0.001 # the larger this value, the larger the effect of alignment on the placement
 		existing_road_importance = 0.005 # bonus for every reused tile of existing (or planned) road
-		wasted_space_penalty = 0.02 
+		wasted_space_penalty = 0.02
 		immediate_connection_importance = 0.005 # bonus for road and non-blocked access to the road
 
 		immediate_connection_road = 3 # bonus for a road in an entrance of the farm

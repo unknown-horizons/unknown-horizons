@@ -1,6 +1,6 @@
 # -.- coding: utf-8 -.-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,6 @@
 import ctypes
 import platform
 import os.path
-import re
 import locale
 
 from horizons.ext.enum import Enum
@@ -57,13 +56,13 @@ class VERSION:
 		return u"<unknown>"
 
 	RELEASE_NAME    = "Unknown Horizons %s"
-
 	RELEASE_VERSION = _set_version()
-	# change to sth like this for release:
+	# change for release:
+	IS_DEV_VERSION = True
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 45
+	SAVEGAMEREVISION= 48
 
 	@staticmethod
 	def string():
@@ -72,7 +71,8 @@ class VERSION:
 ## WORLD
 class UNITS:
 	# ./development/print_db_data.py unit
-	PLAYER_SHIP_CLASS          = 1000001
+	HUKER_SHIP_CLASS           = 1000001
+	PLAYER_SHIP_CLASS          = HUKER_SHIP_CLASS
 	BUILDING_COLLECTOR_CLASS   = 1000002
 	FISHER_BOAT                = 1000004
 	PIRATE_SHIP_CLASS          = 1000005
@@ -87,9 +87,11 @@ class WEAPONS:
 	CANNON = 40
 	DAGGER = 41
 
+	DEFAULT_FIGHTING_SHIP_WEAPONS_NUM = 7
+
 class BUILDINGS:
 	# ./development/print_db_data.py building
-	BRANCH_OFFICE_CLASS = 1
+	WAREHOUSE_CLASS = 1
 	STORAGE_CLASS = 2
 	RESIDENTIAL_CLASS = 3
 	MAIN_SQUARE_CLASS = 4
@@ -220,7 +222,7 @@ class GROUND:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [ int(i*16) for i in 0.5, 1, 2, 3, 4, 6, 8, 11, 20 ]
+	TICK_RATES = [ int(i*16) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20) ]
 
 class COLORS:
 	BLACK = 9
@@ -247,6 +249,7 @@ class PRODUCTIONLINES:
 	HUKER = 15
 	FISHING_BOAT = None # will get added later
 	FRIGATE = 58
+	WOOD = 2
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
@@ -270,9 +273,9 @@ class AI:
 class TRADER: # check resource values: ./development/print_db_data.py res
 	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
 	PRICE_MODIFIER_SELL = 1.5 # sell for x times the resource value
-	TRADING_DURATION = 4 # seconds that trader stays at branch office to simulate (un)loading
+	TRADING_DURATION = 4 # seconds that trader stays at warehouse to simulate (un)loading
 
-	BUSINESS_SENSE = 50 # chance in percent to be sent to a branch office instead of random spot
+	BUSINESS_SENSE = 50 # chance in percent to be sent to a warehouse instead of random spot
 
 	BUY_AMOUNT = (2, 8)  # amount range to buy/sell from settlement per resource
 	SELL_AMOUNT_MIN = 2
@@ -370,13 +373,22 @@ class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
 	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
+	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.txt"
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, key)
 
+	def get_by_value(self, value):
+		for item in self.iteritems():
+			if item[1] == value:
+				return item[0]
+		return "" # meaning default key
+
+
 LANGUAGENAMES = _LanguageNameDict({
+	"" 			: u'System default',
 	"af"    : u'Afrikaans',
 	"bg"    : u'Български',
 	"ca"    : u'Català',
@@ -393,9 +405,9 @@ LANGUAGENAMES = _LanguageNameDict({
 	"gl"    : u'Galego',
 	"hu"    : u'Magyar',
 	"it"    : u'Italiano',
-	"ja"    : u'Nihongo',
+	"ja"    : u'日本語',
 	"lt"    : u'Lietuvių',
-	"ko"    : u'Hangugmal/Chosŏnmal',
+	"ko"    : u'한국말/조선말',
 	"nb"    : u'Norw. Bokmål',
 	"nl"    : u'Nederlands',
 	"pl"    : u'Polski',
@@ -407,8 +419,15 @@ LANGUAGENAMES = _LanguageNameDict({
 	"sv"    : u'Svenska',
 	"tr"    : u'Türkçe',
 	"vi"    : u'Tiếng Việt',
-	"zh_CN" : u'Pǔtōnghuà',
+	"zh_CN" : u'普通話',
 	})
+
+FONTDEFS = {
+  'ja'   : 'uming',
+  'ko'   : 'uming',
+  'vi'   : 'uming',
+  'zh_CN': 'uming',
+		}
 
 AUTO_CONTINUE_CAMPAIGN=True
 
@@ -421,4 +440,3 @@ class GFX:
 
 	SHIP_OUTLINE_THRESHOLD = 96
 	SHIP_OUTLINE_WIDTH = 2
-

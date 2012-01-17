@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,265 +26,18 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.tabs import TraderShipOverviewTab, EnemyShipOverviewTab, ShipOverviewTab
-from horizons.world.storage import PositiveTotalNumSlotsStorage
-from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, NamedObject, Circle, WorldObject
+from horizons.util import Point, Circle
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
-from horizons.command.uioptions import TransferResource
-from horizons.constants import LAYERS, STORAGE, GAME_SPEED, GFX
+from horizons.constants import LAYERS, GFX
 from horizons.scheduler import Scheduler
-from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.namedcomponent import ShipNameComponent, NamedComponent
+from horizons.world.traderoute import TradeRoute
 
-class ShipRoute(object):
-	"""
-	waypoints: list of dicts with the keys
-		- branch_office:  a branch office object
-		- resource_list: a {res_id:amount} dict
-			- if amount is negative the ship unloads
-			- if amount is positive the ship loads
-
-	#NOTE new methods need to be added to handle route editing.
-	"""
-	def __init__(self, ship):
-		self.ship = ship
-		self.waypoints = []
-		self.current_waypoint = -1
-		self.enabled = False
-
-		self.wait_at_load = False # wait until every res has been loaded
-		self.wait_at_unload = False #  wait until every res could be unloaded
-
-		self.current_transfer = {} # used for partial unloading in combination with waiting
-
-	def append(self, branch_office):
-		self.waypoints.append({
-		  'branch_office' : branch_office,
-		  'resource_list' : {}
-		})
-
-	def move_waypoint(self, position, direction):
-		if position == len(self.waypoints) and direction is 'down' or \
-		   position == 0 and direction is 'up':
-			return
-		if direction is 'up':
-			new_pos = position - 1
-		elif direction is 'down':
-			new_pos = position + 1
-		else:
-			return
-		self.waypoints.insert(new_pos, self.waypoints.pop(position))
-
-	def add_to_resource_list(self, position, res_id, amount):
-		self.waypoints[position]['resource_list'][res_id] = amount
-
-	def remove_from_resource_list(self, position, res_id):
-		self.waypoints[position]['resource_list'].pop(res_id)
-
-	def on_route_bo_reached(self):
-		"""Transfer resources, wait if necessary and move to next bo when possible"""
-		branch_office = self.get_location()['branch_office']
-		resource_list = self.current_transfer or self.get_location()['resource_list']
-
-		if self.current_transfer is not None:
-			for res in copy.copy(self.current_transfer):
-				# make sure we don't keep trying to (un)load something when the decision about that resource has changed
-				if self.current_transfer[res] == 0 or res not in self.get_location()['resource_list'] or \
-						cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
-					del self.current_transfer[res]
-
-		settlement = branch_office.settlement
-		status = self._transer_resources(settlement, resource_list)
-		if (not status.settlement_has_enough_space_to_take_res and self.wait_at_unload) or \
-		   (not status.settlement_provides_enough_res and self.wait_at_load):
-			self.current_transfer = status.remaining_transfers
-			# retry
-			Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)
-		else:
-			self.current_transfer = None
-			self.move_to_next_route_bo()
-
-	def _transer_resources(self, settlement, resource_list):
-		"""Transfers resources to/from settlement according to list.
-		@return: TransferStatus instance
-		"""
-
-		class TransferStatus(object):
-			def __init__(self):
-				self.settlement_provides_enough_res = self.settlement_has_enough_space_to_take_res = True
-				self.remaining_transfers = {}
-
-		status = TransferStatus()
-		status.remaining_transfers = copy.copy(resource_list)
-
-		for res in resource_list:
-			amount = resource_list[res]
-			if amount == 0:
-				continue
-
-			if amount > 0:
-				# load from settlement onto ship
-				if settlement.owner is self.ship.owner:
-					if settlement.inventory[res] < amount: # not enough res
-						amount = settlement.inventory[res]
-
-					# the ship should never pick up more than the number defined in the route config
-					if self.ship.inventory[res] + amount > self.get_location()['resource_list'][res]:
-						amount = self.get_location()['resource_list'][res] - self.ship.inventory[res]
-
-					# check if ship has enough space is handled implicitly below
-					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
-				else:
-					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
-
-				if amount_transferred < status.remaining_transfers[res] and \
-				   self.ship.inventory.get_free_space_for(res) > 0 and\
-				   self.ship.inventory[res] < self.get_location()['resource_list'][res]:
-					status.settlement_provides_enough_res = False
-				status.remaining_transfers[res] -= amount_transferred
-			else:
-				# load from ship onto settlement
-				amount = -amount # use positive below
-				if settlement.owner is self.ship.owner:
-					if self.ship.inventory[res] < amount: # check if ship has as much as planned
-						amount = self.ship.inventory[res]
-
-					if settlement.inventory.get_free_space_for(res) < amount: # too little space
-						amount = settlement.inventory.get_free_space_for(res)
-
-					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
-				else:
-					amount_transferred = settlement.buy_resource(self.ship.worldid, res, amount)
-
-				if amount_transferred < -status.remaining_transfers[res] and self.ship.inventory[res] > 0:
-					status.settlement_has_enough_space_to_take_res = False
-				status.remaining_transfers[res] += amount_transferred
-		return status
-
-	def on_ship_blocked(self):
-		# the ship was blocked while it was already moving so try again
-		self.move_to_next_route_bo(advance_waypoint = False)
-
-	def move_to_next_route_bo(self, advance_waypoint = True):
-		next_destination = self.get_next_destination(advance_waypoint)
-		if next_destination == None:
-			return
-
-		branch_office = next_destination['branch_office']
-		if self.ship.position.distance_to_point(branch_office.position.center()) <= self.ship.radius:
-			self.on_route_bo_reached()
-			return
-
-		try:
-			self.ship.move(Circle(branch_office.position.center(), self.ship.radius), self.on_route_bo_reached,
-				blocked_callback = self.on_ship_blocked)
-		except MoveNotPossible:
-			# retry in 5 seconds
-			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)
-
-	def get_next_destination(self, advance_waypoint):
-		if not self.enabled:
-			return None
-		if len(self.waypoints) < 2:
-			return None
-
-		if advance_waypoint:
-			self.current_waypoint += 1
-			self.current_waypoint %= len(self.waypoints)
-		return self.waypoints[self.current_waypoint]
-
-	def get_location(self):
-		return self.waypoints[self.current_waypoint]
-
-	def can_enable(self):
-		branch_offices = set()
-		for waypoint in self.waypoints:
-			branch_offices.add(waypoint['branch_office'])
-		return len(branch_offices) > 1
-
-	def enable(self):
-		if not self.can_enable():
-			return False
-		self.enabled = True
-		self.move_to_next_route_bo()
-		return True
-
-	def disable(self):
-		self.enabled = False
-		self.ship.stop()
-
-	def clear(self):
-		self.waypoints = []
-		self.current_waypoint = -1
-
-	@classmethod
-	def has_route(self, db, worldid):
-		"""Check if a savegame contains route information for a certain ship"""
-		return len(db("SELECT * FROM ship_route WHERE ship_id = ?", worldid)) != 0
-
-	def load(self, db):
-		enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload = \
-		       db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload " + \
-		          "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
-
-		query = "SELECT branch_office_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
-		offices_id = db(query, self.ship.worldid)
-
-		for office_id, in offices_id:
-			branch_office = WorldObject.get_object_by_id(office_id)
-			query = "SELECT res, amount FROM ship_route_resources WHERE ship_id = ? and waypoint_index = ?"
-			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
-
-			self.waypoints.append({
-			  'branch_office' : branch_office,
-			  'resource_list' : resource_list
-			})
-
-		waiting = False
-		for res, amount in db("SELECT res, amount FROM ship_route_current_transfer WHERE ship_id = ?", self.ship.worldid):
-			waiting = True
-			self.current_transfer[res] = amount
-			Scheduler().add_new_object(self.on_route_bo_reached, self, GAME_SPEED.TICKS_PER_SECOND)
-
-		if enabled and not waiting:
-			self.current_waypoint -= 1
-			self.enable()
-
-	def save(self, db):
-		worldid = self.ship.worldid
-
-		db("INSERT INTO ship_route(ship_id, enabled, current_waypoint, wait_at_load, wait_at_unload) VALUES(?, ?, ?, ?, ?)",
-		   worldid, self.enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload)
-
-		if self.current_transfer:
-			for res, amount in self.current_transfer.iteritems():
-				db("INSERT INTO ship_route_current_transfer(ship_id, res, amount) VALUES(?, ?, ?)",
-				   worldid, res, amount);
-
-		for entry in self.waypoints:
-			index = self.waypoints.index(entry)
-			db("INSERT INTO ship_route_waypoint(ship_id, branch_office_id, waypoint_index) VALUES(?, ?, ?)",
-			   worldid, entry['branch_office'].worldid, index)
-			for res in entry['resource_list']:
-				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
-				   worldid, index, res, entry['resource_list'][res])
-
-	def get_ship_status(self):
-		"""Return the current status of the ship."""
-		if self.ship.is_moving():
-			#xgettext:python-format
-			return (_('Trade route: going to {location}').format(
-			           location=self.ship.get_location_based_status(self.ship.get_move_target())),
-			        self.ship.get_move_target())
-			#xgettext:python-format
-		return (_('Trade route: waiting at {position}').format(
-		           position=self.ship.get_location_based_status(self.ship.position)),
-		        self.ship.position)
-
-class Ship(NamedObject, StorageHolder, Unit):
+class Ship(Unit):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -314,18 +67,19 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.__init()
 
 		# if ship did not have route configured, do not add attribute
-		if ShipRoute.has_route(db, worldid):
+		if TradeRoute.has_route(db, worldid):
 			self.create_route()
 			self.route.load(db)
 
 	def __init(self):
 		self._selected = False
 		# register ship in world
-		if self.__class__.has_health:
-			self.add_component('health', HealthComponent)
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+
+	def set_name(self, name):
+		self.get_component(ShipNameComponent).set_name(name)
 
 	def remove(self):
 		self.session.world.ships.remove(self)
@@ -342,11 +96,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 				self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
 
-	def create_inventory(self):
-		self.inventory = PositiveTotalNumSlotsStorage(STORAGE.SHIP_TOTAL_STORAGE, STORAGE.SHIP_TOTAL_SLOTS_NUMBER)
-
 	def create_route(self):
-		self.route = ShipRoute(self)
+		self.route = TradeRoute(self)
 
 	def _move_tick(self, resume = False):
 		"""Keeps track of the ship's position in the global ship_map"""
@@ -380,6 +131,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.session.view.center(*self.position.to_tuple())
 		self.session.view.add_change_listener(self.draw_health)
 
+		if self.owner is self.session.world.player:
+			self.session.ingame_gui.minimap.show_unit_path(self)
+
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
 		self._selected = False
@@ -400,9 +154,11 @@ class Ship(NamedObject, StorageHolder, Unit):
 			self.route.disable()
 
 		move_target = Point(int(round(x)), int(round(y)))
+		move_possible = False
 
 		try:
 			self.move(move_target)
+			move_possible = True
 		except MoveNotPossible:
 			# find a near tile to move to
 			surrounding = Circle(move_target, radius=1)
@@ -410,16 +166,17 @@ class Ship(NamedObject, StorageHolder, Unit):
 			while surrounding.radius < 5:
 				try:
 					self.move(surrounding)
+					move_possible = True
 				except MoveNotPossible:
 					surrounding.radius += 1
 					continue
 				break
 
-		if self.get_move_target() is None: # neither target nor surrounding possible
+		if not move_possible: # neither target nor surrounding possible
 			# TODO: give player some kind of feedback
-			pass
+			self._update_buoy()
 		else:
-			self.session.ingame_gui.minimap.show_ship_route(self)
+			self.session.ingame_gui.minimap.show_unit_path(self)
 
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)
@@ -431,16 +188,17 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def _update_buoy(self):
 		"""Draw a buoy at the move target if the ship is moving."""
 		move_target = self.get_move_target()
+
+		ship_id = self.worldid
+		session = self.session # this has to happen here,
+		# cause a reference to self in a temporary function is implemented
+		# as a hard reference, which causes a memory leak
+		def tmp():
+			session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
+		tmp() # also remove now
+
 		if move_target != None:
 			# set remove buoy callback
-			ship_id = self.worldid
-			session = self.session # this has to happen here,
-			# cause a reference to self in a temporary function is implemented
-			# as a hard reference, which causes a memory leak
-			def tmp():
-				session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
-			tmp() # also remove now
-
 			self.add_move_callback(tmp)
 
 			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
@@ -453,12 +211,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 				horizons.main.fife.animationloader.loadResource("as_buoy0+idle+45")
 			)
 
-	def _possible_names(self):
-		names = self.session.db("SELECT name FROM shipnames WHERE for_player = 1")
-		# We need unicode strings as the name is displayed on screen.
-		return map(lambda x: unicode(x[0], 'utf-8'), names)
-
-
 	def find_nearby_ships(self, radius=15):
 		# TODO: Replace 15 with a distance dependant on the ship type and any
 		# other conditions.
@@ -468,13 +220,14 @@ class Ship(NamedObject, StorageHolder, Unit):
 		return ships
 
 	def get_location_based_status(self, position):
-		branch_offices = self.session.world.get_branch_offices(position, self.radius, self.owner, True)
-		if branch_offices:
-			branch_office = branch_offices[0] # TODO: don't ignore the other possibilities
-			player_suffix = ''
-			if branch_office.owner is not self.owner:
-				player_suffix = ' (' + branch_office.owner.name + ')'
-			return branch_office.settlement.name + player_suffix
+		warehouses = self.session.world.get_warehouses(position, self.radius, self.owner, True)
+		if warehouses:
+			warehouse = warehouses[0] # TODO: don't ignore the other possibilities
+			player_suffix = u''
+			if warehouse.owner is not self.owner:
+				player_suffix = u' ({name})'.format(name=warehouse.owner.name)
+			return u'{name}{suffix}'.format(name=warehouse.settlement.get_component(NamedComponent).name,
+			                                suffix=player_suffix)
 		return None
 
 	def get_status(self):
@@ -500,9 +253,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()
-	def _possible_names(self):
-		names = self.session.db("SELECT name FROM shipnames WHERE for_pirate = 1")
-		return map(lambda x: unicode(x[0]), names)
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""

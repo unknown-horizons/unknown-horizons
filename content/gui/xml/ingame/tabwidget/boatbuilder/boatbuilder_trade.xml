@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Trade boats tab -->
-<Container  size="260,550">
+<Container  size="260,550" name="boatbuilder_trade">
 <TabBG amount="8"/>
 
 	<Container position="0,70" size="260,80" >

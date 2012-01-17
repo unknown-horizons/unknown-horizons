@@ -1,0 +1,20 @@
+id: 15
+name: _ Trail
+baseclass: path.Road
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 1
+size_y: 1
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: street-1
+tooltip_text: _ Needed for collecting goods.
+settler_level: 0
+buildingcosts: {1: 5}
+components:
+- HealthComponent: {maxhealth: 10}
+- StorageComponent
+actionsets:
+  as_trail: {level: 0}
+  as_gravel_path: {level: 2}

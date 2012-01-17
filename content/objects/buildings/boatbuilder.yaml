@@ -1,0 +1,59 @@
+id: 12
+name: _ Boat Builder
+baseclass: boatbuilder.BoatBuilder
+radius: 10
+cost: 25
+cost_inactive: 10
+size_x: 3
+size_y: 3
+inhabitants_start: 2
+inhabitants_max: 2
+button_name: boat_builder-1
+tooltip_text: _ Builds boats and small ships. Built on coast.
+settler_level: 1
+buildingcosts: {1: 500, 4: 4, 6: 3}
+components:
+- HealthComponent: {maxhealth: 1000}
+- UnitProducerComponent:
+    productionlines:
+      64:
+        consumes:
+        - [4, -22]
+        - [3, -8]
+        time: 60
+      68:
+        consumes:
+        - [4, -42]
+        - [3, -24]
+        time: 60
+      15:
+        consumes:
+        - [1, -550]
+        - [4, -8]
+        - [3, -3]
+        - [6, -1]
+        time: 60
+      58:
+        consumes:
+        - [1, -750]
+        - [4, -13]
+        - [40, -7]
+        - [3, -6]
+        - [6, -2]
+        time: 60
+      62:
+        consumes:
+        - [4, -12]
+        - [3, -8]
+        time: 60
+      63:
+        consumes:
+        - [4, -14]
+        - [3, -11]
+        time: 60
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {40: 12, 3: 12, 4: 12, 6: 12}
+actionsets:
+  as_boat_builder0: {level: 0}

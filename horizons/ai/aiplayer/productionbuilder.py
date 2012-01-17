@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -36,6 +36,8 @@ from horizons.scheduler import Scheduler
 from horizons.util import Callback, Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.world.production.producer import Producer
+from horizons.world.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
 	"""
@@ -44,7 +46,7 @@ class ProductionBuilder(AreaBuilder):
 	Important attributes:
 	* plan: a dictionary of the form {(x, y): (purpose, extra data), ...} where purpose is one of the BUILDING_PURPOSE constants.
 		Coordinates being in the plan means that the tile doesn't belong to another player.
-	* collector_buildings: a list of every building in the settlement that provides general collectors (branch office, storages)
+	* collector_buildings: a list of every building in the settlement that provides general collectors (warehouse, storages)
 	* production_buildings: a list of buildings in the settlement where productions should be paused and resumed at appropriate times
 	* unused_fields: a dictionary where the key is a BUILDING_PURPOSE constant of a field and the value is a deque that holds the
 		coordinates of unused field spots. {building purpose: deque([(x, y), ...]), ...}
@@ -58,8 +60,8 @@ class ProductionBuilder(AreaBuilder):
 		super(ProductionBuilder, self).__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
-		for x, y in settlement_manager.settlement.branch_office.position.tuple_iter():
-			self.register_change(x, y, BUILDING_PURPOSE.BRANCH_OFFICE, None)
+		for x, y in settlement_manager.settlement.warehouse.position.tuple_iter():
+			self.register_change(x, y, BUILDING_PURPOSE.WAREHOUSE, None)
 		self._refresh_unused_fields()
 
 	def __init(self, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road):
@@ -235,6 +237,7 @@ class ProductionBuilder(AreaBuilder):
 		brickyard_colour = (0, 32, 0)
 		boatbuilder_colour = (163, 73, 164)
 		salt_ponds_colour = (153, 217, 234)
+		misc_colour = (0, 255, 255)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, (purpose, _) in self.plan.iteritems():
@@ -273,6 +276,8 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *salt_ponds_colour)
 			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
+			elif purpose != BUILDING_PURPOSE.NONE:
+				renderer.addColored(tile._instance, *misc_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
 
@@ -339,7 +344,7 @@ class ProductionBuilder(AreaBuilder):
 		return self.__builder_cache[key][2]
 
 	def _init_cache(self):
-		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area.""" 
+		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area."""
 		super(ProductionBuilder, self)._init_cache()
 		self.__collector_area_cache = None
 		self.__available_squares_cache = {}
@@ -378,7 +383,7 @@ class ProductionBuilder(AreaBuilder):
 			if coords not in self.plan:
 				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
 
-	collector_building_classes = [BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS]
+	collector_building_classes = [BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS]
 	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS, BUILDINGS.TOBACCO_FIELD_CLASS]
 	production_building_classes = set([BUILDINGS.FISHERMAN_CLASS, BUILDINGS.LUMBERJACK_CLASS, BUILDINGS.FARM_CLASS, BUILDINGS.CLAY_PIT_CLASS,
 		BUILDINGS.BRICKYARD_CLASS, BUILDINGS.WEAVER_CLASS, BUILDINGS.DISTILLERY_CLASS, BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SMELTERY_CLASS,
@@ -476,7 +481,7 @@ class ProductionBuilder(AreaBuilder):
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full input and output inventories."""
 		for building in self.production_buildings:
-			for production in building.get_productions():
+			for production in building.get_component(Producer).get_productions():
 				if not production.get_produced_res():
 					continue
 				all_full = True
@@ -508,6 +513,7 @@ class ProductionBuilder(AreaBuilder):
 		self.land_manager.refresh_resource_deposits()
 
 	def __str__(self):
-		return '%s.PB(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
+		return '%s.PB(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', \
+			self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(ProductionBuilder)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
 from fife import fife
 import horizons.main
 
@@ -30,6 +32,9 @@ from horizons.constants import LAYERS
 
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
+
+	__last_hover_player_settlement = None # private weakref, see last_hover_player_settlement()
+
 	def __init__(self, session):
 		super(NavigationTool, self).__init__(session)
 		self.lastScroll = [0, 0]
@@ -76,6 +81,15 @@ class NavigationTool(CursorTool):
 		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		super(NavigationTool, self).remove()
 
+	@property
+	def last_hover_player_settlement(self):
+		"""The last settlement belonging to the player the mouse has hovered above"""
+		ref = self.__class__.__last_hover_player_settlement
+		if ref is not None and ref() is not None: # weakref
+			return ref()
+		else:
+			return None
+
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
 			return # deactivated because of bugs (see #582)
@@ -111,18 +125,15 @@ class NavigationTool(CursorTool):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
 
 		# Status menu update
-		current = self.session.view.cam.toMapCoordinates(mousepoint, False)
-		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2:
+		current = self._get_exact_world_location_from_event(evt)
+		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2: # move was far enough, 4 px
 			self.lastmoved = current
-			island = self.session.world.get_island(Point(int(round(current.x)), int(round(current.y))))
-			if island:
-				settlement = island.get_settlement(Point(int(round(current.x)), int(round(current.y))))
-				if settlement:
-					self.session.ingame_gui.resourceinfo_set(settlement)
-				else:
-					self.session.ingame_gui.resourceinfo_set(None)
-			else:
-				self.session.ingame_gui.resourceinfo_set(None)
+			# update res bar with settlement-related info
+			settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
+			self.__class__.__last_hover_player_settlement = weakref.ref(settlement) if \
+			  settlement and settlement.owner == self.session.world.player else None
+			self.session.ingame_gui.resourceinfo_set(settlement) # set for any settlement
+
 		# Mouse scrolling
 		x, y = 0, 0
 		if mousepoint.x < 5:
@@ -139,13 +150,12 @@ class NavigationTool(CursorTool):
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
-		point = self._get_world_location_from_event(evt)
-		self.session.view.zoom_in(point)
+		self.session.view.zoom_in(True)
 		evt.consume()
 
 	# move down mouse wheel = zoom out
 	def mouseWheelMovedDown(self, evt):
-		self.session.view.zoom_out()
+		self.session.view.zoom_out(True)
 		evt.consume()
 
 	def onCommand(self, command):

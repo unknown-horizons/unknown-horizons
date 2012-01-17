@@ -1,0 +1,20 @@
+id: 6
+name: _ Signal Fire
+baseclass: housing.SignalFire
+radius: 10
+cost: 0
+cost_inactive: 0
+size_x: 1
+size_y: 1
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: lighthouse-1
+tooltip_text: _ Allows the player to trade with the free trader.
+settler_level: 0
+buildingcosts: {1: 50, 4: 5}
+components:
+- HealthComponent: {maxhealth: 1000}
+- StorageComponent
+actionsets:
+  as_signalfire0: {preview: as_preview_signalfire0, level: 0}
+  as_signalfire_wooden0: {level: 1}

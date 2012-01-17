@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -39,7 +39,7 @@ def get_gui_files_map():
 				if i not in xml_files:
 					xml_files[i] = os.path.join(root, i)
 				else:
-					print 'Another file by the name %s already exists. Please use unique names!' % i
+					print 'Another file by the name {name} already exists. Please use unique names!'.format(name=i)
 	return xml_files
 
 
@@ -50,7 +50,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	try:
 		widget = pychan.loadXML(get_gui_files_map()[filename])
 	except (IOError, ValueError) as error:
-		print 'PLEASE REPORT: invalid path %s in translation! %s' % (filename, error)
+		print 'PLEASE REPORT: invalid path {path} in translation! {error}'.format(path=filename, error=error)
 		raise
 
 	# translate
@@ -62,6 +62,8 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	for w in widget.findChildren():
 		if w.name.startswith("headline") or w.name == "name":
 			w.stylize('headline')
+		elif w.name.startswith("cjkv") or w.comment.startswith("cjkv"):
+			w.font = '14_black_cjkv'
 	if center_widget:
 		widget.position_technique = "automatic" # "center:center"
 

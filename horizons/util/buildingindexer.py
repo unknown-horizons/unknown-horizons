@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,7 @@ from horizons.util.python import decorators
 
 class BuildingIndexer(object):
 	"""
-	Indexes a subset of the buildings on an island to improve nearby building 
+	Indexes a subset of the buildings on an island to improve nearby building
 	lookup performance.
 
 	Used to answer queries of the form 'I am at (x, y), where is the closest / random

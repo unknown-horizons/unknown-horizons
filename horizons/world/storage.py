@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,7 +35,7 @@ Storages with certain properties:
 Combinations:
 - SizedSlottedStorage: One limit, each res value must be <= the limit and >= 0.
 - PositiveTotalStorage: use case: ship inventory
-- PositiveSizedSlotStorage: every res has the same limit, only positive values (branch office)
+- PositiveSizedSlotStorage: every res has the same limit, only positive values (warehouse)
 - PositiveSizedSpecializedStorage: Like SizedSpecializedStorage, plus only positive values.
 """
 
@@ -61,7 +61,6 @@ class GenericStorage(ChangeListener):
 
 	def load(self, db, ownerid):
 		for (res, amount) in db.get_storage_rowids_by_ownerid(ownerid):
-			assert self[res] == 0
 			self.alter(res, amount)
 
 	def alter(self, res, amount):
@@ -141,10 +140,15 @@ class SpecializedStorage(GenericStorage):
 		return (res in self._storage)
 
 class SizedSpecializedStorage(SpecializedStorage):
-	"""Just like SpecializedStorage, but each res has an own limit."""
-	def __init__(self):
+	"""Just like SpecializedStorage, but each res has an own limit.
+	Can take a dict {res: size, res2: size2} to init slots
+	"""
+
+	def __init__(self, slot_sizes={}):
 		super(SizedSpecializedStorage, self).__init__()
 		self.__slot_limits = {}
+		for res, size in slot_sizes.iteritems():
+			self.add_resource_slot(res, size)
 
 	def alter(self, res, amount):
 		if not self.has_resource_slot(res):
@@ -287,9 +291,9 @@ class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
 
 class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 	"""A storage consisting of a slot for each resource, all slots have the same size 'limit'
-	Used by the branch office for example. So with a limit of 30 you could have a max of
+	Used by the warehouse for example. So with a limit of 30 you could have a max of
 	30 from each resource."""
-	def __init__(self, limit):
+	def __init__(self, limit=0):
 		super(PositiveSizedSlotStorage, self).__init__(limit)
 
 	def alter(self, res, amount):
@@ -323,3 +327,7 @@ class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 			return 0
 		else:
 			return super(PositiveSizedNumSlotStorage, self).get_free_space_for(res)
+
+########################################################################
+class SettlementStorage:
+	"""Dummy class to signal the storagecomponent to use the settlements inventory"""

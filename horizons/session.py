@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,6 +29,8 @@ import horizons.main
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool
+from horizons.command.building import Tear
+from horizons.command.unit import RemoveUnit
 from horizons.gui.keylisteners import IngameKeyListener
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
@@ -36,9 +38,11 @@ from horizons.view import View
 from horizons.gui import Gui
 from horizons.world import World
 from horizons.entities import Entities
-from horizons.util import WorldObject, NamedObject, LivingObject, livingProperty, SavegameAccessor
+from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
+from horizons.world.component.namedcomponent import NamedComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS
 
 class Session(LivingObject):
@@ -75,6 +79,7 @@ class Session(LivingObject):
 	def __init__(self, gui, db, rng_seed=None):
 		super(Session, self).__init__()
 		assert isinstance(gui, Gui)
+		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
 		self.gui = gui # main gui, not ingame gui
 		self.db = db # main db for game data (game.sql)
@@ -83,7 +88,7 @@ class Session(LivingObject):
 		self.is_alive = True
 
 		WorldObject.reset()
-		NamedObject.reset()
+		NamedComponent.reset()
 		AIPlayer.clear_caches()
 
 		#game
@@ -132,11 +137,11 @@ class Session(LivingObject):
 		ExtScheduler().rem_all_classinst_calls(self)
 
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
-			for emitter in horizons.main.fife.emitter['ambient'][:]:
+			for emitter in horizons.main.fife.sound.emitter['ambient'][:]:
 				emitter.stop()
-				horizons.main.fife.emitter['ambient'].remove(emitter)
-			horizons.main.fife.emitter['effects'].stop()
-			horizons.main.fife.emitter['speech'].stop()
+				horizons.main.fife.sound.emitter['ambient'].remove(emitter)
+			horizons.main.fife.sound.emitter['effects'].stop()
+			horizons.main.fife.sound.emitter['speech'].stop()
 		if hasattr(self, "cursor"): # the line below would crash uglily on ^C
 			self.cursor.remove()
 		self.cursor = None
@@ -257,6 +262,9 @@ class Session(LivingObject):
 		# Open menus later, they may need unit data not yet inited
 		self.cursor.apply_select()
 
+		Scheduler().before_ticking()
+		savegame_db.close()
+
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""
 		TUTORIAL:
@@ -295,7 +303,7 @@ class Session(LivingObject):
 
 	def speed_up(self):
 		if self.speed_is_paused():
-			# TODO: sound feedback to signal that this is an invalid action
+			AmbientSoundComponent.play_special('error')
 			return
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)
@@ -306,7 +314,7 @@ class Session(LivingObject):
 
 	def speed_down(self):
 		if self.speed_is_paused():
-			# TODO: sound feedback to signal that this is an invalid action
+			AmbientSoundComponent.play_special('error')
 			return
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)
@@ -346,6 +354,26 @@ class Session(LivingObject):
 		@return: True if game is loaded, else False
 		"""
 		return (self.savecounter > 0)
+
+	def remove_selected(self):
+		self.log.debug('Removing %s', self.selected_instances)
+		for instance in [inst for inst in self.selected_instances]:
+			if instance.is_building:
+				if instance.tearable and instance.owner is self.world.player:
+					self.log.debug('Attempting to remove building %s', inst)
+					Tear(instance).execute(self)
+					self.selected_instances.discard(instance)
+				else:
+					self.log.debug('Unable to remove building %s', inst)
+			elif instance.is_unit:
+				if instance.owner is self.world.player:
+					self.log.debug('Attempting to remove unit %s', inst)
+					RemoveUnit(instance).execute(self)
+					self.selected_instances.discard(instance)
+				else:
+					self.log.debug('Unable to remove unit %s', inst)
+			else:
+				self.log.error('Unable to remove unknown object %s', instance)
 
 	def save_map(self, prefix):
 		maps_folder = os.path.join(PATHS.USER_DIR, 'maps')

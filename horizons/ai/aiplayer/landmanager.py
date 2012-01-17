@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,6 +27,7 @@ from collections import defaultdict
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util.python import decorators
 from horizons.util import WorldObject
+from horizons.world.component.storagecomponent import StorageComponent
 
 class LandManager(WorldObject):
 	"""
@@ -118,7 +119,7 @@ class LandManager(WorldObject):
 		for resource_id, building_ids in {RES.RAW_CLAY_ID: [BUILDINGS.CLAY_DEPOSIT_CLASS, BUILDINGS.CLAY_PIT_CLASS], RES.RAW_IRON_ID: [BUILDINGS.MOUNTAIN_CLASS, BUILDINGS.IRON_MINE_CLASS]}.iteritems():
 			for building in self.island.buildings:
 				if building.id in building_ids:
-					if building.inventory[resource_id] > 0:
+					if building.get_component(StorageComponent).inventory[resource_id] > 0:
 						self.resource_deposits[resource_id].append(self.island.ground_map[building.position.origin.to_tuple()])
 
 	def _divide_island(self):
@@ -321,6 +322,6 @@ class LandManager(WorldObject):
 			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_colour)
 
 	def __str__(self):
-		return '%s LandManager(%d)' % (self.owner if hasattr(self, 'owner') else 'unknown player', self.worldid)
+		return '%s LandManager(%s)' % (self.owner if hasattr(self, 'owner') else 'unknown player', self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(LandManager)

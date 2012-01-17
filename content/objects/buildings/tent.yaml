@@ -1,0 +1,154 @@
+id: 3
+name: _ Tent
+baseclass: settler.Settler
+radius: 12
+cost: 0
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 1
+inhabitants_max: 2
+button_name: resident-1
+tooltip_text: _ Houses your inhabitants.
+settler_level: 0
+buildingcosts: {1: 100, 4: 2}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      35:
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [4, -3]
+        - [7, -2]
+        time: 1
+      69:
+        produces:
+        - [14, 4]
+        changes_animation: false
+        level: [2]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [29, -1]
+      70:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        level: [2]
+        enabled_by_default: false
+        time: 180
+        consumes:
+        - [32, -1]
+      71:
+        produces:
+        - [14, 15]
+        changes_animation: false
+        level: [0]
+        enabled_by_default: false
+        time: 60
+        consumes:
+        - [5, -1]
+      72:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        level: [0]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [11, -1]
+      41:
+        produces:
+        - [14, 4]
+        changes_animation: false
+        level: [2]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [27, -1]
+      43:
+        produces:
+        - [14, 12]
+        changes_animation: false
+        level: [2]
+        enabled_by_default: false
+        time: 75
+        consumes:
+        - [5, -1]
+      44:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        level: [2]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [16, -1]
+      19:
+        produces:
+        - [14, 13]
+        changes_animation: false
+        level: [1]
+        enabled_by_default: false
+        time: 60
+        consumes:
+        - [5, -1]
+      20:
+        produces:
+        - [14, 5]
+        changes_animation: false
+        level: [1, 2]
+        enabled_by_default: false
+        time: 180
+        consumes:
+        - [3, -1]
+      21:
+        produces:
+        - [14, 3]
+        changes_animation: false
+        level: [1, 2]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [11, -1]
+      24:
+        changes_animation: false
+        enabled_by_default: false
+        consumes:
+        - [4, -2]
+        time: 1
+      26:
+        produces:
+        - [14, 3]
+        changes_animation: false
+        level: [1]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [16, -1]
+      30:
+        produces:
+        - [14, 1]
+        changes_animation: false
+        level: [0, 1, 2]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [19, -1]
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {32: 1, 3: 1, 5: 1, 11: 1, 14: 100, 16: 1, 19: 1, 27: 1, 29: 1}
+actionsets:
+  as_tent0: {level: 0}
+  as_tent1: {level: 0}
+  as_tent2: {level: 0}
+  as_tent3: {level: 0}
+  as_tent4: {level: 0}
+  as_tent5: {level: 0}
+  as_hut1: {level: 1}
+  as_hut0: {level: 1}
+  as_house0: {level: 2}
+  as_hut2: {level: 1}

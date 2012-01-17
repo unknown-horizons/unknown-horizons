@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,14 +22,13 @@
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.entities import Entities
 from horizons.constants import LAYERS
-from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import ResourceDepositOverviewTab
 from horizons.world.building.building import SelectableBuilding
-from horizons.scheduler import Scheduler
-from horizons.util import Callback
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -53,7 +52,8 @@ class AnimalField(CollectingBuilding, Field):
 		for (animal, number) in self.session.db("SELECT unit_id, count FROM animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
-				Entities.units[animal](self, session=self.session)
+				unit = Entities.units[animal](self, session=self.session)
+				unit.initialize()
 		super(AnimalField, self).create_collector()
 
 	def remove(self):
@@ -76,7 +76,12 @@ class Tree(ProducerNatureBuilding):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
-class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
+	def initialize(self, start_finished=False, **kwargs):
+		super(Tree, self).initialize( **kwargs )
+		if start_finished:
+			self.get_component(Producer).finish_production_now()
+
+class ResourceDeposit(SelectableBuilding, NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS
@@ -86,14 +91,20 @@ class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 
 	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
-		if inventory is None: # a new deposit
-			for resource, min_amount, max_amount in \
-			    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
-			                    self.id):
-				self.inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
-		else: # deposit was removed for mine, now build back
-			for res, amount in inventory.iteritems():
-				self.inventory.alter(res, amount)
+		if inventory is not None:
+			self.reinit_inventory(inventory)
+
+	def reinit_inventory(self, inventory):
+		for res, amount in inventory.iteritems():
+			self.get_component(StorageComponent).inventory.alter(res, amount)
+
+
+	def initialize(self):
+		super(ResourceDeposit, self).initialize()
+		for resource, min_amount, max_amount in \
+		    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
+		                    self.id):
+			self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
 
 class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
 

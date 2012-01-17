@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,14 +23,13 @@ import math
 import logging
 from fife import fife
 
-import horizons.main
-
 from horizons.world.units.movingobject import MovingObject
-from horizons.util import Point, WorldObject, WeakMethod, Circle, decorators
+from horizons.util import Point, WorldObject, WeakMethod, decorators
 from horizons.constants import LAYERS
-from horizons.ambientsound import AmbientSound
+from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
-class Unit(AmbientSound, MovingObject):
+class Unit(MovingObject):
 	log = logging.getLogger("world.units")
 	is_unit = True
 	is_ship = False
@@ -49,11 +48,9 @@ class Unit(AmbientSound, MovingObject):
 				WeakMethod(self.onInstanceActionFinished)
 		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
-		if self._object is None:
-			self.__class__._loadObject()
 
 		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance( \
-			self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
+			self.__class__._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))
@@ -87,10 +84,11 @@ class Unit(AmbientSound, MovingObject):
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
-		if not self.has_component('health'):
+		if not self.has_component(HealthComponent):
 			return
-		health = self.get_component('health').health
-		max_health = self.get_component('health').max_health
+		health_component = self.get_component(HealthComponent)
+		health = health_component.health
+		max_health = health_component.max_health
 		renderer = self.session.view.renderer['GenericRenderer']
 		renderer.removeAll("health_" + str(self.worldid))
 		zoom = self.session.view.get_zoom()
@@ -151,6 +149,25 @@ class Unit(AmbientSound, MovingObject):
 
 		return self
 
+	def transfer_to_storageholder(self, amount, res_id, transfer_to):
+		"""Transfers amount of res_id to transfer_to.
+		@param transfer_to: worldid or object reference
+		@return: amount that was actually transfered (NOTE: this is different from the
+						 return value of inventory.alter, since here are 2 storages involved)
+		"""
+		try:
+			transfer_to = WorldObject.get_object_by_id( int(transfer_to) )
+		except TypeError: # transfer_to not an int, assume already obj
+			pass
+		# take res from self
+		ret = self.get_component(StorageComponent).inventory.alter(res_id, -amount)
+		# check if we were able to get the planed amount
+		ret = amount if amount < abs(ret) else abs(ret)
+		# put res to transfer_to
+		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
+		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
+		return amount-ret
+
 	def get_random_location(self, in_range):
 		"""Returns a random location in walking_range, that we can find a path to
 		Does not check every point, only a few samples are tried.
@@ -183,10 +200,15 @@ class Unit(AmbientSound, MovingObject):
 
 	@property
 	def classname(self):
-		return horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
+		return self.session.db.get_unit_type_name(self.id)
+
+	@property
+	def name(self):
+		# this doesn't inherit properly from IngameType
+		return self._name
 
 	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.classname, self.id, self.worldid)
+		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
 
 
 decorators.bind_all(Unit)

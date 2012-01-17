@@ -31,14 +31,13 @@
 	<!-- right side -->
 
 	<VBox name="right_vbox" max_size="350,508" min_size="350,508" position="520,40" padding="2">
-		<Label name="select_res_label" text=""/>
-
-		<!-- exactly one of the following two is enabled at any given time -->
 		<TooltipIcon name="minimap" size="300,300" max_size="300,300" is_focusable="0"/> <!-- settlement selection in minimap -->
-		<VBox name="resources" size="100,200" /> <!-- res selection -->
+
+		<!-- this box is only displayed on resource selection. -->
+		<VBox name="resources" max_size="326,172" min_size="276,158" /> <!-- res selection box, filled with icons -->
 
 		<HBox> <Spacer min_size="275" max_size="275"/>
-			<CancelButton tooltip="Exit"  is_focusable="0"/>
+			<OkButton tooltip="Exit" />
 		</HBox>
 	</VBox>
 <!-- Here pickbelts could be added to achieve more space.

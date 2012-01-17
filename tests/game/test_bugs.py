@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,9 @@
 # ###################################################
 
 from horizons.command.building import Build, Tear
-from horizons.constants import BUILDINGS, RES
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.production.producer import Producer, QueueProducer
+from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES
 
 from tests.game import settle, game_test
 from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
@@ -30,20 +32,20 @@ from tests.game.test_farm import _build_farm
 @game_test
 def test_ticket_979(s, p):
 	settlement, island = settle(s)
-	storage_collectors = settlement.branch_office.get_local_collectors()
+	storage_collectors = settlement.warehouse.get_local_collectors()
 
 	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
 
 	# Let it work for a bit
 	s.run(seconds=60)
-	assert farm.inventory[RES.FOOD_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID]
 
-	# The settlement inventory is already full of food (from the ship): dispose of it
-	assert settlement.inventory[RES.FOOD_ID] > 0
-	settlement.inventory.alter(RES.FOOD_ID, -settlement.inventory[RES.FOOD_ID])
-	assert settlement.inventory[RES.FOOD_ID] == 0
+	# Depending on auto unloading (which we aren't interested in here),
+	# the settlement inventory may already be full of food: dispose of it
+	settlement.get_component(StorageComponent).inventory.alter(RES.FOOD_ID, -settlement.get_component(StorageComponent).inventory[RES.FOOD_ID])
+	assert settlement.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
 
-	# Build a road, connecting farm and branch office
+	# Build a road, connecting farm and warehouse
 	for y in range(23, 30):
 		assert Build(BUILDINGS.TRAIL_CLASS, 30, y, island, settlement=settlement)(p)
 
@@ -87,13 +89,44 @@ def test_ticket_1005(s, p):
 	assert len(s.world.ships) == 2
 
 	builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(p)
-	builder.inventory.alter(RES.TEXTILE_ID, 5)
-	builder.inventory.alter(RES.BOARDS_ID, 4)
-	builder.add_production_by_id(15)
+	builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 5)
+	builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 4)
+	builder.get_component(Producer).add_production_by_id(15)
 
 	s.run(seconds=130)
 
 	assert len(s.world.ships) == 3
+
+
+@game_test
+def test_ticket_1232(s, p):
+	settlement, island = settle(s)
+	assert len(s.world.ships) == 2
+
+	boat_builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(p)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 10)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 8)
+	assert isinstance(boat_builder.get_component(Producer),QueueProducer)
+
+	production_finished = [False]
+	boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
+	production1 = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.HUKER)
+	production1.add_production_finished_listener(lambda _: production_finished.__setitem__(0, True))
+	assert boat_builder.get_component(Producer).is_active()
+	while not production_finished[0]:
+		s.run(ticks=1)
+	assert not boat_builder.get_component(Producer).is_active()
+	assert len(s.world.ships) == 3
+	# Make sure enough res are available
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 10)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 8)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 5)
+
+	boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
+	assert boat_builder.get_component(Producer).is_active()
+	s.run(seconds=130)
+	assert not boat_builder.get_component(Producer).is_active()
+	assert len(s.world.ships) == 4
 
 
 def test_brick_tool_interference():

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,12 +32,14 @@ class SingleplayerMenu(object):
 		@param show: string, which type of games to show
 		"""
 		assert show in ('random', 'scenario', 'campaign', 'free_maps')
+		# save player name before removing playerdata container
+		self._save_player_name()
 		self.hide()
 		# reload since the gui is changed at runtime
 		self.widgets.reload('singleplayermenu')
 		self._switch_current_widget('singleplayermenu', center=True)
 		eventMap = {
-			'cancel'    : self.show_main,
+			'cancel'    : Callback.ChainedCallbacks(self._save_player_name, self.show_main),
 			'okay'      : self.start_single,
 			'scenario'  : Callback(self.show_single, show='scenario'),
 			'campaign'  : Callback(self.show_single, show='campaign'),
@@ -61,6 +63,7 @@ class SingleplayerMenu(object):
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			def _update_infos():
 				number_of_players = SavegameManager.get_recommended_number_of_players( self.__get_selected_map() )
+				#xgettext:python-format
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
 				    _("Recommended number of players: {number}").format(number=number_of_players)
 			if len(maps_display) > 0:
@@ -100,11 +103,11 @@ class SingleplayerMenu(object):
 							self.__show_invalid_scenario_file_popup(e)
 							return
 						self.current.findChild(name="map_difficulty").text = \
-						        _("Difficulty: {difficulty}").format(difficulty=difficulty)
+						        _("Difficulty: {difficulty}").format(difficulty=difficulty) #xgettext:python-format
 						self.current.findChild(name="map_author").text = \
-						        _("Author: {author}").format(author=author)
+						        _("Author: {author}").format(author=author) #xgettext:python-format
 						self.current.findChild(name="map_desc").text = \
-						        _("Description: {desc}").format(desc=desc)
+						        _("Description: {desc}").format(desc=desc) #xgettext:python-format
 						#self.current.findChild(name="map_desc").parent.adaptLayout()
 				elif show == 'campaign': # update infos for campaign
 					def _update_infos():
@@ -115,11 +118,11 @@ class SingleplayerMenu(object):
 							self.__show_invalid_scenario_file_popup(e)
 							return
 						self.current.findChild(name="map_difficulty").text = \
-						        _("Difficulty: {difficulty}").format(difficulty=campaign_info.get('difficulty', ''))
+						        _("Difficulty: {difficulty}").format(difficulty=campaign_info.get('difficulty', '')) #xgettext:python-format
 						self.current.findChild(name="map_author").text = \
-						        _("Author: {author}").format(author=campaign_info.get('author', ''))
+						        _("Author: {author}").format(author=campaign_info.get('author', '')) #xgettext:python-format
 						self.current.findChild(name="map_desc").text = \
-						        _("Description: {desc}").format(desc=campaign_info.get('description', ''))
+						        _("Description: {desc}").format(desc=campaign_info.get('description', '')) #xgettext:python-format
 
 				self.current.findChild(name="maplist").capture(_update_infos)
 				_update_infos()
@@ -141,7 +144,7 @@ class SingleplayerMenu(object):
 			self.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
 		playercolor = self.current.playerdata.get_player_color()
-		horizons.main.fife.set_uh_setting("Nickname", playername)
+		self._save_player_name()
 
 		if self.current.collectData('random'):
 			map_file = self.__get_random_map_file()
@@ -282,3 +285,8 @@ class SingleplayerMenu(object):
 		                description=_("The selected file is not a valid scenario file."),
 		                details=_("Error message:") + u' ' + unicode(str(exception)),
 		                advice=_("Please report this to the author."))
+
+	def _save_player_name(self):
+		if hasattr(self.current, 'playerdata'):
+			playername = self.current.playerdata.get_player_name()
+			horizons.main.fife.set_uh_setting("Nickname", playername)

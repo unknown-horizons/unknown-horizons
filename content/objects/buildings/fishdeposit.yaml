@@ -1,0 +1,29 @@
+id: 33
+name: _ Fish Deposit
+baseclass: nature.Fish
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: null
+tooltip_text: null
+settler_level: 0
+buildingcosts: {}
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      42:
+        changes_animation: false
+        produces:
+        - [28, 1]
+        time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {28: 1}
+actionsets:
+  as_fish0: {level: 0}

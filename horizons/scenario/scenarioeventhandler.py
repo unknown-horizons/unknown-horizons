@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,11 +28,10 @@ import horizons.main
 from horizons.ext.enum import Enum
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, LivingObject, decorators
+from horizons.util import Callback, LivingObject, decorators, YamlCache
 
 from horizons.scenario.conditions import CONDITIONS, _scheduled_checked_conditions
 
-from horizons.savegamemanager import YamlCache
 
 try:
 	from yaml import CLoader as Loader

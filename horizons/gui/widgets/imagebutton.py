@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,6 +32,7 @@ class OkButton(TooltipButton):
 	def __init__(self, name='okButton', **kwargs):
 		super(OkButton, self).__init__(
 			name=name,
+			is_focusable = False,
 			up_image="content/gui/images/buttons/ok.png",
 			hover_image="content/gui/images/buttons/ok_h.png",
 			down_image="content/gui/images/buttons/ok.png", **kwargs)
@@ -47,6 +48,7 @@ class CancelButton(TooltipButton):
 	def __init__(self, name='cancelButton', **kwargs):
 		super(CancelButton, self).__init__(
 			name=name,
+			is_focusable = False,
 			up_image="content/gui/images/buttons/close.png",
 			hover_image="content/gui/images/buttons/close_h.png",
 			down_image="content/gui/images/buttons/close.png", **kwargs)
@@ -62,6 +64,7 @@ class DeleteButton(TooltipButton):
 	def __init__(self, name='deleteButton',  **kwargs):
 		super(DeleteButton, self).__init__(
 			name=name,
+			is_focusable = False,
 			up_image="content/gui/images/buttons/delete.png",
 			hover_image="content/gui/images/buttons/delete_h.png",
 			down_image="content/gui/images/buttons/delete.png", **kwargs)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -31,11 +31,17 @@ class HealthComponent(Component):
 	"""
 	log = logging.getLogger("component.health")
 
-	def __init__(self, instance):
-		super(HealthComponent, self).__init__(instance)
-		health = self.instance.session.db.cached_query("SELECT max_health FROM health WHERE id = ?", self.instance.id)[0][0]
-		self.health = float(health)
-		self.max_health = float(health)
+	# Store the name of this component
+	NAME = 'health'
+
+	def __init__(self, maxhealth):
+		super(HealthComponent, self).__init__()
+		assert maxhealth is not None, "Can not add HealthComponent without maxhealth!"
+		self.max_health = float(maxhealth) if maxhealth is not None else None
+
+
+	def initialize(self):
+		self.health = float(self.max_health)
 		self.add_damage_dealt_listener(self.check_if_alive)
 		self.add_damage_dealt_listener(self.redraw_health)
 
@@ -44,6 +50,7 @@ class HealthComponent(Component):
 		#scaling factor multiplies the damage taken by the unit
 		scaling_factor = 1
 		self.health -= scaling_factor * damage
+		self.health = max(self.health, 0.0) # don't go below 0
 		self.log.debug("dealing damage %s to %s; new health: %s", scaling_factor*damage, self.instance, self.health)
 		self.on_damage_dealt()
 

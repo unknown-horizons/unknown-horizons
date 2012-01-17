@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,8 @@
 
 import logging
 
+from collections import deque
+
 import horizons.main
 
 from horizons.util import LivingObject, ManualConstructionSingleton
@@ -31,7 +33,9 @@ class Scheduler(LivingObject):
 
 	TODO:
 	- Refactor to use a data structure that is suitable for iteration (ticking) as well as
-	  searching/deleting by instance, possibly also by callback
+	  searching/deleting by instance, possibly also by callback.
+	  Suggestion: { tick -> { instance -> [callback] }} (basically a k-d tree)
+
 
 	@param timer: Timer instance the schedular registers itself with.
 	"""
@@ -74,7 +78,7 @@ class Scheduler(LivingObject):
 			# this can happen for e.g. rem_all_classinst_calls
 			cur_schedule = self.schedule[self.cur_tick]
 			while cur_schedule:
-				callback = cur_schedule.pop(0)
+				callback = cur_schedule.popleft()
 				# TODO: some system-level unit tests fail if this list is not processed in the correct order
 				#       (i.e. if e.g. pop() was used here). This is an indication of invalid assumptions
 				#       in the program and should be fixed.
@@ -97,12 +101,23 @@ class Scheduler(LivingObject):
 			del self.schedule[self.cur_tick]
 
 			# run jobs added in the loop above
-			for callback in self.additional_cur_tick_schedule:
-				assert callback.loops == 0 # can't loop with no delay
-				callback.callback()
-			self.additional_cur_tick_schedule = []
+			self._run_additional_jobs()
 
 		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
+
+	def before_ticking(self):
+		"""Called after game load and before game has started.
+		Callbacks with run_in=0 are used as generic "do this as soon as the current context
+		is finished". If this is done during load, it is supposed to mean tick -1, since it
+		does not belong to the first tick. This method simulates this.
+		"""
+		self._run_additional_jobs()
+
+	def _run_additional_jobs(self):
+		for callback in self.additional_cur_tick_schedule:
+			assert callback.loops == 0 # can't loop with no delay
+			callback.callback()
+		self.additional_cur_tick_schedule = []
 
 	def add_object(self, callback_obj, readd=False):
 		"""Adds a new CallbackObject instance to the callbacks list for the first time
@@ -117,7 +132,7 @@ class Scheduler(LivingObject):
 			interval = callback_obj.loop_interval if readd else callback_obj.run_in
 			tick_key = self.cur_tick + interval
 			if not tick_key in self.schedule:
-				self.schedule[tick_key] = []
+				self.schedule[tick_key] = deque()
 			callback_obj.tick = tick_key
 			self.schedule[tick_key].append(callback_obj)
 			if not readd:  # readded calls haven't been removed here

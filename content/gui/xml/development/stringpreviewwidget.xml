@@ -1,12 +1,16 @@
 <?xml version="1.0"?>
-<Container name="foo" size="350,250" position="200,200">
-	<Icon image="content/gui/images/background/notice.png" />
-	<VBox position="15,15" min_size="300,250">
-		<Label name="headline" text="String Previewer Tool for Scenario files"/>
-		<ScrollArea max_size="300,100" horizontal_scrollbar="1">
-			<ListBox name="scenario_list" />
-		</ScrollArea>
-		<Button name="load" text="load/reload"/>
-		<Label name="hintlbl" text="select a scenario and click on load/reload to update the messages in the captain's log" wrap_text="1" max_size="300,40"/>
+<Container name="foo" size="569,350" position="200,200" background_image="content/gui/images/background/notice350.png">
+
+	<Label name="headline" text="String Previewer Tool for Scenario files" position="15,15" />
+
+	<ScrollArea min_size="300,300" position="15,35">
+		<ListBox name="scenario_list" />
+	</ScrollArea>
+
+	<VBox position="315,45" min_size="250,300" max_size="250,300">
+		<Button name="load" text="Load / Reload" />
+		<Label name="hintlbl" wrap_text="1" max_size="200,80" min_size="200,80"
+			text="Select a scenario and click on 'Load / Reload' to update the messages in the captain's log" />
+		<Label name="stats" wrap_text="1" max_size="200,80" min_size="200,80" text="" />
 	</VBox>
 </Container>

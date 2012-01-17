@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,41 +20,48 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import copy
-
 import horizons.main
 
 class ProductionLine(object):
-	"""Data structure for handling production lines of Producers. A production line
-	is a way of producing something (contains needed and produced resources for this line,
-	as well as the time, that it takes to complete the product.
+	"""Class that collects the production line data"""
 
-	Attributes: see _ProductionLineData.__init__
-	"""
-	# here we store templates for the prod_lines, since they are inited from db and therefore
-	# on construction, every instance is the same. a reference instance (template) is created
-	# and copied on demand.
-	_data = {} # { id : ProductionLineInstance }
+	def __init__(self, id, data={}):
+		"""Inits self from yaml data"""
+		self.__data = data
+		self.id = id
+		self.__init()
 
-	def __init__(self, ident):
-		self.__dict__ = copy.deepcopy( self.get_const_production_line(ident).__dict__ )
+	def __init(self):
+		self._init_finished = False
+		self.time = self.__data['time'] # time in seconds that production takes
+		self.changes_animation = self.__data['changes_animation'] if 'changes_animation' in self.__data else True # whether this prodline influences animation
+		self.save_statistics = self.__data['save_statistics'] if 'save_statistics' in self.__data else True #whether statistics about this production line should be kept
+		# here we store all resource information.
+		# needed resources have a negative amount, produced ones are positive.
+		self.production = {}
+		self.produced_res = {} # contains only produced
+		self.consumed_res = {} # contains only consumed
+		if 'produces' in self.__data:
+			for res, amount in self.__data['produces']:
+				self.production[res] = amount
+				self.produced_res[res] = amount
+		if 'consumes' in self.__data:
+			for res, amount in self.__data['consumes']:
+				self.production[res] = amount
+				self.consumed_res[res] = amount
+		# Stores unit_id: amount entries, if units are to be produced by this production line
+		self.unit_production = {}
+		for unit, amount in horizons.main.db("SELECT unit, amount FROM unit_production WHERE production_line = ?", self.id):
+			self.unit_production[int(unit)] = amount # Store the correct unit id =>  -1.000.000
 
-	@classmethod
-	def get_const_production_line(cls, ident):
-		"""Returns unchangeable production line data"""
-		try:
-			return cls._data[ident]
-		except KeyError:
-			cls._data[ident] = _ProductionLineData(ident)
-			return cls._data[ident]
+		self._init_finished = True
 
-	@classmethod
-	def reset(cls):
-		cls._data.clear()
+	def __str__(self):
+		return "ProductionLineData(lineid=%s)" % self.id
 
 	def alter_production_time(self, modifier):
 		"""Sets time to original production time multiplied by modifier"""
-		self.time = self._data[self.id].time * modifier
+		self.time = self.__data['time'] * modifier
 
 	def change_amount(self, res, amount):
 		"""Alters an amount of a res at runtime. Because of redundancy, you can only change
@@ -98,47 +105,3 @@ class ProductionLine(object):
 				  "CONSUMED" : self.consumed_res,
 				  "PRODUCED" : self.produced_res,
 				  "UNIT"     : self.unit_production }[t][res] = amount
-
-
-	def __str__(self): # debug
-		return 'ProductionLine(id=%s;prod=%s)' % (self.id, self.production)
-
-
-class _ProductionLineData(object):
-	"""Actually saves the data under the hood. Internal Use Only!"""
-	def __init__(self, ident):
-		"""Inits self from db and registers itself as template"""
-		self._init_finished = False
-		self.id = ident
-		db_data = horizons.main.db("SELECT time, changes_animation, save_statistics FROM production_line WHERE id = ?", self.id)[0]
-		self.time = float(db_data[0]) # time in seconds that production takes
-		self.changes_animation = bool(db_data[1]) # whether this prodline influences animation
-		self.save_statistics = bool(db_data[2]) # whether statistics about this production line should be kept
-		# here we store all resource information.
-		# needed resources have a negative amount, produced ones are positive.
-		self.production = {}
-		self.produced_res = {} # contains only produced
-		self.consumed_res = {} # contains only consumed
-		for res, amount in horizons.main.db("SELECT resource, amount FROM production WHERE production_line = ?", self.id):
-			self.production[res] = amount
-			if amount > 0:
-				self.produced_res[res] = amount
-			elif amount < 0:
-				self.consumed_res[res] = amount
-			else:
-				assert False
-		# Stores unit_id: amount entries, if units are to be produced by this production line
-		self.unit_production = {}
-		for unit, amount in horizons.main.db("SELECT unit, amount FROM unit_production WHERE production_line = ?", self.id):
-			self.unit_production[int(unit)] = amount # Store the correct unit id =>  -1.000.000
-
-		self._init_finished = True
-
-	def __setattr__(self, name, value):
-		if hasattr(self, "_init_finished") and self._init_finished:
-			raise TypeError, 'ProductionLineData is const, use ProductionLine'
-		else:
-			self.__dict__[name] = value
-
-	def __str__(self):
-		return "ProductionLineData(lineid=%s)" % self.id

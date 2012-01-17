@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,6 +27,7 @@ from horizons.constants import COLLECTORS
 from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.units.collectors.collector import Collector, JobList
+from horizons.world.component.storagecomponent import StorageComponent
 
 
 
@@ -126,7 +127,7 @@ class BuildingCollector(Collector):
 		self.show() # make sure collector is not pretending to be inside somewhere
 
 	def get_home_inventory(self):
-		return self.home_building.inventory
+		return self.home_building.get_component(StorageComponent).inventory
 
 	def get_colleague_collectors(self):
 		return self.home_building.get_local_collectors()
@@ -176,7 +177,7 @@ class BuildingCollector(Collector):
 
 	def begin_current_job(self, job_location = None):
 		super(BuildingCollector, self).begin_current_job(job_location)
-		max_amount = min(self.inventory.get_limit(self.job.res), self.job.object.inventory.get_limit(self.job.res))
+		max_amount = min(self.get_component(StorageComponent).inventory.get_limit(self.job.res), self.job.object.get_component(StorageComponent).inventory.get_limit(self.job.res))
 		utilisation = self.job.amount / float(max_amount)
 		# only append a new element if it is different from the last one
 		if not self._job_history or abs(self._job_history[-1][1] - utilisation) > 1e-9:

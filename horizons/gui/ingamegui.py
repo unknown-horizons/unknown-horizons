@@ -1,4 +1,4 @@
-# ###################################################
+﻿# ###################################################
 # Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -24,7 +24,7 @@ import horizons.main
 from fife.extensions import pychan
 
 from horizons.entities import Entities
-from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect
+from horizons.util import livingProperty, LivingObject, PychanChildFinder
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
@@ -40,6 +40,8 @@ from horizons.constants import BUILDINGS, RES
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.world.component.namedcomponent import SettlementNameComponent
+from horizons.world.component.storagecomponent import StorageComponent
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -136,19 +138,18 @@ class IngameGui(LivingObject):
 		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
 
-		# map button names to build functions calls with the building id
-		self.callbacks_build = {}
-		for id_,button_name,settler_level in self.session.db.get_building_id_buttonname_settlerlvl():
-			if not settler_level in self.callbacks_build:
-				self.callbacks_build[settler_level] = {}
-			self.callbacks_build[settler_level][button_name] = Callback(self._build, id_)
+		# map buildings to build functions calls with their building id.
+		# This is necessary because BuildTabs have no session.
+		self.callbacks_build = dict()
+		for building_id in Entities.buildings.iterkeys():
+			self.callbacks_build[building_id] = Callback(self._build, building_id)
 
 	def end(self):
 		self.widgets['minimap'].mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
 			'rotateRight' : None,
-			'rotateLeft' : None,
+			'rotateLeft': None,
 
 			'destroy_tool' : None,
 			'build' : None,
@@ -166,72 +167,73 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).end()
 
 	def update_gold(self):
-		first = str(self.session.world.player.inventory[RES.GOLD_ID])
-		lines = []
+		player_gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID]
+		self.status_set('gold', player_gold)
+
+		gold_needed = self.resources_needed.get(RES.GOLD_ID, None) # defaults to None if key not found
 		show = False
-		if self.resource_source is not None and self.resources_needed.get(RES.GOLD_ID, 0) != 0:
+		amount = None
+		if self.resource_source is not None and gold_needed is not None:
 			show = True
-			lines.append('- ' + str(self.resources_needed[RES.GOLD_ID]))
-		self.status_set('gold', first)
-		self.status_set_extra('gold',lines)
+			amount = u'-{amount}'.format(amount = gold_needed)
+		self.status_set_extra('gold', amount)
+
 		self.set_status_position('gold')
 		if show:
 			self.widgets['status_extra_gold'].show()
 		else:
 			self.widgets['status_extra_gold'].hide()
 
-	def status_set(self, label, value):
-		"""Sets a value on the status bar (available res of the settlement).
-		@param label: str containing the name of the label to be set.
+	def status_set(self, res, value):
+		"""Sets a value on the status bar (available res of the player/settlement).
+		@param res: str containing the name of the label to be set (usually a resource name).
 		@param value: value the Label is to be set to.
 		"""
-		if isinstance(value,list):
-			value = value[0]
-		gui = self.widgets['status_gold'] if label == 'gold' else self.widgets['status']
-		foundlabel = gui.child_finder(label + '_1')
-		foundlabel._setText(unicode(value))
+		gui = self.widgets['status_gold'] if res == 'gold' else self.widgets['status']
+		# labels: tools_1 = inventory amount, tools_2 = cost of to-be-built building
+		foundlabel = gui.child_finder('{res}_1'.format(res=res))
+		foundlabel.text = unicode(value)
 		foundlabel.resizeToContent()
 		gui.resizeToContent()
 
-	def status_set_extra(self,label,value):
+	def status_set_extra(self, res, value):
 		"""Sets a value on the extra status bar. (below normal status bar, needed res for build)
-		@param label: str containing the name of the label to be set.
-		@param value: value the Label is to be set to.
+		@param res: str containing the name of the label to be set (usually a resource name).
+		@param value: value the Label is to be set to. Gets converted to unicode. None if empty.
 		"""
 		bg_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
 		bg_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
+
+		if res == 'gold':
+			extra_widget = self.widgets['status_extra_gold']
+		else:
+			extra_widget = self.widgets['status_extra']
+
 		if not hasattr(self, "bg_icon_pos"):
 			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
 			self.bgs_shown = {}
-		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if label == 'gold' else bg_icon_res, \
-								                  position=self.bg_icon_pos[label], name='bg_icon_' + label)
+		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if res == 'gold' else bg_icon_res, \
+		                              position=self.bg_icon_pos[res], name='bg_icon_{res}'.format(res=res))
 
-		if not value:
-			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
+		# labels: tools_1 = inventory amount, tools_2 = cost of to-be-built building
+		if value is None:
+			foundlabel = extra_widget if res == 'gold' else extra_widget.child_finder('{res}_2'.format(res=res))
 			foundlabel.text = u''
 			foundlabel.resizeToContent()
-			if label in self.bgs_shown:
-				(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).removeChild(self.bgs_shown[label])
-				del self.bgs_shown[label]
-			self.widgets['status_extra_gold'].resizeToContent() if label == 'gold' else self.widgets['status_extra'].resizeToContent()
+			if res in self.bgs_shown:
+				extra_widget.removeChild(self.bgs_shown[res])
+				del self.bgs_shown[res]
 			return
-		if isinstance(value, str):
-			value = [value]
-		#for i in xrange(len(value), 3):
-		#	value.append("")
 
-		if (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).findChild(name='bg_icon_' + label) is None:
-			(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).insertChild(bg_icon, 0)
-			self.bgs_shown[label] = bg_icon
+		if extra_widget.findChild(name='bg_icon_{res}'.format(res=res)) is None:
+			extra_widget.insertChild(bg_icon, 0)
+			self.bgs_shown[res] = bg_icon
 
-		for i in xrange(0,len(value)):
-			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(name=label + '_' + str(i+2))
-			foundlabel._setText(unicode(value[i]))
-			foundlabel.resizeToContent()
-		if label == 'gold':
-			self.widgets['status_extra_gold'].resizeToContent()
-		else:
-			self.widgets['status_extra'].resizeToContent()
+		# labels: tools_1 = inventory amount, tools_2 = cost of to-be-built building
+		foundlabel = extra_widget.child_finder(name='{res}_2'.format(res=res))
+		foundlabel.text = unicode(value)
+		foundlabel.resizeToContent()
+		extra_widget.resizeToContent()
 
 	def cityinfo_set(self, settlement):
 		"""Sets the city name at top center of screen.
@@ -277,36 +279,39 @@ class IngameGui(LivingObject):
 		cityinfo.mapEvents({
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
 			})
+
 		foundlabel = cityinfo.child_finder('owner_emblem')
 		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)
 		foundlabel.tooltip = unicode(self.settlement.owner.name)
+
 		foundlabel = cityinfo.child_finder('city_name')
-		foundlabel.text = unicode(self.settlement.name)
+		foundlabel.text = unicode(self.settlement.get_component(SettlementNameComponent).name)
 		foundlabel.resizeToContent()
+
 		foundlabel = cityinfo.child_finder('city_inhabitants')
 		foundlabel.text = unicode(' %s' % (self.settlement.inhabitants))
 		foundlabel.resizeToContent()
+
 		cityinfo.adaptLayout()
 
 	def update_resource_source(self):
 		"""Sets the values for resource status bar as well as the building costs"""
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
-			first = str(self.resource_source.inventory[res_id])
-			lines = []
+			inventory_res = self.resource_source.get_component(StorageComponent).inventory[res_id]
+			self.status_set(res_name, inventory_res)
+
+			res_needed = self.resources_needed.get(res_id, None) # defaults to None if key not found
 			show = False
-			if self.resources_needed.get(res_id, 0) != 0:
+			amount = None
+			if res_needed is not None:
 				show = True
-				lines.append('- ' + str(self.resources_needed[res_id]))
-			self.status_set(res_name, first)
-			self.status_set_extra(res_name,lines)
+				amount = u'-{amount}'.format(amount = res_needed)
+			self.status_set_extra(res_name, amount)
+
 			self.set_status_position(res_name)
 			if show:
 				self.widgets['status_extra'].show()
-
-	def ship_build(self, ship):
-		"""Calls the Games build_object class."""
-		self._build(1, ship)
 
 	def minimap_to_front(self):
 		self.widgets['minimap'].hide()
@@ -355,8 +360,8 @@ class IngameGui(LivingObject):
 			# indicates a mistake in the mental model of the user. Display a hint.
 			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
 		else:
-			btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
-							 range(0, self.session.world.player.settler_level+1)]
+			btabs = [BuildTab(index+1, self.callbacks_build, self.session) for index in \
+							 range(self.session.world.player.settler_level+1)]
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
 											active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
@@ -369,7 +374,7 @@ class IngameGui(LivingObject):
 	def _build(self, building_id, unit = None):
 		"""Calls the games buildingtool class for the building_id.
 		@param building_id: int with the building id that is to be built.
-		@param unit: weakref to the unit, that builds (e.g. ship for branch office)"""
+		@param unit: weakref to the unit, that builds (e.g. ship for warehouse)"""
 		self.hide_menu()
 		self.deselect_all()
 		cls = Entities.buildings[building_id]
@@ -421,21 +426,6 @@ class IngameGui(LivingObject):
 		else:
 			self.show_menu(menu)
 
-	def build_load_tab(self, num):
-		"""Loads a subcontainer into the build menu and changes the tabs background.
-		@param num: number representing the tab to load.
-		"""
-		tab1 = self.widgets['build'].findChild(name=('tab'+str(self.active_build)))
-		tab2 = self.widgets['build'].findChild(name=('tab'+str(num)))
-		activetabimg, nonactiveimg= tab1._getImage(), tab2._getImage()
-		tab1._setImage(nonactiveimg)
-		tab2._setImage(activetabimg)
-		contentarea = self.widgets['build'].findChild(name='content')
-		contentarea.removeChild(self.widgets['build_tab'+str(self.active_build)])
-		contentarea.addChild(self.widgets['build_tab'+str(num)])
-		contentarea.adaptLayout()
-		self.active_build = num
-
 	def set_status_position(self, resource_name):
 		icon_name = resource_name + '_icon'
 		for i in xrange(1, 3):
@@ -462,7 +452,7 @@ class IngameGui(LivingObject):
 		self.minimap.draw() # update minimap to new world
 
 	def show_change_name_dialog(self, instance):
-		"""Shows a dialog where the user can change the name of a NamedObject.
+		"""Shows a dialog where the user can change the name of a NamedComponant.
 		The game gets paused while the dialog is executed."""
 		events = {
 			'okButton': Callback(self.change_name, instance),
@@ -482,7 +472,9 @@ class IngameGui(LivingObject):
 		self.widgets['change_name'].hide()
 
 	def change_name(self, instance):
-		"""Applies the change_name dialogs input and hides it"""
+		"""Applies the change_name dialogs input and hides it.
+		If the new name has length 0 or only contains blanks, the old name is kept.
+		"""
 		new_name = self.widgets['change_name'].collectData('new_name')
 		self.widgets['change_name'].findChild(name='new_name').text = u''
 		if not (len(new_name) == 0 or new_name.isspace()):
@@ -517,7 +509,10 @@ class IngameGui(LivingObject):
 			self._hide_save_map_dialog()
 		else:
 			#xgettext:python-format
-			self.session.gui.show_popup(_('Error'), _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+'))
+			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
+			#xgettext:python-format
+			advice = _('Try a name that only contains letters and numbers.')
+			self.session.gui.show_error_popup(_('Error'), message, advice)
 
 	def on_escape(self):
 		if self.main_widget:

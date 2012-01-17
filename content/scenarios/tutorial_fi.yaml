@@ -108,7 +108,7 @@ events:
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
@@ -147,9 +147,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -277,12 +277,12 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'RAKENNA KOKOONTUMISTELTTA', "Nuo ty\xF6kalut riitt\xE4\
-        v\xE4t hetkeksi. Hyvin tehty!\n\nTarjoat nyt asutusta, keskustorin ja ruokaa\
+  - arguments: [!!python/unicode 'RAKENNA KIRKKO', "Nuo ty\xF6kalut riitt\xE4v\xE4\
+        t hetkeksi. Hyvin tehty!\n\nTarjoat nyt asuintilat, keskustorin ja ruokaa\
         \ asukkaillesi.\n\nYh\xE4 on yksi vaatimus, jota ei olla viel\xE4 t\xE4ytetty,\
         \ voit tarkistaa sen halutessasi toripaikasta tai teltan v\xE4lilehdest\xE4\
         \ - merenk\xE4vij\xE4si haluavat yksinkertaisen rakennuksen, jossa voivat\
-        \ rukoilla.\n\nSiksip\xE4 sinun pit\xE4\xE4 rakentaa kyl\xE4\xE4si kokoontumisteltta,\
+        \ rukoilla.\n\nSiksip\xE4 sinun pit\xE4\xE4 rakentaa kyl\xE4\xE4si kirkko,\
         \ jonka kyl\xE4pappi nopeasti rakentaa auringonsuojaksi.\n\nMy\xF6s t\xE4\
         m\xE4nkaltaiset palvelurakennukset pit\xE4\xE4 yhdist\xE4\xE4 polulla telttoihin,\
         \ tai asukkaasi kokevat mahdottomaksi p\xE4\xE4st\xE4 niihin.\n\nMy\xF6hemmill\xE4\
@@ -290,15 +290,15 @@ events:
     type: logbook_w
   - arguments: ['', "Huomioi, ett\xE4 uskoa on kohdeltava samoin kuin muitakin resursseja!\n\
         \nT\xE4m\xE4 tarkoittaa ett\xE4 sinun on tarjottava kaikille asukkaille polkuyhteys\
-        \ uskontoa tuottavan (kokoontumisteltan) luokse.\nHe ker\xE4\xE4v\xE4t uskovarantonsa\
-        \ t\xE4yteen, mutta varannotkin kuitenkin tyhjentyv\xE4t joskus. Jonkun ajan\
-        \ kuluttua heid\xE4n on p\xE4\xE4st\xE4v\xE4 kokoontumisteltalle uudelleen\
-        \ t\xE4ytt\xE4m\xE4\xE4n uskonnolliset tarpeensa uudelleen.\n\nT\xE4rke\xE4\
-        \xE4:Ei riit\xE4, ett\xE4 kokoontumisteltta on asuntojen l\xE4hell\xE4, vaan\
-        \ sinne on oltava my\xF6s tieyhteys.\n\nTEHT\xC4V\xC4: Rakenna kokoontumisteltta\
-        \ polkuyhteydell\xE4 asukkaidesi luokse."]
+        \ uskontuottajan (kirkon) luokse.\nHe ker\xE4\xE4v\xE4t uskovarantonsa t\xE4\
+        yteen, mutta varannotkin kuitenkin tyhjentyv\xE4t joskus. Jonkun ajan kuluttua\
+        \ heid\xE4n on p\xE4\xE4st\xE4v\xE4 kirkolle uudelleen t\xE4ytt\xE4m\xE4\xE4\
+        n uskonnolliset tarpeensa uudelleen.\n\nT\xE4rke\xE4\xE4: Ei riit\xE4, ett\xE4\
+        \ kirkko on asuntojen l\xE4hell\xE4, vaan sinne on oltava my\xF6s polkuyhteys.\n\
+        \nTEHT\xC4V\xC4: Rakenna kokoontumisteltta polkuyhteydell\xE4 asukkaidesi\
+        \ luokse."]
     type: logbook
-  - arguments: ["Rakenna kokoontumisteltta yhteydell\xE4 telttoihin."]
+  - arguments: ["Rakenna kirkko yhteydell\xE4 telttoihin."]
     type: message
   - arguments: [tutStepDone, 40]
     type: set_var
@@ -312,15 +312,15 @@ events:
 - actions:
   - arguments: [!!python/unicode 'SEURAAVA TASO', "Kaikki vaatimukset on nyt t\xE4\
         ytetty, kunhan asukkaasi voivat s\xE4\xE4nn\xF6llisesti vierailla keskustorilla\
-        \ ja kokoontumisteltassa ja ruokavarantosi on riitt\xE4v\xE4.\n\nJos merenk\xE4\
-        vij\xE4si ovat riitt\xE4v\xE4n onnellisia, he haluavat kehitty\xE4 seuraavalle\
-        \ tasolle, kansoittajiksi.\n\nVoit tehd\xE4 asukkaasi onnellisemmiksi laskemalla\
-        \ veroprosenttiasi. Muuta sinun ei tarvitse tehd\xE4, sill\xE4 olet jo t\xE4\
-        ytt\xE4nyt asukkaidesi kaikki vaatimukset.\n\nVeroprosenttia ei kannata kuitenkaan\
-        \ koko aikaa pit\xE4\xE4 alhaalla, sill\xE4 t\xE4st\xE4 todenn\xE4k\xF6isesti\
-        \ aiheutuu konkurssi ennemmin tai my\xF6hemmin. Voit kuitenkin laskea prosenttia\
-        \ huoletta pieniksi ajoiksi.\n\nJonkin ajan j\xE4lkeen ensimm\xE4isen yksik\xF6\
-        n pit\xE4isi k\xE4vell\xE4 keskustorille ja etsi\xE4 sielt\xE4 uusia rakennustarvikkeita\
+        \ ja kirkossa ja ruokavarantosi on riitt\xE4v\xE4.\n\nJos merenk\xE4vij\xE4\
+        si ovat riitt\xE4v\xE4n onnellisia, he haluavat kehitty\xE4 seuraavalle tasolle,\
+        \ kansoittajiksi.\n\nVoit tehd\xE4 asukkaasi onnellisemmiksi laskemalla veroprosenttiasi.\
+        \ Muuta sinun ei tarvitse tehd\xE4, sill\xE4 olet jo t\xE4ytt\xE4nyt asukkaidesi\
+        \ kaikki vaatimukset.\n\nVeroprosenttia ei kannata kuitenkaan koko aikaa pit\xE4\
+        \xE4 alhaalla, sill\xE4 t\xE4st\xE4 todenn\xE4k\xF6isesti aiheutuu konkurssi\
+        \ ennemmin tai my\xF6hemmin. Voit kuitenkin laskea prosenttia huoletta pieniksi\
+        \ ajoiksi.\n\nJonkin ajan j\xE4lkeen ensimm\xE4isen yksik\xF6n pit\xE4isi\
+        \ k\xE4vell\xE4 keskustorille ja etsi\xE4 sielt\xE4 uusia rakennustarvikkeita\
         \ rakentaakseen hirsitalon. T\xE4m\xE4 talo korvaa vanhan teltan."]
     type: logbook_w
   - arguments: ['', "T\xE4llaiset asuinrakennusten p\xE4ivitykset ovat ainoat, jotka\
@@ -334,7 +334,7 @@ events:
         \ puoli on ett\xE4 pioneerit vaativat my\xF6s tavaroita, joita merenk\xE4\
         vij\xE4t eiv\xE4t tarvitse - joten sinun tarvitsee k\xE4ytt\xE4\xE4 t\xE4\
         m\xE4n ylim\xE4\xE4r\xE4isen tuoton my\xF6s heid\xE4n onnellisena pit\xE4\
-        miseens\xE4.\n\nTEHT\xC4V\xC4: Aseta veroprosentti Matalaksi (vasemmassa p\xE4\
+        miseens\xE4.\n\nTEHT\xC4V\xC4: Aseta veroprosentti matalaksi (vasemmassa p\xE4\
         \xE4ss\xE4) ja odota merenk\xE4vij\xF6iden p\xE4ivittymist\xE4."]
     type: logbook
   - arguments: ["Laske verotasosi alas (palkin vasempaan p\xE4\xE4h\xE4n) ja odota\
@@ -538,4 +538,5 @@ events:
     type: var_gt
 locale: fi
 mapfile: development.sqlite
+translation_status: 65 translated messages.
 

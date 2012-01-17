@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,26 +19,36 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from string import Template
+import textwrap
 
 from fife.extensions import pychan
 
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
-from horizons.util import LivingObject, Callback
+from horizons.util import LivingObject, Callback, Point
+from horizons.scheduler import Scheduler
 from horizons.util.gui import load_uh_widget
-from horizons.ambientsound import AmbientSound
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.i18n.voice import get_speech_file
 
 class MessageWidget(LivingObject):
-	"""Class that organises the messages in the top right of the screen.
-	It uses Message Class instances to store messages and manages the
-	archive.
-	@param x, y: int position where the widget is placed on the screen."""
+	"""Class that organizes the messages. Displayed on left screen edge.
+	It uses Message instances to store messages and manages the archive.
+	@param x, y: int position where the widget is placed on the screen.
+	"""
 
+	BG_IMAGE_MIDDLE = 'content/gui/images/background/widgets/message_bg_middle.png'
+	IMG_HEIGHT = 24 # distance of above segments in px.
+	LINE_HEIGHT = 17
+	ICON_TEMPLATE = 'messagewidget_icon.xml'
+	MSG_TEMPLATE = 'messagewidget_message.xml'
+	CHARS_PER_LINE = 34 # character count after which we start new line. no wrap
 	SHOW_NEW_MESSAGE_TEXT = 4 # seconds
 	MAX_MESSAGES = 5
+
+	_DUPLICATE_TIME_THRESHOLD = 10 # sec
+	_DUPLICATE_SPACE_THRESHOLD = 8 # distance
 
 	def __init__(self, session, x, y):
 		super(MessageWidget, self).__init__()
@@ -46,12 +56,12 @@ class MessageWidget(LivingObject):
 		self.x_pos, self.y_pos = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
-		self.widget = load_uh_widget('hud_messages.xml')
+		self.widget = load_uh_widget(self.ICON_TEMPLATE)
 		self.widget.position = (
 			 5,
 			 horizons.main.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
 
-		self.text_widget = load_uh_widget('hud_messages_text.xml')
+		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
 		self.widget.show()
 		self.current_tick = 0
@@ -59,15 +69,27 @@ class MessageWidget(LivingObject):
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
-	def add(self, x, y, string_id, message_dict=None, sound_file=True):
+		self._last_message = {} # used to detect fast subsequent messages in add()
+
+	def add(self, x, y, string_id, message_dict=None, sound_file=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id string, needed to retrieve the message from the database.
-		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
-		@params sound_file if not set play default message speech for string_id
-						if set for False do not play sound
-						if set sound file path play this sound, for example some event sound
+		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
+		@param sound_file: if True: play default message speech for string_id
+		                   if False: do not play sound
+		                   if sound file path: play this sound file
+		@param check_duplicate: check for pseudo-duplicates (similar messages recently nearby)
 		"""
+		if check_duplicate:
+			if string_id in self._last_message:
+				when, where = self._last_message[string_id]
+				if when > Scheduler().cur_tick - Scheduler().get_ticks(self.__class__._DUPLICATE_TIME_THRESHOLD) and \
+				   where.distance( (x, y) ) < self.__class__._DUPLICATE_SPACE_THRESHOLD:
+					# there has been a message nearby recently, abort
+					return
+			self._last_message[string_id] = (Scheduler().cur_tick, Point(x, y))
+
 		sound = {
 							True: get_speech_file(string_id),
 							False: None
@@ -80,7 +102,7 @@ class MessageWidget(LivingObject):
 	def _add_message(self, message, sound = None):
 		"""Internal function for adding messages. Do not call directly.
 		@param message: Message instance
-		@param sound: path tosoundfile"""
+		@param sound: path to soundfile"""
 		self.active_messages.insert(0, message)
 
 		if len(self.active_messages) > self.MAX_MESSAGES:
@@ -90,14 +112,20 @@ class MessageWidget(LivingObject):
 			horizons.main.fife.play_sound('speech', sound)
 		else:
 			# play default msg sound
-			AmbientSound.play_special('message')
+			AmbientSoundComponent.play_special('message')
+
+		if message.x is not None and message.y is not None:
+			self.session.ingame_gui.minimap.highlight( (message.x, message.y) )
 
 		self.draw_widget()
 		self.show_text(0)
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
 
 	def draw_widget(self):
-		"""Updates the widget."""
+		"""
+		Updates whole messagewidget (all messages): draw icons.
+		Inactive messages need their icon hovered to display their text again
+		"""
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
@@ -107,15 +135,20 @@ class MessageWidget(LivingObject):
 				button.up_image = message.up_image
 				button.hover_image = message.hover_image
 				button.down_image = message.down_image
+				button.is_focusable = False
 				# show text on hover
 				events = {
 					button.name + "/mouseEntered": Callback(self.show_text, index),
 					button.name + "/mouseExited": self.hide_text
 				}
 				if message.x is not None and message.y is not None:
-					# center source of event on click, if there is a source
-					events[button.name] = Callback( \
-						self.session.view.center, message.x, message.y)
+					# move camera to source of event on click, if there is a source
+					callback = Callback.ChainedCallbacks(
+					  Callback(self.session.view.center, message.x, message.y),
+					  Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
+					)
+					events[button.name] = callback
+
 				button.mapEvents(events)
 				button_space.addChild(button)
 		button_space.resizeToContent()
@@ -127,7 +160,24 @@ class MessageWidget(LivingObject):
 		assert isinstance(index, int)
 		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
 		label = self.text_widget.findChild(name='text')
-		label.text = unicode(self.active_messages[self.position+index].message)
+		text = unicode(self.active_messages[self.position+index].message)
+		text = text.replace(r'\n', self.CHARS_PER_LINE*' ')
+		text = text.replace(r'[br]', self.CHARS_PER_LINE*' ')
+		text = textwrap.fill(text, self.CHARS_PER_LINE)
+
+		self.bg_middle = self.text_widget.findChild(name='msg_bg_middle')
+		self.bg_middle.removeAllChildren()
+
+		line_count = len(text.splitlines()) - 1
+		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
+			middle_icon = pychan.Icon(image=self.BG_IMAGE_MIDDLE)
+			self.bg_middle.addChild(middle_icon)
+
+		message_container = self.text_widget.findChild(name='message')
+		message_container.size = (300, 21 + self.IMG_HEIGHT * line_count + 21)
+
+		self.bg_middle.adaptLayout()
+		label.text = text
 		label.adaptLayout()
 		self.text_widget.show()
 
@@ -178,26 +228,30 @@ class Message(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string.Template, meaning it can contain placeholders
 	like the following: $player, ${gold}. The second version is recommended, as the word
-	can then be followed by other characters without a whitespace (e.g. "${player}'s home").
+	can then be followed by other characters without a whitespace (e.g. "home of ${player}").
 	The dict needed to fill these placeholders needs to be provided when creating the Message.
 
 	@param x, y: int position on the map where the action took place.
 	@param id: message id string, needed to retrieve the message from the database.
 	@param created: tickid when the message was created.
-	@param message_dict: template dict with the neccassary values for the message. ( e.g.: {'player': 'Arthus'}
+	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	"""
 	def __init__(self, x, y, id, created, read=False, display=None, message=None, message_dict=None, icon_id=None):
 		self.x, self.y = x, y
 		self.id = id
 		self.read = read
 		self.created = created
-		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for FROM message WHERE id_string=?', id).rows[0][0])
-		icon = icon_id if icon_id else horizons.main.db('SELECT icon FROM message where id_string = ?', id)[0][0]
-		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image FROM message_icon WHERE color=? AND icon_id = ?', 1, icon)[0]
+		self.display = display if display is not None else horizons.main.db.get_msg_visibility(id)
+		icon = icon_id if icon_id else horizons.main.db.get_msg_icon_id(id)
+		self.up_image, self.down_image, self.hover_image = horizons.main.db.get_msg_icons(icon)
 		if message is not None:
 			assert isinstance(message, str) or isinstance(message, unicode)
 			self.message = message
 		else:
-			text = horizons.main.db('SELECT text FROM message WHERE id_string=?', id)[0][0]
-			self.message = Template(_(text)).safe_substitute( \
-			  message_dict if message_dict is not None else {})
+			msg = _(horizons.main.db.get_msg_text(id))
+			try:
+				self.message = msg.format(**message_dict if message_dict is not None else {})
+			except KeyError as err:
+				self.message = msg
+				print "Warning: Unsubstituted string {err} in {id} message \"{msg}\", dict {dic}".format(
+				       err=err, msg=msg, id=id, dic=message_dict)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -46,10 +46,6 @@ class UnitProduction(ChangingProduction):
 	## PROTECTED METHODS
 	def _get_producing_callback(self):
 		return self._produce
-
-	def _give_produced_res(self):
-		"""This needs to be overridden as we also have to produce the unit."""
-		super(UnitProduction, self)._give_produced_res()
 
 	def _check_available_res(self):
 		# Gold must be available from the beginning

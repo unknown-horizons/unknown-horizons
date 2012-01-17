@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,6 +33,7 @@ class Speech:
 	"""Definition of category names, those names are the name of directory where speech should be"""
 	NEW_SETTLEMENT = "new_settlement"
 	NEW_WORLD = "new_world"
+	SAVED_GAME = None
 	QUICKSAVE = None
 	AUTOSAVE = None
 	SCREENSHOT = None

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -20,24 +20,55 @@
 # ###################################################
 
 class Component(object):
-	def __init__(self, instance):
+
+	#  Store the name of this component. This has to be overwritten in subclasses
+	NAME = None
+
+	# Store dependencies to other components here
+	DEPENDENCIES = []
+
+	def __init__(self):
 		"""
 		@param instance: instance that has the component
 		"""
-		self.instance = instance
-	
+		super(Component, self).__init__()
+		self.instance = None # Has to be set by the componentholder
+		self.session = None  # Has to be set by the componentholder
+
+	def initialize(self):
+		"""
+		This is called by the ComponentHolder after it set the instance. Use this to
+		initialize any needed infrastructure
+		"""
+		pass
+
 	def remove(self):
 		"""
 		Removes component and reference to instance
 		"""
 		self.instance = None
-	
+
 	def save(self, db):
 		"""
 		Will do nothing, but will be always called in componentholder code, even if not implemented
 		"""
 		pass
-	
+
 	def load(self, db, worldid):
 		pass
 
+	@classmethod
+	def get_instance(cls, arguments={}):
+		"""
+		This function is used to instantiate classes from yaml data. Override this if
+		the component has more than just a basic constructor with primitiv types
+		(takes Custom classes as arguments e.g. Storages)
+		"""
+		return cls(**arguments)
+
+
+	def __gt__(self, other):
+		return other.__class__ in self.DEPENDENCIES
+
+	def __lt__(self, other):
+		return not self.__gt__(other)

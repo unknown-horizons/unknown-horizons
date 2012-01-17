@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,7 @@ from horizons.scheduler import Scheduler
 
 from horizons.gui.tabs import SettlerOverviewTab
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
-from horizons.world.building.buildable import BuildableSingle
+from horizons.world.building.buildable import BuildableRect, BuildableSingle
 from horizons.constants import RES, BUILDINGS, GAME, SETTLER
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
@@ -34,7 +34,9 @@ from horizons.command.building import Build
 from horizons.util import decorators, Callback
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
+from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus
+from horizons.world.production.producer import Producer
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -44,7 +46,7 @@ class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""
 	buildable_upon = True
 
-class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
+class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	log = logging.getLogger("world.building.settler")
 
@@ -59,19 +61,23 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.default_level_on_build # settlers always start in first level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
-		self.__init(self.__get_data("happiness_init_value"))
-		self.run()
+
+	def __init(self, loading = False, last_tax_payed=0):
+		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
+		self._update_level_data(loading = loading)
+		self.last_tax_payed = last_tax_payed
+
+	def initialize(self):
+		super(Settler, self).initialize()
+		happiness = self.__get_data("happiness_init_value")
+		if happiness is not None:
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
+		self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
-
-	def __init(self, happiness = None, loading = False, last_tax_payed=0):
-		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
-		if happiness is not None:
-			self.inventory.alter(RES.HAPPINESS_ID, happiness)
-		self._update_level_data(loading = loading)
-		self.last_tax_payed = last_tax_payed
-		self.inventory.add_change_listener( self._update_status_icon )
+		self.__init()
+		self.run()
 
 	def save(self, db):
 		super(Settler, self).save(db)
@@ -109,17 +115,17 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			resources[resource] = amount
 
 		for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
-			self.inventory.add_resource_slot(res, abs(amount))
+			self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 			if res in resources:
-				self.inventory.alter(res, resources[res])
+				self.get_component(StorageComponent).inventory.alter(res, resources[res])
 
 		upgrade_material_production.add_production_finished_listener(self.level_up)
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 
 	def _get_upgrade_production(self):
 		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
-		if self.has_production_line(upgrade_material_prodline):
-			return self._get_production(upgrade_material_prodline)
+		if self.get_component(Producer).has_production_line(upgrade_material_prodline):
+			return self.get_component(Producer)._get_production(upgrade_material_prodline)
 		return None
 
 	@property
@@ -135,14 +141,18 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	@property
 	def happiness(self):
 		difficulty = self.owner.difficulty
-		result = int(round(difficulty.extra_happiness_constant + self.inventory[RES.HAPPINESS_ID] * difficulty.happiness_multiplier))
-		return max(0, min(result, self.inventory.get_limit(RES.HAPPINESS_ID)))
+		result = int(round(difficulty.extra_happiness_constant + self.get_component(StorageComponent).inventory[RES.HAPPINESS_ID] * difficulty.happiness_multiplier))
+		return max(0, min(result, self.get_component(StorageComponent).inventory.get_limit(RES.HAPPINESS_ID)))
 
 	@property
 	def name(self):
-		level_name = self.session.db.get_settler_name(self.level)
-		house_name = self.session.db.get_settler_house_name(self.level)
+		house_name = self.session.db.get_settler_house_name(self.level) if hasattr(self, 'level') else 'unknown residence'
 		return (_(house_name)).title()
+
+	@property
+	def capacity_utilisation(self):
+		# this concept does not make sense here, so spare us the calculations
+		return 1.0
 
 	def _update_level_data(self, loading = False):
 		"""Updates all settler-related data because of a level change or because of loading"""
@@ -156,17 +166,18 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
 		if not loading:
-			current_lines = self.get_production_lines()
-			for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
-				if not self.has_production_line(prod_line):
-					self.add_production_by_id(prod_line)
+			prod_comp = self.get_component(Producer)
+			current_lines = prod_comp.get_production_lines()
+			for prod_line in prod_comp.get_production_lines_by_level(self.level):
+				if not prod_comp.has_production_line(prod_line):
+					prod_comp.add_production_by_id(prod_line)
 				# cross out the new lines from the current lines, so only the old ones remain
 				if prod_line in current_lines:
 					current_lines.remove(prod_line)
 			for line in current_lines[:]: # iterate over copy for safe removal
 				# all lines, that were added here but are not used due to the current level
 				# NOTE: this contains the upgrade material production line
-				self.remove_production_by_id(line)
+				prod_comp.remove_production_by_id(line)
 		# update instance graphics
 		self.update_action_set_level(self.level)
 
@@ -193,7 +204,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
 		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
 
-		self.settlement.owner.inventory.alter(RES.GOLD_ID, real_taxes)
+		self.settlement.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, real_taxes)
 		self.last_tax_payed = real_taxes
 
 		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
@@ -205,8 +216,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# to simulate the more dynamic, currently implemented approach (where every event changes
 		# the happiness), we simulate discontent of taxes by this:
 		happiness_decrease -= 6
-		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
-
+		self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
 		self._changed()
 		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, real_taxes, \
 									 happiness_decrease, self.happiness)
@@ -227,7 +237,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 		if changed:
 			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
-			self.alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
+			self.get_component(Producer).alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
 			self._changed()
 
 	def level_check(self):
@@ -244,15 +254,16 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# add a production line that gets the necessary upgrade material.
 			# when the production finishes, it calls upgrade_materials_collected.
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
-			if self.has_production_line(upgrade_material_prodline):
+			if self.get_component(Producer).has_production_line(upgrade_material_prodline):
 				return # already waiting for res
+			prodline_data = self.session.db.get_production_line_data(upgrade_material_prodline)
 			owner_inventory = self._get_owner_inventory()
-			upgrade_material_production = SingleUseProduction(self.inventory, owner_inventory, \
-			                                                  upgrade_material_prodline)
+			upgrade_material_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \
+			                                                  upgrade_material_prodline, prodline_data)
 			upgrade_material_production.add_production_finished_listener(self.level_up)
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
-				self.inventory.add_resource_slot(res, abs(amount))
+				self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 			self.add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 			if not self.upgrade_allowed:
@@ -270,7 +281,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# notify owner about new level
 		self.owner.notify_settler_reached_level(self)
 		# reset happiness value for new level
-		self.inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
+		self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 		self._changed()
 
 	def level_down(self):
@@ -285,13 +296,14 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner == self.session.world.player:
+		# check_duplicate: only trigger once for different settlers of a neighborhood
 				self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
-			                                           'SETTLERS_MOVED_OUT')
+			                                           'SETTLERS_MOVED_OUT', check_duplicate=True)
 		else:
 			self.level -= 1
 			self._update_level_data()
 			# reset happiness value for new level
-			self.inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 
@@ -303,8 +315,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 					# a main square is in range
 					return
 		# no main square found
+		# check_duplicate: only trigger once for different settlers of a neighborhood
 		self.session.ingame_gui.message_widget.add(self.position.origin.x, self.position.origin.y, \
-		                                           'NO_MAIN_SQUARE_IN_RANGE')
+		                                           'NO_MAIN_SQUARE_IN_RANGE', check_duplicate=True)
 
 	def level_upgrade(self, lvl):
 		"""Settlers only level up by themselves"""

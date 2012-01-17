@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,10 @@
 # ###################################################
 
 import logging
+import fnmatch
+import os
 
-from horizons.util import Callback
+from horizons.util import Callback, YamlCache
 
 class _EntitiesLazyDict(dict):
 	def __init__(self):
@@ -55,7 +57,7 @@ class Entities(object):
 
 		cls.load_grounds(db)
 		cls.load_buildings(db)
-		cls.load_units(db)
+		cls.load_units()
 		cls.loaded = True
 
 	@classmethod
@@ -80,20 +82,33 @@ class Entities(object):
 			return
 		cls.buildings = _EntitiesLazyDict()
 		from world.building import BuildingClass
-		for (building_id,) in db("SELECT id FROM building"):
-			cls.buildings.create_on_access(building_id, Callback(BuildingClass, db, building_id))
-			if load_now:
-				cls.buildings[building_id]
+		for root, dirnames, filenames in os.walk('content/objects/buildings'):
+			for filename in fnmatch.filter(filenames, '*.yaml'):
+				cls.log.debug("Loading: " +  filename)
+				# This is needed for dict lookups! Do not convert to os.join!
+				full_file = root + "/" + filename
+				result = YamlCache.get_file(full_file)
+				result['yaml_file'] = full_file
+
+				building_id = int(result['id'])
+				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_data=result))
+				if load_now or True:
+					cls.buildings[building_id]
 
 	@classmethod
-	def load_units(cls, db, load_now=False):
+	def load_units(cls, load_now=False):
 		cls.log.debug("Entities: loading units")
 		if hasattr(cls, 'units'):
 			cls.log.debug("Entities: units already loaded")
 			return
 		cls.units = _EntitiesLazyDict()
+
 		from world.units import UnitClass
-		for (unit_id,) in db("SELECT id FROM unit"):
-			cls.units.create_on_access(unit_id, Callback(UnitClass, db, unit_id))
-			if load_now:
-				cls.units[unit_id]
+		for root, dirnames, filenames in os.walk('content/objects/units'):
+			for filename in fnmatch.filter(filenames, '*.yaml'):
+				full_file = os.path.join(root, filename)
+				result = YamlCache.get_file(full_file)
+				unit_id = int(result['id'])
+				cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, yaml_data=result))
+				if load_now:
+					cls.units[unit_id]

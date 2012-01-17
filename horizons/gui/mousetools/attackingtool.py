@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ from fife import fife
 import horizons.main
 from horizons.command.unit import Act, Attack
 from horizons.command.diplomacy import AddEnemyPair
+from horizons.world.component.healthcomponent import HealthComponent
 from horizons.gui.mousetools.selectiontool import SelectionTool
 
 class AttackingTool(SelectionTool):
@@ -85,7 +86,8 @@ class AttackingTool(SelectionTool):
 				and not evt.isShiftPressed():
 				continue
 			try:
-				if instance.has_component('health'):
+				if instance.has_component(HealthComponent):
+					attackable = True
 					target = instance
 			except AttributeError:
 				pass

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,6 +30,15 @@ except ImportError:
 	print 'The nose package is needed to run the UH tests.'
 	sys.exit(1)
 
+try:
+	import mock
+except ImportError:
+	print 'The mock package is needed to run the UH tests.'
+	sys.exit(1)
+
+
+from horizons.ext.dummy import Dummy
+
 
 def mock_fife_and_gui():
 	"""
@@ -38,8 +47,6 @@ def mock_fife_and_gui():
 	pychan will fail otherwise (isinstance checks that Dummy fails, metaclass
 	errors - pretty bad stuff).
 	"""
-	from horizons.ext.dummy import Dummy
-
 	class Importer(object):
 
 		def find_module(self, fullname, path=None):
@@ -69,6 +76,11 @@ def setup_horizons():
 	import horizons.main
 	import fife
 	horizons.main.fife = fife.fife
+
+	horizons.main._modules.gui = Dummy()
+
+	from run_uh import create_user_dirs
+	create_user_dirs()
 
 
 if __name__ == '__main__':

@@ -109,7 +109,7 @@ events:
     type: set_var
   conditions:
   - arguments: [8, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 18]
     type: var_gt
   - arguments: [tutStepDone, 22]
@@ -156,9 +156,9 @@ events:
   - arguments: [11, 0]
     type: building_num_of_type_greater
   - arguments: [9, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [11, 0]
-    type: buildings_connected_to_branch_gt
+    type: buildings_connected_to_warehouse_gt
   - arguments: [tutStepDone, 21]
     type: var_gt
   - arguments: [tutStepDone, 25]
@@ -224,19 +224,19 @@ events:
         speed things up a bit.
 
 
-        For this purpose, build a signal fire at the coast near your branch office.
-        It will show ships the way to your settlement.
+        For this purpose, build a signal fire at the coast near your warehouse. It
+        will show ships the way to your settlement.
 
 
         The signal fire has to cover the area which the ships pass through to catch
         them.']
     type: logbook_w
   - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your branch office if it planned to sail past it.
+        also stop by and look into your warehouse if it planned to sail past it.
 
 
-        You can propose deals via the branch office tab ''Buy/Sell''. (This feature
-        is currently quite fiddly to use. If you come up with a nice way of improving
+        You can propose deals via the warehouse tab ''Buy/Sell''. (This feature is
+        currently quite fiddly to use. If you come up with a nice way of improving
         it, please share your thoughts! We need your help here!)
 
 
@@ -251,7 +251,7 @@ events:
         explain this once you are ready to trade.
 
 
-        TASK: Build a signal fire at the coast close to your branch office.']
+        TASK: Build a signal fire at the coast close to your warehouse.']
     type: logbook
   - arguments: ["Bygg en signalbrand vid kusten och i n\xE4rheten av handelskontoret."]
     type: message
@@ -401,11 +401,11 @@ events:
 
 
         Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a Branch Office.
+        to be connected to storage or a warehouse.
 
 
         As long as units of the final production company can reach the farm, and collectors
-        from the branch office or storage tent can reach the final company everything''s
+        from the warehouse or storage tent can reach the final company everything''s
         fine.
 
 
@@ -483,7 +483,7 @@ events:
         you watch your lumberjack recently?
 
 
-        Since your branch office does not have unlimited space to store goods, collectors
+        Since your warehouse does not have unlimited space to store goods, collectors
         will stop fetching goods from companies when stock is full.
 
         So if no sailor recently wanted to upgrade his tent, you probably have a lot
@@ -508,9 +508,9 @@ events:
         \nAnother solution is to build the last increment-I building which has not\
         \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
         \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the branch office does.\n\nNote that companies\
-        \ can also be connected to a storage in order to get their products collected,\
-        \ and if the branch office is overwhelmed with collector tasks, you can place\
+        \ to fetch goods, just like the warehouse does.\n\nNote that companies can\
+        \ also be connected to a storage in order to get their products collected,\
+        \ and if the warehouse is overwhelmed with collector tasks, you can place\
         \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
         \ where you need collectors."]
     type: logbook
@@ -533,7 +533,7 @@ events:
 
 
         There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the Branch Office).
+        to a Storage Tent (or the warehouse).
 
 
         In both cases you should ensure the connection to a trail as well.
@@ -648,4 +648,5 @@ events:
     type: var_gt
 locale: sv
 mapfile: development.sqlite
+translation_status: 35 translated messages, 30 untranslated messages.
 

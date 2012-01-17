@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import ProducerBuilding
 
 class CollectingProducerBuilding(CollectingBuilding, ProducerBuilding):
 	"""Class for buildings, that collect something and produce something.

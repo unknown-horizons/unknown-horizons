@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -56,7 +56,9 @@ class CollectingBuilding(BuildingResourceHandler):
 		"""Creates a collector and adds it to this building.
 		@param collector_class: unit class of collector to create
 		"""
-		Entities.units[collector_class](self, session=self.session, owner=self.owner)
+		collector = Entities.units[collector_class](self, session=self.session, owner=self.owner)
+		collector.initialize()
+
 
 	def remove(self):
 		# remove every non-ship collectors (those are independent)

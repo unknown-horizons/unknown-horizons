@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -21,7 +21,6 @@
 
 from horizons.world.component import Component
 from horizons.util import Callback, Circle, Annulus
-from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
 
 class StanceComponent(Component):
@@ -32,17 +31,23 @@ class StanceComponent(Component):
 	If a state different from user_attack or user_move is passed, it stops any action
 	and switches to idle
 	"""
-	def __init__(self, instance):
-		super(StanceComponent, self).__init__(instance)
+
+	# Store the name of this component
+	NAME = 'stance'
+
+	def __init__(self):
+		super(StanceComponent, self).__init__()
 		self.state = 'idle'
 		self.action = {
-			'idle' : self.act_idle,
-			'user_attack' : self.act_user_attack,
-			'user_move' : self.act_user_move,
-			'move_back' : self.act_move_back,
-			'auto_attack' : self.act_auto_attack,
-			'flee' : self.act_flee,
+		    'idle' : self.act_idle,
+		    'user_attack' : self.act_user_attack,
+		    'user_move' : self.act_user_move,
+		    'move_back' : self.act_move_back,
+		    'auto_attack' : self.act_auto_attack,
+		    'flee' : self.act_flee,
 		}
+
+	def initialize(self):
 		# change state to 'user_attack' when the user issues attack via right click
 		self.instance.add_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
 		# change state to 'user_move' when the user issues movement via right click
@@ -118,8 +123,8 @@ class LimitedMoveStance(StanceComponent):
 	It also keeps track of the return position in which the unit should return when stopped attacking
 	"""
 
-	def __init__(self, instance):
-		super(LimitedMoveStance, self).__init__(instance)
+	def __init__(self):
+		super(LimitedMoveStance, self).__init__()
 		#TODO get range from db
 		self.stance_radius = 0
 		self.move_range = 0
@@ -172,6 +177,7 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		if not Circle(self.return_position, self.move_range).contains(self.instance.position.center()) or \
 			not self.instance.is_attacking():
+			from horizons.world.units.movingobject import MoveNotPossible
 			try:
 				self.instance.move(self.return_position)
 			except MoveNotPossible:
@@ -183,7 +189,7 @@ class LimitedMoveStance(StanceComponent):
 		Returns closest attackable unit in radius
 		"""
 		enemies = [u for u in self.instance.session.world.get_health_instances(self.instance.position.center(), radius) \
-			if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
+		           if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
 
 		if not enemies:
 			return None
@@ -194,8 +200,11 @@ class AggressiveStance(LimitedMoveStance):
 	"""
 	Stance that attacks units in close range when doing movement
 	"""
-	def __init__(self, instance):
-		super(AggressiveStance, self).__init__(instance)
+
+	NAME = 'aggressive'
+
+	def __init__(self):
+		super(AggressiveStance, self).__init__()
 		#TODO get range from db
 		self.stance_radius = 15
 		self.move_range = 25
@@ -219,20 +228,29 @@ class AggressiveStance(LimitedMoveStance):
 			self.instance.fire_all_weapons(target.position.center())
 
 class HoldGroundStance(LimitedMoveStance):
-	def __init__(self, instance):
-		super(HoldGroundStance, self).__init__(instance)
+
+	NAME = 'hold_ground'
+
+	def __init__(self):
+		super(HoldGroundStance, self).__init__()
 		self.stance_radius = 5
 		self.move_range = 15
 
 class NoneStance(StanceComponent):
+
+	NAME = 'none'
+
 	pass
 
 class FleeStance(StanceComponent):
 	"""
 	Move away from any approaching units
 	"""
-	def __init__(self, instance):
-		super(FleeStance, self).__init__(instance)
+
+	NAME = 'flee'
+
+	def __init__(self):
+		super(FleeStance, self).__init__()
 		self.lookout_distance = 20
 
 	def act_idle(self):
@@ -241,6 +259,7 @@ class FleeStance(StanceComponent):
 		"""
 		unit = self.get_approaching_unit()
 		if unit:
+			from horizons.world.units.movingobject import MoveNotPossible
 			try:
 				distance = unit._max_range + self.lookout_distance
 				self.instance.move(Annulus(unit.position.center(), distance, distance + 2))
@@ -262,7 +281,7 @@ class FleeStance(StanceComponent):
 		Gets the closest unit that can fire to instance
 		"""
 		enemies = [u for u in self.instance.session.world.get_health_instances(self.instance.position.center(), self.lookout_distance) \
-			if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
+		           if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
 
 		if not enemies:
 			return None

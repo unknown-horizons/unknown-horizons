@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -138,6 +138,8 @@ class SelectionTool(NavigationTool):
 		Called when selected instances changes. (Shows their menu)
 		If one of the selected instances can attack, switch mousetool to AttackingTool
 		"""
+		if (self.session.world.health_visible_for_all_health_instances):
+			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
 		if len(selected) > 1 and all( i.is_unit for i in selected ):
 			self.session.ingame_gui.show_multi_select_tab()
@@ -182,8 +184,7 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 			self.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			target_mapcoord = self.session.view.cam.toMapCoordinates(\
-				fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			target_mapcoord = self._get_exact_world_location_from_event(evt)
 			for i in self.session.selected_instances:
 				if i.movable:
 					Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)

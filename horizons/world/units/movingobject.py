@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,12 +28,13 @@ from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, decorators
 from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
+from horizons.world.componentholder import ComponentHolder
 
 class MoveNotPossible(Exception):
 	"""Gets thrown when the unit should move some where, but there is no possible path"""
 	pass
 
-class MovingObject(ConcreteObject):
+class MovingObject(ComponentHolder, ConcreteObject):
 	"""This class provides moving functionality and is to be inherited by Unit.
 	Its purpose is to provide a cleaner division of the code.
 

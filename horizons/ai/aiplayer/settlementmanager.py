@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -49,6 +49,9 @@ from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermis
 from horizons.command.production import ToggleActive
 from horizons.constants import BUILDINGS, RES, GAME_SPEED, SETTLER
 from horizons.entities import Entities
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.production.producer import Producer
 
 class SettlementManager(WorldObject):
 	"""
@@ -222,7 +225,7 @@ class SettlementManager(WorldObject):
 			# feeder islands have to produce liquor because get-together is not tradable
 			return self.get_resource_production(RES.GET_TOGETHER_ID) * self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID)
 		else:
-			return self.production_chain[resource_id].get_final_production_level() 
+			return self.production_chain[resource_id].get_final_production_level()
 
 	def get_resource_production_requirement(self, resource_id):
 		"""Return the amount of resource per tick the settlement needs."""
@@ -238,7 +241,7 @@ class SettlementManager(WorldObject):
 				total = self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID) * self.get_resource_production_requirement(RES.GET_TOGETHER_ID)
 			else:
 				for residence in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
-					for production in residence.get_productions():
+					for production in residence.get_component(Producer).get_productions():
 						production_line = production._prod_line
 						if resource_id in production_line.consumed_res:
 							# subtract because the amount will be negative
@@ -250,7 +253,7 @@ class SettlementManager(WorldObject):
 	def _manual_upgrade(self, level, limit):
 		"""
 		Manually allow settlers to upgrade. If more then the set limit are already upgrading then don't stop them.
-		
+
 		@param level: the initial settler level from which to upgrade
 		@param limit: the maximum number of residences of the specified level upgrading at the same time
 		@return: boolean showing whether we gave any new residences the right to upgrade
@@ -337,7 +340,7 @@ class SettlementManager(WorldObject):
 					self.personality.early_settler_taxes, self.personality.early_sailor_upgrades, self.personality.early_pioneer_upgrades)
 		elif self.get_resource_production(RES.BRICKS_ID) > 1e-9 and not self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			# if we just need the school then upgrade sailors manually
-			free_boards = self.settlement.inventory[RES.BOARDS_ID]
+			free_boards = self.settlement.get_component(StorageComponent).inventory[RES.BOARDS_ID]
 			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS].costs[RES.BOARDS_ID]
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
@@ -415,6 +418,6 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 	def __str__(self):
-		return '%s.SM(%s/%d)' % (self.owner, self.settlement.name if hasattr(self, 'settlement') else 'unknown', self.worldid)
+		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(SettlementManager)

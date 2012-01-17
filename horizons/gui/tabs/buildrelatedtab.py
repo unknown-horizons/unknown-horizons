@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,6 @@
 from fife.extensions.pychan.widgets import Icon
 
 from horizons.gui.widgets  import TooltipButton
-from horizons.gui.mousetools  import BuildingTool
 from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
@@ -83,18 +82,19 @@ class BuildRelatedTab(OverviewTab):
 
 
 	def _create_build_buttons(self, building_id, container):
-		level = self.instance.session.db.get_building_level(building_id)
+		level = Entities.buildings[building_id].settler_level
 
 		# Check if the level of the building is lower or same as the settler level
 		if level <= self.instance.owner.settler_level:
-			path = "content/gui/icons/buildmenu/%03d" % building_id + "%s.png"
+			# {{mode}} in double braces because it is replaced as a second step
+			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
 			tooltip = self.instance.session.db.get_building_tooltip(building_id)
 
-			build_button = TooltipButton(name="build%s" % building_id, \
+			build_button = TooltipButton(name="build{id}".format(id=building_id), \
 			                             tooltip=tooltip)
-			build_button.up_image = path % ''
-			build_button.down_image = path % '_h'
-			build_button.hover_image = path % '_h'
+			build_button.up_image = path.format(mode='')
+			build_button.down_image = path.format(mode='_h')
+			build_button.hover_image = path.format(mode='_h')
 			build_button.capture(Callback(self.buildField, building_id))
 
 			container.findChild(name="build_button_container").addChild(build_button)

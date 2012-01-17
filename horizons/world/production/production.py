@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,8 +25,7 @@ import copy
 
 from collections import defaultdict, deque
 
-from horizons.util import WorldObject
-from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.changelistener import metaChangeListenerDecorator, ChangeListener
 from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLine
 
@@ -34,7 +33,7 @@ from horizons.scheduler import Scheduler
 
 
 @metaChangeListenerDecorator("production_finished")
-class Production(WorldObject):
+class Production(ChangeListener):
 	"""Class for production to be used by ResourceHandler.
 	Controls production and starts it by watching the assigned building's inventory,
 	which is virtually the only "interface" to the building.
@@ -56,24 +55,29 @@ class Production(WorldObject):
 	USES_GOLD = False
 
 	## INIT/DESTRUCT
-	def __init__(self, inventory, owner_inventory, prod_line_id, auto_start=True, \
+	def __init__(self, inventory, owner_inventory, prod_id, prod_data, auto_start=True, \
 	             start_finished=False, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self._state_history = deque()
-		self.__init(inventory, owner_inventory, prod_line_id, PRODUCTION.STATES.none, Scheduler().cur_tick)
-
-		if start_finished:
-			self._give_produced_res()
+		self.prod_id = prod_id
+		self.prod_data = prod_data
+		self.__auto_start = auto_start
+		self.__start_finished = start_finished
+		self.__init(inventory, owner_inventory, prod_id, prod_data, PRODUCTION.STATES.none, Scheduler().cur_tick)
 
 		# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
 		self.inventory.add_change_listener(self._check_inventory, call_listener_now=False)
 		if self.__class__.USES_GOLD:
 			self.owner_inventory.add_change_listener(self._check_inventory, call_listener_now=False)
 
-		if auto_start:
+
+	def start(self):
+		if self.__start_finished:
+			self._give_produced_res()
+		if self.__auto_start:
 			self._check_inventory()
 
-	def __init(self, inventory, owner_inventory, prod_line_id, state, creation_tick, pause_old_state = None):
+	def __init(self, inventory, owner_inventory, prod_id, prod_data, state, creation_tick, pause_old_state = None):
 		"""
 		@param inventory: inventory of assigned building
 		@param prod_line_id: id of production line.
@@ -85,15 +89,11 @@ class Production(WorldObject):
 		self._pause_old_state = pause_old_state # only used in pause()
 		self._creation_tick = creation_tick
 
-		assert isinstance(prod_line_id, int)
-		self._prod_line = self._create_production_line(prod_line_id)
+		assert isinstance(prod_id, int)
+		self._prod_line = ProductionLine(id=prod_id, data=prod_data)
 
-	@classmethod
-	def _create_production_line(self, prod_line_id):
-		"""Returns a non-changeable production line instance"""
-		return ProductionLine.get_const_production_line(prod_line_id)
-
-	def save(self, db):
+	def save(self, db, owner_id):
+		"""owner_id: worldid of the owner of the producer object that owns this production"""
 		self._clean_state_history()
 		current_tick = Scheduler().cur_tick
 		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
@@ -106,35 +106,29 @@ class Production(WorldObject):
 		# use a number > 0 for ticks
 		if remaining_ticks < 1:
 			remaining_ticks = 1
-		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, creation_tick) VALUES(?, ?, ?, ?, ?, ?)', \
-			 self.worldid, self._state.index, self._prod_line.id, remaining_ticks, \
-			 None if self._pause_old_state is None else self._pause_old_state.index, translated_creation_tick)
+		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, creation_tick, owner) VALUES(?, ?, ?, ?, ?, ?, ?)', \
+		     None, self._state.index, self._prod_line.id, remaining_ticks, \
+			 None if self._pause_old_state is None else self._pause_old_state.index, translated_creation_tick, owner_id)
 
 		# save state history
 		for tick, state in self._state_history:
 				# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + 1
-			db("INSERT INTO production_state_history(production, tick, state) VALUES(?, ?, ?)", \
-				 self.worldid, translated_tick, state)
+			db("INSERT INTO production_state_history(production, tick, state, object_id) VALUES(?, ?, ?, ?)", \
+				 self.prod_id, translated_tick, state, owner_id)
 
-	@classmethod
-	def load(cls, db, worldid):
-		self = cls.__new__(cls)
-		self._load(db, worldid)
-		return self
-
-	def _load(self, db, worldid):
+	def load(self, db, worldid):
+		# Worldid is the world id of the producer component instance calling this
 		super(Production, self).load(db, worldid)
 
-		db_data = db.get_production_row(worldid)
-		obj = WorldObject.get_object_by_id(db_data[1])
-		owner_inventory = obj._get_owner_inventory()
-		self.__init(obj.inventory, owner_inventory, db_data[2], PRODUCTION.STATES[db_data[0]], \
-			db_data[5], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
+		db_data = db.get_production_by_id_and_owner(self.prod_id, worldid)
+		self._creation_tick = db_data[3]
+		self._state = PRODUCTION.STATES[db_data[0]]
+		self._pause_old_state = None if db_data[2] is None else PRODUCTION.STATES[db_data[2]]
 		if self._state == PRODUCTION.STATES.paused:
-			self._pause_remaining_ticks = db_data[3]
+			self._pause_remaining_ticks = db_data[1]
 		elif self._state == PRODUCTION.STATES.producing:
-			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[3])
+			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[1])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
 				 self._state == PRODUCTION.STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)
@@ -378,13 +372,14 @@ class Production(WorldObject):
 
 	def _produce(self):
 		"""Called when there are enough res in the inventory for starting production"""
-		self.log.debug("%s start", self)
+		self.log.debug("%s _produce", self)
 		assert self._check_available_res() and self._check_for_space_for_produced_res()
 		# take the res we need
 		self._remove_res_to_expend()
 		# call finished in some time
 		time = Scheduler().get_ticks(self._prod_line.time)
-		Scheduler().add_new_object(self._finished_producing, self, time)
+		Scheduler().add_new_object(self._get_producing_callback(), self, time)
+		self.log.debug("%s _produce Adding callback in %d time", self, time)
 
 	def _finished_producing(self, continue_producing=True, **kwargs):
 		"""Called when the production finishes."""
@@ -402,8 +397,7 @@ class Production(WorldObject):
 	def _give_produced_res(self):
 		"""Put produces goods to the inventory"""
 		for res, amount in self._prod_line.produced_res.iteritems():
-			self.inventory.alter(res, amount)
-			self.log.debug("produced %s of %s", amount, res)
+			ret = self.inventory.alter(res, amount)
 
 	def _check_available_res(self):
 		"""Checks if all required resources are there.
@@ -442,13 +436,13 @@ class ChangingProduction(Production):
 		"""Returns a changeable production line instance"""
 		return ProductionLine(prod_line_id)
 
-	def save(self, db):
-		super(ChangingProduction, self).save(db)
-		self._prod_line.save(db, self.worldid)
+	def save(self, db, owner_id):
+		super(ChangingProduction, self).save(db, owner_id)
+		self._prod_line.save(db, owner_id)
 
 	def _load(self, db, worldid):
 		super(ChangingProduction, self)._load(db, worldid)
-		self._prod_line.load(db, self.worldid)
+		self._prod_line.load(db, worldid)
 
 
 class SettlerProduction(ChangingProduction):
@@ -467,8 +461,8 @@ class SingleUseProduction(Production):
 	"""This Production just produces one time, and then finishes.
 	Notification of the finishing is done via production_finished listeners.
 	Use case: Settler getting upgrade material"""
-	def __init__(self, inventory, owner_inventory, prod_line_id, **kwargs):
-		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory, prod_line_id=prod_line_id, **kwargs)
+	def __init__(self, inventory, owner_inventory, prod_line_id, prod_line_data, **kwargs):
+		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory, prod_id=prod_line_id, prod_data = prod_line_data, **kwargs)
 
 	def _finished_producing(self, **kwargs):
 		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)
@@ -491,7 +485,7 @@ class ProgressProduction(Production):
 		self.original_prod_line = copy.deepcopy(self._prod_line)
 		self.progress = progress # float indicating current production progress
 
-	def save(self, db):
+	def save(self, db, owner_id):
 		# TODO
 		pass
 

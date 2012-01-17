@@ -1,0 +1,23 @@
+id: 1
+name: _ Warehouse
+baseclass: storages.Warehouse
+radius: 24
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants_start: 2
+inhabitants_max: 2
+button_name: null
+tooltip_text: null
+settler_level: 0
+buildingcosts: {1: 1000, 4: 12}
+components:
+- HealthComponent: {maxhealth: 1000}
+- StorageComponent:
+    inventory:
+        SettlementStorage: {}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/warehouse.ogg]
+actionsets:
+  as_warehouse0: {preview: as_preview_warehouse0, level: 0}

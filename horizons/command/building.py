@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+import horizons.main
 
 from horizons.entities import Entities
 from horizons.command import Command
@@ -28,7 +29,7 @@ from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.scenario import CONDITIONS
 from horizons.constants import BUILDINGS, RES
-from horizons.world.player import HumanPlayer
+from horizons.world.component.storagecomponent import StorageComponent
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -112,8 +113,10 @@ class Build(Command):
 		  action_set_id=self.action_set_id, \
 		  **self.data
 		)
-
 		island.add_building(building, issuer)
+
+		building.initialize(**self.data)
+
 
 		if self.settlement is not None:
 			secondary_resource_source = WorldObject.get_object_by_id(self.settlement)
@@ -125,9 +128,9 @@ class Build(Command):
 		if issuer: # issuer is None if it's a global game command, e.g. on world setup
 			for (resource, value) in building.costs.iteritems():
 				# remove from issuer, and remove rest from secondary source (settlement or ship)
-				first_source_remnant = issuer.inventory.alter(resource, -value)
+				first_source_remnant = issuer.get_component(StorageComponent).inventory.alter(resource, -value)
 				if secondary_resource_source is not None:
-					second_source_remnant = secondary_resource_source.inventory.alter(resource, first_source_remnant)
+					second_source_remnant = secondary_resource_source.get_component(StorageComponent).inventory.alter(resource, first_source_remnant)
 					assert second_source_remnant == 0
 				else: # first source must have covered everything
 					assert first_source_remnant == 0
@@ -136,10 +139,11 @@ class Build(Command):
 		building.start()
 
 		# unload the remaining resources on the human player ship if we just founded a new settlement
-		if building.id == BUILDINGS.BRANCH_OFFICE_CLASS and isinstance(building.owner, HumanPlayer):
+		from horizons.world.player import HumanPlayer
+		if building.id == BUILDINGS.WAREHOUSE_CLASS and isinstance(building.owner, HumanPlayer) and horizons.main.fife.get_uh_setting("AutoUnload"):
 			ship = WorldObject.get_object_by_id(self.ship)
-			for res, amount in [(res, amount) for res, amount in ship.inventory]: # copy the inventory first because otherwise we would modify it while iterating
-				amount = min(amount, building.settlement.inventory.get_free_space_for(res))
+			for res, amount in [(res, amount) for res, amount in ship.get_component(StorageComponent).inventory]: # copy the inventory first because otherwise we would modify it while iterating
+				amount = min(amount, building.settlement.get_component(StorageComponent).inventory.get_free_space_for(res))
 				TransferResource(amount, res, ship, building.settlement).execute(session)
 
 		# NOTE: conditions are not MP-safe! no problem as long as there are no MP-scenarios
@@ -161,11 +165,11 @@ class Build(Command):
 			# check player, ship and settlement inventory
 			available_res = 0
 			# player
-			available_res += issuer.inventory[resource] if resource == RES.GOLD_ID else 0
+			available_res += issuer.get_component(StorageComponent).inventory[resource] if resource == RES.GOLD_ID else 0
 			# ship or settlement
 			for res_source in res_sources:
 				if res_source is not None:
-					available_res += res_source.inventory[resource]
+					available_res += res_source.get_component(StorageComponent).inventory[resource]
 
 			if available_res < neededResources[resource]:
 				return (False, resource)

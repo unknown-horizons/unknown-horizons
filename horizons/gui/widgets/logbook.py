@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -136,7 +136,7 @@ class LogBook(object):
 		self._gui.mapEvents({
 		  'backwardButton' : Callback(self._scroll, -2),
 		  'forwardButton' : Callback(self._scroll, 2),
-		  'cancelButton' : self.hide
+		  'okButton' : self.hide
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
 

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,20 +24,22 @@ import random
 
 from fife import fife
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
-from horizons.ambientsound import AmbientSound
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
-from horizons.constants import RES, LAYERS, GAME, GFX
+from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
 from horizons.gui.tabs import EnemyBuildingOverviewTab
 from horizons.command.building import Build
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.componentholder import ComponentHolder
+from horizons.world.building.selectablebuilding import SelectableBuilding
 
 
-class BasicBuilding(AmbientSound, ConcreteObject):
+class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
@@ -80,7 +82,7 @@ class BasicBuilding(AmbientSound, ConcreteObject):
 			level = 0 if self.owner is None else self.owner.settler_level
 		self.level = level
 		self._action_set_id = action_set_id if action_set_id is not None else \
-		    self.session.db.get_random_action_set(self.id, self.level)[0]
+		    self.get_random_action_set(self.level)[0]
 		self.rotation = rotation
 		if self.rotation in (135, 315): # Rotate the rect correctly
 			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
@@ -101,14 +103,11 @@ class BasicBuilding(AmbientSound, ConcreteObject):
 
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
-			if self.soundfiles:
+			if self.has_component(AmbientSoundComponent):
 				play_every = 15 + random.randint(0, 15)
-				for soundfile in self.soundfiles:
-					self.play_ambient(soundfile, True, play_every)
+				for soundfile in self.get_component(AmbientSoundComponent).soundfiles:
+					self.get_component(AmbientSoundComponent).play_ambient(soundfile, True, play_every)
 
-	@property
-	def name(self):
-		return self._name
 
 	def toggle_costs(self):
 		self.running_costs , self.running_costs_inactive = \
@@ -120,7 +119,7 @@ class BasicBuilding(AmbientSound, ConcreteObject):
 
 	def get_payout(self):
 		"""gets the payout from the settlement in form of it's running costs"""
-		self.owner.inventory.alter(RES.GOLD_ID, -self.running_costs)
+		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -self.running_costs)
 
 	def remove(self):
 		"""Removes the building"""
@@ -135,14 +134,15 @@ class BasicBuilding(AmbientSound, ConcreteObject):
 		super(BasicBuilding, self).save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, location, level) \
 		   VALUES (?, ?, ?, ?, ?, ?, ?)", \
-								                       self.worldid, self.__class__.id, self.position.origin.x, \
-								                       self.position.origin.y, self.rotation, \
-								                       (self.settlement or self.island).worldid, self.level)
+		                                self.worldid, self.__class__.id, self.position.origin.x, \
+		                                self.position.origin.y, self.rotation, \
+		                                (self.settlement or self.island).worldid, self.level)
 		if self.has_running_costs:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self.get_payout)
 			db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES(?, ?)", self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
+		self.island, self.settlement = self.load_location(db, worldid)
 		super(BasicBuilding, self).load(db, worldid)
 		x, y, location, rotation, level = db.get_building_row(worldid)
 
@@ -156,7 +156,6 @@ class BasicBuilding(AmbientSound, ConcreteObject):
 		self.__init(Point(x, y), rotation, owner, level=level, \
 		            remaining_ticks_of_month=remaining_ticks_of_month)
 
-		self.island, self.settlement = self.load_location(db, worldid)
 
 		# island.add_building handles registration of building for island and settlement
 		self.island.add_building(self, self.owner, load=True)
@@ -199,9 +198,9 @@ class BasicBuilding(AmbientSound, ConcreteObject):
 		search for an action set everywhere, which makes it alot more effective, if you're
 		just updating.
 		@param level: int level number"""
-		action_sets = self.session.db.get_random_action_set(self.id, level, exact_level=True)
-		if action_sets:
-			self._action_set_id = action_sets[0] # Set the new action_set
+		action_set = self.get_random_action_set(level, exact_level=True)[0]
+		if action_set:
+			self._action_set_id = action_set # Set the new action_set
 			self.act(self._action, repeating=True)
 
 	def level_upgrade(self, lvl):
@@ -279,7 +278,7 @@ class BasicBuilding(AmbientSound, ConcreteObject):
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 		if action_set_id is None:
-			action_set_id = session.db.get_random_action_set(cls.id, level=level)[0]
+			action_set_id = cls.get_random_action_set(level=level)[0]
 		fife.InstanceVisual.create(instance)
 
 		action_sets = ActionSetLoader.get_sets()
@@ -308,118 +307,19 @@ class BasicBuilding(AmbientSound, ConcreteObject):
 		"""This function is called when the building is built, to start production for example."""
 		pass
 
+	@property
+	def name(self):
+		return self._name
+
+
 	#@decorators.relese_mode(ret="Building")
 	def __str__(self): # debug
-		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
-		return '%s(id=%s;worldid=%s)' % (classname, self.id, self.worldid)
-
-
-
-class SelectableBuilding(object):
-	range_applies_only_on_island = True
-	selection_color = (255, 255, 0)
-	_selected_tiles = [] # tiles that are selected. used for clean deselect.
-	is_selectable = True
-
-	def select(self, reset_cam=False):
-		"""Runs necessary steps to select the building."""
-		renderer = self.session.view.renderer['InstanceRenderer']
-		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1],
-		                     self.selection_color[2], GFX.BUILDING_OUTLINE_WIDTH,
-		                     GFX.BUILDING_OUTLINE_THRESHOLD)
-		if reset_cam:
-			self.session.view.center(*self.position.origin.to_tuple())
-		self._do_select(renderer, self.position, self.session.world, self.settlement)
-		self._is_selected = True
-
-	def deselect(self):
-		"""Runs neccassary steps to deselect the building.
-		Only deselects if this building has been selected."""
-		if not hasattr(self, "_is_selected") or not self._is_selected:
-			return # only deselect selected buildings (simplifies other code)
-		self._is_selected = False
-		renderer = self.session.view.renderer['InstanceRenderer']
-		renderer.removeOutlined(self._instance)
-		renderer.removeAllColored()
-
-	def remove(self):
-		super(SelectableBuilding, self).remove()
-		#TODO move this as a listener
-		if self in self.session.selected_instances:
-			self.session.selected_instances.remove(self)
-		if self.owner == self.session.world.player:
-			self.deselect()
-
-	@classmethod
-	def select_building(cls, session, position, settlement):
-		"""Select a hypothecial instance of this class. Use Case: Buildingtool.
-		Only works on a subclass of BuildingClass, since it requires certain class attributes.
-		@param session: Session instance
-		@param position: Position of building, usually Rect
-		@param settlement: Settlement instance the building belongs to"""
-		renderer = session.view.renderer['InstanceRenderer']
-
-		"""
-		import cProfile as profile
-		import tempfile
-		outfilename = tempfile.mkstemp(text = True)[1]
-		print 'profile to ', outfilename
-		profile.runctx( "cls._do_select(renderer, position, session.world, settlement)", globals(), locals(), outfilename)
-		"""
-		cls._do_select(renderer, position, session.world, settlement)
-
-	@classmethod
-	def deselect_building(cls, session):
-		"""@see select_building,
-		@return list of tiles that were deselected."""
-		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
-		for tile in cls._selected_tiles:
-			remove_colored(tile._instance)
-			if tile.object is not None:
-				remove_colored(tile.object._instance)
-		selected_tiles = cls._selected_tiles
-		cls._selected_tiles = []
-		return selected_tiles
-
-	@classmethod
-	@decorators.make_constants()
-	def _do_select(cls, renderer, position, world, settlement):
-		if cls.range_applies_only_on_island:
-			island = world.get_island(position.origin)
-			if island is None:
-				return # preview isn't on island, and therefore invalid
-
-			ground_holder = None # use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
-			if settlement is None:
-				ground_holder = island
-			else:
-				ground_holder = settlement
-
-			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=False):
-				try:
-					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-						cls._add_selected_tile(tile, position, renderer)
-				except AttributeError:
-					pass # no tile or no object on tile
-		else:
-			# we have to color water too
-			for tile in world.get_tiles_in_radius(position.center(), cls.radius):
-				try:
-					if settlement is None or tile.settlement is None or tile.settlement == settlement:
-						cls._add_selected_tile(tile, position, renderer)
-				except AttributeError:
-					pass # no tile or no object on tile
-
-
-	@classmethod
-	def _add_selected_tile(cls, tile, position, renderer):
-		cls._selected_tiles.append(tile)
-		renderer.addColored(tile._instance, *cls.selection_color)
-		# Add color to objects on tht tiles
-		renderer.addColored(tile.object._instance, *cls.selection_color)
-
+		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
 
 
 class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):
 	"""Building with default properties, that does nothing."""
 	pass
+
+
+decorators.bind_all(BasicBuilding)

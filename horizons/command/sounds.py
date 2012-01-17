@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ambientsound import AmbientSound
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util import Point
 from horizons.command import Command
 
@@ -39,8 +39,8 @@ class PlaySound(Command):
 		@param issuer: the issuer of the command
 		"""
 		if self.position is None:
-			AmbientSound.play_special(self.sound)
+			AmbientSoundComponent.play_special(self.sound)
 		else:
-			AmbientSound.play_special(self.sound, Point(self.position[0], self.position[1]))
+			AmbientSoundComponent.play_special(self.sound, Point(self.position[0], self.position[1]))
 
 Command.allow_network(PlaySound)

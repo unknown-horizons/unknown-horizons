@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -41,13 +41,13 @@ import shutil
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader
-from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader, Callback
+from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 
 # private module pointers of this module
 class Modules(object):
@@ -84,7 +84,7 @@ def start(command_line_arguments):
 			if len(mpieces[2]) > 0:
 				NETWORK.SERVER_PORT = parse_port(mpieces[2], allow_zero=True)
 		except ValueError:
-			print _("Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535.")
+			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 			return False
 
 	# init fife before mp_bind is parsed, since it's needed there
@@ -96,7 +96,7 @@ def start(command_line_arguments):
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
 			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2], allow_zero=True))
 		except ValueError:
-			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
+			print "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 			return False
 
 	if command_line_arguments.ai_highlights:
@@ -123,9 +123,16 @@ def start(command_line_arguments):
 		# We need a new client id
 		client_id = "".join("-" if c in (8, 13, 18, 23) else \
 		                    random.choice("0123456789abcdef") for c in xrange(0, 36))
-		from engine import UH_MODULE
-		fife.settings.set(UH_MODULE, "ClientID", client_id)
-		fife.settings.saveSettings()
+		fife.set_uh_setting("ClientID", client_id)
+		fife.save_settings()
+
+	# Install gui logger, needs to be done before instanciating Gui, otherwise we miss
+	# the events of the main menu buttons
+	if command_line_arguments.log_gui:
+		if command_line_arguments.gui_test:
+			raise Exception("Logging gui interactions doesn't work when running tests.")
+		from tests.gui.logger import setup_gui_logger
+		setup_gui_logger()
 
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()
@@ -136,6 +143,25 @@ def start(command_line_arguments):
 	preload_lock = threading.Lock()
 	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
 	preloading = (preload_thread, preload_lock)
+
+	# initalize update checker
+	from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
+	update_info = UpdateInfo()
+	update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
+	update_check_thread.start()
+	def update_info_handler(info):
+		if info.status == UpdateInfo.UNINITIALISED:
+			ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
+		elif info.status == UpdateInfo.READY:
+			show_new_version_hint(_modules.gui, info)
+		elif info.status == UpdateInfo.INVALID:
+			pass # couldn't retrieve file or nothing relevant in there
+
+	update_info_handler(update_info) # schedules checks by itself
+
+	# Singleplayer seed needs to be changed before startup.
+	if command_line_arguments.sp_seed:
+		SINGLEPLAYER.SEED = command_line_arguments.sp_seed
 
 	# start something according to commandline parameters
 	startup_worked = True
@@ -175,6 +201,10 @@ def start(command_line_arguments):
 
 	if command_line_arguments.gamespeed is not None:
 		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
+
+	if command_line_arguments.gui_test:
+		from tests.gui import TestRunner
+		TestRunner(fife, command_line_arguments.gui_test)
 
 	fife.run()
 
@@ -303,10 +333,20 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 
 
 def _init_gettext(fife):
+	"""
+	Maps _ to the ugettext unicode gettext call. Use: _(string).
+	N_ takes care of plural forms for different languages. It masks ungettext
+	calls (unicode, plural-aware _() ) to create different translation strings
+	depending on the counter value. Not all languages have only two plural forms
+	"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
+	where n is a counter. N_ is, for some reason, broken. Cf. horizons.i18n.utils
+	We will need to make gettext recognise namespaces some time, but hardcoded
+	'unknown-horizons' works for now since we currently only use one namespace.
+	"""
 	from gettext import translation
 	namespace_translation = translation('unknown-horizons', 'content/lang', fallback=True)
-	_ = namespace_translation.ugettext
-	fife.update_languages()
+	_  = namespace_translation.ugettext
+	N_ = namespace_translation.ungettext
 
 
 
@@ -318,7 +358,7 @@ def _start_dev_map(ai_players, human_ai):
 	load_game(ai_players, human_ai, first_map)
 	return True
 
-def _start_map(map_name, ai_players, human_ai, is_scenario=False, campaign=None, pirate_enabled=True, trader_enabled=True):
+def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None, pirate_enabled=True, trader_enabled=True):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
@@ -343,10 +383,10 @@ def _start_map(map_name, ai_players, human_ai, is_scenario=False, campaign=None,
 			map_file = map_name
 		else:
 			#xgettext:python-format
-			print _("Error: Cannot find map '{name}'.").format(name=map_name)
+			print "Error: Cannot find map '{name}'.".format(name=map_name)
 			return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches:")
+		print "Error: Found multiple matches:"
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -369,7 +409,7 @@ def _start_campaign(campaign_name):
 		# This is not very clean, but it's safe.
 
 		if not campaign_name.endswith(".yaml"):
-			print _("Error: campaign filenames have to end in \".yaml\".")
+			print "Error: campaign filenames have to end in \".yaml\"."
 			return False
 
 		# check if the user specified a file in the UH campaign dir
@@ -378,9 +418,12 @@ def _start_campaign(campaign_name):
 		if not (os.path.exists(path_in_campaign_dir) and \
 		        os.path.samefile(campaign_name, path_in_campaign_dir)):
 			#xgettext:python-format
-			print _("Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path}).").format(path=SavegameManager.campaigns_dir) + \
-			      "\n" + _("This means that changes in the file you specified will not apply to the game directly.") + \
-			      _("To see the changes, either always start UH with the current arguments or edit the file {filename}.").format(filename=path_in_campaign_dir) #xgettext:python-format
+			string = _("Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path}).").format(path=SavegameManager.campaigns_dir)
+			string += "\n"
+			string += _("This means that changes in the file you specified will not apply to the game directly.")
+			#xgettext:python-format
+			string += _("To see the changes, either always start UH with the current arguments or edit the file {filename}.").format(filename=path_in_campaign_dir)
+			print string
 
 			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
 		# use campaign file name below
@@ -388,7 +431,7 @@ def _start_campaign(campaign_name):
 	campaign = SavegameManager.get_campaign_info(name = campaign_name)
 	if not campaign:
 		#xgettext:python-format
-		print _("Error: Cannot find campaign '{name}'.").format(campaign_name)
+		print "Error: Cannot find campaign '{name}'.".format(campaign_name)
 		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
@@ -420,10 +463,10 @@ def _load_map(savegame, ai_players, human_ai):
 			map_file = savegame
 		else:
 			#xgettext:python-format
-			print _("Error: Cannot find savegame '{name}'.").format(name=savegame)
+			print "Error: Cannot find savegame '{name}'.".format(name=savegame)
 			return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches:")
+		print "Error: Found multiple matches:"
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -435,7 +478,7 @@ def _load_last_quicksave():
 	@return: bool, whether loading succeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
 	if not save_files:
-		print _("Error: No quicksave found.")
+		print "Error: No quicksave found."
 		return False
 	save = max(save_files)
 	load_game(savegame=save)
@@ -461,10 +504,10 @@ def preload_game_data(lock):
 		log = logging.getLogger("preload")
 		mydb = _create_db() # create own db reader instance, since it's not thread-safe
 		preload_functions = [ ActionSetLoader.load, \
-		                      #TileSetLoader.load, -- this is not needed now, but will be for the new tile system
+		                      TileSetLoader.load,
 		                      Callback(Entities.load_grounds, mydb, load_now=True), \
 		                      Callback(Entities.load_buildings, mydb, load_now=True), \
-		                      Callback(Entities.load_units, mydb, load_now=True) ]
+		                      Callback(Entities.load_units, load_now=True) ]
 		for f in preload_functions:
 			if not lock.acquire(False):
 				break

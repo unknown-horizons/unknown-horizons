@@ -1,0 +1,22 @@
+id: 34
+name: _ Mountain
+baseclass: nature.ResourceDeposit
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 5
+size_y: 5
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: null
+tooltip_text: null
+settler_level: 0
+buildingcosts: {}
+components:
+- HealthComponent: {maxhealth: 10}
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {24: 1000000}
+actionsets:
+  as_mountain5x5: {preview: as_preview_mountain5x5, level: 0}

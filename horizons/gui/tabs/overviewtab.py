@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,10 +26,8 @@ from horizons.gui.tabs.tabinterface import TabInterface
 
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
-from horizons.util import Callback, ActionSetLoader, NamedObject
+from horizons.util import Callback, ActionSetLoader
 from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS, WEAPONS
-from horizons.gui.widgets  import DeleteButton
-from horizons.gui.widgets.unitoverview import StanceWidget
 from horizons.gui.widgets.tradewidget import TradeWidget
 from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
@@ -40,6 +38,11 @@ from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget, create_resource_icon
 from horizons.entities import Entities
+from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.production.producer import Producer
+
 
 class OverviewTab(TabInterface):
 	def __init__(self, instance, widget = 'overviewtab.xml', \
@@ -63,11 +66,11 @@ class OverviewTab(TabInterface):
 			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
 
 	def refresh(self):
-		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
+		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
 			name_widget = self.widget.child_finder('name')
 			# Named objects can't be translated.
-			if isinstance(self.instance, NamedObject):
-				name_widget.text = self.instance.name
+			if self.instance.has_component(NamedComponent):
+				name_widget.text = unicode(self.instance.get_component(NamedComponent).name)
 			else:
 				name_widget.text = _(self.instance.name)
 
@@ -99,16 +102,16 @@ class OverviewTab(TabInterface):
 
 
 
-class BranchOfficeOverviewTab(OverviewTab):
-	""" the main tab of branch offices and storages """
+class WarehouseOverviewTab(OverviewTab):
+	""" the main tab of warehouses and storages """
 
 	def __init__(self, instance):
-		super(BranchOfficeOverviewTab, self).__init__(
-			widget = 'overview_branchoffice.xml',
+		super(WarehouseOverviewTab, self).__init__(
+			widget = 'overview_warehouse.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		self.tooltip = _("Branch office overview")
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.tooltip = _("Warehouse overview")
 		self._refresh_collector_utilisation()
 
 	def _refresh_collector_utilisation(self):
@@ -116,28 +119,28 @@ class BranchOfficeOverviewTab(OverviewTab):
 		self.widget.findChild(name="collector_utilisation").text = unicode(str(utilisation) + '%')
 
 	def refresh(self):
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		self._refresh_collector_utilisation()
-		super(BranchOfficeOverviewTab, self).refresh()
+		super(WarehouseOverviewTab, self).refresh()
 
 	def show(self):
-		super(BranchOfficeOverviewTab, self).show()
+		super(WarehouseOverviewTab, self).show()
 		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
 
 	def hide(self):
-		super(BranchOfficeOverviewTab, self).hide()
+		super(WarehouseOverviewTab, self).hide()
 		Scheduler().rem_all_classinst_calls(self)
 
 	def on_instance_removed(self):
 		Scheduler().rem_all_classinst_calls(self)
-		super(BranchOfficeOverviewTab, self).on_instance_removed()
+		super(WarehouseOverviewTab, self).on_instance_removed()
 
 
 class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance, widget = 'overview_trade_ship.xml', \
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
 		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
-		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.inventory)
+		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 		self.tooltip = _("Ship overview")
 
 	def _configure_route(self):
@@ -155,7 +158,7 @@ class ShipOverviewTab(OverviewTab):
 
 		if island_without_player_settlement_found:
 			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build, \
-			                                     BUILDINGS.BRANCH_OFFICE_CLASS, \
+			                                     BUILDINGS.WAREHOUSE_CLASS, \
 			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('found_settlement_bg').set_active()
 			self.widget.child_finder('found_settlement').set_active()
@@ -167,7 +170,7 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('found_settlement').tooltip = tooltip
 
 		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set, self.instance,
-			Entities.buildings[BUILDINGS.BRANCH_OFFICE_CLASS].costs, {}, res_from_ship = True)
+			Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs, {}, res_from_ship = True)
 		events['found_settlement/mouseEntered'] = cb
 
 		cb1 = Callback(self.instance.session.ingame_gui.resourceinfo_set, None) # hides the resource status widget
@@ -177,11 +180,11 @@ class ShipOverviewTab(OverviewTab):
 		events['found_settlement/mouseExited'] = cb
 
 	def _refresh_trade_button(self, events):
-		branch_offices = self.instance.session.world.get_branch_offices(self.instance.position, \
+		warehouses = self.instance.session.world.get_warehouses(self.instance.position, \
 			self.instance.radius, self.instance.owner, True)
 
-		if branch_offices:
-			if branch_offices[0].owner is self.instance.owner:
+		if warehouses:
+			if warehouses[0].owner is self.instance.owner:
 				wdg = TradeWidget(self.instance)
 				tooltip = _('Load/Unload')
 			else:
@@ -195,7 +198,7 @@ class ShipOverviewTab(OverviewTab):
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest branch office')
+			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
@@ -307,7 +310,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
-		for production in sorted(self.instance.get_productions(), \
+		for production in sorted(self.instance.get_component(Producer).get_productions(), \
 								             key=(lambda x: x.get_production_line_id())):
 			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
@@ -322,24 +325,24 @@ class ProductionOverviewTab(OverviewTab):
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
 			for in_res in production.get_consumed_resources():
-				filled = float(self.instance.inventory[in_res]) * 100 / \
-				       self.instance.inventory.get_limit(in_res)
+				filled = float(self.instance.get_component(StorageComponent).inventory[in_res]) * 100 / \
+				       self.instance.get_component(StorageComponent).inventory.get_limit(in_res)
 				in_res_container.addChild( \
 				  ImageFillStatusButton.init_for_res(self.instance.session.db,\
 				                                     in_res, \
-				                                     self.instance.inventory[in_res], \
+				                                     self.instance.get_component(StorageComponent).inventory[in_res], \
 				                                     filled, \
 				                                     use_inactive_icon=False, \
 				                                     uncached=True) \
 				)
 			out_res_container = container.findChild(name="output_res")
 			for out_res in production.get_produced_res():
-				filled = float(self.instance.inventory[out_res]) * 100 /  \
-				       self.instance.inventory.get_limit(out_res)
+				filled = float(self.instance.get_component(StorageComponent).inventory[out_res]) * 100 /  \
+				       self.instance.get_component(StorageComponent).inventory.get_limit(out_res)
 				out_res_container.addChild( \
 				  ImageFillStatusButton.init_for_res(self.instance.session.db, \
 				                                     out_res, \
-				                                     self.instance.inventory[out_res], \
+				                                     self.instance.get_component(StorageComponent).inventory[out_res], \
 				                                     filled, \
 				                                     use_inactive_icon=False, \
 				                                     uncached=True) \
@@ -370,8 +373,8 @@ class ProductionOverviewTab(OverviewTab):
 
 	def _refresh_utilisation(self):
 		utilisation = 0
-		if hasattr(self.instance, 'capacity_utilisation'):
-			utilisation = int(round(self.instance.capacity_utilisation * 100))
+		if self.instance.has_component(Producer):
+			utilisation = int(round(self.instance.get_component(Producer).capacity_utilisation * 100))
 		self.widget.child_finder('capacity_utilisation').text = unicode(str(utilisation) + '%')
 
 	def show(self):
@@ -403,7 +406,7 @@ class SettlerOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = _("Settler overview")
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
 		                  self.instance.settlement, self.instance.level)
 
@@ -420,7 +423,7 @@ class SettlerOverviewTab(OverviewTab):
 		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		super(SettlerOverviewTab, self).refresh()
 
 	def update_consumed_res(self):
@@ -457,25 +460,26 @@ class EnemyBuildingOverviewTab(OverviewTab):
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
 
-class EnemyBranchOfficeOverviewTab(OverviewTab):
+class EnemyWarehouseOverviewTab(OverviewTab):
 	def __init__(self, instance):
-		super(EnemyBranchOfficeOverviewTab, self).__init__(
-			widget = 'overview_enemybranchoffice.xml',
+		super(EnemyWarehouseOverviewTab, self).__init__(
+			widget = 'overview_enemywarehouse.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
-		self.tooltip = _("Branch office overview")
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.tooltip = _("Warehouse overview")
 
 	def refresh(self):
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		settlement = self.instance.settlement
+		self.widget.findChild(name="headline").text = unicode(settlement.get_component(NamedComponent).name)
 
 		selling_inventory = self.widget.findChild(name='selling_inventory')
-		selling_inventory.init(self.instance.session.db, self.instance.settlement.inventory, self.instance.settlement.sell_list, True)
+		selling_inventory.init(self.instance.session.db, settlement.get_component(StorageComponent).inventory, settlement.get_component(TradePostComponent).sell_list, True)
 
 		buying_inventory = self.widget.findChild(name='buying_inventory')
-		buying_inventory.init(self.instance.session.db, self.instance.settlement.inventory, self.instance.settlement.buy_list, False)
+		buying_inventory.init(self.instance.session.db, settlement.get_component(StorageComponent).inventory, settlement.get_component(TradePostComponent).buy_list, False)
 
-		super(EnemyBranchOfficeOverviewTab, self).refresh()
+		super(EnemyWarehouseOverviewTab, self).refresh()
 
 class EnemyShipOverviewTab(OverviewTab):
 	def  __init__(self, instance):
@@ -493,7 +497,7 @@ class ResourceDepositOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.widget.child_finder("inventory").init(self.instance.session.db, \
-		                                           self.instance.inventory)
+		                                           self.instance.get_component(StorageComponent).inventory)
 
 	def refresh(self):
 		super(ResourceDepositOverviewTab, self).refresh()

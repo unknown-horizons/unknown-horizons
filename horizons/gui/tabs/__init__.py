@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +21,10 @@
 
 from inventorytab import InventoryTab
 from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
-						BranchOfficeOverviewTab, SettlerOverviewTab, \
+						WarehouseOverviewTab, SettlerOverviewTab, \
 						SignalFireOverviewTab, TraderShipOverviewTab, EnemyBuildingOverviewTab, \
 						EnemyShipOverviewTab, ResourceDepositOverviewTab, \
-						EnemyBranchOfficeOverviewTab, FarmProductionOverviewTab, \
+						EnemyWarehouseOverviewTab, FarmProductionOverviewTab, \
 						FightingShipOverviewTab, GroundUnitOverviewTab
 
 from buyselltab import BuySellTab

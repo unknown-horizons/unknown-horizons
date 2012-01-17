@@ -1,0 +1,29 @@
+id: 4
+name: _ Main Square
+baseclass: storages.MainSquare
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 6
+size_y: 6
+inhabitants_start: 1
+inhabitants_max: 1
+button_name: main_square-1
+tooltip_text: _ Supplies citizens with goods.
+settler_level: 0
+buildingcosts: {1: 1000, 4: 5}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      31:
+        produces:
+        - [19, 5]
+        time: 1
+- StorageComponent:
+    inventory:
+        SettlementStorage: {}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/main_square.ogg]
+actionsets:
+  as_mainsquare0: {preview: as_preview_mainsquare0, level: 0}

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
-import re
 
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
-from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader, decorators, random_map, BuildingIndexer
+from horizons.util import WorldObject, Point, Rect, Circle, DbReader, random_map, BuildingIndexer
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, RES, UNITS
@@ -193,10 +191,11 @@ class Island(BuildingOwner, WorldObject):
 
 	def add_settlement(self, position, radius, player, load=False):
 		"""Adds a settlement to the island at the position x, y with radius as area of influence.
-		@param position: Rect describing the position of the new branch office
+		@param position: Rect describing the position of the new warehouse
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(self.session, player)
+		settlement.initialize()
 		self.add_existing_settlement(position, radius, settlement, load)
 		# TODO: Move this to command, this message should not appear while loading
 		self.session.ingame_gui.message_widget.add(position.center().x, \
@@ -342,7 +341,8 @@ class Island(BuildingOwner, WorldObject):
 			for building in self.buildings:
 				if building.id == BUILDINGS.TREE_CLASS:
 					point = building.position.origin
-					Entities.units[UNITS.WILD_ANIMAL_CLASS](self, x=point.x, y=point.y, session=self.session)
+					animal = Entities.units[UNITS.WILD_ANIMAL_CLASS](self, x=point.x, y=point.y, session=self.session)
+					animal.initialize()
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
 		# so do nothing in this case.
@@ -350,18 +350,10 @@ class Island(BuildingOwner, WorldObject):
 	def _init_cache(self):
 		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """
 		self.last_change_id = -1
-		self.building_sizes = set()
-		db_result = self.session.db("SELECT DISTINCT size_x, size_y FROM building WHERE button_name IS NOT NULL")
-		for size_x, size_y in db_result:
-			self.building_sizes.add((size_x, size_y))
-			self.building_sizes.add((size_y, size_x))
 
-		self.last_changed = {}
-		for size in self.building_sizes:
-			self.last_changed[size] = {}
-
-		for (x, y) in self.ground_map:
-			for size_x, size_y in self.building_sizes:
+		def calc_cache(size_x, size_y):
+			d = {}
+			for (x, y) in self.ground_map:
 				all_on_island = True
 				for dx in xrange(size_x):
 					for dy in xrange(size_y):
@@ -371,7 +363,18 @@ class Island(BuildingOwner, WorldObject):
 					if not all_on_island:
 						break
 				if all_on_island:
-					self.last_changed[(size_x, size_y)][(x, y)] = self.last_change_id
+					d[ (x, y) ] = self.last_change_id
+			return d
+
+		class LazyDict(dict):
+			def __getitem__(self, x):
+				try:
+					return super(LazyDict, self).__getitem__(x)
+				except KeyError:
+					val = self[x] = calc_cache(*x)
+					return val
+
+		self.last_changed = LazyDict()
 
 	def _register_change(self, x, y):
 		""" registers the possible buildability change of a rectangle on this island """

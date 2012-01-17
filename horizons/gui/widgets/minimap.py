@@ -1,4 +1,4 @@
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,6 +26,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
 from horizons.util.python import get_counter
 from horizons.command.unit import Act
+from horizons.world.component.namedcomponent import NamedComponent
 
 import math
 from math import sin, cos
@@ -56,14 +57,14 @@ class Minimap(object):
 	           }
 
 
-	BRANCH_OFFICE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
+	WAREHOUSE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
 
 	SHIP_DOT_UPDATE_INTERVAL = 0.4 # seconds
 
 	RENDER_NAMES = { # alpha-ordering determines the order
 	  "background" : "c",
 	  "base" : "d", # islands, etc.
-	  "branch_office" : "e",
+	  "warehouse" : "e",
 	  "ship" : "f",
 	  "cam" : "g",
 	  "ship_route" : "h",
@@ -295,7 +296,7 @@ class Minimap(object):
 
 			tile = self.session.world.get_tile( Point(*coords) )
 			if tile is not None and tile.settlement is not None:
-				new_tooltip = tile.settlement.name
+				new_tooltip = unicode(tile.settlement.get_component(NamedComponent).name)
 				if self.icon.tooltip != new_tooltip:
 					self.icon.tooltip = new_tooltip
 					self.icon.show_tooltip()
@@ -344,11 +345,22 @@ class Minimap(object):
 		high()
 		return STEPS*INTERVAL
 
-	def show_ship_route(self, unit):
+	def show_unit_path(self, unit, ):
 		"""Show the path a unit is moving along"""
 		path = unit.path.path
-		if path is None:
-			return False
+		if path is None: # show at least the position
+			path = [ unit.position.to_tuple() ]
+
+		# the path always contains the full path, the unit might be somewhere in it
+		position_of_unit_in_path = 0
+		unit_pos = unit.position.to_tuple()
+		for i in xrange(len(path)):
+			if path[i] == unit_pos:
+				position_of_unit_in_path = i
+				break
+		if len(path) > 1:
+			position_of_unit_in_path += 1 # looks nicer when unit is moving
+		path = path[position_of_unit_in_path:]
 
 		# draw every step-th coord
 		step = 1
@@ -361,8 +373,7 @@ class Minimap(object):
 		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		p = fife.Point(0, 0)
-		render_name = self._get_render_name("ship_route") + \
-		            str(self.__class__.__ship_route_counter.next())
+		render_name = self._get_render_name("ship_route") + str(self.__class__.__ship_route_counter.next())
 		color = unit.owner.color.to_tuple()
 		last_coord = None
 		for i in relevant_coords:
@@ -483,8 +494,6 @@ class Minimap(object):
 			coord = self._world_to_minimap( ship().position.to_tuple(), use_rotation )
 
 			color = ship().owner.color.to_tuple()
-			a = 2 # change this to change height/width
-			b = a - 1
 			self.minimap_image.rendertarget.addQuad(self._get_render_name("ship"),
 			                                        fife.Point( coord[0]-1, coord[1]-1 ),
 			                                        fife.Point( coord[0]-1, coord[1]+2 ),
@@ -504,26 +513,26 @@ class Minimap(object):
 					                                         *color)
 
 
-		# draw settlement branch offices if something has changed
+		# draw settlement warehouses if something has changed
 		settlements = self.world.settlements
 		# save only worldids as to not introduce actual coupling
 		cur_settlements = set( i.worldid for i in settlements )
 		if force or \
 		   (not hasattr(self, "_last_settlements") or cur_settlements != self._last_settlements):
 			# update necessary
-			bo_img = self.imagemanager.load( self.__class__.BRANCH_OFFICE_IMAGE )
-			bo_render_name = self._get_render_name("branch_office")
-			self.minimap_image.rendertarget.removeAll( bo_render_name )
-			# scale bo icons
+			warehouse_img = self.imagemanager.load( self.__class__.WAREHOUSE_IMAGE )
+			warehouse_render_name = self._get_render_name("warehouse")
+			self.minimap_image.rendertarget.removeAll( warehouse_render_name )
+			# scale warehouse icons
 			ratio = sum(self._get_world_to_minimap_ratio()) / 2.0
 			ratio = max(1.0, ratio)
-			new_width, new_height = int(bo_img.getWidth()/ratio), int(bo_img.getHeight()/ratio)
+			new_width, new_height = int(warehouse_img.getWidth()/ratio), int(warehouse_img.getHeight()/ratio)
 			for settlement in settlements:
-				coord = settlement.branch_office.position.center().to_tuple()
+				coord = settlement.warehouse.position.center().to_tuple()
 				coord = self._world_to_minimap(coord, use_rotation)
 				point = fife.Point( coord[0], coord[1] )
-				self.minimap_image.rendertarget.resizeImage(bo_render_name, point, bo_img,
-					                                          new_width, new_height)
+				self.minimap_image.rendertarget.resizeImage(warehouse_render_name, point,
+				                                            warehouse_img, new_width, new_height)
 			self._last_settlements = cur_settlements
 
 
@@ -586,6 +595,7 @@ class Minimap(object):
 
 		x = tup[0]
 		y = tup[1]
+
 		# rotate around center of minimap
 		x -= self.location_center.x
 		y -= self.location_center.y
@@ -595,13 +605,17 @@ class Minimap(object):
 
 		new_x += self.location_center.x
 		new_y += self.location_center.y
+
+		new_x = int(round(new_x))
+		new_y = int(round(new_y))
+
 		#some points may get out of range
 		new_x = max (self.location.left, new_x)
 		new_x = min (self.location.right, new_x)
 		new_y = max (self.location.top, new_y)
 		new_y = min (self.location.bottom, new_y)
-		tup = int(new_x), int(new_y)
-		return tup
+
+		return (new_x, new_y)
 
 	def _get_world_to_minimap_ratio(self):
 		world_height = self.world.map_dimensions.height

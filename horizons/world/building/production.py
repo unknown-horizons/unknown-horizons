@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,7 @@
 
 
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
-from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
@@ -32,6 +32,8 @@ from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION, RES
 from horizons.gui.tabs import FarmProductionOverviewTab
 from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
+from horizons.world.production.producer import Producer
+from horizons.world.component.storagecomponent import StorageComponent
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -113,7 +115,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 
 	def get_non_paused_utilisation(self):
 		total = 0
-		productions = self.get_productions()
+		productions = self.get_component(Producer).get_productions()
 		for production in productions:
 			if production.get_age() < PRODUCTION.STATISTICAL_WINDOW * 1.5:
 				return 1
@@ -138,9 +140,14 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		"""
 		# needs to be inited before super(), since that will call the _on_production_changed hook
 		super(Mine, self).__init__(*args, **kwargs)
-		self.__init(deposit_class, mine_empty_msg_shown=False)
+		self.__inventory = inventory
+		self.__deposit_class = deposit_class
+
+	def initialize(self, deposit_class, inventory, **kwargs):
+		super(Mine, self).initialize( ** kwargs)
+		self.__init(deposit_class=deposit_class, mine_empty_msg_shown=False)
 		for res, amount in inventory.iteritems():
-			self.inventory.alter(res, amount)
+			self.get_component(StorageComponent).inventory.alter(res, amount)
 
 	@classmethod
 	def get_loading_area(cls, building_id, rotation, pos):
@@ -171,13 +178,13 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		"""Returns dict containing inventory of deposit, which is needed for the mine build"""
 		deposit = session.world.get_building(position.center())
 		data = {}
-		data["inventory"] = deposit.inventory.get_dump()
+		data["inventory"] = deposit.get_component(StorageComponent).inventory.get_dump()
 		data["deposit_class"] = deposit.id
 		return data
 
 	def remove(self):
 		# build the deposit back here after remove() is finished
-		deposit_build_data = { 'inventory' : self.inventory.get_dump() }
+		deposit_build_data = { 'inventory' : self.get_component(StorageComponent).inventory.get_dump() }
 		build_cmd = Build(self.__deposit_class, self.position.origin.x, self.position.origin.y, \
 		                  self.island, ownerless=True, data = deposit_build_data)
 		Scheduler().add_new_object(build_cmd, build_cmd, run_in=0)

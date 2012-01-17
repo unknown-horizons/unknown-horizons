@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,10 +20,9 @@
 # ###################################################
 
 import weakref
-import sys
 import logging
 
-from horizons.util import Rect, Point, decorators
+from horizons.util import Point, decorators
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.pathfinding.pathfinding import FindPath
@@ -242,7 +241,7 @@ class BuildingCollectorPather(AbstractPather):
 
 
 class RoadPather(AbstractPather):
-	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
+	"""Pather for collectors, that depend on roads (e.g. the one used for the warehouse)"""
 	def __init__(self, unit, *args, **kwargs):
 		super(RoadPather, self).__init__(unit, move_diagonal=False, *args, **kwargs)
 		self.island = self.session.world.get_island(unit.position)
@@ -284,15 +283,6 @@ class SoldierPather(AbstractPather):
 class StaticPather(object):
 	"""Misc pathing routines not depending on units.
 	Does not use AbstractPather Interface"""
-	@classmethod
-	def get_direct_path(cls, island, source, destination, punish_turns=True):
-		"""Returns shortest direct path.
-		Useful for building roads.
-		@param island: island to search path on
-		@param source, destination: Point or anything supported by FindPath
-		@return: list of tuples or None in case no path is found"""
-		return FindPath()(source, destination, island.path_nodes.nodes, punish_turns=punish_turns)
-
 	@classmethod
 	def get_path_on_roads(cls, island, source, destination):
 		"""Returns a path that runs only on roads.

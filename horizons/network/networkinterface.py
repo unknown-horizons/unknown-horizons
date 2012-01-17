@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,10 +26,8 @@ from horizons.util import Color, DifficultySettings, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
-from horizons.network import CommandError, NetworkException, NotConnected, FatalError
+from horizons.network import CommandError, NetworkException, FatalError
 
-
-import getpass
 import logging
 
 class NetworkInterface(object):
@@ -49,7 +47,7 @@ class NetworkInterface(object):
 		self.cbs_error = [] # callbacks on error that looks like this: error(exception, fatal=True)
 		self._client.register_callback("lobbygame_join",       self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_leave",      self._cb_game_details_changed)
-		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
+		#self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
 		#self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
 		self._client.register_callback("game_starts", self._cb_game_starts)

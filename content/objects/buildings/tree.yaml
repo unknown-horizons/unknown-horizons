@@ -1,0 +1,42 @@
+id: 17
+name: _ Tree
+baseclass: nature.Tree
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 1
+size_y: 1
+inhabitants_start: 0
+inhabitants_max: 0
+button_name: tree-1
+tooltip_text: _ Tree
+settler_level: 0
+buildingcosts: {1: 10}
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      1:
+        produces:
+        - [8, 1]
+        time: 60
+      17:
+        changes_animation: false
+        produces:
+        - [12, 1]
+        time: 25
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {8: 1, 12: 1}
+actionsets:
+  as_tupelo2: {level: 0}
+  as_spruce1: {level: 0}
+  as_spruce0: {level: 0}
+  as_birch0: {level: 0}
+  as_tupelo0: {level: 0}
+  as_tupelo1: {level: 0}
+  as_maple3: {level: 0}
+  as_maple2: {level: 0}
+  as_maple1: {level: 0}
+  as_maple0: {level: 0}

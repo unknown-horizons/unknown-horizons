@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -41,7 +41,7 @@ filename = tempfile.mkstemp(text = True)[1]
 conn = sqlite3.connect(filename)
 
 for db_file in PATHS.DB_FILES:
-	conn.executescript( open(db_file, "r").read()) 
+	conn.executescript( open(db_file, "r").read())
 
 conn.commit()
 
@@ -57,21 +57,6 @@ Base = sqlalchemy.ext.declarative.declarative_base()
 #
 # Classes
 #
-
-class Building(Base):
-	__tablename__ = 'building'
-
-	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
-
-class Unit(Base):
-	__tablename__ = 'unit'
-
-	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
-
-class Colors(Base):
-	__tablename__ = 'colors'
-
-	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
 class Message(Base):
 	__tablename__ = 'message'
@@ -118,15 +103,6 @@ def print_msgid(msgid):
 
 def collect_all():
 	collector = MSGID_collect()
-
-	for building in db_session.query(Building):
-		collector.add_to_collection(building.name, 'the name of a building')
-
-	for unit in db_session.query(Unit):
-		collector.add_to_collection(unit.name, 'the name of a unit')
-
-	for color in db_session.query(Colors):
-		collector.add_to_collection(color.name, 'the name of a color')
 
 	for message in db_session.query(Message):
 		collector.add_to_collection(message.text, 'a messagewidget message (left part of the screen)')

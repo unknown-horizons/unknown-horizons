@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,16 +18,22 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import math
 import operator
 
-from horizons.command.production import AddProduction
+from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
 from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import get_res_icon
 from horizons.util import Callback
 from horizons.constants import PRODUCTIONLINES
+from horizons.world.production.producer import Producer
+from horizons.gui.widgets.tooltip import TooltipIcon
 
 class BoatbuilderTab(OverviewTab):
+
+	SHIP_THUMBNAIL = "content/gui/icons/unit_thumbnails/{type_id}.png"
+
 	def __init__(self, instance):
 		super(BoatbuilderTab, self).__init__(
 			widget = 'boatbuilder.xml',
@@ -46,8 +52,9 @@ class BoatbuilderTab(OverviewTab):
 		cancel_container = main_container.findChild(name="BB_cancel_container")
 		needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 
-		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
-		production_lines = self.instance.get_production_lines()
+		# a boatbuilder is considered active here if it build sth, no matter if it's paused
+		production_lines = self.instance.get_component(Producer).get_production_lines()
+
 		if production_lines:
 
 			if cancel_container is None:
@@ -63,7 +70,7 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.progress_container, self.widget.findChild(name="BB_needed_resources_container"))
 				progress_container = main_container.progress_container
 
-			progress = self.instance.get_production_progress()
+			progress = self.instance.get_component(Producer).get_production_progress()
 			self.widget.findChild(name='progress').progress = progress*100
 			self.widget.findChild(name='BB_progress_perc').text = unicode(math.floor(progress*100))+u"%"
 
@@ -75,19 +82,38 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
 
+			# Update boatbuilder queue
+			queue = self.instance.get_component(Producer).get_unit_production_queue()
+			queue_container = container_active.findChild(name="queue_container")
+			queue_container.removeAllChildren()
+			for i in enumerate(queue):
+				place_in_queue, unit_type = i
+				image = self.__class__.SHIP_THUMBNAIL.format(type_id=unit_type)
+				#xgettext:python-format
+				tooltip = _(u"{ship} (place in queue: {place})").format(
+				               ship=self.instance.session.db.get_unit_type_name(unit_type),
+				               place=place_in_queue+1 )
+				# people don't count properly, always starting at 1..
+				icon_name = "queue_elem_"+str(place_in_queue)
+				icon = TooltipIcon(name=icon_name, image=image, tooltip=tooltip)
+				queue_container.addChild( icon )
+				queue_container.capture(
+				  Callback(RemoveFromQueue(self.instance, place_in_queue).execute, self.instance.session),
+				  event_name="mouseClicked"
+				)
 
-
-			produced_unit_id = self.instance._get_production(production_lines[0]).get_produced_units().keys()[0]
+			# Set built ship info
+			produced_unit_id = self.instance.get_component(Producer)._get_production(production_lines[0]).get_produced_units().keys()[0]
+			produced_unit_id = self.instance.get_component(Producer)._get_production(production_lines[0]).get_produced_units().keys()[0]
 			(name,) = self.instance.session.db("SELECT name FROM unit WHERE id = ?", produced_unit_id)[0]
 			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
 			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
 			container_active.findChild(name="BB_cur_ship_icon").image = "content/gui/images/objects/ships/116/%s.png" % (produced_unit_id)
 
-
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
 
-			if not self.instance.is_active(): # if production is paused
+			if not self.instance.get_component(Producer).is_active(): # if production is paused
 				# remove active button, if it's there, and save a reference to it
 				if button_active is not None:
 					container_active.button_active = button_active
@@ -124,7 +150,7 @@ class BoatbuilderTab(OverviewTab):
 			upgrades_box.stylize('menu_black')
 
 			# Update needed resources
-			production = self.instance.get_productions()[0]
+			production = self.instance.get_component(Producer).get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
 			# Now sort!
 			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))
@@ -137,7 +163,7 @@ class BoatbuilderTab(OverviewTab):
 
 				icon = get_res_icon(res)[3]
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon
-				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i+1)).text = unicode(-1*amount)+u't' # -1 make them positive
+				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i+1)).text = unicode(-1*amount)+u't' # -1 makes them positive
 				i += 1
 				if i >= 3:
 					break
@@ -146,12 +172,11 @@ class BoatbuilderTab(OverviewTab):
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(j+1)).image = None
 				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(j+1)).text = u""
 
-			# TODO: cancel building button
-	#		print "Cancelbutton search.."
 			cancel_button = self.widget.findChild(name="BB_cancel_button")
-	#		print "Found:", cancel_button
-			cancel_button.capture(self.instance.cancel_all_productions, event_name="mouseClicked")
-	#		print cancel_button.isCaptured()
+			cancel_button.capture(
+			  Callback(CancelCurrentProduction(self.instance).execute, self.instance.session),
+			  event_name="mouseClicked"
+			)
 
 		else: # display sth when nothing is produced
 			# remove other container, but save it

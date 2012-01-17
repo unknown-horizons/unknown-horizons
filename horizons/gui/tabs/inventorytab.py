@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.extscheduler import ExtScheduler
+from horizons.world.component.storagecomponent import StorageComponent
 
 class InventoryTab(TabInterface):
 
@@ -38,8 +39,8 @@ class InventoryTab(TabInterface):
 
 	def _lazy_loading_init(self):
 		super(InventoryTab, self)._lazy_loading_init()
-		self.widget.child_finder('inventory').init(self.instance.session.db,
-		                                           self.instance.inventory)
+		self.widget.child_finder('inventory').init(self.instance.session.db, \
+		                                           self.instance.get_component(StorageComponent).inventory)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""

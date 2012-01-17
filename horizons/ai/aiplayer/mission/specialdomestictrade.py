@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,8 @@ from horizons.ai.aiplayer.mission import ShipMission
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.ext.enum import Enum
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class SpecialDomesticTrade(ShipMission):
 	"""
@@ -70,17 +72,17 @@ class SpecialDomesticTrade(ShipMission):
 		self.state = self.missionStates.moving_to_source_settlement
 		self._move_to_source_settlement()
 		self.log.info('%s started a special domestic trade mission from %s to %s using %s', self, \
-			self.source_settlement_manager.settlement.name, self.destination_settlement_manager.settlement.name, self.ship)
+			self.source_settlement_manager.settlement.get_component(NamedComponent).name, self.destination_settlement_manager.settlement.get_component(NamedComponent).name, self.ship)
 
 	def _move_to_source_settlement(self):
-		self._move_to_branch_office_area(self.source_settlement_manager.settlement.branch_office.position, Callback(self._reached_source_settlement), \
-			Callback(self._move_to_source_settlement), 'Unable to move to the source settlement (%s)' % self.source_settlement_manager.settlement.name)
+		self._move_to_warehouse_area(self.source_settlement_manager.settlement.warehouse.position, Callback(self._reached_source_settlement), \
+			Callback(self._move_to_source_settlement), 'Unable to move to the source settlement (%s)' % self.source_settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _load_resources(self):
 		source_resource_manager = self.source_settlement_manager.resource_manager
-		source_inventory = self.source_settlement_manager.settlement.inventory
+		source_inventory = self.source_settlement_manager.settlement.get_component(StorageComponent).inventory
 		destination_resource_manager = self.destination_settlement_manager.resource_manager
-		destination_inventory = self.destination_settlement_manager.settlement.inventory
+		destination_inventory = self.destination_settlement_manager.settlement.get_component(StorageComponent).inventory
 
 		options = []
 		for resource_id, limit in destination_resource_manager.resource_requirements.iteritems():
@@ -90,7 +92,7 @@ class SpecialDomesticTrade(ShipMission):
 				continue # the source settlement doesn't have a surplus of the resource
 
 			price = self.owner.session.db.get_res_value(resource_id)
-			tradable_amount = min(self.ship.inventory.get_limit(resource_id), limit - destination_inventory[resource_id], \
+			tradable_amount = min(self.ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id], \
 				source_inventory[resource_id] - source_resource_manager.resource_requirements[resource_id])
 			options.append((tradable_amount * price, tradable_amount, resource_id))
 
@@ -103,7 +105,7 @@ class SpecialDomesticTrade(ShipMission):
 		return True
 
 	def _reached_source_settlement(self):
-		self.log.info('%s reached the first branch office area (%s)', self, self.source_settlement_manager.settlement.name)
+		self.log.info('%s reached the first warehouse area (%s)', self, self.source_settlement_manager.settlement.get_component(NamedComponent).name)
 		if self._load_resources():
 			self.state = self.missionStates.moving_to_destination_settlement
 			self._move_to_destination_settlement()
@@ -111,12 +113,12 @@ class SpecialDomesticTrade(ShipMission):
 			self.report_failure('No resources to transport')
 
 	def _move_to_destination_settlement(self):
-		self._move_to_branch_office_area(self.destination_settlement_manager.settlement.branch_office.position, Callback(self._reached_destination_settlement), \
-			Callback(self._move_to_destination_settlement), 'Unable to move to the destination settlement (%s)' % self.destination_settlement_manager.settlement.name)
+		self._move_to_warehouse_area(self.destination_settlement_manager.settlement.warehouse.position, Callback(self._reached_destination_settlement), \
+			Callback(self._move_to_destination_settlement), 'Unable to move to the destination settlement (%s)' % self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _reached_destination_settlement(self):
 		self._unload_all_resources(self.destination_settlement_manager.settlement)
-		self.log.info('%s reached the destination branch office area (%s)', self, self.destination_settlement_manager.settlement.name)
+		self.log.info('%s reached the destination warehouse area (%s)', self, self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
 		self.report_success('Unloaded resources')
 
 decorators.bind_all(SpecialDomesticTrade)

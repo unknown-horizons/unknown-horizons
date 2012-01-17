@@ -1,0 +1,31 @@
+id: 29
+name: _ Smeltery
+baseclass: production.Smeltery
+radius: 10
+cost: 50
+cost_inactive: 15
+size_x: 4
+size_y: 4
+inhabitants_start: 2
+inhabitants_max: 2
+button_name: smeltery-1
+tooltip_text: _ Refines all kind of ores.
+settler_level: 2
+buildingcosts: {1: 1250, 4: 8, 6: 4, 7: 6}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      37:
+        produces:
+        - [26, 3]
+        consumes:
+        - [25, -2]
+        - [23, -1]
+        time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {25: 6, 26: 9, 23: 6}
+actionsets:
+  as_smeltery0: {level: 0}

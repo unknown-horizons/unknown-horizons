@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -45,7 +45,7 @@ class AbstractField(AbstractBuilding):
 
 		evaluator = sorted(evaluators)[0]
 		fields_per_farm = evaluator.fields
-		# TODO: fix the resource gathering code to request resources in larger chunks so this hack doesn't have to be used 
+		# TODO: fix the resource gathering code to request resources in larger chunks so this hack doesn't have to be used
 		# use fractional farm costs to give farms a chance to picked
 		extra_farms_needed = float(extra_fields_needed) / fields_per_farm
 		#extra_farms_needed = int(math.ceil(float(extra_fields_needed) / fields_per_farm))

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ from itertools import product
 
 from horizons.command.building import Build
 from horizons.constants import BUILDINGS, RES
+from horizons.world.component.storagecomponent import StorageComponent
 
 from tests.game import game_test, settle
 
@@ -60,11 +61,11 @@ def test_weaver(s, p):
 
 	weaver = Build(BUILDINGS.WEAVER_CLASS, 27, 30, island, settlement=settlement)(p)
 	assert weaver
-	assert weaver.inventory[RES.TEXTILE_ID] == 0
+	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE_ID] == 0
 
 	s.run(seconds=60)	# pasture 30s, farm 1s, weaver 12s
 
-	assert weaver.inventory[RES.TEXTILE_ID]
+	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE_ID]
 
 
 @game_test
@@ -79,11 +80,11 @@ def test_distillery(s, p):
 
 	distillery = Build(BUILDINGS.DISTILLERY_CLASS, 27, 30, island, settlement=settlement)(p)
 	assert distillery
-	assert distillery.inventory[RES.LIQUOR_ID] == 0
+	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR_ID] == 0
 
 	s.run(seconds=60)	# sugarfield 30s, farm 1s, distillery 12s
 
-	assert distillery.inventory[RES.LIQUOR_ID]
+	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR_ID]
 
 
 @game_test
@@ -94,9 +95,9 @@ def test_potato_field(s, p):
 	settlement, island = settle(s)
 
 	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
-	assert farm.inventory[RES.FOOD_ID] == 0
-	assert farm.inventory[RES.POTATOES_ID] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.POTATOES_ID] == 0
 
 	s.run(seconds=60)	# potato field 26s, farm 1s
 
-	assert farm.inventory[RES.FOOD_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID]

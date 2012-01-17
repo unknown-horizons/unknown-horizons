@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,10 +18,16 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 from fife.extensions import pychan
+
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
 from horizons.gui.widgets import TooltipIcon
+from horizons.command.unit import SetStance
+from horizons.extscheduler import ExtScheduler
+from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.stancecomponent import NoneStance, AggressiveStance, HoldGroundStance, FleeStance
 
 class StanceWidget(pychan.widgets.Container):
 	"""Widget used for setting up the stance for one instance"""
@@ -29,24 +35,37 @@ class StanceWidget(pychan.widgets.Container):
 		super(StanceWidget, self).__init__(size=(245,50), **kwargs)
 		widget = load_uh_widget('stancewidget.xml')
 		self.addChild(widget)
+		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
 
 	def init(self, instance):
 		self.instance = instance
 		self.toggle_stance()
 		self.mapEvents({
-			'aggressive': Callback(self.set_stance, 'aggressive'),
-			'hold_ground': Callback(self.set_stance, 'hold_ground'),
-			'none': Callback(self.set_stance, 'none'),
-			'flee': Callback(self.set_stance, 'flee')
+			'aggressive': Callback(self.set_stance, AggressiveStance),
+			'hold_ground': Callback(self.set_stance, HoldGroundStance),
+			'none': Callback(self.set_stance, NoneStance),
+			'flee': Callback(self.set_stance, FleeStance)
 			})
+
+	def beforeShow(self):
+		super(StanceWidget, self).beforeShow()
+		ExtScheduler().rem_all_classinst_calls(self)
+		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
+
+	def refresh(self):
+		self.toggle_stance()
+		if not self.isVisible():
+			# refresh not needed
+			ExtScheduler().rem_all_classinst_calls(self)
 
 	def remove(self, caller=None):
 		"""Removes instance ref"""
+		ExtScheduler().rem_all_classinst_calls(self)
 		self.mapEvents({})
 		self.instance = None
 
 	def set_stance(self, stance):
-		self.instance.set_stance(stance)
+		SetStance(self.instance, stance).execute(self.instance.session)
 		self.toggle_stance()
 
 	def toggle_stance(self):
@@ -54,7 +73,7 @@ class StanceWidget(pychan.widgets.Container):
 		self.findChild(name='hold_ground').set_inactive()
 		self.findChild(name='none').set_inactive()
 		self.findChild(name='flee').set_inactive()
-		self.findChild(name=self.instance.stance).set_active()
+		self.findChild(name=self.instance.stance.NAME).set_active()
 
 class HealthWidget(pychan.widgets.Container):
 	"""Widget that shows a health bar for an unit"""
@@ -66,19 +85,19 @@ class HealthWidget(pychan.widgets.Container):
 	def init(self, instance):
 		self.instance = instance
 		self.draw_health()
-		health_component = self.instance.get_component('health')
+		health_component = self.instance.get_component(HealthComponent)
 		if not health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.add_damage_dealt_listener(self.draw_health)
 
 	def draw_health(self, caller=None):
-		health_component = self.instance.get_component('health')
+		health_component = self.instance.get_component(HealthComponent)
 		max_health = int(health_component.max_health)
 		health = int(health_component.health)
-		self.findChild(name='noi18n_health_label').text = unicode(str(health)+'/'+str(max_health))
+		self.findChild(name='health_label').text = "{health}/{max_health}".format(health=health, max_health=max_health)
 		self.findChild(name='health_bar').progress = int(health * 100. / max_health)
 
 	def remove(self, caller=None):
-		health_component = self.instance.get_component('health')
+		health_component = self.instance.get_component(HealthComponent)
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 		self.instance = None

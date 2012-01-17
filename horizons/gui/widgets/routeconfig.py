@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,7 +25,10 @@ from horizons.util.gui import load_uh_widget
 from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
 from horizons.gui.widgets.tooltip import TooltipButton
+from horizons.world.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
+from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
 import horizons.main
 
@@ -34,15 +37,15 @@ class RouteConfig(object):
 	Widget that allows configurating a ship's trading route
 	"""
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
-	buy_button_path = "content/gui/images/tabwidget/branch_to_ship.png"
-	sell_button_path = "content/gui/images/tabwidget/ship_to_branch.png"
+	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
+	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
 	MAX_ENTRIES = 6
 	MIN_ENTRIES = 2
 	def __init__(self, instance):
 		self.instance = instance
 
-		offices = instance.session.world.get_branch_offices()
-		self.branch_offices = dict([('%s (%s)' % (bo.settlement.name, bo.owner.name), bo) for bo in offices])
+		warehouses = instance.session.world.get_warehouses()
+		self.warehouses = dict([('%s (%s)' % (w.settlement.get_component(NamedComponent).name, w.owner.name), w) for w in warehouses])
 		if not hasattr(instance, 'route'):
 			instance.create_route()
 
@@ -189,12 +192,12 @@ class RouteConfig(object):
 	def slider_adjust(self, slot, res_id, entry):
 		position = self.widgets.index(entry)
 		slider = slot.findChild(name="slider")
-		amount = slot.findChild(name="amount")
-		value = int(slider.value)
-		amount.text = unicode(value) + "t"
+		amount_lbl = slot.findChild(name="amount")
+		amount = int(slider.value)
+		amount_lbl.text = u'{amount}t'.format(amount=amount)
 		if slot.action is "unload":
-			value = -value
-		self.instance.route.add_to_resource_list(position, res_id, value)
+			amount = -amount
+		self.instance.route.add_to_resource_list(position, res_id, amount)
 		slot.adaptLayout()
 
 	def add_resource(self, slot, res_id, entry, has_value = False, value=0):
@@ -252,33 +255,33 @@ class RouteConfig(object):
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
 		vbox = self._gui.findChild(name="resources")
-		# access directly, it's possible that it's not found in the gui if it's hidden
-		self.minimap.icon.hide()
-		label = self._gui.findChild(name="select_res_label")
-		label.text = _("Select a resource:")
+		lbl = widgets.Label(name='select_res_label', text=_('Select a resource:'))
+		vbox.addChild( lbl )
 
-		#hardcoded for 5 works better than vbox.width / button_width
-		amount_per_line = 5
+		#hardcoded for 6 works better than vbox.width / button_width
+		amount_per_line = 6
 
-		current_hbox = widgets.HBox()
+		current_hbox = widgets.HBox(max_size="326,46")
 		index = 1
 
 		for res_id in self.icon_for_resource:
-			if res_id in self.instance.route.waypoints[position]['resource_list'] and\
+			if res_id in self.instance.route.waypoints[position]['resource_list'] and \
 			   slot.findChild(name='button').up_image.source is not self.icon_for_resource[res_id]:
 				continue
-			button = TooltipButton(size=(50,50))
+			button = TooltipButton(size=(46,46))
 			icon = self.icon_for_resource[res_id]
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			button.capture(Callback(self.add_resource, slot, res_id, entry))
 			if res_id != 0:
-				button.tooltip = horizons.main.db.get_res_name(res_id)
+				button.tooltip = self.session.db.get_res_name(res_id)
 			current_hbox.addChild(button)
-			if index > amount_per_line:
+			if index >= amount_per_line:
 				index -= amount_per_line
 				vbox.addChild(current_hbox)
-				current_hbox = widgets.HBox()
+				current_hbox = widgets.HBox(max_size="326,26")
 			index += 1
+		current_hbox.addSpacer(widgets.Spacer())
+		#TODO this spacer does absolutely nothing.
 		vbox.addChild(current_hbox)
 
 		self._gui.adaptLayout()
@@ -286,10 +289,6 @@ class RouteConfig(object):
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="resources").removeAllChildren()
-		self._gui.findChild(name="select_res_label").text = unicode("")
-
-		# access directly, it's possible that it's not found in the gui if it's hidden
-		self.minimap.icon.show()
 
 	def add_trade_slots(self, entry, num):
 		x_position = 105
@@ -303,7 +302,7 @@ class RouteConfig(object):
 
 			slider = slot.findChild(name="slider")
 			slider.scale_start = 0.0
-			slider.scale_end = float(self.instance.inventory.limit)
+			slider.scale_end = float(self.instance.get_component(StorageComponent).inventory.limit)
 
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
@@ -322,15 +321,15 @@ class RouteConfig(object):
 			self.slots[entry][num] = slot
 			self.show_load_icon(slot)
 
-	def add_gui_entry(self, branch_office, resource_list = None):
+	def add_gui_entry(self, warehouse, resource_list = None):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
 		self.widgets.append(entry)
 
-		settlement_name_label = entry.findChild(name = "bo_name")
-		settlement_name_label.text = unicode(branch_office.settlement.name)
+		settlement_name_label = entry.findChild(name = "warehouse_name")
+		settlement_name_label.text = unicode(warehouse.settlement.get_component(NamedComponent).name)
 		player_name_label = entry.findChild(name = "player_name")
-		player_name_label.text = unicode(branch_office.owner.name)
+		player_name_label.text = unicode(warehouse.owner.name)
 
 		self.add_trade_slots(entry, self.slots_per_entry)
 
@@ -347,22 +346,23 @@ class RouteConfig(object):
 			index += 1
 
 		entry.mapEvents({
-		  'delete_bo/mouseClicked' : Callback(self.remove_entry, entry),
+		  'delete_warehouse/mouseClicked' : Callback(self.remove_entry, entry),
 		  'move_up/mouseClicked' : Callback(self.move_entry, entry, 'up'),
 		  'move_down/mouseClicked' : Callback(self.move_entry, entry, 'down')
 		  })
 		vbox.addChild(entry)
 
-	def append_bo(self, branch_office):
-		"""Add a bo to the list on the left side.
-		@param branch_office: Set to add a specific one, else the selected one gets added.
+	def append_warehouse(self, warehouse):
+		"""Add a warehouse to the list on the left side.
+		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
-			# TODO: error sound
+			# reached max entries the gui can hold
+			AmbientSoundComponent.play_special('error')
 			return
 
-		self.instance.route.append(branch_office)
-		self.add_gui_entry(branch_office)
+		self.instance.route.append(warehouse)
+		self.add_gui_entry(warehouse)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
 
@@ -390,7 +390,7 @@ class RouteConfig(object):
 				map_coord = event.map_coord
 				tile = self.session.world.get_tile(Point(*map_coord))
 				if tile is not None and tile.settlement is not None:
-					self.append_bo( tile.settlement.branch_office )
+					self.append_warehouse( tile.settlement.warehouse )
 
 		self.minimap = Minimap(icon, self.session, \
 		                       horizons.main.fife.targetrenderer,
@@ -399,7 +399,7 @@ class RouteConfig(object):
 		                       use_rotation=False,
 		                       on_click=on_click)
 
-		resources = horizons.main.db.get_res_id_and_icon(True)
+		resources = self.session.db.get_res_id_and_icon(True)
 		#map an icon for a resource
 		#map a resource for an icon
 		self.resource_for_icon = {}
@@ -411,7 +411,7 @@ class RouteConfig(object):
 		#don't do any actions if the resource menu is shown
 		self.resource_menu_shown = False
 		for entry in self.instance.route.waypoints:
-			self.add_gui_entry(entry['branch_office'], entry['resource_list'])
+			self.add_gui_entry(entry['warehouse'], entry['resource_list'])
 		# we want escape key to close the widget, what needs to be fixed here?
 		self.start_button_set_active()
 		if self.instance.route.enabled:
@@ -432,7 +432,7 @@ class RouteConfig(object):
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
-		  'cancelButton' : self.hide,
+		  'okButton' : self.hide,
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"

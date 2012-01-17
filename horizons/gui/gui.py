@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import glob
 import os
 import os.path
+import random
 import time
 import tempfile
 import logging
@@ -31,9 +33,10 @@ import horizons.main
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
+from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.util import Callback
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.gui import LazyWidgetsDict
-from horizons.ambientsound import AmbientSound
 from horizons.i18n.utils import N_
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
@@ -64,12 +67,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
+		build_help_strings(self.widgets['help'])
 		self.session = None
 		self.current_dialog = None
 
 		self.dialog_executed = False
 
 		self.__pause_displayed = False
+		self._background_image = self._get_random_background()
 
 # basic menu widgets
 
@@ -166,7 +171,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def show_settings(self):
-		horizons.main.fife._setting.onOptionsPress()
+		horizons.main.fife.show_settings()
 
 	_help_is_displayed = False
 	def on_help(self):
@@ -178,6 +183,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			# make game pause if there is a game and we're not in the main menu
 			if self.session is not None and self.current != self.widgets['ingamemenu']:
 				self.session.speed_pause()
+			if self.session is not None:
+				self.session.ingame_gui.on_escape() # close dialogs that might be open
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
 			self.on_help() # toggle state
 		else:
@@ -216,7 +223,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		Called chime action. Displaying call for help on artists and game design,
 		introduces information for SoC applicants (if valid).
 		"""
-		AmbientSound.play_special("message")
+		AmbientSoundComponent.play_special("message")
 		self.show_dialog(self.widgets['call_for_support'], {'okButton' : True}, onPressEscape = True)
 
 	def show_credits(self, number=0):
@@ -254,6 +261,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# Prepare widget
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
+		self.current.findChild(name='okButton').tooltip = _('Save game') if mode == 'save' else _('Load game')
 
 		if not hasattr(self, 'filename_hbox'):
 			self.filename_hbox = self.current.findChild(name='enter_filename')
@@ -350,14 +358,17 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			try:
 				self.current.additional_widget.hide()
 				del self.current.additional_widget
-			except AttributeError as e:
+			except AttributeError:
 				pass # only used for some widgets, e.g. pause
 
+	def is_visible(self):
+		return self.current is not None and self.current.isVisible()
 
-	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
+
+	def show_dialog(self, dlg, bind, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
-		@param actions: actions that are executed by the dialog { 'ok': callback, 'cancel': callback }
+		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
 		@param onPressEscape: callback that is to be called if the escape button is pressed
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 		"""
@@ -371,18 +382,19 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					dlg.hide()
 			dlg.capture(_escape, event_name="keyPressed")
 		self.dialog_executed = True
-		ret = dlg.execute(actions)
+		ret = dlg.execute(bind)
 		self.dialog_executed = False
 		return ret
 
-	def show_popup(self, windowtitle, message, show_cancel_button = False):
+	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0):
 		"""Displays a popup with the specified text
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, show cancel button or not
+		@param size: 0, 1 or 2. Larger means bigger.
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
-		popup = self.build_popup(windowtitle, message, show_cancel_button)
+		popup = self.build_popup(windowtitle, message, show_cancel_button, size=size)
 		if show_cancel_button:
 			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 		else:
@@ -406,21 +418,32 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			msg += _(u"Details:") + u" " + details
 		self.show_popup( _(u"Error:") + u" " + windowtitle, msg, show_cancel_button=False)
 
-	def build_popup(self, windowtitle, message, show_cancel_button = False):
+	def build_popup(self, windowtitle, message, show_cancel_button = False, size=0):
 		""" Creates a pychan popup widget with the specified properties.
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, include cancel button or not
+		@param size: 0, 1 or 2
 		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
 		"""
+		if size == 0:
+			wdg_name = "popup_230"
+		elif size == 1:
+			wdg_name = "popup_290"
+		elif size == 2:
+			wdg_name = "popup_350"
+		else:
+			assert False, "size should be 0 <= size <= 2, but is "+str(size)
+
 		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
 		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
-		if show_cancel_button:
-			self.widgets.reload('popup_with_cancel')
-			popup = self.widgets['popup_with_cancel']
-		else:
-			self.widgets.reload('popup')
-			popup = self.widgets['popup']
+		self.widgets.reload(wdg_name)
+		popup = self.widgets[wdg_name]
+
+		if not show_cancel_button:
+			cancel_button = popup.findChild(name="cancelButton")
+			cancel_button.parent.removeChild(cancel_button)
+
 		headline = popup.findChild(name='headline')
 		# just to be safe, the gettext-function is used twice,
 		# once on the original, once on the unicode string.
@@ -448,12 +471,18 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
+		# Set background image
+		bg = self.current.findChild(name='background')
+		if bg:
+			bg.image = self._background_image
+
 		if center:
 			self.current.position_technique = "automatic" # "center:center"
 		if event_map:
 			self.current.mapEvents(event_map)
 		if show:
 			self.current.show()
+
 		return old
 
 	@staticmethod
@@ -479,14 +508,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				return
 			savegame_info = SavegameManager.get_metadata(map_file)
 
-			# screenshot
-			if savegame_info['screenshot'] is not None:
+			# screenshot (len can be 0 if save failed in a weird way)
+			if savegame_info['screenshot'] is not None and len(savegame_info['screenshot']) > 0:
 				# try to find a writeable location, that is accessible via relative paths
 				# (required by fife)
 				fd, filename = tempfile.mkstemp()
 				try:
 					path_rel = os.path.relpath(filename)
 				except ValueError: # the relative path sometimes doesn't exist on win
+					os.close(fd)
 					os.unlink(filename)
 					# try again in the current dir, it's often writable
 					fd, filename = tempfile.mkstemp(dir=os.curdir)
@@ -503,7 +533,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					os.unlink(filename)
 
 			# savegamedetails
-			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
+			details_label = pychan.widgets.Label(min_size=(290, 0), max_size=(290, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
@@ -532,9 +562,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				else:
 					#xgettext:python-format
 					details_label.text += _("WARNING: Incompatible version {version}!").format(
-					                         version=savegame_info['savegamerev']) + u"\n" + \
-					                      _("Required version: {required}!").format(
-					                         required=VERSION.SAVEGAMEREVISION) #xgettext:python-format
+					                         version=savegame_info['savegamerev']) + u"\n"
+					#xgettext:python-format
+					details_label.text += _("Required version: {required}!").format(
+					                         required=VERSION.SAVEGAMEREVISION)
 			except KeyError:
 				details_label.text += _("Incompatible version")
 
@@ -568,3 +599,41 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				return False
 		else: # player cancelled deletion
 			return False
+
+	def _get_random_background(self):
+		"""Randomly select a background image to use through out the game menu."""
+		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
+		return random.choice(available_images)
+
+def build_help_strings(widgets):
+	"""
+	Loads the help strings from pychan object widgets (containing no key definitions)
+	and adds 	the keys defined in the keyconfig configuration object in front of them.
+	The layout is defined through HELPSTRING_LAYOUT and translated.
+	"""
+	#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
+	#xgettext:python-format
+	HELPSTRING_LAYOUT = _('[{key}] = {text}')
+
+	#HACK Ugliness starts; load actions defined through keys and map them to FIFE key strings
+	actions = KeyConfig._Actions.__dict__
+	reversed_keys = dict([[str(v),k] for k,v in fife.Key.__dict__.iteritems()])
+	reversed_stringmap = dict([[str(v),k] for k,v in KeyConfig().keystring_mappings.iteritems()])
+	reversed_keyvalmap = dict([[str(v), reversed_keys[str(k)]] for k,v in KeyConfig().keyval_mappings.iteritems()])
+	actionmap = dict(reversed_stringmap, **reversed_keyvalmap)
+	#HACK Ugliness ends here; These hacks can be removed once a config file exists which is nice to parse.
+
+	labels = widgets.getNamedChildren()
+	# filter misc labels that do not describe key functions
+	labels = dict( [(name, lbl) for (name, lbl) in labels.items() if name.startswith('lbl_')] )
+
+	# now prepend the actual keys to the function strings defined in xml
+	for (name, lbl) in labels.items():
+		try:
+			keyname = '{key}'.format(key=actionmap[str(actions[name[4:]])])
+		except KeyError:
+			keyname = ' '
+		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
+
+	author_label = widgets.findChild(name='fife_and_uh_team')
+	author_label.tooltip = u"www.unknown-[br]horizons.org[br]www.fifengine.net"

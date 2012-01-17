@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,15 +24,16 @@ import logging
 
 from horizons.scheduler import Scheduler
 
-from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding import PathBlockedError
 from horizons.util import WorldObject, decorators, Callback
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 from horizons.constants import COLLECTORS
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
-class Collector(StorageHolder, Unit):
+class Collector(Unit):
 	"""Base class for every collector. Does not depend on any home building.
 
 	Timeline:
@@ -73,15 +74,12 @@ class Collector(StorageHolder, Unit):
 
 	# INIT/DESTRUCT
 
-	def __init__(self, x, y, slots = 1, size = COLLECTORS.DEFAULT_STORAGE_SIZE, start_hidden=True, **kwargs):
+	def __init__(self, x, y, slots = 1, start_hidden=True, **kwargs):
 		super(Collector, self).__init__(slots = slots, \
-		                                size = size, \
 		                                x = x, \
 		                                y = y, \
 		                                **kwargs)
 
-		self.inventory.limit = size
-		# TODO: use different storage to support multiple slots. see StorageHolder
 
 		self.__init(self.states.idle, start_hidden)
 
@@ -231,7 +229,7 @@ class Collector(StorageHolder, Unit):
 		"""Checks our if we "are allowed" and able to pick up from the target"""
 		# Discard building if it works for same inventory (happens when both are storage buildings
 		# or home_building is checked out)
-		if target.inventory == self.get_home_inventory():
+		if target.get_component(StorageComponent).inventory == self.get_home_inventory():
 			#self.log.debug("nojob: same inventory")
 			return False
 
@@ -274,7 +272,7 @@ class Collector(StorageHolder, Unit):
 			#self.log.debug("nojob: no home inventory space")
 			return None
 
-		collector_inventory_free_space = self.inventory.get_free_space_for(res)
+		collector_inventory_free_space = self.get_component(StorageComponent).inventory.get_free_space_for(res)
 		if collector_inventory_free_space <= 0:
 			#self.log.debug("nojob: no collector inventory space")
 			return None
@@ -282,7 +280,7 @@ class Collector(StorageHolder, Unit):
 		possible_res_amount = min(res_amount, home_inventory_free_space, \
 		                          collector_inventory_free_space)
 
-		target_inventory_full = (target.inventory.get_free_space_for(res) == 0)
+		target_inventory_full = (target.get_component(StorageComponent).inventory.get_free_space_for(res) == 0)
 
 		# create a new job.
 		return Job(target, res, possible_res_amount, target_inventory_full)
@@ -337,8 +335,10 @@ class Collector(StorageHolder, Unit):
 		assert self.job is not None, '%s job is None in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, self.work_duration)
 		# play working sound
-		if self.soundfiles:
-			self.play_ambient(self.soundfiles[0], looping=False)
+		if self.has_component(AmbientSoundComponent):
+			am_comp = self.get_component(AmbientSoundComponent)
+			if len(am_comp.soundfiles) > 0:
+				am_comp.play_ambient(am_comp.soundfiles[0], looping=False)
 		self.state = self.states.working
 
 	def finish_working(self):
@@ -353,15 +353,15 @@ class Collector(StorageHolder, Unit):
 		#               target inventory changelistener, and the collector must be in a consistent state then.
 		self.transfer_res_from_target()
 		# stop playing ambient sound if any
-		if self.soundfiles:
-			self.stop_sound()
+		if self.has_component(AmbientSoundComponent):
+			self.get_component(AmbientSoundComponent).stop_sound()
 
 	def transfer_res_from_target(self):
 		"""Transfers resources from target to collector inventory"""
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount, self)
 		if res_amount != self.job.amount:
 			self.job.amount = res_amount # update job amount
-		remnant = self.inventory.alter(self.job.res, res_amount)
+		remnant = self.get_component(StorageComponent).inventory.alter(self.job.res, res_amount)
 		assert remnant == 0, "%s couldn't take all of res %s; remnant: %s; planned: %s; acctual %s" % \
 		       (self, self.job.res, remnant, self.job.amount, res_amount)
 
@@ -370,9 +370,9 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("%s brought home %s of %s", self, amount, res)
 		remnant = self.get_home_inventory().alter(res, amount)
 		#assert remnant == 0, "Home building could not take all resources from collector."
-		remnant = self.inventory.alter(res, -amount)
+		remnant = self.get_component(StorageComponent).inventory.alter(res, -amount)
 		assert remnant == 0, "%s couldn't give all of res %s; remnant: %s; inventory: %s" % \
-		       (self, res, remnant, self.inventory)
+		       (self, res, remnant, self.get_component(StorageComponent).inventory)
 
 	""" unused for now
 	def reroute(self):

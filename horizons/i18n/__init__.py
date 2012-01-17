@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,16 @@
 # ###################################################
 
 import logging
-import os
 import weakref
 
-from fife.extensions import pychan
-
-import horizons.main
-from horizons.i18n.guitranslations import set_translations, text_translations
+import horizons.i18n.objecttranslations
+from horizons.i18n.guitranslations import set_translations
 
 log = logging.getLogger("i18n")
 
 # init translations
 set_translations()
+objecttranslations.set_translations()
 
 # save translated widgets
 translated_widgets = {}
@@ -46,9 +44,10 @@ def translate_widget(untranslated, filename):
 	global translated_widgets
 	if filename in guitranslations.text_translations:
 		for entry in guitranslations.text_translations[filename].iteritems():
-			widget = untranslated.findChild(name=entry[0])
-			replace_attribute(widget, entry[1][0], entry[1][1])
-			widget.adaptLayout()
+			widget = untranslated.findChild(name=entry[0][0])
+			if widget is not None:
+				replace_attribute(widget, entry[0][1], entry[1])
+				widget.adaptLayout()
 	else:
 		log.debug('No translation for file %s', filename)
 
@@ -60,16 +59,20 @@ def translate_widget(untranslated, filename):
 
 def update_all_translations():
 	"""Update the translations in every active widget"""
+	from horizons.gui.gui import build_help_strings
 	global translated_widgets
 	set_translations()
+	objecttranslations.set_translations()
 	for (filename, widget) in translated_widgets.iteritems():
 		widget = widget() # resolve weakref
 		if not widget:
 			continue
-		for element_name, (attribute, translation) in guitranslations.text_translations.get(filename,{}).iteritems():
+		for (element_name, attribute), translation in guitranslations.text_translations.get(filename,{}).iteritems():
 			element = widget.findChild(name=element_name)
 			replace_attribute(element, attribute, translation)
-			widget.adaptLayout()
+		if filename == 'help.xml':
+			build_help_strings(widget)
+		widget.adaptLayout()
 
 
 def replace_attribute(widget, attribute, text):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -44,13 +44,28 @@ class StringPreviewWidget(object):
 		self.scenarios = SavegameManager.get_scenarios()
 		self.listbox = self._gui.findChild(name="scenario_list")
 		self.listbox.items = self.scenarios[1]
+		self.listbox.capture(self.update_infos)
+
+		self.statslabel = self._gui.findChild(name="stats")
 
 		self.logbook = LogBook(session)
+
+	def update_infos(self):
+		"""Updates the status label while scrolling the scenario list. No up-
+		date to logbook messages. Those are loaded after Load/Reload is clicked.
+		"""
+		scenario_file_path = self.scenarios[0][self.listbox.selected]
+		data = yaml.load(open(scenario_file_path, 'r'))
+		try:
+			stats = data['translation_status']
+		except KeyError as err:
+			stats = '' # no translation stats available, display empty label
+		self.statslabel.text = unicode(stats)
 
 	def load(self):
 		"""Load selected scenario and show strings"""
 		if self.listbox.selected == -1:
-			self._gui.findChild(name="hintlbl").text = u"you need to select sth in the list above"
+			self._gui.findChild(name="hintlbl").text = u"Select a scenario first."
 		else:
 			self._gui.findChild(name="hintlbl").text = u""
 
