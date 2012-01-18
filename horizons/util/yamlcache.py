@@ -43,6 +43,8 @@ class YamlCache(object):
 	cache = None
 	cache_filename = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
 
+	sync_scheduled = False
+
 	lock = threading.Lock()
 
 	@classmethod
@@ -68,6 +70,11 @@ class YamlCache(object):
 			 (not filename in cls.cache):
 			cls.lock.acquire()
 			cls.cache[filename] = (h, yaml.load( f, Loader = SafeLoader ) )
+			if not cls.sync_scheduled:
+				cls.sync_scheduled = True
+				from horizons.extscheduler import ExtScheduler
+				ExtScheduler().add_new_object(cls._do_sync, cls, run_in=1)
+
 			cls.lock.release()
 
 		return cls.cache[filename][1]
@@ -95,4 +102,13 @@ class YamlCache(object):
 			print "Warning: you probably have an old cache file; deleting and retrying"
 			os.remove(cls.cache_filename)
 			cls.cache = shelve.open(cls.cache_filename)
+		cls.lock.release()
+
+
+	@classmethod
+	def _do_sync(cls):
+		"""Only write to disc once in a while, it's too slow when done every time"""
+		cls.lock.acquire()
+		cls.sync_scheduled = False
+		cls.cache.sync()
 		cls.lock.release()
