@@ -19,21 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template, \
+	read_island_template
 import fife.extensions.savers as mapSavers
-
 import horizons.main # necessary so the correct load order of all modules is guaranteed
-
-from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template, read_island_template
-
+import os.path
+import re
 import scripts.editor
 import scripts.plugin
-
-import os.path
 import shutil
-
-import re
-
 import util
+
+
+
+
+
+
 
 TEMPLATE_DATAFORMAT_PATH = os.path.join(util.getUHPath(), 'content', 'savegame_template.sql')
 
@@ -100,7 +101,6 @@ class MapSaver:
 	
 	def _buildGroundTilesLayerArray(self):
 		"""Builds a tuple representation of all the ground tiles"""
-		print "_buildGroundTilesLayerArray"
 		# A representation of all the tiles, syntax is tiles(x, y, instance of groundtile)
 		tiles = {}
 		
@@ -129,7 +129,6 @@ class MapSaver:
 	
 	def _partitionGroundtilesToIslands(self, tiles):
 		"""Builds partitions from the ground tiles so that an island consists of all connected groundtiles. Each groundtile is connected to an island"""
-		print "_partitionGroundtilesToIslands"
 		islandCounter = 1
 		for x in range(self.x_minimum, self.x_maximum + 1):
 			for y in range(self.y_minimum, self.y_maximum + 1): 
@@ -194,7 +193,7 @@ class MapSaver:
 
 	def saveResource(self):
 		try:
-			savepath = self._filepath + '.saved.sqlite'
+			savepath = self._filepath
 			if os.path.exists(savepath):
 				os.remove(savepath)
 			self._mapDatabase = self._create_map_db(savepath)
