@@ -22,6 +22,7 @@
 import os
 import shelve
 import yaml
+import threading
 
 try:
 	from yaml import CSafeLoader as SafeLoader
@@ -36,12 +37,15 @@ SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_s
 from horizons.constants import PATHS
 
 class YamlCache(object):
-	"""Loads and caches YAML files in a shelve
+	"""Loads and caches YAML files in a shelve.
+	Threadsafe.
 	"""
 	cache = {}
 	virgin = True
 	dirty = False
 	yaml_cache = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
+
+	lock = threading.Lock()
 
 	@classmethod
 	def get_file(cls, filename):
@@ -71,6 +75,7 @@ class YamlCache(object):
 
 	@classmethod
 	def _write_bin_file(cls):
+		cls.lock.acquire()
 		try:
 			s = shelve.open(cls.yaml_cache)
 		except UnicodeError as e:
@@ -84,9 +89,11 @@ class YamlCache(object):
 			# TODO : manage unicode problems (paths with accents ?)
 			s[str(key)] = value # We have to decode it because _user_dir is encoded in constants
 		s.close()
+		cls.lock.release()
 
 	@classmethod
 	def _read_bin_file(cls):
+		cls.lock.acquire()
 		try:
 			s = shelve.open(cls.yaml_cache)
 		except ImportError:
@@ -111,3 +118,4 @@ class YamlCache(object):
 		for key, value in s.iteritems():
 			cls.cache[key] = value
 		s.close()
+		cls.lock.release()
