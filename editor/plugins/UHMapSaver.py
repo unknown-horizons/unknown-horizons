@@ -153,7 +153,8 @@ class MapSaver:
 								# Tile already connected to other island this. 
 								# -> Merge the two islands by replacing references of the first one with the second one.
 								(oldIsland, tmpInstance) = tiles[(x, y - 1)]
-								tiles = self._updateExistingIslandName(tiles, oldIsland, connectedIsland)
+								if oldIsland != connectedIsland:
+									tiles = self._updateExistingIslandName(tiles, oldIsland, connectedIsland)
 					except KeyError:
 						pass
 					if isConnected == False:
