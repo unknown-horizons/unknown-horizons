@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2012-01-19 00:42+0200\n"
+"PO-Revision-Date: 2012-01-19 00:43+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -2635,11 +2635,8 @@ msgstr "Signaal Vuur"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:228
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
-msgstr ""
-"Signal vuur: Biedt de speler de mogelijkheid om met de vrije handelaar te "
-"handelen."
+msgstr "Biedt de mogelijkheid om met de vrije handelaar te handelen."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:233
@@ -2670,10 +2667,8 @@ msgstr "Suikerveld"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:249
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
-"Suikerriet veld: Gebruikt voor de drank productie. Benodigd een boerderij."
+msgstr "Gebruikt voor de drank productie. Benodigd een boerderij."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:254
@@ -2743,9 +2738,8 @@ msgstr "Spoor"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Spoor: Vereist om goederen te verzamelen."
+msgstr "Vereist om goederen te verzamelen."
 
 #. name of buildings:tree
 #. tooltip_text of buildings:tree
