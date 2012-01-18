@@ -78,7 +78,7 @@ class YamlCache(object):
 			# converts it internally to ascii and fails to open the file. Since this is just a cache,
 			# we don't require it for the game to function, there is just a slight speed penality
 			# on every startup
-			print "Warning: failed to open "+cls.yaml_cache+": "+e
+			print "Warning: failed to open "+cls.yaml_cache+": "+unicode(e)
 			return
 		for key, value in cls.cache.iteritems():
 			# TODO : manage unicode problems (paths with accents ?)
@@ -98,7 +98,7 @@ class YamlCache(object):
 			os.remove(cls.yaml_cache)
 			s = shelve.open(cls.yaml_cache)
 		except UnicodeError as e:
-			print "Warning: failed to open "+cls.yaml_cache+": "+e
+			print "Warning: failed to open "+cls.yaml_cache+": "+unicode(e)
 			return # see _write_bin_file
 		except Exception as e:
 			# same as for the ImportError. If there is an old database file that was created with a
