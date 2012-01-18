@@ -76,6 +76,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			self.settlement = self.island.add_settlement(self.position, self.radius, owner) if \
 			    owner is not None else None
 
+		assert isinstance(self.settlement, Settlement)
+
 	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None, action_set_id=None):
 		self.owner = owner
 		if level is None:

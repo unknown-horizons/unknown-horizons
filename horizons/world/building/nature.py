@@ -24,7 +24,7 @@ from horizons.world.building.buildable import BuildableRect, BuildableSingleEver
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.entities import Entities
-from horizons.constants import LAYERS
+from horizons.constants import LAYERS, BUILDINGS
 from horizons.gui.tabs import ResourceDepositOverviewTab
 from horizons.world.building.building import SelectableBuilding
 from horizons.world.component.storagecomponent import StorageComponent
@@ -44,6 +44,19 @@ class ProducerNatureBuilding(ProducerBuilding, NatureBuilding):
 class Field(ProducerNatureBuilding):
 	walkable = False
 	layer = LAYERS.FIELDS
+
+	def __init__(self, **kwargs):
+		super(Field, self).__init__(**kwargs)
+		self._check_covered_by_farm()
+
+	def _check_covered_by_farm(self):
+		"""Warn in case there is no farm nearby to cultivate the field"""
+		farm_in_range = any( (farm.position.distance( self.position ) <= farm.radius) for farm in
+		                     self.settlement.get_buildings_by_id( BUILDINGS.FARM_CLASS ) )
+		if not farm_in_range:
+			pos = self.position.origin
+			self.session.ingame_gui.message_widget.add(pos.x, pos.y, "FIELD_NEEDS_FARM",
+			                                           check_duplicate=True)
 
 class AnimalField(CollectingBuilding, Field):
 	walkable = False

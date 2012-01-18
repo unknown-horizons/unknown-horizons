@@ -39,7 +39,6 @@ class HealthComponent(Component):
 		assert maxhealth is not None, "Can not add HealthComponent without maxhealth!"
 		self.max_health = float(maxhealth) if maxhealth is not None else None
 
-
 	def initialize(self):
 		self.health = float(self.max_health)
 		self.add_damage_dealt_listener(self.check_if_alive)
