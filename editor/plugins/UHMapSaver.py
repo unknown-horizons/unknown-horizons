@@ -30,12 +30,6 @@ import scripts.plugin
 import shutil
 import util
 
-
-
-
-
-
-
 TEMPLATE_DATAFORMAT_PATH = os.path.join(util.getUHPath(), 'content', 'savegame_template.sql')
 
 class MapSaver:
@@ -193,10 +187,10 @@ class MapSaver:
 
 	def saveResource(self):
 		try:
-			savepath = self._filepath
-			if os.path.exists(savepath):
-				os.remove(savepath)
-			self._mapDatabase = self._create_map_db(savepath)
+			if os.path.exists(self._filepath):
+				backuppath = self._filepath + "_backup.sqlite"
+				shutil.move(self._filepath, backuppath)
+			self._mapDatabase = self._create_map_db(self._filepath)
 		except IOError as exception:
 			print "Did not save map!"
 			raise exception
@@ -207,7 +201,7 @@ class MapSaver:
 			self._saveIslands()
 			self._mapDatabase("COMMIT TRANSACTION");
 			
-			print "Successfully saved " + savepath 
+			print "Successfully saved " + self._filepath 
 	
 	def _create_map_db(self, savepath):
 		"""Returns a dbreader instance, that is connected to the main game data dbfiles."""
