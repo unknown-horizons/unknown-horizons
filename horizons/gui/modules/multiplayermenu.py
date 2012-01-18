@@ -266,16 +266,16 @@ class MultiplayerMenu(object):
 		chatbox.selected = len(chatbox.items) - 1
 
 	def __player_joined(self, game, player):
-		self.__print_event_message("{player} has joined the game".format(player=player.name))
+		self.__print_event_message(u"{player} has joined the game".format(player=player.name))
 
 	def __player_left(self, game, player):
-		self.__print_event_message("{player} has left the game".format(player=player.name))
+		self.__print_event_message(u"{player} has left the game".format(player=player.name))
 
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:
-			self.__print_event_message("You are now known as {new_name}".format(new_name=plnew.name))
+			self.__print_event_message(u"You are now known as {new_name}".format(new_name=plnew.name))
 		else:
-			self.__print_event_message("{player} is now known as {new_name}".format(player=plold.name, new_name=plnew.name))
+			self.__print_event_message(u"{player} is now known as {new_name}".format(player=plold.name, new_name=plnew.name))
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""

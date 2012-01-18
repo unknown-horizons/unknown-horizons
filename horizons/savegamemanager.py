@@ -104,9 +104,9 @@ class SavegameManager(object):
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):
-				name = "Autosave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
+				name = u"Autosave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
 			elif f.startswith(cls.quicksave_dir):
-				name = "Quicksave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
+				name = u"Quicksave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
 			else:
 				name = os.path.splitext(os.path.basename(f))[0]
 
@@ -149,7 +149,7 @@ class SavegameManager(object):
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
 		prepared_filename = time.strftime(cls.quicksave_filenamepattern.format(timestamp=time.time()))
-		name = "{directory}{sep}{name}".format(directory=cls.quicksave_dir, sep=os.sep, name=prepared_filename)
+		name = u"{directory}{sep}{name}".format(directory=cls.quicksave_dir, sep=os.sep, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 

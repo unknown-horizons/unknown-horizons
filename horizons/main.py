@@ -383,7 +383,7 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 			map_file = map_name
 		else:
 			#xgettext:python-format
-			print "Error: Cannot find map '{name}'.".format(name=map_name)
+			print u"Error: Cannot find map '{name}'.".format(name=map_name)
 			return False
 	if len(map_file.splitlines()) > 1:
 		print "Error: Found multiple matches:"
@@ -431,7 +431,7 @@ def _start_campaign(campaign_name):
 	campaign = SavegameManager.get_campaign_info(name = campaign_name)
 	if not campaign:
 		#xgettext:python-format
-		print "Error: Cannot find campaign '{name}'.".format(campaign_name)
+		print u"Error: Cannot find campaign '{name}'.".format(campaign_name)
 		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
@@ -463,7 +463,7 @@ def _load_map(savegame, ai_players, human_ai):
 			map_file = savegame
 		else:
 			#xgettext:python-format
-			print "Error: Cannot find savegame '{name}'.".format(name=savegame)
+			print u"Error: Cannot find savegame '{name}'.".format(name=savegame)
 			return False
 	if len(map_file.splitlines()) > 1:
 		print "Error: Found multiple matches:"
