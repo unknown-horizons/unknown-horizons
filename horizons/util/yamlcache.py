@@ -69,7 +69,9 @@ class YamlCache(object):
 				cls.cache[filename][0] != h) or \
 			 (not filename in cls.cache):
 			cls.dirty = True
+			cls.lock.acquire()
 			cls.cache[filename] = (h, yaml.load( f, Loader = SafeLoader ) )
+			cls.lock.release()
 
 		return cls.cache[filename][1]
 
