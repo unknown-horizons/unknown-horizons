@@ -28,8 +28,6 @@ from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template, rea
 import scripts.editor
 import scripts.plugin
 
-from operator import itemgetter
-
 import os.path
 import shutil
 
@@ -49,11 +47,13 @@ class MapSaver:
 		self._mapDatabase = None
 	
 	def _extractPositionRotationFromInstance(self, instance):
+		"""Extracts the position and the rotation from an instance and returns it as a tuple"""
 		rotation = (instance.getRotation() + 45) % 360
 		position = instance.getLocationRef().getExactLayerCoordinates()
 		return (position, rotation)
 			
 	def _saveBuildings(self):
+		"""Saves all objects placed on the building layer"""
 		building_layer = self._map.getLayer(util.BUILDING_LAYER_NAME)
 		instances = building_layer.getInstances()
 		for instance in instances:
@@ -61,26 +61,22 @@ class MapSaver:
 			(position, rotation) = self._extractPositionRotationFromInstance(instance)
 			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
 			
-	def _saveGroundTiles(self):
-		print "Saving ground tiles ..."
-		# do partitioning of islands
-		
-			#self._islandDatabase("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, instance.getObject().getId(), "straight", 45)
-		pass
 	
 	def _saveIslands(self):
+		"""Saves all islands by calling _saveIsland on each of them and linking the generated islands to the MapFile"""
 		tiles = self._buildGroundTilesLayerArray()
-		tiles = self._groupGroundTilesToIslands(tiles)
+		tiles = self._partitionGroundtilesToIslands(tiles)
 		islandsToGroundtiles = self._partitionIslandsFromGroundTiles(tiles)
 		for islandName in islandsToGroundtiles:
 			island_filename = os.path.basename(self._filepath)
-			relative_island_filepath = os.path.join('content', 'islands', island_filename+"_"+islandName+".sqlite")
+			relative_island_filepath = os.path.join('content', 'islands', island_filename + "_" + islandName + ".sqlite")
 			
 			self._saveIsland(islandName, relative_island_filepath, islandsToGroundtiles[islandName])
 			self._mapDatabase("INSERT INTO island VALUES (?, ?, ?)", 0, 0, relative_island_filepath)
 		
 
 	def _saveIsland(self, name, relative_island_filepath, tiles):
+		"""Writes an SQL file for an island"""
 		island_filepath = os.path.join(util.getUHPath(), relative_island_filepath)
 		print "Saving island " + island_filepath
 		if os.path.exists(island_filepath):
@@ -95,7 +91,7 @@ class MapSaver:
 			if instance.getCurrentAction() != None:
 				action_id = instance.getCurrentAction().getId()
 			# TODO (MMB) a bit of a hack to only get the name without a possible _ts_curved etc. suffix
-			action_id = re.sub("_ts.*","", action_id)
+			action_id = re.sub("_ts.*", "", action_id)
 			(position, rotation) = self._extractPositionRotationFromInstance(instance)
 			island_db("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, type, action_id, rotation)
 		island_db("COMMIT TRANSACTION");
@@ -103,6 +99,7 @@ class MapSaver:
 		pass
 	
 	def _buildGroundTilesLayerArray(self):
+		"""Builds a tuple representation of all the ground tiles"""
 		print "_buildGroundTilesLayerArray"
 		# A representation of all the tiles, syntax is tiles(x, y, instance of groundtile)
 		tiles = {}
@@ -130,53 +127,56 @@ class MapSaver:
 				self.y_minimum = y
 		return tiles
 	
-	def _groupGroundTilesToIslands(self, tiles):
-		print "_groupGroundTilesToIslands"
+	def _partitionGroundtilesToIslands(self, tiles):
+		"""Builds partitions from the ground tiles so that an island consists of all connected groundtiles. Each groundtile is connected to an island"""
+		print "_partitionGroundtilesToIslands"
 		islandCounter = 1
-		for x in range(self.x_minimum, self.x_maximum+1):
-			for y in range(self.y_minimum, self.y_maximum+1): 
+		for x in range(self.x_minimum, self.x_maximum + 1):
+			for y in range(self.y_minimum, self.y_maximum + 1): 
 				try:
 					(connectedIsland, instance) = tiles[(x, y)]
 					isConnected = False
 					
 					try:
-						if tiles[(x-1, y)] != None:
-							# Connect tile to existing island
-							(connectedIsland, tmpInstance) =  tiles[(x-1, y)] 
+						if tiles[(x - 1, y)] != None:
+							# Tile not yet connected
+							# Left connect of unconnected groundtile to existing island
+							(connectedIsland, tmpInstance) = tiles[(x - 1, y)] 
 							tiles[(x, y)] = (connectedIsland, instance)
 							isConnected = True
-							#print "Left merger of groundtiles to existing island" + str(connectedIsland)
 					except KeyError:
 						pass
 					
 					try:
-						if tiles[(x, y-1)] != None:
+						if tiles[(x, y - 1)] != None:
+							# Up connect of unconnected groundtile to existing island
 							if isConnected == False:
-								(connectedIsland, tmpInstance) =  tiles[(x, y-1)] 
+								# Tile not yet connected
+								(connectedIsland, tmpInstance) = tiles[(x, y - 1)] 
 								tiles[(x, y)] = (connectedIsland, instance)
 								isConnected = True
-								#print "Up merger of groundtiles to existing island" + str(connectedIsland)
 						
 							else:
-								(oldIsland, tmpInstance) = tiles[(x, y-1)]
+								# Tile already connected to other island this. 
+								# -> Merge the two islands by replacing references of the first one with the second one.
+								(oldIsland, tmpInstance) = tiles[(x, y - 1)]
 								tiles = self._updateExistingIslandName(tiles, oldIsland, connectedIsland)
-								#print "Merger of two existing islands " + str(oldIsland) + " into new island " + str(connectedIsland)
 					except KeyError:
 						pass
 					if isConnected == False:
-						# create new island
-						tiles[(x,y)] = ("island_" + str(islandCounter), instance)
+						# Tile not yet connected						
+						# Create new island
+						tiles[(x, y)] = ("island_" + str(islandCounter), instance)
 						islandCounter += 1
-						#print "Creating new island..."
-						#print tiles[(x,y)]
 				except KeyError:
 					pass			
 		return tiles
 
 	
 	def _updateExistingIslandName(self, tiles, oldIsland, newIsland):
-		for (x,y) in tiles:
-			(name, instance) = tiles[(x,y)]
+		"""Replaces occurrences from oldIsland to newIsland"""
+		for (x, y) in tiles:
+			(name, instance) = tiles[(x, y)]
 			if name == oldIsland:
 				tiles[(x, y)] = (newIsland, instance)
 		return tiles
@@ -189,7 +189,7 @@ class MapSaver:
 			try:
 				islandsToGroundtiles[islandName].append(instance)
 			except KeyError:
-				islandsToGroundtiles[islandName] = [instance,]
+				islandsToGroundtiles[islandName] = [instance, ]
 		return islandsToGroundtiles
 
 	def saveResource(self):
@@ -227,7 +227,7 @@ class MapSaver:
 		return db
 	
 class UHMapSaver(scripts.plugin.Plugin):
-	""" The {UHMapSaver} allows to load the UH map format in FIFEdit
+	""" The {UHMapSaver} allows to save the UH map format in FIFEdit
 	"""
 
 	def __init__(self):
