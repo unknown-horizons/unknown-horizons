@@ -132,8 +132,7 @@ class IngameGui(LivingObject):
 		self.widgets['status'].child_finder = PychanChildFinder(self.widgets['status'])
 		self.widgets['status_extra'].child_finder = PychanChildFinder(self.widgets['status_extra'])
 
-		self.message_widget = MessageWidget(self.session, \
-		                                    cityinfo.position[0] + cityinfo.size[0], 5)
+		self.message_widget = MessageWidget(self.session)
 		self.widgets['status_gold'].show()
 		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
