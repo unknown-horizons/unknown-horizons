@@ -90,21 +90,21 @@ class BuildTab(TabInterface):
 
 	text_data = {
 		1 : {
-			 1 : 'Residents and infrastructure',
-			 3 : 'Services',
-			 5 : 'Companies',
+			 1 : _('Residents and infrastructure'),
+			 3 : _('Services'),
+			 5 : _('Companies'),
 		      },
 		2 : {
-			 1 : 'Companies',
-			 3 : 'Fields',
-			 5 : 'Services',
-			25 : 'Military',
+			 1 : _('Companies'),
+			 3 : _('Fields'),
+			 5 : _('Services'),
+			25 : _('Military'),
 		      },
 		3 : {
-			 1 : 'Mining',
-			 3 : 'Companies',
-			 5 : 'Fields',
-			 7 : 'Services',
+			 1 : _('Mining'),
+			 3 : _('Companies'),
+			 5 : _('Fields'),
+			 7 : _('Services'),
 		      },
 		}
 
@@ -152,8 +152,8 @@ class BuildTab(TabInterface):
 			icon = self.widget.child_finder('icon_{position}'.format(position=position))
 
 			#xgettext:python-format
-			button.tooltip = _('{building}: {description}').format(building = building.name,
-			                                                    description = building.tooltip_text)
+			button.tooltip = _('{building}: {description}').format(building = _(building.name),
+			                                                    description = _(building.tooltip_text))
 			cb = Callback( self.session.ingame_gui.resourceinfo_set,
 						settlement, building.costs, {})
 
@@ -184,7 +184,7 @@ class BuildTab(TabInterface):
 		"""
 		for position, heading in self.__class__.text_data[tabindex].iteritems():
 			lbl = self.widget.child_finder('label_{position}'.format(position=position))
-			lbl.text = _(heading)
+			lbl.text = heading
 
 	def refresh(self):
 		pass
