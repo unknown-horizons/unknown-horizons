@@ -132,6 +132,7 @@ class NavigationTool(CursorTool):
 			settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 			self.__class__.__last_hover_player_settlement = weakref.ref(settlement) if \
 			  settlement and settlement.owner == self.session.world.player else None
+			self.session.ingame_gui.cityinfo_set(settlement)
 			self.session.ingame_gui.resourceinfo_set(settlement) # set for any settlement
 
 		# Mouse scrolling

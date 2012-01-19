@@ -170,7 +170,7 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('found_settlement').tooltip = tooltip
 
 		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set, self.instance,
-			Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs, {}, res_from_ship = True)
+			Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs, {})
 		events['found_settlement/mouseEntered'] = cb
 
 		cb1 = Callback(self.instance.session.ingame_gui.resourceinfo_set, None) # hides the resource status widget

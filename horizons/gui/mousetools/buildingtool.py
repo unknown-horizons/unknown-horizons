@@ -257,8 +257,7 @@ class BuildingTool(NavigationTool):
 				self.renderer.addColored(self.buildings_fife_instances[building], \
 				                         *self.not_buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
-			self.ship if self.ship is not None else settlement, neededResources, usableResources, \
-			res_from_ship = bool(self.ship))
+			self.ship if self.ship is not None else settlement, neededResources, usableResources)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def _make_surrounding_transparent(self, building_position):
