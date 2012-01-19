@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2011-12-18 02:23+0200\n"
-"Last-Translator: Christopher Oelmueller <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2012-01-19 01:57+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -22,9 +22,8 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-#, fuzzy
 msgid "A new settlement was founded by {player}."
-msgstr "Uma nova colônia foi criada por ${player}."
+msgstr "Uma nova colônia foi criada por {player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -35,9 +34,8 @@ msgstr "Um novo mundo foi criado."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr "Captura de tela gravada em ${file}."
+msgstr "Captura de tela gravada em {file}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -67,9 +65,8 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-#, fuzzy
 msgid "You need more {resource} to build this building."
-msgstr "Precisa de mais ${resource} para construir este edifício."
+msgstr "Precisa de mais {resource} para construir este edifício."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -98,9 +95,8 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-#, fuzzy
 msgid "Your inhabitants reached level {level}."
-msgstr "Os seus habitantes chegaram ao nível ${level}."
+msgstr "Os seus habitantes chegaram ao nível {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -347,9 +343,8 @@ msgstr "lã"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-#, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr "${player1} e ${player2} estão agora ${status}"
+msgstr "{player1} e {player2} estão agora {status}"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -2397,11 +2392,8 @@ msgstr "Construtor de Barcos"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:47
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr ""
-"Construtor de barcos: Constrói barcos e pequenas embarcações. Construir na "
-"costa."
+msgstr "Constrói barcos e pequenas embarcações. Construir na costa."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:52
@@ -2703,11 +2695,8 @@ msgstr "Plantação de cana de açúcar"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:249
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
-"Plantação de cana de açúcar: Utilizado na produção de álcool. Requer uma "
-"fazenda."
+msgstr "Utilizado na produção de álcool. Requer uma fazenda."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:254
@@ -2776,9 +2765,8 @@ msgstr "Trilha"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Rastro: Necessário para a coleta de bens."
+msgstr "Necessário para a coleta de bens."
 
 #. name of buildings:tree
 #. tooltip_text of buildings:tree
