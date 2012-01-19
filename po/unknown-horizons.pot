@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons cb06b1f\n"
+"Project-Id-Version: Unknown Horizons 5999b04\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-01-14 00:40+0100\n"
+"POT-Creation-Date: 2012-01-19 20:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, python-format
 msgid "A new settlement was founded by {player}."
 msgstr ""
 
@@ -30,6 +31,12 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
+#, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr ""
 
@@ -55,6 +62,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, python-format
 msgid "You need more {resource} to build this building."
 msgstr ""
 
@@ -80,6 +88,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, python-format
 msgid "Your inhabitants reached level {level}."
 msgstr ""
 
@@ -325,6 +334,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, python-format
 msgid "{player1} and {player2} are now {status}"
 msgstr ""
 
@@ -402,7 +412,7 @@ msgid "Configured language {lang} could not be loaded"
 msgstr ""
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/gui/gui.py:171 horizons/gui/ingamegui.py:515
+#: horizons/gui/gui.py:171 horizons/gui/ingamegui.py:512
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid "Error"
 msgstr ""
@@ -560,20 +570,20 @@ msgstr ""
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
-#: horizons/gui/ingamegui.py:330
+#: horizons/gui/ingamegui.py:327
 msgid "No diplomacy possible"
 msgstr ""
 
-#: horizons/gui/ingamegui.py:331
+#: horizons/gui/ingamegui.py:328
 msgid "Cannot do diplomacy as there are no other players."
 msgstr ""
 
-#: horizons/gui/ingamegui.py:512
+#: horizons/gui/ingamegui.py:509
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
 msgstr ""
 
-#: horizons/gui/ingamegui.py:514
+#: horizons/gui/ingamegui.py:511
 #, python-format
 msgid "Try a name that only contains letters and numbers."
 msgstr ""
@@ -644,77 +654,77 @@ msgid "The game's version differs from your version. Every player in a multiplay
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:300
-#: horizons/gui/modules/singleplayermenu.py:68
+#: horizons/gui/modules/singleplayermenu.py:92
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:106
-#: horizons/gui/modules/singleplayermenu.py:121
+#: horizons/gui/modules/singleplayermenu.py:130
+#: horizons/gui/modules/singleplayermenu.py:145
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:108
-#: horizons/gui/modules/singleplayermenu.py:123
+#: horizons/gui/modules/singleplayermenu.py:132
+#: horizons/gui/modules/singleplayermenu.py:147
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:110
-#: horizons/gui/modules/singleplayermenu.py:125
+#: horizons/gui/modules/singleplayermenu.py:134
+#: horizons/gui/modules/singleplayermenu.py:149
 #: horizons/gui/widgets/choose_next_scenario.py:46
 #, python-format
 msgid "Description: {desc}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:144
+#: horizons/gui/modules/singleplayermenu.py:167
 msgid "Invalid player name"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:144
+#: horizons/gui/modules/singleplayermenu.py:167
 msgid "You entered an invalid playername."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:202
+#: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:211
+#: horizons/gui/modules/singleplayermenu.py:234
 msgid "Water:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:219
+#: horizons/gui/modules/singleplayermenu.py:242
 msgid "Max island size:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:250
 msgid "Preferred island size:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:235
+#: horizons/gui/modules/singleplayermenu.py:258
 msgid "Island size deviation:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:257
+#: horizons/gui/modules/singleplayermenu.py:281
 msgid "Resource density:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:284
+#: horizons/gui/modules/singleplayermenu.py:308
 msgid "Invalid scenario file"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:285
+#: horizons/gui/modules/singleplayermenu.py:309
 msgid "The selected file is not a valid scenario file."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:286
+#: horizons/gui/modules/singleplayermenu.py:310
 msgid "Error message:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:287
+#: horizons/gui/modules/singleplayermenu.py:311
 msgid "Please report this to the author."
 msgstr ""
 
@@ -725,7 +735,7 @@ msgstr ""
 msgid "Build"
 msgstr ""
 
-#: horizons/gui/mousetools/navigationtool.py:71
+#: horizons/gui/mousetools/navigationtool.py:73
 msgid "Press H to remove this hint"
 msgstr ""
 
@@ -770,18 +780,44 @@ msgstr ""
 msgid "Build related fields"
 msgstr ""
 
-#: horizons/gui/tabs/buildtabs.py:125
+#: horizons/gui/tabs/buildtabs.py:93
+msgid "Residents and infrastructure"
+msgstr ""
+
+#: horizons/gui/tabs/buildtabs.py:94 horizons/gui/tabs/buildtabs.py:100
+#: horizons/gui/tabs/buildtabs.py:107
+msgid "Services"
+msgstr ""
+
+#: horizons/gui/tabs/buildtabs.py:95 horizons/gui/tabs/buildtabs.py:98
+#: horizons/gui/tabs/buildtabs.py:105
+msgid "Companies"
+msgstr ""
+
+#: horizons/gui/tabs/buildtabs.py:99 horizons/gui/tabs/buildtabs.py:106
+msgid "Fields"
+msgstr ""
+
+#: horizons/gui/tabs/buildtabs.py:101
+msgid "Military"
+msgstr ""
+
+#: horizons/gui/tabs/buildtabs.py:104
+msgid "Mining"
+msgstr ""
+
+#: horizons/gui/tabs/buildtabs.py:128
 msgid "Increment {increment}"
 msgstr ""
 
 #. i18n In English, this is Sailors, Pioneers, Settlers.
 #. TODO what formatting to use? getting names from DB and adding
 #. '... buildings' will cause wrong declinations all over :/
-#: horizons/gui/tabs/buildtabs.py:134
+#: horizons/gui/tabs/buildtabs.py:137
 msgid "{incr_inhabitant_name}"
 msgstr ""
 
-#: horizons/gui/tabs/buildtabs.py:149 horizons/util/uhdbaccessor.py:150
+#: horizons/gui/tabs/buildtabs.py:155 horizons/util/uhdbaccessor.py:150
 #, python-format
 msgid "{building}: {description}"
 msgstr ""
@@ -910,7 +946,7 @@ msgid "Selected Units"
 msgstr ""
 
 #: horizons/gui/widgets/buysellinventory.py:83
-#: horizons/gui/widgets/inventory.py:106
+#: horizons/gui/widgets/inventory.py:115
 #, python-format
 msgid "Limit: {amount}t per slot"
 msgstr ""
@@ -970,19 +1006,19 @@ msgid "Production overview of {settlement}"
 msgstr ""
 
 #. (tooltip of widget: start_route) Trade route
-#: horizons/gui/widgets/routeconfig.py:76 horizons/i18n/guitranslations.py:560
+#: horizons/gui/widgets/routeconfig.py:77 horizons/i18n/guitranslations.py:560
 msgid "Start route"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:80
+#: horizons/gui/widgets/routeconfig.py:81
 msgid "Stop route"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:129
+#: horizons/gui/widgets/routeconfig.py:130
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:257
+#: horizons/gui/widgets/routeconfig.py:258
 msgid "Select a resource:"
 msgstr ""
 
@@ -1252,17 +1288,17 @@ msgid "Cannons"
 msgstr ""
 
 #. (text of widget: ally_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:197 horizons/world/__init__.py:301
+#: horizons/i18n/guitranslations.py:197 horizons/world/__init__.py:302
 msgid "ally"
 msgstr ""
 
 #. (text of widget: enemy_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:199 horizons/world/__init__.py:303
+#: horizons/i18n/guitranslations.py:199 horizons/world/__init__.py:304
 msgid "enemy"
 msgstr ""
 
 #. (text of widget: neutral_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:201 horizons/world/__init__.py:305
+#: horizons/i18n/guitranslations.py:201 horizons/world/__init__.py:306
 msgid "neutral"
 msgstr ""
 
@@ -2284,11 +2320,6 @@ msgstr ""
 msgid "Player name:"
 msgstr ""
 
-#. (text of widget: selectedcolor)
-#: horizons/i18n/guitranslations.py:944
-msgid " "
-msgstr ""
-
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:45
 msgid "Boat Builder"
@@ -2645,10 +2676,13 @@ msgid "Needed for collecting goods."
 msgstr ""
 
 #. name of buildings:tree
-#. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:301
-#: horizons/i18n/objecttranslations.py:303
 msgid "Tree"
+msgstr ""
+
+#. tooltip_text of buildings:tree
+#: horizons/i18n/objecttranslations.py:303
+msgid "Provides lumber. Chopped down by lumberjacks."
 msgstr ""
 
 #. name of buildings:villageschool
@@ -2710,6 +2744,16 @@ msgstr ""
 #: horizons/main.py:425
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
+msgstr ""
+
+#. if this is reached, we are screwed. Something went wrong in the simulation,
+#. but we don't know what. Stop the game.
+#: horizons/manager.py:182
+msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
+msgstr ""
+
+#: horizons/manager.py:183
+msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
 
 #: horizons/mpsession.py:53 horizons/mpsession.py:67 horizons/mpsession.py:69
@@ -2840,57 +2884,57 @@ msgstr ""
 msgid "The trade partner does not sell more of this."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:210
+#: horizons/world/component/tradepostcomponent.py:209
 msgid "The trade partner does not buy this."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:221
+#: horizons/world/component/tradepostcomponent.py:220
 msgid "You do not possess this."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:228
+#: horizons/world/component/tradepostcomponent.py:227
 msgid "The trade partner can not store more of this."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:235
+#: horizons/world/component/tradepostcomponent.py:234
 msgid "The trade partner can not afford to buy this."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:242
+#: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."
 msgstr ""
 
-#: horizons/world/units/ship.py:278
+#: horizons/world/traderoute.py:268
 #, python-format
 msgid "Trade route: going to {location}"
 msgstr ""
 
-#: horizons/world/units/ship.py:282
+#: horizons/world/traderoute.py:272
 #, python-format
 msgid "Trade route: waiting at {position}"
 msgstr ""
 
-#: horizons/world/units/ship.py:488
+#: horizons/world/units/ship.py:242
 #, python-format
 msgid "Going to {location}"
 msgstr ""
 
-#: horizons/world/units/ship.py:490
+#: horizons/world/units/ship.py:244
 #, python-format
 msgid "Going to {x}, {y}"
 msgstr ""
 
-#: horizons/world/units/ship.py:495
+#: horizons/world/units/ship.py:249
 #, python-format
 msgid "Idle at {location}"
 msgstr ""
 
-#: horizons/world/units/ship.py:497
+#: horizons/world/units/ship.py:251
 #, python-format
 msgid "Idle at {x}, {y}"
 msgstr ""
 
-#: horizons/world/units/ship.py:514
+#: horizons/world/units/ship.py:268
 msgid "Trader"
 msgstr ""
 

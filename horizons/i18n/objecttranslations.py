@@ -300,7 +300,7 @@ def set_translations():
 		# name of buildings:tree
 		"name"                        : _("Tree"),
 		# tooltip_text of buildings:tree
-		"tooltip_text"                : _("Tree"),
+		"tooltip_text"                : _("Provides lumber. Chopped down by lumberjacks."),
 		},
 
 	"content/objects/buildings/villageschool.yaml" : {
