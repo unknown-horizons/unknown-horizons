@@ -46,9 +46,13 @@ class Inventory(pychan.widgets.Container):
 		self.uncached = uncached
 		self.display_legend = display_legend
 
-	def init(self, db, inventory):
+	def init(self, db, inventory, ordinal=None):
+		"""
+		@param ordinal: (min, max) Display ordinal scale with these boundaries instead of numbers. Currently implemented via ImageFillStatusButton.
+		"""
 		# this inits the logic of the inventory. @see __init__().
 		self.__inited = True
+		self.ordinal = ordinal
 		self.db = db
 		self._inventory = inventory
 		self.__icon = pychan.widgets.Icon(image="content/gui/icons/ship/civil_16.png")
@@ -71,10 +75,15 @@ class Inventory(pychan.widgets.Container):
 			if not self.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
 
-			if isinstance(self._inventory, TotalStorage):
+			if self.ordinal is not None:
+				range_ = self.ordinal[1] - self.ordinal[0]
+				filled = ( float(amount - self.ordinal[0]) / range_ ) * 100
+				amount = ""
+			elif isinstance(self._inventory, TotalStorage):
 				filled = 0
 			else:
 				filled = int(float(amount) / float(self._inventory.get_limit(resid)) * 100.0)
+
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, \
 			                                            filled=filled, uncached=self.uncached)
 			current_hbox.addChild(button)
