@@ -29,7 +29,7 @@ class Component(object):
 
 	def __init__(self):
 		"""
-		@param instance: instance that has the component
+		Used for initialisation code that does not require any other components
 		"""
 		super(Component, self).__init__()
 		self.instance = None # Has to be set by the componentholder
@@ -37,8 +37,11 @@ class Component(object):
 
 	def initialize(self):
 		"""
-		This is called by the ComponentHolder after it set the instance. Use this to
-		initialize any needed infrastructure
+		This is called by the ComponentHolder after it set the instance.
+		Use this to initialize any needed infrastructure.
+		When this is called, it is guaranteed that all other components have been added,
+		but initalized may not have been called on them, only __init__.
+		It is only called after construction, not on load.
 		"""
 		pass
 
@@ -50,11 +53,15 @@ class Component(object):
 
 	def save(self, db):
 		"""
-		Will do nothing, but will be always called in componentholder code, even if not implemented
+		Will do nothing, but will be always called in componentholder code, even if not implemented.
 		"""
 		pass
 
 	def load(self, db, worldid):
+		"""
+		This does on load what __init__, __init and initalize together do on constructions at runtime.
+		Has to set up *everything*, also add every member variable.
+		"""
 		pass
 
 	@classmethod

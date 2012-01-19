@@ -24,6 +24,7 @@ from horizons.world.building.buildable import BuildableRect, BuildableSingleEver
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.building.buildingresourcehandler import ProducerBuilding
 from horizons.entities import Entities
+from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, BUILDINGS
 from horizons.gui.tabs import ResourceDepositOverviewTab
 from horizons.world.building.building import SelectableBuilding
@@ -45,9 +46,18 @@ class Field(ProducerNatureBuilding):
 	walkable = False
 	layer = LAYERS.FIELDS
 
-	def __init__(self, **kwargs):
-		super(Field, self).__init__(**kwargs)
-		self._check_covered_by_farm()
+	def initialize(self, **kwargs):
+		super(Field, self).initialize( ** kwargs)
+
+		if self.owner == self.session.world.player:
+			# make sure to have a farm nearby when we can reasonably assume that the crops are fully grown
+			prod_comp = self.get_component(Producer)
+			productions = prod_comp.get_productions()
+			if not productions:
+				print 'Warning: Field is assumed to always produce, but doesn\'t. ', self
+			else:
+				run_in = Scheduler().get_ticks(productions[0].get_production_time())
+				Scheduler().add_new_object(self._check_covered_by_farm, self, run_in=run_in)
 
 	def _check_covered_by_farm(self):
 		"""Warn in case there is no farm nearby to cultivate the field"""
