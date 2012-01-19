@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Widget for displaying needed resources-->
-<Container name="status_extra" size="250,100"  position="97,77">
+<Container name="status_extra" size="250,35"  position="97,77">
 	<Label name="food_2" text="" position="10,6"/>
 	<Label name="food_3" text="" position="10,14"/>
 	<Label name="tools_2" text="" position="65,6"/>
