@@ -774,10 +774,11 @@ msgstr "Vihje eemaldamiseks vajuta H"
 msgid "Boat builder overview"
 msgstr "Paadiehitaja ülevaade"
 
+# 78%
 #: horizons/gui/tabs/boatbuildertab.py:93
-#, python-format
+#, python-format, fuzzy
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "(koht järjekorras: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:157
 msgid "Resources still needed:"
@@ -2266,10 +2267,12 @@ msgstr "Kasutatav renderdaja:"
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
 
+# 88%
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:855
+#, fuzzy
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Kui väärtuseks on 0, kasutatakse marsruuteri vaikeseadeid"
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:857
@@ -2994,9 +2997,11 @@ msgstr ""
 msgid "The trade partner can not store more of this."
 msgstr "Kaubanduspartner ei saa seda rohkem talletada."
 
+# 77%
 #: horizons/world/component/tradepostcomponent.py:234
+#, fuzzy
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Kaubanduspartner ei saa seda rohkem talletada."
 
 #: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."

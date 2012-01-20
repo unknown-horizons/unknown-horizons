@@ -1873,10 +1873,12 @@ msgstr "Súgó megjelenítése"
 msgid "Scroll left"
 msgstr "Görgetés balra"
 
+# 75%
 #. (text of widget: lbl_LOGBOOK)
 #: horizons/i18n/guitranslations.py:656
+#, fuzzy
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "A kapitány naplójának bezárása"
 
 #. (text of widget: lbl_PAUSE)
 #: horizons/i18n/guitranslations.py:658

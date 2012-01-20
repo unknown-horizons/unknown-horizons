@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-19 21:52+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-20 01:53+0200\n"
+"Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1901,7 +1901,6 @@ msgstr "Schnellspeichern"
 
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py:666
-#, fuzzy
 msgid "Remove selected units / buildings"
 msgstr "Angewählte Gebäude / Einheiten entfernen"
 
@@ -1957,7 +1956,6 @@ msgstr "Spielgeschwindigkeit erhöhen"
 
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:688
-#, fuzzy
 msgid "Highlight tile ownership"
 msgstr "Eingefärbter Landbesitz"
 
