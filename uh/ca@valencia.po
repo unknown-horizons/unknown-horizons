@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-09 23:34+0200\n"
+"PO-Revision-Date: 2012-01-10 02:38+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ca@valencia\n"
@@ -96,10 +96,14 @@ msgstr "S'ha desat el joc."
 msgid "Your game has been quicksaved."
 msgstr "S'ha desat el joc."
 
+# Messages
+# 86%
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been saved."
-msgstr ""
+msgstr "S'ha desat el joc."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
