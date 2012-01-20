@@ -184,7 +184,7 @@ class BuildTab(TabInterface):
 		"""
 		for position, heading in self.__class__.text_data[tabindex].iteritems():
 			lbl = self.widget.child_finder('label_{position}'.format(position=position))
-			lbl.text = heading
+			lbl.text = _(heading)
 
 	def refresh(self):
 		pass
